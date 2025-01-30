@@ -35,13 +35,17 @@
 	color = "#52443b";
 	pixel_x = -20;
 	pixel_y = -4;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /obj/structure/prop/ice_colony/tiger_rug{
 	dir = 8;
 	icon_state = "White";
 	color = "#63594d";
-	pixel_x = -40
+	pixel_x = -40;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
@@ -242,7 +246,7 @@
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
-	color = "#853c3c"
+	color = "#912727"
 	},
 /obj/structure/machinery/chem_dispenser/soda/beer/yautja{
 	pixel_x = -7;
@@ -304,7 +308,7 @@
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8;
-	color = "#853c3c"
+	color = "#912727"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -1564,6 +1568,16 @@
 /area/yautja)
 "eN" = (
 /obj/structure/bed/alien/yautja/leader,
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	dir = 8;
+	color = "#63594d";
+	pixel_x = -8;
+	pixel_y = -4;
+	layer = 2.8;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "eP" = (
@@ -1659,93 +1673,39 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "fj" = (
-/obj/structure/bed/chair/hunter{
-	pixel_y = 10;
-	buckling_y = 10;
-	pixel_x = 17;
-	buckling_x = 17
-	},
-/obj/structure/platform_decoration/metal/hunter/north{
-	pixel_y = 32;
-	pixel_x = 6
-	},
-/obj/item/weapon/shield/riot/yautja/ancient{
-	anchored = 1;
-	layer = 2.9;
-	pixel_y = 31
-	},
-/obj/item/weapon/yautja/knife{
-	color = "#ffd65c";
-	name = "sacred ceremonial dagger";
-	pixel_x = 31;
-	pixel_y = 31;
-	anchored = 1
-	},
-/obj/item/skull/runner{
-	pixel_x = 8;
-	pixel_y = 7;
-	anchored = 1
-	},
-/obj/item/skull/lurker{
-	pixel_x = 9;
-	pixel_y = -3;
-	anchored = 1
-	},
-/obj/item/skull/lurker{
-	pixel_x = 25;
-	pixel_y = -3;
-	anchored = 1
-	},
-/obj/item/skull/drone{
-	pixel_x = 4;
-	pixel_y = 4;
-	anchored = 1
-	},
-/obj/item/skull/warrior{
-	pixel_x = 7;
-	pixel_y = 20;
-	anchored = 1
-	},
-/obj/item/skull/lurker{
-	pixel_x = 7;
-	pixel_y = 12;
-	anchored = 1
-	},
-/obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = 9;
-	pixel_y = -4;
-	anchored = 1
-	},
-/obj/item/clothing/accessory/limb/skeleton/torso{
-	pixel_x = 14;
-	pixel_y = 15;
-	anchored = 1
-	},
-/obj/item/clothing/accessory/limb/skeleton/torso{
-	pixel_x = 20;
-	pixel_y = 15;
-	anchored = 1;
-	layer = 3.03
-	},
-/obj/item/clothing/accessory/limb/skeleton/torso{
-	pixel_x = 17;
-	pixel_y = -3;
-	layer = 3.03;
-	anchored = 1
-	},
-/obj/item/clothing/accessory/limb/skeleton/r_leg{
-	pixel_x = 15;
-	pixel_y = 9;
-	anchored = 1
-	},
 /obj/item/prop/torch_frame{
 	pixel_x = -13;
 	pixel_y = -11
 	},
 /obj/item/skull/hunter{
-	pixel_x = -5;
-	pixel_y = 2;
+	pixel_x = -10;
+	pixel_y = 1;
 	anchored = 1
+	},
+/obj/structure/bed/chair/hunter/throne{
+	pixel_x = 16;
+	pixel_y = 8;
+	buckling_x = 17;
+	buckling_y = 8
+	},
+/obj/structure/bed/chair/hunter/throne/top{
+	pixel_x = 16;
+	pixel_y = 40;
+	can_buckle = 0
+	},
+/obj/item/skull/runner{
+	pixel_x = -6;
+	pixel_y = 36
+	},
+/obj/item/skull/drone{
+	pixel_x = -5;
+	pixel_y = 24
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
@@ -1796,6 +1756,18 @@
 "fq" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/west,
+/turf/open/shuttle/dropship/predship/tile/red3,
+/area/yautja)
+"fw" = (
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "White";
+	color = "#52443b";
+	pixel_x = -5;
+	dir = 4;
+	pixel_y = 6;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "fA" = (
@@ -2684,11 +2656,14 @@
 /area/yautja)
 "iA" = (
 /obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
 	dir = 8;
-	icon_state = "White";
-	color = "#63594d";
-	pixel_x = -3;
-	pixel_y = 6
+	color = "#52443b";
+	pixel_x = -4;
+	pixel_y = -10;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
@@ -2926,7 +2901,7 @@
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8;
-	color = "#853c3c"
+	color = "#912727"
 	},
 /obj/item/trash/tray{
 	color = "#c1a384";
@@ -3717,6 +3692,23 @@
 	},
 /turf/open/floor/corsat,
 /area/yautja)
+"mc" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 4;
+	layer = 3
+	},
+/obj/effect/landmark/clan_spawn,
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	color = "#52443b";
+	pixel_x = -3;
+	pixel_y = -26;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/area/yautja)
 "me" = (
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
@@ -3776,16 +3768,8 @@
 	},
 /area/yautja)
 "mq" = (
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/machinery/door_control{
-	id = "selfdestruct";
-	name = "Armory Shutters";
-	needs_power = 0;
-	pixel_x = -10;
-	req_one_access_txt = "392";
-	pixel_y = -19
-	},
-/turf/open/floor/corsat/squares,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "mr" = (
 /obj/structure/bed/chair/comfy/yautja,
@@ -4176,7 +4160,9 @@
 	color = "#52443b";
 	pixel_x = -12;
 	pixel_y = 7;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
@@ -4243,13 +4229,9 @@
 	capacity = 9e+008;
 	charge = 9e+008;
 	dir = 4;
-	name = "plasma power generator"
+	name = "plasma power generator";
+	color = "#c0baae"
 	},
-/obj/structure/machinery/power/apc/almayer/east{
-	pixel_y = 25
-	},
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/platform_decoration/metal/kutjevo/east,
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
@@ -4258,18 +4240,26 @@
 	pixel_y = 24;
 	density = 0
 	},
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 24
+	},
+/obj/structure/machinery/power/terminal{
+	color = "#c0baae"
+	},
 /turf/open/floor/corsat,
 /area/yautja)
 "nZ" = (
 /obj/structure/prop/ice_colony/tiger_rug{
-	dir = 8;
-	icon_state = "White";
+	icon_state = "Plain";
 	color = "#63594d";
-	pixel_x = 8;
-	pixel_y = 1;
-	layer = 2.9
+	pixel_x = -15;
+	pixel_y = -22;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
-/turf/open/shuttle/dropship/predship/tile/red2,
+/turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "oa" = (
 /obj/structure/showcase{
@@ -4943,10 +4933,9 @@
 	capacity = 9e+008;
 	charge = 9e+008;
 	dir = 4;
-	name = "plasma power generator"
+	name = "plasma power generator";
+	color = "#c0baae"
 	},
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
@@ -4954,6 +4943,13 @@
 	name = "Engine Monitor";
 	pixel_y = 24;
 	density = 0
+	},
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 24
+	},
+/obj/structure/machinery/power/terminal{
+	color = "#c0baae"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -5203,7 +5199,9 @@
 	color = "#63594d";
 	pixel_x = -17;
 	pixel_y = 6;
-	layer = 2.8
+	layer = 2.8;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /obj/structure/prop/ice_colony/tiger_rug{
 	dir = 8;
@@ -5211,7 +5209,9 @@
 	color = "#52443b";
 	pixel_x = -33;
 	pixel_y = -1;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
@@ -5485,6 +5485,9 @@
 	},
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
+/obj/structure/curtain/colorable{
+	color = "#6c4449"
+	},
 /turf/open/floor/corsat,
 /area/yautja)
 "sF" = (
@@ -5597,11 +5600,8 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "sV" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
-/obj/structure/pipes/portables_connector{
-	dir = 4;
-	color = "#6b675e";
-	pixel_y = -7
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -6360,17 +6360,28 @@
 	},
 /area/yautja)
 "uX" = (
-/obj/item/clothing/gloves/yautja/hunter{
-	anchored = 1;
-	can_block_movement = 1;
-	charge = 1;
-	charge_max = 1;
-	color = "#a8a7a5";
-	density = 1;
-	desc = "The ship's on-board self destruct system, let's hope you never have to use it.";
-	name = "Self Destruct System"
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Engine Monitor Console";
+	pixel_x = -17;
+	pixel_y = 4
 	},
-/turf/open/floor/corsat,
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Engine Monitor Console";
+	pixel_x = -17;
+	pixel_y = -9
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/corsat/squares,
 /area/yautja)
 "uY" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
@@ -6408,7 +6419,9 @@
 	color = "#52443b";
 	pixel_x = -1;
 	layer = 2.9;
-	pixel_y = -4
+	pixel_y = -4;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
@@ -6575,19 +6588,8 @@
 /area/yautja)
 "vQ" = (
 /obj/structure/shuttle/engine/heater,
-/obj/structure/shuttle/engine/router,
-/obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 1;
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
-	},
-/obj/structure/window/phoronreinforced{
-	color = "#9b1818"
+/obj/structure/shuttle/engine/router{
+	color = "#c0baae"
 	},
 /turf/open/shuttle/dropship/predship/tile/red4{
 	light_on = 1;
@@ -6605,7 +6607,9 @@
 	color = "#52443b";
 	pixel_x = 6;
 	pixel_y = -4;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
@@ -7101,12 +7105,23 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "xT" = (
-/obj/structure/closet/yautja,
-/obj/item/storage/belt/utility/pred/full,
-/obj/item/storage/belt/utility/pred/full,
-/obj/item/storage/belt/utility/pred/full,
-/obj/item/storage/belt/utility/pred/full,
-/turf/open/floor/corsat,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Engine Monitor Console";
+	pixel_x = -17;
+	pixel_y = 10;
+	layer = 3.1
+	},
+/obj/item/tool/screwdriver/yautja{
+	pixel_y = -4
+	},
+/turf/open/floor/corsat/squares,
 /area/yautja)
 "xV" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -7114,7 +7129,9 @@
 	color = "#52443b";
 	pixel_x = -3;
 	pixel_y = -5;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -7538,7 +7555,9 @@
 	color = "#52443b";
 	pixel_x = 8;
 	pixel_y = 1;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /obj/structure/prop/ice_colony/tiger_rug{
 	dir = 8;
@@ -7546,7 +7565,9 @@
 	color = "#63594d";
 	pixel_x = -7;
 	pixel_y = 6;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
@@ -7806,12 +7827,24 @@
 	dir = 8
 	},
 /obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	dir = 8;
+	color = "#52443b";
+	pixel_x = -4;
+	pixel_y = -10;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
+/obj/structure/prop/ice_colony/tiger_rug{
 	dir = 1;
 	icon_state = "White";
 	color = "#52443b";
 	pixel_x = 5;
 	pixel_y = -27;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -8522,6 +8555,16 @@
 	pixel_y = 37;
 	anchored = 1
 	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	dir = 4;
+	color = "#63594d";
+	pixel_x = -15;
+	pixel_y = -22;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "CD" = (
@@ -8710,7 +8753,9 @@
 	pixel_x = -3;
 	pixel_y = -9;
 	layer = 2.9;
-	dir = 8
+	dir = 8;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
@@ -9201,8 +9246,8 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "EY" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/floor/corsat/squares,
+/obj/structure/platform_decoration/metal/hunter/east,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Fb" = (
 /obj/structure/pipes/standard/simple/hidden{
@@ -9300,28 +9345,6 @@
 	color = "#bccab4"
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
-/area/yautja)
-"Fs" = (
-/obj/structure/shuttle/engine/heater,
-/obj/structure/shuttle/engine/router,
-/obj/structure/window/phoronreinforced{
-	dir = 4;
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 1;
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
-	},
-/obj/structure/window/phoronreinforced{
-	color = "#9b1818"
-	},
-/turf/open/shuttle/dropship/predship/tile/red4{
-	light_on = 1;
-	light_range = 2;
-	light_color = "#ff0000"
-	},
 /area/yautja)
 "Fv" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries/yautja,
@@ -9685,13 +9708,6 @@
 	pixel_y = 31;
 	pixel_x = 1
 	},
-/obj/item/weapon/yautja/knife{
-	color = "#ffd65c";
-	name = "sacred ceremonial dagger";
-	pixel_x = 31;
-	pixel_y = 31;
-	anchored = 1
-	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = -13;
 	pixel_y = 34;
@@ -9712,7 +9728,6 @@
 	pixel_x = 6
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -9722,12 +9737,11 @@
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/item/skull/ravager{
 	pixel_x = 17;
-	pixel_y = 31;
+	pixel_y = 34;
 	anchored = 1
 	},
-/obj/item/skull/crusher{
-	pixel_y = 29;
-	anchored = 1
+/obj/item/skull/praetorian{
+	pixel_y = 33
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -9757,10 +9771,10 @@
 	},
 /area/yautja)
 "GU" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	id = "selfdestruct";
-	color = "#f0ebd3"
+/obj/structure/window/reinforced/toughened{
+	color = "#912727"
 	},
+/obj/structure/reagent_dispensers/fueltank/yautja,
 /turf/open/floor/corsat,
 /area/yautja)
 "GV" = (
@@ -10370,67 +10384,16 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "Je" = (
-/obj/item/weapon/shield/riot/yautja/ancient{
-	anchored = 1;
-	layer = 2.9;
-	pixel_y = 31
-	},
-/obj/item/skull/runner{
-	pixel_x = -8;
-	pixel_y = 7;
-	anchored = 1
-	},
-/obj/item/skull/drone{
-	pixel_x = -4;
-	pixel_y = 4;
-	anchored = 1
-	},
-/obj/item/skull/warrior{
-	pixel_x = -5;
-	pixel_y = 20;
-	anchored = 1
-	},
-/obj/item/skull/queen{
-	pixel_x = -15;
-	pixel_y = 24;
-	anchored = 1;
-	layer = 3.04
-	},
-/obj/item/skull/lurker{
-	pixel_x = -5;
-	pixel_y = 12;
-	anchored = 1
-	},
-/obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = -17;
-	pixel_y = -4;
-	anchored = 1
-	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = -5;
-	pixel_y = 18;
+	pixel_y = 17;
 	anchored = 1;
 	layer = 3
-	},
-/obj/item/clothing/accessory/limb/skeleton/l_leg{
-	pixel_x = -14;
-	pixel_y = 9;
-	anchored = 1
 	},
 /obj/item/skull/hunter{
 	anchored = 1;
 	pixel_y = 36;
 	pixel_x = 45
-	},
-/obj/item/clothing/accessory/limb/skeleton/head/spine{
-	pixel_x = -26;
-	pixel_y = 20;
-	anchored = 1
-	},
-/obj/item/clothing/accessory/limb/skeleton/head/spine{
-	pixel_x = -6;
-	pixel_y = 20;
-	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = 8;
@@ -10443,6 +10406,21 @@
 	pixel_x = 7;
 	pixel_y = 8;
 	anchored = 1
+	},
+/obj/item/skull/drone,
+/obj/item/skull/lurker{
+	pixel_x = 5;
+	pixel_y = 37
+	},
+/obj/item/skull/drone{
+	pixel_x = 3;
+	pixel_y = 24
+	},
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
@@ -10914,7 +10892,9 @@
 	color = "#63594d";
 	pixel_x = -4;
 	pixel_y = -10;
-	layer = 2.9
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
@@ -11132,7 +11112,7 @@
 	name = "\improper Engine Room";
 	dir = 1
 	},
-/turf/open/floor/corsat/squares,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "LC" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -11426,23 +11406,19 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "MD" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/misc/feed{
+	dir = 8
 	},
-/obj/item/stack/rods,
-/obj/item/stack/rods,
-/obj/item/stack/rods{
-	pixel_x = -3;
-	pixel_y = 2
+/turf/open/shuttle/dropship/predship/red_glow{
+	light_on = 1;
+	light_power = 2;
+	light_range = 3;
+	light_color = "#ff0000"
 	},
-/obj/item/stack/rods{
-	pixel_x = 2;
-	pixel_y = 5
-	},
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/turf/open/floor/corsat,
 /area/yautja)
 "ME" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
@@ -12220,8 +12196,9 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "Pz" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/floor/corsat/squares,
+/obj/structure/platform_decoration/metal/hunter/west,
+/obj/structure/machinery/power/apc/almayer/west,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "PC" = (
 /obj/structure/platform_decoration/metal/hunter/west{
@@ -12420,6 +12397,16 @@
 	layer = 2.9;
 	pixel_y = 31
 	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
+	dir = 4;
+	color = "#63594d";
+	pixel_x = -2;
+	pixel_y = -27;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
+	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "Qo" = (
@@ -12518,20 +12505,22 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "QJ" = (
-/obj/structure/prop/ice_colony/tiger_rug{
-	icon_state = "White";
-	color = "#52443b";
-	pixel_x = 1;
-	pixel_y = 6;
-	layer = 2.9;
-	dir = 8
-	},
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 8;
 	pixel_x = -3;
 	pixel_y = 5;
 	buckling_x = -3;
 	buckling_y = 5
+	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "White";
+	color = "#52443b";
+	pixel_x = 1;
+	pixel_y = 6;
+	dir = 8;
+	layer = 2.98;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -12740,17 +12729,11 @@
 /area/yautja)
 "Rr" = (
 /obj/structure/prop/ice_colony/tiger_rug{
-	dir = 8;
-	icon_state = "White";
-	color = "#63594d";
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/obj/structure/prop/ice_colony/tiger_rug{
 	icon_state = "White";
 	color = "#52443b";
 	pixel_x = 4;
-	layer = 2.9
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
@@ -12802,8 +12785,11 @@
 	},
 /area/yautja)
 "RC" = (
-/obj/structure/platform/metal/kutjevo/north,
-/turf/open/floor/corsat/squares,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/west{
+	pixel_x = 3
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "RD" = (
 /obj/item/skull/hunter{
@@ -12910,23 +12896,13 @@
 	},
 /area/yautja)
 "RU" = (
-/obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
-	},
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
-	layer = 3.1
+	layer = 3.1;
+	color = "#c0baae"
 	},
 /obj/structure/shuttle/engine/router{
-	layer = 2.9
-	},
-/obj/structure/window/phoronreinforced{
-	color = "#9b1818"
+	layer = 2.9;
+	color = "#c0baae"
 	},
 /turf/open/shuttle/dropship/predship/tile/red4{
 	light_on = 1;
@@ -12993,29 +12969,14 @@
 	},
 /area/yautja)
 "Se" = (
-/obj/structure/window/phoronreinforced{
-	dir = 4;
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
+/obj/structure/bed/chair/hunter{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = 22;
+	buckling_x = -5;
+	buckling_y = 22
 	},
-/obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
-	},
-/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
-	layer = 3.1
-	},
-/obj/structure/shuttle/engine/router{
-	layer = 2.9
-	},
-/obj/structure/window/phoronreinforced{
-	color = "#9b1818"
-	},
-/turf/open/shuttle/dropship/predship/tile/red4{
-	light_on = 1;
-	light_range = 2;
-	light_color = "#ff0000"
-	},
+/turf/open/floor/corsat/squares,
 /area/yautja)
 "Sg" = (
 /obj/structure/machinery/cryopod/no_store/right/yautja,
@@ -13131,7 +13092,10 @@
 	icon_state = "White";
 	color = "#63594d";
 	pixel_x = -2;
-	pixel_y = -4
+	pixel_y = -4;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature.";
+	layer = 2.9
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
@@ -13279,13 +13243,6 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Tl" = (
-/obj/structure/prop/ice_colony/tiger_rug{
-	icon_state = "White";
-	color = "#52443b";
-	pixel_x = -6;
-	pixel_y = 8;
-	layer = 2.9
-	},
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
@@ -13838,10 +13795,6 @@
 	pixel_x = -6;
 	layer = 3.01
 	},
-/obj/structure/platform_decoration/metal/hunter/north{
-	pixel_y = 32;
-	pixel_x = -12
-	},
 /obj/item/weapon/shield/riot/yautja/ancient{
 	anchored = 1;
 	layer = 2.9;
@@ -13854,7 +13807,6 @@
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -13862,10 +13814,9 @@
 	dir = 8
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/obj/item/skull/crusher{
+/obj/item/skull/praetorian{
 	pixel_x = -1;
-	pixel_y = 29;
-	anchored = 1
+	pixel_y = 33
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -13946,12 +13897,14 @@
 /area/yautja)
 "UZ" = (
 /obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "Plain";
 	dir = 8;
-	icon_state = "White";
-	color = "#63594d";
-	pixel_x = -2;
-	pixel_y = -4;
-	layer = 2.9
+	color = "#52443b";
+	pixel_x = -4;
+	pixel_y = -10;
+	layer = 2.9;
+	name = "animal pelt";
+	desc = "A pelt of a fearsome dead creature."
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -14559,10 +14512,13 @@
 /area/yautja)
 "Xd" = (
 /obj/structure/machinery/power/terminal{
-	dir = 1
+	dir = 1;
+	color = "#c0baae"
 	},
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 24
+	},
 /turf/open/floor/corsat,
 /area/yautja)
 "Xe" = (
@@ -14691,12 +14647,9 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 4;
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae"
 	},
-/obj/structure/shuttle/engine/heater,
 /obj/structure/showcase{
 	desc = "A teleportation console";
 	dir = 1;
@@ -14713,10 +14666,8 @@
 	icon_state = "terminal";
 	name = "Vent";
 	pixel_y = -21;
-	pixel_x = -7
-	},
-/obj/structure/window/phoronreinforced{
-	color = "#9b1818"
+	pixel_x = -7;
+	color = "#c0baae"
 	},
 /turf/open/shuttle/dropship/predship/tile/red4{
 	light_on = 1;
@@ -14949,12 +14900,9 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 1
 	},
-/obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow";
-	color = "#9b1818"
+/obj/structure/shuttle/engine/heater{
+	color = "#c0baae"
 	},
-/obj/structure/shuttle/engine/heater,
 /obj/structure/showcase{
 	desc = "A teleportation console";
 	dir = 1;
@@ -14971,10 +14919,13 @@
 	icon_state = "terminal";
 	name = "Vent";
 	pixel_y = -21;
-	pixel_x = 6
+	pixel_x = 6;
+	color = "#c0baae"
 	},
-/obj/structure/window/phoronreinforced{
-	color = "#9b1818"
+/obj/structure/prop/power_transformer{
+	layer = 3.1;
+	name = "alien machinery";
+	color = "#c0baae"
 	},
 /turf/open/shuttle/dropship/predship/tile/red4{
 	light_on = 1;
@@ -15059,11 +15010,14 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "YW" = (
-/obj/structure/machinery/power/terminal{
-	dir = 1
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 24
 	},
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/machinery/power/terminal{
+	dir = 1;
+	color = "#c0baae"
+	},
 /turf/open/floor/corsat,
 /area/yautja)
 "YX" = (
@@ -15336,6 +15290,9 @@
 	name = "Monitor";
 	pixel_y = 23;
 	density = 0
+	},
+/obj/structure/curtain/colorable{
+	color = "#6c4449"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -19042,7 +18999,7 @@ aV
 aV
 LC
 PX
-PX
+mc
 Tl
 aV
 aV
@@ -19349,7 +19306,7 @@ YA
 aV
 aV
 yK
-wE
+fw
 aV
 aV
 vi
@@ -19552,7 +19509,7 @@ zr
 wE
 yN
 dX
-Zo
+nZ
 wE
 lP
 yN
@@ -20986,7 +20943,7 @@ RU
 RC
 GU
 uX
-aV
+xT
 aV
 aV
 gW
@@ -21082,13 +21039,13 @@ dI
 Op
 MZ
 aV
-Fs
+vQ
 XG
-Se
+RU
 mq
-aV
-aV
-aV
+sV
+Qo
+Se
 aV
 aV
 yU
@@ -21188,10 +21145,10 @@ aV
 nY
 Xd
 EY
-Qo
-Qo
-Qo
-Qo
+Hg
+Hg
+Hg
+Hg
 Lx
 ya
 Eg
@@ -21289,9 +21246,9 @@ Gw
 aV
 aV
 aV
-xT
-sV
-sV
+Lu
+OU
+OU
 MD
 aV
 aV
@@ -27068,7 +27025,7 @@ NS
 St
 aV
 Qn
-nZ
+ys
 hx
 aV
 aV

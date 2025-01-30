@@ -226,6 +226,15 @@
 /obj/effect/hunter/rune/stripes_arrow
 	icon_state = "stripes_arrow"
 
+/obj/structure/bed/chair/hunter/throne
+	name = "Throne of the Eternal Hunt"
+	desc = "A grotesquely magnificent seat, carved from the remains of the most formidable prey. Twisted spines, shattered skulls, and serrated bones form a testament to the ancient hunter’s unchallenged supremacy. The throne whispers of countless battles, its macabre elegance a reminder that only the strongest may sit upon it."
+	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon_state = "bone_throne"
+
+/obj/structure/bed/chair/hunter/throne/top
+	icon_state = "bone_throne_top"
+
 // Fake platform
 
 /obj/structure/prop/hunter/fake_platform/hunter

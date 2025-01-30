@@ -114,6 +114,7 @@
 	name = "duelling blade"
 	desc = "A primitive yet deadly sword used in Yaujta rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
 	icon_state = "yaujta_sword"
+	item_state = "yaujta_sword"
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica

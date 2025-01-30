@@ -94,11 +94,11 @@
 	lastcycle = world.time
 
 	if(harvest && autoharvest)
-		harvest(null, TRUE) //this is ok
-		animate(src, transform = matrix(rand(1.-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
-		animate(transform = matrix(rand(-0.5,0.5), rand(1.-1), MATRIX_TRANSLATE), time = 0.5)
+		animate(src, transform = matrix(rand(1,-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
+		animate(transform = matrix(rand(-0.5,0.5), rand(1,-1), MATRIX_TRANSLATE), time = 0.5)
 		animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
 		visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products"))
+		harvest(null, TRUE) //this is ok
 
 	// Mutation level drops each main tick.
 	mutation_level -= rand(2,4)
@@ -562,6 +562,9 @@
 			animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
 			autoharvest = TRUE
 			qdel(O)
+		else
+			to_chat(user, SPAN_WARNING("[src] is already capable of automatic harvesting."))
+			return
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/get_examine_text(mob/user)
 	. = ..()

@@ -254,6 +254,6 @@
 	spawn_item_type = /obj/item/attachable/bayonet/rmc
 
 /obj/item/clothing/shoes/dress/rmc
-	name = "RMC dress shoes"
+	name = "\improper RMC dress shoes"
 	desc = "Polished fancy dress shoes. You can see your reflection in them."
 	icon_state = "rmc_laceups"

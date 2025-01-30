@@ -100,14 +100,13 @@ SUBSYSTEM_DEF(polls)
 /datum/controller/subsystem/polls/proc/handle_new_user(source, client/new_client)
 	SIGNAL_HANDLER
 
-	INVOKE_ASYNC(src, PROC_REF(remind_new_user), new_client)
+	remind_new_user(new_client)
 
 /// Reminds new users logging in of any uncompleted polls.
 /datum/controller/subsystem/polls/proc/remind_new_user(client/new_client)
 	set waitfor = FALSE
 
-	while(!new_client.player_data)
-		stoplag()
+	UNTIL(new_client.player_data)
 
 	for(var/id in active_polls)
 		var/voted = length(DB_VIEW(

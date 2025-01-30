@@ -94,7 +94,7 @@
 		// Round stats
 		round_stats = DB_ENTITY(/datum/entity/statistic/round)
 		round_stats.round_name = operation_name
-		round_stats.round_id = mc_round.id
+		round_stats.round_id = text2num(mc_round.id)
 		round_stats.map_name = SSmapping.configs[GROUND_MAP].map_name
 		round_stats.game_mode = name
 		round_stats.real_time_start = world.realtime
@@ -234,7 +234,6 @@
 			track_final_participant(M.faction)
 
 	save()
-	detach()
 
 /datum/entity/statistic/round/proc/track_hijack_participant(faction, amount = 1)
 	if(!faction)
@@ -390,6 +389,9 @@
 	stats += "[GLOB.log_end]"
 
 	WRITE_LOG(GLOB.round_stats, stats)
+
+	round_id = GLOB.round_id
+	save()
 
 /datum/action/show_round_statistics
 	name = "View End-Round Statistics"

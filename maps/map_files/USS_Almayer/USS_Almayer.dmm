@@ -3967,6 +3967,17 @@
 /obj/structure/machinery/cryopod/right,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/living/bridgebunks)
+"ajM" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	access_modified = 1;
+	dir = 1;
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "3;22;19"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/maint/hull/lower/l_f_s)
 "ajN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -4172,6 +4183,14 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/almayer/plate,
 /area/almayer/lifeboat_pumps/north1)
+"akv" = (
+/obj/structure/machinery/light/small,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/l_f_s)
 "akw" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
@@ -4546,6 +4565,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
 /area/almayer/living/captain_mess)
+"alw" = (
+/obj/structure/machinery/light/small,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/l_f_s)
 "alx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/candle{
@@ -18331,9 +18357,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/junction{
 	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-y"
 	},
 /turf/open/floor/almayer/blue/southwest,
 /area/almayer/squads/delta)
@@ -21937,17 +21963,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/auxiliary_officer_office)
-"dGP" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/maint{
-	access_modified = 1;
-	dir = 1;
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "3;22;19"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/maint/hull/lower/l_f_s)
 "dGT" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -26445,10 +26460,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_x = -1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
@@ -44862,13 +44873,10 @@
 /turf/open/floor/plating,
 /area/almayer/medical/chemistry)
 "nvT" = (
-/obj/structure/disposalpipe/junction{
-	dir = 2;
-	icon_state = "pipe-j2"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "nvX" = (
@@ -51340,6 +51348,9 @@
 /area/almayer/maint/hull/lower/l_a_p)
 "qig" = (
 /obj/effect/landmark/yautja_teleport,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
 "qim" = (
@@ -64117,8 +64128,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	dir = 4
 	},
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/delta)
@@ -92538,8 +92548,8 @@ aag
 aag
 sGw
 iPf
-klT
-smH
+akv
+ajM
 vHp
 gJp
 agi
@@ -92741,7 +92751,7 @@ aag
 aag
 sGw
 cqp
-xzB
+oes
 eWs
 ahg
 asE
@@ -92944,7 +92954,7 @@ aag
 aag
 sGw
 jOq
-xzB
+oes
 eWs
 eXq
 jdZ
@@ -93350,7 +93360,7 @@ aag
 aag
 sGw
 dvD
-dvD
+iOX
 eWs
 abG
 aer
@@ -93553,7 +93563,7 @@ aag
 aag
 sGw
 dvD
-klT
+alw
 eWs
 abH
 aer
@@ -93756,8 +93766,8 @@ aag
 aag
 sGw
 dvD
-sZc
-dGP
+oes
+smH
 acq
 aeN
 azl

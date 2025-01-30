@@ -6792,6 +6792,13 @@
 /area/almayer/engineering/upper_engineering)
 "arj" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door_control{
+	id = "engie_cbrn";
+	name = "Hazard Gear Storage";
+	pixel_y = 2;
+	req_access_txt = "31";
+	pixel_x = -23
+	},
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/engineering/upper_engineering)
 "ark" = (
@@ -11220,7 +11227,6 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "engie_store";
 	name = "Emergency Storage";
-	pixel_x = -7;
 	pixel_y = 26;
 	req_one_access_txt = "6"
 	},
@@ -11228,13 +11234,6 @@
 	dir = 4;
 	pixel_x = -17;
 	pixel_y = -6
-	},
-/obj/structure/machinery/door_control/brbutton{
-	id = "engie_cbrn";
-	name = "Hazard Gear Storage";
-	pixel_x = 6;
-	pixel_y = 26;
-	req_one_access_txt = "6"
 	},
 /turf/open/floor/almayer/orangecorner/north,
 /area/almayer/engineering/ce_room)

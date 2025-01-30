@@ -6482,11 +6482,8 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/ert_station/soalar_devils_station)
 "vh" = (
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "vj" = (
 /obj/effect/decal/cleanable/dirt{
@@ -6708,9 +6705,6 @@
 "vY" = (
 /obj/structure/sign/safety/rewire{
 	pixel_x = 32
-	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "garrow_elevator_upper"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow"
@@ -10051,14 +10045,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/soalar_devils_station)
-"GH" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	name = "\improper Hangar Lockdown Shutters";
-	unacidable = 1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/adminlevel/ert_station/soalar_devils_station)
 "GJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning";
@@ -10083,9 +10069,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/soalar_devils_station)
 "GN" = (
-/obj/structure/machinery/door/poddoor/railing{
-	id = "garrow_elevator_upper"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow"
 	},
@@ -10135,11 +10118,6 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
 "GS" = (
-/obj/effect/decal/strata_decals/grime/grime4{
-	layer = 2.9;
-	plane = -6;
-	pixel_y = 2
-	},
 /obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/six,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -11129,13 +11107,12 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
 "JN" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	name = "\improper Hangar Lockdown Shutters";
-	unacidable = 1
-	},
 /obj/structure/roof/cargocrane_tracks/horizontal{
 	pixel_y = 14
+	},
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Hangar Lockdown Blast Door";
+	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -23834,9 +23811,9 @@ uF
 uF
 uF
 ZR
-GH
+gO
 JN
-GH
+gO
 ZR
 uF
 ZR
@@ -24101,7 +24078,7 @@ ZR
 ZR
 ZR
 ZR
-wH
+eS
 Nd
 ih
 WU
@@ -24508,13 +24485,13 @@ tg
 ZR
 uF
 uF
-uF
-uF
-uF
-uF
-uF
-uF
-uF
+ZR
+wj
+wj
+wj
+wj
+wj
+ZR
 uF
 uF
 uF
@@ -24610,13 +24587,13 @@ Ze
 ZR
 uF
 uF
-uF
-uF
-uF
-uF
-uF
-uF
-uF
+ZR
+pz
+pz
+pz
+pz
+pz
+ZR
 uF
 uF
 uF

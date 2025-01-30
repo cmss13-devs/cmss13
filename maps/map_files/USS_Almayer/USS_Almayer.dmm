@@ -6819,6 +6819,16 @@
 "arm" = (
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/upper_engineering)
+"arn" = (
+/obj/structure/sign/safety/hazard{
+	desc = "A sign that warns of a hazardous environment nearby";
+	name = "\improper Warning: Hazardous Environment";
+	pixel_x = 7;
+	pixel_y = 24
+	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_f_p)
 "arp" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -16310,8 +16320,8 @@
 /area/almayer/squads/charlie)
 "bOC" = (
 /obj/structure/sign/safety/maint{
-	pixel_x = 8;
-	pixel_y = -32
+	pixel_x = 7;
+	pixel_y = -26
 	},
 /turf/open/floor/almayer/orange,
 /area/almayer/hallways/hangar)
@@ -32030,10 +32040,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
-"hVL" = (
-/obj/structure/largecrate/random/barrel/red,
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/l_f_p)
 "hWa" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -52334,15 +52340,6 @@
 /obj/structure/machinery/recharger,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/lower_medical_lobby)
-"qyG" = (
-/obj/structure/sign/safety/hazard{
-	desc = "A sign that warns of a hazardous environment nearby";
-	name = "\improper Warning: Hazardous Environment";
-	pixel_x = 7;
-	pixel_y = 24
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/l_f_p)
 "qyK" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer/orange/southeast,
@@ -92341,7 +92338,7 @@ lRX
 rux
 sEt
 bcm
-qyG
+emC
 bUQ
 bUQ
 siT
@@ -92950,7 +92947,7 @@ omP
 aYt
 bOC
 bcm
-bUQ
+arn
 xFt
 bUQ
 uKH
@@ -93153,7 +93150,7 @@ ivg
 llO
 kSv
 bcm
-hSb
+emC
 dZZ
 xmn
 uKH
@@ -94371,7 +94368,7 @@ apE
 icp
 fER
 bcm
-hVL
+emC
 bUQ
 bUQ
 uKH
@@ -95183,7 +95180,7 @@ fpW
 llO
 vml
 bcm
-bUQ
+emC
 rVc
 rVc
 uKH

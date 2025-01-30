@@ -115,7 +115,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(islarva(xeno)) //Larvas can't eat people
-		xeno.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."),
+		xeno.visible_message(SPAN_DANGER("[xeno] nudges its head against \the [src]."),
 		SPAN_DANGER("We nudge our head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
 		return
 
@@ -136,7 +136,7 @@
 				xeno.attempt_tailswipe(src)
 				return XENO_NONCOMBAT_ACTION
 			else
-				xeno.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its claws."),
+				xeno.visible_message(SPAN_NOTICE("\The [xeno] caresses \the [src] with its claws."),
 				SPAN_NOTICE("We caress \the [src] with our claws."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 		if(INTENT_GRAB)
@@ -146,7 +146,7 @@
 			if(Adjacent(xeno)) //Logic!
 				xeno.start_pulling(src)
 
-				xeno.visible_message(SPAN_WARNING("[M] grabs \the [src]!"),
+				xeno.visible_message(SPAN_WARNING("[xeno] grabs \the [src]!"),
 				SPAN_WARNING("You grab \the [src]!"), null, 5, CHAT_TYPE_XENO_FLUFF)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 

@@ -221,7 +221,7 @@
 		human.visible_message(SPAN_NOTICE("[human] waves at [target] to make [t_him] feel better!"),
 			SPAN_NOTICE("You wave at [target] to make [t_him] feel better!"), null, 4)
 	else if(target_zone == "groin")
-		human.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"),
+		human.visible_message(SPAN_NOTICE("[human] hugs [target] to make [t_him] feel better!"),
 			SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
 	else
 		human.visible_message(SPAN_NOTICE("[human] pats [target] on the back to make [t_him] feel better!"),

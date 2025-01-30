@@ -6769,6 +6769,9 @@
 	pixel_y = 9;
 	layer = 3.01
 	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "arh" = (
@@ -6807,6 +6810,14 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
+"arl" = (
+/obj/structure/machinery/shower{
+	pixel_y = 14;
+	name = "decontamination shower"
+	},
+/obj/item/tool/soap,
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/upper_engineering)
 "arm" = (
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/upper_engineering)
@@ -6842,10 +6853,11 @@
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/lower/workshop/hangar)
 "arz" = (
-/obj/structure/sign/poster/safety{
-	pixel_y = 32
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/shower{
+	pixel_y = 14;
+	name = "decontamination shower"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "arA" = (
@@ -116565,7 +116577,7 @@ sHI
 jao
 qhT
 wDM
-alR
+arl
 atq
 atq
 wDM

@@ -2160,7 +2160,7 @@
 		/obj/item/ammo_magazine/rifle/l42a/toxin,
 		/obj/item/ammo_magazine/rifle/l42a/extended,
 		/obj/item/ammo_magazine/rifle/l42a/incendiary,
-)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST

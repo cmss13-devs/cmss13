@@ -6321,6 +6321,16 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/upper/aft_hallway)
+"apX" = (
+/obj/structure/machinery/door_control{
+	id = "tcomms_outer";
+	name = "Outer Telecommunications Controls";
+	pixel_x = -22;
+	pixel_y = -10;
+	req_one_access_txt = list(19,7)
+	},
+/turf/open/floor/almayer/orange/west,
+/area/almayer/engineering/upper_engineering)
 "apY" = (
 /obj/structure/machinery/telecomms/server/presets/medical,
 /obj/structure/machinery/telecomms/processor/preset_three{
@@ -114233,7 +114243,7 @@ apx
 cMx
 sHI
 aoQ
-qhT
+wCe
 alL
 aqV
 aqV
@@ -114648,10 +114658,10 @@ amO
 arq
 anO
 anO
-anO
+arq
 arq
 amO
-arq
+apX
 ami
 qaV
 kwd
@@ -114840,7 +114850,7 @@ aqc
 apN
 rYU
 btb
-nXV
+sHI
 qMI
 rUN
 aqg
@@ -115043,7 +115053,7 @@ aqd
 iVz
 apy
 cMx
-sHI
+nXV
 lOn
 acQ
 kwd

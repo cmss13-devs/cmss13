@@ -42,6 +42,8 @@
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
 
+	/// A list of all player xenomorph deaths, type /datum/entity/xeno_death
+	var/list/xeno_deaths = list()
 
 BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 
@@ -50,6 +52,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 
 	QDEL_NULL(current_map)
 	QDEL_LIST(death_stats_list)
+	QDEL_LIST(xeno_deaths)
 	castes_evolved = null
 	abilities_used = null
 	final_participants = null

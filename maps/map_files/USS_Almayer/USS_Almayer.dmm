@@ -6771,6 +6771,9 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
+"arh" = (
+/turf/open/floor/almayer/orangecorner/north,
+/area/almayer/engineering/upper_engineering)
 "arm" = (
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/upper_engineering)
@@ -7739,7 +7742,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
-/turf/open/floor/almayer/cargo,
+/turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering)
 "axE" = (
 /obj/structure/sign/safety/rewire{
@@ -7750,7 +7753,7 @@
 	pixel_y = 16;
 	pixel_x = -11
 	},
-/turf/open/floor/almayer/cargo,
+/turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering)
 "axI" = (
 /obj/structure/machinery/light{
@@ -9002,7 +9005,7 @@
 /area/almayer/engineering/upper_engineering)
 "aFt" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/orange/west,
+/turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering)
 "aFu" = (
 /obj/structure/bed/chair{
@@ -40688,10 +40691,6 @@
 	dir = 1
 	},
 /area/almayer/medical/containment/cell/cl)
-"lEj" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/orangecorner/north,
-/area/almayer/engineering/upper_engineering)
 "lEv" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -117148,8 +117147,8 @@ arg
 ats
 auO
 awB
-alR
-amA
+amw
+arh
 auu
 aoT
 aFm
@@ -117351,8 +117350,8 @@ arA
 att
 auS
 ara
-alR
 amA
+amx
 aBn
 aDm
 aFn
@@ -117555,7 +117554,7 @@ wDM
 wDM
 wDM
 axD
-amA
+amx
 aBo
 axe
 anO
@@ -117758,7 +117757,7 @@ aoW
 aty
 wDM
 axE
-amA
+amx
 aBp
 aDn
 atc
@@ -117961,7 +117960,7 @@ aoX
 auU
 aHu
 aFt
-lEj
+nRX
 nRX
 aDo
 aFr
@@ -118163,7 +118162,7 @@ aOQ
 fxI
 nLJ
 aHv
-aya
+amA
 amx
 atq
 aDr

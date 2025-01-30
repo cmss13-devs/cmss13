@@ -51771,12 +51771,10 @@
 /obj/structure/flora/pottedplant/random{
 	pixel_x = 6
 	},
-/obj/structure/machinery/power/apc/almayer/south{
-	pixel_x = -5
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/machinery/power/apc/almayer/south,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/shipboard/panic)
 "qmP" = (

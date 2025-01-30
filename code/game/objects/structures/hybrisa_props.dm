@@ -20,10 +20,10 @@
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"), \
+		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"), \
+		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"),
 		SPAN_DANGER("We [user.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_icon()
 	return XENO_ATTACK_ACTION

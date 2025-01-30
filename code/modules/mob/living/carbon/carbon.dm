@@ -226,8 +226,8 @@
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)
 		src.visible_message(
-			SPAN_DANGER("[src] was shocked by [source]!"), \
-			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
+			SPAN_DANGER("[src] was shocked by [source]!"),
+			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"),
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
 		if(isxeno(src) && mob_size >= MOB_SIZE_BIG)
@@ -241,8 +241,8 @@
 
 	else
 		src.visible_message(
-			SPAN_DANGER("[src] was mildly shocked by [source]."), \
-			SPAN_DANGER("You feel a mild shock course through your body."), \
+			SPAN_DANGER("[src] was mildly shocked by [source]."),
+			SPAN_DANGER("You feel a mild shock course through your body."),
 			SPAN_DANGER("You hear a light zapping.") \
 		)
 
@@ -305,11 +305,11 @@
 	if(shake_action) // We are incapacitated in some fashion
 		if(client)
 			sleeping = max(0,sleeping-5)
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to [shake_action]"), \
+		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to [shake_action]"),
 			SPAN_NOTICE("You shake [src] trying to [shake_action]"), null, 4)
 
 	else if(body_position == LYING_DOWN) // We're just chilling on the ground, let us be
-		M.visible_message(SPAN_NOTICE("[M] stares and waves impatiently at [src] lying on the ground."), \
+		M.visible_message(SPAN_NOTICE("[M] stares and waves impatiently at [src] lying on the ground."),
 			SPAN_NOTICE("You stare and wave at [src] just lying on the ground."), null, 4)
 
 	else
@@ -317,7 +317,7 @@
 		if(istype(H))
 			H.species.hug(H, src, H.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
+			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
 				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
@@ -511,10 +511,10 @@
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
 	adjust_fire_stacks(-5, min_stacks = 0)
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	C.visible_message(SPAN_DANGER("[C] tries to put out the fire on [src]!"), \
+	C.visible_message(SPAN_DANGER("[C] tries to put out the fire on [src]!"),
 	SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 	if(fire_stacks <= 0)
-		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"), \
+		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"),
 		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 
 /mob/living/carbon/resist_buckle()
@@ -522,12 +522,12 @@
 	if(handcuffed)
 		next_move = world.time + 100
 		last_special = world.time + 100
-		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),\
+		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),
 		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
 		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return
-			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),\
+			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),
 						SPAN_NOTICE("You successfully unbuckle yourself."))
 			buckled.manual_unbuckle(src)
 	else

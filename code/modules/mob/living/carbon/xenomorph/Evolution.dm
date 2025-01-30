@@ -139,6 +139,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		qdel(organ)
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
+	new_xeno.creation_time = creation_time
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
@@ -198,7 +199,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(new_xeno.mind && GLOB.round_statistics)
 		GLOB.round_statistics.track_new_participant(new_xeno.faction.code_identificator, -1) //so an evolved xeno doesn't count as two.
-
 	SSround_recording.recorder.track_player(new_xeno)
 
 	// We prevent de-evolved people from being tracked for the rest of the round relating to T1s in order to prevent people
@@ -337,6 +337,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+	new_xeno.creation_time = creation_time
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong

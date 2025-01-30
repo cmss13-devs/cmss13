@@ -17,7 +17,7 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	darkness_view = 12
 	vision_flags = SEE_TURFS
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	fullscreen_vision = null
 	eye_protection = EYE_PROTECTION_NEGATIVE
 

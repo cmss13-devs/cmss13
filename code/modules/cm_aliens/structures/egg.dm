@@ -19,6 +19,7 @@
 	var/weed_strength_required = WEED_LEVEL_HIVE
 	/// Whether to convert/orphan once EGG_BURSTING is complete
 	var/convert_on_release = FALSE
+	var/huggers_can_spawn = TRUE
 
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
@@ -323,6 +324,9 @@
 	if(status != EGG_GROWN)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
+	if(!huggers_can_spawn)
+		to_chat(user, SPAN_WARNING("This egg cannot support active facehuggers!"))
+		return
 
 	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(!faction_module.can_spawn_as_hugger(user))
@@ -381,6 +385,7 @@ SPECIAL EGG USED BY EGG CARRIER
 	var/last_refreshed = null
 	/// Timer holder for the maximum lifetime of the egg as defined CARRIER_EGG_MAXIMUM_LIFE
 	var/life_timer = null
+	huggers_can_spawn = FALSE
 
 /obj/effect/alien/egg/carrier_egg/Initialize(mapload, hivenumber, planter = null)
 	. = ..()
@@ -437,6 +442,9 @@ SPECIAL EGG USED WHEN WEEDS LOST
 */
 
 #define ORPHAN_EGG_MAXIMUM_LIFE 6 MINUTES // Should be longer than HIVECORE_COOLDOWN
+
+/obj/effect/alien/egg/carrier_egg/orphan
+	huggers_can_spawn = TRUE
 
 /obj/effect/alien/egg/carrier_egg/orphan/Initialize(mapload, mob/builder, datum/faction/faction_to_set, weed_strength_required)
 	src.weed_strength_required = weed_strength_required

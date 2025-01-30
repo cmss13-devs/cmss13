@@ -290,7 +290,7 @@
 	vision_flags = SEE_MOBS
 	darkness_view = 7
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 
 /obj/item/storage/fancy/blackgoo

@@ -854,4 +854,5 @@
 
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()
+
 	MD.iff_signal = GLOB.faction_datums[FACTION_TWE]

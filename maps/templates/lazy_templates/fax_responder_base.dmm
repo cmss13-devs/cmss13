@@ -1802,9 +1802,7 @@
 	pixel_y = -4;
 	pixel_x = 17
 	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
+/mob/living/simple_animal/mouse/rat/brown,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4540,9 +4538,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Wt" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
+/mob/living/simple_animal/mouse/rat/brown,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)

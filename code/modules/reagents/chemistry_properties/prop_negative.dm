@@ -344,17 +344,21 @@
 /datum/chem_property/negative/intravenous
 	name = PROPERTY_INTRAVENOUS
 	code = "INV"
-	description = "Due to chemical composition, this chemical can only be administered intravenously."
+	description = "Due to chemical composition, this chemical can only be administered intravenously. The side effect is improving absorption on the chemical, although this is less effective than natural absorption"
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
+
+/datum/chem_property/negative/intravenous/pre_process(mob/living/M)
+	return list(REAGENT_BOOST = level)
 
 /datum/chem_property/negative/intravenous/reset_reagent()
 	holder.flags = initial(holder.flags)
+	holder.custom_metabolism = initial(holder.custom_metabolism)
 	return ..()
 
 /datum/chem_property/negative/intravenous/update_reagent()
 	holder.flags |= REAGENT_NOT_INGESTIBLE
+	holder.custom_metabolism = holder.custom_metabolism * (level)
 	return ..()
 
 /datum/chem_property/negative/nephrotoxic

@@ -85,6 +85,15 @@
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 1
 
+/datum/research_upgrades/machinery/autoharvest
+	name = "Auto-Harvest Botany Upgrade"
+	desc = "Research upgrade for hydroponics system, technology on this disk automatically shakes the plant once it is ready to be harvested."
+	behavior = RESEARCH_UPGRADE_ITEM
+	value_upgrade = 500
+	item_reference = /obj/item/research_upgrades/autoharvest
+	upgrade_type = ITEM_MACHINERY_UPGRADE
+	clearance_req = 3
+
 /datum/research_upgrades/item
 	name = "Items"
 	behavior = RESEARCH_UPGRADE_CATEGORY

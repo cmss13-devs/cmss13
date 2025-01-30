@@ -38,7 +38,6 @@
 	var/lastproduce = 0 // Last time tray was harvested
 	var/lastcycle = 0   // Cycle timing/tracking var.
 	var/cycledelay = 150    // Delay per cycle.
-	var/closed_system   // If set, the tray will attempt to take atmos from a pipe.
 	var/force_update    // Set this to bypass the cycle time check.
 	var/obj/temp_chem_holder   // Something to hold reagents during process_reagents()
 
@@ -52,6 +51,8 @@
 	var/production_time_counter = 0
 	///used in darkacidic reaction_hydro tray to add chems to plant
 	var/chem_add_counter = 0
+	///if the plant is going to harvest itself once its ready
+	var/autoharvest = FALSE
 
 
 
@@ -91,6 +92,13 @@
 	else if(world.time < (lastcycle + cycledelay))
 		return
 	lastcycle = world.time
+
+	if(harvest && autoharvest)
+	harvest(null, TRUE) //this is ok
+	animate(src, transform = matrix(rand(1.-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
+	animate(transform = matrix(rand(-0.5,0.5), rand(1.-1), MATRIX_TRANSLATE), time = 0.5)
+	animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
+	visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products"))
 
 	// Mutation level drops each main tick.
 	mutation_level -= rand(2,4)
@@ -218,17 +226,13 @@
 	update_icon()
 
 //Harvests the product of a plant.
-/obj/structure/machinery/portable_atmospherics/hydroponics/proc/harvest(mob/user)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/harvest(mob/user, isauto = FALSE)
 
 	//Harvest the product of the plant,
-	if(!seed || !harvest || !user)
+	if(!seed || !harvest || (!user && !isauto))
 		return
 
-	if(closed_system)
-		to_chat(user, "You can't harvest from the plant while the lid is shut.")
-		return
-
-	seed.harvest(user,yield_mod)
+	seed.harvest(user,yield_mod, FALSE, isauto, src)
 
 	// Reset values.
 	harvest = 0
@@ -257,10 +261,6 @@
 //Clears out a dead plant.
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/remove_dead(mob/user)
 	if(!user || !dead) return
-
-	if(closed_system)
-		to_chat(user, SPAN_WARNING("You can't remove the dead plant while the lid is shut."))
-		return
 
 	seed = null
 	dead = 0
@@ -304,9 +304,6 @@
 		else
 			overlays += "[seed.plant_icon]-grow[seed.growth_stages]"
 
-	//Draw the cover.
-	if(closed_system)
-		overlays += "hydrocover"
 
 	//Updated the various alert icons.
 	if(draw_warnings)
@@ -557,6 +554,14 @@
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
+	else if(istype(O, /obj/item/research_upgrades/autoharvest))
+		if(!autoharvest)
+			to_chat(user, SPAN_NOTICE("You insert [O] into [src]."))
+			animate(src, transform = matrix(-1, 0.5, MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
+			animate(transform = matrix(0.5, -1, MATRIX_TRANSLATE), time = 0.5)
+			animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
+			autoharvest = TRUE
+			qdel(O)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/get_examine_text(mob/user)
 	. = ..()

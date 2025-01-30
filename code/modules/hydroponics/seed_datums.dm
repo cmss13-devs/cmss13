@@ -558,19 +558,19 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	return (P ? P : 0)
 
 //Place the plant products at the feet of the user.
-/datum/seed/proc/harvest(mob/user, yield_mod, harvest_sample)
+/datum/seed/proc/harvest(mob/user, yield_mod, harvest_sample, autoharvest, obj/structure/autoharvesting_tray)
 
-	if(!user)
+	if(!user && !autoharvest)
 		return
 
 	var/got_product
 	if(LAZYLEN(products) && yield > 0)
 		got_product = 1
-
 	if(!got_product && !harvest_sample)
-		to_chat(user, SPAN_DANGER("You fail to harvest anything useful."))
+		if(!autoharvest)
+			to_chat(user, SPAN_DANGER("You fail to harvest anything useful."))
+		return
 	else
-		to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
 
 		//This may be a new line. Update the global if it is.
 		if(name == "new line" || !(name in GLOB.seed_types))
@@ -595,7 +595,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		for(var/i = 0;i<total_yield;i++)
 			var/product_type = pick(products)
-			var/obj/item/product = new product_type(get_turf(user))
+			var/obj/item/product = new product_type(get_turf(autoharvest ? autoharvesting_tray : user))
 			if(mysterious)
 				product.name += "?"
 				product.desc += " On second thought, something about this one looks strange."
@@ -614,6 +614,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 			else if(istype(product,/obj/item/grown))
 				var/obj/item/grown/current_product = product
 				current_product.plantname = name
+		if(!autoharvest)
+			to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
 
 
 // When the seed in this machine mutates/is modified, the tray seed value

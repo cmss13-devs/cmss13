@@ -83,7 +83,7 @@
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
 	code = "REP"
-	description = "Repairs cybernetic organs by the use of REDACTED property of REDACTED element."
+	description = "Repairs inorganic materials such as barricades and synthetics by the use of REDACTED property of REDACTED element."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1
@@ -110,6 +110,15 @@
 		if(!(T.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			continue
 		T.heal_damage(potency * volume,potency * volume, robo_repair = TRUE)
+
+/datum/chem_property/positive/repairing/reaction_obj(obj/sprayed_object, volume, potency) //heal cades and stuff
+	. = ..()
+	if(istype(sprayed_object, /obj/structure/barricade))
+		var/obj/structure/barricade/healing_cade = sprayed_object
+		healing_cade.update_health(-potency*POTENCY_MULTIPLIER_HIGH, TRUE)
+	if(istype(sprayed_object, /obj/structure/machinery/defenses))
+		var/obj/structure/machinery/defenses/healing_defenses = sprayed_object
+		healing_defenses.update_health(-potency*POTENCY_MULTIPLIER_HIGH)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC

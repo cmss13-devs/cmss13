@@ -118,7 +118,7 @@
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
 	if(status == EGG_BURST || status == EGG_DESTROYED)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."), \
+		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."),
 		SPAN_XENONOTICE("We clear the hatched egg."))
 		playsound(src.loc, "alien_resin_break", 25)
 		qdel(src)
@@ -264,7 +264,7 @@
 		switch(status)
 			if(EGG_BURST)
 				if(user)
-					visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."), \
+					visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."),
 						SPAN_XENONOTICE("We place the child back in to [src]."))
 					user.temp_drop_inv_item(F)
 				else

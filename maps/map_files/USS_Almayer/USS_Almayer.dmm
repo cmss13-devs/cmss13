@@ -6720,6 +6720,9 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
 "arf" = (
@@ -6769,6 +6772,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "arh" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orangecorner/north,
 /area/almayer/engineering/upper_engineering)
 "ari" = (
@@ -6783,6 +6787,16 @@
 /obj/item/circuitboard/apc{
 	pixel_y = 10;
 	pixel_x = 7
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/upper_engineering)
+"arj" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/orange/northwest,
+/area/almayer/engineering/upper_engineering)
+"ark" = (
+/obj/structure/pipes/vents/pump/on{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
@@ -7114,6 +7128,9 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/engineering/upper_engineering)
 "att" = (
@@ -7241,6 +7258,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "auy" = (
@@ -7266,6 +7284,7 @@
 /area/almayer/engineering/upper_engineering)
 "auO" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/upper_engineering)
 "auQ" = (
@@ -7530,6 +7549,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
 	id = "engie_cbrn"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering)
 "awC" = (
@@ -116750,7 +116770,7 @@ jao
 qhT
 wDM
 arz
-alR
+ark
 arc
 wDM
 axA
@@ -117159,7 +117179,7 @@ arg
 ats
 auO
 awB
-amw
+arj
 arh
 auu
 aoT

@@ -771,9 +771,7 @@
 /obj/structure/sign/safety/fire_haz{
 	pixel_y = -25
 	},
-/turf/open/floor/almayer/cargo_arrow{
-	dir = 8
-	},
+/turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/hallways/lower/port_fore_hallway)
 "abZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -9345,9 +9343,7 @@
 	pixel_y = 0;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/cargo_arrow{
-	dir = 8
-	},
+/turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/living/intel)
 "aHR" = (
 /obj/effect/decal/warning_stripes{
@@ -47354,9 +47350,7 @@
 	id = "MTline";
 	pixel_y = 7
 	},
-/turf/open/floor/almayer/cargo_arrow{
-	dir = 1
-	},
+/turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/hallways/lower/port_fore_hallway)
 "otu" = (
 /turf/closed/wall/almayer/research/containment/wall/connect_w,

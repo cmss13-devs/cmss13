@@ -88,7 +88,7 @@
 				if(iff_additional_fire_delay)
 					var/obj/item/weapon/gun/gun = firing_weapon
 					if(istype(gun))
-						LAZYSET(user.fire_delay_next_fire, gun, world.time + iff_additional_fire_delay)
+						gun.last_fired = (world.time + iff_additional_fire_delay)
 				return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 
 			return //if we have a target we *can* hit and find it before any IFF targets we want to fire

@@ -950,7 +950,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/alt_iff_scope/Attach(obj/item/weapon/gun/attaching_gun)
 	. = ..()
 	if(!GetComponent(attaching_gun, /datum/component/iff_fire_prevention))
-		attaching_gun.AddComponent(/datum/component/iff_fire_prevention)
+		attaching_gun.AddComponent(/datum/component/iff_fire_prevention, 5)
 	SEND_SIGNAL(attaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
 	if((GUN_FIREMODE_AUTOMATIC in attaching_gun.gun_firemode_list))
 		had_auto = TRUE

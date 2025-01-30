@@ -296,7 +296,7 @@ CULT
 		to_chat(H, SPAN_WARNING("You have decided not to obtain your equipment."))
 		return
 
-	H.visible_message(SPAN_DANGER("[H] gets onto their knees and begins praying."), \
+	H.visible_message(SPAN_DANGER("[H] gets onto their knees and begins praying."),
 	SPAN_WARNING("You get onto your knees to pray."))
 
 	if(!do_after(H, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

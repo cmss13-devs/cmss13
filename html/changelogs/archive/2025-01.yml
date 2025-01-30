@@ -469,3 +469,56 @@
       fax department, or to any individual fax in that department.
   - maptweak: Adds in the Fax Responder listening intercomms that I apparently deleted
       elsewhere.
+2025-01-27:
+  BOBAMAx:
+  - rscadd: Roundstart Xenomorph players will now burst out of map-specific bodies
+      instead of generic ones
+2025-01-28:
+  BlackCrystalic:
+  - bugfix: You can't delete queen via gibber now
+  - code_imp: Moved vars as debrised, hull, burnable, burnt, breakable, broken to
+      turf_flags as TURF_DEBRISED, TURF_HULL, TURF_BURNABLE, TURF_BURNT, TURF_BREAKABLE,
+      TURF_BROKEN
+  Drathek:
+  - balance: Showers and drinks now do not apply as extreme of temperature differences
+  - balance: Cryo effects (like IB cure) now requires 210K (-63.15C) instead of 0C
+      (273.15K)
+  - balance: Heat damage 1 threshold raised to 100C (373.15K) from 87C (360.15K) and
+      heat damage 3 threshold lowered to 526C (800K) from 726C (1000K)
+  - bugfix: Fixed incorrect temperature change in hyperthermic properties, when exiting
+      cryopods, and with shivering symptom
+  - code_imp: Reagents can now specify adj_temp and target_temp to affect body temperature
+  Git-Nivrak:
+  - bugfix: Fixes wounds updating on dead xenos
+  - bugfix: Fixed xeno gib remains not appearing
+  - qol: Stacks inserted into storages will now try to fill other stacks
+  MeH0y:
+  - rscadd: Adds heavy clan armor to the pred vendors
+  Nomoresolvalou:
+  - bugfix: yautja mask attachment now saves to preferences correctly
+  Red-byte3D:
+  - bugfix: You can no longer shock dead people with the electropack and move them
+  Steelpoint:
+  - rscadd: Ports a set of UPP, CANC and USCM cargo containers from the PvE server.
+  detectivegoogle:
+  - rscadd: added some new synthvivor presets and updated older ones.
+  ihatethisengine:
+  - bugfix: fixes jima name stacking
+  nauticall:
+  - rscadd: Changed most structure lights in the game to be either an incandascent
+      warm white/yellow, or a cold blue, depending on their bulb color.
+  private-tristan:
+  - rscadd: When 2 charger crushers collide, they now cause a tremor, knocking down
+      and slowing nearby enemies
+  - balance: reduced charger collision weaken (to the charger crushers) by 1 second
+  realforest2001:
+  - bugfix: Synthetic Reset Key description now only says you need engineering knowledge
+      when you actually do.
+2025-01-29:
+  Weuyn:
+  - balance: Research stim healing properties made more expensive, epinephrine-like
+      and painkilling properties made cheaper.
+2025-01-30:
+  Paperybirch:
+  - rscadd: Added reagent/ethanol/ethanol and defined its chem class as CHEM_CLASS_BASIC
+  - bugfix: Changed oxycodone's chem class from uncommon to CHEM_CLASS_COMMON

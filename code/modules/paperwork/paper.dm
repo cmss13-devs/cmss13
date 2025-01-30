@@ -150,8 +150,8 @@
 
 	if(user.zone_selected == "eyes")
 		if(!isyautja(M) && !isxeno(M))
-			user.visible_message(SPAN_NOTICE("You show the paper to [M]."))
-			SPAN_NOTICE("[user] holds up a paper and shows it to [M].")
+			user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
+			SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
 			examine(M)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping

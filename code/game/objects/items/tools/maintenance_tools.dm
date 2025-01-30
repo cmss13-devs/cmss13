@@ -439,6 +439,11 @@
 /obj/item/tool/weldingtool/empty
 	starting_fuel = FALSE
 
+/obj/item/tool/weldingtool/screen
+	name = "shielded blowtorch"
+	desc = "A blowtorch, this one has a welding screen installed to prevent eye damage."
+	has_welding_screen = TRUE
+
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"
 	max_fuel = 60

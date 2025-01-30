@@ -518,3 +518,7 @@
   Weuyn:
   - balance: Research stim healing properties made more expensive, epinephrine-like
       and painkilling properties made cheaper.
+2025-01-30:
+  Paperybirch:
+  - rscadd: Added reagent/ethanol/ethanol and defined its chem class as CHEM_CLASS_BASIC
+  - bugfix: Changed oxycodone's chem class from uncommon to CHEM_CLASS_COMMON

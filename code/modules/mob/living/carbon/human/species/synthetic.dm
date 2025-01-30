@@ -86,7 +86,7 @@
 	slowdown = 0.2
 	total_health = 200 //But more durable
 
-	default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	default_lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 	knock_down_reduction = 2.5
 	stun_reduction = 2.5

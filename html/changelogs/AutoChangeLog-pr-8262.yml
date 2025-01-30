@@ -1,0 +1,6 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscadd: "Three Fourths Night Vision option for ghosts and xenos"
+  - imageadd: "Icon for xenos 3/4ths NV"
+  - code_imp: "renamed LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE to LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE"

@@ -1,81 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/whiteblue/east,
-/area/lv624/lazarus/corporate_dome)
-"ab" = (
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi,
 /turf/open/floor/plating/platingdmg2,
 /area/lv624/lazarus/corporate_dome)
-"ac" = (
+"ab" = (
 /obj/item/ammo_casing/cartridge,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"ad" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/showcase{
-	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Display synthetic"
-	},
-/obj/item/clothing/under/colonist{
-	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
-	anchored = 1
-	},
-/obj/item/clothing/shoes/stompers{
-	icon = 'icons/mob/humans/onmob/clothing/feet.dmi';
-	anchored = 1
-	},
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/corporate_dome)
-"ae" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/showcase{
-	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Display synthetic"
-	},
-/obj/item/clothing/under/liaison_suit/blazer{
-	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
-	anchored = 1
-	},
-/obj/item/clothing/head/manager{
-	icon = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi';
-	anchored = 1
-	},
-/obj/item/clothing/shoes/laceup{
-	anchored = 1;
-	icon = 'icons/mob/humans/onmob/clothing/feet.dmi'
-	},
-/turf/open/floor/whiteblue,
-/area/lv624/lazarus/corporate_dome)
-"af" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/whiteyellowcorner,
-/area/lv624/lazarus/corporate_dome)
-"ag" = (
+"ac" = (
 /obj/structure/largecrate/random/case/small{
 	pixel_y = -3;
 	pixel_x = 1
@@ -86,73 +18,7 @@
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
-"ah" = (
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"ai" = (
-/obj/structure/barricade/metal{
-	dir = 4;
-	health = 200
-	},
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"aj" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/showcase{
-	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Display synthetic"
-	},
-/obj/item/clothing/under/marine/veteran/pmc{
-	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
-	anchored = 1
-	},
-/obj/item/clothing/mask/gas/pmc{
-	icon = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi';
-	anchored = 1
-	},
-/turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
-"ak" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/showcase{
-	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Display synthetic"
-	},
-/obj/item/clothing/under/marine/veteran/pmc/corporate{
-	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
-	anchored = 1
-	},
-/turf/open/floor/whiteblue/northeast,
-/area/lv624/lazarus/corporate_dome)
-"al" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"am" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/dark,
-/area/lv624/lazarus/corporate_dome)
-"an" = (
+"ad" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -163,63 +29,21 @@
 	},
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
-"ao" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno,
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"ap" = (
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/whiteyellowcorner/east,
-/area/lv624/lazarus/corporate_dome)
-"aq" = (
+"ae" = (
 /obj/structure/largecrate/random/mini/med{
 	pixel_x = -8;
 	pixel_y = 7
 	},
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/corporate_dome)
-"ar" = (
+"af" = (
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = 7;
 	pixel_y = 3
 	},
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
-"as" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/largecrate/random/mini/med{
-	pixel_x = 9;
-	pixel_y = 1
-	},
-/obj/structure/largecrate/random/mini/med{
-	pixel_y = -4;
-	pixel_x = -9
-	},
-/turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
-"at" = (
-/obj/structure/machinery/vending/cigarette/wy,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"au" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 16
-	},
-/obj/structure/largecrate/random/mini/ammo{
-	pixel_x = -6
-	},
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/whiteblue/northeast,
-/area/lv624/lazarus/corporate_dome)
-"av" = (
+"ag" = (
 /obj/item/ammo_casing/cartridge,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -367,6 +191,26 @@
 "ha" = (
 /turf/open/floor/whiteyellow/southwest,
 /area/lv624/lazarus/corporate_dome)
+"hc" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/marine/veteran/pmc/corporate{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
 "he" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -408,6 +252,13 @@
 /obj/item/shard,
 /turf/open/floor/whiteyellow/west,
 /area/lv624/lazarus/corporate_dome)
+"kl" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
 "kU" = (
 /obj/structure/machinery/door_control{
 	id = "garage_lv";
@@ -418,6 +269,20 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/asteroidwarning,
 /area/lv624/lazarus/landing_zones/lz2)
+"ln" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_y = -4;
+	pixel_x = -9
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
 "lG" = (
 /obj/item/storage/firstaid/adv/empty,
 /obj/structure/transmitter/colony_net{
@@ -433,6 +298,11 @@
 /obj/item/shard,
 /turf/open/floor/plating/platingdmg1,
 /area/lv624/lazarus/corporate_dome)
+"mg" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
 "mi" = (
 /turf/open/floor/plating/platingdmg1,
 /area/lv624/lazarus/corporate_dome)
@@ -444,6 +314,11 @@
 /area/lv624/lazarus/corporate_dome)
 "ms" = (
 /turf/open/floor/whiteblue,
+/area/lv624/lazarus/corporate_dome)
+"mw" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "mK" = (
 /obj/effect/spawner/gibspawner/human,
@@ -466,6 +341,36 @@
 "oq" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"pg" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/liaison_suit/blazer{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/head/manager{
+	icon = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/shoes/laceup{
+	anchored = 1;
+	icon = 'icons/mob/humans/onmob/clothing/feet.dmi'
+	},
+/turf/open/floor/whiteblue,
 /area/lv624/lazarus/corporate_dome)
 "pR" = (
 /obj/structure/filingcabinet,
@@ -525,6 +430,10 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl,
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
+"sm" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
 "sH" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/stack/rods,
@@ -562,6 +471,21 @@
 /obj/structure/closet/bodybag,
 /obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"xk" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -6
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
 "xG" = (
 /obj/structure/machinery/photocopier,
@@ -601,6 +525,11 @@
 	pixel_y = 7
 	},
 /turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"zx" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic,
+/turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "zz" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -871,9 +800,37 @@
 /obj/structure/closet/toolcloset,
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
+"Pr" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/whiteyellowcorner/east,
+/area/lv624/lazarus/corporate_dome)
 "Qi" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"Rn" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/marine/veteran/pmc{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/mask/gas/pmc{
+	icon = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi';
+	anchored = 1
+	},
+/turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
 "RF" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -930,9 +887,48 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/whitebluecorner/east,
 /area/lv624/lazarus/corporate_dome)
+"Wx" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/corporate_dome)
+"Xc" = (
+/obj/structure/barricade/metal{
+	dir = 4;
+	health = 200
+	},
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
 "Xf" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/corporate_dome)
+"Xp" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/colonist{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/shoes/stompers{
+	icon = 'icons/mob/humans/onmob/clothing/feet.dmi';
+	anchored = 1
+	},
+/turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
 "Xt" = (
 /turf/template_noop,
@@ -973,6 +969,10 @@
 "ZO" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/stack/sheet/wood,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"ZT" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 
@@ -1092,7 +1092,7 @@ Xt
 XG
 ny
 Bh
-am
+mw
 Bh
 Bh
 Bh
@@ -1100,7 +1100,7 @@ Bh
 Bh
 qH
 Uo
-ab
+aa
 LZ
 mi
 Xt
@@ -1114,12 +1114,12 @@ Xt
 XG
 ZG
 cB
-am
+mw
 wW
 qn
 OH
 Bh
-ag
+ac
 XG
 Yv
 Aj
@@ -1155,16 +1155,16 @@ Xt
 (9,1,1) = {"
 YN
 XG
-as
-aq
+ln
+ae
 GV
 cn
 XG
-aj
+Rn
 Fl
 cA
 iF
-ad
+Xp
 XG
 Ml
 GV
@@ -1180,15 +1180,15 @@ Lh
 hf
 ev
 cA
-ac
+ab
 Jq
 cA
 cA
-ac
+ab
 cA
 cA
 aQ
-ac
+ab
 Hn
 Ln
 aQ
@@ -1199,15 +1199,15 @@ Ii
 (11,1,1) = {"
 YN
 mp
-at
+sm
 RF
-ac
+ab
 KG
 cA
 cA
 cA
 Sb
-ac
+ab
 cA
 cA
 cA
@@ -1219,21 +1219,21 @@ dI
 mK
 "}
 (12,1,1) = {"
-av
+ag
 XG
-au
-ar
+xk
+af
 fH
-an
+ad
 XG
-ak
+hc
 Dn
 cA
 cA
-ae
+pg
 XG
 Ye
-aa
+kl
 DU
 XG
 Ii
@@ -1273,7 +1273,7 @@ bm
 FZ
 gx
 cA
-ac
+ab
 cn
 XG
 Gi
@@ -1291,11 +1291,11 @@ XG
 XG
 HK
 Fl
-al
+ZT
 ms
 IM
-ac
-ac
+ab
+ab
 cA
 qJ
 SV
@@ -1383,7 +1383,7 @@ Df
 ha
 zz
 AT
-ah
+mg
 cA
 bA
 vW
@@ -1399,8 +1399,8 @@ Xt
 Xt
 XG
 zm
-ap
-ao
+Pr
+zx
 Dp
 JL
 oq
@@ -1422,13 +1422,13 @@ Xt
 XG
 XG
 lG
-ap
+Pr
 cA
 ZO
 vf
 bE
-ai
-af
+Xc
+Wx
 Ez
 SO
 cR

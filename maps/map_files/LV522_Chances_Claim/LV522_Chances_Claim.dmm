@@ -605,13 +605,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
-"aco" = (
-/obj/item/storage/firstaid/adv/empty,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/floor/prison/blue/north,
-/area/lv522/indoors/a_block/hallway)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -620,14 +613,6 @@
 /obj/effect/acid_hole,
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
-"acr" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/security/glass)
 "acv" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/sand_white/layer0,
@@ -14599,6 +14584,13 @@
 /obj/structure/closet/radiation,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
+"hXW" = (
+/obj/item/storage/firstaid/adv/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/floor/prison/blue/north,
+/area/lv522/indoors/a_block/hallway)
 "hYf" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks)
@@ -22610,6 +22602,14 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
+"mhn" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/security/glass)
 "mhs" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/cleanable/dirt,
@@ -64935,7 +64935,7 @@ jDO
 nRK
 sjy
 sjy
-acr
+mhn
 hIz
 kTm
 oHR
@@ -76282,7 +76282,7 @@ uAv
 tDS
 gdO
 swY
-aco
+hXW
 uuH
 pej
 pqU

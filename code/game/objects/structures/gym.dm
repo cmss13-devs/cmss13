@@ -54,7 +54,7 @@
 	icon_state_inuse = "fitnesslifter2"
 	inuse_stun_time = 5.5 SECONDS
 
-/obj/structure/weightmachine/stacklifter/AnimateMachine(mob/living/user)
+/obj/structure/weightmachine/stacklifter/animate_machine(mob/living/user)
 	for(var/lift in 1 to 6)
 		if(user.loc != loc)
 			break

@@ -385,6 +385,13 @@
 		/obj/item/tool/lighter/zippo/executive = 50,
 	)
 
+/obj/structure/machinery/vending/cigarette/wy/Initialize(mapload, ...)
+	var/exec_number = rand(0, 2)
+	products += list(
+		/obj/item/storage/fancy/cigarettes/blackpack = exec_number,
+	)
+	return ..()
+
 /obj/structure/machinery/vending/cigarette/wy/free
 	prices = list(
 		/obj/item/storage/fancy/cigarettes/wypacket = 0,

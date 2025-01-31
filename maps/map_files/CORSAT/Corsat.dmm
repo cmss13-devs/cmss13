@@ -1110,7 +1110,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/cargo)
 "aeu" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/residential/lounge)
 "aev" = (
@@ -7640,7 +7640,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/gamma/administration)
 "aDP" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hangar/arrivals)
 "aDQ" = (
@@ -9749,7 +9749,7 @@
 /turf/open/floor/corsat/arrow_north,
 /area/corsat/gamma/cargo)
 "aLK" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/corsat/red/northeast,
 /area/corsat/omega/security)
 "aLL" = (
@@ -10109,7 +10109,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/bluegrey/north,
 /area/corsat/gamma/hangar/flightcontrol)
 "aNb" = (
@@ -13552,7 +13552,7 @@
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "aZu" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/red/southeast,
 /area/corsat/sigma/hangar/security)
 "aZv" = (
@@ -17613,7 +17613,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/hangar)
 "boL" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/browncorner/east,
 /area/corsat/gamma/cargo)
 "boM" = (
@@ -18399,7 +18399,7 @@
 /turf/open/floor/corsat/purplewhitecorner/west,
 /area/corsat/omega/complex)
 "bsL" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/bar)
 "bsM" = (
@@ -18833,7 +18833,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/south/security)
 "bux" = (
@@ -18841,7 +18841,7 @@
 /turf/open/floor/corsat/officesquares,
 /area/corsat/sigma/south/offices)
 "buy" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/corsat/officesquares,
 /area/corsat/sigma/south/offices)
 "buz" = (
@@ -20235,7 +20235,7 @@
 /area/corsat/sigma/south/engineering)
 "bzL" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/engineering)
 "bzM" = (
@@ -20966,7 +20966,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/security)
 "bCB" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -23235,7 +23235,7 @@
 /turf/open/floor/corsat/yellow/southwest,
 /area/corsat/gamma/engineering)
 "bNX" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/yellow/southeast,
 /area/corsat/gamma/engineering)
 "bNY" = (
@@ -23309,7 +23309,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/gamma/biodome/virology)
 "bOl" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/corsat/brown/west,
 /area/corsat/sigma/cargo)
 "bOm" = (
@@ -33213,7 +33213,7 @@
 /turf/open/mars/mars_dirt_12,
 /area/corsat/sigma/biodome)
 "jBC" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/wood,
 /area/corsat/theta/biodome/complex)
 "jCO" = (
@@ -35334,7 +35334,7 @@
 /turf/open/floor/corsat/purplewhitecorner,
 /area/corsat/sigma/south/complex)
 "lUM" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/red/northwest,
 /area/corsat/omega/airlocknorth/id)
 "lUY" = (
@@ -38378,7 +38378,7 @@
 /turf/open/floor/corsat/whitetan/west,
 /area/corsat/gamma/residential/west)
 "pgf" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/sigma/dorms)
 "pgn" = (
@@ -42911,7 +42911,7 @@
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "tWM" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/bluegrey/northwest,
 /area/corsat/omega/offices)
 "tXa" = (

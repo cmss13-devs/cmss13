@@ -792,11 +792,11 @@
 			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b>. Recent discoveries have made us believe that one of the missing pieces has <b>[isNeutralProperty(hint[3]) ? "neutral" : "negative"]</b> effects.<BR>\n"
 			txt += "This will be the last transmission before the scheduled communications blackout, testing has been successful so far.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
-		if("ciph_hint_complete") //todo, rewrite this, same for ^^^
+		if("ciph_hint_complete")
 			icon_state = "paper_wy_words"
 			name = "Research Ciphering Breakthrough"
 			txt += "Weyland-Yutani Biological Weapons Division</H2></center>"
-			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[2]]</b> and <b>[hint[3]]</b>. Recent discovery made us believe the one of the missing pieces has positive effects, as well as a <b>XX-121 Queen sample</b>.<BR>\n"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b> and <b>[hint[2]]</b>. Recent discovery made us believe the one of the missing pieces has positive effects, as well as <b>[hint[3]]</b>.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("leg_hint")
 			icon_state = "paper_wy_words"

@@ -290,7 +290,7 @@
 /// how many properties to combine into legendary
 #define LEGENDARY_COMBINE_PROPERTIES 3
 /// how many properties to combine into ciphering from encrypted.
-#define CIPHERING_COMBINE_PROPERTIES LEGENDARY_COMBINE_PROPERTIES + 1
+#define CIPHERING_COMBINE_PROPERTIES LEGENDARY_COMBINE_PROPERTIES
 
 //Property cost multipliers for the chemical simulator
 #define PROPERTY_COST_MAX 8

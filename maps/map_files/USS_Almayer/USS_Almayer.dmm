@@ -50027,7 +50027,6 @@
 /obj/item/tool/pen{
 	pixel_y = 8
 	},
-/obj/item/paper/research_notes/ciph_hint,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "qJf" = (

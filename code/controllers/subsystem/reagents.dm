@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(reagents)
 					recipe += pick(GLOB.chemical_properties_list[pick("neutral", "positive", "negative")])
 				if(length(recipe) == LEGENDARY_COMBINE_PROPERTIES)
 					if(prop.name == PROPERTY_CIPHERING)
-						recipe += PROPERTY_ENCRYPTED
+						recipe[3] = PROPERTY_ENCRYPTED
 					break
 					recipe = list()//reset the list if its invalid
 			if(length(recipe) >= 3)

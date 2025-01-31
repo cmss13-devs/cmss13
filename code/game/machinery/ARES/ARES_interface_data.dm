@@ -10,13 +10,15 @@
 	data["apollo_access_log"] = apollo_login_list
 	data["apollo_log"] = apollo_log
 
-
 	data["distresstime"] = ares_distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["quarterstime"] = ares_quarters_cooldown
 	data["mission_failed"] = SSticker.mode.is_in_endgame
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
 	data["nuke_available"] = nuke_available
+
+	data["sentry_setting"] = link.faction_label
+	data["faction_options"] = link.faction_options
 
 
 	var/list/logged_announcements = list()

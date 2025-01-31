@@ -462,6 +462,9 @@
 	name = "working joe late join"
 	job = JOB_WORKING_JOE
 
+/obj/effect/landmark/late_join/aist
+	name = "AIST late join"
+	job = JOB_AI_TECH
 /obj/effect/landmark/late_join/dzho_automaton
 	name = "dzho automaton late join"
 	job = JOB_UPP_JOE

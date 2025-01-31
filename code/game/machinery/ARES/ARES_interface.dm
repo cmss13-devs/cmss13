@@ -94,6 +94,10 @@
 	data["local_active_convo"] = active_convo
 	data["local_active_ref"] = active_ref
 
+	data["sentry_setting"] = link.faction_label
+	data["sentry_setting"] = link.faction_label
+	data["faction_options"] = link.faction_options
+
 	return data
 
 /obj/structure/machinery/computer/ares_console/ui_status(mob/user, datum/ui_state/state)
@@ -450,6 +454,24 @@
 			COOLDOWN_START(datacore, ares_nuclear_cooldown, COOLDOWN_COMM_DESTRUCT)
 			return TRUE
 
+		if("bioscan")
+			if(!SSticker.mode)
+				return FALSE //Not a game mode?
+			if(world.time < FORCE_SCAN_LOCK)
+				to_chat(operator, SPAN_WARNING("Bio sensors are not yet ready to initiate a scan!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!(COOLDOWN_FINISHED(datacore, ares_bioscan_cooldown)) || (world.time < (GLOB.last_human_bioscan + COOLDOWN_FORCE_SCAN)))
+				to_chat(operator, SPAN_WARNING("It is too soon since the last scan, wait for the sensor array to reset!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+
+			GLOB.bioscan_data.ares_bioscan(FALSE, 2)
+			COOLDOWN_START(datacore, ares_bioscan_cooldown, COOLDOWN_FORCE_SCAN)
+			playsound(src, 'sound/machines/terminal_processing.ogg', 15, 1)
+			message_admins("BIOSCAN: [key_name(operator)] triggered a Marine bioscan via ARES AIST.")
+			return TRUE
+
 		if("trigger_vent")
 			playsound = FALSE
 			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
@@ -474,6 +496,21 @@
 				to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(datacore, aicore_lockdown)] seconds!"))
 				return FALSE
 			aicore_lockdown(user)
+			return TRUE
+
+		if("update_sentries")
+			playsound = FALSE
+			var/new_iff = params["chosen_iff"]
+			if(!new_iff)
+				to_chat(user, SPAN_WARNING("ERROR: Unknown setting."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(new_iff == link.faction_label)
+				return FALSE
+			link.change_iff(new_iff)
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			message_admins("ARES: [key_name(user)] updated ARES Sentry IFF to [new_iff].")
+			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
 			return TRUE
 
 	if(playsound)

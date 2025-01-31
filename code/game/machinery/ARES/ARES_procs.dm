@@ -40,9 +40,23 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/waiting_ids = list()
 	var/list/active_ids = list()
 
+	///Sentry faction stuff
+	var/faction_label = FACTION_MARINE
+	var/list/faction_group = FACTION_LIST_ARES_MARINE
+	var/list/faction_options = list(FACTION_MARINE, FACTION_WY, "USCM-WY", FACTION_ARES)
+	var/list/core_sentries = list()
+
+	var/code_apollo = 1
+	var/code_interface = 1
+	var/code_debug = 1
+
 /datum/ares_link/New()
 	admin_interface = new
 	datacore = GLOB.ares_datacore
+
+	code_apollo = "[pick(GLOB.alphabet_uppercase)][rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
+	code_interface = "[pick(GLOB.alphabet_uppercase)][rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
+	code_debug = "X[rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
 
 /datum/ares_link/Destroy()
 	qdel(admin_interface)
@@ -54,6 +68,29 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		alert.delink()
 	..()
 
+
+/datum/ares_link/proc/change_iff(selection)
+	faction_label = selection
+	var/list/new_iff = list()
+	var/setting
+	switch(selection)
+		if("USCM-WY")
+			setting = "all USCM and Corporate personnel!"
+			new_iff = FACTION_LIST_ARES_ALL
+		if(FACTION_WY)
+			setting = "Corporate personnel only!"
+			new_iff = FACTION_LIST_ARES_WY
+		if(FACTION_ARES)
+			setting = "authenticated Core Assets!"
+			new_iff = FACTION_LIST_ARES_ALONE
+		else
+			setting = "USCM personnel only!"
+			faction_label = FACTION_MARINE
+			new_iff = FACTION_LIST_ARES_MARINE
+	faction_group = new_iff
+	ares_apollo_talk("Security IFF systems updated to [setting]")
+	for(var/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/sentry in core_sentries)
+		sentry.sync_iff()
 
 /* BELOW ARE IN AdminAres.dm
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
@@ -97,6 +134,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)
 	COOLDOWN_DECLARE(ares_quarters_cooldown)
 	COOLDOWN_DECLARE(aicore_lockdown)
+	COOLDOWN_DECLARE(ares_bioscan_cooldown)
 
 // ------ ARES Logging Procs ------ //
 /proc/ares_is_active()

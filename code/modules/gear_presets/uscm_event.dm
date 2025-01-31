@@ -455,3 +455,79 @@
 
 
 
+/datum/equipment_preset/uscm_event/ai_tech
+	name = "AI Technician (USCM)"
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_ARES_MARINE
+	assignment = JOB_AI_TECH
+	rank = JOB_AI_TECH
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_3)
+	role_comm_title = "AIST"
+	skills = /datum/skills/CE
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	idtype = /obj/item/card/id/silver
+	access = list(
+		ACCESS_MARINE_SENIOR,
+		ACCESS_MARINE_CE,
+		ACCESS_MARINE_ENGINEERING,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_MAINT,
+		ACCESS_MARINE_OT,
+		ACCESS_MARINE_SYNTH,
+		ACCESS_MARINE_AI,
+		ACCESS_ARES_DEBUG,
+	)
+
+/datum/equipment_preset/uscm_event/ai_tech/load_vanity(mob/living/carbon/human/new_human)
+	new_human.mind.store_memory("<b>ARES Interface Code:</b> [GLOB.ares_link.code_interface]<br><b>APOLLO Interface Code:</b> [GLOB.ares_link.code_apollo]")
+	return
+
+/datum/equipment_preset/uscm_event/ai_tech/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/m44/custom/pkd_special(new_human.back), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/pkd(new_human.back), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/pkd(new_human.back), WEAR_IN_ACCESSORY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/black(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_J_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom/aist(new_human), WEAR_L_EAR)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/ai_tech_pda(new_human.back), WEAR_IN_L_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+
+/datum/equipment_preset/uscm_event/ai_tech/corporate
+	name = "AI Technician (Contractor)"
+	faction_group =	FACTION_LIST_ARES_ALL
+	paygrades = list(PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_1, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_3)
+
+	idtype = /obj/item/card/id/silver/cl
+
+/datum/equipment_preset/uscm_event/ai_tech/corporate/New()
+	. = ..()
+	/// WY version gets less access, but can use the CLs office.
+	access = get_access(ACCESS_LIST_MARINE_LIAISON_AIST)
+
+/datum/equipment_preset/uscm_event/ai_tech/corporate/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl/aist(new_human), WEAR_L_EAR)
+
+
+	..()

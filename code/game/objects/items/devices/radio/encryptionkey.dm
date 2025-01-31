@@ -12,6 +12,8 @@
 	var/abstract = FALSE
 
 /obj/item/device/encryptionkey/binary
+	name = "APOLLO relay key"
+	desc = "An encryption key allowing speech over the APOLLO Link. (Using :+)"
 	icon_state = "binary_key"
 	translate_apollo = TRUE
 
@@ -44,6 +46,12 @@
 	channels = list(RADIO_CHANNEL_INTEL = TRUE)
 
 //MARINE ENCRYPTION KEYS
+
+/obj/item/device/encryptionkey/aicore
+	name = "AI Core Encryption Key"
+	desc = "AI Core internal communication channel."
+	icon_state = "binary_key"
+	channels = list(RADIO_CHANNEL_AICORE = TRUE)
 
 /obj/item/device/encryptionkey/sentry_laptop
 	name = "Sentry Network Status Encryption Key"

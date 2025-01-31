@@ -437,10 +437,9 @@
 
 	if(mob)
 		var/damage = 10
-		mob.apply_damage(damage, BURN) // Apply burn damage
+		mob.apply_damage(damage, BURN)
 		to_chat(mob, SPAN_DANGER("The acid burns you as you pick up \the [acid_t]!"))
 
-	// Terminate the acid process
 	qdel(src)
 
 /obj/effect/xenomorph/boiler_bombard

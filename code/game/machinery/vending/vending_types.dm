@@ -378,7 +378,7 @@
 		/obj/item/storage/fancy/cigarettes/blackpack = 40,
 
 		/obj/item/storage/box/matches = 2,
-		/obj/item/storage/fancy/cigar/matchbook/exec_select = 10,
+		/obj/item/storage/fancy/cigar/matchbook/exec_select = 7,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 5,
 		/obj/item/tool/lighter/random = 3,
 		/obj/item/tool/lighter/zippo/black = 15,

@@ -202,7 +202,7 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 /datum/ordnance_tech/lathe_upgrade/lathe_half_mats
 	name = "Armylathe Efficiency Upgrade"
 	desc = "Halves the material cost of all armylathe assemblies"
-	tech_unlock = ARMYLATHE_METAL_UPGRADE
+	tech_unlock = ARMYLATHE_MATS_UPGRADE
 	value = 20
 	add_category = FALSE
 

@@ -40,7 +40,7 @@
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		unpack()
-		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
+		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."),
 							SPAN_NOTICE("You pry open \the [src]."))
 	else
 		return attack_hand(user)
@@ -48,7 +48,7 @@
 /obj/structure/largecrate/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	unpack()
-	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
+	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"),
 					  SPAN_DANGER("You smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 

@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/sign/banners/clf_worn,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/tile/plasteel{
@@ -2783,7 +2787,7 @@ AP
 Le
 fz
 dw
-gM
+aa
 mT
 ll
 lu

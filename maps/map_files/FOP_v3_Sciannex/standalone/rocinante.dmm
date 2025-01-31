@@ -19,6 +19,12 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/park)
+"af" = (
+/obj/structure/sign/banners/clf_flag,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
+	},
+/area/fiorina/station/clf_ship)
 "ai" = (
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/park)
@@ -2196,7 +2202,7 @@ vm
 hJ
 CL
 nI
-lH
+af
 xf
 ra
 mQ

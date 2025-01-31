@@ -78,6 +78,10 @@
 /obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"ap" = (
+/obj/structure/sign/banners/clf_flag,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "au" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -4653,7 +4657,7 @@ FO
 DV
 GH
 JU
-JU
+ap
 bG
 bG
 lK

@@ -15,6 +15,12 @@
 /obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
+"ae" = (
+/obj/structure/sign/banners/clf_worn,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_s_w"
+	},
+/area/lv624/lazarus/crashed_ship)
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/rifle/mar40/lmg{
@@ -977,12 +983,6 @@
 	icon_state = "metal_1"
 	},
 /turf/open/floor/plating/warnplate/southwest,
-/area/lv624/lazarus/crashed_ship)
-"Em" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
-/turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "Ev" = (
 /turf/closed/shuttle/ert{
@@ -2462,8 +2462,8 @@ Qd
 Qd
 Qd
 Qd
-DZ
-Em
+ae
+bL
 lr
 bL
 QQ

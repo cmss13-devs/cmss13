@@ -1,4 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/sign/banners/clf_worn,
+/turf/closed/shuttle/ert{
+	icon_state = "upp2";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
 "ad" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -3683,7 +3690,7 @@ UP
 XJ
 xT
 Gu
-si
+aa
 Bw
 XQ
 lX

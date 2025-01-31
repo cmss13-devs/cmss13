@@ -98,6 +98,12 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"ap" = (
+/obj/structure/sign/banners/clf_worn,
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall2"
+	},
+/area/desert_dam/exterior/valley/valley_medical)
 "aA" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/chemistry)
@@ -3032,7 +3038,7 @@ kH
 kH
 jc
 jc
-fx
+ap
 Gg
 dV
 Dk

@@ -332,6 +332,7 @@
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
+	RegisterSignal(target, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
 	START_PROCESSING(SSoldeffects, src)
 
 /obj/effect/xenomorph/acid/Destroy()
@@ -429,6 +430,17 @@
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)
 		qdel(acid_t)
+	qdel(src)
+
+/obj/effect/xenomorph/acid/proc/on_pickup(datum/src, mob/living/carbon/mob)
+	SIGNAL_HANDLER
+
+	if(mob)
+		var/damage = 10
+		mob.apply_damage(damage, BURN) // Apply burn damage
+		to_chat(mob, SPAN_DANGER("The acid burns you as you pick up \the [acid_t]!"))
+
+	// Terminate the acid process
 	qdel(src)
 
 /obj/effect/xenomorph/boiler_bombard

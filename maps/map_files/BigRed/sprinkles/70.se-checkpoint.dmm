@@ -166,6 +166,7 @@
 /turf/open/floor,
 /area/bigred/ground/security)
 "DT" = (
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "Es" = (

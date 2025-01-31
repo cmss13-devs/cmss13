@@ -231,6 +231,10 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
+"aS" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/warnwhite,
+/area/bigredv2/outside/office_complex)
 "aT" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
@@ -1463,7 +1467,7 @@ xr
 FV
 ap
 Wv
-hv
+aS
 Ts
 sX
 sX

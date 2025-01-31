@@ -3240,7 +3240,7 @@
 /area/almayer/medical/chemistry)
 "ahr" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	req_one_access = list(19
+	req_one_access = list(19)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3290,9 +3290,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/operating_room_two)
 "ahx" = (
-/obj/structure/machinery/bioprinter{
-	stored_metal = 125
-	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_two)
 "ahy" = (
@@ -15024,8 +15022,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "bPu" = (
-/obj/structure/closet/secure_closet/medical2,
 /obj/structure/machinery/light,
+/obj/structure/machinery/bioprinter{
+	stored_metal = 125
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/operating_room_four)
 "bPz" = (
@@ -26712,7 +26712,9 @@
 	pixel_x = -24
 	},
 /obj/structure/machinery/light,
-/obj/structure/closet/secure_closet/medical2,
+/obj/structure/machinery/bioprinter{
+	stored_metal = 125
+	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/operating_room_three)
 "gkd" = (
@@ -32570,9 +32572,11 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/upper/midship_hallway)
 "iMI" = (
-/obj/structure/closet/secure_closet/medical2,
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/bioprinter{
+	stored_metal = 125
 	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/operating_room_two)
@@ -41822,7 +41826,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/medical2,
+/obj/structure/machinery/bioprinter{
+	stored_metal = 125
+	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/operating_room_one)
 "mBx" = (
@@ -47152,9 +47158,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "oDJ" = (
-/obj/structure/machinery/bioprinter{
-	stored_metal = 125
-	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/operating_room_one)
 "oDL" = (
@@ -49041,9 +49045,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "psO" = (
-/obj/structure/machinery/bioprinter{
-	stored_metal = 125
-	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/operating_room_three)
 "ptf" = (
@@ -61903,7 +61905,7 @@
 /area/almayer/engineering/lower)
 "uFo" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	req_one_access = list(19
+	req_one_access = list(19)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -67477,9 +67479,7 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/hallways/lower/port_midship_hallway)
 "wJb" = (
-/obj/structure/machinery/bioprinter{
-	stored_metal = 125
-	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_four)
 "wJh" = (

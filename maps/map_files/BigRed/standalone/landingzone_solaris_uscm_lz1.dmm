@@ -39,6 +39,12 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"ag" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
 "ah" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/marshal_office)
@@ -1597,9 +1603,6 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkgreen2/east,
 /area/bigredv2/outside/space_port)
-"JW" = (
-/turf/open/floor/plating/platebot,
-/area/bigredv2/outside/space_port)
 "Kb" = (
 /obj/structure/surface/table,
 /obj/item/device/radio/headset,
@@ -1712,7 +1715,6 @@
 /turf/open/floor/darkgreen2/northwest,
 /area/bigredv2/outside/space_port)
 "Mp" = (
-/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/darkgreen2/northeast,
 /area/bigredv2/outside/space_port)
 "MD" = (
@@ -1795,10 +1797,6 @@
 	},
 /obj/structure/surface/table,
 /turf/open/floor/darkgreen2,
-/area/bigredv2/outside/space_port)
-"Nx" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "NF" = (
 /obj/effect/decal/cleanable/vomit,
@@ -1938,9 +1936,6 @@
 	dir = 4
 	},
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port)
-"Qj" = (
-/turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
 "Qk" = (
 /turf/open/mars/mars_dirt_3,
@@ -4231,7 +4226,7 @@ nr
 ZP
 HF
 HF
-Qj
+vl
 cR
 WX
 VT
@@ -4338,7 +4333,7 @@ nl
 nl
 ZX
 HF
-HF
+ag
 ZX
 Bb
 Kv
@@ -4390,7 +4385,7 @@ nl
 uT
 nl
 lT
-JW
+YP
 uZ
 HF
 Nd
@@ -4701,7 +4696,7 @@ Nv
 Hr
 dh
 VT
-Nx
+OE
 OE
 OE
 OE

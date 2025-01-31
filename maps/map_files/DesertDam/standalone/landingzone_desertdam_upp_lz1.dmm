@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating,
+/area/desert_dam/building/dorms/hallway_northwing)
 "ar" = (
 /obj/structure/machinery/door_control{
 	id = "warehouse_dam_2";
@@ -1692,7 +1697,6 @@
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
 "BX" = (
-/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/strata/blue2,
 /area/event/metal/dynamic/lit)
 "BY" = (
@@ -2940,10 +2944,6 @@
 "Xb" = (
 /turf/open/floor/strata/floor3/east,
 /area/event/metal/dynamic/lit)
-"Xc" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/cafeteria/cafeteria)
 "Xk" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
@@ -3667,7 +3667,7 @@ Ry
 Ry
 oA
 Cx
-Xc
+ff
 Qj
 Qr
 Xk
@@ -4205,7 +4205,7 @@ IH
 Fu
 Gu
 NL
-OF
+aa
 wK
 wK
 wK

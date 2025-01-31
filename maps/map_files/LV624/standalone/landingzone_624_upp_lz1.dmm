@@ -118,10 +118,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"jr" = (
-/obj/effect/decal/cleanable/vomit,
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
 "ju" = (
 /turf/open/floor/whiteyellow/west,
 /area/lv624/lazarus/main_hall)
@@ -419,10 +415,6 @@
 	},
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
-"wW" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
 "xi" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/quartstorage)
@@ -1069,7 +1061,7 @@ dK
 zN
 Rl
 iS
-jr
+Zy
 QV
 QV
 QV
@@ -1339,7 +1331,7 @@ Zg
 Zg
 Zg
 gt
-wW
+Zy
 Zy
 Zy
 Zy

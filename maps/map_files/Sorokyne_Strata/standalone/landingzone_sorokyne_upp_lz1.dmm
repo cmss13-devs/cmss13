@@ -1082,7 +1082,6 @@
 /turf/open/floor/strata/blue1,
 /area/event/underground/dynamic/lit)
 "MI" = (
-/obj/structure/machinery/vending/cigarette/colony,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -2191,7 +2190,7 @@ EF
 At
 rs
 fe
-GJ
+Dw
 GJ
 GJ
 GJ

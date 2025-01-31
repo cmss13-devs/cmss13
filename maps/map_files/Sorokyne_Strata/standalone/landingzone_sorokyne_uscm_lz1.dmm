@@ -225,10 +225,6 @@
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/strata,
 /area/strata/ag/interior/mining_outpost/central)
-"ec" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/strata/white_cyan2/west,
-/area/strata/ag/interior/landing_zones/near_lz1)
 "ek" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/mask/surgical,
@@ -2857,7 +2853,7 @@ dB
 XH
 RF
 Kr
-Kr
+yW
 Kr
 Kr
 BR
@@ -3683,7 +3679,7 @@ xD
 np
 Ap
 RF
-ec
+gn
 aq
 bz
 or

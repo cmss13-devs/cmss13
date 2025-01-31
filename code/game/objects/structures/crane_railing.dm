@@ -2,7 +2,7 @@
 	name = "cargo crane track"
 	desc = "A track for a cargo crane to move along."
 	icon = 'icons/obj/structures/props/cargocrane_tracks.dmi'
-	icon_state = "holder"
+	icon_state = "vertical"
 	mouse_opacity = FALSE
 	layer = INTERIOR_ROOF_LAYER
 

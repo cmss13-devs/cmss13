@@ -6,6 +6,18 @@
 	},
 /turf/open/floor/almayer/edge/smooth/east,
 /area/adminlevel/ert_station/soalar_devils_station)
+"ab" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/soalar_devils_station)
 "ac" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -15,6 +27,30 @@
 	icon_state = "W"
 	},
 /turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/soalar_devils_station)
+"ad" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/soalar_devils_station)
+"ae" = (
+/obj/structure/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
 "af" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -990,6 +1026,9 @@
 	},
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -6481,10 +6520,6 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/ert_station/soalar_devils_station)
-"vh" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
 "vj" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -8382,7 +8417,9 @@
 /obj/item/storage/toolbox/electrical{
 	pixel_y = 10
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Bt" = (
@@ -11080,9 +11117,6 @@
 /area/adminlevel/ert_station/soalar_devils_station)
 "JK" = (
 /obj/structure/surface/table/almayer,
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
-	},
 /obj/item/storage/belt/utility/full{
 	pixel_y = 12
 	},
@@ -11094,7 +11128,7 @@
 	light_color = "#C02526";
 	color = "#C02526"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "JM" = (
@@ -13075,6 +13109,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
 "PX" = (
@@ -14810,6 +14845,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
 "UV" = (
@@ -19607,9 +19643,9 @@ ZR
 BF
 En
 Gl
-PL
+ad
 PW
-PL
+ab
 PL
 jP
 ZR
@@ -19710,7 +19746,7 @@ Fv
 mW
 Hs
 JK
-vh
+qv
 Br
 kj
 Wk
@@ -19811,7 +19847,7 @@ ZR
 TQ
 HY
 XC
-XC
+ae
 UT
 de
 Rp

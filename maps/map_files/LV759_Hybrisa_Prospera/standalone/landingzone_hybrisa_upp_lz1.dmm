@@ -200,9 +200,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /turf/open/hybrisa/street/underground_unweedable,
@@ -1296,9 +1293,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
 	dir = 4
@@ -1414,10 +1408,6 @@
 /area/lv759/indoors/spaceport/cuppajoes)
 "hL" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
@@ -1551,15 +1541,6 @@
 	name = "floor panel"
 	},
 /obj/structure/reagent_dispensers/fueltank/spacecraft,
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
-	},
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/engineering)
 "io" = (
@@ -1978,9 +1959,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -2053,15 +2031,6 @@
 /area/lv759/indoors/spaceport/baggagehandling)
 "kF" = (
 /obj/structure/machinery/fuelcell_recycler,
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
-	},
 /obj/item/fuel_cell/used,
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off{
 	dir = 1;
@@ -2568,16 +2537,6 @@
 /area/lv759/indoors/spaceport/engineering)
 "nZ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /turf/open/hybrisa/street/underground_unweedable,
@@ -2801,10 +2760,6 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/spaceport/hallway_east)
 "py" = (
-/obj/item/tool/warning_cone{
-	pixel_x = -13;
-	pixel_y = 11
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -4268,10 +4223,6 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "xN" = (
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -4301,15 +4252,6 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "ye" = (
 /obj/structure/machinery/fuelcell_recycler,
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
-	},
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off{
 	dir = 1;
 	pixel_x = 3;
@@ -4500,9 +4442,6 @@
 "zt" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /turf/open/hybrisa/street/underground_unweedable,
@@ -4685,9 +4624,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /turf/open/hybrisa/street/underground_unweedable,
@@ -4912,9 +4848,6 @@
 "Bz" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /turf/open/hybrisa/street/underground_unweedable,
@@ -5276,10 +5209,6 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "Dv" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -5488,18 +5417,8 @@
 /turf/open/floor/almayer/plating_striped,
 /area/lv759/indoors/spaceport/baggagehandling)
 "EG" = (
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /turf/open/hybrisa/street/underground_unweedable,
@@ -5589,15 +5508,6 @@
 	desc = null;
 	icon_state = "igniter0";
 	name = "floor panel"
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
 	},
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/engineering)
@@ -7050,15 +6960,6 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "Ng" = (
 /obj/structure/machinery/fuelcell_recycler,
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
-	},
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off{
 	dir = 1;
 	pixel_y = 32
@@ -7119,17 +7020,7 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "NO" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
 /obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
 	dir = 4
@@ -7987,15 +7878,6 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
-	},
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/engineering)
 "Tk" = (
@@ -8815,15 +8697,6 @@
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
 /obj/structure/barricade/handrail/wire{
 	layer = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/engineering)

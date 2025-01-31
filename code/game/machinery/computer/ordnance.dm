@@ -26,7 +26,7 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 
 /obj/item/ordnance/data_analyzer
 	name = "explosive data analyzer"
-	desc = "Limits casing capacity but analyzes the explosion caused and the amount of targets hit, granting ordnance technology credits. Cannot be removed once attached."
+	desc = "Limits casing capacity but analyzes the explosion and fire caused and the amount of targets hit, granting ordnance technology credits. Cannot be removed once attached."
 	w_class = SIZE_TINY
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "eftpos"

@@ -840,11 +840,6 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"ado" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/darkyellow2/north,
-/area/bigredv2/outside/filtration_plant)
 "adp" = (
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/warnwhite,
@@ -28002,6 +27997,9 @@
 /area/bigredv2/caves/mining)
 "mYo" = (
 /obj/effect/decal/strata_decals/grime/grime3,
+/obj/effect/landmark/nightmare{
+	insert_tag = "cargo_containers"
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/w)
 "mYp" = (
@@ -30239,10 +30237,6 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
-"poS" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/cargo)
 "poV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -35920,7 +35914,7 @@
 /area/bigredv2/caves/lambda/research)
 "uUY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/west,
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/filtration_plant)
 "uVd" = (
@@ -52579,7 +52573,7 @@ aNo
 aVe
 aVM
 aoH
-poS
+aXH
 aXH
 aXH
 asK
@@ -64541,7 +64535,7 @@ asv
 beI
 bgx
 awp
-ado
+bBg
 wvK
 blY
 wvK

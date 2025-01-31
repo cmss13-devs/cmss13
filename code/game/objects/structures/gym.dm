@@ -56,7 +56,6 @@
 	inuse_stun_time = 5.5 SECONDS
 
 /obj/structure/weightmachine/stacklifter/AnimateMachine(mob/living/user)
-	var/lifts = 0
 	for(var/lift in 1 to 6)
 		if(user.loc != loc)
 			break

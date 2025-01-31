@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 					if(xenos_to_check.client && xenos_to_check.ckey)
 						alleged_queens++
 
-	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2)
+	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
 		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
 		return FALSE
 

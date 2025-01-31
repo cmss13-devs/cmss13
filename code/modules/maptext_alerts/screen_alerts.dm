@@ -76,9 +76,8 @@
 	fade_out_delay = 4 SECONDS
 	fade_out_time = 0.5 SECONDS
 
-/atom/movable/screen/text/screen_text/command_order/tutorial/slower/scoreboard
-	style_open = "<span class='langchat' style=font-size:16pt;text-align:left valign='top'>"
-	screen_loc = "LEFT,TOP-5"
+/atom/movable/screen/text/screen_text/command_order/tutorial/manual
+	fade_out_delay = null // is meant to be manually deleted by players in tutorial
 
 /atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
 	if(!player)
@@ -118,8 +117,8 @@
 			continue
 		maptext = "[style_open][copytext_char(text_to_play, 1, letter)][style_close]"
 		sleep(play_delay)
-
-	addtimer(CALLBACK(src, PROC_REF(after_play)), fade_out_delay)
+	if(fade_out_delay)
+		addtimer(CALLBACK(src, PROC_REF(after_play)), fade_out_delay)
 
 ///handles post-play effects like fade out after the fade out delay
 /atom/movable/screen/text/screen_text/proc/after_play()

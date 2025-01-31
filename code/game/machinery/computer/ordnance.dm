@@ -138,14 +138,14 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	name = "84mm Rocket"
 	desc = "An 84mm custom rocket."
 	tech_unlock = list(CUSTOM_ROCKET, CUSTOM_ROCKET_WARHEAD)
-	value = 25
+	value = 35
 	add_category = FALSE
 
 /datum/ordnance_tech/technology/shell
 	name = "80mm Mortar Shell"
 	desc = "An 80mm mortar shell."
 	tech_unlock = list(CUSTOM_SHELL, CUSTOM_SHELL_WARHEAD, CUSTOM_SHELL_CAMERA)
-	value = 20
+	value = 30
 	add_category = FALSE
 
 //the computer

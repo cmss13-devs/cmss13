@@ -117,6 +117,10 @@
 	src.go_out()
 	return
 
+/obj/structure/machinery/recharge_station/inoperable(additional_flags = 0)
+	. = ..(additional_flags)
+	return (. && !current_internal_charge)
+
 /obj/structure/machinery/recharge_station/emp_act(severity)
 	. = ..()
 	if(inoperable())
@@ -127,13 +131,13 @@
 
 /obj/structure/machinery/recharge_station/update_icon()
 	..()
-	if(!inoperable())
+	if(operable())
 		if(src.occupant)
 			icon_state = "borgcharger1"
 		else
 			icon_state = "borgcharger0"
 	else
-		icon_state = "borgcharger0"
+		icon_state = "borgcharger2"
 	overlays.Cut()
 	switch(floor(chargepercentage()))
 		if(1 to 20)
@@ -225,6 +229,9 @@
 	return move_mob_inside(target)
 
 /obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/M)
+	if(current_internal_charge <= 0)
+		to_chat(M, SPAN_NOTICE(SPAN_BOLD("[src] is currently out of power. Please come back later!")))
+		return
 	if (!issynth(M))
 		return FALSE
 	if (occupant)

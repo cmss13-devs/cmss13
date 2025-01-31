@@ -239,7 +239,7 @@
 		return FALSE
 	if(istype(target, /atom/movable/screen))
 		return FALSE
-	if(target.z != xeno_owner.z)
+	if(!SSmapping.same_z_map(target.z, xeno_owner.z))
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
 	apply_cooldown()

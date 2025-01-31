@@ -318,7 +318,6 @@
 	var/static/list/sunrise_color_progression = list("#000", "#040712", "#111322", "#291642", "#3f2239", "#632c3d", "#b97034")
 	var/is_cold = SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] || SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM || MAP_PRISON_STATION_V3
 	
-	var/lighting_color 
 	if(special_lighting == SPECIAL_LIGHTING_SUNSET)
 		lighting_color = is_cold ? cold_color_progression[lighting_stage] : warm_color_progression[lighting_stage]
 	else

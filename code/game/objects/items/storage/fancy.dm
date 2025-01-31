@@ -608,6 +608,6 @@
 
 /obj/item/storage/fancy/collector/feathers/update_icon()
 	overlays = list() //resets list
-	overlays += image('icons/obj/items/storage/collector.dmi',"collector_box_small")
+	overlays += image('icons/obj/items/storage/collector.dmi',"collector_case_small")
 	for(var/obj/item/prop/helmetgarb/lucky_feather/feather in contents)
 		overlays += image('icons/obj/items/storage/collector.dmi',feather.caseName)

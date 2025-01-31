@@ -191,10 +191,23 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/machinery/chem_master/industry_mixer,
+/turf/open/floor/almayer,
+/area/almayer/engineering/lower/workshop/hangar)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/ordnance,
+/turf/open/floor/almayer,
+/area/almayer/engineering/lower/workshop/hangar)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -214,6 +227,13 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
+"aaG" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder/industrial{
+	pixel_y = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/lower/workshop/hangar)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -18825,6 +18845,14 @@
 /obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
+"dOe" = (
+/obj/structure/sign/safety/fire_haz{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/obj/structure/reagent_dispensers/fueltank/custom,
+/turf/open/floor/almayer/cargo,
+/area/almayer/engineering/lower/workshop/hangar)
 "dOl" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/fancy/cigar,
@@ -46755,14 +46783,6 @@
 /obj/item/clothing/head/chefhat,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
-"prP" = (
-/obj/structure/machinery/light{
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/machinery/chem_master/industry_mixer,
-/turf/open/floor/almayer,
-/area/almayer/engineering/lower/workshop/hangar)
 "prX" = (
 /obj/structure/ladder{
 	height = 2;
@@ -47609,10 +47629,6 @@
 "pMA" = (
 /turf/open/floor/almayer/red/west,
 /area/almayer/hallways/upper/port)
-"pMC" = (
-/obj/item/reagent_container/glass/bucket/janibucket,
-/turf/open/floor/almayer,
-/area/almayer/maint/hull/upper/u_f_s)
 "pMH" = (
 /obj/item/tool/wet_sign,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -49025,13 +49041,6 @@
 	},
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/squads/bravo)
-"qoL" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/reagentgrinder/industrial{
-	pixel_y = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/lower/workshop/hangar)
 "qoM" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -56206,6 +56215,10 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
+"tiX" = (
+/obj/item/reagent_container/glass/bucket/janibucket,
+/turf/open/floor/almayer,
+/area/almayer/maint/hull/upper/u_f_s)
 "tiY" = (
 /obj/structure/closet,
 /obj/item/reagent_container/food/drinks/bottle/sake,
@@ -57258,7 +57271,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)
 "tEd" = (
-/obj/structure/machinery/chem_master/industry_mixer,
+/obj/structure/machinery/chem_dispenser/ordnance,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "tEi" = (
@@ -59714,17 +59727,6 @@
 "uHT" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/lower/s_bow)
-"uIj" = (
-/obj/structure/sign/safety/fire_haz{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/obj/structure/sink{
-	dir = 1;
-	pixel_y = -10
-	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/lower/workshop/hangar)
 "uIv" = (
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/upper_engineering/port)
@@ -60533,8 +60535,11 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
-/turf/open/floor/almayer/cargo,
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "uZZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -61102,7 +61107,7 @@
 /turf/open/floor/almayer/orangecorner/east,
 /area/almayer/hallways/lower/port_umbilical)
 "vjW" = (
-/obj/structure/machinery/chem_dispenser/ordnance,
+/obj/structure/machinery/chem_master/industry_mixer,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "vka" = (
@@ -64032,11 +64037,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
-"wkw" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/ordnance,
-/turf/open/floor/almayer,
-/area/almayer/engineering/lower/workshop/hangar)
 "wky" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -90227,7 +90227,7 @@ aad
 cZe
 cZe
 cZe
-pMC
+tiX
 vcI
 agj
 ikQ
@@ -94841,8 +94841,8 @@ ouw
 jDP
 aId
 aId
-vjW
 tEd
+vjW
 nmY
 siT
 bUQ
@@ -95245,10 +95245,10 @@ wUK
 dDM
 vPR
 nmY
-wkw
+aaD
 aId
 aId
-uIj
+uZV
 nmY
 uKH
 bUQ
@@ -95448,10 +95448,10 @@ vwY
 uIA
 acd
 ruL
-qoL
+aaG
 aId
-vjW
-prP
+tEd
+aaB
 nmY
 qpV
 hNh
@@ -95654,7 +95654,7 @@ ruL
 aId
 aId
 aId
-uZV
+dOe
 nmY
 rEK
 bba

@@ -69,27 +69,27 @@
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
-	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
-	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
+	dat += "<BR><A href='byond://?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
+	dat += "<BR><A href='byond://?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
 	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 	if(!echo_squad.active && faction == FACTION_MARINE)
-		dat += "<BR><A href='?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
+		dat += "<BR><A href='byond://?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
 		dat += "<BR><hr>"
 
 	if(lz_selection && SSticker.mode && (isnull(SSticker.mode.active_lz) || isnull(SSticker.mode.active_lz.loc)))
-		dat += "<BR><A href='?src=\ref[src];operation=selectlz'>Designate Primary LZ</A><BR>"
+		dat += "<BR><A href='byond://?src=\ref[src];operation=selectlz'>Designate Primary LZ</A><BR>"
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)
 		if(show_command_squad)
-			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>Command</A><BR>"
+			dat += "Current Squad: <A href='byond://?src=\ref[src];operation=pick_squad'>Command</A><BR>"
 		else
-			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
+			dat += "Current Squad: <A href='byond://?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
 		if(current_squad || show_command_squad)
 			dat += get_overwatch_info()
 
-	dat += "<BR><A HREF='?src=\ref[user];mach_close=groundside_operations'>Close</A>"
+	dat += "<BR><A href='byond://?src=\ref[user];mach_close=groundside_operations'>Close</A>"
 	show_browser(user, dat, name, "groundside_operations", "size=600x700")
 	concurrent_users += WEAKREF(user)
 	onclose(user, "groundside_operations")
@@ -128,7 +128,7 @@
 	else
 		dat += "No Squad selected!<BR>"
 	dat += "<br><hr>"
-	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
+	dat += "<A href='byond://?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	return dat
 
 /obj/structure/machinery/computer/groundside_operations/proc/format_list_of_marines(list/mob/living/carbon/human/marine_list, list/jobs_in_order)
@@ -194,14 +194,14 @@
 			if(current_squad)
 				if(H == current_squad.squad_leader && role != JOB_SQUAD_LEADER)
 					act_sl = " (ASL)"
-		var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
+		var/marine_infos = "<tr><td><A href='byond://?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
 		if(role in job_order)
 			job_order[role] += marine_infos
 		else
 			misc_text += marine_infos
 	dat += "<b>Total: [total_count] Deployed</b><BR>"
 	dat += "<b>Marines detected: [living_count] ([helmetless_count] no helmet, [SSD_count] SSD, [almayer_count] on Almayer)</b><BR>"
-	dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
+	dat += "<center><b>Search:</b> <input type='search' id='filter' value='' onkeyup='updateSearch()' onblur='updateSearch()' style='width:300px;'></center>"
 	dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 	dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
 	for(var/job in job_order)
@@ -458,7 +458,7 @@
 	add_pmcs = TRUE
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	minimap_type = MINIMAP_FLAG_PMC
+	minimap_type = MINIMAP_FLAG_WY
 	freq = PMC_FREQ
 
 /obj/structure/machinery/computer/groundside_operations/arc

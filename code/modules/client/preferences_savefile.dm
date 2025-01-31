@@ -336,6 +336,8 @@
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
+	S["lastchangelog"] >> lastchangelog
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -361,12 +363,12 @@
 	flash_overlay_pref = sanitize_integer(flash_overlay_pref, FLASH_OVERLAY_WHITE, FLASH_OVERLAY_DARK)
 	crit_overlay_pref = sanitize_integer(crit_overlay_pref, CRIT_OVERLAY_WHITE, CRIT_OVERLAY_DARK)
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
-	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
+	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
-	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
+	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
@@ -383,7 +385,7 @@
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
-	predator_accessory_type = sanitize_integer(predator_accessory_type,0,1, initial(predator_accessory_type))
+	predator_accessory_type = sanitize_integer(predator_accessory_type,0,3, initial(predator_accessory_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type = sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
@@ -556,6 +558,8 @@
 
 	S["completed_tutorials"] << tutorial_list_to_savestring()
 
+	S["lastchangelog"] << lastchangelog
+
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -582,6 +586,7 @@
 	S["skin_color"] >> skin_color
 	S["body_type"] >> body_type
 	S["body_size"] >> body_size
+	S["body_presentation"] >> body_presentation
 	S["language"] >> language
 	S["spawnpoint"] >> spawnpoint
 
@@ -638,6 +643,7 @@
 
 	S["preferred_squad"] >> preferred_squad
 	S["preferred_armor"] >> preferred_armor
+	S["night_vision_preference"] >> night_vision_preference
 	S["weyland_yutani_relation"] >> weyland_yutani_relation
 	//S["skin_style"] >> skin_style
 
@@ -655,6 +661,7 @@
 	be_random_name = sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
 	be_random_body = sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
 	gender = sanitize_gender(gender)
+	body_presentation = sanitize_gender(body_presentation)
 	age = sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
 	skin_color = sanitize_skin_color(skin_color)
 	body_type = sanitize_body_type(body_type)
@@ -689,6 +696,7 @@
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
+	night_vision_preference = sanitize_inlist(night_vision_preference, GLOB.nvg_color_list, "Green")
 	//b_type = sanitize_text(b_type, initial(b_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
@@ -732,6 +740,7 @@
 	S["skin_color"] << skin_color
 	S["body_type"] << body_type
 	S["body_size"] << body_size
+	S["body_presentation"] << body_presentation
 	S["language"] << language
 	S["hair_red"] << r_hair
 	S["hair_green"] << g_hair
@@ -787,6 +796,7 @@
 	S["weyland_yutani_relation"] << weyland_yutani_relation
 	S["preferred_squad"] << preferred_squad
 	S["preferred_armor"] << preferred_armor
+	S["night_vision_preference"] << night_vision_preference
 	//S["skin_style"] << skin_style
 
 	S["uplinklocation"] << uplinklocation
@@ -826,7 +836,7 @@
 
 /datum/preferences/proc/announce_conflict(list/notadded)
 	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))
-	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
+	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='byond://?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
 	for(var/datum/keybinding/conflicted as anything in notadded)
 		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
 

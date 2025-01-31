@@ -5,6 +5,8 @@
 	gun_category = GUN_CATEGORY_HEAVY
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
+	mouse_pointer = 'icons/effects/mouse_pointer/explosive_mouse.dmi'
+
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
 	var/GL_has_empty_icon = TRUE
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
@@ -37,9 +39,6 @@
 		if(preload && !spawn_empty) for(var/i = 1 to cylinder.storage_slots)
 			new preload(cylinder)
 		update_icon()
-
-/obj/item/weapon/gun/launcher/get_mouse_pointer()
-	return 'icons/effects/mouse_pointer/explosive_mouse.dmi'
 
 /obj/item/weapon/gun/launcher/Destroy(force)
 	QDEL_NULL(cylinder)

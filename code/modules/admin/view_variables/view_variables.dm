@@ -106,7 +106,7 @@
 		<link rel="stylesheet" type="text/css" href="[SSassets.transport.get_asset_url("view_variables.css")]">
 		<link rel="stylesheet" type="text/css" href="[SSassets.transport.get_asset_url("common.css")]">
 	</head>
-	<body onload='selectTextField()' onkeydown='return handle_keydown()' onkeyup='handle_keyup()'>
+	<body onload='selectTextField()' onkeydown='return handle_keydown()'>
 		<script type="text/javascript">
 			// onload
 			function selectTextField() {
@@ -227,7 +227,7 @@
 					</td>
 					<td width='50%'>
 						<div align='center'>
-							<a id='refresh_link' href='?_src_=vars;datumrefresh=[refid];[HrefToken()]'>Refresh</a>
+							<a id='refresh_link' href='byond://?_src_=vars;datumrefresh=[refid];[HrefToken()]'>Refresh</a>
 							<form>
 								<select name="file" size="1"
 									onchange="handle_dropdown(this)"
@@ -256,7 +256,7 @@
 					</div>
 				</td>
 				<td width='80%'>
-					<input type='text' id='filter' name='filter_text' value='' style='width:100%;'>
+					<input type='search' id='filter' name='filter_text' value='' onkeyup='handle_keyup()' onblur='handle_keyup()' style='width:100%;'>
 				</td>
 			</tr>
 		</table>

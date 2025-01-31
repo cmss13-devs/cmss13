@@ -48,9 +48,6 @@
 
 	var/turf_flags = NO_FLAGS
 
-	/// Whether we've broken through the ceiling yet
-	var/ceiling_debrised = FALSE
-
 	// Fishing
 	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
 
@@ -62,6 +59,9 @@
 	var/directional_opacity = NONE
 	///Lazylist of movable atoms providing opacity sources.
 	var/list/atom/movable/opacity_sources
+
+	///hybrid lights affecting this turf
+	var/tmp/list/atom/movable/lighting_mask/hybrid_lights_affecting
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -104,6 +104,11 @@
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)
+	if(hybrid_lights_affecting)
+		for(var/atom/movable/lighting_mask/mask as anything in hybrid_lights_affecting)
+			LAZYREMOVE(mask.affecting_turfs, src)
+		hybrid_lights_affecting.Cut()
+
 	. = QDEL_HINT_IWILLGC
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
@@ -510,7 +515,7 @@
 	return
 
 /turf/proc/ceiling_debris(size = 1) //debris falling in response to airstrikes, etc
-	if(ceiling_debrised)
+	if(turf_flags & TURF_DEBRISED)
 		return
 
 	var/area/A = get_area(src)
@@ -554,7 +559,7 @@
 				for(var/i=1, i<=amount, i++)
 					new /obj/item/stack/sheet/metal(pick(turfs))
 					new /obj/item/ore(pick(turfs))
-	ceiling_debrised = TRUE
+	turf_flags |= TURF_DEBRISED
 
 /turf/proc/ceiling_desc(mob/user)
 
@@ -862,3 +867,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/proc/remove_flag(flag)
+	turf_flags &= ~flag

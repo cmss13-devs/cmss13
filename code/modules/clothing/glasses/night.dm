@@ -17,7 +17,7 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	darkness_view = 12
 	vision_flags = SEE_TURFS
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	fullscreen_vision = null
 	eye_protection = EYE_PROTECTION_NEGATIVE
 
@@ -75,6 +75,15 @@
 	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon_state = "upp_goggles"
 	deactive_state = "upp_goggles_0"
+	req_skill = null
+	req_skill_level = null
+
+/obj/item/clothing/glasses/night/m42_night_goggles/rmc
+	name = "\improper Royal Marine Commando marksmans goggles"
+	gender = PLURAL
+	desc = "A headset and night vision goggles system used by RMC marksmen. Allows highlighted imaging of surroundings. Click it to toggle."
+	icon_state = "m4ra_goggles"
+	deactive_state = "m4ra_goggles_0"
 	req_skill = null
 	req_skill_level = null
 

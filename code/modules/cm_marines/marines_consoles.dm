@@ -126,16 +126,7 @@
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
 					P.info += contents
-				else
-					printing = TRUE
-					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
-					sleep(40)
-					var/obj/item/paper/P = new /obj/item/paper(src.loc)
-					P.name = text("Crew Manifest ([])", worldtime2text())
-					P.info = {"<center><h4>Crew Manifest</h4></center>
-						<br>
-						[GLOB.data_core.get_manifest(TRUE)]
-					"}
+
 				visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
 				printing = FALSE
 				return TRUE
@@ -304,7 +295,6 @@
 	var/list/data = list()
 	data["station_name"] = MAIN_SHIP_NAME
 	data["weyland_access"] = is_weyland
-	data["manifest"] = GLOB.data_core.get_manifest(FALSE, FALSE, TRUE)
 
 	var/list/departments
 	if(is_weyland)
@@ -443,7 +433,7 @@
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 	else
-		..()
+		. = ..()
 
 /obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -666,7 +656,7 @@
 				if(!isxenos)
 					person_to_modify = G.grabbed_thing
 	else
-		..()
+		. = ..()
 
 
 /obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
@@ -750,6 +740,8 @@
 /obj/structure/machinery/computer/crew/alt/yautja
 	name = "\improper Yautja health monitor"
 	desc = "Used to monitor active health sensors of all Yautja in the system. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "crew"
 	faction = FACTION_YAUTJA
 	crewmonitor_type = /datum/crewmonitor/yautja
 

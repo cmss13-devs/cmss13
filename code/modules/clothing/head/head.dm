@@ -154,13 +154,38 @@
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
 	flags_atom = NO_GAMEMODE_SKIN
 
-/obj/item/clothing/head/beret/cm/white/civilian
-	name = "White Beret"
+/obj/item/clothing/head/beret/civilian
+	name = "Tan Beret"
 	desc = "A nice fashionable beret, popular with executives."
+	icon_state = "berettan"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+	)
 
-/obj/item/clothing/head/beret/cm/black/civilian
+/obj/item/clothing/head/beret/civilian/brown
+	name = "Brown Beret"
+	icon_state = "berettan"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
+	)
+
+/obj/item/clothing/head/beret/civilian/black
 	name = "Black Beret"
-	desc = "A nice fashionable beret, popular with executives."
+	icon_state = "beret_black"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
+
+/obj/item/clothing/head/beret/civilian/white
+	name = "White Beret"
+	icon_state = "beret"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+	)
 
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
 	. = ..()
@@ -371,7 +396,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/tool/pen = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/blue = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/red = PREFIX_HAT_GARB_OVERRIDE,
-	/obj/item/tool/pen/fountain = NO_GARB_OVERRIDE,
+	/obj/item/tool/pen/multicolor/fountain = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/welding = "welding-c",
 	/obj/item/clothing/glasses/mgoggles = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/prescription = PREFIX_HAT_GARB_OVERRIDE,

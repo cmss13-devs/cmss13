@@ -515,10 +515,6 @@
 	/// How long between semi-auto shots this should wait, to reduce possible spam
 	var/semiauto_cooldown_time = 0.2 SECONDS
 
-/obj/structure/machinery/m56d_hmg/get_examine_text(mob/user)
-	. = ..()
-	. += "It is currently set to <b>[gun_firemode]</b>."
-
 /obj/structure/machinery/m56d_hmg/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -567,6 +563,7 @@
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
 	. = ..()
 	if(ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		. += "It is currently set to <b>[gun_firemode]</b>."
 		if(rounds)
 			. += SPAN_NOTICE("It has [rounds] round\s out of [rounds_max].")
 		else
@@ -656,11 +653,11 @@
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 				SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 					SPAN_NOTICE("You repair [src]."))
 				update_health(-floor(health_max*0.2))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -1048,7 +1045,7 @@
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 	target = object
 	if(target)
-		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), override = TRUE)
 
 /// Print how much ammo is left to chat
 /obj/structure/machinery/m56d_hmg/proc/display_ammo()

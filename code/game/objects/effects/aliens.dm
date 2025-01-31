@@ -432,13 +432,22 @@
 		qdel(acid_t)
 	qdel(src)
 
-/obj/effect/xenomorph/acid/proc/on_pickup(datum/src, mob/living/carbon/mob)
+/obj/effect/xenomorph/acid/proc/on_pickup(datum/source, mob/living/carbon/mob)
 	SIGNAL_HANDLER
 
-	if(mob)
-		var/damage = 10
+	if(istype(src, /obj/effect/xenomorph/acid/strong))
+		var/damage = 60
 		mob.apply_damage(damage, BURN)
-		to_chat(mob, SPAN_DANGER("The acid burns you as you pick up \the [acid_t]!"))
+		to_chat(mob, SPAN_DANGER("As you scrape the concentrated acid off \the [acid_t], it gets all over you!"))
+	else if(istype(src, /obj/effect/xenomorph/acid/weak))
+		var/damage = 20
+		mob.apply_damage(damage, BURN)
+		to_chat(mob, SPAN_DANGER("You wipe the acidic residue off \the [acid_t], but it leaves blistered and smoking burns on your body!"))
+	else if(istype(src, /obj/effect/xenomorph/acid))
+		var/damage = 40
+		mob.apply_damage(damage, BURN)
+		to_chat(mob, SPAN_DANGER("The acid sizzles as you scrape it off \the [acid_t], and eats into your skin!"))
+
 
 	qdel(src)
 

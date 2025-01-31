@@ -2598,6 +2598,9 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/reagent_container/glass/bucket/janibucket,
+/obj/item/reagent_container/glass/bucket/janibucket{
+	pixel_y = 11
+	},
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/lower/workshop/hangar)
 "arz" = (
@@ -18693,16 +18696,6 @@
 "dKp" = (
 /turf/open/floor/almayer/research/containment/corner/east,
 /area/almayer/medical/containment/cell/cl)
-"dKK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/lower/workshop/hangar)
 "dKL" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/engineering/airmix)
@@ -18832,16 +18825,6 @@
 /obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
-"dOe" = (
-/obj/structure/sign/safety/fire_haz{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/obj/structure/reagent_dispensers/ethanoltank{
-	anchored = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/workshop/hangar)
 "dOl" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/fancy/cigar,
@@ -19346,6 +19329,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/filingcabinet,
+/obj/item/folder/yellow,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "dZZ" = (
@@ -26747,19 +26732,6 @@
 /obj/structure/machinery/computer/intel,
 /turf/open/floor/almayer/silvercorner/west,
 /area/almayer/command/computerlab)
-"hgD" = (
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
-	anchored = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/workshop/hangar)
 "hgL" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 4;
@@ -34851,19 +34823,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_p)
-"kyh" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/pipes/vents/scrubber{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/lower/workshop/hangar)
 "kyr" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
@@ -35787,17 +35746,16 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/lifeboat)
 "kRD" = (
-/obj/item/reagent_container/glass/bucket/janibucket,
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/item/reagent_container/glass/bucket/janibucket{
-	pixel_y = 11
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5
+	},
+/obj/structure/reagent_dispensers/fueltank{
+	anchored = 1
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -36188,6 +36146,9 @@
 "lab" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/glass/bucket/janibucket,
+/obj/item/reagent_container/glass/bucket/janibucket{
+	pixel_y = 11
+	},
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/lower/workshop/hangar)
 "lah" = (
@@ -38657,10 +38618,6 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
 "mfL" = (
-/obj/item/reagent_container/glass/bucket/janibucket{
-	pixel_x = -1;
-	pixel_y = 13
-	},
 /obj/structure/sign/safety/water{
 	pixel_x = -17
 	},
@@ -41716,6 +41673,11 @@
 	dir = 1;
 	layer = 3;
 	pixel_y = 18
+	},
+/obj/structure/machinery/chem_storage/ordnance{
+	dir = 1;
+	pixel_y = 36;
+	layer = 3.01
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/hydroponics)
@@ -46791,9 +46753,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
 "prP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
 	},
+/obj/structure/machinery/chem_master/industry_mixer,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "prX" = (
@@ -47919,12 +47883,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_fore_hallway)
-"pSQ" = (
-/obj/structure/reagent_dispensers/fueltank{
-	anchored = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/workshop/hangar)
 "pSU" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/photocopier,
@@ -49065,7 +49023,7 @@
 /obj/structure/machinery/reagentgrinder/industrial{
 	pixel_y = 8
 	},
-/turf/open/floor/almayer/orange,
+/turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "qoM" = (
 /obj/structure/machinery/light/small{
@@ -49920,12 +49878,6 @@
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/brig/lobby)
-"qGw" = (
-/obj/structure/reagent_dispensers/ammoniatank{
-	anchored = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/workshop/hangar)
 "qGC" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -54027,10 +53979,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/panic)
 "smW" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
+/obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -56250,13 +56199,6 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
-"tiX" = (
-/obj/item/reagent_container/glass/bucket/janibucket{
-	pixel_x = -1;
-	pixel_y = 13
-	},
-/turf/open/floor/almayer,
-/area/almayer/maint/hull/upper/u_f_s)
 "tiY" = (
 /obj/structure/closet,
 /obj/item/reagent_container/food/drinks/bottle/sake,
@@ -57309,8 +57251,8 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)
 "tEd" = (
-/obj/structure/reagent_dispensers/acidtank,
-/turf/open/floor/almayer/cargo,
+/obj/structure/machinery/chem_master/industry_mixer,
+/turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "tEi" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -57667,10 +57609,6 @@
 "tLZ" = (
 /turf/open/floor/almayer/green,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"tMc" = (
-/obj/structure/machinery/chem_master/industry_mixer,
-/turf/open/floor/almayer/orange,
-/area/almayer/engineering/lower/workshop/hangar)
 "tMi" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/effect/decal/warning_stripes{
@@ -59769,6 +59707,17 @@
 "uHT" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/lower/s_bow)
+"uIj" = (
+/obj/structure/sign/safety/fire_haz{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/lower/workshop/hangar)
 "uIv" = (
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/upper_engineering/port)
@@ -60573,13 +60522,11 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/upper_engineering/starboard)
 "uZV" = (
-/obj/structure/reagent_dispensers/fueltank/gas/methane{
-	anchored = 1
-	},
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
 "uZZ" = (
@@ -61148,10 +61095,8 @@
 /turf/open/floor/almayer/orangecorner/east,
 /area/almayer/hallways/lower/port_umbilical)
 "vjW" = (
-/obj/structure/reagent_dispensers/watertank{
-	anchored = 1
-	},
-/turf/open/floor/almayer/cargo,
+/obj/structure/machinery/chem_dispenser/ordnance,
+/turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "vka" = (
 /turf/open/floor/almayer,
@@ -63405,16 +63350,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering/port)
-"vXf" = (
-/obj/structure/reagent_dispensers/pacidtank{
-	anchored = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/workshop/hangar)
 "vXh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -64090,6 +64025,11 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
+"wkw" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/ordnance,
+/turf/open/floor/almayer,
+/area/almayer/engineering/lower/workshop/hangar)
 "wky" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -66925,13 +66865,6 @@
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/brig/chief_mp_office)
 "xry" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
@@ -67718,16 +67651,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering)
-"xHS" = (
-/obj/structure/reagent_dispensers/fueltank/oxygentank{
-	anchored = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/workshop/hangar)
 "xHX" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8;
@@ -68508,14 +68431,12 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "xXl" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /obj/structure/sign/safety/maint{
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/turf/open/floor/almayer,
+/obj/structure/reagent_dispensers/fueltank/custom,
+/turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
 "xXr" = (
 /obj/item/reagent_container/glass/beaker/bluespace,
@@ -90299,7 +90220,7 @@ aad
 cZe
 cZe
 cZe
-tiX
+cmr
 vcI
 agj
 ikQ
@@ -94298,7 +94219,7 @@ ddw
 gHl
 kjD
 gHl
-qoL
+rNK
 lFp
 hSb
 siT
@@ -94907,14 +94828,14 @@ xDF
 eRS
 aId
 aId
-tMc
+rNK
 nmY
 ouw
 jDP
 aId
-xHS
-tEd
+aId
 vjW
+tEd
 nmY
 siT
 bUQ
@@ -95115,8 +95036,8 @@ nmY
 nmY
 nmY
 dZu
-dKK
-dKK
+aId
+aId
 xry
 nmY
 siT
@@ -95317,10 +95238,10 @@ wUK
 dDM
 vPR
 nmY
+wkw
 aId
-vXf
-qGw
-uZV
+aId
+uIj
 nmY
 uKH
 bUQ
@@ -95520,10 +95441,10 @@ vwY
 uIA
 acd
 ruL
+qoL
 aId
-kyh
-dKK
-xry
+vjW
+prP
 nmY
 qpV
 hNh
@@ -95724,9 +95645,9 @@ aId
 lab
 ruL
 aId
-hgD
-pSQ
-dOe
+aId
+aId
+uZV
 nmY
 rEK
 bba
@@ -95928,7 +95849,7 @@ ary
 nmY
 nZm
 smW
-prP
+aId
 xXl
 nmY
 idL

@@ -68,6 +68,8 @@
 			var/datum/autolathe/recipe/recipe = new R
 			if(recipe.category in disabled_categories)
 				continue
+			if(recipe.locked)
+				continue
 			recipes += recipe
 			categories |= recipe.category
 
@@ -268,8 +270,23 @@
 
 // --- END TGUI --- \\
 
-/obj/structure/machinery/autolathe/attackby(obj/item/O as obj, mob/user as mob)
-	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+/obj/structure/machinery/autolathe/attackby(obj/item/item as obj, mob/user as mob)
+	if(istype(item, /obj/item/ordnance/tech_disk))
+		var/obj/item/ordnance/tech_disk/disk = item
+		if(!istype(src, /obj/structure/machinery/autolathe/armylathe))
+			to_chat(user, SPAN_WARNING("\the [src] refuses \the [disk]!"))
+			return
+		if(!length(disk.tech))
+			to_chat(user, SPAN_WARNING("There is no technology in this disk!"))
+			return
+		if(add_recipe(disk.tech))
+			to_chat(user, SPAN_WARNING("Technology successfully inserted."))
+			qdel(item)
+		else
+			to_chat(user, SPAN_WARNING("Technology already in \the [src]!"))
+		return
+
+	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
@@ -280,12 +297,12 @@
 
 	if(panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
-		if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
+		if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
 			attack_hand(user)
 			return
 
 		//Dismantle the frame.
-		if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
+		if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 			dismantle()
 			return
 
@@ -293,7 +310,7 @@
 		return
 
 	//Resources are being loaded.
-	var/obj/item/eating = O
+	var/obj/item/eating = item
 	if(!eating.matter)
 		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
 		return
@@ -341,12 +358,37 @@
 	if(istype(eating,/obj/item/stack))
 		var/obj/item/stack/stack = eating
 		stack.use(max(1,floor(total_used/mass_per_sheet))) // Always use at least 1 to prevent infinite materials.
-	else if(user.temp_drop_inv_item(O))
-		qdel(O)
+	else if(user.temp_drop_inv_item(item))
+		qdel(item)
 
 	update_printables()
 	updateUsrDialog()
 	return TRUE //so the item's afterattack isn't called
+
+/obj/structure/machinery/autolathe/proc/add_recipe(list/recipe_name)
+	var/had_new_recipes = FALSE
+	for(var/rec in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe-/datum/autolathe/recipe/armylathe-/datum/autolathe/recipe/medilathe)
+		var/datum/autolathe/recipe/recipe = new rec
+		if(recipes.Find(recipe))
+			continue
+		if(recipe_name.Find(recipe.name))
+			recipes += recipe
+			had_new_recipes = TRUE
+
+			var/obj/item/item = new recipe.path
+			if(item.matter && !recipe.resources)
+				recipe.resources = list()
+				for(var/material in item.matter)
+					if(!isnull(storage_capacity[material]))
+						if(istype(item,/obj/item/stack/sheet))
+							recipe.resources[material] = item.matter[material]
+						else
+							recipe.resources[material] = floor(item.matter[material]*1.25)
+
+	if(had_new_recipes)
+		update_printables()
+		return TRUE
+	return FALSE
 
 //Updates overall lathe storage size.
 /obj/structure/machinery/autolathe/RefreshParts()

@@ -620,6 +620,13 @@
 			S.changing_layer(new_layer)
 
 	for(var/mob/living/ignited_morb in loc) //Deal bonus damage if someone's caught directly in initial stream
+
+		if(weapon_cause_data.cause_obj)
+			if(istype(weapon_cause_data.cause_obj, /obj/item/explosive))
+				var/obj/item/explosive/bomb = weapon_cause_data.cause_obj
+				if(bomb.attached_analyzer)
+					bomb.attached_analyzer.add_mob(ignited_morb)
+
 		if(ignited_morb.stat == DEAD)
 			continue
 

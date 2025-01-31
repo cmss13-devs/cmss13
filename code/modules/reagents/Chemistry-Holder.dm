@@ -7,6 +7,7 @@
 	var/allow_star_shape = TRUE
 	var/exploded = FALSE
 	var/datum/weakref/source_mob
+	var/datum/cause_data/cause_obj
 
 	var/locked = FALSE
 
@@ -643,7 +644,7 @@
 			ex_falloff = EXPLOSION_MIN_FALLOFF
 
 		//Note: No need to log here as that is done in cell_explosion()
-		var/datum/cause_data/cause_data = create_cause_data("chemical explosion", source_atom)
+		var/datum/cause_data/cause_data = create_cause_data("chemical explosion", source_atom, cause_obj)
 		create_shrapnel(sourceturf, shards, dir, angle, shard_type, cause_data)
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			addtimer(CALLBACK(my_atom.loc, TYPE_PROC_REF(/atom, ex_act), ex_power), 0.2 SECONDS)
@@ -705,7 +706,7 @@
 
 	R.fire_penetrating = fire_penetrating
 
-	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve()), R, radius, FALSE, flameshape)
+	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve(), cause_obj), R, radius, FALSE, flameshape)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)
 
 /// Checks if any of the reagents contained within are harmful

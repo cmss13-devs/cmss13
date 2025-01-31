@@ -29,6 +29,10 @@
 	name = "Chemical Storage System (Misc)"
 	network = "Misc"
 
+/obj/structure/machinery/chem_storage/ordnance
+	name = "Chemical Storage System (Ordnance)"
+	network = "Ordnance"
+
 /obj/structure/machinery/chem_storage/Initialize()
 	. = ..()
 	GLOB.chemical_data.add_chem_storage(src)

@@ -969,6 +969,7 @@
 #include "code\game\machinery\computer\hybrisa_slotmachine.dm"
 #include "code\game\machinery\computer\medical.dm"
 #include "code\game\machinery\computer\Operating.dm"
+#include "code\game\machinery\computer\ordnance.dm"
 #include "code\game\machinery\computer\pod.dm"
 #include "code\game\machinery\computer\prisoner.dm"
 #include "code\game\machinery\computer\research.dm"

@@ -5,6 +5,7 @@
 	var/role
 	var/faction
 	var/cause_name
+	var/cause_obj
 	var/datum/weakref/weak_cause
 
 /datum/cause_data/proc/resolve_mob()
@@ -24,6 +25,7 @@
 	new_data.cause_name = new_cause
 	if(C)
 		new_data.weak_cause = WEAKREF(C)
+		new_data.cause_obj = C
 	if(istype(M))
 		new_data.weak_mob = WEAKREF(M)
 		if(M.mind)

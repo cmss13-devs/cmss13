@@ -22,6 +22,7 @@
 /datum/game_mode/extended/process()
 	. = ..()
 	if(next_research_allocation < world.time)
+		GLOB.ordnance_research.update_credits(GLOB.ordnance_research.credits_to_allocate)
 		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
 

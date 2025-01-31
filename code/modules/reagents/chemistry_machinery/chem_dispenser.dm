@@ -379,6 +379,15 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	breakable = FALSE
 
+/obj/structure/machinery/chem_dispenser/ordnance
+	name = "industrial chemical dispenser"
+	desc = "A complex machine for mixing elements into chemicals. A Wey-Yu product."
+	icon = 'icons/obj/structures/machinery/science_machines.dmi'
+	icon_state = "industry_dispenser"
+	req_skill = SKILL_ENGINEER
+	req_skill_level = SKILL_ENGINEER_MASTER
+	network = "Ordnance"
+
 #undef DISPENSER_UNHACKABLE
 #undef DISPENSER_NOT_HACKED
 #undef DISPENSER_HACKED

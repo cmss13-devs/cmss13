@@ -6,6 +6,8 @@
 	var/category
 	var/power_use = 0
 	var/is_stack
+	/// if true, recipe is not given to autolathe by default
+	var/locked = FALSE
 
 /datum/autolathe/recipe/bucket
 	name = "bucket"
@@ -290,31 +292,37 @@
 	name = "C4 Plastic Casing"
 	path = /obj/item/explosive/plastic/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+	locked = TRUE
 
 /datum/autolathe/recipe/armylathe/rocket_tube
 	name = "88mm Rocket Tube"
 	path = /obj/item/ammo_magazine/rocket/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+	locked = TRUE
 
 /datum/autolathe/recipe/armylathe/rocket_warhead
 	name = "88mm Rocket Warhead"
 	path = /obj/item/explosive/warhead/rocket
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+	locked = TRUE
 
 /datum/autolathe/recipe/armylathe/mortar_shell
 	name = "80mm Mortar Shell"
 	path = /obj/item/mortar_shell/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+	locked = TRUE
 
 /datum/autolathe/recipe/armylathe/mortar_warhead
 	name = "80mm Mortar Warhead"
 	path = /obj/item/explosive/warhead/mortar
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+	locked = TRUE
 
 /datum/autolathe/recipe/armylathe/mortar_camera_warhead
 	name = "80mm Mortar Camera Warhead"
 	path = /obj/item/explosive/warhead/mortar/camera
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+	locked = TRUE
 
 /datum/autolathe/recipe/armylathe/flamer_tank
 	name = "Custom M240A1 Fuel Tank"

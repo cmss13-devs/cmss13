@@ -38,16 +38,16 @@
 	killed_by = strip_improper(death_cause?.cause_name) || "Unknown"
 	round_id = GLOB.round_id || -1
 	if(isgun(dead_marine.s_store))
-		primary_weapon = strip_improper(dead_marine.s_store.name)
+		primary_weapon = strip_improper(dead_marine.s_store::name)
 	else if(isgun(dead_marine.back))
-		primary_weapon = strip_improper(dead_marine.back.name)
+		primary_weapon = strip_improper(dead_marine.back::name)
 	else
 		var/obj/item/weapon/gun/found_gun = locate(/obj/item/weapon/gun) in dead_marine.contents
 		if(found_gun)
-			primary_weapon = strip_improper(found_gun.name)
+			primary_weapon = strip_improper(found_gun::name)
 
 	if(istype(dead_marine.wear_suit, /obj/item/clothing/suit))
-		armor = strip_improper(dead_marine.wear_suit.name)
+		armor = strip_improper(dead_marine.wear_suit::name)
 
 	SSticker?.mode?.round_stats?.marine_deaths += src
 	save()

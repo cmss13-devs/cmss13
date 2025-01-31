@@ -1182,7 +1182,7 @@
 /obj/item/ammo_magazine/sniper/svd,
 /obj/item/ammo_magazine/rifle/m16,
 /obj/item/ammo_magazine/shotgun,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/ammo_magazine/smg/m39/ap,
 /obj/structure/surface/rack,
 /turf/open/floor/red/east,

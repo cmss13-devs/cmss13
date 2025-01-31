@@ -30873,10 +30873,6 @@
 	},
 /turf/open/floor/carpet,
 /area/prison/pirate)
-"crR" = (
-/obj/item/weapon/gun/shotgun/merc,
-/turf/open/floor/carpet,
-/area/prison/pirate)
 "crS" = (
 /obj/structure/machinery/door_control{
 	id = "pirate_cargo";
@@ -69762,7 +69758,7 @@ ckn
 cjw
 cqA
 crn
-crR
+css
 css
 csU
 crh

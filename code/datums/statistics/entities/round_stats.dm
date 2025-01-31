@@ -317,11 +317,19 @@
 	caste_picks.castes_picked = castes_evolved
 	caste_picks.save()
 
+/datum/entity/statistic/round/proc/store_spec_kit_data()
+	//if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+	//	return
+
+	var/datum/entity/initial_spec_picks/spec_picks = DB_ENTITY(/datum/entity/initial_spec_picks)
+	spec_picks.save()
+
 /datum/entity/statistic/round/proc/log_round_statistics()
 	if(!GLOB.round_stats)
 		return
 
 	store_caste_evo_data()
+	store_spec_kit_data()
 
 	var/total_xenos_created = 0
 	var/total_predators_spawned = 0

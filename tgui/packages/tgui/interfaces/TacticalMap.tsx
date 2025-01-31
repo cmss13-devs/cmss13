@@ -121,28 +121,30 @@ export const TacticalMap = (props) => {
   };
 
   const getZTabs = () => {
-    if(!data.canChangeZ)
-      return;
+    if (!data.canChangeZ) return;
 
     return (
-      <><Tabs.Tab
-        key={PAGES.length}
-        color={data.isxeno ? 'purple' : 'blue'}
-        selected={false}
-        icon={'plus'}
-        onClick={() => tryIncrementZ()}
-      >
-        Move up
-      </Tabs.Tab><Tabs.Tab
-        key={PAGES.length + 1}
-        color={data.isxeno ? 'purple' : 'blue'}
-        selected={false}
-        icon={'minus'}
-        onClick={() => tryDecrementZ()}
-      >
+      <>
+        <Tabs.Tab
+          key={PAGES.length}
+          color={data.isxeno ? 'purple' : 'blue'}
+          selected={false}
+          icon={'plus'}
+          onClick={() => tryIncrementZ()}
+        >
+          Move up
+        </Tabs.Tab>
+        <Tabs.Tab
+          key={PAGES.length + 1}
+          color={data.isxeno ? 'purple' : 'blue'}
+          selected={false}
+          icon={'minus'}
+          onClick={() => tryDecrementZ()}
+        >
           Move down
-        </Tabs.Tab></>
-    )
+        </Tabs.Tab>
+      </>
+    );
   };
 
   return (

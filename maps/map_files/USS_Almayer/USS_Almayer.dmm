@@ -1238,10 +1238,10 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "or03";
-	name = "Operating Theatre 3"
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 2;
+	name = "Operating Theatre 3";
+	id_tag = "or03"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_three)
@@ -1265,10 +1265,10 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "or04";
-	name = "Operating Theatre 4"
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 2;
+	name = "Operating Theatre 4";
+	id_tag = "or04"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
@@ -2488,6 +2488,13 @@
 	pixel_x = 2
 	},
 /obj/structure/closet/secure_closet/medical_doctor,
+/obj/structure/sign/safety/med_cryo{
+	pixel_x = 14;
+	pixel_y = -27
+	},
+/obj/structure/sign/safety/cryo{
+	pixel_y = -27
+	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/lower_medical_medbay)
 "afB" = (
@@ -2899,14 +2906,14 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "or01";
-	name = "Operating Theatre 1"
-	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "or1entshutter";
 	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 2;
+	name = "Operating Theatre 1";
+	id_tag = "or01"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_one)
@@ -2927,10 +2934,10 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "or02";
-	name = "Operating Theatre 2"
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 2;
+	name = "Operating Theatre 2";
+	id_tag = "or02"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_two)
@@ -69056,9 +69063,14 @@
 	pixel_y = -28
 	},
 /obj/structure/sign/safety/med_cryo{
-	pixel_x = 32
+	pixel_x = 32;
+	pixel_y = 7
 	},
 /obj/structure/machinery/gel_refiller,
+/obj/structure/sign/safety/cryo{
+	pixel_x = 32;
+	pixel_y = -7
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/lower_medical_medbay)
 "xqD" = (

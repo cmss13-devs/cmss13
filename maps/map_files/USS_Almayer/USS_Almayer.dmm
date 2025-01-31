@@ -3206,7 +3206,7 @@
 /area/almayer/squads/req)
 "agw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Cryosleep Room";
+	name = "\improper Cryosleep Storage Room";
 	req_access = null;
 	req_one_access = null;
 	dir = 1
@@ -4416,7 +4416,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "ajd" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Cryosleep Room"
+	name = "\improper Cryosleep Storage Room"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9;
@@ -4440,18 +4440,6 @@
 	dir = 2
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/almayer/medical/lower_medical_medbay)
-"ajh" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/vending/cigarette/koorlander,
-/obj/structure/sign/safety/medical{
-	pixel_x = -17
-	},
-/turf/closed/wall/almayer/white,
 /area/almayer/medical/lower_medical_medbay)
 "aji" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -5108,6 +5096,13 @@
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
+"akE" = (
+/obj/structure/machinery/computer/crew/alt{
+	dir = 8;
+	pixel_x = 18
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/medical/lower_medical_medbay)
 "akF" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -5180,7 +5175,9 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
 "akM" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander{
+	pixel_x = -1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "akN" = (
@@ -56326,11 +56323,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_p)
-"sab" = (
-/obj/effect/landmark/start/doctor,
-/obj/effect/landmark/late_join/doctor,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "sai" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -103156,7 +103148,7 @@ ajg
 aiT
 ahH
 ahH
-ahd
+akE
 agy
 aft
 kan
@@ -103558,7 +103550,7 @@ rRU
 akM
 kan
 kan
-ajh
+kan
 kan
 kan
 kan
@@ -103740,7 +103732,7 @@ aQF
 aQF
 sPc
 xIQ
-sab
+aoQ
 pQc
 olM
 aRy

@@ -58,7 +58,7 @@
 /obj/structure/weightmachine/stacklifter/AnimateMachine(mob/living/user)
 	var/lifts = 0
 	while(lifts++ < 6)
-		if(user.loc != src.loc)
+		if(user.loc != loc)
 			break
 		sleep(3)
 		animate(user, pixel_y = -2, time = 3)

@@ -18,14 +18,26 @@
 	max_upp = 1
 	max_royal_marines = 1
 
-/datum/emergency_call/pred/create_member(datum/mind/man, turf/override_spawn_loc)
+/datum/emergency_call/pred/mixed/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+	. = ..()
+	if(mob_min > length(members))
+		message_all_yautja("Not enough humans in storage for the hunt to start.")
+	else
+		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
+
+/datum/emergency_call/pred/mixed/create_member(datum/mind/player, turf/override_spawn_loc)
+	set waitfor = 0
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
-		return //Didn't find a useable spawn point.
+		return
 
 	var/mob/living/carbon/human/hunted = new(spawn_loc)
-	man.transfer_to(hunted, TRUE)
+
+	if(player)
+		player.transfer_to(hunted, TRUE)
+	else
+		hunted.create_hud()
 
 	if(mercs < max_mercs && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_MERC))
 		mercs++
@@ -64,7 +76,7 @@
 	name = "Hunting Grounds - Multi Faction - Medium"
 	hunt_name = "Multi Faction (group)"
 	mob_max = 6
-	mob_min = 4
+	mob_min = 2
 	max_clf = 2
 	max_upp = 2
 	max_royal_marines = 1
@@ -75,20 +87,20 @@
 	name = "Hunting Grounds - Multi Faction - Large"
 	hunt_name = "Multi Faction (large)"
 	mob_max = 8
-	mob_min = 6
+	mob_min = 3
 	max_clf = 2
-	max_upp = 2
-	max_royal_marines = 1
-	max_mercs = 1
+	max_upp = 1
+	max_royal_marines = 2
+	max_mercs = 2
 
 /datum/emergency_call/pred/mixed/harder
 	name = "Hunting Grounds - Multi Faction - Larger"
 	hunt_name = "Multi Faction (larger)"
 	mob_max = 12
-	mob_min = 6
-	max_clf = 3
+	mob_min = 4
+	max_clf = 2
 	max_upp = 2
-	max_royal_marines = 2
+	max_royal_marines = 3
 	max_mercs = 2
 
 /datum/emergency_call/pred/xeno
@@ -100,6 +112,14 @@
 	hostility = TRUE
 	max_xeno_t3 = 1
 	max_xeno_t2 = 1
+
+
+/datum/emergency_call/pred/xeno/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+	. = ..()
+	if(mob_min > length(members))
+		message_all_yautja("Not enough serpents in storage for the hunt to start.")
+	else
+		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence!")
 
 /datum/emergency_call/pred/xeno/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

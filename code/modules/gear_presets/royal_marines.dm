@@ -577,7 +577,7 @@
 
 /datum/equipment_preset/twe/royal_marine/standard/hunted
 	name = "TWE Royal Marine Commando (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/standard/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine, WEAR_HEAD)
@@ -615,7 +615,7 @@
 
 /datum/equipment_preset/twe/royal_marine/team_leader/hunted
 	name = "TWE Royal Marine Commando TL (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/team_leader/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine, WEAR_HEAD)
@@ -653,7 +653,7 @@
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/hunted
 	name = "TWE Royal Marine Commando Officer (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine/team_leader, WEAR_HEAD)

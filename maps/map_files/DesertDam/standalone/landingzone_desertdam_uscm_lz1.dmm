@@ -1149,8 +1149,7 @@
 "sJ" = (
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
+	unacidable = 1
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "sT" = (
@@ -2499,8 +2498,7 @@
 /obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
+	unacidable = 1
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "PT" = (

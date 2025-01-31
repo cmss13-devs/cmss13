@@ -455,7 +455,6 @@
 /area/bigredv2/outside/general_offices)
 "cd" = (
 /obj/structure/closet/crate/secure/weyland,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /obj/item/explosive/grenade/high_explosive/pmc,
 /obj/item/explosive/grenade/high_explosive/pmc,
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock,

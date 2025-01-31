@@ -3110,13 +3110,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
-"ctI" = (
-/obj/structure/bed{
-	icon_state = "abed"
-	},
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/prison/whitepurple/southeast,
-/area/fiorina/station/research_cells/west)
 "ctW" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -3430,11 +3423,6 @@
 "cFT" = (
 /turf/open/floor/prison/green/north,
 /area/fiorina/tumor/civres)
-"cFX" = (
-/obj/structure/largecrate/supply/supplies,
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/power_ring)
 "cGa" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -5461,7 +5449,6 @@
 	pixel_x = 10;
 	pixel_y = -3
 	},
-/obj/item/weapon/gun/shotgun/combat,
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/corsat/plate,
 /area/fiorina/tumor/aux_engi)
@@ -22619,10 +22606,6 @@
 /obj/item/stack/rods/plasteel,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/fiorina/lz/near_lzI)
-"rru" = (
-/obj/effect/spawner/random/goggles/midchance,
-/turf/open/organic/grass/astroturf,
-/area/fiorina/station/research_cells/basketball)
 "rrD" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1
@@ -23699,11 +23682,6 @@
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/security)
-"sjM" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/prison/redfull,
-/area/fiorina/station/security)
 "sjR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -24140,11 +24118,6 @@
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
-"sBY" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/park)
 "sCe" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -25256,7 +25229,6 @@
 /area/fiorina/maintenance)
 "tpt" = (
 /obj/structure/closet/wardrobe/chaplain_black,
-/obj/effect/spawner/random/goggles,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
@@ -50382,7 +50354,7 @@ wgO
 tkj
 oer
 kXD
-sBY
+hnK
 itd
 oPU
 bNT
@@ -63726,7 +63698,7 @@ lVA
 lVA
 lVA
 gIB
-sjM
+lNc
 fIn
 ihB
 gag
@@ -68516,7 +68488,7 @@ kXk
 tPB
 cKa
 kXk
-ctI
+rhH
 cKa
 kjt
 gzu
@@ -74446,7 +74418,7 @@ rAw
 rAw
 uLj
 nmm
-rru
+nmm
 nmm
 djB
 wJd
@@ -77481,7 +77453,7 @@ obE
 mxQ
 mxQ
 tUs
-cFX
+wBX
 mxQ
 mxQ
 mxQ

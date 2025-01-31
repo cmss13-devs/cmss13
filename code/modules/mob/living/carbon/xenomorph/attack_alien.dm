@@ -338,8 +338,6 @@
 
 //Breaking barricades
 /obj/structure/barricade/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.fortify)
-		return XENO_NO_DELAY_ACTION 
 	M.animation_attack_on(src)
 	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) * brute_multiplier)
 	if(barricade_hitsound)

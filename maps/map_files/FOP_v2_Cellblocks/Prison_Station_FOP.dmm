@@ -2548,7 +2548,6 @@
 "aiw" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/prison/whitepurplefull,
 /area/prison/research/secret)
 "aix" = (
@@ -4265,7 +4264,6 @@
 "aoB" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/circular_saw,
-/obj/item/tool/surgery/scalpel/manager,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/prison/medbay/surgery)
 "aoC" = (
@@ -19133,7 +19131,6 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
 /obj/structure/machinery/light{
 	dir = 4
 	},

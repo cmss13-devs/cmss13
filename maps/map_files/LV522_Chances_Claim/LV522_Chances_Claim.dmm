@@ -38830,7 +38830,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/tool/surgery/scalpel/manager,
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/strata/cyan2/east,
 /area/lv522/indoors/a_block/medical)

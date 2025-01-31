@@ -27112,7 +27112,6 @@
 "czH" = (
 /obj/item/tool/surgery/scalpel,
 /obj/item/tool/surgery/hemostat,
-/obj/item/tool/surgery/scalpel/manager,
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 4
@@ -27128,7 +27127,6 @@
 "czJ" = (
 /obj/item/tool/surgery/scalpel,
 /obj/item/tool/surgery/hemostat,
-/obj/item/tool/surgery/scalpel/manager,
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 4

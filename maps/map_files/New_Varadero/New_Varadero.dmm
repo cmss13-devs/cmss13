@@ -11674,7 +11674,6 @@
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -30
 	},
-/obj/item/tool/surgery/scalpel/manager,
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
 "jrq" = (

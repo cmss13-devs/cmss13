@@ -240,7 +240,6 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/item/tool/surgery/scalpel/manager,
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/medical)
 "lW" = (

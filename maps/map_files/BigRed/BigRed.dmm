@@ -1807,7 +1807,6 @@
 /area/bigredv2/caves_lambda)
 "ahz" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/tool/surgery/scalpel/manager,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves/lambda/xenobiology)
 "ahA" = (
@@ -3918,7 +3917,6 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/combat,
 /obj/structure/machinery/door/window/eastleft,
 /turf/open/floor/elevatorshaft/north,
 /area/bigredv2/caves/lambda/breakroom)
@@ -6557,11 +6555,6 @@
 "aEu" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside)
-"aEw" = (
-/obj/structure/surface/table,
-/obj/item/tool/surgery/scalpel/manager,
-/turf/open/floor/whitebluefull/northeast,
-/area/bigredv2/outside/medical)
 "aEx" = (
 /obj/item/alien_embryo,
 /turf/open/floor/white,
@@ -24870,10 +24863,6 @@
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/weapon/gun/smg/bizon{
-	pixel_x = 1;
-	pixel_y = 11
-	},
 /obj/item/ammo_magazine/smg/bizon{
 	pixel_x = 11;
 	pixel_y = -3
@@ -36572,16 +36561,6 @@
 "vBI" = (
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/n)
-"vCd" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = 8
-	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = -7
-	},
-/turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/caves/mining)
 "vCf" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -39182,7 +39161,6 @@
 	dir = 4
 	},
 /obj/structure/closet/crate,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /obj/item/ammo_magazine/rifle/nsg23,
 /obj/item/ammo_magazine/rifle/nsg23,
 /obj/item/ammo_magazine/rifle/nsg23/ap,
@@ -45907,7 +45885,7 @@ wVQ
 oKy
 lSH
 xhU
-vCd
+hRy
 hCT
 pSa
 tBK
@@ -51649,7 +51627,7 @@ aBb
 aBI
 amj
 aqC
-aEw
+aqC
 wuz
 pUn
 aHo

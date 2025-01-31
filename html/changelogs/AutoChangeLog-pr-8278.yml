@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - rscadd: "Eggsac carrier eggs no longer support playable huggers IF there is no cluster BEFORE they are placed, eggs put on clustered/hive weeds still allow huggers"

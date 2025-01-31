@@ -522,3 +522,40 @@
   Paperybirch:
   - rscadd: Added reagent/ethanol/ethanol and defined its chem class as CHEM_CLASS_BASIC
   - bugfix: Changed oxycodone's chem class from uncommon to CHEM_CLASS_COMMON
+2025-01-31:
+  BlackCrystalic:
+  - bugfix: Now all rockets fired from cas have in causedata user mob
+  Blundir:
+  - bugfix: replaced placeholder mouse named "rat" with an actual rats
+  - spellcheck: specified that Doc the mouse is actually a mouse and not a rat
+  Drathek:
+  - bugfix: Fixed stat browser not saving/restoring font size value on 516
+  Red-byte3D:
+  - rscadd: Eggsac carrier eggs no longer support playable huggers IF there is no
+      cluster BEFORE they are placed, eggs put on clustered/hive weeds still allow
+      huggers
+  Zenith:
+  - maptweak: Tweaked Hybrisa LZ2, added fog and minor map tweaks.
+  Zonespace27:
+  - admin: Xenomorphs are now properly logged in round_stats.log files.
+  efzapa:
+  - bugfix: Fixes Arcade Machines almost only ever giving money cards as a reward.
+  iamtheguy, quicklode:
+  - imageadd: new iamtheguy smartpack sprites are now in the synth vendor.
+  private-tristan:
+  - balance: You can no longer use HPR's slap transfer to transfer bullets to a non-HPR
+      mag.
+  - rscadd: Three Fourths Night Vision option for ghosts and xenos
+  - imageadd: Icon for xenos 3/4ths NV
+  - code_imp: renamed LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE to LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+  - rscadd: Solar Devils come with shielded blowtorches, causing no eye damage when
+      used
+  - rscadd: Solar Devils now spawn with AP loaded in their MK1s.
+  - balance: All Solar Devils know how to use smartguns
+  - balance: Solar Devils SG now gets a machete scabbard
+  - balance: Replaced 2 cells in the Solar Devil engi kit with breaching charges
+  - bugfix: The Solar Devils Platoon Leader now has the correct medical skill and
+      will spawn with medkits.
+  realforest2001:
+  - bugfix: Clarifies that VAI should not be shooting WY or getting into fights with
+      them outside of authorized events.

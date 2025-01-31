@@ -236,7 +236,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "gr" = (

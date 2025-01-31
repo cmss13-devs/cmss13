@@ -313,6 +313,9 @@
 	track_dead_participant(new_death.faction_name)
 
 /datum/entity/statistic/round/proc/store_caste_evo_data()
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		return
+
 	var/datum/entity/round_caste_picks/caste_picks = SSentity_manager.tables[/datum/entity/round_caste_picks].make_new()
 	caste_picks.castes_picked = castes_evolved
 	caste_picks.save()

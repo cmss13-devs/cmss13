@@ -56,7 +56,7 @@
 /obj/item/weapon/gun/shotgun/pump,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "l" = (

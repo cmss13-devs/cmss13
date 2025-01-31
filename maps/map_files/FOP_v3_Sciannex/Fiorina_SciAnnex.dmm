@@ -14466,7 +14466,6 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "lhJ" = (
-/obj/item/weapon/gun/flamer,
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/ammo_magazine/flamer_tank,
 /obj/item/ammo_magazine/flamer_tank,

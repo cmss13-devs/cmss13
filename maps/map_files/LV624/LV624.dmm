@@ -3240,8 +3240,8 @@
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/incendiary,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "atO" = (
@@ -9165,11 +9165,6 @@
 "aWT" = (
 /obj/structure/surface/rack,
 /obj/item/device/aicard,
-/turf/open/floor/greengrid,
-/area/lv624/lazarus/secure_storage)
-"aWU" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/flamer,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWV" = (
@@ -29404,7 +29399,7 @@ aUQ
 aUQ
 aVY
 aUQ
-aWU
+ygp
 aUQ
 aXD
 aUQ

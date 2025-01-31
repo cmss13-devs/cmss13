@@ -143,7 +143,6 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "aaN" = (
-/obj/item/weapon/gun/flamer,
 /obj/structure/surface/rack,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
@@ -15326,10 +15325,6 @@
 /obj/structure/window/framed/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/warehouse)
-"ncY" = (
-/obj/item/weapon/gun/flamer,
-/turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/central)
 "ndJ" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_3"
@@ -42910,7 +42905,7 @@ bfc
 qrz
 anE
 anE
-ncY
+ndR
 jqY
 jqY
 ndR

@@ -19899,10 +19899,6 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/item/weapon/gun/flamer{
-	current_mag = null;
-	layer = 3.1
-	},
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/north_street)

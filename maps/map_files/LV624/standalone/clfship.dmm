@@ -840,11 +840,11 @@
 /area/lv624/lazarus/crashed_ship)
 "Bg" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/ammo_magazine/shotgun/incendiary{
+/obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 3;
 	pixel_y = 6
 	},
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "BC" = (

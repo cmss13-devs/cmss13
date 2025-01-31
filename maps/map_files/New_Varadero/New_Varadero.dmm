@@ -13779,17 +13779,6 @@
 	},
 /turf/open/floor/shiva/purple/southeast,
 /area/varadero/interior/research)
-"leO" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/surface/table,
-/obj/item/weapon/gun/flamer,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/electrical)
 "leP" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/asteroidwarning/west,
@@ -52680,7 +52669,7 @@ kCA
 tlT
 mYd
 wRi
-leO
+iIC
 rKL
 mSf
 kCA

@@ -167,14 +167,14 @@
 	if(istype(W,/obj/item/tool/surgery/scalpel))
 		switch(brain_op_stage)
 			if(0)
-				user.visible_message(SPAN_WARNING("[brainmob] is beginning to have \his head cut open with [W] by [user]."), \
+				user.visible_message(SPAN_WARNING("[brainmob] is beginning to have \his head cut open with [W] by [user]."),
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
 				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
 
 				brain_op_stage = 1
 
 			if(2)
-				user.visible_message(SPAN_WARNING("[brainmob] is having \his connections to the brain delicately severed with [W] by [user]."), \
+				user.visible_message(SPAN_WARNING("[brainmob] is having \his connections to the brain delicately severed with [W] by [user]."),
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
 				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
 
@@ -184,12 +184,12 @@
 	else if(istype(W,/obj/item/tool/surgery/circular_saw))
 		switch(brain_op_stage)
 			if(1)
-				user.visible_message(SPAN_WARNING("[brainmob] has \his head sawed open with [W] by [user]."), \
+				user.visible_message(SPAN_WARNING("[brainmob] has \his head sawed open with [W] by [user]."),
 							SPAN_WARNING("You saw [brainmob]'s head open with [W]!"))
 				to_chat(brainmob, SPAN_WARNING("[user] saw open your head with [W]!"))
 				brain_op_stage = 2
 			if(3)
-				user.visible_message(SPAN_WARNING("[brainmob] has \his spine's connection to the brain severed with [W] by [user]."), \
+				user.visible_message(SPAN_WARNING("[brainmob] has \his spine's connection to the brain severed with [W] by [user]."),
 									SPAN_WARNING("You sever [brainmob]'s brain's connection to the spine with [W]!"))
 				to_chat(brainmob, SPAN_WARNING("[user] severs your brain's connection to the spine with [W]!"))
 

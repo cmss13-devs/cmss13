@@ -27,7 +27,7 @@
 		update_icons()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
-		if(!(datum_flags & DF_VAR_EDITED))
+		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
 			var/datum/entity/xeno_death/death_log = SSentity_manager.tables[/datum/entity/xeno_death].make_new()
 			death_log.load_data(src, cause)
 

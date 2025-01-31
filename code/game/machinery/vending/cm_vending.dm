@@ -993,7 +993,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["vendor_type"] = "sorted"
 	.["displayed_categories"] = vendor_user_inventory_list(user, null, 4)
 
-/obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/A, mob/user)
+/obj/structure/machinery/cm_vending/sorted/attackby(atom/movable/A, mob/user)
 	if(inoperable())
 		return
 	if(user.stat || user.is_mob_restrained())

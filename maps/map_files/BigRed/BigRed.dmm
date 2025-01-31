@@ -27045,7 +27045,7 @@
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/bigredv2/outside/nw)
+/area/bigred/ground/garage_workshop)
 "mda" = (
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves_lambda)
@@ -27076,7 +27076,7 @@
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
-/area/bigredv2/outside/nw)
+/area/bigred/ground/garage_workshop)
 "mes" = (
 /obj/structure/machinery/light{
 	dir = 8

@@ -11,7 +11,7 @@
 		return
 	if(!say_understands(speaker, language))
 		return
-	speaker.cast_tts(src, message, src, FALSE, null, null)
+	speaker.cast_tts(src, message)
 
 /mob/hear_radio(
 	message, verb="says",

@@ -33,7 +33,7 @@
 	x = dead_xeno.x || -1
 	y = dead_xeno.y || -1
 	z = dead_xeno.z || -1
-	death_minute = floor((world.time * 0.1) / 60) || -1
+	death_minute = floor((world.time * 0.1) / 60)
 	hive = dead_xeno.hive.name || "Unknown Hive"
 	caste = dead_xeno.caste.caste_type || "Unknown"
 	strain = dead_xeno.strain?.name || "None"

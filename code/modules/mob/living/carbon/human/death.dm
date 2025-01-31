@@ -73,6 +73,9 @@
 
 	give_action(src, /datum/action/ghost)
 
+	var/datum/entity/marine_death/death_entry = DB_ENTITY(/datum/entity/marine_death)
+	death_entry.load_data(src, cause)
+
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)
 

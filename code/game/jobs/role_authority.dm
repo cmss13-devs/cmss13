@@ -213,7 +213,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	else
 		chance = 20
 
-	if(prob(chance) && !Check_WO())
+	if((prob(chance) || SSnightmare.get_scenario_value("predator_round")) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]

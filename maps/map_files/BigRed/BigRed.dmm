@@ -103,10 +103,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
-"aay" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/dark,
-/area/bigredv2/outside/space_port)
 "aaz" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 32
@@ -719,6 +715,18 @@
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acN" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfmining"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"acO" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
 "acP" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -757,6 +765,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acW" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/darkyellow2/southwest,
+/area/bigredv2/caves/eta/research)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -769,6 +781,10 @@
 "acZ" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
+"ada" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/darkyellow2/north,
+/area/bigredv2/outside/engineering)
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
@@ -824,6 +840,25 @@
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"adn" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"ado" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"adp" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/carpet,
+/area/bigredv2/caves/lambda/breakroom)
+"adq" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/darkish,
+/area/bigredv2/caves/lambda/breakroom)
 "adr" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -860,6 +895,24 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"adx" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 1;
+	health = 25000;
+	pixel_y = 20
+	},
+/obj/structure/machinery/vending/cigarette/koorlander{
+	layer = 3.1;
+	pixel_y = 9
+	},
+/obj/structure/largecrate/random/mini/chest/b{
+	layer = 3.2;
+	pixel_y = -4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "ady" = (
 /obj/structure/bed/chair,
 /turf/open/floor/darkish,
@@ -896,6 +949,10 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
+"adF" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
 "adG" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
@@ -5024,10 +5081,6 @@
 /obj/structure/machinery/photocopier,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
-"awE" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/darkish,
-/area/bigredv2/caves/lambda/breakroom)
 "awF" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -5663,13 +5716,6 @@
 	icon_state = "snack-broken";
 	stat = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/dorms)
-"azT" = (
-/obj/structure/machinery/vending/cigarette/colony,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -11838,10 +11884,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"bcy" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
 "bcz" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor,
@@ -14605,10 +14647,6 @@
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
-"bru" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/darkyellow2/north,
-/area/bigredv2/outside/engineering)
 "brv" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/darkyellow2/north,
@@ -16349,10 +16387,6 @@
 "bAU" = (
 /obj/structure/machinery/light,
 /turf/open/floor/redfull/northwest,
-/area/bigredv2/caves/eta/research)
-"bAV" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/darkyellow2/southwest,
 /area/bigredv2/caves/eta/research)
 "bAW" = (
 /turf/open/floor/darkyellow2,
@@ -23124,10 +23158,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
-"hSP" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/mars_cave/mars_dirt_6,
-/area/bigredv2/caves/mining)
 "hST" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/se)
@@ -27732,14 +27762,6 @@
 "mOW" = (
 /obj/structure/pipes/standard/tank/oxygen,
 /turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/caves/mining)
-"mOZ" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/queen_spawn,
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfmining"
-	},
-/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "mPm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -34841,24 +34863,6 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/bigredv2/caves_lambda)
-"tNa" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 1;
-	health = 25000;
-	pixel_y = 20
-	},
-/obj/structure/machinery/vending/cigarette/colony{
-	layer = 3.1;
-	pixel_y = 9
-	},
-/obj/structure/largecrate/random/mini/chest/b{
-	layer = 3.2;
-	pixel_y = -4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "tNf" = (
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
@@ -37543,10 +37547,6 @@
 "wCo" = (
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
-"wCs" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/carpet,
-/area/bigredv2/caves/lambda/breakroom)
 "wCU" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
@@ -42886,7 +42886,7 @@ wVQ
 rxh
 rxh
 rxh
-mOZ
+acN
 rxh
 rxh
 rxh
@@ -44402,7 +44402,7 @@ kCe
 uHQ
 aao
 aao
-hSP
+acO
 szw
 wVQ
 ssO
@@ -48990,7 +48990,7 @@ pXu
 xBS
 pow
 aae
-aay
+adF
 aaO
 aaO
 aaO
@@ -51898,7 +51898,7 @@ aZO
 aZO
 aZO
 baz
-bcy
+adn
 asK
 bee
 aZu
@@ -58005,7 +58005,7 @@ vbO
 rvG
 axX
 axX
-bru
+ada
 bqM
 sDZ
 axX
@@ -61628,7 +61628,7 @@ awY
 kKA
 aua
 asJ
-azT
+ado
 amn
 nTv
 qYB
@@ -65859,7 +65859,7 @@ bzN
 bzZ
 bAs
 bAJ
-bAV
+acW
 aBv
 bBp
 bBC
@@ -67694,7 +67694,7 @@ apS
 tbl
 tbl
 gdy
-tNa
+adx
 atH
 aud
 ako
@@ -76816,7 +76816,7 @@ avO
 auY
 aqc
 axT
-wCs
+adp
 amk
 anI
 aAM
@@ -77681,7 +77681,7 @@ amk
 agd
 ava
 avP
-awE
+adq
 amk
 aao
 anI

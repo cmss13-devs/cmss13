@@ -152,7 +152,7 @@
 #define PLAY_SURVIVOR_HOSTILE (1<<0)
 #define PLAY_SURVIVOR_NON_HOSTILE (1<<1)
 
-//toggles_hunting_grounds
+//toggles_ert_pred
 #define PLAY_MERC (1<<0)
 #define PLAY_TWE (1<<1)
 #define PLAY_UPP (1<<2)

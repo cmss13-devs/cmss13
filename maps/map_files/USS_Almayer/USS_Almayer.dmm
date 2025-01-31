@@ -580,6 +580,13 @@
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = 28
 	},
+/obj/structure/transmitter/rotary{
+	name = "Operation Theatre 3 Telephone";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Operation Theatre 3";
+	pixel_x = -4;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_three)
 "abw" = (
@@ -590,6 +597,13 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -29
+	},
+/obj/structure/transmitter/rotary{
+	name = "Operation Theatre 4 Telephone";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Operation Theatre 4";
+	pixel_x = -4;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/operating_room_four)
@@ -631,7 +645,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/transmitter/rotary{
 	name = "Medical Storage Telephone";
-	phone_category = "Medical Dept.";
+	phone_category = "Medical & Research Dept.";
 	phone_id = "Medical Storage";
 	pixel_x = -7;
 	pixel_y = 22
@@ -3275,12 +3289,25 @@
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = 28
 	},
+/obj/structure/transmitter/rotary{
+	name = "Operation Theatre 1 Telephone";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Operation Theatre 1";
+	pixel_x = -5;
+	pixel_y = 12
+	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_one)
 "ahv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -29
+	},
+/obj/structure/transmitter/rotary{
+	name = "Operation Theatre 2 Telephone";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Operation Theatre 2";
+	pixel_y = 12
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/operating_room_two)
@@ -4480,14 +4507,14 @@
 	dir = 1;
 	id = "Containment Cell 5";
 	name = "Cell 5 Control";
-	pixel_x = 4;
-	pixel_y = -3
+	pixel_x = 5;
+	pixel_y = -1
 	},
 /obj/structure/machinery/door_control{
 	id = "W_Containment Cell 5";
 	name = "Containment Lockdown";
-	pixel_x = -8;
-	pixel_y = -3;
+	pixel_x = -9;
+	pixel_y = 3;
 	req_one_access_txt = "19;28"
 	},
 /turf/open/floor/almayer/sterile_green,
@@ -4621,12 +4648,12 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
 /obj/structure/pipes/vents/pump/no_boom{
 	name = "Secure Reinforced Air Vent";
 	welded = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 26
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
@@ -5558,6 +5585,9 @@
 	pixel_y = 1
 	},
 /obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
@@ -7687,18 +7717,13 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/transmitter/rotary{
-	name = "Researcher Office Telephone";
-	phone_category = "Almayer";
-	phone_id = "Research";
-	pixel_y = 6
-	},
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 6;
-	pixel_y = -1
+	pixel_y = 10
 	},
 /obj/item/reagent_container/glass/beaker/large{
-	pixel_x = -6
+	pixel_x = -4;
+	pixel_y = 3
 	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/sterile_green_side,
@@ -23182,8 +23207,8 @@
 	},
 /obj/structure/transmitter{
 	name = "Chemical Laboratory Telephone";
-	phone_category = "Medical Dept.";
-	phone_id = "Medical Chemistry";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Chemistry Laboratory";
 	pixel_x = -6;
 	pixel_y = 32
 	},
@@ -27735,6 +27760,13 @@
 	pixel_x = -16
 	},
 /obj/structure/machinery/iv_drip,
+/obj/structure/transmitter/rotary{
+	name = "Main Research Laboratory Telephone";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Main Research Laboratory";
+	pixel_y = 6;
+	pixel_x = -15
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "gGI" = (
@@ -41222,21 +41254,15 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/item/clipboard{
-	pixel_x = 8
-	},
-/obj/item/paper{
-	pixel_x = 8
-	},
-/obj/effect/spawner/random/toolbox{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 7;
-	pixel_y = 7
-	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/item/reagent_container/glass/beaker{
+	pixel_x = 7;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/glass/beaker{
+	pixel_x = 5;
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
 "moc" = (
@@ -41432,6 +41458,10 @@
 	pixel_x = 1
 	},
 /obj/structure/reagent_dispensers/fueltank/custom,
+/obj/effect/spawner/random/toolbox{
+	pixel_x = 1;
+	pixel_y = 29
+	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/containment)
 "msm" = (
@@ -45024,22 +45054,24 @@
 "nPf" = (
 /obj/structure/machinery/computer/cameras/almayer/containment{
 	dir = 8;
-	pixel_x = -4;
-	pixel_y = 6
+	pixel_x = -4
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/tool/extinguisher{
-	pixel_x = 7;
-	pixel_y = 7
-	},
 /obj/structure/machinery/door_control{
 	id = "containmentlockdown_S";
 	name = "Containment Lockdown";
-	pixel_x = -5;
-	pixel_y = -4;
+	pixel_x = -7;
+	pixel_y = -13;
 	req_one_access_txt = "19;28"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/structure/transmitter/rotary{
+	name = "Research Containment Telephone";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Research Containment";
+	pixel_y = 19;
+	pixel_x = -6
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
 "nPs" = (
@@ -51850,15 +51882,16 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder{
-	pixel_y = 8
+	pixel_y = 9;
+	pixel_x = 2
 	},
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25;
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = 2;
+	pixel_y = 4
 	},
 /obj/item/device/reagent_scanner{
-	pixel_x = -16;
+	pixel_x = -14;
 	pixel_y = 5
 	},
 /turf/open/floor/almayer/sterile_green_side,
@@ -60914,8 +60947,8 @@
 	},
 /obj/structure/transmitter/rotary{
 	name = "Lower Medical Telephone";
-	phone_category = "Medical Dept.";
-	phone_id = "Lower Medical - Reception";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Main Reception";
 	pixel_x = -13;
 	pixel_y = 4
 	},
@@ -61156,8 +61189,8 @@
 /obj/structure/machinery/door_control{
 	id = "W_Containment Cell 1";
 	name = "Containment Lockdown";
-	pixel_x = -7;
-	pixel_y = 1;
+	pixel_x = -9;
+	pixel_y = 5;
 	req_one_access_txt = "19;28"
 	},
 /obj/structure/machinery/door_display/research_cell{
@@ -64820,6 +64853,10 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = -1;
+	pixel_y = 35
+	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/containment)
 "vKe" = (
@@ -65645,25 +65682,25 @@
 /area/almayer/living/gym)
 "vYz" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 8
-	},
 /obj/item/paper_bin/wy{
-	pixel_x = -5;
-	pixel_y = 6
+	pixel_x = -7;
+	pixel_y = 8
 	},
 /obj/item/tool/pen{
-	pixel_y = -2
-	},
-/obj/item/reagent_container/dropper{
-	pixel_x = -1;
-	pixel_y = 9
+	pixel_y = 5;
+	pixel_x = -5
 	},
 /obj/structure/machinery/biohazard_lockdown{
-	pixel_x = 8;
-	pixel_y = 10
+	pixel_x = 7;
+	pixel_y = 19
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/item/clipboard{
+	pixel_x = 8
+	},
+/obj/item/paper{
+	pixel_x = 8
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
 "vYC" = (

@@ -5,36 +5,6 @@
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
-"aab" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/machinery/vending/cigarette/wy{
-	layer = 3
-	},
-/turf/open/floor/kutjevo/multi_tiles/southeast,
-/area/kutjevo/interior/colony_South/power2)
-"aac" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/kutjevo/colors/green,
-/area/kutjevo/interior/complex/botany)
-"aad" = (
-/obj/structure/machinery/vending/cigarette/wy,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction)
-"aae" = (
-/obj/structure/machinery/vending/cigarette/wy,
-/turf/open/floor/kutjevo/colors/cyan,
-/area/kutjevo/interior/complex/med)
-"aaf" = (
-/obj/structure/machinery/vending/cigarette/wy,
-/obj/structure/sign/poster{
-	pixel_y = 32
-	},
-/turf/open/floor/kutjevo/colors/purple/inner_corner/north,
-/area/kutjevo/interior/construction)
 "aat" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -3209,6 +3179,13 @@
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/kutjevo/exterior/runoff_river)
+"eCB" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction)
 "eCE" = (
 /obj/item/clipboard{
 	pixel_x = -4;
@@ -5607,6 +5584,13 @@
 /obj/effect/sentry_landmark/lz_2/bottom_left,
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/exterior/lz_pad)
+"iLU" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/sign/poster{
+	pixel_y = 32
+	},
+/turf/open/floor/kutjevo/colors/purple/inner_corner/north,
+/area/kutjevo/interior/construction)
 "iMA" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 4
@@ -6529,6 +6513,10 @@
 "kjk" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/colony_central)
+"kkB" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med)
 "kkH" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/complex/med/operating)
@@ -12103,6 +12091,14 @@
 	},
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/med/pano)
+"sJm" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/machinery/vending/cigarette/wy{
+	layer = 3
+	},
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/interior/colony_South/power2)
 "sJM" = (
 /obj/structure/closet,
 /obj/item/clothing/head/helmet/marine/veteran/kutjevo,
@@ -12354,6 +12350,10 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/operating)
+"tdG" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/kutjevo/colors/green,
+/area/kutjevo/interior/complex/botany)
 "tdQ" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/auto_turf/sand/layer0,
@@ -33454,7 +33454,7 @@ cAt
 vDS
 mte
 kGb
-aac
+tdG
 lHs
 cPt
 rxb
@@ -33593,7 +33593,7 @@ vQJ
 pSU
 uXM
 pSU
-aae
+kkB
 siR
 nAO
 snr
@@ -37753,7 +37753,7 @@ wAp
 fyF
 fyF
 qaI
-aaf
+iLU
 oMW
 euj
 bKm
@@ -41815,7 +41815,7 @@ ige
 wdt
 oYQ
 mcv
-aab
+sJm
 vUi
 bLW
 slx
@@ -42962,7 +42962,7 @@ oUP
 vMk
 vMk
 oUP
-aad
+eCB
 uhD
 iuL
 oUP

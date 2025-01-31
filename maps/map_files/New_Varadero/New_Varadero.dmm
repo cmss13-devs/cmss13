@@ -85,35 +85,11 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "aap" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/shiva/green/east,
-/area/varadero/interior/hall_SE)
-"aaq" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/shiva/greenfull/west,
-/area/varadero/interior/hall_SE)
-"aar" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/wood,
-/area/varadero/interior/hall_SE)
-"aas" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "clfraid"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
-"aat" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/shiva/blue/southeast,
-/area/varadero/interior/administration)
-"aau" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/shiva/red/northeast,
-/area/varadero/interior/security)
-"aav" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/hall_N)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -587,6 +563,10 @@
 /obj/effect/sentry_landmark/lz_2/bottom_left,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"atz" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/shiva/blue/southeast,
+/area/varadero/interior/administration)
 "atL" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -7456,6 +7436,10 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"fUJ" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/wood,
+/area/varadero/interior/hall_SE)
 "fUY" = (
 /turf/open/floor/shiva/purple/southeast,
 /area/varadero/interior/research)
@@ -8874,6 +8858,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
+"hek" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/shiva/red/northeast,
+/area/varadero/interior/security)
 "hen" = (
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/floor3,
@@ -10324,6 +10312,10 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
+"ioA" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_SE)
 "ipl" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
 	dir = 9;
@@ -11123,6 +11115,10 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
+"iTF" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/shiva/greenfull/west,
+/area/varadero/interior/hall_SE)
 "iTP" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -17879,6 +17875,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
+"oBj" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
 "oBl" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
@@ -31975,7 +31975,7 @@ srg
 srg
 xCn
 fzc
-aas
+aap
 hdh
 jQa
 jQa
@@ -45038,7 +45038,7 @@ pGJ
 bhF
 pGJ
 pGJ
-aav
+oBj
 oMs
 xWY
 hvO
@@ -45622,7 +45622,7 @@ sRM
 xgG
 qCk
 gsq
-aat
+atz
 xgG
 vUM
 sJZ
@@ -48737,7 +48737,7 @@ wmC
 mvI
 uLY
 pKs
-aaq
+iTF
 tEJ
 tEJ
 tEJ
@@ -49450,7 +49450,7 @@ nCJ
 lBn
 lBn
 slG
-aar
+fUJ
 kAm
 lBn
 nCJ
@@ -51800,7 +51800,7 @@ idw
 izy
 hJw
 wVf
-aau
+hek
 hUp
 gfg
 wVf
@@ -52385,7 +52385,7 @@ rjn
 vHs
 bPm
 wVE
-aap
+ioA
 jsO
 ciR
 wVE

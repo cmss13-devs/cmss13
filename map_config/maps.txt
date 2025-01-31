@@ -67,4 +67,5 @@ map whiskey_outpost_v2
 endmap
 
 map biggerred
+	disabled
 endmap

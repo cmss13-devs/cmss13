@@ -563,12 +563,6 @@
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
-"eD" = (
-/obj/structure/machinery/power/smes/buildable{
-	name = "colony distribution SMES"
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/north)
 "eF" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8
@@ -5145,10 +5139,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"Qo" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/hall_N)
 "Qq" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -5318,12 +5308,6 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/lz1_near)
-"RJ" = (
-/obj/structure/machinery/power/terminal{
-	dir = 8
-	},
-/turf/open/floor/bcircuit,
-/area/varadero/interior/maintenance/north)
 "RQ" = (
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/comms1)
@@ -8414,7 +8398,7 @@ UC
 OQ
 OC
 vX
-eD
+Co
 OQ
 Xo
 Xo
@@ -8477,7 +8461,7 @@ DS
 Sh
 hi
 hi
-RJ
+Co
 Yt
 LV
 vr
@@ -9814,7 +9798,7 @@ dR
 Wt
 dR
 jg
-Qo
+gI
 gI
 "}
 (55,1,1) = {"

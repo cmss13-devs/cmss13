@@ -58,6 +58,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 
 /obj/structure/machinery/cm_vending/gear/spec/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override, stack_amount)
 	. = ..()
+	if(length(GLOB.primary_specialists_picked) >= /datum/job/marine/specialist::total_positions)
+		return
+
 	if(ispath(prod_type, /obj/item/storage/box/spec))
 		var/obj/item/storage/box/spec/spec_kit = prod_type
 		GLOB.primary_specialists_picked[spec_kit::kit_name] = TRUE

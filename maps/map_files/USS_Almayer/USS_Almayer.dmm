@@ -243,6 +243,34 @@
 /obj/item/storage/box/drinkingglasses,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
+"aaJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/disposal/delivery{
+	density = 0;
+	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
+	icon_state = "delivery_med";
+	name = "Requisitions Delivery Unit";
+	pixel_y = 28
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/medical/morgue)
+"aaK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/closed/wall/almayer/white,
+/area/almayer/medical/morgue)
+"aaL" = (
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink_med_req"
+	},
+/turf/closed/wall/almayer/white,
+/area/almayer/medical/morgue)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -52203,7 +52231,7 @@
 	pixel_x = -7;
 	pixel_y = 11
 	},
-/obj/item/storage/fancy/collector/feathers,
+/obj/item/storage/collector/feathers,
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "rBD" = (
@@ -54511,12 +54539,17 @@
 	pixel_x = -14;
 	pixel_y = 7
 	},
-/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
-	pixel_y = 18
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 11
 	},
-/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
-	pixel_y = 20;
-	pixel_x = 9
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/green/northeast,
 /area/almayer/living/grunt_rnr)
@@ -55527,23 +55560,28 @@
 /area/almayer/shipboard/brig/cells)
 "sUE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
-	pixel_y = 20;
-	pixel_x = 9
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 9;
+	pixel_y = 7
 	},
-/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
-	pixel_y = 18
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 9;
+	pixel_y = 13
 	},
-/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
-	pixel_y = 18;
-	pixel_x = -9
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 9;
+	pixel_y = 19
 	},
-/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
-	pixel_y = 12;
-	pixel_x = 4
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -4;
+	pixel_y = 9
 	},
-/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup{
-	pixel_x = -5
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -4;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_y = -2
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
@@ -96458,8 +96496,8 @@ aoe
 aoe
 aoe
 aoe
-aoe
-aor
+aaK
+aaJ
 aor
 aoq
 aoq
@@ -96661,7 +96699,7 @@ ajl
 aop
 koB
 aRF
-aoe
+aaL
 jkl
 mNI
 jkl

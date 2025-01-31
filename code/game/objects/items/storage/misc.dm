@@ -155,3 +155,36 @@
 	new /obj/item/attachable/bayonet/co2(src)
 	new /obj/item/co2_cartridge(src)
 	new /obj/item/co2_cartridge(src)
+
+//Collector box. For if you want to have a box for a collection of niche items.
+
+/obj/item/storage/collector //Unused base so it can be easier modified and reused for other things
+	name = "\improper mall collectors case"
+	desc = "A small case to collect things. Usefull to present your collection and to make sure it wont get lost"
+	icon = 'icons/obj/items/storage/collector.dmi'
+	icon_state = "collector_case_small"
+	item_state = "collector_case_small"
+	storage_slots = 4
+
+/obj/item/storage/collector/feathers
+	name = "\improper small feather collection"
+	desc = "A pristine case to protect a collection of old collectibel feathers. The feathers seem to be made from cheap plastic, and coverd in dust. Yet they hold deep sentimental value to some."
+	storage_slots = 4
+	can_hold = list(
+		/obj/item/prop/helmetgarb/lucky_feather/red,
+		/obj/item/prop/helmetgarb/lucky_feather/yellow,
+		/obj/item/prop/helmetgarb/lucky_feather/purple,
+		/obj/item/prop/helmetgarb/lucky_feather/blue,
+	)
+
+/obj/item/storage/collector/feathers/fill_preset_inventory()
+	new /obj/item/prop/helmetgarb/lucky_feather/red(src)
+	new /obj/item/prop/helmetgarb/lucky_feather/yellow(src)
+	new /obj/item/prop/helmetgarb/lucky_feather/purple(src)
+	new /obj/item/prop/helmetgarb/lucky_feather/blue(src)
+
+/obj/item/storage/collector/feathers/update_icon()
+	overlays = list() //resets list
+	overlays += image('icons/obj/items/storage/collector.dmi',"collector_case_small")
+	for(var/obj/item/prop/helmetgarb/lucky_feather/feather in contents)
+		overlays += image('icons/obj/items/storage/collector.dmi',feather.caseName)

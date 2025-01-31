@@ -578,37 +578,3 @@
 
 /obj/item/storage/fancy/trading_card/blue
 	collection_color = "blue"
-
-//Collector box. For if you want to have a box for a collection of niche items.
-
-/obj/item/storage/fancy/collector //Unused base so it can be easier modified and reused for other things
-	name = "\improper Small collectors case"
-	desc = "A small case to collect things. Usefull to present your collection and to make sure it wont get lost"
-	icon = 'icons/obj/items/storage/collector.dmi'
-	icon_state = "collector_case_small"
-	item_state = "collector_case_small"
-	storage_slots = 4
-	icon_type = null
-
-/obj/item/storage/fancy/collector/feathers
-	name = "\improper Small feather collection"
-	desc = "A pristine case to protect a collection of old collectibel feathers. The feathers seem to be made from cheap plastic, and coverd in dust. Yet they hold deep sentimental value to some."
-	storage_slots = 4
-	can_hold = list(
-		/obj/item/prop/helmetgarb/lucky_feather/red,
-		/obj/item/prop/helmetgarb/lucky_feather/blue,
-		/obj/item/prop/helmetgarb/lucky_feather/yellow,
-		/obj/item/prop/helmetgarb/lucky_feather/purple,
-	)
-
-/obj/item/storage/fancy/collector/feathers/fill_preset_inventory()
-	new /obj/item/prop/helmetgarb/lucky_feather/red(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/blue(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/purple(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/yellow(src)
-
-/obj/item/storage/fancy/collector/feathers/update_icon()
-	overlays = list() //resets list
-	overlays += image('icons/obj/items/storage/collector.dmi',"collector_case_small")
-	for(var/obj/item/prop/helmetgarb/lucky_feather/feather in contents)
-		overlays += image('icons/obj/items/storage/collector.dmi',feather.caseName)

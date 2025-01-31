@@ -321,8 +321,8 @@
 	caste_picks.save()
 
 /datum/entity/statistic/round/proc/store_spec_kit_data()
-	//if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
-	//	return
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		return
 
 	var/datum/entity/initial_spec_picks/spec_picks = DB_ENTITY(/datum/entity/initial_spec_picks)
 	spec_picks.save()

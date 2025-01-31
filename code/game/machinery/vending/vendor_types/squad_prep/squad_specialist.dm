@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	. = ..()
 	if(ispath(prod_type, /obj/item/storage/box/spec))
 		var/obj/item/storage/box/spec/spec_kit = prod_type
-		primary_specialists_picked[spec_kit::kit_name] = TRUE
+		GLOB.primary_specialists_picked[spec_kit::kit_name] = TRUE
 
 //------------CLOTHING VENDOR---------------
 

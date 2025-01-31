@@ -61,7 +61,8 @@
 	. = ..()
 
 	if(SSticker.mode)
-		SSticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)
+		var/ignore_slot_count = whitelist_status == CLAN_RANK_ADMIN || whitelist_status == CLAN_RANK_LEADER || M?.client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL)
+		SSticker.mode.initialize_predator(M, ignore_slot_count)
 
 /datum/job/antag/young_blood
 	title = ERT_JOB_YOUNGBLOOD

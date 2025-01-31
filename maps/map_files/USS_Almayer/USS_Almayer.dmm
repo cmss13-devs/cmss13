@@ -639,6 +639,11 @@
 	icon_state = "S"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/toolbox{
+	layer = 4;
+	pixel_y = -7;
+	pixel_x = 13
+	},
 /turf/open/floor/almayer,
 /area/almayer/medical/lower_medical_medbay)
 "abD" = (
@@ -1403,7 +1408,7 @@
 	},
 /obj/structure/barricade/handrail/medical{
 	dir = 8;
-	layer = 3
+	layer = 3.1
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/lower_medical_lobby)
@@ -1876,6 +1881,9 @@
 /obj/structure/machinery/medical_pod/autodoc{
 	pixel_y = 2
 	},
+/obj/structure/sign/safety/autodoc{
+	pixel_x = 38
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "aeo" = (
@@ -1917,7 +1925,8 @@
 /obj/item/desk_bell{
 	anchored = 1;
 	pixel_x = -7;
-	pixel_y = 10
+	pixel_y = 10;
+	ring_cooldown_length = 10
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 6
@@ -2133,9 +2142,6 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	dir = 8
-	},
-/obj/structure/sign/safety/autodoc{
-	pixel_x = 44
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
@@ -2680,7 +2686,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/status_display{
-	pixel_y = 30;
+	pixel_y = 32;
 	pixel_x = 2
 	},
 /obj/structure/barricade/handrail/medical,
@@ -2865,7 +2871,7 @@
 	},
 /obj/structure/sign/safety/rewire{
 	pixel_x = 32;
-	pixel_y = 16
+	pixel_y = 14
 	},
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/plating/northeast,
@@ -2947,7 +2953,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
-	pixel_x = 11;
+	pixel_x = 10;
 	pixel_y = 22
 	},
 /obj/item/storage/box/syringes{
@@ -2969,8 +2975,21 @@
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/recharger{
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_y = 12;
+	desc = "The faithful squire of a large majority of medical practitioners: The coffee machine."
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 5;
 	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_y = 5;
+	pixel_x = -11
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_y = -1;
+	pixel_x = -3
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
@@ -10463,9 +10482,6 @@
 	pixel_y = -27
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cobweb{
-	dir = 8
-	},
 /obj/structure/medical_supply_link/green,
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/plating/plating_catwalk,
@@ -13352,7 +13368,8 @@
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/medical_supply_link/green,
 /obj/structure/machinery/status_display{
-	pixel_y = -29
+	pixel_y = -30;
+	pixel_x = -1
 	},
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_corner/west,
@@ -13868,12 +13885,6 @@
 "bGQ" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"bGR" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -15077,7 +15088,7 @@
 /area/almayer/medical/operating_room_four)
 "bPz" = (
 /obj/structure/machinery/status_display{
-	pixel_y = 30
+	pixel_y = 32
 	},
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/almayer/sterile_green,
@@ -37938,7 +37949,8 @@
 /obj/item/device/mass_spectrometer,
 /obj/item/device/mass_spectrometer,
 /obj/structure/machinery/status_display{
-	pixel_y = 30
+	pixel_y = 31;
+	pixel_x = -1
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/chemistry)
@@ -49598,11 +49610,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "pGG" = (
-/obj/effect/landmark/start/doctor,
 /obj/structure/sign/safety/maint{
 	pixel_y = 26
 	},
-/obj/effect/landmark/late_join/doctor,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "pGK" = (
@@ -49751,8 +49761,6 @@
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
-/obj/effect/landmark/start/nurse,
-/obj/effect/landmark/late_join/nurse,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "pKx" = (
@@ -51212,6 +51220,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/obj/structure/machinery/status_display{
+	pixel_y = -30
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "qnh" = (
@@ -51525,7 +51536,7 @@
 	},
 /obj/structure/sign/safety/rewire{
 	pixel_x = 32;
-	pixel_y = -16
+	pixel_y = -14
 	},
 /obj/structure/machinery/power/apc/almayer/south,
 /turf/open/floor/almayer/plating/northeast,
@@ -52043,11 +52054,6 @@
 /obj/item/tool/mop{
 	pixel_x = -13;
 	pixel_y = 26
-	},
-/obj/effect/spawner/random/toolbox{
-	layer = 4;
-	pixel_y = -7;
-	pixel_x = -14
 	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
@@ -55388,11 +55394,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
-"rUq" = (
-/obj/effect/landmark/start/nurse,
-/obj/effect/landmark/late_join/nurse,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "rUy" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -58656,8 +58657,6 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "tmX" = (
-/obj/effect/landmark/start/professor,
-/obj/effect/landmark/late_join/cmo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "tnb" = (
@@ -95824,7 +95823,7 @@ aRu
 aRu
 aRu
 bcm
-bGQ
+xyw
 bHB
 tdc
 rOc
@@ -96027,7 +96026,7 @@ aRu
 aRu
 aRu
 bcm
-bGR
+xyw
 bHB
 xyw
 ahP
@@ -96230,7 +96229,7 @@ aRu
 aRu
 aRu
 bcm
-xyw
+bGQ
 bHB
 xyw
 agp
@@ -96254,7 +96253,7 @@ abD
 bDv
 aaR
 aaR
-bGQ
+xyw
 bHB
 qnd
 lFp
@@ -101901,10 +101900,10 @@ kyw
 deq
 cGY
 bwG
-rUq
-rUq
-sab
-sab
+tmX
+tmX
+tmX
+tmX
 izk
 pQc
 cWr
@@ -102105,7 +102104,7 @@ deq
 veq
 bwG
 pKh
-sab
+tmX
 rDv
 bmW
 jWu
@@ -102917,7 +102916,7 @@ deq
 sJa
 bwG
 pGG
-sab
+tmX
 izk
 hds
 aQF
@@ -104339,7 +104338,7 @@ lfx
 bwG
 iWQ
 iWQ
-sab
+tmX
 aNr
 pQY
 pQc

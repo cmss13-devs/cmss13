@@ -362,9 +362,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bayonet/rmc_replica
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
-	icon_state = "upp_bayonet" // PLACEHOLDER PLEASE REPLACE
+	icon_state = "twe_bayonet"
 	item_state = "combat_knife"
-	attach_icon = "upp_bayonet_a" // PLACEHOLDER PLEASE REPLACE
+	attach_icon = "twe_bayonet_a"
 
 /obj/item/attachable/bayonet/custom
 	name = "\improper M5 'Raven's Claw' tactical bayonet"

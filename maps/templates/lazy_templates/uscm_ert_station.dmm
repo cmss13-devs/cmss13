@@ -3707,8 +3707,8 @@
 	pixel_y = -3
 	},
 /obj/item/weapon/gun/shotgun/combat,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
 /obj/structure/surface/rack,
 /turf/open/floor/red/east,
 /area/adminlevel/ert_station/uscm_station)

@@ -10240,6 +10240,10 @@
 /obj/item/clothing/under/shorts/black,
 /obj/item/clothing/under/shorts/grey,
 /obj/item/clothing/under/shorts/grey,
+/obj/structure/sign/banners/colonial_marines_flag{
+	pixel_x = -27;
+	pixel_y = 30
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "bsF" = (
@@ -20125,7 +20129,8 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /obj/structure/sign/poster/hunk{
-	pixel_y = 31
+	pixel_y = 31;
+	pixel_x = -7
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
@@ -31440,6 +31445,10 @@
 /area/almayer/engineering/lower/engine_core)
 "iYx" = (
 /obj/structure/closet/boxinggloves,
+/obj/structure/sign/banners/united_americas_flag{
+	pixel_x = -18;
+	pixel_y = 30
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "iZd" = (
@@ -64746,6 +64755,22 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "wrC" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = -17
 	},
@@ -95383,7 +95408,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 bdH
 aaa

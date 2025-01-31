@@ -11,7 +11,7 @@
 	bound_x = 32
 	///assoc list containing the path to every upgrade followed by a number representing times this tech was bought. used by price inflation mechanic to increase/decrease price depending on the amount of times you bought it.
 	var/list/technology_purchased = list()
-	var/biomass_points = 0 //most important thing in this
+	var/biomass_points = 1000 //most important thing in this --giving 1k as an experiment roundstart.
 	var/obj/item/organ/xeno/organ = null
 	///normal list of typepaths containing a printing queue.
 	var/list/print_queue = list()
@@ -183,7 +183,7 @@
 	technology_purchased[upgrade] += 1
 	playsound(loc, 'sound/machines/print.ogg', 25)
 	if(length(print_queue) >= 1)
-		addtimer(CALLBACK(src, PROC_REF(print_upgrade), upgrade, user), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(print_upgrade), upgrade, user), 2 SECONDS)
 	else
 		queue_proccessing = FALSE
 

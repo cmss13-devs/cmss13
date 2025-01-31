@@ -172,7 +172,7 @@
 			if(!photocopier)
 				return
 			if(GLOB.chemical_data.clearance_level < 5)
-				var/cost = max(RESEARCH_LEVEL_INCREASE_MULTIPLIER*(GLOB.chemical_data.clearance_level + 1), 1)
+				var/cost = max(RESEARCH_LEVEL_INCREASE_MULTIPLIER*(GLOB.chemical_data.clearance_level), 1)
 				if(cost <= GLOB.chemical_data.rsc_credits)
 					GLOB.chemical_data.update_credits(cost * -1)
 					GLOB.chemical_data.clearance_level++

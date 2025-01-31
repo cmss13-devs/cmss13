@@ -63,6 +63,10 @@
 	name = "Research Upgrade (Sleeper)"
 	desc = "Research upgrade for a sleeper system. The technology on this disk is used on a sleeper to allow a wider spectrum of chemicals to be administered."
 
+/obj/item/research_upgrades/grinderspeed
+	name = "Research Upgrade (Grinder)"
+	desc = "Research upgrade for Reagent grinder, technology on this disk makes storing and grinding procedures more effective, increasing both speed and product capacity of the grinder."
+
 /obj/item/research_upgrades/autoharvest
 	name = "Research Upgrade (Botany)"
 	desc = "Research upgrade for a hydroponics system. The technology on this disk is used on a hydroponics tray to automatically shake the plant once the product is ready to harvest."

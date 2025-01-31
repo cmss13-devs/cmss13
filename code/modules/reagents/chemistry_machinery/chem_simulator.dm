@@ -227,6 +227,7 @@
 				if(reference_prop.code != params["property_code"])
 					continue
 				reference_property = reference_prop
+			update_costs()
 			if(!reference_property)
 				to_chat(ui.user, SPAN_WARNING("The [src] makes a suspicious wail."))
 				return

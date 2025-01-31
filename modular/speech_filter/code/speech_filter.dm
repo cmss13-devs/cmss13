@@ -34,9 +34,9 @@
 
 	if(ishuman(user))
 		var/mob/living/L = user
-		L.apply_stamina_damage(300)
-		L.adjustOxyLoss(40)
-		L.adjustBrainLoss(3)
+		L.apply_stamina_damage(80)
+		L.adjustOxyLoss(30)
+		L.adjustBrainLoss(1)
 		L.emote("drool")
 		to_chat(L, SPAN_PSYTALK(pick(brainrot_notifications)))
 

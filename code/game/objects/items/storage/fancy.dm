@@ -588,6 +588,7 @@
 	icon_state = "collector_case_small"
 	item_state = "collector_case_small"
 	storage_slots = 4
+	icon_type = null
 
 /obj/item/storage/fancy/collector/feathers
 	name = "\improper Small feather collection"

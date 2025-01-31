@@ -265,7 +265,7 @@
 	var/list/alerts = list()
 
 	// for multiz looking up
-	var/turf/observed_turf
+	var/atom/observed_atom
 
 /mob/vv_get_dropdown()
 	. = ..()

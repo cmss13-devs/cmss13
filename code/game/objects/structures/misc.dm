@@ -331,7 +331,11 @@
 		actual_turf = SSmapping.get_turf_below(target_turf)
 	
 	if(actual_turf)
-		mover.forceMove(actual_turf)
+		if(istype(mover, /mob))
+			var/mob/mover_mob = mover
+			mover_mob.trainteleport(actual_turf)
+		else
+			mover.forceMove(actual_turf)
 		if(!(mover.flags_atom & DIRLOCK))
 			mover.setDir(direction == UP ? dir : REVERSE_DIR(dir))
 

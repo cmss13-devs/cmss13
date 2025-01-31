@@ -1057,7 +1057,7 @@
 	var/list/target_list = list()
 	for(var/mob/living/carbon/human/target_youngbloods as anything in GLOB.yautja_mob_list)
 		if(target_youngbloods.faction == FACTION_YAUTJA_YOUNG && target_youngbloods.stat != DEAD)
-			target_list += target_youngbloods.real_name
+			target_list[target_youngbloods.real_name] = target_youngbloods
 
 	if(!length(target_list))
 		to_chat(caller, SPAN_NOTICE("No youngbloods are currently alive."))
@@ -1068,16 +1068,16 @@
 	if(!choice)
 		return
 
-	var/mob/living/target_youngblood = choice
+	var/mob/living/target_youngblood = target_list[choice]
 
-	var/reason = tgui_input_text(caller, "Provide a reason for terminating [target_youngblood].")
+	var/reason = tgui_input_text(caller, "Provide a reason for terminating [target_youngblood.real_name].")
 	if(!reason)
-		to_chat(caller, SPAN_WARNING("You must provide a reason for terminating [target_youngblood]."))
+		to_chat(caller, SPAN_WARNING("You must provide a reason for terminating [target_youngblood.real_name]."))
 		return
 
 	var/area/location = get_area(target_youngblood)
 	var/turf/floor = get_turf(target_youngblood)
-	target_youngblood.death(create_cause_data("[target_youngblood.real_name] was terminated by [caller.real_name] for [reason]."))
+	target_youngblood.death(create_cause_data("Youngblood Termination"), TRUE)
 	message_all_yautja("[caller.real_name] has terminated [target_youngblood.real_name] for: '[reason]'.")
 	message_admins(FONT_SIZE_LARGE("ALERT: [caller.real_name] ([caller.key]) Terminated [target_youngblood.real_name] ([target_youngblood.key]) in [location.name] for: '[reason]' [ADMIN_JMP(floor)]</font>"))
 

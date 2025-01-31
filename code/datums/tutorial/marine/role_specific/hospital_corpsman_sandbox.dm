@@ -77,6 +77,7 @@
 	START_PROCESSING(SSfastobj, src)
 	init_mob()
 	init_npcs()
+	remove_action(tutorial_mob, /datum/action/tutorial/skip_text)
 	slower_message_to_player("Welcome to the Hospital Corpsman tutorial sandbox mode!")
 	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 

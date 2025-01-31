@@ -213,8 +213,8 @@
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_5_pre()
 	//adds a slight grace period, so humans are not rejuved before bica is registered in their system
 
-	manual_message_to_player("Well done!")
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial_5)))
+	message_to_player("Well done!")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_5)), 3 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_5()
 	SIGNAL_HANDLER
@@ -604,14 +604,16 @@
 	add_to_tracking_atoms(splint)
 	add_highlight(splint, COLOR_GREEN)
 
-	RegisterSignal(tutorial_mob, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(splint_tutorial_3_pre))
+	for(var/obj/limb/limb in marine_dummy.limbs)
+		RegisterSignal(limb, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(splint_tutorial_3_pre))
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/splint_tutorial_3_pre()
 	//cooldown to register splint application
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SPLINT_APPLIED)
+	for(var/obj/limb/limb in marine_dummy.limbs)
+		UnregisterSignal(limb, COMSIG_HUMAN_SPLINT_APPLIED)
 	addtimer(CALLBACK(src, PROC_REF(splint_tutorial_3)), 1 SECONDS)
 
-/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/splint_tutorial_3(/obj/limb/leg/l_leg, status)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/splint_tutorial_3()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/leg/l_leg, mob_lleg)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/splint, splint)
@@ -1049,7 +1051,7 @@
 			remove_highlight(bottle)
 			QDEL_IN(bottle, 1 SECONDS)
 			medbelt.update_icon()
-			manual_message_to_player("Dont feed yourself the pill, try again.")
+			message_to_player("Dont feed yourself the pill, try again.")
 			handle_pill_bottle_status = 0
 			UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 			SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
@@ -1069,11 +1071,11 @@
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tutorial_close()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
-	manual_message_to_player("The <b>Hospital Corpsman <u>IIntermediate</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
+	message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
+	message_to_player("The <b>Hospital Corpsman <u>Intermediate</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
 	update_objective("Tutorial completed.")
 
-	playsound(tutorial_mob.loc, 'sound/theme/winning_triumph2.ogg', 20)
+	playsound(tutorial_mob.loc, 'sound/theme/winning_triumph2.ogg', 75)
 
 	tutorial_end_in(15 SECONDS)
 

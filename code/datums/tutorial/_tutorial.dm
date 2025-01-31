@@ -146,12 +146,10 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Slower variety of message_to_player, when delivering larger amounts of information
 /datum/tutorial/proc/slower_message_to_player(message)
-	var/type = /atom/movable/screen/text/screen_text/command_order/tutorial/slower
-	message_to_player(message, type)
+	message_to_player(message, /atom/movable/screen/text/screen_text/command_order/tutorial/slower)
 
 /datum/tutorial/proc/manual_message_to_player(message)
-	var/type = /atom/movable/screen/text/screen_text/command_order/tutorial/manual
-	message_to_player(message, type)
+	message_to_player(message, /atom/movable/screen/text/screen_text/command_order/tutorial/manual)
 
 /// Updates a player's objective in their status tab
 /datum/tutorial/proc/update_objective(message)

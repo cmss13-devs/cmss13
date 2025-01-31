@@ -1,4 +1,0 @@
-author: "Watermelon914"
-delete-after: True
-changes:
-  - bugfix: "Fixed an exploit that lets you increase your weapon's damage multiplier infinitely."

@@ -122,11 +122,11 @@
 
 		if(being == user) //they're using it on themselves
 			being.flash_eyes()
-			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."),
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."), \
+		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."),
 							SPAN_NOTICE("You direct [src] to [being]'s eyes."))
 
 		if(ishuman_strict(being)) //robots and aliens are unaffected
@@ -182,7 +182,7 @@
 				return // they have no organs somehow
 			if(being == user) //they're using it on themselves
 				being.flash_eyes()
-				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."),
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 				return
 			if(being.stat == DEAD || (being.status_flags&FAKEDEATH))
@@ -259,6 +259,7 @@
 	icon_state = "menorah"
 	item_state = "menorah"
 	light_range = 2
+	light_color = LIGHT_COLOR_CANDLE
 	w_class = SIZE_LARGE
 	on = 1
 	breaking_sound = null
@@ -270,6 +271,7 @@
 	icon_state = "candelabra"
 	force = 15
 	on = TRUE
+	light_color = LIGHT_COLOR_CANDLE
 
 	breaking_sound = null
 
@@ -285,6 +287,7 @@
 	desc = "An emergency light tube mounted onto a tripod. It seemingly lasts forever."
 	icon_state = "tripod_lamp"
 	light_range = 6//pretty good
+	light_color = LIGHT_COLOR_XENON
 	w_class = SIZE_LARGE
 	on = 1
 
@@ -446,7 +449,7 @@
 		if(!on)
 			return
 		var/hand = user.hand ? "l_hand" : "r_hand"
-		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
+		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),
 		SPAN_WARNING("You snuff out [src], singing your hand."))
 		user.apply_damage(7, BURN, hand)
 		burn_out()

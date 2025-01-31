@@ -246,7 +246,7 @@
 
 		cdr_amount += 5
 
-		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"), \
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"),
 			SPAN_DANGER("You slash [H]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
 		bound_xeno.flick_attack_overlay(H, "slash")

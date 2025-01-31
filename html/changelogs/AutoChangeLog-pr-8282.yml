@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - qol: "answering an emote such as high-five no longer requires targeting a specific limb."

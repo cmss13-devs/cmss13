@@ -410,7 +410,7 @@
 	upgrades += upgrades_to_apply
 	for(var/upgrade in upgrades_to_apply)
 
-		if(upgrade == ARMYLATHE_METAL_UPGRADE)
+		if(upgrade == ARMYLATHE_MATS_UPGRADE)
 			material_multiplier = 0.5
 			for(var/rec in subtypesof(/datum/autolathe/recipe/armylathe))
 				var/datum/autolathe/recipe/recipe = new rec

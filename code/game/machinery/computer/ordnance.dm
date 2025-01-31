@@ -199,8 +199,8 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	item_path = /obj/item/ordnance/tech_disk
 	add_category = TRUE
 
-/datum/ordnance_tech/lathe_upgrade/lathe_half_metal
-	name = "Armylathe Metal Efficiency Upgrade"
+/datum/ordnance_tech/lathe_upgrade/lathe_half_mats
+	name = "Armylathe Efficiency Upgrade"
 	desc = "Halves the material cost of all armylathe assemblies"
 	tech_unlock = ARMYLATHE_METAL_UPGRADE
 	value = 20

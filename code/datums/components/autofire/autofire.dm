@@ -38,6 +38,7 @@
 	RegisterSignal(parent, COMSIG_GUN_FIRE, PROC_REF(initiate_shot))
 	RegisterSignal(parent, COMSIG_GUN_STOP_FIRE, PROC_REF(stop_firing))
 	RegisterSignal(parent, COMSIG_GUN_INTERRUPT_FIRE, PROC_REF(hard_reset))
+	RegisterSignal(parent, COMSIG_GUN_NEXT_FIRE_MODIFIED, PROC_REF(set_next_fire))
 
 	src.auto_fire_shot_delay = auto_fire_shot_delay
 	src.burstfire_shot_delay = burstfire_shot_delay
@@ -111,6 +112,10 @@
 		callback_bursting.Invoke(FALSE)
 	shooting = FALSE
 
+///Manually sets firedelay
+/datum/component/automatedfire/autofire/proc/set_next_fire(gun, new_next_fire)
+	SIGNAL_HANDLER
+	next_fire = new_next_fire
 
 ///Ask the shooter to fire and schedule the next shot if need
 /datum/component/automatedfire/autofire/process_shot()

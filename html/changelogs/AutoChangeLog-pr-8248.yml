@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed predators having unlimited slots and slot exemptions still actually using slots"
+  - bugfix: "Fixed toggle predator round not working during pre-game"
+  - balance: "Predator slots are increased from 4 + 1per80 to 6 + 1per80 and clan leaders no longer count for slots"
+  - ui: "Toggle predator round now uses TGUI alerts"
+  - admin: "Predator slot adjustment can now go negative (e.g. it can limit it lower than starting count)"

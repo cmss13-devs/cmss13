@@ -301,10 +301,10 @@
 			to_chat(user, SPAN_WARNING("[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it."))
 			return
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] starts undeploying [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] starts undeploying [src]."),
 				SPAN_NOTICE("You start undeploying [src]."))
 		if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."),
 				SPAN_NOTICE("You undeploy [src]."))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			var/obj/item/mortar_kit/mortar = new /obj/item/mortar_kit(loc)
@@ -313,7 +313,7 @@
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."),
 				SPAN_NOTICE("You toggle the targeting computer on [src]."))
 			computer_enabled = !computer_enabled
 			playsound(loc, 'sound/machines/switch.ogg', 25, 1)
@@ -440,17 +440,17 @@
 	if(CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_1) && is_ground_level(deploy_turf.z))
 		to_chat(user, SPAN_WARNING("You probably shouldn't deploy [src] indoors."))
 		return
-	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You start deploying [src]."))
 	playsound(deploy_turf, 'sound/items/Deconstruct.ogg', 25, 1)
 	if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		var/obj/structure/mortar/mortar = new /obj/structure/mortar(deploy_turf)
 		if(!is_ground_level(deploy_turf.z))
 			mortar.ship_side = TRUE
-			user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] deploys [src]."),
 				SPAN_NOTICE("You deploy [src]. This is a bad idea."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] deploys [src]."),
 				SPAN_NOTICE("You deploy [src]."))
 		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
 		mortar.name = src.name

@@ -260,8 +260,8 @@
 		/obj/item/storage/fancy/cigarettes/spirit = 10,
 		/obj/item/storage/fancy/cigarettes/spirit/yellow = 10,
 		/obj/item/storage/fancy/cigar/tarbacktube = 10,
-		/obj/item/storage/fancy/cigar/tarbacks = 5,
 
+		/obj/item/storage/box/matches = 5,
 		/obj/item/storage/fancy/cigar/matchbook/koorlander = 5,
 		/obj/item/storage/fancy/cigar/matchbook/brown = 10,
 		/obj/item/tool/lighter/random = 20,
@@ -270,13 +270,13 @@
 	)
 
 	prices = list(
-		/obj/item/storage/fancy/cigarettes/kpack = 18,
+		/obj/item/storage/fancy/cigarettes/kpack = 14,
 		/obj/item/storage/fancy/cigarettes/lucky_strikes = 8,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 11,
 		/obj/item/storage/fancy/cigarettes/spirit/yellow = 12,
 		/obj/item/storage/fancy/cigarettes/spirit = 12,
 		/obj/item/storage/fancy/cigar/tarbacktube = 20,
-		/obj/item/storage/fancy/cigar/tarbacks = 50,
+		/obj/item/storage/box/matches = 3,
 		/obj/item/storage/fancy/cigar/matchbook/koorlander = 2,
 		/obj/item/storage/fancy/cigar/matchbook/brown = 1,
 		/obj/item/tool/lighter/random = 5,
@@ -292,7 +292,7 @@
 		/obj/item/storage/fancy/cigarettes/spirit/yellow = 0,
 		/obj/item/storage/fancy/cigarettes/spirit = 0,
 		/obj/item/storage/fancy/cigar/tarbacktube = 0,
-		/obj/item/storage/fancy/cigar/tarbacks = 0,
+		/obj/item/storage/box/matches = 0,
 		/obj/item/storage/fancy/cigar/matchbook/koorlander = 0,
 		/obj/item/storage/fancy/cigar/matchbook/brown = 0,
 		/obj/item/tool/lighter/random = 0,
@@ -361,6 +361,7 @@
 		/obj/item/storage/fancy/cigarettes/balaji = 10,
 		/obj/item/storage/fancy/cigarettes/blackpack = 0,
 
+		/obj/item/storage/box/matches = 5,
 		/obj/item/storage/fancy/cigar/matchbook/exec_select = 10,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 10,
 		/obj/item/tool/lighter/random = 20,
@@ -376,7 +377,8 @@
 		/obj/item/storage/fancy/cigarettes/balaji = 15,
 		/obj/item/storage/fancy/cigarettes/blackpack = 40,
 
-		/obj/item/storage/fancy/cigar/matchbook/exec_select = 5,
+		/obj/item/storage/box/matches = 2,
+		/obj/item/storage/fancy/cigar/matchbook/exec_select = 10,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 5,
 		/obj/item/tool/lighter/random = 3,
 		/obj/item/tool/lighter/zippo/black = 15,
@@ -391,6 +393,7 @@
 		/obj/item/storage/fancy/cigarettes/balaji = 0,
 		/obj/item/storage/fancy/cigarettes/blackpack = 0,
 
+		/obj/item/storage/box/matches = 5,
 		/obj/item/storage/fancy/cigar/matchbook/exec_select = 0,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 0,
 		/obj/item/tool/lighter/random = 0,

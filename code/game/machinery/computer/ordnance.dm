@@ -1,7 +1,7 @@
 GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 
 /datum/ordnance_research
-	var/technology_credits = 5 //this means we start with 10 since credits_to_allocate also happens at round start
+	var/technology_credits = 100 //this means we start with 10 since credits_to_allocate also happens at round start
 	/// amount of credits earned every 10 minutes
 	var/credits_to_allocate = 5
 	/// technology bought so far, if something is in this list then it can't be bought again
@@ -21,6 +21,8 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	icon = 'icons/obj/items/disk.dmi'
 	w_class = SIZE_TINY
 	icon_state = "datadisk1"
+	///is it an autolathe upgrade or unlock?
+	var/tech_type
 	/// stuff that this unlocks when put in a lathe
 	var/list/tech = list()
 
@@ -150,6 +152,7 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	var/obj/item/ordnance/tech_disk/disk = new item_path(location)
 	disk.name = "technology disk for [name]"
 	disk.desc = "Insert this in an armylathe to obtain this technology."
+	disk.tech_type = item_type
 	disk.tech += tech_unlock
 	playsound(location, 'sound/machines/fax.ogg', 15, 1)
 
@@ -160,11 +163,11 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	value = 5
 	add_category = FALSE
 
-/datum/ordnance_tech/technology/rocket
-	name = "84mm Rocket"
-	desc = "An 84mm custom rocket."
-	tech_unlock = list(CUSTOM_ROCKET, CUSTOM_ROCKET_WARHEAD)
-	value = 35
+/datum/ordnance_tech/technology/mine
+	name = "M20 Mine Casing"
+	desc = "A custom chemical mine built from an M20 casing."
+	tech_unlock = CUSTOM_CLAYMORE
+	value = 12
 	add_category = FALSE
 
 /datum/ordnance_tech/technology/shell
@@ -174,12 +177,44 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	value = 30
 	add_category = FALSE
 
-/datum/ordnance_tech/technology/mine
-	name = "M20 Mine Casing"
-	desc = "A custom chemical mine built from an M20 casing."
-	tech_unlock = CUSTOM_CLAYMORE
-	value = 12
+/datum/ordnance_tech/technology/rocket
+	name = "84mm Rocket"
+	desc = "An 84mm custom rocket."
+	tech_unlock = list(CUSTOM_ROCKET, CUSTOM_ROCKET_WARHEAD)
+	value = 35
 	add_category = FALSE
+
+/datum/ordnance_tech/technology/custom_ob
+	name = "Custom Orbital Bombardment"
+	desc = "An orbital bombardment shell able to be filled with custom reagents, only one can be deployed per operation."
+	tech_unlock = CUSTOM_OB
+	value = 45
+	add_category = FALSE
+
+//armylathe upgrades
+
+/datum/ordnance_tech/lathe_upgrade
+	name = "Armylathe Upgrades"
+	item_type = ORDNANCE_UPGRADE_LATHE
+	item_path = /obj/item/ordnance/tech_disk
+	add_category = TRUE
+
+/datum/ordnance_tech/lathe_upgrade/lathe_half_metal
+	name = "Armylathe Metal Efficiency Upgrade"
+	desc = "Halves the material cost of all armylathe assemblies"
+	tech_unlock = ARMYLATHE_METAL_UPGRADE
+	value = 20
+	add_category = FALSE
+
+/datum/ordnance_tech/lathe_upgrade/purchase(turf/location)
+	if(isnull(item_path))
+		return
+	var/obj/item/ordnance/tech_disk/disk = new item_path(location)
+	disk.name = "upgrade disk for [name]"
+	disk.desc = "Insert this in an armylathe to upgrade it."
+	disk.tech_type = item_type
+	disk.tech += tech_unlock
+	playsound(location, 'sound/machines/fax.ogg', 15, 1)
 
 //the computer
 

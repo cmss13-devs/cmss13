@@ -15,6 +15,10 @@
 	idle_power_usage = 10
 	active_power_usage = 100
 
+	///what upgrades this autolathe has been given? used by OT stuff
+	var/list/upgrades = list()
+	///used by ARMYLATHE_METAL_UPGRADE
+	var/material_multiplier = 1
 	var/list/stored_material = list("metal" = 30000, "glass" = 2000)
 	var/list/projected_stored_material // will be <= stored_material values
 	var/list/storage_capacity = list("metal" = 0, "glass" = 0)
@@ -81,7 +85,7 @@
 						if(istype(I,/obj/item/stack/sheet))
 							recipe.resources[material] = I.matter[material] //Doesn't take more if it's just a sheet or something. Get what you put in.
 						else
-							recipe.resources[material] = floor(I.matter[material]*1.25) // More expensive to produce than they are to recycle.
+							recipe.resources[material] = floor(I.matter[material]*1.25 * material_multiplier) // More expensive to produce than they are to recycle.
 			QDEL_NULL(I)
 
 	//Create parts for lathe.
@@ -271,6 +275,8 @@
 // --- END TGUI --- \\
 
 /obj/structure/machinery/autolathe/attackby(obj/item/item as obj, mob/user as mob)
+	//OT upgrade stuff
+
 	if(istype(item, /obj/item/ordnance/tech_disk))
 		var/obj/item/ordnance/tech_disk/disk = item
 		if(!istype(src, /obj/structure/machinery/autolathe/armylathe))
@@ -279,12 +285,21 @@
 		if(!length(disk.tech))
 			to_chat(user, SPAN_WARNING("There is no technology in this disk!"))
 			return
-		if(add_recipe(disk.tech))
-			to_chat(user, SPAN_WARNING("Technology successfully inserted."))
-			qdel(item)
-		else
-			to_chat(user, SPAN_WARNING("Technology already in \the [src]!"))
-		return
+		if(disk.tech_type == ORDNANCE_UPGRADE_TECH)
+			if(add_recipe(disk.tech))
+				to_chat(user, SPAN_WARNING("Technology successfully inserted."))
+				qdel(item)
+			else
+				to_chat(user, SPAN_WARNING("Technology already in \the [src]!"))
+			return
+		if(disk.tech_type == ORDNANCE_UPGRADE_LATHE)
+			if(upgrades.Find(disk.tech))
+				to_chat(user, SPAN_WARNING("Upgrade already in \the [src]!"))
+				return
+			apply_upgrades(disk.tech)
+			qdel(disk)
+			to_chat(user, SPAN_WARNING("Upgrade successfully inserted."))
+			return
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -328,6 +343,7 @@
 			continue
 
 		var/total_material = eating.matter[material]
+		total_material *= material_multiplier
 
 		//If it's a stack, we eat multiple sheets.
 		if(istype(eating,/obj/item/stack))
@@ -369,11 +385,11 @@
 	var/had_new_recipes = FALSE
 	for(var/rec in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe-/datum/autolathe/recipe/armylathe-/datum/autolathe/recipe/medilathe)
 		var/datum/autolathe/recipe/recipe = new rec
-		if(recipes.Find(recipe))
-			continue
+
 		if(recipe_name.Find(recipe.name))
 			recipes += recipe
 			had_new_recipes = TRUE
+			recipe.locked = FALSE
 
 			var/obj/item/item = new recipe.path
 			if(item.matter && !recipe.resources)
@@ -383,12 +399,41 @@
 						if(istype(item,/obj/item/stack/sheet))
 							recipe.resources[material] = item.matter[material]
 						else
-							recipe.resources[material] = floor(item.matter[material]*1.25)
+							recipe.resources[material] = floor(item.matter[material]*1.25 * material_multiplier)
 
 	if(had_new_recipes)
 		update_printables()
 		return TRUE
 	return FALSE
+
+/obj/structure/machinery/autolathe/proc/apply_upgrades(list/upgrades_to_apply)
+	upgrades += upgrades_to_apply
+	for(var/upgrade in upgrades_to_apply)
+
+		if(upgrade == ARMYLATHE_METAL_UPGRADE)
+			material_multiplier = 0.5
+			for(var/rec in subtypesof(/datum/autolathe/recipe/armylathe))
+				var/datum/autolathe/recipe/recipe = new rec
+
+				if(recipe.locked)
+					continue
+
+				for(var/datum/casing in recipes)
+					if (casing.type == recipe.type)
+						recipes -= casing
+
+				var/obj/item/item = new recipe.path
+				if(item.matter && !recipe.resources)
+					recipe.resources = list()
+					for(var/material in item.matter)
+						if(!isnull(storage_capacity[material]))
+							if(istype(item,/obj/item/stack/sheet))
+								recipe.resources[material] = item.matter[material]
+							else
+								recipe.resources[material] = floor(item.matter[material]*1.25 * material_multiplier)
+								recipes += recipe
+
+	update_printables()
 
 //Updates overall lathe storage size.
 /obj/structure/machinery/autolathe/RefreshParts()

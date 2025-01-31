@@ -172,6 +172,8 @@
 // OT stuff
 #define ORDNANCE_UPGRADE_TECH "Technologies"
 #define ORDNANCE_UPGRADE_ITEM "Items"
+#define ORDNANCE_UPGRADE_LATHE "Armylathe Upgrades"
+#define ARMYLATHE_METAL_UPGRADE "Armylathe Metal Efficiency Upgrade"
 #define CUSTOM_ROCKET "88mm Rocket Tube"
 #define CUSTOM_ROCKET_WARHEAD "88mm Rocket Warhead"
 #define CUSTOM_SHELL "80mm Mortar Shell"
@@ -179,6 +181,7 @@
 #define CUSTOM_SHELL_CAMERA "80mm Mortar Camera Warhead"
 #define CUSTOM_C4 "C4 Plastic Casing"
 #define CUSTOM_CLAYMORE "M20 Mine Casing"
+#define CUSTOM_OB "Custom OB"
 
 #define RESEARCH_UPGRADE_NOTHING_TO_PASS null
 #define RESEARCH_UPGRADE_EXCLUDE_BUY -2

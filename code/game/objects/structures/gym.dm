@@ -57,7 +57,7 @@
 
 /obj/structure/weightmachine/stacklifter/AnimateMachine(mob/living/user)
 	var/lifts = 0
-	while(lifts++ < 6)
+	for(var/lift in 1 to 6)
 		if(user.loc != loc)
 			break
 		sleep(3)

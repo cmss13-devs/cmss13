@@ -299,12 +299,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 
 	for(var/mob/living/carbon/xenomorph/xenos_to_check in GLOB.living_xeno_list)
-		if(hivenumber != drones.hivenumber)
+		if(hivenumber != xenos_to_check.hivenumber)
 			continue
 
 		switch(xenos_to_check.tier)
 			if(0)
-				if(islarva(xenos_to_check) && !ispredalienlarva(drones))
+				if(islarva(xenos_to_check) && !ispredalienlarva(xenos_to_check))
 					if(xenos_to_check.client && xenos_to_check.ckey)
 						alleged_queens++
 				continue

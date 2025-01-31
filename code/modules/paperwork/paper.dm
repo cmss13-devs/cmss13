@@ -796,7 +796,7 @@
 			icon_state = "paper_wy_words"
 			name = "Research Ciphering Breakthrough"
 			txt += "Weyland-Yutani Biological Weapons Division</H2></center>"
-			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b> and <b>[hint[2]]</b>. Recent discovery made us believe the one of the missing pieces has positive effects, as well as <b>[hint[3]]</b>.<BR>\n"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b> and <b>[hint[2]]</b>. Recent discovery made us believe last piece is <b>[hint[3]]</b>.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("leg_hint")
 			icon_state = "paper_wy_words"

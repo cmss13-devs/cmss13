@@ -29,7 +29,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 	item_state = "harpoon"
-
+	flags_item = ADJACENT_CLICK_DELAY
 	embeddable = FALSE
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
 	throw_range = 4
@@ -60,7 +60,7 @@
 	w_class = SIZE_HUGE
 	edge = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
+	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
@@ -160,6 +160,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+	flags_item = ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	var/human_adapted = FALSE
 
 /obj/item/weapon/yautja/chain
@@ -168,7 +169,6 @@
 	icon_state = "whip"
 	item_state = "whip"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	embeddable = FALSE
 	w_class = SIZE_MEDIUM
@@ -193,7 +193,6 @@
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
@@ -236,7 +235,6 @@
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
 	throwforce = MELEE_FORCE_TIER_5
@@ -278,7 +276,7 @@
 	icon_state = "combistick"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
-	flags_item = TWOHANDED|ITEM_PREDATOR
+	flags_item = TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	w_class = SIZE_LARGE
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throw_speed = SPEED_VERY_FAST
@@ -520,7 +518,7 @@
 	icon_state = "war_axe"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_BACK
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	w_class = SIZE_LARGE
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throw_speed = SPEED_VERY_FAST
@@ -539,7 +537,7 @@
 	icon_state = "predknife"
 	item_state = "knife"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
+	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL|ADJACENT_CLICK_DELAY
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = MELEE_FORCE_TIER_5
@@ -747,7 +745,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 
-	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
+	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	unacidable = TRUE
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
@@ -761,7 +759,7 @@
 	desc = "A spear of exquisite design, used by an ancient civilisation."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
-	flags_item = NOSHIELD|TWOHANDED
+	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -879,7 +877,7 @@
 	throwforce = MELEE_FORCE_WEAK
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
-	flags_item = NOSHIELD|TWOHANDED
+	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
 
 /obj/item/weapon/twohanded/yautja/glaive/longaxe
 	name = "longaxe"

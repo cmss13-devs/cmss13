@@ -134,7 +134,6 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	. = ..()
 
 /mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
-	SIGNAL_HANDLER
 	var/turf/new_turf = get_step(loc, direct)
 	forceMove(new_turf)
 	
@@ -153,9 +152,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 	return -2
 
-/mob/hologram/look_up/handle_view(mob/M, atom/target)
-	SIGNAL_HANDLER
-	
+/mob/hologram/look_up/handle_view(mob/M, atom/target)	
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src

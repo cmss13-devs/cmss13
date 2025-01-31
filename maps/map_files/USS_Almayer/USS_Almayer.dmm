@@ -9916,7 +9916,13 @@
 /area/almayer/command/telecomms)
 "aMq" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/lighter/random,
+/obj/item/tool/lighter/random{
+	pixel_x = -7
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 4;
+	pixel_x = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aMt" = (
@@ -10208,8 +10214,7 @@
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/upper_engineering)
 "aOG" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aOH" = (
@@ -11102,7 +11107,7 @@
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/maint/upper/mess)
 "aVC" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering/starboard)
 "aVF" = (
@@ -11189,7 +11194,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cichallway)
 "aVU" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/blue/northwest,
 /area/almayer/living/bridgebunks)
 "aVV" = (
@@ -12990,7 +12995,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
 "bmh" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_x = -5;
 	pixel_y = 16
@@ -16006,7 +16011,7 @@
 /turf/open/floor/almayer/emerald/northwest,
 /area/almayer/squads/charlie)
 "bMD" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -16908,7 +16913,7 @@
 /turf/open/floor/carpet,
 /area/almayer/living/tankerbunks)
 "bTJ" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -19349,7 +19354,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_m_p)
 "cyo" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/green/southwest,
 /area/almayer/squads/req)
 "cyp" = (
@@ -25748,7 +25753,7 @@
 	dir = 1;
 	pixel_y = 2
 	},
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/item/ashtray/plastic{
 	layer = 3.4;
 	pixel_x = 7;
@@ -26115,7 +26120,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
 "fqc" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cicconference)
@@ -26132,7 +26137,7 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "fqC" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
 "fqQ" = (
@@ -28960,7 +28965,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "gGr" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
 "gGs" = (
@@ -40485,7 +40490,7 @@
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
 "lym" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_f_p)
 "lyq" = (
@@ -45766,7 +45771,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/port_missiles)
 "nNv" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -57327,7 +57332,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_x = -5;
 	pixel_y = 16
@@ -60112,7 +60117,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "tJR" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/sign/safety/medical{
 	pixel_x = -17
 	},
@@ -61302,6 +61307,16 @@
 	icon_state = "SW-out"
 	},
 /obj/structure/machinery/vending/cigarette/free{
+	pixel_y = 16;
+	density = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/obj/structure/machinery/vending/cigarette/koorlander{
 	pixel_y = 16;
 	density = 0
 	},
@@ -65970,7 +65985,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
 "wan" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander{
+	pixel_x = -1
+	},
 /turf/open/floor/almayer/green/west,
 /area/almayer/living/offices)
 "waD" = (
@@ -70485,7 +70502,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "xQe" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 18
 	},

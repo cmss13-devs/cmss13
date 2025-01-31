@@ -370,7 +370,7 @@
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
 "sm" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "sH" = (

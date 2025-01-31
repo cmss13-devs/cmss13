@@ -100,7 +100,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/shotgun_choke
-	name = "shotgun choke kit crate (x4)"
+	name = "shotgun choke attachment crate (x4)"
 	contains = list(
 		/obj/item/attachable/shotgun_choke,
 		/obj/item/attachable/shotgun_choke,
@@ -109,7 +109,7 @@
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate
-	containername = "shotgun choke kit crate"
+	containername = "shotgun choke attachment crate"
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_foregrip

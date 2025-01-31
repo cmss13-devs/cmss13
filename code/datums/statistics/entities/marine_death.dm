@@ -25,6 +25,8 @@
 	var/primary_weapon
 	/// The armor the marine was wearing on death
 	var/armor
+	/// How many kills this marine got
+	var/kill_count
 
 /datum/entity/marine_death/proc/load_data(mob/living/carbon/human/dead_marine, datum/cause_data/death_cause)
 	map_name = SSmapping.configs[GROUND_MAP]?.map_name || "Unknown Map"
@@ -37,6 +39,7 @@
 	damage_taken = dead_marine.life_damage_taken_total || 0
 	killed_by = strip_improper(death_cause?.cause_name) || "Unknown"
 	round_id = GLOB.round_id || -1
+	kill_count = dead_marine.life_kills_total || 0
 	if(isgun(dead_marine.s_store))
 		primary_weapon = strip_improper(dead_marine.s_store::name)
 	else if(isgun(dead_marine.back))
@@ -68,4 +71,5 @@
 		"round_id" = DB_FIELDTYPE_INT,
 		"primary_weapon" = DB_FIELDTYPE_STRING_MEDIUM,
 		"armor" = DB_FIELDTYPE_STRING_MEDIUM,
+		"kill_count" = DB_FIELDTYPE_INT,
 	)

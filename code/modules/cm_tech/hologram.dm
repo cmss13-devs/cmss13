@@ -125,8 +125,9 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/look_up/Initialize(mapload, mob/viewer)
 	. = ..()
 
-	UnregisterSignal(viewer, COMSIG_CLIENT_MOB_MOVE)
-	RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
+	if(viewer)
+		UnregisterSignal(viewer, COMSIG_CLIENT_MOB_MOVE)
+		RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 
 /mob/hologram/look_up/Destroy()
 	if(linked_mob)

@@ -839,6 +839,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
+	data["canChangeZ"] = FALSE
 	data["canViewCanvas"] = FALSE
 	data["isxeno"] = FALSE
 
@@ -847,10 +848,11 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/drawing/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
 	data["mapRef"] = map_holder?.map_ref
+	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
 	data["canDraw"] = FALSE
 	data["mapFallback"] = wiki_map_fallback
+	data["canChangeZ"] = TRUE
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
@@ -959,26 +961,30 @@ SUBSYSTEM_DEF(minimaps)
 		if("changeZ")
 			var/amount = params["amount"]
 			var/level = SSmapping.levels_by_trait(targeted_ztrait)			
-			if(!SSmapping.same_z_map(level[target_z], level[target_z+amount]))
+			if(target_z+amount < 1 || target_z+amount > length(level) || !SSmapping.same_z_map(level[target_z], level[target_z+amount]))
 				return
 
 			target_z += amount
 
 			if(!level[target_z])
 				return
-
-			ui.close()
-
+			
+			if(user.client)
+				user.client.clear_map(map_holder.map.name)
 			map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
-			var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || istype(xeno)
 			resend_current_map_png(user)
-
-			if(use_live_map)
-				tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
-				addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
+			if(user.client)
 				user.client.register_map_obj(map_holder.map)
+			
+			distribute_current_map_png(faction)
+			last_update_time = world.time
 
-			addtimer(CALLBACK(src, PROC_REF(reopen_ui), user, ui), 1 SECONDS) // If it is opened too quickly the map doesn't update for some reason
+			new_current_map = get_unannounced_tacmap_data_png(faction)
+			old_map = get_tacmap_data_png(faction)
+			current_svg = get_tacmap_data_svg(faction)
+
+			ui.send_full_update(ui_static_data(user) + ui_data(user), force=TRUE, force_refresh=TRUE)
+
 
 		if("selectAnnouncement")
 			if(!drawing_allowed)
@@ -1022,10 +1028,6 @@ SUBSYSTEM_DEF(minimaps)
 			updated_canvas = FALSE
 
 	return TRUE
-
-/datum/tacmap/drawing/proc/reopen_ui(mob/user, datum/tgui/ui)
-	ui = new(user, src, "TacticalMap")
-	ui.open()
 
 /datum/tacmap/ui_status(mob/user)
 	if(!(isatom(owner)))

@@ -7259,7 +7259,7 @@
 /turf/open/floor/almayer/orangecorner,
 /area/almayer/engineering/upper_engineering)
 "auL" = (
-/obj/structure/closet/cbrn,
+/obj/structure/closet/radiation,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "auO" = (
@@ -65565,7 +65565,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/cbrn,
+/obj/structure/closet/radiation,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "vTE" = (

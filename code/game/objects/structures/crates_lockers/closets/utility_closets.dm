@@ -163,26 +163,6 @@
 	new /obj/item/clothing/head/radiation(src)
 
 /*
- * CBRN Closet
- */
-/obj/structure/closet/cbrn
-	name = "CBRN suit closet"
-	desc = "It's a storage unit for military CBRN suits."
-	icon_state = "cbrnsuitcloset"
-	icon_opened = "cbrnsuitclosetopen"
-	icon_closed = "cbrnsuitcloset"
-
-/obj/structure/closet/cbrn/Initialize()
-	. = ..()
-	new /obj/item/clothing/shoes/veteran/pmc/commando/cbrn(src)
-	new /obj/item/clothing/under/marine/cbrn(src)
-	new /obj/item/clothing/suit/storage/marine/cbrn(src)
-	new /obj/item/storage/pouch/flamertank(src)
-	new /obj/item/clothing/mask/rebreather/scarf(src)
-	new /obj/item/clothing/glasses/hud/health/basic(src)
-	new /obj/item/clothing/gloves/marine/veteran/cbrn(src)
-
-/*
  * Bombsuit closet
  */
 /obj/structure/closet/bombcloset

@@ -7,6 +7,9 @@
 	attack_hand(user)
 
 /turf/closed/attack_hand(mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return
+
 	var/turf/above_current = SSmapping.get_turf_above(get_turf(src))
 	var/turf/above_user = SSmapping.get_turf_above(get_turf(user))
 

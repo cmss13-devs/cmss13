@@ -387,9 +387,7 @@
 
 /obj/structure/machinery/vending/cigarette/wy/Initialize(mapload, ...)
 	var/exec_number = rand(0, 2)
-	products += list(
-		/obj/item/storage/fancy/cigarettes/blackpack = exec_number,
-	)
+	products[/obj/item/storage/fancy/cigarettes/blackpack] = exec_number
 	return ..()
 
 /obj/structure/machinery/vending/cigarette/wy/free

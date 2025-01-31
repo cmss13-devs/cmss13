@@ -65,7 +65,7 @@
 			return
 
 		if(attached)
-			user.visible_message("[user] detaches \the [src] from \the [attached].", \
+			user.visible_message("[user] detaches \the [src] from \the [attached].",
 			"You detach \the [src] from \the [attached].")
 			attached.active_transfusions -= src
 			attached = null
@@ -75,7 +75,7 @@
 			return
 
 		if(in_range(src, usr) && iscarbon(over_object) && get_dist(over_object, src) <= 1)
-			user.visible_message("[user] attaches \the [src] to \the [over_object].", \
+			user.visible_message("[user] attaches \the [src] to \the [over_object].",
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			attached.active_transfusions += src

@@ -72,7 +72,8 @@
 		if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
 			user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
 
-	return
+		if(new_xeno.ckey)
+			GLOB.deevolved_ckeys += new_xeno.ckey
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -87,7 +88,7 @@
 		return
 	if(!X.ovipositor)
 		return
-	X.visible_message(SPAN_XENOWARNING("\The [X] starts detaching itself from its ovipositor!"), \
+	X.visible_message(SPAN_XENOWARNING("\The [X] starts detaching itself from its ovipositor!"),
 		SPAN_XENOWARNING("You start detaching yourself from your ovipositor."))
 	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10)) return
 	if(!X.check_state())
@@ -138,7 +139,7 @@
 	if(!xeno.check_plasma(plasma_cost))
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."), \
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."),
 	SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still)"))
 	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
@@ -146,7 +147,7 @@
 	if(!locate(/obj/effect/alien/weeds) in current_turf)
 		return
 	xeno.use_plasma(plasma_cost)
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"), \
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"),
 	SPAN_XENOWARNING("You have grown an ovipositor!"))
 	xeno.mount_ovipositor()
 	return ..()

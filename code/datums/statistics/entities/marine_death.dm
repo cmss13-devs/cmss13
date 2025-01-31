@@ -27,6 +27,8 @@
 	var/armor
 	/// How many kills this marine got
 	var/kill_count
+	/// What squad this player belongs to, if any
+	var/squad
 
 /datum/entity/marine_death/proc/load_data(mob/living/carbon/human/dead_marine, datum/cause_data/death_cause)
 	map_name = SSmapping.configs[GROUND_MAP]?.map_name || "Unknown Map"
@@ -52,6 +54,9 @@
 	if(istype(dead_marine.wear_suit, /obj/item/clothing/suit))
 		armor = strip_improper(dead_marine.wear_suit::name)
 
+	if(dead_marine.assigned_squad)
+		squad = dead_marine.assigned_squad.name
+
 	SSticker?.mode?.round_stats?.marine_deaths += src
 	save()
 
@@ -72,4 +77,5 @@
 		"primary_weapon" = DB_FIELDTYPE_STRING_MEDIUM,
 		"armor" = DB_FIELDTYPE_STRING_MEDIUM,
 		"kill_count" = DB_FIELDTYPE_INT,
+		"squad" = DB_FIELDTYPE_STRING_SMALL,
 	)

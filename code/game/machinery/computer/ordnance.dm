@@ -148,6 +148,13 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	value = 30
 	add_category = FALSE
 
+/datum/ordnance_tech/technology/mine
+	name = "M20 Mine Casing"
+	desc = "A custom chemical mine built from an M20 casing."
+	tech_unlock = CUSTOM_CLAYMORE
+	value = 12
+	add_category = FALSE
+
 //the computer
 
 /obj/structure/machinery/computer/ordnance

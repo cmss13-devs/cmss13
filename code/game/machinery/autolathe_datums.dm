@@ -287,6 +287,7 @@
 	name = "M20 Mine Casing"
 	path = /obj/item/explosive/mine/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
+	locked = TRUE
 
 /datum/autolathe/recipe/armylathe/c4
 	name = "C4 Plastic Casing"

@@ -38621,6 +38621,9 @@
 /obj/structure/sign/safety/water{
 	pixel_x = -17
 	},
+/obj/item/reagent_container/glass/bucket/janibucket{
+	pixel_y = 11
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_f_s)
 "mfM" = (
@@ -47606,6 +47609,10 @@
 "pMA" = (
 /turf/open/floor/almayer/red/west,
 /area/almayer/hallways/upper/port)
+"pMC" = (
+/obj/item/reagent_container/glass/bucket/janibucket,
+/turf/open/floor/almayer,
+/area/almayer/maint/hull/upper/u_f_s)
 "pMH" = (
 /obj/item/tool/wet_sign,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -90220,7 +90227,7 @@ aad
 cZe
 cZe
 cZe
-cmr
+pMC
 vcI
 agj
 ikQ

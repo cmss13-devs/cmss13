@@ -107,6 +107,19 @@
 	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
+/obj/item/pamphlet/skill/cosmartgun
+	name = "Cavalier instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a smartgun on it."
+	icon_state = "pamphlet_loader"
+	bypass_pamphlet_limit = TRUE
+	trait = /datum/character_trait/skills/cosmartgun
+
+/obj/item/pamphlet/skill/cosmartgun/can_use(mob/living/carbon/human/user)
+	if(user.job != JOB_CO)
+		to_chat(user, SPAN_WARNING("Only the Commanding Officer can use this."))
+		return
+	return ..()
+
 /obj/item/pamphlet/skill/loader
 	name = "Loader instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a rocket on it."

@@ -1,0 +1,9 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscadd: "Solar Devils come with shielded blowtorches, causing no eye damage when used"
+  - rscadd: "Solar Devils now spawn with AP loaded in their MK1s."
+  - balance: "All Solar Devils know how to use smartguns"
+  - balance: "Solar Devils SG now gets a machete scabbard"
+  - balance: "Replaced 2 cells in the Solar Devil engi kit with breaching charges"
+  - bugfix: "The Solar Devils Platoon Leader now has the correct medical skill and will spawn with medkits."

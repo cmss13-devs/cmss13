@@ -225,5 +225,4 @@
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG ("You are expected to remain in character at all times, follow all commands given to you by whitelisted players, and adhere to the honor code. If you fail to comply with any of these, you will be dispatched via a kill switch embedded within all Youngbloods. You may also face OOC repercussions. Good luck and have fun."))
 
-		sleep(30 SECONDS)
-		to_chat(hunter, SPAN_YAUTJABOLD("Objectives: [objectives]"))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), hunter, SPAN_YAUTJABOLD("Objectives: [objectives]")), 30 SECONDS)

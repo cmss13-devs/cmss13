@@ -282,7 +282,6 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_COLONIST "Colonist"
 #define FACTION_YAUTJA "Yautja"
 #define FACTION_YAUTJA_YOUNG "Yautja Youngblood"
-#define FACTION_HUNTED "Hunted"
 #define FACTION_HUNTED "Hunted USCM"
 #define FACTION_HUNTED_CLF "Hunted CLF"
 #define FACTION_HUNTED_UPP "Hunted UPP"

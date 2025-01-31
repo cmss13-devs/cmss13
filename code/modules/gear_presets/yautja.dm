@@ -164,14 +164,14 @@
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/yautja/non_wl/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
-
 /datum/equipment_preset/yautja/non_wl/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
 	var/new_name = "Young [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
+
+/datum/equipment_preset/yautja/non_wl/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+	return ..()
 
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
 	name = "Yautja Youngblood pack leader (non-WL)"
@@ -180,11 +180,12 @@
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/yautja/non_wl_leader/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
-
 /datum/equipment_preset/yautja/non_wl_leader/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
 	var/new_name = "Pack Leader [new_human.real_name]" //fluff rank blooded outrank them
 	new_human.change_real_name(new_human, new_name)
+
+/datum/equipment_preset/yautja/non_wl_leader/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+	return ..()
+

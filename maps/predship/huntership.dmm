@@ -1923,7 +1923,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja/lower_deck)
 "hF" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/open/red,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja/lower_deck)
 "hI" = (

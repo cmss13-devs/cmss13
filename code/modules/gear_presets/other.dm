@@ -850,7 +850,7 @@
 	for(var/action_to_add in actions_to_add)
 		give_action(new_human, action_to_add)
 
-	new_human.default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	new_human.default_lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	new_human.update_sight()
 
 /datum/equipment_preset/other/xeno_cultist/leader

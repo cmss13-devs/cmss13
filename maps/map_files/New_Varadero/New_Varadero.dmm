@@ -30116,25 +30116,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"ydZ" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/weapon/gun/rifle/sniper/svd,
-/obj/structure/window/reinforced,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "yeG" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/frame/camera,
@@ -63847,7 +63828,7 @@ ulv
 bsf
 mMz
 kjI
-ydZ
+bPF
 kjI
 aak
 rAf

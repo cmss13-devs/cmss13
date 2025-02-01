@@ -11172,9 +11172,6 @@
 "ipY" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/machinery/light/double,
-/obj/item/weapon/gun/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "iqh" = (
@@ -12351,13 +12348,6 @@
 /obj/item/device/t_scanner,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
-"jOA" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/gun/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
 "jOP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
@@ -51008,7 +50998,7 @@ pxi
 acT
 afv
 agh
-jOA
+adp
 acT
 sxp
 hCX

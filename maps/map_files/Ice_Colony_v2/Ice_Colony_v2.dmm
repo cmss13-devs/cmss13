@@ -1128,6 +1128,10 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/engineering/generator)
+"aex" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/maintenance/central/construction)
 "aey" = (
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
@@ -1147,6 +1151,10 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northeast)
+"aeC" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/icefloor/warnplate/north,
+/area/ice_colony/exterior/surface/landing_pad)
 "aeD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -11119,7 +11127,6 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/beta)
 "aOQ" = (
-/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24
@@ -18740,10 +18747,6 @@
 /area/ice_colony/underground/maintenance/central/construction)
 "bvw" = (
 /turf/open/floor/dark2,
-/area/ice_colony/underground/maintenance/central/construction)
-"bvx" = (
-/obj/item/frame/apc,
-/turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central/construction)
 "bvy" = (
 /turf/open/floor/plating,
@@ -49361,7 +49364,7 @@ bto
 btS
 brM
 bvw
-bvw
+aex
 bvy
 bvv
 bxv
@@ -49924,7 +49927,7 @@ bsC
 btq
 btU
 brM
-bvx
+bvy
 bvy
 bvw
 bwU
@@ -74112,7 +74115,7 @@ aWL
 aXr
 aXT
 aOj
-aYB
+aeC
 aYC
 aYC
 aYC

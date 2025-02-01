@@ -181,7 +181,6 @@
 #define CUSTOM_SHELL_CAMERA "80mm Mortar Camera Warhead"
 #define CUSTOM_C4 "C4 Plastic Casing"
 #define CUSTOM_CLAYMORE "M20 Mine Casing"
-#define CUSTOM_OB "Custom OB"
 
 #define RESEARCH_UPGRADE_NOTHING_TO_PASS null
 #define RESEARCH_UPGRADE_EXCLUDE_BUY -2

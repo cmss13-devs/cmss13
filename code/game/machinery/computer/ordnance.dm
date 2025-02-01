@@ -1,7 +1,7 @@
 GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 
 /datum/ordnance_research
-	var/technology_credits = 100 //this means we start with 10 since credits_to_allocate also happens at round start
+	var/technology_credits = 5 //this means we start with 10 since credits_to_allocate also happens at round start
 	/// amount of credits earned every 10 minutes
 	var/credits_to_allocate = 5
 	/// technology bought so far, if something is in this list then it can't be bought again
@@ -33,7 +33,7 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "eftpos"
 	///amount of credits to reward per mob hit
-	var/credits_to_award = 2
+	var/credits_to_award = 3
 	///amount of max_container_volume to remove when attached, 2x if above casing_cutoff_point
 	var/base_remove_amount = 30
 	///point at which base_remove_amount is doubled
@@ -189,7 +189,7 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 /datum/ordnance_tech/technology/custom_ob
 	name = "Custom Orbital Bombardment"
 	desc = "An orbital bombardment shell able to be filled with custom reagents, only one can be deployed per operation."
-	value = 45
+	value = 50
 	add_category = FALSE
 
 /datum/ordnance_tech/technology/custom_ob/purchase(turf/location)

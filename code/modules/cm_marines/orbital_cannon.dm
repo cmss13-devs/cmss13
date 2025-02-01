@@ -592,7 +592,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 							"min_fire_rad" = 5, "min_fire_int" = 10, "min_fire_dur" = 10
 	)
 
-/// current assembly state of the OB
+	/// current assembly state of the OB
 	var/assembly_stage = ASSEMBLY_UNLOCKED
 	/// the maximum volume allowed in the OB
 	var/max_container_volume = 600
@@ -670,6 +670,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	else
 		if(assembly_stage == ASSEMBLY_LOCKED)
 			handle_ob_shake(target)
+			target.ceiling_debris_check(5)
 			//second explosion has to be on a timer
 			addtimer(CALLBACK(src, PROC_REF(make_kaboom), target, containers), double_explosion_delay)
 			make_kaboom(target, containers)
@@ -677,7 +678,6 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	QDEL_IN(src, 5 SECONDS)
 
 /obj/structure/ob_ammo/warhead/custom/proc/make_kaboom(turf/location, arg_containers)
-	location.ceiling_debris_check(5)
 	var/obj/item/explosive/bomb = new()
 	bomb.create_reagents(1000)
 	for(var/limit in bomb.reaction_limits)

@@ -208,10 +208,6 @@
 		to_chat(X, SPAN_WARNING("You must select a valid turf to heal around."))
 		return
 
-	if(X.loc.z != T.loc.z)
-		to_chat(X, SPAN_XENOWARNING("You are too far away to do this here."))
-		return
-
 	if(!check_and_use_plasma_owner())
 		return
 

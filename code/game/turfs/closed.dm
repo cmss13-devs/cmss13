@@ -7,7 +7,7 @@
 	attack_hand(user)
 
 /turf/closed/attack_hand(mob/user)
-	if(user.action_busy)
+	if(user.action_busy || user.a_intent == INTENT_HARM)
 		return
 
 	var/turf/our_loc = get_turf(user)

@@ -113,13 +113,27 @@
 	icon_state = "secsoft"
 	cap_color = "sec"
 
-/obj/item/clothing/head/soft/sec/corp
-	name = "corporate security cap"
-	desc = "It's baseball hat in corporate colors."
-	icon_state = "corpsoft"
-	cap_color = "corp"
-
-
+/obj/item/clothing/head/cmcap/wy_cap
+	name = "\improper Weyland-Yutani cap"
+	desc = "A dark cap enscribed with the Weyland-Yutani 'Wings' logo, representing corporate justice."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
+	)
+	icon_state = "newcorpo_cap"
+	item_state = "newcorpo_cap"
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 //marine cap
 

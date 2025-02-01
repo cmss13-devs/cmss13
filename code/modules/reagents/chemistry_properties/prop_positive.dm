@@ -28,7 +28,6 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
-	cost_penalty = FALSE
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(0, potency)
@@ -48,7 +47,6 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
-	cost_penalty = FALSE
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency, 0)
@@ -203,7 +201,7 @@
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, potency = 1)
 	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
-	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR)
+	M.nutrition = max(0, M.nutrition - 0.5 * HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 
@@ -227,6 +225,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/painkilling/on_delete(mob/living/M)
 	..()
@@ -461,7 +460,7 @@
 	M.apply_effect(20, STUN)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.bodytemperature = max(M.bodytemperature - 2.5 * potency * delta_time,0)
+	M.bodytemperature = max(BODYTEMP_CRYO_LIQUID_THRESHOLD, M.bodytemperature - 2.5 * potency * delta_time)
 
 /datum/chem_property/positive/neurocryogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, BRAIN)
@@ -535,6 +534,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/electrogenetic/trigger(A)
 	if(isliving(A))
@@ -604,7 +604,7 @@
 		if(ghost?.client)
 			COOLDOWN_START(src, ghost_notif, 30 SECONDS)
 			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
+			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating
@@ -773,12 +773,20 @@
 	durationmod_per_level = -0.1
 	radiusmod_per_level = -0.01
 
+	var/static/ignite_threshold = 4
+
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
 		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
-		if(potency > 4)
+		if(potency > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
 			L.IgniteMob(TRUE)
+
+/datum/chem_property/positive/fire/oxidizing/can_cause_harm()
+	. = ..()
+
+	if(level * LEVEL_TO_POTENCY_MULTIPLIER > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
+		return TRUE
 
 /datum/chem_property/positive/fire/flowing
 	name = PROPERTY_FLOWING

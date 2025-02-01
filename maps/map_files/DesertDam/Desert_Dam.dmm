@@ -196,6 +196,13 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aaR" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -231,6 +238,12 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
+"aaZ" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clock,
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/building/security/prison)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -263,6 +276,13 @@
 /obj/item/trash/cigbutt/bcigbutt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
+"abg" = (
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/virology_wing)
 "abh" = (
 /obj/item/trash/USCMtray,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -308,6 +328,13 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
+"abq" = (
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 11
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/security/observation)
 "abr" = (
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -3079,7 +3106,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "anK" = (
@@ -3255,7 +3282,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "aoA" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aoB" = (
@@ -4074,7 +4101,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "asm" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "asn" = (
@@ -4708,7 +4735,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/engi)
 "auY" = (
@@ -5481,7 +5508,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ays" = (
-/obj/structure/bed/chair/comfy/beige{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 1
 	},
 /turf/open/desert/rock/deep/transition/north,
@@ -5536,7 +5563,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayF" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayG" = (
@@ -6771,7 +6798,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/omega)
 "aDU" = (
@@ -6801,7 +6828,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/omega)
 "aEe" = (
@@ -8998,7 +9025,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/lz2)
 "aNZ" = (
@@ -10934,7 +10961,7 @@
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/hallway)
 "aXP" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/hallway)
 "aXQ" = (
@@ -11614,7 +11641,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "baM" = (
@@ -12293,7 +12320,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_medical)
 "bed" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "bee" = (
@@ -12544,7 +12571,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/engi)
 "bfn" = (
@@ -21277,7 +21304,7 @@
 /area/desert_dam/building/security/prison)
 "bWO" = (
 /obj/item/reagent_container/food/drinks/flask/detflask,
-/obj/item/clothing/head/det_hat,
+/obj/item/clothing/head/fedora,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
@@ -21811,7 +21838,7 @@
 /turf/open/floor/whiteyellow/north,
 /area/desert_dam/interior/dam_interior/break_room)
 "bZm" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/whiteyellow/north,
 /area/desert_dam/interior/dam_interior/break_room)
 "bZn" = (
@@ -22089,7 +22116,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
 "caw" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/building/warehouse/breakroom)
 "cax" = (
@@ -22912,7 +22939,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "ceH" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "ceI" = (
@@ -31480,7 +31507,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "cTo" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "cTp" = (
@@ -33409,7 +33436,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "deF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "deG" = (
@@ -34402,7 +34429,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/loading)
 "dlF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/loading)
 "dlJ" = (
@@ -35020,7 +35047,7 @@
 /turf/open/floor/carpet15_15/west,
 /area/desert_dam/building/administration/office)
 "duo" = (
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet11_12/west,
 /area/desert_dam/building/administration/office)
@@ -35094,7 +35121,7 @@
 /turf/open/floor/prison/darkbrown3/west,
 /area/desert_dam/interior/dam_interior/disposals)
 "duR" = (
-/obj/structure/xenoautopsy/tank/broken,
+/obj/structure/xenoautopsy/tank/broken/yautja,
 /turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
 "duU" = (
@@ -35103,7 +35130,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "duV" = (
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -35855,7 +35882,7 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dBt" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/greenfull/northwest,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dBu" = (
@@ -43212,7 +43239,7 @@
 /turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
 "ivQ" = (
-/obj/structure/xenoautopsy/tank/broken,
+/obj/structure/xenoautopsy/tank/broken/yautja,
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/temple)
 "iwh" = (
@@ -44278,7 +44305,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "lcy" = (
@@ -45442,7 +45469,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/lz2)
 "nET" = (
@@ -46545,7 +46572,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/exterior/river/riverside_central_south)
 "pNG" = (
-/obj/structure/xenoautopsy/tank/broken,
+/obj/structure/xenoautopsy/tank/broken/yautja,
 /turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
 "pOv" = (
@@ -46794,7 +46821,7 @@
 /turf/open/shuttle/can_surgery/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "qmy" = (
-/obj/structure/surface/rack,
+/obj/structure/closet/yautja,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "qmU" = (
@@ -48256,7 +48283,7 @@
 /turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
 "teR" = (
-/obj/structure/bed/chair/comfy/beige{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 4
 	},
 /turf/open/desert/rock/deep/transition,
@@ -49042,7 +49069,6 @@
 "uKX" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/interior/dam_interior/central_tunnel)
@@ -49621,8 +49647,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_security)
 "vYZ" = (
-/obj/structure/surface/rack,
 /obj/item/tool/pickaxe/drill,
+/obj/structure/closet/yautja,
 /turf/open/desert/rock/deep/transition/northeast,
 /area/desert_dam/interior/caves/temple)
 "wav" = (
@@ -49948,27 +49974,7 @@
 /turf/open/floor/prison/whitered/west,
 /area/desert_dam/building/medical/office1)
 "wFU" = (
-/obj/structure/showcase{
-	color = "#880808";
-	desc = "A large red statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "The Titan"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1;
-	icon_state = "halfarmor7_ebony"
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1;
-	icon_state = "y-boots4_ebony"
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	icon_state = "pred_mask12_ebony";
-	unacidable = 0;
-	pixel_y = 9
-	},
+/obj/structure/showcase/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "wGI" = (
@@ -50294,7 +50300,6 @@
 "xlt" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "xlE" = (
@@ -56804,7 +56809,7 @@ bqn
 bom
 bsb
 aUS
-bml
+abq
 bml
 ifB
 bml
@@ -57288,7 +57293,7 @@ bNE
 bSn
 bTo
 bSz
-bYT
+aaZ
 bYT
 bTn
 bYl
@@ -91918,7 +91923,7 @@ cGB
 cHO
 cIO
 cJJ
-cJJ
+abg
 cLp
 cHN
 flq
@@ -92917,7 +92922,7 @@ dBr
 dZS
 dFf
 dFf
-eaz
+aaR
 eaz
 dBr
 dGC

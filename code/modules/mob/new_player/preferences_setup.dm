@@ -202,6 +202,14 @@
 	preview_dummy.update_hair()
 	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
 		character_trait.unapply_trait(preview_dummy)
+
+	for(var/gear_item in gear)
+		var/datum/gear/gear = GLOB.gear_datums_by_name[gear_item]
+		var/obj/item/item = new gear.path()
+
+		if(!preview_dummy.equip_to_appropriate_slot(item))
+			qdel(item)
+
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
 	// If the dummy was equipped with marine armor.
@@ -338,6 +346,10 @@
 			return /datum/equipment_preset/upp/commissar/dressed
 		if(JOB_UPP_SUPPORT_SYNTH)
 			return /datum/equipment_preset/upp/synth/dressed
+		if(JOB_UPP_JOE)
+			return /datum/equipment_preset/synth/working_joe/upp
+		if(JOB_UPP_PILOT)
+			return /datum/equipment_preset/upp/pilot
 		// MISC-JOBS
 		if(JOB_SURVIVOR)
 			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].survivor_types

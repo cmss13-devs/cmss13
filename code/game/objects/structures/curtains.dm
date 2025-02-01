@@ -23,7 +23,7 @@
 
 /obj/structure/curtain/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
+	M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"),
 	SPAN_DANGER("You slice [src] apart!"), null, 5)
 	qdel(src)
 	return XENO_ATTACK_ACTION
@@ -68,3 +68,34 @@
 /obj/structure/curtain/red
 	name = "red curtain"
 	icon_state = "red"
+
+// Colorable
+
+/obj/structure/curtain/colorable
+	name = "curtain"
+	icon_state = "colorable"
+
+/obj/structure/curtain/colorable_transparent
+	name = "blinds"
+	icon_state = "colorable_transparent"
+	alpha = 200
+
+// Open
+
+/obj/structure/curtain/open/colorable
+	name = "curtain"
+	icon_state = "colorable"
+
+/obj/structure/curtain/open/colorable_transparent
+	name = "blinds"
+	icon_state = "colorable_transparent"
+	alpha = 200
+
+/obj/structure/curtain/open/red
+	name = "red curtain"
+	icon_state = "red"
+
+/obj/structure/curtain/Initialize()
+	. = ..()
+	if(alpha)
+		set_opacity(0)

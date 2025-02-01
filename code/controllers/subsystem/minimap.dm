@@ -768,7 +768,7 @@ SUBSYSTEM_DEF(minimaps)
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 
 	if(is_xeno && xeno.hive.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
-		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_PMC|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
+		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
 		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
 		map_holder = null
 
@@ -992,7 +992,7 @@ SUBSYSTEM_DEF(minimaps)
 			old_map = get_tacmap_data_png(faction)
 
 			toolbar_updated_selection = toolbar_color_selection
-			message_admins("[key_name(user)] has updated the <a href='?tacmaps_panel=1'>tactical map</a> for [faction].")
+			message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a> for [faction].")
 			updated_canvas = FALSE
 
 	return TRUE
@@ -1080,7 +1080,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(FACTION_CLF)
 			return MINIMAP_FLAG_CLF
 		if(FACTION_PMC)
-			return MINIMAP_FLAG_PMC
+			return MINIMAP_FLAG_WY
 		if(FACTION_YAUTJA)
 			return MINIMAP_FLAG_YAUTJA
 		if(XENO_HIVE_CORRUPTED)

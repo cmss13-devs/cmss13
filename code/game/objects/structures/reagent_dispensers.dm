@@ -80,18 +80,6 @@
 	healthcheck()
 	return TRUE
 
-/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/user)
-	if(unslashable)
-		return XENO_NO_DELAY_ACTION
-	user.animation_attack_on(src)
-	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
-	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	user.visible_message(SPAN_DANGER("[user] slashes \the [src]!"), \
-	SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	healthcheck()
-	return XENO_ATTACK_ACTION
-
-
 /obj/structure/reagent_dispensers/verb/set_transfer_direction() //set amount_per_transfer_from_this
 	set name = "Set transfer direction"
 	set category = "Object"
@@ -153,7 +141,7 @@
 /obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
 	if(istype(hit_item, /obj/item/reagent_container))
 		return
-	..()
+	. = ..()
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
@@ -161,6 +149,9 @@
 	desc = "A water tank"
 	icon_state = "watertank"
 	chemical = "water"
+
+/obj/structure/reagent_dispensers/watertank/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/reagent_dispensers/ammoniatank
 	name = "ammoniatank"
@@ -261,7 +252,7 @@
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] begins reinforcing the exterior of [src] with [M]."),\
+		user.visible_message(SPAN_NOTICE("[user] begins reinforcing the exterior of [src] with [M]."),
 		SPAN_NOTICE("You begin reinforcing [src] with [M]."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || reinforced)
@@ -271,7 +262,7 @@
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] reinforces the exterior of [src] with [M]."),\
+		user.visible_message(SPAN_NOTICE("[user] reinforces the exterior of [src] with [M]."),
 		SPAN_NOTICE("You reinforce [src] with [M]."))
 
 		reinforced = TRUE
@@ -279,13 +270,13 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 
-		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),\
+		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),
 		SPAN_NOTICE("You begin to remove the shielding from [src]."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || !reinforced)
 			return
 
-		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),\
+		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),
 		SPAN_NOTICE("You remove the shielding from [src]."))
 		new /obj/item/stack/sheet/plasteel(loc, STACK_10)
 
@@ -372,9 +363,17 @@
 		reagents.source_mob = flame_cause_data?.weak_mob
 		explode()
 
+/obj/structure/reagent_dispensers/fueltank/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/reagent_dispensers/fueltank/gas
 	name = "gastank"
 	desc = "A gas tank"
+
+/obj/structure/reagent_dispensers/fueltank/spacecraft
+	name = "spacecraft fuel-mix tank"
+	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible."
+	icon_state = "weldtank_alt"
 
 /obj/structure/reagent_dispensers/fueltank/gas/leak_fuel(amount)
 	if(reagents.total_volume == 0)

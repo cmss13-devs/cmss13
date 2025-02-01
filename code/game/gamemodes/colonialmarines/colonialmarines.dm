@@ -260,7 +260,7 @@
 				if(!istype(turf, /turf/closed/wall))
 					continue
 				var/turf/closed/wall/wall = turf
-				if(wall.hull)
+				if(wall.turf_flags & TURF_HULL)
 					continue
 			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
 
@@ -310,7 +310,7 @@
 				if(!istype(turf, /turf/closed/wall))
 					continue
 				var/turf/closed/wall/wall = turf
-				if(wall.hull)
+				if(wall.turf_flags & TURF_HULL)
 					continue
 			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
 

@@ -58,6 +58,11 @@
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 	icon_state = "M2C_gun_mount"
 	item_state = "M2C_gun_mount"
 	var/rounds = 0
@@ -176,12 +181,12 @@
 	var/obj/item/tool/weldingtool/weldingtool = object
 
 	if(weldingtool.remove_fuel(2, user))
-		user.visible_message(SPAN_NOTICE("[user] begins field recovering \the [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] begins field recovering \the [src]."),
 			SPAN_NOTICE("You begin repairing the severe damages on \the [src] in an effort to restore its functions."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		if(!do_after(user, field_recovery * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			return
-		user.visible_message(SPAN_NOTICE("[user] field recovers \the [src], restoring it back to its original state."), \
+		user.visible_message(SPAN_NOTICE("[user] field recovers \the [src], restoring it back to its original state."),
 			SPAN_NOTICE("You repair \the [src] back to a functional state."))
 		broken_gun = FALSE
 		health = 110
@@ -242,6 +247,7 @@
 
 /obj/structure/machinery/m56d_hmg/auto/Initialize()
 	. = ..()
+	burst_scatter_mult = 0
 	for(var/turf/T in range(cadeblockers_range, src))
 		var/obj/structure/blocker/anti_cade/CB = new(T)
 		CB.hmg = src
@@ -378,12 +384,12 @@
 			return
 
 		if(weldingtool.remove_fuel(2, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."),
 				SPAN_NOTICE("You begin repairing the damage on \the [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, repair_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				return
-			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."),
 					SPAN_NOTICE("You repair [src]."))
 			update_health(-floor(health_max*0.2))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -430,9 +436,6 @@
 	ammo_magazine.current_rounds = 0
 	ammo_magazine.update_icon()
 
-/obj/structure/machinery/m56d_hmg/auto/get_scatter()
-	return 0
-
 // ACTIVE COOLING
 
 /obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(mob/user)
@@ -476,7 +479,7 @@
 	// If the user is unconscious or dead.
 	if(user.stat)
 		return
-	if(!ishuman(user)  && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(over_object == user && in_range(src, user))

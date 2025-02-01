@@ -50,6 +50,13 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/prison/darkred2,
 /area/lv759/indoors/twe_souter_outpost/hallway)
+"ah" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
 "aj" = (
 /turf/closed/wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/armoury)
@@ -1402,17 +1409,6 @@
 /area/lv759/indoors/twe_souter_outpost/reception)
 "nO" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = -4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -1423,9 +1419,6 @@
 /turf/open/floor/corsat,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "nS" = (
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -1438,9 +1431,6 @@
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "nZ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/twe_souter_outpost/hallway)
@@ -1585,9 +1575,6 @@
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "qn" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/sign/safety/airtraffictower{
 	pixel_x = 36;
@@ -2006,17 +1993,6 @@
 /turf/open/shuttle/dropship/light_grey_left_to_right,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "AL" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = -4
-	},
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
@@ -2480,14 +2456,6 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4;
-	level = 1
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Js" = (
@@ -2710,17 +2678,6 @@
 /turf/open/floor/prison/darkred2/northeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "QN" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = -4
-	},
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8
@@ -2913,17 +2870,6 @@
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "UH" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = -4
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
@@ -2995,19 +2941,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost/flight)
-"Vz" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	level = 1;
-	dir = 4;
-	pixel_y = 6
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	level = 1;
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/outdoors/colony_streets/north_west_street)
 "VD" = (
 /turf/open/floor/prison/darkred2/northwest,
 /area/lv759/indoors/twe_souter_outpost/hallway)
@@ -3389,7 +3322,7 @@ dB
 Hu
 Bq
 Sk
-Kz
+ah
 kG
 BY
 cq
@@ -3414,7 +3347,7 @@ UD
 rt
 gb
 BT
-Vz
+CE
 CE
 gb
 zU

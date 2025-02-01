@@ -20,6 +20,8 @@
 	var/chat_cd = 0
 	/// Stamina damage per tick. Major balance number.
 	var/stam_dam = 7
+	/// Stimulant drain per tick.
+	var/stim_drain = 2
 
 /datum/effects/neurotoxin/New(atom/thing, mob/from = null)
 	..(thing, from, effect_name)
@@ -44,7 +46,9 @@
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
-	affected_mob.make_dizzy(12)
+	affected_mob.make_dizzy(8)
+	for(var/datum/reagent/generated/stim in affected_mob.reagents.reagent_list)
+		affected_mob.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 
 // Effect levels (shit that doesn't stack)
 	switch(duration)

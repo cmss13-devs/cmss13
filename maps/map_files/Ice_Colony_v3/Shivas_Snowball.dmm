@@ -6680,7 +6680,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "cBL" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
 "cCI" = (
@@ -8659,7 +8659,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_s_research)
 "fkF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "fkP" = (
@@ -9209,7 +9209,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "fWb" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "fWq" = (
@@ -10741,7 +10741,7 @@
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "hMY" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "hPe" = (
@@ -14729,7 +14729,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "mtA" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "mtM" = (
@@ -15025,7 +15025,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
 "mKk" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "mKr" = (
@@ -16033,7 +16033,7 @@
 /turf/open/floor/shiva/wred,
 /area/shiva/interior/colony/medseceng)
 "oaH" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "oaI" = (
@@ -16973,7 +16973,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/caves/cp_camp)
 "ppI" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "ppS" = (
@@ -21174,7 +21174,7 @@
 /turf/open/floor/shiva/red/west,
 /area/shiva/interior/colony/medseceng)
 "ujJ" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "ujV" = (
@@ -22565,7 +22565,7 @@
 /turf/open/floor/shiva/purple/west,
 /area/shiva/interior/lz2_habs)
 "vZj" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "vZs" = (
@@ -22677,7 +22677,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/lz1_valley)
 "wgW" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "wgX" = (

@@ -448,7 +448,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "bt" = (
-/obj/structure/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /obj/structure/machinery/light{
 	dir = 1
 	},

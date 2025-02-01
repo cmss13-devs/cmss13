@@ -27,6 +27,10 @@
 		update_icons()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
+		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			var/datum/entity/xeno_death/death_log = DB_ENTITY(/datum/entity/xeno_death)
+			death_log.load_data(src, cause)
+
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
@@ -150,10 +154,7 @@
 			no_remains = TRUE
 
 	if(!no_remains)
-		var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
-		remains.pixel_x = pixel_x //For 2x2.
-		remains.icon_state = "gibbed-a-corpse"
-		remains.icon = icon
+		new /obj/effect/decal/remains/xeno(get_turf(src), icon, "gibbed-a-corpse", pixel_x)
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 

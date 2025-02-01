@@ -104,7 +104,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aay" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaz" = (
@@ -5025,7 +5025,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "awE" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "awF" = (
@@ -5669,7 +5669,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "azT" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -11839,7 +11839,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bcy" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bcz" = (
@@ -14606,7 +14606,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bru" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "brv" = (
@@ -16351,7 +16351,7 @@
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/caves/eta/research)
 "bAV" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkyellow2/southwest,
 /area/bigredv2/caves/eta/research)
 "bAW" = (
@@ -23125,7 +23125,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
 "hSP" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves/mining)
 "hST" = (
@@ -34846,7 +34846,7 @@
 	health = 25000;
 	pixel_y = 20
 	},
-/obj/structure/machinery/vending/cigarette/colony{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	layer = 3.1;
 	pixel_y = 9
 	},
@@ -37541,7 +37541,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "wCs" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "wCU" = (

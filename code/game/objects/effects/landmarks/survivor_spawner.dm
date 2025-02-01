@@ -260,7 +260,7 @@
 	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Your cell successfully executed a plan to steal an Mi-220 Attack Dropship from the UPP, but was soon shot down by air defense systems. The dropship crashed into the aerodrome of the colony. There was a token response from the local garrison, resulting in casualties on both sides, but the expected big assault never arrived. In fact, the entire colony has gone silent..."
 
-	//Varadero CLF survivors//
+//Varadero CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/varadero
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -285,6 +285,32 @@
 	"You are aware of the xenomorph threat.",\
 	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which you and your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
+
+//Prospera CLF survivors//
+
+/obj/effect/landmark/survivor_spawner/clf/hybrisa
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
+
+/obj/effect/landmark/survivor_spawner/clf_lead/hybrisa
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, you ordered your cell to launch an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
+
+/obj/effect/landmark/survivor_spawner/clf_engi/hybrisa
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"You are NOT aware of the xenomorph threat.",\
+	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+	story_text = "You are an engineer fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
+
+/obj/effect/landmark/survivor_spawner/clf_medic/hybrisa
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"You are aware NOT of the xenomorph threat.",\
+	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+	story_text = "You are a doctor fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
 
 //Weyland-Yutani Survivors//
 

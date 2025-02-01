@@ -5990,7 +5990,7 @@
 /area/space)
 "pU" = (
 /obj/structure/prop/resin_prop{
-	icon_state = "sheater0"
+	icon_state = "densecrate"
 	},
 /turf/open/floor/freezerfloor,
 /area/space)
@@ -6863,7 +6863,9 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/space)
 "sq" = (
-/obj/structure/largecrate/supply/supplies/tables_racks,
+/obj/structure/prop/resin_prop{
+	icon_state = "secure_crate"
+	},
 /turf/open/floor/corsat/officesquares,
 /area/space)
 "sr" = (
@@ -6956,19 +6958,16 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2
 	},
-/turf/open/floor/almayer/greenfull2,
+/turf/open/floor/corsat/marked,
 /area/space)
 "sF" = (
 /turf/open/floor/prison/red,
 /area/space)
 "sG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_warning_smooth"
-	},
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
 	dir = 1
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/corsat/marked,
 /area/space)
 "sH" = (
 /obj/effect/decal/warning_stripes{
@@ -6978,20 +6977,8 @@
 /turf/open/floor/almayer/dark_sterile2,
 /area/space)
 "sI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_warning_smooth"
-	},
 /obj/structure/machinery/door/airlock/almayer/generic/glass,
-/turf/open/floor/almayer,
-/area/space)
-"sJ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_warning_smooth"
-	},
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
-	},
-/turf/open/floor/freezerfloor,
+/turf/open/floor/corsat/marked,
 /area/space)
 "sK" = (
 /obj/structure/platform/metal/strata,
@@ -7985,7 +7972,7 @@
 /area/space)
 "vc" = (
 /obj/structure/prop/resin_prop{
-	icon_state = "sheater0"
+	icon_state = "pscrubber:0"
 	},
 /turf/open/floor/almayer/greenfull2,
 /area/space)
@@ -8073,16 +8060,13 @@
 /area/space)
 "vp" = (
 /obj/structure/prop/resin_prop{
-	icon_state = "coolanttank"
+	icon_state = "densecrate"
 	},
 /turf/open/floor/almayer/greenfull2,
 /area/space)
 "vq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_warning_smooth"
-	},
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/corsat/marked,
 /area/space)
 "vr" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -8092,15 +8076,6 @@
 /area/space)
 "vs" = (
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
-/area/space)
-"vt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_warning_smooth"
-	},
-/obj/structure/machinery/door/airlock/almayer/generic/glass{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating,
 /area/space)
 "vu" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
@@ -8166,13 +8141,6 @@
 	icon_state = "chair"
 	},
 /turf/open/floor/corsat/officesquares,
-/area/space)
-"vD" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_warning_smooth"
-	},
-/obj/structure/machinery/door/airlock/almayer/generic/glass,
-/turf/open/floor/almayer/plating,
 /area/space)
 "vE" = (
 /obj/structure/stairs{
@@ -8393,6 +8361,12 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
+"wd" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "sheater0"
+	},
+/turf/open/floor/hybrisa/carpet/carpetfadedred,
+/area/space)
 "we" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -8405,10 +8379,113 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/space)
+"wf" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "pscrubber:0"
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"wg" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_yellow"
+	},
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/space)
+"wh" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_yellow"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/unpowered{
+	base_lighting_alpha = 30
+	})
+"wi" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_white"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/unpowered{
+	base_lighting_alpha = 30
+	})
+"wj" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "closed_oxygen"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
 "wk" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/space)
+"wl" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "secure_crate"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
+"wm" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_red"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/unpowered{
+	base_lighting_alpha = 30
+	})
+"wn" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "chest_white"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
+"wo" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "psiphon:0"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
+"wp" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_green"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/unpowered{
+	base_lighting_alpha = 30
+	})
+"wq" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "chest"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
+"wr" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "pscrubber:0"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
+"ws" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_blue"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/unpowered{
+	base_lighting_alpha = 30
+	})
 "wt" = (
 /turf/open/floor/prison/greenblue/northwest,
 /area/space)
@@ -8416,11 +8493,35 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/almayer/dark_sterile2,
 /area/space)
+"wv" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "case"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
 "ww" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/almayer/greenfull2,
 /area/space)
+"wx" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "densecrate"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
+"wy" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "secure_crate_strapped"
+	},
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/lit{
+	base_lighting_alpha = 35
+	})
 "wz" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
@@ -8430,6 +8531,64 @@
 /area/space)
 "wA" = (
 /turf/open/floor/prison/greenblue/southwest,
+/area/space)
+"wB" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_blue"
+	},
+/turf/open/floor/freezerfloor,
+/area/space)
+"wC" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "case"
+	},
+/turf/open/floor/plating,
+/area/space)
+"wD" = (
+/obj/structure/prop/resin_prop{
+	dir = 8;
+	icon_state = "chair"
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
+/area/space)
+"wE" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "closed_oxygen"
+	},
+/turf/open/floor/almayer,
+/area/space)
+"wF" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "pscrubber:0"
+	},
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/space)
+"wG" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_yellow"
+	},
+/turf/open/floor/almayer/plate,
+/area/space)
+"wH" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "psiphon:0"
+	},
+/turf/open/floor/almayer/plate,
+/area/space)
+"wI" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_blue"
+	},
+/turf/open/floor/almayer/plate,
+/area/space)
+"wJ" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "chest"
+	},
+/turf/open/floor/almayer/plate,
 /area/space)
 "wM" = (
 /obj/structure/barricade/handrail/wire{
@@ -9547,6 +9706,10 @@
 	light_color = "#680b62";
 	needs_power = 0;
 	dir = 8
+	},
+/obj/structure/prop/resin_prop{
+	dir = 1;
+	icon_state = "chair"
 	},
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/space)
@@ -36365,7 +36528,7 @@ bC
 bC
 bC
 bC
-LO
+wC
 pA
 hr
 tM
@@ -37042,7 +37205,7 @@ uy
 tM
 bl
 nZ
-eN
+wf
 mr
 yY
 yY
@@ -39329,7 +39492,7 @@ tM
 yY
 bC
 bC
-yY
+wg
 tM
 tM
 bC
@@ -40308,10 +40471,10 @@ vm
 vm
 vm
 vm
-sJ
+sG
 vv
 vv
-sJ
+sG
 vm
 yY
 bC
@@ -40468,7 +40631,7 @@ bl
 sw
 su
 ss
-vm
+wB
 qu
 rA
 qu
@@ -40963,11 +41126,11 @@ sG
 mN
 mN
 mN
-vt
+sG
 sL
 sL
 sL
-vt
+sG
 mN
 mN
 mN
@@ -41293,7 +41456,7 @@ sI
 bl
 bl
 bl
-vD
+sI
 bl
 bl
 bl
@@ -42105,7 +42268,7 @@ tM
 FZ
 bC
 bl
-vn
+wD
 vn
 vZ
 vo
@@ -42761,7 +42924,7 @@ bC
 bC
 bC
 bl
-vo
+wE
 vo
 vo
 vo
@@ -42922,7 +43085,7 @@ pA
 bC
 bC
 pA
-yY
+wF
 bC
 bl
 bl
@@ -43419,7 +43582,7 @@ tM
 bl
 wb
 wa
-vm
+pU
 bl
 vr
 vr
@@ -43439,7 +43602,7 @@ pA
 yY
 hr
 bl
-tz
+wd
 tz
 tz
 tz
@@ -46853,13 +47016,13 @@ bC
 bC
 bC
 bC
-bl
+bC
 bl
 kg
 kg
 kg
 bl
-um
+ej
 bl
 yO
 uA
@@ -46880,7 +47043,7 @@ Uq
 zy
 bl
 bl
-zK
+ej
 bl
 kg
 kg
@@ -47017,9 +47180,9 @@ bC
 bC
 bC
 Fb
-bl
-bl
-tJ
+bC
+bC
+wG
 tJ
 tJ
 um
@@ -47182,8 +47345,8 @@ bC
 hF
 Fb
 bl
-tJ
-tJ
+wI
+uv
 tJ
 tJ
 um
@@ -47674,8 +47837,8 @@ pD
 bC
 Fb
 bl
-tJ
-tJ
+wJ
+uv
 tJ
 tJ
 um
@@ -47837,8 +48000,8 @@ dr
 vf
 bC
 bC
-bl
-bl
+bC
+bC
 bl
 bl
 bl
@@ -48002,7 +48165,7 @@ pD
 bC
 Fb
 bl
-tJ
+uv
 tJ
 tJ
 tJ
@@ -48167,7 +48330,7 @@ bC
 bC
 bl
 bl
-tJ
+wH
 tJ
 tJ
 um
@@ -49326,11 +49489,11 @@ pD
 pD
 dr
 sm
-pD
-pD
-pD
-pD
-pD
+ws
+wp
+wm
+wi
+wh
 pD
 dr
 dr
@@ -49490,10 +49653,10 @@ dr
 dr
 dr
 sn
-dr
-dr
-dr
-dr
+wv
+wq
+wn
+wj
 dr
 dr
 dr
@@ -49654,10 +49817,10 @@ dr
 dr
 dr
 dr
-dr
-dr
-dr
-dr
+wx
+wr
+wo
+wl
 dr
 dr
 dr
@@ -49818,7 +49981,7 @@ dr
 dr
 dr
 dr
-dr
+wy
 dr
 dr
 dr

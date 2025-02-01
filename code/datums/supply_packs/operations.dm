@@ -53,6 +53,23 @@
 	buyable = 0
 	group = "Operations"
 
+/datum/supply_packs/ob_custom
+	contains = list(
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/custom,
+	)
+
+	name = "OB Custom Crate"
+	cost = 0
+	containertype = /obj/structure/closet/crate/secure/ob
+	containername = "OB Ammo Crate (Custom)"
+	buyable = 0
+	group = "Operations"
+
 /datum/supply_packs/telecommsparts
 	name = "Replacement Telecommunications Parts"
 	contains = list(

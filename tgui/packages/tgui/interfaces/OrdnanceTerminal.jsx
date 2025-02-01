@@ -21,7 +21,7 @@ export const OrdnanceTerminal = () => {
   const [selectedTab, setSelectedTab] = useState('NONE');
 
   return (
-    <Window width={600} height={395} theme="crtblue">
+    <Window width={600} height={440} theme="crtblue">
       <Window.Content>
         <Section title="Technology">
           <NoticeBox info>Technology Credits : {credits}</NoticeBox>

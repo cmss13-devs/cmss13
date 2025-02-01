@@ -131,6 +131,8 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	reagent.overdose = 30
 	reagent.overdose_critical = 60
 	reagent.save_chemclass()
+	reagent.color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
+	reagent.burncolor = reagent.color
 	GLOB.chemical_reagents_list[reagent.id] = reagent
 	reagent.add_property(PROPERTY_EXPLOSIVE, 3)
 	reagent.generate_assoc_recipe(list(CHEM_CLASS_BASIC, CHEM_CLASS_BASIC, CHEM_CLASS_BASIC))
@@ -187,9 +189,18 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 /datum/ordnance_tech/technology/custom_ob
 	name = "Custom Orbital Bombardment"
 	desc = "An orbital bombardment shell able to be filled with custom reagents, only one can be deployed per operation."
-	tech_unlock = CUSTOM_OB
 	value = 45
 	add_category = FALSE
+
+/datum/ordnance_tech/technology/custom_ob/purchase(turf/location)
+	ai_announcement("Custom Ordnance Orbital Warhead authorized and delivered to ASRS")
+	var/datum/supply_order/order = new /datum/supply_order()
+	order.ordernum = GLOB.supply_controller.ordernum++
+	var/actual_type = GLOB.supply_packs_types["OB Custom Crate"]
+	order.objects = list(GLOB.supply_packs_datums[actual_type])
+	order.orderedby = MAIN_AI_SYSTEM
+
+	GLOB.supply_controller.shoppinglist += order
 
 //armylathe upgrades
 

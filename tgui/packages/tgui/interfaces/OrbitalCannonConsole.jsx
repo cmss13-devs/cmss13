@@ -58,6 +58,9 @@ export const OrbitalCannonConsole = () => {
               <br />
               Cluster Orbital Warhead:
               <b> {data.clusterfuel} Solid Fuel blocks.</b>
+              <br />
+              Custom Orbital Warhead:
+              <b> {data.customOB} Solid Fuel BLocks.</b>
             </Box>
           </Collapsible>
         </Section>

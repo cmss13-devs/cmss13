@@ -35,9 +35,9 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 
 	if(!GLOB.ob_type_fuel_requirements)
 		GLOB.ob_type_fuel_requirements = list()
-		var/list/L = list(4,5,6)
+		var/list/L = list(4,5,6,5)
 		var/amt
-		for(var/i=1 to 3)
+		for(var/i=1 to 4)
 			amt = pick_n_take(L)
 			GLOB.ob_type_fuel_requirements += amt
 
@@ -203,6 +203,8 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			return abs(GLOB.ob_type_fuel_requirements[2] - tray.fuel_amt)
 		if("cluster")
 			return abs(GLOB.ob_type_fuel_requirements[3] - tray.fuel_amt)
+		if("custom")
+			return abs(GLOB.ob_type_fuel_requirements[4] - tray.fuel_amt)
 	return 0
 
 /obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, squad_behalf)
@@ -574,6 +576,123 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(handle_ob_shake), loc), 1 SECONDS)
 
+/obj/structure/ob_ammo/warhead/custom
+	name = "\improper Custom orbital warhead"
+	warhead_kind = "custom"
+	icon_state = "ob_warhead_custom"
+	shake_frequency = 3
+	max_shake_factor = 15
+	var/clear_power = 1200
+	var/clear_falloff = 400
+	var/clear_delay = 3
+	var/double_explosion_delay = 2.1 SECONDS // has to be over 2 seconds due to chemistry reagent bullshit
+
+	var/list/reaction_limits = list( "max_ex_power" = 1200, "base_ex_falloff" = 400, "max_ex_shards" = 128, //not sure why you would want to add shards to this but whatever
+							"max_fire_rad" = 21, "max_fire_int" = 80, "max_fire_dur" = 80,
+							"min_fire_rad" = 5, "min_fire_int" = 10, "min_fire_dur" = 10
+	)
+
+/// current assembly state of the OB
+	var/assembly_stage = ASSEMBLY_UNLOCKED
+	/// the maximum volume allowed in the OB
+	var/max_container_volume = 600
+	/// the current total volume
+	var/current_container_volume = 0
+	/// the containers inside the OB
+	var/list/obj/item/reagent_container/glass/containers = list()
+	var/list/allowed_containers = list(/obj/item/reagent_container/glass/beaker/vial, /obj/item/reagent_container/glass/beaker, /obj/item/reagent_container/glass/bucket, /obj/item/reagent_container/glass/bottle, /obj/item/reagent_container/glass/bucket/mopbucket)
+
+/obj/structure/ob_ammo/warhead/custom/attackby(obj/item/item as obj, mob/user as mob)
+	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+		if(assembly_stage == ASSEMBLY_UNLOCKED)
+			to_chat(user, SPAN_NOTICE("You lock the [name]."))
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
+			assembly_stage = ASSEMBLY_LOCKED
+			icon_state = "ob_warhead_custom_ready"
+		else if(assembly_stage == ASSEMBLY_LOCKED)
+			to_chat(user, SPAN_NOTICE("You unlock the [name]."))
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
+			assembly_stage = ASSEMBLY_UNLOCKED
+			icon_state = "ob_warhead_custom"
+	else if(is_type_in_list(item, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
+		if(current_container_volume >= max_container_volume)
+			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
+		else
+			if(item.reagents.total_volume)
+				if(item.reagents.maximum_volume + current_container_volume > max_container_volume)
+					to_chat(user, SPAN_DANGER("\the [item] is too large for [name]."))
+					return
+				if(user.temp_drop_inv_item(item))
+					to_chat(user, SPAN_NOTICE("You add \the [item] to the [name]."))
+					item.forceMove(src)
+					containers += item
+					current_container_volume += item.reagents.maximum_volume
+					assembly_stage = ASSEMBLY_UNLOCKED
+			else
+				to_chat(user, SPAN_DANGER("\the [item] is empty."))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
+		if(assembly_stage == ASSEMBLY_UNLOCKED)
+			if(!length(containers))
+				to_chat(user, SPAN_DANGER("\the [name] has no containers."))
+				return
+			for(var/obj/container in containers)
+				containers -= container
+				user.put_in_hands(container)
+			current_container_volume = 0
+	else return ..()
+
+/obj/structure/ob_ammo/warhead/custom/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Contains [containers.len] container\s.")
+	switch(assembly_stage)
+		if(ASSEMBLY_LOCKED)
+			. += SPAN_NOTICE("It is ready.")
+		if(ASSEMBLY_UNLOCKED)
+			. += SPAN_NOTICE("It is unlocked.")
+
+/obj/structure/ob_ammo/warhead/custom/warhead_impact(turf/target)
+	. = ..()
+	if (!.)
+		return
+
+	//clear walls
+	new /obj/effect/overlay/temp/blinking_laser (target)
+	sleep(10)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
+	sleep(clear_delay)
+
+	//explode the main bomb
+	if(assembly_stage == ASSEMBLY_UNLOCKED || !length(containers)) //shitty explosion if left unlocked or no containers
+		target.ceiling_debris_check(5)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), target, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS)
+
+	else
+		if(assembly_stage == ASSEMBLY_LOCKED)
+			handle_ob_shake(target)
+			//second explosion has to be on a timer
+			addtimer(CALLBACK(src, PROC_REF(make_kaboom), target, containers), double_explosion_delay)
+			make_kaboom(target, containers)
+
+	QDEL_IN(src, 5 SECONDS)
+
+/obj/structure/ob_ammo/warhead/custom/proc/make_kaboom(turf/location, arg_containers)
+	location.ceiling_debris_check(5)
+	var/obj/item/explosive/bomb = new()
+	bomb.create_reagents(1000)
+	for(var/limit in bomb.reaction_limits)
+		bomb.reagents.vars[limit] = reaction_limits[limit]
+	for(var/obj/item/reagent_container/OB_container in arg_containers)
+		var/obj/item/reagent_container/container_copy = new OB_container.type()
+		OB_container.reagents.copy_to(container_copy, OB_container.reagents.total_volume, TRUE, TRUE, TRUE)
+		bomb.containers += container_copy
+	bomb.forceMove(location)
+	bomb.allow_star_shape = FALSE
+	bomb.cause_data = create_cause_data(initial(name), source_mob)
+	bomb.assembly_stage = ASSEMBLY_LOCKED
+
+	bomb.prime(TRUE)
+
 /obj/structure/ob_ammo/ob_fuel
 	name = "solid fuel"
 	icon_state = "ob_fuel"
@@ -627,6 +746,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	data["hefuel"] = GLOB.ob_type_fuel_requirements[1]
 	data["incfuel"] = GLOB.ob_type_fuel_requirements[2]
 	data["clusterfuel"] = GLOB.ob_type_fuel_requirements[3]
+	data["customOB"] = GLOB.ob_type_fuel_requirements[4]
 
 	data["linkedcannon"] = GLOB.almayer_orbital_cannon
 	data["linkedtray"] = GLOB.almayer_orbital_cannon.tray

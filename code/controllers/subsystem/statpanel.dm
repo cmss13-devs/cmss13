@@ -418,7 +418,7 @@ SUBSYSTEM_DEF(statpanels)
 	set hidden = TRUE
 
 	if (!current_fontsize)
-		current_fontsize = 12
+		current_fontsize = 14
 
 	var/datum/statbrowser_options/options_panel = statbrowser_options
 	if(!options_panel)

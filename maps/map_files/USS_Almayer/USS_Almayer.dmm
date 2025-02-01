@@ -116,9 +116,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
+/mob/living/simple_animal/mouse/rat/brown,
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -16;
 	pixel_y = 8
@@ -7202,7 +7200,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/captain_mess)
 "aVC" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering/starboard)
 "aVF" = (
@@ -9171,7 +9169,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
 "bmh" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_x = -5;
 	pixel_y = 16
@@ -9311,7 +9309,7 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/living/offices)
 "bng" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_x = -5;
 	pixel_y = 16
@@ -12299,7 +12297,7 @@
 /turf/open/floor/almayer/emerald/northwest,
 /area/almayer/squads/charlie)
 "bMD" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -13211,7 +13209,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "bTJ" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -15680,7 +15678,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_m_p)
 "cyo" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/green/southwest,
 /area/almayer/squads/req)
 "cyp" = (
@@ -20408,7 +20406,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_bow)
 "eua" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/bridgebunks)
 "eup" = (
@@ -22231,7 +22229,7 @@
 	dir = 1;
 	pixel_y = 2
 	},
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/item/ashtray/plastic{
 	layer = 3.4;
 	pixel_x = 7;
@@ -22583,7 +22581,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
 "fqc" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
@@ -22600,7 +22598,7 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "fqC" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
 "fqJ" = (
@@ -25502,7 +25500,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "gGr" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
 "gGs" = (
@@ -37339,7 +37337,7 @@
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
 "lym" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_f_p)
 "lyq" = (
@@ -42804,7 +42802,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/port_missiles)
 "nNv" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -54734,7 +54732,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_x = -5;
 	pixel_y = 16
@@ -57589,7 +57587,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "tJR" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/sign/safety/medical{
 	pixel_x = -17
 	},
@@ -58796,7 +58794,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	pixel_y = 16
 	},
 /turf/open/floor/almayer,
@@ -59000,7 +58998,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/orangefull,
 /area/almayer/engineering/upper_engineering)
 "urN" = (
@@ -68155,7 +68153,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "xQe" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 18
 	},

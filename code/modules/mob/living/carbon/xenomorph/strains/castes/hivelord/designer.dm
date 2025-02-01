@@ -24,8 +24,6 @@
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
-	behavior_delegate_type = /datum/behavior_delegate/hivelord_designer
-
 /datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
@@ -33,9 +31,7 @@
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
 	hivelord.plasmapool_modifier = 0.5 // -50% plasma pool
 	hivelord.tacklestrength_max = 6 // increase by +1
-
-/datum/behavior_delegate/hivelord_designer
-	name = "Designer Hivelord Behavior Delegate"
+	hivelord.recalculate_everything()
 
 /datum/action/xeno_action/verb/verb_design_resin()
 	set category = "Alien"

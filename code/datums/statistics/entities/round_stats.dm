@@ -138,7 +138,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 	if(!participants[faction])
 		setup_faction(faction)
 
-	participants[faction]++
+	participants[faction] += amount
 
 /datum/entity/statistic_round/proc/track_final_participant(faction, amount = 1)
 	if(!faction)
@@ -147,7 +147,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 	if(!final_participants[faction])
 		setup_faction(faction)
 
-	final_participants[faction]++
+	final_participants[faction] += amount
 
 /datum/entity/statistic_round/proc/track_round_end()
 	real_time_end = world.realtime
@@ -169,7 +169,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 	if(!hijack_participants[faction])
 		setup_faction(faction)
 
-	hijack_participants[faction]++
+	hijack_participants[faction] += amount
 
 /datum/entity/statistic_round/proc/track_hijack()
 	for(var/i in GLOB.alive_mob_list)
@@ -189,10 +189,13 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 
 	if(!total_deaths[faction])
 		setup_faction(faction)
-	total_deaths[faction]++
+	total_deaths[faction] += amount
 
 
 /datum/entity/statistic_round/proc/store_caste_evo_data()
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		return
+
 	var/datum/entity/round_caste_picks/caste_picks = DB_ENTITY(/datum/entity/round_caste_picks)
 	caste_picks.castes_picked = castes_evolved
 	caste_picks.save()

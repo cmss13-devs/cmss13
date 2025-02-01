@@ -1365,6 +1365,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 24
 
+/obj/item/storage/backpack/rmc/medium/medic
+	name = "standard RMC backpack"
+	desc = "A TWE military standard-carry RMC combat pack MK3 with a green cross denoting that it's a medic's backpack." //Surely CLF won't shoot the doc, right?
+	icon_state = "backpack_medium_medic"
+	item_state = "backpack_medium_medic"
+
 /obj/item/storage/backpack/rmc/light
 	name = "lightweight RMC backpack"
 	desc = "A TWE military light-carry RMC combat pack MK3."
@@ -1373,24 +1379,24 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 21
 
-/obj/item/storage/backpack/rmc/frame //One sorry sod should have to lug this about spawns in their shuttle currently
+/obj/item/storage/backpack/rmc/frame //One sorry sod should have to lug this about spawns in their shuttle currently (making it a more useless backpack was devious. Reworks it to hold ammo and medkits, as well as nades.)
 	name = "\improper RMC carry-frame"
 	desc = "A backpack specifically designed to hold equipment for commandos."
-	icon_state = "backpack_frame"
+	icon_state = "backpack_frame_0"
 	item_state = "backpack_frame"
 	max_w_class = SIZE_HUGE
-	storage_slots = 7
+	storage_slots = 5
 	can_hold = list(
-		/obj/item/ammo_box/magazine/misc/mre,
-		/obj/item/storage/firstaid/regular,
-		/obj/item/storage/firstaid/adv,
-		/obj/item/storage/firstaid/surgical,
-		/obj/item/device/defibrillator/compact,
-		/obj/item/tool/surgery/surgical_line,
-		/obj/item/tool/surgery/synthgraft,
-		/obj/item/storage/box/packet/rmc/he,
-		/obj/item/storage/box/packet/rmc/incin,
+		/obj/item/storage/firstaid,
+		/obj/item/device/defibrillator,
+		/obj/item/storage/box/packet,
+		/obj/item/ammo_box,
 	)
+	var/base_icon_state = "backpack_frame"
+
+/obj/item/storage/backpack/rmc/frame/update_icon()
+	. = ..()
+	icon_state = "[base_icon_state]_[length(contents)]"
 
 /obj/item/storage/backpack/general_belt/rmc //the breachers belt
 	name = "\improper RMC general utility belt"

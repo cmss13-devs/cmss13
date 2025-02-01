@@ -207,7 +207,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	// We prevent de-evolved people from being tracked for the rest of the round relating to T1s in order to prevent people
 	// Intentionally de/re-evolving to mess with the stats gathered. We don't track t2/3 because it's a legit strategy to open
 	// With a t1 into drone before de-evoing later to go t1 into another caste once survs are dead/capped
-	if(new_xeno.ckey && !((new_xeno.caste.caste_type in XENO_T1_CASTES) && (new_xeno.ckey in GLOB.deevolved_ckeys)) && GLOB.round_statistics)
+	if(new_xeno.ckey && !((new_xeno.caste.caste_type in XENO_T1_CASTES) && (new_xeno.ckey in GLOB.deevolved_ckeys) && !(new_xeno.datum_flags & DF_VAR_EDITED)) && GLOB.round_statistics)
 		var/caste_cleaned_key = lowertext(replacetext(castepick, " ", "_"))
 		if(!GLOB.round_statistics.castes_evolved[caste_cleaned_key])
 			GLOB.round_statistics.castes_evolved[caste_cleaned_key] = 1

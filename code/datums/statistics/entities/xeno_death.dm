@@ -27,6 +27,8 @@
 	var/killed_by
 	/// Round ID that this xeno died in
 	var/round_id
+	/// How many kills this xeno got
+	var/kill_count
 
 /datum/entity/xeno_death/proc/load_data(mob/living/carbon/xenomorph/dead_xeno, datum/cause_data/death_cause)
 	map_name = SSmapping.configs[GROUND_MAP]?.map_name || "Unknown Map"
@@ -43,6 +45,7 @@
 	damage_taken = dead_xeno.life_damage_taken_total || 0
 	killed_by = strip_improper(death_cause.cause_name) || "Unknown"
 	round_id = GLOB.round_id || -1
+	kill_count = dead_xeno.life_kills_total || 0
 
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.xeno_deaths += src
@@ -66,4 +69,5 @@
 		"damage_taken" = DB_FIELDTYPE_INT,
 		"killed_by" = DB_FIELDTYPE_STRING_MEDIUM,
 		"round_id" = DB_FIELDTYPE_INT,
+		"kill_count" = DB_FIELDTYPE_INT,
 	)

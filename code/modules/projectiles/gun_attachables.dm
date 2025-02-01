@@ -461,7 +461,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	recoil_mod = RECOIL_AMOUNT_TIER_4
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
-	damage_mod = -BULLET_DAMAGE_MULT_TIER_6
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
 	velocity_mod = AMMO_SPEED_TIER_1
 	delay_mod = -FIRE_DELAY_TIER_2
 	bonus_proj_scatter_mod = -SCATTER_AMOUNT_TIER_6

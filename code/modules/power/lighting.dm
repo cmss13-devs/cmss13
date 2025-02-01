@@ -164,6 +164,10 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/machinery/light/almayer
+	name = "almayer light fixture"
+	light_power = 0.7
+
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
@@ -181,6 +185,10 @@
 	brightness = 4
 	desc = "A small lighting fixture that is fitted with a bright fluorescent light bulb. Looking at it for too long makes your eyes go watery."
 	light_type = /obj/item/light_bulb/bulb
+
+/obj/structure/machinery/light/small/almayer
+	name = "almayer light fixture"
+	light_power = 0.7
 
 /obj/structure/machinery/light/small/blue
 	icon_state = "bbulb1"

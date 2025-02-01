@@ -1,5 +1,5 @@
 /* Note on new/custom dropship airlocks:
-All you really need to spawn in on strongdmm is the inner dock port, the outer dock port, the floodlights, and the frame tiles. you can also spawn in the dropship_airlock poddoors and door_controls
+All you really need to spawn in on strongdmm is the inner dock port, the outer dock port, the floodlights, and the frame tiles. you can also spawn in the dropship_airlock *pod*doors and door_controls
 if you like. It is encouraged you do not make them instances. Bear in mind you will have to change the dropship_airlock_id s (in the case of dockports) and linked_inner_dock_port_id s (in the case
 of floodlights, poddoors and door_controls) to all be the same if you want them to a part of the same 'airlock'. Please make sure the frame tiles are in the correct order. If you are unsure what
 that order is, refer to already-made airlocks.
@@ -48,7 +48,7 @@ Docking Port Definitions
 	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_ONE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
-/obj/docking_port/stationary/marine_dropship/airlock/inner/almayer__two
+/obj/docking_port/stationary/marine_dropship/airlock/inner/almayer_two
 	name = "Almayer Hangar Airlock 2 Inner"
 	id = ALMAYER_A2_INNER
 	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO

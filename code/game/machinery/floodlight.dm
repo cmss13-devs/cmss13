@@ -86,6 +86,9 @@
 	base_icon_state = "floor_flood"
 	density = FALSE
 
+/obj/structure/machinery/floodlight/landing/floor/almayer
+	light_power = 0.7
+
 /obj/structure/machinery/floodlight/landing/dropship_airlock
 	light_power = 1
 	on_light_range = 10

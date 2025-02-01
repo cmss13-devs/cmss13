@@ -44,8 +44,8 @@
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "cR" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_y = 24
+/obj/structure/machinery/light/almayer{
+	dir = 1
 	},
 /turf/open/shuttle/dropship/light_grey_top_left,
 /area/shuttle/drop1/sulaco)
@@ -62,6 +62,9 @@
 	throw_range = 15;
 	normaldoorcontrol = 3;
 	req_one_access_txt = "3;22"
+	},
+/obj/item/device/radio/intercom/alamo{
+	pixel_y = -32
 	},
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
 /area/shuttle/drop1/sulaco)
@@ -376,6 +379,20 @@
 	icon_state = "33"
 	},
 /area/shuttle/drop1/sulaco)
+"II" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco)
 "IP" = (
 /obj/effect/attach_point/electronics/dropship1{
 	dir = 1;
@@ -394,6 +411,9 @@
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "JP" = (
+/obj/item/device/radio/intercom/alamo{
+	pixel_x = 8
+	},
 /turf/closed/shuttle/dropship1{
 	icon_state = "62"
 	},
@@ -423,6 +443,9 @@
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "MP" = (
+/obj/item/device/radio/intercom/alamo{
+	pixel_x = -8
+	},
 /turf/closed/shuttle/dropship1{
 	icon_state = "64"
 	},
@@ -486,6 +509,20 @@
 /turf/closed/shuttle/dropship1{
 	icon_state = "31"
 	},
+/area/shuttle/drop1/sulaco)
+"Su" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop1/sulaco)
 "SM" = (
 /turf/closed/shuttle/dropship1{
@@ -585,8 +622,8 @@
 	},
 /area/shuttle/drop1/sulaco)
 "XF" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_y = 24
+/obj/structure/machinery/light/almayer{
+	dir = 1
 	},
 /turf/open/shuttle/dropship/light_grey_top_right,
 /area/shuttle/drop1/sulaco)
@@ -710,7 +747,7 @@ Ce
 TK
 qF
 aj
-ws
+Su
 TK
 ws
 WQ
@@ -727,7 +764,7 @@ in
 TK
 ws
 TK
-ws
+II
 TK
 in
 Zo
@@ -773,7 +810,7 @@ in
 TK
 ws
 TK
-ws
+Su
 TK
 in
 Zo
@@ -802,7 +839,7 @@ Tt
 TK
 Tu
 TK
-ws
+II
 TK
 ws
 LP

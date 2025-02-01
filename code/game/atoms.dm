@@ -432,8 +432,8 @@ Parameters are passed from New.
 		T.appearance = src.appearance
 		T.setDir(src.dir)
 
-	if(P.mask_layer)
-		T.layer = ((P.mask_layer-0.5)+(src.layer/10))
+		if(P.mask_layer)
+			T.layer = ((P.mask_layer-0.5)+(src.layer/10))
 
 		GLOB.clones_t.Add(src)
 		src.clone = T

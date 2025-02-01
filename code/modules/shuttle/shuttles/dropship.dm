@@ -315,6 +315,8 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/turbulence_item_handle(affected_items) // the logic for turbulence and freefall, when handling items, is equivelant
 	for(var/obj/item/affected_item as anything in affected_items)
+		if(affected_item.anchored)
+			continue
 		affected_item.visible_message(SPAN_DANGER("[affected_item] goes flying upwards!"))
 		affected_item.throwforce *= DROPSHIP_TURBULENCE_THROWFORCE_MULTIPLIER
 		affected_item.throw_random_direction(2, spin = TRUE)

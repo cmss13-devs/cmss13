@@ -472,11 +472,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4;
-	pixel_y = -8;
-	level = 1
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "bb" = (
@@ -1029,10 +1024,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 5;
-	level = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -1653,10 +1644,6 @@
 /area/space)
 "fb" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1;
-	level = 1
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "fc" = (
@@ -2886,9 +2873,8 @@
 /area/space)
 "iL" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4;
-	level = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -5574,20 +5560,6 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "pi" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4;
-	pixel_y = -4;
-	level = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	layer = 3.33
@@ -5703,20 +5675,6 @@
 /turf/open/floor/prison/greenfull/east,
 /area/space)
 "pu" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4;
-	pixel_y = -4;
-	level = 1
-	},
 /obj/effect/decal/cleanable/blood/xeno{
 	pixel_x = 12;
 	pixel_y = 12
@@ -6126,10 +6084,6 @@
 "qr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4;
-	level = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -6759,14 +6713,6 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/darkbrownfull2,
 /area/space)
-"sf" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 10;
-	level = 1
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
 "sg" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -6979,6 +6925,12 @@
 "sI" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass,
 /turf/open/floor/corsat/marked,
+/area/space)
+"sJ" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "secure_crate_strapped"
+	},
+/turf/open/floor/corsat/plate,
 /area/space)
 "sK" = (
 /obj/structure/platform/metal/strata,
@@ -8077,6 +8029,12 @@
 "vs" = (
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
 /area/space)
+"vt" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "chest_white"
+	},
+/turf/open/floor/almayer/plate,
+/area/space)
 "vu" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
 	dir = 1
@@ -8141,6 +8099,21 @@
 	icon_state = "chair"
 	},
 /turf/open/floor/corsat/officesquares,
+/area/space)
+"vD" = (
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0;
+	dir = 8
+	},
+/obj/structure/prop/resin_prop{
+	icon_state = "coolanttank"
+	},
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
 /area/space)
 "vE" = (
 /obj/structure/stairs{
@@ -8590,11 +8563,32 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/space)
+"wK" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "closed_oxygen"
+	},
+/turf/open/floor/hybrisa/wood,
+/area/space)
+"wL" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "closed_oxygen"
+	},
+/turf/open/floor/plating,
+/area/space)
 "wM" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
 	},
 /turf/open/gm/river/desert/deep,
+/area/space)
+"wN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "wP" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -8655,13 +8649,8 @@
 	dir = 2;
 	icon_state = "pipe-y"
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4;
-	level = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -8861,13 +8850,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4;
-	level = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -9376,14 +9360,8 @@
 	dir = 8;
 	icon_state = "pipe-y"
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4;
-	level = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2-4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -9453,8 +9431,8 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/space)
 "Ir" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	level = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -9496,8 +9474,8 @@
 /turf/open/floor/prison/cell_stripe,
 /area/space)
 "Jm" = (
-/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
-	dir = 4
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
 	},
 /turf/open/floor/plating,
 /area/space)
@@ -10021,11 +9999,6 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4;
-	level = 1
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "RP" = (
@@ -10108,7 +10081,9 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/space)
 "SX" = (
-/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3,
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
+	},
 /turf/open/floor/plating,
 /area/space)
 "Td" = (
@@ -10151,15 +10126,8 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 5;
-	pixel_x = -4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4;
-	pixel_y = -8;
-	level = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -10212,10 +10180,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4;
-	level = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -10280,23 +10246,6 @@
 /area/event/dynamic/unpowered{
 	base_lighting_alpha = 20
 	})
-"Wn" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 4;
-	pixel_y = -8;
-	level = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	level = 1;
-	pixel_x = -8
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
 "WE" = (
 /obj/structure/flag/plantable/ua,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -10418,10 +10367,8 @@
 /turf/open/floor/prison/blue/north,
 /area/space)
 "Yl" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	dir = 4;
-	pixel_y = 4;
-	level = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "0-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -27820,7 +27767,7 @@ bl
 KY
 px
 RB
-sf
+fb
 dj
 fb
 cl
@@ -28967,11 +28914,11 @@ LO
 bl
 fj
 OT
-UA
+ba
 VT
 js
 dj
-qr
+wN
 Lk
 bl
 dJ
@@ -28982,7 +28929,7 @@ dn
 pK
 dI
 dj
-Wn
+ef
 dj
 dw
 bl
@@ -33910,7 +33857,7 @@ yY
 yY
 yY
 yY
-FY
+vD
 yY
 yY
 yY
@@ -34742,12 +34689,12 @@ yY
 yY
 Zb
 Zb
-yY
+pQ
 hr
 yY
 gX
 bC
-eN
+sJ
 om
 eV
 eR
@@ -43078,7 +43025,7 @@ pE
 pE
 vi
 bl
-LO
+wL
 hr
 yY
 pA
@@ -46883,7 +46830,7 @@ tJ
 tJ
 tL
 tL
-tJ
+vt
 bl
 bC
 pE
@@ -48005,7 +47952,7 @@ bC
 bl
 bl
 bl
-um
+wK
 um
 bl
 yO

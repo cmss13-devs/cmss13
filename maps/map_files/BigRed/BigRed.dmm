@@ -765,6 +765,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acW" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/bigredv2/outside/cargo)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -840,6 +844,10 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"ado" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/whitebluefull/northeast,
+/area/bigredv2/outside/general_store)
 "adp" = (
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/warnwhite,
@@ -19282,8 +19290,9 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "dIb" = (
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "dIn" = (
 /obj/structure/sink{
 	dir = 4;
@@ -20798,9 +20807,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
-"fjP" = (
-/turf/open/floor/delivery,
-/area/bigredv2/caves)
 "fkD" = (
 /obj/item/ammo_magazine/shotgun/slugs,
 /turf/closed/wall/solaris/rock,
@@ -20978,7 +20984,7 @@
 "fwV" = (
 /obj/structure/surface/table,
 /turf/open/floor,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "fxa" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
@@ -24204,7 +24210,7 @@
 "iZA" = (
 /obj/structure/surface/rack,
 /turf/open/floor,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "jay" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -25799,10 +25805,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/eta)
-"kGr" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_store)
 "kGw" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
@@ -30728,7 +30730,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "pQE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -33444,7 +33446,7 @@
 "ssE" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "ssI" = (
 /obj/structure/prop/dam/truck/damaged,
 /turf/open/mars_cave/mars_dirt_4,
@@ -39023,10 +39025,6 @@
 "yar" = (
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
-"yaM" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
 "ybk" = (
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves_research)
@@ -51704,7 +51702,7 @@ aSI
 aOB
 aNo
 aNo
-aNm
+ado
 aoH
 hmJ
 aXH
@@ -52140,7 +52138,7 @@ aPv
 aNm
 aWB
 aoH
-aXH
+acW
 aXH
 mOc
 aZu
@@ -52592,7 +52590,7 @@ aZu
 aZu
 aZu
 asK
-yaM
+aZu
 aZu
 aZO
 biN
@@ -52790,7 +52788,7 @@ aNo
 aVf
 aOB
 aoH
-kGr
+aXH
 aXH
 aXH
 asK
@@ -68890,13 +68888,13 @@ fCb
 fCb
 aao
 pcF
-kBn
-kBn
-kBn
-kBn
-kBn
-kBn
-kBn
+vVZ
+vVZ
+vVZ
+vVZ
+vVZ
+vVZ
+vVZ
 aao
 aao
 kBn
@@ -69107,13 +69105,13 @@ fCb
 rjw
 fCb
 pcF
-kBn
+vVZ
 iZA
-dIb
+fCb
 pQv
 fwV
 fwV
-kBn
+vVZ
 aao
 aao
 aao
@@ -69324,13 +69322,13 @@ aao
 aao
 aao
 pcF
-fjP
-dIb
-dIb
-dIb
-dIb
+myY
+fCb
+fCb
+fCb
+fCb
 fwV
-kBn
+vVZ
 aao
 aao
 aao
@@ -69541,13 +69539,13 @@ fCb
 aao
 aao
 pcF
-kBn
-dIb
-dIb
-dIb
-dIb
-dIb
-kBn
+vVZ
+fCb
+fCb
+fCb
+fCb
+fCb
+vVZ
 aao
 aao
 fOx
@@ -69758,13 +69756,13 @@ vVZ
 vVZ
 vVZ
 pcF
-kBn
-dIb
-dIb
-dIb
-dIb
+vVZ
+fCb
+fCb
+fCb
+fCb
 iZA
-kBn
+vVZ
 aao
 fOx
 fOx
@@ -69975,13 +69973,13 @@ fCb
 fCb
 aao
 pcF
-kBn
+vVZ
 dIb
-dIb
-dIb
-dIb
-kBn
-kBn
+fCb
+fCb
+fCb
+vVZ
+vVZ
 kSL
 fOx
 fOx
@@ -70192,11 +70190,11 @@ fCb
 aao
 aao
 pcF
-kBn
+vVZ
 fwV
-dIb
-dIb
-dIb
+fCb
+fCb
+fCb
 ssE
 kSL
 fOx
@@ -70409,11 +70407,11 @@ aao
 aao
 aao
 pcF
-kBn
+vVZ
 fwV
-dIb
-dIb
-dIb
+fCb
+fCb
+fCb
 ssE
 kSL
 fOx
@@ -70626,12 +70624,12 @@ aao
 aao
 aao
 pcF
-kBn
+vVZ
 fwV
-dIb
-dIb
-kBn
-kBn
+fCb
+fCb
+vVZ
+vVZ
 fOx
 fOx
 fOx
@@ -70843,11 +70841,11 @@ fCb
 fCb
 brE
 pcF
-kBn
-kBn
-kBn
-fjP
-kBn
+vVZ
+vVZ
+vVZ
+myY
+vVZ
 fOx
 fOx
 fOx

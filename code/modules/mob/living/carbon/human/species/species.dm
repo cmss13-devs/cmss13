@@ -192,28 +192,39 @@
 		QDEL_NULL(H.stamina)
 		H.stamina = new stamina_type(H)
 
-/datum/species/proc/hug(mob/living/carbon/human/H, mob/living/carbon/target, target_zone = "chest")
-	if(H.flags_emote)
+/datum/species/proc/hug(mob/living/carbon/human/human, mob/living/carbon/target, target_zone = "chest")
+	if(human.flags_emote)
 		return
 	var/t_him = target.p_them()
 
+	//answer the call
+	if(target.flags_emote & EMOTING_HIGH_FIVE)
+		attempt_high_five(human, target)
+		return
+	else if(target.flags_emote & EMOTING_FIST_BUMP)
+		attempt_fist_bump(human, target)
+		return
+	else if(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)
+		attempt_rock_paper_scissors(human, target)
+		return
+
 	if(target_zone == "head")
-		attempt_rock_paper_scissors(H, target)
+		attempt_rock_paper_scissors(human, target)
 		return
 	else if(target_zone in list("l_arm", "r_arm"))
-		attempt_high_five(H, target)
+		attempt_high_five(human, target)
 		return
 	else if(target_zone in list("l_hand", "r_hand"))
-		attempt_fist_bump(H, target)
+		attempt_fist_bump(human, target)
 		return
-	else if(H.body_position == LYING_DOWN) // Keep other interactions above lying check for maximum awkwardness potential
-		H.visible_message(SPAN_NOTICE("[H] waves at [target] to make [t_him] feel better!"),
+	else if(human.body_position == LYING_DOWN) // Keep other interactions above lying check for maximum awkwardness potential
+		human.visible_message(SPAN_NOTICE("[human] waves at [target] to make [t_him] feel better!"),
 			SPAN_NOTICE("You wave at [target] to make [t_him] feel better!"), null, 4)
 	else if(target_zone == "groin")
-		H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"),
+		human.visible_message(SPAN_NOTICE("[human] hugs [target] to make [t_him] feel better!"),
 			SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
 	else
-		H.visible_message(SPAN_NOTICE("[H] pats [target] on the back to make [t_him] feel better!"),
+		human.visible_message(SPAN_NOTICE("[human] pats [target] on the back to make [t_him] feel better!"),
 			SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
 	playsound(target, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 

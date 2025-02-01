@@ -291,18 +291,23 @@
 
 	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
 
-/obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
+/obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag, turf/location_to_print)
 	var/mob_descriptions = ""
 	var/radius = (size-1)*0.5
-	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(GLOB.world_view_size + radius, user.client)
+	var/list/turf/turfs
+	if(user)
+		turfs = RANGE_TURFS(radius, target) & view(GLOB.world_view_size + radius, user.client)
+	else
+		turfs = RANGE_TURFS(radius, target) & view(GLOB.world_view_size + radius, target.loc)
 	for(var/turf/the_turf as anything in turfs)
 		mob_descriptions = get_mob_descriptions(the_turf, mob_descriptions)
 	var/datum/picture/the_picture = createpicture(target, user, turfs, mob_descriptions, flag)
 
-	if(QDELETED(user))
-		return
+	if(user)
+		if(QDELETED(user))
+			return
 
-	printpicture(user, the_picture)
+	printpicture(user, the_picture, location_to_print)
 
 /obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, description, flag)
 	var/icon/photoimage = get_icon(turfs, target)
@@ -333,11 +338,14 @@
 
 	return the_picture
 
-/obj/item/device/camera/proc/printpicture(mob/user, datum/picture/P)
+/obj/item/device/camera/proc/printpicture(mob/user, datum/picture/P, turf/location)
 	var/obj/item/photo/Photo = new/obj/item/photo()
-	Photo.forceMove(user.loc)
-	if(!user.get_inactive_hand())
-		user.put_in_inactive_hand(Photo)
+	if(user)
+		Photo.forceMove(user.loc)
+		if(!user.get_inactive_hand())
+			user.put_in_inactive_hand(Photo)
+	else
+		Photo.forceMove(location)
 	Photo.construct(P)
 
 

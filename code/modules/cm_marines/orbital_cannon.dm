@@ -688,6 +688,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		bomb.containers += container_copy
 	bomb.forceMove(location)
 	bomb.allow_star_shape = FALSE
+	bomb.take_photo = FALSE
 	bomb.cause_data = create_cause_data(initial(name), source_mob)
 	bomb.assembly_stage = ASSEMBLY_LOCKED
 

@@ -6,12 +6,21 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	var/credits_to_allocate = 5
 	/// technology bought so far, if something is in this list then it can't be bought again
 	var/list/tech_bought = list()
+	///	photocopier where the explosion photos are sent
+	var/obj/structure/machinery/photocopier/photocopier
 
 /datum/ordnance_research/proc/update_credits(change)
 	technology_credits = max(0, technology_credits + change)
 
-/datum/ordnance_research/proc/save_new_tech(tech)
-	return
+/datum/ordnance_research/proc/take_image(grenade_location)
+	addtimer(CALLBACK(src, PROC_REF(print_image), grenade_location), 1.2 SECONDS)
+
+/datum/ordnance_research/proc/print_image(grenade_location)
+	var/obj/item/device/camera/camera = new()
+	camera.size = 9 //anything larger and it starts to lag bad
+	camera.captureimage(grenade_location, location_to_print = photocopier.loc)
+	playsound(photocopier.loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 30, 1)
+	qdel(camera)
 
 //the actual items
 
@@ -234,6 +243,10 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	desc = "A terminal for accessing ordnance technology data."
 	icon_state = "engineering_terminal"
 	var/list/jobs_allowed = list(JOB_ORDNANCE_TECH, JOB_SYNTH, JOB_CHIEF_ENGINEER)
+
+/obj/structure/machinery/computer/ordnance/Initialize()
+	. = ..()
+	GLOB.ordnance_research.photocopier = locate(/obj/structure/machinery/photocopier) in range(2, src)
 
 //TGUI stuff
 

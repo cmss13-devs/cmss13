@@ -242,6 +242,10 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
+"aaI" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/almayer,
+/area/almayer/engineering/lower/workshop/hangar)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -94226,7 +94230,7 @@ ddw
 gHl
 kjD
 gHl
-rNK
+poA
 lFp
 hSb
 siT
@@ -95651,7 +95655,7 @@ wCk
 aId
 lab
 ruL
-aId
+aaI
 aId
 aId
 dOe

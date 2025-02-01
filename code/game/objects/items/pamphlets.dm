@@ -50,17 +50,19 @@
 
 /obj/item/pamphlet/skill/can_use(mob/living/carbon/human/user)
 	. = ..()
-	if(.)
-		var/datum/character_trait/skills/skill_trait = trait
-		if(istype(skill_trait))
-			if(user.skills.get_skill_level(skill_trait.skill) < skill_trait.skill_cap)
-				return
+	if(!.)
+		return
+	
+	var/datum/character_trait/skills/skill_trait = trait
+	if(istype(skill_trait))
+		if(user.skills.get_skill_level(skill_trait.skill) < skill_trait.skill_cap)
+			return
 
-			if(user.skills.get_skill_level(skill_trait.secondary_skill) < skill_trait.secondary_skill_cap)
-				return
+		if(user.skills.get_skill_level(skill_trait.secondary_skill) < skill_trait.secondary_skill_cap)
+			return
 
-			to_chat(user, SPAN_WARNING("This pamphlet is useless for you!"))
-			return FALSE
+		to_chat(user, SPAN_WARNING("This pamphlet is useless for you!"))
+		return FALSE
 
 /obj/item/pamphlet/skill/medical
 	name = "medical instructional pamphlet"

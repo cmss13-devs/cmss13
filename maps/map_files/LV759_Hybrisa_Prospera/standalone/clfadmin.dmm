@@ -1746,15 +1746,8 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "pL" = (
-/obj/structure/roof/hybrisa/signs/miscvert2sign{
-	light_color = "#9cf27a";
-	light_on = 1;
-	light_power = 4;
-	light_range = 6;
-	pixel_x = -4
-	},
-/turf/open/hybrisa/street/sidewalk/west,
-/area/lv759/outdoors/colony_streets/central_streets)
+/turf/template_noop,
+/area/template_noop)
 "pO" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11{
 	pixel_x = -16;
@@ -6781,7 +6774,7 @@ nW
 ex
 er
 vS
-vS
+pL
 pL
 vS
 tP

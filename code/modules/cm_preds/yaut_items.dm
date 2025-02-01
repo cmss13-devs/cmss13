@@ -1113,7 +1113,7 @@
 		return
 	if(istype(target, /obj/item/storage) && user.a_intent !=INTENT_HARM)
 		return
-	target.handle_dissolve()
+	target.handle_dissolve(user)
 
 /obj/item/storage/medicomp
 	name = "medicomp"

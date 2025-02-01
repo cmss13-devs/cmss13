@@ -1,0 +1,47 @@
+{
+    "map_name": "Oil Map",
+    "map_path": "map_files/OilRig",
+    "map_file": "testbed.dmm",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/lv",
+        "/datum/equipment_preset/survivor/doctor/lv",
+        "/datum/equipment_preset/survivor/chaplain/lv",
+        "/datum/equipment_preset/survivor/engineer/lv",
+        "/datum/equipment_preset/survivor/corporate/lv",
+        "/datum/equipment_preset/survivor/trucker/lv",
+        "/datum/equipment_preset/survivor/security/lv",
+        "/datum/equipment_preset/survivor/colonial_marshal/lv",
+        "/datum/equipment_preset/survivor/goon",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "defcon_triggers": [
+        3750,
+        2600,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "As the city burns, you find yourself among the dwindling few who survived the initial onslaught, The catastrophic breach shattered the once-prosperous world of LV-759, home to the large commercial & industrial Weyland-Yutani colony known as Hybrisa Prospera. Through sheer will or cunning, you've evaded the relentless alien onslaught so far... but the nightmare persists.",
+    "announce_text": "Oil Map Test",
+    "map_item_type": "/obj/item/map/lv759_map",
+	"monkey_types": [
+        "monkey"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [{ "Ground": true }],
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    },
+    "camouflage": "urban",
+	"gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

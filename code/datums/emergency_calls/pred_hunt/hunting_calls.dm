@@ -182,7 +182,7 @@
 	shuttle_id = ""
 
 /datum/emergency_call/young_bloods/hunting_party
-	name = "Hunting Grounds - Blooding Party"
+	name = "Hunting Grounds - Blooding Party (Youngbloods)"
 	blooding_name = "Blooding Party (Three members)"
 	mob_max = 3
 	mob_min = 1
@@ -214,15 +214,14 @@
 		FOR_DVIEW_END
 
 
-	if(!leader && check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES, time_required_for_youngblood))
+	if(!leader && check_timelock(hunter.client, JOB_SQUAD_ROLES, time_required_for_youngblood) && check_timelock(hunter.client, JOB_XENO_ROLES, time_required_for_youngblood))
 		leader = hunter
-		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl_leader, TRUE, FALSE)
+		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl_leader, TRUE, TRUE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood Pack Leader!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG("You are expected to remain in character at all times, follow all commands given to you by whitelisted players, and adhere to the honor code. If you fail to comply with any of these, you will be dispatched via a kill switch embedded within all Youngbloods. You may also face OOC repercussions. Good luck and have fun."))
-	else
-		(check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES , time_required_for_youngblood))
-		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl, TRUE, FALSE)
+	else if (check_timelock(hunter.client, JOB_SQUAD_ROLES, time_required_for_youngblood) && check_timelock(hunter.client, JOB_XENO_ROLES, time_required_for_youngblood))
+		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl, TRUE, TRUE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood!"))
-		to_chat(hunter, SPAN_YAUTJABOLDBIG ("You are expected to remain in character at all times, follow all commands given to you by whitelisted players, and adhere to the honor code. If you fail to comply with any of these, you will be dispatched via a kill switch embedded within all Youngbloods. You may also face OOC repercussions. Good luck and have fun."))
+		to_chat(hunter, SPAN_YAUTJABOLDBIG("You are expected to remain in character at all times, follow all commands given to you by whitelisted players, and adhere to the honor code. If you fail to comply with any of these, you will be dispatched via a kill switch embedded within all Youngbloods. You may also face OOC repercussions. Good luck and have fun."))
 
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), hunter, SPAN_YAUTJABOLD("Objectives: [objectives]")), 30 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), hunter, SPAN_YAUTJABOLD("Objectives:</b> [objectives]")), 30 SECONDS)

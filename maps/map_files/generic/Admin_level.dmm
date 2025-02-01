@@ -19,9 +19,8 @@
 /turf/open/space/basic,
 /area/space)
 "af" = (
-/obj/structure/machinery/vending/cigarette/wy,
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station)
+/turf/closed/wall/almayer/upp/reinforced/outer,
+/area/centcom/control)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -31,10 +30,10 @@
 /turf/open/floor/tdome/northeast,
 /area/tdome)
 "ah" = (
-/turf/closed/wall/almayer/upp/reinforced/outer,
-/area/centcom/control)
-"ai" = (
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/supply/dock/upp)
+"ai" = (
+/turf/open/floor/corsat/cargo,
 /area/supply/dock/upp)
 "aj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
@@ -44,13 +43,6 @@
 "ak" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdome1)
-"al" = (
-/turf/open/floor/corsat/cargo,
-/area/supply/dock/upp)
-"am" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/tdome/northeast,
-/area/tdome/tdomeobserve)
 "an" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
@@ -1849,6 +1841,10 @@
 /obj/structure/sign/poster/clf,
 /turf/closed/wall,
 /area/adminlevel/ert_station)
+"VD" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
 "VI" = (
 /turf/open/floor/almayer/silvercorner,
 /area/adminlevel/ert_station/shuttle_dispatch)
@@ -1913,6 +1909,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
+"WQ" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station)
 "Xi" = (
 /obj/structure/sign/poster/music,
 /turf/closed/wall,
@@ -5132,7 +5132,7 @@ aa
 aC
 aa
 OT
-am
+VD
 YP
 YP
 YP
@@ -6098,7 +6098,7 @@ Iq
 ZV
 Io
 OD
-af
+WQ
 JW
 KQ
 RW
@@ -15334,13 +15334,13 @@ as
 as
 TT
 as
-ah
-ah
-ah
-ah
-ah
-ah
-ah
+af
+af
+af
+af
+af
+af
+af
 as
 TT
 as
@@ -15486,13 +15486,13 @@ as
 as
 TT
 as
+af
 ah
-ai
-ai
-ai
-ai
-ai
 ah
+ah
+ah
+ah
+af
 as
 TT
 as
@@ -15638,13 +15638,13 @@ as
 as
 TT
 as
+af
 ah
 ai
-al
-ai
-al
+ah
 ai
 ah
+af
 as
 TT
 as
@@ -15790,13 +15790,13 @@ as
 as
 TT
 as
+af
 ah
-ai
-ai
-ai
-ai
-ai
 ah
+ah
+ah
+ah
+af
 as
 TT
 as
@@ -15942,13 +15942,13 @@ as
 as
 TT
 as
+af
 ah
 ai
-al
-ai
-al
+ah
 ai
 ah
+af
 as
 TT
 as
@@ -16094,13 +16094,13 @@ as
 as
 TT
 as
+af
 ah
-ai
-ai
-ai
-ai
-ai
 ah
+ah
+ah
+ah
+af
 as
 TT
 as
@@ -16246,13 +16246,13 @@ as
 as
 TT
 as
-ah
-ah
-ah
-ah
-ah
-ah
-ah
+af
+af
+af
+af
+af
+af
+af
 as
 TT
 as

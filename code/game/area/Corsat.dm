@@ -9,17 +9,18 @@
 /area/corsat/landing/console
 	name = "\improper LZ1 'Gamma'"
 	icon_state = "corsat_telecomms"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/corsat/landing/console2
 	name = "\improper LZ2 'Sigma'"
 	icon_state = "corsat_telecomms"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/corsat/emergency_access
 	name = "\improper Unknown Area"
 	icon_state = "corsat_hull"
 	ceiling = CEILING_REINFORCED_METAL
+	requires_power = FALSE
 
 //SIGMA SECTOR
 

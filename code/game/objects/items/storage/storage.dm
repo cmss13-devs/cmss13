@@ -638,9 +638,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	var/mob/living/carbon/human/H = usr
 	empty(H, get_turf(H))
 
-/obj/item/storage/proc/empty(mob/user, turf/T)
-	if (!(storage_flags & STORAGE_ALLOW_EMPTY) || !ishuman(user) || !(user.l_hand == src || user.r_hand == src) || user.is_mob_incapacitated())
+/obj/item/storage/proc/empty(mob/user, turf/T, var/require_in_hand = TRUE)
+	if (!(storage_flags & STORAGE_ALLOW_EMPTY) || !ishuman(user) || (require_in_hand && !(user.l_hand == src || user.r_hand == src)) || user.is_mob_incapacitated())
 		return
+
 
 	if (!isturf(T) || get_dist(src, T) > 1)
 		T = get_turf(src)

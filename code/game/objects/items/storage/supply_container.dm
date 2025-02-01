@@ -42,11 +42,8 @@
 		if(!ishuman(usr))
 			return
 
-		visible_message(SPAN_NOTICE("You start to empty and pick up [name]."))
-		if(!do_after(over_object, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			visible_message(SPAN_NOTICE("You cease trying to empty [name]."))
+		if(!container.empty(over_object, loc, require_in_hand = FALSE))
 			return
-		container.empty(over_object, loc)
 		visible_message(SPAN_NOTICE("[usr] empty and picks up the [name]."))
 
 		usr.put_in_hands(new /obj/item/duffel_bag)

@@ -5655,6 +5655,13 @@
 	},
 /turf/open/floor/prison,
 /area/space)
+"pp" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	color = "#5b9068";
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/wood,
+/area/space)
 "pq" = (
 /obj/effect/spawner/random/tool{
 	pixel_x = 6;
@@ -5923,6 +5930,13 @@
 /area/event/dynamic/unpowered{
 	base_lighting_alpha = 20
 	})
+"pM" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	color = "#5b9068";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/space)
 "pN" = (
 /obj/structure/machinery/light{
 	invisibility = 101;
@@ -5931,6 +5945,28 @@
 	dir = 8
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/space)
+"pO" = (
+/obj/effect/decal/hybrisa/road/lines3{
+	color = "#5b9068";
+	pixel_y = -1
+	},
+/turf/open/floor/hybrisa/wood,
+/area/space)
+"pP" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"pQ" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "rack"
+	},
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
 /area/space)
 "pR" = (
 /obj/structure/bed/chair/office/light{
@@ -5944,10 +5980,33 @@
 	},
 /turf/open/floor/prison/blue/northwest,
 /area/space)
+"pT" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	color = "#5b9068";
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/space)
+"pU" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "sheater0"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"pV" = (
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
 "pW" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
+/area/space)
+"pX" = (
+/turf/open/floor/hybrisa/wood/blackwood,
 /area/space)
 "pY" = (
 /obj/structure/platform_decoration/metal/almayer/west,
@@ -5956,6 +6015,20 @@
 "pZ" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/almayer/blackfull/west,
+/area/space)
+"qa" = (
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"qb" = (
+/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer2,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"qc" = (
+/turf/open/floor/almayer/dark_sterile,
 /area/space)
 "qd" = (
 /obj/structure/platform/metal/almayer/north,
@@ -5968,8 +6041,23 @@
 /obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/prison/greenfull/east,
 /area/space)
+"qe" = (
+/obj/structure/surface/rack,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
 "qf" = (
 /turf/open/auto_turf/ice,
+/area/space)
+"qg" = (
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasketoranges,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"qh" = (
+/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer3,
+/turf/open/floor/almayer/dark_sterile2,
 /area/space)
 "qi" = (
 /turf/open/gm/river/desert/deep,
@@ -5981,9 +6069,38 @@
 /area/event/unpowered{
 	base_lighting_alpha = s
 	})
+"qk" = (
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	color = "#5b9068";
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/wood,
+/area/space)
 "ql" = (
 /mob/living/simple_animal/hostile/bear,
 /turf/open/auto_turf/ice,
+/area/space)
+"qm" = (
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasketpears{
+	pixel_x = 2;
+	density = 0
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"qn" = (
+/obj/structure/machinery/microwave,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/dark_sterile2,
 /area/space)
 "qo" = (
 /obj/structure/cable/heavyduty{
@@ -5991,6 +6108,12 @@
 	layer = 2.1
 	},
 /turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"qp" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "coolanttank"
+	},
+/turf/open/floor/almayer/dark_sterile2,
 /area/space)
 "qq" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
@@ -6018,6 +6141,10 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/almayer/blackfull/west,
 /area/space)
+"qu" = (
+/obj/structure/prop/hybrisa/supermart/souto_rack,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
 "qv" = (
 /obj/structure/closet/secure_closet/fridge,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
@@ -6033,6 +6160,13 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/gm/river/desert/deep,
+/area/space)
+"qy" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasketmelons,
+/turf/open/floor/almayer/dark_sterile2,
 /area/space)
 "qz" = (
 /turf/open/floor/prison/ramptop/north,
@@ -6396,6 +6530,10 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/space)
+"rA" = (
+/obj/structure/prop/hybrisa/supermart/souto_can_stack,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
 "rB" = (
 /obj/structure/ore_box,
 /obj/effect/decal/warning_stripes{
@@ -6667,13 +6805,108 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/space)
+"sj" = (
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasketempty{
+	density = 0
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sk" = (
+/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer1{
+	density = 0
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sl" = (
+/obj/structure/prop/resin_prop{
+	dir = 4;
+	icon_state = "chair"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"sm" = (
+/obj/structure/prop/resin_prop{
+	dir = 8;
+	icon_state = "chair"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"sn" = (
+/obj/structure/prop/resin_prop{
+	dir = 1;
+	icon_state = "chair"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"so" = (
+/obj/structure/prop/resin_prop{
+	dir = 4;
+	icon_state = "chair"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sp" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sq" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
 "sr" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat,
 /area/space)
+"ss" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "rack"
+	},
+/obj/item/trash/plate,
+/obj/item/trash/plate,
+/obj/item/trash/plate{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/trash/plate{
+	pixel_x = 11;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"st" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"su" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "rack"
+	},
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sv" = (
+/obj/structure/machinery/squeezer,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sw" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "rack"
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
 "sx" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/space)
+"sy" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	color = "#5b9068";
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/wood,
 /area/space)
 "sz" = (
 /obj/structure/surface/table/almayer,
@@ -9285,7 +9518,9 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/space)
 "UO" = (
-/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines2{
+	color = "#5b9068"
+	},
 /turf/open/floor/prison/greenfull/east,
 /area/space)
 "US" = (
@@ -36400,11 +36635,11 @@ LO
 dl
 dl
 dl
-um
+pO
 uN
 tM
 tM
-um
+pp
 tz
 tz
 tz
@@ -37056,11 +37291,11 @@ bl
 dl
 dl
 dl
-um
+pO
 tM
 tM
 tM
-um
+pp
 tz
 tz
 tz
@@ -37712,11 +37947,11 @@ bl
 dl
 dl
 dl
-um
+pO
 tM
 tM
 tM
-um
+pp
 tz
 tz
 tz
@@ -38193,7 +38428,7 @@ um
 um
 um
 um
-um
+pO
 tM
 tM
 tM
@@ -38219,7 +38454,7 @@ tM
 tM
 tM
 tM
-um
+pp
 um
 um
 um
@@ -38698,7 +38933,7 @@ bl
 bl
 bl
 bl
-Bg
+qk
 bC
 bl
 bC
@@ -38854,13 +39089,13 @@ tM
 tM
 tM
 bl
+st
+st
+sq
+so
+bl
 Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
+qp
 kg
 dF
 bC
@@ -39022,14 +39257,14 @@ Ml
 Ml
 Ml
 Ml
-Ml
-Ml
+bl
+vH
 Ml
 kg
 dF
 bC
 kg
-Ml
+pU
 bC
 bC
 bC
@@ -39182,11 +39417,11 @@ tM
 tM
 tM
 bl
+bl
+bl
 Ml
 Ml
-Ml
-Ml
-Ml
+rA
 Ml
 Ml
 kg
@@ -39346,8 +39581,8 @@ tM
 tM
 tM
 bl
-Ml
-Ml
+sv
+vH
 Ml
 Ml
 Ml
@@ -39359,7 +39594,7 @@ kg
 kg
 Ml
 pA
-yY
+pQ
 bC
 bC
 pA
@@ -39518,7 +39753,7 @@ Ml
 Ml
 Ml
 Ml
-Ml
+qc
 Ml
 Ml
 Ml
@@ -39674,16 +39909,16 @@ tM
 tM
 tM
 bl
+sw
+su
+ss
 Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
+qu
+rA
+qu
 bl
-bl
-bl
+Ml
+qc
 bl
 Ml
 Ml
@@ -40001,7 +40236,7 @@ bl
 tM
 tM
 tM
-um
+pp
 um
 um
 bl
@@ -40009,9 +40244,9 @@ Ml
 Ml
 Ml
 bl
-Ml
-Ml
-Ml
+qe
+qe
+qe
 bl
 Ml
 Ml
@@ -40019,7 +40254,7 @@ Ml
 bl
 um
 um
-um
+pO
 tM
 tM
 tM
@@ -40165,10 +40400,10 @@ bl
 tM
 tM
 tM
+pp
 um
 um
 um
-um
 Ml
 Ml
 Ml
@@ -40183,7 +40418,7 @@ Ml
 um
 um
 um
-um
+pO
 tM
 tM
 tM
@@ -40329,9 +40564,13 @@ bl
 tM
 tM
 LO
+pp
 um
 um
-um
+bl
+sp
+Ml
+Ml
 bl
 Ml
 Ml
@@ -40341,13 +40580,9 @@ Ml
 Ml
 Ml
 bl
-Ml
-Ml
-Ml
-bl
 um
 um
-um
+pO
 tM
 tM
 tM
@@ -40493,7 +40728,7 @@ LO
 LO
 tM
 tM
-um
+pp
 um
 um
 bl
@@ -40511,7 +40746,7 @@ bl
 bl
 um
 um
-um
+pO
 tM
 tM
 tM
@@ -40657,25 +40892,25 @@ LO
 tM
 tM
 tM
-um
+pp
 um
 um
 bl
 Ml
 Ml
+sj
+qy
+qm
 Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
+qg
+qa
+pV
 Ml
 Ml
 bl
 um
 um
-um
+pO
 tM
 tM
 tM
@@ -40817,7 +41052,7 @@ um
 um
 um
 um
-um
+pO
 tM
 tM
 yY
@@ -40843,7 +41078,7 @@ bl
 tM
 tM
 tM
-um
+pp
 um
 LV
 um
@@ -40986,7 +41221,7 @@ tM
 tM
 tM
 bl
-Ml
+pP
 Ml
 Ml
 Ml
@@ -41022,12 +41257,12 @@ np
 np
 np
 np
-tr
-tn
-tl
-te
-ta
-sU
+np
+np
+np
+np
+np
+np
 np
 np
 np
@@ -41150,7 +41385,7 @@ tM
 hr
 pA
 bl
-Ml
+pP
 Ml
 Ml
 Ml
@@ -41186,12 +41421,12 @@ np
 np
 np
 np
-ts
-zK
-tm
-zK
-tb
-sV
+np
+np
+np
+np
+np
+np
 np
 np
 np
@@ -41321,14 +41556,14 @@ Ml
 Ml
 Ml
 Ml
+qn
+pP
+pP
 Ml
 Ml
 Ml
-Ml
-Ml
-Ml
-Ml
-Ml
+bl
+pP
 Ml
 Ml
 bl
@@ -41350,12 +41585,12 @@ np
 np
 np
 np
-bl
-to
-bl
-tg
-tc
-sW
+np
+np
+np
+np
+np
+np
 np
 np
 np
@@ -41484,15 +41719,15 @@ bC
 Ml
 Ml
 Ml
+bl
+bl
+bl
+bl
+bl
 Ml
 Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
+bl
+pP
 Ml
 Ml
 bl
@@ -41514,12 +41749,12 @@ np
 np
 np
 np
-tt
-tp
-bl
-th
-zK
-sX
+np
+np
+np
+np
+np
+np
 np
 np
 np
@@ -41643,16 +41878,16 @@ bC
 bC
 bC
 bC
+pA
 Ml
 Ml
 Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
+sk
+qh
+qh
+qh
+qh
+qb
 Ml
 Ml
 Ml
@@ -41678,12 +41913,12 @@ bC
 np
 np
 np
-tu
-tq
-bl
-tk
-td
-sY
+np
+np
+np
+np
+np
+np
 np
 np
 np
@@ -41984,7 +42219,7 @@ Ml
 Ml
 Ml
 Ml
-Ml
+DI
 Ml
 Ml
 bl
@@ -42139,17 +42374,17 @@ Ml
 bl
 bl
 bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
 Ml
+Ml
+Ml
+Ml
+Ml
+Ml
+pP
+pP
+bl
+bC
+pA
 bl
 bl
 tM
@@ -42302,6 +42537,7 @@ Ml
 Ml
 Ml
 bl
+pP
 Ml
 Ml
 Ml
@@ -42309,12 +42545,11 @@ Ml
 Ml
 Ml
 Ml
-Ml
-Ml
+pP
 bl
-Ml
-Ml
-Ml
+bC
+hr
+bC
 bl
 tM
 tM
@@ -42466,6 +42701,7 @@ Ml
 Ml
 Ml
 bl
+pP
 Ml
 Ml
 Ml
@@ -42473,15 +42709,14 @@ Ml
 Ml
 Ml
 Ml
-Ml
-Ml
-bl
-Ml
-Ml
-Ml
-bl
-tM
-tM
+bC
+bC
+bC
+bC
+ut
+bC
+YT
+yY
 tM
 bl
 tz
@@ -42626,27 +42861,27 @@ tM
 tM
 tM
 bl
-Ml
-Ml
-Ml
-bl
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-Ml
+sw
+qe
 Ml
 bl
+pP
+pP
+pP
+pP
+pP
 Ml
 Ml
-Ml
-bl
-tM
-tM
-tM
+bC
+bC
+bC
+bC
+ut
+bC
+bC
+pA
+yY
+hr
 bl
 tz
 tz
@@ -42805,7 +43040,7 @@ bl
 bl
 bl
 bl
-bl
+bC
 bl
 bl
 tM
@@ -42968,8 +43203,8 @@ tM
 tM
 tM
 tM
-tM
-tM
+yY
+fD
 tM
 tM
 tM
@@ -43133,7 +43368,7 @@ tM
 tM
 tM
 tM
-tM
+hr
 tM
 tM
 tM
@@ -43441,7 +43676,7 @@ um
 um
 um
 um
-um
+pO
 tM
 tM
 tM
@@ -43450,15 +43685,15 @@ bl
 bl
 bl
 bl
-tO
-tO
-tO
-tO
-tO
-tO
-tO
-tO
-tO
+pT
+pT
+pT
+pT
+pT
+pT
+pT
+pT
+pT
 bl
 bl
 bl
@@ -43467,7 +43702,7 @@ bl
 tM
 tM
 tM
-um
+pp
 um
 um
 um
@@ -43615,13 +43850,13 @@ um
 um
 bl
 bl
-tO
-tO
-tO
-tO
-tO
-tO
-tO
+pX
+pX
+pX
+pX
+pX
+pX
+pX
 bl
 bl
 um
@@ -43773,25 +44008,25 @@ bl
 tM
 tM
 tM
-um
+pp
 um
 um
 um
 um
 bl
-tO
-tO
+pX
+pX
 uP
 uL
 uH
-tO
-tO
+pX
+pX
 bl
 um
 um
 um
 um
-um
+pO
 tM
 tM
 tM
@@ -43943,13 +44178,13 @@ um
 um
 um
 bl
-tO
-tO
+pX
+pX
 uQ
 uM
 uJ
-tO
-tO
+pX
+pX
 bl
 um
 um
@@ -44107,13 +44342,13 @@ um
 um
 um
 bl
-tO
-tO
-tO
-tO
-tO
-tO
-tO
+pX
+pX
+pX
+pX
+pX
+pX
+pX
 bl
 um
 um
@@ -44918,9 +45153,9 @@ kg
 um
 um
 um
-um
-um
-um
+sy
+sy
+sy
 bl
 zy
 OV
@@ -44940,9 +45175,9 @@ Ml
 Uq
 zy
 bl
-tJ
-tJ
-tJ
+pM
+pM
+pM
 tJ
 tJ
 tJ
@@ -48370,7 +48605,7 @@ np
 np
 np
 np
-np
+sl
 np
 np
 np
@@ -48534,7 +48769,7 @@ np
 np
 np
 np
-np
+sm
 np
 np
 np
@@ -48698,7 +48933,7 @@ np
 np
 np
 np
-np
+sn
 np
 np
 np
@@ -52150,12 +52385,12 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
+tr
+tn
+tl
+te
+ta
+sU
 np
 np
 np
@@ -52314,12 +52549,12 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
+ts
+zK
+tm
+zK
+tb
+sV
 np
 np
 np
@@ -52478,12 +52713,12 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
+bl
+to
+bl
+tg
+tc
+sW
 np
 np
 np
@@ -52642,12 +52877,12 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
+tt
+tp
+bl
+th
+zK
+sX
 np
 np
 np
@@ -52806,12 +53041,12 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
+tu
+tq
+bl
+tk
+td
+sY
 np
 np
 np

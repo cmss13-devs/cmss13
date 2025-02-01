@@ -30,8 +30,6 @@
 	var/obj/item/ordnance/data_analyzer/attached_analyzer
 	/// if this explosive should capture a photo when exploding
 	var/take_photo = TRUE
-	/// delay after the bomb triggers before taking the photo
-	var/photo_delay = 1 SECONDS
 	var/use_dir = FALSE
 	var/angle = 360
 	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode

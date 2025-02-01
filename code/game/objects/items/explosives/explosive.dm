@@ -207,7 +207,7 @@
 		attached_analyzer.activate()
 
 	if(customizable && take_photo)
-		GLOB.ordnance_research.take_image(loc)
+		GLOB.ordnance_research.take_image(src, loc)
 
 	if(!force && (!customizable || !assembly_stage || assembly_stage < ASSEMBLY_LOCKED))
 		return

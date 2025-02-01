@@ -8,12 +8,17 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 	var/list/tech_bought = list()
 	///	photocopier where the explosion photos are sent
 	var/obj/structure/machinery/photocopier/photocopier
+	/// to prevent duplicate photos
+	var/last_grenade
 
 /datum/ordnance_research/proc/update_credits(change)
 	technology_credits = max(0, technology_credits + change)
 
-/datum/ordnance_research/proc/take_image(grenade_location)
+/datum/ordnance_research/proc/take_image(grenade, grenade_location)
+	if(grenade == last_grenade)
+		return
 	addtimer(CALLBACK(src, PROC_REF(print_image), grenade_location), 1.2 SECONDS)
+	last_grenade = grenade
 
 /datum/ordnance_research/proc/print_image(grenade_location)
 	var/obj/item/device/camera/camera = new()

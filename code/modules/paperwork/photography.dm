@@ -428,7 +428,7 @@
 		return
 	xeno.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"), \
+	xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"),
 	SPAN_DANGER("We [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	turn_off(xeno)
 	return XENO_ATTACK_ACTION

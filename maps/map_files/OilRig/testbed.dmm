@@ -6927,13 +6927,76 @@
 /obj/structure/machinery/power/port_gen/pacman/super,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/south,
 /area/space)
+"sC" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	color = "#5b9068";
+	pixel_y = 1
+	},
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/wood,
+/area/space)
 "sD" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/gm/river/desert/deep,
 /area/space)
+"sE" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 2
+	},
+/turf/open/floor/almayer/greenfull2,
+/area/space)
 "sF" = (
 /turf/open/floor/prison/red,
+/area/space)
+"sG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic/glass{
+	dir = 1
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic/glass,
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/space)
+"sK" = (
+/obj/structure/platform/metal/strata,
+/turf/open/floor/prison/rampbottom/east,
+/area/space)
+"sL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	dir = 8
+	},
+/turf/open/floor/almayer/plating,
+/area/space)
+"sM" = (
+/obj/structure/platform/metal/stair_cut/strata_left,
+/turf/open/floor/prison/rampbottom/east,
 /area/space)
 "sN" = (
 /obj/structure/surface/table/almayer,
@@ -34872,7 +34935,7 @@ kg
 oC
 cc
 np
-np
+bC
 bC
 Zb
 Zb
@@ -35686,8 +35749,8 @@ kg
 kg
 bC
 bC
-bC
-bC
+np
+lZ
 bC
 bC
 pA
@@ -35835,7 +35898,7 @@ yY
 yY
 hr
 yY
-eN
+nZ
 bC
 kg
 ua
@@ -35847,7 +35910,7 @@ kg
 ua
 ua
 kg
-tE
+oC
 bC
 bC
 bC
@@ -36001,7 +36064,7 @@ yY
 pA
 yY
 bC
-tE
+bC
 tE
 tE
 tE
@@ -36330,10 +36393,10 @@ yY
 yY
 yY
 yY
-yY
+Zb
 ue
 ue
-yY
+Zb
 yY
 yY
 yY
@@ -37983,7 +38046,7 @@ bC
 bC
 yY
 yY
-yY
+bC
 bC
 bC
 bC
@@ -39752,10 +39815,10 @@ Ml
 Ml
 Ml
 Ml
-Ml
+sJ
 qc
 Ml
-Ml
+sJ
 Ml
 yY
 bC
@@ -40085,7 +40148,7 @@ bl
 bl
 bl
 bl
-Ml
+sH
 bl
 bC
 bl
@@ -40244,11 +40307,11 @@ Ml
 Ml
 Ml
 bl
-qe
-qe
-qe
+sM
+in
+sK
 bl
-Ml
+qe
 Ml
 Ml
 bl
@@ -40403,19 +40466,19 @@ tM
 pp
 um
 um
-um
+sG
 Ml
 Ml
 Ml
+sG
+sL
+sL
+sL
+sG
 Ml
 Ml
 Ml
-Ml
-Ml
-Ml
-Ml
-Ml
-um
+sG
 um
 um
 pO
@@ -40551,8 +40614,8 @@ np
 np
 np
 np
-np
-np
+Ad
+cb
 Fb
 bl
 tY
@@ -40572,11 +40635,11 @@ sp
 Ml
 Ml
 bl
-Ml
-Ml
-Ml
+cF
+cF
+cF
 bl
-Ml
+qe
 Ml
 Ml
 bl
@@ -40715,8 +40778,8 @@ np
 np
 np
 np
-np
-np
+PU
+Lb
 Fb
 bl
 bl
@@ -40733,15 +40796,15 @@ um
 um
 bl
 bl
-Ml
+sI
 bl
 bl
 bl
-Ml
+sI
 bl
 bl
 bl
-Ml
+sI
 bl
 bl
 um
@@ -42370,7 +42433,7 @@ yY
 bC
 bl
 bl
-Ml
+sH
 bl
 bl
 bl
@@ -43702,7 +43765,7 @@ bl
 tM
 tM
 tM
-pp
+sC
 um
 um
 um
@@ -45320,7 +45383,7 @@ um
 um
 um
 um
-zy
+sE
 zy
 uA
 aV
@@ -45338,7 +45401,7 @@ aV
 aV
 Uq
 zy
-zy
+sE
 tJ
 tJ
 tJ

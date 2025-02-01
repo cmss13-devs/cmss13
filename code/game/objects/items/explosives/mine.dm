@@ -173,7 +173,7 @@
 		else
 			..()
 			// Claymore defaults to radial in these case. Poor man C4
-			use_dir = TRUE
+			use_dir = FALSE
 			triggered = TRUE // Delegating the tripwire/crossed function to the sensor.
 
 

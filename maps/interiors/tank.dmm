@@ -158,7 +158,7 @@
 /turf/open/shuttle/vehicle/floor_3_9,
 /area/interior/vehicle/tank)
 "Z" = (
-/obj/structure/vehicle_locker/tank{
+/obj/structure/general_container/tank{
 	pixel_y = 11
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{

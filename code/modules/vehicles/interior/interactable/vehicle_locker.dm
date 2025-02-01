@@ -2,7 +2,7 @@
 //changed from locker to structure with storage to stop
 //littering up floor with opened locker and ramming objects
 
-/obj/structure/vehicle_locker
+/obj/structure/general_container
 	name = "wall-mounted storage compartment"
 	desc = "Small storage unit allowing vehicle crewmen to store their personal possessions or weaponry ammunition. Only vehicle crewmen can access these."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
@@ -35,7 +35,7 @@
 									)
 	var/list/can_hold = null
 
-/obj/structure/vehicle_locker/Initialize()
+/obj/structure/general_container/Initialize()
 	. = ..()
 	container = new(src)
 	container.storage_slots = storage_slots
@@ -48,7 +48,7 @@
 	container.row_length = row_length
 	flags_atom |= USES_HEARING
 
-/obj/structure/vehicle_locker/verb/empty_storage()
+/obj/structure/general_container/verb/empty_storage()
 	set name = "Empty"
 	set category = "Object"
 	set src in range(0)
@@ -64,7 +64,7 @@
 	empty(get_turf(H), H)
 
 //regular storage's empty() proc doesn't work due to checks, so imitate it
-/obj/structure/vehicle_locker/proc/empty(turf/T, mob/living/carbon/human/H)
+/obj/structure/general_container/proc/empty(turf/T, mob/living/carbon/human/H)
 	if(!container)
 		to_chat(H, SPAN_WARNING("No internal storage found."))
 		return
@@ -82,7 +82,7 @@
 
 	container.empty(H, get_turf(H))
 
-/obj/structure/vehicle_locker/clicked(mob/living/carbon/human/user, list/mods)
+/obj/structure/general_container/clicked(mob/living/carbon/human/user, list/mods)
 	..()
 	if(!CAN_PICKUP(user, src))
 		return ..()
@@ -99,10 +99,10 @@
 		return TRUE
 
 //due to how /internal coded, this doesn't work, so we used workaround above
-/obj/structure/vehicle_locker/attack_hand(mob/user)
+/obj/structure/general_container/attack_hand(mob/user)
 	return
 
-/obj/structure/vehicle_locker/MouseDrop(obj/over_object)
+/obj/structure/general_container/MouseDrop(obj/over_object)
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user))
 		return
@@ -114,7 +114,7 @@
 	if (container.handle_mousedrop(user, over_object))
 		..(over_object)
 
-/obj/structure/vehicle_locker/attackby(obj/item/W, mob/living/carbon/human/user)
+/obj/structure/general_container/attackby(obj/item/W, mob/living/carbon/human/user)
 	if(!Adjacent(user))
 		return
 	if(user.is_mob_incapacitated())
@@ -126,32 +126,32 @@
 		return
 	return container.attackby(W, user)
 
-/obj/structure/vehicle_locker/emp_act(severity)
+/obj/structure/general_container/emp_act(severity)
 	. = ..()
 	container.emp_act(severity)
 
-/obj/structure/vehicle_locker/hear_talk(mob/M, msg)
+/obj/structure/general_container/hear_talk(mob/M, msg)
 	container.hear_talk(M, msg)
 	..()
 
 //Cosmetically opens/closes the locker when its storage window is accessed or closed. Only makes sound when not already open/closed.
-/obj/structure/vehicle_locker/on_pocket_open(first_open)
+/obj/structure/general_container/on_pocket_open(first_open)
 	if(first_open)
 		icon_state = "[icon_state]_open"
 		playsound(src.loc, 'sound/handling/hinge_squeak1.ogg', 25, TRUE, 3)
 
-/obj/structure/vehicle_locker/on_pocket_close(watchers)
+/obj/structure/general_container/on_pocket_close(watchers)
 	if(!watchers)
 		icon_state = initial(icon_state)
 		playsound(src.loc, "toolbox", 25, TRUE, 3)
 
-/obj/structure/vehicle_locker/tank
+/obj/structure/general_container/tank
 	name = "storage compartment"
 	desc = "Small storage unit allowing vehicle crewmen to store their personal possessions or weaponry ammunition. Only vehicle crewmen can access these."
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
 	icon_state = "locker"
 
-/obj/structure/vehicle_locker/med
+/obj/structure/general_container/med
 	name = "wall-mounted surgery kit storage"
 	desc = "A small locker that securely stores a full surgical kit. ID-locked to surgeons."
 	icon_state = "locker_med"
@@ -159,21 +159,21 @@
 
 	var/has_tray = TRUE
 
-/obj/structure/vehicle_locker/med/on_pocket_open(first_open)
+/obj/structure/general_container/med/on_pocket_open(first_open)
 	if(first_open)
 		playsound(src.loc, 'sound/handling/hinge_squeak1.ogg', 25, TRUE, 3)
 
-/obj/structure/vehicle_locker/med/on_pocket_close(watchers)
+/obj/structure/general_container/med/on_pocket_close(watchers)
 	if(!watchers)
 		playsound(src.loc, "toolbox", 25, TRUE, 3)
 
-/obj/structure/vehicle_locker/med/update_icon()
+/obj/structure/general_container/med/update_icon()
 	if(has_tray)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[icon_state]_open"
 
-/obj/structure/vehicle_locker/med/Initialize()
+/obj/structure/general_container/med/Initialize()
 	. = ..()
 	container.max_storage_space = 24
 	container.can_hold = list(
@@ -196,11 +196,11 @@
 	new /obj/item/tool/surgery/surgical_line(container)
 	new /obj/item/stack/nanopaste(container)
 
-/obj/structure/vehicle_locker/med/get_examine_text(mob/user)
+/obj/structure/general_container/med/get_examine_text(mob/user)
 	. = ..()
 	. += has_tray ? SPAN_HELPFUL("Right-click to remove the surgical tray from the locker.") : SPAN_WARNING("The surgical tray has been removed.")
 
-/obj/structure/vehicle_locker/med/attackby(obj/item/W, mob/living/carbon/human/user)
+/obj/structure/general_container/med/attackby(obj/item/W, mob/living/carbon/human/user)
 	if(!Adjacent(user))
 		return
 	if(user.is_mob_incapacitated())
@@ -218,7 +218,7 @@
 		return
 	return container.attackby(W, user)
 
-/obj/structure/vehicle_locker/med/clicked(mob/living/carbon/human/user, list/mods)
+/obj/structure/general_container/med/clicked(mob/living/carbon/human/user, list/mods)
 	if(!CAN_PICKUP(user, src))
 		return ..()
 
@@ -237,7 +237,7 @@
 		container.open(user)
 		return TRUE
 
-/obj/structure/vehicle_locker/med/MouseDrop(obj/over_object)
+/obj/structure/general_container/med/MouseDrop(obj/over_object)
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user))
 		return
@@ -253,7 +253,7 @@
 		..(over_object)
 
 
-/obj/structure/vehicle_locker/med/verb/remove_surgical_tray()
+/obj/structure/general_container/med/verb/remove_surgical_tray()
 	set name = "Remove Surgical Tray"
 	set category = "Object"
 	set src in oview(1)
@@ -272,7 +272,7 @@
 
 	remove_tray(H)
 
-/obj/structure/vehicle_locker/med/proc/remove_tray(mob/living/carbon/human/H)
+/obj/structure/general_container/med/proc/remove_tray(mob/living/carbon/human/H)
 	if(!has_tray)
 		to_chat(H, SPAN_WARNING("The surgical tray was already removed!"))
 		return
@@ -294,7 +294,7 @@
 	container.storage_close(H)
 	H.visible_message(SPAN_NOTICE("[H] removes the surgical tray from \the [src]."), SPAN_NOTICE("You remove the surgical tray from \the [src]."))
 
-/obj/structure/vehicle_locker/med/proc/add_tray(mob/living/carbon/human/H, obj/item/storage/surgical_tray/tray)
+/obj/structure/general_container/med/proc/add_tray(mob/living/carbon/human/H, obj/item/storage/surgical_tray/tray)
 	if(has_tray)
 		to_chat(H, SPAN_WARNING("\The [src] already has a surgical tray installed!"))
 		return

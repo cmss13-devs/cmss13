@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	singular_name = "use"
 	var/atom/movable/attached_atom = null
 	var/turf/original_location = null
-	var/attachable_atoms = list(/obj/structure/closet/crate, /obj/structure/vehicle_locker/supply_container)
+	var/attachable_atoms = list(/obj/structure/closet/crate, /obj/structure/general_container/supply_container)
 	var/datum/turf_reservation/reservation
 	var/faction
 

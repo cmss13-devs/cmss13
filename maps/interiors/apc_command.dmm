@@ -119,7 +119,7 @@
 /turf/open/void/vehicle,
 /area/space)
 "q" = (
-/obj/structure/vehicle_locker{
+/obj/structure/general_container{
 	pixel_y = 28
 	},
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{

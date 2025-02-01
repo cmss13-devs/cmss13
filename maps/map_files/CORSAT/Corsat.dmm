@@ -1073,6 +1073,10 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/carpet6_2/west,
 /area/corsat/gamma/residential/lounge)
+"aeh" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/corsat/darkgreen/north,
+/area/corsat/sigma/hangar/arrivals)
 "aei" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -99158,7 +99162,7 @@ ylo
 ylo
 ylo
 alx
-aeC
+aeh
 aeV
 dkK
 aeV

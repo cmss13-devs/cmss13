@@ -25,17 +25,6 @@
 /obj/structure/prop/pred_flight,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
-"aag" = (
-/obj/effect/overlay/palmtree_r{
-	icon_state = "palm2";
-	pixel_x = 21
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 15;
-	pixel_x = -14
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	dir = 8
@@ -84,6 +73,30 @@
 /obj/structure/pipes/unary/freezer/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
+"aap" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 15;
+	pixel_x = -14
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"aaq" = (
+/obj/item/fishing_pole{
+	anchored = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"aar" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop/fishing/line/long,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"aas" = (
+/obj/item/storage/beer_pack,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -3343,6 +3356,10 @@
 	pixel_x = -9;
 	pixel_y = 12
 	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 21;
+	pixel_x = 10
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "cDr" = (
@@ -4566,10 +4583,6 @@
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
-"dFt" = (
-/obj/structure/prop/fishing/line/long,
-/turf/open/gm/coast/beachcorner2/south_west,
-/area/varadero/exterior/pontoon_beach)
 "dGh" = (
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/closet/crate/hydroponics/prespawned,
@@ -7566,6 +7579,8 @@
 	pixel_x = -7;
 	pixel_y = -4
 	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "fZB" = (
@@ -7642,15 +7657,6 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
-"gcF" = (
-/obj/structure/prop/wooden_cross{
-	desc = "A grave to a fishing buddy, long gone"
-	},
-/obj/item/clothing/head/boaterhat{
-	pixel_y = 5
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
 "gcK" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -9529,18 +9535,6 @@
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
-"hJq" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/item/reagent_container/glass/bucket{
-	pixel_x = 9;
-	pixel_y = 9
-	},
-/obj/effect/landmark/corpsespawner/colonist,
-/obj/effect/decal/cleanable/blood,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/pontoon_beach)
 "hJw" = (
 /obj/structure/largecrate/random,
 /obj/item/storage/photo_album{
@@ -9880,19 +9874,6 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/varadero/interior_protected/caves)
-"hXe" = (
-/obj/structure/surface/table,
-/obj/item/tool/kitchen/knife{
-	pixel_x = 7;
-	pixel_y = -1
-	},
-/obj/item/reagent_container/food/snacks/carpmeat,
-/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
 "hXq" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves/digsite)
@@ -10578,6 +10559,9 @@
 /obj/item/stool{
 	pixel_x = 7;
 	pixel_y = -6
+	},
+/obj/item/clothing/head/boaterhat{
+	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
@@ -26594,10 +26578,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva/red/southwest,
 /area/varadero/interior/security)
-"vom" = (
-/obj/item/storage/beer_pack,
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
 "voJ" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -27007,12 +26987,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"vDw" = (
-/obj/item/fishing_pole{
-	anchored = 1
-	},
-/turf/open/gm/coast/beachcorner/south_west,
-/area/varadero/exterior/pontoon_beach)
 "vDC" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
@@ -27163,15 +27137,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/laundry)
-"vLo" = (
-/obj/effect/overlay/palmtree_r{
-	icon_state = "palm2";
-	pixel_x = 7;
-	pixel_y = 29
-	},
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
 "vLt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -27968,13 +27933,6 @@
 /obj/item/trash/crushed_cup,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"wnA" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 21;
-	pixel_x = 10
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
 "wnE" = (
 /obj/structure/tunnel{
 	id = "north_research_tunnel"
@@ -43886,8 +43844,8 @@ vzz
 ygh
 qVq
 asx
-asx
-asx
+qVD
+fXu
 cDm
 asx
 asx
@@ -44250,9 +44208,9 @@ qhE
 bcF
 egU
 dKy
-qVD
-fXu
-asx
+aas
+aaq
+aap
 asx
 asx
 wMw
@@ -44424,16 +44382,16 @@ xVw
 qwQ
 daS
 qwQ
-gVO
-jaF
-qgm
+qwQ
+qwQ
+qwQ
 lTR
 dXg
 dXg
 qhE
 gEH
 viu
-viu
+aar
 viu
 wEz
 asx
@@ -44606,16 +44564,16 @@ wBp
 qwQ
 qwQ
 lTR
-scL
-vLo
-lnO
+qwQ
+qwQ
+qwQ
 qwQ
 qwQ
 qwQ
 dXg
 qwQ
 qwQ
-qwQ
+qHl
 pAX
 iOM
 asx
@@ -44788,9 +44746,9 @@ xVw
 qwQ
 qwQ
 qwQ
-eGX
-hKK
-fLY
+qwQ
+qwQ
+lTR
 qwQ
 qwQ
 qwQ
@@ -45339,7 +45297,7 @@ qwQ
 lTR
 qwQ
 qwQ
-qwQ
+lTR
 qwQ
 qwQ
 qwQ
@@ -45518,11 +45476,11 @@ rYC
 dXg
 qwQ
 lTR
-gVO
-jaF
-jaF
-jaF
-qgm
+qwQ
+qwQ
+qwQ
+qwQ
+qwQ
 qwQ
 qwQ
 qwQ
@@ -45700,11 +45658,11 @@ wBp
 daS
 dXg
 aTY
-scL
-lsN
-gcF
-wnA
-lnO
+qwQ
+qwQ
+qwQ
+qwQ
+qwQ
 qwQ
 qwQ
 qwQ
@@ -45882,11 +45840,11 @@ wBp
 qwQ
 uYJ
 lTR
-scL
-vom
-hJq
-hXe
-lnO
+qwQ
+qwQ
+qwQ
+qwQ
+qwQ
 qwQ
 pAX
 qwQ
@@ -46064,11 +46022,11 @@ wBp
 qwQ
 aTY
 lTR
-eGX
-hKK
-vDw
-aag
-lnO
+qwQ
+qwQ
+qwQ
+qwQ
+qwQ
 qwQ
 lTR
 qwQ
@@ -46248,9 +46206,9 @@ qwQ
 aTY
 qwQ
 aTY
-dFt
-hKK
-fLY
+qwQ
+qwQ
+qwQ
 lTR
 qwQ
 lTR
@@ -46430,7 +46388,7 @@ lTR
 qwQ
 qwQ
 qwQ
-qHl
+qwQ
 qwQ
 lTR
 qwQ

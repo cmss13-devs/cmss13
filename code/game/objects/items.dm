@@ -1162,7 +1162,7 @@
 		log_attack("[key_name(user)] dissolved [src] with Yautja Cleaner!")
 		return TRUE
 	else
-		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to \the [src]!"), \
+		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to \the [src]!"),
 					SPAN_WARNING("You decide not to cover \the [src] with dissolving gel."))
 		return FALSE
 

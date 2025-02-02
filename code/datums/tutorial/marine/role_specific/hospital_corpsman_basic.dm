@@ -38,16 +38,16 @@
 		return
 
 	init_mob()
-	manual_message_to_player("This tutorial will teach you the fundamental skills for playing as a Marine Hospital Corpsman.")
-	register_tutorial_step(CALLBACK(src, PROC_REF(uniform)))
+	message_to_player("This tutorial will teach you the fundamental skills for playing as a Marine Hospital Corpsman.")
+	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/uniform()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("<b>Section 0 - Equipment and You</b>.")
+	message_to_player("<b>Section 0 - Equipment and You</b>.")
 
-	manual_message_to_player("Before you're ready to take on the world as a Marine Hospital Corpsman, you should probably put some clothes on...")
-	manual_message_to_player("Stroll on over to the outlined vendor and vend everything inside.")
+	message_to_player("Before you're ready to take on the world as a Marine Hospital Corpsman, you should probably put some clothes on...")
+	message_to_player("Stroll on over to the outlined vendor and vend everything inside.")
 	update_objective("Vend everything inside the ColMarTech Automated Closet.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/clothing/tutorial/medic, medical_vendor)
@@ -70,11 +70,11 @@
 		add_to_tracking_atoms(medbelt)
 		add_highlight(medbelt, COLOR_GREEN)
 
-		manual_message_to_player("Well done. This comprises the most basic gear available to a Marine Hospital Corpsman")
-		manual_message_to_player("Alongside your standard uniform, you are also provided a <b>M276 Lifesaver Bag</b>, which you are currently wearing on your belt slot.")
-		manual_message_to_player("Although yours is empty at the moment, the <b>M276 Lifesaver Bag</b> typically holds a wide range of essential medical gear, which you will be introduced to as you progress this tutorial.")
+		message_to_player("Well done. This comprises the most basic gear available to a Marine Hospital Corpsman")
+		message_to_player("Alongside your standard uniform, you are also provided a <b>M276 Lifesaver Bag</b>, which you are currently wearing on your belt slot.")
+		message_to_player("Although yours is empty at the moment, the <b>M276 Lifesaver Bag</b> typically holds a wide range of essential medical gear, which you will be introduced to as you progress this tutorial.")
 
-		register_tutorial_step(CALLBACK(src, PROC_REF(scanner)))
+		addtimer(CALLBACK(src, PROC_REF(scanner)), 13 SECONDS)
 
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/scanner()
@@ -83,11 +83,11 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 	remove_highlight(medbelt)
 
-	manual_message_to_player("On the topic of introductions! You should get to know your new best friend, the <b>Health Analyzer</b>.")
+	message_to_player("On the topic of introductions! You should get to know your new best friend, the <b>Health Analyzer</b>.")
 	var/obj/item/device/healthanalyzer/healthanalyzer = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
-	manual_message_to_player("Pick up the <b>Health Analyzer</b> by clicking on it with an empty hand.")
+	message_to_player("Pick up the <b>Health Analyzer</b> by clicking on it with an empty hand.")
 	update_objective("Pick up the Health Analyzer.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(scanner_2))
 
@@ -97,17 +97,17 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
-	manual_message_to_player("The first step to any medical treatment, is identifying the source and type of injury.")
-	manual_message_to_player("You can use your <b>Health Analyzer</b> on wounded Marines to see the locations, severity, and types of damage they have sustained.")
-	register_tutorial_step(CALLBACK(src, PROC_REF(medihud)))
+	message_to_player("The first step to any medical treatment, is identifying the source and type of injury.")
+	message_to_player("You can use your <b>Health Analyzer</b> on wounded Marines to see the locations, severity, and types of damage they have sustained.")
+	addtimer(CALLBACK(src, PROC_REF(medihud)), 8 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/medihud()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("Next, you should get to know a Medic's second best friend on the field, the <b>HealthMate HUD</b>.")
-	manual_message_to_player("The <b>HealthMate HUD</b> is an extremely useful device that fits over one eye, allowing you to scan anyones condition at a glance.")
-	manual_message_to_player("Squad Medical helmets come with an inbuilt <b>HealthMate HUD</b> optic, that activates whilst wearing it on your head.")
-	manual_message_to_player("Pick up the <b>M10 corpsman helmet</b>, and wear it on your head, highlighted in green.")
+	message_to_player("Next, you should get to know a Medic's second best friend on the field, the <b>HealthMate HUD</b>.")
+	message_to_player("The <b>HealthMate HUD</b> is an extremely useful device that fits over one eye, allowing you to scan anyones condition at a glance.")
+	message_to_player("Squad Medical helmets come with an inbuilt <b>HealthMate HUD</b> optic, that activates whilst wearing it on your head.")
+	message_to_player("Pick up the <b>M10 corpsman helmet</b>, and wear it on your head, highlighted in green.")
 
 	var/obj/item/clothing/head/helmet/marine/medic/helmet = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(helmet)
@@ -123,28 +123,28 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/head/helmet/marine/medic, helmet)
 	remove_highlight(helmet)
 
-	manual_message_to_player("While not as detailed as a health analyzer scan, your <b>HealthMate HUD</b> will display a healthbar over the head of any injured Marine, which will indicate their general condition.")
-	manual_message_to_player("When someone does not have a healthbar over their head, or when their healthbar disappears, that means they are <b>fully healthy</b>.")
-	manual_message_to_player("As you progress through the following sections of the tutorial, pay attention to how the Dummys healthbar changes with different injuries.")
+	message_to_player("While not as detailed as a health analyzer scan, your <b>HealthMate HUD</b> will display a healthbar over the head of any injured Marine, which will indicate their general condition.")
+	message_to_player("When someone does not have a healthbar over their head, or when their healthbar disappears, that means they are <b>fully healthy</b>.")
+	message_to_player("As you progress through the following sections of the tutorial, pay attention to how the Dummys healthbar changes with different injuries.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial)))
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 16 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial()
 
-	manual_message_to_player("<b>Section 1: Basic Damage Treatment</b>")
-	manual_message_to_player("<b>Section 1.1: Brute Damage</b>")
-	manual_message_to_player("There are two main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
-	manual_message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial_2)))
+	message_to_player("<b>Section 1: Basic Damage Treatment</b>")
+	message_to_player("<b>Section 1.1: Brute Damage</b>")
+	message_to_player("There are two main types of damage a Marine can sustain through injuries, each with a different method of treatment.")
+	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 15 SECONDS)
 
-/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_2(datum/source, obj/item/device/healthanalyzer)
 	SIGNAL_HANDLER
 
 	marine_dummy = new(loc_from_corner(2,2))
 	add_to_tracking_atoms(marine_dummy)
 	arm_equipment(marine_dummy, /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy)
 	marine_dummy.apply_damage(5, BRUTE, "chest")
-	manual_message_to_player("The Dummy has taken some kind of brute damage. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
+	message_to_player("The Dummy has taken some kind of brute damage. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
 	add_highlight(marine_dummy, COLOR_GREEN)
 	update_objective("Click on the Dummy with your Health Analyzer")
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(scanner_3))
@@ -158,10 +158,10 @@
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
-	manual_message_to_player("Good. By looking at the Health Analyzer interface, we can see they have 5 brute damage on their chest.")
-	manual_message_to_player("A chemical called <b>Bicaridine</b> is used to heal brute damage over time.")
-	manual_message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial_3_pre)))
+	message_to_player("Good. By looking at the Health Analyzer interface, we can see they have 5 brute damage on their chest.")
+	message_to_player("A chemical called <b>Bicaridine</b> is used to heal brute damage over time.")
+	message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3_pre)), 11 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_3_pre(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
@@ -176,12 +176,12 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 
-	manual_message_to_player("When administered in pill form, chemicals take a few seconds to be digested before they can enter the patients bloodstream, and heal damage.")
-	manual_message_to_player("Medications administered when a patient is dead will not heal damage until the patient has been revived.")
+	message_to_player("When administered in pill form, chemicals take a few seconds to be digested before they can enter the patients bloodstream, and heal damage.")
+	message_to_player("Medications administered when a patient is dead will not heal damage until the patient has been revived.")
 
 	update_objective("")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial_4)))
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_4)), 9 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_4()
 	SIGNAL_HANDLER
@@ -193,8 +193,8 @@
 	add_to_tracking_atoms(brute_injector)
 	add_highlight(brute_injector)
 
-	manual_message_to_player("Medicines can also be directly injected into the bloodstream using <b>Autoinjectors</b>, allowing the medication to begin work immediately without the need to be digested first.")
-	manual_message_to_player("Click on the <b>Bicaridine Autoinjector</b> with an empty hand to pick it up, and then click on the Dummy while standing next to it to administer an injection.")
+	message_to_player("Medicines can also be directly injected into the bloodstream using <b>Autoinjectors</b>, allowing the medication to begin work immediately without the need to be digested first.")
+	message_to_player("Click on the <b>Bicaridine Autoinjector</b> with an empty hand to pick it up, and then click on the Dummy while standing next to it to administer an injection.")
 	update_objective("Pick up and inject the Dummy with the Bicaridine autoinjector.")
 
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(brute_inject_self))
@@ -206,13 +206,13 @@
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	living_mob.reagents.clear_reagents()
-	manual_message_to_player("Dont use the injector on yourself, try again.")
+	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)
 	QDEL_IN(brute_injector, 2 SECONDS)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial_4)))
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_4)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_5_pre()
 	//adds a slight grace period, so humans are not rejuved before bica is registered in their system
@@ -234,7 +234,7 @@
 	remove_highlight(brute_injector)
 	qdel(brute_injector)
 	update_objective("")
-	manual_message_to_player("The Dummy has taken some moderate brute damage on two different limbs. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
+	message_to_player("The Dummy has taken some moderate brute damage on two different limbs. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
 	add_highlight(marine_dummy, COLOR_GREEN)
 	update_objective("Click on the Dummy with your Health Analyzer")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -249,12 +249,12 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-	manual_message_to_player("As you can see, the Dummy has taken 10 brute damage to its chest and left arm.")
-	manual_message_to_player("More severe injuries can be treated through the use of <b>Advanced Trauma Kits</b>.")
-	manual_message_to_player("These items are used to treat moderate to high levels of brute damage, but must be manually applied to each damaged limb.")
-	manual_message_to_player("They only heal 12 damage per application, and should be used alongside medicines like <b>Bicaridine</b> when treating a patient.")
+	message_to_player("As you can see, the Dummy has taken 10 brute damage to its chest and left arm.")
+	message_to_player("More severe injuries can be treated through the use of <b>Advanced Trauma Kits</b>.")
+	message_to_player("These items are used to treat moderate to high levels of brute damage, but must be manually applied to each damaged limb.")
+	message_to_player("They only heal 12 damage per application, and should be used alongside medicines like <b>Bicaridine</b> when treating a patient.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial_7)))
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_7)), 14 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_7()
 	SIGNAL_HANDLER
@@ -262,8 +262,8 @@
 	var/obj/item/stack/medical/advanced/bruise_pack/brutekit = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(brutekit)
 	add_highlight(brutekit, COLOR_GREEN)
-	manual_message_to_player("We will first focus on healing the wound on the Dummy's chest.")
-	manual_message_to_player("Click on the <b>Advanced Trauma Kit</b> with an empty hand to pick it up, then click on the Dummy while standing next to them to apply the trauma kit.")
+	message_to_player("We will first focus on healing the wound on the Dummy's chest.")
+	message_to_player("Click on the <b>Advanced Trauma Kit</b> with an empty hand to pick it up, then click on the Dummy while standing next to them to apply the trauma kit.")
 
 	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in marine_dummy.limbs
 	add_to_tracking_atoms(mob_chest)
@@ -278,10 +278,10 @@
 	var/datum/hud/human/human_hud = tutorial_mob.hud_used
 	add_to_tracking_atoms(human_hud)
 	add_highlight(human_hud.zone_sel)
-	manual_message_to_player("Well done!")
-	manual_message_to_player("<b>Advanced Trauma Kits</b> can only be applied to one section of the body at a time, and you must select which part of the body you are trying to heal.")
-	manual_message_to_player("Since we are manually applying the trauma kit to two different limbs, we will need to change our selected limb to the Dummy's left arm.")
-	manual_message_to_player("Use the highlighted <b>zone selection</b> element on the bottom right of your HUD, and change your target to the <b>left arm</b> by clicking the left arm on the little man in the selection box")
+	message_to_player("Well done!")
+	message_to_player("<b>Advanced Trauma Kits</b> can only be applied to one section of the body at a time, and you must select which part of the body you are trying to heal.")
+	message_to_player("Since we are manually applying the trauma kit to two different limbs, we will need to change our selected limb to the Dummy's left arm.")
+	message_to_player("Use the highlighted <b>zone selection</b> element on the bottom right of your HUD, and change your target to the <b>left arm</b> by clicking the left arm on the little man in the selection box")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_ZONE_SEL_CHANGE, PROC_REF(brute_tutorial_9))
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_9(datum/source, zone_selected)
@@ -292,8 +292,8 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_ZONE_SEL_CHANGE)
 
-	manual_message_to_player("Excellent. By using your <b>zone selection</b> element to target the left arm, we are now able to apply treatments to that specific zone of the body.")
-	manual_message_to_player("Now, just like before, keep the left arm selected, and click on the Dummy while holding the <b>Advanced Trauma Kit</b> in your hand to apply it to their left arm")
+	message_to_player("Excellent. By using your <b>zone selection</b> element to target the left arm, we are now able to apply treatments to that specific zone of the body.")
+	message_to_player("Now, just like before, keep the left arm selected, and click on the Dummy while holding the <b>Advanced Trauma Kit</b> in your hand to apply it to their left arm")
 
 	var/obj/limb/arm/l_arm/mob_larm = locate(/obj/limb/arm/l_arm) in marine_dummy.limbs
 	add_to_tracking_atoms(mob_larm)
@@ -322,10 +322,10 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
 
-	manual_message_to_player("Great work! That covers the three basic methods to treat <b>Brute</b> damage on the field.")
-	manual_message_to_player("<b>Section 1.2: Burn Damage</b>")
-	manual_message_to_player("The next most common type of injury is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
-	manual_message_to_player("The Dummy has taken a large amount of <b>Burn</b> damage. Use your <b>Health Analyzer</b> to scan their condition.")
+	message_to_player("Great work! That covers the three basic methods to treat <b>Brute</b> damage on the field.")
+	message_to_player("<b>Section 1.2: Burn Damage</b>")
+	message_to_player("The next most common type of injury is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
+	message_to_player("The Dummy has taken a large amount of <b>Burn</b> damage. Use your <b>Health Analyzer</b> to scan their condition.")
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(burn_tutorial_2_pre))
 
@@ -342,9 +342,9 @@
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_2_return()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("Unlike brute damage, <b>burn</b> damage is very rarely concentrated on one part of the body, more commonly spread across multiple limbs.")
-	manual_message_to_player("Because of this, medication is the most effective treatment for burn wounds, as they heal the whole body at once.")
-	manual_message_to_player("<b>Kelotane</b> is used to fix burn over time.")
+	message_to_player("Unlike brute damage, <b>burn</b> damage is very rarely concentrated on one part of the body, more commonly spread across multiple limbs.")
+	message_to_player("Because of this, medication is the most effective treatment for burn wounds, as they heal the whole body at once.")
+	message_to_player("<b>Kelotane</b> is used to fix burn over time.")
 
 	handle_pill_bottle(marine_dummy, "Kelotane", "Kl", "2", /obj/item/reagent_container/pill/kelotane)
 
@@ -357,11 +357,11 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
-	manual_message_to_player("Well done!")
-	manual_message_to_player("While rare, when a large amount of <b>Burn</b> damage is concentrated on a single part of the body, we can apply an <b>Advanced Burn Kit</b> to quickly heal a portion of damage.")
+	message_to_player("Well done!")
+	message_to_player("While rare, when a large amount of <b>Burn</b> damage is concentrated on a single part of the body, we can apply an <b>Advanced Burn Kit</b> to quickly heal a portion of damage.")
 	update_objective("")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(burn_tutorial_4)))
+	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_4)), 11 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_4()
 	SIGNAL_HANDLER
@@ -377,8 +377,8 @@
 	add_highlight(human_hud.zone_sel)
 	add_highlight(burnkit, COLOR_GREEN)
 
-	manual_message_to_player("The Dummy has taken concentrated burn damage on their <b>chest</b>. We will use an <b>Advanced Burn Kit</b> on the area.")
-	manual_message_to_player("First make sure you are targeting the chest in the <b>zone selection</b> element, highlighted on the bottom right of your hud. Then click on the Dummy with your <b>Advanced Burn Kit</b> in hand, while standing next to them, to treat their burn wound.")
+	message_to_player("The Dummy has taken concentrated burn damage on their <b>chest</b>. We will use an <b>Advanced Burn Kit</b> on the area.")
+	message_to_player("First make sure you are targeting the chest in the <b>zone selection</b> element, highlighted on the bottom right of your hud. Then click on the Dummy with your <b>Advanced Burn Kit</b> in hand, while standing next to them, to treat their burn wound.")
 
 	RegisterSignal(mob_chest, COMSIG_LIMB_ADD_SUTURES, PROC_REF(burn_tutorial_5))
 
@@ -388,7 +388,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 	UnregisterSignal(mob_chest, COMSIG_LIMB_ADD_SUTURES)
 
-	manual_message_to_player("Good work! We will now use our <b>Health Analyzer</b> to scan the Dummy, to see how much burn damage remains on their chest.")
+	message_to_player("Good work! We will now use our <b>Health Analyzer</b> to scan the Dummy, to see how much burn damage remains on their chest.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/datum/hud/human, human_hud)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/advanced/ointment, burnkit)
@@ -415,9 +415,9 @@
 	add_to_tracking_atoms(burn_injector)
 	add_highlight(burn_injector)
 
-	manual_message_to_player("As you can see, the Dummy still has some burn damage left on their chest")
-	manual_message_to_player("To heal this remaining damage, we will use a <b>Kelotane Autoinjector</b>.")
-	manual_message_to_player("Click on the autoinjector with an empty hand to pick it up, then click on the Dummy while holding it in hand to inject them with <b>Kelotane</b>.")
+	message_to_player("As you can see, the Dummy still has some burn damage left on their chest")
+	message_to_player("To heal this remaining damage, we will use a <b>Kelotane Autoinjector</b>.")
+	message_to_player("Click on the autoinjector with an empty hand to pick it up, then click on the Dummy while holding it in hand to inject them with <b>Kelotane</b>.")
 
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(burn_inject_self))
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(burn_tutorial_7_pre))
@@ -428,13 +428,13 @@
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	living_mob.reagents.clear_reagents()
-	manual_message_to_player("Dont use the injector on yourself, try again.")
+	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use, burn_injector)
 	remove_highlight(burn_injector)
 	QDEL_IN(burn_injector, 2 SECONDS)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	register_tutorial_step(CALLBACK(src, PROC_REF(burn_tutorial_6)))
+	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_6)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_7_pre()
 	SIGNAL_HANDLER
@@ -449,18 +449,18 @@
 	remove_highlight(burn_injector)
 	QDEL_IN(burn_injector, 1.5 SECONDS)
 
-	manual_message_to_player("Well done! This completes the basic damage treatments for brute and burn wounds.")
-	register_tutorial_step(CALLBACK(src, PROC_REF(bleed_tutorial)))
+	message_to_player("Well done! This completes the basic damage treatments for brute and burn wounds.")
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 3 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/bleed_tutorial()
-	manual_message_to_player("<b>Section 1.3: Treating Bleeding</b>")
-	manual_message_to_player("As you may have noticed earlier, severe brute damage injuries occasionally cause <b>bleeding</b> on the affected limb.")
-	manual_message_to_player("The Human body carries a finite amount of blood, and losing blood will accumulate internal damage, eventually causing death if not treated.")
+	message_to_player("<b>Section 1.3: Treating Bleeding</b>")
+	message_to_player("As you may have noticed earlier, severe brute damage injuries occasionally cause <b>bleeding</b> on the affected limb.")
+	message_to_player("The Human body carries a finite amount of blood, and losing blood will accumulate internal damage, eventually causing death if not treated.")
 	update_objective("")
 
 	marine_dummy.rejuvenate()
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(bleed_tutorial_1)))
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_1)), 9 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/bleed_tutorial_1()
 
@@ -469,7 +469,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
 
-	manual_message_to_player("The Dummy appears to be bleeding. Scan them with your <b>Health Analyzer</b> to identify which limb they are bleeding from.")
+	message_to_player("The Dummy appears to be bleeding. Scan them with your <b>Health Analyzer</b> to identify which limb they are bleeding from.")
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(bleed_tutorial_2))
 
@@ -482,9 +482,9 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-	manual_message_to_player("Now we can see that the Dummy is bleeding from their chest")
-	manual_message_to_player("Bleeding wounds can clot themselves over time, with this process taking longer for more severe injuries.")
-	manual_message_to_player("We can also fix it quickly with an <b>Advanced Trauma Kit</b>. Pick up the kit and click on the Dummy while targeting its chest to stop the bleeding.")
+	message_to_player("Now we can see that the Dummy is bleeding from their chest")
+	message_to_player("Bleeding wounds can clot themselves over time, with this process taking longer for more severe injuries.")
+	message_to_player("We can also fix it quickly with an <b>Advanced Trauma Kit</b>. Pick up the kit and click on the Dummy while targeting its chest to stop the bleeding.")
 
 	var/obj/item/stack/medical/advanced/bruise_pack/brutekit = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(brutekit)
@@ -507,17 +507,17 @@
 	marine_dummy.rejuvenate()
 	marine_dummy.reagents.clear_reagents()
 
-	manual_message_to_player("Great work. The Dummy is no longer bleeding all over the floor, which is always good.")
+	message_to_player("Great work. The Dummy is no longer bleeding all over the floor, which is always good.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(shrapnel_tutorial)))
+	addtimer(CALLBACK(src, PROC_REF(shrapnel_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/shrapnel_tutorial()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("<b>Section 1.4: Shrapnel Removal</b>")
-	manual_message_to_player("In the line of duty, Marines occasionally recieve embedded shrapnel in wounds.")
-	manual_message_to_player("Shrapnel can come in a variety of forms, all of which can be dug out of the body with a <b>Knife</b> or <b>Scalpel</b>.")
-	manual_message_to_player("Pick up the boot-knife by clicking on it with an empty hand")
+	message_to_player("<b>Section 1.4: Shrapnel Removal</b>")
+	message_to_player("In the line of duty, Marines occasionally recieve embedded shrapnel in wounds.")
+	message_to_player("Shrapnel can come in a variety of forms, all of which can be dug out of the body with a <b>Knife</b> or <b>Scalpel</b>.")
+	message_to_player("Pick up the boot-knife by clicking on it with an empty hand")
 	var/obj/item/attachable/bayonet/knife = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(knife)
 	add_highlight(knife, COLOR_GREEN)
@@ -529,8 +529,8 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
-	manual_message_to_player("Well done!")
-	manual_message_to_player("It seems that our friend PVT Dummy is suddenly injured. Use your <b>Health Analyzer</b> to scan them.")
+	message_to_player("Well done!")
+	message_to_player("It seems that our friend PVT Dummy is suddenly injured. Use your <b>Health Analyzer</b> to scan them.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 
@@ -553,16 +553,16 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/attachable/bayonet, knife)
 	add_highlight(knife, COLOR_GREEN)
 
-	manual_message_to_player("As you can see, the Health Analyzer is displaying the warning: <u>Recommend that the patient does not move - embedded objects.</u> This indicates that there is shrapnel somewhere in their body.")
-	manual_message_to_player("To remove the shrapnel, make sure you are on the <b>Help Intent</b>, then click on the Dummy while holding the knife to remove their shrapnel.")
+	message_to_player("As you can see, the Health Analyzer is displaying the warning: <u>Recommend that the patient does not move - embedded objects.</u> This indicates that there is shrapnel somewhere in their body.")
+	message_to_player("To remove the shrapnel, make sure you are on the <b>Help Intent</b>, then click on the Dummy while holding the knife to remove their shrapnel.")
 
 	RegisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(splint_tutorial))
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/splint_tutorial()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("Well done! You have removed the Dummys shrapnel from their body.")
-	manual_message_to_player("<b>Section 1.5: Bone Fractures</b>")
+	message_to_player("Well done! You have removed the Dummys shrapnel from their body.")
+	message_to_player("<b>Section 1.5: Bone Fractures</b>")
 
 	UnregisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
@@ -571,11 +571,11 @@
 	remove_from_tracking_atoms(knife)
 	qdel(knife)
 
-	manual_message_to_player("When someone recieves an exceptionally severe injury, there is a chance it might cause a <b>Bone Fracture</b> in their body.")
-	manual_message_to_player("<b>Bone Fractures</b> can easily prove fatal if left untreated, with a single Bone Fracture capable of triggering <b>Internal Bleeding</b>, and blood loss.")
-	manual_message_to_player("While <b>Bone Fractures</b> cannot be fully treated by a Hospital Corpsman through typical means, you can apply a <b>Splint</b> to the damaged area to stabilize the wound.")
-	manual_message_to_player("<b>Bone Fractures</b> can be identified through a <b>Health Analyzer</b> scan.")
-	manual_message_to_player("Scan the Dummy with your <b>Health Analyzer</b>.")
+	message_to_player("When someone recieves an exceptionally severe injury, there is a chance it might cause a <b>Bone Fracture</b> in their body.")
+	message_to_player("<b>Bone Fractures</b> can easily prove fatal if left untreated, with a single Bone Fracture capable of triggering <b>Internal Bleeding</b>, and blood loss.")
+	message_to_player("While <b>Bone Fractures</b> cannot be fully treated by a Hospital Corpsman through typical means, you can apply a <b>Splint</b> to the damaged area to stabilize the wound.")
+	message_to_player("<b>Bone Fractures</b> can be identified through a <b>Health Analyzer</b> scan.")
+	message_to_player("Scan the Dummy with your <b>Health Analyzer</b>.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	var/obj/limb/leg/l_leg/mob_lleg = locate(/obj/limb/leg/l_leg) in marine_dummy.limbs
@@ -597,10 +597,10 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/datum/hud/human, human_hud)
 	add_highlight(human_hud.zone_sel, COLOR_GREEN)
 
-	manual_message_to_player("As you can see, your Health Analyzer indicates the Dummy has a fracture on their <b>Left Leg</b>.")
-	manual_message_to_player("We are going to apply a <b>Splint</b> to the fractured limb.")
-	manual_message_to_player("Like Trauma Kits, you must first select which part of the body you want to apply a splint to")
-	manual_message_to_player("Select the <b>Left Leg</b> in the <b>Zone Selection</b> element, highlighted on the bottom right of your HUD. Then, click on the Dummy while holding a splint in hand to apply it to their left leg")
+	message_to_player("As you can see, your Health Analyzer indicates the Dummy has a fracture on their <b>Left Leg</b>.")
+	message_to_player("We are going to apply a <b>Splint</b> to the fractured limb.")
+	message_to_player("Like Trauma Kits, you must first select which part of the body you want to apply a splint to")
+	message_to_player("Select the <b>Left Leg</b> in the <b>Zone Selection</b> element, highlighted on the bottom right of your HUD. Then, click on the Dummy while holding a splint in hand to apply it to their left leg")
 
 	var/obj/item/stack/medical/splint/splint = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(splint)
@@ -620,14 +620,14 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/leg/l_leg, mob_lleg)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/splint, splint)
 	if(!(mob_lleg.status & LIMB_SPLINTED))
-		manual_message_to_player("You have applied a splint to the wrong limb. Make sure you have the <b>Left Leg</b> selected.")
+		message_to_player("You have applied a splint to the wrong limb. Make sure you have the <b>Left Leg</b> selected.")
 		remove_highlight(splint)
 		remove_from_tracking_atoms(splint)
 		qdel(splint)
-		register_tutorial_step(CALLBACK(src, PROC_REF(splint_tutorial_2)))
+		addtimer(CALLBACK(src, PROC_REF(splint_tutorial_2)), 3 SECONDS)
 		return
 
-	manual_message_to_player("Well done! This completes the first section of your basic training.")
+	message_to_player("Well done! This completes the first section of your basic training.")
 
 	//section 1 cleanup
 	remove_highlight(splint)
@@ -638,35 +638,35 @@
 
 	marine_dummy.rejuvenate()
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(intermediate_damage_treatment)))
+	addtimer(CALLBACK(src, PROC_REF(intermediate_damage_treatment)), 3 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/intermediate_damage_treatment()
 
-	manual_message_to_player("<b>Section 2: Intermediate Damage Treatment</b>")
-	manual_message_to_player("Now that you have a grasp on how to treat the most common forms of damage, it's time to tackle some more complex skills in the Hospital Corpsman arsenal.")
+	message_to_player("<b>Section 2: Intermediate Damage Treatment</b>")
+	message_to_player("Now that you have a grasp on how to treat the most common forms of damage, it's time to tackle some more complex skills in the Hospital Corpsman arsenal.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(pain_tutorial)))
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial)), 8 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/pain_tutorial()
 
-	manual_message_to_player("<b>Section 2.1: Pain Levels</b>")
-	manual_message_to_player("When treating the injuries of any patient, it is critical that you also manage their <b>Pain Levels</b>.")
-	manual_message_to_player("<b>Pain Levels</b>, while not directly life threatening, can still severely debilitate an untreated Marine in the line of duty.")
-	manual_message_to_player("A Marine with high levels of pain will experience slowed movements, blurry vision, or sudden unconsciousness.")
-	manual_message_to_player("A patients pain levels with vary according to the severity and types of injury.")
-	manual_message_to_player("If a Marine is in especially severe pain, they will enter a <b>Paincrit</b>. Where they are held unconscious in critical condition until their pain levels are reduced.")
+	message_to_player("<b>Section 2.1: Pain Levels</b>")
+	message_to_player("When treating the injuries of any patient, it is critical that you also manage their <b>Pain Levels</b>.")
+	message_to_player("<b>Pain Levels</b>, while not directly life threatening, can still severely debilitate an untreated Marine in the line of duty.")
+	message_to_player("A Marine with high levels of pain will experience slowed movements, blurry vision, or sudden unconsciousness.")
+	message_to_player("A patients pain levels with vary according to the severity and types of injury.")
+	message_to_player("If a Marine is in especially severe pain, they will enter a <b>Paincrit</b>. Where they are held unconscious in critical condition until their pain levels are reduced.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(pain_tutorial_2)))
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_2)), 25 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/pain_tutorial_2()
 	SIGNAL_HANDLER
 
 	marine_dummy.adjustFireLoss(130)
-	manual_message_to_player("The Dummy has taken considerable damage, and is in a lot of pain")
-	manual_message_to_player("The flashing red healthbar above their head indicates the Dummy is in <b>Critical Condition</b>.")
-	manual_message_to_player("To reduce their pain levels, the chemical painkiller <b>Tramadol</b> is primarily used.")
+	message_to_player("The Dummy has taken considerable damage, and is in a lot of pain")
+	message_to_player("The flashing red healthbar above their head indicates the Dummy is in <b>Critical Condition</b>.")
+	message_to_player("To reduce their pain levels, the chemical painkiller <b>Tramadol</b> is primarily used.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(pain_tutorial_3_pre)))
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_3_pre)), 7 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/pain_tutorial_3_pre()
 	SIGNAL_HANDLER
@@ -682,10 +682,10 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
-	manual_message_to_player("Well done! But it looks like the Dummy is still in extreme pain.")
-	manual_message_to_player("Like pain levels, each type of painkiller has a varying degree of potency. While effective as a general painkiller, Tramadol is not powerful enough to fully supress extreme levels of pain.")
-	manual_message_to_player("<b>Oxycodone</b> is the most powerful painkiller used by field Medics, and is capable of nullifying almost all pain in the body for a short period of time.")
-	manual_message_to_player("Apply the <b>Oxycodone Autoinjector</b> to the Dummy.")
+	message_to_player("Well done! But it looks like the Dummy is still in extreme pain.")
+	message_to_player("Like pain levels, each type of painkiller has a varying degree of potency. While effective as a general painkiller, Tramadol is not powerful enough to fully supress extreme levels of pain.")
+	message_to_player("<b>Oxycodone</b> is the most powerful painkiller used by field Medics, and is capable of nullifying almost all pain in the body for a short period of time.")
+	message_to_player("Apply the <b>Oxycodone Autoinjector</b> to the Dummy.")
 
 	var/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use/oxy = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(oxy)
@@ -700,21 +700,21 @@
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	living_mob.reagents.clear_reagents()
-	manual_message_to_player("Dont use the injector on yourself, try again.")
+	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
 	remove_highlight(oxy)
 	remove_from_tracking_atoms(oxy)
 	QDEL_IN(oxy, 2 SECONDS)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	register_tutorial_step(CALLBACK(src, PROC_REF(tram_pill_fed)))
+	addtimer(CALLBACK(src, PROC_REF(tram_pill_fed)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_inject()
 	//adds a slight grace period, so humans are not rejuved before oxy is registered in their system
 
-	manual_message_to_player("Well done!")
-	manual_message_to_player("<b>Section 2.2: Toxin Damage</b>")
-	register_tutorial_step(CALLBACK(src, PROC_REF(tox_tutorial)))
+	message_to_player("Well done!")
+	message_to_player("<b>Section 2.2: Toxin Damage</b>")
+	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 2 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tox_tutorial()
 	SIGNAL_HANDLER
@@ -731,10 +731,10 @@
 	marine_dummy.reagents.clear_reagents()
 	marine_dummy.adjustToxLoss(15)
 
-	manual_message_to_player("While far less common than Brute or Burn damage, knowing how to treat <b>Toxin Damage</b> is still a must for any would-be Hospital Corpsman in training.")
-	manual_message_to_player("Although <b>Toxin Damage</b> is almost never directly fatal, it can easily wreak havoc in the body to a magnitude not seen from other forms of damage.")
-	manual_message_to_player("Symptoms of <b>Toxin Damage</b> include, vomiting, nausea, organ damage, and extreme pain across the body. It is commonly caused by overdoses, organ failure, or ingesting poisons.")
-	manual_message_to_player("The Dummy has taken some <b>Toxin Damage</b>. Scan them with your Health Analyzer.")
+	message_to_player("While far less common than Brute or Burn damage, knowing how to treat <b>Toxin Damage</b> is still a must for any would-be Hospital Corpsman in training.")
+	message_to_player("Although <b>Toxin Damage</b> is almost never directly fatal, it can easily wreak havoc in the body to a magnitude not seen from other forms of damage.")
+	message_to_player("Symptoms of <b>Toxin Damage</b> include, vomiting, nausea, organ damage, and extreme pain across the body. It is commonly caused by overdoses, organ failure, or ingesting poisons.")
+	message_to_player("The Dummy has taken some <b>Toxin Damage</b>. Scan them with your Health Analyzer.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
@@ -753,8 +753,8 @@
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tox_tutorial_2_return()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("As you can see, the Dummy has sustained minor <b>Toxin Damage</b>. Like burn damage, toxin damage is almost always spread across the body.")
-	manual_message_to_player("The chemical <b>Dylovene</b> is used to treat Toxin Damage.")
+	message_to_player("As you can see, the Dummy has sustained minor <b>Toxin Damage</b>. Like burn damage, toxin damage is almost always spread across the body.")
+	message_to_player("The chemical <b>Dylovene</b> is used to treat Toxin Damage.")
 
 	handle_pill_bottle(marine_dummy, "Dylovene", "Dy", "7", /obj/item/reagent_container/pill/antitox)
 
@@ -767,34 +767,34 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
-	manual_message_to_player("Well done, the Dummy's Toxin Damage levels will decrease over time")
+	message_to_player("Well done, the Dummy's Toxin Damage levels will decrease over time")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(tox_tutorial_3)))
+	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_3)), 8 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tox_tutorial_3()
 	//adds a slight grace period, so humans are not rejuved before dylo is registered in their system
 
-	manual_message_to_player("<b>Section 2.3: Oxygen Damage</b>")
-	register_tutorial_step(CALLBACK(src, PROC_REF(oxy_tutorial)))
+	slower_message_to_player("<b>Section 2.3: Oxygen Damage</b>")
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial()
 
 	marine_dummy.rejuvenate()
 	marine_dummy.reagents.clear_reagents()
 
-	manual_message_to_player("<b>Oxygen Damage</b> is the fourth, and final form of field damage that a Marine Hospital Corpsman is expected to be able to treat.")
-	manual_message_to_player("The mechanics of Oxygen damage are heavily linked to <b>Internal Organ Damage</b>, something that will be covered in detail in the advanced version of this tutorial.")
+	message_to_player("<b>Oxygen Damage</b> is the fourth, and final form of field damage that a Marine Hospital Corpsman is expected to be able to treat.")
+	message_to_player("The mechanics of Oxygen damage are heavily linked to <b>Internal Organ Damage</b>, something that will be covered in detail in the advanced version of this tutorial.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(oxy_tutorial_1)))
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_1)), 6 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_1()
 
-	manual_message_to_player("Oxygen Damage represents a lack of blood-flow to the Brain, and the bodys shutdown because of it.")
-	manual_message_to_player("Oxygen Damage can be caused as a result of <b>Blood Loss, Internal Organ Damage</b>, and <b>Dying</b>.")
-	manual_message_to_player("Symptoms of Oxygen Damage include <b>Gasping</b> and/or <b>Coughing up Blood</b>, as well as <b>Unconsciousness</b> beyond 50 points of damage.")
-	manual_message_to_player("Like Toxin damage, <b>Oxygen Damage</b> is spread across the body, and not focused on one specific limb or region.")
+	message_to_player("Oxygen Damage represents a lack of blood-flow to the Brain, and the bodys shutdown because of it.")
+	message_to_player("Oxygen Damage can be caused as a result of <b>Blood Loss, Internal Organ Damage</b>, and <b>Dying</b>.")
+	message_to_player("Symptoms of Oxygen Damage include <b>Gasping</b> and/or <b>Coughing up Blood</b>, as well as <b>Unconsciousness</b> beyond 50 points of damage.")
+	message_to_player("Like Toxin damage, <b>Oxygen Damage</b> is spread across the body, and not focused on one specific limb or region.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(oxy_tutorial_2)))
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_2)), 15 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_2()
 	SIGNAL_HANDLER
@@ -802,8 +802,8 @@
 	marine_dummy.rejuvenate()
 	marine_dummy.adjustOxyLoss(40)
 
-	manual_message_to_player("Pvt Dummy is suffering from <b>Oxygen Damage</b>!")
-	manual_message_to_player("Oxygen damage is treated by the chemical <b>Dexalin</b>, color-coded blue.")
+	message_to_player("Pvt Dummy is suffering from <b>Oxygen Damage</b>!")
+	message_to_player("Oxygen damage is treated by the chemical <b>Dexalin</b>, color-coded blue.")
 
 	handle_pill_bottle(marine_dummy, "Dexalin", "Dx", "1", /obj/item/reagent_container/pill/dexalin)
 
@@ -816,17 +816,17 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
-	manual_message_to_player("Excellent work!")
+	message_to_player("Excellent work!")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(oxy_tutorial_4)))
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_4)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_4()
 
 	marine_dummy.rejuvenate()
 	marine_dummy.adjustOxyLoss(100)
 
-	manual_message_to_player("Oh no! It appears that, despite our prior treatment, Pvt Dummy is still suffering from <b>Extreme Oxygen Damage</b>!")
-	manual_message_to_player("Scan him with your <b>Health Analyzer</b> to determine his exact damage amount.")
+	message_to_player("Oh no! It appears that, despite our prior treatment, Pvt Dummy is still suffering from <b>Extreme Oxygen Damage</b>!")
+	message_to_player("Scan him with your <b>Health Analyzer</b> to determine his exact damage amount.")
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(oxy_tutorial_5))
 
@@ -838,16 +838,16 @@
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
-	manual_message_to_player("As we can see based on our <b>Health Analyzer</b> scan, Pvt Dummy has around <b>100</b> points of <b>Oxygen Damage</b>!")
-	manual_message_to_player("In extreme cases, when Oxygen damage levels are especially high, we can use a chemical called <b>Dexalin+</b> to heal <u>all Oxygen damage instantly</u>.")
+	message_to_player("As we can see based on our <b>Health Analyzer</b> scan, Pvt Dummy has around <b>100</b> points of <b>Oxygen Damage</b>!")
+	message_to_player("In extreme cases, when Oxygen damage levels are especially high, we can use a chemical called <b>Dexalin+</b> to heal <u>all Oxygen damage instantly</u>.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(oxy_tutorial_6)))
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_6)), 6 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_6()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("A <b>Dexalin+ Autoinjector</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
-	manual_message_to_player("Use the Autoinjector on Pvt Dummy by clicking on them, to administer the <b>Dexalin+</b>")
+	message_to_player("A <b>Dexalin+ Autoinjector</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Use the Autoinjector on Pvt Dummy by clicking on them, to administer the <b>Dexalin+</b>")
 
 	var/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use/dexp = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(dexp)
@@ -867,20 +867,20 @@
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	living_mob.reagents.clear_reagents()
-	manual_message_to_player("Dont use the injector on yourself, try again.")
+	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use, dexp)
 	remove_highlight(dexp)
 	remove_from_tracking_atoms(dexp)
 	QDEL_IN(dexp, 2 SECONDS)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	register_tutorial_step(CALLBACK(src, PROC_REF(oxy_tutorial_5)))
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_5)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/dexp_inject()
 	//adds a slight grace period, so humans are not rejuved before dexp is registered in their system
 
-	manual_message_to_player("Well done!")
-	register_tutorial_step(CALLBACK(src, PROC_REF(oxy_tutorial_7)))
+	message_to_player("Well done!")
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_7)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_7()
 
@@ -896,20 +896,20 @@
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("<b>Section 2.4: Overdose Treatment</b>")
-	manual_message_to_player("Every chemical available to a Marine Hospital Corpsman will have a known <b>Overdose Amount</b>.")
-	manual_message_to_player("If a person is has more than the <b>Overdose Amount</b> of any chemical in their body, the chemical will begin damaging the body to varying levels of severity")
-	manual_message_to_player("Generally, the more powerful a chemical is at healing the body, the more destructive it will become if <b>Overdosed</b>.")
+	message_to_player("<b>Section 2.4: Overdose Treatment</b>")
+	message_to_player("Every chemical available to a Marine Hospital Corpsman will have a known <b>Overdose Amount</b>.")
+	message_to_player("If a person is has more than the <b>Overdose Amount</b> of any chemical in their body, the chemical will begin damaging the body to varying levels of severity")
+	message_to_player("Generally, the more powerful a chemical is at healing the body, the more destructive it will become if <b>Overdosed</b>.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(od_tutorial_1)))
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_1)), 15 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_1()
 
-	manual_message_to_player("All standard-issue Medical pills and autoinjectors will contain exactly <u>half the overdose amount</u> for their given chemical (with some exceptions).")
-	manual_message_to_player("This means administering a Marine with two uses of the same pill or autoinjector in a short span of time will place them <u>just below the overdose amount</u>.")
-	manual_message_to_player("The overdose amounts for Bicaridine, Kelotane, Tramadol and Dylovene, is <b>30 units</b>. Pills and Autoinjectors for each will contain 15 units per use.")
+	message_to_player("All standard-issue Medical pills and autoinjectors will contain exactly <u>half the overdose amount</u> for their given chemical (with some exceptions).")
+	message_to_player("This means administering a Marine with two uses of the same pill or autoinjector in a short span of time will place them <u>just below the overdose amount</u>.")
+	message_to_player("The overdose amounts for Bicaridine, Kelotane, Tramadol and Dylovene, is <b>30 units</b>. Pills and Autoinjectors for each will contain 15 units per use.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(od_tutorial_2)))
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_2)), 16 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_2()
 	SIGNAL_HANDLER
@@ -918,11 +918,11 @@
 	marine_dummy.adjustFireLoss(40)
 	marine_dummy.reagents.add_reagent("bicaridine", 40)
 
-	manual_message_to_player("The Dummy has taken some Brute damage, indicated by the fact that they are <I>once again</I> bleeding all over the floor.")
-	manual_message_to_player("However, in a combat environment, you can never be sure how recently someone may have been treated by another Medic, and what chemicals will remain in their bloodstream")
-	manual_message_to_player("Before administering any form of chemical medication, you must <b>ALWAYS</b> scan the patient with your Health Analyzer to check the amounts of chemicals in their body, and ensure you will not accidentally overdose them.")
+	message_to_player("The Dummy has taken some Brute damage, indicated by the fact that they are <I>once again</I> bleeding all over the floor.")
+	message_to_player("However, in a combat environment, you can never be sure how recently someone may have been treated by another Medic, and what chemicals will remain in their bloodstream")
+	message_to_player("Before administering any form of chemical medication, you must <b>ALWAYS</b> scan the patient with your Health Analyzer to check the amounts of chemicals in their body, and ensure you will not accidentally overdose them.")
 
-	manual_message_to_player("Scan the Dummy with your Health Analyzer.")
+	message_to_player("Scan the Dummy with your Health Analyzer.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
@@ -936,22 +936,22 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-	manual_message_to_player("It seems that Pvt Dummy has been careless with their self-medicating, and is <b>Overdosed on Bicaridine</b> by just under 10 units.")
-	manual_message_to_player("On the field, an overdose can not be treated by a Hospital Corpsman using standard equipment. Instead, you will have to wait for the body to <b>metabolize</b> the chemical over time, until it is below its overdose amount.")
-	manual_message_to_player("A small overdose, while annoying, will very rarely prove lethal in the body.")
+	message_to_player("It seems that Pvt Dummy has been careless with their self-medicating, and is <b>Overdosed on Bicaridine</b> by just under 10 units.")
+	message_to_player("On the field, an overdose can not be treated by a Hospital Corpsman using standard equipment. Instead, you will have to wait for the body to <b>metabolize</b> the chemical over time, until it is below its overdose amount.")
+	message_to_player("A small overdose, while annoying, will very rarely prove lethal in the body.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(od_tutorial_4)))
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_4)), 16 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_4()
 	SIGNAL_HANDLER
 
-	manual_message_to_player("The effects of every overdose will have different methods of treatment depending on the chemical.")
-	manual_message_to_player("To stabilize a patient after an overdose, you should follow the automatic medicine recommendations displayed on the bottom of your <b>Health Analyzer</b> interface (you may need to scroll down to see them).")
-	manual_message_to_player("As you can see on your Health Analyzer scan, the Bicaridine overdose is creating Burn Damage on the Dummy.")
-	manual_message_to_player("Kelotane, which is used to primarily treat <b>Burn</b> damage, can also be used to counteract the effects of this overdose.")
-	manual_message_to_player("We will follow the Health Analyzers recommendations on the bottom of the interface, and feed the Dummy a <b>Kelotane Pill</b>.")
+	message_to_player("The effects of every overdose will have different methods of treatment depending on the chemical.")
+	message_to_player("To stabilize a patient after an overdose, you should follow the automatic medicine recommendations displayed on the bottom of your <b>Health Analyzer</b> interface (you may need to scroll down to see them).")
+	message_to_player("As you can see on your Health Analyzer scan, the Bicaridine overdose is creating Burn Damage on the Dummy.")
+	message_to_player("Kelotane, which is used to primarily treat <b>Burn</b> damage, can also be used to counteract the effects of this overdose.")
+	message_to_player("We will follow the Health Analyzers recommendations on the bottom of the interface, and feed the Dummy a <b>Kelotane Pill</b>.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(od_tutorial_5)))
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_5)), 20 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_5()
 	SIGNAL_HANDLER
@@ -967,9 +967,9 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
-	manual_message_to_player("Well done, the Dummy's condition is now stable, and their overdose will disappear over time.")
+	message_to_player("Well done, the Dummy's condition is now stable, and their overdose will disappear over time.")
 
-	register_tutorial_step(CALLBACK(src, PROC_REF(tutorial_close)))
+	addtimer(CALLBACK(src, PROC_REF(tutorial_close)), 4 SECONDS)
 
 // Helpers
 
@@ -1010,8 +1010,8 @@
 		add_to_tracking_atoms(bottle)
 
 
-		manual_message_to_player("A <b>[name] Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
-		manual_message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>[name] Pill Bottle</b> to draw a pill.")
+		message_to_player("A <b>[name] Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
+		message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>[name] Pill Bottle</b> to draw a pill.")
 
 		add_highlight(medbelt, COLOR_GREEN)
 		add_highlight(bottle, COLOR_GREEN)
@@ -1021,7 +1021,7 @@
 		return
 
 	if(handle_pill_bottle_status == 1)
-		manual_message_to_player("Good. Now stand next to the Dummy, and click their body while holding the pill to feed it to them.")
+		message_to_player("Good. Now stand next to the Dummy, and click their body while holding the pill to feed it to them.")
 
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bottle)

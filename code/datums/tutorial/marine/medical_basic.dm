@@ -13,17 +13,17 @@
 		return
 
 	init_mob()
-	manual_message_to_player("This is the tutorial for the basics of medical that you will need to know for playing a marine role.")
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial)))
+	message_to_player("This is the tutorial for the basics of medical that you will need to know for playing a marine role.")
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/brute_tutorial()
-	manual_message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
+	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.adjustBruteLoss(10)
-	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial_2)))
+	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/brute_tutorial_2()
-	manual_message_to_player("You can observe if you have <b>Brute</b> or <b>Burn</b> damage by clicking on yourself with an empty hand on help intent.")
+	message_to_player("You can observe if you have <b>Brute</b> or <b>Burn</b> damage by clicking on yourself with an empty hand on help intent.")
 	update_objective("Click on yourself with an empty hand.")
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, PROC_REF(on_health_examine))
 
@@ -34,7 +34,7 @@
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_ATTACKHAND_HUMAN)
-	manual_message_to_player("Good. Now, you have taken some brute damage. <b>Bicaridine</b> is used to fix brute over time. Pick up the <b>bicaridine EZ autoinjector</b> and use it in-hand.")
+	message_to_player("Good. Now, you have taken some brute damage. <b>Bicaridine</b> is used to fix brute over time. Pick up the <b>bicaridine EZ autoinjector</b> and use it in-hand.")
 	update_objective("Inject yourself with the bicaridine injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use/brute_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(brute_injector)
@@ -50,14 +50,14 @@
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)
-	manual_message_to_player("All medicines take time to work after injection. Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
+	message_to_player("All medicines take time to work after injection. Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
 	update_objective("")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.adjustFireLoss(10)
-	register_tutorial_step(CALLBACK(src, PROC_REF(burn_tutorial)))
+	addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/burn_tutorial()
-	manual_message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
+	message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
 	update_objective("Inject yourself with the kelotane injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use/burn_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(burn_injector)
@@ -74,14 +74,14 @@
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use, burn_injector)
 	remove_highlight(burn_injector)
-	manual_message_to_player("Good. Now, when you normally take damage, you will also feel <b>pain</b>. Pain slows you down and can knock you out if left unchecked.")
+	message_to_player("Good. Now, when you normally take damage, you will also feel <b>pain</b>. Pain slows you down and can knock you out if left unchecked.")
 	update_objective("")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.pain.apply_pain(PAIN_CHESTBURST_STRONG)
-	register_tutorial_step(CALLBACK(src, PROC_REF(pain_tutorial)))
+	addtimer(CALLBACK(src, PROC_REF(pain_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/pain_tutorial()
-	manual_message_to_player("<b>Tramadol</b> is used to reduce your pain. Inject yourself with the <b>tramadol EZ autoinjector</b>.")
+	message_to_player("<b>Tramadol</b> is used to reduce your pain. Inject yourself with the <b>tramadol EZ autoinjector</b>.")
 	update_objective("Inject yourself with the tramadol injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use/pain_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(pain_injector)
@@ -97,22 +97,22 @@
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use, pain_injector)
 	remove_highlight(pain_injector)
-	manual_message_to_player("Good. Keep in mind that you can overdose on chemicals, so don't inject yourself with the same chemical too much too often. In the field, injectors have 3 uses.")
+	message_to_player("Good. Keep in mind that you can overdose on chemicals, so don't inject yourself with the same chemical too much too often. In the field, injectors have 3 uses.")
 	update_objective("Don't overdose! Generally, 3 injections of a chemical will overdose you.")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.pain.apply_pain(-PAIN_CHESTBURST_STRONG) // just to make sure
-	register_tutorial_step(CALLBACK(src, PROC_REF(bleed_tutorial)))
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/bleed_tutorial()
-	manual_message_to_player("You can sometimes start <b>bleeding</b> from things like bullets or slashes. Losing blood will accumulate <b>oxygen</b> damage, eventually causing death.")
+	message_to_player("You can sometimes start <b>bleeding</b> from things like bullets or slashes. Losing blood will accumulate <b>oxygen</b> damage, eventually causing death.")
 	update_objective("")
 	var/mob/living/carbon/human/human_mob = tutorial_mob
 	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in human_mob.limbs
 	mob_chest.add_bleeding(damage_amount = 15)
-	register_tutorial_step(CALLBACK(src, PROC_REF(bleed_tutorial_2)))
+	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_2)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/bleed_tutorial_2()
-	manual_message_to_player("Bleeding wounds can clot themselves over time, or you can fix it quickly with <b>gauze</b>. Pick up the gauze and click on yourself while targeting your <b>chest</b>.")
+	message_to_player("Bleeding wounds can clot themselves over time, or you can fix it quickly with <b>gauze</b>. Pick up the gauze and click on yourself while targeting your <b>chest</b>.")
 	update_objective("Gauze your chest, or let it clot on its own.")
 	var/obj/item/stack/medical/bruise_pack/two/bandage = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(bandage)
@@ -137,7 +137,7 @@
 	remove_highlight(bandage)
 	qdel(bandage)
 
-	manual_message_to_player("Good. Sometimes, a bullet or bone shard can result in you getting <b>shrapnel</b>, dealing damage over time. Pick up the <b>knife</b> and use it in-hand to remove the shrapnel.")
+	message_to_player("Good. Sometimes, a bullet or bone shard can result in you getting <b>shrapnel</b>, dealing damage over time. Pick up the <b>knife</b> and use it in-hand to remove the shrapnel.")
 	update_objective("Remove your shrapnel by using the knife in-hand.")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.pain.feels_pain = FALSE
@@ -157,7 +157,7 @@
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/attachable/bayonet, knife)
 	remove_highlight(knife)
-	manual_message_to_player("Good. This is the end of the basic marine medical tutorial. The tutorial will end shortly.")
+	message_to_player("Good. This is the end of the basic marine medical tutorial. The tutorial will end shortly.")
 	update_objective("Tutorial completed.")
 	tutorial_end_in(5 SECONDS)
 

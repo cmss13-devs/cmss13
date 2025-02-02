@@ -452,7 +452,7 @@
 				continue // Ignore dead mobs for blocking checks
 
 			if(!HAS_TRAIT(living_mob, TRAIT_MERGED_WITH_WEEDS))
-				return TRUE // Block closing if a valid living mob exists
+				return TRUE
 
 	// Adjust door layer dynamically based on dead mob presence
 	if(has_dead)

@@ -763,8 +763,7 @@
 	pixel_y = 24
 	},
 /obj/structure/sign/safety/medical{
-	pixel_y = 24;
-	pixel_x = 1
+	pixel_y = 24
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -2489,7 +2488,7 @@
 	},
 /obj/structure/closet/secure_closet/medical_doctor,
 /obj/structure/sign/safety/med_cryo{
-	pixel_x = 14;
+	pixel_x = 15;
 	pixel_y = -27
 	},
 /obj/structure/sign/safety/cryo{
@@ -3776,16 +3775,6 @@
 "ais" = (
 /turf/open/floor/almayer/bluecorner/west,
 /area/almayer/living/offices/flight)
-"ait" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/computer/cameras/almayer/containment{
-	dir = 8;
-	pixel_x = -4
-	},
-/turf/open/floor/almayer/research/containment/floor2/west,
-/area/almayer/medical/containment/cell)
 "aiw" = (
 /turf/open/floor/almayer,
 /area/almayer/engineering/starboard_atmos)
@@ -10951,6 +10940,9 @@
 	icon_state = "S";
 	pixel_y = -1
 	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 28
+	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_one)
 "bgC" = (
@@ -13246,6 +13238,9 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 28
+	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_three)
 "bCn" = (
@@ -13263,6 +13258,9 @@
 /obj/item/book/manual/surgery{
 	pixel_x = 6;
 	pixel_y = 5
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -27
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/operating_room_four)
@@ -20548,6 +20546,9 @@
 /obj/item/book/manual/surgery{
 	pixel_x = 6;
 	pixel_y = 5
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -27
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/operating_room_two)
@@ -35259,10 +35260,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
-/obj/structure/machinery/computer/cameras/almayer/containment{
-	dir = 8;
-	pixel_x = -4
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment/cell)
 "jNo" = (
@@ -46502,7 +46499,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir";
-	pixel_y = 19
+	dir = 1
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_medbay)
@@ -52070,7 +52067,7 @@
 	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
-	pixel_x = 17;
+	pixel_x = 18;
 	pixel_y = 1
 	},
 /turf/open/floor/almayer,
@@ -107119,7 +107116,7 @@ jVt
 uyH
 vHO
 iwJ
-ait
+uXj
 uXj
 rdt
 wTM

@@ -1,5 +1,5 @@
 /obj/structure/general_container/supply_container
-	icon = 'icons/obj/structures/M8_SUPPLY_CONTAINER.dmi'
+	icon = 'icons/obj/structures/m8_supply_container.dmi'
 	icon_state = "m8"
 	name = "m8 supply container"
 	anchored = FALSE

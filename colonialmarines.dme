@@ -669,6 +669,7 @@
 #include "code\datums\statistics\entities\caste_stats.dm"
 #include "code\datums\statistics\entities\death_stats.dm"
 #include "code\datums\statistics\entities\human_stats.dm"
+#include "code\datums\statistics\entities\initial_spec_picks.dm"
 #include "code\datums\statistics\entities\job_stats.dm"
 #include "code\datums\statistics\entities\map_stats.dm"
 #include "code\datums\statistics\entities\marine_death.dm"

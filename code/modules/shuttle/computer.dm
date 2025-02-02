@@ -463,7 +463,7 @@
 	if(xeno.caste && xeno.caste.is_intelligent)
 		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 		if(lifeboat.status == LIFEBOAT_LOCKED)
-			to_chat(xeno, SPAN_WARNING("We already wrested away control of this dropship."))
+			to_chat(xeno, SPAN_WARNING("We already wrested away control of this lifeboat."))
 			return XENO_NO_DELAY_ACTION
 		if(lifeboat.mode == SHUTTLE_CALL)
 			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the dropship mid-flight."))

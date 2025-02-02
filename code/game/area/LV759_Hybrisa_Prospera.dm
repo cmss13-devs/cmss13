@@ -32,6 +32,7 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	minimap_color = MINIMAP_AREA_OOB
+	requires_power = FALSE
 
 /area/lv759/bunker
 	name = "Out Of Bounds"
@@ -189,6 +190,16 @@
 
 // Caves
 
+/area/lv759/indoors/caves
+	name = "Caves"
+	icon_state = "caves_plateau"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
+	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	unoviable_timer = FALSE
+
 /area/lv759/indoors/caves/wy_research_complex_entrance
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Main Entrance"
 	icon_state = "wylab"
@@ -211,6 +222,26 @@
 
 /area/lv759/indoors/caves/electric_fence1
 	name = "Electrical Fence - West Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/electric_fence2
+	name = "Electrical Fence - East Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/electric_fence3
+	name = "Electrical Fence - Central Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/electric_fence2
+	name = "Electrical Fence - East Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/comms_tower
+	name = "Comms Tower - Central Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/sensory_tower
+	name = "Sensory Tower - Plateau Caves"
 	icon_state = "power0"
 
 /area/lv759/indoors/caves/west_caves_alarm

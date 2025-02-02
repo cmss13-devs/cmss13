@@ -624,15 +624,6 @@
 "acr" = (
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
-"acs" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/indoors/b_block/bridge)
 "act" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/storage_blocks/east)
@@ -683,6 +674,20 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/nw_rockies)
+"acG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/indoors/b_block/hydro/glass)
+"acH" = (
+/turf/closed/wall/strata_outpost,
+/area/lv522/indoors/b_block/hydro/glass)
+"acI" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -59247,8 +59252,8 @@ dGB
 fnA
 fnA
 tSL
-tSL
-tne
+acH
+acG
 tne
 yfR
 tSL
@@ -66063,7 +66068,7 @@ mPr
 bdL
 wIr
 wIr
-acs
+pwW
 jmv
 wIr
 wIr
@@ -76898,7 +76903,7 @@ vGp
 cpy
 cpy
 pZo
-uRb
+acI
 tDS
 nLe
 yke

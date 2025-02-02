@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - balance: "Queens can now properly gib anyone regardless of their host status."

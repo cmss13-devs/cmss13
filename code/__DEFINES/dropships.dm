@@ -43,5 +43,5 @@
 #define DROPSHIP_LZ_DOCK_IS_AIRLOCK (1<<1)
 
 //Dropship Airlock Ids
-#define ALMAYER_HANGAR_AIRLOCK_ONE "golden-arrow-airlock-one"
-#define ALMAYER_HANGAR_AIRLOCK_TWO "golden-arrow-airlock-two"
+#define ALMAYER_HANGAR_AIRLOCK_ONE "almayer-hangar-airlock-one"
+#define ALMAYER_HANGAR_AIRLOCK_TWO "almayer-hangar-airlock-two"

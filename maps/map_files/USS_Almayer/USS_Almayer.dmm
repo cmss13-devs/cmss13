@@ -241,7 +241,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
 "aaI" = (
-/obj/structure/largecrate/random/secure,
+/obj/structure/ladder{
+	height = 1;
+	id = "hangar_one_east"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
 "aaJ" = (
@@ -1160,7 +1163,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/flight)
 "ada" = (
-/obj/structure/ladder,
+/obj/structure/ladder{
+	id = "hangar_two_south"
+	},
 /obj/structure/sign/safety/ladder{
 	pixel_x = -17;
 	pixel_y = 5
@@ -1349,7 +1354,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/basketball)
 "adE" = (
-/obj/structure/ladder,
+/obj/structure/ladder{
+	id = "hangar_two_west"
+	},
 /obj/structure/sign/safety/hazard{
 	pixel_y = 32;
 	pixel_x = 1
@@ -1544,6 +1551,13 @@
 "aef" = (
 /turf/open/floor/almayer,
 /area/almayer/living/basketball)
+"aeg" = (
+/obj/structure/ladder{
+	height = 1;
+	id = "hangar_two_south"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_f_p)
 "aeh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -1559,18 +1573,117 @@
 "aej" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/officer_study)
+"aek" = (
+/obj/structure/ladder{
+	height = 1;
+	id = "hangar_two_west"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/p_bow)
 "ael" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/cafeteria_officer)
+"aem" = (
+/obj/structure/ladder{
+	height = 1;
+	id = "hangar_two_east"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_f_s)
+"aen" = (
+/obj/structure/ladder{
+	id = "hangar_two_east"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/maint{
+	pixel_x = 13;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32;
+	pixel_x = 12
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
+"aeo" = (
+/obj/structure/ladder{
+	id = "airlock_one_west"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/maint{
+	pixel_x = 13;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32;
+	pixel_x = 12
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "aep" = (
 /turf/closed/wall/almayer,
 /area/almayer/engineering/airmix)
+"aeq" = (
+/obj/structure/ladder{
+	id = "hangar_one_east"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/maint{
+	pixel_x = 13;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32;
+	pixel_x = 12
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "aer" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/flight)
+"aes" = (
+/obj/structure/ladder{
+	id = "airlock_one_north"
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = -17;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -7;
+	pixel_x = -17
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 32;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/maint{
+	pixel_x = 32;
+	pixel_y = -7
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "aet" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/starboard_garden)
@@ -26564,6 +26677,10 @@
 /area/almayer/shipboard/brig/general_equipment)
 "gUi" = (
 /obj/structure/machinery/power/apc/almayer/south,
+/obj/structure/ladder{
+	id = "airlock_one_west";
+	height = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/lower/s_bow)
 "gUn" = (
@@ -42932,6 +43049,10 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
 	pixel_y = 12
+	},
+/obj/structure/ladder{
+	id = "hangar_one_north";
+	height = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_s)
@@ -70498,7 +70619,7 @@ acV
 acV
 acV
 acV
-adE
+aeo
 acV
 acV
 acV
@@ -72109,7 +72230,7 @@ aaa
 aaa
 acV
 acV
-ada
+aes
 aeb
 adl
 adl
@@ -73746,7 +73867,7 @@ acV
 acV
 acV
 acV
-adE
+aeq
 acV
 acV
 acV
@@ -73778,7 +73899,7 @@ acV
 acV
 acV
 acV
-adE
+aen
 acV
 acV
 acV
@@ -83979,7 +84100,7 @@ bSv
 bSv
 bSv
 bSv
-sGK
+aek
 mVh
 wid
 wid
@@ -88405,7 +88526,7 @@ aaa
 aad
 aag
 sGw
-dvD
+aem
 xzB
 eWs
 hXg
@@ -88451,7 +88572,7 @@ cyR
 tTC
 hOV
 qpV
-hSb
+aeg
 kyP
 aag
 ajZ

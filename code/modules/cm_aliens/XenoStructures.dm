@@ -444,7 +444,6 @@
 
 /obj/structure/mineral_door/resin/proc/close_blocked()
 	var/has_dead = FALSE // Track if there's a dead mob under the door
-
 	for(var/turf/turf in locs)
 		for(var/mob/living/living_mob in turf)
 			if(living_mob.stat == DEAD)

@@ -209,6 +209,10 @@
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	unoviable_timer = FALSE
 
+/area/lv759/indoors/caves/electric_fence1
+	name = "Electrical Fence - West Caves"
+	icon_state = "power0"
+
 /area/lv759/indoors/caves/west_caves_alarm
 	name = "Caverns - West"
 	icon_state = "caves_west"
@@ -1288,6 +1292,7 @@
 	ambience_exterior = AMBIENCE_LAB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	minimap_color = MINIMAP_AREA_COLONY
+	requires_power = FALSE
 
 /area/lv759/indoors/wy_research_complex/hallwaynorth
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Hallway"

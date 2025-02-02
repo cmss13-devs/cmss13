@@ -41,6 +41,9 @@
 	/// A list of all player xenomorph deaths, type /datum/entity/xeno_death
 	var/list/xeno_deaths = list()
 
+	/// A list of all marine deaths, type /datum/entity/marine_death
+	var/list/marine_deaths = list()
+
 	// nanoui data
 	var/list/round_data = list()
 	var/list/death_data = list()
@@ -50,6 +53,7 @@
 	QDEL_NULL(current_map)
 	QDEL_LIST(death_stats_list)
 	QDEL_LIST(xeno_deaths)
+	QDEL_LIST(marine_deaths)
 	QDEL_LIST_ASSOC_VAL(castes_evolved)
 	QDEL_LIST_ASSOC_VAL(abilities_used)
 	QDEL_LIST_ASSOC_VAL(final_participants)

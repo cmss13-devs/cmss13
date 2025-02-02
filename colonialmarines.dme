@@ -671,6 +671,7 @@
 #include "code\datums\statistics\entities\human_stats.dm"
 #include "code\datums\statistics\entities\job_stats.dm"
 #include "code\datums\statistics\entities\map_stats.dm"
+#include "code\datums\statistics\entities\marine_death.dm"
 #include "code\datums\statistics\entities\medal_stats.dm"
 #include "code\datums\statistics\entities\panel_stats.dm"
 #include "code\datums\statistics\entities\player_entity.dm"

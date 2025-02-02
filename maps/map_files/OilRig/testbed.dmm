@@ -12,7 +12,7 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/strata,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "ac" = (
@@ -36,6 +36,9 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/space)
+"af" = (
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/navalis/oob)
 "ag" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -115,7 +118,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "ak" = (
@@ -170,7 +173,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "ap" = (
@@ -178,14 +181,14 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "aq" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "ar" = (
@@ -193,7 +196,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "as" = (
@@ -220,7 +223,7 @@
 	},
 /area/space)
 "au" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
@@ -246,7 +249,7 @@
 /area/navalis/oob/water)
 "aw" = (
 /obj/structure/barricade/handrail/strata,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "ax" = (
@@ -270,7 +273,7 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "ay" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/gm/river/desert/deep/no_slowdown,
@@ -279,7 +282,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "aA" = (
@@ -293,11 +296,11 @@
 /area/space)
 "aB" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "aC" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
@@ -307,7 +310,7 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "aD" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
@@ -339,14 +342,14 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "aI" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform4,
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "aJ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "aK" = (
@@ -363,7 +366,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/space)
 "aN" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
@@ -373,14 +376,14 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "aO" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "aP" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -436,7 +439,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/space)
 "aW" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -454,7 +457,7 @@
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/space)
 "aY" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/auto_turf/snow/brown_base/layer0{
 	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
 	name = "seabed"
@@ -523,7 +526,7 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "bf" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bg" = (
@@ -554,7 +557,7 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "bk" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -571,7 +574,7 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "bn" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
@@ -717,14 +720,14 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bJ" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bK" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -749,12 +752,12 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "bM" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bN" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -762,14 +765,14 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bO" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bP" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -852,7 +855,7 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "bT" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -862,7 +865,7 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bU" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -1303,6 +1306,10 @@
 "dq" = (
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
 /area/space)
+"dr" = (
+/obj/structure/window/framed/hybrisa/colony/hull,
+/turf/open/floor/plating,
+/area/navalis/oob)
 "ds" = (
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/space)
@@ -1389,7 +1396,7 @@
 	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
 	name = "seabed"
 	},
-/area/space)
+/area/navalis/oob/powered)
 "dL" = (
 /turf/open/floor/corsat/arrow_north,
 /area/space)
@@ -1507,6 +1514,14 @@
 "eo" = (
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/space)
+"ep" = (
+/obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/oob/powered)
 "eq" = (
 /turf/open/floor/prison/blue/southwest,
 /area/space)
@@ -2431,7 +2446,7 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
 "hE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -2444,6 +2459,9 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/space)
+"hG" = (
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob)
 "hH" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/floor/almayer/greenfull2,
@@ -2703,11 +2721,6 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
-"ix" = (
-/obj/structure/prop/oilrig/support_beam/red,
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/empty,
-/area/space)
 "iy" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
@@ -2868,7 +2881,7 @@
 /turf/open/floor/prison,
 /area/space)
 "iW" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -2920,7 +2933,7 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "jc" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -2971,6 +2984,14 @@
 	},
 /turf/open/floor/plating,
 /area/space)
+"jk" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/alien/weeds,
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/oob/powered)
 "jl" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8;
@@ -3269,6 +3290,14 @@
 	desc = "Worse than Xenomorphs lurk the deepest, darkest, pits of this world. These nameless things await in the dark. Pray they don't find this escape."
 	},
 /area/space)
+"jV" = (
+/obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/oob)
 "jW" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -3776,7 +3805,7 @@
 /area/space)
 "lb" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
@@ -3841,7 +3870,7 @@
 /area/space)
 "lm" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
@@ -4105,7 +4134,7 @@
 	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
 	name = "seabed"
 	},
-/area/space)
+/area/navalis/oob/powered)
 "lP" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
 /obj/structure/blocker/invisible_wall/water,
@@ -4175,7 +4204,7 @@
 	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
 	name = "seabed"
 	},
-/area/space)
+/area/navalis/oob)
 "ma" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -4651,6 +4680,12 @@
 "np" = (
 /turf/open/gm/river/desert/deep,
 /area/space)
+"nq" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "bed"
+	},
+/turf/open/floor/hybrisa/carpet/carpetfadedred,
+/area/space)
 "nr" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -4846,6 +4881,13 @@
 /obj/structure/prop/oilrig/support_beam/brown,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"nK" = (
+/obj/structure/bed,
+/obj/item/bedsheet/colorable{
+	color = "#b54b3d"
+	},
+/turf/open/floor/hybrisa/carpet/carpetfadedred,
+/area/space)
 "nL" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/prop/ice_colony/soil_net{
@@ -5400,6 +5442,9 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/east,
 /turf/open/gm/river/desert/deep,
 /area/space)
+"pf" = (
+/turf/closed/wall/hybrisa/colony,
+/area/navalis/oob)
 "pg" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -5617,6 +5662,19 @@
 	},
 /turf/open/floor/prison,
 /area/space)
+"pD" = (
+/obj/structure/machinery/door/poddoor{
+	explo_proof = 1;
+	needs_power = 0;
+	unacidable = 1;
+	name = "\improper Lockdown";
+	emp_proof = 1;
+	dir = 4;
+	pixel_x = 32;
+	density = 0
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
 "pE" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
@@ -5627,12 +5685,6 @@
 	dir = 4
 	},
 /turf/open/gm/river/desert/deep,
-/area/navalis/oob/water)
-"pG" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
 /area/navalis/oob/water)
 "pH" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
@@ -5858,6 +5910,14 @@
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer3,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/space)
+"qi" = (
+/turf/closed/wall/mineral/bone_resin{
+	opacity = 0
+	},
+/area/navalis/oob/powered)
+"qj" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/navalis/oob)
 "qk" = (
 /obj/structure/machinery/light{
 	invisibility = 101;
@@ -5998,7 +6058,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/space)
 "qF" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/machinery/door_control{
 	id = "cargo_shutter_1";
 	pixel_y = 28;
@@ -6011,7 +6071,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/space)
 "qH" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/machinery/door_control{
 	id = "cargo_shutter_2";
 	pixel_y = 28;
@@ -6027,7 +6087,7 @@
 /turf/open/floor/plating,
 /area/space)
 "qJ" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/machinery/door_control{
 	id = "cargo_shutter_3";
 	pixel_y = 28;
@@ -6472,9 +6532,6 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
-"rX" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/space)
 "rY" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -6820,6 +6877,12 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/space)
+"sP" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "bed"
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreen,
+/area/space)
 "sQ" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -7060,6 +7123,11 @@
 "ti" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/hybrisa/wood/greywood,
+/area/space)
+"tj" = (
+/obj/structure/bed,
+/obj/item/bedsheet/green,
+/turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/space)
 "tk" = (
 /obj/item/paper/janitor,
@@ -7440,7 +7508,7 @@
 /turf/closed/wall/mineral/bone_resin{
 	opacity = 0
 	},
-/area/space)
+/area/navalis/oob)
 "uf" = (
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
@@ -7505,16 +7573,13 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
-"uq" = (
-/turf/open/floor/hybrisa/carpet/carpetpatternblue,
-/area/navalis/oob/water)
 "ur" = (
 /obj/effect/alien/weeds,
 /turf/open/auto_turf/snow/brown_base/layer0{
 	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
 	name = "seabed"
 	},
-/area/space)
+/area/navalis/oob)
 "us" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/hybrisa/carpet/carpetgreen,
@@ -7748,6 +7813,16 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"vf" = (
+/obj/structure/machinery/door/poddoor{
+	explo_proof = 1;
+	needs_power = 0;
+	unacidable = 1;
+	name = "\improper Lockdown";
+	emp_proof = 1
+	},
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/navalis/oob)
 "vg" = (
 /turf/open/floor/prison/greenblue/southeast,
 /area/space)
@@ -7843,7 +7918,7 @@
 /turf/open/gm/empty{
 	desc = "The source of this.....growth. It may be better to throw a nuke down here, than to clear it out with manpower."
 	},
-/area/space)
+/area/navalis/oob/powered)
 "vy" = (
 /obj/effect/decal/hybrisa/road/lines1{
 	pixel_x = -1
@@ -8029,6 +8104,17 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/space)
+"vS" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "bed"
+	},
+/obj/item/bedsheet/colorable{
+	color = "#b54b3d";
+	pixel_y = -2;
+	pixel_x = -7
+	},
+/turf/open/floor/hybrisa/carpet/carpetreddeco,
+/area/space)
 "vT" = (
 /obj/effect/decal/hybrisa/road/lines4{
 	pixel_x = 1
@@ -8106,7 +8192,7 @@
 /turf/open/floor/freezerfloor,
 /area/space)
 "wc" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/navalis/oob/water)
@@ -8409,11 +8495,7 @@
 	layer = 1
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/space)
-"xd" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/empty,
-/area/space)
+/area/navalis/oob)
 "xe" = (
 /obj/structure/prop/oilrig/support_beam,
 /turf/open/gm/river/desert/deep,
@@ -8430,7 +8512,7 @@
 	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
 	name = "seabed"
 	},
-/area/space)
+/area/navalis/oob/powered)
 "xg" = (
 /obj/effect/landmark/static_comms/net_two,
 /obj/effect/decal/warning_stripes{
@@ -9692,9 +9774,6 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/space)
-"Am" = (
-/turf/closed/wall/hybrisa/colony,
-/area/navalis/oob/water)
 "An" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8;
@@ -9702,10 +9781,6 @@
 	},
 /turf/open/floor/prison,
 /area/space)
-"Ao" = (
-/obj/structure/window/framed/hybrisa/colony/hull,
-/turf/open/floor/plating,
-/area/navalis/oob/water)
 "Ap" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8;
@@ -9717,9 +9792,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison/blue/west,
 /area/space)
-"Ar" = (
-/turf/open/floor/plating,
-/area/navalis/oob/water)
 "As" = (
 /obj/structure/bed/chair,
 /turf/open/floor/prison,
@@ -10092,7 +10164,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/effect/alien/weeds,
 /turf/open/floor/almayer/dark_sterile2,
-/area/space)
+/area/navalis/oob)
 "Dk" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -10776,7 +10848,7 @@
 "Nj" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/space)
+/area/navalis/oob)
 "Nl" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
@@ -11130,7 +11202,7 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "Sr" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -11198,7 +11270,7 @@
 	needs_power = 0
 	},
 /turf/open/gm/river/desert/deep,
-/area/space)
+/area/navalis/oob/powered)
 "Tz" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -11223,7 +11295,7 @@
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /turf/open/gm/river/desert/deep,
-/area/space)
+/area/navalis/oob)
 "Uj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -11522,7 +11594,7 @@
 /turf/open/gm/empty{
 	desc = "The source of this.....growth. It may be better to throw a nuke down here, than to clear it out with manpower."
 	},
-/area/space)
+/area/navalis/oob/powered)
 "ZG" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine{
@@ -25098,7 +25170,7 @@ ee
 ee
 ee
 eb
-bl
+vl
 LO
 LO
 LO
@@ -26202,9 +26274,9 @@ nY
 bl
 fg
 fg
-kg
-kg
-kg
+af
+af
+af
 fg
 cX
 dA
@@ -26366,7 +26438,7 @@ dX
 dX
 dX
 dX
-kg
+af
 of
 Ci
 cb
@@ -26530,7 +26602,7 @@ dX
 dY
 dY
 dX
-kg
+af
 vE
 Ad
 cb
@@ -29846,9 +29918,9 @@ bl
 bl
 bl
 bl
-kg
-kg
-kg
+af
+af
+af
 bl
 el
 dj
@@ -30245,10 +30317,10 @@ pJ
 jv
 gg
 pF
-rX
-rX
-rX
-rX
+oM
+oM
+oM
+oM
 ju
 gg
 gg
@@ -30408,12 +30480,12 @@ hJ
 jv
 gg
 pF
-rX
-rX
-rX
-rX
-rX
-rX
+oM
+oM
+oM
+oM
+oM
+oM
 xb
 gg
 wX
@@ -30571,14 +30643,14 @@ hP
 hJ
 jv
 pF
-rX
-rX
-rX
-xd
-ix
-rX
-rX
-rX
+oM
+oM
+oM
+qq
+pi
+oM
+oM
+oM
 gg
 wZ
 ga
@@ -30706,43 +30778,43 @@ dX
 dX
 fe
 hU
-kg
+af
 ii
 hW
 hW
 hZ
-kg
-kg
+af
+bl
 hU
 eO
 eO
 eO
 eO
 fe
-kg
-kg
+bl
+af
 ii
 hW
 hW
 hZ
-kg
+af
 bl
 eO
 eO
 eO
 eO
 bl
-kg
+af
 jv
 pH
-rX
-rX
-xd
-ix
-xd
-ix
-rX
-rX
+oM
+oM
+qq
+pi
+qq
+pi
+oM
+oM
 gg
 wX
 ga
@@ -30870,43 +30942,43 @@ dX
 dX
 dX
 eO
-kg
-kg
-kg
-kg
-kg
-kg
-kg
-kg
+af
+af
+af
+af
+af
+af
+af
+af
 mY
 mY
 mY
 mY
-kg
-kg
-kg
-kg
-kg
-kg
-kg
-kg
-kg
+af
+af
+af
+af
+af
+af
+af
+af
+af
 de
 de
 de
 de
-kg
-kg
-kg
-kg
-rX
-rX
-xd
-xd
-ix
-xd
-rX
-rX
+af
+af
+af
+af
+oM
+oM
+qq
+qq
+pi
+qq
+oM
+oM
 gg
 wZ
 ga
@@ -31035,41 +31107,41 @@ dX
 eY
 mY
 ge
-kg
+bl
 cq
 eQ
-kg
-kg
-kg
+bl
+bl
+bl
 XQ
 eN
 hX
 hX
 eN
 eQ
-kg
-kg
-kg
+bl
+bl
+bl
 eQ
-kg
+af
 eQ
 bl
-kg
+af
 oQ
 hX
 hX
 hV
-kg
+af
 bl
 eV
 fg
-rX
-rX
-rX
-xd
-xd
-rX
-rX
+oM
+oM
+oM
+qq
+qq
+oM
+oM
 xc
 gg
 wX
@@ -31215,7 +31287,7 @@ eN
 eN
 eN
 cq
-kg
+af
 XQ
 eV
 eV
@@ -31228,12 +31300,12 @@ bt
 eV
 eV
 fg
-rX
-rX
-rX
-rX
-rX
-rX
+oM
+oM
+oM
+oM
+oM
+oM
 gi
 gg
 wZ
@@ -31379,7 +31451,7 @@ yq
 qE
 eN
 bl
-kg
+af
 bl
 eN
 eN
@@ -31393,10 +31465,10 @@ bt
 bt
 bt
 fg
-rX
-rX
-rX
-rX
+oM
+oM
+oM
+oM
 gi
 gg
 gg
@@ -31521,8 +31593,8 @@ iI
 iE
 iA
 iA
-kg
-kg
+af
+af
 AV
 dX
 yV
@@ -31543,7 +31615,7 @@ yr
 uN
 eN
 eV
-kg
+af
 eV
 eN
 dX
@@ -31686,8 +31758,8 @@ jv
 jv
 jv
 jv
-kg
-kg
+af
+bl
 eN
 yW
 uN
@@ -31707,7 +31779,7 @@ dX
 uN
 eN
 oJ
-kg
+af
 eV
 eN
 dX
@@ -31850,7 +31922,7 @@ gg
 gg
 gg
 pH
-kg
+af
 Ap
 eN
 yF
@@ -31871,7 +31943,7 @@ yu
 uN
 eN
 bl
-kg
+af
 bl
 eN
 dX
@@ -32014,7 +32086,7 @@ gg
 gg
 gg
 wM
-ci
+dr
 eQ
 eN
 yF
@@ -32035,7 +32107,7 @@ yH
 uN
 eN
 oR
-kg
+af
 oL
 eN
 dX
@@ -32118,7 +32190,7 @@ HW
 ml
 ml
 Vj
-mb
+qj
 aV
 oe
 lR
@@ -32178,7 +32250,7 @@ gg
 gg
 gg
 gg
-ci
+dr
 eQ
 eN
 yF
@@ -32199,7 +32271,7 @@ yH
 uN
 eN
 eV
-kg
+af
 eV
 eN
 dX
@@ -32256,32 +32328,32 @@ jv
 jp
 lU
 mj
-mb
-mb
+qj
+qj
 mt
 mk
 mn
-mb
+qj
 Nj
-mb
+qj
 mt
 mk
 mn
-mb
+qj
 Nj
-mb
+qj
 mt
 mk
 mn
-mb
+qj
 Nj
-mb
+qj
 mt
 mk
 mn
-mb
-mb
-mb
+qj
+qj
+qj
 Nj
 aV
 mo
@@ -32342,7 +32414,7 @@ gg
 gg
 gg
 oa
-kg
+af
 eQ
 eN
 yF
@@ -32363,7 +32435,7 @@ yG
 uN
 eN
 bl
-kg
+af
 bl
 eN
 dX
@@ -32418,8 +32490,8 @@ jv
 jp
 HL
 xW
-mb
-mb
+qj
+qj
 Nj
 mt
 mf
@@ -32506,7 +32578,7 @@ gg
 gg
 gg
 pH
-kg
+af
 eQ
 eN
 yJ
@@ -32670,7 +32742,7 @@ gg
 gg
 gg
 pH
-kg
+af
 eQ
 eN
 eN
@@ -32786,7 +32858,7 @@ oe
 ZM
 eF
 gg
-bC
+yX
 fZ
 gg
 dU
@@ -32834,7 +32906,7 @@ gg
 gg
 gg
 pH
-kg
+af
 eQ
 bt
 qo
@@ -32950,7 +33022,7 @@ mo
 ER
 lQ
 ur
-bC
+yX
 gg
 pF
 zD
@@ -32998,7 +33070,7 @@ gg
 gg
 gg
 pH
-kg
+af
 eQ
 bt
 eN
@@ -33113,8 +33185,8 @@ Dk
 aV
 oe
 lQ
-bC
-bC
+yX
+yX
 pF
 zD
 kg
@@ -33162,7 +33234,7 @@ gg
 gg
 gg
 pH
-kg
+af
 eQ
 eW
 eT
@@ -33183,7 +33255,7 @@ eU
 eU
 eT
 bl
-kg
+af
 bl
 eN
 dX
@@ -33276,8 +33348,8 @@ mb
 KO
 aV
 oe
-bC
-bC
+yX
+yX
 pF
 zD
 kg
@@ -33326,12 +33398,12 @@ gg
 gg
 gg
 wM
-kg
+af
 XQ
 eV
-kg
+bl
 eN
-kg
+bl
 eQ
 eO
 eQ
@@ -33339,15 +33411,15 @@ eQ
 eQ
 eO
 eQ
-kg
+bl
 eN
-kg
+bl
 eQ
 eQ
 eQ
 eQ
 eQ
-kg
+af
 eV
 eN
 dX
@@ -33440,8 +33512,8 @@ mb
 Rm
 aV
 oe
-bC
-bC
+yX
+yX
 zD
 kg
 kg
@@ -33490,28 +33562,28 @@ jh
 jh
 jh
 jh
-kg
-kg
-kg
-kg
-ci
-kg
-kg
+af
+af
+af
+af
+dr
+af
+af
 oX
-kg
-kg
-kg
+af
+af
+af
 oV
-kg
-kg
+af
+af
 ci
-kg
-kg
-kg
-kg
-kg
-kg
-kg
+af
+af
+af
+af
+af
+af
+af
 bt
 eN
 dX
@@ -33605,9 +33677,9 @@ Rm
 aV
 Yw
 MR
-bC
-bC
-bC
+yX
+yX
+yX
 gM
 gM
 gM
@@ -33657,9 +33729,9 @@ bJ
 ru
 dX
 eN
-kg
+bl
 eN
-kg
+af
 oY
 hX
 eQ
@@ -33667,9 +33739,9 @@ eQ
 eQ
 hX
 oU
-kg
+af
 eN
-kg
+bl
 cq
 eQ
 eQ
@@ -33765,7 +33837,7 @@ mU
 hl
 mc
 mb
-bC
+yX
 pA
 yY
 hr
@@ -33921,7 +33993,7 @@ ms
 aV
 aV
 Td
-bC
+yX
 Bl
 Bl
 Bl
@@ -34085,8 +34157,8 @@ ZB
 uR
 qG
 qG
-bC
-bC
+yX
+yX
 qG
 ML
 Yq
@@ -34099,7 +34171,7 @@ cj
 yY
 wP
 yY
-bC
+yX
 bD
 bD
 fg
@@ -34248,9 +34320,9 @@ mS
 aV
 ZU
 fa
-bC
-bC
-bC
+yX
+yX
+yX
 fa
 UO
 aV
@@ -34414,7 +34486,7 @@ BY
 pt
 pt
 hr
-bC
+yX
 pt
 tR
 aV
@@ -34424,8 +34496,8 @@ Rm
 yY
 yY
 yY
-bC
-bC
+yX
+yX
 uV
 bt
 bt
@@ -34550,8 +34622,8 @@ jv
 Bq
 zx
 nD
-mb
-mb
+qj
+qj
 Nj
 nh
 mC
@@ -34571,15 +34643,15 @@ aV
 mp
 mK
 mJ
-bC
+yX
 mC
 aV
 mp
 mm
 yY
 Zb
-bC
-bC
+yX
+yX
 Zb
 RP
 wY
@@ -34588,8 +34660,8 @@ Zb
 yY
 yY
 LV
-bC
-bC
+yX
+yX
 eX
 gL
 gL
@@ -34716,34 +34788,34 @@ jv
 Bq
 mD
 no
-mb
-mb
+qj
+qj
 mP
 mZ
 mO
-mb
+qj
 Nj
-mb
+qj
 mP
 mZ
 mO
-mb
+qj
 Nj
-mb
+qj
 mP
-bC
+yX
 mO
-mb
+qj
 Nj
-mb
-bC
+qj
+yX
 Zb
 wP
 wP
 wP
 Zb
 Zb
-bC
+yX
 pA
 yY
 Qi
@@ -34752,7 +34824,7 @@ yY
 pA
 yY
 Zb
-bC
+yX
 sr
 eX
 bD
@@ -34822,7 +34894,7 @@ dX
 dX
 eN
 bt
-pg
+oK
 fg
 eN
 dX
@@ -34895,12 +34967,12 @@ mR
 mD
 mR
 WW
-bC
-bC
+yX
+yX
 mR
 mR
 mR
-bC
+yX
 Zb
 yY
 yY
@@ -34986,7 +35058,7 @@ dX
 dX
 eN
 bt
-pg
+oK
 fg
 eN
 dX
@@ -35060,11 +35132,11 @@ gg
 Be
 jv
 jv
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 YT
 hr
 pA
@@ -35221,13 +35293,13 @@ gg
 gg
 gg
 gg
-bC
+yX
 gg
 gg
 gg
-bC
-bC
-bC
+yX
+yX
+yX
 yY
 yY
 yY
@@ -35384,15 +35456,15 @@ gg
 gg
 gg
 gg
-bC
-bC
-bC
+yX
+yX
+yX
 gg
 gg
 gg
-bC
-bC
-bC
+yX
+yX
+yX
 Zb
 yY
 yY
@@ -35549,13 +35621,13 @@ fZ
 fZ
 fZ
 Bf
-bC
-bC
-bC
+yX
+yX
+yX
 EF
 fZ
-bC
-bC
+yX
+yX
 yY
 yY
 yY
@@ -35714,21 +35786,21 @@ fY
 fY
 fY
 fZ
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 yY
 yY
 yY
 yY
 yY
 pA
-ue
-ue
-ue
-ue
+qi
+qi
+qi
+qi
 yY
 yY
 yY
@@ -35743,7 +35815,7 @@ pQ
 hr
 yY
 gX
-bC
+yX
 sJ
 om
 eV
@@ -35880,19 +35952,19 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 yY
-bC
+yX
 Zb
 yY
 yY
 yY
-ue
+qi
 vx
 vx
-ue
+qi
 yY
 hr
 yY
@@ -35902,10 +35974,10 @@ yY
 yY
 yY
 Zb
-bC
+yX
 Zb
-bC
-bC
+yX
+yX
 gL
 kZ
 bt
@@ -36043,20 +36115,20 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 yY
 yY
 yY
 yY
 yY
 yY
-ue
+qi
 ZE
 ZE
-ue
+qi
 yY
 yY
 yY
@@ -36066,8 +36138,8 @@ yY
 yY
 hr
 Zb
-bC
-bC
+yX
+yX
 kg
 bt
 bt
@@ -36097,7 +36169,7 @@ bt
 kg
 Gx
 kf
-bC
+yX
 cr
 cr
 cv
@@ -36204,23 +36276,23 @@ fY
 fY
 fY
 fY
-bC
+yX
 fY
-bC
-bC
+yX
+yX
 fY
-bC
-bC
+yX
+yX
 pA
 yY
 yY
 yY
 yY
-ue
-ue
-ue
-ue
-ue
+qi
+qi
+qi
+qi
+qi
 yY
 yY
 yY
@@ -36230,8 +36302,8 @@ yY
 yY
 yY
 yY
-bC
-bC
+yX
+yX
 kg
 kg
 eX
@@ -36261,7 +36333,7 @@ kg
 kg
 zD
 gg
-bC
+yX
 yY
 yY
 yY
@@ -36368,14 +36440,14 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 yY
 yY
 yY
@@ -36425,7 +36497,7 @@ kg
 zD
 gi
 gg
-bC
+yX
 Zb
 Zb
 Zb
@@ -36531,16 +36603,16 @@ fY
 fY
 fY
 fY
-bC
+yX
 fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 vd
-bC
-bC
+yX
+yX
 yY
 pA
 yY
@@ -36588,8 +36660,8 @@ kg
 zD
 gi
 gg
-bC
-bC
+yX
+yX
 Zb
 Zb
 Zb
@@ -36699,12 +36771,12 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 vd
-bC
-bC
+yX
+yX
 YT
 yY
 yY
@@ -36726,7 +36798,7 @@ yY
 yY
 wP
 hr
-bC
+yX
 kg
 kg
 eX
@@ -36749,11 +36821,11 @@ eX
 kg
 kg
 jo
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 yY
 yY
 yY
@@ -36862,13 +36934,13 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 vd
-bC
-bC
+yX
+yX
 yY
 yY
 yY
@@ -36891,7 +36963,7 @@ yY
 og
 pA
 yY
-bC
+yX
 kg
 kg
 eX
@@ -36912,12 +36984,12 @@ eX
 kg
 kg
 jo
-bC
-bC
-bC
+yX
+yX
+yX
 lO
-ut
-bC
+ep
+yX
 yY
 yY
 pA
@@ -37025,14 +37097,14 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 gg
 gg
 ve
-bC
-bC
+yX
+yX
 si
 Zb
 tM
@@ -37075,12 +37147,12 @@ eX
 kg
 kg
 zD
-bC
-bC
+yX
+yX
 Zb
-bC
-bC
-bC
+yX
+yX
+yX
 yY
 yY
 yY
@@ -37187,16 +37259,16 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 vd
 gg
 gg
-bC
-bC
-bC
+yX
+yX
+yX
 eL
 Zb
 yY
@@ -37212,7 +37284,7 @@ yY
 yY
 Zb
 Zb
-bC
+yX
 yY
 LO
 yY
@@ -37237,10 +37309,10 @@ eN
 eX
 kg
 kg
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 Zb
 Zb
 yY
@@ -37352,15 +37424,15 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 vd
 gg
 gg
-bC
-bC
-kg
-kg
+yX
+yX
+af
+af
 eL
 LO
 yY
@@ -37376,7 +37448,7 @@ LO
 yY
 yY
 Zb
-bC
+yX
 yY
 pA
 yY
@@ -37400,12 +37472,12 @@ eN
 bD
 kg
 kg
-bC
-bC
-gg
+yX
+yX
+hG
 lZ
-bC
-bC
+yX
+yX
 pA
 yY
 yY
@@ -37513,18 +37585,18 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 gg
 gg
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 wC
 pA
 hr
@@ -37552,7 +37624,7 @@ yY
 hr
 yY
 nZ
-bC
+yX
 kg
 ua
 ua
@@ -37564,11 +37636,11 @@ ua
 ua
 kg
 oC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 yY
 yY
 yY
@@ -37587,7 +37659,7 @@ yX
 yX
 yX
 dK
-ut
+ep
 yX
 yX
 oM
@@ -37678,15 +37750,15 @@ fY
 fY
 fY
 vh
-bC
-bC
+yX
+yX
 vd
 gg
 gg
-bC
-bC
+yX
+yX
 xf
-bC
+yX
 tM
 tM
 tM
@@ -37716,8 +37788,8 @@ yY
 yY
 pA
 yY
-bC
-bC
+yX
+yX
 tE
 tE
 tE
@@ -37727,10 +37799,10 @@ ue
 tE
 tE
 tE
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 yY
 hr
 yY
@@ -37750,7 +37822,7 @@ yY
 yY
 yX
 yX
-ut
+ep
 yX
 yX
 oM
@@ -37843,14 +37915,14 @@ fY
 fY
 fY
 fY
-bC
+yX
 vd
 gg
 gg
 jv
-bC
-ut
-bC
+yX
+ep
+yX
 tM
 tM
 yY
@@ -37881,7 +37953,7 @@ yY
 yY
 yY
 yY
-bC
+yX
 ue
 ue
 ue
@@ -37891,8 +37963,8 @@ ue
 ue
 ue
 ue
-bC
-bC
+yX
+yX
 yY
 yY
 yY
@@ -38006,15 +38078,15 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 gg
 gg
 jv
 bF
-bC
-bC
-bC
+yX
+yX
+yX
 tM
 tM
 tM
@@ -38170,8 +38242,8 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 vd
 jv
 bF
@@ -38194,7 +38266,7 @@ tM
 bl
 tz
 tz
-tz
+nK
 bl
 tM
 uD
@@ -38334,8 +38406,8 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 jv
 bF
 tE
@@ -38497,22 +38569,22 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 pA
 bF
 tE
 tE
 bl
-bC
-bC
+yX
+yX
 bl
 tM
 uE
 uz
 tM
 bl
-dl
+sP
 dl
 dl
 bl
@@ -38529,9 +38601,9 @@ uE
 uz
 tM
 bl
-bC
-bC
-bC
+yX
+yX
+yX
 eN
 uT
 pA
@@ -38661,15 +38733,15 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 tE
 tE
 Gw
 LO
 fD
-bC
+yX
 bl
 tM
 uE
@@ -38695,11 +38767,11 @@ tM
 bl
 Hv
 ux
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 yY
 yY
 yY
@@ -38727,7 +38799,7 @@ yY
 yY
 yY
 yY
-bC
+yX
 pA
 yX
 yX
@@ -38824,9 +38896,9 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 LO
 LO
 yY
@@ -38850,7 +38922,7 @@ tM
 bl
 tz
 tz
-tz
+nK
 bl
 tM
 uE
@@ -38860,12 +38932,12 @@ bl
 bl
 um
 bl
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
 pA
 yY
 yY
@@ -38890,9 +38962,9 @@ pA
 yY
 yY
 LV
-bC
-bC
-bC
+yX
+yX
+yX
 yX
 yX
 yX
@@ -38986,10 +39058,10 @@ fY
 fY
 fY
 fY
-bC
+yX
 fY
-bC
-bC
+yX
+yX
 bl
 LO
 tX
@@ -39028,8 +39100,8 @@ tv
 tv
 tv
 FQ
-bC
-bC
+yX
+yX
 yY
 yY
 yY
@@ -39053,10 +39125,10 @@ yY
 yY
 yY
 yY
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 yX
@@ -39150,10 +39222,10 @@ fY
 fY
 fY
 vk
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 bl
 tX
 tX
@@ -39168,7 +39240,7 @@ uE
 uz
 tM
 bl
-dl
+tj
 dl
 dl
 bl
@@ -39193,9 +39265,9 @@ tv
 tv
 tv
 bl
-bC
-bC
-bC
+yX
+yX
+yX
 yY
 yY
 yY
@@ -39213,13 +39285,13 @@ pA
 yY
 yY
 yY
-bC
+yX
 yY
-bC
+yX
 yY
-bC
-bC
-bC
+yX
+yX
+yX
 fY
 fY
 fY
@@ -39314,12 +39386,12 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
 tX
 tX
 tX
@@ -39357,9 +39429,9 @@ tv
 tv
 tv
 ci
-bC
-bC
-ut
+yX
+yX
+jV
 yY
 pA
 yY
@@ -39376,13 +39448,13 @@ LV
 yY
 yY
 yY
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 bC
 fY
 fY
@@ -39477,12 +39549,12 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 gg
-bC
-bC
+yX
+yX
 uS
 tX
 tX
@@ -39506,7 +39578,7 @@ tM
 bl
 tz
 tz
-tz
+nK
 bl
 tM
 uE
@@ -39521,32 +39593,32 @@ tv
 tv
 tv
 bl
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 yY
 yY
-bC
+yX
 yY
 yY
-bC
+yX
 yY
 yY
 pA
 yY
 yY
-bC
+yX
 yY
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -39640,12 +39712,12 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 gg
 gg
-bC
+yX
 bl
 tX
 tX
@@ -39685,30 +39757,30 @@ tv
 tv
 tv
 bl
-bC
+yX
 xf
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 yY
 yY
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
-bC
-bC
+yX
+yX
 fY
 fY
 fY
@@ -39803,9 +39875,9 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 fZ
 gg
 gg
@@ -39824,7 +39896,7 @@ tM
 tM
 tM
 bl
-dl
+tj
 dl
 dl
 bl
@@ -39849,33 +39921,33 @@ bl
 bl
 bl
 bl
-bC
-lZ
-lZ
+yX
+jk
+jk
 np
 np
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 lO
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -39967,9 +40039,9 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 fZ
 gg
 gg
@@ -40011,34 +40083,34 @@ um
 um
 um
 pA
-bC
-bC
-bC
-bC
-lZ
-lZ
+yX
+yX
+yX
+yX
+jk
+jk
 np
 Tx
-bC
-bC
-bC
-lZ
-ut
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+jk
+ep
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
 fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 fY
 fY
 fY
@@ -40132,8 +40204,8 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 fZ
 gg
 gg
@@ -40175,25 +40247,25 @@ um
 um
 um
 Bg
-bC
+yX
 ci
 pE
-bC
-bC
+yX
+yX
 np
 np
-bC
-bC
-bC
-lZ
-lZ
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+jk
+jk
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -40201,8 +40273,8 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 fY
 fY
 fY
@@ -40297,8 +40369,8 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 gg
 gg
 vi
@@ -40343,32 +40415,32 @@ yY
 bl
 pE
 gg
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
-bC
-bC
-bC
-fY
-fY
-fY
+yX
+yX
+yX
 fY
 fY
 fY
 fY
-bC
-bC
-bC
+fY
+fY
+fY
+yX
+yX
+yX
 fY
 fY
 fY
@@ -40462,8 +40534,8 @@ fY
 fY
 fY
 fZ
-bC
-bC
+yX
+yX
 gg
 vi
 bl
@@ -40487,13 +40559,13 @@ tM
 tM
 tM
 yY
-bC
-bC
+yX
+yX
 wg
 tM
 tM
-bC
-bC
+yX
+yX
 uC
 tM
 tM
@@ -40508,30 +40580,30 @@ bl
 pE
 gg
 gg
-bC
-bC
+yX
+yX
+fZ
 fY
 fY
-fY
-bC
-bC
-bC
-fY
-fY
-fY
-fY
-fY
-bC
-bC
+yX
+yX
+yX
 fY
 fY
 fY
 fY
 fY
+yX
+yX
 fY
 fY
-bC
-bC
+fY
+fY
+fY
+fY
+fY
+yX
+yX
 fY
 fY
 fY
@@ -40626,7 +40698,7 @@ fY
 fY
 fY
 fZ
-bC
+yX
 gg
 gg
 vi
@@ -40650,15 +40722,15 @@ bl
 bl
 bl
 qk
-bC
-bl
-bC
+yX
+pf
+yX
 bl
 LO
-bC
-bC
-bl
-bC
+yX
+yX
+yX
+yX
 tM
 tM
 tM
@@ -40671,23 +40743,14 @@ tw
 bl
 pE
 gg
-bC
-bC
-bC
+yX
+yX
+yX
+fZ
 fY
 fY
-fY
-bC
-bC
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-bC
-bC
+yX
+yX
 fY
 fY
 fY
@@ -40695,7 +40758,16 @@ fY
 fY
 fY
 fY
-bC
+yX
+yX
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+yX
 fY
 fY
 fY
@@ -40812,18 +40884,18 @@ so
 bl
 vO
 qp
-kg
+af
 dF
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 pA
-bC
-ut
-ut
-bl
-bC
+yX
+jV
+jV
+yX
+yX
 tM
 tM
 bl
@@ -40834,22 +40906,22 @@ tw
 tw
 bl
 pE
-bC
-bC
-bC
+yX
+yX
+yX
+fZ
+fZ
+fY
+fY
+fY
+yX
+yX
 fY
 fY
 fY
 fY
 fY
-bC
-bC
-fY
-fY
-fY
-fY
-fY
-bC
+yX
 fY
 fY
 fY
@@ -40976,18 +41048,18 @@ vU
 bl
 vP
 vm
-kg
+af
 dF
-bC
-kg
+yX
+af
 pU
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 tM
 tM
 bl
@@ -40998,17 +41070,17 @@ tw
 tw
 ci
 pE
-bC
-bC
+yX
+yX
+fZ
+fZ
 fZ
 fY
 fY
 fY
-fY
-fY
-bC
-bC
-bC
+yX
+yX
+yX
 fY
 fY
 fY
@@ -41140,15 +41212,15 @@ vm
 rA
 vm
 vm
-kg
+af
 tL
-uG
-kg
+pD
+af
 vm
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 yY
 bl
 tM
@@ -41162,17 +41234,17 @@ tw
 tw
 bl
 pE
-bC
-bC
+yX
+yX
+fZ
+fZ
 fZ
 fY
 fY
 fY
 fY
-fY
-fY
-bC
-bC
+yX
+yX
 fY
 fY
 fY
@@ -41304,15 +41376,15 @@ vm
 vm
 vm
 vm
-kg
-kg
-kg
-kg
+af
+af
+af
+af
 vm
 pA
 pQ
-bC
-bC
+yX
+yX
 pA
 LO
 tM
@@ -41325,19 +41397,19 @@ tw
 tw
 tw
 bl
-bC
-bC
-bC
+yX
+yX
+yX
+fZ
+fZ
 fZ
 fZ
 fY
 fY
 fY
 fY
-fY
-fY
-bC
-bC
+yX
+yX
 fY
 fY
 fY
@@ -41474,9 +41546,9 @@ vv
 sG
 vm
 yY
-bC
-bC
-bC
+yX
+yX
+yX
 vm
 LO
 tM
@@ -41490,17 +41562,17 @@ bl
 bl
 bl
 bl
-Ah
-bC
-bC
+yX
+yX
+yX
+fZ
+fZ
 fZ
 fY
 fY
 fY
 fY
-fY
-fY
-bC
+yX
 fY
 fY
 fY
@@ -41638,9 +41710,9 @@ qc
 bl
 vm
 vm
-bC
+yX
 Dd
-bC
+yX
 vm
 bl
 tM
@@ -41653,13 +41725,13 @@ tx
 tx
 tx
 tx
-Am
-Am
+bl
+bl
 pE
-bC
+yX
 fZ
-fY
-fY
+fZ
+fZ
 fY
 fY
 fY
@@ -41795,15 +41867,15 @@ bl
 bl
 bl
 bl
-kg
-kg
-kg
-kg
-kg
+af
+af
+af
+af
+af
 bl
 vq
 bl
-bC
+yX
 bl
 bl
 bl
@@ -41817,13 +41889,13 @@ tx
 tx
 tx
 tx
-uq
-Am
+tx
+bl
 pE
+gg
+gg
 fZ
 fZ
-fY
-fY
 fY
 fY
 fY
@@ -41959,11 +42031,11 @@ bl
 mN
 mN
 mN
-kg
+af
 sM
 uZ
 sK
-kg
+af
 qe
 mN
 mN
@@ -41981,13 +42053,13 @@ tx
 tx
 tx
 tx
-uq
-Ao
+tx
+ci
 pE
+gg
+gg
 fZ
 fZ
-fY
-fY
 fY
 fY
 fY
@@ -42145,13 +42217,13 @@ tx
 tx
 tx
 tx
-uq
-Am
+tx
+bl
 pE
+gg
+gg
 fZ
 fZ
-fY
-fY
 fY
 fY
 fY
@@ -42309,13 +42381,13 @@ tx
 tx
 tx
 tx
-uq
-Am
+tx
+bl
 pE
+gg
+gg
 fZ
 fZ
-fY
-fY
 fY
 fY
 fY
@@ -42473,13 +42545,13 @@ bl
 tH
 bl
 bl
-Am
-Am
+bl
+bl
 Ah
+gg
+gg
 fZ
 fZ
-fZ
-fY
 fY
 fY
 fY
@@ -42636,12 +42708,12 @@ um
 um
 um
 um
-bC
-bC
-Ah
+yX
+yX
+yX
 jv
 jv
-fZ
+gg
 fZ
 fZ
 fY
@@ -42802,13 +42874,13 @@ um
 um
 hr
 yY
-bC
-pG
+yX
+yY
 jv
+gg
 gg
 fZ
 fZ
-fY
 fY
 fY
 fY
@@ -42960,19 +43032,19 @@ tM
 tM
 LO
 yY
-bC
+yX
 pA
 yY
 yY
 yY
 yY
 FY
-pG
+yY
 jv
+gg
 gg
 fZ
 fZ
-fY
 fY
 fY
 fY
@@ -43124,13 +43196,13 @@ yY
 tM
 tM
 yY
-bC
-bC
+yX
+yX
 bl
 bl
 bl
-Ar
-pG
+LO
+yY
 jv
 jv
 gg
@@ -43263,7 +43335,7 @@ tM
 tM
 tM
 FZ
-bC
+yX
 bl
 wD
 vn
@@ -43287,17 +43359,17 @@ tM
 tM
 tM
 tM
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 jv
 jv
 gg
-gg
+fZ
 fZ
 fZ
 fY
@@ -43426,12 +43498,12 @@ yY
 tM
 tM
 pA
-bC
-bC
+yX
+yX
 bl
-bC
-bC
-bC
+yX
+yX
+yX
 vo
 vo
 tp
@@ -43451,17 +43523,17 @@ tM
 tM
 tM
 bl
-bC
-ut
-ut
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-gg
+yX
+jV
+jV
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+fZ
 fZ
 fZ
 fY
@@ -43588,12 +43660,12 @@ tv
 tv
 pA
 yY
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
 pA
 vo
 vo
@@ -43615,17 +43687,17 @@ tM
 tM
 tM
 bl
-bC
-bC
-bC
+yX
+yX
+yX
 hr
-bC
-bC
-bC
-bC
-ut
-bC
-bC
+yX
+yX
+yX
+yX
+ep
+yX
+yX
 fZ
 fZ
 fY
@@ -43750,14 +43822,14 @@ tv
 tv
 tv
 EZ
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 vo
 vo
 vo
@@ -43779,17 +43851,17 @@ tM
 tM
 tM
 bl
-bC
-bC
+yX
+yX
 dl
 dl
-bC
+yX
 dl
-bC
-bC
-np
-bC
-bC
+yX
+yX
+hG
+yX
+yX
 fZ
 fZ
 fY
@@ -43911,15 +43983,15 @@ vi
 bl
 Bj
 tv
+vS
 tv
-tv
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 bl
 wE
 vo
@@ -43945,14 +44017,14 @@ tM
 LO
 LO
 pA
-bC
+yX
 dl
 us
 dl
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fZ
 fZ
 fZ
@@ -44078,12 +44150,12 @@ hr
 yY
 yY
 pA
-bC
-bC
-bC
+yX
+yX
+yX
 fD
 wF
-bC
+yX
 bl
 bl
 sH
@@ -44109,13 +44181,13 @@ tM
 LO
 LO
 LO
-bC
+yX
 LO
 LO
 yY
-bC
-bC
-ut
+yX
+yX
+jV
 fZ
 fZ
 fY
@@ -44243,7 +44315,7 @@ dl
 dl
 dl
 dl
-bC
+yX
 bl
 tM
 yY
@@ -44273,14 +44345,14 @@ tM
 bl
 tz
 tz
-bC
-bC
+yX
+yX
 tz
 bl
-bC
-bC
-bC
-ut
+yX
+yX
+yX
+jV
 fY
 fY
 fY
@@ -44442,8 +44514,8 @@ uu
 tz
 bl
 TS
-bC
-bC
+yX
+yX
 fY
 fY
 fY
@@ -44605,9 +44677,9 @@ tz
 tz
 tz
 ci
-bC
-bC
-bC
+yX
+yX
+yX
 fY
 fY
 fY
@@ -44766,12 +44838,12 @@ bl
 tz
 tz
 tz
-tz
+nq
 tz
 bl
-bC
-bC
-bC
+yX
+yX
+yX
 fY
 fY
 fY
@@ -44933,10 +45005,10 @@ tz
 tz
 tz
 bl
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -45097,10 +45169,10 @@ bl
 bl
 bl
 bl
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -45261,10 +45333,10 @@ um
 um
 um
 bl
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -45425,10 +45497,10 @@ um
 um
 um
 ci
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 sQ
@@ -45589,14 +45661,14 @@ um
 um
 um
 bl
-bC
-bC
-ut
-bC
-bC
+yX
+yX
+ep
+yX
+yX
 fY
-bC
-bC
+yX
+yX
 fY
 fY
 fY
@@ -45754,12 +45826,12 @@ bl
 bl
 bl
 TS
-bC
-bC
-ut
-bC
-bC
-bC
+yX
+yX
+ep
+yX
+yX
+yX
 fY
 fY
 fY
@@ -45917,12 +45989,12 @@ uh
 ud
 uc
 bl
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -46081,11 +46153,11 @@ tv
 uf
 uc
 bl
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -46222,7 +46294,7 @@ bl
 bl
 bl
 bl
-kg
+bl
 bl
 bl
 bl
@@ -46246,9 +46318,9 @@ tv
 tv
 ci
 TS
-bC
-bC
-bC
+yX
+yX
+yX
 fY
 fY
 fY
@@ -46367,8 +46439,8 @@ fY
 fY
 fZ
 Bf
-bC
-bC
+yX
+yX
 vi
 bl
 tz
@@ -46409,10 +46481,10 @@ zK
 bl
 tA
 bl
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -46530,8 +46602,8 @@ fY
 fY
 fY
 fZ
-bC
-bC
+yX
+yX
 gg
 vi
 bl
@@ -46544,7 +46616,7 @@ bl
 tM
 tM
 tM
-Ti
+vf
 TP
 zy
 uU
@@ -46573,9 +46645,9 @@ tG
 bl
 tD
 bl
-bC
-bC
-bC
+yX
+yX
+yX
 bC
 bC
 fY
@@ -46694,14 +46766,14 @@ fY
 fY
 fY
 fZ
-bC
+yX
 gg
 gg
 Qs
-kg
-kg
-kg
-kg
+af
+af
+af
+af
 bl
 bl
 bl
@@ -46737,7 +46809,7 @@ bl
 bl
 bl
 bl
-bC
+yX
 tK
 tK
 bC
@@ -46857,15 +46929,15 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 gg
 gg
 vj
 qx
 Cr
 HS
-kg
+af
 um
 um
 um
@@ -46898,10 +46970,10 @@ tJ
 tJ
 tJ
 bl
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 tK
 tK
 bC
@@ -47020,16 +47092,16 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 gg
 gg
 gg
 XK
 zW
-kg
+af
 um
 um
 um
@@ -47062,10 +47134,10 @@ tJ
 tJ
 tJ
 bl
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 bC
@@ -47183,12 +47255,12 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 gg
 gg
 gg
@@ -47226,10 +47298,10 @@ tJ
 tJ
 yY
 ci
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -47344,20 +47416,20 @@ fY
 fY
 fY
 fY
-bC
+yX
 vk
-bC
-bC
+yX
+yX
 fY
 fY
 tK
 Ke
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 Qs
-kg
+af
 pA
 um
 um
@@ -47389,10 +47461,10 @@ tJ
 hr
 yY
 AE
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 LL
 fY
 fY
@@ -47509,20 +47581,20 @@ fY
 fY
 fY
 fY
-bC
-bC
+yX
+yX
 fY
 fY
 fY
 fY
 tK
 tK
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
 JM
 hr
 um
@@ -47552,11 +47624,11 @@ tJ
 tJ
 tJ
 uv
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 fZ
 fY
 fY
@@ -47673,21 +47745,21 @@ fY
 fY
 fY
 fY
-bC
+yX
 fY
 fY
 fY
 fY
 fY
 fY
-bC
-ut
-bC
-bC
-bC
-kg
-bC
-bC
+yX
+jV
+yX
+yX
+yX
+af
+yX
+yX
 pA
 um
 um
@@ -47718,9 +47790,9 @@ tJ
 tJ
 Qd
 bl
-bC
+yX
 gg
-bC
+yX
 fZ
 fY
 fY
@@ -47845,13 +47917,13 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 uG
 tL
 um
@@ -47882,9 +47954,9 @@ tL
 tL
 vt
 bl
-bC
+yX
 gg
-bC
+yX
 fZ
 fY
 fY
@@ -48009,13 +48081,13 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
+yX
 bl
-kg
+af
 kg
 kg
 bl
@@ -48042,12 +48114,12 @@ bl
 bl
 vq
 bl
-kg
-kg
+af
+af
 bl
 bl
-bC
-bC
+yX
+yX
 gg
 fZ
 fZ
@@ -48173,9 +48245,9 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 Fb
 bC
 bC
@@ -48210,8 +48282,8 @@ zK
 zK
 zK
 bl
-bC
-bC
+yX
+yX
 gg
 fZ
 fZ
@@ -48336,9 +48408,9 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
+yX
+yX
+yX
 hF
 Fb
 bl
@@ -48374,7 +48446,7 @@ zK
 zK
 zK
 bl
-bC
+yX
 gg
 gg
 fZ
@@ -48499,10 +48571,10 @@ fY
 fY
 fY
 fY
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 hF
 Fb
 bl
@@ -48538,7 +48610,7 @@ zK
 zK
 zK
 bl
-bC
+yX
 gg
 gg
 fZ
@@ -48663,11 +48735,11 @@ fY
 fY
 fY
 fY
-bC
+yX
 fY
 fY
-bC
-bC
+yX
+yX
 Fb
 bl
 tJ
@@ -48702,7 +48774,7 @@ zK
 zK
 zK
 ci
-bC
+yX
 gg
 gg
 fZ
@@ -48826,12 +48898,12 @@ fY
 fY
 fY
 fY
-bC
+yX
 fY
 fY
 fY
 fZ
-bC
+yX
 Fb
 bl
 wJ
@@ -48867,7 +48939,7 @@ zK
 zK
 ci
 Ht
-bC
+yX
 gg
 fZ
 fZ
@@ -48995,15 +49067,15 @@ fY
 fY
 fY
 Bf
-bC
-bC
-bC
-bC
+yX
+yX
+yX
+yX
 bl
 bl
 bl
 wK
-um
+ux
 bl
 yO
 OV
@@ -49159,7 +49231,7 @@ fY
 fY
 fY
 fZ
-bC
+yX
 Fb
 bl
 pA
@@ -49323,8 +49395,8 @@ fY
 fY
 fY
 fZ
-bC
-bC
+yX
+yX
 bl
 bl
 wH
@@ -49488,8 +49560,8 @@ fY
 fY
 fZ
 fZ
-bC
-bC
+yX
+yX
 bl
 bl
 bl
@@ -49653,7 +49725,7 @@ fY
 fY
 fZ
 fZ
-bC
+yX
 Gz
 Gz
 Gz

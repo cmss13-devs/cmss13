@@ -254,6 +254,18 @@
 	icon_state = "construction_int"
 	unoviable_timer = FALSE
 
+/area/kutjevo/interior/construction/north
+	name = "Kutjevo - Northern Abandoned Construction Interior"
+	icon_state = "construction"
+
+/area/kutjevo/interior/construction/east
+	name = "Kutjevo - Eastern Abandoned Construction Interior"
+	icon_state = "construction"
+
+/area/kutjevo/interior/construction/signal_tower
+	name = "Kutjevo - Abandoned Signal Tower"
+	icon_state = "construction2"
+
 /area/kutjevo/interior/foremans_office
 	name = "Kutjevo - Foreman's Office"
 	ceiling = CEILING_METAL

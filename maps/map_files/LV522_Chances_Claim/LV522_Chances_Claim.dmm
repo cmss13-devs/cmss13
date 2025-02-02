@@ -655,10 +655,34 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/nw_rockies)
+"acB" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel/far)
+"acC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/indoors/b_block/bridge)
+"acD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/indoors/lone_buildings/storage_blocks/east)
 "acE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/bridge)
+"acF" = (
+/turf/open/asphalt/cement/cement1,
+/area/lv522/atmos/filt)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -10692,7 +10716,7 @@
 "fPc" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/asphalt/cement/cement1,
-/area/lv522/outdoors/colony_streets/containers)
+/area/lv522/atmos/filt)
 "fPB" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/dirt,
@@ -11950,7 +11974,7 @@
 	req_access = null
 	},
 /turf/open/asphalt/cement/cement1,
-/area/lv522/outdoors/colony_streets/containers)
+/area/lv522/atmos/filt)
 "gzS" = (
 /obj/structure/pipes/unary/freezer{
 	dir = 1;
@@ -16326,7 +16350,9 @@
 /turf/open/floor/strata/blue1,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "iWh" = (
-/obj/structure/machinery/portable_atmospherics/canister/empty/oxygen,
+/obj/structure/machinery/portable_atmospherics/canister/empty/oxygen{
+	needs_power = 0
+	},
 /turf/open/asphalt/cement/cement4,
 /area/lv522/outdoors/colony_streets/south_street)
 "iWo" = (
@@ -19459,12 +19485,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/garage)
-"kxz" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
-/turf/open/floor/prison/darkbrownfull2,
-/area/lv522/indoors/c_block/mining)
 "kxH" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt/cement/cement12,
@@ -19761,7 +19781,9 @@
 	name = "\improper M577 armored personnel carrier";
 	pixel_y = -21;
 	unacidable = 1;
-	unslashable = 1
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -20037,6 +20059,9 @@
 "kLs" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/mouse,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo)
 "kLO" = (
@@ -20272,7 +20297,7 @@
 	icon_state = "W"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/south_east_street)
+/area/lv522/indoors/lone_buildings/storage_blocks/east)
 "kSs" = (
 /obj/structure/filingcabinet/chestdrawer{
 	density = 0;
@@ -22488,7 +22513,8 @@
 /obj/structure/machinery/portable_atmospherics/canister/empty/oxygen{
 	layer = 4.4;
 	pixel_x = 13;
-	pixel_y = 19
+	pixel_y = 19;
+	needs_power = 0
 	},
 /turf/open/asphalt/cement/cement14,
 /area/lv522/outdoors/colony_streets/south_street)
@@ -27189,9 +27215,6 @@
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "ouO" = (
@@ -30604,7 +30627,7 @@
 	pixel_y = 1
 	},
 /turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/south_east_street)
+/area/lv522/indoors/toilet)
 "qpE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_marked/southwest,
@@ -32586,6 +32609,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_2/ceiling)
 "rex" = (
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical/glass)
 "reB" = (
@@ -37766,7 +37790,7 @@
 	pixel_y = 1
 	},
 /turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/south_east_street)
+/area/lv522/indoors/toilet)
 "tKF" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating,
@@ -41077,9 +41101,6 @@
 /turf/open/floor/strata/white_cyan3/west,
 /area/lv522/indoors/a_block/medical/glass)
 "vnq" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "vnX" = (
@@ -58657,7 +58678,7 @@ cpy
 ygJ
 ygJ
 bPJ
-nZP
+acB
 nZP
 ixV
 bPJ
@@ -66042,7 +66063,7 @@ mPr
 bdL
 wIr
 wIr
-pwW
+acC
 jmv
 wIr
 wIr
@@ -66266,7 +66287,7 @@ mPr
 mPr
 iWh
 jas
-kxz
+aRi
 vpe
 aAI
 ozw
@@ -74475,7 +74496,7 @@ hMz
 gBy
 mUr
 kSm
-mUr
+acD
 kSm
 mUr
 fvV
@@ -76428,13 +76449,13 @@ cpy
 cpy
 cpy
 cpy
-aRf
+acF
 gzF
-aRf
-aRf
-aRf
-aRf
-aRf
+acF
+acF
+acF
+acF
+acF
 fPc
 ien
 ien

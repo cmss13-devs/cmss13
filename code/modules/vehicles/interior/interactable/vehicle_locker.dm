@@ -124,6 +124,9 @@
 	if(role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
+	if(istype(W,/obj/item/storage))
+		container.dump_into(W, user)
+		return
 	return container.attackby(W, user)
 
 /obj/structure/general_container/emp_act(severity)

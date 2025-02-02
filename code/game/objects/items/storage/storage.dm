@@ -638,7 +638,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	var/mob/living/carbon/human/H = usr
 	empty(H, get_turf(H))
 
-/obj/item/storage/proc/empty(mob/user, turf/T, var/require_in_hand = TRUE)
+/obj/item/storage/proc/empty(mob/user, turf/T, require_in_hand = TRUE)
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY) || !ishuman(user) || (require_in_hand && !(user.l_hand == src || user.r_hand == src)) || user.is_mob_incapacitated())
 		return
 
@@ -652,7 +652,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	if(!length(contents))
 		to_chat(user, SPAN_WARNING("[src] is already empty."))
-		return
+		return TRUE
 
 	if (!(storage_flags & STORAGE_QUICK_EMPTY))
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [src]..."),
@@ -667,6 +667,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		SPAN_NOTICE("You empty \the [src]."))
 	if (use_sound)
 		playsound(loc, use_sound, 25, TRUE, 3)
+	return TRUE
 
 /obj/item/storage/verb/shake_verb()
 	set name = "Shake"
@@ -776,6 +777,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	for(var/obj/item/new_item in origin_storage)
 		if(!has_room(new_item))
 			break
+		if(!can_hold_type(new_item.type, user))
+			continue
 		origin_storage.remove_from_storage(new_item, user)
 		handle_item_insertion(new_item, TRUE, user) //quiet insertion
 

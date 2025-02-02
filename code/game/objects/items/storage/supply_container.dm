@@ -31,8 +31,12 @@
 		/obj/item/paper,
 		/obj/item/clipboard,
 		/obj/item/document_objective/paper,
-		/obj/item/document_objective,
+		/obj/item/document_objective/report,
+		/obj/item/document_objective/folder,
 		/obj/item/disk/objective,
+		/obj/item/document_objective/technical_manual,
+		/obj/item/reagent_container/glass/beaker/vial,
+		/obj/item/device/healthanalyzer,
 	)
 
 /obj/structure/general_container/supply_container/intel/MouseDrop(over_object, src_location, over_location)

@@ -474,7 +474,7 @@
 			if(lifeboat.status == LIFEBOAT_LOCKED)
 				return XENO_NO_DELAY_ACTION
 			if(lifeboat.mode == SHUTTLE_CALL)
-				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the dropship mid-flight."))
+				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
 				return XENO_NO_DELAY_ACTION
 			lifeboat.status = LIFEBOAT_LOCKED
 			lifeboat.available = FALSE

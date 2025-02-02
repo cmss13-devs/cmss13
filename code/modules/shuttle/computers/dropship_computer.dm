@@ -229,7 +229,7 @@
 		var/obj/docking_port/mobile/maybe_dropship = landing_zone.get_docked()
 
 		if(maybe_dropship)
-			to_chat(xeno, SPAN_NOTICE("A metal bird already is here."))
+			to_chat(xeno, SPAN_NOTICE("A dropship already is here."))
 			return
 
 		var/conflicting_transit = FALSE
@@ -239,7 +239,7 @@
 				break
 
 		if(conflicting_transit)
-			to_chat(xeno, SPAN_NOTICE("A metal bird is already coming."))
+			to_chat(xeno, SPAN_NOTICE("A dropship is already coming."))
 			return
 
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
@@ -295,12 +295,12 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/alien_call_dropship(mob/living/carbon/xenomorph/xeno, obj/docking_port/mobile/shuttle, obj/docking_port/stationary/marine_dropship/airlock/inner/inner_airlock)
 	var/result = SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
 	if(result != DOCKING_SUCCESS)
-		to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
+		to_chat(xeno, SPAN_WARNING("The dropship can not land here. It might be currently occupied!"))
 		return
 	if(inner_airlock)
 		inner_airlock.disable_manual_input = FALSE
-	to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
-	xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
+	to_chat(xeno, SPAN_NOTICE("You command the dropship to come down. Clever girl."))
+	xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the dropship to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
 	log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 	log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 	return
@@ -352,7 +352,7 @@
 		stop_playing_launch_announcement_alarm()
 
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
-		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("The doors of the dropship have been overridden! Rejoice!"), 3, xeno.hivenumber)
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
 		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 		return
@@ -404,7 +404,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	if(istype(xeno))
 		hivenumber = xeno.hivenumber
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the dropship to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
 	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	hive.abandon_on_hijack()

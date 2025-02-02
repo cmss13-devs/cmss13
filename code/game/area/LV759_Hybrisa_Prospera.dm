@@ -220,6 +220,7 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/electric_fence1
 	name = "Electrical Fence - West Caves"
@@ -262,6 +263,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/east_caves/north
 	name = "Caverns - East"
@@ -276,11 +278,13 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/south_caves/derelict_ship
 	name = "Caverns - South"
 	icon_state = "caves_south"
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/south_east_caves
 	name = "Caverns - Southeast"
@@ -290,6 +294,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/south_west_caves
 	name = "Caverns - Southwest"
@@ -299,6 +304,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/south_west_caves_alarm
 	name = "Caverns - Southwest"
@@ -338,6 +344,7 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	linked_lz = DROPSHIP_LZ1
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/north_east_caves/south
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
@@ -350,9 +357,11 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/north_caves/east
 	linked_lz = DROPSHIP_LZ1
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/central_caves
 	name = "Caverns - Central"
@@ -363,6 +372,7 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/central_caves_north
 	name = "Caverns - Central"
@@ -372,6 +382,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/north_east_caves_comms
 	name = "KMCC - Mining Outpost - East - Subspace-Communications"
@@ -396,6 +407,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_PLATEAU_OUTDOORS
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
 
 // Colony Streets
 

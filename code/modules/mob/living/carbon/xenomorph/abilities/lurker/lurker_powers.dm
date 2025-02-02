@@ -165,7 +165,7 @@
 	if (!action_cooldown_check())
 		return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"), \
+	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"),
 	SPAN_XENOWARNING("We unleash a barrage of slashes!"))
 	playsound(xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
 	apply_cooldown()
@@ -207,7 +207,7 @@
 			if (!isxeno_human(target) || xeno.can_not_harm(target))
 				continue
 
-			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"), \
+			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"),
 			SPAN_XENOWARNING("We slash [target] multiple times!"))
 			xeno.flick_attack_overlay(target, "slash")
 			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
@@ -352,7 +352,7 @@
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."), \
+	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."),
 	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively."))
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks

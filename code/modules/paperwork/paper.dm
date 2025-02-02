@@ -146,10 +146,14 @@
 		onclose(user, name)
 	return
 
-/obj/item/paper/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+
 	if(user.zone_selected == "eyes")
-		user.visible_message(SPAN_NOTICE("You show the paper to [M]. "), \
-			SPAN_NOTICE(" [user] holds up a paper and shows it to [M]. "))
+		if(!ishumansynth_strict(M))
+			return
+
+		user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
+		SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
 		examine(M)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
@@ -160,10 +164,10 @@
 				H.lip_style = null
 				H.update_body()
 			else
-				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
+				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."),
 									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
 				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
-					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
+					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."),
 										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
@@ -346,12 +350,12 @@
 		if(istype(P, /obj/item/tool/lighter/zippo))
 			class = "<span class='rose'>"
 
-		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!", \
+		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!",
 		"[class]You hold \the [P] up to \the [src], burning it slowly.")
 
 		spawn(20)
 			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.heat_source)
-				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.", \
+				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.",
 				"[class]You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.")
 
 				if(user.get_inactive_hand() == src)

@@ -296,7 +296,7 @@
 	if(usr.is_mob_incapacitated())
 		return
 
-	default_lighting_alpha = default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE : LIGHTING_PLANE_ALPHA_VISIBLE
+	default_lighting_alpha = default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE : LIGHTING_PLANE_ALPHA_VISIBLE
 	update_sight()
 
 	to_chat(src, SPAN_NOTICE("Your vision is now set to <b>[default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? "Normal Vision" : "Nightvision"]</b>."))
@@ -359,7 +359,7 @@
 
 	if(!is_zoomed)
 		enable_zoom()
-		visible_message(SPAN_NOTICE("[src] starts looking off into the distance."), \
+		visible_message(SPAN_NOTICE("[src] starts looking off into the distance."),
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
 		return
 

@@ -539,9 +539,9 @@
 /datum/chem_property/positive/electrogenetic/trigger(A)
 	if(isliving(A))
 		var/mob/living/M = A
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BRUTE)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BURN)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, TOX)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BRUTE)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BURN)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, TOX)
 		M.updatehealth()
 
 /datum/chem_property/positive/defibrillating
@@ -580,6 +580,12 @@
 		return
 	var/mob/living/carbon/human/dead = M
 	var/revivable = dead.check_tod() && dead.is_revivable()
+	for(var/datum/reagent/R in M.reagents.reagent_list)
+		var/datum/chem_property/property = R.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
+		if(property)
+			property.trigger(M)
+			M.reagents.remove_reagent(R.id, 1)
+			break
 	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
 		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))

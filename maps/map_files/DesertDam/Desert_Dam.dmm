@@ -43937,10 +43937,7 @@
 	},
 /obj/item/reagent_container/food/snacks/stew,
 /obj/item/tool/kitchen/utensil/spoon,
-/obj/structure/machinery/power/apc/fully_broken/no_cell{
-	dir = 1;
-	pixel_y = 32
-	},
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
 "kAV" = (

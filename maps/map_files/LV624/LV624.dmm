@@ -791,14 +791,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"adl" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/plating/asteroidwarning,
-/area/lv624/lazarus/landing_zones/lz2)
-"adm" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/floor/green/northwest,
-/area/lv624/lazarus/hydroponics)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -813,6 +805,10 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
+"adq" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -27804,7 +27800,7 @@ uzH
 uzH
 uzH
 uzH
-uzH
+adq
 aDV
 aRG
 tZD
@@ -31676,7 +31672,7 @@ aJO
 aEs
 aOB
 wHp
-adl
+wLz
 tZD
 tZD
 aAp
@@ -43940,7 +43936,7 @@ tyG
 tyG
 tyG
 anT
-adm
+aoA
 aoA
 aoA
 aoP

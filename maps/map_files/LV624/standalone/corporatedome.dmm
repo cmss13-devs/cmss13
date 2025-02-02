@@ -1,4 +1,29 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/door_control{
+	id = "garage_lv";
+	name = "Garage Shutters";
+	pixel_y = -28
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 20
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/template_noop,
+/area/template_noop)
+"ac" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/template_noop,
+/area/template_noop)
+"ad" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
 "aQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Corporation Dome";
@@ -54,13 +79,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
-"da" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 20
-	},
-/obj/effect/decal/cleanable/blood/drip,
-/turf/template_noop,
-/area/template_noop)
 "dq" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/white{
@@ -212,16 +230,6 @@
 	},
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
-"kU" = (
-/obj/structure/machinery/door_control{
-	id = "garage_lv";
-	name = "Garage Shutters";
-	pixel_y = -28
-	},
-/obj/effect/landmark/corpsespawner/colonist,
-/obj/effect/decal/cleanable/blood,
-/turf/template_noop,
-/area/template_noop)
 "ln" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -365,10 +373,6 @@
 	},
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl,
 /turf/open/floor/whitebluecorner/north,
-/area/lv624/lazarus/corporate_dome)
-"sm" = (
-/obj/structure/machinery/vending/cigarette,
-/turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "sH" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -572,10 +576,6 @@
 	},
 /turf/open/floor/whitebluecorner,
 /area/lv624/lazarus/corporate_dome)
-"Fk" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/template_noop,
-/area/template_noop)
 "Fl" = (
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
@@ -934,7 +934,7 @@
 Xt
 Xt
 Xt
-Fk
+ac
 Xt
 Xt
 Xt
@@ -957,7 +957,7 @@ Xt
 Xt
 Xt
 Xt
-da
+ab
 Xt
 Xt
 Xt
@@ -980,7 +980,7 @@ Xt
 Xt
 Xt
 Xt
-kU
+aa
 XG
 XG
 XG
@@ -1153,7 +1153,7 @@ Ii
 (11,1,1) = {"
 YN
 mp
-sm
+ad
 RF
 fF
 KG

@@ -927,7 +927,7 @@
 	if(!..())
 		return
 
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER_SMALL * potency)
 
 	if(M.losebreath >= 10)
 		M.losebreath = max(10, M.losebreath - 2.5 * potency * delta_time)

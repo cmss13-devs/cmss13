@@ -42,6 +42,7 @@
 	register_tutorial_step(CALLBACK(src, PROC_REF(uniform)))
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/uniform()
+	SIGNAL_HANDLER
 
 	manual_message_to_player("<b>Section 0 - Equipment and You</b>.")
 
@@ -91,6 +92,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(scanner_2))
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/scanner_2()
+	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -100,8 +102,9 @@
 	register_tutorial_step(CALLBACK(src, PROC_REF(medihud)))
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/medihud()
+	SIGNAL_HANDLER
 
-	manual_message_to_player("Next, you should get to know a Medics second best friend on the field, the <b>HealthMate HUD</b>.")
+	manual_message_to_player("Next, you should get to know a Medic's second best friend on the field, the <b>HealthMate HUD</b>.")
 	manual_message_to_player("The <b>HealthMate HUD</b> is an extremely useful device that fits over one eye, allowing you to scan anyones condition at a glance.")
 	manual_message_to_player("Squad Medical helmets come with an inbuilt <b>HealthMate HUD</b> optic, that activates whilst wearing it on your head.")
 	manual_message_to_player("Pick up the <b>M10 corpsman helmet</b>, and wear it on your head, highlighted in green.")
@@ -120,8 +123,8 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/head/helmet/marine/medic, helmet)
 	remove_highlight(helmet)
 
-	manual_message_to_player("While not as detailed as a Health Analyzer scan, your <b>HealthMate HUD</b> will display a healthbar over the head of any injured Marine, which will indicate their general condition.")
-	manual_message_to_player("When someone does not have a healthbar over their head, or when their healthbar disappears, that means they are <b>Fully Healthy</b>.")
+	manual_message_to_player("While not as detailed as a health analyzer scan, your <b>HealthMate HUD</b> will display a healthbar over the head of any injured Marine, which will indicate their general condition.")
+	manual_message_to_player("When someone does not have a healthbar over their head, or when their healthbar disappears, that means they are <b>fully healthy</b>.")
 	manual_message_to_player("As you progress through the following sections of the tutorial, pay attention to how the Dummys healthbar changes with different injuries.")
 
 	register_tutorial_step(CALLBACK(src, PROC_REF(brute_tutorial)))
@@ -183,7 +186,6 @@
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_4()
 	SIGNAL_HANDLER
 
-
 	marine_dummy.rejuvenate()
 	marine_dummy.apply_damage(5, BRUTE, "chest")
 
@@ -191,14 +193,16 @@
 	add_to_tracking_atoms(brute_injector)
 	add_highlight(brute_injector)
 
-	manual_message_to_player("Medicines can also be directly injected into the bloodstream using <b>Autoinjectors</b>, allowing the medication to begin work immediately, without the need to be digested first.")
-	manual_message_to_player("Click on the <b>Bicaridine Autoinjector</b> with an empty hand to pick it up, and then click on the Dummy while standing next to it to administer an injection")
-	update_objective("Pick up, and inject the Dummy with the Bicaridine Autoinjector")
+	manual_message_to_player("Medicines can also be directly injected into the bloodstream using <b>Autoinjectors</b>, allowing the medication to begin work immediately without the need to be digested first.")
+	manual_message_to_player("Click on the <b>Bicaridine Autoinjector</b> with an empty hand to pick it up, and then click on the Dummy while standing next to it to administer an injection.")
+	update_objective("Pick up and inject the Dummy with the Bicaridine autoinjector.")
 
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(brute_inject_self))
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(brute_tutorial_5_pre))
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_inject_self()
+	SIGNAL_HANDLER
+
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	living_mob.reagents.clear_reagents()
@@ -218,7 +222,6 @@
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_5()
 	SIGNAL_HANDLER
-
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
@@ -240,7 +243,6 @@
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_6()
 	SIGNAL_HANDLER
-
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
@@ -528,7 +530,7 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
 	manual_message_to_player("Well done!")
-	manual_message_to_player("It seems that our friend Pvt Dummy is suddenly injured. Use your <b>Health Analyzer</b> to scan them.")
+	manual_message_to_player("It seems that our friend PVT Dummy is suddenly injured. Use your <b>Health Analyzer</b> to scan them.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 
@@ -974,8 +976,6 @@
 /**
 * Handles the creation and describes the use of pill bottles and pills in HM tutorials
 *
-* NOT FOR USE OUTSIDE OF TUTORIAL SYSTEM
-*
 * Currently limited to /mob/living/carbon/human/realistic_dummy
 *
 * Will break if used more than once per proc, see add_to_tracking_atoms() limitations
@@ -1051,9 +1051,10 @@
 			remove_highlight(bottle)
 			QDEL_IN(bottle, 1 SECONDS)
 			medbelt.update_icon()
-			message_to_player("Dont feed yourself the pill, try again.")
+			message_to_player("Don't feed yourself the pill, try again.")
 			handle_pill_bottle_status = 0
 			UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+			spawn(2.1 SECONDS)
 			SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 			return
 
@@ -1083,6 +1084,7 @@
 	. = ..()
 	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)
 	tutorial_mob.set_skills(/datum/skills/combat_medic)
+	remove_action(tutorial_mob, /datum/action/surgery_toggle)
 
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/init_map()

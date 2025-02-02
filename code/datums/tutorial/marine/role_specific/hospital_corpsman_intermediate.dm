@@ -1474,8 +1474,6 @@
 /**
 * Handles the creation and describes the use of pill bottles and pills in HM tutorials
 *
-* NOT FOR USE OUTSIDE OF TUTORIAL SYSTEM
-*
 * Currently limited to /mob/living/carbon/human/realistic_dummy
 *
 * Will break if used more than once per proc, see add_to_tracking_atoms() limitations
@@ -1487,6 +1485,7 @@
 * * iconnumber Sets the icon for the created pill bottle, input a number string ONLY (IE: "1")
 * * pill Typepath of the pill to place into the pill bottle
 */
+
 /datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/proc/handle_pill_bottle(target, name, maptext, iconnumber, pill)
 	SIGNAL_HANDLER
 
@@ -1550,9 +1549,10 @@
 			remove_highlight(bottle)
 			QDEL_IN(bottle, 1 SECONDS)
 			medbelt.update_icon()
-			manual_message_to_player("Dont feed yourself the pill, try again.")
+			message_to_player("Don't feed yourself the pill, try again.")
 			handle_pill_bottle_status = 0
 			UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+			spawn(2.1 SECONDS)
 			SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 			return
 

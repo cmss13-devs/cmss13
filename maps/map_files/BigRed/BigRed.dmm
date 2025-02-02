@@ -766,9 +766,9 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "acW" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/cargo)
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/warnwhite,
+/area/bigredv2/outside/office_complex)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -840,20 +840,18 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "adn" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
+/turf/open/floor/plating,
+/area/bigredv2/outside/cargo)
 "ado" = (
 /obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "adp" = (
-/obj/structure/machinery/power/apc/power/west,
-/turf/open/floor/warnwhite,
-/area/bigredv2/outside/office_complex)
-"adq" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/bigredv2/outside/lambda_cave_cas)
+"adq" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/lambda_cave_cas)
 "adr" = (
 /obj/structure/machinery/light{
@@ -892,6 +890,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "adx" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/lambda_cave_cas)
 "ady" = (
@@ -931,8 +930,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "adF" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/lambda_cave_cas)
 "adG" = (
 /obj/item/shard,
@@ -962,6 +960,10 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "adK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/lambda_cave_cas)
 "adL" = (
@@ -971,11 +973,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "adM" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/lambda_cave_cas)
 "adN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1011,19 +1009,21 @@
 /turf/open/floor/floor4,
 /area/bigredv2/outside/marshal_office)
 "adU" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/bigredv2/outside/lambda_cave_cas)
-"adV" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating,
 /area/bigredv2/caves_lambda)
+"adV" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw/ceiling)
 "adW" = (
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "adX" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/plating,
-/area/bigredv2/outside/nw/ceiling)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "adY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
@@ -47556,7 +47556,7 @@ axZ
 avT
 azn
 avT
-adX
+adV
 anp
 siK
 siG
@@ -52138,7 +52138,7 @@ aPv
 aNm
 aWB
 aoH
-acW
+adn
 aXH
 mOc
 aZu
@@ -64076,7 +64076,7 @@ aWJ
 aMc
 asv
 aYX
-adp
+acW
 aYY
 baK
 bbs
@@ -65776,7 +65776,7 @@ atD
 sih
 sih
 ako
-adn
+adX
 awu
 apc
 ako
@@ -74268,7 +74268,7 @@ aQu
 dpU
 mNP
 mlt
-adq
+adp
 mwq
 aTu
 aTu
@@ -74485,7 +74485,7 @@ aQu
 oCK
 poV
 fFs
-adx
+adq
 dTB
 rbs
 rbs
@@ -74699,10 +74699,10 @@ aQu
 aQu
 aQu
 ceA
-adU
 adM
 adK
 adF
+adx
 rbs
 oPM
 eKZ
@@ -79467,7 +79467,7 @@ aIN
 aJG
 anI
 aao
-adV
+adU
 tQw
 xFZ
 tQw

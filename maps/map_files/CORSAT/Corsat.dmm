@@ -490,9 +490,9 @@
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/gamma/hangar)
 "acb" = (
-/obj/structure/machinery/power/apc/upgraded/no_power/south,
-/turf/open/floor/corsat/white,
-/area/corsat/gamma/residential/east)
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/corsat/darkgreen/north,
+/area/corsat/sigma/hangar/arrivals)
 "acc" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood,
@@ -1074,9 +1074,9 @@
 /turf/open/floor/carpet6_2/west,
 /area/corsat/gamma/residential/lounge)
 "aeh" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/corsat/darkgreen/north,
-/area/corsat/sigma/hangar/arrivals)
+/obj/structure/machinery/power/apc/upgraded/no_power/south,
+/turf/open/floor/corsat/white,
+/area/corsat/gamma/residential/east)
 "aei" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -60633,7 +60633,7 @@ ffp
 pCT
 ack
 uMD
-acb
+aeh
 abD
 abD
 abD
@@ -99162,7 +99162,7 @@ ylo
 ylo
 ylo
 alx
-aeh
+acb
 aeV
 dkK
 aeV

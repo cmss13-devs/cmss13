@@ -37,6 +37,10 @@
 "aak" = (
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/complex/med)
+"aal" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/construction)
 "aam" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
@@ -137,10 +141,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
-"aaL" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/exterior/construction)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -40051,7 +40051,7 @@ uah
 ecO
 lPR
 lPR
-aaL
+aal
 dQv
 hpB
 bKH

@@ -400,7 +400,9 @@
 /turf/open/floor/prison/redfull,
 /area/space)
 "aR" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Medical Emergency Landing Zone"
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/space)
 "aS" = (
@@ -532,6 +534,10 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bg" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1;
+	pixel_y = 3
+	},
 /turf/open/floor/hybrisa/metal/bluemetalcorner,
 /area/space)
 "bh" = (
@@ -607,10 +613,6 @@
 "bu" = (
 /obj/structure/prop/broken_ladder,
 /turf/open/floor/almayer/plating,
-/area/space)
-"bv" = (
-/obj/structure/lz_sign,
-/turf/open/floor/plating/catwalk/rusted,
 /area/space)
 "bw" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -1082,6 +1084,10 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/space)
 "cu" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1;
+	pixel_y = -2
+	},
 /turf/open/floor/hybrisa/metal/bluemetalcorner/north,
 /area/space)
 "cv" = (
@@ -1952,30 +1958,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/space)
-"fY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 2
-	},
-/turf/open/floor/plating/plating_catwalk/prison/dark,
-/area/space)
-"fZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 2
-	},
-/turf/open/floor/plating/plating_catwalk/prison/dark,
-/area/space)
-"ga" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 2
-	},
-/turf/open/floor/plating/plating_catwalk/prison/dark,
-/area/space)
 "gb" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/power/terminal{
@@ -2015,26 +1997,11 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/space)
-"gg" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1;
-	layer = 3.33
-	},
-/turf/open/floor/plating/plating_catwalk/prison/dark,
-/area/space)
 "gh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square"
 	},
 /turf/open/floor/corsat/plate,
-/area/space)
-"gi" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.33
-	},
-/turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/space)
 "gj" = (
 /obj/structure/platform/metal/almayer/west,
@@ -2066,7 +2033,7 @@
 "gm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
-	pixel_x = -1;
+	pixel_x = -2;
 	pixel_y = 2
 	},
 /turf/open/floor/corsat/plate,
@@ -2086,11 +2053,6 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/space)
 "gp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1;
-	layer = 3.33
-	},
 /obj/structure/machinery/computer/telecomms/server{
 	layer = 3.4;
 	pixel_y = 16;
@@ -2103,10 +2065,6 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "gr" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.33
-	},
 /obj/structure/machinery/computer/telecomms/monitor{
 	pixel_y = 18;
 	color = "aba39d"
@@ -2114,6 +2072,15 @@
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/space)
 "gs" = (
+/obj/item/stool{
+	pixel_x = -11;
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = -1;
+	pixel_x = 3
+	},
 /turf/open/floor/prison/ramptop/east{
 	color = "aba39d"
 	},
@@ -2145,8 +2112,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	layer = 2.5;
-	pixel_y = -2
+	pixel_y = -1;
+	pixel_x = -2
 	},
+/obj/structure/largecrate/empty/case/double,
 /turf/open/floor/corsat/plate,
 /area/space)
 "gx" = (
@@ -2340,9 +2309,26 @@
 /area/space)
 "ho" = (
 /obj/effect/landmark/static_comms/net_one,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1;
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
 /turf/open/floor/prison/floor_marked,
 /area/space)
 "hp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1;
+	layer = 3.33
+	},
 /turf/open/floor/prison/floor_marked,
 /area/space)
 "hq" = (
@@ -2700,7 +2686,9 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "im" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: Engineering Landing Zone"
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/space)
 "in" = (
@@ -2712,8 +2700,8 @@
 /area/space)
 "ip" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/platform/metal/almayer/east,
 /obj/structure/blocker/invisible_wall/water,
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/gm/river/desert/deep,
 /area/event/dynamic/unpowered{
 	base_lighting_alpha = 20
@@ -2775,7 +2763,7 @@
 "ix" = (
 /obj/structure/prop/oilrig/support_beam/red,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/corsat/plate,
+/turf/open/gm/empty,
 /area/space)
 "iy" = (
 /obj/structure/platform_decoration/metal/almayer/west,
@@ -2859,11 +2847,6 @@
 	layer = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 2
-	},
 /turf/open/floor/prison,
 /area/space)
 "iK" = (
@@ -2879,13 +2862,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "iM" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	layer = 3.33
-	},
 /obj/structure/cable/heavyduty{
-	icon_state = "1-2-8"
+	icon_state = "2-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
@@ -2933,9 +2911,6 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
 /turf/open/floor/prison,
 /area/space)
 "iV" = (
@@ -2945,11 +2920,6 @@
 	},
 /obj/structure/barricade/handrail/strata{
 	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_x = -1
 	},
 /turf/open/floor/prison,
 /area/space)
@@ -3130,23 +3100,6 @@
 "jt" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/desert/deep,
-/area/space)
-"ju" = (
-/obj/structure/prop/oilrig/support_beam/brown,
-/obj/structure/prop/ice_colony/dense/planter_box{
-	pixel_y = -5;
-	name = "surface support";
-	layer = 1.5
-	},
-/turf/open/gm/river/desert/deep,
-/area/space)
-"jv" = (
-/obj/structure/prop/ice_colony/dense/planter_box{
-	pixel_y = -5;
-	name = "surface support";
-	layer = 1.5
-	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "jw" = (
@@ -3576,10 +3529,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
-	},
-/obj/item/xeno_egg{
-	pixel_y = 12;
-	pixel_x = -13
 	},
 /turf/open/shuttle/escapepod/west,
 /area/space)
@@ -5369,18 +5318,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/space)
-"oM" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 2
-	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2";
-	layer = 2.1
-	},
-/turf/open/floor/plating/plating_catwalk/prison/dark,
-/area/space)
 "oN" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/prop/structure_lattice{
@@ -5402,10 +5339,6 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "oO" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.33
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2-8"
 	},
@@ -5503,13 +5436,6 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/space)
-"pb" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
-	},
-/turf/open/floor/prison,
-/area/space)
 "pc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -5519,11 +5445,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "pd" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "2-4"
 	},
@@ -5543,10 +5464,6 @@
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/space)
 "pg" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
@@ -5558,13 +5475,6 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/gm/river/desert/deep,
-/area/space)
-"pi" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "pj" = (
 /obj/effect/decal/warning_stripes{
@@ -6075,12 +5985,6 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/space)
-"qq" = (
-/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
-	level = 1
-	},
-/turf/open/floor/plating/plating_catwalk/prison/dark,
-/area/space)
 "qr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6129,18 +6033,6 @@
 "qz" = (
 /turf/open/floor/prison/ramptop/north,
 /area/space)
-"qA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	layer = 3.33
-	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2";
-	layer = 2.1
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
 "qB" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -6159,13 +6051,6 @@
 /area/space)
 "qD" = (
 /turf/open/floor/prison/ramptop,
-/area/space)
-"qE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.33
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "qF" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -6712,6 +6597,10 @@
 	},
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/darkbrownfull2,
+/area/space)
+"sf" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/gm/river/desert/deep,
 /area/space)
 "sg" = (
 /obj/structure/prop/structure_lattice{
@@ -7823,16 +7712,6 @@
 "uM" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/southwest,
 /area/space)
-"uN" = (
-/obj/effect/decal/hybrisa/colorable_rug{
-	color = "#3d3d3d";
-	dir = 1;
-	pixel_y = -33;
-	pixel_x = -8;
-	name = "rubber mat"
-	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
-/area/space)
 "uO" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -8312,7 +8191,9 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/space)
 "wa" = (
-/obj/structure/surface/rack,
+/obj/structure/prop/resin_prop{
+	icon_state = "rack"
+	},
 /obj/item/trash/ceramic_plate,
 /turf/open/floor/freezerfloor,
 /area/space)
@@ -8590,6 +8471,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
+"wO" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/gm/river/desert/deep,
+/area/space)
 "wP" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/snow/brown_base/layer0{
@@ -8597,9 +8482,41 @@
 	name = "seabed"
 	},
 /area/space)
+"wQ" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"wR" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/gm/river/desert/deep,
+/area/space)
 "wS" = (
 /obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname,
 /turf/open/floor/corsat/marked,
+/area/space)
+"wT" = (
+/obj/structure/prop/oilrig/support_beam/brown,
+/turf/open/floor/plating/catwalk/rusted,
+/area/space)
+"wU" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/prop/oilrig/support_beam/brown,
+/turf/open/floor/plating/catwalk/rusted,
+/area/space)
+"wV" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"wW" = (
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"wX" = (
+/obj/structure/prop/oilrig/support_beam/brown,
+/obj/structure/platform/metal/strata{
+	layer = 2
+	},
+/turf/open/gm/river/desert/deep,
 /area/space)
 "wY" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -8609,6 +8526,39 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/prison/greenfull/east,
 /area/space)
+"wZ" = (
+/obj/structure/platform/metal/strata{
+	layer = 2
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xa" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xb" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/oilrig/support_beam/brown{
+	layer = 1
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xc" = (
+/obj/structure/prop/oilrig/support_beam/brown{
+	layer = 1
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/space)
+"xd" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/empty,
+/area/space)
+"xe" = (
+/obj/structure/prop/oilrig/support_beam,
+/turf/open/gm/river/desert/deep,
+/area/event/dynamic/unpowered{
+	base_lighting_alpha = 20
+	})
 "xf" = (
 /obj/effect/alien/weeds,
 /obj/structure/machinery/light{
@@ -8622,6 +8572,67 @@
 	name = "seabed"
 	},
 /area/space)
+"xg" = (
+/obj/effect/landmark/static_comms/net_two,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1;
+	layer = 3.33
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"xh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1;
+	layer = 3.33
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"xi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"xj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	layer = 3.33
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"xk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = -1;
+	pixel_x = 3
+	},
+/turf/open/floor/prison/ramptop/east{
+	color = "aba39d"
+	},
+/area/space)
 "xl" = (
 /obj/structure/stairs{
 	color = "#a6aeab";
@@ -8629,14 +8640,241 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/space)
+"xm" = (
+/obj/structure/filtration/machine_96x96/disinfection,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xn" = (
+/obj/structure/filtration/machine_96x96/sedimentation,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xo" = (
+/obj/structure/machinery/filtration/console,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xp" = (
+/obj/structure/filtration/machine_96x96/distribution,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xq" = (
+/obj/structure/filtration/machine_96x96/filtration,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xr" = (
+/obj/structure/filtration/machine_64x96/sedementation,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xs" = (
+/obj/structure/filtration/machine_64x96/sedementation/broken,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xt" = (
+/obj/structure/filtration/flacculation_arm,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xu" = (
+/obj/structure/filtration/machine_64x96/filtration_machine,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xv" = (
+/obj/structure/filtration/machine_64x96/filtration_machine_a/alt,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xw" = (
+/obj/structure/filtration/machine_64x128/filtrationtank,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xx" = (
+/obj/structure/filtration/machine_64x128/filtrationtank/broken,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xy" = (
+/obj/structure/filtration/collector_pipes,
+/turf/open/gm/river/desert/deep,
+/area/space)
 "xz" = (
 /turf/open/floor/prison/greenfull/northwest,
+/area/space)
+"xA" = (
+/obj/structure/filtration/coagulation_arm,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xB" = (
+/obj/structure/filtration/machine_64x128/filtrationtank{
+	pixel_y = -16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/space)
 "xD" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical/autoname{
 	dir = 8
 	},
 /turf/open/floor/corsat/marked,
+/area/space)
+"xE" = (
+/obj/structure/filtration/machine_64x96/filtration_machine_a/alt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xG" = (
+/obj/structure/filtration/machine_64x96/filtration_machine/broken,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xH" = (
+/obj/structure/filtration/machine_64x96/filtration_machine_a/alt_broken,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"xI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xN" = (
+/obj/structure/filtration/machine_64x96/sedementation,
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xO" = (
+/obj/structure/filtration/collector_pipes{
+	icon_state = "upper_1-b";
+	pixel_x = 30;
+	pixel_y = 25
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xP" = (
+/obj/structure/filtration/collector_pipes{
+	pixel_y = 26;
+	pixel_x = -16
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/space)
+"xQ" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5";
+	pixel_x = 2
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/space)
+"xR" = (
+/obj/effect/decal/hybrisa/workers_decal{
+	dir = 4;
+	pixel_y = -17
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/space)
+"xS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/floor_marked,
+/area/space)
+"xT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_marked,
+/area/space)
+"xU" = (
+/obj/effect/decal/hybrisa/road/lines3{
+	color = "#5b9068";
+	pixel_y = -1
+	},
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/wood,
+/area/space)
+"xV" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#6e272e";
+	layer = 2.01;
+	dir = 8;
+	pixel_y = -41;
+	pixel_x = -8
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/space)
 "xW" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -8657,6 +8895,90 @@
 "xY" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/space)
+"xZ" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	dir = 1;
+	pixel_y = -39;
+	pixel_x = -8;
+	name = "rubber mat"
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/space)
+"ya" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#6d6558";
+	layer = 2.01;
+	dir = 8;
+	pixel_y = -39;
+	pixel_x = -8
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/space)
+"yb" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3f5b41";
+	dir = 1;
+	name = "rubber mat";
+	pixel_x = -8;
+	pixel_y = -33
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/space)
+"yc" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#6e272e";
+	layer = 2.01;
+	dir = 8;
+	pixel_y = -33;
+	pixel_x = -8
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/space)
+"yd" = (
+/obj/structure/prop/resin_prop{
+	dir = 4;
+	icon_state = "chair"
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreen,
+/area/space)
+"ye" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "densecrate"
+	},
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/space)
+"yf" = (
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/hybrisa/metal/bluemetal1/southwest,
+/area/space)
+"yg" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1;
+	pixel_y = -7
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/southeast,
+/area/space)
+"yh" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/prop/hybrisa/misc/picture{
+	pixel_y = 29;
+	pixel_x = 8
+	},
+/obj/structure/sign/poster/blacklight{
+	layer = 2.9;
+	pixel_y = 32;
+	pixel_x = -7
+	},
+/turf/open/floor/hybrisa/wood/redwood,
 /area/space)
 "yi" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -8679,6 +9001,35 @@
 	dir = 8
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1,
+/area/space)
+"yl" = (
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/space)
+"ym" = (
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/metal/bluemetalfull,
+/area/space)
+"yn" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/space)
 "yo" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -14218,10 +14569,10 @@ np
 np
 np
 np
-np
-np
-np
-np
+wW
+wR
+wR
+sf
 np
 np
 np
@@ -14376,16 +14727,16 @@ np
 He
 NA
 Pm
-np
-pz
-np
-np
-np
-np
+wW
+wR
+wR
+sf
 np
 np
-np
-np
+wX
+fn
+wT
+wO
 np
 np
 np
@@ -14540,16 +14891,16 @@ np
 PL
 ly
 Pm
-hC
-jv
-ju
+wX
+fn
+wT
+wO
 np
 np
-np
-np
-np
-np
-np
+wZ
+fn
+fn
+wO
 np
 np
 np
@@ -14704,16 +15055,16 @@ np
 PL
 ly
 Pm
-np
-jv
-jv
-np
-np
-np
+wZ
+fn
+fn
+wO
 np
 np
-np
-np
+wX
+fn
+wU
+wO
 np
 np
 np
@@ -14868,16 +15219,16 @@ np
 PL
 ly
 Pm
+xa
+wV
+wV
+wQ
 np
 np
-np
-np
-np
-np
-np
-np
-np
-np
+wZ
+fn
+fn
+wO
 np
 np
 np
@@ -15038,10 +15389,10 @@ np
 np
 np
 np
-np
-np
-np
-np
+wX
+fn
+wT
+wO
 np
 np
 np
@@ -15202,10 +15553,10 @@ pz
 np
 np
 np
-np
-np
-np
-np
+wZ
+fn
+fn
+wO
 np
 np
 np
@@ -15366,10 +15717,10 @@ np
 np
 np
 np
-np
-np
-np
-np
+xa
+wV
+wV
+wQ
 np
 np
 np
@@ -24987,7 +25338,7 @@ bl
 bl
 bl
 fg
-cU
+yh
 dV
 dV
 dV
@@ -27218,7 +27569,7 @@ LO
 LO
 LR
 LO
-bv
+fn
 fk
 PL
 CV
@@ -28597,7 +28948,7 @@ Hx
 sx
 dv
 dv
-dm
+yf
 pK
 fV
 dv
@@ -28921,11 +29272,11 @@ dj
 wN
 Lk
 bl
-dJ
+yn
 cu
 Yl
 bg
-dn
+yg
 pK
 dI
 dj
@@ -29029,7 +29380,7 @@ hP
 hR
 hK
 pG
-pE
+xe
 pE
 pD
 pD
@@ -29087,7 +29438,7 @@ bX
 bl
 dY
 vV
-dy
+yl
 dY
 dY
 bl
@@ -29202,10 +29553,10 @@ rX
 bm
 np
 np
-np
-np
-np
-np
+wW
+wR
+wR
+sf
 np
 np
 np
@@ -29251,7 +29602,7 @@ fu
 bl
 dd
 Su
-Tf
+ym
 Su
 dd
 bl
@@ -29324,7 +29675,7 @@ hU
 hU
 fe
 dX
-dX
+xR
 dX
 fe
 hU
@@ -29364,12 +29715,12 @@ rX
 rX
 rX
 rX
-bm
+xb
 np
-np
-np
-np
-np
+wX
+fn
+wT
+wO
 np
 np
 np
@@ -29487,15 +29838,15 @@ hi
 iC
 hU
 fe
-dX
-dX
-dX
+xQ
+xQ
+xQ
 fe
 hP
 iq
 ih
 ie
-id
+ie
 ip
 ic
 ib
@@ -29524,16 +29875,16 @@ pF
 rX
 rX
 rX
-jo
+xd
 ix
 rX
 rX
 rX
 np
-np
-np
-np
-np
+wZ
+fn
+fn
+wO
 np
 np
 np
@@ -29659,8 +30010,8 @@ hU
 kg
 ii
 hW
+hW
 hZ
-kg
 kg
 kg
 hU
@@ -29687,17 +30038,17 @@ pG
 pH
 rX
 rX
-jo
+xd
 ix
-jo
+xd
 ix
 rX
 rX
 np
-np
-np
-np
-np
+wX
+fn
+wU
+wO
 np
 np
 np
@@ -29808,9 +30159,9 @@ je
 je
 iZ
 iU
-pi
+ef
 pg
-pb
+dj
 bE
 hj
 ib
@@ -29851,17 +30202,17 @@ kg
 kg
 rX
 rX
-jo
-jo
+xd
+xd
 ix
-jo
+xd
 rX
 rX
 np
-np
-np
-np
-np
+wZ
+fn
+fn
+wO
 np
 np
 np
@@ -29971,10 +30322,10 @@ ji
 ji
 jf
 ja
-qE
-hp
+ef
+xS
 ho
-pc
+ef
 dj
 hl
 hU
@@ -29986,7 +30337,7 @@ eY
 mY
 ge
 kg
-eQ
+cq
 eQ
 kg
 kg
@@ -30016,16 +30367,16 @@ fg
 rX
 rX
 rX
-jo
-jo
+xd
+xd
 rX
 rX
-rX
+xc
 np
-np
-np
-np
-np
+wX
+fn
+wT
+wO
 np
 np
 np
@@ -30135,8 +30486,8 @@ jj
 jj
 jg
 iG
-qE
-hp
+ef
+xT
 hp
 pd
 iG
@@ -30186,10 +30537,10 @@ rX
 rX
 cc
 np
-np
-np
-np
-np
+wZ
+fn
+fn
+wO
 np
 np
 np
@@ -30300,7 +30651,7 @@ iK
 iK
 jb
 iV
-qA
+ef
 iM
 iJ
 iH
@@ -30350,10 +30701,10 @@ rX
 cc
 np
 np
-np
-np
-np
-np
+xa
+wV
+wV
+wQ
 np
 np
 np
@@ -31484,8 +31835,8 @@ dX
 dX
 fg
 gp
-gg
-fY
+eV
+eV
 fR
 bt
 fJ
@@ -31647,9 +31998,9 @@ dX
 dX
 dX
 fg
-gh
-hm
-oM
+xi
+xg
+qo
 fS
 bt
 fK
@@ -31787,9 +32138,9 @@ aH
 kg
 eQ
 bt
-qq
-qq
-qq
+qo
+qo
+qo
 bt
 bt
 bl
@@ -31811,9 +32162,9 @@ dX
 dX
 dX
 fg
-gh
-gh
-fZ
+xj
+xh
+eV
 fS
 bt
 fL
@@ -31976,8 +32327,8 @@ dX
 dX
 fg
 gr
-gi
-ga
+eV
+eV
 fR
 bt
 fJ
@@ -32620,7 +32971,7 @@ oU
 kg
 eN
 kg
-eQ
+cq
 eQ
 eQ
 eQ
@@ -33762,9 +34113,9 @@ dX
 eN
 gW
 ej
-eV
-eV
-gG
+xK
+xI
+xB
 ej
 gJ
 eN
@@ -33926,9 +34277,9 @@ dX
 eN
 gW
 ej
-kg
-gH
-kg
+xL
+eV
+xC
 ej
 gJ
 eN
@@ -34106,7 +34457,7 @@ fg
 dX
 dX
 gv
-gs
+xk
 gs
 gl
 dX
@@ -34254,9 +34605,9 @@ dX
 eN
 gW
 ej
-kg
-gH
-kg
+xL
+eV
+xE
 ej
 gJ
 eN
@@ -34270,7 +34621,7 @@ eN
 dX
 dX
 gw
-gi
+eV
 oO
 gm
 dX
@@ -34418,9 +34769,9 @@ dX
 eN
 gW
 ej
-eV
-eV
-gG
+xM
+xJ
+xF
 ej
 gJ
 eN
@@ -35728,8 +36079,8 @@ bt
 hb
 ej
 eV
-eV
-gG
+xO
+xN
 ej
 gQ
 fE
@@ -35891,16 +36242,16 @@ bt
 bt
 hb
 ej
-kg
-gH
-kg
+eV
+eV
+eV
 ej
 gQ
 fE
 ej
-kg
+bl
 gH
-kg
+bl
 ej
 gA
 bt
@@ -36219,16 +36570,16 @@ eT
 bt
 hb
 ej
-kg
-gH
-kg
+eV
+xP
+xN
 ej
 gQ
 fE
 ej
-kg
+bl
 gH
-kg
+bl
 ej
 gA
 bt
@@ -36385,7 +36736,7 @@ hb
 ej
 eV
 eV
-gG
+eV
 ej
 gQ
 fE
@@ -36738,7 +37089,7 @@ fg
 rX
 rX
 rX
-jo
+xd
 ix
 rX
 rX
@@ -36869,7 +37220,7 @@ bC
 rX
 rX
 rX
-jo
+xd
 ix
 rX
 rX
@@ -36901,9 +37252,9 @@ fg
 fg
 rX
 rX
-jo
+xd
 ix
-jo
+xd
 ix
 rX
 rX
@@ -37032,9 +37383,9 @@ np
 np
 rX
 rX
-jo
+xd
 ix
-jo
+xd
 ix
 rX
 rX
@@ -37065,10 +37416,10 @@ aH
 aH
 rX
 rX
-jo
-jo
+xd
+xd
 ix
-jo
+xd
 rX
 rX
 np
@@ -37126,7 +37477,7 @@ vd
 pG
 bF
 tE
-yY
+ye
 pA
 yY
 tM
@@ -37136,7 +37487,7 @@ tM
 LO
 LO
 dl
-dl
+yd
 bl
 tM
 tM
@@ -37196,10 +37547,10 @@ np
 np
 rX
 rX
-jo
-jo
+xd
+xd
 ix
-jo
+xd
 rX
 rX
 uo
@@ -37230,8 +37581,8 @@ ui
 rX
 rX
 rX
-jo
-jo
+xd
+xd
 rX
 rX
 rX
@@ -37301,11 +37652,11 @@ LO
 dl
 dl
 dl
-pO
-uN
+xU
 tM
 tM
-pp
+xV
+sC
 tz
 tz
 tz
@@ -37361,8 +37712,8 @@ np
 rX
 rX
 rX
-jo
-jo
+xd
+xd
 rX
 rX
 rX
@@ -37698,7 +38049,7 @@ np
 np
 np
 np
-np
+xy
 np
 np
 np
@@ -37957,11 +38308,11 @@ bl
 dl
 dl
 dl
-pO
+xU
+yb
 tM
-tM
-tM
-pp
+xZ
+sC
 tz
 tz
 tz
@@ -38364,7 +38715,7 @@ np
 np
 np
 np
-np
+xo
 np
 np
 np
@@ -38522,8 +38873,8 @@ np
 np
 np
 np
-np
-np
+xy
+xt
 np
 np
 np
@@ -38613,11 +38964,11 @@ bl
 dl
 dl
 dl
-pO
+xU
+yc
 tM
-tM
-tM
-pp
+ya
+sC
 tz
 tz
 tz
@@ -38764,7 +39115,7 @@ bl
 bl
 bl
 bl
-um
+tH
 bl
 bl
 bl
@@ -38794,7 +39145,7 @@ bl
 bl
 bl
 bl
-um
+tH
 bl
 bl
 bl
@@ -38850,14 +39201,14 @@ np
 np
 np
 np
+xA
 np
 np
 np
+xp
 np
 np
-np
-np
-np
+xm
 np
 np
 np
@@ -39094,7 +39445,7 @@ um
 um
 um
 um
-pO
+xU
 tM
 tM
 tM
@@ -39120,7 +39471,7 @@ tM
 tM
 tM
 tM
-pp
+sC
 um
 um
 um
@@ -39346,10 +39697,10 @@ np
 np
 np
 np
+xq
 np
 np
-np
-np
+xn
 np
 np
 np
@@ -39420,7 +39771,7 @@ bl
 bl
 bl
 bl
-um
+tH
 bl
 bl
 tM
@@ -39450,7 +39801,7 @@ tM
 tM
 bl
 bl
-um
+tH
 bl
 bl
 bl
@@ -40160,13 +40511,13 @@ np
 np
 np
 np
+xG
 np
 np
+xu
 np
 np
-np
-np
-np
+xr
 np
 np
 np
@@ -40494,7 +40845,7 @@ np
 np
 np
 np
-np
+xs
 np
 np
 np
@@ -40652,10 +41003,10 @@ np
 np
 np
 np
+xH
 np
 np
-np
-np
+xv
 np
 np
 np
@@ -41418,7 +41769,7 @@ tM
 tM
 bl
 bl
-um
+tH
 bl
 bl
 bl
@@ -41639,7 +41990,7 @@ np
 np
 np
 np
-np
+xw
 np
 np
 np
@@ -41967,7 +42318,7 @@ np
 np
 np
 np
-np
+xx
 np
 np
 np
@@ -43374,7 +43725,7 @@ vs
 vs
 vs
 vs
-vs
+pA
 bC
 bC
 bC
@@ -44342,7 +44693,7 @@ um
 um
 um
 um
-pO
+xU
 tM
 tM
 tM
@@ -44668,13 +45019,13 @@ bl
 bl
 bl
 bl
-um
+tH
 bl
 bl
 tM
 tM
 tM
-pp
+sC
 um
 um
 um
@@ -44692,7 +45043,7 @@ um
 um
 um
 um
-pO
+xU
 tM
 tM
 tM
@@ -46969,7 +47320,7 @@ kg
 kg
 kg
 bl
-ej
+vq
 bl
 yO
 uA
@@ -46990,7 +47341,7 @@ Uq
 zy
 bl
 bl
-ej
+vq
 bl
 kg
 kg

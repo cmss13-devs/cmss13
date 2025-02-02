@@ -72,7 +72,7 @@
 			to_chat(user, SPAN_WARNING("It already has the same label."))
 			return
 
-	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."), \
+	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."),
 	SPAN_NOTICE("You label [A] as \"[label]\"."))
 
 	log_admin("[user] has labeled [A.name] with label \"[label]\". (CKEY: ([user.ckey]))")
@@ -112,7 +112,7 @@
 /obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
 	var/datum/component/label/label = A.GetComponent(/datum/component/label)
 	if(label)
-		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."), \
+		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."),
 						SPAN_NOTICE("You remove the label from [A]."))
 		label.remove_label()
 		log_admin("[user] has removed label from [A.name]. (CKEY: ([user.ckey]))")

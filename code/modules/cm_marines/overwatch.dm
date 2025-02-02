@@ -5,10 +5,11 @@
 #define HIDE_NONE 0
 
 /obj/structure/machinery/computer/overwatch
-	name = "Overwatch Console"
-	desc = "State of the art machinery for giving orders to a squad."
-	icon_state = "dummy"
-	req_access = list(ACCESS_MARINE_DATABASE)
+	name = "Cental Overwatch Console"
+	desc = "This can be used for various important functions."
+	icon_state = "comm"
+	req_access = list(ACCESS_MARINE_SENIOR)
+	unslashable = TRUE
 	unacidable = TRUE
 
 	var/datum/squad/current_squad = null
@@ -43,6 +44,12 @@
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
 	var/list/concurrent_users = list()
+
+/obj/structure/machinery/computer/overwatch/squad
+	name = "Overwatch Console"
+	desc = "State of the art machinery for giving orders to a squad."
+	icon_state = "dummy"
+	req_access = list(ACCESS_MARINE_DATABASE)
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -121,9 +128,22 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		user.client.register_map_obj(tacmap.map_holder.map)
-		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
+		ui = new(user, src, "CentralOverwatchConsole", "Central Overwatch Console")
 		ui.open()
 
+/obj/structure/machinery/computer/overwatch/squad/tgui_interact(mob/user, datum/tgui/ui)
+
+	if(!tacmap.map_holder)
+		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
+		if(!level[1])
+			return
+		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		user.client.register_map_obj(tacmap.map_holder.map)
+		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
+		ui.open()
 
 /obj/structure/machinery/computer/overwatch/proc/count_marines(list/data)
 	var/leader_count = 0

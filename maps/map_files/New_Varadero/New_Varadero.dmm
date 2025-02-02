@@ -8687,9 +8687,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
 "gRU" = (
-/obj/structure/machinery/floodlight{
-	name = "Floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "gSn" = (
@@ -9359,9 +9357,7 @@
 /turf/open/floor/shiva/red/southwest,
 /area/varadero/interior/administration)
 "hxb" = (
-/obj/structure/machinery/floodlight{
-	name = "Floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -11323,9 +11319,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/administration)
 "iWX" = (
-/obj/structure/machinery/floodlight{
-	name = "Floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
 "iXy" = (
@@ -15469,9 +15463,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
 "mtp" = (
-/obj/structure/machinery/floodlight{
-	name = "Floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "mts" = (
@@ -15533,9 +15525,7 @@
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_SE)
 "mvO" = (
-/obj/structure/machinery/floodlight{
-	name = "Floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "mwd" = (
@@ -15899,9 +15889,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/floodlight{
-	name = "Floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "mNO" = (

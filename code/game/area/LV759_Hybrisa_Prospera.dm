@@ -51,6 +51,7 @@
 	minimap_color = MINIMAP_AREA_OOB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+	requires_power = FALSE
 
 /area/lv759/bunker/checkpoint
 	name = "Checkpoint & Hidden Bunker - Entrance"

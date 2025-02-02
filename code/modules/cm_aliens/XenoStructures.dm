@@ -443,10 +443,23 @@
 	addtimer(CALLBACK(src, PROC_REF(close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/mineral_door/resin/proc/close_blocked()
+	var/has_dead = FALSE // Track if there's a dead mob under the door
+
 	for(var/turf/turf in locs)
 		for(var/mob/living/living_mob in turf)
+			if(living_mob.stat == DEAD)
+				has_dead = TRUE // Found a dead mob
+				continue // Ignore dead mobs for blocking checks
+
 			if(!HAS_TRAIT(living_mob, TRAIT_MERGED_WITH_WEEDS))
-				return TRUE
+				return TRUE // Block closing if a valid living mob exists
+
+	// Adjust door layer dynamically based on dead mob presence
+	if(has_dead)
+		layer = MOB_LAYER + 0.1 // Ensure door appears above dead mobs
+	else
+		layer = OBJ_LAYER // Reset to default when no dead mobs are present
+
 	return FALSE
 
 /obj/structure/mineral_door/resin/close()

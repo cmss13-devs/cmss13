@@ -37,10 +37,6 @@
 "aak" = (
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/complex/med)
-"aal" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/construction)
 "aam" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
@@ -141,6 +137,10 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
+"aaL" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/construction)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -3398,9 +3398,6 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
-"eMC" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
-/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "eMO" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/kutjevo/colors/cyan,
@@ -5019,7 +5016,7 @@
 	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/complex_border/botany_medical_cave)
+/area/kutjevo/interior/complex/med)
 "htT" = (
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor/kutjevo/grey/plate,
@@ -31707,7 +31704,7 @@ jzl
 lcs
 jzl
 jzl
-eMC
+jzl
 hVt
 fpO
 nnf
@@ -38215,7 +38212,7 @@ slF
 slF
 slF
 rES
-aal
+xWK
 xWK
 xWK
 xWK
@@ -40054,7 +40051,7 @@ uah
 ecO
 lPR
 lPR
-viU
+aaL
 dQv
 hpB
 bKH

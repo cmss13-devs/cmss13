@@ -457,6 +457,10 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
+"acc" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
 "acd" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -787,6 +791,14 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
+"adl" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/plating/asteroidwarning,
+/area/lv624/lazarus/landing_zones/lz2)
+"adm" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/green/northwest,
+/area/lv624/lazarus/hydroponics)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -1976,7 +1988,6 @@
 /area/lv624/ground/river/east_river)
 "akh" = (
 /obj/item/trash/candy,
-/obj/structure/machinery/power/apc/power/north,
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
 	name = "Secure Outer Doors";
@@ -14235,7 +14246,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/grimy,
 /area/lv624/lazarus/hop)
 "jRm" = (
@@ -31665,7 +31676,7 @@ aJO
 aEs
 aOB
 wHp
-wLz
+adl
 tZD
 tZD
 aAp
@@ -43929,7 +43940,7 @@ tyG
 tyG
 tyG
 anT
-aoA
+adm
 aoA
 aoA
 aoP
@@ -52422,7 +52433,7 @@ aOd
 aNo
 nIZ
 aNo
-aDG
+acc
 aGQ
 aky
 btF

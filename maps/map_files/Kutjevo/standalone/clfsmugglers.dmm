@@ -276,7 +276,7 @@
 /turf/open/floor/almayer/blue/north,
 /area/kutjevo/interior/colony/clf_shuttle)
 "my" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/kutjevo,
+/obj/effect/landmark/survivor_spawner/clf/kutjevo,
 /turf/open/floor/almayer/orangecorner/west,
 /area/kutjevo/interior/colony/clf_shuttle)
 "mB" = (
@@ -904,7 +904,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "RB" = (
-/obj/effect/landmark/survivor_spawner/clf_engi/kutjevo,
+/obj/effect/landmark/survivor_spawner/clf/kutjevo,
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/kutjevo/exterior/clf_lz)
 "RN" = (
@@ -1816,11 +1816,11 @@ mv
 te
 te
 Gf
-rG
+mr
 mr
 hW
 mr
-Mh
+mr
 cf
 oH
 Ab
@@ -1850,11 +1850,11 @@ mv
 pX
 Dq
 iN
+rG
 cf
 cf
 cf
-cf
-cf
+Mh
 cf
 cf
 cf

@@ -67,11 +67,19 @@
 			"general_p_stat" = general.fields["p_stat"],
 			"security_criminal" = security ? security.fields["criminal"] : "",
 			"security_comments" = security ? security.fields["comments"] : null,
-			"security_incident" = security ? security.fields["incident"] : null
+			"security_incident" = security ? security.fields["incident"] : null,
+			"general_photo_front" = general.fields["photo_front"] ? icon2html(general.fields["photo_front"], user.client, sourceonly=TRUE) :  null,
+			"general_photo_side" = general.fields["photo_side"] ? icon2html(general.fields["photo_side"], user.client, sourceonly=TRUE) : null ,
 		)
 		records += list(record)
 
 	.["records"] = records
+
+	var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
+	var/photo_data = icon2html(photo_icon, user.client, sourceonly=TRUE)
+
+	// Attach to the UI data
+	.["fallback_image"] = photo_data
 
 /obj/structure/machinery/computer/secure_data/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -174,18 +182,6 @@
 			if(!general_record)
 				alert(usr,"Record not found.")
 				return
-
-			// Send photos to the client
-			if(general_record.fields["photo_front"])
-				usr << browse_rsc(general_record.fields["photo_front"], "front.png")
-			else
-				usr << browse_rsc(new /icon('icons/misc/buildmode.dmi', "buildhelp"), "front.png")
-
-			if(general_record.fields["photo_side"])
-				usr << browse_rsc(general_record.fields["photo_side"], "side.png")
-			else
-				// Closest matching thing I've found, feel free to change it!
-				usr << browse_rsc(new /icon('icons/misc/buildmode.dmi', "buildhelp"), "side.png")
 
 			. = TRUE
 
@@ -424,7 +420,6 @@
 				return
 
 			general_record.fields["photo_[photo_profile]"] = img
-			usr << browse_rsc(general_record.fields["photo_[photo_profile]"], "[photo_profile].png")
 			to_chat(usr, "You successfully updated record [photo_profile] photo")
 			msg_admin_niche("[key_name_admin(usr)] updated record photo of [general_record.fields["name"]].")
 

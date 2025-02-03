@@ -15,13 +15,8 @@ import {
 import { Window } from '../layouts';
 
 export const SecurityRecords = () => {
-  // Le Funny hack cause browse_rsc doesn't get reloaded due to how browser works
-  // This adds dynamic parameter to GET request so resource must be refetch
-  // Probably could be improved but for now I have no idea how
-  const forceReload = (url) => `${url}?t=${Date.now()}`;
-
   const { data, act } = useBackend();
-  const { records = [], scanner = {} } = data;
+  const { records = [], scanner = {}, fallback_image } = data;
   const [recordsArray, setRecordsArray] = useState(
     Array.isArray(records) ? records : [],
   );
@@ -337,7 +332,11 @@ export const SecurityRecords = () => {
             <Section title="Photo">
               <Box style={{ textAlign: 'center', padding: '10px' }}>
                 <img
-                  src={forceReload(`${currentPhoto}.png`)}
+                  src={
+                    currentPhoto === 'front'
+                      ? record.general_photo_front ?? fallback_image
+                      : record.general_photo_side ?? fallback_image
+                  }
                   alt="Perp photo"
                   style={{
                     borderRadius: '4px',

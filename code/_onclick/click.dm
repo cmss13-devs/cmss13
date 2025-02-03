@@ -144,26 +144,26 @@
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
-/mob/proc/click_adjacent(atom/A, obj/item/W, mods)
-	if(W)
-		var/attackby_result = A.attackby(W, src, mods)
+/mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+	if(used_item)
+		var/attackby_result = targeted_atom.attackby(used_item, src, mods)
 		var/afterattack_result
-		if(!QDELETED(A) && !(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK))
+		if(!QDELETED(targeted_atom) && !(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK))
 			// in case the attackby slept
-			if(!W)
-				if(!isitem(A) && !issurface(A))
+			if(!used_item)
+				if(!isitem(targeted_atom) && !issurface(targeted_atom))
 					next_move += 4
-				UnarmedAttack(A, 1, mods)
+				UnarmedAttack(targeted_atom, 1, mods)
 				return
 
-			afterattack_result = W.afterattack(A, src, 1, mods)
+			afterattack_result = used_item.afterattack(targeted_atom, src, 1, mods)
 
-		if(W.attack_speed && !src.contains(A) && (attackby_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (afterattack_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE))
-			next_move += W.attack_speed
+		if(used_item.attack_speed && !src.contains(targeted_atom) && (attackby_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (afterattack_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (used_item.flags_item & ADJACENT_CLICK_DELAY))
+			next_move += used_item.attack_speed
 	else
-		if(!isitem(A) && !issurface(A))
+		if(!isitem(targeted_atom) && !issurface(targeted_atom))
 			next_move += 4
-		UnarmedAttack(A, 1, mods)
+		UnarmedAttack(targeted_atom, 1, mods)
 
 /mob/proc/check_click_intercept(params,A)
 	//Client level intercept

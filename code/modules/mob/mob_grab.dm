@@ -108,10 +108,10 @@
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
 
-/obj/item/grab/attack(mob/living/M, mob/living/user)
-	if(M == grabbed_thing)
+/obj/item/grab/attack(mob/living/dragged_mob, mob/living/user)
+	if(dragged_mob == grabbed_thing)
 		attack_self(user)
-	else if(M == user && user.pulling && isxeno(user))
+	else if(dragged_mob == user && user.pulling && isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/mob/living/carbon/pulled = xeno.pulling
 		if(!istype(pulled))
@@ -126,7 +126,7 @@
 			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
 		if(length(xeno.stomach_contents)) //Only one thing in the stomach at a time, please
-			to_chat(xeno, SPAN_WARNING("You already have something in your belly, there's no way that will fit."))
+			to_chat(xeno, SPAN_WARNING("We already have something in our stomach, there's no way that will fit."))
 			return 0
 			/* Saving this in case we want to allow devouring of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still inside the body

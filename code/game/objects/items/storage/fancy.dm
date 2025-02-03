@@ -176,22 +176,30 @@
 
 /obj/item/storage/fancy/cigarettes/emeraldgreen
 	name = "\improper Emerald Green Packet"
-	desc = "They remind you of a gross, tar-filled version of Ireland...so regular Ireland."
+	desc = "They remind you of a gross, tar-filled version of Ireland. These cheap cigarettes are Weyland-Yutani's entry into the general market."
 	icon_state = "cigpacket"
 	item_state = "cigpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_cig")
 
 /obj/item/storage/fancy/cigarettes/wypacket
 	name = "\improper Weyland-Yutani Gold packet"
-	desc = "Building Better Worlds, and rolling better cigarettes. These fancy cigarettes are Weyland-Yutani's entry into the market. Comes backed by a fierce legal team."
+	desc = "Building Better Worlds, and rolling better cigarettes. These fancy cigarettes are Weyland-Yutani's entry into the premium tobacco market. Comes backed by a fierce legal team."
 	icon_state = "wypacket"
 	icon = 'icons/obj/items/smoking/packets/wy_gold.dmi'
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 
+/obj/item/storage/fancy/cigarettes/balaji
+	name = "\improper Balaji Imperial packet"
+	desc = "Smoke 'em if you gottem! Quite popular amongst people living in the Three World Empire."
+	icon_state = "bpacket"
+	icon = 'icons/obj/items/smoking/packets/balaji_imperials.dmi'
+	item_state = "bpacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_bpack")
+
 /obj/item/storage/fancy/cigarettes/lucky_strikes
 	name = "\improper Lucky Strikes Packet"
-	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes...as the leading cause of marine lung cancer."
+	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes... as the leading cause of marine lung cancer."
 	icon_state = "lspacket"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike.dmi'
 	item_state = "lspacket"
@@ -200,7 +208,7 @@
 
 /obj/item/storage/fancy/cigarettes/blackpack
 	name = "\improper Executive Select packet"
-	desc = "These cigarettes are the height of luxury. They're smooth, they're cool, and they smell like victory...and cigarette smoke."
+	desc = "These cigarettes are the height of luxury. They're smooth, they're cool, and they smell like victory... and cigarette smoke."
 	icon_state = "blackpacket"
 	icon = 'icons/obj/items/smoking/packets/executive_select.dmi'
 	item_state = "blackpacket"

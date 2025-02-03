@@ -148,7 +148,7 @@
 #define PLAY_SYNTH (1<<5)
 #define PLAY_MISC (1<<6)
 
-//toggles_hunting_grounds
+//toggles_ert_pred
 #define PLAY_MERC (1<<0)
 #define PLAY_TWE (1<<1)
 #define PLAY_UPP (1<<2)

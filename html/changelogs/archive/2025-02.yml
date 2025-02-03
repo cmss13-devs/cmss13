@@ -1,0 +1,75 @@
+2025-02-01:
+  Drathek:
+  - bugfix: Fixed predators having unlimited slots and slot exemptions still actually
+      using slots
+  - bugfix: Fixed toggle predator round not working during pre-game
+  - balance: Predator slots are increased from 4 + 1per80 to 6 + 1per80 and clan leaders
+      no longer count for slots
+  - ui: Toggle predator round now uses TGUI alerts
+  - admin: Predator slot adjustment can now go negative (e.g. it can limit it lower
+      than starting count)
+  Joe Lampost:
+  - balance: Upp hunting ground ert memebers now have medical equipment
+  - code_imp: Lays the foundation for more faction warcrys
+  - code_imp: The hunting ground erts now inform preds if nothing spawns and or how
+      many humans or xenos spawned in the ert
+  - bugfix: The hunting grounds no longer gets effected by weather
+  - bugfix: Pred bursts sound
+  - bugfix: Makes your preferences for the hunting grounds save now.
+  - bugfix: Queen mother can no longer see humans inside the hunting grounds.
+  KaiserBlackwood:
+  - rscadd: L23 Assault Rifle based on NSG23, which is a lore-friendly RMC weapon
+  - rscadd: L42A3 Designated Marksman Rifle. RMC alternative to M4RA.
+  - rscadd: 'New ERT role: RMC Corpsman.'
+  - rscadd: 'New presets: RMC Captain and RMC Major.'
+  - rscadd: multitude of RMC-specific attachments.
+  - rscadd: NSG23 Training magazine loaded with rubber bullets.
+  - rscadd: integrated medical visors to all of the RMC helmets.
+  - rscadd: RMC surgical cases that fit 5 surgical items. Available only as part of
+      RMC kit.
+  - rscadd: TWE Variable Zoom Scope. Self-explanatory.
+  - rscadd: RMC Service uniforms.
+  - balance: reworked RMC skills to be more reasonable.
+  - balance: gave RMC Smartgunner Breacher helmet.
+  - balance: RMC Marksman is now equipped with ID-locked NVG goggles.
+  - balance: includes my NSG23 Rework buffs to NSG23's firerate and added recoil.
+  - balance: fixes MRE Rifleman to now carry ammo boxes for the team as well.
+  - balance: moves Breacher to the Engineer category for the ERTs.
+  - bugfix: RMC L5 Bayonet finally has dedicated sprites
+  - imageadd: new overlays and sprites for NSG23 mags.
+  - imageadd: new RMC uniforms.
+  - config: changed RMC ERT config to deploy a medic and slightly changed their xenomorph
+      awareness fluff (added 5% to them being faintly aware of xenos)
+  - spellcheck: changed NSG 23 extended magazine's name to "NSG 23 high-capacity drum
+      magazine".
+  Red-byte3D:
+  - bugfix: You can no longer show paper to non humans such as yautja or xenomorphs.
+  Vandu Jr, Triio:
+  - rscadd: added two new branded Cigarette Vendors, Koorlander and Weyland Yutani
+  - rscadd: added a new cigarette brand to the game, Balaji Imperials from the first
+      movie. Located in the WY vendor
+  - imageadd: added a new WY and Koorlander vendor, as well as sprites for the new
+      Balaji Imperial cigarettes
+  - maptweak: replaced all generic cigarette vendors with either a WY or Koorlander
+      one, areas for people without accounts get free variants of the branded ones
+      (like ERT stations and fax responders).
+  ihatethisengine:
+  - qol: answering an emote such as high-five no longer requires targeting a specific
+      limb.
+2025-02-03:
+  Red-byte3D:
+  - code_imp: Replacces some one letter vars in carbon.dm
+  - spellcheck: Replaces mentions of "belly" with "stomach" in game the tutorial(s).
+  - bugfix: Hellhounds no longer get offered up to the "Join as Hellhound" button
+      if the admin inhabiting it aghosts
+  - bugfix: Evolution button no longer gets deleted when you reset your strain while
+      at full evo.
+  - balance: Queens can now properly gib anyone regardless of their host status.
+  - bugfix: Synthetics and non-humans can no longer get psychic whisper through research.
+  - code_imp: encephalophrasive no longer applies on touch since it lasts forever
+      otherwise
+  - bugfix: Xenos are no longer blocked by people who are fireman carrying
+  - code_imp: Replaces one letter vars
+  VileBeggar:
+  - balance: Predator melee weapons now have click delay for clicking on empty adjacent
+      tiles.

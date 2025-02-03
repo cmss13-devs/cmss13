@@ -1108,6 +1108,8 @@
 
 	need_round_end_check = TRUE
 
+	hive_inherant_traits = list(TRAIT_CARDPLAYING_THUMBS)
+
 /datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 

@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Xenos are no longer blocked by people who are fireman carrying"
+  - code_imp: "Replaces one letter vars"

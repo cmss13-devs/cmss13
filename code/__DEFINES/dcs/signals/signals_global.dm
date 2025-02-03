@@ -57,6 +57,12 @@
 /// From /obj/structure/machinery/telecomms/proc/tcomms_shutdown(), called when the relay turns off
 #define COMSIG_GLOB_GROUNDSIDE_TELECOMM_TURNED_OFF "!groundside_telecomm_turned_off"
 
+///from /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/update_state()
+#define COMSIG_GLOB_TRANSFORMER_ON "!transformer_on"
+#define COMSIG_GLOB_TRANSFORMER_OFF "!transformer_off"
+#define COMSIG_GLOB_BACKUP_GENERATOR_ON "!backup_generator_on"
+#define COMSIG_GLOB_BACKUP_GENERATOR_OFF "!backup_generator_off"
+
 /// From /datum/admins/proc/force_predator_round()
 #define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toglged"
 

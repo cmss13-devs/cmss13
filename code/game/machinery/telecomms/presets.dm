@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 		if(SSobjectives && SSobjectives.comms)
 			// This is the first time colony comms have been established.
-			if (SSobjectives.comms.state != OBJECTIVE_COMPLETE && is_ground_level(loc.z) && operable())
+			if (SSobjectives.comms.state != OBJECTIVE_COMPLETE && is_ground_level(loc.z) && operable() && tcomms_machine)
 				SSobjectives.comms.complete()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
@@ -393,6 +393,84 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	SIGNAL_HANDLER
 
 	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer
+	name = "HVT-7T high voltage transformer"
+	desc = "A static heavy-duty transformer tower disconnected from the main colony powergrid. Used to power landing zones."
+	use_power = USE_POWER_NONE
+	icon = 'icons/obj/structures/machinery/transformer.dmi'
+	icon_state = "transformer"
+	toggled = FALSE
+	needs_power = FALSE
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	tcomms_machine = FALSE
+
+	//holds the image for the marine captured overlay
+	var/image/captured_image
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/attackby(obj/item/I, mob/user)
+	return
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/update_health(damage = 0)
+	return
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/update_state()
+	..()
+	if(on)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRANSFORMER_ON)
+	else
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRANSFORMER_OFF)
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/handle_xeno_acquisition(turf/weeded_turf)
+	SIGNAL_HANDLER
+
+	if(corrupted)
+		return
+
+	if(!weeded_turf.weeds)
+		return
+
+	if(weeded_turf.weeds.weed_strength < WEED_LEVEL_HIVE)
+		return
+
+	if(!weeded_turf.weeds.parent)
+		return
+
+
+	if(ROUND_TIME <  XENO_TRANSFORMER_ACQUISITION_TIME)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_TRANSFORMER_ACQUISITION_TIME - ROUND_TIME), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		return
+
+	if(!COOLDOWN_FINISHED(src, corruption_delay))
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (COOLDOWN_TIMELEFT(src, corruption_delay)), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		return
+
+	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
+
+	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
+
+	RegisterSignal(cluster_parent, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
+
+	corrupted = TRUE
+
+	corruption_image = image(icon, icon_state = "transformer_resin_final")
+
+	overlays += corruption_image
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/update_icon()
+	captured_image = image(icon, icon_state = "transformer_on")
+	if(on)
+		overlays += captured_image
+
+	else
+		overlays -= captured_image
+
+
+/obj/structure/machinery/telecomms/relay/tower/mapcomms/transformer/tcomms_startup()
+	. = ..()
+
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"

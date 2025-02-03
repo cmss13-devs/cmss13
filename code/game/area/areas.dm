@@ -400,9 +400,8 @@
 
 /area/proc/add_machine(obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(M.calculate_current_power_usage(), M.power_channel)
-		M.power_change()
+	use_power(M.calculate_current_power_usage(), M.power_channel)
+	M.power_change()
 
 /area/proc/remove_machine(obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)

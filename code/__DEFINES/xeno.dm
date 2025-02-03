@@ -173,7 +173,8 @@
 
 /// The time when xenos can start taking over comm towers
 #define XENO_COMM_ACQUISITION_TIME (55 MINUTES)
-
+///the time when xenos can capture the transformer
+#define XENO_TRANSFORMER_ACQUISITION_TIME (40 MINUTES)
 /// The time it takes for a pylon to give one royal resin while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)
 

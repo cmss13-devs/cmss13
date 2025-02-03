@@ -592,6 +592,24 @@
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
 
+//****************************************** TRANSFORMER ************************************************//
+/obj/effect/landmark/transformer
+	name = "transformer"
+	icon = 'icons/obj/structures/machinery/transformer.dmi'
+	icon_state = "transformer"
+
+/obj/effect/landmark/transformer/proc/spawn_transformer()
+	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/transformer = new /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer(loc)
+	qdel(src)
+
+/obj/effect/landmark/transformer/Initialize(mapload, ...)
+	. = ..()
+	GLOB.transformer_landmarks += src
+
+/obj/effect/landmark/transformer/Destroy()
+	GLOB.transformer_landmarks -= src
+	return ..()
+
 
 // zombie spawn
 /obj/effect/landmark/zombie

@@ -56,6 +56,8 @@ GLOBAL_LIST_EMPTY(nightmare_landmark_tags_removed)
 
 GLOBAL_LIST_EMPTY(ship_areas)
 
+GLOBAL_LIST_EMPTY(transformer_landmarks)
+
 // Objective landmarks. Value is TRUE if it contains documents
 GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_close, /obj/effect/landmark/objective_landmark/close)
 GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_medium, /obj/effect/landmark/objective_landmark/medium)

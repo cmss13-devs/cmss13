@@ -897,6 +897,7 @@
 #include "code\game\machinery\fire_alarm.dm"
 #include "code\game\machinery\flasher.dm"
 #include "code\game\machinery\floodlight.dm"
+#include "code\game\machinery\fob_defense.dm"
 #include "code\game\machinery\fuelcell_recycler.dm"
 #include "code\game\machinery\fusion_engine.dm"
 #include "code\game\machinery\gear.dm"

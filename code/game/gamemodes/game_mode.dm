@@ -30,6 +30,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
 	var/static_comms_amount = 0
+	var/transformer_amount = 0
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
@@ -76,6 +77,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	setup_structures()
 	if(static_comms_amount)
 		spawn_static_comms()
+	if(transformer_amount)
+		spawn_transformer()
 	if(corpses_to_spawn)
 		generate_corpses()
 	initialize_gamemode_modifiers()
@@ -279,6 +282,15 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		SCT.spawn_tower()
 	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_one)
 	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_two)
+
+/datum/game_mode/proc/spawn_transformer()
+	for(var/i = 1 to transformer_amount)
+		var/obj/effect/landmark/transformer/transformer = pick_n_take(GLOB.transformer_landmarks)
+		if(!transformer)
+			break
+		transformer.spawn_transformer()
+	QDEL_NULL_LIST(GLOB.transformer_landmarks)
+
 
 //////////////////////////
 //Reports player logouts//

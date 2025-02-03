@@ -979,7 +979,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/breakroom)
 "dw" = (
-/obj/structure/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/breakroom)
 "dx" = (

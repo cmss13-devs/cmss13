@@ -50,7 +50,7 @@
 /datum/action/xeno_action/activable/xeno_spit/bombard
 	name = "Bombard"
 	action_icon_state = "bombard"
-	cooldown_message = "Our belly fills with another gas glob. We are ready to bombard again."
+	cooldown_message = "Our stomach fills with another gas glob. We are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
 	aim_turf = TRUE
 	/// These are actions that will be placed on cooldown for the cooldown_duration when activates. Added acid shroud for now because it can be abused

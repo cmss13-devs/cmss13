@@ -1,9 +1,17 @@
 /datum/unit_test/areas_unpowered
 	priority = TEST_PRE // Don't want machines from other tests
+	stage = TEST_STAGE_GAME
+
 	/// Assoc list per area containing an assoc list per machine.type containing count of that type
 	var/list/areas_with_machines = list()
 	/// Assoc list of machine.types containing notes that don't have an area
 	var/list/types_with_no_area = list()
+
+/datum/unit_test/areas_unpowered/pre_game
+	stage = TEST_STAGE_PREGAME // Also run the test during pregame to test w/o nightmare inserts
+
+/datum/unit_test/areas_unpowered/pre_game/Run()
+	return ..() // Just to satisfy Tgstation Test Explorer extension
 
 /datum/unit_test/areas_unpowered/proc/determine_areas_needing_power()
 	for(var/obj/structure/machinery/machine as anything in GLOB.machines)

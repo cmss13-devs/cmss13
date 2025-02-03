@@ -77,14 +77,20 @@
 	return FALSE
 
 /datum/controller/subsystem/hijack/proc/all_faction_mobs_onboard(faction)
+	var/total_mobs = 0
+	var/non_aboard = 0
 	for(var/mob/living/carbon/human/creature as anything in GLOB.human_mob_list)
 		if(creature.faction != faction)
 			continue
-		if(creature.stat != CONSCIOUS)
+		if(creature.stat != CONSCIOUS || creature.status_flags & XENO_HOST)
 			continue
 		if(!is_mainship_level(creature.z) && !(creature.status_flags & XENO_HOST))
-			return FALSE
-	return TRUE
+			non_aboard++
+		else
+			total_mobs++
+	if(non_aboard * 4 < total_mobs)
+		return TRUE
+	return FALSE
 
 //Cancels the evac procedure. Useful if admins do not want the marines leaving.
 /datum/controller/subsystem/hijack/proc/cancel_ship_evacuation(reason)

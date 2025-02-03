@@ -396,7 +396,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 /obj/structure/machinery/cm_vending/own_points/experimental_tools/redeem_token(obj/item/coin/marine/token, mob/user)
 	if(token.token_type == VEND_TOKEN_SYNTH)
 		if(user.drop_inv_item_to_loc(token, src))
+/*
 			available_points = 30
+*/
+//RUCM START
+			available_points += 30
+//RUCM END
 			available_points_to_display = available_points
 			to_chat(user, SPAN_NOTICE("You insert \the [token] into \the [src]."))
 			return TRUE
@@ -406,6 +411,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	return GLOB.cm_vending_synth_tools
 
 GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
+/*
 	list("Autocompressor", 15, /obj/item/clothing/suit/auto_cpr, null, VENDOR_ITEM_REGULAR),
 	list("Backpack Firefighting Watertank", 15, /obj/item/reagent_container/glass/watertank/atmos, null, VENDOR_ITEM_REGULAR),
 	list("Breaching Hammer", 15, /obj/item/weapon/twohanded/breacher/synth, null, VENDOR_ITEM_REGULAR),
@@ -417,7 +423,22 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 	list("Portable Dialysis Machine", 15, /obj/item/tool/portadialysis, null, VENDOR_ITEM_REGULAR),
 	list("Telescopic Baton", 15, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),
 ))
+*/
+//RUCM START
+	list("Autocompressor", 10, /obj/item/clothing/suit/auto_cpr, null, VENDOR_ITEM_REGULAR),
+	list("Portable Dialysis Machine", 10, /obj/item/tool/portadialysis, null, VENDOR_ITEM_REGULAR),
+	list("Medic Upgraded Kit", 15, /obj/item/storage/box/combat_zone_support_package, null, VENDOR_ITEM_REGULAR),
+	list("Upgraded Compact Defibrillator", 5, /obj/item/device/defibrillator/compact_adv, null, VENDOR_ITEM_REGULAR),
+	list("Engineer Upgraded Kit", 15, /obj/item/storage/box/guncase/repairbelt/synth, null, VENDOR_ITEM_REGULAR),
+	list("Breaching Hammer", 10, /obj/item/weapon/twohanded/breacher/synth, null, VENDOR_ITEM_REGULAR),
+	list("Maintenance Jack", 5, /obj/item/maintenance_jack, null, VENDOR_ITEM_REGULAR),
+	list("Telescopic Baton", 10, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),
+	list("Experimental Meson Goggles", 10, /obj/item/clothing/glasses/night/experimental_mesons, null, VENDOR_ITEM_REGULAR),
+	list("Backpack Firefighting Watertank", 5, /obj/item/reagent_container/glass/watertank/atmos, null, VENDOR_ITEM_REGULAR),
+))
+//RUCM END
 
+/*
 //------------EXPERIMENTAL TOOL KITS---------------
 /obj/effect/essentials_set/cnailgun
 	spawned_gear_list = list(
@@ -426,3 +447,4 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 		/obj/item/ammo_magazine/smg/nailgun,
 		/obj/item/storage/belt/gun/m4a3/nailgun,
 	)
+*/

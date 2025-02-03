@@ -1,7 +1,7 @@
 {
-    "map_name": "Oil Map",
-    "map_path": "map_files/OilRig",
-    "map_file": "testbed.dmm",
+    "map_name": "Navalis Platform 13",
+    "map_path": "map_files/Navalis_Platform_13",
+    "map_file": "Navalis_Platform_13.dmm",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",

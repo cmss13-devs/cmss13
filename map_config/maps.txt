@@ -60,7 +60,7 @@ map lv759_hybrisa_prospera
 	minplayers 130
 endmap
 
-map oilmap
+map navalis_platform_13
 endmap
 
 map new_varadero

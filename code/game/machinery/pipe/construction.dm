@@ -579,9 +579,9 @@ Buildable meters
 	new_pipe.search_for_connections()
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message( \
-		"[user] fastens [src].", \
-		SPAN_NOTICE("You have fastened [src]."), \
+	user.visible_message(
+		"[user] fastens [src].",
+		SPAN_NOTICE("You have fastened [src]."),
 		"You hear ratchet.")
 	qdel(src) // remove the pipe item
 

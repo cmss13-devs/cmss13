@@ -7,3 +7,23 @@
 #include "code/ru_names/ru_name_base.dm"
 
 #include "code/~undefs.dm"
+
+// Xeno Abilities
+#include "code/xeno_abilities/general_abilities.dm"
+#include "code/xeno_abilities/castes/boiler.dm"
+#include "code/xeno_abilities/castes/burrower.dm"
+#include "code/xeno_abilities/castes/carrier.dm"
+#include "code/xeno_abilities/castes/crusher.dm"
+#include "code/xeno_abilities/castes/defender.dm"
+#include "code/xeno_abilities/castes/facehugger.dm"
+#include "code/xeno_abilities/castes/hivelord.dm"
+#include "code/xeno_abilities/castes/king.dm"
+#include "code/xeno_abilities/castes/lurker.dm"
+#include "code/xeno_abilities/castes/praetorian.dm"
+#include "code/xeno_abilities/castes/predalien.dm"
+#include "code/xeno_abilities/castes/queen.dm"
+#include "code/xeno_abilities/castes/ravager.dm"
+#include "code/xeno_abilities/castes/runner.dm"
+#include "code/xeno_abilities/castes/sentinel.dm"
+#include "code/xeno_abilities/castes/spitter.dm"
+#include "code/xeno_abilities/castes/warrior.dm"

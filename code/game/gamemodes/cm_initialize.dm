@@ -56,13 +56,14 @@ Additional game mode variables.
 	var/surv_starting_num = 0 //To clamp starting survivors.
 	var/merc_starting_num = 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
-	var/pred_current_num = 0 //How many are there now?
-	var/pred_per_players = 80 //Preds per player
-	var/pred_start_count = 4 //The initial count of predators
-
-	var/pred_additional_max = 0
-	var/pred_leader_count = 0 //How many Leader preds are active
-	var/pred_leader_max = 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
+	/// How many predators utilize slots currently
+	var/pred_current_num = 0
+	/// How many additional preds per client
+	var/pred_per_players = 80
+	/// The initial count of predators
+	var/pred_start_count = 6
+	/// Modifier on predator count (adjusted via Adjust-Predator-Slots)
+	var/pred_count_modifier = 0
 
 	//Some gameplay variables.
 	var/round_checkwin = 0
@@ -181,10 +182,10 @@ Additional game mode variables.
 	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/calculate_pred_max()
-	return floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count
+	return floor(length(GLOB.player_list) / pred_per_players) + pred_count_modifier + pred_start_count
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
-	if(!pred_candidate.client)
+	if(!pred_candidate?.client)
 		return
 
 	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
@@ -194,7 +195,7 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
 		return FALSE
 
-	if(!(pred_candidate?.client.check_whitelist_status(WHITELIST_PREDATOR)))
+	if(!pred_candidate.client.check_whitelist_status(WHITELIST_PREDATOR))
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
 		return FALSE
@@ -209,14 +210,15 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return FALSE
 
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(pred_job.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	var/pred_rank = pred_job.get_whitelist_status(pred_candidate.client)
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(pred_rank)] predator.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return FALSE
 
-	if(pred_job.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
+	if(pred_rank != CLAN_RANK_LEADER && !pred_candidate.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL))
 		var/pred_max = calculate_pred_max()
 		if(pred_current_num >= pred_max)
 			if(show_warning)
-				to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
+				to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Leaders, Councillors and Ancients do not count."))
 			return FALSE
 
 	return TRUE

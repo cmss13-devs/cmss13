@@ -506,20 +506,20 @@ CULT
 /proc/start_mutiny(mutiny_faction = FACTION_MARINE)
 	for(var/mob/living/carbon/human/person in GLOB.alive_human_list)
 		if(!person.client)
-			log_debug("MUTINY: [key_name(src)] was skipped due to no client.")
+			log_debug("MUTINY: [key_name(person)] was skipped due to no client.")
 			continue
 		if(person.faction != mutiny_faction)
-			log_debug("MUTINY: [key_name(src)] was skipped due to wrong faction.")
+			log_debug("MUTINY: [key_name(person)] was skipped due to wrong faction.")
 			continue
 		if(person.mob_flags & (MUTINY_MUTINEER|MUTINY_LOYALIST|MUTINY_NONCOMBAT))
-			log_debug("MUTINY: [key_name(src)] was skipped due to existing choice.")
+			log_debug("MUTINY: [key_name(person)] was skipped due to existing choice.")
 			continue
 
 		if(skillcheck(person, SKILL_POLICE, SKILL_POLICE_MAX) || (person.job in MUTINY_LOYALIST_ROLES) || (person.job in PROVOST_JOB_LIST))
-			person.join_mutiny(TRUE, MUTINY_LOYALIST)
+			INVOKE_ASYNC(person, TYPE_PROC_REF(/mob/living/carbon/human, join_mutiny), TRUE, MUTINY_LOYALIST)
 			continue
 
-		person.join_mutiny()
+		INVOKE_ASYNC(person, TYPE_PROC_REF(/mob/living/carbon/human, join_mutiny))
 
 	if(mutiny_faction == FACTION_MARINE)
 		shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")

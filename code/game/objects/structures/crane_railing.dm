@@ -27,9 +27,6 @@
 /obj/structure/roof/cargocrane_tracks/vertical
 	icon_state = "vertical"
 
-/obj/structure/roof/cargocrane_tracks/vertical/endcap1
-	icon_state = "vertical_endcap1"
-
 /obj/structure/roof/cargocrane_tracks/vertical/endcap2
 	icon_state = "vertical_endcap2"
 

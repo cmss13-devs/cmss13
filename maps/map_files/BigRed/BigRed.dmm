@@ -765,6 +765,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acW" = (
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/cargo)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -778,7 +781,8 @@
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
 "ada" = (
-/turf/open/floor/asteroidfloor/north,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "adb" = (
 /obj/structure/surface/table,
@@ -836,17 +840,17 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "adn" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/cargo)
-"ado" = (
 /obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
-"adp" = (
+"ado" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/lambda_cave_cas)
+"adp" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/lambda_cave_cas)
 "adq" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/lambda_cave_cas)
 "adr" = (
@@ -886,8 +890,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "adx" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/lambda_cave_cas)
 "ady" = (
 /obj/structure/bed/chair,
@@ -926,6 +929,10 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "adF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/lambda_cave_cas)
 "adG" = (
@@ -956,11 +963,7 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "adK" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/generic,
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/lambda_cave_cas)
 "adL" = (
 /obj/structure/machinery/light{
@@ -969,8 +972,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "adM" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/bigredv2/outside/lambda_cave_cas)
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/plating,
+/area/bigredv2/caves_lambda)
 "adN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/white,
@@ -1005,22 +1009,18 @@
 /turf/open/floor/floor4,
 /area/bigredv2/outside/marshal_office)
 "adU" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/floor/plating,
-/area/bigredv2/caves_lambda)
-"adV" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw/ceiling)
-"adW" = (
-/turf/open/floor/wood,
-/area/bigredv2/outside/marshal_office)
-"adX" = (
+"adV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"adY" = (
+"adW" = (
+/turf/open/floor/wood,
+/area/bigredv2/outside/marshal_office)
+"adX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
 	},
@@ -47551,7 +47551,7 @@ axZ
 avT
 azn
 avT
-adV
+adU
 anp
 siK
 siG
@@ -51697,7 +51697,7 @@ aSI
 aOB
 aNo
 aNo
-ado
+adn
 aoH
 hmJ
 aXH
@@ -52133,7 +52133,7 @@ aPv
 aNm
 aWB
 aoH
-adn
+ada
 aXH
 mOc
 aZu
@@ -53651,9 +53651,9 @@ aQS
 aQS
 aQS
 aoH
-ada
-ada
-ada
+acW
+acW
+acW
 asK
 aZv
 aZR
@@ -53868,9 +53868,9 @@ apQ
 apQ
 apQ
 aoH
-ada
-ada
-ada
+acW
+acW
+acW
 asK
 aZu
 aZu
@@ -54085,8 +54085,8 @@ aGV
 aVh
 aVP
 aoH
-ada
-ada
+acW
+acW
 wZv
 asK
 aZw
@@ -54302,9 +54302,9 @@ aSO
 aVi
 aVO
 aoH
-ada
-ada
-ada
+acW
+acW
+acW
 asK
 aZx
 aZx
@@ -54519,9 +54519,9 @@ aoH
 aoH
 aoH
 aoH
-ada
-ada
-ada
+acW
+acW
+acW
 asK
 atw
 atw
@@ -65771,7 +65771,7 @@ atD
 sih
 sih
 ako
-adX
+adV
 awu
 apc
 ako
@@ -70951,7 +70951,7 @@ aao
 aao
 aao
 gNH
-adY
+adX
 fGK
 fGK
 fGK
@@ -74263,7 +74263,7 @@ aQu
 dpU
 mNP
 mlt
-adp
+ado
 mwq
 aTu
 aTu
@@ -74480,7 +74480,7 @@ aQu
 oCK
 poV
 fFs
-adq
+adp
 dTB
 rbs
 rbs
@@ -74694,10 +74694,10 @@ aQu
 aQu
 aQu
 ceA
-adM
 adK
 adF
 adx
+adq
 rbs
 oPM
 eKZ
@@ -79462,7 +79462,7 @@ aIN
 aJG
 anI
 aao
-adU
+adM
 tQw
 xFZ
 tQw

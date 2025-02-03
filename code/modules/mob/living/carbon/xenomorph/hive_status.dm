@@ -1013,6 +1013,7 @@
 	color = "#80ff80"
 	ui_color ="#4d994d"
 	latejoin_burrowed = FALSE
+	hive_inherant_traits = list(TRAIT_CARDPLAYING_THUMBS)
 
 	need_round_end_check = TRUE
 

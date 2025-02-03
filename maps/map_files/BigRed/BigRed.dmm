@@ -765,10 +765,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"acW" = (
-/obj/structure/machinery/power/apc/power/west,
-/turf/open/floor/warnwhite,
-/area/bigredv2/outside/office_complex)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -25671,7 +25667,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
+/area/bigredv2/outside/general_offices)
 "kwQ" = (
 /turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/se)
@@ -28417,8 +28413,7 @@
 "nvn" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	density = 0;
-	pixel_y = 16;
-	needs_power = 0
+	pixel_y = 16
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/c)
@@ -64076,7 +64071,7 @@ aWJ
 aMc
 asv
 aYX
-acW
+aZE
 aYY
 baK
 bbs
@@ -67553,7 +67548,7 @@ asv
 asv
 asv
 lhN
-cDG
+bda
 bdA
 kIX
 tUa
@@ -67770,7 +67765,7 @@ baj
 baP
 bbC
 eUX
-bda
+cDG
 bLG
 kIX
 jYP

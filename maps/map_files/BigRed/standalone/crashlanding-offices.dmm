@@ -231,14 +231,17 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
-"aS" = (
-/obj/structure/machinery/power/apc/power/west,
-/turf/open/floor/warnwhite,
-/area/bigredv2/outside/office_complex)
 "aT" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
 	},
+/area/bigredv2/outside/office_complex)
+"aU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north{
+	name = "Interview Room APC"
+	},
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
@@ -1457,7 +1460,7 @@ xr
 FV
 ap
 Wv
-aS
+hv
 Ts
 sX
 sX
@@ -1975,7 +1978,7 @@ WB
 ap
 UB
 ap
-Cy
+aU
 nn
 Oi
 WB

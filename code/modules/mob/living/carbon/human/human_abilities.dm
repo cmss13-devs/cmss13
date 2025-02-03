@@ -506,10 +506,13 @@ CULT
 /proc/start_mutiny(mutiny_faction = FACTION_MARINE)
 	for(var/mob/living/carbon/human/person in GLOB.alive_human_list)
 		if(!person.client)
+			log_debug("MUTINY: [key_name(src)] was skipped due to no client.")
 			continue
 		if(person.faction != mutiny_faction)
+			log_debug("MUTINY: [key_name(src)] was skipped due to wrong faction.")
 			continue
 		if(person.mob_flags & (MUTINY_MUTINEER|MUTINY_LOYALIST|MUTINY_NONCOMBAT))
+			log_debug("MUTINY: [key_name(src)] was skipped due to existing choice.")
 			continue
 
 		if(skillcheck(person, SKILL_POLICE, SKILL_POLICE_MAX) || (person.job in MUTINY_LOYALIST_ROLES) || (person.job in PROVOST_JOB_LIST))
@@ -530,14 +533,17 @@ CULT
 			if(MUTINY_MUTINEER)
 				var/datum/equipment_preset/other/mutiny/mutineer/XC = new()
 				XC.load_status(src)
+				log_debug("MUTINY: [key_name(src)] was forced to join MUTINEERS")
 				return TRUE
 			if(MUTINY_LOYALIST)
 				var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
 				XC.load_status(src)
+				log_debug("MUTINY: [key_name(src)] was forced to join LOYALISTS")
 				return TRUE
 			if(MUTINY_NONCOMBAT)
 				var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
 				XC.load_status(src)
+				log_debug("MUTINY: [key_name(src)] was forced to join NON-COMBATANTS")
 				return TRUE
 
 	var/options = list("MUTINEERS", "LOYALISTS", "REFUSE TO FIGHT")
@@ -547,14 +553,17 @@ CULT
 		if("MUTINEERS")
 			var/datum/equipment_preset/other/mutiny/mutineer/XC = new()
 			XC.load_status(src)
+			log_debug("MUTINY: [key_name(src)] joined MUTINEERS")
 			return TRUE
 		if("LOYALISTS")
 			var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
 			XC.load_status(src)
+			log_debug("MUTINY: [key_name(src)] joined LOYALISTS")
 			return TRUE
 		else
 			var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
 			XC.load_status(src)
+			log_debug("MUTINY: [key_name(src)] joined NON-COMBATANTS")
 			return TRUE
 
 /datum/action/human_action/cancel_view // cancel-camera-view, but a button

@@ -424,7 +424,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRANSFORMER_OFF)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/handle_xeno_acquisition(turf/weeded_turf)
-	SIGNAL_HANDLER
 
 	if(corrupted)
 		return

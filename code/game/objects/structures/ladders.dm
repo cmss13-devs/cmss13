@@ -279,4 +279,4 @@
 /obj/structure/ladder/yaujta
 	name = "ladder"
 	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
-	icon = 'icons/obj/structures/yaujta_ladders.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

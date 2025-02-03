@@ -1448,6 +1448,11 @@
 	desc = "The pelt of a highly acidic xenomorph, a venomous ranged attacker."
 	icon_state = "spitter_pelt"
 
+/obj/item/pelt/larva
+	name = "Larva pelt"
+	desc = "The hide of a juvenile Xenomorph, a grim trophy from a fledgling that never reached its full potential."
+	icon_state = "larva_pelt"
+
 /// TOOLS
 
 /obj/item/tool/crowbar/yautja

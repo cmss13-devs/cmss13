@@ -916,16 +916,26 @@
 	if(alert(usr, "Are you sure you want to change all mutineers back to normal?", "Confirmation", "Yes", "No") != "Yes")
 		return
 
-	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(H.mob_flags & MUTINY_MUTINEER)
-			H.mob_flags &= ~MUTINY_MUTINEER
+	for(var/mob/living/carbon/human/mutiny_human in GLOB.human_mob_list)
+		if(mutiny_human.mob_flags & MUTINY_MUTINEER)
+			mutiny_human.mob_flags &= ~MUTINY_MUTINEER
+			mutiny_human.faction_group -= "[mutiny_human.mutiny_origin_faction]-MUTINY"
+			mutiny_human.faction = mutiny_human.mutiny_origin_faction
 
-			for(var/datum/action/human_action/activable/mutineer/A in H.actions)
-				A.remove_from(H)
+			for(var/datum/action/human_action/activable/mutineer/A in mutiny_human.actions)
+				A.remove_from(mutiny_human)
 
-		H.mob_flags &= ~MUTINY_LOYALIST
-		H.mob_flags &= ~MUTINY_NONCOMBAT
-		H.hud_set_squad()
+		if(mutiny_human.mob_flags & MUTINY_LOYALIST)
+			mutiny_human.mob_flags &= ~MUTINY_LOYALIST
+			mutiny_human.faction_group -= "[mutiny_human.mutiny_origin_faction]-LOYAL"
+			mutiny_human.faction = mutiny_human.mutiny_origin_faction
+
+		if(mutiny_human.mob_flags & MUTINY_NONCOMBAT)
+			mutiny_human.mob_flags &= ~MUTINY_NONCOMBAT
+			mutiny_human.faction_group -= "[mutiny_human.mutiny_origin_faction]-MUTINY"
+			mutiny_human.faction_group -= "[mutiny_human.mutiny_origin_faction]-LOYAL"
+
+		mutiny_human.hud_set_squad()
 
 /client/proc/cmd_fun_fire_ob()
 	set category = "Admin.Fun"

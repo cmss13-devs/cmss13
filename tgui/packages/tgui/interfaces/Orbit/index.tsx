@@ -157,6 +157,9 @@ const xenoSplitter = (members: Array<Observable>) => {
 };
 
 const marineSplitter = (members: Array<Observable>) => {
+  const mutineers: Array<Observable> = [];
+  const loyalists: Array<Observable> = [];
+  const nonCombatants: Array<Observable> = [];
   const alphaSquad: Array<Observable> = [];
   const bravoSquad: Array<Observable> = [];
   const charlieSquad: Array<Observable> = [];
@@ -169,6 +172,14 @@ const marineSplitter = (members: Array<Observable>) => {
   const other: Array<Observable> = [];
 
   members.forEach((x) => {
+    if (x.mutiny_status?.includes('Mutineer')) {
+      mutineers.push(x);
+    } else if (x.mutiny_status?.includes('Loyalist')) {
+      loyalists.push(x);
+    } else if (x.mutiny_status?.includes('Non-Combatant')) {
+      nonCombatants.push(x);
+    }
+
     if (x.job?.includes('Alpha')) {
       alphaSquad.push(x);
     } else if (x.job?.includes('Bravo')) {
@@ -193,6 +204,9 @@ const marineSplitter = (members: Array<Observable>) => {
   });
 
   const squads = [
+    buildSquadObservable('MUTINY', 'red', mutineers),
+    buildSquadObservable('LOYALIST', 'blue', loyalists),
+    buildSquadObservable('NON-COMBAT', 'green', nonCombatants),
     buildSquadObservable('Alpha', 'red', alphaSquad),
     buildSquadObservable('Bravo', 'yellow', bravoSquad),
     buildSquadObservable('Charlie', 'purple', charlieSquad),

@@ -6,7 +6,7 @@
 	. = ..()
 	new_human.mutiny_origin_faction = new_human.faction
 	new_human.faction = "[new_human.faction]-MUTINY"
-	new_human.faction_group += "[mutiny_origin_faction.faction]-MUTINY"
+	new_human.faction_group += "[new_human.mutiny_origin_faction]-MUTINY"
 
 	new_human.mob_flags |= MUTINY_MUTINEER
 	new_human.hud_set_squad()
@@ -34,7 +34,7 @@
 /datum/equipment_preset/other/mutiny/loyalist/load_status(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.faction = "[new_human.faction]-LOYAL"
-	new_human.faction_group += "[mutiny_origin_faction.faction]-LOYAL"
+	new_human.faction_group += "[new_human.mutiny_origin_faction]-LOYAL"
 
 	new_human.mob_flags |= MUTINY_LOYALIST
 	new_human.hud_set_squad()
@@ -49,8 +49,8 @@
 
 /datum/equipment_preset/other/mutiny/noncombat/load_status(mob/living/carbon/human/new_human)
 	. = ..()
-	new_human.faction_group += "[mutiny_origin_faction.faction]-MUTINY"
-	new_human.faction_group += "[mutiny_origin_faction.faction]-LOYAL"
+	new_human.faction_group += "[new_human.mutiny_origin_faction]-MUTINY"
+	new_human.faction_group += "[new_human.mutiny_origin_faction]-LOYAL"
 
 	new_human.mob_flags |= MUTINY_NONCOMBAT
 	new_human.hud_set_squad()

@@ -176,9 +176,6 @@
 	// Are we currently using inherent zoom vision?
 	var/is_zoomed = FALSE
 
-	// The faction they mutinied from.
-	var/mutiny_origin_faction
-
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

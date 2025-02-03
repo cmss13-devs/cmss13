@@ -703,12 +703,13 @@
 	/// Any extra factions this console should be tracking to.
 	var/list/extra_factions = list()
 	/// What type of /datum/crewmonitor this will create
-	var/crewmonitor_type = /datum/crewmonitor
+	var/crew_monitor_type = /datum/crewmonitor
 
 /obj/structure/machinery/computer/crew/Initialize()
 	. = ..()
-	if(!GLOB.crewmonitor[faction])
-		GLOB.crewmonitor[faction] = new crewmonitor_type(faction, extra_factions)
+	var/lookup_string = "[faction]-[json_encode(sort_list(extra_factions))]"
+	if(!GLOB.crew_monitor[lookup_string])
+		GLOB.crew_monitor[lookup_string] = new crew_monitor_type(faction, extra_factions)
 
 /obj/structure/machinery/computer/crew/attack_remote(mob/living/user)
 	attack_hand(user)
@@ -719,7 +720,8 @@
 	if(inoperable())
 		return
 	user.set_interaction(src)
-	GLOB.crewmonitor[faction].show(user, src)
+	var/lookup_string = "[faction]-[json_encode(sort_list(extra_factions))]"
+	GLOB.crew_monitor[lookup_string].show(user, src)
 
 /obj/structure/machinery/computer/crew/update_icon()
 	if(stat & BROKEN)
@@ -733,7 +735,8 @@
 			stat &= ~NOPOWER
 
 /obj/structure/machinery/computer/crew/interact(mob/living/user)
-	GLOB.crewmonitor[faction].show(user, src)
+	var/lookup_string = "[faction]-[json_encode(sort_list(extra_factions))]"
+	GLOB.crew_monitor[lookup_string].show(user, src)
 
 /obj/structure/machinery/computer/crew/alt
 	icon_state = "cmonitor"
@@ -745,7 +748,7 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "crew"
 	faction = FACTION_YAUTJA
-	crewmonitor_type = /datum/crewmonitor/yautja
+	crew_monitor_type = /datum/crewmonitor/yautja
 
 /obj/structure/machinery/computer/crew/upp
 	faction = FACTION_UPP
@@ -766,7 +769,7 @@
 /obj/structure/machinery/computer/crew/yautja
 	faction = FACTION_YAUTJA
 
-GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
+GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 
 #define SENSOR_LIVING 1
 #define SENSOR_VITALS 2

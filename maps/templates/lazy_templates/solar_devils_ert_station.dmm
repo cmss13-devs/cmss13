@@ -5167,9 +5167,7 @@
 /turf/open/floor/almayer/edge/southwest,
 /area/adminlevel/ert_station/soalar_devils_station)
 "rf" = (
-/turf/open/floor/almayer/uscm{
-	dir = 1
-	},
+/turf/open/floor/almayer/uscm/north,
 /area/adminlevel/ert_station/soalar_devils_station)
 "rg" = (
 /obj/effect/decal/cleanable/dirt{

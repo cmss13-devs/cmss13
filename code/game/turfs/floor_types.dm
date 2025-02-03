@@ -2039,6 +2039,9 @@
 	icon_state = "logo_c"
 	name = "\improper USCM Logo"
 
+/turf/open/floor/almayer/uscm/north
+	dir = NORTH
+
 /turf/open/floor/almayer/uscm/directional
 	icon_state = "logo_directional"
 

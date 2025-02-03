@@ -503,7 +503,7 @@ CULT
 	message_admins("[key_name_admin(human_owner)] has begun the mutiny.")
 	remove_from(human_owner)
 
-/proc/start_mutiny(mutiny_faction)
+/proc/start_mutiny(mutiny_faction = FACTION_MARINE)
 	if(mutiny_faction == FACTION_MARINE)
 		shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
 		set_security_level(SEC_LEVEL_RED, TRUE)

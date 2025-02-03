@@ -13,6 +13,21 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 
+/area/navalis/indoors
+	name = "Navalis - Indoors"
+	icon_state = "cliff_blocked"
+	ceiling = CEILING_METAL
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+
+/area/navalis/outdoors
+	name = "Navalis - Outdoors"
+	icon_state = "cliff_blocked"
+	ceiling = CEILING_NONE
+	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
+	ambience_exterior = AMBIENCE_CITY
+	soundscape_interval = 25
+
 //Water Types
 
 /area/navalis/oob/water

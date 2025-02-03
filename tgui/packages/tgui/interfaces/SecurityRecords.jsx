@@ -4,6 +4,7 @@ import { useBackend } from '../backend';
 import {
   Box,
   Button,
+  Divider,
   Dropdown,
   Flex,
   Input,
@@ -116,28 +117,6 @@ export const SecurityRecords = () => {
     setNewComment('');
   };
 
-  const cellStyle = {
-    paddingTop: '4px',
-    paddingBottom: '3px',
-    textAlign: 'center',
-  };
-
-  const boxStyle = {
-    paddingTop: '5px',
-    paddingBottom: '5px',
-  };
-
-  const sectionHeaderStyle = {
-    paddingTop: '10px',
-    paddingBottom: '10px',
-  };
-
-  const grayItalicStyle = {
-    fontSize: '0.9rem',
-    color: 'gray',
-    fontStyle: 'italic',
-  };
-
   const personalDataFields = [
     {
       label: 'Name:',
@@ -219,10 +198,10 @@ export const SecurityRecords = () => {
     return (
       <Box
         key={field.contentKey}
+        className="SecurityRecords_BoxStyle"
         style={{
           display: 'flex',
           alignItems: 'center',
-          ...boxStyle,
         }}
       >
         <span style={{ minWidth: '120px', textAlign: 'left' }}>
@@ -251,8 +230,8 @@ export const SecurityRecords = () => {
             Open Fingerprint Scanner
           </Button>
           <Box
+            className="SecurityRecords_GrayItalicStyle"
             style={{
-              ...grayItalicStyle,
               paddingTop: '4px',
               paddingLeft: '5px',
             }}
@@ -272,31 +251,31 @@ export const SecurityRecords = () => {
           </Box>
           <Table>
             <Table.Row header>
-              <Table.Cell bold style={cellStyle}>
+              <Table.Cell bold className="SecurityRecords_CellStyle">
                 Name
               </Table.Cell>
-              <Table.Cell bold style={cellStyle}>
+              <Table.Cell bold className="SecurityRecords_CellStyle">
                 Rank
               </Table.Cell>
-              <Table.Cell bold style={cellStyle}>
+              <Table.Cell bold className="SecurityRecords_CellStyle">
                 Squad
               </Table.Cell>
-              <Table.Cell bold style={cellStyle}>
+              <Table.Cell bold className="SecurityRecords_CellStyle">
                 Description
               </Table.Cell>
             </Table.Row>
             {scanner.data.map((fingerprint, index) => (
               <Table.Row key={index}>
-                <Table.Cell style={cellStyle}>
+                <Table.Cell className="SecurityRecords_CellStyle">
                   {fingerprint.name || 'Unknown'}
                 </Table.Cell>
-                <Table.Cell style={cellStyle}>
+                <Table.Cell className="SecurityRecords_CellStyle">
                   {fingerprint.rank || 'Unknown'}
                 </Table.Cell>
-                <Table.Cell style={cellStyle}>
+                <Table.Cell className="SecurityRecords_CellStyle">
                   {fingerprint.squad || 'Unknown'}
                 </Table.Cell>
-                <Table.Cell style={cellStyle}>
+                <Table.Cell className="SecurityRecords_CellStyle">
                   {fingerprint.description || 'No Description'}
                 </Table.Cell>
               </Table.Row>
@@ -333,7 +312,7 @@ export const SecurityRecords = () => {
           Eject Scanner
         </Button>
       </Flex>
-      <hr />
+      <Divider />
       <Button onClick={() => setViewFingerprintScanner(false)}>Back</Button>
     </Section>
   );
@@ -344,7 +323,10 @@ export const SecurityRecords = () => {
         <Flex direction="row" gap={2}>
           <Flex.Item grow={1}>
             <Flex direction="column">
-              <Box textAlign="center" style={sectionHeaderStyle}>
+              <Box
+                textAlign="center"
+                className="SecurityRecords_SectionHeaderStyle"
+              >
                 Personal Data
               </Box>
               {personalDataFields.map((field) => renderField(field, record))}
@@ -381,21 +363,21 @@ export const SecurityRecords = () => {
           </Flex.Item>
         </Flex>
 
-        <hr />
-        <Box textAlign="center" style={sectionHeaderStyle}>
+        <Divider />
+        <Box textAlign="center" className="SecurityRecords_SectionHeaderStyle">
           Medical Data
         </Box>
         {medicalDataFields.map((field) => renderField(field, record))}
 
-        <hr />
-        <Box textAlign="center" style={sectionHeaderStyle}>
+        <Divider />
+        <Box textAlign="center" className="SecurityRecords_SectionHeaderStyle">
           Security Data
         </Box>
         {!record.security_criminal ? (
           <Box>
             <Box
+              className="SecurityRecords_GrayItalicStyle"
               style={{
-                ...grayItalicStyle,
                 paddingTop: '5px',
                 paddingBottom: '5px',
               }}
@@ -417,7 +399,7 @@ export const SecurityRecords = () => {
         ) : (
           <>
             {securityDataFields.map((field) => renderField(field, record))}
-            <Box style={boxStyle}>
+            <Box className="SecurityRecords_BoxStyle">
               Incidents:
               <div
                 // Data received from in-game system
@@ -427,11 +409,14 @@ export const SecurityRecords = () => {
                 }}
               />
             </Box>
-            <hr />
-            <Box textAlign="center" style={sectionHeaderStyle}>
+            <Divider />
+            <Box
+              textAlign="center"
+              className="SecurityRecords_SectionHeaderStyle"
+            >
               Comments Log
             </Box>
-            <Box style={boxStyle}>
+            <Box className="SecurityRecords_BoxStyle">
               {record.security_comments &&
               Object.keys(record.security_comments).length > 0
                 ? Object.entries(record.security_comments).map(
@@ -441,7 +426,7 @@ export const SecurityRecords = () => {
                         style={{ marginBottom: '10px', padding: '5px' }}
                       >
                         {comment.deleted_by ? (
-                          <Box style={grayItalicStyle}>
+                          <Box className="SecurityRecords_GrayItalicStyle">
                             Comment deleted by {comment.deleted_by} at{' '}
                             {comment.deleted_at || 'unknown time'}.
                           </Box>
@@ -471,7 +456,10 @@ export const SecurityRecords = () => {
                   )
                 : 'No comments available.'}
             </Box>
-            <Box style={{ ...boxStyle, paddingLeft: '2px' }}>
+            <Box
+              className="SecurityRecords_BoxStyle"
+              style={{ paddingLeft: '2px' }}
+            >
               <Button onClick={() => setCommentModalOpen(true)}>
                 Add Comment
               </Button>
@@ -479,7 +467,7 @@ export const SecurityRecords = () => {
           </>
         )}
 
-        <hr />
+        <Divider />
         <Flex direction="row" gap={2}>
           <Button
             onClick={() => act('print_personal_record', { id: record.id })}
@@ -498,7 +486,7 @@ export const SecurityRecords = () => {
           </Button.Confirm>
         </Flex>
 
-        <hr />
+        <Divider />
         <Button onClick={goBack}>Back</Button>
       </Flex>
     </Section>
@@ -528,7 +516,7 @@ export const SecurityRecords = () => {
         <Table.Row header>
           <Table.Cell
             bold
-            style={{ cursor: 'pointer', ...cellStyle }}
+            className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('general_name')}
           >
             Name{' '}
@@ -537,7 +525,7 @@ export const SecurityRecords = () => {
           </Table.Cell>
           <Table.Cell
             bold
-            style={{ cursor: 'pointer', ...cellStyle }}
+            className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('id')}
           >
             ID{' '}
@@ -546,7 +534,7 @@ export const SecurityRecords = () => {
           </Table.Cell>
           <Table.Cell
             bold
-            style={{ cursor: 'pointer', ...cellStyle }}
+            className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('general_rank')}
           >
             Rank{' '}
@@ -555,7 +543,7 @@ export const SecurityRecords = () => {
           </Table.Cell>
           <Table.Cell
             bold
-            style={{ cursor: 'pointer', ...cellStyle }}
+            className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('security_criminal')}
           >
             Status{' '}
@@ -571,7 +559,7 @@ export const SecurityRecords = () => {
               color: getStyle(record.security_criminal).font,
             }}
           >
-            <Table.Cell style={cellStyle}>
+            <Table.Cell className="SecurityRecords_CellStyle">
               <Button
                 onClick={() => {
                   selectRecord(record);
@@ -580,9 +568,13 @@ export const SecurityRecords = () => {
                 {record.general_name}
               </Button>
             </Table.Cell>
-            <Table.Cell style={cellStyle}>{record.id}</Table.Cell>
-            <Table.Cell style={cellStyle}>{record.general_rank}</Table.Cell>
-            <Table.Cell style={cellStyle}>
+            <Table.Cell className="SecurityRecords_CellStyle">
+              {record.id}
+            </Table.Cell>
+            <Table.Cell className="SecurityRecords_CellStyle">
+              {record.general_rank}
+            </Table.Cell>
+            <Table.Cell className="SecurityRecords_CellStyle">
               {record.security_criminal}
             </Table.Cell>
           </Table.Row>

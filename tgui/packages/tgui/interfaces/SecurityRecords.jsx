@@ -29,6 +29,10 @@ export const SecurityRecords = () => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [filterText, setFilterText] = useState('');
   const [currentPhoto, setCurrentPhoto] = useState('front'); // State to track the current photo (front or side)
+  const [recordPhotos, setRecordPhotos] = useState({
+    front: null,
+    side: null,
+  });
 
   useEffect(() => {
     if (Array.isArray(records)) {
@@ -46,6 +50,13 @@ export const SecurityRecords = () => {
       } else {
         goBack();
       }
+    }
+
+    if (data.photo_front || data.photo_side) {
+      setRecordPhotos({
+        front: data.photo_front || fallback_image,
+        side: data.photo_side || fallback_image,
+      });
     }
   }, [recordsArray, selectedRecord]);
 
@@ -334,8 +345,8 @@ export const SecurityRecords = () => {
                 <img
                   src={
                     currentPhoto === 'front'
-                      ? record.general_photo_front ?? fallback_image
-                      : record.general_photo_side ?? fallback_image
+                      ? recordPhotos.front
+                      : recordPhotos.side
                   }
                   alt="Perp photo"
                   style={{

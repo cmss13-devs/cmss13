@@ -68,8 +68,6 @@
 			"security_criminal" = security ? security.fields["criminal"] : "",
 			"security_comments" = security ? security.fields["comments"] : null,
 			"security_incident" = security ? security.fields["incident"] : null,
-			"general_photo_front" = general.fields["photo_front"] ? icon2html(general.fields["photo_front"], user.client, sourceonly=TRUE) :  null,
-			"general_photo_side" = general.fields["photo_side"] ? icon2html(general.fields["photo_side"], user.client, sourceonly=TRUE) : null ,
 		)
 		records += list(record)
 
@@ -182,6 +180,17 @@
 			if(!general_record)
 				alert(usr,"Record not found.")
 				return
+
+			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
+			var/photo_data = icon2html(photo_icon, usr.client, sourceonly=TRUE)
+
+			var/photo_front = general_record.fields["photo_front"] ? icon2html(general_record.fields["photo_front"], usr.client, sourceonly=TRUE) : photo_data
+			var/photo_side = general_record.fields["photo_side"] ? icon2html(general_record.fields["photo_side"], usr.client, sourceonly=TRUE) : photo_data
+
+			ui.send_update(list(
+				"photo_front" = photo_front,
+				"photo_side" = photo_side
+			))
 
 			. = TRUE
 
@@ -420,6 +429,9 @@
 				return
 
 			general_record.fields["photo_[photo_profile]"] = img
+			ui.send_update(list(
+				"photo_[photo_profile]" = icon2html(img, usr.client, sourceonly=TRUE),
+			))
 			to_chat(usr, "You successfully updated record [photo_profile] photo")
 			msg_admin_niche("[key_name_admin(usr)] updated record photo of [general_record.fields["name"]].")
 

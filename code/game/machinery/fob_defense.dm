@@ -53,20 +53,20 @@
 		var/obj/item/device/multitool/tool = item
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			user.balloon_alert(user, "You do not know how to link your multitool to the [src.name].")
+			user.balloon_alert(user, "you do not know how to link your multitool to the [src.name].")
 			return
 		else if(do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(tool.is_terminal_linked)
 				if(linked_to_terminal)
 					linked_to_terminal = FALSE
-					user.balloon_alert(user, "You unlink the [src.name] from the terminal.")
+					user.balloon_alert(user, "you unlink the [src.name] from the terminal.")
 					update_icon()
 				else
 					linked_to_terminal = TRUE
-					user.balloon_alert(user, "You link the [src.name] to the terminal.")
+					user.balloon_alert(user, "you link the [src.name] to the terminal.")
 					update_icon()
 			else if(!tool.is_terminal_linked)
-				user.balloon_alert(user, "Your multitool is not linked to a terminal!")
+				user.balloon_alert(user, "your multitool is not linked to a terminal!")
 
 
 /obj/structure/machinery/fob/power_change()
@@ -115,36 +115,36 @@
 	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
 		var/obj/item/device/multitool/tool = item
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			user.balloon_alert(user, "You do not know how to link your multitool to the [src.name].")
+			user.balloon_alert(user, "you do not know how to link your multitool to the [src.name].")
 			return
 		else if(do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(tool.is_terminal_linked)
 				tool.is_terminal_linked = FALSE
-				user.balloon_alert(user, "You unlink the your multitool from the [src.name].")
+				user.balloon_alert(user, "you unlink the your multitool from the [src.name].")
 			else if(!tool.is_terminal_linked)
 				tool.is_terminal_linked = TRUE
-				user.balloon_alert(user, "You link your multitool to the [src.name].")
+				user.balloon_alert(user, "you link your multitool to the [src.name].")
 
 
 
 /obj/structure/machinery/fob/terminal/attack_hand(mob/user)
 
 	if(!is_inside_lz)
-		user.balloon_alert(user, "The [src.name] is too far from the LZ to recieve power!")
+		user.balloon_alert(user, "the [src.name] is too far from the LZ to recieve power!")
 		return
 
 	if(!is_on)
-		user.balloon_alert(user, "The [src.name] has no power!")
+		user.balloon_alert(user, "the [src.name] has no power!")
 		return
 	if(!ishuman(user))
 		return
 
 	if(is_transformer_on)
-		user.balloon_alert(user, "The [src.name] displays power information: The colony transformer is online. All linked structers online.")
+		user.balloon_alert(user, "the [src.name] displays power information: The colony transformer is online. All linked structers online.")
 		return
 
 	if(!is_transformer_on && backup_generator_on)
-		user.balloon_alert(user, "The [src.name] displays power information: The colony transformer is offline! Backup generator online. Time before generator depletion: [duration2text_sec(5 MINUTES + (generator_time - world.time))]!")
+		user.balloon_alert(user, "the [src.name] displays power information: The colony transformer is offline! Backup generator online. Time before generator depletion: [duration2text_sec(5 MINUTES + (generator_time - world.time))]!")
 
 /obj/structure/machinery/fob/terminal/generator_turn_on()
 	. = ..()
@@ -182,32 +182,32 @@
 
 	if(!is_on)
 		if(!has_power_remaining)
-			user.balloon_alert(user, "The [src.name] has been depleted!")
+			user.balloon_alert(user, "the [src.name] has been depleted!")
 			return
 		if(!is_inside_lz)
-			user.balloon_alert(user, "The [src.name] is too far from the LZ to distribute power!")
+			user.balloon_alert(user, "the [src.name] is too far from the LZ to distribute power!")
 			return
 		if(!linked_to_terminal)
-			user.balloon_alert(user, "The [src.name] is not linked to a terminal!")
+			user.balloon_alert(user, "the [src.name] is not linked to a terminal!")
 			return
 		if(is_transformer_on)
-			user.balloon_alert(user, "The colony transformer is online already. Turning this on now would only waste power.")
+			user.balloon_alert(user, "the colony transformer is online already. Turning this on now would only waste power.")
 			return
 		if(backup_generator_on)
-			user.balloon_alert(user, "Another backup generator is already online. Turning this one on would waste power.")
+			user.balloon_alert(user, "another backup generator is already online. Turning this one on would waste power.")
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			user.balloon_alert(user, "You have no idea how to turn this thing on.")
+			user.balloon_alert(user, "you have no idea how to turn this thing on.")
 			return
 		is_on = TRUE
-		user.balloon_alert(user, "You activate the [src.name].")
+		user.balloon_alert(user, "you activate the [src.name].")
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BACKUP_GENERATOR_ON)
 		addtimer(CALLBACK(src, PROC_REF(deplete_generator)), power_duration)
 		update_icon()
 		return
 
 	if(is_on)
-		user.balloon_alert(user, "You cannot deactivate the [src.name] once it has been activated.")
+		user.balloon_alert(user, "you cannot deactivate the [src.name] once it has been activated.")
 		update_icon()
 		return
 

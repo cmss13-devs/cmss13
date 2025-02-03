@@ -20,7 +20,7 @@
 	dir = 1;
 	icon_state = "pwall"
 	},
-/area/navalis/indoors)
+/area/navalis/oob)
 "ad" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8;
@@ -203,7 +203,7 @@
 	dir = 1;
 	icon_state = "pwall"
 	},
-/area/navalis/indoors)
+/area/navalis/oob)
 "au" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
@@ -358,6 +358,9 @@
 "aL" = (
 /turf/open/floor/plating/catwalk,
 /area/navalis/outdoors)
+"aM" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced,
+/area/navalis/indoors)
 "aN" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
@@ -488,6 +491,9 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"bd" = (
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/navalis/indoors)
 "be" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -562,6 +568,9 @@
 "bl" = (
 /turf/closed/wall/hybrisa/colony,
 /area/navalis/indoors)
+"bm" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
+/area/navalis/oob)
 "bn" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
@@ -1038,6 +1047,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors)
+"cm" = (
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/navalis/outdoors)
 "cn" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_on{
 	pixel_y = 32
@@ -1255,7 +1267,14 @@
 /turf/open/floor/prison/whitered/north,
 /area/navalis/indoors)
 "db" = (
+/obj/structure/machinery/meter{
+	pixel_y = 3;
+	pixel_x = 30
+	},
 /turf/open/floor/prison/whitered/northeast,
+/area/navalis/indoors)
+"dc" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/navalis/indoors)
 "dd" = (
 /obj/structure/bed/hybrisa/dingy,
@@ -1322,7 +1341,7 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
 /area/navalis/indoors)
 "dr" = (
-/obj/structure/window/framed/hybrisa/colony/hull,
+/obj/structure/window/framed/hybrisa/colony/engineering/hull,
 /turf/open/floor/plating,
 /area/navalis/oob)
 "ds" = (
@@ -1438,7 +1457,8 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 1;
 	icon_state = "stop_decal5";
-	pixel_y = -13
+	pixel_y = -13;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -2504,6 +2524,10 @@
 "hG" = (
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob)
+"hH" = (
+/obj/structure/window/framed/hybrisa/colony/engineering/hull,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "hI" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/platform_decoration/metal/almayer/west,
@@ -4349,12 +4373,6 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors)
-"mn" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal8"
-	},
-/turf/open/floor/prison/greenfull/east,
-/area/navalis/indoors)
 "mo" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal10"
@@ -4749,9 +4767,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
-"np" = (
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/powered)
+"nq" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced,
+/area/navalis/oob)
 "nr" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -5287,6 +5305,9 @@
 	layer = 1
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors)
+"ow" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/navalis/outdoors)
 "ox" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
@@ -5901,14 +5922,6 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
-"pM" = (
-/obj/effect/decal/hybrisa/road/lines1{
-	color = "#5b9068";
-	pixel_x = -4
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/almayer/plate,
-/area/navalis/indoors)
 "pN" = (
 /obj/structure/machinery/light{
 	invisibility = 101;
@@ -5916,14 +5929,7 @@
 	needs_power = 0;
 	dir = 8
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
-/area/navalis/indoors)
-"pO" = (
-/obj/effect/decal/hybrisa/road/lines3{
-	color = "#5b9068";
-	pixel_y = -1
-	},
-/turf/open/floor/hybrisa/wood,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "pP" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -5953,13 +5959,13 @@
 /turf/open/floor/prison/blue/northwest,
 /area/navalis/indoors)
 "pT" = (
-/obj/structure/showcase{
-	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Display synthetic"
+/obj/structure/flora/pottedplant{
+	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
+	icon_state = "pottedplant_21";
+	layer = 4;
+	name = "synthethic potted plant";
+	pixel_y = 5
 	},
-/obj/item/clothing/suit/storage/jacket/marine/dress/blues,
 /turf/open/floor/hybrisa/tile/beige_bigtile,
 /area/navalis/indoors)
 "pU" = (
@@ -6044,6 +6050,18 @@
 /area/navalis/oob/powered)
 "qj" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
+/area/navalis/oob)
+"qk" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0;
+	dir = 8
+	},
+/turf/open/gm/empty{
+	desc = "The Xenomorphs appear to have emerged from this gaping maw. However, it appears they not only have refused to retreat back in here, they have barricaded it…….."
+	},
 /area/navalis/oob)
 "ql" = (
 /mob/living/simple_animal/hostile/bear,
@@ -6164,7 +6182,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = -16;
-	pixel_y = -14
+	pixel_y = -14;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -6797,20 +6816,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/navalis/indoors)
-"sl" = (
-/obj/structure/prop/resin_prop{
-	dir = 4;
-	icon_state = "chair"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/mid)
-"sm" = (
-/obj/structure/prop/resin_prop{
-	dir = 8;
-	icon_state = "chair"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/mid)
 "sn" = (
 /obj/structure/prop/resin_prop{
 	dir = 1;
@@ -6879,14 +6884,6 @@
 "sx" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
-/area/navalis/indoors)
-"sy" = (
-/obj/effect/decal/hybrisa/road/lines1{
-	color = "#5b9068";
-	pixel_x = -4
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/hybrisa/wood,
 /area/navalis/indoors)
 "sz" = (
 /obj/structure/surface/table/almayer,
@@ -7065,6 +7062,38 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"sU" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
+/turf/open/gm/empty{
+	desc = "The Xenomorphs appear to have emerged from this gaping maw. However, it appears they not only have refused to retreat back in here, they have barricaded it…….."
+	},
+/area/navalis/oob)
+"sV" = (
+/turf/closed/wall/hybrisa/colony/hospital/reinforced,
+/area/navalis/indoors)
+"sW" = (
+/turf/closed/wall/hybrisa/colony/hospital,
+/area/navalis/indoors)
+"sX" = (
+/obj/structure/prop/oilrig/support_beam/brown{
+	layer = 1.1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/oob/water/far)
+"sY" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/fire/empty,
+/turf/open/floor/prison/whitered,
+/area/navalis/indoors)
 "sZ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/platform/metal/hybrisa/metalplatform5,
@@ -7073,9 +7102,63 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/outdoors)
+"ta" = (
+/obj/structure/machinery/iv_drip{
+	pixel_y = 1;
+	layer = 4;
+	pixel_x = -5
+	},
+/turf/open/floor/prison/whitered,
+/area/navalis/indoors)
+"tb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = -32
+	},
+/turf/open/floor/prison/whitered,
+/area/navalis/indoors)
+"tc" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/accessory/storage/surg_vest/drop_green,
+/turf/open/floor/prison/whitered,
+/area/navalis/indoors)
+"td" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/glasses/hud/health{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_x = 2
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_x = -10
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/whitered,
+/area/navalis/indoors)
+"te" = (
+/obj/structure/platform/metal/strata/east,
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
 "tf" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/hybrisa/tile/green_bigtile/northeast,
+/area/navalis/indoors)
+"tg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"th" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/whitered/east,
 /area/navalis/indoors)
 "ti" = (
 /obj/structure/surface/table/almayer,
@@ -7086,8 +7169,69 @@
 /obj/item/bedsheet/green,
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/navalis/indoors)
+"tk" = (
+/obj/structure/platform_decoration/metal/strata,
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
+"tl" = (
+/obj/structure/prop/oilrig/support_beam/brown,
+/obj/structure/platform/metal/strata{
+	layer = 2
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"tm" = (
+/obj/structure/platform/metal/strata{
+	layer = 2
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/mid)
+"tn" = (
+/obj/structure/prop/oilrig/support_beam/brown,
+/obj/structure/platform/metal/strata{
+	layer = 2
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/mid)
+"to" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
 "tp" = (
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/navalis/indoors)
+"tq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitered/north,
+/area/navalis/indoors)
+"tr" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/whitered/north,
+/area/navalis/indoors)
+"ts" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/navalis/indoors)
+"tt" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors)
+"tu" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/frame{
+	pixel_y = 31
+	},
+/obj/item/trash/eat{
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/black2/east,
 /area/navalis/indoors)
 "tv" = (
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
@@ -7235,7 +7379,25 @@
 /turf/open/floor/prison/rampbottom/west,
 /area/navalis/indoors)
 "tM" = (
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/darkgreen2/east,
+/area/navalis/indoors)
+"tN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/turf/open/floor/almayer/blackfull2,
+/area/navalis/indoors)
+"tO" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = -30
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/cabinet{
+	pixel_x = 10;
+	pixel_y = -6
+	},
+/turf/open/floor/almayer/blackfull2,
 /area/navalis/indoors)
 "tP" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -7263,11 +7425,8 @@
 "tS" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
 /area/navalis/indoors)
-"tT" = (
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
-/area/navalis/indoors)
 "tU" = (
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southwest,
+/turf/open/floor/darkblue2/southeast,
 /area/navalis/indoors)
 "tV" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south,
@@ -7289,7 +7448,7 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "ua" = (
-/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
 /turf/open/floor/plating,
 /area/navalis/indoors)
 "ub" = (
@@ -7395,6 +7554,15 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/navalis/indoors)
+"ut" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/prison/whitegreen/southeast,
+/area/navalis/indoors)
+"uu" = (
+/obj/structure/window/framed/hybrisa/colony/hospital,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "uv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/almayer/plate,
@@ -7414,12 +7582,19 @@
 "uz" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/northwest,
 /area/navalis/indoors)
+"uA" = (
+/obj/structure/machinery/light/small/blue{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer/black/west,
+/area/navalis/indoors)
 "uB" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/west,
 /area/navalis/indoors)
 "uC" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "uD" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege,
@@ -7495,7 +7670,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = -1
+	pixel_x = -1;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -7665,12 +7841,6 @@
 "vo" = (
 /turf/open/floor/almayer,
 /area/navalis/indoors)
-"vp" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "densecrate"
-	},
-/turf/open/floor/almayer/greenfull2,
-/area/navalis/outdoors)
 "vq" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/corsat/marked,
@@ -7706,15 +7876,14 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/navalis/indoors)
 "vx" = (
-/obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/light{
+	dir = 4;
 	invisibility = 101;
 	light_color = "#680b62";
-	needs_power = 0;
-	dir = 8
+	needs_power = 0
 	},
-/turf/open/gm/empty{
-	desc = "The source of this.....growth. It may be better to throw a nuke down here, than to clear it out with manpower."
+/turf/closed/wall/mineral/bone_resin{
+	opacity = 0
 	},
 /area/navalis/oob/powered)
 "vy" = (
@@ -8031,24 +8200,6 @@
 	name = "seabed"
 	},
 /area/navalis/indoors)
-"wh" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "barrel_yellow"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/mid)
-"wi" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "barrel_white"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/mid)
-"wj" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "closed_oxygen"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/far)
 "wk" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
@@ -8059,12 +8210,6 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
-"wm" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "barrel_red"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/mid)
 "wn" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "chest_white"
@@ -8077,12 +8222,6 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
-"wp" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "barrel_green"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/mid)
 "wq" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "chest"
@@ -8095,12 +8234,6 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
-"ws" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "barrel_blue"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/mid)
 "wt" = (
 /turf/open/floor/prison/greenblue/northwest,
 /area/navalis/outdoors)
@@ -8114,6 +8247,10 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"ww" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
 "wx" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "densecrate"
@@ -8267,7 +8404,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal7";
 	pixel_y = 10;
-	pixel_x = -9
+	pixel_x = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -8659,7 +8797,7 @@
 	pixel_y = -41;
 	pixel_x = -8
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "xW" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -8689,7 +8827,7 @@
 	pixel_x = -8;
 	name = "rubber mat"
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "ya" = (
 /obj/effect/decal/hybrisa/colorable_rug{
@@ -8699,7 +8837,7 @@
 	pixel_y = -39;
 	pixel_x = -8
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "yb" = (
 /obj/effect/decal/hybrisa/colorable_rug{
@@ -8709,7 +8847,7 @@
 	pixel_x = -8;
 	pixel_y = -33
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "yc" = (
 /obj/effect/decal/hybrisa/colorable_rug{
@@ -8719,7 +8857,7 @@
 	pixel_y = -33;
 	pixel_x = -8
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "yd" = (
 /obj/structure/prop/resin_prop{
@@ -8754,14 +8892,14 @@
 /area/navalis/indoors)
 "yh" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/prop/hybrisa/misc/picture{
-	pixel_y = 29;
-	pixel_x = 8
-	},
 /obj/structure/sign/poster/blacklight{
 	layer = 2.9;
 	pixel_y = 32;
 	pixel_x = -7
+	},
+/obj/structure/prop/hybrisa/misc/picture_oil{
+	pixel_x = 8;
+	pixel_y = 29
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/navalis/indoors)
@@ -8828,14 +8966,16 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = -7
+	pixel_x = -7;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
 "yq" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -8843,7 +8983,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = 9;
-	pixel_y = 10
+	pixel_y = 10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -8868,7 +9009,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -23
+	pixel_x = -23;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -8900,19 +9042,22 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -23
+	pixel_x = -23;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -7
+	pixel_x = -7;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
 "yA" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = 9
+	pixel_x = 9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -8921,12 +9066,14 @@
 	dir = 8;
 	icon_state = "stop_decal5";
 	pixel_y = -1;
-	pixel_x = -3
+	pixel_x = -3;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = -1
+	pixel_x = -1;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -8935,13 +9082,14 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/almayer/plating,
 /area/navalis/outdoors)
 "yD" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_x = -10;
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -8950,11 +9098,13 @@
 	dir = 8;
 	icon_state = "stop_decal5";
 	pixel_y = -1;
-	pixel_x = -3
+	pixel_x = -3;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
-	pixel_y = 15
+	pixel_y = 15;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -8962,7 +9112,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -8970,12 +9121,14 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -42
+	pixel_x = -42;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal7";
 	pixel_y = 10;
-	pixel_x = -10
+	pixel_x = -10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -8983,7 +9136,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -25
+	pixel_x = -25;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -8991,7 +9145,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = 3
+	pixel_x = 3;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -8999,17 +9154,20 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_y = 15;
-	pixel_x = 15
+	pixel_x = 15;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = 9;
-	pixel_y = -13
+	pixel_y = -13;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9017,7 +9175,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5";
 	pixel_x = 9;
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -9025,11 +9184,13 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
 	icon_state = "stop_decal5";
-	pixel_x = -3
+	pixel_x = -3;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9037,11 +9198,13 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
 	icon_state = "stop_decal5";
-	pixel_x = -3
+	pixel_x = -3;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
-	pixel_y = 15
+	pixel_y = 15;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9060,7 +9223,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal7";
 	pixel_y = 10;
-	pixel_x = -10
+	pixel_x = -10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9069,11 +9233,13 @@
 	dir = 8;
 	icon_state = "stop_decal5";
 	pixel_y = -1;
-	pixel_x = -3
+	pixel_x = -3;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -9085,7 +9251,8 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
 	icon_state = "stop_decal5";
-	pixel_x = -3
+	pixel_x = -3;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9093,7 +9260,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_y = -9;
-	pixel_x = -10
+	pixel_x = -10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9101,12 +9269,14 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 1;
 	icon_state = "stop_decal5";
-	pixel_y = 2
+	pixel_y = 2;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
 	icon_state = "stop_decal5";
-	pixel_x = -3
+	pixel_x = -3;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9114,14 +9284,16 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 1;
 	icon_state = "stop_decal5";
-	pixel_y = 2
+	pixel_y = 2;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
 "yW" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
-	pixel_y = 15
+	pixel_y = 15;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9137,44 +9309,52 @@
 "yZ" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal5";
-	pixel_y = -3
+	pixel_y = -3;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
 "za" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal5";
-	pixel_y = -3
+	pixel_y = -3;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = 9
+	pixel_x = 9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
 "zb" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal5";
-	pixel_y = -3
+	pixel_y = -3;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
 "zc" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = 9
+	pixel_x = 9;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal5";
-	pixel_y = -3
+	pixel_y = -3;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -9187,7 +9367,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = -7
+	pixel_x = -7;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -9200,12 +9381,14 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -23
+	pixel_x = -23;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -7
+	pixel_x = -7;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -9234,24 +9417,28 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = -16;
-	pixel_y = -14
+	pixel_y = -14;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = 8
+	pixel_x = 8;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = -16;
-	pixel_y = 18
+	pixel_y = 18;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
 "zi" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -9259,7 +9446,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5";
 	pixel_x = -16;
-	pixel_y = 15
+	pixel_y = 15;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -9273,12 +9461,14 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -9300,12 +9490,6 @@
 /obj/structure/prop/oilrig/support_beam/brown,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
-"zq" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "coolanttank"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water)
 "zr" = (
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
@@ -9505,12 +9689,14 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_y = 15;
-	pixel_x = 8
+	pixel_x = 8;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = 2;
-	pixel_y = -14
+	pixel_y = -14;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -9639,6 +9825,14 @@
 	density = 0
 	},
 /turf/open/floor/prison/rampbottom/west,
+/area/navalis/indoors)
+"Ah" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/whitegreencorner/west,
 /area/navalis/indoors)
 "Ai" = (
 /obj/structure/surface/table/almayer,
@@ -9896,10 +10090,6 @@
 "Bc" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/north,
 /area/navalis/indoors)
-"Bd" = (
-/obj/structure/machinery/door/airlock/almayer/generic/glass,
-/turf/open/floor/hybrisa/tile/tilewhite,
-/area/navalis/indoors)
 "Be" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -9945,6 +10135,13 @@
 	icon_state = "closed_oxygen"
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/navalis/indoors)
+"Bk" = (
+/obj/structure/sign/safety/chem_lab{
+	pixel_y = -28;
+	pixel_x = -24
+	},
+/turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors)
 "Bl" = (
 /turf/open/floor/prison/greenblue/east,
@@ -10286,12 +10483,6 @@
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /turf/open/floor/corsat,
 /area/navalis/indoors)
-"Ch" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "sheater0"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water)
 "Ci" = (
 /obj/structure/machinery/door/poddoor{
 	explo_proof = 1;
@@ -10538,6 +10729,10 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors)
+"CJ" = (
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob)
 "CK" = (
 /turf/open/floor/prison/blue/southeast,
 /area/navalis/indoors)
@@ -11445,12 +11640,6 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors)
-"ES" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/outdoors)
 "ET" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
 /obj/effect/alien/resin/sticky,
@@ -11480,7 +11669,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal7";
 	pixel_y = -9;
-	pixel_x = 15
+	pixel_x = 15;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -11974,10 +12164,18 @@
 /area/navalis/oob/water/far)
 "FT" = (
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/whitered/southwest,
 /area/navalis/indoors)
 "FU" = (
 /obj/structure/surface/table/almayer,
+/obj/item/bodybag/cryobag{
+	pixel_x = 9;
+	pixel_y = 6
+	},
+/obj/item/stack/medical/advanced/bruise_pack{
+	pixel_x = -6
+	},
 /turf/open/floor/prison/whitered,
 /area/navalis/indoors)
 "FV" = (
@@ -12016,7 +12214,7 @@
 	light_color = "#680b62";
 	needs_power = 0
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "Ga" = (
 /obj/structure/surface/table/almayer,
@@ -12068,6 +12266,11 @@
 /area/navalis/indoors)
 "Gh" = (
 /obj/structure/surface/table/almayer,
+/obj/item/tool/portadialysis,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 30;
+	pixel_x = -30
+	},
 /turf/open/floor/prison/whitered/west,
 /area/navalis/indoors)
 "Gi" = (
@@ -12085,7 +12288,11 @@
 	pixel_x = 6;
 	pixel_y = 1
 	},
-/turf/open/floor/prison/whitegreen,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = -20;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer,
 /area/navalis/indoors)
 "Gk" = (
 /obj/effect/decal/medical_decals{
@@ -12103,7 +12310,7 @@
 	pixel_y = 3;
 	pixel_x = -3
 	},
-/turf/open/floor/prison/whitegreen,
+/turf/open/floor/almayer/black2/east,
 /area/navalis/indoors)
 "Gm" = (
 /obj/structure/prop/hybrisa/misc/urinal{
@@ -12119,13 +12326,23 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/open/floor/prison/whitegreen/southeast,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = -13;
+	pixel_y = 13
+	},
+/obj/item/trash/hotdog{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/blackfull,
 /area/navalis/indoors)
 "Go" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5";
 	pixel_x = -16;
-	pixel_y = 15
+	pixel_y = 15;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -12310,6 +12527,7 @@
 /area/navalis/indoors)
 "GO" = (
 /obj/structure/machinery/disposal,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors)
 "GP" = (
@@ -12338,7 +12556,12 @@
 	pixel_y = 19;
 	density = 0
 	},
-/turf/open/floor/prison/whitegreen/northwest,
+/obj/item/trash/crushed_cup{
+	layer = 3.7;
+	pixel_x = 8;
+	pixel_y = 25
+	},
+/turf/open/floor/almayer/blackfull2,
 /area/navalis/indoors)
 "GR" = (
 /obj/structure/filingcabinet{
@@ -12351,7 +12574,8 @@
 	pixel_y = 21;
 	density = 0
 	},
-/turf/open/floor/prison/whitegreen/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blackfull2,
 /area/navalis/indoors)
 "GS" = (
 /obj/structure/prop/resin_prop{
@@ -12392,18 +12616,34 @@
 /area/navalis/indoors)
 "GW" = (
 /obj/structure/surface/table/almayer,
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_y = -2;
+	pixel_x = -2
+	},
+/obj/item/reagent_container/glass/beaker/cryopredmix{
+	pixel_x = 6;
+	pixel_y = 5
+	},
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors)
 "GX" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = 8;
-	pixel_y = 10
+	pixel_y = 10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
 "GY" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 5;
+	pixel_x = 4
+	},
+/obj/item/tool/hand_labeler{
+	pixel_x = -12
+	},
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors)
 "GZ" = (
@@ -12537,12 +12777,14 @@
 "Hq" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = 9
+	pixel_x = 9;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = 9;
-	pixel_y = -21
+	pixel_y = -21;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -12962,6 +13204,15 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/indoors)
+"Iq" = (
+/obj/structure/prop/oilrig/support_beam/brown{
+	layer = 1.1
+	},
+/obj/structure/platform/metal/strata{
+	layer = 1
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
 "Ir" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -12972,7 +13223,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -23
+	pixel_x = -23;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -13043,7 +13295,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = 9;
-	pixel_y = 10
+	pixel_y = 10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -13090,12 +13343,14 @@
 "II" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = -16;
-	pixel_y = -19
+	pixel_y = -19;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -13152,7 +13407,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = -16;
-	pixel_y = -14
+	pixel_y = -14;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -13270,17 +13526,23 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_y = -9;
-	pixel_x = -10
+	pixel_x = -10;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = 8;
-	pixel_y = 10
+	pixel_y = 10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
 "Ja" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagent_analyzer,
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_on{
+	pixel_y = 31
+	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/indoors)
 "Jb" = (
@@ -13291,7 +13553,10 @@
 /area/navalis/indoors)
 "Jc" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_x = 6;
+	pixel_y = 3
+	},
 /turf/open/floor/prison/whitegreen/northwest,
 /area/navalis/indoors)
 "Jd" = (
@@ -13404,7 +13669,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = -1
+	pixel_x = -1;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -13724,6 +13990,10 @@
 	color = "#d3d3d3";
 	dir = 8
 	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 40;
+	pixel_y = -32
+	},
 /turf/open/floor/prison/whitegreen/southeast,
 /area/navalis/indoors)
 "Kj" = (
@@ -13805,18 +14075,20 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southwest,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/navalis/indoors)
 "Kv" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 10;
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_y = 10;
-	pixel_x = 15
+	pixel_x = 15;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -13824,6 +14096,12 @@
 /obj/structure/closet/cabinet,
 /turf/open/floor/hybrisa/carpet/pink,
 /area/navalis/indoors)
+"Kx" = (
+/obj/structure/platform/metal/strata{
+	layer = 1
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
 "Ky" = (
 /obj/effect/decal/hybrisa/road/lines1{
 	pixel_x = -1
@@ -13902,7 +14180,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_x = -10;
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -14030,7 +14309,7 @@
 /area/navalis/indoors)
 "Ld" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "Le" = (
 /obj/structure/bed{
@@ -14047,6 +14326,10 @@
 	icon_state = "cargo_arrow4";
 	dir = 1;
 	pixel_y = -6
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 10
 	},
 /turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors)
@@ -14117,7 +14400,7 @@
 /area/navalis/indoors)
 "Lp" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "Lq" = (
 /turf/closed/wall/mineral/bone_resin,
@@ -14128,7 +14411,7 @@
 /area/navalis/outdoors)
 "Ls" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4,
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "Lt" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4,
@@ -14141,8 +14424,9 @@
 "Lv" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11;
-	pixel_y = 6
+	pixel_y = 3
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors)
 "Lw" = (
@@ -14158,6 +14442,7 @@
 	pixel_x = -11;
 	pixel_y = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen/southeast,
 /area/navalis/indoors)
 "Lz" = (
@@ -14188,11 +14473,22 @@
 /area/navalis/outdoors)
 "LE" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 1
+	},
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/navalis/indoors)
 "LF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/navalis/indoors)
 "LG" = (
@@ -14210,12 +14506,14 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -4;
-	pixel_x = 15
+	pixel_x = 15;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = -16;
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -14309,16 +14607,14 @@
 "LW" = (
 /turf/open/floor/plating/platingdmg3,
 /area/navalis/indoors)
-"LX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
-/area/navalis/indoors)
 "LY" = (
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors)
 "LZ" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1;
+	pixel_y = 12
+	},
 /obj/structure/curtain/colorable_transparent{
 	color = "#b3aa9b";
 	alpha = 220;
@@ -14381,32 +14677,49 @@
 /area/navalis/indoors)
 "Mh" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors)
 "Mi" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
 /turf/open/floor/prison/rampbottom/west,
 /area/navalis/outdoors)
-"Mj" = (
-/obj/effect/landmark/queen_spawn,
-/turf/open/floor/almayer/dark_sterile2,
-/area/navalis/outdoors)
 "Mk" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
 /turf/open/floor/prison/rampbottom/east,
 /area/navalis/outdoors)
+"Ml" = (
+/obj/structure/platform/metal/strata{
+	layer = 1
+	},
+/obj/structure/prop/oilrig/support_beam/brown{
+	layer = 1.1
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/mid)
 "Mm" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
 	dir = 4;
 	pixel_x = 1;
-	pixel_y = 13
+	pixel_y = 11
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 11;
+	pixel_x = -27
 	},
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "Mn" = (
 /obj/structure/surface/table/almayer,
-/turf/open/floor/prison/sterile_white,
+/obj/item/trash/plate{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/paper{
+	pixel_x = 12;
+	pixel_y = 5
+	},
+/turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/navalis/indoors)
 "Mo" = (
 /obj/effect/decal/warning_stripes{
@@ -14418,8 +14731,11 @@
 /area/navalis/indoors)
 "Mp" = (
 /obj/structure/bed/chair{
-	dir = 8
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors)
 "Mq" = (
@@ -14431,11 +14747,18 @@
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors)
+"Mr" = (
+/obj/structure/platform/metal/strata{
+	layer = 1
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/mid)
 "Ms" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11;
 	pixel_y = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "Mt" = (
@@ -14463,11 +14786,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/navalis/indoors)
-"My" = (
-/turf/open/floor/hybrisa/carpet/rug_colorable/southeast{
-	color = "#0b687f"
-	},
-/area/navalis/oob/water/far)
 "Mz" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 17
@@ -14475,9 +14793,14 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "MA" = (
+/obj/item/stack/rods{
+	pixel_y = 12;
+	pixel_x = 2
+	},
 /turf/open/floor/plating/burnt_platingdmg3/west,
 /area/navalis/indoors)
 "MB" = (
+/obj/item/shard,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/navalis/indoors)
 "MC" = (
@@ -14494,17 +14817,20 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_y = 15;
-	pixel_x = 15
+	pixel_x = 15;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = 9;
-	pixel_y = -13
+	pixel_y = -13;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -14545,10 +14871,6 @@
 	},
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors)
-"MI" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
-/area/navalis/indoors)
 "MJ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /turf/open/floor/hybrisa/wood/blackwood,
@@ -14565,14 +14887,27 @@
 /area/navalis/outdoors)
 "MM" = (
 /obj/structure/bed/chair,
+/obj/structure/machinery/vending/snack{
+	density = 0;
+	pixel_y = 18;
+	pixel_x = 1
+	},
 /turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors)
 "MN" = (
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/whitegreen/northwest,
 /area/navalis/indoors)
 "MO" = (
 /obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 3
+	},
+/obj/item/stack/medical/splint{
+	pixel_x = -14;
+	pixel_y = 1
+	},
 /turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors)
 "MP" = (
@@ -14613,10 +14948,6 @@
 	},
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors)
-"MU" = (
-/obj/structure/platform/metal/hybrisa/metalplatform4/east,
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
-/area/navalis/indoors)
 "MV" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/xeno_spawn,
@@ -14624,6 +14955,21 @@
 /area/navalis/outdoors)
 "MW" = (
 /obj/structure/surface/table/woodentable,
+/obj/item/storage/fancy/cigar/matchbook/koorlander{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/obj/item/book/manual/medical_diagnostics_manual{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/telescreen{
+	pixel_y = 31
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 8;
+	pixel_y = -7
+	},
 /turf/open/floor/prison/whitegreen/northwest,
 /area/navalis/indoors)
 "MX" = (
@@ -14633,6 +14979,13 @@
 	desc = "A massage chair, only the best for the first responders.";
 	pixel_x = 9;
 	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
 	},
 /turf/open/floor/prison/whitegreen/northeast,
 /area/navalis/indoors)
@@ -14664,10 +15017,6 @@
 	pixel_y = 16
 	},
 /turf/open/floor/hybrisa/wood,
-/area/navalis/indoors)
-"Nb" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4,
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
 /area/navalis/indoors)
 "Nc" = (
 /obj/structure/closet/cabinet,
@@ -14703,13 +15052,20 @@
 	layer = 3.2;
 	pixel_y = -32
 	},
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
 /turf/open/floor/prison/whitegreen/southeast,
 /area/navalis/indoors)
 "Nh" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = -1
+	pixel_x = -1;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -14718,6 +15074,12 @@
 	color = "#8bafa4";
 	layer = 3.2;
 	pixel_y = -32
+	},
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0;
+	dir = 8
 	},
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors)
@@ -14818,16 +15180,34 @@
 	dir = 8;
 	pixel_x = -11
 	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_x = -30
+	},
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "Nu" = (
 /obj/item/tool/surgery/retractor,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/synthgraft{
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/machinery/meter{
+	pixel_y = 3;
+	pixel_x = 30
+	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors)
 "Nv" = (
-/obj/item/tool/surgery/retractor,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/circular_saw{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/tool/surgery/surgical_line{
+	pixel_x = 4;
+	pixel_y = -7
+	},
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "Nw" = (
@@ -14857,6 +15237,9 @@
 	dir = 4;
 	pixel_x = 11;
 	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_x = 30
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors)
@@ -14955,6 +15338,12 @@
 /area/navalis/indoors)
 "NM" = (
 /obj/structure/machinery/iv_drip,
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0;
+	dir = 8
+	},
 /turf/open/floor/prison/whitegreen/northwest,
 /area/navalis/indoors)
 "NN" = (
@@ -14975,6 +15364,10 @@
 "NQ" = (
 /obj/item/tool/surgery/scalpel,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/drapes{
+	pixel_x = 3;
+	pixel_y = 10
+	},
 /turf/open/floor/prison/whitegreen/northeast,
 /area/navalis/indoors)
 "NR" = (
@@ -14984,6 +15377,12 @@
 /area/navalis/indoors)
 "NS" = (
 /obj/structure/machinery/iv_drip,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
 /turf/open/floor/prison/whitegreen/northeast,
 /area/navalis/indoors)
 "NT" = (
@@ -15011,12 +15410,9 @@
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/northeast,
 /area/navalis/indoors)
-"NX" = (
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue,
-/area/navalis/indoors)
 "NY" = (
 /obj/structure/machinery/light,
-/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/navalis/indoors)
 "NZ" = (
 /obj/effect/alien/resin/sticky,
@@ -15050,6 +15446,9 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plating,
+/area/navalis/indoors)
+"Of" = (
+/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
 /area/navalis/indoors)
 "Og" = (
 /obj/structure/flora/pottedplant{
@@ -15181,7 +15580,8 @@
 "Ot" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -15317,6 +15717,10 @@
 	color = "#d3d3d3";
 	dir = 8
 	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 40;
+	pixel_y = 32
+	},
 /turf/open/floor/prison/whitegreen/northeast,
 /area/navalis/indoors)
 "OJ" = (
@@ -15326,6 +15730,12 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"OK" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_x = -30
+	},
+/turf/open/floor/prison/whitegreen/west,
+/area/navalis/indoors)
 "OL" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
@@ -15339,6 +15749,26 @@
 "ON" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite,
 /turf/open/floor/corsat/marked,
+/area/navalis/indoors)
+"OO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	layer = 3.2;
+	pixel_x = 11;
+	pixel_y = 7
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/whitegreen/northwest,
+/area/navalis/indoors)
+"OP" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = -3;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors)
 "OQ" = (
 /obj/structure/machinery/power/apc{
@@ -15369,14 +15799,105 @@
 /obj/structure/machinery/big_computers/messaging_server/brown,
 /turf/open/floor/prison,
 /area/navalis/indoors)
+"OU" = (
+/obj/structure/noticeboard{
+	pixel_y = 30
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_2";
+	desc = null;
+	name = "sticky notes"
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
+"OV" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
+"OW" = (
+/turf/open/floor/darkpurple2/north,
+/area/navalis/indoors)
+"OX" = (
+/turf/open/floor/darkpurple2/east,
+/area/navalis/indoors)
+"OY" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/floor/prison,
+/area/navalis/outdoors)
+"OZ" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/navalis/outdoors)
+"Pa" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/floor/prison,
+/area/navalis/outdoors)
+"Pb" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Pc" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/disposal,
+/turf/open/floor/prison/whitegreen/southwest,
+/area/navalis/indoors)
+"Pd" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen,
+/area/navalis/indoors)
+"Pe" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/spot,
+/turf/open/floor/prison/whitegreen,
+/area/navalis/indoors)
 "Pf" = (
 /turf/open/floor/prison/greenblue,
 /area/navalis/outdoors)
+"Pg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitegreen,
+/area/navalis/indoors)
+"Ph" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	layer = 1.9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitegreen/southeast,
+/area/navalis/indoors)
+"Pi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_smooth"
+	},
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"Pj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_smooth"
+	},
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
 "Pk" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5";
 	pixel_x = -15;
-	pixel_y = 10
+	pixel_y = 10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -15391,6 +15912,48 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"Pn" = (
+/turf/open/floor/darkpurple2/northwest,
+/area/navalis/indoors)
+"Po" = (
+/turf/open/floor/darkpurple2/northeast,
+/area/navalis/indoors)
+"Pp" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/blue/north,
+/area/navalis/outdoors)
+"Pq" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	layer = 2;
+	color = "#d3d3d3"
+	},
+/obj/structure/barricade/handrail/medical{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen/west,
+/area/navalis/indoors)
+"Pr" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	layer = 2;
+	color = "#d3d3d3"
+	},
+/obj/structure/barricade/handrail/medical{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"Ps" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob/water)
 "Pt" = (
 /turf/open/floor/prison/cell_stripe/east,
 /area/navalis/indoors)
@@ -15408,9 +15971,50 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"Px" = (
+/turf/open/floor/prison/blue/northeast,
+/area/navalis/outdoors)
 "Py" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/prop/magazine/book/starshiptroopers{
+	pixel_x = -1;
+	pixel_y = 5
+	},
 /turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"Pz" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"PA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
+"PB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
+"PC" = (
+/turf/open/floor/darkgreen2/north,
+/area/navalis/indoors)
+"PD" = (
+/turf/open/floor/darkgreen2/northeast,
+/area/navalis/indoors)
+"PE" = (
+/turf/open/floor/darkbrown2/southwest,
+/area/navalis/indoors)
+"PF" = (
+/turf/open/floor/darkbrown2,
+/area/navalis/indoors)
+"PG" = (
+/turf/open/floor/darkbrown2/southeast,
+/area/navalis/indoors)
+"PH" = (
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/navalis/indoors)
+"PI" = (
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest,
 /area/navalis/indoors)
 "PJ" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -15426,15 +16030,23 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"PK" = (
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile,
+/area/navalis/indoors)
 "PL" = (
 /turf/open/floor/almayer/blackfull/west,
 /area/navalis/outdoors)
-"PP" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+"PM" = (
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/desert/deep,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/southeast,
+/area/navalis/indoors)
+"PN" = (
+/turf/open/floor/prison/darkredcorners2/north,
+/area/navalis/outdoors)
+"PO" = (
+/turf/open/floor/prison/darkred2/north,
 /area/navalis/outdoors)
 "PQ" = (
 /obj/structure/closet/bodybag{
@@ -15442,6 +16054,12 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors)
+"PR" = (
+/turf/open/floor/prison/darkredcorners2/east,
+/area/navalis/outdoors)
+"PS" = (
+/turf/open/floor/prison/darkred2/northeast,
+/area/navalis/outdoors)
 "PT" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /turf/open/floor/corsat/plate,
@@ -15458,11 +16076,57 @@
 /obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/almayer/plating,
 /area/navalis/indoors)
+"PV" = (
+/turf/open/floor/prison/darkred2/northwest,
+/area/navalis/outdoors)
+"PW" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 10;
+	pixel_x = 9
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"PX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"PY" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "rack"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/navalis/indoors)
 "PZ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/gm/river/desert/deep,
+/area/navalis/outdoors)
+"Qa" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_yellow"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/navalis/indoors)
+"Qb" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"Qc" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/prison/darkredfull2,
 /area/navalis/outdoors)
 "Qd" = (
 /obj/structure/machinery/light{
@@ -15473,10 +16137,24 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/navalis/indoors)
-"Qg" = (
-/obj/structure/prop/resin_prop,
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water)
+"Qe" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen/east,
+/area/navalis/indoors)
+"Qf" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/paper_bin{
+	pixel_x = 9;
+	pixel_y = 22
+	},
+/obj/item/device/flashlight/pen{
+	pixel_x = 8
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"Qh" = (
+/turf/open/floor/darkgreen2/southwest,
+/area/navalis/indoors)
 "Qi" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal7";
@@ -15484,11 +16162,15 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors)
-"Ql" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal5"
-	},
-/turf/open/floor/prison/greenfull/east,
+"Qj" = (
+/turf/open/floor/darkgreen2,
+/area/navalis/indoors)
+"Qk" = (
+/turf/open/floor/darkgreen2/southeast,
+/area/navalis/indoors)
+"Qm" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/tile/tilewhite,
 /area/navalis/indoors)
 "Qn" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
@@ -15510,25 +16192,94 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"Qo" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/navalis/indoors)
+"Qp" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "case"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/navalis/indoors)
+"Qq" = (
+/turf/open/floor/prison/darkred2/southeast,
+/area/navalis/outdoors)
+"Qr" = (
+/turf/open/floor/prison/darkred2/southwest,
+/area/navalis/outdoors)
 "Qs" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"Qt" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	layer = 2;
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"Qu" = (
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0;
+	dir = 1
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"Qv" = (
+/turf/open/floor/darkgreen2/west,
+/area/navalis/indoors)
+"Qw" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/desert/deep,
+/area/navalis/outdoors)
 "Qx" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
 /turf/open/floor/almayer/blackfull/west,
 /area/navalis/oob/water/far)
+"Qy" = (
+/turf/open/floor/prison/darkredcorners2,
+/area/navalis/outdoors)
 "Qz" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/navalis/indoors)
+"QA" = (
+/turf/open/floor/prison/darkred2,
+/area/navalis/outdoors)
+"QB" = (
+/turf/open/floor/prison/darkredcorners2/west,
+/area/navalis/outdoors)
+"QC" = (
+/turf/open/floor/prison/blue/southeast,
+/area/navalis/outdoors)
 "QD" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/indoors)
+"QE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	dir = 1;
+	pixel_y = -6
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors)
 "QF" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -15540,6 +16291,67 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"QG" = (
+/turf/closed/wall/hybrisa/colony/office/reinforced,
+/area/navalis/indoors)
+"QH" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/abstract/ripple/shadow,
+/turf/open/gm/empty{
+	desc = "The Xenomorphs appear to have emerged from this gaping maw. However, it appears they not only have refused to retreat back in here, they have barricaded it…….."
+	},
+/area/navalis/oob/powered)
+"QI" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison,
+/area/navalis/outdoors)
+"QJ" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison,
+/area/navalis/outdoors)
+"QK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
+"QL" = (
+/obj/structure/machinery/light/spot{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
+"QM" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
+"QN" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_smooth"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"QO" = (
+/obj/structure/machinery/body_scanconsole,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_smooth"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"QP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitegreen/southwest,
+/area/navalis/indoors)
 "QQ" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15
@@ -15551,6 +16363,19 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"QR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_y = 12
+	},
+/turf/open/floor/prison/whitegreen/southeast,
+/area/navalis/indoors)
+"QS" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/navalis/indoors)
+"QT" = (
+/turf/open/floor/darkgreen2/northwest,
+/area/navalis/indoors)
 "QU" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15
@@ -15577,6 +16402,12 @@
 /obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"QW" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/empty{
+	desc = "The Xenomorphs appear to have emerged from this gaping maw. However, it appears they not only have refused to retreat back in here, they have barricaded it…….."
+	},
+/area/navalis/oob/powered)
 "QX" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras{
@@ -15589,6 +16420,45 @@
 	},
 /turf/open/floor/prison/blue,
 /area/navalis/indoors)
+"QY" = (
+/obj/effect/abstract/ripple/shadow,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/empty{
+	desc = "The Xenomorphs appear to have emerged from this gaping maw. However, it appears they not only have refused to retreat back in here, they have barricaded it…….."
+	},
+/area/navalis/oob/powered)
+"QZ" = (
+/obj/effect/abstract/ripple/shadow,
+/obj/effect/abstract/ripple/shadow,
+/obj/effect/abstract/ripple/shadow,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
+/obj/structure/platform/stone/strata/east,
+/turf/open/gm/empty{
+	desc = "The Xenomorphs appear to have emerged from this gaping maw. However, it appears they not only have refused to retreat back in here, they have barricaded it…….."
+	},
+/area/navalis/oob/powered)
+"Ra" = (
+/obj/structure/bed/roller,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	pixel_y = 18;
+	dir = 1
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/indoors)
+"Rb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitegreen/west,
+/area/navalis/indoors)
+"Rc" = (
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "Rd" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
@@ -15599,17 +16469,69 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"Re" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/processor{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/navalis/indoors)
 "Rf" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"Rg" = (
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2{
+	unacidable = 1;
+	pixel_y = 1;
+	pixel_x = 14;
+	density = 0;
+	explo_proof = 1
+	},
+/turf/open/floor/almayer/greenfull2,
+/area/navalis/outdoors)
 "Rh" = (
 /obj/structure/stairs{
 	color = "#a6aeab";
 	dir = 8
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/navalis/indoors)
+"Ri" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_y = 3
+	},
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/navalis/indoors)
+"Rj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sink/kitchen{
+	dir = 1;
+	pixel_y = -15
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_y = -9;
+	pixel_x = 6
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/navalis/indoors)
 "Rk" = (
 /obj/structure/surface/table/almayer,
@@ -15625,12 +16547,24 @@
 "Rm" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/navalis/outdoors)
+"Rn" = (
+/obj/structure/closet/secure_closet/fridge,
+/obj/structure/sign/safety/refridgeration{
+	pixel_y = -30
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/navalis/indoors)
 "Ro" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4,
 /turf/open/floor/almayer/greenfull2,
 /area/navalis/outdoors)
 "Rp" = (
 /obj/structure/machinery/computer/med_data,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/firealarm{
+	pixel_y = 25;
+	name = "medical emergency alarm"
+	},
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors)
 "Rq" = (
@@ -15641,10 +16575,47 @@
 /obj/structure/machinery/meter,
 /turf/open/floor/corsat,
 /area/navalis/indoors)
+"Rr" = (
+/obj/structure/sign/safety/coffee{
+	pixel_x = -18
+	},
+/turf/open/floor/prison/whitegreen/west,
+/area/navalis/indoors)
+"Rs" = (
+/obj/item/stack/rods{
+	amount = 25
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Rt" = (
+/obj/effect/landmark/queen_spawn,
+/turf/open/floor/almayer/greenfull2,
+/area/navalis/outdoors)
+"Ru" = (
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3{
+	pixel_x = -2;
+	pixel_y = -6;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3{
+	pixel_x = 10;
+	pixel_y = 15;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/oob)
 "Rv" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
-	pixel_x = 9
+	pixel_x = 9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -15653,14 +16624,53 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/almayer/plating,
 /area/navalis/outdoors)
+"Rx" = (
+/obj/structure/sign/poster/music{
+	pixel_x = -29;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/turf/open/floor/prison/whitegreen/southwest,
+/area/navalis/indoors)
 "Ry" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /turf/open/gm/river/desert/deep,
 /area/navalis/outdoors)
+"Rz" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/navalis/indoors)
+"RA" = (
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2{
+	pixel_y = -3;
+	pixel_x = -6;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2{
+	unacidable = 1;
+	pixel_y = 17;
+	pixel_x = -14;
+	density = 0;
+	explo_proof = 1
+	},
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/oob)
 "RB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -15675,6 +16685,121 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/indoors)
+"RD" = (
+/obj/structure/surface/table/almayer,
+/obj/item/trash/snack_bowl{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/navalis/indoors)
+"RE" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/navalis/indoors)
+"RF" = (
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"RG" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_x = 30
+	},
+/obj/item/stack/rods{
+	layer = 6
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/navalis/indoors)
+"RH" = (
+/turf/open/floor/darkblue2/southwest,
+/area/navalis/indoors)
+"RI" = (
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1{
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/oob)
+"RJ" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 4
+	},
+/obj/structure/machinery/newscaster{
+	pixel_x = -30;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/whitegreen/west,
+/area/navalis/indoors)
+"RK" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cup{
+	pixel_y = -12;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	layer = 4;
+	pixel_x = 17;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/navalis/indoors)
+"RL" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/dry_ramen{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = -2
+	},
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/navalis/indoors)
+"RM" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"RN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/navalis/indoors)
 "RO" = (
 /turf/open/floor/corsat/gamma,
 /area/navalis/indoors)
@@ -15686,12 +16811,185 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/west,
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/navalis/indoors)
+"RR" = (
+/turf/open/floor/darkblue2/west,
+/area/navalis/indoors)
+"RS" = (
+/turf/open/floor/darkblue2/east,
+/area/navalis/indoors)
+"RT" = (
+/obj/structure/machinery/vending/coffee{
+	density = 0;
+	pixel_x = 9;
+	pixel_y = 17
+	},
+/obj/structure/reagent_dispensers/water_cooler{
+	density = 0;
+	pixel_x = -9;
+	pixel_y = 9
+	},
+/obj/item/trash/crushed_cup{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 30;
+	pixel_x = -30
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/whitegreen/northwest,
+/area/navalis/indoors)
+"RU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18";
+	pixel_y = 17;
+	pixel_x = -11;
+	layer = 3.6
+	},
+/obj/structure/noticeboard{
+	pixel_y = 30
+	},
+/obj/structure/noticeboard{
+	pixel_y = 31;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes";
+	pixel_x = -2
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
+"RV" = (
+/obj/structure/sign/nosmoking_1{
+	layer = 2.8;
+	pixel_x = 33
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/navalis/indoors)
+"RW" = (
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 13;
+	pixel_y = 32
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
+"RX" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32;
+	pixel_x = 14
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/navalis/indoors)
 "RY" = (
 /obj/structure/curtain/colorable_transparent{
 	color = "#8bafa4";
 	layer = 3.2
 	},
 /turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
+"RZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitegreen/northeast,
+/area/navalis/indoors)
+"Sa" = (
+/obj/structure/flora/pottedplant{
+	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
+	icon_state = "pottedplant_21";
+	layer = 4;
+	name = "synthethic potted plant";
+	pixel_y = 14
+	},
+/turf/open/floor/hybrisa/tile/beige_bigtile,
+/area/navalis/indoors)
+"Sb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100;
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100;
+	pixel_y = 8;
+	pixel_x = 16
+	},
+/obj/structure/prop/hybrisa/misc/elevator_door{
+	pixel_x = -15
+	},
+/turf/open/floor/corsat/officetiles,
+/area/navalis/indoors)
+"Sc" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/cleanable/blood/gibs/robot{
+	pixel_y = 18;
+	pixel_x = -4
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100;
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/structure/prop/hybrisa/misc/elevator_door/right{
+	pixel_x = 18
+	},
+/turf/open/floor/corsat/officetiles,
+/area/navalis/indoors)
+"Sd" = (
+/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
+/area/navalis/oob)
+"Se" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
+"Sf" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/gm/river/desert/deep,
+/area/navalis/outdoors)
+"Sg" = (
+/turf/open/floor/darkblue2/northwest,
+/area/navalis/indoors)
+"Sh" = (
+/turf/open/floor/darkblue2/north,
+/area/navalis/indoors)
+"Si" = (
+/turf/open/floor/darkblue2/northeast,
+/area/navalis/indoors)
+"Sj" = (
+/turf/open/floor/darkblue2,
+/area/navalis/indoors)
+"Sk" = (
+/turf/open/floor/darkbrown2/northwest,
+/area/navalis/indoors)
+"Sl" = (
+/turf/open/floor/darkbrown2/north,
+/area/navalis/indoors)
+"Sm" = (
+/turf/open/floor/darkbrown2/northeast,
+/area/navalis/indoors)
+"Sn" = (
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
+/area/navalis/indoors)
+"So" = (
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/northwest,
 /area/navalis/indoors)
 "Sp" = (
 /obj/effect/decal/warning_stripes{
@@ -15732,10 +17030,47 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/outdoors)
+"Ss" = (
+/turf/open/floor/darkred2/southwest,
+/area/navalis/indoors)
+"St" = (
+/turf/open/floor/darkred2,
+/area/navalis/indoors)
 "Su" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/navalis/indoors)
+"Sv" = (
+/turf/open/floor/darkred2/southeast,
+/area/navalis/indoors)
+"Sw" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/wood,
+/area/navalis/indoors)
+"Sx" = (
+/turf/open/floor/darkred2/east,
+/area/navalis/indoors)
+"Sy" = (
+/turf/open/floor/prison,
+/area/navalis/oob/water/far)
+"Sz" = (
+/obj/structure/largecrate/empty,
+/obj/structure/largecrate/random/mini/chest/b{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"SA" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/oob/water/far)
+"SB" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/turf/open/floor/corsat/marked,
+/area/navalis/oob/water/far)
 "SC" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
@@ -15765,17 +17100,103 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"SF" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_x = 31
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"SG" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/prison/darkbrown2/north,
+/area/navalis/oob/water/far)
+"SH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	pixel_y = 10
+	},
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"SI" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_x = -2;
+	pixel_y = 20
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
 "SJ" = (
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors)
+"SK" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"SL" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_yellow"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"SM" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
 "SN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/almayer/greenfull2,
 /area/navalis/outdoors)
+"SO" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "sheater0"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"SP" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_white"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"SQ" = (
+/turf/open/space/basic,
+/area/navalis/oob/water/far)
+"SR" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/oob/water/far)
+"SS" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/prop/colony/canister{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/obj/item/prop/colony/canister{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/oob/water/far)
 "ST" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/navalis/indoors)
+"SU" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/oob/water/far)
 "SV" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite,
 /obj/effect/decal/warning_stripes{
@@ -15787,7 +17208,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal7";
 	pixel_y = -14;
-	pixel_x = 8
+	pixel_x = 8;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -15797,9 +17219,62 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors)
+"SY" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -14
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 8
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 8;
+	pixel_x = 14
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	layer = 3.2;
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"SZ" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "coolanttank"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"Ta" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_red"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"Tb" = (
+/turf/open/floor/prison/darkbrown2/southwest,
+/area/navalis/oob/water/far)
+"Tc" = (
+/turf/open/floor/prison/darkbrown2,
+/area/navalis/oob/water/far)
 "Td" = (
 /turf/open/floor/prison/greenblue/northeast,
 /area/navalis/outdoors)
+"Te" = (
+/obj/item/prop/colony/canister{
+	pixel_x = -7;
+	pixel_y = -7
+	},
+/turf/open/floor/prison/darkbrown2,
+/area/navalis/oob/water/far)
 "Tf" = (
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/navalis/indoors)
@@ -15807,30 +17282,50 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal7";
 	pixel_y = -14;
-	pixel_x = 15
+	pixel_x = 15;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = -8
+	pixel_x = -8;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = 9;
-	pixel_y = 10
+	pixel_y = 10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
+"Th" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"Ti" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "rack"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
 "Tj" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -42
+	pixel_x = -42;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal7";
 	pixel_y = 10;
-	pixel_x = -10
+	pixel_x = -10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -15841,17 +17336,94 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors)
+"Tl" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_green"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"Tm" = (
+/turf/open/floor/prison/darkbrown2/west,
+/area/navalis/oob/water/far)
+"Tn" = (
+/obj/structure/prop/resin_prop,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"To" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_blue"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
 "Tp" = (
 /turf/open/floor/prison/rampbottom/west,
 /area/navalis/outdoors)
-"Tx" = (
-/obj/structure/machinery/light{
-	invisibility = 101;
-	light_color = "#680b62";
-	needs_power = 0
+"Tq" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/prison,
+/area/navalis/oob/water/far)
+"Tr" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 10;
+	pixel_y = -4;
+	pixel_x = 8
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"Ts" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "chair"
 	},
 /turf/open/gm/river/desert/deep,
-/area/navalis/oob/powered)
+/area/navalis/oob/water/far)
+"Tt" = (
+/obj/structure/prop/resin_prop{
+	dir = 4;
+	icon_state = "chair"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"Tu" = (
+/obj/structure/prop/resin_prop{
+	dir = 8;
+	icon_state = "chair"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"Tv" = (
+/obj/structure/sign/poster/safety{
+	pixel_x = -28;
+	pixel_y = 4
+	},
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"Tw" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/structure/largecrate/random/barrel/white{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"Ty" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
 "Tz" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -15860,6 +17432,119 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/navalis/oob/water)
+"TA" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TB" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"TC" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/structure/machinery/meter{
+	pixel_y = 32;
+	pixel_x = 29
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 1
+	},
+/obj/structure/bed/stool{
+	buckling_y = 14;
+	layer = 4;
+	pixel_y = 14;
+	pixel_x = 7
+	},
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"TD" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TE" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/pipes/pipe2{
+	dir = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TF" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TG" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/item/stack/rods{
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"TH" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/effect/hybrisa/misc/fake/pipes/pipe2,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TI" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
 "TJ" = (
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -15873,6 +17558,69 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors)
+"TL" = (
+/obj/effect/hybrisa/misc/fake/pipes,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TM" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TN" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/oob/water/far)
+"TO" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TP" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
+"TQ" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/pipes,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/floor/corsat,
+/area/navalis/oob/water/far)
 "TR" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/effect/hybrisa/misc/fake/pipes/pipe5{
@@ -15885,16 +17633,24 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob)
+"TT" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/navalis/oob/water/far)
 "TV" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
 	icon_state = "stop_decal5";
 	pixel_y = -1;
-	pixel_x = -3
+	pixel_x = -3;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
-	pixel_y = 15
+	pixel_y = 15;
+	color = "#FFFF00"
 	},
 /obj/item/stack/rods{
 	pixel_y = 12;
@@ -15919,12 +17675,14 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = -10;
-	pixel_y = 10
+	pixel_y = 10;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = -10;
-	pixel_y = -14
+	pixel_y = -14;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -16006,12 +17764,6 @@
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors)
-"US" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "chair"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water/mid)
 "UX" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15
@@ -16032,12 +17784,14 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal11";
 	pixel_x = 9;
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -16079,7 +17833,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5";
 	pixel_x = 9;
-	pixel_y = -9
+	pixel_y = -9;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -16108,6 +17863,15 @@
 	icon_state = "triagedecaltopleft";
 	color = "#d3d3d3"
 	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 30
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_12";
+	pixel_x = 10;
+	pixel_y = 11;
+	layer = 3.6
+	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors)
 "VT" = (
@@ -16128,7 +17892,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = 15;
-	pixel_x = -16
+	pixel_x = -16;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -16136,12 +17901,14 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5";
 	pixel_x = -16;
-	pixel_y = 15
+	pixel_y = 15;
+	color = "#FFFF00"
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
 	pixel_x = -16;
-	pixel_y = -16
+	pixel_y = -16;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -16149,7 +17916,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_y = -9;
-	pixel_x = -10
+	pixel_x = -10;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
@@ -16194,6 +17962,15 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft";
 	color = "#d3d3d3"
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 30
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_12";
+	pixel_x = 10;
+	pixel_y = 2;
+	layer = 3.6
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors)
@@ -16292,12 +18069,6 @@
 "XK" = (
 /turf/open/floor/corsat/omega,
 /area/navalis/indoors)
-"XM" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/turf/open/floor/prison/greenfull/east,
-/area/navalis/indoors)
 "XQ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4;
@@ -16305,12 +18076,6 @@
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors)
-"XX" = (
-/obj/structure/prop/resin_prop{
-	icon_state = "rack"
-	},
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water)
 "XY" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -16444,6 +18209,10 @@
 /area/navalis/outdoors)
 "YP" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/prop/magazine/boots/n117{
+	pixel_x = 8;
+	pixel_y = 7
+	},
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "YT" = (
@@ -16498,7 +18267,7 @@
 	layer = 2
 	},
 /obj/structure/prop/oilrig/support_beam/brown{
-	layer = 1
+	layer = 1.1
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
@@ -16514,7 +18283,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
 	pixel_y = -9;
-	pixel_x = 1
+	pixel_x = 1;
+	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
@@ -16536,18 +18306,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/floor/almayer/greenfull2,
 /area/navalis/outdoors)
-"ZE" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101;
-	light_color = "#680b62";
-	needs_power = 0
-	},
-/turf/open/gm/empty{
-	desc = "The source of this.....growth. It may be better to throw a nuke down here, than to clear it out with manpower."
-	},
-/area/navalis/oob/powered)
 "ZG" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine{
@@ -21910,13 +23668,13 @@ DD
 DE
 DD
 DF
-kN
-kN
-kN
-DC
-kN
-kN
-kN
+JY
+Qy
+Qq
+Qc
+PS
+PN
+ex
 kN
 kN
 kN
@@ -22044,19 +23802,19 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+TP
+TI
+TD
+Tw
+Fl
+Tm
+Tm
+Tb
+SR
+Fl
+SG
+Sy
+Sy
 fZ
 fZ
 fZ
@@ -22074,13 +23832,13 @@ Yx
 Ns
 XY
 ai
-kN
-kN
-kN
-kN
-kN
-kN
-kN
+JY
+QA
+mV
+mV
+mV
+PO
+ex
 kN
 Yx
 Yx
@@ -22208,19 +23966,19 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+TQ
+TL
+TE
+Ty
+Fl
+Sy
+Sy
+Tc
+SS
+Fl
+Fl
+SB
+Fl
 fZ
 fZ
 fZ
@@ -22238,13 +23996,13 @@ Xm
 aI
 Yx
 kN
-kN
-kN
-kN
-kN
-kN
-kN
-kN
+QC
+QB
+Qr
+mV
+PV
+PR
+Px
 kN
 Yx
 ay
@@ -22372,19 +24130,19 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+Fl
+TM
+TF
+TA
+Fl
+Tq
+Sy
+Te
+SU
+Fl
+SH
+SF
+Sz
 fZ
 fZ
 fZ
@@ -22410,7 +24168,7 @@ yC
 yC
 Rw
 lg
-rD
+OY
 lb
 bf
 bf
@@ -22536,19 +24294,19 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+TT
+TN
+TG
+TB
+Fl
+Fl
+SB
+Fl
+Fl
+Fl
+SI
+Fl
+Fl
 fZ
 fZ
 gg
@@ -22573,8 +24331,8 @@ GZ
 JY
 cF
 cF
-ex
-GZ
+Pp
+OZ
 aB
 bf
 bf
@@ -22700,19 +24458,19 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+Fl
+TO
+TH
+TC
+Tv
+Tr
+SK
+Th
+SY
+SM
+SK
+Fl
+SA
 fZ
 gg
 gg
@@ -22728,12 +24486,12 @@ aj
 bf
 bf
 bf
-GZ
+QI
 JY
 cF
 cF
 ex
-GZ
+OZ
 JY
 cF
 cF
@@ -22892,17 +24650,17 @@ bf
 bf
 bf
 bf
-GZ
+QJ
 JY
 cF
 cF
 ex
-GZ
+Pa
 JY
 cF
 cF
 ex
-GZ
+Pa
 bf
 bf
 bf
@@ -23048,34 +24806,34 @@ gg
 gg
 jv
 jv
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-pK
-pK
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+Pb
+Pb
 ej
 ok
-pK
-pK
-pK
+Pb
+Pb
+Pb
 ej
 ok
-pK
-pK
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+Pb
+Pb
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+sV
 bf
 bf
 bf
@@ -23218,8 +24976,8 @@ PQ
 PQ
 PQ
 PQ
-bl
-bl
+sW
+sW
 cG
 Xi
 cC
@@ -23229,17 +24987,17 @@ YP
 Xi
 cC
 cC
-ZV
-cy
-bl
-bl
+Pq
+Pc
+sW
+sW
 Zg
 BT
 BT
 BT
 BT
 Zg
-fg
+sV
 bf
 bf
 bf
@@ -23382,7 +25140,7 @@ Zg
 Zg
 PQ
 PQ
-bl
+sW
 DO
 cH
 KD
@@ -23393,19 +25151,19 @@ GV
 KD
 fa
 fa
-OE
-cz
+Pr
+Pd
 JD
-bl
+sW
 BX
 Ib
 DN
 DN
 GN
 BQ
-fg
-fg
-fg
+sV
+sV
+sV
 bf
 bf
 bf
@@ -23548,17 +25306,17 @@ BT
 BT
 vl
 cJ
-cH
+QK
 FW
 fa
 cD
-Gk
+Qt
 Kz
 FW
 cD
 fa
 Gk
-cz
+Pd
 cJ
 vl
 BX
@@ -23569,7 +25327,7 @@ DL
 BQ
 Zg
 Zg
-fg
+sV
 bf
 bf
 bf
@@ -23699,9 +25457,9 @@ uw
 aO
 bf
 bf
-fg
-fg
-bl
+sV
+sV
+sV
 Zg
 BX
 Cm
@@ -23710,8 +25468,8 @@ Cd
 Cd
 Cd
 Cd
-bl
-JB
+sW
+Ra
 cH
 FW
 cD
@@ -23724,7 +25482,7 @@ cD
 Gk
 cz
 JB
-bl
+sW
 Zg
 Cj
 Zg
@@ -23733,9 +25491,9 @@ Cj
 BT
 Zg
 Zg
-fg
-fg
-fg
+sV
+sV
+sV
 bf
 bf
 ap
@@ -23863,20 +25621,20 @@ uw
 aO
 bf
 bf
-fg
+sV
 Zg
 Zg
 BT
 BX
 Cn
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-cH
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+QL
 YU
 YL
 YL
@@ -23886,20 +25644,20 @@ YU
 YL
 YL
 MQ
-cz
-bl
-bl
-bl
-bl
+Pe
+sW
+sW
+sW
+sW
 oj
-bl
-bl
+sW
+sW
 Dm
 Dr
 BT
 BT
 Zg
-fg
+sV
 bf
 bf
 aw
@@ -24027,43 +25785,43 @@ uw
 aO
 bf
 bf
-fg
+sV
 Zg
 BT
 BV
 Dg
 Cn
-bl
-cG
-cC
+sW
+RT
+RJ
 Mm
-cy
+Rx
 LE
-bl
-cH
+sW
+QM
+Pz
 cD
 cD
 cD
+Pz
 cD
 cD
+Pz
 cD
-cD
-cD
-cD
-cz
-bl
+Pg
+sW
 Ja
-cG
-cC
+OO
+OK
 cC
 GW
-bl
+sW
 Dz
 Gf
 DN
 FE
 BQ
-fg
+sV
 bf
 bf
 aw
@@ -24191,43 +25949,43 @@ uw
 aP
 bf
 bf
-fg
+sV
 BX
 Cm
 NJ
 Dg
 Cn
-bl
+sW
 MM
-Mn
+RK
 Mn
 cz
-LE
-bl
+Ri
+sW
 OI
 UP
 UP
 VS
-cE
-cE
+Qe
+Qe
 cE
 Xb
 UP
 UP
 Ki
-bl
-bl
-cH
+sW
+sW
+OP
 cD
-cD
+fa
 GY
-bl
+sW
 Ce
 Di
 DH
 FF
 Zg
-fg
+sV
 bf
 bf
 ar
@@ -24355,43 +26113,43 @@ JV
 aS
 bO
 bf
-fg
+sV
 BX
 De
 NK
 BQ
-bl
-bl
-cH
-Mn
-Mn
+sW
+sW
+RU
+RL
+RD
 cz
-ff
-bl
+Rj
+sW
 os
 oq
 oo
 bl
 Mg
-Mg
-Mg
+Qf
+PW
 bl
 os
 oq
 oo
-bl
-bl
-cH
-cD
+sW
+sW
+OU
+fa
 cD
 Ha
-bl
-bl
+sW
+sW
 Di
 Dg
 FG
 Dr
-fg
+sV
 bf
 aw
 jz
@@ -24519,20 +26277,20 @@ cs
 NE
 bO
 bf
-fg
+sV
 Zg
 NT
 DL
 BQ
-bl
+sW
 MW
 cM
-Mp
+RM
 Mp
 cz
-qv
-bl
-cH
+Rn
+sW
+PA
 fa
 cz
 bl
@@ -24540,22 +26298,22 @@ Rp
 SD
 Fh
 bl
-cH
+PA
 fa
 cz
-bl
+sW
 Jc
 Iy
-cD
-cD
-cK
+tg
+fa
+Ah
 GO
-bl
+sW
 Dj
 Dg
 FH
 DN
-fg
+sV
 bf
 aw
 CZ
@@ -24683,43 +26441,43 @@ uw
 aW
 bf
 bf
-fg
+sV
 Zg
 Zg
 Cj
 Zg
-bl
+sW
 MX
-cE
+RV
 Mq
 Mq
 LZ
 LF
-bl
+sW
 cH
 fa
-cz
+Pg
 bl
+Qu
 cD
-cD
-cD
+PX
 bl
-cH
+PB
 fa
 cz
-bl
+sW
 Jd
 Iz
 cE
 cE
 cE
-cB
-bl
+ut
+sW
 Cj
 Zg
 Cj
 Cj
-fg
+sV
 bf
 bf
 ap
@@ -24847,19 +26605,19 @@ uw
 aO
 bf
 bf
-fg
+sV
 Zg
-bl
-bl
-bl
-bl
-bl
-bl
-pK
+sW
+sW
+sW
+sW
+sW
+sW
+uu
 oh
-pK
-bl
-bl
+uu
+sW
+sW
 ot
 or
 op
@@ -24870,20 +26628,20 @@ pK
 bl
 ot
 or
-op
-bl
-pK
-pK
+Ph
+sW
+uu
+uu
 Id
 ej
 ok
-bl
-bl
-bl
-bl
-bl
+sW
+sW
+sW
+sW
+sW
 Zg
-fg
+sV
 bf
 bf
 aw
@@ -25011,17 +26769,18 @@ uw
 aO
 bf
 bf
-fg
+sV
 Zg
-bl
+sW
 NM
 Nt
 Ne
-pK
+uu
 cG
 cC
 cC
 cC
+Rr
 cC
 cC
 cC
@@ -25039,15 +26798,14 @@ cC
 cC
 cC
 cC
-cC
-cy
-pK
+Bk
+uu
 cZ
 Gh
 FT
-bl
+sW
 Zg
-fg
+sV
 bf
 bf
 aw
@@ -25175,9 +26933,9 @@ uw
 aP
 bf
 bf
-fg
+sV
 Zg
-bl
+sW
 NO
 cD
 Nf
@@ -25206,12 +26964,12 @@ cE
 cL
 cz
 oi
-da
+tq
 cD
 FU
-bl
+sW
 Zg
-fg
+sV
 bf
 bf
 ar
@@ -25339,16 +27097,16 @@ JV
 sT
 bO
 bf
-fg
+sV
 Zg
-bl
+sW
 NQ
 Nu
 Ng
-pK
+uu
 cH
 cz
-bl
+sW
 IA
 LG
 cQ
@@ -25366,16 +27124,16 @@ cQ
 cQ
 cN
 IA
-bl
+sW
 cH
 cz
-pK
+uu
 da
 cR
 FV
-bl
+sW
 Zg
-fg
+sV
 jv
 bf
 cA
@@ -25503,16 +27261,16 @@ cs
 NE
 bO
 bf
-fg
+sV
 Zg
-bl
-bl
-bl
-bl
-bl
-cH
+sW
+sW
+sW
+sW
+sW
+RW
 cz
-bl
+sW
 Ma
 LJ
 cD
@@ -25530,16 +27288,16 @@ cD
 JE
 cO
 IC
-bl
+sW
 cH
 cz
-bl
-da
+sW
+tr
 cQ
 FV
-bl
+sW
 Zg
-fg
+sV
 bf
 aw
 iY
@@ -25667,16 +27425,16 @@ uw
 aW
 bf
 bf
-fg
+sV
 Zg
-bl
+sW
 Da
 CP
 CP
 CL
 cH
 cz
-bl
+sW
 Mb
 da
 cD
@@ -25687,23 +27445,23 @@ cS
 Kk
 cS
 Kq
-bl
+sW
 JZ
 cD
 cD
 cD
 cO
 aQ
-bl
+sW
 cH
 cz
-bl
+uu
 Gu
 cD
-FX
-bl
+sY
+sW
 Zg
-fg
+sV
 bf
 jv
 jv
@@ -25831,43 +27589,43 @@ uw
 aO
 bf
 bf
-fg
+sV
 Zg
-bl
+sW
 Db
 CT
 CQ
-CM
+Sb
 NL
 cz
-bl
-bl
+sW
+sW
 LJ
 cD
-cD
+QN
 cD
 cD
 Kk
 KN
 cS
 cS
-bl
+sW
 JE
 cD
-cD
+Pi
 cD
 Je
-bl
-bl
+sW
+sW
 cH
 cz
-bl
+uu
 Gu
 cD
-cO
-bl
+ta
+sW
 Zg
-fg
+sV
 jv
 jv
 jv
@@ -25995,43 +27753,43 @@ uw
 aO
 bf
 bf
-fg
+sV
 Zg
-bl
+sW
 Db
 CU
 CR
-CN
+Sc
 NL
 cz
-bl
-bl
+sW
+sW
 LK
 cD
-cD
+QO
 JE
 RY
-bl
+sW
 cS
 cS
 Kr
 Kk
 cD
 cD
-cD
+Pj
 cD
 Je
-bl
-bl
+sW
+sW
 cH
 cz
-bl
+uu
 Gv
 cD
 cO
 vl
 Zg
-fg
+sV
 jv
 wc
 Rf
@@ -26159,23 +27917,23 @@ uw
 aP
 bf
 bf
-fg
+sV
 Zg
-bl
+sW
 Dc
 CS
 CS
 es
 cH
 cz
-bl
+sW
 aQ
 da
 cD
 cD
 cD
 LH
-bl
+sW
 KP
 cS
 Kk
@@ -26186,16 +27944,16 @@ cD
 cD
 cO
 aQ
-bl
+sW
 cH
 cz
-bl
+uu
 Gv
 cD
-cO
-bl
+tb
+sW
 Zg
-fg
+sV
 bf
 jv
 ar
@@ -26323,16 +28081,16 @@ JV
 aS
 bO
 bf
-fg
+sV
 Zg
-bl
-bl
-bl
-bl
-bl
-cH
+sW
+sW
+sW
+sW
+sW
+RX
 cz
-bl
+sW
 Mc
 LJ
 cD
@@ -26350,16 +28108,16 @@ cD
 cD
 cO
 ID
-bl
+sW
 cH
 cz
-bl
-da
+sW
+tr
 cR
 FX
-bl
+sW
 Zg
-fg
+sV
 bf
 aw
 ax
@@ -26487,16 +28245,16 @@ cs
 NE
 bO
 bf
-fg
+sV
 Zg
-bl
+sW
 NR
 Nv
 Ni
-pK
+uu
 cH
 cz
-bl
+sW
 IA
 LM
 cR
@@ -26514,16 +28272,16 @@ cR
 cR
 cP
 IA
-bl
+sW
 cH
 cz
-pK
+uu
 da
 cQ
-FU
-bl
+tc
+sW
 Zg
-fg
+sV
 bf
 aw
 CZ
@@ -26651,9 +28409,9 @@ uw
 aW
 bf
 bf
-fg
+sV
 Zg
-bl
+sW
 NO
 cD
 Nf
@@ -26681,13 +28439,13 @@ cC
 cC
 cM
 cz
-pK
+uu
 da
-cD
-FU
-bl
+tg
+td
+sW
 Zg
-fg
+sV
 bf
 bf
 ap
@@ -26815,13 +28573,13 @@ uw
 aO
 bf
 bf
-fg
+sV
 Zg
-bl
+sW
 NS
 Ny
 Nk
-pK
+uu
 cI
 cE
 cE
@@ -26845,13 +28603,13 @@ cE
 cE
 cE
 cB
-pK
+uu
 db
-cR
+th
 Ga
-bl
+sW
 Zg
-fg
+sV
 bf
 bf
 aw
@@ -26979,43 +28737,43 @@ uw
 aO
 bf
 bf
-fg
+sV
 Zg
-bl
-bl
-bl
-bl
-bl
+sW
+sW
+sW
+sW
+sW
 ej
 ok
-pK
-pK
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-pK
-pK
+uu
+uu
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+uu
+uu
 ej
 ok
-bl
-bl
+sW
+sW
 xD
-bl
-bl
+sW
+sW
 Zg
-fg
+sV
 bf
 bf
 aw
@@ -27143,7 +28901,7 @@ nV
 aP
 bf
 bf
-fg
+sV
 Zg
 Zg
 ox
@@ -27174,12 +28932,12 @@ cC
 cC
 cy
 oi
-cG
-cy
-bl
+ts
+vo
+sW
 Di
 BQ
-fg
+sV
 bf
 bf
 ar
@@ -27307,17 +29065,17 @@ dW
 bV
 bO
 bf
-fg
+sV
 Zg
 Zg
 bl
 NB
 No
-bl
+sW
 cI
 cE
-cE
-cE
+RE
+Rz
 cE
 cE
 cE
@@ -27337,13 +29095,13 @@ Ie
 Ie
 HA
 cB
-bl
-cH
+sW
+tt
 Gj
-bl
+sW
 Di
 BQ
-fg
+sV
 bf
 aw
 av
@@ -27471,43 +29229,43 @@ we
 ch
 bO
 bf
-fg
+sV
 Zg
 Zg
-af
-af
-af
-af
-bl
-pK
+Sd
+Sd
+Sd
+Sd
+sW
+uu
 ej
 ok
-pK
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-pK
+uu
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+uu
 ej
 If
-pK
-bl
-bl
-cH
+uu
+sW
+sW
+tu
 Gl
-bl
+sW
 Dt
 BQ
-fg
+sV
 bf
 aw
 fc
@@ -27635,28 +29393,28 @@ nV
 aW
 bf
 bf
-fg
+sV
 Zg
 Zg
 BX
 Vg
 CW
-bl
+sW
 MN
 Mz
 Ms
 cC
 LN
-cC
-cy
-pK
+Rb
+QP
+uu
 Lf
 KS
 KQ
 KE
 Ks
 Kl
-pK
+uu
 cS
 ef
 cS
@@ -27664,14 +29422,14 @@ ef
 IE
 Ig
 ef
-bl
+sW
 GQ
-cJ
+tN
 Gn
-bl
+sW
 Cj
 BT
-fg
+sV
 bf
 bf
 ap
@@ -27799,17 +29557,17 @@ nV
 aO
 bf
 bf
-fg
+sV
 BT
 BT
 BX
 DL
 DH
-bl
+sW
 MO
 Zg
-Zg
-Zg
+RF
+Rc
 LP
 cD
 Zg
@@ -27828,14 +29586,14 @@ Jg
 IF
 Ih
 cS
-bl
+sW
 GR
-cB
-bl
-bl
+tO
+sW
+sW
 BX
 Cm
-fg
+sV
 bf
 bf
 aw
@@ -27963,22 +29721,22 @@ nV
 aO
 bf
 bf
-fg
+sV
 Cd
 Dm
 Dr
 FF
 Zg
-bl
+sW
 cH
 MA
 Mt
 Md
 LS
-Zg
+Rc
 cz
 ej
-Lg
+QE
 fa
 fa
 fa
@@ -27992,14 +29750,14 @@ Jh
 IG
 Ih
 ef
-bl
-cJ
-bl
-bl
+sW
+uA
+sW
+sW
 Gb
 BX
 Cn
-fg
+sV
 bf
 bf
 aw
@@ -28127,13 +29885,13 @@ uw
 aP
 bf
 bf
-fg
+sV
 Ce
 Dz
 DN
 GN
 BQ
-bl
+sW
 cH
 MB
 Mv
@@ -28141,14 +29899,14 @@ Me
 LU
 Zg
 Lv
-pK
+uu
 Lh
 cL
 cD
 cD
 cT
 Ko
-pK
+uu
 cS
 ef
 cS
@@ -28156,14 +29914,14 @@ ef
 IJ
 Ih
 cS
-bl
+sW
 oj
-bl
-bl
+sW
+sW
 Zg
 BX
 Cn
-fg
+sV
 bf
 bf
 ar
@@ -28291,28 +30049,28 @@ JV
 aS
 bO
 bf
-fg
-fg
-fg
+sV
+sV
+sV
 NT
 DL
 BQ
-bl
-cH
+sW
+PA
 LP
 LW
 Mf
 LW
 Lw
-cB
-fg
-fg
+QR
+sV
+sV
 KT
 KF
 KF
 Kt
-fg
-fg
+sV
+sV
 cS
 cS
 cS
@@ -28320,14 +30078,14 @@ Ji
 IK
 Ii
 HB
-bl
+sW
 Ce
 Ce
 Di
 BQ
-fg
-fg
-fg
+sV
+sV
+sV
 bf
 aw
 ax
@@ -28457,39 +30215,39 @@ bO
 bf
 bf
 bf
-fg
+sV
 Zg
 Cj
 Zg
-bl
-cI
-cE
-cE
+sW
+RZ
+RN
+RG
 Zg
-Zg
+Rs
 Ly
-fg
-fg
+sV
+sV
 bf
 bf
 bf
 bf
 bf
 bf
-fg
-fg
+sV
+sV
 cS
 cS
 Jl
 IL
 Ij
 HC
-bl
+sW
 Ce
 Ce
 Di
 BQ
-fg
+sV
 bf
 bf
 bf
@@ -28621,18 +30379,18 @@ aN
 bf
 bf
 bf
-fg
-fg
-fg
+sV
+sV
+sV
 Zg
-bl
-bl
-bl
-bl
-bl
+sW
+sW
+sW
+sW
+sW
 oj
-fg
-fg
+sV
+sV
 bf
 bf
 bf
@@ -28641,19 +30399,19 @@ bf
 bf
 bf
 bf
-fg
-fg
+sV
+sV
 oj
-kg
-kg
-kg
-kg
-bl
+Of
+Of
+Of
+Of
+sW
 CW
 CW
-fg
-fg
-fg
+sV
+sV
+sV
 bf
 bf
 bf
@@ -28787,7 +30545,7 @@ bf
 bf
 bf
 bf
-fg
+sV
 Zg
 Zg
 Zg
@@ -28795,7 +30553,7 @@ Zg
 Zg
 Zg
 Zg
-fg
+sV
 bf
 bf
 bf
@@ -28806,7 +30564,7 @@ bK
 bf
 bf
 bf
-fg
+sV
 Zg
 Zg
 Zg
@@ -28815,7 +30573,7 @@ Zg
 Zg
 Cj
 Cj
-fg
+sV
 bf
 bf
 bf
@@ -28951,15 +30709,15 @@ aN
 bK
 bf
 bf
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+sV
 bf
 bf
 bP
@@ -28970,16 +30728,16 @@ Pw
 aC
 bf
 bf
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+sV
+sV
 bf
 bf
 aq
@@ -29425,12 +31183,12 @@ bB
 cw
 lM
 jv
-fg
-fg
-fg
-fg
-fg
-fg
+QG
+QG
+QG
+QG
+QG
+QG
 bf
 bf
 bf
@@ -29587,17 +31345,17 @@ VO
 bO
 bf
 lM
-fg
-fg
-fg
+QG
+QG
+QG
 Zg
 BT
 BT
 Zg
-fg
-fg
-fg
-fg
+QG
+QG
+QG
+QG
 bf
 bf
 Hy
@@ -29607,15 +31365,15 @@ Hy
 Hy
 bf
 bf
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+QS
+QS
+QS
+QS
+QS
+QS
+QS
+QS
+QS
 bf
 bf
 SC
@@ -29751,7 +31509,7 @@ aD
 bf
 bf
 bf
-fg
+QG
 Zg
 Zg
 BX
@@ -29761,7 +31519,7 @@ BQ
 Zg
 Zg
 Zg
-fg
+QG
 bf
 bf
 bf
@@ -29771,7 +31529,7 @@ bf
 bf
 bf
 bf
-fg
+QS
 Zg
 BT
 BT
@@ -29779,7 +31537,7 @@ BT
 BT
 BT
 Zg
-fg
+QG
 bf
 bf
 bf
@@ -29913,9 +31671,9 @@ VO
 aD
 bf
 bf
-fg
-fg
-fg
+QG
+QG
+QG
 Zg
 BX
 Cm
@@ -29925,17 +31683,17 @@ Ds
 BQ
 Zg
 Zg
-fg
-fg
-fg
-fg
-fg
+QG
+QG
+QG
+QG
+QG
 ej
 ej
 ej
 ej
 ej
-fg
+QS
 BX
 Cm
 Cd
@@ -29943,8 +31701,8 @@ Cd
 Cd
 Dm
 BQ
-fg
-fg
+QG
+QG
 bf
 bf
 bf
@@ -30077,17 +31835,17 @@ aD
 bf
 bf
 bf
-fg
+QG
 Zg
 Zg
 Zg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+QG
+QG
+QG
+QG
+QG
+QG
+QG
 Zg
 Zg
 Zg
@@ -30108,8 +31866,8 @@ CW
 Dj
 BQ
 Zg
-fg
-fg
+QG
+QG
 bf
 bf
 bf
@@ -30238,32 +31996,32 @@ jv
 VO
 aD
 bf
-fg
-fg
-fg
-fg
+QG
+QG
+QG
+QG
 Zg
-fg
-fg
-fg
+QG
+QG
+QG
 ti
 if
 if
 mL
 ti
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+QG
+QG
+QG
+QG
+QG
+QG
+QG
 dS
 dS
 dA
 dT
 cW
-bl
+QS
 Zg
 Cj
 Cj
@@ -30273,8 +32031,8 @@ Cj
 Zg
 Zg
 Zg
-fg
-fg
+QG
+QG
 bf
 bf
 bf
@@ -30402,12 +32160,12 @@ uw
 Sr
 bf
 bf
-fg
+QG
 Zg
 BT
 BT
 Zg
-fg
+QG
 ti
 Bu
 Bn
@@ -30427,18 +32185,18 @@ cY
 dA
 ea
 cY
-bl
-bl
-bl
-bl
-bl
-bl
-bl
-bl
+QS
+QS
+QS
+QS
+QS
+QS
+QS
+QS
 Zg
 Zg
 Zg
-fg
+QG
 bf
 bf
 bf
@@ -30566,12 +32324,12 @@ JV
 aS
 bO
 bf
-fg
+QG
 BX
 Cm
 Dm
 BQ
-fg
+QG
 ti
 mW
 Bt
@@ -30590,19 +32348,19 @@ fg
 cX
 dA
 dT
-bl
-bl
+QS
+QS
 HK
 oy
 dx
 dx
 BH
 co
-bl
-bl
+QS
+QS
 BT
 Zg
-fg
+QG
 bf
 bK
 bf
@@ -30730,12 +32488,12 @@ cs
 NE
 bO
 bf
-fg
+QG
 BX
 Vg
 Dt
 BQ
-fg
+QG
 if
 mW
 Bt
@@ -30754,7 +32512,7 @@ jq
 cX
 dA
 dT
-bl
+QS
 ST
 lC
 ds
@@ -30763,10 +32521,10 @@ ds
 ds
 do
 Mu
-bl
+QS
 Dm
 BQ
-fg
+QG
 bM
 aE
 bO
@@ -30894,12 +32652,12 @@ uw
 aW
 bf
 bf
-fg
+QG
 BX
 DJ
 DH
 Zg
-fg
+QG
 if
 Bv
 Bo
@@ -30909,7 +32667,7 @@ Bo
 Bh
 if
 dE
-fg
+QG
 md
 dV
 oE
@@ -30918,7 +32676,7 @@ jq
 cX
 dA
 dT
-bl
+QS
 tf
 dp
 dp
@@ -30927,10 +32685,10 @@ dp
 dp
 dp
 hn
-bl
+QS
 Di
 BQ
-fg
+QG
 bM
 aG
 bO
@@ -31058,22 +32816,22 @@ uw
 aO
 bf
 bf
-fg
+QG
 BX
 DJ
 BQ
-bl
-fg
-fg
+QS
+QG
+QG
 pK
 wS
 pK
-fg
-fg
-fg
-fg
-fg
-fg
+QG
+QG
+QG
+QG
+QG
+QG
 yh
 dV
 dV
@@ -31082,19 +32840,19 @@ jq
 cX
 dA
 dT
-bl
-bl
+QS
+QS
 Vh
-bl
-bl
-bl
-bl
+QS
+QS
+QS
+QS
 Vh
-bl
-bl
+QS
+QS
 Di
 BQ
-fg
+QG
 bf
 Hy
 bf
@@ -31222,11 +32980,11 @@ uw
 aO
 bf
 bf
-fg
+QG
 BX
 DL
 BQ
-bl
+QS
 dE
 dE
 dE
@@ -31236,17 +32994,17 @@ dE
 sN
 sN
 nY
-fg
-fg
-fg
+QG
+QG
+QG
 af
 af
 af
-fg
+QG
 cX
 dA
 dT
-bl
+QS
 lX
 dq
 dq
@@ -31255,10 +33013,10 @@ dq
 dq
 dq
 nX
-bl
+QS
 Dj
 BQ
-fg
+QG
 bf
 bf
 bf
@@ -31386,11 +33144,11 @@ uw
 aP
 bf
 bf
-fg
+QG
 Zg
 Cj
 Zg
-bl
+QS
 dX
 dX
 dX
@@ -31410,7 +33168,7 @@ cb
 cX
 dA
 dT
-bl
+QS
 dO
 ds
 ds
@@ -31419,10 +33177,10 @@ ds
 ds
 ds
 dg
-bl
+QS
 Cj
 Zg
-fg
+QG
 bf
 bf
 bf
@@ -31550,11 +33308,11 @@ JV
 sT
 bO
 bf
-fg
+QG
 BT
 BT
 Zg
-bl
+QS
 dX
 qM
 qM
@@ -31574,7 +33332,7 @@ cb
 cX
 dA
 dT
-bl
+QS
 dO
 oA
 oA
@@ -31583,10 +33341,10 @@ ds
 oA
 oA
 dg
-bl
+QS
 Zg
 BT
-fg
+QG
 bf
 bK
 bf
@@ -31714,11 +33472,11 @@ UD
 NE
 bO
 bf
-fg
+QG
 DN
 Uo
 BQ
-bl
+QS
 dX
 jl
 lV
@@ -31738,7 +33496,7 @@ cb
 cX
 dA
 dT
-bl
+QS
 dO
 ds
 cg
@@ -31747,10 +33505,10 @@ ds
 cg
 ds
 dg
-bl
+QS
 BX
 Cm
-fg
+QG
 bM
 aE
 bO
@@ -31878,11 +33636,11 @@ uw
 aW
 bf
 bf
-fg
+QG
 BX
 DM
 BQ
-bl
+QS
 dX
 nQ
 BR
@@ -31902,7 +33660,7 @@ Lb
 cX
 dA
 dT
-bl
+QS
 dO
 ds
 ds
@@ -31911,10 +33669,10 @@ ds
 ds
 ds
 sA
-bl
+QS
 BX
 Cn
-fg
+QG
 bM
 aG
 bO
@@ -32042,11 +33800,11 @@ uw
 aO
 bf
 bf
-fg
+QG
 BX
 DL
 BQ
-bl
+QS
 dX
 dX
 dX
@@ -32066,7 +33824,7 @@ KA
 cX
 dA
 dT
-bl
+QS
 dP
 dF
 dF
@@ -32075,10 +33833,10 @@ dz
 ds
 ds
 sB
-bl
+QS
 BX
 Cn
-fg
+QG
 bf
 Hy
 bf
@@ -32206,11 +33964,11 @@ uw
 aO
 bf
 bf
-fg
+QG
 Zg
 Cj
 Zg
-bl
+QS
 dX
 jr
 oz
@@ -32230,7 +33988,7 @@ KA
 cX
 dA
 dT
-bl
+QS
 py
 pu
 ps
@@ -32239,10 +33997,10 @@ Iv
 ds
 ds
 dg
-bl
+QS
 BX
 Cn
-fg
+QG
 bf
 bf
 bf
@@ -32370,11 +34128,11 @@ uw
 aP
 bf
 bf
-fg
+QG
 Zg
 Zg
 Zg
-bl
+QS
 dX
 aX
 aX
@@ -32394,7 +34152,7 @@ cW
 cX
 dA
 dT
-bl
+QS
 pm
 pv
 lz
@@ -32403,10 +34161,10 @@ Iv
 FN
 ds
 me
-bl
+QS
 BX
 De
-fg
+QG
 bf
 bK
 bf
@@ -32534,11 +34292,11 @@ JV
 aS
 bO
 bf
-fg
+QG
 Zg
 Zg
 Zg
-bl
+QS
 dX
 dX
 dX
@@ -32551,14 +34309,14 @@ dX
 Su
 dY
 dX
-bl
+QS
 vY
 dj
 cX
 cX
 dA
 dT
-bl
+QS
 pB
 pw
 dG
@@ -32567,10 +34325,10 @@ Iv
 ds
 eM
 od
-bl
+QS
 Zg
 Cj
-fg
+QG
 bM
 aE
 bO
@@ -32699,10 +34457,10 @@ NE
 bO
 bf
 fg
-fg
+QG
 oj
-bl
-bl
+QS
+QS
 dE
 dE
 dE
@@ -32715,14 +34473,14 @@ dX
 dX
 dX
 dX
-bl
+QS
 mT
 dj
 cX
 cX
 dA
 dT
-bl
+QS
 pC
 pj
 pj
@@ -32730,11 +34488,11 @@ pr
 dC
 dt
 dh
-bl
-bl
-bl
+QS
+QS
+QS
 oj
-fg
+QG
 bM
 aG
 bO
@@ -32866,35 +34624,35 @@ ej
 ef
 dS
 cW
-bl
-bl
+QS
+QS
 On
 pK
 Vh
 pK
 pK
 pK
-bl
-bl
-bl
-bl
-bl
-bl
+QS
+QS
+QS
+QS
+QS
+QS
 dM
 dk
 cY
 cX
 dA
 dT
-bl
-bl
-bl
-bl
-bl
+QS
+QS
+QS
+QS
+QS
 bl
 Vh
-bl
-bl
+QS
+QS
 dS
 cW
 ef
@@ -33522,35 +35280,35 @@ ej
 ef
 ea
 cY
-bl
-bl
-bl
+QS
+QS
+QS
 pK
 Vh
 pK
-bl
-bl
-bl
-bl
-bl
+QS
+QS
+QS
+QS
+QS
 pK
 Vh
 pK
-bl
-bl
-bl
+QS
+QS
+QS
 pK
 Vh
 pK
-bl
-bl
-bl
-bl
+QS
+QS
+QS
+QS
 pK
 Vh
 pK
-bl
-bl
+QS
+QS
 ea
 cY
 ef
@@ -33682,11 +35440,11 @@ cs
 NE
 bO
 bf
-fg
-bl
+QG
+QG
 ON
-bl
-bl
+QS
+QS
 Xh
 qB
 dv
@@ -33695,30 +35453,30 @@ dv
 dv
 xY
 oD
-bl
+QS
 yN
 fs
 dj
 lW
 Ej
-bl
+QS
 Pl
 BJ
 BJ
 ty
 zk
-bl
+QS
 dX
 dX
 dX
 vK
 dX
 dX
-bl
-bl
-bl
+QS
+QS
+QS
 oj
-fg
+QG
 bM
 aE
 bO
@@ -33846,11 +35604,11 @@ uw
 aW
 bf
 bf
-fg
+QG
 Gm
 mN
 HZ
-bl
+QS
 KY
 px
 RB
@@ -33859,19 +35617,19 @@ dj
 fb
 cl
 Ox
-bl
+QS
 Rk
 Ox
 UA
 ff
 bp
-bl
+QS
 IO
 dj
 ba
 An
 WT
-bl
+QS
 vW
 vR
 vF
@@ -33879,10 +35637,10 @@ vL
 vI
 vF
 vy
-bl
+QS
 Zg
 Zg
-fg
+QG
 bM
 aG
 bO
@@ -34010,11 +35768,11 @@ uw
 aO
 bf
 bf
-fg
+QG
 Gm
 mN
 mN
-bl
+QS
 sz
 dj
 dj
@@ -34023,19 +35781,19 @@ dj
 dj
 qr
 Ox
-bl
+QS
 Hc
 yk
 UA
 ff
 ff
-bl
+QS
 Ba
 dj
 ba
 dj
 sF
-bl
+QS
 vM
 du
 pl
@@ -34043,10 +35801,10 @@ vM
 du
 pl
 vz
-bl
+QS
 Zg
 Zg
-fg
+QG
 bf
 Hy
 bf
@@ -34174,11 +35932,11 @@ uw
 aO
 bf
 bf
-fg
+QG
 AF
-bl
+QS
 SV
-bl
+QS
 OR
 GH
 XC
@@ -34187,19 +35945,19 @@ RQ
 dj
 dj
 OM
-bl
+QS
 dI
 dw
 UA
 ff
 ff
-bl
+QS
 ug
 dj
 ba
 pR
 yo
-bl
+QS
 vM
 du
 pl
@@ -34207,10 +35965,10 @@ vM
 du
 pl
 vz
-bl
+QS
 Zg
 Zg
-fg
+QG
 bf
 bf
 bf
@@ -34338,11 +36096,11 @@ uw
 aP
 bf
 bf
-fg
+QG
 ct
-bl
+QS
 ct
-bl
+QS
 pS
 yt
 eu
@@ -34351,19 +36109,19 @@ js
 dj
 dj
 dw
-bl
+QS
 JH
 uO
 dj
 ff
 qv
-bl
+QS
 FR
 DK
 DK
 eK
 JQ
-bl
+QS
 vM
 du
 pl
@@ -34371,10 +36129,10 @@ vM
 du
 pl
 vz
-bl
+QS
 Zg
 Zg
-fg
+QG
 bf
 bf
 bf
@@ -34502,11 +36260,11 @@ JV
 aS
 bO
 bf
-fg
-bl
-bl
-bl
-bl
+QG
+QS
+QS
+QS
+QS
 cn
 dj
 dj
@@ -34515,19 +36273,19 @@ js
 dj
 dj
 dw
-bl
-bl
+QS
+QS
+pK
+Vh
+pK
+QS
+QS
+QS
 pK
 Vh
 pK
 bl
-bl
-bl
-pK
-Vh
-pK
-bl
-bl
+QS
 vM
 du
 pl
@@ -34535,10 +36293,10 @@ vM
 du
 pl
 vz
-bl
+QS
 Zg
 Zg
-fg
+QG
 bf
 bK
 bf
@@ -34670,7 +36428,7 @@ Fr
 Zg
 SX
 Jm
-bl
+QS
 Yh
 Gi
 dj
@@ -34679,7 +36437,7 @@ js
 dj
 qr
 dw
-bl
+QS
 Hx
 sx
 dv
@@ -34691,7 +36449,7 @@ dv
 dv
 yy
 Kd
-bl
+QS
 vX
 vT
 vG
@@ -34699,10 +36457,10 @@ vN
 vJ
 vG
 vA
-bl
+QS
 Zg
 Zg
-fg
+QG
 bM
 aE
 bO
@@ -34830,11 +36588,11 @@ uw
 aW
 bf
 bf
-fg
-fg
-fg
+QG
+QG
+QG
 SX
-bl
+QS
 cd
 dj
 yx
@@ -34855,7 +36613,7 @@ iL
 TK
 dj
 Nw
-bl
+QS
 Rh
 oG
 oG
@@ -34863,10 +36621,10 @@ oG
 oG
 oG
 xl
-bl
-fg
-fg
-fg
+QS
+QS
+QG
+QG
 bM
 aG
 bO
@@ -34996,9 +36754,9 @@ bf
 bf
 bf
 bf
-fg
+QG
 Zg
-bl
+QS
 fj
 OT
 ba
@@ -35007,7 +36765,7 @@ js
 dj
 wN
 Lk
-bl
+QS
 yn
 cu
 Yl
@@ -35019,7 +36777,7 @@ dj
 ef
 dj
 dw
-bl
+QS
 dH
 dv
 vQ
@@ -35027,8 +36785,8 @@ dv
 rQ
 dm
 Tf
-bl
-fg
+QS
+QG
 bf
 bf
 bf
@@ -35160,9 +36918,9 @@ aC
 bf
 bf
 bf
-fg
-fg
-fg
+QG
+QG
+QG
 GE
 Ir
 AI
@@ -35171,7 +36929,7 @@ js
 dj
 dj
 bX
-bl
+QS
 dY
 vV
 yl
@@ -35183,16 +36941,16 @@ dj
 dj
 dj
 dw
-bl
+QS
 dI
 dj
 dj
 dj
 dj
 dw
-fg
-fg
-fg
+QG
+QG
+QG
 bf
 bf
 bf
@@ -35326,7 +37084,7 @@ bf
 bf
 bf
 bf
-fg
+QG
 oH
 ev
 ev
@@ -35335,7 +37093,7 @@ js
 wk
 lS
 fu
-bl
+QS
 dd
 Su
 ym
@@ -35347,14 +37105,14 @@ Lc
 mu
 yv
 ZI
-bl
+QS
 dJ
 dy
 dy
 dy
 dy
 dn
-fg
+QG
 bf
 bf
 bf
@@ -35490,35 +37248,35 @@ aC
 bf
 bf
 bf
-fg
-fg
+QG
+QG
 rt
 rt
 rt
 rt
 rt
 rt
-fg
-fg
-fg
+QG
+QG
+QG
 qI
 qI
 qI
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+QG
+QG
+QG
+QG
+QG
+QG
+QG
+QG
+QG
 rt
 rt
 rt
 rt
-fg
-fg
+QG
+QG
 bf
 bf
 bP
@@ -35743,12 +37501,12 @@ TJ
 TJ
 fe
 hU
-af
+bm
 ii
 HN
 HN
 QV
-af
+bm
 LD
 hU
 eO
@@ -35756,20 +37514,20 @@ eO
 eO
 eO
 fe
-LD
+cm
 af
 ii
 HN
 HN
 QV
-af
-LD
+bm
+cm
 eO
 eO
 eO
 eO
-LD
-af
+cm
+bm
 gg
 pH
 oM
@@ -35907,35 +37665,35 @@ TJ
 TJ
 TJ
 eO
-af
-af
-af
-af
-af
-af
-af
-af
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+bm
 mY
 mY
 mY
 mY
-af
-af
-af
-af
-af
-af
-af
-af
-af
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+bm
+bm
 de
 de
 de
 de
-af
-af
-af
-af
+bm
+bm
+bm
+bm
 oM
 oM
 qq
@@ -36072,34 +37830,34 @@ TJ
 eY
 mY
 ge
-bl
+bd
 cq
 LY
-bl
-bl
-bl
+bd
+bd
+bd
 XQ
 eN
 hX
 hX
 eN
 LY
-bl
-bl
-bl
+bd
+bd
+bd
 LY
-af
+bm
 LY
-bl
-af
+bd
+bm
 oQ
 hX
 hX
 hV
-af
-bl
+bm
+bd
 eV
-fg
+aM
 oM
 oM
 oM
@@ -36252,7 +38010,7 @@ eN
 eN
 eN
 cq
-af
+bm
 XQ
 eV
 eV
@@ -36264,7 +38022,7 @@ bt
 bt
 eV
 eV
-fg
+aM
 oM
 oM
 oM
@@ -36415,9 +38173,9 @@ Ot
 Ot
 IN
 eN
-bl
-af
-bl
+bd
+bm
+bd
 eN
 eN
 eN
@@ -36429,7 +38187,7 @@ bt
 bt
 bt
 bt
-fg
+aM
 oM
 oM
 oM
@@ -36558,8 +38316,8 @@ iI
 iE
 iA
 iA
-HY
-af
+ow
+bm
 AV
 dX
 yV
@@ -36580,7 +38338,7 @@ yr
 Nh
 eN
 eV
-af
+bm
 eV
 eN
 Wl
@@ -36588,14 +38346,14 @@ Ot
 Tj
 Nh
 eN
-bl
-bl
+bd
+bd
 bt
 bt
 bt
 bt
-fg
-fg
+aM
+aM
 aH
 tZ
 gg
@@ -36723,8 +38481,8 @@ jv
 jv
 jv
 jv
-af
-bl
+bm
+bd
 eN
 yW
 Nh
@@ -36744,7 +38502,7 @@ dX
 Nh
 eN
 oJ
-af
+bm
 eV
 eN
 yu
@@ -36752,14 +38510,14 @@ Vy
 Hq
 UY
 eN
-bl
+bd
 fJ
 bt
 bt
 bt
 bt
 fH
-fg
+aM
 aH
 jv
 gg
@@ -36887,29 +38645,29 @@ gg
 gg
 gg
 pH
-af
+bm
 Ap
 eN
 Wh
 Nh
-fg
-fg
-fg
+aM
+aM
+aM
 bt
 bt
 oW
 qo
-fg
-fg
-fg
-fg
+aM
+aM
+aM
+aM
 eN
 yu
 Nh
 eN
-bl
-af
-bl
+bd
+bm
+bd
 eN
 yu
 Nh
@@ -37013,17 +38771,17 @@ fZ
 gg
 pF
 zD
-kg
-ci
-ci
-kg
-ci
-ci
-kg
-ci
-ci
-kg
-kg
+dc
+ua
+ua
+dc
+ua
+ua
+dc
+ua
+ua
+dc
+dc
 zD
 ju
 gg
@@ -37056,23 +38814,23 @@ LY
 eN
 Wh
 Nh
-fg
-fg
+aM
+aM
 qo
 qo
 bt
 bt
-fg
-fg
-fg
-fg
-fg
-fg
+aM
+aM
+aM
+aM
+aM
+aM
 yH
 Nh
 eN
 oR
-af
+bm
 oL
 eN
 yu
@@ -37176,8 +38934,8 @@ fZ
 gg
 pF
 zD
-kg
-kg
+dc
+dc
 sD
 eN
 eN
@@ -37187,8 +38945,8 @@ bD
 eN
 eN
 XD
-kg
-kg
+dc
+dc
 zD
 ju
 fh
@@ -37220,7 +38978,7 @@ LY
 eN
 Wh
 Nh
-fg
+aM
 eN
 eN
 eN
@@ -37236,14 +38994,14 @@ yH
 Nh
 eN
 eV
-af
+bm
 eV
 eN
 yu
 Nh
 eN
-fg
-fg
+aM
+aM
 fW
 eV
 oK
@@ -37251,7 +39009,7 @@ eN
 bt
 eV
 eW
-fg
+aM
 aH
 jv
 gg
@@ -37307,9 +39065,9 @@ TY
 qj
 Nj
 qj
-Ql
-XM
-mn
+mt
+mk
+TY
 qj
 Nj
 qj
@@ -37339,8 +39097,8 @@ Kb
 fh
 dU
 zD
-kg
-kg
+dc
+dc
 eX
 Mo
 eV
@@ -37352,8 +39110,8 @@ eV
 eV
 At
 eX
-kg
-kg
+dc
+dc
 zD
 fF
 zg
@@ -37379,7 +39137,7 @@ gg
 gg
 gg
 oa
-af
+bm
 LY
 eN
 Wh
@@ -37399,23 +39157,23 @@ Ot
 Tj
 Nh
 eN
-bl
-af
-bl
+bd
+bm
+bd
 eN
 yH
 Nh
-fg
-fg
+aM
+aM
 gf
 fX
 fQ
 bt
 fJ
-bl
+bd
 eV
 fI
-fg
+aM
 aH
 jv
 gg
@@ -37502,8 +39260,8 @@ zm
 mq
 cV
 zD
-kg
-kg
+dc
+dc
 Ei
 zO
 Mo
@@ -37517,8 +39275,8 @@ eV
 At
 zO
 zO
-kg
-kg
+dc
+dc
 zD
 Qn
 Up
@@ -37543,7 +39301,7 @@ gg
 gg
 gg
 pH
-af
+bm
 LY
 eN
 yJ
@@ -37569,17 +39327,17 @@ eP
 Ot
 Tj
 Nh
-fg
+aM
 gp
 eV
 eV
 fR
 bt
 fJ
-bl
+bd
 bt
 fI
-fg
+aM
 aH
 jv
 gg
@@ -37665,8 +39423,8 @@ fZ
 fh
 dU
 zD
-kg
-kg
+dc
+dc
 eX
 eX
 eX
@@ -37682,8 +39440,8 @@ XD
 eX
 eX
 eX
-kg
-kg
+dc
+dc
 zD
 fF
 gg
@@ -37707,7 +39465,7 @@ gg
 gg
 gg
 pH
-af
+bm
 LY
 eN
 eN
@@ -37717,7 +39475,7 @@ eN
 eN
 eN
 eN
-bl
+bd
 eN
 eN
 eN
@@ -37733,17 +39491,17 @@ eP
 dX
 dX
 Nh
-fg
+aM
 xi
 xg
 qo
 fS
 bt
 fK
-bl
+bd
 bt
 fI
-fg
+aM
 aH
 jv
 gg
@@ -37828,8 +39586,8 @@ fZ
 gg
 dU
 zD
-kg
-kg
+dc
+dc
 Zj
 zO
 zO
@@ -37847,8 +39605,8 @@ zO
 Ei
 zO
 aF
-kg
-kg
+dc
+dc
 zD
 ju
 gg
@@ -37871,7 +39629,7 @@ gg
 gg
 gg
 pH
-af
+bm
 LY
 bt
 qo
@@ -37879,9 +39637,9 @@ qo
 qo
 bt
 bt
-bl
-bl
-bl
+bd
+bd
+bd
 eX
 bt
 bt
@@ -37897,17 +39655,17 @@ eP
 dX
 dX
 Nh
-fg
+aM
 xj
 xh
 eV
 fS
 bt
 fL
-bl
+bd
 bt
 fI
-fg
+aM
 aH
 jv
 gg
@@ -37991,8 +39749,8 @@ yX
 gg
 pF
 zD
-kg
-kg
+dc
+dc
 eX
 al
 eX
@@ -38012,8 +39770,8 @@ eX
 eX
 al
 eX
-kg
-kg
+dc
+dc
 zD
 ju
 gg
@@ -38035,7 +39793,7 @@ gg
 gg
 gg
 pH
-af
+bm
 LY
 bt
 eN
@@ -38043,7 +39801,7 @@ eN
 eN
 bt
 bt
-bl
+bd
 eV
 eV
 bt
@@ -38061,17 +39819,17 @@ eP
 yA
 yr
 Nh
-fg
+aM
 gr
 eV
 eV
 fR
 bt
 fJ
-bl
+bd
 bt
 fI
-fg
+aM
 aH
 jv
 gg
@@ -38154,8 +39912,8 @@ yX
 yX
 pF
 zD
-kg
-kg
+dc
+dc
 al
 eX
 al
@@ -38177,8 +39935,8 @@ eX
 al
 eX
 al
-kg
-kg
+dc
+dc
 zD
 ju
 gg
@@ -38199,7 +39957,7 @@ gg
 gg
 gg
 pH
-af
+bm
 LY
 eW
 eT
@@ -38219,23 +39977,23 @@ eU
 eU
 eU
 eT
-bl
-af
-bl
+bd
+bm
+bd
 eN
 yI
 Nh
-fg
-fg
+aM
+aM
 gj
 gb
 fT
 bt
 fJ
-bl
+bd
 eV
 fI
-fg
+aM
 aH
 jv
 gg
@@ -38317,8 +40075,8 @@ yX
 yX
 pF
 zD
-kg
-kg
+dc
+dc
 eX
 al
 eX
@@ -38342,8 +40100,8 @@ al
 eX
 al
 eX
-kg
-kg
+dc
+dc
 bY
 gg
 gg
@@ -38363,12 +40121,12 @@ gg
 gg
 gg
 wM
-af
+bm
 XQ
 eV
-bl
+aM
 eN
-bl
+aM
 LY
 Pt
 LY
@@ -38376,21 +40134,21 @@ LY
 LY
 Pt
 LY
-bl
+aM
 eN
-bl
+aM
 LY
 LY
 LY
 LY
 LY
-af
+bm
 eV
 eN
 Wh
 Nh
 eN
-fg
+aM
 fg
 gc
 eV
@@ -38399,7 +40157,7 @@ eN
 bt
 eV
 fI
-fg
+aM
 aH
 jv
 gg
@@ -38480,8 +40238,8 @@ oe
 yX
 yX
 zD
-kg
-kg
+dc
+dc
 aK
 aK
 aK
@@ -38507,7 +40265,7 @@ aK
 aK
 aK
 aK
-kg
+dc
 bZ
 jh
 jh
@@ -38527,34 +40285,34 @@ jh
 jh
 jh
 jh
-af
-af
-af
-af
+bm
+bm
+bm
+bm
 dr
-af
-af
+bm
+nq
 oX
-af
-af
-af
+bm
+bm
+bm
 oV
-af
-af
-ci
-af
-af
-af
-af
-af
-af
-af
+bm
+bm
+hH
+bm
+bm
+bm
+bm
+bm
+bm
+bm
 bt
 eN
 Wh
 Nh
 eN
-fg
+aM
 bt
 bt
 eV
@@ -38563,7 +40321,7 @@ eN
 bt
 eV
 fI
-fg
+aM
 aH
 jv
 gg
@@ -38694,9 +40452,9 @@ bJ
 ru
 dX
 eN
-bl
+aM
 eN
-af
+nq
 oY
 hX
 LY
@@ -38704,15 +40462,15 @@ LY
 LY
 hX
 oU
-af
+bm
 eN
-bl
+aM
 cq
 LY
 LY
 LY
 XQ
-fg
+aM
 bt
 eN
 Wh
@@ -38727,7 +40485,7 @@ bt
 bt
 bt
 fH
-fg
+aM
 aH
 jv
 gg
@@ -38876,7 +40634,7 @@ eN
 eN
 bt
 oJ
-fg
+aM
 eV
 eN
 Wh
@@ -38884,7 +40642,7 @@ Nh
 eN
 bt
 bt
-bl
+bd
 fJ
 bt
 bt
@@ -38976,7 +40734,7 @@ gL
 gL
 gL
 kZ
-fg
+aM
 eN
 eV
 gB
@@ -38996,7 +40754,7 @@ aT
 ad
 eV
 eN
-fg
+aM
 jw
 gL
 gL
@@ -39039,17 +40797,17 @@ Ot
 IN
 eN
 bt
-fg
-fg
-fg
+aM
+aM
+aM
 eN
 yH
 Nh
 eN
 eN
 eN
-bl
-bl
+bd
+bd
 eN
 eN
 bt
@@ -39139,8 +40897,8 @@ yY
 yX
 Dq
 bD
-fg
-fg
+aM
+aM
 eN
 gB
 aT
@@ -39160,13 +40918,13 @@ eR
 aT
 ad
 eN
-fg
-fg
+aM
+aM
 bD
 bD
 bD
-bl
-bl
+bd
+bd
 bW
 bR
 mX
@@ -39183,8 +40941,8 @@ Jk
 bi
 bh
 bL
-bl
-bl
+bd
+bd
 eN
 oK
 eN
@@ -39204,7 +40962,7 @@ Nh
 eN
 bt
 oK
-fg
+aM
 eN
 Go
 Tj
@@ -39219,7 +40977,7 @@ eN
 bt
 bt
 eW
-fg
+aM
 aH
 jv
 gg
@@ -39368,7 +41126,7 @@ Nh
 eN
 bt
 oK
-fg
+aM
 eN
 yI
 Vy
@@ -39383,7 +41141,7 @@ eN
 bt
 eV
 fI
-fg
+aM
 aH
 jv
 gg
@@ -39532,7 +41290,7 @@ Nh
 eN
 bt
 oK
-fg
+aM
 eN
 Wh
 Nh
@@ -39547,7 +41305,7 @@ eN
 bt
 eV
 fI
-fg
+aM
 aH
 jv
 gg
@@ -39695,23 +41453,23 @@ yu
 Nh
 eN
 bt
-fg
-fg
-fg
+aM
+aM
+aM
 Wh
 Nh
-fg
-fg
-fg
-fg
+aM
+aM
+aM
+aM
 Wh
 Nh
 eN
-bl
+bd
 bt
 eV
 fI
-fg
+aM
 aH
 jv
 gg
@@ -39794,9 +41552,9 @@ sr
 eX
 bD
 bD
-fg
-fg
-fg
+aM
+aM
+aM
 eN
 bs
 bs
@@ -39816,13 +41574,13 @@ aT
 bs
 bs
 eN
-fg
-fg
-fg
+aM
+aM
+aM
 bD
 bD
-bl
-bl
+bd
+bd
 bW
 bR
 mX
@@ -39839,8 +41597,8 @@ Jk
 bi
 bh
 bL
-bl
-bl
+bd
+bd
 eN
 oZ
 eN
@@ -39860,22 +41618,22 @@ Nh
 eN
 bt
 oK
-fg
+aM
 eN
 Wh
 Nh
-fg
+aM
 gh
 hm
-fg
+aM
 Wh
 Nh
 eN
-bl
+bd
 bt
 bt
 fI
-fg
+aM
 aH
 jv
 gg
@@ -40024,7 +41782,7 @@ Nh
 eN
 bt
 oK
-fg
+aM
 eN
 Wh
 Nh
@@ -40034,12 +41792,12 @@ gh
 gk
 Wh
 Nh
-bl
-bl
+bd
+bd
 bt
 bt
 fI
-fg
+aM
 aH
 jv
 gg
@@ -40177,9 +41935,9 @@ Nh
 eN
 gW
 bl
-kg
-kg
-kg
+dc
+dc
+dc
 bl
 gJ
 eN
@@ -40187,9 +41945,9 @@ yu
 Nh
 eN
 bt
-fg
-fg
-fg
+aM
+aM
+aM
 yH
 Nh
 gv
@@ -40198,12 +41956,12 @@ gs
 gl
 Wh
 Nh
-bl
-bl
+bd
+bd
 bt
 bt
 fI
-fg
+aM
 aH
 jv
 gg
@@ -40363,11 +42121,11 @@ gm
 Wh
 Nh
 eN
-bl
+bd
 bt
 bt
 fH
-fg
+aM
 aH
 jv
 gg
@@ -40451,8 +42209,8 @@ yY
 bD
 bD
 bD
-fg
-fg
+aM
+aM
 eN
 eR
 aT
@@ -40472,13 +42230,13 @@ gB
 aT
 aU
 eN
-fg
-fg
+aM
+aM
 bD
 bD
 bD
-bl
-bl
+bd
+bd
 bW
 bR
 mX
@@ -40495,8 +42253,8 @@ Jk
 bi
 bh
 bL
-bl
-bl
+bd
+bd
 eN
 oK
 eN
@@ -40527,7 +42285,7 @@ eN
 yH
 Nh
 eN
-bl
+bd
 bt
 eV
 eN
@@ -40616,7 +42374,7 @@ yY
 gM
 yY
 kY
-fg
+aM
 eN
 eV
 eR
@@ -40636,7 +42394,7 @@ aT
 aU
 eV
 eN
-fg
+aM
 jx
 gM
 gM
@@ -40859,7 +42617,7 @@ eN
 bt
 eV
 eW
-fg
+aM
 aH
 jv
 gg
@@ -41023,7 +42781,7 @@ eN
 bt
 bt
 fH
-fg
+aM
 aH
 jv
 gg
@@ -41091,8 +42849,8 @@ yY
 yY
 yY
 qi
-ZE
-ZE
+qi
+qi
 qi
 yY
 yY
@@ -41105,7 +42863,7 @@ hr
 Zb
 yX
 yX
-kg
+dc
 Tk
 Tk
 Tk
@@ -41131,7 +42889,7 @@ Yv
 Yv
 Yv
 Yv
-kg
+dc
 Gx
 kf
 yX
@@ -41151,9 +42909,9 @@ cv
 cr
 yX
 Rd
-fg
-fg
-fg
+aM
+aM
+aM
 eN
 Pk
 wW
@@ -41185,9 +42943,9 @@ eN
 eN
 eN
 eW
-fg
-fg
-fg
+aM
+aM
+aM
 aH
 jv
 gg
@@ -41269,8 +43027,8 @@ yY
 yY
 yX
 yX
-kg
-kg
+dc
+dc
 eX
 al
 eX
@@ -41294,8 +43052,8 @@ al
 eX
 Rq
 eX
-kg
-kg
+dc
+dc
 zD
 gg
 yX
@@ -41317,7 +43075,7 @@ yX
 jv
 jv
 jv
-fg
+aM
 eN
 Kv
 yr
@@ -41340,16 +43098,16 @@ yA
 yA
 yA
 Tg
-bl
+bd
 bt
 bt
 bt
 bt
-bl
+bd
 bt
 bt
 fI
-fg
+aM
 aH
 aH
 JR
@@ -41434,8 +43192,8 @@ LT
 FY
 yY
 nZ
-kg
-kg
+dc
+dc
 al
 eX
 al
@@ -41457,8 +43215,8 @@ eX
 al
 eX
 al
-kg
-kg
+dc
+dc
 zD
 gi
 gg
@@ -41481,7 +43239,7 @@ yX
 yX
 jv
 up
-fg
+aM
 eN
 oJ
 zR
@@ -41503,17 +43261,17 @@ eN
 eN
 eN
 eN
-bl
-bl
-bl
+bd
+bd
+bd
 ej
 ej
-bl
-bl
-bl
+bd
+bd
+bd
 bt
 fI
-fg
+aM
 aH
 JR
 jv
@@ -41599,8 +43357,8 @@ yY
 yY
 Zb
 nZ
-kg
-kg
+dc
+dc
 eX
 al
 eX
@@ -41620,8 +43378,8 @@ eX
 eX
 al
 eX
-kg
-kg
+dc
+dc
 zD
 gi
 gg
@@ -41645,7 +43403,7 @@ yX
 yX
 jv
 aH
-fg
+aM
 eT
 DU
 ha
@@ -41667,17 +43425,17 @@ bt
 bt
 bt
 bt
-bl
+bd
 Un
-bl
+bd
 eN
 eN
-bl
+bd
 Un
-bl
+bd
 bt
 fH
-fg
+aM
 aH
 jv
 gg
@@ -41764,8 +43522,8 @@ yY
 wP
 hr
 yX
-kg
-kg
+dc
+dc
 Gs
 zO
 zO
@@ -41783,8 +43541,8 @@ zO
 zO
 zO
 Jb
-kg
-kg
+dc
+dc
 jo
 yX
 yX
@@ -41809,7 +43567,7 @@ yX
 yX
 jv
 aH
-fg
+aM
 hd
 bt
 hb
@@ -41831,14 +43589,14 @@ oK
 bt
 bt
 bt
-bl
+bd
 eV
-bl
+bd
 ej
 ej
-bl
+bd
 eV
-bl
+bd
 bt
 bt
 ua
@@ -41929,8 +43687,8 @@ og
 LT
 yY
 yX
-kg
-kg
+dc
+dc
 eX
 eX
 eX
@@ -41946,8 +43704,8 @@ XD
 eX
 eX
 eX
-kg
-kg
+dc
+dc
 jo
 yX
 yX
@@ -42072,7 +43830,7 @@ yX
 yX
 si
 Zb
-tM
+ds
 yY
 yY
 yY
@@ -42094,8 +43852,8 @@ Zb
 yY
 yY
 eN
-kg
-kg
+dc
+dc
 zO
 zO
 Mo
@@ -42109,8 +43867,8 @@ eV
 At
 zO
 zO
-kg
-kg
+dc
+dc
 zD
 yX
 yX
@@ -42142,22 +43900,22 @@ bt
 bt
 hb
 bl
-kg
-kg
-kg
+dc
+dc
+dc
 bl
 gQ
 fE
 bl
-kg
-kg
-kg
+dc
+dc
+dc
 bl
 gA
 bt
-bl
-bl
-bl
+bd
+bd
+bd
 bt
 ej
 eV
@@ -42169,7 +43927,7 @@ bt
 bt
 bt
 eW
-fg
+aM
 aH
 jv
 gg
@@ -42259,8 +44017,8 @@ yY
 yY
 yY
 yY
-kg
-kg
+dc
+dc
 eX
 Mo
 eV
@@ -42272,8 +44030,8 @@ eV
 eV
 At
 eX
-kg
-kg
+dc
+dc
 yX
 yX
 yX
@@ -42301,7 +44059,7 @@ yX
 gg
 jv
 aH
-fg
+aM
 eT
 bt
 hb
@@ -42320,20 +44078,20 @@ ej
 gA
 bt
 bt
-bl
+bd
 bt
 bt
 eV
 eV
 eV
-bl
-bl
+bd
+bd
 bt
 bt
 bt
 bt
-fg
-fg
+aM
+aM
 aH
 ub
 gg
@@ -42401,10 +44159,10 @@ af
 eL
 Zg
 yY
-tM
+ds
 yY
 yY
-tM
+ds
 bC
 bC
 yY
@@ -42424,8 +44182,8 @@ LT
 yY
 yY
 yY
-kg
-kg
+dc
+dc
 sD
 eN
 eN
@@ -42435,8 +44193,8 @@ bD
 eN
 eN
 XD
-kg
-kg
+dc
+dc
 yX
 yX
 hG
@@ -42464,9 +44222,9 @@ yX
 yX
 yX
 yX
-fg
-fg
-fg
+aM
+aM
+aM
 bt
 hb
 ej
@@ -42484,18 +44242,18 @@ ej
 gA
 bt
 bt
-bl
+bd
 bt
 bt
 ej
 eV
 ej
-bl
-bl
+bd
+bd
 bt
 bt
 bt
-fg
+aM
 oM
 oM
 oM
@@ -42565,21 +44323,21 @@ yX
 wC
 LT
 hr
-tM
-tM
-tM
+ds
+ds
+ds
 eL
 bC
 bC
-tM
+ds
 hr
-tM
+ds
 yY
 yY
 pN
 uC
-tM
-tM
+ds
+ds
 yY
 og
 Zg
@@ -42590,16 +44348,16 @@ hr
 yY
 nZ
 yX
-kg
+dc
 ua
 ua
-kg
+dc
 ua
 ua
-kg
+dc
 ua
 ua
-kg
+dc
 oC
 yX
 yX
@@ -42631,7 +44389,7 @@ oM
 oM
 oM
 oM
-fg
+aM
 hc
 gT
 gT
@@ -42647,9 +44405,9 @@ gE
 gE
 gC
 bt
-bl
-bl
-bl
+bd
+bd
+bd
 bt
 bt
 bt
@@ -42658,7 +44416,7 @@ bt
 bt
 bt
 bt
-fg
+aM
 oM
 oM
 oM
@@ -42724,27 +44482,27 @@ yX
 yX
 xf
 yX
-tM
-tM
-tM
+Sj
+ds
+ds
 yY
 yY
-tM
+ds
 Zg
-tM
-tM
-tM
+ds
+ds
+ds
 pN
-tM
-tM
-tM
+ds
+ds
+ds
 yY
-tM
+ds
 yY
-tM
-tM
+ds
+ds
 hr
-tM
+PC
 Zb
 Zb
 Zg
@@ -42796,7 +44554,7 @@ oM
 oM
 oM
 oM
-fg
+aM
 eW
 eT
 bt
@@ -42812,7 +44570,7 @@ bt
 bt
 eW
 eT
-bl
+bd
 eW
 eT
 eN
@@ -42821,7 +44579,7 @@ eN
 eN
 eN
 eW
-fg
+aM
 oM
 oM
 oM
@@ -42888,27 +44646,27 @@ jv
 yX
 ep
 yX
-tM
-tM
+Sj
+ds
 yY
-tM
-tM
+Sg
+RR
 yY
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
+RR
+RR
+RH
+ds
+ds
+ds
+QT
+Qv
+Qv
+Qv
+Qv
+Qh
+ds
+ds
+PC
 Zb
 Zb
 yY
@@ -42961,31 +44719,31 @@ pi
 oM
 oM
 oM
-fg
-fg
+aM
+aM
 ua
 ua
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+aM
+aM
+aM
+aM
+aM
+aM
+aM
 ua
 ua
-fg
-fg
-fg
-fg
-fg
+aM
+aM
+aM
+aM
+aM
 ua
 ua
 ua
 ua
 ua
-fg
-fg
+aM
+aM
 oM
 oM
 qq
@@ -43052,27 +44810,27 @@ bF
 yX
 yX
 yX
-tM
-tM
-tM
-tM
+Sj
+ds
+ds
+Sh
 Zg
 LT
 Zg
 bl
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 bl
 bl
 bl
 bl
-tM
-tM
-tM
-tM
+Qj
+ds
+ds
+PC
 bl
 nZ
 eN
@@ -43125,7 +44883,7 @@ qq
 pi
 oM
 oM
-fg
+aM
 aH
 aH
 aH
@@ -43216,27 +44974,27 @@ tE
 ye
 LT
 yY
-tM
-uD
-uy
-tM
+Sj
+ds
+ds
+Sh
 Zg
 Zg
 dl
 yd
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 KX
 Lj
 nK
 bl
-tM
-uD
-uy
-tM
+Qj
+ds
+ds
+PC
 bl
 nZ
 wf
@@ -43380,27 +45138,27 @@ yY
 yY
 hr
 yY
-tM
-uE
-uz
+Sj
+uD
+uy
 Zg
 Zg
 Zg
 KZ
 MC
 Hg
-tM
-tM
+ds
+ds
 xV
 sC
 KZ
 Ll
 KU
 bl
-tM
-uE
-uz
-tM
+Qj
+uD
+uy
+PC
 bl
 nZ
 eN
@@ -43544,27 +45302,27 @@ bl
 yX
 yX
 bl
-tM
+Sj
 uE
 uz
-tM
+Sh
 bl
 sP
 dl
 ME
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 tz
 Lm
 KX
 bl
-tM
+Qj
 uE
 uz
-tM
+PC
 bl
 yX
 yX
@@ -43711,24 +45469,24 @@ yX
 LT
 uE
 uz
-tM
+Sh
 bl
 bl
 bl
 bl
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 bl
 bl
 bl
 bl
-tM
+Qj
 uE
 uz
-tM
+PC
 bl
 Hv
 JF
@@ -43875,24 +45633,24 @@ yX
 yX
 uE
 uz
-tM
+Sh
 bl
 MG
 MP
 MG
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 tz
 Lj
 nK
 bl
-tM
+Qj
 uE
 uz
-tM
+PC
 bl
 bl
 JG
@@ -44039,24 +45797,24 @@ yX
 yX
 NW
 uz
-tM
+Sh
 bl
 MY
 MH
 MH
 xU
 yb
-tM
+ds
 xZ
 sC
 KZ
 Ln
 KZ
 bl
-tM
+Qj
 uE
 uz
-tM
+PC
 bl
 Jn
 Jn
@@ -44203,24 +45961,24 @@ yX
 yX
 uE
 uz
-tM
+Sh
 bl
 tj
 MS
 um
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 KX
 KX
 KU
 bl
-tM
+Qj
 uE
 uz
-tM
+PC
 bl
 tv
 tv
@@ -44364,27 +46122,27 @@ tX
 tX
 LT
 yX
-tM
+Sj
 uE
 uz
-tM
+Sh
 bl
 bl
 bl
 bl
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 bl
 bl
 bl
 bl
-tM
+Qj
 uE
 uz
-tM
+PC
 bl
 tv
 tv
@@ -44531,24 +46289,24 @@ yX
 LT
 uE
 uz
-tM
+Sh
 bl
 MP
 dl
 MG
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 um
 Lo
 nK
 bl
-tM
+Qj
 uE
 uz
-tM
+PC
 bl
 JI
 JI
@@ -44692,27 +46450,27 @@ tX
 Oa
 tX
 bl
-tM
+Sj
 uF
 uB
-tM
+Sh
 bl
 Na
 MH
 KZ
 xU
 yc
-tM
+ds
 ya
 sC
 Ln
 Ln
 La
 bl
-tM
+Qj
 uF
 uB
-tM
+PC
 bl
 pX
 IM
@@ -44856,27 +46614,27 @@ Oe
 bl
 bl
 bl
-tM
-tM
-tM
-tM
+Sj
+ds
+ds
+Sh
 bl
 tj
 MT
 MG
 bl
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 KU
 KX
 KX
 bl
-tM
-tM
-tM
-tM
+Qj
+ds
+ds
+PC
 bl
 bl
 bl
@@ -44889,8 +46647,8 @@ bl
 yX
 jk
 jk
-np
-np
+fZ
+fZ
 yX
 yX
 yX
@@ -45018,29 +46776,29 @@ um
 Om
 um
 pK
-tM
-tM
-tM
-tM
-tM
-tV
+RS
+RS
+tU
+ds
+ds
+Sh
 bl
 bl
 bl
 bl
 bl
-tQ
-tM
-tV
+ds
+ds
+ds
 bl
 bl
 bl
 bl
 bl
-tQ
-tM
-tM
-tM
+Qj
+ds
+ds
+PD
 tM
 tM
 pK
@@ -45054,8 +46812,8 @@ yX
 yX
 jk
 jk
-np
-Tx
+fZ
+Bf
 yX
 yX
 yX
@@ -45181,32 +46939,32 @@ um
 um
 um
 um
-xU
-tM
+Sw
+ds
 uP
 uH
+ds
+ds
+Si
+RS
+RS
+RS
+RS
+tU
+ds
+ds
+ds
+PD
 tM
 tM
-tW
-tU
-tU
-tU
-tU
-tU
-tS
-tM
-tW
-tU
-tU
-tU
-tU
-tU
-tS
 tM
 tM
+Qk
+ds
+ds
 Bb
 AY
-tM
+ds
 sC
 um
 um
@@ -45215,10 +46973,10 @@ Bg
 yX
 pK
 pE
-yX
-yX
-np
-np
+tk
+te
+wR
+IP
 yX
 yX
 yX
@@ -45346,31 +47104,31 @@ um
 IR
 um
 pK
-tM
+ds
 uQ
 uJ
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
 Mh
-tM
-tM
+ds
+ds
 LT
 yY
 hr
 yY
-tM
-tM
-tM
-tM
+ds
+ds
+ds
+ds
 Bc
 AZ
-tM
+ds
 pK
 um
 IR
@@ -45379,10 +47137,10 @@ um
 yY
 bl
 pE
-gg
-yX
-yX
-yX
+tl
+ga
+wT
+Ys
 yX
 yX
 yX
@@ -45510,31 +47268,31 @@ bl
 tH
 bl
 bl
-tM
-tM
-tM
-tM
-tV
-tT
-tT
-tT
-tT
-tT
-tT
-tQ
-tM
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
 yY
 yX
 yX
 wg
-tT
-tT
+ds
+ds
 yX
 yX
 uC
-tM
-tM
-tM
+ds
+ds
+ds
 bl
 bl
 tH
@@ -45543,10 +47301,10 @@ bl
 bl
 bl
 pE
-gg
-gg
-yX
-yX
+wZ
+ga
+ga
+Ys
 fZ
 fY
 fY
@@ -45674,9 +47432,9 @@ dY
 Oo
 dY
 bl
-tQ
-tM
-tV
+Ss
+ds
+Sk
 bl
 bl
 bl
@@ -45696,9 +47454,9 @@ yX
 yX
 yX
 yX
-tM
-tM
-tV
+PE
+ds
+Pn
 bl
 tw
 HH
@@ -45707,13 +47465,13 @@ tw
 tw
 bl
 pE
-gg
-yX
-yX
-yX
+tl
+ga
+wU
+Ys
 fZ
 fY
-fY
+yX
 yX
 yX
 fY
@@ -45838,9 +47596,9 @@ dY
 Oo
 dY
 bl
-Kg
-tM
-Jq
+St
+ds
+Sl
 bl
 st
 st
@@ -45861,8 +47619,8 @@ jV
 jV
 yX
 yX
-tM
-Jq
+ds
+OW
 bl
 tw
 HH
@@ -45871,14 +47629,14 @@ tw
 tw
 bl
 pE
-yX
-yX
-yX
+tm
+ga
+ga
+Ys
 fZ
-fZ
 fY
-fY
-fY
+yX
+yX
 yX
 yX
 fY
@@ -46002,9 +47760,9 @@ MH
 Ll
 dY
 bl
-Kg
-tM
-Jq
+St
+ds
+Sl
 bl
 vU
 vU
@@ -46025,8 +47783,8 @@ yX
 yX
 yX
 yX
-tM
-Jq
+ds
+OW
 bl
 tw
 HF
@@ -46035,14 +47793,14 @@ Hb
 Hb
 pK
 pE
+tn
+ga
+wT
+Ys
+fZ
+fY
 yX
 yX
-fZ
-fZ
-fZ
-fY
-fY
-fY
 yX
 yX
 yX
@@ -46166,9 +47924,9 @@ um
 um
 MH
 bl
-Kg
-tM
-Jq
+St
+ds
+Sl
 bl
 bl
 bl
@@ -46188,9 +47946,9 @@ yX
 yX
 yY
 bl
-Kg
-tM
-Jq
+PF
+ds
+OW
 bl
 Hb
 if
@@ -46199,14 +47957,14 @@ bl
 tA
 bl
 pE
+tm
+ga
+ga
+Ys
+fZ
 yX
 yX
-fZ
-fZ
-fZ
-fY
-fY
-fY
+yX
 fY
 yX
 yX
@@ -46330,9 +48088,9 @@ um
 um
 um
 bl
-Kg
-tM
-Jq
+St
+ds
+Sl
 bl
 sv
 vP
@@ -46352,9 +48110,9 @@ yX
 yX
 LT
 Zg
-Kg
-tM
-Jq
+PF
+ds
+OW
 bl
 if
 if
@@ -46363,12 +48121,12 @@ bl
 tD
 bl
 yX
+to
+wV
+wV
+KV
 yX
 yX
-fZ
-fZ
-fZ
-fZ
 fY
 fY
 fY
@@ -46494,9 +48252,9 @@ bl
 bl
 bl
 bl
-Kg
-tM
-Jq
+St
+ds
+Sl
 bl
 vm
 vm
@@ -46516,9 +48274,9 @@ yX
 yX
 vm
 Hg
-Kg
-tM
-Jq
+PF
+ds
+OW
 bl
 bl
 bl
@@ -46530,9 +48288,9 @@ bl
 yX
 yX
 yX
-fZ
-fZ
-fZ
+yX
+yX
+yX
 fY
 fY
 fY
@@ -46657,10 +48415,10 @@ tY
 tY
 bl
 Og
-tW
-tS
-tM
-tW
+Sx
+Sv
+ds
+Sm
 bl
 sw
 su
@@ -46680,10 +48438,10 @@ Dd
 yX
 vm
 bl
-tS
-tM
-tW
-tS
+PG
+ds
+Po
+OX
 Jp
 bl
 if
@@ -46694,7 +48452,7 @@ bl
 bl
 pE
 yX
-fZ
+yX
 fZ
 fZ
 fY
@@ -46820,11 +48578,11 @@ bl
 Hb
 Ky
 bl
-tQ
-tM
-tM
-tM
-tM
+St
+ds
+ds
+ds
+ds
 bl
 bl
 bl
@@ -46841,14 +48599,14 @@ bl
 vq
 bl
 yX
+bC
 bl
 bl
-bl
-tM
-tM
-tM
-tM
-tV
+ds
+ds
+ds
+ds
+OW
 bl
 Ik
 LT
@@ -46857,7 +48615,7 @@ tx
 Gy
 bl
 pE
-gg
+yX
 gg
 fZ
 fZ
@@ -46984,11 +48742,11 @@ tY
 HH
 tY
 bl
-Kg
-tM
+St
+ds
 uD
 uy
-tM
+ds
 pp
 mN
 mN
@@ -47002,17 +48760,17 @@ uZ
 sK
 bl
 qe
-vo
+PH
 mN
 bl
-mN
-mN
+PY
+PY
 bl
-tM
+ds
 JX
 uy
-tM
-Jq
+ds
+OW
 bl
 tx
 HF
@@ -47022,7 +48780,7 @@ Zg
 pK
 pE
 gg
-gg
+yX
 fZ
 fZ
 fY
@@ -47148,35 +48906,35 @@ yY
 Ow
 tY
 bl
-Kg
-tM
+St
+ds
 uE
 bl
-Bd
+sI
 pp
-vo
-vo
+PH
+PH
 sG
-vo
-vo
-vo
+PH
+PH
+PH
 sG
 sL
 sL
 sL
 sG
-vo
-vo
-vo
+PH
+PH
+PH
 sG
-vo
-vo
+PH
+PH
 bl
-Bd
+sI
 bl
 uz
-tM
-Jq
+ds
+OW
 bl
 Il
 HH
@@ -47312,17 +49070,17 @@ tY
 HF
 Zg
 bl
-Kg
-tM
+St
+ds
 uE
 bl
-vo
+PH
 mN
-vo
+PH
 mN
 bl
 sp
-vo
+PH
 mN
 bl
 Nn
@@ -47330,17 +49088,17 @@ Nn
 Nn
 bl
 qe
-vo
+PH
 mN
 bl
+Qm
+PH
 mN
-vo
-mN
-vo
+PH
 bl
 uz
-tM
-Jq
+ds
+OW
 bl
 Il
 HH
@@ -47476,13 +49234,13 @@ bl
 HJ
 Zg
 Zg
-Kg
-tM
+St
+ds
 uE
 bl
-vo
-vo
-vo
+PH
+PH
+PH
 mN
 bl
 bl
@@ -47497,14 +49255,14 @@ bl
 sI
 bl
 bl
-mN
-vo
-vo
-vo
+Qo
+PH
+PH
+PH
 bl
 uz
-tM
-Jq
+ds
+OW
 bl
 bl
 tH
@@ -47641,10 +49399,10 @@ HI
 um
 Zg
 Zg
-tM
+ds
 uE
 bl
-vo
+PH
 mN
 mN
 mN
@@ -47661,13 +49419,13 @@ pV
 vo
 vo
 bl
+Qp
+Qa
 mN
-mN
-mN
-vo
+PH
 bl
 uz
-tM
+ds
 yY
 um
 um
@@ -47803,12 +49561,12 @@ um
 um
 um
 um
-pO
-tM
-tM
+um
+ds
+ds
 uE
 bl
-Bd
+sI
 bl
 bl
 bl
@@ -47828,11 +49586,11 @@ bl
 bl
 bl
 bl
-Bd
+sI
 bl
 uz
-tM
-tM
+ds
+ds
 LV
 um
 um
@@ -47968,11 +49726,11 @@ um
 um
 um
 Zg
-tQ
-tM
+Ss
+ds
 uF
 uB
-tM
+ds
 bl
 pP
 vn
@@ -47992,7 +49750,7 @@ vn
 vn
 vn
 bl
-tM
+ds
 uF
 uB
 Zg
@@ -48132,9 +49890,9 @@ Zg
 um
 Zg
 bl
-Kg
-tM
-tM
+St
+ds
+ds
 hr
 LT
 bl
@@ -48156,10 +49914,10 @@ vn
 vn
 vn
 bl
-tM
-yY
-tM
-tM
+ds
+Zg
+ds
+ds
 yY
 yX
 yX
@@ -48297,8 +50055,8 @@ KH
 tv
 bl
 yY
-tM
-tM
+ds
+ds
 FZ
 yX
 bl
@@ -48311,7 +50069,7 @@ tp
 tp
 qn
 vw
-vw
+Re
 tp
 tp
 vo
@@ -48320,10 +50078,10 @@ pP
 vn
 vn
 bl
-tQ
-tM
-tV
-tT
+PI
+ds
+ds
+ds
 yX
 yX
 yX
@@ -48460,8 +50218,8 @@ tv
 KH
 tv
 yY
-tM
-tM
+St
+ds
 LT
 yX
 yX
@@ -48484,9 +50242,9 @@ pP
 vn
 vn
 bl
-Kg
-tM
-Jq
+PK
+ds
+ds
 bl
 yX
 jV
@@ -48648,9 +50406,9 @@ vo
 vo
 vo
 bl
-Kg
-tM
-Jq
+PK
+ds
+ds
 bl
 yX
 yX
@@ -48812,9 +50570,9 @@ vo
 vo
 vo
 bl
-Kg
-tM
-Jq
+PK
+ds
+ds
 bl
 yX
 yX
@@ -48976,8 +50734,8 @@ DI
 vo
 vo
 bl
-Kg
-tM
+PK
+ds
 Zg
 JJ
 Zg
@@ -49140,8 +50898,8 @@ yX
 LT
 bl
 bl
-Kg
-tM
+PK
+ds
 yY
 Zg
 Jt
@@ -49282,9 +51040,9 @@ dl
 dl
 yX
 bl
-Kg
+ds
 yY
-Jq
+dO
 bl
 vP
 vm
@@ -49304,9 +51062,9 @@ yX
 hr
 yX
 bl
-Kg
-tM
-Jq
+PK
+ds
+ds
 bl
 Ju
 IT
@@ -49318,7 +51076,7 @@ yX
 yX
 yX
 jV
-fY
+sf
 fY
 fY
 fY
@@ -49446,8 +51204,8 @@ dl
 dl
 yY
 Zg
-Kg
-tM
+ds
+ds
 yY
 bl
 vm
@@ -49470,7 +51228,7 @@ jV
 yX
 YT
 yY
-Jq
+ds
 bl
 Jv
 In
@@ -49481,8 +51239,8 @@ bl
 TS
 yX
 yX
-fY
-fY
+sX
+wO
 fY
 fY
 fY
@@ -49610,9 +51368,9 @@ Ky
 Op
 us
 bl
-Kg
-tM
-Jq
+ds
+ds
+dO
 bl
 wb
 wa
@@ -49645,8 +51403,8 @@ pK
 yX
 yX
 yX
-fY
-fY
+zr
+wO
 fY
 fY
 fY
@@ -49774,9 +51532,9 @@ dl
 KH
 dl
 Zg
-Kg
-tM
-Jq
+ds
+ds
+dO
 bl
 bl
 bl
@@ -49796,9 +51554,9 @@ bl
 yX
 bl
 bl
-Kg
-tM
-Jq
+PK
+ds
+ds
 bl
 tz
 IV
@@ -49809,8 +51567,8 @@ bl
 yX
 yX
 yX
-fY
-fY
+sX
+wO
 fY
 fY
 fY
@@ -49938,31 +51696,31 @@ dl
 KH
 dl
 bl
-Kg
-tM
-tW
-tU
+ds
+ds
+Sn
+dt
 Ku
-tU
-tU
-tU
-tU
-tU
-tU
-tS
-LX
-tW
-tU
-tU
-tU
-tU
+dt
+dt
+dt
+dt
+dt
+dt
+dt
+Ku
+dt
+dt
+dt
+dt
+dt
 yY
 fD
 Ku
-tU
-tS
-tM
-Jq
+dt
+dh
+ds
+ds
 bl
 Jw
 IU
@@ -49974,7 +51732,7 @@ yX
 yX
 yX
 yX
-fY
+wO
 fY
 fY
 fY
@@ -50102,31 +51860,31 @@ Zg
 HJ
 Zg
 Zg
-Kg
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
-tM
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
+ds
 hr
-tM
-tM
-tM
-tM
-Jq
+ds
+ds
+ds
+ds
+ds
 bl
 bl
 IW
@@ -50138,7 +51896,7 @@ yX
 yX
 yX
 yX
-fY
+wO
 fY
 fY
 fY
@@ -50266,31 +52024,31 @@ um
 HI
 um
 Ob
-tS
-tM
-NX
-tT
-tT
-tT
-tT
-Nb
-MU
-MI
-tM
-tM
-tM
-tM
-tM
+ds
+ds
+ds
+ds
+ds
+ds
+ds
 Ls
 Lp
 Ld
-tT
-tT
-tT
-tT
-tQ
-tM
-tW
+ds
+ds
+ds
+ds
+ds
+Ls
+Lp
+Ld
+ds
+ds
+ds
+ds
+ds
+ds
+ds
 pK
 um
 IX
@@ -50302,7 +52060,7 @@ yX
 yX
 yX
 yX
-fY
+wO
 fY
 fY
 fY
@@ -50430,15 +52188,15 @@ um
 um
 um
 xU
-tM
-tM
-Jq
+ds
+ds
+So
 bl
 bl
 bl
 bl
 bl
-pT
+Sa
 MJ
 pX
 pX
@@ -50452,9 +52210,9 @@ bl
 bl
 bl
 bl
-Kg
-tM
-tM
+PI
+ds
+ds
 sC
 um
 um
@@ -50466,7 +52224,7 @@ yX
 yX
 yX
 yX
-fY
+wQ
 fY
 sQ
 fY
@@ -50595,7 +52353,7 @@ IR
 um
 pK
 tQ
-tM
+ds
 NY
 bl
 NU
@@ -50616,8 +52374,8 @@ KG
 KG
 Kw
 bl
-Kh
-tM
+PM
+ds
 tV
 pK
 um
@@ -50759,8 +52517,8 @@ tH
 bl
 bl
 Kg
-tM
-tM
+ds
+ds
 sC
 NF
 NF
@@ -50780,8 +52538,8 @@ Ky
 Hb
 Ky
 xU
-Kg
-tM
+ds
+ds
 Jq
 bl
 bl
@@ -50923,8 +52681,8 @@ Oq
 Oh
 bl
 Kg
-tM
-NX
+ds
+So
 bl
 NG
 NG
@@ -50944,8 +52702,8 @@ tX
 KH
 KB
 bl
-Kg
-tM
+PI
+ds
 Jq
 bl
 uj
@@ -51087,8 +52845,8 @@ Oq
 Oi
 bl
 Kh
-tM
-Jq
+ds
+dO
 bl
 NV
 Nc
@@ -51108,8 +52866,8 @@ tX
 KH
 KC
 bl
-Kg
-tM
+PK
+ds
 JP
 bl
 uj
@@ -51251,8 +53009,8 @@ Oq
 Oh
 bl
 Kg
-tM
-Jq
+ds
+dO
 bl
 bl
 bl
@@ -51272,8 +53030,8 @@ bl
 bl
 bl
 bl
-Kg
-tM
+PK
+ds
 Jq
 bl
 uk
@@ -51415,8 +53173,8 @@ pX
 JI
 bl
 Kg
-tM
-Jq
+ds
+dO
 bl
 vb
 yO
@@ -51436,8 +53194,8 @@ yO
 yO
 yO
 bl
-Kg
-tM
+PK
+ds
 Jq
 bl
 ul
@@ -51579,8 +53337,8 @@ Or
 Oj
 bl
 Kg
-tM
-Jq
+ds
+Sn
 vf
 Ex
 NH
@@ -51600,8 +53358,8 @@ uU
 KI
 yO
 bl
-Kg
-tM
+dh
+ds
 Jq
 bl
 un
@@ -51743,8 +53501,8 @@ bl
 bl
 bl
 tS
-tM
-tW
+ds
+ds
 bl
 SN
 Ro
@@ -51764,8 +53522,8 @@ EV
 Uq
 Pv
 bl
-tS
-tM
+ds
+ds
 tW
 bl
 bl
@@ -51903,12 +53661,12 @@ qx
 Cr
 HS
 af
-um
-um
-um
-um
-sy
-um
+tJ
+tJ
+tJ
+tJ
+uv
+tJ
 og
 Pv
 Ro
@@ -51929,7 +53687,7 @@ Uq
 Pv
 og
 tJ
-pM
+uv
 tJ
 tJ
 tJ
@@ -52067,12 +53825,12 @@ gg
 qA
 zW
 af
-um
-um
-um
-um
-um
-um
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
 sE
 SN
 Ro
@@ -52231,12 +53989,12 @@ gg
 gg
 GB
 ci
-um
-um
-um
-um
-um
-um
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
 bl
 yO
 Ro
@@ -52396,11 +54154,11 @@ yX
 Qs
 af
 LT
-um
-um
-um
-um
-um
+tJ
+tJ
+tJ
+tJ
+tJ
 bl
 yO
 Ro
@@ -52562,9 +54320,9 @@ yX
 yX
 JM
 hr
-um
-um
-um
+tJ
+tJ
+tJ
 bl
 yO
 Ro
@@ -52726,9 +54484,9 @@ af
 yX
 yX
 LT
-um
-um
-um
+tJ
+tJ
+tJ
 bl
 yO
 hl
@@ -52891,8 +54649,8 @@ yX
 yX
 uG
 tL
-um
-um
+tJ
+tJ
 bl
 SN
 hl
@@ -52901,7 +54659,7 @@ aV
 EV
 EV
 vH
-Mj
+EV
 wu
 EV
 vH
@@ -53248,10 +55006,10 @@ zK
 zK
 bl
 yX
-yX
-gg
-fZ
-fZ
+CJ
+ww
+wR
+IP
 fY
 fY
 fY
@@ -53412,10 +55170,10 @@ zK
 zK
 bl
 yX
-gg
-gg
-fZ
-fZ
+Iq
+wX
+wT
+Ys
 FB
 FM
 FB
@@ -53576,10 +55334,10 @@ zK
 zK
 bl
 yX
-gg
-gg
-fZ
-fZ
+Kx
+wX
+ga
+Ys
 Gd
 FP
 FC
@@ -53740,10 +55498,10 @@ zK
 zK
 pK
 yX
-gg
-gg
-fZ
-fZ
+Ml
+ga
+wU
+Ys
 Ge
 FS
 FD
@@ -53904,10 +55662,10 @@ zK
 zK
 pK
 Ht
-yX
-gg
-fZ
-fZ
+Mr
+ga
+ga
+Ys
 fY
 fY
 fY
@@ -54068,10 +55826,10 @@ zK
 zK
 bl
 pE
-gg
-gg
-fZ
-fZ
+Iq
+ga
+wT
+Ys
 fY
 fY
 fY
@@ -54209,7 +55967,7 @@ bl
 SN
 NI
 ZC
-ZC
+Se
 ZC
 ZC
 ZC
@@ -54232,10 +55990,10 @@ zK
 zK
 bl
 pE
-gg
-gg
-fZ
-fZ
+Kx
+ga
+ga
+Ys
 fY
 fY
 fY
@@ -54373,20 +56131,20 @@ bl
 vc
 Pv
 va
-Pv
-Pv
+yX
+yX
 SN
 Pv
 Pv
-Pv
-Pv
+Rt
+Rg
 Pv
 Pv
 SN
-Pv
-Pv
-Pv
-vp
+yX
+yX
+yX
+yX
 bl
 zK
 zK
@@ -54396,10 +56154,10 @@ zK
 bl
 bl
 pE
-gg
-gg
-fZ
-fZ
+LQ
+wV
+wV
+KV
 fY
 fY
 fY
@@ -54536,20 +56294,20 @@ pK
 bl
 PZ
 Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
-Kf
+Sf
+yX
+yX
+ue
+RI
+RA
+Ru
+jV
+ue
+ue
+yX
+yX
+Qw
+yX
 Ry
 bl
 bl
@@ -54561,7 +56319,7 @@ bl
 VZ
 Pu
 gg
-gg
+fZ
 fZ
 fZ
 fY
@@ -54693,39 +56451,39 @@ fZ
 yX
 Gz
 Gz
-Gz
+yX
 Gz
 Xf
 Dx
-Dx
+Kf
 EL
 jv
-jv
-jv
-jv
-jv
-ES
-Fo
-Fo
-cc
-jv
-jv
-jv
-jv
-jv
+yX
+yX
+yX
+QW
+QW
+QW
+QW
+QW
+QW
+ue
+yX
+yX
+yX
 jv
 zz
 Dx
 Dx
-PP
+yX
 Gz
 Gz
 Gz
-Gz
+OV
 Pu
 gg
 gg
-gg
+fZ
 fZ
 fZ
 fY
@@ -54854,42 +56612,42 @@ fY
 fY
 fZ
 fZ
-fZ
+yX
+yX
+gg
+yX
+yX
+yX
+jv
+yX
+jv
+Qb
+yX
+yX
+yX
+yX
+QY
+QY
+QY
+QY
+QY
+QH
+yX
+yX
+yX
+jv
+Qb
+jv
+jv
+yX
 gg
 gg
 gg
-gg
-jv
-jv
-jv
-jv
-jv
-gg
-gg
-gg
-jv
-jv
-jv
-jv
-jv
-jv
-gg
-gg
-gg
-gg
-jv
-jv
-jv
-jv
-jv
-jv
-gg
-gg
-gg
-gg
-gg
-gg
-fZ
+yX
+yX
+yX
+yX
+yX
 fZ
 fZ
 fY
@@ -55019,41 +56777,41 @@ fY
 fY
 fZ
 fZ
+yX
+yX
+yX
+yX
+yX
+gg
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+QZ
+QZ
+QZ
+QZ
+QZ
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+Ps
 gg
 gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-gg
-fZ
-fZ
+yX
+yX
+yX
+yX
+yX
+yX
 fZ
 fY
 fY
@@ -55185,38 +56943,38 @@ fZ
 fZ
 fZ
 fZ
-gg
-gg
-gg
-gg
-gg
-gg
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 gg
 fZ
+yX
+yX
+yX
+yX
 fZ
-US
-Qg
-XX
-zq
-Ch
-gg
-gg
-fZ
-fZ
-fZ
-fZ
-gg
-gg
-gg
-gg
-gg
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
+yX
 fZ
 fY
 fY
@@ -55350,33 +57108,33 @@ fZ
 fZ
 fZ
 fZ
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 fZ
+yX
+yX
+yX
 fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-sl
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
+yX
+yX
+yX
+yX
 fZ
 fZ
 fZ
@@ -55517,28 +57275,28 @@ fZ
 fZ
 fZ
 fZ
-fZ
-fZ
-fZ
-fZ
-fY
-sm
-ws
-wp
-wm
-wi
-wh
-fZ
-fY
-fY
-fY
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -55683,22 +57441,22 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-sn
-wv
-wq
-wn
-wj
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -55833,6 +57591,11 @@ fY
 fY
 fY
 fY
+Ts
+Tn
+Ti
+SZ
+SO
 fY
 fY
 fY
@@ -55843,26 +57606,21 @@ fY
 fY
 fY
 fY
+yX
+yX
+yX
+fY
+yX
+fY
+yX
+yX
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
-wx
-wr
-wo
-wl
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+yX
+yX
+yX
+yX
 fY
 fY
 fY
@@ -55997,6 +57755,7 @@ fY
 fY
 fY
 fY
+Tt
 fY
 fY
 fY
@@ -56015,16 +57774,15 @@ fY
 fY
 fY
 fY
-wy
 fY
 fY
+yX
+yX
 fY
 fY
-fY
-fY
-fY
-fY
-fY
+yX
+yX
+yX
 fY
 fY
 fY
@@ -56161,6 +57919,12 @@ fY
 fY
 fY
 fY
+Tu
+To
+Tl
+Ta
+SP
+SL
 fY
 fY
 fY
@@ -56180,14 +57944,8 @@ fY
 fY
 fY
 fY
-My
 fY
-fY
-fY
-fY
-fY
-fY
-fY
+yX
 fY
 fY
 fY
@@ -56325,11 +58083,11 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
+sn
+wv
+wq
+wn
+SQ
 fY
 fY
 fY
@@ -56490,10 +58248,10 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
+wx
+wr
+wo
+wl
 fY
 fY
 fY
@@ -56654,7 +58412,7 @@ fY
 fY
 fY
 fY
-fY
+wy
 fY
 fY
 fY
@@ -58504,10 +60262,10 @@ hG
 hG
 hG
 hG
-hG
-hG
-hG
-hG
+ue
+ue
+ue
+ue
 hG
 hG
 hG
@@ -58668,10 +60426,10 @@ hG
 hG
 hG
 hG
-hG
-hG
-hG
-hG
+ue
+qk
+qk
+ue
 hG
 hG
 hG
@@ -58832,10 +60590,10 @@ hG
 hG
 hG
 hG
-hG
-hG
-hG
-hG
+ue
+sU
+sU
+ue
 hG
 hG
 hG
@@ -58996,10 +60754,10 @@ hG
 hG
 hG
 hG
-hG
-hG
-hG
-hG
+ue
+ue
+ue
+ue
 hG
 hG
 hG

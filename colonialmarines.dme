@@ -39,6 +39,7 @@
 #include "code\__DEFINES\autofire.dm"
 #include "code\__DEFINES\autolathe.dm"
 #include "code\__DEFINES\autowiki.dm"
+#include "code\__DEFINES\bandamarines\pronouns.dm"
 #include "code\__DEFINES\blood.dm"
 #include "code\__DEFINES\bsql.config.dm"
 #include "code\__DEFINES\bullet_traits.dm"

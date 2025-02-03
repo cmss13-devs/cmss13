@@ -1,0 +1,9 @@
+#include "code/defines.dm"
+
+#include "_translations.dm"
+
+#include "code/button_tooltips.dm"
+#include "code/ru_weapon_desc.dm"
+#include "code/ru_names/ru_name_base.dm"
+
+#include "code/~undefs.dm"

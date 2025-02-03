@@ -1,4 +1,0 @@
-#include "_translate.dm"
-
-#include "code/button_tooltips.dm"
-#include "code/translate.dm"

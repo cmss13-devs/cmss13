@@ -137,6 +137,9 @@
 
 /obj/structure/bed/MouseDrop_T(atom/dropping, mob/user)
 	if(accepts_bodybag && !buckled_bodybag && !buckled_mob && istype(dropping,/obj/structure/closet/bodybag) && ishuman(user))
+		if(HAS_TRAIT(user, TRAIT_IMMOBILIZED))
+			to_chat(user, SPAN_WARNING("You cant do that right now."))
+			return
 		var/obj/structure/closet/bodybag/B = dropping
 		if(!B.roller_buckled)
 			do_buckle_bodybag(B, user)

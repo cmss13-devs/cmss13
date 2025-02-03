@@ -84,7 +84,7 @@
 /obj/item/facepaint/proc/paint_face(mob/living/carbon/human/H, mob/user)
 	if(!H || !user)
 		return //In case they're passed as null.
-	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."), \
+	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."),
 						SPAN_NOTICE("You apply [src]."))
 	H.lip_style = paint_type
 	H.update_body()

@@ -781,7 +781,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/lighter/zippo/blue
 	name = "blue Zippo lighter"
-	desc = "A fancy blue Zippo lighter. Ignite in style."
+	desc = "A fancy blue Zippo lighter. In Koorlander blue..."
 	icon_state = "bluezippo"
 	item_state = "bluezippo"
 	icon_on = "bluezippoon"

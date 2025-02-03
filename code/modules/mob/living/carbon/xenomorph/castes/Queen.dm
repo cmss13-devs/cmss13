@@ -768,15 +768,6 @@
 		if(synthhead.status & LIMB_DESTROYED)
 			return FALSE
 
-	if(victim.status_flags & XENO_HOST)
-		var/mob/living/carbon/human/human_victim = victim
-		if(victim.stat != DEAD) //Not dead yet.
-			to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
-			return FALSE
-		else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
-			to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
-			return FALSE
-
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
@@ -793,7 +784,7 @@
 	if(!check_plasma(200))
 		return FALSE
 
-	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
+	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."),
 	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
@@ -805,7 +796,7 @@
 
 		use_plasma(200)
 
-		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
+		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"),
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
 

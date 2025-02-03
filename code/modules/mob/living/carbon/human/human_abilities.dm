@@ -543,7 +543,7 @@ CULT
 	var/options = list("MUTINEERS", "LOYALISTS", "REFUSE TO FIGHT")
 	if(job == JOB_SYNTH)
 		options -= "MUTINEERS"
-	switch(tgui_alert(src, "A mutiny has been started, with whom do you stand?", "Choose a Side", options))
+	switch(tgui_alert(src, "A mutiny has been started, with whom do you stand?", "Choose a Side", options, 10 SECONDS))
 		if("MUTINEERS")
 			var/datum/equipment_preset/other/mutiny/mutineer/XC = new()
 			XC.load_status(src)

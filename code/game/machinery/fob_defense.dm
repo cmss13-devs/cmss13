@@ -109,7 +109,7 @@
 		return
 
 	if(!is_on)
-		user.balloon_alert(user, "The [src.name] has no power!")
+		user.balloon_alert(user, "the [src.name] has no power!")
 		return
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
@@ -169,7 +169,7 @@
 
 /obj/structure/machinery/fob/backup_generator/attackby(obj/item/item, mob/user)
 	if(is_on)
-		user.balloon_alert(user, "The [src.name] is activated! It's probably not a good idea to touch it right now.")
+		user.balloon_alert(user, "the [src.name] is activated! It's probably not a good idea to touch it right now.")
 		return
 	. = ..()
 

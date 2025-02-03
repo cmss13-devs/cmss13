@@ -29,7 +29,7 @@
 					qdel(a)
 
 				if(halloss > 100)
-					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
+					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."),
 					SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
 					apply_effect(10, PARALYZE)
 					setHalLoss(99)

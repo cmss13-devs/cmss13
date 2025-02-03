@@ -1527,7 +1527,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "aIM" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
 "aIY" = (
@@ -20103,7 +20103,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/c_block/t_comm)
 "kOz" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/blue1,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
@@ -29715,7 +29715,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/central_streets)
 "pTj" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "pTl" = (
@@ -45898,7 +45898,7 @@
 /turf/closed/wall/strata_outpost_ribbed,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "xKH" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "xKN" = (

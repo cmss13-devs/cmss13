@@ -251,6 +251,7 @@
 	S["dual_wield_pref"] >> dual_wield_pref
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
+	S["toggles_ert_pred"] >> toggles_ert_pred
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
 	S["tgui_say"] >> tgui_say
@@ -355,6 +356,7 @@
 	dual_wield_pref = sanitize_integer(dual_wield_pref, 0, 2, initial(dual_wield_pref))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
+	toggles_ert_pred = sanitize_integer(toggles_ert_pred, 0, SHORT_REAL_LIMIT, initial(toggles_ert_pred))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha = sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
@@ -363,12 +365,12 @@
 	flash_overlay_pref = sanitize_integer(flash_overlay_pref, FLASH_OVERLAY_WHITE, FLASH_OVERLAY_DARK)
 	crit_overlay_pref = sanitize_integer(crit_overlay_pref, CRIT_OVERLAY_WHITE, CRIT_OVERLAY_DARK)
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
-	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
+	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
-	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
+	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
@@ -486,6 +488,7 @@
 	S["dual_wield_pref"] << dual_wield_pref
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
+	S["toggles_ert_pred"] << toggles_ert_pred
 	S["toggles_admin"] << toggles_admin
 	S["window_skin"] << window_skin
 	S["fps"] << fps

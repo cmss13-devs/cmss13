@@ -1896,39 +1896,45 @@
 	icon_state = "wallegg_on"
 
 // Fake Pipes
-/obj/structure/prop/hybrisa/misc/fake/pipes
+/obj/effect/hybrisa/misc/fake/pipes
 	name = "disposal pipe"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	layer = TURF_LAYER
+	icon_state = "pipe-s"
+	layer = WIRE_LAYER
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
+/obj/effect/hybrisa/misc/fake/pipes/pipe1
 	icon_state = "pipe-s"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe2
+/obj/effect/hybrisa/misc/fake/pipes/pipe2
 	icon_state = "pipe-c"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe3
+/obj/effect/hybrisa/misc/fake/pipes/pipe3
 	icon_state = "pipe-j1"
 
-// Fake Wire
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe4
+/obj/effect/hybrisa/misc/fake/pipes/pipe4
 	icon_state = "pipe-y"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe5
+/obj/effect/hybrisa/misc/fake/pipes/pipe5
 	icon_state = "pipe-b"
 
-/obj/structure/prop/hybrisa/misc/fake/wire
+// Fake Wire
+
+/obj/effect/hybrisa/misc/fake/wire
 	name = "power cable"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	layer = TURF_LAYER
+	icon_state = "intactred"
+	layer = UNDERFLOOR_OBJ_LAYER
 
-/obj/structure/prop/hybrisa/misc/fake/wire/red
+/obj/effect/hybrisa/misc/fake/ex_act()
+	qdel(src)
+
+/obj/effect/hybrisa/misc/fake/wire/red
 	icon_state = "intactred"
 
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow
+/obj/effect/hybrisa/misc/fake/wire/yellow
 	icon_state = "intactyellow"
 
-/obj/structure/prop/hybrisa/misc/fake/wire/blue
+/obj/effect/hybrisa/misc/fake/wire/blue
 	icon_state = "intactblue"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire

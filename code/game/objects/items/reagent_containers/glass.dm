@@ -385,7 +385,7 @@
 		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
 	else
 		random_chem = pick(GLOB.chemical_gen_classes_list["C5"])
-	if(prob(8))
+	if(prob(5))
 		random_chem = "xenogenic"
 	if(random_chem)
 		reagents.add_reagent(random_chem, 30)

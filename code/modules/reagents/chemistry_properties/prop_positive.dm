@@ -862,7 +862,7 @@
 	if(processing_tray.seed.harvest_repeat == 1)
 		return
 	processing_tray.weedlevel += 0.8*(10-(potency*2))*volume
-	processing_tray.nutrilevel += -0.8*(10-(potency*2))*volume
+	processing_tray.nutrilevel += -0.6*(10-(potency*2))*volume
 	processing_tray.repeat_harvest_counter += 5*(potency*2)*volume
 	if (processing_tray.repeat_harvest_counter >= 100)
 		if (rand(0,2) < 2)

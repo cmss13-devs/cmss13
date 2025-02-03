@@ -46,7 +46,7 @@
 	. = ..()
 	if(!processing_tray.seed)
 		return
-	processing_tray.toxins += 1.2*(potency*2)*volume
+	processing_tray.toxins += (potency*2)*volume
 	processing_tray.weedlevel += 1*(potency*2)*volume
 	processing_tray.nutrilevel += -0.25*(potency*2)*volume
 	processing_tray.potency_counter += 5*(potency*2)*volume

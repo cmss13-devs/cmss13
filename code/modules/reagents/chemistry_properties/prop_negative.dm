@@ -72,7 +72,7 @@
 	if(!processing_tray.seed)
 		return
 	processing_tray.health += -1.5*(potency*2)*volume
-	processing_tray.toxins += 1.5*(potency*2)*volume
+	processing_tray.toxins += (potency*2)*volume
 
 /datum/chem_property/negative/corrosive
 	name = PROPERTY_CORROSIVE
@@ -319,7 +319,7 @@
 	. = ..()
 	if(!processing_tray.seed)
 		return
-	processing_tray.toxins += 2*(potency*2)*volume
+	processing_tray.toxins += 1.5*(potency*2)*volume
 	processing_tray.mutation_level += 10*(potency*2)*volume + processing_tray.mutation_mod
 
 

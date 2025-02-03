@@ -93,13 +93,6 @@
 		return
 	lastcycle = world.time
 
-	if(harvest && autoharvest)
-		animate(src, transform = matrix(rand(1,-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
-		animate(transform = matrix(rand(-0.5,0.5), rand(1,-1), MATRIX_TRANSLATE), time = 0.5)
-		animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
-		visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products"))
-		harvest(null, TRUE) //this is ok
-
 	// Mutation level drops each main tick.
 	mutation_level -= rand(2,4)
 
@@ -201,6 +194,13 @@
 
 	if(prob(3))  // On each tick, there's a chance the pest population will increase
 		pestlevel += 0.1 * HYDRO_SPEED_MULTIPLIER
+
+	if(harvest && autoharvest)
+		animate(src, transform = matrix(rand(1,-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
+		animate(transform = matrix(rand(-0.5,0.5), rand(1,-1), MATRIX_TRANSLATE), time = 0.5)
+		animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
+		visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products"))
+		harvest(null, TRUE) //this is ok
 
 	check_level_sanity()
 	update_icon()

@@ -482,9 +482,9 @@
 
 /obj/structure/machinery/chem_simulator/proc/encode_reagent(datum/reagent/C)
 	var/datum/reagent/O = GLOB.chemical_reagents_list[C.original_id] //So make the new name based on the Original
-	var/suffix = " "
+	var/suffix
 	for(var/datum/chem_property/P in C.properties)
-		suffix += P.code+"[P.level]"
+		suffix += " [P.code][P.level]"
 	C.id = O.name + " " + copytext(md5(suffix),1,3) + suffix //Show random suffix AND real properties on research paper
 	C.name = O.name + " " + copytext(md5(suffix),1,3) //Show ONLY random suffix on health analyzers
 	return

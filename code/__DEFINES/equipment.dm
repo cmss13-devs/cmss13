@@ -94,6 +94,8 @@
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
 /// The item will incur click delay if an empty adjacent tile is clicked
 #define ADJACENT_CLICK_DELAY (1<<16)
+/// Is in the process of falling apart.
+#define ITEM_DISSOLVING (1<<17)
 //==========================================================================================
 
 

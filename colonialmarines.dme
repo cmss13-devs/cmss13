@@ -1953,6 +1953,7 @@
 #include "code\modules\mob\mob_transformation_simple.dm"
 #include "code\modules\mob\mob_verbs.dm"
 #include "code\modules\mob\say.dm"
+#include "code\modules\mob\living\netspeak.dm"
 #include "code\modules\mob\transform_procs.dm"
 #include "code\modules\mob\update_icons.dm"
 #include "code\modules\mob\camera\camera.dm"

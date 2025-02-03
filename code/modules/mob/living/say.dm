@@ -102,6 +102,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(!filter_message(src, message))
 		return
 
+	var/processed_message = replace_netspeak(message, src)
+	if(isnull(processed_message))  // If netspeak was an action, stop here
+		return
+
+	message = processed_message
+
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
 
 	message = process_chat_markup(message, list("~", "_"))

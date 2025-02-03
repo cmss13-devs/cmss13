@@ -69,7 +69,7 @@
 	for(var/direction in CARDINAL_ALL_DIRS)
 		for(var/obj/structure/roof/roof in get_step(src,direction))
 			if(!roof.linked_master)
-				unprocesed_roofs += roof
+				unprocesed_roofs |= roof
 	return unprocesed_roofs
 
 
@@ -162,7 +162,7 @@
 /datum/roof_master_node/proc/connect(location)
 	var/list/unprocesed_nodes = list()
 	for(var/obj/effect/roof_node/node in location)
-		unprocesed_nodes += node
+		unprocesed_nodes |= node
 
 
 	while(length(unprocesed_nodes))
@@ -174,7 +174,7 @@
 	var/list/unprocesed_roofs = list()
 
 	for(var/obj/structure/roof/roof in location)
-		unprocesed_roofs += roof
+		unprocesed_roofs |= roof
 
 	while(length(unprocesed_roofs))
 		var/obj/structure/roof/roof = popleft(unprocesed_roofs)

@@ -121,16 +121,16 @@
 
 			for(var/mob/living/carbon/xenomorph/xeno as anything in permit_recipients)
 				if(QDELETED(xeno) || xeno.stat == DEAD) //Xenos might die before the admin picks them.
-					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before her firearms permit could be issued!"))
+					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before their firearms permit could be issued!"))
 					continue
 				if(HAS_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS))
 					if(grant == "Revoke")
 						REMOVE_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
-						to_chat(xeno, SPAN_XENOANNOUNCE("You forget how thumbs work. You feel a terrible sense of loss."))
+						to_chat(xeno, SPAN_XENOANNOUNCE("We forget how thumbs work. We feel a terrible sense of loss."))
 						handled_xenos += xeno
 				else if(grant == "Grant")
 					ADD_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
-					to_chat(xeno, SPAN_XENOANNOUNCE("You suddenly comprehend the magic of opposable thumbs along with surprising kinesthetic intelligence. You could do... <b><i>so much</b></i> with this knowledge."))
+					to_chat(xeno, SPAN_XENOANNOUNCE("We suddenly comprehend the magic of opposable thumbs along with surprising kinesthetic intelligence. We could do... <b><i>so much</b></i> with this knowledge."))
 					handled_xenos += xeno
 
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)
@@ -177,16 +177,16 @@
 
 			for(var/mob/living/carbon/xenomorph/xeno as anything in permit_recipients)
 				if(QDELETED(xeno) || xeno.stat == DEAD) //Xenos might die before the admin picks them.
-					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before she could get a royal flush!"))
+					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before they could get a royal flush!"))
 					continue
 				if(HAS_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS))
 					if(grant == "Revoke")
 						REMOVE_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS, TRAIT_SOURCE_HIVE)
-						to_chat(xeno, SPAN_XENOANNOUNCE("You forget how cards work. You feel a terrible sense of loss."))
+						to_chat(xeno, SPAN_XENOANNOUNCE("We forget how cards work. We feel a terrible sense of loss."))
 						handled_xenos += xeno
 				else if(grant == "Grant")
 					ADD_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS, TRAIT_SOURCE_HIVE)
-					to_chat(xeno, SPAN_XENOANNOUNCE("You suddenly comprehend the magic of playing cards along with a little kinesthetic intelligence. You could do... <b><i>very little</b></i> with this knowledge."))
+					to_chat(xeno, SPAN_XENOANNOUNCE("We suddenly comprehend the magic of playing cards along with a little kinesthetic intelligence. We could do... <b><i>very little</b></i> with this knowledge."))
 					handled_xenos += xeno
 
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)

@@ -60,12 +60,28 @@
 /obj/item/weapon/gun/rifle/m4ra/tactical,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
+"ag" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/soalar_devils_station)
 "ah" = (
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
 	req_one_access_txt = "8;12;39;40";
 	req_access = list()
 	},
 /turf/open/floor/almayer,
+/area/adminlevel/ert_station/soalar_devils_station)
+"ai" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	name = "\improper Hangar Lockdown Blast Door";
+	dir = 4
+	},
+/turf/open/space/basic,
 /area/adminlevel/ert_station/soalar_devils_station)
 "aj" = (
 /obj/structure/extinguisher_cabinet/lifeboat,
@@ -139,6 +155,24 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/soalar_devils_station)
+"ao" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow";
+	dir = 8
+	},
+/turf/open/floor/almayer/edge/smooth/west,
+/area/adminlevel/ert_station/soalar_devils_station)
+"ap" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow";
+	dir = 8
+	},
+/turf/open/floor/almayer/edge/smooth/west,
 /area/adminlevel/ert_station/soalar_devils_station)
 "aq" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -1692,9 +1726,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
 	},
 /obj/structure/cable/heavyduty{
 	icon_state = "2-4"
@@ -5136,10 +5167,9 @@
 /turf/open/floor/almayer/edge/southwest,
 /area/adminlevel/ert_station/soalar_devils_station)
 "rf" = (
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
+/turf/open/floor/almayer/uscm{
+	dir = 1
 	},
-/turf/open/floor/almayer/uscm/directional/up_down/west,
 /area/adminlevel/ert_station/soalar_devils_station)
 "rg" = (
 /obj/effect/decal/cleanable/dirt{
@@ -8037,9 +8067,6 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
-	},
 /obj/structure/roof/cargocrane_tracks/horizontal{
 	pixel_y = 14
 	},
@@ -10343,7 +10370,6 @@
 	layer = 2.52
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
@@ -10606,9 +10632,6 @@
 /turf/open/floor/almayer/plating_striped,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Ic" = (
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
-	},
 /turf/open/floor/almayer/uscm/directional/up_down/north,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Ie" = (
@@ -13944,11 +13967,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 8
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -14565,15 +14588,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
 "TU" = (
-/obj/structure/largecrate/supply/ammo{
-	name = "materials crate";
-	fill_from_loc = 1
-	},
 /obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/plasteel{
 	amount = 40;
 	pixel_x = 7;
 	pixel_y = 6
+	},
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -3
 	},
 /turf/open/floor/almayer/edge/smooth/east,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -15103,7 +15125,6 @@
 	id = "motorpoollocks"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
@@ -18652,12 +18673,12 @@ uF
 uF
 uF
 uF
-uF
-uF
-uF
-uF
-uF
-uF
+ZR
+KK
+KK
+KK
+KK
+ZR
 uF
 uF
 uF
@@ -18754,12 +18775,12 @@ uF
 uF
 uF
 uF
-uF
-uF
-uF
-uF
-uF
-uF
+ZR
+ai
+ai
+ai
+ai
+ZR
 uF
 uF
 uF
@@ -18856,12 +18877,12 @@ uF
 uF
 uF
 uF
-uF
-uF
-uF
-uF
-uF
-uF
+ZR
+ao
+ao
+ao
+ao
+ZR
 uF
 uF
 uF
@@ -19165,7 +19186,7 @@ ZR
 ZR
 eE
 lQ
-eE
+ap
 eE
 ZR
 ZR
@@ -20147,7 +20168,7 @@ ut
 Yb
 jh
 YX
-RZ
+ag
 be
 ZR
 uF

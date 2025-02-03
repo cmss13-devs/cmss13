@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - balance: "Predator melee weapons now have click delay for clicking on empty adjacent tiles."

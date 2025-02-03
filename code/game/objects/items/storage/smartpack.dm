@@ -2,7 +2,7 @@
 
 /obj/item/storage/backpack/marine/smartpack
 	name = "\improper S-V42  backpack"
-	desc = "A joint project between the USCM and Wey-Yu. It is said to be top-class engineering and state of the art technology with a built in shoulder-lamp."
+	desc = "A joint project between the USCM and Weyland-Yutani. It is said to be top-class engineering and state of the art technology with a built in shoulder-lamp."
 	item_state = "smartpack"
 	icon_state = "smartpack"
 	icon = 'icons/obj/items/clothing/backpack/smartpack.dmi'
@@ -107,6 +107,28 @@
 /obj/item/storage/backpack/marine/smartpack/white
 	item_state = "w_smartpack"
 	icon_state = "w_smartpack"
+
+/obj/item/storage/backpack/marine/smartpack/a1
+	name = "\improper S-V42A1  backpack"
+	desc = "A revised joint project between the USCM and Weyland-Yutani. It is said to be top-class engineering and state of the art technology with a built in shoulder-lamp."
+	item_state = "smartpack_a1"
+	icon_state = "smartpack_a1"
+
+/obj/item/storage/backpack/marine/smartpack/a1/green
+	item_state = "g_smartpack_a1"
+	icon_state = "g_smartpack_a1"
+
+/obj/item/storage/backpack/marine/smartpack/a1/tan
+	item_state = "t_smartpack_a1"
+	icon_state = "t_smartpack_a1"
+
+/obj/item/storage/backpack/marine/smartpack/a1/black
+	item_state = "b_smartpack_a1"
+	icon_state = "b_smartpack_a1"
+
+/obj/item/storage/backpack/marine/smartpack/a1/white
+	item_state = "w_smartpack_a1"
+	icon_state = "w_smartpack_a1"
 
 #undef BACKPACK_LIGHT_LEVEL
 

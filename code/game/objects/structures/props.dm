@@ -1044,13 +1044,13 @@
 		var/message = sanitize(input(user, "What do you write on [src]?", "Inscription"))
 		if(!message)
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),\
+		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),
 			SPAN_NOTICE("You begin to [action_msg] [src]."), null, 4)
 
 		if(!do_after(user, length(message) * time_multiplier, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			to_chat(user, SPAN_WARNING("You were interrupted!"))
 		else
-			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),\
+			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),
 				SPAN_NOTICE("You [action_msg] [src] with your [W.name]."), null, 4)
 			if(inscription)
 				inscription += "\n[message]"
@@ -1076,10 +1076,10 @@
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+		M.visible_message(SPAN_DANGER("[M] slashes [src]!"),
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 

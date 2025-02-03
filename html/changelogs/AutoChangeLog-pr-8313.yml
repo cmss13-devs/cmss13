@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Evolution button no longer gets deleted when you reset your strain while at full evo."

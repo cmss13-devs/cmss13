@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Synthetics and non-humans can no longer get psychic whisper through research."
+  - code_imp: "encephalophrasive no longer applies on touch since it lasts forever otherwise"

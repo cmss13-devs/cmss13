@@ -60,5 +60,5 @@
 
 /obj/item/duffel_bag/attack_self(mob/user)
 	.=..()
-	var/obj/structure/general_container/supply_container/intel/bag = new /obj/structure/general_container/supply_container/intel(user.loc)
+	new /obj/structure/general_container/supply_container/intel(user.loc)
 	qdel(src)

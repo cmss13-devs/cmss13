@@ -13,6 +13,25 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aad" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"aae" = (
+/obj/item/stack/sheet/wood,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"aaf" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/kitchen)
 "aag" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
@@ -26,10 +45,33 @@
 "aaj" = (
 /turf/open/gm/coast/west,
 /area/lv624/ground/caves/north_central_caves)
+"aak" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/freezerfloor,
+/area/lv624/lazarus/kitchen)
+"aal" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/hop)
 "aam" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river,
 /area/lv624/ground/caves/north_central_caves)
+"aan" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/lv624/lazarus/main_hall)
+"aao" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/wood,
+/area/lv624/lazarus/hop)
 "aap" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/north_central_caves)
@@ -70,6 +112,10 @@
 "aaA" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/caves/north_central_caves)
+"aaB" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/freezerfloor,
+/area/lv624/lazarus/kitchen)
 "aaC" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/north_central_caves)
@@ -92,6 +138,13 @@
 "aaH" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/north_central_caves)
+"aaI" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bar,
+/area/lv624/lazarus/canteen)
 "aaJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder/north,
@@ -99,6 +152,10 @@
 "aaK" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/north_central_caves)
+"aaL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bar,
+/area/lv624/lazarus/canteen)
 "aaM" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -210,6 +267,19 @@
 /obj/structure/largecrate/supply/ammo/shotgun,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"abq" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/main_hall)
+"abr" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/main_hall)
 "abs" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
@@ -219,6 +289,12 @@
 /obj/item/weapon/gun/rifle/lmg,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
+"abu" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/north,
+/area/lv624/lazarus/main_hall)
 "abv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
@@ -229,6 +305,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
+"abx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/east,
+/area/lv624/lazarus/main_hall)
 "aby" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -246,6 +328,18 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
+"abC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/north,
+/area/lv624/lazarus/main_hall)
+"abD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "abE" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -277,6 +371,23 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
+"abJ" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/main_hall)
+"abK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/main_hall)
+"abL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow,
+/area/lv624/lazarus/main_hall)
 "abM" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/north_west_caves)
@@ -287,13 +398,32 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"abP" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/west,
+/area/lv624/lazarus/main_hall)
 "abQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
+"abR" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor,
+/area/lv624/lazarus/main_hall)
 "abS" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_central_caves)
+"abT" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor,
+/area/lv624/lazarus/main_hall)
 "abU" = (
 /turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
@@ -307,6 +437,10 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
+"abX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/freezerfloor,
+/area/lv624/lazarus/toilet)
 "abY" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -323,13 +457,25 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
-"acc" = (
+"acd" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/lv624/lazarus/main_hall)
+"ace" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	icon_state = "door_open";
+	name = "\improper Nexus Cargo Storage";
+	req_access_txt = "100";
+	req_one_access = null
+	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
-/area/lv624/lazarus/chapel)
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/quart)
 "acf" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/central_caves)
@@ -345,6 +491,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
+"acj" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/quart)
 "ack" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/tool/kitchen/knife/butcher{
@@ -394,6 +546,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "act" = (
@@ -415,10 +568,27 @@
 /obj/structure/foamed_metal,
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
+"acx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating,
+/area/lv624/lazarus/toilet)
 "acy" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/cult,
 /area/lv624/ground/caves/west_caves)
+"acz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/bluecorner,
+/area/lv624/lazarus/sleep_male)
+"acA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/bluecorner,
+/area/lv624/lazarus/sleep_male)
 "acB" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -453,10 +623,23 @@
 "acF" = (
 /turf/closed/wall/sulaco,
 /area/lv624/ground/barrens/north_east_barrens)
+"acG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/lv624/lazarus/sleep_male)
 "acH" = (
 /obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
+"acI" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/lv624/lazarus/sleep_male)
 "acJ" = (
 /turf/open/shuttle/bright_red,
 /area/lv624/ground/barrens/north_east_barrens)
@@ -486,10 +669,23 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
+"acP" = (
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "acQ" = (
 /obj/item/device/flashlight/on,
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
+"acR" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "acS" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -541,6 +737,12 @@
 	},
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
+"adb" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/lv624/lazarus/sleep_female)
 "adc" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
@@ -569,6 +771,15 @@
 /obj/structure/girder,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
+"adj" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/lv624/lazarus/sleep_female)
 "adk" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -4231,7 +4442,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/sleep_male)
 "azr" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
@@ -4712,6 +4923,9 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBA" = (
@@ -4732,7 +4946,9 @@
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aBE" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aBF" = (
@@ -4811,11 +5027,16 @@
 /area/lv624/lazarus/sleep_male)
 "aBV" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBW" = (
 /obj/item/stack/medical/advanced/bruise_pack,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBY" = (
@@ -4830,9 +5051,6 @@
 	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
-"aCa" = (
-/turf/open/floor/whitegreen,
-/area/lv624/lazarus/main_hall)
 "aCb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -4932,10 +5150,6 @@
 "aCw" = (
 /turf/open/floor/whitegreencorner,
 /area/lv624/lazarus/main_hall)
-"aCx" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/floor/grass,
-/area/lv624/lazarus/main_hall)
 "aCy" = (
 /turf/open/floor/whitegreencorner/west,
 /area/lv624/lazarus/main_hall)
@@ -4956,7 +5170,6 @@
 "aCB" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
@@ -5049,9 +5262,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"aCX" = (
-/turf/open/floor/grass,
-/area/lv624/lazarus/main_hall)
 "aCY" = (
 /obj/structure/closet{
 	density = 0;
@@ -5078,7 +5288,6 @@
 "aDa" = (
 /obj/structure/bed,
 /obj/item/bedsheet/mime,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aDb" = (
@@ -5115,6 +5324,9 @@
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aDq" = (
@@ -5148,6 +5360,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "aDw" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aDx" = (
@@ -5162,12 +5375,6 @@
 "aDz" = (
 /obj/structure/bed,
 /obj/structure/machinery/light,
-/turf/open/floor/purple/northwest,
-/area/lv624/lazarus/sleep_female)
-"aDA" = (
-/obj/structure/bed,
-/obj/structure/machinery/light,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aDB" = (
@@ -5229,10 +5436,6 @@
 "aDT" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/toilet)
-"aDU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/closed/wall,
-/area/lv624/lazarus/toilet)
 "aDV" = (
 /turf/open/floor/plating/asteroidwarning/southwest,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -5255,10 +5458,6 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aDY" = (
-/turf/closed/wall,
-/area/lv624/lazarus/quart)
-"aEa" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/closed/wall,
 /area/lv624/lazarus/quart)
 "aEb" = (
@@ -5345,20 +5544,12 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
-"aEC" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/toilet)
 "aED" = (
 /obj/structure/machinery/shower{
 	dir = 4
 	},
 /obj/effect/glowshroom,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aEE" = (
@@ -5369,14 +5560,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/freezerfloor,
-/area/lv624/lazarus/toilet)
-"aEF" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan,
-/turf/closed/wall,
 /area/lv624/lazarus/toilet)
 "aEG" = (
 /obj/structure/closet/coffin{
@@ -5385,9 +5569,6 @@
 	opened = 1
 	},
 /obj/effect/landmark/survivor_spawner,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/chapel/north,
 /area/lv624/lazarus/chapel)
 "aEH" = (
@@ -5396,9 +5577,6 @@
 	frequency = 1469;
 	name = "General Listening Channel";
 	pixel_y = 30
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
 	},
 /turf/open/floor/chapel/east,
 /area/lv624/lazarus/chapel)
@@ -5410,30 +5588,12 @@
 /turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "aEK" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/chapel/north,
-/area/lv624/lazarus/chapel)
-"aEL" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/chapel/east,
 /area/lv624/lazarus/chapel)
 "aEM" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/jungle/west_jungle)
-"aEO" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
 "aEP" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -5446,32 +5606,19 @@
 	},
 /turf/open/floor/whitegreencorner,
 /area/lv624/lazarus/main_hall)
-"aER" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/lv624/lazarus/main_hall)
 "aES" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/whitegreencorner/west,
 /area/lv624/lazarus/main_hall)
-"aET" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/quart)
 "aEU" = (
 /obj/structure/largecrate/random,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
@@ -5503,11 +5650,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/lazarus/quart)
-"aEY" = (
-/obj/structure/largecrate/random,
-/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aEZ" = (
@@ -5558,6 +5700,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFl" = (
@@ -5702,6 +5845,7 @@
 /obj/structure/machinery/shower{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFP" = (
@@ -5802,6 +5946,7 @@
 	name = "\improper Nexus Dome Bathroom";
 	req_access_txt = "100"
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGp" = (
@@ -5873,10 +6018,16 @@
 /obj/structure/sink{
 	pixel_y = 30
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGJ" = (
 /obj/effect/landmark/crap_item,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGK" = (
@@ -5969,7 +6120,7 @@
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "aHe" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/main_hall)
 "aHf" = (
@@ -6026,7 +6177,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHq" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHr" = (
@@ -6326,12 +6477,17 @@
 "aJd" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "aJe" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "aJf" = (
@@ -6448,7 +6604,6 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "aJJ" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/closed/wall/mineral/gold{
 	desc = "Here sits a golden statue of the sun, meant to praise the sky in it's benevolence.";
 	name = "Statue of the Sky"
@@ -6616,7 +6771,9 @@
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "aKB" = (
@@ -7324,9 +7481,6 @@
 "aOF" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor,
 /area/lv624/lazarus/chapel)
 "aOG" = (
@@ -7369,6 +7523,9 @@
 /obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOQ" = (
@@ -7381,6 +7538,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/crap_item,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOS" = (
@@ -7518,6 +7676,9 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aPE" = (
@@ -7531,9 +7692,6 @@
 /obj/item/storage/bible,
 /obj/structure/machinery/light/small{
 	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
 	},
 /obj/effect/landmark/good_item,
 /turf/open/floor,
@@ -7924,21 +8082,15 @@
 /turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
 /area/lv624/lazarus/landing_zones/lz2)
 "aRI" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/effect/landmark/good_item,
-/turf/open/floor/wood,
-/area/lv624/lazarus/hop)
-"aRK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+	dir = 10
 	},
-/turf/closed/wall/r_wall,
+/turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "aRN" = (
 /obj/structure/flora/bush,
-/obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aRO" = (
@@ -7950,9 +8102,6 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aRR" = (
@@ -7962,16 +8111,10 @@
 	dir = 8
 	},
 /obj/item/tool/kitchen/rollingpin,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aRU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -7981,18 +8124,12 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
-"aRW" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/bar,
-/area/lv624/lazarus/canteen)
 "aRX" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/pipes/vents/pump{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
@@ -8179,6 +8316,9 @@
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Nexus Dome Command Quarter";
 	req_access_txt = "100"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/hop)
@@ -8559,22 +8699,11 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hop)
 "aUH" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan,
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
-"aUI" = (
-/obj/structure/largecrate/random,
-/obj/structure/pipes/standard/simple/hidden/cyan{
+/obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"aUJ" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/kitchen)
 "aUL" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -8590,7 +8719,7 @@
 /area/lv624/lazarus/kitchen)
 "aUN" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
@@ -8682,6 +8811,9 @@
 /area/lv624/lazarus/hop)
 "aVr" = (
 /mob/living/simple_animal/mouse,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aVs" = (
@@ -9657,9 +9789,6 @@
 /area/lv624/lazarus/canteen)
 "aZD" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aZE" = (
@@ -14072,6 +14201,9 @@
 "jNR" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "jQj" = (
@@ -18309,7 +18441,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "sBg" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -44975,15 +45107,15 @@ aBA
 aCP
 aAU
 aDy
-aEC
+aDT
 aDy
 aDy
 aDy
 aGI
-aGH
+abX
 aGo
-azt
-aJg
+aHK
+abK
 aJB
 aHZ
 azt
@@ -45201,8 +45333,8 @@ azq
 aBT
 aCq
 aAP
-aAU
-aDT
+acz
+acx
 aED
 aFk
 aFO
@@ -45211,7 +45343,7 @@ aGJ
 aGH
 aDy
 azt
-aJh
+abL
 aJC
 aKv
 azt
@@ -45439,7 +45571,7 @@ aPs
 aHb
 aDy
 aHp
-aJh
+abL
 aJD
 aKv
 azt
@@ -45654,12 +45786,12 @@ oUy
 azq
 aXc
 aBy
-aBV
+acA
 aCr
 aCR
 aBV
-aDU
-aEF
+aDy
+aDy
 aDT
 aDy
 aDy
@@ -45667,7 +45799,7 @@ aDy
 aDy
 aDy
 aIg
-aJh
+abL
 aJE
 aKv
 aKK
@@ -45881,7 +46013,7 @@ oUy
 oUy
 azq
 aGZ
-aAU
+acz
 aBW
 azP
 azP
@@ -45895,7 +46027,7 @@ aQy
 aRh
 aGW
 aIh
-aJh
+abL
 aJD
 aKv
 aKL
@@ -46123,7 +46255,7 @@ aFR
 aFn
 acl
 aIi
-aJh
+abL
 aJG
 aKv
 azt
@@ -46337,7 +46469,7 @@ oUy
 azp
 aAv
 aAU
-aBA
+acG
 aAU
 aCt
 aCT
@@ -46351,7 +46483,7 @@ aFo
 aFo
 aHH
 azt
-aJj
+abP
 aJH
 aJK
 azt
@@ -46565,7 +46697,7 @@ azp
 azp
 azP
 azP
-aAU
+acI
 aBY
 azP
 azP
@@ -46579,7 +46711,7 @@ aFo
 aFo
 aHI
 azt
-azt
+aEP
 azt
 azt
 azt
@@ -46793,7 +46925,7 @@ azq
 azN
 aAw
 aAW
-aAU
+acI
 aAU
 aCu
 aCU
@@ -46807,7 +46939,7 @@ aGs
 aGs
 aGs
 azt
-aJa
+abr
 aHZ
 azt
 azt
@@ -47021,13 +47153,13 @@ azq
 azO
 aAx
 aAX
-aBA
+acG
 aAU
 aCv
 aJZ
 aDt
 azP
-aEL
+aFR
 aFn
 aFR
 aFn
@@ -47035,7 +47167,7 @@ aGs
 aHe
 aHJ
 azt
-aJa
+abr
 aJa
 aHZ
 azt
@@ -47048,8 +47180,8 @@ aZz
 aLl
 akh
 aRI
-aSA
-aSA
+aao
+aal
 aTC
 aQM
 jQX
@@ -47249,13 +47381,13 @@ azp
 azP
 azP
 azP
-aAU
+acI
 aBZ
 azP
 azP
 azP
 azP
-acc
+acl
 aFq
 acl
 acl
@@ -47263,7 +47395,7 @@ aGs
 aHf
 azt
 azt
-aJb
+abR
 aJa
 aJa
 aHZ
@@ -47275,7 +47407,7 @@ aKQ
 aLl
 aLl
 aQM
-aRK
+aQM
 aSB
 aSU
 aSB
@@ -47477,13 +47609,13 @@ azr
 azt
 aAy
 azt
-azt
+aEP
 azt
 azt
 azt
 aDu
 aDW
-aEO
+aQN
 azt
 azt
 azt
@@ -47491,7 +47623,7 @@ azt
 azt
 azt
 aIj
-aJb
+abR
 aJc
 aJf
 aJa
@@ -47503,9 +47635,9 @@ aIe
 aDu
 aPZ
 aQN
+azt
+azt
 aEP
-azt
-azt
 azt
 aTZ
 aEP
@@ -47705,21 +47837,21 @@ azt
 azt
 azQ
 azt
+acP
+azt
+azt
+azt
+azt
+azt
+azt
+azt
+azt
+azt
+azt
+azt
 aBB
 azt
-azt
-azt
-azt
-azt
-aEP
-azt
-azt
-azt
-azt
-azt
-aBB
-azt
-aJc
+abT
 aJI
 aKx
 aJf
@@ -47731,9 +47863,9 @@ azt
 azt
 azt
 azt
-aEP
-aIe
 azt
+aIe
+aEP
 azt
 azt
 aEP
@@ -47933,13 +48065,13 @@ azt
 azt
 azQ
 aAY
+aEP
 azt
-azt
 aCw
 aCw
 aCw
 aCw
-aEQ
+aCw
 aCw
 aCw
 aCw
@@ -47948,7 +48080,7 @@ aHg
 azt
 aWj
 aJd
-aJI
+abJ
 jNR
 aJc
 azt
@@ -47959,9 +48091,9 @@ aCw
 aCw
 aCw
 aCw
+aCw
+aCw
 aEQ
-aCw
-aCw
 azt
 azt
 aEP
@@ -48161,14 +48293,14 @@ azu
 azu
 azt
 azt
-azt
-aCa
-aCx
-aCX
-aDw
-aCX
-aER
+acR
+aMh
+aFT
 aFt
+aDw
+aFt
+aSV
+acd
 aFT
 aFt
 aGN
@@ -48189,11 +48321,11 @@ aQa
 aFt
 aRN
 aFt
-aSV
+aan
 aHh
 aUa
 aUH
-azt
+aad
 azt
 azt
 aWM
@@ -48389,8 +48521,9 @@ azu
 azt
 azQ
 aAZ
+aEP
 azt
-azt
+aCy
 aCy
 aCy
 aCy
@@ -48399,13 +48532,12 @@ aES
 aCy
 aCy
 aCy
-aCy
 azt
 azt
 aWj
 aJf
 aJf
-aJI
+abq
 aJc
 azt
 azt
@@ -48415,13 +48547,13 @@ aCy
 aCy
 aCy
 aCy
-aES
 aCy
 aCy
+aCy
+azt
 azt
 azt
 aEP
-azt
 aVN
 aVN
 aWL
@@ -48617,6 +48749,7 @@ azu
 azQ
 azt
 azt
+aEP
 azt
 azt
 azt
@@ -48630,10 +48763,9 @@ azt
 azt
 azt
 azt
-azt
 aJc
 aJf
-aJa
+abr
 aJf
 azt
 aHg
@@ -48643,13 +48775,13 @@ azt
 azt
 azt
 azt
-aEP
 azt
 azt
 azt
 azt
-aEP
-azu
+azt
+azt
+aae
 aVO
 aWj
 azt
@@ -48845,14 +48977,14 @@ azv
 azu
 aAz
 azt
-azt
+aEP
 azt
 azt
 azt
 aDu
 aDX
-aEO
-azt
+aQN
+aEP
 azt
 azt
 azt
@@ -48861,7 +48993,7 @@ azt
 azt
 aJb
 aJb
-aJa
+abr
 aJa
 azt
 azt
@@ -48876,8 +49008,8 @@ azt
 azt
 azt
 azt
-aUI
-azt
+aHL
+aEP
 azt
 azt
 aWK
@@ -49073,14 +49205,14 @@ azw
 azR
 azR
 azR
-aBC
+adb
 aCb
 azR
 azR
 azR
 aDY
-aET
-aFu
+aDY
+ace
 aFu
 aDY
 aDY
@@ -49089,7 +49221,7 @@ azt
 azt
 aJb
 aJa
-aJa
+abr
 aJK
 azt
 aMf
@@ -49099,13 +49231,13 @@ acv
 act
 act
 act
-aUJ
 aNk
 aNk
 aNk
 aNk
-aUJ
-aTb
+aNk
+aNk
+aaf
 aNk
 aVu
 ayP
@@ -49301,14 +49433,14 @@ azx
 aIB
 aAA
 aBa
-aBD
+adj
 aBD
 aCz
 aCY
 aDx
 aDY
 aEU
-aFv
+acj
 aFv
 aGp
 aDY
@@ -49317,7 +49449,7 @@ aHJ
 azt
 aJa
 aJa
-aJK
+abu
 azt
 aLn
 aMi
@@ -49333,7 +49465,7 @@ aSW
 aNk
 aUb
 aZD
-aSE
+aUL
 aVP
 aVu
 dZp
@@ -49529,7 +49661,7 @@ azy
 azT
 aAB
 aBb
-aBC
+adb
 aBC
 aCA
 aAB
@@ -49545,7 +49677,7 @@ aDY
 aIl
 aJa
 aJK
-azt
+aEP
 aIl
 aLp
 aLp
@@ -49555,12 +49687,12 @@ aNZ
 aNZ
 aNZ
 aNZ
-aUL
+aSE
 aSD
 aSY
 aNk
 aUc
-aUL
+aak
 aVr
 aZs
 aVu
@@ -49757,7 +49889,7 @@ azw
 azw
 azR
 azR
-aBD
+adj
 aCc
 azR
 azR
@@ -49773,7 +49905,7 @@ aDY
 aIp
 azt
 azt
-azt
+aEP
 aIp
 acm
 aMj
@@ -49783,7 +49915,7 @@ aNZ
 aPz
 aQd
 aNZ
-aUM
+aaB
 aSE
 aSZ
 aNk
@@ -49985,7 +50117,7 @@ fjM
 azw
 aAC
 aBc
-aBC
+adb
 aBC
 aIB
 aNd
@@ -50001,7 +50133,7 @@ aDY
 aIr
 aJg
 aJB
-aHZ
+abx
 aIi
 acm
 aMk
@@ -50214,12 +50346,12 @@ azw
 azw
 aBd
 aBE
-aBE
+aBC
 aCB
 aDa
-aDA
-aEa
-aEY
+aDz
+aDY
+aEV
 aFy
 aFv
 eYh
@@ -50229,7 +50361,7 @@ aDY
 aIs
 aJh
 aJL
-aKv
+abC
 azt
 acn
 aMl
@@ -50239,7 +50371,7 @@ aNZ
 aNZ
 aNZ
 aQO
-aUJ
+aNk
 aNk
 aTb
 aNk
@@ -50457,7 +50589,7 @@ aDY
 aIt
 aJh
 aJM
-aKv
+abC
 aIe
 aMl
 aMl
@@ -50467,7 +50599,7 @@ fsa
 aPA
 aQe
 aQP
-aUJ
+aNk
 aSG
 aOO
 aTE
@@ -50685,7 +50817,7 @@ aDY
 aIc
 aJh
 aJN
-aKv
+abC
 azt
 acm
 aMl
@@ -50695,7 +50827,7 @@ aMl
 aNk
 aNk
 aNk
-aUJ
+aNk
 aSH
 aTc
 aTF
@@ -50913,7 +51045,7 @@ aDY
 aIu
 aJh
 aJM
-aKv
+abC
 aBB
 acm
 aMm
@@ -50923,7 +51055,7 @@ aMl
 aMl
 aQf
 aQQ
-aRW
+aMl
 aMl
 aTd
 aTd
@@ -51141,7 +51273,7 @@ aDY
 azt
 aJh
 aJP
-aKv
+abC
 azt
 aLp
 aLp
@@ -51151,7 +51283,7 @@ aOO
 aOO
 aQg
 aOO
-aRW
+aMl
 aOd
 aMl
 aMl
@@ -51369,7 +51501,7 @@ azt
 azt
 aJj
 aJH
-aJK
+abu
 azt
 azt
 aMn
@@ -51379,7 +51511,7 @@ kPY
 aPB
 xFf
 oEE
-aRW
+aMl
 aMl
 aOd
 aMl
@@ -51597,7 +51729,7 @@ azt
 aIv
 azt
 azt
-azt
+aEP
 azt
 azt
 azt
@@ -51825,15 +51957,15 @@ azt
 azt
 azv
 azt
-azt
-azt
-azt
-azt
+abD
+aHK
+aHK
+aHK
 acs
-aMl
+aaL
 aOR
-aPD
-aPD
+aaI
+aaI
 aPD
 aNo
 aNo

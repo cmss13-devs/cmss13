@@ -87,11 +87,11 @@
 
 	adopts_squad_color = FALSE
 
-/obj/item/clothing/gloves/marine/techofficer/commander
-	name = "commanding officer's gloves"
-	desc = "You may like these gloves, but THEY think you are unworthy of them."
+/obj/item/clothing/gloves/marine/techofficer/fancy
+	name = "deluxe combat gloves"
+	desc = "Combat gloves finished in an almost golden-looking fabric. Insulated, fashionable, and capable of protecting the soft hands it's likely wrapped around."
 	icon_state = "captain"
-	item_state = "egloves"
+	item_state = "captain"
 
 /obj/item/clothing/gloves/marine/specialist
 	name = "\improper B18 defensive gauntlets"
@@ -217,6 +217,14 @@
 	desc = "Standard issue tactical gloves used by the royal marines."
 	icon_state = "rmc_gloves"
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+/obj/item/clothing/gloves/marine/veteran/royal_marine/medical
+	name = "\improper L6 pattern combat medic gloves"
+	desc = "Standard issue tactical gloves used by the royal marines combat medics. Sterile and still efficient for combat use."
+	icon_state = "latex"
+	item_state = "latex"
+	adopts_squad_color = FALSE
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/gloves/marine/veteran/cbrn
 	name = "\improper M3 MOPP gloves"

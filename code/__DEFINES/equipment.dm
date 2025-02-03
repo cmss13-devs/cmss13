@@ -92,6 +92,8 @@
 #define FORCEDROP_CONDITIONAL (1<<14)
 /// Overrides smartgunner not being able to wear backpacks
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
+/// The item will incur click delay if an empty adjacent tile is clicked
+#define ADJACENT_CLICK_DELAY (1<<16)
 //==========================================================================================
 
 
@@ -479,6 +481,8 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
 #define ACCESSORY_SLOT_TROPHY "Trophy"
 #define ACCESSORY_SLOT_MASK "Mask"
+#define ACCESSORY_SLOT_WRIST_L "Left wrist"
+#define ACCESSORY_SLOT_WRIST_R "Right wrist"
 
 /// Used for uniform armor inserts.
 #define ACCESSORY_SLOT_ARMOR_C "Chest armor"

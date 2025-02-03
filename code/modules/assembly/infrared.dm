@@ -113,24 +113,24 @@
 	user.set_interaction(src)
 
 	/* a testament to autism
-	var/dat = text("<TT><B>Infrared Laser</B>\n<B>Status</B>: []<BR>\n<B>Visibility</B>: []<BR>\n</TT>", (on ? text("<A href='?src=\ref[];state=0'>On</A>", src) : text("<A href='?src=\ref[];state=1'>Off</A>", src)), (src.visible ? text("<A href='?src=\ref[];visible=0'>Visible</A>", src) : text("<A href='?src=\ref[];visible=1'>Invisible</A>", src)))
+	var/dat = text("<TT><B>Infrared Laser</B>\n<B>Status</B>: []<BR>\n<B>Visibility</B>: []<BR>\n</TT>", (on ? text("<A href='byond://?src=\ref[];state=0'>On</A>", src) : text("<A href='byond://?src=\ref[];state=1'>Off</A>", src)), (src.visible ? text("<A href='byond://?src=\ref[];visible=0'>Visible</A>", src) : text("<A href='byond://?src=\ref[];visible=1'>Invisible</A>", src)))
 	*/
 
 	var/dat = "<TT><B>Infrared Laser</B>\n<B>Status</B>: "
 	if (on)
-		dat += "<A href='?src=\ref[src];state=0'>On</A>"
+		dat += "<A href='byond://?src=\ref[src];state=0'>On</A>"
 	else
-		dat += "<A href='?src=\ref[src];state=1'>Off</A>"
+		dat += "<A href='byond://?src=\ref[src];state=1'>Off</A>"
 	dat += "<BR>\n<B>Visibility</B>: "
 
 	if (visible)
-		dat += "<A href='?src=\ref[src];visible=0'>Visible</A>"
+		dat += "<A href='byond://?src=\ref[src];visible=0'>Visible</A>"
 	else
-		dat += "<A href='?src=\ref[src];visible=1'>Invisible</A>"
+		dat += "<A href='byond://?src=\ref[src];visible=1'>Invisible</A>"
 
 	dat += "<BR>\n</TT>"
-	dat += "<BR><BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
-	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
+	dat += "<BR><BR><A href='byond://?src=\ref[src];refresh=1'>Refresh</A>"
+	dat += "<BR><BR><A href='byond://?src=\ref[src];close=1'>Close</A>"
 	show_browser(user, dat, "Infrared Laser", "infra")
 	return
 
@@ -200,6 +200,9 @@
 	return
 
 /obj/effect/beam/i_beam/Destroy()
+	if(master)
+		master = null
+	QDEL_NULL(next)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
@@ -258,12 +261,3 @@
 		return
 	spawn(0)
 		hit()
-		return
-	return
-
-/obj/effect/beam/i_beam/Destroy()
-	if(master)
-		master = null
-	QDEL_NULL(next)
-	. = ..()
-

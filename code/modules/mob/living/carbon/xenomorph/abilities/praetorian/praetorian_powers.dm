@@ -287,7 +287,7 @@
 	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s segmented tail starts coiling..."), SPAN_XENODANGER("We begin coiling our tail, aiming towards \the [atom]..."))
 	abduct_user.emote("roar")
 
-	var/throw_target_turf = get_step(abduct_user.loc, facing)
+	var/throw_target_turf = get_step(abduct_user, facing)
 
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
@@ -393,7 +393,7 @@
 
 	target_carbon.last_damage_data = create_cause_data(oppressor_user.caste_type, oppressor_user)
 
-	oppressor_user.visible_message(SPAN_XENOWARNING("\The [oppressor_user] hits [target_carbon] in the [target_limb? target_limb.display_name : "chest"] with a devastatingly powerful punch!"), \
+	oppressor_user.visible_message(SPAN_XENOWARNING("\The [oppressor_user] hits [target_carbon] in the [target_limb? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
 	SPAN_XENOWARNING("We hit [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/hitsound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(target_carbon,hitsound, 50, 1)
@@ -526,6 +526,11 @@
 	if (!dancer_user.check_state())
 		return
 
+	if (!ismob(target_atom))
+		apply_cooldown_override(impale_click_miss_cooldown)
+		update_button_icon()
+		return
+
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
 		return
@@ -554,12 +559,12 @@
 		var/mob/living/carbon/human/Hu = target_carbon
 		Hu.update_xeno_hostile_hud()
 
-	// Hmm today I will kill a marine while looking away from them
+	// Hmm todayvisible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 	dancer_user.face_atom(target_atom)
 
 	var/damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
 
-	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"), \
+	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 
 	if(buffed)
@@ -636,6 +641,11 @@
 		return
 
 	if (!istype(dancer_user) || !dancer_user.check_state())
+		return
+
+	if (!ismob(target_atom))
+		apply_cooldown_override(tail_click_miss_cooldown)
+		update_button_icon()
 		return
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
@@ -722,6 +732,9 @@
 	return ..()
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
+	if (!A)
+		return
+
 	var/mob/living/carbon/xenomorph/acidball_user = owner
 	if (!acidball_user.check_state() || acidball_user.action_busy)
 		return
@@ -985,8 +998,8 @@
 	warden.visible_message(SPAN_XENODANGER("[warden] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [A]!"))
 	warden.emote("roar")
 
-	var/throw_target_turf = get_step(warden.loc, facing)
-	var/turf/behind_turf = get_step(warden.loc, reversefacing)
+	var/throw_target_turf = get_step(warden, facing)
+	var/turf/behind_turf = get_step(warden, reversefacing)
 	if(!(behind_turf.density))
 		throw_target_turf = behind_turf
 

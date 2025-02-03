@@ -4373,6 +4373,10 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors)
+"mn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "mo" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal10"
@@ -4767,6 +4771,15 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"np" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "nq" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/navalis/oob)
@@ -5922,6 +5935,15 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"pM" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "pN" = (
 /obj/structure/machinery/light{
 	invisibility = 101;
@@ -5930,6 +5952,14 @@
 	dir = 8
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors)
+"pO" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/navalis/indoors)
 "pP" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -6816,6 +6846,15 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/navalis/indoors)
+"sl" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"sm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "sn" = (
 /obj/structure/prop/resin_prop{
 	dir = 1;
@@ -6884,6 +6923,15 @@
 "sx" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/navalis/indoors)
+"sy" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
 /area/navalis/indoors)
 "sz" = (
 /obj/structure/surface/table/almayer,
@@ -7425,6 +7473,15 @@
 "tS" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
 /area/navalis/indoors)
+"tT" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "tU" = (
 /turf/open/floor/darkblue2/southeast,
 /area/navalis/indoors)
@@ -7841,6 +7898,18 @@
 "vo" = (
 /turf/open/floor/almayer,
 /area/navalis/indoors)
+"vp" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "vq" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/corsat/marked,
@@ -8200,6 +8269,32 @@
 	name = "seabed"
 	},
 /area/navalis/indoors)
+"wh" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"wi" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"wj" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "wk" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
@@ -8210,6 +8305,13 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"wm" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "wn" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "chest_white"
@@ -8222,6 +8324,23 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"wp" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = 12
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "wq" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "chest"
@@ -8234,6 +8353,26 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"ws" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -2
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = 12
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "wt" = (
 /turf/open/floor/prison/greenblue/northwest,
 /area/navalis/outdoors)
@@ -9490,6 +9629,24 @@
 /obj/structure/prop/oilrig/support_beam/brown,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
+"zq" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 10;
+	pixel_y = -2
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = 12
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "zr" = (
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
@@ -10090,6 +10247,18 @@
 "Bc" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/north,
 /area/navalis/indoors)
+"Bd" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "Be" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -10482,6 +10651,11 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /turf/open/floor/corsat,
+/area/navalis/indoors)
+"Ch" = (
+/obj/structure/barricade/handrail/wire,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating,
 /area/navalis/indoors)
 "Ci" = (
 /obj/structure/machinery/door/poddoor{
@@ -11640,6 +11814,11 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors)
+"ES" = (
+/obj/structure/barricade/handrail/wire,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "ET" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
 /obj/effect/alien/resin/sticky,
@@ -12028,6 +12207,13 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
 /turf/open/floor/corsat,
 /area/navalis/indoors)
 "FF" = (
@@ -12038,6 +12224,7 @@
 	dir = 8;
 	layer = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/navalis/indoors)
 "FG" = (
@@ -12045,6 +12232,13 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe2{
+	dir = 1
+	},
 /turf/open/floor/corsat,
 /area/navalis/indoors)
 "FH" = (
@@ -12052,6 +12246,15 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/north,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
 /turf/open/floor/corsat,
 /area/navalis/indoors)
 "FI" = (
@@ -12258,6 +12461,16 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
 /turf/open/floor/corsat,
 /area/navalis/indoors)
 "Gg" = (
@@ -12523,6 +12736,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /turf/open/floor/corsat,
 /area/navalis/indoors)
 "GO" = (
@@ -12608,6 +12822,7 @@
 	dir = 8;
 	layer = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/navalis/indoors)
 "GV" = (
@@ -12875,6 +13090,9 @@
 /area/navalis/indoors)
 "HB" = (
 /obj/structure/platform_decoration/metal/strata/west,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors)
 "HC" = (
@@ -13077,6 +13295,11 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
 /turf/open/floor/corsat,
 /area/navalis/indoors)
 "Ic" = (
@@ -13084,6 +13307,14 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
 /turf/open/floor/corsat,
 /area/navalis/indoors)
 "Id" = (
@@ -13613,6 +13844,9 @@
 /area/navalis/indoors)
 "Jl" = (
 /obj/structure/platform/metal/strata,
+/obj/structure/cable/heavyduty{
+	icon_state = "0-8"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors)
 "Jm" = (
@@ -14009,11 +14243,11 @@
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors)
 "Kl" = (
-/obj/structure/largecrate/random/secure,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomright";
 	color = "#d3d3d3"
 	},
+/obj/structure/machinery/disposal,
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors)
 "Km" = (
@@ -14034,6 +14268,10 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft";
 	color = "#d3d3d3"
+	},
+/obj/structure/sign/safety/biolab{
+	pixel_x = 35;
+	pixel_y = -28
 	},
 /turf/open/floor/prison/whitegreen/southeast,
 /area/navalis/indoors)
@@ -14060,6 +14298,7 @@
 	pixel_x = -3;
 	pixel_y = -5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "Kt" = (
@@ -14146,6 +14385,7 @@
 	pixel_x = -10;
 	pixel_y = 10
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "KF" = (
@@ -14219,6 +14459,12 @@
 	pixel_x = -9;
 	layer = 3.1
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
 "KR" = (
@@ -14235,6 +14481,9 @@
 /obj/item/clothing/suit/storage/CMB/trenchcoat{
 	pixel_x = -7;
 	pixel_y = 7
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_11"
 	},
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors)
@@ -14607,6 +14856,13 @@
 "LW" = (
 /turf/open/floor/plating/platingdmg3,
 /area/navalis/indoors)
+"LX" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_13";
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "LY" = (
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors)
@@ -14683,6 +14939,19 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
 /turf/open/floor/prison/rampbottom/west,
 /area/navalis/outdoors)
+"Mj" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "Mk" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
 /turf/open/floor/prison/rampbottom/east,
@@ -14786,6 +15055,19 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/navalis/indoors)
+"My" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "Mz" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 17
@@ -14871,6 +15153,14 @@
 	},
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors)
+"MI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "MJ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /turf/open/floor/hybrisa/wood/blackwood,
@@ -14948,6 +15238,12 @@
 	},
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors)
+"MU" = (
+/obj/item/stack/rods{
+	pixel_x = -12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "MV" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/xeno_spawn,
@@ -15017,6 +15313,18 @@
 	pixel_y = 16
 	},
 /turf/open/floor/hybrisa/wood,
+/area/navalis/indoors)
+"Nb" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/navalis/indoors)
 "Nc" = (
 /obj/structure/closet/cabinet,
@@ -15321,6 +15629,13 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/east,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
 /turf/open/floor/corsat,
 /area/navalis/indoors)
 "NK" = (
@@ -15409,6 +15724,14 @@
 	dir = 1
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/northeast,
+/area/navalis/indoors)
+"NX" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4{
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/navalis/indoors)
 "NY" = (
 /obj/structure/machinery/light,
@@ -16048,6 +16371,15 @@
 "PO" = (
 /turf/open/floor/prison/darkred2/north,
 /area/navalis/outdoors)
+"PP" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "PQ" = (
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
@@ -16152,6 +16484,13 @@
 	},
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors)
+"Qg" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "Qh" = (
 /turf/open/floor/darkgreen2/southwest,
 /area/navalis/indoors)
@@ -16167,6 +16506,17 @@
 /area/navalis/indoors)
 "Qk" = (
 /turf/open/floor/darkgreen2/southeast,
+/area/navalis/indoors)
+"Ql" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/cobweb2,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/plating,
 /area/navalis/indoors)
 "Qm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -17151,7 +17501,6 @@
 	pixel_x = 12
 	},
 /obj/effect/decal/cleanable/generic,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/navalis/oob/water/far)
 "SN" = (
@@ -17406,7 +17755,6 @@
 /turf/open/floor/plating,
 /area/navalis/oob/water/far)
 "Tw" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
@@ -17420,8 +17768,13 @@
 	},
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
-"Ty" = (
+"Tx" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/hybrisa/misc/fake/wire/blue,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Ty" = (
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
 "Tz" = (
@@ -17433,7 +17786,6 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/navalis/oob/water)
 "TA" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /turf/open/floor/corsat,
@@ -17469,7 +17821,6 @@
 /turf/open/floor/plating,
 /area/navalis/oob/water/far)
 "TD" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
@@ -17484,7 +17835,6 @@
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
 "TE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/hybrisa/misc/fake/pipes/pipe2{
 	dir = 1
 	},
@@ -17495,7 +17845,6 @@
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
 "TF" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
 	dir = 4;
@@ -17524,7 +17873,6 @@
 /turf/open/floor/plating,
 /area/navalis/oob/water/far)
 "TH" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/effect/hybrisa/misc/fake/pipes/pipe2,
@@ -17535,7 +17883,6 @@
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
 "TI" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
@@ -17563,7 +17910,6 @@
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
 "TM" = (
@@ -17571,7 +17917,6 @@
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
 "TN" = (
@@ -17587,7 +17932,6 @@
 /turf/open/floor/plating,
 /area/navalis/oob/water/far)
 "TO" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
 	dir = 4
@@ -17598,7 +17942,6 @@
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
 "TP" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
@@ -17612,7 +17955,6 @@
 /turf/open/floor/corsat,
 /area/navalis/oob/water/far)
 "TQ" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/hybrisa/misc/fake/pipes,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
@@ -17639,6 +17981,10 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/oob/water/far)
+"TU" = (
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "TV" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -17658,18 +18004,109 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors)
+"TW" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"TX" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "TY" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8"
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors)
+"TZ" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/north,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Ua" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
+	pixel_y = 23;
+	density = 0
+	},
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Ub" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Uc" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue,
+/obj/effect/hybrisa/misc/fake/pipes/pipe4{
+	dir = 1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "Ud" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/indoors)
+"Ue" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Uf" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Ug" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/navalis/indoors)
 "Uh" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -17685,6 +18122,12 @@
 	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/indoors)
+"Ui" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/wire/blue,
+/obj/effect/hybrisa/misc/fake/pipes/pipe2,
+/turf/open/floor/corsat,
 /area/navalis/indoors)
 "Uj" = (
 /obj/effect/decal/warning_stripes{
@@ -17702,6 +18145,37 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors)
+"Uk" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
+	pixel_y = 23;
+	density = 0
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Ul" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/item/stack/rods{
+	pixel_y = -15;
+	pixel_x = 2
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Um" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "Un" = (
 /obj/structure/prop/static_tank,
 /turf/open/floor/prison/darkyellowfull2,
@@ -17727,6 +18201,78 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /turf/open/floor/almayer/greenfull2,
 /area/navalis/outdoors)
+"Ur" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	layer = 6
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Us" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Ut" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Uu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_y = 22;
+	pixel_x = 2
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Uv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors)
+"Uw" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = -30
+	},
+/turf/open/floor/prison/southwest,
+/area/navalis/indoors)
+"Ux" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 15
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Uy" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Uz" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/bed/chair/comfy/black{
+	dir = 4;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors)
 "UA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -17736,11 +18282,92 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors)
+"UB" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors)
+"UC" = (
+/obj/structure/sign/safety/biolab{
+	pixel_x = 32
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/navalis/indoors)
 "UD" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"UE" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/turf/open/floor/prison/southwest,
+/area/navalis/indoors)
+"UF" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"UG" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/bed/chair/comfy/black{
+	dir = 4;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on{
+	pixel_y = 1;
+	pixel_x = -30
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors)
+"UH" = (
+/obj/item/storage/fancy/vials{
+	layer = 4.2
+	},
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/prison/southwest,
+/area/navalis/indoors)
+"UI" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 32
+	},
+/obj/vehicle/train/cargo/engine,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/turf/open/floor/prison/southwest,
+/area/navalis/indoors)
+"UJ" = (
+/obj/vehicle/train/cargo/trolley,
+/obj/item/storage/fancy/vials/random{
+	layer = 4.2
+	},
+/turf/open/floor/prison/southwest,
+/area/navalis/indoors)
+"UK" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitegreen,
+/area/navalis/indoors)
+"UL" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
 "UM" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -17750,6 +18377,15 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors)
+"UN" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14"
+	},
+/obj/effect/decal/cleanable/dirt{
+	pixel_y = -9
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors)
 "UO" = (
 /obj/effect/decal/hybrisa/road/lines2{
 	color = "#5b9068"
@@ -17763,6 +18399,74 @@
 	dir = 8
 	},
 /turf/open/floor/prison/whitegreen/east,
+/area/navalis/indoors)
+"UQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"UR" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"US" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/pipes,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"UT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"UU" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/misc/fake/pipes,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"UV" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"UW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
 /area/navalis/indoors)
 "UX" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -17795,12 +18499,87 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
+"UZ" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	layer = 3.2;
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "Va" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	pixel_y = -31
 	},
 /turf/open/floor/prison/greenblue/east,
 /area/navalis/outdoors)
+"Vb" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/misc/fake/pipes,
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble12{
+	dir = 1;
+	pixel_x = -30;
+	pixel_y = 18;
+	layer = 4.2
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Vc" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -14
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -14
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Ve" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -14
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vf" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/misc/fake/pipes,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -14
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = 10
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "Vg" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
@@ -17810,6 +18589,13 @@
 "Vh" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
 /turf/open/floor/corsat/marked,
+/area/navalis/indoors)
+"Vi" = (
+/obj/structure/sign/safety/elevator{
+	pixel_x = 13;
+	pixel_y = 30
+	},
+/turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors)
 "Vj" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -17823,11 +18609,142 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"Vk" = (
+/obj/structure/sign/safety/stairs{
+	pixel_y = 33
+	},
+/obj/structure/sign/safety/two{
+	pixel_y = 33;
+	pixel_x = 15
+	},
+/turf/open/floor/prison/whitegreen/northeast,
+/area/navalis/indoors)
+"Vl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vm" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = -4
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 10;
+	pixel_y = -4;
+	pixel_x = 8
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vo" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/misc/fake/pipes/pipe2{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "Vp" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/effect/hybrisa/misc/fake/pipes,
 /turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/indoors)
+"Vq" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4;
+	layer = 2.1
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Vr" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_y = 1;
+	layer = 2.5
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"Vs" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vt" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vu" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_x = 31
+	},
+/obj/item/stack/rods{
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	pixel_y = 1;
+	pixel_x = -6
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vw" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 14
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Vx" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
 /area/navalis/indoors)
 "Vy" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -17838,6 +18755,92 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors)
+"Vz" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_y = 1;
+	layer = 2.5
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"VA" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"VB" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/west,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"VC" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/stack/rods{
+	pixel_x = -12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VE" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/pipes/pipe2{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"VF" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VG" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/hybrisa/misc/fake/pipes/pipe2,
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "VH" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
@@ -17845,12 +18848,97 @@
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/navalis/indoors)
+"VI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb2,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VJ" = (
+/obj/item/stack/rods{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VK" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"VL" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"VM" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 5
+	},
+/obj/structure/barricade/handrail/wire,
+/obj/structure/largecrate/empty{
+	layer = 2
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "VO" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/outdoors)
+"VP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6"
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VQ" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VR" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
 "VS" = (
 /obj/effect/decal/medical_decals{
 	dir = 1;
@@ -17882,12 +18970,107 @@
 	},
 /turf/open/floor/prison/blue,
 /area/navalis/indoors)
+"VU" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/north,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
+	dir = 8
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors)
+"VV" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VX" = (
+/obj/structure/barricade/handrail/wire,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_x = 6;
+	pixel_y = 22
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"VY" = (
+/obj/structure/barricade/handrail/wire,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_x = -6;
+	pixel_y = 22
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "VZ" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
+"Wa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 12
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Wb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Wc" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Wd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_x = -2;
+	pixel_y = -23
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"We" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small,
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Wf" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Wg" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
 "Wh" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -17896,6 +19079,34 @@
 	color = "#FFFF00"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/indoors)
+"Wi" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/obj/structure/bed/stool{
+	buckling_y = 14;
+	layer = 4;
+	pixel_y = 14;
+	pixel_x = 4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors)
+"Wj" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/turf/open/floor/corsat,
 /area/navalis/indoors)
 "Wl" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -24969,13 +26180,13 @@ gg
 gg
 gg
 jv
-Zg
-Zg
+Vv
+Gb
+Vm
+Vc
+UV
 PQ
-PQ
-PQ
-PQ
-PQ
+UR
 sW
 sW
 cG
@@ -24991,12 +26202,12 @@ Pq
 Pc
 sW
 sW
-Zg
+Uy
 BT
 BT
+Ul
 BT
-BT
-Zg
+TU
 sV
 bf
 bf
@@ -25133,11 +26344,11 @@ gg
 jv
 jv
 Zg
+Vw
+mn
 Zg
-Zg
-Zg
-Zg
-Zg
+Vd
+UW
 PQ
 PQ
 sW
@@ -25157,8 +26368,8 @@ JD
 sW
 BX
 Ib
-DN
-DN
+Us
+Um
 GN
 BQ
 sV
@@ -25295,15 +26506,15 @@ bf
 bf
 jv
 OL
+VJ
+VD
 Zg
-Zg
-Zg
 BT
 BT
-BT
-BT
-BT
-BT
+Ve
+UZ
+wm
+wm
 vl
 cJ
 QK
@@ -25321,12 +26532,12 @@ cJ
 vl
 BX
 Ic
-DH
+Ut
 GU
-DL
+Uf
 BQ
 Zg
-Zg
+LX
 sV
 bf
 bf
@@ -25460,14 +26671,14 @@ bf
 sV
 sV
 sV
-Zg
-BX
-Cm
-Cd
-Cd
-Cd
-Cd
-Cd
+mn
+ES
+Vo
+UU
+Vf
+Vb
+UU
+US
 sW
 Ra
 cH
@@ -25483,14 +26694,14 @@ Gk
 cz
 JB
 sW
-Zg
+mn
+pO
+Uu
+mn
 Cj
-Zg
-Zg
-Cj
-BT
-Zg
-Zg
+TW
+MU
+mn
 sV
 sV
 sV
@@ -25622,11 +26833,11 @@ aO
 bf
 bf
 sV
-Zg
-Zg
-BT
-BX
-Cn
+VV
+mn
+wm
+ES
+Vq
 sW
 sW
 sW
@@ -25652,11 +26863,11 @@ sW
 oj
 sW
 sW
-Dm
-Dr
-BT
-BT
-Zg
+TX
+Nb
+wm
+wm
+mn
 sV
 bf
 bf
@@ -25786,11 +26997,11 @@ aO
 bf
 bf
 sV
-Zg
+VW
 BT
 BV
 Dg
-Cn
+Vq
 sW
 RT
 RJ
@@ -25816,11 +27027,11 @@ OK
 cC
 GW
 sW
-Dz
+TZ
 Gf
-DN
+Mj
 FE
-BQ
+np
 sV
 bf
 bf
@@ -25950,11 +27161,11 @@ aP
 bf
 bf
 sV
-BX
-Cm
+VX
+VK
 NJ
 Dg
-Cn
+Vq
 sW
 MM
 RK
@@ -25980,11 +27191,11 @@ cD
 fa
 GY
 sW
-Ce
-Di
-DH
+Ua
+NX
+My
 FF
-Zg
+mn
 sV
 bf
 bf
@@ -26114,8 +27325,8 @@ aS
 bO
 bf
 sV
-BX
-De
+VY
+VL
 NK
 BQ
 sW
@@ -26145,7 +27356,7 @@ cD
 Ha
 sW
 sW
-Di
+PP
 Dg
 FG
 Dr
@@ -26278,10 +27489,10 @@ NE
 bO
 bf
 sV
-Zg
-NT
-DL
-BQ
+mn
+VM
+VE
+Vx
 sW
 MW
 cM
@@ -26309,10 +27520,10 @@ fa
 Ah
 GO
 sW
-Dj
+Qg
 Dg
 FH
-DN
+pM
 sV
 bf
 aw
@@ -26442,10 +27653,10 @@ aW
 bf
 bf
 sV
-Zg
-Zg
-Cj
-Zg
+Wa
+VN
+VF
+Vl
 sW
 MX
 RV
@@ -26473,10 +27684,10 @@ cE
 cE
 ut
 sW
+Ql
+mn
 Cj
-Zg
-Cj
-Cj
+pO
 sV
 bf
 bf
@@ -26606,7 +27817,7 @@ aO
 bf
 bf
 sV
-Zg
+Wb
 sW
 sW
 sW
@@ -26640,7 +27851,7 @@ sW
 sW
 sW
 sW
-Zg
+mn
 sV
 bf
 bf
@@ -26770,7 +27981,7 @@ aO
 bf
 bf
 sV
-Zg
+Wc
 sW
 NM
 Nt
@@ -26804,7 +28015,7 @@ cZ
 Gh
 FT
 sW
-Zg
+mn
 sV
 bf
 bf
@@ -26968,7 +28179,7 @@ tq
 cD
 FU
 sW
-Zg
+mn
 sV
 bf
 bf
@@ -27098,7 +28309,7 @@ sT
 bO
 bf
 sV
-Zg
+mn
 sW
 NQ
 Nu
@@ -27132,7 +28343,7 @@ da
 cR
 FV
 sW
-Zg
+sl
 sV
 jv
 bf
@@ -27262,7 +28473,7 @@ NE
 bO
 bf
 sV
-Zg
+VW
 sW
 sW
 sW
@@ -27296,7 +28507,7 @@ tr
 cQ
 FV
 sW
-Zg
+mn
 sV
 bf
 aw
@@ -27426,7 +28637,7 @@ aW
 bf
 bf
 sV
-Zg
+mn
 sW
 Da
 CP
@@ -27460,7 +28671,7 @@ Gu
 cD
 sY
 sW
-Zg
+mn
 sV
 bf
 jv
@@ -27624,7 +28835,7 @@ Gu
 cD
 ta
 sW
-Zg
+mn
 sV
 jv
 jv
@@ -27788,7 +28999,7 @@ Gv
 cD
 cO
 vl
-Zg
+mn
 sV
 jv
 wc
@@ -27918,13 +29129,13 @@ aP
 bf
 bf
 sV
-Zg
+Wd
 sW
 Dc
 CS
 CS
 es
-cH
+Vi
 cz
 sW
 aQ
@@ -27952,7 +29163,7 @@ Gv
 cD
 tb
 sW
-Zg
+mn
 sV
 bf
 jv
@@ -28116,7 +29327,7 @@ tr
 cR
 FX
 sW
-Zg
+mn
 sV
 bf
 aw
@@ -28280,7 +29491,7 @@ da
 cQ
 tc
 sW
-Zg
+mn
 sV
 bf
 aw
@@ -28410,7 +29621,7 @@ aW
 bf
 bf
 sV
-Zg
+UW
 sW
 NO
 cD
@@ -28444,7 +29655,7 @@ da
 tg
 td
 sW
-Zg
+mn
 sV
 bf
 bf
@@ -28574,7 +29785,7 @@ aO
 bf
 bf
 sV
-Zg
+Wc
 sW
 NS
 Ny
@@ -28738,7 +29949,7 @@ aO
 bf
 bf
 sV
-Zg
+We
 sW
 sW
 sW
@@ -28772,7 +29983,7 @@ sW
 xD
 sW
 sW
-Zg
+sm
 sV
 bf
 bf
@@ -28902,8 +30113,8 @@ aP
 bf
 bf
 sV
-Zg
-Zg
+mn
+VP
 ox
 Nz
 Nm
@@ -28935,8 +30146,8 @@ oi
 ts
 vo
 sW
-Di
-BQ
+wp
+sy
 sV
 bf
 bf
@@ -29066,13 +30277,13 @@ bV
 bO
 bf
 sV
-Zg
-Zg
+mn
+UW
 bl
 NB
 No
 sW
-cI
+Vk
 cE
 RE
 Rz
@@ -29089,7 +30300,7 @@ cE
 cE
 cE
 cE
-cE
+UC
 Jf
 Ie
 Ie
@@ -29099,8 +30310,8 @@ sW
 tt
 Gj
 sW
-Di
-BQ
+ws
+tT
 sV
 bf
 aw
@@ -29230,7 +30441,7 @@ ch
 bO
 bf
 sV
-Zg
+Wf
 Zg
 Sd
 Sd
@@ -29263,7 +30474,7 @@ sW
 tu
 Gl
 sW
-Dt
+zq
 BQ
 sV
 bf
@@ -29394,11 +30605,11 @@ aW
 bf
 bf
 sV
-Zg
-Zg
+Wg
+VQ
 BX
-Vg
-CW
+Vz
+Vr
 sW
 MN
 Mz
@@ -29416,19 +30627,19 @@ Ks
 Kl
 uu
 cS
-ef
-cS
-ef
+UG
+UE
+Uz
 IE
 Ig
-ef
+Uv
 sW
 GQ
 tN
 Gn
 sW
-Cj
-BT
+Bd
+vp
 sV
 bf
 bf
@@ -29558,11 +30769,11 @@ aO
 bf
 bf
 sV
-BT
-BT
-BX
-DL
-DH
+Wi
+wm
+ES
+VA
+Vs
 sW
 MO
 Zg
@@ -29573,11 +30784,11 @@ cD
 Zg
 ou
 Lg
+tg
 cD
-cD
-cD
-cD
-Kn
+tg
+UL
+UK
 Ka
 JT
 Jg
@@ -29591,8 +30802,8 @@ GR
 tO
 sW
 sW
-BX
-Cm
+Ch
+wh
 sV
 bf
 bf
@@ -29722,9 +30933,9 @@ aO
 bf
 bf
 sV
-Cd
-Dm
-Dr
+Wj
+VR
+Nb
 FF
 Zg
 sW
@@ -29749,14 +30960,14 @@ Jh
 Jh
 IG
 Ih
-ef
+ba
 sW
 uA
 sW
 sW
 Gb
-BX
-Cn
+ES
+wi
 sV
 bf
 bf
@@ -29886,11 +31097,11 @@ aP
 bf
 bf
 sV
-Ce
-Dz
-DN
-GN
-BQ
+Ua
+VU
+VG
+VB
+np
 sW
 cH
 MB
@@ -29902,25 +31113,25 @@ Lv
 uu
 Lh
 cL
-cD
+UN
 cD
 cT
 Ko
 uu
 cS
-ef
+Ir
 cS
-ef
+UB
 IJ
 Ih
-cS
+Uw
 sW
 oj
 sW
 sW
-Zg
+MI
 BX
-Cn
+wj
 sV
 bf
 bf
@@ -30053,8 +31264,8 @@ sV
 sV
 sV
 NT
-DL
-BQ
+VA
+Vt
 sW
 PA
 LP
@@ -30071,18 +31282,18 @@ KF
 Kt
 sV
 sV
-cS
-cS
+UJ
+UH
 cS
 Ji
 IK
 Ii
 HB
 sW
-Ce
-Ce
+Ug
+Ub
 Di
-BQ
+tT
 sV
 sV
 sV
@@ -30216,9 +31427,9 @@ bf
 bf
 bf
 sV
-Zg
-Cj
-Zg
+VI
+VC
+mn
 sW
 RZ
 RN
@@ -30236,16 +31447,16 @@ bf
 bf
 sV
 sV
-cS
+UI
 cS
 Jl
 IL
 Ij
 HC
 sW
-Ce
-Ce
-Di
+Ui
+Uc
+Tx
 BQ
 sV
 bf
@@ -30382,7 +31593,7 @@ bf
 sV
 sV
 sV
-Zg
+mn
 sW
 sW
 sW
@@ -30407,8 +31618,8 @@ Of
 Of
 Of
 sW
-CW
-CW
+Uk
+Ue
 sV
 sV
 sV
@@ -30546,13 +31757,13 @@ bf
 bf
 bf
 sV
-Zg
-Zg
-Zg
-Zg
-Zg
-Zg
-Zg
+Vu
+Vn
+Vl
+BO
+BO
+UT
+UQ
 sV
 bf
 bf
@@ -30565,12 +31776,12 @@ bf
 bf
 bf
 sV
+UF
+mn
 Zg
-Zg
-Zg
-Zg
-Zg
-Zg
+Ux
+mn
+Ur
 Cj
 Cj
 sV

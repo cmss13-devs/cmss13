@@ -1284,6 +1284,20 @@
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
 
+/obj/item/clothing/under/marine/officer/royal_marine
+	name = "royal marines commando service uniform"
+	desc = "The service uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment. Wear your uniform with honour, Commando."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
+	)
+	icon_state = "rmc_uniform_service"
+	worn_state = "rmc_uniform_service"
+
+/obj/item/clothing/under/marine/officer/royal_marine/black
+	icon_state = "rmc_uniform_service_alt"
+	worn_state = "rmc_uniform_service_alt"
+
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"
 	desc = "M3 MOPP suits are specially designed and engineered to protect the wearer from unshielded exposure to any Chemical, Biological, Radiological, or Nuclear (CBRN) threats in the field. The suit has a recommended lifespan of twenty-four hours once contact with a toxic environment is made, but depending on the severity this can be shortened to eight hours or less."

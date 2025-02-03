@@ -199,10 +199,10 @@
 	var/mob/M = user
 	if(linked_console.upgraded == MATRIX_NVG)
 		if(linked_console.power <= 8)
-			M.add_client_color_matrix("matrix_nvg", 99, color_matrix_multiply(color_matrix_saturation(1), color_matrix_rotate_x(-1*(20.8571-1.57143*linked_console.power)), color_matrix_from_string(linked_console.matrixcol))) // (20.8571-1.57143*linked_console.power) is an equation so we can make low level properties look bad
+			M.add_client_color_matrix("matrix_nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(linked_console.matrix_color)))
 			M.overlay_fullscreen("matrix_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 		M.overlay_fullscreen("matrix", /atom/movable/screen/fullscreen/flash/noise/nvg)
-		M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		M.lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 		M.sync_lighting_plane_alpha()
 
 

@@ -4442,7 +4442,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/sleep_male)
 "azr" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
@@ -6120,7 +6120,7 @@
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "aHe" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/main_hall)
 "aHf" = (
@@ -6177,7 +6177,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHq" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHr" = (
@@ -18441,7 +18441,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "sBg" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/machinery/light{
 	dir = 4
 	},

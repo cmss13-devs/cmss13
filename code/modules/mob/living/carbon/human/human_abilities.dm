@@ -504,10 +504,6 @@ CULT
 	remove_from(human_owner)
 
 /proc/start_mutiny(mutiny_faction = FACTION_MARINE)
-	if(mutiny_faction == FACTION_MARINE)
-		shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
-		set_security_level(SEC_LEVEL_RED, TRUE)
-
 	for(var/mob/living/carbon/human/person in GLOB.alive_human_list)
 		if(!person.client)
 			continue
@@ -521,6 +517,10 @@ CULT
 			continue
 
 		person.join_mutiny()
+
+	if(mutiny_faction == FACTION_MARINE)
+		shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
+		set_security_level(SEC_LEVEL_RED, TRUE)
 
 /mob/living/carbon/human/proc/join_mutiny(forced = FALSE, forced_side = MUTINY_MUTINEER)
 	if(job == JOB_WORKING_JOE)
@@ -552,11 +552,10 @@ CULT
 			var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
 			XC.load_status(src)
 			return TRUE
-		if("REFUSE TO FIGHT")
+		else
 			var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
 			XC.load_status(src)
 			return TRUE
-	return FALSE
 
 /datum/action/human_action/cancel_view // cancel-camera-view, but a button
 	name = "Cancel View"

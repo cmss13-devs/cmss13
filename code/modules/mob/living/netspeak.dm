@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	"idc" = list("type" = "text", "replacement" = "I don't care"),
 	"ikr" = list("type" = "text", "replacement" = "I know, right"),
 	"tfw" = list("type" = "text", "replacement" = "that feeling when"),
-	"mfw" = list("type" = "text", "replacement" = "my face when"),
+	"mfw" = list("type" = "text", "replacement" = "my feeling when"),
 	"fr" = list("type" = "text", "replacement" = "for real"),
 	"rip" = list("type" = "text", "replacement" = "rest in peace"),
 	"tho" = list("type" = "text", "replacement" = "though"),

@@ -96,6 +96,7 @@
 #define MOBILE_SHUTTLE_ID_ERT2 "ert_pmc_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT4 "ert_twe_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT5 "ert_solar_devils_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_small_shuttle_north"
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_shuttle_big"
 
@@ -116,6 +117,7 @@
 #define DROPSHIP_SAIPAN "dropship_saipan"
 #define DROPSHIP_MORANA "dropship_morana"
 #define DROPSHIP_DEVANA "dropship_devana"
+#define DROPSHIP_MIDWAY "dropship_midway"
 #define DROPSHIP_TRIPOLI "dropship_tripoli"
 
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
@@ -149,3 +151,4 @@
 #define ADMIN_LANDING_PAD_4 "base-ert4"
 #define ADMIN_LANDING_PAD_5 "base-ert5"
 #define ADMIN_LANDING_PAD_6 "base-ert6"
+#define ADMIN_LANDING_PAD_7 "base-ert7"

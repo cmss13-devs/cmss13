@@ -320,6 +320,14 @@
 /turf/closed/shuttle/upp_dropship2/transparent
 	opacity = FALSE
 
+/turf/closed/shuttle/midway
+	name = "\improper Midway"
+	icon = 'icons/turf/dropship5.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/midway/transparent
+	opacity = FALSE
+
 /turf/closed/shuttle/escapepod
 	name = "wall"
 	icon = 'icons/turf/escapepods.dmi'

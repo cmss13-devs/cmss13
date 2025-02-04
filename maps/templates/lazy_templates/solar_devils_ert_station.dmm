@@ -92,10 +92,6 @@
 	pixel_y = 26;
 	pixel_x = -10
 	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/small{
-	pixel_y = 16;
-	pixel_x = 6
-	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "ak" = (
@@ -186,6 +182,10 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/soalar_devils_station)
+"ar" = (
+/obj/docking_port/stationary/emergency_response/Garrow_port,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "as" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -8139,10 +8139,6 @@
 	layer = 2.52
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Ar" = (
-/obj/docking_port/stationary/emergency_response/idle_port6,
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "As" = (
 /obj/structure/bed/chair{
@@ -22471,7 +22467,7 @@ WN
 WN
 WN
 WN
-WN
+ar
 WN
 WN
 ha
@@ -22570,7 +22566,7 @@ WN
 WN
 WN
 WN
-Ar
+WN
 WN
 WN
 WN

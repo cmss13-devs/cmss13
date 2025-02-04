@@ -3,8 +3,10 @@
 	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon. Don't worry, the grown-ups are here to clean up your mess."
 	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
 	home_base = /datum/lazy_template/ert/solar_devils_station
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_solar_devils
 	probability = 0
-	mob_min = 3
+	mob_min = 1
 	mob_max = 5
 
 	max_medics = 1
@@ -46,8 +48,10 @@
 	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon. Don't worry, the grown-ups are here to clean up your mess."
 	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
 	home_base = /datum/lazy_template/ert/solar_devils_station
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_solar_devils
 	probability = 0
-	mob_min = 3
+	mob_min = 1
 	mob_max = 10
 
 	max_engineers = 2
@@ -89,3 +93,6 @@
 
 	to_chat(mob, SPAN_ROLE_BODY("You are a member of the 3rd Battalion 'Solar Devils', part of the USCM's 2nd Division, 1st Regiment. Unlike most of the USS Almayer's troops, you are well-trained and properly-equipped career marines. Semper Fidelis."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+
+/obj/effect/landmark/ert_spawns/distress_solar_devils
+	name = "Solar Devils Spawn"

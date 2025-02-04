@@ -7,16 +7,6 @@
 
 /obj/structure/machinery/prop/almayer/hangar/dropship_part_fabricator
 
-/obj/structure/machinery/prop/almayer/computer/PC
-	name = "personal desktop"
-	desc = "A small computer hooked up into the ship's computer network."
-	icon_state = "terminal1"
-
-/obj/structure/machinery/prop/almayer/computer/PC/large
-	icon_state = "largecomp"
-
-/obj/structure/machinery/prop/almayer/computer/PC/large/dark
-	icon_state = "largecomp_dark"
 
 /obj/structure/machinery/prop/almayer/computer
 	name = "systems computer"
@@ -59,6 +49,22 @@
 	if(stat & NOPOWER)
 		icon_state = initial(icon_state)
 		icon_state += "0"
+
+/obj/structure/machinery/prop/almayer/computer/PC
+	name = "personal desktop"
+	desc = "A small computer hooked up into the ship's computer network."
+	icon_state = "terminal1"
+
+/obj/structure/machinery/prop/almayer/computer/PC/large
+	icon_state = "largecomp"
+
+/obj/structure/machinery/prop/almayer/computer/PC/large/dark
+	icon_state = "largecomp_dark"
+
+/obj/structure/machinery/prop/almayer/computer/midway_weapon_console
+	name = "\improper 'Midway' weapons controls"
+	desc = "A computer to manage equipment, weapons and simulations installed on the dropship. This one is inactive, however."
+	icon_state = "cameras_old"
 
 /obj/structure/machinery/prop/almayer/computer/NavCon
 	name = "NavCon"

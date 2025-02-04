@@ -15,6 +15,7 @@
 	unslashable = TRUE
 	explo_proof = TRUE
 
+	var/has_role_restriction = TRUE
 	var/list/role_restriction = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 
 	var/obj/item/storage/internal/container
@@ -48,7 +49,7 @@
 	if (!ishuman(H) || H.is_mob_restrained())
 		return
 
-	if(!role_restriction.Find(H.job))
+	if(has_role_restriction && !role_restriction.Find(H.job))
 		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
 		return
 
@@ -81,7 +82,7 @@
 	if(user.get_active_hand())
 		return ..()
 
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return TRUE
 
@@ -99,7 +100,7 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if (container.handle_mousedrop(user, over_object))
@@ -112,7 +113,7 @@
 		return
 	if(!istype(user))
 		return
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	return container.attackby(W, user)
@@ -198,7 +199,7 @@
 		return
 	if(!istype(user))
 		return
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if(istype(W, /obj/item/storage/surgical_tray))
@@ -216,7 +217,7 @@
 	if(user.get_active_hand())
 		return ..()
 
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return TRUE
 
@@ -234,7 +235,7 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if(!has_tray)
@@ -257,7 +258,7 @@
 	if(H.is_mob_incapacitated())
 		return
 
-	if(!role_restriction.Find(H.job))
+	if(has_role_restriction && !role_restriction.Find(H.job))
 		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
 		return
 
@@ -328,6 +329,7 @@
 
 /obj/structure/vehicle_locker/cabinet/cups
 	name = "cups cabinet"
+	has_role_restriction = FALSE
 
 /obj/structure/vehicle_locker/cabinet/cups/Initialize()
 	. = ..()
@@ -339,6 +341,7 @@
 
 /obj/structure/vehicle_locker/cabinet/utensils
 	name = "utensils cabinet"
+	has_role_restriction = FALSE
 
 /obj/structure/vehicle_locker/cabinet/utensils/Initialize()
 	. = ..()

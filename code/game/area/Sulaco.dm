@@ -262,7 +262,16 @@
 	name = "\improper Devana Landing Zone"
 	icon_state = "away2"
 
-//SOLAR DEVILS SHUTTLES
+//Solar Devils
+
+/area/shuttle/midway
+	name = "\improper Dropship Midway"
+	icon_state = "shuttlered"
+	base_muffle = MUFFLE_HIGH
+	soundscape_interval = 30
+	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
+
 /area/shuttle/tripoli
 	name = "dropship Tripoli"
 	icon_state = "shuttlered"

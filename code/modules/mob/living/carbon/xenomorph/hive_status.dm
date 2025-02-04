@@ -1013,7 +1013,6 @@
 	color = "#80ff80"
 	ui_color ="#4d994d"
 	latejoin_burrowed = FALSE
-	hive_inherant_traits = list(TRAIT_CARDPLAYING_THUMBS)
 
 	need_round_end_check = TRUE
 
@@ -1108,8 +1107,6 @@
 	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
-
-	hive_inherant_traits = list(TRAIT_CARDPLAYING_THUMBS)
 
 /datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE

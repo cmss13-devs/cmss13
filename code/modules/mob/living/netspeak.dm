@@ -45,7 +45,6 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	"ikr" = list("type" = "text", "replacement" = "I know, right"),
 	"tfw" = list("type" = "text", "replacement" = "that feeling when"),
 	"mfw" = list("type" = "text", "replacement" = "my face when"),
-	"ngl" = list("type" = "text", "replacement" = "not gonna lie"),
 	"fr" = list("type" = "text", "replacement" = "for real"),
 	"rip" = list("type" = "text", "replacement" = "rest in peace"),
 	"tho" = list("type" = "text", "replacement" = "though"),
@@ -58,15 +57,13 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	"lmk" = list("type" = "text", "replacement" = "let me know"),
 	"hru" = list("type" = "text", "replacement" = "how are you"),
 	"wyd" = list("type" = "text", "replacement" = "what are you doing"),
-	"ez" = list("type" = "text", "replacement" = "easy"),
 	"l8r" = list("type" = "text", "replacement" = "later"),
-	"ttyl" = list("type" = "text", "replacement" = "talk to you later"),
 	"omw" = list("type" = "text", "replacement" = "on my way"),
 	"b4" = list("type" = "text", "replacement" = "before"),
 ))
 
 /// Replace netspeak in a message with proper language or an emote
-/proc/replace_netspeak(message, mob/user, mob_type)
+/proc/replace_netspeak(message, mob/user)
 	var/list/words = splittext(message, " ")
 	var/list/replaced_words = list()
 	var/did_emote = FALSE
@@ -94,7 +91,7 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 			var/list/replacement_data = GLOB.netspeak_replacements[clean_word]
 			if(replacement_data["type"] == "action")
 				if (isxeno(user))
-					// If the user is a xenomorph, pick a random emote
+					// Xenomorphs can't laugh or shrug, so they use species-appropriate sounds instead
 					var/random_emote = pick("hiss", "growl", "roar")
 					user.emote(random_emote, intentional = TRUE)
 				else

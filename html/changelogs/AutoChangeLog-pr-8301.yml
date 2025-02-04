@@ -1,0 +1,4 @@
+author: "FebrezeNinja"
+delete-after: True
+changes:
+  - bugfix: "Dropship weapon console can see stasis bags in activated stretchers instead of \"Empty\""

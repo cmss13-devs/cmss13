@@ -273,7 +273,7 @@
 //books
 /obj/item/prop/magazine/book
 	name = "generic prop book"
-	desc = "Some generic hardcover book containing letters that, when grouped, form what we usually call 'words'. It's pages are made of paper, a material created with cellulose, being that a component that can be usually found in trees."
+	desc = "Some generic hardcover book containing letters that, when grouped, form what we usually call 'words'. It's pages are made of paper, a material created with cellulose, being that a component usually found in trees."
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "book_white"
 	item_state = "book_white"

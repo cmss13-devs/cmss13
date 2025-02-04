@@ -158,11 +158,9 @@
 	if(.)
 		return
 
-	//? Leaving below line for debug
-	// to_chat(usr, "Received action [action] with params [json_encode(params)]")
-
-	if(!allowed(usr))
-		to_chat(usr, SPAN_WARNING("Access denied."))
+	var/mob/user = ui.user
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
 	switch(action)
@@ -171,21 +169,21 @@
 			var/id = params["id"]
 
 			if(!id)
-				alert(usr,"Invalid record ID.")
+				alert(user,"Invalid record ID.")
 				return
 
 			// Find the corresponding general record
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if(!general_record)
-				alert(usr,"Record not found.")
+				alert(user,"Record not found.")
 				return
 
 			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
-			var/photo_data = icon2html(photo_icon, usr.client, sourceonly=TRUE)
+			var/photo_data = icon2html(photo_icon, user.client, sourceonly=TRUE)
 
-			var/photo_front = general_record.fields["photo_front"] ? icon2html(general_record.fields["photo_front"], usr.client, sourceonly=TRUE) : photo_data
-			var/photo_side = general_record.fields["photo_side"] ? icon2html(general_record.fields["photo_side"], usr.client, sourceonly=TRUE) : photo_data
+			var/photo_front = general_record.fields["photo_front"] ? icon2html(general_record.fields["photo_front"], user.client, sourceonly=TRUE) : photo_data
+			var/photo_side = general_record.fields["photo_side"] ? icon2html(general_record.fields["photo_side"], user.client, sourceonly=TRUE) : photo_data
 
 			ui.send_update(list(
 				"photo_front" = photo_front,
@@ -199,20 +197,20 @@
 			var/field = params["field"]
 			var/value = params["value"]
 
-			var/validation_error = validate_field(field, value, usr, FALSE)
+			var/validation_error = validate_field(field, value, user, FALSE)
 			if (validation_error)
-				to_chat(usr, "Error: [validation_error]")
+				to_chat(user, "Error: [validation_error]")
 				return
 
 			if(!id || !field)
-				alert(usr, "Invalid record ID or field.")
+				alert(user, "Invalid record ID or field.")
 				return
 
 			var/is_general_field = copytext(field, 1, 9) == "general_"
 			var/is_security_field = copytext(field, 1, 10) == "security_"
 
 			if(!is_general_field && !is_security_field)
-				alert(usr, "Invalid field prefix.")
+				alert(user, "Invalid field prefix.")
 				return
 
 			// Remove the prefix to map to the original field name
@@ -230,7 +228,7 @@
 				if(original_field in general_record.fields)
 					general_record.fields[original_field] = value
 				else
-					alert(usr, "Field not found in general record.")
+					alert(user, "Field not found in general record.")
 					return
 
 			else if(is_security_field && security_record)
@@ -243,15 +241,15 @@
 							H.sec_hud_set_security_status()
 
 				else
-					alert(usr, "Field not found in security record.")
+					alert(user, "Field not found in security record.")
 					return
 			else
-				alert(usr, "Record not found or mismatched field type.")
+				alert(user, "Record not found or mismatched field type.")
 				return
 
 
 			var/name = general_record.fields["name"]
-			message_admins("[key_name(usr)] changed the record of [name]. Field [original_field] value changed to [value]")
+			message_admins("[key_name(user)] changed the record of [name]. Field [original_field] value changed to [value]")
 
 			. = TRUE
 		if ("add_comment")
@@ -259,14 +257,14 @@
 			var/comment = params["comment"]
 
 			if (!id || !comment || length(trim(comment)) == 0)
-				to_chat(usr, "Invalid input. Ensure both ID and comment are provided.")
+				to_chat(user, "Invalid input. Ensure both ID and comment are provided.")
 				return
 
 			// Locate the security record
 			var/datum/data/record/security_record = find_record("security", id)
 
 			if (!security_record)
-				to_chat(usr, "Record not found.")
+				to_chat(user, "Record not found.")
 				return
 
 			var/comment_id = length(security_record.fields["comments"] || list()) + 1
@@ -286,8 +284,8 @@
 			else
 				security_record.fields["comments"]["[comment_id]"] = new_comment
 
-			to_chat(usr, "Comment added successfully.")
-			msg_admin_niche("[key_name_admin(usr)] added security comment.")
+			to_chat(user, "Comment added successfully.")
+			msg_admin_niche("[key_name_admin(user)] added security comment.")
 
 			return
 		if ("delete_comment")
@@ -295,33 +293,33 @@
 			var/comment_key = params["key"]
 
 			if (!id || !comment_key)
-				to_chat(usr, "Invalid input. Ensure both ID and comment key are provided.")
+				to_chat(user, "Invalid input. Ensure both ID and comment key are provided.")
 				return
 
 			// Locate the security record
 			var/datum/data/record/security_record = find_record("security", id)
 
 			if (!security_record)
-				to_chat(usr, "Record not found.")
+				to_chat(user, "Record not found.")
 				return
 
 			if (!security_record.fields["comments"] || !security_record.fields["comments"][comment_key])
-				to_chat(usr, "Comment not found.")
+				to_chat(user, "Comment not found.")
 				return
 
 			var/comment = security_record.fields["comments"][comment_key]
 			if (comment["deleted_by"])
-				to_chat(usr, "This comment is already deleted.")
+				to_chat(user, "This comment is already deleted.")
 				return
 
-			var/mob/living/carbon/human/U = usr
+			var/mob/living/carbon/human/U = user
 			comment["deleted_by"] = "[U.get_authentification_name()] ([U.get_assignment()])"
 			comment["deleted_at"] = text("[]  []  []", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 
 			security_record.fields["comments"][comment_key] = comment
 
-			to_chat(usr, "Comment deleted successfully.")
-			msg_admin_niche("[key_name_admin(usr)] deleted security comment.")
+			to_chat(user, "Comment deleted successfully.")
+			msg_admin_niche("[key_name_admin(user)] deleted security comment.")
 
 		//* Records maintenance actions
 		if ("new_security_record")
@@ -334,12 +332,12 @@
 
 		if ("new_general_record")
 			CreateGeneralRecord()
-			to_chat(usr, "You successfully created new general record")
-			msg_admin_niche("[key_name_admin(usr)] created new general record.")
+			to_chat(user, "You successfully created new general record")
+			msg_admin_niche("[key_name_admin(user)] created new general record.")
 
 		if ("delete_general_record")
-			if(!check_player_paygrade(usr,list(GLOB.uscm_highcom_paygrades))){
-				to_chat(usr, "You have no permission to do that")
+			if(!check_player_paygrade(user,list(GLOB.uscm_highcom_paygrades))){
+				to_chat(user, "You have no permission to do that")
 				return
 			}
 
@@ -347,13 +345,13 @@
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if (!general_record)
-				to_chat(usr, "Record not found.")
+				to_chat(user, "Record not found.")
 				return
 
 			var/record_name = general_record.fields["name"]
 			if ((istype(general_record, /datum/data/record) && GLOB.data_core.general.Find(general_record)))
 				GLOB.data_core.general -= general_record
-				msg_admin_niche("[key_name_admin(usr)] deleted record of [record_name].")
+				msg_admin_niche("[key_name_admin(user)] deleted record of [record_name].")
 				qdel(general_record)
 
 		//* Actions for ingame objects interactions
@@ -361,7 +359,7 @@
 			if (!( printing ))
 				printing = 1
 				if (!scanner || !scanner.print_list)
-					to_chat(usr, "No scanner data found.")
+					to_chat(user, "No scanner data found.")
 					return
 
 				sleep(50)
@@ -377,19 +375,19 @@
 
 		if ("clear_fingerprints")
 			if (!scanner)
-				to_chat(usr, "No scanner found.")
+				to_chat(user, "No scanner found.")
 				return
 
 			scanner.update_icon()
-			to_chat(usr, "Fingerprints cleared from the scanner.")
+			to_chat(user, "Fingerprints cleared from the scanner.")
 
 		if("eject_fingerprint_scanner")
 			if (!scanner)
-				to_chat(usr, "No scanner found.")
+				to_chat(user, "No scanner found.")
 				return
 
 			scanner.update_icon()
-			scanner.forceMove(get_turf(src))
+			scanner.forceMove(get_turf(user))
 			scanner = null
 		if ("print_personal_record")
 			var/id = params["id"]
@@ -403,39 +401,39 @@
 				var/datum/data/record/security_record = find_record("security", id)
 
 				if (!general_record)
-					to_chat(usr, "Record not found.")
+					to_chat(user, "Record not found.")
 					return
 
 				playsound(loc, 'sound/machines/print.ogg', 15, 1)
 				sleep(50)
 
-				var/obj/item/paper/personalrecord/P = new /obj/item/paper/personalrecord(src, general_record, security_record)
+				var/obj/item/paper/personalrecord/P = new /obj/item/paper/personalrecord(user, general_record, security_record)
 				P.forceMove(loc)
 				P.name = text("Security Record ([])", general_record.fields["name"])
 				printing = null
 		if ("update_photo")
 			var/id = params["id"]
 			var/photo_profile = params["photo_profile"]
-			var/icon/img = get_photo(usr)
+			var/icon/img = get_photo(user)
 			if(!img)
-				to_chat(usr, "You are currently not holding any photo")
+				to_chat(user, "You are currently not holding any photo")
 				return
 
 			// Locate the general record
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if (!general_record)
-				to_chat(usr, "Record not found.")
+				to_chat(user, "Record not found.")
 				return
 
 			general_record.fields["photo_[photo_profile]"] = img
 			ui.send_update(list(
-				"photo_[photo_profile]" = icon2html(img, usr.client, sourceonly=TRUE),
+				"photo_[photo_profile]" = icon2html(img, user.client, sourceonly=TRUE),
 			))
-			to_chat(usr, "You successfully updated record [photo_profile] photo")
-			msg_admin_niche("[key_name_admin(usr)] updated record photo of [general_record.fields["name"]].")
+			to_chat(user, "You successfully updated record [photo_profile] photo")
+			msg_admin_niche("[key_name_admin(user)] updated record photo of [general_record.fields["name"]].")
 
-/obj/structure/machinery/computer/secure_data/proc/validate_field(field, value, mob/user = null, strict_mode = FALSE)
+/obj/structure/machinery/computer/secure_data/proc/validate_field(field, value, mob/user = usr, strict_mode = FALSE)
 	var/list/validators = list(
 		"general_name" = list(
 			"type" = "string",
@@ -513,7 +511,7 @@
 		return "[field] contains invalid characters."
 
 	// Check for paygrade
-	if (rules["permitted_paygrades"] && !check_player_paygrade(usr, rules["permitted_paygrades"])){
+	if (rules["permitted_paygrades"] && !check_player_paygrade(user, rules["permitted_paygrades"])){
 		return "Not enough permissions to edit [field]"
 	}
 

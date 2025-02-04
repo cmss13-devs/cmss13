@@ -361,7 +361,7 @@
 		//* Actions for ingame objects interactions
 		if("print_fingerprint_report")
 			if (!( printing ))
-				printing = 1
+				printing = TRUE
 				if (!scanner || !scanner.print_list)
 					to_chat(user, SPAN_WARNING("No scanner data found."))
 					return
@@ -375,7 +375,7 @@
 				for(var/obj/effect/decal/prints/print in scanner.print_list)
 					refkey += print.criminal_name
 				P.name = "fingerprint report ([md5(refkey)])"
-				printing = null
+				printing = FALSE
 
 		if ("clear_fingerprints")
 			if (!scanner)
@@ -420,7 +420,7 @@
 			var/photo_profile = params["photo_profile"]
 			var/icon/img = get_photo(user)
 			if(!img)
-				to_chat(user, SPAN_WARNING("You are currently not holding any photo"))
+				to_chat(user, SPAN_WARNING("You are currently not holding any photo."))
 				return
 
 			// Locate the general record

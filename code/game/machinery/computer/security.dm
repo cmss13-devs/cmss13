@@ -228,25 +228,16 @@
 			var/datum/data/record/security_record = find_record("security", id)
 
 			// Update the appropriate record
-			if(is_general_field && general_record)
-				if(original_field in general_record.fields)
-					general_record.fields[original_field] = value
-				else
-					tgui_alert(user, "Field not found in general record.")
-					return
+			if(is_general_field && general_record && (original_field in general_record.fields))
+				general_record.fields[original_field] = value
 
-			else if(is_security_field && security_record)
-				if(original_field in security_record.fields)
-					security_record.fields[original_field] = value
+			else if(is_security_field && security_record && (original_field in security_record.fields))
+				security_record.fields[original_field] = value
 
-					// Update HUD status
-					if(original_field == "criminal")
+				if(original_field == "criminal")
 						for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 							H.sec_hud_set_security_status()
 
-				else
-					tgui_alert(user, "Field not found in security record.")
-					return
 			else
 				tgui_alert(user, "Record not found or mismatched field type.")
 				return

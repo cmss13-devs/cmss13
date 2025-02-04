@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Praetorian's acid ball no longer uses plasma if you cancel / do not use it."

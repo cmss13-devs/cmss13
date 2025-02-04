@@ -265,7 +265,7 @@
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 		set_state(RESIN_TRAP_GAS)
 		cause_data = create_cause_data("resin gas trap", B)
-		B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin trap with acid gas!"), \
+		B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin trap with acid gas!"),
 		SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
 	else
 		//Non-boiler acid types
@@ -297,7 +297,7 @@
 		else
 			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
 
-		X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin trap with acid!"), \
+		X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin trap with acid!"),
 		SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
 	return XENO_NO_DELAY_ACTION
 

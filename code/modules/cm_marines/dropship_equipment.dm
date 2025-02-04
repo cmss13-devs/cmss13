@@ -1085,10 +1085,7 @@
 		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
 		var/obj/structure/closet/bodybag/cryobag = stretcher.buckled_bodybag
 		if(!occupant && cryobag)
-			for(var/atom/movable/AM in cryobag)
-				if(ishuman(AM))
-					occupant = AM
-					break
+			occupant = locate(/mob/living/carbon/human) in cryobag
 			target_data["occupant"] = "(Empty stasis bag)"
 		if(occupant)
 			if(cryobag)

@@ -6388,9 +6388,6 @@
 "asC" = (
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors/med_sci/chemical_store)
-"asD" = (
-/turf/closed/wall/hybrisa/colony/office/reinforced,
-/area/navalis/outdoors/exterior/com_ext)
 "asE" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -8549,6 +8546,87 @@
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
+"azF" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/oob/water)
+"azG" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/west,
+/obj/structure/monorail{
+	dir = 9;
+	layer = 1.3
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/comm_one)
+"azH" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/log_ext)
+"azI" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
+"azJ" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
+"azK" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
+"azL" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/com_ext)
+"azM" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/barricade/handrail/strata,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/com_ext)
+"azN" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/com_ext)
 "azO" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstripingdir";
@@ -8561,6 +8639,60 @@
 	},
 /turf/open/floor/prison/whitegreen/southeast,
 /area/navalis/indoors/med_sci/foyer)
+"azP" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 6;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
+"azQ" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 9;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
+"azR" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/monorail{
+	dir = 6;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/outdoors/exterior/med_ext)
+"azS" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/com_ext)
+"azT" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/com_ext)
 "azU" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard{
@@ -10406,6 +10538,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "cCP" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
 "cDl" = (
@@ -11194,7 +11327,7 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck/rear_deck)
+/area/navalis/indoors/xeno_growth/residential)
 "dzd" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/glass,
 /turf/open/floor/corsat/marked,
@@ -16618,7 +16751,7 @@
 "jME" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck/rear_deck)
+/area/navalis/indoors/xeno_growth/residential)
 "jNf" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -16686,6 +16819,7 @@
 "jUb" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/prop/oilrig/support_beam/brown,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/mid)
 "jUx" = (
@@ -19134,6 +19268,7 @@
 /obj/structure/prop/oilrig/support_beam/brown{
 	layer = 1.1
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
 "mKY" = (
@@ -22300,6 +22435,11 @@
 /obj/effect/decal/hybrisa/warningstripes_angled{
 	pixel_y = -2
 	},
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "qaV" = (
@@ -23219,6 +23359,7 @@
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob)
 "qWe" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/mid)
 "qWF" = (
@@ -24432,7 +24573,7 @@
 	pixel_y = -1
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck/rear_deck)
+/area/navalis/indoors/xeno_growth/residential)
 "snH" = (
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water)
@@ -26271,6 +26412,7 @@
 /area/navalis/oob/water)
 "ueS" = (
 /obj/structure/prop/oilrig/support_beam/brown,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/mid)
 "ufj" = (
@@ -29740,6 +29882,7 @@
 "xGv" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/prop/oilrig/support_beam/brown,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
 "xGN" = (
@@ -30107,6 +30250,7 @@
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "ycI" = (
 /obj/structure/prop/oilrig/support_beam/brown,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
 "ycQ" = (
@@ -40435,7 +40579,7 @@ mmV
 rkg
 qpp
 aoE
-aoE
+azP
 asM
 dyi
 aug
@@ -40598,8 +40742,8 @@ mmV
 mmV
 rkg
 qpp
-aoE
-aoE
+azP
+azQ
 asM
 fcE
 aug
@@ -40637,7 +40781,7 @@ aoX
 hGF
 jue
 aRC
-aoE
+azI
 aoE
 aoA
 ffe
@@ -40761,8 +40905,8 @@ nSY
 mmV
 mmV
 gqN
-oTy
-aoE
+azR
+azQ
 aoE
 asM
 auq
@@ -40801,8 +40945,8 @@ aoX
 vLB
 tnN
 aRC
-aoE
-aoE
+azK
+azI
 qld
 ffe
 mmV
@@ -40966,7 +41110,7 @@ iYi
 xjC
 aRC
 aoE
-aoA
+azJ
 qav
 est
 mmV
@@ -42718,7 +42862,7 @@ mmV
 mmV
 lJH
 arX
-asV
+azS
 asV
 axL
 arX
@@ -42781,7 +42925,7 @@ pXR
 pXR
 pXR
 onz
-pXR
+azH
 pXR
 pPp
 bls
@@ -42882,7 +43026,7 @@ mmV
 mRQ
 mmV
 vQz
-arX
+azT
 arX
 arX
 arX
@@ -42945,7 +43089,7 @@ pXR
 pXR
 pXR
 pXR
-pXR
+azH
 pXR
 pXR
 kGI
@@ -43565,7 +43709,7 @@ npi
 cQA
 asp
 xpa
-asD
+xpa
 arX
 arX
 arX
@@ -48976,7 +49120,7 @@ uFs
 keT
 hxl
 asR
-arX
+azL
 arX
 arX
 arY
@@ -49074,7 +49218,7 @@ dvZ
 dvZ
 ueN
 vno
-snH
+azF
 ueS
 oTJ
 gGc
@@ -49140,8 +49284,8 @@ sdh
 sdh
 asR
 asR
-arX
-arX
+azN
+azL
 asx
 rmr
 mOQ
@@ -49238,7 +49382,7 @@ dvZ
 dvZ
 dvZ
 mmV
-snH
+azF
 qWe
 oTJ
 gGc
@@ -49305,7 +49449,7 @@ arX
 arX
 arX
 arX
-asd
+azM
 rxz
 hDM
 aNg
@@ -49402,7 +49546,7 @@ usc
 dvZ
 dvZ
 vno
-snH
+azF
 jUb
 oTJ
 gGc
@@ -49566,7 +49710,7 @@ pdb
 dvZ
 dvZ
 mmV
-snH
+azF
 qWe
 oTJ
 gGc
@@ -49730,7 +49874,7 @@ dvZ
 dvZ
 dvZ
 vno
-snH
+azF
 ueS
 oTJ
 gGc
@@ -49894,7 +50038,7 @@ dvZ
 dvZ
 wyv
 mmV
-snH
+azF
 qWe
 oTJ
 gGc
@@ -50000,7 +50144,7 @@ mmV
 mmV
 tAy
 ubZ
-ppF
+azG
 ppF
 ppF
 pBj
@@ -67034,7 +67178,7 @@ agt
 apk
 asq
 vno
-snH
+azF
 ueS
 oTJ
 gGc
@@ -67198,7 +67342,7 @@ kAa
 apk
 asq
 mmV
-snH
+azF
 qWe
 oTJ
 gGc

@@ -68,7 +68,7 @@
 					detected_sound = TRUE
 					break
 
-				else if(ishuman(creature))
+				if(ishuman(creature))
 					var/detected_nested_mob_object = FALSE
 					for(var/obj/nested_mob_object as anything in creature.contents_recursive())
 						if(!detect_object(nested_mob_object))

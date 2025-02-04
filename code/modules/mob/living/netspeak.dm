@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	"nvm" = list("type" = "text", "replacement" = "never mind"),
 	"bc" = list("type" = "text", "replacement" = "because"),
 	"cuz" = list("type" = "text", "replacement" = "because"),
-	"tf" = list("type" = "text", "replacement" = "the fuack"),
+	"tf" = list("type" = "text", "replacement" = "the fuck"),
 	"lmk" = list("type" = "text", "replacement" = "let me know"),
 	"hru" = list("type" = "text", "replacement" = "how are you"),
 	"wyd" = list("type" = "text", "replacement" = "what are you doing"),

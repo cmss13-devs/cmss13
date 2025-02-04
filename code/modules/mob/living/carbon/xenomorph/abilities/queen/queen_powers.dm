@@ -165,27 +165,27 @@
 			to_chat(xeno, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
 		var/mob/living/carbon/xenomorph/targeted_xeno = xeno.observed_xeno
-		if(targetted_xeno == xeno)
+		if(targeted_xeno == xeno)
 			to_chat(xeno, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
 			return
 		apply_cooldown()
-		if(targetted_xeno.hive_pos == NORMAL_XENO)
-			if(!hive.add_hive_leader(targetted_xeno))
+		if(targeted_xeno.hive_pos == NORMAL_XENO)
+			if(!hive.add_hive_leader(targeted_xeno))
 				to_chat(xeno, SPAN_XENOWARNING("Unable to add the leader."))
 				return
-			if(targetted_xeno.stat == DEAD)
+			if(targeted_xeno.stat == DEAD)
 				to_chat(xeno, SPAN_XENOWARNING("You cannot leader the dead."))
 				return
-			to_chat(xeno, SPAN_XENONOTICE("You've selected [targetted_xeno] as a Hive Leader."))
-			to_chat(targetted_xeno, SPAN_XENOANNOUNCE("[xeno] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
+			to_chat(xeno, SPAN_XENONOTICE("You've selected [targeted_xeno] as a Hive Leader."))
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
 		else
-			hive.remove_hive_leader(targetted_xeno)
-			to_chat(xeno, SPAN_XENONOTICE("You've demoted [targetted_xeno] from Hive Leader."))
-			to_chat(targetted_xeno, SPAN_XENOANNOUNCE("[xeno] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
+			hive.remove_hive_leader(targeted_xeno)
+			to_chat(xeno, SPAN_XENONOTICE("You've demoted [targeted_xeno] from Hive Leader."))
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
 	else
 		var/list/possible_xenos = list()
-		for(var/mob/living/carbon/xenomorph/targetted_xeno in hive.xeno_leader_list)
-			possible_xenos += targetted_xeno
+		for(var/mob/living/carbon/xenomorph/targeted_xeno in hive.xeno_leader_list)
+			possible_xenos += targeted_xeno
 
 		if(length(possible_xenos) > 1)
 			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(xeno, "Target", "Watch which leader?", possible_xenos, theme="hive_status")

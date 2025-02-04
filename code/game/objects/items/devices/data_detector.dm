@@ -59,18 +59,22 @@
 						break
 
 			else if(istype(scanned_atom, /mob))
-				if(isxeno(scanned_atom) || isyautja(scanned_atom))
-					show_blip(loc, scanned_atom)
+				var/mob/creature = scanned_atom
+				if(creature.stat != DEAD)
+					continue
+
+				if(isxeno(creature) || isyautja(creature))
+					show_blip(loc, creature)
 					detected_sound = TRUE
 					break
 
-				else if(ishuman(scanned_atom))
+				else if(ishuman(creature))
 					var/detected_nested_mob_object = FALSE
-					for(var/obj/nested_mob_object as anything in scanned_atom.contents_recursive())
+					for(var/obj/nested_mob_object as anything in creature.contents_recursive())
 						if(!detect_object(nested_mob_object))
 							continue
 
-						show_blip(loc, scanned_atom)
+						show_blip(loc, creature)
 						detected_sound = TRUE
 						detected_nested_mob_object = TRUE
 						break

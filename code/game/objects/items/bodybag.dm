@@ -157,7 +157,7 @@
 	if(opened && open_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
 		return
-	user.visible_message(SPAN_WARNING("[user] opens the stasis bag.")
+	visible_message(SPAN_WARNING("[user] opens the bag."))
 	. = ..()
 
 

@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "fixes the healing / aura effect from recovery nodes applying to dead xenos / xenos who died while resting"

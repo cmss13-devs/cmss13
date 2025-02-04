@@ -110,6 +110,12 @@
 	if(!filter_message(src, message))
 		return
 
+	var/processed_message = replace_netspeak(message, src)
+	if(isnull(processed_message))  // If netspeak was an action, stop here
+		return
+
+	message = processed_message
+
 	log_hivemind("[key_name(src)] : [message]")
 
 	var/track = ""

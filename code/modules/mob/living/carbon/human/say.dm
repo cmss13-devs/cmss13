@@ -94,6 +94,12 @@
 	if(!filter_message(src, message))
 		return
 
+	var/processed_message = replace_netspeak(message, src)
+	if(isnull(processed_message))  // If netspeak was an action, stop here
+		return
+
+	message = processed_message
+
 	var/datum/language/speaking = parsed["language"]
 	if(!speaking)
 		speaking = get_default_language()

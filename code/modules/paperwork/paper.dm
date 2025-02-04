@@ -668,6 +668,10 @@
 	name = "SOS!"
 	info = "Mayday! Mayday! To all nearby CLF frequencies, we are under attack! Unknown creatures have overrun New Varadero outpost and our shuttle is damaged beyond repair! We ne-"
 
+/obj/item/paper/soro/clf
+	name = "TOP SECRET: FOR CELL LEAD ONLY"
+	info = "Your request for extraction has been recieved. We have no assets in the region available. Await further instruction."
+
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
 

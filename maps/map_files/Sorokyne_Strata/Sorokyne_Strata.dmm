@@ -97,12 +97,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
-"aau" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfcrash"
-	},
-/turf/open/floor/strata/cyan3/west,
-/area/strata/ag/interior/outpost/med)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -119,6 +113,12 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aay" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfcrash"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -55537,7 +55537,7 @@ dSQ
 lZO
 lZO
 xAf
-aau
+lZO
 lZO
 dSQ
 gjC
@@ -59480,7 +59480,7 @@ agR
 aac
 aac
 aac
-aac
+aay
 aac
 aac
 aac

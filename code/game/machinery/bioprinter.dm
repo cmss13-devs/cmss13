@@ -181,8 +181,8 @@
 
 /datum/bioprinter_recipe/r_leg
 	title = "synthetic right leg"
-	path = /obj/item/robot_parts/leg/l_leg
+	path = /obj/item/robot_parts/leg/r_leg
 
 /datum/bioprinter_recipe/l_leg
 	title = "synthetic left leg"
-	path = /obj/item/robot_parts/leg/r_leg
+	path = /obj/item/robot_parts/leg/l_leg

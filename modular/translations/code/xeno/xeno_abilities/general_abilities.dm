@@ -40,6 +40,7 @@
 	desc = "Прятаться под объектами окружения."
 
 /datum/action/xeno_action/onclick/place_trap
+	desc = "Поставить ловушку на траве. Необходимо её заполнить после установки. Активируется при приближении."
 
 /datum/action/xeno_action/activable/place_construction
 	desc = "Построить продвинутые структуры. Требуется усиленная трава с Hive Core/Hive Cluster, а также свободное пространство вокруг точки установки."

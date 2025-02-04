@@ -9,7 +9,7 @@
 	replace_in_desc("%ARMOR%", 15) // Hardcoded
 	replace_in_desc("%DAMAGE%", direct_hit_damage)
 	replace_in_desc("%SLOWDOWN%", 3.5, DESCRIPTION_REPLACEMENT_TIME) // Hardcoded
-	replace_in_desc("%KNOCKDOWN%", 2, DESCRIPTION_REPLACEMENT_TIME) // Hardcoded
+	replace_in_desc("%KNOCKDOWN%", convert_effect_time(2, WEAKEN), DESCRIPTION_REPLACEMENT_TIME) // Hardcoded
 	replace_in_desc("%THROW%", 3, DESCRIPTION_REPLACEMENT_DISTANCE) // Hardcoded
 
 /datum/action/xeno_action/onclick/crusher_stomp
@@ -17,8 +17,8 @@
 
 /datum/action/xeno_action/onclick/crusher_stomp/apply_replaces_in_desc()
 	replace_in_desc("%DAMAGE%", 60)
-	replace_in_desc("%SLOWTIME%", effect_duration / 10, DESCRIPTION_REPLACEMENT_TIME)
-	replace_in_desc("%KNOCKDOWN%", 0.2, DESCRIPTION_REPLACEMENT_TIME)
+	replace_in_desc("%SLOWTIME%", effect_duration / 10, DESCRIPTION_REPLACEMENT_TIME) // It's deciseconds
+	replace_in_desc("%KNOCKDOWN%", convert_effect_time(0.2, WEAKEN), DESCRIPTION_REPLACEMENT_TIME)
 	replace_in_desc("%KNOCKDOWN_DISTANCE%", distance, DESCRIPTION_REPLACEMENT_DISTANCE)
 
 /datum/action/xeno_action/onclick/crusher_stomp/charger
@@ -51,5 +51,5 @@
 	desc = "Сделать уворок в бок. Сбрасывает моментум, но после окончания уворот моментум начнёт накапливаться сразу же. При попадании опрокидывает цель (%WEAKEN%) и наносит %DAMAGE% урона."
 
 /datum/action/xeno_action/activable/tumble/apply_replaces_in_desc()
-	replace_in_desc("%WEAKEN%", 1, DESCRIPTION_REPLACEMENT_TIME)
+	replace_in_desc("%WEAKEN%", convert_effect_time(1, WEAKEN), DESCRIPTION_REPLACEMENT_TIME)
 	replace_in_desc("%DAMAGE%", 15) // Hardcoded

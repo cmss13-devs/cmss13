@@ -6,11 +6,11 @@
 /datum/action/xeno_action/proc/replace_in_desc(what_to_replace, replace_with, type)
 	switch(type)
 		if(DESCRIPTION_REPLACEMENT_TIME)
-			desc = replacetext_char(desc, what_to_replace, "[round(replace_with, 0.1)] сек.")
+			desc = replacetext_char(desc, what_to_replace, "<b>[round(replace_with, 0.1)] сек.</b>")
 		if(DESCRIPTION_REPLACEMENT_DISTANCE)
-			desc = replacetext_char(desc, what_to_replace, "[replace_with] кл.")
+			desc = replacetext_char(desc, what_to_replace, "<b>[replace_with] кл.</b>")
 		else
-			desc = replacetext_char(desc, what_to_replace, replace_with)
+			desc = replacetext_char(desc, what_to_replace, "<b>[replace_with]</b>")
 
 /// Called when something changes and we need to reconstruct description
 /datum/action/xeno_action/proc/update_desc()
@@ -29,3 +29,13 @@
 		desc += "<br>Перезарядка: [round(xeno_cooldown / 10, 0.1)] сек."
 	if(charge_time)
 		desc += "<br>Задержка перед активацией: [round(charge_time / 10, 0.1)] сек."
+
+/// Helper proc to make time make sense
+/datum/action/xeno_action/proc/convert_effect_time(amount, status)
+	switch(status)
+		if(STUN, DAZE, WEAKEN)
+			return amount * GLOBAL_STATUS_MULTIPLIER / 10
+		if(SLOW, SUPERSLOW, SLUR, STUTTER)
+			// SLOW STATUS EFFECT IS DIFFERENT. It uses deciseconds.
+			return amount * /datum/controller/subsystem/human::wait / 10
+	return amount

@@ -704,10 +704,13 @@
 	var/list/extra_factions = list()
 	/// What type of /datum/crewmonitor this will create
 	var/crew_monitor_type = /datum/crewmonitor
+	
+	/// The identifier for the crew monitor that we use
+	VAR_PRIVATE/lookup_string
 
 /obj/structure/machinery/computer/crew/Initialize()
 	. = ..()
-	var/lookup_string = "[faction]-[json_encode(sort_list(extra_factions))]"
+	lookup_string = "[faction]-[json_encode(sort_list(extra_factions))]"
 	if(!GLOB.crew_monitor[lookup_string])
 		GLOB.crew_monitor[lookup_string] = new crew_monitor_type(faction, extra_factions)
 
@@ -720,7 +723,6 @@
 	if(inoperable())
 		return
 	user.set_interaction(src)
-	var/lookup_string = "[faction]-[json_encode(sort_list(extra_factions))]"
 	GLOB.crew_monitor[lookup_string].show(user, src)
 
 /obj/structure/machinery/computer/crew/update_icon()
@@ -735,7 +737,6 @@
 			stat &= ~NOPOWER
 
 /obj/structure/machinery/computer/crew/interact(mob/living/user)
-	var/lookup_string = "[faction]-[json_encode(sort_list(extra_factions))]"
 	GLOB.crew_monitor[lookup_string].show(user, src)
 
 /obj/structure/machinery/computer/crew/alt

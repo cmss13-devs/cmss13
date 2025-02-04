@@ -1852,6 +1852,7 @@
 #include "code\modules\gear_presets\synths.dm"
 #include "code\modules\gear_presets\upp.dm"
 #include "code\modules\gear_presets\uscm.dm"
+#include "code\modules\gear_presets\uscm_co.dm"
 #include "code\modules\gear_presets\uscm_dress.dm"
 #include "code\modules\gear_presets\uscm_event.dm"
 #include "code\modules\gear_presets\uscm_forecon.dm"

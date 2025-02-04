@@ -558,7 +558,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "atz" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/blue/southeast,
 /area/varadero/interior/administration)
 "atL" = (
@@ -7431,7 +7431,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "fUJ" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "fUY" = (
@@ -8853,7 +8853,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
 "hek" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/red/northeast,
 /area/varadero/interior/security)
 "hen" = (
@@ -10307,7 +10307,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "ioA" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_SE)
 "ipl" = (
@@ -11110,7 +11110,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
 "iTF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
 "iTP" = (
@@ -17870,7 +17870,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "oBj" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
 "oBl" = (

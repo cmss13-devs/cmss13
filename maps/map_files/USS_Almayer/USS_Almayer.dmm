@@ -116,9 +116,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
+/mob/living/simple_animal/mouse/rat/brown,
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -16;
 	pixel_y = 8
@@ -1356,7 +1354,10 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper)
 "aiQ" = (
-/obj/structure/machinery/faxmachine,
+/obj/structure/machinery/faxmachine{
+	sub_name = "Combat Correspondent";
+	department = "USS Almayer"
+	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer/plate,
@@ -3379,7 +3380,10 @@
 /area/almayer/command/cic)
 "awH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
+	sub_name = "CIC";
+	radio_alert_tag = ":V"
+	},
 /obj/item/device/megaphone,
 /obj/structure/machinery/computer/cameras/almayer_brig{
 	desc = "Used to access the various cameras in the security brig.";
@@ -7196,7 +7200,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/captain_mess)
 "aVC" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering/starboard)
 "aVF" = (
@@ -9108,7 +9112,9 @@
 "blw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter,
-/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Conference Room"
+	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -9163,7 +9169,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
 "bmh" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_x = -5;
 	pixel_y = 16
@@ -9303,7 +9309,7 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/living/offices)
 "bng" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_x = -5;
 	pixel_y = 16
@@ -11696,8 +11702,7 @@
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Mainframe Left";
-	name = "\improper ARES Mainframe Shutters";
-	plane = -7
+	name = "\improper ARES Mainframe Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -12292,7 +12297,7 @@
 /turf/open/floor/almayer/emerald/northwest,
 /area/almayer/squads/charlie)
 "bMD" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -13204,7 +13209,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "bTJ" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -15673,7 +15678,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_m_p)
 "cyo" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/green/southwest,
 /area/almayer/squads/req)
 "cyp" = (
@@ -19308,8 +19313,7 @@
 "dYU" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/cobweb{
-	dir = 8;
-	plane = -6
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_container/spray/cleaner{
@@ -20402,7 +20406,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_bow)
 "eua" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/bridgebunks)
 "eup" = (
@@ -20689,10 +20693,11 @@
 /obj/item/paper_bin/uscm{
 	pixel_y = -16
 	},
-/obj/structure/machinery/faxmachine/uscm{
+/obj/structure/machinery/faxmachine/uscm/almayer{
 	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
-	department = "Requisitions";
-	gender = "female"
+	sub_name = "Requisitions";
+	gender = "female";
+	radio_alert_tag = ":U"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
@@ -21008,7 +21013,9 @@
 /area/almayer/squads/req)
 "eHx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
+	sub_name = "Conference Room"
+	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "eHy" = (
@@ -22222,7 +22229,7 @@
 	dir = 1;
 	pixel_y = 2
 	},
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/item/ashtray/plastic{
 	layer = 3.4;
 	pixel_x = 7;
@@ -22574,7 +22581,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
 "fqc" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
@@ -22591,7 +22598,7 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "fqC" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
 "fqJ" = (
@@ -23081,8 +23088,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "ARES JoeCryo";
-	name = "\improper ARES Synth Bay Shutters";
-	plane = -7
+	name = "\improper ARES Synth Bay Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -23557,8 +23563,7 @@
 "fMt" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/sign/safety/laser{
@@ -24104,8 +24109,8 @@
 /area/almayer/command/cichallway)
 "gba" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command{
-	department = "AI Core";
+/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
+	sub_name = "AI Core";
 	pixel_y = 8
 	},
 /obj/structure/transmitter/rotary{
@@ -25171,7 +25176,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen/clicky{
 	pixel_x = 14;
-	plane = -5;
 	pixel_y = 2
 	},
 /obj/item/tool/pen/clicky{
@@ -25394,9 +25398,7 @@
 	req_access = null;
 	req_one_access_txt = "91;92"
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore{
-	plane = -6
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
 "gDk" = (
@@ -25498,7 +25500,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "gGr" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
 "gGs" = (
@@ -26010,7 +26012,7 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17
 	},
-/obj/structure/machinery/faxmachine/corporate/liaison,
+/obj/structure/machinery/faxmachine/corporate/liaison/almayer,
 /obj/item/paper/liaison_brief{
 	pixel_y = 8;
 	pixel_x = -4
@@ -29387,8 +29389,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsUpper";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/structure/disposalpipe/up/almayer{
 	dir = 2;
@@ -31329,8 +31330,7 @@
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_y = -3;
-	pixel_x = 4;
-	plane = -5
+	pixel_x = 4
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_x = 4;
@@ -31338,8 +31338,7 @@
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_x = -4;
-	pixel_y = -3;
-	plane = -5
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_x = -4;
@@ -32118,8 +32117,7 @@
 "jqP" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
@@ -32901,7 +32899,7 @@
 /area/almayer/maint/hull/lower/l_f_s)
 "jIT" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig/chief,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig/chief,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
 "jIV" = (
@@ -35428,8 +35426,7 @@
 /obj/structure/machinery/door/window/westright,
 /obj/structure/machinery/shower{
 	dir = 8;
-	layer = 3.10;
-	plane = -4
+	layer = 3.10
 	},
 /obj/item/tool/soap{
 	pixel_x = 2;
@@ -37340,7 +37337,7 @@
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
 "lym" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_f_p)
 "lyq" = (
@@ -39372,10 +39369,11 @@
 /area/almayer/engineering/lower)
 "muV" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/capt{
+/obj/structure/machinery/faxmachine/uscm/almayer/command/capt{
 	name = "Commanding Officer's Fax Machine";
 	pixel_x = -4;
-	pixel_y = 3
+	pixel_y = 3;
+	radio_alert_tag = ":P"
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -39605,8 +39603,7 @@
 "mAe" = (
 /obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable,
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown{
-	dir = 4;
-	plane = -6
+	dir = 4
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -39874,8 +39871,7 @@
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Mainframe Right";
-	name = "\improper ARES Mainframe Shutters";
-	plane = -7
+	name = "\improper ARES Mainframe Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -40451,8 +40447,7 @@
 "mRn" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/sign/safety/terminal{
@@ -42488,8 +42483,7 @@
 /obj/structure/machinery/computer/cameras/containment/hidden{
 	dir = 4;
 	pixel_x = -17;
-	pixel_y = -5;
-	plane = -5
+	pixel_y = -5
 	},
 /obj/item/device/camera_film{
 	pixel_x = -3
@@ -42808,7 +42802,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/port_missiles)
 "nNv" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 16
 	},
@@ -46007,8 +46001,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES ReceptStairs2";
-	name = "\improper ARES Reception Shutters";
-	plane = -7
+	name = "\improper ARES Reception Shutters"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
@@ -48032,7 +48025,9 @@
 /area/almayer/living/briefing)
 "pUD" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Processing"
+	},
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
@@ -48947,7 +48942,10 @@
 /area/almayer/shipboard/panic)
 "qmP" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Intel Office";
+	radio_alert_tag = ":T"
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "qmR" = (
@@ -54358,7 +54356,9 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "stO" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Permanent Confinement"
+	},
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
@@ -54732,7 +54732,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_x = -5;
 	pixel_y = 16
@@ -55035,8 +55035,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES ReceptStairs2";
-	name = "\improper ARES Reception Stairway Shutters";
-	plane = -7
+	name = "\improper ARES Reception Stairway Shutters"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
@@ -57346,8 +57345,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsUpper";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -57589,7 +57587,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "tJR" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/sign/safety/medical{
 	pixel_x = -17
 	},
@@ -58796,7 +58794,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	pixel_y = 16
 	},
 /turf/open/floor/almayer,
@@ -59000,7 +58998,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/orangefull,
 /area/almayer/engineering/upper_engineering)
 "urN" = (
@@ -63025,8 +63023,8 @@
 /obj/structure/sign/prop3{
 	pixel_x = -32
 	},
-/obj/structure/machinery/faxmachine/uscm{
-	department = "SEA"
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "SEA"
 	},
 /turf/open/floor/strata/faux_metal,
 /area/almayer/shipboard/sea_office)
@@ -64119,8 +64117,7 @@
 "wkM" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsLower";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/public{
 	alert_id = "AresStairs";
@@ -66272,9 +66269,9 @@
 	density = 0;
 	pixel_y = 16
 	},
-/obj/structure/machinery/faxmachine/uscm/command{
+/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
 	density = 0;
-	department = "AI Core";
+	sub_name = "Reception";
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/aicore/no_build,
@@ -68156,7 +68153,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "xQe" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	density = 0;
 	pixel_y = 18
 	},

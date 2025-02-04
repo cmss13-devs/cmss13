@@ -164,7 +164,7 @@
 		if(!length(hive.open_xeno_leader_positions) && xeno.observed_xeno.hive_pos == NORMAL_XENO)
 			to_chat(xeno, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
-		var/mob/living/carbon/xenomorph/targetted_xeno = xeno.observed_xeno
+		var/mob/living/carbon/xenomorph/targeted_xeno = xeno.observed_xeno
 		if(targetted_xeno == xeno)
 			to_chat(xeno, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
 			return

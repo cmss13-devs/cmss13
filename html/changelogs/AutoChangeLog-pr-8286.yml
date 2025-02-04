@@ -1,0 +1,4 @@
+author: "efzapa"
+delete-after: True
+changes:
+  - maptweak: "Replaced the Security Cabinet in the Security Office on LV624 with a regular Cabinet. Almayer Crew Records should no longer spawn."

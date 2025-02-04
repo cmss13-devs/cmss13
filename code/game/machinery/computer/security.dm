@@ -360,7 +360,7 @@
 
 		//* Actions for ingame objects interactions
 		if("print_fingerprint_report")
-			if (!( printing ))
+			if (!printing)
 				printing = TRUE
 				if (!scanner || !scanner.print_list)
 					to_chat(user, SPAN_WARNING("No scanner data found."))

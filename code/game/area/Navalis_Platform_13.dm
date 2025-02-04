@@ -52,3 +52,26 @@
 /area/navalis/oob/powered
 	requires_power = FALSE
 
+// PSV Charon
+
+/area/navalis/outdoors/charon
+	name = "PSV Charon"
+	icon_state = "unknown"
+	ceiling = CEILING_NONE
+
+/area/navalis/outdoors/charon/surface_deck
+	name = "PSV Charon - Surface"
+	icon_state = "syndie-ship"
+
+/area/navalis/outdoors/charon/surface_deck
+	name = "PSV Charon - Forecastle Deck"
+	icon_state = "syndie-ship"
+
+/area/navalis/outdoors/charon/surface_deck/main_deck
+	name = "PSV Charon - Main Deck"
+	icon_state = "syndie-ship"
+
+/area/navalis/outdoors/charon/surface_deck/rear_deck
+	name = "PSV Charon - Poop Deck"
+	icon_state = "syndie-ship"
+

@@ -25,21 +25,30 @@
 	SIGNAL_HANDLER
 
 	is_transformer_on = TRUE
-	update_icon()
+	update_power()
 
 /obj/structure/machinery/fob/proc/transformer_turn_off()
 	SIGNAL_HANDLER
 	is_transformer_on = FALSE
-	update_icon()
+	update_power()
 
 /obj/structure/machinery/fob/proc/generator_turn_on()
 	SIGNAL_HANDLER
 	backup_generator_on = TRUE
-	update_icon()
+	update_power()
+
 /obj/structure/machinery/fob/proc/generator_turn_off()
 	SIGNAL_HANDLER
 	backup_generator_on = FALSE
+	update_power()
+
+/obj/structure/machinery/fob/proc/update_power()
+	if(is_inside_lz && (is_transformer_on || backup_generator_on) && linked_to_terminal)
+		is_on = TRUE
+	else
+		is_on = FALSE
 	update_icon()
+
 
 /obj/structure/machinery/fob/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/powerloader_clamp))
@@ -60,11 +69,10 @@
 				if(linked_to_terminal)
 					linked_to_terminal = FALSE
 					user.balloon_alert(user, "you unlink the [src.name] from the terminal.")
-					update_icon()
 				else
 					linked_to_terminal = TRUE
 					user.balloon_alert(user, "you link the [src.name] to the terminal.")
-					update_icon()
+				update_icon()
 			else if(!tool.is_terminal_linked)
 				user.balloon_alert(user, "your multitool is not linked to a terminal!")
 
@@ -72,25 +80,24 @@
 /obj/structure/machinery/fob/power_change()
 	var/area/machine_area = get_area(src)
 	var/area/lz_area = get_area(SSticker.mode.active_lz)
-	if(machine_area == lz_area)
+	is_inside_lz = TRUE //REMOVE, FOR EASIER TESTING ONLY!
+	/*if(machine_area == lz_area)
 		is_inside_lz = TRUE
 	else
-		is_inside_lz = FALSE
-	update_icon()
+		is_inside_lz = FALSE*/
+	update_power()
 
 /obj/structure/machinery/fob/update_icon()
-	if(is_inside_lz && (is_transformer_on || backup_generator_on) && linked_to_terminal)
-		is_on = TRUE
+	if(is_on)
 		icon_state = initial(icon_state)
 	else
-		is_on = FALSE
 		icon_state = "[initial(icon_state)]_off"
 
 //****************************************** TERMINAL ************************************************//
 
 /obj/structure/machinery/fob/terminal
 	name = "\improper UE-09 Service Terminal"
-	desc = "A terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
+	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
 	layer = ABOVE_FLY_LAYER
@@ -157,7 +164,7 @@
 
 /obj/structure/machinery/fob/backup_generator
 	name = "\improper UE-11 Generator Unit"
-	desc = "A special power module designed to be a backup generator in the event of a transformer malfunction. This generator can only provide power for a short time before being used up."
+	desc = "atom special power module designed to be a backup generator in the event of a transformer malfunction. This generator can only provide power for a short time before being used up."
 	icon_state = "backup_generator"
 	icon = 'icons/obj/structures/machinery/backup_generator.dmi'
 	is_on = FALSE
@@ -228,3 +235,152 @@
 	has_power_remaining = FALSE
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BACKUP_GENERATOR_OFF)
 	update_icon()
+
+//****************************************** SENTRYGUN GENERAL ************************************************//
+
+/obj/structure/machinery/fob/sentrygun
+	var/mob/target
+	var/list/targets
+
+/obj/structure/machinery/fob/sentrygun/proc/get_target()
+	return
+
+/obj/structure/machinery/fob/sentrygun/proc/set_area() //common ancestor
+	return
+
+/obj/structure/machinery/fob/sentrygun/proc/fire(atom/A)
+	return
+
+/obj/structure/machinery/fob/sentrygun/start_processing()
+	START_PROCESSING(SSdefprocess, src)
+
+/obj/structure/machinery/fob/sentrygun/stop_processing()
+	STOP_PROCESSING(SSdefprocess, src)
+
+/obj/structure/machinery/fob/sentrygun/update_power()
+	.=..()
+	if(!is_on)
+		stop_processing()
+	start_processing()
+	set_area()
+
+//****************************************** SENTRYGUN PLASMA ************************************************//
+
+/obj/structure/machinery/fob/sentrygun/plasma
+	name = "\improper UE-09 Service Terminal"
+	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
+	icon_state = "terminal"
+	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
+	var/diameter = 8
+	var/sentry_range = 8
+	var/range_bounds
+	var/datum/beam/laser_beam
+
+
+
+/obj/structure/machinery/fob/sentrygun/plasma/set_area()
+	range_bounds = SQUARE(x, y, diameter)
+
+/obj/structure/machinery/fob/sentrygun/plasma/process()
+	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	if(!targets)
+		return FALSE
+
+	if(!target && length(targets))
+		get_target()
+
+	return TRUE
+
+/obj/structure/machinery/fob/sentrygun/plasma/get_target()
+	if(!islist(targets))
+		return
+
+	if(!length(targets))
+		return
+
+	var/list/conscious_targets = list()
+	var/list/unconscious_targets = list()
+
+	for(var/atom/movable/atom in targets) // orange allows sentry to fire through gas and darkness
+		if(isliving(atom))
+			var/mob/living/mob = atom
+			if(mob.stat & DEAD)
+				targets.Remove(atom)
+				continue
+
+			if(/*mob.get_target_lock(faction_group) ||*/ mob.invisibility || HAS_TRAIT(mob, TRAIT_ABILITY_BURROWED) || mob.is_ventcrawling)
+				if(mob == target)
+					target = null
+				targets.Remove(mob)
+				continue
+
+		/*else if(!(atom.type in other_targets))
+			targets.Remove(atom)
+			continue*/
+
+		var/list/turf/path = get_line(src, atom, include_start_atom = FALSE)
+		if(!length(path) || get_dist(src, atom) > sentry_range)
+			targets.Remove(atom)
+			continue
+
+		var/blocked = FALSE
+		for(var/turf/T in path)
+			if(T.density || T.opacity)
+				blocked = TRUE
+				break
+
+			for(var/obj/structure/S in T)
+				if(S.opacity)
+					blocked = TRUE
+					break
+
+			for(var/obj/vehicle/multitile/V in T)
+				blocked = TRUE
+				break
+
+			for(var/obj/effect/particle_effect/smoke/S in T)
+				blocked = TRUE
+				break
+
+		if(blocked)
+			targets.Remove(atom)
+			continue
+
+		if(isliving(atom))
+			var/mob/living/mob = atom
+			if(mob.stat & UNCONSCIOUS)
+				unconscious_targets += mob
+			else
+				conscious_targets += mob
+
+
+	if(length(conscious_targets))
+		target = pick(conscious_targets)
+	else if(length(unconscious_targets))
+		target = pick(unconscious_targets)
+
+	if(!target) //No targets, don't bother firing
+		return
+
+	fire(target)
+
+
+/obj/structure/machinery/fob/sentrygun/plasma/fire(atom/A)
+
+	laser_beam = target.beam(src, "laser_beam_spotter", 'icons/effects/beam.dmi', ( 200 SECONDS), beam_type = /obj/effect/ebeam/laser)
+
+	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
+	I.pixel_x = -target.pixel_x + target.base_pixel_x
+	I.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
+	target.overlays += I
+
+
+
+
+
+
+
+
+
+
+

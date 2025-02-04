@@ -4407,7 +4407,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	explo_proof = 1;
 	id = "vessellockdown";
-	name = "Vessel Vehicle Accessway";
+	name = "PSV Charon - Vehicle Accessway";
 	needs_power = 0;
 	unacidable = 1;
 	dir = 4
@@ -4447,7 +4447,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	explo_proof = 1;
 	id = "vessellockdown";
-	name = "Vessel Vehicle Accessway";
+	name = "PSV Charon - Vehicle Accessway";
 	needs_power = 0;
 	unacidable = 1;
 	dir = 4
@@ -4619,28 +4619,28 @@
 	icon_state = "road_edge_decal5"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amf" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal11"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amg" = (
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amh" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal12"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "ami" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amj" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
@@ -4650,7 +4650,7 @@
 "amk" = (
 /obj/effect/decal/hybrisa/road/road_edge,
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "aml" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -4659,13 +4659,13 @@
 	dir = 8
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amm" = (
 /turf/open/floor/prison/greenblue/west,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amn" = (
 /turf/open/floor/prison/greenblue/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amo" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -4674,20 +4674,20 @@
 	dir = 8
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amp" = (
 /turf/open/floor/plating/plating_catwalk/aicore/white,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amq" = (
 /turf/open/floor/plating,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amr" = (
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "ams" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
@@ -4697,14 +4697,14 @@
 	icon_state = "road_edge_decal2"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amt" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/road/road_edge,
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amu" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
@@ -4717,20 +4717,20 @@
 	icon_state = "road_edge_decal5"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amv" = (
 /turf/open/floor/prison/greenblue/north,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amw" = (
 /turf/open/floor/prison/greenblue/northeast,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amx" = (
 /obj/effect/decal/hybrisa/wy_huge_logo/lines,
 /turf/open/floor/prison/greenfull/northwest,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "amy" = (
 /turf/open/floor/prison/greenfull/northwest,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "anr" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
@@ -4818,7 +4818,7 @@
 	dir = 4
 	},
 /turf/open/gm/river/desert/deep,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "aqX" = (
 /obj/item/prop/colony/canister{
 	pixel_y = 11
@@ -4935,7 +4935,7 @@
 	icon_state = "road_edge_decal6"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "axy" = (
 /turf/open/floor/prison/green/northeast,
 /area/navalis/indoors)
@@ -5431,7 +5431,7 @@
 	pixel_x = -14
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "aZm" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -5494,7 +5494,7 @@
 	opacity = 0
 	},
 /turf/open/floor/plating,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "beu" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15
@@ -7337,7 +7337,7 @@
 	icon_state = "road_edge_decal6"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "dhX" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -8850,7 +8850,7 @@
 	opacity = 0
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "eRp" = (
 /obj/effect/decal/hybrisa/road/lines1{
 	pixel_x = -1
@@ -9705,7 +9705,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /turf/open/gm/river/desert/deep,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "fMN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -10567,7 +10567,7 @@
 	icon_state = "cargo_arrow4"
 	},
 /turf/open/floor/prison/greenblue,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "gPJ" = (
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/navalis/indoors)
@@ -10639,7 +10639,7 @@
 	pixel_x = -18
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "gUn" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -10837,7 +10837,7 @@
 	layer = 7
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "hfW" = (
 /turf/open/auto_turf/ice,
 /area/navalis/oob/water/far)
@@ -11515,7 +11515,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /turf/open/gm/river/desert/deep,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "hUx" = (
 /obj/structure/bed/chair/comfy/hybrisa/blue{
 	dir = 1;
@@ -13743,7 +13743,7 @@
 	opacity = 0
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "kvm" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege,
 /area/navalis/indoors)
@@ -15044,7 +15044,7 @@
 	dir = 4
 	},
 /turf/open/gm/river/desert/deep,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "lUM" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 1;
@@ -15404,7 +15404,7 @@
 /area/navalis/outdoors)
 "muz" = (
 /turf/open/floor/prison/greenblue/southeast,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "muE" = (
 /turf/open/floor/plating,
 /area/navalis/indoors)
@@ -15517,7 +15517,7 @@
 /area/navalis/indoors)
 "mCt" = (
 /turf/open/floor/prison/greenblue,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "mCF" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -16170,7 +16170,7 @@
 	pixel_x = 14
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "nti" = (
 /obj/structure/closet/bodybag,
 /turf/open/floor/prison/whitered/east,
@@ -16250,7 +16250,7 @@
 	opacity = 0
 	},
 /turf/open/floor/plating,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "nAd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green/northwest,
@@ -16808,7 +16808,7 @@
 	dir = 4
 	},
 /turf/open/gm/river/desert/deep,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "olG" = (
 /obj/effect/abstract/ripple/shadow,
 /obj/structure/machinery/floodlight/landing{
@@ -17167,7 +17167,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/greenblue/north,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "oCj" = (
 /obj/structure/stairs{
 	color = "#a6aeab";
@@ -18018,7 +18018,7 @@
 	dir = 8
 	},
 /turf/open/gm/river/desert/deep,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "pqT" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1;
@@ -18382,7 +18382,7 @@
 	layer = 7
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "pGZ" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2{
 	pixel_y = -3;
@@ -18414,7 +18414,7 @@
 	opacity = 0
 	},
 /turf/open/floor/plating,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "pHJ" = (
 /obj/structure/platform_decoration/metal/strata,
 /obj/effect/decal/warning_stripes{
@@ -18779,7 +18779,7 @@
 	layer = 7
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "pVA" = (
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/navalis/indoors)
@@ -20063,7 +20063,7 @@
 /area/navalis/indoors)
 "rgX" = (
 /turf/open/floor/prison/greenblue/southwest,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "rhh" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_7";
@@ -20754,7 +20754,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	explo_proof = 1;
 	id = "vessellockdown";
-	name = "Vessel Vehicle Accessway";
+	name = "PSV Charon - Vehicle Accessway";
 	needs_power = 0;
 	unacidable = 1;
 	dir = 4
@@ -21080,7 +21080,7 @@
 	pixel_x = 14
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "sro" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -21391,7 +21391,7 @@
 	pixel_y = 11
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "sJB" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/dry_ramen{
@@ -21646,7 +21646,7 @@
 	pixel_x = -14
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "sXp" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze{
@@ -21696,7 +21696,7 @@
 	pixel_x = -14
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "sZU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -22317,7 +22317,7 @@
 	icon_state = "road_edge_decal5"
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "tHU" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/north,
 /turf/open/floor/prison/darkbrown2/east,
@@ -23182,7 +23182,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	explo_proof = 1;
 	id = "vessellockdown";
-	name = "Vessel Vehicle Accessway";
+	name = "PSV Charon - Vehicle Accessway";
 	needs_power = 0;
 	unacidable = 1;
 	dir = 4
@@ -23420,7 +23420,7 @@
 	dir = 8
 	},
 /turf/open/gm/river/desert/deep,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "uIn" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/structure/platform/metal/strata,
@@ -23692,7 +23692,7 @@
 "uUq" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/greenblue/northwest,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "uVg" = (
 /obj/structure/curtain/colorable_transparent{
 	color = "#8bafa4";
@@ -23796,7 +23796,7 @@
 	pixel_x = 15
 	},
 /turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "vcL" = (
 /obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/prison/whitegreen,
@@ -24972,7 +24972,7 @@
 	pixel_x = -1
 	},
 /turf/open/floor/prison/greenblue/north,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "wnw" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -25620,7 +25620,7 @@
 	pixel_x = -18
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "wPK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -26808,7 +26808,7 @@
 	pixel_x = 14
 	},
 /turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck)
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "ycI" = (
 /obj/structure/prop/oilrig/support_beam/brown,
 /turf/open/floor/plating/catwalk/rusted,

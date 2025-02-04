@@ -235,11 +235,10 @@
 				security_record.fields[original_field] = value
 
 				if(original_field == "criminal")
-						for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-							H.sec_hud_set_security_status()
-
+					for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+						H.sec_hud_set_security_status()
 			else
-				tgui_alert(user, "Record not found or mismatched field type.")
+				tgui_alert(user, "Record or associated field not found.")
 				return
 
 

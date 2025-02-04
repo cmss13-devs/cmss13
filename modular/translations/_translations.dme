@@ -7,6 +7,22 @@
 #include "code/ru_weapon_desc.dm"
 #include "code/ru_names/ru_name_base.dm"
 
+// paygrades
+#include "code/paygrades/factions/other/civilian.dm"
+#include "code/paygrades/factions/other/cmb.dm"
+#include "code/paygrades/factions/other/contractors.dm"
+#include "code/paygrades/factions/other/dutch_dozen.dm"
+#include "code/paygrades/factions/other/freelancer.dm"
+#include "code/paygrades/factions/other/misc.dm"
+#include "code/paygrades/factions/twe/nspa.dm"
+#include "code/paygrades/factions/twe/twe.dm"
+#include "code/paygrades/factions/upp/upp.dm"
+#include "code/paygrades/factions/uscm/marine.dm"
+#include "code/paygrades/factions/uscm/navy.dm"
+#include "code/paygrades/factions/uscm/provost.dm"
+#include "code/paygrades/factions/wy/pmc.dm"
+#include "code/paygrades/factions/wy/wy.dm"
+
 // Xeno Abilities
 #include "code/xeno/castes_age.dm"
 #include "code/xeno/xeno_abilities/general_abilities.dm"

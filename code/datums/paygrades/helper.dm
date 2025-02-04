@@ -13,11 +13,11 @@
 			NP =  "[NP][P.prefix] "
 			if(P.prefix == "C")//Override for Civilian ranks that don't have occupational prefixes.
 				if(gender && gender == FEMALE)
-					NP = "Ms. "
+					NP = "Г-жа "	// SS220 EDIT
 				else if(gender && gender == MALE)
-					NP = "Mr. "
+					NP = "Г-н "		// SS220 EDIT
 				else
-					NP = "Mx. " //inclusivity win!
+					NP = "В-а " //inclusivity win!	// SS220 EDIT - Вертолет Апачи
 		return NP
 	else
 		if(!P)//For custom admin-made paygrades to not cause runtimes.

@@ -106,23 +106,23 @@
 
 /obj/item/clothing/under/MouseDrop(obj/over_object as obj)
 	if(ishuman(usr))
-		var/mob/living/carbon/human/humanus = usr
+		var/mob/living/carbon/human/human_user = usr
 		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
-		if((flags_item & NODROP) || loc != humanus)
+		if((flags_item & NODROP) || loc != human_user)
 			return
-		if(humanus.wear_suit)
-			to_chat(humanus, SPAN_WARNING("Remove your suit first."))
+		if(human_user.wear_suit)
+			to_chat(human_user, SPAN_WARNING("Remove your suit first."))
 			return
-		if(!humanus.is_mob_incapacitated() && !(humanus.buckled))
+		if(!human_user.is_mob_incapacitated() && !human_user.buckled)
 			if(over_object)
 				switch(over_object.name)
 					if("r_hand")
-						if(humanus.drop_inv_item_on_ground(src))
-							humanus.put_in_r_hand(src)
+						if(human_user.drop_inv_item_on_ground(src))
+							human_user.put_in_r_hand(src)
 					if("l_hand")
-						if(humanus.drop_inv_item_on_ground(src))
-							humanus.put_in_l_hand(src)
-				add_fingerprint(humanus)
+						if(human_user.drop_inv_item_on_ground(src))
+							human_user.put_in_l_hand(src)
+				add_fingerprint(human_user)
 
 
 /obj/item/clothing/under/get_examine_text(mob/user)

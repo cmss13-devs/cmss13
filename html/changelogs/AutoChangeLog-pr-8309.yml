@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Hellhounds no longer get offered up to the \"Join as Hellhound\" button if the admin inhabiting it aghosts"

@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Fixes boiler speed being stuck if you buy a strain while zoomed in"

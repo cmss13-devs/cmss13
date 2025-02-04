@@ -1,0 +1,4 @@
+author: "Diegoflores31"
+delete-after: True
+changes:
+  - bugfix: "Queen no longer stomps on dead and resting xenomorphs"

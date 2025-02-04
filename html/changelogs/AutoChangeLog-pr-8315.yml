@@ -1,5 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - code_imp: "Replacces some one letter vars in carbon.dm"
-  - spellcheck: "Replaces mentions of \"belly\" with \"stomach\" in game the tutorial(s)."

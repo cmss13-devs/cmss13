@@ -63,8 +63,8 @@ endmap
 map new_varadero
 endmap
 
-map whiskey_outpost_v2
+map navalis_platform_13
 endmap
 
-map navalis_platform_13
+map whiskey_outpost_v2
 endmap

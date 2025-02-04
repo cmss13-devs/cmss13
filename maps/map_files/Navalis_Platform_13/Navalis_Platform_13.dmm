@@ -910,6 +910,10 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water/far)
+"acO" = (
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
 "acP" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -973,6 +977,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/west,
 /area/navalis/indoors/logistic/primary_storage)
+"acV" = (
+/obj/structure/prop/oilrig/support_beam/brown{
+	layer = 1.1
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
 "acW" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9";
@@ -7967,6 +7978,10 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/outdoors/exterior/com_ext)
+"ayz" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
 "ayA" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
@@ -7987,10 +8002,553 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/navalis/outdoors/exterior/com_ext)
+"ayC" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayD" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayE" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayF" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/strata/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/landing_zone_2)
+"ayG" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayH" = (
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayI" = (
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
 "ayJ" = (
 /obj/structure/cargo_container/hd/mid,
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/logistic/primary_storage)
+"ayK" = (
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/mid)
+"ayL" = (
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"ayM" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"ayN" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/strata/east,
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/landing_zone_2)
+"ayO" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayP" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayQ" = (
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	pixel_y = -2
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayR" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayS" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayT" = (
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	pixel_y = -2
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayU" = (
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayV" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayW" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayX" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayY" = (
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 8
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"ayZ" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"aza" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azb" = (
+/obj/structure/prop/oilrig/support_beam/brown{
+	layer = 1.1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azc" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	pixel_y = -2
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azd" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	pixel_y = -2
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"aze" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 8
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azf" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob)
+"azg" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azh" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azi" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azj" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azk" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azl" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azm" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/east{
+	pixel_y = 6;
+	pixel_x = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azn" = (
+/obj/structure/monorail{
+	dir = 1;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azo" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azp" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/east{
+	pixel_x = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azq" = (
+/obj/structure/monorail{
+	dir = 1;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azr" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/far)
+"azs" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/east{
+	pixel_x = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/mid)
+"azt" = (
+/obj/structure/monorail{
+	dir = 1;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/mid)
+"azu" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water/mid)
+"azv" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"azw" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/east{
+	pixel_x = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"azx" = (
+/obj/structure/monorail{
+	dir = 1;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"azy" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"azz" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/east{
+	pixel_x = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"azA" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/monorail{
+	dir = 1;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"azB" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
+"azC" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"azD" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/monorail{
+	dir = 1;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
+/turf/open/gm/river/desert/deep,
+/area/navalis/oob/water)
+"azE" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
 "azO" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstripingdir";
@@ -9042,11 +9600,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/navalis/indoors/residential/port)
-"bEj" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
-/obj/structure/prop/oilrig/support_beam/brown,
-/turf/open/gm/river/desert/deep,
-/area/navalis/oob/water)
 "bEm" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -21557,13 +22110,22 @@
 /area/navalis/indoors/logistic/maintenance_port)
 "pSP" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3;
+	pixel_x = 16
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 7;
+	pixel_x = 16
+	},
+/obj/structure/blocker/invisible_wall/water,
 /obj/item/lightstick/planted{
 	pixel_y = 15;
 	layer = 4.11;
 	pixel_x = 16
 	},
-/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep,
 /area/navalis/oob/water)
 "pTo" = (
@@ -24263,6 +24825,14 @@
 "sKf" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/monorail{
+	dir = 1;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15
+	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/navalis/oob/water)
 "sKk" = (
@@ -37446,9 +38016,9 @@ aRC
 aoE
 aoA
 pSP
-bEj
+vuW
 mmV
-gLP
+nSY
 nSY
 nSY
 gGc
@@ -38289,12 +38859,12 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azi
+acK
+acK
+acK
+acK
+ayz
 gGc
 gGc
 gGc
@@ -38452,18 +39022,18 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azi
+azj
+dvZ
+dvZ
+dvZ
+dvZ
+ayC
+ayz
+acO
+rfc
+rfc
+xXz
 gGc
 gGc
 gGc
@@ -38615,19 +39185,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+adc
+ayV
+dvZ
+dvZ
+dvZ
+dvZ
+dvZ
+dvZ
+ayC
+acV
+cCP
+ycI
+npT
 gGc
 gGc
 gGc
@@ -38778,20 +39348,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayZ
+dvZ
+dvZ
+dvZ
+pdb
+usc
+dvZ
+dvZ
+dvZ
+acl
+cCP
+cCP
+npT
 gGc
 gGc
 gGc
@@ -38919,43 +39489,43 @@ wQL
 hGF
 aoH
 aRC
-lJH
-lJH
-lJH
-mmV
-mmV
-nSY
-nSY
-nSY
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azz
+azz
+azz
+azw
+azw
+azs
+azs
+azs
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azp
+azm
+dvZ
+dvZ
+pdb
+usc
+pdb
+usc
+dvZ
+dvZ
+alj
+cCP
+xGv
+npT
 gGc
 gGc
 gGc
@@ -39083,43 +39653,43 @@ vOr
 aoR
 aoH
 aRC
-lJH
+azD
 sKf
-nvy
-mmV
-mmV
-nSY
-nSY
-nSY
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azA
+azx
+azx
+azt
+azt
+azt
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azq
+azn
+dvZ
+dvZ
+pdb
+pdb
+usc
+pdb
+dvZ
+dvZ
+acm
+cCP
+cCP
+npT
 gGc
 gGc
 gGc
@@ -39247,43 +39817,43 @@ aQZ
 hGF
 aoH
 aRC
-aoE
-lJH
-qld
-ffe
-mmV
-mmV
-nSY
-nSY
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azE
+azC
+azB
+azy
+azv
+azv
+azu
+azu
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azr
+azo
+dvZ
+dvZ
+dvZ
+pdb
+pdb
+dvZ
+dvZ
+dvZ
+azb
+cCP
+ycI
+npT
 gGc
 gGc
 gGc
@@ -39434,20 +40004,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+acS
+azk
+dvZ
+dvZ
+dvZ
+dvZ
+dvZ
+dvZ
+azd
+ayE
+cCP
+cCP
+npT
 gGc
 gGc
 gGc
@@ -39600,18 +40170,18 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azl
+ada
+dvZ
+dvZ
+dvZ
+dvZ
+azf
+aze
+azc
+aza
+uRf
+fzy
 gGc
 gGc
 gGc
@@ -39765,16 +40335,16 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+ayS
+acG
+acG
+acG
+azh
+azg
+hRK
+ayY
+ayT
+hRK
 gGc
 gGc
 gGc
@@ -39936,10 +40506,10 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayY
+ayT
+hRK
 gGc
 gGc
 gGc
@@ -40101,10 +40671,10 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayY
+ayT
+hRK
 gGc
 gGc
 gGc
@@ -40266,10 +40836,10 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayY
+ayT
+hRK
 gGc
 gGc
 gGc
@@ -40431,10 +41001,10 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayY
+ayT
+hRK
 gGc
 gGc
 gGc
@@ -40596,10 +41166,10 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayY
+ayT
+hRK
 gGc
 gGc
 gGc
@@ -40761,10 +41331,10 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayY
+ayT
+hRK
 gGc
 gGc
 gGc
@@ -40926,15 +41496,15 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayY
+ayT
+ayP
+ayO
+ayO
+acK
+acK
+ayz
 gGc
 gGc
 gGc
@@ -41091,19 +41661,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+ayU
+ayQ
+dvZ
+dvZ
+dvZ
+dvZ
+ayG
+ayz
+acO
+rfc
+rfc
+xXz
 gGc
 gGc
 gGc
@@ -41255,19 +41825,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+ayP
+ayV
+dvZ
+dvZ
+dvZ
+dvZ
+dvZ
+dvZ
+ayC
+acV
+cCP
+ycI
+npT
 gGc
 gGc
 gGc
@@ -41419,19 +41989,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+ayZ
+dvZ
+dvZ
+dvZ
+pdb
+usc
+dvZ
+dvZ
+dvZ
+acm
+cCP
+cCP
+npT
 gGc
 gGc
 gGc
@@ -41583,19 +42153,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+ayZ
+dvZ
+dvZ
+pdb
+usc
+pdb
+usc
+dvZ
+dvZ
+alj
+cCP
+xGv
+npT
 gGc
 gGc
 gGc
@@ -41747,19 +42317,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+add
+dvZ
+dvZ
+pdb
+pdb
+usc
+pdb
+dvZ
+dvZ
+acm
+cCP
+cCP
+npT
 gGc
 gGc
 gGc
@@ -41911,19 +42481,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+add
+dvZ
+dvZ
+dvZ
+pdb
+pdb
+dvZ
+dvZ
+dvZ
+alj
+cCP
+ycI
+npT
 gGc
 gGc
 gGc
@@ -42075,19 +42645,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+ayS
+ayW
+dvZ
+dvZ
+dvZ
+dvZ
+dvZ
+dvZ
+ayD
+acn
+cCP
+cCP
+npT
 gGc
 gGc
 gGc
@@ -42240,18 +42810,18 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+ayX
+ayR
+dvZ
+dvZ
+dvZ
+dvZ
+ayD
+ayE
+alk
+uRf
+uRf
+fzy
 gGc
 gGc
 gGc
@@ -42405,13 +42975,13 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+ayS
+acN
+acN
+acN
+ayH
+ayE
+hRK
 gGc
 gGc
 gGc
@@ -42571,11 +43141,11 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+hRK
+hRK
+ayI
+hRK
+hRK
 gGc
 gGc
 gGc
@@ -42736,9 +43306,9 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
+hRK
+ayI
+hRK
 gGc
 gGc
 gGc
@@ -42900,9 +43470,9 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
+hRK
+ayI
+hRK
 gGc
 gGc
 gGc
@@ -43064,9 +43634,9 @@ nSY
 nSY
 nSY
 nSY
-nSY
-nSY
-nSY
+kXx
+ayK
+kXx
 nSY
 nSY
 nSY
@@ -43228,9 +43798,9 @@ nSY
 nSY
 nSY
 nSY
-nSY
-nSY
-nSY
+kXx
+ayK
+kXx
 nSY
 nSY
 nSY
@@ -43392,9 +43962,9 @@ mmV
 mmV
 mmV
 mmV
-mmV
-mmV
-mmV
+aNg
+ayL
+aNg
 mmV
 mmV
 mmV
@@ -43556,9 +44126,9 @@ mmV
 mmV
 mmV
 mmV
-mmV
-mmV
-mmV
+aNg
+ayL
+aNg
 mmV
 mmV
 mmV
@@ -43720,9 +44290,9 @@ lJH
 lJH
 lJH
 lJH
-lJH
-lJH
-lJH
+aCG
+ayM
+aCG
 lJH
 lJH
 lJH
@@ -43883,11 +44453,11 @@ rWz
 rWz
 rWz
 rWz
-rWz
-rWz
-rWz
-rWz
-rWz
+ayF
+ayF
+ayN
+ayF
+ayF
 rWz
 rWz
 rWz

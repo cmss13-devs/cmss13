@@ -52,7 +52,7 @@
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
-	minimap_background = "background_civillian"
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/uscm_ship/liaison/New()
 	. = ..()

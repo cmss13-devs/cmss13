@@ -22,6 +22,7 @@
 			O.forceMove(src)
 			scanner = O
 			to_chat(user, SPAN_NOTICE("You insert [O]."))
+			playsound(loc, 'sound/machines/scanning.ogg', 15, 1)
 
 	. = ..()
 
@@ -163,6 +164,8 @@
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
+	playsound(src, get_sfx("terminal_button"), 25, FALSE)
+
 	switch(action)
 		//* Actions for managing records
 		if("select_record")
@@ -199,7 +202,8 @@
 
 			var/validation_error = validate_field(field, value, user, FALSE)
 			if (validation_error)
-				to_chat(user, SPAN_WARNING("Error: [validation_error]"))
+				to_chat(user, SPAN_WARNING("Console returns error with buzzing sound: [validation_error]"))
+				playsound(loc, 'sound/machines/buzz-two.ogg', 15, 1)
 				return
 
 			if(!id || !field)

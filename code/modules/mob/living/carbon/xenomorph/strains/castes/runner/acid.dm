@@ -55,9 +55,9 @@
 
 /datum/behavior_delegate/runner_acider/append_to_stat()
 	. = list()
-	. += "Acid: [acid_amount]"
+	. += "Кислота: [acid_amount]"
 	if(caboom_trigger)
-		. += "FOR THE HIVE!: in [caboom_left] seconds"
+		. += "ЗА УЛЕЙ!: [caboom_left] секунд до взрыва"
 
 /datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	if(ishuman(target_mob)) //Will acid be applied to the mob

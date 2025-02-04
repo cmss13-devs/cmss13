@@ -21,7 +21,7 @@
 		if(usr.drop_held_item())
 			O.forceMove(src)
 			scanner = O
-			to_chat(user, "You insert [O].")
+			to_chat(user, SPAN_NOTICE("You insert [O]."))
 
 	. = ..()
 
@@ -199,7 +199,7 @@
 
 			var/validation_error = validate_field(field, value, user, FALSE)
 			if (validation_error)
-				to_chat(user, "Error: [validation_error]")
+				to_chat(user, SPAN_WARNING("Error: [validation_error]"))
 				return
 
 			if(!id || !field)
@@ -257,14 +257,14 @@
 			var/comment = params["comment"]
 
 			if (!id || !comment || length(trim(comment)) == 0)
-				to_chat(user, "Invalid input. Ensure both ID and comment are provided.")
+				to_chat(user, SPAN_WARNING("Invalid input. Ensure both ID and comment are provided."))
 				return
 
 			// Locate the security record
 			var/datum/data/record/security_record = find_record("security", id)
 
 			if (!security_record)
-				to_chat(user, "Record not found.")
+				to_chat(user, SPAN_WARNING("Record not found."))
 				return
 
 			var/comment_id = length(security_record.fields["comments"] || list()) + 1
@@ -284,7 +284,7 @@
 			else
 				security_record.fields["comments"]["[comment_id]"] = new_comment
 
-			to_chat(user, "Comment added successfully.")
+			to_chat(user, SPAN_NOTICE("Comment added successfully."))
 			msg_admin_niche("[key_name_admin(user)] added security comment.")
 
 			return
@@ -293,23 +293,23 @@
 			var/comment_key = params["key"]
 
 			if (!id || !comment_key)
-				to_chat(user, "Invalid input. Ensure both ID and comment key are provided.")
+				to_chat(user, SPAN_WARNING("Invalid input. Ensure both ID and comment key are provided."))
 				return
 
 			// Locate the security record
 			var/datum/data/record/security_record = find_record("security", id)
 
 			if (!security_record)
-				to_chat(user, "Record not found.")
+				to_chat(user, SPAN_WARNING("Record not found."))
 				return
 
 			if (!security_record.fields["comments"] || !security_record.fields["comments"][comment_key])
-				to_chat(user, "Comment not found.")
+				to_chat(user, SPAN_WARNING("Comment not found."))
 				return
 
 			var/comment = security_record.fields["comments"][comment_key]
 			if (comment["deleted_by"])
-				to_chat(user, "This comment is already deleted.")
+				to_chat(user, SPAN_WARNING("This comment is already deleted."))
 				return
 
 			var/mob/living/carbon/human/U = user
@@ -318,7 +318,7 @@
 
 			security_record.fields["comments"][comment_key] = comment
 
-			to_chat(user, "Comment deleted successfully.")
+			to_chat(user, SPAN_NOTICE("Comment deleted successfully."))
 			msg_admin_niche("[key_name_admin(user)] deleted security comment.")
 
 		//* Records maintenance actions
@@ -332,12 +332,12 @@
 
 		if ("new_general_record")
 			CreateGeneralRecord()
-			to_chat(user, "You successfully created new general record")
+			to_chat(user, SPAN_NOTICE("You successfully created new general record"))
 			msg_admin_niche("[key_name_admin(user)] created new general record.")
 
 		if ("delete_general_record")
 			if(!check_player_paygrade(user,list(GLOB.uscm_highcom_paygrades))){
-				to_chat(user, "You have no permission to do that")
+				to_chat(user, SPAN_WARNING("You have no permission to do that"))
 				return
 			}
 
@@ -345,7 +345,7 @@
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if (!general_record)
-				to_chat(user, "Record not found.")
+				to_chat(user, SPAN_WARNING("Record not found."))
 				return
 
 			var/record_name = general_record.fields["name"]
@@ -359,7 +359,7 @@
 			if (!( printing ))
 				printing = 1
 				if (!scanner || !scanner.print_list)
-					to_chat(user, "No scanner data found.")
+					to_chat(user, SPAN_WARNING("No scanner data found."))
 					return
 
 				sleep(50)
@@ -375,15 +375,15 @@
 
 		if ("clear_fingerprints")
 			if (!scanner)
-				to_chat(user, "No scanner found.")
+				to_chat(user, SPAN_WARNING("No scanner found."))
 				return
 
 			scanner.update_icon()
-			to_chat(user, "Fingerprints cleared from the scanner.")
+			to_chat(user, SPAN_NOTICE("Fingerprints cleared from the scanner."))
 
 		if("eject_fingerprint_scanner")
 			if (!scanner)
-				to_chat(user, "No scanner found.")
+				to_chat(user, SPAN_WARNING("No scanner found."))
 				return
 
 			scanner.update_icon()
@@ -401,7 +401,7 @@
 				var/datum/data/record/security_record = find_record("security", id)
 
 				if (!general_record)
-					to_chat(user, "Record not found.")
+					to_chat(user, SPAN_WARNING("Record not found."))
 					return
 
 				playsound(loc, 'sound/machines/print.ogg', 15, 1)
@@ -416,21 +416,21 @@
 			var/photo_profile = params["photo_profile"]
 			var/icon/img = get_photo(user)
 			if(!img)
-				to_chat(user, "You are currently not holding any photo")
+				to_chat(user, SPAN_WARNING("You are currently not holding any photo"))
 				return
 
 			// Locate the general record
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if (!general_record)
-				to_chat(user, "Record not found.")
+				to_chat(user, SPAN_WARNING("Record not found."))
 				return
 
 			general_record.fields["photo_[photo_profile]"] = img
 			ui.send_update(list(
 				"photo_[photo_profile]" = icon2html(img, user.client, sourceonly=TRUE),
 			))
-			to_chat(user, "You successfully updated record [photo_profile] photo")
+			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo"))
 			msg_admin_niche("[key_name_admin(user)] updated record photo of [general_record.fields["name"]].")
 
 /obj/structure/machinery/computer/secure_data/proc/validate_field(field, value, mob/user = usr, strict_mode = FALSE)

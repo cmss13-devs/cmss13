@@ -14,6 +14,7 @@ import {
   Table,
 } from '../components';
 import { Window } from '../layouts';
+import { CastesRu } from './BandaMarines/XenoCastes';
 
 const redFont = {
   color: 'red',
@@ -93,22 +94,22 @@ export const HiveStatus = (props) => {
 
   return (
     <Window
-      title={hive_name + ' Status'}
+      title={'Статус ' + hive_name}
       theme="hive_status"
       resizable
       width={600}
       height={680}
     >
       <Window.Content scrollable>
-        <XenoCollapsible title="General Hive Information">
+        <XenoCollapsible title="Общая информация об улье">
           <GeneralInformation />
         </XenoCollapsible>
         <Divider />
-        <XenoCollapsible title="Hive Counts">
+        <XenoCollapsible title="Численность улья">
           <XenoCounts />
         </XenoCollapsible>
         <Divider />
-        <XenoCollapsible title="Hive Xenomorph List">
+        <XenoCollapsible title="Список ксеноморфов улья">
           <XenoList />
         </XenoCollapsible>
       </Window.Content>
@@ -131,25 +132,25 @@ const GeneralInformation = (props) => {
     <Flex direction="column" align="center">
       {queen_location === null ? (
         <Flex.Item textAlign="center">
-          <h3 className="whiteTitle">The Hive has no Queen!</h3>
+          <h3 className="whiteTitle">Улей не имеет Королевы!</h3>
         </Flex.Item>
       ) : (
         <Flex.Item textAlign="center">
-          <h3 className="whiteTitle">The Queen is in:</h3>
+          <h3 className="whiteTitle">Королева находится в:</h3>
           <h1 className="whiteTitle">{queen_location}</h1>
         </Flex.Item>
       )}
       {!!hive_location && (
         <Flex.Item textAlign="center" mt={2}>
-          <h3 className="whiteTitle">The Hive location is:</h3>
+          <h3 className="whiteTitle">Местоположения улья:</h3>
           <h1 className="whiteTitle">{hive_location}</h1>
         </Flex.Item>
       )}
       <Flex.Item mt={1}>
-        <i>Total sisters: {total_xenos}</i>
+        <i>Всего сестёр: {total_xenos}</i>
       </Flex.Item>
       <Flex.Item>
-        <i>Burrowed larvae: {burrowed_larva}</i>
+        <i>Закопавшиеся грудоломы: {burrowed_larva}</i>
       </Flex.Item>
       <Flex.Item>
         <i>Evilution: {evilution_level}</i>
@@ -184,7 +185,7 @@ const XenoCounts = (props) => {
             <Flex direction="column">
               <Flex.Item>
                 <center>
-                  <h1 className="whiteTitle">Tier {tier}</h1>
+                  <h1 className="whiteTitle">Уровень {tier}</h1>
                   {tier >= 2 && (
                     <i>
                       <div>
@@ -195,12 +196,11 @@ const XenoCounts = (props) => {
                         >
                           {tier_slots[tier_str].open_slots}
                         </span>
-                        remaining slot
-                        {tier_slots[tier_str].open_slots !== 1 && 's'}
+                        мест осталось
                       </div>
                       {guaranteed_slots && (
                         <div>
-                          Guaranteed slots:{' '}
+                          Гарантированные места:{' '}
                           {guaranteed_slots.map((caste_type, i) => (
                             <Fragment key={i}>
                               <span
@@ -214,7 +214,7 @@ const XenoCounts = (props) => {
                                   ]
                                 }
                               </span>
-                              {caste_type}
+                              {CastesRu(caste_type)}
                               {/* No comma at the end of the list*/}
                               {i === guaranteed_slots.length - 1 ? '' : ', '}
                             </Fragment>
@@ -231,7 +231,9 @@ const XenoCounts = (props) => {
                     <Table.Row header>
                       {Object.keys(counts).map((caste, i) => (
                         <Table.Cell key={i} className="underlineCell" width={7}>
-                          {caste === 'Bloody Larva' ? 'Larva' : caste}
+                          {caste === 'Bloody Larva'
+                            ? CastesRu('Larva')
+                            : CastesRu(caste)}
                         </Table.Cell>
                       ))}
                     </Table.Row>
@@ -283,7 +285,7 @@ const XenoList = (props) => {
     <Flex direction="column">
       <Flex.Item mb={1}>
         <Flex align="baseline">
-          <Flex.Item width="100px">Search Filters:</Flex.Item>
+          <Flex.Item width="100px">Фильтры поиска:</Flex.Item>
           <Flex.Item>
             <Button.Checkbox
               inline
@@ -296,7 +298,7 @@ const XenoList = (props) => {
                 })
               }
             >
-              Name
+              Имя
             </Button.Checkbox>
             <Button.Checkbox
               inline
@@ -309,7 +311,7 @@ const XenoList = (props) => {
                 })
               }
             >
-              Strain
+              Подвид
             </Button.Checkbox>
             <Button.Checkbox
               inline
@@ -322,14 +324,14 @@ const XenoList = (props) => {
                 })
               }
             >
-              Location
+              Местоположение
             </Button.Checkbox>
           </Flex.Item>
         </Flex>
       </Flex.Item>
       <Flex.Item mb={1}>
         <Flex align="baseline">
-          <Flex.Item width="100px">Max Health:</Flex.Item>
+          <Flex.Item width="100px">Максимальное здоровье:</Flex.Item>
           <Flex.Item>
             <NumberInput
               animated
@@ -347,7 +349,7 @@ const XenoList = (props) => {
       <Flex.Item mb={2}>
         <Input
           fluid
-          placeholder="Search..."
+          placeholder="Поиск..."
           onInput={(_, value) => setSearchKey(value)}
         />
       </Flex.Item>
@@ -355,10 +357,10 @@ const XenoList = (props) => {
       <Table className="xeno_list">
         <Table.Row header className="xenoListRow">
           <Table.Cell width="5%" className="noPadCell" />
-          <Table.Cell>Name</Table.Cell>
-          <Table.Cell width="15%">Strain</Table.Cell>
-          <Table.Cell>Location</Table.Cell>
-          <Table.Cell width="75px">Health</Table.Cell>
+          <Table.Cell>Имя</Table.Cell>
+          <Table.Cell width="15%">Подвид</Table.Cell>
+          <Table.Cell>Местоположение</Table.Cell>
+          <Table.Cell width="75px">Здоровье</Table.Cell>
           <Table.Cell width="100px" />
         </Table.Row>
 
@@ -405,7 +407,7 @@ const XenoList = (props) => {
                         })
                       }
                     >
-                      Watch
+                      Смотреть
                     </Button>
                   </Flex.Item>
                   {!!is_in_ovi && <QueenOviButtons target_ref={entry.ref} />}
@@ -466,7 +468,7 @@ const QueenOviButtons = (props) => {
             })
           }
         >
-          Heal
+          Вылечить
         </Button>
       </Flex.Item>
       <Flex.Item>
@@ -478,7 +480,7 @@ const QueenOviButtons = (props) => {
             })
           }
         >
-          Give Plasma
+          Передать плазму
         </Button>
       </Flex.Item>
     </>

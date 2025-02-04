@@ -40,7 +40,7 @@
  * If that can't be found, returns "Normal".
  */
 /mob/living/carbon/xenomorph/proc/get_strain_name()
-	return strain?.name || "Normal"
+	return strain?.name || "Обычный"
 
 /**
  * Returns the custom icon state from the xeno's strain, if it has one.

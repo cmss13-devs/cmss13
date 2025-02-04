@@ -219,11 +219,12 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 		color = hive.color
 
 	if(larva_state == LARVA_STATE_MATURE)
-		progress = "Mature "
+		progress = "Взрослый "
 	else if(larva_state == LARVA_STATE_BLOODY)
-		progress = "Bloody "
+		progress = "Кровавый "
 
 	name = "[name_prefix][progress]Larva ([nicknumber])"
+	ru_names_rename(ru_names_toml("Larva", prefix = "[name_prefix][progress]", suffix = " ([nicknumber])"))
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

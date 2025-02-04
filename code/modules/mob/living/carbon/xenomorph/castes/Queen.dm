@@ -458,22 +458,29 @@
 		switch(age)
 			if(XENO_YOUNG)
 				name = "[name_prefix]Young Queen" //Young
+				ru_names_rename(ru_names_toml("Queen", "[name_prefix]Молодая ", override_base = "[name_prefix]Young Queen"))
 			if(XENO_NORMAL)
 				name = "[name_prefix]Queen"  //Regular
+				ru_names_rename(ru_names_toml("Queen", "[name_prefix] ", override_base = "[name_prefix]Queen"))
 			if(XENO_MATURE)
 				name = "[name_prefix]Elder Queen"  //Mature
+				ru_names_rename(ru_names_toml("Queen", "[name_prefix]Старшая ", override_base = "[name_prefix]Elder Queen"))
 			if(XENO_ELDER)
 				name = "[name_prefix]Elder Empress"  //Elite
+				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Старшая ", override_base = "[name_prefix]Elder Empress"))
 			if(XENO_ANCIENT)
 				name = "[name_prefix]Ancient Empress" //Ancient
+				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Древняя ", override_base = "[name_prefix]Ancient Empress"))
 			if(XENO_PRIME)
 				name = "[name_prefix]Prime Empress" //Primordial
+				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Прайм ", override_base = "[name_prefix]Prime Empress"))
 	else
 		age = XENO_NORMAL
 		if(client)
 			hud_update()
 
 		name = "[name_prefix]Immature Queen"
+		ru_names_rename(ru_names_toml("Queen", "[name_prefix]Неокрепшая ", override_base = "[name_prefix]Immature Queen"))
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""

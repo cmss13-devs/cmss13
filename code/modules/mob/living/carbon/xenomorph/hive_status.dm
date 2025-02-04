@@ -207,11 +207,11 @@
 
 	var/list/castes_available = list()
 	for(var/datum/caste_datum/current_caste as anything in available_castes)
-		castes_available += initial(current_caste.caste_type)
+		castes_available += declent_ru_initial(current_caste.caste_type, NOMINATIVE, current_caste.caste_type)
 
 	var/castes = castes_available.Join(", ")
-	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
-	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
+	xeno_message(SPAN_XENOANNOUNCE("Улей теперь достаточно силён, чтобы поддержать: [castes]"))
+	xeno_maptext("Улей теперь может поддерживать: [castes]", "Улей укрепляется")
 
 
 // Adds a xeno to this hive
@@ -528,11 +528,11 @@
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		var/xeno_name = X.name
+		var/xeno_name = X.declent_ru(NOMINATIVE)
 		// goddamn fucking larvas with their weird ass maturing system
 		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
 		if(istype(X, /mob/living/carbon/xenomorph/larva))
-			xeno_name = "Larva ([X.nicknumber])"
+			xeno_name = "[declent_ru_initial("Larva", NOMINATIVE, "Larva")] ([X.nicknumber])"
 		xenos["[X.nicknumber]"] = list(
 			"name" = xeno_name,
 			"strain" = X.get_strain_name(),
@@ -545,7 +545,7 @@
 	if(!C || C == hive_location)
 		return
 	var/area/A = get_area(C)
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has set the hive location as \the [A]."), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Королева назначила новое местоположение улья в: [A]."), 3, hivenumber)
 	hive_location = C
 	hive_ui.update_hive_location()
 
@@ -707,17 +707,17 @@
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("Королева ушла без вас, и вы быстро находите укрытие, чтобы впасть в гибернацию, теряя связь с разумом улья."))
 				if(length(xeno.stomach_contents))
 					xeno.devour_timer = 0
 					xeno.handle_stomach_contents()
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("Королева ушла без вас, отделив вас от её улья! Вы должны защищить себя от охотников за головами, преждче чем сможете впасть в гибернацию..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("Королева ушла без вас, и вы быстро находите укрытие, чтобы впасть в гибернацию, теряя связь с разумом улья."))
 				if(length(xeno.stomach_contents))
 					xeno.devour_timer = 0
 					xeno.handle_stomach_contents()

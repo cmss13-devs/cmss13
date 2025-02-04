@@ -1045,6 +1045,104 @@ instrumental = "принцессой Чужих"
 prepositional = "принцессе Чужих"
 gender = "female"
 
+# ВНИМАНИЕ!!! Если вы собираетесь меня перевод для чужих снизу, синхронизируйте перевод с:
+# tgui\packages\tgui\interfaces\BandaMarines\XenoCastes.tsx
+["Larva"]
+nominative = "Грудолом"
+gender = "female"
+
+["Predalien Larva"]
+nominative = "Грудолом чужехищника"
+gender = "female"
+
+["Facehugger"]
+nominative = "Лицехват"
+gender = "female"
+
+["Lesser Drone"]
+nominative = "Трутень"
+gender = "female"
+
+["Drone"]
+nominative = "Дрон"
+gender = "female"
+
+["Runner"]
+nominative = "Бегун"
+gender = "female"
+
+["Sentinel"]
+nominative = "Страж"
+gender = "female"
+
+["Defender"]
+nominative = "Защитник"
+gender = "female"
+
+["Burrower"]
+nominative = "Копатель"
+gender = "female"
+
+["Carrier"]
+nominative = "Носитель"
+gender = "female"
+
+["Hivelord"]
+nominative = "Владыка улья"
+gender = "female"
+
+["Lurker"]
+nominative = "Охотник"
+gender = "female"
+
+["Warrior"]
+nominative = "Воин"
+gender = "female"
+
+["Spitter"]
+nominative = "Плевун"
+gender = "female"
+
+["Boiler"]
+nominative = "Бойлер"
+gender = "female"
+
+["Praetorian"]
+nominative = "Преторианец"
+gender = "female"
+
+["Crusher"]
+nominative = "Крушитель"
+gender = "female"
+
+["Ravager"]
+nominative = "Опустошитель"
+gender = "female"
+
+["King"]
+nominative = "Король"
+gender = "male"
+
+["Queen"]
+nominative = "Королева"
+gender = "female"
+
+["Predalien"]
+nominative = "Чужехищник"
+gender = "female"
+
+["Hellhound"]
+nominative = "Адская гончая"
+gender = "female"
+
+["Abomination"]
+nominative = "Абоминация"
+gender = "female"
+
+["Empress"]
+nominative = "Императрица"
+gender = "female"
+
 # MARK: Security
 ["handcuffs"]
 nominative = "наручники"

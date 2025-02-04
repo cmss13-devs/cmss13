@@ -961,8 +961,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/verb/join_as_lesser_drone()
 	set category = "Ghost.Join"
-	set name = "Join as a Lesser Drone"
-	set desc = "Try joining as a Lesser Drone to support the hive."
+	set name = "Присоединиться за трутня"
+	set desc = "Присоединиться за трутня, чтобы поддержать улей."
 
 	if (!client)
 		return

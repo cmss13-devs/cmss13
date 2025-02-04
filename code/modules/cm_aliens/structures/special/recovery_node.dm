@@ -22,7 +22,7 @@
 		if(xeno_in_range.health >= xeno_in_range.maxHealth || !xeno_in_range.resting || xeno_in_range.hivenumber != linked_hive.hivenumber)
 			continue
 		if(xeno_in_range.stat == DEAD)
-			return
+			continue
 		heal_candidates += xeno_in_range
 	last_healed = world.time
 	if(!length(heal_candidates))

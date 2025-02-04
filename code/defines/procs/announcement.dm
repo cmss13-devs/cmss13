@@ -167,7 +167,7 @@
 
 //the announcement proc that handles announcing for each mob in targets list
 /proc/announcement_helper(message, title, list/targets, sound_to_play,
-									var/datum/announcer/announcer = TTS_DEFAULT_ANNOUNCER)	// SS220 EDIT - TTS
+									datum/announcer/announcer = TTS_DEFAULT_ANNOUNCER)	// SS220 EDIT - TTS
 	if(!message || !title || !sound_to_play || !targets) //Shouldn't happen
 		return
 	for(var/mob/T in targets)

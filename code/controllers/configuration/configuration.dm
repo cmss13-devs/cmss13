@@ -315,8 +315,8 @@
 
 
 /datum/controller/configuration/proc/LoadChatFilter()
-	return load_ss220_filters()	// SS220 ADD - Cyrillic speach filter
-
+	return load_ss220_filters()	// SS220 ADD - Cyrillic speech filter
+	/*	SS220 REMOVE - Cyrillic speech filter
 	var/list/word_filter = list()
 
 	if(!fexists("[directory]/word_filter.txt"))
@@ -332,6 +332,7 @@
 		word_filter += REGEX_QUOTE(line)
 
 	word_filter_regex = length(word_filter) ? regex("\\b([jointext(word_filter, "|")])\\b", "i") : null
+	SS220 REMOVE - Cyrillic speech filter */
 
 //Message admins when you can.
 /datum/controller/configuration/proc/DelayedMessageAdmins(text)

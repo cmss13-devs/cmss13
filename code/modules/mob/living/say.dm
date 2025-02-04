@@ -66,8 +66,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 /proc/filter_message(client/user, message)
 
-	return config.filter_speech(user, message) // SS220 ADD - Cyrillic Speach Filter
-
+	return config.filter_speech(user, message) // SS220 ADD - Cyrillic speech Filter
+	/* SS220 REMOVE - Cyrillic speech filter
 	if(!config.word_filter_regex)
 		return TRUE
 
@@ -84,6 +84,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return FALSE
 
 	return TRUE
+	SS220 REMOVE - Cyrillic speech filter */
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)

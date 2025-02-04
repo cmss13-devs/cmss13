@@ -326,7 +326,7 @@
 	item_state = "satchel-charge"
 	overlay_image = "satchel-active"
 	w_class = SIZE_SMALL
-	angle = 55
+	shrapnel_spread = 55
 	timer = 3
 	min_timer = 3
 	penetration = 0.60
@@ -360,7 +360,7 @@
 
 /obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
 	var/explosion_target = get_step(target_turf, dir)
-	create_shrapnel(explosion_target, shrapnel_volume, dir, angle, shrapnel_type, cause_data)
+	create_shrapnel(explosion_target, shrapnel_volume, dir, shrapnel_spread, shrapnel_type, cause_data)
 	addtimer(CALLBACK(src, PROC_REF(trigger_explosion), target_turf, dir, cause_data), 1)
 
 /obj/item/explosive/plastic/breaching_charge/proc/trigger_explosion(turf/target_turf, dir, cause_data)
@@ -384,7 +384,7 @@
 	icon_state = "plasma-charge"
 	overlay_image = "plasma-active"
 	w_class = SIZE_SMALL
-	angle = 55
+	shrapnel_spread = 55
 	timer = 5
 	min_timer = 5
 	penetration = 0.60

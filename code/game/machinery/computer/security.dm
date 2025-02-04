@@ -169,14 +169,14 @@
 			var/id = params["id"]
 
 			if(!id)
-				alert(user,"Invalid record ID.")
+				tgui_alert(user,"Invalid record ID.")
 				return
 
 			// Find the corresponding general record
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if(!general_record)
-				alert(user,"Record not found.")
+				tgui_alert(user,"Record not found.")
 				return
 
 			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
@@ -210,7 +210,7 @@
 			var/is_security_field = copytext(field, 1, 10) == "security_"
 
 			if(!is_general_field && !is_security_field)
-				alert(user, "Invalid field prefix.")
+				tgui_alert(user, "Invalid field prefix.")
 				return
 
 			// Remove the prefix to map to the original field name
@@ -228,7 +228,7 @@
 				if(original_field in general_record.fields)
 					general_record.fields[original_field] = value
 				else
-					alert(user, "Field not found in general record.")
+					tgui_alert(user, "Field not found in general record.")
 					return
 
 			else if(is_security_field && security_record)
@@ -241,10 +241,10 @@
 							H.sec_hud_set_security_status()
 
 				else
-					alert(user, "Field not found in security record.")
+					tgui_alert(user, "Field not found in security record.")
 					return
 			else
-				alert(user, "Record not found or mismatched field type.")
+				tgui_alert(user, "Record not found or mismatched field type.")
 				return
 
 

@@ -6,7 +6,7 @@
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_solar_devils
 	probability = 0
-	mob_min = 1
+	mob_min = 3
 	mob_max = 5
 
 	max_medics = 1
@@ -50,8 +50,8 @@
 	home_base = /datum/lazy_template/ert/solar_devils_station
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_solar_devils
-	probability = 0
-	mob_min = 1
+	probability = 10
+	mob_min = 3
 	mob_max = 10
 
 	max_engineers = 2

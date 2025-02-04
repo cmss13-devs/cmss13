@@ -312,18 +312,12 @@
 /obj/item/prop/magazine/boots
 	name = "generic Boots! magazine"
 	desc = "The only official USCM magazine!"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "boots!"
 
 /obj/item/prop/magazine/boots/n07
 	name = "Boots!: Issue No.7"
 	desc = "The only official USCM magazine, the headline reads 'The Future Soldier!'. The short paragraph following describes the B18 Defensive Armor on how it is designed to make the modern marine invincible and that it has recently finished trials, raising the expectations of the brass for this new piece of gear."
-
-/obj/item/prop/magazine/boots/n40
-	name = "Boots!: Issue No. 40"
-	desc = "The only official USCM magazine, the headline reads 'Bravo Squad… not just for FOB duty!'. Despite the title the article primarily consists of photos of barricades and diagrams on arrangements for ammo boxes."
-
-/obj/item/prop/magazine/boots/n041
-	name = "Boots!: Special Commemorative Issue No.41"
-	desc = "The only official USCM magazine, the headline reads 'Wallace Kelly Haar, 2136-2181'."
 
 /obj/item/prop/magazine/boots/n45
 	name = "Boots!: Issue No. 45"
@@ -352,6 +346,14 @@
 /obj/item/prop/magazine/boots/n117
 	name = "Boots!: Issue No.117"
 	desc = "The only official USCM magazine, the headline reads 'STOP CANNING'. The short paragraph further explains the dangers of marines throwing CN-20 Nerve gas into bathrooms as a prank."
+
+/obj/item/prop/magazine/boots/n120
+	name = "Boots!: Special Commemorative Issue No.120"
+	desc = "The only official USCM magazine, the headline reads 'Wallace Kelly Haar, 2136-2181'."
+
+/obj/item/prop/magazine/boots/n125
+	name = "Boots!: Issue No. 125"
+	desc = "The only official USCM magazine, the headline reads 'Bravo Squad… not just for FOB duty!'. Despite the title the article primarily consists of photos of barricades and diagrams on arrangements for ammo boxes."
 
 /obj/item/prop/magazine/boots/n131
 	name = "Boots!: Issue No. 131"

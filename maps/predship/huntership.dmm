@@ -4899,8 +4899,18 @@
 	},
 /area/yautja)
 "pk" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/space/basic,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#212121";
+	name = "dried blood"
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "pl" = (
 /obj/structure/bed/bedroll{
@@ -10117,6 +10127,16 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	color = "#9b1818";
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	color = "#9b1818";
+	pixel_x = 3;
+	pixel_y = 6
+	},
 /turf/open/floor/corsat/box,
 /area/yautja)
 "FV" = (
@@ -10136,8 +10156,9 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
 "FW" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
-	name = "\improper Storage Room"
+/obj/structure/machinery/door/airlock/yautja{
+	dir = 8;
+	name = "\improper Storage Chamber"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -13237,6 +13258,11 @@
 /obj/item/device/flashlight/lantern/yaujta{
 	pixel_x = 5;
 	pixel_y = -5
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	color = "#9b1818";
+	pixel_x = -7;
+	pixel_y = -8
 	},
 /turf/open/floor/corsat/box,
 /area/yautja)
@@ -21953,8 +21979,8 @@ Ia
 Ia
 aV
 vG
-pk
-pk
+Df
+Df
 aV
 vG
 dI
@@ -28631,7 +28657,7 @@ sr
 sr
 ok
 tO
-IJ
+pk
 he
 ZX
 aV

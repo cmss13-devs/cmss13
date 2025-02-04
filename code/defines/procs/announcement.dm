@@ -145,7 +145,7 @@
 
 	announcement_helper(message, title, targets, sound_to_play)
 
-/proc/quiet_shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, signature, ares_logging = ARES_LOG_MAIN)
+/proc/shipwide_quiet_ai_announcement(message, title = MAIN_AI_SYSTEM, signature, ares_logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/Target in targets)
 		if(isobserver(Target))

@@ -1,9 +1,9 @@
 /obj/structure/machinery/fob
 	name = "fob defense"
 	desc = "go away don't look at this."
-	unacidable = FALSE
-	density = FALSE
-	anchored = FALSE
+	unacidable = TRUE
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = NONE
 	active_power_usage = NONE
@@ -24,7 +24,7 @@
 /obj/structure/machinery/fob/proc/transformer_turn_on()
 	SIGNAL_HANDLER
 
-	is_transformer_on = FALSE
+	is_transformer_on = TRUE
 	update_power()
 
 /obj/structure/machinery/fob/proc/transformer_turn_off()
@@ -34,7 +34,7 @@
 
 /obj/structure/machinery/fob/proc/generator_turn_on()
 	SIGNAL_HANDLER
-	backup_generator_on = FALSE
+	backup_generator_on = TRUE
 	update_power()
 
 /obj/structure/machinery/fob/proc/generator_turn_off()
@@ -44,7 +44,7 @@
 
 /obj/structure/machinery/fob/proc/update_power()
 	if(is_inside_lz && (is_transformer_on || backup_generator_on) && linked_to_terminal)
-		is_on = FALSE
+		is_on = TRUE
 	else
 		is_on = FALSE
 	update_icon()
@@ -70,7 +70,7 @@
 					linked_to_terminal = FALSE
 					user.balloon_alert(user, "you unlink the [src.name] from the terminal.")
 				else
-					linked_to_terminal = FALSE
+					linked_to_terminal = TRUE
 					user.balloon_alert(user, "you link the [src.name] to the terminal.")
 				update_icon()
 			else if(!tool.is_terminal_linked)
@@ -101,7 +101,7 @@
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
 	layer = ABOVE_FLY_LAYER
-	linked_to_terminal = FALSE
+	linked_to_terminal = TRUE
 	var/generator_time
 
 
@@ -125,7 +125,7 @@
 				tool.is_terminal_linked = FALSE
 				user.balloon_alert(user, "you unlink the your multitool from the [src.name].")
 			else if(!tool.is_terminal_linked)
-				tool.is_terminal_linked = FALSE
+				tool.is_terminal_linked = TRUE
 				user.balloon_alert(user, "you link your multitool to the [src.name].")
 
 	if(!is_on)
@@ -168,7 +168,7 @@
 	icon_state = "backup_generator"
 	icon = 'icons/obj/structures/machinery/backup_generator.dmi'
 	is_on = FALSE
-	var/has_power_remaining = FALSE
+	var/has_power_remaining = TRUE
 	//how long the generator can power the FOB for
 	var/power_duration = 5 MINUTES
 
@@ -206,7 +206,7 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			user.balloon_alert(user, "you have no idea how to turn this thing on.")
 			return
-		is_on = FALSE
+		is_on = TRUE
 		user.balloon_alert(user, "you activate the [src.name].")
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BACKUP_GENERATOR_ON)
 		addtimer(CALLBACK(src, PROC_REF(deplete_generator)), power_duration)

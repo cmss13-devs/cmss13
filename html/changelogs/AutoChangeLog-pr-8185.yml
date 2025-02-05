@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Fax Responders now understand all human languages."
+  - bugfix: "CL Radio Key now appropriately gives access to Almayer General Comms."

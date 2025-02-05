@@ -111,29 +111,29 @@
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Wrong user detected!"))
 		return
 
-	var/mob/living/carbon/human/T = user.hunter_data.thrall
-	if(!T)
+	var/mob/living/carbon/human/thrall = user.hunter_data.thrall
+	if(!thrall)
 		to_chat(user, SPAN_WARNING("You do not have a thrall to link to!"))
 		return
-	else if(!istype(T.gloves, /obj/item/clothing/gloves/yautja/thrall))
+	else if(!istype(thrall.gloves, /obj/item/clothing/gloves/yautja/thrall))
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your thrall is not wearing a bracer!"))
 		return
 	else
-		var/obj/item/clothing/gloves/yautja/thrall/thrall_gloves = T.gloves
+		var/obj/item/clothing/gloves/yautja/thrall/thrall_gloves = thrall.gloves
 
 		linked_bracer = thrall_gloves
 		thrall_gloves.linked_bracer = src
-		thrall_gloves.owner = T
+		thrall_gloves.owner = thrall
 		thrall_gloves.verbs += /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear
-		T.client?.init_verbs()
-		T.set_species("Thrall")
-		T.allow_gun_usage = FALSE
+		thrall.client?.init_verbs()
+		thrall.set_species("Thrall")
+		thrall.allow_gun_usage = FALSE
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
 		if(notification_sound)
 			playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-		to_chat(T, SPAN_WARNING("\The [thrall_gloves] locks around your wrist with a sharp click."))
-		to_chat(T, SPAN_YAUTJABOLD("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> beeps: Your master has linked their bracer to yours."))
+		to_chat(thrall, SPAN_WARNING("\The [thrall_gloves] locks around your wrist with a sharp click."))
+		to_chat(thrall, SPAN_YAUTJABOLD("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> beeps: Your master has linked their bracer to yours."))
 		if(thrall_gloves.notification_sound)
 			playsound(thrall_gloves.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
@@ -242,10 +242,10 @@
 		return
 
 	if(alert("Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Explosive Bracers", "Yes", "No") == "Yes")
-		var/area/A = get_area(thrall)
-		var/turf/T = get_turf(thrall)
-		message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
-		log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [A ? "in [A.name]":""]")
+		var/area/area = get_area(thrall)
+		var/turf/turf = get_turf(thrall)
+		message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [area ? "in [area.name]":""] [ADMIN_JMP(turf)]"))
+		log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [area ? "in [area.name]":""]")
 		message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
 		to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
 		explode(thrall)

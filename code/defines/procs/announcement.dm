@@ -129,11 +129,11 @@
 //to ensure that all humans on ship hear it regardless of comms and power
 /proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature, ares_logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/Target in targets)
-		if(isobserver(Target))
+	for(var/mob/target in targets)
+		if(isobserver(target))
 			continue
-		if(!ishuman(Target) || isyautja(Target) || !is_mainship_level(Target.z))
-			targets.Remove(Target)
+		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target.z))
+			targets.Remove(target)
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
@@ -147,11 +147,11 @@
 
 /proc/shipwide_quiet_ai_announcement(message, title = MAIN_AI_SYSTEM, signature, ares_logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/Target in targets)
-		if(isobserver(Target))
+	for(var/mob/target in targets)
+		if(isobserver(target))
 			continue
-		if(!ishuman(Target) || isyautja(Target) || !is_mainship_level(Target.z))
-			targets.Remove(Target)
+		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target.z))
+			targets.Remove(target)
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
@@ -166,11 +166,11 @@
 //Subtype of AI shipside announcement for "All Hands On Deck" alerts (COs and SEAs joining the game)
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/Target in targets)
-		if(isobserver(Target))
+	for(var/mob/target in targets)
+		if(isobserver(target))
 			continue
-		if(!ishuman(Target) || isyautja(Target) || !is_mainship_level((get_turf(Target))?.z))
-			targets.Remove(Target)
+		if(!ishuman(target) || isyautja(target) || !is_mainship_level((get_turf(target))?.z))
+			targets.Remove(target)
 
 	log_ares_announcement("Shipwide Update", message, title)
 
@@ -180,19 +180,19 @@
 /proc/announcement_helper(message, title, list/targets, sound_to_play)
 	if(!message || !title || !sound_to_play || !targets) //Shouldn't happen
 		return
-	for(var/mob/Target in targets)
-		if(istype(Target, /mob/new_player))
+	for(var/mob/target in targets)
+		if(istype(target, /mob/new_player))
 			continue
 
-		to_chat_spaced(Target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
-		if(isobserver(Target) && !(Target.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+		to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+		if(isobserver(target) && !(target.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
 			continue
-		playsound_client(Target.client, sound_to_play, Target, vol = 45)
+		playsound_client(target.client, sound_to_play, target, vol = 45)
 /proc/announcement_helper_quiet(message, title, list/targets)
 	if(!message || !title || !targets) //Shouldn't happen
 		return
-	for(var/mob/Target in targets)
-		if(istype(Target, /mob/new_player))
+	for(var/mob/target in targets)
+		if(istype(target, /mob/new_player))
 			continue
 
-		to_chat_spaced(Target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+		to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)

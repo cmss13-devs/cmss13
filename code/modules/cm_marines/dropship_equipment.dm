@@ -1083,8 +1083,15 @@
 		target_data["ref"] = stretcher_ref
 
 		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
+		var/obj/structure/closet/bodybag/cryobag = stretcher.buckled_bodybag
+		if(!occupant && cryobag)
+			occupant = locate(/mob/living/carbon/human) in cryobag
+			target_data["occupant"] = "(Empty stasis bag)"
 		if(occupant)
-			target_data["occupant"] = occupant.name
+			if(cryobag)
+				target_data["occupant"] = "(Stasis bag) " + occupant.name
+			else
+				target_data["occupant"] = occupant.name
 			target_data["time_of_death"] = occupant.tod
 			target_data["damage"] = list(
 				"hp" = occupant.health,

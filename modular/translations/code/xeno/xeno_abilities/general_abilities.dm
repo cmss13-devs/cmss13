@@ -7,6 +7,12 @@
 /datum/action/xeno_action/onclick/shift_spits
 	desc = "Переключить вид плевка."
 
+/datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
+	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/action/xeno_action/activable/xeno_spit/spit = get_action(xeno, /datum/action/xeno_action/activable/xeno_spit)
+	spit.update_desc()
+
 /datum/action/xeno_action/onclick/regurgitate
 	desc = "Выпленуть носителя, если он находится в вас."
 
@@ -63,6 +69,12 @@
 	desc = "Построить продвинутые структуры. Требуется усиленная трава с Hive Core/Hive Cluster, а также свободное пространство вокруг точки установки."
 
 /datum/action/xeno_action/activable/xeno_spit
+	desc = "Дальнобойный плевок."
+
+/datum/action/xeno_action/activable/xeno_spit/apply_replaces_in_desc()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/ammo/xeno/spit = xeno.ammo || GLOB.ammo_list[xeno.caste.spit_types[1]]
+	desc += "[spit.get_description()]"
 
 /datum/action/xeno_action/activable/tail_stab
 	desc = "Удар хвостом на расстоянии 2-х клеток, который наносит на 20% больше урона, чем удар когтями, а также дезориентирирует цель."

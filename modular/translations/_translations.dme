@@ -30,6 +30,7 @@
 #include "code/xeno/castes_age.dm"
 #include "code/xeno/xeno_abilities/general_abilities.dm"
 #include "code/xeno/xeno_abilities/xeno_action.dm"
+#include "code/xeno/xeno_abilities/xeno_projectiles.dm"
 #include "code/xeno/xeno_abilities/castes/boiler.dm"
 #include "code/xeno/xeno_abilities/castes/burrower.dm"
 #include "code/xeno/xeno_abilities/castes/carrier.dm"

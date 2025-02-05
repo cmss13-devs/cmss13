@@ -3,6 +3,13 @@
 /obj/structure/sign/banners/clf_worn,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/maintenance/research)
+"ab" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/purplefull/west,
+/area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/tile/plasteel{
@@ -1311,6 +1318,7 @@
 /obj/item/reagent_container/food/drinks/bottle/wine,
 /obj/item/reagent_container/food/drinks/bottle/pwine,
 /obj/item/storage/box/stompers,
+/obj/item/implanter,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/maintenance/research)
 "EE" = (
@@ -2381,7 +2389,7 @@ Wf
 Tr
 No
 Vo
-hA
+ab
 kO
 fV
 "}

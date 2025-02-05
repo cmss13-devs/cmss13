@@ -29,6 +29,7 @@
 	boiler.tileoffset = 0
 	boiler.viewsize = TRAPPER_VIEWRANGE
 	boiler.plasma_types -= PLASMA_NEUROTOXIN
+	boiler.ammo = GLOB.ammo_list[boiler.caste.spit_types[1]]
 	boiler.armor_modifier -= XENO_ARMOR_MOD_LARGE // no armor
 	boiler.health_modifier -= XENO_HEALTH_MOD_MED
 

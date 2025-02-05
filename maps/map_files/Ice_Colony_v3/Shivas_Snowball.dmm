@@ -143,7 +143,6 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "aaN" = (
-/obj/item/weapon/gun/flamer,
 /obj/structure/surface/rack,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
@@ -152,16 +151,6 @@
 /obj/item/explosive/plastic,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
-"aaQ" = (
-/obj/effect/spider/stickyweb,
-/obj/item/clothing/head/helmet/marine/sof,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/right_spiders)
-"aaR" = (
-/obj/effect/spider/stickyweb,
-/obj/item/clothing/under/marine/veteran/marsoc,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/right_spiders)
 "aaS" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/spider/cocoon,
@@ -10753,10 +10742,6 @@
 /area/shiva/interior/caves/cp_camp)
 "hQO" = (
 /obj/structure/surface/table,
-/obj/item/xeno_egg{
-	pixel_x = 2;
-	pixel_y = 11
-	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "hQU" = (
@@ -11187,9 +11172,6 @@
 "ipY" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/machinery/light/double,
-/obj/item/weapon/gun/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "iqh" = (
@@ -12366,13 +12348,6 @@
 /obj/item/device/t_scanner,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
-"jOA" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/gun/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
 "jOP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
@@ -15326,10 +15301,6 @@
 /obj/structure/window/framed/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/warehouse)
-"ncY" = (
-/obj/item/weapon/gun/flamer,
-/turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/central)
 "ndJ" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_3"
@@ -42910,7 +42881,7 @@ bfc
 qrz
 anE
 anE
-ncY
+ndR
 jqY
 jqY
 ndR
@@ -51027,7 +50998,7 @@ pxi
 acT
 afv
 agh
-jOA
+adp
 acT
 sxp
 hCX
@@ -54298,8 +54269,8 @@ ecj
 aaz
 gkv
 ecj
-aaQ
-aaR
+imk
+imk
 ecj
 ecj
 lWL

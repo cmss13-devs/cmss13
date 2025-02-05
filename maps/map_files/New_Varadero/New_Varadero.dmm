@@ -11674,7 +11674,6 @@
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -30
 	},
-/obj/item/tool/surgery/scalpel/manager,
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
 "jrq" = (
@@ -13779,17 +13778,6 @@
 	},
 /turf/open/floor/shiva/purple/southeast,
 /area/varadero/interior/research)
-"leO" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/surface/table,
-/obj/item/weapon/gun/flamer,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/electrical)
 "leP" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/asteroidwarning/west,
@@ -30128,25 +30116,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"ydZ" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/weapon/gun/rifle/sniper/svd,
-/obj/structure/window/reinforced,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "yeG" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/frame/camera,
@@ -52680,7 +52649,7 @@ kCA
 tlT
 mYd
 wRi
-leO
+iIC
 rKL
 mSf
 kCA
@@ -63859,7 +63828,7 @@ ulv
 bsf
 mMz
 kjI
-ydZ
+bPF
 kjI
 aak
 rAf

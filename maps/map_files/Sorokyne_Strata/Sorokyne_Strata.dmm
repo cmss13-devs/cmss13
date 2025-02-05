@@ -73,11 +73,6 @@
 /obj/structure/bed/nest,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aap" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ag/interior/outside/bball/cave)
 "aaq" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/auto_turf/snow/brown_base/layer0,
@@ -383,7 +378,6 @@
 /area/strata/ug/interior/jungle/structures/research)
 "abF" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -457,11 +451,6 @@
 "abU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
-"abV" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
-/turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
 "abW" = (
 /obj/structure/window/reinforced/tinted,
@@ -779,7 +768,6 @@
 "adm" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
 "adn" = (
@@ -3497,12 +3485,6 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/security)
-"aqz" = (
-/obj/structure/surface/rack,
-/obj/item/stack/folding_barricade,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outpost/security)
 "aqA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -3724,14 +3706,11 @@
 	dir = 8
 	},
 /obj/item/stack/folding_barricade,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "arE" = (
 /obj/structure/surface/rack,
 /obj/item/stack/folding_barricade,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
@@ -3956,8 +3935,6 @@
 "asG" = (
 /obj/structure/surface/rack,
 /obj/item/stack/folding_barricade,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "asV" = (
@@ -10626,7 +10603,6 @@
 /area/strata/ag/interior/outpost/admin)
 "bfO" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball)
 "bfP" = (
@@ -13265,10 +13241,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/water_marshes)
 "bvt" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
 /obj/effect/landmark/wo_supplies/storage/belts/m41abelt,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball)
@@ -13534,7 +13507,6 @@
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "bxr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
 "bxs" = (
@@ -14245,10 +14217,6 @@
 /obj/item/folder/red,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
-"bFg" = (
-/obj/item/ammo_magazine/rifle/type71,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ag/interior/outside/bball)
 "bFl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center"
@@ -15208,13 +15176,6 @@
 /obj/item/stack/folding_barricade,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
-"bRT" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
 "bRU" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2
@@ -16394,7 +16355,6 @@
 /obj/effect/landmark/wo_supplies/storage/belts/medical,
 /obj/item/dogtag,
 /obj/item/clothing/suit/armor/riot,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/admin)
@@ -16580,7 +16540,6 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "cjj" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
@@ -17457,13 +17416,6 @@
 "cty" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/exterior/marsh/river)
-"ctz" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outside/administration)
 "ctA" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -17751,7 +17703,6 @@
 "czw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
-/obj/item/clothing/glasses/thermal/syndi,
 /turf/open/floor/strata/purp1,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "czT" = (
@@ -25183,7 +25134,6 @@
 /area/strata/ag/interior/outpost/admin)
 "mOj" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -28420,11 +28370,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/outpost_decks)
-"qYZ" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/auto_turf/ice/layer1,
-/area/strata/ag/exterior/paths/south_outpost)
 "ras" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
@@ -28562,7 +28507,6 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
 "rkb" = (
-/obj/item/clothing/glasses/thermal/syndi,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/checkpoints/north)
@@ -30370,10 +30314,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
-"tJu" = (
-/obj/item/ammo_magazine/rifle/type71,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ag/interior/outside/bball/cave)
 "tJJ" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -43780,7 +43720,7 @@ bkt
 bkt
 bkt
 cfR
-ctz
+bxr
 ctS
 oUS
 cfR
@@ -52644,7 +52584,7 @@ dWm
 dWm
 yah
 cjq
-bFg
+cjq
 csk
 cjq
 cjq
@@ -54023,7 +53963,7 @@ aac
 aac
 aac
 cpV
-tJu
+nMO
 wJL
 cdo
 aam
@@ -54308,7 +54248,7 @@ hIl
 bmV
 bmE
 lsz
-qYZ
+lsz
 uiE
 bTS
 teI
@@ -55780,7 +55720,7 @@ aac
 cpV
 cpV
 aQB
-aap
+aZn
 abv
 nMO
 nMO
@@ -57745,9 +57685,9 @@ jdC
 gAm
 atJ
 ijo
-aqz
+asG
 arC
-aqz
+asG
 bZD
 ijo
 awf
@@ -72945,7 +72885,7 @@ aad
 aad
 uux
 mOj
-abV
+aub
 abF
 aYz
 bAr
@@ -76638,7 +76578,7 @@ bAr
 bAr
 agx
 bAr
-bRT
+pAY
 bAr
 bAr
 bAr

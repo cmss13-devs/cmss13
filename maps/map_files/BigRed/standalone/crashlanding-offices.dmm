@@ -817,7 +817,6 @@
 "zh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/pmc,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "zl" = (
@@ -993,10 +992,6 @@
 /turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/e)
 "Gx" = (
-/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped{
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one seems to have been heavily damaged from impact, you can still see some debris that resembles a scope and underbarrel attachment point on it.";
-	name = "smashed NSG 23 assault rifle"
-	},
 /turf/open/shuttle/dropship/can_surgery/dark_grey_bottom,
 /area/bigredv2/outside/office_complex)
 "GG" = (

@@ -4792,7 +4792,6 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/obj/item/clothing/glasses/thermal/syndi/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
@@ -6458,10 +6457,6 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/obj/item/weapon/gun/shotgun/combat{
-	layer = 3.1;
-	pixel_y = -5
-	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "kfG" = (
@@ -7001,10 +6996,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
-"kPa" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/colony_central/mine_elevator)
 "kPb" = (
 /obj/structure/platform_decoration/stone/kutjevo/east,
 /turf/open/auto_turf/sand/layer1,
@@ -10704,11 +10695,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
-"qtK" = (
-/obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717,
-/turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction)
 "qtN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan,
@@ -11528,9 +11514,6 @@
 "rRC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
-/obj/item/clothing/glasses/thermal/syndi/kutjevo{
-	pixel_y = -2
-	},
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/kutjevo/interior/colony_South/power2)
 "rSg" = (
@@ -42950,7 +42933,7 @@ wSU
 eNl
 eNl
 lvb
-qtK
+eNl
 wSU
 oUP
 vMk
@@ -49642,7 +49625,7 @@ cyc
 ejP
 pGc
 pGc
-kPa
+pGc
 nxf
 pGc
 uPE

@@ -247,13 +247,6 @@
 	},
 /turf/open/floor/prison/whitepurple/west,
 /area/template_noop)
-"uM" = (
-/obj/structure/bed{
-	icon_state = "abed"
-	},
-/obj/effect/spawner/random/goggles/lowchance,
-/turf/open/floor/prison/whitepurple/southeast,
-/area/template_noop)
 "we" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -715,7 +708,7 @@ zA
 qk
 LM
 zA
-uM
+qk
 LM
 "}
 (7,1,1) = {"

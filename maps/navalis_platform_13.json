@@ -27,6 +27,7 @@
     ],
     "survivor_message": "It has been weeks since the outbreak began. What started as whispers in the dark and the sounds of something crawling in the dank and murky corners of the platform, quickly blossomed into an orgy of violence and chaos, all culminating as a cyclone descended upon the rig. Now, the lifeboats are gone, the upper-decks are sealed, and something worse cries out from the deepest parts of the residential deck, something so alien that even the Xenomorphs appear to shudder at those sounds. The cyclone has given you and your fellows a brief reprieve, but as it lifts, only one question now remains. Can you survive until help arrives?",
     "announce_text": "An automated distress signal has been received from \"Navalis Platform 13\" on the planet Aires.\n\nNP-13 is an off-shore platform that acts as the command and control hub for dozens of other resource extraction platforms. The strategic value of the continued operation of these platforms is sufficent to authorize deployment of military assets to resolve the issue.\n\nThe ###SHIPNAME### has been dispatched.",
+    "liaison_briefing": "maps/map_briefings/cl_brief_navalis.html",
     "map_item_type": "/obj/item/map/lv759_map",
 	"monkey_types": [
         "monkey"

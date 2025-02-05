@@ -1,8 +1,5 @@
+// Handled by usual pounce code
 /datum/action/xeno_action/activable/pounce/runner
-	desc = "Наброситься на клетку, опрокидывая первую цель (%KNOCKDOWN%)."
-
-/datum/action/xeno_action/activable/pounce/runner/apply_replaces_in_desc()
-	replace_in_desc("%KNOCKDOWN%", convert_effect_time(knockdown_duration, WEAKEN), DESCRIPTION_REPLACEMENT_TIME)
 
 /datum/action/xeno_action/activable/runner_skillshot
 	desc = "Выстрелить шипом, который наносит %DAMAGE% урона на дистанции %RANGE% Замедляет цель (%SLOWDOWN%)."

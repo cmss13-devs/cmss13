@@ -1,16 +1,15 @@
 /datum/action/xeno_action/activable/pounce/crusher_charge
-	desc = "Совершить рывок (%DISTANCE%) с задержкой (%WINDUP%). Увеличивается броня спереди (%ARMOR%) во время зарядки рывка. При прямом попадании наносит %DAMAGE% урона, опрокидывает цель (%KNOCKDOWN%) и отталкивает её (%THROW%). \
-		Замедляет всех в точке остановки рывка (%SLOWDOWN%). \
-		<br>ВНИМАНИЕ: рывок прерывается движением."
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/apply_replaces_in_desc()
-	replace_in_desc("%DISTANCE%", distance, DESCRIPTION_REPLACEMENT_DISTANCE)
-	replace_in_desc("%WINDUP%", windup, DESCRIPTION_REPLACEMENT_TIME)
-	replace_in_desc("%ARMOR%", 15) // Hardcoded
-	replace_in_desc("%DAMAGE%", direct_hit_damage)
-	replace_in_desc("%SLOWDOWN%", 3.5, DESCRIPTION_REPLACEMENT_TIME) // Hardcoded
-	replace_in_desc("%KNOCKDOWN%", convert_effect_time(2, WEAKEN), DESCRIPTION_REPLACEMENT_TIME) // Hardcoded
-	replace_in_desc("%THROW%", 3, DESCRIPTION_REPLACEMENT_DISTANCE) // Hardcoded
+	. = ..()
+	desc += "<br><br>Увеличивается броня спереди (%ARMOR_CRUSH%) во время зарядки рывка. При прямом попадании наносит %DAMAGE_CRUSH% урона, опрокидывает цель (%KNOCKDOWN_CRUSH%) и отталкивает её (%THROW_CRUSH%). \
+		Замедляет всех в точке остановки рывка (%SLOWDOWN_CRUSH%). \
+		<br>ВНИМАНИЕ: рывок прерывается движением."
+	replace_in_desc("%ARMOR_CRUSH%", 15) // Hardcoded
+	replace_in_desc("%DAMAGE_CRUSH%", direct_hit_damage)
+	replace_in_desc("%SLOWDOWN_CRUSH%", 3.5, DESCRIPTION_REPLACEMENT_TIME) // Hardcoded
+	replace_in_desc("%KNOCKDOWN_CRUSH%", convert_effect_time(2, WEAKEN), DESCRIPTION_REPLACEMENT_TIME) // Hardcoded
+	replace_in_desc("%THROW_CRUSH%", 3, DESCRIPTION_REPLACEMENT_DISTANCE) // Hardcoded
 
 /datum/action/xeno_action/onclick/crusher_stomp
 	desc = "Сильно топтать по земле вокруг. Носители, оказавшиеся под нами, получают огромный урон (%DAMAGE%). Опрокидывает цели (%KNOCKDOWN%) на расстоянии (%KNOCKDOWN_DISTANCE%) и замедляет (%SLOWTIME%)."

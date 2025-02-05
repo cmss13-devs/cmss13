@@ -25,7 +25,24 @@
 	desc = "Выбрать излучаемые феромоны. Феромоны одного типа не стакаются; если имеется несколько доступных феромонов одного типа, выбирается сильнейший."
 
 /datum/action/xeno_action/activable/pounce
-	desc = "Наброситься на клетку, с возможностью опрокинуть цель."
+	desc = "Наброситься на клетку (%DISTANCE%)."
+
+/datum/action/xeno_action/activable/pounce/apply_replaces_in_desc()
+	replace_in_desc("%DISTANCE%", distance, DESCRIPTION_REPLACEMENT_DISTANCE)
+	if(knockdown)
+		desc += " Опрокидывает цель (%KNOCKDOWN_DURATION%)."
+	replace_in_desc("%KNOCKDOWN_DURATION%", convert_effect_time(knockdown_duration, WEAKEN), DESCRIPTION_REPLACEMENT_TIME)
+	if(slash)
+		desc += " Наносит удар цели при попадании."
+		if(slash_bonus_damage)
+			desc += " Этот удар наносит на %SLASH_BONUS% урона больше."
+	replace_in_desc("%SLASH_BONUS%", slash_bonus_damage)
+	if(freeze_self)
+		desc += " При попадании по цели, вы не сможете двигаться %FREEZE_TIME%"
+	replace_in_desc("%FREEZE_TIME%", freeze_time / 10, DESCRIPTION_REPLACEMENT_TIME)
+	if(windup)
+		desc += " ВНИМАНИЕ: имеется задержка перед прыжком в %WINDUP_TIME%"
+	replace_in_desc("%WINDUP_TIME%", windup_duration / 10, DESCRIPTION_REPLACEMENT_TIME)
 
 /datum/action/xeno_action/onclick/toggle_long_range
 	desc = "Позволяет смотреть вдаль."

@@ -1,4 +1,0 @@
-author: "Diegoflores31"
-delete-after: True
-changes:
-  - bugfix: "Uniforms can no longer be removed if you are wearing a suit on top of it"

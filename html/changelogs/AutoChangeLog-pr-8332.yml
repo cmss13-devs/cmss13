@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - code_imp: "Removes some one letter vars from smartpack code."

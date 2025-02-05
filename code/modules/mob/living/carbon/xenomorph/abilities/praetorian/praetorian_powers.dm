@@ -741,9 +741,6 @@
 
 	if (!action_cooldown_check())
 		return
-	if (!check_and_use_plasma_owner())
-		return
-
 	var/turf/current_turf = get_turf(acidball_user)
 
 	if (!current_turf)
@@ -753,6 +750,8 @@
 		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
 		return
 
+	if (!check_and_use_plasma_owner())
+		return
 
 	apply_cooldown()
 

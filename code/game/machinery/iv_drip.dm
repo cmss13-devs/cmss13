@@ -13,6 +13,7 @@
 	var/datum/beam/current_beam
 	//make it so that IV doesn't require power to function.
 	use_power = USE_POWER_NONE
+	needs_power = FALSE
 
 /obj/structure/machinery/iv_drip/update_icon()
 	if(attached)

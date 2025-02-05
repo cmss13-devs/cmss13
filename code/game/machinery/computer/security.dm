@@ -385,8 +385,8 @@
 			scanner = null
 		if ("print_personal_record")
 			var/id = params["id"]
-			if (!( printing ))
-				printing = 1
+			if (!printing)
+				printing = TRUE
 
 				// Locate the general record
 				var/datum/data/record/general_record = find_record("general", id)

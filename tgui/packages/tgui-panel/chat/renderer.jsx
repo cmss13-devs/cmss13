@@ -638,7 +638,7 @@ export const chatRenderer = window.__chatRenderer__;
 
 setTimeout(() => {
   console.log('running timeout');
-  if (!chatRenderer.isReady) {
+  if (!chatRenderer.isReady()) {
     console.log('rerendering');
     location.reload();
   }

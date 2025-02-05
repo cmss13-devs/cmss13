@@ -1269,7 +1269,7 @@
 ///Hunting Grounds Marines
 
 /datum/equipment_preset/uscm/hunted
-	name = "Hutned USCM"
+	name = "Hunted USCM"
 	faction = FACTION_HUNTED
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	faction_group = FACTION_LIST_HUNTED

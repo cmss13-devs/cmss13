@@ -457,6 +457,10 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
+"acc" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
 "acd" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -786,6 +790,15 @@
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"adl" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"adm" = (
+/obj/structure/foamed_metal,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "adn" = (
 /obj/structure/girder/displaced,
@@ -1976,7 +1989,6 @@
 /area/lv624/ground/river/east_river)
 "akh" = (
 /obj/item/trash/candy,
-/obj/structure/machinery/power/apc/power/north,
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
 	name = "Secure Outer Doors";
@@ -9753,13 +9765,10 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aZz" = (
-/obj/structure/filingcabinet/security{
-	desc = "A large cabinet with hard copy security records.";
-	name = "Security Records"
-	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/redcorner/north,
 /area/lv624/lazarus/security)
@@ -14235,7 +14244,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/grimy,
 /area/lv624/lazarus/hop)
 "jRm" = (
@@ -27793,7 +27802,7 @@ uzH
 uzH
 uzH
 uzH
-uzH
+adl
 aDV
 aRG
 tZD
@@ -48878,7 +48887,7 @@ acf
 acf
 acf
 ecy
-acw
+adm
 acU
 acT
 kRr
@@ -52422,7 +52431,7 @@ aOd
 aNo
 nIZ
 aNo
-aDG
+acc
 aGQ
 aky
 btF

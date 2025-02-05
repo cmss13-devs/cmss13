@@ -3642,19 +3642,6 @@
 	},
 /turf/open/floor/almayer/orangefull,
 /area/adminlevel/ert_station/fax_response_station)
-"Hy" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/obj/structure/ladder{
-	height = 2;
-	id = "Faxes_PIZZA_Ladder";
-	pixel_y = -1;
-	name = "Press Responder Outpost"
-	},
-/turf/open/floor/almayer/plating,
-/area/adminlevel/ert_station/fax_response_station)
 "HA" = (
 /obj/structure/machinery/vending/coffee{
 	wrenchable = 0;
@@ -4624,6 +4611,12 @@
 	icon_state = "E";
 	dir = 1;
 	pixel_x = 1
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_PIZZA_Ladder";
+	pixel_y = -1;
+	name = "Press Responder Outpost"
 	},
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/fax_response_station)
@@ -8145,7 +8138,7 @@ pV
 gX
 wl
 qu
-Hy
+Ry
 wl
 gX
 Iw

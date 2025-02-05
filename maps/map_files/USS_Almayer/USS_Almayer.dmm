@@ -447,12 +447,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
-"abb" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer/research/containment/floor2/north,
-/area/almayer/command/intel_bunks)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -41490,7 +41484,7 @@
 /area/almayer/medical/operating_room_three)
 "lRh" = (
 /turf/open/floor/almayer/bluecorner/north,
-/area/almayer/living/intel)
+/area/almayer/hallways/upper/midship_hallway)
 "lRs" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
@@ -107670,7 +107664,7 @@ uwZ
 wWm
 jQt
 nwi
-abb
+sNz
 uyH
 uwZ
 kGQ

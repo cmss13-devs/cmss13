@@ -39,7 +39,6 @@ SUBSYSTEM_DEF(tgui)
 		var/datum/asset_transport/webroot/webroot = SSassets.transport
 
 		var/datum/asset_cache_item/item = webroot.register_asset("iframe.html", file("tgui/public/iframe.html"))
-		var/url = webroot.get_asset_url("iframe.html", item)
 		basehtml = replacetext(basehtml, "tgui:storagecdn", webroot.get_asset_url("iframe.html", item))
 
 /datum/controller/subsystem/tgui/Shutdown()

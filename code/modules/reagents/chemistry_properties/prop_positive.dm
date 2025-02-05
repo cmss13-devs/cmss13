@@ -580,11 +580,11 @@
 		return
 	var/mob/living/carbon/human/dead = M
 	var/revivable = dead.check_tod() && dead.is_revivable()
-	for(var/datum/reagent/R in M.reagents.reagent_list)
-		var/datum/chem_property/property = R.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
+	for(var/datum/reagent/electrogenetic_reagent in M.reagents.reagent_list)
+		var/datum/chem_property/property = electrogenetic_reagent.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
 		if(property)
 			property.trigger(M)
-			M.reagents.remove_reagent(R.id, 1)
+			M.reagents.remove_reagent(electrogenetic_reagent.id, 1)
 			break
 	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
 		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)

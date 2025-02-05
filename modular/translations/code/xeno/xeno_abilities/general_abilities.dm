@@ -54,7 +54,16 @@
 	desc = "Позволяет смотреть вдаль."
 
 /datum/action/xeno_action/activable/spray_acid
-	desc = "Выпреснуть спрей по линии, который наносит урон ожогами."
+	desc = "Спрей из линии кислоты, наносящий %DAMAGE% урона на расстоянии %RANGE%"
+
+/datum/action/xeno_action/activable/spray_acid/apply_replaces_in_desc()
+	replace_in_desc("%RANGE%", spray_distance, DESCRIPTION_REPLACEMENT_DISTANCE)
+	var/obj/effect/xenomorph/spray/spray = spray_effect_type
+	replace_in_desc("%DAMAGE%", spray::damage_amount)
+	if(activation_delay)
+		desc += "<br>Имеется задержка перед активацией в <b>[activation_delay_length / 10] сек.</b>"
+	if(spray::stun_duration)
+		desc += "<br>Оглушает цель на <b>[convert_effect_time(spray::stun_duration, WEAKEN)] сек.</b>"
 
 /datum/action/xeno_action/activable/transfer_plasma
 	desc = "Передать плазму сестре."

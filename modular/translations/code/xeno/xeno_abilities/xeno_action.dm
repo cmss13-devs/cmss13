@@ -1,3 +1,8 @@
+/mob/living/carbon/xenomorph/recalculate_actions()
+	. = ..()
+	for(var/datum/action/xeno_action/action in actions)
+		action.update_desc()
+
 /datum/action/xeno_action/give_to(mob/living/L)
 	. = ..()
 	update_desc()

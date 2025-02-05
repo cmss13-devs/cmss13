@@ -20,11 +20,10 @@
 	replace_in_desc("%ACID_STR%", /datum/effects/acid::damage_in_total_obj)
 
 /datum/action/xeno_action/activable/spray_acid/spitter
-	desc = "Спрей из линии кислоты, наносящий %DAMAGE% урона на расстоянии %RANGE%\
-		<br>Если на цели имеется кислота, она получает дополнительно %DAMAGE_BONUS% урона, а также усиливает кислоту на цели.\
-		<br>Если кислота была усилена, цель будет оглушена (%KNOCKDOWN_BONUS%)."
 
 /datum/action/xeno_action/activable/spray_acid/spitter/apply_replaces_in_desc()
+	desc += "<br>Если на цели имеется кислота, она получает дополнительно %DAMAGE_BONUS% урона, а также усиливает кислоту на цели.\
+		<br>Если кислота была усилена, цель будет оглушена (%KNOCKDOWN_BONUS%)."
 	replace_in_desc("%RANGE%", spray_distance, DESCRIPTION_REPLACEMENT_DISTANCE)
 	replace_in_desc("%DAMAGE%", /obj/effect/xenomorph/spray/weak::damage_amount)
 	replace_in_desc("%KNOCKDOWN_BONUS%", convert_effect_time(/obj/effect/xenomorph/spray/weak::stun_duration, STUN), DESCRIPTION_REPLACEMENT_TIME)
@@ -32,3 +31,7 @@
 
 // Need to update tail first
 /datum/action/xeno_action/activable/tail_stab/spitter
+
+/datum/action/xeno_action/activable/tail_stab/spitter/apply_replaces_in_desc()
+	. = ..()
+	desc += "<br>Вводит <b>2</b> единицы [/datum/reagent/toxin/molecular_acid::name] (всего <b>26.5</b> урона)."

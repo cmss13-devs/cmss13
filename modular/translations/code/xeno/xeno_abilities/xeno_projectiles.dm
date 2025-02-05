@@ -2,6 +2,8 @@
 	var/desc = "<br><br>Характеристики [name]."
 	desc += "<br>Дальность: <b>[max_range] кл.</b>"
 	desc += "<br>Урон: <b>[damage ? "[damage] [damage_type]" : "отсутствует"]</b>."
+	if(bonus_projectiles_amount)
+		desc += "<br>Создаёт <b>[bonus_projectiles_amount + 1]</b> снарядов."
 	if(damage && damage_falloff)
 		desc += " Уменьшается на [damage_falloff] за каждую пройденную клетку."
 

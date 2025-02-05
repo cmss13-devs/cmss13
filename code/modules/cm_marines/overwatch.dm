@@ -13,6 +13,7 @@
 	unacidable = TRUE
 
 	var/datum/squad/current_squad = null
+	var/datum/squad/squad
 	var/state = 0
 	var/obj/structure/machinery/camera/cam = null
 	var/obj/item/clothing/head/helmet/marine/helm = null

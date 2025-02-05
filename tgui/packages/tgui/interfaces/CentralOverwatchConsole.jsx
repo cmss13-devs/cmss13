@@ -77,35 +77,82 @@ const SquadPanel = (props) => {
   const [category, setCategory] = useSharedState('selected', 'monitor');
 
   return (
-    <Table>
-      <Table.Row>
-        <Table.Cell>
-          <MainDashboard />
-        </Table.Cell>
-        <Table.Cell>
-          <MainDashboard />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          <MainDashboard />
-        </Table.Cell>
-        <Table.Cell>
-          <MainDashboard />
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          {data.squad_list.map((squad, index) => {
-            return (
-              <Stack.Item key={index}>
-                <MainDashboard />
-              </Stack.Item>
-            );
-          })}
-        </Table.Cell>
-      </Table.Row>
-    </Table>
+    <Section>
+      <Stack justify="center" align="end">
+        {data.squad_list.map((squad, index) => {
+          let { primary_objective, secondary_objective } = data;
+          return (
+            <Stack.Item key={index}>
+              {squad + ' Overwatch | Dashboard'}
+              <Table mb="5px">
+                <Table.Row bold>
+                  <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
+                  <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell textAlign="center">
+                    {primary_objective ? primary_objective : 'NONE'}
+                  </Table.Cell>
+                  <Table.Cell textAlign="center">
+                    {secondary_objective ? secondary_objective : 'NONE'}
+                  </Table.Cell>
+                </Table.Row>
+              </Table>
+              <Collapsible
+                textAlign="center"
+                title="Expand Controls"
+                fontSize="16px"
+              >
+                <Box textAlign="center">
+                  <Box>
+                    <Stack.Item>
+                      <Button
+                        inline
+                        width="100%"
+                        icon="envelope"
+                        onClick={() => act('set_primary')}
+                      >
+                        SET PRIMARY
+                      </Button>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        inline
+                        width="100%"
+                        icon="envelope"
+                        onClick={() => act('set_secondary')}
+                      >
+                        SET SECONDARY
+                      </Button>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        inline
+                        width="100%"
+                        icon="envelope"
+                        onClick={() => act('message')}
+                      >
+                        MESSAGE SQUAD
+                      </Button>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        inline
+                        width="100%"
+                        icon="person"
+                        onClick={() => act('sl_message')}
+                      >
+                        MESSAGE SQUAD LEADER
+                      </Button>
+                    </Stack.Item>
+                  </Box>
+                </Box>
+              </Collapsible>
+            </Stack.Item>
+          );
+        })}
+      </Stack>
+    </Section>
   );
 };
 

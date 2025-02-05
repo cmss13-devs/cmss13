@@ -6,9 +6,9 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 
 	"lol" = list("type" = "action", "emote" = "laugh"),
 	"lmao" = list("type" = "action", "emote" = "laugh"),
-    "lmfao" = list("type" = "action", "emote" = "laugh"),
+	"lmfao" = list("type" = "action", "emote" = "laugh"),
 	"rofl" = list("type" = "action", "emote" = "laugh"),
-    "xd" = list("type" = "action", "emote" = "laugh"),
+	"xd" = list("type" = "action", "emote" = "laugh"),
 	"kek" = list("type" = "action", "emote" = "laugh"),
 	"idk" = list("type" = "action", "emote" = "shrug"),
 	"smh" = list("type" = "action", "emote" = "shakehead"),
@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	"owo" = list("type" = "action", "emote" = "moan"),
 	"o_o" = list("type" = "action", "emote" = "stare"),
 	"o7" = list("type" = "action", "emote" = "salute"),
-    "o/" = list("type" = "action", "emote" = "waves"),
+	"o/" = list("type" = "action", "emote" = "waves"),
 
 	// Shortcuts, (not really netspeak but useful)
 	"www" = list("type" = "action", "emote" = "warcry"),
@@ -85,8 +85,8 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	"l8r" = list("type" = "text", "replacement" = "later"),
 	"omw" = list("type" = "text", "replacement" = "on my way"),
 	"b4" = list("type" = "text", "replacement" = "before"),
-    "jk" =  list("type" = "text", "replacement" = "just kidding"),
-    "nbd" = list("type" = "text", "replacement" = "no big deal"),
+	"jk" =  list("type" = "text", "replacement" = "just kidding"),
+	"nbd" = list("type" = "text", "replacement" = "no big deal"),
 	"kys" = list("type" = "text", "replacement" = "kill your self"),
 	"kms" = list("type" = "text", "replacement" = "kill my self"),
 	"sus" = list("type" = "text", "replacement" = "suspicious"),

@@ -2405,7 +2405,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "EH" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	pixel_y = 18;
 	layer = 3.01;
 	density = 0
@@ -3143,7 +3143,7 @@
 /turf/open/floor/solarpanel,
 /area/space)
 "OK" = (
-/obj/structure/machinery/vending/cigarette{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	pixel_y = 3;
 	layer = 4.15
 	},

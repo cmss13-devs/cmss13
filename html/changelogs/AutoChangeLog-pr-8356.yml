@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "fixes an issue with CO's not being able to access the techweb, tacmap and get their icon."

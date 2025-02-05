@@ -583,7 +583,7 @@
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "Zq" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkgreen2/northeast,
 /area/bigredv2/outside/space_port)
 "ZJ" = (

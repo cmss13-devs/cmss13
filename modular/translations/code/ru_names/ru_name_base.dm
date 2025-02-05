@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(ru_names)
 * Процедура выбора правильного падежа для любого предмета, если у него указан словарь «ru_names», примерно такой:
 * RU_NAMES_LIST_INIT("jaws of life", "челюсти жизни", "челюстей жизни", "челюстям жизни", "челюсти жизни", "челюстями жизни", "челюстях жизни")
 */
-/datum/proc/declent_ru(declent)
+/datum/proc/declent_ru(declent = NOMINATIVE)
 	CRASH("Unimplemented proc/declent_ru() was used")
 
 /proc/get_declented_value(list/declented_list, declent, backup_value)

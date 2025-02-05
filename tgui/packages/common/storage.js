@@ -203,13 +203,13 @@ class IndexedDbBackend {
 export class StorageProxy {
   constructor(chat) {
     this.backendPromise = (async () => {
-      if (chat) {
-        const iframe = new IFrameIndexedDbBackend();
-        await iframe.ready();
-        return iframe;
-      }
-
       if (!Byond.TRIDENT) {
+        if (chat) {
+          const iframe = new IFrameIndexedDbBackend();
+          await iframe.ready();
+          return iframe;
+        }
+
         if (!testHubStorage()) {
           return new Promise((resolve) => {
             const listener = () => {

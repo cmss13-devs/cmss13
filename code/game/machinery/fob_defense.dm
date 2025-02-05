@@ -239,8 +239,27 @@
 //****************************************** SENTRYGUN GENERAL ************************************************//
 
 /obj/structure/machinery/fob/sentrygun
-	var/mob/target
+	var/mob/living/target
 	var/list/targets
+	var/datum/ammo/ammo = /datum/ammo/bullet
+	var/faction_group = FACTION_LIST_MARINE
+
+/obj/structure/machinery/fob/sentrygun/process()
+	if(!is_on)
+		stop_processing()
+		return
+	if(!check_valid_target(target))
+		loose_target()
+
+	if(!target)
+		get_target()
+
+	if(!target)
+		return
+
+	aim()
+
+	return TRUE
 
 /obj/structure/machinery/fob/sentrygun/proc/get_target()
 	return
@@ -263,6 +282,16 @@
 /obj/structure/machinery/fob/sentrygun/proc/aim()
 	return
 
+/obj/structure/machinery/fob/sentrygun/proc/check_valid_target(atom)
+	if(isliving(atom))
+		var/mob/living/mob = atom
+		if(mob.stat & DEAD)
+			return FALSE
+
+		if(mob.get_target_lock(faction_group) || mob.invisibility || HAS_TRAIT(mob, TRAIT_ABILITY_BURROWED) || mob.is_ventcrawling)
+			return FALSE
+	return TRUE
+
 /obj/structure/machinery/fob/sentrygun/start_processing()
 	START_PROCESSING(SSdefprocess, src)
 
@@ -284,7 +313,7 @@
 	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
-	var/diameter = 8
+	var/diameter = 13
 	var/sentry_range = 8
 	var/range_bounds
 	var/datum/beam/laser_beam
@@ -302,22 +331,11 @@
 /obj/structure/machinery/fob/sentrygun/plasma/set_area()
 	range_bounds = SQUARE(x, y, diameter)
 
-/obj/structure/machinery/fob/sentrygun/plasma/process()
+/obj/structure/machinery/fob/sentrygun/plasma/get_target()
 	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	if(!targets)
 		return FALSE
 
-	if(!target && length(targets))
-		get_target()
-
-	if(!target)
-		return
-
-	aim()
-
-	return TRUE
-
-/obj/structure/machinery/fob/sentrygun/plasma/get_target()
 	if(!islist(targets))
 		return
 
@@ -328,21 +346,9 @@
 	var/list/unconscious_targets = list()
 
 	for(var/atom/movable/atom in targets) // orange allows sentry to fire through gas and darkness
-		if(isliving(atom))
-			var/mob/living/mob = atom
-			if(mob.stat & DEAD)
-				targets.Remove(atom)
-				continue
-
-			if(/*mob.get_target_lock(faction_group) ||*/ mob.invisibility || HAS_TRAIT(mob, TRAIT_ABILITY_BURROWED) || mob.is_ventcrawling)
-				if(mob == target)
-					target = null
-				targets.Remove(mob)
-				continue
-
-		/*else if(!(atom.type in other_targets))
+		if(!check_valid_target(atom))
 			targets.Remove(atom)
-			continue*/
+			continue
 
 		if(!check_visibility(atom))
 			targets.Remove(atom)
@@ -406,10 +412,14 @@
 	target = null
 
 /obj/structure/machinery/fob/sentrygun/plasma/aim()
+	if(!target)
+		loose_target()
+		return
+
 	if(check_visibility(target))
-		lockon = min(max_lock, lockon +2)
+		lockon = min(max_lock, lockon + 3)
 	else
-		lockon = max(0, lockon -1)
+		lockon = max(0, lockon -2)
 
 	if(lockon == max_lock)
 		fire()
@@ -417,6 +427,17 @@
 
 	if(lockon == 0)
 		loose_target()
+
+/obj/structure/machinery/fob/sentrygun/plasma/fire()
+	var/obj/projectile/new_projectile = new(src, create_cause_data(initial(name), null, src))
+	new_projectile.generate_bullet(new ammo)
+	//new_projectile.damage *= damage_mult
+	//new_projectile.accuracy *= accuracy_mult
+	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
+	new_projectile.fire_at(target, null, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
+
+
+
 
 
 

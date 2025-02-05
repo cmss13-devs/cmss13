@@ -300,6 +300,8 @@
 	marine_announcement("The WY-Research-Facility lockdown protocols have been lifted.")
 	used = TRUE
 
+// Navalis Rig 13 Buttons
+
 // Navalis Industrial Rig Lockdown
 
 /obj/structure/machinery/door_control/navalis_lockdown
@@ -314,7 +316,7 @@
 		to_chat(user, SPAN_WARNING("The Industrial Rig lockdown has already been lifted."))
 		return
 	. = ..()
-	marine_announcement("The Industrial Rig lockdown protocols have been lifted.")
+	marine_announcement("The Industrial Rig primary entrance lockdown has been lifted.")
 	xeno_announcement("The hosts have opened the entrance to the industrial area! Beware of the imminent southern attack!")
 	used = TRUE
 
@@ -354,7 +356,7 @@
 	xeno_announcement("Be wary! The hosts have opened the internal blastdoors of the industrial rig. This area may now be far harder to hold!")
 	used = TRUE
 
-// Internal Industrial  Accessway
+// Internal Industrial Accessway
 
 /obj/structure/machinery/door_control/navalis_walkway_lockdown
 	var/used = FALSE
@@ -368,6 +370,24 @@
 		to_chat(user, SPAN_WARNING("The external access blastdoor has already been sealed off."))
 		return
 	. = ..()
-	marine_announcement("The Industrial Rig's external blastdoor has been sealed off! The xenomorphs will no longer be able to climb here through the support-walkway.")
+	marine_announcement("The Industrial Rig's external blastdoor has been permanently sealed off. The xenomorphs will no longer be able to use this entrance.")
 	xeno_announcement("The hosts have shut off the external lattice access to the industrial area! We can now no longer access this area via our hidden external walkway!")
+	used = TRUE
+
+// Dig Site Walkway
+
+/obj/structure/machinery/door_control/navalis_digsite_nw_lockdown
+	var/used = FALSE
+	var/colony_lockdown_time = 25 MINUTES
+
+/obj/structure/machinery/door_control/navalis_digsite_nw_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("This external access blastdoor cannot be sealed off yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
+	if(used)
+		to_chat(user, SPAN_WARNING("The external access blastdoor has already been sealed off."))
+		return
+	. = ..()
+	marine_announcement("The Mining Platforms external blastdoors have been sealed off. The xenomorphs will no longer be able to use this area to cross over to the primary rig structure.")
+	xeno_announcement("The hosts sealed off the exteral walkway doors in the Mining Platform! We will no longer be able to use this to cross over easily to the main rig!")
 	used = TRUE

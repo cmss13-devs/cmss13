@@ -1218,6 +1218,11 @@
 	desc = "A metal grate."
 	icon_state = "solidgrate5"
 
+/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
 /obj/structure/prop/hybrisa/misc/floorprops/grate3
 	name = "solid metal grate"
 	desc = "A metal grate."

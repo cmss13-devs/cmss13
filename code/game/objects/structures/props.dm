@@ -656,6 +656,13 @@
 	desc = "Scientists use these suspended nets to superimpose a grid over a patch of ground for study."
 	icon_state = "soil_grid"
 
+/obj/structure/prop/ice_colony/soil_net/navalis_indestructible
+	name = "safety net"
+	desc = "Special net intended to catch anyone, or anything, that falls off the rig. Difficult to move around in, but preferable to falling into the endless ocean below."
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
 /obj/structure/prop/ice_colony/ice_crystal
 	name = "ice crystal"
 	desc = "It is a giant crystal of ice. The chemical process that keeps it frozen despite major seasonal temperature flux is what the United American Greater Argentinian science team is studying here on the Snowball."

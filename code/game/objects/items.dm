@@ -1129,9 +1129,6 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea what this even does..."))
 		return FALSE
-	if(istype(src, /obj/item/tool/yautja_cleaner))
-		to_chat(user, SPAN_WARNING("You cannot dissolve more dissolving fluid..."))
-		return FALSE
 	if(user.alpha < 255)
 		to_chat(user, SPAN_BOLDWARNING("It would not be safe to attempt this while cloaked!"))
 		return FALSE

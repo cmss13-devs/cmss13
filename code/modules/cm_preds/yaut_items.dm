@@ -1115,6 +1115,10 @@
 		return
 	target.handle_dissolve(user)
 
+/obj/item/tool/yautja_cleaner/handle_dissolve(mob/user)
+	to_chat(user, SPAN_WARNING("You cannot dissolve more dissolving fluid..."))
+	return FALSE
+
 /obj/item/storage/medicomp
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."

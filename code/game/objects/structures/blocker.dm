@@ -165,6 +165,10 @@
 /obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
 	return TRUE
 
+/obj/structure/blocker/forcefield/all
+	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph)
+	icon_state = "purple_line"
+
 // for fuel pump since it's a large sprite.
 /obj/structure/blocker/fuelpump
 	name = "\improper Fuel Pump"

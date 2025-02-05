@@ -353,3 +353,21 @@
 	marine_announcement("The Industrial Rig's internal blastdoors have been opened.")
 	xeno_announcement("Be wary! The hosts have opened the internal blastdoors of the industrial rig. This area may now be far harder to hold!")
 	used = TRUE
+
+// Internal Industrial  Accessway
+
+/obj/structure/machinery/door_control/navalis_walkway_lockdown
+	var/used = FALSE
+	var/colony_lockdown_time = 25 MINUTES
+
+/obj/structure/machinery/door_control/navalis_walkway_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("This external access blastdoor cannot be sealed off yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
+	if(used)
+		to_chat(user, SPAN_WARNING("The external access blastdoor has already been sealed off."))
+		return
+	. = ..()
+	marine_announcement("The Industrial Rig's external blastdoor has been sealed off! The xenomorphs will no longer be able to climb here through the support-walkway.")
+	xeno_announcement("The hosts have shut off the external lattice access to the industrial area! We can now no longer access this area via our hidden external walkway!")
+	used = TRUE

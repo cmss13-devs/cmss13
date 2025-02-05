@@ -21,6 +21,7 @@ import {
   MESSAGE_TYPE_INTERNAL,
   MESSAGE_TYPE_UNKNOWN,
   MESSAGE_TYPES,
+  RENDERER_RELOAD_WAIT,
 } from './constants';
 import { canPageAcceptType, createMessage, isSameMessage } from './model';
 import { highlightNode, linkifyNode } from './replaceInTextNode';
@@ -634,3 +635,9 @@ if (!window.__chatRenderer__) {
 
 /** @type {ChatRenderer} */
 export const chatRenderer = window.__chatRenderer__;
+
+setTimeout(() => {
+  if (!chatRenderer.isReady) {
+    location.reload();
+  }
+}, RENDERER_RELOAD_WAIT);

@@ -127,72 +127,36 @@
 
 //AI shipside announcement, that uses announcement mechanic instead of talking into comms
 //to ensure that all humans on ship hear it regardless of comms and power
-/proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature, ares_logging = ARES_LOG_MAIN)
-	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/target in targets)
-		if(isobserver(target))
-			continue
-		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target.z))
-			targets.Remove(target)
+/proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, signature, ares_logging = ARES_LOG_MAIN, sound_to_play = sound('sound/misc/interference.ogg'), quiet = FALSE)
+    var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
+    for(var/mob/target in targets)
+        if(isobserver(target))
+            continue
+        if(!ishuman(target) || isyautja(target) || !is_mainship_level(target.z))
+            targets.Remove(target)
 
-	if(!isnull(signature))
-		message += "<br><br><i> Signed by, <br> [signature]</i>"
-	switch(ares_logging)
-		if(ARES_LOG_MAIN)
-			log_ares_announcement(title, message, signature)
-		if(ARES_LOG_SECURITY)
-			log_ares_security(title, message, signature)
+    if(!isnull(signature))
+        message += "<br><br><i> Signed by, <br> [signature]</i>"
+    switch(ares_logging)
+        if(ARES_LOG_MAIN)
+            log_ares_announcement(title, message, signature)
+        if(ARES_LOG_SECURITY)
+            log_ares_security(title, message, signature)
 
-	announcement_helper(message, title, targets, sound_to_play)
+    announcement_helper(message, title, targets, sound_to_play, quiet)
 
-/proc/shipwide_quiet_ai_announcement(message, title = MAIN_AI_SYSTEM, signature, ares_logging = ARES_LOG_MAIN)
-	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/target in targets)
-		if(isobserver(target))
-			continue
-		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target.z))
-			targets.Remove(target)
-
-	if(!isnull(signature))
-		message += "<br><br><i> Signed by, <br> [signature]</i>"
-	switch(ares_logging)
-		if(ARES_LOG_MAIN)
-			log_ares_announcement(title, message, signature)
-		if(ARES_LOG_SECURITY)
-			log_ares_security(title, message, signature)
-
-	announcement_helper_quiet(message, title, targets)
-
-//Subtype of AI shipside announcement for "All Hands On Deck" alerts (COs and SEAs joining the game)
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
-	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/target in targets)
-		if(isobserver(target))
-			continue
-		if(!ishuman(target) || isyautja(target) || !is_mainship_level((get_turf(target))?.z))
-			targets.Remove(target)
+    shipwide_ai_announcement(message, title, null, ARES_LOG_MAIN, sound_to_play, FALSE)
 
-	log_ares_announcement("Shipwide Update", message, title)
+/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet)
+    if(!message || !title || !targets) //Shouldn't happen
+        return
+    for(var/mob/target in targets)
+        if(istype(target, /mob/new_player))
+            continue
 
-	announcement_helper(message, title, targets, sound_to_play)
-
-//the announcement proc that handles announcing for each mob in targets list
-/proc/announcement_helper(message, title, list/targets, sound_to_play)
-	if(!message || !title || !sound_to_play || !targets) //Shouldn't happen
-		return
-	for(var/mob/target in targets)
-		if(istype(target, /mob/new_player))
-			continue
-
-		to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
-		if(isobserver(target) && !(target.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
-			continue
-		playsound_client(target.client, sound_to_play, target, vol = 45)
-/proc/announcement_helper_quiet(message, title, list/targets)
-	if(!message || !title || !targets) //Shouldn't happen
-		return
-	for(var/mob/target in targets)
-		if(istype(target, /mob/new_player))
-			continue
-
-		to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+        to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+        if(!quiet)
+            if(isobserver(target) && !(target.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+                continue
+            playsound_client(target.client, sound_to_play, target, vol = 45)

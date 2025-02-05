@@ -48,7 +48,7 @@
 /area/strata/ag/exterior/paths/far_north_outpost)
 "bm" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/auto_turf/snow/brown_base/layer3,
+/turf/open/floor/plating,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "br" = (
 /obj/structure/flora/grass/ice/brown/snowgrassbb_2,

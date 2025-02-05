@@ -207,7 +207,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	// We prevent de-evolved people from being tracked for the rest of the round relating to T1s in order to prevent people
 	// Intentionally de/re-evolving to mess with the stats gathered. We don't track t2/3 because it's a legit strategy to open
 	// With a t1 into drone before de-evoing later to go t1 into another caste once survs are dead/capped
-	if(new_xeno.ckey && !((new_xeno.caste.caste_type in XENO_T1_CASTES) && (new_xeno.ckey in GLOB.deevolved_ckeys)))
+	if(new_xeno.ckey && !((new_xeno.caste.caste_type in XENO_T1_CASTES) && (new_xeno.ckey in GLOB.deevolved_ckeys) && !(new_xeno.datum_flags & DF_VAR_EDITED)))
 		var/caste_cleaned_key = lowertext(replacetext(castepick, " ", "_"))
 		if(!SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key])
 			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] = 1
@@ -274,6 +274,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien"
 
+	var/newcaste
+	var/alleged_queens = 0
+
 	if(!check_state())
 		return
 	if(is_ventcrawling)
@@ -295,8 +298,25 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
+	for(var/mob/living/carbon/xenomorph/xenos_to_check in GLOB.living_xeno_list)
+		if(hivenumber != xenos_to_check.hivenumber)
+			continue
 
-	var/newcaste
+		switch(xenos_to_check.tier)
+			if(0)
+				if(islarva(xenos_to_check) && !ispredalienlarva(xenos_to_check))
+					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
+						alleged_queens++
+				continue
+			if(1)
+				if(isdrone(xenos_to_check))
+					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
+						alleged_queens++
+
+	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
+		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
+		return FALSE
+
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)

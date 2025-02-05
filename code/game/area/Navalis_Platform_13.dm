@@ -207,6 +207,7 @@
 /area/navalis/indoors/industrial
 	name = "Industrial Rig - Indoors"
 	icon_state = "mining_production"
+	unoviable_timer = FALSE
 
 /area/navalis/indoors/industrial/accessway
 	name = "Industrial Rig - Sector-A: Accessway"
@@ -282,6 +283,20 @@
 
 /area/navalis/outdoors/comm_one
 	name = "Navalis Platform 13 - Exterior Communications Relay"
+
+/area/navalis/outdoors/exterior_xeno_only
+	name = "Industrial Rig - Exterior Lattice Walkway"
+	icon_state = "red2"
+	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|NOT_WEEDABLE
+
+/area/navalis/outdoors/exterior_xeno_only/lz1
+	name = "Medical / LZ1 - Exterior Lattice Walkway"
+
+/area/navalis/outdoors/exterior_xeno_only/lz2
+	name = "Medical / LZ2 - Exterior Lattice Walkway"
+
+/area/navalis/outdoors/exterior_xeno_only/mining
+	name = "Mining Rig - Exterior Lattice Walkway"
 
 /area/navalis/indoors/xeno_growth
 	name = "Unidentified Xeno-biological Growth: Industrial Area"

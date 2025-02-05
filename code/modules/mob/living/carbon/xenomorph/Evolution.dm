@@ -29,15 +29,24 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!length(castes_available))
 		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))
 		return
+
+	// BANDAMARINES EDIT START - Translation
+	// Assoc list - [ru_caste_name = caste_name]
+	var/list/castes_available_ru = list()
+	for(var/caste_name in castes_available)
+		castes_available_ru[declent_ru_initial(caste_name, NOMINATIVE, caste_name)] = caste_name
+	// BANDAMARINES EDIT END - Translation
+
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
-		castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
+		castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available_ru, theme="hive_status") // BANDAMARINES EDIT - Translation
 	else
 		var/list/fancy_caste_list = list()
-		for(var/caste in castes_available)
-			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
+		for(var/caste in castes_available_ru) // BANDAMARINES EDIT - Translation
+			fancy_caste_list[caste] = hive.evolution_menu_images[castes_available_ru[caste]] // BANDAMARINES EDIT - Translation
 
 		castepick = show_radial_menu(src, src.client?.eye, fancy_caste_list)
+	castepick = castes_available_ru[castepick] || castepick // BANDAMARINES EDIT - Translation
 	if(!castepick) //Changed my mind
 		return
 

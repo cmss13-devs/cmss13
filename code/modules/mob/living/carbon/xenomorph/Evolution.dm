@@ -305,12 +305,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		switch(xenos_to_check.tier)
 			if(0)
 				if(islarva(xenos_to_check) && !ispredalienlarva(xenos_to_check))
-					if(xenos_to_check.client && xenos_to_check.ckey)
+					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(src, XENO_CASTE_QUEEN))
 						alleged_queens++
 				continue
 			if(1)
 				if(isdrone(xenos_to_check))
-					if(xenos_to_check.client && xenos_to_check.ckey)
+					if(xenos_to_check.client && xenos_to_check.ckey && jobban_isbanned(src, XENO_CASTE_QUEEN))
 						alleged_queens++
 
 	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))

@@ -150,7 +150,7 @@ const GeneralInformation = (props) => {
         <i>Всего сестёр: {total_xenos}</i>
       </Flex.Item>
       <Flex.Item>
-        <i>Закопавшиеся грудоломы: {burrowed_larva}</i>
+        <i>Зарытые грудоломы: {burrowed_larva}</i>
       </Flex.Item>
       <Flex.Item>
         <i>Evilution: {evilution_level}</i>

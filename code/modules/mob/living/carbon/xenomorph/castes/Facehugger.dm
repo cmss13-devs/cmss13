@@ -260,9 +260,9 @@
 /mob/living/carbon/xenomorph/facehugger/get_status_tab_items()
 	. = ..()
 	if(next_facehug_goal)
-		. += "Lifetime Hugs: [total_facehugs] / [next_facehug_goal]"
+		. += "Всего обнимашек: [total_facehugs] / [next_facehug_goal]"
 	else
-		. += "Lifetime Hugs: [total_facehugs]"
+		. += "Всего обнимашек: [total_facehugs]"
 
 /datum/behavior_delegate/facehugger_base
 	name = "Base Facehugger Behavior Delegate"

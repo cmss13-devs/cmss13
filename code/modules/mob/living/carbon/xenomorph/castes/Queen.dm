@@ -582,11 +582,11 @@
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - length(hive?.open_xeno_leader_positions)
 
-	. += "Pooled Larvae: [stored_larvae]"
-	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
-	. += "Royal Resin: [hive?.buff_points]"
+	. += "Зарытых грудоломов: [stored_larvae]"
+	. += "Лидеры: [xeno_leader_num] / [hive?.queen_leader_limit]"
+	. += "Королевская смола: [hive?.buff_points]"
 	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
-		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
+		. += "Взросление: [time2text(timeleft(queen_age_timer_id), "mm:ss")] осталось"
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
 	set category = "Alien"

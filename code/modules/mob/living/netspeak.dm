@@ -1,13 +1,37 @@
 GLOBAL_LIST_INIT(netspeak_replacements, list(
 	// ===== EMOTE REPLACEMENTS =====
 	// These trigger character animations and visual effects
+	// NOTE: ALL TRIGGERS MUST BE LOWERCASE
 	// Format: "trigger" = list("type" = "action", "emote" = "emote_key")
 
 	"lol" = list("type" = "action", "emote" = "laugh"),
 	"lmao" = list("type" = "action", "emote" = "laugh"),
+    "lmfao" = list("type" = "action", "emote" = "laugh"),
 	"rofl" = list("type" = "action", "emote" = "laugh"),
+    "xd" = list("type" = "action", "emote" = "laugh"),
+	"kek" = list("type" = "action", "emote" = "laugh"),
 	"idk" = list("type" = "action", "emote" = "shrug"),
+
+	"smh" = list("type" = "action", "emote" = "shakehead"),
+
+	// Smiley faces, (can't use any colon or semicolon + letter. because that sends to radio (e.g. ":D") numbers and symbols are fine)
+	":)" = list("type" = "action", "emote" = "smile"),
+	":>" = list("type" = "action", "emote" = "smile"),
+	":3" = list("type" = "action", "emote" = "whimper"), // so me :3
+	":(" = list("type" = "action", "emote" = "frown"),
+	":<" = list("type" = "action", "emote" = "frown"),
+	":'(" = list("type" = "action", "emote" = "cry"),
+	";)" = list("type" = "action", "emote" = "smile"),
+	";>" = list("type" = "action", "emote" = "smile"),
+	";3" = list("type" = "action", "emote" = "whimper"),
+	";(" = list("type" = "action", "emote" = "frown"),
+	";<" = list("type" = "action", "emote" = "frown"),
+	";'(" = list("type" = "action", "emote" = "cry"),
+	"uwu" = list("type" = "action", "emote" = "moan"),
+	"owo" = list("type" = "action", "emote" = "moan"),
+	"o_o" = list("type" = "action", "emote" = "stare"),
 	"o7" = list("type" = "action", "emote" = "salute"),
+    "o/" = list("type" = "action", "emote" = "waves"),
 
 	// Shortcuts, (not really netspeak but useful)
 	"www" = list("type" = "action", "emote" = "warcry"),
@@ -17,6 +41,10 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	// Format: "trigger" = list("type" = "text", "replacement" = "proper_text")
 
 	"tbh" = list("type" = "text", "replacement" = "to be honest"),
+	"tbf" = list("type" = "text", "replacement" = "to be fair"),
+	"tbr" = list("type" = "text", "replacement" = "to be real"),
+	"tbfh" = list("type" = "text", "replacement" = "to be fucking honest"),
+	"tbfr" = list("type" = "text", "replacement" = "to be fucking real"),
 	"ngl" = list("type" = "text", "replacement" = "not gonna lie"),
 	"omg" = list("type" = "text", "replacement" = "oh my god"),
 	"omfg" = list("type" = "text", "replacement" = "oh my fucking god"),
@@ -58,6 +86,13 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	"l8r" = list("type" = "text", "replacement" = "later"),
 	"omw" = list("type" = "text", "replacement" = "on my way"),
 	"b4" = list("type" = "text", "replacement" = "before"),
+    "jk" =  list("type" = "text", "replacement" = "just kidding"),
+    "smh" = list("type" = "text", "replacement" = "shaking my head"),
+    "nbd" = list("type" = "text", "replacement" = "no big deal"),
+	"kys" = list("type" = "text", "replacement" = "kill your self"),
+	"kms" = list("type" = "text", "replacement" = "kill my self"),
+	"sus" = list("type" = "text", "replacement" = "suspicious"),
+	"af" = list("type" = "text", "replacement" = "as fuck"),
 ))
 
 /// Replace netspeak in a message with proper language or an emote

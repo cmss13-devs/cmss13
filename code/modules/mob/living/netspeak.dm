@@ -11,7 +11,6 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
     "xd" = list("type" = "action", "emote" = "laugh"),
 	"kek" = list("type" = "action", "emote" = "laugh"),
 	"idk" = list("type" = "action", "emote" = "shrug"),
-
 	"smh" = list("type" = "action", "emote" = "shakehead"),
 
 	// Smiley faces, (can't use any colon or semicolon + letter. because that sends to radio (e.g. ":D") numbers and symbols are fine)
@@ -87,7 +86,6 @@ GLOBAL_LIST_INIT(netspeak_replacements, list(
 	"omw" = list("type" = "text", "replacement" = "on my way"),
 	"b4" = list("type" = "text", "replacement" = "before"),
     "jk" =  list("type" = "text", "replacement" = "just kidding"),
-    "smh" = list("type" = "text", "replacement" = "shaking my head"),
     "nbd" = list("type" = "text", "replacement" = "no big deal"),
 	"kys" = list("type" = "text", "replacement" = "kill your self"),
 	"kms" = list("type" = "text", "replacement" = "kill my self"),

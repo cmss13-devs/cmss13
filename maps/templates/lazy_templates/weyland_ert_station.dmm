@@ -2849,7 +2849,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station/weyland_station)
 "SM" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy/free,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
 "SY" = (

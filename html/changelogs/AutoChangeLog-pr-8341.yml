@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - bugfix: "fixed cas ammo's icons not updating after ammo transfer"

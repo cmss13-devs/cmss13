@@ -20,27 +20,27 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
 "aad" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aae" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/civres_blue)
+"aaf" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"aag" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/tumor/ice_lab)
+"aah" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "rocinante"
 	},
 /turf/open/space,
 /area/fiorina/oob)
-"aae" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
-"aaf" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/civres_blue)
-"aag" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/prison/darkpurple2/north,
-/area/fiorina/tumor/servers)
-"aah" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -46192,7 +46192,7 @@ wbI
 itN
 baC
 baC
-aad
+aah
 bQM
 bQM
 bQM
@@ -47557,7 +47557,7 @@ rqG
 pQs
 pQs
 pQs
-aaf
+aae
 rja
 lMq
 jYK
@@ -49644,7 +49644,7 @@ kPf
 kPf
 kPf
 jXz
-aag
+aaf
 jHz
 oiV
 eSH
@@ -61081,7 +61081,7 @@ jFP
 phz
 sWb
 xLi
-aah
+aag
 cer
 kpq
 azZ
@@ -76869,7 +76869,7 @@ brR
 vDO
 tUs
 mxQ
-aae
+aad
 tOM
 gbf
 tOM

@@ -1,7 +1,7 @@
 //job options for doctors surgeon pharmacy technician(preparation of medecine and distribution)
 
-#define DOCTOR_VARIANT "Doctor"
-#define SURGEON_VARIANT "Surgeon"
+#define DOCTOR_VARIANT "Доктор"	// SS220 EDIT TRANSLATE
+#define SURGEON_VARIANT "Хирург"	// SS220 EDIT TRANSLATE
 
 // Doctor
 /datum/job/civilian/doctor
@@ -16,7 +16,7 @@
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 
 	// job option
-	job_options = list(DOCTOR_VARIANT = "Doc", SURGEON_VARIANT = "Sur")
+	job_options = list(DOCTOR_VARIANT = "Док", SURGEON_VARIANT = "Хир")	// SS220 EDIT TRANSLATE
 	/// If this job is a doctor variant of the doctor role
 	var/doctor = TRUE
 
@@ -32,9 +32,9 @@
 //check what job option you took and generate the corresponding the good texte.
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
 	if(doctor)
-		. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a doctor and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a jack of all trades in medicine: you can medicate, perform surgery and produce pharmaceuticals. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+		. = {"Вы уполномоченный офицер ККМП. <a href='[generate_wiki_link()]'>Вы врач и ваша задача — поддерживать здоровье и силу морпехов, обычно в качестве хирурга.</a> Вы мастер на все руки в медицине: вы можете лечить, делать операции и производить фармацевтические препараты. Если вы не знаете, что делаете, запросите наставника или mentorhelp, чтобы вам могли помочь."}
 	else
-		. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a surgeon and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a doctor that specializes in surgery, but you are also very capable in pharmacy and triage. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+		. = {"Вы уполномоченный офицер ККМП. <a href='[generate_wiki_link()]'>Вы хирург и ваша задача — поддерживать здоровье и силу морпехов, обычно в качестве хирурга.</a> Вы врач, специализирующийся на хирургии, но вы также очень способны в фармацевтике и сортировке. Если вы не знаете, что делаете, запросите наставника или mentorhelp, чтобы вам могли помочь."}
 
 /datum/job/civilian/doctor/set_spawn_positions(count)
 	spawn_positions = doc_slot_formula(count)

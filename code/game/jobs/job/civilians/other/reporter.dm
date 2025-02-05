@@ -1,5 +1,5 @@
-#define MILITARY_VARIANT "Military Correspondent"
-#define CIVILIAN_VARIANT "Civilian Correspondent"
+#define MILITARY_VARIANT "Военный Корреспондент"	// SS220 EDIT TRANSLATE
+#define CIVILIAN_VARIANT "Гражданский Корреспондент"	// SS220 EDIT TRANSLATE
 
 /datum/job/civilian/reporter
 	title = JOB_COMBAT_REPORTER
@@ -11,7 +11,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	selection_class = "job_cl"
 
-	job_options = list(CIVILIAN_VARIANT = "Civ", MILITARY_VARIANT = "Mil")
+	job_options = list(CIVILIAN_VARIANT = "Грж", MILITARY_VARIANT = "Арм")	// SS220 EDIT TRANSLATE
 	/// If this job is a military variant of the reporter role
 	var/military = FALSE
 
@@ -24,11 +24,11 @@
 		military = initial(military)
 
 /datum/job/civilian/reporter/generate_entry_message(mob/living/carbon/human/H)
-	if(military)
-		. = {"The USCM has assigned you to the [MAIN_SHIP_NAME] to better handle messaging on how things run in the Neroid Sector. Get out there and show the universe that the USCM is doing great things!"}
+	if(military)	// SS220 EDIT TRANSLATE
+		. = {"USCM назначил вас на [MAIN_SHIP_NAME], чтобы лучше справляться с сообщениями о том, как обстоят дела в секторе Нероидов. Отправляйтесь туда и покажите вселенной, что USCM делает великие дела!"}
 	else
-		. = {"What a scoop! You've been assigned to the [MAIN_SHIP_NAME] to see what kinda mischief they'd get into and it seems trouble is here!
-This could be the story of the sector! 'Brave Marines responding to dangerous distress signal!' It'd surely get Mr. Parkerson to notice you in the office if you brought him a story like this!"}
+		. = {"Какая сенсация! Вас назначили на [MAIN_SHIP_NAME], чтобы посмотреть, во что они вляпаются, и, похоже, беда уже здесь!
+Это могла бы стать историей сектора! "Храбрые морпехи реагируют на опасный сигнал бедствия!" Мистер Паркерсон наверняка заметил бы вас в офисе, если бы вы принесли ему такую ​​историю!"}
 
 /obj/effect/landmark/start/reporter
 	name = JOB_COMBAT_REPORTER

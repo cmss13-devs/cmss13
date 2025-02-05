@@ -24,10 +24,10 @@
 
 /datum/job/civilian/survivor/announce_entry_message(mob/living/carbon/human/survivor, datum/money_account/account, whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
 	if(survivor?.loc && survivor.client)
-		//Document syntax cannot have tabs for proper formatting.
+		//Document syntax cannot have tabs for proper formatting.	// SS220 EDIT TRANSLATE
 		var/entrydisplay = " \
 			[SPAN_ROLE_BODY("|______________________|")] \n\
-			[SPAN_ROLE_BODY("[generate_entry_message(survivor)]<br>[account ? "Your account number is: <b>[account.account_number]</b>. Your account pin is: <b>[account.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(survivor)]<br>[account ? "Ваш номер аккаунта: <b>[account.account_number]</b>. Ваш пинкод: <b>[account.remote_access_pin]</b>." : "У вас нет банковского счета."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
 		"
 		to_chat_spaced(survivor, html = entrydisplay)
@@ -72,10 +72,10 @@
 		for(var/line in intro_text)
 			to_chat(survivor, line)
 	else
-		to_chat(survivor, "<h2>You are a survivor!</h2>")
+		to_chat(survivor, "<h2>Вы - выживший!</h2>")	// SS220 EDIT TRANSLATE
 		to_chat(survivor, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-		to_chat(survivor, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-		to_chat(survivor, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+		to_chat(survivor, SPAN_NOTICE("Вы полностью осознаете угрозу ксеноморфов и можете использовать эти знания по своему усмотрению."))
+		to_chat(survivor, SPAN_NOTICE("Вы НЕ знаете о морпехах и их намерениях."))
 
 	if(story_text)
 		to_chat(survivor, story_text)
@@ -84,25 +84,25 @@
 		tell_survivor_story(survivor)
 
 	if(hostile)
-		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM!"))
+		to_chat(survivor, SPAN_HIGHDANGER("Вы ВРАЖДЕБНЫ к ККМП!"))	// SS220 EDIT TRANSLATE
 	else if(survivor.faction == FACTION_CLF)
-		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM, but NOT to other survivors!"))
+		to_chat(survivor, SPAN_HIGHDANGER("Вы ВРАЖДЕБНЫ к ККМП, но НЕ к другим выжившим!"))
 	else
-		to_chat(survivor, SPAN_XENOHIGHDANGER("You are NON-HOSTILE to the USCM!"))
+		to_chat(survivor, SPAN_XENOHIGHDANGER("Вы НЕ ВРАЖДЕБНЫ к ККМП!"))
 
-/datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)
+/datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)	// SS220 EDIT TRANSLATE
 	var/list/survivor_story = list(
-								"You watched as a larva burst from the chest of your friend, {name}. You tried to capture the alien thing, but it escaped through the ventilation.",
-								"{name} was attacked by a facehugging alien, which impregnated them with an alien lifeform. {name}'s chest exploded in gore as some creature escaped.",
-								"You watched in horror as {name} got the alien lifeform's acid on their skin, melting away their flesh. You can still hear the screaming and panic.",
-								"The Colony Marshal, {name}, made an announcement that the hostile lifeforms killed many, and that everyone should hide or stay behind closed doors.",
-								"You were there when the alien lifeforms broke into the mess hall and dragged away the others. It was a terrible sight, and you have tried avoid large open areas since.",
-								"It was horrible, as you watched your friend, {name}, get mauled by the horrible monsters. Their screams of agony hunt you in your dreams, leading to insomnia.",
-								"You tried your best to hide, and you have seen the creatures travel through the underground tunnels and ventilation shafts. They seem to like the dark.",
-								"When you woke up, it felt like you've slept for years. You don't recall much about your old life, except maybe your name. Just what the hell happened to you?",
-								"You were on the front lines, trying to fight the aliens. You have seen them hatch more monsters from other humans, and you know better than to fight against death.",
-								"You found something, something incredible. But your discovery was cut short when the monsters appeared and began taking people. Damn the beasts!",
-								"{name} protected you when the aliens came. You don't know what happened to them, but that was some time ago, and you haven't seen them since. Maybe they are alive."
+								"Вы наблюдали, как личинка вырвалась из груди вашего друга, {name}. Вы пытались поймать инопланетное существо, но оно сбежало через вентиляцию.",
+								"{name} подвергся нападению инопланетянина, который оплодотворил его инопланетной формой жизни. Грудь {name} взорвалась с брызгами крови, когда какое-то существо сбежало.",
+								"Вы с ужасом наблюдали, как кислота инопланетной формы жизни попала на кожу {name}, расплавив его плоть. Вы все еще можете слышать эти крики и панику.",
+								"Маршал колонии, {name}, сделал заявление о том, что враждебные формы жизни убили многих, и что все должны прятаться или оставаться за закрытыми дверями.",
+								"Вы были там, когда инопланетные формы жизни ворвались в столовую и утащили остальных. Это было ужасное зрелище, и с тех пор вы старались избегать больших открытых пространств.",
+								"Это было ужасно, когда вы наблюдали, как вашего друга, {name}, терзают ужасные монстры. Их крики агонии преследуют вас во сне, что приводит к бессонница.",
+								"Вы изо всех сил старались спрятаться и видели, как существа путешествуют по подземным туннелям и вентиляционным шахтам. Кажется, им нравится темнота.",
+								"Когда вы проснулись, у вас было такое чувство, будто вы спали много лет. Вы не помните ничего о своей прежней жизни, кроме, может быть, своего имени. Что, черт возьми, с вами произошло?",
+								"Вы были на передовой, пытаясь сражаться с инопланетянами. Вы видели, как они вылупляли больше монстров из других людей, и вы знаете, что лучше не бороться со смертью.",
+								"Вы нашли что-то, что-то невероятное. Но ваше открытие было прервано, когда появились монстры и начали забирать людей. Черт побери, звери!",
+								"{имя} защитил вас, когда пришли инопланетяне. Вы не знаете, что с ними случилось, но это было некоторое время назад, и с тех пор вы их не видели. Может, они живы."
 								)
 
 	/*
@@ -122,7 +122,7 @@
 										*/
 
 	var/random_name = pick(random_name(FEMALE), random_name(MALE))
-	var/temp_story = "<b>Your story thus far</b>: " + replacetext(pick(survivor_story), "{name}", "[random_name]")
+	var/temp_story = "<b>Ваша история на данный момент</b>: " + replacetext(pick(survivor_story), "{name}", "[random_name]")	// SS220 EDIT TRANSLATE
 	to_chat(H, temp_story)
 	H.mind.memory += temp_story
 

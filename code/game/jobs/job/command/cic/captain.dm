@@ -16,7 +16,7 @@
 	)
 
 /datum/job/command/commander/generate_entry_message()
-	entry_message_body = "<a href='[generate_wiki_link()]'>You are the Commanding Officer of the [MAIN_SHIP_NAME] as well as the operation.</a> Your goal is to lead the Marines on their mission as well as protect and command the ship and her crew. Your job involves heavy roleplay and requires you to behave like a high-ranking officer and to stay in character at all times. As the Commanding Officer your only superior is High Command itself. You must abide by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_CO_RULES]'>Commanding Officer Code of Conduct</a>. Failure to do so may result in punitive action against you. Godspeed."
+	entry_message_body = "<a href='[generate_wiki_link()]'>Вы являетесь Командующим Офицером [MAIN_SHIP_NAME] и операции.</a> Ваша цель — руководить Морпехами в их миссии, а также защищать и командовать кораблем и его командой. Ваша работа подразумевает интенсивную ролевую игру и требует от вас вести себя как высокопоставленный офицер и всегда оставаться в образе. Как Командующий Офицер, вашим единственным начальником является само Верховное Командование. Вы должны соблюдать <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_CO_RULES]'>Кодекс поведения Командующего Офицера</a>. Невыполнение этого требования может привести к карательным мерам против вас. Удачи."	// SS220 EDIT TRANSLATE
 	return ..()
 
 /datum/job/command/commander/get_whitelist_status(client/player)
@@ -32,7 +32,7 @@
 		return get_desired_status(player.prefs.commander_status, WHITELIST_NORMAL)
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!"), 1.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "ВСЕМ внимание, [H.get_paygrade(0)] [H.real_name] на борту!"), 1.5 SECONDS)	// SS220 EDIT TRANSLATE
 	return ..()
 
 /datum/job/command/commander/generate_entry_conditions(mob/living/M, whitelist_status)

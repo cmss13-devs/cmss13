@@ -374,8 +374,8 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "cF" = (
-/obj/structure/window/framed/almayer,
-/turf/closed/wall/almayer/outer,
+/obj/structure/window/framed/prison,
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station)
 "cI" = (
 /turf/open/floor/corsat/white,
@@ -471,7 +471,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/prison{
+	turf_flags = 16;
+	unacidable = 1;
+	name = "colony wall"
+	},
 /area/adminlevel/ert_station/fax_response_station)
 "dC" = (
 /obj/effect/overlay/palmtree_l,
@@ -791,10 +795,6 @@
 	name = "CLF Responder Outpost"
 	},
 /turf/open/floor/almayer/plating,
-/area/adminlevel/ert_station/fax_response_station)
-"hg" = (
-/obj/structure/window/framed/almayer,
-/turf/open/space/basic,
 /area/adminlevel/ert_station/fax_response_station)
 "hh" = (
 /turf/open/floor/whitered/north,
@@ -3002,6 +3002,9 @@
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_x = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
 /turf/open/floor/cmo,
 /area/adminlevel/ert_station/fax_response_station)
 "BF" = (
@@ -3311,11 +3314,6 @@
 	pixel_x = -26
 	},
 /turf/open/floor/almayer/dark_sterile,
-/area/adminlevel/ert_station/fax_response_station)
-"Ea" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/window/framed/almayer,
-/turf/open/space/basic,
 /area/adminlevel/ert_station/fax_response_station)
 "Ec" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3770,9 +3768,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/fax_response_station)
-"Iw" = (
-/turf/closed/wall/almayer/outer,
-/area/adminlevel/ert_station/fax_response_station/exterior)
 "Ix" = (
 /obj/structure/prop/vehicles{
 	pixel_y = 7;
@@ -4101,7 +4096,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
-/turf/open/floor/prison/bright_clean2,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station)
 "LK" = (
 /obj/structure/machinery/colony_floodlight/street{
@@ -4126,16 +4124,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"Mi" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	icon_state = "almayer_pdoor";
-	id = "Faxes_CMB_Road";
-	name = "\improper Road Blockade";
-	dir = 4
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/space/basic,
-/area/adminlevel/ert_station/fax_response_station/exterior)
 "Mx" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails,
@@ -4332,9 +4320,6 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Oj" = (
 /turf/open/floor/almayer/blue/southeast,
-/area/adminlevel/ert_station/fax_response_station)
-"Oq" = (
-/turf/closed/wall/almayer,
 /area/adminlevel/ert_station/fax_response_station)
 "Os" = (
 /turf/open/floor/darkgreen2/northeast,
@@ -4943,16 +4928,6 @@
 	},
 /turf/open/floor/shiva/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
-"VB" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	icon_state = "almayer_pdoor";
-	id = "Faxes_CMB_Road";
-	name = "\improper Road Blockade";
-	dir = 4
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
-/area/adminlevel/ert_station/fax_response_station/exterior)
 "VE" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -7735,19 +7710,19 @@ qu
 Ry
 wl
 gX
-Iw
-VB
-VB
-VB
-Mi
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
+oP
+cV
+cV
+cV
+cV
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
 gX
 pV
 pV
@@ -7775,19 +7750,19 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
 xz
-Ea
+cF
 Wc
 lR
 aQ
 ts
 dc
 KG
-ls
+mi
 gX
 pV
 pV
@@ -7815,19 +7790,19 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
 LK
-hg
+cF
 yS
 FK
 FK
 FK
 lR
 XQ
-ls
+mi
 gX
 pV
 pV
@@ -7855,19 +7830,19 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
 lH
-hg
+cF
 eb
 FK
 nD
 wr
 aU
 CJ
-ls
+mi
 gX
 pV
 pV
@@ -7895,19 +7870,19 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 hw
 lH
-hg
+cF
 rf
 FK
 FK
 FK
 BA
 xT
-ls
+mi
 gX
 pV
 pV
@@ -7935,19 +7910,19 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
 lH
-ls
-ls
+mi
+mi
 QY
 rV
-ls
+mi
 dv
-ls
-ls
+mi
+mi
 gX
 pV
 pV
@@ -7975,7 +7950,7 @@ zS
 Si
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
@@ -7987,7 +7962,7 @@ CR
 bC
 dv
 Ag
-ls
+mi
 gX
 pV
 pV
@@ -8015,7 +7990,7 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 ra
@@ -8027,7 +8002,7 @@ CR
 XA
 LB
 nu
-ls
+mi
 gX
 pV
 pV
@@ -8055,19 +8030,19 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
 Bo
-ls
-ls
+mi
+mi
 QY
 rV
-ls
+mi
 dv
-ls
-ls
+mi
+mi
 gX
 pV
 pV
@@ -8095,19 +8070,19 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
 lH
-hg
+cF
 us
 TW
 wZ
 Gj
 lk
 vI
-ls
+mi
 gX
 pV
 pV
@@ -8135,19 +8110,19 @@ qu
 Ry
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
 LK
-hg
+cF
 sH
 zy
 hY
 wZ
 AK
 yU
-ls
+mi
 gX
 pV
 pV
@@ -8175,7 +8150,7 @@ qw
 RT
 wl
 gX
-Iw
+oP
 hR
 Xv
 mg
@@ -8184,10 +8159,10 @@ cF
 qP
 Ov
 aA
-Oq
+mi
 Hn
 je
-ls
+mi
 gX
 pV
 pV
@@ -8215,19 +8190,19 @@ wl
 wl
 wl
 gX
-Iw
-VB
-Mi
-Mi
-Mi
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
+oP
+cV
+cV
+cV
+cV
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
 gX
 pV
 pV

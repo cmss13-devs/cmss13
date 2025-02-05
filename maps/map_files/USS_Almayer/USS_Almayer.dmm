@@ -657,6 +657,13 @@
 "abE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
+"abF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/almayer/south,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/captain_mess)
 "abG" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
@@ -1560,6 +1567,10 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/sea_office)
+"adO" = (
+/obj/structure/machinery/power/apc/almayer/south,
+/turf/open/floor/wood/ship,
+/area/almayer/living/numbertwobunks)
 "adP" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/mono,
@@ -1870,6 +1881,9 @@
 	},
 /turf/open/floor/almayer/blue/east,
 /area/almayer/living/basketball)
+"aeJ" = (
+/turf/closed/wall/almayer,
+/area/almayer/engineering/starboard_atmos)
 "aeK" = (
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/starboard_missiles)
@@ -2230,6 +2244,9 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
+"afy" = (
+/turf/open/floor/almayer/orange,
+/area/almayer/engineering/starboard_atmos)
 "afz" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -2329,6 +2346,15 @@
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/cafeteria_officer)
+"afM" = (
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/starboard_atmos)
+"afN" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/engineering/starboard_atmos)
 "afO" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer/plate,
@@ -4174,6 +4200,7 @@
 "akH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/prop/magazine/book/theartofwar,
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer/blue/west,
 /area/almayer/living/bridgebunks)
 "akI" = (
@@ -4563,6 +4590,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/captain_mess)
 "alN" = (
+/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/maint/upper/mess)
 "alO" = (
@@ -6854,7 +6882,7 @@
 "arO" = (
 /obj/structure/machinery/portable_atmospherics/powered/pump,
 /turf/open/floor/almayer/cargo,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "arP" = (
 /obj/structure/sign/safety/hazard{
 	pixel_y = 32
@@ -6867,7 +6895,7 @@
 /area/almayer/command/cic)
 "arQ" = (
 /turf/open/floor/almayer/orange/southwest,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "arR" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -6881,7 +6909,7 @@
 	pixel_y = -25
 	},
 /turf/open/floor/almayer/orange,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "arT" = (
 /obj/structure/target{
 	name = "punching bag"
@@ -6891,7 +6919,7 @@
 "arU" = (
 /obj/structure/machinery/portable_atmospherics/canister/empty/oxygen,
 /turf/open/floor/almayer/cargo,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "arV" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/lifeboat)
@@ -6977,16 +7005,16 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/cargo,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "asi" = (
 /turf/open/floor/almayer/orange/northwest,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "asj" = (
 /turf/open/floor/almayer/orange/north,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "ask" = (
 /turf/open/floor/almayer/orange/northeast,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "asl" = (
 /obj/structure/prop/invuln/lattice_prop{
 	alpha = 150;
@@ -7029,13 +7057,13 @@
 "asp" = (
 /obj/structure/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/open/floor/almayer/cargo,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "asq" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/plate,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "asr" = (
 /obj/structure/bed/chair/comfy/alpha{
 	dir = 8
@@ -7046,14 +7074,14 @@
 "ass" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer/cargo,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "ast" = (
 /obj/structure/surface/table/almayer,
 /obj/item/book/manual/atmospipes{
 	pixel_y = 6
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "asu" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -7070,7 +7098,7 @@
 "asv" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/plate,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "asw" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -9546,10 +9574,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
-"aHM" = (
-/obj/structure/machinery/power/apc/almayer/south,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/intel)
 "aHR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -14053,7 +14077,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "btc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -27062,7 +27086,7 @@
 /area/almayer/living/offices)
 "fIK" = (
 /turf/open/floor/almayer/cargo_arrow,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "fIM" = (
 /obj/effect/landmark/start/marine/tl/bravo,
 /obj/effect/landmark/late_join/bravo,
@@ -34508,7 +34532,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/cargo,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "iVD" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	closeOtherId = "brigmaint_n";
@@ -56271,7 +56295,7 @@
 /area/almayer/living/offices/flight)
 "rYU" = (
 /turf/open/floor/almayer/orange/southeast,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "rZt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -67247,7 +67271,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/almayer/maint/upper/u_a_s)
+/area/almayer/engineering/starboard_atmos)
 "wuT" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -95068,7 +95092,7 @@ hRk
 aGY
 ann
 aKO
-aUm
+adO
 aEW
 amn
 aUo
@@ -96491,7 +96515,7 @@ aRx
 aRx
 aRx
 aSt
-amq
+abF
 aET
 aET
 aET
@@ -111112,7 +111136,7 @@ xLw
 aiG
 sIA
 iKM
-aHM
+aky
 akG
 ake
 vNo
@@ -114128,11 +114152,11 @@ aeC
 puO
 cMx
 qbw
-cMx
+aeJ
 arO
 ash
 arO
-cMx
+aeJ
 sHI
 jao
 qhT
@@ -114331,8 +114355,8 @@ mRI
 cMx
 cMx
 qbw
-vTE
-oVo
+afN
+afM
 asi
 arQ
 btb
@@ -114534,11 +114558,11 @@ wFX
 cMx
 cLd
 qbw
-cMx
+aeJ
 asp
 asj
 arS
-cMx
+aeJ
 sHI
 qsG
 wCe
@@ -114737,7 +114761,7 @@ tvA
 cMx
 qbU
 qbw
-cMx
+aeJ
 asq
 asj
 fIK
@@ -114940,11 +114964,11 @@ wTn
 cMx
 oVo
 qbw
-cMx
+aeJ
 ass
 asj
-gNI
-cMx
+afy
+aeJ
 nWf
 lOn
 acQ
@@ -115143,7 +115167,7 @@ wFX
 cMx
 nDH
 qbw
-cMx
+aeJ
 ast
 ask
 rYU
@@ -115346,11 +115370,11 @@ tvA
 cMx
 oVo
 qbw
-cMx
+aeJ
 asv
 iVz
 arU
-cMx
+aeJ
 nXV
 lOn
 acQ
@@ -115549,11 +115573,11 @@ oxy
 vTE
 qbw
 qbw
-cMx
-cMx
-cMx
-cMx
-cMx
+aeJ
+aeJ
+aeJ
+aeJ
+aeJ
 sHI
 jao
 qhT

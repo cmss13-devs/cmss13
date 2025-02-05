@@ -88,38 +88,54 @@ class HubStorageBackend {
 class IFrameIndexedDbBackend {
   constructor() {
     this.impl = IMPL_IFRAME_INDEXED_DB;
+  }
 
+  async ready() {
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
-    iframe.srcdoc = `<script>const INDEXED_DB_VERSION = 1; const INDEXED_DB_NAME = 'tgui'; const INDEXED_DB_STORE_NAME = 'storage'; const READ_ONLY = 'readonly'; const READ_WRITE = 'readwrite'; const dbPromise = new Promise((resolve, reject) => { const indexedDB = window.indexedDB || window.msIndexedDB; const req = indexedDB.open(INDEXED_DB_NAME, INDEXED_DB_VERSION); req.onupgradeneeded = () => { try { req.result.createObjectStore(INDEXED_DB_STORE_NAME); } catch (err) { reject(new Error('Failed to upgrade IDB: ' + req.error)); } }; req.onsuccess = () => resolve(req.result); req.onerror = () => { reject(new Error('Failed to open IDB: ' + req.error)); }; }); window.addEventListener('message', (messageEvent) => { switch (messageEvent.data.type) { case 'get': get(event.data.key).then((value) => { messageEvent.source.postMessage({key: messageEvent.data.key, value: value}) }); break; case 'set': set(messageEvent.data.key, messageEvent.data.value); break; case 'remove': remove(messageEvent.data.key); break; case 'clear': clear(); break; default: break; } }); const getStore = async (mode) => { return dbPromise.then((db) => db .transaction(INDEXED_DB_STORE_NAME, mode) .objectStore(INDEXED_DB_STORE_NAME)); }; const get = async (key) => { const store = await getStore(READ_ONLY); return new Promise((resolve, reject) => { const req = store.get(key); req.onsuccess = () => { console.log(req.result); resolve(req.result); }; req.onerror = () => reject(req.error); }); }; const set = async (key, value) => { const store = await getStore(READ_WRITE); store.put(value, key); }; const remove = async (key) => { const store = await getStore(READ_WRITE); store.delete(key); }; const clear = async () => { const store = await getStore(READ_WRITE); store.clear(); };</script>`;
+    iframe.src = Byond.storageCdn;
     iframe.id = 'dataframe';
-    const inserted = document.body.appendChild(iframe);
 
-    this.iframeWindow = inserted.contentWindow;
+    const completePromise = new Promise((resolve) => {
+      iframe.onload = () => resolve(this);
+    });
+
+    this.iframeWindow = document.body.appendChild(iframe);
+
+    return completePromise;
   }
 
   async get(key) {
-    this.iframeWindow.postMessage({ type: 'get', key: key });
-    return new Promise((resolve) => {
+    const promise = new Promise((resolve) => {
       window.addEventListener('message', (message) => {
-        console.log(message.data);
         if (message.data.key === key) {
           resolve(message.data.value);
         }
       });
     });
+
+    document
+      .getElementById('dataframe')
+      .contentWindow.postMessage({ type: 'get', key: key }, '*');
+    return promise;
   }
 
   async set(key, value) {
-    this.iframeWindow.postMessage({ type: 'set', key: key, value: value });
+    this.iframeWindow.contentWindow.postMessage(
+      { type: 'set', key: key, value: value },
+      '*',
+    );
   }
 
   async remove(key) {
-    this.iframeWindow.postMessage({ type: 'remove', key: key });
+    this.iframeWindow.contentWindow.postMessage(
+      { type: 'remove', key: key },
+      '*',
+    );
   }
 
   async clear() {
-    this.iframeWindow.postMessage({ type: 'clear' });
+    this.iframeWindow.contentWindow.postMessage({ type: 'clear' }, '*');
   }
 }
 
@@ -184,10 +200,14 @@ class IndexedDbBackend {
  * Web Storage Proxy object, which selects the best backend available
  * depending on the environment.
  */
-class StorageProxy {
-  constructor() {
+export class StorageProxy {
+  constructor(chat) {
     this.backendPromise = (async () => {
-      return new IFrameIndexedDbBackend();
+      if (chat) {
+        const iframe = new IFrameIndexedDbBackend();
+        await iframe.ready();
+        return iframe;
+      }
 
       if (!Byond.TRIDENT) {
         if (!testHubStorage()) {

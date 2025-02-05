@@ -37,7 +37,6 @@
 	start_semiauto = FALSE
 	start_automatic = TRUE
 
-
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,

@@ -1,9 +1,9 @@
 /obj/structure/machinery/fob
 	name = "fob defense"
 	desc = "go away don't look at this."
-	unacidable = TRUE
-	density = TRUE
-	anchored = TRUE
+	unacidable = FALSE
+	density = FALSE
+	anchored = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = NONE
 	active_power_usage = NONE
@@ -24,7 +24,7 @@
 /obj/structure/machinery/fob/proc/transformer_turn_on()
 	SIGNAL_HANDLER
 
-	is_transformer_on = TRUE
+	is_transformer_on = FALSE
 	update_power()
 
 /obj/structure/machinery/fob/proc/transformer_turn_off()
@@ -34,7 +34,7 @@
 
 /obj/structure/machinery/fob/proc/generator_turn_on()
 	SIGNAL_HANDLER
-	backup_generator_on = TRUE
+	backup_generator_on = FALSE
 	update_power()
 
 /obj/structure/machinery/fob/proc/generator_turn_off()
@@ -44,7 +44,7 @@
 
 /obj/structure/machinery/fob/proc/update_power()
 	if(is_inside_lz && (is_transformer_on || backup_generator_on) && linked_to_terminal)
-		is_on = TRUE
+		is_on = FALSE
 	else
 		is_on = FALSE
 	update_icon()
@@ -70,7 +70,7 @@
 					linked_to_terminal = FALSE
 					user.balloon_alert(user, "you unlink the [src.name] from the terminal.")
 				else
-					linked_to_terminal = TRUE
+					linked_to_terminal = FALSE
 					user.balloon_alert(user, "you link the [src.name] to the terminal.")
 				update_icon()
 			else if(!tool.is_terminal_linked)
@@ -80,9 +80,9 @@
 /obj/structure/machinery/fob/power_change()
 	var/area/machine_area = get_area(src)
 	var/area/lz_area = get_area(SSticker.mode.active_lz)
-	is_inside_lz = TRUE //REMOVE, FOR EASIER TESTING ONLY!
+	is_inside_lz = FALSE //REMOVE, FOR EASIER TESTING ONLY!
 	/*if(machine_area == lz_area)
-		is_inside_lz = TRUE
+		is_inside_lz = FALSE
 	else
 		is_inside_lz = FALSE*/
 	update_power()
@@ -101,7 +101,7 @@
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
 	layer = ABOVE_FLY_LAYER
-	linked_to_terminal = TRUE
+	linked_to_terminal = FALSE
 	var/generator_time
 
 
@@ -115,10 +115,6 @@
 		clamp.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 		return
 
-	if(!is_on)
-		user.balloon_alert(user, "the [src.name] has no power!")
-		return
-
 	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
 		var/obj/item/device/multitool/tool = item
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -129,8 +125,12 @@
 				tool.is_terminal_linked = FALSE
 				user.balloon_alert(user, "you unlink the your multitool from the [src.name].")
 			else if(!tool.is_terminal_linked)
-				tool.is_terminal_linked = TRUE
+				tool.is_terminal_linked = FALSE
 				user.balloon_alert(user, "you link your multitool to the [src.name].")
+
+	if(!is_on)
+		user.balloon_alert(user, "the [src.name] has no power!")
+		return
 
 
 
@@ -168,7 +168,7 @@
 	icon_state = "backup_generator"
 	icon = 'icons/obj/structures/machinery/backup_generator.dmi'
 	is_on = FALSE
-	var/has_power_remaining = TRUE
+	var/has_power_remaining = FALSE
 	//how long the generator can power the FOB for
 	var/power_duration = 5 MINUTES
 
@@ -206,7 +206,7 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			user.balloon_alert(user, "you have no idea how to turn this thing on.")
 			return
-		is_on = TRUE
+		is_on = FALSE
 		user.balloon_alert(user, "you activate the [src.name].")
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BACKUP_GENERATOR_ON)
 		addtimer(CALLBACK(src, PROC_REF(deplete_generator)), power_duration)
@@ -245,10 +245,22 @@
 /obj/structure/machinery/fob/sentrygun/proc/get_target()
 	return
 
-/obj/structure/machinery/fob/sentrygun/proc/set_area() //common ancestor
+/obj/structure/machinery/fob/sentrygun/proc/set_area()
 	return
 
-/obj/structure/machinery/fob/sentrygun/proc/fire(atom/A)
+/obj/structure/machinery/fob/sentrygun/proc/fire()
+	return
+
+/obj/structure/machinery/fob/sentrygun/proc/lock_target()
+	return
+
+/obj/structure/machinery/fob/sentrygun/proc/loose_target()
+	return
+
+/obj/structure/machinery/fob/sentrygun/proc/check_visibility()
+	return
+
+/obj/structure/machinery/fob/sentrygun/proc/aim()
 	return
 
 /obj/structure/machinery/fob/sentrygun/start_processing()
@@ -261,6 +273,7 @@
 	.=..()
 	if(!is_on)
 		stop_processing()
+		//return COMMENTED FOR TESTING
 	start_processing()
 	set_area()
 
@@ -275,6 +288,14 @@
 	var/sentry_range = 8
 	var/range_bounds
 	var/datum/beam/laser_beam
+	var/image/target_indication
+	var/lockon = 0
+	var/max_lock = 10
+
+/obj/structure/machinery/fob/sentrygun/plasma/Initialize(mapload, ...)
+	. = ..()
+	target_indication = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
+
 
 
 
@@ -288,6 +309,11 @@
 
 	if(!target && length(targets))
 		get_target()
+
+	if(!target)
+		return
+
+	aim()
 
 	return TRUE
 
@@ -318,31 +344,7 @@
 			targets.Remove(atom)
 			continue*/
 
-		var/list/turf/path = get_line(src, atom, include_start_atom = FALSE)
-		if(!length(path) || get_dist(src, atom) > sentry_range)
-			targets.Remove(atom)
-			continue
-
-		var/blocked = FALSE
-		for(var/turf/T in path)
-			if(T.density || T.opacity)
-				blocked = TRUE
-				break
-
-			for(var/obj/structure/S in T)
-				if(S.opacity)
-					blocked = TRUE
-					break
-
-			for(var/obj/vehicle/multitile/V in T)
-				blocked = TRUE
-				break
-
-			for(var/obj/effect/particle_effect/smoke/S in T)
-				blocked = TRUE
-				break
-
-		if(blocked)
+		if(!check_visibility(atom))
 			targets.Remove(atom)
 			continue
 
@@ -359,20 +361,64 @@
 	else if(length(unconscious_targets))
 		target = pick(unconscious_targets)
 
-	if(!target) //No targets, don't bother firing
+	if(!target)
 		return
 
-	fire(target)
+	lock_target()
+
+/obj/structure/machinery/fob/sentrygun/plasma/check_visibility(atom)
+	var/list/turf/path = get_line(src, atom, include_start_atom = FALSE)
+	var/visible = TRUE
+	if(!length(path) || get_dist(src, atom) > sentry_range)
+		visible = FALSE
 
 
-/obj/structure/machinery/fob/sentrygun/plasma/fire(atom/A)
+	for(var/turf/T in path)
+		if(T.density || T.opacity)
+			visible = FALSE
+			break
 
-	laser_beam = target.beam(src, "laser_beam_spotter", 'icons/effects/beam.dmi', ( 200 SECONDS), beam_type = /obj/effect/ebeam/laser)
+		for(var/obj/structure/S in T)
+			if(S.opacity)
+				visible = FALSE
+				break
 
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
-	I.pixel_x = -target.pixel_x + target.base_pixel_x
-	I.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
-	target.overlays += I
+		for(var/obj/vehicle/multitile/V in T)
+			visible = FALSE
+			break
+
+		for(var/obj/effect/particle_effect/smoke/S in T)
+			visible = FALSE
+			break
+	return visible
+
+
+/obj/structure/machinery/fob/sentrygun/plasma/lock_target()
+	laser_beam = target.beam(src, "laser_beam_spotter", 'icons/effects/beam.dmi', BEAM_INFINITE_DURATION, beam_type = /obj/effect/ebeam/laser)
+	target_indication.pixel_x = -target.pixel_x + target.base_pixel_x
+	target_indication.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
+	target.overlays += target_indication
+
+/obj/structure/machinery/fob/sentrygun/plasma/loose_target()
+	lockon = 0
+	qdel(laser_beam)
+	target.overlays -= target_indication
+	target = null
+
+/obj/structure/machinery/fob/sentrygun/plasma/aim()
+	if(check_visibility(target))
+		lockon = min(max_lock, lockon +2)
+	else
+		lockon = max(0, lockon -1)
+
+	if(lockon == max_lock)
+		fire()
+		return
+
+	if(lockon == 0)
+		loose_target()
+
+
 
 
 

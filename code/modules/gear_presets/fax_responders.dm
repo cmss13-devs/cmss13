@@ -63,6 +63,8 @@
 			new_name = target_prefs.fax_name_press
 		if(JOB_FAX_RESPONDER_TWE)
 			new_name = target_prefs.fax_name_twe
+		if(JOB_FAX_RESPONDER_PIZZA)
+			new_name = target_prefs.fax_name_pizza
 
 	return new_name
 
@@ -262,4 +264,22 @@
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
 
+	..()
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/fax_responder/pizza
+	name = "Fax Responder - Pizza Galaxy"
+	assignment = JOB_FAX_RESPONDER_PIZZA
+	rank = JOB_FAX_RESPONDER_PIZZA
+	faction_group = list(FACTION_FAX, FACTION_PIZZA)
+	idtype = /obj/item/card/id/pizza
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/fax_responder/pizza/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pizza, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft/red, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/notepad/green(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
 	..()

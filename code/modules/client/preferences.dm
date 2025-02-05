@@ -137,6 +137,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/fax_name_cmb
 	var/fax_name_press
 	var/fax_name_clf
+	var/fax_name_pizza
 
 	//character preferences
 	var/real_name //our character's name
@@ -664,6 +665,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>Colonial Marshal Bureau:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
 				dat += "<b>Free Press:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
 				dat += "<b>CLF Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
+				dat += "<b>Pizza Galaxy:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=pizza'><b>[fax_name_pizza]</b></a><br>"
 
 	dat += "</div></body>"
 
@@ -1401,6 +1403,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 								fax_name_press = new_name
 							if("clf")
 								fax_name_clf = new_name
+							if("pizza")
+								fax_name_pizza = new_name
 
 				if("xeno_prefix")
 					if(xeno_name_ban)

@@ -557,6 +557,10 @@
 	name = "Press Fax Responder late join"
 	job = JOB_FAX_RESPONDER_PRESS
 
+/obj/effect/landmark/late_join/responder/pizza
+	name = "Pizza Galaxy Responder late join"
+	job = JOB_FAX_RESPONDER_PIZZA
+
 //****************************************** STATIC COMMS ************************************************//
 /obj/effect/landmark/static_comms
 	name = "static comms"

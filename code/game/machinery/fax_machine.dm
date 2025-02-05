@@ -12,8 +12,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 #define FAX_DEPARTMENT_TWE "Three World Empire"
 #define FAX_DEPARTMENT_UPP "Union of Progress Peoples"
 #define FAX_DEPARTMENT_CLF "Colonial Liberation Front"
+#define FAX_DEPARTMENT_PIZZA "Pizza Galaxy"
 #define FAX_DEPARTMENT_SPECIFIC_CODE "Specific Machine Code"//Used to send to a single specific machine.
-#define FAX_HIGHCOM_DEPARTMENTS list(FAX_DEPARTMENT_WY, FAX_DEPARTMENT_HC, FAX_DEPARTMENT_CMB, FAX_DEPARTMENT_PROVOST, FAX_DEPARTMENT_PRESS, FAX_DEPARTMENT_TWE, FAX_DEPARTMENT_UPP, FAX_DEPARTMENT_CLF)
+#define FAX_HIGHCOM_DEPARTMENTS list(FAX_DEPARTMENT_WY, FAX_DEPARTMENT_HC, FAX_DEPARTMENT_CMB, FAX_DEPARTMENT_PROVOST, FAX_DEPARTMENT_PRESS, FAX_DEPARTMENT_TWE, FAX_DEPARTMENT_UPP, FAX_DEPARTMENT_CLF, FAX_DEPARTMENT_PIZZA)
 
 #define FAX_DEPARTMENT_ALMAYER "USS Almayer"
 #define FAX_DEPARTMENT_ALMAYER_COMMAND "USS Almayer Command"
@@ -34,7 +35,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 #define FAX_NET_CLF "Peridia Encrypted Network"
 #define FAX_NET_CLF_HC "Peridia Quantum Relay"
 #define FAX_NET_PRESS_HC "Free Press Quantum Relay"
-#define FAX_HC_NETWORKS list(FAX_NET_USCM_HC, FAX_NET_WY_HC, FAX_NET_CMB, FAX_NET_TWE_HC, FAX_NET_UPP_HC, FAX_NET_CLF_HC, FAX_NET_PRESS_HC)
+#define FAX_NET_PIZZA "Pizza Galaxy Public Network"
+#define FAX_HC_NETWORKS list(FAX_NET_USCM_HC, FAX_NET_WY_HC, FAX_NET_CMB, FAX_NET_TWE_HC, FAX_NET_UPP_HC, FAX_NET_CLF_HC, FAX_NET_PRESS_HC, FAX_NET_PIZZA)
 
 /obj/structure/machinery/faxmachine // why not fax_machine?
 	name = "\improper General Purpose Fax Machine"
@@ -255,6 +257,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		GLOB.fax_network.all_departments[FAX_DEPARTMENT_UPP] = list()
 	if(!(FAX_DEPARTMENT_CLF in GLOB.fax_network.all_departments))
 		GLOB.fax_network.all_departments[FAX_DEPARTMENT_CLF] = list()
+	if(!(FAX_DEPARTMENT_PIZZA in GLOB.fax_network.all_departments))
+		GLOB.fax_network.all_departments[FAX_DEPARTMENT_PIZZA] = list()
 	if(!("[department]" in GLOB.fax_network.all_departments)) //Initialize departments. This will work with multiple fax machines.
 		GLOB.fax_network.all_departments[department] = list()
 		GLOB.fax_network.all_departments[department][identity_name] = src
@@ -552,6 +556,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if(FAX_DEPARTMENT_CLF)
 			GLOB.CLFFaxes.Add("<a href='byond://?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+		if(FAX_DEPARTMENT_PIZZA)
+			GLOB.PizzaFaxes.Add("<a href='byond://?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		else
 			GLOB.GeneralFaxes.Add("<a href='byond://?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
@@ -780,6 +787,12 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	target_department = FAX_DEPARTMENT_GENERAL_PUBLIC
 	can_send_priority = TRUE
 
+/obj/structure/machinery/faxmachine/pizza
+	department = FAX_DEPARTMENT_PIZZA
+	network = FAX_NET_PIZZA
+	target_department = FAX_DEPARTMENT_GENERAL_PUBLIC
+	can_send_priority = TRUE
+
 ///The deployed fax machine backpack
 /obj/structure/machinery/faxmachine/backpack
 	name = "\improper Portable Press Fax Machine"
@@ -913,6 +926,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			target_job = JOB_FAX_RESPONDER_UPP
 		if(FAX_DEPARTMENT_WY)
 			target_job = JOB_FAX_RESPONDER_WY
+		if(FAX_DEPARTMENT_PIZZA)
+			target_job = JOB_FAX_RESPONDER_PIZZA
 
 	for(var/mob/living/carbon/human/responder in SSticker.mode.fax_responders)
 		if(!(responder.stat) && (responder.job == target_job))

@@ -315,6 +315,7 @@
 	S["fax_name_cmb"] >> fax_name_cmb
 	S["fax_name_press"] >> fax_name_press
 	S["fax_name_clf"] >> fax_name_clf
+	S["fax_name_pizza"] >> fax_name_pizza
 
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
@@ -412,6 +413,7 @@
 	fax_name_cmb = fax_name_cmb ? sanitize_text(fax_name_cmb, initial(fax_name_cmb)) : generate_name(FACTION_MARSHAL)
 	fax_name_press = fax_name_press ? sanitize_text(fax_name_press, initial(fax_name_press)) : generate_name(FACTION_COLONIST)
 	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
+	fax_name_pizza = fax_name_pizza ? sanitize_text(fax_name_pizza, initial(fax_name_pizza)) : generate_name(FACTION_PIZZA)
 
 	key_bindings = sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
@@ -543,6 +545,7 @@
 	S["fax_name_cmb"] << fax_name_cmb
 	S["fax_name_press"] << fax_name_press
 	S["fax_name_clf"] << fax_name_clf
+	S["fax_name_pizza"] << fax_name_pizza
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["show_permission_errors"] << show_permission_errors

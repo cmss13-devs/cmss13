@@ -105,6 +105,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/structure/filingcabinet/documentation/highcom/clf
 	available_categories = list(PAPER_CATEGORY_CLF_HC)
 
+/obj/structure/filingcabinet/documentation/highcom/pizza
+	available_categories = list(PAPER_CATEGORY_PIZZA)
 
 //########################################
 //########################################

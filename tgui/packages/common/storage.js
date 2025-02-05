@@ -9,6 +9,7 @@
 export const IMPL_MEMORY = 0;
 export const IMPL_HUB_STORAGE = 1;
 export const IMPL_INDEXED_DB = 2;
+export const IMPL_IFRAME_INDEXED_DB = 3;
 
 const INDEXED_DB_VERSION = 1;
 const INDEXED_DB_NAME = 'cm-tgui';
@@ -84,6 +85,44 @@ class HubStorageBackend {
   }
 }
 
+class IFrameIndexedDbBackend {
+  constructor() {
+    this.impl = IMPL_IFRAME_INDEXED_DB;
+
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.srcdoc = `<script>const INDEXED_DB_VERSION = 1; const INDEXED_DB_NAME = 'tgui'; const INDEXED_DB_STORE_NAME = 'storage'; const READ_ONLY = 'readonly'; const READ_WRITE = 'readwrite'; const dbPromise = new Promise((resolve, reject) => { const indexedDB = window.indexedDB || window.msIndexedDB; const req = indexedDB.open(INDEXED_DB_NAME, INDEXED_DB_VERSION); req.onupgradeneeded = () => { try { req.result.createObjectStore(INDEXED_DB_STORE_NAME); } catch (err) { reject(new Error('Failed to upgrade IDB: ' + req.error)); } }; req.onsuccess = () => resolve(req.result); req.onerror = () => { reject(new Error('Failed to open IDB: ' + req.error)); }; }); window.addEventListener('message', (messageEvent) => { switch (messageEvent.data.type) { case 'get': get(event.data.key).then((value) => { messageEvent.source.postMessage({key: messageEvent.data.key, value: value}) }); break; case 'set': set(messageEvent.data.key, messageEvent.data.value); break; case 'remove': remove(messageEvent.data.key); break; case 'clear': clear(); break; default: break; } }); const getStore = async (mode) => { return dbPromise.then((db) => db .transaction(INDEXED_DB_STORE_NAME, mode) .objectStore(INDEXED_DB_STORE_NAME)); }; const get = async (key) => { const store = await getStore(READ_ONLY); return new Promise((resolve, reject) => { const req = store.get(key); req.onsuccess = () => { console.log(req.result); resolve(req.result); }; req.onerror = () => reject(req.error); }); }; const set = async (key, value) => { const store = await getStore(READ_WRITE); store.put(value, key); }; const remove = async (key) => { const store = await getStore(READ_WRITE); store.delete(key); }; const clear = async () => { const store = await getStore(READ_WRITE); store.clear(); };</script>`;
+    iframe.id = 'dataframe';
+    const inserted = document.body.appendChild(iframe);
+
+    this.iframeWindow = inserted.contentWindow;
+  }
+
+  async get(key) {
+    this.iframeWindow.postMessage({ type: 'get', key: key });
+    return new Promise((resolve) => {
+      window.addEventListener('message', (message) => {
+        console.log(message.data);
+        if (message.data.key === key) {
+          resolve(message.data.value);
+        }
+      });
+    });
+  }
+
+  async set(key, value) {
+    this.iframeWindow.postMessage({ type: 'set', key: key, value: value });
+  }
+
+  async remove(key) {
+    this.iframeWindow.postMessage({ type: 'remove', key: key });
+  }
+
+  async clear() {
+    this.iframeWindow.postMessage({ type: 'clear' });
+  }
+}
+
 class IndexedDbBackend {
   // TODO: Remove with 516
   constructor() {
@@ -148,6 +187,8 @@ class IndexedDbBackend {
 class StorageProxy {
   constructor() {
     this.backendPromise = (async () => {
+      return new IFrameIndexedDbBackend();
+
       if (!Byond.TRIDENT) {
         if (!testHubStorage()) {
           return new Promise((resolve) => {

@@ -94,13 +94,12 @@ class IFrameIndexedDbBackend {
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
     iframe.src = Byond.storageCdn;
-    iframe.id = 'dataframe';
 
     const completePromise = new Promise((resolve) => {
       iframe.onload = () => resolve(this);
     });
 
-    this.iframeWindow = document.body.appendChild(iframe);
+    this.iframeWindow = document.body.appendChild(iframe).contentWindow;
 
     return completePromise;
   }
@@ -114,28 +113,20 @@ class IFrameIndexedDbBackend {
       });
     });
 
-    document
-      .getElementById('dataframe')
-      .contentWindow.postMessage({ type: 'get', key: key }, '*');
+    this.iframeWindow.postMessage({ type: 'get', key: key }, '*');
     return promise;
   }
 
   async set(key, value) {
-    this.iframeWindow.contentWindow.postMessage(
-      { type: 'set', key: key, value: value },
-      '*',
-    );
+    this.iframeWindow.postMessage({ type: 'set', key: key, value: value }, '*');
   }
 
   async remove(key) {
-    this.iframeWindow.contentWindow.postMessage(
-      { type: 'remove', key: key },
-      '*',
-    );
+    this.iframeWindow.postMessage({ type: 'remove', key: key }, '*');
   }
 
   async clear() {
-    this.iframeWindow.contentWindow.postMessage({ type: 'clear' }, '*');
+    this.iframeWindow.postMessage({ type: 'clear' }, '*');
   }
 }
 

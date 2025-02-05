@@ -78,6 +78,12 @@
 /obj/item/ammo_casing,
 /turf/open/floor/damaged5,
 /area/lv624/lazarus/main_hall)
+"ao" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/damaged5,
+/area/lv624/lazarus/main_hall)
 "ap" = (
 /obj/item/weapon/twohanded/fireaxe,
 /obj/item/ammo_casing,
@@ -233,11 +239,17 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/damaged2,
 /area/lv624/lazarus/main_hall)
 "aN" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/damaged5,
 /area/lv624/lazarus/main_hall)
 "aO" = (
@@ -254,6 +266,9 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/damaged3,
 /area/lv624/lazarus/main_hall)
 "aR" = (
@@ -261,6 +276,9 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/damaged4,
 /area/lv624/lazarus/main_hall)
 "aS" = (
@@ -268,6 +286,9 @@
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/item/frame/table,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "aT" = (
@@ -280,6 +301,9 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/damaged4,
 /area/lv624/lazarus/main_hall)
 "aV" = (
@@ -293,8 +317,10 @@
 "aX" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/floorscorched1,
 /area/lv624/lazarus/main_hall)
 "aY" = (
@@ -317,6 +343,9 @@
 /area/lv624/lazarus/main_hall)
 "ba" = (
 /obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/floorscorched2,
@@ -371,6 +400,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/damaged5,
 /area/lv624/lazarus/main_hall)
 "bj" = (
@@ -391,12 +421,14 @@
 /turf/open/floor/floorscorched2,
 /area/lv624/lazarus/main_hall)
 "bn" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /turf/closed/wall/mineral/gold,
 /area/lv624/lazarus/main_hall)
 "bo" = (
 /obj/item/stack/barbed_wire,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/damaged2,
 /area/lv624/lazarus/main_hall)
 "bp" = (
@@ -458,6 +490,9 @@
 /turf/open/floor/damaged5,
 /area/lv624/lazarus/main_hall)
 "bx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/wall_thermite,
 /area/lv624/lazarus/main_hall)
 "by" = (
@@ -484,16 +519,21 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/open/floor/floorscorched1,
 /area/lv624/lazarus/main_hall)
 "bC" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/limb/hand/l_hand,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/floorscorched1,
 /area/lv624/lazarus/main_hall)
 "bD" = (
@@ -502,6 +542,9 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
 "bE" = (
@@ -511,16 +554,25 @@
 	flipped = 1
 	},
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "bF" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/floorscorched1,
 /area/lv624/lazarus/main_hall)
 "bG" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/floorscorched2,
 /area/lv624/lazarus/main_hall)
 "bH" = (
@@ -638,6 +690,12 @@
 /obj/item/ammo_casing,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
+"bY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "zt" = (
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
@@ -683,7 +741,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/chapel)
 "He" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/main_hall)
 "Hf" = (
@@ -733,6 +791,9 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "IY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/whiteyellowcorner/west,
 /area/lv624/lazarus/main_hall)
 "Jf" = (
@@ -831,7 +892,7 @@ OK
 OK
 HI
 zt
-zt
+bY
 aa
 ac
 zt
@@ -1088,7 +1149,7 @@ DY
 Ir
 ac
 by
-aa
+ao
 Ii
 Lq
 OK

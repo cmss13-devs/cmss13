@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added multifaction support to crew monitors"
+  - bugfix: "cl not showing up on crew manifest"
+  - rscadd: "Giving Survivors/Other factions with IFF will let you track them."

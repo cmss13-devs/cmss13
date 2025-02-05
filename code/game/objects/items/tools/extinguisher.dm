@@ -77,14 +77,17 @@
 
 /obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
-		return FALSE
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return ..()
 
 /obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
 	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(user,target) <= 1)
-		var/obj/o = target
-		o.reagents.trans_to(src, 50)
+		var/obj/object = target
+		if(object.reagents.contains_harmful_substances())
+			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))
+			return
+		object.reagents.trans_to(src, 50)
 		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
 		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return

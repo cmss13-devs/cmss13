@@ -25,6 +25,10 @@
 	icon_state = "stan_inner_w_1"
 	},
 /area/fiorina/station/clf_ship)
+"ag" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
 "ai" = (
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/park)
@@ -1875,8 +1879,8 @@ yv
 RR
 Tg
 Rk
-ZI
-ZI
+ag
+NS
 ZI
 ZI
 ZI

@@ -3098,6 +3098,7 @@
 /turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
 /area/lv759/indoors/weyyu_office/floor)
 "Cc" = (
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/north_street)
 "Cf" = (

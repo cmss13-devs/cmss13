@@ -87,7 +87,7 @@
 	icon_state = "S"
 	},
 /turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "av" = (
 /obj/structure/machinery/door/poddoor/almayer/closed,
 /turf/open/floor/plating/platingdmg3/west,
@@ -351,7 +351,7 @@
 /area/bigredv2/caves/mining)
 "fl" = (
 /turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "fA" = (
 /obj/effect/decal/hefa_cult_decals/d32,
 /obj/effect/decal/cleanable/dirt,
@@ -386,7 +386,7 @@
 "fT" = (
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "fW" = (
 /obj/structure/girder,
 /turf/open/floor/plating/platingdmg3/west,
@@ -1345,7 +1345,7 @@
 "uq" = (
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "uy" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
@@ -1367,7 +1367,7 @@
 	dir = 1
 	},
 /turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "vg" = (
 /obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor/plating/platingdmg3/west,
@@ -1745,7 +1745,7 @@
 	icon_state = "S"
 	},
 /turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "AR" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -1;

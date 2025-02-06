@@ -226,5 +226,6 @@
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
 	requires_power = FALSE
-	base_lighting_alpha = 95
+	base_lighting_alpha = 195
+	base_lighting_color =  "#ffc49c"
 	flags_area = AREA_YAUTJA_GROUNDS

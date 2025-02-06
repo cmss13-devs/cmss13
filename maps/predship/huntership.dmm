@@ -5215,7 +5215,7 @@
 "qo" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/device/flashlight/lantern/yaujta/on{
-	pixel_x = 6;
+	pixel_x = 2;
 	pixel_y = 14
 	},
 /turf/open/floor/predship/hull/non_weedable_hull,

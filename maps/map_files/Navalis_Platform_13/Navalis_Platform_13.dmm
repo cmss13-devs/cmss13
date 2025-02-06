@@ -10,20 +10,20 @@
 "aac" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/indoors/industrial/power)
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/area/navalis/oob/water)
 "aad" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/indoors/industrial/power)
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/area/navalis/oob/water)
 "aae" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/indoors/industrial/power)
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/area/navalis/oob/water)
 "aaf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/orangeline,
@@ -36,8 +36,8 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/indoors/industrial/power)
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/area/navalis/oob/water)
 "aai" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/squares,
@@ -2015,6 +2015,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/plate,
 /area/space)
+"afl" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
 "afm" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/gm/river/no_overlay/ocean,
@@ -2827,6 +2831,15 @@
 /obj/effect/hybrisa/misc/fake/pipes/pipe1,
 /turf/open/floor/corsat,
 /area/space)
+"ahs" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/suit/storage/hazardvest{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/storage/hazardvest/blue,
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
 "aht" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -4146,6 +4159,14 @@
 /obj/effect/abstract/ripple/shadow,
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/navalis/oob/water/far)
+"akN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/head/hardhat/white{
+	pixel_y = -3;
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/power)
 "akO" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -4194,6 +4215,13 @@
 "akR" = (
 /turf/open/floor/plating/catwalk/rusted,
 /area/space)
+"akS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -22
+	},
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
 "akT" = (
 /turf/open/floor/plating,
 /area/space)
@@ -4234,6 +4262,14 @@
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/oob/water/far)
+"akX" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/floor/almayer/blackfull/west,
+/area/navalis/outdoors/landing_zone_2)
+"akY" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/floor/almayer/blackfull/west,
+/area/navalis/outdoors/landing_zone_2)
 "akZ" = (
 /obj/structure/platform/metal/strata{
 	layer = 2.5
@@ -4824,11 +4860,6 @@
 /area/navalis/indoors/industrial/refinery)
 "amG" = (
 /turf/closed/wall/hybrisa/colony/engineering,
-/area/navalis/indoors/industrial/refinery)
-"amH" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean,
 /area/navalis/indoors/industrial/refinery)
 "amI" = (
 /turf/open/floor/prison/darkyellowfull2,
@@ -6391,6 +6422,12 @@
 "asm" = (
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/med_sci/chemical_store)
+"asn" = (
+/obj/structure/tunnel/maint_tunnel{
+	pixel_y = 6
+	},
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/refinery)
 "aso" = (
 /turf/open/floor/plating,
 /area/navalis/indoors/command/maintenance_starboard)
@@ -6419,6 +6456,11 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
 	layer = 5
+	},
+/obj/structure/barricade/wooden{
+	dir = 4;
+	health = 600;
+	name = "reinforced wooden barricade"
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/command/maintenance_starboard)
@@ -6537,6 +6579,7 @@
 /area/navalis/indoors/command/tertiary_comms)
 "asP" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/navalis/indoors/command/starboard_hallway)
 "asQ" = (
@@ -7743,14 +7786,14 @@
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/navalis/indoors/residential/port)
 "axr" = (
+/obj/structure/bed/bedroll{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/command/conferance)
 "axs" = (
 /turf/open/floor/prison/green/west,
 /area/navalis/indoors/command/port_hallway)
-"axt" = (
-/turf/closed/wall/hybrisa/colony/office,
-/area/navalis/indoors/command/cent_com)
 "axu" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
 	dir = 1
@@ -7884,7 +7927,7 @@
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/port_hallway)
 "axR" = (
-/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/window/framed/hybrisa/colony/office/reinforced,
 /turf/open/floor/plating,
 /area/navalis/indoors/command/cent_com)
 "axS" = (
@@ -7913,6 +7956,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/cent_com)
 "axZ" = (
@@ -8053,7 +8097,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/port_hallway)
 "ayt" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/largecrate/empty/case/double{
+	layer = 2.9
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/port_hallway)
 "ayu" = (
@@ -8143,7 +8189,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "ayF" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -8165,8 +8211,8 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/indoors/industrial/refinery)
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/area/navalis/oob/water)
 "ayH" = (
 /obj/structure/monorail{
 	dir = 8;
@@ -8182,7 +8228,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayI" = (
 /obj/structure/monorail{
@@ -8234,7 +8280,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayM" = (
 /obj/structure/monorail{
@@ -8253,7 +8299,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayN" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -8281,7 +8327,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayP" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -8291,7 +8337,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
@@ -8331,7 +8377,7 @@
 /obj/effect/decal/hybrisa/warningstripes_angled{
 	pixel_y = -2
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayU" = (
 /obj/structure/blocker/forcefield/all{
@@ -8369,7 +8415,7 @@
 /obj/effect/decal/hybrisa/warningstripes_angled{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayZ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -8381,7 +8427,7 @@
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/indoors/industrial/refinery)
+/area/navalis/oob/water)
 "aza" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "testr";
@@ -8454,7 +8500,7 @@
 	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/indoors/industrial/refinery)
+/area/navalis/oob/water)
 "azh" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -8570,7 +8616,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "azr" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -8594,7 +8640,7 @@
 /obj/structure/platform/metal/almayer/east{
 	pixel_x = 4
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "azt" = (
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
@@ -8609,7 +8655,7 @@
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "azv" = (
 /obj/structure/monorail{
@@ -8627,6 +8673,16 @@
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
+"azw" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/area/navalis/outdoors/exterior_xeno_only/lz2)
 "azx" = (
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
@@ -8721,7 +8777,7 @@
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/indoors/industrial/refinery)
+/area/navalis/oob/water)
 "azD" = (
 /obj/structure/prop/oilrig/support_beam/brown,
 /turf/open/gm/river/no_overlay/ocean,
@@ -9019,6 +9075,15 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aAh" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/area/navalis/outdoors/exterior_xeno_only/lz2)
 "aAi" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata,
@@ -9337,6 +9402,14 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aAP" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/floor/almayer/blackfull/west,
+/area/navalis/outdoors/landing_zone_2)
+"aAQ" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/floor/almayer/blackfull/west,
+/area/navalis/outdoors/landing_zone_2)
 "aAR" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/blocker/forcefield/all{
@@ -9490,6 +9563,19 @@
 /obj/structure/platform/metal/strata/east,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
+"aBj" = (
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0;
+	dir = 8
+	},
+/obj/structure/tunnel,
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/indoors/xeno_growth)
 "aBk" = (
 /obj/effect/abstract/ripple/shadow,
 /turf/open/floor/prison/ramptop/east,
@@ -9540,6 +9626,12 @@
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
+"aBq" = (
+/obj/structure/tunnel/maint_tunnel{
+	pixel_y = 6
+	},
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/mining)
 "aBr" = (
 /obj/structure/prop/oilrig/support_beam/brown{
 	layer = 1.1
@@ -9628,7 +9720,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aBB" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -9678,7 +9770,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aBH" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -9838,6 +9930,38 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
+"aBY" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/floor/plating/kutjevo,
+/area/navalis/outdoors/landing_zone_1)
+"aBZ" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	locked = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/navalis/indoors/command/maintenance_starboard)
+"aCa" = (
+/obj/structure/tunnel,
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/indoors/residential/accessway)
+"aCb" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/almayer/greenfull2,
+/area/navalis/indoors/residential/landing_pad)
+"aCc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/reagent_dispensers/watertank{
+	layer = 2.9
+	},
+/turf/open/floor/prison/green/east,
+/area/navalis/indoors/command/starboard_hallway)
 "aCd" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -9847,6 +9971,49 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
+"aCe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/navalis/indoors/command/starboard_hallway)
+"aCf" = (
+/obj/structure/tunnel,
+/turf/open/floor/prison/greenfull/east,
+/area/navalis/indoors/residential/landing_pad)
+"aCg" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/turf/open/floor/prison/green/west,
+/area/navalis/indoors/command/starboard_hallway)
+"aCh" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 18;
+	layer = 4.2
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/command/tertiary_comms)
+"aCi" = (
+/obj/item/stack/sheet/wood{
+	layer = 2.7;
+	pixel_y = 8
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/navalis/indoors/command/starboard_hallway)
+"aCj" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/almayer/greenfull2,
+/area/navalis/indoors/residential/landing_pad)
 "aCk" = (
 /obj/structure/monorail{
 	dir = 6;
@@ -9861,6 +10028,19 @@
 /obj/effect/abstract/ripple/shadow,
 /turf/open/floor/prison/ramptop/north,
 /area/navalis/oob/water/far)
+"aCm" = (
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/outdoors/landing_zone_1)
+"aCn" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/command/tertiary_comms)
+"aCo" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/corsat/marked,
+/area/navalis/indoors/command/aft_hallway)
 "aCp" = (
 /obj/structure/monorail{
 	dir = 5;
@@ -9879,7 +10059,7 @@
 	pixel_y = -2
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aCq" = (
 /obj/structure/monorail{
@@ -9900,7 +10080,7 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aCr" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
@@ -9917,6 +10097,39 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
+"aCt" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 12;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors/command/aft_hallway)
+"aCu" = (
+/obj/structure/tunnel,
+/turf/open/auto_turf/snow/brown_base/layer0{
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
+	name = "seabed"
+	},
+/area/navalis/indoors/xeno_growth/residential)
+"aCv" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/area/navalis/outdoors/exterior_xeno_only/lz1)
 "aCw" = (
 /obj/effect/alien/resin/sticky,
 /turf/open/auto_turf/snow/brown_base/layer0{
@@ -9927,9 +10140,72 @@
 "aCx" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/indoors/logistic/primary_storage)
+"aCy" = (
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	layer = 2.7
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/navalis/indoors/command/aft_hallway)
+"aCz" = (
+/obj/item/stack/sheet/wood{
+	pixel_x = -10;
+	pixel_y = -4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/navalis/indoors/command/aft_hallway)
+"aCA" = (
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	layer = 2.7
+	},
+/turf/open/floor/prison/green/southwest,
+/area/navalis/indoors/command/aft_hallway)
+"aCB" = (
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/turf/open/floor/prison/green,
+/area/navalis/indoors/command/starboard_hallway)
+"aCC" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/largecrate/empty/case/double{
+	layer = 2.9
+	},
+/turf/open/floor/corsat/marked,
+/area/navalis/indoors/command/aft_hallway)
+"aCD" = (
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/turf/open/floor/prison/green/southeast,
+/area/navalis/indoors/command/port_hallway)
 "aCE" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/space)
+"aCF" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 23;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/navalis/indoors/command/port_hallway)
 "aCG" = (
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
@@ -9942,15 +10218,47 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aCH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/navalis/indoors/command/conferance)
+"aCI" = (
+/obj/item/trash/tray,
+/turf/open/floor/hybrisa/wood/greywood,
+/area/navalis/indoors/command/conferance)
+"aCJ" = (
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/item/trash/hotdog{
+	pixel_y = -10;
+	pixel_x = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/navalis/indoors/command/conferance)
 "aCK" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/indoors/logistic/workshop)
+"aCL" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/indoors/command/office)
 "aCM" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/indoors/command/aft_hallway)
 "aCN" = (
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/indoors/command/server_room)
+"aCO" = (
+/obj/structure/bed/chair/comfy/hybrisa/blue{
+	pixel_y = -1
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/navalis/indoors/command/conferance)
 "aCP" = (
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/exterior/med_ext)
@@ -9958,6 +10266,14 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior/med_ext)
+"aCR" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/item/trash/sosjerky{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/navalis/indoors/command/conferance)
 "aCS" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/catwalk/rusted,
@@ -9974,7 +10290,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aCU" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
@@ -9991,12 +10307,67 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
+"aCV" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 23;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/navalis/indoors/command/port_hallway)
+"aCW" = (
+/obj/item/stack/sheet/wood{
+	layer = 2.7;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/green/southwest,
+/area/navalis/indoors/command/port_hallway)
+"aCX" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 12;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/barricade/wooden{
+	dir = 4;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/bed/chair/wood/normal{
+	layer = 4
+	},
+/turf/open/floor/prison/green/northeast,
+/area/navalis/indoors/command/port_hallway)
+"aCY" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/navalis/indoors/command/port_hallway)
 "aCZ" = (
 /obj/effect/abstract/ripple/shadow,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
+"aDa" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 12;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/bed/chair/office/dark{
+	pixel_y = 5;
+	pixel_x = 2
+	},
+/turf/open/floor/prison/green/northwest,
+/area/navalis/indoors/command/port_hallway)
 "aDb" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
@@ -10013,11 +10384,26 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
+"aDc" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 12;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/turf/open/floor/prison/green/northeast,
+/area/navalis/indoors/command/port_hallway)
 "aDd" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/indoors/command/bathroom)
+"aDe" = (
+/obj/structure/largecrate/empty{
+	layer = 2.9
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors/command/port_hallway)
 "aDf" = (
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
@@ -10031,6 +10417,16 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aDg" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/barricade/wooden{
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/turf/open/floor/corsat/marked,
+/area/navalis/indoors/command/port_hallway)
 "aDi" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/monorail{
@@ -10157,7 +10553,7 @@
 	pixel_x = 4
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aDN" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -10321,7 +10717,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aFg" = (
 /obj/structure/monorail{
@@ -10331,7 +10727,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aFh" = (
 /obj/structure/platform/metal/almayer/west{
@@ -10343,7 +10739,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aFi" = (
 /obj/structure/platform/metal/almayer/east{
@@ -10756,7 +11152,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aGO" = (
 /obj/structure/monorail{
@@ -10769,7 +11165,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aGP" = (
 /obj/structure/platform/metal/almayer/west{
@@ -10784,7 +11180,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aGQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -11092,7 +11488,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aHC" = (
 /obj/structure/barricade/handrail/strata{
@@ -11183,6 +11579,10 @@
 /area/navalis/outdoors/landing_zone_2)
 "aNI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
 /turf/open/floor/prison/green/northeast,
 /area/navalis/indoors/command/starboard_hallway)
 "aOa" = (
@@ -11236,7 +11636,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aQZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -11371,6 +11771,7 @@
 	dir = 8;
 	layer = 2.7
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/navalis/indoors/command/security)
 "aWB" = (
@@ -11585,7 +11986,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "bjk" = (
 /obj/effect/decal/hybrisa/road/lines3{
@@ -11766,7 +12167,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "brQ" = (
 /obj/effect/decal/hybrisa/trash{
@@ -12131,12 +12532,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/navalis/indoors/command/server_room)
-"bGN" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/indoors/industrial/power)
 "bHF" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/kutjevo/grey,
@@ -12287,6 +12682,10 @@
 	dir = 4;
 	pixel_y = 7
 	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "bOv" = (
@@ -12418,7 +12817,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "bTU" = (
 /obj/structure/prop/resin_prop{
@@ -12722,7 +13121,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "cnG" = (
 /obj/structure/platform/metal/almayer/west,
@@ -12832,13 +13231,10 @@
 /area/navalis/oob/water)
 "cwo" = (
 /obj/effect/decal/hybrisa/road/lines4,
-/obj/structure/curtain/colorable_transparent{
-	color = "#5a5a5a";
-	alpha = 220;
-	layer = 3.2;
-	pixel_x = 32
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/trash/candy{
+	layer = 2
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "cxo" = (
@@ -13252,6 +13648,12 @@
 /area/navalis/indoors/command/cent_com)
 "cTj" = (
 /obj/effect/decal/cleanable/generic,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 12;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/port_hallway)
 "cTA" = (
@@ -13310,6 +13712,7 @@
 	layer = 3.2;
 	pixel_x = 32
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "cYp" = (
@@ -13392,7 +13795,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "dbE" = (
 /obj/structure/monorail{
@@ -13408,7 +13811,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "ddk" = (
 /turf/open/floor/prison/whitegreen,
@@ -13638,7 +14041,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "dqN" = (
 /obj/effect/decal/hybrisa/trash{
@@ -13963,6 +14366,7 @@
 /area/navalis/indoors/command/maintenance_starboard)
 "dKb" = (
 /obj/structure/bed/sofa/vert/grey/bot,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/navalis/indoors/command/oft_duty_room)
 "dKj" = (
@@ -14103,7 +14507,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "dRz" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -14186,6 +14590,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
+/obj/effect/sentry_landmark/lz_1/bottom_left,
 /turf/open/floor/plating/kutjevo,
 /area/navalis/outdoors/landing_zone_1)
 "dWs" = (
@@ -14812,6 +15217,7 @@
 	dir = 4;
 	pixel_x = 9
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "eEy" = (
@@ -14943,7 +15349,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "eKW" = (
 /turf/open/floor/prison/darkyellow2/east,
@@ -15556,9 +15962,9 @@
 /area/navalis/indoors/med_sci/chemical_store)
 "ftk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/chair{
-	dir = 1;
-	layer = 2.7
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -3;
+	pixel_y = 4
 	},
 /turf/open/floor/prison/green/north,
 /area/navalis/indoors/command/aft_hallway)
@@ -16009,7 +16415,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "fTf" = (
 /obj/structure/barricade/handrail/medical,
@@ -16543,7 +16949,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "gtC" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -16604,7 +17010,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "guF" = (
 /obj/effect/decal/hybrisa/trash{
@@ -17429,7 +17835,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "hxl" = (
 /obj/structure/machinery/light{
@@ -17693,7 +18099,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "hMd" = (
 /obj/structure/prop/static_tank/water,
@@ -17790,7 +18196,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "hRK" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -17861,6 +18267,7 @@
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "hVb" = (
@@ -18453,7 +18860,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "iGd" = (
 /obj/structure/bed/chair{
@@ -18677,6 +19084,7 @@
 "iUh" = (
 /obj/structure/bed/hybrisa/dingy,
 /obj/item/bedsheet/colorable,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/navalis/indoors/command/oft_duty_room)
 "iUo" = (
@@ -18776,9 +19184,14 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/navalis/indoors/command/server_room)
 "jao" = (
-/obj/item/stack/rods{
-	pixel_y = 1;
-	pixel_x = -6
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/barricade/wooden{
+	health = 600;
+	name = "reinforced wooden barricade"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/aft_hallway)
@@ -18849,6 +19262,11 @@
 	pixel_y = -1
 	},
 /obj/effect/decal/hybrisa/road/lines4,
+/obj/structure/bed/bedroll,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "jdA" = (
@@ -19306,6 +19724,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/navalis/indoors/command/command_kitchen)
 "jCt" = (
@@ -20153,7 +20572,10 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege,
 /area/navalis/indoors/residential/accessway)
 "kvq" = (
-/obj/structure/closet/firecloset/full,
+/obj/item/stack/sheet/wood{
+	pixel_x = 1;
+	pixel_y = 6
+	},
 /turf/open/floor/prison/green/southwest,
 /area/navalis/indoors/command/port_hallway)
 "kvJ" = (
@@ -20231,6 +20653,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/navalis/indoors/command/command_kitchen)
 "kAU" = (
@@ -20543,7 +20966,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "kQv" = (
 /obj/structure/platform/metal/stair_cut/strata_right,
@@ -20866,6 +21289,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/server_room)
 "lfB" = (
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/navalis/indoors/command/command_kitchen)
 "lgz" = (
@@ -21353,6 +21777,7 @@
 	icon_state = "trash_3";
 	pixel_y = 12
 	},
+/obj/structure/largecrate/empty/case/double,
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/starboard_hallway)
 "lKg" = (
@@ -21481,7 +21906,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "lQK" = (
 /obj/effect/decal/warning_stripes{
@@ -21707,6 +22132,7 @@
 	icon_state = "trash_4";
 	pixel_y = 12
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/navalis/indoors/command/bathroom)
 "mfg" = (
@@ -21980,7 +22406,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "mBb" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -22226,7 +22652,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "mNO" = (
 /obj/structure/disposalpipe/segment{
@@ -22425,7 +22851,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "mXr" = (
 /obj/structure/prop/resin_prop{
@@ -22811,6 +23237,11 @@
 /area/navalis/indoors/logistic/primary_storage)
 "nAd" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/aft_hallway)
 "nAp" = (
@@ -23344,7 +23775,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "ojm" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -23638,7 +24069,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "oyg" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -23882,7 +24313,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "oJl" = (
 /obj/effect/decal/warning_stripes{
@@ -24199,6 +24630,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
+/obj/effect/sentry_landmark/lz_1/top_right,
 /turf/open/floor/plating/kutjevo,
 /area/navalis/outdoors/landing_zone_1)
 "oXJ" = (
@@ -24582,7 +25014,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "pox" = (
 /obj/structure/surface/table/almayer,
@@ -24704,7 +25136,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ptD" = (
 /obj/structure/blocker/forcefield/all{
@@ -24729,6 +25161,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/navalis/indoors/command/security)
 "pxf" = (
@@ -24865,7 +25298,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "pCq" = (
 /obj/effect/decal/warning_stripes{
@@ -24880,6 +25313,7 @@
 	pixel_y = 6;
 	buckling_y = 6
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/navalis/indoors/command/cent_com)
 "pCX" = (
@@ -24956,6 +25390,7 @@
 	pixel_x = -1;
 	pixel_y = -4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/command/office)
 "pGH" = (
@@ -25079,6 +25514,10 @@
 "pJY" = (
 /obj/effect/decal/hybrisa/road/lines3{
 	pixel_y = -1
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
@@ -26722,8 +27161,8 @@
 /area/navalis/indoors/command/meeting_hall)
 "rie" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/storage/belt/gun/m4a3,
-/obj/item/storage/belt/gun/m4a3,
+/obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/storage/belt/gun/m4a3/mod88,
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "rio" = (
@@ -26930,7 +27369,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "rsA" = (
 /obj/structure/disposalpipe/segment{
@@ -27345,7 +27784,9 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/navalis/indoors/command/director_office)
 "rQO" = (
-/obj/structure/largecrate/empty/case/double,
+/obj/structure/largecrate/empty/case/double{
+	layer = 2.9
+	},
 /turf/open/floor/prison/green/east,
 /area/navalis/indoors/command/port_hallway)
 "rRx" = (
@@ -27718,7 +28159,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "soU" = (
 /turf/open/floor/prison/green,
@@ -27777,7 +28218,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "suv" = (
 /obj/structure/platform/metal/almayer/west,
@@ -28712,7 +29153,10 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/landing_zone_2)
 "tov" = (
-/obj/structure/largecrate/empty/case/double,
+/obj/structure/barricade/wooden{
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
 /turf/open/floor/prison/green/west,
 /area/navalis/indoors/command/starboard_hallway)
 "tpb" = (
@@ -29198,7 +29642,7 @@
 	pixel_x = -3
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "tOG" = (
 /obj/effect/landmark/static_comms/net_two,
@@ -29313,6 +29757,10 @@
 /area/navalis/indoors/command/port_hallway)
 "tSo" = (
 /obj/effect/decal/cleanable/generic,
+/obj/structure/barricade/wooden{
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
 /turf/open/floor/prison/green/east,
 /area/navalis/indoors/command/starboard_hallway)
 "tSs" = (
@@ -29489,6 +29937,13 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 4;
 	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/obj/item/trash/eat{
+	pixel_x = 6;
+	pixel_y = -3
 	},
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/command/conferance)
@@ -29982,7 +30437,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "uBg" = (
 /obj/structure/bed/roller/hospital,
@@ -30111,7 +30566,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "uGy" = (
 /obj/effect/decal/hybrisa/trash{
@@ -30331,13 +30786,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
 /area/navalis/indoors/command/office)
-"uNZ" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	layer = 2.7
-	},
-/turf/open/floor/prison/green/north,
-/area/navalis/indoors/command/aft_hallway)
 "uPU" = (
 /obj/item/stack/rods{
 	amount = 25
@@ -30889,6 +31337,10 @@
 	pixel_x = 1;
 	pixel_y = 10
 	},
+/obj/item/stack/sheet/wood{
+	layer = 2.7;
+	pixel_y = -9
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/navalis/indoors/command/port_hallway)
 "vwS" = (
@@ -30938,7 +31390,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "vAt" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -30983,6 +31435,10 @@
 /area/navalis/indoors/logistic/primary_storage)
 "vCk" = (
 /obj/effect/decal/hybrisa/road/lines1,
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "vCp" = (
@@ -31214,6 +31670,7 @@
 /area/navalis/indoors/med_sci/storage)
 "vOX" = (
 /obj/structure/bed/sofa/vert/grey/top,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/navalis/indoors/command/oft_duty_room)
 "vPi" = (
@@ -31344,6 +31801,10 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	pixel_y = 1;
+	pixel_x = -6
+	},
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/aft_hallway)
 "vTC" = (
@@ -31376,7 +31837,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "vUE" = (
 /obj/effect/decal/hybrisa/road/lines4{
@@ -31502,6 +31963,9 @@
 	pixel_y = -1
 	},
 /obj/effect/decal/hybrisa/road/lines1,
+/obj/structure/bed/bedroll{
+	dir = 8
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "wbk" = (
@@ -31546,6 +32010,11 @@
 /area/navalis/indoors/industrial/mining)
 "wbT" = (
 /obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/bed/bedroll{
+	dir = 1;
+	layer = 6;
+	pixel_y = 16
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "wcs" = (
@@ -32004,12 +32473,6 @@
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/industrial/refinery)
 "wuV" = (
-/obj/structure/curtain/colorable_transparent{
-	color = "#788685";
-	layer = 3.2;
-	pixel_x = 32;
-	alpha = 220
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/command/office)
@@ -32140,7 +32603,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "wza" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -32463,8 +32926,8 @@
 /area/navalis/indoors/med_sci/storage)
 "wQV" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/storage/belt/gun/m4a3,
-/obj/item/storage/belt/gun/m4a3,
+/obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/storage/belt/gun/m4a3/mod88,
 /turf/open/floor/prison/red/northeast,
 /area/navalis/indoors/command/security)
 "wRf" = (
@@ -32571,7 +33034,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "wZq" = (
 /obj/structure/machinery/optable,
@@ -33591,6 +34054,12 @@
 /obj/structure/sign/poster/music{
 	pixel_x = -27
 	},
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 23;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
 /turf/open/floor/prison/green/east,
 /area/navalis/indoors/command/port_hallway)
 "xXV" = (
@@ -33631,7 +34100,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "ycc" = (
 /turf/closed/wall/mineral/bone_resin,
@@ -39042,7 +39511,7 @@ mmV
 lJH
 aSB
 qkp
-lWd
+aCm
 kjl
 uor
 apK
@@ -40052,17 +40521,17 @@ gGc
 gGc
 gGc
 ayU
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
 hwr
 vrN
 qkp
@@ -40307,7 +40776,7 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 oji
 oji
@@ -40562,19 +41031,19 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
+aCv
 bjf
 vrN
 qkp
@@ -40817,10 +41286,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 ayU
 ayU
@@ -41072,10 +41541,10 @@ ayU
 ayU
 ayU
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -41327,10 +41796,10 @@ uGw
 uGw
 uGw
 dRh
-aCd
+aCv
 guB
 mMu
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -42133,7 +42602,7 @@ bJC
 rci
 kjl
 kjl
-kjl
+aBY
 kjl
 aGY
 aGY
@@ -44137,11 +44606,11 @@ gGc
 gGc
 gGc
 ayU
-aCd
-aCd
+aCv
+aCv
 wyY
-aCd
-aCd
+aCv
+aCv
 ayU
 gGc
 gGc
@@ -44394,9 +44863,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -44650,9 +45119,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -44906,9 +45375,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -45162,9 +45631,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -45418,9 +45887,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -45673,10 +46142,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -45928,10 +46397,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -46183,10 +46652,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -46438,10 +46907,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -46693,10 +47162,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -46948,10 +47417,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -47203,10 +47672,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 guB
 dbE
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -47459,9 +47928,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -47715,9 +48184,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -47971,9 +48440,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -48226,11 +48695,11 @@ gGc
 gGc
 gGc
 ayU
-aCd
-aCd
+aCv
+aCv
 wyY
-aCd
-aCd
+aCv
+aCv
 ayU
 gGc
 gGc
@@ -49604,11 +50073,11 @@ cmS
 cmS
 cmS
 cmS
-azh
+azw
 kQl
 ayY
 ayT
-qZj
+aAh
 ayU
 gGc
 gGc
@@ -49862,10 +50331,10 @@ ayU
 ayU
 ayU
 ayU
-qZj
+aAh
 ayY
 ayT
-qZj
+aAh
 ayU
 gGc
 gGc
@@ -50119,10 +50588,10 @@ gGc
 gGc
 gGc
 ayU
-qZj
+aAh
 ayY
 ayT
-qZj
+aAh
 ayU
 gGc
 gGc
@@ -50376,10 +50845,10 @@ gGc
 gGc
 gGc
 ayU
-qZj
+aAh
 ayY
 ayT
-qZj
+aAh
 ayU
 gGc
 gGc
@@ -50633,10 +51102,10 @@ gGc
 gGc
 gGc
 ayU
-qZj
+aAh
 ayY
 ayT
-qZj
+aAh
 ayU
 gGc
 gGc
@@ -50893,7 +51362,7 @@ ayU
 qZj
 ayY
 ayT
-qZj
+aAh
 ayU
 ayU
 gGc
@@ -51147,7 +51616,7 @@ gGc
 gGc
 gGc
 ayU
-qZj
+aAh
 ayY
 aCp
 ayO
@@ -51298,11 +51767,11 @@ gGc
 gGc
 gGc
 ayU
-aCd
-aCd
+aCv
+aCv
 wyY
-aCd
-aCd
+aCv
+aCv
 ayU
 gGc
 gGc
@@ -51403,7 +51872,7 @@ gGc
 gGc
 gGc
 ayU
-qZj
+aAh
 ayP
 aCq
 aAN
@@ -51555,9 +52024,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -51811,9 +52280,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -52067,9 +52536,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -52323,9 +52792,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -52579,9 +53048,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -52835,9 +53304,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 gGc
@@ -53091,9 +53560,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 gGc
 nSY
@@ -53347,9 +53816,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayU
 nSY
 nSY
@@ -53603,9 +54072,9 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 wyY
-aCd
+aCv
 ayR
 nSY
 mmV
@@ -53713,7 +54182,7 @@ oJj
 cmS
 cmS
 ayH
-azh
+azw
 azh
 azf
 gGc
@@ -53859,10 +54328,10 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aCv
 rrT
 gtv
-aCd
+aCv
 lJH
 lJH
 lJH
@@ -53967,9 +54436,9 @@ gGc
 gGc
 ayU
 ayU
-qZj
+aAh
 ayL
-qZj
+aAh
 ayU
 gGc
 gGc
@@ -54115,11 +54584,11 @@ gGc
 gGc
 gGc
 ayU
-aCd
-aCd
+aCv
+aCv
 rrT
 gtv
-aCd
+aCv
 bjf
 lww
 auV
@@ -54223,9 +54692,9 @@ gGc
 gGc
 gGc
 ayU
-qZj
+aAh
 ayL
-qZj
+aAh
 ayU
 gGc
 gGc
@@ -54372,8 +54841,8 @@ gGc
 gGc
 gGc
 ayR
-aCd
-aCd
+aCv
+aCv
 rrT
 uAQ
 lww
@@ -54479,9 +54948,9 @@ gGc
 gGc
 gGc
 ayU
-qZj
+aAh
 ayL
-qZj
+aAh
 ayU
 gGc
 gGc
@@ -54629,7 +55098,7 @@ gGc
 nSY
 nSY
 lJH
-aCd
+aCv
 bjf
 ayo
 cmK
@@ -54652,11 +55121,11 @@ awa
 awa
 awa
 awa
+aCC
 auN
 auN
 auN
-auN
-auN
+aCo
 bBe
 asH
 weN
@@ -54735,9 +55204,9 @@ nSY
 nSY
 nSY
 ayR
-qZj
+aAh
 ayL
-qZj
+aAh
 ayR
 nSY
 nSY
@@ -54912,7 +55381,7 @@ jao
 dLk
 avm
 auO
-auO
+aCt
 auB
 oBz
 iXG
@@ -54991,9 +55460,9 @@ nSY
 nSY
 nSY
 ayR
-qZj
+aAh
 ayL
-qZj
+aAh
 ayR
 nSY
 nSY
@@ -55165,8 +55634,8 @@ avO
 avO
 avO
 vTk
-puC
-avm
+aCA
+aCy
 nAd
 lcK
 bBe
@@ -55247,9 +55716,9 @@ mmV
 mmV
 mmV
 lJH
-qZj
+aAh
 ayL
-qZj
+aAh
 lJH
 mmV
 mmV
@@ -55422,7 +55891,7 @@ oDx
 avN
 psl
 avB
-avm
+aCz
 axy
 bwp
 asO
@@ -55503,9 +55972,9 @@ mmV
 mmV
 mmV
 lJH
-qZj
+aAh
 ayL
-qZj
+aAh
 lJH
 mmV
 mmV
@@ -55664,7 +56133,7 @@ ayd
 axj
 sMN
 wbT
-rqA
+aCO
 aLA
 uAE
 hUx
@@ -55679,7 +56148,7 @@ avN
 avN
 mbQ
 avm
-uNZ
+kBr
 asO
 asO
 sJD
@@ -55919,14 +56388,14 @@ qCM
 ayd
 axj
 rUr
-wbT
+aCR
 rqA
 uIG
 sXp
 hUx
-pJY
+aCJ
 hrN
-axk
+aCH
 oqC
 rQE
 awu
@@ -56181,7 +56650,7 @@ cYf
 mHC
 vGp
 jdy
-axr
+aCI
 rOd
 avO
 lay
@@ -56191,7 +56660,7 @@ sIH
 apy
 soU
 mcU
-ftk
+dFi
 asO
 gyq
 lOv
@@ -56518,7 +56987,7 @@ eSs
 pla
 tcZ
 tnV
-tnV
+aAP
 tnV
 tnV
 tnV
@@ -56539,7 +57008,7 @@ tnV
 tnV
 tnV
 tnV
-tnV
+akX
 tnV
 tnV
 aAt
@@ -57027,7 +57496,7 @@ rEX
 unv
 aUq
 iGR
-tnV
+aAP
 aWu
 jyc
 jyc
@@ -57474,11 +57943,11 @@ uDE
 kBr
 asO
 bzO
-ath
+aCn
 bub
 jyk
 ati
-bub
+aCh
 ath
 lNE
 asO
@@ -57970,7 +58439,7 @@ awK
 awK
 awK
 awK
-awK
+aCL
 gkr
 uNY
 ctM
@@ -59019,7 +59488,7 @@ emr
 asO
 asO
 bBe
-asu
+aBZ
 xpa
 asd
 aAV
@@ -59241,7 +59710,7 @@ ayx
 arX
 arX
 ayw
-ays
+aDe
 cTj
 kvq
 awx
@@ -59260,8 +59729,8 @@ awx
 awx
 eNl
 awf
-avP
-avC
+aCD
+aCB
 avn
 auZ
 asO
@@ -59496,9 +59965,9 @@ rkg
 ayy
 arX
 arX
-ayw
+aDg
 ays
-axO
+aCX
 udV
 avQ
 qMH
@@ -59528,7 +59997,7 @@ pCX
 opg
 agz
 agz
-pCX
+aCc
 aNI
 oMe
 asv
@@ -59754,8 +60223,8 @@ arX
 arX
 ayw
 awy
-awy
-awy
+aCY
+aCV
 awy
 haK
 awy
@@ -59782,9 +60251,9 @@ asw
 asw
 asw
 asw
+aCi
 asw
-asw
-asP
+aCe
 asP
 asw
 asw
@@ -60010,8 +60479,8 @@ arX
 arX
 ayw
 ayt
-axQ
-awY
+aDa
+aCW
 axs
 axs
 axs
@@ -60024,14 +60493,14 @@ axA
 axs
 jaM
 awY
-awL
+aCF
 tQR
 hoe
 xAN
 dlA
 avE
 avn
-lIL
+tov
 bNs
 oZK
 ajg
@@ -60039,7 +60508,7 @@ eFW
 lIL
 qiJ
 lIL
-ajg
+aCg
 tov
 lJQ
 jCo
@@ -60099,7 +60568,7 @@ rEX
 unv
 aUq
 iGR
-tnV
+aAQ
 aWu
 jyc
 jyc
@@ -60266,18 +60735,18 @@ auV
 arX
 ayw
 ays
-axO
+aDc
 tBk
-axt
-axt
-axt
+axv
+axv
+axv
 axR
 axU
 axR
-axt
-axt
-axt
-axt
+axv
+axv
+axv
+axv
 awg
 awz
 awM
@@ -60524,7 +60993,7 @@ ayu
 ayu
 wkL
 ayi
-axt
+axv
 iXj
 cXd
 fDB
@@ -60533,7 +61002,7 @@ bme
 gsd
 jZB
 sTG
-axt
+axv
 xnq
 kAE
 awN
@@ -60614,7 +61083,7 @@ eSs
 tnV
 tnV
 tnV
-tnV
+aAQ
 ayl
 huT
 tnV
@@ -60634,7 +61103,7 @@ tnV
 tnV
 tnV
 tnV
-tnV
+akY
 tnV
 tnV
 tnV
@@ -60780,7 +61249,7 @@ ayu
 dgD
 men
 mCk
-axt
+axv
 piq
 jSs
 vHp
@@ -60789,7 +61258,7 @@ axF
 uTk
 rrP
 wbp
-axt
+axv
 fbj
 sJB
 oCD
@@ -61036,7 +61505,7 @@ ayu
 gmm
 ayn
 ald
-axt
+axv
 nQV
 axD
 axD
@@ -61045,7 +61514,7 @@ axD
 axD
 mNO
 jHm
-axt
+axv
 jCq
 cIU
 oCD
@@ -61292,7 +61761,7 @@ ayu
 lQK
 ayi
 gkl
-axt
+axv
 fsF
 kYQ
 ohR
@@ -61301,7 +61770,7 @@ dxJ
 axD
 axD
 lvn
-axt
+axv
 lcR
 taX
 oCD
@@ -61548,7 +62017,7 @@ ayu
 eEy
 ayi
 jEz
-axt
+axv
 tAW
 wJJ
 axX
@@ -61557,7 +62026,7 @@ goP
 axD
 axE
 axB
-axt
+axv
 jxL
 ojb
 awN
@@ -61801,10 +62270,10 @@ oyh
 auV
 arX
 awa
-ayf
-ayf
-ayf
-axt
+awa
+awa
+awa
+axv
 rOj
 eKs
 fzF
@@ -61813,7 +62282,7 @@ goP
 axD
 axD
 axC
-axt
+axv
 axm
 awA
 awO
@@ -62060,7 +62529,7 @@ jJV
 ale
 geg
 iSN
-axt
+axv
 hch
 pCO
 axF
@@ -62069,7 +62538,7 @@ goP
 axD
 mNO
 axB
-axt
+axv
 vOX
 dKb
 awB
@@ -62316,7 +62785,7 @@ awa
 awa
 awa
 pSt
-axt
+axv
 jhL
 axD
 wjT
@@ -62572,7 +63041,7 @@ arX
 arX
 awa
 uRL
-axt
+axv
 tlC
 jVQ
 axY
@@ -62581,7 +63050,7 @@ goP
 axD
 qTJ
 txw
-axt
+axv
 fTX
 lPj
 hrQ
@@ -62837,7 +63306,7 @@ goP
 axF
 axF
 cSR
-axt
+axv
 lRL
 jOr
 aoY
@@ -63093,7 +63562,7 @@ goP
 vVY
 ppl
 nCu
-axt
+axv
 iUh
 sSx
 eqd
@@ -66464,7 +66933,7 @@ tQL
 aox
 aox
 aov
-aok
+aBq
 aov
 aox
 aox
@@ -67552,7 +68021,7 @@ dmH
 ezm
 cnG
 emH
-mJI
+afl
 cyG
 qLp
 lum
@@ -71295,7 +71764,7 @@ wsJ
 nSY
 asq
 asq
-ari
+aCu
 ari
 ari
 ari
@@ -71637,7 +72106,7 @@ anp
 anh
 amB
 amA
-amA
+asn
 amA
 rtA
 tyB
@@ -71900,7 +72369,7 @@ tyB
 rxa
 rtA
 aaU
-aax
+akN
 aax
 bri
 oOt
@@ -72677,7 +73146,7 @@ mJI
 qfy
 dmH
 aac
-bGN
+wyv
 lJH
 mmV
 mmV
@@ -73436,7 +73905,7 @@ mJI
 mJI
 aai
 aai
-aai
+akS
 aai
 aai
 mJI
@@ -73693,7 +74162,7 @@ kTd
 lum
 kTd
 aaP
-aaP
+ahs
 aai
 mJI
 mJI
@@ -74676,7 +75145,7 @@ tww
 tww
 tww
 tww
-nBn
+aBj
 tww
 agw
 tww
@@ -75208,21 +75677,21 @@ usc
 dvZ
 dvZ
 amz
-amH
-amH
-amH
-amH
-amH
-amH
-amH
-amH
-amH
+aae
+aae
+aae
+aae
+aae
+aae
+aae
+aae
+aae
 ayG
 azC
 azg
 ayZ
 ayG
-amH
+aae
 aae
 aae
 aae
@@ -78731,7 +79200,7 @@ atj
 aqO
 aqO
 apS
-apI
+aCa
 arw
 apI
 aqO
@@ -89480,7 +89949,7 @@ imK
 obT
 asa
 asa
-asa
+aCf
 asa
 asa
 obT
@@ -92550,7 +93019,7 @@ gdc
 vCX
 gdc
 gdc
-gdc
+aCj
 sTd
 ata
 vWb
@@ -92807,10 +93276,10 @@ asq
 asq
 qGh
 urt
-urt
+aCb
 eiL
 mRZ
-urt
+aCb
 urt
 qGh
 asq

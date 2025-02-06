@@ -20,39 +20,39 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
 "aad" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aae" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/civres_blue)
+"aaf" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"aag" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/tumor/ice_lab)
+"aah" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
-"aae" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
-"aaf" = (
+"aai" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"aag" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/civres_blue)
-"aah" = (
+"aaj" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/servers)
-"aai" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/prison/darkpurple2/north,
-/area/fiorina/tumor/servers)
-"aaj" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -39064,7 +39064,7 @@ agi
 agi
 agi
 agi
-aah
+aaj
 agi
 agi
 agi
@@ -47569,7 +47569,7 @@ rqG
 pQs
 pQs
 pQs
-aag
+aae
 rja
 lMq
 jYK
@@ -49656,7 +49656,7 @@ kPf
 kPf
 kPf
 jXz
-aai
+aaf
 jHz
 oiV
 eSH
@@ -61093,7 +61093,7 @@ jFP
 phz
 sWb
 xLi
-aaj
+aag
 cer
 kpq
 azZ
@@ -61256,7 +61256,7 @@ ipa
 rJO
 rJO
 ipa
-aad
+aah
 rJO
 iqB
 rJO
@@ -76881,7 +76881,7 @@ brR
 vDO
 tUs
 mxQ
-aae
+aad
 tOM
 gbf
 tOM
@@ -81297,7 +81297,7 @@ xeO
 xeO
 xeO
 xeO
-aaf
+aai
 xeO
 xeO
 xeO

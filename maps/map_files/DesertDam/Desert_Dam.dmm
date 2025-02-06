@@ -93,6 +93,9 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/landing_pad_two)
+"aaw" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/interior/caves/central_caves)
 "aax" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -339,11 +342,10 @@
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/valley/valley_labs)
 "abt" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/closed/wall,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -379,16 +381,15 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "abB" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
-	},
-/turf/open/floor/plating,
-/area/desert_dam/exterior/landing_pad_two)
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/interior/caves/central_caves)
 "abC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -399,23 +400,17 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "abE" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal7"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/central_caves)
 "abF" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/trash/boonie,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_central_north)
 "abG" = (
-/obj/structure/platform/metal/almayer/north,
-/turf/open/desert/rock/deep/transition/west,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/obj/structure/prop/dam/boulder/boulder3,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/central_caves)
 "abH" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/queen_spawn,
@@ -453,12 +448,12 @@
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "abP" = (
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/effect/decal/sand_overlay/sand2{
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/asphalt/cement/cement12,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "abQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -502,9 +497,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abY" = (
-/obj/structure/platform_decoration/metal/almayer/west,
-/turf/open/asphalt/cement/cement12,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/desert/rock/deep/transition/northeast,
+/area/desert_dam/interior/caves/central_caves)
 "abZ" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -529,9 +523,8 @@
 /turf/closed/wall/indestructible/invisible,
 /area/desert_dam/exterior/river/riverside_east)
 "ace" = (
-/obj/structure/platform/metal/almayer/north,
-/turf/open/asphalt/cement/cement12,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/interior/caves/central_caves)
 "acf" = (
 /obj/structure/surface/table,
 /turf/open/floor/whitegreen/west,
@@ -546,9 +539,11 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/valley/valley_labs)
 "aci" = (
-/obj/structure/platform_decoration/metal/almayer/east,
-/turf/open/asphalt/cement/cement15,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/interior/caves/central_caves)
 "acj" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -561,24 +556,18 @@
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/river/riverside_east)
 "acl" = (
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "acm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/caves/central_caves)
 "acn" = (
 /obj/item/trash/eat,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "aco" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/stairs,
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/floor/plating,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "acp" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_4"
@@ -606,10 +595,8 @@
 	},
 /area/desert_dam/exterior/rock)
 "acv" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/floor/plating/warnplate/west,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "acw" = (
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -737,12 +724,12 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "acX" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 50
 	},
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/floor/plating/warnplate/west,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "acY" = (
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/east_caves)
@@ -886,136 +873,57 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/east_caves)
 "adE" = (
-/obj/structure/platform/metal/almayer/west,
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/desert_dam/building/substation/northwest)
 "adF" = (
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "adG" = (
-/obj/structure/machinery/light{
-	dir = 4
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "adH" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement14,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
 "adI" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "adJ" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/central_tunnel)
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"adL" = (
-/turf/open/asphalt/cement/cement2,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"adM" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement3,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"adN" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/obj/structure/platform/metal/almayer,
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_labs)
-"adP" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement/cement14,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"adQ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_east)
-"adS" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/platform/metal/stair_cut/platform_left,
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"adT" = (
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "adU" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/desert_dam/exterior/river/riverside_east)
-"adV" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/asphalt/cement/cement4,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"adW" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 4
-	},
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "adX" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/desert_dam/exterior/river/riverside_east)
-"adY" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "adZ" = (
 /obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_10"
@@ -1081,11 +989,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
-"ael" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "aem" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -1183,30 +1086,6 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/river/riverside_east)
-"aeG" = (
-/obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/asphalt/cement/cement9,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"aeH" = (
-/obj/structure/platform_decoration/metal/almayer,
-/turf/open/asphalt/cement/cement2,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"aeI" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal6"
-	},
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"aeJ" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal5"
-	},
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/central_tunnel)
-"aeK" = (
-/obj/structure/prop/dam/large_boulder/boulder2,
-/turf/open/desert/dirt/desert_transition_edge1/east,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "aeL" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1217,15 +1096,6 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
-"aeN" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/snacks/stew,
-/obj/item/tool/kitchen/utensil/spoon,
-/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
-/turf/open/desert/rock/deep/rock4,
-/area/desert_dam/interior/caves/temple)
 "aeO" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/tile,
@@ -1337,6 +1207,13 @@
 "afk" = (
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
+"afl" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/interior/caves/central_caves)
+"afm" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/interior/caves/central_caves)
 "afn" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/rock/deep/transition/north,
@@ -1381,9 +1258,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)
-"aft" = (
-/turf/open/desert/dirt/rock1,
-/area/desert_dam/interior/caves/central_caves)
 "afu" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/rock,
@@ -1414,19 +1288,9 @@
 "afB" = (
 /turf/open/desert/rock/deep/transition/west,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
-"afC" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/open/desert/rock/deep/transition/west,
-/area/desert_dam/interior/dam_interior/hanger)
 "afD" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
-"afE" = (
-/obj/structure/flora/grass/desert/lightgrass_8,
-/turf/open/desert/rock/deep/rock3,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "afF" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/tile,
@@ -1446,10 +1310,6 @@
 "afK" = (
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"afL" = (
-/obj/effect/decal/sand_overlay/sand2,
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "afM" = (
 /turf/open/floor/filtrationside/east,
 /area/desert_dam/exterior/valley/valley_mining)
@@ -1573,12 +1433,6 @@
 /obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"agl" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8
-	},
-/turf/open/asphalt/cement/cement13,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "agm" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/rock,
@@ -1615,9 +1469,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_northwest)
-"ags" = (
-/turf/open/asphalt/cement/cement14,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "agt" = (
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -1674,12 +1525,6 @@
 "agD" = (
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"agE" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "agF" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -1701,12 +1546,6 @@
 "agI" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"agJ" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement13,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "agK" = (
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -1877,12 +1716,6 @@
 "aho" = (
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
-"ahp" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi{
-	pixel_x = -32
-	},
-/turf/open/desert/rock/deep/transition/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "ahq" = (
 /obj/structure/desertdam/decals/road_stop,
 /turf/open/asphalt,
@@ -1909,10 +1742,6 @@
 "ahu" = (
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_northwest)
-"ahv" = (
-/obj/structure/flora/grass/desert/lightgrass_3,
-/turf/open/desert/rock,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "ahw" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/barricade/wooden{
@@ -1983,10 +1812,6 @@
 "ahK" = (
 /obj/effect/decal/cleanable/vomit,
 /turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_wilderness)
-"ahL" = (
-/obj/structure/prop/dam/boulder/boulder3,
-/turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ahM" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -2113,6 +1938,20 @@
 "aii" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_labs)
+"aij" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aik" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"ail" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
 "aim" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/desert/dirt,
@@ -2144,12 +1983,6 @@
 "ait" = (
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/desert_dam/exterior/valley/valley_northwest)
-"aiu" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8
-	},
-/turf/open/asphalt/cement/cement9,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "aiv" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
@@ -2165,13 +1998,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"aix" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "aiy" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
@@ -2182,40 +2008,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"aiA" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "aiB" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"aiC" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"aiD" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "aiE" = (
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
-"aiF" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/desert/dirt/desert_transition_edge1/north,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "aiG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -2232,6 +2031,14 @@
 "aiI" = (
 /turf/open/floor/prison/darkpurple2,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
+"aiJ" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "aiK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -2445,16 +2252,6 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
-"ajx" = (
-/turf/open/desert/rock/deep/rock3,
-/area/desert_dam/interior/caves/central_caves)
-"ajy" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "ajz" = (
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
@@ -2526,12 +2323,6 @@
 "ajM" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_labs)
-"ajN" = (
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_4"
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "ajO" = (
 /turf/open/floor/prison/whitepurple/west,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
@@ -2712,10 +2503,6 @@
 	},
 /turf/open/floor/dark2,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"akx" = (
-/obj/effect/landmark/xeno_spawn,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "aky" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_northwest)
@@ -2727,14 +2514,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"akB" = (
-/obj/structure/prop/dam/boulder/boulder3,
-/turf/open/desert/dirt,
-/area/desert_dam/interior/caves/central_caves)
-"akC" = (
-/obj/effect/landmark/xeno_spawn,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/central_caves)
 "akD" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -2797,35 +2576,10 @@
 "akQ" = (
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
-"akR" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"akS" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"akT" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/desert_dam/interior/caves/central_caves)
 "akU" = (
 /obj/structure/prop/dam/truck/cargo,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
-"akV" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/desert_dam/interior/caves/central_caves)
 "akW" = (
 /turf/open/jungle/impenetrable,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
@@ -2890,10 +2644,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"alj" = (
-/obj/effect/decal/sand_overlay/sand1,
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/interior/caves/central_caves)
 "alk" = (
 /turf/open/mars/mars_dirt_12,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
@@ -2917,17 +2667,6 @@
 "alp" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_northwest)
-"alq" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/interior/caves/central_caves)
-"alr" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 8
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/desert_dam/interior/caves/central_caves)
 "als" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison/bright_clean2,
@@ -3030,9 +2769,6 @@
 /obj/structure/window/framed/chigusa,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
-"alQ" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
-/area/desert_dam/interior/caves/central_caves)
 "alR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Excavation"
@@ -3094,46 +2830,15 @@
 /obj/item/alienjar,
 /turf/open/floor/prison/darkpurple2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
-"amc" = (
-/turf/open/desert/rock/deep/transition/northeast,
-/area/desert_dam/interior/caves/central_caves)
-"amd" = (
-/obj/structure/lamarr,
-/turf/open/floor/prison/blue/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ame" = (
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_northwest)
-"amf" = (
-/obj/effect/landmark/corpsespawner/wygoon/lead,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/blue,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
-"amg" = (
-/turf/open/floor/prison/blue,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "amh" = (
 /turf/open/floor/coagulation/icon6_8_2,
 /area/desert_dam/exterior/valley/valley_mining)
 "ami" = (
 /turf/open/floor/coagulation/icon7_8_2,
 /area/desert_dam/exterior/valley/valley_mining)
-"amj" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "xgib1"
-	},
-/turf/open/floor/prison/blue,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
-"amk" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 9
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"aml" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "amm" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -3185,18 +2890,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"amu" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/desert_dam/interior/caves/central_caves)
-"amv" = (
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 1
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/desert_dam/interior/caves/central_caves)
 "amw" = (
 /turf/closed/wall/r_wall/bunker/floodgate,
 /area/desert_dam/exterior/river/riverside_central_north)
@@ -3286,16 +2979,10 @@
 "amP" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_northwest)
-"amQ" = (
-/turf/open/asphalt/cement_sunbleached,
-/area/desert_dam/interior/caves/central_caves)
 "amR" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"amS" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/desert_dam/interior/caves/central_caves)
 "amT" = (
 /turf/open/floor/coagulation/icon0_5,
 /area/desert_dam/exterior/valley/valley_mining)
@@ -3339,12 +3026,6 @@
 "anc" = (
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/interior/dam_interior/west_tunnel)
-"and" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 8
-	},
-/turf/open/asphalt/tile,
-/area/desert_dam/interior/caves/central_caves)
 "ane" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
@@ -3439,13 +3120,6 @@
 "anv" = (
 /turf/open/floor/prison/whitepurplecorner,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"anw" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	pixel_y = 12
-	},
-/turf/open/floor/prison/blue/west,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "anx" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -3554,13 +3228,6 @@
 /obj/structure/machinery/vending/security,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
-"anS" = (
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
-"anT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "anU" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras{
@@ -3572,11 +3239,6 @@
 "anV" = (
 /turf/open/floor/prison/whitepurple/northwest,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
-"anW" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "anX" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/whitepurple/north,
@@ -3615,12 +3277,6 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_east)
-"aog" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aoh" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
@@ -3645,35 +3301,6 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
-"aol" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
-"aom" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/item/stack/rods,
-/obj/item/stack/cable_coil,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
-"aon" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/desert_dam/exterior/valley/valley_crashsite)
-"aoo" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 4
-	},
-/turf/open/asphalt/tile,
-/area/desert_dam/interior/caves/central_caves)
-"aop" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/desert_dam/interior/caves/central_caves)
 "aoq" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -3853,9 +3480,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison/whitepurplecorner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
-"apa" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
-/area/desert_dam/interior/caves/central_caves)
 "apb" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1{
 	pixel_y = 32
@@ -3925,9 +3549,6 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
-"aps" = (
-/turf/open/desert/rock/deep/transition/east,
-/area/desert_dam/interior/caves/central_caves)
 "apt" = (
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/valley_northwest)
@@ -3974,34 +3595,14 @@
 "apB" = (
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
-"apC" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/effect/landmark/corpsespawner/administrator,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/blue/west,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "apD" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
-"apE" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4
-	},
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "apF" = (
 /turf/open/floor/prison/darkredcorners2,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
-"apG" = (
-/obj/structure/surface/table,
-/obj/item/paper_bin,
-/obj/item/disk/nuclear,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "apH" = (
 /turf/open/floor/prison/darkredcorners2/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
@@ -4039,11 +3640,6 @@
 /obj/structure/flora/grass/desert/lightgrass_7,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
-"apQ" = (
-/obj/effect/landmark/corpsespawner/wygoon,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "apR" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/desert/desert_shore/desert_shore1,
@@ -4061,11 +3657,6 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
-"apU" = (
-/obj/structure/disposalpipe/segment,
-/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
-/turf/open/floor/prison/bluecorner/north,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "apV" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -4119,19 +3710,10 @@
 "aqg" = (
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"aqh" = (
-/obj/structure/machinery/computer/aifixer,
-/turf/open/floor/prison/blue/northwest,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aqi" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
-"aqj" = (
-/obj/structure/closet/secure_closet/RD,
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/prison/blue/north,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aqk" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -4145,11 +3727,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"aqm" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/computer/communications,
-/turf/open/floor/prison/blue/north,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aqn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
@@ -4190,12 +3767,6 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
-"aqw" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tech_supply,
-/obj/item/phone,
-/turf/open/floor/prison/blue/north,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aqx" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras{
@@ -4228,12 +3799,6 @@
 /obj/structure/closet/secure_closet/security,
 /turf/open/floor/prison/darkred2/northeast,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
-"aqE" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/prison/blue/north,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aqF" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -4363,11 +3928,6 @@
 	dir = 1
 	},
 /turf/open/floor/prison/whitepurple/northeast,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
-"ard" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/turf/open/floor/prison/blue/northeast,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "are" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4552,20 +4112,6 @@
 "arL" = (
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
-"arM" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/darkyellow2/southwest,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"arN" = (
-/turf/open/floor/darkyellow2,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"arO" = (
-/turf/open/floor/darkyellow2/southeast,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"arP" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/floor/plating/warnplate/west,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "arQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4594,15 +4140,6 @@
 /obj/structure/prop/dam/truck/damaged,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
-"arW" = (
-/turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"arX" = (
-/turf/open/floor/darkyellow2/west,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"arY" = (
-/turf/open/floor/vault2/northeast,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "arZ" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal12"
@@ -4630,37 +4167,12 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"ase" = (
-/turf/open/floor/darkyellow2/east,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "asf" = (
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/interior/dam_interior/hanger)
 "asg" = (
 /turf/open/floor/prison/darkbrown2/northwest,
 /area/desert_dam/interior/dam_interior/hanger)
-"ash" = (
-/turf/open/floor/plating/warnplate/west,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"asi" = (
-/obj/structure/machinery/power/terminal{
-	dir = 1
-	},
-/turf/open/floor/vault2/northeast,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"asj" = (
-/turf/open/floor/darkyellowcorners2/east,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"ask" = (
-/obj/structure/machinery/power/smes/batteryrack/substation,
-/turf/open/floor/darkyellow2/northeast,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"asl" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/darkyellow2/northeast,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "asm" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/communications,
@@ -4670,12 +4182,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
-"asp" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 50
+"aso" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 2;
+	name = "\improper Research Substation"
 	},
-/turf/open/floor/plating/warnplate/west,
+/turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "asq" = (
 /obj/structure/machinery/light,
@@ -4719,13 +4231,6 @@
 "asx" = (
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
-"asy" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 2;
-	name = "\improper Research Substation"
-	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "asz" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -4788,14 +4293,13 @@
 	},
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
-"asK" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/plating,
-/area/desert_dam/building/substation/northwest)
 "asL" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
+"asM" = (
+/turf/open/floor/darkyellow2/west,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "asN" = (
 /obj/structure/machinery/sentry_holder/colony{
 	dir = 1;
@@ -4833,6 +4337,19 @@
 /obj/structure/machinery/computer/atmos_alert,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
+"asW" = (
+/turf/open/floor/darkyellowcorners2/east,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"asX" = (
+/obj/structure/machinery/power/smes/batteryrack/substation,
+/turf/open/floor/darkyellow2/northeast,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"asY" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/darkyellow2/northeast,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "ata" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft{
@@ -4866,6 +4383,9 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
+"ath" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/interior/caves/central_caves)
 "ati" = (
 /obj/structure/machinery/sentry_holder/colony{
 	dir = 8;
@@ -5012,6 +4532,12 @@
 /obj/effect/decal/sand_overlay/sand2,
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/west_tunnel)
+"atI" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement9,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "atJ" = (
 /turf/open/floor/prison/red/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
@@ -5019,6 +4545,9 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/red/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
+"atL" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/interior/caves/central_caves)
 "atM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -5065,6 +4594,9 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
+"atV" = (
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "atY" = (
 /obj/structure/surface/table,
 /obj/item/paper_bin,
@@ -5078,6 +4610,15 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
+"aua" = (
+/obj/structure/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"aub" = (
+/turf/open/floor/darkyellow2/east,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "auc" = (
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/building/substation/northeast)
@@ -5150,6 +4691,10 @@
 "aus" = (
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
+"auu" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "auw" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkpurple2/northeast,
@@ -5302,12 +4847,24 @@
 	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/shuttle/trijent_shuttle/engi)
+"avk" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "avl" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
 /turf/open/floor/prison/red/north,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
+"avm" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement13,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "avn" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/clothing/suit/armor/vest/security,
@@ -5444,6 +5001,10 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
+"avQ" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/darkyellow2/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "avR" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
@@ -5459,6 +5020,16 @@
 	},
 /turf/open/desert/rock/deep/transition/east,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"avU" = (
+/turf/open/floor/darkyellow2,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"avV" = (
+/turf/open/floor/darkyellow2/southeast,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"avW" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/plating/warnplate/west,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "avX" = (
 /obj/effect/decal/sand_overlay/sand2,
 /turf/open/floor/prison/whitepurple,
@@ -5469,6 +5040,16 @@
 	},
 /turf/open/floor/prison/whitepurplecorner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"avZ" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"awa" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement13,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "awb" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/whitepurple/north,
@@ -5518,6 +5099,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_mining)
+"awp" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "awr" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
@@ -6009,15 +5594,46 @@
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayB" = (
+/obj/structure/machinery/computer/aifixer,
+/turf/open/floor/prison/blue/northwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayC" = (
 /turf/open/desert/rock/deep/transition/northwest,
 /area/desert_dam/interior/caves/temple)
 "ayD" = (
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"ayE" = (
+/obj/structure/closet/secure_closet/RD,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayF" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayG" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tech_supply,
+/obj/item/phone,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayH" = (
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/temple)
+"ayI" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayJ" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/prison/blue/northeast,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayK" = (
 /turf/open/floor/prison/whitepurple/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -6044,6 +5660,18 @@
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayS" = (
 /turf/open/floor/prison/whitepurple/northeast,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayU" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayV" = (
+/obj/structure/surface/table,
+/obj/item/paper_bin,
+/obj/item/disk/nuclear,
+/turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -6073,6 +5701,17 @@
 	},
 /turf/open/floor/prison/blue/northwest,
 /area/desert_dam/building/administration/control_room)
+"azg" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"azh" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "azk" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -6083,6 +5722,13 @@
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"azm" = (
+/obj/structure/lamarr,
+/turf/open/floor/prison/blue/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"azo" = (
+/turf/open/floor/prison/blue,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "azp" = (
 /turf/open/floor/prison/whitepurple,
@@ -6670,6 +6316,10 @@
 "aBS" = (
 /turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
+"aBT" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "aBU" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
@@ -6724,6 +6374,22 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel)
+"aCh" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aCi" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/interior/caves/central_caves)
+"aCj" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "aCk" = (
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
@@ -6859,6 +6525,9 @@
 	icon_state = "road_edge_decal8"
 	},
 /turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aCR" = (
+/turf/open/asphalt/cement/cement14,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aCS" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -8508,6 +8177,10 @@
 /obj/structure/prop/dam/wide_boulder/boulder1,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
+"aJU" = (
+/obj/structure/prop/dam/large_boulder/boulder2,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "aJV" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -8781,6 +8454,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/landing_pad_two)
+"aLH" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aLI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/desert/dirt,
@@ -9402,6 +9079,15 @@
 "aOh" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"aOi" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/interior/caves/central_caves)
+"aOj" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/interior/caves/central_caves)
 "aOk" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -9981,6 +9667,12 @@
 /obj/structure/filtration/machine_96x96/filtration,
 /turf/open/floor/coagulation/icon4_8,
 /area/desert_dam/building/water_treatment_two/purification)
+"aRk" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/interior/caves/central_caves)
 "aRl" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -18431,6 +18123,10 @@
 "bHr" = (
 /turf/open/floor/warning/southwest,
 /area/desert_dam/interior/dam_interior/engine_room)
+"bHs" = (
+/obj/structure/prop/dam/boulder/boulder3,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "bHu" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
@@ -19609,6 +19305,18 @@
 "bNi" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/security/warden)
+"bNk" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"bNl" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "bNm" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -19892,6 +19600,10 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/office)
+"bOU" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "bOV" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -20366,6 +20078,12 @@
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
+"bRe" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "bRf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -20939,6 +20657,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
+"bTH" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"bTI" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "bTJ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement/cement9,
@@ -21041,6 +20769,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/workshop)
+"bUp" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "bUq" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
@@ -23158,6 +22895,15 @@
 /obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
+"ceI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "ceJ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -25043,6 +24789,10 @@
 /obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
+"coX" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/interior/caves/central_caves)
 "coY" = (
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor/prison,
@@ -25422,6 +25172,12 @@
 /obj/structure/cargo_container/trijent/left/alt,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
+"cqS" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/interior/caves/central_caves)
 "cqT" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/desert/dirt,
@@ -25872,6 +25628,15 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_civilian)
+"ctc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement14,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "ctd" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -25882,10 +25647,17 @@
 /obj/structure/machinery/computer/telecomms/server,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/building/substation/west)
+"ctg" = (
+/turf/open/asphalt/cement/cement2,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "cth" = (
 /obj/structure/machinery/computer/telecomms/monitor,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/building/substation/west)
+"cti" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement14,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "ctj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -26545,6 +26317,15 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
+"cwq" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "cwr" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
@@ -29081,6 +28862,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/workshop)
+"cHG" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "cHH" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopright"
@@ -31822,6 +31614,10 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/desert_dam/building/mining/workshop)
+"cUw" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/asphalt/cement/cement2,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "cUy" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -31911,6 +31707,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
+"cUW" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "cUY" = (
 /turf/open/floor/prison/cell_stripe/north,
 /area/desert_dam/building/warehouse/warehouse)
@@ -32097,6 +31901,11 @@
 	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
+"cWq" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/interior/caves/central_caves)
 "cWr" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -32295,6 +32104,17 @@
 "cYs" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_civilian)
+"cYu" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "cYv" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/disposalpipe/segment{
@@ -32482,6 +32302,28 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/warehouse/warehouse)
+"cZn" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"cZo" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"cZp" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "cZq" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
@@ -33426,6 +33268,12 @@
 "des" = (
 /turf/open/floor/prison/yellowcorner/west,
 /area/desert_dam/building/hydroponics/hydroponics)
+"det" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "deu" = (
 /turf/open/floor/prison/yellow,
 /area/desert_dam/building/hydroponics/hydroponics)
@@ -33637,6 +33485,10 @@
 	},
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"dfr" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "dfs" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -36088,6 +35940,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/disposals)
+"dCz" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "dCB" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
@@ -37046,6 +36905,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown3/west,
 /area/desert_dam/interior/dam_interior/disposals)
+"dKz" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "dKA" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_corner2/west,
@@ -41130,6 +40996,13 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_hydro)
+"ejK" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "ejR" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -41251,6 +41124,14 @@
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
+"exp" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/administrator,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "eyp" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -41819,6 +41700,16 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/exterior/valley/valley_security)
+"fGF" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "fGL" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/desert/dirt/dirt2,
@@ -42276,6 +42167,14 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
+"gCC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "gEj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -42488,6 +42387,10 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_east)
+"gYn" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/asphalt/cement/cement9,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "gYB" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/desert/dirt/dirt2,
@@ -43455,6 +43358,14 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/security/staffroom)
+"jcx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "jcK" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/cement_sunbleached,
@@ -43493,6 +43404,13 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"jli" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "jlI" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_security)
@@ -44031,6 +43949,15 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_central_north)
+"kAJ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/tool/kitchen/utensil/spoon,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
+/turf/open/desert/rock/deep/rock4,
+/area/desert_dam/interior/caves/temple)
 "kAV" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -44265,6 +44192,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/mining/workshop_foyer)
+"leq" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "leH" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 4;
@@ -44402,6 +44333,12 @@
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"lwh" = (
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi{
+	pixel_x = -32
+	},
+/turf/open/desert/rock/deep/transition/southwest,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "lxq" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
@@ -44773,6 +44710,12 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
+"miV" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1"
+	},
+/turf/open/floor/prison/blue,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "mjR" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -45332,6 +45275,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_security)
+"nxS" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "nyc" = (
 /obj/structure/platform/metal/almayer,
 /obj/effect/blocker/toxic_water/Group_2,
@@ -46929,6 +46876,11 @@
 "qKE" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_hydro)
+"qKF" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
+/turf/open/floor/prison/bluecorner/north,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "qKN" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -47135,6 +47087,13 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/white,
 /area/desert_dam/interior/dam_interior/garage)
+"reE" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "rfm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
@@ -48559,6 +48518,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_security)
+"tPQ" = (
+/obj/effect/landmark/corpsespawner/wygoon/lead,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/blue,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "tQR" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/bunker,
@@ -49507,6 +49471,13 @@
 "vTA" = (
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/landing_pad_two)
+"vTE" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "vTR" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -49625,6 +49596,17 @@
 /obj/structure/platform/metal/almayer/east,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
+"wfA" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"wfL" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "wgi" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -49708,6 +49690,10 @@
 	},
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
+"wrz" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "wrG" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_security)
@@ -49871,6 +49857,10 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river/riverside_east)
+"wHR" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/asphalt/cement/cement15,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "wIi" = (
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/desert/dirt,
@@ -50168,6 +50158,11 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
+"xlt" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs,
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "xlE" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -50503,6 +50498,11 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
+"xTM" = (
+/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "xUC" = (
 /obj/item/tool/weldingtool,
 /turf/open/floor/neutral,
@@ -54966,7 +54966,7 @@ bht
 bht
 bht
 bht
-afC
+adJ
 afc
 dTs
 dTs
@@ -55573,7 +55573,7 @@ cDY
 cDY
 cDY
 cDY
-abB
+adH
 cDY
 cDY
 cDY
@@ -59908,7 +59908,7 @@ bQZ
 bRU
 bOR
 bOY
-adV
+ceI
 cuq
 bOY
 bZp
@@ -60142,21 +60142,21 @@ bRX
 bRV
 bRk
 bWh
-adW
+bUp
 dgU
-adP
+ctc
 cOP
 bOY
 bZp
-adL
-adH
+ctg
+cti
 bOY
 cOP
 bOY
 bOY
 bZp
 bOY
-abG
+leq
 cxc
 gpC
 uRT
@@ -60375,22 +60375,22 @@ cdi
 bRb
 bRW
 bSW
-ael
-adY
+bTH
+cHG
 dgM
-adQ
-adM
-adM
-adM
+cUW
+det
+det
+det
 dgM
-adJ
+dCz
 bWh
 cGr
 cGr
 cGr
 bWh
 oJM
-abP
+ejK
 cxc
 cfP
 gsO
@@ -60623,8 +60623,8 @@ cCT
 cCT
 cCT
 cCT
-aco
-abY
+xlt
+wrz
 cxc
 bMI
 gpC
@@ -60752,7 +60752,7 @@ dTs
 dTs
 aOc
 aOc
-asK
+adE
 byX
 iqK
 aOc
@@ -60853,12 +60853,12 @@ bQc
 bOY
 cOP
 cOP
-adG
+dKz
 bOY
 cOP
 bOY
 bQc
-ace
+nxS
 cxc
 bMI
 gpC
@@ -61077,22 +61077,22 @@ bRk
 bRk
 bRk
 bOR
-acv
-acv
+bTI
+bTI
 bOY
-adS
-adN
+fGF
+jli
 bOY
-acv
-bOY
-bOY
-bOY
-acv
+bTI
 bOY
 bOY
 bOY
-acv
-ace
+bTI
+bOY
+bOY
+bOY
+bTI
+nxS
 cxc
 cfP
 gsO
@@ -61305,28 +61305,28 @@ bLh
 bsC
 bMJ
 bNm
-aeG
-acX
-adE
-adE
-adE
-adE
-acX
-adE
-adE
-adT
+gYn
+wfA
+wfL
+wfL
+wfL
+wfL
+wfA
+wfL
+wfL
+reE
 ujV
-adE
-acX
-adE
-adE
-adE
-acX
-adE
-adE
-adE
-acX
-aci
+wfL
+wfA
+wfL
+wfL
+wfL
+wfA
+wfL
+wfL
+wfL
+wfA
+wHR
 cxc
 bMI
 gpC
@@ -61538,30 +61538,30 @@ rcu
 brQ
 bpJ
 bMI
-aeI
-acl
-acl
-acl
-acl
-acl
-acl
-acl
-acl
-acl
+bNk
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
 bVV
 bML
-acl
-acl
-acl
-acl
-acl
-acl
-acl
-acl
-acl
-acl
-acl
-abE
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+bOU
+cwq
 bMI
 gpC
 glL
@@ -61773,28 +61773,28 @@ brQ
 bpJ
 bMI
 bMI
-acm
+bRe
 bMI
 bMI
-acm
+bRe
 bMI
 bMI
-acm
+bRe
 bMI
 bMI
 bVV
 bML
 bMI
-acm
+bRe
 bMI
 bMI
-acm
+bRe
 bMI
 bMI
-acm
+bRe
 bMI
 bMI
-acm
+bRe
 cfR
 bMI
 gpC
@@ -62240,7 +62240,7 @@ iVX
 brQ
 bpJ
 bMI
-aeJ
+bNl
 bOV
 bOV
 bOV
@@ -62475,7 +62475,7 @@ brQ
 bsC
 bMJ
 bNm
-aeH
+cUw
 sHm
 sHm
 sHm
@@ -83711,10 +83711,10 @@ axL
 axL
 ayx
 avG
-aqh
-apC
-anw
-amd
+ayB
+exp
+vTE
+azm
 avG
 dTs
 dTs
@@ -83945,10 +83945,10 @@ ayh
 axL
 ayx
 avG
-aqj
-anS
-anS
-amf
+ayE
+acl
+acl
+tPQ
 avG
 dTs
 dTs
@@ -84179,10 +84179,10 @@ avG
 avG
 avG
 avG
-aqm
-apE
-anT
-amg
+ayF
+ayU
+aLH
+azo
 avG
 dTs
 dTs
@@ -84413,10 +84413,10 @@ dTs
 dTs
 dTs
 avG
-aqw
-apG
-anW
-amg
+ayG
+ayV
+azg
+azo
 avG
 dTs
 dTs
@@ -84647,10 +84647,10 @@ dTs
 dTs
 dTs
 avG
-aqE
-apQ
-aog
-amg
+ayI
+xTM
+azh
+azo
 avG
 dTs
 dTs
@@ -84881,10 +84881,10 @@ dTs
 dTs
 dTs
 avG
-ard
-apU
-aol
-amj
+ayJ
+qKF
+jcx
+miV
 avG
 dTs
 dTs
@@ -85117,7 +85117,7 @@ avG
 avG
 avH
 avH
-aom
+gCC
 avH
 avG
 dTs
@@ -85611,15 +85611,15 @@ aVZ
 aVZ
 aZk
 bAN
-ahv
-ahp
+auu
+lwh
 aam
-agE
+avk
 aAb
-ags
-afL
+aCR
+avZ
 aam
-afE
+awp
 aam
 aam
 axP
@@ -85848,10 +85848,10 @@ bAN
 aeE
 bgH
 axP
-agE
+avk
 bij
 bgr
-afL
+avZ
 axP
 azz
 axP
@@ -86078,14 +86078,14 @@ aXW
 aVZ
 aVZ
 aZk
-aiu
+atI
 azR
 azR
 azR
-agJ
+avm
 bzV
 bzV
-agl
+awa
 azR
 azR
 azR
@@ -88653,7 +88653,7 @@ aan
 aeE
 aBc
 aBv
-ahL
+bHs
 aeE
 aeE
 aeE
@@ -88908,7 +88908,7 @@ aeE
 aeE
 aeE
 aOf
-aeK
+aJU
 aYz
 aYz
 dTs
@@ -94423,7 +94423,7 @@ dBr
 dBr
 dBr
 dBr
-abt
+adG
 eaQ
 dZn
 dHE
@@ -95171,10 +95171,10 @@ are
 amz
 aiH
 apW
-arX
-arX
-arX
-arM
+asM
+asM
+asM
+avQ
 apW
 dTs
 dTs
@@ -95404,11 +95404,11 @@ amx
 arg
 amz
 amz
-asy
-arY
-arY
-arY
-arN
+aso
+atV
+atV
+atV
+avU
 apW
 dTs
 dTs
@@ -95418,7 +95418,7 @@ dTs
 dTs
 dTs
 aGd
-aix
+abC
 adA
 aDz
 adr
@@ -95638,11 +95638,11 @@ amx
 are
 amz
 amz
-asy
-arY
-arY
-arY
-arN
+aso
+atV
+atV
+atV
+avU
 apW
 dTs
 dTs
@@ -95652,7 +95652,7 @@ dTs
 dTs
 adA
 aGd
-aix
+abC
 adA
 adA
 adA
@@ -95795,7 +95795,7 @@ dqt
 ddi
 dzD
 dCe
-abC
+abt
 dgY
 dDK
 dJi
@@ -95873,10 +95873,10 @@ are
 ant
 anv
 apW
-asj
-arY
-arY
-arN
+asW
+atV
+atV
+avU
 apW
 dTs
 dTs
@@ -95886,7 +95886,7 @@ dTs
 agC
 adA
 aGd
-aiA
+aiJ
 ajh
 adA
 adA
@@ -96107,10 +96107,10 @@ are
 amz
 apj
 apW
-ask
-asi
-arY
-arN
+asX
+aua
+atV
+avU
 apW
 dTs
 dTs
@@ -96120,7 +96120,7 @@ aEU
 aEV
 aJi
 aGd
-aix
+abC
 adA
 adA
 aFN
@@ -96341,10 +96341,10 @@ are
 amz
 apj
 apW
-asl
-ase
-ase
-arO
+asY
+aub
+aub
+avV
 apW
 dTs
 dTs
@@ -96354,7 +96354,7 @@ agD
 adA
 adA
 aGd
-aix
+abC
 adA
 ajC
 adA
@@ -96575,10 +96575,10 @@ are
 amz
 apj
 apW
-asp
-ash
-ash
-arP
+acX
+acv
+acv
+avW
 apW
 dTs
 dTs
@@ -96588,7 +96588,7 @@ aEV
 adA
 adA
 aGd
-aix
+abC
 adA
 adA
 adA
@@ -96810,19 +96810,19 @@ amz
 anD
 apW
 apW
-arW
-arW
-arW
+aco
+aco
+aco
 apW
 dTs
 dTs
 dTs
 aEV
-amk
-akR
-ajy
-aiD
-aiC
+aCh
+cYu
+cZo
+cZp
+cZn
 adA
 adA
 adA
@@ -97053,7 +97053,7 @@ aJd
 gab
 adA
 aEZ
-akS
+abP
 aGf
 aGf
 aGo
@@ -97287,7 +97287,7 @@ auB
 oUN
 akr
 aIA
-aix
+abC
 adA
 adA
 adA
@@ -97519,10 +97519,10 @@ awQ
 awQ
 awQ
 axu
-aon
-aml
-aiC
-ajN
+aBT
+aCj
+cZn
+aij
 adA
 adA
 adA
@@ -97756,7 +97756,7 @@ xEP
 aGU
 aGc
 aGn
-akx
+aik
 aCG
 agK
 agC
@@ -97991,7 +97991,7 @@ azO
 aHe
 aGn
 adA
-aiF
+dfr
 dTs
 aDY
 adA
@@ -98690,8 +98690,8 @@ aww
 axc
 oUN
 vte
-amu
-akT
+aRk
+afl
 dTs
 dTs
 dTs
@@ -98924,8 +98924,8 @@ awx
 axc
 oUN
 aFz
-amu
-akT
+aRk
+afl
 dTs
 dTs
 dTs
@@ -99158,8 +99158,8 @@ awx
 axc
 oUN
 aFz
-amu
-akV
+aRk
+afm
 dTs
 dTs
 dTs
@@ -99392,8 +99392,8 @@ aww
 axc
 oUN
 aFz
-amu
-alj
+aRk
+coX
 aFz
 dTs
 dTs
@@ -99626,8 +99626,8 @@ aww
 axc
 oUN
 aFz
-amu
-alj
+aRk
+coX
 aFz
 dTs
 dTs
@@ -99860,9 +99860,9 @@ aww
 axb
 gab
 aFz
-amu
-alq
-akB
+aRk
+cWq
+abG
 dTs
 dTs
 dTs
@@ -100093,9 +100093,9 @@ aww
 awy
 axe
 oUN
-aoo
-amv
-alj
+aOi
+aCi
+coX
 aFz
 dTs
 beB
@@ -100327,9 +100327,9 @@ awy
 auT
 auT
 axv
-aop
-amQ
-alr
+aOj
+ace
+cqS
 dTs
 dTs
 aeT
@@ -100561,9 +100561,9 @@ auT
 auT
 auT
 xEP
-apa
-amS
-alQ
+ath
+aaw
+atL
 dTs
 dTs
 aeT
@@ -100795,8 +100795,8 @@ auT
 auT
 axa
 oUN
-and
-and
+aci
+aci
 dTs
 dTs
 dTs
@@ -101033,7 +101033,7 @@ aFz
 bfh
 dTs
 dTs
-ajx
+abE
 aiL
 aFU
 aFz
@@ -101266,7 +101266,7 @@ gab
 aFz
 aGI
 cad
-ajx
+abE
 aiL
 aeT
 aFU
@@ -101537,7 +101537,7 @@ aeT
 aeT
 aeT
 aeT
-aft
+abB
 tKQ
 tKQ
 tKQ
@@ -101770,9 +101770,9 @@ aeT
 aeT
 aeT
 aeT
-aft
-aft
-aft
+abB
+abB
+abB
 tKQ
 tKQ
 aBk
@@ -101968,7 +101968,7 @@ gab
 bel
 beB
 bfi
-akC
+ail
 aeT
 aFU
 aFz
@@ -102004,10 +102004,10 @@ dTs
 dTs
 aeT
 aeT
-aft
-aft
-aft
-aft
+abB
+abB
+abB
+abB
 dTs
 tKQ
 tKQ
@@ -102199,8 +102199,8 @@ aJd
 aJd
 aJd
 gab
-aps
-amc
+acm
+abY
 aeT
 aeT
 aeT
@@ -102433,9 +102433,9 @@ dTs
 dTs
 dTs
 dTs
-ajx
-ajx
-amc
+abE
+abE
+abY
 aeT
 aeT
 dTs
@@ -102666,9 +102666,9 @@ dTs
 dTs
 dTs
 dTs
-ajx
-ajx
-ajx
+abE
+abE
+abE
 aiL
 aeT
 aeT
@@ -105050,7 +105050,7 @@ aBE
 aBE
 dTs
 aBL
-aeN
+kAJ
 ays
 aAv
 azC

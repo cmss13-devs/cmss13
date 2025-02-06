@@ -16,6 +16,9 @@
 
 /turf/open/shuttle/dropship/predship/tile/red4
 	icon_state = "hunter_red_4"
+
+/turf/open/shuttle/dropship/predship/tile/red4/glow
+	icon_state = "hunter_red_4"
 	light_on = TRUE
 	light_power = 1
 	light_range = 2

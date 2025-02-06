@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/ammo_magazine/rifle/boltaction,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/rifle/mar40,
@@ -731,10 +735,6 @@
 	pixel_y = 20
 	},
 /turf/open/floor/wood,
-/area/lv624/lazarus/crashed_ship)
-"yK" = (
-/obj/item/ammo_magazine/rifle/boltaction,
-/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "yT" = (
 /obj/structure/barricade/metal/wired{
@@ -2692,7 +2692,7 @@ dN
 ok
 Pu
 qU
-yK
+aa
 Xx
 xk
 dN

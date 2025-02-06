@@ -457,6 +457,10 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
+"acc" = (
+/obj/item/explosive/grenade/high_explosive,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
 "acd" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -16423,10 +16427,6 @@
 /obj/item/stack/sheet/wood,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
-"ovV" = (
-/obj/item/explosive/grenade/high_explosive,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/north_east_jungle)
 "owe" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
 	pixel_x = 8
@@ -46905,7 +46905,7 @@ lSs
 vjH
 vSG
 fuY
-ovV
+acc
 tyG
 iwh
 jRm

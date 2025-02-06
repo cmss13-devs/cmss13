@@ -719,6 +719,14 @@
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acN" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown{
+	layer = 3.1
+	},
+/obj/effect/landmark/corpsespawner/security/liaison,
+/turf/open/floor/wood,
+/area/bigredv2/outside/admin_building)
 "acP" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -22680,14 +22688,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/nw)
-"hqC" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown{
-	layer = 3.1
-	},
-/obj/effect/landmark/corpsespawner/security/liaison,
-/turf/open/floor/wood,
-/area/bigredv2/outside/admin_building)
 "hqD" = (
 /turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/lz2_south_cas)
@@ -61431,7 +61431,7 @@ aNQ
 aOO
 aUg
 aof
-hqC
+acN
 aOO
 aXn
 aof

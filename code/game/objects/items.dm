@@ -1137,8 +1137,7 @@
 		return FALSE
 
 	var/mob/living/location = loc
-	var/mob/living/loc_loc = loc.loc
-	if(istype(location) || istype(loc_loc))
+	if(istype(location))
 		to_chat(user, SPAN_WARNING("You cannot dissolve this while it is being held!"))
 		return FALSE
 

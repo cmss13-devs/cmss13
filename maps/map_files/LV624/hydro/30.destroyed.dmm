@@ -187,10 +187,10 @@
 	icon_state = "folding_3"
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/smg/fp9000,
 /obj/item/clothing/under/marine/veteran/pmc/leader{
 	pixel_x = -7
 	},
+/obj/item/weapon/gun/pistol/mod88,
 /turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/hydroponics)
 "vm" = (
@@ -250,9 +250,6 @@
 /area/lv624/lazarus/hydroponics)
 "zj" = (
 /obj/item/stack/folding_barricade,
-/obj/item/ammo_magazine/rifle/nsg23{
-	current_rounds = 17
-	},
 /obj/effect/spawner/gibspawner/human,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/leader,
 /turf/open/floor/plating,
@@ -268,16 +265,12 @@
 /area/lv624/lazarus/hydroponics)
 "zX" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000{
-	pixel_x = 1
-	},
-/obj/item/ammo_magazine/smg/fp9000{
-	pixel_x = -3
-	},
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
 /turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/hydroponics)
 "BL" = (
@@ -390,9 +383,9 @@
 	health = 50;
 	icon_state = "folding_3"
 	},
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 13
+	},
 /turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/hydroponics)
 "MT" = (
@@ -441,7 +434,6 @@
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
 "OO" = (
-/obj/item/ammo_magazine/rifle/nsg23/extended,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/item/stack/sheet/wood,
 /turf/open/floor/plating/panelscorched,
@@ -458,9 +450,6 @@
 /area/lv624/lazarus/hydroponics)
 "Qd" = (
 /obj/item/stack/folding_barricade,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
 /obj/item/clothing/gloves/marine/veteran/pmc{
 	armor_bio = 10;
 	armor_bomb = 10;
@@ -473,6 +462,10 @@
 	name = "damaged WY PMC gloves";
 	pixel_y = 9
 	},
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "QR" = (

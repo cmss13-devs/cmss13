@@ -1108,10 +1108,13 @@
 /area/bigredv2/outside/marshal_office)
 "HS" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = -8;
+	pixel_x = -6
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "Io" = (

@@ -1602,10 +1602,10 @@
 /area/bigredv2/outside/marshal_office)
 "agD" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agH" = (
@@ -3915,11 +3915,11 @@
 /area/bigredv2/outside/ne)
 "arE" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
-/obj/item/ammo_magazine/shotgun/incendiary,
-/obj/item/ammo_magazine/shotgun/incendiary,
-/obj/item/weapon/gun/shotgun/combat,
 /obj/structure/machinery/door/window/eastleft,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor/elevatorshaft/north,
 /area/bigredv2/caves/lambda/breakroom)
 "arF" = (
@@ -22681,9 +22681,13 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/nw)
 "hqC" = (
-/obj/item/ammo_magazine/rifle/mar40/lmg,
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves/mining)
+/obj/structure/bed,
+/obj/item/bedsheet/brown{
+	layer = 3.1
+	},
+/obj/effect/landmark/corpsespawner/security/liaison,
+/turf/open/floor/wood,
+/area/bigredv2/outside/admin_building)
 "hqD" = (
 /turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/lz2_south_cas)
@@ -24866,21 +24870,18 @@
 /turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "jRi" = (
-/obj/item/ammo_magazine/smg/bizon{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/weapon/gun/smg/bizon{
-	pixel_x = 1;
-	pixel_y = 11
-	},
-/obj/item/ammo_magazine/smg/bizon{
-	pixel_x = 11;
-	pixel_y = -3
-	},
-/obj/item/ammo_magazine/smg/bizon,
 /obj/structure/machinery/light/small{
 	dir = 8
+	},
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/smg/mp5{
+	pixel_x = 5;
+	pixel_y = -4
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -30112,7 +30113,12 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
 "pjD" = (
-/obj/item/weapon/gun/smg/fp9000,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5{
+	pixel_x = 5;
+	pixel_y = -4
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "pkd" = (
@@ -32934,9 +32940,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
-	pixel_y = 12
-	},
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "rXJ" = (
@@ -34683,6 +34687,7 @@
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_10_1"
 	},
+/obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "tFL" = (
@@ -36037,8 +36042,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/obj/item/weapon/gun/rifle/mar40/lmg,
-/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/weapon/gun/rifle/m41a/training,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "vdh" = (
@@ -36574,11 +36578,8 @@
 /area/bigredv2/outside/n)
 "vCd" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = 8
-	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = -7
+/obj/item/explosive/grenade/high_explosive/frag{
+	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -39182,12 +39183,10 @@
 	dir = 4
 	},
 /obj/structure/closet/crate,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "ylx" = (
@@ -53303,7 +53302,7 @@ rxh
 rxh
 rxh
 vcA
-hqC
+rxh
 aao
 aao
 aao
@@ -61432,7 +61431,7 @@ aNQ
 aOO
 aUg
 aof
-aNQ
+hqC
 aOO
 aXn
 aof

@@ -1,16 +1,18 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/rifle/mar40/lmg{
-	pixel_x = -7;
-	pixel_y = -4
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 12
 	},
-/obj/item/ammo_magazine/rifle/mar40/lmg{
-	pixel_x = 6;
-	pixel_y = -4
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 6
 	},
-/obj/item/ammo_magazine/rifle/mar40/lmg{
-	pixel_y = 8
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = -12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
@@ -242,7 +244,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "hw" = (
-/obj/item/weapon/gun/smg/fp9000,
+/obj/item/weapon/gun/smg/mp27,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "hZ" = (
@@ -374,7 +376,7 @@
 /area/lv624/ground/caves/south_west_caves)
 "lh" = (
 /obj/item/stack/rods,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "lj" = (
@@ -402,7 +404,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "lC" = (
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "lD" = (
@@ -519,7 +521,6 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "qU" = (
-/obj/item/ammo_magazine/smg/fp9000,
 /obj/item/stack/rods,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
@@ -534,7 +535,7 @@
 /area/lv624/lazarus/crashed_ship)
 "rw" = (
 /obj/item/stack/rods,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "rX" = (
@@ -640,7 +641,7 @@
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "wh" = (
-/obj/item/weapon/gun/rifle/sniper/svd,
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "wo" = (
@@ -732,8 +733,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "yK" = (
-/obj/item/stack/rods,
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "yT" = (
@@ -747,10 +747,7 @@
 /area/lv624/lazarus/crashed_ship)
 "yX" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/rifle/mar40/lmg{
-	pixel_x = 1;
-	pixel_y = 2
-	},
+/obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "zb" = (
@@ -880,8 +877,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "Cw" = (
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor/plating/warnplate,
 /area/lv624/lazarus/crashed_ship)
 "CO" = (
@@ -1404,7 +1400,7 @@
 /turf/closed/shuttle/ert,
 /area/lv624/lazarus/crashed_ship)
 "SW" = (
-/obj/item/weapon/gun/smg/fp9000,
+/obj/item/weapon/gun/smg/mp27,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Tx" = (
@@ -1473,7 +1469,7 @@
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Uv" = (
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Uw" = (
@@ -1491,8 +1487,8 @@
 /area/lv624/ground/caves/south_west_caves)
 "Vb" = (
 /obj/item/stack/rods,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "Ve" = (
@@ -1511,8 +1507,8 @@
 /turf/open/floor/almayer/green,
 /area/lv624/lazarus/crashed_ship)
 "Vj" = (
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/crashed_ship)
 "Vs" = (
@@ -1618,7 +1614,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Ya" = (
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Yh" = (
@@ -2696,8 +2692,8 @@ dN
 ok
 Pu
 qU
-Bc
 yK
+Xx
 xk
 dN
 Dm

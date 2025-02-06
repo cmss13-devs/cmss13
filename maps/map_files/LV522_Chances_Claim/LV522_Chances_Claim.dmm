@@ -17337,10 +17337,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
-"jxF" = (
-/obj/structure/largecrate/guns/russian,
-/turf/open/floor/plating,
-/area/lv522/landing_zone_1/tunnel)
 "jxT" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -52668,7 +52664,7 @@ pwa
 cpy
 cpy
 eYM
-jxF
+sdN
 wfP
 mzi
 eYM

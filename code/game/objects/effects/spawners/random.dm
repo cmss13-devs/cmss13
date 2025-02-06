@@ -268,13 +268,8 @@
 	icon_state = "loot_goggles"
 
 /obj/effect/spawner/random/goggles/item_to_spawn()
-	return pick(prob(4);/obj/item/clothing/glasses/thermal/syndi/bug_b_gone,\
-				prob(4);/obj/item/clothing/glasses/thermal/syndi,\
-				prob(4);/obj/item/clothing/glasses/thermal/monocle,\
-				prob(4);/obj/item/clothing/glasses/thermal/eyepatch,\
-				prob(4);/obj/item/clothing/glasses/welding/superior,\
+	return pick(prob(4);/obj/item/clothing/glasses/welding/superior,\
 				prob(4);/obj/item/clothing/glasses/hud/security/jensenshades,\
-				prob(4);/obj/item/clothing/glasses/meson/refurbished,\
 				prob(4);/obj/item/clothing/glasses/science,\
 				prob(4);/obj/item/clothing/glasses/hud/sensor,\
 				prob(4);/obj/item/clothing/glasses/hud/security)
@@ -521,7 +516,6 @@
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/shotgun/merc = null,
-		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar,
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
 		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,

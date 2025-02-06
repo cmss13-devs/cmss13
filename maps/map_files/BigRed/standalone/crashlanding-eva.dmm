@@ -125,16 +125,6 @@
 	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"aA" = (
-/obj/structure/closet/crate/secure/weyland,
-/obj/item/ammo_magazine/rifle/ap,
-/obj/item/ammo_magazine/rifle/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/ap,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
 "aB" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/general_offices)
@@ -201,7 +191,6 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/general_offices)
 "aT" = (
-/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/bigredv2/outside/general_offices)
 "aU" = (
@@ -224,24 +213,6 @@
 	dir = 1
 	},
 /turf/open/floor/wall_thermite,
-/area/bigredv2/outside/general_offices)
-"aX" = (
-/obj/structure/closet/crate/secure/weyland,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23/extended,
-/obj/item/ammo_magazine/rifle/nsg23/extended,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "aY" = (
 /obj/effect/decal/cleanable/blood{
@@ -281,13 +252,16 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"bd" = (
-/obj/item/ammo_magazine/smg/fp9000,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
 "be" = (
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_x = -6;
+	pixel_y = -11
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_x = 7;
+	pixel_y = -6
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
@@ -366,6 +340,7 @@
 "bt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/wygoon,
+/obj/item/device/motiondetector/hacked/pmc,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "bu" = (
@@ -429,12 +404,6 @@
 	icon_state = "wy15"
 	},
 /area/bigredv2/outside/general_offices)
-"bJ" = (
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
 "bM" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy12"
@@ -451,15 +420,19 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cc" = (
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/ammo_magazine/rifle{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/bigredv2/outside/general_offices)
 "cd" = (
-/obj/structure/closet/crate/secure/weyland,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
-/obj/item/device/motiondetector/hacked/pmc,
 /obj/item/defenses/handheld/planted_flag/wy,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/bigredv2/outside/general_offices)
@@ -1715,7 +1688,7 @@ bF
 bF
 bF
 cc
-aA
+Ul
 aq
 al
 eL
@@ -1741,10 +1714,10 @@ ax
 Bv
 cm
 bq
-bd
-aX
+Ul
+Ul
 Hw
-bJ
+Ul
 aS
 bk
 bk

@@ -106,11 +106,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
-"aaB" = (
-/obj/item/storage/pill_bottle/antitox/skillless,
-/obj/structure/surface/rack,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/exterior/cp_colony_grounds)
 "aaC" = (
 /obj/effect/spider/stickyweb,
 /obj/structure/machinery/space_heater,
@@ -517,12 +512,6 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
-"acJ" = (
-/obj/item/storage/pill_bottle/antitox/skillless,
-/obj/item/storage/pill_bottle/antitox/skillless,
-/obj/structure/surface/rack,
-/turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_colony_grounds)
 "acL" = (
 /turf/closed/shuttle/elevator/arrivals,
 /area/shiva/interior/colony/central)
@@ -812,11 +801,8 @@
 /area/shiva/interior/colony/medseceng)
 "aeN" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/rifle/m41aMK1,
 /obj/item/storage/belt/marine,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "aeP" = (
@@ -1926,8 +1912,8 @@
 "amI" = (
 /obj/structure/surface/table,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/item/ammo_magazine/handful/shotgun/incendiary,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "amJ" = (
@@ -2743,10 +2729,10 @@
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/disposals)
 "asT" = (
-/obj/item/weapon/gun/shotgun/type23,
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/disposals)
 "asU" = (
@@ -6188,7 +6174,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor/shiva/purplefull/east,
 /area/shiva/interior/colony/research_hab)
 "bVz" = (
@@ -6248,15 +6234,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/garage)
-"bYk" = (
-/obj/structure/closet/secure_closet/medical3{
-	req_access = null
-	},
-/obj/item/explosive/grenade/custom/cleaner,
-/obj/item/explosive/grenade/custom/cleaner,
-/obj/item/storage/pill_bottle/dexalin/skillless,
-/turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/colony/research_hab)
 "bYO" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
@@ -6914,12 +6891,9 @@
 /area/shiva/interior/colony/medseceng)
 "cSn" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/storage/belt/marine,
 /obj/item/clothing/suit/armor/riot/marine,
+/obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
 "cTe" = (
@@ -8089,15 +8063,6 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
-"exm" = (
-/obj/structure/closet/secure_closet/medical3{
-	req_access = null
-	},
-/obj/item/explosive/grenade/custom/cleaner,
-/obj/item/explosive/grenade/custom/cleaner,
-/obj/item/storage/pill_bottle/bicaridine/skillless,
-/turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/colony/research_hab)
 "exX" = (
 /turf/open/floor/shiva/bluefull/west,
 /area/shiva/interior/warehouse)
@@ -8291,11 +8256,8 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/obj/item/weapon/gun/rifle/m41aMK1,
 /obj/item/storage/belt/marine,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "eOK" = (
@@ -8960,7 +8922,9 @@
 	flipped = 1
 	},
 /obj/item/tool/stamp,
-/obj/item/weapon/gun/rifle/lmg,
+/obj/item/weapon/gun/rifle/lmg{
+	starting_attachment_types = null
+	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "fGG" = (
@@ -9682,11 +9646,6 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/botany)
-"gCe" = (
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/shiva,
-/area/shiva/interior/colony/research_hab)
 "gCx" = (
 /obj/structure/machinery/landinglight/ds1/spoke,
 /turf/open/auto_turf/snow/layer1,
@@ -9744,10 +9703,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
-"gGf" = (
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/turf/open/floor/shiva,
-/area/shiva/interior/colony/research_hab)
 "gGq" = (
 /obj/item/lightstick/red/variant/planted,
 /turf/open/auto_turf/snow/layer2,
@@ -10842,9 +10797,6 @@
 	pixel_x = 6;
 	pixel_y = 13
 	},
-/obj/item/device/implanter/subdermal_armor{
-	pixel_x = 12
-	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "hTd" = (
@@ -11187,9 +11139,9 @@
 "ipY" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/machinery/light/double,
-/obj/item/weapon/gun/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "iqh" = (
@@ -11889,7 +11841,6 @@
 /area/shiva/exterior/lz1_valley)
 "jcv" = (
 /obj/structure/surface/table,
-/obj/item/clothing/suit/armor/hos,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
@@ -12368,9 +12319,9 @@
 /area/shiva/exterior/cp_s_research)
 "jOA" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/gun/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
-/obj/item/ammo_magazine/smg/pps43,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "jOP" = (
@@ -15273,13 +15224,6 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
-"mYX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/turf/open/floor/shiva/purplefull/east,
-/area/shiva/interior/colony/research_hab)
 "mZb" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/wood,
@@ -18343,15 +18287,6 @@
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
-"qRo" = (
-/obj/structure/closet/secure_closet/medical3{
-	req_access = null
-	},
-/obj/item/explosive/grenade/custom/cleaner,
-/obj/item/explosive/grenade/custom/cleaner,
-/obj/item/storage/pill_bottle/kelotane/skillless,
-/turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/colony/research_hab)
 "qRJ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -19198,7 +19133,7 @@
 	dir = 4;
 	flipped = 1
 	},
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "rZt" = (
@@ -23125,7 +23060,6 @@
 	},
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
-/obj/item/storage/pill_bottle/inaprovaline/skillless,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "wPs" = (
@@ -50303,7 +50237,7 @@ ack
 asz
 aUU
 aXh
-mYX
+aXh
 bVr
 aXh
 aXh
@@ -50466,7 +50400,7 @@ asz
 rZt
 rZt
 rZt
-gCe
+dAt
 bDx
 asz
 kXt
@@ -50627,7 +50561,7 @@ rZt
 rZt
 rZt
 rZt
-gGf
+rZt
 rZt
 rZt
 qVo
@@ -51218,7 +51152,7 @@ eTV
 eTV
 lwo
 eOM
-acJ
+arX
 eOM
 afb
 afb
@@ -51380,7 +51314,7 @@ arX
 kJE
 arX
 arX
-aaB
+bjv
 eOM
 afD
 afZ
@@ -52899,7 +52833,7 @@ lSU
 lSU
 fgH
 lSU
-bYk
+wOO
 goj
 chU
 dsY
@@ -53061,7 +52995,7 @@ lSU
 lSU
 dwQ
 lSU
-qRo
+wOO
 goj
 wnK
 goj
@@ -53223,7 +53157,7 @@ rRP
 lSU
 cvn
 lSU
-exm
+wOO
 goj
 rWS
 fVI

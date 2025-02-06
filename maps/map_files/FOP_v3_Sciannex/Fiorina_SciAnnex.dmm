@@ -3859,7 +3859,6 @@
 "cYP" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/storage/pill_bottle/dexalin/skillless,
-/obj/effect/spawner/random/gun/special/midchance,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
@@ -5461,8 +5460,8 @@
 	pixel_x = 10;
 	pixel_y = -3
 	},
-/obj/item/weapon/gun/shotgun/combat,
 /obj/structure/closet/crate/trashcart,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/corsat/plate,
 /area/fiorina/tumor/aux_engi)
 "emo" = (
@@ -6766,7 +6765,6 @@
 /area/fiorina/station/park)
 "fjI" = (
 /obj/structure/closet/cabinet,
-/obj/effect/spawner/random/gun/special/midchance,
 /obj/item/attachable/magnetic_harness,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
@@ -17384,7 +17382,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/botany)
 "ntf" = (
-/obj/item/implanter/compressed,
 /obj/structure/safe,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/redfull,
@@ -27627,7 +27624,6 @@
 /area/fiorina/tumor/servers)
 "vkh" = (
 /obj/structure/closet/cabinet,
-/obj/effect/spawner/random/gun/special/midchance,
 /obj/item/clothing/suit/armor/det_suit,
 /obj/item/attachable/magnetic_harness,
 /obj/effect/landmark/objective_landmark/medium,

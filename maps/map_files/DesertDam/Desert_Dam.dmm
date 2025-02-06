@@ -3303,8 +3303,11 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "aoF" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/ammo_magazine/shotgun/incendiary,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = -8;
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aoG" = (

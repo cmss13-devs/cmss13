@@ -153,8 +153,22 @@
 		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
 		return
 
-	var/dat = "<html>"
-	dat += "<body>"
+	var/dat = {"
+	<table width='100%'>
+	<tr>
+	<td width='20%'>
+	<div align='center'>
+	<b>Search:</b>
+	</div>
+	</td>
+	<td width='80%'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:99%;'>
+	</td>
+	</tr>
+	</table>
+	<br>
+	<table border=0 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
+	"}
 
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, key))
 	for(var/datum/view_record/note_view/N as anything in NL)
@@ -166,20 +180,19 @@
 		if(N.is_ban)
 			var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
 			color = "#880000"
-			dat += "<font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
+			dat += "<tr><td><font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		else
 			if(N.is_confidential)
 				color = "#AA0055"
 
-			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
-		dat += "<br><br>"
+			dat += "<tr><td><font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
+		dat += "</td></tr>"
 
-	dat += "<br>"
+	dat += "</table><br>"
 	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info=[key]'>Add Note</A><br>"
 	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
 	dat += "<A href='byond://?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
 
-	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
 
 /datum/admins/proc/check_ckey(target_key as text)

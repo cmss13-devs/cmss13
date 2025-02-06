@@ -74,7 +74,7 @@
 		var/mob/M = loc
 		var/turf/T = M.loc
 		if(istype(T, /turf))
-			if( (world.time - mob_move_time) >= (5 SECONDS) && M.last_move_dir)
+			if((world.time - mob_move_time) >= (5 SECONDS) && M.last_move_dir && M.stat == CONSCIOUS)
 				mob_move_time = world.time
 				step(M, M.last_move_dir)
 		to_chat(M, SPAN_DANGER("You feel a sharp shock!"))

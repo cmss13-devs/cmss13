@@ -52,9 +52,8 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	for(var/mob/current_mob as anything in GLOB.living_xeno_list)
 		if(current_mob.mob_flags & NOBIOSCAN)
 			continue
-		var/area/A = get_area(current_mob)
-		if(A?.flags_area & AREA_AVOID_BIOSCAN)
-			xenos_on_ship++
+		var/area/area = get_area(current_mob)
+		if(area?.flags_area & AREA_AVOID_BIOSCAN)
 			continue
 		var/atom/where = current_mob
 		if (where.z == 0 && current_mob.loc)
@@ -69,6 +68,9 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(current_human.mob_flags & NOBIOSCAN)
+			continue
+		var/area/area = get_area(current_human)
+		if(area?.flags_area & AREA_AVOID_BIOSCAN)
 			continue
 		var/atom/where = current_human
 		if(isspecieshuman(current_human))

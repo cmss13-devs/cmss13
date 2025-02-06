@@ -481,6 +481,13 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	.["can_disengage"] = FALSE
 
 /obj/structure/machinery/nuclearbomb/tech/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(!ishuman(ui.user))
+		return
+
+	if(!allowed(ui.user))
+		to_chat(ui.user, SPAN_INFO("Access denied!"))
+		return
+
 	switch(action)
 		if("toggleNuke")
 			if(timing == -1)

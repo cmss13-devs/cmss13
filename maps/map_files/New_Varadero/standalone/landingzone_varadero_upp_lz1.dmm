@@ -7,16 +7,7 @@
 	unacidable = 1
 	},
 /turf/closed/wall/rock/brown,
-/area/varadero/interior_protected/caves/central)
-"ab" = (
-/obj/structure/machinery/door/poddoor{
-	desc = "A podlock that leads to the main Marine base on LV-624. It requires power from the outpost to stay shut. Better not let anything get through this...";
-	id = "tunnel3";
-	name = "\improper Tunnel Entrance";
-	unacidable = 1
-	},
-/turf/open/asphalt/cement,
-/area/varadero/interior_protected/caves/central)
+/area/event/dynamic/lit)
 "aj" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -634,7 +625,7 @@
 	},
 /obj/structure/prop/rock/black_ground,
 /turf/open/auto_turf/sand_white/layer0,
-/area/varadero/interior_protected/caves/central)
+/area/event/dynamic/lit)
 "kk" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean/deep_ocean,
@@ -1360,7 +1351,7 @@
 "xk" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/sand_white/layer0,
-/area/varadero/interior_protected/caves/central)
+/area/event/dynamic/lit)
 "xl" = (
 /turf/open/gm/coast/south,
 /area/varadero/exterior/monsoon)
@@ -1467,7 +1458,7 @@
 	icon_state = "road_edge_decal11"
 	},
 /turf/open/asphalt/cement,
-/area/varadero/interior_protected/caves/central)
+/area/event/dynamic/lit)
 "zU" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -1886,7 +1877,7 @@
 	pixel_y = -17
 	},
 /turf/open/asphalt/cement,
-/area/varadero/interior_protected/caves/central)
+/area/event/dynamic/lit)
 "Jf" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal8"
@@ -1956,7 +1947,7 @@
 	icon_state = "sandbag_0"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/varadero/interior_protected/caves/central)
+/area/event/dynamic/lit)
 "Li" = (
 /turf/open/floor/almayer/plate,
 /area/event/metal/dynamic)
@@ -2400,7 +2391,7 @@
 /area/event/metal/dynamic)
 "Sf" = (
 /turf/open/auto_turf/sand_white/layer0,
-/area/varadero/interior_protected/caves/central)
+/area/event/dynamic/lit)
 "Sn" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
@@ -2538,7 +2529,7 @@
 	icon_state = "road_edge_decal9"
 	},
 /turf/open/asphalt/cement,
-/area/varadero/interior_protected/caves/central)
+/area/event/dynamic/lit)
 "VU" = (
 /obj/structure/machinery/door/poddoor{
 	desc = "A podlock that leads to the main Marine base on LV-624. It requires power from the outpost to stay shut. Better not let anything get through this...";
@@ -2547,7 +2538,7 @@
 	unacidable = 1
 	},
 /turf/open/asphalt/cement,
-/area/varadero/interior/oob)
+/area/event/dynamic/lit)
 "VX" = (
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
@@ -3441,11 +3432,11 @@ tM
 HH
 tM
 gL
-ab
+VU
 VO
-tM
-tM
-Ba
+mX
+mX
+Sz
 aa
 "}
 (13,1,1) = {"
@@ -3498,11 +3489,11 @@ tM
 kF
 kF
 ji
-ab
-YQ
+VU
+zX
 IX
-kF
-Kq
+kB
+Pi
 aa
 "}
 (14,1,1) = {"
@@ -3555,10 +3546,10 @@ ZF
 ZF
 ZF
 Ny
-ab
-Wn
-ZF
-ZF
+VU
+lL
+Gk
+Gk
 zS
 aa
 "}
@@ -6523,7 +6514,7 @@ zX
 kB
 Pi
 yJ
-CT
+Qu
 VX
 "}
 (67,1,1) = {"
@@ -6751,7 +6742,7 @@ yW
 yW
 yW
 FN
-CT
+Qu
 VX
 "}
 (71,1,1) = {"

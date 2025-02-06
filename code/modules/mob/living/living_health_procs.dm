@@ -531,7 +531,7 @@
 	// shut down ongoing problems
 	status_flags &= ~PERMANENTLY_DEAD
 	nutrition = NUTRITION_NORMAL
-	bodytemperature = T20C
+	bodytemperature = T37C
 	recalculate_move_delay = TRUE
 	sdisabilities = 0
 	disabilities = 0

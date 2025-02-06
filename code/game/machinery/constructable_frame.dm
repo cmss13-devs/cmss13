@@ -8,6 +8,7 @@
 	density = FALSE
 	anchored = TRUE
 	use_power = USE_POWER_NONE
+	needs_power = FALSE
 	var/requirements_left
 	var/obj/item/circuitboard/machine/circuit = null
 	var/list/components = null

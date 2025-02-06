@@ -1094,8 +1094,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/mob/living/carbon/xenomorph/hellhound/Hellhound as anything in GLOB.hellhound_list)
 		if(Hellhound.client)
 			continue
+		if(Hellhound.aghosted)
+			continue
 		hellhound_mob_list[Hellhound.name] = Hellhound
-
 	var/choice = tgui_input_list(usr, "Pick a Hellhound:", "Join as Hellhound", hellhound_mob_list)
 	if(!choice)
 		return

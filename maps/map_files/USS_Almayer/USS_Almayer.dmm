@@ -75,7 +75,7 @@
 /area/almayer/stair_clone/upper/starboard_aft)
 "aan" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/mono,
 /area/almayer/command/lifeboat)
 "aao" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
@@ -6799,7 +6799,7 @@
 /area/almayer/command/telecomms)
 "asT" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/mono,
 /area/almayer/engineering/upper_engineering)
 "asU" = (
 /obj/item/device/flashlight/lamp{
@@ -15940,9 +15940,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bIj" = (
-/turf/open/floor/almayer/emeraldcorner,
-/area/almayer/hallways/lower/port_midship_hallway)
 "bIn" = (
 /obj/structure/machinery/computer/cameras/almayer_network,
 /obj/structure/surface/table/almayer,
@@ -20785,7 +20782,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/mono,
 /area/almayer/hallways/lower/port_midship_hallway)
 "cSP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -36313,9 +36310,6 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/pilotbunks)
-"jCx" = (
-/turf/open/floor/almayer/bluecorner/east,
-/area/almayer/hallways/lower/port_midship_hallway)
 "jCK" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft";
@@ -42566,9 +42560,6 @@
 /obj/structure/medical_supply_link,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
-"mqt" = (
-/turf/open/floor/almayer/bluecorner,
-/area/almayer/hallways/lower/port_midship_hallway)
 "mqB" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/orange/west,
@@ -44993,10 +44984,6 @@
 /obj/structure/machinery/sentry_holder/almayer,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
-"noe" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/upper/aft_hallway)
 "noj" = (
 /obj/structure/largecrate,
 /obj/structure/prop/server_equipment/laptop{
@@ -52233,7 +52220,7 @@
 /area/almayer/hallways/upper/aft_hallway)
 "qsL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/mono,
 /area/almayer/engineering/ce_room)
 "qtv" = (
 /obj/structure/disposalpipe/segment,
@@ -57856,9 +57843,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
-"sLX" = (
-/turf/open/floor/almayer/emeraldcorner/east,
-/area/almayer/hallways/lower/port_midship_hallway)
 "sMu" = (
 /obj/item/trash/uscm_mre,
 /obj/structure/bed/chair/comfy/charlie{
@@ -64656,7 +64640,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_m_p)
 "vzK" = (
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/mono,
 /area/almayer/engineering/ce_room)
 "vzP" = (
 /obj/structure/surface/table/almayer,
@@ -67567,11 +67551,10 @@
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/lower_medical_medbay)
 "wFi" = (
-/obj/structure/machinery/vending/cigarette{
-	pixel_y = 12;
+/obj/structure/machinery/vending/cigarette/koorlander{
+	pixel_y = 11;
 	pixel_x = 16;
-	density = 0;
-	can_block_movement = 0
+	density = 0
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/panic)
@@ -108623,15 +108606,15 @@ oSM
 brq
 gOS
 gOS
-sLX
-bIj
+adT
+adT
 jtZ
 eLu
 brq
 xpl
 exc
-jCx
-mqt
+adT
+adT
 vno
 vno
 brq
@@ -120065,7 +120048,7 @@ fcM
 uzE
 qsL
 nim
-noe
+tzF
 pqY
 qhT
 alR
@@ -120367,7 +120350,7 @@ oBr
 oBr
 oBr
 ovQ
-bqc
+ahj
 bqc
 bqc
 bqc
@@ -120391,7 +120374,7 @@ cJs
 uPE
 uPE
 uPE
-uPE
+adU
 pqw
 bJC
 bJC

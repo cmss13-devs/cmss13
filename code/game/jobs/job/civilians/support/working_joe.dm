@@ -14,7 +14,7 @@
 	gear_preset = /datum/equipment_preset/synth/working_joe
 	gets_emergency_kit = FALSE
 
-	job_options = list(STANDARD_VARIANT = "JOE", HAZMAT_VARIANT = "HAZ")
+	job_options = list(STANDARD_VARIANT = "ДЖО", HAZMAT_VARIANT = "ХАЗ")
 	var/standard = TRUE
 
 /datum/job/civilian/working_joe/check_whitelist_status(mob/user)

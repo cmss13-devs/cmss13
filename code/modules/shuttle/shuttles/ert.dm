@@ -197,8 +197,8 @@
 
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
-	width  = 7
-	height = 13
+	width  = 9
+	height = 16
 	var/is_external = FALSE
 	var/lockdown_on_land = FALSE
 

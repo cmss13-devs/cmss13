@@ -32,8 +32,12 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/completion_marked = FALSE
 	/// The tutorial_id of what tutorial has to be completed before being able to do this tutorial
 	var/required_tutorial
-
+	/// Holds the CALLBACK information for the next step of the (tutorials) operation. For use with manual_message_to_player
 	var/datum/callback/next_tutorial_step
+	/// For use in the handle_pill_bottle and handle_autoinjector helper, should always be set to 0 when not in use
+	var/handle_helper_status = 0
+	/// Used in HM tutorials to reference the main test dummy
+	var/mob/living/carbon/human/realistic_dummy/marine_dummy
 
 /datum/tutorial/Destroy(force, ...)
 	GLOB.ongoing_tutorials -= src
@@ -89,7 +93,6 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	if(tutorial_mob)
 		remove_action(tutorial_mob, /datum/action/tutorial/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup
-		remove_action(tutorial_mob, /datum/action/tutorial/skip_text)
 		if(tutorial_mob.client?.prefs && (completed || completion_marked))
 			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
 			tutorial_mob.client.prefs.save_preferences()
@@ -142,12 +145,12 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	if(!(type))
 		type = /atom/movable/screen/text/screen_text/command_order/tutorial
 	tutorial_mob.play_screen_text(message, type, rgb(103, 214, 146))
-	to_chat(tutorial_mob, SPAN_NOTICE(message))
 
 /// Slower variety of message_to_player, when delivering larger amounts of information
 /datum/tutorial/proc/slower_message_to_player(message)
 	message_to_player(message, /atom/movable/screen/text/screen_text/command_order/tutorial/slower)
 
+/// Variant of tutorial screentext that never fades off screen, except when told to by /datum/action/tutorial/skip_text
 /datum/tutorial/proc/manual_message_to_player(message)
 	message_to_player(message, /atom/movable/screen/text/screen_text/command_order/tutorial/manual)
 
@@ -159,7 +162,6 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/init_mob()
 	tutorial_mob.AddComponent(/datum/component/tutorial_status)
 	give_action(tutorial_mob, /datum/action/tutorial/tutorial_end, null, null, src)
-	give_action(tutorial_mob, /datum/action/tutorial/skip_text, null, null, src)
 	ADD_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
 
 /// Ends the tutorial after a certain amount of time.
@@ -253,6 +255,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	selected_tutorial.end_tutorial()
 
+/// Give to tutorial mobs as a 'continue' button when using manual text in tutorials. Used to end screentext spawned with manual_message_to_player
 /datum/action/tutorial/skip_text
 	name = "Next Tutorial Text"
 	action_icon_state = "walkman_next"
@@ -272,12 +275,16 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	var/mob/tutorial_mob = owner
 
+	if(selected_tutorial.tutorial_ending == TRUE)
+		return
+
 	var/atom/movable/manual_text = listgetindex(tutorial_mob.client.screen_texts,1)
 	if(istype(manual_text, /atom/movable/screen/text/screen_text/command_order/tutorial/manual))
 		if(length(tutorial_mob.client.screen_texts) <= 1)
 			selected_tutorial.handle_tutorial_step()
 		INVOKE_ASYNC(manual_text, TYPE_PROC_REF(/atom/movable/screen/text/screen_text/command_order/tutorial/manual, end_play))
 
+/// Replaces addtimer in tutorials when using MANUAL TEXT! Do NOT use in tutorial steps without manual_message_to_player present
 /datum/tutorial/proc/register_tutorial_step(datum/callback/callback)
 	SIGNAL_HANDLER
 
@@ -286,13 +293,107 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	next_tutorial_step = callback
 
+/// Skips to the next step of the tutorial, as registered with register_tutorial_step
 /datum/tutorial/proc/handle_tutorial_step()
-
 	if(next_tutorial_step)
 		var/datum/callback/override_detection = next_tutorial_step
 		next_tutorial_step.Invoke()
 		if(next_tutorial_step == override_detection)
 			next_tutorial_step = null
+
+/**
+* Handles the creation and describes the use of pill bottles and pills in HM tutorials
+*
+* Currently limited to /mob/living/carbon/human/realistic_dummy
+*
+* Will break if used more than once per proc, see add_to_tracking_atoms() limitations
+*
+* Arguments:
+* * target Set to realistic_dummy of choosing
+* * name Uppercased name of the selected chemical, in string form
+* * maptext Sets the maptext_label variable for the created pill bottle, also a string
+* * iconnumber Sets the icon for the created pill bottle, input a number string ONLY (IE: "1")
+* * pill Typepath of the pill to place into the pill bottle
+*/
+
+/datum/tutorial/proc/handle_pill_bottle(target, name, maptext, iconnumber, pill)
+	SIGNAL_HANDLER
+
+	if(handle_helper_status == 0)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+		var/obj/item/storage/pill_bottle/bottle = new /obj/item/storage/pill_bottle
+		medbelt.handle_item_insertion(bottle)
+		medbelt.update_icon()
+
+		bottle.name = "\improper [name] pill bottle"
+		bottle.icon_state = "pill_canister[iconnumber]"
+		bottle.maptext_label = "[maptext]"
+		bottle.maptext = SPAN_LANGCHAT("[maptext]")
+		bottle.max_storage_space = 1
+		bottle.overlays.Cut()
+		bottle.bottle_lid = FALSE
+		bottle.overlays += "pills_closed"
+
+		var/obj/item/reagent_container/pill/tpill = new pill(bottle) // tpill = tracking pill
+		add_to_tracking_atoms(bottle)
+
+
+		message_to_player("A <b>[name] Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
+		message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>[name] Pill Bottle</b> to draw a pill.")
+
+		add_highlight(medbelt, COLOR_GREEN)
+		add_highlight(bottle, COLOR_GREEN)
+
+		handle_helper_status++
+		RegisterSignal(tpill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(handle_pill_bottle))
+		return
+
+	if(handle_helper_status == 1)
+		message_to_player("Good. Now stand next to the Dummy, and click their body while holding the pill to feed it to them.")
+
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bottle)
+
+
+		UnregisterSignal(target, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+
+		add_highlight(target, COLOR_GREEN)
+		remove_highlight(medbelt)
+		remove_highlight(bottle)
+
+		handle_helper_status++
+		RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(handle_pill_bottle))
+		RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(handle_pill_bottle))
+
+		return
+
+	if(handle_helper_status == 2)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bottle)
+
+		if(target == tutorial_mob)
+			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+			UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
+			var/mob/living/living_mob = tutorial_mob
+			living_mob.rejuvenate()
+			remove_highlight(bottle)
+			QDEL_IN(bottle, 1 SECONDS)
+			medbelt.update_icon()
+			message_to_player("Don't feed yourself the pill, try again.")
+			handle_helper_status = 0
+			UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+			spawn(2.1 SECONDS)
+			SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
+			return
+
+		else if(target == marine_dummy)
+			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+			UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
+
+			remove_highlight(bottle)
+			QDEL_IN(bottle, 1 SECONDS)
+			handle_helper_status = 0
+			SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 
 /datum/map_template/tutorial
 	name = "Tutorial Zone (12x12)"

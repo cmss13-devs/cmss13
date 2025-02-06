@@ -180,7 +180,6 @@
 	)
 	flags = REAGENT_TYPE_MEDICAL
 
-
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"
 	id = "neuraline"

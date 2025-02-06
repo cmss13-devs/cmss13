@@ -279,7 +279,6 @@
 	visible_message(SPAN_DANGER("[src] collapses into nothing."))
 	qdel(src)
 
-
 /obj/item/reagent_container/hypospray/autoinjector/skillless
 	name = "first-aid autoinjector"
 	chemname = "tricordrazine"

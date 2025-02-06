@@ -335,6 +335,7 @@
 		/obj/item/explosive/grenade/sebb,
 		/obj/item/explosive/grenade/smokebomb/airburst,
 		/obj/item/explosive/grenade/flashbang,
+		/obj/item/explosive/grenade/high_explosive/m15/rubber,
 	)
 	preload = /obj/item/explosive/grenade/slug/baton
 	disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov)

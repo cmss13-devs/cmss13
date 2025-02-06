@@ -11,7 +11,7 @@
 	var/is_transformer_on = FALSE
 	var/is_inside_lz = FALSE
 	var/backup_generator_on = FALSE
-	var/linked_to_terminal = FALSE
+	var/obj/structure/machinery/fob/terminal/linked_terminal
 
 /obj/structure/machinery/fob/Initialize(mapload, ...)
 	. = ..()
@@ -43,7 +43,7 @@
 	update_power()
 
 /obj/structure/machinery/fob/proc/update_power()
-	if(is_inside_lz && (is_transformer_on || backup_generator_on) && linked_to_terminal)
+	if(is_inside_lz && (is_transformer_on || backup_generator_on) && linked_terminal)
 		is_on = TRUE
 	else
 		is_on = FALSE
@@ -65,15 +65,19 @@
 			user.balloon_alert(user, "you do not know how to link your multitool to the [src.name].")
 			return
 		else if(do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-			if(tool.is_terminal_linked)
-				if(linked_to_terminal)
-					linked_to_terminal = FALSE
-					user.balloon_alert(user, "you unlink the [src.name] from the terminal.")
-				else
-					linked_to_terminal = TRUE
-					user.balloon_alert(user, "you link the [src.name] to the terminal.")
+			if(tool.linked_terminal)
+				if(linked_terminal)
+					if(linked_terminal == tool.linked_terminal)
+						user.balloon_alert(user, " [src.name] is already linked to that terminal.")
+						return
+
+					linked_terminal.linked_machinery -= src
+					user.balloon_alert(user, "you unlink the [src.name] from the old terminal.")
+				linked_terminal = tool.linked_terminal
+				linked_terminal.linked_machinery += src
+				user.balloon_alert(user, "you link the [src.name] to the new terminal.")
 				update_icon()
-			else if(!tool.is_terminal_linked)
+			else
 				user.balloon_alert(user, "your multitool is not linked to a terminal!")
 
 
@@ -101,9 +105,15 @@
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
 	layer = ABOVE_FLY_LAYER
-	linked_to_terminal = TRUE
+	linked_terminal = null
 	var/generator_time
+	var/list/linked_multitools = list()
+	var/list/linked_machinery = list()
 
+/obj/structure/machinery/fob/terminal/Destroy()
+	. = ..()
+	for(var/obj/item/device/multitool/tool in linked_multitools)
+		tool.linked_terminal = null
 
 /obj/structure/machinery/fob/terminal/attackby(obj/item/item, mob/user)
 
@@ -121,11 +131,12 @@
 			user.balloon_alert(user, "you do not know how to link your multitool to the [src.name].")
 			return
 		else if(do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-			if(tool.is_terminal_linked)
-				tool.is_terminal_linked = FALSE
-				user.balloon_alert(user, "you unlink the your multitool from the [src.name].")
-			else if(!tool.is_terminal_linked)
-				tool.is_terminal_linked = TRUE
+			if(tool.linked_terminal == src)
+				user.balloon_alert(user, "this tool is already linked to the [src.name].")
+			else
+				tool.linked_terminal.linked_multitools -= tool
+				tool.linked_terminal = src
+				linked_multitools += tool
 				user.balloon_alert(user, "you link your multitool to the [src.name].")
 
 	if(!is_on)
@@ -194,7 +205,7 @@
 		if(!is_inside_lz)
 			user.balloon_alert(user, "the [src.name] is too far from the LZ to distribute power!")
 			return
-		if(!linked_to_terminal)
+		if(!linked_terminal)
 			user.balloon_alert(user, "the [src.name] is not linked to a terminal!")
 			return
 		if(is_transformer_on)
@@ -236,6 +247,10 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BACKUP_GENERATOR_OFF)
 	update_icon()
 
+//****************************************** SENZOR ARRAY ************************************************//
+/obj/structure/machinery/fob/senzor
+
+
 //****************************************** SENTRYGUN GENERAL ************************************************//
 
 /obj/structure/machinery/fob/sentrygun
@@ -246,6 +261,7 @@
 
 /obj/structure/machinery/fob/sentrygun/process()
 	if(!is_on)
+		loose_target()
 		stop_processing()
 		return
 	if(!check_valid_target(target))

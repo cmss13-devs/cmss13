@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Yautja can now track gear relative to their active falcon drone."
+  - rscadd: "Yautja can now mark through walls and don't need direct line of sight."

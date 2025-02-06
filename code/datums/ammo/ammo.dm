@@ -92,6 +92,11 @@
 /datum/ammo/New()
 	set_bullet_traits()
 
+/datum/ammo/proc/setup_faction_clash_values()
+	accuracy = (accuracy - 85)/2
+	penetration = min(penetration, 30) //more ap overpenatrates anyway but makes next calculation cleaner
+	accurate_range = min(accurate_range, 10 - penetration/5) //this makes AP ammo better at clsoe range (and techinicly super far range when the hitchance gets bottom caped at 5% hitchance)
+
 /datum/ammo/proc/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
 	return
 

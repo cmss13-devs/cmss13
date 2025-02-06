@@ -152,7 +152,7 @@
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.add_filter("nvg", 1, color_matrix_filter(color_matrix_from_string(matrixcol)))
-	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 
 /datum/component/camera_manager/proc/disable_nvg()
 	SIGNAL_HANDLER

@@ -111,7 +111,7 @@
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			AddComponent(/datum/component/label, tmp_label)
 			playsound(src, "paper_writing", 15, TRUE)
@@ -157,6 +157,7 @@
 	if(opened && open_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
 		return
+	user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
 	. = ..()
 
 

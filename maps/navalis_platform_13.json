@@ -30,7 +30,7 @@
     "liaison_briefing": "maps/map_briefings/cl_brief_navalis.html",
     "map_item_type": "/obj/item/map/lv759_map",
 	"monkey_types": [
-        "monkey"
+        "stok"
     ],
     "environment_traits": { "Fog": true },
     "traits": [{ "Ground": true }],

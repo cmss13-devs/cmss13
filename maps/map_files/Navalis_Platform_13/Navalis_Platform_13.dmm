@@ -761,8 +761,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -931,8 +931,11 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -942,8 +945,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
@@ -1142,8 +1145,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -1158,8 +1161,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -1262,8 +1265,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -1369,8 +1372,8 @@
 /area/navalis/indoors/industrial/mining)
 "adD" = (
 /obj/structure/prop/server_equipment/laptop/on{
-	pixel_x = 1;
-	pixel_y = 6
+	pixel_y = 4;
+	pixel_x = 1
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/navalis/indoors/industrial/mining)
@@ -2055,6 +2058,7 @@
 /obj/item/weapon/gun/smg/p90,
 /obj/item/ammo_magazine/smg/p90,
 /obj/item/ammo_magazine/smg/p90,
+/obj/item/clothing/suit/armor/vest,
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "afs" = (
@@ -2228,6 +2232,10 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 20
 	},
 /turf/open/floor/corsat,
 /area/navalis/indoors/industrial/mining)
@@ -2597,6 +2605,7 @@
 /area/navalis/indoors/industrial/mining)
 "agJ" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/corsat/brown/southwest,
 /area/navalis/indoors/industrial/mining)
 "agK" = (
@@ -4561,8 +4570,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -4861,6 +4870,13 @@
 "amG" = (
 /turf/closed/wall/hybrisa/colony/engineering,
 /area/navalis/indoors/industrial/refinery)
+"amH" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 20
+	},
+/turf/open/floor/corsat,
+/area/navalis/indoors/industrial/mining)
 "amI" = (
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors/industrial/accessway)
@@ -5418,8 +5434,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -6135,8 +6151,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
@@ -6347,8 +6363,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
@@ -6404,8 +6420,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
@@ -7322,6 +7338,10 @@
 /area/navalis/indoors/command/starboard_hallway)
 "avD" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/twohanded/fireaxe{
+	pixel_x = 6;
+	pixel_y = -6
+	},
 /turf/open/floor/prison/green/southeast,
 /area/navalis/indoors/command/starboard_hallway)
 "avE" = (
@@ -7794,6 +7814,10 @@
 "axs" = (
 /turf/open/floor/prison/green/west,
 /area/navalis/indoors/command/port_hallway)
+"axt" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/mining)
 "axu" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
 	dir = 1
@@ -8548,8 +8572,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
@@ -8562,8 +8586,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -8607,8 +8631,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -8683,18 +8707,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
-"azx" = (
-/obj/structure/platform/metal/almayer/west{
-	pixel_x = -3
-	},
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/oob/water)
 "azy" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior/log_ext)
@@ -8734,13 +8746,12 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "azA" = (
-/obj/structure/barricade/handrail/strata,
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
 	},
@@ -8749,6 +8760,9 @@
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -9285,8 +9299,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
@@ -9299,8 +9313,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -9351,8 +9365,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -9366,8 +9380,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -9397,8 +9411,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -9419,8 +9433,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -9433,8 +9447,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -9462,8 +9476,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -9477,8 +9491,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -9492,8 +9506,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -9644,8 +9658,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
@@ -10417,16 +10431,13 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
-"aDg" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+"aDh" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -18;
+	pixel_y = -2
 	},
-/obj/structure/barricade/wooden{
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/turf/open/floor/corsat/marked,
-/area/navalis/indoors/command/port_hallway)
+/turf/open/floor/corsat,
+/area/navalis/indoors/industrial/mining)
 "aDi" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/monorail{
@@ -10449,15 +10460,56 @@
 /obj/effect/abstract/ripple/shadow,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water/far)
+"aDk" = (
+/obj/item/device/flashlight,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/mining)
+"aDl" = (
+/obj/item/tool/weldingtool/largetank{
+	pixel_x = 7;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/mining)
+"aDm" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/navalis/indoors/industrial/mining)
 "aDn" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/comm_one)
 "aDo" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/indoors/command/starboard_hallway)
+"aDp" = (
+/obj/structure/closet/crate/radiation,
+/turf/open/floor/corsat,
+/area/navalis/indoors/industrial/mining)
 "aDq" = (
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/indoors/command/port_hallway)
+"aDr" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/corsat,
+/area/navalis/indoors/industrial/mining)
+"aDs" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/mining)
+"aDt" = (
+/obj/item/storage/belt/utility/full{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/command/tertiary_comms)
+"aDu" = (
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/navalis/indoors/command/aft_hallway)
 "aDx" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -10724,8 +10776,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
@@ -10751,6 +10803,9 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101
+	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "aFk" = (
@@ -10765,8 +10820,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
@@ -11134,54 +11189,15 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/tool/warning_cone{
+	pixel_x = -6;
+	pixel_y = 11
+	},
 /turf/open/floor/corsat,
 /area/navalis/indoors/industrial/mining)
 "aGM" = (
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/water)
-"aGN" = (
-/obj/structure/platform/metal/almayer/east{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/blocker/forcefield/human{
-	invisibility = 101
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only/lz2)
-"aGO" = (
-/obj/structure/monorail{
-	dir = 1;
-	name = "support beam";
-	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
-	},
-/obj/structure/blocker/forcefield/human{
-	invisibility = 101
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only/lz2)
-"aGP" = (
-/obj/structure/platform/metal/almayer/west{
-	pixel_x = -3
-	},
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/blocker/forcefield/human{
-	invisibility = 101
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only/lz2)
 "aGQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/blocker/forcefield/human{
@@ -11272,6 +11288,10 @@
 	use_power = 0;
 	pixel_y = 28
 	},
+/obj/item/tool/warning_cone{
+	pixel_x = -10;
+	pixel_y = 11
+	},
 /turf/open/floor/corsat,
 /area/navalis/indoors/industrial/mining)
 "aGX" = (
@@ -11335,7 +11355,10 @@
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/space)
 "aHf" = (
-/obj/structure/lz_sign/lazarus_sign,
+/obj/structure/lz_sign/hybrisa_sign/medical{
+	name = "Navalis Platform 13 - Emergency Medical Landing Zone one sign";
+	desc = "A large sign that reads 'Emergency Medical - LZ - 01'."
+	},
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/outdoors/landing_zone_1)
 "aHg" = (
@@ -11532,6 +11555,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
+/obj/effect/spawner/random/gun/pistol/midchance,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "aLX" = (
@@ -11590,8 +11614,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -12915,8 +12939,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
@@ -13218,6 +13242,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/item/clothing/suit/armor/vest,
 /turf/open/floor/prison/red/northwest,
 /area/navalis/indoors/command/security)
 "cvA" = (
@@ -14685,8 +14710,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -14717,8 +14742,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -14980,21 +15005,15 @@
 	icon = 'icons/obj/structures/machinery/comm_tower3.dmi';
 	icon_state = "static1_broken";
 	name = "Destroyed TC-3T static telecommunications tower";
-	desc = "A static heavy-duty TC-3T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations. This one has been permanently destroyed, and not by human hands."
+	desc = "A static heavy-duty TC-3T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations. This one has been permanently destroyed, and not by human hands.";
+	explo_proof = 1;
+	health = 100000
 	},
 /obj/structure/prop/hybrisa/misc/fire/fire1{
 	layer = 7;
 	pixel_y = 11;
 	light_color = "#FF7700";
 	pixel_x = -2
-	},
-/obj/structure/prop/invuln/pipe_water{
-	icon = 'icons/effects/effects.dmi';
-	icon_state = "sparks";
-	layer = 7.1;
-	name = "electrical sparks";
-	pixel_y = 14;
-	pixel_x = 15
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
@@ -15588,6 +15607,7 @@
 	pixel_y = -2;
 	pixel_x = 6
 	},
+/obj/effect/spawner/random/gun/smg/lowchance,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/navalis/indoors/command/command_kitchen)
 "fbl" = (
@@ -16012,6 +16032,7 @@
 "fvV" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/floor/prison/red,
 /area/navalis/indoors/command/security)
 "fwm" = (
@@ -16233,6 +16254,25 @@
 	dir = 8;
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	pixel_y = -4;
+	layer = 5.3;
+	light_color = "#FF7700";
+	pixel_x = 16
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	pixel_y = 22;
+	layer = 5.3;
+	light_color = "#FF7700";
+	pixel_x = -4
+	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/navalis/indoors/logistic/primary_storage)
 "fKh" = (
@@ -17317,7 +17357,7 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_y = -8;
-	layer = 7
+	layer = 2.5
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -17326,7 +17366,7 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_y = -8;
-	layer = 7.1;
+	layer = 2.5;
 	pixel_x = -18
 	},
 /turf/open/floor/prison/whitegreenfull,
@@ -17525,7 +17565,7 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_y = -8;
-	layer = 7
+	layer = 2.5
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
@@ -18187,14 +18227,21 @@
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "hQn" = (
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
 /obj/structure/monorail{
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 0.8
-	},
-/obj/structure/blocker/forcefield/human{
-	invisibility = 101
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
@@ -18509,6 +18556,7 @@
 	pixel_x = 6
 	},
 /obj/structure/prop/hybrisa/misc/elevator_door/right,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/officetiles,
 /area/navalis/indoors/logistic/primary_storage)
 "igN" = (
@@ -19464,8 +19512,10 @@
 	},
 /area/navalis/oob/powered)
 "jll" = (
-/obj/structure/lz_sign/lazarus_sign{
-	layer = 4
+/obj/structure/lz_sign/hybrisa_sign/mining{
+	name = "Navalis Platform 13 -  Landing Zone two sign";
+	desc = "A large sign that reads Navalis Platform 13 - Cargo Landing Pad Two";
+	layer = 3.2
 	},
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
@@ -19617,9 +19667,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_starboard)
 "juA" = (
-/turf/open/floor/half_plate/dark_yellow{
-	dir = 1
-	},
+/turf/open/floor/half_plate/dark_yellow/north,
 /area/navalis/outdoors/landing_zone_2)
 "juY" = (
 /obj/structure/barricade/handrail/strata{
@@ -19655,6 +19703,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/item/device/multitool,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/command/tertiary_comms)
 "jyl" = (
@@ -19725,6 +19774,9 @@
 	dir = 8
 	},
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 30
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/navalis/indoors/command/command_kitchen)
 "jCt" = (
@@ -19841,6 +19893,14 @@
 	dir = 4;
 	pixel_y = -8
 	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	pixel_y = 14;
+	light_color = "#FF7700"
+	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/navalis/indoors/logistic/primary_storage)
 "jFo" = (
@@ -20047,8 +20107,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -21264,6 +21324,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
+/obj/effect/spawner/random/gun/shotgun/highchance,
 /turf/open/floor/prison/red/southwest,
 /area/navalis/indoors/command/security)
 "leh" = (
@@ -21753,6 +21814,10 @@
 	icon_state = "E";
 	pixel_y = -1;
 	pixel_x = 3
+	},
+/obj/structure/prop/server_equipment/laptop/on{
+	pixel_x = -3;
+	pixel_y = -8
 	},
 /turf/open/floor/prison/ramptop/east{
 	color = "aba39d"
@@ -22667,8 +22732,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
@@ -23764,19 +23829,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/southeast,
 /area/navalis/indoors/command/command_kitchen)
-"oji" = (
-/obj/structure/monorail{
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only/lz1)
 "ojm" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
@@ -24075,7 +24127,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
-/obj/item/prop/almayer/comp_open,
+/obj/effect/spawner/random/attachment,
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/prison/red/southeast,
 /area/navalis/indoors/command/security)
 "oyh" = (
@@ -24167,7 +24220,7 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_y = -21;
-	layer = 7;
+	layer = 2.5;
 	pixel_x = -1
 	},
 /obj/effect/decal/warning_stripes{
@@ -24511,8 +24564,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -24745,8 +24798,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -25410,7 +25463,7 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_y = -8;
-	layer = 7
+	layer = 2.5
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
@@ -25810,7 +25863,7 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_y = -8;
-	layer = 7
+	layer = 2.5
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
@@ -26134,9 +26187,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/navalis/indoors/med_sci/main_floor)
 "qho" = (
-/turf/open/floor/half_plate/dark_yellow{
-	dir = 8
-	},
+/turf/open/floor/half_plate/dark_yellow/west,
 /area/navalis/outdoors/landing_zone_2)
 "qiJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26162,9 +26213,7 @@
 /turf/open/shuttle/escapepod/east,
 /area/navalis/oob/powered)
 "qiV" = (
-/turf/open/floor/half_plate/dark_yellow{
-	dir = 4
-	},
+/turf/open/floor/half_plate/dark_yellow/east,
 /area/navalis/outdoors/landing_zone_2)
 "qjn" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -26953,8 +27002,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -27163,6 +27212,7 @@
 /obj/structure/closet/secure_closet/security,
 /obj/item/storage/belt/gun/m4a3/mod88,
 /obj/item/storage/belt/gun/m4a3/mod88,
+/obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "rio" = (
@@ -28028,6 +28078,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/navalis/indoors/command/server_room)
 "sga" = (
@@ -28209,8 +28260,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -28256,9 +28307,7 @@
 /turf/closed/wall/hybrisa/colony,
 /area/navalis/indoors/industrial/refinery)
 "sxk" = (
-/turf/open/floor/half_plate/green{
-	dir = 8
-	},
+/turf/open/floor/half_plate/green/west,
 /area/navalis/outdoors/landing_zone_1)
 "sxo" = (
 /obj/structure/bed/chair/office/light{
@@ -28512,7 +28561,8 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_x = 18;
-	pixel_y = 11
+	pixel_y = 11;
+	layer = 2.5
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
@@ -28526,6 +28576,7 @@
 	pixel_x = -4;
 	pixel_y = 2
 	},
+/obj/effect/spawner/random/gun/smg/midchance,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/command_kitchen)
 "sJD" = (
@@ -28548,7 +28599,6 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "sKf" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
 	},
@@ -28557,6 +28607,9 @@
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/oob/water)
@@ -28749,6 +28802,7 @@
 "sSx" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/spawner/random/gun/pistol/midchance,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/navalis/indoors/command/oft_duty_room)
 "sSM" = (
@@ -28824,6 +28878,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "sXG" = (
@@ -28855,7 +28910,8 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_y = -8;
-	pixel_x = -14
+	pixel_x = -14;
+	layer = 2.5
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
@@ -29190,6 +29246,7 @@
 	color = "#b7b8b2"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/rifle/highchance,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/server_room)
 "tsq" = (
@@ -29339,6 +29396,14 @@
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -2
 	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	light_color = "#FF7700";
+	pixel_y = 10
+	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/navalis/indoors/logistic/primary_storage)
 "tAt" = (
@@ -29353,6 +29418,16 @@
 	dir = 4;
 	pixel_y = -4
 	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	pixel_y = -4;
+	layer = 5.3;
+	light_color = "#FF7700";
+	pixel_x = 16
+	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/navalis/indoors/logistic/primary_storage)
 "tAy" = (
@@ -30640,6 +30715,7 @@
 "uIC" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/spawner/random/gun/pistol/highchance,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/navalis/indoors/command/oft_duty_room)
 "uID" = (
@@ -32122,8 +32198,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -32225,7 +32301,7 @@
 	icon_state = "intact";
 	name = "Pipe";
 	pixel_y = -21;
-	layer = 7;
+	layer = 2.5;
 	pixel_x = -1
 	},
 /turf/open/floor/prison/greenblue/north,
@@ -32767,9 +32843,7 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "wHx" = (
-/turf/open/floor/half_plate/green{
-	dir = 1
-	},
+/turf/open/floor/half_plate/green/north,
 /area/navalis/outdoors/landing_zone_1)
 "wIw" = (
 /turf/closed/shuttle{
@@ -32873,9 +32947,7 @@
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/navalis/indoors/command/command_kitchen)
 "wPg" = (
-/turf/open/floor/half_plate/green{
-	dir = 4
-	},
+/turf/open/floor/half_plate/green/east,
 /area/navalis/outdoors/landing_zone_1)
 "wPh" = (
 /obj/structure/cargo_container/horizontal/blue/middle{
@@ -32892,7 +32964,7 @@
 	icon = 'icons/obj/pipes/pipes.dmi';
 	icon_state = "intact";
 	name = "Pipe";
-	layer = 7.1;
+	layer = 2.5;
 	pixel_y = 11;
 	pixel_x = -18
 	},
@@ -32928,6 +33000,7 @@
 /obj/structure/closet/secure_closet/security,
 /obj/item/storage/belt/gun/m4a3/mod88,
 /obj/item/storage/belt/gun/m4a3/mod88,
+/obj/effect/spawner/random/gun/smg/highchance,
 /turf/open/floor/prison/red/northeast,
 /area/navalis/indoors/command/security)
 "wRf" = (
@@ -33024,8 +33097,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -33213,8 +33286,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -33426,8 +33499,8 @@
 	dir = 1;
 	name = "support beam";
 	desc = "Do you think the bugs are using these to move around this rig?";
-	layer = 1.2;
-	explo_proof = 1
+	explo_proof = 1;
+	unacidable = 1
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -33919,7 +33992,10 @@
 	pixel_y = 8;
 	pixel_x = 16
 	},
-/obj/structure/prop/hybrisa/misc/elevator_door,
+/obj/structure/prop/hybrisa/misc/elevator_door{
+	pixel_x = -12
+	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/officetiles,
 /area/navalis/indoors/logistic/primary_storage)
 "xPH" = (
@@ -40778,15 +40854,15 @@ gGc
 ayU
 aCv
 guB
-oji
-oji
-oji
-oji
-oji
-oji
-oji
-oji
-oji
+suh
+suh
+suh
+suh
+suh
+suh
+suh
+suh
+suh
 suh
 hQn
 xHO
@@ -47991,7 +48067,7 @@ gBz
 hGF
 vQa
 aRC
-lJH
+azb
 aAi
 kuy
 iVl
@@ -48506,7 +48582,7 @@ aRC
 aFk
 aFi
 aFi
-aGN
+aFf
 aFf
 aFf
 aFf
@@ -48762,7 +48838,7 @@ aRC
 acE
 acE
 acE
-aGO
+aFg
 aFg
 aFg
 aFg
@@ -49015,10 +49091,10 @@ vOr
 aoR
 aoH
 aRC
-azx
+azA
 sKf
 azA
-aGP
+aFh
 aFh
 aFh
 aFh
@@ -49272,7 +49348,7 @@ hGF
 aoH
 aRC
 aoE
-lJH
+azb
 qld
 ffe
 lJH
@@ -56147,7 +56223,7 @@ iwV
 avN
 avN
 mbQ
-avm
+aDu
 kBr
 asO
 asO
@@ -58203,7 +58279,7 @@ iTE
 xLL
 ath
 aqX
-ath
+aDt
 ath
 kwC
 asO
@@ -59965,7 +60041,7 @@ rkg
 ayy
 arX
 arX
-aDg
+ayw
 ays
 aCX
 udV
@@ -66677,7 +66753,7 @@ tQL
 aox
 aox
 aov
-aok
+aDl
 aov
 aox
 aox
@@ -67182,8 +67258,8 @@ taf
 aGA
 aGK
 aol
-aor
-aor
+aDr
+aDr
 aor
 sZU
 aov
@@ -67475,7 +67551,7 @@ mmV
 mmV
 mmV
 mmV
-acE
+mmV
 mmV
 pui
 isl
@@ -67708,9 +67784,9 @@ adP
 xGN
 adC
 aor
-aor
+aDh
 lQa
-aor
+amH
 aol
 aol
 aGw
@@ -68731,7 +68807,7 @@ aov
 aoC
 aow
 aow
-aov
+aDk
 aov
 aov
 aok
@@ -69502,7 +69578,7 @@ aox
 qjn
 tdh
 anz
-aov
+axt
 aoo
 aoo
 acX
@@ -70508,7 +70584,7 @@ fHE
 aoo
 aoo
 aoo
-aov
+aDs
 mRq
 mRq
 tdh
@@ -71538,7 +71614,7 @@ tdh
 anz
 aox
 tEB
-aoB
+aDm
 aLi
 ykR
 ykR
@@ -74352,7 +74428,7 @@ tww
 tww
 aol
 aol
-aor
+aDp
 aeJ
 apj
 aox

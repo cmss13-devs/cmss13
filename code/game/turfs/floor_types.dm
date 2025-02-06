@@ -4817,6 +4817,26 @@
 	plating_type = /turf/open/floor/plating/almayer
 
 /turf/open/floor/half_plate/green
+	dir = SOUTH
+
+/turf/open/floor/half_plate/green/north
+	dir = NORTH
+
+/turf/open/floor/half_plate/green/east
+	dir = EAST
+
+/turf/open/floor/half_plate/green/west
+	dir = WEST
 
 /turf/open/floor/half_plate/dark_yellow
 	icon_state = "darkyellow_plate"
+	dir = SOUTH
+
+/turf/open/floor/half_plate/dark_yellow/north
+	dir = NORTH
+
+/turf/open/floor/half_plate/dark_yellow/east
+	dir = EAST
+
+/turf/open/floor/half_plate/dark_yellow/west
+	dir = WEST

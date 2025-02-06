@@ -282,49 +282,49 @@
 //////////////////////////////
 // Humans need special handling, because they can have their gender hidden
 /mob/living/carbon/human/ru_p_they(capitalized, temp_gender)
-	var/obscured = wear_suit.flags_inv_hide & HIDEJUMPSUIT
+	var/obscured = wear_suit?.flags_inv_hide & HIDEJUMPSUIT
 	var/skipface = (wear_mask && (wear_mask.flags_inv_hide & HIDEFACE)) || (head && (head.flags_inv_hide & HIDEFACE))
 	if(obscured && skipface)
 		temp_gender = PLURAL
 	return ..()
 
 /mob/living/carbon/human/ru_p_them(capitalized, temp_gender)
-	var/obscured = wear_suit.flags_inv_hide & HIDEJUMPSUIT
+	var/obscured = wear_suit?.flags_inv_hide & HIDEJUMPSUIT
 	var/skipface = (wear_mask && (wear_mask.flags_inv_hide & HIDEFACE)) || (head && (head.flags_inv_hide & HIDEFACE))
 	if(obscured && skipface)
 		temp_gender = PLURAL
 	return ..()
 
 /mob/living/carbon/human/ru_p_themselves(capitalized, temp_gender)
-	var/obscured = wear_suit.flags_inv_hide & HIDEJUMPSUIT
+	var/obscured = wear_suit?.flags_inv_hide & HIDEJUMPSUIT
 	var/skipface = (wear_mask && (wear_mask.flags_inv_hide & HIDEFACE)) || (head && (head.flags_inv_hide & HIDEFACE))
 	if(obscured && skipface)
 		temp_gender = PLURAL
 	return ..()
 
 /mob/living/carbon/human/ru_p_theirs(capitalized, temp_gender)
-	var/obscured = wear_suit.flags_inv_hide & HIDEJUMPSUIT
+	var/obscured = wear_suit?.flags_inv_hide & HIDEJUMPSUIT
 	var/skipface = (wear_mask && (wear_mask.flags_inv_hide & HIDEFACE)) || (head && (head.flags_inv_hide & HIDEFACE))
 	if(obscured && skipface)
 		temp_gender = PLURAL
 	return ..()
 
 /mob/living/carbon/human/ru_p_have(temp_gender)
-	var/obscured = wear_suit.flags_inv_hide & HIDEJUMPSUIT
+	var/obscured = wear_suit?.flags_inv_hide & HIDEJUMPSUIT
 	var/skipface = (wear_mask && (wear_mask.flags_inv_hide & HIDEFACE)) || (head && (head.flags_inv_hide & HIDEFACE))
 	if(obscured && skipface)
 		temp_gender = PLURAL
 	return ..()
 
 /mob/living/carbon/human/ru_p_were(temp_gender)
-	var/obscured = wear_suit.flags_inv_hide & HIDEJUMPSUIT
+	var/obscured = wear_suit?.flags_inv_hide & HIDEJUMPSUIT
 	var/skipface = (wear_mask && (wear_mask.flags_inv_hide & HIDEFACE)) || (head && (head.flags_inv_hide & HIDEFACE))
 	if(obscured && skipface)
 		temp_gender = PLURAL
 	return ..()
 
 /mob/living/carbon/human/ru_p_do(temp_gender)
-	var/obscured = wear_suit.flags_inv_hide & HIDEJUMPSUIT
+	var/obscured = wear_suit?.flags_inv_hide & HIDEJUMPSUIT
 	var/skipface = (wear_mask && (wear_mask.flags_inv_hide & HIDEFACE)) || (head && (head.flags_inv_hide & HIDEFACE))
 	if(obscured && skipface)
 		temp_gender = PLURAL

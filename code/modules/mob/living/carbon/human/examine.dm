@@ -3,34 +3,34 @@
 		return list(desc)
 
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
-		return list(SPAN_NOTICE("Something is there but you can't see it."))
+		return list(SPAN_NOTICE("Тут что-то есть, но вы не можете разглядеть."))
 
 	var/mob/dead/observer/observer
 	if(isobserver(user))
 		observer = user
 
 	if(isxeno(user))
-		var/msg = "<span class='info'>This is "
+		var/msg = "<span class='info'>Это "
 
 		if(icon)
 			msg += "[icon2html(icon, user)] "
 		msg += "<EM>[src]</EM>!\n"
 
 		if(species && species.flags & IS_SYNTHETIC)
-			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"
+			msg += "<span style='font-weight: bold; color: purple;'>Вы чуствуете, что это существо не является органическим.\n</span>"
 
 		if(status_flags & XENO_HOST)
-			msg += "This creature is impregnated.\n"
+			msg += "Это существо оплодотворено.\n"
 		else if(chestburst == 2)
-			msg += "A larva escaped from this creature.\n"
+			msg += "Грудолом вырвался из этого существа.\n"
 		if(istype(wear_mask, /obj/item/clothing/mask/facehugger))
-			msg += "It has a little one on its face.\n"
+			msg += "Лицехват уже уселся на лице существа.\n"
 		if(on_fire)
-			msg += "It is on fire!\n"
+			msg += "Оно горит!\n"
 		if(stat == DEAD)
-			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n</span>"
+			msg += "<span style='font-weight: bold; color: purple;'>Вы чувствуете, что это существо мертво.\n</span>"
 		else if(stat || !client)
-			msg += SPAN_XENOWARNING("It doesn't seem responsive.\n")
+			msg += SPAN_XENOWARNING("Оно без сознания.\n")
 		msg += "</span>"
 		return list(msg)
 
@@ -61,124 +61,125 @@
 	if(wear_mask)
 		skipface |= wear_mask.flags_inv_hide & HIDEFACE
 
-	// crappy hacks because you can't do \his[src] etc. I'm sorry this proc is so unreadable, blame the text macros :<
-	var/t_He = "It" //capitalised for use at the start of each line.
-	var/t_his = "its"
-	var/t_him = "it"
-	var/t_has = "has"
-	var/t_is = "is"
+	var/t_He = ru_p_they(TRUE)
+	var/t_His = ru_p_them(TRUE)
+	var/t_his = ru_p_them()
+	var/t_him = ru_p_them()
+	// var/t_has = "has"
+	// var/t_is = "is"
 
 	var/id_paygrade = ""
 	var/obj/item/card/id/I = get_idcard()
 	if(I)
 		id_paygrade = I.paygrade
 	var/rank_display = get_paygrades(id_paygrade, FALSE, gender)
-	var/msg = "<span class='info'>\nThis is "
+	var/msg = "<span class='info'>\nЭто "
 
 	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
-		t_He = "They"
-		t_his = "their"
-		t_him = "them"
-		t_has = "have"
-		t_is = "are"
+		t_He = ru_p_they(TRUE)
+		t_His = ru_p_them(TRUE)
+		t_his = ru_p_them()
+		t_him = ru_p_them()
+		// t_has = "have"
+		// t_is = "are"
 	else
 		if(icon)
 			msg += "[icon2html(src, user)] "
-		switch(gender)
-			if(MALE)
-				t_He = "He"
-				t_his = "his"
-				t_him = "him"
-			if(FEMALE)
-				t_He = "She"
-				t_his = "her"
-				t_him = "her"
+		// switch(gender)
+		// 	if(MALE)
+		// 		t_He = "He"
+		// 		t_his = "his"
+		// 		t_him = "him"
+		// 	if(FEMALE)
+		// 		t_He = "She"
+		// 		t_his = "her"
+		// 		t_him = "her"
 
 	if(id_paygrade)
 		msg += "<EM>[rank_display] </EM>"
-	msg += "<EM>[src]</EM>!\n"
+	msg += "<EM>[declent_ru(NOMINATIVE)]</EM>!\n"
 
 	//uniform
 	if(w_uniform && !skipjumpsuit)
-		msg += "[t_He] [t_is] [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him)].\n"
 
 	//head
 	if(head)
-		msg += "[t_He] [t_is] wearing [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him)].\n"
 
 	//suit/armor
 	if(wear_suit)
-		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him)].\n"
 	//suit/armor storage
 	if(s_store && !skipsuitstorage)
-		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him)].\n"
 
 	//back
 	if(back)
-		msg += "[t_He] [t_has] [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_him)].\n"
 
 	//left hand
 	if(l_hand)
-		msg += "[t_He] [t_is] holding [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] держит [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_him)].\n"
 
 	//right hand
 	if(r_hand)
-		msg += "[t_He] [t_is] holding [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] держит [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_him)].\n"
 
 	//gloves
 	if(gloves && !skipgloves)
-		msg += "[t_He] [t_has] [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him)].\n"
 	else if(hands_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained hands!\n")
+		msg += SPAN_WARNING("У [t_him] [(hands_blood_color != COLOR_OIL) ? "окровавленные" : "замасленные"] руки!\n")
 
 	//belt
 	if(belt)
-		msg += "[t_He] [t_has] [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_him)].\n"
 
 	//shoes
 	if(shoes && !skipshoes)
-		msg += "[t_He] [t_is] wearing [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him)].\n"
 	else if(feet_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained feet!\n")
+		msg += SPAN_WARNING("[t_He] [(feet_blood_color != COLOR_OIL) ? "окровавленные" : "замасленные"] ноги!\n")
 
 	//mask
 	if(wear_mask && !skipmask)
-		msg += "[t_He] [t_has] [wear_mask.get_examine_line(user)] [wear_mask.get_examine_location(src, user, WEAR_FACE, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [wear_mask.get_examine_line(user)] [wear_mask.get_examine_location(src, user, WEAR_FACE, t_He, t_his, t_him)].\n"
 
 	//eyes
 	if(glasses && !skipeyes)
-		msg += "[t_He] [t_has] [glasses.get_examine_line(user)] [glasses.get_examine_location(src, user, WEAR_EYES, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [glasses.get_examine_line(user)] [glasses.get_examine_location(src, user, WEAR_EYES, t_He, t_his, t_him)].\n"
 
 	//ears
 	if(!skipears)
 		if(wear_l_ear)
-			msg += "[t_He] [t_has] [wear_l_ear.get_examine_line(user)] [wear_l_ear.get_examine_location(src, user, WEAR_L_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
+			msg += "[t_He] носит [wear_l_ear.get_examine_line(user)] [wear_l_ear.get_examine_location(src, user, WEAR_L_EAR, t_He, t_his, t_him)].\n"
 		if(wear_r_ear)
-			msg += "[t_He] [t_has] [wear_r_ear.get_examine_line(user)] [wear_r_ear.get_examine_location(src, user, WEAR_R_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
+			msg += "[t_He] носит [wear_r_ear.get_examine_line(user)] [wear_r_ear.get_examine_location(src, user, WEAR_R_EAR, t_He, t_his, t_him)].\n"
 
 	//ID
 	if(wear_id)
-		msg += "[t_He] [t_is] [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him)].\n"
 
 	//Restraints
 	if(handcuffed)
-		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")
+		msg += SPAN_ORANGE("[t_His] руки в [handcuffed.declent_ru(PREPOSITIONAL)].\n")
 
 	if(legcuffed)
-		msg += SPAN_ORANGE("[capitalize(t_his)] ankles are restrained by [legcuffed].\n")
+		msg += SPAN_ORANGE("[capitalize(t_his)] ноги в [handcuffed.declent_ru(PREPOSITIONAL)].\n")
 
 	//Admin-slept
 	if(sleeping > 8000000)
-		msg += SPAN_HIGHDANGER("<B>This player has been slept by staff.</B>\n")
+		msg += SPAN_HIGHDANGER("<B>Этот игрок был усыплен администрацией.</B>\n")
 
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)
-			msg += SPAN_WARNING("<B>[t_He] [t_is] convulsing violently!</B>\n")
+			msg += SPAN_WARNING("<B>[t_He] бьется в конвульсиях!</B>\n")
 		else if(jitteriness >= 200)
-			msg += SPAN_WARNING("[t_He] [t_is] extremely jittery.\n")
+			msg += SPAN_WARNING("[t_He] сильно дергается.\n")
 		else if(jitteriness >= 100)
-			msg += SPAN_WARNING("[t_He] [t_is] twitching ever so slightly.\n")
+			msg += SPAN_WARNING("[t_He] слегка подергивается.\n")
 
 	//splints & surgical incisions
 	for(var/organ in list("l_leg","r_leg","l_arm","r_arm","l_foot","r_foot","l_hand","r_hand","chest","groin","head"))
@@ -186,7 +187,7 @@
 		if(o)
 			var/list/damage = list()
 			if(o.status & LIMB_SPLINTED)
-				damage += "a splint"
+				damage += "шина"
 
 			var/limb_incision = o.get_incision_depth()
 			if(limb_incision)
@@ -197,42 +198,42 @@
 				damage += limb_surgeries
 
 			if(length(damage))
-				msg += SPAN_WARNING("[t_He] [t_has] [english_list(damage, final_comma_text = ",")] on [t_his] [o.display_name]!\n")
+				msg += SPAN_WARNING("У [t_him] [english_list(damage, final_comma_text = ",")] на [t_his] [o.display_name]!\n")
 
 	if(holo_card_color)
-		msg += "[t_He] has a [holo_card_color] holo card on [t_his] chest.\n"
+		msg += "У [t_him] [holo_card_color] голокарта на груди.\n"
 
 	var/distance = get_dist(user,src)
 	if(istype(user, /mob/dead/observer) || user.stat == DEAD) // ghosts can see anything
 		distance = 1
 	if (stat || status_flags & FAKEDEATH)
-		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
+		msg += SPAN_WARNING("[t_He] не реагирует на окружение, и, кажется, спит.\n")
 		if(stat == DEAD && distance <= 3)
-			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
+			msg += SPAN_WARNING("[t_He] не дышит.\n")
 		if(paralyzed > 1 && distance <= 3)
-			msg += SPAN_WARNING("[t_He] seems to be completely still.\n")
+			msg += SPAN_WARNING("[t_He] совершенно неподвижен.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
-			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
+			user.visible_message("<b>[capitalize(user.declent_ru(NOMINATIVE))]</b> проверяет [t_him] пульс.", "Вы проверили [t_him] пульс.", null, 4)
 		spawn(15)
 			if(user && src && distance <= 1)
 				get_pulse(GETPULSE_HAND) // to update it
 				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
-					to_chat(user, SPAN_DEADSAY("[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]..."))
+					to_chat(user, SPAN_DEADSAY("У [t_him] нету пульса[client ? "" : " и [t_his] душа ушла"]..."))
 				else
-					to_chat(user, SPAN_DEADSAY("[t_He] has a pulse!"))
+					to_chat(user, SPAN_DEADSAY("У [t_him] нету пульса!"))
 
 	if((species && !species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
-			msg += SPAN_DEADSAY("[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n")
+			msg += SPAN_DEADSAY("[t_He] глубоко спит. Не похоже, что [t_him] скоро проснется.\n")
 		else if(!client)
-			msg += "[t_He] [t_has] suddenly fallen asleep.\n"
+			msg += "[t_He] внезапно засыпает.\n"
 
 	if(fire_stacks > 0)
-		msg += "[t_He] [t_is] covered in something flammable.\n"
+		msg += "[t_He] покрыт[genderize_ru(gender, "", "а", "о", "ы")] чем-то легковоспламеняющимся.\n"
 	if(fire_stacks < 0)
-		msg += "[t_He] looks a little soaked.\n"
+		msg += "[t_He] промок[genderize_ru(gender, "", "ла", "ло", "ли")].\n"
 	if(on_fire)
-		msg += SPAN_WARNING("[t_He] [t_is] on fire!\n")
+		msg += SPAN_WARNING("[t_He] горит!\n")
 
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()
@@ -390,62 +391,62 @@
 		display_foot_right = 1
 
 	if (display_head)
-		msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] <b>face</b>!\n")
+		msg += SPAN_WARNING("Кровь капает с [t_his] <b>лица</b>!\n")
 
 	if (display_chest && display_groin && display_arm_left && display_arm_right && display_hand_left && display_hand_right && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-		msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>entire body</b>!\n")
+		msg += SPAN_WARNING("Кровь капает через [t_his] одежду <b>всего тела</b>!\n")
 	else
 		if (display_chest && display_arm_left && display_arm_right && display_hand_left && display_hand_right)
-			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>upper body</b>!\n")
+			msg += SPAN_WARNING("Кровь капает через [t_his] одежду <b>всего торса</b>!\n")
 		else
 			if (display_chest)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>shirt</b>!\n")
+				msg += SPAN_WARNING("Кровь капает через [t_his] <b>футболку</b>!\n")
 			if (display_arm_left && display_arm_right && display_hand_left && display_hand_left)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>gloves</b> and <b>sleeves</b>!\n")
+				msg += SPAN_WARNING("Кровь капает через [t_his] <b>перчатки</b> и <b>рукава</b>!\n")
 			else
 				if (display_arm_left && display_arm_right)
-					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>sleeves</b>!\n")
+					msg += SPAN_WARNING("Кровь капает через [t_his] <b>рукава</b>!\n")
 				else
 					if (display_arm_left)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>left sleeve</b>!\n")
+						msg += SPAN_WARNING("Кровь капает через [t_his] <b>левый рукав</b>!\n")
 					if (display_arm_right)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>right sleeve</b>!\n")
+						msg += SPAN_WARNING("Кровь капает через [t_his] <b>правый рукав</b>!\n")
 				if (display_hand_left && display_hand_right)
-					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>gloves</b>!\n")
+					msg += SPAN_WARNING("Кровь течёт из-под [t_his] <b>перчаток</b>!\n")
 				else
 					if (display_hand_left)
-						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>left glove</b>!\n")
+						msg += SPAN_WARNING("Кровь течёт из-под [t_his] <b>левой перчатки</b>!\n")
 					if (display_hand_right)
-						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>right glove</b>!\n")
+						msg += SPAN_WARNING("Кровь течёт из-под [t_his] <b>правой перчатки</b>!\n")
 
 		if (display_groin && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>lower body!</b>\n")
+			msg += SPAN_WARNING("Кровь капает через [t_his] одежду <b>с нижней половины тела</b>!\n") //?
 		else
 			if (display_groin)
-				msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] <b>groin</b>!\n")
+				msg += SPAN_WARNING("Кровь течёт из [t_his] <b>паха</b>!\n")
 			if (display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>pant legs</b> and <b>boots</b>!\n")
+				msg += SPAN_WARNING("Кровь течёт из [t_his] <b>штанов</b> и <b>ботинок</b>!\n")
 			else
 				if (display_leg_left && display_leg_right)
-					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>pant legs</b>!\n")
+					msg += SPAN_WARNING("Кровь течёт из [t_his] <b>штанов</b>!\n")
 				else
 					if (display_leg_left)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>left pant leg</b>!\n")
+						msg += SPAN_WARNING("Кровь течёт из [t_his] <b>левой штанины</b>!\n")
 					if (display_leg_right)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>right pant leg</b>!\n")
+						msg += SPAN_WARNING("Кровь течёт из [t_his] <b>правой штанины</b>!\n")
 				if (display_foot_left && display_foot_right)
-					msg += SPAN_WARNING("[t_He] has blood pooling around[t_his] <b>boots</b>!\n")
+					msg += SPAN_WARNING("Кровь собирается вокруг [t_his] <b>ботинок</b>!\n")
 				else
 					if (display_foot_left)
-						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] <b>left boot</b>!\n")
+						msg += SPAN_WARNING("Кровь собирается вокруг [t_his] <b>левого ботинка</b>!\n")
 					if (display_foot_right)
-						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] <b>right boot</b>!\n")
+						msg += SPAN_WARNING("Кровь собирается вокруг [t_his] <b>правого ботинка</b>!\n")
 
 	if(chestburst == 2)
-		msg += SPAN_WARNING("<b>[t_He] has a giant hole in [t_his] chest!</b>\n")
+		msg += SPAN_WARNING("<b>У [t_him] огромное отверстие в груди!</b>\n")
 
-	for(var/implant in get_visible_implants())
-		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
+	for(var/obj/implant in get_visible_implants())
+		msg += SPAN_WARNING("<b>[capitalize(implant.declent_ru(NOMINATIVE))] торчит из-под [t_his] кожи!</b>\n")
 
 	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
@@ -535,7 +536,6 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
-
 
 //Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/passed_mob, hudtype)

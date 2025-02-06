@@ -288,6 +288,7 @@
 	name = "Industrial Rig - Exterior Lattice Walkway"
 	icon_state = "red2"
 	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|NOT_WEEDABLE
+	base_lighting_alpha = 35
 
 /area/navalis/outdoors/exterior_xeno_only/lz1
 	name = "Medical / LZ1 - Exterior Lattice Walkway"

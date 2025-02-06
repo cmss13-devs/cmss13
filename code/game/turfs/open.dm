@@ -662,9 +662,9 @@
 	update_overlays()
 
 /turf/open/gm/river/proc/update_overlays()
-	overlays.Cut()
 	if(no_overlay)
 		return
+	overlays.Cut()
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
@@ -881,6 +881,13 @@
 /turf/open/gm/river/no_overlay/sewage
 	name = "sewage"
 
+/turf/open/gm/river/no_overlay/ocean
+	name = "ocean"
+	icon = 'icons/turf/floors/desert_water.dmi'
+	icon_state = "deep"
+
+/turf/open/gm/river/no_overlay/ocean/no_slowdown
+	base_river_slowdown = 0
 
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty

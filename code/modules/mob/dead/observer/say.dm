@@ -59,7 +59,12 @@
 		message = "<b>[message]</b>"
 		speaker.cast_tts(src, message) // SS220 ADDITION
 
-	to_chat(src, "<span class='game say'><span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='[style]'>\"[message]\"</span></span></span>")
+	// BANDAMARINES EDIT START
+	if(speaker_name == speaker.name)
+		speaker_name = speaker.declent_ru(NOMINATIVE)
+	// BANDAMARINES EDIT END
+
+	to_chat(src, "<span class='game say'><span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] [track][ru_say_verb(verb)], <span class='message'><span class='[style]'>\"[message]\"</span></span></span>")
 	if (speech_sound && (get_dist(speaker, src) <= GLOB.world_view_size && src.z == speaker.z))
 		var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 		playsound_client(client, speech_sound, source, sound_vol)

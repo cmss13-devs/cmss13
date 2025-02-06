@@ -39,6 +39,10 @@
 	if(italics)
 		message = "<i>[message]</i>"
 
+	// BANDAMARINES EDIT START
+	if(speaker_name == speaker.name)
+		speaker_name = speaker.declent_ru(NOMINATIVE)
+	// BANDAMARINES EDIT END
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(speaker == src)
@@ -46,7 +50,7 @@
 		else
 			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear them."))
 	else
-		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>"))
+		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [ru_say_verb(verb)], <span class='[style]'>\"[message]\"</span>"))
 		if (speech_sound && (get_dist(speaker, src) <= GLOB.world_view_size && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			playsound_client(src.client, speech_sound, source, sound_vol, GET_RANDOM_FREQ)
@@ -120,19 +124,24 @@
 		if(3)
 			fontsize_style = "large"
 
+	// BANDAMARINES EDIT START
+	if(speaker_name == speaker.name)
+		speaker_name = speaker.declent_ru(NOMINATIVE)
+	// BANDAMARINES EDIT END
+
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(prob(20))
 			to_chat(src, SPAN_WARNING("You feel your headset vibrate but can hear nothing from it!"), type = MESSAGE_TYPE_RADIO)
 	else if(track)
 		if(!command)
-			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
+			to_chat(src, "[part_a][comm_paygrade][track][part_b][ru_say_verb(verb)], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
 		else
-			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
+			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][track][part_b][ru_say_verb(verb)], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
 	else
 		if(!command)
-			to_chat(src, "[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
+			to_chat(src, "[part_a][comm_paygrade][speaker_name][part_b][ru_say_verb(verb)], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
 		else
-			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
+			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][ru_say_verb(verb)], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
 
 /mob/proc/hear_signlang(message, verb = "gestures", datum/language/language, mob/speaker = null)
 	var/comm_paygrade = ""
@@ -143,9 +152,9 @@
 		comm_paygrade = H.get_paygrade()
 
 	if(say_understands(speaker, language))
-		message = "<B>[comm_paygrade][src]</B> [verb], \"[message]\""
+		message = "<B>[comm_paygrade][src]</B> [ru_say_verb(verb)], \"[message]\""
 	else
-		message = "<B>[comm_paygrade][src]</B> [verb]."
+		message = "<B>[comm_paygrade][src]</B> [ru_say_verb(verb)]."
 
 	if(src.status_flags & PASSEMOTES)
 		for(var/obj/item/holder/H in src.contents)

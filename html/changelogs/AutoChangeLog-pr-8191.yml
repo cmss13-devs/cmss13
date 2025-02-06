@@ -1,0 +1,12 @@
+author: "BartDrown"
+delete-after: True
+changes:
+  - rscadd: "migrate security records console to tgui"
+  - bugfix: "highcom cannot change rank in record"
+  - bugfix: "photo in security records console does not show"
+  - bugfix: "photo in security records console cannot be updated"
+  - bugfix: "fingerprint scanner report cannot be viewed if clue detector is not ejected and cleared"
+  - qol: "add focus and listen on enter in inputs of security console"
+  - qol: "add cursor pointer to TGUI Button component"
+  - refactor: "refactor security records console code"
+  - code_imp: "security records client side sorting and filtering"

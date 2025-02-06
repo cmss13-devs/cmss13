@@ -1,4 +1,83 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 50;
+	icon_state = "folding_3"
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 13
+	},
+/turf/open/floor/plating/panelscorched,
+/area/lv624/lazarus/hydroponics)
+"ab" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/turf/open/floor/plating/panelscorched,
+/area/lv624/lazarus/hydroponics)
+"ac" = (
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/panelscorched,
+/area/lv624/lazarus/hydroponics)
+"ad" = (
+/obj/item/stack/folding_barricade,
+/obj/item/clothing/gloves/marine/veteran/pmc{
+	armor_bio = 10;
+	armor_bomb = 10;
+	armor_bullet = 15;
+	armor_energy = 15;
+	armor_internaldamage = 15;
+	armor_laser = 15;
+	armor_melee = 15;
+	armor_rad = 10;
+	name = "damaged WY PMC gloves";
+	pixel_y = 9
+	},
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"ae" = (
+/obj/item/stack/folding_barricade,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"af" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"ag" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	dir = 1;
+	health = 45;
+	icon_state = "folding_3"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/under/marine/veteran/pmc/leader{
+	pixel_x = -7
+	},
+/obj/item/weapon/gun/pistol/mod88,
+/turf/open/floor/plating/panelscorched,
+/area/lv624/lazarus/hydroponics)
+"ah" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/hydroponics)
+"ai" = (
+/obj/effect/spawner/random/claymore/lowchance{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/hydroponics)
 "aO" = (
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/glass/watertank,
@@ -36,13 +115,6 @@
 "cQ" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating/panelscorched,
-/area/lv624/lazarus/hydroponics)
-"dZ" = (
-/obj/item/stack/sheet/metal,
-/obj/effect/spawner/random/claymore/lowchance{
-	dir = 8
-	},
-/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
 "eU" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -179,20 +251,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
-"tK" = (
-/obj/structure/barricade/deployable{
-	damage_state = 3;
-	dir = 1;
-	health = 45;
-	icon_state = "folding_3"
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/item/clothing/under/marine/veteran/pmc/leader{
-	pixel_x = -7
-	},
-/obj/item/weapon/gun/pistol/mod88,
-/turf/open/floor/plating/panelscorched,
-/area/lv624/lazarus/hydroponics)
 "vm" = (
 /obj/item/stack/sheet/wood{
 	amount = 16
@@ -248,12 +306,6 @@
 	},
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
-"zj" = (
-/obj/item/stack/folding_barricade,
-/obj/effect/spawner/gibspawner/human,
-/obj/item/clothing/head/helmet/marine/veteran/pmc/leader,
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
 "zL" = (
 /obj/structure/girder,
 /turf/open/floor/platingdmg1,
@@ -262,16 +314,6 @@
 /obj/structure/window_frame/colony,
 /obj/item/shard,
 /turf/open/floor,
-/area/lv624/lazarus/hydroponics)
-"zX" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/obj/item/weapon/gun/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/hydroponics)
 "BL" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -377,17 +419,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
-"MM" = (
-/obj/structure/barricade/deployable{
-	damage_state = 3;
-	health = 50;
-	icon_state = "folding_3"
-	},
-/obj/item/ammo_magazine/rifle/nsg23{
-	current_rounds = 13
-	},
-/turf/open/floor/plating/panelscorched,
-/area/lv624/lazarus/hydroponics)
 "MT" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/platingdmg1,
@@ -433,11 +464,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
-"OO" = (
-/obj/effect/landmark/objective_landmark/medium,
-/obj/item/stack/sheet/wood,
-/turf/open/floor/plating/panelscorched,
-/area/lv624/lazarus/hydroponics)
 "Pk" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/green/northwest,
@@ -447,26 +473,6 @@
 	dir = 1
 	},
 /turf/open/floor/platingdmg1,
-/area/lv624/lazarus/hydroponics)
-"Qd" = (
-/obj/item/stack/folding_barricade,
-/obj/item/clothing/gloves/marine/veteran/pmc{
-	armor_bio = 10;
-	armor_bomb = 10;
-	armor_bullet = 15;
-	armor_energy = 15;
-	armor_internaldamage = 15;
-	armor_laser = 15;
-	armor_melee = 15;
-	armor_rad = 10;
-	name = "damaged WY PMC gloves";
-	pixel_y = 9
-	},
-/obj/item/weapon/gun/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "QR" = (
 /turf/open/floor/plating/panelscorched,
@@ -604,8 +610,8 @@ XJ
 Cq
 Lu
 TC
-dZ
-Wg
+ah
+af
 ym
 FJ
 Xv
@@ -619,7 +625,7 @@ se
 XA
 qe
 YV
-TC
+ai
 FJ
 Wg
 YV
@@ -655,7 +661,7 @@ Wg
 Pk
 JO
 Ul
-zX
+ab
 jy
 Xv
 Lk
@@ -669,9 +675,9 @@ Wg
 ft
 TC
 bm
-tK
-zj
-OO
+ag
+ae
+ac
 xa
 JO
 Wg
@@ -687,8 +693,8 @@ km
 Jc
 km
 YJ
-Qd
-MM
+ad
+aa
 ot
 Wg
 TC

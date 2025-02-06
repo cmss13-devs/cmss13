@@ -458,9 +458,12 @@
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
 "acc" = (
-/obj/item/explosive/grenade/high_explosive,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/north_east_jungle)
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/grimy,
+/area/lv624/lazarus/hop)
 "acd" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -791,6 +794,20 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
+"adl" = (
+/obj/item/trash/candy,
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Secure Outer Doors";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/hop)
+"adm" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -805,6 +822,14 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
+"adq" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/redcorner/north,
+/area/lv624/lazarus/security)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -824,6 +849,10 @@
 	icon_state = "wall3"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adv" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
@@ -835,9 +864,18 @@
 "ady" = (
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
+"adz" = (
+/obj/item/explosive/grenade/high_explosive,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
+"adB" = (
+/obj/structure/foamed_metal,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
 "adC" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
@@ -874,6 +912,12 @@
 /obj/item/tool/shovel,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
+"adG" = (
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
 "adH" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
@@ -1978,17 +2022,6 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
-"akh" = (
-/obj/item/trash/candy,
-/obj/structure/machinery/power/apc/power/north,
-/obj/structure/machinery/door_control{
-	id = "secure_outer_blast";
-	name = "Secure Outer Doors";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/turf/open/floor/wood,
-/area/lv624/lazarus/hop)
 "akj" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
@@ -3240,12 +3273,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/west_river)
-"atM" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/wood,
-/area/lv624/ground/caves/north_central_caves)
 "atO" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -9754,17 +9781,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
-"aZz" = (
-/obj/structure/filingcabinet/security{
-	desc = "A large cabinet with hard copy security records.";
-	name = "Security Records"
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/redcorner/north,
-/area/lv624/lazarus/security)
 "aZA" = (
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light/small{
@@ -14233,13 +14249,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"jQX" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/grimy,
-/area/lv624/lazarus/hop)
 "jRm" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
@@ -27795,7 +27804,7 @@ uzH
 uzH
 uzH
 uzH
-uzH
+adv
 aDV
 aRG
 tZD
@@ -38095,7 +38104,7 @@ avm
 avm
 avm
 abU
-atM
+adG
 avm
 avm
 avm
@@ -46905,7 +46914,7 @@ lSs
 vjH
 vSG
 fuY
-acc
+adz
 tyG
 iwh
 jRm
@@ -47178,15 +47187,15 @@ aMe
 aKQ
 aNS
 aOK
-aZz
+adq
 aLl
-akh
+adl
 aRI
 aao
 aal
 aTC
 aQM
-jQX
+acc
 aVq
 aVM
 aSB
@@ -48880,7 +48889,7 @@ acf
 acf
 acf
 ecy
-acw
+adB
 acU
 acT
 kRr
@@ -52424,7 +52433,7 @@ aOd
 aNo
 nIZ
 aNo
-aDG
+adm
 aGQ
 aky
 btF

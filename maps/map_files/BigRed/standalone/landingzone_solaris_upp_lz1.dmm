@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/solaris/rock,
+/area/event/metal/dynamic/lit)
 "ai" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
@@ -65,9 +68,6 @@
 "bx" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/event/metal/dynamic/lit)
-"bE" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/bigredv2/caves_research)
 "bQ" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer/tcomms,
@@ -164,9 +164,6 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/s)
-"fy" = (
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/caves_research)
 "fH" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/structure/bed/bedroll,
@@ -198,9 +195,6 @@
 "gt" = (
 /turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/s)
-"he" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
-/area/bigredv2/caves_research)
 "hh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -214,10 +208,6 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/filtration_cave_cas)
-"hF" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/bigredv2/caves_research)
 "hJ" = (
 /obj/structure/bed/bedroll,
 /turf/open/mars_cave/mars_dirt_4,
@@ -471,9 +461,6 @@
 	},
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/filtration_cave_cas)
-"nn" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/bigredv2/caves_research)
 "ny" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 8;
@@ -792,9 +779,6 @@
 /area/event/metal/dynamic/lit)
 "tM" = (
 /turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves_research)
-"tO" = (
-/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/caves_research)
 "tS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1220,9 +1204,6 @@
 "Jo" = (
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/s)
-"Jy" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
-/area/bigredv2/caves_research)
 "JA" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/whitegreen/southeast,
@@ -1418,10 +1399,11 @@
 "PV" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
-	explo_proof = 1
+	explo_proof = 1;
+	needs_power = 0
 	},
 /turf/open/floor/delivery,
-/area/bigredv2/caves_research)
+/area/event/metal/dynamic/lit)
 "Qk" = (
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/s)
@@ -2086,15 +2068,15 @@ oh
 hW
 Kn
 Kn
-ZK
-MH
-MH
-MH
-MH
-MH
-MH
-ZK
-ZK
+Yl
+aa
+aa
+aa
+aa
+aa
+aa
+Yl
+Yl
 ZK
 PL
 tM
@@ -2149,14 +2131,14 @@ oh
 oh
 VL
 qt
-fy
-fy
-fy
-fy
-fy
-fy
-fy
-ZK
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+Yl
 PV
 WT
 tM
@@ -2212,14 +2194,14 @@ Ym
 Ym
 uc
 qt
-nn
-he
-he
-he
-he
-he
-he
-ZK
+UW
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Yl
 PV
 tM
 tM
@@ -2275,14 +2257,14 @@ xn
 xn
 ZM
 qt
-hF
-tO
-tO
-tO
-tO
-tO
-tO
-ZK
+FR
+xn
+xn
+xn
+xn
+xn
+xn
+Yl
 PV
 tM
 tM
@@ -2338,14 +2320,14 @@ dg
 bx
 CW
 qt
-Jy
-bE
-bE
-bE
-bE
-bE
-bE
-ZK
+Ta
+bx
+bx
+bx
+bx
+bx
+bx
+Yl
 PV
 tM
 tM
@@ -2401,14 +2383,14 @@ mv
 oh
 kG
 qt
-fy
-fy
-fy
-fy
-fy
-fy
-fy
-ZK
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+Yl
 PV
 WT
 tM
@@ -2464,15 +2446,15 @@ mv
 Kb
 Yl
 Kn
-ZK
-MH
-MH
-MH
-MH
-MH
-MH
-ZK
-ZK
+Yl
+aa
+aa
+aa
+aa
+aa
+aa
+Yl
+Yl
 ZK
 tM
 tM

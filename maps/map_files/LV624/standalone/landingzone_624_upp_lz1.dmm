@@ -236,6 +236,7 @@
 	name = "General Listening Channel";
 	pixel_x = -30
 	},
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/warning/southwest,
 /area/lv624/lazarus/landing_zones/lz1)
 "oT" = (

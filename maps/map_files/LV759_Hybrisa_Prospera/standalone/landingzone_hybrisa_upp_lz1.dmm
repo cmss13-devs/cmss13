@@ -4055,7 +4055,6 @@
 /turf/open/floor/strata/orange_cover,
 /area/lv759/indoors/spaceport/hallway_east)
 "wO" = (
-/obj/structure/machinery/power/apc/no_power/west,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/structure/prop/invuln/overhead_pipe{
 	color = "#a6aeab";

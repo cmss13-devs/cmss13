@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
 "af" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8
@@ -1776,7 +1780,7 @@ Qf
 Qf
 Qf
 Qf
-Qf
+aa
 vW
 FZ
 FU

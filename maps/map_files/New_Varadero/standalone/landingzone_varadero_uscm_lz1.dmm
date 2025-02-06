@@ -5764,6 +5764,7 @@
 	pixel_y = 5
 	},
 /obj/item/clothing/head/helmet,
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
 "Vs" = (

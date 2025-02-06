@@ -7,6 +7,25 @@
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"ac" = (
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ad" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ae" = (
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "af" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 8
@@ -25,15 +44,31 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/landing_zone_2)
+"ag" = (
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "ah" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"ai" = (
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"aj" = (
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ak" = (
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "al" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/electical_systems/substation2)
+"am" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
 "at" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/cleanable/blood/oil/streak{
@@ -187,7 +222,7 @@
 "cF" = (
 /obj/structure/cargo_container/wy/right,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "cL" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -348,7 +383,7 @@
 	layer = 2
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "er" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 17
@@ -361,7 +396,7 @@
 	pixel_y = 18
 	},
 /turf/open/hybrisa/street/sidewalk/southwest,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "fa" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -410,7 +445,7 @@
 "gz" = (
 /obj/structure/cargo_container/wy/left,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "gH" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
 	dir = 1
@@ -484,7 +519,7 @@
 	dir = 1
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "hE" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice4";
@@ -646,7 +681,7 @@
 	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "kx" = (
 /obj/structure/largecrate/random/barrel{
 	layer = 1;
@@ -672,7 +707,7 @@
 	pixel_x = -4
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "kF" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
 	dir = 4;
@@ -809,7 +844,7 @@
 	layer = 4.13
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "lY" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/barricade/metal/wired,
@@ -929,7 +964,7 @@
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "nA" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/powercell{
@@ -967,7 +1002,7 @@
 	dir = 4
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "nK" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 9
@@ -1044,7 +1079,7 @@
 	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "oO" = (
 /obj/structure/cable{
 	icon_state = "2-4";
@@ -1069,20 +1104,20 @@
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "pq" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "pr" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstripingdir";
 	color = "#d3d3d3"
 	},
 /turf/open/floor/prison/ramptop,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "pv" = (
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_right{
 	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "py" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -1103,7 +1138,7 @@
 "pU" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "qb" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -1122,7 +1157,7 @@
 /area/lv759/outdoors/landing_zone_2)
 "qt" = (
 /turf/closed/wall/hybrisa/colony,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "qI" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1
@@ -1162,7 +1197,7 @@
 	},
 /obj/structure/machinery/light/blue,
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "qY" = (
 /obj/structure/surface/rack,
 /obj/item/fuel_cell,
@@ -1256,7 +1291,7 @@
 	pixel_y = -16
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "sw" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -1339,7 +1374,7 @@
 	color = "#d3d3d3"
 	},
 /turf/open/floor/prison/cell_stripe/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "tz" = (
 /obj/item/tool/wet_sign{
 	pixel_x = -8;
@@ -1517,7 +1552,7 @@
 "vv" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "vx" = (
 /obj/effect/decal/medical_decals{
 	dir = 1;
@@ -1526,7 +1561,7 @@
 	color = "#d3d3d3"
 	},
 /turf/open/floor/prison/ramptop,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "vA" = (
 /obj/structure/bed/stool,
 /obj/item/trash/cigbutt{
@@ -1551,7 +1586,7 @@
 	layer = 4.13
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "vK" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
@@ -1574,7 +1609,7 @@
 /area/lv759/outdoors/landing_zone_2)
 "wi" = (
 /turf/open/floor/hybrisa/metal/stripe_red,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "wj" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisaLZ2_2";
@@ -1604,7 +1639,7 @@
 	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "wO" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 6
@@ -1714,7 +1749,7 @@
 "xA" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "xI" = (
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv759/outdoors/landing_zone_2)
@@ -1766,7 +1801,7 @@
 "yG" = (
 /obj/structure/fence/dark,
 /turf/open/floor/prison,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "yJ" = (
 /obj/structure/pipes/standard/manifold/hidden/dark{
 	dir = 4
@@ -1784,7 +1819,7 @@
 "yP" = (
 /obj/structure/cargo_container/hybrisa/containersextended/redwywingsright,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "yQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8
@@ -1891,7 +1926,7 @@
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalkfull,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "zG" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/machinery/light/blue,
@@ -1902,7 +1937,7 @@
 	layer = 4.2
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "zM" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/almayer/plate,
@@ -1926,7 +1961,7 @@
 	layer = 5
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "zY" = (
 /obj/structure/curtain/colorable_transparent{
 	color = "#434343";
@@ -2035,7 +2070,7 @@
 "Bn" = (
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Mining,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "By" = (
 /obj/item/stool,
 /obj/structure/cable{
@@ -2084,7 +2119,7 @@
 	pixel_y = 7
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Cr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -2103,7 +2138,7 @@
 "Ct" = (
 /obj/structure/cargo_container/hybrisa/containersextended/bluewywingsright,
 /turf/open/hybrisa/street/sidewalk/northeast,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Cz" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/hybrisa/street/asphalt,
@@ -2181,7 +2216,7 @@
 "Do" = (
 /obj/structure/cargo_container/hd/left/alt,
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Ds" = (
 /obj/item/paper/crumpled/bloody{
 	pixel_x = -9;
@@ -2238,7 +2273,7 @@
 	layer = 4.12
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Ep" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -2276,7 +2311,7 @@
 	layer = 2
 	},
 /turf/open/hybrisa/street/sidewalk/northwest,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "EL" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -2374,7 +2409,7 @@
 	},
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_right,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Gj" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -2461,7 +2496,7 @@
 "Ht" = (
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_left,
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Hx" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1
@@ -2575,7 +2610,7 @@
 "IS" = (
 /obj/structure/bed/stool,
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "IU" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
 	dir = 4
@@ -2619,7 +2654,7 @@
 	layer = 2
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Jv" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
@@ -2667,7 +2702,7 @@
 /obj/structure/largecrate/random/barrel/brown,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "KE" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime4"
@@ -2686,7 +2721,7 @@
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Lg" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 9
@@ -2710,7 +2745,7 @@
 	pixel_y = 8
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Lr" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 1
@@ -2761,7 +2796,7 @@
 "Mk" = (
 /obj/structure/cargo_container/wy/mid,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Mr" = (
 /obj/structure/machinery/colony_floodlight/street{
 	pixel_y = 12
@@ -2818,7 +2853,7 @@
 	color = "#d3d3d3"
 	},
 /turf/open/floor/prison/cell_stripe/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "MI" = (
 /obj/effect/spawner/random/toolbox{
 	pixel_y = 12
@@ -2827,7 +2862,7 @@
 	pixel_y = 8
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "MO" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
@@ -2890,11 +2925,11 @@
 	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "NO" = (
 /obj/structure/cargo_container/hybrisa/containersextended/bluewywingsleft,
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "NR" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	pixel_y = -5
@@ -2930,7 +2965,7 @@
 	pixel_y = -4
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "OH" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 5;
@@ -3026,7 +3061,7 @@
 	layer = 4.1
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Qw" = (
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/landing_zone_2)
@@ -3217,7 +3252,7 @@
 	color = "#d3d3d3"
 	},
 /turf/open/floor/prison/cell_stripe/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "TA" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/hybrisa/street/sidewalk/southeast,
@@ -3278,7 +3313,7 @@
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Ue" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4
@@ -3362,7 +3397,7 @@
 "Vx" = (
 /obj/structure/cargo_container/hybrisa/containersextended/redwywingsleft,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "VB" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /obj/structure/machinery/light/blue,
@@ -3399,7 +3434,7 @@
 	pixel_y = 7
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Wt" = (
 /obj/effect/sentry_landmark/lz_2/top_right,
 /turf/open/hybrisa/street/asphalt,
@@ -3409,7 +3444,7 @@
 	dir = 4
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "WS" = (
 /obj/structure/monorail,
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4{
@@ -3443,8 +3478,9 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Xm" = (
 /obj/structure/machinery/light/blue,
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Xn" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -21;
@@ -3459,7 +3495,7 @@
 	pixel_y = 13
 	},
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Xr" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
@@ -3501,7 +3537,7 @@
 "XI" = (
 /obj/structure/cargo_container/kelland/right,
 /turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "XJ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /obj/structure/machinery/landinglight/ds2/spoke{
@@ -3550,7 +3586,7 @@
 	layer = 4.11
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Ye" = (
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Kelland_Mining,
 /turf/open/hybrisa/street/asphalt,
@@ -3665,12 +3701,13 @@
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
 	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/landing_zone_2)
 "Zq" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/landing_zone_2)
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "ZT" = (
 /obj/structure/machinery/power/terminal{
 	dir = 4
@@ -4061,8 +4098,8 @@ lh
 lh
 lh
 lh
-lh
-lh
+ad
+ad
 Gz
 zy
 Ug
@@ -4115,8 +4152,8 @@ dQ
 dQ
 dQ
 dQ
-dQ
-dQ
+ae
+ae
 UT
 uM
 UT
@@ -4170,9 +4207,9 @@ tb
 jQ
 jQ
 zF
-Qw
-ci
-ci
+ag
+ac
+ac
 qt
 xs
 xs
@@ -4225,8 +4262,8 @@ Kq
 Kq
 ss
 ku
-ci
-ci
+ac
+ac
 yG
 wx
 xs
@@ -4280,7 +4317,7 @@ Kq
 wF
 Vx
 KN
-ci
+ac
 yG
 mo
 xs
@@ -4334,7 +4371,7 @@ Kq
 NM
 yP
 Uc
-ci
+ac
 yG
 mo
 Am
@@ -4388,7 +4425,7 @@ Kq
 ek
 KC
 nq
-ci
+ac
 yG
 wx
 UL
@@ -4439,10 +4476,10 @@ Cz
 Kq
 Uy
 Kq
-sp
+aj
 gz
 Ju
-ci
+ac
 yG
 wx
 LJ
@@ -4493,10 +4530,10 @@ Ye
 SA
 BF
 Kq
-sp
+aj
 Mk
 pU
-ci
+ac
 yG
 wx
 Am
@@ -4547,10 +4584,10 @@ Kq
 SA
 BF
 Kq
-sp
+aj
 cF
 XI
-ci
+ac
 qt
 mo
 LJ
@@ -4601,9 +4638,9 @@ tB
 SA
 BF
 Kq
-mU
-bJ
-ci
+ak
+ai
+ac
 Xm
 qt
 Jm
@@ -4873,7 +4910,7 @@ Uy
 Kq
 EH
 eF
-ci
+ac
 qP
 qt
 Mt
@@ -4926,9 +4963,9 @@ Kq
 Kq
 Kq
 Zq
-Qw
+ag
 Do
-ci
+ac
 qt
 wx
 UL
@@ -4982,7 +5019,7 @@ Kq
 PU
 zI
 zX
-ci
+ac
 yG
 wx
 LJ
@@ -5033,10 +5070,10 @@ Kq
 SA
 BF
 Kq
-sp
+aj
 XT
 Eo
-ci
+ac
 yG
 mo
 UL
@@ -5045,7 +5082,7 @@ al
 "}
 (26,1,1) = {"
 yd
-TU
+am
 TW
 wj
 zo
@@ -5087,10 +5124,10 @@ Kq
 SA
 BF
 Kq
-sp
+aj
 kD
 Ht
-ci
+ac
 yG
 mo
 LJ
@@ -5141,10 +5178,10 @@ Kq
 SA
 BF
 Kq
-sp
+aj
 xA
 vI
-ci
+ac
 yG
 mo
 LJ
@@ -5198,7 +5235,7 @@ Kq
 hB
 Gc
 Lq
-ci
+ac
 yG
 mo
 xs
@@ -5252,7 +5289,7 @@ Dw
 oM
 Bn
 Xn
-ci
+ac
 yG
 wx
 xs
@@ -5304,9 +5341,9 @@ Kq
 Kq
 Kq
 pv
-Qw
+ag
 MI
-ci
+ac
 qt
 xs
 xs
@@ -5360,7 +5397,7 @@ Kq
 IS
 Wd
 Cn
-ci
+ac
 qt
 uL
 uL
@@ -5467,7 +5504,7 @@ Sd
 zD
 NO
 lV
-ci
+ac
 uL
 uL
 UU
@@ -5520,7 +5557,7 @@ mM
 sR
 mM
 Ct
-bJ
+ai
 uL
 uL
 UU

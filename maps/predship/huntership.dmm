@@ -724,12 +724,7 @@
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "cq" = (
 /obj/effect/hunter/rune/corner{
@@ -1012,12 +1007,7 @@
 	dir = 1
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "dk" = (
 /obj/effect/hunter/rune{
@@ -2528,12 +2518,7 @@
 	pixel_y = 24;
 	density = 0
 	},
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "in" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -2876,12 +2861,7 @@
 	dir = 4
 	},
 /obj/effect/hunter/bridge_border/corner,
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "jq" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -6211,12 +6191,7 @@
 	pixel_y = 24;
 	density = 0
 	},
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "uX" = (
 /obj/structure/showcase{
@@ -7674,12 +7649,7 @@
 /obj/effect/hunter/bridge_border/corner{
 	dir = 4
 	},
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "Aj" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -9845,12 +9815,7 @@
 	dir = 8
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "Hk" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -11467,12 +11432,7 @@
 	pixel_y = 24;
 	density = 0
 	},
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "Nu" = (
 /obj/structure/blocker/invisible_wall,
@@ -12656,12 +12616,7 @@
 	dir = 4
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "Rr" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -13515,12 +13470,7 @@
 	density = 0
 	},
 /obj/effect/step_trigger/teleporter/yautja_ship,
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "Uq" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -14707,12 +14657,7 @@
 	},
 /obj/effect/hunter/bridge_border/brown,
 /obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red{
-	color = "#c27e7e";
-	light_color = "#ff0000";
-	light_on = 1;
-	light_range = 1
-	},
+/turf/open/floor/light/red/darker,
 /area/yautja)
 "Ya" = (
 /obj/effect/hunter/bridge_border/brown/corner{

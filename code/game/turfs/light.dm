@@ -101,6 +101,11 @@
 	icon_state = "light_on-r"
 	state = LIGHT_FLOOR_COLOR_RED
 
+/turf/open/floor/light/red/darker
+	icon_state = "light_on-r"
+	state = LIGHT_FLOOR_COLOR_RED
+	color = "#c27e7e"
+
 /turf/open/floor/light/green
 	icon_state = "light_on-g"
 	state = LIGHT_FLOOR_COLOR_GREEN

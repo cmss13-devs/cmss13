@@ -599,8 +599,8 @@
 		number_decorator = "Infernal "
 	if(show_name_numbers)
 		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
-	name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
-	ru_names_rename(ru_names_toml(caste.display_name || caste.caste_type, prefix = "[name_prefix][number_decorator][age_display]", suffix = "[name_display]")) // BANDAMARINES ADDITION
+	name = "[name_prefix][number_decorator][age_display][declent_ru_initial(caste.display_name || caste.caste_type, NOMINATIVE, caste.display_name || caste.caste_type)][name_display]"
+	ru_names_rename(ru_names_toml(caste.display_name || caste.caste_type, prefix = "[name_prefix][number_decorator][age_display]", suffix = "[name_display]", override_base = name)) // BANDAMARINES ADDITION
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

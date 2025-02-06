@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - bugfix: "fixed ot rocket's blast wave only going in one direction"

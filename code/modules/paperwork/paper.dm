@@ -918,11 +918,12 @@
 
 /obj/item/paper/incident
 	name = "incident report"
+	icon_state = "paper_uscm_words"
 	var/datum/crime_incident/incident
 
 /obj/item/paper/incident/Initialize()
 	. = ..()
-	var/template = {"\[center\]\[logo\]\[/center\]
+	var/template = {"\[center\]\[uscm\]\[/center\]
 		\[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
 		\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
 		\[barcode\]\[/center\]"}
@@ -937,10 +938,13 @@
 
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
+	icon_state = "paper_uscm_words"
 
+//Passing second parameter and using default constructor can cause blockade on paper initialization until resource is deleted
 /obj/item/paper/fingerprint/Initialize(mapload, list/prints)
-	. = ..()
-	var/template = {"\[center\]\[logo\]\[/center\]"}
+	// To not block initialization construct object like below
+	. = ..(mapload)
+	var/template = {"\[center\]\[uscm\]\[/center\]"}
 
 	var/i = 0
 	for(var/obj/effect/decal/prints/print_set in prints)
@@ -956,6 +960,57 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
+	update_icon()
+
+
+/obj/item/paper/personalrecord
+	name = "personal record"
+	icon_state = "paper_uscm_words"
+
+//Passing second parameter and using default constructor can cause blockade on paper initialization until resource is deleted
+/obj/item/paper/personalrecord/Initialize(mapload, datum/data/record/general_record, datum/data/record/security_record)
+	// To not block initialization construct object like below
+	. = ..(mapload)
+	var/template = {"\[center\]\[uscm\]\[/center\]"}
+
+	template += {"\[center\]\[b\]Personal Record\[/b\]\[/center\]"}
+
+	if(general_record)
+		template += {"
+		Name: [general_record.fields["name"]]\[br\] `
+		ID: [general_record.fields["id"]]\[br\]
+		Sex: [general_record.fields["sex"]]\[br\]
+		Age: [general_record.fields["age"]]\[br\]
+		Rank: [general_record.fields["rank"]]\[br\]
+		Physical Status: [general_record.fields["p_stat"]]\[br\]
+		Mental Status: [general_record.fields["m_stat"]]\[br\]
+		Criminal Status: [general_record.fields["criminal"]]\[br\]
+		"}
+
+		if (security_record)
+			template += {"\[center\]\[b\]Security Data\[/b\]\[/center\]"}
+			template += {"Incidents: [security_record.fields["incident"]]\[br\]"}
+			template += {"\[center\]\[b\]Comments and Logs\[/b\]\[/center\]"}
+
+			if(islist(security_record.fields["comments"]) || length(security_record.fields["comments"]) > 0)
+				for(var/com_i in security_record.fields["comments"])
+					var/comment = security_record.fields["comments"][com_i]
+					// What a wacky and jolly creation
+					// its derived from //? text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+					var/comment_markup = "\[b\][comment["created_at"]] / [comment["created_by"]["name"]] \[/b\] ([comment["created_by"]["rank"]])\[br\]"
+					if (isnull(comment["deleted_by"]))
+						comment_markup += "[comment["entry"]]"
+					else
+						comment_markup += "\[i\]Comment deleted by [comment["deleted_by"]] at [comment["deleted_at"]]\[/i\]"
+					template += {"[comment_markup]\[br\]\[br\]"}
+			else
+				template += {"\[b\]No comments\[/b\]\[br\]"}
+		else
+			template += {"\[b\]Security Record Lost!\[/b\]\[br\]"}
+
+	info = parsepencode(template, null, null, FALSE)
+	update_icon()
+
 #undef MAX_FIELDS
 
 /obj/item/paper/colonial_grunts

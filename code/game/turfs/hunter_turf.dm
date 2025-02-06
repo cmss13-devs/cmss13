@@ -260,16 +260,6 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east
 	dir = EAST
 
-/turf/open/floor/mainship_hull/gray/dir
-	name = "floor"
-	icon = 'icons/turf/floors/hunter_floors.dmi'
-	icon_state = "floor"
-
-/turf/open/floor/mainship_hull/gray
-	name = "floor"
-	icon = 'icons/turf/floors/hunter_floors.dmi'
-	icon_state = "floor"
-
 /turf/open/shuttle/dropship/predship
 	name = "floor"
 	icon = 'icons/turf/floors/hunter_floors.dmi'

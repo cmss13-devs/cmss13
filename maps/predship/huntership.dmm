@@ -409,10 +409,6 @@
 	},
 /turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
-"bj" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/mainship_hull/gray/dir,
-/area/yautja)
 "bk" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1785,7 +1781,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
 /area/yautja)
 "fT" = (
 /obj/structure/platform_decoration/metal/hunter{
@@ -2110,7 +2106,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
 "gX" = (
 /obj/item/weapon/shield/riot/yautja{
@@ -3237,7 +3233,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
 "lg" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -4403,7 +4399,7 @@
 /obj/effect/hunter/rune{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_4/north,
 /area/yautja)
 "pn" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -4568,7 +4564,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
 /area/yautja)
 "qc" = (
 /obj/structure/prop/hunter/trophy_display/center,
@@ -4678,6 +4674,10 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
+/area/yautja)
+"qs" = (
+/obj/effect/hunter/rune,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/east,
 /area/yautja)
 "qw" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -6475,6 +6475,12 @@
 /obj/structure/machinery/cm_vending/clothing/yautja/centre,
 /turf/open/floor/corsat,
 /area/yautja)
+"xq" = (
+/obj/effect/hunter/rune{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/east,
+/area/yautja)
 "xs" = (
 /obj/item/bedsheet/colorable{
 	pixel_x = -1;
@@ -6922,7 +6928,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
 "yV" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -6961,7 +6967,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
 "zc" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6987,7 +6993,7 @@
 /obj/effect/hunter/rune{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_4/north,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
 /area/yautja)
 "zh" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -9585,7 +9591,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
 /area/yautja)
 "HF" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -10754,7 +10760,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
 /area/yautja)
 "Mq" = (
 /obj/structure/curtain/leather/alt_2,
@@ -11438,7 +11444,7 @@
 /obj/effect/hunter/rune{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_4/north,
 /area/yautja)
 "Pb" = (
 /obj/structure/surface/rack{
@@ -13668,7 +13674,7 @@
 /obj/effect/hunter/rune{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
 "Wp" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -14146,7 +14152,7 @@
 /obj/effect/hunter/rune{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/predship/mainfloor/direction_4/north,
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north,
 /area/yautja)
 "XU" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -16840,13 +16846,13 @@ Ay
 Ay
 rB
 xH
-Ay
-Ay
-Ay
-Ay
-Ay
-Ay
-Ay
+qs
+qs
+qs
+qs
+qs
+qs
+qs
 BL
 Jn
 aV
@@ -16942,13 +16948,13 @@ gD
 gD
 Ol
 Ol
-gD
-gD
-gD
-gD
-gD
-gD
-gD
+xq
+xq
+xq
+xq
+xq
+xq
+xq
 sX
 PI
 aV
@@ -17036,7 +17042,7 @@ CQ
 aV
 aV
 fS
-XM
+tT
 aV
 aV
 GO
@@ -17342,7 +17348,7 @@ Jw
 aV
 aV
 HE
-XM
+tT
 aV
 aV
 aV
@@ -17352,7 +17358,7 @@ aV
 aV
 aV
 aV
-bj
+Ia
 aV
 Sc
 pi
@@ -20300,7 +20306,7 @@ xT
 aV
 aV
 gW
-tT
+XM
 aV
 aV
 FW
@@ -20310,7 +20316,7 @@ aV
 aV
 aV
 aV
-bj
+Ia
 aV
 DT
 Yw
@@ -20402,7 +20408,7 @@ Se
 aV
 aV
 yU
-tT
+XM
 oF
 aV
 lh
@@ -20503,8 +20509,8 @@ Hg
 Hg
 Hg
 Lx
-lL
-tT
+lX
+XM
 xm
 aV
 Nz
@@ -20606,7 +20612,7 @@ MD
 aV
 aV
 lf
-tT
+XM
 aV
 aV
 aV
@@ -20720,9 +20726,9 @@ BL
 BL
 BL
 BL
-Ay
-Ay
-Ay
+qs
+qs
+qs
 rB
 PI
 aV
@@ -20822,9 +20828,9 @@ sX
 yP
 yP
 gV
-gD
-gD
-gD
+xq
+xq
+xq
 Ol
 vn
 aV

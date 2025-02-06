@@ -19,6 +19,10 @@
 			hud_icon_state = "goon_sci"
 		if(JOB_WY_GOON_TECH)
 			hud_icon_state = "goon_engi"
+		if(JOB_TRAINEE)
+			hud_icon_state = "trainee"
+		if(JOB_JUNIOR_EXECUTIVE)
+			hud_icon_state = "junior_exec"
 		if(JOB_CORPORATE_LIAISON)
 			hud_icon_state = "liaison"
 		if(JOB_EXECUTIVE)
@@ -35,10 +39,8 @@
 			hud_icon_state = "div_man"
 		if(JOB_CHIEF_EXECUTIVE)
 			hud_icon_state = "chief_man"
-		if(JOB_TRAINEE)
-			hud_icon_state = "trainee"
-		if(JOB_JUNIOR_EXECUTIVE)
-			hud_icon_state = "junior_exec"
+		if(JOB_DEPUTY_DIRECTOR)
+			hud_icon_state = "dep_director"
 		if(JOB_DIRECTOR)
 			hud_icon_state = "director"
 	if(hud_icon_state)

@@ -16,6 +16,10 @@
 
 /turf/open/shuttle/dropship/predship/tile/red4
 	icon_state = "hunter_red_4"
+	light_on = TRUE
+	light_power = 1
+	light_range = 2
+	light_color = "#ff0000"
 
 /turf/open/shuttle/dropship/predship/tile/red5
 	icon_state = "hunter_red_5"
@@ -44,8 +48,12 @@
 /turf/open/shuttle/dropship/predship/red_glow
 	icon_state = "hunter_glow"
 
-/turf/open/shuttle/dropship/predship/red_glow
+/turf/open/shuttle/dropship/predship/red_glow/on
 	icon_state = "hunter_glow"
+	light_on = TRUE
+	light_power = 2
+	light_range = 3
+	light_color = "#ff0000"
 
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1
 	icon = 'icons/turf/floors/hunter_floors.dmi'

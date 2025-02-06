@@ -1212,6 +1212,13 @@
 /turf/open/shuttle/bright_red
 	icon_state = "floor4"
 
+/turf/open/shuttle/bright_red/glow
+	icon_state = "floor4"
+	light_on = TRUE
+	light_power = 2
+	light_range = 3
+	light_color = "#ff0000"
+
 /turf/open/shuttle/red
 	icon_state = "floor6"
 

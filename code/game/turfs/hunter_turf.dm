@@ -5,6 +5,91 @@
 	icon = 'icons/turf/floors/hunter_floors.dmi'
 	icon_state = "floor"
 
+// Main floor/walkway
+
+/turf/open/shuttle/dropship/predship/mainfloor/plain
+	icon_state = "hunter_bridge"
+
+// Directions
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_1
+	icon_state = "3,2"
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_1/north
+	dir = NORTH
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_1/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_1/west
+	dir = WEST
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2
+	icon_state = "20,4"
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/north
+	dir = NORTH
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_2/west
+	dir = WEST
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3
+	icon_state = "21,4"
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/north
+	dir = NORTH
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_3/west
+	dir = WEST
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_4
+	icon_state = "21,6"
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_4/north
+	dir = NORTH
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_4/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/predship/mainfloor/direction_4/west
+	dir = WEST
+
+// Edge
+
+/turf/open/shuttle/dropship/predship/mainfloor/edge
+	icon_state = "2,2"
+
+/turf/open/shuttle/dropship/predship/mainfloor/edge/north
+	dir = NORTH
+
+/turf/open/shuttle/dropship/predship/mainfloor/edge/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/predship/mainfloor/edge/west
+	dir = WEST
+
+// Corner
+
+/turf/open/shuttle/dropship/predship/mainfloor/corner
+	icon_state = "20,3"
+
+/turf/open/shuttle/dropship/predship/mainfloor/corner/north
+	dir = NORTH
+
+/turf/open/shuttle/dropship/predship/mainfloor/corner/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/predship/mainfloor/corner/west
+	dir = WEST
+
+// Red tiles
+
 /turf/open/shuttle/dropship/predship/tile/red
 	icon_state = "hunter_red"
 
@@ -29,9 +114,6 @@
 
 /turf/open/shuttle/dropship/predship/tile/red6
 	icon_state = "hunter_red_6"
-
-/turf/open/shuttle/dropship/predship/bridge
-	icon_state = "hunter_bridge"
 
 /turf/open/shuttle/dropship/predship/hunter_catwalk
 	icon_state = "hunter_catwalk"

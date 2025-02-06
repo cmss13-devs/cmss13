@@ -186,30 +186,16 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"aP" = (
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/item/ammo_magazine/rifle{
-	pixel_x = 6;
-	pixel_y = -5
-	},
-/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
-/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
-/area/bigredv2/outside/general_offices)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars,
 /area/bigredv2/caves_north)
-"aR" = (
-/obj/item/defenses/handheld/planted_flag/wy,
-/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
-/area/bigredv2/outside/general_offices)
 "aS" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
+/area/bigredv2/outside/general_offices)
+"aT" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/bigredv2/outside/general_offices)
 "aU" = (
 /obj/item/storage/firstaid/adv/empty,
@@ -269,6 +255,19 @@
 /obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/platingdmg1,
+/area/bigredv2/outside/general_offices)
+"be" = (
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_x = -6;
+	pixel_y = -11
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "bf" = (
 /turf/open/floor/plating,
@@ -342,6 +341,12 @@
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
+"bt" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon,
+/obj/item/device/motiondetector/hacked/pmc,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "bu" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/platingdmg1,
@@ -386,25 +391,6 @@
 /obj/item/tool/shovel,
 /turf/open/mars,
 /area/bigredv2/caves_north)
-"bC" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wygoon,
-/obj/item/device/motiondetector/hacked/pmc,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
-"bD" = (
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23{
-	pixel_x = -6;
-	pixel_y = -11
-	},
-/obj/item/ammo_magazine/rifle/nsg23{
-	pixel_x = 7;
-	pixel_y = -6
-	},
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/general_offices)
 "bE" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy14"
@@ -422,9 +408,6 @@
 	icon_state = "wy15"
 	},
 /area/bigredv2/outside/general_offices)
-"bH" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
-/area/bigredv2/outside/general_offices)
 "bM" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy12"
@@ -439,6 +422,23 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy4"
 	},
+/area/bigredv2/outside/general_offices)
+"cc" = (
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/ammo_magazine/rifle{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
+/area/bigredv2/outside/general_offices)
+"cd" = (
+/obj/item/defenses/handheld/planted_flag/wy,
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/bigredv2/outside/general_offices)
 "cf" = (
 /turf/closed/shuttle/ert{
@@ -1687,11 +1687,11 @@ aw
 aD
 dX
 bi
-bC
+bt
 bF
 bF
 bF
-aP
+cc
 Ul
 aq
 al
@@ -1747,13 +1747,13 @@ eF
 au
 ay
 aF
-bH
+aT
 bs
-bD
+be
 bk
 bk
 aL
-aR
+cd
 aC
 qo
 al

@@ -10,25 +10,6 @@
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"ad" = (
-/obj/structure/window/framed/solaris/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Marshal Offices";
-	name = "\improper Marshal Offices Shutters"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/marshal_office)
-"ae" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/accessory/storage/black_vest,
-/obj/item/clothing/accessory/storage/black_vest,
-/obj/item/clothing/accessory/storage/black_vest,
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_y = -8;
-	pixel_x = -6
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "af" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
@@ -1122,6 +1103,17 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"HS" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = -8;
+	pixel_x = -6
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "Io" = (
 /obj/structure/closet/l3closet/security,
 /obj/structure/machinery/light{
@@ -1196,6 +1188,14 @@
 	pixel_x = -9
 	},
 /turf/open/floor/freezerfloor,
+/area/bigredv2/outside/marshal_office)
+"MM" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Marshal Offices";
+	name = "\improper Marshal Offices Shutters"
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
 "MS" = (
 /obj/structure/bed/chair{
@@ -1721,7 +1721,7 @@ cq
 ah
 aD
 mz
-ae
+HS
 Ml
 ah
 HO
@@ -1783,7 +1783,7 @@ bk
 cW
 db
 dg
-ad
+MM
 "}
 (19,1,1) = {"
 aj
@@ -1807,7 +1807,7 @@ NQ
 bG
 dc
 dh
-ad
+MM
 "}
 (20,1,1) = {"
 bO

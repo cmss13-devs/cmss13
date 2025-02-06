@@ -440,7 +440,7 @@
 		/obj/item/device/taperecorder = 3,
 		/obj/item/device/clue_scanner = 3,
 		/obj/item/device/camera = 3,
-		/obj/item/device/camera_film = 3
+		/obj/item/device/camera_film = 3,
 	)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 

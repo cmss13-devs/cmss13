@@ -4808,3 +4808,15 @@
 
 /turf/open/gm/grass/grass2/pred
 	icon_state = "grass2"
+
+// Half Plate
+
+/turf/open/floor/half_plate
+	icon = 'icons/turf/half_plate.dmi'
+	icon_state = "green_plate"
+	plating_type = /turf/open/floor/plating/almayer
+
+/turf/open/floor/half_plate/green
+
+/turf/open/floor/half_plate/dark_yellow
+	icon_state = "darkyellow_plate"

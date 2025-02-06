@@ -146,7 +146,7 @@
 		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 
-/obj/structure/machinery/computer/overwatch/proc/count_marines(list/data)
+/obj/structure/machinery/computer/overwatch/squad/count_marines(list/data)
 	var/leader_count = 0
 	var/ftl_count = 0
 	var/spec_count = 0
@@ -322,7 +322,179 @@
 	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
 	return data
 
-/obj/structure/machinery/computer/overwatch/ui_data(mob/user)
+
+/obj/structure/machinery/computer/overwatch/proc/count_marines(datum/squad/index_squad)
+	var/leader_count = 0
+	var/ftl_count = 0
+	var/spec_count = 0
+	var/medic_count = 0
+	var/engi_count = 0
+	var/smart_count = 0
+	var/marine_count = 0
+
+	var/leaders_alive = 0
+	var/ftl_alive = 0
+	var/spec_alive= 0
+	var/medic_alive= 0
+	var/engi_alive = 0
+	var/smart_alive = 0
+	var/marines_alive = 0
+
+	var/specialist_type
+
+	var/SL_z //z level of the Squad Leader
+	if(index_squad.squad_leader)
+		var/turf/SL_turf = get_turf(index_squad.squad_leader)
+		SL_z = SL_turf.z
+
+	for(var/marine in index_squad.marines_list)
+		if(!marine)
+			continue //just to be safe
+		var/mob_name = "unknown"
+		var/mob_state = ""
+		var/has_helmet = TRUE
+		var/role = "unknown"
+		var/acting_sl = ""
+		var/fteam = ""
+		var/distance = "???"
+		var/area_name = "???"
+		var/is_squad_leader = FALSE
+		var/mob/living/carbon/human/marine_human
+
+
+		if(ishuman(marine))
+			marine_human = marine
+			if(istype(marine_human.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
+				continue
+			mob_name = marine_human.real_name
+			var/area/current_area = get_area(marine_human)
+			var/turf/current_turf = get_turf(marine_human)
+			if(!current_turf)
+				continue
+			if(current_area)
+				area_name = sanitize_area(current_area.name)
+
+			switch(z_hidden)
+				if(HIDE_ALMAYER)
+					if(is_mainship_level(current_turf.z))
+						continue
+				if(HIDE_GROUND)
+					if(is_ground_level(current_turf.z))
+						continue
+
+			var/obj/item/card/id/card = marine_human.get_idcard()
+			if(marine_human.job)
+				role = marine_human.job
+			else if(card?.rank) //decapitated marine is mindless,
+				role = card.rank
+
+			if(index_squad.squad_leader)
+				if(marine_human == index_squad.squad_leader)
+					distance = "N/A"
+					if(index_squad.name == SQUAD_SOF)
+						if(marine_human.job == JOB_MARINE_RAIDER_CMD)
+							acting_sl = " (direct command)"
+						else if(marine_human.job != JOB_MARINE_RAIDER_SL)
+							acting_sl = " (acting TL)"
+					else if(marine_human.job != JOB_SQUAD_LEADER)
+						acting_sl = " (acting SL)"
+					is_squad_leader = TRUE
+				else if(current_turf && (current_turf.z == SL_z))
+					distance = "[get_dist(marine_human, index_squad.squad_leader)] ([dir2text_short(Get_Compass_Dir(index_squad.squad_leader, marine_human))])"
+
+
+			switch(marine_human.stat)
+				if(CONSCIOUS)
+					mob_state = "Conscious"
+
+				if(UNCONSCIOUS)
+					mob_state = "Unconscious"
+
+				if(DEAD)
+					mob_state = "Dead"
+
+			if(!istype(marine_human.head, /obj/item/clothing/head/helmet/marine))
+				has_helmet = FALSE
+
+			if(!marine_human.key || !marine_human.client)
+				if(marine_human.stat != DEAD)
+					mob_state += " (SSD)"
+
+
+			if(marine_human.assigned_fireteam)
+				fteam = " [marine_human.assigned_fireteam]"
+
+		else //listed marine was deleted or gibbed, all we have is their name
+			for(var/datum/data/record/marine_record as anything in GLOB.data_core.general)
+				if(marine_record.fields["name"] == marine)
+					role = marine_record.fields["real_rank"]
+					break
+			mob_state = "Dead"
+			mob_name = marine
+
+
+		switch(role)
+			if(JOB_SQUAD_LEADER, JOB_UPP_LEADER)
+				leader_count++
+				if(mob_state != "Dead")
+					leaders_alive++
+			if(JOB_SQUAD_TEAM_LEADER)
+				ftl_count++
+				if(mob_state != "Dead")
+					ftl_alive++
+			if(JOB_SQUAD_SPECIALIST, JOB_UPP_SPECIALIST)
+				spec_count++
+				if(marine_human)
+					var/obj/item/card/id/card = marine_human.get_idcard()
+					if(card?.assignment) //decapitated marine is mindless,
+						if(specialist_type)
+							specialist_type = "MULTIPLE"
+						else
+							var/list/spec_type = splittext(card.assignment, "(")
+							if(islist(spec_type) && (length(spec_type) > 1))
+								specialist_type = splittext(spec_type[2], ")")[1]
+				else if(!specialist_type)
+					specialist_type = "UNKNOWN"
+				if(mob_state != "Dead")
+					spec_alive++
+			if(JOB_SQUAD_MEDIC, JOB_UPP_MEDIC)
+				medic_count++
+				if(mob_state != "Dead")
+					medic_alive++
+			if(JOB_SQUAD_ENGI, JOB_UPP_ENGI)
+				engi_count++
+				if(mob_state != "Dead")
+					engi_alive++
+			if(JOB_SQUAD_SMARTGUN)
+				smart_count++
+				if(mob_state != "Dead")
+					smart_alive++
+			if(JOB_SQUAD_MARINE, JOB_UPP)
+				marine_count++
+				if(mob_state != "Dead")
+					marines_alive++
+
+	var/squad_count = list(list(
+		"total_deployed" = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count,
+		"living_count" = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive,
+		"leader_count" = leader_count,
+		"ftl_count" = ftl_count,
+		"spec_count" = spec_count,
+		"medic_count" = medic_count,
+		"engi_count" = engi_count,
+		"smart_count" = smart_count,
+		"leaders_alive" = leaders_alive,
+		"ftl_alive" = ftl_alive,
+		"spec_alive" = spec_alive,
+		"medic_alive" = medic_alive,
+		"engi_alive" = engi_alive,
+		"smart_alive" = smart_alive,
+		"specialist_type" = specialist_type ? specialist_type : "NONE",
+	))
+
+	return squad_count
+
+/obj/structure/machinery/computer/overwatch/squad/ui_data(mob/user)
 	var/list/data = list()
 
 	data["theme"] = ui_theme
@@ -342,6 +514,53 @@
 	data["marines"] = list()
 
 	data = count_marines(data)
+
+	data["z_hidden"] = z_hidden
+
+	data["saved_coordinates"] = list()
+	for(var/i in 1 to length(saved_coordinates))
+		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "comment" = saved_coordinates[i]["comment"], "index" = i))
+
+	var/has_supply_pad = FALSE
+	var/obj/structure/closet/crate/supply_crate
+	if(current_squad.drop_pad)
+		supply_crate = locate() in current_squad.drop_pad.loc
+		has_supply_pad = TRUE
+	data["can_launch_crates"] = has_supply_pad
+	data["has_crate_loaded"] = supply_crate
+	data["can_launch_obs"] = current_orbital_cannon
+	if(current_orbital_cannon)
+		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
+		data["ob_loaded"] = current_orbital_cannon.chambered_tray
+
+	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
+	data["operator"] = operator.name
+
+	return data
+
+
+/obj/structure/machinery/computer/overwatch/ui_data(mob/user)
+	var/list/data = list()
+
+	data["theme"] = ui_theme
+
+	if(!current_squad)
+		data["squad_list"] = list()
+		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+				data["squad_list"] += current_squad.name
+		return data
+
+	data["current_squad"] = current_squad.name
+
+	data["primary_objective"] = current_squad.primary_objective
+	data["secondary_objective"] = current_squad.secondary_objective
+
+	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
+		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
+			var/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "ref" = REF(index_squad)))
+			data["squad_data"] += squad_data
+			data["squad_data"] += count_marines(index_squad)
 
 	data["z_hidden"] = z_hidden
 

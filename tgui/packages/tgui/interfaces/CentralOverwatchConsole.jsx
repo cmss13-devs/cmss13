@@ -18,7 +18,7 @@ export const CentralOverwatchConsole = (props) => {
 
   return (
     <Window
-      width={800}
+      width={700}
       height={800}
       theme={data.theme ? data.theme : 'crtblue'}
     >
@@ -77,77 +77,217 @@ const SquadPanel = (props) => {
   const [category, setCategory] = useSharedState('selected', 'monitor');
 
   return (
-    <Section>
-      <Stack justify="center" align="end">
-        {data.squad_list.map((squad, index) => {
-          let { primary_objective, secondary_objective } = data;
+    <Section title="Combined Squad Tracker" fontSize="18px">
+      <Stack vertical justify="left" align="end">
+        {data.squad_data.map((squad, index) => {
           return (
-            <Stack.Item key={index}>
-              {squad + ' Overwatch | Dashboard'}
-              <Table mb="5px">
+            <Stack.Item key={index} fontSize="13px">
+              <Table p="4px">
+                <Table.Row>
+                  <Table.Cell
+                    bold
+                    colSpan={3}
+                    textAlign="center"
+                    fontSize="16px"
+                    p="4px"
+                  >
+                    {squad.name + ' Overwatch | Dashboard'}
+                  </Table.Cell>
+                </Table.Row>
                 <Table.Row bold>
                   <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
+                  <Table.Cell rowSpan={5} width="65%">
+                    <Table pb="4px" m="1px" fontSize="12px" bold>
+                      <Table.Row>
+                        <Table.Cell textAlign="center" collapsing p="4px">
+                          Squad Leader
+                        </Table.Cell>
+                        <Table.Cell textAlign="center" collapsing p="4px">
+                          Fire Team Leaders
+                        </Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        {(squad.squad_leader && (
+                          <Table.Cell textAlign="center">
+                            {squad.squad_leader.name
+                              ? squad.squad_leader.name
+                              : 'NONE'}
+                            <Box
+                              color={
+                                squad.squad_leader.state !== 'Dead'
+                                  ? 'green'
+                                  : 'red'
+                              }
+                            >
+                              {squad.squad_leader.state !== 'Dead'
+                                ? 'ALIVE'
+                                : 'DEAD'}
+                            </Box>
+                          </Table.Cell>
+                        )) || (
+                          <Table.Cell textAlign="center">
+                            NONE
+                            <Box color="red">NOT DEPLOYED</Box>
+                          </Table.Cell>
+                        )}
+
+                        <Table.Cell textAlign="center" bold>
+                          <Box>{squad.ftl_count} DEPLOYED</Box>
+                          <Box color={squad.ftl_alive ? 'green' : 'red'}>
+                            {squad.ftl_alive} ALIVE
+                          </Box>
+                        </Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell textAlign="center" collapsing p="4px">
+                          Specialist
+                        </Table.Cell>
+                        <Table.Cell textAlign="center" collapsing p="4px">
+                          Smartgunner
+                        </Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell textAlign="center" bold>
+                          <Box>
+                            {squad.specialist_type
+                              ? squad.specialist_type
+                              : 'NONE'}
+                          </Box>
+                          <Box color={squad.spec_alive ? 'green' : 'red'}>
+                            {squad.spec_count
+                              ? squad.spec_alive
+                                ? 'ALIVE'
+                                : 'DEAD'
+                              : 'NOT DEPLOYED'}
+                          </Box>
+                        </Table.Cell>
+                        <Table.Cell textAlign="center" bold>
+                          <Box color={squad.smart_count ? 'green' : 'red'}>
+                            {squad.smart_count
+                              ? squad.smart_count + ' DEPLOYED'
+                              : 'NONE'}
+                          </Box>
+                          <Box color={squad.smart_alive ? 'green' : 'red'}>
+                            {squad.smart_count
+                              ? squad.smart_alive
+                                ? 'ALIVE'
+                                : 'DEAD'
+                              : 'N/A'}
+                          </Box>
+                        </Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell textAlign="center" collapsing p="4px">
+                          Hospital Corpsmen
+                        </Table.Cell>
+                        <Table.Cell textAlign="center" collapsing p="4px">
+                          Combat Technicians
+                        </Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell textAlign="center" bold>
+                          <Box>{squad.medic_count} DEPLOYED</Box>
+                          <Box color={squad.medic_alive ? 'green' : 'red'}>
+                            {squad.medic_alive} ALIVE
+                          </Box>
+                        </Table.Cell>
+                        <Table.Cell textAlign="center" bold>
+                          <Box>{squad.engi_count} DEPLOYED</Box>
+                          <Box color={squad.engi_alive ? 'green' : 'red'}>
+                            {squad.engi_alive} ALIVE
+                          </Box>
+                        </Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell
+                          textAlign="center"
+                          collapsing
+                          p="4px"
+                          colSpan="2"
+                        >
+                          Total/Living
+                        </Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell textAlign="center" bold colSpan="2">
+                          <Box>{squad.total_deployed} TOTAL</Box>
+                          <Box color={squad.living_count ? 'green' : 'red'}>
+                            {squad.living_count} ALIVE
+                          </Box>
+                        </Table.Cell>
+                      </Table.Row>
+                    </Table>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell textAlign="center">
+                    {squad.primary_objective ? squad.primary_objective : 'NONE'}
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row bold>
                   <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">
-                    {primary_objective ? primary_objective : 'NONE'}
+                    {squad.secondary_objective
+                      ? squad.secondary_objective
+                      : 'NONE'}
                   </Table.Cell>
-                  <Table.Cell textAlign="center">
-                    {secondary_objective ? secondary_objective : 'NONE'}
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <Box textAlign="center">
+                      <Box>
+                        <Stack.Item>
+                          <Button
+                            inline
+                            width="100%"
+                            icon="envelope"
+                            onClick={() => act('set_primary')}
+                          >
+                            SET PRIMARY
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button
+                            inline
+                            width="100%"
+                            icon="envelope"
+                            onClick={() => act('set_secondary')}
+                          >
+                            SET SECONDARY
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button
+                            inline
+                            width="100%"
+                            icon="envelope"
+                            onClick={() => act('message')}
+                          >
+                            MESSAGE SQUAD
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button
+                            inline
+                            width="100%"
+                            icon="person"
+                            onClick={() => act('sl_message')}
+                          >
+                            MESSAGE SQUAD LEADER
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button icon="user" inline width="100%">
+                            Operator - {squad.operator}
+                          </Button>
+                        </Stack.Item>
+                      </Box>
+                    </Box>
                   </Table.Cell>
                 </Table.Row>
               </Table>
-              <Collapsible
-                textAlign="center"
-                title="Expand Controls"
-                fontSize="16px"
-              >
-                <Box textAlign="center">
-                  <Box>
-                    <Stack.Item>
-                      <Button
-                        inline
-                        width="100%"
-                        icon="envelope"
-                        onClick={() => act('set_primary')}
-                      >
-                        SET PRIMARY
-                      </Button>
-                    </Stack.Item>
-                    <Stack.Item>
-                      <Button
-                        inline
-                        width="100%"
-                        icon="envelope"
-                        onClick={() => act('set_secondary')}
-                      >
-                        SET SECONDARY
-                      </Button>
-                    </Stack.Item>
-                    <Stack.Item>
-                      <Button
-                        inline
-                        width="100%"
-                        icon="envelope"
-                        onClick={() => act('message')}
-                      >
-                        MESSAGE SQUAD
-                      </Button>
-                    </Stack.Item>
-                    <Stack.Item>
-                      <Button
-                        inline
-                        width="100%"
-                        icon="person"
-                        onClick={() => act('sl_message')}
-                      >
-                        MESSAGE SQUAD LEADER
-                      </Button>
-                    </Stack.Item>
-                  </Box>
-                </Box>
-              </Collapsible>
             </Stack.Item>
           );
         })}

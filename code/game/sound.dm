@@ -123,7 +123,10 @@
 		template.file = get_sfx(soundin)
 
 	if(random_freq)
-		template.frequency = GET_RANDOM_FREQ
+		if(random_freq == "minor")
+			template.frequency = GET_RANDOM_FREQ_MINOR
+		else
+			template.frequency = GET_RANDOM_FREQ
 	template.volume = vol
 	template.volume_cat = vol_cat
 	template.channel = channel
@@ -374,7 +377,7 @@
 			if("male_upp_warcry")
 				sound = pick('sound/voice/upp_warcry/warcry_male_1.ogg', 'sound/voice/upp_warcry/warcry_male_2.ogg')
 			if("male_preburst")
-				sound = pick("sound/voice/human_male_preburst1.ogg", 'sound/voice/human_male_preburst2.ogg', 'sound/voice/human_male_preburst3.ogg', 'sound/voice/human_male_preburst4.ogg', 'sound/voice/human_male_preburst5.ogg', 'sound/voice/human_male_preburst6.ogg', 'sound/voice/human_male_preburst7.ogg', 'sound/voice/human_male_preburst8.ogg', 'sound/voice/human_male_preburst9.ogg')
+				sound = pick('sound/voice/human_male_preburst1.ogg', 'sound/voice/human_male_preburst2.ogg', 'sound/voice/human_male_preburst3.ogg', 'sound/voice/human_male_preburst4.ogg', 'sound/voice/human_male_preburst5.ogg', 'sound/voice/human_male_preburst6.ogg', 'sound/voice/human_male_preburst7.ogg', 'sound/voice/human_male_preburst8.ogg', 'sound/voice/human_male_preburst9.ogg')
 			if("male_hugged")
 				sound = pick("sound/voice/human_male_facehugged1.ogg", 'sound/voice/human_male_facehugged2.ogg', 'sound/voice/human_male_facehugged3.ogg')
 			if("female_scream")
@@ -388,7 +391,7 @@
 			if("female_upp_warcry")
 				sound = pick('sound/voice/upp_warcry/warcry_female_1.ogg', 'sound/voice/upp_warcry/warcry_female_2.ogg')
 			if("female_preburst")
-				sound = pick("sound/voice/human_female_preburst1.ogg", 'sound/voice/human_female_preburst2.ogg', 'sound/voice/human_female_preburst3.ogg', 'sound/voice/human_female_preburst4.ogg', 'sound/voice/human_female_preburst5.ogg',  'sound/voice/human_female_preburst6.ogg',  'sound/voice/human_female_preburst7.ogg')
+				sound = pick('sound/voice/human_female_preburst1.ogg', 'sound/voice/human_female_preburst2.ogg', 'sound/voice/human_female_preburst3.ogg', 'sound/voice/human_female_preburst4.ogg', 'sound/voice/human_female_preburst5.ogg',  'sound/voice/human_female_preburst6.ogg',  'sound/voice/human_female_preburst7.ogg')
 			if("female_hugged")
 				sound = pick("sound/voice/human_female_facehugged1.ogg", 'sound/voice/human_female_facehugged2.ogg')
 			if("rtb_handset")
@@ -423,6 +426,8 @@
 				sound = pick('sound/effects/giant_lizard_growl1.ogg', 'sound/effects/giant_lizard_growl2.ogg')
 			if("giant_lizard_hiss")
 				sound = pick('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')
+			if("evo_screech")
+				sound = pick('sound/voice/alien_echoroar_1.ogg', 'sound/voice/alien_echoroar_2.ogg', 'sound/voice/alien_echoroar_3.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

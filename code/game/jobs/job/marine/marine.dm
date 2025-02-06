@@ -7,7 +7,7 @@
 
 /datum/job/marine/generate_entry_message(mob/living/carbon/human/current_human)
 	if(current_human.assigned_squad)
-		entry_message_intro = "Вы [title]!<br>Вы причислены к: <b><font size=3 color=[current_human.assigned_squad.equipment_color]>[lowertext(current_human.assigned_squad.name)] отряду</font></b>.[Check_WO() ? "" : " Отправляйтесь в кафетерий, чтобы подкрепиться после криосна, а затем приведите снарядитесь и вооружитесь в комнате для подготовки." ]" // SS220 EDIT TRANSLATE
+		entry_message_intro = "Вы [disp_title]!<br>Вы причислены к: <b><font size=3 color=[current_human.assigned_squad.equipment_color]>[lowertext(current_human.assigned_squad.name)] отряду</font></b>.[Check_WO() ? "" : " Отправляйтесь в кафетерий, чтобы подкрепиться после криосна, а затем приведите снарядитесь и вооружитесь в комнате для подготовки." ]" // SS220 EDIT TRANSLATE
 	return ..()
 
 /datum/job/marine/generate_entry_conditions(mob/living/carbon/human/current_human)

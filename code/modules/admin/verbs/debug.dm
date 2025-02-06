@@ -210,7 +210,7 @@
 			id.access = get_access(ACCESS_LIST_GLOBAL)
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
-			id.assignment = "Captain"
+			id.assignment = "Капитан"	// SS220 EDIT TRANSLATE
 			id.name = "[id.registered_name]'s [id.id_type] ([id.assignment])"
 			H.equip_to_slot_or_del(id, WEAR_ID)
 			H.update_inv_wear_id()

@@ -4,12 +4,15 @@
 #define SQUAD_MARINE_3_RU "Чарли"
 #define SQUAD_MARINE_4_RU "Дельта"
 #define SQUAD_MARINE_5_RU "Эхо"
-#define SQUAD_MARINE_CRYO_RU "Фоксрот"
+#define SQUAD_MARINE_CRYO_RU "Фокстрот"
 #define SQUAD_MARINE_INTEL_RU "Интел"
 #define SQUAD_SOF_RU "SOF"
 #define SQUAD_CBRN_RU "CBRN"
 #define SQUAD_FORECON_RU "РАЗВЕДКА"
 #define SQUAD_SOLAR_RU "Дьяволы Солнца"
+// Внимание! Эти названия участвуют в:
+// 		tgui/packages/tgui/interfaces/Orbit/index.tsx
+// ОФФы наговнокодили в интерфейсе, а мне впадлу рефакторить.
 
 // Job name defines
 #define JOB_SQUAD_MARINE_RU "Стрелок"
@@ -46,11 +49,14 @@
 #define JOB_CORPORATE_LIAISON_RU "Связной Корпорации"
 
 #define JOB_COMBAT_REPORTER_RU "Полевой Корреспондент"
+#define JOB_CIVILIAN_REPORTER_RU "Полевой Корреспондент"
+#define JOB_MILITARY_REPORTER_RU "Полевой Корреспондент"
 
 #define JOB_MESS_SERGEANT_RU "Обслуживающий Персонал"
 #define JOB_SYNTH_RU "Синтетик"
 #define JOB_SYNTH_K9_RU "Синтетик K9"
 #define JOB_WORKING_JOE_RU "Рабочий Джо"
+#define JOB_HAZMAT_JOE_RU "Хазмат Джо"
 
 #define JOB_CO_RU "Коммандующий Офицер"
 #define JOB_XO_RU "Исполнительный Офицер"
@@ -219,6 +225,14 @@
 #define JOB_FORECON_SMARTGUNNER_RU "Смартганнер Разведки"
 
 //-------- UPP --------//
+#define SQUAD_UPP_1_RU "Акула"
+#define SQUAD_UPP_2_RU "Бизон"
+#define SQUAD_UPP_3_RU "Чайка"
+#define SQUAD_UPP_4_RU "Дельфин"
+#define SQUAD_UPP_5_RU "СПНКом"
+// Внимание! Эти названия участвуют в:
+// 		tgui/packages/tgui/interfaces/Orbit/index.tsx
+
 #define JOB_UPP_RU	"СПН Рядовой"
 #define JOB_UPP_CONSCRIPT_RU "СПН Призывник"
 #define JOB_UPP_ENGI_RU "СПН Инженер"
@@ -240,11 +254,6 @@
 #define JOB_UPP_MAY_GENERAL_RU "СПН Генерал-Лейтенант"
 #define JOB_UPP_LT_GENERAL_RU "СПН Генерал-Полковник"
 #define JOB_UPP_GENERAL_RU "СПН Генерал Армии"
-#define SQUAD_UPP_1_RU "Акула"
-#define SQUAD_UPP_2_RU "Бизон"
-#define SQUAD_UPP_3_RU "Чайка"
-#define SQUAD_UPP_4_RU "Дельфик"
-#define SQUAD_UPP_5_RU "СПНКом"
 
 #define JOB_UPP_COMBAT_SYNTH_RU "СПН Боевой Синтетик"
 #define JOB_UPP_SUPPORT_SYNTH_RU "СПН Синтетик Поддержки"

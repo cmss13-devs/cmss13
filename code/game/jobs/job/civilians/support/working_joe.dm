@@ -1,5 +1,5 @@
-#define STANDARD_VARIANT "Рабочий Джо" // SS220 EDIT TRANSLATE
-#define HAZMAT_VARIANT "Хазмат Джо" // SS220 EDIT TRANSLATE
+#define STANDARD_VARIANT JOB_WORKING_JOE_RU // SS220 EDIT TRANSLATE
+#define HAZMAT_VARIANT JOB_HAZMAT_JOE_RU // SS220 EDIT TRANSLATE
 
 /datum/job/civilian/working_joe
 	title = JOB_WORKING_JOE
@@ -14,7 +14,7 @@
 	gear_preset = /datum/equipment_preset/synth/working_joe
 	gets_emergency_kit = FALSE
 
-	job_options = list(STANDARD_VARIANT = "ДЖО", HAZMAT_VARIANT = "ХАЗ") 	// SS220 EDIT TRANSLATE
+	job_options = list(STANDARD_VARIANT = "JOE", HAZMAT_VARIANT = "HAZ")
 	var/standard = TRUE
 
 /datum/job/civilian/working_joe/check_whitelist_status(mob/user)
@@ -48,9 +48,9 @@
 
 /datum/job/civilian/working_joe/generate_entry_message(mob/living/carbon/human/H)
 	if(standard)
-		. = {"Вы - <a href='[generate_wiki_link()]'>Рабочий Джо.</a> Вы придерживаетесь более высоких стандартов и обязаны соблюдать не только Правила сервера, но и Законы Морпехов, Ожидания от ролевой игры и Синтетические правила. Ваша главная задача — поддерживать чистоту на корабле, расставляя вещи по местам. В качестве альтернативы вашей главной задачей может быть помощь с ручным трудом в ограниченных возможностях или канцелярские обязанности. Ваши возможности ограничены, но у вас есть все необходимое оборудование, а у центрального ИИ есть план! Оставайтесь в образе до конца. Используйте аплинк для связи с APOLLO!"} // SS220 EDIT TRANSLATE
+		. = {"You are a <a href='[generate_wiki_link()]'>Working Joe.</a> You are held to a higher standard and are required to obey not only the Server Rules but Marine Law, Roleplay Expectations and Synthetic Rules.  Your primary task is to maintain the cleanliness of the ship, putting things in their proper place. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times. Use the APOLLO link to communicate with your uplink!"}
 	else
-		. = {"Вы - <a href='[generate_wiki_link()]'>Рабочий Джо</a> для опасной среды! Вы придерживаетесь более высоких стандартов и обязаны соблюдать не только Правила сервера, но и Законы Морпехов, Ожидания от ролевой игры и Синтетические правила. Вы являетесь вариантом Рабочего Джо, созданным для более жестких условий и выполняете особые обязанности по опасному ремонту или обслуживанию. Ваша основная задача — поддерживать реактор, заряд корабля и Ядро ИИ. Ваша второстепенная задача — реагировать на опасные условия, такие как атмосферное нарушение или разлив биологически опасной среды, и помогать с ремонтом по приказу либо Главного ЭВМ ИИ, либо Офицера. Вас не следует видеть за пределами чрезвычайных ситуаций, за исключением инженерного отдела и Ядра ИИ! Всегда оставайтесь в образе. Используйте аплинк для связи с APOLLO!"}  // SS220 EDIT TRANSLATE
+		. = {"You are a <a href='[generate_wiki_link()]'>Working Joe</a> for Hazardous Environments!  You are held to a higher standard and are required to obey not only the Server Rules but Marine Law, Roleplay Expectations and Synthetic Rules.  You are a variant of the Working Joe built for tougher environments and fulfill the specific duty of dangerous repairs or maintenance. Your primary task is to maintain the reactor, SMES and AI Core. Your secondary task is to respond to hazardous environments, such as an atmospheric breach or biohazard spill, and assist with repairs when ordered to by either an AI Mainframe, or a Commisioned Officer.  You should not be seen outside of emergencies besides in Engineering and the AI Core! Stay in character at all times. Use the APOLLO link to communicate with your uplink!"}
 
 /datum/job/civilian/working_joe/announce_entry_message(mob/living/carbon/human/H)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_apollo_talk), "[H.real_name] has been activated."), 1.5 SECONDS)
@@ -86,6 +86,5 @@
 	return ..()
 
 /datum/job/antag/upp/dzho_automaton/generate_entry_message(mob/living/carbon/human/H)
-	. = {"Вы <a>Автоматон Сергей</a>. Вы придерживаетесь более высоких стандартов и обязаны соблюдать не только Правила сервера, но и Законы UPP, Ожидания от ролевой игры и Синтетические правила. Ваша основная задача — поддерживать корабль, патрулировать и выполнять другие задачи, порученные вам офицерским составом СПН. В качестве альтернативы вашей основной задачей может быть помощь с ручным трудом в ограниченных возможностях или канцелярские обязанности. При необходимости вы можете выполнять обязанности брига и службы безопасности. У вас есть разрешение на огнестрельное оружие, и вы можете применять смертоносную силу, где это применимо. Ваши возможности ограничены, но у вас есть все необходимое оборудование, а у центрального ИИ есть план! Оставайтесь в образе до конца!"}	// SS220 EDIT TRANSLATE
-
+	. = {"You are a <a>Dzho Automaton.</a> You are held to a higher standard and are required to obey not only the Server Rules but UPP Law, Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the ship, patrol and other tasks given to you by UPP officer staff. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. You can perform brig duties and security duties if needed. You have a firearm permit and can use lethal force where applicable. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times.!"}
 

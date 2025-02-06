@@ -53,7 +53,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	if(target.job)
 		assignment = target.job
 	else
-		assignment = "Unassigned"
+		assignment = "Неназначен"	// SS220 EDIT TRANSLATE
 
 	var/id = add_zero(num2hex(target.gid), 6) //this was the best they could come up with? A large random number? *sigh*
 	//var/icon/front = new(get_id_photo(H), dir = SOUTH)

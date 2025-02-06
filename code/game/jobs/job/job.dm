@@ -199,9 +199,9 @@
 
 /datum/job/proc/generate_entry_message()
 	if(!entry_message_intro)
-		entry_message_intro = "Вы - [title]!"	// SS220 EDIT - Translate
+		entry_message_intro = "Вы - [disp_title]!"	// SS220 EDIT - Translate
 	if(!entry_message_end)
-		entry_message_end = "Как [title], вы отвечаете перед [supervisors]. Особые обстоятельства могут это изменить!"	// SS220 EDIT - Translate
+		entry_message_end = "Как [disp_title], вы отвечаете перед [supervisors]. Особые обстоятельства могут это изменить!"	// SS220 EDIT - Translate
 	return "[entry_message_intro]<br>[entry_message_body]<br>[entry_message_end]"
 
 /datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.

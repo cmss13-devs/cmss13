@@ -27,6 +27,7 @@
 #include "code/faction_rank/wy/wy.dm"
 
 // jobs
+#include "code/job/job.dm"
 #include "code/job/antag/other/pred.dm"
 #include "code/job/antag/xeno/queen.dm"
 #include "code/job/antag/xeno/xenomorph.dm"

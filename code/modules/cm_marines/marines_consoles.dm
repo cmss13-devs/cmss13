@@ -168,7 +168,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.assignment = "Terminated"
+			target_id_card.assignment = "Расторгнутый"	// SS220 EDIT TRANSLATE
 			target_id_card.access = list()
 			log_idmod(target_id_card, "<font color='red'> [user.real_name] terminated the ID. </font>", key_name_admin(user))
 			message_admins("[user.real_name] terminated the ID of [target_id_card.registered_name].", key_name_admin(user))
@@ -396,7 +396,7 @@
 	data["has_id"] = !!target_id_card
 	data["id_name"] = target_id_card ? target_id_card.name : "-----"
 	if(target_id_card)
-		data["id_rank"] = target_id_card.assignment ? target_id_card.assignment : "Unassigned"
+		data["id_rank"] = target_id_card.assignment ? target_id_card.assignment : "Неназначен"	// SS220 EDIT TRANSLATE
 		data["id_owner"] = target_id_card.registered_name ? target_id_card.registered_name : "-----"
 		data["access_on_card"] = target_id_card.access + target_id_card.faction_group
 		data["id_account"] = target_id_card.associated_account_number

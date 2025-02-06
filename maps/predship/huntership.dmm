@@ -687,8 +687,7 @@
 	color = "#c1a384"
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
-/obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red/darker,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "cq" = (
 /obj/effect/hunter/rune/corner{
@@ -964,8 +963,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red/darker,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "dl" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_right,
@@ -9449,8 +9447,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red/darker,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Hk" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -12152,8 +12149,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red/darker,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Rr" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -14184,8 +14180,7 @@
 	color = "#c1a384"
 	},
 /obj/effect/hunter/bridge_border/brown,
-/obj/effect/hunter/catwalk/new_alpha,
-/turf/open/floor/light/red/darker,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Ya" = (
 /obj/effect/hunter/bridge_border/brown/corner{

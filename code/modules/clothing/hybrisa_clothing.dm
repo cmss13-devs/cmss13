@@ -11,14 +11,14 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
-	icon_state = "hybrisa_uniform"
-	worn_state = "hybrisa_uniform"
+	icon_state = "sec_hybrisa_uniform"
+	worn_state = "sec_hybrisa_uniform"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa/lead
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
-	icon_state = "lead_hybrisa_uniform"
-	worn_state = "lead_hybrisa_uniform"
+	icon_state = "sec_lead_hybrisa_uniform"
+	worn_state = "sec_lead_hybrisa_uniform"
 
 // CMB Police Officer
 

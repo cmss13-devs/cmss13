@@ -551,27 +551,27 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate
 	name = "\improper WY corporate security uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
-	icon_state = "uniform"
-	worn_state = "uniform"
+	icon_state = "sec_uniform"
+	worn_state = "sec_uniform"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/lead
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
-	icon_state = "lead_uniform"
-	item_state = "lead_uniform"
-	worn_state = "lead_uniform"
+	icon_state = "sec_lead_uniform"
+	item_state = "sec_lead_uniform"
+	worn_state = "sec_lead_uniform"
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is more breathable for use in hot, dry environments."
-	icon_state = "kutjevo_uniform"
-	item_state = "kutjevo_uniform"
-	worn_state = "kutjevo_uniform"
+	icon_state = "sec_kutjevo_uniform"
+	item_state = "sec_kutjevo_uniform"
+	worn_state = "sec_kutjevo_uniform"
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo/lead
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is more breathable for use in hot, dry environments and has gold armbands denoting the team leader."
-	icon_state = "lead_kutjevo_uniform"
-	item_state = "lead_kutjevo_uniform"
-	worn_state = "lead_kutjevo_uniform"
+	icon_state = "sec_lead_kutjevo_uniform"
+	item_state = "sec_lead_kutjevo_uniform"
+	worn_state = "sec_lead_kutjevo_uniform"
 
 //=========================//UPP\\================================\\
 

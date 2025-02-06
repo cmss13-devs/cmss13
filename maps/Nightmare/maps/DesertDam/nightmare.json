@@ -19,5 +19,23 @@
 		"chance": 1.0,
 		"path": "standalone/crashlanding-upp-alt1.dmm",
 		"when": { "lvevent": "uppcrash" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "barhold",
+		"chance": 1.0,
+		"path": "standalone/barhold.dmm",
+		"when": { "lvevent": "none" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "quarantine",
+		"chance": 1.0,
+		"path": "standalone/quarantine.dmm",
+		"when": { "lvevent": "none" }
+	},
+	{
+		"type": "include", "name": "Standalone variations",
+		"file": "mapgen_variations.json"
 	}
 ]

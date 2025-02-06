@@ -1,0 +1,1850 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ad" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/gloves/latex,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"as" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aE" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/item/storage/box/m94,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aG" = (
+/obj/structure/fence,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aH" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_medical)
+"aK" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"be" = (
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/desert_dam/exterior/valley/valley_medical)
+"bs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/corpsespawner/security/marshal,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"bZ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_medical)
+"cu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"cx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply,
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"cL" = (
+/obj/structure/inflatable,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_medical)
+"cX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/inflatable/door,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"df" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_medical)
+"dh" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"dG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ek" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/blood/APlus,
+/obj/structure/largecrate/supply/medicine/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ey" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"eG" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_corner,
+/area/desert_dam/exterior/river/riverside_south)
+"eW" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"fc" = (
+/obj/item/bodybag,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_medical)
+"fg" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"fJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/surgery/scalpel,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"fN" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_medical)
+"fS" = (
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/valley_medical)
+"fW" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/whitered,
+/area/desert_dam/building/medical/chemistry)
+"fY" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_medical)
+"gG" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge/northeast,
+/area/desert_dam/exterior/river/riverside_south)
+"gH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/syringe{
+	icon_state = "broken"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"gX" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"gY" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/red{
+	pixel_x = -3
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_medical)
+"hs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"hJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"hU" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"hV" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ik" = (
+/obj/structure/inflatable,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"iv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"jm" = (
+/obj/structure/machinery/computer/crew,
+/turf/open/floor/prison/whitered/northwest,
+/area/desert_dam/building/medical/chemistry)
+"jp" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"jr" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"jt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"jw" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"jz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"jI" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/medical/chemistry)
+"jO" = (
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/chemistry)
+"kf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll,
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop/colony/usedbandage{
+	dir = 5;
+	pixel_x = 10;
+	pixel_y = 18
+	},
+/obj/effect/landmark/corpsespawner/engineer,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"kz" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"kV" = (
+/obj/structure/inflatable,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/exterior/valley/valley_medical)
+"lg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"li" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"mc" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/item/weapon/gun/rifle/m16,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"mv" = (
+/obj/structure/inflatable,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
+/area/desert_dam/exterior/valley/valley_medical)
+"mC" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/largecrate/random/mini{
+	pixel_x = 7
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"np" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_south)
+"nH" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/chemistry)
+"nV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security/marshal/riot,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"nW" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"oe" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow,
+/area/desert_dam/exterior/river/riverside_south)
+"oA" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"oF" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"oX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"pg" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"pn" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
+/area/desert_dam/exterior/valley/valley_medical)
+"pt" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"pu" = (
+/obj/structure/inflatable/door,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"pB" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"pH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"qi" = (
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/desert_dam/exterior/valley/valley_medical)
+"qq" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"qu" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"qM" = (
+/obj/effect/decal/cleanable/ash,
+/obj/structure/prop/hybrisa/misc/blood/blood3,
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/valley/valley_medical)
+"qY" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ri" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_medical)
+"rx" = (
+/obj/structure/inflatable,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"rE" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"rM" = (
+/obj/structure/barricade/deployable{
+	damage_state = 1;
+	dir = 1;
+	health = 245;
+	icon_state = "folding_1"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/valley/valley_medical)
+"rN" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"se" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/inflatable/door,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"sB" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/iv_drip,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"sP" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/desert/desert_shore/desert_shore1/north,
+/area/desert_dam/exterior/river/riverside_south)
+"uc" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/machinery/colony_floodlight,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"uz" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"uM" = (
+/obj/structure/inflatable,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_medical)
+"uW" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/valley/valley_medical)
+"uZ" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_medical)
+"vs" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"vG" = (
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"vI" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"vU" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/exterior/valley/valley_medical)
+"vW" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"vZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case/double,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"wh" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/desert/desert_shore/desert_shore1/north,
+/area/desert_dam/exterior/river/riverside_south)
+"wm" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"xf" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"xh" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"xi" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"xF" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgibdown1"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"xH" = (
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/river/riverside_south)
+"xK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"xV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"xX" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/valley/valley_medical)
+"yj" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/prison/whitered/west,
+/area/desert_dam/building/medical/chemistry)
+"yB" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/desert/desert_shore/shore_corner2/west,
+/area/desert_dam/exterior/river/riverside_south)
+"yG" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"zb" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ze" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"zg" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow,
+/area/desert_dam/exterior/river/riverside_south)
+"zj" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/turf/open/floor/prison/whitered/west,
+/area/desert_dam/building/medical/chemistry)
+"zm" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"zn" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_edge/northeast,
+/area/desert_dam/exterior/river/riverside_south)
+"zp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/medical,
+/obj/item/storage/firstaid/adv,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Ac" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/river/riverside_south)
+"Ao" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/obj/item/trash/used_stasis_bag,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"AC" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_medical)
+"AD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/green,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"AP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"AT" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/desert/desert_shore/shore_corner2/west,
+/area/desert_dam/exterior/river/riverside_south)
+"Bl" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"CL" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"CN" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/barricade/deployable{
+	damage_state = 1;
+	dir = 1;
+	health = 245;
+	icon_state = "folding_1"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"CU" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/light,
+/turf/open/floor/prison/whitered/southwest,
+/area/desert_dam/building/medical/chemistry)
+"Df" = (
+/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/whitered/north,
+/area/desert_dam/building/medical/chemistry)
+"Dx" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"DC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Et" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/chemistry)
+"EC" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/desert/desert_shore/shore_edge1/east,
+/area/desert_dam/exterior/river/riverside_south)
+"EH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"EK" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"EP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Fl" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Fo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Fv" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/chemistry)
+"FK" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"FX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -12;
+	pixel_y = 16
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Go" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"GA" = (
+/turf/open/floor/prison/whitered/west,
+/area/desert_dam/building/medical/chemistry)
+"GB" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"GM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"GQ" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"HC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/alien/hugger,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"IK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Jl" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/obj/structure/tent/med,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"JF" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/desert/desert_shore/shore_edge1/east,
+/area/desert_dam/exterior/river/riverside_south)
+"JR" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"KC" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"KP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"KX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"KY" = (
+/obj/structure/fence,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_medical)
+"KZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/inflatable/door,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_medical)
+"Ln" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Lw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/used_stasis_bag,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Lx" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/exterior/valley/valley_medical)
+"Me" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Mj" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Mo" = (
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_medical)
+"MX" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/security/marshal,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"Nb" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Nc" = (
+/obj/item/weapon/gun/flamer,
+/obj/structure/surface/rack,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_medical)
+"Nq" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/river/riverside_south)
+"Nr" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"Ny" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"NW" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_south)
+"NZ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_medical)
+"Ok" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/exterior/valley/valley_medical)
+"Oy" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"OJ" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/prison/whitered/west,
+/area/desert_dam/building/medical/chemistry)
+"OW" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/turf/open/gm/river/desert/shallow_corner,
+/area/desert_dam/exterior/river/riverside_south)
+"PI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"PP" = (
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/valley/valley_medical)
+"Qb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"QG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/inflatable,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_medical)
+"Rc" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Rd" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Rz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/inflatable/door,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"RT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Sv" = (
+/obj/structure/inflatable,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_medical)
+"SB" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_medical)
+"SQ" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Tf" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"Th" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Tr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Tt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"TK" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"TQ" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/structure/inflatable,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"Ua" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/inflatable/door,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Ut" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Uu" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/exterior/valley/valley_medical)
+"UZ" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Vl" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_x = 14;
+	pixel_y = 3
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"VK" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_medical)
+"VV" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_medical)
+"Wa" = (
+/obj/structure/prop/dam/wide_boulder/boulder1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Wb" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"Wo" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_medical)
+"WN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop/colony/usedbandage{
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 15
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Xe" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/secure/ammo,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"XY" = (
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_medical)
+"Yd" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_medical)
+"Yk" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Yq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/supplies/mre,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"YK" = (
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_medical)
+"YX" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/largecrate/supply,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Zd" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"Ze" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/river/riverside_south)
+"Zn" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply{
+	pixel_x = -7;
+	pixel_y = -3
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+
+(1,1,1) = {"
+oF
+oF
+Wb
+Wb
+Wb
+qq
+jp
+rE
+iv
+KP
+KC
+jp
+pg
+Wb
+Wb
+Wb
+Wb
+qq
+jp
+np
+NW
+"}
+(2,1,1) = {"
+oF
+oF
+KY
+aG
+aG
+vU
+Lx
+Bl
+Qb
+Tr
+Rc
+Uu
+vU
+aG
+aG
+aG
+aG
+vU
+qq
+eG
+NW
+"}
+(3,1,1) = {"
+oF
+oF
+XY
+UZ
+UZ
+UZ
+yG
+rE
+hJ
+hs
+KC
+Nr
+UZ
+UZ
+Wa
+UZ
+UZ
+aG
+vI
+gG
+OW
+"}
+(4,1,1) = {"
+oF
+be
+PP
+uz
+FK
+eW
+yG
+rE
+iv
+hs
+KC
+mC
+UZ
+UZ
+UZ
+UZ
+UZ
+aG
+vI
+oe
+zn
+"}
+(5,1,1) = {"
+oF
+XY
+UZ
+xi
+zb
+as
+yG
+rE
+Qb
+IK
+KC
+gY
+NZ
+NZ
+NZ
+bZ
+UZ
+aG
+vI
+yB
+zg
+"}
+(6,1,1) = {"
+oF
+oF
+YK
+zb
+oA
+xh
+yG
+rE
+Vl
+aO
+vW
+qY
+qY
+qY
+zm
+Nr
+UZ
+aG
+vI
+sP
+zg
+"}
+(7,1,1) = {"
+oF
+oF
+ri
+dh
+oA
+EK
+yG
+rE
+nV
+vG
+Rd
+jz
+xK
+hs
+Ny
+Tf
+UZ
+aG
+vI
+EC
+AT
+"}
+(8,1,1) = {"
+oF
+oF
+XY
+dh
+xh
+eW
+yG
+rE
+Qb
+Fo
+wm
+hs
+cx
+vZ
+TK
+Nr
+UZ
+aG
+vI
+Ac
+wh
+"}
+(9,1,1) = {"
+oF
+oF
+Yd
+GB
+EK
+SQ
+Dx
+rE
+vG
+Tt
+Go
+Zd
+Zn
+Xe
+Yk
+JR
+UZ
+vU
+GQ
+Ac
+JF
+"}
+(10,1,1) = {"
+oF
+oF
+uW
+VV
+Ao
+kz
+Dx
+rE
+iv
+iv
+Fl
+qu
+xF
+hV
+zm
+JR
+UZ
+aG
+vI
+Ac
+xH
+"}
+(11,1,1) = {"
+oF
+oF
+oF
+XY
+kz
+aK
+hU
+rE
+Th
+lg
+Rd
+iv
+hs
+dG
+FX
+JR
+UZ
+aG
+vI
+Ac
+xH
+"}
+(12,1,1) = {"
+oF
+oF
+oF
+qM
+AC
+aK
+yG
+rE
+aN
+Lw
+ad
+hs
+hs
+hJ
+mc
+MX
+UZ
+aG
+vI
+Ac
+xH
+"}
+(13,1,1) = {"
+oF
+oF
+oF
+Ok
+xX
+uZ
+yG
+rE
+cu
+fJ
+Jl
+Zd
+PI
+PI
+xf
+Nr
+UZ
+aG
+vI
+Ac
+xH
+"}
+(14,1,1) = {"
+oF
+oF
+oF
+oF
+oF
+Nc
+yG
+li
+HC
+DC
+Fl
+Me
+Me
+qY
+zm
+Nr
+UZ
+aG
+vI
+Ac
+xH
+"}
+(15,1,1) = {"
+oF
+oF
+oF
+oF
+oF
+fc
+yG
+li
+iv
+zp
+Rd
+Tt
+aO
+vG
+KC
+Nr
+UZ
+aG
+vI
+Ze
+Nq
+"}
+(16,1,1) = {"
+qi
+oF
+Mo
+Mo
+Mo
+rM
+yG
+rE
+hs
+hs
+gX
+iv
+iv
+hs
+TK
+uc
+UZ
+vU
+TQ
+rx
+rx
+"}
+(17,1,1) = {"
+fS
+PP
+UZ
+UZ
+UZ
+UZ
+pn
+Mj
+Qb
+Fo
+vs
+PI
+PI
+PI
+xf
+fN
+NZ
+fY
+Wo
+Wo
+mv
+"}
+(18,1,1) = {"
+pB
+pB
+pB
+EP
+pB
+fg
+AP
+Oy
+iv
+CL
+Fl
+qY
+qY
+qY
+qY
+qY
+ey
+qY
+qY
+Me
+se
+"}
+(19,1,1) = {"
+Ut
+vG
+rN
+RT
+iv
+aD
+bs
+iv
+pt
+iv
+aO
+RT
+vG
+iv
+gH
+vG
+jz
+GM
+aO
+iv
+Rz
+"}
+(20,1,1) = {"
+EH
+vG
+iv
+jt
+iv
+iv
+EH
+iv
+iv
+iv
+hs
+AD
+pH
+Yq
+kf
+WN
+iv
+xV
+hs
+vG
+Ua
+"}
+(21,1,1) = {"
+PI
+PI
+oX
+PI
+PI
+CN
+PI
+PI
+PI
+PI
+KX
+aE
+YX
+ek
+sB
+Nb
+Nb
+Nb
+Nb
+Go
+cX
+"}
+(22,1,1) = {"
+SB
+Wo
+Wo
+Wo
+Wo
+Wo
+Wo
+Wo
+Wo
+aH
+ze
+vG
+iv
+iv
+vG
+iv
+vG
+hs
+hs
+TK
+kV
+"}
+(23,1,1) = {"
+df
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+VK
+li
+iv
+vG
+vG
+vG
+vG
+CL
+Ln
+iv
+KC
+pu
+"}
+(24,1,1) = {"
+df
+jI
+jm
+zj
+yj
+GA
+OJ
+CU
+jI
+VK
+jw
+jr
+PI
+PI
+nW
+PI
+PI
+jr
+PI
+xf
+ik
+"}
+(25,1,1) = {"
+df
+jI
+Df
+Et
+nH
+jO
+Fv
+fW
+jI
+cL
+KZ
+KZ
+Sv
+Sv
+Sv
+Sv
+Sv
+QG
+KZ
+KZ
+uM
+"}

@@ -372,9 +372,7 @@
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/meat,
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "bc" = (
 /obj/item/weapon/shield/riot/yautja{
@@ -947,10 +945,7 @@
 	dir = 4
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 8
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/west,
 /area/yautja)
 "cZ" = (
 /obj/structure/bed/bedroll{
@@ -985,10 +980,7 @@
 "dl" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_right,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/north,
 /area/yautja)
 "do" = (
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/east,
@@ -1498,10 +1490,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "fd" = (
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 4
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/east,
 /area/yautja)
 "ff" = (
 /obj/structure/machinery/prop/almayer/CICmap/yautja{
@@ -1740,10 +1729,7 @@
 	dir = 1
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/north,
 /area/yautja)
 "fQ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -1831,10 +1817,7 @@
 /area/yautja)
 "fY" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 4
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/east,
 /area/yautja)
 "fZ" = (
 /obj/structure/ladder/yaujta{
@@ -2202,10 +2185,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "ho" = (
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 8
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/west,
 /area/yautja)
 "hp" = (
 /obj/effect/decal/cleanable/dirt{
@@ -2694,10 +2674,7 @@
 	dir = 8
 	},
 /obj/effect/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 4
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/east,
 /area/yautja)
 "je" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -3563,10 +3540,7 @@
 "mo" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/north,
 /area/yautja)
 "mq" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -3797,10 +3771,7 @@
 	pixel_y = -8
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 8
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/west,
 /area/yautja)
 "nu" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -4365,9 +4336,7 @@
 	dir = 1
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5"
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper,
 /area/yautja)
 "pd" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -4699,9 +4668,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "qo" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -4854,9 +4821,7 @@
 "qW" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5"
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper,
 /area/yautja)
 "ra" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -5006,9 +4971,7 @@
 "rG" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_left,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5"
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper,
 /area/yautja)
 "rH" = (
 /obj/effect/hunter/rune,
@@ -5107,9 +5070,7 @@
 /area/yautja)
 "rX" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5"
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper,
 /area/yautja)
 "rY" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -6239,9 +6200,7 @@
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "vQ" = (
 /obj/structure/shuttle/engine/heater,
@@ -6629,9 +6588,7 @@
 	pixel_x = 1;
 	pixel_y = 11
 	},
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "xB" = (
 /obj/item/weapon/yautja/knife{
@@ -6827,10 +6784,7 @@
 	dir = 4
 	},
 /obj/effect/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 4
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/east,
 /area/yautja)
 "ys" = (
 /turf/open/shuttle/dropship/predship/tile/red2,
@@ -6872,9 +6826,7 @@
 /area/yautja)
 "yF" = (
 /obj/structure/kitchenspike,
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "yH" = (
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -6943,9 +6895,7 @@
 /turf/open/shuttle/dropship/predship/mainfloor/plain,
 /area/yautja)
 "yQ" = (
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5"
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper,
 /area/yautja)
 "yT" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -8235,9 +8185,7 @@
 	pixel_y = -3;
 	layer = 2.8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "CN" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -8324,9 +8272,7 @@
 /obj/structure/kitchenspike,
 /obj/item/reagent_container/food/snacks/meat/xenomeat,
 /obj/item/reagent_container/food/snacks/meat/xenomeat,
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "Db" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -9040,9 +8986,7 @@
 /area/yautja)
 "Fv" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries/yautja,
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "Fw" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -9058,10 +9002,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/north,
 /area/yautja)
 "FA" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -9308,10 +9249,7 @@
 /area/yautja)
 "Gr" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/north,
 /area/yautja)
 "Gu" = (
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
@@ -11001,9 +10939,7 @@
 /obj/item/reagent_container/food/snacks/meat{
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "Nf" = (
 /obj/structure/bed/bedroll{
@@ -11140,10 +11076,7 @@
 	dir = 8
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 8
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/west,
 /area/yautja)
 "ND" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
@@ -11231,9 +11164,7 @@
 	pixel_x = 1;
 	pixel_y = 11
 	},
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "Oe" = (
 /obj/structure/surface/rack{
@@ -12174,9 +12105,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5"
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper,
 /area/yautja)
 "Rg" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -12342,9 +12271,7 @@
 	pixel_y = 3;
 	layer = 2.8
 	},
-/turf/open/shuttle/dropship/predship/hunter_grate{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/hunter_grate/north,
 /area/yautja)
 "RJ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north{
@@ -12482,10 +12409,7 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "Sh" = (
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 1
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/north,
 /area/yautja)
 "Si" = (
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
@@ -14718,10 +14642,7 @@
 /area/yautja)
 "ZP" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 8
-	},
+/turf/open/shuttle/dropship/predship/mainfloor/upper/west,
 /area/yautja)
 "ZQ" = (
 /obj/effect/hunter/catwalk/hunter_grate,

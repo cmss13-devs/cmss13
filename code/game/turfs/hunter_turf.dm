@@ -88,6 +88,20 @@
 /turf/open/shuttle/dropship/predship/mainfloor/corner/west
 	dir = WEST
 
+// Upper platform
+
+/turf/open/shuttle/dropship/predship/mainfloor/upper
+	icon_state = "11,5"
+
+/turf/open/shuttle/dropship/predship/mainfloor/upper/north
+	dir = NORTH
+
+/turf/open/shuttle/dropship/predship/mainfloor/upper/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/predship/mainfloor/upper/west
+	dir = WEST
+
 // Red tiles
 
 /turf/open/shuttle/dropship/predship/tile/red
@@ -129,6 +143,15 @@
 
 /turf/open/shuttle/dropship/predship/hunter_grate
 	icon_state = "hunter_grate"
+
+/turf/open/shuttle/dropship/predship/hunter_grate/north
+	dir = NORTH
+
+/turf/open/shuttle/dropship/predship/hunter_grate/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/predship/hunter_grate/west
+	dir = WEST
 
 /turf/open/shuttle/dropship/predship/red_glow
 	icon_state = "hunter_glow"

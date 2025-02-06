@@ -685,9 +685,9 @@
 
 /obj/structure/machinery/blooding_spawner/proc/generate_blooding_type()
 	for(var/datum/emergency_call/young_bloods/blooding_type as anything in subtypesof(/datum/emergency_call/young_bloods))
-		if(!blooding_type::blooding_name)
+		if(!blooding_type.blooding_name)
 			continue
-		un_blooded[blooding_type::blooding_name] = blooding_type
+		un_blooded[blooding_type.blooding_name] = blooding_type
 
 /obj/structure/machinery/blooding_spawner/attack_hand(mob/living/user)
 	. = ..()

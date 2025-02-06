@@ -387,7 +387,7 @@
 					return
 
 				var/list/datum/yautja_rank/ranks = GLOB.clan_ranks.Copy()
-				ranks -= CLAN_RANK_ADMIN && CLAN_RANK_YOUNG // Admin rank should not and cannot be obtained from here, Youngblood is only for non-WL players
+				ranks -= list(CLAN_RANK_ADMIN, CLAN_RANK_YOUNG)// Admin rank should not and cannot be obtained from here, Youngblood should only be used for non-WL players
 
 				var/datum/yautja_rank/chosen_rank
 				if(has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))

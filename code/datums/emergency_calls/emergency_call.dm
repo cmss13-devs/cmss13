@@ -194,11 +194,6 @@
 		to_chat(src, "That choice is no longer available!")
 		return
 
-	if(istype(beacons[choice], /datum/emergency_call/young_bloods))
-		if((client.check_whitelist_status(src, WHITELIST_YAUTJA)) || jobban_isbanned(src, ERT_JOB_YOUNGBLOOD))
-			to_chat(src, SPAN_DANGER("You are not allowed to play this response team!"))
-			return
-
 	var/datum/emergency_call/distress = beacons[choice]
 
 	if(!istype(distress) || !distress.mob_max)

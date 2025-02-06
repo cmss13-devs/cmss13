@@ -948,7 +948,7 @@
 		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 		return
 	if(caller.faction == FACTION_YAUTJA_YOUNG)
-		to_chat(boomer, SPAN_WARNING("Your bracer denies your request.")) // No SDing for youngbloods
+		to_chat(boomer, SPAN_WARNING("You don't yet understand how to use this.")) // No SDing for youngbloods
 		return
 
 	var/obj/item/grab/G = boomer.get_active_hand()

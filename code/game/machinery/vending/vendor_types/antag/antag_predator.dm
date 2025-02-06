@@ -123,11 +123,6 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 			vend_fail()
 		return FALSE
 
-	if(user.faction == FACTION_YAUTJA_YOUNG)
-		to_chat(user, SPAN_WARNING("Access denied."))
-		vend_fail()
-		return FALSE
-
 	if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
 		if(display)
 			to_chat(user, SPAN_WARNING("This machine isn't for you."))

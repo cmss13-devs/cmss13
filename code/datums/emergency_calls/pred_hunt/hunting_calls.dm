@@ -136,7 +136,7 @@
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
-		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strange planet."))
+		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph  let loose on a strange planet."))
 	else if(xeno_t2 < max_xeno_t2 && HAS_FLAG(current_mob.client.prefs.toggles_ert_pred, PLAY_XENO_T2))
 		xeno_t2++
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/lurker, /mob/living/carbon/xenomorph/warrior)
@@ -144,13 +144,13 @@
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
-		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strange planet."))
+		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph  let loose on a strange planet."))
 	else
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/warrior)
 		var/xeno_type = pick(xeno_types)
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
-		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strange planet."))
+		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph  let loose on a strange planet."))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), new_xeno.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
@@ -181,9 +181,21 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
 
+/datum/emergency_call/young_bloods/remove_nonqualifiers(list/datum/mind/candidates_list)
+	var/list/datum/mind/youngblood_candidates_clean = list()
+	for(var/datum/mind/youngblood_candidate in candidates_list)
+		if(check_timelock(youngblood_candidate.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_youngblood) && (youngblood_candidate.current?.client.get_total_xeno_playtime() >= 40 HOURS))
+			youngblood_candidates_clean.Add(youngblood_candidate)
+			continue
+		if(youngblood_candidate.current)
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role (40 hours as a Marine and Xeno) or you are already whitelisted as a Predator"))
+		if(youngblood_candidate.current?.client?.check_whitelist_status(WHITELIST_YAUTJA) || jobban_isbanned(youngblood_candidate.current?.client, ERT_JOB_YOUNGBLOOD))
+			continue
+	return youngblood_candidates_clean
+
 /datum/emergency_call/young_bloods/hunting_party
-	name = "Hunting Grounds - Blooding Party (Youngbloods)"
-	blooding_name = "Blooding Party (Three members)"
+	name = "Hunting Grounds - Youngblood Party"
+	blooding_name = "Youngblood Party (Three members)"
 	mob_max = 3
 	mob_min = 1
 	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
@@ -214,12 +226,12 @@
 		FOR_DVIEW_END
 
 
-	if(!leader && check_timelock(hunter.client, JOB_SQUAD_ROLES, time_required_for_youngblood) && check_timelock(hunter.client, JOB_XENO_ROLES, time_required_for_youngblood))
+	if(!leader && HAS_FLAG(hunter?.client.prefs.toggles_ert, PLAY_LEADER)) // If someone wants to play as the dominant youngblood, they can. The role is purely roleplay-oriented with no mechanical advantage
 		leader = hunter
 		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl_leader, TRUE, TRUE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood Pack Leader!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG("You are expected to remain in character at all times, follow all commands given to you by whitelisted players, and adhere to the honor code. If you fail to comply with any of these, you will be dispatched via a kill switch embedded within all Youngbloods. You may also face OOC repercussions. Good luck and have fun."))
-	else if (check_timelock(hunter.client, JOB_SQUAD_ROLES, time_required_for_youngblood) && check_timelock(hunter.client, JOB_XENO_ROLES, time_required_for_youngblood))
+	else
 		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl, TRUE, TRUE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG("You are expected to remain in character at all times, follow all commands given to you by whitelisted players, and adhere to the honor code. If you fail to comply with any of these, you will be dispatched via a kill switch embedded within all Youngbloods. You may also face OOC repercussions. Good luck and have fun."))

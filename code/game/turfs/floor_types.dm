@@ -2129,6 +2129,12 @@
 /turf/open/floor/almayer/fake_outerhull
 	icon_state = "outerhull"
 
+/turf/open/floor/almayer/research/containment/yaujta
+	icon ='icons/turf/floors/corsat.dmi'
+	icon_state = "box"
+
+/turf/open/floor/almayer/research/containment/yaujta/alt
+	icon_state = "squares"
 
 //Outerhull
 

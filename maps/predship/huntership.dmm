@@ -490,12 +490,6 @@
 	},
 /turf/open/floor/corsat,
 /area/yautja)
-"bz" = (
-/obj/effect/hunter/rune,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "20,4"
-	},
-/area/yautja)
 "bB" = (
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2196,10 +2190,7 @@
 /area/yautja)
 "hs" = (
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/almayer/research/containment/corner{
-	icon = 'icons/turf/floors/corsat.dmi';
-	icon_state = "squares"
-	},
+/turf/open/floor/almayer/research/containment/yaujta/alt,
 /area/yautja)
 "hu" = (
 /obj/item/clothing/mask/gas/yautja/hunter{
@@ -4314,10 +4305,6 @@
 /obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
 	name = "\improper Research Containment"
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
-	color = "#f0ebd3";
-	id = "researchlockdown"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -6655,15 +6642,6 @@
 /obj/effect/hunter/bridge_border/brown,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
-"xP" = (
-/obj/effect/hunter/rune{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "21,4";
-	dir = 8
-	},
-/area/yautja)
 "xQ" = (
 /turf/open/floor/predship/hull/non_weedable_hull,
 /area/yautja)
@@ -8087,10 +8065,7 @@
 "Cv" = (
 /obj/effect/alien/egg/forsaken,
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/almayer/research/containment/corner{
-	icon = 'icons/turf/floors/corsat.dmi';
-	icon_state = "box"
-	},
+/turf/open/floor/almayer/research/containment/yaujta,
 /area/yautja)
 "Cx" = (
 /obj/effect/hunter/bridge_border{
@@ -10284,10 +10259,7 @@
 /area/yautja)
 "Kt" = (
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/almayer/research/containment/corner{
-	icon = 'icons/turf/floors/corsat.dmi';
-	icon_state = "box"
-	},
+/turf/open/floor/almayer/research/containment/yaujta,
 /area/yautja)
 "Ku" = (
 /obj/structure/blocker/invisible_wall,
@@ -17385,7 +17357,7 @@ aV
 Sc
 pi
 kz
-xP
+lL
 tT
 aV
 aV
@@ -17894,7 +17866,7 @@ aV
 bc
 Ng
 xH
-bz
+Ay
 Ay
 Ay
 Ay

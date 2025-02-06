@@ -657,7 +657,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	decryption_time = min(initial(decryption_time), decryption_time + 2 MINUTES)
 	announce_to_players()
 
-/obj/structure/machinery/nuclearbomb/tech/attack_hand(mob/user as mob)
+/obj/structure/machinery/nuclearbomb/tech/attack_hand(mob/user)
 	if(!decrypting || !isqueen(user))
 		return ..()
 	user.visible_message(SPAN_INFO("[user] begins engulfing \the [src] with resin."), SPAN_INFO("You start regurgitating and engulfing the \the [src] with resin... stopping the electronics from working, this will take some time..."))

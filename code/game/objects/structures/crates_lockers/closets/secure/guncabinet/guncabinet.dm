@@ -84,7 +84,7 @@
 	new /obj/item/ammo_magazine/shotgun/beanbag/riot(src)
 	new /obj/item/ammo_magazine/shotgun/beanbag/riot(src)
 	new /obj/item/ammo_magazine/shotgun/beanbag/riot(src)
-	new /obj/item/weapon/gun/launcher/grenade/m81/riot(src, TRUE)
+	new /obj/item/weapon/gun/launcher/grenade/m84(src, TRUE)
 	new /obj/item/storage/box/nade_box/tear_gas(src)
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/clothing/mask/gas(src)

@@ -35,7 +35,7 @@
 
 /turf/open/floor/holofloor/grass/update_icon()
 	. = ..()
-	if(!broken && !burnt)
+	if(!(turf_flags & TURF_BROKEN) && !(turf_flags & TURF_BURNT))
 		if(!(icon_state in list("grass1", "grass2", "grass3", "grass4")))
 			icon_state = "grass[pick("1", "2", "3", "4")]"
 

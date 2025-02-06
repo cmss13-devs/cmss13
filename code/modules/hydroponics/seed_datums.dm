@@ -379,7 +379,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
 			else //New chems! (20% chance)
-				var/new_chem = list(pick( prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),\
+				var/new_chem = list(pick( prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),
 											prob(15);pick(GLOB.chemical_gen_classes_list["C2"]),\
 											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\

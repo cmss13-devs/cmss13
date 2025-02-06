@@ -72,7 +72,8 @@
 		if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
 			user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
 
-	return
+		if(new_xeno.ckey)
+			GLOB.deevolved_ckeys += new_xeno.ckey
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -87,7 +88,7 @@
 		return
 	if(!X.ovipositor)
 		return
-	X.visible_message(SPAN_XENOWARNING("\The [X] starts detaching itself from its ovipositor!"), \
+	X.visible_message(SPAN_XENOWARNING("\The [X] starts detaching itself from its ovipositor!"),
 		SPAN_XENOWARNING("You start detaching yourself from your ovipositor."))
 	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10)) return
 	if(!X.check_state())
@@ -138,7 +139,7 @@
 	if(!xeno.check_plasma(plasma_cost))
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."), \
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."),
 	SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still)"))
 	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
@@ -146,52 +147,55 @@
 	if(!locate(/obj/effect/alien/weeds) in current_turf)
 		return
 	xeno.use_plasma(plasma_cost)
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"), \
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"),
 	SPAN_XENOWARNING("You have grown an ovipositor!"))
 	xeno.mount_ovipositor()
 	return ..()
 
 /datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/queen/X = owner
-	if(!X.check_state())
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	if(!xeno.check_state())
 		return
 
 	if(!action_cooldown_check())
 		return
-	var/datum/hive_status/hive = X.hive
-	if(X.observed_xeno)
-		if(!length(hive.open_xeno_leader_positions) && X.observed_xeno.hive_pos == NORMAL_XENO)
-			to_chat(X, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
+	var/datum/hive_status/hive = xeno.hive
+	if(xeno.observed_xeno)
+		if(!length(hive.open_xeno_leader_positions) && xeno.observed_xeno.hive_pos == NORMAL_XENO)
+			to_chat(xeno, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
-		var/mob/living/carbon/xenomorph/T = X.observed_xeno
-		if(T == X)
-			to_chat(X, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
+		var/mob/living/carbon/xenomorph/targeted_xeno = xeno.observed_xeno
+		if(targeted_xeno == xeno)
+			to_chat(xeno, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
 			return
 		apply_cooldown()
-		if(T.hive_pos == NORMAL_XENO)
-			if(!hive.add_hive_leader(T))
-				to_chat(X, SPAN_XENOWARNING("Unable to add the leader."))
+		if(targeted_xeno.hive_pos == NORMAL_XENO)
+			if(!hive.add_hive_leader(targeted_xeno))
+				to_chat(xeno, SPAN_XENOWARNING("Unable to add the leader."))
 				return
-			to_chat(X, SPAN_XENONOTICE("You've selected [T] as a Hive Leader."))
-			to_chat(T, SPAN_XENOANNOUNCE("[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
+			if(targeted_xeno.stat == DEAD)
+				to_chat(xeno, SPAN_XENOWARNING("You cannot leader the dead."))
+				return
+			to_chat(xeno, SPAN_XENONOTICE("You've selected [targeted_xeno] as a Hive Leader."))
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
 		else
-			hive.remove_hive_leader(T)
-			to_chat(X, SPAN_XENONOTICE("You've demoted [T] from Hive Leader."))
-			to_chat(T, SPAN_XENOANNOUNCE("[X] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
+			hive.remove_hive_leader(targeted_xeno)
+			to_chat(xeno, SPAN_XENONOTICE("You've demoted [targeted_xeno] from Hive Leader."))
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
 	else
 		var/list/possible_xenos = list()
-		for(var/mob/living/carbon/xenomorph/T in hive.xeno_leader_list)
-			possible_xenos += T
+		for(var/mob/living/carbon/xenomorph/targeted_xeno in hive.xeno_leader_list)
+			possible_xenos += targeted_xeno
 
 		if(length(possible_xenos) > 1)
-			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
-			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
+			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(xeno, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
+			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != xeno.z || !xeno.check_state())
 				return
-			X.overwatch(selected_xeno)
+			xeno.overwatch(selected_xeno)
 		else if(length(possible_xenos))
-			X.overwatch(possible_xenos[1])
+			xeno.overwatch(possible_xenos[1])
 		else
-			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
+			to_chat(xeno, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
 	return ..()
 
 /datum/action/xeno_action/activable/queen_heal/use_ability(atom/A, verbose)

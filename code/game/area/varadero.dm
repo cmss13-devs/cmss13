@@ -331,6 +331,10 @@
 	name = "New Varadero - Dig Site"
 	icon_state = "deepcaves3"
 
+/area/varadero/interior_protected/caves/makeshift_tent
+	name = "New Varadero - Makeshift Tent"
+	icon_state = "offices4"
+
 /area/varadero/interior_protected/caves/swcaves
 	name = "New Varadero - Southwest Caves"
 	icon_state = "deepcaves3"

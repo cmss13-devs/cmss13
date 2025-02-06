@@ -831,6 +831,9 @@
 		holo_card_color = null
 		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
 	else if(newcolor != holo_card_color)
+		if(newcolor == "black" && is_revivable())
+			to_chat(user, SPAN_WARNING("They are yet saveable."))
+			return
 		holo_card_color = newcolor
 		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
 	hud_set_holocard()
@@ -1486,7 +1489,7 @@
 					if(new_splint.amount == 0)
 						qdel(new_splint) //we only removed nano splints
 					msg = "[user == target ? "their own":"\proper [target]'s"]"
-					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."), \
+					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."),
 						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
 					target.update_med_icon()
 			else
@@ -1544,13 +1547,13 @@
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
-		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
+		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"),
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(4, WEAKEN)
 		spin(35, 2)
-		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
+		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	if(istype(get_turf(src), /turf/open/gm/river))
@@ -1559,7 +1562,7 @@
 	if(fire_stacks > 0)
 		return
 
-	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
+	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
 			SPAN_NOTICE("You extinguish yourself."), null, 5)
 
 /mob/living/carbon/human/resist_acid()
@@ -1567,21 +1570,21 @@
 	if(isyautja(src))
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
-		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
+		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"),
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), max_distance = 5)
 	else
 		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
-		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
+		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), max_distance = 5)
 
 	sleep(sleep_amount)
 
 	if( extinguish_acid() )
-		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
+		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"),
 				SPAN_NOTICE("You get rid of the acid."), max_distance = 5)
 	else
-		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"), \
+		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"),
 				SPAN_NOTICE("You manage to get rid of some of the acid... but it's still melting you!"), max_distance = 5)
 
 	return
@@ -1602,14 +1605,14 @@
 	last_special = world.time + 10
 	var/can_break_cuffs
 	if(iszombie(src))
-		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."), \
+		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."),
 		SPAN_NOTICE("You use your superior zombie strength to start breaking [restraint]..."))
 		if(!do_after(src, 100, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
-		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"), \
+		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"),
 			SPAN_NOTICE("You tear [restraint] in half!"))
 		restraint = null
 		if(handcuffed)

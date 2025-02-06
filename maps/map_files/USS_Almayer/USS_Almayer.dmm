@@ -447,6 +447,16 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"abb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_f_s)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -566,6 +576,15 @@
 "abE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
+"abF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_f_s)
 "abG" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
@@ -2538,7 +2557,8 @@
 	id = "safe_shutters";
 	name = "Saferoom Entrance";
 	pixel_x = 10;
-	pixel_y = 23
+	pixel_y = 23;
+	req_one_access = list(3,19)
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -2802,13 +2822,16 @@
 	id = "safe_office_inner";
 	name = "Inner Office Controls";
 	pixel_x = -9;
-	pixel_y = 23
+	pixel_y = 23;
+	req_one_access = list(3,19)
 	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/panic)
 "ahw" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
-	name = "\improper Saferoom Office"
+	name = "\improper Saferoom Office";
+	req_one_access = list(3,19);
+	req_access = list()
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
@@ -2883,7 +2906,9 @@
 "ahE" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
 	dir = 1;
-	name = "\improper Saferoom"
+	name = "\improper Saferoom";
+	req_one_access = list(3,19);
+	req_access = list()
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "safe_office_inner";
@@ -3020,13 +3045,15 @@
 	id = "safe_armory";
 	name = "Armory Controls";
 	pixel_x = -9;
-	pixel_y = -20
+	pixel_y = -20;
+	req_one_access = list(3,19)
 	},
 /obj/structure/machinery/door_control{
 	id = "safe_office_inner";
 	name = "Inner Office Controls";
 	pixel_x = 10;
-	pixel_y = -20
+	pixel_y = -20;
+	req_one_access = list(3,19)
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/panic)
@@ -3035,7 +3062,8 @@
 	id = "safe_maint";
 	name = "Maintenance Shutter Controls";
 	pixel_x = 23;
-	pixel_y = 10
+	pixel_y = 10;
+	req_one_access = list(3,19)
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/panic)
@@ -3148,14 +3176,17 @@
 	id = "safe_inner";
 	name = "Saferoom Controls";
 	pixel_x = 30;
-	pixel_y = -21
+	pixel_y = -21;
+	req_one_access = list(3,19)
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/panic)
 "aiu" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced{
 	name = "\improper Saferoom";
-	dir = 1
+	dir = 1;
+	req_one_access = list(3,19);
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -3379,14 +3410,6 @@
 "aiS" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/cryo)
-"aiT" = (
-/obj/structure/machinery/light/small,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_f_s)
 "aiU" = (
 /obj/structure/machinery/light/small,
 /obj/structure/disposalpipe/segment{
@@ -5421,6 +5444,11 @@
 	dir = 1;
 	pixel_y = -9
 	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -25
+	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/command/computerlab)
 "aoR" = (
@@ -6904,13 +6932,14 @@
 /obj/structure/barricade/handrail{
 	dir = 2;
 	layer = 3.1;
-	pixel_y = -1
+	pixel_y = 0;
+	pixel_x = -1
 	},
 /obj/structure/barricade/handrail{
 	dir = 4;
 	layer = 3.1;
-	pixel_y = 1;
-	pixel_x = 3
+	pixel_y = 0;
+	pixel_x = 2
 	},
 /obj/structure/surface/rack{
 	pixel_y = 10
@@ -31998,6 +32027,10 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/structure/sign/safety/water{
+	pixel_x = 8;
+	pixel_y = -32
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
 "hRW" = (
@@ -33042,7 +33075,8 @@
 	id = "safe_maint";
 	name = "Outer Office Controls";
 	pixel_x = -23;
-	pixel_y = 10
+	pixel_y = 10;
+	req_one_access = list(3,19)
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	alpha = 150;
@@ -49366,7 +49400,7 @@
 	dir = 8;
 	layer = 3.1;
 	pixel_y = 1;
-	pixel_x = -4
+	pixel_x = -2
 	},
 /obj/structure/machinery/cm_vending/clothing/combat_correspondent{
 	pixel_y = 16;
@@ -55532,10 +55566,10 @@
 	},
 /obj/structure/sign/safety/high_voltage{
 	pixel_x = 15;
-	pixel_y = 32
+	pixel_y = 24
 	},
 /obj/structure/sign/safety/hazard{
-	pixel_y = 32
+	pixel_y = 24
 	},
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/hallways/lower/repair_bay)
@@ -62166,11 +62200,11 @@
 	},
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/sign/safety/terminal{
-	pixel_y = 32
+	pixel_y = 24
 	},
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 15;
-	pixel_y = 32
+	pixel_y = 24
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -64747,12 +64781,13 @@
 	dir = 8;
 	layer = 3.1;
 	pixel_y = 1;
-	pixel_x = -4
+	pixel_x = -2
 	},
 /obj/structure/barricade/handrail{
 	dir = 2;
 	layer = 3.1;
-	pixel_y = -1
+	pixel_y = 0;
+	pixel_x = 2
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/combat_correspondent)
@@ -67498,19 +67533,22 @@
 	id = "safe_inner";
 	name = "Saferoom Controls";
 	pixel_x = 9;
-	pixel_y = 9
+	pixel_y = 9;
+	req_one_access = list(3,19)
 	},
 /obj/structure/machinery/door_control{
 	id = "safe_shutters";
 	name = "Exterior Shutter Controls";
 	pixel_x = 9;
-	pixel_y = -7
+	pixel_y = -7;
+	req_one_access = list(3,19)
 	},
 /obj/structure/machinery/door_control{
 	id = "Hangar Lockdown";
 	name = "Hangar Lockdown";
 	pixel_x = 9;
-	pixel_y = 1
+	pixel_y = 1;
+	req_one_access = list(3,19)
 	},
 /turf/open/floor/almayer/plating_stripedcorner/east,
 /area/almayer/shipboard/panic)
@@ -92423,7 +92461,7 @@ aag
 aag
 sGw
 fzT
-dvD
+stP
 eWs
 aiK
 aiB
@@ -92626,7 +92664,7 @@ aag
 aag
 sGw
 iPf
-aiT
+sZc
 aiN
 vHp
 gJp
@@ -93438,7 +93476,7 @@ aag
 aag
 sGw
 dvD
-iOX
+abb
 eWs
 abG
 aer
@@ -94047,7 +94085,7 @@ aag
 aag
 sGw
 dvD
-iQJ
+oes
 eWs
 acu
 aeh
@@ -94250,7 +94288,7 @@ aag
 aag
 sGw
 nHX
-cEA
+abF
 eWs
 acM
 aiC

@@ -126,6 +126,8 @@
 	ammo_count -= transf_amt
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	to_chat(user, SPAN_NOTICE("You transfer [transf_amt] [ammo_name] to \the [target]."))
+	src?.update_icon()
+	target.update_icon()
 	if(ammo_count < 1)
 		if(PC)
 			PC.loaded = null

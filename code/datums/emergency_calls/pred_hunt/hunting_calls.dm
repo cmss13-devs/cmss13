@@ -136,7 +136,7 @@
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
-		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph  let loose on a strange planet."))
+		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph let loose on a strange planet."))
 	else if(xeno_t2 < max_xeno_t2 && HAS_FLAG(current_mob.client.prefs.toggles_ert_pred, PLAY_XENO_T2))
 		xeno_t2++
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/lurker, /mob/living/carbon/xenomorph/warrior)
@@ -144,13 +144,13 @@
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
-		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph  let loose on a strange planet."))
+		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph let loose on a strange planet."))
 	else
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/warrior)
 		var/xeno_type = pick(xeno_types)
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
-		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph  let loose on a strange planet."))
+		to_chat(new_xeno, SPAN_BOLD("You are a xenomorph let loose on a strange planet."))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), new_xeno.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)

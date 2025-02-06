@@ -273,9 +273,6 @@
 		if(istype(wear_suit, /obj/item/clothing/suit/storage/marine))
 			if(wear_suit.turn_light(src, toggle_on = FALSE))
 				light_off++
-		if(istype(back, /obj/item/storage/backpack/marine/smartpack))
-			if(back.turn_light(src, toggle_on = FALSE))
-				light_off++
 		for(var/obj/item/clothing/head/helmet/marine/H in contents)
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))

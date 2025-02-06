@@ -25,8 +25,8 @@ window "mainwindow"
 		menu = "menu"
 	elem "split"
 		type = CHILD
-		pos = 0,0
-		size = 640x440
+		pos = 3,0
+		size = 634x440
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"

@@ -24,7 +24,6 @@
 	security_record.fields["id"] = id
 	security_record.name = text("Security Record #[id]")
 	security_record.fields["incidents"] = "None"
-	security_record.fields["criminal"] = "None"
 	GLOB.data_core.security += security_record
 	return security_record
 

@@ -40,5 +40,5 @@
 	if(!istype(T))
 		return COMPONENT_BULLET_PASS_THROUGH
 
-	if(!(T.turf_flags & TURF_HULL))
+	if(!T.hull)
 		return COMPONENT_BULLET_PASS_THROUGH

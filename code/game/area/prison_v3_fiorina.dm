@@ -14,7 +14,6 @@
 /area/fiorina/oob
 	name = "Fiorina - Out Of Bounds"
 	icon_state = "oob"
-	requires_power = FALSE
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE

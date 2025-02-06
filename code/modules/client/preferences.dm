@@ -115,7 +115,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
-	var/co_career_path = "Infantry"
 	var/affiliation = "Unaligned"
 	//SEA specific preferences
 
@@ -523,7 +522,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>Commander Whitelist Status:</b> <a href='byond://?_src_=prefs;preference=commander_status;task=input'><b>[commander_status]</b></a><br>"
 				dat += "<b>Commander Sidearm:</b> <a href='byond://?_src_=prefs;preference=co_sidearm;task=input'><b>[commander_sidearm]</b></a><br>"
 				dat += "<b>Commander Affiliation:</b> <a href='byond://?_src_=prefs;preference=co_affiliation;task=input'><b>[affiliation]</b></a><br>"
-				dat += "<b>Commander Career Path:</b> <a href='byond://?_src_=prefs;preference=co_career_path;task=input'><b>[co_career_path]</b></a><br>"
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -1190,13 +1188,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 
 				if("xeno_vision_level_pref")
-					var/static/list/vision_level_choices = list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG,  XENO_VISION_LEVEL_FULL_NVG)
+					var/static/list/vision_level_choices = list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG)
 					var/choice = tgui_input_list(user, "Choose your default xeno vision level", "Vision level", vision_level_choices, theme="hive_status")
 					if(!choice)
 						return
 					xeno_vision_level_pref = choice
 				if("ghost_vision_pref")
-					var/static/list/vision_level_choices = list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG)
+					var/static/list/vision_level_choices = list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG)
 					var/choice = tgui_input_list(user, "Choose your default ghost vision level", "Vision level", vision_level_choices)
 					if(!choice)
 						return
@@ -1345,16 +1343,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(!new_co_affiliation)
 						return
 					affiliation = new_co_affiliation
-
-				if("co_career_path")
-					var/list/options = list("Infantry", "Engineering", "Medical", "Intel", "Logistics", "Aviation", "Tanker")
-
-					var/new_career_path = tgui_input_list(user, "Choose your new Career Path.", "Career Path", options)
-
-					if(!new_career_path)
-						return
-
-					co_career_path = new_career_path
 
 
 				if("yautja_status")

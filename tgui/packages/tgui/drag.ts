@@ -164,12 +164,7 @@ export const recallWindowGeometry = async (
 };
 
 // Setup draggable window
-export const setupDrag = async (fancy: boolean) => {
-  if (fancy) {
-    screenOffset = [0, 0];
-    return;
-  }
-
+export const setupDrag = async () => {
   // Calculate screen offset caused by the windows taskbar
   let windowPosition = getWindowPosition();
 

@@ -20,10 +20,10 @@
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
+		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"), \
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"),
+		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"), \
 		SPAN_DANGER("We [user.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_icon()
 	return XENO_ATTACK_ACTION
@@ -1896,45 +1896,39 @@
 	icon_state = "wallegg_on"
 
 // Fake Pipes
-/obj/effect/hybrisa/misc/fake/pipes
+/obj/structure/prop/hybrisa/misc/fake/pipes
 	name = "disposal pipe"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	icon_state = "pipe-s"
-	layer = WIRE_LAYER
+	layer = TURF_LAYER
 
-/obj/effect/hybrisa/misc/fake/pipes/pipe1
+/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
 	icon_state = "pipe-s"
 
-/obj/effect/hybrisa/misc/fake/pipes/pipe2
+/obj/structure/prop/hybrisa/misc/fake/pipes/pipe2
 	icon_state = "pipe-c"
 
-/obj/effect/hybrisa/misc/fake/pipes/pipe3
+/obj/structure/prop/hybrisa/misc/fake/pipes/pipe3
 	icon_state = "pipe-j1"
 
-/obj/effect/hybrisa/misc/fake/pipes/pipe4
+// Fake Wire
+/obj/structure/prop/hybrisa/misc/fake/pipes/pipe4
 	icon_state = "pipe-y"
 
-/obj/effect/hybrisa/misc/fake/pipes/pipe5
+/obj/structure/prop/hybrisa/misc/fake/pipes/pipe5
 	icon_state = "pipe-b"
 
-// Fake Wire
-
-/obj/effect/hybrisa/misc/fake/wire
+/obj/structure/prop/hybrisa/misc/fake/wire
 	name = "power cable"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	icon_state = "intactred"
-	layer = UNDERFLOOR_OBJ_LAYER
+	layer = TURF_LAYER
 
-/obj/effect/hybrisa/misc/fake/ex_act()
-	qdel(src)
-
-/obj/effect/hybrisa/misc/fake/wire/red
+/obj/structure/prop/hybrisa/misc/fake/wire/red
 	icon_state = "intactred"
 
-/obj/effect/hybrisa/misc/fake/wire/yellow
+/obj/structure/prop/hybrisa/misc/fake/wire/yellow
 	icon_state = "intactyellow"
 
-/obj/effect/hybrisa/misc/fake/wire/blue
+/obj/structure/prop/hybrisa/misc/fake/wire/blue
 	icon_state = "intactblue"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire

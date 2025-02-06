@@ -204,7 +204,7 @@ export const backendMiddleware = (store) => {
       // Signal renderer that we have resumed
       resumeRenderer();
       // Setup drag
-      setupDrag(payload.config?.window?.fancy);
+      setupDrag();
       // We schedule this for the next tick here because resizing and unhiding
       // during the same tick will flash with a white background.
       setTimeout(() => {

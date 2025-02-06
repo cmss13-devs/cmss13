@@ -346,8 +346,6 @@
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
-	/// The world.time when the xeno was created. Carries over between strains and evolving
-	var/creation_time = 0
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
@@ -506,8 +504,6 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
-	creation_time = world.time
-
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
@@ -612,7 +608,7 @@
 		if(XENO_VISION_LEVEL_NO_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		if(XENO_VISION_LEVEL_MID_NVG)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
@@ -625,8 +621,6 @@
 		if(XENO_VISION_LEVEL_NO_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		if(XENO_VISION_LEVEL_MID_NVG)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
-		if(XENO_VISION_LEVEL_HIGH_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
@@ -638,7 +632,7 @@
 	switch(lighting_alpha)
 		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
 			return XENO_VISION_LEVEL_FULL_NVG
-		if(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
+		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
 			return XENO_VISION_LEVEL_MID_NVG
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			return XENO_VISION_LEVEL_NO_NVG
@@ -1009,7 +1003,7 @@
 /mob/living/carbon/xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
 	apply_effect(4, WEAKEN)
-	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
+	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	if(istype(get_turf(src), /turf/open/gm/river))
@@ -1018,7 +1012,7 @@
 	if(fire_stacks > 0)
 		return
 
-	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
+	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
 /mob/living/carbon/xenomorph/proc/get_organ_icon()
@@ -1105,7 +1099,7 @@
 		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
 			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. We can't squeeze underneath!"))
 			return FALSE
-	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"),
+	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
 	SPAN_WARNING("We squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE

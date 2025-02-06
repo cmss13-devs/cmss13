@@ -2,11 +2,6 @@
  * Copyright (c) 2020 Aleksej Komarov
  * SPDX-License-Identifier: MIT
  */
- 
-/// How many chat payloads to keep in history
-#define CHAT_RELIABILITY_HISTORY_SIZE 5
-/// How many resends to allow before giving up
-#define CHAT_RELIABILITY_MAX_RESENDS 3
 
 #define MESSAGE_TYPE_SYSTEM "system"
 #define MESSAGE_TYPE_LOCALCHAT "localchat"

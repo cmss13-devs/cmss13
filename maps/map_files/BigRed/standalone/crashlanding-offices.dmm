@@ -231,13 +231,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
-"aS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/power/north{
-	name = "Interview Room APC"
-	},
-/turf/open/floor/platingdmg1,
-/area/bigredv2/outside/office_complex)
 "aT" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
@@ -456,12 +449,22 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
+"dm" = (
+/turf/closed/shuttle/ert{
+	icon_state = "wy1"
+	},
+/area/bigredv2/outside/se)
 "dn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/office_complex)
+/area/bigredv2/outside/se)
+"do" = (
+/turf/closed/shuttle/ert{
+	icon_state = "wy3"
+	},
+/area/bigredv2/outside/se)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
@@ -1721,7 +1724,7 @@ zH
 ws
 hl
 cE
-dg
+dm
 Is
 "}
 (13,1,1) = {"
@@ -1775,7 +1778,7 @@ KK
 KK
 Wd
 cF
-di
+do
 ds
 "}
 (15,1,1) = {"
@@ -1829,7 +1832,7 @@ ue
 Fc
 UR
 cE
-dg
+dm
 Ct
 "}
 (17,1,1) = {"
@@ -1883,7 +1886,7 @@ Eo
 ql
 oc
 cF
-di
+do
 jl
 "}
 (19,1,1) = {"
@@ -1978,7 +1981,7 @@ WB
 ap
 UB
 ap
-aS
+Cy
 nn
 Oi
 WB

@@ -1,15 +1,12 @@
 
-/proc/create_shrapnel(turf/epicenter, shrapnel_number = 10, shrapnel_direction, shrapnel_spread = 45, datum/ammo/shrapnel_type = /datum/ammo/bullet/shrapnel, datum/cause_data/cause_data, ignore_source_mob = FALSE, on_hit_coefficient = 0.15, use_shrapnel_angle = FALSE)
+/proc/create_shrapnel(turf/epicenter, shrapnel_number = 10, shrapnel_direction, shrapnel_spread = 45, datum/ammo/shrapnel_type = /datum/ammo/bullet/shrapnel, datum/cause_data/cause_data, ignore_source_mob = FALSE, on_hit_coefficient = 0.15)
 
 	epicenter = get_turf(epicenter)
 
 	var/initial_angle = 0
 	var/angle_increment = 0
 
-	if(use_shrapnel_angle && shrapnel_spread < 360)
-		initial_angle = shrapnel_direction - shrapnel_spread
-		angle_increment = shrapnel_spread*2/shrapnel_number
-	else if (shrapnel_direction)
+	if(shrapnel_direction)
 		initial_angle = dir2angle(shrapnel_direction) - shrapnel_spread
 		angle_increment = shrapnel_spread*2/shrapnel_number
 	else

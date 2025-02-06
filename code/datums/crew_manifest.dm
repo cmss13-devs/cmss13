@@ -37,13 +37,13 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 	var/list/data = list()
 
 	for(var/datum/data/record/record_entry in GLOB.data_core.general)
+		if(record_entry.fields["mob_faction"] != FACTION_MARINE)
+			continue
 
 		var/name = record_entry.fields["name"]
 		var/rank = record_entry.fields["rank"]
 		var/squad = record_entry.fields["squad"]
 		if(isnull(name) || isnull(rank))
-			continue
-		if(record_entry.fields["mob_faction"] != FACTION_MARINE && rank != JOB_CORPORATE_LIAISON)
 			continue
 
 		var/entry_dept = null

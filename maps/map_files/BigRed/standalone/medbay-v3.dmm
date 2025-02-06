@@ -608,7 +608,7 @@
 	},
 /obj/structure/surface/table,
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/medical)
+/area/bigredv2/outside/n)
 "xv" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -776,7 +776,7 @@
 /area/bigredv2/outside/medical)
 "Db" = (
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/c)
+/area/bigredv2/outside/medical)
 "Dj" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/panelscorched,
@@ -1146,6 +1146,9 @@
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/medical)
+"OM" = (
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/medical)
 "ON" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/platingdmg1,
@@ -1446,7 +1449,7 @@
 "YF" = (
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/medical)
+/area/bigredv2/outside/n)
 "YQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1998,7 +2001,7 @@ aa
 Xr
 Ml
 HQ
-rm
+OM
 "}
 (19,1,1) = {"
 af

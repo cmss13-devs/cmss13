@@ -262,7 +262,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "wv" = (
-/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "wy" = (

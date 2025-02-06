@@ -269,7 +269,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	if(istype(to_enter, /turf/closed/wall))
 		var/turf/closed/wall/W = to_enter
-		if(W.turf_flags & TURF_HULL)
+		if(W.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
 	return COMPONENT_TURF_ALLOW_MOVEMENT

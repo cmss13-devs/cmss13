@@ -27,7 +27,7 @@
 
 	xenomorph.animation_attack_on(src)
 
-	xenomorph.visible_message(SPAN_DANGER("[xenomorph] slashes [src]!"),
+	xenomorph.visible_message(SPAN_DANGER("[xenomorph] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"))
 
 	update_health(damage)
@@ -210,13 +210,13 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 
-			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."),
-					SPAN_WARNING("You beat against [src] to no effect"),
+			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."), \
+					SPAN_WARNING("You beat against [src] to no effect"), \
 					"You hear twisting metal.")
 
 	if(!damage_dealt)
-		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."),
-					SPAN_WARNING("[user] beats against the [src]."),
+		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."), \
+					SPAN_WARNING("[user] beats against the [src]."), \
 					"You hear twisting metal.")
 
 /obj/structure/cargo_container/horizontal

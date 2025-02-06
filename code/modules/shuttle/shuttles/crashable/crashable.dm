@@ -107,7 +107,7 @@
 
 		if(istype(found_turf, /turf/closed/wall))
 			var/turf/closed/wall/found_closed_turf = found_turf
-			if(found_closed_turf.turf_flags & TURF_HULL)
+			if(found_closed_turf.hull)
 				return FALSE
 
 		if(istype(found_turf, /turf/closed/shuttle))

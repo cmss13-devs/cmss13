@@ -3,30 +3,30 @@
 /obj/structure/girder/displaced,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "cm" = (
 /turf/open/floor/kutjevo/tan/grey_edge/west,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "cL" = (
 /obj/item/clothing/suit/storage/hazardvest/yellow,
 /turf/open/floor/kutjevo/tan,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "cW" = (
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "di" = (
 /turf/open/floor/kutjevo/tan/grey_edge/north,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "dl" = (
 /obj/structure/girder/displaced,
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "gD" = (
 /obj/item/stack/rods,
 /obj/item/tool/warning_cone,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "ix" = (
 /obj/item/tool/warning_cone,
 /obj/item/paper/crumpled{
@@ -38,14 +38,14 @@
 	pixel_y = 14
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "lD" = (
 /obj/structure/machinery/door_display{
 	desc = "A work schedule monitor. It appears to be broken.";
 	name = "Schedule Monitor"
 	},
 /turf/closed/wall/kutjevo/colony,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "lZ" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -53,15 +53,15 @@
 	pixel_y = 5
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "mv" = (
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "nn" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "oB" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -69,16 +69,16 @@
 	layer = 2.8
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "oK" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "oU" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/message_server,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "pP" = (
 /obj/structure/largecrate/random{
 	pixel_y = 19;
@@ -95,41 +95,41 @@
 	dir = 4
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "qp" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/north,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "qM" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/tool/warning_cone,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "rm" = (
 /obj/structure/surface/rack,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "ry" = (
 /obj/item/stack/rods,
 /obj/structure/fence,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "rG" = (
 /obj/item/stack/rods,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "rP" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "sQ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "uS" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp/on{
@@ -154,16 +154,16 @@
 	name = "I should have gone on holiday"
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "wh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "wC" = (
 /obj/structure/surface/rack,
 /obj/item/notepad/blue,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "wO" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -193,48 +193,51 @@
 	layer = 3.3
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "yQ" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /obj/structure/surface/rack,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "zb" = (
 /turf/open/floor/kutjevo/tan/grey_edge,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "zh" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Af" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge/east,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Ca" = (
 /obj/structure/window/framed/kutjevo,
 /obj/structure/barricade/handrail/kutjevo{
 	layer = 3.1
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Ci" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "DY" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/east,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "EK" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "GH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/paper/crumpled{
@@ -242,25 +245,25 @@
 	pixel_y = 14
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "IR" = (
 /obj/item/paper/crumpled,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Jg" = (
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/kutjevo/tan/grey_edge/east,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Jz" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/rods,
 /turf/open/floor/kutjevo/tan/grey_edge/east,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Ks" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "KC" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -279,28 +282,28 @@
 	pixel_y = -8
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "KD" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "LG" = (
 /obj/structure/fence,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "LO" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "LR" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "MV" = (
 /obj/structure/largecrate/random{
 	pixel_y = 1
@@ -320,87 +323,87 @@
 	dir = 8
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Nr" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Or" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Pp" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Re" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/warning_cone,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Rj" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/tool/warning_cone,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "RK" = (
 /turf/closed/wall/kutjevo/colony,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "SZ" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Ul" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/tan/grey_edge,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Um" = (
 /turf/open/floor/kutjevo/tan/grey_edge/east,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Vc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/warning_cone,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Xi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Xq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge/west,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "XS" = (
 /obj/structure/fence{
 	desc = "A large metal mesh strewn between two poles. A 'Keep Out! Under Construction' sign dangles from one of the fence posts."
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Yo" = (
 /obj/item/clothing/head/hardhat/orange,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "YG" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "YO" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/west,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 "Zf" = (
 /obj/structure/window/framed/kutjevo,
 /obj/structure/barricade/handrail/kutjevo{
 	layer = 3
 	},
 /turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/signal_tower)
+/area/template_noop)
 
 (1,1,1) = {"
 SZ

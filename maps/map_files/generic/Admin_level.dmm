@@ -18,10 +18,6 @@
 /obj/docking_port/stationary/vehicle_elevator/adminlevel,
 /turf/open/space/basic,
 /area/space)
-"af" = (
-/obj/structure/machinery/vending/cigarette/wy,
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -30,10 +26,6 @@
 	},
 /turf/open/floor/tdome/northeast,
 /area/tdome)
-"ah" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/tdome/northeast,
-/area/tdome/tdomeobserve)
 "aj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/effect/spider/stickyweb,
@@ -1840,6 +1832,10 @@
 /obj/structure/sign/poster/clf,
 /turf/closed/wall,
 /area/adminlevel/ert_station)
+"VD" = (
+/obj/structure/machinery/vending/cigarette/free,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
 "VI" = (
 /turf/open/floor/almayer/silvercorner,
 /area/adminlevel/ert_station/shuttle_dispatch)
@@ -1904,6 +1900,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
+"WQ" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station)
 "Xi" = (
 /obj/structure/sign/poster/music,
 /turf/closed/wall,
@@ -5123,7 +5123,7 @@ aa
 aC
 aa
 OT
-ah
+VD
 YP
 YP
 YP
@@ -6089,7 +6089,7 @@ Iq
 ZV
 Io
 OD
-af
+WQ
 JW
 KQ
 RW

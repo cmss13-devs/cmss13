@@ -158,10 +158,6 @@
 	icon_state = "wy23"
 	},
 /area/bigredv2/outside/general_offices)
-"aG" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "aH" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy25"
@@ -1412,7 +1408,7 @@ oi
 oi
 oi
 aB
-aG
+aK
 aK
 aK
 aB

@@ -16,6 +16,7 @@
 	var/adj_dizzy = 0
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
+	var/adj_temp = 0
 
 /datum/reagent/drink/on_mob_life(mob/living/M, alien, delta_time)
 	. = ..()
@@ -29,6 +30,9 @@
 		M.drowsyness = max(0,M.drowsyness + adj_drowsy * delta_time)
 	if(adj_sleepy)
 		M.sleeping = max(0,M.sleeping + adj_sleepy * delta_time)
+	if(adj_temp && M.bodytemperature < 310) //310 is the normal bodytemp. 310.055
+		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time))
+		M.recalculate_move_delay = TRUE
 
 /datum/reagent/drink/cold
 	name = "Cold drink"
@@ -189,8 +193,7 @@
 	description = "Glorious brainfreezing mixture."
 	id = "milkshake"
 	color = "#AEE5E4" // rgb" 174, 229, 228
-	adj_temp = -2
-	target_temp = T0C
+	adj_temp = 0
 
 /datum/reagent/drink/cold/milkshake/on_mob_life(mob/living/M)
 	. = ..()
@@ -199,6 +202,7 @@
 		M = holder.my_atom
 	if(prob(1))
 		M.emote("shiver")
+	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, T0C)
 	M.recalculate_move_delay = TRUE
 	holder.remove_reagent("capsaicin", 5)
 	holder.remove_reagent("hotsauce", 5)
@@ -355,8 +359,7 @@
 	adj_dizzy = -5
 	adj_drowsy = -3
 	adj_sleepy = -2
-	adj_temp = 1
-	target_temp = T90C
+	adj_temp = 5
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/drink/coffee/on_mob_life(mob/living/M)
@@ -395,8 +398,7 @@
 	description = "A nice and tasty beverage while you are reading your hippie books."
 	color = "#664300" // rgb: 102, 67, 0
 	adj_sleepy = 0
-	adj_temp = 1
-	target_temp = T90C
+	adj_temp = 5
 	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/drink/coffee/soy_latte/on_mob_life(mob/living/M)
@@ -411,8 +413,7 @@
 	description = "A nice, strong and tasty beverage while you are reading."
 	color = "#664300" // rgb: 102, 67, 0
 	adj_sleepy = 0
-	adj_temp = 1
-	target_temp = T90C
+	adj_temp = 5
 
 /datum/reagent/drink/coffee/cafe_latte/on_mob_life(mob/living/M)
 	. = ..()
@@ -428,8 +429,7 @@
 	adj_dizzy = -2
 	adj_drowsy = -1
 	adj_sleepy = -3
-	adj_temp = 1
-	target_temp = T90C
+	adj_temp = 5
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/drink/tea/on_mob_life(mob/living/M)
@@ -653,7 +653,6 @@
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#403010" // rgb: 64, 48, 16
 	chemclass = CHEM_CLASS_RARE
-	adj_temp = 1
-	target_temp = T90C
+	adj_temp = 5
 
 

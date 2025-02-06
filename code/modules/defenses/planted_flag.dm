@@ -61,7 +61,8 @@
 	if(faction && GLOB.cas_groups[faction])
 		signal = new(src)
 		signal.target_id = ++GLOB.cas_tracking_id_increment
-		signal.name = "J-[signal.target_id]"
+		name = "["J"]-[signal.target_id] [src]"
+		signal.name = name
 		signal.linked_cam = new(loc, name)
 		GLOB.cas_groups[faction].add_signal(signal)
 

@@ -48,6 +48,9 @@
 
 	var/turf_flags = NO_FLAGS
 
+	/// Whether we've broken through the ceiling yet
+	var/ceiling_debrised = FALSE
+
 	// Fishing
 	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
 
@@ -515,7 +518,7 @@
 	return
 
 /turf/proc/ceiling_debris(size = 1) //debris falling in response to airstrikes, etc
-	if(turf_flags & TURF_DEBRISED)
+	if(ceiling_debrised)
 		return
 
 	var/area/A = get_area(src)
@@ -559,7 +562,7 @@
 				for(var/i=1, i<=amount, i++)
 					new /obj/item/stack/sheet/metal(pick(turfs))
 					new /obj/item/ore(pick(turfs))
-	turf_flags |= TURF_DEBRISED
+	ceiling_debrised = TRUE
 
 /turf/proc/ceiling_desc(mob/user)
 
@@ -867,6 +870,3 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
-
-/turf/proc/remove_flag(flag)
-	turf_flags &= ~flag

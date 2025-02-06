@@ -59,8 +59,8 @@
 	pixel_y = 20
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/turf/template_noop,
-/area/template_noop)
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/landing_zones/lz2)
 "dq" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/white{
@@ -92,6 +92,9 @@
 /obj/item/shard,
 /turf/open/floor/whiteyellow/east,
 /area/lv624/lazarus/corporate_dome)
+"dY" = (
+/turf/open/floor/plating/asteroidwarning,
+/area/lv624/lazarus/landing_zones/lz2)
 "ev" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
@@ -220,8 +223,8 @@
 	},
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
-/turf/template_noop,
-/area/template_noop)
+/turf/open/floor/plating/asteroidwarning,
+/area/lv624/lazarus/landing_zones/lz2)
 "ln" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -367,7 +370,7 @@
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
 "sm" = (
-/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/vending/cigarette,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "sH" = (
@@ -425,6 +428,9 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
+"yc" = (
+/turf/open/floor/plating/asteroidwarning/north,
+/area/lv624/lazarus/landing_zones/lz2)
 "yJ" = (
 /turf/open/floor/plating/platingdmg2,
 /area/lv624/lazarus/corporate_dome)
@@ -574,8 +580,8 @@
 /area/lv624/lazarus/corporate_dome)
 "Fk" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/template_noop,
-/area/template_noop)
+/turf/open/floor/plating/asteroidwarning/north,
+/area/lv624/lazarus/landing_zones/lz2)
 "Fl" = (
 /turf/open/floor/whitebluecorner/north,
 /area/lv624/lazarus/corporate_dome)
@@ -719,6 +725,9 @@
 "LZ" = (
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/corporate_dome)
+"Me" = (
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/landing_zones/lz2)
 "Ml" = (
 /obj/structure/machinery/atm{
 	name = "Weyland-Yutani Automatic Teller Machine";
@@ -935,8 +944,8 @@ Xt
 Xt
 Xt
 Fk
-Xt
-Xt
+Me
+dY
 Xt
 Xt
 Xt
@@ -956,9 +965,9 @@ Xt
 Xt
 Xt
 Xt
-Xt
+yc
 da
-Xt
+dY
 Xt
 Xt
 Xt
@@ -978,8 +987,8 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
+yc
+Me
 kU
 XG
 XG

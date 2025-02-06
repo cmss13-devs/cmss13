@@ -1,14 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
-"ab" = (
-/obj/effect/spawner/random/claymore/lowchance{
-	dir = 8
-	},
-/turf/open/floor/plating/platingdmg3,
-/area/lv624/lazarus/hydroponics)
 "aO" = (
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/glass/watertank,
@@ -48,7 +38,11 @@
 /turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/hydroponics)
 "dZ" = (
-/turf/closed/wall/r_wall,
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/random/claymore/lowchance{
+	dir = 8
+	},
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
 "eU" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -618,7 +612,7 @@ Cq
 Lu
 TC
 dZ
-aa
+Wg
 ym
 FJ
 Xv
@@ -632,7 +626,7 @@ se
 XA
 qe
 YV
-ab
+TC
 FJ
 Wg
 YV

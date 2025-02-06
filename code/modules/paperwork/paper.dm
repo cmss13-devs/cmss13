@@ -146,14 +146,10 @@
 		onclose(user, name)
 	return
 
-/obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
-
+/obj/item/paper/attack(mob/living/carbon/M, mob/living/carbon/user)
 	if(user.zone_selected == "eyes")
-		if(!ishumansynth_strict(M))
-			return
-
-		user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
-		SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
+		user.visible_message(SPAN_NOTICE("You show the paper to [M]. "), \
+			SPAN_NOTICE(" [user] holds up a paper and shows it to [M]. "))
 		examine(M)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
@@ -164,10 +160,10 @@
 				H.lip_style = null
 				H.update_body()
 			else
-				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."),
+				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
 									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
 				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
-					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."),
+					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
 										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
@@ -350,12 +346,12 @@
 		if(istype(P, /obj/item/tool/lighter/zippo))
 			class = "<span class='rose'>"
 
-		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!",
+		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!", \
 		"[class]You hold \the [P] up to \the [src], burning it slowly.")
 
 		spawn(20)
 			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.heat_source)
-				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.",
+				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.", \
 				"[class]You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.")
 
 				if(user.get_inactive_hand() == src)
@@ -918,12 +914,11 @@
 
 /obj/item/paper/incident
 	name = "incident report"
-	icon_state = "paper_uscm_words"
 	var/datum/crime_incident/incident
 
 /obj/item/paper/incident/Initialize()
 	. = ..()
-	var/template = {"\[center\]\[uscm\]\[/center\]
+	var/template = {"\[center\]\[logo\]\[/center\]
 		\[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
 		\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
 		\[barcode\]\[/center\]"}
@@ -938,13 +933,10 @@
 
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
-	icon_state = "paper_uscm_words"
 
-//Passing second parameter and using default constructor can cause blockade on paper initialization until resource is deleted
 /obj/item/paper/fingerprint/Initialize(mapload, list/prints)
-	// To not block initialization construct object like below
-	. = ..(mapload)
-	var/template = {"\[center\]\[uscm\]\[/center\]"}
+	. = ..()
+	var/template = {"\[center\]\[logo\]\[/center\]"}
 
 	var/i = 0
 	for(var/obj/effect/decal/prints/print_set in prints)
@@ -960,57 +952,6 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
-	update_icon()
-
-
-/obj/item/paper/personalrecord
-	name = "personal record"
-	icon_state = "paper_uscm_words"
-
-//Passing second parameter and using default constructor can cause blockade on paper initialization until resource is deleted
-/obj/item/paper/personalrecord/Initialize(mapload, datum/data/record/general_record, datum/data/record/security_record)
-	// To not block initialization construct object like below
-	. = ..(mapload)
-	var/template = {"\[center\]\[uscm\]\[/center\]"}
-
-	template += {"\[center\]\[b\]Personal Record\[/b\]\[/center\]"}
-
-	if(general_record)
-		template += {"
-		Name: [general_record.fields["name"]]\[br\] `
-		ID: [general_record.fields["id"]]\[br\]
-		Sex: [general_record.fields["sex"]]\[br\]
-		Age: [general_record.fields["age"]]\[br\]
-		Rank: [general_record.fields["rank"]]\[br\]
-		Physical Status: [general_record.fields["p_stat"]]\[br\]
-		Mental Status: [general_record.fields["m_stat"]]\[br\]
-		Criminal Status: [general_record.fields["criminal"]]\[br\]
-		"}
-
-		if (security_record)
-			template += {"\[center\]\[b\]Security Data\[/b\]\[/center\]"}
-			template += {"Incidents: [security_record.fields["incident"]]\[br\]"}
-			template += {"\[center\]\[b\]Comments and Logs\[/b\]\[/center\]"}
-
-			if(islist(security_record.fields["comments"]) || length(security_record.fields["comments"]) > 0)
-				for(var/com_i in security_record.fields["comments"])
-					var/comment = security_record.fields["comments"][com_i]
-					// What a wacky and jolly creation
-					// its derived from //? text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
-					var/comment_markup = "\[b\][comment["created_at"]] / [comment["created_by"]["name"]] \[/b\] ([comment["created_by"]["rank"]])\[br\]"
-					if (isnull(comment["deleted_by"]))
-						comment_markup += "[comment["entry"]]"
-					else
-						comment_markup += "\[i\]Comment deleted by [comment["deleted_by"]] at [comment["deleted_at"]]\[/i\]"
-					template += {"[comment_markup]\[br\]\[br\]"}
-			else
-				template += {"\[b\]No comments\[/b\]\[br\]"}
-		else
-			template += {"\[b\]Security Record Lost!\[/b\]\[br\]"}
-
-	info = parsepencode(template, null, null, FALSE)
-	update_icon()
-
 #undef MAX_FIELDS
 
 /obj/item/paper/colonial_grunts

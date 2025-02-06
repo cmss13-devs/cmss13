@@ -26,17 +26,33 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "aae" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aaf" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"aaf" = (
+"aag" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/civres_blue)
+"aah" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/servers)
+"aai" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"aaj" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -39048,7 +39064,7 @@ agi
 agi
 agi
 agi
-aaf
+aah
 agi
 agi
 agi
@@ -47553,7 +47569,7 @@ rqG
 pQs
 pQs
 pQs
-bNE
+aag
 rja
 lMq
 jYK
@@ -49640,7 +49656,7 @@ kPf
 kPf
 kPf
 jXz
-jnU
+aai
 jHz
 oiV
 eSH
@@ -61077,7 +61093,7 @@ jFP
 phz
 sWb
 xLi
-mvp
+aaj
 cer
 kpq
 azZ
@@ -70445,7 +70461,7 @@ cIa
 mVE
 sEK
 cIa
-nVK
+urw
 jii
 apg
 cIa
@@ -72128,7 +72144,7 @@ cIa
 fna
 moQ
 cIa
-urw
+nVK
 jii
 vwX
 cIa
@@ -76865,7 +76881,7 @@ brR
 vDO
 tUs
 mxQ
-pYB
+aae
 tOM
 gbf
 tOM
@@ -81281,7 +81297,7 @@ xeO
 xeO
 xeO
 xeO
-aae
+aaf
 xeO
 xeO
 xeO

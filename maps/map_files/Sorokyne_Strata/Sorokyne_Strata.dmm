@@ -183,6 +183,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aaH" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/asphalt/cement/cement12,
+/area/strata/ag/exterior/paths/north_outpost)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -50578,7 +50582,7 @@ aac
 aac
 aac
 bLj
-hJT
+aaH
 awA
 ayw
 awJ

@@ -3956,10 +3956,6 @@
 "qY" = (
 /turf/open/gm/grass/grassbeach/west,
 /area/whiskey_outpost/outside/lane/one_south)
-"ra" = (
-/obj/structure/machinery/power/apc/almayer/east,
-/turf/closed/wall/r_wall,
-/area/whiskey_outpost/inside/bunker)
 "rb" = (
 /obj/structure/sign/prop1,
 /turf/closed/wall/r_wall,
@@ -9191,10 +9187,6 @@
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
-"RU" = (
-/obj/structure/machinery/cm_vending/clothing/medic,
-/turf/open/floor/asteroidfloor/north,
-/area)
 "RV" = (
 /obj/item/storage/box/m94,
 /turf/open/shuttle/dropship/light_grey_left_to_right,
@@ -20557,7 +20549,7 @@ JT
 CC
 qz
 CE
-RU
+CE
 kA
 lB
 lO
@@ -26029,7 +26021,7 @@ vc
 fj
 xa
 xJ
-ra
+aj
 aj
 fj
 fj

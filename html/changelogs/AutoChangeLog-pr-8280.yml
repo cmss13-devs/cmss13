@@ -1,5 +1,0 @@
-author: "Joe Lampost"
-delete-after: True
-changes:
-  - bugfix: "Makes your preferences for the hunting grounds save now."
-  - bugfix: "Queen mother can no longer see humans inside the hunting grounds."

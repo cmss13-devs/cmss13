@@ -1097,11 +1097,11 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
-/obj/item/device/flashlight/lantern/yaujta,
-/obj/item/device/flashlight/lantern/yaujta,
-/obj/item/device/flashlight/lantern/yaujta,
-/obj/item/device/flashlight/lantern/yaujta,
-/obj/item/device/flashlight/lantern/yaujta,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
 /obj/structure/closet/yautja{
 	pixel_x = 8;
 	pixel_y = 5;
@@ -1210,30 +1210,30 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -9;
 	pixel_y = 10
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 12;
 	pixel_y = -3
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 8;
 	pixel_y = -1
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_y = 3
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -1331,7 +1331,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/obj/item/device/flashlight/lantern/yaujta{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 2;
 	pixel_y = 9
 	},
@@ -1458,7 +1458,7 @@
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
 "eW" = (
-/obj/structure/ladder/yaujta{
+/obj/structure/ladder/yautja{
 	id = "youngbloodprep";
 	height = 2;
 	light_on = 1;
@@ -1647,7 +1647,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "youngbloodlowereast";
 	pixel_y = 23;
 	name = "Lower Deck Shutters";
@@ -1772,7 +1772,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "armory";
 	pixel_y = 23;
 	name = "Armory Lockdown";
@@ -1810,7 +1810,7 @@
 /turf/open/shuttle/dropship/predship/mainfloor/upper/east,
 /area/yautja)
 "fZ" = (
-/obj/structure/ladder/yaujta{
+/obj/structure/ladder/yautja{
 	id = "youngbloodprep";
 	height = 2;
 	light_on = 1;
@@ -2135,7 +2135,7 @@
 /area/yautja)
 "hf" = (
 /obj/effect/hunter/bridge_border/brown/corner,
-/obj/structure/ladder/yaujta{
+/obj/structure/ladder/yautja{
 	id = "predcells";
 	height = 1;
 	icon_state = "ladder10";
@@ -2186,7 +2186,7 @@
 /area/yautja)
 "hs" = (
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/almayer/research/containment/yaujta/alt,
+/turf/open/floor/almayer/research/containment/yautja/alt,
 /area/yautja)
 "hu" = (
 /obj/item/clothing/mask/gas/yautja/hunter{
@@ -3246,7 +3246,7 @@
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
 "lh" = (
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "prisonlockdown";
 	pixel_y = 23;
 	name = "Prison Cell Lockdown";
@@ -3677,7 +3677,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "hangar3";
 	pixel_y = 23;
 	name = "Lower Deck Shutters"
@@ -3692,17 +3692,17 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = 4
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_y = 2
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -4008,7 +4008,7 @@
 	color = "#c0baae";
 	pixel_x = 3
 	},
-/obj/structure/machinery/power/smes/magical/yaujta{
+/obj/structure/machinery/power/smes/magical/yautja{
 	pixel_x = 3;
 	pixel_y = 1
 	},
@@ -4035,14 +4035,14 @@
 	pixel_y = 24;
 	density = 0
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "researchlockdown";
 	pixel_y = 23;
 	name = "Secure Containment Cell Lockdown";
 	pixel_x = -3;
 	req_one_access_txt = "390"
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "researchlockdown2";
 	pixel_y = 23;
 	name = "Research Chamber Lockdown";
@@ -4064,7 +4064,7 @@
 "oe" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/device/flashlight/lantern/yaujta{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 8;
 	pixel_y = -3
 	},
@@ -4163,7 +4163,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/obj/structure/ladder/yaujta{
+/obj/structure/ladder/yautja{
 	id = "youngbloodprep";
 	height = 1;
 	icon_state = "ladder10";
@@ -4219,7 +4219,7 @@
 /area/yautja)
 "oK" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/device/flashlight/lantern/yaujta{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 8;
 	pixel_y = -3
 	},
@@ -4252,7 +4252,7 @@
 	pixel_y = 33;
 	anchored = 1
 	},
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = 7;
 	pixel_y = 19
 	},
@@ -4388,7 +4388,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = -9;
 	pixel_y = 16
 	},
@@ -4463,7 +4463,7 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "pC" = (
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "youngbloodlowerwest";
 	pixel_y = 24;
 	name = "Lower Deck Shutters";
@@ -4655,7 +4655,7 @@
 /area/yautja)
 "qo" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = 2;
 	pixel_y = 14
 	},
@@ -4703,7 +4703,7 @@
 	pixel_x = -3
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/machinery/power/smes/magical/yaujta{
+/obj/structure/machinery/power/smes/magical/yautja{
 	pixel_x = -3;
 	pixel_y = 1
 	},
@@ -4869,7 +4869,7 @@
 	dir = 4;
 	pixel_y = 34
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "hangar2";
 	pixel_y = -18;
 	name = "Lower Deck Shutters";
@@ -5358,7 +5358,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "hangar2";
 	pixel_y = 23;
 	name = "Lower Deck Shutters"
@@ -5558,7 +5558,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "hangar";
 	pixel_y = 23;
 	name = "Hangar Stairs Lockdown"
@@ -5708,30 +5708,30 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -9;
 	pixel_y = 10
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 12;
 	pixel_y = -3
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 8;
 	pixel_y = -1
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_y = 3
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -6745,7 +6745,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "youngbloodlowerwest";
 	pixel_y = 24;
 	name = "Lower Deck Shutters";
@@ -6789,19 +6789,19 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = 3;
 	pixel_y = -1
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -1;
 	pixel_y = 2
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -6;
 	pixel_y = 8
 	},
@@ -7246,7 +7246,7 @@
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
 "zV" = (
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "youngbloodlowereast";
 	pixel_y = 24;
 	name = "Lower Deck Shutters";
@@ -7960,18 +7960,18 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 3
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 10;
 	pixel_y = -1
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -8016,7 +8016,7 @@
 	pixel_x = -1;
 	pixel_y = 13
 	},
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -8031,7 +8031,7 @@
 "Co" = (
 /obj/structure/closet/yautja,
 /obj/item/map/current_map,
-/obj/item/device/flashlight/lantern/yaujta,
+/obj/item/device/flashlight/lantern/yautja,
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "Cs" = (
@@ -8071,7 +8071,7 @@
 "Cv" = (
 /obj/effect/alien/egg/forsaken,
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/almayer/research/containment/yaujta,
+/turf/open/floor/almayer/research/containment/yautja,
 /area/yautja)
 "Cx" = (
 /obj/effect/hunter/bridge_border{
@@ -8308,7 +8308,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Dm" = (
-/obj/structure/ladder/yaujta{
+/obj/structure/ladder/yautja{
 	id = "predcells";
 	height = 2;
 	light_color = "#ff0000";
@@ -8902,14 +8902,14 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "houndcells1";
 	pixel_y = 8;
 	name = "Hound Cells Containment";
 	pixel_x = -20;
 	req_one_access_txt = "390"
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "youngbloodlowercenter";
 	pixel_y = 33;
 	name = "Hound Cells Containment";
@@ -8931,7 +8931,7 @@
 "Fl" = (
 /obj/structure/closet/yautja,
 /obj/item/map/current_map,
-/obj/item/device/flashlight/lantern/yaujta,
+/obj/item/device/flashlight/lantern/yautja,
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "Fn" = (
@@ -9222,7 +9222,7 @@
 	anchored = 1
 	},
 /obj/effect/landmark/clan_spawn,
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = 3;
 	pixel_y = 15
 	},
@@ -9857,7 +9857,7 @@
 /area/yautja)
 "IT" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = -9;
 	pixel_y = 15
 	},
@@ -10038,7 +10038,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "JC" = (
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "hangar";
 	pixel_y = 23;
 	name = "Hangar Stairs Lockdown";
@@ -10265,7 +10265,7 @@
 /area/yautja)
 "Kt" = (
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/almayer/research/containment/yaujta,
+/turf/open/floor/almayer/research/containment/yautja,
 /area/yautja)
 "Ku" = (
 /obj/structure/blocker/invisible_wall,
@@ -10428,7 +10428,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/structure/ladder/yaujta{
+/obj/structure/ladder/yautja{
 	id = "predcells";
 	height = 1;
 	icon_state = "ladder10";
@@ -11088,7 +11088,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "NQ" = (
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "youngbloodlowercenter";
 	pixel_y = -19;
 	name = "Hound Cells Containment";
@@ -11172,11 +11172,11 @@
 /obj/item/storage/backpack/yautja,
 /obj/item/storage/backpack/yautja,
 /obj/item/storage/backpack/yautja,
-/obj/item/device/flashlight/lantern/yaujta,
-/obj/item/device/flashlight/lantern/yaujta,
-/obj/item/device/flashlight/lantern/yaujta,
-/obj/item/device/flashlight/lantern/yaujta,
-/obj/item/device/flashlight/lantern/yaujta,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
 /obj/item/stack/yautja_rope,
 /obj/item/clothing/under/chainshirt/hunter,
 /obj/item/clothing/under/chainshirt/hunter,
@@ -11378,7 +11378,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
 "OS" = (
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "youngbloodlowereast";
 	pixel_y = 24;
 	name = "Lower Deck Shutters";
@@ -11525,7 +11525,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -11877,7 +11877,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/device/flashlight/lantern/yaujta{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -12043,7 +12043,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "QX" = (
-/obj/item/device/flashlight/lantern/yaujta{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 8;
 	pixel_y = -3
 	},
@@ -12459,7 +12459,7 @@
 	pixel_x = 5;
 	pixel_y = -4
 	},
-/obj/item/device/flashlight/lantern/yaujta{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_y = 10;
 	pixel_x = -6
 	},
@@ -12651,7 +12651,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/clan_spawn,
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = -3;
 	pixel_y = -2
 	},
@@ -13336,7 +13336,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "youngbloodlowerwest";
 	pixel_y = 23;
 	name = "Lower Deck Shutters";
@@ -13499,7 +13499,7 @@
 	dir = 4;
 	pixel_y = 34
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "hangar3";
 	pixel_y = -17;
 	name = "Lower Deck Shutters";
@@ -13615,7 +13615,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "armory2";
 	pixel_y = 23;
 	name = "Secure Armory Lockdown";
@@ -13774,7 +13774,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/structure/machinery/door_control/yaujta{
+/obj/structure/machinery/door_control/yautja{
 	id = "houndcells2";
 	pixel_y = 10;
 	name = "Hound Cells Containment";
@@ -13836,7 +13836,7 @@
 /area/yautja)
 "WJ" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/device/flashlight/lantern/yaujta/on{
+/obj/item/device/flashlight/lantern/yautja/on{
 	pixel_x = -6;
 	pixel_y = -1
 	},
@@ -13870,7 +13870,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "WT" = (
-/obj/structure/ladder/yaujta{
+/obj/structure/ladder/yautja{
 	id = "predcells";
 	height = 2;
 	light_color = "#ff0000";
@@ -13976,18 +13976,18 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 3
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 10;
 	pixel_y = -1
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/obj/item/weapon/sword/yaujta{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -14055,19 +14055,19 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = 3;
 	pixel_y = -1
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -1;
 	pixel_y = 2
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/weapon/baseballbat/metal/yaujta{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -6;
 	pixel_y = 8
 	},
@@ -14237,7 +14237,7 @@
 	pixel_x = -8;
 	pixel_y = 11
 	},
-/obj/item/device/flashlight/lantern/yaujta{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 6;
 	pixel_y = 4
 	},
@@ -14546,7 +14546,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/obj/structure/ladder/yaujta{
+/obj/structure/ladder/yautja{
 	id = "youngbloodprep";
 	height = 1;
 	icon_state = "ladder10";

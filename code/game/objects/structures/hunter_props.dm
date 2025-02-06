@@ -183,7 +183,7 @@
 	density = TRUE
 
 /obj/structure/prop/hunter/misc/prop_armor
-	name = "ancient yaujta armor"
+	name = "ancient yautja armor"
 	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
 	icon_state = "hunter_armor_prop"
 	desc = "An ancient suit of armor. It looks incredibly old, yet most likely still functional, although it's fixed to the wall, and purely used as a ceremonial adornment."

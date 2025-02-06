@@ -207,7 +207,7 @@
 		if(!(stat & NOPOWER))
 			icon_state = initial(icon_state) + "0"
 
-/obj/structure/machinery/door_control/yaujta
+/obj/structure/machinery/door_control/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/machinery/door_control/brbutton

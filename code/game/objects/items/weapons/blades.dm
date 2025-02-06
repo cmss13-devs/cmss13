@@ -110,11 +110,11 @@
 	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
 
-/obj/item/weapon/sword/yaujta
+/obj/item/weapon/sword/yautja
 	name = "duelling blade"
-	desc = "A primitive yet deadly sword used in Yaujta rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
-	icon_state = "yaujta_sword"
-	item_state = "yaujta_sword"
+	desc = "A primitive yet deadly sword used in yautja rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
+	icon_state = "yautja_sword"
+	item_state = "yautja_sword"
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica

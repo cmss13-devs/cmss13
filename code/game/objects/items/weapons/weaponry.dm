@@ -92,9 +92,9 @@
 	force = MELEE_FORCE_STRONG
 	w_class = SIZE_MEDIUM
 
-/obj/item/weapon/baseballbat/metal/yaujta
+/obj/item/weapon/baseballbat/metal/yautja
 	name = "duelling club"
-	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young Yaujta honing their combat skills."
+	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
 	icon_state = "hunter_club"
 	item_state = "hunter_club"
 

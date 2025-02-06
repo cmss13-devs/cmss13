@@ -85,7 +85,7 @@
 	resin_construction_allowed = FALSE
 
 /area/almayer/command/securestorage
-	name = "\improper Upper Deck Secure Storage"
+	name = "\improper Computer Lab Secure Storage"
 	icon_state = "corporatespace"
 	fake_zlevel = 1 // upperdeck
 

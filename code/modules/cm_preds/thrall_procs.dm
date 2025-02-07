@@ -204,12 +204,14 @@
 	var/mob/living/carbon/human/thrall = master.hunter_data.thrall
 	if(!thrall)
 		to_chat(master, SPAN_WARNING("You have no thrall to punish!"))
-	else if(thrall.IsStun())
+		return
+	if(thrall.IsStun())
 		to_chat(master, SPAN_WARNING("Your thrall is already stunned!"))
-	else
-		thrall.apply_effect(10, WEAKEN)
-		to_chat(master, SPAN_WARNING("Your bracer beeps, your thrall is punished."))
-		to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
+		return
+
+	thrall.apply_effect(10, WEAKEN)
+	to_chat(master, SPAN_WARNING("Your bracer beeps, your thrall is punished."))
+	to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
 
 /obj/item/clothing/gloves/yautja/hunter/verb/self_destruct_thrall()
 	set name = "Self Destruct Thrall (!)"
@@ -241,15 +243,18 @@
 	if(exploding)
 		return
 
-	if(tgui_alert(thrall, "Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Self Destruct Thrall", list("Yes", "No")) == "Yes")
+	if(tgui_alert(thrall, "Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Self Destruct Thrall", list("Yes", "No")) == "No")
+		return
 
-		var/area/area = get_area(thrall)
-		var/turf/turf = get_turf(thrall)
-		message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [area ? "in [area.name]":""] [ADMIN_JMP(turf)]"))
-		log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [area ? "in [area.name]":""]")
-		message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
-		to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
-		explode(thrall)
-		if(thrall.stat != DEAD)
-			thrall.apply_effect(10, WEAKEN)
-			to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
+	var/area/area = get_area(thrall)
+	var/turf/turf = get_turf(thrall)
+	message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [area ? "in [area.name]":""] [ADMIN_JMP(turf)]"))
+	log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [area ? "in [area.name]":""]")
+	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
+	to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
+	explode(thrall)
+
+	if(thrall.stat == DEAD)
+		return
+	thrall.apply_effect(10, WEAKEN)
+	to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))

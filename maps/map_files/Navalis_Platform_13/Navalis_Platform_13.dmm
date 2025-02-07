@@ -8204,7 +8204,7 @@
 	explo_proof = 1
 	},
 /turf/open/floor/corsat/marked,
-/area/navalis/outdoors/exterior_xeno_only)
+/area/navalis/oob/water)
 "azb" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -15957,6 +15957,9 @@
 	pixel_y = 15
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/navalis/indoors/command/oft_duty_room)
 "fUT" = (
@@ -18828,9 +18831,6 @@
 /area/navalis/indoors/command/office)
 "jhu" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
 /turf/open/floor/prison/cell_stripe,
 /area/navalis/indoors/xeno_growth/residential)
 "jhC" = (
@@ -19942,9 +19942,6 @@
 	pixel_y = 2
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
 /turf/open/floor/prison/cell_stripe,
 /area/navalis/indoors/xeno_growth/residential)
 "kqW" = (
@@ -20824,11 +20821,7 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off{
 	pixel_x = 33
 	},
-/obj/structure/prop/server_equipment/yutani_server/broken{
-	density = 0;
-	layer = 3.5;
-	pixel_y = 10
-	},
+/obj/structure/machinery/power/apc,
 /turf/open/floor/hybrisa/metal/bluemetal1/southeast,
 /area/navalis/indoors/command/server_room)
 "lns" = (
@@ -26450,6 +26443,9 @@
 /obj/item/storage/belt/gun/m4a3/mod88,
 /obj/item/storage/belt/gun/m4a3/mod88,
 /obj/effect/spawner/random/gun/shotgun/midchance,
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "rio" = (
@@ -30229,6 +30225,7 @@
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "vcL" = (
 /obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/machinery/power/apc,
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors/med_sci/pharmacy)
 "vdF" = (
@@ -32551,6 +32548,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/power/apc{
+	dir = 1
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/navalis/indoors/command/command_kitchen)

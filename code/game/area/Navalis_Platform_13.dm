@@ -275,6 +275,7 @@
 	name = "Exterior Walkway"
 	icon_state = "eva"
 	minimap_color = MINIMAP_AREA_MINING
+	requires_power = FALSE
 
 /area/navalis/outdoors/exterior/med_ext
 	name = "Med-Sci Rig - Exterior Walkway"
@@ -298,6 +299,7 @@
 	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|NOT_WEEDABLE
 	base_lighting_alpha = 35
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
+	requires_power = FALSE
 
 /area/navalis/outdoors/exterior_xeno_only/lz1
 	name = "Medical / LZ1 - Exterior Lattice Walkway"
@@ -314,6 +316,7 @@
 	unoviable_timer = FALSE
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	requires_power = FALSE
 
 /area/navalis/indoors/xeno_growth/residential
 	name = "Unidentified Xeno-biological Growth: Residential Entrance Area"

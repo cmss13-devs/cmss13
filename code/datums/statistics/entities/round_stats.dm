@@ -38,6 +38,12 @@
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
 
+	/// A list of all player xenomorph deaths, type /datum/entity/xeno_death
+	var/list/xeno_deaths = list()
+
+	/// A list of all marine deaths, type /datum/entity/marine_death
+	var/list/marine_deaths = list()
+
 	// nanoui data
 	var/list/round_data = list()
 	var/list/death_data = list()
@@ -46,6 +52,8 @@
 	. = ..()
 	QDEL_NULL(current_map)
 	QDEL_LIST(death_stats_list)
+	QDEL_LIST(xeno_deaths)
+	QDEL_LIST(marine_deaths)
 	QDEL_LIST_ASSOC_VAL(castes_evolved)
 	QDEL_LIST_ASSOC_VAL(abilities_used)
 	QDEL_LIST_ASSOC_VAL(final_participants)
@@ -309,15 +317,26 @@
 	track_dead_participant(new_death.faction_name)
 
 /datum/entity/statistic/round/proc/store_caste_evo_data()
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		return
+
 	var/datum/entity/round_caste_picks/caste_picks = SSentity_manager.tables[/datum/entity/round_caste_picks].make_new()
 	caste_picks.castes_picked = castes_evolved
 	caste_picks.save()
+
+/datum/entity/statistic/round/proc/store_spec_kit_data()
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		return
+
+	var/datum/entity/initial_spec_picks/spec_picks = DB_ENTITY(/datum/entity/initial_spec_picks)
+	spec_picks.save()
 
 /datum/entity/statistic/round/proc/log_round_statistics()
 	if(!GLOB.round_stats)
 		return
 
 	store_caste_evo_data()
+	store_spec_kit_data()
 
 	var/total_xenos_created = 0
 	var/total_predators_spawned = 0
@@ -365,13 +384,13 @@
 	var/stats = ""
 	stats += "[SSticker.mode.round_finished]\n"
 	stats += "Game mode: [game_mode]\n"
-	stats += "Map name: [current_map.name]\n"
+	stats += "Map name: [current_map.map_name]\n"
 	stats += "Round time: [duration2text(round_length)]\n"
 	stats += "End round player population: [end_round_player_population]\n"
 
 	stats += "Total xenos spawned: [total_xenos_created]\n"
-	stats += "Total Preds spawned: [total_predators_spawned]\n"
-	stats += "Total Predaliens spawned: [total_predaliens]\n"
+	stats += "Total preds spawned: [total_predators_spawned]\n"
+	stats += "Total predaliens spawned: [total_predaliens]\n"
 	stats += "Total humans spawned: [total_humans_created]\n"
 
 	stats += "Xeno count during hijack: [xeno_count_during_hijack]\n"

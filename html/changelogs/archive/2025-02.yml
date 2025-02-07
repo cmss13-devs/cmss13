@@ -1,0 +1,168 @@
+2025-02-01:
+  Drathek:
+  - bugfix: Fixed predators having unlimited slots and slot exemptions still actually
+      using slots
+  - bugfix: Fixed toggle predator round not working during pre-game
+  - balance: Predator slots are increased from 4 + 1per80 to 6 + 1per80 and clan leaders
+      no longer count for slots
+  - ui: Toggle predator round now uses TGUI alerts
+  - admin: Predator slot adjustment can now go negative (e.g. it can limit it lower
+      than starting count)
+  Joe Lampost:
+  - balance: Upp hunting ground ert memebers now have medical equipment
+  - code_imp: Lays the foundation for more faction warcrys
+  - code_imp: The hunting ground erts now inform preds if nothing spawns and or how
+      many humans or xenos spawned in the ert
+  - bugfix: The hunting grounds no longer gets effected by weather
+  - bugfix: Pred bursts sound
+  - bugfix: Makes your preferences for the hunting grounds save now.
+  - bugfix: Queen mother can no longer see humans inside the hunting grounds.
+  KaiserBlackwood:
+  - rscadd: L23 Assault Rifle based on NSG23, which is a lore-friendly RMC weapon
+  - rscadd: L42A3 Designated Marksman Rifle. RMC alternative to M4RA.
+  - rscadd: 'New ERT role: RMC Corpsman.'
+  - rscadd: 'New presets: RMC Captain and RMC Major.'
+  - rscadd: multitude of RMC-specific attachments.
+  - rscadd: NSG23 Training magazine loaded with rubber bullets.
+  - rscadd: integrated medical visors to all of the RMC helmets.
+  - rscadd: RMC surgical cases that fit 5 surgical items. Available only as part of
+      RMC kit.
+  - rscadd: TWE Variable Zoom Scope. Self-explanatory.
+  - rscadd: RMC Service uniforms.
+  - balance: reworked RMC skills to be more reasonable.
+  - balance: gave RMC Smartgunner Breacher helmet.
+  - balance: RMC Marksman is now equipped with ID-locked NVG goggles.
+  - balance: includes my NSG23 Rework buffs to NSG23's firerate and added recoil.
+  - balance: fixes MRE Rifleman to now carry ammo boxes for the team as well.
+  - balance: moves Breacher to the Engineer category for the ERTs.
+  - bugfix: RMC L5 Bayonet finally has dedicated sprites
+  - imageadd: new overlays and sprites for NSG23 mags.
+  - imageadd: new RMC uniforms.
+  - config: changed RMC ERT config to deploy a medic and slightly changed their xenomorph
+      awareness fluff (added 5% to them being faintly aware of xenos)
+  - spellcheck: changed NSG 23 extended magazine's name to "NSG 23 high-capacity drum
+      magazine".
+  Red-byte3D:
+  - bugfix: You can no longer show paper to non humans such as yautja or xenomorphs.
+  Vandu Jr, Triio:
+  - rscadd: added two new branded Cigarette Vendors, Koorlander and Weyland Yutani
+  - rscadd: added a new cigarette brand to the game, Balaji Imperials from the first
+      movie. Located in the WY vendor
+  - imageadd: added a new WY and Koorlander vendor, as well as sprites for the new
+      Balaji Imperial cigarettes
+  - maptweak: replaced all generic cigarette vendors with either a WY or Koorlander
+      one, areas for people without accounts get free variants of the branded ones
+      (like ERT stations and fax responders).
+  ihatethisengine:
+  - qol: answering an emote such as high-five no longer requires targeting a specific
+      limb.
+2025-02-03:
+  Red-byte3D:
+  - code_imp: Replacces some one letter vars in carbon.dm
+  - spellcheck: Replaces mentions of "belly" with "stomach" in game the tutorial(s).
+  - bugfix: Hellhounds no longer get offered up to the "Join as Hellhound" button
+      if the admin inhabiting it aghosts
+  - bugfix: Evolution button no longer gets deleted when you reset your strain while
+      at full evo.
+  - balance: Queens can now properly gib anyone regardless of their host status.
+  - bugfix: Synthetics and non-humans can no longer get psychic whisper through research.
+  - code_imp: encephalophrasive no longer applies on touch since it lasts forever
+      otherwise
+  - bugfix: Xenos are no longer blocked by people who are fireman carrying
+  - code_imp: Replaces one letter vars
+  VileBeggar:
+  - balance: Predator melee weapons now have click delay for clicking on empty adjacent
+      tiles.
+2025-02-05:
+  Diegoflores31:
+  - bugfix: Queen no longer stomps on dead and resting xenomorphs
+  - bugfix: Uniforms can no longer be removed if you are wearing a suit on top of
+      it
+  FebrezeNinja:
+  - bugfix: Dropship weapon console can see stasis bags in activated stretchers instead
+      of "Empty"
+  Mikrel0712:
+  - bugfix: ASO Jacket icon in the vendor now shows up as the actual jacket instead
+      of a bloodbag
+  Red-byte3D:
+  - bugfix: Fixes boiler speed being stuck if you buy a strain while zoomed in
+  - rscadd: Adds a bunch of career options for the commanding officer whitelist, currently
+      only used for fluff and RP.
+  - bugfix: Queens can no longer leader the dead.
+  - code_imp: Removes one letter vars
+  - bugfix: fixes the healing / aura effect from recovery nodes applying to dead xenos
+      / xenos who died while resting
+  - bugfix: Dead huggers can no longer be used to hug people
+  - bugfix: You can no longer apply the black holocard to people who are still revivable
+  - bugfix: Extuingishers can no longer be filled by harmful chemicals
+  - bugfix: Praetorian's acid ball no longer uses plasma if you cancel / do not use
+      it.
+  - bugfix: Mutated hive hugger icons work again.
+  - code_imp: Removes some one letter vars from smartpack code.
+  - bugfix: Airlock assemblies are no longer unslashable.
+  - bugfix: You can no longer use telekinesis to grab paper from far away.
+  ZephyrTFA, san7890, Nivrak:
+  - rscadd: Chat Reliability Layer
+  - code_imp: TGUI chat messages now track their sequence and will be resent if the
+      client notices a discrepenency
+  efzapa:
+  - maptweak: Replaced the Security Cabinet in the Security Office on LV624 with a
+      regular Cabinet. Almayer Crew Records should no longer spawn.
+  jupyterkat:
+  - bugfix: fixed cas ammo's icons not updating after ammo transfer
+  - bugfix: fixed ot rocket's blast wave only going in one direction
+  realforest2001:
+  - rscadd: Added multifaction support to crew monitors
+  - bugfix: cl not showing up on crew manifest
+  - rscadd: Giving Survivors/Other factions with IFF will let you track them.
+2025-02-06:
+  BartDrown:
+  - rscadd: migrate security records console to tgui
+  - bugfix: highcom cannot change rank in record
+  - bugfix: photo in security records console does not show
+  - bugfix: photo in security records console cannot be updated
+  - bugfix: fingerprint scanner report cannot be viewed if clue detector is not ejected
+      and cleared
+  - qol: add focus and listen on enter in inputs of security console
+  - qol: add cursor pointer to TGUI Button component
+  - refactor: refactor security records console code
+  - code_imp: security records client side sorting and filtering
+  Drathek Nanu:
+  - rscadd: Added unit test to check whether areas needing power have a single APC
+  - rscadd: Unit testing can now be performed during pre-game
+  - bugfix: Fixed various machines that didn't actually use power still marked as
+      requiring power
+  - bugfix: Fixed /obj/structure/closet/secure_closet/freezer/industry not properly
+      using the area's power
+  - maptweak: Fixes, adds & changes areas on all maps to make more sense.
+  - maptweak: Fixes areas that should have APC's getting them, also fixes areas that
+      had more than one APC.
+  - maptweak: Minor bugfixes, and moving some non-significant objects around.
+  Git-Nivrak:
+  - rscadd: Added distant screeches when a new xenomorph evolution becomes available
+  Red-byte3D:
+  - rscadd: You can no longer devolve from being a drone as the last xenomorph alive
+  - bugfix: fixes an issue with CO's not being able to access the techweb, tacmap
+      and get their icon.
+  - bugfix: Synthetic limbs are now named properly
+  efzapa:
+  - rscadd: CMB Fax Responders now start as a Deputy, then rank up to Marshal at 25
+      Hours of Playtime.
+  hry-gh:
+  - bugfix: fixes tgui windows sometimes offsetting weirdly
+  realforest2001:
+  - rscadd: Fax Responders now understand all human languages.
+  - bugfix: CL Radio Key now appropriately gives access to Almayer General Comms.
+  thebleh:
+  - qol: Removed client window side padding to prevent accidental dragging
+  zzzmike:
+  - bugfix: mitigates bug where you can't close or unlock an opened locked locker
+  - qol: message added when someone opens a stasis bag
+2025-02-07:
+  Red-byte3D:
+  - bugfix: fixes being able to infintely dupe weapon attachements
+  realforest2001:
+  - rscadd: Yautja can now track gear relative to their active falcon drone.
+  - rscadd: Yautja can now mark through walls and don't need direct line of sight.
+  zzzmike:
+  - sounddel: the vendor inflation event no longer plays sound

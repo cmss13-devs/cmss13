@@ -1,0 +1,4 @@
+author: "Syndro101"
+delete-after: True
+changes:
+  - bugfix: "fixed a floating pixel on the solid 2x1 medidoor."

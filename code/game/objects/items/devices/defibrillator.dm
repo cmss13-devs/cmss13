@@ -348,6 +348,8 @@
 	fluff_revive_message = "Reset complete"
 
 	sound_charge = 'sound/mecha/powerup.ogg'
+	sound_charge_skill4 = 'sound/mecha/powerup.ogg'
+	sound_charge_skill3 = 'sound/mecha/powerup.ogg'
 	sound_failed = 'sound/items/synth_reset_key/shortbeep.ogg'
 	sound_success = 'sound/items/synth_reset_key/boot_on.ogg'
 	sound_safety_on = 'sound/machines/click.ogg'

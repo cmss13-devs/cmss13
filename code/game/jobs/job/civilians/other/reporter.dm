@@ -11,7 +11,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	selection_class = "job_cl"
 
-	job_options = list(CIVILIAN_VARIANT = "Грж", MILITARY_VARIANT = "Бой")
+	job_options = list(CIVILIAN_VARIANT = "Грж", MILITARY_VARIANT = "Вое")
 	/// If this job is a military variant of the reporter role
 	var/military = FALSE
 

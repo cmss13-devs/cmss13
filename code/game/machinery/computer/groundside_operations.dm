@@ -194,7 +194,7 @@
 				almayer_count++
 				continue
 
-			if(!get_camera_holder_from_target(H))
+			if(!H.get_camera_holder())
 				helmetless_count++
 				continue
 
@@ -319,11 +319,11 @@
 				return
 
 			if(current_squad || show_command_squad)
-				var/mob/cam_target = locate(href_list["cam_target"])
-				var/obj/item/new_holder = get_camera_holder_from_target(cam_target)
+				var/mob/living/carbon/human/cam_target = locate(href_list["cam_target"])
+				var/obj/item/new_holder = cam_target.get_camera_holder()
 				var/obj/structure/machinery/camera/new_cam
 				if(new_holder)
-					new_cam = get_camera_from_holder(new_holder)
+					new_cam = new_holder.get_camera()
 				if(!new_cam || !new_cam.can_use())
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for camera. No camera found for this marine! Tell your squad to put their cameras on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
@@ -419,30 +419,6 @@
 		var/mob/user = user_ref.resolve()
 		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
 			sourcemob.langchat_display_image(user)
-
-/// returns the overwatch camera the human is wearing
-/obj/structure/machinery/computer/groundside_operations/proc/get_camera_from_holder(obj/item/holder)
-	if(istype(holder, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helm = holder
-		return helm.camera
-	if(istype(holder, /obj/item/device/overwatch_camera))
-		var/obj/item/device/overwatch_camera/cam_gear = holder
-		return cam_gear.camera
-
-///returns camera holder
-/obj/structure/machinery/computer/groundside_operations/proc/get_camera_holder_from_target(mob/living/carbon/human/marine)
-	if(current_squad)
-		if(marine && istype(marine))
-			if(istype(marine.head, /obj/item/clothing/head/helmet/marine))
-				var/obj/item/clothing/head/helmet/marine/helm = marine.head
-				return helm
-			var/obj/item/device/overwatch_camera/cam_gear
-			if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera))
-				cam_gear = marine.wear_l_ear
-				return cam_gear
-			if(istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
-				cam_gear = marine.wear_r_ear
-				return cam_gear
 
 /obj/structure/machinery/computer/groundside_operations/upp
 	announcement_title = UPP_COMMAND_ANNOUNCE

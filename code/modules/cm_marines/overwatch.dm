@@ -530,11 +530,11 @@
 			if(!params["target_ref"])
 				return
 			if(current_squad)
-				var/mob/cam_target = locate(params["target_ref"])
-				var/obj/item/new_holder = get_camera_holder_from_target(cam_target)
+				var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+				var/obj/item/new_holder = cam_target.get_camera_holder()
 				var/obj/structure/machinery/camera/new_cam
 				if(new_holder)
-					new_cam = get_camera_from_holder(new_holder)
+					new_cam = new_holder.get_camera()
 				if(user.interactee != src) //if we multitasking
 					user.set_interaction(src)
 					if(cam == new_cam) //if we switch to a console that is already watching this cam
@@ -731,28 +731,27 @@
 		return TRUE
 	return FALSE
 /// returns the overwatch camera the human is wearing
-/obj/structure/machinery/computer/overwatch/proc/get_camera_from_holder(obj/item/holder)
-	if(istype(holder, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helm = holder
-		return helm.camera
-	if(istype(holder, /obj/item/device/overwatch_camera))
-		var/obj/item/device/overwatch_camera/cam_gear = holder
-		return cam_gear.camera
+/obj/item/proc/get_camera()
+	return null
+
+/obj/item/clothing/head/helmet/marine/get_camera()
+	return camera
+
+/obj/item/device/overwatch_camera/get_camera()
+	return camera
 
 ///returns camera holder
-/obj/structure/machinery/computer/overwatch/proc/get_camera_holder_from_target(mob/living/carbon/human/marine)
-	if(current_squad)
-		if(marine && istype(marine))
-			if(istype(marine.head, /obj/item/clothing/head/helmet/marine))
-				var/obj/item/clothing/head/helmet/marine/helm = marine.head
-				return helm
-			var/obj/item/device/overwatch_camera/cam_gear
-			if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera))
-				cam_gear = marine.wear_l_ear
-				return cam_gear
-			if(istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
-				cam_gear = marine.wear_r_ear
-				return cam_gear
+/mob/living/carbon/human/proc/get_camera_holder()
+	if(istype(head, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/helm = head
+		return helm
+	var/obj/item/device/overwatch_camera/cam_gear
+	if(istype(wear_l_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_l_ear
+		return cam_gear
+	if(istype(wear_r_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_r_ear
+		return cam_gear
 
 // Alerts all groundside marines about the incoming OB
 /obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)

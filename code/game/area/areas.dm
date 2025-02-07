@@ -89,6 +89,10 @@
 	/// How long this area should be un-oviable
 	var/unoviable_timer = 25 MINUTES
 
+	/// How many potentially open turfs can exist in this area
+	var/openable_turf_count = 0
+	/// How much destroyable resin currently exists in this area
+	var/current_resin_count = 0
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -119,6 +123,17 @@
 		is_resin_allowed = FALSE
 		log_mapping("[src] has AREA_UNWEEDABLE flag but has is_resin_allowed as true! Forcing is_resin_allowed false...")
 
+	if(!(flags_area & AREA_UNWEEDABLE))
+		for(var/turf/current in src)
+			if(!current.density)
+				openable_turf_count++
+				continue
+			if(istype(current, /turf/closed/wall))
+				var/turf/closed/wall/current_wall = current
+				if(!(current_wall.turf_flags & TURF_HULL))
+					openable_turf_count++
+					continue
+
 /area/proc/initialize_power(override_power)
 	if(requires_power)
 		if(override_power) //Reset everything if you want to override.
@@ -134,7 +149,7 @@
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
-	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src) && weather_enabled)
 		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 

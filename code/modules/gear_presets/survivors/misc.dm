@@ -176,9 +176,12 @@ Everything below isn't used or out of place.
 	name = "Survivor - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
+	rank = JOB_WY_GOON
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL)
 	minimap_icon = "goon_standard"
@@ -204,7 +207,6 @@ Everything below isn't used or out of place.
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/no_lock, WEAR_J_STORE)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 
 
@@ -260,14 +262,14 @@ Everything below isn't used or out of place.
 
 // New Varadero CO Survivor.
 /datum/equipment_preset/survivor/new_varadero/commander
-	name = "Survivor - USASF Commander"
-	assignment = "USASF Commander"
+	name = "Survivor - LACN Commander"
+	assignment = "LACN Commander"
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "xo"
 	minimap_background = "background_shipside"
 	idtype = /obj/item/card/id/gold
-	role_comm_title = "USASF CDR"
+	role_comm_title = "LACN CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -295,7 +297,7 @@ Everything below isn't used or out of place.
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_IN_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/fountain(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain(new_human), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911(new_human), WEAR_WAIST)

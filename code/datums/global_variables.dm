@@ -49,7 +49,7 @@
 				<tr>
 					<td>Global Variables</td>
 					<td width='50%'>
-						<div align='center'><a href='?_src_=glob_vars;refresh=1'>Refresh</a></div>
+						<div align='center'><a href='byond://?_src_=glob_vars;refresh=1'>Refresh</a></div>
 					</td>
 				</tr>
 			</table></div>
@@ -66,7 +66,7 @@
 					</td>
 
 					<td width='80%'>
-						<input type='text' id='filter' name='filter_text' value='' onkeyup='updateSearch()' style='width:100%;'>
+						<input type='search' id='filter' name='filter_text' value='' onkeyup='updateSearch()' onblur='updateSearch()' style='width:100%;'>
 					</td>
 				</tr>
 			</table>
@@ -122,7 +122,7 @@
 	if(!(admin_holder.rights & R_DEBUG))
 		return html
 
-	html += "<li style='backgroundColor:white'><a href='?_src_=glob_vars;varnameedit=[name]'>E</a><a href='?_src_=glob_vars;varnamechange=[name]'>C</a> "
+	html += "<li style='backgroundColor:white'><a href='byond://?_src_=glob_vars;varnameedit=[name]'>E</a><a href='byond://?_src_=glob_vars;varnamechange=[name]'>C</a> "
 
 	if (isnull(value))
 		html += "[name] = <span class='value'>null</span>"
@@ -146,11 +146,11 @@
 
 	else if (istype(value, /datum))
 		var/datum/D = value
-		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
+		html += "<a href='byond://?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
 
 	else if (istype(value, /client))
 		var/client/C = value
-		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
+		html += "<a href='byond://?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
 
 	else if (istype(value, /list))
 		var/list/L = value

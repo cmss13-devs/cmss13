@@ -377,3 +377,169 @@
   Stakeyng:
   - rscadd: Synth reset key fits in construction belt, tool webbing, and engineer
       kit pouch
+2024-12-25:
+  Drathek:
+  - bugfix: Various decals are now properly anchored
+  - bugfix: Fixed xenos being able to interact with cards (at least without thumbs)
+  - bugfix: Fixed m56d being unable to be reloaded in gun form
+  - bugfix: Fixed xenos being able to mousedrop mob/items into closets/crates/lockers
+  - rscdel: Removed a to_chat for failing to toggle_open verb
+  - bugfix: Fixed pounce and grab methods to pull something anchored (e.g. ovi queen)
+  Nomoresolvalou, Thwomper:
+  - rscadd: Added staff and longaxe weapons to the elite yautja vendor.
+  - imageadd: Adds onmob sprites for the longaxe.
+  - spellcheck: Changes hunter staff description to be more in line with other weapons.
+  dadlips:
+  - maptweak: Replaced all guest pass terminals
+  realforest2001:
+  - bugfix: Yautja can now correctly un-mark dead people.
+  sg2002:
+  - bugfix: players with no squad preference get correctly put into random squads
+2024-12-27:
+  Drathek:
+  - bugfix: Fixed locking satchel unlocked overlay not appearing on top
+  ihatethisengine:
+  - bugfix: Fixed some issues with overwatch.
+2024-12-28:
+  HIDgamer:
+  - rscadd: Added CPR Buddy 9000 to the experimental vendor.
+  VileBeggar:
+  - rscadd: Weapons now have custom crosshairs. They're optional and can be turned
+      off in the preferences menu.
+  Zenith, mikoka wei, Drathek, Nanu, Cuberound, Almings, Crowford, Blundir, dimdimich1996:
+  - rscadd: added a new map LV_759_Hybrisa_Prospera.
+  - rscadd: Many new varied survivor types unique to Hybrisa - with many new clothing
+      types & sprites mostly done by wei
+  - rscadd: Massive amount of new props with new sprites (some edits of current props,
+      credits to the original artists).
+  - rscadd: Unique "Derelict-Ship" or "Engineer" tile-set by "mikoka wei" (amazing
+      stuff).
+  - rscadd: Destructible vehicles.
+  - rscadd: Unique "Electric-Fence" system around the map with button to turn on/off.
+  - rscadd: New drivable "Box-Vans" with unique interior & sounds.
+  - rscadd: New gun - FN P90, with two versions, the regular colony version and a
+      TWE version, sprites originally from TGMC and edited by "Almings".
+  - rscadd: Massive amount of new sounds for atmosphere.
+  - rscadd: Two new weathers "Light & Very light" unique rain weather, and rain sounds.
+  - rscadd: '"Phoneboxes" you can hide inside, like a locker.'
+  - rscadd: Hospital roller beds, with unique variants that can drop a corpse (non-foldable).
+  - rscadd: New "Rat" simple-mob type with unique sprites.
+  - rscadd: Urban camo rework and fix, added all the missing sprites and proper functionality,
+      resprites all the urban armor and clothing
+  - bugfix: many guns having no mob suit storage sprite if there is no mag in a gun
+2024-12-29:
+  Blundir:
+  - bugfix: fixed santa hat missing inhands
+  - bugfix: santa hat hiding all hair instead of just top hair
+  Drathek:
+  - rscadd: Weapons now display their map camo in vendors
+  GoldenDarkness55:
+  - rscadd: Slowing neuro shrapnel effect to OT achieved by adding 30 neurotoxin plasma
+      to the beaker with iron. 0.8s slow per shard hit up to 6s max
+  - rscadd: Hornet (holo) shrapnel effect to OT achieved by adding 10 sulfuric acid
+      to the beaker with iron
+  - balance: Reduced the divide on incendiary OT shards from 4 to 2
+  - balance: Raised holo stacks per hornet shrapnel hit from 10 to 20.
+  IroquoisLou:
+  - qol: Changed USASF CO's to LACN CO.
+  JackieEstegado:
+  - bugfix: Mobs no longer get unnested when the wall that they are on gets upgraded.
+  - bugfix: Mobs now regain their original pixel offset upon being unnested even when
+      jittering.
+  Joe Lampost:
+  - bugfix: Fixes the escape from the hunting grounds
+  Lansaen512:
+  - spellcheck: Fixed some typos in the clf distress beacon message.
+  Lukas-Seltz:
+  - bugfix: Fixed the CE vendor to be able to vend out what you should be able to.
+  NessiePendragon:
+  - rscadd: Added service jacket to CO vendor.
+  realforest2001:
+  - rscadd: Added a speed penalty to incomplete Yautja field surgery.
+  - bugfix: Fixes giant lizard manual pounce keys.
+  - bugfix: Giant Lizards can now see in the dark when controlled by a player.
+  thevandie:
+  - rscadd: Grey and Beige trenchcoats to the CL vendor
+  - rscadd: Brown and Black fedoras to the CL vendor
+2024-12-30:
+  Blundir:
+  - bugfix: phone missing inhand sprites
+  Blundir, medjic, 3raz3rr, Crowford:
+  - rscadd: hugger and larva tanks now actually have an alive hugger and a dead larva
+      inside them on destroy
+  - rscadd: 'yautja: beds, chairs, microwaves, soda/chem/booze dispensers, sleeper/scanner/autodoc,
+      freezer, refrigerator, air tank, computer, vendors, gibber, food grinder, hugger
+      tank, closet, water/fuel tanks, juicer assets and objects'
+  - rscadd: unique yautja full set of normal tools, replaced tools in yautja toolbelt
+      with them
+  - rscadd: yautja windows
+  - rscadd: yautja new statues
+  - rscadd: decorative xeno skulls for yautja locations
+  - bugfix: preds not being able to use chem master and chem dispenser on their ship
+  - bugfix: preds not having access to vendors on their ship
+  - rscdel: unused yautja ship map
+  - mapadd: added tons of new assets on LV624, New Varadero, Trijent Dam, Yautja ship
+  harryob:
+  - rscadd: the preview dummy now correctly wears gear chosen in the gear select menu
+  realforest2001:
+  - imageadd: Updated all the biosuit sprites to use the modern version rather than
+      legacy.
+  - imageadd: Updated the biosuit locker sprites to use a consistent base scheme.
+  - rscdel: Removed Janitor biosuits.
+  - maptweak: Updated a couple places using the wrong biosuit lockers, and replaced
+      janitor ones.
+  - code_imp: Changed some parts of disease code so it respects armor_bio more.
+  - rscadd: Makes CBRN and Biosuit hoods protect from gas, as would be expected.
+  - balance: Biosuit hood armor_bio increased to match the biosuit itself.
+2024-12-31:
+  BasilHerb:
+  - rscadd: Added a new SG mode, 'Frontline mode', which uses Alt IFF for the USCM,
+      PMC & RMC SGs.
+  - rscadd: Ability to switch ammo types with IFF off.
+  - rscadd: Added balloon alerts to all SG toggles (the floaty text)
+  - rscadd: AP bullets on all SG variants (M56D, M56T, etc.) should now be yellow,
+      just like on the M56B for consistency.
+  - rscadd: SG now fires blue tracers when not on frontline mode (variants for AP
+      and precision), along with blue muzzle flash, etc. as a visual cue for when
+      frontline mode is off/on.
+  - rscadd: sprites both for when frontline mode is enabled and disabled.
+  - balance: SG on frontline mode adjusted to have moderately weaker than Mk2 DPS,
+      and 7 tiles of effective range.
+  - code_imp: Added Alt IFF component
+  - soundadd: Added Alt IFF sound
+  - refactor: Refactored datum/action to have cooldown capabilities on base type
+  - bugfix: Fixed listen_signal never getting unregistered for actions
+  Blundir:
+  - bugfix: fixed normal juicer having yautja skin
+  Drathek:
+  - bugfix: Fix cursor getting stuck on when disabling custom cursors
+  - bugfix: Fix gun cursor getting stuck on when unwielding immediately after shooting
+  - bugfix: Fix xeno action queue (not used) not respecting custom cursor preference
+  - bugfix: Fix railgun (not used) not respecting custom cursor setting
+  - bugfix: Fix railgun (not used) not unregistering a signal correctly
+  - bugfix: Fix custom cursor resetting when vaulting over barricades
+  - refactor: Refactored gun getters for custom icons to vars and some gun var ordering
+  Drathek Nanu:
+  - rscadd: Added maplint to check whether pipes run under constructed walls
+  Geevies:
+  - rscadd: Added some text feedback to the RPG buddy loading system for when it isn't
+      wielded or if it's already loaded
+  - bugfix: Fixed the RPG buddy loading system being able to load invalid magazines
+      into the launcher
+  Laser9:
+  - maptweak: Replaced all forklift ID names with generic names.
+  QuickLode:
+  - rscadd: Adds the Ship Operations Synthetic. This ship-oriented Synthetic assists
+      the USS Almayer with various tasks and improves the atmosphere of the vessel,
+      they maintain the entire ship and act as its pilot. This role is enabled if
+      there is no Survivor Synthetic present. Huge thanks to Drathek for roleauthority
+      code!
+  - rscadd: Changes role selection color of WJ to be slightly darker to differentiate
+      from Synthetics.
+  - code_imp: restructured lobby role selection menu to accomadate new role
+  SASoperative:
+  - code_imp: Updated item names, icons, and descriptions
+  - imageadd: Replaces old donator sprites
+  - imagedel: Deletes unused old donator sprites
+  ihatethisengine:
+  - bugfix: fixed another bug with overwatch.

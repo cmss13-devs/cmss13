@@ -9,7 +9,7 @@
 	)
 
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
+
 	flags_item = ITEM_PREDATOR
 	flags_inventory = CANTSTRIP
 	flags_cold_protection = BODY_FLAG_HANDS
@@ -631,6 +631,7 @@
 		return
 
 	var/mob/living/carbon/human/hunter = caller
+	var/atom/hunter_eye = hunter.client.eye
 
 	var/dead_on_planet = 0
 	var/dead_on_almayer = 0
@@ -658,12 +659,12 @@
 			gear_on_almayer++
 		else if(is_ground_level(loc.z))
 			gear_on_planet++
-		if(hunter.z == loc.z)
-			var/dist = get_dist(hunter, loc)
+		if(hunter_eye.z == loc.z)
+			var/dist = get_dist(hunter_eye, loc)
 			if(dist < closest)
 				closest = dist
 				closest_item = tracked_item
-				direction = Get_Compass_Dir(hunter, loc)
+				direction = Get_Compass_Dir(hunter_eye, loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/dead_yautja as anything in GLOB.yautja_mob_list)
 		if(dead_yautja.stat != DEAD)
@@ -677,11 +678,11 @@
 			dead_on_almayer++
 		else if(is_ground_level(dead_yautja.z))
 			dead_on_planet++
-		if(hunter.z == dead_yautja.z)
-			var/dist = get_dist(hunter, dead_yautja)
+		if(hunter_eye.z == dead_yautja.z)
+			var/dist = get_dist(hunter_eye, dead_yautja)
 			if(dist < closest)
 				closest = dist
-				direction = Get_Compass_Dir(hunter, dead_yautja)
+				direction = Get_Compass_Dir(hunter_eye, dead_yautja)
 				areaLoc = loc
 
 	var/output = FALSE
@@ -853,6 +854,8 @@
 			return
 		caller.put_in_active_hand(caster)
 		caster_deployed = TRUE
+		if(caller.client?.prefs.custom_cursors)
+			caller.client?.mouse_pointer_icon = 'icons/effects/mouse_pointer/plasma_caster_mouse.dmi'
 		to_chat(caller, SPAN_NOTICE("You activate your plasma caster. It is in [caster.mode] mode."))
 		playsound(src, 'sound/weapons/pred_plasmacaster_on.ogg', 15, TRUE)
 
@@ -879,7 +882,7 @@
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
-	message_admins(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
+	message_admins(FONT_SIZE_XL("<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
 	T = get_turf(src)

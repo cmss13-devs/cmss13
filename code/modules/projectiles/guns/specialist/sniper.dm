@@ -5,15 +5,16 @@
 //Because this parent type did not exist
 //Note that this means that snipers will have a slowdown of 3, due to the scope
 /obj/item/weapon/gun/rifle/sniper
-	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_SLOW
-
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
+
+	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
+	wield_delay = WIELD_DELAY_SLOW
 
 	var/has_aimed_shot = TRUE
 	var/aiming_time = 1.25 SECONDS
@@ -30,7 +31,6 @@
 	var/enable_aimed_shot_icon_alt = FALSE
 	var/sniper_lockon_icon_max = "sniper_lockon_intense"
 	var/sniper_beam_icon_max = "laser_beam_intense"
-
 
 /obj/item/weapon/gun/rifle/sniper/get_examine_text(mob/user)
 	. = ..()
@@ -101,7 +101,7 @@
 		return
 
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
-	if(world.time < sniper_rifle.aimed_shot_cooldown)
+	if(world.time < sniper_rifle.aimed_shot_cooldown || !sniper_rifle.able_to_fire(human))
 		return
 
 	if(!check_can_use(target))
@@ -183,7 +183,7 @@
 	target.overlays -= lockon_direction_icon
 	qdel(laser_beam)
 
-	if(!check_can_use(target, TRUE) || target.is_dead())
+	if(!check_can_use(target, TRUE) || target.is_dead() || !sniper_rifle.able_to_fire(human))
 		return
 
 	var/obj/projectile/aimed_proj = sniper_rifle.in_chamber

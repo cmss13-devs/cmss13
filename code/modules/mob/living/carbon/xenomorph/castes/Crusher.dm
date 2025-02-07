@@ -176,6 +176,15 @@
 
 			. =  TRUE
 
+	else if(istype(target, /obj/structure/fence/electrified))
+		var/obj/structure/fence/electrified/fence = target
+		if (fence.cut)
+			. = FALSE
+		else
+			src.visible_message(SPAN_DANGER("[src] smashes into [fence]!"))
+			fence.cut_grille()
+			. = TRUE
+
 	// Anything else?
 	else
 		if (isobj(target))
@@ -237,7 +246,7 @@
 
 		cdr_amount += 5
 
-		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"), \
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"),
 			SPAN_DANGER("You slash [H]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
 		bound_xeno.flick_attack_overlay(H, "slash")

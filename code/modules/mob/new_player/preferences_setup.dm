@@ -202,6 +202,14 @@
 	preview_dummy.update_hair()
 	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
 		character_trait.unapply_trait(preview_dummy)
+
+	for(var/gear_item in gear)
+		var/datum/gear/gear = GLOB.gear_datums_by_name[gear_item]
+		var/obj/item/item = new gear.path()
+
+		if(!preview_dummy.equip_to_appropriate_slot(item))
+			qdel(item)
+
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
 	// If the dummy was equipped with marine armor.
@@ -356,7 +364,7 @@
 		if(JOB_CO_SURVIVOR)
 			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))
 				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
-			return /datum/equipment_preset/uscm_ship/commander
+			return /datum/equipment_preset/uscm_co
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]

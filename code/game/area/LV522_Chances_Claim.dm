@@ -24,6 +24,7 @@
 /area/lv522/oob
 	name = "LV522 - Out Of Bounds"
 	icon_state = "unknown"
+	requires_power = FALSE
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
@@ -186,6 +187,7 @@
 	name = "LV522 - Outdoor Toilets"
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ2
+	requires_power = FALSE
 
 /area/lv522/indoors/lone_buildings/engineering
 	name = "Emergency Engineering"
@@ -206,8 +208,19 @@
 
 /area/lv522/indoors/lone_buildings/storage_blocks
 	name = "Outdoor Storage"
-	icon_state = "blue"
 	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
+
+/area/lv522/indoors/lone_buildings/storage_blocks/south
+	name = "Southern Outdoor Storage"
+	icon_state = "red"
+
+/area/lv522/indoors/lone_buildings/storage_blocks/north_west
+	name = "Northwestern Outdoor Storage"
+	icon_state = "blue"
+
+/area/lv522/indoors/lone_buildings/storage_blocks/east
+	name = "Eastern Outdoor Storage"
+	icon_state = "yellow"
 
 /area/lv522/indoors/lone_buildings/chunk
 	name = "Chunk 'N Dump"

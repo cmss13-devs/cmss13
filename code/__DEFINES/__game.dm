@@ -32,6 +32,7 @@
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 #define MAP_RUNTIME "USS Runtime"
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
+#define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 
@@ -147,7 +148,7 @@
 #define PLAY_SYNTH (1<<5)
 #define PLAY_MISC (1<<6)
 
-//toggles_hunting_grounds
+//toggles_ert_pred
 #define PLAY_MERC (1<<0)
 #define PLAY_TWE (1<<1)
 #define PLAY_UPP (1<<2)
@@ -257,7 +258,7 @@
 
 /// Frequency stuff only works with 45kbps oggs.
 #define GET_RANDOM_FREQ rand(32000, 55000)
-
+#define GET_RANDOM_FREQ_MINOR rand(42000, 48000)
 
 // Ceilings
 // Ceiling types

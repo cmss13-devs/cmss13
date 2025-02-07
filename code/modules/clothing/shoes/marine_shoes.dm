@@ -144,7 +144,7 @@
 /obj/item/clothing/shoes/veteran/pmc/commando
 	name = "\improper PMC commando boots"
 	desc = "A pair of heavily armored, acid-resistant boots."
-	permeability_coefficient = 0.01
+
 	armor_bio = CLOTHING_ARMOR_HIGH
 	siemens_coefficient = 0.2
 	unacidable = TRUE
@@ -252,3 +252,8 @@
 
 /obj/item/clothing/shoes/royal_marine/knife
 	spawn_item_type = /obj/item/attachable/bayonet/rmc
+
+/obj/item/clothing/shoes/dress/rmc
+	name = "\improper RMC dress shoes"
+	desc = "Polished fancy dress shoes. You can see your reflection in them."
+	icon_state = "rmc_laceups"

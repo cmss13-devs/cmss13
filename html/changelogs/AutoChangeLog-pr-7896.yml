@@ -1,4 +1,0 @@
-author: "sg2002"
-delete-after: True
-changes:
-  - bugfix: "players with no squad preference get correctly put into random squads"

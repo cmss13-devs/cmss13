@@ -3,7 +3,7 @@
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	climbable = TRUE
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
 	var/shorthand
@@ -467,7 +467,7 @@
 //================= FUEL EQUIPMENT =================//
 
 /obj/structure/dropship_equipment/fuel
-	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_FUEL_EQP)
 
 
@@ -632,7 +632,7 @@
 /// CAS Dropship weaponry, used for aerial bombardment
 /obj/structure/dropship_equipment/weapon
 	name = "abstract weapon"
-	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_WEAPON)
 	bound_width = 32
 	bound_height = 64
@@ -841,7 +841,7 @@
 	name = "\improper LAG-14 Internal Sentry Launcher"
 	icon_state = "launch_bay"
 	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter. Accepts the A/C-49-P Air Deployable Sentry as ammunition."
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
 	bound_height = 32
@@ -1083,8 +1083,15 @@
 		target_data["ref"] = stretcher_ref
 
 		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
+		var/obj/structure/closet/bodybag/cryobag = stretcher.buckled_bodybag
+		if(!occupant && cryobag)
+			occupant = locate(/mob/living/carbon/human) in cryobag
+			target_data["occupant"] = "(Empty stasis bag)"
 		if(occupant)
-			target_data["occupant"] = occupant.name
+			if(cryobag)
+				target_data["occupant"] = "(Stasis bag) " + occupant.name
+			else
+				target_data["occupant"] = occupant.name
 			target_data["time_of_death"] = occupant.tod
 			target_data["damage"] = list(
 				"hp" = occupant.health,
@@ -1105,7 +1112,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("medevac_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
@@ -1306,7 +1313,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("fulton_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 

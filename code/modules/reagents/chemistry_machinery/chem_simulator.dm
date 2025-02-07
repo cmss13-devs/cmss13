@@ -610,7 +610,7 @@
 	var/datum/reagent/D = GLOB.chemical_reagents_list[id]
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	report.name = "Simulation result for [D.id]"
-	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.id]</H2></center>"
+	report.info += "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.id]</H2></center>"
 	report.generate(D)
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[GLOB.game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)

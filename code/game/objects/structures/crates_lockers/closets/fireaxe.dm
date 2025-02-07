@@ -50,7 +50,7 @@
 					src.locked = 0
 					src.localopened = 1
 			update_icon()
-		return
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	if (istype(O, /obj/item/weapon/twohanded/fireaxe) && src.localopened)
 		if(!fireaxe)
 			if(O.flags_item & WIELDED)

@@ -790,6 +790,7 @@
 	anchored = TRUE
 	density = FALSE
 	layer = BELOW_TABLE_LAYER
+	needs_power = FALSE
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 20

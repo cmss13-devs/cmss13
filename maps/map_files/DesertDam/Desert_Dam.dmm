@@ -884,7 +884,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/tile,
+/turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/exterior/valley/valley_hydro)
 "adI" = (
 /turf/open/desert/rock/deep,

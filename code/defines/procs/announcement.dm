@@ -155,7 +155,7 @@
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
 	shipwide_ai_announcement(message, title, sound_to_play, null, ARES_LOG_MAIN, FALSE)
 
-/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, datum/announcer/announcer = TTS_DEFAULT_ANNOUNCER)	// SS220 EDIT - TTS)
+/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, datum/announcer/announcer = TTS_DEFAULT_ANNOUNCER) // SS220 EDIT - TTS)
 	if(!message || !title || !targets) //Shouldn't happen
 		return
 	for(var/mob/target in targets)
@@ -169,7 +169,7 @@
 			playsound_client(target.client, sound_to_play, target, vol = 45)
 
 		// SS220 ADD START - TTS
-		if(isobserver(T) && !(T.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+		if(isobserver(target) && !(target.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
 			continue
-		announcer.Message(message = message, receivers = list(T))
+		announcer.Message(message = message, receivers = list(target))
 		// SS220 ADD END - TTS

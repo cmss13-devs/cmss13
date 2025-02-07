@@ -36,6 +36,7 @@
 	ceiling = CEILING_NONE
 	requires_power = FALSE
 	base_lighting_alpha = 20
+	minimap_color = MINIMAP_WATER
 
 /area/navalis/oob/water/mid
 	name = "Water - Middle"
@@ -57,6 +58,7 @@
 	icon_state = "unknown"
 	ceiling = CEILING_NONE
 	unoviable_timer = FALSE
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/navalis/outdoors/charon/surface_deck
 	name = "PSV Charon - Forecastle Deck"
@@ -77,6 +79,7 @@
 	name = "Medi-Sci Rig - Indoors"
 	icon_state = "medbay"
 	ceiling = CEILING_METAL
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/navalis/indoors/med_sci/foyer
 	name = "Medi-Sci Rig - Foyer"
@@ -125,6 +128,7 @@
 /area/navalis/indoors/command
 	name = "Command Rig - Indoors"
 	icon_state = "bridge"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/navalis/indoors/command/aft_hallway
 	name = "Command Rig - Aft-Hallway"
@@ -179,6 +183,7 @@
 /area/navalis/indoors/logistic
 	name = "Logistic Rig - Indoors"
 	icon_state = "quartstorage"
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 
 /area/navalis/indoors/logistic/Port_hallway
 	name = "Logistic Rig - Port-Hallway"
@@ -208,6 +213,7 @@
 	name = "Industrial Rig - Indoors"
 	icon_state = "mining_production"
 	unoviable_timer = FALSE
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/navalis/indoors/industrial/accessway
 	name = "Industrial Rig - Sector-A: Accessway"
@@ -228,6 +234,7 @@
 	icon_state = "fitness"
 	ceiling = CEILING_REINFORCED_METAL
 	unoviable_timer = FALSE
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/navalis/indoors/residential/accessway
 	name = "Residential Rig - Aft-Accessway"
@@ -267,6 +274,7 @@
 /area/navalis/outdoors/exterior
 	name = "Exterior Walkway"
 	icon_state = "eva"
+	minimap_color = MINIMAP_AREA_MINING
 
 /area/navalis/outdoors/exterior/med_ext
 	name = "Med-Sci Rig - Exterior Walkway"
@@ -289,6 +297,7 @@
 	icon_state = "red2"
 	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|NOT_WEEDABLE
 	base_lighting_alpha = 35
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 
 /area/navalis/outdoors/exterior_xeno_only/lz1
 	name = "Medical / LZ1 - Exterior Lattice Walkway"
@@ -304,6 +313,7 @@
 	icon_state = "eta_xeno"
 	unoviable_timer = FALSE
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_HYBRISACAVES
 
 /area/navalis/indoors/xeno_growth/residential
 	name = "Unidentified Xeno-biological Growth: Residential Entrance Area"

@@ -29,35 +29,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	category = "Eyewear"
 	slot = WEAR_EYES
 
-/datum/gear/eyewear/aviators
-	display_name = "Aviator shades"
-	path = /obj/item/clothing/glasses/sunglasses/aviator
-
-/datum/gear/eyewear/eyepatch
-	display_name = "Eyepatch, black"
-	path = /obj/item/clothing/glasses/eyepatch
-
-/datum/gear/eyewear/eyepatch/white
-	display_name = "Eyepatch, white"
-	path = /obj/item/clothing/glasses/eyepatch/white
-
-/datum/gear/eyewear/eyepatch/green
-	display_name = "Eyepatch, green"
-	path = /obj/item/clothing/glasses/eyepatch/green
-
-/datum/gear/eyewear/rpg_glasses
-	display_name = "Marine RPG Glasses"
-	path = /obj/item/clothing/glasses/regular
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/eyewear/prescription_glasses
-	display_name = "Prescription Glasses"
-	path = /obj/item/clothing/glasses/regular/hipster
-
-/datum/gear/eyewear/hippie_glasses
-	display_name = "Rounded Prescription Glasses"
-	path = /obj/item/clothing/glasses/regular/hippie
-
 /datum/gear/eyewear/goggles
 	display_name = "Ballistic goggles"
 	path = /obj/item/clothing/glasses/mgoggles
@@ -106,6 +77,35 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Polarized Ballistic goggles, M1A1 orange"
 	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_orange
 
+/datum/gear/eyewear/eyepatch
+	display_name = "Eyepatch, black"
+	path = /obj/item/clothing/glasses/eyepatch
+
+/datum/gear/eyewear/eyepatch/white
+	display_name = "Eyepatch, white"
+	path = /obj/item/clothing/glasses/eyepatch/white
+
+/datum/gear/eyewear/eyepatch/green
+	display_name = "Eyepatch, green"
+	path = /obj/item/clothing/glasses/eyepatch/green
+
+/datum/gear/eyewear/rpg_glasses
+	display_name = "Marine RPG Glasses"
+	path = /obj/item/clothing/glasses/regular
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/eyewear/prescription_glasses
+	display_name = "Prescription Glasses"
+	path = /obj/item/clothing/glasses/regular/hipster
+
+/datum/gear/eyewear/hippie_glasses
+	display_name = "Rounded Prescription Glasses"
+	path = /obj/item/clothing/glasses/regular/hippie
+
+/datum/gear/eyewear/aviators
+	display_name = "Aviator shades"
+	path = /obj/item/clothing/glasses/sunglasses/aviator
+
 /datum/gear/eyewear/new_bimex/black
 	display_name = "BiMex tactical shades, black"
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/black
@@ -121,18 +121,13 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
 	cost = 4
 
-/datum/gear/eyewear/bimex_shades
-	display_name = "BiMex personal shades"
-	path = /obj/item/clothing/glasses/sunglasses/big
-	cost = 4
+/datum/gear/eyewear/prescription_sunglasses
+	display_name = "Prescription sunglasses"
+	path = /obj/item/clothing/glasses/sunglasses/prescription
 
 /datum/gear/eyewear/sunglasses
 	display_name = "Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses
-
-/datum/gear/eyewear/prescription_sunglasses
-	display_name = "Prescription sunglasses"
-	path = /obj/item/clothing/glasses/sunglasses/prescription
 
 /datum/gear/mask
 	category = "Masks and scarves"
@@ -1158,14 +1153,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/patch_uscm/falcon_squad_foxtrot
 	display_name = "Falling Falcons shoulder patch, Foxtrot"
 	path = /obj/item/clothing/accessory/patch/falcon/squad/foxtrot
-
-/datum/gear/misc/patch_uscm/uapatch
-	display_name = "United Americas shoulder patch"
-	path = /obj/item/clothing/accessory/patch/ua
-
-/datum/gear/misc/patch_uscm/uasquare
-	display_name = "United Americas flag shoulder patch"
-	path = /obj/item/clothing/accessory/patch/uasquare
 
 /datum/gear/misc/patch_uscm/medic_patch
 	display_name = "Field Medic shoulder patch"

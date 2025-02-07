@@ -921,7 +921,8 @@
 
 /obj/item/clothing/glasses/sunglasses/big/fake
 	name = "\improper BiMax personal shades"
-	desc = "These are a bargain-bin pair of BiMex-style sunglasses—emphasis on the style. Marketed as 'BiMax,' with an 'A' to sidestep copyright, these knockoffs are popular with penny-pinching spacers and wannabe badasses. While the real deal boasts patented mirror refraction for atomic flash, solar radiation, and targeting laser protection, these cut-rate imitations barely keep UV rays at bay. As for that famous story of a laser pistol reflecting off the originals? Good luck finding anyone who believes these could pull it off. But hey, they’re cheap, and their 'Save the Budget and Look Cool Doing It' slogan really sells it."
+	desc = "These are a bargain-bin pair of BiMex-style sunglasses—emphasis on the style."
+	desc_lore = "Marketed as 'BiMax,' with an 'A' to sidestep copyright, these knockoffs are popular with penny-pinching spacers and wannabe badasses. While the real deal boasts patented mirror refraction for atomic flash, solar radiation, and targeting laser protection, these cut-rate imitations barely keep UV rays at bay. As for that famous story of a laser pistol reflecting off the originals? Good luck finding anyone who believes these could pull it off. But hey, they’re cheap, and their 'Save the Budget and Look Cool Doing It' slogan really sells it."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
 	eye_protection = FALSE
@@ -981,7 +982,8 @@
 
 /obj/item/clothing/glasses/sunglasses/big/new_bimex
 	name = "\improper BiMex Polarized Shades"
-	desc = "Sleek, angular shades designed for the modern operator. BiMex's latest 'TactOptix' line comes with advanced polarization and lightweight ballistic lenses capable of shrugging off small shrapnel impacts. A favorite among frontline operators and deep-space scouts, these shades are marketed as 'combat-tested and action-approved.' Rumors abound of lucky users surviving close-range laser shots thanks to the multi-reflective lens coating, though BiMex's official stance is to 'Stop standing in front of lasers.'"
+	desc = "Sleek, angular shades designed for the modern operator."
+	desc_lore = "BiMex's latest 'TactOptix' line comes with advanced polarization and lightweight ballistic lenses capable of shrugging off small shrapnel impacts. A favorite among frontline operators and deep-space scouts, these shades are marketed as 'combat-tested and action-approved.' Rumors abound of lucky users surviving close-range laser shots thanks to the multi-reflective lens coating, though BiMex's official stance is to 'Stop standing in front of lasers.'"
 	icon_state = "bimex_polarized_yellow"
 	item_state = "bimex_polarized_yellow"
 	eye_protection = EYE_PROTECTION_FLASH

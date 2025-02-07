@@ -283,6 +283,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien"
 
+	var/newcaste
+	var/alleged_queens = 0
+
 	if(!check_state())
 		return
 	if(is_ventcrawling)
@@ -304,8 +307,25 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
+	for(var/mob/living/carbon/xenomorph/xenos_to_check in GLOB.living_xeno_list)
+		if(hivenumber != xenos_to_check.hivenumber)
+			continue
 
-	var/newcaste
+		switch(xenos_to_check.tier)
+			if(0)
+				if(islarva(xenos_to_check) && !ispredalienlarva(xenos_to_check))
+					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
+						alleged_queens++
+				continue
+			if(1)
+				if(isdrone(xenos_to_check))
+					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
+						alleged_queens++
+
+	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
+		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
+		return FALSE
+
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)

@@ -56,8 +56,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		assignment = "Неназначен"	// SS220 EDIT TRANSLATE
 
 	var/id = add_zero(num2hex(target.gid), 6) //this was the best they could come up with? A large random number? *sigh*
-	//var/icon/front = new(get_id_photo(H), dir = SOUTH)
-	//var/icon/side = new(get_id_photo(H), dir = WEST)
+	var/icon/front = new(get_id_photo(target), dir = SOUTH)
+	var/icon/side = new(get_id_photo(target), dir = WEST)
+
 
 	//General Record
 	var/datum/data/record/record_general = new()
@@ -77,8 +78,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.fields["mob_faction"] = target.faction
 	record_general.fields["religion"] = target.religion
 	record_general.fields["ref"] = WEAKREF(target)
-	//record_general.fields["photo_front"] = front
-	//record_general.fields["photo_side"] = side
+	record_general.fields["photo_front"] = front
+	record_general.fields["photo_side"] = side
 
 	if(target.gen_record && !jobban_isbanned(target, "Records"))
 		record_general.fields["notes"] = target.gen_record
@@ -219,8 +220,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		eyes_s.Blend(facial_s, ICON_OVERLAY)
 
 	var/icon/clothes_s = null
-	clothes_s = new /icon('icons/mob/humans/onmob/clothing/uniforms/underwear_uniforms.dmi', "marine_underpants_s")
-	clothes_s.Blend(new /icon('icons/mob/humans/onmob/clothing/feet.dmi', "black"), ICON_UNDERLAY)
+	clothes_s = new /icon('icons/mob/humans/body_mask.dmi', "marine_uniform")
+	clothes_s.Blend(new /icon('icons/mob/humans/onmob/clothing/feet.dmi', "marine"), ICON_UNDERLAY)
+
 	preview_icon.Blend(eyes_s, ICON_OVERLAY)
 	if(clothes_s)
 		preview_icon.Blend(clothes_s, ICON_OVERLAY)

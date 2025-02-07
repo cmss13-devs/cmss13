@@ -212,7 +212,23 @@
 	var/castes = castes_available.Join(", ")
 	xeno_message(SPAN_XENOANNOUNCE("Улей теперь достаточно силён, чтобы поддержать: [castes]"))
 	xeno_maptext("Улей теперь может поддерживать: [castes]", "Улей укрепляется")
+	evo_screech()
 
+/datum/hive_status/proc/evo_screech()
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		if(!is_ground_level(current_mob.z))
+			continue
+
+		if(!current_mob.client)
+			continue
+
+		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
+
+		if(ishuman(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up...  something new is with you in this colony."))
+
+		if(issynth(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)

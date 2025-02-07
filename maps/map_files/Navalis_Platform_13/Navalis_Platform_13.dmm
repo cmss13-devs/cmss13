@@ -8818,16 +8818,6 @@
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/oob/water)
-"azh" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/outdoors/exterior_xeno_only/lz2)
 "azi" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /turf/open/gm/river/no_overlay/ocean,
@@ -13435,36 +13425,6 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/navalis/outdoors/landing_zone_2)
-"aJV" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/oob/water/far)
-"aJW" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only/lz2)
-"aJX" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/space/basic,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/oob/water/far)
 "aJY" = (
 /obj/structure/tunnel/maint_tunnel/hybrisa{
 	pixel_y = 7
@@ -40480,7 +40440,7 @@ ayU
 ayU
 ayU
 ayU
-aze
+aCd
 aCd
 aCd
 aCd
@@ -49425,7 +49385,7 @@ cmS
 cmS
 ayH
 azw
-azh
+azw
 azf
 gGc
 gGc
@@ -49585,11 +49545,11 @@ gGc
 gGc
 gGc
 ayU
-aJX
+aAh
 aAh
 ayL
-aJW
-aJV
+aAh
+aAh
 ayU
 gGc
 gGc
@@ -49749,11 +49709,11 @@ gGc
 gGc
 gGc
 ayU
-aJX
+aAh
 aAh
 ayL
-aJW
-aJV
+aAh
+aAh
 ayU
 gGc
 gGc
@@ -49913,11 +49873,11 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aAh
 aAh
 ayL
 aAh
-aCd
+aAh
 ayU
 gGc
 gGc
@@ -50077,11 +50037,11 @@ nSY
 nSY
 nSY
 ayR
-aCd
+aAh
 aAh
 ayL
 aAh
-aCd
+aAh
 ayR
 nSY
 nSY
@@ -50241,11 +50201,11 @@ nSY
 nSY
 nSY
 ayR
-aCd
+aAh
 aAh
 ayL
 aAh
-aCd
+aAh
 ayR
 nSY
 nSY
@@ -50405,11 +50365,11 @@ mmV
 mmV
 mmV
 lJH
-aCd
+aAh
 aAh
 ayL
 aAh
-aCd
+aAh
 lJH
 mmV
 mmV
@@ -50568,13 +50528,13 @@ mmV
 mmV
 mmV
 lJH
-aCd
-aCd
+aAh
+qZj
 aAh
 ayL
 aAh
-aCd
-aCd
+aAh
+aAh
 lJH
 mmV
 mmV
@@ -50731,15 +50691,15 @@ lJH
 lJH
 lJH
 lJH
-azx
-azx
-azx
+mAQ
+mAQ
+mAQ
 mAQ
 ayM
 mAQ
-azx
-azx
-azx
+mAQ
+mAQ
+mAQ
 lJH
 lJH
 lJH

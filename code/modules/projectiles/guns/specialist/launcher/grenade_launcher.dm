@@ -326,8 +326,8 @@
 /obj/item/weapon/gun/launcher/grenade/m84
 	name = "\improper M84 riot grenade launcher"
 	desc = "A lightweight, multiple-shot M81 grenade launcher retrofitted to launch non-lethal or concussive ammunition. Used by the Colonial Marines Military Police during riots."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
-	icon_state = "m84"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/grenade_launchers.dmi'
+	icon_state = "m81"
 	valid_munitions = list(
 		/obj/item/explosive/grenade/custom/teargas,
 		/obj/item/explosive/grenade/slug/baton,

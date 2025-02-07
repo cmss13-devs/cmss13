@@ -86,8 +86,7 @@ SUBSYSTEM_DEF(statpanels)
 				update_actions = TRUE
 			// We're not on a spell tab per se, but we have cooldown actions, and we've yet to
 			// set up our spell tabs at all
-			if(!length(target.spell_tabs) && locate(/datum/action/cooldown)
-				in target_mob.actions)
+			if(!length(target.spell_tabs) && locate(/datum/action/cooldown) in target_mob.actions)
 				update_actions = TRUE
 
 			if(update_actions && num_fires % default_wait == 0)
@@ -246,8 +245,7 @@ SUBSYSTEM_DEF(statpanels)
 	if(target.stat_tab in target.spell_tabs)
 		update_actions = TRUE
 
-	if(!length(target.spell_tabs) && locate(/datum/action/cooldown)
-		in target_mob.actions)
+	if(!length(target.spell_tabs) && locate(/datum/action/cooldown) in target_mob.actions)
 		update_actions = TRUE
 
 	if(update_actions)

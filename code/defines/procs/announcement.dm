@@ -24,7 +24,7 @@
 			if(!isobserver(X) && !istype(X)) //filter out any potential non-xenomorphs/observers mobs
 				targets.Remove(X)
 
-		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50), TTS_QUEEN_MOTHER_ANNOUNCER) // SS220 EDIT - TTS
+		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50), announcer = TTS_QUEEN_MOTHER_ANNOUNCER) // SS220 EDIT - TTS
 	else
 		for(var/mob/M in targets)
 			if(isobserver(M))
@@ -33,7 +33,7 @@
 			if(!istype(X) || !X.ally_of_hivenumber(hivenumber)) //additionally filter out those of wrong hive
 				targets.Remove(X)
 
-		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50), TTS_QUEEN_MOTHER_ANNOUNCER) // SS220 EDIT - TTS
+		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50), announcer = TTS_QUEEN_MOTHER_ANNOUNCER) // SS220 EDIT - TTS
 
 
 //general marine announcement
@@ -86,7 +86,7 @@
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
 
-	announcement_helper(message, title, targets, sound_to_play, TTS_ARES_ANNOUNCER) // SS220 EDIT - TTS
+	announcement_helper(message, title, targets, sound_to_play, announcer = TTS_ARES_ANNOUNCER) // SS220 EDIT - TTS
 
 //yautja ship AI announcement
 /proc/yautja_announcement(message, title = YAUTJA_ANNOUNCE, sound_to_play = sound('sound/misc/notice1.ogg'))
@@ -98,7 +98,7 @@
 		if(!isyautja(H) || H.stat != CONSCIOUS)
 			targets.Remove(H)
 
-	announcement_helper(message, title, targets, sound_to_play, TTS_YAUTJA_ANNOUNCER) // SS220 EDIT - TTS
+	announcement_helper(message, title, targets, sound_to_play, announcer = TTS_YAUTJA_ANNOUNCER) // SS220 EDIT - TTS
 
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)

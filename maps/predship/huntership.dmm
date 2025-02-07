@@ -794,25 +794,6 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
-"cs" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = 8;
-	pixel_y = -2
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = -8;
-	pixel_y = -2
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/yautja/lower_deck)
 "ct" = (
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
@@ -1347,7 +1328,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja/lower_deck)
 "dq" = (
-/obj/structure/machinery/power/apc/almayer/west,
+/obj/structure/machinery/power/apc/almayer/south,
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "dr" = (
@@ -9318,7 +9299,7 @@ zi
 DX
 cZ
 gu
-cs
+iP
 zi
 bt
 GX

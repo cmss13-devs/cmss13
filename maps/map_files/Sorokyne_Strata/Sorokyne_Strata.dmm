@@ -97,6 +97,10 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/asphalt/cement/cement12,
+/area/strata/ag/exterior/paths/north_outpost)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -50559,7 +50563,7 @@ aac
 aac
 aac
 bLj
-hJT
+aau
 awA
 ayw
 awJ

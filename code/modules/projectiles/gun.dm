@@ -1709,7 +1709,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			var/scatter_debuff = 1 + (SETTLE_SCATTER_MULTIPLIER - 1) * pct_settled
 			projectile_to_fire.scatter *= scatter_debuff
 
-	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) // Apply gun damage multiplier to projectile damage
+	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult, 0.1) // Apply gun damage multiplier to projectile damage
 
 	// Apply effective range and falloffs/buildups
 	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff

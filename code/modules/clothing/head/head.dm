@@ -150,6 +150,7 @@
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/squadberet
+	icon_state = "beret_squad"
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
 	flags_atom = NO_GAMEMODE_SKIN

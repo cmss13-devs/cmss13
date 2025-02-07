@@ -309,6 +309,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headset = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/patch/falcon/squad_main = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon/squad/alpha = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon/squad/bravo = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon/squad/charlie = NO_GARB_OVERRIDE,

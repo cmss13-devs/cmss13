@@ -1108,31 +1108,11 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/misc/patch_uscm
-	display_name = "Falling Falcons shoulder patch, Alpha"
-	path = /obj/item/clothing/accessory/patch/falcon/squad/alpha
+	display_name = "Falling Falcons shoulder patch, squad specific"
+	path = /obj/item/clothing/accessory/patch/falcon/squad_main
 	cost = 1
 	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
-
-/datum/gear/misc/patch_uscm/falcon_squad_bravo
-	display_name = "Falling Falcons shoulder patch, Bravo"
-	path = /obj/item/clothing/accessory/patch/falcon/squad/bravo
-
-/datum/gear/misc/patch_uscm/falcon_squad_charlie
-	display_name = "Falling Falcons shoulder patch, Charlie"
-	path = /obj/item/clothing/accessory/patch/falcon/squad/charlie
-
-/datum/gear/misc/patch_uscm/falcon_squad_delta
-	display_name = "Falling Falcons shoulder patch, Delta"
-	path = /obj/item/clothing/accessory/patch/falcon/squad/delta
-
-/datum/gear/misc/patch_uscm/falcon_squad_echo
-	display_name = "Falling Falcons shoulder patch, Echo"
-	path = /obj/item/clothing/accessory/patch/falcon/squad/echo
-
-/datum/gear/misc/patch_uscm/falcon_squad_foxtrot
-	display_name = "Falling Falcons shoulder patch, Foxtrot"
-	path = /obj/item/clothing/accessory/patch/falcon/squad/foxtrot
 
 /datum/gear/misc/patch_uscm/medic_patch
 	display_name = "Field Medic shoulder patch"

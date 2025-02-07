@@ -519,6 +519,63 @@
 	desc = "An old fire-resistant shoulder patch, worn by the men and women of the Union of Progressive Peoples Armed Collective."
 	icon_state = "upppatch_alt"
 
+/obj/item/clothing/accessory/patch/falcon/squad_main
+	icon_state = "fallingfalcons_squad"
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/equipped(mob/user, slot)
+	. = ..()
+	self_set()
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(self_set), TRUE)
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_SET_SQUAD)
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/proc/self_set()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H))
+		if(H.assigned_squad)
+			switch(H.assigned_squad.name)
+				if(SQUAD_MARINE_1)
+					/obj/item/clothing/accessory/patch/falcon/squad/alpha
+					icon_state = "fallingfalcons_alpha"
+					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_alpha")
+					flags_obj = OBJ_IS_HELMET_GARB
+				if(SQUAD_MARINE_2)
+					/obj/item/clothing/accessory/patch/falcon/squad/bravo
+					icon_state = "fallingfalcons_bravo"
+					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_bravo")
+					flags_obj = OBJ_IS_HELMET_GARB
+						desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
+				if(SQUAD_MARINE_3)
+					/obj/item/clothing/accessory/patch/falcon/squad/charlie
+					icon_state = "fallingfalcons_charlie"
+					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_charlie")
+					flags_obj = OBJ_IS_HELMET_GARB
+					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Charlie Squad's deep purple."
+				if(SQUAD_MARINE_4)
+					/obj/item/clothing/accessory/patch/falcon/squad/delta
+					icon_state = "fallingfalcons_delta"
+					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_delta")
+					flags_obj = OBJ_IS_HELMET_GARB
+					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Delta Squad's striking blue."
+				if(SQUAD_MARINE_5)
+					/obj/item/clothing/accessory/patch/falcon/squad/echo
+					icon_state = "fallingfalcons_echo"
+					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_echo")
+					flags_obj = OBJ_IS_HELMET_GARB
+					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Echo Squad's vivid green."
+				if(SQUAD_MARINE_CRYO)
+					/obj/item/clothing/accessory/patch/falcon/squad/foxtrot
+					icon_state = "fallingfalcons_foxtrot"
+					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_foxtrot")
+					flags_obj = OBJ_IS_HELMET_GARB
+					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Foxtrot Squad's boring brown."
+		else
+			icon_state = "fallingfalcons_squad"
+			desc = initial(desc)
+		H.update_inv_head()
+
 /obj/item/clothing/accessory/patch/falcon/squad/alpha
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Alpha Squad's bold red"

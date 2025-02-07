@@ -838,6 +838,7 @@
 			var/mob/living/carbon/xenomorph/hellhound/hound = new spawner_type(spawn_turf)
 			var/datum/behavior_delegate/hellhound_base/hound_owner = hound.behavior_delegate
 			hound_owner.pred_owner = user
+			notify_ghosts(header = "Hellhound", message = "A hellhound has been called in [get_area(user)] by [user.real_name] click play as hellhound to play as one.", extra_large = TRUE)
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)

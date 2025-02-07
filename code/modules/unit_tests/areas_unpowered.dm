@@ -6,6 +6,8 @@
 	var/list/areas_with_machines = list()
 	/// Assoc list of machine.types containing notes that don't have an area
 	var/list/types_with_no_area = list()
+	/// List of floor turf types that aren't suitable for terminals
+	var/list/floor_turfs_unsuitable = list(/turf/open/floor/almayer/empty, /turf/open/floor/holofloor)
 
 /datum/unit_test/areas_unpowered/pre_game
 	stage = TEST_STAGE_PREGAME // Also run the test during pregame to test w/o nightmare inserts
@@ -41,6 +43,8 @@
 			found_apcs += cur_apc
 			var/turf/apc_turf = cur_apc.loc
 			if(!istype(apc_turf, /turf/open/floor) && apc_turf.intact_tile)
+				any_inaccessible = TRUE
+			else if(is_type_in_list(apc_turf, floor_turfs_unsuitable))
 				any_inaccessible = TRUE
 
 		var/apc_count = length(found_apcs)

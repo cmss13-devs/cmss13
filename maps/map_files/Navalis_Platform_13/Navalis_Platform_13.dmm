@@ -2439,10 +2439,7 @@
 /area/navalis/indoors/residential/starboard)
 "agw" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "agy" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -4015,10 +4012,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
 "akN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4221,19 +4215,13 @@
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "alq" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "alr" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "als" = (
 /turf/open/floor/plating,
@@ -5121,10 +5109,7 @@
 /area/navalis/outdoors/comm_one)
 "anX" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "anY" = (
 /turf/open/floor/prison/rampbottom/east,
@@ -5412,10 +5397,7 @@
 /turf/open/floor/corsat/browncorner/west,
 /area/navalis/indoors/industrial/mining)
 "aph" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "api" = (
 /turf/closed/wall/hybrisa/colony/hospital,
@@ -5439,10 +5421,7 @@
 /area/navalis/indoors/residential/starboard)
 "apo" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "app" = (
 /obj/structure/barricade/handrail/wire{
@@ -5518,10 +5497,7 @@
 /area/navalis/indoors/residential/accessway)
 "apB" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "apC" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname{
@@ -5566,10 +5542,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_port)
 "apI" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/accessway)
 "apJ" = (
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
@@ -5605,10 +5578,7 @@
 /area/navalis/indoors/logistic/Port_hallway)
 "apS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/accessway)
 "apT" = (
 /turf/open/floor/hybrisa/wood,
@@ -5707,10 +5677,7 @@
 	light_color = "#680b62";
 	needs_power = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "aqq" = (
 /turf/closed/wall/hybrisa/colony/hospital/reinforced,
@@ -5825,10 +5792,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_port)
 "aqN" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/industrial/mining)
 "aqO" = (
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -5877,10 +5841,7 @@
 /area/navalis/indoors/command/tertiary_comms)
 "aqY" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/industrial/mining)
 "aqZ" = (
 /turf/closed/wall/hybrisa/colony,
@@ -5919,16 +5880,10 @@
 /area/navalis/indoors/logistic/Port_hallway)
 "arh" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/industrial/mining)
 "ari" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "arj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -5987,10 +5942,7 @@
 /area/navalis/indoors/logistic/Port_hallway)
 "ars" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "art" = (
 /obj/structure/machinery/light{
@@ -5999,27 +5951,18 @@
 	needs_power = 0;
 	dir = 8
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "aru" = (
 /turf/open/floor/plating,
 /area/navalis/indoors/xeno_growth/residential)
 "arv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "arw" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/accessway)
 "arx" = (
 /obj/structure/barricade/handrail/strata{
@@ -6063,33 +6006,21 @@
 /area/navalis/outdoors/exterior/med_ext)
 "arG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/industrial/mining)
 "arH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "arI" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/north,
 /area/navalis/indoors/residential/accessway)
 "arJ" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/kitchen)
 "arK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/kitchen)
 "arL" = (
 /turf/open/floor/almayer,
@@ -6123,20 +6054,14 @@
 /area/navalis/indoors/xeno_growth/residential)
 "arT" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "arU" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/navalis/indoors/residential/kitchen)
 "arV" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/kitchen)
 "arW" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -6163,10 +6088,7 @@
 	light_color = "#680b62";
 	needs_power = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "asa" = (
 /turf/open/floor/prison/greenfull/east,
@@ -6203,10 +6125,7 @@
 /obj/structure/prop/resin_prop{
 	icon_state = "rack"
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/kitchen)
 "ash" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6392,10 +6311,7 @@
 /area/navalis/indoors/residential/starboard)
 "asJ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "asK" = (
 /turf/closed/wall/hybrisa/colony/hospital,
@@ -6474,10 +6390,7 @@
 /area/navalis/indoors/residential/accessway)
 "asY" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "asZ" = (
 /obj/structure/stairs{
@@ -6548,17 +6461,11 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/navalis/indoors/residential/port)
 "ato" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
 "atp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
 "atq" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -6637,10 +6544,7 @@
 /area/navalis/indoors/residential/port)
 "atF" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
 "atG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -6697,10 +6601,7 @@
 /area/navalis/indoors/residential/port)
 "atP" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
 "atQ" = (
 /turf/open/floor/prison/whitegreencorner/east,
@@ -7007,10 +6908,7 @@
 	needs_power = 0;
 	dir = 1
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "auR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7272,10 +7170,7 @@
 	needs_power = 0;
 	dir = 8
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
 "avZ" = (
 /obj/structure/machinery/door/poddoor{
@@ -7338,10 +7233,7 @@
 	needs_power = 0;
 	dir = 8
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/accessway)
 "awk" = (
 /obj/effect/decal/hybrisa/road/lines1{
@@ -9303,10 +9195,7 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "aBb" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob)
 "aBc" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9346,10 +9235,7 @@
 	dir = 8
 	},
 /obj/structure/tunnel,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "aBl" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -9684,10 +9570,7 @@
 /area/navalis/indoors/command/maintenance_starboard)
 "aCa" = (
 /obj/structure/tunnel,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/accessway)
 "aCb" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -9854,10 +9737,7 @@
 /area/navalis/indoors/command/aft_hallway)
 "aCu" = (
 /obj/structure/tunnel,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "aCv" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -9870,10 +9750,7 @@
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aCw" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "aCy" = (
 /obj/structure/barricade/wooden{
@@ -11562,10 +11439,7 @@
 	light_color = "#680b62";
 	needs_power = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/powered)
 "beq" = (
 /obj/structure/cargo_container/horizontal/blue/middle{
@@ -12222,10 +12096,7 @@
 	needs_power = 0
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/powered)
 "bIp" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10{
@@ -12650,10 +12521,7 @@
 /obj/structure/prop/resin_prop{
 	icon_state = "pscrubber:0"
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
 "ccL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12696,10 +12564,7 @@
 "che" = (
 /obj/effect/alien/weeds,
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/water)
 "chS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -12919,10 +12784,7 @@
 /area/navalis/oob)
 "cya" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "cyb" = (
 /obj/structure/platform/metal/strata/north,
@@ -14075,10 +13937,7 @@
 	light_color = "#680b62";
 	needs_power = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "dLA" = (
 /obj/effect/decal/warning_stripes{
@@ -17937,10 +17796,7 @@
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "hVb" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "hVp" = (
 /obj/structure/prop/resin_prop{
@@ -18114,10 +17970,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
 	dir = 8
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "ieP" = (
 /obj/structure/ore_box{
@@ -20802,10 +20655,7 @@
 	needs_power = 0;
 	dir = 4
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
 "lam" = (
 /obj/structure/largecrate/random/case/small,
@@ -21098,10 +20948,7 @@
 "lsv" = (
 /obj/effect/alien/weeds,
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/powered)
 "lsF" = (
 /obj/structure/machinery/light,
@@ -21246,10 +21093,7 @@
 /obj/structure/prop/resin_prop{
 	icon_state = "rack"
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/industrial/mining)
 "lzi" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -21297,10 +21141,7 @@
 "lBV" = (
 /obj/structure/blocker/invisible_wall,
 /obj/effect/alien/weeds,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/powered)
 "lCo" = (
 /obj/structure/machinery/power/apc{
@@ -22112,10 +21953,7 @@
 /obj/structure/prop/resin_prop{
 	icon_state = "sheater0"
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "mFF" = (
 /obj/structure/prop/resin_prop{
@@ -22308,10 +22146,7 @@
 /obj/structure/prop/resin_prop{
 	icon_state = "coolanttank"
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "mQE" = (
 /obj/effect/decal/warning_stripes{
@@ -22834,10 +22669,7 @@
 	needs_power = 0;
 	dir = 8
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "nCk" = (
 /turf/open/floor/prison/darkbrowncorners2,
@@ -23576,10 +23408,7 @@
 	needs_power = 0;
 	dir = 8
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "oxh" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -23870,10 +23699,7 @@
 /area/navalis/indoors/logistic/workshop)
 "oLu" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/exterior/ind_ext)
 "oLC" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty,
@@ -24436,10 +24262,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/exterior/ind_ext)
 "pmW" = (
 /obj/structure/machinery/door_control{
@@ -24631,10 +24454,7 @@
 	needs_power = 0;
 	dir = 8
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/powered)
 "pth" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -24706,10 +24526,7 @@
 	needs_power = 0;
 	dir = 1
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "pyn" = (
 /turf/open/floor/corsat/browncorner,
@@ -24953,10 +24770,7 @@
 	density = 0;
 	explo_proof = 1
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob)
 "pHv" = (
 /obj/structure/cargo_container/horizontal/blue/middle{
@@ -25494,10 +25308,7 @@
 "qch" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "qcA" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
@@ -25520,10 +25331,7 @@
 	},
 /obj/effect/alien/weeds,
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob)
 "qdH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -25532,10 +25340,7 @@
 "qdL" = (
 /obj/effect/alien/weeds,
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob)
 "qew" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -25840,10 +25645,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "qqR" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -26431,10 +26233,7 @@
 /area/navalis/indoors/command/office)
 "qXE" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "qXJ" = (
 /obj/structure/bed/chair/office/light{
@@ -26673,10 +26472,7 @@
 /area/navalis/indoors/command/security)
 "rio" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "ris" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28071,10 +27867,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "sLT" = (
 /turf/open/floor/prison/damaged2/southwest,
@@ -28730,10 +28523,7 @@
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/navalis/indoors/residential/starboard)
 "tww" = (
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "txw" = (
 /obj/structure/bed/sofa/south/grey/left,
@@ -28766,10 +28556,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob)
 "tyB" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -30502,10 +30289,7 @@
 "vgx" = (
 /obj/structure/blocker/invisible_wall,
 /obj/effect/alien/weeds,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob)
 "vgQ" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -31747,10 +31531,7 @@
 /obj/structure/prop/resin_prop{
 	icon_state = "densecrate"
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/accessway)
 "woo" = (
 /obj/structure/machinery/photocopier/wyphotocopier{
@@ -31780,10 +31561,7 @@
 /obj/structure/prop/resin_prop{
 	icon_state = "barrel_yellow"
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/accessway)
 "wqz" = (
 /obj/structure/closet/bodybag{
@@ -31872,10 +31650,7 @@
 	dir = 8
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/powered)
 "wsJ" = (
 /obj/structure/machinery/light{
@@ -32013,10 +31788,7 @@
 /area/navalis/oob)
 "wxU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "wyg" = (
 /obj/effect/decal/warning_stripes{
@@ -33281,10 +33053,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/auto_turf/snow/brown_base/layer0{
-	desc = "This dirt looks as if it were drudged from the bottom of the ocean...";
-	name = "seabed"
-	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/exterior/ind_ext)
 "xLL" = (
 /obj/item/stack/sheet/wood,

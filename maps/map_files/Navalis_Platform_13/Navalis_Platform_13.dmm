@@ -536,6 +536,7 @@
 /area/navalis/indoors/industrial/refinery)
 "abI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/browncorner,
 /area/navalis/indoors/industrial/refinery)
 "abJ" = (
@@ -8818,6 +8819,10 @@
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/oob/water)
+"azh" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/power)
 "azi" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /turf/open/gm/river/no_overlay/ocean,
@@ -11072,6 +11077,11 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aDC" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
 "aDD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -13425,6 +13435,20 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/navalis/outdoors/landing_zone_2)
+"aJV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
+"aJW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/power)
+"aJX" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/accessway)
 "aJY" = (
 /obj/structure/tunnel/maint_tunnel/hybrisa{
 	pixel_y = 7
@@ -13672,20 +13696,6 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/darkred2,
 /area/navalis/indoors/residential/port)
-"aKE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1;
-	layer = 2.8
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/oob/water)
-"aKF" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	layer = 2.8
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/oob/water)
 "aKG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	layer = 2.8
@@ -13739,6 +13749,45 @@
 	},
 /turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
+"aKL" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/red/north,
+/area/navalis/indoors/industrial/refinery)
+"aKM" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/brown/north,
+/area/navalis/indoors/industrial/refinery)
+"aKN" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/hybrisa/metal/orangelinecorner/east,
+/area/navalis/indoors/industrial/accessway)
+"aKO" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/corsat/brown/west,
+/area/navalis/indoors/industrial/refinery)
+"aKP" = (
+/obj/item/storage/toolbox/electrical{
+	pixel_y = -6
+	},
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/accessway)
+"aKQ" = (
+/obj/item/tool/crowbar,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/refinery)
+"aKR" = (
+/obj/item/storage/toolbox/mechanical/green{
+	pixel_x = -11;
+	pixel_y = 9
+	},
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/accessway)
+"aKS" = (
+/obj/item/clothing/head/hardhat{
+	pixel_x = 7
+	},
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/accessway)
 "aLg" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11;
@@ -18013,6 +18062,7 @@
 /area/navalis/indoors/med_sci/maintenance_starboard)
 "fiQ" = (
 /obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "fjp" = (
@@ -21797,7 +21847,7 @@
 /obj/structure/lz_sign/hybrisa_sign/mining{
 	name = "Navalis Platform 13 -  Landing Zone two sign";
 	desc = "A large sign that reads Navalis Platform 13 - Cargo Landing Pad Two";
-	layer = 3.2
+	layer = 4
 	},
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
@@ -28260,7 +28310,8 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/prop/hybrisa/misc/picture_oil{
 	pixel_x = 8;
-	pixel_y = 29
+	pixel_y = 29;
+	layer = 3.5
 	},
 /obj/item/paper_bin{
 	pixel_x = 5;
@@ -32764,6 +32815,7 @@
 	layer = 3.33
 	},
 /obj/structure/platform_decoration/metal/almayer/north,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "uAQ" = (
@@ -33497,6 +33549,7 @@
 	pixel_y = 2
 	},
 /obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "vmM" = (
@@ -48803,7 +48856,7 @@ aGv
 qyn
 mmV
 mmV
-aKE
+mmV
 lJH
 aEM
 aHn
@@ -48967,7 +49020,7 @@ axi
 bls
 qOc
 gyn
-aKF
+mmV
 mmV
 lJH
 neQ
@@ -56264,7 +56317,7 @@ amS
 anO
 amP
 amP
-amP
+aJX
 abe
 amP
 amP
@@ -56754,7 +56807,7 @@ anU
 anS
 abf
 amP
-amP
+aKR
 amP
 amP
 amQ
@@ -57108,7 +57161,7 @@ aaM
 aeq
 afE
 wTU
-rtA
+azh
 aan
 lum
 rtA
@@ -57423,7 +57476,7 @@ aAr
 aAr
 anb
 abf
-amP
+aJX
 amJ
 dmH
 qLp
@@ -57737,10 +57790,10 @@ amI
 amP
 amP
 amP
+aKS
 amP
-amP
-amP
-amP
+aJX
+aKP
 anM
 amJ
 amP
@@ -58237,7 +58290,7 @@ anF
 anF
 anK
 abt
-amU
+aKN
 amP
 abm
 uiq
@@ -58581,7 +58634,7 @@ rxa
 rtA
 dmH
 aaN
-aai
+aJV
 lum
 mKY
 rtA
@@ -58748,7 +58801,7 @@ agb
 aeq
 afF
 afD
-afk
+aDC
 aan
 mJI
 oVG
@@ -59878,7 +59931,7 @@ vDZ
 vTJ
 qXW
 anl
-jhJ
+aKM
 anf
 anp
 anh
@@ -60546,7 +60599,7 @@ rtA
 tyB
 akO
 rtA
-aax
+aJW
 aax
 rtA
 tyB
@@ -60694,7 +60747,7 @@ aAT
 amB
 vQY
 hwl
-hwl
+aKO
 hwl
 hwl
 hwl
@@ -60855,7 +60908,7 @@ anQ
 lUM
 oUN
 aAT
-amB
+aKQ
 amV
 any
 any
@@ -61695,7 +61748,7 @@ mJI
 qLp
 pZd
 qLp
-rtA
+azh
 rtA
 qLp
 pZd
@@ -62506,7 +62559,7 @@ anx
 anx
 vSh
 anl
-caQ
+aKL
 aAj
 amA
 amG

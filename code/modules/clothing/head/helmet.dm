@@ -1151,11 +1151,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "sec_helmet"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
-	desc = "A basic skull-helm worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. This one has a medical cross across the front."
-	icon_state = "sec_medic_helmet"
-	item_state = "sec_medic_helmet"
-
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/med
 	desc = "A basic skull-helm worn by corporate security assets. This variant lacks a visor, granting the wearer a better view of any potential patients."
 	icon_state = "med_helmet"
 	item_state = "med_helmet"

@@ -91,7 +91,7 @@
 	flags_heat_protection = BODY_FLAG_CHEST
 	item_state_slots = list(WEAR_JACKET = "armor")
 
-/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/med
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/medic
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant has a red badge, denoting the medical purpose of the wearer. At least in theory."
 	icon_state = "med_armor"
 	item_state = "med_armor"

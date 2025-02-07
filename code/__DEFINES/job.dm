@@ -227,7 +227,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WY_GOON "WY Corporate Security"
 #define JOB_WY_GOON_MEDIC "WY Corporate Security Medic"
 #define JOB_WY_GOON_TECH "WY Corporate Security Technician"
-#define JOB_WY_GOON_MEDIC "WY Corporate Security Medic"
 #define JOB_WY_GOON_LEAD "WY Corporate Security Lead"
 #define JOB_WY_RESEARCHER "WY Research Consultant"
 #define JOB_WY_RESEARCH_LEAD "WY Senior Research Consultant"

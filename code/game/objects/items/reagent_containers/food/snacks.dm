@@ -172,9 +172,9 @@
 			to_chat(user, SPAN_DANGER("You already have something on your [U]."))
 			return
 
-		user.visible_message( \
-			"[user] scoops up some [src] with \the [U]!", \
-			SPAN_NOTICE("You scoop up some [src] with \the [U]!") \
+		user.visible_message(
+			"[user] scoops up some [src] with \the [U]!",
+			SPAN_NOTICE("You scoop up some [src] with \the [U]!")
 		)
 
 		src.bitecount++
@@ -208,14 +208,14 @@
 		return 1
 	var/slices_lost = 0
 	if (!inaccurate)
-		user.visible_message( \
-			SPAN_NOTICE("[user] slices \the [src]!"), \
-			SPAN_NOTICE("You slice \the [src]!") \
+		user.visible_message(
+			SPAN_NOTICE("[user] slices \the [src]!"),
+			SPAN_NOTICE("You slice \the [src]!")
 		)
 	else
-		user.visible_message( \
-			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"), \
-			SPAN_NOTICE("You crudely slice \the [src] with your [W]!") \
+		user.visible_message(
+			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"),
+			SPAN_NOTICE("You crudely slice \the [src] with your [W]!")
 		)
 		slices_lost = rand(1,max(1,floor(slices_num/2)))
 	var/reagents_per_slice = reagents.total_volume/slices_num

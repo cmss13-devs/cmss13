@@ -130,7 +130,7 @@
 				continue
 			if(istype(current, /turf/closed/wall))
 				var/turf/closed/wall/current_wall = current
-				if(!current_wall.hull)
+				if(!(current_wall.turf_flags & TURF_HULL))
 					openable_turf_count++
 					continue
 
@@ -149,7 +149,7 @@
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
-	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src) && weather_enabled)
 		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 

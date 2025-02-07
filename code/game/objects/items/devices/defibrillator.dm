@@ -219,7 +219,8 @@
 		playsound(get_turf(src), sound_charge_skill4, 25, 0)
 	else if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.75)
 		playsound(get_turf(src), sound_charge_skill3, 25, 0)
-	else playsound(get_turf(src), sound_charge, 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
+	else 
+		playsound(get_turf(src), sound_charge, 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	//Taking square root not to make defibs too fast...
 	if(!do_after(user, (4 + (3 * user.get_skill_duration_multiplier(SKILL_MEDICAL))) SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))

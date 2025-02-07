@@ -177,6 +177,7 @@
 /datum/emergency_call/young_bloods //YOUNG BLOOD ERT ONLY FOR HUNTING GROUNDS IF SOME MOD USES THIS INSIDE THE MAIN GAME THE COUNCIL WONT BE HAPPY (Joe Lampost)
 	name = "Template"
 	var/blooding_name
+	var/time_required_for_youngblood = 40 HOURS
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
@@ -184,13 +185,14 @@
 /datum/emergency_call/young_bloods/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/youngblood_candidates_clean = list()
 	for(var/datum/mind/youngblood_candidate in candidates_list)
+		if(youngblood_candidate.current?.client?.check_whitelist_status(WHITELIST_YAUTJA) || jobban_isbanned(youngblood_candidate.current?.client, ERT_JOB_YOUNGBLOOD))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you are already whitelisted for predator."))
+			continue
 		if(check_timelock(youngblood_candidate.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_youngblood) && (youngblood_candidate.current?.client.get_total_xeno_playtime() >= 40 HOURS))
 			youngblood_candidates_clean.Add(youngblood_candidate)
 			continue
 		if(youngblood_candidate.current)
-			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role (40 hours as a Marine and Xeno) or you are already whitelisted as a Predator"))
-		if(youngblood_candidate.current?.client?.check_whitelist_status(WHITELIST_YAUTJA) || jobban_isbanned(youngblood_candidate.current?.client, ERT_JOB_YOUNGBLOOD))
-			continue
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role (40 hours as a Marine and Xeno)."))
 	return youngblood_candidates_clean
 
 /datum/emergency_call/young_bloods/hunting_party

@@ -172,13 +172,6 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 			vend_fail()
 		return FALSE
 
-	if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
-		if(display)
-			to_chat(user, SPAN_WARNING("This machine isn't for you."))
-			vend_fail()
-		return FALSE
-	return TRUE
-
 /obj/structure/machinery/cm_vending/clothing/yautja/young_blood/left_centre
 	icon_state = "pred_vendor_lcenter"
 

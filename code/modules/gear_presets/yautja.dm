@@ -188,4 +188,3 @@
 /datum/equipment_preset/yautja/non_wl_leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
 	return ..()
-

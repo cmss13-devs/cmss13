@@ -3,7 +3,6 @@
 #define MENU_CO "co"
 #define MENU_SYNTHETIC "synth"
 #define MENU_YAUTJA "yautja"
-#define MENU_YOUNG_BLOOD "youngblood"
 #define MENU_MENTOR "mentor"
 #define MENU_SETTINGS "settings"
 #define MENU_SPECIAL "special"
@@ -350,9 +349,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		dat += "<a[current_menu == MENU_CO ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_CO]\"><b>Commanding Officer</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 		dat += "<a[current_menu == MENU_SYNTHETIC ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SYNTHETIC]\"><b>Synthetic</b></a> - "
-	if(!owner.check_whitelist_status(WHITELIST_PREDATOR))
-		dat += "<a[current_menu == MENU_YOUNG_BLOOD ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=yautja\"><b>Yautja Youngblood</b></a> - "
-	else
+	if(owner.check_whitelist_status(WHITELIST_YAUTJA))
 		dat += "<a[current_menu == MENU_YAUTJA ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=yautja\"><b>Yautja</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_MENTOR))
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
@@ -1966,13 +1963,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					pred_picker.tgui_interact(user)
 					return
 
-				if("youngblood")
-					if(owner.check_whitelist_status(WHITELIST_PREDATOR))
-						return
-
-					pred_picker.tgui_interact(user)
-					return
-
 	ShowChoices(user)
 	return 1
 
@@ -2298,7 +2288,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 #undef MENU_CO
 #undef MENU_SYNTHETIC
 #undef MENU_YAUTJA
-#undef MENU_YOUNG_BLOOD
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
 #undef MENU_SPECIAL

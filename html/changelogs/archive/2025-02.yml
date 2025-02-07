@@ -73,3 +73,96 @@
   VileBeggar:
   - balance: Predator melee weapons now have click delay for clicking on empty adjacent
       tiles.
+2025-02-05:
+  Diegoflores31:
+  - bugfix: Queen no longer stomps on dead and resting xenomorphs
+  - bugfix: Uniforms can no longer be removed if you are wearing a suit on top of
+      it
+  FebrezeNinja:
+  - bugfix: Dropship weapon console can see stasis bags in activated stretchers instead
+      of "Empty"
+  Mikrel0712:
+  - bugfix: ASO Jacket icon in the vendor now shows up as the actual jacket instead
+      of a bloodbag
+  Red-byte3D:
+  - bugfix: Fixes boiler speed being stuck if you buy a strain while zoomed in
+  - rscadd: Adds a bunch of career options for the commanding officer whitelist, currently
+      only used for fluff and RP.
+  - bugfix: Queens can no longer leader the dead.
+  - code_imp: Removes one letter vars
+  - bugfix: fixes the healing / aura effect from recovery nodes applying to dead xenos
+      / xenos who died while resting
+  - bugfix: Dead huggers can no longer be used to hug people
+  - bugfix: You can no longer apply the black holocard to people who are still revivable
+  - bugfix: Extuingishers can no longer be filled by harmful chemicals
+  - bugfix: Praetorian's acid ball no longer uses plasma if you cancel / do not use
+      it.
+  - bugfix: Mutated hive hugger icons work again.
+  - code_imp: Removes some one letter vars from smartpack code.
+  - bugfix: Airlock assemblies are no longer unslashable.
+  - bugfix: You can no longer use telekinesis to grab paper from far away.
+  ZephyrTFA, san7890, Nivrak:
+  - rscadd: Chat Reliability Layer
+  - code_imp: TGUI chat messages now track their sequence and will be resent if the
+      client notices a discrepenency
+  efzapa:
+  - maptweak: Replaced the Security Cabinet in the Security Office on LV624 with a
+      regular Cabinet. Almayer Crew Records should no longer spawn.
+  jupyterkat:
+  - bugfix: fixed cas ammo's icons not updating after ammo transfer
+  - bugfix: fixed ot rocket's blast wave only going in one direction
+  realforest2001:
+  - rscadd: Added multifaction support to crew monitors
+  - bugfix: cl not showing up on crew manifest
+  - rscadd: Giving Survivors/Other factions with IFF will let you track them.
+2025-02-06:
+  BartDrown:
+  - rscadd: migrate security records console to tgui
+  - bugfix: highcom cannot change rank in record
+  - bugfix: photo in security records console does not show
+  - bugfix: photo in security records console cannot be updated
+  - bugfix: fingerprint scanner report cannot be viewed if clue detector is not ejected
+      and cleared
+  - qol: add focus and listen on enter in inputs of security console
+  - qol: add cursor pointer to TGUI Button component
+  - refactor: refactor security records console code
+  - code_imp: security records client side sorting and filtering
+  Drathek Nanu:
+  - rscadd: Added unit test to check whether areas needing power have a single APC
+  - rscadd: Unit testing can now be performed during pre-game
+  - bugfix: Fixed various machines that didn't actually use power still marked as
+      requiring power
+  - bugfix: Fixed /obj/structure/closet/secure_closet/freezer/industry not properly
+      using the area's power
+  - maptweak: Fixes, adds & changes areas on all maps to make more sense.
+  - maptweak: Fixes areas that should have APC's getting them, also fixes areas that
+      had more than one APC.
+  - maptweak: Minor bugfixes, and moving some non-significant objects around.
+  Git-Nivrak:
+  - rscadd: Added distant screeches when a new xenomorph evolution becomes available
+  Red-byte3D:
+  - rscadd: You can no longer devolve from being a drone as the last xenomorph alive
+  - bugfix: fixes an issue with CO's not being able to access the techweb, tacmap
+      and get their icon.
+  - bugfix: Synthetic limbs are now named properly
+  efzapa:
+  - rscadd: CMB Fax Responders now start as a Deputy, then rank up to Marshal at 25
+      Hours of Playtime.
+  hry-gh:
+  - bugfix: fixes tgui windows sometimes offsetting weirdly
+  realforest2001:
+  - rscadd: Fax Responders now understand all human languages.
+  - bugfix: CL Radio Key now appropriately gives access to Almayer General Comms.
+  thebleh:
+  - qol: Removed client window side padding to prevent accidental dragging
+  zzzmike:
+  - bugfix: mitigates bug where you can't close or unlock an opened locked locker
+  - qol: message added when someone opens a stasis bag
+2025-02-07:
+  Red-byte3D:
+  - bugfix: fixes being able to infintely dupe weapon attachements
+  realforest2001:
+  - rscadd: Yautja can now track gear relative to their active falcon drone.
+  - rscadd: Yautja can now mark through walls and don't need direct line of sight.
+  zzzmike:
+  - sounddel: the vendor inflation event no longer plays sound

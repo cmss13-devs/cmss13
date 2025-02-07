@@ -16,9 +16,10 @@
 // Доп перевод: /datum/job/command/senior/announce_entry_message(mob/living/carbon/human/H)
 
 /datum/equipment_preset/uscm_ship/sea
-	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0,
-					PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_1,
-					PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_2,
-					PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_3,
-					PAY_SHORT_ME9E = JOB_PLAYTIME_TIER_4
-					)
+	paygrades = list(
+		PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0,
+		PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_1,
+		PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_2,
+		PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_3,
+		PAY_SHORT_ME9E = JOB_PLAYTIME_TIER_4,
+	)

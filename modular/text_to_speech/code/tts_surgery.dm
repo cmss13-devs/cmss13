@@ -14,8 +14,8 @@
 		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/retract_skin,
 		/datum/surgery_step/tune_vocal_cords,
-		/datum/surgery_step/cauterize
-		)
+		/datum/surgery_step/cauterize,
+	)
 	possible_locs = list("mouth")
 
 

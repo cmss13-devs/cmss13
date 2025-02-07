@@ -47,6 +47,7 @@
 	acid_blood_damage = 0
 	pull_speed = -0.5
 	viewsize = 9
+	show_age_prefix = FALSE
 
 	speaking_key = "h"
 	speaking_noise = "hiss_talk"

@@ -24,17 +24,17 @@
 	icon_state = "r_arm"
 	part = list("r_arm","r_hand")
 
-/obj/item/robot_parts/leg/l_leg
-	name = "robot left leg"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
-	icon_state = "l_leg"
-	part = list("l_leg","l_foot")
-
 /obj/item/robot_parts/leg/r_leg
 	name = "robot right leg"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
-	icon_state = "r_leg"
+	icon_state = "l_leg" // put yourself in the eyes of the character, its your left leg.
 	part = list("r_leg","r_foot")
+
+/obj/item/robot_parts/leg/l_leg
+	name = "robot left leg"
+	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	icon_state = "r_leg"
+	part = list("l_leg","l_foot")
 
 /obj/item/robot_parts/hand/l_hand
 	name = "robot left hand"

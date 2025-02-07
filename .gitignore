@@ -9,6 +9,7 @@ Thumbs.db
 *.lk
 *.backup
 *.db
+*.DS_Store
 *.db-shm
 *.db-wal
 data/
@@ -34,3 +35,4 @@ libprof.so
 
 # OpenDream compatibility stuff
 colonialmarines.json
+.DS_Store

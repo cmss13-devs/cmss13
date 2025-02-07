@@ -153,7 +153,7 @@
 	rank = JOB_WY_GOON_MEDIC
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_medic
-	minimap_icon = "goon_medic"
+	minimap_icon = "goon_med"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/medic
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
 

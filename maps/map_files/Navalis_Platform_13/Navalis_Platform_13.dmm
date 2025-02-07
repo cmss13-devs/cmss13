@@ -85,6 +85,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aap" = (
@@ -93,6 +94,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aaq" = (
@@ -129,6 +131,8 @@
 "aau" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/powercell,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "aav" = (
@@ -183,6 +187,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/glasses/meson,
 /obj/structure/prop/server_equipment/laptop/closed,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "aaD" = (
@@ -198,6 +203,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "aaF" = (
@@ -263,6 +269,7 @@
 "aaP" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aaQ" = (
@@ -1559,6 +1566,7 @@
 /obj/item/tank/emergency_oxygen{
 	pixel_x = -6
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/brown/west,
 /area/navalis/indoors/industrial/mining)
 "aef" = (
@@ -1707,6 +1715,7 @@
 	dir = 4
 	},
 /obj/item/fuel_cell,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/cargo,
 /area/navalis/indoors/industrial/mining)
 "aez" = (
@@ -2083,6 +2092,7 @@
 /obj/item/ammo_magazine/smg/p90,
 /obj/item/ammo_magazine/smg/p90,
 /obj/item/clothing/suit/armor/vest,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "afs" = (
@@ -2899,6 +2909,7 @@
 	pixel_y = -6
 	},
 /obj/item/clothing/suit/storage/hazardvest/blue,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aht" = (
@@ -3506,6 +3517,7 @@
 /obj/item/trash/plate{
 	pixel_y = 9
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/navalis/indoors/residential/accessway)
 "aiP" = (
@@ -4458,6 +4470,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small,
 /obj/structure/pipes/vents/pump,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/navalis/indoors/command/bathroom)
 "ale" = (
@@ -6501,6 +6514,7 @@
 	light_color = "#680b62";
 	needs_power = 0
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "asa" = (
@@ -6511,6 +6525,7 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors/med_sci/corridor)
 "asc" = (
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/whitegreencorner/north,
 /area/navalis/indoors/med_sci/chemical_store)
 "asd" = (
@@ -7252,6 +7267,7 @@
 	dir = 4;
 	pixel_y = -8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/navalis/indoors/med_sci/main_floor)
 "auA" = (
@@ -7328,6 +7344,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_port)
 "auN" = (
@@ -8063,6 +8080,7 @@
 /area/navalis/indoors/command/port_hallway)
 "axt" = (
 /obj/structure/largecrate/supply/supplies/water,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/mining)
 "axu" = (
@@ -10216,6 +10234,7 @@
 "aBL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/darkbrown2/north,
 /area/navalis/indoors/logistic/primary_storage)
 "aBM" = (
@@ -10880,6 +10899,7 @@
 	pixel_y = -1;
 	pixel_x = -1
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/mining)
 "aDh" = (
@@ -12193,6 +12213,7 @@
 /area/navalis/indoors/residential/kitchen)
 "aGt" = (
 /obj/structure/pipes/vents/pump,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/foyer)
 "aGu" = (
@@ -13248,9 +13269,163 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/green/west,
 /area/navalis/indoors/command/port_hallway)
+"aJr" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aJs" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/hybrisa/metal/orangelinecorner/east,
+/area/navalis/indoors/industrial/refinery)
+"aJt" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/corsat/marked,
+/area/navalis/indoors/industrial/refinery)
+"aJu" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/accessway)
+"aJv" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/accessway)
+"aJw" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/xeno_growth)
 "aJx" = (
 /turf/open/floor/prison/greenblue/north,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
+"aJy" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/indoors/logistic/primary_storage)
+"aJz" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison,
+/area/navalis/indoors/logistic/primary_storage)
+"aJA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/indoors/logistic/primary_storage)
+"aJB" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison,
+/area/navalis/indoors/logistic/primary_storage)
+"aJC" = (
+/obj/structure/largecrate/random,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/corsat/cargo,
+/area/navalis/indoors/industrial/mining)
+"aJD" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/corsat,
+/area/navalis/indoors/industrial/mining)
+"aJE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/navalis/indoors/med_sci/science_lower_entrance)
+"aJF" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors/med_sci/main_floor)
+"aJG" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/residential/accessway)
+"aJH" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/xeno_growth/residential)
+"aJI" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/xeno_growth/residential)
+"aJJ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/darkgreen2/west,
+/area/navalis/indoors/residential/accessway)
+"aJK" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/xeno_growth/residential)
+"aJL" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/floor_plate,
+/area/navalis/indoors/command/meeting_hall)
+"aJM" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/northeast,
+/area/navalis/indoors/residential/accessway)
+"aJN" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/darkblue2,
+/area/navalis/indoors/residential/accessway)
+"aJO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/darkbrown2/north,
+/area/navalis/indoors/residential/port)
+"aJP" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
+"aJQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/residential/port)
+"aJR" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/indoors/command/office)
+"aJS" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/greenblue/east,
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
+"aJT" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/greenfull/east,
+/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "aLg" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11;
@@ -13402,6 +13577,7 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen/blue/clicky,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/blue/east,
 /area/navalis/indoors/logistic/workshop)
 "aRC" = (
@@ -14446,6 +14622,7 @@
 	pixel_x = 12;
 	pixel_y = 19
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_starboard)
 "bOE" = (
@@ -14500,6 +14677,7 @@
 	layer = 3.1;
 	pixel_y = -4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/command/office)
 "bRo" = (
@@ -14959,6 +15137,7 @@
 	dir = 8
 	},
 /obj/item/clothing/suit/armor/vest,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/red/northwest,
 /area/navalis/indoors/command/security)
 "cvA" = (
@@ -15054,6 +15233,7 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
 /area/navalis/indoors/command/office)
 "cBU" = (
@@ -15078,6 +15258,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/red/west,
 /area/navalis/indoors/command/security)
 "cCN" = (
@@ -16077,6 +16258,7 @@
 	pixel_x = 3;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "dFi" = (
@@ -16204,6 +16386,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/northeast,
 /area/navalis/indoors/residential/accessway)
 "dQi" = (
@@ -17011,6 +17194,7 @@
 	pixel_x = 8;
 	pixel_y = 20
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/command/office)
 "eFW" = (
@@ -17048,6 +17232,7 @@
 	pixel_x = 8;
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors/med_sci/foyer)
 "eHk" = (
@@ -17244,6 +17429,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_16"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/navalis/indoors/command/maintenance_port)
 "eVe" = (
@@ -17753,6 +17939,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/southeast,
 /area/navalis/indoors/command/oft_duty_room)
 "fui" = (
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/navalis/indoors/med_sci/pharmacy)
 "fvq" = (
@@ -18478,6 +18665,7 @@
 	dir = 1;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/navalis/indoors/command/server_room)
 "gib" = (
@@ -18897,6 +19085,7 @@
 /area/navalis/indoors/command/security)
 "gzI" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/primary_storage)
 "gzY" = (
@@ -19158,6 +19347,7 @@
 	density = 0
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/almayer/blackfull2,
 /area/navalis/indoors/med_sci/records_room)
 "gWg" = (
@@ -19242,6 +19432,7 @@
 	pixel_y = -4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/command/office)
 "haK" = (
@@ -19434,6 +19625,7 @@
 /obj/structure/machinery/prop/almayer/computer/PC{
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/navalis/indoors/command/director_office)
 "hmB" = (
@@ -19497,6 +19689,7 @@
 	pixel_y = 4;
 	pixel_x = -9
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/command/conferance)
 "hqM" = (
@@ -20035,6 +20228,7 @@
 "hSm" = (
 /obj/structure/closet/crate,
 /obj/item/tool/carpenters_hammer,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/bluefull/west,
 /area/navalis/indoors/logistic/workshop)
 "hSo" = (
@@ -20100,6 +20294,7 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/blue,
 /area/navalis/indoors/command/cent_com)
 "hVN" = (
@@ -20108,6 +20303,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "hVX" = (
@@ -21717,6 +21913,7 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/cent_com)
 "jHz" = (
@@ -22017,6 +22214,7 @@
 	dir = 4;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/navalis/indoors/command/cent_com)
 "jZU" = (
@@ -22610,11 +22808,13 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors/med_sci/chemical_store)
 "kHP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/wrench,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/blue/northwest,
 /area/navalis/indoors/logistic/workshop)
 "kIa" = (
@@ -23259,6 +23459,7 @@
 	pixel_x = 7;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
 /area/navalis/indoors/command/office)
 "lrD" = (
@@ -23839,6 +24040,7 @@
 	dir = 8;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/main_floor)
 "lYd" = (
@@ -24970,6 +25172,7 @@
 /area/navalis/outdoors/comm_one)
 "nwO" = (
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/blue/east,
 /area/navalis/indoors/logistic/workshop)
 "nwQ" = (
@@ -25236,6 +25439,7 @@
 	pixel_x = -5;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/main_floor)
 "nPh" = (
@@ -25269,6 +25473,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/navalis/indoors/command/cent_com)
 "nSd" = (
@@ -25406,6 +25611,7 @@
 	icon_state = "cargo_arrow4";
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors/med_sci/corridor)
 "nZc" = (
@@ -25613,6 +25819,7 @@
 	pixel_x = -6;
 	pixel_y = 22
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_port)
 "ont" = (
@@ -25992,6 +26199,8 @@
 /obj/item/storage/belt/gun/m4a3/m1911,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/storage/fancy/cigar/tarbacks,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/navalis/indoors/command/director_office)
 "oDZ" = (
@@ -26351,6 +26560,7 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/almayer/blackfull,
 /area/navalis/indoors/med_sci/records_room)
 "oWq" = (
@@ -26617,7 +26827,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/navalis/indoors/command/meeting_hall)
 "pjP" = (
@@ -27308,6 +27518,7 @@
 	pixel_y = 5
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/foyer)
 "pKK" = (
@@ -27385,6 +27596,8 @@
 	needs_power = 0;
 	dir = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/accessway)
 "pOU" = (
@@ -28187,6 +28400,7 @@
 	pixel_x = 17;
 	pixel_y = -2
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/navalis/indoors/med_sci/break_room)
 "quu" = (
@@ -28688,6 +28902,7 @@
 	pixel_y = -8;
 	pixel_x = -4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/command/office)
 "qXE" = (
@@ -28845,6 +29060,7 @@
 	pixel_y = -1
 	},
 /obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/navalis/indoors/command/meeting_hall)
 "rbL" = (
@@ -28937,6 +29153,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "rio" = (
@@ -29609,6 +29826,7 @@
 	pixel_y = -8;
 	pixel_x = -4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/command/conferance)
 "rVx" = (
@@ -29675,6 +29893,7 @@
 	dir = 8;
 	pixel_x = 2
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/navalis/indoors/command/server_room)
 "rXv" = (
@@ -30186,6 +30405,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/bluefull/west,
 /area/navalis/indoors/logistic/workshop)
 "sEF" = (
@@ -30808,6 +31028,7 @@
 	color = "#b7b8b2"
 	},
 /obj/item/tool/hand_labeler,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/command/tertiary_comms)
 "teN" = (
@@ -31411,6 +31632,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/server_room)
 "tNL" = (
@@ -31561,6 +31783,7 @@
 	pixel_y = -2;
 	pixel_x = -6
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/workshop)
 "tSv" = (
@@ -31841,6 +32064,7 @@
 	pixel_y = 12;
 	pixel_x = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/green/southeast,
 /area/navalis/indoors/command/port_hallway)
 "udW" = (
@@ -31993,6 +32217,7 @@
 	icon_state = "S"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "uqN" = (
@@ -32692,6 +32917,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/navalis/indoors/command/meeting_hall)
 "uUq" = (
@@ -32774,6 +33000,7 @@
 	pixel_y = -1;
 	pixel_x = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/ramptop/east,
 /area/navalis/indoors/industrial/power)
 "vbI" = (
@@ -33800,6 +34027,7 @@
 	pixel_y = -4;
 	pixel_x = 2
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/cent_com)
 "wbq" = (
@@ -34360,6 +34588,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/blue/northeast,
 /area/navalis/indoors/command/cent_com)
 "wxd" = (
@@ -34590,9 +34819,9 @@
 /turf/open/floor/half_plate/green/north,
 /area/navalis/outdoors/landing_zone_1)
 "wIw" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river/desert/deep,
-/area/navalis/oob)
+/area/navalis/oob/water/far)
 "wID" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/navalis/indoors/residential/starboard)
@@ -34740,6 +34969,7 @@
 /obj/item/storage/belt/gun/m4a3/mod88,
 /obj/item/storage/belt/gun/m4a3/mod88,
 /obj/effect/spawner/random/gun/smg/highchance,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/red/northeast,
 /area/navalis/indoors/command/security)
 "wRq" = (
@@ -35565,6 +35795,7 @@
 	pixel_x = 8;
 	pixel_y = 25
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/almayer/blackfull2,
 /area/navalis/indoors/med_sci/records_room)
 "xHE" = (
@@ -35754,6 +35985,7 @@
 	pixel_y = 5;
 	pixel_x = -4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/blue,
 /area/navalis/indoors/command/cent_com)
 "xQv" = (
@@ -35834,6 +36066,7 @@
 /obj/structure/closet/crate,
 /obj/item/tool/hand_labeler,
 /obj/item/tool/hand_labeler,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/bluefull/west,
 /area/navalis/indoors/logistic/workshop)
 "xVl" = (
@@ -45483,7 +45716,7 @@ gzY
 prs
 hxv
 aqA
-aqA
+aJF
 wCC
 aEV
 uVg
@@ -47288,7 +47521,7 @@ hTn
 dUk
 oeG
 uZe
-anC
+aJE
 anC
 anC
 igq
@@ -49940,7 +50173,7 @@ rPK
 nAu
 aoe
 oSX
-ruu
+aJz
 acz
 ruu
 dDK
@@ -50865,7 +51098,7 @@ aJg
 aIW
 aIW
 aIW
-aIW
+aJR
 aIV
 weR
 aIQ
@@ -51736,7 +51969,7 @@ ruu
 adA
 xIv
 wTv
-gzI
+aJB
 gzI
 ruu
 aBd
@@ -53049,7 +53282,7 @@ wMn
 iSK
 aoe
 adn
-kWL
+aJA
 xwe
 aCK
 dxs
@@ -53667,7 +53900,7 @@ pxd
 ohP
 auC
 vyD
-hPW
+aJL
 atH
 aHU
 hPW
@@ -54041,7 +54274,7 @@ aoe
 aoe
 aoe
 acA
-wyn
+aJy
 oZC
 aoe
 aoe
@@ -56687,7 +56920,7 @@ amP
 ane
 amW
 anm
-aAo
+aJu
 amP
 amP
 amP
@@ -57461,7 +57694,7 @@ aol
 aol
 aGW
 lQa
-aor
+aJD
 afb
 aor
 lGD
@@ -57597,7 +57830,7 @@ dCs
 alF
 cCN
 alJ
-alJ
+aJP
 alJ
 fqT
 saO
@@ -57736,7 +57969,7 @@ mmV
 geG
 lUr
 tHw
-amf
+aJT
 amy
 amx
 oBW
@@ -57760,7 +57993,7 @@ alJ
 dCs
 alF
 cCN
-alJ
+aJP
 uvu
 alJ
 vCp
@@ -57831,7 +58064,7 @@ mmV
 lgZ
 isl
 anI
-amK
+aJv
 anm
 amP
 anm
@@ -58560,7 +58793,7 @@ uIh
 dgG
 amh
 amw
-amn
+aJS
 amn
 amn
 muz
@@ -59731,7 +59964,7 @@ mmV
 asq
 asq
 asq
-ari
+aJK
 ari
 ari
 ari
@@ -59806,7 +60039,7 @@ oUN
 aAT
 anf
 jzN
-anl
+aJt
 fYs
 anx
 kqW
@@ -60239,7 +60472,7 @@ ari
 ari
 ari
 ari
-ari
+aJH
 ars
 ars
 lzd
@@ -60550,12 +60783,12 @@ asq
 asq
 asq
 asq
+aJK
 ari
 ari
 ari
 ari
-ari
-ari
+aJI
 gAG
 gAG
 gAG
@@ -60765,7 +60998,7 @@ aol
 pAO
 mmV
 asq
-tww
+aJw
 tww
 tww
 agw
@@ -60778,7 +61011,7 @@ tww
 tww
 tww
 tww
-tww
+aJw
 asq
 lJH
 lJH
@@ -60909,7 +61142,7 @@ aor
 wbQ
 jkm
 lGD
-adQ
+aJC
 fZg
 uxH
 vFB
@@ -61298,7 +61531,7 @@ amE
 aai
 mJI
 qLp
-lum
+aJr
 qLp
 kTd
 aaO
@@ -61550,7 +61783,7 @@ aru
 ari
 ari
 ari
-ari
+aJI
 aru
 ari
 ari
@@ -61877,7 +62110,7 @@ ari
 arv
 aru
 ari
-ari
+aJK
 ars
 asq
 ari
@@ -61917,7 +62150,7 @@ tww
 tww
 gAG
 gAG
-tww
+aJw
 tww
 tww
 tww
@@ -62072,7 +62305,7 @@ asq
 asq
 asq
 asq
-tww
+aJw
 tww
 tww
 tww
@@ -62191,7 +62424,7 @@ asq
 bHT
 asq
 aIr
-aqO
+aJG
 aqO
 apI
 apI
@@ -62273,7 +62506,7 @@ any
 abs
 any
 any
-amO
+aJs
 amA
 amA
 aAl
@@ -62354,7 +62587,7 @@ lJH
 asq
 lsv
 asq
-aIs
+aJN
 aqO
 apI
 rew
@@ -62370,7 +62603,7 @@ pzV
 ssv
 aiH
 ssv
-ssv
+aJJ
 pOh
 aqO
 aqO
@@ -62518,7 +62751,7 @@ efe
 asq
 asq
 asq
-aIs
+aJN
 aqO
 aqO
 izT
@@ -62554,7 +62787,7 @@ gAG
 gAG
 cya
 tww
-tww
+aJw
 tww
 wxU
 rio
@@ -63339,7 +63572,7 @@ apT
 apz
 asq
 asq
-aIl
+aJM
 auR
 ajC
 apz
@@ -63667,7 +63900,7 @@ awk
 avT
 asq
 asq
-aIl
+aJM
 ary
 ajD
 apz
@@ -63719,7 +63952,7 @@ tww
 asq
 tww
 asq
-tww
+aJw
 asq
 asq
 asq
@@ -64831,8 +65064,8 @@ aCa
 arw
 apI
 aqO
-aqO
-aqO
+aJG
+aJG
 aqO
 eFs
 rCg
@@ -64994,7 +65227,7 @@ asq
 asq
 wpF
 aqO
-aqO
+aJG
 asq
 asq
 pWK
@@ -65633,8 +65866,8 @@ avz
 eRp
 atX
 ozC
-atE
-sCv
+aJQ
+aJO
 aqZ
 aqZ
 aqZ
@@ -65798,7 +66031,7 @@ avz
 atX
 ozC
 atk
-sCv
+aJO
 aqZ
 ucd
 vjq
@@ -65962,7 +66195,7 @@ atX
 awl
 ajV
 ajU
-sCv
+aJO
 aqZ
 hVX
 hVX

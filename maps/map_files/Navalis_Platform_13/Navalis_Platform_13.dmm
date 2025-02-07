@@ -2008,6 +2008,11 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/navalis/indoors/residential/starboard)
+"afj" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors/med_sci/foyer)
 "afl" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/corsat/squares,
@@ -12915,7 +12920,6 @@
 /obj/structure/noticeboard{
 	pixel_y = 33;
 	icon_state = "notices_2";
-	desc = null;
 	name = "sticky notes"
 	},
 /turf/open/floor/prison/whitegreen/north,
@@ -15637,7 +15641,6 @@
 /obj/structure/noticeboard{
 	pixel_y = 31;
 	icon_state = "notices_4";
-	desc = null;
 	name = "sticky notes";
 	pixel_x = -2
 	},
@@ -30244,7 +30247,6 @@
 /obj/structure/noticeboard{
 	pixel_y = 31;
 	icon_state = "notices_4";
-	desc = null;
 	name = "sticky notes";
 	pixel_x = -2
 	},
@@ -40874,7 +40876,7 @@ uRO
 aqR
 aqR
 aqR
-uRO
+afj
 aqR
 aqR
 uRO

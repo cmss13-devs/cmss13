@@ -1022,15 +1022,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 pattern chief MP"
 
 /obj/item/clothing/head/helmet/marine/MP/SO
-	name = "\improper M10 pattern Officer Helmet"
-	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
+	name = "\improper M12 pattern Officer Helmet"
+	desc = "A variant of the M12 Pattern Helmet worn by some officers of the USCM, a dust cover hangs at the back instead of the standard lobster-shell design."
 	icon_state = "officer"
 	item_state = "officer"
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
 		WEAR_R_HAND = "helmet"
 	)
-	specialty = "M10 pattern officer"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	specialty = "M12 pattern officer"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal

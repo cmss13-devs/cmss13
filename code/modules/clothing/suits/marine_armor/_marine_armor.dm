@@ -342,13 +342,22 @@
 
 /obj/item/clothing/suit/storage/marine/MP/SO
 	name = "\improper M3 pattern officer armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field."
+	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful when taking to the field for more hands-on command."
+	item_state = "officer"
 	icon_state = "officer"
 	storage_slots = 3
 	flags_atom = null
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/rank/chief_medical_officer, /obj/item/clothing/under/marine/dress)
 	specialty = "M3 pattern officer"
 	item_state_slots = list(WEAR_JACKET = "officer")
+
+/obj/item/clothing/suit/storage/marine/MP/SO/padless
+	name = "\improper M3 pattern officer armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful when taking to the field for more hands-on command. This one has had the shoulder padding removed."
+	item_state = "officer_padless"
+	icon_state = "officer_padless"
+	specialty = "M3 pattern officer padless"
+	item_state_slots = list(WEAR_JACKET = "officer_padless")
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.

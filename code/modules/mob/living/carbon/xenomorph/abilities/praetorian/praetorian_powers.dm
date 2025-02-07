@@ -776,7 +776,7 @@
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("We can't order another valkyrie with our rage."))
 		return
 
-	if(buffing_target.get_filter("raging"))
+	if(HAS_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED))
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target] is already enraged!"))
 		return
 
@@ -801,6 +801,7 @@
 	raging_valkyrie.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 	raging_valkyrie.balloon_alert(raging_valkyrie, "we feel an overwhelming rage", text_color = "#93ec78")
 	raging_valkyrie.armor_modifier += armor_buff
+	ADD_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 	raging_valkyrie.recalculate_armor()
 
 	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
@@ -808,6 +809,7 @@
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.speed_modifier -= speed_buff_amount
+		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 		buffing_target.recalculate_speed()
 		addtimer(CALLBACK(src, PROC_REF(remove_target_speed)), speed_buff_dur)
 	else
@@ -815,6 +817,7 @@
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.armor_modifier += target_armor_buff
+		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 		buffing_target.recalculate_armor()
 		addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
 
@@ -831,6 +834,7 @@
 	raging_valkyrie.armor_modifier -= armor_buff
 	armor_buffs_active = FALSE
 	behavior.raging = FALSE
+	REMOVE_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 	raging_valkyrie.recalculate_armor()
 	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 
@@ -841,6 +845,7 @@
 	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
 		target_xeno.speed_modifier += speed_buff_amount
 		target_xeno.remove_filter("raging")
+		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 		target_xeno.recalculate_speed()
 		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 	armor_buffs_speed_target = FALSE
@@ -850,6 +855,7 @@
 	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
 		target_xeno.armor_modifier -= target_armor_buff
 		target_xeno.remove_filter("raging")
+		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 		target_xeno.recalculate_armor()
 		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 	armor_buffs_active_target = FALSE

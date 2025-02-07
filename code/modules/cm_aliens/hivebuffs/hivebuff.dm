@@ -102,7 +102,7 @@
 	if(!_check_num_required_pylons())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
-	
+
 	if(!_check_danger())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
 		return FALSE
@@ -195,12 +195,12 @@
 /datum/hivebuff/proc/_on_cease()
 	if(cease_timer_id)
 		deltimer(cease_timer_id)
-	
+
 	_announce_buff_cease()
 	on_cease()
 	LAZYREMOVE(hive.active_hivebuffs, src)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
-	
+
 	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
 		remove_buff_effects(xeno)
 
@@ -397,7 +397,7 @@
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space to grow."
 	tier = HIVEBUFF_TIER_MAJOR
 	radial_icon = "king"
-	
+
 	is_reusable = TRUE
 	cost = 0
 	special_fail_message = "Only one hatchery may exist at a time."

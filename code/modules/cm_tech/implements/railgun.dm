@@ -175,7 +175,8 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/structure/machinery/computer/railgun/proc/remove_current_operator()
 	SIGNAL_HANDLER
-	if(!operator) return
+	if(!operator)
+		return
 
 	if(eye)
 		last_location = eye.loc

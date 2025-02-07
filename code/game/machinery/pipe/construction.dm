@@ -269,7 +269,8 @@ Buildable meters
 
 //called when a turf is attacked with a pipe item
 /obj/item/pipe/afterattack(turf/open/floor/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target))
 		user.drop_inv_item_to_loc(src, target)
 	else

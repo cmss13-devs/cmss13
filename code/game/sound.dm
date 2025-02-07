@@ -92,7 +92,8 @@
 				template.x = new_turf_source.x
 				template.y = new_turf_source.y
 				template.z = new_turf_source.z
-			else sound_range = 0
+			else
+				sound_range = 0
 	// Range for 'nearby interiors' aswell
 	for(var/datum/interior/vehicle_interior in SSinterior.interiors)
 		if(vehicle_interior?.ready && vehicle_interior.exterior?.z == turf_source.z && get_dist(vehicle_interior.exterior, turf_source) <= sound_range)

@@ -70,7 +70,8 @@
 	var/mob/M = usr
 
 	if(ishuman(M) && !M.is_mob_incapacitated())
-		if(!istype(usr.loc,/turf)) return
+		if(!istype(usr.loc,/turf))
+			return
 		if(src.amount <= 14)
 			to_chat(usr, SPAN_WARNING("You need at least 15 lengths to make restraints!"))
 			return

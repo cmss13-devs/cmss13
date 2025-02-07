@@ -381,7 +381,8 @@
 	if (!oppressor_user.Adjacent(target_carbon))
 		return
 
-	if(target_carbon.stat == DEAD) return
+	if(target_carbon.stat == DEAD)
+		return
 
 	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(oppressor_user.zone_selected))
 

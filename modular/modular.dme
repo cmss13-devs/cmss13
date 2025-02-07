@@ -6,6 +6,7 @@
 //#include "_rust_utils/_rust_utils.dme"
 #include "_signals220/_signals220.dme"
 #include "_singletons/_singletons.dme"
+#include "sounds/_sounds.dme"
 #include "translations/_translations.dme"
 #include "speech_filter/_speech_filter.dme"
 #include "text_to_speech/_tts.dme"

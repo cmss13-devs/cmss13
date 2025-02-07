@@ -26113,7 +26113,6 @@
 /obj/item/storage/bag/trash{
 	pixel_x = -3
 	},
-/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "gBW" = (
@@ -46381,6 +46380,7 @@
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/port_umbilical)
 "oUi" = (

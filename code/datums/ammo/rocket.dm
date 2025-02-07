@@ -305,3 +305,17 @@
 
 /datum/ammo/rocket/custom/do_at_max_range(obj/projectile/projectile)
 	prime(null, projectile)
+
+/datum/ammo/rocket/guided
+	accurate_range = 60
+	max_range = 60
+
+/datum/ammo/rocket/guided/on_hit_turf(turf/turf, obj/projectile/projectile)
+	return
+
+/datum/ammo/rocket/guided/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/guided_rocket)
+))
+

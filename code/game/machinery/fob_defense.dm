@@ -490,8 +490,8 @@
 	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
-	ammo = /datum/ammo/rocket/ap
-	var/list/locked_on_targets
+	ammo = /datum/ammo/rocket/guided
+	var/list/locked_on_targets = list()
 
 /obj/structure/machinery/fob/sentrygun/missile/obtain_targets()
 	. = ..()
@@ -510,7 +510,7 @@
 		return
 	for(var/mob/living/chosen_target in targets)
 		if(!(chosen_target in locked_on_targets))
-			locked_on_targets += list(chosen_target)
+			locked_on_targets += chosen_target
 			chosen_target.overlays += target_indication
 			addtimer(CALLBACK(src, PROC_REF(fire), chosen_target), 2 SECONDS)
 
@@ -522,8 +522,10 @@
 	loose_target(chosen_target)
 
 /obj/structure/machinery/fob/sentrygun/missile/loose_target(chosen_target)
-	locked_on_targets -= list(chosen_target)
-	//chosen_target.overlays -= target_indication
+	locked_on_targets -= chosen_target
+	if(istype(chosen_target,/mob/living))
+		var/mob/living/chosen_mob = chosen_target
+		chosen_mob.overlays -= target_indication
 
 /obj/structure/machinery/fob/sentrygun/missile/proc/fire_missile(chosen_target)
 	var/obj/projectile/new_projectile = new(src, create_cause_data(initial(name), null, src))

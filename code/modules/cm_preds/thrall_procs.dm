@@ -241,7 +241,8 @@
 	if(exploding)
 		return
 
-	if(alert("Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Explosive Bracers", "Yes", "No") == "Yes")
+	if(tgui_alert(user, "Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Self Destruct Thrall", list("Yes", "No")) == "Yes")
+
 		var/area/area = get_area(thrall)
 		var/turf/turf = get_turf(thrall)
 		message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [area ? "in [area.name]":""] [ADMIN_JMP(turf)]"))

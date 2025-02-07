@@ -1114,7 +1114,7 @@
 
 /datum/equipment_preset/clf/soldier/hunted
 	name = "CLF Soldier (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_CLF
 
 /datum/equipment_preset/clf/soldier/hunted/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/colonist/clf/jumpsuit = new()
@@ -1139,8 +1139,7 @@
 
 /datum/equipment_preset/clf/leader/hunted
 	name = "CLF Leader (Hunted)"
-	faction = FACTION_HUNTED
-
+	faction = FACTION_HUNTED_CLF
 
 /datum/equipment_preset/clf/leader/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
@@ -1169,10 +1168,9 @@
 
 /datum/equipment_preset/clf/engineer/hunted
 	name = "CLF Engineer (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_CLF
 
 /datum/equipment_preset/clf/engineer/hunted/load_gear(mob/living/carbon/human/new_human)
-
 	var/obj/item/clothing/under/colonist/clf/terrorist = new()
 	var/obj/item/clothing/accessory/storage/webbing/wearer = new()
 	terrorist.attach_accessory(new_human, wearer)

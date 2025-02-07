@@ -53,7 +53,9 @@
 				P = new /obj/item/paper/uscm
 
 
-
+		if(get_dist(user, src) > 1)
+			to_chat(user, SPAN_WARNING("You are too far away."))
+			return
 		P.forceMove(user.loc)
 		user.put_in_hands(P)
 		to_chat(user, SPAN_NOTICE("You take [P] out of [src]."))

@@ -531,6 +531,25 @@
 		shatter()
 	return XENO_ATTACK_ACTION
 
+
+//airlock assemblies
+/obj/structure/airlock_assembly/attack_alien(mob/living/carbon/xenomorph/xeno)
+	. = XENO_ATTACK_ACTION
+
+	xeno.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!unacidable)
+			qdel(src)
+		return
+
+	xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"),
+	SPAN_DANGER("We [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+
+
 //Prying open doors
 /obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/xenomorph/M)
 	var/turf/cur_loc = M.loc

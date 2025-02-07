@@ -900,7 +900,11 @@
 /turf/open/gm/empty/is_weedable()
 	return NOT_WEEDABLE
 
+/turf/open/gm/empty/navalis
+	desc = "The Xenomorphs appear to have emerged from this gaping maw. However, it appears they not only have refused to retreat back in here, they have barricaded it……"
 
+/turf/open/gm/empty/navalis/dig
+	desc = "Worse than Xenomorphs lurk the deepest, darkest, pits of this world. These nameless things await in the dark. Pray they don't find this escape."
 
 //Nostromo turfs
 

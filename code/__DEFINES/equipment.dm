@@ -92,6 +92,8 @@
 #define FORCEDROP_CONDITIONAL (1<<14)
 /// Overrides smartgunner not being able to wear backpacks
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
+/// The item will incur click delay if an empty adjacent tile is clicked
+#define ADJACENT_CLICK_DELAY (1<<16)
 //==========================================================================================
 
 

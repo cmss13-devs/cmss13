@@ -18101,6 +18101,9 @@
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = 26
 	},
+/obj/structure/reagent_dispensers/forensictank{
+	pixel_y = 41
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/general_equipment)
 "dzX" = (
@@ -30102,6 +30105,9 @@
 "iEx" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = 26
+	},
+/obj/structure/reagent_dispensers/forensictank{
+	pixel_y = 41
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
@@ -54905,6 +54911,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -2
+	},
+/obj/structure/reagent_dispensers/forensictank{
+	pixel_y = 41
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/armory)

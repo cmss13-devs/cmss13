@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 		list("Officer M12 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
-		list("Armor Choices (CHOOSE 1)", 0, null, null, null),
+		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Officer M3 Armor Padless", 0, /obj/item/clothing/suit/storage/marine/MP/SO/padless, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 

@@ -370,6 +370,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_labs)
+"abz" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "treatmentone"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "abA" = (
 /obj/structure/floodgate{
 	icon_state = "0,3"
@@ -35640,7 +35646,6 @@
 /area/desert_dam/building/water_treatment_one/garage)
 "dya" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/dark,
 /area/desert_dam/building/water_treatment_one/garage)
 "dyb" = (
@@ -36131,7 +36136,6 @@
 "dBK" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "dBM" = (
@@ -37671,43 +37675,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/west_wing_hallway)
-"dNX" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
-"dNY" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "dOa" = (
-/obj/item/stack/sheet/wood,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/control_room)
-"dOc" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/barricade/wooden,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
-"dOe" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
-"dOf" = (
-/obj/item/shard,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6"
-	},
-/obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
-/area/desert_dam/building/water_treatment_one/control_room)
-"dOg" = (
-/obj/item/shard,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6"
-	},
-/obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
-/area/desert_dam/building/water_treatment_one/hallway)
 "dOh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -37723,14 +37693,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/west_wing_hallway)
-"dOk" = (
-/obj/item/shard,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6"
-	},
-/obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
-/area/desert_dam/building/water_treatment_one/equipment)
 "dOl" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/sterile_white/west,
@@ -39357,24 +39319,12 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
-"dVw" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "dVx" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
-"dVy" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "dVz" = (
 /obj/structure/machinery/door_control{
 	id = "warehouse_dam_2";
@@ -39423,13 +39373,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
-"dVD" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "dVE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -39454,7 +39397,6 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVJ" = (
-/obj/structure/barricade/wooden,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -39482,17 +39424,12 @@
 /area/desert_dam/building/hydroponics/hydroponics)
 "dVN" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
-"dVP" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -39544,14 +39481,6 @@
 "dWd" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
-"dWe" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "xgib4"
-	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dWf" = (
@@ -39662,7 +39591,6 @@
 /area/desert_dam/building/water_treatment_one/control_room)
 "dWr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dWs" = (
@@ -39711,10 +39639,6 @@
 /obj/item/shard/shrapnel,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"dWC" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/white,
-/area/desert_dam/building/water_treatment_one/breakroom)
 "dWE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
@@ -39730,10 +39654,6 @@
 /obj/structure/machinery/computer/emails,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
-"dWH" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/freezerfloor,
-/area/desert_dam/building/water_treatment_one/breakroom)
 "dWJ" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/wood,
@@ -40383,7 +40303,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "eaX" = (
@@ -40413,7 +40332,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "ebi" = (
@@ -40500,7 +40418,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "ebB" = (
@@ -40514,7 +40431,6 @@
 "ebD" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "ebE" = (
@@ -44544,12 +44460,6 @@
 	},
 /turf/open/desert/rock/deep/transition/southwest,
 /area/desert_dam/interior/dam_interior/west_tunnel)
-"lxq" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
 "lxX" = (
 /obj/structure/stairs{
 	dir = 8
@@ -47028,11 +46938,6 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"qXZ" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
 "qYd" = (
 /obj/structure/stairs{
 	dir = 1
@@ -47394,7 +47299,7 @@
 	req_access = null;
 	opened = 1
 	},
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "rLU" = (
@@ -69435,7 +69340,7 @@ dTs
 dTs
 dTs
 dTs
-dTs
+abz
 dTs
 dTs
 dTs
@@ -71067,7 +70972,7 @@ dxY
 dyb
 ebJ
 dAn
-dWH
+dAn
 dyb
 dyb
 dTs
@@ -71768,7 +71673,7 @@ dtu
 ebD
 dyb
 dty
-dWH
+dAn
 ecO
 dwl
 dyb
@@ -72705,7 +72610,7 @@ eeq
 dyY
 dAq
 dAq
-dWC
+dAq
 dAq
 eeC
 dAn
@@ -72937,7 +72842,7 @@ ecj
 dVH
 edT
 dWw
-dWC
+dAq
 dWE
 dWE
 ebO
@@ -73640,7 +73545,7 @@ dus
 dyb
 dzc
 dAq
-dWC
+dAq
 dBU
 dWP
 dyb
@@ -75275,7 +75180,7 @@ dus
 dtx
 ecq
 dus
-dOg
+edO
 dzf
 dzg
 dzg
@@ -75976,7 +75881,7 @@ dqm
 eeo
 dVI
 edR
-dOf
+eeo
 dpB
 ebF
 dzg
@@ -76440,7 +76345,7 @@ dVs
 dVv
 dqn
 dsR
-dOc
+dtz
 dtz
 dWd
 ecu
@@ -76449,7 +76354,7 @@ dpB
 diq
 dzg
 eev
-dOk
+diq
 dCL
 dNo
 skB
@@ -76670,15 +76575,15 @@ fdk
 uis
 dNS
 dpB
-dNX
-dVw
-dNY
+dqo
+dOa
+dOa
 dOa
 dVI
 dVO
-dWe
+dVO
 ecv
-lxq
+dVv
 dpB
 gdW
 wRX
@@ -76906,13 +76811,13 @@ dNS
 dpB
 dqo
 drc
-dVy
-dVD
+dVO
+dVO
 dVJ
 dVI
 dVI
 dWq
-qXZ
+dqn
 dpB
 gdW
 hqp
@@ -77142,8 +77047,8 @@ dqo
 cgp
 ebv
 dqo
-dOe
-dVP
+dqo
+dqo
 dvt
 dwy
 ebA

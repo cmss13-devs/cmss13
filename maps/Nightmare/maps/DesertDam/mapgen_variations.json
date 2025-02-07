@@ -6,5 +6,6 @@
     { "type": "map_variations",   "landmark": "northcheckpoint", "path": "northcheckpoint/",             "chance": 0.3 },
     { "type": "map_variations",   "landmark": "xenoflora",       "path": "xenoflora/",                   "chance": 0.4 },
     { "type": "map_variations",   "landmark": "southbridge",     "path": "southbridge/",                 "chance": 0.5 },
+    { "type": "map_variations",   "landmark": "treatmentone",     "path": "treatmentone/",                 "chance": 0.3 },
     { "type": "map_variations",   "landmark": "chapel",          "path": "chapel/",                      "chance": 0.4 }
 ]

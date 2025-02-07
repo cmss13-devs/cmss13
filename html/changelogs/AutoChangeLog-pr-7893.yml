@@ -1,0 +1,6 @@
+author: "BOBAMAx"
+delete-after: True
+changes:
+  - rscadd: "Goon Medic"
+  - imageadd: "New alt uniforms for goon techs and medics"
+  - maptweak: "Corporate Dome nightmare insert now has a medic, engi, and TL."

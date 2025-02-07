@@ -446,7 +446,7 @@
 
 /obj/structure/reagent_dispensers/forensictank
 	name = "forensic spray refiller"
-	desc = "Refill forensic spray canisters."
+	desc = "Refill forensic spray bottles."
 	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "forensictank"
 	anchored = TRUE

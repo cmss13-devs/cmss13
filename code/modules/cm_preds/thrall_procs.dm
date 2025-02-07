@@ -241,7 +241,7 @@
 	if(exploding)
 		return
 
-	if(tgui_alert(user, "Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Self Destruct Thrall", list("Yes", "No")) == "Yes")
+	if(tgui_alert(thrall, "Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Self Destruct Thrall", list("Yes", "No")) == "Yes")
 
 		var/area/area = get_area(thrall)
 		var/turf/turf = get_turf(thrall)

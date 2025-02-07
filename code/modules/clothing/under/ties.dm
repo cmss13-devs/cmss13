@@ -546,7 +546,7 @@
 					icon_state = "fallingfalcons_bravo"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_bravo")
 					flags_obj = OBJ_IS_HELMET_GARB
-						desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
+					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
 				if(SQUAD_MARINE_3)
 					/obj/item/clothing/accessory/patch/falcon/squad/charlie
 					icon_state = "fallingfalcons_charlie"

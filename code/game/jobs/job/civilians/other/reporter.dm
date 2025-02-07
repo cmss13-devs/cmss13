@@ -11,17 +11,23 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	selection_class = "job_cl"
 
-	job_options = list(CIVILIAN_VARIANT = "Грж", MILITARY_VARIANT = "Вое")
+	job_options = list(CIVILIAN_VARIANT = "Грж", MILITARY_VARIANT = "Вое", JOB_COMBAT_REPORTER_RU = "Пол")
 	/// If this job is a military variant of the reporter role
 	var/military = FALSE
 
 /datum/job/civilian/reporter/handle_job_options(option)
-	if(option != CIVILIAN_VARIANT)
-		gear_preset = /datum/equipment_preset/uscm_ship/reporter_uscm
-		military = TRUE
-	else
-		gear_preset = initial(gear_preset)
-		military = initial(military)
+	// SS220 EDIT START
+	switch(option)
+		if(CIVILIAN_VARIANT)
+			gear_preset = /datum/equipment_preset/uscm_ship/reporter_uscm
+			military = TRUE
+		if(JOB_COMBAT_REPORTER_RU)
+			gear_preset = /datum/equipment_preset/uscm_ship/reporter/field
+			military = TRUE
+		else
+			gear_preset = initial(gear_preset)
+			military = initial(military)
+	// SS220 EDIT END
 
 /datum/job/civilian/reporter/generate_entry_message(mob/living/carbon/human/H)
 	if(military)

@@ -49,8 +49,8 @@
 #define JOB_CORPORATE_LIAISON_RU "Связной Корпорации"
 
 #define JOB_COMBAT_REPORTER_RU "Полевой Корреспондент"
-#define JOB_CIVILIAN_REPORTER_RU "Полевой Корреспондент"
-#define JOB_MILITARY_REPORTER_RU "Полевой Корреспондент"
+#define JOB_CIVILIAN_REPORTER_RU "Гражданский Корреспондент"
+#define JOB_MILITARY_REPORTER_RU "Военный Корреспондент"
 
 #define JOB_MESS_SERGEANT_RU "Обслуживающий Персонал"
 #define JOB_SYNTH_RU "Синтетик"

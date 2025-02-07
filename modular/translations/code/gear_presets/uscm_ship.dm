@@ -8,11 +8,20 @@
 
 /datum/equipment_preset/uscm_ship/reporter
 	//name = "Combat Correspondent (Press)"
-	assignment = JOB_COMBAT_REPORTER_RU
+	assignment = JOB_CIVILIAN_REPORTER_RU
 
 /datum/equipment_preset/uscm_ship/reporter_uscm
 	//name = "Combat Correspondent"
+	assignment = JOB_MILITARY_REPORTER_RU
+
+/datum/equipment_preset/uscm_ship/reporter/field
+	name = "Field Correspondent"
 	assignment = JOB_COMBAT_REPORTER_RU
+
+/datum/equipment_preset/uscm_ship/reporter/field/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/reporter/blue(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft/trucker(new_human), WEAR_HEAD)
+	. = ..()
 
 /datum/equipment_preset/uscm_ship/chief_engineer
 	//name = "USCM Chief Engineer (CE)"

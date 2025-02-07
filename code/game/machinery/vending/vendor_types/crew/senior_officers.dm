@@ -12,6 +12,7 @@
 		combined += GLOB.cm_vending_clothing_req_officer
 		combined += GLOB.cm_vending_clothing_cmo
 		combined += GLOB.cm_vending_clothing_military_police_chief
+		combined += GLOB.cm_vending_clothing_auxiliary_officer
 		return combined
 	if(user.job == JOB_XO)
 		return GLOB.cm_vending_clothing_xo
@@ -239,6 +240,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Grey Scrubs", 0, /obj/item/clothing/under/rank/medical/grey, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
+		list("Chief Medical Officer's Labcoat", 0, /obj/item/clothing/suit/storage/labcoat/officer, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Medical's apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 

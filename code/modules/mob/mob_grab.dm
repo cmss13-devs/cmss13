@@ -108,10 +108,10 @@
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
 
-/obj/item/grab/attack(mob/living/M, mob/living/user)
-	if(M == grabbed_thing)
+/obj/item/grab/attack(mob/living/dragged_mob, mob/living/user)
+	if(dragged_mob == grabbed_thing)
 		attack_self(user)
-	else if(M == user && user.pulling && isxeno(user))
+	else if(dragged_mob == user && user.pulling && isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/mob/living/carbon/pulled = xeno.pulling
 		if(!istype(pulled))
@@ -126,7 +126,7 @@
 			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
 		if(length(xeno.stomach_contents)) //Only one thing in the stomach at a time, please
-			to_chat(xeno, SPAN_WARNING("You already have something in your belly, there's no way that will fit."))
+			to_chat(xeno, SPAN_WARNING("We already have something in our stomach, there's no way that will fit."))
 			return 0
 			/* Saving this in case we want to allow devouring of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still inside the body
@@ -139,7 +139,7 @@
 			to_chat(xeno, SPAN_WARNING("We are already busy with something."))
 			return
 		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		xeno.visible_message(SPAN_DANGER("[xeno] starts to devour [pulled]!"), \
+		xeno.visible_message(SPAN_DANGER("[xeno] starts to devour [pulled]!"),
 		SPAN_DANGER("We start to devour [pulled]!"), null, 5)
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to devour you!")))
@@ -151,7 +151,7 @@
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_DEVOURED, xeno) & COMPONENT_CANCEL_DEVOUR)
 					return FALSE
 
-				xeno.visible_message(SPAN_WARNING("[xeno] devours [pulled]!"), \
+				xeno.visible_message(SPAN_WARNING("[xeno] devours [pulled]!"),
 					SPAN_WARNING("We devour [pulled]!"), null, 5)
 				log_interact(xeno, pulled, "[key_name(xeno)] devoured [key_name(pulled)] at [get_area_name(xeno)]")
 

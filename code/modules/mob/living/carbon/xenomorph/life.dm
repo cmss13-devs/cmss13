@@ -505,9 +505,11 @@ Make sure their actual health updates immediately.*/
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time
+		update_wounds()
 		blinded = stat == UNCONSCIOUS // Xenos do not go blind from other sources - still, replace that by a status_effect or trait when able
 	if(!gibbing)
 		med_hud_set_health()
+
 
 /mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat <= CONSCIOUS && !gibbing)

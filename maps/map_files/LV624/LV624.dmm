@@ -10613,10 +10613,6 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/hunting_trap{
-	desc = "A bizarre alien device used for trapping and killing prey.";
-	name = "Alien Mine"
-	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "clO" = (
@@ -16421,16 +16417,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
-"ovg" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/hunting_trap{
-	desc = "A bizarre alien device used for trapping and killing prey.";
-	name = "Alien Mine"
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "ovw" = (
 /obj/structure/inflatable/popped,
 /obj/item/stack/sheet/wood,
@@ -57579,7 +57565,7 @@ aut
 uZp
 ufW
 uZp
-ovg
+aut
 boe
 boe
 boe

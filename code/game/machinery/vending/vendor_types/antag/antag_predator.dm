@@ -165,13 +165,6 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 
-/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
-	if(!allowed(user))
-		if(display)
-			to_chat(user, SPAN_WARNING("Access denied."))
-			vend_fail()
-		return FALSE
-
 /obj/structure/machinery/cm_vending/clothing/yautja/young_blood/left_centre
 	icon_state = "pred_vendor_lcenter"
 

@@ -158,3 +158,11 @@
   zzzmike:
   - bugfix: mitigates bug where you can't close or unlock an opened locked locker
   - qol: message added when someone opens a stasis bag
+2025-02-07:
+  Red-byte3D:
+  - bugfix: fixes being able to infintely dupe weapon attachements
+  realforest2001:
+  - rscadd: Yautja can now track gear relative to their active falcon drone.
+  - rscadd: Yautja can now mark through walls and don't need direct line of sight.
+  zzzmike:
+  - sounddel: the vendor inflation event no longer plays sound

@@ -15,6 +15,9 @@ export const IMAGE_RETRY_LIMIT = 10;
 export const IMAGE_RETRY_MESSAGE_AGE = 60000;
 export const RENDERER_RELOAD_WAIT = 1000;
 
+// Remove with 516
+export const RENDERER_RELOAD_WAIT_TRIDENT = 2500;
+
 // Default message type
 export const MESSAGE_TYPE_UNKNOWN = 'unknown';
 

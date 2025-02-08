@@ -338,7 +338,24 @@
 	xeno_announcement("The hosts have opened the supply vessels accessway! Be wary of a northern flank!")
 	used = TRUE
 
-// Internal Industrial  Accessway
+// Comms Industrial Accessway
+
+/obj/structure/machinery/door_control/navalis_comms_lockdown
+	var/used = FALSE
+	var/colony_lockdown_time = 25 MINUTES
+
+/obj/structure/machinery/door_control/navalis_comms_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("The internal access path cannot be opened yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
+	if(used)
+		to_chat(user, SPAN_WARNING("The internal access path has already been opened."))
+		return
+	. = ..()
+	marine_announcement("The Industrial Rig's secondary vehicle access blastdoors have been opened.")
+	used = TRUE
+
+// Internal Industrial Accessway
 
 /obj/structure/machinery/door_control/navalis_industrial_lockdown
 	var/used = FALSE

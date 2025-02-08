@@ -1,7 +1,7 @@
 /mob/living/can_resist()
 	if(next_move > world.time)
 		return FALSE
-	if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_HAULED))
 		return FALSE
 	return TRUE
 
@@ -54,7 +54,7 @@
 		M.status_flags &= ~PASSEMOTES
 		return
 
-	//resisting grabs (as if it helps anyone...)
+	//resisting grabs (as if it helps anyone...) //FLAG
 	if(!is_mob_restrained(0) && pulledby)
 		visible_message(SPAN_DANGER("[src] resists against [pulledby]'s grip!"))
 		resist_grab()

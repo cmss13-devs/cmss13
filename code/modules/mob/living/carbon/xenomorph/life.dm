@@ -219,22 +219,22 @@
 	return TRUE
 
 /mob/living/carbon/xenomorph/proc/handle_stomach_contents()
-	//Deal with dissolving/damaging stuff in stomach.
+	//Deal with dissolving/damaging stuff in stomach. This sucks man.
 	if(length(stomach_contents))
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
-				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
-					to_chat(src, SPAN_WARNING("We're about to regurgitate [M]..."))
-					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
+				if(world.time > haul_timer - 50 && world.time < haul_timer - 30)
+					to_chat(src, SPAN_WARNING("We're about to release [M] from our grip.."))
+					playsound(loc, 'sound/voice/alien_hiss2.ogg', 50)
 				var/mob/living/carbon/human/H = M
-				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
-					regurgitate(H)
+				if(world.time > haul_timer || (H.stat == DEAD && !H.chestburst))
+					release_haul(FALSE)
 
-			M.acid_damage++
-			if(M.acid_damage > 300)
-				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in our gut with a gurgle."))
-				stomach_contents.Remove(M)
-				qdel(M)
+			// M.acid_damage++
+			// if(M.acid_damage > 300)
+			// 	to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in our gut with a gurgle."))
+			// 	stomach_contents.Remove(M)
+			// 	qdel(M)
 
 /mob/living/carbon/xenomorph/proc/handle_regular_hud_updates()
 	if(!mind)

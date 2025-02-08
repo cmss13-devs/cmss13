@@ -37,52 +37,27 @@
 		if(nutrition && stat != DEAD)
 			nutrition -= HUNGER_FACTOR/5
 
-/mob/living/carbon/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated(TRUE)) return
-	if(user in src.stomach_contents)
-		if(user.client)
-			user.client.next_movement = world.time + 20
-		if(prob(30))
-			for(var/mob/mobs_can_hear in hearers(4, src))
-				if(mobs_can_hear.client)
-					mobs_can_hear.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
-		var/obj/item/item_in_hand = user.get_active_hand()
-		if(item_in_hand && item_in_hand.force)
-			var/damage_of_item = rand(floor(item_in_hand.force / 4), item_in_hand.force)
-			if(istype(src, /mob/living/carbon/human))
-				var/mob/living/carbon/human/human_mob = src
-				var/organ = human_mob.get_limb("chest")
-				if(istype(organ, /obj/limb))
-					var/obj/limb/organs_in_human = organ
-					if(organs_in_human.take_damage(damage_of_item, 0))
-						human_mob.UpdateDamageIcon()
-				human_mob.updatehealth()
-			else
-				src.take_limb_damage(damage_of_item)
-			for(var/mob/mobs_in_view as anything in viewers(user, null))
-				if(mobs_in_view.client)
-					mobs_in_view.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [item_in_hand.name]!")), SHOW_MESSAGE_AUDIBLE)
-			user.track_hit(initial(item_in_hand.name))
-			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
-			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
-				last_damage_data = create_cause_data("chestbursting", user)
-				gib(last_damage_data)
-	else if(!chestburst && (status_flags & XENO_HOST) && islarva(user))
-		var/mob/living/carbon/xenomorph/larva/larva_burst = user
-		larva_burst.chest_burst(src)
+/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data) // stays here because any carbon can be hauled
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
+	var/gibbing = FALSE
 
-/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
+	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
+		gibbing = TRUE
 
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
+
+	if(HAS_TRAIT(src, TRAIT_HAULED) && !gibbing) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
+		visible_message(SPAN_WARNING("[src] is shielded from the blast!"), SPAN_WARNING("You are shielded from the blast!"))
+		return
 
 	if(severity >= 30)
 		flash_eyes()
 
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
-	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
+	if(gibbing)
 		gib(last_damage_data)
 		return
 
@@ -97,23 +72,6 @@
 /mob/living/carbon/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
-
-	var/turf/my_turf = get_turf(src)
-
-	for(var/atom/movable/A in stomach_contents)
-		stomach_contents.Remove(A)
-		A.forceMove(my_turf)
-		A.acid_damage = 0 //Reset the acid damage
-		if(ismob(A))
-			visible_message(SPAN_DANGER("[A] bursts out of [src]!"))
-
-	for(var/atom/movable/A in contents_recursive())
-		if(isobj(A))
-			var/obj/O = A
-			if(O.unacidable)
-				O.forceMove(my_turf)
-				O.throw_atom(pick(RANGE_TURFS(1, src)), 1, SPEED_FAST)
-
 	. = ..(cause)
 
 /mob/living/carbon/revive()
@@ -158,7 +116,7 @@
 
 	. = ..()
 
-/mob/living/carbon/attack_hand(mob/target_mob as mob)
+/mob/living/carbon/attack_hand(mob/target_mob as mob) // move it here probably
 	if(!istype(target_mob, /mob/living/carbon)) return
 
 	if(target_mob.mob_flags & SURGERY_MODE_ON && target_mob.a_intent & (INTENT_HELP|INTENT_DISARM))
@@ -366,8 +324,8 @@
 		return
 	if(stat || !target)
 		return
-	if(!istype(loc, /turf)) // In some mob/object (i.e. devoured or tank)
-		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [loc.name]."))
+	if(!istype(loc, /turf) || HAS_TRAIT(src, TRAIT_HAULED)) // In some mob/object (i.e. hauled or tank)
+		to_chat(src, SPAN_WARNING("You cannot throw anything right now."))
 		return
 	if(target.type == /atom/movable/screen)
 		return
@@ -498,6 +456,46 @@
 			if(!HAS_TRAIT(src, TRAIT_FLOORED)) // just watch this break in the most horrible way possible
 				break
 
+// Adding traits, etc after xeno restrains and hauls us
+/mob/living/carbon/human/proc/handle_haul(mob/living/carbon/xenomorph/xeno)
+	setDir(EAST)
+	xeno.hauled_mob_change_dir(xeno.dir, src)
+	ADD_TRAIT(src, TRAIT_HAULED, TRAIT_SOURCE_XENO_HAUL)
+	ADD_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_XENO_HAUL)
+	ADD_TRAIT(src, TRAIT_FLOORED, TRAIT_SOURCE_XENO_HAUL)
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_XENO_HAUL)
+	hauling_xeno = xeno
+	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(release_haul_death))
+	RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(haul_fire_shield))
+	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(haul_fire_shield_callback))
+	layer = LYING_BETWEEN_MOB_LAYER
+
+
+/mob/living/carbon/human/proc/release_haul_death()
+	SIGNAL_HANDLER
+	handle_unhaul()
+
+/mob/living/carbon/human/proc/haul_fire_shield(mob/living/burning_mob) //Stealing it from the pyro spec armor, xenos shield us from fire
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_IGNITION
+
+
+/mob/living/carbon/human/proc/haul_fire_shield_callback(mob/living/burning_mob)
+	SIGNAL_HANDLER
+	. = COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
+
+// Removing traits and other stuff after xeno releases us from haul
+/mob/living/carbon/human/proc/handle_unhaul()
+	if(!isturf(loc))
+		var/location = get_turf(loc)
+		forceMove(location)
+	src.remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
+	pixel_y = 0
+	pixel_x = 0
+	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+	UnregisterSignal(hauling_xeno, COMSIG_MOB_DEATH)
+	hauling_xeno = null
+	layer = MOB_LAYER
 
 
 /mob/living/carbon/on_stored_atom_del(atom/movable/AM)
@@ -563,3 +561,8 @@
 		set_lying_angle(pick(90, 270))
 	else
 		set_lying_angle(new_lying_angle)
+
+/mob/living/carbon/human/setDir(newdir)
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		return
+	. = ..()

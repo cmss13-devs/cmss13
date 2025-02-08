@@ -1,6 +1,8 @@
 
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_SELF, src)
@@ -35,9 +37,35 @@
 		else if(initiate_surgery_moment(I, src, null, user))
 			return TRUE
 	*/
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		if(src == user) // No stabbing ourselves to death
+			return
+		if(handle_haul_resist(user, src, I))
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+		return
 	if(istype(I) && ismob(user))
 		return I.attack(src, user)
 
+/mob/living/proc/handle_haul_resist(mob/living/resister, mob/living/carbon/xenomorph/xeno, obj/item/item) // move this?
+	if(get_dist(xeno, resister)) // No stabbing xenos next to you REMOVE HUGGING HAULED MOBS
+		return FALSE
+	if(item.force)
+		var/damage_of_item = rand(floor(item.force / 4), item.force)
+		xeno.take_limb_damage(damage_of_item)
+		for(var/mob/mobs_in_view as anything in viewers(resister, null))
+			if(mobs_in_view.client)
+				mobs_in_view.show_message(text(SPAN_DANGER("<B>[resister] attacks [xeno]'s carapace with the [item.name]!")), SHOW_MESSAGE_AUDIBLE)
+		resister.track_hit(initial(item.name))
+		playsound(resister.loc, 'sound/weapons/slash.ogg', 25, 1)
+		if(prob(max(4*(100*xeno.getBruteLoss()/xeno.maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
+			xeno.last_damage_data = create_cause_data("scuffling", resister)
+			xeno.gib(last_damage_data)
+		return TRUE
+	else
+		for(var/mob/mobs_can_hear in hearers(4, xeno))
+			if(mobs_can_hear.client)
+				mobs_can_hear.show_message(SPAN_DANGER("You hear [resister] struggling against [xeno]'s grip..."), SHOW_MESSAGE_AUDIBLE)
+		return TRUE
 
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
 // Click parameters is the params string from byond Click() code, see that documentation.
@@ -124,3 +152,6 @@
 			playsound(loc, hitsound, 25, 1)
 		return (hit|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+
+

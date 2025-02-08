@@ -530,7 +530,7 @@ DEFINES in setup.dm, referenced here.
 /mob/living/carbon/human/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = TRUE
-	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained() || IsKnockDown() || HAS_TRAIT_FROM(src, TRAIT_UNDENSE, LYING_DOWN_TRAIT))
+	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained() || IsKnockDown() || HAS_TRAIT_FROM(src, TRAIT_UNDENSE, LYING_DOWN_TRAIT) && !HAS_TRAIT(src, TRAIT_HAULED))
 		to_chat(src, SPAN_WARNING("You can't draw a weapon in your current state."))
 		return
 
@@ -543,7 +543,7 @@ DEFINES in setup.dm, referenced here.
 					items_in_slot = get_item_by_slot(active_hand.preferred_storage[storage])
 				else
 					items_in_slot = list(get_item_by_slot(active_hand.preferred_storage[storage]))
-				
+
 				for(var/item_in_slot in items_in_slot)
 					if(istype(item_in_slot, storage))
 						var/slot = active_hand.preferred_storage[storage]
@@ -560,7 +560,7 @@ DEFINES in setup.dm, referenced here.
 								slot = WEAR_IN_HELMET
 							if(WEAR_FEET)
 								slot = WEAR_IN_SHOES
-						
+
 						if(equip_to_slot_if_possible(active_hand, slot, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
 							return TRUE
 		if(w_uniform)

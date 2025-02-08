@@ -12,6 +12,10 @@
 	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		to_chat(attacking_xeno, SPAN_WARNING("[src] is being hauled, we cannot do anything to them."))
+		return
+
 	var/intent = attacking_xeno.a_intent
 
 	if(attacking_xeno.behavior_delegate)
@@ -79,7 +83,6 @@
 					acid_damage += (attacking_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			attacking_xeno.animation_attack_on(src)
-
 			//Somehow we will deal no damage on this attack
 			if(!damage)
 				playsound(attacking_xeno.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)

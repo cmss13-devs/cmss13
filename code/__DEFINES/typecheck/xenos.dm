@@ -30,6 +30,8 @@
 /mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)
 	if(!istype(attempt_harm_mob))
 		return FALSE
+	if(HAS_TRAIT(attempt_harm_mob, TRAIT_HAULED))
+		return TRUE
 
 	if(!hive)
 		hive = GLOB.hive_datum[hivenumber]

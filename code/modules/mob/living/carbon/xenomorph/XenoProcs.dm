@@ -215,6 +215,24 @@
 /mob/living/carbon/xenomorph/proc/gain_armor_percent(value)
 	armor_integrity = min(armor_integrity + value, 100)
 
+/mob/living/carbon/xenomorph/animation_attack_on(atom/A, pixel_offset)
+	if(hauled_mob?.resolve())
+		return
+	. = ..()
+
+/mob/living/carbon/xenomorph/Move(NewLoc, direct)
+	. = ..()
+	var/mob/user = hauled_mob?.resolve()
+	if(user)
+		user.forceMove(src.loc)
+	//switch(direct)
+
+/mob/living/carbon/xenomorph/forceMove(atom/destination)
+	. = ..()
+	var/mob/user = hauled_mob?.resolve()
+	if(user)
+		user.forceMove(src.loc)
+
 
 //Strip all inherent xeno verbs from your caste. Used in evolution.
 /mob/living/carbon/xenomorph/proc/remove_inherent_verbs()
@@ -392,23 +410,90 @@
 	else
 		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	update_sight()
+//
+/mob/living/carbon/xenomorph/proc/haul(mob/living/carbon/human/victim)
+	src.visible_message(SPAN_WARNING("[src] restrains [victim], hauling them effortlessly!"),
+	SPAN_WARNING("We fully restrain [victim] and start hauling them!"), null, 5)
+	log_interact(src, victim, "[key_name(src)] started hauling [key_name(victim)] at [get_area_name(src)]")
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
-/mob/living/carbon/xenomorph/proc/regurgitate(mob/living/victim, stuns = FALSE)
-	if(length(stomach_contents))
-		if(victim)
-			stomach_contents.Remove(victim)
-			victim.acid_damage = 0
-			victim.forceMove(get_true_turf(loc))
+	if(ishuman(victim))
+		var/mob/living/carbon/human/pulled_human = victim
+		pulled_human.disable_lights()
+	hauled_mob = WEAKREF(victim)
+	victim.forceMove(src.loc, get_dir(victim.loc, src.loc))
+	victim.handle_haul(src)
+	RegisterSignal(victim, COMSIG_MOB_DEATH, PROC_REF(release_dead_haul))
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
-			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"),
-			SPAN_XENOWARNING("We hurl out the contents of our stomach!"), null, 5)
-			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
-			log_interact(src, victim, "[key_name(src)] regurgitated [key_name(victim)] at [get_area_name(loc)]")
+/mob/living/carbon/xenomorph/proc/on_dir_change(src, olddir, newdir)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/hauled = hauled_mob.resolve()
+	hauled_mob_change_dir(newdir, hauled)
 
-			if (stuns)
-				victim.adjust_effect(2, STUN)
-	else
-		to_chat(src, SPAN_WARNING("There's nothing in our belly that needs regurgitating."))
+/mob/living/carbon/xenomorph/proc/hauled_mob_change_dir(direction, mob/living/carbon/human/hauled)
+	var/matrix/base = matrix()
+	var/angle
+	switch(direction)
+		if(NORTH)
+			angle = 180
+			hauled.pixel_x = 0
+			hauled.pixel_y = -13
+		if(SOUTH)
+			angle = 0
+			hauled.pixel_x = 0
+			hauled.pixel_y = 10
+		if(EAST)
+			angle = 250
+			hauled.pixel_x = -13
+			hauled.pixel_y = -8
+		if(WEST)
+			angle = 110
+			hauled.pixel_x = 12
+			hauled.pixel_y = -8
+	hauled.apply_transform(base.Turn(angle), 0)
+
+// Releasing a dead hauled mob
+/mob/living/carbon/xenomorph/proc/release_dead_haul()
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	to_chat(src, SPAN_XENOWARNING("[user] is dead. No more use for them now."))
+	user.handle_unhaul()
+	UnregisterSignal(user, COMSIG_MOB_DEATH)
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
+
+	hauled_mob = null
+
+// Releasing a hauled mob
+/mob/living/carbon/xenomorph/proc/release_haul(stuns = FALSE)
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(!user)
+		to_chat(src, SPAN_WARNING("We are not hauling anyone."))
+		return
+	user.handle_unhaul()
+	visible_message(SPAN_XENOWARNING("[src] releases [user] from their grip!"),
+	SPAN_XENOWARNING("We release [user] from our grip!"), null, 5)
+	playsound(get_true_location(loc), 'sound/voice/alien_growl1.ogg', 15)
+	log_interact(src, user, "[key_name(src)] released [key_name(user)] at [get_area_name(loc)]")
+	if(stuns)
+		user.adjust_effect(2, STUN)
+	UnregisterSignal(user, COMSIG_MOB_DEATH)
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
+	hauled_mob = null
+	// if(length(stomach_contents))
+	// 	if(victim)
+	// 		stomach_contents.Remove(victim)
+	// 		victim.acid_damage = 0
+	// 		victim.forceMove(get_true_turf(loc))
+
+	// 		visible_message(SPAN_XENOWARNING("[src] releases [victim] from their grip!"),
+	// 		SPAN_XENOWARNING("We release [victim] from our grip!"), null, 5)
+	// 		playsound(get_true_location(loc), 'sound/voice/alien_growl1.ogg', 15)
+	// 		log_interact(src, victim, "[key_name(src)] released [key_name(victim)] at [get_area_name(loc)]")
+
+	// 		if (stuns)
+	// 			victim.adjust_effect(2, STUN)
+	// else
 
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle

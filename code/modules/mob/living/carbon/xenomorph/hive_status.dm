@@ -709,7 +709,7 @@
 			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				if(length(xeno.stomach_contents))
-					xeno.devour_timer = 0
+					xeno.haul_timer = 0
 					xeno.handle_stomach_contents()
 				qdel(xeno)
 				continue
@@ -719,7 +719,7 @@
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				if(length(xeno.stomach_contents))
-					xeno.devour_timer = 0
+					xeno.haul_timer = 0
 					xeno.handle_stomach_contents()
 				qdel(xeno)
 			stored_larva++

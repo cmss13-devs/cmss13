@@ -60,7 +60,8 @@
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
-
+	// Mob we are hauling
+	var/datum/weakref/hauled_mob
 	var/obj/item/iff_tag/iff_tag = null
 
 	var/static/list/walking_state_cache = list()
@@ -278,8 +279,8 @@
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
 	var/ripping_limb = FALSE
-	/// The world.time at which we will regurgitate our currently-vored victim
-	var/devour_timer = 0
+	/// The world.time at which we will release our currently-restrained victim
+	var/haul_timer = 0
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.
@@ -692,6 +693,10 @@
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(user)
+		user.handle_unhaul()
+		hauled_mob = null
 
 	if(tracked_marker)
 		tracked_marker.xenos_tracking -= src

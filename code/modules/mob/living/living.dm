@@ -677,6 +677,8 @@
 
 
 /mob/living/update_transform(instant_update = FALSE)
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		return
 	var/visual_angle = lying_angle
 	if(!rotate_on_lying)
 		return
@@ -692,9 +694,11 @@
 // legacy procs
 /mob/living/put_in_l_hand(obj/item/W)
 	if(body_position == LYING_DOWN)
-		return
+		if(!HAS_TRAIT(src, TRAIT_HAULED))
+			return
 	return ..()
 /mob/living/put_in_r_hand(obj/item/W)
 	if(body_position == LYING_DOWN)
-		return
+		if(!HAS_TRAIT(src, TRAIT_HAULED))
+			return
 	return ..()

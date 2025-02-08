@@ -271,6 +271,8 @@
 
 		for(var/mob/living/carbon/human/victim in orange(radius, src)) //Loop through all nearby victims, including the tile.
 			splash_chance = 65 - (i * 5)
+			if(HAS_TRAIT(victim, TRAIT_HAULED))
+				continue
 			if(victim.loc == loc)
 				splash_chance += 30 //Same tile? BURN
 			if(victim.species?.acid_blood_dodge_chance)

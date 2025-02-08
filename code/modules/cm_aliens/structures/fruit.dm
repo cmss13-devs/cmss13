@@ -131,6 +131,7 @@
 	playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 	mature = FALSE
 	picked = TRUE
+	recipient.clear_debuffs() // all froots clear debuffs
 	icon_state = consumed_icon_state
 	update_icon()
 	if(!QDELETED(bound_xeno))
@@ -184,7 +185,7 @@
 		bound_xeno.current_fruits.Remove(src)
 
 		var/number_of_fruit = length(bound_xeno.current_fruits)
-		var/datum/action/xeno_action/onclick/plant_resin_fruit/plant_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
+		var/datum/action/xeno_action/onclick/plant_resin_fruit/plant_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
 		plant_action.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
 		plant_action.update_button_icon()
 
@@ -376,7 +377,7 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/delete_fruit()
 	if(bound_xeno)
 		bound_xeno.current_fruits.Remove(src)
-		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
+		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_action(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
 		var/number_of_fruit = length(bound_xeno.current_fruits)
 		prf.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
 		prf.update_button_icon()

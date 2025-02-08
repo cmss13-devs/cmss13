@@ -147,31 +147,9 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.enter_mob(usr, FALSE)
 
-/obj/structure/machinery/computer/view_objectives
-	name = "Intel Database Computer"
-	desc = "An USCM Intel Computer for consulting the current Intel database."
-	icon_state = "terminal1_old"
-	unslashable = TRUE
-	unacidable = TRUE
-
-
-/obj/structure/machinery/computer/view_objectives/attack_hand(mob/living/user)
-	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
-		return FALSE
-	if(!powered())
-		to_chat(user, SPAN_WARNING("This computer has no power!"))
-		return FALSE
-	if(!GLOB.intel_system)
-		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
-		return FALSE
-	if(user.action_busy)
-		return FALSE
-
-	user.mind.view_objective_memories(src)
-
 /datum/techtree/marine/on_tier_change(datum/tier/oldtier)
 	if(tier.tier < 2)
 		return //No need to announce tier updates for tier 1
 	var/name = "ALMAYER DEFCON LEVEL INCREASED"
 	var/input = "THREAT ASSESSMENT LEVEL INCREASED TO LEVEL [tier.tier].\n\nLEVEL [tier.tier] assets have been authorised to handle the situation."
-	marine_announcement(input, name, 'sound/AI/commandreport.ogg')
+	marine_announcement(input, name, 'sound/AI/commandreport.ogg', logging = ARES_LOG_NONE)

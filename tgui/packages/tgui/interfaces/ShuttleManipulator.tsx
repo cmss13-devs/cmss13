@@ -1,6 +1,8 @@
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
-import { TableCell, TableRow } from '../components/Table';
+import { map } from 'common/collections';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 
 interface ShuttleData {
@@ -18,21 +20,27 @@ interface ShuttleData {
 
 interface ShuttleTemplate {
   name: string;
-  shuttle_id: string;
+  id: string;
+  port_id: string;
   description: string;
   admin_notes: string;
 }
 
-interface ShutteManipulatorData {
-  shuttles: Array<ShuttleData>;
-  template_data: Array<ShuttleTemplate>;
+interface TemplateGroup {
+  port_id: string;
   templates: Array<ShuttleTemplate>;
+}
+
+interface ShuttleManipulatorData {
+  shuttles: Array<ShuttleData>;
+  templates: Record<string, TemplateGroup>;
   selected?: ShuttleTemplate;
   existing_shuttle?: ShuttleData;
 }
 
 export const ShuttleManipulator = (props) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
+
   return (
     <Window title="Shuttle Manipulator" width={800} height={600} theme="admin">
       <Window.Content scrollable>
@@ -55,65 +63,57 @@ export const ShuttleManipulator = (props) => {
   );
 };
 
-const ShuttleManipulatorStatus = (props) => {
-  const { act, data } = useBackend<ShutteManipulatorData>();
+export const ShuttleManipulatorStatus = (props) => {
+  const { act, data } = useBackend<ShuttleManipulatorData>();
   const shuttles = data.shuttles ?? [];
   return (
     <Section>
       <Table>
-        <TableRow>
-          <TableCell>Actions</TableCell>
-          <TableCell>Shuttle Name</TableCell>
-          <TableCell>ID</TableCell>
-          <TableCell>Status</TableCell>
-          <TableCell>Mode</TableCell>
-        </TableRow>
-        {shuttles.map((shuttle) => (
-          <Table.Row key={shuttle.id}>
-            <Table.Cell>
+        {shuttles.map((shuttle, i) => (
+          <Table.Row key={i}>
+            <Table.Cell width="11rem">
               <Button
-                content="JMP"
-                key={shuttle.id}
                 onClick={() =>
                   act('jump_to', {
-                    type: 'mobile',
                     id: shuttle.id,
                   })
                 }
-              />
+              >
+                JMP
+              </Button>
               <Button
-                content="Fly"
-                key={shuttle.id}
                 disabled={!shuttle.can_fly}
                 onClick={() =>
                   act('fly', {
                     id: shuttle.id,
                   })
                 }
-              />
+              >
+                Fly
+              </Button>
               {shuttle.has_disable === 1 && shuttle.is_disabled === 0 && (
                 <Button
-                  content="Disable"
-                  key={shuttle.id}
                   disabled={!shuttle.can_fly}
                   onClick={() =>
                     act('lock', {
                       id: shuttle.id,
                     })
                   }
-                />
+                >
+                  Disable
+                </Button>
               )}
               {shuttle.has_disable === 1 && shuttle.is_disabled === 1 && (
                 <Button
-                  content="Enable"
-                  key={shuttle.id}
                   disabled={!shuttle.can_fly}
                   onClick={() =>
                     act('unlock', {
                       id: shuttle.id,
                     })
                   }
-                />
+                >
+                  Enable
+                </Button>
               )}
             </Table.Cell>
             <Table.Cell>{shuttle.name}</Table.Cell>
@@ -125,15 +125,15 @@ const ShuttleManipulatorStatus = (props) => {
                 <>
                   ({shuttle.timeleft})
                   <Button
-                    content="Fast Travel"
-                    key={shuttle.id}
                     disabled={!shuttle.can_fast_travel}
                     onClick={() =>
                       act('fast_travel', {
                         id: shuttle.id,
                       })
                     }
-                  />
+                  >
+                    Fast Travel
+                  </Button>
                 </>
               )}
             </Table.Cell>
@@ -144,80 +144,87 @@ const ShuttleManipulatorStatus = (props) => {
   );
 };
 
-const ShuttleManipulatorTemplates = (props) => {
-  const { act, data } = useBackend<ShutteManipulatorData>();
-  const templateObject = data.template_data;
+export const ShuttleManipulatorTemplates = (props) => {
+  const { act, data } = useBackend<ShuttleManipulatorData>();
+  const templateObject = data.templates;
   const selected = data.selected;
-  const [selectedTemplateId, setSelectedTemplateId] = useLocalState(
-    'templateId',
-    templateObject[0]?.shuttle_id ?? 0
+  const [selectedTemplateId, setSelectedTemplateId] = useState(
+    Object.keys(templateObject)[0],
   );
-  const actualTemplate = templateObject.find(
-    (x) => x.shuttle_id === selectedTemplateId
-  );
+  const actualTemplates = templateObject[selectedTemplateId]?.templates || [];
+
   return (
     <Section>
       <Flex>
         <Flex.Item>
           <Tabs vertical>
-            {templateObject.map((template) => (
+            {map(templateObject, (template, templateId) => (
               <Tabs.Tab
-                key={template.shuttle_id}
-                selected={selectedTemplateId === template.shuttle_id}
-                onClick={() => setSelectedTemplateId(template.shuttle_id)}>
-                {template.name}
+                key={templateId}
+                selected={selectedTemplateId === templateId}
+                onClick={() => setSelectedTemplateId(templateId)}
+              >
+                {template.port_id ?? 'Uncategorized'}
               </Tabs.Tab>
             ))}
           </Tabs>
         </Flex.Item>
-        <Flex.Item>
-          <Box width={2} />
-        </Flex.Item>
-        <Flex.Item grow={1} basis={0}>
-          {actualTemplate && (
-            <Section
-              title={actualTemplate.name}
-              key={actualTemplate.shuttle_id}
-              buttons={
-                <Button
-                  content={
-                    actualTemplate.shuttle_id === selected?.shuttle_id
-                      ? 'Selected'
-                      : 'Select'
-                  }
-                  selected={actualTemplate.shuttle_id === selected?.shuttle_id}
-                  onClick={() =>
-                    act('select_template', {
-                      shuttle_id: actualTemplate.shuttle_id,
-                    })
-                  }
-                />
-              }>
-              <LabeledList>
-                <LabeledList.Item label="Description">
-                  {actualTemplate.description ?? 'None'}
-                </LabeledList.Item>
-                <LabeledList.Item label="Admin Notes">
-                  {actualTemplate.admin_notes ?? 'None'}
-                </LabeledList.Item>
-              </LabeledList>
-            </Section>
-          )}
+        <Flex.Item grow basis={0} ml={2}>
+          {actualTemplates.map((actualTemplate) => {
+            const isSelected = actualTemplate.id === selected?.id;
+            return (
+              <Section
+                title={actualTemplate.name}
+                height="2rem"
+                key={actualTemplate.id}
+                buttons={
+                  <Button
+                    selected={isSelected}
+                    onClick={() =>
+                      act('select_template', {
+                        id: actualTemplate.id,
+                      })
+                    }
+                  >
+                    {isSelected ? 'Selected' : 'Select'}
+                  </Button>
+                }
+              >
+                {(!!actualTemplate.description ||
+                  !!actualTemplate.admin_notes) && (
+                  <LabeledList>
+                    {!!actualTemplate.description && (
+                      <LabeledList.Item label="Description">
+                        {actualTemplate.description}
+                      </LabeledList.Item>
+                    )}
+                    {!!actualTemplate.admin_notes && (
+                      <LabeledList.Item label="Admin Notes">
+                        {actualTemplate.admin_notes}
+                      </LabeledList.Item>
+                    )}
+                  </LabeledList>
+                )}
+              </Section>
+            );
+          })}
         </Flex.Item>
       </Flex>
     </Section>
   );
 };
 
-const ShuttleManipulatorModification = (props) => {
-  const { act, data } = useBackend<ShutteManipulatorData>();
+export const ShuttleManipulatorModification = (props) => {
+  const { act, data } = useBackend<ShuttleManipulatorData>();
   const selected = data.selected;
   const existingShuttle = data.existing_shuttle;
   return (
     <Section>
       {selected ? (
         <>
-          <Section title={selected.name}>
+          <Section
+            title={'Template: ' + selected.name + ' (' + selected.id + ')'}
+          >
             {(!!selected.description || !!selected.admin_notes) && (
               <LabeledList>
                 {!!selected.description && (
@@ -234,21 +241,30 @@ const ShuttleManipulatorModification = (props) => {
             )}
           </Section>
           {existingShuttle ? (
-            <Section title={'Existing Shuttle: ' + existingShuttle.name}>
+            <Section
+              title={
+                'Existing Shuttle: ' +
+                existingShuttle.name +
+                ' (' +
+                existingShuttle.id +
+                ')'
+              }
+            >
               <LabeledList>
                 <LabeledList.Item
                   label="Status"
                   buttons={
                     <Button
-                      content="Jump To"
                       onClick={() =>
                         act('jump_to', {
-                          type: 'mobile',
                           id: existingShuttle.id,
                         })
                       }
-                    />
-                  }>
+                    >
+                      Jump To
+                    </Button>
+                  }
+                >
                   {existingShuttle.status}
                   {!!existingShuttle.timer && <>({existingShuttle.timeleft})</>}
                 </LabeledList.Item>
@@ -257,37 +273,40 @@ const ShuttleManipulatorModification = (props) => {
           ) : (
             <Section title="Existing Shuttle: None" />
           )}
-          <Section title="Status">
-            <Button
-              content="Load"
+          <Section title="Template Actions">
+            <Button.Confirm
               color="good"
               onClick={() =>
                 act('load', {
-                  shuttle_id: selected.shuttle_id,
+                  id: selected.id,
                 })
               }
-            />
+            >
+              Load
+            </Button.Confirm>
             <Button
-              content="Preview"
               onClick={() =>
                 act('preview', {
-                  shuttle_id: selected.shuttle_id,
+                  id: selected.id,
                 })
               }
-            />
+            >
+              Preview
+            </Button>
             <Button
-              content="Replace"
               color="bad"
               onClick={() =>
                 act('replace', {
-                  shuttle_id: selected.shuttle_id,
+                  id: selected.id,
                 })
               }
-            />
+            >
+              Replace
+            </Button>
           </Section>
         </>
       ) : (
-        'No shuttle selected'
+        'No shuttle template selected.'
       )}
     </Section>
   );

@@ -33,4 +33,4 @@ class Filename:
 class Null:
     pass
 
-Constant = str | float | Filename | Typepath | Null | list['Constant'] | dict['Constant', 'Constant']
+Constant = str | int | float | Filename | Typepath | Null | list['Constant'] | dict['Constant', 'Constant']

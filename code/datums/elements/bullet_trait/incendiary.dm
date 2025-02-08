@@ -52,9 +52,9 @@
 		if(projectile_target.stat)
 			to_chat(projectile_target, SPAN_AVOIDHARM("You shrug off some persistent flames."))
 		return
-	projectile_target.adjust_fire_stacks(burn_stacks/2 + round(damage_actual / 4), burn_reagent)
+	projectile_target.adjust_fire_stacks(burn_stacks/2 + floor(damage_actual / 4), burn_reagent)
 	projectile_target.IgniteMob()
 	projectile_target.visible_message(
-		SPAN_DANGER("[projectile_target] bursts into flames!"), \
-		SPAN_XENODANGER("You burst into flames!! Auuugh! Resist to put out the flames!") \
+		SPAN_DANGER("[projectile_target] bursts into flames!"),
+		SPAN_XENODANGER("You burst into flames!! Auuugh! Resist to put out the flames!")
 	)

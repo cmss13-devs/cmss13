@@ -1,6 +1,8 @@
 import { classes } from 'common/react';
-import { useBackend, useLocalState } from '../backend';
-import { Tabs, Box, Section, Stack, Button } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const INFINITE_BUILD_AMOUNT = -1;
@@ -9,7 +11,7 @@ export const ChooseResin = (props) => {
   const { act, data } = useBackend();
   const { constructions, selected_resin } = data;
 
-  const [compact, setCompact] = useLocalState('chooseresin_compact', false);
+  const [compact, setCompact] = useState(false);
 
   let heightScale = 80;
   if (compact) heightScale = 45;
@@ -18,7 +20,8 @@ export const ChooseResin = (props) => {
     <Window
       width={350}
       height={15 + constructions.length * heightScale}
-      theme="hive_status">
+      theme="hive_status"
+    >
       <Window.Content>
         <Section
           title="Structures"
@@ -36,13 +39,15 @@ export const ChooseResin = (props) => {
             />
           }
           scrollable
-          fill>
+          fill
+        >
           <Tabs vertical fluid fill>
             {constructions.map((val, index) => (
               <Tabs.Tab
                 key={index}
                 selected={val.id === selected_resin}
-                onClick={() => act('choose_resin', { type: val.id })}>
+                onClick={() => act('choose_resin', { type: val.id })}
+              >
                 <Stack align="center">
                   <Stack.Item>
                     <span

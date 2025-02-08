@@ -1,7 +1,13 @@
 import { useBackend } from '../backend';
-import { AnimatedNumber, Button, LabeledList, ProgressBar, Section } from '../components';
-import { BeakerContents } from './common/BeakerContents';
+import {
+  AnimatedNumber,
+  Button,
+  LabeledList,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
+import { BeakerContents } from './common/BeakerContents';
 
 const damageTypes = [
   {
@@ -34,6 +40,11 @@ export const Cryo = () => {
 
 const CryoContent = (props) => {
   const { act, data } = useBackend();
+
+  let soundicon = 'volume-high';
+  if (!data.notify) {
+    soundicon = 'volume-xmark';
+  }
   return (
     <>
       <Section title="Occupant">
@@ -48,14 +59,16 @@ const CryoContent = (props) => {
               </LabeledList.Item>
               <LabeledList.Item
                 label="Temperature"
-                color={data.occupant.temperaturestatus}>
+                color={data.occupant.temperaturestatus}
+              >
                 <AnimatedNumber value={data.occupant.bodyTemperature} />
                 {' K'}
               </LabeledList.Item>
               <LabeledList.Item label="Health">
                 <ProgressBar
                   value={data.occupant.health / data.occupant.maxHealth}
-                  color={data.occupant.health > 0 ? 'good' : 'average'}>
+                  color={data.occupant.health > 0 ? 'good' : 'average'}
+                >
                   <AnimatedNumber value={data.occupant.health} />
                 </ProgressBar>
               </LabeledList.Item>
@@ -77,7 +90,8 @@ const CryoContent = (props) => {
               icon={data.isOperating ? 'power-off' : 'times'}
               disabled={data.isOpen}
               onClick={() => act('power')}
-              color={data.isOperating && 'green'}>
+              color={data.isOperating && 'green'}
+            >
               {data.isOperating ? 'On' : 'Off'}
             </Button>
           </LabeledList.Item>
@@ -89,13 +103,34 @@ const CryoContent = (props) => {
               icon="eject"
               disabled={!data.hasOccupant}
               onClick={() => act('eject')}
-              content="eject patient"
-            />
+            >
+              Eject Patient
+            </Button>
             <Button
               icon={data.autoEject ? 'sign-out-alt' : 'sign-in-alt'}
+              width="6rem"
+              tooltipPosition="top"
+              tooltip={
+                'Auto eject is ' + (data.autoEject ? 'enabled.' : 'disabled.')
+              }
               onClick={() => act('autoeject')}
-              content={data.autoEject ? 'Auto' : 'Manual'}
-            />
+            >
+              {data.autoEject ? 'Auto' : 'Manual'}
+            </Button>
+            <Button
+              icon={soundicon}
+              ml="auto"
+              mr="1rem"
+              width="5.5rem"
+              tooltipPosition="top"
+              tooltip={
+                'Auto eject notifications are ' +
+                (data.notify ? 'enabled.' : 'disabled.')
+              }
+              onClick={() => act('notice')}
+            >
+              {data.notify ? 'Notify' : 'Silent'}
+            </Button>
           </LabeledList.Item>
         </LabeledList>
       </Section>
@@ -106,9 +141,11 @@ const CryoContent = (props) => {
             icon="eject"
             disabled={!data.isBeakerLoaded}
             onClick={() => act('ejectbeaker')}
-            content="Eject"
-          />
-        }>
+          >
+            Eject
+          </Button>
+        }
+      >
         <BeakerContents
           beakerLoaded={data.isBeakerLoaded}
           beakerContents={data.beakerContents}

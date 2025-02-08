@@ -102,6 +102,8 @@
 				I = image('icons/mob/hud/sec_hud.dmi', src, "")
 			if(HUNTER_CLAN,HUNTER_HUD)
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
+			if(HOLOCARD_HUD)
+				I = image('icons/mob/hud/marine_hud.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -346,63 +348,53 @@
 
 	return 0
 
-/mob/proc/reset_view(atom/A)
-	if(SEND_SIGNAL(src, COMSIG_MOB_RESET_VIEW, A) & COMPONENT_OVERRIDE_VIEW) return TRUE
+/mob/proc/reset_view(atom/focus)
+	if(SEND_SIGNAL(src, COMSIG_MOB_RESET_VIEW, focus) & COMPONENT_OVERRIDE_VIEW)
+		return TRUE
 
-	if (client)
-		if (istype(A, /atom/movable))
+	if(client)
+		if(istype(focus, /atom/movable))
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = A
+			client.eye = focus
 		else
-			if (isturf(loc))
+			if(isturf(loc))
 				client.eye = client.mob
 				client.perspective = MOB_PERSPECTIVE
 			else
 				client.perspective = EYE_PERSPECTIVE
 				client.eye = loc
 
-		client.mouse_pointer_icon = mouse_icon
+		client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 
-		SEND_SIGNAL(client, COMSIG_CLIENT_RESET_VIEW, A)
+		SEND_SIGNAL(client, COMSIG_CLIENT_RESET_VIEW, focus)
 	return
 
 /mob/proc/reset_observer_view_on_deletion(atom/deleted, force)
 	SIGNAL_HANDLER
 	reset_view(null)
 
-/mob/proc/show_inv(mob/user)
-	user.set_interaction(src)
-	var/dat = {"
-	<B><HR><FONT size=3>[name]</FONT></B>
-	<BR><HR>
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];item=mask'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];item=l_hand'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];item=r_hand'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : "")]
-	<BR>[(internal ? text("<A href='?src=\ref[src];item=internal'>Remove Internal</A>") : "")]
-	<BR><A href='?src=\ref[src];item=pockets'>Empty Pockets</A>
-	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
-	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
-	<BR>"}
-	show_browser(user, dat, name, "mob[name]")
-	return
-
-
-
 /mob/proc/point_to_atom(atom/A, turf/T)
-	//Squad Leaders and above have reduced cooldown and get a bigger arrow
-	if(check_improved_pointing())
-		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src, A)
-	else
+	var/mob/living/carbon/human/mob = src
+	var/datum/squad/squad = null
+	if(ishuman(mob))
+		squad = mob.assigned_squad
+	if(!check_improved_pointing()) //Squad Leaders and above have reduced cooldown and get a bigger arrow
 		recently_pointed_to = world.time + 50
 		new /obj/effect/overlay/temp/point(T, src, A)
+	else
+		recently_pointed_to = world.time + 10
+		if(isnull(squad)) //If they get the big arrow but aren't in a squad, they get the default green arrow
+			new /obj/effect/overlay/temp/point/big(T, src, A)
+		else
+			new /obj/effect/overlay/temp/point/big/squad(T, src, A, squad.equipment_color)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 
 ///Is this mob important enough to point with big arrows?
 /mob/proc/check_improved_pointing()
 	if(HAS_TRAIT(src, TRAIT_LEADERSHIP))
+		return TRUE
+	if(skillcheck(src, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED))
 		return TRUE
 
 /mob/proc/update_flavor_text()
@@ -434,32 +426,26 @@
 	. = ..()
 	if(.)
 		return
+
 	if(href_list["mach_close"])
 		var/t1 = href_list["mach_close"]
 		unset_interaction()
 		close_browser(src, t1)
+		return TRUE
 
 	if(href_list["flavor_more"])
 		show_browser(usr, "<BODY><TT>[replacetext(flavor_text, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
 		onclose(usr, "[name]")
+		return TRUE
+
 	if(href_list["flavor_change"])
 		update_flavor_text()
-	return
+		return TRUE
 
-
-/mob/MouseDrop(mob/M)
-	..()
-	if(M != usr) return
-	if(usr == src) return
-	if(!Adjacent(usr)) return
-	if(!ishuman(M) && !ismonkey(M)) return
-	if(!ishuman(src) && !ismonkey(src)) return
-	if(M.is_mob_incapacitated())
-		return
-	if(M.pulling == src && (M.a_intent & INTENT_GRAB) && M.grab_level == GRAB_AGGRESSIVE)
-		return
-
-	show_inv(M)
+	if(href_list["preference"])
+		if(client)
+			client.prefs.process_link(src, href_list)
+		return TRUE
 
 /mob/proc/swap_hand()
 	hand = !hand
@@ -502,7 +488,13 @@
 		if(!M.can_be_pulled_by(src))
 			return
 	else if(istype(AM, /obj))
+		if(recently_grabbed > world.time)
+			return FALSE
+		recently_grabbed = world.time + 6
 		AM.add_fingerprint(src)
+		animation_attack_on(AM)
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		flick_attack_overlay(AM, "grab")
 
 	if(!QDELETED(AM.pulledby) && !QDELETED(M))
 		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
@@ -520,11 +512,11 @@
 	var/refid = REF(src)
 	. += {"
 		<br><font size='1'>
-			BRUTE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
-			FIRE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
-			TOXIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
-			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
-			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
+			BRUTE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
+			FIRE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
+			TOXIN:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
+			OXY:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
+			CLONE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
 		</font>
 	"}
 
@@ -566,6 +558,7 @@
 		msg_admin_attack("[key_name(src)] grabbed [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 		if(!no_msg)
+			animation_attack_on(M)
 			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)
 
 		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
@@ -647,19 +640,17 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.
 /mob/proc/jittery_process()
-	var/jittering_old_x = pixel_x
-	var/jittering_old_y = pixel_y
 	is_jittery = 1
 	while(jitteriness > 100)
 		var/amplitude = min(4, jitteriness / 100)
-		pixel_x = jittering_old_x + rand(-amplitude, amplitude)
-		pixel_y = jittering_old_y + rand(-amplitude/3, amplitude/3)
+		pixel_x = old_x + rand(-amplitude, amplitude)
+		pixel_y = old_y + rand(-amplitude/3, amplitude/3)
 
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_jittery = 0
-	pixel_x = jittering_old_x
-	pixel_y = jittering_old_y
+	pixel_x = old_x
+	pixel_y = old_y
 
 //handles up-down floaty effect in space
 /mob/proc/make_floating(n)
@@ -694,7 +685,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(client.moving) return 0
+	if(client?.moving) return 0
 	if(stat==2) return 0
 	if(anchored) return 0
 	if(monkeyizing) return 0
@@ -803,7 +794,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else
 		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
 
-	if(valid_objects.len == 1) //Yanking out last object - removing verb.
+	if(length(valid_objects) == 1) //Yanking out last object - removing verb.
 		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))
@@ -930,7 +921,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			conga_line += S.buckled
 	while(!end_of_conga)
 		var/atom/movable/A = S.pulling
-		if(A in conga_line || A.anchored) //No loops, nor moving anchored things.
+		if((A in conga_line) || A.anchored) //No loops, nor moving anchored things.
 			end_of_conga = TRUE
 			break
 		conga_line += A
@@ -1001,15 +992,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 				GLOB.alive_mob_list -= src
 				GLOB.dead_mob_list += src
 	return ..()
-
-/mob/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(href_list["preference"])
-		if(client)
-			client.prefs.process_link(src, href_list)
-		return TRUE
 
 /mob/proc/reset_perspective(atom/A)
 	if(!client)

@@ -39,6 +39,10 @@
 	plane = RENDER_PLANE_GAME
 	render_relay_plane = RENDER_PLANE_MASTER
 
+/atom/movable/screen/plane_master/rendering_plate/game_world/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	add_filter("displacer", 1, displacement_map_filter(render_source = DISPLACEMENT_PLATE_RENDER_TARGET, size = 10))
+
 ///render plate for OOC stuff like ghosts, hud-screen effects, etc
 /atom/movable/screen/plane_master/rendering_plate/non_game
 	name = "non-game rendering plate"
@@ -68,6 +72,14 @@
 	relay.render_source = render_target
 	relay.plane = relay_plane
 	relay.layer = (plane + abs(LOWEST_EVER_PLANE))*0.5 //layer must be positive but can be a decimal
+
+	#if MIN_COMPILER_VERSION == 516
+		#error Default relay loc should be "1,1".
+	#endif
+
+	if(mymob.client?.byond_version > 515)
+		relay.screen_loc = "1,1"
+
 	if(blend_mode_override)
 		relay.blend_mode = blend_mode_override
 	else

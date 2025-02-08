@@ -1,7 +1,8 @@
 /obj/structure/vulture_spotter_tripod
 	name = "\improper M707 spotting tripod"
 	desc = "A tripod for an M707 anti-materiel rifle's spotting scope."
-	icon_state = "vulture_tripod"
+	icon_state = "vulture_tripod_deployed"
+	icon = 'icons/obj/items/binoculars.dmi'
 	density = TRUE
 	anchored = TRUE
 	unacidable = TRUE
@@ -166,7 +167,7 @@
 		skillless = TRUE
 
 	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
-	icon_state = "vulture_scope"
+	icon_state = "vulture_tripod_deployed"
 	setDir(user.dir)
 	bound_rifle = scope.bound_rifle
 	scope_attached = TRUE
@@ -183,7 +184,10 @@
 	unscope()
 	scope_attached = FALSE
 	desc = initial(desc) + " Though, it doesn't seem to have one attached yet."
-	new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
+	if(skillless)
+		new /obj/item/device/vulture_spotter_scope/skillless(get_turf(src), bound_rifle)
+	else
+		new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
 
 /// Handler for user folding up the tripod, picking it up
 /obj/structure/vulture_spotter_tripod/proc/fold_up(mob/user)
@@ -310,6 +314,7 @@
 	tripod = WEAKREF(spotting_tripod)
 
 /datum/action/vulture_tripod_unscope/action_activate()
+	. = ..()
 	if(!tripod)
 		return
 

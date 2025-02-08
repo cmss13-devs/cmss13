@@ -1,18 +1,18 @@
 import { useBackend } from '../backend';
-import { Window } from '../layouts';
 import { Box, Divider, Flex, Stack } from '../components';
+import { Window } from '../layouts';
 import { CasSim } from './CasSim';
-import { MfdPanel, MfdProps } from './MfdPanels/MultifunctionDisplay';
+import { Dpad } from './common/Dpad';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
-import { MapMfdPanel } from './MfdPanels/MapPanel';
-import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
-import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
-import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
+import { MapMfdPanel } from './MfdPanels/MapPanel';
+import { MfdPanel, MfdProps } from './MfdPanels/MultifunctionDisplay';
 import { mfdState } from './MfdPanels/stateManagers';
 import { otherMfdState } from './MfdPanels/stateManagers';
-import { Dpad } from './common/Dpad';
+import { SupportMfdPanel } from './MfdPanels/SupportPanel';
+import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
+import { WeaponMfdPanel } from './MfdPanels/WeaponPanel';
 
 export interface DropshipProps {
   equipment_data: Array<DropshipEquipment>;
@@ -76,7 +76,7 @@ const DrawShipOutline = () => {
       x2={xLookup(pos1)}
       y2={yLookup(pos1)}
       stroke={OutlineColor}
-      stroke-width={OutlineWidth}
+      strokeWidth={OutlineWidth}
     />
   );
   return (
@@ -103,15 +103,16 @@ const DrawWeapon = (props: { readonly weapon: DropshipEquipment }) => {
         r={10}
         fill={data.selected_eqp === props.weapon.mount_point ? 'blue' : 'red'}
         onClick={() =>
-          act('select_equipment', { 'equipment_id': props.weapon.eqp_tag })
+          act('select_equipment', { equipment_id: props.weapon.eqp_tag })
         }
       />
       <text
         x={x + (index < 2 ? -25 : 25)}
         y={y}
-        text-anchor="middle"
+        textAnchor="middle"
         fontWeight="bold"
-        fill={OutlineColor}>
+        fill={OutlineColor}
+      >
         {props.weapon.shorthand}
       </text>
     </>
@@ -165,7 +166,8 @@ const DropshipWeaponsPanel = (props: {
           <Flex
             className="WeaponPanelLeft"
             direction="column"
-            justify="space-around">
+            justify="space-around"
+          >
             <Flex.Item>
               <WeaponStatsPanel
                 slot={2}
@@ -206,7 +208,8 @@ const DropshipWeaponsPanel = (props: {
           <Flex
             className="WeaponPanelRight"
             direction="column"
-            justify="space-around">
+            justify="space-around"
+          >
             <Flex.Item>
               <WeaponStatsPanel
                 slot={3}
@@ -256,7 +259,8 @@ const FiremissionsSimMfdPanel = (props: MfdProps) => {
           children: 'BACK',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <FiremissionSimulationPanel />
     </MfdPanel>
   );
@@ -299,7 +303,8 @@ const BaseMfdPanel = (props: MfdProps) => {
           children: otherPanelState !== 'camera' ? 'CAMS' : undefined,
           onClick: () => setPanelState('camera'),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         <div className="welcome-page">
           <h1>U.S.C.M.</h1>
@@ -343,7 +348,7 @@ export const DropshipWeaponsConsole = () => {
     <Window height={700} width={1420}>
       <Window.Content>
         <Box className="WeaponsConsoleBackground">
-          <Stack horizontal className="WeaponsConsole">
+          <Stack className="WeaponsConsole">
             <Stack.Item>
               <PrimaryPanel
                 panelStateId="left-screen"

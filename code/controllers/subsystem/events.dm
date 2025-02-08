@@ -35,8 +35,8 @@ SUBSYSTEM_DEF(events)
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 
-	while(currentrun.len)
-		var/datum/thing = currentrun[currentrun.len]
+	while(length(currentrun))
+		var/datum/thing = currentrun[length(currentrun)]
 		currentrun.len--
 		if(thing)
 			thing.process()
@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(events)
 	var/normal = ""
 
 	for(var/datum/round_event_control/E in SSevents.control)
-		dat = "<BR><A href='?src=[REF(src)];[HrefToken()];force_event=[REF(E)]'>[E]</A>"
+		dat = "<BR><A href='byond://?src=[REF(src)];[HrefToken()];force_event=[REF(E)]'>[E]</A>"
 		normal += dat
 
 	dat = normal

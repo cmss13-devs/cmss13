@@ -6,6 +6,10 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 /obj/item/stack/fulton
 	name = "fulton recovery device"
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "fulton"
 	amount = 20
 	max_amount = 20
@@ -23,6 +27,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
 	var/datum/turf_reservation/reservation
+	var/faction
 
 /obj/item/stack/fulton/New(loc, amount, atom_to_attach)
 	..()
@@ -57,7 +62,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 		return
 
 /obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob)
-	return
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)
@@ -112,7 +117,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 				break
 
 	if(can_attach)
-		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."), \
+		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."),
 					SPAN_WARNING("You begin to attach [src] onto [target_atom]."))
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!amount || get_dist(target_atom,user) > 1)
@@ -125,6 +130,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 			F.add_fingerprint(user)
 			user.count_niche_stat(STATISTICS_NICHE_FULTON)
 			use(1)
+			F.faction = user.faction
 			F.deploy_fulton()
 	else
 		to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom]."))
@@ -143,8 +149,8 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	reservation = SSmapping.request_turf_block_reservation(3, 3, 1, turf_type_override = /turf/open/space)
 	var/turf/bottom_left_turf = reservation.bottom_left_turfs[1]
 	var/turf/top_right_turf = reservation.top_right_turfs[1]
-	var/middle_x = bottom_left_turf.x + Floor((top_right_turf.x - bottom_left_turf.x) / 2)
-	var/middle_y = bottom_left_turf.y + Floor((top_right_turf.y - bottom_left_turf.y) / 2)
+	var/middle_x = bottom_left_turf.x + floor((top_right_turf.x - bottom_left_turf.x) / 2)
+	var/middle_y = bottom_left_turf.y + floor((top_right_turf.y - bottom_left_turf.y) / 2)
 	var/turf/space_tile = locate(middle_x, middle_y, bottom_left_turf.z)
 	if(!space_tile)
 		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))

@@ -10,7 +10,7 @@
 	if(species.slowdown)
 		. += species.slowdown
 
-	if(embedded_items.len > 0)
+	if(length(embedded_items) > 0)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
 	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply MST effects
@@ -105,12 +105,6 @@
 	//Can we act
 	if(is_mob_restrained()) return 0
 
-	//Do we have a working jetpack
-	if(istype(back, /obj/item/tank/jetpack))
-		var/obj/item/tank/jetpack/J = back
-		if(((!check_drift) || (check_drift && J.stabilization_on)) && (body_position == STANDING_UP) && (J.allow_thrust(0.01, src)))
-			inertia_dir = 0
-			return 1
 // if(!check_drift && J.allow_thrust(0.01, src))
 // return 1
 
@@ -138,7 +132,7 @@
 	if (!r_hand) prob_slip -= 2
 	else if(r_hand.w_class <= SIZE_SMALL) prob_slip--
 
-	prob_slip = round(prob_slip)
+	prob_slip = floor(prob_slip)
 	return(prob_slip)
 
 /// Updates [TRAIT_FLOORED] based on whether the mob has appropriate limbs to stand or not

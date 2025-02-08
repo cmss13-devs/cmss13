@@ -6,15 +6,24 @@
 /obj/item/weapon/gun/flamer
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/flamers.dmi'
 	icon_state = "m240"
 	item_state = "m240"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/flamer_mouse.dmi'
+
+	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
+	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
+	fire_sound = ""
+
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15
-	fire_sound = ""
-	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
-	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 	var/fuel_pressure = 1 //Pressure setting of the attached fueltank, controls how much fuel is used per tile
@@ -64,15 +73,16 @@
 /obj/item/weapon/gun/flamer/get_examine_text(mob/user)
 	. = ..()
 	if(current_mag)
-		. += "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!"
+		. += "The fuel gauge shows the current tank is [floor(current_mag.get_ammo_percent())]% full!"
 	else
 		. += "There's no tank in [src]!"
 
-/obj/item/weapon/gun/flamer/update_icon()
+/obj/item/weapon/gun/flamer/update_icon(mob/user)
 	..()
 
 	// Have to redo this here because we don't want the empty sprite when the tank is empty (just when it's not in the gun)
 	var/new_icon_state = base_gun_icon
+
 	if(has_empty_icon && !current_mag)
 		new_icon_state += "_e"
 	icon_state = new_icon_state
@@ -136,7 +146,13 @@
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
-		unleash_flame(target, user)
+		if(istype(current_mag, /obj/item/ammo_magazine/flamer_tank/smoke))
+			unleash_smoke(target, user)
+		else
+			if(current_mag.reagents.has_reagent("stablefoam"))
+				unleash_foam(target, user)
+			else
+				unleash_flame(target, user)
 		return AUTOFIRE_CONTINUE
 	return NONE
 
@@ -197,7 +213,7 @@
 /obj/item/weapon/gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
@@ -226,9 +242,122 @@
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
 
+/obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
+	last_fired = world.time
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
+		return
+
+	var/source_turf = get_turf(user)
+	var/smoke_range = 5 // the max range the smoke will travel
+	var/distance = 0 // the distance traveled
+	var/use_multiplier = 3 // if you want to increase the ammount of units drained from the tank
+	var/units_in_smoke = 35 // the smoke overlaps a little so this much is probably already good
+
+	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+	var/datum/reagents/to_disperse = new() // this is the chemholder that will be used by the chemsmoke
+	to_disperse.add_reagent(chemical.id, units_in_smoke)
+	to_disperse.my_atom = src
+
+	var/turf/turfs[] = get_line(user, target, FALSE)
+	var/turf/first_turf = turfs[1]
+	var/turf/second_turf = turfs[2]
+	var/ammount_required = (min(length(turfs), smoke_range) * use_multiplier) // the ammount of units that this click requires
+	for(var/turf/turf in turfs)
+
+		if(chemical.volume < ammount_required)
+			smoke_range = floor(chemical.volume / use_multiplier)
+
+		if(distance >= smoke_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/smoke/chem/checker = new()
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			if(blocked)
+				break
+
+		playsound(turf, 'sound/effects/smoke.ogg', 25, 1)
+		if(turf != first_turf && turf != second_turf) // we skip the first tile and make it small on the second so the smoke doesn't touch the user
+			var/datum/effect_system/smoke_spread/chem/smoke = new()
+			smoke.set_up(to_disperse, 5, loca = turf)
+			smoke.start()
+		if(turf == second_turf)
+			var/datum/effect_system/smoke_spread/chem/smoke = new()
+			smoke.set_up(to_disperse, 1, loca = turf)
+			smoke.start()
+		sleep(4)
+
+		distance++
+
+	var/ammount_used = distance * use_multiplier // the actual ammount of units that we used
+
+	chemical.volume = max(chemical.volume - ammount_used, 0)
+
+	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
+
+	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of smoke, empty the tank
+		current_mag.reagents.clear_reagents()
+
+	show_percentage(user)
+
+/obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
+	last_fired = world.time
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
+		return
+
+	var/source_turf = get_turf(user)
+	var/foam_range = 6 // the max range the foam will travel
+	var/distance = 0 // the distance traveled
+	var/use_multiplier = 3 // if you want to increase the ammount of foam drained from the tank
+	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+
+	var/turf/turfs[] = get_line(user, target, FALSE)
+	var/turf/first_turf = turfs[1]
+	var/ammount_required = (min(length(turfs), foam_range) * use_multiplier) // the ammount of units that this click requires
+	for(var/turf/turf in turfs)
+
+		if(chemical.volume < ammount_required)
+			foam_range = floor(chemical.volume / use_multiplier)
+
+		if(distance >= foam_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/foam/checker = new()
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			if(blocked)
+				break
+
+		if(turf == first_turf) // this is so the first foam tile doesn't expand and touch the user
+			var/datum/effect_system/foam_spread/foam = new()
+			foam.set_up(0.5, turf, metal_foam = FOAM_METAL_TYPE_IRON)
+			foam.start()
+		else
+			var/datum/effect_system/foam_spread/foam = new()
+			foam.set_up(1, turf, metal_foam = FOAM_METAL_TYPE_IRON)
+			foam.start()
+		sleep(2)
+
+		distance++
+
+	var/ammount_used = distance * use_multiplier // the actual ammount of units that we used
+
+	chemical.volume = max(chemical.volume - ammount_used, 0)
+
+	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
+
+	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
+		current_mag.reagents.clear_reagents()
+
+	show_percentage(user)
+
 /obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)
 	if(current_mag)
-		to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains!"))
+		to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
 /obj/item/weapon/gun/flamer/underextinguisher
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
@@ -259,7 +388,7 @@
 	icon_state = "m240t"
 	item_state = "m240t"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 	current_mag = null
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
 
@@ -478,15 +607,7 @@
 		INVOKE_ASYNC(FS, TYPE_PROC_REF(/datum/flameshape, handle_fire_spread), src, fire_spread_amount, burn_dam, fuel_pressure)
 	//Apply fire effects onto everyone in the fire
 
-	// Melt a single layer of snow
-	if (istype(loc, /turf/open/snow))
-		var/turf/open/snow/S = loc
-
-		if (S.bleed_layer > 0)
-			S.bleed_layer--
-			S.update_icon(1, 0)
-
-	//scorch mah grass HNNGGG
+	//scorch mah grass HNNGGG and muh SNOW hhhhGGG
 	if (istype(loc, /turf/open))
 		var/turf/open/scorch_turf_target = loc
 		if(scorch_turf_target.scorchable)
@@ -536,7 +657,7 @@
 		if(!(sig_result & COMPONENT_NO_IGNITE))
 			switch(fire_variant)
 				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-					ignited_morb.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+					ignited_morb.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 				else
 					ignited_morb.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
@@ -594,7 +715,7 @@
 		return
 
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
-	var/burn_damage = round(burnlevel * 0.5)
+	var/burn_damage = floor(burnlevel * 0.5)
 	switch(fire_variant)
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
 			burn_damage = burnlevel
@@ -613,7 +734,7 @@
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+				M.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 			else
 				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 

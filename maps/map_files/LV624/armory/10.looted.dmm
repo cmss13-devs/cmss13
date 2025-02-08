@@ -1,21 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "b" = (
 /obj/item/stack/sheet/wood,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "c" = (
 /obj/item/stack/tile/plasteel,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellow"
-	},
+/turf/open/floor/whiteyellow/east,
 /area/lv624/lazarus/main_hall)
 "d" = (
 /obj/item/phone{
@@ -32,38 +25,26 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/open/floor{
-	icon_state = "wood"
-	},
+/turf/open/floor/wood,
 /area/lv624/lazarus/main_hall)
 "e" = (
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "f" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowcorner"
-	},
+/turf/open/floor/whiteyellowcorner/east,
 /area/lv624/lazarus/main_hall)
 "g" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "whiteyellow"
-	},
+/turf/open/floor/whiteyellow/north,
 /area/lv624/lazarus/main_hall)
 "h" = (
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
 /obj/item/stack/tile/plasteel,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "i" = (
 /turf/closed/wall/r_wall,
@@ -74,82 +55,50 @@
 "k" = (
 /obj/structure/machinery/light/small,
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
 "l" = (
-/turf/open/floor{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
 "m" = (
 /obj/structure/target/syndicate,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
+/turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
 "n" = (
 /obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "o" = (
 /obj/item/stack/tile/plasteel,
-/turf/open/floor{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
 "p" = (
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "q" = (
-/turf/open/floor{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/platingdmg3,
 /area/lv624/lazarus/armory)
 "r" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
+/turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
 "s" = (
 /obj/structure/machinery/deployable/barrier,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "t" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
+/turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
 "u" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	name = "Secure Vault APC";
-	pixel_x = -28;
-	start_charge = 0
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "w" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "y" = (
 /obj/structure/window/reinforced{
@@ -160,10 +109,7 @@
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "red"
-	},
+/turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
 "z" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -173,18 +119,14 @@
 	dir = 1
 	},
 /obj/item/stack/sheet/metal,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "B" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "T" = (
 /obj/structure/machinery/door_control{
@@ -193,15 +135,11 @@
 	pixel_x = -26;
 	range = 200
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "Y" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 
 (1,1,1) = {"

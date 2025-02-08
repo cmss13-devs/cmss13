@@ -23,11 +23,12 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 /datum/tgui_macro/ui_data(mob/user)
 	. = list()
-	.["keybinds"] = prefs.key_bindings
+	.["player_keybinds"] = prefs.key_bindings
 
 /datum/tgui_macro/ui_static_data(mob/user)
 	. = list()
 	.["glob_keybinds"] = GLOB.ui_data_keybindings
+	.["byond_keymap"] = GLOB._kbMap
 
 /datum/tgui_macro/ui_state(mob/user)
 	return GLOB.always_state

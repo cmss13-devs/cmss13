@@ -7,14 +7,13 @@
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-
-	damage = 55
+	damage = 72
 	penetration = ARMOR_PENETRATION_TIER_1
 	accuracy = HIT_ACCURACY_TIER_1
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
-
+	damage = 55
 	shrapnel_chance = 0
 	damage_falloff = 0
 	accurate_range = 12
@@ -48,7 +47,7 @@
 
 /datum/ammo/bullet/revolver/marksman/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+	M.AddComponent(/datum/component/status_effect/toxic_buildup, acid_per_hit)
 
 /datum/ammo/bullet/revolver/marksman/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
@@ -117,6 +116,9 @@
 	damage = 45
 
 	penetration = ARMOR_PENETRATION_TIER_3
+
+/datum/ammo/bullet/revolver/small/cmb
+	damage = 60
 
 /datum/ammo/bullet/revolver/small/hollowpoint
 	name = "small hollowpoint revolver bullet"

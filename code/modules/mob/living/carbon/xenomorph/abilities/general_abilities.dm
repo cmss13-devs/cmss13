@@ -7,9 +7,17 @@
 	plasma internally. Bear that in mind. -4khan
 */
 
+/mob/living/carbon/xenomorph/proc/set_selected_ability(datum/action/xeno_action/activable/ability)
+	if(!ability)
+		selected_ability = null
+		client?.set_right_click_menu_mode(shift_only = FALSE)
+		return
+	selected_ability = ability
+	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
+		client?.set_right_click_menu_mode(shift_only = TRUE)
+
 /datum/action/xeno_action/onclick/plant_weeds
 	name = "Plant Weeds (75)"
-	ability_name = "Plant Weeds"
 	action_icon_state = "plant_weeds"
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
@@ -75,7 +83,6 @@
 /datum/action/xeno_action/activable/secrete_resin
 	name = "Secrete Resin"
 	action_icon_state = "secrete_resin"
-	ability_name = "secrete resin"
 	var/thick = FALSE
 	var/make_message = TRUE
 	macro_path = /datum/action/xeno_action/verb/verb_secrete_resin
@@ -108,7 +115,6 @@
 /datum/action/xeno_action/activable/info_marker
 	name = "Mark Resin"
 	action_icon_state = "mark"
-	ability_name = "mark resin"
 	macro_path = /datum/action/xeno_action/verb/verb_mark_resin
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
@@ -129,7 +135,6 @@
 /datum/action/xeno_action/activable/corrosive_acid
 	name = "Corrosive Acid (100)"
 	action_icon_state = "corrosive_acid"
-	ability_name = "corrosive acid"
 	var/acid_plasma_cost = 100
 	var/level = 2 //level of the acid strength
 	var/acid_type = /obj/effect/xenomorph/acid
@@ -185,7 +190,7 @@
 /datum/action/xeno_action/activable/pounce
 	name = "Pounce"
 	action_icon_state = "pounce"
-	ability_name = "pounce"
+	var/action_text = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 40
@@ -295,7 +300,9 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
+
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_SIGHT_IGNORE_REST) && !xeno.check_state())
+		return
 
 	if(xeno.observed_xeno)
 		return
@@ -303,7 +310,7 @@
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will call on_zoom_out()
 		return
-	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
+	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."),
 		SPAN_NOTICE("We start focusing our sight to look off into the distance."), null, 5)
 	if (should_delay)
 		if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
@@ -320,12 +327,15 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
+	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."),
 	SPAN_NOTICE("We stop looking off into the distance."), null, 5)
 	if(movement_slowdown)
 		xeno.speed_modifier -= movement_slowdown
 		xeno.recalculate_speed()
 	button.icon_state = "template"
+
+/datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_in()
+	return
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
@@ -343,7 +353,7 @@
 /datum/action/xeno_action/activable/spray_acid
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
-	ability_name = "spray acid"
+	var/action_text = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
 
@@ -364,7 +374,6 @@
 /datum/action/xeno_action/activable/transfer_plasma
 	name = "Transfer Plasma"
 	action_icon_state = "transfer_plasma"
-	ability_name = "transfer plasma"
 	var/plasma_transfer_amount = 50
 	var/transfer_delay = 20
 	var/max_range = 2
@@ -387,9 +396,10 @@
 	listen_signal = COMSIG_KB_XENO_HIDE
 
 /datum/action/xeno_action/onclick/xenohide/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
-		return TRUE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
+		if(!(SEND_SIGNAL(xeno, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
+			return TRUE
 
 /// remove hide and apply modified attack cooldown
 /datum/action/xeno_action/onclick/xenohide/proc/post_attack()
@@ -419,7 +429,6 @@
 /datum/action/xeno_action/activable/place_construction
 	name = "Order Construction (400)"
 	action_icon_state = "morph_resin"
-	ability_name = "order construction"
 	macro_path = /datum/action/xeno_action/verb/place_construction
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
@@ -430,7 +439,6 @@
 /datum/action/xeno_action/activable/xeno_spit
 	name = "Xeno Spit"
 	action_icon_state = "xeno_spit"
-	ability_name = "xeno spit"
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -447,7 +455,6 @@
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"
-	ability_name = "bombard"
 	action_icon_state = "bombard"
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
@@ -465,11 +472,11 @@
 /datum/action/xeno_action/activable/tail_stab
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"
-	ability_name = "tail stab"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+	var/stab_range = 2
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
 
@@ -480,6 +487,7 @@
 	listen_signal = COMSIG_KB_XENO_EVOLVE
 
 /datum/action/xeno_action/onclick/evolve/action_activate()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.do_evolve()
 
@@ -494,7 +502,6 @@
 /datum/action/xeno_action/onclick/tacmap
 	name = "View Tactical Map"
 	action_icon_state = "toggle_queen_zoom"
-	ability_name = "view tacmap"
 
 	var/mob/living/carbon/xenomorph/queen/tracked_queen
 	var/hivenumber
@@ -561,3 +568,24 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_tacmap()
 	return ..()
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision
+	name = "Toggle Meson Vision"
+	action_icon_state = "project_xeno"
+	plasma_cost = 0
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/enable_toggle()
+	. = ..()
+	owner.sight |= SEE_TURFS
+
+/datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
+	. = ..()
+	owner.sight &= ~SEE_TURFS
+
+/mob/living/carbon/xenomorph/proc/add_abilities()
+	if(!base_actions)
+		return
+	for(var/action_path in base_actions)
+		give_action(src, action_path)

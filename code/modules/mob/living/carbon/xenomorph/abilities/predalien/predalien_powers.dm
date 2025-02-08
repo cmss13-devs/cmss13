@@ -12,9 +12,8 @@
 
 	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
-	xeno.create_shriekwave(color = "#FF0000")
-
-	for(var/mob/living/carbon/carbon in view(7, xeno))
+	xeno.create_shriekwave(7) //Adds the visual effect. Wom wom wom, 7 shriekwaves
+	FOR_DVIEW(var/mob/living/carbon/carbon, 7, xeno, HIDE_INVISIBLE_OBSERVER)
 		if(ishuman(carbon))
 			var/mob/living/carbon/human/human = carbon
 			human.disable_special_items()
@@ -30,6 +29,7 @@
 			if(!istype(behavior))
 				continue
 			new /datum/effects/xeno_buff(carbon, xeno, ttl = (0.25 SECONDS * behavior.kills + 3 SECONDS), bonus_damage = bonus_damage_scale * behavior.kills, bonus_speed = (bonus_speed_scale * behavior.kills))
+	FOR_DVIEW_END
 
 	apply_cooldown()
 	return ..()
@@ -118,7 +118,7 @@
 		xeno.anchored = FALSE
 		unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
 
-		return ..()
+	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush/use_ability(atom/A)
@@ -150,6 +150,7 @@
 	predatoralien.recalculate_armor()
 	playsound(predatoralien, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 	apply_cooldown()
+	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush/proc/remove_rush_effects()
@@ -181,7 +182,7 @@
 	if(!xeno.check_state())
 		return
 
-	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_xeno_action_by_type(xeno, /datum/action/xeno_action/activable/feralfrenzy)
+	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
 	if(!guttype)
 		return
 
@@ -190,7 +191,7 @@
 		guttype.targeting = AOETARGETGUT
 		to_chat(xeno, SPAN_XENOWARNING("We will now attack everyone around us during a Feral Frenzy."))
 	else
-		action_icon_result = "gut"
+		action_icon_result = "rav_shard_shed"
 		guttype.targeting = SINGLETARGETGUT
 		to_chat(xeno, SPAN_XENOWARNING("We will now focus our Feral Frenzy on one person!"))
 
@@ -219,7 +220,6 @@
 		return
 
 	if(predalien_smash.can_not_harm(affected_atom) || !ismob(affected_atom))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 
@@ -249,7 +249,7 @@
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))
 
-	return TRUE
+	return ..()
 
 /mob/living/carbon/xenomorph/predalien/stop_pulling()
 	if(isliving(pulling) && smashing)
@@ -278,7 +278,7 @@
 				return
 
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
-			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg and slams them onto the ground!"), \
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg and slams them onto the ground!"),
 			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg and slam them onto the ground!")) // more flair
 			smashing = TRUE
 			living_mob.drop_held_items()

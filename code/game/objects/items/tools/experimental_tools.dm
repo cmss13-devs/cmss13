@@ -1,7 +1,7 @@
 /obj/item/tool/crew_monitor
 	name = "crew monitor"
 	desc = "A tool used to get coordinates to deployed personnel. It was invented after it was found out 3/4 command officers couldn't read numbers."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "crew_monitor"
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
@@ -27,7 +27,7 @@
 /obj/item/clothing/suit/auto_cpr
 	name = "autocompressor" //autocompressor
 	desc = "A device that gives regular compression to the victim's ribcage, used in case of urgent heart issues.\nClick a person with it to place it on them."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "autocomp"
 	item_state = "autocomp"
 	item_state_slots = list(WEAR_JACKET = "autocomp")
@@ -42,6 +42,9 @@
 	var/pump_cost = 20
 	var/obj/item/cell/pdcell = null
 	movement_compensation = 0
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/objects.dmi',
+	)
 
 /obj/item/clothing/suit/auto_cpr/Initialize(mapload, ...)
 	. = ..()
@@ -107,7 +110,7 @@
 		icon_state = "autocomp"
 	if(pdcell && pdcell.charge)
 		overlays.Cut()
-	switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+	switch(floor(pdcell.charge * 100 / pdcell.maxcharge))
 		if(1 to 32)
 			overlays += "cpr_batt_lo"
 		if(33 to 65)
@@ -118,7 +121,7 @@
 
 /obj/item/clothing/suit/auto_cpr/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("It has [round(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
+	. += SPAN_NOTICE("It has [floor(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
 
 
 
@@ -157,7 +160,7 @@
 		end_cpr()
 		return PROCESS_KILL
 
-	if(world.time > last_pump + 10 SECONDS)
+	if(world.time > last_pump + 7.5 SECONDS)
 		last_pump = world.time
 		if(H.stat == UNCONSCIOUS)
 			var/suff = min(H.getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dying.
@@ -190,7 +193,11 @@
 /obj/item/tool/portadialysis
 	name = "portable dialysis machine"
 	desc = "A man-portable dialysis machine, with a small internal battery that can be recharged. Filters out all foreign compounds from the bloodstream of whoever it's attached to, but also typically ends up removing some blood as well."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "portadialysis"
 	item_state = "syringe_0"
 	flags_equip_slot = SLOT_WAIST
@@ -230,7 +237,7 @@
 		overlays += "+filtering"
 
 	if(pdcell && pdcell.charge)
-		switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+		switch(floor(pdcell.charge * 100 / pdcell.maxcharge))
 			if(85 to INFINITY)
 				overlays += "dialysis_battery_100"
 			if(60 to 84)
@@ -249,7 +256,7 @@
 /obj/item/tool/portadialysis/get_examine_text(mob/user)
 	. = ..()
 	var/currentpercent = 0
-	currentpercent = round(pdcell.charge * 100 / pdcell.maxcharge)
+	currentpercent = floor(pdcell.charge * 100 / pdcell.maxcharge)
 	. += SPAN_INFO("It has [currentpercent]% charge left in its internal battery.")
 
 /obj/item/tool/portadialysis/proc/painful_detach()
@@ -290,7 +297,7 @@
 			return
 
 		if(target == attached) //are we attached to the target?
-			user.visible_message("[user] detaches \the [src] from [attached].", \
+			user.visible_message("[user] detaches \the [src] from [attached].",
 			"You detach \the [src] from [attached].")
 			attached = null
 			filtering = FALSE
@@ -310,17 +317,17 @@
 			attaching = TRUE
 			update_icon()
 			to_chat(target, SPAN_DANGER("[user] is trying to attach \the [src] to you!"))
-			user.visible_message(SPAN_WARNING("[user] starts setting up \the [src]'s needle on [target]'s arm."), \
+			user.visible_message(SPAN_WARNING("[user] starts setting up \the [src]'s needle on [target]'s arm."),
 				SPAN_WARNING("You start setting up \the [src]'s needle on [target]'s arm."))
 			if(!do_after(user, attach_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				user.visible_message(SPAN_WARNING("[user] stops setting up \the [src]'s needle on [target]'s arm."), \
+				user.visible_message(SPAN_WARNING("[user] stops setting up \the [src]'s needle on [target]'s arm."),
 				SPAN_WARNING("You stop setting up \the [src]'s needle on [target]'s arm."))
 				visible_message("\The [src]'s tubing snaps back onto the machine frame.")
 				attaching = FALSE
 				update_icon()
 				return
 
-			user.visible_message("[user] attaches \the [src] to [target].", \
+			user.visible_message("[user] attaches \the [src] to [target].",
 			"You attach \the [src] to [target].")
 			attached = target
 			filtering = TRUE
@@ -379,5 +386,5 @@
 		arms_to_damage -= l_arm
 	if(r_arm.status & LIMB_DESTROYED)
 		arms_to_damage -= r_arm
-	if(arms_to_damage.len)
+	if(length(arms_to_damage))
 		human_to_damage.apply_damage(3, BRUTE, pick(arms_to_damage))

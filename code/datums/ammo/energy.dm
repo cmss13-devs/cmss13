@@ -204,7 +204,7 @@
 
 /datum/ammo/energy/yautja/caster/sphere/stun/proc/do_area_stun(obj/projectile/P)
 	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)
-	for (var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
+	FOR_DVIEW(var/mob/living/carbon/M, src.stun_range, get_turf(P), HIDE_INVISIBLE_OBSERVER)
 		var/stun_time = src.stun_time
 		log_attack("[key_name(M)] was stunned by a plasma immobilizer from [key_name(P.firer)] at [get_area(P)]")
 		if (isyautja(M))
@@ -214,6 +214,7 @@
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
 		M.apply_effect(stun_time, STUN)
 		M.apply_effect(stun_time, WEAKEN)
+	FOR_DVIEW_END
 
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"
@@ -229,7 +230,7 @@
 	if(isxeno(hit_mob))
 		var/mob/living/carbon/xenomorph/xeno = hit_mob
 		xeno.apply_damage(damage * 0.75, BURN)
-		xeno.interference = 30
+		xeno.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /datum/ammo/energy/yautja/rifle/bolt/set_bullet_traits()
 	. = ..()

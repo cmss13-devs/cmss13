@@ -42,17 +42,12 @@
 			for (var/reagent in recipe.reagents)
 				acceptable_reagents |= reagent
 			if (recipe.items)
-				max_n_of_items = max(max_n_of_items,recipe.items.len)
+				max_n_of_items = max(max_n_of_items,length(recipe.items))
 
 		// This will do until I can think of a fun recipe to use dionaea in -
 		// will also allow anything using the holder item to be microwaved into
 		// impure carbon. ~Z
 		acceptable_items |= /obj/item/holder
-
-/obj/structure/machinery/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 //*******************
 //*   Item Adding
@@ -61,25 +56,25 @@
 /obj/structure/machinery/microwave/attackby(obj/item/O as obj, mob/user as mob)
 	if(broken > 0)
 		if(broken == 2 && HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
-			user.visible_message( \
-				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
-				SPAN_NOTICE("You start to fix part of the microwave.") \
+			user.visible_message(
+				SPAN_NOTICE("[user] starts to fix part of the microwave."),
+				SPAN_NOTICE("You start to fix part of the microwave.")
 			)
 			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message( \
-					SPAN_NOTICE("[user] fixes part of the microwave."), \
-					SPAN_NOTICE("You have fixed part of the microwave. Now use a wrench!") \
+				user.visible_message(
+					SPAN_NOTICE("[user] fixes part of the microwave."),
+					SPAN_NOTICE("You have fixed part of the microwave. Now use a wrench!")
 				)
 				src.broken = 1 // Fix it a bit
 		else if(src.broken == 1 && HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) // If it's broken and they're doing the wrench
-			user.visible_message( \
-				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
-				SPAN_NOTICE("You start to fix part of the microwave.") \
+			user.visible_message(
+				SPAN_NOTICE("[user] starts to fix part of the microwave."),
+				SPAN_NOTICE("You start to fix part of the microwave.")
 			)
 			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message( \
-					SPAN_NOTICE("[user] fixes the microwave."), \
-					SPAN_NOTICE("You have fixed the microwave.") \
+				user.visible_message(
+					SPAN_NOTICE("[user] fixes the microwave."),
+					SPAN_NOTICE("You have fixed the microwave.")
 				)
 				icon_state = "mw"
 				broken = 0 // Fix it!
@@ -96,14 +91,14 @@
 		return
 	else if(dirty==100) // The microwave is all dirty so can't be used!
 		if(istype(O, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
-			user.visible_message( \
-				SPAN_NOTICE("[user] starts to clean the microwave."), \
-				SPAN_NOTICE("You start to clean the microwave.") \
+			user.visible_message(
+				SPAN_NOTICE("[user] starts to clean the microwave."),
+				SPAN_NOTICE("You start to clean the microwave.")
 			)
 			if (do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-				user.visible_message( \
-					SPAN_NOTICE("[user]  has cleaned  the microwave."), \
-					SPAN_NOTICE("You have cleaned the microwave.") \
+				user.visible_message(
+					SPAN_NOTICE("[user]  has cleaned  the microwave."),
+					SPAN_NOTICE("You have cleaned the microwave.")
 				)
 				dirty = 0 // It's clean!
 				broken = 0 // just to be sure
@@ -115,22 +110,22 @@
 	else if(operating)
 		to_chat(user, SPAN_DANGER("It's running!"))
 	else if(is_type_in_list(O,acceptable_items))
-		if (contents.len>=max_n_of_items)
+		if (length(contents)>=max_n_of_items)
 			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))
 			return 1
 		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
 			var/obj/item/stack/S = O
 			new O.type (src)
 			S.use(1)
-			user.visible_message( \
-				SPAN_NOTICE("[user] has added one of [O] to \the [src]."), \
+			user.visible_message(
+				SPAN_NOTICE("[user] has added one of [O] to \the [src]."),
 				SPAN_NOTICE("You add one of [O] to \the [src]."))
 		else
 		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
 				O.forceMove(src)
-				user.visible_message( \
-					SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
+				user.visible_message(
+					SPAN_NOTICE("[user] has added \the [O] to \the [src]."),
 					SPAN_NOTICE("You add \the [O] to \the [src]."))
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
 		if (!O.reagents)
@@ -229,8 +224,9 @@
 //************************************/
 
 /obj/structure/machinery/microwave/proc/cook(time_multiplier = 1)
-	if(inoperable())
+	if(inoperable() || operating)
 		return
+
 	start()
 	if (reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
 		if (!wzhzhzh(10 * time_multiplier))
@@ -270,7 +266,7 @@
 			cooked.forceMove(src.loc)
 			return
 	else
-		var/halftime = round(recipe.time/10/2)
+		var/halftime = floor(recipe.time/10/2)
 		if (!wzhzhzh(halftime * time_multiplier))
 			abort()
 			return
@@ -381,3 +377,8 @@
 			dispose()
 
 	return TRUE
+
+/obj/structure/machinery/microwave/yautja
+	name = "alien microwave"
+	desc = "Dark alloy sinister machine that heats up cold food."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

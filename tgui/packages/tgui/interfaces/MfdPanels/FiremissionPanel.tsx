@@ -1,18 +1,28 @@
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
-import { Box, Button, Divider, Icon, Input, Stack } from '../../components';
-import { useBackend, useLocalState } from '../../backend';
-import { CasFiremission, FiremissionContext } from './types';
 import { range } from 'common/collections';
+import { useState } from 'react';
+
+import { useBackend } from '../../backend';
+import { Box, Button, Divider, Icon, Input, Stack } from '../../components';
 import { DropshipEquipment, DropshipProps } from '../DropshipWeaponsConsole';
-import { fmEditState, fmState, fmWeaponEditState, mfdState } from './stateManagers';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import {
+  fmEditState,
+  fmState,
+  fmWeaponEditState,
+  mfdState,
+} from './stateManagers';
+import { CasFiremission, FiremissionContext } from './types';
 
 const sortWeapons = (a: DropshipEquipment, b: DropshipEquipment) => {
   return (a?.mount_point ?? 0) < (b?.mount_point ?? 0) ? -1 : 1;
 };
 
-const CreateFiremissionPanel = (props) => {
+const CreateFiremissionPanel = (props: {
+  readonly fmName: string;
+  readonly setFmName: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const { act } = useBackend();
-  const [fmName, setFmName] = useLocalState<string>('fmname', '');
+  const { fmName, setFmName } = props;
   return (
     <Stack align="center" vertical>
       <Stack.Item>
@@ -59,7 +69,7 @@ const FiremissionList = (props) => {
 
 const FiremissionMfdHomePage = (props: MfdProps) => {
   const { setSelectedFm } = fmState(props.panelStateId);
-  const [fmName, setFmName] = useLocalState<string>('fmname', '');
+  const [fmName, setFmName] = useState<string>('');
   const { data, act } = useBackend<FiremissionContext>();
   const { setPanelState } = mfdState(props.panelStateId);
 
@@ -72,16 +82,13 @@ const FiremissionMfdHomePage = (props: MfdProps) => {
     };
   };
 
-  const [fmOffset, setFmOffset] = useLocalState(
-    `${props.panelStateId}_fm_select_offset`,
-    0
-  );
+  const [fmOffset, setFmOffset] = useState(0);
 
   const left_firemissions = range(fmOffset, fmOffset + 5).map(
-    firemission_mapper
+    firemission_mapper,
   );
   const right_firemissions = range(fmOffset + 5, fmOffset + 10).map(
-    firemission_mapper
+    firemission_mapper,
   );
 
   return (
@@ -94,15 +101,15 @@ const FiremissionMfdHomePage = (props: MfdProps) => {
         {},
         fmName
           ? {
-            children: 'SAVE',
-            onClick: () => {
-              act('firemission-create', {
-                firemission_name: fmName,
-                firemission_length: 12,
-              });
-              setFmName('');
-            },
-          }
+              children: 'SAVE',
+              onClick: () => {
+                act('firemission-create', {
+                  firemission_name: fmName,
+                  firemission_length: 12,
+                });
+                setFmName('');
+              },
+            }
           : {},
         {},
         {
@@ -133,14 +140,15 @@ const FiremissionMfdHomePage = (props: MfdProps) => {
             }
           },
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         <Stack>
           <Stack.Item width="100px" />
           <Stack.Item width="300px">
             <Stack vertical align="center">
               <Stack.Item>
-                <CreateFiremissionPanel />
+                <CreateFiremissionPanel fmName={fmName} setFmName={setFmName} />
               </Stack.Item>
               <Stack.Item>
                 <FiremissionList />
@@ -161,14 +169,14 @@ interface GimbalInfo {
 }
 
 const ViewFiremissionMfdPanel = (
-  props: MfdProps & { readonly firemission: CasFiremission }
+  props: MfdProps & { readonly firemission: CasFiremission },
 ) => {
   const { data, act } = useBackend<DropshipProps>();
   const { setPanelState } = mfdState(props.panelStateId);
   const { setSelectedFm } = fmState(props.panelStateId);
   const { editFm, setEditFm } = fmEditState(props.panelStateId);
   const { editFmWeapon, setEditFmWeapon } = fmWeaponEditState(
-    props.panelStateId
+    props.panelStateId,
   );
 
   const rightButtons = [
@@ -214,7 +222,8 @@ const ViewFiremissionMfdPanel = (
           },
         },
       ]}
-      rightButtons={editFm === true ? rightButtons : []}>
+      rightButtons={editFm === true ? rightButtons : []}
+    >
       <Box className="NavigationMenu">
         <Stack>
           <Stack.Item width="10px" />
@@ -333,10 +342,10 @@ const OffsetOverview = (
   props: MfdProps & {
     readonly fm: CasFiremission;
     readonly equipment: DropshipEquipment;
-  }
+  },
 ) => {
   const weaponFm = props.fm.records.find(
-    (x) => x.weapon === props.equipment.mount_point
+    (x) => x.weapon === props.equipment.mount_point,
   );
   if (weaponFm === undefined) {
     return <>error</>;
@@ -363,11 +372,11 @@ const OffsetDetailed = (
   props: MfdProps & {
     readonly fm: CasFiremission;
     readonly equipment: DropshipEquipment;
-  }
+  },
 ) => {
   const availableGimbals = gimbals[props.equipment.mount_point];
   const weaponFm = props.fm.records.find(
-    (x) => x.weapon === props.equipment.mount_point
+    (x) => x.weapon === props.equipment.mount_point,
   );
   if (weaponFm === undefined) {
     return <>error</>;
@@ -376,7 +385,7 @@ const OffsetDetailed = (
     .map((x) => (x === '-' ? 0 : props.equipment.burst))
     .reduce(
       (accumulator, currentValue) => (accumulator ?? 0) + (currentValue ?? 0),
-      0
+      0,
     );
   return (
     <>
@@ -402,7 +411,7 @@ const FMOffsetError = (
     readonly fm: CasFiremission;
     readonly equipment: DropshipEquipment;
     readonly displayDetail?: boolean;
-  }
+  },
 ) => {
   return (
     <Stack vertical className="FireMissionStack">
@@ -437,12 +446,12 @@ const FMOffsetStack = (
     readonly fm: CasFiremission;
     readonly equipment: DropshipEquipment;
     readonly displayDetail?: boolean;
-  }
+  },
 ) => {
   const { fm } = props;
   const { act } = useBackend<DropshipProps & FiremissionContext>();
   const offsets = props.fm.records.find(
-    (x) => x.weapon === props.equipment.mount_point
+    (x) => x.weapon === props.equipment.mount_point,
   )?.offsets;
 
   const { editFm } = fmEditState(props.panelStateId);
@@ -462,14 +471,14 @@ const FMOffsetStack = (
     // if offset is 0 then not allowed on strike.
     if (firemissionOffsets === 0) {
       range(0, availableMap.length - 1).forEach(
-        (value) => (availableMap[value] = false)
+        (value) => (availableMap[value] = false),
       );
       return;
     }
     const indexMin = Math.max(index - firemissionOffsets + 1, 0);
     const indexMax = Math.max(
       Math.min(index + firemissionOffsets, availableMap.length - 1),
-      indexMin
+      indexMin,
     );
     range(indexMin, indexMax).forEach((value) => (availableMap[value] = false));
   });
@@ -538,7 +547,8 @@ const FMOffsetStack = (
                     <Stack.Item
                       key={y}
                       className="FireMissionOffset"
-                      textAlign="center">
+                      textAlign="center"
+                    >
                       <Button
                         className={is_selected ? 'SelectedButton' : undefined}
                         onClick={(e) => {
@@ -549,7 +559,8 @@ const FMOffsetStack = (
                             offset_id: `${i}`,
                             offset_value: `${y}`,
                           });
-                        }}>
+                        }}
+                      >
                         {is_selected && '['}
                         {y}
                         {is_selected && ']'}

@@ -1,8 +1,6 @@
 /obj
 	/// Used to store information about the contents of the object.
 	var/list/matter
-	/// determines whether or not the object can be destroyed by an explosion
-	var/indestructible = FALSE
 	var/health = null
 	/// Used by SOME devices to determine how reliable they are.
 	var/reliability = 100
@@ -142,31 +140,39 @@
 			return "on [t_his] feet"
 	return "...somewhere?"
 
-/obj/proc/updateUsrDialog()
-	if(in_use)
-		var/is_in_use = 0
-		var/list/nearby = viewers(1, src)
-		for(var/mob/M in nearby)
-			if ((M.client && M.interactee == src))
-				is_in_use = 1
-				attack_hand(M)
-		if (isSilicon(usr))
-			if (!(usr in nearby))
-				if (usr.client && usr.interactee==src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
-					is_in_use = 1
-					attack_remote(usr)
-		in_use = is_in_use
+/obj/proc/updateUsrDialog(mob/user)
+	if(!user)
+		user = usr
+	if(!in_use || !user)
+		return
+
+	var/is_in_use = FALSE
+	var/list/nearby = viewers(1, src)
+	for(var/mob/cur_mob in nearby)
+		if(cur_mob.client && cur_mob.interactee == src)
+			is_in_use = TRUE
+			attack_hand(cur_mob)
+	if(isSilicon(user))
+		if(!(user in nearby))
+			if(user.client && user.interactee == src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
+				is_in_use = TRUE
+				attack_remote(user)
+
+	in_use = is_in_use
 
 /obj/proc/updateDialog()
 	// Check that people are actually using the machine. If not, don't update anymore.
-	if(in_use)
-		var/list/nearby = viewers(1, src)
-		var/is_in_use = 0
-		for(var/mob/M in nearby)
-			if ((M.client && M.interactee == src))
-				is_in_use = 1
-				src.interact(M)
-		in_use = is_in_use
+	if(!in_use)
+		return
+
+	var/is_in_use = FALSE
+	var/list/nearby = viewers(1, src)
+	for(var/mob/cur_mob in nearby)
+		if(cur_mob.client && cur_mob.interactee == src)
+			is_in_use = TRUE
+			interact(cur_mob)
+
+	in_use = is_in_use
 
 /obj/proc/interact(mob/user)
 	return
@@ -200,6 +206,9 @@
 /obj/proc/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	return
 
+/obj/proc/see_emote(mob/living/M as mob, emote, audible = FALSE)
+	return
+
 /obj/attack_hand(mob/user)
 	if(can_buckle) manual_unbuckle(user)
 	else . = ..()
@@ -223,7 +232,7 @@
 
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
 	handle_rotation() // To be removed when we have full dir support in set_buckled
-	SEND_SIGNAL(src, COSMIG_OBJ_AFTER_BUCKLE, buckled_mob)
+	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	if(!buckled_mob)
 		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
 	else
@@ -248,14 +257,14 @@
 	if(buckled_mob)
 		if(buckled_mob.buckled == src)
 			if(buckled_mob != user)
-				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),\
-					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),\
+				buckled_mob.visible_message(
+					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),
+					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),
 					SPAN_NOTICE("You hear metal clanking."))
 			else
-				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] unbuckled \himself!"),\
-					SPAN_NOTICE("You unbuckle yourself from [src]."),\
+				buckled_mob.visible_message(
+					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),
+					SPAN_NOTICE("You unbuckle yourself from [src]."),
 					SPAN_NOTICE("You hear metal clanking"))
 			unbuckle(buckled_mob)
 			add_fingerprint(user)
@@ -266,18 +275,17 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+	if (!ismob(M) || (get_dist(src, user) > 1) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
 		return
 
-	if (isxeno(user))
+	if (user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		return
+
+	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
 	if (iszombie(user))
-		return
-
-	// mobs that become immobilized should not be able to buckle themselves.
-	if(M == user && HAS_TRAIT(user, TRAIT_IMMOBILIZED))
-		to_chat(user, SPAN_WARNING("You are unable to do this in your current state."))
 		return
 
 	if(density)
@@ -292,10 +300,11 @@
 			if(M.loc != src.loc)
 				return
 			. = buckle_mob(M)
-	if (M.mob_size <= MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
-		do_buckle(M, user)
-		return
-	if (M.mob_size > MOB_SIZE_HUMAN)
+	if (M.mob_size <= MOB_SIZE_XENO)
+		if ((M.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS)))
+			do_buckle(M, user)
+			return
+	if ((M.mob_size > MOB_SIZE_HUMAN))
 		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
 		return
 	do_buckle(M, user)
@@ -316,14 +325,14 @@
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
 	if (M == user)
-		M.visible_message(\
-			SPAN_NOTICE("[M] buckles in!"),\
-			SPAN_NOTICE("You buckle yourself to [src]."),\
+		M.visible_message(
+			SPAN_NOTICE("[M] buckles in!"),
+			SPAN_NOTICE("You buckle yourself to [src]."),
 			SPAN_NOTICE("You hear metal clanking."))
 	else
-		M.visible_message(\
-			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),\
-			SPAN_NOTICE("You are buckled in to [src] by [user]."),\
+		M.visible_message(
+			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),
+			SPAN_NOTICE("You are buckled in to [src] by [user]."),
 			SPAN_NOTICE("You hear metal clanking"))
 
 /obj/Move(NewLoc, direct)
@@ -357,17 +366,8 @@
 
 	return ..()
 
-/obj/bullet_act(obj/projectile/P)
-	//Tasers and the like should not damage objects.
-	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
-		return 0
-	bullet_ping(P)
-	if(P.ammo.damage)
-		update_health(round(P.ammo.damage / 2))
-	return 1
-
-/obj/item/proc/get_mob_overlay(mob/user_mob, slot)
-	var/bodytype = "Default"
+/obj/item/proc/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+	var/bodytype = default_bodytype
 	var/mob/living/carbon/human/user_human
 	if(ishuman(user_mob))
 		user_human = user_mob
@@ -404,11 +404,28 @@
 
 	var/offset_x = worn_x_dimension
 	var/offset_y = worn_y_dimension
-	if(inhands)
+	if(inhands == 1 || inhands == 0)
 		offset_x = inhand_x_dimension
 		offset_y = inhand_y_dimension
 
 	center_image(overlay_img, offset_x, offset_y)
+
+	return overlay_img
+
+/// Generates an image overlay based on the provided override_icon_state
+/// (handles prefixing for PREFIX_HAT_GARB_OVERRIDE and PREFIX_HELMET_GARB_OVERRIDE)
+/obj/item/proc/get_garb_overlay(override_icon_state)
+	var/image/overlay_img = get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
+
+	switch(override_icon_state)
+		if(NO_GARB_OVERRIDE)
+			return overlay_img // No modifications to make
+		if(PREFIX_HAT_GARB_OVERRIDE)
+			overlay_img.icon_state = "hat_[overlay_img.icon_state]"
+		if(PREFIX_HELMET_GARB_OVERRIDE)
+			overlay_img.icon_state = "helmet_[overlay_img.icon_state]"
+		else
+			overlay_img.icon_state = override_icon_state
 
 	return overlay_img
 

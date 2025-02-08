@@ -89,8 +89,16 @@
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
 
+	/// Whether or not this ammo ignores mobs that are lying down
+	var/hits_lying_mobs = FALSE
+
 /datum/ammo/New()
 	set_bullet_traits()
+
+/datum/ammo/proc/setup_faction_clash_values()
+	accuracy = (accuracy - 85)/2
+	penetration = min(penetration, 30) //more ap overpenatrates anyway but makes next calculation cleaner
+	accurate_range = min(accurate_range, 10 - penetration/5) //this makes AP ammo better at clsoe range (and techinicly super far range when the hitchance gets bottom caped at 5% hitchance)
 
 /datum/ammo/proc/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
 	return
@@ -173,6 +181,10 @@
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/proc/slowdown(mob/living/living_mob, obj/projectile/fired_projectile)
+	if(isxeno(living_mob))
+		var/mob/living/carbon/xenomorph/xeno = living_mob
+		if(xeno.caste.tier > 2 || (xeno.caste.tier == 0 && xeno.mob_size >= MOB_SIZE_BIG))
+			return //tier 3 and big tier 0 (like queen) are not affected
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		target.apply_effect(1, SUPERSLOW)
@@ -212,7 +224,7 @@
 
 		M.apply_damage(damage,damage_type)
 
-		if(XNO && XNO.xeno_shields.len)
+		if(XNO && length(XNO.xeno_shields))
 			P.play_shielded_hit_effect(M)
 		else
 			P.play_hit_effect(M)
@@ -228,14 +240,15 @@
 
 		var/obj/projectile/P = new /obj/projectile(curloc, original_P.weapon_cause_data)
 		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
-		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
+		P.accuracy = floor(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 		original_P.give_bullet_traits(P)
+		P.bonus_projectile_check = 2 //It's a bonus projectile!
 
 		var/total_scatter_angle = P.scatter
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
-		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
+		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original, FALSE) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
 	if(!istype(turf))

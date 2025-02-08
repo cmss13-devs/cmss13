@@ -1,5 +1,5 @@
 /obj/item/hardpoint/support/overdrive_enhancer
-	name = "Overdrive Enhancer"
+	name = "\improper Overdrive Enhancer"
 	desc = "Increases the movement speed of the vehicle it's attached to"
 
 	icon_state = "odrive_enhancer"

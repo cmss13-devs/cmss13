@@ -5,7 +5,7 @@
 
 	var/life_tick = 0   // The amount of life ticks that have processed on this mob.
 
-	var/obj/item/handcuffs/handcuffed = null //Whether or not the mob is handcuffed
+	var/obj/item/restraint/handcuffs/handcuffed = null //Whether or not the mob is handcuffed
 
 	var/overeat_cooldown = 0
 

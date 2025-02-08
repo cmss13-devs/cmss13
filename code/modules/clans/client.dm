@@ -1,22 +1,3 @@
-/client
-	var/datum/entity/clan_player/clan_info
-
-/client/load_player_data_info(datum/entity/player/player)
-	set waitfor = FALSE
-
-	. = ..()
-	if(GLOB.RoleAuthority && check_whitelist_status(WHITELIST_PREDATOR))
-		clan_info = GET_CLAN_PLAYER(player.id)
-		clan_info.sync()
-
-		if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
-			clan_info.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_ADMIN]
-			clan_info.permissions |= CLAN_PERMISSION_ALL
-		else
-			clan_info.permissions &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
-
-		clan_info.save()
-
 /client/proc/usr_create_new_clan()
 	set name = "Create New Clan"
 	set category = "Debug"
@@ -145,7 +126,7 @@
 			player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)
 		)
 
-	var/list/clan_members[CPV.len]
+	var/list/clan_members[length(CPV)]
 
 	var/index = 1
 	for(var/datum/view_record/clan_playerbase_view/CP in CPV)
@@ -361,7 +342,7 @@
 				for(var/datum/view_record/clan_view/CV in CPV)
 					clans += list("[CV.name]" = CV.clan_id)
 
-				if(is_clan_manager && clans.len >= 1)
+				if(is_clan_manager && length(clans) >= 1)
 					if(target.permissions & CLAN_PERMISSION_ADMIN_ANCIENT)
 						clans += list("Remove from Ancient")
 					else
@@ -431,7 +412,7 @@
 
 					if(chosen_rank.limit_type)
 						var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_AND(DB_COMP("clan_id", DB_EQUALS, target.clan_id), DB_COMP("rank", DB_EQUALS, GLOB.clan_ranks_ordered[input])))
-						var/players_in_rank = CPV.len
+						var/players_in_rank = length(CPV)
 
 						switch(chosen_rank.limit_type)
 							if(CLAN_LIMIT_NUMBER)
@@ -440,7 +421,7 @@
 									return
 							if(CLAN_LIMIT_SIZE)
 								var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_COMP("clan_id", DB_EQUALS, target.clan_id))
-								var/available_slots = Ceiling(clan_players.len / chosen_rank.limit)
+								var/available_slots = ceil(length(clan_players) / chosen_rank.limit)
 
 								if(players_in_rank >= available_slots)
 									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots])"))

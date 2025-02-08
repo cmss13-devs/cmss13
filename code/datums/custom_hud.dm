@@ -71,7 +71,7 @@
 	var/coord_col = "-[col-1]"
 	var/coord_col_offset = "-[4+2*col]"
 
-	var/row = round((placement-1)/13)
+	var/row = floor((placement-1)/13)
 	var/coord_row = "[-1 - row]"
 	var/coord_row_offset = 26
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
@@ -115,10 +115,11 @@
 /datum/custom_hud/dark
 	ui_style_icon = 'icons/mob/hud/human_dark.dmi'
 
-	UI_OXYGEN_LOC = "EAST-2:16,14:15"
-	UI_NUTRITION_LOC = "EAST-2:33,14:15"
-	UI_TEMP_LOC = "EAST-1:26,15:-7"
-	UI_HEALTH_LOC = "EAST-1:27,15:-8"
+	UI_FRAME_LOC = "EAST-3:0,NORTH-1:15"
+	UI_OXYGEN_LOC = "EAST-2:16,NORTH-1:15"
+	UI_NUTRITION_LOC = "EAST-2:33,NORTH-1:15"
+	UI_TEMP_LOC = "EAST-1:26,NORTH-0:-7"
+	UI_HEALTH_LOC = "EAST-1:27,NORTH-0:-8"
 	UI_SL_LOCATOR_LOC = "EAST-1:27,12:22"
 
 /datum/custom_hud/dark/get_status_loc(placement)
@@ -126,7 +127,7 @@
 	var/coord_col = "-0"
 	var/coord_col_offset = "-[24 * col + 2]"
 
-	var/row = round((placement-1)/6)
+	var/row = floor((placement-1)/6)
 	var/coord_row = "[-1 - row]"
 	var/coord_row_offset = -8
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
@@ -161,19 +162,3 @@
 	var/ui_alienplasmadisplay = "EAST-1:28,6:13"
 	var/ui_alienarmordisplay = "EAST-1:28,5:13"
 	var/ui_mark_locator = "EAST-1:28,10:13"
-
-/datum/custom_hud/robot
-	ui_style_icon = 'icons/mob/hud/screen1_robot.dmi'
-
-	var/ui_inv1 = "WEST+5:16,1:5"
-	var/ui_inv2 = "WEST+6:16,1:5"
-	var/ui_inv3 = "WEST+7:16,1:5"
-	var/ui_borg_store = "WEST+8:16,1:5"
-
-	var/ui_borg_pull = "EAST-3:24,2:7"
-	var/ui_borg_module = "EAST-2:26,2:7"
-	var/ui_borg_panel = "EAST-1:28,2:7"
-
-	var/ui_toxin = "EAST-1:28,13:27"
-	var/ui_borg_health = "EAST-1:28,6:13"
-	var/ui_borg_temp = "EAST-1:28,10:21"

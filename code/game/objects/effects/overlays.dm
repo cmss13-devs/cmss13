@@ -87,6 +87,13 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
+/obj/effect/overlay/temp/point/big/squad
+	icon_state = "big_arrow_grey"
+
+/obj/effect/overlay/temp/point/big/squad/Initialize(mapload, mob/owner, atom/actual_pointed_atom, squad_color)
+	. = ..()
+	color = squad_color
+
 /obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
 	color = "#1c00f6"
@@ -223,6 +230,7 @@
 	icon_state = "empdisable"
 	name = "emp sparks"
 	effect_duration = 10
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/overlay/temp/emp_sparks/New(loc)
 	setDir(pick(GLOB.cardinals))
@@ -234,8 +242,12 @@
 	icon_state = "emppulse"
 	effect_duration = 20
 
-
-
+/obj/effect/overlay/temp/elec_arc
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "electricity"
+	name = "electric arc"
+	effect_duration = 3 SECONDS
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 //gib animation
 

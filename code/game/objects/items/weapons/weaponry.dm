@@ -1,7 +1,7 @@
 /obj/item/weapon/banhammer
 	desc = "A banhammer"
 	name = "banhammer"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "toyhammer"
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 0
@@ -15,6 +15,11 @@
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomena."
 	icon_state = "nullrod"
 	item_state = "nullrod"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_weapons_righthand.dmi'
+	)
+	icon = 'icons/obj/items/weapons/melee/misc.dmi'
 	flags_equip_slot = SLOT_WAIST
 	force = 15
 	throw_speed = SPEED_FAST
@@ -29,6 +34,7 @@
 	desc = "Tharr she blows!"
 	icon_state = "harpoon"
 	item_state = "harpoon"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	force = 20
 	throwforce = 15
 	w_class = SIZE_MEDIUM
@@ -37,7 +43,11 @@
 /obj/item/weapon/ice_axe
 	name = "ice axe"
 	desc = "For climbing, mostly. Makes for a good improvised weapon."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+	)
 	icon_state = "ice_axe"
 	item_state = "ice_axe"
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -59,6 +69,11 @@
 	desc = "A large wooden baseball bat. Commonly used in colony recreation, but also used as a means of self defense. Often carried by thugs and ruffians."
 	icon_state = "woodbat"
 	item_state = "woodbat"
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
+	)
 	sharp = 0
 	edge = 0
 	w_class = SIZE_MEDIUM
@@ -84,6 +99,11 @@
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
 	icon_state = "butterflyknife"
 	item_state = null
+	icon = 'icons/obj/items/weapons/melee/knives.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
 	hitsound = null
 	var/active = 0
 	w_class = SIZE_TINY
@@ -132,6 +152,7 @@
 	name = "katana"
 	desc = "A ancient weapon from Japan."
 	icon_state = "samurai"
+	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	force = MELEE_FORCE_VERY_STRONG
 
 /obj/item/weapon/wirerod
@@ -139,7 +160,8 @@
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
 	icon_state = "wiredrod"
 	item_state = "rods"
-	flags_atom = FPRINT|CONDUCT
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = MELEE_FORCE_WEAK
 	throwforce = MELEE_FORCE_WEAK
 	w_class = SIZE_MEDIUM
@@ -175,7 +197,7 @@
 <p>Katanas are thrice as sharp as European swords and thrice as hard for that matter too. Anything a longsword can cut through, a katana can cut through better. I'm pretty sure a katana could easily bisect a knight wearing full plate with a simple vertical slash.</p>\
 <p>Ever wonder why medieval Europe never bothered conquering Japan? That's right, they were too scared to fight the disciplined Samurai and their katanas of destruction. Even in World War II, American soldiers targeted the men with the katanas first because their killing power was feared and respected.</p>"
 	icon_state = "katana"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = 4444
 	throwforce = MELEE_FORCE_VERY_STRONG
 	sharp = IS_SHARP_ITEM_BIG
@@ -219,7 +241,7 @@
 
 	var/power = force
 	if(user.skills)
-		power = round(power * (1 + 0.3*user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
+		power = floor(power * (1 + 0.3*user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
 
 
 	//if the target also has a katana (and we aren't attacking ourselves), we add some suspense
@@ -248,9 +270,9 @@
 			showname = "."
 
 		var/used_verb = "attacked"
-		if(attack_verb && attack_verb.len)
+		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
-		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),\
+		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),
 						SPAN_DANGER("You [used_verb] [M] with [src]."), null, 5)
 
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)

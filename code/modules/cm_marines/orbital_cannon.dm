@@ -184,9 +184,12 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	chambered_tray = TRUE
 	var/misfuel = get_misfuel_amount()
 	var/message = "[key_name(user)] chambered the Orbital Bombardment cannon."
+	var/ares_message = "Shell chambered."
 	if(misfuel)
 		message += " It is misfueled by [misfuel] units!"
+		ares_message += " Fuel imbalance detected!"
 	message_admins(message, x, y, z)
+	log_ares_bombardment(user, lowertext(tray.warhead.name), ares_message)
 
 	update_icon()
 
@@ -256,7 +259,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 /obj/structure/orbital_tray
 	name = "loading tray"
 	desc = "The orbital cannon's loading tray."
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi'
 	icon_state = "cannon_tray"
 	density = TRUE
 	anchored = TRUE
@@ -350,7 +353,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	throwpass = TRUE
 	climbable = TRUE
 	unacidable = TRUE // issue: being used for defences, solution: abomb
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	var/is_solid_fuel = 0
 	var/source_mob
 
@@ -389,7 +392,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 
 	var/cancellation_token = rand(0,32000)
 	GLOB.orbital_cannon_cancellation["[cancellation_token]"] = src
-	message_admins(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
+	message_admins(FONT_SIZE_XL("<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 
 	var/relative_dir
 	for(var/mob/M in urange(30, target))
@@ -509,15 +512,13 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/distance = 18
 	var/fire_level = 70
 	var/burn_level = 80
-	var/fire_color = null
+	var/fire_color = LIGHT_COLOR_CYAN
 	var/fire_type = "white"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target)
 	. = ..()
 	if (!.)
 		return
-	if(fire_color)
-		fire_type = "dynamic"
 
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
@@ -553,10 +554,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	set waitfor = 0
 
 	var/range_num = 12
-	var/list/turf_list = list()
-
-	for(var/turf/T in range(range_num, target))
-		turf_list += T
+	var/list/turf_list = RANGE_TURFS(range_num, target)
 
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)
@@ -615,7 +613,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		ui = new(user, src, "OrbitalCannonConsole", "[src.name]")
 		ui.open()
 
-/obj/structure/machinery/computer/aa_console/ui_state(mob/user)
+/obj/structure/machinery/computer/orbital_cannon_console/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/computer/orbital_cannon_console/ui_status(mob/user, datum/ui_state/state)
@@ -680,7 +678,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	if(..())
 		return
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
 		return TRUE
 

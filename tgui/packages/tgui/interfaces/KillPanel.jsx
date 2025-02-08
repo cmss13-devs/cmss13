@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Section, Box, NoticeBox, Collapsible } from '../components';
+import { Box, Collapsible, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const KillPanel = (props) => {
@@ -33,7 +34,8 @@ const KillView = (props) => {
   return real_data.map((entry, index) => (
     <Collapsible
       key={index}
-      title={entry.mob_name + ' (' + entry.time_of_death + ')'}>
+      title={entry.mob_name + ' (' + entry.time_of_death + ')'}
+    >
       <Box>Mob: {entry.mob_name}</Box>
       {entry.job_name ? (
         <>

@@ -39,7 +39,7 @@
 	else //if on the floor, glowshroom on-floor sprite
 		icon_state = "glowshroomf"
 
-	set_light(round(potency/15))
+	set_light(floor(potency/15))
 	lastTick = world.timeofday
 
 /obj/effect/glowshroom/proc/CalcDir(turf/location = loc)
@@ -65,7 +65,7 @@
 		if(direction & i)
 			dirList += i
 
-	if(dirList.len)
+	if(length(dirList))
 		var/newDir = pick(dirList)
 		if(newDir == 16)
 			floor = 1

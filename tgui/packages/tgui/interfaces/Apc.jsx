@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
+import { Box, Button, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
@@ -40,23 +40,6 @@ const ApcContent = (props) => {
     powerStatusMap[data.chargingStatus] || powerStatusMap[0];
   const channelArray = data.powerChannels || [];
   const adjustedCellChange = data.powerCellStatus / 100;
-  if (data.failTime > 0) {
-    return (
-      <NoticeBox>
-        <b>
-          <h3>SYSTEM FAILURE</h3>
-        </b>
-        <i>I/O regulators malfunction detected! Waiting for system reboot...</i>
-        <br />
-        Automatic reboot in {data.failTime} seconds...
-        <Button
-          icon="sync"
-          content="Reboot Now"
-          onClick={() => act('reboot')}
-        />
-      </NoticeBox>
-    );
-  }
   return (
     <>
       <InterfaceLockNoticeBox />
@@ -68,12 +51,14 @@ const ApcContent = (props) => {
             buttons={
               <Button
                 icon={data.isOperating ? 'power-off' : 'times'}
-                content={data.isOperating ? 'On' : 'Off'}
                 selected={data.isOperating && !locked}
                 disabled={locked}
                 onClick={() => act('breaker')}
-              />
-            }>
+              >
+                {data.isOperating ? 'On' : 'Off'}
+              </Button>
+            }
+          >
             [ {externalPowerStatus.externalPowerText} ]
           </LabeledList.Item>
           <LabeledList.Item label="Power Cell">
@@ -85,11 +70,13 @@ const ApcContent = (props) => {
             buttons={
               <Button
                 icon={data.chargeMode ? 'sync' : 'times'}
-                content={data.chargeMode ? 'Auto' : 'Off'}
                 disabled={locked}
                 onClick={() => act('charge')}
-              />
-            }>
+              >
+                {data.chargeMode ? 'Auto' : 'Off'}
+              </Button>
+            }
+          >
             [ {chargingStatus.chargingText} ]
           </LabeledList.Item>
         </LabeledList>
@@ -107,35 +94,40 @@ const ApcContent = (props) => {
                     <Box
                       inline
                       mx={2}
-                      color={channel.status >= 2 ? 'good' : 'bad'}>
+                      color={channel.status >= 2 ? 'good' : 'bad'}
+                    >
                       {channel.status >= 2 ? 'On' : 'Off'}
                     </Box>
                     <Button
                       icon="sync"
-                      content="Auto"
                       selected={
                         !locked &&
                         (channel.status === 1 || channel.status === 3)
                       }
                       disabled={locked}
                       onClick={() => act('channel', topicParams.auto)}
-                    />
+                    >
+                      Auto
+                    </Button>
                     <Button
                       icon="power-off"
-                      content="On"
                       selected={!locked && channel.status === 2}
                       disabled={locked}
                       onClick={() => act('channel', topicParams.on)}
-                    />
+                    >
+                      On
+                    </Button>
                     <Button
                       icon="times"
-                      content="Off"
                       selected={!locked && channel.status === 0}
                       disabled={locked}
                       onClick={() => act('channel', topicParams.off)}
-                    />
+                    >
+                      Off
+                    </Button>
                   </>
-                }>
+                }
+              >
                 {channel.powerLoad}
               </LabeledList.Item>
             );
@@ -153,19 +145,19 @@ const ApcContent = (props) => {
               {!!data.malfStatus && (
                 <Button
                   icon={malfStatus.icon}
-                  content={malfStatus.content}
                   color="bad"
                   onClick={() => act(malfStatus.action)}
-                />
+                >
+                  {malfStatus.content}
+                </Button>
               )}
-              <Button
-                icon="lightbulb-o"
-                content="Overload"
-                onClick={() => act('overload')}
-              />
+              <Button icon="lightbulb-o" onClick={() => act('overload')}>
+                Overload
+              </Button>
             </>
           )
-        }>
+        }
+      >
         <LabeledList>
           <LabeledList.Item
             label="Cover Lock"
@@ -173,10 +165,11 @@ const ApcContent = (props) => {
               <Button
                 tooltip="APC cover can be pried open with a crowbar."
                 icon={data.coverLocked ? 'lock' : 'unlock'}
-                content={data.coverLocked ? 'Engaged' : 'Disengaged'}
                 disabled={locked}
                 onClick={() => act('cover')}
-              />
+              >
+                {data.coverLocked ? 'Engaged' : 'Disengaged'}
+              </Button>
             }
           />
         </LabeledList>

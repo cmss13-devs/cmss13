@@ -66,7 +66,7 @@
 /mob/living/proc/burn_skin(burn_amount)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src //make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
-		var/divided_damage = (burn_amount)/(H.limbs.len)
+		var/divided_damage = (burn_amount)/(length(H.limbs))
 		var/extradam = 0 //added to when organ is at max dam
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting) continue
@@ -224,19 +224,34 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
-	if(pulledby.grab_level)
-		if(prob(50))
-			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
-			pulledby.stop_pulling()
-			return 1
-		if(moving_resist && client) //we resisted by trying to move
-			visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), null, null, 5)
-			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
-	else
-		pulledby.stop_pulling()
-		return 1
+	// vars for checks of strengh
+	var/pulledby_is_strong = HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG)
+	var/src_is_strong = HAS_TRAIT(src, TRAIT_SUPER_STRONG)
 
+	if(!pulledby.grab_level && (!pulledby_is_strong || src_is_strong)) // if passive grab, check if puller is stronger than src, and if not, break free
+		pulledby.stop_pulling()
+		return TRUE
+
+	// Chance for person to break free of grip, defaults to 50.
+	var/chance = 50
+	if(src_is_strong && !isxeno(pulledby)) // no extra chance to resist warrior grabs
+		chance += 30 // you are strong, you can overpower them easier
+	if(pulledby_is_strong)
+		chance -= 30 // stronger grip
+	// above code means that if you are super strong, 80% chance to resist, otherwise, 20 percent. if both are super strong, standard 50.
+
+	if(prob(chance))
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), max_distance = 5)
+		pulledby.stop_pulling()
+		return TRUE
+	if(moving_resist && client) //we resisted by trying to move
+		visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), max_distance = 5)
+		// +1 delay if super strong, also done as passive grabs would have a modifier of 0 otherwise, causing spam
+		if(pulledby_is_strong && !src_is_strong)
+			client.next_movement = world.time + (10*(pulledby.grab_level + 1)) + client.move_delay
+		else
+			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
 
 /mob/living/movement_delay()
 	. = ..()
@@ -305,92 +320,95 @@
 	if(.)
 		reset_view(destination)
 
-/mob/living/Collide(atom/movable/AM)
+/mob/living/Collide(atom/movable/moving_atom)
 	if(buckled || now_pushing)
 		return
 
 	if(throwing)
-		launch_impact(AM)
+		launch_impact(moving_atom)
 		return
 
-	if(SEND_SIGNAL(src, COMSIG_LIVING_PRE_COLLIDE, AM) & COMPONENT_LIVING_COLLIDE_HANDLED)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_PRE_COLLIDE, moving_atom) & COMPONENT_LIVING_COLLIDE_HANDLED)
 		return
 
-	if(!isliving(AM))
+	if(!isliving(moving_atom))
 		..()
 		return
 
 	now_pushing = TRUE
-	var/mob/living/L = AM
+	var/mob/living/living_mob = moving_atom
 
-	if(L.status_flags & IMMOBILE_ACTION && src.faction == L.faction && src.mob_size <= L.mob_size)
+	if(living_mob.status_flags & IMMOBILE_ACTION && src.faction == living_mob.faction && src.mob_size <= living_mob.mob_size)
 		now_pushing = FALSE
 		return
 
 	//Leaping mobs just land on the tile, no pushing, no anything.
 	if(status_flags & LEAPING)
-		forceMove(L.loc)
+		forceMove(living_mob.loc)
 		status_flags &= ~LEAPING
 		now_pushing = FALSE
 		return
 
-	if(L.pulledby && L.pulledby != src && L.is_mob_restrained())
+	if(living_mob.pulledby && living_mob.pulledby != src && living_mob.is_mob_restrained() && ishumansynth_strict(src))
 		if(!(world.time % 5))
-			to_chat(src, SPAN_WARNING("[L] is restrained, you cannot push past."))
+			to_chat(src, SPAN_WARNING("[living_mob] is restrained, you cannot push past."))
 		now_pushing = FALSE
 		return
 
-	if(isxeno(L) && !islarva(L))
-		var/mob/living/carbon/xenomorph/X = L
-		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
+	if(isxeno(living_mob) && !islarva(living_mob))
+		var/mob/living/carbon/xenomorph/xenomorph = living_mob
+		if(xenomorph.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
 			now_pushing = FALSE
 			return
 
-	if(L.pulling)
-		if(ismob(L.pulling))
-			var/mob/P = L.pulling
-			if(P.is_mob_restrained())
+	if(living_mob.pulling)
+		if(ismob(living_mob.pulling) && ishumansynth_strict(src))
+			var/mob/pulled_mob = living_mob.pulling
+			if(pulled_mob.is_mob_restrained())
 				if(!(world.time % 5))
-					to_chat(src, SPAN_WARNING("[L] is restraining [P], you cannot push past."))
+					to_chat(src, SPAN_WARNING("[living_mob] is restraining [pulled_mob], you cannot push past."))
 				now_pushing = FALSE
 				return
 
-	if(ishuman(L))
-		if(!(L.status_flags & CANPUSH))
+	if(ishuman(living_mob))
+		if(!(living_mob.status_flags & CANPUSH))
 			now_pushing = FALSE
 			return
 
-	if(!L.buckled && !L.anchored)
+	if(!living_mob.buckled && !living_mob.anchored)
 		var/mob_swap
 		//the puller can always swap with its victim if on grab intent
-		if(L.pulledby == src && a_intent == INTENT_GRAB)
+		if(living_mob.pulledby == src && a_intent == INTENT_GRAB)
 			mob_swap = 1
 		//restrained people act if they were on 'help' intent to prevent a person being pulled from being separated from their puller
-		else if((L.is_mob_restrained() || L.a_intent == INTENT_HELP) && (is_mob_restrained() || a_intent == INTENT_HELP))
+		else if((living_mob.is_mob_restrained() || living_mob.a_intent == INTENT_HELP) && (is_mob_restrained() || a_intent == INTENT_HELP))
 			mob_swap = 1
 		if(mob_swap)
 			//switch our position with L
-			if(loc && !loc.Adjacent(L.loc))
+			if(loc && !loc.Adjacent(living_mob.loc))
 				now_pushing = FALSE
 				return
-			var/oldloc = loc
-			var/oldLloc = L.loc
 
-			L.add_temp_pass_flags(PASS_MOB_THRU)
-			add_temp_pass_flags(PASS_MOB_THRU)
+			if(!(living_mob.pass_flags.flags_pass & PASS_MOB_THRU)) //if they already pass through mob thi stuff is unnecessary
 
-			L.Move(oldloc)
-			Move(oldLloc)
+				var/oldloc = loc
+				var/oldLloc = living_mob.loc
 
-			remove_temp_pass_flags(PASS_MOB_THRU)
-			L.remove_temp_pass_flags(PASS_MOB_THRU)
+				living_mob.add_temp_pass_flags(PASS_MOB_THRU)
+				add_temp_pass_flags(PASS_MOB_THRU)
 
-			now_pushing = FALSE
-			return
+				living_mob.Move(oldloc)
+				Move(oldLloc)
+
+				remove_temp_pass_flags(PASS_MOB_THRU)
+				living_mob.remove_temp_pass_flags(PASS_MOB_THRU)
+
+				now_pushing = FALSE
+				return
 
 	now_pushing = FALSE
 
-	if(!(L.status_flags & CANPUSH))
+	if(!(living_mob.status_flags & CANPUSH))
 		return
 
 	..()
@@ -445,16 +463,19 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, type = /atom/movable/screen/fullscreen/flash, flash_timer = 40)
-	if( bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
-		overlay_fullscreen("flash", type)
+/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, flash_timer = 40, type = /atom/movable/screen/fullscreen/flash, dark_type = /atom/movable/screen/fullscreen/flash/dark)
+	if(bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
+		if(client?.prefs?.flash_overlay_pref == FLASH_OVERLAY_DARK)
+			overlay_fullscreen("flash", dark_type)
+		else
+			overlay_fullscreen("flash", type)
 		spawn(flash_timer)
 			clear_fullscreen("flash", 20)
 		return TRUE
 
 /mob/living/create_clone_movable(shift_x, shift_y)
 	..()
-	src.clone.hud_list = new /list(src.hud_list.len)
+	src.clone.hud_list = new /list(length(src.hud_list))
 	for(var/h in src.hud_possible) //Clone HUD
 		src.clone.hud_list[h] = new /image("loc" = src.clone, "icon" = src.hud_list[h].icon)
 
@@ -485,12 +506,10 @@
 		if(CONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-				sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 			add_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED), STAT_TRAIT)
 		if(UNCONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT) //adding trait sources should come before removing to avoid unnecessary updates
-				sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
 //			remove_from_dead_mob_list()
@@ -500,12 +519,10 @@
 		if(CONSCIOUS)
 			if(. >= UNCONSCIOUS)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-				sound_environment_override = SOUND_ENVIRONMENT_NONE
 			remove_traits(list(/*TRAIT_HANDS_BLOCKED, */ TRAIT_INCAPACITATED, TRAIT_FLOORED, /*TRAIT_CRITICAL_CONDITION*/), STAT_TRAIT)
 		if(UNCONSCIOUS)
 			if(. >= UNCONSCIOUS)
 				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-				sound_environment_override = SOUND_ENVIRONMENT_NONE
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
 //			REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
@@ -618,6 +635,7 @@
 		return
 	. = body_position
 	body_position = new_value
+	body_position_changed = world.time
 	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
 	if(new_value == LYING_DOWN) // From standing to lying down.
 		on_lying_down()

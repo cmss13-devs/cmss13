@@ -38,7 +38,7 @@
 	if(alert("This will free ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/M in view())
+	for(var/mob/living/M in view(src))
 		free_for_ghosts(M, notify = FALSE)
 
 	message_admins(WRAP_STAFF_LOG(usr, "freed all mobs in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)

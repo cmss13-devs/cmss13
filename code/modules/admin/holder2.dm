@@ -31,6 +31,9 @@ GLOBAL_PROTECT(href_token)
 	href_token = GenerateToken()
 	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
+	if(rights & R_PROFILER)
+		log_debug("Adding [ckey] to APP/admin.")
+		world.SetConfig("APP/admin", ckey, "role=admin")
 
 // Letting admins edit their own permission giver is a poor idea
 /datum/admins/vv_edit_var(var_name, var_value)
@@ -44,9 +47,6 @@ GLOBAL_PROTECT(href_token)
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
 		GLOB.admins |= C
-		if(owner.admin_holder.rights & R_PROFILER)
-			if(!world.GetConfig("admin", C.ckey))
-				world.SetConfig("APP/admin", C.ckey, "role = coder")
 
 /datum/admins/proc/disassociate()
 	if(owner)
@@ -140,16 +140,14 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		return FALSE
 	return TRUE
 
-/// gets the role dependant data for tgui-say
-/datum/admins/proc/get_tgui_say_roles()
-	var/roles = list()
-	if(check_for_rights(R_ADMIN))
-		roles += "Admin"
-	if(check_for_rights(R_MOD))
-		roles += "Mod"
+/// gets any additional channels for tgui-say (admin & mentor)
+/datum/admins/proc/get_tgui_say_extra_channels()
+	var/extra_channels = list()
+	if(check_for_rights(R_ADMIN) || check_for_rights(R_MOD))
+		extra_channels += ADMIN_CHANNEL
 	if(check_for_rights(R_MENTOR))
-		roles += "Mentor"
-	return roles
+		extra_channels += MENTOR_CHANNEL
+	return extra_channels
 
 /datum/proc/CanProcCall(procname)
 	return TRUE

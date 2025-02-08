@@ -223,6 +223,7 @@
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_AWFUL,
+		/obj/item/weapon/throwing_knife = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL
 		)
 	preop_sound = 'sound/surgery/retractor1.ogg'

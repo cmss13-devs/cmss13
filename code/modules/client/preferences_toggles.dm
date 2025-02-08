@@ -15,7 +15,7 @@
 	if(!admin_holder) return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
-	to_chat(usr,SPAN_BOLDNOTICE( "You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
 
 /client/proc/toggleprayers()
 	set name = "Show/Hide Prayers"
@@ -32,6 +32,14 @@
 	prefs.toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear announcement sounds as an observer."))
+
+/client/verb/toggle_fax_machine_sounds()
+	set name = "Hear/Silence Ghost Fax Machines"
+	set category = "Preferences.Sound"
+	set desc = "Toggle hearing a notification of faxes while being an observer."
+	prefs.toggles_sound ^= SOUND_FAX_MACHINE
+	prefs.save_preferences()
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_FAX_MACHINE) ? "now" : "no longer"] hear a fax sounds as an observer."))
 
 /client/verb/toggletitlemusic()
 	set name = "Hear/Silence LobbyMusic"
@@ -218,7 +226,7 @@
 
 	prefs.toggle_prefs ^= TOGGLE_FULLSCREEN
 	prefs.save_preferences()
-	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+	update_fullscreen()
 
 /client/verb/toggle_ambient_occlusion()
 	set name = "Toggle Ambient Occlusion"
@@ -260,21 +268,24 @@
 	set desc = "Toggles a specific toggleable preference"
 
 	var/list/pref_buttons = list(
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ignore_self'>Toggle the Ability to Hurt Yourself</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ignore_self'>Toggle the Ability to Hurt Yourself</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ammo_display_type'>Toggle Semi-Auto Ammo Counter</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
 	)
 
 	var/dat = ""
@@ -313,6 +324,12 @@
 		to_chat(src, SPAN_BOLDNOTICE("Guns with auto-ejectors will automatically eject their magazines."))
 	prefs.save_preferences()
 
+
+/client/proc/toggle_ammo_display_type()
+	prefs.toggle_prefs ^= TOGGLE_AMMO_DISPLAY_TYPE
+	to_chat(usr, SPAN_NOTICE("Guns in semi-automatic mode will now display the ammo on every [SPAN_BOLD(prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "fifth bullet and when the mag has less than 15 rounds left" : "single bullet")]"))
+	prefs.save_preferences()
+
 /client/proc/toggle_auto_eject_to_hand() // Toggle whether guns with auto-ejectors will eject their magazines to your offhand
 	prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
 	if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
@@ -341,12 +358,12 @@
 		to_chat(src, SPAN_BOLDNOTICE("Your messages will no longer be automatically punctuated if they are not punctuated already."))
 	prefs.save_preferences()
 
-/client/proc/toggle_middle_mouse_click() // Toggle whether abilities should use middle or shift clicking
-	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
-	if (prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with middle clicking."))
+/client/proc/toggle_auto_shove()
+	prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE_OFF
+	if (prefs.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF)
+		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen or King."))
 	else
-		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))
+		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen or King."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ability_deactivation() // Toggle whether the current ability can be deactivated when re-selected
@@ -451,6 +468,7 @@
 	else
 		CRASH("receive_random_tip() failed: null message")
 
+/// Toggle in character preferences and toggle preferences to configure what kind of blur overlay is used in game; Either blurry, impaired, or legacy.
 /client/proc/set_eye_blur_type()
 	var/result = tgui_alert(src, "What type of eye blur do you want?", "What type of eye blur do you want?", list("Blurry", "Impair", "Legacy"))
 	if(result == "Blurry")
@@ -462,6 +480,28 @@
 	if(result == "Legacy")
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
 		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
+	prefs.save_preferences()
+
+/// Toggle in character preferences and toggle preferences to configure what kind of flash overlay is used in game; Either white or black.
+/client/proc/set_flash_type()
+	var/result = tgui_alert(src, "What type of flash overlay do you want?", "What type of flash overlay do you want?", list("White", "Dark"))
+	if(result == "White")
+		prefs.flash_overlay_pref = FLASH_OVERLAY_WHITE
+		to_chat(src, SPAN_NOTICE("If flashed your vision will now be white."))
+	else if(result == "Dark")
+		prefs.flash_overlay_pref = FLASH_OVERLAY_DARK
+		to_chat(src, SPAN_NOTICE("If flashed your vision will now be dark."))
+	prefs.save_preferences()
+
+/// Toggle in character preferences and toggle preferences to configure what kind of crit overlay is used in game; Either white or grey.
+/client/proc/set_crit_type()
+	var/result = tgui_alert(src, "What type of crit overlay do you want?", "What type of crit overlay do you want?", list("White", "Dark"))
+	if(result == "White")
+		prefs.crit_overlay_pref = CRIT_OVERLAY_WHITE
+		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be white."))
+	else if(result == "Dark")
+		prefs.crit_overlay_pref = CRIT_OVERLAY_DARK
+		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be dark."))
 	prefs.save_preferences()
 
 /client/verb/toggle_tgui_say()
@@ -516,6 +556,9 @@
 	else
 		prefs.custom_cursors = FALSE
 		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+		mouse_pointer_icon = initial(mouse_pointer_icon)
+
+	prefs.save_preferences()
 
 /client/verb/toggle_auto_viewport_fit()
 	set name = "Toggle Auto Viewport Fit"

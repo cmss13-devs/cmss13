@@ -4,7 +4,6 @@
 /obj/item/weapon/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = ""
 	item_state = "gun"
 	pickup_sound = "gunequip"
@@ -20,12 +19,16 @@
 	force = 5
 	attack_verb = null
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/misc_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/misc_weapons_righthand.dmi',
 		)
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	light_system = DIRECTIONAL_LIGHT
+
+	///A custom mouse pointer icon to use when wielded
+	var/mouse_pointer = 'icons/effects/mouse_pointer/rifle_mouse.dmi'
 
 	var/accepted_ammo = list()
 	///Determines what kind of bullet is created when the gun is unloaded - used to match rounds to magazines. Set automatically when reloading.
@@ -33,6 +36,8 @@
 	var/muzzle_flash = "muzzle_flash"
 	///muzzle flash brightness
 	var/muzzle_flash_lum = 3
+	///Color of the muzzle flash light effect.
+	var/muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
 
 	var/fire_sound = 'sound/weapons/Gunshot.ogg'
 	/// If fire_sound is null, it will pick a sound from the list here instead.
@@ -234,7 +239,6 @@
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	VAR_PROTECTED/autofire_slow_mult = 1
 
-
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again
@@ -427,6 +431,10 @@
 	SEND_SIGNAL(src, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 
 /obj/item/weapon/gun/proc/handle_random_attachments()
+	#ifdef AUTOWIKI // no randomness for my gun pictures, please
+	return
+	#endif
+
 	var/attachmentchoice
 
 	var/randchance = random_spawn_chance
@@ -471,7 +479,7 @@
 
 
 /obj/item/weapon/gun/proc/handle_starting_attachment()
-	if(starting_attachment_types && starting_attachment_types.len)
+	if(LAZYLEN(starting_attachment_types))
 		for(var/path in starting_attachment_types)
 			var/obj/item/attachable/A = new path(src)
 			A.Attach(src)
@@ -503,13 +511,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
-		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, user))
+		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
 			force_light(on = TRUE)
-			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 	else
 		set_gun_user(null)
-		force_light(on = FALSE)
-		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+		// we force the light off and turn it back on again when the gun is equipped. Otherwise bad things happen.
+		if(light_sources())
+			force_light(on = FALSE)
+			ADD_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 
 	return ..()
 
@@ -538,11 +548,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/new_icon_state = base_gun_icon
 
-	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
-		new_icon_state += "_e"
+	if(!isnull(base_gun_icon))
+		if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
+			new_icon_state += "_e"
 
-	if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
-		new_icon_state += "_o"
+		if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
+			new_icon_state += "_o"
 
 	icon_state = new_icon_state
 	update_mag_overlay()
@@ -569,7 +580,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			else dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
-		dat += "<a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
+		dat += "<a href='byond://?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
 
 	if(dat)
 		. += dat
@@ -609,14 +620,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		gun_recoil = recoil_buildup
 
 	var/penetration = 0
-	var/armor_punch = 0
 	var/accuracy = 0
 	var/min_accuracy = 0
 	var/max_range = 0
+	var/effective_range = 0
 	var/scatter = 0
 	var/list/damage_armor_profile_xeno = list()
 	var/list/damage_armor_profile_marine = list()
-	var/list/damage_armor_profile_armorbreak = list()
 	var/list/damage_armor_profile_headers = list()
 
 	var/datum/ammo/in_ammo
@@ -639,24 +649,19 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		falloff = in_ammo.damage_falloff * damage_falloff_mult
 
 		penetration = in_ammo.penetration
-		armor_punch = in_ammo.damage_armor_punch
 
 		accuracy = in_ammo.accurate_range
 
 		min_accuracy = in_ammo.accurate_range_min
 
 		max_range = in_ammo.max_range
+		effective_range = in_ammo.effective_range_max
 		scatter = in_ammo.scatter
 
 		for(var/i = 0; i<=CODEX_ARMOR_MAX; i+=CODEX_ARMOR_STEP)
 			damage_armor_profile_headers.Add(i)
-			damage_armor_profile_marine.Add(round(armor_damage_reduction(GLOB.marine_ranged_stats, damage, i, penetration)))
-			damage_armor_profile_xeno.Add(round(armor_damage_reduction(GLOB.xeno_ranged_stats, damage, i, penetration)))
-			if(!GLOB.xeno_general.armor_ignore_integrity)
-				if(i != 0)
-					damage_armor_profile_armorbreak.Add("[round(armor_break_calculation(GLOB.xeno_ranged_stats, damage, i, penetration, in_ammo.pen_armor_punch, armor_punch)/i)]%")
-				else
-					damage_armor_profile_armorbreak.Add("N/A")
+			damage_armor_profile_marine.Add(floor(armor_damage_reduction(GLOB.marine_ranged_stats, damage, i, penetration)))
+			damage_armor_profile_xeno.Add(floor(armor_damage_reduction(GLOB.xeno_ranged_stats, damage, i, penetration)))
 
 	var/rpm = max(fire_delay, 1)
 	var/burst_rpm = max((fire_delay * 1.5 + (burst_amount - 1) * burst_delay)/max(burst_amount, 1), 0.0001)
@@ -669,8 +674,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
 	data["recoil"] = max(gun_recoil, 0.1)
 	data["unwielded_recoil"] = max(recoil_unwielded, 0.1)
-	data["firerate"] = round(1 MINUTES / rpm) // 3 minutes so that the values look greater than they actually are
-	data["burst_firerate"] = round(1 MINUTES / burst_rpm)
+	data["firerate"] = floor(1 MINUTES / rpm) // 3 minutes so that the values look greater than they actually are
+	data["burst_firerate"] = floor(1 MINUTES / burst_rpm)
 	data["firerate_second"] = round(1 SECONDS / rpm, 0.01)
 	data["burst_firerate_second"] = round(1 SECONDS / burst_rpm, 0.01)
 	data["scatter"] = max(0.1, scatter + src.scatter)
@@ -685,19 +690,18 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["damage"] = damage
 	data["falloff"] = falloff
 	data["total_projectile_amount"] = bonus_projectile_amount+1
-	data["armor_punch"] = armor_punch
 	data["penetration"] = penetration
 	data["accuracy"] = accuracy * accuracy_mult
 	data["unwielded_accuracy"] = accuracy * accuracy_mult_unwielded
 	data["min_accuracy"] = min_accuracy
 	data["max_range"] = max_range
+	data["effective_range"] = effective_range
 
 	// damage table data
 
 	data["damage_armor_profile_headers"] = damage_armor_profile_headers
 	data["damage_armor_profile_marine"] = damage_armor_profile_marine
 	data["damage_armor_profile_xeno"] = damage_armor_profile_xeno
-	data["damage_armor_profile_armorbreak"] = damage_armor_profile_armorbreak
 
 	return data
 
@@ -712,10 +716,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["damage_max"] = 100
 	data["accuracy_max"] = 32
 	data["range_max"] = 32
+	data["effective_range_max"] = EFFECTIVE_RANGE_MAX_TIER_4
 	data["falloff_max"] = DAMAGE_FALLOFF_TIER_1
 	data["penetration_max"] = ARMOR_PENETRATION_TIER_10
 	data["punch_max"] = 5
-	data["glob_armourbreak"] = GLOB.xeno_general.armor_ignore_integrity
 	data["automatic"] = (GUN_FIREMODE_AUTOMATIC in gun_firemode_list)
 	data["auto_only"] = ((length(gun_firemode_list) == 1) && (GUN_FIREMODE_AUTOMATIC in gun_firemode_list))
 
@@ -765,12 +769,31 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else
 			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
 
+	update_mouse_pointer(user, TRUE)
+	if(user.client)
+		RegisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
+
 	return 1
 
 /obj/item/weapon/gun/unwield(mob/user)
 	. = ..()
 	if(.)
+		update_mouse_pointer(user, FALSE)
+		if(user.client)
+			UnregisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW)
 		slowdown = initial(slowdown)
+
+/// SIGNAL_HANDLER for COMSIG_CLIENT_RESET_VIEW to ensure the mouse_pointer is set correctly
+/obj/item/weapon/gun/proc/handle_view(client/user, atom/target)
+	SIGNAL_HANDLER
+	update_mouse_pointer(user.mob, flags_item & WIELDED)
+
+///Turns the mouse cursor into a crosshair if new_cursor is set to TRUE. If set to FALSE, returns the cursor to its initial icon.
+/obj/item/weapon/gun/proc/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs.custom_cursors)
+		return
+
+	user.client.mouse_pointer_icon = new_cursor ? mouse_pointer : initial(user.client.mouse_pointer_icon)
 
 //----------------------------------------------------------
 			// \\
@@ -870,6 +893,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	if(!current_mag || QDELETED(current_mag) || (current_mag.loc != src && !loc_override))
 		cock(user)
+		current_mag = null
+		update_icon()
 		return
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
@@ -890,17 +915,22 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!in_chamber)
 		return
 	var/found_handful
+	var/ammo_type = get_ammo_type_chambered(user)
 	for(var/obj/item/ammo_magazine/handful/H in user.loc)
-		if(H.default_ammo == in_chamber.ammo.type && H.caliber == caliber && H.current_rounds < H.max_rounds)
+		if(H.default_ammo == ammo_type && H.caliber == caliber && H.current_rounds < H.max_rounds)
 			found_handful = TRUE
 			H.current_rounds++
 			H.update_icon()
 			break
 	if(!found_handful)
 		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
-		new_handful.generate_handful(in_chamber.ammo.type, caliber, 8, 1, type)
+		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)
+
+//Funny fix for smatrgun
+/obj/item/weapon/gun/proc/get_ammo_type_chambered(mob/user)
+	return in_chamber.ammo.type
 
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
@@ -1140,8 +1170,9 @@ and you're good to go.
 		flags_gun_features &= ~GUN_BURST_FIRING
 		return NONE
 
-	apply_bullet_effects(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
-	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
+	var/original_scatter = projectile_to_fire.scatter
+	var/original_accuracy = projectile_to_fire.accuracy
+	apply_bullet_scatter(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
 
 	curloc = get_turf(user)
 	if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.
@@ -1189,40 +1220,57 @@ and you're good to go.
 		click_empty(user)
 		return NONE
 
-	if(targloc != curloc)
-		simulate_recoil(dual_wield, user, target)
+	var/before_fire_cancel = SEND_SIGNAL(src, COMSIG_GUN_BEFORE_FIRE, projectile_to_fire, target, user)
+	if(before_fire_cancel)
 
-		//This is where the projectile leaves the barrel and deals with projectile code only.
-		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-		in_chamber = null // It's not in the gun anymore
-		INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
-		projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
-		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		//yeah we revert these since we are not going to shoot anyway
+		projectile_to_fire.scatter = original_scatter
+		projectile_to_fire.accuracy = original_accuracy
 
-		if(check_for_attachment_fire)
-			active_attachable.last_fired = world.time
-		else
-			last_fired = world.time
-			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-			if(fire_delay_group && delay_left > 0)
-				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
-		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
-		. = TRUE
+		if(before_fire_cancel & COMPONENT_CANCEL_GUN_BEFORE_FIRE)
+			return TRUE
 
-		shots_fired++
+		if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
+			return NONE
 
-		if(dual_wield && !fired_by_akimbo)
-			switch(user?.client?.prefs?.dual_wield_pref)
-				if(DUAL_WIELD_FIRE)
-					INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
-				if(DUAL_WIELD_SWAP)
-					user.swap_hand()
+	apply_bullet_effects(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
+	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
+	projectile_to_fire.firer = user
+	if(isliving(user))
+		projectile_to_fire.def_zone = user.zone_selected
+
+	play_firing_sounds(projectile_to_fire, user)
+
+	simulate_recoil(dual_wield, user, target)
+
+	//This is where the projectile leaves the barrel and deals with projectile code only.
+	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+	in_chamber = null // It's not in the gun anymore
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
+	projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	if(check_for_attachment_fire)
+		active_attachable.last_fired = world.time
 	else
-		return TRUE
+		last_fired = world.time
+		var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+		if(fire_delay_group && delay_left > 0)
+			LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
+
+	shots_fired++
+
+	if(dual_wield && !fired_by_akimbo)
+		switch(user?.client?.prefs?.dual_wield_pref)
+			if(DUAL_WIELD_FIRE)
+				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+			if(DUAL_WIELD_SWAP)
+				user.swap_hand()
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
-	var/angle = round(Get_Angle(user,target)) //Let's do a muzzle flash.
+	var/angle = floor(Get_Angle(user,target)) //Let's do a muzzle flash.
 	muzzle_flash(angle,user)
 
 	//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
@@ -1247,7 +1295,7 @@ and you're good to go.
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
 		active_attachable.last_fired = world.time
 		active_attachable.fire_attachment(attacked_mob, src, user)
-		return TRUE
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
@@ -1255,7 +1303,8 @@ and you're good to go.
 	if(attacked_mob == user && user.zone_selected == "mouth" && ishuman(user))
 		var/mob/living/carbon/human/HM = user
 		if(!able_to_fire(user))
-			return TRUE
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 
 		var/ffl = " [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 
@@ -1266,10 +1315,11 @@ and you're good to go.
 			attacked_mob.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
-		if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
 			attacked_mob.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
-			return TRUE
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 
 		if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
 			active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
@@ -1327,25 +1377,30 @@ and you're good to go.
 				msg_admin_niche("[key_name(user)] played live Russian Roulette with \a [name] in [get_area(user)] [ffl]") //someone might want to know anyway...
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
-		return TRUE
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 
 	if(EXECUTION_CHECK) //Execution
 		if(!able_to_fire(user)) //Can they actually use guns in the first place?
 			return ..()
+		if(flags_gun_features & GUN_CANT_EXECUTE)
+			return ..()
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [attacked_mob], steadying their aim."), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
-			return TRUE
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 	else if(user.a_intent != INTENT_HARM) //Thwack them
 		return ..()
 
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && attacked_mob.stat == DEAD) // don't shoot dead people
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && attacked_mob.stat == DEAD) // don't shoot dead people
 		return afterattack(attacked_mob, user, TRUE)
 
 	user.next_move = world.time //No click delay on PBs.
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
 	if(flags_gun_features & GUN_BURST_FIRING || !able_to_fire(user)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
-		return TRUE
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 
 	//The following relating to bursts was borrowed from Fire code.
 	var/check_for_attachment_fire = FALSE
@@ -1387,14 +1442,25 @@ and you're good to go.
 			click_empty(user)
 			break
 
+		//Checking if we even can PB the mob, only for the first projectile because why check the rest
+		if(bullets_fired == 1)
+			var/before_fire_cancel = SEND_SIGNAL(src, COMSIG_GUN_BEFORE_FIRE, projectile_to_fire, attacked_mob, user)
+			if(before_fire_cancel)
+				if(before_fire_cancel & COMPONENT_CANCEL_GUN_BEFORE_FIRE)
+					return TRUE
+				if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
+					return NONE
+
 		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_POINT_BLANK, attacked_mob, projectile_to_fire, user, src) & COMPONENT_CANCEL_AMMO_POINT_BLANK)
 			flags_gun_features &= ~GUN_BURST_FIRING
-			return TRUE
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 
 		//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
 		if(projectile_to_fire.ammo.on_pointblank(attacked_mob, projectile_to_fire, user, src))
 			flags_gun_features &= ~GUN_BURST_FIRING
-			return TRUE
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 
 		var/damage_buff = BASE_BULLET_DAMAGE_MULT
 		//if target is lying or unconscious - add damage bonus
@@ -1412,13 +1478,24 @@ and you're good to go.
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
 		simulate_recoil(1, user)
 
+
+		projectile_to_fire.firer = user
+		if(isliving(user))
+			projectile_to_fire.def_zone = user.zone_selected
+
+		play_firing_sounds(projectile_to_fire, user)
+
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)
 			var/obj/projectile/BP
 			for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
-				BP = new /obj/projectile(attacked_mob.loc, create_cause_data(initial(name), user))
+				BP = new /obj/projectile(null, create_cause_data(initial(name), user))
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
-				BP.accuracy = round(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
+				BP.accuracy = floor(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff
+
+				BP.bonus_projectile_check = 2
+				projectile_to_fire.bonus_projectile_check = 1
+
 				projectile_to_fire.give_bullet_traits(BP)
 				if(bullets_fired > 1)
 					BP.original = attacked_mob //original == the original target of the projectile. If the target is downed and this isn't set, the projectile will try to fly over it. Of course, it isn't going anywhere, but it's the principle of the thing. Very embarrassing.
@@ -1487,7 +1564,8 @@ and you're good to go.
 	if(PB_burst_bullets_fired)
 		Fire(get_turf(attacked_mob), user, reflex = TRUE) //Reflex prevents dual-wielding.
 
-	return TRUE
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 
 #undef EXECUTION_CHECK
 //----------------------------------------------------------
@@ -1521,7 +1599,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return //We just put the gun up. Can't do it that fast
 
 	if(ismob(user)) //Could be an object firing the gun.
-		if(!user.IsAdvancedToolUser())
+		if(!user.IsAdvancedToolUser() && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
 
@@ -1530,6 +1608,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			if(!H.allow_gun_usage)
 				if(issynth(user))
 					to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
+				else if(isthrall(user))
+					to_chat(user, SPAN_WARNING("Your master probably wouldn't be happy if you used this."))
 				else
 					to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 				return
@@ -1538,6 +1618,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			to_chat(user, SPAN_WARNING("The safety is on!"))
 			gun_user.balloon_alert(gun_user, "safety on")
 			return
+
+		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
+			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
+				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+				gun_user.balloon_alert(gun_user, "help intent safety")
+				click_empty(gun_user)
+			return FALSE
+
 		if(active_attachable)
 			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))
@@ -1604,17 +1692,40 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		user = gun_user
 
 	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
+		// toggleable spam control.
+		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
+			return
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
-	var/actual_sound = fire_sound
-	if(isnull(fire_sound))
-		actual_sound = pick(fire_sounds)
-	if(projectile_to_fire.ammo && projectile_to_fire.ammo.sound_override)
-		actual_sound = projectile_to_fire.ammo.sound_override
+	if(wield_delay > 0 && (world.time < wield_time || world.time < pull_time))
+		var/old_time = max(wield_time, pull_time) - wield_delay
+		var/new_time = world.time
+		var/pct_settled = 1 - (new_time-old_time + 1)/wield_delay
+		if(delay_style & WEAPON_DELAY_ACCURACY)
+			var/accuracy_debuff = 1 + (SETTLE_ACCURACY_MULTIPLIER - 1) * pct_settled
+			projectile_to_fire.accuracy /=accuracy_debuff
+		if(delay_style & WEAPON_DELAY_SCATTER)
+			var/scatter_debuff = 1 + (SETTLE_SCATTER_MULTIPLIER - 1) * pct_settled
+			projectile_to_fire.scatter *= scatter_debuff
 
+	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult, 0.1) // Apply gun damage multiplier to projectile damage
+
+	// Apply effective range and falloffs/buildups
+	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff
+	projectile_to_fire.damage_buildup = damage_buildup_mult * projectile_to_fire.ammo.damage_buildup
+
+	projectile_to_fire.effective_range_min = effective_range_min + projectile_to_fire.ammo.effective_range_min //Add on ammo-level value, if specified.
+	projectile_to_fire.effective_range_max = effective_range_max + projectile_to_fire.ammo.effective_range_max //Add on ammo-level value, if specified.
+
+	projectile_to_fire.shot_from = src
+
+	return  TRUE
+
+//This proc calculates scatter and accuracy
+/obj/item/weapon/gun/proc/apply_bullet_scatter(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
 	var/gun_accuracy_mult = accuracy_mult_unwielded
 	var/gun_scatter = scatter_unwielded
 
@@ -1640,50 +1751,36 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(skill_accuracy)
 			gun_accuracy_mult += skill_accuracy * HIT_ACCURACY_MULT_TIER_3 // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
-	projectile_to_fire.accuracy = round(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
+	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
 	projectile_to_fire.scatter += gun_scatter
 
-	if(wield_delay > 0 && (world.time < wield_time || world.time < pull_time))
-		var/old_time = max(wield_time, pull_time) - wield_delay
-		var/new_time = world.time
-		var/pct_settled = 1 - (new_time-old_time + 1)/wield_delay
-		if(delay_style & WEAPON_DELAY_ACCURACY)
-			var/accuracy_debuff = 1 + (SETTLE_ACCURACY_MULTIPLIER - 1) * pct_settled
-			projectile_to_fire.accuracy /=accuracy_debuff
-		if(delay_style & WEAPON_DELAY_SCATTER)
-			var/scatter_debuff = 1 + (SETTLE_SCATTER_MULTIPLIER - 1) * pct_settled
-			projectile_to_fire.scatter *= scatter_debuff
+/// When the gun is about to shoot this is called to play the specific gun's firing sound. Requires the firing projectile and the gun's user as the first and second argument
+/obj/item/weapon/gun/proc/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
+	if(!user) //The gun only messages when fired by a user.
+		return
 
-	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) // Apply gun damage multiplier to projectile damage
+	var/actual_sound = fire_sound
+	if(isnull(fire_sound))
+		actual_sound = pick(fire_sounds)
 
-	// Apply effective range and falloffs/buildups
-	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff
-	projectile_to_fire.damage_buildup = damage_buildup_mult * projectile_to_fire.ammo.damage_buildup
+	if(projectile_to_fire.ammo && projectile_to_fire.ammo.sound_override)
+		actual_sound = projectile_to_fire.ammo.sound_override
 
-	projectile_to_fire.effective_range_min = effective_range_min + projectile_to_fire.ammo.effective_range_min //Add on ammo-level value, if specified.
-	projectile_to_fire.effective_range_max = effective_range_max + projectile_to_fire.ammo.effective_range_max //Add on ammo-level value, if specified.
+	//Guns with low ammo have their firing sound
+	var/firing_sndfreq = (current_mag && (current_mag.current_rounds / current_mag.max_rounds) > GUN_LOW_AMMO_PERCENTAGE) ? FALSE : SOUND_FREQ_HIGH
 
-	projectile_to_fire.shot_from = src
-
-	if(user) //The gun only messages when fired by a user.
-		projectile_to_fire.firer = user
-		if(isliving(user)) projectile_to_fire.def_zone = user.zone_selected
-		//Guns with low ammo have their firing sound
-		var/firing_sndfreq = (current_mag && (current_mag.current_rounds / current_mag.max_rounds) > GUN_LOW_AMMO_PERCENTAGE) ? FALSE : SOUND_FREQ_HIGH
-		//firing from an attachment
-		if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
-			if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
-				playsound(user, active_attachable.fire_sound, 50)
-		else
-			if(!(flags_gun_features & GUN_SILENCED))
-				if (firing_sndfreq && fire_rattle)
-					playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
-				else
-					playsound(user, actual_sound, firesound_volume, firing_sndfreq)
+	//firing from an attachment
+	if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+		if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
+			playsound(user, active_attachable.fire_sound, 50)
+	else
+		if(!(flags_gun_features & GUN_SILENCED))
+			if (firing_sndfreq && fire_rattle)
+				playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
 			else
-				playsound(user, actual_sound, 25, firing_sndfreq)
-
-	return 1
+				playsound(user, actual_sound, firesound_volume, firing_sndfreq)
+		else
+			playsound(user, actual_sound, 25, firing_sndfreq)
 
 /obj/item/weapon/gun/proc/simulate_scatter(obj/projectile/projectile_to_fire, atom/target, turf/curloc, turf/targloc, mob/user, bullets_fired = 1)
 	var/fire_angle = Get_Angle(curloc, targloc)
@@ -1751,7 +1848,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
 
-	if(total_recoil > 0 && ishuman(user))
+	if(total_recoil > 0 && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
 		if(total_recoil >= 4)
 			shake_camera(user, total_recoil * 0.5, total_recoil)
 		else
@@ -1763,21 +1860,22 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/muzzle_flash(angle,mob/user)
 	if(!muzzle_flash || flags_gun_features & GUN_SILENCED || isnull(angle))
 		return //We have to check for null angle here, as 0 can also be an angle.
-	if(!istype(user) || !istype(user.loc,/turf))
+	if(!istype(user) || !isturf(user.loc))
 		return
 
 	var/prev_light = light_range
 	if(!light_on && (light_range <= muzzle_flash_lum))
 		set_light_range(muzzle_flash_lum)
 		set_light_on(TRUE)
+		set_light_color(muzzle_flash_color)
 		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
 
-	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
-	var/offset = 5
-
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',user,muzzle_flash,image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', user, muzzle_flash, user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)
 	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, offset)
+	if(iscarbonsizexeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
+		I.pixel_x = xeno.xeno_inhand_item_offset //To center it on the xeno sprite without being thrown off by rotation.
+	rotate.Translate(0, 5) //Y offset to push the flash overlay outwards.
 	rotate.Turn(angle)
 	I.transform = rotate
 	I.flick_overlay(user, 3)

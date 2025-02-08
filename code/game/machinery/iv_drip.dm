@@ -13,6 +13,7 @@
 	var/datum/beam/current_beam
 	//make it so that IV doesn't require power to function.
 	use_power = USE_POWER_NONE
+	needs_power = FALSE
 
 /obj/structure/machinery/iv_drip/update_icon()
 	if(attached)
@@ -27,7 +28,7 @@
 		if(reagents.total_volume)
 			var/image/filling = image('icons/obj/structures/machinery/iv_drip.dmi', src, "reagent")
 
-			var/percent = round((reagents.total_volume / beaker.volume) * 100)
+			var/percent = floor((reagents.total_volume / beaker.volume) * 100)
 			switch(percent)
 				if(0 to 9) filling.icon_state = "reagent0"
 				if(10 to 24) filling.icon_state = "reagent10"
@@ -65,7 +66,7 @@
 			return
 
 		if(attached)
-			user.visible_message("[user] detaches \the [src] from \the [attached].", \
+			user.visible_message("[user] detaches \the [src] from \the [attached].",
 			"You detach \the [src] from \the [attached].")
 			attached.active_transfusions -= src
 			attached = null
@@ -75,7 +76,7 @@
 			return
 
 		if(in_range(src, usr) && iscarbon(over_object) && get_dist(over_object, src) <= 1)
-			user.visible_message("[user] attaches \the [src] to \the [over_object].", \
+			user.visible_message("[user] attaches \the [src] to \the [over_object].",
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			attached.active_transfusions += src
@@ -190,7 +191,7 @@
 	. += "The IV drip is [mode ? "injecting" : "taking blood"]."
 
 	if(beaker)
-		if(beaker.reagents && beaker.reagents.reagent_list.len)
+		if(beaker.reagents && length(beaker.reagents.reagent_list))
 			. += SPAN_NOTICE(" Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.")
 		else
 			. += SPAN_NOTICE(" Attached is an empty [beaker].")

@@ -11,9 +11,7 @@
 "bB" = (
 /obj/item/clothing/shoes/veteran/pmc,
 /obj/structure/foamed_metal,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "bT" = (
 /obj/structure/shuttle/engine/propulsion,
@@ -24,15 +22,11 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "cV" = (
 /obj/item/storage/toolbox/electrical,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "cZ" = (
 /obj/item/storage/toolbox/mechanical,
@@ -46,25 +40,18 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "eW" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/airless{
-	dir = 5;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
 "gu" = (
 /obj/item/stack/cable_coil/random,
 /obj/item/explosive/grenade/high_explosive,
 /obj/item/explosive/grenade/high_explosive,
 /obj/structure/foamed_metal,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "ip" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "jo" = (
 /obj/item/tool/shovel/spade,
@@ -72,15 +59,11 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "jE" = (
 /obj/structure/xenoautopsy/tank/broken,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "kp" = (
 /obj/effect/landmark/crap_item,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "kP" = (
 /obj/structure/girder/displaced,
@@ -110,9 +93,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "rP" = (
 /obj/structure/bed/chair/dropship/pilot,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "tf" = (
 /obj/structure/machinery/constructable_frame{
@@ -122,9 +103,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "tv" = (
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/ground/barrens/north_east_barrens)
 "uw" = (
 /obj/structure/bed/chair{
@@ -134,9 +113,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "vA" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "vD" = (
 /obj/structure/surface/rack,
@@ -149,9 +126,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "xg" = (
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "xt" = (
 /obj/item/ammo_magazine/rifle/m16,
@@ -166,9 +141,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "yj" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "yJ" = (
 /obj/structure/machinery/constructable_frame{
@@ -188,9 +161,7 @@
 /area/lv624/ground/caves/central_caves)
 "BQ" = (
 /obj/structure/xenoautopsy/tank/hugger,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "Cn" = (
 /obj/effect/landmark/objective_landmark/science,
@@ -207,9 +178,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "DT" = (
 /obj/structure/foamed_metal,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "Fg" = (
 /obj/item/tool/warning_cone,
@@ -247,16 +216,12 @@
 "Kz" = (
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "KG" = (
 /obj/structure/bed/chair/dropship/pilot,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/leader,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "LQ" = (
 /obj/effect/landmark/corpsespawner/security,
@@ -281,9 +246,7 @@
 "RT" = (
 /obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/foamed_metal,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
+/turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "SJ" = (
 /turf/template_noop,
@@ -318,10 +281,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "ZH" = (
-/turf/open/floor/airless{
-	dir = 5;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
 
 (1,1,1) = {"

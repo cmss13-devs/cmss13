@@ -7,6 +7,7 @@ export type OrbitData = {
   survivors: Observable[];
   xenos: Observable[];
   ert_members: Observable[];
+  responders: Observable[];
   upp: Observable[];
   twe: Observable[];
   clf: Observable[];
@@ -18,6 +19,7 @@ export type OrbitData = {
   marshal: Observable[];
   synthetics: Observable[];
   predators: Observable[];
+  hunted: Observable[];
   animals: Observable[];
   dead: Observable[];
   ghosts: Observable[];
@@ -25,6 +27,7 @@ export type OrbitData = {
   npcs: Observable[];
   vehicles: Observable[];
   escaped: Observable[];
+  in_thunderdome: Observable[];
   icons?: string[];
 };
 
@@ -34,8 +37,32 @@ export type Observable = {
   icon?: string;
   job?: string;
   background_color?: string;
+  background_icon?: string;
   full_name: string;
   nickname?: string;
   orbiters?: number;
   ref: string;
+  hivenumber: string;
+  area_name: string;
 };
+
+export type SquadObservable = {
+  members: Array<Observable>;
+  color: string;
+  title: string;
+};
+
+export const buildSquadObservable: (
+  title: string,
+  color: string,
+  members: Array<Observable>,
+) => SquadObservable = (title, color, members = []) => {
+  return {
+    members: members,
+    color: color,
+    title: title,
+  };
+};
+
+export type splitter = (members: Array<Observable>) => Array<SquadObservable>;
+export type groupSorter = (a: Observable, b: Observable) => number;

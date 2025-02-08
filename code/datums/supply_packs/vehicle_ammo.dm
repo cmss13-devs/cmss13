@@ -148,3 +148,15 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M-87F Flare Launcher ammo crate"
 	group = "Vehicle Ammo"
+
+/datum/supply_packs/ammo_arcsentry
+	name = "RE700 Rotary Cannon magazines (x3)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/arc_sentry,
+		/obj/item/ammo_magazine/hardpoint/arc_sentry,
+		/obj/item/ammo_magazine/hardpoint/arc_sentry,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "RE700 Rotary Cannon ammo crate"
+	group = "Vehicle Ammo"

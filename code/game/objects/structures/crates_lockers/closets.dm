@@ -5,6 +5,7 @@
 	icon_state = "closed"
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
 	var/opened = 0
@@ -62,13 +63,17 @@
 		return 0
 	return 1
 
-/obj/structure/closet/proc/can_close()
+/obj/structure/closet/proc/can_close(mob/user)
 	for(var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src && !closet.wall_mounted)
-			return 0
+			return FALSE
 	for(var/mob/living/carbon/xenomorph/xeno in get_turf(src))
-		return 0
-	return 1
+		return FALSE
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy))
+		for(var/mob/living/carbon/human/closed_mob in get_turf(src))
+			if((closed_mob.stat == DEAD || closed_mob.health < HEALTH_THRESHOLD_CRIT) && !closed_mob.get_target_lock(user.faction_group) && !(closed_mob.status_flags & PERMANENTLY_DEAD)&& !(closed_mob.status_flags & PERMANENTLY_DEAD))
+				return FALSE
+	return TRUE
 
 /obj/structure/closet/proc/dump_contents()
 
@@ -101,10 +106,10 @@
 	density = FALSE
 	return 1
 
-/obj/structure/closet/proc/close()
+/obj/structure/closet/proc/close(mob/user)
 	if(!src.opened)
 		return 0
-	if(!src.can_close())
+	if(!src.can_close(user))
 		return 0
 
 	var/stored_units = 0
@@ -127,7 +132,9 @@
 			var/obj/item/explosive/plastic/P = I
 			if(P.active)
 				continue
-		var/item_size = Ceiling(I.w_class / 2)
+		if(istype(I, /obj/item/phone))
+			continue
+		var/item_size = ceil(I.w_class / 2)
 		if(stored_units + item_size > storage_capacity)
 			continue
 		if(!I.anchored)
@@ -286,6 +293,8 @@
 		return
 	if(O.anchored || get_dist(user, src) > 1 || get_dist(user, O) > 1)
 		return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
 	if(!isturf(user.loc))
 		return
 	if(ismob(O))
@@ -346,8 +355,6 @@
 	if(ishuman(usr))
 		src.add_fingerprint(usr)
 		src.toggle(usr)
-	else
-		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	overlays.Cut()
@@ -374,3 +381,8 @@
 	if(!opened)
 		welded = 0
 		open()
+
+/obj/structure/closet/yautja
+	name = "alien closet"
+	desc = "A suspicious dark metal alien closet, what horrors can be stored inside?"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

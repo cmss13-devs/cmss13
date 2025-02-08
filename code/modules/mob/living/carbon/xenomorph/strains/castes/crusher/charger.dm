@@ -14,8 +14,8 @@
 
 /datum/xeno_strain/charger
 	name = CRUSHER_CHARGER
-	description = "In exchange for your shield, a little bit of your armor and damage, your slowdown resist from autospitters, your influence under frenzy pheromones, your stomp no longer knocking down talls, and your ability to lock your direction, you gain a considerable amount of health, some speed, your stomp does extra damage when stomping over a grounded tall, and your charge is now manually-controlled and momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by your roar. In addition, your armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, you gain an ability to tumble to pass through talls and avoid enemy fire, and an ability to forcefully move enemies via ramming into them."
-	flavor_description = "We're just getting started. Nothing stops this train. Nothing."
+	description = "In exchange for your shield, a little bit of your armor and damage, your slowdown resist from turrets, your influence under frenzy pheromones, your stomp no longer knocking down talls, and your ability to lock your direction, you gain a considerable amount of health, some speed, your stomp does extra damage when stomping over a grounded tall, and your charge is now manually-controlled and momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by your roar. In addition, your armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, you gain an ability to tumble to pass through enemies and avoid enemy fire, and an ability to forcefully move enemies via ramming into them."
+	flavor_description = "Nothing stops this hive. This one will become both the immovable object and the unstoppable force."
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
@@ -218,7 +218,7 @@
 		charger_ability.stop_momentum()
 		return
 
-	if(!indestructible && !unacidable)
+	if(!explo_proof && !unacidable)
 		qdel(src)
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, TRUE)
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
@@ -246,6 +246,19 @@
 		charger_ability.stop_momentum()
 		return
 	update_health(CHARGER_DAMAGE_CADE)
+	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+	if(QDELETED(src))
+		if(prob(50))
+			charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
+		return XENO_CHARGE_TRY_MOVE
+
+	charger_ability.stop_momentum()
+
+/obj/structure/fence/electrified/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
+		return
+	attack_generic(xeno,CHARGER_DAMAGE_CADE)
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	if(QDELETED(src))
 		if(prob(50))
@@ -369,11 +382,20 @@
 			charger_ability.stop_momentum() // antigrief
 			return
 		if(HAS_TRAIT(src, TRAIT_CHARGING))
-			apply_effect(2, WEAKEN)
-			xeno.apply_effect(2, WEAKEN)
-			src.throw_atom(pick(GLOB.cardinals),1,3,xeno,TRUE)
-			xeno.throw_atom(pick(GLOB.cardinals),1,3,xeno,TRUE)
+			apply_effect(1, WEAKEN)
+			xeno.apply_effect(1, WEAKEN)
+			throw_atom(get_step(src, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
+			xeno.throw_atom(get_step(xeno, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
 			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
+			for(var/mob/living/carbon/carbon_target in range(7, xeno))
+				to_chat(carbon_target, SPAN_WARNING("The chargers colliding causes the ground to shake!"))
+				shake_camera(carbon_target, 2, 3)
+				if(get_dist(xeno, carbon_target) <= 3 && !xeno.can_not_harm(carbon_target))
+					if(carbon_target.mob_size >= MOB_SIZE_BIG)
+						carbon_target.apply_effect(1, SLOW)
+					else
+						carbon_target.apply_effect(1, WEAKEN)
+						to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 			return
 		var/list/ram_dirs = get_perpen_dir(xeno.dir)
@@ -385,7 +407,7 @@
 			xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
 			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings you out of its way! Move it!"))
 			apply_effect(1, WEAKEN) // brief flicker stun
-			src.throw_atom(src.loc,1,3,xeno,TRUE)
+			throw_atom(get_turf(src), 1, 3, xeno, TRUE)
 		step(src, ram_dir, charger_ability.momentum * 0.5)
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 		return XENO_CHARGE_TRY_MOVE

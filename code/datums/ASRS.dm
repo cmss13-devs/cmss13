@@ -40,6 +40,10 @@
 	reference_package = /datum/supply_packs/ammo_m4a3_mag_box_ap
 	cost = ASRS_VERY_LOW_WEIGHT
 
+/datum/supply_packs_asrs/ammo_m4a3_mag_box_hp
+	reference_package = /datum/supply_packs/ammo_m4a3_mag_box_hp
+	cost = ASRS_VERY_LOW_WEIGHT
+
 /datum/supply_packs_asrs/ammo_mag_box
 	reference_package = /datum/supply_packs/ammo_mag_box
 	cost = ASRS_VERY_LOW_WEIGHT
@@ -90,17 +94,6 @@
 	cost = ASRS_VERY_LOW_WEIGHT
 
 //===================================
-// Mortar ammo
-/datum/supply_packs_asrs/ammo_mortar_he
-	reference_package = /datum/supply_packs/ammo_mortar_he
-
-/datum/supply_packs_asrs/ammo_mortar_incend
-	reference_package = /datum/supply_packs/ammo_mortar_incend
-
-/datum/supply_packs_asrs/ammo_mortar_flare
-	reference_package = /datum/supply_packs/ammo_mortar_flare
-
-//===================================
 // Misc supplies
 /datum/supply_packs_asrs/flares
 	reference_package = /datum/supply_packs/flares
@@ -123,3 +116,4 @@
 /datum/supply_packs_asrs/ingredient
 	reference_package = /datum/supply_packs/ingredient
 	pool = ASRS_POOL_FOOD
+	cost = ASRS_VERY_LOW_WEIGHT

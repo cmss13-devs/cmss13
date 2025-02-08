@@ -73,9 +73,9 @@
 	var/charge_diff = max_internal_charge - current_internal_charge // OK we have charge differences
 	charge_diff = charge_diff / CELLRATE // Deconvert from Charge to Joules
 	if(chargemode) // Decide if use passive or active power
-		charge_diff = between(0, charge_diff, charging_cap_active) // Trim the values to limits
+		charge_diff = clamp(charge_diff, 0, charging_cap_active) // Trim the values to limits
 	else // We should have load for this tick in Watts
-		charge_diff = between(0, charge_diff, charging_cap_passive)
+		charge_diff = clamp(charge_diff, 0, charging_cap_passive)
 
 	charge_diff += 50 // 50W for circuitry
 
@@ -106,7 +106,7 @@
 
 /obj/structure/machinery/recharge_station/get_examine_text(mob/user)
 	. = ..()
-	. += "The charge meter reads: [round(chargepercentage())]%"
+	. += "The charge meter reads: [floor(chargepercentage())]%"
 
 /obj/structure/machinery/recharge_station/proc/chargepercentage()
 	return ((current_internal_charge / max_internal_charge) * 100)
@@ -116,6 +116,10 @@
 		return
 	src.go_out()
 	return
+
+/obj/structure/machinery/recharge_station/inoperable(additional_flags = 0)
+	. = ..(additional_flags)
+	return (. && !current_internal_charge)
 
 /obj/structure/machinery/recharge_station/emp_act(severity)
 	. = ..()
@@ -127,15 +131,15 @@
 
 /obj/structure/machinery/recharge_station/update_icon()
 	..()
-	if(!inoperable())
+	if(operable())
 		if(src.occupant)
 			icon_state = "borgcharger1"
 		else
 			icon_state = "borgcharger0"
 	else
-		icon_state = "borgcharger0"
+		icon_state = "borgcharger2"
 	overlays.Cut()
-	switch(round(chargepercentage()))
+	switch(floor(chargepercentage()))
 		if(1 to 20)
 			overlays += image('icons/obj/objects.dmi', "statn_c0")
 		if(21 to 40)
@@ -167,7 +171,7 @@
 				doing_stuff = TRUE
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
-					if(current_limb.implants.len)
+					if(length(current_limb.implants))
 						doing_stuff = TRUE
 						to_chat(occupant, "Foreign material detected. Beginning removal process...")
 						for(var/obj/item/current_implant in current_limb.implants)
@@ -225,6 +229,9 @@
 	return move_mob_inside(target)
 
 /obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/M)
+	if(current_internal_charge <= 0)
+		to_chat(M, SPAN_NOTICE(SPAN_BOLD("[src] is currently out of power. Please come back later!")))
+		return
 	if (!issynth(M))
 		return FALSE
 	if (occupant)

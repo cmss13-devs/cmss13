@@ -10,6 +10,7 @@
 	name = "sandwich"
 	desc = "The best thing since sliced bread."
 	icon_state = "breadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	bitesize = 2
 
@@ -26,8 +27,11 @@
 		if(istype(O,/obj/item/reagent_container/food/snacks/breadslice))
 			sandwich_limit += 4
 
-	if(src.contents.len > sandwich_limit)
+	if(length(src.contents) > sandwich_limit)
 		to_chat(user, SPAN_DANGER("If you put anything else on \the [src] it's going to collapse."))
+		return
+	if(length(src.contents) >= 15)
+		to_chat(user, SPAN_DANGER("\The [src] is already massive! You can't add more without ruining it."))
 		return
 	else if(istype(W,/obj/item/shard))
 		to_chat(user, SPAN_NOTICE(" You hide [W] in \the [src]."))
@@ -56,7 +60,7 @@
 		i++
 		if(i == 1)
 			fullname += "[O.name]"
-		else if(i == ingredients.len)
+		else if(i == length(ingredients))
 			fullname += " and [O.name]"
 		else
 			fullname += ", [O.name]"
@@ -69,12 +73,12 @@
 
 	var/image/T = new(src.icon, "sandwich_top")
 	T.pixel_x = pick(list(-1,0,1))
-	T.pixel_y = (ingredients.len * 2)+1
+	T.pixel_y = (length(ingredients) * 2)+1
 	overlays += T
 
 	name = lowertext("[fullname] sandwich")
 	if(length(name) > 80) name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
-	w_class = Ceiling(clamp((ingredients.len/2),1,3))
+	w_class = ceil(clamp((length(ingredients)/2),1,3))
 
 /obj/item/reagent_container/food/snacks/csandwich/Destroy()
 	QDEL_NULL_LIST(ingredients)
@@ -82,7 +86,7 @@
 
 /obj/item/reagent_container/food/snacks/csandwich/get_examine_text(mob/user)
 	. = ..()
-	if(contents && contents.len)
+	if(LAZYLEN(contents))
 		var/obj/item/O = pick(contents)
 		. += SPAN_NOTICE("You think you can see [O.name] in there.")
 

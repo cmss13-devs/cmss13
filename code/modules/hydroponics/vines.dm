@@ -76,22 +76,22 @@
 		if(prob(seed ? min(max(0,100 - seed.potency),100) : 50))
 			if(buckled_mob.buckled == src)
 				if(buckled_mob != user)
-					buckled_mob.visible_message(\
-						SPAN_NOTICE("[user.name] frees [buckled_mob.name] from [src]."),\
-						SPAN_NOTICE("[user.name] frees you from [src]."),\
+					buckled_mob.visible_message(
+						SPAN_NOTICE("[user.name] frees [buckled_mob.name] from [src]."),
+						SPAN_NOTICE("[user.name] frees you from [src]."),
 						SPAN_WARNING("You hear shredding and ripping."))
 				else
-					buckled_mob.visible_message(\
-						SPAN_NOTICE("[buckled_mob.name] struggles free of [src]."),\
-						SPAN_NOTICE("You untangle [src] from around yourself."),\
+					buckled_mob.visible_message(
+						SPAN_NOTICE("[buckled_mob.name] struggles free of [src]."),
+						SPAN_NOTICE("You untangle [src] from around yourself."),
 						SPAN_WARNING("You hear shredding and ripping."))
 			unbuckle()
 			return 1
 		else
 			var/text = pick("rips","tears","pulls")
-			user.visible_message(\
-				SPAN_NOTICE("[user.name] [text] at [src]."),\
-				SPAN_NOTICE("You [text] at [src]."),\
+			user.visible_message(
+				SPAN_NOTICE("[user.name] [text] at [src]."),
+				SPAN_NOTICE("You [text] at [src]."),
 				SPAN_WARNING("You hear shredding and ripping."))
 	return 0
 
@@ -138,7 +138,7 @@
 			if(seed.carnivorous == 2)
 				to_chat(buckled_mob, SPAN_DANGER("\The [src] pierces your flesh greedily!"))
 
-				var/damage = rand(round(seed.potency/2),seed.potency)
+				var/damage = rand(floor(seed.potency/2),seed.potency)
 				if(!istype(H))
 					H.apply_damage(damage, BRUTE)
 					return
@@ -156,7 +156,7 @@
 				H.updatehealth()
 
 			// Inject some chems.
-			if(seed.chems && seed.chems.len && istype(H))
+			if(LAZYLEN(seed.chems) && istype(H))
 				to_chat(H, SPAN_DANGER("You feel something seeping into your skin!"))
 				for(var/rid in seed.chems)
 					var/injecting = min(5,max(1,seed.potency/5))
@@ -167,7 +167,7 @@
 
 	// Update bioluminescence.
 	if(seed.biolum)
-		set_light(1+round(seed.potency/10))
+		set_light(1+floor(seed.potency/10))
 		return
 	else
 		set_light(0)
@@ -175,7 +175,7 @@
 	// Update flower/product overlay.
 	overlays.Cut()
 	if(age >= seed.maturation)
-		if(prob(20) && seed.products && seed.products.len && !harvest && ((age-lastproduce) > seed.production))
+		if(prob(20) && LAZYLEN(seed.products) && !harvest && ((age-lastproduce) > seed.production))
 			harvest = 1
 			lastproduce = age
 
@@ -319,9 +319,9 @@
 		return
 
 	// Check if we're too big for our own good.
-	if(vines.len >= (seed ? seed.potency * collapse_limit : 250) && !reached_collapse_size)
+	if(length(vines) >= (seed ? seed.potency * collapse_limit : 250) && !reached_collapse_size)
 		reached_collapse_size = 1
-	if(vines.len >= (seed ? seed.potency * slowdown_limit : 30) && !reached_slowdown_size )
+	if(length(vines) >= (seed ? seed.potency * slowdown_limit : 30) && !reached_slowdown_size )
 		reached_slowdown_size = 1
 
 	var/length = 0
@@ -335,7 +335,7 @@
 	else
 		length = 1
 
-	length = min(30, max(length, vines.len/5))
+	length = min(30, max(length, length(vines)/5))
 
 	// Update as many pieces of vine as we're allowed to.
 	// Append updated vines to the end of the growth queue.

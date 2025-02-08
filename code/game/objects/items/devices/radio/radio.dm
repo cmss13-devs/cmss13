@@ -196,7 +196,7 @@
 		return radio_connection
 
 	// Otherwise, if a channel is specified, look for it.
-	if(channels && channels.len)
+	if(LAZYLEN(channels))
 		if (message_mode == RADIO_CHANNEL_DEPARTMENT ) // Department radio shortcut
 			message_mode = channels[1]
 
@@ -206,7 +206,7 @@
 	// If we were to send to a channel we don't have, drop it.
 	return null
 
-/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = FALSE)
+/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = NOT_LISTENING_BUG)
 	if(!on) return // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
 	if(!M || !message) return

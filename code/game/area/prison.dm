@@ -57,6 +57,7 @@
 	name = "\improper control room"
 	icon_state = "bridge"
 	minimap_color = MINIMAP_AREA_COMMAND
+	is_landing_zone = TRUE
 
 /area/prison/hallway/central_ring
 	name = "\improper central ring"

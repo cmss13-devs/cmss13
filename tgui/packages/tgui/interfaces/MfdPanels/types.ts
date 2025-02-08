@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 
 export interface ButtonProps {
@@ -67,10 +68,16 @@ export type SentrySpec = {
   iff_status: string[];
   camera_available: number;
   deployed: 0 | 1;
+  auto_deploy: 0 | 1;
 };
 
 export type SpotlightSpec = {
   name: string;
+};
+
+export type ParadropSpec = {
+  signal: string | null;
+  locked: 0 | 1;
 };
 
 export type MGSpec = {
@@ -80,6 +87,7 @@ export type MGSpec = {
   rounds: number;
   max_rounds: number;
   deployed: 0 | 1;
+  auto_deploy: 0 | 1;
 };
 
 export type CasFiremissionStage = {

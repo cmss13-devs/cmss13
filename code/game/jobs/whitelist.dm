@@ -18,12 +18,8 @@
 		LAZYADD(., "commander")
 	if(player.check_whitelist_status(WHITELIST_SYNTHETIC))
 		LAZYADD(., "synthetic")
-
-/client/load_player_data_info(datum/entity/player/player)
-	. = ..()
-
-	if(isSenator(src))
-		add_verb(src, /client/proc/whitelist_panel)
+	if(player.check_whitelist_status(WHITELIST_FAX_RESPONDER))
+		LAZYADD(., "responder")
 
 /client
 	var/datum/whitelist_panel/wl_panel
@@ -42,8 +38,10 @@
 #define WL_PANEL_RIGHT_YAUTJA (1<<2)
 #define WL_PANEL_RIGHT_MENTOR (1<<3)
 #define WL_PANEL_RIGHT_OVERSEER (1<<4)
+#define WL_PANEL_RIGHT_MANAGER (1<<5)
 #define WL_PANEL_ALL_COUNCILS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA)
-#define WL_PANEL_ALL_RIGHTS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_MENTOR|WL_PANEL_RIGHT_OVERSEER)
+#define WL_PANEL_RIGHTS_OVERSEER (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_OVERSEER)
+#define WL_PANEL_ALL_RIGHTS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_MENTOR|WL_PANEL_RIGHT_OVERSEER|WL_PANEL_RIGHT_MANAGER)
 
 /datum/whitelist_panel
 	var/viewed_player = list()
@@ -66,7 +64,7 @@
 	if(person.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		rights |= WL_PANEL_RIGHT_YAUTJA
 	if(rights == WL_PANEL_ALL_COUNCILS)
-		return WL_PANEL_ALL_RIGHTS
+		rights |= WL_PANEL_RIGHTS_OVERSEER
 	return rights
 
 /datum/whitelist_panel/tgui_interact(mob/user, datum/tgui/ui)
@@ -112,7 +110,7 @@ GLOBAL_LIST_INIT(syn_flags, list(
 ))
 GLOBAL_LIST_INIT(yaut_flags, list(
 	list(name = "Yautja", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy Holder", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_OVERSEER),
+	list(name = "Legacy Holder", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_MANAGER),
 	list(name = "Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Legacy Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
@@ -120,6 +118,8 @@ GLOBAL_LIST_INIT(yaut_flags, list(
 GLOBAL_LIST_INIT(misc_flags, list(
 	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
 	list(name = "Working Joe", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Dzho Automaton", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Fax Responder", bitflag = WHITELIST_FAX_RESPONDER, permission = WL_PANEL_RIGHT_MANAGER),
 ))
 
 /datum/whitelist_panel/ui_static_data(mob/user)
@@ -144,8 +144,10 @@ GLOBAL_LIST_INIT(misc_flags, list(
 /datum/whitelist_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
-		return
+		return FALSE
 	var/mob/user = ui.user
+	if(!isSenator(user.client) && !CLIENT_HAS_RIGHTS(user.client, R_PERMISSIONS))
+		return FALSE
 	switch(action)
 		if("go_back")
 			go_back()
@@ -165,6 +167,7 @@ GLOBAL_LIST_INIT(misc_flags, list(
 				return
 			var/datum/entity/player/player = get_player_from_key(player_key)
 			player.set_whitelist_status(new_rights)
+			player.add_note("Whitelists updated by [user.key]. Reason: '[reason]'.", FALSE, NOTE_WHITELIST)
 			to_chat(user, SPAN_HELPFUL("Whitelists for [player_key] updated."))
 			message_admins("Whitelists for [player_key] updated by [key_name(user)]. Reason: '[reason]'.")
 			log_admin("WHITELISTS: Flags for [player_key] changed from [target_rights] to [new_rights]. Reason: '[reason]'.")

@@ -173,21 +173,30 @@ export const YarnTarget = new Juke.Target({
 export const TgFontTarget = new Juke.Target({
   dependsOn: [YarnTarget],
   inputs: [
-    'tgui/.yarn/install-target',
-    'tgui/packages/tgfont/**/*.+(js|cjs|svg)',
-    'tgui/packages/tgfont/package.json',
+    "tgui/.yarn/install-target",
+    "tgui/packages/tgfont/**/*.+(js|cjs|svg)",
+    "tgui/packages/tgfont/package.json",
   ],
   outputs: [
-    'tgui/packages/tgfont/dist/tgfont.css',
-    'tgui/packages/tgfont/dist/tgfont.eot',
-    'tgui/packages/tgfont/dist/tgfont.woff2',
+    "tgui/packages/tgfont/dist/tgfont.css",
+    "tgui/packages/tgfont/dist/tgfont.eot",
+    "tgui/packages/tgfont/dist/tgfont.woff2",
   ],
   executes: async () => {
-    await yarn('tgfont:build');
-    fs.copyFileSync('tgui/packages/tgfont/dist/tgfont.css', 'tgui/packages/tgfont/static/tgfont.css');
-    fs.copyFileSync('tgui/packages/tgfont/dist/tgfont.eot', 'tgui/packages/tgfont/static/tgfont.eot');
-    fs.copyFileSync('tgui/packages/tgfont/dist/tgfont.woff2', 'tgui/packages/tgfont/static/tgfont.woff2');
-  }
+    await yarn("tgfont:build");
+    fs.copyFileSync(
+      "tgui/packages/tgfont/dist/tgfont.css",
+      "tgui/packages/tgfont/static/tgfont.css"
+    );
+    fs.copyFileSync(
+      "tgui/packages/tgfont/dist/tgfont.eot",
+      "tgui/packages/tgfont/static/tgfont.eot"
+    );
+    fs.copyFileSync(
+      "tgui/packages/tgfont/dist/tgfont.woff2",
+      "tgui/packages/tgfont/static/tgfont.woff2"
+    );
+  },
 });
 
 export const TguiTarget = new Juke.Target({
@@ -303,8 +312,6 @@ export const CleanTarget = new Juke.Target({
   dependsOn: [TguiCleanTarget],
   executes: async () => {
     Juke.rm("*.{dmb,rsc}");
-    Juke.rm("*.mdme*");
-    Juke.rm("*.m.*");
     Juke.rm("maps/templates.dm");
   },
 });

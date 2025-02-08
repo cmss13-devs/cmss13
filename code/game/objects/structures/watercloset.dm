@@ -22,7 +22,7 @@
 
 /obj/structure/toilet/Initialize()
 	. = ..()
-	open = round(rand(0, 1))
+	open = floor(rand(0, 1))
 	cistern_overlay = new()
 	cistern_overlay.icon = icon
 	cistern_overlay.layer = ABOVE_MOB_LAYER

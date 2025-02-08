@@ -1,7 +1,7 @@
 /obj/item/bananapeel
 	name = "banana peel"
 	desc = "A peel from a banana."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "banana_peel"
 	item_state = "banana_peel"
 	w_class = SIZE_TINY
@@ -15,23 +15,14 @@
 		var/mob/living/carbon/C = AM
 		C.slip(name, 4, 2)
 
-/*
-/obj/item/game_kit
-	name = "Gaming Kit"
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "game_kit"
-	var/selected = null
-	var/board_stat = null
-	var/data = ""
-	var/base_url = "http://svn.slurm.us/public/spacestation13/misc/game_kit"
-	item_state = "sheet-metal"
-	w_class = SIZE_HUGE
-*/
-
 /obj/item/gift
 	name = "gift"
 	desc = "A wrapped item."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/gifts.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
 	icon_state = "gift3"
 	var/size = 3
 	var/obj/item/gift = null
@@ -41,9 +32,13 @@
 /obj/item/weapon/pole
 	name = "wooden pole"
 	desc = "A rough, cracked pole seemingly constructed on the field. You could probably whack someone with this."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/canes.dmi'
 	icon_state = "wooden_pole"
 	item_state = "wooden_pole"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/canes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/canes_righthand.dmi',
+	)
 	force = 20
 	attack_speed = 1.5 SECONDS
 	var/gripped = FALSE
@@ -56,13 +51,13 @@
 	..()
 	if(!gripped)
 		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
-		flags_item |= NODROP
+		flags_item |= NODROP|FORCEDROP_CONDITIONAL
 		ADD_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
 		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, "cane_step")
 		gripped = TRUE
 	else
 		user.visible_message(SPAN_NOTICE("[user] loosens \his grip on [src]."), SPAN_NOTICE("You loosen your grip on [src]."))
-		flags_item &= ~NODROP
+		flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
 		REMOVE_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
 		// Ideally, this would be something like a component added onto every mob that prioritizes certain sounds, such as stomping over canes.
 		var/component = user.GetComponent(/datum/component/footstep)
@@ -149,14 +144,6 @@
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/katana
 	stored_item = new /obj/item/weapon/sword/katana
 
-// IN SHOTGUNS.DM!!
-
-/*obj/item/weapon/pole/fancy_cane/gun
-	name = "fancy cane"
-	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
-	force = 15 // hollow
-*/
-
 /obj/item/research//Makes testing much less of a pain -Sieve
 	name = "research"
 	icon = 'icons/obj/items/stock_parts.dmi'
@@ -164,21 +151,17 @@
 	desc = "A debug item for research."
 
 /obj/item/moneybag
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	name = "Money bag"
 	icon_state = "moneybag"
 	force = 10
 	throwforce = 2
 	w_class = SIZE_LARGE
 
-
-
-
-
 /obj/item/evidencebag
 	name = "evidence bag"
 	desc = "An empty evidence bag."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "evidenceobj"
 	item_state = ""
 	w_class = SIZE_SMALL
@@ -224,11 +207,11 @@
 		to_chat(user, SPAN_NOTICE("[I] won't fit in [src]."))
 		return
 
-	if(contents.len)
+	if(length(contents))
 		to_chat(user, SPAN_NOTICE("[src] already has something inside it."))
 		return
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
+	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",
 	"You hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
@@ -257,9 +240,9 @@
 /obj/item/evidencebag/attack_self(mob/user)
 	..()
 
-	if(contents.len)
+	if(length(contents))
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\
+		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",
 		"You hear someone rustle around in a plastic bag, and remove something.")
 		overlays.Cut() //remove the overlays
 
@@ -292,11 +275,32 @@
 	new /obj/item/evidencebag(src)
 	new /obj/item/evidencebag(src)
 
-/obj/item/rappel_harness
-	name = "rappel harness"
-	desc = "A simple, uncomfortable rappel harness with just enough safety straps to make RnD pass health and safety. It comes with an in-built descender, but has no pouches for ammunition."
-	icon = 'icons/obj/items/clothing/belts.dmi'
-	icon_state = "rappel_harness"
-	item_state = "rappel_harness"
+/obj/item/parachute
+	name = "parachute"
+	desc = "A surprisingly small yet bulky pack with just enough safety straps to make RnD pass health and safety. The label says the pack comes with two parachutes - main and reserve, but you doubt the pack can fit even one."
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
+	)
+	icon_state = "parachute_pack"
+	item_state = "parachute_pack"
 	w_class = SIZE_MASSIVE
-	flags_equip_slot = SLOT_WAIST
+	flags_equip_slot = SLOT_BACK
+	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
+
+/obj/item/clock
+	name = "digital clock"
+	desc = "A battery powered clock, able to keep time within about 5 seconds... it was never that accurate."
+	icon = 'icons/obj/items/devices.dmi'
+	icon_state = "digital_clock"
+	force = 3
+	throwforce = 2
+	throw_speed = 1
+	throw_range = 4
+	w_class = SIZE_SMALL
+
+/obj/item/clock/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The [src] reads: [GLOB.current_date_string] - [worldtime2text()]")

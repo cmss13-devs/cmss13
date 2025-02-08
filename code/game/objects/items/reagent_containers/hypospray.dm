@@ -6,6 +6,10 @@
 	name = "hypospray"
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
 	icon = 'icons/obj/items/syringe.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	item_state = "hypo"
 	icon_state = "hypo"
 	amount_per_transfer_from_this = 5
@@ -24,6 +28,10 @@
 	var/starting_vial = /obj/item/reagent_container/glass/beaker/vial
 	var/next_inject = 0
 	var/inject_cd = 0.75 SECONDS
+
+/obj/item/reagent_container/hypospray/Destroy()
+	QDEL_NULL(mag)
+	. = ..()
 
 /obj/item/reagent_container/hypospray/attack_self(mob/user)
 	..()
@@ -198,7 +206,7 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(M)] by their cqc skill.</font>")
 		msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-		M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"), \
+		M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"),
 			SPAN_WARNING("You knock [user] to the ground before they inject you!"), null, 5)
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		return 0
@@ -224,7 +232,7 @@
 			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
 		else
 			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
-	return TRUE
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/item/reagent_container/hypospray/Initialize()
 	. = ..()
@@ -236,6 +244,9 @@
 
 /obj/item/reagent_container/hypospray/tricordrazine
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/tricordrazine
+
+/obj/item/reagent_container/hypospray/epinephrine
+	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epinephrine
 
 /obj/item/reagent_container/hypospray/sedative
 	name = "Sedative Hypospray"

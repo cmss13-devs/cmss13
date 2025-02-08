@@ -5,6 +5,6 @@
 	caliber = "rocket" //correlates to any rocket mags
 	icon_state = "quad_rocket"
 	w_class = SIZE_LARGE
-	default_ammo = /datum/ammo/rocket/ap
+	default_ammo = /datum/ammo/rocket/ap/tank_towlauncher
 	max_rounds = 5
 	gun_type = /obj/item/hardpoint/secondary/towlauncher

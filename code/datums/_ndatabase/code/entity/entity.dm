@@ -87,3 +87,7 @@
 	for(var/F in metadata.field_types)
 		if(!(ignore.Find(F)))
 			vars[F] = values[F]
+
+/// Called in the entity_meta's make_new() after metadata and ID is assigned
+/datum/entity/proc/post_creation()
+	return

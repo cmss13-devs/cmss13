@@ -14,13 +14,19 @@
 	penetration= ARMOR_PENETRATION_TIER_2
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/setup_faction_clash_values()
+	. = ..()
+	accuracy += 20
+	accurate_range -= 2 //we want pistols to be more accurate but only at short range
+
+
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
 
 /datum/ammo/bullet/pistol/tranq
 	name = "tranquilizer bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	stamina_damage = 30
+	stamina_damage = 60
 	damage = 15
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
@@ -62,7 +68,7 @@
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+	M.AddComponent(/datum/component/status_effect/toxic_buildup, acid_per_hit)
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
@@ -93,6 +99,8 @@
 /datum/ammo/bullet/pistol/rubber/stun
 	name = "stun pistol bullet"
 	sound_override = null
+
+	accuracy = HIT_ACCURACY_TIER_4
 
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
@@ -180,11 +188,12 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(0,0,0,0,0,0,0,2)
 
+	effective_range_max = 6
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 45
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
-	damage_falloff = DAMAGE_FALLOFF_TIER_6 //"VP78 - the only pistol viable as a primary."-Vampmare, probably.
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
 /datum/ammo/bullet/pistol/squash/toxin
 	name = "toxic squash-head pistol bullet"
@@ -193,7 +202,7 @@
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+	M.AddComponent(/datum/component/status_effect/toxic_buildup, acid_per_hit)
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()

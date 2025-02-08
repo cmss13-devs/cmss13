@@ -89,7 +89,7 @@
 	health -= rand(M.melee_damage_lower, M.melee_damage_upper)
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 
-	M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"),
 	SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	if(health <= 0)

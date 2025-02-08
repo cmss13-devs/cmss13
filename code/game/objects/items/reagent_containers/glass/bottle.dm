@@ -5,7 +5,7 @@
 	desc = "A small bottle."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle-1"
-	item_state = "atoxinbottle"
+	item_state = "bottle-1"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 25, 30, 40, 60)
 	flags_atom = FPRINT|OPENCONTAINER
@@ -39,7 +39,7 @@
 	if(reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 
-		var/percent = round((reagents.total_volume / volume) * 100)
+		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
 			if(0) filling.icon_state = null
 			if(1 to 20) filling.icon_state = "[icon_state]-20"
@@ -395,4 +395,14 @@
 /obj/item/reagent_container/glass/bottle/tricordrazine/Initialize()
 	. = ..()
 	reagents.add_reagent("tricordrazine", 60)
+	update_icon()
+
+/obj/item/reagent_container/glass/bottle/epinephrine
+	name = "\improper Epinephrine bottle"
+	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
+	volume = 60
+
+/obj/item/reagent_container/glass/bottle/epinephrine/Initialize()
+	. = ..()
+	reagents.add_reagent("adrenaline", 60)
 	update_icon()

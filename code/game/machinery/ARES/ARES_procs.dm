@@ -29,6 +29,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore
 
 	var/list/obj/structure/machinery/computer/working_joe/ticket_computers = list()
+	/// Linked security gas vents.
+	var/list/linked_vents = list()
+	/// The tag number for generated vent labels, if none is manually set.
+	var/tag_num = 1
 
 	/// Working Joe stuff
 	var/list/tickets_maintenance = list()
@@ -49,6 +53,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	for(var/obj/effect/step_trigger/ares_alert/alert in linked_alerts)
 		alert.delink()
 	..()
+
 
 /* BELOW ARE IN AdminAres.dm
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
@@ -80,12 +85,18 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/records_security = list()
 	/// Holds all (/datum/ares_record/flight)s
 	var/list/records_flight = list()
+	/// Holds all (/datum/ares_record/tech)s
+	var/list/records_tech = list()
 	/// Is nuke request usable or not?
 	var/nuke_available = TRUE
+
+	/// Status of the AI Core Lockdown
+	var/ai_lockdown_active = FALSE
 
 	COOLDOWN_DECLARE(ares_distress_cooldown)
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)
 	COOLDOWN_DECLARE(ares_quarters_cooldown)
+	COOLDOWN_DECLARE(aicore_lockdown)
 
 // ------ ARES Logging Procs ------ //
 /proc/ares_is_active()
@@ -142,17 +153,20 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
-/proc/log_ares_bombardment(user_name, ob_name, coordinates)
+/proc/log_ares_bombardment(user_name, ob_name, message)
 	if(!ares_can_log())
 		return FALSE
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user_name))
+	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, message, user_name))
 
-/proc/log_ares_announcement(title, message)
+/proc/log_ares_announcement(title, message, signature)
 	if(!ares_can_log())
 		return FALSE
+	var/final_msg = message
+	if(signature)
+		final_msg = "[signature]: - [final_msg]"
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_announcement.Add(new /datum/ares_record/announcement(title, message))
+	datacore.records_announcement.Add(new /datum/ares_record/announcement(title, final_msg))
 
 /proc/log_ares_requisition(source, details, user_name)
 	if(!ares_can_log())
@@ -160,11 +174,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user_name))
 
-/proc/log_ares_security(title, details)
+/proc/log_ares_security(title, details, signature)
 	if(!ares_can_log())
 		return FALSE
+	var/final_msg = details
+	if(signature)
+		final_msg = "[signature]: - [final_msg]"
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_security.Add(new /datum/ares_record/security(title, details))
+	datacore.records_security.Add(new /datum/ares_record/security(title, final_msg))
 
 /proc/log_ares_antiair(details)
 	if(!ares_can_log())
@@ -177,6 +194,16 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return FALSE
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_flight.Add(new /datum/ares_record/flight(details, user_name))
+
+/proc/log_ares_tech(user_name, tier_tech = FALSE, title, details, point_cost, current_points)
+	if(!ares_can_log())
+		return FALSE
+	var/new_details = "[title] - [details]"
+	if(point_cost)
+		new_details += " - Used [point_cost] INT of [current_points]."
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_tech.Add(new /datum/ares_record/tech(title, new_details, user_name, tier_tech))
+
 // ------ End ARES Logging Procs ------ //
 
 // ------ ARES Interface Procs ------ //

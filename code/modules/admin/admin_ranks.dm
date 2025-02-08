@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 		if(copytext(line,1,2) == "#") continue
 
 		var/list/List = splittext(line,"+")
-		if(!List.len) continue
+		if(!length(List)) continue
 
 		var/rank = ckeyEx(List[1])
 		switch(rank)
@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 			if("Removed") continue //Reserved
 
 		var/rights = 0
-		for(var/i=2, i<=List.len, i++)
+		for(var/i=2, i<=length(List), i++)
 			switch(ckey(List[i]))
 				if("@","prev") rights |= previous_rights
 				if("buildmode","build") rights |= R_BUILDMODE
@@ -64,6 +64,11 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 		C.admin_holder = null
 	GLOB.admins.Cut()
 
+	//Clear profile access
+	for(var/admin in world.GetConfig("admin"))
+		log_debug("Clearing [admin] from APP/admin.")
+		world.SetConfig("APP/admin", admin, null)
+
 	load_admin_ranks()
 
 		//load text from file
@@ -93,7 +98,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	//Split the line at every "-"
 	var/list/List = splittext(line, "-")
-	if(!List.len) return
+	if(!length(List)) return
 
 	//ckey is before the first "-"
 	var/ckey = ckey(List[1])
@@ -101,11 +106,11 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	//rank follows the first "-"
 	var/rank = ""
-	if(List.len >= 2)
+	if(length(List) >= 2)
 		rank = ckeyEx(List[2])
 
 	var/list/extra_titles = list()
-	if(List.len >= 3)
+	if(length(List) >= 3)
 		extra_titles = List.Copy(3)
 
 	if(mentor)

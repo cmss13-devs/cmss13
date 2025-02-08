@@ -6,9 +6,12 @@
 	name = "\improper power cell"
 	desc = "A rechargeable electrochemical power cell."
 	icon = 'icons/obj/structures/machinery/power.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	icon_state = "cell"
 	item_state = "cell"
-
 	force = 5
 	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
@@ -63,9 +66,9 @@
 /obj/item/cell/get_examine_text(mob/user)
 	. = ..()
 	if(maxcharge <= 2500)
-		. += SPAN_NOTICE("The manufacturer's label states this cell has a power rating of <b>[maxcharge]</b>, and that you should not swallow it.\nThe charge meter reads <b>[round(src.percent() )]%</b>.")
+		. += SPAN_NOTICE("The manufacturer's label states this cell has a power rating of <b>[maxcharge]</b>, and that you should not swallow it.\nThe charge meter reads <b>[floor(src.percent() )]%</b>.")
 	else
-		. += SPAN_NOTICE("This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of <b>[maxcharge]</b>!\nThe charge meter reads <b>[round(src.percent() )]%</b>.")
+		. += SPAN_NOTICE("This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of <b>[maxcharge]</b>!\nThe charge meter reads <b>[floor(src.percent() )]%</b>.")
 	if(crit_fail)
 		. += SPAN_DANGER("This power cell seems to be faulty.")
 

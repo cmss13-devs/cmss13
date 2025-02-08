@@ -189,3 +189,10 @@
 	plane = ESCAPE_MENU_PLANE
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 	render_relay_plane = RENDER_PLANE_MASTER
+
+/atom/movable/screen/plane_master/displacement
+	name = "displacement plane"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	plane = DISPLACEMENT_PLATE_RENDER_LAYER
+	render_target = DISPLACEMENT_PLATE_RENDER_TARGET
+	render_relay_plane = null

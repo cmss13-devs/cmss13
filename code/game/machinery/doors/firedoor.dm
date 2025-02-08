@@ -75,7 +75,7 @@
 		. += SPAN_WARNING("WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!")
 
 	. += "<b>Sensor readings:</b>"
-	for(var/index = 1; index <= tile_info.len; index++)
+	for(var/index = 1; index <= length(tile_info); index++)
 		var/o = "&nbsp;&nbsp;"
 		switch(index)
 			if(1)
@@ -101,10 +101,10 @@
 		o += "[pressure]kPa</span></li>"
 		. += o
 
-	if(islist(users_to_open) && users_to_open.len)
+	if(islist(users_to_open) && length(users_to_open))
 		var/users_to_open_string = users_to_open[1]
-		if(users_to_open.len >= 2)
-			for(var/i = 2 to users_to_open.len)
+		if(length(users_to_open) >= 2)
+			for(var/i = 2 to length(users_to_open))
 				users_to_open_string += ", [users_to_open[i]]"
 		. += "These people have opened \the [src] during an alert: [users_to_open_string]."
 
@@ -143,8 +143,8 @@
 		to_chat(user, SPAN_WARNING("Access denied.  Please wait for authorities to arrive, or for the alert to clear."))
 		return
 	else
-		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),\
-		"\The [src] [density ? "open" : "close"]s.",\
+		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),
+		"\The [src] [density ? "open" : "close"]s.",
 		"You hear a beep, and a door opening.")
 
 	var/needs_to_close = 0
@@ -175,8 +175,8 @@
 		var/obj/item/tool/weldingtool/W = C
 		if(W.remove_fuel(0, user))
 			blocked = !blocked
-			user.visible_message(SPAN_DANGER("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W]."),\
-			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
+			user.visible_message(SPAN_DANGER("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W]."),
+			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",
 			"You hear something being welded.")
 			update_icon()
 			return
@@ -186,19 +186,19 @@
 			return
 
 		if(blocked)
-			user.visible_message(SPAN_DANGER("\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!"),\
-			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
+			user.visible_message(SPAN_DANGER("\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!"),
+			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",
 			"You hear someone struggle and metal straining.")
 			return
 
-		user.visible_message(SPAN_DANGER("\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!"),\
-				SPAN_NOTICE("You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!"),\
+		user.visible_message(SPAN_DANGER("\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!"),
+				SPAN_NOTICE("You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!"),
 				"You hear metal strain.")
 		var/old_density = density
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(blocked || density != old_density) return
-			user.visible_message(SPAN_DANGER("\The [user] forces \the [blocked ? "welded " : "" ][name] [density ? "open" : "closed"] with \a [C]!"),\
-				SPAN_NOTICE("You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!"),\
+			user.visible_message(SPAN_DANGER("\The [user] forces \the [blocked ? "welded " : "" ][name] [density ? "open" : "closed"] with \a [C]!"),
+				SPAN_NOTICE("You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!"),
 				"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			spawn(0)
 				if(density)
@@ -213,12 +213,12 @@
 	if(istype(C, /obj/item/weapon/zombie_claws))
 		if(operating)
 			return
-		user.visible_message(SPAN_DANGER("\The zombie starts to force \the [src] [density ? "open" : "closed"] with it's claws!!!"),\
-				"You start forcing \the [src] [density ? "open" : "closed"] with your claws!",\
+		user.visible_message(SPAN_DANGER("\The zombie starts to force \the [src] [density ? "open" : "closed"] with it's claws!!!"),
+				"You start forcing \the [src] [density ? "open" : "closed"] with your claws!",
 				"You hear metal strain.")
 		if(do_after(user, 150, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_DANGER("\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!"),\
-			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
+			user.visible_message(SPAN_DANGER("\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!"),
+			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",
 			"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			if(density)
 				INVOKE_ASYNC(src, PROC_REF(open), TRUE)
@@ -232,6 +232,7 @@
 /obj/structure/machinery/door/firedoor/proc/latetoggle()
 	if(operating || !nextstate)
 		return
+
 	switch(nextstate)
 		if(OPEN)
 			nextstate = null
@@ -241,14 +242,14 @@
 			close()
 	return
 
-/obj/structure/machinery/door/firedoor/close()
+/obj/structure/machinery/door/firedoor/close(forced = FALSE)
 	latetoggle()
 	return ..()
 
 /obj/structure/machinery/door/firedoor/open(forced = FALSE)
 	if(!forced)
 		if(inoperable())
-			return //needs power to open unless it was forced
+			return FALSE //needs power to open unless it was forced
 		else
 			use_power(360)
 	latetoggle()
@@ -275,7 +276,7 @@
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
 				var/cdir = GLOB.cardinals[d]
-				for(var/i=1;i<=ALERT_STATES.len;i++)
+				for(var/i=1;i<=length(ALERT_STATES);i++)
 					if(dir_alerts[d] & (1<<(i-1)))
 						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
 	else

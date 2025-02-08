@@ -171,10 +171,6 @@
 	else if(ismob(A))
 		..()
 
-/obj/structure/machinery/optable/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/optable/update_icon()
 	if(inoperable())
 		icon_state = "table2-idle"
@@ -196,7 +192,7 @@
 	// Check for blood
 	if(H.blood_volume < BLOOD_VOLUME_SAFE)
 		if(!(patient_exam & PATIENT_LOW_BLOOD))
-			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low blood level: [round(H.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%. Type: [H.blood_type].")
+			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low blood level: [floor(H.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%. Type: [H.blood_type].")
 			patient_exam |= PATIENT_LOW_BLOOD
 	else
 		patient_exam &= ~PATIENT_LOW_BLOOD
@@ -204,7 +200,7 @@
 	// Check for nutrition
 	if(H.nutrition < NUTRITION_LOW)
 		if(!(patient_exam & PATIENT_LOW_NUTRITION))
-			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low nutrition level: [round(H.nutrition / NUTRITION_MAX * 100)]%.")
+			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low nutrition level: [floor(H.nutrition / NUTRITION_MAX * 100)]%.")
 			patient_exam |= PATIENT_LOW_NUTRITION
 	else
 		patient_exam &= ~PATIENT_LOW_NUTRITION
@@ -224,7 +220,7 @@
 
 /obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)
-		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."), \
+		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."),
 			SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
 		visible_message(SPAN_NOTICE("[C] has been laid on the operating table by [user]."), null, 4)
@@ -285,3 +281,6 @@
 		return FALSE
 
 	return TRUE
+
+/obj/structure/machinery/optable/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

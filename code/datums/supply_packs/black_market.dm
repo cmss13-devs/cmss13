@@ -256,6 +256,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 25
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/seized/p90
+	name = "FN P90 submachinegun crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/seized/mp27
 	name = "MP-27 submachinegun crate (x5 magazines included)"
 	contains = list(
@@ -605,8 +618,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/horrible,
-		/obj/item/storage/belt/marine/quackers,
-		/obj/item/storage/belt/shotgun/full/quackers,
+		/obj/item/toy/inflatable_duck,
 		/obj/item/pamphlet/skill/powerloader,
 		/obj/item/pamphlet/language/russian,
 		/obj/item/pamphlet/language/japanese,
@@ -721,6 +733,167 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	dollar_cost = 25
 	contains = list(/obj/item/storage/box/guncase/m1911/socom)
 	containertype = /obj/structure/largecrate/black_market
+
+/* --- AMMO --- */
+
+/datum/supply_packs/contraband/ammo
+	group = "Contraband Ammo"
+
+/datum/supply_packs/contraband/ammo/r4t
+	name = "45-70 bullet box crate (x300 rounds)"
+	dollar_cost = 135
+	contains = list(/obj/item/ammo_box/magazine/lever_action)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/r4t/training
+	name = "45-70 bullet box crate (x300 training rounds)"
+	dollar_cost = 35
+	contains = list(/obj/item/ammo_box/magazine/lever_action/training)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot
+	name = "shotgun shell box crate (Type 23, x100 8g slug shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot/buck
+	name = "shotgun shell box crate (Type 23, x100 8g buckshot shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/buckshot)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot/flech
+	name = "shotgun shell box crate (Type 23, x100 8g flechette shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/flechette)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/m16
+	name = "Magazine box (M16, 12x regular mags)"
+	dollar_cost = 100
+	contains = list(/obj/item/ammo_box/magazine/M16)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ar10
+	name = "Magazine box (AR10, 12x regular mags)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/ar10)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/deagle
+	name = "Magazine box (Desert Eagle, 16x regular mags)"
+	dollar_cost = 180
+	contains = list(/obj/item/ammo_box/magazine/deagle)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/deagle/hiap
+	name = "Magazine box (Desert Eagle, 16x HIAP mags)"
+	dollar_cost = 260
+	contains = list(/obj/item/ammo_box/magazine/deagle/super/highimpact/ap/empty)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/type73
+	name = "Magazine box (Type 73, 16x regular mags)"
+	dollar_cost = 60
+	contains = list(/obj/item/ammo_box/magazine/type73)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/nsg
+	name = "Magazine box (NSG-23, 16x regular mags)"
+	dollar_cost = 140
+	contains = list(/obj/item/ammo_box/magazine/nsg23)
+	containertype = /obj/structure/largecrate/black_market
+/datum/supply_packs/contraband/ammo/mar30
+	name = "Magazines box (MAR30, 10x regular mags)"
+	dollar_cost = 60
+	contains = list(/obj/item/ammo_box/magazine/mar30)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/fp9000
+	name = "Magazines box (FN FP9000, 10x mags)"
+	dollar_cost = 35
+	contains = list(/obj/item/ammo_box/magazine/fp9000)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/p90
+	name = "Magazines box (FN P90, 10x mags)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/p90)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mp27
+	name = "Magazines box (MP-27, 12x mags)"
+	dollar_cost = 45
+	contains = list(/obj/item/ammo_box/magazine/mp27)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uzi
+	name = "Magazines box (UZI, 12x mags)"
+	dollar_cost = 25
+	contains = list(/obj/item/ammo_box/magazine/uzi)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mac15
+	name = "Magazines box (MAC-15, 12x mags)"
+	dollar_cost = 15
+	contains = list(/obj/item/ammo_box/magazine/mac15)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/pps43
+	name = "Magazines box (Type-19, 10x regular mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/type19)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/b92fs
+	name = "Magazines box (Beretta 92FS, 16x mags)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/b92fs)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/kt42
+	name = "Magazines box (KT-42, 16x mags)"
+	dollar_cost = 45
+	contains = list(/obj/item/ammo_box/magazine/kt42)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/bizon
+	name = "Magazines box (Type 64, 10x mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/type64)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/m1911
+	name = "Magazines box (M1911, 16x mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/m1911)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/mk45
+	name = "Magazines box (MK-45 Automagnum, 16x mags)"
+	dollar_cost = 80
+	contains = list(/obj/item/ammo_box/magazine/mk45)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/cmb
+	name = "Speed loaders box (CMB Spearhead, 16x HP loaders)"
+	dollar_cost = 70
+	contains = list(/obj/item/ammo_box/magazine/spearhead)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/smw
+	name = "Speed loaders box (Smith and Wesson revolver, 12x loaders)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/snw)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/zhnk
+	name = "Speed loaders box (ZHNK-72, 12x loaders)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/zhnk)
+	containertype = /obj/structure/largecrate/black_market
+
 
 /* --- DEEP STORAGE --- */
 
@@ -948,6 +1121,16 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "M44 Custom Revolver"
 	contains = list(/obj/item/weapon/gun/revolver/m44/custom)
 	dollar_cost = 70
+	crate_heat = 4
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/deep_storage/gunslinger_holster
+	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	contains = list(
+		/obj/item/storage/belt/gun/m44/gunslinger,
+		/obj/item/storage/belt/gun/m44/gunslinger,
+	)
+	dollar_cost = 20
 	crate_heat = 4
 	containertype = /obj/structure/largecrate/black_market
 

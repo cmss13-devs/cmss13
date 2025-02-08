@@ -28,7 +28,7 @@
 	update_icon()
 
 /obj/item/reagent_container/blood/update_icon()
-	var/percent = round((reagents.total_volume / volume) * 100)
+	var/percent = floor((reagents.total_volume / volume) * 100)
 	overlays = null
 	underlays = null
 
@@ -65,7 +65,7 @@
 
 	if(connected_to == attacked_mob)
 		STOP_PROCESSING(SSobj, src)
-		user.visible_message("[user] detaches [src] from [connected_to].", \
+		user.visible_message("[user] detaches [src] from [connected_to].",
 			"You detach [src] from [connected_to].")
 		connected_to.active_transfusions -= src
 		connected_to.base_pixel_x = 0
@@ -91,7 +91,7 @@
 		connected_to.active_transfusions += src
 		connected_to.base_pixel_x = 5
 		START_PROCESSING(SSobj, src)
-		user.visible_message("[user] attaches \the [src] to [connected_to].", \
+		user.visible_message("[user] attaches \the [src] to [connected_to].",
 			"You attach \the [src] to [connected_to].")
 		update_beam()
 

@@ -15,6 +15,10 @@
 	name = "card"
 	desc = "Does card things."
 	icon = 'icons/obj/items/card.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/ids_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/ids_righthand.dmi',
+	)
 	w_class = SIZE_TINY
 	var/associated_account_number = 0
 
@@ -63,7 +67,10 @@
 	item_state = "card-id"
 	var/access = list()
 	var/faction = FACTION_NEUTRAL
+	var/id_type = "ID Card"
 	var/list/faction_group
+	/// For custom minimap icons
+	var/minimap_icon_override = null
 
 	/// The name registered_name on the card
 	var/registered_name = "Unknown"
@@ -128,7 +135,7 @@
 
 /obj/item/card/id/proc/set_assignment(new_assignment)
 	assignment = new_assignment
-	name = "[registered_name]'s ID Card ([assignment])"
+	name = "[registered_name]'s [id_type] ([assignment])"
 
 /obj/item/card/id/GetAccess()
 	return access
@@ -171,24 +178,24 @@
 	name = "corporate doctor badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 3 access. It is commonly held by corporate doctors."
 	icon_state = "clearance"
-	var/clearance_access = 3
+	var/credits_to_give = 15 //gives the equivalent clearance access in credits
 
 /obj/item/card/id/silver/clearance_badge/scientist
 	name = "corporate scientist badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 4 access. It is commonly held by corporate scientists."
-	clearance_access = 4
+	credits_to_give = 27
 
 /obj/item/card/id/silver/clearance_badge/cl
 	name = "corporate liaison badge"
 	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liaisons."
 	icon_state = "cl"
-	clearance_access = 5
+	credits_to_give = 42
 
 /obj/item/card/id/silver/clearance_badge/manager
 	name = "corporate manager badge"
 	desc = "A corporate holo-badge in standard corporate orange and white. It has a unique uncapped bottom. It is fingerprint locked with 5-X clearance level. Commonly held by corporate managers."
 	icon_state = "pmc"
-	clearance_access = 6
+	credits_to_give = 47
 
 /obj/item/card/id/pizza
 	name = "pizza guy badge"
@@ -211,6 +218,7 @@
 /obj/item/card/id/visa
 	name = "battered-up visa card"
 	desc = "A corporate holo-badge. It's a unique Corporate orange and white."
+	id_type = "Document"
 	icon_state = "visa"
 
 /obj/item/card/id/silver/cl
@@ -243,13 +251,43 @@
 	name = "\improper CMB marshal gold badge"
 	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbmar"
+	id_type = "Badge"
+	item_state = "cmbmar"
 	paygrade = PAY_SHORT_CMBM
 
 /obj/item/card/id/deputy
 	name = "\improper CMB deputy silver badge"
 	desc = "The silver badge which represents that the wearer is a CMB Deputy. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbdep"
+	id_type = "Badge"
+	item_state = "cmbdep"
 	paygrade = PAY_SHORT_CMBD
+
+/obj/item/card/id/deputy/riot
+	name = "\improper CMB riot officer silver badge"
+	desc = "The silver badge which represents that the wearer is a CMB Riot Control Officer. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	paygrade = PAY_SHORT_CMBR
+
+/obj/item/card/id/nspa_silver
+	name = "\improper NSPA silver badge"
+	desc = "The silver badge which represents that the wearer is a NSPA Constable. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "nspa_silver"
+	item_state = "silver_id"
+	paygrade = PAY_SHORT_CST
+
+/obj/item/card/id/nspa_silver_gold
+	name = "\improper NSPA silver & gold badge"
+	desc = "The silver with gold accents badge which represents that the wearer is a NSPA Senior Constable to Sergeant. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "nspa_silverandgold"
+	item_state = "silver_id"
+	paygrade = PAY_SHORT_SGT
+
+/obj/item/card/id/nspa_gold
+	name = "\improper NSPA gold badge"
+	desc = "A gold badge signifying that the wearer is one of the higher ranks of the NSPA, usually Inspectors and above. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	icon_state = "nspa_gold"
+	item_state = "gold_id"
+	paygrade = PAY_SHORT_CINSP
 
 /obj/item/card/id/general
 	name = "general officer holo-badge"
@@ -280,7 +318,7 @@
 	if(!QDELETED(user)) // Runtime prevention on laggy starts or where users log out because of lag at round start.
 		registered_name = ishuman(user) ? user.real_name : "Unknown"
 	assignment = "Agent"
-	name = "[registered_name]'s ID Card ([assignment])"
+	name = "[registered_name]'s [id_type] ([assignment])"
 
 /obj/item/card/id/adaptive/afterattack(obj/item/O as obj, mob/user as mob, proximity)
 	if(!proximity)
@@ -311,7 +349,7 @@
 
 			registered_name = new_name
 			assignment = new_job
-			name = "[registered_name]'s ID Card ([assignment])"
+			name = "[registered_name]'s [id_type] ([assignment])"
 			paygrade = new_rank
 			to_chat(user, SPAN_NOTICE("You successfully forge the ID card."))
 			return
@@ -357,11 +395,14 @@
 
 
 /obj/item/card/id/dogtag
-	name = "dog tag"
-	desc = "A marine dog tag."
+	name = "dog tags"
+	desc = "A marine dog tags."
 	icon_state = "dogtag"
 	item_state = "dogtag"
+	id_type = "Dogtags"
 	pinned_on_uniform = FALSE
+	var/tags_taken_icon = "dogtag_taken"
+	var/infotag_type = /obj/item/dogtag
 	var/dogtag_taken = FALSE
 
 
@@ -370,6 +411,11 @@
 	if(ishuman(user))
 		. += SPAN_NOTICE("It reads \"[registered_name] - [assignment] - [blood_type]\"")
 
+/obj/item/card/id/dogtag/upp
+	name = "UPP dog tag"
+	desc = "A soldier dog tag."
+	icon_state = "dogtag_upp"
+	tags_taken_icon = "dogtag_upp_taken"
 
 /obj/item/dogtag
 	name = "information dog tag"
@@ -377,6 +423,7 @@
 	icon_state = "dogtag_taken"
 	icon = 'icons/obj/items/card.dmi'
 	w_class = SIZE_TINY
+	var/list/fallen_references
 	var/list/fallen_names
 	var/list/fallen_blood_types
 	var/list/fallen_assgns
@@ -384,6 +431,7 @@
 /obj/item/dogtag/Initialize()
 	. = ..()
 
+	fallen_references = list()
 	fallen_names = list()
 	fallen_blood_types = list()
 	fallen_assgns = list()
@@ -391,9 +439,10 @@
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
-		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
+		to_chat(user, SPAN_NOTICE("You join the [length(fallen_names)>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
 		if(D.fallen_names)
+			fallen_references += D.fallen_references
 			fallen_names += D.fallen_names
 			fallen_blood_types += D.fallen_blood_types
 			fallen_assgns += D.fallen_assgns
@@ -404,11 +453,11 @@
 
 /obj/item/dogtag/get_examine_text(mob/user)
 	. = ..()
-	if(ishuman(user) && fallen_names && fallen_names.len)
-		var/msg = "There [fallen_names.len>1 ? \
-			"are [fallen_names.len] tags.<br>They read":\
+	if(ishuman(user) && LAZYLEN(fallen_names))
+		var/msg = "There [length(fallen_names)>1 ? \
+			"are [length(fallen_names)] tags.<br>They read":\
 			"is one ID tag.<br>It reads"]:"
-		for (var/i=1 to fallen_names.len)
+		for (var/i=1 to length(fallen_names))
 			msg += "<br>[i]. \"[fallen_names[i]] - [fallen_assgns[i]] - [fallen_blood_types[i]]\""
 		. += SPAN_NOTICE("[msg]")
 

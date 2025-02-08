@@ -98,8 +98,9 @@
 	alpha = 80
 	appearance_flags = RESET_ALPHA | TILE_BOUND | PIXEL_SCALE
 	garbage = FALSE
+
 /obj/effect/decal/cleanable/cobweb2/dynamic/Initialize(mapload, targetdir, webscale = 1.0)
-	alpha += round(webscale * 120)
+	alpha += floor(webscale * 120)
 	var/angle = dir2angle(targetdir)
 	var/matrix/TM = new
 	TM *= webscale
@@ -156,6 +157,7 @@
 	name = "black goo"
 	desc = "It's thick and gooey."
 	gender = PLURAL
+	anchored = TRUE
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "blackgoo"
 

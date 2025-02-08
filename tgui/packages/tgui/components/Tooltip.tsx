@@ -1,3 +1,5 @@
+/* eslint-disable react/no-deprecated */
+// TODO: Rewrite as an FC, remove this lint disable
 import { createPopper, Placement, VirtualElement } from '@popperjs/core';
 import { Component, ReactNode } from 'react';
 import { findDOMNode, render } from 'react-dom';
@@ -115,7 +117,7 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
           {
             ...DEFAULT_OPTIONS,
             placement: this.props.position || 'auto',
-          }
+          },
         );
 
         Tooltip.singletonPopper = singletonPopper;

@@ -44,8 +44,8 @@
 /datum/game_mode/xenovs/pre_setup()
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
 	if(monkey_amount)
-		if(monkey_types.len)
-			for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
+		if(length(monkey_types))
+			for(var/i = min(floor(monkey_amount*length(GLOB.clients)), length(GLOB.monkey_spawns)), i > 0, i--)
 
 				var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 				var/monkey_to_spawn = pick(monkey_types)
@@ -91,9 +91,13 @@
 	initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
 	round_time_lobby = world.time
-	for(var/area/A in GLOB.all_areas)
-		if(!(A.is_resin_allowed))
-			A.is_resin_allowed = TRUE
+
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
+	for(var/area/cur_area as anything in GLOB.all_areas)
+		if(cur_area.flags_area & AREA_UNWEEDABLE)
+			continue
+		cur_area.unoviable_timer = FALSE
 
 	open_podlocks("map_lockdown")
 
@@ -154,7 +158,7 @@
 		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
 		ghost_mind.transfer_to(L)
 
-/datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
 	if(!.) return
 	// Spawn additional hive structures
@@ -205,7 +209,7 @@
 		hivenumbers += list(HS.name = list())
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
 			var/mob/living/carbon/xenomorph/X = M
 			var/datum/hive_status/hive = GLOB.hive_datum[X.hivenumber]
 			if(!hive)
@@ -265,7 +269,7 @@
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 
 		GLOB.round_statistics.log_round_statistics()
 

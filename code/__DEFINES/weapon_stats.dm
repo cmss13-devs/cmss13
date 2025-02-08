@@ -66,7 +66,7 @@ It DOES NOT control where your bullets go, that's scatter and projectile varianc
 ////SCATTER////
 */
 
-#define SCATTER_AMOUNT_NEURO 60
+#define SCATTER_AMOUNT_NEURO 45
 #define SCATTER_AMOUNT_TIER_1 15
 #define SCATTER_AMOUNT_TIER_2 10
 #define SCATTER_AMOUNT_TIER_3 8
@@ -136,7 +136,9 @@ As such, don't expect any values assigned to common firearms to even consider ho
 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 */
 
+#define FIRE_DELAY_TIER_AMR 30
 #define FIRE_DELAY_TIER_VULTURE 20
+#define FIRE_DELAY_TIER_SNIPER 15
 #define FIRE_DELAY_TIER_1 12
 #define FIRE_DELAY_TIER_2 10
 #define FIRE_DELAY_TIER_3 9
@@ -167,6 +169,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define DAMAGE_FALLOFF_TIER_7 4
 #define DAMAGE_FALLOFF_TIER_8 3
 #define DAMAGE_FALLOFF_TIER_9 2
+#define DAMAGE_FALLOFF_TIER_9_5 1.5
 #define DAMAGE_FALLOFF_TIER_10 1
 
 #define DAMAGE_BUILDUP_TIER_1 1

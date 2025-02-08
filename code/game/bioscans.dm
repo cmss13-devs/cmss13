@@ -52,9 +52,8 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	for(var/mob/current_mob as anything in GLOB.living_xeno_list)
 		if(current_mob.mob_flags & NOBIOSCAN)
 			continue
-		var/area/A = get_area(current_mob)
-		if(A?.flags_area & AREA_AVOID_BIOSCAN)
-			xenos_on_ship++
+		var/area/area = get_area(current_mob)
+		if(area?.flags_area & AREA_AVOID_BIOSCAN)
 			continue
 		var/atom/where = current_mob
 		if (where.z == 0 && current_mob.loc)
@@ -69,6 +68,9 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(current_human.mob_flags & NOBIOSCAN)
+			continue
+		var/area/area = get_area(current_human)
+		if(area?.flags_area & AREA_AVOID_BIOSCAN)
 			continue
 		var/atom/where = current_human
 		if(isspecieshuman(current_human))
@@ -151,7 +153,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/planet_location = "[marines_on_planet && marine_planet_location ? ", including one in [marine_planet_location]" : ""]"
 
 	var/title = SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away.")
-	var/content = SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].")
+	var/content = SPAN_XENOANNOUNCE("To my children and their Queen: I sense [metalhive_hosts] host[plural] in the metal hive[metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].")
 
 	log_game("BIOSCAN: Queen Mother bioscan completed. [content]")
 	/// Shout it at everyone

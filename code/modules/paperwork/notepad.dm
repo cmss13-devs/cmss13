@@ -1,9 +1,12 @@
 /obj/item/notepad
 	name = "notepad"
 	gender = PLURAL
-	icon = 'icons/obj/items/notepads.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "notebook"
-	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+		)
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_range = 2
@@ -22,6 +25,7 @@
 	if(!cover_color)
 		cover_color = pick(cover_colors)
 	icon_state = initial(icon_state) + "_[cover_color]"
+	item_state = initial(icon_state) + "_[cover_color]"
 
 	for(var/i = 1 to paper_left)
 		new /obj/item/paper(src)
@@ -31,7 +35,7 @@
 
 	if(HAS_TRAIT(attack_item, TRAIT_TOOL_PEN) || istype(attack_item, /obj/item/toy/crayon))
 		close_browser(usr, name) //Closes the dialog
-		if(page < contents.len)
+		if(page < length(contents))
 			page = 1
 		var/obj/item/paper/paper = contents[page]
 		paper.attackby(attack_item, user)
@@ -50,15 +54,15 @@
 	switch(screen)
 		if(0)
 			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove paper</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove paper</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='byond://?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
 		if(1)
-			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove paper</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='byond://?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove paper</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='byond://?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
 		if(2)
-			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove paper</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='byond://?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove paper</A></DIV><BR><HR>"
 			dat+= "<DIV STYLE='float;left; text-align:right; with:33.33333%'></DIV>"
 
 	var/obj/item/paper/paper = src[page]
@@ -93,8 +97,8 @@
 			page--
 			playsound(loc, "pageturn", 15, 1)
 		if(href_list["remove"])
-			if(contents.len < page)
-				page = contents.len
+			if(length(contents) < page)
+				page = length(contents)
 			var/obj/item/ripped_out_page = contents[page]
 			usr.put_in_hands(ripped_out_page)
 			to_chat(usr, SPAN_NOTICE("You rip out [ripped_out_page] from [src]."))
@@ -117,6 +121,9 @@
 		to_chat(usr, SPAN_NOTICE("Ghosts don't have hands, you can't flip the page!"))
 	else
 		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
+
+/obj/item/notepad/proc/operator[](index_num)
+	return contents[index_num]
 
 /obj/item/notepad/verb/rename()
 	set name = "Rename notepad"

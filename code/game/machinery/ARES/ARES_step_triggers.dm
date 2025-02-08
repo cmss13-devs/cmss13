@@ -33,9 +33,10 @@
 			return FALSE
 	if(ishuman(passer))
 		var/mob/living/carbon/human/trespasser = passer
-		if(pass_accesses && (trespasser.wear_id))
+		var/obj/item/card/id/card = trespasser.get_idcard()
+		if(pass_accesses && card)
 			for(var/tag in pass_accesses)
-				if(tag in trespasser.wear_id.access)
+				if(tag in card.access)
 					return FALSE
 	Trigger(passer)
 	return TRUE
@@ -83,6 +84,7 @@
 
 /obj/effect/step_trigger/ares_alert/public
 	pass_accesses = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
+
 /obj/effect/step_trigger/ares_alert/core
 	alert_id = "AresCore"
 	pass_accesses = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
@@ -110,7 +112,7 @@
 
 
 /obj/effect/step_trigger/ares_alert/access_control/Crossed(atom/passer as mob|obj)
-	if(isobserver(passer) || isxeno(passer))
+	if(isobserver(passer) || isxeno(passer) || ishologram(passer))
 		return FALSE
 	if(!passer)
 		return FALSE
@@ -123,11 +125,9 @@
 	var/check_contents = TRUE
 	if(ishuman(passer))
 		var/mob/living/carbon/human/human_passer = passer
-		idcard = human_passer.wear_id
-		if(istype(idcard))
+		idcard = human_passer.get_idcard()
+		if(idcard)
 			check_contents = FALSE
-		else
-			idcard = null
 
 	if(istype(passer, /obj/item/card/id))
 		idcard = passer
@@ -190,7 +190,7 @@
 		return "ALERT: [human_passer.name] left the AI Chamber with a temporary access ticket. Removing access."
 
 	if(idcard)
-		return "ALERT: ID Card assigned to [idcard.registered_name] left the AI Chamber with a temporary access ticket. Removing access."
+		return "ALERT: [idcard.id_type] assigned to [idcard.registered_name] left the AI Chamber with a temporary access ticket. Removing access."
 
 	log_debug("ARES ERROR 337: Passer: '[passer]', ID: '[idcard]', F Status: '[failure]'")
 	return "Warning: Error 337 - Access Control Anomaly."

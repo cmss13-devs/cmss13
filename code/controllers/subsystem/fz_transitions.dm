@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(fz_transitions)
 	flags = SS_KEEP_TIMING
 
 /datum/controller/subsystem/fz_transitions/stat_entry(msg)
-	msg = "P:[GLOB.projectors.len]|C:[GLOB.clones.len]|T:[GLOB.clones_t.len]"
+	msg = "P:[length(GLOB.projectors)]|C:[length(GLOB.clones)]|T:[length(GLOB.clones_t)]"
 	return ..()
 
 /datum/controller/subsystem/fz_transitions/Initialize()

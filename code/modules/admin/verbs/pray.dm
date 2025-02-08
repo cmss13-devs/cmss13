@@ -25,7 +25,8 @@
 			to_chat(admin, SPAN_STAFF_IC(msg))
 			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
 				admin << 'sound/machines/terminal_alert.ogg'
-		to_chat(usr, receipt)
+
+	to_chat(usr, receipt)
 
 /proc/high_command_announce(text , mob/Sender , iamessage)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)

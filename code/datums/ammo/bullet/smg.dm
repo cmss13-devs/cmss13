@@ -47,7 +47,7 @@
 
 /datum/ammo/bullet/smg/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+	M.AddComponent(/datum/component/status_effect/toxic_buildup, acid_per_hit)
 
 /datum/ammo/bullet/smg/ap/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
@@ -142,6 +142,26 @@
 	damage = 35
 	accurate_range = 7
 	effective_range_max = 10
+	penetration = ARMOR_PENETRATION_TIER_4
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+
+/datum/ammo/bullet/smg/p90
+	name = "submachinegun bullet"
+
+	damage = 22
+	accurate_range = 5
+	effective_range_max = 8
+	penetration = ARMOR_PENETRATION_TIER_2
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+
+/datum/ammo/bullet/smg/p90/twe_ap
+	name = "armor-piercing submachinegun bullet"
+
+	damage = 26
+	accurate_range = 5
+	effective_range_max = 8
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_6

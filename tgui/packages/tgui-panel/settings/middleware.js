@@ -5,10 +5,17 @@
  */
 
 import { storage } from 'common/storage';
-import { setClientTheme } from '../themes';
-import { loadSettings, updateSettings, addHighlightSetting, removeHighlightSetting, updateHighlightSetting } from './actions';
-import { selectSettings } from './selectors';
+
+import { setClientTheme, THEMES } from '../themes';
+import {
+  addHighlightSetting,
+  loadSettings,
+  removeHighlightSetting,
+  updateHighlightSetting,
+  updateSettings,
+} from './actions';
 import { FONTS_DISABLED } from './constants';
+import { selectSettings } from './selectors';
 
 const setGlobalFontSize = (fontSize) => {
   document.documentElement.style.setProperty('font-size', fontSize + 'px');
@@ -40,10 +47,16 @@ export const settingsMiddleware = (store) => {
       type === updateHighlightSetting.type
     ) {
       // Set client theme
-      const theme = payload?.theme;
-      if (theme) {
-        setClientTheme(theme);
+      let theme = payload?.theme;
+      if (!theme) {
+        store.dispatch(
+          updateSettings({
+            theme: THEMES[0],
+          }),
+        );
+        theme = THEMES[0];
       }
+      setClientTheme(theme);
       // Pass action to get an updated state
       next(action);
       const settings = selectSettings(store.getState());

@@ -29,29 +29,22 @@
 	if(target == world)
 		target = GLOB.clients
 
+	var/list/true_targets = list()
+	if(target == GLOB.admins)
+		for(var/admin in target)
+			var/client/admin_client = CLIENT_FROM_VAR(admin)
+			if(CLIENT_IS_STAFF(admin_client))
+				true_targets += admin_client
+		target = true_targets
+
 	// Build a message
 	var/message = list()
 	if(type) message["type"] = type
 	if(text) message["text"] = text
 	if(html) message["html"] = html
 	if(avoid_highlighting) message["avoidHighlighting"] = avoid_highlighting
-	var/message_blob = TGUI_CREATE_MESSAGE("chat/message", message)
-	var/message_html = message_to_html(message)
-	if(islist(target))
-		for(var/_target in target)
-			var/client/client = CLIENT_FROM_VAR(_target)
-			if(client)
-				// Send to tgchat
-				client.tgui_panel?.window.send_raw_message(message_blob)
-				// Send to old chat
-				SEND_TEXT(client, message_html)
-		return
-	var/client/client = CLIENT_FROM_VAR(target)
-	if(client)
-		// Send to tgchat
-		client.tgui_panel?.window.send_raw_message(message_blob)
-		// Send to old chat
-		SEND_TEXT(client, message_html)
+	// send it immediately
+	SSchat.send_immediate(target, message)
 
 /**
  * Sends the message to the recipient (target).

@@ -4,14 +4,20 @@
 
 /obj/item/tool/pickaxe
 	name = "pickaxe"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
+	)
 	icon_state = "pickaxe"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 15
+	force = MELEE_FORCE_STRONG
 	throwforce = 4
 	item_state = "pickaxe"
 	w_class = SIZE_LARGE
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	matter = list("metal" = 3750)
 	/// moving the delay to an item var so R&D can make improved picks. --NEO
 	var/digspeed = 40

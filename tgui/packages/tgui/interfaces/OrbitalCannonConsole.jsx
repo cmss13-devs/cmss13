@@ -1,5 +1,15 @@
 import { useBackend } from '../backend';
-import { Button, Section, ProgressBar, Dimmer, Icon, NoticeBox, Box, Collapsible, Divider } from '../components';
+import {
+  Box,
+  Button,
+  Collapsible,
+  Dimmer,
+  Divider,
+  Icon,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 
 export const OrbitalCannonConsole = () => {
@@ -30,7 +40,8 @@ export const OrbitalCannonConsole = () => {
               ranges={{
                 bad: [-Infinity, 0.51],
                 good: [0.51, Infinity],
-              }}>
+              }}
+            >
               <Box textAlign="center">{data.fuel} Fuel Blocks loaded</Box>
             </ProgressBar>
           </Box>
@@ -59,7 +70,8 @@ export const OrbitalCannonConsole = () => {
                 good: [-Infinity, 0.33],
                 average: [0.33, 0.67],
                 bad: [0.67, Infinity],
-              }}>
+              }}
+            >
               <Box textAlign="center">
                 {Math.ceil(timeLeft / 10)} seconds until the cannon can be
                 chambered!
@@ -70,27 +82,29 @@ export const OrbitalCannonConsole = () => {
             <Button
               fontSize="20px"
               textAlign="center"
-              fluid={1}
+              fluid
               disabled={!fullyLoaded}
               icon="truck-loading"
               color="good"
-              content="Load tray"
               onClick={() => act('load_tray')}
-            />
+            >
+              Load tray
+            </Button>
           )) || (
             <Box>
               {(!data.chamberedtray && (
                 <Button
                   fontSize="20px"
                   textAlign="center"
-                  fluid={1}
+                  fluid
                   icon="sign-out-alt"
                   color="good"
-                  content="Unload tray"
                   onClick={() => act('unload_tray')}
-                />
+                >
+                  Unload tray
+                </Button>
               )) || (
-                <NoticeBox fontSize="15px" textAlign="center" fluid={1} danger>
+                <NoticeBox fontSize="15px" textAlign="center" fluid danger>
                   The tray is chambered, you cannot unchamber it.
                 </NoticeBox>
               )}
@@ -101,13 +115,14 @@ export const OrbitalCannonConsole = () => {
               fontSize="20px"
               textAlign="center"
               disabled={!!cantChamber || !fullyLoaded}
-              fluid={1}
+              fluid
               icon="sign-in-alt"
               color="good"
-              content="Chamber tray"
               confirmContent="You cannot unchamber the tray. Confirm?"
               onClick={() => act('chamber_tray')}
-            />
+            >
+              Chamber tray
+            </Button.Confirm>
           )}
         </Section>
         {(!data.linkedtray || !data.linkedcannon || !!data.disabled) && (

@@ -31,7 +31,7 @@
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
 	widen_cooldown = 70
-	tremor_cooldown = 450
+
 
 	minimum_evolve_time = 7 MINUTES
 
@@ -41,7 +41,7 @@
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
 	desc = "A beefy alien with sharp claws."
-	icon = 'icons/mob/xenos/burrower.dmi'
+	icon = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER
@@ -52,6 +52,7 @@
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
+	organ_value = 1500
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -65,6 +66,7 @@
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 		/datum/action/xeno_action/onclick/tacmap,
 		)
 
@@ -74,16 +76,12 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xeno = 'icons/mob/xenos/burrower.dmi'
-	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/burrower.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
 	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
-
-/mob/living/carbon/xenomorph/burrower/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
-	. = ..()
-	sight |= SEE_TURFS
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -98,7 +96,7 @@
 /mob/living/carbon/xenomorph/burrower/attackby()
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
-	..()
+	. = ..()
 
 /mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance()
 	. = ..()

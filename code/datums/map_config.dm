@@ -32,6 +32,7 @@
 
 	var/announce_text = ""
 	var/infection_announce_text = ""
+	var/liaison_briefing = ""
 
 	var/squads_max_num = 4
 
@@ -80,21 +81,33 @@
 	)
 
 	synth_survivor_types = list(
-		/datum/equipment_preset/synth/survivor/medical_synth,
-		/datum/equipment_preset/synth/survivor/emt_synth,
+		/datum/equipment_preset/synth/survivor/doctor_synth,
+		/datum/equipment_preset/synth/survivor/surgeon_synth,
+		/datum/equipment_preset/synth/survivor/emt_synth_teal,
+		/datum/equipment_preset/synth/survivor/emt_synth_red,
 		/datum/equipment_preset/synth/survivor/scientist_synth,
+		/datum/equipment_preset/synth/survivor/biohazard_synth,
+		/datum/equipment_preset/synth/survivor/archaeologist_synth,
 		/datum/equipment_preset/synth/survivor/engineer_synth,
-		/datum/equipment_preset/synth/survivor/janitor_synth,
+		/datum/equipment_preset/synth/survivor/firefighter_synth,
+		/datum/equipment_preset/synth/survivor/miner_synth,
 		/datum/equipment_preset/synth/survivor/chef_synth,
 		/datum/equipment_preset/synth/survivor/teacher_synth,
+		/datum/equipment_preset/synth/survivor/surveyor_synth,
 		/datum/equipment_preset/synth/survivor/freelancer_synth,
 		/datum/equipment_preset/synth/survivor/trucker_synth,
 		/datum/equipment_preset/synth/survivor/bartender_synth,
-		/datum/equipment_preset/synth/survivor/detective_synth,
+		/datum/equipment_preset/synth/survivor/fisher_synth,
+		/datum/equipment_preset/synth/survivor/hydro_synth,
+		/datum/equipment_preset/synth/survivor/journalist_synth,
+		/datum/equipment_preset/synth/survivor/atc_synth,
 		/datum/equipment_preset/synth/survivor/cmb_synth,
 		/datum/equipment_preset/synth/survivor/wy/security_synth,
 		/datum/equipment_preset/synth/survivor/wy/protection_synth,
 		/datum/equipment_preset/synth/survivor/wy/corporate_synth,
+		/datum/equipment_preset/synth/survivor/detective_synth,
+		/datum/equipment_preset/synth/survivor/icc_synth,
+		/datum/equipment_preset/synth/survivor/pilot_synth,
 		/datum/equipment_preset/synth/survivor/radiation_synth,
 	)
 
@@ -344,6 +357,9 @@
 
 	if(json["infection_announce_text"])
 		infection_announce_text = json["infection_announce_text"]
+
+	if(json["liaison_briefing"])
+		liaison_briefing = json["liaison_briefing"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])

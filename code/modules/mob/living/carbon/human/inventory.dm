@@ -109,6 +109,8 @@
 	if(I == wear_suit)
 		if(s_store && !(s_store.flags_equip_slot & SLOT_SUIT_STORE))
 			drop_inv_item_on_ground(s_store)
+		if(back && (back.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE)) // Technically some items don't need to be unequipped though
+			drop_inv_item_on_ground(back)
 		wear_suit = null
 		if(I.flags_inv_hide & HIDESHOES)
 			update_inv_shoes()
@@ -213,32 +215,46 @@
 	if(!has_limb_for_slot(slot))
 		return
 
-	if(equipping_item == l_hand)
-		if(equipping_item.flags_item & NODROP)
-			return
-		l_hand = null
-		update_inv_l_hand()
-		//removes item's actions, may be readded once re-equipped to the new slot
-		for(var/item_actions in equipping_item.actions)
-			var/datum/action/action = item_actions
-			action.remove_from(src)
+	// Already handled within the proc, usually storages that force move the item themselves
+	var/static/list/no_update = list(
+		WEAR_IN_BACK,
+		WEAR_IN_SCABBARD,
+		WEAR_IN_JACKET,
+		WEAR_IN_HELMET,
+		WEAR_IN_ACCESSORY,
+		WEAR_IN_BELT,
+		WEAR_IN_J_STORE,
+		WEAR_IN_L_STORE,
+		WEAR_IN_R_STORE
+	)
 
-	else if(equipping_item == r_hand)
-		if(equipping_item.flags_item & NODROP)
-			return
-		r_hand = null
-		update_inv_r_hand()
-		//removes item's actions, may be readded once re-equipped to the new slot
-		for(var/item_actions in equipping_item.actions)
-			var/datum/action/action = item_actions
-			action.remove_from(src)
+	if(!(slot in no_update))
+		if(equipping_item == l_hand)
+			if(equipping_item.flags_item & NODROP)
+				return
+			l_hand = null
+			update_inv_l_hand()
+			//removes item's actions, may be readded once re-equipped to the new slot
+			for(var/item_actions in equipping_item.actions)
+				var/datum/action/action = item_actions
+				action.remove_from(src)
 
-	equipping_item.screen_loc = null
-	if(equipping_item.loc != src)
-		equipping_item.pickup(src, disable_warning)
-	equipping_item.forceMove(src)
-	equipping_item.layer = ABOVE_HUD_LAYER
-	equipping_item.plane = ABOVE_HUD_PLANE
+		else if(equipping_item == r_hand)
+			if(equipping_item.flags_item & NODROP)
+				return
+			r_hand = null
+			update_inv_r_hand()
+			//removes item's actions, may be readded once re-equipped to the new slot
+			for(var/item_actions in equipping_item.actions)
+				var/datum/action/action = item_actions
+				action.remove_from(src)
+
+		equipping_item.screen_loc = null
+		if(equipping_item.loc != src)
+			equipping_item.pickup(src, disable_warning)
+		equipping_item.forceMove(src)
+		equipping_item.layer = ABOVE_HUD_LAYER
+		equipping_item.plane = ABOVE_HUD_PLANE
 
 	switch(slot)
 		if(WEAR_BACK)
@@ -412,6 +428,8 @@
 
 /mob/living/carbon/human/get_item_by_slot(slot_id)
 	switch(slot_id)
+		if(WEAR_ACCESSORY)
+			return w_uniform.accessories
 		if(WEAR_BACK)
 			return back
 		if(WEAR_FACE)
@@ -503,70 +521,6 @@
 
 	/// Final result is overall delay * speed multiplier
 	return target_delay * user_speed
-
-/mob/living/carbon/human/stripPanelUnequip(obj/item/interact_item, mob/target_mob, slot_to_process)
-	if(HAS_TRAIT(target_mob, TRAIT_UNSTRIPPABLE) && !target_mob.is_mob_incapacitated()) //Can't strip the unstrippable!
-		to_chat(src, SPAN_DANGER("[target_mob] has an unbreakable grip on their equipment!"))
-		return
-	if(interact_item.flags_item & ITEM_ABSTRACT)
-		return
-	if(interact_item.flags_item & NODROP)
-		to_chat(src, SPAN_WARNING("You can't remove \the [interact_item.name], it appears to be stuck!"))
-		return
-	if(interact_item.flags_inventory & CANTSTRIP)
-		to_chat(src, SPAN_WARNING("You're having difficulty removing \the [interact_item.name]."))
-		return
-	target_mob.attack_log += "\[[time_stamp()]\] <font color='orange'>Has had their [interact_item.name] ([slot_to_process]) attempted to be removed by [key_name(src)]</font>"
-	attack_log += "\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(target_mob)]'s [interact_item.name] ([slot_to_process])</font>"
-	log_interact(src, target_mob, "[key_name(src)] tried to remove [key_name(target_mob)]'s [interact_item.name] ([slot_to_process]).")
-
-	src.visible_message(SPAN_DANGER("[src] tries to remove [target_mob]'s [interact_item.name]."), \
-					SPAN_DANGER("You are trying to remove [target_mob]'s [interact_item.name]."), null, 5)
-	interact_item.add_fingerprint(src)
-	if(do_after(src, get_strip_delay(src, target_mob), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-		if(interact_item && Adjacent(target_mob) && interact_item == target_mob.get_item_by_slot(slot_to_process))
-			target_mob.drop_inv_item_on_ground(interact_item)
-			log_interact(src, target_mob, "[key_name(src)] removed [key_name(target_mob)]'s [interact_item.name] ([slot_to_process]) successfully.")
-
-	if(target_mob)
-		if(interactee == target_mob && Adjacent(target_mob))
-			target_mob.show_inv(src)
-
-
-/mob/living/carbon/human/stripPanelEquip(obj/item/interact_item, mob/target_mob, slot_to_process)
-	if(HAS_TRAIT(target_mob, TRAIT_UNSTRIPPABLE) && !target_mob.is_mob_incapacitated())
-		to_chat(src, SPAN_DANGER("[target_mob] is too strong to force [interact_item.name] onto them!"))
-		return
-	if(interact_item && !(interact_item.flags_item & ITEM_ABSTRACT))
-		if(interact_item.flags_item & NODROP)
-			to_chat(src, SPAN_WARNING("You can't put \the [interact_item.name] on [target_mob], it's stuck to your hand!"))
-			return
-		if(interact_item.flags_inventory & CANTSTRIP)
-			to_chat(src, SPAN_WARNING("You're having difficulty putting \the [interact_item.name] on [target_mob]."))
-			return
-		if(interact_item.flags_item & WIELDED)
-			interact_item.unwield(src)
-		if(!interact_item.mob_can_equip(target_mob, slot_to_process, TRUE))
-			to_chat(src, SPAN_WARNING("You can't put \the [interact_item.name] on [target_mob]!"))
-			return
-		visible_message(SPAN_NOTICE("[src] tries to put \the [interact_item.name] on [target_mob]."), null, null, 5)
-		log_interact(src, target_mob, "[key_name(src)] attempted to put [interact_item.name] on [key_name(target_mob)]'s ([slot_to_process]).")
-		if(do_after(src, get_strip_delay(src, target_mob), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-			if(interact_item == get_active_hand() && !target_mob.get_item_by_slot(slot_to_process) && Adjacent(target_mob))
-				if(interact_item.flags_item & WIELDED) //to prevent re-wielding it during the do_after
-					interact_item.unwield(src)
-				if(interact_item.mob_can_equip(target_mob, slot_to_process, TRUE))//Placing an item on the mob
-					drop_inv_item_on_ground(interact_item)
-					if(interact_item && !QDELETED(interact_item)) //Might be self-deleted?
-						target_mob.equip_to_slot_if_possible(interact_item, slot_to_process, 1, 0, 1, 1)
-						log_interact(src, target_mob, "[key_name(src)] put [interact_item.name] on [key_name(target_mob)]'s ([slot_to_process]) successfully.")
-						if(ishuman(target_mob) && target_mob.stat == DEAD)
-							var/mob/living/carbon/human/human_target = target_mob
-							human_target.disable_lights() // take that powergamers -spookydonut
-
-	if(target_mob)
-		if(interactee == target_mob && Adjacent(target_mob))
-			target_mob.show_inv(src)
 
 /mob/living/carbon/human/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
 	remember_dropped_object(I)

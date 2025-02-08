@@ -17,19 +17,24 @@
 			if(JOB_SQUAD_ENGI) marine_rk = "engi"
 			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
 			if(JOB_SQUAD_TEAM_LEADER) marine_rk = "tl"
-			if(JOB_SQUAD_MEDIC) marine_rk = "med"
+			if(JOB_SQUAD_MEDIC)
+				if(current_human.rank_fallback == "medk9")
+					marine_rk = "medk9" //We don't need Medics to lose their job when converting to K9 Handlers as it would duplicate JOB_SQUAD_MEDIC
+				else
+					marine_rk = "med"
 			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
 			if(JOB_XO) marine_rk = "xo"
 			if(JOB_CO) marine_rk = "co"
 			if(JOB_GENERAL) marine_rk = "general"
 			if(JOB_CAS_PILOT) marine_rk = "gp"
 			if(JOB_DROPSHIP_PILOT) marine_rk = "dp"
+			if(JOB_TANK_CREW) marine_rk = "tc"
 			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
-			if(JOB_CREWMAN) marine_rk = "tc"
 			if(JOB_MARINE_RAIDER) marine_rk = "soc"
 			if(JOB_MARINE_RAIDER_SL) marine_rk = "soctl"
 			if(JOB_MARINE_RAIDER_CMD) marine_rk = "soccmd"
+			if(JOB_SQUAD_TECH) marine_rk = "tech"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad") marine_rk = "leader_a"
@@ -75,15 +80,24 @@
 			if(JOB_CO)
 				marine_rk = "co"
 				border_rk = "command"
+			if(JOB_USCM_OBSV)
+				marine_rk = "vo"
+				border_rk = "command"
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if(JOB_AUXILIARY_OFFICER)
+			if(JOB_AUXILIARY_OFFICER, JOB_CIA_LIAISON)
 				marine_rk = "aso"
 				border_rk = "command"
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"
 				border_rk = "command"
+			if(JOB_PLT_MED)
+				marine_rk = "med"
+			if(JOB_PLT_SL)
+				marine_rk = "leader"
+			if(JOB_SQUAD_TECH)
+				marine_rk = "tech"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)
@@ -97,6 +111,8 @@
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
+			if(JOB_TANK_CREW)
+				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
 				border_rk = "command"
@@ -127,6 +143,8 @@
 				border_rk = "command"
 			if(JOB_SYNTH)
 				marine_rk = "syn"
+			if(JOB_SYNTH_K9)
+				marine_rk = "syn_k9"
 			if(JOB_MESS_SERGEANT)
 				marine_rk = "messtech"
 			// Provost
@@ -137,17 +155,21 @@
 			if(JOB_PROVOST_INSPECTOR)
 				marine_rk = "pvi"
 				border_rk = "command"
+			if(JOB_PROVOST_UNDERCOVER)
+				marine_rk = "pvuc"
+				border_rk = "command"
+			if(JOB_PROVOST_CINSPECTOR)
+				marine_rk = "pvci"
+				border_rk = "command"
 			if(JOB_PROVOST_ADVISOR)
 				marine_rk = "pva"
+				border_rk = "command"
+			if(JOB_PROVOST_DMARSHAL)
+				marine_rk = "pvdm"
 				border_rk = "command"
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
-			// TIS
-			if(JOB_TIS_IO)
-				marine_rk = "tisio"
-			if(JOB_TIS_SA)
-				marine_rk = "tissa"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"
@@ -176,22 +198,6 @@
 				marine_rk = "wo_ro"
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
-			// Colonial Marshals
-			if(JOB_CMB_TL)
-				marine_rk = "mar"
-				icon_prefix = "cmb_"
-			if(JOB_CMB)
-				marine_rk = "dep"
-				icon_prefix = "cmb_"
-			if(JOB_CMB_SYN)
-				marine_rk = "syn"
-				icon_prefix = "cmb_"
-			if(JOB_CMB_ICC)
-				marine_rk = "icc"
-				icon_prefix = "cmb_"
-			if(JOB_CMB_OBS)
-				marine_rk = "obs"
-				icon_prefix = "cmb_"
 			// Check squad marines here too, for the unique ones
 			if(JOB_SQUAD_ENGI)
 				marine_rk = "engi"

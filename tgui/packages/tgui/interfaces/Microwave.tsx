@@ -1,6 +1,7 @@
-import { useBackend } from '../backend';
-import { Button, NoticeBox, Section, Flex, Box } from '../components';
 import { BooleanLike } from 'common/react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Flex, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 type Ingredient = {
@@ -32,7 +33,8 @@ export const Microwave = (props) => {
                 height="100%"
                 icon="power-off"
                 disabled={!!operating || !!dirty || !!broken}
-                onClick={() => act('cook')}>
+                onClick={() => act('cook')}
+              >
                 Activate
               </Button>
 
@@ -40,17 +42,20 @@ export const Microwave = (props) => {
                 height="100%"
                 icon="eject"
                 disabled={!ingredients.length || !!operating}
-                onClick={() => act('eject_all')}>
+                onClick={() => act('eject_all')}
+              >
                 Eject all
               </Button>
             </Flex>
-          }>
+          }
+        >
           {!!operating && (
             <NoticeBox
               width="100%"
               textAlign="center"
               p=".5rem"
-              fontSize="1.5rem">
+              fontSize="1.5rem"
+            >
               Cooking...
             </NoticeBox>
           )}

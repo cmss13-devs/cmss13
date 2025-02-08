@@ -4,20 +4,24 @@
 	name = "glass"
 	desc = "Your standard drinking glass."
 	icon_state = "glass_empty"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 	matter = list("glass" = 500)
 	amount_per_transfer_from_this = 5
 	volume = 50
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/drinkingglass/on_reagent_change()
-	/*if(reagents.reagent_list.len > 1 )
+	/*if(length(reagents.reagent_list) > 1 )
 		icon_state = "glass_brown"
 		name = "Glass of Hooch"
 		desc = "Two or more drinks, mixed together."*/
-	/*else if(reagents.reagent_list.len == 1)
+	/*else if(length(reagents.reagent_list) == 1)
 		for(var/datum/reagent/R in reagents.reagent_list)
 			switch(R.id)*/
-	if (reagents.reagent_list.len > 0)
+	if (length(reagents.reagent_list) > 0)
 		//mrid = R.get_master_reagent_id()
 		var/datum/reagent/R = reagents.get_master_reagent()
 		switch(R.id)

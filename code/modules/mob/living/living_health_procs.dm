@@ -410,7 +410,7 @@
 
 	switch(client.prefs?.pain_overlay_pref_level)
 		if(PAIN_OVERLAY_IMPAIR)
-			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, Ceiling(clamp(eye_blurry * 0.3, 1, 6)))
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, ceil(clamp(eye_blurry * 0.3, 1, 6)))
 		if(PAIN_OVERLAY_LEGACY)
 			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
 		else // PAIN_OVERLAY_BLURRY
@@ -446,7 +446,7 @@
 
 /mob/living/proc/AdjustEarDeafness(amount)
 	var/prev_deaf = ear_deaf
-	ear_deaf = max(ear_deaf + amount, 0)
+	ear_deaf = clamp(ear_deaf + amount, 0, 30) //roughly 1 minute
 	if(prev_deaf)
 		if(ear_deaf == 0)
 			on_deafness_loss()
@@ -475,6 +475,20 @@
 	if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
 		client.soundOutput.status_flags ^= EAR_DEAF_MUTE
 		client.soundOutput.apply_status()
+
+/mob/living/proc/grant_spawn_protection(duration)
+	status_flags |= RECENTSPAWN|GODMODE
+	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(handle_fire_protection))
+	addtimer(CALLBACK(src, PROC_REF(end_spawn_protection)), duration)
+
+/mob/living/proc/end_spawn_protection()
+	status_flags &= ~(RECENTSPAWN|GODMODE)
+	UnregisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+
+/mob/living/proc/handle_fire_protection(mob/living/living, datum/reagent/chem)
+	SIGNAL_HANDLER
+	if(status_flags & (RECENTSPAWN|GODMODE))
+		return COMPONENT_NO_IGNITE
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(brute, burn)
@@ -517,7 +531,7 @@
 	// shut down ongoing problems
 	status_flags &= ~PERMANENTLY_DEAD
 	nutrition = NUTRITION_NORMAL
-	bodytemperature = T20C
+	bodytemperature = T37C
 	recalculate_move_delay = TRUE
 	sdisabilities = 0
 	disabilities = 0
@@ -526,7 +540,7 @@
 	jitteriness = 0
 	dizziness = 0
 	stamina.apply_damage(-stamina.max_stamina)
-	
+
 	// restore all of a human's blood
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

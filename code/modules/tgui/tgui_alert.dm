@@ -8,8 +8,10 @@
  * * title - The of the alert modal, shown on the top of the TGUI window.
  * * buttons - The options that can be chosen by the user, each string is assigned a button on the UI.
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.
+ * * autofocus - The bool that controls if this alert should grab window focus.
+ * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
  */
-/proc/tgui_alert(mob/user, message, title, list/buttons, timeout = 60 SECONDS)
+/proc/tgui_alert(mob/user, message = "", title, list/buttons = list("Ok"), timeout = 60 SECONDS, autofocus = TRUE, ui_state = GLOB.always_state)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -17,8 +19,12 @@
 			var/client/client = user
 			user = client.mob
 		else
-			return
-	var/datum/tgui_modal/alert = new(user, message, title, buttons, timeout)
+			return null
+
+	if(isnull(user.client))
+		return null
+
+	var/datum/tgui_modal/alert = new(user, message, title, buttons, timeout, autofocus, ui_state)
 	alert.tgui_interact(user)
 	alert.wait()
 	if (alert)
@@ -36,8 +42,10 @@
  * * buttons - The options that can be chosen by the user, each string is assigned a button on the UI.
  * * callback - The callback to be invoked when a choice is made.
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.
+ * * autofocus - The bool that controls if this alert should grab window focus.
+ * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
  */
-/proc/tgui_alert_async(mob/user, message, title, list/buttons, datum/callback/callback, timeout = 60 SECONDS)
+/proc/tgui_alert_async(mob/user, message = "", title, list/buttons = list("Ok"), datum/callback/callback, timeout = 60 SECONDS, autofocus = TRUE, ui_state = GLOB.always_state)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -45,8 +53,12 @@
 			var/client/client = user
 			user = client.mob
 		else
-			return
-	var/datum/tgui_modal/async/alert = new(user, message, title, buttons, callback, timeout)
+			return null
+
+	if(isnull(user.client))
+		return null
+
+	var/datum/tgui_modal/async/alert = new(user, message, title, buttons, callback, timeout, autofocus, ui_state)
 	alert.tgui_interact(user)
 
 /**
@@ -68,13 +80,19 @@
 	var/start_time
 	/// The lifespan of the tgui_modal, after which the window will close and delete itself.
 	var/timeout
+	/// The bool that controls if this modal should grab window focus
+	var/autofocus
 	/// Boolean field describing if the tgui_modal was closed by the user.
 	var/closed
+	/// The TGUI UI state that will be returned in ui_state(). Default: always_state
+	var/datum/ui_state/state
 
-/datum/tgui_modal/New(mob/user, message, title, list/buttons, timeout)
-	src.title = title
-	src.message = message
+/datum/tgui_modal/New(mob/user, message, title, list/buttons, timeout, autofocus, ui_state)
+	src.autofocus = autofocus
 	src.buttons = buttons.Copy()
+	src.message = message
+	src.title = title
+	src.state = ui_state
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
@@ -82,15 +100,16 @@
 
 /datum/tgui_modal/Destroy(force, ...)
 	SStgui.close_uis(src)
-	buttons = null
-	. = ..()
+	state = null
+	buttons = null // TG QDEL_NULLs this
+	return ..()
 
 /**
  * Waits for a user's response to the tgui_modal's prompt before returning. Returns early if
  * the window was closed by the user.
  */
 /datum/tgui_modal/proc/wait()
-	while (!choice && !closed)
+	while (!choice && !closed && !QDELETED(src))
 		stoplag(0.2 SECONDS)
 
 /datum/tgui_modal/tgui_interact(mob/user, datum/tgui/ui)
@@ -104,29 +123,43 @@
 	closed = TRUE
 
 /datum/tgui_modal/ui_state(mob/user)
-	return GLOB.always_state
+	return state
+
+/datum/tgui_modal/ui_static_data(mob/user)
+	var/list/data = list()
+	data["autofocus"] = autofocus
+	data["buttons"] = buttons
+	data["message"] = message
+	data["large_buttons"] = FALSE // Pref?
+	data["swapped_buttons"] = FALSE // Pref?
+	data["title"] = title
+	return data
 
 /datum/tgui_modal/ui_data(mob/user)
-	. = list(
-		"title" = title,
-		"message" = message,
-		"buttons" = buttons
-	)
-
+	var/list/data = list()
 	if(timeout)
-		.["timeout"] = clamp((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS), 0, 1)
+		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
+	return data
 
-/datum/tgui_modal/ui_act(action, list/params)
+/datum/tgui_modal/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if (.)
 		return
 	switch(action)
 		if("choose")
 			if (!(params["choice"] in buttons))
-				return
-			choice = params["choice"]
+				CRASH("[ui.user] entered a non-existent button choice: [params["choice"]]")
+			set_choice(params["choice"])
+			closed = TRUE
 			SStgui.close_uis(src)
 			return TRUE
+		if("cancel")
+			closed = TRUE
+			SStgui.close_uis(src)
+			return TRUE
+
+/datum/tgui_modal/proc/set_choice(choice)
+	src.choice = choice
 
 /**
  * # async tgui_modal
@@ -137,8 +170,8 @@
 	/// The callback to be invoked by the tgui_modal upon having a choice made.
 	var/datum/callback/callback
 
-/datum/tgui_modal/async/New(mob/user, message, title, list/buttons, callback, timeout)
-	..(user, title, message, buttons, timeout)
+/datum/tgui_modal/async/New(mob/user, message, title, list/buttons, callback, timeout, autofocus, ui_state)
+	..(user, title, message, buttons, timeout, autofocus, ui_state)
 	src.callback = callback
 
 /datum/tgui_modal/async/Destroy(force, ...)
@@ -149,12 +182,10 @@
 	. = ..()
 	qdel(src)
 
-/datum/tgui_modal/async/ui_act(action, list/params)
+/datum/tgui_modal/async/set_choice(choice)
 	. = ..()
-	if (!. || choice == null)
-		return
-	callback.InvokeAsync(choice)
-	qdel(src)
+	if(!isnull(src.choice))
+		callback?.InvokeAsync(src.choice)
 
 /datum/tgui_modal/async/wait()
 	return

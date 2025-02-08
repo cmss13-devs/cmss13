@@ -27,12 +27,34 @@
 	name = "box"
 	desc = "It's just an ordinary box."
 	icon_state = "box"
-	item_state = "syringe_kit"
+	icon = 'icons/obj/items/storage/boxes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+	)
+	item_state = "box"
 	foldable = TRUE
 	storage_slots = null
 	max_w_class = SIZE_SMALL //Changed because of in-game abuse
 	w_class = SIZE_LARGE //Changed becuase of in-game abuse
 	storage_flags = STORAGE_FLAGS_BOX
+
+/obj/item/storage/box/pride
+	name = "box of prideful crayons"
+	desc = "A box of every flavor of pride."
+	storage_slots = 8
+	w_class = SIZE_SMALL
+	can_hold = list(/obj/item/toy/crayon/pride)
+
+/obj/item/storage/box/pride/fill_preset_inventory()
+	new /obj/item/toy/crayon/pride/gay(src)
+	new /obj/item/toy/crayon/pride/lesbian(src)
+	new /obj/item/toy/crayon/pride/bi(src)
+	new /obj/item/toy/crayon/pride/ace(src)
+	new /obj/item/toy/crayon/pride/pan(src)
+	new /obj/item/toy/crayon/pride/trans(src)
+	new /obj/item/toy/crayon/pride/enby(src)
+	new /obj/item/toy/crayon/pride/fluid(src)
 
 /obj/item/storage/box/survival
 	w_class = SIZE_MEDIUM
@@ -52,6 +74,7 @@
 	name = "box of latex gloves"
 	desc = "Contains white gloves."
 	icon_state = "latex"
+	item_state = "latex"
 	can_hold = list(/obj/item/clothing/gloves/latex)
 	w_class = SIZE_SMALL
 
@@ -69,6 +92,7 @@
 	name = "box of sterile masks"
 	desc = "This box contains masks of sterility."
 	icon_state = "sterile"
+	item_state = "sterile"
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
@@ -88,6 +112,7 @@
 	desc = "A biohazard alert warning is printed on the box"
 	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
+	item_state = "syringe"
 	w_class = SIZE_SMALL
 
 /obj/item/storage/box/syringes/fill_preset_inventory()
@@ -103,6 +128,7 @@
 /obj/item/storage/box/beakers
 	name = "box of beakers"
 	icon_state = "beaker"
+	item_state = "beaker"
 	can_hold = list(/obj/item/reagent_container/glass/beaker)
 	w_class = SIZE_MEDIUM
 
@@ -118,6 +144,7 @@
 /obj/item/storage/box/sprays
 	name = "box of empty spray bottles"
 	icon_state = "spray"
+	item_state = "spray"
 	can_hold = list(/obj/item/reagent_container/spray)
 	w_class = SIZE_MEDIUM
 
@@ -133,7 +160,9 @@
 /obj/item/storage/box/flashbangs
 	name = "box of flashbangs (WARNING)"
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "flashbang"
+	item_state = "flashbang"
 	can_hold = list(/obj/item/explosive/grenade/flashbang)
 	w_class = SIZE_MEDIUM
 
@@ -164,7 +193,9 @@
 /obj/item/storage/box/emps
 	name = "box of emp grenades"
 	desc = "A box with 5 emp grenades."
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "emp"
+	item_state = "emp"
 
 /obj/item/storage/box/emps/fill_preset_inventory()
 	new /obj/item/explosive/grenade/empgrenade(src)
@@ -220,6 +251,20 @@
 	new /obj/item/clothing/glasses/regular(src)
 	new /obj/item/clothing/glasses/regular(src)
 
+/obj/item/storage/box/wycaps
+	name = "box of Company baseball caps"
+	desc = "This box contains seven Weyland Yutani brand baseball caps. Give them away at your leisure."
+	icon_state = "mre1"
+
+/obj/item/storage/box/wycaps/fill_preset_inventory()
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+
 /obj/item/storage/box/drinkingglasses
 	name = "box of drinking glasses"
 	desc = "It has a picture of drinking glasses on it."
@@ -236,7 +281,7 @@
 	name = "Death Alarm Kit"
 	desc = "Box of stuff used to implant death alarms."
 	icon_state = "implant"
-	item_state = "syringe_kit"
+	item_state = "box"
 
 /obj/item/storage/box/cdeathalarm_kit/fill_preset_inventory()
 	new /obj/item/implanter(src)
@@ -279,6 +324,7 @@
 	name = "box of donk-pockets"
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
 	icon_state = "donk_kit"
+	item_state = "donk_kit"
 	can_hold = list(/obj/item/reagent_container/food/snacks)
 	w_class = SIZE_MEDIUM
 
@@ -293,8 +339,9 @@
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"
 	desc = "Drymate brand monkey cubes. Just add water!"
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "monkeycubebox"
+	item_state = "monkeycubebox"
 
 /obj/item/storage/box/monkeycubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
@@ -324,10 +371,16 @@
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube(src)
 
+/obj/item/storage/box/monkeycubes/yautja
+	name = "weird cube box"
+	desc = "Some box with unknown language label on it."
+	icon_state = "box_of_doom"
+
 /obj/item/storage/box/ids
 	name = "box of spare IDs"
 	desc = "Has so many empty IDs."
 	icon_state = "id"
+	item_state = "id"
 
 /obj/item/storage/box/ids/fill_preset_inventory()
 	new /obj/item/card/id(src)
@@ -343,51 +396,68 @@
 	name = "box of handcuffs"
 	desc = "A box full of handcuffs."
 	icon_state = "handcuff"
+	item_state = "handcuff"
 
 /obj/item/storage/box/handcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 
+
+/obj/item/storage/box/legcuffs
+	name = "box of legcuffs"
+	desc = "A box full of legcuffs."
+	icon_state = "handcuff"
+	item_state = "handcuff"
+
+/obj/item/storage/box/legcuffs/fill_preset_inventory()
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
 
 /obj/item/storage/box/zipcuffs
 	name = "box of zip cuffs"
 	desc = "A box full of zip cuffs."
 	icon_state = "handcuff"
+	item_state = "handcuff"
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/zipcuffs/small
 	name = "small box of zip cuffs"
 	desc = "A small box full of zip cuffs."
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/zipcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
+/obj/item/storage/box/zipcuffs/small/fill_preset_inventory()
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/tapes
 	name = "box of regulation tapes"
@@ -413,6 +483,7 @@
 	name = "box of Pest-B-Gon mousetraps"
 	desc = "<B><FONT color='red'>WARNING:</FONT></B> <I>Keep out of reach of children</I>."
 	icon_state = "mousetraps"
+	item_state = "mousetraps"
 
 /obj/item/storage/box/mousetraps/fill_preset_inventory()
 	new /obj/item/device/assembly/mousetrap( src )
@@ -426,6 +497,7 @@
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
 	icon_state = "pillbox"
+	item_state = "pillbox"
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle( src )
@@ -451,11 +523,18 @@
 /obj/item/storage/box/matches
 	name = "matchbox"
 	desc = "A small box of 'Space-Proof' premium matches."
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/matches.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi'
+		)
 	icon_state = "matchbox"
-	item_state = "zippo"
+	item_state = "matchbox"
+	item_state_slots = list(WEAR_AS_GARB = "matches")
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 	can_hold = list(/obj/item/tool/match)
 
 /obj/item/storage/box/matches/fill_preset_inventory()
@@ -464,14 +543,14 @@
 
 /obj/item/storage/box/matches/attackby(obj/item/tool/match/W as obj, mob/user as mob)
 	if(istype(W) && !W.heat_source && !W.burnt)
-		W.light_match()
+		W.light_match(user)
 
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
-	item_state = "syringe_kit"
+	item_state = "light"
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 	can_hold = list(
 		/obj/item/light_bulb/tube,
@@ -487,6 +566,7 @@
 /obj/item/storage/box/lights/tubes
 	name = "box of replacement tubes"
 	icon_state = "lighttube"
+	item_state = "lighttube"
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/lights/tubes/fill_preset_inventory()
@@ -496,6 +576,7 @@
 /obj/item/storage/box/lights/mixed
 	name = "box of replacement lights"
 	icon_state = "lightmixed"
+	item_state = "lightmixed"
 
 /obj/item/storage/box/lights/mixed/fill_preset_inventory()
 	for(var/i = 0; i < 14; i++)
@@ -507,6 +588,7 @@
 /obj/item/storage/box/autoinjectors
 	name = "box of autoinjectors"
 	icon_state = "syringe"
+	item_state = "syringe"
 
 /obj/item/storage/box/autoinjectors/fill_preset_inventory()
 	for(var/i = 0; i < 7; i++)
@@ -516,6 +598,7 @@
 /obj/item/storage/box/twobore
 	name = "box of 2 bore shells"
 	icon_state = "twobore"
+	icon = 'icons/obj/items/storage/kits.dmi'
 	desc = "A box filled with enormous slug shells, for hunting only the most dangerous game. 2 Bore."
 	storage_slots = 5
 	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
@@ -524,13 +607,34 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
 
+/obj/item/storage/box/stompers
+	name = "\improper Reebok shoe box"
+	desc = "A fancy shoe box with reflective surface and Weyland-Yutani logo on top, says 'Reebok Stompers' on the back."
+	icon_state = "stomper_box"
+	item_state = "stomper_box"
+	w_class = SIZE_MEDIUM
+	bypass_w_limit = /obj/item/clothing/shoes
+	max_storage_space = 3
+	can_hold = list(/obj/item/clothing/shoes)
+
+/obj/item/storage/box/stompers/fill_preset_inventory()
+	new /obj/item/clothing/shoes/stompers(src)
+
+/obj/item/storage/box/stompers/update_icon()
+	if(!length(contents))
+		icon_state = "stomper_box_e"
+	else
+		icon_state = "stomper_box"
+
 ////////// MARINES BOXES //////////////////////////
 
 
 /obj/item/storage/box/explosive_mines
 	name = "\improper M20 mine box"
 	desc = "A secure box holding five M20 anti-personnel proximity mines."
+	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "minebox"
+	item_state = "minebox"
 	w_class = SIZE_MEDIUM
 	max_storage_space = 10
 	can_hold = list(/obj/item/explosive/mine)
@@ -550,6 +654,7 @@
 	name = "\improper M94 marking flare pack"
 	desc = "A packet of eight M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."
 	icon_state = "m94"
+	icon = 'icons/obj/items/storage/packets.dmi'
 	w_class = SIZE_MEDIUM
 	storage_slots = 8
 	max_storage_space = 8
@@ -560,7 +665,7 @@
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/box/m94/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "m94_e"
 	else
 		icon_state = "m94"
@@ -576,7 +681,7 @@
 		new /obj/item/device/flashlight/flare/signal(src)
 
 /obj/item/storage/box/m94/signal/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "m89_e"
 	else
 		icon_state = "m89"
@@ -586,13 +691,41 @@
 	name = "\improper M40 HEDP grenade box"
 	desc = "A secure box holding 25 M40 High-Explosive Dual-Purpose grenades. High explosive, don't store near the flamer fuel."
 	icon_state = "nade_placeholder"
+	item_state = "nade_placeholder"
+	icon = 'icons/obj/items/storage/packets.dmi'
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
 	can_hold = list(/obj/item/explosive/grenade/high_explosive)
 	var/base_icon
+	var/model_icon = "model_m40"
+	var/type_icon = "hedp"
 	var/grenade_type = /obj/item/explosive/grenade/high_explosive
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+
+/obj/item/storage/box/nade_box/Initialize()
+	. = ..()
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin()
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
+
+/obj/item/storage/box/nade_box/proc/try_forced_folding(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(!isturf(loc))
+		return
+
+	if(length(contents))
+		return
+
+	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	storage_close(user)
+	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	qdel(src)
 
 /obj/item/storage/box/nade_box/post_skin_selection()
 	base_icon = icon_state
@@ -602,61 +735,76 @@
 		new grenade_type(src)
 
 /obj/item/storage/box/nade_box/update_icon()
-	if(!contents.len)
+	overlays.Cut()
+	if(!length(contents))
 		icon_state = "[base_icon]_e"
-		qdel(src) //No reason to keep it - nobody will reuse it...
 	else
 		icon_state = base_icon
+		if(type_icon)
+			overlays += image(icon, type_icon)
+		if(model_icon)
+			overlays += image(icon, model_icon)
 
 
 /obj/item/storage/box/nade_box/frag
 	name = "\improper M40 HEFA grenade box"
 	desc = "A secure box holding 25 M40 High-Explosive Fragmenting-Antipersonnel grenades. High explosive, don't store near the flamer fuel."
-	icon_state = "frag_nade_placeholder"
-	w_class = SIZE_LARGE
-	storage_slots = 25
-	max_storage_space = 50
+	type_icon = "hefa"
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/frag)
 	grenade_type = /obj/item/explosive/grenade/high_explosive/frag
-	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/phophorus
-	name = "\improper M40 HPDP grenade box"
-	desc = "A secure box holding 25 M40 HPDP white phosphorus grenade. High explosive, don't store near the flamer fuel."
-	icon_state = "phos_nade_placeholder"
-	w_class = SIZE_LARGE
-	storage_slots = 25
-	max_storage_space = 50
+	name = "\improper M40 CCDP grenade box"
+	desc = "A secure box holding 25 M40 CCDP chemical compound grenade. High explosive, don't store near the flamer fuel."
+	type_icon = "ccdp"
 	can_hold = list(/obj/item/explosive/grenade/phosphorus)
 	grenade_type = /obj/item/explosive/grenade/phosphorus
-	has_gamemode_skin = FALSE
+
+/obj/item/storage/box/nade_box/incen
+	name = "\improper M40 HIDP grenade box"
+	desc = "A secure box holding 25 M40 HIDP white incendiary grenades. Highly flammable, don't store near the flamer fuel."
+	type_icon = "hidp"
+	can_hold = list(/obj/item/explosive/grenade/incendiary)
+	grenade_type = /obj/item/explosive/grenade/incendiary
 
 /obj/item/storage/box/nade_box/airburst
 	name = "\improper M74 AGM-F grenade box"
 	desc = "A secure box holding 25 M74 AGM Fragmentation grenades. Explosive, don't store near the flamer fuel."
-	icon_state = "airburst_nade_placeholder"
-	w_class = SIZE_LARGE
-	storage_slots = 25
-	max_storage_space = 50
+	model_icon = "model_m74"
+	type_icon = "agmf"
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/airburst)
 	grenade_type = /obj/item/explosive/grenade/high_explosive/airburst
-	has_gamemode_skin = FALSE
+
+/obj/item/storage/box/nade_box/airburstincen
+	name = "\improper M74 AGM-I grenade box"
+	desc = "A secure box holding 25 M74 AGM Incendiary grenades. Highly flammable, don't store near the flamer fuel."
+	model_icon = "model_m74"
+	type_icon = "agmi"
+	can_hold = list(/obj/item/explosive/grenade/incendiary/airburst)
+	grenade_type = /obj/item/explosive/grenade/incendiary/airburst
+
 
 /obj/item/storage/box/nade_box/training
 	name = "\improper M07 training grenade box"
 	desc = "A secure box holding 25 M07 training grenades. Harmless and reusable."
 	icon_state = "train_nade_placeholder"
+	item_state = "train_nade_placeholder"
+	model_icon = "model_mo7"
+	type_icon = null
 	grenade_type = /obj/item/explosive/grenade/high_explosive/training
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/training)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/box/nade_box/tear_gas
 	name = "\improper M66 tear gas grenade box"
 	desc = "A secure box holding 25 M66 tear gas grenades. Used for riot control."
 	icon_state = "teargas_nade_placeholder"
+	item_state = "teargas_nade_placeholder"
+	model_icon = "model_m66"
+	type_icon = null
 	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/box/nade_box/tear_gas/fill_preset_inventory()
 	..()
@@ -681,6 +829,7 @@
 	name = "box of lightsticks"
 	desc = "Contains blue lightsticks."
 	icon_state = "lightstick"
+	item_state = "lightstick"
 	can_hold = list(/obj/item/lightstick)
 
 /obj/item/storage/box/lightstick/fill_preset_inventory()
@@ -695,6 +844,7 @@
 /obj/item/storage/box/lightstick/red
 	desc = "Contains red lightsticks."
 	icon_state = "lightstick2"
+	item_state = "lightstick2"
 
 /obj/item/storage/box/lightstick/red/fill_preset_inventory()
 	new /obj/item/lightstick/red(src)
@@ -709,12 +859,18 @@
 	name = "\improper USCM MRE"
 	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon_state = "mealpack"
+	item_state = "mealpack"
+	icon = 'icons/obj/items/storage/mre.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 	w_class = SIZE_SMALL
 	can_hold = list()
 	storage_slots = 7
 	max_w_class = 0
 	use_sound = "rip"
-	var/isopened = 0
+	var/isopened = FALSE
 
 /obj/item/storage/box/MRE/fill_preset_inventory()
 	pickflavor()
@@ -752,14 +908,27 @@
 
 /obj/item/storage/box/MRE/Initialize()
 	. = ..()
-	isopened = 0
+	isopened = FALSE
 	icon_state = "mealpack"
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
+
+/obj/item/storage/box/MRE/proc/try_forced_folding(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	if(!isturf(loc))
+		return
+
+	if(locate(/obj/item/reagent_container/food/snacks/packaged_meal) in src)
+		return
+
+	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
+	storage_close(user)
+	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	qdel(src)
 
 /obj/item/storage/box/MRE/update_icon()
-	if(!contents.len)
-		qdel(src)
-	else if(!isopened)
-		isopened = 1
+	if(!isopened)
+		isopened = TRUE
 		icon_state = "mealpackopened"
 
 //food boxes for storage in bulk

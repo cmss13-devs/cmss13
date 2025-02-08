@@ -5,6 +5,7 @@
 /obj/item/ammo_magazine/m56d
 	name = "M56D drum magazine (10x28mm Caseless)"
 	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system. Just click the M56D with this to reload it."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	w_class = SIZE_MEDIUM
 	icon_state = "m56d_drum"
 	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
@@ -19,7 +20,7 @@
 /obj/item/storage/box/m56d_hmg
 	name = "\improper M56D crate"
 	desc = "A large metal case with Japanese writing on the top. However it also comes with English text to the side. This is a M56D heavy machine gun, it clearly has various labeled warnings."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "M56D_case" // I guess a placeholder? Not actually going to show up ingame for now.
 	w_class = SIZE_HUGE
 	storage_slots = 6
@@ -40,7 +41,12 @@
 	unacidable = TRUE
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 	icon_state = "M56D_gun_e"
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
@@ -70,7 +76,7 @@
 	return
 
 /obj/item/device/m56d_gun/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(QDELETED(O))
@@ -92,7 +98,7 @@
 		if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
 			return
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	if(!has_mount)
 		return
@@ -158,7 +164,7 @@
 	desc = "A flimsy frame of plasteel and metal. Still needs to be <b>welded</b> together."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "folded_mount_frame"
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
@@ -181,14 +187,14 @@
 	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "folded_mount"
 
 /// Causes the tripod to unfold
 /obj/item/device/m56d_post/attack_self(mob/user)
 	..()
 
-	if(!ishuman(usr))
+	if(!ishuman(usr) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
@@ -233,7 +239,7 @@
 /obj/structure/machinery/m56d_post
 	name = "\improper M56D mount"
 	desc = "A foldable tripod mount for the M56D, provides stability to the M56D."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "M56D_mount"
 	anchored = FALSE
 	density = TRUE
@@ -296,9 +302,9 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
-	if(!ishuman(usr))
+	var/mob/living/carbon/user = usr //this is us
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
-	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
 		if(anchored && gun_mounted)
 			to_chat(user, SPAN_WARNING("\The [src] can't be folded while there's an unsecured gun mounted on it. Either complete the assembly or take the gun off with a crowbar."))
@@ -313,7 +319,7 @@
 		qdel(src)
 
 /obj/structure/machinery/m56d_post/attackby(obj/item/O, mob/user)
-	if(!ishuman(user)) //first make sure theres no funkiness
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) //first make sure theres no funkiness
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) //rotate the mount
@@ -439,7 +445,7 @@
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "M56D"
 	anchored = TRUE
 	unslashable = TRUE
@@ -464,7 +470,7 @@
 	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
 	var/damage_state = M56D_DMG_NONE
 
-	var/gun_noise = 'sound/weapons/gun_rifle.ogg' // Variations for gun noises for M56D, M56DE, the auto one, uses a different set of sounds. emergency_cooling
+	var/gun_noise = 'sound/weapons/gun_rifle.ogg' // Variations for gun noises for M56D, M2C, the auto one, uses a different set of sounds. emergency_cooling
 	var/empty_alarm = 'sound/weapons/smg_empty_alarm.ogg'
 
 	// Muzzle Flash Offsets
@@ -509,14 +515,21 @@
 	/// How long between semi-auto shots this should wait, to reduce possible spam
 	var/semiauto_cooldown_time = 0.2 SECONDS
 
-/obj/structure/machinery/m56d_hmg/get_examine_text(mob/user)
-	. = ..()
-	. += "It is currently set to <b>[gun_firemode]</b>."
-
 /obj/structure/machinery/m56d_hmg/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB
+
+///Turns the mouse cursor into a crosshair if new_cursor is set to TRUE. If set to FALSE, returns the cursor to its initial icon.
+/obj/structure/machinery/m56d_hmg/proc/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs.custom_cursors)
+		return
+
+	user.client?.mouse_pointer_icon = new_cursor ? get_mouse_pointer() : initial(user.client?.mouse_pointer_icon)
+
+///Getter proc. Returns the weapon's crosshair icon.
+/obj/structure/machinery/m56d_hmg/proc/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
@@ -549,7 +562,8 @@
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
 	. = ..()
-	if(ishuman(user))
+	if(ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		. += "It is currently set to <b>[gun_firemode]</b>."
 		if(rounds)
 			. += SPAN_NOTICE("It has [rounds] round\s out of [rounds_max].")
 		else
@@ -568,7 +582,7 @@
 	return
 
 /obj/structure/machinery/m56d_hmg/attackby(obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return ..()
 
 	if(QDELETED(O))
@@ -639,13 +653,13 @@
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 				SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 					SPAN_NOTICE("You repair [src]."))
-				update_health(-round(health_max*0.2))
+				update_health(-floor(health_max*0.2))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		else
 			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
@@ -676,10 +690,11 @@
 /obj/structure/machinery/m56d_hmg/proc/exit_interaction()
 	SIGNAL_HANDLER
 
+	update_mouse_pointer(operator, FALSE)
 	operator.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/proc/update_damage_state()
-	var/health_percent = round(health/health_max * 100)
+	var/health_percent = floor(health/health_max * 100)
 	switch(health_percent)
 		if(0 to 25) damage_state = M56D_DMG_HEAVY
 		if(25 to 50) damage_state = M56D_DMG_MODERATE
@@ -689,19 +704,21 @@
 /obj/structure/machinery/m56d_hmg/bullet_act(obj/projectile/P) //Nope.
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
-	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
+	update_health(floor(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
-/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/M) // Those Ayy lmaos.
-	if(islarva(M))
+/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/xeno) // Those Ayy lmaos.
+	if(islarva(xeno))
 		return //Larvae can't do shit
-
-	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
+	if(xeno.IsAdvancedToolUser() && xeno.a_intent == INTENT_HELP)
+		try_mount_gun(xeno)
+		return XENO_NO_DELAY_ACTION
+	xeno.visible_message(SPAN_DANGER("[xeno] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
-	M.animation_attack_on(src)
-	M.flick_attack_overlay(src, "slash")
+	xeno.animation_attack_on(src)
+	xeno.flick_attack_overlay(src, "slash")
 	playsound(loc, "alien_claw_metal", 25)
-	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
+	update_health(rand(xeno.melee_damage_lower,xeno.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_hmg/proc/load_into_chamber()
@@ -841,17 +858,21 @@
 		// Try to man the gun
 		try_mount_gun(usr)
 
-/obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/human/user)
+/obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/user)
 	// If the user isn't a human.
 	if(!istype(user))
 		return
 	// If the user is unconscious or dead.
 	if(user.stat)
 		return
-
+	if(ishuman(user))
+		var/mob/living/carbon/human/human = user
+		if(!human.allow_gun_usage)
+			to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+			return
 	// If the user isn't actually allowed to use guns.
-	if(!user.allow_gun_usage)
-		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+	else if (!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(user, SPAN_WARNING("You don't know what to do with [src]!"))
 		return
 
 	// If the user is invisible.
@@ -911,6 +932,7 @@
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
 
 	operator = user
+	update_mouse_pointer(operator, TRUE)
 	flags_atom |= RELAY_CLICK
 
 /obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
@@ -1023,7 +1045,7 @@
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 	target = object
 	if(target)
-		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), override = TRUE)
 
 /// Print how much ammo is left to chat
 /obj/structure/machinery/m56d_hmg/proc/display_ammo()
@@ -1148,7 +1170,7 @@
 	rounds_max = 1500
 	locked = 1
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	zoom = 1
 	ammo = /datum/ammo/bullet/machinegun/doorgun
 

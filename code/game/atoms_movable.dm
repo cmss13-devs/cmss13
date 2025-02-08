@@ -31,6 +31,9 @@
 	///Highest-intensity light affecting us, which determines our visibility.
 	var/affecting_dynamic_lumi = 0
 
+	/// Holds a reference to the emissive blocker overlay
+	var/emissive_overlay
+
 //===========================================================================
 /atom/movable/Destroy(force)
 	for(var/atom/movable/I in contents)
@@ -39,13 +42,17 @@
 		pulledby.stop_pulling()
 	QDEL_NULL(launch_metadata)
 	QDEL_NULL(em_block)
+	QDEL_NULL(emissive_overlay)
 
 	if(loc)
 		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
 	if(orbiting)
 		orbiting.end_orbit(src)
 		orbiting = null
-	vis_contents.Cut()
+
+	vis_locs = null //clears this atom out of all viscontents
+	if(length(vis_contents))
+		vis_contents.Cut()
 	. = ..()
 	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
 
@@ -76,17 +83,9 @@
 
 /atom/movable/Initialize(mapload, ...)
 	. = ..()
-	switch(blocks_emissive)
-		if(EMISSIVE_BLOCK_GENERIC)
-			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
-			gen_emissive_blocker.color = GLOB.em_block_color
-			gen_emissive_blocker.dir = dir
-			gen_emissive_blocker.appearance_flags |= appearance_flags
-			overlays += gen_emissive_blocker
-		if(EMISSIVE_BLOCK_UNIQUE)
-			render_target = ref(src)
-			em_block = new(src, render_target)
-			overlays += list(em_block)
+
+	update_emissive_block()
+
 	if(opacity)
 		AddElement(/datum/element/light_blocking)
 	if(light_system == MOVABLE_LIGHT)
@@ -94,27 +93,23 @@
 	if(light_system == DIRECTIONAL_LIGHT)
 		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
 
-/*
-
-///Updates this movables emissive overlay
 /atom/movable/proc/update_emissive_block()
-	if(!blocks_emissive)
-		return
-	else if (blocks_emissive == EMISSIVE_BLOCK_GENERIC)
-		var/mutable_appearance/gen_emissive_blocker = emissive_blocker(icon, icon_state, alpha = src.alpha, appearance_flags = src.appearance_flags)
-		gen_emissive_blocker.dir = dir
-	if(blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
-		if(!em_block)
+	if(emissive_overlay)
+		overlays -= emissive_overlay
+
+	switch(blocks_emissive)
+		if(EMISSIVE_BLOCK_GENERIC)
+			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
+			gen_emissive_blocker.color = GLOB.em_block_color
+			gen_emissive_blocker.dir = dir
+			gen_emissive_blocker.appearance_flags |= appearance_flags
+			emissive_overlay = gen_emissive_blocker
+			overlays += gen_emissive_blocker
+		if(EMISSIVE_BLOCK_UNIQUE)
 			render_target = ref(src)
 			em_block = new(src, render_target)
-		return em_block
-
-/atom/movable/update_overlays()
-	. = ..()
-
-	. += update_emissive_block()
-
-*/
+			emissive_overlay = em_block
+			overlays += list(em_block)
 
 /atom/movable/vv_get_dropdown()
 	. = ..()

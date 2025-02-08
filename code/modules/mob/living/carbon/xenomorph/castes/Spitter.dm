@@ -40,7 +40,7 @@
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
-
+	organ_value = 2000
 	tier = 2
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -57,8 +57,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/xenos/spitter.dmi'
-	icon_xenonid = 'icons/mob/xenonids/spitter.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/spitter.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/spitter.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")

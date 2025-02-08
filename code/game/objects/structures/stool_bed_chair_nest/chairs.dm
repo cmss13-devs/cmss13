@@ -7,6 +7,8 @@
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably."
 	icon_state = "chair"
 	buckle_lying = 0
+	var/north_layer = FLY_LAYER
+	var/non_north_layer = OBJ_LAYER
 	var/propelled = FALSE //Check for fire-extinguisher-driven chairs
 	var/can_rotate = TRUE
 	var/picked_up_item = /obj/item/weapon/twohanded/folded_metal_chair
@@ -18,17 +20,16 @@
 	if(!can_rotate)
 		verbs.Remove(/obj/structure/bed/chair/verb/rotate)
 
-/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
+/obj/structure/bed/chair/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
 	flags_can_pass_all_temp = PASS_OVER
 
 /obj/structure/bed/chair/handle_rotation() //Making this into a separate proc so office chairs can call it on Move()
-	if(src.dir == NORTH)
-		src.layer = FLY_LAYER
+	if(dir == NORTH)
+		layer = north_layer
 	else
-		src.layer = OBJ_LAYER
+		layer = non_north_layer
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
 
@@ -150,7 +151,7 @@
 		stacked_size--
 		update_overlays()
 
-		var/list/candidate_target_turfs = range(round(stacked_size/2), starting_turf)
+		var/list/candidate_target_turfs = range(floor(stacked_size/2), starting_turf)
 		candidate_target_turfs -= starting_turf
 		var/turf/target_turf = candidate_target_turfs[rand(1, length(candidate_target_turfs))]
 
@@ -257,6 +258,10 @@
 	debris = list()
 	picked_up_item = null
 
+/obj/structure/bed/chair/comfy/arc
+	non_north_layer = BELOW_OBJ_LAYER
+	layer = BELOW_OBJ_LAYER
+
 /obj/structure/bed/chair/comfy/orange
 	icon_state = "comfychair_orange"
 
@@ -274,6 +279,11 @@
 
 /obj/structure/bed/chair/comfy/blue
 	icon_state = "comfychair_blue"
+
+/obj/structure/bed/chair/comfy/yautja
+	name = "alien chair"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	debris = list(/obj/item/stack/sheet/mineral/sandstone/runed)
 
 /obj/structure/bed/chair/comfy/alpha
 	icon_state = "comfychair_alpha"
@@ -380,12 +390,12 @@
 
 /obj/structure/bed/chair/dropship/passenger/Initialize()
 	. = ..()
-	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
+	chairbar = image(icon, "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/Initialize()
 	. = ..()
-	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
+	chairbar = image(icon, "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 
@@ -435,7 +445,7 @@
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
 		icon_state = "hotseat"
 
-/obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/living/M, mob/living/user)
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/buckle_mob(mob/living/M, mob/living/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
 		return
 	..()
@@ -509,7 +519,7 @@
 				chair_state = DROPSHIP_CHAIR_FOLDED
 				return
 	else
-		..()
+		. = ..()
 
 
 
@@ -526,7 +536,7 @@
 /obj/structure/bed/chair/hunter
 	name = "hunter chair"
 	desc = "An exquisitely crafted chair for a large humanoid hunter."
-	icon = 'icons/turf/walls/hunter.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "chair"
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
@@ -536,7 +546,11 @@
 /obj/item/weapon/twohanded/folded_metal_chair //used for when someone picks up the chair
 	name = "metal folding chair"
 	desc = "A metal folding chair, probably could be turned into a seat by anyone with half a braincell working."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_righthand.dmi'
+	)
 	icon_state = "folding_chair"
 	item_state = "folding_chair"
 	attack_verb = list("bashed", "battered", "chaired")
@@ -556,6 +570,7 @@
 	if(flags_item & WIELDED)
 		M.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/weapon/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)
 	if(flags_item & WIELDED)

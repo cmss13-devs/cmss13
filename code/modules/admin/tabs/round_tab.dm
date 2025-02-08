@@ -1,22 +1,39 @@
 /client/proc/adjust_predator_round()
-	set name = "Adjust Predator Round"
-	set desc = "Adjust the number of predators present in a predator round."
+	set name = "Adjust Predator Slots"
+	set desc = "Adjust the slot modifier for predators."
 	set category = "Server.Round"
 
-	if(admin_holder)
-		if(!SSticker || !SSticker.mode)
-			to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
-			return
+	if(!admin_holder)
+		return
 
-		var/value = tgui_input_number(src,"How many additional predators can join? Decreasing the value is not recommended. Current predator count: [SSticker.mode.pred_current_num]","Input:", 0, (SSticker.mode.pred_additional_max - SSticker.mode.pred_current_num))
+	if(!SSticker?.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
 
-		if(value < SSticker.mode.pred_current_num)
-			to_chat(src, SPAN_NOTICE("Aborting. Number cannot be lower than the current pred count. (current: [SSticker.mode.pred_current_num], attempted: [value])"))
-			return
+	var/cur_extra = SSticker.mode.pred_count_modifier
+	var/cur_count = SSticker.mode.pred_current_num
+	var/cur_max = SSticker.mode.calculate_pred_max()
+	var/real_count = length(SSticker.mode.predators)
+	var/possible_min = min(cur_count - cur_max, cur_extra)
+	var/value = tgui_input_number(src, "How many additional predators can join? Current predator count: [cur_count]/[cur_max] (Real: [real_count]) Current setting: [cur_extra]", "Input:", default = cur_extra, min_value = possible_min, integer_only = TRUE)
 
-		if(value)
-			SSticker.mode.pred_additional_max = abs(value)
-			message_admins("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)].")
+	if(isnull(value))
+		return
+
+	if(value == cur_extra)
+		return
+
+	cur_count = SSticker.mode.pred_current_num // values could have changed since asking
+	cur_max = SSticker.mode.calculate_pred_max()
+	possible_min = min(cur_count - cur_max, cur_extra)
+
+	// If we are reducing the count and that exceeds how much we could reduce it by
+	if(value < possible_min)
+		to_chat(src, SPAN_NOTICE("Aborting. Number cannot result in a max less than current pred count. (current: [cur_count]/[cur_max], current extra: [cur_extra], attempted: [value])"))
+		return
+
+	SSticker.mode.pred_count_modifier = value
+	message_admins("[key_name_admin(usr)] adjusted the additional pred amount from [cur_extra] to [value].")
 
 /datum/admins/proc/force_predator_round()
 	set name = "Toggle Predator Round"
@@ -28,20 +45,22 @@
 		var/enabled = FALSE
 		if(SSnightmare.get_scenario_value("predator_round"))
 			enabled = TRUE
-		var/ret = alert("Nightmare Scenario has the upcoming round being a [(enabled ? "PREDATOR" : "NORMAL")] round. Do you want to toggle this?", "Toggle Predator Round", "Yes", "No")
+		var/ret = tgui_alert(usr, "Are you sure you want to force-toggle a predator round? Nightmare Scenario has the upcoming round as a [(enabled ? "PREDATOR" : "NORMAL")] round.", "Toggle Predator Round", list("Yes", "No"))
 		if(ret == "Yes")
 			SSnightmare.set_scenario_value("predator_round", !enabled)
+			message_admins("[key_name_admin(usr)] has [!enabled ? "allowed predators to spawn" : "prevented predators from spawning"].")
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
-	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") != "Yes")
+	if(tgui_alert(usr, "Are you sure you want to force-toggle a predator round? Predators are currently [(predator_round.flags_round_type & MODE_PREDATOR) ? "ENABLED" : "DISABLED"].", "Toggle Predator Round", list("Yes", "No")) != "Yes")
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
-		var/datum/job/PJ = GLOB.RoleAuthority.roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ) && !PJ.spawn_positions)
-			PJ.set_spawn_positions(GLOB.players_preassigned)
+		var/datum/job/pred_job = GLOB.RoleAuthority.roles_for_mode[JOB_PREDATOR]
+		if(istype(pred_job) && !pred_job.spawn_positions)
+			pred_job.set_spawn_positions(GLOB.players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
+		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 	else
 		predator_round.flags_round_type &= ~MODE_PREDATOR
 

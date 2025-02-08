@@ -2,8 +2,10 @@
  * Chemistry defines
  */
 
+/// Amount of bottle icon variations in total
+#define BOTTLE_ICON_CHOICES 4
 /// Amount of random icon variations for pills in total
-#define PILL_ICON_CHOICES 21
+#define PILL_ICON_CHOICES 22
 /* Pill icon classes to generate mappings for */
 #define PILL_ICON_CLASSES list("bica", "kelo", "dex", "para", "tram", "atox", "tox", "inap", "peri", "spac", "drug", "stim", "alky", "imi", "qc", "tric", "psych", "oxy")
 
@@ -44,8 +46,12 @@
 #define ALCOHOL_METABOLISM AMOUNT_PER_TIME(1, 5 SECONDS)
 #define RAPID_METABOLISM AMOUNT_PER_TIME(1, 2 SECONDS)
 
-// Factor of how fast mob nutrition decreases
+/// How fast mob nutrition normally decreases
 #define HUNGER_FACTOR 0.05
+/// Additional mob nutrition cost when regenerating blood
+#define BLOOD_NUTRITION_COST 0.25
+/// Additional mob nutrition cost when cold
+#define COLD_NUTRITION_COST 1
 
 // Nutrition levels
 #define NUTRITION_MAX 550
@@ -130,6 +136,7 @@
 #define PROPERTY_CARDIOTOXIC "cardiotoxic"
 #define PROPERTY_NEUROTOXIC "neurotoxic"
 #define PROPERTY_HYPERMETABOLIC "hypermetabolic"
+#define PROPERTY_IGNITING "igniting"
 //Neutral
 #define PROPERTY_NUTRITIOUS "nutritious"
 #define PROPERTY_KETOGENIC "ketogenic"
@@ -187,6 +194,7 @@
 #define PROPERTY_NEUROSHIELDING "neuroshielding"
 #define PROPERTY_ANTIADDICTIVE "anti-addictive"
 #define PROPERTY_ADDICTIVE "addictive"
+#define PROPERTY_ENCEPHALOPHRASIVE "encephalophrasive"
 //Legendary, only in gen_tier 3+
 #define PROPERTY_HYPERGENETIC "hypergenetic"
 #define PROPERTY_BOOSTING "boosting"
@@ -310,11 +318,17 @@
 
 /// Amount of phosphorus that equals 1 radius of white phosphorus smoke
 #define CHEM_FIRE_PHOSPHORUS_PER_RADIUS 10
-/// The minimum amount of phoron required to turn shrapnel into incendiary shrapnel
+/// The minimum amount of chems required to turn shrapnel into a special type
 #define EXPLOSION_PHORON_THRESHOLD 10
+#define EXPLOSION_ACID_THRESHOLD 10
+#define EXPLOSION_NEURO_THRESHOLD 30
 
 #define EXPLOSION_MIN_FALLOFF 25
 #define EXPLOSION_BASE_SHARDS 4
 
-/// The maximum amount of shards is divided by this number if the shards are incendiary
-#define INCENDIARY_SHARDS_MAX_REDUCTION	4
+/// The maximum amount of shards is divided by this number if the shards are of special type
+#define INCENDIARY_SHARDS_MAX_REDUCTION	2
+#define HORNET_SHARDS_MAX_REDUCTION 2
+#define NEURO_SHARDS_MAX_REDUCTION 2
+
+#define LEVEL_TO_POTENCY_MULTIPLIER 0.5

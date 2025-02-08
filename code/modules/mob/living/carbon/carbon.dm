@@ -43,38 +43,38 @@
 		if(user.client)
 			user.client.next_movement = world.time + 20
 		if(prob(30))
-			for(var/mob/M in hearers(4, src))
-				if(M.client)
-					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
-		var/obj/item/I = user.get_active_hand()
-		if(I && I.force)
-			var/d = rand(round(I.force / 4), I.force)
+			for(var/mob/mobs_can_hear in hearers(4, src))
+				if(mobs_can_hear.client)
+					mobs_can_hear.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
+		var/obj/item/item_in_hand = user.get_active_hand()
+		if(item_in_hand && item_in_hand.force)
+			var/damage_of_item = rand(floor(item_in_hand.force / 4), item_in_hand.force)
 			if(istype(src, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = src
-				var/organ = H.get_limb("chest")
+				var/mob/living/carbon/human/human_mob = src
+				var/organ = human_mob.get_limb("chest")
 				if(istype(organ, /obj/limb))
-					var/obj/limb/temp = organ
-					if(temp.take_damage(d, 0))
-						H.UpdateDamageIcon()
-				H.updatehealth()
+					var/obj/limb/organs_in_human = organ
+					if(organs_in_human.take_damage(damage_of_item, 0))
+						human_mob.UpdateDamageIcon()
+				human_mob.updatehealth()
 			else
-				src.take_limb_damage(d)
-			for(var/mob/M as anything in viewers(user, null))
-				if(M.client)
-					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), SHOW_MESSAGE_AUDIBLE)
-			user.track_hit(initial(I.name))
+				src.take_limb_damage(damage_of_item)
+			for(var/mob/mobs_in_view as anything in viewers(user, null))
+				if(mobs_in_view.client)
+					mobs_in_view.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [item_in_hand.name]!")), SHOW_MESSAGE_AUDIBLE)
+			user.track_hit(initial(item_in_hand.name))
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
 				last_damage_data = create_cause_data("chestbursting", user)
 				gib(last_damage_data)
 	else if(!chestburst && (status_flags & XENO_HOST) && islarva(user))
-		var/mob/living/carbon/xenomorph/larva/L = user
-		L.chest_burst(src)
+		var/mob/living/carbon/xenomorph/larva/larva_burst = user
+		larva_burst.chest_burst(src)
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
-	if(body_position == LYING_DOWN)
+	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)
@@ -98,9 +98,11 @@
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
+	var/turf/my_turf = get_turf(src)
+
 	for(var/atom/movable/A in stomach_contents)
 		stomach_contents.Remove(A)
-		A.forceMove(get_turf(loc))
+		A.forceMove(my_turf)
 		A.acid_damage = 0 //Reset the acid damage
 		if(ismob(A))
 			visible_message(SPAN_DANGER("[A] bursts out of [src]!"))
@@ -109,8 +111,8 @@
 		if(isobj(A))
 			var/obj/O = A
 			if(O.unacidable)
-				O.forceMove(get_turf(loc))
-				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+				O.forceMove(my_turf)
+				O.throw_atom(pick(RANGE_TURFS(1, src)), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -156,29 +158,61 @@
 
 	. = ..()
 
-/mob/living/carbon/attack_hand(mob/M as mob)
-	if(!istype(M, /mob/living/carbon)) return
+/mob/living/carbon/attack_hand(mob/target_mob as mob)
+	if(!istype(target_mob, /mob/living/carbon)) return
 
-	if(M.mob_flags & SURGERY_MODE_ON && M.a_intent & (INTENT_HELP|INTENT_DISARM))
-		var/datum/surgery/current_surgery = active_surgeries[M.zone_selected]
+	if(target_mob.mob_flags & SURGERY_MODE_ON && target_mob.a_intent & (INTENT_HELP|INTENT_DISARM))
+		var/datum/surgery/current_surgery = active_surgeries[target_mob.zone_selected]
 		if(current_surgery)
-			if(current_surgery.attempt_next_step(M, null))
+			if(current_surgery.attempt_next_step(target_mob, null))
 				return TRUE
 		else
-			var/obj/limb/affecting = get_limb(check_zone(M.zone_selected))
-			if(affecting && initiate_surgery_moment(null, src, affecting, M))
+			var/obj/limb/affecting = get_limb(check_zone(target_mob.zone_selected))
+			if(affecting && initiate_surgery_moment(null, src, affecting, target_mob))
 				return TRUE
 
-	for(var/datum/disease/D in viruses)
-		if(D.spread_by_touch())
-			M.contract_disease(D, 0, 1, CONTACT_HANDS)
+	if(can_pass_disease() && target_mob.can_pass_disease())
+		for(var/datum/disease/virus in viruses)
+			if(virus.spread_by_touch())
+				target_mob.contract_disease(virus, FALSE, TRUE, CONTACT_HANDS)
 
-	for(var/datum/disease/D in M.viruses)
-		if(D.spread_by_touch())
-			contract_disease(D, 0, 1, CONTACT_HANDS)
+		for(var/datum/disease/virus in target_mob.viruses)
+			if(virus.spread_by_touch())
+				contract_disease(virus, FALSE, TRUE, CONTACT_HANDS)
 
-	M.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
+	target_mob.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
 	return
+
+/// Whether or not a mob can pass diseases to another, or receive said diseases.
+/mob/proc/can_pass_disease()
+	return TRUE
+
+/mob/living/carbon/human/can_pass_disease()
+	// Multiplier for checked pieces.
+	var/mult = 0
+	// Total amount of bio protection
+	var/total_prot = 0
+	// Super bio armor
+	var/bio_hardcore = 0
+
+	var/list/worn_clothes = list(head, wear_suit, hands, glasses, w_uniform, shoes, wear_mask)
+
+	for(var/obj/item/clothing/worn_item in worn_clothes)
+		total_prot += worn_item.armor_bio
+		mult++
+		if(worn_item.armor_bio == CLOTHING_ARMOR_HARDCORE)
+			bio_hardcore++
+
+	if(!mult)
+		return FALSE
+
+	if(bio_hardcore >= 2)
+		return FALSE
+
+	var/perc = (total_prot / mult)
+	if(!prob(perc))
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0, def_zone = null)
 	if(status_flags & GODMODE) //godmode
@@ -192,8 +226,8 @@
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)
 		src.visible_message(
-			SPAN_DANGER("[src] was shocked by [source]!"), \
-			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
+			SPAN_DANGER("[src] was shocked by [source]!"),
+			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"),
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
 		if(isxeno(src) && mob_size >= MOB_SIZE_BIG)
@@ -207,8 +241,8 @@
 
 	else
 		src.visible_message(
-			SPAN_DANGER("[src] was mildly shocked by [source]."), \
-			SPAN_DANGER("You feel a mild shock course through your body."), \
+			SPAN_DANGER("[src] was mildly shocked by [source]."),
+			SPAN_DANGER("You feel a mild shock course through your body."),
 			SPAN_DANGER("You hear a light zapping.") \
 		)
 
@@ -271,11 +305,11 @@
 	if(shake_action) // We are incapacitated in some fashion
 		if(client)
 			sleeping = max(0,sleeping-5)
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to [shake_action]"), \
+		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to [shake_action]"),
 			SPAN_NOTICE("You shake [src] trying to [shake_action]"), null, 4)
 
 	else if(body_position == LYING_DOWN) // We're just chilling on the ground, let us be
-		M.visible_message(SPAN_NOTICE("[M] stares and waves impatiently at [src] lying on the ground."), \
+		M.visible_message(SPAN_NOTICE("[M] stares and waves impatiently at [src] lying on the ground."),
 			SPAN_NOTICE("You stare and wave at [src] just lying on the ground."), null, 4)
 
 	else
@@ -283,7 +317,7 @@
 		if(istype(H))
 			H.species.hug(H, src, H.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
+			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
 				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
@@ -379,7 +413,7 @@
 
 		if(!lastarea)
 			lastarea = get_area(src.loc)
-		if((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
+		if(istype(loc, /turf/open/space))
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 
@@ -388,9 +422,17 @@
 			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
 				return
+			animation_attack_on(target, 6)
+			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
+			if(alpha >= 50)
+				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
 		else
+			animation_attack_on(target, 6)
+			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
+			if(alpha >= 50)
+				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 
@@ -398,23 +440,6 @@
 	..()
 	bodytemperature = max(bodytemperature, BODYTEMP_HEAT_DAMAGE_LIMIT+10)
 	recalculate_move_delay = TRUE
-
-
-/mob/living/carbon/show_inv(mob/living/carbon/user as mob)
-	user.set_interaction(src)
-	var/dat = {"
-	<B><HR><FONT size=3>[name]</FONT></B>
-	<BR><HR>
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];item=face'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];item=l_hand'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];item=r_hand'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
-	<BR>[(handcuffed ? "<A href='?src=\ref[src];item=handcuffs'>Handcuffed</A>" : "<A href='?src=\ref[src];item=handcuffs'>Not Handcuffed</A>")]
-	<BR>[(internal ? "<A href='?src=\ref[src];internal=1'>Remove Internal</A>" : "")]
-	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
-	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
-	<BR>"}
-	show_browser(user, dat, name, "mob[name]")
 
 /**
  * Called by [/mob/dead/observer/proc/do_observe] when a carbon mob is observed by a ghost with [/datum/preferences/var/auto_observe] enabled.
@@ -438,28 +463,6 @@
 			continue
 
 		observer.client.add_to_screen(action.button)
-
-//generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
-	var/temp = 0 //see setup.dm:694
-	switch(src.pulse)
-		if(PULSE_NONE)
-			return "0"
-		if(PULSE_SLOW)
-			temp = rand(40, 60)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_NORM)
-			temp = rand(60, 90)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_FAST)
-			temp = rand(90, 120)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_2FAST)
-			temp = rand(120, 160)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_THREADY)
-			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
-// output for machines^ ^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"
@@ -499,7 +502,7 @@
 
 /mob/living/carbon/on_stored_atom_del(atom/movable/AM)
 	..()
-	if(stomach_contents.len && ismob(AM))
+	if(length(stomach_contents) && ismob(AM))
 		for(var/X in stomach_contents)
 			if(AM == X)
 				stomach_contents -= AM
@@ -508,10 +511,10 @@
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
 	adjust_fire_stacks(-5, min_stacks = 0)
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	C.visible_message(SPAN_DANGER("[C] tries to put out the fire on [src]!"), \
+	C.visible_message(SPAN_DANGER("[C] tries to put out the fire on [src]!"),
 	SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 	if(fire_stacks <= 0)
-		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"), \
+		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"),
 		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 
 /mob/living/carbon/resist_buckle()
@@ -519,12 +522,12 @@
 	if(handcuffed)
 		next_move = world.time + 100
 		last_special = world.time + 100
-		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),\
+		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),
 		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
-		if(do_after(src, 1200, INTERRUPT_ALL^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return
-			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),\
+			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),
 						SPAN_NOTICE("You successfully unbuckle yourself."))
 			buckled.manual_unbuckle(src)
 	else

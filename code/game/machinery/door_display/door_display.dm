@@ -35,17 +35,9 @@
 		if (D.id == id)
 			targets += D
 
-	if(targets.len == 0)
+	if(length(targets) == 0)
 		stat |= BROKEN
 	update_icon()
-
-
-// has the door power situation changed, if so update icon.
-/obj/structure/machinery/door_display/power_change()
-	..()
-	update_icon()
-	return
-
 
 // open/closedoor checks if door_display has power, if so it checks if the
 // linked door is open/closed (by density) then opens it/closes it.
@@ -96,13 +88,13 @@
 
 	// Open/Close Door
 	if (open)
-		data += "<a href='?src=\ref[src];open=0'>Close Door</a><br/>"
+		data += "<a href='byond://?src=\ref[src];open=0'>Close Door</a><br/>"
 	else
-		data += "<a href='?src=\ref[src];open=1'>Open Door</a><br/>"
+		data += "<a href='byond://?src=\ref[src];open=1'>Open Door</a><br/>"
 
 	data += "<br/>"
 
-	data += "<br/><a href='?src=\ref[user];mach_close=computer'>Close Display</a>"
+	data += "<br/><a href='byond://?src=\ref[user];mach_close=computer'>Close Display</a>"
 	data += "</TT></BODY></HTML>"
 
 	return data
@@ -197,13 +189,17 @@
 	req_access = list(ACCESS_MARINE_RESEARCH)
 	uses_tgui = TRUE
 
+/// Console is not designed to have text overlay.
+/obj/structure/machinery/door_display/research_cell/update_display(text)
+	return
+
 /obj/structure/machinery/door_display/research_cell/get_targets()
 	..()
 	for(var/obj/structure/machinery/flasher/F in GLOB.machines)
 		if(F.id == id)
 			targets += F
 	if(has_wall_divider)
-		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in orange(src, 8))
+		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in ORANGE_TURFS(8, src))
 			targets += W
 
 /obj/structure/machinery/door_display/research_cell/Destroy()
@@ -217,9 +213,6 @@
 	//And they deserve a rampage after being locked up for so long
 	open_shutter(TRUE)
 	open_door(TRUE)
-
-/obj/structure/machinery/door_display/update_icon()
-	return
 
 // TGUI \\
 
@@ -321,7 +314,8 @@
 		if(!D.density)
 			continue
 		D.unlock(force)
-		D.open(force)
+		if(D.operating != DOOR_OPERATING_OPENING)
+			D.open(force)
 		open = TRUE
 
 	return TRUE

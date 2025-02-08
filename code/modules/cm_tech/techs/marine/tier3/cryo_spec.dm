@@ -3,7 +3,6 @@
 	desc = "Wakes up an additional specialist to fight against any threats."
 	icon_state = "overshield"
 
-	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "An additional specialist is being taken out of cryo."
 
 	required_points = 8

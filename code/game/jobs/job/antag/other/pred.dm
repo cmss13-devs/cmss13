@@ -22,7 +22,7 @@
 	)
 
 /datum/job/antag/predator/set_spawn_positions(count)
-	spawn_positions = max((round(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), 4)
+	spawn_positions = max((floor(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), 4)
 	total_positions = spawn_positions
 
 /datum/job/antag/predator/spawn_and_equip(mob/new_player/player)
@@ -52,12 +52,14 @@
 
 
 /datum/job/antag/predator/announce_entry_message(mob/new_predator, account, whitelist_status)
-	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
-	to_chat(new_predator, SPAN_NOTICE("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))
+	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble hunter!"))
+	to_chat(new_predator, SPAN_NOTICE("Follow the guidance of your elders and experienced hunters."))
 	to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
+	to_chat(new_predator, SPAN_NOTICE("Most importantly, remember that dying in battle is the highest honour a Yautja could ask for."))
 
 /datum/job/antag/predator/generate_entry_conditions(mob/living/M, whitelist_status)
 	. = ..()
 
 	if(SSticker.mode)
-		SSticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)
+		var/ignore_slot_count = whitelist_status == CLAN_RANK_ADMIN || whitelist_status == CLAN_RANK_LEADER || M?.client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL)
+		SSticker.mode.initialize_predator(M, ignore_slot_count)

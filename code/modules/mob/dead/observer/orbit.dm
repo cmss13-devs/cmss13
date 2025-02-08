@@ -49,6 +49,7 @@
 	var/list/data = list()
 
 	var/list/humans = list()
+	var/list/responders = list()
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
@@ -64,6 +65,7 @@
 	var/list/marshal = list()
 	var/list/synthetics = list()
 	var/list/predators = list()
+	var/list/hunted = list()
 	var/list/animals = list()
 	var/list/dead = list()
 	var/list/ghosts = list()
@@ -71,6 +73,7 @@
 	var/list/npcs = list()
 	var/list/vehicles = list()
 	var/list/escaped = list()
+	var/list/in_thunderdome = list()
 
 	var/is_admin = FALSE
 	if(user && user.client)
@@ -84,33 +87,33 @@
 
 		serialized["ref"] = REF(poi)
 
-		var/mob/M = poi
-		if(!istype(M))
-			if(isVehicleMultitile(M))
+		var/mob/poi_mob = poi
+		if(!istype(poi_mob))
+			if(isVehicleMultitile(poi_mob))
 				vehicles += list(serialized)
 			else
 				misc += list(serialized)
 			continue
 
-		var/number_of_orbiters = length(M.get_all_orbiters())
+		var/number_of_orbiters = length(poi_mob.get_all_orbiters())
 		if(number_of_orbiters)
 			serialized["orbiters"] = number_of_orbiters
 
-		if(isobserver(M))
+		if(isobserver(poi_mob))
 			ghosts += list(serialized)
 			continue
 
-		if(M.stat == DEAD)
+		if(poi_mob.stat == DEAD)
 			dead += list(serialized)
 			continue
 
-		if(M.ckey == null)
+		if(poi_mob.ckey == null)
 			npcs += list(serialized)
 			continue
 
-		if(isliving(M))
-			var/mob/living/player = M
-			serialized["health"] = Floor(player.health / player.maxHealth * 100)
+		if(isliving(poi_mob))
+			var/mob/living/player = poi_mob
+			serialized["health"] = floor(player.health / player.maxHealth * 100)
 
 			if(isxeno(player))
 				var/mob/living/carbon/xenomorph/xeno = player
@@ -118,6 +121,9 @@
 					var/datum/caste_datum/caste = xeno.caste
 					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
+					serialized["background_icon"] = caste.minimap_background
+					serialized["hivenumber"] = xeno.hivenumber
+					serialized["area_name"] = get_area_name(xeno)
 				xenos += list(serialized)
 				continue
 
@@ -126,20 +132,28 @@
 				var/obj/item/card/id/id_card = human.get_idcard()
 				var/datum/species/human_species = human.species
 				var/max_health = human_species.total_health != human.maxHealth ? human_species.total_health : human.maxHealth
-				serialized["health"] = Floor(player.health / max_health * 100)
+				serialized["health"] = floor(player.health / max_health * 100)
 
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
 
 				var/icon = human.assigned_equipment_preset?.minimap_icon
+				if(islist(icon))
+					for(var/key in icon)
+						icon = key
+						break
 				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)
-					serialized["background_color"] = human.assigned_squad.equipment_color ? human.assigned_squad.equipment_color : human.assigned_squad.minimap_color
+					serialized["background_icon"] = human.assigned_squad.background_icon
 				else
-					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
+					serialized["background_icon"] = human.assigned_equipment_preset?.minimap_background
 
-				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
+				if(istype(get_area(human), /area/tdome))
+					in_thunderdome += list(serialized)
+				else if(human.job in FAX_RESPONDER_JOB_LIST)
+					responders += list(serialized)
+				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
@@ -147,8 +161,10 @@
 					synthetics += list(serialized)
 				else if(isyautja(human))
 					predators += list(serialized)
-				else if(human.faction in FACTION_LIST_ERT)
+				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)
+				else if(human.faction in FACTION_LIST_HUNTED)
+					hunted += list(serialized)
 				else if(human.faction in FACTION_LIST_UPP)
 					upp += list(serialized)
 				else if(human.faction in FACTION_LIST_CLF)
@@ -184,6 +200,7 @@
 	data["clf"] = clf
 	data["wy"] = wy
 	data["twe"] = twe
+	data["responders"] = responders
 	data["freelancer"] = freelancer
 	data["contractor"] = contractor
 	data["mercenary"] = mercenary
@@ -191,6 +208,7 @@
 	data["marshal"] = marshal
 	data["synthetics"] = synthetics
 	data["predators"] = predators
+	data["hunted"] = hunted
 	data["animals"] = animals
 	data["dead"] = dead
 	data["ghosts"] = ghosts
@@ -198,6 +216,7 @@
 	data["npcs"] = npcs
 	data["vehicles"] = vehicles
 	data["escaped"] = escaped
+	data["in_thunderdome"] = in_thunderdome
 	data["icons"] = GLOB.minimap_icons
 
 	return data

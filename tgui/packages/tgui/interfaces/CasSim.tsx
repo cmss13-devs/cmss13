@@ -1,5 +1,14 @@
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Section, ProgressBar, NoticeBox, Stack } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Stack,
+} from '../components';
 
 interface CasSimData {
   configuration: any;
@@ -11,10 +20,7 @@ interface CasSimData {
 
 export const CasSim = () => {
   const { act, data } = useBackend<CasSimData>();
-  const [simulationView, setSimulationView] = useLocalState(
-    'simulation_view',
-    false
-  );
+  const [simulationView, setSimulationView] = useState(false);
 
   const timeLeft = data.nextdetonationtime - data.worldtime;
   const timeLeftPct = timeLeft / data.detonation_cooldown;
@@ -40,7 +46,8 @@ export const CasSim = () => {
               good: [-Infinity, 0.33],
               average: [0.33, 0.67],
               bad: [0.67, Infinity],
-            }}>
+            }}
+          >
             <Box textAlign="center">
               {Math.ceil(timeLeft / 10)} seconds until the console&apos;s
               processors finish cooling!
@@ -53,59 +60,64 @@ export const CasSim = () => {
           <Stack.Item grow>
             {(!simulationView && (
               <Button
-                fluid={1}
+                fluid
                 icon="eye"
                 color="good"
-                content="Enter simulation"
                 onClick={() => {
                   act('start_watching');
                   setSimulationView(true);
                 }}
-              />
+              >
+                Enter simulation
+              </Button>
             )) || (
               <Button
-                fluid={1}
+                fluid
                 icon="eye-slash"
                 color="good"
-                content="Exit simulation"
                 onClick={() => {
                   act('stop_watching');
                   setSimulationView(false);
                 }}
-              />
+              >
+                Exit simulation
+              </Button>
             )}
           </Stack.Item>
           <Stack.Item grow>
             <Button
-              fluid={1}
+              fluid
               icon="repeat"
               color="good"
-              content="Switch dummy type"
               onClick={() => act('switchmode')}
-            />
+            >
+              Switch dummy type
+            </Button>
           </Stack.Item>
         </Stack>
         <Stack>
           <Stack.Item grow>
             <Button
               disabled={!data.configuration}
-              fluid={1}
+              fluid
               icon="sign-in-alt"
               color="good"
-              content="Switch firemission"
               onClick={() => act('switch_firemission')}
-            />
+            >
+              Switch firemission
+            </Button>
           </Stack.Item>
           <Stack.Item grow>
             <Button.Confirm
               disabled={!canDetonate}
-              fluid={1}
+              fluid
               icon="bomb"
               color="good"
-              content="Execute firemission?"
               confirmContent="Confirm?"
               onClick={() => act('execute_simulated_firemission')}
-            />
+            >
+              Execute firemission?
+            </Button.Confirm>
           </Stack.Item>
         </Stack>
         <Stack />

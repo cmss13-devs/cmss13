@@ -74,7 +74,7 @@
 
 	switch(action)
 		if("set_freq")
-			set_frequency(clamp(round(text2num(params["value"])), SIGNALLER_FREQ_MIN, SIGNALLER_FREQ_MAX))
+			set_frequency(clamp(floor(text2num(params["value"])), SIGNALLER_FREQ_MIN, SIGNALLER_FREQ_MAX))
 			. = TRUE
 
 		if("set_signal")

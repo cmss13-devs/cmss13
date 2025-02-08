@@ -46,7 +46,7 @@
 	var/atom/movable/screen/toggle_burst
 	var/atom/movable/screen/unique_action
 
-	var/atom/movable/screen/zone_sel
+	var/atom/movable/screen/zone_sel/zone_sel
 	var/atom/movable/screen/pull_icon
 	var/atom/movable/screen/throw_icon
 	var/atom/movable/screen/oxygen_icon
@@ -91,19 +91,19 @@
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
 		mymob.hud_used = null
-	if(static_inventory.len)
+	if(length(static_inventory))
 		for(var/thing in static_inventory)
 			qdel(thing)
 		static_inventory.Cut()
-	if(toggleable_inventory.len)
+	if(length(toggleable_inventory))
 		for(var/thing in toggleable_inventory)
 			qdel(thing)
 		toggleable_inventory.Cut()
-	if(hotkeybuttons.len)
+	if(length(hotkeybuttons))
 		for(var/thing in hotkeybuttons)
 			qdel(thing)
 		hotkeybuttons.Cut()
-	if(infodisplay.len)
+	if(length(infodisplay))
 		for(var/thing in infodisplay)
 			qdel(thing)
 		infodisplay.Cut()
@@ -188,24 +188,24 @@
 	switch(display_hud_version)
 		if(HUD_STYLE_STANDARD) //Default HUD
 			hud_shown = 1 //Governs behavior of other procs
-			if(static_inventory.len)
+			if(length(static_inventory))
 				screenmob.client.add_to_screen(static_inventory)
-			if(toggleable_inventory.len && inventory_shown)
+			if(length(toggleable_inventory) && inventory_shown)
 				screenmob.client.add_to_screen(toggleable_inventory)
-			if(hotkeybuttons.len && !hotkey_ui_hidden)
+			if(length(hotkeybuttons) && !hotkey_ui_hidden)
 				screenmob.client.add_to_screen(hotkeybuttons)
-			if(infodisplay.len)
+			if(length(infodisplay))
 				screenmob.client.add_to_screen(infodisplay)
 
 		if(HUD_STYLE_REDUCED) //Reduced HUD
 			hud_shown = 0 //Governs behavior of other procs
-			if(static_inventory.len)
+			if(length(static_inventory))
 				screenmob.client.remove_from_screen(static_inventory)
-			if(toggleable_inventory.len)
+			if(length(toggleable_inventory))
 				screenmob.client.remove_from_screen(toggleable_inventory)
-			if(hotkeybuttons.len)
+			if(length(hotkeybuttons))
 				screenmob.client.remove_from_screen(hotkeybuttons)
-			if(infodisplay.len)
+			if(length(infodisplay))
 				screenmob.client.add_to_screen(infodisplay)
 
 			//These ones are a part of 'static_inventory', 'toggleable_inventory' or 'hotkeybuttons' but we want them to stay
@@ -218,13 +218,13 @@
 
 		if(HUD_STYLE_NOHUD) //No HUD
 			hud_shown = 0 //Governs behavior of other procs
-			if(static_inventory.len)
+			if(length(static_inventory))
 				screenmob.client.remove_from_screen(static_inventory)
-			if(toggleable_inventory.len)
+			if(length(toggleable_inventory))
 				screenmob.client.remove_from_screen(toggleable_inventory)
-			if(hotkeybuttons.len)
+			if(length(hotkeybuttons))
 				screenmob.client.remove_from_screen(hotkeybuttons)
-			if(infodisplay.len)
+			if(length(infodisplay))
 				screenmob.client.remove_from_screen(infodisplay)
 
 	hud_version = display_hud_version

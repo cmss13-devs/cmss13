@@ -24,11 +24,11 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	name = "commanding officer's secure box"
 	req_access = list(ACCESS_MARINE_CO)
 	desc = "A safe for the Commanding Officer to store any equipment they need to have ready at a moment's notice. There's a note inside saying that whatever was inside it before was moved out."
-	icon = 'icons/obj/structures/marine_closet.dmi'
-	icon_state = "commander_safe"
-	icon_opened = "commander_safe_open"
-	icon_closed = "commander_safe"
-	icon_locked = "commander_safe"
+	icon = 'icons/obj/structures/safes.dmi'
+	icon_state = "safe"
+	icon_opened = "safe-open"
+	icon_closed = "safe"
+	icon_locked = "safe"
 
 /obj/structure/closet/secure_closet/securecom/Initialize()
 	. = ..()
@@ -170,7 +170,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/device/flash(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/storage/pouch/general/medium(src)
 	if(prob(50))
@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/backpack/satchel/sec(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/reagent_container/spray/pepper(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/storage/pouch/general/large(src)
 
 /obj/structure/closet/secure_closet/military_officer_spare

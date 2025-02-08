@@ -1,0 +1,258 @@
+2024-06-01:
+  Zonespace27:
+  - balance: Lifeboats now support surgery.
+2024-06-04:
+  AndroBetel:
+  - qol: Added radial menu to accessory removal
+  Huffie56:
+  - balance: for burrower in whiskey outpost add the ability to make tunnel but remove
+      the ability to burrow.
+  - balance: add C4 to the wo weapon vendor.
+  - balance: updating the clothing surplus vendor on to be as close as main mode as
+      possible.
+  realforest2001:
+  - admin: Added ckey log to ordering ASRS.
+2024-06-05:
+  Huffie56:
+  - maptweak: remove emergency shutter that aren't on the frontier between two areas.
+  - maptweak: added emergency shutter that are missing on the frontier between two
+      areas.
+  TheGamerdk:
+  - rscadd: All officers and NCO's can now recommend people for medals.
+  coldironwarrior:
+  - rscadd: Doctors will spawn in dark blue scrubs by default; Setting your preferred
+      job title to "Surgeon" for doctor roles will now spawn you in green scrubs
+  realforest2001:
+  - rscadd: Added a print button to the ASRS audit log.
+  - bugfix: Changing an Identification Computer to is_weyland (formerly is_centcom)
+      now works correctly and allows assignment of corporate accesses or presets.
+  - code_imp: Added two procs for interpreting WY access information in the UI.
+  - code_imp: Added separate role groups for PMC and Corporate job defines.
+  - rscadd: Added ACCESS_WY_DATABASE as a requirement to use the WY subtype console.
+  - rscadd: Added a WY subtype for crew monitor.
+  - code_imp: Renamed the faction defines explicitly relating to static defences due
+      to confusion over FACTION_WY and FACTION_WEYLAND.
+  - rscadd: Added Forsaken sub category to orbit menu. Also adds an "Other" sub category
+      for xeno hives, to split the main hive on its own.
+  - code_imp: Changed xenoSplitter to pull the hivenumber rather than base things
+      on the name.
+  - rscadd: Adds USCM Observer preset, a copy of CO with a different name.
+  - rscadd: Added cameras to Working Joe uniforms.
+  vero5123:
+  - bugfix: Fixes overwatch console coordinate comment UI crash
+  - bugfix: Fixes chat UI crash after entering a custom font
+2024-06-07:
+  Blundir:
+  - rscadd: contraband ammo selection in black market
+  - rscadd: tons of new ammo boxes
+  GrrrKitten:
+  - rscadd: replaces the old ethnicity system with a new skintone system
+  - imageadd: Resprites humans, adds 9 new mix and match body options to replace the
+      old 3 options
+  - rscadd: resprites dogtags and adds an accessory dogtag that can be made visible
+      via attaching to suit/armor
+  - imageadd: Touches up a lot of the underwear sprites
+2024-06-08:
+  Drathek:
+  - bugfix: Fixed larva and hugger emotes performing no stat or muted or cooldown
+      checks
+  - bugfix: Fixed round time having the wrong timezone offset because of an engine
+      change to time2text
+  - bugfix: Fixed linked airlocks destroying their linked airlock incorrectly
+  Drulikar:
+  - bugfix: Fixed some usages of the proc range such as for delimbing
+  TheGamerdk:
+  - bugfix: Your prayers have been received by the gods will now only be said once
+      per prayer
+  coldironwarrior:
+  - rscdel: removes the nazi jacket sprite from suits.dmi
+2024-06-09:
+  harryob:
+  - bugfix: predators are not missing the space between their torso and legs
+  hislittlecuzingames:
+  - balance: Set CT free plasteel to 40 and added APC Circuit board
+  realforest2001:
+  - bugfix: Fixed the USCM Observer icon not displaying. Forest dumb.
+2024-06-10:
+  Kivts, SubjectD9341, Zenith.:
+  - rscadd: Xenomorph Harvesting Surgery. Allows research to operate dead xenomorphs
+      to take out their organ.
+  - rscadd: The Xenomorph analyzer, uses organs extracted from dead xenomorphs, which
+      when processed gives points to spend on physical upgrades.
+  - rscadd: a number of machinery upgrades for autodoc, sleeper, and other upgrades
+      or bonuses research can decide to spend their points on
+  - rscdel: passive generation increase of research credits is removed
+  ThePiachu:
+  - spellcheck: Fixed a typo in Admin Game Panel
+2024-06-11:
+  Zonespace27:
+  - balance: All squad roles can now use M707 pamphlets
+  - bugfix: Skillless M707 spotting scopes now consistently work.
+  - bugfix: M707 magazine overlay no longer disappears when the gun is empty with
+      an inserted magazine
+  - bugfix: Fixed M707 being usable without the correct trait
+2024-06-13:
+  Drathek:
+  - bugfix: Fixed some jobs having no minimap icon in orbit menu
+  - bugfix: Fixed ghost huds resetting settings if you were ghostized while disconnected
+  - bugfix: Fixed larva queue time of death not getting recorded if client is missing
+  TheGamerdk:
+  - bugfix: Command can now access the helmet cameras of any deploying command staff
+  ThePiachu:
+  - bugfix: CLF Engineers now properly spawn with insulated gloves again.
+  Zonespace27:
+  - admin: Potentially laggy uses of the drop-bomb verb now have a confirmation warning.
+  cuberound:
+  - balance: dropship fabricator extra budget price 12 -> 6 , 2500 -> 2000 points
+  - balance: supply extra budget 15 -> 7, 10k -> 5k
+  - balance: all OB 10 -> 5 intel points, one shell and five fuel
+  fira:
+  - rscadd: Added a Tutorial for tending to the Requisitions Line
+2024-06-15:
+  AndroBetel:
+  - balance: Pistol mag pouch now has 4 slots instead of 3.
+  Blundir:
+  - imageadd: resprite of spearhead cmb revolver
+  Comxy:
+  - rscadd: Adds W-Y branded sentries.
+  - imageadd: Adds W-Y defenses sprites.
+  Drathek:
+  - bugfix: Fixed Queen Mother being unable to award a Queen
+  - rscadd: Added preference for toggling the fax machine received sound as an observer
+  TheGamerdk:
+  - bugfix: Fixes small issue allowing medals to teleport
+  Zonespace, Zydras:
+  - bugfix: Vehicle elevator no longer incorrectly rotates vehicles
+  - rscadd: New ARC exterior and interior
+  - balance: ARC now fits 5 humans instead of 7
+  - balance: ARC now fits 4 xenos intead of 5
+  - balance: ARC's RE700 turret armor pen 10->15
+  - balance: On account of the smaller size, the ARC no longer has a nanomed.
+  Zonespace27:
+  - bugfix: Pyro spec flamer should be linked to its tank more consistently.
+  - qol: Added some missing objectives to the xenomorph - basic tutorial.
+  harryob:
+  - bugfix: the preview window in character setup now remains visible when looking
+      at it as a ghost
+2024-06-16:
+  Drathek:
+  - bugfix: Fixed wallets as IDs breaking many things
+  - admin: Added niche logging for revival attempts
+2024-06-17:
+  GrrrKitten:
+  - bugfix: fixes a bug that fully jammed guns being used in akimbo
+  Steelpoint:
+  - mapadd: Civilian Clothing Storage Vendors have been added to the Gym on the USS
+      Almayer. These allow anyone to vend civilian clothes. These vendors require
+      CIC access to unlock however.
+  TheGamerdk:
+  - bugfix: The game no longer tricks predators and synths into thinking they're more
+      damaged than they actually are.
+  - rscadd: Special insert synthetics on most maps will now be able to gain access
+      to synthetic equipment vendors, provided they're given access by USCM command
+      staff. (Synth access on their ID)
+  coldironwarrior:
+  - bugfix: fixed corpsmen gloves and the map being mutually exclusive in the corpsman
+      vendor
+  - bugfix: incen OB fire now makes blue light.
+  iloveloopers:
+  - qol: Grow boxes can now be destroyed by xenos.
+  realforest2001:
+  - bugfix: Medical cryo tubes no longer delete their occupant when destroyed.
+  vero5123:
+  - bugfix: fixes vampire being able to execute hugged marines
+  - bugfix: fixes cas being able to target shipside signals
+2024-06-19:
+  Diegoflores31:
+  - bugfix: Fixes CO being unable to award medals.
+  Drathek:
+  - bugfix: Fixed various equipment_presets not getting cached or looked up correctly
+  Git-Nivrak:
+  - qol: Dir-assist will now prioritize non-xenos over xenos.
+  Red-byte3D:
+  - balance: Synthetic Protective Form now takes 150 charge instead of 50.
+  TheGamerdk:
+  - rscadd: Overwatch console shows dead marines by default.
+  VileBeggar:
+  - soundadd: The M44 combat revolver has had its firing sound changed.
+  wshuwshuwshi:
+  - bugfix: Adds a 1.5x modifier to the amount taken from larva timer based on chem
+      property level
+  - bugfix: swaps the 1.5 multiplier for a delta_time multiplier
+  - bugfix: improved the formatting of the code to have proper spacing
+2024-06-20:
+  Drathek cuberound:
+  - balance: After three minutes from round start, landing zones will be covered in
+      a deadly gas
+  - balance: First dropship deployment will clear gas, and first dropship arrival
+      will deploy 4 sentries that last 20 minutes
+  - refactor: Refactored smoke code
+  - maptweak: Expanded LZ areas on Trijent Dam and Kutjevo Refinery
+  - maptweak: Shrunk LZ1 on Shivas Snowball and LZ2 on LV624 slightly
+  - maptweak: Removed fog on Chances Claim since it will be replaced by smoke and
+      tweaked southern tunnel area to not be considered a LZ
+  - bugfix: Fixed weird LZ lighting on some maps
+  - spellcheck: Replaced/removed synth coughing emotes in smoke
+  Git-Nivrak:
+  - qol: Added an hud icon for vampires that lets them know when an enemy can be executed.
+  Nomoresolvalou:
+  - rscadd: Added masks to synth snowflake vendor
+  Red-byte3D:
+  - balance: Re-adds Vehicle Crewmen
+  - balance: Tank now unlocks at 200 pop.
+  - balance: Re-adds tank and its attachements back to the tank-bay.
+  - balance: You can no longer have the ARC & TANK in the same round. if the arc is
+      bought the tank is unavailable and vice versa.
+  Zonespace27:
+  - rscdel: Pyro flamers now start unlinked from their tanks again
+  iloveloopers:
+  - rscadd: Added new upgraded incinerator fuel tanks printable by the biomass analyzer.
+  vero5123:
+  - rscadd: Adds the ability for users to make bug reports in-game
+  - ui: New bug report system ui
+  zzzmike:
+  - qol: examining eggs/morphers tells you current number of huggers and the limit
+2024-06-21:
+  Drathek:
+  - bugfix: Fixed the core showing lesser drone counts to humans when examined
+  Git-Nivrak:
+  - balance: You can no longer extinguish yourself with your own acid spray.
+  - balance: Queen will now briefly shove xenos if they are in a tile she is trying
+      to move to, preventing bodyblock.
+  cuberound:
+  - balance: patting fire on ground harms the xeno, more intense fire means more harm
+  iloveloopers:
+  - balance: Fence health nerfed, now can be 2 tapped by xenos
+  - qol: Fuel cell recyclers no longer block movement
+  - qol: Showcases are now slashable by xenos
+  zzzmike:
+  - bugfix: more survivors now listed in survivor category on observe menu
+2024-06-22:
+  Red-byte3D:
+  - balance: Vampire tail jab now only stuns if you knockback an enemy into an obstacle.
+  - spellcheck: Vampire lurkers no longer "throw it back" after hitting somebody with
+      their Tail Jab
+2024-06-23:
+  Drathek:
+  - bugfix: Fixed LZ gas not penetrating destructible walls
+  ihatethisengine2:
+  - bugfix: simple animals don't block projectiles after death anymore
+  iloveloopers:
+  - balance: Custom research chemicals with an intensityfire above or equal to 50
+      will now burn white.
+2024-06-28:
+  Drathek:
+  - bugfix: Fixed a crash in the Hotkey menu when searching by key when filtered
+  - bugfix: Fixed/Added support for various keys (e.g. keypad and media keys)
+  Git-Nivrak:
+  - bugfix: Fixes being able to draw weapons when knocked down
+  HeresKozmos:
+  - maptweak: Filled in a hole in the map.
+  - maptweak: Fixed an area in the easter egg section of Sorokyne
+  coldironwarrior:
+  - spellcheck: fixed a few typos in the xeno bioscan announcement
+  kiVts:
+  - code_imp: Prevented potential unintended behavior with research upgrade items
+      on initialize
+  private-tristan:
+  - qol: Facehuggers no longer show as having any plasma

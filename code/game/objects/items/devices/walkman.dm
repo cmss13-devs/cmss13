@@ -5,8 +5,17 @@
 	desc = "A cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "walkman"
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/walkman.dmi',
+		)
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR
+	flags_obj = OBJ_IS_HELMET_GARB
+	black_market_value = 15
 	actions_types = list(/datum/action/item_action/walkman/play_pause,/datum/action/item_action/walkman/next_song,/datum/action/item_action/walkman/restart_song)
 	var/obj/item/device/cassette_tape/tape
 	var/paused = TRUE
@@ -17,13 +26,6 @@
 	var/pl_index = 1
 	var/volume = 25
 	var/design = 1 // What kind of walkman design style to use
-	item_icons = list(
-		WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_WAIST = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/ears.dmi'
-		)
-	black_market_value = 15
 
 /obj/item/device/walkman/Initialize()
 	. = ..()
@@ -95,17 +97,17 @@
 
 /obj/item/device/walkman/proc/play()
 	if(!current_song)
-		if(current_playlist.len > 0)
+		if(length(current_playlist) > 0)
 			current_song = sound(current_playlist[pl_index], 0, 0, SOUND_CHANNEL_WALKMAN, volume)
 			current_song.status = SOUND_STREAM
 		else
 			return
 	paused = FALSE
 	if(current_song.status & SOUND_PAUSED)
-		to_chat(current_listener,SPAN_INFO("Resuming [pl_index] of [current_playlist.len]"))
+		to_chat(current_listener,SPAN_INFO("Resuming [pl_index] of [length(current_playlist)]"))
 		update_song(current_song,current_listener)
 	else
-		to_chat(current_listener,SPAN_INFO("Now playing [pl_index] of [current_playlist.len]"))
+		to_chat(current_listener,SPAN_INFO("Now playing [pl_index] of [length(current_playlist)]"))
 		update_song(current_song,current_listener,0)
 
 	update_song(current_song,current_listener)
@@ -146,11 +148,11 @@
 
 /obj/item/device/walkman/proc/next_song(mob/user)
 
-	if(user.is_mob_incapacitated() || current_playlist.len == 0) return
+	if(user.is_mob_incapacitated() || length(current_playlist) == 0) return
 
 	break_sound()
 
-	if(pl_index + 1 <= current_playlist.len)
+	if(pl_index + 1 <= length(current_playlist))
 		pl_index++
 	else
 		pl_index = 1
@@ -175,7 +177,7 @@
 		var/mob/living/carbon/human/H = loc
 		H.regenerate_icons()
 
-/obj/item/device/walkman/get_mob_overlay(mob/user_mob, slot)
+/obj/item/device/walkman/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 	if((slot == WEAR_L_EAR || slot == WEAR_R_EAR) && !paused)
 		var/image/I = overlay_image(ret.icon, "+music", color, RESET_COLOR)
@@ -269,6 +271,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/play_pause/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.attack_self(owner)
@@ -282,6 +285,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/next_song/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.next_song(owner)
@@ -295,6 +299,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/restart_song/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.restart_song(owner)
@@ -307,7 +312,11 @@
 	desc = "A cassette tape"
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "cassette_flip"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/walkman.dmi',
+		)
 	w_class = SIZE_SMALL
+	flags_obj = OBJ_IS_HELMET_GARB
 	black_market_value = 15
 	var/side1_icon = "cassette"
 	var/flipped = FALSE //Tape side

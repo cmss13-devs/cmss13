@@ -6,6 +6,7 @@
 	anchored = TRUE
 	animate_movement = 1
 	can_buckle = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	// The mobs that are in each position/seat of the vehicle
 	var/list/mob/seats = list(
@@ -84,10 +85,10 @@
 	else if(W.force)
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * fire_dam_coeff
+				health -= W.force * W.demolition_mod * fire_dam_coeff
 			if("brute")
-				health -= W.force * brute_dam_coeff
-		playsound(src.loc, "smash.ogg", 25, 1)
+				health -= W.force * W.demolition_mod * brute_dam_coeff
+		playsound(loc, "smash.ogg", 25, 1)
 		user.visible_message(SPAN_DANGER("[user] hits [src] with [W]."),SPAN_DANGER("You hit [src] with [W]."))
 		healthcheck()
 	else
@@ -159,10 +160,11 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.forceMove(src)
 	M.set_interaction(src)
+	return TRUE
 
 /obj/vehicle/proc/turn_on()
 	if(stat)
@@ -246,7 +248,6 @@
 /obj/vehicle/proc/RunOver(mob/living/carbon/human/H)
 	return //write specifics for different vehicles
 
-
 /obj/vehicle/afterbuckle(mob/M)
 	. = ..()
 	if(. && buckled_mob == M)
@@ -257,8 +258,6 @@
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 
-/obj/vehicle/afterbuckle(mob/M)
-	. = ..()
 	if(seats[VEHICLE_DRIVER] == null)
 		seats[VEHICLE_DRIVER] = M
 

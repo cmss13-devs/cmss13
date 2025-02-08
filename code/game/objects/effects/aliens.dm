@@ -106,14 +106,16 @@
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
-			M.ExtinguishMob()
+
+			if(M != cause_data?.resolve_mob())
+				M.ExtinguishMob()
+
 			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
 				continue
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
-
 				apply_spray(M)
 				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
@@ -123,6 +125,10 @@
 			var/obj/vehicle/multitile/V = atm
 			V.handle_acidic_environment(src)
 			continue
+		if (istype(loc, /turf/open))
+			var/turf/open/scorch_turf_target = loc
+			if(scorch_turf_target.scorchable)
+				scorch_turf_target.scorch(damage_amount)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
@@ -144,15 +150,15 @@
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if(H.ally_of_hivenumber(hivenumber))
-			return
-		apply_spray(AM)
-	else if (isxeno(AM))
-		var/mob/living/carbon/xenomorph/X = AM
-		if (X.hivenumber != hivenumber)
-			apply_spray(AM)
+	if(AM == cause_data?.resolve_mob())
+		return
+
+	if(isliving(AM))
+		var/mob/living/living_mob = AM
+		if(living_mob.ally_of_hivenumber(hivenumber))
+			living_mob.ExtinguishMob()
+		else
+			apply_spray(living_mob)
 	else if(isVehicleMultitile(AM))
 		var/obj/vehicle/multitile/V = AM
 		V.handle_acidic_environment(src)
@@ -296,7 +302,7 @@
 	/// Factor of duration between acid progression
 	var/acid_delay = 1
 	/// How much fuel the acid drains from the flare every acid tick
-	var/flare_damage = 500
+	var/flare_damage = 600
 	var/barricade_damage = 40
 	var/in_weather = FALSE
 
@@ -305,7 +311,7 @@
 	name = "weak acid"
 	acid_delay = 2.5 //250% delay (40% speed)
 	barricade_damage = 20
-	flare_damage = 150
+	flare_damage = 180
 	icon_state = "acid_weak"
 
 //Superacid
@@ -313,7 +319,7 @@
 	name = "strong acid"
 	acid_delay = 0.4 //40% delay (250% speed)
 	barricade_damage = 100
-	flare_damage = 1875
+	flare_damage = 2250
 	icon_state = "acid_strong"
 
 /obj/effect/xenomorph/acid/Initialize(mapload, atom/target)
@@ -595,7 +601,7 @@
 
 		total_hits++
 
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
+	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
 
 	trap.reduce_cooldown(total_hits*4 SECONDS)
 

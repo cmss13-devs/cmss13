@@ -1,5 +1,7 @@
-import { useBackend, useLocalState } from '../backend';
-import { Button, Flex, Section, Box, Tabs, LabeledList } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
 type Clue = {
@@ -35,7 +37,7 @@ type TechProps = {
 
 export const TechMemories = () => {
   const { config, data } = useBackend<TechProps>();
-  const [clueCategory, setClueCategory] = useLocalState('clueCategory', 0);
+  const [clueCategory, setClueCategory] = useState(0);
   const { tech_points, theme, clue_categories } = data;
 
   return (
@@ -56,7 +58,8 @@ export const TechMemories = () => {
                   color="blue"
                   selected={i === clueCategory}
                   icon={clue_category.icon}
-                  onClick={() => setClueCategory(i)}>
+                  onClick={() => setClueCategory(i)}
+                >
                   {clue_category.name}
                   {!!clue_category.clues.length &&
                     ' (' + clue_category.clues.length + ')'}
@@ -85,7 +88,8 @@ const CluesAdvanced = (props: { readonly clues: Array<Clue> }) => {
               className="candystripe"
               justify="space-between"
               px="1rem"
-              py=".5rem">
+              py=".5rem"
+            >
               <Flex.Item>
                 {!!clue.color && (
                   <Box inline preserveWhitespace color={clue.color_name}>
@@ -123,11 +127,11 @@ const Objectives = (props) => {
     <Section
       title="Objectives"
       buttons={
-        <Button
-          content={'Total earned credits: ' + data.total_tech_points}
-          backgroundColor="transparent"
-        />
-      }>
+        <Button backgroundColor="transparent">
+          {'Total earned credits: ' + data.total_tech_points}
+        </Button>
+      }
+    >
       <LabeledList>
         {data.objectives.map((page) => {
           return (
@@ -136,7 +140,8 @@ const Objectives = (props) => {
                 <Box
                   color={page.content_color ? page.content_color : 'white'}
                   inline
-                  preserveWhitespace>
+                  preserveWhitespace
+                >
                   {page.content + ' '}
                 </Box>
               )}

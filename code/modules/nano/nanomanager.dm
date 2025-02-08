@@ -97,7 +97,7 @@
 * @return int The number of uis updated
 */
 /datum/nanomanager/proc/update_user_uis(mob/user, src_object = null, ui_key = null)
-	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
+	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || length(open_uis) == 0)
 		return 0 // has no open uis
 
 	var/update_count = 0
@@ -118,7 +118,7 @@
 * @return int The number of uis closed
 */
 /datum/nanomanager/proc/close_user_uis(mob/user, src_object = null, ui_key = null)
-	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
+	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || length(open_uis) == 0)
 		//testing("nanomanager/close_user_uis mob [user.name] has no open uis")
 		return 0 // has no open uis
 
@@ -128,7 +128,7 @@
 			ui.close()
 			close_count++
 
-	//testing("nanomanager/close_user_uis mob [user.name] closed [open_uis.len] of [close_count] uis")
+	//testing("nanomanager/close_user_uis mob [user.name] closed [length(open_uis_] of [close_count] uis")
 
 	return close_count
 
@@ -151,7 +151,7 @@
 	var/list/uis = open_uis[src_object_key][ui.ui_key]
 	uis.Add(ui)
 	processing_uis.Add(ui)
-	//testing("nanomanager/ui_opened mob [ui.user.name] [ui.src_object:name] [ui.ui_key] - user.open_uis [ui.user.open_uis.len]|uis [uis.len]|processing_uis [processing_uis.len]")
+	//testing("nanomanager/ui_opened mob [ui.user.name] [ui.src_object:name] [ui.ui_key] - user.open_uis [length(ui.user.open_uis)]|uis [length(uis)]|processing_uis [length(processing_uis)]")
 
 /**
 * Remove a /nanoui ui from the list of open uis
@@ -173,7 +173,7 @@
 	var/list/uis = open_uis[src_object_key][ui.ui_key]
 	uis.Remove(ui)
 
-	//testing("nanomanager/ui_closed mob [ui.user.name] [ui.src_object:name] [ui.ui_key] - user.open_uis [ui.user.open_uis.len]|uis [uis.len]|processing_uis [processing_uis.len]")
+	//testing("nanomanager/ui_closed mob [ui.user.name] [ui.src_object:name] [ui.ui_key] - user.open_uis [length(ui.user.open_uis)]|uis [length(uis)]|processing_uis [length(processing_uis)]")
 
 	return 1
 
@@ -204,7 +204,7 @@
 	//testing("nanomanager/user_transferred from mob [oldMob.name] to mob [newMob.name]")
 	if(QDELETED(oldMob) || QDELETED(newMob))
 		return FALSE //ERROR
-	if (isnull(oldMob.open_uis) || !istype(oldMob.open_uis, /list) || open_uis.len == 0)
+	if (isnull(oldMob.open_uis) || !istype(oldMob.open_uis, /list) || length(open_uis) == 0)
 		//testing("nanomanager/user_transferred mob [oldMob.name] has no open uis")
 		return 0 // has no open uis
 

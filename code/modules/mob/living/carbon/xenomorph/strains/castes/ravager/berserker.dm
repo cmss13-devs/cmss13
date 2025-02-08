@@ -1,7 +1,7 @@
 /datum/xeno_strain/berserker
 	name = RAVAGER_BERSERKER
-	description = "You lose your empower, charge, and scissor cut, decrease your health, and sacrifice a bit of your influence under frenzy pheromones to increase your movement speed, slightly increase your armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal yourself and gain a stack of rage that increases your armor, movement speed, attack speed, and your heals per slash, to a maximum of six rage. Use your new Appehend ability to increase your movement speed and apply a slow on the next target you slash and use your Clothesline ability to fling your target to heal yourself, even more-so if you have a rage stack that will be used up. Finally, use your Eviscerate to unleash a devastating windmill attack that heals you for every host you hit after an immobilizing wind-up."
-	flavor_description = "They shall be my finest warriors. They will rend and tear, crush and butcher, and maim and rage until every tallhost falls."
+	description = "You lose your empower, charge, and scissor cut, decrease your health, and sacrifice a bit of your influence under frenzy pheromones to increase your movement speed, slightly increase your armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal yourself and gain a stack of rage that increases your armor, movement speed, attack speed, and your heals per slash, to a maximum of six rage. Use your new Appehend ability to increase your movement speed and apply a slow on the next target you slash and use your Clothesline ability to fling your target to heal yourself, even more-so if you have a rage stack that will be used up. Finally, use your Eviscerate to unleash a devastating windmill attack that heals you for every enemy you hit after an immobilizing wind-up."
+	flavor_description = "Unbridled fury fills this one. You will become an extension of my rage."
 	icon_state_prefix = "Berserker"
 
 	actions_to_remove = list(
@@ -41,7 +41,7 @@
 
 	// Eviscerate config
 	var/rage_lock_duration = 10 SECONDS   // 10 seconds of max rage
-	var/rage_cooldown_duration = 8 SECONDS  // 8 seconds of NO rage.
+	var/rage_cooldown_duration = 10 SECONDS  // 10 seconds of NO rage.
 
 	// State for tracking rage
 	var/rage = 0
@@ -73,7 +73,8 @@
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max Rage!"))
 
 	// HP vamp
-	bound_xeno.gain_health((0.05*rage + hp_vamp_ratio)*((bound_xeno.melee_damage_upper - bound_xeno.melee_damage_lower)/2 + bound_xeno.melee_damage_lower))
+	if(!bound_xeno.on_fire)
+		bound_xeno.gain_health((0.05*rage + hp_vamp_ratio)*((bound_xeno.melee_damage_upper - bound_xeno.melee_damage_lower)/2 + bound_xeno.melee_damage_lower))
 
 /datum/behavior_delegate/ravager_berserker/append_to_stat()
 	. = list()

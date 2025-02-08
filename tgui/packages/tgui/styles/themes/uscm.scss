@@ -4,12 +4,12 @@
 @use '../colors.scss' with (
   $primary: #000000,
   $fg-map-keys: (),
-  $bg-map-keys: (),
+  $bg-map-keys: ()
 );
 @use '../base.scss' with (
   $color-bg: #0c0e1e,
   $color-bg-grad-spread: 0%,
-  $border-radius: 0,
+  $border-radius: 0
 );
 
 // USMC Theme
@@ -25,5 +25,10 @@
     background-image: url('../../assets/titlebar-uscm.png');
     background-position: right 40px top 50%;
     background-repeat: no-repeat;
+  }
+  .Vendor {
+    .VendingFlexAlt {
+      background-color: rgba(#0c0e1e, 1);
+    }
   }
 }

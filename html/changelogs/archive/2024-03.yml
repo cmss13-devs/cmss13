@@ -270,3 +270,68 @@
       option.
   ihatethisengine:
   - bugfix: Fixed delayed launch launching lifeboat even if locked by queen
+2024-03-25:
+  Birdtalon, Kat 'APC' Smith, Thwomp, Waseemq1235:
+  - rscadd: Desk bell for cargo, medbay, brig, and AI reception.
+  - soundadd: Desk bell sound effect.
+2024-03-26:
+  Huffie56:
+  - bugfix: move semiotic in north evac pod so you can't see it when your behind in
+      hull maintenance.
+  InsaneRed:
+  - balance: Wardens can heal eachother once again, but only half the health
+  - qol: Gives SPAN_XENOHIGHDANGER to heal/reju on positives, since its very easy
+      to miss if you actually healed soembody.
+  MobiusWon:
+  - rscadd: Uniforms vend with USCM patch.
+  SabreML:
+  - refactor: Refactored the bodypart selection keybinds.
+  - bugfix: Fixed a bug where selecting a new body zone would sometimes modify the
+      wrong HUD element.
+  vero5123:
+  - bugfix: fixes users not being able to resist out of the stasis bags
+  - bugfix: Fixes zombies missing claws on transformation
+2024-03-27:
+  Ben10083:
+  - rscadd: Working Joes can now respawn as a Working Joe after 15 minutes, previous
+      restriction on respawn removed.
+  - admin: New flag to disable Working Joe respawns
+  - rscadd: Hazard Joes now have their own emotes
+  - code_imp: Hazard Joes now a seperate species
+  - code_imp: Updated isworkingjoe and new ishazardjoe define
+  - refactor: Working Joe emotes and emote categories now a globally defined list
+  - soundadd: New Hazard Joe voicelines
+  Katskan:
+  - balance: Autocompressor gives 7 seconds of grace time every 7.5 seconds, instead
+      of 7 seconds every 10 seconds. Approximately 93% efficient, increased from 70%
+      efficient.
+  QuickLode:
+  - rscadd: adds a purple armband and uniform to Synth Vendor
+  - rscadd: adds a renamed uniform commonly used by colonists with a better name
+  Vicacrov:
+  - rscadd: Added holocards to health scans to improve communication between medical
+      players. You can now assign holocards via the health analyzer and the body scanner
+      as well. The health scan also tells you what the current holocard's colour means.
+  - rscadd: Added a new purple holocard to tag infected marines.
+  - rscdel: Clicking yourself no longer removes your own holocard.
+2024-03-29:
+  SpartanBobby:
+  - maptweak: Changes to hullwall placment on Kutjevo this PR should allow you to
+      break open much more of the colony buildings aswell as get into new areas to
+      flank and play around
+  blackdragonTOW:
+  - code_imp: Added a third level of zoom to the Toggle Zoom verb
+  vero5123:
+  - bugfix: Fixes teleporting when placing mobs onto chairs and beds.
+2024-03-30:
+  cuberound:
+  - qol: old cosmetic NVG can not be broken
+  iloveloopers:
+  - balance: You can now use the mortar while shipside during hijack, but only once.
+  - rscadd: Ghosts now get a warning when a custom mortar shell is about to land.
+2024-03-31:
+  SpartanBobby:
+  - maptweak: 'Changes to LV522: Less ledges overall'
+  - maptweak: 'Changes to LV522: More breakable entry to the reactor'
+  - maptweak: 'Changes to LV522: Removed dead end in reactor'
+  - maptweak: New weedable zone west of LZ2 T-comms tower

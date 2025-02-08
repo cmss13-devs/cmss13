@@ -45,7 +45,7 @@
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()
-		winset(src, "infowindow.changelog", "font-style=;")
+		stat_panel.send_message("changelog_read", TRUE)
 
 /client/verb/discord()
 	set name = "Discord"
@@ -62,14 +62,11 @@
 	set name = "Submit Bug"
 	set desc = "Submit a bug."
 	set hidden = TRUE
-
-	if(tgui_alert(src, "Please search for the bug first to make sure you aren't posting a duplicate.", "No dupe bugs please", list("OK", "Cancel")) != "OK")
+	if(!usr)
 		return
+	var/datum/tgui_bug_report_form/report = new(usr)
 
-	if(tgui_alert(src, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
-		return
-
-	src << link(CONFIG_GET(string/githuburl))
+	report.tgui_interact(usr)
 	return
 
 /client/verb/set_fps()

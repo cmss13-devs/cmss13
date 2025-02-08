@@ -150,7 +150,7 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPERTHERMIC = 1)
 
-/datum/reagent/condensedcapsaicin/reaction_mob(mob/living/M, method=TOUCH, volume)
+/datum/reagent/condensedcapsaicin/reaction_mob(mob/living/M, method=TOUCH, volume, permeable)
 	if(!istype(M, /mob/living) || has_species(M,"Horror"))
 		return
 

@@ -6,6 +6,7 @@
 	light_system = MOVABLE_LIGHT
 	light_range = 3
 	use_power = USE_POWER_NONE
+	needs_power = FALSE
 	var/obj/item/card/id/botcard // the ID card that the bot "holds"
 	var/on = 1
 	unslashable = TRUE
@@ -84,13 +85,13 @@
 		if(hasvar(W,"force") && hasvar(W,"damtype"))
 			switch(W.damtype)
 				if("fire")
-					src.health -= W.force * fire_dam_coeff
+					health -= W.force * W.demolition_mod * fire_dam_coeff
 				if("brute")
-					src.health -= W.force * brute_dam_coeff
-			..()
+					health -= W.force * W.demolition_mod * brute_dam_coeff
+			. = ..()
 			healthcheck()
 		else
-			..()
+			. = ..()
 
 /obj/structure/machinery/bot/bullet_act(obj/projectile/Proj)
 	health -= Proj.ammo.damage

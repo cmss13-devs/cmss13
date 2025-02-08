@@ -9,71 +9,67 @@
 		g = "f"
 	return g
 
-/proc/get_limb_icon_name(datum/species/S, body_type, gender, limb_name, ethnicity)
-	if(S.uses_ethnicity)
+/proc/get_limb_icon_name(datum/species/S, body_size, body_type, gender, limb_name, skin_color, body_presentation)
+	if(!body_presentation)
+		body_presentation = gender
+	if(S.flags & HAS_SKIN_COLOR)
+		if(S.special_body_types)
+			switch(limb_name)
+				if("torso")
+					return "[skin_color]_torso_[body_size]_[body_type]_[get_gender_name(body_presentation)]"
+				if("chest")
+					return "[skin_color]_torso_[body_size]_[body_type]_[get_gender_name(body_presentation)]"
+				if("head")
+					return "[skin_color]_[limb_name]"
+				if("groin")
+					return "[skin_color]_[limb_name]"
+
+		if(!S.special_body_types)
+			switch(limb_name)
+				if("torso")
+					return "[skin_color]_torso_[body_type]_[get_gender_name(body_presentation)]"
+				if("chest")
+					return "[skin_color]_torso_[body_type]_[get_gender_name(body_presentation)]"
+				if("head")
+					return "[skin_color]_[limb_name]_[get_gender_name(gender)]"
+				if("groin")
+					return "[skin_color]_[limb_name]_[body_type]_[get_gender_name(gender)]"
+
 		switch(limb_name)
-			if ("torso")
-				return "[ethnicity]_torso_[body_type]_[get_gender_name(gender)]"
-
-			if ("chest")
-				return "[ethnicity]_torso_[body_type]_[get_gender_name(gender)]"
-
-			if ("head")
-				return "[ethnicity]_[limb_name]_[get_gender_name(gender)]"
-
-			if ("groin")
-				return "[ethnicity]_[limb_name]_[get_gender_name(gender)]"
-
 			if("synthetic head")
 				return "head_[get_gender_name(gender)]"
-
-			if ("r_arm")
-				return "[ethnicity]_right_arm"
-
-			if ("right arm")
-				return "[ethnicity]_right_arm"
-
-			if ("l_arm")
-				return "[ethnicity]_left_arm"
-
-			if ("left arm")
-				return "[ethnicity]_left_arm"
-
-			if ("r_leg")
-				return "[ethnicity]_right_leg"
-
-			if ("right leg")
-				return "[ethnicity]_right_leg"
-
-			if ("l_leg")
-				return "[ethnicity]_left_leg"
-
-			if ("left leg")
-				return "[ethnicity]_left_leg"
-
-			if ("r_hand")
-				return "[ethnicity]_right_hand"
-
-			if ("right hand")
-				return "[ethnicity]_right_hand"
-
-			if ("l_hand")
-				return "[ethnicity]_left_hand"
-
-			if ("left hand")
-				return "[ethnicity]_left_hand"
-
-			if ("r_foot")
-				return "[ethnicity]_right_foot"
-
-			if ("right foot")
-				return "[ethnicity]_right_foot"
-
-			if ("l_foot")
-				return "[ethnicity]_left_foot"
-
-			if ("left foot")
-				return "[ethnicity]_left_foot"
+			if("r_arm")
+				return "[skin_color]_right_arm"
+			if("right arm")
+				return "[skin_color]_right_arm"
+			if("l_arm")
+				return "[skin_color]_left_arm"
+			if("left arm")
+				return "[skin_color]_left_arm"
+			if("r_leg")
+				return "[skin_color]_right_leg"
+			if("right leg")
+				return "[skin_color]_right_leg"
+			if("l_leg")
+				return "[skin_color]_left_leg"
+			if("left leg")
+				return "[skin_color]_left_leg"
+			if("r_hand")
+				return "[skin_color]_right_hand"
+			if("right hand")
+				return "[skin_color]_right_hand"
+			if("l_hand")
+				return "[skin_color]_left_hand"
+			if("left hand")
+				return "[skin_color]_left_hand"
+			if("r_foot")
+				return "[skin_color]_right_foot"
+			if("right foot")
+				return "[skin_color]_right_foot"
+			if("l_foot")
+				return "[skin_color]_left_foot"
+			if("left foot")
+				return "[skin_color]_left_foot"
 
 			else
 				message_admins("DEBUG: Something called get_limb_icon_name() incorrectly, they use the name [limb_name]")
@@ -81,10 +77,10 @@
 	else
 		switch(limb_name)
 			if ("torso")
-				return "[limb_name]_[get_gender_name(gender)]"
+				return "[limb_name]_[get_gender_name(body_presentation)]"
 
 			if ("chest")
-				return "[limb_name]_[get_gender_name(gender)]"
+				return "[limb_name]_[get_gender_name(body_presentation)]"
 
 			if ("head")
 				return "[limb_name]_[get_gender_name(gender)]"
@@ -147,28 +143,37 @@
 				return null
 
 /mob/living/carbon/human/proc/set_limb_icons()
-	var/datum/ethnicity/E = GLOB.ethnicities_list[ethnicity]
-	var/datum/body_type/B = GLOB.body_types_list[body_type]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[skin_color]
+	var/datum/body_size/set_body_size = GLOB.body_size_list[body_size]
+	var/datum/body_type/set_body_type = GLOB.body_type_list[body_type]
 
-	var/e_icon
-	var/b_icon
+	var/skin_color_icon
+	var/body_size_icon
+	var/body_type_icon
 
-	if (!E)
-		e_icon = "western"
+	if(!set_skin_color)
+		skin_color_icon = "pale2"
 	else
-		e_icon = E.icon_name
+		skin_color_icon = set_skin_color.icon_name
 
-	if (!B)
-		b_icon = "mesomorphic"
+	if(!set_body_size)
+		body_size_icon = "avg"
 	else
-		b_icon = B.icon_name
+		body_size_icon = set_body_size.icon_name
+
+
+	if(!set_body_type)
+		body_type_icon = "lean"
+	else
+		body_type_icon = set_body_type.icon_name
 
 	if(isspeciesyautja(src))
-		e_icon = src.ethnicity
-		b_icon = src.body_type
+		skin_color_icon = skin_color
+		body_size_icon = body_size
+		body_type_icon = body_type
 
-	for(var/obj/limb/L in limbs)
-		L.icon_name = get_limb_icon_name(species, b_icon, gender, L.display_name, e_icon)
+	for(var/obj/limb/L as anything in limbs)
+		L.icon_name = get_limb_icon_name(species, body_size_icon, body_type_icon, gender, L.display_name, skin_color_icon, body_presentation)
 
 /mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone)
 	if(species?.flags & IS_SYNTHETIC)
@@ -206,18 +211,18 @@
 	return FALSE
 
 
-/mob/living/carbon/human/is_mob_restrained(check_grab = 1)
+/mob/living/carbon/human/is_mob_restrained(check_grab = TRUE)
 	if(check_grab && pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE)
-		return 1
+		return TRUE
 	if (handcuffed)
-		return 1
+		return TRUE
 	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
-		return 1
+		return TRUE
 
 	if (HAS_TRAIT(src, TRAIT_NESTED))
 		return TRUE
 
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/disable_special_flags()
 	status_flags |= CANPUSH
@@ -268,6 +273,9 @@
 		if(istype(wear_suit, /obj/item/clothing/suit/storage/marine))
 			if(wear_suit.turn_light(src, toggle_on = FALSE))
 				light_off++
+		if(istype(back, /obj/item/storage/backpack/marine/smartpack))
+			if(back.turn_light(src, toggle_on = FALSE))
+				light_off++
 		for(var/obj/item/clothing/head/helmet/marine/H in contents)
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))
@@ -292,8 +300,8 @@
 			if(W.isOn())
 				W.toggle()
 				goes_out++
-		for(var/obj/item/tool/match/M in contents)
-			M.burn_out(src)
+		for(var/obj/item/tool/match/mob in contents)
+			mob.burn_out(src)
 		for(var/obj/item/tool/lighter/Z in contents)
 			if(Z.turn_off(src))
 				goes_out++
@@ -320,13 +328,13 @@
 				g_eyes = 255
 				b_eyes = 0
 			if(INTENT_DISARM) //Blue
-				r_eyes = 0
-				g_eyes = 0
-				b_eyes = 255
+				r_eyes = 90
+				g_eyes = 90
+				b_eyes = 253
 			if(INTENT_GRAB) //Orange, since yellow doesn't show at all!
-				r_eyes = 248
-				g_eyes = 243
-				b_eyes = 43
+				r_eyes = 239
+				g_eyes = 167
+				b_eyes = 0
 			if(INTENT_HARM) //RED!
 				r_eyes = 255
 				g_eyes = 0
@@ -366,7 +374,7 @@
 
 /mob/living/carbon/human/proc/has_foreign_object()
 	for(var/obj/limb/L in limbs)
-		if(L.implants && L.implants.len > 0)
+		if(LAZYLEN(L.implants) > 0)
 			return TRUE
 	for(var/obj/item/alien_embryo/A in contents)
 		return TRUE
@@ -411,13 +419,13 @@
 /mob/living/carbon/human/proc/has_item_in_ears(item)
 	return (item == wear_l_ear) || (item == wear_r_ear)
 
-/mob/living/carbon/human/can_be_pulled_by(mob/M)
+/mob/living/carbon/human/can_be_pulled_by(mob/mob)
 	var/ignores_stripdrag_flag = FALSE
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		ignores_stripdrag_flag = H.species.ignores_stripdrag_flag
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group))
-		to_chat(M, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
+	if(ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		ignores_stripdrag_flag = human.species.ignores_stripdrag_flag
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+		to_chat(mob, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE
 

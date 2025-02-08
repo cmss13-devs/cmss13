@@ -2,11 +2,14 @@
 	name = "\improper whistle"
 	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth"
 	icon_state = "whistle"
+	icon = 'icons/obj/items/tools.dmi'
 	w_class = SIZE_TINY
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_FACE
-	actions_types = list(/datum/action/item_action)
-
+	actions_types = list(/datum/action/item_action/toggle/use)
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'
+	)
 	var/volume = 60
 	var/spam_cooldown_time = 10 SECONDS
 	COOLDOWN_DECLARE(spam_cooldown)
@@ -50,7 +53,6 @@
 					if(usr.drop_inv_item_on_ground(src))
 						usr.put_in_l_hand(src)
 			add_fingerprint(usr)
-
 
 /obj/item/device/hailer
 	name = "hailer"

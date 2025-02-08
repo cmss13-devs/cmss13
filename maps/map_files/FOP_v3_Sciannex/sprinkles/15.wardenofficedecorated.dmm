@@ -93,9 +93,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/wood,
 /area/template_noop)
 "T" = (

@@ -20,6 +20,8 @@
 	var/chat_cd = 0
 	/// Stamina damage per tick. Major balance number.
 	var/stam_dam = 7
+	/// Stimulant drain per tick.
+	var/stim_drain = 2
 
 /datum/effects/neurotoxin/New(atom/thing, mob/from = null)
 	..(thing, from, effect_name)
@@ -37,10 +39,16 @@
 		return FALSE
 	if(affected_mob.stat == DEAD)
 		return
+
+	if(issynth(affected_atom))
+		return
+	
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
-	affected_mob.make_dizzy(12)
+	affected_mob.make_dizzy(8)
+	for(var/datum/reagent/generated/stim in affected_mob.reagents.reagent_list)
+		affected_mob.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 
 // Effect levels (shit that doesn't stack)
 	switch(duration)
@@ -83,12 +91,12 @@
 			addtimer(VARSET_CALLBACK(src,hallucinate,TRUE),rand(4 SECONDS,10 SECONDS))
 
 	if(duration > 19) // 4 ticks in smoke, neuro is affecting cereberal activity
-		affected_mob.eye_blind = max(affected_mob.eye_blind, round(strength/4))
+		affected_mob.eye_blind = max(affected_mob.eye_blind, floor(strength/4))
 
 	if(duration >= 27) // 5+ ticks in smoke, you are ODing now
 		affected_mob.apply_effect(1, DAZE) // Unable to talk and weldervision
 		affected_mob.apply_damage(2,TOX)
-		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, round(strength*1.5))) //Paralysis of hearing system, aka deafness
+		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, floor(strength*1.5))) //Paralysis of hearing system, aka deafness
 
 	if(duration >= 50) // 10+ ticks, apply some semi-perm damage and end their suffering if they are somehow still alive by now
 		affected_mob.apply_internal_damage(10,"liver")

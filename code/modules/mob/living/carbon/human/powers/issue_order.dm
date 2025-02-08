@@ -22,7 +22,7 @@
 		if(order == "help")
 			to_chat(src, SPAN_NOTICE("<br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
 			return
-		if(order == "cancel")
+		if(!order || order == "cancel")
 			return
 
 		if(!command_aura_available)

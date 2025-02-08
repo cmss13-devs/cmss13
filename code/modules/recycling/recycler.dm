@@ -23,10 +23,6 @@
 	. = ..()
 	update_icon()
 
-/obj/structure/machinery/recycler/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/recycler/update_icon()
 	. = ..()
 	icon_state = "separator-AO[(inoperable()) ? "0":"1"]"
@@ -90,7 +86,7 @@
 /obj/structure/machinery/recycler/proc/output_materials()
 	for(var/material in stored_matter)
 		if(stored_matter[material] >= sheets_per_batch * 3750)
-			var/sheets = round(stored_matter[material] / 3750)
+			var/sheets = floor(stored_matter[material] / 3750)
 			stored_matter[material] -= sheets * 3750
 			var/obj/item/stack/sheet/sheet_stack
 			switch(material)

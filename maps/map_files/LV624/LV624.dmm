@@ -795,11 +795,6 @@
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/plating/asteroidwarning/west,
 /area/lv624/lazarus/landing_zones/lz2)
-"adm" = (
-/obj/structure/foamed_metal,
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/shuttle/bright_red,
-/area/lv624/lazarus/crashed_ship_containers)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -815,9 +810,10 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "adq" = (
-/obj/item/explosive/grenade/high_explosive,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/north_east_jungle)
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/lv624/lazarus/yggdrasil)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -837,6 +833,10 @@
 	icon_state = "wall3"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adv" = (
+/obj/item/explosive/grenade/high_explosive,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
@@ -848,9 +848,28 @@
 "ady" = (
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
+"adz" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
+"adB" = (
+/obj/structure/foamed_metal,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship_containers)
 "adC" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
@@ -887,6 +906,12 @@
 /obj/item/tool/shovel,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
+"adG" = (
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
 "adH" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
@@ -3252,12 +3277,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/west_river)
-"atM" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/wood,
-/area/lv624/ground/caves/north_central_caves)
 "atO" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -6761,11 +6780,6 @@
 "aKp" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grass2,
-/area/lv624/lazarus/yggdrasil)
-"aKq" = (
-/obj/structure/flora/jungle/vines/light_1,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aKr" = (
@@ -10601,20 +10615,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
-"ciA" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "clO" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/grass_overlay/grass1{
@@ -38090,7 +38090,7 @@ avm
 avm
 avm
 abU
-atM
+adG
 avm
 avm
 avm
@@ -42150,7 +42150,7 @@ rGu
 mNz
 hSn
 aJz
-aKq
+adq
 aKI
 aLh
 aLg
@@ -46900,7 +46900,7 @@ lSs
 vjH
 vSG
 fuY
-adq
+adv
 tyG
 iwh
 jRm
@@ -48875,7 +48875,7 @@ acf
 acf
 acf
 ecy
-adm
+adB
 acU
 acT
 kRr
@@ -58013,7 +58013,7 @@ fTM
 fTM
 ahv
 rac
-ciA
+adz
 boe
 boe
 boe
@@ -58241,7 +58241,7 @@ whU
 fTM
 agX
 rac
-ciA
+adz
 boe
 boe
 agX

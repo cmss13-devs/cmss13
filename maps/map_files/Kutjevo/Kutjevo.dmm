@@ -60,10 +60,6 @@
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/north)
-"aar" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/complex_border/med_rec)
 "aas" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
@@ -141,6 +137,47 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
+"aaL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/colony_South/power2)
+"aaM" = (
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/colony_central/mine_elevator)
+"aaN" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany)
+"aaO" = (
+/obj/structure/surface/table/almayer,
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/east)
+"aaP" = (
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaQ" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaR" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaS" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -4912,12 +4949,6 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
-"hnI" = (
-/obj/structure/machinery/bioprinter{
-	stored_metal = 1000
-	},
-/turf/open/floor/kutjevo/colors/cyan,
-/area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
 /obj/item/ammo_magazine/rifle/mar40/extended,
 /turf/open/floor/kutjevo/colors/orange,
@@ -6570,16 +6601,6 @@
 "kfe" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/interior/power/comms)
-"kfF" = (
-/obj/structure/toilet{
-	dir = 4
-	},
-/obj/structure/mirror{
-	pixel_y = 28
-	},
-/obj/item/weapon/gun/shotgun/pump,
-/turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/interior/complex/botany)
 "kfG" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/river/desert/shallow,
@@ -7117,10 +7138,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
-"kPa" = (
-/obj/item/weapon/gun/shotgun/pump,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/colony_central/mine_elevator)
 "kPb" = (
 /obj/structure/platform_decoration/stone/kutjevo/east,
 /turf/open/auto_turf/sand/layer1,
@@ -10817,11 +10834,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
-"qtK" = (
-/obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/shotgun/pump,
-/turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/construction/east)
 "qtN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan,
@@ -11638,11 +11650,6 @@
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
-"rRC" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clipboard,
-/turf/open/floor/kutjevo/multi_tiles/east,
-/area/kutjevo/interior/colony_South/power2)
 "rSg" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/floor/kutjevo/colors/green,
@@ -31370,7 +31377,7 @@ dxF
 dxF
 dxF
 eXm
-kfF
+aaN
 eXm
 qgW
 kDS
@@ -31826,7 +31833,7 @@ dxF
 dxF
 mxB
 kkH
-hnI
+aaS
 kls
 fSm
 uEk
@@ -34681,9 +34688,9 @@ msK
 msK
 hpy
 aEl
-jar
-aar
-msK
+aaR
+aaQ
+aaP
 msK
 msK
 nAc
@@ -39393,7 +39400,7 @@ rfE
 rdm
 rdm
 rsM
-rRC
+aaL
 mLw
 mLw
 mLw
@@ -43052,7 +43059,7 @@ wSU
 eNl
 eNl
 lvb
-qtK
+aaO
 wSU
 oUP
 vMk
@@ -49744,7 +49751,7 @@ cyc
 ejP
 pGc
 pGc
-kPa
+aaM
 nxf
 pGc
 uPE

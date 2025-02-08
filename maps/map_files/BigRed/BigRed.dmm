@@ -1028,13 +1028,13 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
 "adY" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown{
-	layer = 3.1
+/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
 	},
-/obj/effect/landmark/corpsespawner/security/liaison,
-/turf/open/floor/wood,
-/area/bigredv2/outside/admin_building)
+/obj/item/weapon/gun/rifle/m41a/training,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1157,6 +1157,18 @@
 /obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
+"aet" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/closet/crate,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1271,6 +1283,22 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
+"aeR" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/smg/mp5{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -1323,6 +1351,13 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"afe" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/grenade/high_explosive/frag{
+	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1333,6 +1368,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"afh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -1370,6 +1412,31 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
+"afo" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/bigredv2/outside/eta)
+"afp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/bigredv2/outside/telecomm/lz2_cave)
+"afq" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown{
+	layer = 3.1
+	},
+/obj/effect/landmark/corpsespawner/security/liaison,
+/turf/open/floor/wood,
+/area/bigredv2/outside/admin_building)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1474,6 +1541,15 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
+"afK" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/door/window/eastleft,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/elevatorshaft/north,
+/area/bigredv2/caves/lambda/breakroom)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send"
@@ -1483,6 +1559,14 @@
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
+"afN" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1501,6 +1585,15 @@
 	name = "\improper Marshal Office Prison"
 	},
 /turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"afR" = (
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "afS" = (
 /turf/open/floor/dark,
@@ -1622,6 +1715,15 @@
 	},
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/space_port)
+"agp" = (
+/obj/structure/bed/chair/comfy,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_10_1"
+	},
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/wood,
+/area/bigredv2/outside/marshal_office)
 "agq" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/n)
@@ -1669,14 +1771,6 @@
 "agC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/redcorner/east,
-/area/bigredv2/outside/marshal_office)
-"agD" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/accessory/storage/black_vest,
-/obj/item/clothing/accessory/storage/black_vest,
-/obj/item/clothing/accessory/storage/black_vest,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agH" = (
 /obj/structure/pipes/vents/pump,
@@ -3983,15 +4077,6 @@
 "arD" = (
 /turf/open/mars,
 /area/bigredv2/outside/ne)
-"arE" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/door/window/eastleft,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/pump,
-/turf/open/floor/elevatorshaft/north,
-/area/bigredv2/caves/lambda/breakroom)
 "arF" = (
 /turf/open/floor/elevatorshaft/north,
 /area/bigredv2/caves/lambda/breakroom)
@@ -24922,22 +25007,6 @@
 	},
 /turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
-"jRi" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/ammo_magazine/smg/mp5{
-	pixel_x = 5;
-	pixel_y = -4
-	},
-/turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/caves/mining)
 "jRn" = (
 /obj/structure/machinery/computer3/server,
 /turf/open/floor/darkyellow2/east,
@@ -25413,18 +25482,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
-"kjY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/bigredv2/outside/telecomm/lz2_cave)
 "kkF" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/bed,
@@ -28666,11 +28723,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/nw)
-"nJu" = (
-/obj/structure/flora/grass/desert/lightgrass_7,
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/mars,
-/area/bigredv2/outside/eta)
 "nKL" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "An exchange valve";
@@ -30157,15 +30209,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
-"pjD" = (
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5{
-	pixel_x = 5;
-	pixel_y = -4
-	},
-/turf/open/floor/wood,
-/area/bigredv2/outside/marshal_office)
 "pkd" = (
 /obj/item/stack/sheet/wood{
 	layer = 2.7;
@@ -32977,13 +33020,6 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/whitegreen/southeast,
 /area/bigredv2/outside/medical)
-"rXy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/structure/surface/table,
-/obj/item/ammo_magazine/handful/shotgun/buckshot,
-/turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/caves/mining)
 "rXJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/syndi_cakes{
@@ -34718,15 +34754,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/c)
-"tFH" = (
-/obj/structure/bed/chair/comfy,
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_10_1"
-	},
-/obj/item/ammo_magazine/smg/mp5,
-/turf/open/floor/wood,
-/area/bigredv2/outside/marshal_office)
 "tFL" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/CMB/beret,
@@ -36074,14 +36101,6 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
-"vcA" = (
-/obj/effect/landmark/corpsespawner/miner,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6"
-	},
-/obj/item/weapon/gun/rifle/m41a/training,
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves/mining)
 "vdh" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -7;
@@ -36613,13 +36632,6 @@
 "vBI" = (
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/n)
-"vCd" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/grenade/high_explosive/frag{
-	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
-	},
-/turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/caves/mining)
 "vCf" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -39205,18 +39217,6 @@
 	pixel_y = 6
 	},
 /turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves/mining)
-"yln" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/closet/crate,
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "ylx" = (
 /obj/item/clothing/suit/storage/CMB{
@@ -43331,7 +43331,7 @@ aao
 aao
 uHQ
 rMg
-jRi
+aeR
 uHQ
 rYD
 rtS
@@ -44197,7 +44197,7 @@ kMJ
 uHQ
 bTm
 kgn
-rXy
+afh
 nEV
 hUh
 nCT
@@ -44857,7 +44857,7 @@ kCe
 xWz
 pSa
 lSH
-yln
+aet
 uHQ
 aao
 rxh
@@ -45935,7 +45935,7 @@ wVQ
 oKy
 lSH
 xhU
-vCd
+afe
 hCT
 pSa
 tBK
@@ -53330,7 +53330,7 @@ rxh
 rxh
 rxh
 rxh
-vcA
+adY
 rxh
 aao
 aao
@@ -57502,7 +57502,7 @@ asc
 acp
 xyu
 jYd
-agD
+afN
 mXm
 acp
 pTl
@@ -57575,7 +57575,7 @@ aBR
 eTj
 bhi
 dbi
-kjY
+afp
 dZL
 olK
 abb
@@ -60319,7 +60319,7 @@ acP
 asc
 acq
 acv
-pjD
+afR
 aeP
 afs
 adW
@@ -60536,7 +60536,7 @@ acP
 asc
 adG
 adW
-tFH
+agp
 akA
 adW
 adW
@@ -60650,7 +60650,7 @@ tYm
 bjA
 bjA
 azO
-nJu
+afo
 meT
 vrt
 ydn
@@ -61460,7 +61460,7 @@ aNQ
 aOO
 aUg
 aof
-adY
+afq
 aOO
 aXn
 aof
@@ -75312,7 +75312,7 @@ aev
 apq
 adZ
 aqX
-arE
+afK
 asn
 gvI
 amk

@@ -137,18 +137,43 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
+"aaC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaD" = (
 /obj/effect/spider/cocoon{
 	icon_state = "cocoon_large1"
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
+"aaE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
+"aaF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaG" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 8
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
+"aaH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
+"aaI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaJ" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/flamer_tank{
@@ -163,6 +188,20 @@
 /obj/item/tool/pickaxe/drill,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"aaL" = (
+/obj/structure/surface/table,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/interior/plastic,
+/area/shiva/interior/warehouse)
+"aaM" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/storage/belt/marine,
+/obj/item/clothing/suit/armor/riot/marine,
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
 "aaN" = (
 /obj/item/weapon/gun/flamer,
 /obj/structure/surface/rack,
@@ -173,11 +212,36 @@
 /obj/item/explosive/plastic,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"aaP" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
 "aaS" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/spider/cocoon,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
+"aaT" = (
+/obj/structure/surface/table/reinforced/prison{
+	dir = 4;
+	flipped = 1
+	},
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"aaU" = (
+/obj/structure/surface/table,
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
 "aaV" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/spider/cocoon{
@@ -185,6 +249,14 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
+"aaW" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
 "aaX" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -12
@@ -229,11 +301,58 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
+"abf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/shiva/purplefull/east,
+/area/shiva/interior/colony/research_hab)
+"abg" = (
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	icon_state = "psiphon:1"
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/valley)
 "abh" = (
 /turf/closed/shuttle/elevator{
 	dir = 9
 	},
 /area/shiva/interior/colony/central)
+"abi" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/storage/belt/marine,
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"abj" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/item/storage/belt/marine,
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/s_admin)
+"abk" = (
+/obj/structure/surface/table/woodentable{
+	dir = 1;
+	flipped = 1
+	},
+/obj/item/tool/stamp,
+/obj/item/weapon/gun/rifle/lmg{
+	starting_attachment_types = null
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"abl" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/plating,
+/area/shiva/interior/valley_huts/disposals)
 "abm" = (
 /obj/structure/target/alien{
 	desc = "Cope, seethe. Ledges are eternal. But alas, you are not."
@@ -245,9 +364,24 @@
 	dir = 9
 	},
 /area/shiva/interior/colony/research_hab)
+"abo" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/machinery/light/double,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/medseceng)
 "abp" = (
 /turf/closed/shuttle/elevator/gears,
 /area/shiva/interior/colony/research_hab)
+"abq" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/medseceng)
 "abt" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device{
 	pixel_y = 16
@@ -815,12 +949,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
-"aeN" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/storage/belt/marine,
-/obj/item/weapon/gun/rifle/m41a,
-/turf/open/floor/shiva/redfull/west,
-/area/shiva/interior/colony/s_admin)
 "aeP" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/shiva/yellow/northeast,
@@ -1925,13 +2053,6 @@
 	},
 /turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
-"amI" = (
-/obj/structure/surface/table,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/effect/landmark/objective_landmark/close,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/interior/plastic,
-/area/shiva/interior/warehouse)
 "amJ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -2742,13 +2863,6 @@
 /area/shiva/interior/valley_huts/disposals)
 "asR" = (
 /obj/item/trash/semki,
-/turf/open/floor/plating,
-/area/shiva/interior/valley_huts/disposals)
-"asT" = (
-/obj/effect/decal/cleanable/blood{
-	layer = 3
-	},
-/obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/disposals)
 "asU" = (
@@ -4169,13 +4283,6 @@
 "aKk" = (
 /obj/structure/prop/invuln/ice_prefab/standalone/trim{
 	icon_state = "pink_trim"
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/valley)
-"aKn" = (
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	icon_state = "psiphon:1";
-	needs_power = 0
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/valley)
@@ -6187,13 +6294,6 @@
 	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
-"bVr" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/item/weapon/gun/rifle/m41a,
-/turf/open/floor/shiva/purplefull/east,
-/area/shiva/interior/colony/research_hab)
 "bVz" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/wood,
@@ -6906,13 +7006,6 @@
 /obj/item/tool/pen/blue,
 /turf/open/floor/shiva/wred/west,
 /area/shiva/interior/colony/medseceng)
-"cSn" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/storage/belt/marine,
-/obj/item/clothing/suit/armor/riot/marine,
-/obj/item/weapon/gun/rifle/m41a,
-/turf/open/floor/shiva/redfull/west,
-/area/shiva/interior/colony/research_hab)
 "cTe" = (
 /obj/item/lightstick/red/variant,
 /turf/open/auto_turf/snow/layer1,
@@ -8268,16 +8361,6 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
-"eOG" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/structure/machinery/light/double{
-	dir = 8;
-	pixel_y = -5
-	},
-/obj/item/storage/belt/marine,
-/obj/item/weapon/gun/rifle/m41a,
-/turf/open/floor/shiva/redfull/west,
-/area/shiva/interior/colony/s_admin)
 "eOK" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/redpyjamas,
@@ -8930,17 +9013,6 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
-"fGw" = (
-/obj/structure/surface/table/woodentable{
-	dir = 1;
-	flipped = 1
-	},
-/obj/item/tool/stamp,
-/obj/item/weapon/gun/rifle/lmg{
-	starting_attachment_types = null
-	},
-/turf/open/floor/wood,
-/area/shiva/interior/colony/s_admin)
 "fGG" = (
 /obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer3,
@@ -10801,18 +10873,6 @@
 /obj/item/lightstick/red/spoke/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
-"hTb" = (
-/obj/structure/surface/table,
-/obj/item/stock_parts/matter_bin/adv{
-	pixel_x = -5;
-	pixel_y = 9
-	},
-/obj/item/stock_parts/matter_bin/adv{
-	pixel_x = 6;
-	pixel_y = 13
-	},
-/turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/research_hab)
 "hTd" = (
 /obj/structure/platform/metal/shiva/west,
 /turf/open/auto_turf/snow/layer2,
@@ -11150,14 +11210,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
-"ipY" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/structure/machinery/light/double,
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
 "iqh" = (
 /obj/item/device/flashlight,
 /turf/open/floor/wood,
@@ -11853,11 +11905,6 @@
 /obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
-"jcv" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/shiva/redfull/west,
-/area/shiva/interior/colony/research_hab)
 "jcR" = (
 /obj/structure/platform/stone/strata/east,
 /turf/open/gm/river/no_overlay,
@@ -12331,13 +12378,6 @@
 /obj/item/device/t_scanner,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
-"jOA" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
 "jOP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
@@ -12835,11 +12875,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/green/southeast,
 /area/shiva/interior/colony/botany)
-"krU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/barrel/white,
-/turf/open/asphalt/cement,
-/area/shiva/interior/warehouse)
 "krZ" = (
 /obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer2,
@@ -12981,12 +13016,6 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/exterior/valley)
-"kys" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/barrel/green,
-/turf/open/asphalt/cement,
-/area/shiva/interior/warehouse)
 "kyt" = (
 /obj/item/tool/shovel/snow,
 /turf/open/auto_turf/snow/layer1,
@@ -14614,11 +14643,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/bar)
-"mpt" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement,
-/area/shiva/interior/warehouse)
 "mpE" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -19132,14 +19156,6 @@
 	},
 /turf/open/floor/shiva/yellow/southeast,
 /area/shiva/interior/aux_power)
-"rZq" = (
-/obj/structure/surface/table/reinforced/prison{
-	dir = 4;
-	flipped = 1
-	},
-/obj/item/weapon/gun/rifle/m41a,
-/turf/open/floor/shiva,
-/area/shiva/interior/colony/research_hab)
 "rZt" = (
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -23058,14 +23074,6 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/shiva/red/southwest,
 /area/shiva/interior/colony/medseceng)
-"wOO" = (
-/obj/structure/closet/secure_closet/medical3{
-	req_access = null
-	},
-/obj/item/explosive/grenade/custom/cleaner,
-/obj/item/explosive/grenade/custom/cleaner,
-/turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/colony/research_hab)
 "wPs" = (
 /obj/item/lightstick/red/variant/planted,
 /turf/open/auto_turf/snow/layer1,
@@ -30828,7 +30836,7 @@ aJt
 dCB
 dKD
 huz
-kys
+aaC
 pef
 rdS
 axJ
@@ -30990,7 +30998,7 @@ aJt
 aJt
 aJt
 huz
-krU
+aaE
 axJ
 axJ
 trX
@@ -31152,7 +31160,7 @@ hbY
 hbY
 hbY
 huz
-axJ
+cio
 axJ
 rBC
 rdS
@@ -31962,7 +31970,7 @@ hbY
 hbY
 hbY
 huz
-aut
+aaF
 rdS
 aCy
 tdc
@@ -32124,7 +32132,7 @@ hbY
 gdI
 aJt
 huz
-rdS
+aaH
 axJ
 amH
 tbR
@@ -32286,7 +32294,7 @@ huz
 huz
 huz
 huz
-mpt
+aaI
 axJ
 rxd
 sFv
@@ -35036,7 +35044,7 @@ hbY
 huz
 huz
 kLi
-amI
+aaL
 aCy
 rdS
 axJ
@@ -39688,8 +39696,8 @@ nOd
 nOd
 aSc
 dZb
-eOG
-aeN
+abj
+abi
 nOd
 kop
 kop
@@ -42604,7 +42612,7 @@ rGg
 oAo
 inJ
 fKy
-fGw
+abk
 xqe
 aOW
 daD
@@ -50242,7 +50250,7 @@ asz
 aUU
 aXh
 aXh
-bVr
+abf
 aXh
 aXh
 bJf
@@ -50803,7 +50811,7 @@ fIz
 acT
 age
 agh
-ipY
+abo
 acT
 pCJ
 agh
@@ -50965,7 +50973,7 @@ pxi
 acT
 afv
 agh
-jOA
+abq
 acT
 sxp
 hCX
@@ -51063,7 +51071,7 @@ dTU
 hfm
 asz
 rZt
-rZq
+aaT
 asz
 asz
 pIV
@@ -52675,7 +52683,7 @@ wXh
 lSU
 cvn
 lSU
-wOO
+aaW
 goj
 chU
 hFk
@@ -52837,7 +52845,7 @@ lSU
 lSU
 fgH
 lSU
-wOO
+aaW
 goj
 chU
 dsY
@@ -52999,7 +53007,7 @@ lSU
 lSU
 dwQ
 lSU
-wOO
+aaW
 goj
 wnK
 goj
@@ -53161,7 +53169,7 @@ rRP
 lSU
 cvn
 lSU
-wOO
+aaW
 goj
 rWS
 fVI
@@ -53813,7 +53821,7 @@ lSU
 goj
 chU
 dsY
-hTb
+aaU
 pRH
 lpA
 goj
@@ -56189,7 +56197,7 @@ mIL
 mIL
 mIL
 jAN
-asT
+abl
 atF
 auV
 gxN
@@ -56414,7 +56422,7 @@ pxA
 vKu
 pCj
 wnK
-cSn
+aaM
 pxA
 pxA
 sIX
@@ -56577,7 +56585,7 @@ vKu
 soj
 wnK
 wnK
-cSn
+aaM
 pxA
 pxA
 pxA
@@ -56737,9 +56745,9 @@ uWA
 pxA
 tNP
 lFp
-jcv
+aaP
 fqJ
-cSn
+aaM
 pxA
 pxA
 pxA
@@ -57680,7 +57688,7 @@ abK
 kng
 puZ
 puZ
-aKn
+abg
 jAL
 jAL
 jAL

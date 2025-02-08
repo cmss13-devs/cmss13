@@ -777,7 +777,7 @@
 	if (!isxeno(target))
 		return
 
-	if (buffing_target.hivenumber != raging_valkyrie.hivenumber)
+	if (!buffing_target.ally_of_hivenumber(raging_valkyrie.hivenumber))
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("Why would we help our enemies?!"))
 		return
 
@@ -981,7 +981,7 @@
 	var/range = behavior.base_fury < 75 ? low_rage_range : high_rage_range
 	playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
 	for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(range, valkyrie_flight))
-		if(allied_xenomorphs.hivenumber != valkyrie_flight.hivenumber)
+		if(!allied_xenomorphs.ally_of_hivenumber(valkyrie_flight.hivenumber))
 			continue
 		to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))
 		valkyrie_flight.create_shriekwave(3)

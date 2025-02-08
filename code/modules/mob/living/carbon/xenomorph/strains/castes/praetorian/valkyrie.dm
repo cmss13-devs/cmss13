@@ -81,7 +81,7 @@
 			continue
 		if(xeno_in_range.stat == DEAD)
 			continue
-		if(xeno_in_range.hivenumber != bound_xeno.hivenumber)
+		if(!xeno_in_range.ally_of_hivenumber(bound_xeno.hivenumber))
 			continue
 		xeno_in_range.flick_heal_overlay(2 SECONDS, "#00B800")
 		if(raging == TRUE)

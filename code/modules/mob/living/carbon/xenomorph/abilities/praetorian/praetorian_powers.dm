@@ -741,9 +741,6 @@
 
 	if (!action_cooldown_check())
 		return
-	if (!check_and_use_plasma_owner())
-		return
-
 	var/turf/current_turf = get_turf(acidball_user)
 
 	if (!current_turf)
@@ -753,6 +750,8 @@
 		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
 		return
 
+	if (!check_and_use_plasma_owner())
+		return
 
 	apply_cooldown()
 
@@ -766,190 +765,315 @@
 
 	return ..()
 
-/datum/action/xeno_action/activable/warden_heal/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/wardenbuff_user = owner
-	if (!istype(wardenbuff_user))
+/datum/action/xeno_action/activable/valkyrie_rage/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/raging_valkyrie = owner
+	var/mob/living/carbon/xenomorph/buffing_target = target
+	var/datum/behavior_delegate/praetorian_valkyrie/behavior = raging_valkyrie.behavior_delegate
+
+
+	if (!raging_valkyrie.check_state() || raging_valkyrie.action_busy)
+		return
+
+	if (!isxeno(target))
+		return
+
+	if (buffing_target.is_dead())
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("No amount of anger can bring our sister back."))
+		return
+
+	if (istype(buffing_target.strain, /datum/xeno_strain/valkyrie))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("We can't order another valkyrie with our rage."))
+		return
+
+	if(HAS_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target] is already enraged!"))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(wardenbuff_user.loc) || !wardenbuff_user.check_state(TRUE))
+
+
+	if (!behavior.use_internal_fury_ability(rage_cost) || !check_and_use_plasma_owner())
 		return
 
-	if (!isxeno(A) || !wardenbuff_user.can_not_harm(A))
-		to_chat(wardenbuff_user, SPAN_XENODANGER("We must target one of our sisters!"))
+	if (behavior.raging == TRUE)
+		return
+	focus_rage = WEAKREF(buffing_target)
+	armor_buffs_active = TRUE
+	armor_buffs_active_target = TRUE
+	behavior.raging = TRUE
+
+	playsound(get_turf(raging_valkyrie), "alien_roar", 40)
+	to_chat(raging_valkyrie, SPAN_XENODANGER("Our rage drives us forward, our healing and armor is increased."))
+	raging_valkyrie.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
+	raging_valkyrie.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
+	raging_valkyrie.balloon_alert(raging_valkyrie, "we feel an overwhelming rage", text_color = "#93ec78")
+	raging_valkyrie.armor_modifier += armor_buff
+	ADD_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+	raging_valkyrie.recalculate_armor()
+
+	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
+		playsound(get_turf(buffing_target), "alien_roar", 40)
+		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
+		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
+		buffing_target.speed_modifier -= speed_buff_amount
+		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		buffing_target.recalculate_speed()
+		addtimer(CALLBACK(src, PROC_REF(remove_target_speed)), speed_buff_dur)
+	else
+		playsound(get_turf(buffing_target), "alien_roar", 40)
+		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
+		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
+		buffing_target.armor_modifier += target_armor_buff
+		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		buffing_target.recalculate_armor()
+		addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
+
+	addtimer(CALLBACK(src, PROC_REF(remove_rage)), armor_buffs_duration)
+
+	apply_cooldown()
+	return ..()
+
+
+/datum/action/xeno_action/activable/valkyrie_rage/proc/remove_rage()
+	var/mob/living/carbon/xenomorph/raging_valkyrie = owner
+	var/datum/behavior_delegate/praetorian_valkyrie/behavior = raging_valkyrie.behavior_delegate
+	raging_valkyrie.remove_filter("raging")
+	raging_valkyrie.armor_modifier -= armor_buff
+	armor_buffs_active = FALSE
+	behavior.raging = FALSE
+	REMOVE_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+	raging_valkyrie.recalculate_armor()
+	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+
+
+
+/datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_speed()
+	var/mob/living/carbon/xenomorph/target_xeno = focus_rage.resolve()
+	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
+		target_xeno.speed_modifier += speed_buff_amount
+		target_xeno.remove_filter("raging")
+		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		target_xeno.recalculate_speed()
+		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+	armor_buffs_speed_target = FALSE
+
+/datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_rage()
+	var/mob/living/carbon/xenomorph/target_xeno = focus_rage.resolve()
+	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
+		target_xeno.armor_modifier -= target_armor_buff
+		target_xeno.remove_filter("raging")
+		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		target_xeno.recalculate_armor()
+		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+	armor_buffs_active_target = FALSE
+
+
+
+
+/datum/action/xeno_action/activable/high_gallop/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/valkyrie = owner
+
+	if (!istype(valkyrie) || !valkyrie.check_state() || !action_cooldown_check())
 		return
 
-	if (A == wardenbuff_user)
-		to_chat(wardenbuff_user, SPAN_XENODANGER("We cannot heal ourself!"))
-		return
-
-	if (A.z != wardenbuff_user.z)
-		to_chat(wardenbuff_user, SPAN_XENODANGER("That Sister is too far away!"))
-		return
-
-	var/mob/living/carbon/xenomorph/targetXeno = A
-
-	if(targetXeno.stat == DEAD)
-		to_chat(wardenbuff_user, SPAN_WARNING("[targetXeno] is already dead!"))
+	if(!A || A.layer >= FLY_LAYER || !isturf(valkyrie.loc))
 		return
 
 	if (!check_plasma_owner())
 		return
 
-	var/use_plasma = FALSE
+	// Transient turf list
+	var/list/target_turfs = list()
+	var/list/temp_turfs = list()
+	var/list/telegraph_atom_list = list()
 
-	if (curr_effect_type == WARDEN_HEAL_SHIELD)
-		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
-			to_chat(wardenbuff_user, SPAN_XENOWARNING("We cannot bolster the defenses of this xeno!"))
-			return
+	// Code to get a 2x3 area of turfs
+	var/turf/root = get_turf(valkyrie)
+	var/facing = Get_Compass_Dir(valkyrie, A)
+	var/turf/infront = get_step(root, facing)
+	var/turf/left = get_step(root, turn(facing, 90))
+	var/turf/right = get_step(root, turn(facing, -90))
+	var/turf/infront_left = get_step(root, turn(facing, 45))
+	var/turf/infront_right = get_step(root, turn(facing, -45))
+	temp_turfs += infront
+	if(!(!infront || infront.density) && !(!left || left.density))
+		temp_turfs += infront_left
+	if(!(!infront || infront.density) && !(!right || right.density))
+		temp_turfs += infront_right
 
-		var/bonus_shield = 0
+	for(var/turf/range_turf in temp_turfs)
+		if (!istype(range_turf))
+			continue
 
-		var/datum/behavior_delegate/praetorian_warden/behavior = wardenbuff_user.behavior_delegate
-		if (!istype(behavior))
-			return
+		if (range_turf.density)
+			continue
 
-		if (!behavior.use_internal_hp_ability(shield_cost))
-			return
+		target_turfs += range_turf
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(range_turf, 0.25 SECONDS)
 
-		bonus_shield = behavior.internal_hitpoints*0.5
-		if (!behavior.use_internal_hp_ability(bonus_shield))
-			bonus_shield = 0
+		var/turf/next_turf = get_step(range_turf, facing)
+		if (!istype(next_turf) || next_turf.density)
+			continue
 
-		var/total_shield_amount = shield_amount + bonus_shield
+		target_turfs += next_turf
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(next_turf, 0.25 SECONDS)
 
-		if (wardenbuff_user.observed_xeno != null)
-			to_chat(wardenbuff_user, SPAN_XENOHIGHDANGER("We cannot shield [targetXeno] as effectively over distance!"))
-			total_shield_amount = total_shield_amount/4
-			targetXeno.visible_message(SPAN_BOLDNOTICE("[targetXeno]'s exoskeleton shimmers for a fraction of a second."))//marines probably should know if a xeno gets healed
-		else //so both visible messages don't appear at the same time
-			targetXeno.visible_message(SPAN_BOLDNOTICE("[wardenbuff_user] points at [targetXeno], and it shudders as its exoskeleton shimmers for a second!")) //this one is a bit less important than healing and rejuvenating
-		to_chat(wardenbuff_user, SPAN_XENODANGER("We bolster the defenses of [targetXeno]!")) //but i imagine it'll be useful for predators, survivors and for battle flavor
-		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We feel our defenses bolstered by [wardenbuff_user]!"))
+	if(!length(target_turfs))
+		to_chat(valkyrie, SPAN_XENOWARNING("We don't have enough room!"))
+		return
 
-		targetXeno.add_xeno_shield(total_shield_amount, XENO_SHIELD_SOURCE_WARDEN_PRAE, duration = shield_duration, decay_amount_per_second = shield_decay)
-		targetXeno.xeno_jitter(1 SECONDS)
-		targetXeno.flick_heal_overlay(3 SECONDS, "#FFA800") //D9F500
-		wardenbuff_user.add_xeno_shield(total_shield_amount*0.5, XENO_SHIELD_SOURCE_WARDEN_PRAE, duration = shield_duration, decay_amount_per_second = shield_decay) // X is the prae itself
-		wardenbuff_user.xeno_jitter(1 SECONDS)
-		wardenbuff_user.flick_heal_overlay(3 SECONDS, "#FFA800") //D9F500
-		use_plasma = TRUE
+	if(!action_cooldown_check() || !check_and_use_plasma_owner())
+		return
 
-	else if (curr_effect_type == WARDEN_HEAL_HP)
-		if (!wardenbuff_user.Adjacent(A))
-			to_chat(wardenbuff_user, SPAN_XENODANGER("We must be within touching distance of [targetXeno]!"))
-			return
-		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
-			to_chat(wardenbuff_user, SPAN_XENOWARNING("We cannot heal this xeno!"))
-			return
+	apply_cooldown()
 
-		var/bonus_heal = 0
-		var/datum/behavior_delegate/praetorian_warden/behavior = wardenbuff_user.behavior_delegate
-		if (!istype(behavior))
-			return
+	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie] stomps its feet furiously, breaking the ground underneath!"), SPAN_XENODANGER("We send a shockwave through the ground, breaking the balance of anyone infront of us!"))
+	valkyrie.emote("roar")
+	playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 35, 0)
 
-		if (!behavior.use_internal_hp_ability(heal_cost))
-			return
+	for (var/turf/range in target_turfs)
+		for (var/mob/living/carbon/target in range)
+			if (target.stat == DEAD)
+				continue
 
-		bonus_heal = behavior.internal_hitpoints*0.5
-		if (!behavior.use_internal_hp_ability(bonus_heal))
-			bonus_heal = 0
+			if(!isxeno_human(target) || valkyrie.can_not_harm(target))
+				continue
 
-		to_chat(wardenbuff_user, SPAN_XENOHIGHDANGER("We heal [targetXeno]!"))
-		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are healed by [wardenbuff_user]!"))
-		//Amount to heal in this cast of the ability
-		var/quantity_healed = heal_amount
-		if(istype(targetXeno.strain, /datum/xeno_strain/warden))
-			quantity_healed = quantity_healed / 2	// Half the healing if warden
+			if(target.mob_size >= MOB_SIZE_BIG)
+				continue
 
-		else
-			quantity_healed = quantity_healed + bonus_heal
+			target.apply_effect(get_xeno_stun_duration(target, 0.5), WEAKEN)
+			new /datum/effects/xeno_slow(target, valkyrie, ttl = get_xeno_stun_duration(target, 25))
 
-		targetXeno.gain_health(quantity_healed)
-		targetXeno.visible_message(SPAN_BOLDNOTICE("[wardenbuff_user] places its claws on [targetXeno], and its wounds are quickly sealed!")) //marines probably should know if a xeno gets healed
-		wardenbuff_user.gain_health(heal_amount*0.5 + bonus_heal*0.5)
-		wardenbuff_user.flick_heal_overlay(3 SECONDS, "#00B800")
-		behavior.transferred_healing += quantity_healed
-		use_plasma = TRUE //it's already hard enough to gauge health without hp showing on the mob
-		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
+		for (var/obj/item/explosive/grenade/grenades in range) // sends back grenades
+			var/direction = get_dir(valkyrie, grenades)
+			var/turf/target_destination = get_ranged_target_turf(grenades, direction, 3)
 
-	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
-		if (wardenbuff_user.observed_xeno != null)
-			to_chat(wardenbuff_user, SPAN_XENOHIGHDANGER("We cannot rejuvenate targets through overwatch!"))
-			return
+			grenades.throw_atom(get_step_towards(target_destination, grenades), 3, SPEED_FAST, grenades)
 
-		var/datum/behavior_delegate/praetorian_warden/behavior = wardenbuff_user.behavior_delegate
-		if (!istype(behavior))
-			return
+	return ..()
 
-		if (!behavior.use_internal_hp_ability(debuff_cost))
-			return
 
-		to_chat(wardenbuff_user, SPAN_XENOHIGHDANGER("We rejuvenate [targetXeno]!"))
-		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are rejuvenated by [wardenbuff_user]!"))
-		targetXeno.visible_message(SPAN_BOLDNOTICE("[wardenbuff_user] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!")) //marines probably should know if a xeno gets rejuvenated
-		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
-		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
-		targetXeno.clear_debuffs()
-		use_plasma = TRUE
-	if (use_plasma)
-		use_plasma_owner()
+/datum/action/xeno_action/onclick/fight_or_flight/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/valkyrie_flight = owner
 
+	var/datum/behavior_delegate/praetorian_valkyrie/behavior = valkyrie_flight.behavior_delegate
+
+
+	if (!valkyrie_flight.check_state())
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!behavior.use_internal_fury_ability(rejuvenate_cost))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	var/range = behavior.base_fury < 75 ? low_rage_range : high_rage_range
+	playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
+	for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(range, valkyrie_flight))
+		to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))
+		valkyrie_flight.create_shriekwave(3)
+		allied_xenomorphs.xeno_jitter(1 SECONDS,)
+		allied_xenomorphs.flick_heal_overlay(3 SECONDS, "#F5007A")
+		allied_xenomorphs.clear_debuffs()
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/warden = owner
-	if(!istype(warden))
+
+/datum/action/xeno_action/activable/tail_stab/tail_fountain/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/extinguisher_tail = owner
+	var/mob/living/carbon/xenomorph/target = atom
+
+
+	var/distance = get_dist(extinguisher_tail, target)
+
+	if (distance > 2)
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("We need to be closer to our target."))
 		return
 
-	var/datum/behavior_delegate/praetorian_warden/behavior = warden.behavior_delegate
+	if(atom	== extinguisher_tail)
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("We can't extinguish ourselves."))
+		return
+
+	if(!iscarbon(atom))
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("We need to target something."))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!extinguisher_tail.check_state())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return FALSE
+
+	playsound(extinguisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
+	target.ExtinguishMob() // This can both help your allies, or help caps that are on fire.
+	apply_cooldown()
+	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
+	xeno_attack_delay(extinguisher_tail)
+	return ..()
+
+
+
+
+/datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/valkyrie = owner
+	if(!istype(valkyrie))
+		return
+
+	var/datum/behavior_delegate/praetorian_valkyrie/behavior = valkyrie.behavior_delegate
 	if(!istype(behavior))
 		return
 
-	if(warden.observed_xeno != null)
-		to_chat(warden, SPAN_XENOHIGHDANGER("We cannot retrieve sisters through overwatch!"))
+	if(valkyrie.observed_xeno != null)
+		to_chat(valkyrie, SPAN_XENOHIGHDANGER("We cannot retrieve sisters through overwatch!"))
 		return
 
-	if(!isxeno(A) || !warden.can_not_harm(A))
-		to_chat(warden, SPAN_XENODANGER("We must target one of our sisters!"))
+	if(!isxeno(A) || !valkyrie.can_not_harm(A))
+		to_chat(valkyrie, SPAN_XENODANGER("We must target one of our sisters!"))
 		return
 
-	if(A == warden)
-		to_chat(warden, SPAN_XENODANGER("We cannot retrieve ourself!"))
+	if(A == valkyrie)
+		to_chat(valkyrie, SPAN_XENODANGER("We cannot retrieve ourself!"))
 		return
 
-	if(!(A in view(7, warden)))
-		to_chat(warden, SPAN_XENODANGER("That sister is too far away!"))
+	if(!(A in view(7, valkyrie)))
+		to_chat(valkyrie, SPAN_XENODANGER("That sister is too far away!"))
 		return
 
 	var/mob/living/carbon/xenomorph/targetXeno = A
 
 	if(targetXeno.anchored)
-		to_chat(warden, SPAN_XENODANGER("That sister cannot move!"))
+		to_chat(valkyrie, SPAN_XENODANGER("That sister cannot move!"))
 		return
 
 	if(!(targetXeno.resting || targetXeno.stat == UNCONSCIOUS))
 		if(targetXeno.mob_size > MOB_SIZE_BIG)
-			to_chat(warden, SPAN_WARNING("[targetXeno] is too big to retrieve while standing up!"))
+			to_chat(valkyrie, SPAN_WARNING("[targetXeno] is too big to retrieve while standing up!"))
 			return
 
 	if(targetXeno.stat == DEAD)
-		to_chat(warden, SPAN_WARNING("[targetXeno] is already dead!"))
+		to_chat(valkyrie, SPAN_WARNING("[targetXeno] is already dead!"))
 		return
 
-	if(!action_cooldown_check() || warden.action_busy)
+	if(!action_cooldown_check() || valkyrie.action_busy)
 		return
 
-	if(!warden.check_state())
+	if(!valkyrie.check_state())
 		return
 
 	if(!check_plasma_owner())
 		return
 
-	if(!behavior.use_internal_hp_ability(retrieve_cost))
+	if(!behavior.use_internal_fury_ability(retrieve_cost))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -958,10 +1082,10 @@
 	// Build our turflist
 	var/list/turf/turflist = list()
 	var/list/telegraph_atom_list = list()
-	var/facing = get_dir(warden, A)
-	var/reversefacing = get_dir(A, warden)
-	var/turf/T = warden.loc
-	var/turf/temp = warden.loc
+	var/facing = get_dir(valkyrie, A)
+	var/reversefacing = get_dir(A, valkyrie)
+	var/turf/T = valkyrie.loc
+	var/turf/temp = valkyrie.loc
 	for(var/x in 0 to max_distance)
 		temp = get_step(T, facing)
 		if(facing in GLOB.diagonals) // check if it goes through corners
@@ -979,7 +1103,7 @@
 				blocked = TRUE
 				break
 		if(blocked)
-			to_chat(warden, SPAN_XENOWARNING("We can't reach [targetXeno] with our resin retrieval hook!"))
+			to_chat(valkyrie, SPAN_XENOWARNING("We can't reach [targetXeno] with our resin retrieval hook!"))
 			return
 
 		T = temp
@@ -992,34 +1116,34 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(T, windup)
 
 	if(!length(turflist))
-		to_chat(warden, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))
 		return
 
-	warden.visible_message(SPAN_XENODANGER("[warden] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [A]!"))
-	warden.emote("roar")
+	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [A]!"))
+	valkyrie.emote("roar")
 
-	var/throw_target_turf = get_step(warden, facing)
-	var/turf/behind_turf = get_step(warden, reversefacing)
+	var/throw_target_turf = get_step(valkyrie, facing)
+	var/turf/behind_turf = get_step(valkyrie, reversefacing)
 	if(!(behind_turf.density))
 		throw_target_turf = behind_turf
 
-	ADD_TRAIT(warden, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+	ADD_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
 	if(windup)
-		if(!do_after(warden, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-			to_chat(warden, SPAN_XENOWARNING("We cancel our retrieve."))
+		if(!do_after(valkyrie, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+			to_chat(valkyrie, SPAN_XENOWARNING("We cancel our retrieve."))
 			apply_cooldown()
 
 			for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
 				telegraph_atom_list -= XT
 				qdel(XT)
 
-			REMOVE_TRAIT(warden, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+			REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
 
 			return
 
-	REMOVE_TRAIT(warden, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+	REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
 
-	playsound(get_turf(warden), 'sound/effects/bang.ogg', 25, 0)
+	playsound(get_turf(valkyrie), 'sound/effects/bang.ogg', 25, 0)
 
 	var/successful_retrieve = FALSE
 	for(var/turf/target_turf in turflist)
@@ -1028,18 +1152,18 @@
 			break
 
 	if(!successful_retrieve)
-		to_chat(warden, SPAN_XENOWARNING("We can't reach [targetXeno] with our resin retrieval hook!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("We can't reach [targetXeno] with our resin retrieval hook!"))
 		return
 
-	to_chat(targetXeno, SPAN_XENOBOLDNOTICE("We are pulled toward [warden]!"))
+	to_chat(targetXeno, SPAN_XENOBOLDNOTICE("We are pulled toward [valkyrie]!"))
 
 	shake_camera(targetXeno, 10, 1)
 	var/throw_dist = get_dist(throw_target_turf, targetXeno)-1
 	if(throw_target_turf == behind_turf)
 		throw_dist++
-		to_chat(warden, SPAN_XENOBOLDNOTICE("We fling [targetXeno] over our head with our resin hook, and they land behind us!"))
+		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("We fling [targetXeno] over our head with our resin hook, and they land behind us!"))
 	else
-		to_chat(warden, SPAN_XENOBOLDNOTICE("We fling [targetXeno] towards us with our resin hook, and they land in front of us!"))
+		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("We fling [targetXeno] towards us with our resin hook, and they land in front of us!"))
 	targetXeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
 	apply_cooldown()
 	return ..()

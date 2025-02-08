@@ -222,12 +222,7 @@
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
 
-/obj/item/clothing/gloves/yautja/thrall
-	name = "thrall bracers"
-	desc = "A pair of strange alien bracers, adapted for human biology."
 
-	color = "#b85440"
-	minimap_icon = "thrall"
 
 
 /obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
@@ -631,6 +626,7 @@
 		return
 
 	var/mob/living/carbon/human/hunter = caller
+	var/atom/hunter_eye = hunter.client.eye
 
 	var/dead_on_planet = 0
 	var/dead_on_almayer = 0
@@ -658,12 +654,12 @@
 			gear_on_almayer++
 		else if(is_ground_level(loc.z))
 			gear_on_planet++
-		if(hunter.z == loc.z)
-			var/dist = get_dist(hunter, loc)
+		if(hunter_eye.z == loc.z)
+			var/dist = get_dist(hunter_eye, loc)
 			if(dist < closest)
 				closest = dist
 				closest_item = tracked_item
-				direction = Get_Compass_Dir(hunter, loc)
+				direction = Get_Compass_Dir(hunter_eye, loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/dead_yautja as anything in GLOB.yautja_mob_list)
 		if(dead_yautja.stat != DEAD)
@@ -677,11 +673,11 @@
 			dead_on_almayer++
 		else if(is_ground_level(dead_yautja.z))
 			dead_on_planet++
-		if(hunter.z == dead_yautja.z)
-			var/dist = get_dist(hunter, dead_yautja)
+		if(hunter_eye.z == dead_yautja.z)
+			var/dist = get_dist(hunter_eye, dead_yautja)
 			if(dist < closest)
 				closest = dist
-				direction = Get_Compass_Dir(hunter, dead_yautja)
+				direction = Get_Compass_Dir(hunter_eye, dead_yautja)
 				areaLoc = loc
 
 	var/output = FALSE
@@ -876,7 +872,7 @@
 	notify_ghosts(header = "Yautja self destruct", message = "[victim.real_name] is self destructing to protect their honor!", source = victim, action = NOTIFY_ORBIT)
 
 	exploding = 1
-	var/turf/T = get_turf(src)
+	var/turf/T = get_turf(victim)
 	if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/yautja_shipside_large_sd)))
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
@@ -884,7 +880,7 @@
 	message_admins(FONT_SIZE_XL("<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
-	T = get_turf(src)
+	T = get_turf(victim)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim)

@@ -59,11 +59,14 @@
 	name = "\improper Yautja Hunting Grounds Caves"
 	icon_state = "cave"
 	ambience_exterior = AMBIENCE_CAVE
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 
 /area/yautja_grounds/temple
 	name = "\improper Yautja Hunting Grounds Temple"
 	icon_state = "bluenew"
 	ambience_exterior = AMBIENCE_CAVE
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/yautja_grounds/temple/entrance
 	name = "\improper Yautja Hunting Grounds Temple"

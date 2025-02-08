@@ -474,7 +474,7 @@
 				if(mob_state != "Dead")
 					marines_alive++
 
-	var/squad_count = list(list(
+	var/list/squad_count = list(
 		"total_deployed" = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count,
 		"living_count" = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive,
 		"leader_count" = leader_count,
@@ -490,7 +490,7 @@
 		"engi_alive" = engi_alive,
 		"smart_alive" = smart_alive,
 		"specialist_type" = specialist_type ? specialist_type : "NONE",
-	))
+	)
 
 	return squad_count
 
@@ -558,9 +558,10 @@
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
 		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
-			var/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "ref" = REF(index_squad)))
+			var/list/unpackaged_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "ref" = REF(index_squad))
+			unpackaged_data += count_marines(index_squad)
+			var/list/squad_data = list(unpackaged_data)
 			data["squad_data"] += squad_data
-			data["squad_data"] += count_marines(index_squad)
 
 	data["z_hidden"] = z_hidden
 
@@ -678,22 +679,28 @@
 
 		if("set_primary")
 			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective"))
-			if(current_squad && input)
-				current_squad.primary_objective = "[input] ([worldtime2text()])"
-				current_squad.send_message("Your primary objective has been changed to '[input]'. See Status pane for details.")
-				current_squad.send_maptext(input, "Primary Objective Updated:")
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[current_squad]' set to '[input]'.")]")
-				log_overwatch("[key_name(usr)] set [current_squad]'s primary objective to '[input]'.")
+			var/datum/squad/target_squad = current_squad
+			if(params["target_squad_ref"])
+				target_squad = locate(params["target_squad_ref"])
+			if(target_squad && input)
+				target_squad.primary_objective = "[input] ([worldtime2text()])"
+				target_squad.send_message("Your primary objective has been changed to '[input]'. See Status pane for details.")
+				target_squad.send_maptext(input, "Primary Objective Updated:")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[target_squad]' set to '[input]'.")]")
+				log_overwatch("[key_name(usr)] set [target_squad]'s primary objective to '[input]'.")
 				return TRUE
 
 		if("set_secondary")
 			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's secondary objective?", "Secondary Objective"))
+			var/datum/squad/target_squad = current_squad
+			if(params["target_squad_ref"])
+				target_squad = locate(params["target_squad_ref"])
 			if(input)
-				current_squad.secondary_objective = input + " ([worldtime2text()])"
-				current_squad.send_message("Your secondary objective has been changed to '[input]'. See Status pane for details.")
-				current_squad.send_maptext(input, "Secondary Objective Updated:")
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[current_squad]' set to '[input]'.")]")
-				log_overwatch("[key_name(usr)] set [current_squad]'s secondary objective to '[input]'.")
+				target_squad.secondary_objective = input + " ([worldtime2text()])"
+				target_squad.send_message("Your secondary objective has been changed to '[input]'. See Status pane for details.")
+				target_squad.send_maptext(input, "Secondary Objective Updated:")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[target_squad]' set to '[input]'.")]")
+				log_overwatch("[key_name(usr)] set [target_squad]'s secondary objective to '[input]'.")
 				return TRUE
 		if("replace_lead")
 			if(!params["ref"])

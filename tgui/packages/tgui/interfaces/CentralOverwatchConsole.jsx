@@ -4,26 +4,47 @@ import {
   Button,
   Collapsible,
   Divider,
+  Icon,
   Input,
   LabeledControls,
+  NoticeBox,
   NumberInput,
   Section,
   Stack,
   Table,
+  Tabs,
 } from '../components';
 import { Window } from '../layouts';
 
 export const CentralOverwatchConsole = (props) => {
   const { act, data } = useBackend();
 
+  const [category, setCategory] = useSharedState('selected', 'monitor');
+
   return (
     <Window
-      width={700}
-      height={800}
+      width={900}
+      height={750}
       theme={data.theme ? data.theme : 'crtblue'}
     >
       <Window.Content>
-        {(!data.current_squad && <HomePanel />) || <SquadPanel />}
+        {(!data.current_squad && <HomePanel />) || (
+          <Stack vertical>
+            <Stack.Item>
+              <Stack horizontal>
+                <Stack.Item width="75%">
+                  <DebugSquadPanel />
+                </Stack.Item>
+                <Stack.Item m="0" width="25%">
+                  <NotificationPanel />
+                </Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item m="0">
+              <SecondaryFunctions />
+            </Stack.Item>
+          </Stack>
+        )}
       </Window.Content>
     </Window>
   );
@@ -71,226 +92,340 @@ const HomePanel = (props) => {
   );
 };
 
-const SquadPanel = (props) => {
+const NotificationPanel = (props) => {
+  const { act, data } = useBackend();
+
+  return (
+    <Section fontSize="18px" fill>
+      <Box bold textAlign="center">
+        Notification Logs
+      </Box>
+      <Divider />
+      <Box fontSize="13px">
+        <NoticeBox danger width>
+          <Stack horizontal align="center">
+            <Stack.Item>
+              <Icon name="exclamation-triangle" size="1.5" />
+            </Stack.Item>
+            <Stack.Item fontSize="15px">
+              SHIPWIDE ALERT
+              <Box fontSize="13px">- ARES v3.2</Box>
+            </Stack.Item>
+          </Stack>
+          <Box mt="5px" mb="5px">
+            Attention: Security level elevated to RED - there is an immediate
+            threat to the ship
+          </Box>
+        </NoticeBox>
+      </Box>
+      <Box fontSize="13px">
+        <NoticeBox info width>
+          <Stack horizontal align="center">
+            <Stack.Item>
+              <Icon name="crown" size="1.5" />
+            </Stack.Item>
+            <Stack.Item fontSize="13px">SHIPWIDE UPDATE</Stack.Item>
+          </Stack>
+          <Box mt="5px" mb="5px">
+            Attention all hands, Colonel John Marine on deck!
+          </Box>
+        </NoticeBox>
+      </Box>
+    </Section>
+  );
+};
+
+const SecondaryFunctions = (props) => {
+  const { act, data } = useBackend();
+
+  const [secondarycategory, setsecondaryCategory] = useSharedState(
+    'secondaryselected',
+    'secondarymonitor',
+  );
+
+  const squadStringify = {
+    alpha: 'red',
+    bravo: 'yellow',
+    charlie: 'purple',
+    delta: 'blue',
+    echo: 'green',
+    foxtrot: 'brown',
+    intel: 'green',
+  };
+
+  return (
+    <Section fontSize="18px" fill>
+      <Stack horizontal justify="center" align="end">
+        <Stack.Item width="24.5%">
+          <Tabs fluid mr="0" fontSize="15px" vertical>
+            <Tabs.Tab
+              selected={secondarycategory === 'ob'}
+              icon="bomb"
+              onClick={() => setsecondaryCategory('ob')}
+              p="3px"
+              bold
+            >
+              Orbital Bombardment
+            </Tabs.Tab>
+            <Tabs.Tab
+              selected={secondarycategory === 'supply'}
+              icon="wrench"
+              onClick={() => setsecondaryCategory('supply')}
+              p="3px"
+              bold
+            >
+              Supply Drop
+            </Tabs.Tab>
+          </Tabs>
+        </Stack.Item>
+        <Stack.Item grow>
+          {secondarycategory === 'supply' && data.can_launch_crates && (
+            <SupplyDrop />
+          )}
+          {secondarycategory === 'ob' && data.can_launch_obs && (
+            <OrbitalBombardment />
+          )}
+        </Stack.Item>
+      </Stack>
+    </Section>
+  );
+};
+
+const DebugSquadPanel = (props) => {
   const { act, data } = useBackend();
 
   const [category, setCategory] = useSharedState('selected', 'monitor');
 
-  return (
-    <Section title="Combined Squad Tracker" fontSize="18px">
-      <Stack vertical justify="left" align="end">
-        {data.squad_data.map((squad, index) => {
-          return (
-            <Stack.Item key={index} fontSize="13px">
-              <Table p="4px">
-                <Table.Row>
-                  <Table.Cell
-                    bold
-                    colSpan={3}
-                    textAlign="center"
-                    fontSize="16px"
-                    p="4px"
-                  >
-                    {squad.name + ' Overwatch | Dashboard'}
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row bold>
-                  <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
-                  <Table.Cell rowSpan={5} width="65%">
-                    <Table pb="4px" m="1px" fontSize="12px" bold>
-                      <Table.Row>
-                        <Table.Cell textAlign="center" collapsing p="4px">
-                          Squad Leader
-                        </Table.Cell>
-                        <Table.Cell textAlign="center" collapsing p="4px">
-                          Fire Team Leaders
-                        </Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        {(squad.squad_leader && (
-                          <Table.Cell textAlign="center">
-                            {squad.squad_leader.name
-                              ? squad.squad_leader.name
-                              : 'NONE'}
-                            <Box
-                              color={
-                                squad.squad_leader.state !== 'Dead'
-                                  ? 'green'
-                                  : 'red'
-                              }
-                            >
-                              {squad.squad_leader.state !== 'Dead'
-                                ? 'ALIVE'
-                                : 'DEAD'}
-                            </Box>
-                          </Table.Cell>
-                        )) || (
-                          <Table.Cell textAlign="center">
-                            NONE
-                            <Box color="red">NOT DEPLOYED</Box>
-                          </Table.Cell>
-                        )}
+  const squadStringify = {
+    alpha: 'red',
+    bravo: 'yellow',
+    charlie: 'purple',
+    delta: 'blue',
+    echo: 'green',
+    foxtrot: 'brown',
+    intel: 'green',
+  };
 
-                        <Table.Cell textAlign="center" bold>
-                          <Box>{squad.ftl_count} DEPLOYED</Box>
-                          <Box color={squad.ftl_alive ? 'green' : 'red'}>
-                            {squad.ftl_alive} ALIVE
-                          </Box>
-                        </Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell textAlign="center" collapsing p="4px">
-                          Specialist
-                        </Table.Cell>
-                        <Table.Cell textAlign="center" collapsing p="4px">
-                          Smartgunner
-                        </Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell textAlign="center" bold>
+  return (
+    <Section fontSize="18px">
+      <Box bold textAlign="center">
+        Combined Overwatch System
+      </Box>
+      <Divider />
+      <Stack vertical justify="center" align="end">
+        <Stack.Item>
+          <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
+            {data.squad_data.map((squad, index) => {
+              return (
+                <Tabs.Tab
+                  selected={
+                    category === squadStringify[squad.name.toLowerCase()]
+                  }
+                  onClick={() =>
+                    setCategory(squadStringify[squad.name.toLowerCase()])
+                  }
+                  key={index}
+                >
+                  {squad.name + ' Overwatch'}
+                </Tabs.Tab>
+              );
+            })}
+          </Tabs>
+        </Stack.Item>
+        <Stack.Item>
+          {data.squad_data.map((squad, index) => {
+            return (
+              <Stack.Item key={index} fontSize="13px">
+                {category === squadStringify[squad.name.toLowerCase()] && (
+                  <Table>
+                    <Table.Row>
+                      <Table.Cell fontSize="15px" bold p="6px" colSpan={2}>
+                        {'Overwatching Squad - [ ' + squad.name + ' ]'}
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row bold>
+                      <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
+                      <Table.Cell rowSpan={5} width="65%">
+                        <Table fontSize="12px" bold>
+                          <Table.Row>
+                            <Table.Cell textAlign="center" collapsing p="4px">
+                              Squad Leader
+                            </Table.Cell>
+                            <Table.Cell textAlign="center" collapsing p="4px">
+                              Fire Team Leaders
+                            </Table.Cell>
+                          </Table.Row>
+                          <Table.Row>
+                            {(squad.squad_leader && (
+                              <Table.Cell textAlign="center">
+                                {squad.squad_leader.name
+                                  ? squad.squad_leader.name
+                                  : 'NONE'}
+                                <Box
+                                  color={
+                                    squad.squad_leader.state !== 'Dead'
+                                      ? 'green'
+                                      : 'red'
+                                  }
+                                >
+                                  {squad.squad_leader.state !== 'Dead'
+                                    ? 'ALIVE'
+                                    : 'DEAD'}
+                                </Box>
+                              </Table.Cell>
+                            )) || (
+                              <Table.Cell textAlign="center">
+                                NONE
+                                <Box color="red">NOT DEPLOYED</Box>
+                              </Table.Cell>
+                            )}
+
+                            <Table.Cell textAlign="center" bold>
+                              <Box>{squad.ftl_count} DEPLOYED</Box>
+                              <Box color={squad.ftl_alive ? 'green' : 'red'}>
+                                {squad.ftl_alive} ALIVE
+                              </Box>
+                            </Table.Cell>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.Cell textAlign="center" collapsing p="4px">
+                              Specialist
+                            </Table.Cell>
+                            <Table.Cell textAlign="center" collapsing p="4px">
+                              Smartgunner
+                            </Table.Cell>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.Cell textAlign="center" bold>
+                              <Box>
+                                {squad.specialist_type
+                                  ? squad.specialist_type
+                                  : 'NONE'}
+                              </Box>
+                              <Box color={squad.spec_alive ? 'green' : 'red'}>
+                                {squad.spec_count
+                                  ? squad.spec_alive
+                                    ? 'ALIVE'
+                                    : 'DEAD'
+                                  : 'NOT DEPLOYED'}
+                              </Box>
+                            </Table.Cell>
+                            <Table.Cell textAlign="center" bold>
+                              <Box color={squad.smart_count ? 'green' : 'red'}>
+                                {squad.smart_count
+                                  ? squad.smart_count + ' DEPLOYED'
+                                  : 'NONE'}
+                              </Box>
+                              <Box color={squad.smart_alive ? 'green' : 'red'}>
+                                {squad.smart_count
+                                  ? squad.smart_alive
+                                    ? 'ALIVE'
+                                    : 'DEAD'
+                                  : 'N/A'}
+                              </Box>
+                            </Table.Cell>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.Cell textAlign="center" collapsing p="4px">
+                              Hospital Corpsmen
+                            </Table.Cell>
+                            <Table.Cell textAlign="center" collapsing p="4px">
+                              Combat Technicians
+                            </Table.Cell>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.Cell textAlign="center" bold>
+                              <Box>{squad.medic_count} DEPLOYED</Box>
+                              <Box color={squad.medic_alive ? 'green' : 'red'}>
+                                {squad.medic_alive} ALIVE
+                              </Box>
+                            </Table.Cell>
+                            <Table.Cell textAlign="center" bold>
+                              <Box>{squad.engi_count} DEPLOYED</Box>
+                              <Box color={squad.engi_alive ? 'green' : 'red'}>
+                                {squad.engi_alive} ALIVE
+                              </Box>
+                            </Table.Cell>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.Cell
+                              textAlign="center"
+                              collapsing
+                              p="4px"
+                              colSpan="2"
+                            >
+                              Total/Living
+                            </Table.Cell>
+                          </Table.Row>
+                          <Table.Row>
+                            <Table.Cell textAlign="center" bold colSpan="2">
+                              <Box>{squad.total_deployed} TOTAL</Box>
+                              <Box color={squad.living_count ? 'green' : 'red'}>
+                                {squad.living_count} ALIVE
+                              </Box>
+                            </Table.Cell>
+                          </Table.Row>
+                        </Table>
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell textAlign="center" p="10px">
+                        {squad.primary_objective
+                          ? squad.primary_objective
+                          : 'NONE'}
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row bold>
+                      <Table.Cell textAlign="center">
+                        SECONDARY ORDERS
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell textAlign="center" p="10px">
+                        {squad.secondary_objective
+                          ? squad.secondary_objective
+                          : 'NONE'}
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell>
+                        <Box textAlign="center">
                           <Box>
-                            {squad.specialist_type
-                              ? squad.specialist_type
-                              : 'NONE'}
+                            <Stack.Item>
+                              <Button
+                                inline
+                                width="100%"
+                                icon="envelope"
+                                onClick={() => act('message')}
+                              >
+                                MESSAGE SQUAD
+                              </Button>
+                            </Stack.Item>
+                            <Stack.Item>
+                              <Button
+                                inline
+                                width="100%"
+                                icon="person"
+                                onClick={() => act('sl_message')}
+                              >
+                                MESSAGE SQUAD LEADER
+                              </Button>
+                            </Stack.Item>
+                            <Stack.Item>
+                              <Button icon="user" inline width="100%">
+                                Operator - {squad.operator}
+                              </Button>
+                            </Stack.Item>
                           </Box>
-                          <Box color={squad.spec_alive ? 'green' : 'red'}>
-                            {squad.spec_count
-                              ? squad.spec_alive
-                                ? 'ALIVE'
-                                : 'DEAD'
-                              : 'NOT DEPLOYED'}
-                          </Box>
-                        </Table.Cell>
-                        <Table.Cell textAlign="center" bold>
-                          <Box color={squad.smart_count ? 'green' : 'red'}>
-                            {squad.smart_count
-                              ? squad.smart_count + ' DEPLOYED'
-                              : 'NONE'}
-                          </Box>
-                          <Box color={squad.smart_alive ? 'green' : 'red'}>
-                            {squad.smart_count
-                              ? squad.smart_alive
-                                ? 'ALIVE'
-                                : 'DEAD'
-                              : 'N/A'}
-                          </Box>
-                        </Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell textAlign="center" collapsing p="4px">
-                          Hospital Corpsmen
-                        </Table.Cell>
-                        <Table.Cell textAlign="center" collapsing p="4px">
-                          Combat Technicians
-                        </Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell textAlign="center" bold>
-                          <Box>{squad.medic_count} DEPLOYED</Box>
-                          <Box color={squad.medic_alive ? 'green' : 'red'}>
-                            {squad.medic_alive} ALIVE
-                          </Box>
-                        </Table.Cell>
-                        <Table.Cell textAlign="center" bold>
-                          <Box>{squad.engi_count} DEPLOYED</Box>
-                          <Box color={squad.engi_alive ? 'green' : 'red'}>
-                            {squad.engi_alive} ALIVE
-                          </Box>
-                        </Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell
-                          textAlign="center"
-                          collapsing
-                          p="4px"
-                          colSpan="2"
-                        >
-                          Total/Living
-                        </Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell textAlign="center" bold colSpan="2">
-                          <Box>{squad.total_deployed} TOTAL</Box>
-                          <Box color={squad.living_count ? 'green' : 'red'}>
-                            {squad.living_count} ALIVE
-                          </Box>
-                        </Table.Cell>
-                      </Table.Row>
-                    </Table>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell textAlign="center">
-                    {squad.primary_objective ? squad.primary_objective : 'NONE'}
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row bold>
-                  <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell textAlign="center">
-                    {squad.secondary_objective
-                      ? squad.secondary_objective
-                      : 'NONE'}
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>
-                    <Box textAlign="center">
-                      <Box>
-                        <Stack.Item>
-                          <Button
-                            inline
-                            width="100%"
-                            icon="envelope"
-                            onClick={() => act('set_primary')}
-                          >
-                            SET PRIMARY
-                          </Button>
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Button
-                            inline
-                            width="100%"
-                            icon="envelope"
-                            onClick={() => act('set_secondary')}
-                          >
-                            SET SECONDARY
-                          </Button>
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Button
-                            inline
-                            width="100%"
-                            icon="envelope"
-                            onClick={() => act('message')}
-                          >
-                            MESSAGE SQUAD
-                          </Button>
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Button
-                            inline
-                            width="100%"
-                            icon="person"
-                            onClick={() => act('sl_message')}
-                          >
-                            MESSAGE SQUAD LEADER
-                          </Button>
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Button icon="user" inline width="100%">
-                            Operator - {squad.operator}
-                          </Button>
-                        </Stack.Item>
-                      </Box>
-                    </Box>
-                  </Table.Cell>
-                </Table.Row>
-              </Table>
-            </Stack.Item>
-          );
-        })}
+                        </Box>
+                      </Table.Cell>
+                    </Table.Row>
+                  </Table>
+                )}
+              </Stack.Item>
+            );
+          })}
+        </Stack.Item>
       </Stack>
     </Section>
   );
@@ -830,7 +965,45 @@ const OrbitalBombardment = (props) => {
   }
 
   return (
-    <Section fill fontSize="14px" title="Orbital Bombardment">
+    <Section fill fontSize="14px">
+      <Stack justify={'space-between'} horizontal m="10px">
+        <Stack.Item fontSize="13px" bold width="50%">
+          Orbital Bombardment Subsystem:
+          <Box color="green" bold m="2px">
+            [ Fully Operational ]
+          </Box>
+          Warhead Status:
+          <Box color="green" bold m="2px">
+            [ Cluster Shell Loaded ]
+          </Box>
+          Cannon Status:
+          <Box color={ob_color} bold m="2px">
+            [ {ob_status} ]
+          </Box>
+        </Stack.Item>
+        <Stack.Divider />
+        <Stack.Item>
+          <Box textAlign="center" bold>
+            <Table>
+              <Table.Cell m="2px" p="6px" textAlign="center">
+                Console OB Safety: <br />[ DISABLED ]
+                <Button
+                  fontSize="16px"
+                  width="96%"
+                  color="transperant"
+                  icon="user-shield"
+                  p="5px"
+                  m="4px"
+                  onClick={() => act('dropbomb', { x: OBX, y: OBY })}
+                >
+                  Toggle Safety
+                </Button>
+              </Table.Cell>
+            </Table>
+          </Box>
+        </Stack.Item>
+      </Stack>
+      <Divider horizontal />
       <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="14px">
           <LabeledControls mb="5px">
@@ -860,7 +1033,6 @@ const OrbitalBombardment = (props) => {
               fontSize="20px"
               width="100%"
               icon="bomb"
-              color="red"
               onClick={() => act('dropbomb', { x: OBX, y: OBY })}
             >
               Fire
@@ -869,7 +1041,6 @@ const OrbitalBombardment = (props) => {
               fontSize="20px"
               width="100%"
               icon="save"
-              color="yellow"
               onClick={() => act('save_coordinates', { x: OBX, y: OBY })}
             >
               Save

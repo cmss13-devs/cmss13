@@ -14514,10 +14514,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	dir = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aMM" = (
 /turf/closed/shuttle/ert{
@@ -14542,10 +14539,7 @@
 	},
 /area/navalis/oob/powered)
 "aMQ" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aMR" = (
 /turf/closed/shuttle/ert{
@@ -14608,27 +14602,18 @@
 	dir = 4;
 	pixel_y = 3
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aMY" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aMZ" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/prop/almayer/CICmap/pmc,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aNa" = (
 /turf/closed/shuttle/ert{
@@ -14646,10 +14631,7 @@
 /area/navalis/oob/powered)
 "aNd" = (
 /obj/structure/largecrate/supply/supplies/mre,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aNe" = (
 /obj/item/card/id/captains_spare{
@@ -14659,17 +14641,11 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aNf" = (
 /obj/structure/prop/almayer/computers/mapping_computer,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aNg" = (
 /turf/closed/shuttle/ert{
@@ -14700,19 +14676,13 @@
 	pixel_y = 28
 	},
 /obj/structure/prop/almayer/computers/sensor_computer2,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aNl" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aNm" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
@@ -14723,10 +14693,7 @@
 	pixel_y = 28;
 	layer = 3.5
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aNn" = (
 /turf/closed/shuttle/ert{
@@ -14764,10 +14731,7 @@
 "aNt" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/computer/communications,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)
 "aNu" = (
 /turf/closed/shuttle/ert{

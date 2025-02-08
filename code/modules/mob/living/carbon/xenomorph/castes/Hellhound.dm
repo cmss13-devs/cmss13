@@ -48,6 +48,7 @@
 	pull_speed = -0.5
 	viewsize = 9
 	show_age_prefix = FALSE
+	age = XENO_NO_AGE
 
 	speaking_key = "h"
 	speaking_noise = "hiss_talk"

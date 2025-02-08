@@ -142,12 +142,21 @@
 /obj/structure/surface/rack,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"aaC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaD" = (
 /obj/effect/spider/cocoon{
 	icon_state = "cocoon_large1"
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
+"aaE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaG" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 8
@@ -4198,8 +4207,7 @@
 /area/shiva/exterior/valley)
 "aKn" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	icon_state = "psiphon:1";
-	needs_power = 0
+	icon_state = "psiphon:1"
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/valley)
@@ -12897,7 +12905,7 @@
 "krU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/asphalt/cement,
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/warehouse)
 "krZ" = (
 /obj/structure/flora/tree/dead/tree_5,
@@ -13044,7 +13052,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/green,
-/turf/open/asphalt/cement,
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/warehouse)
 "kyt" = (
 /obj/item/tool/shovel/snow,
@@ -14676,7 +14684,7 @@
 "mpt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement,
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/warehouse)
 "mpE" = (
 /obj/structure/bed/chair/comfy/black{
@@ -31228,7 +31236,7 @@ hbY
 hbY
 hbY
 huz
-axJ
+cio
 axJ
 rBC
 rdS
@@ -32038,7 +32046,7 @@ hbY
 hbY
 hbY
 huz
-aut
+aaC
 rdS
 aCy
 tdc
@@ -32200,7 +32208,7 @@ hbY
 gdI
 aJt
 huz
-rdS
+aaE
 axJ
 amH
 tbR

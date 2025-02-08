@@ -402,6 +402,7 @@
 		return FALSE
 	if(!is_ground_level(test_targ_z))
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
+		return FALSE
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) > max_range)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is too far from your mortar."))
 		return FALSE

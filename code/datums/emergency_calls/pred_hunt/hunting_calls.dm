@@ -204,7 +204,7 @@
 
 /datum/emergency_call/young_bloods/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
-	message_all_yautja("Awoken [length(members)] youngbloods for the ritual.")
+	message_all_yautja("Awoke [length(members)] youngbloods for the ritual.")
 
 /datum/emergency_call/young_bloods/create_member(datum/mind/player, turf/override_spawn_loc)
 	set waitfor = 0

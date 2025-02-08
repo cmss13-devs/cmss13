@@ -152,6 +152,3 @@
 			playsound(loc, hitsound, 25, 1)
 		return (hit|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
-
-
-

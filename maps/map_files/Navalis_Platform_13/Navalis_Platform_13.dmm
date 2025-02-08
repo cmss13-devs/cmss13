@@ -13948,11 +13948,6 @@
 	},
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors/med_sci/chemical_store)
-"aLh" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/exterior/med_ext)
 "aLi" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/navalis/oob/powered)
@@ -29525,16 +29520,6 @@
 	},
 /turf/open/floor/prison/whitered/west,
 /area/navalis/indoors/med_sci/main_floor)
-"qZj" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only/lz2)
 "qZs" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/closed/wall/mineral/bone_resin,
@@ -43460,8 +43445,8 @@ thJ
 aRC
 aoE
 aoE
-aLh
-aLh
+aoE
+aoE
 aoF
 cvA
 gyn
@@ -47766,7 +47751,7 @@ gGc
 gGc
 gGc
 ayU
-qZj
+aAh
 ayY
 ayT
 aAh
@@ -50722,7 +50707,7 @@ mmV
 mmV
 lJH
 aAh
-qZj
+aAh
 aAh
 ayL
 aAh

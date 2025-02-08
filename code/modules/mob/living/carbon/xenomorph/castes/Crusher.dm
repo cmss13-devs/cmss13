@@ -65,8 +65,8 @@
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 
-	icon_xeno = 'icons/mob/xenos/crusher.dmi'
-	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_3/crusher.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/crusher.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Crusher_1","Crusher_2","Crusher_3")
@@ -176,6 +176,15 @@
 
 			. =  TRUE
 
+	else if(istype(target, /obj/structure/fence/electrified))
+		var/obj/structure/fence/electrified/fence = target
+		if (fence.cut)
+			. = FALSE
+		else
+			src.visible_message(SPAN_DANGER("[src] smashes into [fence]!"))
+			fence.cut_grille()
+			. = TRUE
+
 	// Anything else?
 	else
 		if (isobj(target))
@@ -237,7 +246,7 @@
 
 		cdr_amount += 5
 
-		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"), \
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"),
 			SPAN_DANGER("You slash [H]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
 		bound_xeno.flick_attack_overlay(H, "slash")

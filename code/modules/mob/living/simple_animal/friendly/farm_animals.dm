@@ -151,7 +151,7 @@
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
-		M.visible_message(SPAN_WARNING("[M] tips over [src]."), \
+		M.visible_message(SPAN_WARNING("[M] tips over [src]."),
 			SPAN_NOTICE("You tip over [src]."))
 		apply_effect(30, WEAKEN)
 		icon_state = icon_dead
@@ -236,12 +236,12 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	mob_size = MOB_SIZE_SMALL
 
 /mob/living/simple_animal/chicken/New()
-	..()
 	if(!body_color)
 		body_color = pick( list("brown","black","white") )
 	icon_state = "chicken_[body_color]"
 	icon_living = "chicken_[body_color]"
 	icon_dead = "chicken_[body_color]_dead"
+	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 	GLOB.chicken_count++

@@ -82,7 +82,7 @@
 	status_flags |= LEAPING
 
 	visible_message(SPAN_WARNING("<b>[src]</b> leaps at [T]!"))
-	var/target = get_step(get_turf(T), get_turf(src))
+	var/target = get_step(get_turf(T), get_dir(src, T))
 	throw_atom(target, 5, SPEED_VERY_FAST, src)
 	playsound(loc, 'sound/voice/shriek1.ogg', 25, 1)
 
@@ -296,7 +296,7 @@
 	if(usr.is_mob_incapacitated())
 		return
 
-	default_lighting_alpha = default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE : LIGHTING_PLANE_ALPHA_VISIBLE
+	default_lighting_alpha = default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE : LIGHTING_PLANE_ALPHA_VISIBLE
 	update_sight()
 
 	to_chat(src, SPAN_NOTICE("Your vision is now set to <b>[default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? "Normal Vision" : "Nightvision"]</b>."))
@@ -349,7 +349,7 @@
 
 	speciesk9.radar.tgui_interact(src)
 
-/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_binocular_vision(mob/user)
+/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_binocular_vision()
 	set category = "Synthetic"
 	set name = "Binocular Vision"
 	set desc = "Activates the K9's keen sense of sight."
@@ -359,7 +359,7 @@
 
 	if(!is_zoomed)
 		enable_zoom()
-		user.visible_message(SPAN_NOTICE("[user] starts looking off into the distance."), \
+		visible_message(SPAN_NOTICE("[src] starts looking off into the distance."),
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
 		return
 

@@ -13,6 +13,25 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aad" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"aae" = (
+/obj/item/stack/sheet/wood,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"aaf" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/kitchen)
 "aag" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
@@ -26,10 +45,33 @@
 "aaj" = (
 /turf/open/gm/coast/west,
 /area/lv624/ground/caves/north_central_caves)
+"aak" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/freezerfloor,
+/area/lv624/lazarus/kitchen)
+"aal" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/hop)
 "aam" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river,
 /area/lv624/ground/caves/north_central_caves)
+"aan" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/lv624/lazarus/main_hall)
+"aao" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/wood,
+/area/lv624/lazarus/hop)
 "aap" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/north_central_caves)
@@ -70,6 +112,10 @@
 "aaA" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/caves/north_central_caves)
+"aaB" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/freezerfloor,
+/area/lv624/lazarus/kitchen)
 "aaC" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/north_central_caves)
@@ -92,13 +138,24 @@
 "aaH" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/north_central_caves)
+"aaI" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bar,
+/area/lv624/lazarus/canteen)
 "aaJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/north_central_caves)
 "aaK" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/north_central_caves)
+"aaL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/bar,
+/area/lv624/lazarus/canteen)
 "aaM" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -210,6 +267,19 @@
 /obj/structure/largecrate/supply/ammo/shotgun,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"abq" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/main_hall)
+"abr" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/main_hall)
 "abs" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
@@ -219,6 +289,12 @@
 /obj/item/weapon/gun/rifle/lmg,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
+"abu" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/north,
+/area/lv624/lazarus/main_hall)
 "abv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
@@ -229,6 +305,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
+"abx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/east,
+/area/lv624/lazarus/main_hall)
 "aby" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -246,6 +328,18 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
+"abC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/north,
+/area/lv624/lazarus/main_hall)
+"abD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "abE" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -277,6 +371,23 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
+"abJ" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/main_hall)
+"abK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/main_hall)
+"abL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow,
+/area/lv624/lazarus/main_hall)
 "abM" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/north_west_caves)
@@ -287,13 +398,32 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"abP" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/whiteyellowcorner/west,
+/area/lv624/lazarus/main_hall)
 "abQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
+"abR" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor,
+/area/lv624/lazarus/main_hall)
 "abS" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_central_caves)
+"abT" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor,
+/area/lv624/lazarus/main_hall)
 "abU" = (
 /turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
@@ -307,6 +437,10 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
+"abX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/freezerfloor,
+/area/lv624/lazarus/toilet)
 "abY" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -324,12 +458,28 @@
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
 "acc" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"acd" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/lv624/lazarus/main_hall)
+"ace" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	icon_state = "door_open";
+	name = "\improper Nexus Cargo Storage";
+	req_access_txt = "100";
+	req_one_access = null
+	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
-/area/lv624/lazarus/chapel)
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/quart)
 "acf" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/central_caves)
@@ -345,6 +495,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
+"acj" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/lv624/lazarus/quart)
 "ack" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/tool/kitchen/knife/butcher{
@@ -394,6 +550,7 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "act" = (
@@ -415,10 +572,27 @@
 /obj/structure/foamed_metal,
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
+"acx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating,
+/area/lv624/lazarus/toilet)
 "acy" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/cult,
 /area/lv624/ground/caves/west_caves)
+"acz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/bluecorner,
+/area/lv624/lazarus/sleep_male)
+"acA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/bluecorner,
+/area/lv624/lazarus/sleep_male)
 "acB" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -453,10 +627,23 @@
 "acF" = (
 /turf/closed/wall/sulaco,
 /area/lv624/ground/barrens/north_east_barrens)
+"acG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/lv624/lazarus/sleep_male)
 "acH" = (
 /obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
+"acI" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/bluecorner,
+/area/lv624/lazarus/sleep_male)
 "acJ" = (
 /turf/open/shuttle/bright_red,
 /area/lv624/ground/barrens/north_east_barrens)
@@ -486,10 +673,23 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
+"acP" = (
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "acQ" = (
 /obj/item/device/flashlight/on,
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
+"acR" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "acS" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -541,6 +741,12 @@
 	},
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
+"adb" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/lv624/lazarus/sleep_female)
 "adc" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
@@ -569,12 +775,30 @@
 /obj/structure/girder,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
+"adj" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/purple/northwest,
+/area/lv624/lazarus/sleep_female)
 "adk" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"adl" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"adm" = (
+/obj/structure/foamed_metal,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship_containers)
 "adn" = (
 /obj/structure/girder/displaced,
@@ -1450,7 +1674,7 @@
 /turf/open/floor/redyellowfull,
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "aiv" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/coast/east,
 /area/lv624/ground/barrens/east_barrens)
 "aiw" = (
@@ -1605,13 +1829,13 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/stack/sheet/animalhide/xeno{
-	name = "Lurker Hide"
+/obj/item/skull/lurker{
+	anchored = 1
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
 "ajp" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "ajq" = (
@@ -1765,7 +1989,6 @@
 /area/lv624/ground/river/east_river)
 "akh" = (
 /obj/item/trash/candy,
-/obj/structure/machinery/power/apc/power/north,
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
 	name = "Secure Outer Doors";
@@ -2075,7 +2298,7 @@
 "alZ" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/river/central_river)
 "ama" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -2138,11 +2361,11 @@
 /area/lv624/ground/jungle/north_jungle)
 "amD" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "amE" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "amG" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -2267,7 +2490,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_east_caves)
 "anP" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
 "anR" = (
@@ -2417,7 +2640,7 @@
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/east_river)
 "aoZ" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "apa" = (
@@ -2434,7 +2657,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
 "apo" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/crap_item,
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
@@ -2442,7 +2665,7 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/river/east_river)
 "apq" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
 "apt" = (
@@ -2574,7 +2797,7 @@
 "aqH" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aqI" = (
 /obj/structure/fence,
@@ -2604,7 +2827,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/west_jungle)
 "aqS" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/west_jungle)
 "aqV" = (
 /obj/structure/fence,
@@ -2754,7 +2977,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "arV" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "asa" = (
@@ -2910,14 +3133,14 @@
 /area/lv624/lazarus/research)
 "asX" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/west_jungle)
 "asY" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
 "asZ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "ata" = (
@@ -3259,7 +3482,7 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "auM" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "auO" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -3335,29 +3558,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"avk" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/sword{
-	layer = 3.1;
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "avm" = (
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
@@ -3698,7 +3898,7 @@
 /area/lv624/lazarus/research)
 "awL" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_central_jungle)
 "awM" = (
 /obj/item/prop/alien/hugger,
@@ -3734,7 +3934,7 @@
 /area/lv624/lazarus/fitness)
 "awQ" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_central_jungle)
 "awR" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -4145,7 +4345,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "ayU" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_central_jungle)
 "ayV" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -4254,7 +4454,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/sleep_male)
 "azr" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
@@ -4389,31 +4589,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
 "azY" = (
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/effect/spider/stickyweb,
 /obj/effect/decal/remains/xeno{
 	pixel_x = 1;
 	pixel_y = -31
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 4
 	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
+/obj/effect/spider/stickyweb,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "azZ" = (
@@ -4657,29 +4841,13 @@
 /turf/open/floor,
 /area/lv624/lazarus/sleep_female)
 "aBh" = (
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
 /obj/effect/decal/remains/xeno{
 	pixel_x = -1;
 	pixel_y = -31
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -4767,6 +4935,9 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBA" = (
@@ -4787,7 +4958,9 @@
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aBE" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aBF" = (
@@ -4836,7 +5009,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aBQ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
@@ -4866,11 +5039,16 @@
 /area/lv624/lazarus/sleep_male)
 "aBV" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBW" = (
 /obj/item/stack/medical/advanced/bruise_pack,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBY" = (
@@ -4885,9 +5063,6 @@
 	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
-"aCa" = (
-/turf/open/floor/whitegreen,
-/area/lv624/lazarus/main_hall)
 "aCb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -4940,7 +5115,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
 "aCp" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
 "aCq" = (
@@ -4987,10 +5162,6 @@
 "aCw" = (
 /turf/open/floor/whitegreencorner,
 /area/lv624/lazarus/main_hall)
-"aCx" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/floor/grass,
-/area/lv624/lazarus/main_hall)
 "aCy" = (
 /turf/open/floor/whitegreencorner/west,
 /area/lv624/lazarus/main_hall)
@@ -5011,7 +5182,6 @@
 "aCB" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
@@ -5104,9 +5274,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"aCX" = (
-/turf/open/floor/grass,
-/area/lv624/lazarus/main_hall)
 "aCY" = (
 /obj/structure/closet{
 	density = 0;
@@ -5133,7 +5300,6 @@
 "aDa" = (
 /obj/structure/bed,
 /obj/item/bedsheet/mime,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aDb" = (
@@ -5170,6 +5336,9 @@
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aDq" = (
@@ -5202,7 +5371,8 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "aDw" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aDx" = (
@@ -5217,12 +5387,6 @@
 "aDz" = (
 /obj/structure/bed,
 /obj/structure/machinery/light,
-/turf/open/floor/purple/northwest,
-/area/lv624/lazarus/sleep_female)
-"aDA" = (
-/obj/structure/bed,
-/obj/structure/machinery/light,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aDB" = (
@@ -5284,10 +5448,6 @@
 "aDT" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/toilet)
-"aDU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/closed/wall,
-/area/lv624/lazarus/toilet)
 "aDV" = (
 /turf/open/floor/plating/asteroidwarning/southwest,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -5310,10 +5470,6 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aDY" = (
-/turf/closed/wall,
-/area/lv624/lazarus/quart)
-"aEa" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/closed/wall,
 /area/lv624/lazarus/quart)
 "aEb" = (
@@ -5400,20 +5556,12 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
-"aEC" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/toilet)
 "aED" = (
 /obj/structure/machinery/shower{
 	dir = 4
 	},
 /obj/effect/glowshroom,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aEE" = (
@@ -5424,14 +5572,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/freezerfloor,
-/area/lv624/lazarus/toilet)
-"aEF" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan,
-/turf/closed/wall,
 /area/lv624/lazarus/toilet)
 "aEG" = (
 /obj/structure/closet/coffin{
@@ -5440,9 +5581,6 @@
 	opened = 1
 	},
 /obj/effect/landmark/survivor_spawner,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/chapel/north,
 /area/lv624/lazarus/chapel)
 "aEH" = (
@@ -5451,9 +5589,6 @@
 	frequency = 1469;
 	name = "General Listening Channel";
 	pixel_y = 30
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
 	},
 /turf/open/floor/chapel/east,
 /area/lv624/lazarus/chapel)
@@ -5465,30 +5600,12 @@
 /turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "aEK" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/chapel/north,
-/area/lv624/lazarus/chapel)
-"aEL" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/chapel/east,
 /area/lv624/lazarus/chapel)
 "aEM" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/jungle/west_jungle)
-"aEO" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
 "aEP" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -5501,32 +5618,19 @@
 	},
 /turf/open/floor/whitegreencorner,
 /area/lv624/lazarus/main_hall)
-"aER" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/lv624/lazarus/main_hall)
 "aES" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/whitegreencorner/west,
 /area/lv624/lazarus/main_hall)
-"aET" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/quart)
 "aEU" = (
 /obj/structure/largecrate/random,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
@@ -5558,11 +5662,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/lazarus/quart)
-"aEY" = (
-/obj/structure/largecrate/random,
-/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aEZ" = (
@@ -5613,6 +5712,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFl" = (
@@ -5757,6 +5857,7 @@
 /obj/structure/machinery/shower{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aFP" = (
@@ -5827,7 +5928,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGg" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
 "aGh" = (
@@ -5857,6 +5958,7 @@
 	name = "\improper Nexus Dome Bathroom";
 	req_access_txt = "100"
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGp" = (
@@ -5928,10 +6030,16 @@
 /obj/structure/sink{
 	pixel_y = 30
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGJ" = (
 /obj/effect/landmark/crap_item,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGK" = (
@@ -6024,7 +6132,7 @@
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "aHe" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/main_hall)
 "aHf" = (
@@ -6081,7 +6189,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHq" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHr" = (
@@ -6286,7 +6394,7 @@
 "aIz" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/west_jungle)
 "aIA" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
@@ -6381,12 +6489,17 @@
 "aJd" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "aJe" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "aJf" = (
@@ -6503,7 +6616,6 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "aJJ" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/closed/wall/mineral/gold{
 	desc = "Here sits a golden statue of the sun, meant to praise the sky in it's benevolence.";
 	name = "Statue of the Sky"
@@ -6600,7 +6712,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "aKg" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "aKh" = (
@@ -6645,14 +6757,14 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_central_jungle)
 "aKp" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aKq" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/gm/grass/grass2,
+/turf/open/floor/plating,
 /area/lv624/lazarus/yggdrasil)
 "aKr" = (
 /obj/structure/window_frame/colony,
@@ -6671,7 +6783,9 @@
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "aKB" = (
@@ -7022,7 +7136,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/east_jungle)
 "aMt" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aMz" = (
@@ -7379,9 +7493,6 @@
 "aOF" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor,
 /area/lv624/lazarus/chapel)
 "aOG" = (
@@ -7424,6 +7535,9 @@
 /obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOQ" = (
@@ -7436,6 +7550,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/crap_item,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOS" = (
@@ -7573,6 +7688,9 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aPE" = (
@@ -7586,9 +7704,6 @@
 /obj/item/storage/bible,
 /obj/structure/machinery/light/small{
 	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
 	},
 /obj/effect/landmark/good_item,
 /turf/open/floor,
@@ -7652,7 +7767,7 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aPY" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/east_central_jungle)
 "aPZ" = (
@@ -7979,21 +8094,15 @@
 /turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
 /area/lv624/lazarus/landing_zones/lz2)
 "aRI" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/effect/landmark/good_item,
-/turf/open/floor/wood,
-/area/lv624/lazarus/hop)
-"aRK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+	dir = 10
 	},
-/turf/closed/wall/r_wall,
+/turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "aRN" = (
 /obj/structure/flora/bush,
-/obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aRO" = (
@@ -8005,9 +8114,6 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aRR" = (
@@ -8017,16 +8123,10 @@
 	dir = 8
 	},
 /obj/item/tool/kitchen/rollingpin,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aRU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -8036,18 +8136,12 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
-"aRW" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/bar,
-/area/lv624/lazarus/canteen)
 "aRX" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/pipes/vents/pump{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
@@ -8234,6 +8328,9 @@
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Nexus Dome Command Quarter";
 	req_access_txt = "100"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/hop)
@@ -8519,7 +8616,7 @@
 /turf/open/floor/delivery,
 /area/lv624/lazarus/comms)
 "aUl" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/north_tcomms_road)
 "aUo" = (
 /obj/effect/spawner/random/toolbox,
@@ -8614,22 +8711,11 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hop)
 "aUH" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan,
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
-"aUI" = (
-/obj/structure/largecrate/random,
-/obj/structure/pipes/standard/simple/hidden/cyan{
+/obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
-"aUJ" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/kitchen)
 "aUL" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -8645,7 +8731,7 @@
 /area/lv624/lazarus/kitchen)
 "aUN" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
@@ -8703,7 +8789,7 @@
 "aVk" = (
 /obj/structure/sign/safety/maint,
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_nexus_road)
 "aVl" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -8737,6 +8823,9 @@
 /area/lv624/lazarus/hop)
 "aVr" = (
 /mob/living/simple_animal/mouse,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aVs" = (
@@ -8846,7 +8935,7 @@
 	pixel_y = -22
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_west_jungle)
 "aVU" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -9236,7 +9325,7 @@
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aXA" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aXB" = (
@@ -9287,7 +9376,7 @@
 	},
 /obj/effect/decal/remains/xeno,
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/west_tcomms_road)
 "aXJ" = (
 /obj/structure/foamed_metal{
@@ -9676,13 +9765,10 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aZz" = (
-/obj/structure/filingcabinet/security{
-	desc = "A large cabinet with hard copy security records.";
-	name = "Security Records"
-	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/redcorner/north,
 /area/lv624/lazarus/security)
@@ -9712,9 +9798,6 @@
 /area/lv624/lazarus/canteen)
 "aZD" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aZE" = (
@@ -9879,7 +9962,7 @@
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 6
 	},
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "bcU" = (
@@ -9913,7 +9996,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "beB" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 8
 	},
 /obj/structure/flora/jungle/vines/heavy,
@@ -10057,24 +10140,8 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "btr" = (
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -10119,11 +10186,11 @@
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "bvS" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_east_caves)
 "bvX" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "bwc" = (
@@ -10217,26 +10284,12 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "bEU" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
 /obj/structure/flora/jungle/vines/heavy,
 /obj/effect/decal/remains/xeno{
 	pixel_x = 1;
 	pixel_y = 31
 	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
+/obj/structure/showcase/yautja,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "bFa" = (
@@ -10680,7 +10733,7 @@
 /area/lv624/ground/caves/south_central_caves)
 "cys" = (
 /obj/structure/foamed_metal,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_central_jungle)
 "czq" = (
 /obj/effect/landmark/objective_landmark/science,
@@ -11016,7 +11069,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "dlh" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/bed/chair/comfy/yautja,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
@@ -11059,7 +11112,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/lv624/ground/colony/telecomm/cargo)
 "dqK" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "drm" = (
@@ -11207,7 +11260,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "dFk" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 4
 	},
 /obj/structure/flora/jungle/vines/heavy,
@@ -11317,7 +11370,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "dMc" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_central_jungle)
 "dMF" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -11482,7 +11535,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "ecO" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/west_nexus_road)
 "edS" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -11703,27 +11756,6 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/east_central_jungle)
-"eAr" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "eBu" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass2,
@@ -11736,7 +11768,7 @@
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "eCx" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "eCF" = (
@@ -11856,7 +11888,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/jungle/south_east_jungle)
 "ePV" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "eQh" = (
@@ -11908,7 +11940,7 @@
 /area/lv624/ground/river/east_river)
 "eYQ" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "eZg" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
@@ -12148,21 +12180,8 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "fzZ" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
+/obj/structure/showcase/yautja/alt,
 /obj/structure/flora/jungle/vines/heavy,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "fAs" = (
@@ -12247,7 +12266,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "fGO" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "fHi" = (
@@ -12369,7 +12388,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
 "fSA" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -12414,7 +12433,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "fYG" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "fZO" = (
@@ -12778,8 +12797,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
 "gRm" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder/north,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "gRx" = (
 /turf/open/gm/dirtgrassborder/south,
@@ -12853,7 +12872,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/south_east_caves)
 "gWI" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "gXu" = (
@@ -13052,7 +13071,7 @@
 "hqS" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "hrD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -13207,7 +13226,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "hJW" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "hKk" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -13220,7 +13239,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "hLu" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_central_jungle)
 "hLB" = (
 /obj/structure/platform/metal/almayer/east,
@@ -13325,14 +13344,14 @@
 /turf/open/floor/plating/platingdmg1,
 /area/lv624/lazarus/secure_storage)
 "hTR" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_east_caves)
 "hUs" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
 "hUD" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "hUK" = (
@@ -13344,7 +13363,7 @@
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/east_river)
 "hWZ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "hXt" = (
@@ -13402,8 +13421,9 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/stack/sheet/animalhide/xeno{
-	name = "Warrior hide"
+/obj/item/skull/warrior{
+	pixel_y = 3;
+	anchored = 1
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
@@ -13417,20 +13437,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "idz" = (
-/obj/item/weapon/sword{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 8
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
@@ -13513,7 +13521,7 @@
 /obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
 	pixel_x = 8
 	},
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "ilO" = (
@@ -13695,7 +13703,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_central_jungle)
 "iJs" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "iJA" = (
 /obj/effect/landmark/monkey_spawn,
@@ -13770,7 +13778,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "iSg" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "iTQ" = (
@@ -14020,7 +14028,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "jxR" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "jzh" = (
@@ -14146,7 +14154,7 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "jKI" = (
 /obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "jKX" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -14170,7 +14178,7 @@
 /area/lv624/ground/river/central_river)
 "jLR" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/west_central_jungle)
 "jLY" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
@@ -14202,6 +14210,9 @@
 "jNR" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/main_hall)
 "jQj" = (
@@ -14233,7 +14244,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/grimy,
 /area/lv624/lazarus/hop)
 "jRm" = (
@@ -14269,29 +14280,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/east_river)
-"jSp" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = -7
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "jTm" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
@@ -14346,6 +14334,7 @@
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
 	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
 	name = "alien sarcophagus"
 	},
 /turf/open/floor/corsat/squareswood/north,
@@ -14450,7 +14439,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ksM" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_central_jungle)
 "ksQ" = (
 /obj/structure/surface/rack,
@@ -14531,7 +14520,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "kyN" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "kza" = (
@@ -14643,7 +14632,7 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "kJq" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "kJu" = (
 /obj/structure/flora/jungle/planttop1,
@@ -14723,9 +14712,7 @@
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "kSH" = (
-/obj/structure/bed/alien{
-	color = "#aba9a9"
-	},
+/obj/structure/bed/alien/yautja,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "kSN" = (
@@ -14774,7 +14761,7 @@
 /area/lv624/lazarus/comms)
 "kXE" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_central_jungle)
 "kYx" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -14957,7 +14944,7 @@
 /area/lv624/lazarus/engineering)
 "lxr" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "lxX" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
@@ -15002,7 +14989,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "lAv" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/caves/sand_temple)
@@ -15039,10 +15026,6 @@
 /obj/effect/decal/cleanable/blood/gibs/robot/down,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
-"lDh" = (
-/obj/item/clothing/suit/armor/yautja_flavor,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "lEY" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
@@ -15100,20 +15083,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/south_central_jungle)
 "lJm" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
+/obj/structure/showcase/yautja/alt,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "lJo" = (
@@ -15239,7 +15209,7 @@
 /turf/open/floor/warning/northeast,
 /area/lv624/lazarus/landing_zones/lz2)
 "lUc" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "lUy" = (
@@ -15303,7 +15273,7 @@
 	layer = 4.13;
 	pixel_y = 18
 	},
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "mbu" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -15490,7 +15460,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "mrQ" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
@@ -15546,7 +15516,7 @@
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
 "mxd" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/quartstorage/outdoors)
 "mxW" = (
@@ -15590,7 +15560,7 @@
 /area/lv624/ground/caves/north_east_caves)
 "mEw" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "mFu" = (
 /obj/effect/landmark/crap_item,
@@ -15729,24 +15699,8 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "mVg" = (
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -15801,7 +15755,7 @@
 /turf/open/floor/plating/asteroidwarning,
 /area/lv624/lazarus/landing_zones/lz2)
 "ndk" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
 "ndK" = (
@@ -15899,7 +15853,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "npQ" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "nqt" = (
@@ -15972,33 +15926,11 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_west_jungle)
 "nvS" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
 /obj/effect/decal/remains/xeno{
 	pixel_x = -1;
 	pixel_y = 31
 	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
+/obj/structure/showcase/yautja,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "nwI" = (
@@ -16054,16 +15986,8 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/robotics)
 "nEo" = (
-/obj/item/stack/sheet/metal{
-	amount = 3
-	},
-/obj/item/stack/sheet/metal{
-	amount = 3
-	},
-/obj/item/clothing/shoes/yautja/hunter{
-	anchored = 1
-	},
-/turf/open/gm/dirt,
+/obj/structure/showcase/yautja,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "nED" = (
 /obj/item/weapon/unathiknife{
@@ -16282,7 +16206,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "nVG" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "nWe" = (
@@ -16348,7 +16272,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "lv-hydro"
 	},
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "oek" = (
 /turf/open/gm/coast/north,
@@ -16608,7 +16532,7 @@
 /turf/open/gm/coast/west,
 /area/lv624/ground/barrens/east_barrens)
 "oER" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "oFf" = (
@@ -16708,7 +16632,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "oRH" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "oRY" = (
 /obj/structure/surface/rack,
@@ -16808,7 +16732,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "pas" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "pat" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -17031,7 +16955,7 @@
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/central_river)
 "pxs" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "pyG" = (
@@ -17076,7 +17000,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "pBk" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "pBH" = (
@@ -17095,10 +17019,9 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/stack/sheet/animalhide/xeno{
-	color = "#524e4e";
-	desc = "An old hide from a fearsome creature.";
-	name = "hunter hide"
+/obj/item/skull/hunter{
+	pixel_y = 2;
+	anchored = 1
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
@@ -17193,7 +17116,7 @@
 /area/lv624/lazarus/quartstorage)
 "pKC" = (
 /obj/effect/landmark/lizard_spawn,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_east_jungle)
 "pKS" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -17214,7 +17137,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_west_caves)
 "pMM" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/east_jungle)
 "pMV" = (
@@ -17473,7 +17396,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
 "qnQ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
 "qpX" = (
@@ -17510,31 +17433,9 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
-"quK" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "qvf" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "qvC" = (
 /obj/structure/fence,
@@ -17571,7 +17472,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/caves/sand_temple)
 "qAu" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "qAP" = (
@@ -17624,7 +17525,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "qGH" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
 "qGK" = (
@@ -17648,7 +17549,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_tcomms_road)
 "qJe" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
 "qJg" = (
@@ -17703,7 +17604,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "qPx" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "qPY" = (
@@ -18009,10 +17910,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "rwB" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 1
 	},
-/turf/open/gm/dirt,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rwK" = (
 /obj/effect/decal/remains/xeno,
@@ -18124,7 +18025,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "rGW" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "rGZ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -18164,9 +18065,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "rJd" = (
-/obj/structure/bed/alien{
-	color = "#aba9a9"
-	},
+/obj/structure/bed/alien/yautja,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rJS" = (
@@ -18191,7 +18090,8 @@
 "rMR" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp/green{
-	pixel_x = 3
+	pixel_x = 19;
+	pixel_y = 4
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
@@ -18244,7 +18144,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "rTK" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/north_tcomms_road)
 "rTT" = (
 /turf/open/auto_turf/strata_grass/layer1,
@@ -18500,7 +18400,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
 "sxa" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "sxl" = (
@@ -18550,7 +18450,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "sBg" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -18578,7 +18478,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "sCX" = (
 /obj/structure/flora/jungle/vines/light_1,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "sDE" = (
@@ -18656,7 +18556,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "sLX" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
@@ -18691,7 +18591,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "sOZ" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "sPm" = (
 /obj/effect/landmark/hunter_primary,
@@ -18731,7 +18631,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/east_jungle)
 "sSE" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/quartstorage/outdoors)
 "sTB" = (
@@ -18776,27 +18676,6 @@
 /obj/structure/largecrate,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
-"sWL" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "sXg" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -18866,7 +18745,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "teS" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_west_jungle)
 "tfA" = (
 /obj/structure/surface/rack,
@@ -18899,28 +18778,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "thn" = (
-/obj/item/weapon/sword{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
+/obj/structure/showcase/yautja{
+	dir = 4
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
@@ -19192,23 +19051,6 @@
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
-"tJh" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1
-	},
-/obj/item/clothing/mask/gas/yautja/damaged{
-	anchored = 1;
-	pixel_y = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "tJN" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
@@ -19238,7 +19080,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "tMh" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -19306,7 +19148,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "tSN" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "tTh" = (
@@ -19382,7 +19224,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "ubb" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "ubJ" = (
@@ -19537,7 +19379,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "unT" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "uop" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -19597,7 +19439,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "uuV" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "uve" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -19661,6 +19503,7 @@
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
 	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
 	name = "alien sarcophagus"
 	},
 /obj/structure/flora/jungle/vines/heavy,
@@ -19721,7 +19564,7 @@
 /turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
 "uKT" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/yautja{
 	dir = 8
 	},
 /turf/open/gm/dirt,
@@ -20153,7 +19996,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "vGj" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 10
 	},
@@ -20207,7 +20050,7 @@
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "vLO" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/lazarus/quartstorage/outdoors)
 "vMA" = (
 /obj/structure/stairs/perspective{
@@ -20304,7 +20147,7 @@
 /area/lv624/lazarus/secure_storage)
 "vUj" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_west_jungle)
 "vUw" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -20505,27 +20348,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
-"woM" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/weapon/sword{
-	layer = 3.1;
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/clothing/shoes/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/lv624/ground/caves/sand_temple)
 "woT" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 4
@@ -20561,7 +20383,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_east_jungle)
 "wty" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "wvO" = (
@@ -20584,7 +20406,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "wzI" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
 "wAF" = (
@@ -20595,16 +20417,12 @@
 /area/lv624/ground/caves/south_west_caves)
 "wAI" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/west_central_jungle)
 "wAP" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
-"wBS" = (
-/obj/item/clothing/suit/armor/yautja_flavor,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "wCs" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 6
@@ -20811,7 +20629,7 @@
 "wUv" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/east_jungle)
 "wUz" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -20862,7 +20680,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/jungle/west_central_jungle)
 "wXy" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "wYp" = (
@@ -20995,7 +20813,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "xsN" = (
 /obj/structure/flora/jungle/vines/light_1,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "xuk" = (
@@ -21257,7 +21075,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
 "xXZ" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_central_jungle)
 "xYj" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -21281,6 +21099,10 @@
 "ybQ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/weapon/pole/fancy_cane,
+/obj/item/clock{
+	pixel_x = -33;
+	pixel_y = 5
+	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "ydp" = (
@@ -23661,7 +23483,7 @@ kJu
 aVA
 aKf
 aLj
-exf
+xdO
 acr
 aWo
 aWP
@@ -23669,7 +23491,7 @@ aWO
 aWO
 qBW
 axR
-xdO
+exf
 hUs
 aXh
 aKb
@@ -26863,7 +26685,7 @@ iPB
 bkY
 mWe
 xTT
-xdO
+exf
 aKb
 aKb
 aac
@@ -27088,10 +26910,10 @@ nLk
 caX
 aXh
 aXh
-exf
-xTT
-xTT
 xdO
+xTT
+xTT
+exf
 aKb
 aKb
 aac
@@ -27316,10 +27138,10 @@ nLk
 jHT
 cQJ
 aXh
-exf
-xTT
-xTT
 xdO
+xTT
+xTT
+exf
 aKb
 aKb
 aac
@@ -27955,7 +27777,7 @@ qKC
 pKm
 aAp
 nmO
-aZP
+aRx
 aOB
 uzH
 uzH
@@ -27980,7 +27802,7 @@ uzH
 uzH
 uzH
 uzH
-uzH
+adl
 aDV
 aRG
 tZD
@@ -28183,7 +28005,7 @@ hdh
 oKP
 aAp
 nmO
-aZP
+aRx
 aOB
 aRg
 aCh
@@ -28411,7 +28233,7 @@ hdh
 hdh
 aAp
 aXX
-aZP
+aRx
 aOB
 oOB
 aRg
@@ -28639,7 +28461,7 @@ oXI
 aAp
 fuy
 aXX
-aZP
+aRx
 aOB
 aTv
 aRg
@@ -28867,7 +28689,7 @@ aAp
 aAp
 cIL
 nmO
-aZP
+aRx
 aOB
 kvE
 aRg
@@ -29095,7 +28917,7 @@ aAp
 aAp
 aAp
 nmO
-aZP
+aRx
 aOB
 aTt
 aRg
@@ -29323,7 +29145,7 @@ oTJ
 aAp
 aAp
 aXX
-aZP
+aRx
 aOB
 oOB
 aRg
@@ -29551,7 +29373,7 @@ aAp
 aAp
 nmO
 aXX
-aZP
+aRx
 aOB
 aTv
 aRg
@@ -29779,7 +29601,7 @@ aAp
 aAp
 cIL
 nmO
-aZP
+aRx
 aOB
 kvE
 aRg
@@ -30007,7 +29829,7 @@ aAp
 aAp
 aAp
 nmO
-aZP
+aRx
 aOB
 aTt
 aRg
@@ -30235,7 +30057,7 @@ aAp
 aAp
 nmO
 aXX
-aZP
+aRx
 aOB
 oOB
 aRg
@@ -30463,7 +30285,7 @@ aAp
 aAp
 aXX
 aXX
-aZP
+aRx
 aOB
 aTv
 aRg
@@ -30691,7 +30513,7 @@ aAp
 aAp
 nmO
 aXX
-aZP
+aRx
 aOB
 kvE
 aRg
@@ -30919,7 +30741,7 @@ aAp
 cIL
 cIL
 nmO
-aZP
+aRx
 aOB
 aRg
 aAJ
@@ -31147,7 +30969,7 @@ aAp
 aAp
 nmO
 aXX
-aZP
+aRx
 pRh
 niV
 niV
@@ -31413,7 +31235,7 @@ gkh
 buw
 efp
 efp
-uSq
+ntL
 eUI
 qIO
 qIO
@@ -31603,17 +31425,17 @@ aAp
 aAp
 aAp
 nmO
-aZP
+aRx
 aDv
 oVR
 aDv
-aRx
-aXX
-aXX
-aXX
-aXX
-aXX
 aZP
+aXX
+aXX
+aXX
+aXX
+aXX
+aRx
 nsA
 aDv
 aDv
@@ -31641,7 +31463,7 @@ kjp
 hSp
 efp
 efp
-uSq
+ntL
 njC
 qIO
 qIO
@@ -31831,17 +31653,17 @@ aAp
 aAp
 aAp
 aAp
-aZP
-aDv
-aDv
-aDv
 aRx
+aDv
+aDv
+aDv
+aZP
 svh
 aXX
 aXX
 nHZ
 aXX
-aZP
+aRx
 aDv
 aDv
 aDv
@@ -31869,7 +31691,7 @@ fJQ
 efp
 efp
 gDu
-uSq
+ntL
 rwK
 qIO
 qIO
@@ -32059,11 +31881,11 @@ wqO
 aAp
 aAp
 aAp
-aZP
-aDv
-aDv
-aDv
 aRx
+aDv
+aDv
+aDv
+aZP
 aXX
 aXX
 vRR
@@ -32074,10 +31896,10 @@ aEs
 bwq
 aDv
 aDv
-aRx
+aZP
 anP
 aXX
-aZP
+aRx
 aOB
 wHp
 ncV
@@ -32097,11 +31919,11 @@ ply
 efp
 efp
 efp
-uSq
+ntL
 xOL
 qIO
 jaw
-ntL
+uSq
 kxI
 kxI
 kxI
@@ -32298,11 +32120,11 @@ wZc
 aXX
 aXX
 aXX
-aZP
-aDv
-aDv
-aDv
 aRx
+aDv
+aDv
+aDv
+aZP
 vcY
 svh
 xgE
@@ -32325,11 +32147,11 @@ gDu
 hRI
 efp
 efp
-uSq
-qIO
-qIO
-qIO
 ntL
+qIO
+qIO
+qIO
+uSq
 kxI
 mVK
 kxI
@@ -32526,11 +32348,11 @@ ado
 avH
 svh
 aXX
-aZP
+aRx
 aDv
 aCI
 bwq
-aRx
+aZP
 twg
 aXX
 xgE
@@ -32553,11 +32375,11 @@ gDu
 gDu
 efp
 efp
-uSq
+ntL
 qIO
 hDX
 qIO
-ntL
+uSq
 lUc
 kxI
 kxI
@@ -32754,11 +32576,11 @@ aCk
 ado
 aXX
 aXX
-aZP
+aRx
 oVR
 aDv
 aDv
-aRx
+aZP
 aXX
 aXX
 xgE
@@ -32781,11 +32603,11 @@ efp
 uRb
 efp
 efp
-uSq
+ntL
 qIO
 qIO
 pHx
-ntL
+uSq
 kxI
 kxI
 rCV
@@ -32982,11 +32804,11 @@ aCk
 ado
 aXX
 aXX
-aZP
-aDv
-aDv
-aDv
 aRx
+aDv
+aDv
+aDv
+aZP
 aXX
 svh
 xgE
@@ -33009,11 +32831,11 @@ efp
 efp
 snr
 mmu
-uSq
-qIO
-qIO
-qIO
 ntL
+qIO
+qIO
+qIO
+uSq
 kxI
 pYp
 kxI
@@ -33210,7 +33032,7 @@ aCl
 ado
 aXX
 aXX
-aZP
+aRx
 aDv
 aDv
 aDv
@@ -33241,7 +33063,7 @@ qeY
 qIO
 qIO
 qIO
-ntL
+uSq
 kxI
 rCV
 kxI
@@ -33469,7 +33291,7 @@ qIO
 qIO
 qIO
 qIO
-ntL
+uSq
 kxI
 kxI
 tsa
@@ -33697,7 +33519,7 @@ qIO
 qIO
 njC
 qIO
-ntL
+uSq
 kxI
 kxI
 kxI
@@ -33925,7 +33747,7 @@ qIO
 qIO
 qIO
 qIO
-ntL
+uSq
 kxI
 kxI
 lAX
@@ -34153,7 +33975,7 @@ qIO
 qIO
 qIO
 qIO
-ntL
+uSq
 kxI
 vgM
 kxI
@@ -34601,13 +34423,13 @@ sxY
 xgE
 aRf
 cPV
-uSq
-qIO
-qIO
-qIO
-qIO
-qIO
 ntL
+qIO
+qIO
+qIO
+qIO
+qIO
+uSq
 mVK
 kxI
 kxI
@@ -34829,13 +34651,13 @@ lFv
 xgE
 cPV
 cPV
-uSq
-qIO
-qIO
-qIO
-qIO
-qIO
 ntL
+qIO
+qIO
+qIO
+qIO
+qIO
+uSq
 kxI
 lUc
 kxI
@@ -35057,13 +34879,13 @@ pnl
 xgE
 cPV
 bwR
-uSq
-qIO
-qIO
-qIO
-qIO
-qIO
 ntL
+qIO
+qIO
+qIO
+qIO
+qIO
+uSq
 kxI
 kxI
 tsa
@@ -35285,13 +35107,13 @@ xgE
 ndK
 rBF
 bCH
-uSq
-qIO
-qIO
-qIO
-qIO
-qIO
 ntL
+qIO
+qIO
+qIO
+qIO
+qIO
+uSq
 kxI
 kxI
 kxI
@@ -35513,13 +35335,13 @@ oYx
 wMk
 wMk
 qGK
-uSq
+ntL
 qIO
 njC
 qIO
 qIO
 qIO
-ntL
+uSq
 kxI
 kxI
 kxI
@@ -35707,7 +35529,7 @@ psh
 psh
 psh
 kzv
-uiN
+fTf
 byY
 ylL
 byY
@@ -35716,7 +35538,7 @@ oGs
 oGs
 oGs
 hFO
-qUM
+fPH
 byY
 byY
 byY
@@ -35741,13 +35563,13 @@ ilf
 lsq
 wMk
 qGK
-uSq
-qIO
-qIO
-qIO
-qIO
-qIO
 ntL
+qIO
+qIO
+qIO
+qIO
+qIO
+uSq
 kxI
 kzu
 kxI
@@ -35779,7 +35601,7 @@ aaF
 xJG
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -35935,7 +35757,7 @@ nuW
 psh
 mvr
 psh
-uiN
+fTf
 byY
 byY
 byY
@@ -35949,7 +35771,7 @@ byY
 byY
 byY
 byY
-fPH
+qUM
 xEt
 bbU
 mfI
@@ -35969,13 +35791,13 @@ wJA
 wMk
 wMk
 rXW
-uSq
-qIO
-qIO
-qIO
-ctS
-ctS
 ntL
+qIO
+qIO
+qIO
+ctS
+ctS
+uSq
 kxI
 kxI
 jxG
@@ -36007,7 +35829,7 @@ aaF
 aaF
 aaF
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -36021,7 +35843,7 @@ aah
 aah
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaF
@@ -36163,7 +35985,7 @@ psh
 psh
 psh
 psh
-uiN
+fTf
 byY
 byY
 byY
@@ -36197,7 +36019,7 @@ rfH
 rIq
 rBF
 qGK
-uSq
+ntL
 njC
 qIO
 qIO
@@ -36235,7 +36057,7 @@ aaF
 aaF
 aaF
 aaw
-aaK
+aaH
 aah
 aaU
 aah
@@ -36249,7 +36071,7 @@ aah
 aah
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaF
@@ -36391,7 +36213,7 @@ pGD
 psh
 psh
 psh
-uiN
+fTf
 byY
 byY
 byY
@@ -36425,7 +36247,7 @@ bbp
 rIq
 wMk
 qGK
-uSq
+ntL
 qIO
 qIO
 qIO
@@ -36477,7 +36299,7 @@ aah
 aah
 aah
 aah
-aaH
+aaK
 aaw
 aaF
 aaF
@@ -36851,7 +36673,7 @@ psh
 psh
 psh
 psh
-uiN
+fTf
 byY
 byY
 byY
@@ -36917,7 +36739,7 @@ avm
 avm
 avm
 abk
-aaK
+aaH
 aah
 wrN
 aah
@@ -36934,7 +36756,7 @@ aau
 aah
 aah
 aah
-aaH
+aaK
 aaF
 abm
 abm
@@ -37079,17 +36901,17 @@ psh
 mvr
 psh
 nuW
-uiN
+fTf
 byY
 byY
 byY
 lIm
 lIm
+byY
 byY
 byY
 byY
 mun
-oGs
 oGs
 oGs
 oGs
@@ -37162,7 +36984,7 @@ aau
 aah
 aah
 aah
-aaH
+aaK
 abm
 abm
 abm
@@ -37307,7 +37129,7 @@ psh
 wqO
 jHd
 psh
-uiN
+fTf
 aBx
 byY
 byY
@@ -37329,7 +37151,7 @@ byY
 byY
 byY
 byY
-fTf
+uiN
 cPV
 cPV
 akq
@@ -37390,7 +37212,7 @@ aau
 aah
 aah
 aah
-aaH
+aaK
 aaw
 abm
 aaw
@@ -37535,29 +37357,29 @@ atO
 asT
 psh
 psh
-uiN
-byY
-byY
-byY
-byY
-byY
-ylL
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-ylL
-byY
-byY
-byY
-byY
-byY
 fTf
+byY
+byY
+byY
+byY
+byY
+ylL
+byY
+byY
+byY
+byY
+byY
+byY
+byY
+byY
+byY
+ylL
+byY
+byY
+byY
+byY
+byY
+uiN
 nhi
 cPV
 aRf
@@ -37618,7 +37440,7 @@ aau
 aah
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -37763,7 +37585,7 @@ axF
 asU
 psh
 cGb
-uiN
+fTf
 byY
 byY
 byY
@@ -37846,7 +37668,7 @@ aaC
 aaA
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -37991,7 +37813,7 @@ nMu
 asU
 psh
 psh
-uiN
+fTf
 byY
 byY
 byY
@@ -38074,7 +37896,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aax
@@ -38219,11 +38041,11 @@ ayI
 asU
 nVG
 psh
-uiN
-byY
-byY
-byY
 fTf
+byY
+byY
+byY
+uiN
 aJr
 aJr
 aJr
@@ -38237,7 +38059,7 @@ wkE
 aJr
 aJr
 aJr
-uiN
+fTf
 byY
 aTS
 byY
@@ -38302,7 +38124,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -38451,7 +38273,7 @@ lYB
 byY
 ylL
 byY
-fTf
+uiN
 aJr
 jGW
 jGW
@@ -38465,7 +38287,7 @@ aJr
 aJr
 aJr
 jGW
-uiN
+fTf
 byY
 byY
 byY
@@ -38530,7 +38352,7 @@ abb
 aau
 aah
 aaU
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -38656,7 +38478,7 @@ aqA
 txL
 tIg
 nSg
-opP
+gRx
 udP
 udP
 asU
@@ -38679,7 +38501,7 @@ byY
 aAq
 ylL
 byY
-fTf
+uiN
 qDQ
 aJr
 jGW
@@ -38758,7 +38580,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -38884,7 +38706,7 @@ apV
 pwq
 dId
 nSg
-opP
+gRx
 udP
 udP
 asV
@@ -38907,7 +38729,7 @@ byY
 byY
 byY
 aCo
-fTf
+uiN
 aJr
 aJr
 aDl
@@ -38923,7 +38745,7 @@ aJr
 aJr
 aJr
 aJr
-uiN
+fTf
 byY
 byY
 byY
@@ -38986,7 +38808,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -39135,7 +38957,7 @@ byY
 byY
 byY
 byY
-fTf
+uiN
 aJr
 aJr
 ltT
@@ -39151,7 +38973,7 @@ aJr
 jGW
 aJr
 aKZ
-uiN
+fTf
 byY
 byY
 byY
@@ -39214,7 +39036,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -39379,7 +39201,7 @@ aJr
 ujd
 aJr
 aJr
-uiN
+fTf
 byY
 byY
 byY
@@ -39442,7 +39264,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -39670,7 +39492,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -40127,7 +39949,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -40355,7 +40177,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -40480,11 +40302,11 @@ aoI
 hZg
 qJg
 nSg
-opP
+gRx
 udP
 udP
 udP
-aCS
+szy
 jHN
 jHN
 jHN
@@ -40583,7 +40405,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -40708,11 +40530,11 @@ pzt
 aqQ
 atV
 nSg
-opP
+gRx
 udP
 udP
 udP
-aCS
+szy
 bgQ
 buW
 jHN
@@ -40936,11 +40758,11 @@ anF
 nSg
 nSg
 anF
-szy
-udP
-udP
-udP
 aCS
+udP
+udP
+udP
+szy
 jHN
 eoo
 jHN
@@ -40962,7 +40784,7 @@ gsA
 iAA
 aJr
 aJr
-pIy
+iCN
 mKf
 mKf
 mKf
@@ -41164,11 +40986,11 @@ anS
 jHN
 jHN
 jHN
-szy
-udP
-udP
-udP
 aCS
+udP
+udP
+udP
+szy
 jHN
 jHN
 ofv
@@ -41190,7 +41012,7 @@ aJr
 jGW
 aLv
 aJr
-pIy
+iCN
 mKf
 mKf
 mKf
@@ -41269,7 +41091,7 @@ aaC
 aaA
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 wbM
@@ -41392,11 +41214,11 @@ jHN
 bgQ
 buW
 jHN
-szy
+aCS
 udP
 oua
 udP
-aCS
+szy
 atw
 adp
 adp
@@ -41418,7 +41240,7 @@ aJr
 aJr
 aJr
 aDn
-pIy
+iCN
 mKf
 qAP
 mKf
@@ -41497,7 +41319,7 @@ abb
 aaC
 aaA
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -41620,11 +41442,11 @@ jHN
 sWy
 eoo
 jHN
-szy
+aCS
 udP
 udP
 udP
-gRx
+opP
 adp
 auz
 atX
@@ -41646,7 +41468,7 @@ sOp
 pjY
 aJr
 aJr
-pIy
+iCN
 mKf
 mKf
 oLk
@@ -41703,7 +41525,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -41725,7 +41547,7 @@ abb
 abb
 aau
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -41874,10 +41696,10 @@ aJr
 aJr
 qDQ
 aOW
-pIy
-mKf
-mKf
 iCN
+mKf
+mKf
+pIy
 uxh
 uEb
 heZ
@@ -42076,7 +41898,7 @@ jHN
 jHN
 jHN
 jHN
-szy
+aCS
 udP
 udP
 udP
@@ -42102,10 +41924,10 @@ aJr
 aJr
 aJr
 aJr
-pIy
-mKf
-mKf
 iCN
+mKf
+mKf
+pIy
 uEb
 pXI
 cWr
@@ -42160,7 +41982,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -42182,7 +42004,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -42304,7 +42126,7 @@ anG
 jHN
 jHN
 jHN
-szy
+aCS
 udP
 udP
 udP
@@ -42333,7 +42155,7 @@ hEu
 pSt
 mKf
 mKf
-iCN
+pIy
 dJG
 mfu
 rGu
@@ -42532,7 +42354,7 @@ anG
 anT
 anT
 anG
-szy
+aCS
 udP
 udP
 udP
@@ -42561,7 +42383,7 @@ qAP
 mKf
 mKf
 mKf
-iCN
+pIy
 qdQ
 hSn
 jbd
@@ -42615,7 +42437,7 @@ abm
 abm
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -42639,7 +42461,7 @@ abb
 aau
 aah
 aah
-aaH
+aaK
 aaw
 aaF
 aaF
@@ -42843,7 +42665,7 @@ abm
 abm
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -43071,7 +42893,7 @@ abm
 aaw
 aaw
 abm
-aaK
+aaH
 aah
 aah
 aaU
@@ -43095,13 +42917,13 @@ abb
 aau
 aah
 aaU
-aaH
+aaK
 aaw
 aaw
 aaF
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 abm
@@ -43323,13 +43145,13 @@ abb
 aau
 aah
 aah
-aaH
-aaw
-aaw
-aaw
-aaw
-aaw
 aaK
+aaw
+aaw
+aaw
+aaw
+aaw
+aaH
 aah
 aah
 tdX
@@ -43528,7 +43350,7 @@ aaw
 abm
 abm
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -43551,13 +43373,13 @@ abb
 aau
 aah
 aah
-aaH
-aaw
-aaw
-aaw
-aaw
-aaw
 aaK
+aaw
+aaw
+aaw
+aaw
+aaw
+aaH
 aah
 aar
 tdX
@@ -43728,7 +43550,7 @@ aVk
 yle
 yle
 yle
-cqw
+mko
 kxI
 kxI
 lAX
@@ -43779,13 +43601,13 @@ abb
 aau
 aah
 aah
-aaH
-aaw
-aaw
-aaw
-aaw
-aaw
 aaK
+aaw
+aaw
+aaw
+aaw
+aaw
+aaH
 aah
 aah
 tdX
@@ -43952,11 +43774,11 @@ aKo
 aXo
 oUy
 lEY
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 jxG
 bFa
 kxI
@@ -43985,7 +43807,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aaY
@@ -44007,13 +43829,13 @@ abb
 aau
 aah
 aah
-aaH
-aaw
-aaw
-aaw
-aaw
-aaw
 aaK
+aaw
+aaw
+aaw
+aaw
+aaw
+aaH
 aah
 aah
 tdX
@@ -44131,7 +43953,7 @@ aoA
 anT
 jRm
 jRm
-iwh
+gYs
 aGY
 atw
 atz
@@ -44180,11 +44002,11 @@ oUy
 bbI
 bbN
 oUy
-mko
+cqw
 yle
 yle
 fXr
-cqw
+mko
 gzd
 eqs
 kxI
@@ -44213,7 +44035,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aaY
@@ -44235,13 +44057,13 @@ aat
 aav
 aah
 aah
-aaH
-aaw
-aaw
-aaw
-aaw
-aaw
 aaK
+aaw
+aaw
+aaw
+aaw
+aaw
+aaH
 aah
 aah
 tdX
@@ -44359,7 +44181,7 @@ anG
 anG
 jRm
 jRm
-iwh
+gYs
 oUy
 oUy
 aXv
@@ -44408,7 +44230,7 @@ bbI
 bbL
 ukk
 oUy
-mko
+cqw
 yle
 yle
 yle
@@ -44441,7 +44263,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aaY
@@ -44463,13 +44285,13 @@ aau
 aah
 aah
 aah
-aaH
-aaw
-aaw
-aaw
-aaw
-aaw
 aaK
+aaw
+aaw
+aaw
+aaw
+aaw
+aaH
 aah
 abm
 abm
@@ -44587,7 +44409,7 @@ anT
 jRm
 jRm
 jRm
-iwh
+gYs
 oUy
 oHx
 oUy
@@ -44636,15 +44458,15 @@ bbJ
 tmE
 bbO
 oUy
-mko
-yle
-yle
-yle
-yle
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+yle
+yle
+yle
+yle
+mko
 kxI
 kxI
 pYp
@@ -44669,7 +44491,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aaY
@@ -44691,7 +44513,7 @@ aav
 aah
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -44815,7 +44637,7 @@ anT
 xpf
 jRm
 mFu
-iwh
+gYs
 aWC
 oUy
 oUy
@@ -44864,15 +44686,15 @@ oUy
 oUy
 aOG
 oUy
-mko
-yle
-yle
-yle
-yle
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+yle
+yle
+yle
+yle
+mko
 kxI
 kxI
 tsa
@@ -44897,7 +44719,7 @@ aax
 aaE
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aaY
@@ -45040,10 +44862,10 @@ anG
 anT
 anT
 anG
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 oUy
 oUy
@@ -45092,7 +44914,7 @@ aSv
 aTw
 aQx
 oUy
-mko
+cqw
 yle
 yle
 yle
@@ -45100,7 +44922,7 @@ yle
 fXr
 yle
 yle
-cqw
+mko
 sBJ
 kxI
 tsa
@@ -45125,7 +44947,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aaZ
@@ -45268,10 +45090,10 @@ anG
 tyG
 tyG
 tyG
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 aKo
 oUy
 wvO
@@ -45294,15 +45116,15 @@ aBA
 aCP
 aAU
 aDy
-aEC
+aDT
 aDy
 aDy
 aDy
 aGI
-aGH
+abX
 aGo
-azt
-aJg
+aHK
+abK
 aJB
 aHZ
 azt
@@ -45328,7 +45150,7 @@ jgJ
 yle
 yle
 yle
-cqw
+mko
 kxI
 kxI
 tsa
@@ -45353,7 +45175,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -45496,10 +45318,10 @@ tyG
 tyG
 tyG
 xze
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 oUy
 aKo
@@ -45520,8 +45342,8 @@ azq
 aBT
 aCq
 aAP
-aAU
-aDT
+acz
+acx
 aED
 aFk
 aFO
@@ -45530,7 +45352,7 @@ aGJ
 aGH
 aDy
 azt
-aJh
+abL
 aJC
 aKv
 azt
@@ -45552,11 +45374,11 @@ oUy
 oUy
 oUy
 aWC
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 kxI
 kxI
 tsa
@@ -45581,7 +45403,7 @@ aaw
 aaw
 aaw
 aaw
-aaK
+aaH
 aah
 aah
 aah
@@ -45600,7 +45422,7 @@ aah
 aah
 aah
 aah
-aaH
+aaK
 aaw
 aaw
 aaw
@@ -45724,10 +45546,10 @@ tyG
 ldZ
 tyG
 tyG
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 lEY
 oUy
 aKo
@@ -45758,7 +45580,7 @@ aPs
 aHb
 aDy
 aHp
-aJh
+abL
 aJD
 aKv
 azt
@@ -45780,11 +45602,11 @@ oaL
 oUy
 aXP
 cIQ
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 kxI
 kxI
 tsa
@@ -45952,10 +45774,10 @@ tyG
 tyG
 tyG
 tyG
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 aKo
 oUy
 aKo
@@ -45973,12 +45795,12 @@ oUy
 azq
 aXc
 aBy
-aBV
+acA
 aCr
 aCR
 aBV
-aDU
-aEF
+aDy
+aDy
 aDT
 aDy
 aDy
@@ -45986,7 +45808,7 @@ aDy
 aDy
 aDy
 aIg
-aJh
+abL
 aJE
 aKv
 aKK
@@ -46008,11 +45830,11 @@ aQM
 oUy
 oUy
 oUy
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 kxI
 iUm
 tsa
@@ -46180,10 +46002,10 @@ tyG
 dvf
 tyG
 tyG
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 oUy
 aKo
@@ -46200,7 +46022,7 @@ oUy
 oUy
 azq
 aGZ
-aAU
+acz
 aBW
 azP
 azP
@@ -46214,7 +46036,7 @@ aQy
 aRh
 aGW
 aIh
-aJh
+abL
 aJD
 aKv
 aKL
@@ -46236,11 +46058,11 @@ aQM
 oUy
 tBJ
 oUy
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 kxI
 kxI
 kxI
@@ -46408,10 +46230,10 @@ tyG
 tyG
 nOX
 tyG
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 aKo
 aKo
@@ -46442,7 +46264,7 @@ aFR
 aFn
 acl
 aIi
-aJh
+abL
 aJG
 aKv
 azt
@@ -46464,11 +46286,11 @@ aQM
 aQM
 oUy
 pBk
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 kxI
 kxI
 tsa
@@ -46636,10 +46458,10 @@ fuY
 tyG
 tyG
 tyG
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 oUy
 aKo
@@ -46656,7 +46478,7 @@ oUy
 azp
 aAv
 aAU
-aBA
+acG
 aAU
 aCt
 aCT
@@ -46670,7 +46492,7 @@ aFo
 aFo
 aHH
 azt
-aJj
+abP
 aJH
 aJK
 azt
@@ -46692,11 +46514,11 @@ aZE
 aQM
 aXV
 oUy
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 mnK
 kxI
 kxI
@@ -46864,10 +46686,10 @@ fuY
 tyG
 eDy
 tyG
-gYs
+iwh
 mFu
 jRm
-iwh
+gYs
 aMD
 oUy
 oUy
@@ -46884,7 +46706,7 @@ azp
 azp
 azP
 azP
-aAU
+acI
 aBY
 azP
 azP
@@ -46898,7 +46720,7 @@ aFo
 aFo
 aHI
 azt
-azt
+aEP
 azt
 azt
 azt
@@ -46920,11 +46742,11 @@ aVo
 aQM
 aQM
 oUy
-mko
+cqw
 yle
 yle
 fXr
-cqw
+mko
 mVK
 kxI
 kxI
@@ -47092,10 +46914,10 @@ vSG
 fuY
 fuY
 tyG
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 oUy
 oUy
@@ -47112,7 +46934,7 @@ azq
 azN
 aAw
 aAW
-aAU
+acI
 aAU
 aCu
 aCU
@@ -47126,7 +46948,7 @@ aGs
 aGs
 aGs
 azt
-aJa
+abr
 aHZ
 azt
 azt
@@ -47148,11 +46970,11 @@ aVp
 aZF
 aSB
 oUy
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 kxI
 kxI
 kxI
@@ -47320,10 +47142,10 @@ vjH
 fuY
 fuY
 cpY
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 oUy
 aWC
@@ -47340,13 +47162,13 @@ azq
 azO
 aAx
 aAX
-aBA
+acG
 aAU
 aCv
 aJZ
 aDt
 azP
-aEL
+aFR
 aFn
 aFR
 aFn
@@ -47354,7 +47176,7 @@ aGs
 aHe
 aHJ
 azt
-aJa
+abr
 aJa
 aHZ
 azt
@@ -47367,8 +47189,8 @@ aZz
 aLl
 akh
 aRI
-aSA
-aSA
+aao
+aal
 aTC
 aQM
 jQX
@@ -47376,11 +47198,11 @@ aVq
 aVM
 aSB
 oUy
-mko
-yle
-yle
-yle
 cqw
+yle
+yle
+yle
+mko
 kxI
 kxI
 kxI
@@ -47548,10 +47370,10 @@ vSG
 fuY
 fuY
 cpY
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 bad
 oUy
@@ -47568,13 +47390,13 @@ azp
 azP
 azP
 azP
-aAU
+acI
 aBZ
 azP
 azP
 azP
 azP
-acc
+acl
 aFq
 acl
 acl
@@ -47582,7 +47404,7 @@ aGs
 aHf
 azt
 azt
-aJb
+abR
 aJa
 aJa
 aHZ
@@ -47594,7 +47416,7 @@ aKQ
 aLl
 aLl
 aQM
-aRK
+aQM
 aSB
 aSU
 aSB
@@ -47608,7 +47430,7 @@ uiz
 yle
 yle
 yle
-cqw
+mko
 kxI
 tsa
 kxI
@@ -47776,10 +47598,10 @@ vtt
 vtt
 cpY
 cpY
-gYs
-jRm
-jRm
 iwh
+jRm
+jRm
+gYs
 oUy
 oUy
 oUy
@@ -47796,13 +47618,13 @@ azr
 azt
 aAy
 azt
-azt
+aEP
 azt
 azt
 azt
 aDu
 aDW
-aEO
+aQN
 azt
 azt
 azt
@@ -47810,7 +47632,7 @@ azt
 azt
 azt
 aIj
-aJb
+abR
 aJc
 aJf
 aJa
@@ -47822,9 +47644,9 @@ aIe
 aDu
 aPZ
 aQN
+azt
+azt
 aEP
-azt
-azt
 azt
 aTZ
 aEP
@@ -47836,7 +47658,7 @@ yle
 yle
 fXr
 yle
-cqw
+mko
 kxI
 kyN
 kxI
@@ -48004,7 +47826,7 @@ vSG
 fuY
 fuY
 cpY
-gYs
+iwh
 jRm
 mFu
 aXi
@@ -48024,21 +47846,21 @@ azt
 azt
 azQ
 azt
+acP
+azt
+azt
+azt
+azt
+azt
+azt
+azt
+azt
+azt
+azt
+azt
 aBB
 azt
-azt
-azt
-azt
-azt
-aEP
-azt
-azt
-azt
-azt
-azt
-aBB
-azt
-aJc
+abT
 aJI
 aKx
 aJf
@@ -48050,9 +47872,9 @@ azt
 azt
 azt
 azt
-aEP
-aIe
 azt
+aIe
+aEP
 azt
 azt
 aEP
@@ -48064,7 +47886,7 @@ yle
 yle
 yle
 yle
-cqw
+mko
 kxI
 kxI
 kxI
@@ -48232,7 +48054,7 @@ vSG
 fuY
 fuY
 cpY
-gYs
+iwh
 jRm
 jRm
 jRm
@@ -48252,13 +48074,13 @@ azt
 azt
 azQ
 aAY
+aEP
 azt
-azt
 aCw
 aCw
 aCw
 aCw
-aEQ
+aCw
 aCw
 aCw
 aCw
@@ -48267,7 +48089,7 @@ aHg
 azt
 aWj
 aJd
-aJI
+abJ
 jNR
 aJc
 azt
@@ -48278,9 +48100,9 @@ aCw
 aCw
 aCw
 aCw
+aCw
+aCw
 aEQ
-aCw
-aCw
 azt
 azt
 aEP
@@ -48292,7 +48114,7 @@ yle
 yle
 yle
 yle
-cqw
+mko
 wkP
 knp
 kxI
@@ -48460,7 +48282,7 @@ vtt
 fuY
 fuY
 oER
-gYs
+iwh
 jRm
 jRm
 jRm
@@ -48480,14 +48302,14 @@ azu
 azu
 azt
 azt
-azt
-aCa
-aCx
-aCX
-aDw
-aCX
-aER
+acR
+aMh
+aFT
 aFt
+aDw
+aFt
+aSV
+acd
 aFT
 aFt
 aGN
@@ -48508,11 +48330,11 @@ aQa
 aFt
 aRN
 aFt
-aSV
+aan
 aHh
 aUa
 aUH
-azt
+aad
 azt
 azt
 aWM
@@ -48520,7 +48342,7 @@ yle
 yle
 yle
 yle
-cqw
+mko
 kxI
 kxI
 kxI
@@ -48688,7 +48510,7 @@ cpY
 cpY
 cpY
 cpY
-gYs
+iwh
 jRm
 jRm
 jRm
@@ -48708,8 +48530,9 @@ azu
 azt
 azQ
 aAZ
+aEP
 azt
-azt
+aCy
 aCy
 aCy
 aCy
@@ -48718,13 +48541,12 @@ aES
 aCy
 aCy
 aCy
-aCy
 azt
 azt
 aWj
 aJf
 aJf
-aJI
+abq
 aJc
 azt
 azt
@@ -48734,13 +48556,13 @@ aCy
 aCy
 aCy
 aCy
-aES
 aCy
 aCy
+aCy
+azt
 azt
 azt
 aEP
-azt
 aVN
 aVN
 aWL
@@ -48748,7 +48570,7 @@ yle
 yle
 yle
 yle
-cqw
+mko
 kxI
 tsa
 kxI
@@ -48936,6 +48758,7 @@ azu
 azQ
 azt
 azt
+aEP
 azt
 azt
 azt
@@ -48949,10 +48772,9 @@ azt
 azt
 azt
 azt
-azt
 aJc
 aJf
-aJa
+abr
 aJf
 azt
 aHg
@@ -48962,13 +48784,13 @@ azt
 azt
 azt
 azt
-aEP
 azt
 azt
 azt
 azt
-aEP
-azu
+azt
+azt
+aae
 aVO
 aWj
 azt
@@ -48976,7 +48798,7 @@ yle
 yle
 nfD
 yle
-cqw
+mko
 jxG
 bFa
 kxI
@@ -49065,7 +48887,7 @@ acf
 acf
 acf
 ecy
-acw
+adm
 acU
 acT
 kRr
@@ -49149,11 +48971,11 @@ rck
 cpY
 cpY
 cpY
-aqG
-aqW
-aqW
-aqW
 avP
+aqW
+aqW
+aqW
+aqG
 fjM
 fjM
 fjM
@@ -49164,14 +48986,14 @@ azv
 azu
 aAz
 azt
-azt
+aEP
 azt
 azt
 azt
 aDu
 aDX
-aEO
-azt
+aQN
+aEP
 azt
 azt
 azt
@@ -49180,7 +49002,7 @@ azt
 azt
 aJb
 aJb
-aJa
+abr
 aJa
 azt
 azt
@@ -49195,8 +49017,8 @@ azt
 azt
 azt
 azt
-aUI
-azt
+aHL
+aEP
 azt
 azt
 aWK
@@ -49204,7 +49026,7 @@ yle
 yle
 yle
 yle
-cqw
+mko
 oAJ
 qZv
 bFa
@@ -49377,11 +49199,11 @@ kip
 fbb
 rck
 cpY
-aqG
-aqW
-aqW
-aqW
 avP
+aqW
+aqW
+aqW
+aqG
 fjM
 kuZ
 fjM
@@ -49392,14 +49214,14 @@ azw
 azR
 azR
 azR
-aBC
+adb
 aCb
 azR
 azR
 azR
 aDY
-aET
-aFu
+aDY
+ace
 aFu
 aDY
 aDY
@@ -49408,7 +49230,7 @@ azt
 azt
 aJb
 aJa
-aJa
+abr
 aJK
 azt
 aMf
@@ -49418,13 +49240,13 @@ acv
 act
 act
 act
-aUJ
 aNk
 aNk
 aNk
 aNk
-aUJ
-aTb
+aNk
+aNk
+aaf
 aNk
 aVu
 ayP
@@ -49605,11 +49427,11 @@ iOX
 kip
 sMK
 cpY
-aqG
-aqW
-aqW
-aqW
 avP
+aqW
+aqW
+aqW
+aqG
 fjM
 fjM
 cOs
@@ -49620,14 +49442,14 @@ azx
 aIB
 aAA
 aBa
-aBD
+adj
 aBD
 aCz
 aCY
 aDx
 aDY
 aEU
-aFv
+acj
 aFv
 aGp
 aDY
@@ -49636,7 +49458,7 @@ aHJ
 azt
 aJa
 aJa
-aJK
+abu
 azt
 aLn
 aMi
@@ -49652,7 +49474,7 @@ aSW
 aNk
 aUb
 aZD
-aSE
+aUL
 aVP
 aVu
 dZp
@@ -49833,11 +49655,11 @@ cpY
 dCZ
 mkW
 cpY
-aqG
-aqW
-aqW
-aqW
 avP
+aqW
+aqW
+aqW
+aqG
 fjM
 fjM
 cOs
@@ -49848,7 +49670,7 @@ azy
 azT
 aAB
 aBb
-aBC
+adb
 aBC
 aCA
 aAB
@@ -49864,7 +49686,7 @@ aDY
 aIl
 aJa
 aJK
-azt
+aEP
 aIl
 aLp
 aLp
@@ -49874,12 +49696,12 @@ aNZ
 aNZ
 aNZ
 aNZ
-aUL
+aSE
 aSD
 aSY
 aNk
 aUc
-aUL
+aak
 aVr
 aZs
 aVu
@@ -50061,11 +49883,11 @@ cpY
 cpY
 bit
 cpY
-aqG
-aqW
-aqW
-aqW
 avP
+aqW
+aqW
+aqW
+aqG
 cOs
 fjM
 fjM
@@ -50076,7 +49898,7 @@ azw
 azw
 azR
 azR
-aBD
+adj
 aCc
 azR
 azR
@@ -50092,7 +49914,7 @@ aDY
 aIp
 azt
 azt
-azt
+aEP
 aIp
 acm
 aMj
@@ -50102,7 +49924,7 @@ aNZ
 aPz
 aQd
 aNZ
-aUM
+aaB
 aSE
 aSZ
 aNk
@@ -50289,11 +50111,11 @@ cpY
 cpY
 pba
 cpY
-aqG
-aqW
-aqW
-aqW
 avP
+aqW
+aqW
+aqW
+aqG
 fjM
 fjM
 fjM
@@ -50304,7 +50126,7 @@ fjM
 azw
 aAC
 aBc
-aBC
+adb
 aBC
 aIB
 aNd
@@ -50320,7 +50142,7 @@ aDY
 aIr
 aJg
 aJB
-aHZ
+abx
 aIi
 acm
 aMk
@@ -50521,7 +50343,7 @@ aqV
 aqX
 aqW
 aqW
-avP
+aqG
 fjM
 fjM
 cOs
@@ -50533,12 +50355,12 @@ azw
 azw
 aBd
 aBE
-aBE
+aBC
 aCB
 aDa
-aDA
-aEa
-aEY
+aDz
+aDY
+aEV
 aFy
 aFv
 eYh
@@ -50548,7 +50370,7 @@ aDY
 aIs
 aJh
 aJL
-aKv
+abC
 azt
 acn
 aMl
@@ -50558,7 +50380,7 @@ aNZ
 aNZ
 aNZ
 aQO
-aUJ
+aNk
 aNk
 aTb
 aNk
@@ -50743,13 +50565,13 @@ cpY
 pIC
 asy
 cpY
-aqG
+avP
 aqW
 aqW
 aqW
 aqW
 aqX
-avP
+aqG
 fjM
 mxd
 sSE
@@ -50776,7 +50598,7 @@ aDY
 aIt
 aJh
 aJM
-aKv
+abC
 aIe
 aMl
 aMl
@@ -50786,7 +50608,7 @@ fsa
 aPA
 aQe
 aQP
-aUJ
+aNk
 aSG
 aOO
 aTE
@@ -50800,7 +50622,7 @@ sPy
 wpw
 wpw
 wpw
-eTQ
+gUq
 opS
 opS
 opS
@@ -51004,7 +50826,7 @@ aDY
 aIc
 aJh
 aJN
-aKv
+abC
 azt
 acm
 aMl
@@ -51014,7 +50836,7 @@ aMl
 aNk
 aNk
 aNk
-aUJ
+aNk
 aSH
 aTc
 aTF
@@ -51193,7 +51015,7 @@ fuY
 cpY
 cpY
 cpY
-aqG
+avP
 aqW
 arG
 aqW
@@ -51232,7 +51054,7 @@ aDY
 aIu
 aJh
 aJM
-aKv
+abC
 aBB
 acm
 aMm
@@ -51242,7 +51064,7 @@ aMl
 aMl
 aQf
 aQQ
-aRW
+aMl
 aMl
 aTd
 aTd
@@ -51421,7 +51243,7 @@ cpY
 cpY
 pba
 cpY
-aqG
+avP
 aqW
 aqW
 aqW
@@ -51460,7 +51282,7 @@ aDY
 azt
 aJh
 aJP
-aKv
+abC
 azt
 aLp
 aLp
@@ -51470,7 +51292,7 @@ aOO
 aOO
 aQg
 aOO
-aRW
+aMl
 aOd
 aMl
 aMl
@@ -51649,7 +51471,7 @@ cpY
 cpY
 cpY
 cpY
-aqG
+avP
 aqX
 aqW
 arH
@@ -51688,7 +51510,7 @@ azt
 azt
 aJj
 aJH
-aJK
+abu
 azt
 azt
 aMn
@@ -51698,7 +51520,7 @@ kPY
 aPB
 xFf
 oEE
-aRW
+aMl
 aMl
 aOd
 aMl
@@ -51916,7 +51738,7 @@ azt
 aIv
 azt
 azt
-azt
+aEP
 azt
 azt
 azt
@@ -52104,7 +51926,7 @@ cpY
 cpY
 cpY
 cpY
-aqG
+avP
 aqW
 aqW
 arH
@@ -52144,15 +51966,15 @@ azt
 azt
 azv
 azt
-azt
-azt
-azt
-azt
+abD
+aHK
+aHK
+aHK
 acs
-aMl
+aaL
 aOR
-aPD
-aPD
+aaI
+aaI
 aPD
 aNo
 aNo
@@ -52278,12 +52100,12 @@ ahv
 ahv
 ahv
 slW
-quK
+fzZ
 pEV
 mhZ
 mhZ
 mhZ
-lDh
+pEV
 pws
 ssK
 poE
@@ -52560,7 +52382,7 @@ cpY
 cpY
 cpY
 cpY
-aqG
+avP
 aqW
 arH
 aqW
@@ -52609,7 +52431,7 @@ aOd
 aNo
 nIZ
 aNo
-aDG
+acc
 aGQ
 aky
 btF
@@ -52734,7 +52556,7 @@ ahv
 ahv
 ahv
 slW
-quK
+fzZ
 pEV
 mhZ
 mhZ
@@ -52788,7 +52610,7 @@ fuY
 cpY
 cpY
 cpY
-aqG
+avP
 aqX
 aqW
 arI
@@ -53190,7 +53012,7 @@ ahv
 ahv
 ahv
 afS
-sWL
+lJm
 pEV
 mhZ
 mhZ
@@ -54102,7 +53924,7 @@ dkN
 ufW
 ufW
 jKI
-avk
+thn
 sxJ
 boe
 boe
@@ -54354,7 +54176,7 @@ qpX
 qpX
 pRx
 dSb
-jSp
+btr
 oTx
 jhG
 jhG
@@ -54577,17 +54399,17 @@ kqL
 boe
 aeg
 bEU
-wBS
+wZW
 ahB
 wZW
 wZW
 jvr
 dVO
-bEq
+dGc
 iuO
 lPJ
 whv
-dGc
+bEq
 lBq
 npt
 jLc
@@ -54811,11 +54633,11 @@ wZW
 wZW
 wZW
 mjY
-bEq
+dGc
 lPJ
 rxV
 lPJ
-dGc
+bEq
 shy
 npt
 xch
@@ -55039,11 +54861,11 @@ wZW
 wZW
 tqh
 xvN
-bEq
+dGc
 uUJ
 lPJ
 mUH
-dGc
+bEq
 wca
 npt
 xch
@@ -55266,7 +55088,7 @@ dqo
 dqo
 bQA
 kBJ
-eAr
+mVg
 ktf
 iOz
 iOz
@@ -55470,7 +55292,7 @@ ahv
 aeg
 aeg
 udZ
-woM
+idz
 poE
 yhd
 dxy
@@ -55727,7 +55549,7 @@ xch
 vOG
 iNF
 ykl
-dGc
+bEq
 eER
 iIF
 xch
@@ -55940,7 +55762,7 @@ agX
 agX
 agX
 agX
-bLE
+cpQ
 kHU
 ahv
 ahv
@@ -56184,8 +56006,8 @@ rGZ
 xch
 xch
 xch
-dGc
 bEq
+dGc
 xch
 jLc
 aqu
@@ -56429,7 +56251,7 @@ ajI
 ajI
 ajI
 arQ
-cCr
+btS
 fSX
 uYC
 psc
@@ -56635,7 +56457,7 @@ xch
 xch
 xch
 xch
-dGc
+bEq
 uve
 qPx
 vty
@@ -56657,7 +56479,7 @@ ajI
 alw
 ajI
 arQ
-cCr
+btS
 uYC
 eil
 eil
@@ -57089,7 +56911,7 @@ xch
 xch
 xch
 xch
-dGc
+bEq
 bNn
 uve
 uve
@@ -57115,7 +56937,7 @@ ajI
 arS
 als
 aoX
-cCr
+btS
 dLY
 lxX
 dLY
@@ -57293,7 +57115,7 @@ ahv
 ahv
 afS
 ufW
-cpQ
+bLE
 agX
 mrQ
 boe
@@ -57574,7 +57396,7 @@ arS
 als
 als
 aqM
-cCr
+btS
 dLY
 dLY
 dLY
@@ -57773,7 +57595,7 @@ xch
 xch
 xch
 xch
-dGc
+bEq
 rwg
 oWN
 rwg
@@ -58001,7 +57823,7 @@ xch
 boy
 rGZ
 xch
-dGc
+bEq
 rwg
 tqe
 tqe
@@ -58033,12 +57855,12 @@ arS
 als
 als
 arO
-cCr
+btS
 dLY
 dLY
 fSX
 dLY
-btS
+cCr
 oUa
 oUa
 oUa
@@ -58261,12 +58083,12 @@ ajI
 ajI
 ajI
 arQ
-cCr
+btS
 dLY
 dLY
 fED
 dLY
-btS
+cCr
 oUa
 oUa
 oUa
@@ -58439,7 +58261,7 @@ yhd
 jas
 ufW
 ufW
-cpQ
+bLE
 agX
 boe
 boe
@@ -58456,7 +58278,7 @@ xch
 xch
 xch
 xch
-dGc
+bEq
 niF
 uve
 tqe
@@ -58489,12 +58311,12 @@ ajI
 alA
 ajI
 arR
-cCr
-fSX
-dLY
-dLY
-fSX
 btS
+fSX
+dLY
+dLY
+fSX
+cCr
 oUa
 jik
 oUa
@@ -58684,7 +58506,7 @@ xch
 xch
 xch
 xch
-dGc
+bEq
 dNj
 uve
 uve
@@ -58717,7 +58539,7 @@ ajI
 ajI
 alw
 arQ
-cCr
+btS
 dLY
 gAI
 dLY
@@ -58737,7 +58559,7 @@ oUa
 oUa
 uuf
 oUa
-cCr
+btS
 vKt
 apu
 apu
@@ -58912,7 +58734,7 @@ xch
 xch
 eGg
 xch
-dGc
+bEq
 dNj
 uve
 uve
@@ -58951,7 +58773,7 @@ fSX
 dLY
 dLY
 dLY
-btS
+cCr
 qns
 oUa
 oUa
@@ -58965,7 +58787,7 @@ jik
 oUa
 oUa
 oUa
-cCr
+btS
 djI
 dZY
 djI
@@ -59140,7 +58962,7 @@ xch
 xch
 xch
 xch
-dGc
+bEq
 vsT
 uve
 uve
@@ -59174,26 +58996,26 @@ ajI
 ajI
 arQ
 mqJ
-cCr
+btS
 fSX
 dLY
 gMe
 gcn
-btS
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
 cCr
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+btS
 rON
 djI
 vKt
@@ -59234,7 +59056,7 @@ wpw
 wpw
 lBw
 lBw
-eTQ
+gUq
 opS
 opS
 pKC
@@ -59368,7 +59190,7 @@ xch
 xch
 xch
 rGZ
-dGc
+bEq
 dNj
 uve
 uve
@@ -59407,21 +59229,21 @@ hKk
 psc
 xQI
 dLY
-btS
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
-oUa
 cCr
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+oUa
+btS
 jik
 jik
 rON
@@ -59462,10 +59284,10 @@ lBw
 wpw
 wpw
 wpw
-eTQ
+gUq
 oov
 opS
-gUq
+eTQ
 lBw
 lBw
 lBw
@@ -59572,7 +59394,7 @@ whU
 ahv
 jFc
 agX
-agX
+boe
 boe
 hbU
 afS
@@ -59596,7 +59418,7 @@ xch
 xch
 xch
 xch
-dGc
+bEq
 dNj
 uve
 uve
@@ -59630,7 +59452,7 @@ ajI
 wkt
 hWj
 jRM
-cCr
+btS
 lLO
 eil
 sXi
@@ -59649,7 +59471,7 @@ oUa
 oUa
 oUa
 oUa
-cCr
+btS
 jik
 jik
 jik
@@ -59690,7 +59512,7 @@ wpw
 qjt
 wpw
 wpw
-eTQ
+gUq
 tkS
 lnV
 qgA
@@ -59801,7 +59623,7 @@ ahv
 afS
 izX
 rwB
-agX
+boe
 jKX
 jFc
 rJd
@@ -59824,7 +59646,7 @@ ahr
 xch
 xch
 xch
-dGc
+bEq
 dNj
 uve
 uve
@@ -59858,11 +59680,11 @@ efX
 hWj
 pmz
 mqJ
-cCr
+btS
 dLY
 xDR
 sXi
-btS
+cCr
 oUa
 oUa
 oUa
@@ -60052,7 +59874,7 @@ xch
 xch
 xch
 rGZ
-dGc
+bEq
 jxR
 uve
 uve
@@ -60086,7 +59908,7 @@ vIt
 ogM
 ogM
 mqJ
-cCr
+btS
 dLY
 xDR
 sXi
@@ -60256,7 +60078,7 @@ whU
 ahv
 ahv
 ahv
-tJh
+agX
 agX
 ahv
 ahv
@@ -60280,7 +60102,7 @@ xch
 xch
 xch
 xch
-dGc
+bEq
 dNj
 uve
 uve
@@ -60321,7 +60143,7 @@ dNN
 dLY
 fSX
 hRS
-btS
+cCr
 oUa
 uuV
 dLY
@@ -60508,7 +60330,7 @@ xch
 xch
 rcR
 xch
-dGc
+bEq
 dNj
 uve
 uve

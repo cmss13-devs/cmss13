@@ -8,8 +8,18 @@
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
 	icon = 'icons/mob/xenos/effects.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/xeno_items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/xeno_items_righthand.dmi',
+	)
 	icon_state = "facehugger"
 	item_state = "facehugger"
+	item_state_slots = list(
+		WEAR_FACE = "facehugger",
+		WEAR_AS_GARB = "lamarr",
+	)
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
@@ -43,7 +53,7 @@
 	var/death_timer
 
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
@@ -83,7 +93,7 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 
-	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL)
+	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL && stat != DEAD)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
@@ -128,6 +138,9 @@
 		return XENO_NO_DELAY_ACTION
 
 /obj/item/clothing/mask/facehugger/attack(mob/living/M, mob/user)
+	if(stat == DEAD)
+		to_chat(user, SPAN_WARNING("The facehugger is dead, what were you thinking?"))
+		return
 	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled && !isyautja(M)))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
@@ -219,6 +232,7 @@
 	. = ..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]"
+		item_state = icon_state
 	leaping = FALSE
 
 /obj/item/clothing/mask/facehugger/mob_launch_collision(mob/living/L)
@@ -260,7 +274,7 @@
 	if(!target)
 		return FALSE
 
-	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"), \
+	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"),
 	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
 	throw_atom(target, 3, SPEED_FAST)
@@ -345,6 +359,7 @@
 				target.species.larva_impregnated(embryo)
 
 			icon_state = "[initial(icon_state)]_impregnated"
+			item_state = icon_state
 			impregnated = TRUE
 		target.visible_message(SPAN_DANGER("[src] falls limp after violating [target]'s face!"))
 		die()
@@ -360,6 +375,7 @@
 
 	if(stat != CONSCIOUS)
 		icon_state = "[initial(icon_state)]"
+		item_state = icon_state
 	stat = CONSCIOUS
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
@@ -369,6 +385,7 @@
 
 	stat = UNCONSCIOUS
 	icon_state = "[initial(icon_state)]_inactive"
+	item_state = icon_state
 	if(jump_timer)
 		deltimer(jump_timer)
 	jump_timer = null
@@ -417,9 +434,6 @@
 	die()
 
 /obj/item/clothing/mask/facehugger/proc/die()
-	if(stat == DEAD)
-		return
-
 	if(attached && !impregnated)
 		return
 
@@ -431,8 +445,12 @@
 		deltimer(death_timer)
 	death_timer = null
 
+	if(stat == DEAD)
+		return
+
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"
+		item_state = icon_state
 	stat = DEAD
 	flags_inventory &= ~CANTSTRIP
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
@@ -501,6 +519,15 @@
 
 	if(species && !species.handle_hugger_attachment(src, hugger, mob_hugger))
 		return FALSE
+
+	var/obj/item/device/overwatch_camera/cam_gear
+	if(istype(wear_l_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_l_ear
+	else if(istype(wear_r_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_r_ear
+	if(cam_gear && !(cam_gear.flags_item & NODROP))
+		drop_inv_item_on_ground(cam_gear)
+		update_inv_ears()
 
 	if(head && !(head.flags_item & NODROP))
 		var/obj/item/clothing/head/D = head

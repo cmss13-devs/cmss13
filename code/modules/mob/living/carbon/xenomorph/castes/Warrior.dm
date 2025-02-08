@@ -35,7 +35,7 @@
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
 	desc = "A beefy alien with an armored carapace."
-	icon = 'icons/mob/xenos/warrior.dmi'
+	icon = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -57,8 +57,8 @@
 
 	claw_type = CLAW_TYPE_SHARP
 
-	icon_xeno = 'icons/mob/xenos/warrior.dmi'
-	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/warrior.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Warrior_1","Warrior_2","Warrior_3")
@@ -105,7 +105,7 @@
 			living_mob.Stun(duration)
 			if(living_mob.pulledby != src)
 				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
-			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"), \
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"),
 			SPAN_XENOWARNING("We grab [living_mob] by the throat!"))
 			lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
@@ -196,18 +196,20 @@
 	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
 		to_chat(src, SPAN_XENOWARNING("We can't rip off that limb."))
 		return FALSE
-	var/limb_time = rand(40,60)
 
+	var/limb_time = rand(40,60)
 	if(limb.body_part == BODY_FLAG_HEAD)
 		limb_time = rand(90,110)
 
-	visible_message(SPAN_XENOWARNING("[src] begins pulling on [mob]'s [limb.display_name] with incredible strength!"), \
+	visible_message(SPAN_XENOWARNING("[src] begins pulling on [mob]'s [limb.display_name] with incredible strength!"),
 	SPAN_XENOWARNING("We begin to pull on [mob]'s [limb.display_name] with incredible strength!"))
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || mob.stat == DEAD || mob.status_flags & XENO_HOST)
 		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
-		if(mob.status_flags & XENO_HOST)
-			to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
+		return FALSE
+
+	if(mob.status_flags & XENO_HOST)
+		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
@@ -215,10 +217,10 @@
 
 	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		limb.take_damage(rand(30,40), 0, 0) // just do more damage
-		visible_message(SPAN_XENOWARNING("You hear [mob]'s [limb.display_name] being pulled beyond its load limits!"), \
+		visible_message(SPAN_XENOWARNING("You hear [mob]'s [limb.display_name] being pulled beyond its load limits!"),
 		SPAN_XENOWARNING("[mob]'s [limb.display_name] begins to tear apart!"))
 	else
-		visible_message(SPAN_XENOWARNING("We hear the bones in [mob]'s [limb.display_name] snap with a sickening crunch!"), \
+		visible_message(SPAN_XENOWARNING("We hear the bones in [mob]'s [limb.display_name] snap with a sickening crunch!"),
 		SPAN_XENOWARNING("[mob]'s [limb.display_name] bones snap with a satisfying crunch!"))
 		limb.take_damage(rand(15,25), 0, 0)
 		limb.fracture(100)
@@ -231,10 +233,14 @@
 		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
 		return FALSE
 
+	if(mob.status_flags & XENO_HOST)
+		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
+		return FALSE
+
 	if(limb.status & LIMB_DESTROYED)
 		return FALSE
 
-	visible_message(SPAN_XENOWARNING("[src] rips [mob]'s [limb.display_name] away from their body!"), \
+	visible_message(SPAN_XENOWARNING("[src] rips [mob]'s [limb.display_name] away from their body!"),
 	SPAN_XENOWARNING("[mob]'s [limb.display_name] rips away from their body!"))
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress</font>")
 	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")

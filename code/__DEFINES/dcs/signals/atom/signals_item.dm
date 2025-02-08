@@ -29,7 +29,7 @@
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
 
-///from /obj/item/device/camera/broadcasting
+///from /obj/item/device/broadcasting
 #define COMSIG_BROADCAST_GO_LIVE "broadcast_live"
 #define COMSIG_BROADCAST_HEAR_TALK "broadcast_hear_talk"
 #define COMSIG_BROADCAST_SEE_EMOTE "broadcast_see_emote"
@@ -43,33 +43,6 @@
 #define COMSIG_ITEM_ZOOM "item_zoom"
 /// from /obj/item/proc/unzoom() : (mob/user)
 #define COMSIG_ITEM_UNZOOM "item_unzoom"
-
-//Signals for automatic fire at component
-#define COMSIG_AUTOMATIC_SHOOTER_START_SHOOTING_AT "start_shooting_at"
-#define COMSIG_AUTOMATIC_SHOOTER_STOP_SHOOTING_AT "stop_shooting_at"
-#define COMSIG_AUTOMATIC_SHOOTER_SHOOT "shoot"
-
-//Signals for gun auto fire component
-#define COMSIG_GET_BURST_FIRE "get_burst_fire"
-	#define BURST_FIRING (1<<0)
-
-#define COMSIG_GUN_FIRE "gun_fire"
-#define COMSIG_GUN_STOP_FIRE "gun_stop_fire"
-#define COMSIG_GUN_FIRE_MODE_TOGGLE "gun_fire_mode_toggle"
-#define COMSIG_GUN_AUTOFIREDELAY_MODIFIED "gun_autofiredelay_modified"
-#define COMSIG_GUN_BURST_SHOTS_TO_FIRE_MODIFIED "gun_burst_shots_to_fire_modified"
-#define COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED "gun_burst_shot_delay_modified"
-
-#define COMSIG_GUN_VULTURE_FIRED_ONEHAND "gun_vulture_fired_onehand"
-#define COMSIG_VULTURE_SCOPE_MOVED "vulture_scope_moved"
-#define COMSIG_VULTURE_SCOPE_SCOPED "vulture_scope_scoped"
-#define COMSIG_VULTURE_SCOPE_UNSCOPED "vulture_scope_unscoped"
-
-/// from /obj/item/weapon/gun/proc/recalculate_attachment_bonuses() : ()
-#define COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES "gun_recalculate_attachment_bonuses"
-
-/// from  /obj/item/weapon/gun/proc/load_into_chamber() : ()
-#define COMSIG_GUN_INTERRUPT_FIRE "gun_interrupt_fire"
 
 //from /datum/authority/branch/role/proc/equip_role()
 #define COMSIG_POST_SPAWN_UPDATE "post_spawn_update"
@@ -85,3 +58,7 @@
 #define COMSIG_CAMERA_REFRESH "camera_manager_refresh"
 
 #define COMSIG_PRED_BRACER_DECLOAKED "pred_bracer_decloaked"
+
+//from /datum/component/overwatch_console_control
+#define COMSIG_OW_CONSOLE_OBSERVE_START "ow_console_observe_start"
+#define COMSIG_OW_CONSOLE_OBSERVE_END "ow_console_observe_end"

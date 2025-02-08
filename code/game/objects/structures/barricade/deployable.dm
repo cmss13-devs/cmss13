@@ -34,7 +34,7 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."),
 			SPAN_NOTICE("You begin collapsing [src]..."))
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		if(do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
@@ -103,6 +103,11 @@
 		WEAR_J_STORE = "folding"
 	)
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_righthand.dmi',
+	)
 
 	var/list/stack_health = list()
 

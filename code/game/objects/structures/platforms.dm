@@ -23,6 +23,20 @@
 
 /obj/structure/platform/Initialize()
 	. = ..()
+	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
+	switch(dir)
+		if(SOUTH)
+			layer = ABOVE_MOB_LAYER
+			I.pixel_y = -16
+		if(NORTH)
+			I.pixel_y = 16
+		if(EAST)
+			I.pixel_x = 16
+			layer = MOB_LAYER
+		if(WEST)
+			I.pixel_x = -16
+			layer = MOB_LAYER
+	overlays += I
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -79,7 +93,7 @@
 	if(user.pulling)
 		if(!can_climb(user))
 			return
-		user.visible_message(SPAN_WARNING("[user] starts dragging \the [user.pulling] onto \the [src]"),\
+		user.visible_message(SPAN_WARNING("[user] starts dragging \the [user.pulling] onto \the [src]"),
 		SPAN_WARNING("You start dragging \the [user.pulling] onto \the [src]."))
 		if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_FIREMAN), INTERRUPT_ALL, BUSY_ICON_HOSTILE, user.pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
@@ -87,7 +101,7 @@
 			if(!can_climb(user))
 				return
 			var/turf/move_to_turf = get_step(get_turf(src), dir)
-			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),\
+			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),
 			SPAN_WARNING("You finish dragging \the [user.pulling] onto \the [src]."))
 			user.pulling.forceMove(move_to_turf)
 
@@ -105,7 +119,7 @@
 		to_chat(user, SPAN_WARNING("Its too strong for us!"))
 		return XENO_NO_DELAY_ACTION
 
-	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
+	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."),
 	SPAN_WARNING("You start to stomp and pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, creaking_sound, 30, 1)
 
@@ -127,7 +141,7 @@
 	if(!do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = shove_time * 0.1))
 		return
 	user.animation_attack_on(src)
-	user.visible_message(SPAN_DANGER("[user] collapses [src] down!"), \
+	user.visible_message(SPAN_DANGER("[user] collapses [src] down!"),
 	SPAN_DANGER("You collapse [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, breaking_sound, 25, 1)
 	broken()
@@ -148,6 +162,19 @@
 
 /obj/structure/platform_decoration/Initialize()
 	. = ..()
+	switch(dir)
+		if (NORTH)
+			layer = OBJ_LAYER+0.1
+		if (SOUTH)
+			layer = ABOVE_MOB_LAYER+0.1
+		if (SOUTHEAST)
+			layer = ABOVE_MOB_LAYER+0.1
+		if (SOUTHWEST)
+			layer = ABOVE_MOB_LAYER+0.1
+		if (EAST)
+			layer = MOB_LAYER+0.1
+		if (WEST)
+			layer = MOB_LAYER+0.1
 
 /obj/structure/platform_decoration/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -509,6 +536,254 @@
 	name = "sandstone temple platform corner"
 	icon_state = "stone_deco"
 	color = "#b29082"
+
+/obj/structure/platform_decoration/stone/runed_sandstone/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/runed_sandstone/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/runed_sandstone/west
+	dir = WEST
+
+/// Hybrisa Platforms
+
+/obj/structure/platform/metal/hybrisa
+	icon_state = "hybrisa"
+
+/obj/structure/platform/metal/hybrisa/engineer
+	icon_state = "engineer_platform"
+	name = "raised metal edge"
+	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	climb_delay = 10
+	layer = TURF_LAYER
+
+/obj/structure/platform/metal/hybrisa/engineer/north
+	dir = NORTH
+/obj/structure/platform/metal/hybrisa/engineer/east
+	dir = EAST
+/obj/structure/platform/metal/hybrisa/engineer/west
+	dir = WEST
+
+/obj/structure/platform/metal/hybrisa/metalplatform1
+	icon_state = "hybrisametal"
+	name = "raised metal edge"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform/metal/hybrisa/metalplatform1/north
+	dir = NORTH
+/obj/structure/platform/metal/hybrisa/metalplatform1/east
+	dir = EAST
+/obj/structure/platform/metal/hybrisa/metalplatform1/west
+	dir = WEST
+
+/obj/structure/platform/metal/hybrisa/metalplatform2
+	name = "raised metal edge"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	icon_state = "strata_metalplatform2"
+
+/obj/structure/platform/metal/hybrisa/metalplatform2/north
+	dir = NORTH
+/obj/structure/platform/metal/hybrisa/metalplatform2/east
+	dir = EAST
+/obj/structure/platform/metal/hybrisa/metalplatform2/west
+	dir = WEST
+
+/obj/structure/platform/metal/hybrisa/metalplatform3
+	name = "raised metal edge"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	icon_state = "strata_metalplatform3"
+
+/obj/structure/platform/metal/hybrisa/metalplatform3/north
+	dir = NORTH
+/obj/structure/platform/metal/hybrisa/metalplatform3/east
+	dir = EAST
+/obj/structure/platform/metal/hybrisa/metalplatform3/west
+	dir = WEST
+
+/obj/structure/platform/metal/hybrisa/metalplatform4
+	icon_state = "hybrisaplatform"
+	name = "raised metal platform"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform/metal/hybrisa/metalplatform4/north
+	dir = NORTH
+/obj/structure/platform/metal/hybrisa/metalplatform4/east
+	dir = EAST
+/obj/structure/platform/metal/hybrisa/metalplatform4/west
+	dir = WEST
+
+/obj/structure/platform/metal/hybrisa/metalplatform5
+	icon_state = "hybrisaplatform2"
+	name = "raised metal platform"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform/metal/hybrisa/metalplatform5/north
+	dir = NORTH
+/obj/structure/platform/metal/hybrisa/metalplatform5/east
+	dir = EAST
+/obj/structure/platform/metal/hybrisa/metalplatform5/west
+	dir = WEST
+
+/obj/structure/platform/metal/hybrisa/metalplatform6
+	icon_state = "hybrisaplatform3"
+	name = "raised metal platform"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform/metal/hybrisa/metalplatform6/north
+	dir = NORTH
+/obj/structure/platform/metal/hybrisa/metalplatform6/east
+	dir = EAST
+/obj/structure/platform/metal/hybrisa/metalplatform6/west
+	dir = WEST
+
+
+/obj/structure/platform/stone/hybrisa
+	icon_state = "hybrisa"
+
+/obj/structure/platform/stone/hybrisa/rockdark
+	icon_state = "kutjevo_rockdark"
+	name = "raised rock edges"
+	desc = "A collection of stones and rocks that provide ample grappling and vaulting opportunity. Indicates a change in elevation. You could probably climb it."
+
+/obj/structure/platform/stone/hybrisa/rockdark/north
+	dir = NORTH
+/obj/structure/platform/stone/hybrisa/rockdark/east
+	dir = EAST
+/obj/structure/platform/stone/hybrisa/rockdark/west
+	dir = WEST
+
+
+
+/obj/structure/platform_decoration/metal/hybrisa
+	icon_state = "hybrisa"
+
+/obj/structure/platform_decoration/metal/hybrisa/engineer_corner
+	name = "raised metal corner"
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	icon_state = "engineer_platform_deco"
+	layer = TURF_LAYER
+
+/obj/structure/platform_decoration/metal/hybrisa/engineer_corner/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hybrisa/engineer_corner/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hybrisa/engineer_corner/west
+	dir = WEST
+
+
+/obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits
+	name = "raised metal corner"
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	icon_state = "engineer_platform_platformcorners"
+	layer = TURF_LAYER
+
+/obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1
+	icon_state = "hybrisametal_deco"
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	icon_state = "strata_metalplatform_deco2"
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	icon_state = "strata_metalplatform_deco3"
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4
+	icon_state = "hybrisaplatform_deco"
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5
+	icon_state = "hybrisaplatform_deco2"
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6
+	icon_state = "hybrisaplatform_deco3"
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/west
+	dir = WEST
+
+
+/obj/structure/platform_decoration/stone/hybrisa
+	icon_state = "hybrisa"
+
+/obj/structure/platform_decoration/stone/hybrisa/rockdark
+	name = "raised rock corner"
+	desc = "A collection of stones and rocks that cap the edge of some conveniently 1-meter-long lengths of perfectly climbable chest high walls."
+	icon_state = "kutjevo_rock_decodark"
+
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/west
+	dir = WEST
+
+
+
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_left
+	icon_state = "hybrisaplatform_stair"
+	name = "raised metal platform"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	dir = NORTH
+
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_right
+	icon_state = "hybrisaplatform_stair_alt"
+	name = "raised metal platform"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	dir = NORTH
 
 /obj/structure/platform_decoration/stone/runed_sandstone/north
 	dir = NORTH

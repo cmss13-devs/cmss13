@@ -1,10 +1,9 @@
 /obj/item/clothing/under
-	icon = 'icons/obj/items/clothing/uniforms.dmi'
+	icon = 'icons/obj/items/clothing/uniforms/misc_ert_colony.dmi'
 	name = "under"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	permeability_coefficient = 0.90
 	flags_equip_slot = SLOT_ICLOTHING
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -31,11 +30,16 @@
 	var/worn_state = null
 	var/hood_state //for uniforms with hoods.
 	drag_unequip = TRUE
-	valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_C)
+	valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_ARMOR_C)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/uniform_monkey_0.dmi')
 	equip_sounds = list('sound/handling/clothing_on.ogg')
 	unequip_sounds = list('sound/handling/clothing_off.ogg')
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
+	)
 
 /obj/item/clothing/under/Initialize()
 	. = ..()
@@ -44,7 +48,7 @@
 	else
 		worn_state = icon_state
 
-	var/check_icon = contained_sprite ? icon : GLOB.default_onmob_icons[WEAR_BODY]
+	var/check_icon = contained_sprite ? icon : item_icons[WEAR_BODY]
 
 	//autodetect rollability, cuttability, and removability.
 	if(icon_exists(check_icon, "[worn_state]_d[contained_sprite ? "_un" : ""]"))
@@ -93,6 +97,7 @@
 	. = ..()
 	worn_state = icon_state
 	LAZYSET(item_state_slots, WEAR_BODY, worn_state)
+	return .
 
 /obj/item/clothing/under/update_clothing_icon()
 	if(ismob(loc))
@@ -100,21 +105,24 @@
 		M.update_inv_w_uniform()
 
 /obj/item/clothing/under/MouseDrop(obj/over_object as obj)
-	if (ishuman(usr))
+	if(ishuman(usr))
+		var/mob/living/carbon/human/human_user = usr
 		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
-		if ((flags_item & NODROP) || loc != usr)
+		if((flags_item & NODROP) || loc != human_user)
 			return
-
-		if (!usr.is_mob_incapacitated() && !(usr.buckled))
+		if(human_user.wear_suit)
+			to_chat(human_user, SPAN_WARNING("Remove your suit first."))
+			return
+		if(!human_user.is_mob_incapacitated() && !human_user.buckled)
 			if(over_object)
 				switch(over_object.name)
 					if("r_hand")
-						if(usr.drop_inv_item_on_ground(src))
-							usr.put_in_r_hand(src)
+						if(human_user.drop_inv_item_on_ground(src))
+							human_user.put_in_r_hand(src)
 					if("l_hand")
-						if(usr.drop_inv_item_on_ground(src))
-							usr.put_in_l_hand(src)
-				add_fingerprint(usr)
+						if(human_user.drop_inv_item_on_ground(src))
+							human_user.put_in_l_hand(src)
+				add_fingerprint(human_user)
 
 
 /obj/item/clothing/under/get_examine_text(mob/user)

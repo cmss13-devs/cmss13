@@ -270,11 +270,11 @@
 	//Somehow we will deal no damage on this attack
 	if(!damage)
 		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"), \
+		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"),
 		SPAN_DANGER("We swipe at \the [src] to no effect!"))
 		return XENO_ATTACK_ACTION
 
-	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"), \
+	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"),
 	SPAN_DANGER("We slash \the [src]!"))
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
@@ -297,7 +297,7 @@
 	if(P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
 		return
 
-	if(ammo_flags & AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE)
+	if(ammo_flags & (AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE))
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
 		damage = floor(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_ACIDIC)

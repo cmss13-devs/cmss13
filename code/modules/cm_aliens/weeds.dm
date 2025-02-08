@@ -229,6 +229,7 @@
 			continue
 		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 			continue
+		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
 
@@ -363,7 +364,7 @@
 /obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if(!explo_proof && !HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, hivenumber))
 		attacking_xeno.animation_attack_on(src)
-		attacking_xeno.visible_message(SPAN_DANGER("\The [attacking_xeno] slashes [src]!"), \
+		attacking_xeno.visible_message(SPAN_DANGER("\The [attacking_xeno] slashes [src]!"),
 		SPAN_DANGER("You slash [src]!"), null, 5)
 		playsound(loc, "alien_resin_break", 25)
 		take_damage(attacking_xeno.melee_damage_lower*WEED_XENO_DAMAGEMULT)
@@ -396,7 +397,7 @@
 	user.animation_attack_on(src)
 
 	take_damage(damage)
-	return TRUE //don't call afterattack
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/effect/alien/weeds/proc/take_damage(damage)
 	if(explo_proof)
@@ -449,7 +450,7 @@
 	if(istype(loc, /turf/closed/wall))
 		var/turf/closed/wall/W = loc
 		wall_connections = W.wall_connections
-		icon_state = ""
+		icon_state = null
 		var/image/I
 		for(var/i = 1 to 4)
 			I = image(icon, "weedwall[wall_connections[i]]", dir = 1<<(i-1))

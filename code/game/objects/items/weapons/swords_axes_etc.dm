@@ -19,14 +19,20 @@
 /obj/item/weapon/classic_baton
 	name = "police baton"
 	desc = "A wooden truncheon for beating criminal scum."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 	icon_state = "baton"
 	item_state = "classic_baton"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/weapons.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_NORMAL
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
-	if(!..())
+	. = ..()
+	if(.)
 		return
 
 	if(M.stuttering < 8)
@@ -38,7 +44,11 @@
 /obj/item/weapon/telebaton
 	name = "telescopic baton"
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded. It will knock down humans when not on harm intent."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
+	)
 	icon_state = "telebaton_0"
 	item_state = "telebaton_0"
 	flags_equip_slot = SLOT_WAIST
@@ -54,14 +64,15 @@
 		return ..()
 	else
 		stun(target, user)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/weapon/telebaton/attack_self(mob/user as mob)
 	..()
 
 	on = !on
 	if(on)
-		user.visible_message(SPAN_DANGER("With a flick of the wrist, [user] extends \his [src]."),\
-		SPAN_DANGER("You extend \the [src]."),\
+		user.visible_message(SPAN_DANGER("With a flick of the wrist, [user] extends \his [src]."),
+		SPAN_DANGER("You extend \the [src]."),
 		"You hear an ominous click.")
 		icon_state = "telebaton_1"
 		item_state = "telebaton_1"
@@ -70,8 +81,8 @@
 		stun_force = 40
 		attack_verb = list("smacked", "struck", "slapped", "beat")
 	else
-		user.visible_message(SPAN_NOTICE("Using a smooth, practiced movement, [user] collapses \his [src]."),\
-		SPAN_NOTICE("You collapse \the [src]."),\
+		user.visible_message(SPAN_NOTICE("Using a smooth, practiced movement, [user] collapses \his [src]."),
+		SPAN_NOTICE("You collapse \the [src]."),
 		"You hear a click.")
 		icon_state = "telebaton_0"
 		item_state = "telebaton_0"
@@ -114,10 +125,10 @@
 	var/target_zone = check_zone(user.zone_selected)
 	target.apply_stamina_damage(final_stun_force, target_zone, ARMOR_MELEE)
 	if(target.stamina.current_stamina <= 0)
-		user.visible_message(SPAN_DANGER("[user] knocks down [target] with \the [src]!"),\
+		user.visible_message(SPAN_DANGER("[user] knocks down [target] with \the [src]!"),
 							SPAN_WARNING("You knock down [target] with \the [src]!"))
 	else
-		user.visible_message(SPAN_DANGER("[user] thwacks [target] with \the [src]!"),\
+		user.visible_message(SPAN_DANGER("[user] thwacks [target] with \the [src]!"),
 							SPAN_WARNING("You beat [target] with \the [src]!"))
 	return TRUE
 

@@ -2,15 +2,15 @@
 	name = "Union of Progressive Peoples"
 	faction_tag = FACTION_UPP
 
-/datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+/datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state
-	var/obj/item/card/id/ID = H.get_idcard()
+	var/obj/item/card/id/ID = human.get_idcard()
 	var/default_color = FALSE //so squad units get red icons as survs and ERT
-	var/datum/squad/squad = H.assigned_squad
+	var/datum/squad/squad = human.assigned_squad
 
 	var/_role
-	if(H.mind)
-		_role = H.job
+	if(human.mind)
+		_role = human.job
 	else if(ID)
 		_role = ID.rank
 	switch(_role)
@@ -34,21 +34,11 @@
 			hud_icon_state = "slt"
 		if(JOB_UPP_KPT_OFFICER)
 			hud_icon_state = "xo"
-		if(JOB_UPP_MAY_OFFICER)
+		if(JOB_UPP_CO_OFFICER, JOB_UPP_MAY_OFFICER, JOB_UPP_LTKOL_OFFICER, JOB_UPP_KOL_OFFICER)
 			hud_icon_state = "co"
-		if(JOB_UPP_KOL_OFFICER)
-			hud_icon_state = "co"
-		if(JOB_UPP_BRIG_GENERAL)
-			hud_icon_state = "co"
-		if(JOB_UPP_MAY_GENERAL)
-			hud_icon_state = "co"
-		if(JOB_UPP_LT_GENERAL)
-			hud_icon_state = "co"
-		if(JOB_UPP_GENERAL)
-			hud_icon_state = "co"
-		if(JOB_UPP_COMBAT_SYNTH)
-			hud_icon_state = "synth"
-		if(JOB_UPP_SUPPORT_SYNTH)
+		if(JOB_UPP_BRIG_GENERAL, JOB_UPP_MAY_GENERAL, JOB_UPP_LT_GENERAL, JOB_UPP_GENERAL)
+			hud_icon_state = "hc"
+		if(JOB_UPP_COMBAT_SYNTH, JOB_UPP_SUPPORT_SYNTH)
 			hud_icon_state = "synth"
 		if(JOB_UPP_COMMANDO)
 			hud_icon_state = "com"
@@ -60,16 +50,19 @@
 			hud_icon_state = "vc"
 		if(JOB_UPP_LT_DOKTOR)
 			hud_icon_state = "doc"
+		if(JOB_UPP_PILOT)
+			hud_icon_state = "vc"
 		if(JOB_UPP_SUPPLY)
 			hud_icon_state = "log"
 		if(JOB_UPP_COMMISSAR)
 			hud_icon_state = "commi"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_background")
-		var/image/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "upp_background")
+		var/image/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', human, "upp_[hud_icon_state]")
 		if(istype(squad))
+			human.langchat_color = human.assigned_squad.chat_color
 			rank_icon_image.color = squad.equipment_color
-			var/image/squad_circle = image('icons/mob/hud/marine_hud.dmi', H, "upp_squad_circle")
+			var/image/squad_circle = image('icons/mob/hud/marine_hud.dmi', human, "upp_squad_circle")
 			squad_circle.color = squad.equipment_color
 			holder.overlays += squad_circle
 		else

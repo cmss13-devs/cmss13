@@ -47,7 +47,7 @@
 	name = XENO_CASTE_CARRIER
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
 	icon_size = 64
-	icon_xeno = 'icons/mob/xenos/carrier.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/carrier.dmi'
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)
 
@@ -80,7 +80,7 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/carrier.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Carrier_1","Carrier_2","Carrier_3")
@@ -308,7 +308,7 @@
 			A.update_button_icon()
 		drop_inv_item_on_ground(F)
 		F.throw_atom(T, 4, caste.throwspeed)
-		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"), \
+		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"),
 			SPAN_XENOWARNING("We throw a facehugger towards \the [T]!"))
 		spawn(caste.hugger_delay)
 			threw_a_hugger = 0

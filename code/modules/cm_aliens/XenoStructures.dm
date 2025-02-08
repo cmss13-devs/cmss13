@@ -15,7 +15,7 @@
 /obj/effect/alien/resin
 	name = "resin"
 	desc = "Looks like some kind of slimy growth."
-	icon_state = "Resin1"
+	icon_state = "weeds"
 	anchored = TRUE
 	health = 200
 	unacidable = TRUE
@@ -64,7 +64,7 @@
 	..()
 	if(istype(AM,/mob/living/carbon/xenomorph))
 		return
-	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
+	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."),
 	SPAN_DANGER("You hit \the [src]."))
 	var/tforce = 0
 	if(ismob(AM))
@@ -86,7 +86,7 @@
 		return XENO_NO_DELAY_ACTION
 	else
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 		SPAN_XENONOTICE("We claw \the [src]."))
 		if(istype(src, /obj/effect/alien/resin/sticky))
 			playsound(loc, "alien_resin_move", 25)
@@ -103,7 +103,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/effect/alien/resin/attack_animal(mob/living/M as mob)
-	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
 	SPAN_DANGER("You tear \the [name]."))
 	if(istype(src, /obj/effect/alien/resin/sticky))
 		playsound(loc, "alien_resin_move", 25)
@@ -373,7 +373,7 @@
 		W.update_connections()
 		W.update_icon()
 
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
@@ -382,8 +382,10 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/area/area = get_area(src)
-	if(area && area.linked_lz)
-		AddComponent(/datum/component/resin_cleanup)
+	if(area)
+		if(area.linked_lz)
+			AddComponent(/datum/component/resin_cleanup)
+		area.current_resin_count++
 
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
@@ -404,6 +406,7 @@
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		playsound(loc, "alien_resin_move", 25)
 		healthcheck()
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return attack_hand(user)
 
@@ -420,19 +423,24 @@
 		if (C.ally_of_hivenumber(hivenumber))
 			return ..()
 
-/obj/structure/mineral_door/resin/Open()
-	if(state || !loc) return //already open
-	isSwitchingStates = 1
+/obj/structure/mineral_door/resin/open()
+	if(open || !loc)
+		return //already open
+	isSwitchingStates = TRUE
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]opening",src)
-	sleep(3)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), 3 DECISECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/mineral_door/resin/finish_open()
+	if(!loc || QDELETED(src))
+		return
 	density = FALSE
 	opacity = FALSE
-	state = 1
+	open = TRUE
 	update_icon()
-	isSwitchingStates = 0
+	isSwitchingStates = FALSE
 	layer = DOOR_OPEN_LAYER
-	addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/mineral_door/resin/proc/close_blocked()
 	for(var/turf/turf in locs)
@@ -441,28 +449,31 @@
 				return TRUE
 	return FALSE
 
-/obj/structure/mineral_door/resin/Close()
-	if(!state || !loc || isSwitchingStates)
+/obj/structure/mineral_door/resin/close()
+	if(!open || !loc || isSwitchingStates)
 		return //already closed or changing
 	//Can't close if someone is blocking it
 	if(close_blocked())
-		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
-	isSwitchingStates = 1
+	isSwitchingStates = TRUE
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]closing",src)
-	sleep(3)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), 3 DECISECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/mineral_door/resin/finish_close()
+	if(!loc || QDELETED(src))
+		return
 	density = TRUE
 	opacity = TRUE
-	state = 0
+	open = FALSE
 	update_icon()
-	isSwitchingStates = 0
+	isSwitchingStates = FALSE
 	layer = DOOR_CLOSED_LAYER
 
 	if(close_blocked())
-		Open()
-		return
+		open()
 
 /obj/structure/mineral_door/resin/Dismantle(devastated = 0)
 	qdel(src)
@@ -473,14 +484,17 @@
 
 /obj/structure/mineral_door/resin/Destroy()
 	relativewall_neighbours()
-	var/turf/U = loc
+	var/area/area = get_area(src)
+	area?.current_resin_count--
+	var/turf/base_turf = loc
 	spawn(0)
-		var/turf/T
-		for(var/i in GLOB.cardinals)
-			T = get_step(U, i)
-			if(!istype(T)) continue
-			for(var/obj/structure/mineral_door/resin/R in T)
-				R.check_resin_support()
+		var/turf/adjacent_turf
+		for(var/cardinal in GLOB.cardinals)
+			adjacent_turf = get_step(base_turf, cardinal)
+			if(!istype(adjacent_turf))
+				continue
+			for(var/obj/structure/mineral_door/resin/door in adjacent_turf)
+				door.check_resin_support()
 	. = ..()
 
 /obj/structure/mineral_door/resin/proc/healthcheck()
@@ -838,7 +852,7 @@
 /obj/effect/alien/resin/resin_pillar/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!brittle)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src], but the slash bounces off!"), \
+		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src], but the slash bounces off!"),
 		SPAN_XENONOTICE("You claw \the [src], but the slash bounces off!"))
 		return XENO_ATTACK_ACTION
 
@@ -847,7 +861,7 @@
 /obj/effect/alien/resin/resin_pillar/attackby(obj/item/W, mob/living/user)
 	user.animation_attack_on(src)
 	if(!brittle)
-		user.visible_message(SPAN_DANGER("[user] hits \the [src], but \the [W] bounces off!"), \
+		user.visible_message(SPAN_DANGER("[user] hits \the [src], but \the [W] bounces off!"),
 			SPAN_DANGER("You hit \the [name], but \the [W] bounces off!"))
 		return
 

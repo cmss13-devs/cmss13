@@ -1,4 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"ab" = (
+/obj/effect/spawner/random/claymore/lowchance{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/hydroponics)
 "aO" = (
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/glass/watertank,
@@ -27,7 +37,7 @@
 /area/lv624/lazarus/hydroponics)
 "bM" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/north_nexus_road)
 "ck" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -38,11 +48,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/lv624/lazarus/hydroponics)
 "dZ" = (
-/obj/item/stack/sheet/metal,
-/obj/effect/spawner/random/claymore/lowchance{
-	dir = 8
-	},
-/turf/open/floor/platingdmg1,
+/turf/closed/wall/r_wall,
 /area/lv624/lazarus/hydroponics)
 "eU" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -177,7 +183,7 @@
 /area/lv624/lazarus/hydroponics)
 "se" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "tK" = (
 /obj/structure/barricade/deployable{
@@ -612,7 +618,7 @@ Cq
 Lu
 TC
 dZ
-Wg
+aa
 ym
 FJ
 Xv
@@ -626,7 +632,7 @@ se
 XA
 qe
 YV
-TC
+ab
 FJ
 Wg
 YV

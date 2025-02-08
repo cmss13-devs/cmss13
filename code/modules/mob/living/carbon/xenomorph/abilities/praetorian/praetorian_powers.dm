@@ -977,6 +977,8 @@
 	var/range = behavior.base_fury < 75 ? low_rage_range : high_rage_range
 	playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
 	for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(range, valkyrie_flight))
+		if(allied_xenomorphs.hivenumber != valkyrie_flight.hivenumber)
+			break
 		to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))
 		valkyrie_flight.create_shriekwave(3)
 		allied_xenomorphs.xeno_jitter(1 SECONDS,)

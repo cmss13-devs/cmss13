@@ -77,7 +77,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	var/ares_log = "Triggered Medical Research Biohazard Containment Lockdown."
 	var/person = user.name
 	if(!message)
-		message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT BREACH. \n\nRESEARCH DEPARTMENT UNDER LOCKDOWN."
+		message = "ВНИМАНИЕ! \n\nНАРУШЕНИЕ ЦЕЛОСТНОСТИ ИЗОЛЯЦИИ БИОЛОГИЧЕСКИХ МАТЕРИАЛОВ. \n\nИНИЦИРОВАНА БЛОКИРОВКА ИССЛЕДОВАТЕЛЬСКОГО ОТДЕЛА."
 	else
 		log = "[key_name(user)] triggered research bio lockdown! (Using a custom announcement)."
 	if(admin)

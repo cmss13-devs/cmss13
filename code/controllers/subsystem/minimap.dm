@@ -975,7 +975,7 @@ SUBSYSTEM_DEF(minimaps)
 				GLOB.uscm_flat_tacmap_data += new_current_map
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
+					current_squad.send_maptext("Идет обновление тактической карты...", "Тактическая карта:")
 				var/mob/living/carbon/human/human_leader = user
 				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
 				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")

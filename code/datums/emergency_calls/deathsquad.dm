@@ -6,8 +6,8 @@
 	name = "Weyland Whiteout Operators (!DEATHSQUAD!)"
 	mob_max = 8
 	mob_min = 5
-	arrival_message = "'!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
-	objectives = "Whiteout protocol is in effect for the target. Ensure there are no traces of the infestation or any witnesses."
+	arrival_message = "'!`2*%уб#*ить и*х$## вс!ех%. ни&*как(их^ с&ви*де%те##й.'"
+	objectives = "Для объекта введён протокол \"Белое пятно\". Убедитесь, что нет ни следов заражения, ни свидетелей."
 	probability = 0
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station

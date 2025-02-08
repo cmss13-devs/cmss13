@@ -12,8 +12,8 @@
 
 /datum/emergency_call/contractors/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Inheritor with Vanguard's Arrow Incorporated, Primary Operations; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authenticication code Lima-18153. "
-	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
+	arrival_message = "[MAIN_SHIP_NAME], это ККС \"Наследник\" с корпорацией \"Стрела Авангарда\", Основные Операции; мы получили ваш сигнал бедствия и выдвигаемся к вам в соответствии с Законом о военной помощи от 2177 года, код аутентификации Лима-18153."
+	objectives = "Обеспечьте безопасность [MAIN_SHIP_NAME], ликвидируйте врагов и окажите любую необходимую помощь экипажу."
 
 
 /datum/emergency_call/contractors/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -96,13 +96,13 @@
 
 /datum/emergency_call/contractors/covert/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Samburan, with Vanguard's Arrow Incorporated, Special Operations; we are boarding in accordance with the 2177 Military Aid Act; authorisation code X-Ray 19601."
-	objectives = "Assist USCMC forces in whatever way is possible, sabotage Weyland-Yutani efforts."
+	arrival_message = "[MAIN_SHIP_NAME], это ККС \"Самбуран\" с корпорацией \"Стрела Авангарда\", Специальные Операции; мы получили ваш сигнал бедствия и выдвигаемся к вам в соответствии с Законом о военной помощи от 2177 года, код аутентификации Икс-Рей 19601."
+	objectives = "Помогайте силам КМП всеми возможными способами, саботируйте деятельность Вейланд-Ютани."
 
 /datum/emergency_call/contractors/covert/proc/check_objective_info()
 	if(objective_info)
-		objectives = "Assist USCMC forces in whatever way is possible."
-	objectives += "Sabotage Weyland-Yutani efforts."
+		objectives = "Помогайте силам КМП всеми возможными способами."
+	objectives += "Саботируйте деятельность Вейланд-Ютани."
 	checked_objective = TRUE
 
 /datum/emergency_call/contractors/covert/create_member(datum/mind/M, turf/override_spawn_loc)

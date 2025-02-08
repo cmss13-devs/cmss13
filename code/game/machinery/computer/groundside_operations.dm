@@ -245,7 +245,7 @@
 			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
 				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
-			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			var/input = stripped_multiline_input(usr, "Пожалуйста, напишите сообщение для экипажа станции.", "Приоритетное оповещение", "")
 			if(!input || !is_announcement_active || !(usr in dview(1, src)))
 				return FALSE
 

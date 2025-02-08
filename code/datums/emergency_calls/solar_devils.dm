@@ -1,7 +1,7 @@
 /datum/emergency_call/solar_devils
 	name = "USCM Solar Devils (Half Squad)"
-	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon. Don't worry, the grown-ups are here to clean up your mess."
-	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
+	arrival_message = "Это \"Дьяволы Солнца\" второй дивизии КМП, мы получили ваш сигнал бедствия. Не переживайте, старшие наведут порядок."
+	objectives = "Оказывайте помощь местным силам Морпехов в решении любых проблем, с которыми они не могут справиться. Возможно получение дополнительных приказов."
 	home_base = /datum/lazy_template/ert/uscm_station
 	probability = 0
 	mob_min = 3
@@ -43,8 +43,8 @@
 
 /datum/emergency_call/solar_devils_full
 	name = "USCM Solar Devils (Full Squad)"
-	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon. Don't worry, the grown-ups are here to clean up your mess."
-	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
+	arrival_message = "Это \"Дьяволы Солнца\" второй дивизии КМП, мы получили ваш сигнал бедствия. Не переживайте, старшие наведут порядок."
+	objectives = "Оказывайте помощь местным силам Морпехов в решении любых проблем, с которыми они не могут справиться. Возможно получение дополнительных приказов."
 	home_base = /datum/lazy_template/ert/uscm_station
 	probability = 0
 	mob_min = 3

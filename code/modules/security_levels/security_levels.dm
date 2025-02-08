@@ -9,31 +9,31 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				if(announce)
-					ai_announcement("Attention: Security level lowered to GREEN - all clear.", no_sound ? null : 'sound/AI/code_green.ogg', log)
+					ai_announcement("Внимание: Уровень угрозы понижен до ЗЕЛЕНОГО - угрозы отсутствуют.", no_sound ? null : 'sound/AI/code_green.ogg', log)
 				GLOB.security_level = SEC_LEVEL_GREEN
 
 			if(SEC_LEVEL_BLUE)
 				if(GLOB.security_level < SEC_LEVEL_BLUE)
 					if(announce)
-						ai_announcement("Attention: Security level elevated to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_elevated.ogg', log)
+						ai_announcement("Внимание: Уровень угрозы повышен до СИНЕГО - есть данные о возможной враждебной активность.", no_sound ? null : 'sound/AI/code_blue_elevated.ogg', log)
 				else
 					if(announce)
-						ai_announcement("Attention: Security level lowered to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_lowered.ogg', log)
+						ai_announcement("Внимание: Уровень угрозы понижен до СИНЕГО - возможное присутствие враждебной активности.", no_sound ? null : 'sound/AI/code_blue_lowered.ogg', log)
 				GLOB.security_level = SEC_LEVEL_BLUE
 
 			if(SEC_LEVEL_RED)
 				if(GLOB.security_level < SEC_LEVEL_RED)
 					if(announce)
-						ai_announcement("Attention: Security level elevated to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_elevated.ogg', log)
+						ai_announcement("Внимание: Уровень угрозы повышен до КРАСНОГО - существует непосредственная угроза кораблю.", no_sound ? null : 'sound/AI/code_red_elevated.ogg', log)
 				else
 					if(announce)
-						ai_announcement("Attention: Security level lowered to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_lowered.ogg', log)
+						ai_announcement("Внимание: Уровень безопасности понижен до КРАСНОГО - существует непосредственная угроза кораблю.", no_sound ? null : 'sound/AI/code_red_lowered.ogg', log)
 				GLOB.security_level = SEC_LEVEL_RED
 
 			if(SEC_LEVEL_DELTA)
 				if(announce)
-					var/name = "SELF-DESTRUCT SYSTEMS ACTIVE"
-					var/input = "DANGER, THE EMERGENCY DESTRUCT SYSTEM IS NOW ACTIVATED. PROCEED TO THE SELF-DESTRUCT CHAMBER FOR CONTROL ROD INSERTION."
+					var/name = "СИСТЕМЫ САМОУНИЧТОЖЕНИЯ АКТИВИРОВАНЫ"
+					var/input = "ОПАСНОСТЬ, СИСТЕМА ЭКСТРЕННОГО САМОУНИЧТОЖЕНИЯ АКТИВИРОВАНА. ПРОЙДИТЕ В КАМЕРУ САМОУНИЧТОЖЕНИЯ ДЛЯ УСТАНОВКИ УПРАВЛЯЮЩЕГО СТЕРЖНЯ."
 					marine_announcement(input, name, 'sound/AI/selfdestruct_short.ogg', logging = log)
 				GLOB.security_level = SEC_LEVEL_DELTA
 

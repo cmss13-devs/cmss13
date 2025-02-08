@@ -584,8 +584,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
-	current_squad.send_message("'[crate.name]' supply drop incoming. Heads up!")
-	current_squad.send_maptext(crate.name, "Incoming Supply Drop:")
+	current_squad.send_message("Приближается дроп-под '[crate.name]' со снабжением. Осторожно!")
+	current_squad.send_maptext(crate.name, "Приближается дроп-под снабжения:")
 	COOLDOWN_START(src, next_fire, drop_cooldown)
 	if(ismob(usr))
 		var/mob/M = usr

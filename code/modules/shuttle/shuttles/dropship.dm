@@ -101,8 +101,8 @@
 		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
 			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
 				continue
-			var/name = "Unidentified Lifesigns"
-			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+			var/name = "Неизвестные формы жизни"
+			var/input = "На боту корабля были обнаружены неизвестные формы жизни. Рекомендация: заблокировать внешние шлюзы, включая воздуховоды и вентиляцию."
 			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 			set_security_level(SEC_LEVEL_RED)
 			return

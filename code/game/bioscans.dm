@@ -123,16 +123,16 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 /datum/bioscan_data/proc/ares_bioscan(forced = FALSE, variance = 2)
 	if(!forced && !ares_can_bioscan())
 		message_admins("An ARES Bioscan has failed.")
-		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-		var/input = "Bioscan failed. \n\nInvestigation into Bioscan subsystem recommended."
+		var/name = "[MAIN_AI_SYSTEM]: Статус биосканирования"
+		var/input = "Биосканирование не удалось. \n\nРекомендуется провести проверку подсистемы Биосканирования."
 		log_ares_bioscan(name, input, forced)
 		if(ares_can_interface() || forced)
 			marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		return
 	//Adjust the randomness there so everyone gets the same thing
 	var/fake_xenos_on_planet = max(0, xenos_on_planet + rand(-variance, variance))
-	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-	var/input = "Bioscan complete.\n\nSensors indicate [xenos_on_ship_uncontained ? "[xenos_on_ship_uncontained]" : "no"] unknown lifeform signature[!xenos_on_ship_uncontained || xenos_on_ship_uncontained > 1 ? "s":""] present on the ship[xenos_on_ship_uncontained && xenos_ship_location ? ", including one in [xenos_ship_location]," : ""] and [fake_xenos_on_planet ? "approximately [fake_xenos_on_planet]" : "no"] signature[!fake_xenos_on_planet || fake_xenos_on_planet > 1 ? "s":""] located elsewhere[fake_xenos_on_planet && xenos_planet_location ? ", including one in [xenos_planet_location]":""]."
+	var/name = "[MAIN_AI_SYSTEM]: Статус биосканирования"
+	var/input = "Биосканирование завершено.\n\nДатчики показывают [xenos_on_ship_uncontained ? "присутствие [xenos_on_ship_uncontained]" : "отсутствие"] неизвестных форм жизни[!xenos_on_ship_uncontained || xenos_on_ship_uncontained > 1] на корабле[xenos_on_ship_uncontained && xenos_ship_location ? ", включая одного в [xenos_ship_location]," : ""] и [fake_xenos_on_planet ? "возможное присутствие [fake_xenos_on_planet]" : "отсутствие"] сигнатур[!fake_xenos_on_planet || fake_xenos_on_planet > 1] расположенных где-либо ещё[fake_xenos_on_planet && xenos_planet_location ? ", включая одного в [xenos_planet_location]":""]."
 
 	log_game("BIOSCAN: ARES bioscan completed. [input]")
 

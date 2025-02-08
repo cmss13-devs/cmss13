@@ -441,7 +441,7 @@
 					if ("Yes")
 						launch_initiated = TRUE
 						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
-						shipwide_ai_announcement("Launch command received. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat doors will close in 10 seconds.")
+						shipwide_ai_announcement("Команда на запуск получена. Шлюзы [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "западного" : "восточного"] спасательного пода будут закрыты через 10 секунд.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
 						lifeboat.alarm_sound_loop.start()
 						lifeboat.playing_launch_announcement_alarm = TRUE
@@ -451,7 +451,7 @@
 						launch_initiated = TRUE
 						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
 						lifeboat.evac_launch()
-						shipwide_ai_announcement("Emergency Launch command received. Launching [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat.")
+						shipwide_ai_announcement("Команда на запуск получена. Запуск [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "западного" : "восточного"] спасательного пода.")
 						return
 
 			if(SHUTTLE_IGNITING)

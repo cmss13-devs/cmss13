@@ -138,8 +138,8 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 		return
 	active_lz = console
 	// The announcement to all Humans.
-	var/name = "[MAIN_AI_SYSTEM] Operation Staging Order"
-	var/input = "Command Order Issued.\n\n[active_lz.loc.loc] has been designated as the primary landing zone."
+	var/name = "[MAIN_AI_SYSTEM]: Приказ о постановке операции"
+	var/input = "Приказ командования отдан.\n\n[active_lz.loc.loc] назначен основной зоной высадки."
 	marine_announcement(input, name)
 
 /datum/game_mode/proc/announce_bioscans()

@@ -284,7 +284,7 @@
 			shake_camera(mob, steps = 3, strength = 1)
 			announcement_mobs += mob
 
-	announcement_helper("Dropship [marine_dropship.name] dispersing [/obj/effect/particle_effect/smoke/weedkiller::name] due to potential biological infestation.", MAIN_AI_SYSTEM, announcement_mobs, 'sound/effects/rocketpod_fire.ogg')
+	announcement_helper("Корабль [marine_dropship.name] распыляет [/obj/effect/particle_effect/smoke/weedkiller::name] в виду потенциального биологического заражения.", MAIN_AI_SYSTEM, announcement_mobs, 'sound/effects/rocketpod_fire.ogg')
 
 /**
  * Clears any built resin in the areas around the landing zone,
@@ -404,8 +404,8 @@
 
 						round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN
 
-						var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."
-						var/name = "Automated Security Authority Announcement"
+						var/input = "Охранная блокировка будет снята через 30 секунд в соответствии с протоколом автоматической блокировки."
+						var/name = "Автоматизированное оповещение охранных систем"
 						marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 						for(var/i in GLOB.living_xeno_list)
 							var/mob/M = i

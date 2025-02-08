@@ -306,7 +306,7 @@
 
 	message_admins("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
 	if(points_to_add >= 0)
-		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
+		shipwide_ai_announcement("Для этой операции был выделен дополнительный бюджет на снабжение.")
 	message_admins("[key_name_admin(usr)] granted UPP requisitions [points_to_add] points.")
 
 /datum/admins/proc/add_upp_req_points()
@@ -518,7 +518,7 @@
 	new_order.approvedby = MAIN_AI_SYSTEM
 	GLOB.supply_controller.shoppinglist += new_order
 
-	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
+	marine_announcement("Ядерное устройство было подготовлено и доставлено по заявкам через ASRS.", "ПОЛУЧЕНИЕ ЯДЕРНОГО АРСЕНАЛА", 'sound/misc/notice2.ogg')
 	message_admins("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 	log_game("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 
@@ -656,7 +656,7 @@
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
 		return FALSE
 
-	var/input = input(usr, "This is a standard message from the ship's AI. It uses Almayer General channel and won't be heard by humans without access to Almayer General channel (headset or intercom). Check with online staff before you send this. Do not use html.", "What?", "") as message|null
+	var/input = input(usr, "Это стандартное сообщение от корабельного ИИ. Оно использует канал Almayer General и не будет услышано людьми, не имеющими доступа к каналу Almayer General (гарнитура или интерком). Прежде чем отправлять это сообщение, проконсультируйтесь с администрацией. Не используйте html.", "Что?", "") as message|null
 	if(!input)
 		return FALSE
 
@@ -704,7 +704,7 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
+	var/input = input(usr, "Это сообщение типа \"объявление\" от корабельного ИИ. Об этом будет объявлено каждому разумному человеку на z-уровне Алмаера. Имейте в виду, что это сработает, даже если ARES не работает/разрушен. Прежде чем отправлять это сообщение, проконсультируйтесь с администрацией.", "Что?", "") as message|null
 	if(!input)
 		return FALSE
 	if(!ares_can_interface())

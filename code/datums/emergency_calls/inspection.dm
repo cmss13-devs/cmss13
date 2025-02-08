@@ -7,7 +7,7 @@
 
 /datum/emergency_call/inspection_provost/New()
 	..()
-	objectives = "Investigate any issues with ML enforcement on the [MAIN_SHIP_NAME]."
+	objectives = "Расследуйте любые проблемы с соблюдением ВП на корабле [MAIN_SHIP_NAME]."
 
 /datum/emergency_call/inspection_provost/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/candidates_clean = list()
@@ -60,7 +60,7 @@
 
 /datum/emergency_call/inspection_hc/New()
 	..()
-	objectives = "Inspect and evaluate the [MAIN_SHIP_NAME] and its crew."
+	objectives = "Осмотрите и проведите оценку [MAIN_SHIP_NAME] и его экипажа."
 
 /datum/emergency_call/inspection_hc/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -98,7 +98,7 @@
 
 /datum/emergency_call/inspection_wy/New()
 	..()
-	objectives = "Make sure the crew of the [MAIN_SHIP_NAME] is aware of your presence. Investigate the Corporate Liaison and any other Company assets and make sure they remain loyal to the Company. Make a detailed report back to Dispatch."
+	objectives = "Убедитесь, что экипаж корабля [MAIN_SHIP_NAME] знает о вашем присутствии. Проведите расследование в отношении корпоративного связного и любого другого актива компании и убедитесь, что они остаются верными компании. Составьте подробный отчет диспетчеру."
 
 /datum/emergency_call/inspection_wy/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -141,7 +141,7 @@
 
 /datum/emergency_call/inspection_wy/lawyer/New()
 	..()
-	objectives = "Make sure the crew of the [MAIN_SHIP_NAME] is aware of your presence. Investigate who the Corporate Liaison reported for breaking their contract and any review other Company assets and make sure they remain loyal to the Company. Make a detailed report back to Corporate."
+	objectives = "Убедитесь, что экипаж корабля [MAIN_SHIP_NAME] знает о вашем присутствии. Выясните, на кого корпоративный связной доложил о несоблюдении обязательств по контракту, а также проверьте другие активы компании и убедитесь, что они остаются верными компании. Составьте подробный отчет для корпорации."
 
 /datum/emergency_call/inspection_wy/lawyer/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -187,8 +187,8 @@
 
 /datum/emergency_call/inspection_cmb/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, a CMB transport vessel is preparing to board you, submitting Federal docking clearances now. Standby."
-	objectives = "Get your instructions from the CMB Office at Anchorpoint Station, and carry out your orders. Ensure that Colonial assets are safe and in your custody. Do not enforce or override Marine Law on a Marine Ship unless requested, as it's outside of your juristiction."
+	arrival_message = "[MAIN_SHIP_NAME], это станция \"Анкорпойнт\". Колониальное бюро маршалов. Сообщаем, что транспортное судно КМБ готовится к высадке на ваш корабль, передаем федеральные разрешения на стыковку. Ожидайте."
+	objectives = "Получите инструкции в офисе КМБ на станции Анкорпойнт и выполняйте приказы. Убедитесь, что колониальные активы находятся в безопасности и под вашей опекой. Не вводите и не отменяйте законы на корабле, если вас об этом не просят, поскольку это не входит в вашу юрисдикцию."
 
 	will_spawn_icc_liaison = prob(90)
 	will_spawn_cmb_observer = prob(10)
@@ -280,9 +280,9 @@
 
 /datum/emergency_call/inspection_cmb/black_market/New()
 	..()
-	dispatch_message = "Third Fleet High Command to [MAIN_SHIP_NAME], we have received inconsistent supply manifests and irregularities on the ASRS system aboard your ship, and have requested a CMB Investigation Team to board and clear you of any wrongdoing."
-	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, we are dispatching a team of Marshals to board with you by request of GSO-91. Submitting authorized docking clearances, over."
-	objectives = "Investigate the inconsistencies aboard the [MAIN_SHIP_NAME]'s ASRS. In the case of illegal activity, collect evidence, and submit a report to the CMB Command at Anchorpoint Station. If required, the ICC Liaison's Tradeband is capable of fixing ASRS computers. Work with the [MAIN_SHIP_NAME]'s military police force."
+	dispatch_message = "Высшее командование Третьего флота, сообщаем [MAIN_SHIP_NAME], что мы получили противоречивые данные о снабжении и нарушениях в системе ASRS на борту вашего корабля и запросили следственную группу КМБ, для высадки на ваш борт, дабы исключить любые нарушения."
+	arrival_message = "Входящая радиопередача: [MAIN_SHIP_NAME], это станция \"Анкорпойнт\". Колониальное бюро маршалов. Сообщаем, что по запросу ГСО-91 мы направляем к вам на борт группу маршалов. Передаем разрешение на стыковку, конец связи."
+	objectives = "Расследуйте несоответствия в ASRS корабля [MAIN_SHIP_NAME]. В случае незаконной деятельности соберите доказательства и подайте рапорт командованию КМБ на станции Анкорпойнт. При необходимости ICC Liaison's Tradeband может исправить поломку ASRS. Сотрудничайте с военной полицией [MAIN_SHIP_NAME]."
 
 /datum/emergency_call/inspection_cmb/black_market/create_member(datum/mind/current_mind, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

@@ -4,11 +4,11 @@
 	name = "Souto Man"
 	mob_max = 1
 	mob_min = 1
-	objectives = "Party like it's 1999!"
+	objectives = "Устройте вечеринку, будто это снова 1999!"
 	probability = 0
 
 /datum/emergency_call/souto/New()
-	arrival_message = "Give a round of applause for the marine who sent in ten-thousand Souto tabs to get me here! [MAIN_SHIP_NAME], Souto Man's here to party with YOU!"
+	arrival_message = "Поаплодируйте морпеху, который прислал десять тысяч марок Соуто, чтобы вытащить меня сюда! [MAIN_SHIP_NAME], Соуто прибыл, чтобы повеселиться с ВАМИ!"
 	return ..()
 
 /datum/emergency_call/souto/create_member(datum/mind/M, turf/override_spawn_loc)

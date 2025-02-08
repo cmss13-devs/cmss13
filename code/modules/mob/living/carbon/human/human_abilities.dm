@@ -493,7 +493,7 @@ CULT
 	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
 		return
 
-	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
+	shipwide_ai_announcement("ОПАСНОСТЬ: Получено сообщение, на корабле происходит мятеж. Код: Задержать, Арестовать, Защитить.")
 	var/datum/equipment_preset/other/mutineer/XC = new()
 
 	XC.load_status(H)

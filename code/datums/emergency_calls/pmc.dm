@@ -18,8 +18,8 @@
 
 /datum/emergency_call/pmc/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce responding to your distress call. We are boarding. Any hostile actions will be met with lethal force."
-	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME]'s Commanding Officer, and eliminate any hostile threats. Do not damage Wey-Yu property."
+	arrival_message = "[MAIN_SHIP_NAME], это ККС \"Ройс\", мы получили ваш сигнал бедствия. Прибываем на ваш борт. Любые враждебные действия будут пресекаться летальной силой."
+	objectives = "Обеспечьте безопасность корпоративного связного и командующего офицера [MAIN_SHIP_NAME]. Устраните любые враждебные угрозы. Не повреждайте имущество Вей-Ю."
 
 
 /datum/emergency_call/pmc/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -100,13 +100,13 @@
 
 /datum/emergency_call/pmc/chem_retrieval/New()
 	..()
-	dispatch_message = "[MAIN_SHIP_NAME], this is USCSS Royce. We are sending a second squad aboard to retrieve all samples of a chemical recently scanned from your research department. If you do not cooperate, the team is authorized to use lethal force and terminate the research department."
-	objectives = "Secure all documents, samples and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department."
+	dispatch_message = "[MAIN_SHIP_NAME], это ККС \"Ройс\". Мы высылаем на ваш борт вторую группу, чтобы изъять все образцы химического вещества, недавно отсканированные в вашем исследовательском отделе. Если вы не будете сотрудничать, команда уполномочена применить летальную силу и ликвидировать исследовательский отдел."
+	objectives = "Заберите из исследовательского отдела [MAIN_SHIP_NAME] все документы, образцы и химикаты, содержащие свойство \"DNA_Disintegrating\"."
 
 /datum/emergency_call/pmc/chem_retrieval/proc/check_objective_info()
 	if(objective_info)
-		objectives = "Secure all documents, samples and chemicals related to [objective_info] from [MAIN_SHIP_NAME] research department."
-	objectives += "Assume at least 30 units are located within the department. If they can not make more that should be all. Cooperate with the onboard Wey-Yu researcher to ensure all who know the complete recipe are kept silenced with a contract of confidentiality. All humans who have ingested the chemical must be brought back dead or alive. Viral scan is required for any humans who is suspected of ingestion. Full termination of the department is authorized if they do not cooperate, but this should be avoided UNLESS ABSOLUTELY NECESSARY."
+		objectives = "Заберите все документы, образцы и химикаты, относящиеся к [objective_info], из исследовательского отдела [MAIN_SHIP_NAME]."
+	objectives += "Предполагается, что в отделе находится не менее 30 юнитов. Если они не могут изготовить больше, то это должно быть всё. Сотрудничайте с бортовым исследователем Вей-Ю, чтобы гарантировать, что все, кто знает полный рецепт, хранят молчание, заключив договор о неразглашении. Все люди, употребившие химикат, должны быть доставлены живыми или мертвыми. Вирусное сканирование требуется для всех людей, подозреваемых в употреблении. В случае отказа от сотрудничества возможно полное увольнение сотрудников отдела, но этого следует избегать, если нет КРАЙНЕЙ НЕОБХОДИМОСТИ."
 	checked_objective = TRUE
 
 /datum/emergency_call/pmc/chem_retrieval/create_member(datum/mind/M, turf/override_spawn_loc)

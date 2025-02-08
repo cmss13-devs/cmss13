@@ -9,8 +9,8 @@
 
 /datum/emergency_call/xeno_handler/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], corrupted xenos with a trainer have been sent your way."
-	objectives = "Listen to the human that gives you directives, they are your master. If you are this human, give orders to the Xenomorphs. They are expected to listen to you."
+	arrival_message = "[MAIN_SHIP_NAME], к вам направлены порабощенные ксеноморфы с инструктором."
+	objectives = "Слушайте человека, который дает вам указания, - он ваш хозяин. Если вы этот человек, отдавайте приказы ксеноморфам. Они должны слушаться вас."
 
 
 /datum/emergency_call/xeno_handler/spawn_items()

@@ -153,11 +153,11 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 
 /proc/make_maint_all_access()
 	GLOB.maint_all_access = TRUE
-	ai_announcement("The maintenance access requirement has been removed on all airlocks.")
+	ai_announcement("Требование доступа для технического обслуживания было снято со всех шлюзов.")
 
 /proc/revoke_maint_all_access()
 	GLOB.maint_all_access = FALSE
-	ai_announcement("The maintenance access requirement has been added on all airlocks.")
+	ai_announcement("Требование доступа для технического обслуживания было возвращено на все шлюзы.")
 
 // Keycard reader at the CORSAT locks
 /obj/structure/machinery/keycard_auth/lockdown
@@ -165,7 +165,7 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 	desc = "This device is used override the security lockdown."
 	channel = "map_lockdown"
 	var/window_desc = "This device is used to override the security lockdown. It requires both of the authentication disks."
-	var/announce_title = "Station Security Authority automated announcement"
+	var/announce_title = "Автоматическое оповещение систем безопасности станции"
 	var/card_type
 	var/podlock_id = "map_lockdown"
 	var/obj/item/card/data/stored_id
@@ -269,7 +269,7 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 	if(timeleft <= 5 SECONDS)
 		next_interval = timeleft
 		text_timeleft = "[timeleft] seconds"
-	var/input = "Station shutter locks lifting in [text_timeleft] per manual override."
+	var/input = "Подъем затвора станции через [text_timeleft] при ручном управлении."
 	var/title = announce_title
 	marine_announcement(input, title, 'sound/AI/commandreport.ogg')
 	for(var/mob/M in GLOB.player_list)

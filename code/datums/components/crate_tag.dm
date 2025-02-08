@@ -32,5 +32,5 @@
 /// Handler to notify an overwatched squad that this crate has been dropped for them
 /datum/component/crate_tag/proc/notify_squad(datum/source, datum/squad/squad)
 	SIGNAL_HANDLER
-	squad.send_message("'[name]' supply drop incoming. Heads up!")
-	squad.send_maptext(name, "Incoming Supply Drop:")
+	squad.send_message("Приближается дроп-под '[name]' со снабжением. Осторожно!")
+	squad.send_maptext(name, "Приближается дроп-под снабжения:")

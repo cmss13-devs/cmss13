@@ -1,11 +1,11 @@
-#define COMMAND_ANNOUNCE "Command Announcement"
-#define UPP_COMMAND_ANNOUNCE "UPP Command Announcement"
-#define CLF_COMMAND_ANNOUNCE "CLF Command Announcement"
-#define PMC_COMMAND_ANNOUNCE "PMC Command Announcement"
-#define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
-#define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
-#define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
-#define YAUTJA_ANNOUNCE "You receive a message from your ship AI..." //preds announcement
+#define COMMAND_ANNOUNCE "Оповещение командования"
+#define UPP_COMMAND_ANNOUNCE "Оповещение командования UPP"
+#define CLF_COMMAND_ANNOUNCE "Оповещение командования CLF"
+#define PMC_COMMAND_ANNOUNCE "Оповещение командования PMC"
+#define QUEEN_ANNOUNCE "Слова Королевы звучат у вас в голове..."
+#define QUEEN_MOTHER_ANNOUNCE "Экстрасенсорная директива Королевы-Матери"
+#define XENO_GENERAL_ANNOUNCE "Вы чувствуете нечто необычное..." //general xeno announcement that don't involve Queen, for nuke for example
+#define YAUTJA_ANNOUNCE "Вы получаете сообщение от ИИ вашего корабля..." //preds announcement
 #define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
 
 // SS220 ADD START - TTS
@@ -84,7 +84,7 @@
 				targets.Remove(H)
 
 	if(!isnull(signature))
-		message += "<br><br><i> Signed by, <br> [signature]</i>"
+		message += "<br><br><i> Авторизация, <br> [signature]</i>"
 
 	announcement_helper(message, title, targets, sound_to_play, announcer = TTS_ARES_ANNOUNCER) // SS220 EDIT - TTS
 
@@ -143,7 +143,7 @@
 			targets.Remove(target)
 
 	if(!isnull(signature))
-		message += "<br><br><i> Signed by, <br> [signature]</i>"
+		message += "<br><br><i> Авторизация, <br> [signature]</i>"
 	switch(ares_logging)
 		if(ARES_LOG_MAIN)
 			log_ares_announcement(title, message, signature)

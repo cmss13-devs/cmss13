@@ -1863,7 +1863,7 @@
 
 	if(href_list["ccdeny"]) // CentComm-deny. The distress call is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["ccdeny"])
-		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
+		marine_announcement("Сигнал бедствия не получил ответа, пусковые трубы сейчас проходят повторную калибровку.", "Сигнал бедствия", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 
@@ -1932,7 +1932,7 @@
 		//Can no longer request a nuke
 		GLOB.ares_datacore.nuke_available = FALSE
 
-		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		marine_announcement("Ядерный снаряд был одобрен Верховным командованием КМП и будет доставлен по заявкам через систему ASRS.", "ЯДЕРНЫЕ СНАРЯДЫ ОДОБРЕНЫ", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized \a [nuketype], requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has authorized \a [nuketype], requested by [key_name_admin(ref_person)]")
 
@@ -1940,13 +1940,13 @@
 		var/mob/ref_person = locate(href_list["nukedeny"])
 		if(!istype(ref_person))
 			return FALSE
-		marine_announcement("Your request for nuclear ordnance deployment has been reviewed and denied by USCM High Command for operational security and colonial preservation reasons. Have a good day.", "NUCLEAR ORDNANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		marine_announcement("Ваш запрос на размещение ядерных снарядов был рассмотрен и отклонен Верховным командованием КМП по соображениям эксплуатационной безопасности и сохранения колониального наследия. Хорошего дня.", "ЯДЕРНЫЕ СНАРЯДЫ ОТКЛОНЕНЫ", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has denied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has dnied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System", logging = ARES_LOG_SECURITY)
+		marine_announcement("Запрос на самоуничтожение не получил ответа, ARES сейчас проводит перерасчёт показателей.", "Система Самоуничтожения", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 

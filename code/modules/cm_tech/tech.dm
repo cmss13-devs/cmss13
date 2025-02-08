@@ -21,7 +21,7 @@
 	var/background_icon = "background"
 	var/background_icon_locked = "marine"
 
-	var/announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
+	var/announce_name = "РАЗРЕШЕНИЕ НА ИСПОЛЬЗОВАНИЕ СПЕЦИАЛЬНЫХ АКТИВОВ АЛМАЕРА"
 	var/announce_message
 
 	var/is_tier_changer = FALSE

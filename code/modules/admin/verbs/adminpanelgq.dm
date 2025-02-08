@@ -10,7 +10,7 @@
 	if(prompt != "Yes")
 		return FALSE
 
-	var/whattoannounce = "ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS."
+	var/whattoannounce = "ВНИМАНИЕ! ОБЩАЯ ТРЕВОГА. ВСЕМУ ЛИЧНОМУ СОСТАВУ ОРГАНИЗОВАТЬ БОЕВЫЕ МЕСТА."
 	var/log = "[key_name_admin(src)] Sent General Quarters!"
 
 	prompt = tgui_alert(src, "Do you want to use a custom announcement?", "Choose.", list("Yes", "No"), 20 SECONDS)

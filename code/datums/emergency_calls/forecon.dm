@@ -1,7 +1,7 @@
 /datum/emergency_call/forecon
 	name = "FORECON (Squad)"
-	arrival_message = "A Force Reconnaissance squad has been dispatched to your ship. Stand by."
-	objectives = "Handle whatever threat is present. Further orders may be provided."
+	arrival_message = "На ваш корабль отправлен отряд разведывательной группы. Ожидайте."
+	objectives = "Устраните любую угрозу. Могут быть отданы дополнительные приказы."
 	home_base = /datum/lazy_template/ert/uscm_station
 	probability = 0
 	mob_min = 3
@@ -58,5 +58,5 @@
 
 /datum/emergency_call/forecon/platoon/New()
 	..()
-	arrival_message = "A Force Reconnaissance squad has been dispatched to your ship. Stand by."
-	objectives = "Handle whatever threat is present. Further orders may be provided."
+	arrival_message = "На ваш корабль отправлен отряд разведывательной группы. Ожидайте."
+	objectives = "Устраните любую угрозу. Могут быть отданы дополнительные приказы."

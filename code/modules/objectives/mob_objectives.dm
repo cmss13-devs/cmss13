@@ -123,7 +123,7 @@
 		if(length(scored_humansynth_corpses) <= 48) // Limit human corpse recovery to 5 total points (.1 each)
 			return OBJECTIVE_LOW_VALUE
 		if(!max_humans)
-			marine_announcement("Maximum intel points for non-xenomorph corpses has been achieved.", "Intel Announcement", 'sound/misc/notice2.ogg')
+			marine_announcement("Достигнуто максимальное количество интел-поинтов для тел не-ксеноморфов.", "Оповещение о интел-поинтах", 'sound/misc/notice2.ogg')
 			max_humans = TRUE
 			return OBJECTIVE_LOW_VALUE
 

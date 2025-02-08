@@ -58,10 +58,10 @@
 	var/announcement_areas = english_list(notification_areas[type]["[time_to_grab]"])
 
 	var/marine_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
-		? "Structural collapse detected in [announcement_areas]. Be advised that new routes may be accessible." \
-		: "Geological shifts detected in [announcement_areas]. Be advised that new routes may be accessible."
+		? "Обнаружено обрушение конструкций в [announcement_areas]. Обратите внимание, что могут оказаться доступные новые маршруты." \
+		: "Обнаружены геологические сдвиги в [announcement_areas]. Обратите внимание, что могут оказаться доступные новые маршруты."
 
-	marine_announcement(marine_announcement_text, "Priority Announcement")
+	marine_announcement(marine_announcement_text, "Приоритетное оповещение")
 
 	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
 		? "The shattered metal of this place has collapsed, providing new routes in [announcement_areas]." \
@@ -90,7 +90,7 @@
 		? "Structural collapse detected in [announcement_areas], allowing dismantlement. Be advised that new routes may be created." \
 		: "Geological shifts detected in [announcement_areas], allowing excavation. Be advised that new routes may be created."
 
-	marine_announcement(marine_announcement_text, "Priority Announcement")
+	marine_announcement(marine_announcement_text, "Приоритетное оповещение")
 
 	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
 		? "The shattered metal of this place has collapsed, and we can create routes through [announcement_areas]." \

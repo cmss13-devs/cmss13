@@ -1327,10 +1327,6 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja/lower_deck)
-"dq" = (
-/obj/structure/machinery/power/apc/almayer/south,
-/turf/open/shuttle/predship,
-/area/yautja/lower_deck)
 "dr" = (
 /obj/structure/machinery/door_control{
 	id = "youngblood1";
@@ -8286,7 +8282,7 @@ dI
 zi
 zi
 dr
-dq
+NE
 zi
 dd
 NE

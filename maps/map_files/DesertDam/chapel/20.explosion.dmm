@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/cult,
+/area/space)
 "ab" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -122,6 +126,7 @@
 /area/space)
 "sJ" = (
 /obj/structure/closet/wardrobe/chaplain_black,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/cult,
 /area/space)
 "sS" = (
@@ -183,8 +188,8 @@
 /turf/open/floor/cult,
 /area/space)
 "Ai" = (
-/obj/structure/surface/table/woodentable,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/candle,
 /turf/open/floor/cult,
 /area/space)
 "BW" = (
@@ -225,9 +230,8 @@
 /turf/open/desert/dirt,
 /area/space)
 "Hl" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/storage/fancy/candle_box,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/trash/candle,
 /turf/open/floor/cult,
 /area/space)
 "Lh" = (
@@ -272,6 +276,7 @@
 /area/space)
 "Ox" = (
 /obj/structure/surface/rack,
+/obj/item/storage/fancy/candle_box,
 /turf/open/floor/cult,
 /area/space)
 "ON" = (
@@ -522,8 +527,8 @@ Lh
 oa
 uQ
 Hl
-Ai
-Ai
+aa
+aa
 Ai
 uQ
 oa

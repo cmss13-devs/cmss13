@@ -245,6 +245,11 @@
 	icon_state = "gib6";
 	pixel_y = 12
 	},
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_y = 32;
+	layer = 3.6;
+	pixel_x = -4
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/armory)
 "Rp" = (
@@ -287,7 +292,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/landmark/corpsespawner/security/marshal,
-/obj/structure/prop/hybrisa/misc/blood,
 /turf/open/floor/prison/floor_marked,
 /area/desert_dam/building/security/armory)
 "XV" = (

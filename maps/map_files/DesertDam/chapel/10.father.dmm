@@ -120,7 +120,7 @@
 /turf/open/floor/carpet13_5/west,
 /area/desert_dam/building/church)
 "sP" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
@@ -150,8 +150,10 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "vL" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/storage/bible,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/bible{
+	pixel_y = 16
+	},
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "wB" = (
@@ -264,6 +266,7 @@
 /area/desert_dam/building/church)
 "Mb" = (
 /obj/structure/surface/rack,
+/obj/item/storage/fancy/candle_box,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "Oh" = (
@@ -289,6 +292,7 @@
 /area/desert_dam/building/church)
 "Ux" = (
 /obj/structure/closet/wardrobe/chaplain_black,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "UH" = (
@@ -311,18 +315,20 @@
 /turf/open/floor/chapel,
 /area/desert_dam/building/church)
 "XC" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/ammo_magazine/shotgun/buckshot{
-	current_rounds = 0
+	current_rounds = 0;
+	pixel_y = 15
 	},
+/obj/item/tool/candle,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "YE" = (
 /turf/open/floor/carpet9_4/west,
 /area/desert_dam/building/church)
 "YP" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/storage/fancy/candle_box,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/trash/candle,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "ZA" = (

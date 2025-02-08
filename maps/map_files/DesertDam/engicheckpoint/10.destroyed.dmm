@@ -209,6 +209,11 @@
 	icon_state = "gib6";
 	pixel_y = -8
 	},
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_y = 32;
+	layer = 3.6;
+	pixel_x = -4
+	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "pG" = (
@@ -536,7 +541,6 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "KI" = (
 /obj/effect/landmark/corpsespawner/colonist/random,
-/obj/structure/prop/hybrisa/misc/blood,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";

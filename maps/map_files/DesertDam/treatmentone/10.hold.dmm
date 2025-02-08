@@ -132,7 +132,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/blood,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -819,6 +818,11 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "An" = (
 /obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_y = 32;
+	layer = 3.6;
+	pixel_x = -4
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Bd" = (

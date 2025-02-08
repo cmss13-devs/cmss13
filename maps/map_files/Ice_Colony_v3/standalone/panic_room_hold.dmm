@@ -610,7 +610,7 @@
 /area/shiva/interior/colony/s_admin)
 "wY" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/snow/layer2,
+/turf/open/floor/plating,
 /area/shiva/exterior/junkyard/cp_bar)
 "xa" = (
 /obj/item/shard{

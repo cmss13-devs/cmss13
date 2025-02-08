@@ -75,6 +75,15 @@
 /datum/research_upgrades/machinery/autodoc/larva_removal/on_purchase(turf/machine_loc)
 	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_4)
 
+/datum/research_upgrades/machinery/grinderspeed
+	name = "Reagent-Grinder Upgrade"
+	desc = "Research upgrade for Reagent grinder, technology on this disk makes storing and grinding procedures more effective, increasing both speed and product capacity of the grinder."
+	behavior = RESEARCH_UPGRADE_ITEM
+	value_upgrade = 500
+	item_reference = /obj/item/research_upgrades/grinderspeed
+	upgrade_type = ITEM_MACHINERY_UPGRADE
+	clearance_req = 1
+
 
 /datum/research_upgrades/machinery/sleeper
 	name = "Sleeper Upgrade"
@@ -85,20 +94,29 @@
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 1
 
+/datum/research_upgrades/machinery/autoharvest
+	name = "Auto-Harvest Botany Upgrade"
+	desc = "Research upgrade for hydroponics system, technology on this disk automatically shakes the plant once it is ready to be harvested."
+	behavior = RESEARCH_UPGRADE_ITEM
+	value_upgrade = 250
+	item_reference = /obj/item/research_upgrades/autoharvest
+	upgrade_type = ITEM_MACHINERY_UPGRADE
+	clearance_req = 1
+
 /datum/research_upgrades/item
 	name = "Items"
 	behavior = RESEARCH_UPGRADE_CATEGORY
 
 /datum/research_upgrades/item/research_credits
-	name = "Research Credits"
-	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for 8 or 9 points."
-	value_upgrade = 2000
+	name = "Research Contract Reroll"
+	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team to request new contract chemicals."
+	value_upgrade = 1000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	item_reference = /obj/item/research_upgrades/credits
-	change_purchase = 500
-	maximum_price = 5000
-	clearance_req = 5
+	item_reference = /obj/item/research_upgrades/reroll
+	change_purchase = 200
+	maximum_price = 2000
+	clearance_req = 4
 
 /datum/research_upgrades/item/laser_scalpel
 	name = "Laser Scalpel"
@@ -112,10 +130,10 @@
 /datum/research_upgrades/item/incision_management
 	name = "Incision Management System"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision, allowing for the immediate commencement of therapeutic steps."
-	value_upgrade = 3000
+	value_upgrade = 2000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	clearance_req = 4
+	clearance_req = 3
 	item_reference = /obj/item/tool/surgery/scalpel/manager
 
 

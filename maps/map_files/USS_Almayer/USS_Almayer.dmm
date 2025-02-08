@@ -2078,7 +2078,8 @@
 /area/almayer/command/cichallway)
 "aga" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1
+	dir = 1;
+	req_one_access = list(19,22)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/pilotbunks)
@@ -2289,20 +2290,20 @@
 "agC" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
-	access_modified = 1;
 	name = "\improper Flight Crew Quarters";
-	req_one_access_txt = "19;22";
-	dir = 1
+	dir = 1;
+	req_one_access = list(19,22);
+	req_access = list()
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Hangar Lockdown";
 	name = "\improper Hangar Lockdown Blast Door";
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -17123,6 +17124,10 @@
 	pixel_x = -8;
 	density = 0
 	},
+/obj/item/storage/fancy/cigar/tarbacks{
+	pixel_x = -8;
+	pixel_y = 23
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/sea_office)
 "bQZ" = (
@@ -29510,7 +29515,8 @@
 	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
 	health = 500;
 	name = "Reinforced Glass door";
-	req_one_access_txt = list(19,35)
+	req_one_access = list(19,35);
+	req_access = list()
 	},
 /obj/item/desk_bell{
 	anchored = 1;
@@ -51831,6 +51837,10 @@
 /obj/item/ashtray/plastic{
 	pixel_x = 8;
 	pixel_y = -4
+	},
+/obj/item/tool/lighter/zippo{
+	pixel_x = -5;
+	pixel_y = 2
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)

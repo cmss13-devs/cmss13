@@ -704,7 +704,7 @@
 	var/list/extra_factions = list()
 	/// What type of /datum/crewmonitor this will create
 	var/crew_monitor_type = /datum/crewmonitor
-	
+
 	/// The identifier for the crew monitor that we use
 	VAR_PRIVATE/lookup_string
 
@@ -1080,7 +1080,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
 				// 00-09: High Command
 				JOB_DIRECTOR = 00,
-				JOB_CHIEF_EXECUTIVE = 01,
+				JOB_DEPUTY_DIRECTOR = 01,
+				JOB_CHIEF_EXECUTIVE = 02,
 				// 10-19: Command Level Staff
 				JOB_PMC_DIRECTOR = 10,
 				JOB_DIVISION_MANAGER = 10,

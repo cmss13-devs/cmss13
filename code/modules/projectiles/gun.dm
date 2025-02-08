@@ -1608,6 +1608,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			if(!H.allow_gun_usage)
 				if(issynth(user))
 					to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
+				else if(isthrall(user))
+					to_chat(user, SPAN_WARNING("Your master probably wouldn't be happy if you used this."))
 				else
 					to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 				return

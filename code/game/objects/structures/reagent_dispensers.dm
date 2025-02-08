@@ -444,6 +444,18 @@
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
 
+/obj/structure/reagent_dispensers/forensictank
+	name = "forensic spray refiller"
+	desc = "Refill forensic spray bottles."
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
+	icon_state = "forensictank"
+	anchored = TRUE
+	drag_delay = 3
+	wrenchable =  FALSE
+	density = FALSE
+	amount_per_transfer_from_this = 45
+	chemical = "forensic_spray"
+
 /obj/structure/reagent_dispensers/water_cooler
 	name = "water cooler"
 	desc = "A machine that dispenses water to drink. It has levers for hot and cold, but it only dispenses room-temperature water."

@@ -30,20 +30,20 @@
 	if(user)
 		user.update_inv_back()
 
-	for(var/datum/action/A in actions)
-		A.update_button_icon()
+	for(var/datum/action/backpack_actions in actions)
+		backpack_actions.update_button_icon()
 
 	if(issynth(user))
-		var/mob/living/M = user
-		for(var/datum/action/A in M.actions)
-			A.update_button_icon()
+		var/mob/living/living_mob = user
+		for(var/datum/action/living_mob_actions in living_mob.actions)
+			living_mob_actions.update_button_icon()
 
 	if(content_watchers) //If someone's looking inside it, don't close the flap.
 		return
 
 	var/sum_storage_cost = 0
-	for(var/obj/item/I in contents)
-		sum_storage_cost += I.get_storage_cost()
+	for(var/obj/item/items_in_bag in contents)
+		sum_storage_cost += items_in_bag.get_storage_cost()
 	if(!sum_storage_cost)
 		return
 	else if(sum_storage_cost <= max_storage_space * 0.5)
@@ -90,6 +90,12 @@
 
 	playsound(src, 'sound/handling/light_on_1.ogg', 50, TRUE)
 	update_icon(user)
+
+/obj/item/storage/backpack/marine/smartpack/dropped(mob/living/synthetic)
+
+	if(light_on && loc != synthetic)
+		turn_light(synthetic, toggle_on = FALSE)
+	..()
 
 
 /obj/item/storage/backpack/marine/smartpack/green

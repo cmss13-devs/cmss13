@@ -56,7 +56,7 @@
 		list("M74 AGM-Smoke Airburst Grenade", floor(scale * 4), /obj/item/explosive/grenade/smokebomb/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Star Shell", floor(scale * 2), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Hornet Shell", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
-		list("G2 Electroshock Grenade", round(scale * 5), /obj/item/explosive/grenade/sebb, VENDOR_ITEM_REGULAR),
+		list("G2 Electroshock Grenade", floor(scale * 5), /obj/item/explosive/grenade/sebb, VENDOR_ITEM_REGULAR),
 		list("M40 HIRR Baton Slug", floor(scale * 8), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
 		list("M40 MFHS Metal Foam Grenade", floor(scale * 6), /obj/item/explosive/grenade/metal_foam, VENDOR_ITEM_REGULAR),
 		list("Plastic Explosives", floor(scale * 3), /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR),
@@ -509,6 +509,7 @@
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Bedroll", 30, /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),
+		list("M5 Camera Gear", 3, /obj/item/device/overwatch_camera, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)

@@ -105,6 +105,10 @@
 	icon_state = "light_on-r"
 	state = LIGHT_FLOOR_COLOR_RED
 	color = "#c27e7e"
+	light_on = TRUE
+	light_power = 1
+	light_range = 2
+	light_color = "#ff0000"
 
 /turf/open/floor/light/green
 	icon_state = "light_on-g"

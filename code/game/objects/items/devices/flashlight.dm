@@ -593,7 +593,7 @@
 	item_state = ""
 	light_range = 6 // luminosity when on
 	desc = "A rugged alien lantern with a metallic frame, emitting a steady red glow. Its light has an unsettling, otherworldly aura."
-	light_color = "#bb1f1f"
+	light_color = "#f03939"
 
 /obj/item/device/flashlight/lantern/yautja/on
 	name = "lantern"

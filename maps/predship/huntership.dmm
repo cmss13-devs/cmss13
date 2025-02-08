@@ -228,7 +228,8 @@
 	},
 /obj/structure/machinery/chem_dispenser/soda/beer/yautja{
 	pixel_x = -7;
-	pixel_y = 15
+	pixel_y = 15;
+	layer = 3
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	color = "#9b1818";
@@ -770,7 +771,8 @@
 	color = "#6b675e"
 	},
 /obj/structure/machinery/chem_dispenser/soda/yautja{
-	pixel_y = 15
+	pixel_y = 15;
+	layer = 3
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -999,20 +1001,6 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "dy" = (
@@ -1035,10 +1023,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/alien_embryo{
-	pixel_y = 9;
-	layer = 3.2
-	},
 /obj/item/tool/kitchen/tray{
 	pixel_y = 8;
 	color = "#9bb1be"
@@ -1046,6 +1030,10 @@
 /obj/structure/sink{
 	pixel_y = 25;
 	color = "#c1a384"
+	},
+/obj/item/pelt/runner{
+	pixel_x = -2;
+	pixel_y = 9
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
@@ -1070,11 +1058,6 @@
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
 "dN" = (
-/obj/structure/closet/yautja{
-	pixel_x = -24;
-	density = 0;
-	pixel_y = 4
-	},
 /obj/structure/closet/crate{
 	color = "#6b675e";
 	pixel_y = 13
@@ -1091,19 +1074,14 @@
 /turf/open/floor/predship/hull,
 /area/yautja)
 "dT" = (
-/obj/structure/closet/yautja{
-	pixel_x = -6;
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
 	pixel_y = 5
-	},
-/obj/item/device/flashlight/lantern/yautja,
-/obj/item/device/flashlight/lantern/yautja,
-/obj/item/device/flashlight/lantern/yautja,
-/obj/item/device/flashlight/lantern/yautja,
-/obj/item/device/flashlight/lantern/yautja,
-/obj/structure/closet/yautja{
-	pixel_x = 8;
-	pixel_y = 5;
-	density = 0
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -1122,6 +1100,20 @@
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/structure/closet/yautja,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "dW" = (
@@ -1131,19 +1123,14 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "dX" = (
-/obj/structure/closet/yautja{
-	pixel_x = -6;
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/structure/closet/yautja/big{
+	pixel_x = -1;
 	pixel_y = 5
-	},
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/obj/structure/closet/yautja{
-	pixel_x = 8;
-	pixel_y = 5;
-	density = 0
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -2291,8 +2278,11 @@
 /obj/item/clothing/head/helmet/gladiator,
 /obj/item/clothing/suit/armor/gladiator,
 /obj/item/clothing/under/chainshirt/hunter,
-/obj/structure/closet/yautja,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
+	pixel_y = 1
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "hS" = (
@@ -2681,6 +2671,15 @@
 	dir = 8
 	},
 /turf/open/floor/corsat/squares,
+/area/yautja)
+"jl" = (
+/obj/item/clothing/head/helmet/gladiator,
+/obj/item/clothing/suit/armor/gladiator,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/structure/closet/yautja/big{
+	pixel_y = 1
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "jm" = (
 /obj/item/storage/belt/utility/pred/full{
@@ -3396,14 +3395,9 @@
 /obj/item/storage/fancy/candle_box,
 /obj/item/storage/fancy/candle_box,
 /obj/item/storage/fancy/candle_box,
-/obj/structure/closet/yautja{
-	pixel_x = -6;
-	pixel_y = 1
-	},
-/obj/structure/closet/yautja{
-	pixel_x = 8;
-	pixel_y = 1;
-	density = 0
+/obj/structure/closet/yautja/big{
+	pixel_x = -1;
+	pixel_y = -1
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -3956,11 +3950,14 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "nV" = (
-/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja{
+	pixel_x = 1;
+	pixel_y = -11
+	},
 /obj/item/trash/snack_bowl{
 	color = "#6b675e";
-	pixel_x = -13;
-	pixel_y = 10;
+	pixel_x = -5;
+	pixel_y = 11;
 	name = "Bowl"
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
@@ -4122,10 +4119,6 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "oy" = (
-/obj/structure/closet/yautja{
-	pixel_x = -6;
-	pixel_y = 4
-	},
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
@@ -4133,6 +4126,9 @@
 	name = "Monitor";
 	pixel_y = 23;
 	density = 0
+	},
+/obj/structure/closet/yautja/big{
+	pixel_y = 9
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -4250,7 +4246,7 @@
 	pixel_y = 33;
 	anchored = 1
 	},
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 7;
 	pixel_y = 19
 	},
@@ -4386,7 +4382,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = -9;
 	pixel_y = 16
 	},
@@ -4653,7 +4649,7 @@
 /area/yautja)
 "qo" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 2;
 	pixel_y = 14
 	},
@@ -5253,6 +5249,7 @@
 /obj/item/stack/sheet/wood/large_stack{
 	color = "#52443b"
 	},
+/obj/structure/closet/yautja,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "sS" = (
@@ -8014,7 +8011,7 @@
 	pixel_x = -1;
 	pixel_y = 13
 	},
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -9220,7 +9217,7 @@
 	anchored = 1
 	},
 /obj/effect/landmark/clan_spawn,
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 3;
 	pixel_y = 15
 	},
@@ -9424,14 +9421,14 @@
 /area/yautja)
 "Hh" = (
 /obj/item/storage/box/bracer,
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
 /obj/item/storage/box/bracer,
 /obj/item/storage/box/bracer,
 /obj/item/storage/box/bracer,
 /obj/item/storage/box/bracer{
 	pixel_y = 9
+	},
+/obj/structure/closet/yautja/big{
+	pixel_y = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
@@ -9631,6 +9628,17 @@
 "HN" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull,
+/area/yautja)
+"HO" = (
+/obj/item/clothing/head/helmet/gladiator,
+/obj/item/clothing/suit/armor/gladiator,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/closet/yautja/big{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "HQ" = (
 /obj/structure/platform_decoration/metal/hunter{
@@ -9854,7 +9862,7 @@
 /area/yautja)
 "IT" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = -9;
 	pixel_y = 15
 	},
@@ -10058,7 +10066,10 @@
 /obj/item/clothing/head/helmet/gladiator,
 /obj/item/clothing/suit/armor/gladiator,
 /obj/item/clothing/under/chainshirt/hunter,
-/obj/structure/closet/yautja,
+/obj/structure/closet/yautja/big{
+	pixel_x = 2;
+	pixel_y = 1
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "JG" = (
@@ -10322,6 +10333,50 @@
 /obj/item/frame/table/wood,
 /obj/item/frame/table/wood,
 /obj/item/frame/table/wood,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet{
+	amount = 50
+	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "KE" = (
@@ -10406,14 +10461,9 @@
 /obj/item/weapon/twohanded/yautja/spear,
 /obj/item/weapon/twohanded/yautja/spear,
 /obj/item/weapon/twohanded/yautja/spear,
-/obj/structure/closet/yautja{
-	pixel_x = -6;
-	pixel_y = 1
-	},
-/obj/structure/closet/yautja{
-	pixel_x = 8;
-	pixel_y = 1;
-	density = 0
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -11178,11 +11228,14 @@
 /obj/item/clothing/under/chainshirt/hunter,
 /obj/item/clothing/under/chainshirt/hunter,
 /obj/item/clothing/under/chainshirt/hunter,
-/obj/structure/closet/yautja,
 /obj/item/device/healthanalyzer/alien,
 /obj/item/device/healthanalyzer/alien,
 /obj/item/device/healthanalyzer/alien,
 /obj/item/storage/belt/utility/pred/full,
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
+	pixel_y = 4
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Og" = (
@@ -11522,7 +11575,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 6;
 	pixel_y = 10
 	},
@@ -12647,7 +12700,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/clan_spawn,
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = -3;
 	pixel_y = -2
 	},
@@ -13068,6 +13121,31 @@
 	pixel_y = 12
 	},
 /turf/open/floor/corsat,
+/area/yautja)
+"Uz" = (
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/obj/item/storage/backpack/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/stack/yautja_rope,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/storage/belt/utility/pred/full,
+/obj/structure/closet/yautja/big{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "UB" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -13673,15 +13751,20 @@
 /turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
 "Wp" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
+	pixel_y = 1
 	},
 /obj/item/storage/box/bracer,
-/obj/item/storage/box/bracer,
-/obj/item/storage/box/bracer,
+/obj/item/storage/box/bracer{
+	pixel_y = 9
+	},
 /obj/item/storage/box/bracer,
 /obj/item/storage/box/bracer{
-	pixel_y = 8
+	pixel_y = 9
+	},
+/obj/item/storage/box/bracer{
+	pixel_y = 9
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
@@ -13779,60 +13862,9 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
-"WI" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/tile/carpet{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/turf/open/shuttle/dropship/predship/tile/red,
-/area/yautja)
 "WJ" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/device/flashlight/lantern/yautja/on{
+/obj/item/device/flashlight/lantern/yautja{
 	pixel_x = -6;
 	pixel_y = -1
 	},
@@ -19792,7 +19824,7 @@ aV
 aV
 KD
 td
-WI
+dt
 aV
 fJ
 DG
@@ -21232,7 +21264,7 @@ Zo
 wE
 iq
 aV
-Of
+Uz
 AI
 of
 Ld
@@ -28208,7 +28240,7 @@ aV
 HV
 aV
 aV
-JF
+jl
 Kv
 bk
 Zv
@@ -28310,7 +28342,7 @@ aV
 uV
 aV
 aV
-hR
+HO
 Kv
 wS
 OB

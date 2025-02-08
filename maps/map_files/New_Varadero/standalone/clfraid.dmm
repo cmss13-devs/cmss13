@@ -328,7 +328,7 @@
 "hC" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/machinery/power/apc/no_power/west,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
 "hG" = (
 /turf/open/floor/shiva/purplefull/west,

@@ -41,16 +41,16 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
+"aai" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/fiberbush)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/servers)
-"aaq" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/organic/grass/astroturf,
-/area/fiorina/tumor/fiberbush)
 "aar" = (
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/almayer,
@@ -36593,7 +36593,7 @@ xwC
 xwC
 tfP
 tfP
-aaq
+aai
 kbT
 kbT
 qPb

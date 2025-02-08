@@ -60,10 +60,6 @@
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/north)
-"aar" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/complex_border/med_rec)
 "aas" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
@@ -147,6 +143,17 @@
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
+"aaM" = (
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaN" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaO" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -34694,9 +34701,9 @@ msK
 msK
 hpy
 aEl
-jar
-aar
-msK
+aaO
+aaN
+aaM
 msK
 msK
 nAc

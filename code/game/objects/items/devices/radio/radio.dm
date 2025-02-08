@@ -322,10 +322,10 @@
 				return null
 	return target_zs
 
-/obj/item/device/radio/hear_talk(mob/M as mob, msg, verb = "says", datum/language/speaking = null, tts_heard_list)
+/obj/item/device/radio/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics, tts_heard_list)
 	if (broadcasting)
-		if(get_dist(src, M) <= canhear_range)
-			talk_into(M, msg,null,verb,speaking, tts_heard_list = tts_heard_list)
+		if(get_dist(src, sourcemob) <= canhear_range)
+			talk_into(sourcemob, message, null, verb, language, tts_heard_list = tts_heard_list)
 
 
 /*

@@ -18,7 +18,7 @@
 	GLOB.radio_beacon_list -= src
 	return ..()
 
-/obj/item/device/radio/beacon/hear_talk(tts_heard_list)
+/obj/item/device/radio/beacon/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics, tts_heard_list)
 	return
 
 

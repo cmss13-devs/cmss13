@@ -162,14 +162,14 @@
 	return
 
 
-/obj/item/device/taperecorder/hear_talk(mob/living/M, msg, verb, datum/language/speaking, italics, tts_heard_list)
+/obj/item/device/taperecorder/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics, tts_heard_list)
 	. = ..()
 	if(mytape && recording)
 		mytape.timestamp += mytape.used_capacity
-		var/language_known = (M.universal_speak || (speaking && (speaking.name in known_languages)))
-		var/mob_name = language_known ? M.GetVoice() : "Unknown"
-		var/message = (!speaking || language_known) ? msg : speaking.scramble(msg)
-		mytape.storedinfo += "\[[time2text(mytape.used_capacity,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][message][italics ? "</i>" : null]\""
+		var/language_known = (sourcemob.universal_speak || (language && (language.name in known_languages)))
+		var/mob_name = language_known ? sourcemob.GetVoice() : "Unknown"
+		var/msg = (!language || language_known) ? message : language.scramble(message)
+		mytape.storedinfo += "\[[time2text(mytape.used_capacity,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][msg][italics ? "</i>" : null]\""
 
 
 /obj/item/device/taperecorder/verb/record()

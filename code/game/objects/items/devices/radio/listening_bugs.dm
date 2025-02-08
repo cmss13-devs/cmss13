@@ -78,11 +78,11 @@
 				return
 	..()
 
-/obj/item/device/radio/listening_bug/hear_talk(mob/M as mob, msg, verb = "says", datum/language/speaking = null, tts_heard_list)
+/obj/item/device/radio/listening_bug/hear_talk(mob/living/sourcemob, message, verb = "says", datum/language/language, italics, tts_heard_list)
 	var/processed_verb = "[SPAN_RED("\[LSTN [nametag]\]")] [verb]"
 	if(broadcasting)
-		if(get_dist(src, M) <= 7)
-			talk_into(M, msg, null, processed_verb, speaking, listening_device = bug_broadcast_level, tts_heard_list = tts_heard_list)
+		if(get_dist(src, sourcemob) <= 7)
+			talk_into(sourcemob, message, null, processed_verb, language, listening_device = bug_broadcast_level, tts_heard_list = tts_heard_list)
 
 /obj/item/device/radio/listening_bug/afterattack(atom/target_atom, mob/user as mob, proximity)
 	if(!ready_to_disguise)

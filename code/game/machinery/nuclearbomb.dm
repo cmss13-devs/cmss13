@@ -413,7 +413,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				continue
 			alive_mobs |= current_mob
 
-	for(var/datum/interior/interior in SSinteriors.interiors)
+	for(var/datum/interior/interior in SSinterior.interiors)
 		if(interior?.exterior?.z == z)
 			for(var/mob/living/passenger in interior.get_passengers())
 				if(!(passenger in (alive_mobs + dead_mobs)))

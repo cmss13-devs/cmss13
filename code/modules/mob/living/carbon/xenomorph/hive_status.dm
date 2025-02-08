@@ -216,6 +216,9 @@
 
 /datum/hive_status/proc/evo_screech()
 	for(var/mob/current_mob as anything in GLOB.mob_list)
+		if(istype(current_mob, /mob/new_player))
+			return
+
 		if(!is_ground_level(current_mob.z))
 			continue
 

@@ -2103,6 +2103,15 @@
 /turf/open/desert/rock/deep/transition/east,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "aib" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/structure/bed/stool{
+	buckling_y = 14;
+	layer = 4;
+	pixel_x = 5
+	},
 /turf/open/desert/rock/deep/transition/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "aic" = (
@@ -9716,7 +9725,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aKo" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/prison/darkbrown3/east,
 /area/desert_dam/interior/dam_interior/hanger)
 "aKp" = (
@@ -9826,6 +9835,10 @@
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
+"aKL" = (
+/obj/structure/cargo_container/hybrisa/containersextended/blackwyleft,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/north_tunnel)
 "aKM" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/desert/excavation/component7/southwest,
@@ -9843,6 +9856,18 @@
 	},
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/interior/caves/central_caves)
+"aKQ" = (
+/obj/structure/cargo_container/hybrisa/containersextended/blackwyright,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"aKR" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"aKS" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/north_tunnel)
 "aKT" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/sand_overlay/sand1{
@@ -9900,6 +9925,14 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aLe" = (
+/obj/structure/cargo_container/hybrisa/containersextended/blueleft,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"aLf" = (
+/obj/structure/cargo_container/hybrisa/containersextended/blueright,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/north_tunnel)
 "aLg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -9909,6 +9942,23 @@
 "aLh" = (
 /turf/open/floor/coagulation/icon0_4,
 /area/desert_dam/exterior/valley/valley_mining)
+"aLi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"aLj" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"aLk" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/north_tunnel)
 "aLl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -9924,6 +9974,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"aLo" = (
+/obj/structure/largecrate/empty{
+	pixel_y = -1
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 17
+	},
+/turf/open/desert/rock/deep/transition/northwest,
+/area/desert_dam/interior/dam_interior/north_tunnel)
 "aLp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -9942,16 +10002,31 @@
 	},
 /turf/open/floor/plating/warnplate/northwest,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"aLs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/hanger)
 "aLt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"aLu" = (
+/obj/structure/cargo_container/horizontal/blue/middle,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
 "aLv" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_labs)
+"aLw" = (
+/obj/structure/cargo_container/horizontal/blue/top,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
 "aLy" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -18498,6 +18573,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
+/obj/item/trash/cigbutt,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bCn" = (
@@ -18634,6 +18710,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
 	},
+/obj/item/trash/buritto,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bCY" = (
@@ -56238,8 +56315,8 @@ aKJ
 aKG
 bhT
 bkR
-bhT
-bhT
+aLw
+aLu
 aKo
 bhT
 biZ
@@ -56477,7 +56554,7 @@ bil
 bil
 bil
 bil
-bil
+aLs
 aJN
 aIR
 bil
@@ -63043,7 +63120,7 @@ bys
 bLz
 bAt
 bwe
-bmf
+aLj
 bAt
 bAt
 bAt
@@ -63515,7 +63592,7 @@ bJj
 cbT
 bJj
 bpF
-bBP
+aLi
 bAt
 bAt
 iVX
@@ -63746,7 +63823,7 @@ bLz
 bAv
 bUq
 bUq
-bUq
+aLk
 bEj
 bwe
 bBP
@@ -64219,7 +64296,7 @@ bEk
 bzE
 bBP
 bAt
-bAt
+aKL
 iVX
 brQ
 bsC
@@ -64453,7 +64530,7 @@ bEl
 bzE
 bmf
 bAt
-bAt
+aKQ
 iVX
 brQ
 bpJ
@@ -64686,8 +64763,8 @@ dTs
 bZU
 bzE
 bmf
-bAt
-bAt
+aLe
+aKR
 iVX
 brQ
 bpJ
@@ -64916,12 +64993,12 @@ dTs
 dTs
 dTs
 aib
-aPS
+aLo
 bZY
 bzE
 bBP
-bAt
-bAt
+aLf
+aKS
 iVX
 brQ
 bsC
@@ -65153,7 +65230,7 @@ bCm
 bCV
 bEl
 bwe
-bBP
+aLi
 ciw
 bJh
 iVX
@@ -66087,7 +66164,7 @@ boB
 bLz
 bAt
 bwe
-bmf
+aLj
 bAt
 cfr
 cfr

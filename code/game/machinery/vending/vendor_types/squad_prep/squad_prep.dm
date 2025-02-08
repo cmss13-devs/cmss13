@@ -371,11 +371,11 @@
 		list("Suppressor", 2.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
 
 		list("RAIL", -1, null, null),
-		list("B8 Smart-Scope", 1.5, /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
-		list("Magnetic Harness", 4, /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
+		list("B8 Smart-Scope", 4.5, /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),		// SS220 EDIT - Balance attachments
+		list("Magnetic Harness", 8, /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
 		list("S4 2x Telescopic Mini-Scope", 2, /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
-		list("S5 Red-Dot Sight", 3, /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
-		list("S6 Reflex Sight", 3, /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),
+		list("S5 Red-Dot Sight", 8, /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
+		list("S6 Reflex Sight", 6, /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
 		list("S8 4x Telescopic Scope", 2, /obj/item/attachable/scope, VENDOR_ITEM_REGULAR),
 
 		list("UNDERBARREL", -1, null, null),
@@ -383,18 +383,19 @@
 		list("Bipod", 2.5, /obj/item/attachable/bipod, VENDOR_ITEM_REGULAR),
 		list("Burst Fire Assembly", 1.5, /obj/item/attachable/burstfire_assembly, VENDOR_ITEM_REGULAR),
 		list("Gyroscopic Stabilizer", 1.5, /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", 3, /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),
+		list("Laser Sight", 6, /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
 		list("Mini Flamethrower", 1.5, /obj/item/attachable/attached_gun/flamer, VENDOR_ITEM_REGULAR),
 		list("XM-VESG-1 Flamer Nozzle", 1.5, /obj/item/attachable/attached_gun/flamer_nozzle, VENDOR_ITEM_REGULAR),
 		list("U7 Underbarrel Shotgun", 1.5, /obj/item/attachable/attached_gun/shotgun, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Extinguisher", 1.5, /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Extinguisher", 3.5, /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
 		list("Vertical Grip", 3, /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flashlight Grip", 2.5, /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),	// SS220 ADD - Balance attachments
 
 		list("STOCK", -1, null, null),
-		list("M37 Wooden Stock", 1.5, /obj/item/attachable/stock/shotgun, VENDOR_ITEM_REGULAR),
-		list("M39 Arm Brace", 1.5, /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),
-		list("M39 Stock", 1.5, /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),
-		list("M41A Solid Stock", 1.5, /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),
+		list("M37 Wooden Stock", 3.5, /obj/item/attachable/stock/shotgun, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
+		list("M39 Arm Brace", 3.5, /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
+		list("M39 Stock", 3.5, /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
+		list("M41A Solid Stock", 3.5, /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
 		list("M44 Magnum Sharpshooter Stock", 1.5, /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
 

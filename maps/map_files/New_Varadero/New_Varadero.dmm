@@ -174,41 +174,12 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior/beach_bar)
-"aaE" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
-"aaF" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/maintenance/south)
 "aaG" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
-"aaH" = (
-/obj/item/device/flashlight/lamp/tripod,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/caves/north_research)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -8972,6 +8943,11 @@
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/mess)
+"heu" = (
+/obj/item/device/flashlight/lamp/tripod,
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/north_research)
 "hfo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -13050,6 +13026,10 @@
 	},
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
+"kuE" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
 "kuX" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
@@ -30217,6 +30197,26 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
+"ydZ" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced,
+/obj/item/weapon/gun/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "yeG" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/frame/camera,
@@ -35654,7 +35654,7 @@ xCn
 qHc
 qHc
 xCn
-aaH
+heu
 vQe
 xCn
 uHY
@@ -42438,7 +42438,7 @@ cty
 cty
 cty
 iFb
-aaF
+kuE
 cto
 etv
 ksX
@@ -63929,7 +63929,7 @@ ulv
 bsf
 mMz
 kjI
-aaE
+ydZ
 kjI
 aak
 rAf

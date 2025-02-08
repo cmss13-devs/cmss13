@@ -619,6 +619,11 @@
 "acs" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/storage_blocks/east)
+"act" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_1)
 "acu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -643,6 +648,14 @@
 "acy" = (
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/b_block/hydro/glass)
+"acz" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/central_streets)
+"acA" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "acB" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
@@ -656,6 +669,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/bridge)
+"acF" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "acG" = (
 /turf/open/asphalt/cement/cement1,
 /area/lv522/atmos/filt)
@@ -671,31 +688,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/south_street)
 "acK" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/landing_zone_1)
-"acL" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/central_streets)
-"acM" = (
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/central_streets)
-"acN" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/north_west_street)
-"acO" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
-/turf/open/floor/prison/floor_plate,
-/area/lv522/indoors/a_block/garden)
-"acP" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/north_east_street)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -12386,6 +12380,12 @@
 	},
 /turf/open/asphalt/cement/cement1,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"gLd" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/a_block/garden)
 "gLg" = (
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
@@ -53075,7 +53075,7 @@ max
 osN
 sSQ
 vGo
-acK
+act
 jZD
 jZD
 jZD
@@ -54061,7 +54061,7 @@ xXP
 tNa
 luu
 nLm
-acN
+acA
 hJZ
 hJZ
 hJZ
@@ -64590,27 +64590,27 @@ wdy
 rMF
 jmG
 jmG
-acL
-acL
+acK
+acK
 jmG
 jmG
-acL
-acL
+acK
+acK
 jmG
 jmG
-acL
-acL
+acK
+acK
 jmG
 rSX
 six
 ndK
 jmG
-acM
-acL
+acz
+acK
 jmG
 jmG
-acL
-acL
+acK
+acK
 jmG
 jmG
 acJ
@@ -70731,7 +70731,7 @@ poM
 sjy
 sjy
 sjy
-acO
+gLd
 ulZ
 ulZ
 ulZ
@@ -76901,7 +76901,7 @@ vGp
 cpy
 cpy
 pZo
-acP
+acF
 tDS
 nLe
 yke

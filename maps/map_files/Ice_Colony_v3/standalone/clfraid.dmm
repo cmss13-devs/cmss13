@@ -1349,7 +1349,7 @@
 /area/shiva/interior/colony/s_admin)
 "JD" = (
 /obj/structure/machinery/power/apc/power/west,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/clf_shuttle)
 "JE" = (
 /turf/open/floor/plating/platingdmg2/west,

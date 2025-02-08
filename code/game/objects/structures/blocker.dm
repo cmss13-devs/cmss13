@@ -157,7 +157,7 @@
 	return FALSE
 
 /obj/structure/blocker/forcefield/human
-	types = list(/mob/living/carbon/human)
+	types = list(/mob/living/carbon/human, /obj/item/weapon)
 	icon_state = "purple_line"
 
 	visible = TRUE
@@ -166,7 +166,7 @@
 	return TRUE
 
 /obj/structure/blocker/forcefield/all
-	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph)
+	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph, /obj/item/weapon)
 	icon_state = "purple_line"
 
 // for fuel pump since it's a large sprite.

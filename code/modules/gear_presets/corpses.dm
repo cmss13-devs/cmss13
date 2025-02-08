@@ -385,7 +385,7 @@
 /datum/equipment_preset/corpse/administrator
 	name = "Corpse - Colony Administrator"
 	assignment = "Colonial Administrator"
-	rank = JOB_DIRECTOR
+	rank = JOB_DEPUTY_DIRECTOR
 	faction_group = FACTION_LIST_WY
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl

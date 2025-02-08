@@ -1115,6 +1115,13 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
+"dU" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/turf/open/shuttle/bright_red/glow,
+/area/yautja)
 "dV" = (
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
@@ -2844,16 +2851,14 @@
 /area/yautja)
 "jF" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 1
-	},
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 8
-	},
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = -2
 	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/obj/effect/hunter/bridge_border/brown/corner,
 /turf/open/shuttle/bright_red/glow,
 /area/yautja)
 "jG" = (
@@ -3207,6 +3212,13 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat,
 /area/yautja/lowerdeck)
+"kT" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 4
+	},
+/turf/open/shuttle/bright_red/glow,
+/area/yautja)
 "kU" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
@@ -4775,6 +4787,13 @@
 "qs" = (
 /obj/effect/hunter/rune,
 /turf/open/shuttle/dropship/predship/mainfloor/direction_3/east,
+/area/yautja)
+"qu" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
+	},
+/turf/open/shuttle/bright_red/glow,
 /area/yautja)
 "qw" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -10422,14 +10441,16 @@
 /area/yautja/hangar)
 "JS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/effect/hunter/bridge_border/brown/corner,
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
-	},
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 30;
 	layer = 3.1
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 1
+	},
+/obj/effect/hunter/bridge_border/brown/corner{
+	dir = 8
 	},
 /turf/open/shuttle/bright_red/glow,
 /area/yautja)
@@ -11098,6 +11119,11 @@
 /obj/structure/machinery/cryopod/no_store/yautja,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lowerdeck)
+"Mh" = (
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/bridge_border/brown/corner,
+/turf/open/shuttle/bright_red/glow,
+/area/yautja)
 "Mj" = (
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
@@ -11899,7 +11925,7 @@
 	name = "\improper Elder Quarters";
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Pp" = (
 /obj/effect/hunter/bridge_border/corner,
@@ -18771,8 +18797,8 @@ ue
 lL
 tT
 lm
-xD
-xD
+Mh
+qu
 aV
 aQ
 AH
@@ -18873,8 +18899,8 @@ Vf
 lL
 tT
 lm
-xD
-xD
+dU
+kT
 Po
 ys
 wE
@@ -19791,8 +19817,8 @@ Dr
 lX
 XM
 lm
-xD
-xD
+Mh
+qu
 Po
 wE
 xV
@@ -19893,8 +19919,8 @@ ue
 lX
 XM
 lm
-xD
-xD
+dU
+kT
 aV
 fI
 uK

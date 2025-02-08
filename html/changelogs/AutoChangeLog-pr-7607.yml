@@ -1,9 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - balance: "Reworks warden into the Valkyrie"
-  - rscadd: "Valkyrie tail stab extuingishes people you stab. This goes for /anything/ so you can save caps on fire or your allies."
-  - rscadd: "Tantrum ; You can click on a xenomorph to give them [15] armor, while giving yourself [10] armor, during tantrum your slashes heal more. This lasts 3 seconds for the target, 5 seconds for yourself."
-  - rscadd: "High Gallop: An ability that knocks people down infront of you, in a 2x3 radius. Also sends back grenades."
-  - rscadd: "Fight or Flight: A ranged rejuvenation that rejuvenates (removes stuns, slows weakens etc etc) scaling its range with your rage"
-  - rscadd: "Valkyrie slashes heal you and people 3 tiles next to you at a 15 to yourself and 15 to allies, while BUFFED (red outline) 30 to yourself and 30 to allies"

@@ -10,19 +10,19 @@
 "aac" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aad" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aae" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aaf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -36,7 +36,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aai" = (
 /obj/effect/decal/cleanable/dirt,
@@ -767,7 +767,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/east,
 /obj/structure/platform/metal/hybrisa/metalplatform2/north,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "acj" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -781,7 +781,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "ack" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -965,7 +965,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "acG" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
@@ -1165,7 +1165,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "add" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
@@ -1181,7 +1181,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "adf" = (
 /obj/structure/prop/server_equipment/laptop/closed,
@@ -1285,7 +1285,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "adq" = (
 /obj/structure/machinery/light{
@@ -1886,7 +1886,7 @@
 "aeT" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "aeU" = (
 /obj/effect/spawner/random/pills/highchance,
@@ -2212,7 +2212,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "afH" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -2394,7 +2394,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "age" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3429,7 +3429,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aiD" = (
 /obj/structure/surface/table/woodentable,
@@ -4254,7 +4254,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "akJ" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -4357,7 +4357,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "akR" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -4616,20 +4616,20 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aly" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "alz" = (
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "alA" = (
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
@@ -4637,7 +4637,7 @@
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "alB" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
@@ -4663,10 +4663,6 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
-"alD" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/oob/water)
 "alE" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -4705,7 +4701,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "alJ" = (
 /turf/open/floor/plating,
@@ -4824,7 +4820,7 @@
 	layer = 2
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "alX" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -4909,7 +4905,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "amk" = (
 /obj/effect/decal/hybrisa/road/road_edge,
@@ -5495,12 +5491,12 @@
 /area/navalis/indoors/industrial/accessway)
 "anV" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "anW" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "anX" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -5511,7 +5507,7 @@
 /area/navalis/outdoors/comm_one)
 "anZ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aoa" = (
 /obj/structure/machinery/power/apc{
@@ -5525,20 +5521,16 @@
 "aoc" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "aod" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "aoe" = (
 /turf/closed/wall/hybrisa/colony,
-/area/navalis/indoors/logistic/primary_storage)
-"aof" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
 /area/navalis/indoors/logistic/primary_storage)
 "aog" = (
 /turf/closed/wall/hybrisa/colony,
@@ -5614,7 +5606,7 @@
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aoz" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -5626,12 +5618,12 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aoA" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aoB" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -5647,7 +5639,7 @@
 /area/navalis/indoors/industrial/mining)
 "aoE" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aoF" = (
 /obj/structure/barricade/handrail/strata{
@@ -5655,12 +5647,12 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aoG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aoH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6179,7 +6171,7 @@
 "aqG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "aqH" = (
 /turf/open/floor/prison,
@@ -6238,7 +6230,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "aqV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6289,7 +6281,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "arf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6353,7 +6345,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "arq" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
@@ -6429,7 +6421,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "arG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -6499,18 +6491,18 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "arX" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "arY" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "arZ" = (
 /obj/structure/machinery/light{
@@ -6543,7 +6535,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "ase" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
@@ -6600,7 +6592,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "ask" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -6678,7 +6670,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "asy" = (
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
@@ -6768,7 +6760,7 @@
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "asO" = (
 /turf/closed/wall/hybrisa/colony/office,
@@ -6805,7 +6797,7 @@
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "asW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -6919,7 +6911,7 @@
 "atr" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "ats" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -7003,7 +6995,7 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "atH" = (
 /obj/structure/bed/chair{
@@ -7083,7 +7075,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "atV" = (
 /turf/open/floor/hybrisa/carpet/carpetgreen,
@@ -7398,7 +7390,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "auW" = (
 /obj/structure/machinery/power/apc,
@@ -7777,7 +7769,7 @@
 /area/navalis/indoors/command/oft_duty_room)
 "awq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "awr" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -8033,7 +8025,7 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "axj" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
@@ -8170,7 +8162,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "axH" = (
 /obj/structure/window/framed/hybrisa/colony/office/reinforced,
@@ -8199,12 +8191,12 @@
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "axL" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "axM" = (
 /obj/structure/barricade/handrail/wire{
@@ -8388,7 +8380,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "ayp" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -8398,7 +8390,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "ayq" = (
 /obj/structure/barricade/handrail/wire,
@@ -8437,39 +8429,12 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/outdoors/exterior/com_ext)
-"ayy" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "ayz" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
-"ayA" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/outdoors/exterior/com_ext)
-"ayB" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/outdoors/exterior/com_ext)
 "ayC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/structure_lattice{
@@ -8504,7 +8469,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "ayF" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -8515,7 +8480,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "ayG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -8526,7 +8491,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "ayH" = (
 /obj/structure/monorail{
@@ -8543,7 +8508,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayI" = (
 /obj/structure/monorail{
@@ -8595,7 +8560,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayM" = (
 /obj/structure/monorail{
@@ -8614,7 +8579,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayN" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -8632,7 +8597,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "ayO" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -8642,7 +8607,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayP" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -8652,7 +8617,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
@@ -8663,7 +8628,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "ayR" = (
 /obj/structure/blocker/forcefield/all{
@@ -8692,7 +8657,7 @@
 /obj/effect/decal/hybrisa/warningstripes_angled{
 	pixel_y = -2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayU" = (
 /obj/structure/blocker/forcefield/all{
@@ -8736,7 +8701,7 @@
 /obj/effect/decal/hybrisa/warningstripes_angled{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ayZ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -8747,7 +8712,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aza" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -8820,7 +8785,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "azh" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -8847,7 +8812,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "azk" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -8868,7 +8833,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "azm" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -8896,7 +8861,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "azo" = (
 /obj/structure/monorail{
@@ -8912,7 +8877,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "azp" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -8924,7 +8889,7 @@
 /obj/structure/platform/metal/almayer/east{
 	pixel_x = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "azq" = (
 /obj/structure/monorail{
@@ -8940,7 +8905,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "azr" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -8952,7 +8917,7 @@
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "azs" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -8964,7 +8929,7 @@
 /obj/structure/platform/metal/almayer/east{
 	pixel_x = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "azt" = (
 /obj/effect/decal/warning_stripes{
@@ -8983,7 +8948,7 @@
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "azv" = (
 /obj/structure/monorail{
@@ -8999,7 +8964,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "azw" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -9009,20 +8974,8 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
-"azx" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/blocker/forcefield/human{
-	invisibility = 101
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/outdoors/exterior_xeno_only/lz1)
 "azy" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/hybrisa/metal/orangelinecorner,
@@ -9108,7 +9061,7 @@
 	light_range = 3
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "azD" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -9135,7 +9088,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "azF" = (
 /obj/structure/blocker/invisible_wall,
@@ -9153,7 +9106,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "azI" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9164,7 +9117,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "azJ" = (
 /obj/structure/barricade/handrail/strata,
@@ -9176,7 +9129,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "azK" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9187,7 +9140,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "azL" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9198,7 +9151,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "azM" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9210,7 +9163,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "azN" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9221,7 +9174,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "azO" = (
 /obj/effect/decal/medical_decals{
@@ -9244,7 +9197,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "azQ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9255,7 +9208,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "azR" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9272,7 +9225,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "azS" = (
 /obj/structure/barricade/handrail/strata{
@@ -9286,7 +9239,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "azT" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9297,7 +9250,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "azU" = (
 /obj/structure/surface/table/almayer,
@@ -9397,7 +9350,7 @@
 /obj/structure/prop/oilrig/support_beam/brown{
 	layer = 1.1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aAe" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -9431,12 +9384,12 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aAi" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aAj" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -9456,7 +9409,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aAl" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -9484,7 +9437,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAn" = (
 /obj/structure/barricade/handrail/strata{
@@ -9498,7 +9451,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aAo" = (
 /obj/structure/pipes/vents/pump,
@@ -9514,7 +9467,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "aAq" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -9635,7 +9588,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aAz" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9646,7 +9599,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aAA" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -9672,7 +9625,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAC" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9683,7 +9636,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aAD" = (
 /obj/structure/pipes/vents/pump,
@@ -9698,7 +9651,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aAF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9723,7 +9676,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAH" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -9745,7 +9698,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aAJ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -9766,7 +9719,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAK" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -9787,7 +9740,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAL" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -9829,7 +9782,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAP" = (
 /obj/effect/sentry_landmark/lz_2/top_left,
@@ -9857,7 +9810,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAS" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -9871,7 +9824,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aAT" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -9898,7 +9851,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAV" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -9920,7 +9873,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAW" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -9941,7 +9894,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAX" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -9962,7 +9915,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aAY" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -10000,7 +9953,7 @@
 "aBc" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aBd" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -10032,7 +9985,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aBg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10083,7 +10036,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aBm" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -10104,7 +10057,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aBn" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
@@ -10125,7 +10078,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aBq" = (
 /obj/structure/tunnel/maint_tunnel/hybrisa{
@@ -10148,7 +10101,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aBt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10175,7 +10128,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aBv" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
@@ -10202,7 +10155,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aBy" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -10229,7 +10182,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aBB" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -10239,7 +10192,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aBC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
@@ -10279,7 +10232,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aBH" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -10581,7 +10534,7 @@
 	pixel_y = -2
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aCq" = (
 /obj/structure/monorail{
@@ -10602,7 +10555,7 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aCr" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
@@ -10640,15 +10593,6 @@
 /obj/structure/tunnel,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
-"aCv" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only/lz1)
 "aCw" = (
 /obj/effect/alien/resin/sticky,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
@@ -10841,7 +10785,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aCU" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
@@ -10858,7 +10802,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aCV" = (
 /obj/structure/barricade/wooden{
@@ -10944,7 +10888,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aDc" = (
 /obj/structure/barricade/wooden{
@@ -11016,7 +10960,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aDj" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -11115,7 +11059,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aDz" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -11126,7 +11070,7 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aDA" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
@@ -11236,7 +11180,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aDG" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -11256,7 +11200,7 @@
 	dir = 4;
 	pixel_y = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aDH" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -11312,7 +11256,7 @@
 	pixel_x = 4
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aDN" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -11325,7 +11269,7 @@
 	pixel_x = -3
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aDO" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
@@ -11374,7 +11318,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aDU" = (
 /obj/effect/decal/hybrisa/trash{
@@ -11812,7 +11756,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aFg" = (
 /obj/structure/monorail{
@@ -11822,7 +11766,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aFh" = (
 /obj/structure/platform/metal/almayer/west{
@@ -11834,7 +11778,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aFi" = (
 /obj/structure/platform/metal/almayer/east{
@@ -11862,7 +11806,7 @@
 /obj/structure/platform/metal/almayer/east{
 	pixel_x = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aFl" = (
 /obj/structure/monorail{
@@ -11872,7 +11816,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aFm" = (
 /obj/structure/platform/metal/almayer/west{
@@ -11891,7 +11835,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aFo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12030,7 +11974,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aFF" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -12107,11 +12051,11 @@
 	dir = 4
 	},
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "aFR" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "aFS" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -12264,7 +12208,7 @@
 "aGl" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "aGm" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -12748,18 +12692,6 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/chemical_store)
-"aHu" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/blocker/forcefield/human{
-	invisibility = 101
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/oob/water)
 "aHv" = (
 /obj/structure/machinery/door_control/navalis_walkway_lockdown{
 	id = "testr";
@@ -12817,7 +12749,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aHC" = (
 /obj/structure/pipes/vents/pump,
@@ -13185,7 +13117,7 @@
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/almayer/northwest,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "aIO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -13567,7 +13499,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKc" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13575,7 +13507,7 @@
 	dir = 1;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKd" = (
 /turf/open/floor/corsat,
@@ -13586,7 +13518,7 @@
 	dir = 4;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKf" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13594,7 +13526,7 @@
 	dir = 1;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aKg" = (
 /turf/open/floor/corsat,
@@ -13612,7 +13544,7 @@
 	dir = 8;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aKi" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13627,7 +13559,7 @@
 	dir = 4;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKj" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13635,7 +13567,7 @@
 	dir = 8;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKk" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13643,7 +13575,7 @@
 	dir = 8;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aKl" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13658,7 +13590,7 @@
 	dir = 4;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKm" = (
 /obj/item/prop/alien/hugger,
@@ -13681,7 +13613,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKp" = (
 /turf/open/floor/corsat,
@@ -13692,14 +13624,14 @@
 	dir = 1;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKr" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKs" = (
 /obj/item/prop/alien/hugger,
@@ -13722,7 +13654,7 @@
 	dir = 1;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aKv" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13736,7 +13668,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKw" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13751,7 +13683,7 @@
 	dir = 1;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13779,7 +13711,7 @@
 	dir = 8;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aKC" = (
 /obj/item/prop/alien/hugger,
@@ -13793,21 +13725,21 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aKF" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aKG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	layer = 2.8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKH" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13815,7 +13747,7 @@
 	dir = 4;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKI" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13823,7 +13755,7 @@
 	dir = 8;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKJ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13838,7 +13770,7 @@
 	dir = 4;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKK" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -13853,7 +13785,7 @@
 	dir = 8;
 	layer = 2.8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKL" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -13913,7 +13845,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aKV" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
@@ -13923,16 +13855,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/oob/water)
-"aKW" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aKX" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
@@ -13942,17 +13865,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/oob/water)
-"aKY" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aKZ" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west,
@@ -13962,7 +13875,67 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/oob/water)
+"aLa" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/landing_zone_2)
+"aLb" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/oob/water)
+"aLc" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/oob/water)
+"aLd" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/oob/water)
+"aLe" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/oob/water)
+"aLf" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aLg" = (
 /obj/item/tool/warning_cone{
@@ -13975,9 +13948,38 @@
 	},
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors/med_sci/chemical_store)
+"aLh" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
 "aLi" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/navalis/oob/powered)
+"aLj" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior_xeno_only/lz1)
+"aLk" = (
+/obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
+	layer = 2
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
+"aLl" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/com_ext)
 "aLA" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/black{
@@ -14052,7 +14054,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "aOv" = (
 /obj/structure/prop/resin_prop{
@@ -14088,7 +14090,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "aQZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14160,7 +14162,7 @@
 	pixel_y = 15;
 	layer = 4.11
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "aTh" = (
 /turf/open/floor/prison/darkyellowfull2,
@@ -14192,7 +14194,7 @@
 "aUq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "aUt" = (
 /obj/structure/surface/table/almayer,
@@ -14440,7 +14442,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "bjk" = (
 /obj/effect/decal/hybrisa/road/lines3{
@@ -14539,14 +14541,14 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "box" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/almayer/southwest,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "bpA" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
@@ -14562,7 +14564,7 @@
 /obj/item/lightstick/red/planted{
 	pixel_y = 13
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "bpI" = (
 /obj/structure/largecrate/random/barrel/medical,
@@ -14575,7 +14577,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/indoors/med_sci/chemical_store)
 "bqr" = (
 /obj/item/prop/colony/canister{
@@ -14624,7 +14626,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "brQ" = (
 /obj/effect/decal/hybrisa/trash{
@@ -14667,7 +14669,7 @@
 "bsY" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "btr" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -14734,7 +14736,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/indoors/med_sci/chemical_store)
 "bwp" = (
 /obj/structure/closet/emcloset,
@@ -14916,19 +14918,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/navalis/indoors/residential/port)
-"bEm" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/obj/structure/blocker/forcefield/human{
-	invisibility = 101
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only/lz1)
 "bEW" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
@@ -14977,7 +14966,7 @@
 	dir = 4;
 	pixel_y = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "bGb" = (
 /obj/structure/flora/pottedplant{
@@ -15108,7 +15097,7 @@
 "bMy" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "bMU" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -15252,7 +15241,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "bSa" = (
 /obj/effect/decal/warning_stripes{
@@ -15280,7 +15269,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "bTU" = (
 /obj/structure/prop/resin_prop{
@@ -15312,7 +15301,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "bVH" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -15381,7 +15370,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "bZW" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -15395,7 +15384,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /obj/structure/platform/metal/hybrisa/metalplatform4,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "caQ" = (
 /turf/open/floor/corsat/red/north,
@@ -15571,7 +15560,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "cmS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
@@ -15581,7 +15570,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "cnG" = (
 /obj/structure/platform/metal/almayer/west,
@@ -15784,7 +15773,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "cCc" = (
 /turf/open/floor/darkblue2,
@@ -16077,7 +16066,7 @@
 "cRY" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "cSs" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -16274,7 +16263,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "dbE" = (
 /obj/structure/monorail{
@@ -16290,7 +16279,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "ddk" = (
 /turf/open/floor/prison/whitegreen,
@@ -16370,7 +16359,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2{
 	layer = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "dig" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -16401,7 +16390,7 @@
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "djE" = (
 /obj/effect/landmark/static_comms/net_one,
@@ -16517,7 +16506,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "dqN" = (
 /obj/effect/decal/hybrisa/trash{
@@ -16983,7 +16972,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "dRz" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -17234,7 +17223,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/almayer,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "egI" = (
 /obj/structure/barricade/handrail/wire,
@@ -17276,7 +17265,7 @@
 	icon_state = "strata_metalplatform_broken";
 	density = 0
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "ekD" = (
 /turf/open/floor/prison/red/east,
@@ -17430,7 +17419,7 @@
 "esz" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/platform_decoration/metal/strata/west,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "esZ" = (
 /obj/effect/decal/hybrisa/trash{
@@ -17648,7 +17637,7 @@
 	dir = 4;
 	pixel_y = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "eDg" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -17826,7 +17815,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "eKW" = (
 /turf/open/floor/prison/darkyellow2/east,
@@ -17905,7 +17894,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "eQZ" = (
 /obj/structure/cargo_container/horizontal/blue/middle{
@@ -18000,7 +17989,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "eWD" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -18019,7 +18008,7 @@
 	layer = 4.11;
 	pixel_x = 16
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "eXf" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -18129,12 +18118,12 @@
 "feA" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "feD" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "ffe" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -18173,7 +18162,7 @@
 "fgB" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata/north,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "fgY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18305,7 +18294,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2{
 	layer = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "fmC" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -18359,7 +18348,7 @@
 	dir = 8
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "fpb" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
@@ -18500,7 +18489,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "fxc" = (
 /obj/structure/platform/metal/almayer/west,
@@ -18513,7 +18502,7 @@
 "fxq" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "fyn" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -18778,7 +18767,7 @@
 "fLg" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "fLD" = (
 /obj/effect/decal/warning_stripes{
@@ -18820,7 +18809,7 @@
 	dir = 4;
 	pixel_y = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "fMp" = (
 /obj/effect/decal/warning_stripes{
@@ -18848,7 +18837,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "fMN" = (
 /obj/effect/decal/warning_stripes{
@@ -18930,7 +18919,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "fTf" = (
 /obj/structure/barricade/handrail/medical,
@@ -19145,7 +19134,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "gch" = (
 /obj/structure/closet/secure_closet/atmos_personal,
@@ -19259,7 +19248,7 @@
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "gjW" = (
 /obj/effect/decal/hybrisa/road/lines2{
@@ -19460,7 +19449,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "gtC" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -19521,7 +19510,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "guF" = (
 /obj/effect/decal/hybrisa/trash{
@@ -19556,7 +19545,7 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "gwZ" = (
 /obj/structure/machinery/vending/coffee{
@@ -19642,7 +19631,7 @@
 "gAU" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "gBg" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -19667,7 +19656,7 @@
 	layer = 2
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "gCx" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -19677,7 +19666,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "gCW" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -19721,7 +19710,7 @@
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "gFr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -19913,7 +19902,7 @@
 "gWW" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "gXJ" = (
 /obj/structure/prop/resin_prop{
@@ -20108,7 +20097,7 @@
 "hil" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/almayer,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "hiC" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -20308,7 +20297,13 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "hvp" = (
 /obj/structure/stairs{
@@ -20370,7 +20365,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "hxl" = (
 /obj/structure/machinery/light{
@@ -20529,7 +20524,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "hHM" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -20644,7 +20639,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "hMd" = (
 /obj/structure/prop/static_tank/water,
@@ -20752,7 +20747,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "hRK" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -20768,7 +20763,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "hSk" = (
 /obj/effect/decal/cleanable/generic,
@@ -20804,7 +20799,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "hTQ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -20817,7 +20812,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "hUx" = (
 /obj/structure/bed/chair/comfy/hybrisa/blue{
@@ -20980,7 +20975,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "ies" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -21093,7 +21088,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "ihW" = (
 /obj/structure/prop/hybrisa/misc/redmeter{
@@ -21238,7 +21233,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "ipY" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -21420,7 +21415,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "iGd" = (
 /obj/structure/bed/chair{
@@ -21618,7 +21613,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "iTx" = (
 /obj/structure/platform_decoration/metal/almayer/west,
@@ -21784,6 +21779,9 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior/com_ext)
 "jbo" = (
@@ -21833,7 +21831,7 @@
 "jdA" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "jdO" = (
 /obj/effect/decal/warning_stripes{
@@ -21963,7 +21961,7 @@
 /area/navalis/indoors/command/tertiary_comms)
 "jjl" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "jjs" = (
 /obj/structure/prop/resin_prop{
@@ -22098,7 +22096,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "jpD" = (
 /obj/structure/largecrate/random/case/small,
@@ -22183,7 +22181,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "jvd" = (
 /obj/item/trash/cigbutt{
@@ -22628,7 +22626,7 @@
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "jVm" = (
 /obj/structure/machinery/big_computers/computerbrown/computer2{
@@ -22728,7 +22726,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "jZh" = (
 /obj/structure/barricade/handrail/strata{
@@ -22793,7 +22791,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "kcU" = (
 /obj/effect/decal/hybrisa/road/lines4{
@@ -22815,7 +22813,7 @@
 "kdC" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "keN" = (
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
@@ -22825,7 +22823,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "keT" = (
 /obj/effect/decal/hybrisa/trash{
@@ -22996,7 +22994,7 @@
 	dir = 4
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "kpt" = (
 /obj/structure/platform_decoration/metal/strata/west,
@@ -23031,7 +23029,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2,
 /obj/structure/platform/metal/hybrisa/metalplatform2/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "kru" = (
 /obj/effect/decal/warning_stripes{
@@ -23078,7 +23076,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata,
 /obj/structure/platform/metal/strata/east,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "ksW" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -23093,7 +23091,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "kuk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -23321,14 +23319,14 @@
 /obj/structure/platform/metal/almayer,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/east,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "kGI" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "kGR" = (
 /obj/structure/curtain/colorable_transparent{
@@ -23375,7 +23373,7 @@
 	dir = 4
 	},
 /obj/structure/platform_decoration/metal/strata,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "kIk" = (
 /obj/effect/decal/hybrisa/road/lines3{
@@ -23409,7 +23407,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "kIp" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -23547,7 +23545,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "kQv" = (
 /obj/structure/platform/metal/stair_cut/strata_right,
@@ -23629,7 +23627,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/east,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "kVD" = (
 /obj/structure/machinery/light{
@@ -23811,7 +23809,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "lcR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -23903,7 +23901,7 @@
 /area/navalis/indoors/residential/kitchen)
 "ljU" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "lkn" = (
 /turf/open/floor/almayer/plate,
@@ -23911,7 +23909,7 @@
 "lmb" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "lmD" = (
 /obj/item/tool/warning_cone{
@@ -23978,7 +23976,7 @@
 "lpX" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "lqf" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -24169,7 +24167,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "lwM" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -24372,27 +24370,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/med_sci/science_lower_entrance)
-"lKS" = (
-/obj/structure/monorail{
-	dir = 8;
-	name = "support beam";
-	desc = "Do you think the bugs are using these to move around this rig?";
-	explo_proof = 1;
-	unacidable = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/outdoors/exterior_xeno_only)
 "lMz" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata,
 /obj/structure/platform/metal/strata/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "lNh" = (
 /obj/item/tool/weldingtool/empty,
@@ -24493,7 +24475,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "lQK" = (
 /obj/effect/decal/warning_stripes{
@@ -24520,7 +24502,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "lUM" = (
 /obj/effect/decal/hybrisa/road/road_stop{
@@ -24644,7 +24626,7 @@
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "mbl" = (
 /obj/structure/surface/table/almayer,
@@ -24992,7 +24974,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "mBb" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -25070,7 +25052,7 @@
 "mEJ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "mEO" = (
 /obj/structure/prop/resin_prop{
@@ -25159,10 +25141,6 @@
 "mHF" = (
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/primary_storage)
-"mHW" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/outdoors/charon/surface_deck/main_deck)
 "mIE" = (
 /obj/effect/decal/medical_decals{
 	dir = 4;
@@ -25235,7 +25213,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "mNO" = (
 /obj/structure/disposalpipe/segment{
@@ -25256,7 +25234,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "mOQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
@@ -25309,9 +25287,6 @@
 	},
 /turf/open/floor/corsat,
 /area/navalis/indoors/command/maintenance_port)
-"mRQ" = (
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/oob/water)
 "mRZ" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2{
 	unacidable = 1;
@@ -25423,13 +25398,13 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "mXs" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "mXy" = (
 /obj/structure/surface/table/almayer,
@@ -25447,7 +25422,7 @@
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/almayer/northeast,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "mYL" = (
 /obj/structure/barricade/handrail/strata{
@@ -25484,7 +25459,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "neA" = (
 /obj/structure/machinery/light{
@@ -25724,7 +25699,7 @@
 "nwM" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "nwO" = (
 /obj/structure/surface/table/almayer,
@@ -25908,7 +25883,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/indoors/med_sci/chemical_store)
 "nHl" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -25944,7 +25919,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "nKV" = (
 /obj/item/prop/colony/canister{
@@ -25981,7 +25956,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "nMU" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -26145,6 +26120,9 @@
 "nWA" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior/com_ext)
 "nWU" = (
@@ -26166,7 +26144,13 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "nYX" = (
 /obj/effect/decal/warning_stripes{
@@ -26343,7 +26327,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "omm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26394,7 +26378,7 @@
 "onz" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "ood" = (
 /obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname{
@@ -26409,7 +26393,7 @@
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/almayer/east,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "oor" = (
 /obj/structure/machinery/light{
@@ -26530,7 +26514,7 @@
 	dir = 8
 	},
 /obj/structure/platform_decoration/metal/strata/north,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "ovn" = (
 /obj/structure/machinery/light,
@@ -26557,7 +26541,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "owH" = (
 /obj/structure/platform/metal/almayer/north,
@@ -26605,7 +26589,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "oyg" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -26768,7 +26752,7 @@
 "oDZ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/almayer,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "oER" = (
 /obj/structure/stairs/perspective{
@@ -26855,7 +26839,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "oJl" = (
 /obj/effect/decal/warning_stripes{
@@ -26974,7 +26958,7 @@
 "oPq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "oPE" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -26987,7 +26971,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "oPF" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -27039,7 +27023,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "oTG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -27055,7 +27039,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "oTJ" = (
 /obj/structure/platform/metal/strata/north,
@@ -27237,7 +27221,7 @@
 	icon_state = "strata_metalplatform_broken";
 	density = 0
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "pci" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -27560,7 +27544,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "pox" = (
 /obj/structure/surface/table/almayer,
@@ -27580,14 +27564,14 @@
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "pqC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "pqT" = (
 /obj/structure/bed/chair/office/light{
@@ -27659,7 +27643,7 @@
 	icon_state = "hybrisaplatform_broken";
 	density = 0
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "ptl" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -27680,7 +27664,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "ptD" = (
 /obj/structure/blocker/forcefield/all{
@@ -27747,7 +27731,7 @@
 	dir = 4;
 	pixel_y = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "pyZ" = (
 /obj/structure/bed/chair{
@@ -27827,7 +27811,7 @@
 "pBj" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "pBA" = (
 /obj/structure/prop/turbine{
@@ -27844,7 +27828,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "pCq" = (
 /obj/effect/decal/warning_stripes{
@@ -27897,7 +27881,7 @@
 	dir = 4;
 	pixel_y = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "pEq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -28087,7 +28071,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "pKP" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -28149,7 +28133,7 @@
 "pOr" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "pOw" = (
 /obj/structure/machinery/light{
@@ -28184,7 +28168,7 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "pQT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28398,7 +28382,7 @@
 /area/navalis/indoors/residential/starboard)
 "pXR" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "pYe" = (
 /obj/structure/prop/structure_lattice{
@@ -28524,7 +28508,7 @@
 	dir = 4
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "qch" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -28543,7 +28527,7 @@
 	dir = 8
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "qdm" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1{
@@ -28655,7 +28639,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "qgx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28746,7 +28730,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/indoors/med_sci/chemical_store)
 "qko" = (
 /obj/structure/surface/table/almayer,
@@ -28771,7 +28755,7 @@
 	dir = 4
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "qld" = (
 /obj/structure/barricade/handrail/strata,
@@ -28779,7 +28763,7 @@
 	dir = 4
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "qlg" = (
 /obj/effect/decal/hybrisa/road/lines4{
@@ -28828,7 +28812,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/indoors/med_sci/chemical_store)
 "qod" = (
 /obj/structure/machinery/recharge_station,
@@ -28855,13 +28839,6 @@
 /obj/effect/hybrisa/misc/fake/pipes/pipe1,
 /turf/open/floor/corsat,
 /area/navalis/indoors/command/maintenance_port)
-"qpp" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/outdoors/exterior/med_ext)
 "qpt" = (
 /turf/open/floor/half_plate/dark_yellow,
 /area/navalis/outdoors/landing_zone_2)
@@ -28941,7 +28918,7 @@
 	pixel_y = 15;
 	layer = 4.11
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "qtD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
@@ -29166,7 +29143,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "qGP" = (
 /obj/effect/decal/cleanable/generic,
@@ -29494,7 +29471,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "qXW" = (
 /obj/structure/filtration/machine_64x128/filtrationtank{
@@ -29556,6 +29533,7 @@
 	explo_proof = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "qZs" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
@@ -29860,7 +29838,7 @@
 /obj/item/lightstick/red/planted{
 	pixel_y = 13
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "rmY" = (
 /obj/structure/barricade/handrail/wire{
@@ -29925,7 +29903,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "rsA" = (
 /obj/structure/disposalpipe/segment{
@@ -30170,11 +30148,6 @@
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/navalis/indoors/residential/starboard)
-"rEX" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/landing_zone_2)
 "rFy" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopright";
@@ -30194,7 +30167,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "rIs" = (
 /obj/structure/bed/chair/office/dark{
@@ -30240,7 +30213,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/north,
 /obj/structure/platform/metal/hybrisa/metalplatform2/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "rKZ" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -30258,7 +30231,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "rMH" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -30422,7 +30395,7 @@
 "rWz" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "rWE" = (
 /obj/structure/platform/metal/almayer/east,
@@ -30484,7 +30457,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "rZH" = (
 /obj/structure/surface/table/almayer,
@@ -30595,7 +30568,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "sgE" = (
 /obj/structure/surface/rack,
@@ -30622,7 +30595,7 @@
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "sjK" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -30715,7 +30688,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "soU" = (
 /turf/open/floor/prison/green,
@@ -30774,7 +30747,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "suv" = (
 /obj/structure/platform/metal/almayer/west,
@@ -30835,7 +30808,7 @@
 "sxT" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "syq" = (
 /obj/structure/prop/structure_lattice{
@@ -30894,7 +30867,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/indoors/med_sci/chemical_store)
 "sBd" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
@@ -30940,7 +30913,7 @@
 "sDf" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "sDw" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical/autoname{
@@ -31123,7 +31096,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "sKk" = (
 /obj/structure/surface/rack,
@@ -31366,7 +31339,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata/north,
 /obj/structure/platform/metal/strata/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "sXe" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -31578,7 +31551,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "teJ" = (
 /obj/structure/bed/chair/office/light{
@@ -31722,7 +31695,7 @@
 /obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
 	layer = 2
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "tov" = (
 /obj/structure/barricade/wooden{
@@ -32202,7 +32175,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "tNO" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -32215,7 +32188,7 @@
 	pixel_x = -3
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "tOG" = (
 /obj/effect/landmark/static_comms/net_two,
@@ -32460,7 +32433,7 @@
 	pixel_x = 4
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "tXp" = (
 /obj/effect/decal/hybrisa/road/lines1{
@@ -32722,11 +32695,11 @@
 	dir = 4;
 	pixel_y = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "unv" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "unM" = (
 /obj/effect/decal/warning_stripes{
@@ -32796,7 +32769,7 @@
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "urW" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -32826,7 +32799,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "utE" = (
 /obj/structure/barricade/handrail/strata{
@@ -33023,7 +32996,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "uBg" = (
 /obj/structure/bed/roller/hospital,
@@ -33158,7 +33131,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "uGy" = (
 /obj/effect/decal/hybrisa/trash{
@@ -33203,7 +33176,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "uIn" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -33397,7 +33370,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "uRf" = (
 /obj/structure/platform/metal/strata/west,
@@ -33515,7 +33488,7 @@
 	pixel_y = 15;
 	layer = 4.11
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "uYp" = (
 /obj/structure/platform_decoration/metal/strata,
@@ -33674,6 +33647,9 @@
 	pixel_y = 15;
 	layer = 4.11
 	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior/com_ext)
 "vjq" = (
@@ -33820,7 +33796,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "vrN" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4,
@@ -33831,7 +33807,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "vrW" = (
 /obj/structure/largecrate/random/barrel/brown,
@@ -33843,7 +33819,7 @@
 "vse" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/platform_decoration/metal/almayer/west,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "vtz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -33997,7 +33973,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "vAt" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -34018,7 +33994,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "vAV" = (
 /obj/structure/filingcabinet{
@@ -34346,7 +34322,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "vQF" = (
 /turf/open/floor/half_plate/green,
@@ -34418,7 +34394,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "vTk" = (
 /obj/structure/machinery/light{
@@ -34438,7 +34414,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "vTJ" = (
 /obj/effect/decal/warning_stripes{
@@ -34462,7 +34438,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "vUE" = (
 /obj/effect/decal/hybrisa/road/lines4{
@@ -34485,7 +34461,7 @@
 	pixel_y = 15;
 	layer = 4.11
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "vVQ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -34498,7 +34474,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "vVW" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34553,7 +34529,7 @@
 	pixel_x = 16;
 	layer = 4.11
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "wap" = (
 /turf/closed/wall/hybrisa/colony,
@@ -34623,7 +34599,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "wbQ" = (
 /obj/effect/hybrisa/misc/fake/pipes/pipe2,
@@ -34661,14 +34637,6 @@
 /obj/structure/cargo_container/lockmart/right,
 /turf/open/floor/plating,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
-"wej" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/exterior/com_ext)
 "weH" = (
 /obj/item/tool/surgery/retractor,
 /obj/structure/surface/table/reinforced/prison,
@@ -34723,7 +34691,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "wfG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -34747,7 +34715,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "wgN" = (
 /obj/structure/platform/metal/almayer/west,
@@ -34824,7 +34792,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "wmM" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -35077,7 +35045,7 @@
 	icon_state = "hybrisaplatform_broken";
 	density = 0
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "wus" = (
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
@@ -35222,11 +35190,11 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "wza" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "wzZ" = (
 /obj/effect/decal/warning_stripes{
@@ -35386,7 +35354,7 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "wHx" = (
 /turf/open/floor/half_plate/green/north,
@@ -35577,7 +35545,7 @@
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "wTU" = (
 /obj/structure/cable/heavyduty{
@@ -35604,7 +35572,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/west,
 /obj/structure/platform/metal/hybrisa/metalplatform2,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "wXy" = (
 /obj/structure/barricade/handrail/wire{
@@ -35648,7 +35616,7 @@
 	explo_proof = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "wZq" = (
 /obj/structure/machinery/optable,
@@ -35820,7 +35788,7 @@
 "xeX" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "xfp" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -35836,13 +35804,13 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "xfF" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/hybrisa/metalplatform2/east,
 /obj/structure/platform/metal/hybrisa/metalplatform2,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "xge" = (
 /turf/open/floor/prison/ramptop/north,
@@ -35937,7 +35905,7 @@
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/strata/east,
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "xlA" = (
 /obj/effect/decal/hybrisa/workers_decal{
@@ -36051,7 +36019,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "xse" = (
 /obj/structure/cable/heavyduty{
@@ -36092,7 +36060,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "xwe" = (
 /turf/open/floor/prison/darkbrown2/north,
@@ -36199,7 +36167,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "xAN" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -36307,7 +36275,7 @@
 "xED" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "xFa" = (
 /obj/effect/decal/cleanable/blood/gibs/robot{
@@ -36412,7 +36380,7 @@
 	desc = "Do you think the bugs are using these to move around this rig?";
 	layer = 0.8
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "xHP" = (
 /turf/open/floor/plating/platingdmg1,
@@ -36429,28 +36397,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/primary_storage)
-"xII" = (
-/obj/structure/platform/metal/hybrisa/metalplatform4,
-/obj/structure/prop/structure_lattice{
-	dir = 4;
-	layer = 1.4
-	},
-/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	layer = 1.3
-	},
-/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
-	pixel_y = 15;
-	layer = 1.3
-	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate2{
-	layer = 1
-	},
-/obj/item/lightstick/planted{
-	pixel_y = 15;
-	layer = 4.11
-	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
-/area/navalis/outdoors/landing_zone_1)
 "xJw" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1;
@@ -36481,7 +36427,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/gm/river/no_overlay/ocean,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "xMs" = (
 /obj/vehicle/powerloader,
@@ -36496,7 +36442,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "xMM" = (
 /obj/effect/decal/medical_decals{
@@ -36513,7 +36459,7 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "xNp" = (
 /obj/structure/bed/chair/comfy{
@@ -36633,7 +36579,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
 /obj/structure/platform/metal/hybrisa/metalplatform4,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "xUq" = (
 /obj/structure/closet/crate,
@@ -36725,7 +36671,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "ycc" = (
 /turf/closed/wall/mineral/bone_resin,
@@ -36786,7 +36732,7 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/turf/open/gm/river/no_overlay/ocean/no_slowdown,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "yfH" = (
 /turf/open/floor/prison/darkbrowncorners2/north,
@@ -39229,8 +39175,8 @@ mmV
 lJH
 lJH
 lJH
-vQz
-vQz
+lJH
+lJH
 lJH
 lJH
 nlb
@@ -40527,9 +40473,9 @@ ayU
 ayU
 ayR
 ayR
-aCd
-aCd
-azx
+aLj
+aLj
+bjf
 vrN
 qkp
 lWd
@@ -40682,18 +40628,18 @@ gGc
 gGc
 gGc
 ayU
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-azx
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+bjf
 iTl
 aff
 lWd
@@ -40845,18 +40791,18 @@ gGc
 gGc
 gGc
 ayU
-aCd
-aCv
-aCv
-aCv
-aCv
-aCv
-aCv
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
 aDT
-aCv
-aCv
-aCv
-aCv
+aLj
+aLj
+aLj
+aLj
 hwr
 vrN
 qkp
@@ -41008,8 +40954,8 @@ gGc
 gGc
 gGc
 ayU
-aCv
-aCv
+aLj
+aLj
 guB
 suh
 suh
@@ -41172,19 +41118,19 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
-aCv
-aCv
-aCv
-aCv
-aCv
-aCv
-aCv
-aCv
-aCv
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
 bjf
 vrN
 qkp
@@ -41335,21 +41281,21 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-aCd
-azx
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+aLj
+bjf
 vrN
 qkp
 lWd
@@ -41498,10 +41444,10 @@ ayU
 ayU
 ayU
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
+aLj
 ayU
 ayU
 ayU
@@ -41511,9 +41457,9 @@ ayU
 ayU
 ayR
 ayR
-aCd
-aCd
-azx
+aLj
+aLj
+bjf
 vrN
 qkp
 lWd
@@ -41661,10 +41607,10 @@ uGw
 uGw
 uGw
 dRh
-aCv
+aLj
 guB
 mMu
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -41677,7 +41623,7 @@ nSY
 nSY
 lJH
 lJH
-azx
+bjf
 bMy
 qkp
 lWd
@@ -41842,7 +41788,7 @@ nSY
 mmV
 mmV
 lJH
-xII
+aSB
 qkp
 aHf
 kjl
@@ -43153,7 +43099,7 @@ nSY
 mmV
 mmV
 mmV
-vQz
+lJH
 aoE
 aoE
 aoE
@@ -43459,11 +43405,11 @@ gGc
 gGc
 gGc
 ayU
-aCv
-aCv
+aLj
+aLj
 wyY
-aCv
-aCv
+aLj
+aLj
 ayU
 gGc
 gGc
@@ -43514,8 +43460,8 @@ thJ
 aRC
 aoE
 aoE
-aoE
-aoE
+aLh
+aLh
 aoF
 cvA
 gyn
@@ -43624,9 +43570,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -43788,9 +43734,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -43952,9 +43898,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -43968,7 +43914,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 aoE
 aoE
 asM
@@ -44116,9 +44062,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -44132,7 +44078,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 aoE
 aoE
 asM
@@ -44280,9 +44226,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -44296,7 +44242,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 aoE
 aoE
 asM
@@ -44443,10 +44389,10 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -44606,10 +44552,10 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -44769,10 +44715,10 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -44932,10 +44878,10 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -45095,10 +45041,10 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -45116,7 +45062,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 aoE
 aoE
 asM
@@ -45258,10 +45204,10 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -45280,7 +45226,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 aoE
 aoE
 asM
@@ -45421,10 +45367,10 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 guB
 dbE
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -45585,9 +45531,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -45749,9 +45695,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -45913,9 +45859,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -46076,11 +46022,11 @@ gGc
 gGc
 gGc
 ayU
-aCv
-aCv
+aLj
+aLj
 wyY
-aCv
-aCv
+aLj
+aLj
 ayU
 gGc
 gGc
@@ -46100,7 +46046,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 aoE
 aoE
 asM
@@ -46264,7 +46210,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 aoE
 aoE
 asM
@@ -47084,7 +47030,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 aoE
 azP
 asM
@@ -47248,7 +47194,7 @@ nSY
 mmV
 mmV
 rkg
-qpp
+wmy
 azP
 azQ
 asM
@@ -47574,7 +47520,7 @@ gGc
 nSY
 nSY
 ayR
-aCd
+aLj
 bFL
 aiC
 wmy
@@ -47737,7 +47683,7 @@ gGc
 gGc
 nSY
 ayR
-aCd
+aLj
 fMd
 eDc
 wFS
@@ -48044,11 +47990,11 @@ gGc
 gGc
 gGc
 ayU
-aCv
-aCv
+aLj
+aLj
 wyY
-aCv
-aCv
+aLj
+aLj
 ayU
 gGc
 gGc
@@ -48063,12 +48009,12 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aLj
 fMd
 pyE
-aCd
+aLj
 uQt
-qpp
+wmy
 aoE
 aoE
 asM
@@ -48209,9 +48155,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -48226,13 +48172,13 @@ gGc
 gGc
 gGc
 ayU
-aCd
+aLj
 fMd
 pyE
-aCd
+aLj
 lJH
 uQt
-qpp
+wmy
 aoE
 aoE
 asM
@@ -48373,9 +48319,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -48389,10 +48335,10 @@ nSY
 nSY
 nSY
 ayR
-aCd
+aLj
 fMd
 pyE
-aCd
+aLj
 lJH
 mmV
 rkg
@@ -48537,9 +48483,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -48552,10 +48498,10 @@ nSY
 nSY
 nSY
 ayR
-aCd
+aLj
 fMd
 pyE
-aCd
+aLj
 ayR
 nSY
 mmV
@@ -48701,9 +48647,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -48715,10 +48661,10 @@ nSY
 mmV
 ayR
 ayR
-aCd
+aLj
 fMd
 pyE
-aCd
+aLj
 ayR
 nSY
 nSY
@@ -48865,9 +48811,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -48877,11 +48823,11 @@ nSY
 nSY
 mmV
 lJH
-aCd
-aCd
+aLj
+aLj
 fMd
 pyE
-aCd
+aLj
 lJH
 mmV
 mmV
@@ -49029,9 +48975,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 gGc
@@ -49040,7 +48986,7 @@ nSY
 nSY
 mmV
 lJH
-bEm
+eWl
 wbB
 umW
 qfU
@@ -49093,7 +49039,7 @@ aKf
 aoE
 aoE
 qld
-cAv
+aLe
 iVl
 mmV
 mmV
@@ -49193,9 +49139,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 gGc
 nSY
@@ -49357,9 +49303,9 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayU
 nSY
 nSY
@@ -49399,9 +49345,9 @@ aoE
 aoE
 aAi
 aBf
-aKY
-aKW
-aKW
+bUK
+aLc
+aLc
 aKV
 hHf
 wmy
@@ -49421,7 +49367,7 @@ aoE
 xwh
 mOQ
 aGS
-azc
+aLc
 sFj
 fGS
 fGS
@@ -49521,18 +49467,18 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 wyY
-aCv
+aLj
 ayR
 nSY
 mmV
 mmV
 mmV
 lJH
-aHu
+aLd
 azb
-aHu
+aLd
 azT
 arX
 arX
@@ -49563,10 +49509,10 @@ asN
 arX
 aBc
 aBl
-aKW
-aKW
-aKW
-aKW
+aLc
+aLc
+aLc
+aLc
 aAG
 wmy
 aoE
@@ -49585,7 +49531,7 @@ aoE
 qxU
 xEC
 lJH
-azc
+aLc
 rkg
 pXR
 pXR
@@ -49685,16 +49631,16 @@ gGc
 gGc
 gGc
 ayU
-aCv
+aLj
 rrT
 gtv
-aCv
+aLj
 lJH
 lJH
 lJH
 aIF
 juY
-aHu
+aLd
 vQz
 lJH
 awa
@@ -49728,8 +49674,8 @@ arX
 aBc
 aBm
 aKZ
-aKW
-aKW
+aLc
+aLc
 aKX
 vAt
 are
@@ -49749,7 +49695,7 @@ pXR
 qPP
 fGS
 fGS
-aGv
+aLf
 wCD
 pXR
 pXR
@@ -49763,7 +49709,7 @@ aog
 aog
 pXR
 pXR
-azb
+aLd
 lJH
 mmV
 mmV
@@ -49849,16 +49795,16 @@ gGc
 gGc
 gGc
 ayU
-aCv
-aCv
+aLj
+aLj
 rrT
 gtv
-aCv
+aLj
 bjf
 lww
 auV
 arX
-aHu
+aLd
 awa
 awa
 awa
@@ -49927,8 +49873,8 @@ acQ
 aog
 aog
 lJH
-azc
-azc
+aLc
+aLc
 lJH
 nvy
 fGS
@@ -50014,8 +49960,8 @@ gGc
 gGc
 gGc
 ayR
-aCv
-aCv
+aLj
+aLj
 rrT
 uAQ
 lww
@@ -50092,7 +50038,7 @@ muE
 ebV
 lJH
 lJH
-azb
+aLd
 pXR
 pXR
 pPp
@@ -50179,7 +50125,7 @@ gGc
 nSY
 nSY
 lJH
-aCv
+aLj
 bjf
 ayo
 cmK
@@ -51327,7 +51273,7 @@ nSY
 mmV
 mmV
 rkg
-ayy
+auV
 axL
 arX
 awa
@@ -51491,7 +51437,7 @@ nSY
 mmV
 mmV
 rkg
-ayy
+auV
 arX
 arX
 awa
@@ -51655,7 +51601,7 @@ nSY
 mmV
 mmV
 rkg
-ayA
+vrG
 arX
 arX
 awa
@@ -51745,7 +51691,7 @@ svf
 sDb
 aaL
 bHF
-rEX
+aLa
 unv
 aUq
 iGR
@@ -52227,7 +52173,7 @@ aBh
 dxs
 wyn
 aoe
-aof
+pXR
 pXR
 oPq
 lpX
@@ -52237,7 +52183,7 @@ svf
 sDb
 yiH
 bHF
-rEX
+aLa
 unv
 aUq
 iGR
@@ -52311,7 +52257,7 @@ nSY
 mmV
 mmV
 rkg
-ayy
+auV
 arX
 arX
 awa
@@ -52475,7 +52421,7 @@ nSY
 mmV
 mmV
 rkg
-ayy
+auV
 arX
 arX
 awa
@@ -52639,7 +52585,7 @@ nSY
 mmV
 mmV
 rkg
-ayA
+vrG
 arX
 arX
 awa
@@ -53221,7 +53167,7 @@ svf
 sDb
 aaL
 bHF
-rEX
+aLa
 unv
 aUq
 iGR
@@ -53295,7 +53241,7 @@ nSY
 mmV
 mmV
 rkg
-ayy
+auV
 arX
 arX
 ayw
@@ -53459,7 +53405,7 @@ nSY
 mmV
 mmV
 rkg
-ayy
+auV
 arX
 arX
 ayw
@@ -53623,7 +53569,7 @@ nSY
 mmV
 mmV
 rkg
-ayA
+vrG
 arX
 arX
 ayw
@@ -53713,7 +53659,7 @@ svf
 sDb
 aaL
 bHF
-rEX
+aLa
 unv
 aUq
 iGR
@@ -54279,7 +54225,7 @@ nSY
 mmV
 mmV
 rkg
-ayy
+auV
 arX
 arX
 ayu
@@ -54443,7 +54389,7 @@ nSY
 mmV
 mmV
 rkg
-ayy
+auV
 arX
 arX
 ayu
@@ -54607,7 +54553,7 @@ nSY
 mmV
 mmV
 rkg
-ayA
+vrG
 arX
 arX
 ayu
@@ -54894,7 +54840,7 @@ dKk
 dKk
 dKk
 lyk
-anr
+aLa
 lJH
 mmV
 mmV
@@ -55058,7 +55004,7 @@ aaL
 aaL
 dKk
 dGb
-anr
+aLa
 lJH
 mmV
 mmV
@@ -55222,7 +55168,7 @@ hEg
 aaL
 dKk
 qve
-anr
+aLa
 lJH
 mmV
 mmV
@@ -55263,7 +55209,7 @@ nSY
 mmV
 mmV
 rkg
-ayB
+atU
 arX
 arX
 aKI
@@ -55592,7 +55538,7 @@ nSY
 mmV
 lJH
 nFt
-wej
+teI
 atU
 afG
 xMu
@@ -55713,7 +55659,7 @@ kJF
 xlA
 aaL
 dGb
-anr
+aLa
 lJH
 mmV
 bVH
@@ -55877,7 +55823,7 @@ lOG
 acP
 aaL
 dGb
-anr
+aLa
 lJH
 bVH
 dvZ
@@ -55991,7 +55937,7 @@ pXR
 lJH
 pXR
 pXR
-azb
+aLd
 pXR
 pXR
 pXR
@@ -56152,11 +56098,11 @@ sga
 pXR
 pXR
 pXR
-azb
-azb
-azb
-azb
-azb
+aLd
+aLd
+aLd
+aLd
+aLd
 pXR
 pXR
 pXR
@@ -56258,7 +56204,7 @@ vrG
 kso
 kso
 kso
-nWA
+aLl
 jaY
 vrG
 kso
@@ -56317,7 +56263,7 @@ wfq
 sga
 sga
 sga
-azb
+aLd
 lJH
 lJH
 sga
@@ -56437,9 +56383,9 @@ lJH
 lJH
 nFt
 alI
-alD
-alD
-alD
+aLb
+aLb
+aLb
 aly
 nFt
 mOQ
@@ -56601,9 +56547,9 @@ lJH
 mmV
 lJH
 alz
-alD
-alD
-alD
+aLb
+aLb
+aLb
 alz
 lJH
 mmV
@@ -56761,13 +56707,13 @@ mmV
 mmV
 lJH
 lJH
-vQz
+lJH
 mmV
 lJH
 alz
-alD
-alD
-alD
+aLb
+aLb
+aLb
 alz
 lJH
 mmV
@@ -56923,15 +56869,15 @@ lJH
 mmV
 mmV
 mmV
-mRQ
+mmV
 mmV
 mmV
 mmV
 lJH
 alz
-alD
-alD
-alD
+aLb
+aLb
+aLb
 alz
 lJH
 mmV
@@ -57090,12 +57036,12 @@ mmV
 mmV
 mmV
 mmV
-mRQ
+mmV
 lJH
 alz
-alD
-alD
-alD
+aLb
+aLb
+aLb
 alz
 lJH
 geG
@@ -57158,7 +57104,7 @@ lJH
 mmV
 mmV
 mmV
-pui
+aLb
 isl
 fyn
 amP
@@ -57257,9 +57203,9 @@ lJH
 lJH
 lJH
 alz
-alD
-alD
-alD
+aLb
+aLb
+aLb
 alz
 lJH
 uxP
@@ -57406,9 +57352,9 @@ sFW
 qkB
 ljU
 gCh
-alQ
-alQ
-alQ
+aLk
+aLk
+aLk
 alW
 ljU
 gCh
@@ -60192,13 +60138,13 @@ hmq
 jjW
 pRd
 qcI
-mHW
+ljU
 diS
 pRd
 jjW
 pRd
 qcI
-mHW
+ljU
 diS
 pRd
 jjW
@@ -66672,7 +66618,7 @@ gGc
 gGc
 ayU
 asq
-lKS
+azo
 akI
 akI
 azE
@@ -66836,7 +66782,7 @@ gGc
 gGc
 ayU
 akI
-lKS
+azo
 akI
 azE
 azv

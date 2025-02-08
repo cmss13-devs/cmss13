@@ -886,7 +886,22 @@
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "deep"
 
-/turf/open/gm/river/no_overlay/ocean/no_slowdown
+/turf/open/gm/river/no_overlay/ocean/Entered(atom/movable/AM)
+	..()
+	if(!isobserver(AM) && !isliving(AM) && istype(AM, /obj/item) && !istype(AM, /obj/item/lightstick))
+//	if(!isobserver(AM) && !istype(AM, /obj/effect/elevator) && !istype(AM, /obj/docking_port))
+		addtimer(CALLBACK(src, PROC_REF(enter_depths), AM), 0.2 SECONDS)
+
+/turf/open/gm/river/no_overlay/ocean/proc/enter_depths(atom/movable/AM)
+	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/gm/river/no_overlay/ocean))
+		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
+//		if(!ishuman(AM))
+		qdel(AM)
+
+/turf/open/gm/river/no_overlay/ocean_no_slowdown
+	name = "ocean"
+	icon = 'icons/turf/floors/desert_water.dmi'
+	icon_state = "deep"
 	base_river_slowdown = 0
 
 //ELEVATOR SHAFT-----------------------------------//

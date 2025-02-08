@@ -106,7 +106,12 @@
 		var/rankname = admin_holder.rank
 		if(rankname in rank_icons)
 			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
+/*
 	if(admin_holder.extra_titles?.len)
+*/
+//RUCM START
+	if(length(admin_holder.extra_titles))
+//RUCM END
 		var/list/extra_rank_icons = icon_states('icons/ooc.dmi')
 		var/ooc_icon_state
 		for(var/srank in admin_holder.extra_titles)

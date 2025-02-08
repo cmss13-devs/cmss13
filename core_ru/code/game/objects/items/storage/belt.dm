@@ -110,7 +110,7 @@
 /obj/item/storage/box/guncase/repairbelt
 	name = "F1X Nailgun"
 	desc = "Кейс, содержащий ремонтно-фортификационный набор. Поставляется с промышленным гвоздометом, магазинами к нему, сваркой, лопатой и комплектом материалов."
-	storage_slots = 0
+	storage_slots = 8
 	can_hold = list()
 
 /obj/item/storage/box/guncase/repairbelt/fill_preset_inventory()

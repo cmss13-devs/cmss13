@@ -97,6 +97,10 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/paths/north_outpost)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -158,10 +162,11 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
 "aaE" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/recharge_station,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/exterior/caves/shed_five_caves)
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfcrash"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -173,11 +178,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aaH" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/exterior/caves/shed_five_caves)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -201,11 +201,6 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
-"aaN" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/exterior/caves/shed_five_caves)
 "aaO" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
@@ -245,9 +240,6 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/far_north_outpost)
-"aaV" = (
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/exterior/caves/shed_five_caves)
 "aaW" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -262,10 +254,6 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
-"aaY" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/plating,
-/area/strata/ag/exterior/tcomms/mining_caves)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -338,17 +326,6 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
-"abm" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/exterior/paths/mining_outpost_exterior)
-"abn" = (
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/exterior/paths/north_outpost)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -357,10 +334,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-"abq" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/exterior/paths/north_outpost)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -385,12 +358,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"abw" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfcrash"
-	},
-/turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/interior/mountain)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -462,6 +429,14 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball)
+"abL" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata,
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/paths/mining_outpost_exterior)
 "abM" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -15202,6 +15177,10 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
+"bRf" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/plating,
+/area/strata/ag/exterior/tcomms/mining_caves)
 "bRg" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/structure/machinery/camera/autoname{
@@ -20048,6 +20027,11 @@
 /obj/structure/curtain/open/shower,
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/canteen)
+"fEW" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/caves/shed_five_caves)
 "fFy" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -21538,6 +21522,9 @@
 "hJE" = (
 /turf/open/gm/river,
 /area/strata/ug/interior/jungle/platform/east)
+"hJT" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/paths/north_outpost)
 "hKf" = (
 /obj/structure/platform/stone/strata/north,
 /obj/structure/platform/stone/strata/east,
@@ -21630,6 +21617,9 @@
 	},
 /turf/open/floor/strata/white_cyan3/east,
 /area/strata/ag/interior/outpost/med)
+"hPK" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/caves/shed_five_caves)
 "hQq" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -21726,6 +21716,11 @@
 "hYc" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/engineering/parts_storage)
+"hYl" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/caves/shed_five_caves)
 "hYu" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -23196,6 +23191,11 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/canteen)
+"jVg" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/caves/shed_five_caves)
 "jVD" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
@@ -40788,7 +40788,7 @@ ctC
 ciA
 aCL
 ciB
-abm
+abL
 qsu
 aNm
 aNo
@@ -42216,7 +42216,7 @@ aZK
 aac
 aZJ
 bMd
-aaY
+bRf
 lqX
 mvm
 mvm
@@ -47654,7 +47654,7 @@ jne
 bfc
 xdr
 gOC
-aaH
+jVg
 sXu
 okE
 aac
@@ -47829,7 +47829,7 @@ jne
 bfd
 xdr
 iGp
-aaN
+fEW
 sau
 okE
 aac
@@ -48004,8 +48004,8 @@ bgJ
 bfd
 xdr
 rfB
-aaV
-aaE
+hPK
+hYl
 okE
 aac
 aac
@@ -50215,7 +50215,7 @@ aac
 aac
 aac
 bLj
-abn
+hJT
 ayv
 ayw
 aHh
@@ -50390,7 +50390,7 @@ aac
 aac
 aac
 bLj
-abn
+hJT
 ayw
 azZ
 awJ
@@ -50565,7 +50565,7 @@ aac
 aac
 aac
 bLj
-abq
+aau
 awA
 ayw
 awJ
@@ -59480,7 +59480,7 @@ agR
 aac
 aac
 aac
-abw
+aaE
 aac
 aac
 aac

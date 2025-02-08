@@ -175,10 +175,6 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior/beach_bar)
 "aaE" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/maintenance/south)
-"aaF" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "clfraid"
 	},
@@ -190,11 +186,6 @@
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
-"aaH" = (
-/obj/item/device/flashlight/lamp/tripod,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/caves/north_research)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -8958,6 +8949,11 @@
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/mess)
+"heu" = (
+/obj/item/device/flashlight/lamp/tripod,
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/north_research)
 "hfo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -13036,6 +13032,10 @@
 	},
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
+"kuE" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
 "kuX" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
@@ -32044,7 +32044,7 @@ srg
 srg
 xCn
 fzc
-aaF
+aaE
 hdh
 jQa
 jQa
@@ -35659,7 +35659,7 @@ xCn
 qHc
 qHc
 xCn
-aaH
+heu
 vQe
 xCn
 uHY
@@ -42443,7 +42443,7 @@ cty
 cty
 cty
 iFb
-aaE
+kuE
 cto
 etv
 ksX

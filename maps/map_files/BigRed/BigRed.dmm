@@ -1027,14 +1027,6 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
-"adY" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/queen_spawn,
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfmining"
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves/mining)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1157,11 +1149,6 @@
 /obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
-"aet" = (
-/obj/structure/flora/grass/desert/lightgrass_7,
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/eta)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1276,18 +1263,6 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
-"aeR" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/telecomm/lz2_cave)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -25437,6 +25412,18 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
+"kjY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/bigredv2/outside/telecomm/lz2_cave)
 "kkF" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/bed,
@@ -27792,6 +27779,14 @@
 /obj/structure/pipes/standard/tank/oxygen,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"mOZ" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfmining"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
 "mPm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28673,6 +28668,11 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/nw)
+"nJu" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/bigredv2/outside/eta)
 "nKL" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "An exchange valve";
@@ -42915,7 +42915,7 @@ wVQ
 rxh
 rxh
 rxh
-adY
+mOZ
 rxh
 rxh
 rxh
@@ -57579,7 +57579,7 @@ aBR
 eTj
 bhi
 dbi
-aeR
+kjY
 dZL
 olK
 abb
@@ -60654,7 +60654,7 @@ tYm
 bjA
 bjA
 azO
-aet
+nJu
 meT
 vrt
 ydn

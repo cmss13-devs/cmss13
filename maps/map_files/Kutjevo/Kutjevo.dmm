@@ -60,6 +60,10 @@
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/north)
+"aar" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/complex_border/med_rec)
 "aas" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
@@ -138,22 +142,18 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
 "aaL" = (
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaM" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaN" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "clfsmugglers"
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
-"aaM" = (
-/turf/open/floor/kutjevo/plate,
-/area/kutjevo/exterior/complex_border/med_rec)
-"aaN" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/exterior/complex_border/med_rec)
-"aaO" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/floor/kutjevo/plate,
-/area/kutjevo/exterior/complex_border/med_rec)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -33303,7 +33303,7 @@ dxF
 dxF
 dxF
 dxF
-aaL
+aaN
 dxF
 dxF
 dxF
@@ -34701,9 +34701,9 @@ msK
 msK
 hpy
 aEl
-aaO
-aaN
 aaM
+aar
+aaL
 msK
 msK
 nAc

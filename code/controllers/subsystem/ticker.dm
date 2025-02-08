@@ -117,8 +117,7 @@ SUBSYSTEM_DEF(ticker)
 				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name)
 				*/
 				//RUCM START
-				REDIS_PUBLISH("byond.round", "type" = "round", "state" = "end", "round_id" = GLOB.round_id, "map_name" = SSmapping.configs[GROUND_MAP]?.map_name, "next_map_name" = SSmapping.next_map_configs[GROUND_MAP]?.map_name, "ship_map_name" = SSmapping.configs[SHIP_MAP]?.map_name,\
-				"next_ship_map_name" = SSmapping.next_map_configs[SHIP_MAP]?.map_name, "players" = length(GLOB.clients), "round_duration" = ROUND_TIME, "round_name" = GLOB.round_statistics?.round_name, "round_end_state" = SSticker.mode.end_round_message(), "mode" = SSticker.mode.name)
+				REDIS_PUBLISH("byond.round", "type" = "round", "state" = "end")
 				//RUCM END
 				flash_clients()
 				addtimer(CALLBACK(

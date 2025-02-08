@@ -222,6 +222,13 @@
 /obj/structure/barricade/handrail/strata
 	icon_state = "handrail_strata"
 
+/obj/structure/barricade/handrail/strata/navalis
+	stack_amount = 0
+	destroyed_stack_amount = 0
+	can_be_reinforced = FALSE
+	projectile_coverage = PROJECTILE_COVERAGE_MINIMAL
+	color = "#f50000"
+
 /obj/structure/barricade/handrail/medical
 	icon_state = "handrail_med"
 

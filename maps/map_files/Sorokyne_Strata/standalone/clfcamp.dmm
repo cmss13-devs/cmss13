@@ -253,7 +253,6 @@
 /area/strata/ag/exterior/paths/far_north_outpost)
 "hW" = (
 /obj/effect/landmark/corpsespawner/clf,
-/obj/structure/prop/hybrisa/misc/blood,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "hX" = (
@@ -1207,6 +1206,10 @@
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "Ps" = (
 /obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	layer = 3.1;
+	pixel_y = 38
+	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "PA" = (

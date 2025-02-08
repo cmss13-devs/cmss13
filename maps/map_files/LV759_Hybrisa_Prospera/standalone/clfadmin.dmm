@@ -4364,6 +4364,10 @@
 	pixel_y = 8
 	},
 /obj/effect/landmark/survivor_spawner/clf_lead/hybrisa,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	layer = 3.1;
+	pixel_y = 38
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/pressroom)
 "NK" = (
@@ -5763,7 +5767,6 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform3/north,
 /obj/effect/landmark/corpsespawner/wy/manager,
-/obj/structure/prop/hybrisa/misc/blood,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/hybrisa/carpet/carpetblack,

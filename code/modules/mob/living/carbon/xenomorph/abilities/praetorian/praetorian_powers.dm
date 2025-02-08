@@ -777,6 +777,10 @@
 	if (!isxeno(target))
 		return
 
+	if (buffing_target.hivenumber != raging_valkyrie.hivenumber)
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("Why would we help our enemies?!"))
+		return
+
 	if (buffing_target.is_dead())
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("No amount of anger can bring our sister back."))
 		return
@@ -785,7 +789,7 @@
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("We can't order another valkyrie with our rage."))
 		return
 
-	if(HAS_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED))
+	if (HAS_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED))
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target] is already enraged!"))
 		return
 

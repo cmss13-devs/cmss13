@@ -233,7 +233,6 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/load_gear(mob/living/carbon/human/new_human)
 	spawn_rebel_uniform(new_human)
-	spawn_rebel_suit(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/grey, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_nvg/cosmetic, WEAR_IN_HELMET)

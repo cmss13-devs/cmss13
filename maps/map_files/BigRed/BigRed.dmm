@@ -25422,7 +25422,7 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/turf/open/floor/plating,
 /area/bigredv2/outside/telecomm/lz2_cave)
 "kkF" = (
 /obj/structure/machinery/camera/autoname,
@@ -28668,7 +28668,7 @@
 "nJu" = (
 /obj/structure/flora/grass/desert/lightgrass_7,
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/mars,
+/turf/open/floor/plating,
 /area/bigredv2/outside/eta)
 "nKL" = (
 /obj/structure/prop/invuln/minecart_tracks{

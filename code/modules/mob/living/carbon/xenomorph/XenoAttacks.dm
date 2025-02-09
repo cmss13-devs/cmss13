@@ -128,7 +128,7 @@
 				return XENO_NONCOMBAT_ACTION
 			else if(flags_emote & EMOTING_TAIL_SWIPE)
 				xeno.attempt_tailswipe(src)
-				return
+				return XENO_NONCOMBAT_ACTION
 			else if(xeno.zone_selected == "head")
 				xeno.attempt_headbutt(src)
 				return XENO_NONCOMBAT_ACTION

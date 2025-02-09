@@ -4,10 +4,8 @@ import {
   Button,
   Collapsible,
   Divider,
-  Icon,
   Input,
   LabeledControls,
-  NoticeBox,
   NumberInput,
   Section,
   Stack,
@@ -23,22 +21,15 @@ export const CentralOverwatchConsole = (props) => {
 
   return (
     <Window
-      width={900}
-      height={750}
+      width={850}
+      height={820}
       theme={data.theme ? data.theme : 'crtblue'}
     >
       <Window.Content>
         {(!data.current_squad && <HomePanel />) || (
           <Stack vertical>
             <Stack.Item>
-              <Stack horizontal>
-                <Stack.Item width="75%">
-                  <DebugSquadPanel />
-                </Stack.Item>
-                <Stack.Item m="0" width="25%">
-                  <NotificationPanel />
-                </Stack.Item>
-              </Stack>
+              <DebugSquadPanel />
             </Stack.Item>
             <Stack.Item m="0">
               <SecondaryFunctions />
@@ -92,49 +83,6 @@ const HomePanel = (props) => {
   );
 };
 
-const NotificationPanel = (props) => {
-  const { act, data } = useBackend();
-
-  return (
-    <Section fontSize="18px" fill>
-      <Box bold textAlign="center">
-        Notification Logs
-      </Box>
-      <Divider />
-      <Box fontSize="13px">
-        <NoticeBox danger width>
-          <Stack horizontal align="center">
-            <Stack.Item>
-              <Icon name="exclamation-triangle" size="1.5" />
-            </Stack.Item>
-            <Stack.Item fontSize="15px">
-              SHIPWIDE ALERT
-              <Box fontSize="13px">- ARES v3.2</Box>
-            </Stack.Item>
-          </Stack>
-          <Box mt="5px" mb="5px">
-            Attention: Security level elevated to RED - there is an immediate
-            threat to the ship
-          </Box>
-        </NoticeBox>
-      </Box>
-      <Box fontSize="13px">
-        <NoticeBox info width>
-          <Stack horizontal align="center">
-            <Stack.Item>
-              <Icon name="crown" size="1.5" />
-            </Stack.Item>
-            <Stack.Item fontSize="13px">SHIPWIDE UPDATE</Stack.Item>
-          </Stack>
-          <Box mt="5px" mb="5px">
-            Attention all hands, Colonel John Marine on deck!
-          </Box>
-        </NoticeBox>
-      </Box>
-    </Section>
-  );
-};
-
 const SecondaryFunctions = (props) => {
   const { act, data } = useBackend();
 
@@ -159,13 +107,31 @@ const SecondaryFunctions = (props) => {
         <Stack.Item width="24.5%">
           <Tabs fluid mr="0" fontSize="15px" vertical>
             <Tabs.Tab
+              selected={secondarycategory === 'squadmonitor'}
+              icon="heartbeat"
+              onClick={() => setsecondaryCategory('squadmonitor')}
+              p="3px"
+              bold
+            >
+              Squad Monitor
+            </Tabs.Tab>
+            <Tabs.Tab
+              selected={secondarycategory === 'execpanel'}
+              icon="id-card"
+              onClick={() => setsecondaryCategory('execpanel')}
+              p="3px"
+              bold
+            >
+              Executive Panel
+            </Tabs.Tab>
+            <Tabs.Tab
               selected={secondarycategory === 'ob'}
-              icon="bomb"
+              icon="cog"
               onClick={() => setsecondaryCategory('ob')}
               p="3px"
               bold
             >
-              Orbital Bombardment
+              Ordnance Systems
             </Tabs.Tab>
             <Tabs.Tab
               selected={secondarycategory === 'supply'}
@@ -185,6 +151,8 @@ const SecondaryFunctions = (props) => {
           {secondarycategory === 'ob' && data.can_launch_obs && (
             <OrbitalBombardment />
           )}
+          {secondarycategory === 'squadmonitor' && <SquadMonitor />}
+          {secondarycategory === 'execpanel' && <ExecutivePanel />}
         </Stack.Item>
       </Stack>
     </Section>
@@ -207,11 +175,21 @@ const DebugSquadPanel = (props) => {
   };
 
   return (
-    <Section fontSize="18px">
-      <Box bold textAlign="center">
-        Combined Overwatch System
-      </Box>
-      <Divider />
+    <Section
+      fontSize="18px"
+      title="Combined Operations Console | "
+      buttons={
+        <>
+          <Button icon="user" onClick={() => act('change_operator')}>
+            Operator - {data.operator}
+          </Button>
+          <Button icon="sign-out-alt" onClick={() => act('logout')}>
+            Sign Out
+          </Button>
+        </>
+      }
+      fitted
+    >
       <Stack vertical justify="center" align="end">
         <Stack.Item>
           <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
@@ -503,6 +481,164 @@ const MainDashboard = (props) => {
   );
 };
 
+const ExecutivePanel = (props) => {
+  const { act, data } = useBackend();
+
+  return (
+    <Section fill fontSize="14px">
+      <Stack horizontal>
+        <Stack.Item grow>
+          <Box bold textAlign="center" mb="10px">
+            GROUNDSIDE OPERATIONS
+          </Box>
+          <Box mb="10px" align="center">
+            <Stack.Item>
+              <Button inline width="100%" icon="bullhorn" p="4px">
+                MAKE AN ANNOUNCEMENT
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                inline
+                width="100%"
+                icon="map"
+                p="4px"
+                mt="3px"
+                onClick={() => act('set_secondary')}
+              >
+                VIEW TACTICAL MAP
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Divider />
+              <Button
+                inline
+                width="100%"
+                icon="home"
+                p="3px"
+                mt="1px"
+                color="transperant"
+                onClick={() => act('message')}
+              >
+                DESIGNATE PRIMARY LZ
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                inline
+                width="100%"
+                icon="users"
+                mt="1px"
+                p="3px"
+                onClick={() => act('sl_message')}
+              >
+                ACTIVATE ECHO SQUAD
+              </Button>
+            </Stack.Item>
+          </Box>
+        </Stack.Item>
+        <Stack.Divider />
+        <Stack.Item grow>
+          <Box bold textAlign="center" mb="10px">
+            SHIP CONTROL
+          </Box>
+          <Box mb="10px" align="center">
+            <Stack.Item>
+              <Button inline width="100%" icon="exclamation-triangle" p="3px">
+                CHANGE ALERT LEVEL
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button inline width="100%" color="transperant">
+                CURRENT ALERT LEVEL: GREEN
+              </Button>
+            </Stack.Item>
+            <Divider />
+            <Stack.Item>
+              <Button
+                inline
+                width="100%"
+                icon="bullhorn"
+                mb="3px"
+                onClick={() => act('set_secondary')}
+              >
+                MAKE A SHIPWIDE ANNOUNCEMENT
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                inline
+                width="100%"
+                icon="paper-plane"
+                onClick={() => act('message')}
+              >
+                MESSAGE USCM HIGH COMMAND
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                inline
+                width="100%"
+                icon="medal"
+                mt="1px"
+                onClick={() => act('sl_message')}
+              >
+                AWARD A MEDAL
+              </Button>
+            </Stack.Item>
+          </Box>
+        </Stack.Item>
+      </Stack>
+      <Divider />
+      <Box bold textAlign="center">
+        EMERGENCY MEASURES
+      </Box>
+      <Stack vertical>
+        <Stack.Item align="center">
+          <Box bold italic fontSize="12px" textAlign="center">
+            The ship must be under red alert in order to enact evacuation
+            procedures
+          </Box>
+        </Stack.Item>
+        <Stack.Divider />
+        <Stack.Item>
+          <Box mb="10px" align="center">
+            <Stack.Item>
+              <Button inline width="100%" icon="door-open" color="transperant">
+                INITIATE EVACUATION
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                inline
+                width="100%"
+                icon="ban"
+                mt="1px"
+                color="transperant"
+                onClick={() => act('set_secondary')}
+              >
+                SELF-DESTRUCT DISABLED
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                inline
+                width="100%"
+                icon="ban"
+                mt="1px"
+                color="transperant"
+                onClick={() => act('set_secondary')}
+              >
+                DISTRESS BEACON DISABLED
+              </Button>
+            </Stack.Item>
+          </Box>
+        </Stack.Item>
+      </Stack>
+    </Section>
+  );
+};
+
 const RoleTable = (props) => {
   const { act, data } = useBackend();
 
@@ -737,139 +873,151 @@ const SquadMonitor = (props) => {
           >
             Transfer Marine
           </Button>
-          <Button
-            color="red"
-            icon="running"
-            onClick={() => act('insubordination')}
-          >
-            Insubordination
-          </Button>
         </>
       }
     >
-      <Input
-        fluid
-        placeholder="Search.."
-        mb="4px"
-        value={marineSearch}
-        onInput={(e, value) => setMarineSearch(value)}
-      />
-      <Section m="2px" mb="4px" fill height="95%" scrollable>
-        <Table>
-          <Table.Row bold fontSize="14px">
-            <Table.Cell textAlign="center">Name</Table.Cell>
-            <Table.Cell textAlign="center">Role</Table.Cell>
-            <Table.Cell textAlign="center" collapsing>
-              State
-            </Table.Cell>
-            <Table.Cell textAlign="center">Location</Table.Cell>
-            <Table.Cell textAlign="center" collapsing fontSize="12px">
-              SL Dist.
-            </Table.Cell>
-            <Table.Cell textAlign="center" />
-          </Table.Row>
-          {squad_leader && (
-            <Table.Row key="index" bold>
-              <Table.Cell collapsing p="2px">
-                {(squad_leader.has_helmet && (
-                  <Button
-                    onClick={() =>
-                      act('watch_camera', { target_ref: squad_leader.ref })
-                    }
-                  >
-                    {squad_leader.name}
-                  </Button>
-                )) || <Box color="yellow">{squad_leader.name} (NO HELMET)</Box>}
-              </Table.Cell>
-              <Table.Cell p="2px">{squad_leader.role}</Table.Cell>
-              <Table.Cell
-                p="2px"
-                color={determine_status_color(squad_leader.state)}
-              >
-                {squad_leader.state}
-              </Table.Cell>
-              <Table.Cell p="2px">{squad_leader.area_name}</Table.Cell>
-              <Table.Cell p="2px" collapsing>
-                {squad_leader.distance}
-              </Table.Cell>
-              <Table.Cell />
-            </Table.Row>
-          )}
-          {marines &&
-            marines
-              .sort(sortByRole)
-              .filter((marine) => {
-                if (marineSearch) {
-                  const searchableString = String(marine.name).toLowerCase();
-                  return searchableString.match(new RegExp(marineSearch, 'i'));
-                }
-                return marine;
-              })
-              .map((marine, index) => {
-                if (squad_leader) {
-                  if (marine.ref === squad_leader.ref) {
-                    return;
-                  }
-                }
-                if (hidden_marines.includes(marine.ref) && !showHiddenMarines) {
-                  return;
-                }
-                if (marine.state === 'Dead' && !showDeadMarines) {
-                  return;
-                }
-
-                return (
-                  <Table.Row key={index}>
-                    <Table.Cell collapsing p="2px">
-                      {(marine.has_helmet && (
-                        <Button
-                          onClick={() =>
-                            act('watch_camera', { target_ref: marine.ref })
-                          }
-                        >
-                          {marine.name}
-                        </Button>
-                      )) || <Box color="yellow">{marine.name} (NO HELMET)</Box>}
-                    </Table.Cell>
-                    <Table.Cell p="2px">{marine.role}</Table.Cell>
-                    <Table.Cell
-                      p="2px"
-                      color={determine_status_color(marine.state)}
-                    >
-                      {marine.state}
-                    </Table.Cell>
-                    <Table.Cell p="2px">{marine.area_name}</Table.Cell>
-                    <Table.Cell p="2px" collapsing>
-                      {marine.distance}
-                    </Table.Cell>
-                    <Table.Cell p="2px">
-                      {(hidden_marines.includes(marine.ref) && (
-                        <Button
-                          icon="plus"
-                          color="green"
-                          tooltip="Show marine"
-                          onClick={() => toggle_marine_hidden(marine.ref)}
-                        />
-                      )) || (
-                        <Button
-                          icon="minus"
-                          color="red"
-                          tooltip="Hide marine"
-                          onClick={() => toggle_marine_hidden(marine.ref)}
-                        />
-                      )}
+      <Stack vertical>
+        <Stack.Item>
+          <Input
+            fluid
+            placeholder="Search.."
+            mb="4px"
+            value={marineSearch}
+            onInput={(e, value) => setMarineSearch(value)}
+          />
+        </Stack.Item>
+        <Stack.Item>
+          <Section m="2px" mb="4px" scrollable>
+            <Table>
+              <Table.Row bold fontSize="14px">
+                <Table.Cell textAlign="center">Name</Table.Cell>
+                <Table.Cell textAlign="center">Role</Table.Cell>
+                <Table.Cell textAlign="center" collapsing>
+                  State
+                </Table.Cell>
+                <Table.Cell textAlign="center">Location</Table.Cell>
+                <Table.Cell textAlign="center" collapsing fontSize="12px">
+                  SL Dist.
+                </Table.Cell>
+                <Table.Cell textAlign="center" />
+              </Table.Row>
+              {squad_leader && (
+                <Table.Row key="index" bold>
+                  <Table.Cell collapsing p="2px">
+                    {(squad_leader.has_helmet && (
                       <Button
-                        icon="arrow-up"
-                        color="green"
-                        tooltip="Promote marine to Squad Leader"
-                        onClick={() => act('replace_lead', { ref: marine.ref })}
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                );
-              })}
-        </Table>
-      </Section>
+                        onClick={() =>
+                          act('watch_camera', { target_ref: squad_leader.ref })
+                        }
+                      >
+                        {squad_leader.name}
+                      </Button>
+                    )) || (
+                      <Box color="yellow">{squad_leader.name} (NO HELMET)</Box>
+                    )}
+                  </Table.Cell>
+                  <Table.Cell p="2px">{squad_leader.role}</Table.Cell>
+                  <Table.Cell
+                    p="2px"
+                    color={determine_status_color(squad_leader.state)}
+                  >
+                    {squad_leader.state}
+                  </Table.Cell>
+                  <Table.Cell p="2px">{squad_leader.area_name}</Table.Cell>
+                  <Table.Cell p="2px" collapsing>
+                    {squad_leader.distance}
+                  </Table.Cell>
+                  <Table.Cell />
+                </Table.Row>
+              )}
+              {marines &&
+                marines
+                  .sort(sortByRole)
+                  .filter((marine) => {
+                    if (marineSearch) {
+                      const searchableString = String(
+                        marine.name,
+                      ).toLowerCase();
+                      return searchableString.match(
+                        new RegExp(marineSearch, 'i'),
+                      );
+                    }
+                    return marine;
+                  })
+                  .map((marine, index) => {
+                    if (squad_leader) {
+                      if (marine.ref === squad_leader.ref) {
+                        return;
+                      }
+                    }
+                    if (
+                      hidden_marines.includes(marine.ref) &&
+                      !showHiddenMarines
+                    ) {
+                      return;
+                    }
+                    if (marine.state === 'Dead' && !showDeadMarines) {
+                      return;
+                    }
+
+                    return (
+                      <Table.Row key={index}>
+                        <Table.Cell collapsing p="2px">
+                          {(marine.has_helmet && (
+                            <Button
+                              onClick={() =>
+                                act('watch_camera', { target_ref: marine.ref })
+                              }
+                            >
+                              {marine.name}
+                            </Button>
+                          )) || (
+                            <Box color="yellow">{marine.name} (NO HELMET)</Box>
+                          )}
+                        </Table.Cell>
+                        <Table.Cell p="2px">{marine.role}</Table.Cell>
+                        <Table.Cell
+                          p="2px"
+                          color={determine_status_color(marine.state)}
+                        >
+                          {marine.state}
+                        </Table.Cell>
+                        <Table.Cell p="2px">{marine.area_name}</Table.Cell>
+                        <Table.Cell p="2px" collapsing>
+                          {marine.distance}
+                        </Table.Cell>
+                        <Table.Cell p="2px">
+                          {(hidden_marines.includes(marine.ref) && (
+                            <Button
+                              icon="plus"
+                              color="green"
+                              tooltip="Show marine"
+                              onClick={() => toggle_marine_hidden(marine.ref)}
+                            />
+                          )) || (
+                            <Button
+                              icon="minus"
+                              color="red"
+                              tooltip="Hide marine"
+                              onClick={() => toggle_marine_hidden(marine.ref)}
+                            />
+                          )}
+                          <Button
+                            icon="arrow-up"
+                            color="green"
+                            tooltip="Promote marine to Squad Leader"
+                            onClick={() =>
+                              act('replace_lead', { ref: marine.ref })
+                            }
+                          />
+                        </Table.Cell>
+                      </Table.Row>
+                    );
+                  })}
+            </Table>
+          </Section>
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };
@@ -982,21 +1130,23 @@ const OrbitalBombardment = (props) => {
           </Box>
         </Stack.Item>
         <Stack.Divider />
-        <Stack.Item>
+        <Stack.Item width="50%" ml="15px">
           <Box textAlign="center" bold>
             <Table>
-              <Table.Cell m="2px" p="6px" textAlign="center">
-                Console OB Safety: <br />[ DISABLED ]
+              <Table.Cell fontSize="14px" m="2px" p="7px" textAlign="center">
+                OB SAFETY SYSTEM:
+                <Box color="red" m="1px" fontSize="16px">
+                  [ DISENGAGED ]
+                </Box>
                 <Button
                   fontSize="16px"
                   width="96%"
                   color="transperant"
-                  icon="user-shield"
                   p="5px"
                   m="4px"
                   onClick={() => act('dropbomb', { x: OBX, y: OBY })}
                 >
-                  Toggle Safety
+                  Keycard Override Required
                 </Button>
               </Table.Cell>
             </Table>
@@ -1004,53 +1154,47 @@ const OrbitalBombardment = (props) => {
         </Stack.Item>
       </Stack>
       <Divider horizontal />
-      <Stack justify={'space-between'} m="10px">
-        <Stack.Item fontSize="14px">
-          <LabeledControls mb="5px">
-            <LabeledControls.Item label="LONGITUDE">
-              <NumberInput
-                value={OBX}
-                onChange={(value) => setOBX(value)}
-                width="75px"
-              />
-            </LabeledControls.Item>
-            <LabeledControls.Item label="LATITUDE">
-              <NumberInput
-                value={OBY}
-                onChange={(value) => setOBY(value)}
-                width="75px"
-              />
-            </LabeledControls.Item>
-
-            <LabeledControls.Item label="STATUS">
-              <Box color={ob_color} bold>
-                {ob_status}
-              </Box>
-            </LabeledControls.Item>
-          </LabeledControls>
-          <Box textAlign="center">
-            <Button
-              fontSize="20px"
-              width="100%"
-              icon="bomb"
-              onClick={() => act('dropbomb', { x: OBX, y: OBY })}
-            >
-              Fire
-            </Button>
-            <Button
-              fontSize="20px"
-              width="100%"
-              icon="save"
-              onClick={() => act('save_coordinates', { x: OBX, y: OBY })}
-            >
-              Save
-            </Button>
+      <Stack justify={'space-between'} horizontal m="10px">
+        <Stack.Item fontSize="13px" bold width="50%" mt="5px">
+          IX-50 MGAD Cannon Subsystem:
+          <Box color="green" bold m="2px">
+            [ Fully Operational ]
+          </Box>
+          Currently Targeting:
+          <Box color="green" bold m="2px">
+            [ Upper-Deck Aft ]
+          </Box>
+          Cannon Status:
+          <Box color="green" bold m="2px">
+            [ ENGAGED ]
           </Box>
         </Stack.Item>
-        <Stack.Item>
-          <Divider vertical />
+        <Stack.Divider />
+        <Stack.Item fontSize="13px" bold width="50%" ml="15px" mt="5px">
+          Mk 33 ASAT Railgun Subsystem:
+          <Box color="red" bold m="2px">
+            [ Operations Suspended ]
+          </Box>
+          Available Ammunition:
+          <Stack horizontal m="7px" ml="1px">
+            <Stack.Item>
+              <Box bold ml="2px">
+                ASAT-21
+              </Box>
+              <Box color="red" bold ml="2px">
+                [ EXPENDED ]
+              </Box>
+            </Stack.Item>
+            <Stack.Item ml="15px">
+              <Box bold ml="5px">
+                BGM-227
+              </Box>
+              <Box color="red" bold ml="5px">
+                [ EXPENDED ]
+              </Box>
+            </Stack.Item>
+          </Stack>
         </Stack.Item>
-        <SavedCoordinates forOB />
       </Stack>
       <Divider horizontal />
     </Section>

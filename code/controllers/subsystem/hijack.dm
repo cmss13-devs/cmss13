@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_evacuation()
 	if(evac_status == EVACUATION_STATUS_NOT_INITIATED && !(evac_admin_denied & FLAGS_EVACUATION_DENY))
 		evac_status = EVACUATION_STATUS_INITIATED
-		ai_announcement("Тревога. Черезвычайная ситуация. Всему персоналу необходимо немедленно эвакуироваться.", 'sound/AI/evacuate.ogg')
+		ai_announcement("Тревога. Чрезвычайная ситуация. Всему персоналу необходимо немедленно эвакуироваться.", 'sound/AI/evacuate.ogg')
 
 		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))

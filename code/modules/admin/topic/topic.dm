@@ -1863,7 +1863,7 @@
 
 	if(href_list["ccdeny"]) // CentComm-deny. The distress call is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["ccdeny"])
-		marine_announcement("Сигнал бедствия не получил ответа, пусковые трубы сейчас проходят повторную калибровку.", "Сигнал бедствия", logging = ARES_LOG_SECURITY)
+		marine_announcement("Сигнал бедствия не получил ответа. Запущена рекалибровка пусковой установки.", "Сигнал бедствия", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 

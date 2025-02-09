@@ -132,7 +132,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	//Adjust the randomness there so everyone gets the same thing
 	var/fake_xenos_on_planet = max(0, xenos_on_planet + rand(-variance, variance))
 	var/name = "[MAIN_AI_SYSTEM]: Статус биосканирования"
-	var/input = "Биосканирование завершено.\n\nДатчики показывают [xenos_on_ship_uncontained ? "присутствие [xenos_on_ship_uncontained]" : "отсутствие"] неизвестных форм жизни[!xenos_on_ship_uncontained || xenos_on_ship_uncontained > 1] на корабле[xenos_on_ship_uncontained && xenos_ship_location ? ", включая одного в [xenos_ship_location]," : ""] и [fake_xenos_on_planet ? "возможное присутствие [fake_xenos_on_planet]" : "отсутствие"] сигнатур[!fake_xenos_on_planet || fake_xenos_on_planet > 1] расположенных где-либо ещё[fake_xenos_on_planet && xenos_planet_location ? ", включая одного в [xenos_planet_location]":""]."
+	var/input = "Биосканирование завершено.\n\n[xenos_on_ship_uncontained ? "Зафиксировано присутствие [xenos_on_ship_uncontained]" : "Присутствие"] неизвестных форм жизни на корабле [xenos_on_ship_uncontained ? (xenos_ship_location ? ", включая одного в [xenos_ship_location]" : "")"не зафиксировано"]. Зафиксировано [fake_xenos_on_planet ? "возможное присутствие [fake_xenos_on_planet]" : "отсутствие"] сигнатур, расположенных где-либо ещё[fake_xenos_on_planet && xenos_planet_location ? ", включая одного в [xenos_planet_location]":""]."
 
 	log_game("BIOSCAN: ARES bioscan completed. [input]")
 

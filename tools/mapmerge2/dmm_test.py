@@ -39,6 +39,15 @@ def _self_test():
         ancestor_commit = repo[ancestor]
         print("Determined ancestor commit SHA to be:", ancestor)
 
+    # Figure out what maps have been modified
+    modified_maps = []
+    diff = repo.diff(repo.head.target, ancestor)
+    for delta in diff.deltas:
+        cur_path = delta.new_file.path
+        if cur_path.endswith('.dmm'):
+            modified_maps.append(cur_path)
+
+    # Actually perform the testing
     count = 0
     failed = 0
     for dirpath, dirnames, filenames in os.walk('.'):
@@ -58,7 +67,7 @@ def _self_test():
                         raise LintException('Map is not in TGM format! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
 
                     # test: does every DMM convert cleanly
-                    if ancestor_commit:
+                    if ancestor_commit and (path in modified_maps):
                         try:
                             ancestor_blob = ancestor_commit.tree[path]
                         except KeyError:
@@ -86,7 +95,7 @@ def _self_test():
                     raise
                 count += 1
 
-    print(f"{os.path.relpath(__file__)}: {green(f'successfully parsed {count-failed} .dmm files')}")
+    print(f"{os.path.relpath(__file__)}: {green(f'successfully parsed {count-failed} .dmm files ({len(modified_maps)} modified)')}")
     if failed > 0:
         print(f"{os.path.relpath(__file__)}: {red(f'failed to parse {failed} .dmm files')}")
         exit(1)

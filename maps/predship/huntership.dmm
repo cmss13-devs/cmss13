@@ -1942,7 +1942,7 @@
 /area/yautja)
 "ib" = (
 /obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Youngblood Telaporter"
+	name = "\improper Youngblood Teleporter"
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja/lower_deck)

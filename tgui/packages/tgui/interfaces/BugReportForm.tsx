@@ -72,7 +72,7 @@ export const BugReportForm = (props) => {
           <Flex direction="column" height="100%">
             <Flex.Item className="text-center">
               <a
-                href="https://github.com/cmss13-devs/cmss13/issues"
+                href="https://github.com/RU-CMSS13/RU-CMSS13/issues"
                 target="_blank"
                 rel="noreferrer"
                 className="link"

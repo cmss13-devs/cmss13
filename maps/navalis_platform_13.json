@@ -6,17 +6,15 @@
 
     "weather_holder": "/datum/weather_ss_map_holder/navalis_platform_13",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/lv",
-        "/datum/equipment_preset/survivor/doctor/lv",
-        "/datum/equipment_preset/survivor/chaplain/lv",
-        "/datum/equipment_preset/survivor/engineer/lv",
-        "/datum/equipment_preset/survivor/corporate/lv",
-        "/datum/equipment_preset/survivor/trucker/lv",
-        "/datum/equipment_preset/survivor/security/lv",
-        "/datum/equipment_preset/survivor/colonial_marshal/lv",
-        "/datum/equipment_preset/survivor/goon",
-        "/datum/equipment_preset/survivor/clf",
-        "/datum/equipment_preset/survivor/civilian"
+        "/datum/equipment_preset/survivor/navalis/automation_specialist",
+        "/datum/equipment_preset/survivor/navalis/radio_operator",
+        "/datum/equipment_preset/survivor/navalis/goon_platform_guard",
+        "/datum/equipment_preset/survivor/navalis/exo_geologist",
+        "/datum/equipment_preset/survivor/navalis/medic",
+        "/datum/equipment_preset/survivor/navalis/first_officer",
+        "/datum/equipment_preset/survivor/navalis/operations_engineer",
+        "/datum/equipment_preset/survivor/navalis/maint_tech",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops"
     ],
     "defcon_triggers": [
         3750,

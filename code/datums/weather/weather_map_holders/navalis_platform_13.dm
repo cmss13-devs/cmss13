@@ -1,5 +1,5 @@
 /datum/weather_ss_map_holder/navalis_platform_13
-	name = "LV-522 Map Holder"
+	name = "Navalis Map Holder"
 
 	warn_time = 1 MINUTES
 	min_time_between_events = 30 MINUTES

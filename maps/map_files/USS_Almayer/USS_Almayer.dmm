@@ -11164,13 +11164,6 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/chemistry)
 "bgl" = (
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry{
-	pixel_x = -1
-	},
-/obj/structure/medical_supply_link,
-/turf/open/floor/almayer/sterile_green_side,
-/area/almayer/medical/chemistry)
-"bgm" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/hand_labeler{
 	pixel_y = 12;
@@ -11188,6 +11181,13 @@
 	pixel_x = -6;
 	pixel_y = 2
 	},
+/turf/open/floor/almayer/sterile_green_side,
+/area/almayer/medical/chemistry)
+"bgm" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry{
+	pixel_x = -1
+	},
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/chemistry)
 "bgw" = (
@@ -11213,7 +11213,7 @@
 	pixel_y = -1
 	},
 /obj/structure/sign/nosmoking_2{
-	pixel_x = 28
+	pixel_x = 27
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_one)
@@ -20816,7 +20816,7 @@
 	pixel_y = 5
 	},
 /obj/structure/sign/nosmoking_2{
-	pixel_x = -27
+	pixel_x = -26
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/operating_room_two)
@@ -91209,7 +91209,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa

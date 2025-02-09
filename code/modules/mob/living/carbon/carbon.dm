@@ -458,18 +458,18 @@
 
 // Adding traits, etc after xeno restrains and hauls us
 /mob/living/carbon/human/proc/handle_haul(mob/living/carbon/xenomorph/xeno)
-	setDir(EAST)
-	xeno.hauled_mob_change_dir(xeno.dir, src)
 	ADD_TRAIT(src, TRAIT_HAULED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_FLOORED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_XENO_HAUL)
+
 	hauling_xeno = xeno
 	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(release_haul_death))
 	RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(haul_fire_shield))
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(haul_fire_shield_callback))
 	layer = LYING_BETWEEN_MOB_LAYER
-
+	add_filter("hauled_shadow", 1, color_matrix_filter(rgb(95, 95, 95)))
+	pixel_y = -10
 
 /mob/living/carbon/human/proc/release_haul_death()
 	SIGNAL_HANDLER
@@ -491,11 +491,12 @@
 		forceMove(location)
 	src.remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
 	pixel_y = 0
-	pixel_x = 0
 	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
 	UnregisterSignal(hauling_xeno, COMSIG_MOB_DEATH)
 	hauling_xeno = null
 	layer = MOB_LAYER
+	remove_filter("hauled_shadow")
+
 
 
 /mob/living/carbon/on_stored_atom_del(atom/movable/AM)
@@ -562,7 +563,3 @@
 	else
 		set_lying_angle(new_lying_angle)
 
-/mob/living/carbon/human/setDir(newdir)
-	if(HAS_TRAIT(src, TRAIT_HAULED))
-		return
-	. = ..()

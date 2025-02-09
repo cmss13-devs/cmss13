@@ -424,34 +424,6 @@
 	victim.forceMove(src.loc, get_dir(victim.loc, src.loc))
 	victim.handle_haul(src)
 	RegisterSignal(victim, COMSIG_MOB_DEATH, PROC_REF(release_dead_haul))
-	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
-
-/mob/living/carbon/xenomorph/proc/on_dir_change(src, olddir, newdir)
-	SIGNAL_HANDLER
-	var/mob/living/carbon/human/hauled = hauled_mob.resolve()
-	hauled_mob_change_dir(newdir, hauled)
-
-/mob/living/carbon/xenomorph/proc/hauled_mob_change_dir(direction, mob/living/carbon/human/hauled)
-	var/matrix/base = matrix()
-	var/angle
-	switch(direction)
-		if(NORTH)
-			angle = 180
-			hauled.pixel_x = 0
-			hauled.pixel_y = -13
-		if(SOUTH)
-			angle = 0
-			hauled.pixel_x = 0
-			hauled.pixel_y = 10
-		if(EAST)
-			angle = 250
-			hauled.pixel_x = -13
-			hauled.pixel_y = -8
-		if(WEST)
-			angle = 110
-			hauled.pixel_x = 12
-			hauled.pixel_y = -8
-	hauled.apply_transform(base.Turn(angle), 0)
 
 // Releasing a dead hauled mob
 /mob/living/carbon/xenomorph/proc/release_dead_haul()
@@ -461,7 +433,6 @@
 	user.handle_unhaul()
 	UnregisterSignal(user, COMSIG_MOB_DEATH)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
-
 	hauled_mob = null
 
 // Releasing a hauled mob

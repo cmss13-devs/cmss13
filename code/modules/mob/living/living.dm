@@ -677,8 +677,6 @@
 
 
 /mob/living/update_transform(instant_update = FALSE)
-	if(HAS_TRAIT(src, TRAIT_HAULED))
-		return
 	var/visual_angle = lying_angle
 	if(!rotate_on_lying)
 		return

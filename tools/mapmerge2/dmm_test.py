@@ -24,15 +24,16 @@ def _self_test():
 
     # Read the HEAD and ancestor commits
     # Assumption: origin on the runner is what we'd normally call upstream
-    head = None
+    head = repo.head.target
+    head_commit = repo[head]
     ancestor_commit = None
-    try:
-        # if HEAD is a merge commit:
-        head = repo.revparse_single("HEAD^2").id
-    except KeyError:
-        # if HEAD isn't a merge commit:
-        head = repo.head.target
-        pass
+    if len(head_commit.parents) != 1: # if HEAD is a merge commit:
+        try:
+            head = repo.revparse_single("HEAD^2").id
+        except KeyError:
+            print("Unable to determine correct head!")
+            head = repo.head.target
+            pass
     ancestor = repo.merge_base(head, repo.revparse_single("refs/remotes/origin/master").id)
     if not ancestor:
         print("Unable to determine merge base!")

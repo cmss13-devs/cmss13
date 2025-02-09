@@ -95,8 +95,7 @@ def three_way_merge(base, left, right):
 
         merged.set_tile(coord, merged_movables + merged_turfs + merged_areas)
 
-    merged = mapmerge.merge_map(merged, base) # is this necessary or correct?
-    merged = mapmerge.merge_map(merged, left)
+    merged = mapmerge.merge_map(merged, base)
     return trouble, merged
 
 

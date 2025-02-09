@@ -50,7 +50,8 @@ def _self_test():
                 path = fullpath.replace("\\", "/").removeprefix("./")
                 try:
                     # test: can we load every DMM
-                    index_map = DMM.from_file(fullpath)
+                    index_data = DMM.from_file_bytes(fullpath)
+                    index_map = DMM.from_bytes(index_data)
 
                     # test: is every DMM in TGM format
                     if not has_tgm_header(fullpath):
@@ -64,18 +65,17 @@ def _self_test():
                             # New map, no entry in ancestor
                             print("New map? Could not find ancestor version of", path)
                             merged_map = merge_map(index_map, index_map) # basically only tests unused keys
-                            original_bytes = index_map.to_bytes()
                             merged_bytes = merged_map.to_bytes()
-                            if original_bytes != merged_bytes:
+                            if index_data != merged_bytes:
                                 raise LintException('New map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
                         else:
                             # Entry in ancestor, merge the index over it
                             ancestor_map = DMM.from_bytes(ancestor_blob.read_raw())
                             merged_map = merge_map(index_map, ancestor_map)
-                            original_bytes = index_map.to_bytes()
                             merged_bytes = merged_map.to_bytes()
-                            if original_bytes != merged_bytes:
+                            if index_data != merged_bytes:
                                 raise LintException('Map is pending updates! Please run `/tools/mapmerge2/I Forgot To Map Merge.bat`')
+
                 except LintException as error:
                     failed += 1
                     print(red(f'Failed on: {path}'))

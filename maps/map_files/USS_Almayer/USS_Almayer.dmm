@@ -1832,6 +1832,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "aeo" = (
@@ -2809,8 +2813,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "agx" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 2
+	icon_state = "SE-out"
 	},
 /obj/structure/closet/secure_closet/medical_doctor,
 /obj/structure/sign/safety/med_cryo{
@@ -3047,6 +3050,13 @@
 	icon_state = "triagedecaltopleft"
 	},
 /turf/open/floor/almayer/sterile_green_side/northeast,
+/area/almayer/medical/lower_medical_medbay)
+"aha" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/sterile_green_side/southeast,
 /area/almayer/medical/lower_medical_medbay)
 "ahb" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
@@ -3333,10 +3343,6 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/operating_room_two)
 "ahC" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
 /obj/structure/machinery/medical_pod/sleeper{
 	pixel_y = 2
 	},
@@ -3365,6 +3371,20 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/starboard_atmos)
+"ahH" = (
+/obj/structure/medical_supply_link/green,
+/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/almayer/medical/lower_medical_medbay)
 "ahI" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4
@@ -3654,12 +3674,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	pixel_y = 1
+	pixel_y = 2
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "aiu" = (
@@ -9523,6 +9543,10 @@
 /obj/structure/sign/safety/storage{
 	pixel_x = 32;
 	pixel_y = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 3
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_medbay)
@@ -22352,13 +22376,13 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair{
 	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
@@ -52472,7 +52496,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	pixel_y = 1
+	pixel_y = 2
 	},
 /obj/effect/decal/cleanable/spiderling_remains{
 	pixel_x = 18;
@@ -58918,6 +58942,10 @@
 "tni" = (
 /obj/structure/machinery/medical_pod/bodyscanner{
 	pixel_y = 2
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_four)
@@ -66035,6 +66063,10 @@
 /obj/structure/machinery/medical_pod/bodyscanner{
 	pixel_y = 2
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_two)
 "waJ" = (
@@ -66685,8 +66717,7 @@
 /area/almayer/command/corporateliaison)
 "wmQ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1
+	icon_state = "SW-out"
 	},
 /obj/structure/largecrate/supply/medicine/medivend,
 /obj/structure/largecrate/random/mini/med{
@@ -67230,10 +67261,6 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "wxq" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
 /obj/structure/machinery/medical_pod/sleeper{
 	pixel_y = 2
 	},
@@ -69307,6 +69334,11 @@
 	pixel_x = 32;
 	pixel_y = -7
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1;
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/lower_medical_medbay)
 "xqD" = (
@@ -70014,7 +70046,6 @@
 "xEz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
-	pixel_y = 2;
 	pixel_x = 3
 	},
 /obj/structure/machinery/light{
@@ -102578,9 +102609,9 @@ afe
 aft
 afU
 aft
-afe
+ahH
 aen
-xsw
+aha
 xqy
 kan
 kan

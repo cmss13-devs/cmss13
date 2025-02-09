@@ -64,8 +64,9 @@
 "fX" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/paper,
+/obj/item/tool/pen,
 /turf/open/floor/whitegreen,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "gt" = (

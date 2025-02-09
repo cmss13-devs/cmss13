@@ -249,13 +249,13 @@
 
 /// Step 2, 3, 4: Warns nearby mobs of the incoming fire mission. Warning as 1 is non-precise, whereas 2 and 3 are precise.
 /datum/cas_fire_envelope/proc/chat_warning(atom/target_turf, range = 10, warning_number = 1)
-	var/ds_identifier = "LARGE BIRD"
-	var/fm_identifier = "SPIT FIRE"
+	var/ds_identifier = "БОЛЬШАЯ ПТИЦА"
+	var/fm_identifier = "ОГНЕННОЕ ДЫХАНИЕ"
 	var/relative_dir
 	for(var/mob/mob in range(15, target_turf))
 		if (mob.mob_flags & KNOWS_TECHNOLOGY)
-			ds_identifier = "DROPSHIP"
-			fm_identifier = "FIRE"
+			ds_identifier = "ДРОПШИП"
+			fm_identifier = "ЗАЛП"
 		if(get_turf(mob) == target_turf)
 			relative_dir = 0
 		else
@@ -263,18 +263,18 @@
 		switch(warning_number)
 			if(1)
 				mob.show_message( \
-					SPAN_HIGHDANGER("YOU HEAR THE [ds_identifier] ROAR AS IT PREPARES TO [fm_identifier] NEAR YOU!"),SHOW_MESSAGE_VISIBLE, \
-					SPAN_HIGHDANGER("YOU HEAR SOMETHING FLYING CLOSER TO YOU!") , SHOW_MESSAGE_AUDIBLE \
+					SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК [ds_identifier] РЫЧИТ, ГОТОВЯ [fm_identifier] РЯДОМ С ВАМИ!"),SHOW_MESSAGE_VISIBLE, \
+					SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ЛЕТИТ ВСЁ БЛИЖЕ К ВАМ!") , SHOW_MESSAGE_AUDIBLE \
 				)
 			if(2)
 				mob.show_message( \
-					SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-					SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+					SPAN_HIGHDANGER("[ds_identifier] ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_VISIBLE, \
+					SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_AUDIBLE \
 				)
 			if(3)
 				mob.show_message( \
-					SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-					SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+					SPAN_HIGHDANGER("[ds_identifier] ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_VISIBLE, \
+					SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_AUDIBLE \
 				)
 
 /// Step 5: Actually executes the fire mission updating stat to FIRE_MISSION_STATE_FIRING and then FIRE_MISSION_STATE_OFF_TARGET

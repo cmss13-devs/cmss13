@@ -798,7 +798,7 @@
 "adm" = (
 /obj/structure/foamed_metal,
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/shuttle/bright_red,
+/turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship_containers)
 "adn" = (
 /obj/structure/girder/displaced,
@@ -6764,7 +6764,7 @@
 "aKq" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/gm/grass/grass2,
+/turf/open/floor/plating,
 /area/lv624/lazarus/yggdrasil)
 "aKr" = (
 /obj/structure/window_frame/colony,

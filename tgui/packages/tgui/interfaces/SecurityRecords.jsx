@@ -147,7 +147,7 @@ export const SecurityRecords = () => {
     },
     { label: 'ID:', contentKey: 'id', isEditable: false },
     {
-      label: 'Rank:',
+      label: 'Position:',
       contentKey: 'general_rank',
       isEditable: true,
       type: 'text',
@@ -282,7 +282,7 @@ export const SecurityRecords = () => {
                 Name
               </Table.Cell>
               <Table.Cell bold className="SecurityRecords_CellStyle">
-                Rank
+                Position
               </Table.Cell>
               <Table.Cell bold className="SecurityRecords_CellStyle">
                 Squad
@@ -564,7 +564,7 @@ export const SecurityRecords = () => {
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('general_rank')}
           >
-            Rank {getSortIndicator('general_rank')}
+            Position {getSortIndicator('general_rank')}
           </Table.Cell>
           <Table.Cell
             bold

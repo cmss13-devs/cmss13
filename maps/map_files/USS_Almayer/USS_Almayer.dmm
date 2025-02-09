@@ -3392,6 +3392,9 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/sign/safety/ref_chem_storage{
+	pixel_x = 40
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/chemistry)
 "ahB" = (
@@ -3419,6 +3422,7 @@
 	id = "northtreatcenter1";
 	name = "\improper North Treatment Center Shutters"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "ahD" = (
@@ -10611,9 +10615,8 @@
 	name = "ship-grade camera"
 	},
 /obj/structure/reagent_dispensers/fueltank/custom,
-/obj/structure/sign/safety/ref_chem_storage{
-	pixel_x = 7;
-	pixel_y = 25
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 26
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/chemistry)
@@ -10641,9 +10644,6 @@
 /obj/item/reagent_container/glass/beaker{
 	pixel_y = 16;
 	pixel_x = 6
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 26
 	},
 /obj/item/reagent_container/glass/beaker{
 	pixel_y = 9;
@@ -60643,6 +60643,7 @@
 	id = "northtreatcenter1";
 	name = "\improper North Treatment Center Shutters"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "tYM" = (

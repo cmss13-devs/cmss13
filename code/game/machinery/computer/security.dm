@@ -355,23 +355,23 @@
 				if (!scanner || !scanner.print_list)
 					to_chat(user, SPAN_WARNING("No scanner data found."))
 					return
-
-				sleep(50)
+				to_chat(user, SPAN_NOTICE("Printing Report."))
+				sleep(15)
 				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 
-				var/obj/item/paper/fingerprint/P = new /obj/item/paper/fingerprint(src, scanner.print_list)
-				P.forceMove(loc)
+				var/obj/item/paper/fingerprint/P = new /obj/item/paper/fingerprint(loc, scanner.print_list)
 				var/refkey = ""
 				for(var/obj/effect/decal/prints/print in scanner.print_list)
 					refkey += print.criminal_name
 				P.name = "fingerprint report ([md5(refkey)])"
-				printing = FALSE
+				printing = null
 
 		if ("clear_fingerprints")
 			if (!scanner)
 				to_chat(user, SPAN_WARNING("No scanner found."))
 				return
 
+			QDEL_NULL_LIST(scanner.print_list)
 			scanner.update_icon()
 			to_chat(user, SPAN_NOTICE("Fingerprints cleared from the scanner."))
 
@@ -381,7 +381,7 @@
 				return
 
 			scanner.update_icon()
-			scanner.forceMove(get_turf(user))
+			scanner.forceMove(get_turf(src))
 			scanner = null
 		if ("print_personal_record")
 			var/id = params["id"]
@@ -397,12 +397,11 @@
 				if (!general_record)
 					to_chat(user, SPAN_WARNING("Record not found."))
 					return
-
+				to_chat(user, SPAN_NOTICE("Printing Record."))
+				sleep(15)
 				playsound(loc, 'sound/machines/print.ogg', 15, 1)
-				sleep(50)
 
-				var/obj/item/paper/personalrecord/P = new /obj/item/paper/personalrecord(user, general_record, security_record)
-				P.forceMove(loc)
+				var/obj/item/paper/personalrecord/P = new /obj/item/paper/personalrecord(loc, general_record, security_record)
 				P.name = text("Security Record ([])", general_record.fields["name"])
 				printing = null
 		if ("update_photo")

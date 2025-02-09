@@ -547,7 +547,7 @@ export const SecurityRecords = () => {
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('general_rank')}
           >
-            Rank{' '}
+            Position{' '}
             {sortConfig.key === 'general_rank' &&
               (sortConfig.direction === 'asc' ? '▲' : '▼')}
           </Table.Cell>

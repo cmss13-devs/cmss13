@@ -42,7 +42,7 @@ def _self_test():
 
     # Figure out what maps have been modified
     modified_maps = []
-    diff = repo.diff(repo.head.target, ancestor)
+    diff = repo.diff(head, ancestor)
     for delta in diff.deltas:
         cur_path = delta.new_file.path
         if cur_path.endswith('.dmm'):

@@ -1,6 +1,0 @@
-author: "Nomoresolvalou"
-delete-after: True
-changes:
-  - balance: "thrall armor increased"
-  - balance: "thralls are now hero mobs and do not trigger resin traps or get slowed by weeds"
-  - rscadd: "predators can now remotely stun and self destruct their thralls"

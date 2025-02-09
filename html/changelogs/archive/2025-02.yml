@@ -190,3 +190,35 @@
   - bugfix: minor signature bug fixed with 'all hands on deck' announcements
   - qol: Adds camera, camera film, tape recorder, clue scanner to SecTech.
   - bugfix: Code fixed for sectech machine ads/slogans.
+2025-02-09:
+  Drathek:
+  - rscadd: Areas Unpowered unit test now checks for APCs on non-floor tiles (if they
+      are also deemed intact aka not exposed)
+  - bugfix: Focused unit testing now properly skips stages if the focus only applies
+      to a different stage
+  - maptweak: Fixed inaccessible APC terminals on basically all maps
+  Git-Nivrak:
+  - balance: Mortar range is now limited.
+  - balance: Removed free mortar shells from ASRS.
+  - balance: Lowered the initial costs of mortar shells for requisitions.
+  - balance: Incendiary mortar shells are now purely incendiary.
+  - balance: Fragmentation shell shrapnel now deals bonus damage to structures.
+  Nomoresolvalou:
+  - balance: thrall armor increased
+  - balance: thralls are now hero mobs and do not trigger resin traps or get slowed
+      by weeds
+  - rscadd: predators can now remotely stun and self destruct their thralls
+  efzapa:
+  - qol: Added a Forensic Refiller Tank, which you can use to easily refill your Forensic
+      Spray Bottles from.
+  hry-gh:
+  - bugfix: fix chat fixed?
+  - bugfix: 516 does not get laggier as the round goes on anymore
+  ihatethisengine, Nivrak, forest2001, SubjectD9341:
+  - rscadd: Added the M5 Camera Gear, an ear-mounted camera that works with Overwatch
+      consoles. Small numbers can be found in surplus uniform vendors.
+  realforest2001:
+  - rscadd: Added WY Deputy Director.
+  - rscadd: Changed name of general's mateba holster to luxury mateba holster.
+  - imageadd: Added a background for the Visiting Officer to use so it doesn't appear
+      identical to CO in follow menu/minimap.

@@ -414,13 +414,15 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			alive_mobs |= current_mob
 
 	for(var/datum/interior/interior in SSinterior.interiors)
-		if(interior?.exterior?.z == z)
-			for(var/mob/living/passenger in interior.get_passengers())
-				if(!(passenger in (alive_mobs + dead_mobs)))
-					if(passenger.stat != DEAD)
-						passenger.death(create_cause_data("nuclear explosion"))
-					for(var/obj/item/alien_embryo/embryo in passenger)
-						qdel(embryo)
+		if(!interior.exterior || interior.exterior.z != z)
+			continue
+	
+		for(var/mob/living/passenger in interior.get_passengers())
+			if(!(passenger in (alive_mobs + dead_mobs)))
+				if(passenger.stat != DEAD)
+					passenger.death(create_cause_data("nuclear explosion"))
+				for(var/obj/item/alien_embryo/embryo in passenger)
+					qdel(embryo)
 
 	for(var/mob/current_mob in alive_mobs)
 		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))

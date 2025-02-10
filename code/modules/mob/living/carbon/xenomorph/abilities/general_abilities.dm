@@ -310,7 +310,7 @@
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will call on_zoom_out()
 		return
-	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
+	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."),
 		SPAN_NOTICE("We start focusing our sight to look off into the distance."), null, 5)
 	if (should_delay)
 		if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
@@ -327,7 +327,7 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
+	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."),
 	SPAN_NOTICE("We stop looking off into the distance."), null, 5)
 	if(movement_slowdown)
 		xeno.speed_modifier -= movement_slowdown
@@ -583,3 +583,9 @@
 /datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
 	. = ..()
 	owner.sight &= ~SEE_TURFS
+
+/mob/living/carbon/xenomorph/proc/add_abilities()
+	if(!base_actions)
+		return
+	for(var/action_path in base_actions)
+		give_action(src, action_path)

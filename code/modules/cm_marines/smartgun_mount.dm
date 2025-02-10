@@ -653,11 +653,11 @@
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 				SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 					SPAN_NOTICE("You repair [src]."))
 				update_health(-floor(health_max*0.2))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -1045,7 +1045,7 @@
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 	target = object
 	if(target)
-		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), override = TRUE)
 
 /// Print how much ammo is left to chat
 /obj/structure/machinery/m56d_hmg/proc/display_ammo()

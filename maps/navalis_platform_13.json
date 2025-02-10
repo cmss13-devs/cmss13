@@ -8,7 +8,7 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/navalis/automation_specialist",
         "/datum/equipment_preset/survivor/navalis/radio_operator",
-        "/datum/equipment_preset/survivor/navalis/goon_platform_guard",
+        "/datum/equipment_preset/survivor/navalis/platform_guard",
         "/datum/equipment_preset/survivor/navalis/exo_geologist",
         "/datum/equipment_preset/survivor/navalis/medic",
         "/datum/equipment_preset/survivor/navalis/first_officer",

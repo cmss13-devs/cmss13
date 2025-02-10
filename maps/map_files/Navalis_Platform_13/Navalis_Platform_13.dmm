@@ -14545,7 +14545,8 @@
 /area/navalis/oob/powered)
 "aML" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2
+	dir = 2;
+	req_access = null
 	},
 /turf/open/floor/almayer_hull,
 /area/navalis/oob/powered)

@@ -48,37 +48,30 @@
 
 // Security Officer
 
-/datum/equipment_preset/survivor/navalis/goon_platform_guard
-	name = "Survivor - Navalis - W-Y - Platform Security Guard"
-	assignment = "Navalis Platform 13 - Platform Security Guard"
-	assignment = JOB_WY_GOON
-	rank = JOB_WY_GOON
-	minimap_icon = "goon_standard"
-	minimap_background = "background_goon"
+/datum/equipment_preset/survivor/navalis/platform_guard
+	name = "Survivor - Navalis - Platform Security Guard"
+	assignment = "NP13 - Platform Security Guard"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/goon
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
-	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_EXEC,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL)
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_SECURITY)
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/survivor/navalis/goon_platform_guard/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/navalis/platform_guard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/wy_cap, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/p90, WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
 
 // Science Survivors //
@@ -133,15 +126,13 @@
 
 // Corporate Survivors //
 
-// Platform Second Officer
+// Platform First Officer
 
 /datum/equipment_preset/survivor/navalis/first_officer
 	name = "Survivor - Navalis - Platform First Officer"
 	assignment = "First Officer"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC,)
 

@@ -43,6 +43,8 @@ They're all essentially identical when it comes to getting the job done.
 	var/ammo_band_icon
 	/// Is the greyscale icon used for the ammo band when it's empty of bullets.
 	var/ammo_band_icon_empty
+	/// For backpack fead guns
+	var/obj/item/weapon/gun/linked_gun
 
 
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
@@ -132,6 +134,20 @@ They're all essentially identical when it comes to getting the job done.
 						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
+
+	if(istype(I, /obj/item/weapon/gun) && (flags_magazine & MAGAZINE_WORN) && user.back == src && !linked_gun)
+		var/obj/item/weapon/gun/gun = I
+		gun.reload(user,src)
+		linked_gun = gun
+		RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disconect_weapon))
+		RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(disconect_weapon))
+
+/obj/item/ammo_magazine/proc/disconect_weapon()
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(linked_gun, COMSIG_ITEM_DROPPED)
+	linked_gun.disconect_belt()
+	linked_gun = null
+
 
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)

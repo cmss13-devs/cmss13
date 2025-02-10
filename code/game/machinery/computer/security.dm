@@ -355,7 +355,7 @@
 				if (!scanner || !scanner.print_list)
 					to_chat(user, SPAN_WARNING("No scanner data found."))
 					return
-				to_chat(user, SPAN_NOTICE("Printing Report."))
+				to_chat(user, SPAN_NOTICE("Printing report."))
 				sleep(15)
 				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 
@@ -397,7 +397,7 @@
 				if (!general_record)
 					to_chat(user, SPAN_WARNING("Record not found."))
 					return
-				to_chat(user, SPAN_NOTICE("Printing Record."))
+				to_chat(user, SPAN_NOTICE("Printing record."))
 				sleep(15)
 				playsound(loc, 'sound/machines/print.ogg', 15, 1)
 

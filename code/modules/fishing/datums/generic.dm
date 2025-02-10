@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/reagent_container/food/snacks/fishable/squid/sock,
 		/obj/item/ore/coal,
 		/obj/item/ore/slag,
-		/obj/item/reagent_container/food/snacks/fishable/Urchin/purple,
+		/obj/item/reagent_container/food/snacks/fishable/urchin/purple,
 		/obj/item/reagent_container/food/snacks/fishable/fish/bluegill
 	)
 	var/list/uncommon_fishable_atoms = list(
@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/ore/silver,
 		/obj/item/ore/gold,
 		/obj/item/ore/diamond,
-		/obj/item/reagent_container/food/snacks/fishable/Urchin/red
+		/obj/item/reagent_container/food/snacks/fishable/urchin/red
 	)
 	var/list/ultra_rare_fishable_atoms = list(
 		/obj/item/card/data/clown,
@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/ore/osmium,
 		/obj/item/ore/uranium,
 	)
-//added lots of new loot to the loot table
+
 /datum/fish_loot_table/proc/return_caught_fish(common_weight, uncommon_weight, rare_weight, ultra_rare_weight)
 	if(prob(common_weight))
 		return pick(common_fishable_atoms)

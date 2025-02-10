@@ -86,4 +86,3 @@
 	icon_state = "pearl"
 	oretag = "pearl"
 	black_market_value = 60
-//adds the pearl as an ore for the fishing code, felt it was categorically acceptable

@@ -9,7 +9,7 @@
 
 /obj/structure/prop/fishing/pole_interactive
 	var/time_to_fish = 30 SECONDS
-	var/fishing_success = 'sound/items/bikehorn.ogg'//to-do get a sound effect(s)
+	var/fishing_success = 'sound/items/air_release.ogg'//to-do get better sound effect(s)
 	var/fishing_start = 'sound/items/fulton.ogg'
 	var/fishing_failure = 'sound/items/jetpack_beep.ogg'
 	var/fishing_event = 'sound/items/component_pickup.ogg'

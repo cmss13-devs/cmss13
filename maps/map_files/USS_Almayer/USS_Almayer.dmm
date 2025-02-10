@@ -1386,7 +1386,7 @@
 	id = "MedicalDistriShu";
 	name = "\improper Medical Equipment Distribution Shutters";
 	pixel_y = -7;
-	req_one_access_txt = "19;20";
+	req_one_access_txt = "19;8";
 	throw_range = 15;
 	pixel_x = 6
 	},
@@ -3318,7 +3318,7 @@
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 9;
-	pixel_y = 2
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
@@ -3336,12 +3336,15 @@
 	pixel_y = 3
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_y = 5;
-	pixel_x = -11
+	pixel_y = 6;
+	pixel_x = -12
 	},
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
 	pixel_y = -1;
 	pixel_x = -3
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -15
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
@@ -3621,7 +3624,8 @@
 /area/almayer/shipboard/starboard_missiles)
 "aif" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	req_one_access = list(20,19)
+	req_one_access = list(20,19);
+	name = "\improper Chemistry Laboratory"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10640,10 +10644,10 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcC" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
 /obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcD" = (
@@ -11152,29 +11156,37 @@
 /area/almayer/medical/chemistry)
 "bgl" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/hand_labeler{
-	pixel_y = 12;
-	pixel_x = 7
-	},
-/obj/item/tool/hand_labeler{
-	pixel_y = 3;
-	pixel_x = 7
+/obj/item/storage/box/pillbottles{
+	pixel_x = -7;
+	pixel_y = 13
 	},
 /obj/item/storage/box/pillbottles{
-	pixel_x = -6;
-	pixel_y = 12
+	pixel_x = 7;
+	pixel_y = 13
 	},
 /obj/item/storage/box/pillbottles{
-	pixel_x = -6;
-	pixel_y = 2
+	pixel_x = 7;
+	pixel_y = 13
 	},
 /obj/item/storage/box/pillbottles{
-	pixel_x = -6;
-	pixel_y = 12
+	pixel_x = 7;
+	pixel_y = 13
 	},
 /obj/item/storage/box/pillbottles{
-	pixel_x = -6;
-	pixel_y = 2
+	pixel_x = 7;
+	pixel_y = 13
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = -7;
+	pixel_y = 13
 	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/chemistry)
@@ -30301,6 +30313,9 @@
 /obj/item/storage/firstaid/fire/empty,
 /obj/item/storage/firstaid/fire/empty,
 /obj/item/storage/firstaid/o2/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/o2/empty,
+/obj/item/storage/firstaid/o2/empty,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "hDx" = (
@@ -37326,6 +37341,8 @@
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/adv/empty,
 /obj/item/storage/firstaid/adv/empty,
 /obj/item/storage/firstaid/adv/empty,
 /obj/item/storage/firstaid/adv/empty,
@@ -45588,6 +45605,30 @@
 /obj/item/storage/syringe_case,
 /obj/item/storage/syringe_case,
 /obj/item/storage/syringe_case,
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 1;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/lockerroom)
 "nTs" = (
@@ -51592,17 +51633,27 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/living/grunt_rnr)
 "qpx" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder{
-	pixel_y = 8
+	pixel_y = 8;
+	pixel_x = -5
 	},
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25;
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/tool/hand_labeler{
+	pixel_y = 12;
+	pixel_x = 10
+	},
+/obj/item/tool/hand_labeler{
+	pixel_y = 3;
+	pixel_x = 10
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
 	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/chemistry)
@@ -62224,7 +62275,7 @@
 /area/almayer/engineering/lower)
 "uFo" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	req_one_access = list(20,19)
+	name = "\improper Medical Storage Room"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4

@@ -622,3 +622,29 @@
 	icon_state = "m51b_rubber"
 	gun_type = /obj/item/weapon/gun/rifle/xm51/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
+
+
+//OWLF Ammo
+
+/obj/item/ammo_magazine/rifle/xm51/avp
+	name = "\improper ZX-76 magazine"
+	desc = "A 12 gauge pump-action shotgun magazine."
+	icon_state = "zx76"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
+	max_rounds = 8
+	gun_type = /obj/item/weapon/gun/rifle/xm51/avp
+	transfer_handful_amount = 6
+
+
+/obj/item/ammo_magazine/rifle/xr
+	name = "\improper XR81 AP magazine"
+	desc = "An AP magazine for the XR81 Rifle."
+	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
+	icon_state = "xr81"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 60
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xr
+	w_class = SIZE_MEDIUM

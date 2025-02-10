@@ -392,3 +392,14 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	bonus_overlay = "m10_drum_overlay"
 	max_rounds = 92
 	gun_type = /obj/item/weapon/gun/pistol/m10
+
+//--------------------------------------------------------
+//VP76 magazine
+
+/obj/item/ammo_magazine/pistol/vp76
+	name = "\improper VP76 Magazine"
+	default_ammo = /datum/ammo/bullet/pistol/powerful
+	caliber = "10mm"
+	icon_state = "vp76"
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/pistol/vp76

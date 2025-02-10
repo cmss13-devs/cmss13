@@ -2376,3 +2376,120 @@
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/flashlight/grip, /obj/item/attachable/reflex)
 
+///OWLF GEAR
+/obj/item/weapon/gun/rifle/xm51/avp
+	name = "\improper ZX-76A Double Barrel Shotgun"
+	desc = "."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/shotguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_righthand.dmi'
+	)
+	icon_state = "zx76"
+	item_state = "zx76"
+	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/xm51/avp
+	attachable_allowed = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+	)
+	flags_equip_slot = SLOT_BACK
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	gun_category = GUN_CATEGORY_SHOTGUN
+	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
+	map_specific_decoration = FALSE
+
+	burst_delay = 0 //So doubleshotty can doubleshot
+	additional_fire_group_delay = 1.5 SECONDS
+
+/obj/item/weapon/gun/rifle/xm51/avp/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 20, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)
+
+/obj/item/weapon/gun/rifle/xm51/avp/set_gun_config_values()
+	..()
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+
+/obj/item/weapon/gun/rifle/m41a/elite/xr
+	name = "\improper XR81-C rifle"
+	desc = "."
+	icon_state = "xr81"
+	item_state = "xr81"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
+	current_mag = /obj/item/ammo_magazine/rifle/xr
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	wield_delay = WIELD_DELAY_FAST
+	map_specific_decoration = FALSE
+	starting_attachment_types = list()
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/rifle/incendiary,
+		/obj/item/ammo_magazine/rifle/explosive,
+		/obj/item/ammo_magazine/rifle/le,
+		/obj/item/ammo_magazine/rifle/ap,
+	)
+	attachable_allowed = list(
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/extinguisher,
+		)
+
+/obj/item/weapon/gun/rifle/m41a/elite/xr/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19, "rail_x" = 16, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)
+
+
+/obj/item/weapon/gun/rifle/m41a/elite/xr/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_12)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+
+/obj/item/weapon/gun/rifle/m41a/elite/xr/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/attached_gun/grenade/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.hidden = TRUE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+

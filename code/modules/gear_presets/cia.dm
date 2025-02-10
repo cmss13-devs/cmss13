@@ -200,3 +200,68 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK)
 
 
+//OWLF, CIA Subset
+
+/datum/equipment_preset/cia/owlf
+
+	name = "OWLF Field Agent"
+	assignment = JOB_OWLF
+	rank = "Paramilitary Operations Officers"
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
+	role_comm_title = PAY_SHORT_CIV
+	minimap_background = "background_civillian"
+	minimap_icon = "io"
+	idtype = /obj/item/card/id
+
+
+/datum/equipment_preset/cia/owlf/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/owlf_mask(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/owlf(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/general_belt/owlf, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/sebb(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/sebb(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/sebb(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/dutch(new_human),  WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/owlf_vest(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+
+	switch(rand(1, 9))
+		if(1 to 6)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/xr(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/xr(new_human), WEAR_L_STORE)
+
+		if(7 to 9)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/xm51/avp(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/avp(new_human), WEAR_L_STORE)
+
+
+/datum/equipment_preset/cia/owlf/sci
+	name = "OWLF Science Officer"
+	rank = "Specialized Skills Officer"
+	assignment = JOB_OWLF_SCI
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
+	role_comm_title = PAY_SHORT_CDOC
+	minimap_background = "background_civillian"
+	minimap_icon = "io"
+	idtype = /obj/item/card/id
+
+/datum/equipment_preset/cia/owlf/sci/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/owlf_mask(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/owlf(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/general_belt/owlf, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp76(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/sebb(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/sebb(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/sebb(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/dutch(new_human),  WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/owlf_vest(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)

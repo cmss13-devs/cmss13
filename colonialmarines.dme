@@ -2131,7 +2131,6 @@
 #include "code\modules\mob\living\carbon\xenomorph\abilities\queen\queen_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\ravager\ravager_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\ravager\ravager_macros.dm"
-#include "code\modules\mob\living\carbon\xenomorph\abilities\ravager\ravager_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\runner\runner_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\runner\runner_macros.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\runner\runner_powers.dm"

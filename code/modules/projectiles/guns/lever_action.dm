@@ -168,11 +168,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 			playsound(user, reload_sound, 25, TRUE)
 			new_handful.forceMove(get_turf(src))
 		else
-			if(user) to_chat(user, SPAN_WARNING("\The [src] is already empty."))
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [src] is already empty."))
 		return
 
 	unload_bullet(user)
-	if(!current_mag.current_rounds && !in_chamber) update_icon()
+	if(!current_mag.current_rounds && !in_chamber)
+		update_icon()
 
 /obj/item/weapon/gun/lever_action/proc/unload_bullet(mob/user)
 	if(isnull(current_mag) || !length(current_mag.chamber_contents))
@@ -182,7 +184,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(user)
 		user.put_in_hands(new_handful)
 		playsound(user, reload_sound, 25, TRUE)
-	else new_handful.forceMove(get_turf(src))
+	else
+		new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"

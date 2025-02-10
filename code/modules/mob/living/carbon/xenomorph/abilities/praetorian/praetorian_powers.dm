@@ -381,7 +381,8 @@
 	if (!oppressor_user.Adjacent(target_carbon))
 		return
 
-	if(target_carbon.stat == DEAD) return
+	if(target_carbon.stat == DEAD)
+		return
 
 	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(oppressor_user.zone_selected))
 
@@ -777,6 +778,10 @@
 	if (!isxeno(target))
 		return
 
+	if (!buffing_target.ally_of_hivenumber(raging_valkyrie.hivenumber))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("Why would we help our enemies?!"))
+		return
+
 	if (buffing_target.is_dead())
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("No amount of anger can bring our sister back."))
 		return
@@ -785,7 +790,7 @@
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("We can't order another valkyrie with our rage."))
 		return
 
-	if(HAS_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED))
+	if (HAS_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED))
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target] is already enraged!"))
 		return
 
@@ -977,6 +982,8 @@
 	var/range = behavior.base_fury < 75 ? low_rage_range : high_rage_range
 	playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
 	for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(range, valkyrie_flight))
+		if(!allied_xenomorphs.ally_of_hivenumber(valkyrie_flight.hivenumber))
+			continue
 		to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))
 		valkyrie_flight.create_shriekwave(3)
 		allied_xenomorphs.xeno_jitter(1 SECONDS,)

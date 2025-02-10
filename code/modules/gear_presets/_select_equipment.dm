@@ -317,7 +317,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_uniform(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/uniformpath = pick(
 		/obj/item/clothing/under/colonist/clf,
 		)
@@ -325,7 +326,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_suit(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/suitpath = pick(
 		/obj/item/clothing/suit/storage/militia,
 		/obj/item/clothing/suit/storage/militia/vest,
@@ -338,7 +340,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_helmet(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/helmetpath = pick(
 		/obj/item/clothing/head/militia,
 		/obj/item/clothing/head/militia/bucket,
@@ -356,7 +359,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_shoes(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/shoespath = pick(
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/shoes/brown,
@@ -369,7 +373,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_gloves(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/glovespath = pick(
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/gloves/swat,
@@ -380,7 +385,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_belt(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/beltpath = pick(
 		/obj/item/storage/belt/utility/full,
 		/obj/item/storage/belt/knifepouch,
@@ -393,7 +399,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_weapon(atom/M, sidearm = 0, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/rebel_firearms = list(
 		/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
@@ -474,7 +481,8 @@
 	return 1
 
 /datum/equipment_preset/proc/spawn_rebel_specialist_weapon(atom/M, ammo_amount = 4)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/rebel_gunner_firearms = list(
 		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
@@ -522,7 +530,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	))
 
 /datum/equipment_preset/proc/spawn_rebel_smg(atom/M, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/gunpath = pick(GLOB.rebel_smgs)
 	var/ammopath = GLOB.rebel_smgs[gunpath]
@@ -532,7 +541,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return 1
 
 /datum/equipment_preset/proc/spawn_rebel_shotgun(atom/M, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/gunpath = pick(GLOB.rebel_shotguns)
 	var/ammopath = GLOB.rebel_shotguns[gunpath]
@@ -542,7 +552,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return 1
 
 /datum/equipment_preset/proc/spawn_rebel_rifle(atom/M, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/gunpath = pick(GLOB.rebel_rifles)
 	var/ammopath = GLOB.rebel_rifles[gunpath]
@@ -552,7 +563,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return 1
 
 /datum/equipment_preset/proc/spawn_merc_helmet(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/helmetpath = pick(
 		/obj/item/clothing/head/freelancer,
 		/obj/item/clothing/head/helmet/skullcap,
@@ -568,7 +580,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 
 
 /datum/equipment_preset/proc/spawn_merc_weapon(atom/M, sidearm = 0, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/merc_sidearms = list(
 		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
@@ -601,7 +614,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return 1
 
 /datum/equipment_preset/proc/spawn_merc_shotgun(atom/M, ammo_amount = 24)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/merc_shotguns = list(
 		/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),
@@ -615,7 +629,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
 
 /datum/equipment_preset/proc/spawn_merc_rifle(atom/M, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/merc_rifles = list(
 		/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
@@ -631,7 +646,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
 
 /datum/equipment_preset/proc/spawn_merc_elite_weapon(atom/M, ammo_amount = 12, shotgun_chance = 50, spawn_belt = 1)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/elite_merc_rifles = list(
 	/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/ap,

@@ -20,7 +20,8 @@
 		for(var/datum/disease/D in self.data_properties["viruses"])
 			//var/datum/disease/virus = new D.type(0, D, 1)
 			// We don't spread.
-			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS) continue
+			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS)
+				continue
 
 			if(method == TOUCH)
 				M.contract_disease(D)
@@ -29,10 +30,12 @@
 
 
 /datum/reagent/blood/reaction_turf(turf/T, volume)//splash the blood all over the place
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	var/datum/reagent/blood/self = src
 	src = null
-	if(!(volume >= 3)) return
+	if(!(volume >= 3))
+		return
 
 	T.add_blood(self.color)
 
@@ -115,7 +118,8 @@
 	intensitymod = -3
 
 /datum/reagent/water/reaction_turf(turf/T, volume)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	src = null
 	if(volume >= 3)
 		T.wet_floor(FLOOR_WET_WATER)
@@ -680,8 +684,10 @@
 			H.contract_disease(new /datum/disease/black_goo)
 
 /datum/reagent/blackgoo/reaction_turf(turf/T, volume)
-	if(!istype(T)) return
-	if(volume < 3) return
+	if(!istype(T))
+		return
+	if(volume < 3)
+		return
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 		new /obj/effect/decal/cleanable/blackgoo(T)
 

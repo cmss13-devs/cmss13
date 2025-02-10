@@ -54,7 +54,7 @@
 		M.status_flags &= ~PASSEMOTES
 		return
 
-	//resisting grabs (as if it helps anyone...) //FLAG
+	//resisting grabs (as if it helps anyone...)
 	if(!is_mob_restrained(0) && pulledby)
 		visible_message(SPAN_DANGER("[src] resists against [pulledby]'s grip!"))
 		resist_grab()

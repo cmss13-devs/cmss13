@@ -225,7 +225,6 @@
 	var/mob/user = hauled_mob?.resolve()
 	if(user)
 		user.forceMove(src.loc)
-	//switch(direct)
 
 /mob/living/carbon/xenomorph/forceMove(atom/destination)
 	. = ..()
@@ -398,7 +397,7 @@
 	else
 		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	update_sight()
-//
+
 /mob/living/carbon/xenomorph/proc/haul(mob/living/carbon/human/victim)
 	src.visible_message(SPAN_WARNING("[src] restrains [victim], hauling them effortlessly!"),
 	SPAN_WARNING("We fully restrain [victim] and start hauling them!"), null, 5)

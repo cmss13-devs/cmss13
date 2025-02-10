@@ -62,7 +62,6 @@
 	var/obj/item/l_store = null
 	// Mob we are hauling
 	var/datum/weakref/hauled_mob
-	// Haul timer
 	var/haul_timer
 
 	var/obj/item/iff_tag/iff_tag = null

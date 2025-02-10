@@ -2134,7 +2134,6 @@
 #include "code\modules\mob\living\carbon\xenomorph\abilities\runner\runner_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\sentinel\sentinel_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\sentinel\sentinel_macros.dm"
-#include "code\modules\mob\living\carbon\xenomorph\abilities\sentinel\sentinel_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\spitter\spitter_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\spitter\spitter_macros.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\warrior\warrior_abilities.dm"

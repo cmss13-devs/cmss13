@@ -21,6 +21,9 @@
 "aad" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/space)
+"aae" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/area/space)
 "aaf" = (
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/space)
@@ -99219,7 +99222,7 @@ aaa
 aaa
 aab
 bdH
-aac
+aae
 aah
 aah
 aah
@@ -101935,7 +101938,7 @@ jtU
 vpf
 woU
 aaa
-aac
+aae
 aah
 aah
 aah
@@ -110384,7 +110387,7 @@ aaa
 aaa
 aab
 aaa
-aac
+aae
 aah
 aah
 aah
@@ -110592,7 +110595,7 @@ aaa
 aaa
 bdH
 aaa
-aac
+aae
 aah
 aah
 aah
@@ -116483,7 +116486,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+aae
 aah
 aah
 aah
@@ -117299,7 +117302,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+aae
 aah
 aah
 aah
@@ -118931,7 +118934,7 @@ bdH
 bdH
 bdH
 bdH
-aac
+aae
 aah
 aah
 aah
@@ -119645,7 +119648,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+aae
 aah
 aah
 vgw
@@ -121679,7 +121682,7 @@ aaa
 aaa
 aaa
 bdH
-aac
+aae
 aah
 aag
 aag
@@ -125850,7 +125853,7 @@ xVk
 xVk
 xVk
 xVk
-aac
+aae
 aah
 aag
 jbq
@@ -125944,7 +125947,7 @@ aaa
 aaa
 aaa
 bdH
-aac
+aae
 aah
 aah
 aah
@@ -126258,7 +126261,7 @@ xVk
 xVk
 aaa
 aaa
-aac
+aae
 aah
 aah
 aah

@@ -38,7 +38,8 @@
 			nutrition -= HUNGER_FACTOR/5
 
 /mob/living/carbon/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	if(user in src.stomach_contents)
 		if(user.client)
 			user.client.next_movement = world.time + 20
@@ -159,7 +160,8 @@
 	. = ..()
 
 /mob/living/carbon/attack_hand(mob/target_mob as mob)
-	if(!istype(target_mob, /mob/living/carbon)) return
+	if(!istype(target_mob, /mob/living/carbon))
+		return
 
 	if(target_mob.mob_flags & SURGERY_MODE_ON && target_mob.a_intent & (INTENT_HELP|INTENT_DISARM))
 		var/datum/surgery/current_surgery = active_surgeries[target_mob.zone_selected]
@@ -482,8 +484,10 @@
 
 /mob/living/carbon/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	set waitfor = 0
-	if(buckled) return FALSE //can't slip while buckled
-	if(body_position != STANDING_UP) return FALSE //can't slip if already lying down.
+	if(buckled)
+		return FALSE //can't slip while buckled
+	if(body_position != STANDING_UP)
+		return FALSE //can't slip if already lying down.
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)

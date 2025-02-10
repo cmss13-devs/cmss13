@@ -144,6 +144,10 @@
 		to_chat(src, SPAN_WARNING("You must first pick a strain before resetting it."))
 		return FALSE
 
+	if(is_zoomed)
+		to_chat(src, SPAN_WARNING("We can't do that while looking far away."))
+		return FALSE
+
 	if(is_ventcrawling)
 		to_chat(src, SPAN_WARNING("This place is too constraining to take a strain."))
 		return FALSE

@@ -12,6 +12,7 @@
 		combined += GLOB.cm_vending_clothing_req_officer
 		combined += GLOB.cm_vending_clothing_cmo
 		combined += GLOB.cm_vending_clothing_military_police_chief
+		combined += GLOB.cm_vending_clothing_auxiliary_officer
 		return combined
 	if(user.job == JOB_XO)
 		return GLOB.cm_vending_clothing_xo

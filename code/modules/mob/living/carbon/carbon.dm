@@ -119,7 +119,7 @@
 	if(get_dist(xeno, resister))
 		return FALSE
 	if(item.force)
-		var/damage_of_item = rand(floor(item.force / 4), item.force - item.force / 6)
+		var/damage_of_item = rand(floor(item.force / 6), floor(item.force / 2))
 		xeno.take_limb_damage(damage_of_item)
 		for(var/mob/mobs_in_view as anything in viewers(resister, null))
 			if(mobs_in_view.client)

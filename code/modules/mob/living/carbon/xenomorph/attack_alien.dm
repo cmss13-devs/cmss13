@@ -83,6 +83,7 @@
 					acid_damage += (attacking_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			attacking_xeno.animation_attack_on(src)
+
 			//Somehow we will deal no damage on this attack
 			if(!damage)
 				playsound(attacking_xeno.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)

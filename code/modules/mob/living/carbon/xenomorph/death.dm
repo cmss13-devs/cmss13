@@ -19,7 +19,6 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 
-
 	if(!gibbed)
 		if(hud_used && hud_used.healths)
 			hud_used.healths.icon_state = "health_dead"
@@ -140,7 +139,6 @@
 	var/no_remains
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
-
 
 	switch(caste.caste_type)
 		if(XENO_CASTE_BOILER)

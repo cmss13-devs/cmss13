@@ -31,7 +31,6 @@
 	if(!istype(attempt_harm_mob))
 		return FALSE
 
-
 	if(!hive)
 		hive = GLOB.hive_datum[hivenumber]
 

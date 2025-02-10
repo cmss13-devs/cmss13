@@ -76,3 +76,9 @@
 
 /datum/job/antag/young_blood/leader
 	gear_preset = /datum/equipment_preset/yautja/non_wl_leader
+
+/datum/job/antag/young_blood/generate_entry_conditions(mob/living/hunter)
+	. = ..()
+
+	if(SSticker.mode)
+		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)

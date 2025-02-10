@@ -10,7 +10,7 @@
 	// Config options
 	distance = 9
 	knockdown = TRUE
-	knockdown_duration = 2 SECONDS
+	knockdown_duration = 2
 	slash = FALSE
 	freeze_self = FALSE
 	windup = TRUE

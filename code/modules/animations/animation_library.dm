@@ -177,7 +177,8 @@ Can look good elsewhere as well.*/
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
-	if(buckled || anchored) return //it would look silly.
+	if(buckled || anchored)
+		return //it would look silly.
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)

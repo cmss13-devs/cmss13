@@ -20,7 +20,8 @@
 		return FALSE
 
 	var/list/damagedata = list("damage" = damage)
-	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
+		return
 	damage = damagedata["damage"]
 
 	switch(damagetype)
@@ -46,13 +47,20 @@
 	return 1
 
 /mob/living/proc/apply_damages(brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, halloss = 0, brain = 0, def_zone = null)
-	if(brute) apply_damage(brute, BRUTE, def_zone)
-	if(burn) apply_damage(burn, BURN, def_zone)
-	if(tox) apply_damage(tox, TOX, def_zone)
-	if(oxy) apply_damage(oxy, OXY, def_zone)
-	if(clone) apply_damage(clone, CLONE, def_zone)
-	if(halloss) apply_damage(halloss, HALLOSS, def_zone)
-	if(brain) apply_damage(brain, BRAIN, def_zone)
+	if(brute)
+		apply_damage(brute, BRUTE, def_zone)
+	if(burn)
+		apply_damage(burn, BURN, def_zone)
+	if(tox)
+		apply_damage(tox, TOX, def_zone)
+	if(oxy)
+		apply_damage(oxy, OXY, def_zone)
+	if(clone)
+		apply_damage(clone, CLONE, def_zone)
+	if(halloss)
+		apply_damage(halloss, HALLOSS, def_zone)
+	if(brain)
+		apply_damage(brain, BRAIN, def_zone)
 	return 1
 
 /mob/living/proc/apply_internal_damage(damage = 0, organ)

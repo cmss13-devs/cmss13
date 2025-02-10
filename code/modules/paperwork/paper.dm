@@ -445,7 +445,8 @@
 				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return
-		if(loc != user) return
+		if(loc != user)
+			return
 		var/obj/item/paper_bundle/B = new(get_turf(user))
 		if (name != "paper")
 			B.name = name

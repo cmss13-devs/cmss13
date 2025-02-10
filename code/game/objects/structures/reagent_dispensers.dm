@@ -32,7 +32,8 @@
 
 /obj/structure/reagent_dispensers/get_examine_text(mob/user)
 	. = ..()
-	if(get_dist(user, src) > 2 && user != loc) return
+	if(get_dist(user, src) > 2 && user != loc)
+		return
 	. += SPAN_NOTICE("It contains:")
 	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -287,7 +288,8 @@
 
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/Proj)
-	if(exploding) return 0
+	if(exploding)
+		return 0
 	if(ismob(Proj.firer))
 		source_mob = WEAKREF(Proj.firer)
 
@@ -301,7 +303,8 @@
 	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/ex_act(severity)
-	if(exploding) return
+	if(exploding)
+		return
 
 	if(severity >= EXPLOSION_THRESHOLD_HIGH)
 		exploding = TRUE
@@ -443,6 +446,18 @@
 	density = FALSE
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
+
+/obj/structure/reagent_dispensers/forensictank
+	name = "forensic spray refiller"
+	desc = "Refill forensic spray bottles."
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
+	icon_state = "forensictank"
+	anchored = TRUE
+	drag_delay = 3
+	wrenchable =  FALSE
+	density = FALSE
+	amount_per_transfer_from_this = 45
+	chemical = "forensic_spray"
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "water cooler"

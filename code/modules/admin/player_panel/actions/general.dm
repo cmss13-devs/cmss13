@@ -77,7 +77,8 @@
 	permissions_required = R_ADMIN
 
 /datum/player_action/force_say/act(client/user, mob/target, list/params)
-	if(!params["to_say"]) return
+	if(!params["to_say"])
+		return
 
 	target.say(params["to_say"])
 
@@ -92,7 +93,8 @@
 	permissions_required = R_ADMIN
 
 /datum/player_action/force_emote/act(client/user, mob/target, list/params)
-	if(!params["to_emote"]) return
+	if(!params["to_emote"])
+		return
 
 	target.manual_emote(params["to_emote"])
 

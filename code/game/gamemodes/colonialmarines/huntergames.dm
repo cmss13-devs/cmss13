@@ -109,7 +109,8 @@
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
 /obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/xenomorph/hellhound/H)
-	if(istype(H)) H.gib() //No mercy.
+	if(istype(H))
+		H.gib() //No mercy.
 
 /datum/game_mode/huntergames/announce()
 	return TRUE
@@ -234,7 +235,8 @@
 		H = new(picked)
 
 	H.key = M.key
-	if(H.client) H.client.change_view(GLOB.world_view_size)
+	if(H.client)
+		H.client.change_view(GLOB.world_view_size)
 
 	if(!H.mind)
 		H.mind = new(H.key)
@@ -337,7 +339,8 @@
 	. = ..()
 	checkwin_counter++
 	ticks_passed++
-	if(prob(2)) dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.
+	if(prob(2))
+		dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.
 
 	if(round_started > 0) //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 		round_started--
@@ -430,7 +433,8 @@
 	if(!istype(T))
 		return FALSE
 
-	if(OT == "good" && !in_crate && prob(15)) in_crate = 1 //Place some good drops in crates.
+	if(OT == "good" && !in_crate && prob(15))
+		in_crate = 1 //Place some good drops in crates.
 
 	var/obj_type //Object path.
 	var/atom/location = in_crate ? new /obj/structure/closet/crate(T) : T //Where it's going to be placed.

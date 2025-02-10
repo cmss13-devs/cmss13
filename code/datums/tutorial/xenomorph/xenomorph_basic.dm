@@ -215,8 +215,8 @@
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_five()
 	SIGNAL_HANDLER
-	message_to_player("Well done, you can reguritate the human using the new ability you have gained.")
-	message_to_player("Be careful. Real humans may put up a fight and can try to cut out of you from inside!")
+	message_to_player("Well done, you can release the human using the new ability you have gained.")
+	message_to_player("Be careful. Real humans may put up a fight and can try to cut out of your grip, killing you!")
 	give_action(xeno, /datum/action/xeno_action/onclick/release_haul)
 	addtimer(CALLBACK(src, PROC_REF(nest_cap_phase_six)), 15 SECONDS)
 

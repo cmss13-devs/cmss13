@@ -495,6 +495,7 @@
 	add_filter("hauled_shadow", 1, color_matrix_filter(rgb(95, 95, 95)))
 	pixel_y = -7
 
+
 /mob/living/carbon/human/proc/release_haul_death()
 	SIGNAL_HANDLER
 	handle_unhaul()

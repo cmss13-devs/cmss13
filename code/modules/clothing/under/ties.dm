@@ -537,36 +537,30 @@
 		if(H.assigned_squad)
 			switch(H.assigned_squad.name)
 				if(SQUAD_MARINE_1)
-					/obj/item/clothing/accessory/patch/falcon/squad/alpha
 					icon_state = "fallingfalcons_alpha"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_alpha")
 					flags_obj = OBJ_IS_HELMET_GARB
 				if(SQUAD_MARINE_2)
-					/obj/item/clothing/accessory/patch/falcon/squad/bravo
 					icon_state = "fallingfalcons_bravo"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_bravo")
 					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
 				if(SQUAD_MARINE_3)
-					/obj/item/clothing/accessory/patch/falcon/squad/charlie
 					icon_state = "fallingfalcons_charlie"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_charlie")
 					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Charlie Squad's deep purple."
 				if(SQUAD_MARINE_4)
-					/obj/item/clothing/accessory/patch/falcon/squad/delta
 					icon_state = "fallingfalcons_delta"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_delta")
 					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Delta Squad's striking blue."
 				if(SQUAD_MARINE_5)
-					/obj/item/clothing/accessory/patch/falcon/squad/echo
 					icon_state = "fallingfalcons_echo"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_echo")
 					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Echo Squad's vivid green."
 				if(SQUAD_MARINE_CRYO)
-					/obj/item/clothing/accessory/patch/falcon/squad/foxtrot
 					icon_state = "fallingfalcons_foxtrot"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_foxtrot")
 					flags_obj = OBJ_IS_HELMET_GARB

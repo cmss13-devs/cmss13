@@ -2796,6 +2796,7 @@
 	pixel_x = -32;
 	pixel_y = -5
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/lower_medical_medbay)
 "agp" = (
@@ -4075,6 +4076,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_fore_hallway)
+"aja" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer/sterile_green_side/northwest,
+/area/almayer/medical/lower_medical_medbay)
 "aje" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -10726,7 +10731,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/medical_supply_link/green,
-/obj/structure/machinery/iv_drip,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "bdd" = (
@@ -13660,7 +13664,6 @@
 	pixel_y = -30;
 	pixel_x = -1
 	},
-/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/lockerroom)
 "bDF" = (
@@ -22371,6 +22374,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "eiE" = (
@@ -49265,7 +49269,6 @@
 	pixel_x = 8;
 	pixel_y = -28
 	},
-/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/lockerroom)
 "pql" = (
@@ -61041,17 +61044,17 @@
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/obj/item/tool/weldingtool/largetank{
-	pixel_y = 4;
-	pixel_x = -7
+/obj/item/tool/weldingtool{
+	pixel_x = -8;
+	pixel_y = 4
 	},
-/obj/item/tool/weldingtool/largetank{
-	pixel_y = 4;
-	pixel_x = -7
+/obj/item/tool/weldingtool{
+	pixel_x = -8;
+	pixel_y = 4
 	},
-/obj/item/tool/weldingtool/largetank{
-	pixel_y = 4;
-	pixel_x = -7
+/obj/item/tool/weldingtool{
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/stack/cable_coil{
 	pixel_y = 3;
@@ -99020,7 +99023,7 @@ ahm
 ahb
 rlZ
 ago
-bgP
+aja
 rlZ
 bwH
 vhX

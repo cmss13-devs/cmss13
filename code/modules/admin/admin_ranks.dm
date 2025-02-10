@@ -11,40 +11,65 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	//process each line separately
 	for(var/line in Lines)
-		if(!length(line)) continue
-		if(copytext(line,1,2) == "#") continue
+		if(!length(line))
+			continue
+		if(copytext(line,1,2) == "#")
+			continue
 
 		var/list/List = splittext(line,"+")
-		if(!length(List)) continue
+		if(!length(List))
+			continue
 
 		var/rank = ckeyEx(List[1])
 		switch(rank)
-			if(null,"") continue
-			if("Removed") continue //Reserved
+			if(null,"")
+				continue
+			if("Removed")
+				continue //Reserved
 
 		var/rights = 0
 		for(var/i=2, i<=length(List), i++)
 			switch(ckey(List[i]))
-				if("@","prev") rights |= previous_rights
-				if("buildmode","build") rights |= R_BUILDMODE
-				if("admin") rights |= R_ADMIN
-				if("ban") rights |= R_BAN
-				if("server") rights |= R_SERVER
-				if("debug") rights |= R_DEBUG
-				if("permissions","rights") rights |= R_PERMISSIONS
-				if("possess") rights |= R_POSSESS
-				if("stealth") rights |= R_STEALTH
-				if("color") rights |= R_COLOR
-				if("varedit") rights |= R_VAREDIT
-				if("event") rights |= R_EVENT
-				if("sound","sounds") rights |= R_SOUNDS
-				if("nolock") rights |= R_NOLOCK
-				if("spawn","create") rights |= R_SPAWN
-				if("mod") rights |= R_MOD
-				if("mentor") rights |= R_MENTOR
-				if("profiler") rights |= R_PROFILER
-				if("host") rights |= RL_HOST
-				if("everything") rights |= RL_EVERYTHING
+				if("@","prev")
+					rights |= previous_rights
+				if("buildmode","build")
+					rights |= R_BUILDMODE
+				if("admin")
+					rights |= R_ADMIN
+				if("ban")
+					rights |= R_BAN
+				if("server")
+					rights |= R_SERVER
+				if("debug")
+					rights |= R_DEBUG
+				if("permissions","rights")
+					rights |= R_PERMISSIONS
+				if("possess")
+					rights |= R_POSSESS
+				if("stealth")
+					rights |= R_STEALTH
+				if("color")
+					rights |= R_COLOR
+				if("varedit")
+					rights |= R_VAREDIT
+				if("event")
+					rights |= R_EVENT
+				if("sound","sounds")
+					rights |= R_SOUNDS
+				if("nolock")
+					rights |= R_NOLOCK
+				if("spawn","create")
+					rights |= R_SPAWN
+				if("mod")
+					rights |= R_MOD
+				if("mentor")
+					rights |= R_MENTOR
+				if("profiler")
+					rights |= R_PROFILER
+				if("host")
+					rights |= RL_HOST
+				if("everything")
+					rights |= RL_EVERYTHING
 
 		GLOB.admin_ranks[rank] = rights
 		previous_rights = rights
@@ -64,6 +89,11 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 		C.admin_holder = null
 	GLOB.admins.Cut()
 
+	//Clear profile access
+	for(var/admin in world.GetConfig("admin"))
+		log_debug("Clearing [admin] from APP/admin.")
+		world.SetConfig("APP/admin", admin, null)
+
 	load_admin_ranks()
 
 		//load text from file
@@ -81,23 +111,28 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	for(var/ckey in GLOB.admin_datums)
 		var/rank
 		var/datum/admins/D = GLOB.admin_datums[ckey]
-		if(D) rank = D.rank
+		if(D)
+			rank = D.rank
 		msg += "\t[ckey] - [rank]\n"
 	testing(msg)
 	#endif
 
 /proc/process_rank_file(line, mentor = FALSE)
 	var/list/MentorRanks = file2list("config/mentor_ranks.txt")
-	if(!length(line)) return
-	if(copytext(line,1,2) == "#") return
+	if(!length(line))
+		return
+	if(copytext(line,1,2) == "#")
+		return
 
 	//Split the line at every "-"
 	var/list/List = splittext(line, "-")
-	if(!length(List)) return
+	if(!length(List))
+		return
 
 	//ckey is before the first "-"
 	var/ckey = ckey(List[1])
-	if(!ckey) return
+	if(!ckey)
+		return
 
 	//rank follows the first "-"
 	var/rank = ""

@@ -82,7 +82,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	collide_message_busy = world.time + 3 SECONDS
-	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."), \
+	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."),
 	SPAN_NOTICE("You try to go through \the [src]."))
 
 	if(do_after(C, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -204,7 +204,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(isnull(pack.contains) && isnull(pack.containertype))
 			continue
 
-		if(!(pack.group in linked_supply_controller.all_supply_groups))
+		if(!(pack.group in (list() + linked_supply_controller.all_supply_groups + linked_supply_controller.contraband_supply_groups)))
 			continue
 
 		if(!pack.contraband && length(pack.group))
@@ -407,7 +407,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/asrs/proc/toggle_contraband(contraband_enabled = FALSE)
 	can_order_contraband = contraband_enabled
-	for(var/obj/structure/machinery/computer/supply/asrs/computer as anything in linked_supply_controller.bound_supply_computer_list)
+	for(var/obj/structure/machinery/computer/supply/asrs/computer in linked_supply_controller.bound_supply_computer_list)
 		if(computer.can_order_contraband)
 			linked_supply_controller.black_market_enabled = TRUE
 			return
@@ -417,7 +417,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /// Prevents use of black market, even if it is otherwise enabled. If any computer has black market locked out, it applies across all of the currently established ones.
 /obj/structure/machinery/computer/supply/asrs/proc/lock_black_market(market_locked = FALSE)
-	for(var/obj/structure/machinery/computer/supply/asrs/computer as anything in linked_supply_controller.bound_supply_computer_list)
+	for(var/obj/structure/machinery/computer/supply/asrs/computer in linked_supply_controller.bound_supply_computer_list)
 		if(market_locked)
 			computer.black_market_lockout = TRUE
 
@@ -920,7 +920,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
 
 		// Delete everything else.
-		else qdel(movable_atom)
+		else
+			qdel(movable_atom)
 
 	if(screams)
 		for(var/atom/computer as anything in bound_supply_computer_list)
@@ -1074,7 +1075,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/supply/asrs/attack_hand(mob/user as mob)
-	if(!is_mainship_level(z)) return
+	if(!is_mainship_level(z))
+		return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
 		return
@@ -1304,7 +1306,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
-	if(!frequency) return
+	if(!frequency)
+		return
 
 	var/datum/signal/status_signal = new
 	status_signal.source = src

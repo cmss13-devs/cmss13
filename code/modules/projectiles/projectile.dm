@@ -579,7 +579,8 @@
 			. = TRUE
 		else if(L.body_position != LYING_DOWN)
 			animatation_displace_reset(L)
-			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
+			if(ammo.sound_miss)
+				playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 			var/log_message = "[src] narrowly missed [key_name(L)]"
@@ -621,7 +622,7 @@
 
 /obj/projectile/proc/get_effective_accuracy()
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>; distance: <b>[distance_travelled]</b>"))
+	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>;accurate_range: <b>[ammo.accurate_range]<b>; distance: <b>[distance_travelled]</b>"))
 	#endif
 
 	var/effective_accuracy = accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
@@ -841,7 +842,7 @@
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
 	if(HAS_TRAIT(src, TRAIT_NO_STRAY) && src != P.original)
 		return FALSE
-	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS)
+	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS && !P.ammo.hits_lying_mobs)
 		return FALSE // Fixes for buckshot projectiles not hitting stunned targets
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)
@@ -1014,7 +1015,8 @@
 			damage_result = 0
 			bullet_ping(P)
 			visible_message(SPAN_AVOIDHARM("[src]'s armor deflects [P]!"))
-			if(P.ammo.sound_armor) playsound(src, P.ammo.sound_armor, 50, 1)
+			if(P.ammo.sound_armor)
+				playsound(src, P.ammo.sound_armor, 50, 1)
 
 	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
@@ -1231,7 +1233,8 @@
 	if(!P || !P.ammo.ping)
 		return
 
-	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
+	if(P.ammo.sound_bounce)
+		playsound(src, P.ammo.sound_bounce, 50, 1)
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, P.ammo.ping, 10)
 	var/offset_x = clamp(P.pixel_x + pixel_x_offset, -10, 10)
 	var/offset_y = clamp(P.pixel_y + pixel_y_offset, -10, 10)
@@ -1251,7 +1254,7 @@
 	if(!P)
 		return
 	if(damaging && COOLDOWN_FINISHED(src, shot_cooldown))
-		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"),
 			SPAN_HIGHDANGER("[isxeno(src) ? "We" : "You"] are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 

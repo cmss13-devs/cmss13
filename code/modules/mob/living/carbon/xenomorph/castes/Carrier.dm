@@ -308,7 +308,7 @@
 			A.update_button_icon()
 		drop_inv_item_on_ground(F)
 		F.throw_atom(T, 4, caste.throwspeed)
-		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"), \
+		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"),
 			SPAN_XENOWARNING("We throw a facehugger towards \the [T]!"))
 		spawn(caste.hugger_delay)
 			threw_a_hugger = 0
@@ -332,7 +332,8 @@
 		to_chat(src, SPAN_WARNING("We can't carry more eggs on ourselves."))
 
 /mob/living/carbon/xenomorph/carrier/proc/retrieve_egg(atom/T)
-	if(!T) return
+	if(!T)
+		return
 
 	if(!check_state())
 		return

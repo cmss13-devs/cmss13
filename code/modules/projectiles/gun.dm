@@ -497,7 +497,8 @@ Note: pickup and dropped on weapons must have both the ..() to update zoom AND t
 As sniper rifles have both and weapon mods can change them as well. ..() deals with zoom only.
 */
 /obj/item/weapon/gun/equipped(mob/living/user, slot)
-	if(flags_item & NODROP) return
+	if(flags_item & NODROP)
+		return
 
 	unwield(user)
 	pull_time = world.time + wield_delay
@@ -571,14 +572,18 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
-		if(!R) continue
+		if(!R)
+			continue
 		dat += R.handle_attachment_description()
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
 		if(current_mag && current_mag.current_rounds > 0)
-			if(flags_gun_features & GUN_AMMO_COUNTER) dat += "Ammo counter shows [current_mag.current_rounds] round\s remaining.<br>"
-			else dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
-		else dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
+			if(flags_gun_features & GUN_AMMO_COUNTER)
+				dat += "Ammo counter shows [current_mag.current_rounds] round\s remaining.<br>"
+			else
+				dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
+		else
+			dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
 		dat += "<a href='byond://?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
 
@@ -867,7 +872,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		current_mag = magazine
 		magazine.forceMove(src)
 		replace_ammo(,magazine)
-		if(!in_chamber) load_into_chamber()
+		if(!in_chamber)
+			load_into_chamber()
 
 	update_icon()
 	return TRUE
@@ -1242,37 +1248,32 @@ and you're good to go.
 
 	play_firing_sounds(projectile_to_fire, user)
 
-	if(targloc != curloc)
-		simulate_recoil(dual_wield, user, target)
+	simulate_recoil(dual_wield, user, target)
 
-		//This is where the projectile leaves the barrel and deals with projectile code only.
-		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-		in_chamber = null // It's not in the gun anymore
-		INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
-		projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
-		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	//This is where the projectile leaves the barrel and deals with projectile code only.
+	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+	in_chamber = null // It's not in the gun anymore
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
+	projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-		if(check_for_attachment_fire)
-			active_attachable.last_fired = world.time
-		else
-			last_fired = world.time
-			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-			if(fire_delay_group && delay_left > 0)
-				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
-		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
-		. = TRUE
-
-		shots_fired++
-
-		if(dual_wield && !fired_by_akimbo)
-			switch(user?.client?.prefs?.dual_wield_pref)
-				if(DUAL_WIELD_FIRE)
-					INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
-				if(DUAL_WIELD_SWAP)
-					user.swap_hand()
-
+	if(check_for_attachment_fire)
+		active_attachable.last_fired = world.time
 	else
-		return TRUE
+		last_fired = world.time
+		var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+		if(fire_delay_group && delay_left > 0)
+			LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
+
+	shots_fired++
+
+	if(dual_wield && !fired_by_akimbo)
+		switch(user?.client?.prefs?.dual_wield_pref)
+			if(DUAL_WIELD_FIRE)
+				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+			if(DUAL_WIELD_SWAP)
+				user.swap_hand()
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
 	var/angle = floor(Get_Angle(user,target)) //Let's do a muzzle flash.
@@ -1613,6 +1614,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			if(!H.allow_gun_usage)
 				if(issynth(user))
 					to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
+				else if(isthrall(user))
+					to_chat(user, SPAN_WARNING("Your master probably wouldn't be happy if you used this."))
 				else
 					to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 				return
@@ -1621,6 +1624,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			to_chat(user, SPAN_WARNING("The safety is on!"))
 			gun_user.balloon_alert(gun_user, "safety on")
 			return
+
+		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
+			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
+				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+				gun_user.balloon_alert(gun_user, "help intent safety")
+				click_empty(gun_user)
+			return FALSE
+
 		if(active_attachable)
 			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))
@@ -1706,7 +1717,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			var/scatter_debuff = 1 + (SETTLE_SCATTER_MULTIPLIER - 1) * pct_settled
 			projectile_to_fire.scatter *= scatter_debuff
 
-	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) // Apply gun damage multiplier to projectile damage
+	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult, 0.1) // Apply gun damage multiplier to projectile damage
 
 	// Apply effective range and falloffs/buildups
 	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff

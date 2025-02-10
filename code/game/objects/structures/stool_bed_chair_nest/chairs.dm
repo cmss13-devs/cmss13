@@ -317,7 +317,8 @@
 
 /obj/structure/bed/chair/office/Collide(atom/A)
 	..()
-	if(!buckled_mob) return
+	if(!buckled_mob)
+		return
 
 	if(propelled)
 		var/mob/living/occupant = buckled_mob

@@ -228,7 +228,7 @@
 	for(var/agent_i in 1 to agents_to_spawn)
 		var/items_requested = 1 + survival_wave * survival_difficulty * 0.5
 		items_requested *= (1 + survival_request_random_factor * rand())
-		spawn_survival_agent(round(items_requested))
+		spawn_survival_agent(round(items_requested, 1))
 
 /// Called to generate a single agent and request
 /datum/tutorial/marine/reqs_line/proc/spawn_survival_agent(items_to_request)

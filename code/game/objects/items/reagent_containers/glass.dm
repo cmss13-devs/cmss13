@@ -178,7 +178,7 @@
 		if(tmp_label == "" || !tmp_label)
 			if(labelcomponent)
 				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."),
 				SPAN_NOTICE("You remove the label from \the [src]."))
 				return
 			else
@@ -186,7 +186,7 @@
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			AddComponent(/datum/component/label, tmp_label)
 			playsound(src, "paper_writing", 15, TRUE)
@@ -225,12 +225,18 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0) filling.icon_state = null
-			if(1 to 20) filling.icon_state = "[icon_state]-20"
-			if(21 to 40) filling.icon_state = "[icon_state]-40"
-			if(41 to 60) filling.icon_state = "[icon_state]-60"
-			if(61 to 80) filling.icon_state = "[icon_state]-80"
-			if(81 to INFINITY) filling.icon_state = "[icon_state]-100"
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "[icon_state]-20"
+			if(21 to 40)
+				filling.icon_state = "[icon_state]-40"
+			if(41 to 60)
+				filling.icon_state = "[icon_state]-60"
+			if(61 to 80)
+				filling.icon_state = "[icon_state]-80"
+			if(81 to INFINITY)
+				filling.icon_state = "[icon_state]-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -293,16 +299,18 @@
 			return
 		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 
-/obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
+/obj/item/reagent_container/glass/minitank/verb/flush_tank()
 	set category = "Object"
-	set name = "flush tank"
+	set name = "Flush Tank"
 	set src in usr
-	if(usr.is_mob_incapacitated()) return
+
+	if(usr.is_mob_incapacitated())
+		return
 	if(src.reagents.total_volume == 0)
-		to_chat(user, SPAN_WARNING("It's already empty!"))
+		to_chat(usr, SPAN_WARNING("It's already empty!"))
 		return
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon() // just to be sure
 	return
@@ -313,8 +321,10 @@
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		var/round_percent = 0
-		if(percent > 24) round_percent = round(percent, 25)
-		else round_percent = 10
+		if(percent > 24)
+			round_percent = round(percent, 25)
+		else
+			round_percent = 10
 		filling.icon_state = "[icon_state][round_percent]"
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -638,9 +648,12 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 33) filling.icon_state = "[icon_state]-00-33"
-			if(34 to 65) filling.icon_state = "[icon_state]-34-65"
-			if(66 to INFINITY) filling.icon_state = "[icon_state]-66-100"
+			if(0 to 33)
+				filling.icon_state = "[icon_state]-00-33"
+			if(34 to 65)
+				filling.icon_state = "[icon_state]-34-65"
+			if(66 to INFINITY)
+				filling.icon_state = "[icon_state]-66-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling

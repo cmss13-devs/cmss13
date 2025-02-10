@@ -88,6 +88,12 @@
 //=====================//
 //  Frontline Roles  //
 //=================//
+
+/datum/job/antag/upp/rifleman
+	title = JOB_UPP
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/upp/soldier
+
 /datum/equipment_preset/upp/soldier
 	name = "UPP Soldier (Cryo)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -98,16 +104,15 @@
 	role_comm_title = "Sol"
 	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
-
-/datum/job/antag/upp/rifleman
-	title = JOB_UPP
-	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/upp/soldier
+	access = list(
+		ACCESS_UPP_GENERAL,
+	)
 
 /datum/equipment_preset/upp/soldier/dressed
 	name = "UPP Soldier"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/upp
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/soldier/dressed/load_gear(mob/living/carbon/human/new_human)
 	//face
@@ -289,12 +294,17 @@
 	role_comm_title = "Med"
 	minimap_icon = "upp_med"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+	)
 
 /datum/equipment_preset/upp/medic/dressed
 	name = "UPP Medic"
 
 	skills = /datum/skills/upp/combat_medic
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/medic/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -491,12 +501,17 @@
 	role_comm_title = "Sap"
 	minimap_icon = "upp_sapper"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_ENGINEERING,
+	)
 
 /datum/equipment_preset/upp/sapper/dressed
 	name = "UPP Sapper"
 
 	skills = /datum/skills/upp/combat_engineer
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/sapper/dressed/load_gear(mob/living/carbon/human/new_human)
 	//Sappers should have lots of gear and whatnot that helps them attack or siege marines
@@ -656,10 +671,14 @@
 	role_comm_title = "Spc"
 	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+	)
 
 /datum/equipment_preset/upp/specialist/dressed
 	name = "UPP Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 
 /datum/equipment_preset/upp/specialist/dressed/load_gear(mob/living/carbon/human/new_human)
@@ -795,10 +814,14 @@
 	role_comm_title = "Spc"
 	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+	)
 
 /datum/equipment_preset/upp/machinegunner/dressed
 	name = "UPP Machinegunner"
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 
 /datum/equipment_preset/upp/machinegunner/dressed/load_gear(mob/living/carbon/human/new_human)
@@ -945,12 +968,20 @@
 	role_comm_title = "SL"
 	minimap_icon = "upp_sl"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+		ACCESS_UPP_ENGINEERING,
+		ACCESS_UPP_FLIGHT,
+		ACCESS_UPP_LEADERSHIP,
+	)
 
 /datum/equipment_preset/upp/leader/dressed
 	name = "UPP Squad Leader"
 
 	skills = /datum/skills/upp/SL
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/leader/dressed/load_gear(mob/living/carbon/human/new_human)
 	var/UPPleadsidearm = rand(1,4)
@@ -1144,6 +1175,13 @@
 	role_comm_title = "MP"
 	minimap_icon = "upp_mp"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+		ACCESS_UPP_ENGINEERING,
+		ACCESS_UPP_SECURITY,
+		ACCESS_UPP_LEADERSHIP,
+	)
 
 /datum/job/antag/upp/military_police
 	title = JOB_UPP_POLICE
@@ -1164,6 +1202,7 @@
 /datum/equipment_preset/upp/military_police/dressed
 	name = "UPP Military Police"
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/military_police/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -1327,6 +1366,11 @@
 	rank = JOB_UPP_LT_DOKTOR
 	role_comm_title = "Lt. Med."
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+		ACCESS_UPP_RESEARCH,
+	)
 
 /datum/equipment_preset/upp/doctor/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -1347,6 +1391,7 @@
 /datum/equipment_preset/upp/doctor/dressed
 	name = "UPP Doctor"
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/doctor/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -1499,6 +1544,12 @@
 	role_comm_title = "Log."
 	minimap_icon = "upp_cargo"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+		ACCESS_UPP_ENGINEERING,
+		ACCESS_UPP_ARMORY,
+	)
 
 /datum/equipment_preset/upp/supply/load_gear(mob/living/carbon/human/new_human)
 	//face
@@ -1517,6 +1568,7 @@
 /datum/equipment_preset/upp/supply/dressed
 	name = "UPP Logistics Technician"
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/supply/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -1602,6 +1654,17 @@
 	role_comm_title = "Lt."
 	minimap_icon = "upp_lt"
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+		ACCESS_UPP_ENGINEERING,
+		ACCESS_UPP_SECURITY,
+		ACCESS_UPP_ARMORY,
+		ACCESS_UPP_FLIGHT,
+		ACCESS_UPP_RESEARCH,
+		ACCESS_UPP_COMMANDO,
+		ACCESS_UPP_LEADERSHIP,
+	)
 
 
 /datum/job/antag/upp/officer //this is placeholder for stuff that is supposed to be the same for all officers
@@ -1623,6 +1686,7 @@
 /datum/equipment_preset/upp/officer/dressed
 	name = "UPP Lieutenant"
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 
 /datum/equipment_preset/upp/officer/dressed/load_gear(mob/living/carbon/human/new_human)
@@ -1792,9 +1856,22 @@
 	role_comm_title = "Sr-Lt."
 	minimap_icon = "upp_slt"
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+		ACCESS_UPP_ENGINEERING,
+		ACCESS_UPP_SECURITY,
+		ACCESS_UPP_ARMORY,
+		ACCESS_UPP_FLIGHT,
+		ACCESS_UPP_RESEARCH,
+		ACCESS_UPP_COMMANDO,
+		ACCESS_UPP_LEADERSHIP,
+		ACCESS_UPP_SENIOR_LEAD,
+	)
 
 /datum/equipment_preset/upp/officer/senior/dressed
 	name = "UPP Senior Lieutenant"
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/officer/senior/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -1955,6 +2032,7 @@
 
 /datum/equipment_preset/upp/officer/kapitan/dressed
 	name = "UPP Kapitan"
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/officer/kapitan/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -2149,6 +2227,7 @@
 
 /datum/equipment_preset/upp/officer/major/dressed
 	name = "UPP Major"
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/officer/major/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -2338,6 +2417,7 @@
 	role_comm_title = "Lt. Kol."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
+	access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/officer/flag
@@ -2567,6 +2647,7 @@
 	role_comm_title = "Ley. Gen."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
+	access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/ley_gen
@@ -2590,7 +2671,7 @@
 	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
 	minimap_icon = "upp_co"
-	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
+	access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/gen
@@ -2605,14 +2686,8 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
+	access = ACCESS_LIST_UPP_ALL
 
-/datum/equipment_preset/upp/officer/flag/gen/dressed
-	name = "UPP General Armii"
-	assignment = JOB_UPP_GENERAL
-	rank = JOB_UPP_GENERAL
-	role_comm_title = "Gen."
-	minimap_icon = "upp_co"
-	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/sapper/survivor
@@ -2661,6 +2736,13 @@
 	gear_preset = /datum/equipment_preset/upp/synth
 
 	flags_whitelist =  WHITELIST_SYNTHETIC
+	flags_startup_parameters = ROLE_WHITELISTED
+
+/datum/job/antag/upp/synth/check_whitelist_status(mob/user)
+	if(user.client.check_whitelist_status(WHITELIST_SYNTHETIC))
+		return TRUE
+
+	return ..()
 
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic (Cryo)"
@@ -2677,6 +2759,7 @@
 
 /datum/equipment_preset/upp/synth/dressed
 	name = "UPP Synthetic"
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/synth/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -2907,6 +2990,7 @@
 /datum/equipment_preset/upp/synth/combat/dressed
 	name = "UPP Combat Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 
 /datum/equipment_preset/upp/synth/combat/load_skills(mob/living/carbon/human/new_human)
@@ -2973,13 +3057,14 @@
 
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
+/datum/equipment_preset/upp/commando/New() //commando has full access
+	. = ..()
+	access = get_access(ACCESS_LIST_GLOBAL)
+
 /datum/equipment_preset/upp/commando/dressed
 	name = "UPP Commando (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/commando/dressed/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/upp/commando/dressed/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo, WEAR_L_EAR)
@@ -3548,6 +3633,7 @@
 
 /datum/equipment_preset/upp/tank/dressed
 	name = "UPP Vehicle Crewman (TANK)"
+	access = ACCESS_LIST_UPP_ALL
 
 
 /datum/equipment_preset/upp/tank/dressed/load_gear(mob/living/carbon/human/new_human)
@@ -3756,6 +3842,7 @@
 /datum/equipment_preset/upp/commissar/dressed
 	name = "UPP Political Commissar"
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = ACCESS_LIST_UPP_ALL
 
 /datum/equipment_preset/upp/commissar/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -3970,7 +4057,7 @@
 
 /datum/equipment_preset/upp/soldier/hunted
 	name = "UPP Soldier (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/soldier/hunted/load_gear(mob/living/carbon/human/new_human)
 	//head
@@ -3985,6 +4072,9 @@
 	//limbs
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
+	//pockets
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
@@ -4004,7 +4094,7 @@
 
 /datum/equipment_preset/upp/machinegunner/hunted
 	name = "UPP Machinegunner (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/machinegunner/hunted/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -4025,6 +4115,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)
 
 	//body
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/minigun/upp, WEAR_J_STORE)
@@ -4036,7 +4127,7 @@
 
 /datum/equipment_preset/upp/leader/hunted
 	name = "UPP Squad Leader (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/leader/hunted/load_gear(mob/living/carbon/human/new_human)
 	var/UPPleadsidearm = rand(1,4)
@@ -4078,12 +4169,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)
 
 /datum/equipment_preset/upp/sapper/hunted
 	name = "UPP Sapper (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_UPP
 
-/datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/sapper/hunted/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
@@ -4111,3 +4203,4 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)

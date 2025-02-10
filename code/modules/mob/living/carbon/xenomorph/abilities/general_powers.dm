@@ -65,7 +65,7 @@
 	if(node)
 		to_convert = node.children.Copy()
 
-	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"), \
+	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"),
 	SPAN_XENONOTICE("We regurgitate a pulsating node and plant it on the ground!"), null, 5)
 	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
 
@@ -274,7 +274,8 @@
 		to_chat(X, SPAN_XENOWARNING("We can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
 	var/turf/target_turf = get_turf(A)
 
 	if(target_turf.z != X.z)
@@ -337,7 +338,7 @@
 	if(!pheromone)
 		if(current_aura)
 			current_aura = null
-			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."), \
+			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."),
 			SPAN_XENOWARNING("We stop emitting pheromones."), null, 5)
 		else
 			if(!check_plasma(emit_cost))
@@ -367,7 +368,7 @@
 			return
 		use_plasma(emit_cost)
 		current_aura = pheromone
-		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
+		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."),
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
@@ -455,7 +456,8 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!A) return
+	if(!A)
+		return
 
 	if(A.layer >= FLY_LAYER)
 		return
@@ -602,7 +604,8 @@
 	if(!X.check_state())
 		return FALSE
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
 
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
@@ -778,7 +781,7 @@
 		if(xeno.ammo.pre_spit_warn)
 			playsound(xeno.loc,"alien_drool", 55, 1)
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
-		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),\
+		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
@@ -791,7 +794,7 @@
 		return
 
 	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"), \
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
@@ -884,12 +887,16 @@
 	return owner
 
 /turf/proc/can_bombard(mob/bombarder)
-	if(!can_be_dissolved() && density) return FALSE
+	if(!can_be_dissolved() && density)
+		return FALSE
 	for(var/atom/A in src)
-		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
-		if(ismob(A)) continue // Mobs shouldn't block boiler gas
+		if(istype(A, /obj/structure/machinery))
+			continue // Machinery shouldn't block boiler gas (e.g. computers)
+		if(ismob(A))
+			continue // Mobs shouldn't block boiler gas
 
-		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER)) return FALSE
+		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER))
+			return FALSE
 
 	return TRUE
 

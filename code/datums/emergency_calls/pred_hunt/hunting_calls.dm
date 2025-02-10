@@ -18,14 +18,26 @@
 	max_upp = 1
 	max_royal_marines = 1
 
-/datum/emergency_call/pred/create_member(datum/mind/man, turf/override_spawn_loc)
+/datum/emergency_call/pred/mixed/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+	. = ..()
+	if(mob_min > length(members))
+		message_all_yautja("Not enough humans in storage for the hunt to start.")
+	else
+		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
+
+/datum/emergency_call/pred/mixed/create_member(datum/mind/player, turf/override_spawn_loc)
+	set waitfor = 0
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
-		return //Didn't find a useable spawn point.
+		return
 
 	var/mob/living/carbon/human/hunted = new(spawn_loc)
-	man.transfer_to(hunted, TRUE)
+
+	if(player)
+		player.transfer_to(hunted, TRUE)
+	else
+		hunted.create_hud()
 
 	if(mercs < max_mercs && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_MERC))
 		mercs++
@@ -52,7 +64,7 @@
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("Your whole life was a struggle. Fighting tooth and nail for the independence of your colony from one master to the next, with not much change, your home ended up crushed under the boot of the oppressor. Filled with rage, you traveled with your cell of freedom fighters from one system to the next, wreaking havoc and mayhem, which eventually makes you notorious for your brutal executions of government officials and military. While on a raid gone wrong, your comrades get slaughtered by a marine squad, and as you scamper to get away, something else catches you off guard. KO'd and taken away, you wake up in conditions not much different from your previous ones, determined to get revenge against your oppressor once more."))
 	else
-		var/list/hunted_types = list(/datum/equipment_preset/uscm/rifleman_pve/hunted, /datum/equipment_preset/uscm/tl_pve/hunted, /datum/equipment_preset/uscm/sg_pve/hunted,)
+		var/list/hunted_types = list(/datum/equipment_preset/uscm/hunted/rifleman,/datum/equipment_preset/uscm/hunted/tl, /datum/equipment_preset/uscm/hunted/sg,)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You dreamt of becoming the ultimate badass ever since you were a kid. Nukes, knives, sharp sticks - and the corps was for you, enlisting into the marines as soon as you could join. There were little regrets from you, happily gunning down anything, anytime, and anywhere you were told to go... until now. During a jungle patrol, your entire squad was torn to shreds by a single cloaker - something you previously figured was made up just to scare chickenshit privates. Riddling the freak with bullet holes, it finally catches you off guard, and after that it's all hazy. Waking up, you realize you're still alive... and that it left you with your weapon. Big mistake. You get up."))
@@ -64,7 +76,7 @@
 	name = "Hunting Grounds - Multi Faction - Medium"
 	hunt_name = "Multi Faction (group)"
 	mob_max = 6
-	mob_min = 4
+	mob_min = 2
 	max_clf = 2
 	max_upp = 2
 	max_royal_marines = 1
@@ -75,20 +87,20 @@
 	name = "Hunting Grounds - Multi Faction - Large"
 	hunt_name = "Multi Faction (large)"
 	mob_max = 8
-	mob_min = 6
+	mob_min = 3
 	max_clf = 2
-	max_upp = 2
-	max_royal_marines = 1
-	max_mercs = 1
+	max_upp = 1
+	max_royal_marines = 2
+	max_mercs = 2
 
 /datum/emergency_call/pred/mixed/harder
 	name = "Hunting Grounds - Multi Faction - Larger"
 	hunt_name = "Multi Faction (larger)"
 	mob_max = 12
-	mob_min = 6
-	max_clf = 3
+	mob_min = 4
+	max_clf = 2
 	max_upp = 2
-	max_royal_marines = 2
+	max_royal_marines = 3
 	max_mercs = 2
 
 /datum/emergency_call/pred/xeno
@@ -100,6 +112,14 @@
 	hostility = TRUE
 	max_xeno_t3 = 1
 	max_xeno_t2 = 1
+
+
+/datum/emergency_call/pred/xeno/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+	. = ..()
+	if(mob_min > length(members))
+		message_all_yautja("Not enough serpents in storage for the hunt to start.")
+	else
+		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence!")
 
 /datum/emergency_call/pred/xeno/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

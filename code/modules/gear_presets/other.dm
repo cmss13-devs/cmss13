@@ -239,7 +239,7 @@
 
 /datum/equipment_preset/other/freelancer/standard/hunted
 	name = "Freelancer (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_MERC
 
 /datum/equipment_preset/other/freelancer/standard/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
@@ -262,7 +262,7 @@
 
 /datum/equipment_preset/other/freelancer/leader/hunted
 	name = "Freelancer Leader (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_MERC
 
 
 /datum/equipment_preset/other/freelancer/leader/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -686,7 +686,7 @@
 	new_human.set_species(SPECIES_ZOMBIE)
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/new_human)
-	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/colonist/ua_civvies, /obj/item/clothing/under/colonist/wy_davisone, /obj/item/clothing/under/colonist/wy_joliet_shopsteward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
+	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/rank/utility/gray, /obj/item/clothing/under/rank/utility/brown, /obj/item/clothing/under/colonist/steward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
 	new_human.equip_to_slot_or_del(new uniform_path, WEAR_BODY)
 	var/shoe_path = pick(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/leather, /obj/item/clothing/shoes/jackboots)
 	new_human.equip_to_slot_or_del(new shoe_path, WEAR_FEET)
@@ -847,7 +847,7 @@
 	for(var/action_to_add in actions_to_add)
 		give_action(new_human, action_to_add)
 
-	new_human.default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	new_human.default_lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	new_human.update_sight()
 
 /datum/equipment_preset/other/xeno_cultist/leader

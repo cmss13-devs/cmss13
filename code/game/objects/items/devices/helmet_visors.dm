@@ -186,6 +186,9 @@
 /obj/item/device/helmet_visor/welding_visor/tanker
 	helmet_overlay = "tanker_weld_visor"
 
+/obj/item/device/helmet_visor/welding_visor/goon
+	helmet_overlay = "goon_weld_visor"
+
 #define NVG_VISOR_USAGE(delta_time) (power_cell.use(power_use * (delta_time ? delta_time : 1)))
 
 /obj/item/device/helmet_visor/night_vision
@@ -197,6 +200,7 @@
 	helmet_overlay = "nvg_sight_right"
 	toggle_on_sound = 'sound/handling/toggle_nv1.ogg'
 	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
+	var/matrix_color = NV_COLOR_GREEN
 
 	/// The internal battery for the visor
 	var/obj/item/cell/super/power_cell
@@ -228,8 +232,9 @@
 
 /obj/item/device/helmet_visor/night_vision/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(on_update_sight))
-
-	user.add_client_color_matrix("nvg_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
+	if(user.client?.prefs?.night_vision_preference)
+		matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
+	user.add_client_color_matrix("nvg_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)))
 	user.overlay_fullscreen("nvg_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
 	user.overlay_fullscreen("nvg_visor_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 	user.update_sight()

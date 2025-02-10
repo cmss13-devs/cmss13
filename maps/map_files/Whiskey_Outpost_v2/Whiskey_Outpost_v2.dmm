@@ -3944,7 +3944,7 @@
 /area/whiskey_outpost/outside/mortar_pit)
 "qW" = (
 /obj/structure/machinery/power/apc/almayer/east,
-/turf/open/gm/dirt,
+/turf/open/floor/plating,
 /area/whiskey_outpost/inside/caves/tunnel)
 "qX" = (
 /obj/structure/machinery/line_nexter{

@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Printing security records + fingerprint report and clearing"
+  - qol: "Adds a notice that they're printing. Moved the time it takes in line with photocopier. And Fingerprint scanner ejects to the table instead of your feet."

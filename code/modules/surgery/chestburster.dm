@@ -47,7 +47,8 @@
 	for(var/mob/living/carbon/human/victim in orange(1, patient)) //Loop through all nearby victims, excepting patient.
 		var/distance = get_dist(patient, victim)
 		splash_chance = 80 - (i * 5)
-		if(victim.loc == patient.loc) splash_chance += 30 //Same tile? BURN
+		if(victim.loc == patient.loc)
+			splash_chance += 30 //Same tile? BURN
 		splash_chance += distance * -15
 		if(victim.species && victim.species.name == "Yautja")
 			splash_chance -= 70 //Preds know to avoid the splashback.

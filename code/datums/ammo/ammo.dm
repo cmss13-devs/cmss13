@@ -89,6 +89,9 @@
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
 
+	/// Whether or not this ammo ignores mobs that are lying down
+	var/hits_lying_mobs = FALSE
+
 /datum/ammo/New()
 	set_bullet_traits()
 
@@ -201,7 +204,8 @@
 	slam_back(target_mob, fired_projectile, max_range)
 
 /datum/ammo/proc/burst(atom/target, obj/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = SHOW_MESSAGE_VISIBLE) //damage_div says how much we divide damage
-	if(!target || !P) return
+	if(!target || !P)
+		return
 	for(var/mob/living/carbon/M in orange(range,target))
 		if(P.firer == M)
 			continue

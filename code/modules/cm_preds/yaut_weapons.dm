@@ -790,8 +790,10 @@
 				user.visible_message(SPAN_NOTICE("[user] quickly stabs \the [T] and pulls out \a <b>[caught_item]</b> with their free hand!"), SPAN_NOTICE("You quickly stab \the [T] and pull out \a <b>[caught_item]</b> with your free hand!"), max_distance = 3)
 				var/image/trick = image(caught_item.icon, user, caught_item.icon_state, BIG_XENO_LAYER)
 				switch(pick(1,2))
-					if(1) animation_toss_snatch(trick)
-					if(2) animation_toss_flick(trick, pick(1,-1))
+					if(1)
+						animation_toss_snatch(trick)
+					if(2)
+						animation_toss_flick(trick, pick(1,-1))
 				caught_item.invisibility = 100
 				var/list/client/displayed_for = list()
 				for(var/mob/M in viewers(user))
@@ -985,7 +987,8 @@
 
 /obj/item/weapon/gun/launcher/spike/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) spikes++
+	if(refund)
+		spikes++
 	return TRUE
 
 
@@ -1032,7 +1035,8 @@
 	if(charge_time < 100)
 		charge_time++
 		if(charge_time == 99)
-			if(ismob(loc)) to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
+			if(ismob(loc))
+				to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
 		update_icon()
 
 
@@ -1136,7 +1140,8 @@
 	if(charge_time < 40)
 		charge_time++
 		if(charge_time == 39)
-			if(ismob(loc)) to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
+			if(ismob(loc))
+				to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
 
 
 

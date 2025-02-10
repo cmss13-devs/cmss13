@@ -44,7 +44,8 @@
 	sleep(40)
 	busy = FALSE
 
-	if(!Adjacent(user)) return //Person has moved away from the sink
+	if(!Adjacent(user))
+		return //Person has moved away from the sink
 
 	user.clean_blood()
 	if(ishuman(user))
@@ -79,10 +80,12 @@
 				return
 
 	var/turf/location = user.loc
-	if(!isturf(location)) return
+	if(!isturf(location))
+		return
 
 	var/obj/item/I = O
-	if(!I || !istype(I,/obj/item)) return
+	if(!I || !istype(I,/obj/item))
+		return
 
 	to_chat(usr, SPAN_NOTICE(" You start washing \the [I]."))
 
@@ -90,9 +93,12 @@
 	sleep(40)
 	busy = FALSE
 
-	if(user.loc != location) return //User has moved
-	if(!I) return //Item's been destroyed while washing
-	if(user.get_active_hand() != I) return //Person has switched hands or the item in their hands
+	if(user.loc != location)
+		return //User has moved
+	if(!I)
+		return //Item's been destroyed while washing
+	if(user.get_active_hand() != I)
+		return //Person has switched hands or the item in their hands
 
 	O.clean_blood()
 	user.visible_message(

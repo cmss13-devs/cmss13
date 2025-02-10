@@ -476,12 +476,14 @@
 	return A.lightswitch && A.power_light
 
 /obj/structure/machinery/light/proc/flicker(amount = rand(10, 20))
-	if(flickering) return
+	if(flickering)
+		return
 	flickering = 1
 	spawn(0)
 		if(on && status == LIGHT_OK)
 			for(var/i = 0; i < amount; i++)
-				if(status != LIGHT_OK) break
+				if(status != LIGHT_OK)
+					break
 				on = !on
 				update(0)
 				sleep(rand(5, 15))
@@ -500,7 +502,8 @@
 	return
 
 /obj/structure/machinery/light/attack_animal(mob/living/M)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
 		to_chat(M, SPAN_WARNING("That object is useless to you."))
 		return
@@ -764,7 +767,8 @@
 // now only shatter if the intent was harm
 
 /obj/item/light_bulb/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target, /obj/structure/machinery/light))
 		return
 	if(user.a_intent != INTENT_HARM)

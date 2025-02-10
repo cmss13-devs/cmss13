@@ -37,7 +37,7 @@
 			nutrition -= HUNGER_FACTOR/5
 
 
-/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data) // stays here because any carbon can be hauled
+/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 	var/gibbing = FALSE
 

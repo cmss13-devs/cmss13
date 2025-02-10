@@ -140,7 +140,7 @@
 				mobs_can_hear.show_message(SPAN_DANGER("You hear [resister] struggling against [xeno]'s grip..."), SHOW_MESSAGE_AUDIBLE)
 		return TRUE
 
-/mob/living/carbon/attack_hand(mob/target_mob as mob) // move it here probably
+/mob/living/carbon/attack_hand(mob/target_mob as mob)
 	if(!istype(target_mob, /mob/living/carbon)) return
 
 	if(target_mob.mob_flags & SURGERY_MODE_ON && target_mob.a_intent & (INTENT_HELP|INTENT_DISARM))

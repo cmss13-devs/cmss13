@@ -3629,6 +3629,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/chemistry)
 "aig" = (
@@ -10611,52 +10612,38 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bcz" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
-/obj/structure/reagent_dispensers/fueltank/custom,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 26
-	},
+/obj/structure/closet/secure_closet/chemical,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/reagent_container/glass/beaker/cryoxadone,
+/obj/item/reagent_container/glass/beaker/cryoxadone,
+/obj/item/reagent_container/glass/beaker/cryoxadone,
+/obj/item/reagent_container/dropper,
+/obj/item/reagent_container/dropper,
+/obj/item/device/mass_spectrometer,
+/obj/item/device/mass_spectrometer,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/chemistry)
 "bcA" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 8
-	},
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25;
-	pixel_x = 3;
-	pixel_y = 3
-	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcC" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker/large{
-	pixel_y = 12;
-	pixel_x = -9
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
 	},
-/obj/item/reagent_container/glass/beaker{
-	pixel_y = 16;
-	pixel_x = 6
-	},
-/obj/item/reagent_container/glass/beaker{
-	pixel_y = 9;
-	pixel_x = 6
-	},
-/obj/item/reagent_container/glass/beaker/large{
-	pixel_y = 3;
-	pixel_x = -9
-	},
-/obj/item/reagent_container/glass/beaker{
-	pixel_y = 2;
-	pixel_x = 6
-	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcD" = (
@@ -11172,6 +11159,14 @@
 /obj/item/tool/hand_labeler{
 	pixel_y = 3;
 	pixel_x = 7
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = -6;
+	pixel_y = 2
 	},
 /obj/item/storage/box/pillbottles{
 	pixel_x = -6;
@@ -23480,40 +23475,16 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie)
 "eFG" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/pillbottles{
-	pixel_x = -6;
-	pixel_y = 9
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = -6;
-	pixel_y = 9
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = -6
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = -6
-	},
-/obj/structure/machinery/door_control{
-	id = "ChemistryShu";
-	name = "\improper Medical Chemistry Shutters";
-	pixel_y = 3;
-	req_one_access_txt = "19;20";
-	throw_range = 15;
-	pixel_x = 8
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 26;
+	pixel_x = 7
 	},
 /obj/structure/transmitter{
 	name = "Chemical Laboratory Telephone";
 	phone_category = "Medical & Research Dept.";
 	phone_id = "Chemistry Laboratory";
-	pixel_x = -6;
-	pixel_y = 32
-	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_17";
-	pixel_x = 7;
-	pixel_y = 21
+	pixel_x = -8;
+	pixel_y = 28
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
@@ -38190,22 +38161,23 @@
 /turf/open/floor/almayer/greencorner/west,
 /area/almayer/hallways/upper/fore_hallway)
 "kPx" = (
-/obj/structure/closet/secure_closet/chemical,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles,
-/obj/item/reagent_container/glass/beaker/cryoxadone,
-/obj/item/reagent_container/glass/beaker/cryoxadone,
-/obj/item/reagent_container/glass/beaker/cryoxadone,
-/obj/item/reagent_container/dropper,
-/obj/item/reagent_container/dropper,
-/obj/item/device/mass_spectrometer,
-/obj/item/device/mass_spectrometer,
 /obj/structure/machinery/status_display{
 	pixel_y = 31;
 	pixel_x = -1
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -8;
+	pixel_y = 21
+	},
+/obj/structure/machinery/door_control{
+	id = "ChemistryShu";
+	name = "\improper Medical Chemistry Shutters";
+	pixel_y = 10;
+	req_one_access_txt = "19;20";
+	throw_range = 15;
+	pixel_x = 6
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/chemistry)
@@ -51589,9 +51561,17 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/living/grunt_rnr)
 "qpx" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/chemistry)
@@ -56162,13 +56142,13 @@
 /area/almayer/shipboard/brig/processing)
 "sgj" = (
 /obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ChemistryShu";
-	name = "\improper Medical Chemistry Shutters";
-	dir = 2
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "MedicalDistriShu";
+	name = "\improper Medical Equipment Distribution Shutters";
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/lockerroom)
@@ -59034,7 +59014,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Reception";
 	req_one_access = null;
-	req_one_access_txt = "19;20"
+	req_one_access_txt = list(8,19)
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
@@ -62217,6 +62197,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lockerroom)
 "uFp" = (
@@ -91615,7 +91596,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -92021,7 +92002,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa

@@ -386,17 +386,6 @@
 /mob/living/carbon/xenomorph/proc/pounced_turf_wrapper(turf/T)
 	pounced_turf(T)
 
-//Bleuugh
-/mob/living/carbon/xenomorph/proc/empty_gut()
-	if(length(stomach_contents))
-		for(var/atom/movable/S in stomach_contents)
-			stomach_contents.Remove(S)
-			S.acid_damage = 0 //Reset the acid damage
-			S.forceMove(get_true_turf(src))
-
-	if(length(contents)) //Get rid of anything that may be stuck inside us as well
-		for(var/atom/movable/A in contents)
-			A.forceMove(get_true_turf(src))
 
 /mob/living/carbon/xenomorph/proc/toggle_nightvision()
 	see_in_dark = 12
@@ -424,6 +413,16 @@
 	victim.forceMove(src.loc, get_dir(victim.loc, src.loc))
 	victim.handle_haul(src)
 	RegisterSignal(victim, COMSIG_MOB_DEATH, PROC_REF(release_dead_haul))
+	haul_timer = addtimer(CALLBACK(src, PROC_REF(about_to_release_hauled)), 40 SECONDS + rand(0 SECONDS, 20 SECONDS), TIMER_STOPPABLE)
+
+/mob/living/carbon/xenomorph/proc/about_to_release_hauled()
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(!user)
+		deltimer(haul_timer)
+		return
+	to_chat(src, SPAN_XENOWARNING("We feel our grip loosen on [user], we will have to release them soon."))
+	playsound(src, 'sound/voice/alien_hiss2.ogg', 15)
+	haul_timer = addtimer(CALLBACK(src, PROC_REF(release_haul)), 10 SECONDS, TIMER_STOPPABLE)
 
 // Releasing a dead hauled mob
 /mob/living/carbon/xenomorph/proc/release_dead_haul()
@@ -434,6 +433,7 @@
 	UnregisterSignal(user, COMSIG_MOB_DEATH)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null
+	deltimer(haul_timer)
 
 // Releasing a hauled mob
 /mob/living/carbon/xenomorph/proc/release_haul(stuns = FALSE)
@@ -444,27 +444,13 @@
 	user.handle_unhaul()
 	visible_message(SPAN_XENOWARNING("[src] releases [user] from their grip!"),
 	SPAN_XENOWARNING("We release [user] from our grip!"), null, 5)
-	playsound(get_true_location(loc), 'sound/voice/alien_growl1.ogg', 15)
+	playsound(src, 'sound/voice/alien_growl1.ogg', 15)
 	log_interact(src, user, "[key_name(src)] released [key_name(user)] at [get_area_name(loc)]")
 	if(stuns)
 		user.adjust_effect(2, STUN)
 	UnregisterSignal(user, COMSIG_MOB_DEATH)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null
-	// if(length(stomach_contents))
-	// 	if(victim)
-	// 		stomach_contents.Remove(victim)
-	// 		victim.acid_damage = 0
-	// 		victim.forceMove(get_true_turf(loc))
-
-	// 		visible_message(SPAN_XENOWARNING("[src] releases [victim] from their grip!"),
-	// 		SPAN_XENOWARNING("We release [victim] from our grip!"), null, 5)
-	// 		playsound(get_true_location(loc), 'sound/voice/alien_growl1.ogg', 15)
-	// 		log_interact(src, victim, "[key_name(src)] released [key_name(victim)] at [get_area_name(loc)]")
-
-	// 		if (stuns)
-	// 			victim.adjust_effect(2, STUN)
-	// else
 
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle

@@ -62,6 +62,9 @@
 	var/obj/item/l_store = null
 	// Mob we are hauling
 	var/datum/weakref/hauled_mob
+	// Haul timer
+	var/haul_timer
+
 	var/obj/item/iff_tag/iff_tag = null
 
 	var/static/list/walking_state_cache = list()
@@ -279,8 +282,6 @@
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
 	var/ripping_limb = FALSE
-	/// The world.time at which we will release our currently-restrained victim
-	var/haul_timer = 0
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.

@@ -708,9 +708,6 @@
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(length(xeno.stomach_contents))
-					xeno.haul_timer = 0
-					xeno.handle_stomach_contents()
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
@@ -718,9 +715,8 @@
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(length(xeno.stomach_contents))
-					xeno.haul_timer = 0
-					xeno.handle_stomach_contents()
+				if(xeno.hauled_mob?.resolve())
+					xeno.release_haul(hauled_mob.resolve())
 				qdel(xeno)
 			stored_larva++
 			continue

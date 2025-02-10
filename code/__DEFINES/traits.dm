@@ -163,7 +163,7 @@
 #define TRAIT_TEMPORARILY_MUTED "temporarily_muted"
 /// Mob wont get hit by stray projectiles
 #define TRAIT_NO_STRAY "trait_no_stray"
-/// We can take out our knife or gun if hauled though we are immobilized, also shielded from most damage.
+/// When a Xeno hauls us. We can take out our knife or gun if hauled though we are immobilized, also shielded from most damage.
 #define TRAIT_HAULED "hauled"
 
 // SPECIES TRAITS

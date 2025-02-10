@@ -15,7 +15,6 @@
 		remove_all_indicators()
 
 /mob/living/carbon/Destroy()
-	stomach_contents?.Cut()
 	view_change_sources = null
 	active_transfusions = null
 	. = ..()
@@ -85,36 +84,67 @@
 	recalculate_move_delay = TRUE
 	..()
 
-/mob/living/carbon/human/attackby(obj/item/W, mob/living/user)
+/mob/living/carbon/human/attackby(obj/item/weapon, mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		if(src == user) // No stabbing ourselves to death
+			return
+		if(handle_haul_resist(user, src, weapon))
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+		return
 	if(user.mob_flags & SURGERY_MODE_ON)
 		switch(user.a_intent)
 			if(INTENT_HELP)
 				//Attempt to dig shrapnel first, if any. dig_out_shrapnel_check() will fail if user is not human, which may be possible in future.
-				if(W.flags_item & CAN_DIG_SHRAPNEL && (locate(/obj/item/shard) in src.embedded_items) && W.dig_out_shrapnel_check(src, user))
+				if(weapon.flags_item & CAN_DIG_SHRAPNEL && (locate(/obj/item/shard) in src.embedded_items) && weapon.dig_out_shrapnel_check(src, user))
 					return TRUE
 				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
 				if(current_surgery)
-					if(current_surgery.attempt_next_step(user, W))
+					if(current_surgery.attempt_next_step(user, weapon))
 						return TRUE //Cancel attack.
 				else
 					var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
-					if(initiate_surgery_moment(W, src, affecting, user))
+					if(initiate_surgery_moment(weapon, src, affecting, user))
 						return TRUE
 
 			if(INTENT_DISARM) //Same as help but without the shrapnel dig attempt.
 				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
 				if(current_surgery)
-					if(current_surgery.attempt_next_step(user, W))
+					if(current_surgery.attempt_next_step(user, weapon))
 						return TRUE
 				else
 					var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
-					if(initiate_surgery_moment(W, src, affecting, user))
+					if(initiate_surgery_moment(weapon, src, affecting, user))
 						return TRUE
 
-	else if(W.flags_item & CAN_DIG_SHRAPNEL && W.dig_out_shrapnel_check(src, user))
+	else if(weapon.flags_item & CAN_DIG_SHRAPNEL && weapon.dig_out_shrapnel_check(src, user))
 		return TRUE
 
 	. = ..()
+
+/mob/living/carbon/human/proc/handle_haul_resist(mob/living/resister, mob/living/carbon/xenomorph/xeno, obj/item/item)
+	if(get_dist(xeno, resister))
+		return FALSE
+	if(item.force)
+		var/damage_of_item = rand(floor(item.force / 4), item.force)
+		xeno.take_limb_damage(damage_of_item)
+		for(var/mob/mobs_in_view as anything in viewers(resister, null))
+			if(mobs_in_view.client)
+				mobs_in_view.show_message(text(SPAN_DANGER("<B>[resister] attacks [xeno]'s carapace with the [item.name]!")), SHOW_MESSAGE_AUDIBLE)
+		resister.track_hit(initial(item.name))
+		if(item.sharp)
+			playsound(resister.loc, 'sound/weapons/slash.ogg', 25, 1)
+		else
+			var/hit_sound = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
+			playsound(resister.loc, hit_sound, 25, 1)
+		if(prob(max(4*(100*xeno.getBruteLoss()/xeno.maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
+			xeno.last_damage_data = create_cause_data("scuffling", resister)
+			xeno.gib(last_damage_data)
+		return TRUE
+	else
+		for(var/mob/mobs_can_hear in hearers(4, xeno))
+			if(mobs_can_hear.client)
+				mobs_can_hear.show_message(SPAN_DANGER("You hear [resister] struggling against [xeno]'s grip..."), SHOW_MESSAGE_AUDIBLE)
+		return TRUE
 
 /mob/living/carbon/attack_hand(mob/target_mob as mob) // move it here probably
 	if(!istype(target_mob, /mob/living/carbon)) return
@@ -458,9 +488,9 @@
 
 // Adding traits, etc after xeno restrains and hauls us
 /mob/living/carbon/human/proc/handle_haul(mob/living/carbon/xenomorph/xeno)
+	ADD_TRAIT(src, TRAIT_FLOORED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_HAULED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_XENO_HAUL)
-	ADD_TRAIT(src, TRAIT_FLOORED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_XENO_HAUL)
 
 	hauling_xeno = xeno
@@ -469,7 +499,7 @@
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(haul_fire_shield_callback))
 	layer = LYING_BETWEEN_MOB_LAYER
 	add_filter("hauled_shadow", 1, color_matrix_filter(rgb(95, 95, 95)))
-	pixel_y = -10
+	pixel_y = -7
 
 /mob/living/carbon/human/proc/release_haul_death()
 	SIGNAL_HANDLER
@@ -499,13 +529,6 @@
 
 
 
-/mob/living/carbon/on_stored_atom_del(atom/movable/AM)
-	..()
-	if(length(stomach_contents) && ismob(AM))
-		for(var/X in stomach_contents)
-			if(AM == X)
-				stomach_contents -= AM
-				break
 
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
 	adjust_fire_stacks(-5, min_stacks = 0)

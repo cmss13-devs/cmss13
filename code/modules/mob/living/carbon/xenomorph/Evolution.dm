@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(user)
-		to_chat("Release [user] before evolving!")
+		to_chat(src, "Release [user] before evolving!")
 		return
 
 	var/castes_available = caste.evolves_to.Copy()

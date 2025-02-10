@@ -62,7 +62,7 @@
 // release_haul
 /datum/action/xeno_action/onclick/release_haul
 	name = "Release"
-	action_icon_state = "regurgitate"
+	action_icon_state = "release_haul"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_release_haul
 	action_type = XENO_ACTION_CLICK

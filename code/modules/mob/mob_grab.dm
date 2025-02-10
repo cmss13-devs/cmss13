@@ -144,10 +144,10 @@
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to restrain you!")))
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			if(isxeno(pulled.loc) && !length(xeno.stomach_contents))
+			if(isxeno(pulled.loc) && !xeno.hauled_mob)
 				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
 				return 0
-			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !length(xeno.stomach_contents)) //make sure you've still got them in your claws, and alive
+			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)
 					return FALSE
 				xeno.haul(pulled)

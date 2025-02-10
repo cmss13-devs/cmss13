@@ -736,7 +736,7 @@
 /obj/structure/machinery/door_control{
 	id = "southtreatcenter2";
 	name = "\improper North Treatment Center Shutters";
-	pixel_y = -3;
+	pixel_y = 6;
 	req_one_access_txt = "19";
 	throw_range = 15;
 	pixel_x = -28
@@ -747,7 +747,7 @@
 	name = "Door Release";
 	normaldoorcontrol = 1;
 	pixel_x = -28;
-	pixel_y = 6
+	pixel_y = -3
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/dark_sterile,
@@ -1103,10 +1103,9 @@
 	icon_state = "S"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/toolbox{
-	layer = 4;
-	pixel_y = -7;
-	pixel_x = 13
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 15;
+	pixel_y = -8
 	},
 /turf/open/floor/almayer,
 /area/almayer/medical/lower_medical_medbay)
@@ -3851,7 +3850,7 @@
 /obj/structure/machinery/door_control{
 	id = "northtreatcenter2";
 	name = "\improper North Treatment Center Shutters";
-	pixel_y = 7;
+	pixel_y = -2;
 	req_one_access_txt = "19";
 	throw_range = 15;
 	pixel_x = -28
@@ -3862,7 +3861,7 @@
 	name = "Door Release";
 	normaldoorcontrol = 1;
 	pixel_x = -28;
-	pixel_y = -2
+	pixel_y = 7
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/dark_sterile,
@@ -11408,7 +11407,7 @@
 	id = "or02";
 	name = "Surgery Door Release";
 	normaldoorcontrol = 1;
-	pixel_x = 5;
+	pixel_x = -5;
 	pixel_y = -22
 	},
 /obj/structure/machinery/sleep_console{
@@ -11421,7 +11420,7 @@
 	pixel_y = -22;
 	req_one_access_txt = "19;20";
 	throw_range = 15;
-	pixel_x = -5
+	pixel_x = 5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -13133,24 +13132,37 @@
 /area/almayer/medical/lower_medical_medbay)
 "bye" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/pole/wooden_cane,
-/obj/item/weapon/pole/wooden_cane,
-/obj/item/weapon/pole/wooden_cane,
-/obj/item/weapon/pole/wooden_cane,
-/obj/structure/closet/secure_closet/medical_wall{
-	pixel_x = -28;
-	name = "prescripted glasses and canes closet"
+/obj/item/clothing/glasses/mbcg{
+	pixel_x = -5;
+	pixel_y = 9
 	},
-/obj/item/clothing/glasses/mbcg,
-/obj/item/clothing/glasses/mbcg,
-/obj/item/clothing/glasses/mbcg,
-/obj/item/clothing/glasses/sunglasses/prescription,
-/obj/item/clothing/glasses/sunglasses/prescription,
-/obj/item/clothing/glasses/sunglasses/prescription,
-/obj/item/clothing/glasses/hud/health/prescription,
-/obj/item/clothing/glasses/hud/health/prescription,
-/obj/item/clothing/glasses/hud/health/prescription,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/glasses/mbcg{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/clothing/glasses/mbcg{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/weapon/pole/wooden_cane{
+	pixel_y = 3
+	},
+/obj/item/weapon/pole/wooden_cane{
+	pixel_y = 3
+	},
+/obj/item/weapon/pole/wooden_cane{
+	pixel_y = 3
+	},
+/obj/item/weapon/pole/wooden_cane{
+	pixel_y = 3
+	},
+/obj/item/weapon/pole/wooden_cane{
+	pixel_y = 3
+	},
+/obj/item/weapon/pole/wooden_cane{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "bym" = (
@@ -19339,7 +19351,7 @@
 	id = "or01";
 	name = "Surgery Door Release";
 	normaldoorcontrol = 1;
-	pixel_x = -5;
+	pixel_x = 5;
 	pixel_y = -22
 	},
 /obj/structure/machinery/door_control{
@@ -19348,7 +19360,7 @@
 	pixel_y = -22;
 	req_one_access_txt = "19;20";
 	throw_range = 15;
-	pixel_x = 5
+	pixel_x = -5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -34753,7 +34765,7 @@
 	id = "or04";
 	name = "Surgery Door Release";
 	normaldoorcontrol = 1;
-	pixel_x = 5;
+	pixel_x = -5;
 	pixel_y = 26
 	},
 /obj/structure/machinery/door_control{
@@ -34762,7 +34774,7 @@
 	pixel_y = 26;
 	req_one_access_txt = "19;20";
 	throw_range = 15;
-	pixel_x = -5
+	pixel_x = 5
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/operating_room_four)
@@ -63856,14 +63868,14 @@
 	pixel_y = 27;
 	req_one_access_txt = "19";
 	throw_range = 15;
-	pixel_x = 6
+	pixel_x = -4
 	},
 /obj/structure/machinery/door_control{
 	dir = 1;
 	id = "nortexit1";
 	name = "Door Release";
 	normaldoorcontrol = 1;
-	pixel_x = -4;
+	pixel_x = 6;
 	pixel_y = 27
 	},
 /obj/structure/machinery/light{
@@ -67662,7 +67674,7 @@
 	id = "or03";
 	name = "Surgery Door Release";
 	normaldoorcontrol = 1;
-	pixel_x = -5;
+	pixel_x = 5;
 	pixel_y = 26
 	},
 /obj/structure/machinery/door_control{
@@ -67671,7 +67683,7 @@
 	pixel_y = 26;
 	req_one_access_txt = "19;20";
 	throw_range = 15;
-	pixel_x = 5
+	pixel_x = -5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"

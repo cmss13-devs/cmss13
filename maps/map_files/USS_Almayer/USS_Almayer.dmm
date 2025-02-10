@@ -37609,7 +37609,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/item/device/megaphone,
 /obj/item/reagent_container/spray/cleaner,
 /obj/item/reagent_container/spray/cleaner,
 /obj/item/reagent_container/spray/cleaner,
@@ -46527,89 +46526,121 @@
 /area/almayer/maint/hull/upper/p_bow)
 "omo" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
-/obj/item/tool/extinguisher{
-	pixel_y = 6;
-	pixel_x = 2
-	},
 /obj/structure/machinery/status_display{
 	pixel_y = -30;
 	pixel_x = -4
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/tool/extinguisher{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/storage/box/bodybags{
+	pixel_y = 1;
+	pixel_x = -6
+	},
+/obj/item/storage/box/bodybags{
+	pixel_y = 1;
+	pixel_x = 6
+	},
+/obj/item/storage/box/bodybags{
+	pixel_y = 1;
+	pixel_x = -6
+	},
+/obj/item/storage/box/bodybags{
+	pixel_y = 1;
+	pixel_x = 6
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_lobby)
@@ -61181,7 +61212,7 @@
 /obj/structure/machinery/door_control{
 	id = "medicalemergency";
 	name = "Medbay Lockdown";
-	pixel_y = 4;
+	pixel_y = 3;
 	req_one_access_txt = "2;3;12;19";
 	pixel_x = -24
 	},
@@ -61197,7 +61228,7 @@
 	name = "Lower Medical Telephone";
 	phone_category = "Medical & Research Dept.";
 	phone_id = "Main Reception";
-	pixel_x = -13;
+	pixel_x = -14;
 	pixel_y = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -61206,6 +61237,10 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/light,
+/obj/item/device/megaphone{
+	pixel_y = 3;
+	pixel_x = 3
+	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/lower_medical_medbay)
 "ujV" = (

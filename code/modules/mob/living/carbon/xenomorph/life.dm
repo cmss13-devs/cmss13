@@ -218,7 +218,6 @@
 	return TRUE
 
 
-
 /mob/living/carbon/xenomorph/proc/handle_regular_hud_updates()
 	if(!mind)
 		return TRUE

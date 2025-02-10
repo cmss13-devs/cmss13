@@ -204,7 +204,8 @@
 	slam_back(target_mob, fired_projectile, max_range)
 
 /datum/ammo/proc/burst(atom/target, obj/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = SHOW_MESSAGE_VISIBLE) //damage_div says how much we divide damage
-	if(!target || !P) return
+	if(!target || !P)
+		return
 	for(var/mob/living/carbon/M in orange(range,target))
 		if(P.firer == M)
 			continue

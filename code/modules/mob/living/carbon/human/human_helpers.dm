@@ -289,11 +289,13 @@
 				light_off++
 	if(flares)
 		for(var/obj/item/device/flashlight/flare/F in contents)
-			if(F.on) goes_out++
+			if(F.on)
+				goes_out++
 			F.turn_off(src)
 	if(misc)
 		for(var/obj/item/device/flashlight/L in contents)
-			if(istype(L, /obj/item/device/flashlight/flare)) continue
+			if(istype(L, /obj/item/device/flashlight/flare))
+				continue
 			if(L.turn_off_light(src))
 				light_off++
 		for(var/obj/item/tool/weldingtool/W in contents)

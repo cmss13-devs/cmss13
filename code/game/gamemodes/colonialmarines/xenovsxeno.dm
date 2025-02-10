@@ -160,11 +160,13 @@
 
 /datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	// Spawn additional hive structures
 	var/turf/T  = .
 	var/area/AR = get_area(T)
-	if(!AR) return
+	if(!AR)
+		return
 	for(var/obj/effect/landmark/structure_spawner/xvx_hive/SS in AR)
 		SS.apply()
 		qdel(SS)

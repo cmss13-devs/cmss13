@@ -2754,7 +2754,7 @@
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "kN" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "kP" = (
@@ -3609,7 +3609,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "on" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
 "op" = (
@@ -4049,7 +4049,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "qb" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
 "qc" = (
@@ -5634,7 +5634,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "wG" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "wH" = (
@@ -7049,7 +7049,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "Dp" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /obj/structure/machinery/light{
 	dir = 4
 	},

@@ -45,15 +45,18 @@
 
 // use power from a cell
 /obj/item/cell/proc/use(amount)
-	if(charge < amount) return 0
+	if(charge < amount)
+		return 0
 	charge = (charge - amount)
 	return 1
 
 // recharge the cell
 /obj/item/cell/proc/give(amount)
-	if(maxcharge < amount) return 0
+	if(maxcharge < amount)
+		return 0
 	var/amount_used = min(maxcharge-charge,amount)
-	if(crit_fail) return 0
+	if(crit_fail)
+		return 0
 	if(!prob(reliability))
 		minor_fault++
 		if(prob(minor_fault))

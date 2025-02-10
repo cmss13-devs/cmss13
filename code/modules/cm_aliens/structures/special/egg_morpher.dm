@@ -70,14 +70,15 @@
 				to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
 				return
 			if(user)
-				visible_message(SPAN_XENOWARNING("[user] slides [hugger] back into \the [src]."), \
+				visible_message(SPAN_XENOWARNING("[user] slides [hugger] back into \the [src]."),
 					SPAN_XENONOTICE("You place the child back into \the [src]."))
 				user.temp_drop_inv_item(hugger)
 			else
 				visible_message(SPAN_XENOWARNING("[hugger] crawls back into \the [src]!"))
 			stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 			qdel(hugger)
-		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
+		else
+			to_chat(user, SPAN_XENOWARNING("This child is dead."))
 		return
 
 	//refill egg morpher from an egg
@@ -87,7 +88,7 @@
 			to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
 			return
 		if(user)
-			visible_message(SPAN_XENOWARNING("[user] slides a facehugger out of \the [egg] into \the [src]."), \
+			visible_message(SPAN_XENOWARNING("[user] slides a facehugger out of \the [egg] into \the [src]."),
 				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
 			user.temp_drop_inv_item(egg)
 		stored_huggers = min(huggers_max_amount, stored_huggers + 1)

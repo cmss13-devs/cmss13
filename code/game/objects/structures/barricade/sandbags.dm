@@ -30,6 +30,9 @@
 	for(var/i = 1 to amount-1)
 		increment_build_stage()
 
+/obj/structure/barricade/sandbags/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_ROCK, -10, 5, 1)
+
 /obj/structure/barricade/sandbags/update_icon()
 	..()
 

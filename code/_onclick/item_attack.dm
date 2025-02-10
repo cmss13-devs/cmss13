@@ -37,6 +37,13 @@
 		else if(initiate_surgery_moment(I, src, null, user))
 			return TRUE
 	*/
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		var/mob/living/carbon/human/victim = user
+		if(src == victim) // No stabbing ourselves to death
+			return
+		if(victim.handle_haul_resist(user, src, I))
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+		return
 	if(istype(I) && ismob(user))
 		return I.attack(src, user)
 

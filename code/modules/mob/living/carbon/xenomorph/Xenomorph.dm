@@ -398,7 +398,8 @@
 		//If we're holding things drop them
 		for(var/obj/item/item in old_xeno.contents) //Drop stuff
 			old_xeno.drop_inv_item_on_ground(item)
-		old_xeno.empty_gut()
+		if(old_xeno.hauled_mob?.resolve())
+			old_xeno.release_haul(old_xeno.hauled_mob.resolve())
 
 		if(old_xeno.iff_tag)
 			iff_tag = old_xeno.iff_tag

@@ -716,7 +716,7 @@
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				if(xeno.hauled_mob?.resolve())
-					xeno.release_haul(hauled_mob.resolve())
+					xeno.release_haul(xeno.hauled_mob.resolve())
 				qdel(xeno)
 			stored_larva++
 			continue

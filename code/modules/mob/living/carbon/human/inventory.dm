@@ -106,6 +106,10 @@
 	if(!. || !I)
 		return FALSE
 
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		if(!isgun(I) || !isweapon(I))
+			return FALSE
+
 	if(I == wear_suit)
 		if(s_store && !(s_store.flags_equip_slot & SLOT_SUIT_STORE))
 			drop_inv_item_on_ground(s_store)

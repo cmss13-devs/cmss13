@@ -404,10 +404,10 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 		if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
 			return TRUE
-	
+
 	if(storage_slots != null && length(contents) < storage_slots)
 		return TRUE //At least one open slot.
-	
+
 	//calculate storage space only for containers that don't have slots
 	if (storage_slots == null)
 		var/sum_storage_cost = W_class_override ? W_class_override : new_item.get_storage_cost() //Takes the override if there is one, the given item otherwise.
@@ -510,12 +510,12 @@ user can be null, it refers to the potential mob doing the insertion.**/
 				if(!istype(cur_item, /obj/item/stack))
 					continue
 				var/obj/item/stack/cur_stack = cur_item
-				
+
 				if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
 					var/amount = min(cur_stack.max_amount - cur_stack.amount, new_stack.amount)
 					new_stack.use(amount)
 					cur_stack.add(amount)
-			
+
 			if(!QDELETED(new_stack) && can_be_inserted(new_stack, user))
 				if(!user.drop_inv_item_to_loc(new_item, src))
 					return FALSE
@@ -615,6 +615,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return handle_item_insertion(W, prevent_warning, user)
 
 /obj/item/storage/attack_hand(mob/user, mods)
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if (loc == user)
 		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
 			var/obj/item/I

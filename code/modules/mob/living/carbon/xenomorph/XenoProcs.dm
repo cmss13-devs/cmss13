@@ -427,16 +427,17 @@
 // Releasing a dead hauled mob
 /mob/living/carbon/xenomorph/proc/release_dead_haul()
 	SIGNAL_HANDLER
+	deltimer(haul_timer)
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	to_chat(src, SPAN_XENOWARNING("[user] is dead. No more use for them now."))
 	user.handle_unhaul()
 	UnregisterSignal(user, COMSIG_MOB_DEATH)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null
-	deltimer(haul_timer)
 
 // Releasing a hauled mob
 /mob/living/carbon/xenomorph/proc/release_haul(stuns = FALSE)
+	deltimer(haul_timer)
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(!user)
 		to_chat(src, SPAN_WARNING("We are not hauling anyone."))

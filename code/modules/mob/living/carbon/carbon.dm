@@ -85,12 +85,6 @@
 	..()
 
 /mob/living/carbon/human/attackby(obj/item/weapon, mob/living/user)
-	if(HAS_TRAIT(user, TRAIT_HAULED))
-		if(src == user) // No stabbing ourselves to death
-			return
-		if(handle_haul_resist(user, src, weapon))
-			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
-		return
 	if(user.mob_flags & SURGERY_MODE_ON)
 		switch(user.a_intent)
 			if(INTENT_HELP)
@@ -125,7 +119,7 @@
 	if(get_dist(xeno, resister))
 		return FALSE
 	if(item.force)
-		var/damage_of_item = rand(floor(item.force / 4), item.force)
+		var/damage_of_item = rand(floor(item.force / 4), item.force - item.force / 6)
 		xeno.take_limb_damage(damage_of_item)
 		for(var/mob/mobs_in_view as anything in viewers(resister, null))
 			if(mobs_in_view.client)

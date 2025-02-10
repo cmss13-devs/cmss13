@@ -418,10 +418,7 @@
 				var/obj/item/card/id/card = human_user.get_idcard()
 
 				if(!card) // if no card is worn, check for held id
-					for(var/obj/item/held_item in human_user.contents)
-						if(istype(held_item, /obj/item/card/id))
-							card = held_item // held id is set as the card
-							break
+					card = locate(/obj/item/card/id) in human_user
 
 				if(!card) // still no card found?
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))

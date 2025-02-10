@@ -31,8 +31,8 @@ def _self_test():
     ancestor_commit = None
     if len(initial_head_commit.parent_ids) != 1: # if HEAD is a merge commit:
         for parent in initial_head_commit.parent_ids:
-            if parent != upstream:
-                break
+            if parent == upstream:
+                continue
             head = parent
             ancestor = repo.merge_base(head, upstream)
 

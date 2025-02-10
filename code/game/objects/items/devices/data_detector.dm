@@ -27,68 +27,75 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
+// In future if youre need opti, just make component or something like that for all atoms that need to be detected, and you know... it's better than running thru all contents, rather than thru list of link to what we need to detect in global list or something like that
 /obj/item/device/motiondetector/intel/scan()
-	set waitfor = 0
-	if(scanning)
+	// Remembering our loc == human, opti purposes, don't let it scan without user, just ignore proc
+	if(!istype(loc, /mob/living/carbon/human))
+		playsound(loc, 'sound/items/detector.ogg', 50, 0, 7, 2)
 		return
-	scanning = TRUE
-	var/mob/living/carbon/human/human_user
-	if(ishuman(loc))
-		human_user = loc
 
 	var/detected_sound = FALSE
+	for(var/turf/scanned_turf in orange(detector_range, loc))
+		for(var/atom/scanned_atom in scanned_turf.contents)
+			if(istype(scanned_atom, /obj))
+				var/obj/object = scanned_atom
+				if(detect_object(object))
+					show_blip(loc, object)
+					detected_sound = TRUE
+					break
 
-	for(var/obj/I in orange(detector_range, loc))
-		var/detected
-		for(var/DT in objects_to_detect)
-			if(istype(I, DT))
-				if(istype(I, /obj/item/storage/fancy/vials/random) && !length(I.contents))
-					break //We don't need to ping already looted containers
-				if(istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents?.total_volume)
-					break //We don't need to ping already looted containers
-				detected = TRUE
-			if(I.contents)
-				for(var/obj/item/CI in I.contents)
-					if(istype(CI, DT))
-						if(istype(CI, /obj/item/storage/fancy/vials/random) && !length(CI.contents))
-							break
-						if(istype(CI, /obj/item/reagent_container/glass/beaker/vial/random) && !CI.reagents?.total_volume)
-							break
-						detected = TRUE
-			if(human_user && detected)
-				show_blip(human_user, I)
+				if(length(object.contents))
+					var/detected_nested_object = FALSE
+					for(var/obj/nested_object as anything in object.contents_recursive())
+						if(!detect_object(nested_object))
+							continue
 
-		if(detected)
-			detected_sound = TRUE
+						show_blip(loc, object)
+						detected_sound = TRUE
+						detected_nested_object = TRUE
+						break
 
-		CHECK_TICK
+					if(detected_nested_object)
+						break
 
-	for(var/mob/M in orange(detector_range, loc))
-		var/detected
-		if(loc == null || M == null) continue
-		if(loc.z != M.z) continue
-		if(M == loc) continue //device user isn't detected
-		if((isxeno(M) || isyautja(M)) && M.stat == DEAD )
-			detected = TRUE
-		else if(ishuman(M) && M.stat == DEAD && length(M.contents))
-			for(var/obj/I in M.contents_twice())
-				for(var/DT in objects_to_detect)
-					if(istype(I, DT))
-						if(istype(I, /obj/item/storage/fancy/vials/random) && !length(I.contents))
-							break
-						if(istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents?.total_volume)
-							break
-						detected = TRUE
+			else if(istype(scanned_atom, /mob))
+				var/mob/creature = scanned_atom
+				if(creature.stat != DEAD)
+					continue
 
-		if(human_user && detected)
-			show_blip(human_user, M)
-			if(detected)
-				detected_sound = TRUE
+				if(isxeno(creature) || isyautja(creature))
+					show_blip(loc, creature)
+					detected_sound = TRUE
+					break
 
-		CHECK_TICK
+				if(ishuman(creature))
+					var/detected_nested_mob_object = FALSE
+					for(var/obj/nested_mob_object as anything in creature.contents_recursive())
+						if(!detect_object(nested_mob_object))
+							continue
+
+						show_blip(loc, creature)
+						detected_sound = TRUE
+						detected_nested_mob_object = TRUE
+						break
+
+					if(detected_nested_mob_object)
+						break
 
 	if(detected_sound)
 		playsound(loc, 'sound/items/tick.ogg', 60, 0, 7, 2)
 	else
 		playsound(loc, 'sound/items/detector.ogg', 50, 0, 7, 2)
-	scanning = FALSE
+
+/obj/item/device/motiondetector/intel/proc/detect_object(obj/target_item)
+	for(var/req_type in objects_to_detect)
+		if(!istype(target_item, req_type))
+			continue
+
+		if(req_type == /obj/item/storage/fancy/vials/random && !length(target_item.contents))
+			return
+
+		if(req_type == /obj/item/reagent_container/glass/beaker/vial/random && !target_item.reagents?.total_volume)
+			return
+
+		return TRUE

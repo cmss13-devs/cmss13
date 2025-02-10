@@ -8,7 +8,7 @@
 	icon_state = "m20"
 	force = 5
 	w_class = SIZE_SMALL
-	//layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
+	layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
 	throwforce = 5
 	throw_range = 6
 	throw_speed = SPEED_VERY_FAST
@@ -299,7 +299,6 @@
 	icon_state = "m20_active"
 	base_icon_state = "m20"
 	map_deployed = TRUE
-	layer = 4 //layer is this high so that hopefully:tm: you cannot hide it and pixel shift items on top of it
 
 /obj/item/explosive/mine/no_iff
 	iff_signal = null

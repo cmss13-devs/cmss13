@@ -363,3 +363,54 @@
 			new /obj/item/reagent_container/food/snacks/cookie(src)
 		if(5)
 			new /obj/item/reagent_container/food/snacks/chocolatebar(src)
+
+/obj/item/device/overwatch_camera
+	name = "M5 Camera Gear"
+	desc = "A camera and associated headgear designed to allow marine commanders to see what their troops can see. A more robust version of this equipment is integrated into all standard USCM combat helmets."
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	icon_state = "cam_gear_off"
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+	)
+	item_state_slots = list(
+		WEAR_L_EAR = "cam_gear",
+		WEAR_R_EAR = "cam_gear",
+	)
+	flags_equip_slot = SLOT_EAR
+	var/obj/structure/machinery/camera/camera
+
+/obj/item/device/overwatch_camera/Initialize(mapload, ...)
+	. = ..()
+	camera = new /obj/structure/machinery/camera/overwatch(src)
+	AddComponent(/datum/component/overwatch_console_control)
+
+/obj/item/device/overwatch_camera/Destroy()
+	QDEL_NULL(camera)
+	return ..()
+
+/obj/item/device/overwatch_camera/equipped(mob/living/carbon/human/mob, slot)
+	if(camera)
+		camera.c_tag = mob.name
+		camera.status = TRUE
+		icon_state = "cam_gear_on"
+		update_icon()
+	..()
+
+/obj/item/device/overwatch_camera/unequipped(mob/user, slot)
+	. = ..()
+	if(camera)
+		camera.status = FALSE
+		icon_state = "cam_gear_off"
+		update_icon()
+
+/obj/item/device/overwatch_camera/dropped(mob/user)
+	if(camera)
+		camera.c_tag = "Unknown"
+	..()
+
+/obj/item/device/overwatch_camera/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, loc == sourcemob)
+
+/obj/item/device/overwatch_camera/see_emote(mob/living/sourcemob, emote, audible)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)

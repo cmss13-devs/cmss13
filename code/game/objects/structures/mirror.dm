@@ -10,7 +10,8 @@
 
 /obj/structure/mirror/attack_hand(mob/user as mob)
 
-	if(shattered) return
+	if(shattered)
+		return
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -49,7 +50,8 @@
 				species_facial_hair = GLOB.facial_hair_styles_list
 
 			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in species_facial_hair
-			if(userloc != H.loc) return //no tele-grooming
+			if(userloc != H.loc)
+				return //no tele-grooming
 			if(new_style)
 				H.f_style = new_style
 
@@ -65,7 +67,8 @@
 			species_hair = GLOB.hair_styles_list
 
 		var/new_style = input(user, "Select a hair style", "Grooming")  as null|anything in species_hair
-		if(userloc != H.loc) return //no tele-grooming
+		if(userloc != H.loc)
+			return //no tele-grooming
 		if(new_style)
 			H.h_style = new_style
 
@@ -132,9 +135,11 @@
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
 /obj/structure/mirror/attack_animal(mob/user as mob)
-	if(!isanimal(user)) return
+	if(!isanimal(user))
+		return
 	var/mob/living/simple_animal/M = user
-	if(M.melee_damage_upper <= 0) return
+	if(M.melee_damage_upper <= 0)
+		return
 	if(shattered)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		return

@@ -43,6 +43,11 @@
 	gear_preset = /datum/equipment_preset/wy/manager/chief_executive
 	supervisors = "Weyland-Yutani Directorate"
 
+/datum/job/special/wey_yu/corporate/deputy_director
+	title = JOB_DEPUTY_DIRECTOR
+	gear_preset = /datum/equipment_preset/wy/manager/director/deputy
+	supervisors = "Weyland-Yutani Directorate"
+
 /datum/job/special/wey_yu/corporate/director
 	title = JOB_DIRECTOR
 	gear_preset = /datum/equipment_preset/wy/manager/director

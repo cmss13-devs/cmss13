@@ -38,7 +38,8 @@
 
 	if(!istype(A,/obj) && !istype(A,/mob)) //mobs and objects only.
 		return
-	if(istype(A,/obj/effect)) return
+	if(istype(A,/obj/effect))
+		return
 
 	var/atom/movable/AM = A
 	var/curtiles = 0
@@ -209,7 +210,8 @@
 
 /obj/effect/step_trigger/teleporter/random/Trigger(atom/movable/A)
 	if(istype(A, /obj)) //mobs and objects only.
-		if(istype(A, /obj/effect)) return
+		if(istype(A, /obj/effect))
+			return
 		qdel(A)
 	else if(isliving(A)) //Hacked it up so it just deletes it
 		to_chat(A, SPAN_DANGER("You get lost into the depths of space, never to be seen again."))

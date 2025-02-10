@@ -64,7 +64,8 @@
 
 /datum/nmnode/picker/resolve(datum/nmcontext/context)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	var/list/datum/nmnode/pickables = choices.Copy()
 	for(var/datum/nmnode/node as anything in pickables)
 		pickables[node] = isnum(node.raw["weight"]) ? node.raw["weight"] : 1

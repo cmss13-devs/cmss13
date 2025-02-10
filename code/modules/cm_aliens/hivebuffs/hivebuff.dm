@@ -195,12 +195,12 @@
 /datum/hivebuff/proc/_on_cease()
 	if(cease_timer_id)
 		deltimer(cease_timer_id)
-	
+
 	_announce_buff_cease()
 	on_cease()
 	LAZYREMOVE(hive.active_hivebuffs, src)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
-	
+
 	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
 		remove_buff_effects(xeno)
 
@@ -397,7 +397,7 @@
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space around the hive core to spawn."
 	tier = HIVEBUFF_TIER_MAJOR
 	radial_icon = "king"
-	
+
 	is_reusable = TRUE
 	cost = 0
 	special_fail_message = "Only one hatchery may exist at a time."

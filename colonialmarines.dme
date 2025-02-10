@@ -2143,7 +2143,6 @@
 #include "code\modules\mob\living\carbon\xenomorph\abilities\spitter\spitter_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\warrior\warrior_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\warrior\warrior_macros.dm"
-#include "code\modules\mob\living\carbon\xenomorph\abilities\warrior\warrior_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Boiler.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Burrower.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Carrier.dm"

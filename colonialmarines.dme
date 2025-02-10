@@ -2097,7 +2097,6 @@
 #include "code\modules\mob\living\carbon\xenomorph\abilities\boiler\boiler_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\burrower\burrower_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\burrower\burrower_macros.dm"
-#include "code\modules\mob\living\carbon\xenomorph\abilities\burrower\burrower_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\carrier\carrier_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\carrier\carrier_macros.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\carrier\carrier_powers.dm"

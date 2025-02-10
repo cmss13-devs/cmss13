@@ -4076,10 +4076,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_fore_hallway)
-"aja" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer/sterile_green_side/northwest,
-/area/almayer/medical/lower_medical_medbay)
 "aje" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -27053,6 +27049,10 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
+"gls" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer/sterile_green_side/northwest,
+/area/almayer/medical/lower_medical_medbay)
 "glB" = (
 /obj/structure/sign/safety/chem_lab{
 	pixel_x = 5;
@@ -99023,7 +99023,7 @@ ahm
 ahb
 rlZ
 ago
-aja
+gls
 rlZ
 bwH
 vhX

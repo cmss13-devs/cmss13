@@ -8,7 +8,7 @@
 	circuit = /obj/item/circuitboard/computer/secure_data
 	var/obj/item/card/id/scan = null
 	var/obj/item/device/clue_scanner/scanner = null
-	var/printing = null
+	var/printing = FALSE
 
 /obj/structure/machinery/computer/secure_data/attackby(obj/item/O as obj, user as mob)
 
@@ -364,7 +364,7 @@
 				for(var/obj/effect/decal/prints/print in scanner.print_list)
 					refkey += print.criminal_name
 				P.name = "fingerprint report ([md5(refkey)])"
-				printing = null
+				printing = FALSE
 
 		if ("clear_fingerprints")
 			if (!scanner)
@@ -403,7 +403,7 @@
 
 				var/obj/item/paper/personalrecord/P = new /obj/item/paper/personalrecord(loc, general_record, security_record)
 				P.name = text("Security Record ([])", general_record.fields["name"])
-				printing = null
+				printing = FALSE
 		if ("update_photo")
 			var/id = params["id"]
 			var/photo_profile = params["photo_profile"]

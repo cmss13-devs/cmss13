@@ -222,3 +222,14 @@
   - rscadd: Changed name of general's mateba holster to luxury mateba holster.
   - imageadd: Added a background for the Visiting Officer to use so it doesn't appear
       identical to CO in follow menu/minimap.
+2025-02-10:
+  Katskan:
+  - balance: Enables tool web to hold metal rods.
+  - bugfix: Tool web has its original sprite, same as brown webbing.
+  Red-byte3D:
+  - bugfix: Valkyrie rejuvenate no longer rejuvenates enemy xenos.
+  - bugfix: Valkyrie slashes no longer heal enemy xenos.
+  - bugfix: Valkyrie no longer can empower enemy xenos
+  - spellcheck: fixes a small mistake on strain buy
+  - bugfix: Lesser drone weeding now checks to see if the node you are using belongs
+      to an enemy hive.

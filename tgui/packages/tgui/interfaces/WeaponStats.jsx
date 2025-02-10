@@ -199,11 +199,11 @@ const Firerate = (props) => {
   return (
     <>
       <ProgressBar value={firerate / firerate_max} ranges={RedGreenRange}>
-        Single fire: {firerate}rpm, {firerate_second} per second
+        Fire rate: {firerate}rpm, {firerate_second} per second
       </ProgressBar>
       <Box height="5px" />
       <ProgressBar value={burst_firerate / firerate_max} ranges={RedGreenRange}>
-        Burst fire: {burst_firerate}rpm, {burst_firerate_second} per second
+        Burst fire rate: {burst_firerate}rpm, {burst_firerate_second} per second
       </ProgressBar>
       <Box height="5px" />
       {burst_amount > 1 ? (

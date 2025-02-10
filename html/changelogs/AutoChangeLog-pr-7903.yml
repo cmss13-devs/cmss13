@@ -1,5 +1,0 @@
-author: "Katskan"
-delete-after: True
-changes:
-  - balance: "Enables tool web to hold metal rods."
-  - bugfix: "Tool web has its original sprite, same as brown webbing."

@@ -21,7 +21,8 @@
 	. = ..()
 
 /obj/item/device/assembly/infra/activate()
-	if(!..()) return 0//Cooldown check
+	if(!..())
+		return 0//Cooldown check
 	on = !on
 	update_icon()
 	return 1
@@ -91,14 +92,16 @@
 
 
 /obj/item/device/assembly/infra/holder_movement()
-	if(!holder) return 0
+	if(!holder)
+		return 0
 // dir = holder.dir
 	QDEL_NULL(first)
 	return 1
 
 
 /obj/item/device/assembly/infra/proc/trigger_beam()
-	if((!secured)||(!on)||(cooldown > 0)) return 0
+	if((!secured)||(!on)||(cooldown > 0))
+		return 0
 	pulse(0)
 	if(!holder)
 		visible_message("[icon2html(src, hearers(src))] *beep* *beep*")
@@ -109,7 +112,8 @@
 
 
 /obj/item/device/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
-	if(!secured) return
+	if(!secured)
+		return
 	user.set_interaction(src)
 
 	/* a testament to autism

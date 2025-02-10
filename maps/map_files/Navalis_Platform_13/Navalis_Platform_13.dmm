@@ -15053,6 +15053,76 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/command/office)
+"aOf" = (
+/obj/effect/spawner/random/gun/special/highchance,
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aOg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square"
+	},
+/obj/effect/spawner/random/gun/shotgun/highchance,
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/indoors/logistic/primary_storage)
+"aOh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square"
+	},
+/obj/effect/spawner/random/gun/pistol/highchance,
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/indoors/logistic/primary_storage)
+"aOi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square"
+	},
+/obj/effect/spawner/random/gun/rifle/highchance,
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/indoors/logistic/primary_storage)
+"aOj" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "psiphon:0"
+	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/residential/starboard)
+"aOk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors/logistic/maintenance_port)
+"aOl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = -28
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors/logistic/maintenance_port)
+"aOm" = (
+/obj/structure/bed,
+/obj/item/bedsheet/green,
+/obj/effect/spawner/random/gun/uscm_primary/highchance,
+/turf/open/floor/hybrisa/carpet/carpetgreen,
+/area/navalis/indoors/residential/accessway)
+"aOn" = (
+/obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/resin_prop{
+	icon_state = "secure_crate_strapped"
+	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/oob/water)
+"aOo" = (
+/obj/effect/spawner/random/gun/special/midchance,
+/turf/open/floor/plating,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
+"aOp" = (
+/mob/living/simple_animal/cat{
+	name = "Holly"
+	},
+/turf/open/floor/hybrisa/carpet/carpetreddeco,
+/area/navalis/indoors/command/director_office)
 "aOv" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "rack"
@@ -15338,6 +15408,9 @@
 	invisibility = 101;
 	light_color = "#680b62";
 	needs_power = 0
+	},
+/obj/structure/prop/resin_prop{
+	icon_state = "barrel_yellow"
 	},
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/powered)
@@ -20588,6 +20661,7 @@
 	},
 /obj/structure/machinery/recharger,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/storage/belt/gun/m4a3/mod88,
 /turf/open/floor/prison/red/east,
 /area/navalis/indoors/command/security)
 "gzI" = (
@@ -24724,6 +24798,9 @@
 	dir = 4;
 	pixel_y = 8
 	},
+/obj/structure/sign/catclock{
+	pixel_y = 32
+	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/navalis/indoors/command/director_office)
 "laX" = (
@@ -25803,6 +25880,7 @@
 "mno" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/bronze,
+/obj/effect/spawner/random/gun/special/midchance,
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/navalis/indoors/residential/accessway)
 "mpT" = (
@@ -30636,8 +30714,6 @@
 /area/navalis/indoors/command/meeting_hall)
 "rie" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/storage/belt/gun/m4a3/mod88,
-/obj/item/storage/belt/gun/m4a3/mod88,
 /obj/effect/spawner/random/gun/shotgun/midchance,
 /obj/structure/machinery/power/apc{
 	dir = 1
@@ -30703,13 +30779,18 @@
 "rjI" = (
 /obj/structure/prop/ice_colony/ice_crystal{
 	name = "deep sea crystal";
-	desc = "A giant crystal brought up from the ocean floor during the excavation and mining operations of this rig. According to the inscryption on the table, this crystal was dragged up manually by the site director."
+	desc = "A giant crystal brought up from the ocean floor during the excavation and mining operations of this rig. According to the inscryption on the table, this crystal was dragged up manually by the site director.";
+	pixel_y = 5
 	},
 /obj/structure/surface/table/reinforced/cloth{
 	color = "#712215"
 	},
 /obj/structure/sign/poster/wylogo{
 	pixel_y = 32;
+	layer = 2.9
+	},
+/obj/structure/displaycase/destroyed{
+	pixel_y = 8;
 	layer = 2.9
 	},
 /turf/open/floor/hybrisa/wood/redwood,
@@ -34073,6 +34154,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
+/obj/effect/spawner/random/gun/smg/highchance,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/workshop)
 "uGi" = (
@@ -36254,6 +36336,10 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/sign/banners/united_americas_flag_worn{
+	pixel_y = 27;
+	pixel_x = 9
+	},
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/accessway)
 "wFw" = (
@@ -36453,8 +36539,6 @@
 /area/navalis/indoors/med_sci/storage)
 "wQV" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/storage/belt/gun/m4a3/mod88,
-/obj/item/storage/belt/gun/m4a3/mod88,
 /obj/effect/spawner/random/gun/smg/highchance,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/red/northeast,
@@ -51436,7 +51520,7 @@ aoV
 apf
 apf
 apf
-apf
+aOk
 agg
 afI
 pSJ
@@ -51735,7 +51819,7 @@ axr
 axk
 aks
 jpY
-awu
+aOp
 iwV
 avN
 avN
@@ -52581,7 +52665,7 @@ pXR
 aoV
 aid
 apu
-apf
+aOl
 aoK
 aoK
 aoK
@@ -52762,12 +52846,12 @@ aoK
 acI
 aBd
 dxs
-kWL
+aOh
 quu
 sJO
 aoe
 bLs
-kWL
+aOg
 xwe
 aCK
 dxs
@@ -54730,7 +54814,7 @@ aoN
 xwe
 aBh
 dxs
-kWL
+aOi
 wMn
 iSK
 aoe
@@ -59282,7 +59366,7 @@ iYF
 dCs
 alF
 cCN
-alJ
+aOo
 aJP
 alJ
 fqT
@@ -61509,7 +61593,7 @@ rtA
 tyB
 akO
 wZv
-lum
+aOf
 sHk
 lEA
 aXg
@@ -62727,7 +62811,7 @@ gGc
 gGc
 asq
 asq
-che
+aOn
 asq
 asq
 ari
@@ -65357,7 +65441,7 @@ aJM
 ary
 ajD
 apz
-piJ
+aOm
 bAK
 atN
 apz
@@ -71945,7 +72029,7 @@ apk
 aBb
 asq
 aph
-aph
+aOj
 asq
 aFm
 asq

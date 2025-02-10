@@ -41,7 +41,7 @@
 	handle_xeno_macro(src, action_name)
 
 /obj/effect/alien/weeds/node/designer
-	desc = "A wierd node, it look mutated."
+	desc = "A weird node, it looks mutated."
 	weed_strength = WEED_LEVEL_CONSTRUCT
 	hibernate = TRUE
 
@@ -114,9 +114,6 @@
 			to_chat(xeno, SPAN_WARNING("That's too far away!"))
 			return
 
-	if(!check_and_use_plasma_owner())
-		return
-
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 
 	var/turf/target_turf = get_turf(target_atom)
@@ -129,11 +126,14 @@
 	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
+	if (!check_and_use_plasma_owner())
+		return
+
 	qdel(speed_warn)
 
 	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
-		SPAN_XENONOTICE("We surge sustinance, creating optimized node!"), null, 5)
+		SPAN_XENONOTICE("We surge sustenance, creating a optimized node!"), null, 5)
 		var/speed_nodes = new /obj/effect/alien/weeds/node/designer/speed(target_turf)
 		xeno.speed_node_list += speed_nodes
 		playsound(target_turf, "alien_resin_build", 25)
@@ -141,7 +141,7 @@
 			addtimer(CALLBACK(src, "remove_oldest_speed_node", xeno), 0)
 
 	else if(target_turf)
-		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
+		to_chat(xeno, SPAN_WARNING("We can only construct nodes on our weeds!"))
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 		return FALSE
 	else
@@ -205,9 +205,6 @@
 			to_chat(xeno, SPAN_WARNING("That's too far away!"))
 			return
 
-	if (!check_and_use_plasma_owner())
-		return
-
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 
 	var/turf/target_turf = get_turf(target_atom)
@@ -220,11 +217,14 @@
 	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
+	if (!check_and_use_plasma_owner())
+		return
+
 	qdel(cost_warn)
 
 	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
-		SPAN_XENONOTICE("We surge sustinance, creating flexible node!"), null, 5)
+		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating a strange looking node!"), \
+		SPAN_XENONOTICE("We surge sustenance, creating a flexible node!"), null, 5)
 		var/cost_nodes = new /obj/effect/alien/weeds/node/designer/cost(target_turf)
 		xeno.cost_node_list += cost_nodes
 		playsound(target_turf, "alien_resin_build", 25)
@@ -232,7 +232,7 @@
 			addtimer(CALLBACK(src, "remove_oldest_cost_node", xeno), 0)
 
 	else if(target_turf)
-		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
+		to_chat(xeno, SPAN_WARNING("We can only construct nodes on our weeds!"))
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 		return FALSE
 	else
@@ -254,17 +254,17 @@
 			qdel(oldest_cost_node) // Safely delete the old node
 		xeno.cost_node_list.Cut(1, 2) // Remove the first element from the list
 
-// Greather Resin Surge.
+// Greater Resin Surge.
 
 /datum/action/xeno_action/verb/verb_greater_surge()
 	set category = "Alien"
-	set name = "Greather Resin Surge"
+	set name = "Greater Resin Surge"
 	set hidden = TRUE
-	var/action_name = "Greather Resin Surge"
+	var/action_name = "Greater Resin Surge"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/greater_resin_surge
-	name = "Greather Resin Surge (250)"
+	name = "Greater Resin Surge (250)"
 	action_icon_state = "greater_resin_surge"
 	plasma_cost = 250
 	xeno_cooldown = 30 SECONDS

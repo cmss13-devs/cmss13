@@ -113,7 +113,8 @@ Defined in conflicts.dm of the #defines folder.
 	return TRUE
 
 /obj/item/attachable/proc/Attach(obj/item/weapon/gun/G)
-	if(!istype(G)) return //Guns only
+	if(!istype(G))
+		return //Guns only
 
 	/*
 	This does not check if the attachment can be removed.
@@ -170,7 +171,8 @@ Defined in conflicts.dm of the #defines folder.
 		G.in_chamber.apply_bullet_trait(L)
 
 /obj/item/attachable/proc/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
-	if(!istype(detaching_gun)) return //Guns only
+	if(!istype(detaching_gun))
+		return //Guns only
 
 	if(user)
 		detaching_gun.on_detach(user, src)
@@ -3196,7 +3198,8 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/attached_gun/flamer/proc/flame_turf(turf/T, mob/living/user)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
 		var/datum/reagent/napalm/ut/R = new()

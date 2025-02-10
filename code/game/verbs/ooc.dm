@@ -2,7 +2,8 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC.OOC"
 
-	if(!mob) return
+	if(!mob)
+		return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
@@ -11,7 +12,8 @@
 		return
 
 	msg = trim(strip_html(msg))
-	if(!msg) return
+	if(!msg)
+		return
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
 		to_chat(src, SPAN_DANGER("You have OOC muted."))
@@ -106,7 +108,8 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC.OOC"
 
-	if(!mob) return
+	if(!mob)
+		return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use LOOC.")
 		return
@@ -115,7 +118,8 @@
 		return
 
 	msg = trim(strip_html(msg))
-	if(!msg) return
+	if(!msg)
+		return
 
 	if(!(prefs.toggles_chat & CHAT_LOOC))
 		to_chat(src, SPAN_DANGER("You have LOOC muted."))

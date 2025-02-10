@@ -332,7 +332,8 @@
 		to_chat(src, SPAN_WARNING("We can't carry more eggs on ourselves."))
 
 /mob/living/carbon/xenomorph/carrier/proc/retrieve_egg(atom/T)
-	if(!T) return
+	if(!T)
+		return
 
 	if(!check_state())
 		return

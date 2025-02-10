@@ -267,7 +267,8 @@ DEFINES in setup.dm, referenced here.
 
 
 	if(istype(attack_item,/obj/item/attachable))
-		if(check_inactive_hand(user)) attach_to_gun(user,attack_item)
+		if(check_inactive_hand(user))
+			attach_to_gun(user,attack_item)
 
 	//the active attachment is reloadable
 	else if(active_attachable && active_attachable.flags_attach_features & ATTACH_RELOADABLE)
@@ -283,7 +284,8 @@ DEFINES in setup.dm, referenced here.
 			active_attachable.reload_attachment(attack_item, user)
 
 	else if(istype(attack_item,/obj/item/ammo_magazine))
-		if(check_inactive_hand(user)) reload(user,attack_item)
+		if(check_inactive_hand(user))
+			reload(user,attack_item)
 
 
 //tactical reloads
@@ -403,7 +405,8 @@ DEFINES in setup.dm, referenced here.
 	if(attachable_offset) //Even if the attachment doesn't exist, we're going to try and remove it.
 		for(var/slot in attachments)
 			var/obj/item/attachable/attached_attachment = attachments[slot]
-			if(!attached_attachment) continue
+			if(!attached_attachment)
+				continue
 			update_overlays(attached_attachment, attached_attachment.slot)
 
 /obj/item/weapon/gun/proc/update_attachable(attachable) //Updates individually.
@@ -423,7 +426,8 @@ DEFINES in setup.dm, referenced here.
 		gun_image.pixel_y = attachable_offset["[slot]_y"] - attachment.pixel_shift_y + y_offset_by_attachment_type(attachment.type)
 		attachable_overlays[slot] = gun_image
 		overlays += gun_image
-	else attachable_overlays[slot] = null
+	else
+		attachable_overlays[slot] = null
 
 /obj/item/weapon/gun/proc/x_offset_by_attachment_type(attachment_type)
 	return 0
@@ -455,9 +459,12 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/proc/update_force_list()
 	switch(force)
-		if(-50 to 15) attack_verb = list("struck", "hit", "bashed") //Unlikely to ever be -50, but just to be safe.
-		if(16 to 35) attack_verb = list("smashed", "struck", "whacked", "beaten", "cracked")
-		else attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
+		if(-50 to 15)
+			attack_verb = list("struck", "hit", "bashed") //Unlikely to ever be -50, but just to be safe.
+		if(16 to 35)
+			attack_verb = list("smashed", "struck", "whacked", "beaten", "cracked")
+		else
+			attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
 
 /obj/item/weapon/gun/proc/get_active_firearm(mob/user, restrictive = TRUE)
 	if(user.is_mob_incapacitated() || !isturf(usr.loc))

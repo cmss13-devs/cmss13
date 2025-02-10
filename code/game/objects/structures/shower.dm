@@ -102,7 +102,8 @@
 
 //Yes, showers are super powerful as far as washing goes.
 /obj/structure/machinery/shower/proc/wash(atom/movable/O as obj|mob)
-	if(!on) return
+	if(!on)
+		return
 
 
 	if(isliving(O))
@@ -187,9 +188,11 @@
 
 
 /obj/structure/machinery/shower/process()
-	if(!on) return
+	if(!on)
+		return
 	wash_floor()
-	if(!mobpresent) return
+	if(!mobpresent)
+		return
 	for(var/mob/living/carbon/C in loc)
 		check_heat(C)
 
@@ -205,7 +208,8 @@
 
 
 /obj/structure/machinery/shower/proc/check_heat(mob/M as mob)
-	if(!on || watertemp == "normal") return
+	if(!on || watertemp == "normal")
+		return
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 

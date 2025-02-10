@@ -249,7 +249,8 @@
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(oldname, newname)
-	if(!newname) return 0
+	if(!newname)
+		return 0
 	change_real_name(src, newname)
 
 	if(oldname)
@@ -273,7 +274,8 @@
 				if(ID.registered_name == oldname)
 					ID.registered_name = newname
 					ID.name = "[newname]'s [ID.id_type] ([ID.assignment])"
-					if(!search_pda) break
+					if(!search_pda)
+						break
 					search_id = 0
 	return 1
 
@@ -362,7 +364,8 @@
 	var/client/C
 	var/key
 
-	if(!whom) return "*null*"
+	if(!whom)
+		return "*null*"
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
@@ -572,10 +575,13 @@
 		return FALSE
 
 	while(current != target_turf)
-		if(steps > length) return FALSE
-		if(!current || current.opacity) return FALSE
+		if(steps > length)
+			return FALSE
+		if(!current || current.opacity)
+			return FALSE
 		for(var/atom/A in current)
-			if(A && A.opacity) return FALSE
+			if(A && A.opacity)
+				return FALSE
 		current = get_step_towards(current, target_turf)
 		steps++
 
@@ -915,8 +921,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 //Takes: Anything that could possibly have variables and a varname to check.
 //Returns: 1 if found, 0 if not.
 /proc/hasvar(datum/A, varname)
-	if(A.vars.Find(lowertext(varname))) return 1
-	else return 0
+	if(A.vars.Find(lowertext(varname)))
+		return 1
+	else
+		return 0
 
 //Returns: all the areas in the world, sorted.
 /proc/return_sorted_areas()
@@ -972,7 +980,8 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	//    Movement based on lower left corner. Tiles that do not fit
 	//  into the new area will not be moved.
 
-	if(!A || !src) return 0
+	if(!A || !src)
+		return 0
 
 	var/list/turfs_src = get_area_turfs(src.type)
 	var/list/turfs_trg = get_area_turfs(A.type)
@@ -980,14 +989,18 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	var/src_min_x = 0
 	var/src_min_y = 0
 	for (var/turf/T in turfs_src)
-		if(T.x < src_min_x || !src_min_x) src_min_x = T.x
-		if(T.y < src_min_y || !src_min_y) src_min_y = T.y
+		if(T.x < src_min_x || !src_min_x)
+			src_min_x = T.x
+		if(T.y < src_min_y || !src_min_y)
+			src_min_y = T.y
 
 	var/trg_min_x = 0
 	var/trg_min_y = 0
 	for (var/turf/T in turfs_trg)
-		if(T.x < trg_min_x || !trg_min_x) trg_min_x = T.x
-		if(T.y < trg_min_y || !trg_min_y) trg_min_y = T.y
+		if(T.x < trg_min_x || !trg_min_x)
+			trg_min_x = T.x
+		if(T.y < trg_min_y || !trg_min_y)
+			trg_min_y = T.y
 
 	var/list/refined_src = new/list()
 	for(var/turf/T in turfs_src)
@@ -1057,10 +1070,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 							X.name = "wall"
 							qdel(O) // prevents multiple shuttle corners from stacking
 							continue
-						if(!istype(O,/obj)) continue
+						if(!istype(O,/obj))
+							continue
 						O.forceMove(X)
 					for(var/mob/M in T)
-						if(!istype(M,/mob) || istype(M, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
+						if(!istype(M,/mob) || istype(M, /mob/aiEye))
+							continue // If we need to check for more mobs, I'll add a variable
 						M.forceMove(X)
 
 // var/area/AR = X.loc
@@ -1123,7 +1138,8 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 
 /proc/parse_zone(zone)
-	if(zone == "r_hand") return "right hand"
+	if(zone == "r_hand")
+		return "right hand"
 	else if (zone == "l_hand") return "left hand"
 	else if (zone == "l_arm") return "left arm"
 	else if (zone == "r_arm") return "right arm"
@@ -1135,7 +1151,8 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	else if (zone == "r_hand") return "right hand"
 	else if (zone == "l_foot") return "left foot"
 	else if (zone == "r_foot") return "right foot"
-	else return zone
+	else
+		return zone
 
 /proc/get_true_location(atom/loc)
 	var/atom/subLoc = loc
@@ -1150,14 +1167,22 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 /proc/reverse_nearby_direction(direction)
 	switch(direction)
-		if(NORTH) return list(SOUTH,  SOUTHEAST, SOUTHWEST)
-		if(NORTHEAST) return list(SOUTHWEST, SOUTH,  WEST)
-		if(EAST) return list(WEST,   SOUTHWEST, NORTHWEST)
-		if(SOUTHEAST) return list(NORTHWEST, NORTH,  WEST)
-		if(SOUTH) return list(NORTH,  NORTHEAST, NORTHWEST)
-		if(SOUTHWEST) return list(NORTHEAST, NORTH,  EAST)
-		if(WEST) return list(EAST,   NORTHEAST, SOUTHEAST)
-		if(NORTHWEST) return list(SOUTHEAST, SOUTH,  EAST)
+		if(NORTH)
+			return list(SOUTH,  SOUTHEAST, SOUTHWEST)
+		if(NORTHEAST)
+			return list(SOUTHWEST, SOUTH,  WEST)
+		if(EAST)
+			return list(WEST,   SOUTHWEST, NORTHWEST)
+		if(SOUTHEAST)
+			return list(NORTHWEST, NORTH,  WEST)
+		if(SOUTH)
+			return list(NORTH,  NORTHEAST, NORTHWEST)
+		if(SOUTHWEST)
+			return list(NORTHEAST, NORTH,  EAST)
+		if(WEST)
+			return list(EAST,   NORTHEAST, SOUTHEAST)
+		if(NORTHWEST)
+			return list(SOUTHEAST, SOUTH,  EAST)
 
 /*
 Checks if that loc and dir has a item on the wall

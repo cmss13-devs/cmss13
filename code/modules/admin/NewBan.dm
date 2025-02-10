@@ -256,7 +256,8 @@ GLOBAL_DATUM(Banlist, /savefile)
 				return
 
 			if(!unban_player.is_permabanned)
-				to_chat(user, "The player is not currently permabanned.")
+				to_chat(user, SPAN_WARNING("The player is not currently permabanned."))
+				return
 
 			unban_player.is_permabanned = FALSE
 			unban_player.permaban_admin_id = null
@@ -272,7 +273,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 
 
 /datum/admins/proc/unbanpanel()
-	var/static/datum/unban_panel/unban_panel = new
+	var/datum/unban_panel/unban_panel = new
 	unban_panel.tgui_interact(owner.mob)
 
 /datum/admins/proc/stickypanel()

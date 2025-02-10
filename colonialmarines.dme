@@ -2122,7 +2122,6 @@
 #include "code\modules\mob\living\carbon\xenomorph\abilities\lurker\lurker_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\praetorian\praetorian_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\praetorian\praetorian_macros.dm"
-#include "code\modules\mob\living\carbon\xenomorph\abilities\praetorian\praetorian_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\predalien\predalien_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\predalien\predalien_macros.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\predalien\predalien_powers.dm"

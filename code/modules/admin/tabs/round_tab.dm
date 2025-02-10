@@ -57,7 +57,7 @@
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
 		var/datum/job/pred_job = GLOB.RoleAuthority.roles_for_mode[JOB_PREDATOR]
-		if(istype(pred_job) && !pred_job.spawn_positions)
+		if(istype(pred_job) && !pred_job.total_positions_so_far)
 			pred_job.set_spawn_positions(GLOB.players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
@@ -79,7 +79,7 @@
 	var/datum/job/J
 	for(i in GLOB.RoleAuthority.roles_for_mode) //All the roles in the game.
 		J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(J.total_positions > 0 && J.current_positions > 0)
+		if(J.total_positions_so_far > 0 && J.current_positions > 0)
 			roles += i
 
 	to_chat(usr, SPAN_BOLDNOTICE("There is not a single taken job slot."))
@@ -112,8 +112,7 @@
 	if(!role)
 		return
 	J = GLOB.RoleAuthority.roles_by_name[role]
-	var/tpos = J.spawn_positions
-	var/num = tgui_input_number(src, "How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos)
+	var/num = tgui_input_number(src, "How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]")
 	if(isnull(num))
 		return
 	if(!GLOB.RoleAuthority.modify_role(J, num))

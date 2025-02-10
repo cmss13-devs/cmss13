@@ -38,7 +38,6 @@
 
 /* Pre-pre-startup */
 /datum/game_mode/colonialmarines/can_start(bypass_checks = FALSE)
-	initialize_special_clamps()
 	return TRUE
 
 /datum/game_mode/colonialmarines/announce()

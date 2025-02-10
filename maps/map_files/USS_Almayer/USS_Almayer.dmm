@@ -11158,35 +11158,35 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/pillbottles{
 	pixel_x = -7;
-	pixel_y = 13
+	pixel_y = 15
 	},
 /obj/item/storage/box/pillbottles{
 	pixel_x = 7;
-	pixel_y = 13
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = 7;
-	pixel_y = 13
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = 7;
-	pixel_y = 13
-	},
-/obj/item/storage/box/pillbottles{
-	pixel_x = 7;
-	pixel_y = 13
+	pixel_y = 15
 	},
 /obj/item/storage/box/pillbottles{
 	pixel_x = -7;
-	pixel_y = 13
+	pixel_y = 15
 	},
 /obj/item/storage/box/pillbottles{
 	pixel_x = -7;
-	pixel_y = 13
+	pixel_y = 15
 	},
 /obj/item/storage/box/pillbottles{
 	pixel_x = -7;
-	pixel_y = 13
+	pixel_y = 15
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 7;
+	pixel_y = 15
 	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/chemistry)
@@ -45629,6 +45629,10 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
+	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/lockerroom)
 "nTs" = (
@@ -59647,10 +59651,6 @@
 "tzx" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
 	dir = 1
 	},
 /turf/open/floor/almayer/sterile_green_side,

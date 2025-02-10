@@ -3,6 +3,7 @@
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "autocam_editor"
+	needs_power = FALSE
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
@@ -363,3 +364,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/cas/isXRay()
 	return TRUE
+
+/obj/structure/machinery/camera/overwatch
+	name = "overwatch camera"
+	network = list(CAMERA_NET_OVERWATCH)

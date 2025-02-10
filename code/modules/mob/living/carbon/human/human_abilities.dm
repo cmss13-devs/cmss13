@@ -46,78 +46,6 @@
 	action_icon_state = "order_focus"
 	order_type = COMMAND_ORDER_FOCUS
 
-
-/datum/action/human_action/smartpack/action_cooldown_check()
-	if(!ishuman(owner))
-		return FALSE
-	var/mob/living/carbon/human/H = owner
-	if(istype(H.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = H.back
-		return !cooldown_check(S)
-	else
-		return FALSE
-
-/datum/action/human_action/smartpack/action_activate()
-	. = ..()
-	if(!istype(owner, /mob/living/carbon/human))
-		return
-	var/mob/living/carbon/human/H = owner
-	if(istype(H.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = H.back
-		form_call(S, H)
-
-/datum/action/human_action/smartpack/give_to(mob/living/L)
-	..()
-	if(!ishuman(L))
-		return
-	var/mob/living/carbon/human/H = L
-	if(istype(H.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = H.back
-		cooldown = set_cooldown(S)
-	else
-		return
-
-/datum/action/human_action/smartpack/proc/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
-	return
-
-/datum/action/human_action/smartpack/proc/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
-	return
-
-/datum/action/human_action/smartpack/proc/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
-	return S.activated_form
-
-
-/datum/action/human_action/smartpack/protective_form
-	name = "Protective Form"
-	action_icon_state = "smartpack_protect"
-
-/datum/action/human_action/smartpack/protective_form/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
-	return S.protective_form_cooldown
-
-/datum/action/human_action/smartpack/protective_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
-	S.protective_form(H)
-
-/datum/action/human_action/smartpack/immobile_form
-	name = "Immobile Form"
-	action_icon_state = "smartpack_immobile"
-
-/datum/action/human_action/smartpack/immobile_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
-	S.immobile_form(H)
-
-/datum/action/human_action/smartpack/repair_form
-	name = "Repair Form"
-	action_icon_state = "smartpack_repair"
-
-/datum/action/human_action/smartpack/repair_form/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
-	return S.repair_form_cooldown
-
-/datum/action/human_action/smartpack/repair_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
-	S.repair_form(H)
-
-/datum/action/human_action/smartpack/repair_form/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
-	return S.repairing
-
-
 /datum/action/human_action/psychic_whisper
 	name = "Psychic Whisper"
 	action_icon_state = "cultist_channel_hivemind"
@@ -153,7 +81,7 @@
 	name = "Psychic Radiance"
 	action_icon_state = "cultist_channel_hivemind"
 
-/datum/action/xeno_action/psychic_radiance/use_ability(atom/A)
+/datum/action/human_action/psychic_radiance/action_activate(atom/A)
 	. = ..()
 	if(!ishuman(owner))
 		return FALSE
@@ -368,7 +296,7 @@ CULT
 		to_chat(H, SPAN_WARNING("You have decided not to obtain your equipment."))
 		return
 
-	H.visible_message(SPAN_DANGER("[H] gets onto their knees and begins praying."), \
+	H.visible_message(SPAN_DANGER("[H] gets onto their knees and begins praying."),
 	SPAN_WARNING("You get onto your knees to pray."))
 
 	if(!do_after(H, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

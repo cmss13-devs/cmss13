@@ -167,15 +167,16 @@
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_fire_delay(FIRE_DELAY_TIER_10 + FIRE_DELAY_TIER_12/4)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
-	set_burst_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_10 + FIRE_DELAY_TIER_12/4)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_5 + RECOIL_AMOUNT_TIER_5/10
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
@@ -429,6 +430,7 @@
 /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint/gl
 	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camoflauge. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel grenade launcher. Uses 10x24mm caseless ammunition."
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/grenade/mk1)
+
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun
 
@@ -478,27 +480,11 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 	)
-	// CO rifle is guaranteed kitted out
-	random_spawn_chance = 100
-	random_spawn_rail = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/scope/mini,
-	)
-	random_spawn_under = list(
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/attached_gun/shotgun,
-	)
-	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/extended_barrel,
-	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	explo_proof = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
 	map_specific_decoration = TRUE
+	start_automatic = TRUE
 
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
@@ -506,7 +492,6 @@
 
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_lethal_mode)
-	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_id_lock)
 	. = ..()
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(
@@ -532,17 +517,16 @@
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	set_burst_amount(BURST_AMOUNT_TIER_4)
-	set_burst_delay(FIRE_DELAY_TIER_12)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
-	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	set_burst_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	fa_max_scatter = SCATTER_AMOUNT_TIER_7
 
 /obj/item/weapon/gun/rifle/m46c/able_to_fire(mob/user)
 	. = ..()
@@ -552,9 +536,9 @@
 			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
 			return FALSE
 
+		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
 		linked_human = null
 		is_locked = FALSE
-		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
 
 /obj/item/weapon/gun/rifle/m46c/pickup(user)
 	if(!linked_human)
@@ -595,26 +579,6 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
-/datum/action/item_action/m46c/toggle_id_lock/New(Target, obj/item/holder)
-	. = ..()
-	name = "Toggle ID lock"
-	action_icon_state = "id_lock_locked"
-	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/m46c/toggle_id_lock/action_activate()
-	. = ..()
-	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
-	protag_gun.toggle_lock()
-	if(protag_gun.is_locked)
-		action_icon_state = "id_lock_locked"
-	else
-		action_icon_state = "id_lock_unlocked"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-
 // -- ability actions procs -- \\
 
 /obj/item/weapon/gun/rifle/m46c/proc/toggle_lock(mob/user)
@@ -633,7 +597,6 @@
 		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
 		return
 
-	gun_firemode = GUN_FIREMODE_SEMIAUTO
 	iff_enabled = !iff_enabled
 	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
@@ -648,12 +611,6 @@
 	. = ..()
 	if(iff_enabled)
 		modify_fire_delay(FIRE_DELAY_TIER_12)
-		remove_firemode(GUN_FIREMODE_BURSTFIRE)
-		remove_firemode(GUN_FIREMODE_AUTOMATIC)
-
-	else
-		add_firemode(GUN_FIREMODE_BURSTFIRE)
-		add_firemode(GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
 	linked_human = H
@@ -1558,6 +1515,8 @@
 	set_fire_delay(FIRE_DELAY_TIER_11)//same fire rate as m41
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_4//same damage as m41 reg bullets probably
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		scatter = SCATTER_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 /obj/item/weapon/gun/rifle/type71/carbine/dual
@@ -1678,6 +1637,8 @@
 	set_fire_delay(FIRE_DELAY_TIER_9)
 	set_burst_amount(0)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_8
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
@@ -1988,6 +1949,291 @@
 	f90_shotgun_barrel.Attach(src)
 	update_attachable(f90_shotgun.slot)
 	update_attachable(f90_shotgun_barrel.slot)
+
+
+//NSG 23 ASSAULT RIFLE - RMC VARIANT
+
+/obj/item/weapon/gun/rifle/l23
+	name = "\improper L23 assault rifle"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
+	icon_state = "l23"
+	item_state = "l23"
+	fire_sound = "gun_nsg23"
+	reload_sound = 'sound/weapons/handling/nsg23_reload.ogg'
+	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
+	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	wield_delay = WIELD_DELAY_VERY_FAST
+	current_mag = /obj/item/ammo_magazine/rifle/l23
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/stock/l23,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/grenade/u1rmc,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/shotgun/af13,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/variable_zoom/twe,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
+	random_spawn_chance = 100 //L23 always spawns with attachments (for proper NSG underrail offsets it's X=23 Y=13)
+	random_spawn_under = list(
+		/obj/item/attachable/attached_gun/grenade/u1rmc,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/attached_gun/shotgun/af13,
+	)
+	random_spawn_rail = list(
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/mini,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
+	start_semiauto = FALSE
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/l23/Initialize(mapload, spawn_empty)
+	. = ..()
+	update_icon()
+
+/obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 12, "rail_y" = 20, "under_x" = 21, "under_y" = 11, "stock_x" = 5, "stock_y" = 17)
+
+/obj/item/weapon/gun/rifle/l23/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11 + FIRE_DELAY_TIER_12/4)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_SG + FIRE_DELAY_TIER_12/4)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	recoil = RECOIL_AMOUNT_TIER_4 + RECOIL_AMOUNT_TIER_5/5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	damage_falloff_mult = 0
+	fa_max_scatter = SCATTER_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/rifle/l23/handle_starting_attachment() //Adds L23's unremovable stock
+	..()
+	var/obj/item/attachable/stock/l23/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+//***************************************************************//
+/obj/item/weapon/gun/rifle/l23/breacher // One-handed UBS rifle
+	name = "\improper L23-B assault rifle"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. This however crippled its stopping power due to a shorter barrel needed to make it compact. Burst fire still kicks like a mule. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
+	icon_state = "l23"
+	item_state = "l23"
+	fire_sound = "gun_nsg23"
+	reload_sound = 'sound/weapons/handling/nsg23_reload.ogg'
+	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
+	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	wield_delay = WIELD_DELAY_VERY_FAST
+	current_mag = /obj/item/ammo_magazine/rifle/l23/extended
+
+	attachable_allowed = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/stock/l23,
+		/obj/item/attachable/attached_gun/shotgun/af13b,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/scope/mini,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	auto_retrieval_slot = WEAR_J_STORE
+
+	random_spawn_chance = 100 //L23 always spawns with attachments (for proper NSG underrail offsets it's X=23 Y=13)
+
+	random_spawn_rail = list(
+		/obj/item/attachable/reflex,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/bayonet/rmc,
+	)
+	start_semiauto = FALSE
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/l23/breacher/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_11 + FIRE_DELAY_TIER_12/4
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_SG + FIRE_DELAY_TIER_12/4
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+
+/obj/item/weapon/gun/rifle/l23/breacher/handle_starting_attachment() //Adds L23-B's breaching shotgun
+	..()
+	var/obj/item/attachable/attached_gun/shotgun/af13b/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/rifle/l23/leader
+	starting_attachment_types = list(
+		/obj/item/attachable/attached_gun/flamer/advanced,
+	)
+
+//L42A3 Battle Rifle
+
+/obj/item/weapon/gun/rifle/l42a3
+	name = "\improper L42A3 battle rifle"
+	desc = "The L42A3 Battle Rifle, found commonly in Three World Empire's armories. Used by RMC and IASF alike, valued for its reliability."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/marksman_rifles.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+	)
+	icon_state = "l42a3"
+	item_state = "l42a3"
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+	fire_sound = 'sound/weapons/gun_carbine.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/l42a
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/stock/carbine/l42a3,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/scope/variable_zoom/twe,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+	)
+
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle/l42a,
+		/obj/item/ammo_magazine/rifle/l42a/ap,
+		/obj/item/ammo_magazine/rifle/l42a/le,
+		/obj/item/ammo_magazine/rifle/l42a/rubber,
+		/obj/item/ammo_magazine/rifle/l42a/heap,
+		/obj/item/ammo_magazine/rifle/l42a/penetrating,
+		/obj/item/ammo_magazine/rifle/l42a/toxin,
+		/obj/item/ammo_magazine/rifle/l42a/extended,
+		/obj/item/ammo_magazine/rifle/l42a/incendiary,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+
+/obj/item/weapon/gun/rifle/l42a3/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 13, "rail_y" = 21, "under_x" = 20, "under_y" = 15, "stock_x" = 22, "stock_y" = 9)
+
+/obj/item/weapon/gun/rifle/l42a3/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(0)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10 + BULLET_DAMAGE_MULT_TIER_4
+	recoil = RECOIL_AMOUNT_TIER_3 + RECOIL_AMOUNT_TIER_5/2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_8
+
+/obj/item/weapon/gun/rifle/l42a3/training
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
+
+/obj/item/weapon/gun/rifle/l42a3/marksman
+	name = "\improper L42A3 battle rifle"
+	desc = "The L42A3 Battle Rifle, modification sold to TWE. This particular version of the weapon has been given a custom stock and variable zoom scope. Reliable and deadly."
+
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/ap
+
+	random_spawn_chance = 100 //L42A3 always spawns with attachments
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
+
+	random_spawn_under = list(
+		/obj/item/attachable/bipod,
+	)
+
+/obj/item/weapon/gun/rifle/l42a3/marksman/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11)
+
+/obj/item/weapon/gun/rifle/l42a3/marksman/handle_starting_attachment() //Adds Marksman DMR's standard attachments.
+	..()
+	var/obj/item/attachable/scope/variable_zoom/twe/SC = new(src)
+	SC.flags_attach_features &= ~ATTACH_REMOVABLE
+	SC.Attach(src)
+	update_attachable(SC.slot)
+	var/obj/item/attachable/stock/carbine/l42a3/marksman/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/rifle/l42a3/fal // THE RIGHT ARM OF FREEDOM, MOTHERFU-
+	name = "\improper L42A3-F battle rifle"
+	desc = "The L42A3 Battle Rifle with a heavily modified firing mechanism, giving it a burst-fire option. Extremely deadly."
+
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/extended
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/l42a3/fal/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_burst_amount(0)
+	set_burst_delay(FIRE_DELAY_TIER_9)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_9
+
+//-------------------------------------------------------
+
 
 //-------------------------------------------------------
 //XM51, Breaching Scattergun

@@ -26,8 +26,10 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
-	var/can_bloody = TRUE //Can blood spawn on this turf?
+	///Used by floors to indicate the floor is a tile (otherwise its plating)
+	var/intact_tile = TRUE
+	///Can blood spawn on this turf?
+	var/can_bloody = TRUE
 	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
@@ -47,9 +49,6 @@
 	var/chemexploded = FALSE // Prevents explosion stacking
 
 	var/turf_flags = NO_FLAGS
-
-	/// Whether we've broken through the ceiling yet
-	var/ceiling_debrised = FALSE
 
 	// Fishing
 	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
@@ -518,7 +517,7 @@
 	return
 
 /turf/proc/ceiling_debris(size = 1) //debris falling in response to airstrikes, etc
-	if(ceiling_debrised)
+	if(turf_flags & TURF_DEBRISED)
 		return
 
 	var/area/A = get_area(src)
@@ -562,7 +561,7 @@
 				for(var/i=1, i<=amount, i++)
 					new /obj/item/stack/sheet/metal(pick(turfs))
 					new /obj/item/ore(pick(turfs))
-	ceiling_debrised = TRUE
+	turf_flags |= TURF_DEBRISED
 
 /turf/proc/ceiling_desc(mob/user)
 
@@ -870,3 +869,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/proc/remove_flag(flag)
+	turf_flags &= ~flag

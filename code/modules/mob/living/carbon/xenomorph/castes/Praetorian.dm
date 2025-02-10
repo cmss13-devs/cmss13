@@ -30,7 +30,7 @@
 		/datum/xeno_strain/dancer,
 		/datum/xeno_strain/oppressor,
 		/datum/xeno_strain/vanguard,
-		/datum/xeno_strain/warden,
+		/datum/xeno_strain/valkyrie,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
@@ -115,8 +115,6 @@
 
 	if (!action_cooldown_check())
 		return
-	if (!check_and_use_plasma_owner())
-		return
 
 	var/turf/current_turf = get_turf(acidball_user)
 
@@ -125,6 +123,9 @@
 
 	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
+		return
+
+	if (!check_and_use_plasma_owner())
 		return
 
 

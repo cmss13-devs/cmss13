@@ -548,7 +548,7 @@
 	var/ex_falloff = base_ex_falloff
 	var/ex_falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	var/dir = null
-	var/angle = 360
+	var/shrapnel_spread = 360
 	//For chemical fire
 	var/radius = 0
 	var/intensity = 0
@@ -556,6 +556,8 @@
 	var/supplemented = 0 //for determining fire shape. Intensifying chems add, moderating chems remove.
 	var/smokerad = 0
 	var/fire_penetrating = FALSE
+	var/hit_angle
+
 	var/list/supplements = list()
 	for(var/datum/reagent/R in reagent_list)
 		if(R.explosive)
@@ -576,7 +578,8 @@
 	if(istype(my_atom, /obj/item/explosive))
 		var/obj/item/explosive/E = my_atom
 		ex_falloff_shape = E.falloff_mode
-		angle = E.angle
+		shrapnel_spread = E.shrapnel_spread
+		hit_angle = E.hit_angle
 		if(E.use_dir)
 			if(E.last_move_dir) // Higher precision for grenade and what not.
 				dir = E.last_move_dir
@@ -588,7 +591,7 @@
 	intensity = floor(intensity)
 	duration = floor(duration)
 	if(ex_power > 0)
-		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
+		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, shrapnel_spread, hit_angle)
 	if(intensity > 0)
 		var/firecolor = mix_burn_colors(supplements)
 		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating) // TODO: Implement directional flames
@@ -598,7 +601,7 @@
 	trigger_volatiles = FALSE
 	return exploded
 
-/datum/reagents/proc/explode(turf/sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
+/datum/reagents/proc/explode(turf/sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, shrapnel_angle, hit_angle)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -631,11 +634,11 @@
 		// some upper limits
 		if(shards > max_ex_shards)
 			shards = max_ex_shards
-		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
+		if(ispath(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
 			shards = max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION
-		if(istype(shard_type, /datum/ammo/bullet/shrapnel/hornet_rounds) && shards > max_ex_shards / HORNET_SHARDS_MAX_REDUCTION)
+		else if(ispath(shard_type, /datum/ammo/bullet/shrapnel/hornet_rounds) && shards > max_ex_shards / HORNET_SHARDS_MAX_REDUCTION)
 			shards = max_ex_shards / HORNET_SHARDS_MAX_REDUCTION
-		if(istype(shard_type, /datum/ammo/bullet/shrapnel/neuro) && shards > max_ex_shards / NEURO_SHARDS_MAX_REDUCTION)
+		else if(ispath(shard_type, /datum/ammo/bullet/shrapnel/neuro) && shards > max_ex_shards / NEURO_SHARDS_MAX_REDUCTION)
 			shards = max_ex_shards / NEURO_SHARDS_MAX_REDUCTION
 		if(ex_power > max_ex_power)
 			ex_power = max_ex_power
@@ -644,7 +647,7 @@
 
 		//Note: No need to log here as that is done in cell_explosion()
 		var/datum/cause_data/cause_data = create_cause_data("chemical explosion", source_atom)
-		create_shrapnel(sourceturf, shards, dir, angle, shard_type, cause_data)
+		create_shrapnel(sourceturf, shards, isnum(hit_angle) ? hit_angle : dir, shrapnel_angle, shard_type, cause_data, FALSE, 0.15, isnum(hit_angle))
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			addtimer(CALLBACK(my_atom.loc, TYPE_PROC_REF(/atom, ex_act), ex_power), 0.2 SECONDS)
 			ex_power = ex_power / 2
@@ -688,7 +691,7 @@
 	if(smokerad)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
 		smoke.set_up(max(smokerad, 1), 0, sourceturf, null, 6)
-		smoke.start()
+		smoke.start(intensity, max_fire_int)
 		smoke = null
 
 	exploded = TRUE // clears reagents after all reactions processed
@@ -707,6 +710,13 @@
 
 	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve()), R, radius, FALSE, flameshape)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)
+
+/// Checks if any of the reagents contained within are harmful
+/datum/reagents/proc/contains_harmful_substances()
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		for(var/datum/chem_property/property as anything in reagent.properties)
+			if(property.can_cause_harm())
+				return TRUE
 
 /turf/proc/reset_chemexploded()
 	chemexploded = FALSE

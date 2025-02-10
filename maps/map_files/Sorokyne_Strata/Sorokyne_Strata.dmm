@@ -97,6 +97,10 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/paths/north_outpost)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -113,6 +117,10 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aay" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/plating,
+/area/strata/ug/interior/outpost/platform)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -421,7 +429,7 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /obj/structure/machinery/power/apc/no_power/west,
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
 "abM" = (
 /obj/item/stack/rods,
@@ -975,7 +983,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/jungle/structures/research)
 "aea" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -2311,7 +2319,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/mining_outpost/hive)
 "ajn" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/item/clothing/head/soft/ferret{
 	pixel_y = 9
 	},
@@ -3077,7 +3085,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "aon" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "aoo" = (
@@ -3550,7 +3558,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research)
 "aqV" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research)
 "aqW" = (
@@ -13247,7 +13255,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "bvl" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "bvn" = (
@@ -13543,7 +13551,7 @@
 /turf/open/floor/plating,
 /area/strata/ag/interior/outside/administration)
 "bxu" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -15165,7 +15173,7 @@
 /area/strata/ug/interior/jungle/structures/monitoring/south)
 "bRf" = (
 /obj/structure/machinery/power/apc/power/south,
-/turf/open/asphalt/cement,
+/turf/open/floor/plating,
 /area/strata/ag/exterior/tcomms/mining_caves)
 "bRg" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -17667,7 +17675,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/checkpoints/south)
 "cxf" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "cxg" = (
@@ -17924,7 +17932,7 @@
 /turf/open/gm/river,
 /area/strata/ug/interior)
 "cOe" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -18462,10 +18470,6 @@
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outside/checkpoints/west)
-"dCX" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/asphalt/cement/cement3,
-/area/strata/ug/interior/outpost/platform)
 "dDM" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor3,
@@ -20020,7 +20024,7 @@
 "fEW" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/caves/shed_five_caves)
 "fFy" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -20722,10 +20726,6 @@
 /obj/structure/bookcase,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
-"gwY" = (
-/obj/structure/platform/metal/strata/north,
-/turf/open/floor/plating,
-/area/strata/ag/exterior/paths/mining_outpost_exterior)
 "gya" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -21517,7 +21517,7 @@
 /turf/open/gm/river,
 /area/strata/ug/interior/jungle/platform/east)
 "hJT" = (
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/paths/north_outpost)
 "hKf" = (
 /obj/structure/platform/stone/strata/north,
@@ -21612,7 +21612,7 @@
 /turf/open/floor/strata/white_cyan3/east,
 /area/strata/ag/interior/outpost/med)
 "hPK" = (
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/caves/shed_five_caves)
 "hQq" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -21713,7 +21713,7 @@
 "hYl" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/recharge_station,
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/caves/shed_five_caves)
 "hYu" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -22144,7 +22144,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "ixQ" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/strata/cyan3/east,
 /area/strata/ag/interior/outpost/med)
 "ixS" = (
@@ -23188,7 +23188,7 @@
 "jVg" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/power/apc/no_power/west,
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/caves/shed_five_caves)
 "jVD" = (
 /obj/effect/decal/cleanable/blood{
@@ -26805,7 +26805,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "oZt" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "oZy" = (
@@ -29006,7 +29006,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "rRC" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen)
 "rSl" = (
@@ -40608,7 +40608,7 @@ crY
 crY
 crY
 aCl
-gwY
+vAw
 aNl
 aNo
 aNl
@@ -50559,7 +50559,7 @@ aac
 aac
 aac
 bLj
-hJT
+aau
 awA
 ayw
 awJ
@@ -63401,11 +63401,11 @@ wLv
 oSN
 tnM
 wZZ
-wZZ
-srk
-aad
-aad
+aay
 fBG
+aad
+aad
+srk
 aad
 aad
 wZZ
@@ -63580,7 +63580,7 @@ oPN
 oPN
 oPN
 oPN
-dCX
+oPN
 oPN
 oPN
 qrz

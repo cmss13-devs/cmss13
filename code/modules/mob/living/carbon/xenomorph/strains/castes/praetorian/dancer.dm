@@ -10,6 +10,7 @@
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+		/datum/action/xeno_action/activable/corrosive_acid,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/prae_impale,
@@ -63,6 +64,11 @@
 	if (!action_cooldown_check())
 		return
 
+	if (!ismob(target_atom))
+		apply_cooldown_override(impale_click_miss_cooldown)
+		update_button_icon()
+		return
+
 	if (!dancer_user.check_state())
 		return
 
@@ -99,7 +105,7 @@
 
 	var/damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
 
-	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"), \
+	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 
 	if(buffed)
@@ -178,6 +184,11 @@
 		return
 
 	if (!istype(dancer_user) || !dancer_user.check_state())
+		return
+
+	if (!ismob(target_atom))
+		apply_cooldown_override(tail_click_miss_cooldown)
+		update_button_icon()
 		return
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))

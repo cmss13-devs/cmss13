@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - code_imp: "Moves all the code in praetorian_powers into its own respective strain and removes praetorian_power"

@@ -555,7 +555,22 @@
 	worn_state = "uniform"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
+/obj/item/clothing/under/marine/veteran/pmc/corporate/medic //TODO: make this an armband accessory instead of a jumpsuit
+	name = "\improper WY corporate security medic uniform"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a red armband denoting the wearer's medical purpose."
+	icon_state = "med_uniform"
+	item_state = "med_uniform"
+	worn_state = "med_uniform"
+
+/obj/item/clothing/under/marine/veteran/pmc/corporate/engineer //TODO: make this an armband accessory instead of a jumpsuit
+	name = "\improper WY corporate security engineer uniform"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a yellow armband denoting the wearer's technical purpose."
+	icon_state = "eng_uniform"
+	item_state = "eng_uniform"
+	worn_state = "eng_uniform"
+
 /obj/item/clothing/under/marine/veteran/pmc/corporate/lead
+	name = "\improper WY corporate security leader uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
 	icon_state = "lead_uniform"
 	item_state = "lead_uniform"

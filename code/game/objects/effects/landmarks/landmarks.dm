@@ -85,7 +85,8 @@
 	var/autoremove = TRUE  // Delete mapped turf when landmark is deleted, such as by an insert in replace mode
 /obj/effect/landmark/nightmare/Initialize(mapload, ...)
 	. = ..()
-	if(!insert_tag) return
+	if(!insert_tag)
+		return
 	if(!replace && GLOB.nightmare_landmarks[insert_tag])
 		return
 	GLOB.nightmare_landmarks[insert_tag] = get_turf(src)

@@ -544,7 +544,8 @@
 /obj/item/weapon/gun/pistol/highpower/cock_gun(mob/user, manual = FALSE)
 	if(manual)
 		..()
-	else return
+	else
+		return
 
 /obj/item/weapon/gun/pistol/highpower/reload(mob/user, obj/item/ammo_magazine/magazine)
 	//reset every time its reloaded

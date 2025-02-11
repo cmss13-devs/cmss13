@@ -287,7 +287,7 @@
 	assignment = JOB_USCM_OBSV
 	rank = JOB_USCM_OBSV
 	role_comm_title = "VO"
-
+	minimap_background = "background_visit_command"
 
 /datum/equipment_preset/uscm_co/council
 	name = "USCM Commanding Officer (CO+)"

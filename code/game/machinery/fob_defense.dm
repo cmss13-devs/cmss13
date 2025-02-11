@@ -254,6 +254,72 @@
 	update_icon()
 
 //****************************************** SENTRYGUN GENERAL ************************************************//
+/obj/structure/machinery/fob/weapons_platform
+	icon_state = "weapons-platform"
+	icon = 'icons/obj/structures/machinery/rocket-launcher-64x64.dmi'
+	var/obj/structure/machinery/fob/sentrygun/linked_gun
+
+/obj/structure/machinery/fob/weapons_platform/attack_hand(mob/living/user)
+	return
+
+/obj/structure/machinery/fob/weapons_platform/update_icon()
+	return
+
+/obj/structure/machinery/fob/weapons_platform/attackby(obj/item/item, mob/user)
+
+	if(istype(item, /obj/item/powerloader_clamp))
+		if(linked_gun)
+			linked_gun.attackby(item, user)
+			return
+
+		var/obj/item/powerloader_clamp/powerloader_clamp = item
+		if(istype(powerloader_clamp.loaded,/obj/structure/machinery/fob/sentrygun))
+			var/obj/structure/machinery/fob/sentrygun/loaded = powerloader_clamp.loaded
+			loaded.forceMove(get_turf(src))
+			loaded.linked_platform = src
+			linked_gun = loaded
+			linked_gun.set_area()
+			linked_gun.update_icon()
+			powerloader_clamp.loaded = null
+			powerloader_clamp.update_icon()
+			return
+
+
+	. = ..()
+
+/obj/structure/machinery/fob/weapons_platform/process()
+	/*if(!is_on)
+		stop_processing()
+		if(linked_gun)
+		linked_gun.loose_target()
+		return*/
+
+	if(!linked_gun)
+		return
+
+	linked_gun.check_targets()
+
+	linked_gun.obtain_targets()
+
+	linked_gun.aim()
+
+	return TRUE
+
+/obj/structure/machinery/fob/weapons_platform/start_processing()
+	START_PROCESSING(SSdefprocess, src)
+
+/obj/structure/machinery/fob/weapons_platform/stop_processing()
+	STOP_PROCESSING(SSdefprocess, src)
+
+/obj/structure/machinery/fob/weapons_platform/update_power()
+	.=..()
+	if(!is_on)
+		stop_processing()
+		//return COMMENTED FOR TESTING
+	start_processing()
+	if(linked_gun)
+		linked_gun.set_area()
+
 
 /obj/structure/machinery/fob/sentrygun
 	var/mob/living/target
@@ -264,20 +330,18 @@
 	var/range_bounds
 	var/image/target_indication
 	var/sentry_range = 8
+	var/obj/structure/machinery/fob/weapons_platform/linked_platform
 
-/obj/structure/machinery/fob/sentrygun/process()
-	/*if(!is_on)
-		loose_target()
-		stop_processing()
-		return*/
 
-	check_targets()
 
-	obtain_targets()
-
-	aim()
-
-	return TRUE
+/obj/structure/machinery/fob/sentrygun/attackby(obj/item/item, mob/user)
+	. = ..()
+	if(istype(item, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/powerloader_clamp = item
+		if(powerloader_clamp.loaded == src)
+			if(linked_platform)
+				linked_platform.linked_gun = null
+				linked_platform = null
 
 /obj/structure/machinery/fob/sentrygun/proc/check_targets()
 	for(var/target in targets)
@@ -343,19 +407,10 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/fob/sentrygun/start_processing()
-	START_PROCESSING(SSdefprocess, src)
-
-/obj/structure/machinery/fob/sentrygun/stop_processing()
-	STOP_PROCESSING(SSdefprocess, src)
-
-/obj/structure/machinery/fob/sentrygun/update_power()
-	.=..()
-	if(!is_on)
-		stop_processing()
-		//return COMMENTED FOR TESTING
-	start_processing()
-	set_area()
+/obj/structure/machinery/fob/sentrygun/update_icon()
+	. = ..()
+	if(!linked_platform)
+		icon_state = "[initial(icon_state)]-undeployed"
 
 //****************************************** SENZOR ARRAY ************************************************//
 /obj/structure/machinery/fob/sentrygun/senzor
@@ -403,6 +458,7 @@
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
 	diameter = 13
+	layer = 4
 	var/datum/beam/laser_beam
 	var/lockon = 0
 	var/max_lock = 10
@@ -488,17 +544,20 @@
 /obj/structure/machinery/fob/sentrygun/missile
 	name = "\improper UE-09 Service Terminal"
 	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
-	icon_state = "terminal"
-	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
-	ammo = /datum/ammo/rocket/guided
+	icon_state = "rocket-launcher"
+	icon = 'icons/obj/structures/machinery/rocket-launcher-64x64.dmi'
+	ammo = /datum/ammo/rocket
 	var/list/locked_on_targets = list()
+
 
 /obj/structure/machinery/fob/sentrygun/missile/obtain_targets()
 	. = ..()
-	if(!linked_terminal)
+	if(!linked_platform) //this should never happen
+		return
+	if(!linked_platform.linked_terminal)
 		return
 	targets = list()
-	for(var/obj/structure/machinery/fob/sentrygun/senzor/senzor in linked_terminal.linked_machinery)
+	for(var/obj/structure/machinery/fob/sentrygun/senzor/senzor in linked_platform.linked_terminal.linked_machinery)
 		var/list/new_targets = senzor.obtain_targets()
 		if(length(new_targets))
 			for(var/mob/living/possible_target in new_targets)
@@ -536,7 +595,10 @@
 	new_projectile.fire_at(chosen_target, null, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 
 
-
+/obj/structure/machinery/fob/sentrygun/missile/Destroy()
+	. = ..()
+	for(mob/target in locked_on_targets)
+		loose_target(target)
 
 
 

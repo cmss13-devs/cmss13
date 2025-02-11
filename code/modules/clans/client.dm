@@ -361,12 +361,12 @@
 
 				if(input == "Remove from clan" && target.clan_id)
 					target.clan_id = null
-					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_YOUNG]
+					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from their clan."))
 					message_admins("[key_name_admin(src)] has removed [player_name] from their current clan.")
 				else if(input == "Remove from Ancient")
-					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_YOUNG]
-					target.permissions = GLOB.clan_ranks[CLAN_RANK_YOUNG].permissions
+					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
+					target.permissions = GLOB.clan_ranks[CLAN_RANK_BLOODED].permissions
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from ancient."))
 					message_admins("[key_name_admin(src)] has removed [player_name] from ancient.")
 				else if(input == "Make Ancient" && is_clan_manager)
@@ -390,7 +390,7 @@
 					return
 
 				var/list/datum/yautja_rank/ranks = GLOB.clan_ranks.Copy()
-				ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
+				ranks -= list(CLAN_RANK_ADMIN, CLAN_RANK_YOUNG)// Admin rank should not and cannot be obtained from here, Youngblood should only be used for non-WL players
 
 				var/datum/yautja_rank/chosen_rank
 				if(has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))

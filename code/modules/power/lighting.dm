@@ -174,6 +174,11 @@
 	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
 	light_color = LIGHT_COLOR_XENON
 
+/obj/structure/machinery/light/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
+
 // the smaller bulb light fixture
 
 /obj/structure/machinery/light/small

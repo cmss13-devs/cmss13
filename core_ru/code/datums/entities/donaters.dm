@@ -131,10 +131,10 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 	if(user?.client?.player_data?.donator_info && user.client.player_data.donator_info.skins["[item.type]"] && !user.client.player_data.donator_info.skins_used["[item.type]"])
 		if(handle_skinning_item(item, user))
 			return
-
+/* OOD, upstream messed around so need fix
 	if(handle_decorator_override(item, user))
 		return
-
+*/
 	. = ..()
 
 /obj/structure/painting_table/proc/handle_decorator_override(obj/item/decoratable, mob/user, selectable_types = list("snow" = "s_", "desert" = "d_", "classic" = "c_", "normal" = ""))

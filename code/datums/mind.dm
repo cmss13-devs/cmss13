@@ -128,14 +128,18 @@
 
 //Initialisation procs
 /mob/proc/mind_initialize()
-	if(mind) mind.key = key
+	if(mind)
+		mind.key = key
 	else
 		mind = new /datum/mind(key, ckey)
 		mind.original = src
-		if(SSticker) SSticker.minds += mind
-		else world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
+		if(SSticker)
+			SSticker.minds += mind
+		else
+			world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
 		. = 1 //successfully created a new mind
-	if(!mind.name) mind.name = real_name
+	if(!mind.name)
+		mind.name = real_name
 	mind.current = src
 
 //this is an objective that the player has just completed

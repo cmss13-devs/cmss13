@@ -81,7 +81,8 @@
 			SPAN_NOTICE("You start welding \the [src] with \the [WT]."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, weldtime * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(!src || !WT.isOn()) return 0
+				if(!src || !WT.isOn())
+					return 0
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
 					user.visible_message(SPAN_NOTICE("[user] welds \the [src] shut."),

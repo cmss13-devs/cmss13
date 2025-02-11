@@ -100,7 +100,8 @@ can cause issues with ammo types getting mixed up during the burst.
 		return
 
 	unload_shell(user)
-	if(!current_mag.current_rounds && !in_chamber) update_icon()
+	if(!current_mag.current_rounds && !in_chamber)
+		update_icon()
 
 /obj/item/weapon/gun/shotgun/proc/unload_shell(mob/user)
 	if(isnull(current_mag) || !length(current_mag.chamber_contents))
@@ -110,7 +111,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(user)
 		user.put_in_hands(new_handful)
 		playsound(user, reload_sound, 25, 1)
-	else new_handful.forceMove(get_turf(src))
+	else
+		new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
@@ -611,7 +613,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	qdel(projectile_to_fire)
 	if(!current_mag)
 		return
-	if(refund) current_mag.current_rounds++
+	if(refund)
+		current_mag.current_rounds++
 	return TRUE
 
 /obj/item/weapon/gun/shotgun/double/reload_into_chamber(mob/user)

@@ -128,10 +128,14 @@
 
 	if(!pixel_x && !pixel_y)
 		switch(dir)
-			if(NORTH) pixel_y = 25
-			if(SOUTH) pixel_y = -25
-			if(EAST) pixel_x = 25
-			if(WEST) pixel_x = -25
+			if(NORTH)
+				pixel_y = 25
+			if(SOUTH)
+				pixel_y = -25
+			if(EAST)
+				pixel_x = 25
+			if(WEST)
+				pixel_x = -25
 
 	first_run()
 

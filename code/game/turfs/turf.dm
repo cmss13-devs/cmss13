@@ -580,7 +580,7 @@
 		if(CEILING_GLASS)
 			return "The ceiling above is glass. That's not going to stop anything."
 		if(CEILING_METAL)
-			return "The ceiling above is metal. You can't see through it with a camera from above - it will likely stop medevac pickups but not CAS."
+			return "The ceiling above is metal. You can't see through it with a camera from above. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)
 			return "It is underground. A thin cavern roof lies above. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_BLOCK_CAS)

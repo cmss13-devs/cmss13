@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/ore/silver,
 		/obj/item/ore/gold,
 		/obj/item/ore/diamond,
-		/obj/item/reagent_container/food/snacks/fishable/urchin/red
+		/obj/item/reagent_container/food/snacks/fishable/Urchin/red
 	)
 	var/list/ultra_rare_fishable_atoms = list(
 		/obj/item/card/data/clown,

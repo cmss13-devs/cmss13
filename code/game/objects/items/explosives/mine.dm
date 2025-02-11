@@ -12,14 +12,14 @@
 	throwforce = 5
 	throw_range = 6
 	throw_speed = SPEED_VERY_FAST
-	unacidable = TRUE
+	unacidable = FALSE
 	flags_atom = FPRINT|CONDUCT
 	antigrief_protection = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
 	max_container_volume = 120
-	reaction_limits = list( "max_ex_power" = 100, "base_ex_falloff" = 80, "max_ex_shards" = 40,
-							"max_fire_rad" = 4, "max_fire_int" = 20, "max_fire_dur" = 18,
-							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
+	reaction_limits = list( "max_ex_power" = 100, "base_ex_falloff" = 80, "max_ex_shards" = 25,
+							"max_fire_rad" = 4, "max_fire_int" = 20, "max_fire_dur" = 15,
+							"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	angle = 60
 	use_dir = TRUE

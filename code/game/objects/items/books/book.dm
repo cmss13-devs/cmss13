@@ -101,7 +101,8 @@
 				return
 
 	else if(istype(W, /obj/item/tool/kitchen/knife) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		if(carved) return
+		if(carved)
+			return
 		to_chat(user, SPAN_NOTICE("You begin to carve out [title]."))
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_NOTICE("You carve out the pages from [title]! You didn't want to read it anyway."))

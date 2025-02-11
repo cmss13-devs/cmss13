@@ -58,8 +58,10 @@
 
 /datum/reagent/drink/tomatojuice/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
-	if(M.getFireLoss() && prob(20)) M.heal_limb_damage(0,1)
+	if(!.)
+		return
+	if(M.getFireLoss() && prob(20))
+		M.heal_limb_damage(0,1)
 
 
 /datum/reagent/drink/limejuice
@@ -70,8 +72,10 @@
 
 /datum/reagent/drink/limejuice/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
-	if(M.getToxLoss() && prob(20)) M.apply_damage(-1*REM, TOX)
+	if(!.)
+		return
+	if(M.getToxLoss() && prob(20))
+		M.apply_damage(-1*REM, TOX)
 
 /datum/reagent/drink/carrotjuice
 	name = "Carrot juice"
@@ -113,7 +117,8 @@
 
 /datum/reagent/drink/poisonberryjuice/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.apply_damage(1, TOX)
 
 /datum/reagent/drink/watermelonjuice
@@ -194,7 +199,8 @@
 
 /datum/reagent/drink/cold/milkshake/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	if(!M)
 		M = holder.my_atom
 	if(prob(1))
@@ -303,7 +309,8 @@
 
 /datum/reagent/drink/cold/nuka_cola/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness +=5
@@ -361,7 +368,8 @@
 
 /datum/reagent/drink/coffee/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.make_jittery(5)
 	if(adj_temp > 0 && holder)
 		holder.remove_reagent("frostoil", 10*REAGENTS_METABOLISM)
@@ -401,9 +409,11 @@
 
 /datum/reagent/drink/coffee/soy_latte/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.sleeping = 0
-	if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
+	if(M.getBruteLoss() && prob(20))
+		M.heal_limb_damage(1,0)
 
 /datum/reagent/drink/coffee/cafe_latte
 	name = "Cafe Latte"
@@ -416,9 +426,11 @@
 
 /datum/reagent/drink/coffee/cafe_latte/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.sleeping = 0
-	if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
+	if(M.getBruteLoss() && prob(20))
+		M.heal_limb_damage(1,0)
 
 /datum/reagent/drink/tea
 	name = "Tea"
@@ -434,7 +446,8 @@
 
 /datum/reagent/drink/tea/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	if(M.getToxLoss() && prob(20))
 		M.apply_damage(-1, TOX)
 
@@ -509,13 +522,16 @@
 
 /datum/reagent/atomicbomb/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.druggy = max(M.druggy, 50)
 	M.confused = max(M.confused+2,0)
 	M.make_dizzy(10)
-	if(!M.stuttering) M.stuttering = 1
+	if(!M.stuttering)
+		M.stuttering = 1
 	M.stuttering += 3
-	if(!data) data = 1
+	if(!data)
+		data = 1
 	data++
 	switch(data)
 		if(51 to 200)
@@ -533,12 +549,15 @@
 
 /datum/reagent/gargle_blaster/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
-	if(!data) data = 1
+	if(!.)
+		return
+	if(!data)
+		data = 1
 	data++
 	M.dizziness +=6
 	if(data >= 15 && data <45)
-		if(!M.stuttering) M.stuttering = 1
+		if(!M.stuttering)
+			M.stuttering = 1
 		M.stuttering += 3
 	else if(data >= 45 && prob(50) && data <55)
 		M.confused = max(M.confused+3,0)
@@ -556,13 +575,16 @@
 
 /datum/reagent/neurotoxin/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.KnockDown(5)
-	if(!data) data = 1
+	if(!data)
+		data = 1
 	data++
 	M.dizziness +=6
 	if(data >= 15 && data <45)
-		if(!M.stuttering) M.stuttering = 1
+		if(!M.stuttering)
+			M.stuttering = 1
 		M.stuttering += 3
 	else if(data >= 45 && prob(50) && data <55)
 		M.confused = max(M.confused+3,0)
@@ -580,34 +602,45 @@
 
 /datum/reagent/hippies_delight/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.druggy = max(M.druggy, 50)
-	if(!data) data = 1
+	if(!data)
+		data = 1
 	data++
 	switch(data)
 		if(1 to 5)
-			if(!M.stuttering) M.stuttering = 1
+			if(!M.stuttering)
+				M.stuttering = 1
 			M.make_dizzy(10)
-			if(prob(10)) M.emote(pick("twitch","giggle"))
+			if(prob(10))
+				M.emote(pick("twitch","giggle"))
 		if(5 to 10)
-			if(!M.stuttering) M.stuttering = 1
+			if(!M.stuttering)
+				M.stuttering = 1
 			M.make_jittery(20)
 			M.make_dizzy(20)
 			M.druggy = max(M.druggy, 45)
-			if(prob(20)) M.emote(pick("twitch","giggle"))
+			if(prob(20))
+				M.emote(pick("twitch","giggle"))
 		if(10 to 200)
-			if(!M.stuttering) M.stuttering = 1
+			if(!M.stuttering)
+				M.stuttering = 1
 			M.make_jittery(40)
 			M.make_dizzy(40)
 			M.druggy = max(M.druggy, 60)
-			if(prob(30)) M.emote(pick("twitch","giggle"))
+			if(prob(30))
+				M.emote(pick("twitch","giggle"))
 		if(200 to INFINITY)
-			if(!M.stuttering) M.stuttering = 1
+			if(!M.stuttering)
+				M.stuttering = 1
 			M.make_jittery(60)
 			M.make_dizzy(60)
 			M.druggy = max(M.druggy, 75)
-			if(prob(40)) M.emote(pick("twitch","giggle"))
-			if(prob(30)) M.apply_damage(2, TOX)
+			if(prob(40))
+				M.emote(pick("twitch","giggle"))
+			if(prob(30))
+				M.apply_damage(2, TOX)
 	holder.remove_reagent(src.id, 0.2)
 
 /datum/reagent/drink/cold/rewriter
@@ -618,7 +651,8 @@
 
 /datum/reagent/drink/cold/rewriter/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	M.make_jittery(5)
 
 /datum/reagent/drink/doctor_delight

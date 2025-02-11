@@ -12,6 +12,8 @@
 	var/story_text
 	/// Whether or not the survivor is an inherently hostile to marines.
 	var/hostile = FALSE
+	/// How many survs have been spawned total
+	var/static/total_spawned = 0
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
@@ -34,6 +36,8 @@
 
 /datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
 	. = ..()
+	total_spawned++
+
 	var/mob/living/carbon/human/H = .
 
 	var/list/potential_spawners = list()

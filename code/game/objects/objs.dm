@@ -210,11 +210,13 @@
 	return
 
 /obj/attack_hand(mob/user)
-	if(can_buckle) manual_unbuckle(user)
+	if(can_buckle)
+		manual_unbuckle(user)
 	else . = ..()
 
 /obj/attack_remote(mob/user)
-	if(can_buckle) manual_unbuckle(user)
+	if(can_buckle)
+		manual_unbuckle(user)
 	else . = ..()
 
 /obj/proc/handle_rotation()
@@ -226,7 +228,8 @@
 
 /obj/MouseDrop_T(mob/M, mob/user)
 	if(can_buckle)
-		if(!istype(M)) return
+		if(!istype(M))
+			return
 		buckle_mob(M, user)
 	else . = ..()
 

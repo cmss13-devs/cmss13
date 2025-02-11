@@ -3,7 +3,8 @@
 	set name = "Show/Hide Radio Chatter"
 	set category = "Preferences.Chat"
 	set desc = "Toggle seeing radio chatter from radios and speakers"
-	if(!admin_holder) return
+	if(!admin_holder)
+		return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers"))
@@ -12,7 +13,8 @@
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences.Sound"
 	set desc = "Toggle hearing a notification when admin PMs are received"
-	if(!admin_holder) return
+	if(!admin_holder)
+		return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))

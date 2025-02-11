@@ -550,7 +550,8 @@
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
 	var/tag = tgui_input_list(usr, "Which dropship should be force hijacked?", "Select a dropship:", shuttles)
-	if(!tag) return
+	if(!tag)
+		return
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
 
@@ -834,7 +835,8 @@
 
 
 /datum/admins/proc/chempanel()
-	if(!check_rights(R_MOD)) return
+	if(!check_rights(R_MOD))
+		return
 
 	var/dat
 	if(check_rights(R_MOD,0))
@@ -947,63 +949,84 @@
 		if("Custom HE")
 			var/obj/structure/ob_ammo/warhead/explosive/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "HE orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
-			if(isnull(OBShell.clear_power)) return
+			if(isnull(OBShell.clear_power))
+				return
 			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
-			if(isnull(OBShell.clear_falloff)) return
+			if(isnull(OBShell.clear_falloff))
+				return
 			OBShell.standard_power = tgui_input_number(src, "How much explosive power should the main blasts have?", "Set blast power", 600, 3000)
-			if(isnull(OBShell.standard_power)) return
+			if(isnull(OBShell.standard_power))
+				return
 			OBShell.standard_falloff = tgui_input_number(src, "How much falloff should the main blasts have?", "Set blast falloff", 30)
-			if(isnull(OBShell.standard_falloff)) return
+			if(isnull(OBShell.standard_falloff))
+				return
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
-			if(isnull(OBShell.clear_delay)) return
+			if(isnull(OBShell.clear_delay))
+				return
 			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
-			if(isnull(OBShell.double_explosion_delay)) return
+			if(isnull(OBShell.double_explosion_delay))
+				return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
 		if("Custom Cluster")
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.total_amount = tgui_input_number(src, "How many salvos should be fired?", "Set cluster number", 60)
-			if(isnull(OBShell.total_amount)) return
+			if(isnull(OBShell.total_amount))
+				return
 			OBShell.instant_amount = tgui_input_number(src, "How many shots per salvo? (Max 10)", "Set shot count", 3)
-			if(isnull(OBShell.instant_amount)) return
+			if(isnull(OBShell.instant_amount))
+				return
 			if(OBShell.instant_amount > 10)
 				OBShell.instant_amount = 10
 			OBShell.explosion_power = tgui_input_number(src, "How much explosive power should the blasts have?", "Set blast power", 300, 1500)
-			if(isnull(OBShell.explosion_power)) return
+			if(isnull(OBShell.explosion_power))
+				return
 			OBShell.explosion_falloff = tgui_input_number(src, "How much falloff should the blasts have?", "Set blast falloff", 150)
-			if(isnull(OBShell.explosion_falloff)) return
+			if(isnull(OBShell.explosion_falloff))
+				return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
 		if("Custom Incendiary")
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
-			if(isnull(OBShell.clear_power)) return
+			if(isnull(OBShell.clear_power))
+				return
 			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
-			if(isnull(OBShell.clear_falloff)) return
+			if(isnull(OBShell.clear_falloff))
+				return
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
-			if(isnull(OBShell.clear_delay)) return
+			if(isnull(OBShell.clear_delay))
+				return
 			OBShell.distance = tgui_input_number(src, "How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18, 30)
-			if(isnull(OBShell.distance)) return
+			if(isnull(OBShell.distance))
+				return
 			if(OBShell.distance > 30)
 				OBShell.distance = 30
 			OBShell.fire_level = tgui_input_number(src, "How long should the fire last?", "Set fire duration", 70)
-			if(isnull(OBShell.fire_level)) return
+			if(isnull(OBShell.fire_level))
+				return
 			OBShell.burn_level = tgui_input_number(src, "How damaging should the fire be?", "Set fire strength", 80)
-			if(isnull(OBShell.burn_level)) return
+			if(isnull(OBShell.burn_level))
+				return
 			var/list/firetypes = list("white","blue","red","green","custom")
 			OBShell.fire_type = tgui_input_list(usr, "Select the fire color:", "Fire color", firetypes)
-			if(isnull(OBShell.fire_type)) return
+			if(isnull(OBShell.fire_type))
+				return
 			OBShell.fire_color = null
 			if(OBShell.fire_type == "custom")
 				OBShell.fire_type = "dynamic"
 				OBShell.fire_color = input(src, "Please select Fire color.", "Fire color") as color|null
-				if(isnull(OBShell.fire_color)) return
+				if(isnull(OBShell.fire_color))
+					return
 			statsmessage = "Custom Incendiary OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Fire Distance: [OBShell.distance], Fire Duration: [OBShell.fire_level], Fire Strength: [OBShell.burn_level]."
 			warhead = OBShell
 

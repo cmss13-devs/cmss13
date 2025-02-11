@@ -28,7 +28,8 @@
 	matter = list("metal" = 125)
 
 /obj/item/tool/hand_labeler/afterattack(atom/A, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	if(!mode) //if it's off, give up.
 		to_chat(user, SPAN_WARNING("\The [src] isn't on."))
@@ -371,7 +372,8 @@
 		return
 	..()
 	if(reagents.total_volume)
-		if(M.reagents) reagents.trans_to(M, 50)
+		if(M.reagents)
+			reagents.trans_to(M, 50)
 	return
 
 /obj/item/tool/pen/paralysis
@@ -384,7 +386,8 @@
 	..()
 	if(M.can_inject(user, TRUE))
 		if(reagents.total_volume)
-			if(M.reagents) reagents.trans_to(M, 50)
+			if(M.reagents)
+				reagents.trans_to(M, 50)
 
 /obj/item/tool/pen/paralysis/Initialize()
 	. = ..()

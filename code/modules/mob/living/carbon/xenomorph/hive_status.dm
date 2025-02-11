@@ -803,9 +803,10 @@
 		spawning_area = hive_location
 	else if(living_xeno_queen)
 		spawning_area = living_xeno_queen
-	else for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
-		if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
-			spawning_area = xenomorpheus
+	else
+		for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+			if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
+				spawning_area = xenomorpheus
 	if(!spawning_area)
 		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
 	var/list/turf_list

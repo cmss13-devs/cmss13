@@ -166,3 +166,107 @@
   - rscadd: Yautja can now mark through walls and don't need direct line of sight.
   zzzmike:
   - sounddel: the vendor inflation event no longer plays sound
+2025-02-08:
+  BOBAMAx:
+  - rscadd: Goon Medic
+  - imageadd: New alt uniforms for goon techs and medics
+  - maptweak: Corporate Dome nightmare insert now has a medic, engi, and TL.
+  Red-byte3D:
+  - balance: Reworks warden into the Valkyrie
+  - rscadd: Valkyrie tail stab extuingishes people you stab. This goes for /anything/
+      so you can save caps on fire or your allies.
+  - rscadd: Tantrum ; You can click on a xenomorph to give them [15] armor, while
+      giving yourself [10] armor, during tantrum your slashes heal more. This lasts
+      3 seconds for the target, 5 seconds for yourself.
+  - rscadd: 'High Gallop: An ability that knocks people down infront of you, in a
+      2x3 radius. Also sends back grenades.'
+  - rscadd: 'Fight or Flight: A ranged rejuvenation that rejuvenates (removes stuns,
+      slows weakens etc etc) scaling its range with your rage'
+  - rscadd: Valkyrie slashes heal you and people 3 tiles next to you at a 15 to yourself
+      and 15 to allies, while BUFFED (red outline) 30 to yourself and 30 to allies
+  Syndro101:
+  - bugfix: fixed a floating pixel on the solid 2x1 medidoor.
+  zzzmike:
+  - bugfix: minor signature bug fixed with 'all hands on deck' announcements
+  - qol: Adds camera, camera film, tape recorder, clue scanner to SecTech.
+  - bugfix: Code fixed for sectech machine ads/slogans.
+2025-02-09:
+  Drathek:
+  - rscadd: Areas Unpowered unit test now checks for APCs on non-floor tiles (if they
+      are also deemed intact aka not exposed)
+  - bugfix: Focused unit testing now properly skips stages if the focus only applies
+      to a different stage
+  - maptweak: Fixed inaccessible APC terminals on basically all maps
+  Git-Nivrak:
+  - balance: Mortar range is now limited.
+  - balance: Removed free mortar shells from ASRS.
+  - balance: Lowered the initial costs of mortar shells for requisitions.
+  - balance: Incendiary mortar shells are now purely incendiary.
+  - balance: Fragmentation shell shrapnel now deals bonus damage to structures.
+  Nomoresolvalou:
+  - balance: thrall armor increased
+  - balance: thralls are now hero mobs and do not trigger resin traps or get slowed
+      by weeds
+  - rscadd: predators can now remotely stun and self destruct their thralls
+  efzapa:
+  - qol: Added a Forensic Refiller Tank, which you can use to easily refill your Forensic
+      Spray Bottles from.
+  hry-gh:
+  - bugfix: fix chat fixed?
+  - bugfix: 516 does not get laggier as the round goes on anymore
+  ihatethisengine, Nivrak, forest2001, SubjectD9341:
+  - rscadd: Added the M5 Camera Gear, an ear-mounted camera that works with Overwatch
+      consoles. Small numbers can be found in surplus uniform vendors.
+  realforest2001:
+  - rscadd: Added WY Deputy Director.
+  - rscadd: Changed name of general's mateba holster to luxury mateba holster.
+  - imageadd: Added a background for the Visiting Officer to use so it doesn't appear
+      identical to CO in follow menu/minimap.
+2025-02-10:
+  Katskan:
+  - balance: Enables tool web to hold metal rods.
+  - bugfix: Tool web has its original sprite, same as brown webbing.
+  Red-byte3D:
+  - bugfix: Valkyrie rejuvenate no longer rejuvenates enemy xenos.
+  - bugfix: Valkyrie slashes no longer heal enemy xenos.
+  - bugfix: Valkyrie no longer can empower enemy xenos
+  - spellcheck: fixes a small mistake on strain buy
+  - bugfix: Lesser drone weeding now checks to see if the node you are using belongs
+      to an enemy hive.
+2025-02-11:
+  BartDrown:
+  - bugfix: security records console resets sorting on data update
+  - bugfix: security records wrong sort indicators
+  - qol: security records default sorting by name
+  - qol: change displaying of rank to position
+  Git-Nivrak:
+  - bugfix: Fixed accessory duplication on quick equip
+  - rscdel: Removed pixel shifting
+  MistChristmas:
+  - bugfix: Printing security records + fingerprint report and clearing
+  - qol: Adds a notice that they're printing. Moved the time it takes in line with
+      photocopier. And Fingerprint scanner ejects to the table instead of your feet.
+  Red-byte3D:
+  - code_imp: Moves all lurker_powers into its own file
+  - rscdel: Removes unused "Armor Integrity" from xeno HUD
+  - code_imp: Moves all boiler_power into their own strain codefiles
+  - code_imp: Moved all burrower_powers into its own file and renamed some one letter
+      vars.
+  - code_imp: Moves all hivelord powers to its own file
+  - spellcheck: Changes a small you to we in hivelord resin walk
+  - code_imp: Moves all spitter_powers into its own file
+  - code_imp: Moves all king_powers to its own file
+  - code_imp: Moves all the ravager_powers code into its own respective .dm file
+  - code_imp: Moves all defender_powers into its own file
+  - code_imp: Moves all warrior_power code into its own warrior.dm
+  - code_imp: Moves all sentinel_powers into its own file
+  - code_imp: Moves all the code in praetorian_powers into its own respective strain
+      and removes praetorian_power
+  TheGamerdk:
+  - rscadd: Nuclear bomb now checks for passengers in vehicles to ensure swift delivery
+      of thermonuclear death
+  private-tristan:
+  - qol: Gun stats now list "single fire" as "fire rate"
+  zzzmike:
+  - qol: Gives hints to newer players about how to destroy or protect a growing xenomorph
+      king.

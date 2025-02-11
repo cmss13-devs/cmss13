@@ -163,6 +163,11 @@ type ByondType = {
    * The ByondCSS stylesheet to load into ByondUI components
    */
   styleSheet: string;
+
+  /**
+   * The external URL for the IndexedDB IFrame to use as the origin
+   */
+  storageCdn: string;
 };
 
 /**

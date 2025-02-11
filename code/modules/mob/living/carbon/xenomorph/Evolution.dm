@@ -296,7 +296,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	var/newcaste
 	var/list/options = list()
-	
+	var/static/list/option_images = list()
+
 	if(tier == 1)
 		options = XENO_T1_CASTES
 	else if (tier == 2)
@@ -304,7 +305,13 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	else if (tier == 3)
 		options = XENO_T3_CASTES
 
-	newcaste = tgui_input_list(src, "Choose a caste you want to transmute to.", "Transmute", options, theme="hive_status")
+	if(!option_images["[tier]"])
+		option_images["[tier]"] = collect_xeno_images(options)
+
+	if(!client.prefs.no_radial_labels_preference)
+		newcaste = show_radial_menu(src, src, option_images["[tier]"])
+	else
+		newcaste = tgui_input_list(src, "Choose a caste you want to transmute to.", "Transmute", options, theme="hive_status")
 
 	if(!newcaste)
 		return

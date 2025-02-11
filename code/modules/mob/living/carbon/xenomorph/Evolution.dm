@@ -452,7 +452,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
-	SPAN_XENODANGER("We regress into our previous form."))
+	SPAN_XENODANGER(message))
 
 	transfer_observers_to(new_xeno)
 	new_xeno._status_traits = src._status_traits

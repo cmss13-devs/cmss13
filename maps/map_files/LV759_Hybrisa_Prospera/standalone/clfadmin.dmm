@@ -11,6 +11,22 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"ab" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	icon_state = "bluemultimonitorbig_on";
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
 "ac" = (
 /obj/effect/decal/hybrisa/WY/WY1{
 	pixel_y = 10
@@ -1974,10 +1990,6 @@
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
-"rL" = (
-/obj/structure/sign/banners/clf_flag,
-/turf/closed/wall/hybrisa/colony/office,
-/area/lv759/indoors/weyyu_office/pressroom)
 "rM" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/effect/decal/hybrisa/dirt,
@@ -2956,6 +2968,9 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform3/north,
 /obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/pressroom)
 "AR" = (
@@ -5987,7 +6002,7 @@ Le
 Fu
 lr
 PK
-rL
+VS
 AL
 Zt
 bb
@@ -6077,8 +6092,8 @@ TQ
 Ky
 zp
 tM
-rL
-Ws
+VS
+ab
 aT
 eK
 Wl

@@ -19,9 +19,11 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
-"af" = (
-/obj/structure/sign/banners/clf_flag,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+"ag" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "aj" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
@@ -2376,8 +2378,8 @@ Mv
 yb
 qY
 DH
-af
-EM
+Gz
+ag
 DH
 ZC
 Ms

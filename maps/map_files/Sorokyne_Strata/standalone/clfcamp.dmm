@@ -1,4 +1,43 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/closet,
+/obj/effect/landmark/objective_landmark/science,
+/obj/item/clothing/under/colonist/clf,
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/strata/ag/interior/outpost/clf_dorms)
+"ab" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.0
+	},
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/strata/ag/interior/outpost/clf_dorms)
 "ae" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
@@ -811,10 +850,6 @@
 	},
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_office)
-"Ca" = (
-/obj/structure/sign/banners/clf_flag,
-/turf/closed/wall/wood,
-/area/strata/ag/interior/outpost/clf_dorms)
 "Cf" = (
 /obj/structure/closet/crate/secure/gear,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
@@ -2362,8 +2397,8 @@ kE
 kE
 qm
 pd
-Ca
-Cp
+Pa
+aa
 dk
 yg
 ob
@@ -2461,8 +2496,8 @@ pd
 kE
 kE
 pd
-Ca
-sz
+Pa
+ab
 TI
 EC
 LC

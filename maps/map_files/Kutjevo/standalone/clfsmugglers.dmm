@@ -1,10 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/sign/banners/clf_flag,
-/turf/closed/shuttle/ert{
-	icon_state = "stan21"
-	},
-/area/kutjevo/interior/colony/clf_shuttle)
 "am" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
 /turf/open/floor/almayer,
@@ -870,6 +864,9 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/clf_lz)
 "QW" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer/orange/north,
 /area/kutjevo/interior/colony/clf_shuttle)
 "Rj" = (
@@ -2192,7 +2189,7 @@ uP
 RW
 Qy
 Ni
-aa
+YQ
 QW
 dL
 bj

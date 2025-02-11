@@ -19,16 +19,24 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/park)
-"af" = (
-/obj/structure/sign/banners/clf_flag,
-/turf/closed/shuttle/ert{
-	icon_state = "stan_inner_w_1"
-	},
-/area/fiorina/station/clf_ship)
 "ag" = (
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/wood,
 /area/fiorina/station/park)
+"ah" = (
+/obj/item/bedsheet/brown,
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	pixel_y = 13
+	},
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
 "ai" = (
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/park)
@@ -2206,8 +2214,8 @@ vm
 hJ
 CL
 nI
-af
-xf
+rJ
+ah
 ra
 mQ
 VK

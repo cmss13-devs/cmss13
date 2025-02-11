@@ -1,8 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/sign/banners/clf_worn,
-/turf/closed/wall/r_wall,
-/area/varadero/interior/maintenance/research)
 "ab" = (
 /obj/structure/barricade/sandbags/wired,
 /obj/structure/barricade/sandbags/wired{
@@ -527,6 +523,9 @@
 /obj/effect/landmark/objective_landmark/science,
 /obj/item/broken_device{
 	desc = "A timeless piece of technology from another era, of spacemen who once plunged into the 12th Bay and beyond."
+	},
+/obj/structure/sign/banners/clf_worn{
+	pixel_y = 32
 	},
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
@@ -2795,7 +2794,7 @@ AP
 Le
 fz
 dw
-aa
+gM
 mT
 ll
 lu

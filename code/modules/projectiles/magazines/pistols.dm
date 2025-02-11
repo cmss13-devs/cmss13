@@ -401,5 +401,6 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	default_ammo = /datum/ammo/bullet/pistol/powerful
 	caliber = "10mm"
 	icon_state = "vp76"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/pistol/vp76

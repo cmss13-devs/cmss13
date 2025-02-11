@@ -938,7 +938,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "vp76"
 	item_state = "vp76"
-	fire_sound = 'sound/weapons/gun_kt42.ogg'
+	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
 	firesound_volume = 5
 	current_mag = /obj/item/ammo_magazine/pistol/vp76
 	force = 8

@@ -12728,21 +12728,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/blue/southeast,
 /area/navalis/oob/powered)
-"aHv" = (
-/obj/structure/machinery/door_control/navalis_walkway_lockdown{
-	id = "testr";
-	pixel_x = 30;
-	pixel_y = 34;
-	explo_proof = 1;
-	name = "External-Access Control";
-	use_power = 0;
-	light_power = 2;
-	light_color = "#FFEFD2";
-	light_on = 1;
-	light_range = 3
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/oob/water/far)
 "aHw" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/darkgreen2/northeast,
@@ -15123,6 +15108,26 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/navalis/indoors/command/director_office)
+"aOq" = (
+/obj/structure/cargo_container/hd/mid,
+/turf/open/floor/plating,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
+"aOr" = (
+/obj/structure/cargo_container/hd/right,
+/turf/open/floor/plating,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
+"aOs" = (
+/obj/structure/cargo_container/canc/left,
+/turf/open/floor/plating,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
+"aOt" = (
+/obj/structure/cargo_container/canc/mid,
+/turf/open/floor/plating,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
+"aOu" = (
+/obj/structure/cargo_container/canc/right,
+/turf/open/floor/plating,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
 "aOv" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "rack"
@@ -23614,7 +23619,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_starboard)
 "jPC" = (
-/obj/structure/cargo_container/watatsumi/left,
+/obj/structure/cargo_container/hd/left,
 /turf/open/floor/plating,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "jQe" = (
@@ -59353,7 +59358,7 @@ mCt
 amg
 cCN
 alJ
-uJp
+aOs
 alJ
 fqT
 dCs
@@ -59369,7 +59374,7 @@ cCN
 aOo
 aJP
 alJ
-fqT
+uJp
 saO
 alF
 alo
@@ -59517,7 +59522,7 @@ gPw
 amg
 cCN
 alJ
-cBG
+aOt
 alJ
 vCp
 dCs
@@ -59533,7 +59538,7 @@ cCN
 aJP
 uvu
 alJ
-vCp
+cBG
 dCs
 alG
 lnF
@@ -59681,7 +59686,7 @@ mCt
 amg
 cCN
 alJ
-uqN
+aOu
 alJ
 wcW
 dCs
@@ -59697,7 +59702,7 @@ cCN
 alJ
 fAj
 alJ
-wcW
+uqN
 dCs
 alG
 bPK
@@ -60011,7 +60016,7 @@ cCN
 alJ
 xdL
 alJ
-xdL
+aOq
 dCs
 alF
 cCN
@@ -60175,7 +60180,7 @@ cCN
 alJ
 hMF
 alJ
-hMF
+aOr
 dCs
 alF
 cCN
@@ -61020,7 +61025,7 @@ asq
 arv
 ari
 snv
-ari
+arT
 ari
 arv
 ari
@@ -61182,7 +61187,7 @@ ari
 ari
 mQa
 ari
-ari
+arT
 ari
 ari
 ari
@@ -61516,7 +61521,7 @@ ars
 ari
 ari
 ari
-ari
+arT
 ari
 arH
 aqN
@@ -62006,7 +62011,7 @@ ari
 ari
 ari
 ari
-ari
+arT
 ari
 ari
 aJH
@@ -64620,7 +64625,7 @@ aIs
 kvm
 ajL
 auF
-asf
+apz
 asf
 qHS
 nsU
@@ -73781,7 +73786,7 @@ gGc
 gGc
 gGc
 gGc
-aHv
+gGc
 asq
 asq
 gGc
@@ -77312,7 +77317,7 @@ gGc
 gGc
 gGc
 gGc
-ayS
+gGc
 gGc
 gGc
 gGc

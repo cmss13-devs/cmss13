@@ -142,7 +142,7 @@
 
 		. =  FALSE
 
-	else if (istype(target, /obj/structure/machinery/vending && /obj/structure/machinery/cm_vending))
+	else if (istype(target, /obj/structure/machinery/vending))
 		var/obj/structure/machinery/vending/vending_in_path = target
 
 		if (vending_in_path.unslashable)
@@ -153,10 +153,27 @@
 			vending_in_path.tip_over()
 
 			var/impact_range = 1
-			var/turf/vending_turf = get_diagonal_step(vending_in_path, dir)
-			vending_turf = get_step_away(vending_turf, src)
+			var/turf/turfs_charged_at = get_diagonal_step(vending_in_path, dir)
+			turfs_charged_at = get_step_away(turfs_charged_at, src)
 			var/launch_speed = 2
-			launch_towards(vending_turf, impact_range, launch_speed)
+			launch_towards(turfs_charged_at, impact_range, launch_speed)
+
+			. =  TRUE
+
+	else if (istype(target, /obj/structure/machinery/cm_vending))
+		var/obj/structure/machinery/cm_vending/vending_in_path = target
+		if (vending_in_path.unslashable)
+			. = FALSE
+		else
+			visible_message(SPAN_DANGER("[src] smashes straight into [vending_in_path]!"), SPAN_XENODANGER("We smash straight into [vending_in_path]!"))
+			playsound(loc, "punch", 25, 1)
+			vending_in_path.tip_over()
+
+			var/impact_range = 1
+			var/turf/turfs_charged_at = get_diagonal_step(vending_in_path, dir)
+			turfs_charged_at = get_step_away(turfs_charged_at, src)
+			var/launch_speed = 2
+			throw_atom(turfs_charged_at, impact_range, launch_speed)
 
 			. =  TRUE
 

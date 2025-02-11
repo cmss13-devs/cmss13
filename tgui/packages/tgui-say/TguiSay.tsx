@@ -26,7 +26,7 @@ type State = {
   size: WINDOW_SIZES;
 };
 
-const CHANNEL_REGEX = /^[:.#]\w\s/;
+const CHANNEL_REGEX = /^[:.#№][a-zA-Zfа-яА-Я0-9_]\s/; // BANDAMARINES EDIT
 
 export class TguiSay extends Component<{}, State> {
   private channelIterator: ChannelIterator;

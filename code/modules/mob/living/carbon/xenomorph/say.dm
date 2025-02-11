@@ -31,7 +31,7 @@
 		var/channel_prefix = copytext_char(message, 1, 3) // SS220 EDIT - RU fix
 		if(length(languages))
 			for(var/datum/language/L in languages)
-				if(lowertext(channel_prefix) == ":[L.key]" || lowertext(channel_prefix) == ".[L.key]")
+				if(lowertext(channel_prefix) == ":[L.key]" || lowertext(channel_prefix) == ".[L.key]" || uppertext(channel_prefix) == ":[convert_en_key_to_ru_key(L.key)]" || uppertext(channel_prefix) == ".[convert_en_key_to_ru_key(L.key)]") // BANDAMARINES EDIT
 					verb = L.speech_verb
 					speaking = L
 					break

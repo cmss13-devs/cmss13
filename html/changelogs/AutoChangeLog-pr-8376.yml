@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - soundadd: "faster defib noises for those who use defibs faster (synth, doctor)"

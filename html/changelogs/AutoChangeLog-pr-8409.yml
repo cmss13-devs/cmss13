@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - rscdel: "Removes unused \"Armor Integrity\" from xeno HUD"

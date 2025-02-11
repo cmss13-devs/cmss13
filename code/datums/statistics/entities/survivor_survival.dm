@@ -17,7 +17,7 @@
 	total_survivors = /datum/job/civilian/survivor::total_spawned
 	for(var/datum/weakref/ref as anything in GLOB.spawned_survivors)
 		var/mob/living/carbon/human/human = ref.resolve()
-		if(human?.stat == DEAD)
+		if(!human || (human.stat == DEAD))
 			continue
 
 		remaining_survivors++

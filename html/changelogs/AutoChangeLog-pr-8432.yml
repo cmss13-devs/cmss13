@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - code_imp: "Moves all spitter_powers into its own file"

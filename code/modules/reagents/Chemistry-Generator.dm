@@ -302,7 +302,7 @@
 				property = pick(GLOB.chemical_properties_list["positive"])
 
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
-	if (P.max_level >= 1)
+	if (level > P.max_level)
 		level = min(P.max_level, level)
 
 	//Calculate what our chemical value is with our level
@@ -369,7 +369,7 @@
 			break
 	//Insert the property
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
-	if (P.max_level >= 1)
+	if (level > P.max_level)
 		level = min(P.max_level, level) // double checking, in case some combo property has a max level and we want that respected
 	P = new P.type()
 	P.level = level

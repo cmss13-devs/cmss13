@@ -440,7 +440,15 @@
 	var/mob/living/carbon/xenomorph/carrier/bound_carrier = bound_xeno
 	bound_carrier.update_hugger_overlays()
 
+/datum/action/xeno_action/activable/throw_hugger/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/carrier/carrier_owner = owner
+	carrier_owner.throw_hugger(target)
+	return ..()
 
+/datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/carrier/carrier_owner = owner
+	carrier_owner.retrieve_egg(target)
+	return ..()
 
 /datum/action/xeno_action/onclick/set_hugger_reserve/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/carrier/carrier = owner

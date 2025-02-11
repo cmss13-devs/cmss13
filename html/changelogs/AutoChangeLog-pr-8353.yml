@@ -1,4 +1,0 @@
-author: "thebleh"
-delete-after: True
-changes:
-  - qol: "Removed client window side padding to prevent accidental dragging"

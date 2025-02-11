@@ -104,7 +104,8 @@
 	var/hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1
-	if(!ishuman(user)) return
+	if(!ishuman(user))
+		return
 	if(src.locked)
 		to_chat(user, SPAN_DANGER("The cabinet won't budge!"))
 		return

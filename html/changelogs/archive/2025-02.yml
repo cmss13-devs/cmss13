@@ -233,3 +233,40 @@
   - spellcheck: fixes a small mistake on strain buy
   - bugfix: Lesser drone weeding now checks to see if the node you are using belongs
       to an enemy hive.
+2025-02-11:
+  BartDrown:
+  - bugfix: security records console resets sorting on data update
+  - bugfix: security records wrong sort indicators
+  - qol: security records default sorting by name
+  - qol: change displaying of rank to position
+  Git-Nivrak:
+  - bugfix: Fixed accessory duplication on quick equip
+  - rscdel: Removed pixel shifting
+  MistChristmas:
+  - bugfix: Printing security records + fingerprint report and clearing
+  - qol: Adds a notice that they're printing. Moved the time it takes in line with
+      photocopier. And Fingerprint scanner ejects to the table instead of your feet.
+  Red-byte3D:
+  - code_imp: Moves all lurker_powers into its own file
+  - rscdel: Removes unused "Armor Integrity" from xeno HUD
+  - code_imp: Moves all boiler_power into their own strain codefiles
+  - code_imp: Moved all burrower_powers into its own file and renamed some one letter
+      vars.
+  - code_imp: Moves all hivelord powers to its own file
+  - spellcheck: Changes a small you to we in hivelord resin walk
+  - code_imp: Moves all spitter_powers into its own file
+  - code_imp: Moves all king_powers to its own file
+  - code_imp: Moves all the ravager_powers code into its own respective .dm file
+  - code_imp: Moves all defender_powers into its own file
+  - code_imp: Moves all warrior_power code into its own warrior.dm
+  - code_imp: Moves all sentinel_powers into its own file
+  - code_imp: Moves all the code in praetorian_powers into its own respective strain
+      and removes praetorian_power
+  TheGamerdk:
+  - rscadd: Nuclear bomb now checks for passengers in vehicles to ensure swift delivery
+      of thermonuclear death
+  private-tristan:
+  - qol: Gun stats now list "single fire" as "fire rate"
+  zzzmike:
+  - qol: Gives hints to newer players about how to destroy or protect a growing xenomorph
+      king.

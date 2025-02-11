@@ -1,3 +1,5 @@
+import { capitalize } from 'common/string';
+
 import { useBackend, useSharedState } from '../backend';
 import {
   Box,
@@ -12,6 +14,7 @@ import {
   Table,
   Tabs,
 } from '../components';
+import { ButtonConfirm } from '../components/Button';
 import { Window } from '../layouts';
 
 export const CentralOverwatchConsole = (props) => {
@@ -125,6 +128,15 @@ const SecondaryFunctions = (props) => {
               Executive Panel
             </Tabs.Tab>
             <Tabs.Tab
+              selected={secondarycategory === 'emergencypanel'}
+              icon="exclamation-triangle"
+              onClick={() => setsecondaryCategory('emergencypanel')}
+              p="3px"
+              bold
+            >
+              Emergency Measures
+            </Tabs.Tab>
+            <Tabs.Tab
               selected={secondarycategory === 'ob'}
               icon="cog"
               onClick={() => setsecondaryCategory('ob')}
@@ -153,6 +165,7 @@ const SecondaryFunctions = (props) => {
           )}
           {secondarycategory === 'squadmonitor' && <SquadMonitor />}
           {secondarycategory === 'execpanel' && <ExecutivePanel />}
+          {secondarycategory === 'emergencypanel' && <EmergencyPanel />}
         </Stack.Item>
       </Stack>
     </Section>
@@ -199,9 +212,10 @@ const DebugSquadPanel = (props) => {
                   selected={
                     category === squadStringify[squad.name.toLowerCase()]
                   }
-                  onClick={() =>
-                    setCategory(squadStringify[squad.name.toLowerCase()])
-                  }
+                  onClick={() => {
+                    setCategory(squadStringify[squad.name.toLowerCase()]);
+                    act('gather_index_squad_data', { squad: squad.ref });
+                  }}
                   key={index}
                 >
                   {squad.name + ' Overwatch'}
@@ -589,6 +603,15 @@ const ExecutivePanel = (props) => {
           </Box>
         </Stack.Item>
       </Stack>
+    </Section>
+  );
+};
+
+const EmergencyPanel = (props) => {
+  const { act, data } = useBackend();
+
+  return (
+    <Section fill fontSize="14px">
       <Divider />
       <Box bold textAlign="center">
         EMERGENCY MEASURES
@@ -602,14 +625,46 @@ const ExecutivePanel = (props) => {
         </Stack.Item>
         <Stack.Divider />
         <Stack.Item>
+          <ButtonConfirm
+            inline
+            textAlign="center"
+            width="100%"
+            icon="exclamation-triangle"
+            mt="1px"
+            p="7px"
+            color="red"
+            onClick={() => act('red_alert')}
+          >
+            ELEVATE TO RED ALERT
+          </ButtonConfirm>
+          <ButtonConfirm
+            inline
+            textAlign="center"
+            width="100%"
+            icon="ban"
+            mt="5px"
+            p="4px"
+            color="transperant"
+            onClick={() => act('set_secondary')}
+          >
+            CALL GENERAL QUARTERS
+          </ButtonConfirm>
+        </Stack.Item>
+        <Stack.Divider mb="7px" />
+        <Stack.Item>
           <Box mb="10px" align="center">
             <Stack.Item>
-              <Button inline width="100%" icon="door-open" color="transperant">
+              <ButtonConfirm
+                inline
+                width="100%"
+                icon="door-open"
+                color="transperant"
+              >
                 INITIATE EVACUATION
-              </Button>
+              </ButtonConfirm>
             </Stack.Item>
             <Stack.Item>
-              <Button
+              <ButtonConfirm
                 inline
                 width="100%"
                 icon="ban"
@@ -618,10 +673,10 @@ const ExecutivePanel = (props) => {
                 onClick={() => act('set_secondary')}
               >
                 SELF-DESTRUCT DISABLED
-              </Button>
+              </ButtonConfirm>
             </Stack.Item>
             <Stack.Item>
-              <Button
+              <ButtonConfirm
                 inline
                 width="100%"
                 icon="ban"
@@ -630,7 +685,7 @@ const ExecutivePanel = (props) => {
                 onClick={() => act('set_secondary')}
               >
                 DISTRESS BEACON DISABLED
-              </Button>
+              </ButtonConfirm>
             </Stack.Item>
           </Box>
         </Stack.Item>
@@ -1104,6 +1159,10 @@ const OrbitalBombardment = (props) => {
 
   let ob_status = 'Ready';
   let ob_color = 'green';
+  let ob_warhead = 'No Shells Loaded';
+  if (data.ob_warhead) {
+    ob_warhead = capitalize(data.ob_warhead) + ' Shell Loaded';
+  }
   if (data.ob_cooldown) {
     ob_status = 'Cooldown - ' + data.ob_cooldown / 10 + ' seconds';
     ob_color = 'yellow';
@@ -1121,8 +1180,8 @@ const OrbitalBombardment = (props) => {
             [ Fully Operational ]
           </Box>
           Warhead Status:
-          <Box color="green" bold m="2px">
-            [ Cluster Shell Loaded ]
+          <Box color={ob_color} bold m="2px">
+            [ {ob_warhead} ]
           </Box>
           Cannon Status:
           <Box color={ob_color} bold m="2px">
@@ -1135,8 +1194,12 @@ const OrbitalBombardment = (props) => {
             <Table>
               <Table.Cell fontSize="14px" m="2px" p="7px" textAlign="center">
                 OB SAFETY SYSTEM:
-                <Box color="red" m="1px" fontSize="16px">
-                  [ DISENGAGED ]
+                <Box
+                  color={data.ob_safety ? 'green' : 'red'}
+                  m="1px"
+                  fontSize="16px"
+                >
+                  [ {data.ob_safety ? 'ENGAGED' : 'DISENGAGED'} ]
                 </Box>
                 <Button
                   fontSize="16px"
@@ -1161,12 +1224,12 @@ const OrbitalBombardment = (props) => {
             [ Fully Operational ]
           </Box>
           Currently Targeting:
-          <Box color="green" bold m="2px">
-            [ Upper-Deck Aft ]
+          <Box color={data.aa_targeting ? 'green' : 'red'} bold m="2px">
+            [ {data.aa_targeting ? data.aa_targeting : 'Zone Not Selected'} ]
           </Box>
           Cannon Status:
-          <Box color="green" bold m="2px">
-            [ ENGAGED ]
+          <Box color={data.aa_targeting ? 'green' : 'red'} bold m="2px">
+            [ {data.aa_targeting ? 'ENGAGED' : 'DISENGAGED'} ]
           </Box>
         </Stack.Item>
         <Stack.Divider />

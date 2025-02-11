@@ -45,6 +45,9 @@
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
 	var/list/concurrent_users = list()
+	var/ob_cannon_safety = FALSE
+
+GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
 
 /obj/structure/machinery/computer/overwatch/squad
 	name = "Overwatch Console"
@@ -55,6 +58,7 @@
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 	if(faction == FACTION_MARINE)
+		GLOB.active_overwatch_consoles += src
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
@@ -76,6 +80,13 @@
 
 /obj/structure/machinery/computer/overwatch/bullet_act(obj/projectile/Proj) //Can't shoot it
 	return FALSE
+
+/obj/structure/machinery/computer/overwatch/proc/toggle_ob_cannon_safety()
+	playsound(loc, 'sound/machines/ping.ogg', 75)
+	ob_cannon_safety = GLOB.ob_cannon_safety
+
+/obj/structure/machinery/computer/overwatch/squad/toggle_ob_cannon_safety()
+	ob_cannon_safety = GLOB.ob_cannon_safety
 
 /obj/structure/machinery/computer/overwatch/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -146,7 +157,7 @@
 		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 
-/obj/structure/machinery/computer/overwatch/squad/count_marines(list/data)
+/obj/structure/machinery/computer/overwatch/proc/count_marines(list/data, datum/squad/index_squad)
 	var/leader_count = 0
 	var/ftl_count = 0
 	var/spec_count = 0
@@ -323,7 +334,7 @@
 	return data
 
 
-/obj/structure/machinery/computer/overwatch/proc/count_marines(datum/squad/index_squad)
+/obj/structure/machinery/computer/overwatch/proc/overview_data(datum/squad/index_squad)
 	var/leader_count = 0
 	var/ftl_count = 0
 	var/spec_count = 0
@@ -374,34 +385,11 @@
 			if(current_area)
 				area_name = sanitize_area(current_area.name)
 
-			switch(z_hidden)
-				if(HIDE_ALMAYER)
-					if(is_mainship_level(current_turf.z))
-						continue
-				if(HIDE_GROUND)
-					if(is_ground_level(current_turf.z))
-						continue
-
 			var/obj/item/card/id/card = marine_human.get_idcard()
 			if(marine_human.job)
 				role = marine_human.job
 			else if(card?.rank) //decapitated marine is mindless,
 				role = card.rank
-
-			if(index_squad.squad_leader)
-				if(marine_human == index_squad.squad_leader)
-					distance = "N/A"
-					if(index_squad.name == SQUAD_SOF)
-						if(marine_human.job == JOB_MARINE_RAIDER_CMD)
-							acting_sl = " (direct command)"
-						else if(marine_human.job != JOB_MARINE_RAIDER_SL)
-							acting_sl = " (acting TL)"
-					else if(marine_human.job != JOB_SQUAD_LEADER)
-						acting_sl = " (acting SL)"
-					is_squad_leader = TRUE
-				else if(current_turf && (current_turf.z == SL_z))
-					distance = "[get_dist(marine_human, index_squad.squad_leader)] ([dir2text_short(Get_Compass_Dir(index_squad.squad_leader, marine_human))])"
-
 
 			switch(marine_human.stat)
 				if(CONSCIOUS)
@@ -532,6 +520,7 @@
 	if(current_orbital_cannon)
 		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
 		data["ob_loaded"] = current_orbital_cannon.chambered_tray
+		data["ob_safety"] = ob_cannon_safety
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["operator"] = operator.name
@@ -559,7 +548,7 @@
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
 		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
 			var/list/unpackaged_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "ref" = REF(index_squad))
-			unpackaged_data += count_marines(index_squad)
+			unpackaged_data += overview_data(index_squad)
 			var/list/squad_data = list(unpackaged_data)
 			data["squad_data"] += squad_data
 
@@ -580,6 +569,13 @@
 	if(current_orbital_cannon)
 		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
 		data["ob_loaded"] = current_orbital_cannon.chambered_tray
+		data["ob_safety"] = ob_cannon_safety
+		if(current_orbital_cannon.tray.warhead)
+			data["ob_warhead"] = current_orbital_cannon.tray.warhead.warhead_kind
+	if(GLOB.almayer_aa_cannon.protecting_section)
+		data["aa_targeting"] = GLOB.almayer_aa_cannon.protecting_section
+
+	data = count_marines(data)
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["operator"] = operator.name
@@ -833,6 +829,11 @@
 					var/obj/item/card/id/ID = H.get_idcard()
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
 					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
+		if("red_alert")
+			set_security_level(SEC_LEVEL_RED)
+		if("gather_index_squad_data")
+			if(params["squad"])
+				current_squad = locate(params["squad"])
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER

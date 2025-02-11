@@ -90,7 +90,7 @@
 	var/area/lz_area = get_area(SSticker.mode.active_lz)
 	is_inside_lz = FALSE //REMOVE, FOR EASIER TESTING ONLY!
 	/*if(machine_area == lz_area)
-		is_inside_lz = FALSE
+		is_inside_lz = TRUE
 	else
 		is_inside_lz = FALSE*/
 	update_power()
@@ -552,7 +552,7 @@
 
 /obj/structure/machinery/fob/sentrygun/missile/obtain_targets()
 	. = ..()
-	if(!linked_platform) //this should never happen
+	if(!linked_platform) //this should never happen, we are supposed to be called by the platform
 		return
 	if(!linked_platform.linked_terminal)
 		return
@@ -597,7 +597,7 @@
 
 /obj/structure/machinery/fob/sentrygun/missile/Destroy()
 	. = ..()
-	for(mob/target in locked_on_targets)
+	for(var/mob/target in locked_on_targets)
 		loose_target(target)
 
 

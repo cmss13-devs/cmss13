@@ -288,7 +288,7 @@
 		if(rocket.fuel && rocket.fuel.reagents.get_reagent_amount(rocket.fuel_type) >= rocket.fuel_requirement)
 			rocket.forceMove(projectile.loc)
 		rocket.warhead.cause_data = projectile.weapon_cause_data
-		rocket.warhead.dir = get_dir(launcher, atom)
+		rocket.warhead.hit_angle = Get_Angle(launcher, atom)
 		rocket.warhead.prime()
 		qdel(rocket)
 	smoke.set_up(1, get_turf(atom))

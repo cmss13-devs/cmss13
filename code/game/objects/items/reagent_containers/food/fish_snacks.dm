@@ -139,18 +139,12 @@
 	. = ..()
 	reagents.add_reagent("enzyme", 1)
 	bitesize = 1
-
+	//todo, attackby with a knife so you can make bait objects for fishing with
 /obj/item/reagent_container/food/snacks/fishable/quadtopus
 	name = "quadtopus"
 	desc = "Like an octopus, but a whole lot meaner, dumber, and smaller. So basically a marine Marine."
 	icon_state = "quadtopus"
 	bitesize = 2
-
-/obj/item/reagent_container/food/snacks/fishable/quadtopus/Initialize()
-	. = ..()
-	reagents.add_reagent("fish", 4)
-	bitesize = 2
-
 //--------------------//
 // SHELLED CRITTERS, you have to pry them open with a SHARP object to get the guts out. Maybe should be bool hasshell = TRUE and overrite gutting proc?
 /obj/item/reagent_container/food/snacks/fishable/shell/clam
@@ -202,8 +196,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/fishable/fish/catfish
-	name = "catfish"//WIP
-	desc = "Very large but not good eating since its a bottom feeder..."
+	name = "catfish"
+	desc = "Quite large though not good for eating since it's a bottom feeder."
 	guttable = FALSE
 	icon_state = "catfish"
 	min_length = 10
@@ -216,29 +210,19 @@
 
 //--------------------//
 //Urchins, spikey bottom-feeding creatures
-/obj/item/reagent_container/food/snacks/fishable/Urchin/purple
+/obj/item/reagent_container/food/snacks/fishable/urchin/purple
 	name = "purple urchin"
-	desc = "glad i didnt step on it!"
+	desc = "Glad I didn't step on it!"
 	icon_state = "urchin_purple"
 	guttable = FALSE
 	min_length = 2
 	max_length = 9
 
-/obj/item/reagent_container/food/snacks/fishable/Urchin/purple/Initialize()
-	. = ..()
-	reagents.add_reagent("fish", 1)
-	bitesize = 1
-
 /obj/item/reagent_container/food/snacks/fishable/Urchin/red
 	name = "red urchin"
-	desc = "glad i didnt step on it, it looks angry!"
+	desc = "Glad I didn't step on it, it looks angry!"
 	guttable = FALSE
 	icon_state = "urchin_red"
 	min_length = 2
 	max_length = 9
-
-/obj/item/reagent_container/food/snacks/fishable/Urchin/red/Initialize()
-	. = ..()
-	reagents.add_reagent("fish", 1)
-	bitesize = 1
 //finished code on worm and clam fish and items, added 3 new fish types (catfish being non-guttable is on purpose), worm now drops bait when gutted

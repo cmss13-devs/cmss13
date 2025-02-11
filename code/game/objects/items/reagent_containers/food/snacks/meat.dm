@@ -100,10 +100,10 @@
 
 /obj/item/reagent_container/food/snacks/meat/fish/bass
 	name = "Bass meat"
-	desc = "Sizeable hunks of cookin fish!"
+	desc = "Sizeable hunks of cooking fish!"
 	icon_state = "bass_meat"
 
 /obj/item/reagent_container/food/snacks/meat/fish/bluegill
 	name = "bluegill meat"
-	desc = "Small strips of pan fryin meat!"
+	desc = "Small strips of pan frying meat!"
 	icon_state = "bluegill_meat"

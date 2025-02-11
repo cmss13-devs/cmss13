@@ -7,4 +7,3 @@
 	var/uncommon_mod = 20
 	var/rare_mod = 0
 	var/ultra_rare_mod = 0
-//adds sprite to fish bait, adds worms being able to drop bait when gutted

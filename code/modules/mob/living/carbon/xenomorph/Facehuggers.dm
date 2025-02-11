@@ -138,6 +138,9 @@
 		return XENO_NO_DELAY_ACTION
 
 /obj/item/clothing/mask/facehugger/attack(mob/living/M, mob/user)
+	if(stat == DEAD)
+		to_chat(user, SPAN_WARNING("The facehugger is dead, what were you thinking?"))
+		return
 	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled && !isyautja(M)))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
@@ -271,7 +274,7 @@
 	if(!target)
 		return FALSE
 
-	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"), \
+	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"),
 	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
 	throw_atom(target, 3, SPEED_FAST)

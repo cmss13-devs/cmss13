@@ -12,7 +12,7 @@
 	value = 1
 
 /datum/chem_property/neutral/cryometabolizing/pre_process(mob/living/M)
-	if(M.bodytemperature > 170)
+	if(M.bodytemperature > BODYTEMP_CRYO_LIQUID_THRESHOLD)
 		return list(REAGENT_CANCEL = TRUE)
 	return list(REAGENT_BOOST = POTENCY_MULTIPLIER_LOW * level)
 
@@ -248,14 +248,14 @@
 	if(prob(5 * delta_time))
 		M.emote("gasp")
 		to_chat(M, SPAN_DANGER("<b>Your insides feel uncomfortably hot !</b>"))
-	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency,0)
+	M.bodytemperature = min(T120C, M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency)
 	if(potency >= CREATE_MAX_TIER_1)
 		M.make_dizzy(potency * POTENCY_MULTIPLIER_MEDIUM)
 		M.apply_effect(potency,AGONY,0)
 	M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/hyperthermic/process_overdose(mob/living/M, potency = 1)
-	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_VHIGH * potency,0)
+	M.bodytemperature = min(T120C, M.bodytemperature + POTENCY_MULTIPLIER_VHIGH * potency)
 	M.apply_effect(POTENCY_MULTIPLIER_MEDIUM * potency,AGONY,0)
 
 /datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, potency = 1, delta_time)
@@ -271,11 +271,11 @@
 /datum/chem_property/neutral/hypothermic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(5 * delta_time))
 		M.emote("shiver")
-	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency,0)
+	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
 	M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
-	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency,0)
+	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)
@@ -535,6 +535,11 @@
 	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
 
 /datum/chem_property/neutral/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
+	if(method == TOUCH)
+		return
+	if(!ishuman_strict(chem_host))
+		return
+
 	give_action(chem_host, /datum/action/human_action/psychic_whisper)
 	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
 
@@ -574,11 +579,11 @@
 	value = 1
 
 /datum/chem_property/neutral/thermostabilizing/process(mob/living/M, potency = 1, delta_time)
-	if(M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(M.bodytemperature > T37C)
+		M.bodytemperature = max(T37C, M.bodytemperature - (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.recalculate_move_delay = TRUE
-	else if(M.bodytemperature < 311)
-		M.bodytemperature = min(310, M.bodytemperature + (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
+	else if(M.bodytemperature < T37C)
+		M.bodytemperature = min(T37C, M.bodytemperature + (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/thermostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)

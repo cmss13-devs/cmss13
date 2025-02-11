@@ -156,17 +156,20 @@
 
 /client/proc/has_clan_permission(permission_flag, clan_id, warn)
 	if(!clan_info)
-		if(warn) to_chat(src, "You do not have a yautja whitelist!")
+		if(warn)
+			to_chat(src, "You do not have a yautja whitelist!")
 		return FALSE
 
 	if(clan_id)
 		if(clan_id != clan_info.clan_id)
-			if(warn) to_chat(src, "You do not have permission to perform actions on this clan!")
+			if(warn)
+				to_chat(src, "You do not have permission to perform actions on this clan!")
 			return FALSE
 
 
 	if(!(clan_info.permissions & permission_flag))
-		if(warn) to_chat(src, "You do not have the necessary permissions to perform this action!")
+		if(warn)
+			to_chat(src, "You do not have the necessary permissions to perform this action!")
 		return FALSE
 
 	return TRUE

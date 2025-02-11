@@ -49,7 +49,8 @@
 		var/task = href_list["editrights"]
 		if(task == "add")
 			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
-			if(!new_ckey) return
+			if(!new_ckey)
+				return
 			if(new_ckey in GLOB.admin_datums)
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>")
 				return
@@ -65,7 +66,8 @@
 
 		if(task == "remove")
 			if(alert("Are you sure you want to remove [adm_ckey]?","Message","Yes","Cancel") == "Yes")
-				if(!D) return
+				if(!D)
+					return
 				GLOB.admin_datums -= adm_ckey
 				D.disassociate()
 
@@ -82,7 +84,8 @@
 			if(D)
 				rights = D.rights
 			switch(new_rank)
-				if(null,"") return
+				if(null,"")
+					return
 				if("*New Rank*")
 					new_rank = input("Please input a new rank", "New custom rank", null, null) as null|text
 					if(CONFIG_GET(flag/admin_legacy_system))
@@ -114,12 +117,14 @@
 			message_admins("[key_name_admin(usr)] edited the admin rank of [adm_ckey] to [new_rank]")
 
 		else if(task == "permissions")
-			if(!D) return
+			if(!D)
+				return
 			var/list/permissionlist = list()
 			for(var/i=1, i<=R_HOST, i<<=1) //that <<= is shorthand for i = i << 1. Which is a left bitshift
 				permissionlist[rights2text(i)] = i
 			var/new_permission = tgui_input_list(usr, "Select a permission to turn on/off", "Permission toggle", permissionlist)
-			if(!new_permission) return
+			if(!new_permission)
+				return
 			D.rights ^= permissionlist[new_permission]
 
 			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
@@ -150,14 +155,16 @@
 //======================================================
 
 	else if(href_list["delay_round_end"])
-		if(!check_rights(R_SERVER)) return
+		if(!check_rights(R_SERVER))
+			return
 
 		SSticker.delay_end = !SSticker.delay_end
 		message_admins("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 
 	else if(href_list["simplemake"])
 
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/M = locate(href_list["mob"])
 		if(!ismob(M))
@@ -166,8 +173,10 @@
 
 		var/delmob = 0
 		switch(alert("Delete old mob?","Message","Yes","No","Cancel"))
-			if("Cancel") return
-			if("Yes") delmob = 1
+			if("Cancel")
+				return
+			if("Yes")
+				delmob = 1
 
 		message_admins("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 
@@ -179,41 +188,74 @@
 			hivenumber = X.hivenumber
 
 		switch(href_list["simplemake"])
-			if("observer") transformed = M.change_mob_type( /mob/dead/observer , null, null, delmob )
+			if("observer")
+				transformed = M.change_mob_type( /mob/dead/observer , null, null, delmob )
 
-			if("larva") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/larva , null, null, delmob )
-			if("facehugger") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/facehugger , null, null, delmob )
-			if("defender") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/defender, null, null, delmob )
-			if("warrior") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/warrior, null, null, delmob )
-			if("runner") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/runner , null, null, delmob )
-			if("drone") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/drone , null, null, delmob )
-			if("sentinel") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/sentinel , null, null, delmob )
-			if("lurker") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/lurker , null, null, delmob )
-			if("carrier") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/carrier , null, null, delmob )
-			if("hivelord") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/hivelord , null, null, delmob )
-			if("praetorian") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/praetorian , null, null, delmob )
-			if("ravager") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/ravager , null, null, delmob )
-			if("spitter") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/spitter , null, null, delmob )
-			if("boiler") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/boiler , null, null, delmob )
-			if("burrower") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/burrower , null, null, delmob )
-			if("crusher") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/crusher , null, null, delmob )
-			if("queen") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/queen , null, null, delmob )
-			if("predalien") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/predalien , null, null, delmob )
+			if("larva")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/larva , null, null, delmob )
+			if("facehugger")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/facehugger , null, null, delmob )
+			if("defender")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/defender, null, null, delmob )
+			if("warrior")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/warrior, null, null, delmob )
+			if("runner")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/runner , null, null, delmob )
+			if("drone")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/drone , null, null, delmob )
+			if("sentinel")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/sentinel , null, null, delmob )
+			if("lurker")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/lurker , null, null, delmob )
+			if("carrier")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/carrier , null, null, delmob )
+			if("hivelord")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/hivelord , null, null, delmob )
+			if("praetorian")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/praetorian , null, null, delmob )
+			if("ravager")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/ravager , null, null, delmob )
+			if("spitter")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/spitter , null, null, delmob )
+			if("boiler")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/boiler , null, null, delmob )
+			if("burrower")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/burrower , null, null, delmob )
+			if("crusher")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/crusher , null, null, delmob )
+			if("queen")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/queen , null, null, delmob )
+			if("predalien")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/predalien , null, null, delmob )
 
-			if("human") transformed = M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
-			if("monkey") transformed = M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
-			if("farwa") transformed = M.change_mob_type( /mob/living/carbon/human/farwa , null, null, delmob )
-			if("neaera") transformed = M.change_mob_type( /mob/living/carbon/human/neaera , null, null, delmob )
-			if("yiren") transformed = M.change_mob_type( /mob/living/carbon/human/yiren , null, null, delmob )
-			if("robot") transformed = M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
-			if("cat") transformed = M.change_mob_type( /mob/living/simple_animal/cat , null, null, delmob )
-			if("runtime") transformed = M.change_mob_type( /mob/living/simple_animal/cat/Runtime , null, null, delmob )
-			if("corgi") transformed = M.change_mob_type( /mob/living/simple_animal/corgi , null, null, delmob )
-			if("ian") transformed = M.change_mob_type( /mob/living/simple_animal/corgi/Ian , null, null, delmob )
-			if("crab") transformed = M.change_mob_type( /mob/living/simple_animal/crab , null, null, delmob )
-			if("coffee") transformed = M.change_mob_type( /mob/living/simple_animal/crab/Coffee , null, null, delmob )
-			if("parrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
-			if("polyparrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
+			if("human")
+				transformed = M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
+			if("monkey")
+				transformed = M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
+			if("farwa")
+				transformed = M.change_mob_type( /mob/living/carbon/human/farwa , null, null, delmob )
+			if("neaera")
+				transformed = M.change_mob_type( /mob/living/carbon/human/neaera , null, null, delmob )
+			if("yiren")
+				transformed = M.change_mob_type( /mob/living/carbon/human/yiren , null, null, delmob )
+			if("robot")
+				transformed = M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
+			if("cat")
+				transformed = M.change_mob_type( /mob/living/simple_animal/cat , null, null, delmob )
+			if("runtime")
+				transformed = M.change_mob_type( /mob/living/simple_animal/cat/Runtime , null, null, delmob )
+			if("corgi")
+				transformed = M.change_mob_type( /mob/living/simple_animal/corgi , null, null, delmob )
+			if("ian")
+				transformed = M.change_mob_type( /mob/living/simple_animal/corgi/Ian , null, null, delmob )
+			if("crab")
+				transformed = M.change_mob_type( /mob/living/simple_animal/crab , null, null, delmob )
+			if("coffee")
+				transformed = M.change_mob_type( /mob/living/simple_animal/crab/Coffee , null, null, delmob )
+			if("parrot")
+				transformed = M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
+			if("polyparrot")
+				transformed = M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
 
 		if(isxeno(transformed) && hivenumber)
 			var/mob/living/carbon/xenomorph/X = transformed
@@ -427,7 +469,8 @@
 		usr.client.warn(href_list["warn"])
 
 	else if(href_list["unbanupgradeperma"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 		UpdateTime()
 		var/reason
 
@@ -443,11 +486,13 @@
 		var/mins = 0
 		if(minutes > GLOB.CMinutes)
 			mins = minutes - GLOB.CMinutes
-		if(!mins) return
+		if(!mins)
+			return
 		mins = max(5255990,mins) // 10 years
 		minutes = GLOB.CMinutes + mins
 		reason = input(usr,"Reason?","reason",reason2) as message|null
-		if(!reason) return
+		if(!reason)
+			return
 
 		ban_unban_log_save("[key_name(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
 		message_admins("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
@@ -460,7 +505,8 @@
 		unbanpanel()
 
 	else if(href_list["unbane"])
-		if(!check_rights(R_BAN)) return
+		if(!check_rights(R_BAN))
+			return
 
 		UpdateTime()
 		var/reason
@@ -481,12 +527,14 @@
 		if(minutes > GLOB.CMinutes)
 			mins = minutes - GLOB.CMinutes
 		mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
-		if(!mins) return
+		if(!mins)
+			return
 		mins = min(525599,mins)
 		minutes = GLOB.CMinutes + mins
 		duration = GetExp(minutes)
 		reason = input(usr,"Reason?","reason",reason2) as message|null
-		if(!reason) return
+		if(!reason)
+			return
 
 		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
 		message_admins("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
@@ -568,7 +616,8 @@
 		if(length(joblist)) //at least 1 banned job exists in joblist so we have stuff to unban.
 			for(var/job in joblist)
 				var/reason = jobban_isbanned(M, job, P1)
-				if(!reason) continue //skip if it isn't jobbanned anyway
+				if(!reason)
+					continue //skip if it isn't jobbanned anyway
 				switch(alert("Job: '[job]' Reason: '[reason]' Un-jobban?","Please Confirm","Yes","No"))
 					if("Yes")
 						P1.remove_job_ban(job)
@@ -597,7 +646,8 @@
 			qdel(M.client)
 
 	else if(href_list["removejobban"])
-		if(!check_rights(R_BAN)) return
+		if(!check_rights(R_BAN))
+			return
 
 		var/t = href_list["removejobban"]
 		if(t)
@@ -611,7 +661,8 @@
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
 
 		var/mob/M = locate(href_list["newban"])
-		if(!ismob(M)) return
+		if(!ismob(M))
+			return
 
 		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
 			return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
@@ -623,7 +674,8 @@
 		var/mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
 		if(!mins)
 			return
-		if(mins >= 525600) mins = 525599
+		if(mins >= 525600)
+			mins = 525599
 		var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
 		if(!reason)
 			return
@@ -636,9 +688,11 @@
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
 
 		var/mob/M = locate(href_list["eorgban"])
-		if(!ismob(M)) return
+		if(!ismob(M))
+			return
 
-		if(M.client && M.client.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+		if(M.client && M.client.admin_holder)
+			return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
 			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
@@ -738,12 +792,16 @@
 			return
 
 		var/mob/M = locate(href_list["mute"])
-		if(!ismob(M)) return
-		if(!M.client) return
+		if(!ismob(M))
+			return
+		if(!M.client)
+			return
 
 		var/mute_type = href_list["mute_type"]
-		if(istext(mute_type)) mute_type = text2num(mute_type)
-		if(!isnum(mute_type)) return
+		if(istext(mute_type))
+			mute_type = text2num(mute_type)
+		if(!isnum(mute_type))
+			return
 
 		cmd_admin_mute(M, mute_type)
 
@@ -751,7 +809,8 @@
 		topic_chems(href_list["chem_panel"])
 
 	else if(href_list["c_mode"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
@@ -760,7 +819,8 @@
 		show_browser(usr, dat, "Change Gamemode", "c_mode")
 
 	else if(href_list["c_mode2"])
-		if(!check_rights(R_ADMIN|R_SERVER)) return
+		if(!check_rights(R_ADMIN|R_SERVER))
+			return
 
 		GLOB.master_mode = href_list["c_mode2"]
 		message_admins("[key_name_admin(usr)] set the mode as [GLOB.master_mode].")
@@ -769,7 +829,8 @@
 		SSticker.save_mode(GLOB.master_mode)
 
 	else if(href_list["monkeyone"])
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
 		if(!istype(H))
@@ -780,7 +841,8 @@
 		H.monkeyize()
 
 	else if(href_list["forcespeech"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
@@ -788,13 +850,15 @@
 			return
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
-		if(!speech) return
+		if(!speech)
+			return
 		M.say(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
 		message_admins("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
 
 	else if(href_list["zombieinfect"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
 		if(!istype(H))
 			to_chat(usr, "This can only be used on instances of type /human")
@@ -813,7 +877,8 @@
 
 		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
 	else if(href_list["larvainfect"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
 		if(!istype(H))
 			to_chat(usr, "This can only be used on instances of type /human")
@@ -894,14 +959,16 @@
 		H.faction = hive.internal_faction
 
 	else if(href_list["forceemote"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
 
 		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
-		if(!speech) return
+		if(!speech)
+			return
 		M.manual_emote(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
 		message_admins("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]")
@@ -930,7 +997,8 @@
 		qdel(M)
 
 	else if(href_list["tdome1"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -951,7 +1019,8 @@
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -972,7 +1041,8 @@
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -990,7 +1060,8 @@
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
-		if(!check_rights(R_ADMIN)) return
+		if(!check_rights(R_ADMIN))
+			return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -1027,7 +1098,8 @@
 		message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(L)] in [get_area(L)] ([L.x],[L.y],[L.z])."), L.x, L.y, L.z)
 
 	else if(href_list["makealien"])
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
@@ -1037,7 +1109,8 @@
 		usr.client.cmd_admin_alienize(H)
 
 	else if(href_list["changehivenumber"])
-		if(!check_rights(R_DEBUG|R_ADMIN)) return
+		if(!check_rights(R_DEBUG|R_ADMIN))
+			return
 
 		var/mob/living/carbon/H = locate(href_list["changehivenumber"])
 		if(!istype(H))
@@ -1047,7 +1120,8 @@
 			usr.client.cmd_admin_change_their_hivenumber(H)
 
 	else if(href_list["makeyautja"])
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","Make Yautja","Yes","No") != "Yes")
 			return
@@ -1082,7 +1156,8 @@
 				H.mind.transfer_to(M)
 			else
 				M.key = H.key
-				if(M.client) M.client.change_view(GLOB.world_view_size)
+				if(M.client)
+					M.client.change_view(GLOB.world_view_size)
 
 			if(M.skills)
 				qdel(M.skills)
@@ -1097,7 +1172,8 @@
 		return
 
 	else if(href_list["makeanimal"])
-		if(!check_rights(R_SPAWN)) return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/M = locate(href_list["makeanimal"])
 		if(istype(M, /mob/new_player))
@@ -1156,7 +1232,8 @@
 		C.jumptocoord(x,y,z)
 
 	else if(href_list["admincancelob"])
-		if(!check_rights(R_MOD)) return
+		if(!check_rights(R_MOD))
+			return
 		var/cancel_token = href_list["cancellation"]
 		if(!cancel_token)
 			return
@@ -1278,7 +1355,8 @@
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("Template", "Custom"))
-		if(!template_choice) return
+		if(!template_choice)
+			return
 		var/datum/fax/fax_message
 		var/organization_type = ""
 		switch(template_choice)
@@ -1325,7 +1403,8 @@
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("USCM High Command", "USCM Provost General", "Custom"))
-		if(!template_choice) return
+		if(!template_choice)
+			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1371,7 +1450,8 @@
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
-		if(!template_choice) return
+		if(!template_choice)
+			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1413,7 +1493,8 @@
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
-		if(!template_choice) return
+		if(!template_choice)
+			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1455,7 +1536,8 @@
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
-		if(!template_choice) return
+		if(!template_choice)
+			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1497,7 +1579,8 @@
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
-		if(!template_choice) return
+		if(!template_choice)
+			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1539,7 +1622,8 @@
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Anchorpoint", "Custom"))
-		if(!template_choice) return
+		if(!template_choice)
+			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")

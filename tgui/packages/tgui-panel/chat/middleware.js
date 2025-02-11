@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { storage } from 'common/storage';
+import { storage as realStorage, StorageProxy } from 'common/storage';
 import DOMPurify from 'dompurify';
 
 import {
@@ -34,6 +34,9 @@ import { selectChat, selectCurrentChatPage } from './selectors';
 
 // List of blacklisted tags
 const FORBID_TAGS = ['a', 'iframe', 'link', 'video'];
+
+const storage =
+  Byond.storageCdn === 'tgui:storagecdn' ? realStorage : new StorageProxy(true);
 
 const saveChatToStorage = async (store) => {
   const state = selectChat(store.getState());

@@ -56,7 +56,8 @@
 		qdel(O)
 		return
 	if(istype(O,/obj/effect/plantsegment))
-		if(prob(50)) qdel(O)
+		if(prob(50))
+			qdel(O)
 		return
 	if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
 		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O

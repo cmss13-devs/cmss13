@@ -251,18 +251,20 @@
 						continue
 				else
 					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] [temp.status & LIMB_SYNTHSKIN ? "synthskin" : "robot"] [temp.display_name]. It has")
-				if(temp.brute_dam) switch(temp.brute_dam)
-					if(0 to 20)
-						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some [temp.status & LIMB_SYNTHSKIN ? "surface damage" : "dents"]")
-					if(21 to INFINITY)
-						wound_flavor_text["[temp.display_name]"] += temp.status & LIMB_SYNTHSKIN ? SPAN_WARNING(pick(" a lot of surface damage", " severe surface damage")) : SPAN_WARNING(pick(" a lot of dents"," severe denting"))
+				if(temp.brute_dam)
+					switch(temp.brute_dam)
+						if(0 to 20)
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some [temp.status & LIMB_SYNTHSKIN ? "surface damage" : "dents"]")
+						if(21 to INFINITY)
+							wound_flavor_text["[temp.display_name]"] += temp.status & LIMB_SYNTHSKIN ? SPAN_WARNING(pick(" a lot of surface damage", " severe surface damage")) : SPAN_WARNING(pick(" a lot of dents"," severe denting"))
 				if(temp.brute_dam && temp.burn_dam)
 					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" and")
-				if(temp.burn_dam) switch(temp.burn_dam)
-					if(0 to 20)
-						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some burns")
-					if(21 to INFINITY)
-						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" a lot of burns"," severe melting"))
+				if(temp.burn_dam)
+					switch(temp.burn_dam)
+						if(0 to 20)
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some burns")
+						if(21 to INFINITY)
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" a lot of burns"," severe melting"))
 				if(wound_flavor_text["[temp.display_name]"])
 					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING("!\n")
 			else if(length(temp.wounds) > 0)
@@ -476,7 +478,8 @@
 				msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
-		if(!cardcolor) cardcolor = "none"
+		if(!cardcolor)
+			cardcolor = "none"
 		msg += "<span class = 'deptradio'>Triage holo card:</span> <a href='byond://?src=\ref[src];medholocard=1'>\[[cardcolor]\]</a> - "
 
 		// scan reports

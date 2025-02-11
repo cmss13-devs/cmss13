@@ -26,8 +26,10 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
-	var/can_bloody = TRUE //Can blood spawn on this turf?
+	///Used by floors to indicate the floor is a tile (otherwise its plating)
+	var/intact_tile = TRUE
+	///Can blood spawn on this turf?
+	var/can_bloody = TRUE
 	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
@@ -309,7 +311,8 @@
 /turf/proc/inertial_drift(atom/movable/A as mob|obj)
 	if(A.anchored)
 		return
-	if(!(A.last_move_dir)) return
+	if(!(A.last_move_dir))
+		return
 	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
 		var/mob/M = A
 		if(M.Process_Spacemove(1))

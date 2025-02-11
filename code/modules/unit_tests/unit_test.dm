@@ -225,14 +225,17 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	var/list/tests_to_run = list()
 	var/list/focused_tests = list()
+	var/any_focus = FALSE // Just used to detect a focus that might only apply to one stage
 	for(var/datum/unit_test/test_to_run as anything in subtypesof(/datum/unit_test))
 		if(initial(test_to_run.stage) != stage)
+			if(initial(test_to_run.focus))
+				any_focus = TRUE
 			continue
 		if(initial(test_to_run.focus))
 			focused_tests += test_to_run
 			continue
 		tests_to_run += test_to_run
-	if(length(focused_tests))
+	if(length(focused_tests) || any_focus)
 		tests_to_run = focused_tests
 
 	tests_to_run = sortTim(tests_to_run, GLOBAL_PROC_REF(cmp_unit_test_priority))

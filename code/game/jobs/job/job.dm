@@ -78,9 +78,12 @@
 
 /datum/timelock/New(name, time_required, list/roles)
 	. = ..()
-	if(name) src.name = name
-	if(time_required) src.time_required = time_required
-	if(roles) src.roles = roles
+	if(name)
+		src.name = name
+	if(time_required)
+		src.time_required = time_required
+	if(roles)
+		src.roles = roles
 
 /datum/job/proc/setup_requirements(list/L)
 	var/list/to_return = list()

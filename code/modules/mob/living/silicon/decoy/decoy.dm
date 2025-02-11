@@ -64,9 +64,12 @@
 	var/message_mode = parse_message_mode(message) //I really prefer my rewrite of all this.
 
 	switch(message_mode)
-		if("headset") message = copytext_char(message, 2) // SS220 EDIT - RU fix
-		if("broadcast") message_mode = "headset"
-		else message = copytext_char(message, 3) // SS220 EDIT - RU fix
+		if("headset")
+			message = copytext_char(message, 2) // SS220 EDIT - RU fix
+		if("broadcast")
+			message_mode = "headset"
+		else
+			message = copytext_char(message, 3) // SS220 EDIT - RU fix
 
 	ai_headset.talk_into(src, message, message_mode, "states", languages[1])
 	return TRUE
@@ -80,7 +83,8 @@
 	if(length(message) >= 2)
 		var/channel_prefix = copytext_char(message, 1 ,3) // SS220 EDIT - RU fix
 		channel_prefix = GLOB.department_radio_keys[channel_prefix]
-		if(channel_prefix) return channel_prefix
+		if(channel_prefix)
+			return channel_prefix
 
 
 /*Specific communication to a terminal.

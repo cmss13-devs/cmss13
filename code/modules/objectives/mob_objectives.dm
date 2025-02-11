@@ -110,7 +110,8 @@
 			if(1)
 				if(ispredalien(X))
 					value = OBJECTIVE_ABSOLUTE_VALUE
-				else value = OBJECTIVE_LOW_VALUE
+				else
+					value = OBJECTIVE_LOW_VALUE
 			if(2)
 				value = OBJECTIVE_MEDIUM_VALUE
 			if(3)

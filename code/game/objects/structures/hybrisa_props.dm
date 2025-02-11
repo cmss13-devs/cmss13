@@ -2402,6 +2402,27 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+/obj/structure/prop/hybrisa/misc/pole_stump
+	name = "colony streetlight stump"
+	icon = 'icons/obj/structures/props/streetlights.dmi'
+	icon_state = "street_stump"
+	plane = FLOOR_PLANE
+	explo_proof = TRUE
+	health = null
+
+/obj/structure/prop/hybrisa/misc/pole_stump/Crossed(atom/movable/crosser)
+	. = ..()
+	if(ishuman(crosser) && prob(10))
+		var/mob/living/carbon/human/crossing_human = crosser
+		crossing_human.visible_message(SPAN_DANGER("[crossing_human] trips on [src] and falls prone."))
+		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+		crossing_human.KnockDown(0.5)
+
+/obj/structure/prop/hybrisa/misc/pole_stump/traffic
+	name = "colony streetlight stump"
+	icon = 'icons/obj/structures/props/streetlights.dmi'
+	icon_state = "trafficlight_stump"
+
 // Sofa Black
 
 /obj/structure/bed/sofa/hybrisa/sofa/black

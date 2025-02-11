@@ -352,8 +352,8 @@
 		else
 			relative_dir = Get_Compass_Dir(mob, target)
 		mob.show_message( \
-			SPAN_DANGER("СНАРЯД ПАДАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НА ВАС"))]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_DANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ПАДАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL))) : uppertext("ПРЯМО НА ВАС"))]!"), SHOW_MESSAGE_AUDIBLE \
+			SPAN_DANGER("СНАРЯД ПАДАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, PREPOSITIONAL) + " ОТ ВАС")) : uppertext("ПРЯМО НА ВАС"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_DANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ПАДАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, PREPOSITIONAL))) : uppertext("ПРЯМО НА ВАС"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(2.5 SECONDS) // Sleep a bit to give a message
 	for(var/mob/mob in range(10, target))
@@ -362,8 +362,8 @@
 		else
 			relative_dir = Get_Compass_Dir(mob, target)
 		mob.show_message( \
-			SPAN_HIGHDANGER("СНАРЯД ВОТ-ВОТ УПАДЁТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НА ВАС"))]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ВОТ-ВОТ УПАДЁТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НА ВАС"))]!"), SHOW_MESSAGE_AUDIBLE \
+			SPAN_HIGHDANGER("СНАРЯД ВОТ-ВОТ УПАДЁТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, PREPOSITIONAL) + " ОТ ВАС")) : uppertext("ПРЯМО НА ВАС"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ВОТ-ВОТ УПАДЁТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, PREPOSITIONAL) + " ОТ ВАС")) : uppertext("ПРЯМО НА ВАС"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/mortar_laser_warning))
 		new /obj/effect/overlay/temp/blinking_laser(target)

@@ -268,13 +268,13 @@
 				)
 			if(2)
 				mob.show_message( \
-					SPAN_HIGHDANGER("[ds_identifier] ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_VISIBLE, \
-					SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_AUDIBLE \
+					SPAN_HIGHDANGER("[ds_identifier] ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, PREPOSITIONAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_VISIBLE, \
+					SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, PREPOSITIONAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_AUDIBLE \
 				)
 			if(3)
 				mob.show_message( \
-					SPAN_HIGHDANGER("[ds_identifier] ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_VISIBLE, \
-					SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, INSTRUMENTAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_AUDIBLE \
+					SPAN_HIGHDANGER("[ds_identifier] ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, PREPOSITIONAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_VISIBLE, \
+					SPAN_HIGHDANGER("ВЫ СЛЫШИТЕ, КАК ЧТО-ТО ЛЕТАЕТ [SPAN_UNDERLINE(relative_dir ? uppertext(("НА " + dir2text_ru(relative_dir, PREPOSITIONAL) + " ОТ ВАС")) : uppertext("ПРЯМО НАД ВАМИ"))]!"), SHOW_MESSAGE_AUDIBLE \
 				)
 
 /// Step 5: Actually executes the fire mission updating stat to FIRE_MISSION_STATE_FIRING and then FIRE_MISSION_STATE_OFF_TARGET

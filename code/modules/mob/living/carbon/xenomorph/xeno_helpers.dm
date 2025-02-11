@@ -76,3 +76,13 @@
 
 /mob/living/carbon/xenomorph/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon_state = "[get_strain_icon()] [caste.caste_type] Running"
+
+/// Returns an associated list of the caste of xenos provided, to a generic image of the xeno
+/mob/living/carbon/xenomorph/proc/collect_xeno_images(list/list_of_xenos)
+	var/returned_list = list()
+
+	for(var/caste in list_of_xenos)
+		var/image/xeno_image = hive.evolution_menu_images[caste]
+		returned_list[caste] = xeno_image
+
+	return returned_list

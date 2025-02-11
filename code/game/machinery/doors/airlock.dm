@@ -219,8 +219,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			//tries to open the door without ID
 			//will succeed only if the ID wire is cut or the door requires no access
 			if(!requiresID() || check_access(null))
-				if(density) open()
-				else close()
+				if(density)
+					open()
+				else
+					close()
 
 		if(AIRLOCK_WIRE_SAFETY)
 			safe = !safe
@@ -396,7 +398,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 
 /obj/structure/machinery/door/airlock/update_icon()
-	if(overlays) overlays.Cut()
+	if(overlays)
+		overlays.Cut()
 	if(density)
 		if(locked && lights)
 			icon_state = "door_locked"
@@ -416,14 +419,16 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/do_animate(animation)
 	switch(animation)
 		if("opening")
-			if(overlays) overlays.Cut()
+			if(overlays)
+				overlays.Cut()
 			if(panel_open)
 				spawn(2) // The only work around that works. Downside is that the door will be gone for a millisecond.
 					flick("o_door_opening", src)  //can not use flick due to BYOND bug updating overlays right before flicking
 			else
 				flick("door_opening", src)
 		if("closing")
-			if(overlays) overlays.Cut()
+			if(overlays)
+				overlays.Cut()
 			if(panel_open)
 				flick("o_door_closing", src)
 			else

@@ -85,7 +85,7 @@
 	else if(status == AUTODISPENSER_RUNNING)
 		overlays += "+running"
 	else if(status == AUTODISPENSER_FINISHED)
-		overlays += "full"
+		overlays += "+full"
 
 /obj/structure/machinery/autodispenser/proc/connect_storage()
 	if(linked_storage)

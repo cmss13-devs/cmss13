@@ -2406,7 +2406,7 @@
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 
 	flags_equip_slot = SLOT_BACK
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -2453,7 +2453,7 @@
 		/obj/item/ammo_magazine/rifle/explosive,
 		/obj/item/ammo_magazine/rifle/le,
 		/obj/item/ammo_magazine/rifle/ap,
-		)
+	)
 
 	attachable_allowed = list(
 		/obj/item/attachable/verticalgrip,
@@ -2469,7 +2469,7 @@
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/extinguisher,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/m41a/elite/xr/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19, "rail_x" = 16, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)

@@ -295,7 +295,7 @@
 /turf/open/floor/darkyellowcorners2/east,
 /area/bigredv2/outside/engineering)
 "bL" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bM" = (

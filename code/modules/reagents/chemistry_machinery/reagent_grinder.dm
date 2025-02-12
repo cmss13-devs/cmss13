@@ -98,7 +98,8 @@
 		var/obj/item/storage/B = O
 		if(length(B.contents) > 0)
 			to_chat(user, SPAN_NOTICE("You start dumping the contents of [B] into [src]."))
-			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
 			for(var/obj/item/I in B)
 				if(LAZYLEN(holdingitems) >= limit)
 					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))

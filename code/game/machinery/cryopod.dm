@@ -425,8 +425,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
 			SPAN_NOTICE("You start putting [M] into [src]."))
 
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
-			if(!M || !G || !G.grabbed_thing) return
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+			if(!M || !G || !G.grabbed_thing)
+				return
 			if(occupant)
 				to_chat(user, SPAN_WARNING("[src] is occupied."))
 				return FALSE
@@ -471,8 +473,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		message_admins("[key_name_admin(M)], [M.job], has left [src] at [location].")
 
 	var/list/items = src.contents //-Removes items from the chamber
-	if(occupant) items -= occupant
-	if(announce) items -= announce
+	if(occupant)
+		items -= occupant
+	if(announce)
+		items -= announce
 
 	for(var/obj/item/W in items)
 		W.forceMove(get_turf(src))

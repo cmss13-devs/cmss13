@@ -172,7 +172,7 @@
 			</tr>
 			<tr id='search_tr'>
 				<td align='center'>
-					<b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'>
+					<b>Search:</b> <input type='search' id='filter' value='' onkeyup='updateSearch()' onblur='updateSearch()' style='width:300px;'>
 				</td>
 			</tr>
 		</table>
@@ -269,7 +269,7 @@
 	</body></html>
 	"}
 
-	show_browser(usr, dat, "User Panel", "players", "size=600x480")
+	show_browser(usr, dat, "User Panel", "players", "size=640x480")
 
 //Extended panel with ban related things
 /datum/admins/proc/player_panel_extended()
@@ -283,7 +283,8 @@
 	var/list/mobs = sortmobs()
 
 	for(var/mob/M in mobs)
-		if(!M.ckey) continue
+		if(!M.ckey)
+			continue
 
 		dat += "<tr><td>[(M.client ? "[M.client]" : "No client")]</td>"
 		dat += "<td><a href='byond://?src=\ref[usr];priv_msg=[M.ckey]'>[M.name]</a></td>"
@@ -321,12 +322,17 @@
 		alert("The game hasn't started yet!")
 		return
 
-	var/dat = "<html><body><h1><B>Antagonists</B></h1>"
-	dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
-	dat += "Round Duration: <B>[floor(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
+	var/dat = {"
+	Current Game Mode: <b>[SSticker.mode.name]</b>
+	<br>
+	Round Duration: <b>[floor(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</b>
+	<br>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
+	<table rules=all frame=void border=0 cellspacing=5 cellpadding=3 id='searchable'>
+	"}
 
 	if(length(GLOB.other_factions_human_list))
-		dat += "<br><table cellspacing=5><tr><td><B>Other human factions</B></td><td></td><td></td></tr>"
+		dat += "<tr class='title'><td><h2>Other human factions</h2></td></tr>"
 		for(var/i in GLOB.other_factions_human_list)
 			var/mob/living/carbon/human/H = i
 			var/location = get_area(H.loc)
@@ -334,47 +340,33 @@
 				dat += "<tr><td><A href='byond://?src=\ref[usr];priv_msg=[H.ckey]'>[H.real_name]</a>[H.client ? "" : " <i>(logged out)</i>"][H.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td>[H.faction]</td>"
-				dat += "<td><a href='byond://?src=\ref[usr];track=\ref[H]'>F</a></td>"
-				dat += "<td><a href='byond://?src=\ref[src];[HrefToken()];adminplayeropts=\ref[H]'>PP</a></td>"
-		dat += "</table>"
+				dat += "<td>[ADMIN_FLW(H)]</td>"
+				dat += "<td>[ADMIN_PP(H)]</tr>"
 
 	if(length(SSticker.mode.survivors))
-		dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
+		dat += "<tr class='title'><td><h2>Survivors</h2></td></tr>"
 		for(var/datum/mind/L in SSticker.mode.survivors)
 			var/mob/M = L.current
 			var/location = get_area(M.loc)
 			if(M)
 				dat += "<tr><td><A href='byond://?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
-				dat += "<td><a href='byond://?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><A href='byond://?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</A></td></TR>"
-		dat += "</table>"
+				dat += "<td>[ADMIN_FLW(M)]</td>"
+				dat += "<td>[ADMIN_PP(M)]</tr>"
 
 	if(length(SSticker.mode.xenomorphs))
-		dat += "<br><table cellspacing=5><tr><td><B>Aliens</B></td><td></td><td></td></tr>"
+		dat += "<tr class='title'><td><h2>Aliens</h2></td></tr>"
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/M = L.current
 			if(M)
 				var/location = get_area(M.loc)
 				dat += "<tr><td><A href='byond://?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
-				dat += "<td><a href='byond://?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><A href='byond://?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</A></td></TR>"
-		dat += "</table>"
+				dat += "<td>[ADMIN_FLW(M)]</td>"
+				dat += "<td>[ADMIN_PP(M)]</tr>"
 
-	if(length(SSticker.mode.survivors))
-		dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
-		for(var/datum/mind/L in SSticker.mode.survivors)
-			var/mob/M = L.current
-			var/location = get_area(M.loc)
-			if(M)
-				dat += "<tr><td><A href='byond://?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-				dat += "<td>[location]</td>"
-				dat += "<td><a href='byond://?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><A href='byond://?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</A></td></TR>"
-		dat += "</table>"
+	dat += "</table>"
 
-	dat += "</body></html>"
 	show_browser(usr, dat, "Antagonists", "antagonists", "size=600x500")
 
 /datum/admins/proc/check_round_status()
@@ -398,7 +390,8 @@
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
-			if(check_rights(R_ADMIN, 0)) dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
+			if(check_rights(R_ADMIN, 0))
+				dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
 
 		dat += "<br><A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"

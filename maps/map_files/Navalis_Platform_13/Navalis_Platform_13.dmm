@@ -16852,9 +16852,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/navalis/outdoors/landing_zone_2)
 "aRK" = (
-/turf/open/auto_turf/sand/layer0{
-	name = "open crate of dirt"
-	},
+/turf/open/auto_turf/sand/layer0,
 /area/navalis/outdoors/landing_zone_2)
 "aRL" = (
 /obj/structure/platform/metal/kutjevo/west{

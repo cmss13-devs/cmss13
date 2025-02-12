@@ -4108,6 +4108,9 @@
 	pixel_x = 3;
 	pixel_y = 1
 	},
+/obj/structure/machinery/power/apc/almayer/east{
+	pixel_y = 25
+	},
 /turf/open/floor/corsat,
 /area/yautja)
 "nZ" = (
@@ -12074,7 +12077,6 @@
 /area/yautja/lower_deck)
 "Pz" = (
 /obj/structure/platform_decoration/metal/hunter/west,
-/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "PC" = (

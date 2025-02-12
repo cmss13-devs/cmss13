@@ -13,6 +13,15 @@
 	///The time when the larva_queue_cached_message should be considered stale
 	var/larva_queue_message_stale_time
 
+	/// The window that we display the main menu in
+	var/datum/tgui_window/lobby_window
+
+	/// The message that we are displaying to the user. If a list, each list element is displayed on its own line
+	var/lobby_confirmation_message
+
+	/// The callback that we will execute when the user confirms the message
+	var/datum/callback/execute_on_confirm
+
 /mob/new_player/Initialize()
 	. = ..()
 	GLOB.dead_mob_list -= src
@@ -314,9 +323,8 @@
 /mob/new_player/proc/ViewManifest()
 	var/dat = "<html><body>"
 	dat += "<h4><center>Crew Manifest:</center></h4>"
-	dat += GLOB.data_core.get_manifest(FALSE, TRUE)
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/new_player/proc/ViewHiveLeaders()
 	if(!GLOB.hive_leaders_tgui)

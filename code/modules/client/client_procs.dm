@@ -388,6 +388,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Initialize tgui panel
 	stat_panel.initialize(
+		assets = list(
+			get_asset_datum(/datum/asset/simple/namespaced/fontawesome),
+			get_asset_datum(/datum/asset/simple/namespaced/sevastopol),
+			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
+		),
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
@@ -421,7 +426,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
+		stat_panel.send_message("changelog_read", FALSE)
 
 	update_fullscreen()
 
@@ -507,7 +512,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if( (M.lastKnownIP == address) )
 					matches += "IP ([address])"
 				if( (connection != "web") && (M.computer_id == computer_id) )
-					if(matches) matches += " and "
+					if(matches)
+						matches += " and "
 					matches += "ID ([computer_id])"
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
@@ -522,7 +528,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration) return inactivity
+	if(inactivity > duration)
+		return inactivity
 	return 0
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be

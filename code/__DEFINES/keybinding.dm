@@ -54,10 +54,6 @@
 #define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
 #define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 #define COMSIG_KB_HUMAN_CYCLE_HELMET_HUD "keybinding_human_cycle_helmet_hud"
-#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_NORTH "keybinding_human_pixel_shift_grabbed_north"
-#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_SOUTH "keybinding_human_pixel_shift_grabbed_south"
-#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_EAST "keybinding_human_pixel_shift_grabbed_east"
-#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_WEST "keybinding_human_pixel_shift_grabbed_west"
 
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"
@@ -167,6 +163,7 @@
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
+#define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 
 // Yautja
 

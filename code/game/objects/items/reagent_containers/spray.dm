@@ -68,17 +68,24 @@
 		return
 
 	last_use = world.time
-	Spray_at(A, user)
 
-	playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)
+	if(Spray_at(A, user))
+		playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)
 
 /obj/item/reagent_container/spray/proc/Spray_at(atom/A, mob/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		if(!human_user.allow_gun_usage && reagents.contains_harmful_substances())
+			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			return FALSE
+
 	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
 	D.create_reagents(amount_per_transfer_from_this)
 	reagents.trans_to(D, amount_per_transfer_from_this, 1 / spray_size)
 	D.color = mix_color_from_reagents(D.reagents.reagent_list)
 	D.source_user = user
 	D.move_towards(A, 3, spray_size)
+	return TRUE
 
 /obj/item/reagent_container/spray/attack_self(mob/user)
 	..()
@@ -180,7 +187,8 @@
 /obj/item/reagent_container/spray/chemsprayer/Spray_at(atom/A as mob|obj)
 	var/Sprays[3]
 	for(var/i=1, i<=3, i++) // intialize sprays
-		if(src.reagents.total_volume < 1) break
+		if(src.reagents.total_volume < 1)
+			break
 		var/obj/effect/decal/chempuff/D = new/obj/effect/decal/chempuff(get_turf(src))
 		D.create_reagents(amount_per_transfer_from_this)
 		src.reagents.trans_to(D, amount_per_transfer_from_this)
@@ -198,7 +206,8 @@
 	for(var/i=1, i<=length(Sprays), i++)
 		spawn()
 			var/obj/effect/decal/chempuff/D = Sprays[i]
-			if(!D) continue
+			if(!D)
+				continue
 
 			// Spreads the sprays a little bit
 			var/turf/my_target = pick(the_targets)
@@ -233,7 +242,8 @@
 
 
 /obj/item/reagent_container/spray/plantbgone/afterattack(atom/A, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	..()
 
 //ammonia spray
@@ -245,3 +255,12 @@
 /obj/item/reagent_container/spray/hydro/Initialize()
 	. = ..()
 	reagents.add_reagent("ammonia", src.volume)
+
+/obj/item/reagent_container/spray/investigation
+	name = "forensic spray"
+	desc = /datum/reagent/forensic_spray::description
+
+/obj/item/reagent_container/spray/investigation/Initialize()
+	. = ..()
+
+	reagents.add_reagent(/datum/reagent/forensic_spray::id, volume)

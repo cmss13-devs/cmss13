@@ -251,6 +251,20 @@
 	new /obj/item/clothing/glasses/regular(src)
 	new /obj/item/clothing/glasses/regular(src)
 
+/obj/item/storage/box/wycaps
+	name = "box of Company baseball caps"
+	desc = "This box contains seven Weyland Yutani brand baseball caps. Give them away at your leisure."
+	icon_state = "mre1"
+
+/obj/item/storage/box/wycaps/fill_preset_inventory()
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+
 /obj/item/storage/box/drinkingglasses
 	name = "box of drinking glasses"
 	desc = "It has a picture of drinking glasses on it."

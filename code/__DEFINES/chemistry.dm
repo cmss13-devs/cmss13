@@ -46,8 +46,12 @@
 #define ALCOHOL_METABOLISM AMOUNT_PER_TIME(1, 5 SECONDS)
 #define RAPID_METABOLISM AMOUNT_PER_TIME(1, 2 SECONDS)
 
-// Factor of how fast mob nutrition decreases
+/// How fast mob nutrition normally decreases
 #define HUNGER_FACTOR 0.05
+/// Additional mob nutrition cost when regenerating blood
+#define BLOOD_NUTRITION_COST 0.25
+/// Additional mob nutrition cost when cold
+#define COLD_NUTRITION_COST 1
 
 // Nutrition levels
 #define NUTRITION_MAX 550
@@ -132,6 +136,7 @@
 #define PROPERTY_CARDIOTOXIC "cardiotoxic"
 #define PROPERTY_NEUROTOXIC "neurotoxic"
 #define PROPERTY_HYPERMETABOLIC "hypermetabolic"
+#define PROPERTY_IGNITING "igniting"
 //Neutral
 #define PROPERTY_NUTRITIOUS "nutritious"
 #define PROPERTY_KETOGENIC "ketogenic"
@@ -325,3 +330,5 @@
 #define INCENDIARY_SHARDS_MAX_REDUCTION	2
 #define HORNET_SHARDS_MAX_REDUCTION 2
 #define NEURO_SHARDS_MAX_REDUCTION 2
+
+#define LEVEL_TO_POTENCY_MULTIPLIER 0.5

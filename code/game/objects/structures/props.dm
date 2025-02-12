@@ -1189,12 +1189,13 @@
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
 
-///Oil Rig Prop.
+//-- Navails Platform 13 Props --//
+
+// Support Beam
 
 /obj/structure/prop/oilrig/support_beam
 	name = "support beam"
 	desc = "Marval of human engineering, keeping a metal platform afloat on the seas of a distant alien world."
-//	color = "#FF7700"
 	icon = 'icons/obj/structures/props/oilrig/support_beam.dmi'
 	icon_state = "support_beam"
 	bound_height = 64
@@ -1214,3 +1215,18 @@
 
 /obj/structure/prop/oilrig/support_beam/brown
 	icon_state = "support_beam_brown"
+
+// Half-Grate Edge
+
+/obj/effect/decal/navalis/plate_edge
+	name = "solid metal grate"
+	desc = "A metal grate."
+	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
+	icon_state = "zhalfgrate1"
+	layer = HATCH_LAYER
+
+/obj/effect/decal/navalis/plate_edge/darker
+	color = "#ABA39D"
+
+/obj/effect/decal/navalis/plate_edge/see_through
+	icon_state = "zhalfgrate2"

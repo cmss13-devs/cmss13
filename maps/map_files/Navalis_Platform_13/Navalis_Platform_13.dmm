@@ -48,6 +48,7 @@
 	dir = 1;
 	pixel_x = 16
 	},
+/obj/structure/reagent_dispensers/fueltank/oxygentank,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aak" = (
@@ -102,7 +103,10 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tool{
+	pixel_x = 6;
+	pixel_y = 7
+	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aar" = (
@@ -192,10 +196,10 @@
 /area/navalis/indoors/industrial/power)
 "aaD" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
-	pixel_x = 1;
-	pixel_y = 5
+	pixel_y = 2;
+	pixel_x = 2
 	},
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
@@ -218,7 +222,10 @@
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "aaH" = (
-/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tool{
+	pixel_x = 4;
+	pixel_y = -5
+	},
 /turf/open/floor/prison/ramptop,
 /area/navalis/indoors/industrial/power)
 "aaI" = (
@@ -256,6 +263,9 @@
 "aaM" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 26
+	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aaN" = (
@@ -279,15 +289,20 @@
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aaR" = (
-/obj/effect/spawner/random/pills/highchance,
+/obj/effect/spawner/random/pills/midchance,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "aaS" = (
 /obj/effect/decal/cleanable/generic,
+/obj/structure/closet,
+/obj/item/clothing/accessory/storage/black_vest/brown_vest,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "aaT" = (
-/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tool{
+	pixel_x = -5;
+	pixel_y = -3
+	},
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "aaU" = (
@@ -333,9 +348,8 @@
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/industrial/power)
 "aba" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowfull2,
@@ -414,9 +428,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/accessway)
 "abl" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d"
-	},
+/obj/effect/decal/navalis/plate_edge/darker,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors/industrial/refinery)
@@ -573,7 +585,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
@@ -654,14 +666,14 @@
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/refinery)
 "acb" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/mid)
@@ -911,6 +923,9 @@
 	icon_state = "trash_14";
 	pixel_y = 27
 	},
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/primary_storage)
 "acA" = (
@@ -930,6 +945,9 @@
 	icon_state = "trash_10";
 	pixel_x = -12;
 	pixel_y = 15
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/primary_storage)
@@ -1671,11 +1689,11 @@
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aer" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -1790,8 +1808,7 @@
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/mining)
 "aeG" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d";
+/obj/effect/decal/navalis/plate_edge/darker{
 	dir = 1
 	},
 /obj/structure/largecrate/random/case/small,
@@ -2107,6 +2124,7 @@
 /obj/item/ammo_magazine/smg/p90,
 /obj/item/clothing/suit/armor/vest,
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "afs" = (
@@ -2395,14 +2413,14 @@
 "agd" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
@@ -4356,9 +4374,6 @@
 "akQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
 /obj/structure/monorail{
 	dir = 6;
 	name = "support beam";
@@ -4371,6 +4386,9 @@
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
@@ -4503,6 +4521,9 @@
 	invisibility = 101
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
+	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "alg" = (
@@ -4615,7 +4636,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "alu" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "alv" = (
@@ -4651,7 +4672,7 @@
 	layer = 2
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "alB" = (
@@ -4831,16 +4852,6 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/mid)
-"alW" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4
-	},
-/obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
-	layer = 2
-	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/charon/surface_deck/main_deck)
 "alX" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5"
@@ -5377,9 +5388,8 @@
 /turf/open/floor/hybrisa/metal/orangeline/east,
 /area/navalis/indoors/industrial/refinery)
 "anz" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 8
 	},
 /turf/open/floor/half_plate/dark_yellow/west,
 /area/navalis/indoors/industrial/mining)
@@ -5440,9 +5450,8 @@
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/accessway)
 "anI" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors/industrial/accessway)
@@ -5542,7 +5551,7 @@
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "aod" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -6261,7 +6270,7 @@
 /area/navalis/indoors/logistic/maintenance_port)
 "aqU" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -6311,10 +6320,8 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors/med_sci/foyer)
 "are" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	layer = 2.8
-	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "arf" = (
@@ -6712,6 +6719,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/starboard_hallway)
+"asw" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "asx" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata/navalis{
@@ -6799,6 +6810,9 @@
 "asL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors/med_sci/chemical_store)
 "asM" = (
@@ -8439,9 +8453,6 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/navalis/indoors/command/bathroom)
 "ayo" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4
-	},
 /obj/structure/monorail{
 	dir = 10;
 	name = "support beam";
@@ -8454,6 +8465,9 @@
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
@@ -9641,10 +9655,10 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/refinery)
 "aAv" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "aAw" = (
@@ -12198,7 +12212,7 @@
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/ind_ext)
 "aFR" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "aFS" = (
@@ -12637,11 +12651,11 @@
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/foyer)
 "aGV" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4
-	},
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -12929,6 +12943,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors/med_sci/break_room)
+"aHJ" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
+	},
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aHK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -13303,6 +13323,9 @@
 "aIV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/command/office)
 "aIW" = (
@@ -13439,6 +13462,10 @@
 /area/navalis/indoors/command/port_hallway)
 "aJr" = (
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/indoors/industrial/power)
 "aJs" = (
@@ -13636,44 +13663,38 @@
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "aKb" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	layer = 2.8
-	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKc" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKd" = (
 /turf/open/floor/corsat,
 /area/navalis/outdoors/exterior/log_ext)
 "aKe" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKf" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aKg" = (
 /turf/open/floor/corsat,
 /area/navalis/outdoors/exterior/med_ext)
 "aKh" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 1;
 	name = "support beam";
@@ -13681,14 +13702,13 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aKi" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 1;
 	name = "support beam";
@@ -13696,30 +13716,20 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKj" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
-"aKk" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	layer = 2.8
-	},
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/exterior/med_ext)
 "aKl" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 4;
 	name = "support beam";
@@ -13727,10 +13737,10 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aKm" = (
@@ -13743,7 +13753,6 @@
 /turf/open/floor/darkgreen2/east,
 /area/navalis/indoors/residential/accessway)
 "aKo" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 4;
 	name = "support beam";
@@ -13751,27 +13760,23 @@
 	layer = 1.2;
 	explo_proof = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	layer = 2.8
-	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKp" = (
 /turf/open/floor/corsat,
 /area/navalis/outdoors/exterior/com_ext)
 "aKq" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKr" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	layer = 2.8
-	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKs" = (
@@ -13783,7 +13788,6 @@
 /turf/open/floor/darkgreen2/west,
 /area/navalis/indoors/residential/accessway)
 "aKu" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 1;
 	name = "support beam";
@@ -13791,14 +13795,13 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "aKv" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 1;
 	name = "support beam";
@@ -13806,13 +13809,11 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	layer = 2.8
-	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKw" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 10;
 	name = "support beam";
@@ -13820,10 +13821,10 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKx" = (
@@ -13848,9 +13849,8 @@
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/port)
 "aKB" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -13876,31 +13876,21 @@
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
-"aKG" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	layer = 2.8
-	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/exterior/com_ext)
 "aKH" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKI" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKJ" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 5;
 	name = "support beam";
@@ -13908,14 +13898,13 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKK" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/monorail{
 	dir = 6;
 	name = "support beam";
@@ -13923,10 +13912,10 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	layer = 2.8
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
 "aKL" = (
@@ -13959,6 +13948,9 @@
 /obj/item/storage/toolbox/mechanical/green{
 	pixel_x = -11;
 	pixel_y = 9
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
 	},
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/accessway)
@@ -14728,13 +14720,13 @@
 	},
 /area/navalis/oob/powered)
 "aMW" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior_xeno_only/mining)
 "aMX" = (
@@ -14961,6 +14953,12 @@
 	layer = 2
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/oob/water)
+"aNG" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
+	},
+/turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "aNH" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
@@ -16342,6 +16340,21 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/command/port_hallway)
+"aQC" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aQD" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
 "aQE" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -16352,6 +16365,179 @@
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
+"aQF" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_x = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aQG" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
+	},
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
+"aQH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/powercell{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aQI" = (
+/obj/effect/spawner/random/toolbox{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aQJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
+"aQK" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolkit/empty,
+/obj/item/storage/toolkit/empty,
+/obj/item/storage/toolkit/empty,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/power)
+"aQL" = (
+/obj/structure/closet,
+/obj/item/clothing/accessory/storage/black_vest/brown_vest,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/power)
+"aQM" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -2
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aQN" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/power)
+"aQO" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aQP" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -2
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aQQ" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 15;
+	pixel_x = -16;
+	color = "#FFFF00"
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/indoors/industrial/power)
+"aQR" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
+"aQS" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/refinery)
+"aQT" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 15;
+	pixel_x = -25;
+	color = "#FFFF00"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/indoors/industrial/accessway)
+"aQU" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/refinery)
+"aQV" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
+	},
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
+"aQW" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/prison/darkbrowncorners2/east,
+/area/navalis/indoors/logistic/primary_storage)
+"aQX" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/corsat/brown/northeast,
+/area/navalis/indoors/industrial/mining)
+"aQY" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/corsat/brown/northwest,
+/area/navalis/indoors/industrial/mining)
 "aQZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -16366,10 +16552,175 @@
 /obj/item/cpr_dummy,
 /turf/open/floor/prison/whitered,
 /area/navalis/indoors/med_sci/storage)
+"aRa" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/prison/darkbrownfull2,
+/area/navalis/indoors/logistic/primary_storage)
+"aRb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/prison/darkbrown2/north,
+/area/navalis/indoors/logistic/primary_storage)
+"aRc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
+/turf/open/floor/prison/blue,
+/area/navalis/indoors/logistic/workshop)
+"aRd" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
+/turf/open/floor/prison/southwest,
+/area/navalis/indoors/med_sci/science_lower_entrance)
+"aRe" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
+/turf/open/floor/almayer/plate,
+/area/navalis/indoors/residential/starboard)
+"aRf" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/prison/whitegreen/west,
+/area/navalis/indoors/med_sci/corridor)
+"aRg" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/prison/bluefull/west,
+/area/navalis/indoors/logistic/workshop)
+"aRh" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/corsat/brown/southeast,
+/area/navalis/indoors/industrial/mining)
+"aRi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/prison/whitegreen,
+/area/navalis/indoors/med_sci/foyer)
+"aRj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/residential/accessway)
+"aRk" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/residential/starboard)
+"aRl" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white,
+/area/navalis/indoors/med_sci/main_floor)
+"aRm" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
+/area/navalis/indoors/residential/starboard)
+"aRn" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
+/area/navalis/indoors/residential/kitchen)
+"aRo" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/turf/open/floor/corsat,
+/area/navalis/outdoors/exterior/com_ext)
+"aRp" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/residential/accessway)
+"aRq" = (
+/obj/effect/spawner/random/gun/pistol/midchance,
+/turf/open/floor/plating/platingdmg3,
+/area/navalis/indoors/med_sci/chemical_store)
+"aRr" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/hybrisa/carpet/carpetblue,
+/area/navalis/indoors/command/meeting_hall)
+"aRs" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
+/area/navalis/indoors/residential/port)
+"aRt" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/med_ext)
+"aRu" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/darkblue2,
+/area/navalis/indoors/residential/accessway)
+"aRv" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
+	},
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aRw" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreencorner/west,
 /area/navalis/indoors/med_sci/main_floor)
+"aRx" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/residential/accessway)
+"aRy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/almayer/plate,
+/area/navalis/indoors/residential/port)
+"aRz" = (
+/obj/structure/bed/hybrisa/dingy,
+/obj/item/bedsheet/colorable,
+/obj/effect/landmark/survivor_spawner,
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/hybrisa/carpet/carpetbeigedeco,
+/area/navalis/indoors/command/oft_duty_room)
+"aRA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/prison/green/east,
+/area/navalis/indoors/command/port_hallway)
 "aRB" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
@@ -16383,6 +16734,16 @@
 "aRC" = (
 /turf/closed/wall/hybrisa/colony/hospital/reinforced,
 /area/navalis/indoors/med_sci/maintenance_starboard)
+"aRD" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
+	},
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aRM" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -16470,6 +16831,10 @@
 	},
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
 	},
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors/med_sci/pharmacy)
@@ -17257,6 +17622,9 @@
 /obj/structure/machinery/big_computers/messaging_server/brown{
 	dir = 4
 	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/navalis/indoors/command/server_room)
 "bHF" = (
@@ -17428,8 +17796,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_starboard)
 "bOE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d";
+/obj/effect/decal/navalis/plate_edge/darker{
 	dir = 1
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -17716,10 +18083,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/outdoors/comm_one)
 "cfa" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 8
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "cfO" = (
@@ -17945,6 +18312,7 @@
 	pixel_x = 23;
 	pixel_y = 31
 	},
+/obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/prison/red/northwest,
 /area/navalis/indoors/command/security)
 "cvA" = (
@@ -18662,14 +19030,13 @@
 /turf/open/floor/corsat,
 /area/navalis/indoors/command/maintenance_starboard)
 "diS" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "djE" = (
-/obj/effect/landmark/static_comms/net_one,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	pixel_y = -1;
@@ -18678,6 +19045,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/prison/floor_marked,
 /area/navalis/outdoors/comm_one)
 "dlo" = (
@@ -18866,9 +19234,8 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/navalis/oob)
 "dwf" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 4
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/navalis/indoors/industrial/mining)
@@ -19541,9 +19908,8 @@
 /turf/open/floor/prison/red/east,
 /area/navalis/indoors/command/security)
 "ekG" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 8
 	},
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/mining)
@@ -19685,8 +20051,8 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "esz" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/platform_decoration/metal/strata/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "esZ" = (
@@ -19812,6 +20178,10 @@
 	capacity = 1e+006;
 	dir = 1;
 	layer = 2.9
+	},
+/obj/structure/sign/poster/safety{
+	pixel_x = -4;
+	pixel_y = 34
 	},
 /turf/open/floor/plating/kutjevo,
 /area/navalis/indoors/industrial/power)
@@ -20005,6 +20375,9 @@
 	pixel_y = -1;
 	dir = 8;
 	pixel_x = 9
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
 	},
 /turf/open/floor/prison/green/west,
 /area/navalis/indoors/command/starboard_hallway)
@@ -20325,6 +20698,10 @@
 	pixel_x = 3;
 	pixel_y = 10
 	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
 /turf/open/floor/prison/whitegreen/northeast,
 /area/navalis/indoors/med_sci/surg_one)
 "fbj" = (
@@ -20473,6 +20850,10 @@
 /obj/structure/sign/safety/maint{
 	pixel_x = 32
 	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
 /turf/open/floor/almayer/blackfull2,
 /area/navalis/indoors/med_sci/records_room)
 "fhi" = (
@@ -20520,9 +20901,8 @@
 /turf/open/floor/prison/ramptop,
 /area/navalis/indoors/logistic/mech_bay)
 "fjK" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 4
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors/industrial/power)
@@ -20628,10 +21008,10 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 8
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "fpb" = (
@@ -20767,6 +21147,10 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv,
 /obj/effect/spawner/random/gun/shotgun/lowchance,
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
 /turf/open/floor/prison/red,
 /area/navalis/indoors/command/security)
 "fwm" = (
@@ -20789,9 +21173,8 @@
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "fyn" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors/industrial/accessway)
@@ -20974,6 +21357,9 @@
 "fHO" = (
 /obj/item/tool/wet_sign{
 	pixel_x = -9
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 4
 	},
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors/med_sci/corridor)
@@ -21937,14 +22323,6 @@
 "gBJ" = (
 /turf/open/floor/darkpurple2/north,
 /area/navalis/indoors/residential/starboard)
-"gCh" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
-/obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
-	layer = 2
-	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/charon/surface_deck/main_deck)
 "gCx" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata/navalis{
@@ -22076,6 +22454,9 @@
 "gQX" = (
 /obj/structure/barricade/handrail/medical{
 	dir = 1
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 4
 	},
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/main_floor)
@@ -22578,7 +22959,7 @@
 /turf/open/floor/corsat,
 /area/navalis/indoors/med_sci/maintenance_port)
 "hva" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -23089,9 +23470,8 @@
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
 "hTQ" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 8
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/navalis/indoors/industrial/mining)
@@ -23411,9 +23791,8 @@
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/mining)
 "ijN" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 4
 	},
 /turf/open/floor/half_plate/dark_yellow/east,
 /area/navalis/indoors/industrial/mining)
@@ -23512,15 +23891,15 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_port)
 "ipE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1
-	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
@@ -23531,7 +23910,7 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/east,
 /area/navalis/indoors/residential/accessway)
 "irC" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
@@ -23620,7 +23999,7 @@
 /area/navalis/indoors/residential/accessway)
 "iwj" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "iwS" = (
@@ -23809,11 +24188,11 @@
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/main_floor)
 "iOM" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1
-	},
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
@@ -23948,6 +24327,7 @@
 /obj/structure/machinery/colony_floodlight_switch{
 	pixel_y = -30
 	},
+/obj/item/clothing/gloves/marine/veteran/insulated,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "iUO" = (
@@ -24488,6 +24868,9 @@
 /obj/structure/prop/hybrisa/misc/trash/green{
 	pixel_x = -2
 	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/navalis/indoors/command/command_kitchen)
 "jyc" = (
@@ -24870,6 +25253,9 @@
 "jQe" = (
 /obj/structure/machinery/photocopier/wyphotocopier,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/command/conferance)
 "jSs" = (
@@ -25065,6 +25451,9 @@
 	pixel_y = 2
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/navalis/indoors/command/cent_com)
 "jZU" = (
@@ -25120,7 +25509,7 @@
 	layer = 2
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -25539,9 +25928,8 @@
 /turf/open/floor/corsat,
 /area/navalis/indoors/med_sci/maintenance_port)
 "kBh" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 4
 	},
 /turf/open/floor/corsat/sterileplate,
 /area/navalis/indoors/industrial/mining)
@@ -25674,10 +26062,10 @@
 /turf/open/floor/prison/blue/northwest,
 /area/navalis/indoors/logistic/workshop)
 "kIa" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/strata,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
-/obj/structure/platform_decoration/metal/strata,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "kIk" = (
@@ -25928,9 +26316,6 @@
 /turf/open/gm/empty/navalis/dig,
 /area/navalis/oob/powered)
 "kVv" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1
-	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
@@ -25938,6 +26323,9 @@
 	explo_proof = 1
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
+	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
 "kVD" = (
@@ -26476,14 +26864,14 @@
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "lww" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
@@ -26706,6 +27094,10 @@
 	pixel_y = -3;
 	pixel_x = 1
 	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/south,
 /area/navalis/indoors/command/tertiary_comms)
 "lOv" = (
@@ -26817,7 +27209,7 @@
 "lUr" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -26842,8 +27234,7 @@
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/main_floor)
 "lVH" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d";
+/obj/effect/decal/navalis/plate_edge/darker{
 	dir = 1
 	},
 /turf/open/floor/half_plate/dark_yellow/north,
@@ -27093,6 +27484,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4"
 	},
+/obj/effect/spawner/random/gun/special/midchance,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "mje" = (
@@ -27203,7 +27595,7 @@
 /area/navalis/indoors/logistic/maintenance_starboard)
 "mvi" = (
 /obj/structure/platform_decoration/metal/almayer,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean,
@@ -27410,6 +27802,9 @@
 /obj/structure/surface/rack,
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/tile/green_bigtile/west,
 /area/navalis/indoors/command/tertiary_comms)
 "mGE" = (
@@ -27826,6 +28221,10 @@
 "nio" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/accessory/storage/surg_vest/drop_green,
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
 /turf/open/floor/prison/whitered,
 /area/navalis/indoors/med_sci/storage)
 "njn" = (
@@ -27842,9 +28241,7 @@
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/workshop)
 "njP" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d"
-	},
+/obj/effect/decal/navalis/plate_edge/darker,
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors/industrial/accessway)
 "nkr" = (
@@ -27910,9 +28307,6 @@
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors/med_sci/surg_two)
 "noO" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
@@ -27929,6 +28323,9 @@
 /obj/effect/decal/hybrisa/warningstripes_angled{
 	dir = 8;
 	pixel_y = 2
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior_xeno_only/mining)
@@ -28327,13 +28724,14 @@
 /obj/item/tool/pen/blue{
 	pixel_x = 3
 	},
-/obj/structure/sign/poster/corporate{
-	pixel_y = 32
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/sign/poster{
+	icon_state = "poster67";
+	pixel_y = 33
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/navalis/indoors/command/cent_com)
 "nSd" = (
@@ -28462,7 +28860,7 @@
 /area/navalis/indoors/med_sci/maintenance_port)
 "nYS" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -28645,7 +29043,7 @@
 "okS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -28710,10 +29108,10 @@
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/accessway)
 "oog" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
-/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "oor" = (
@@ -28835,10 +29233,10 @@
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors/med_sci/foyer)
 "ouZ" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 8
 	},
-/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "ovn" = (
@@ -28917,6 +29315,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
+/obj/effect/spawner/random/attachment,
 /obj/effect/spawner/random/attachment,
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/prison/red/southeast,
@@ -29085,9 +29484,7 @@
 /turf/open/floor/almayer/plating,
 /area/navalis/outdoors/landing_zone_1)
 "oFm" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d"
-	},
+/obj/effect/decal/navalis/plate_edge/darker,
 /turf/open/floor/corsat/sterileplate,
 /area/navalis/indoors/industrial/mining)
 "oFr" = (
@@ -29228,7 +29625,6 @@
 /turf/open/floor/almayer/plate,
 /area/navalis/indoors/residential/starboard)
 "oNK" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
@@ -29250,6 +29646,7 @@
 	dir = 1;
 	pixel_y = 1
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior_xeno_only/mining)
 "oOj" = (
@@ -29287,15 +29684,15 @@
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "oPE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
@@ -29794,6 +30191,9 @@
 	pixel_y = -14;
 	color = "#FFFF00"
 	},
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/refinery)
 "pnA" = (
@@ -29895,7 +30295,7 @@
 /area/navalis/outdoors/comm_one)
 "pqC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -30854,10 +31254,10 @@
 /turf/open/floor/prison/whitered/north,
 /area/navalis/indoors/med_sci/main_floor)
 "qcI" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 8
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "qdm" = (
@@ -31032,9 +31432,7 @@
 /turf/open/floor/half_plate/dark_yellow/east,
 /area/navalis/outdoors/landing_zone_2)
 "qjn" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d"
-	},
+/obj/effect/decal/navalis/plate_edge/darker,
 /turf/open/floor/half_plate/dark_yellow,
 /area/navalis/indoors/industrial/mining)
 "qjH" = (
@@ -31083,10 +31481,10 @@
 /turf/open/floor/prison/blue,
 /area/navalis/outdoors/landing_zone_1)
 "qkB" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "qld" = (
@@ -31185,10 +31583,10 @@
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "qqR" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "qqT" = (
@@ -31868,9 +32266,7 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/navalis/oob)
 "qZz" = (
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors/med_sci/foyer)
 "raw" = (
@@ -32265,10 +32661,6 @@
 /area/navalis/indoors/med_sci/maintenance_starboard)
 "rsO" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	layer = 3.33;
 	pixel_y = 1
@@ -32503,7 +32895,7 @@
 /turf/open/floor/darkblue2/east,
 /area/navalis/indoors/residential/accessway)
 "rHP" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -32573,9 +32965,7 @@
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "rMH" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d"
-	},
+/obj/effect/decal/navalis/plate_edge/darker,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/mining)
 "rOd" = (
@@ -32930,13 +33320,13 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/mech_bay)
 "sjw" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/strata,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
-/obj/structure/platform_decoration/metal/strata,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "sjK" = (
@@ -33516,8 +33906,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_port)
 "sNb" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d";
+/obj/effect/decal/navalis/plate_edge/darker{
 	dir = 1
 	},
 /turf/open/floor/corsat/plate,
@@ -33758,14 +34147,14 @@
 /turf/open/floor/corsat/box,
 /area/navalis/indoors/industrial/mining)
 "taf" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/exterior_xeno_only/mining)
@@ -33892,7 +34281,7 @@
 "teI" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -34360,16 +34749,13 @@
 /turf/open/floor/almayer/redfull2,
 /area/navalis/outdoors/landing_zone_1)
 "tDi" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 8
 	},
 /turf/open/floor/corsat/sterileplate,
 /area/navalis/indoors/industrial/mining)
 "tEB" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d"
-	},
+/obj/effect/decal/navalis/plate_edge/darker,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/navalis/indoors/industrial/mining)
 "tED" = (
@@ -34747,9 +35133,6 @@
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "tWl" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 8
-	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
 	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
@@ -34766,6 +35149,9 @@
 /obj/effect/decal/hybrisa/warningstripes_angled{
 	dir = 4;
 	pixel_y = 3
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/mid)
@@ -35449,6 +35835,9 @@
 /area/navalis/oob/water)
 "uEx" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/prison/darkbrown3/west,
 /area/navalis/indoors/logistic/mech_bay)
 "uFg" = (
@@ -35492,6 +35881,7 @@
 	icon_state = "trash_2";
 	pixel_y = 4
 	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor/prison/green,
 /area/navalis/indoors/command/aft_hallway)
 "uGE" = (
@@ -35517,9 +35907,8 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "uHG" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 4;
-	color = "#aba39d"
+/obj/effect/decal/navalis/plate_edge/darker{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
@@ -35527,7 +35916,7 @@
 "uIh" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -35950,6 +36339,9 @@
 /area/navalis/oob)
 "vgQ" = (
 /obj/structure/largecrate/random/barrel/white,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
 /turf/open/floor/prison/whitegreen/northwest,
 /area/navalis/indoors/med_sci/chemical_store)
 "vhb" = (
@@ -36161,8 +36553,8 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/navalis/outdoors/landing_zone_2)
 "vse" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "vtz" = (
@@ -36891,6 +37283,9 @@
 	pixel_x = 40;
 	pixel_y = 32
 	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/whitegreen/northeast,
 /area/navalis/indoors/med_sci/foyer)
 "waV" = (
@@ -37249,8 +37644,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_starboard)
 "woT" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	color = "#aba39d";
+/obj/effect/decal/navalis/plate_edge/darker{
 	dir = 1
 	},
 /turf/open/floor/corsat/sterileplate,
@@ -37510,7 +37904,7 @@
 /area/navalis/oob/water)
 "wyG" = (
 /obj/structure/platform_decoration/metal/almayer/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/landing_zone_2)
 "wyV" = (
@@ -37522,6 +37916,7 @@
 	icon_state = "thermite";
 	name = "impact"
 	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/navalis/indoors/logistic/primary_storage)
 "wyY" = (
@@ -37915,6 +38310,9 @@
 	layer = 2.8;
 	pixel_x = 33
 	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors/med_sci/break_room)
 "wWN" = (
@@ -38261,10 +38659,10 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors/med_sci/main_floor)
 "xkN" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
-/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
 "xlA" = (
@@ -38333,7 +38731,7 @@
 /area/navalis/indoors/logistic/maintenance_starboard)
 "xqG" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "xqZ" = (
@@ -38417,6 +38815,10 @@
 /area/navalis/indoors/command/maintenance_port)
 "xuB" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
+	},
 /turf/open/floor/prison/whitegreen/northwest,
 /area/navalis/indoors/med_sci/surg_two)
 "xuP" = (
@@ -38528,6 +38930,11 @@
 /area/navalis/indoors/command/port_hallway)
 "xBJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/foyer)
 "xBR" = (
@@ -46100,7 +46507,7 @@ lJH
 aoE
 aoE
 lJH
-aoE
+aRt
 hjz
 sMY
 atZ
@@ -46614,7 +47021,7 @@ aqR
 aqR
 uRO
 aFB
-aqJ
+aRi
 apm
 rjN
 omr
@@ -48087,7 +48494,7 @@ aqA
 aqA
 arN
 fTf
-uME
+aRl
 uME
 uME
 aFc
@@ -49732,7 +50139,7 @@ sIF
 oUK
 lbg
 apZ
-apZ
+aRf
 apZ
 apZ
 kut
@@ -50391,7 +50798,7 @@ anC
 anC
 igq
 lqL
-wAn
+aRd
 apD
 gWb
 fhc
@@ -50866,7 +51273,7 @@ atT
 roq
 fdc
 bqq
-fdc
+aRq
 fsL
 tjb
 aro
@@ -51184,7 +51591,7 @@ gqN
 ndd
 aoE
 aoE
-aKk
+aKB
 asM
 asM
 asM
@@ -51349,7 +51756,7 @@ aHn
 ndd
 aoE
 aoE
-aKk
+aKB
 aKg
 asM
 iyp
@@ -51514,7 +51921,7 @@ aHn
 ndd
 arF
 aoE
-aKk
+aKB
 asM
 asM
 asM
@@ -51996,7 +52403,7 @@ awa
 awa
 awa
 aKp
-aKG
+aKr
 arX
 arX
 aBc
@@ -52344,7 +52751,7 @@ asE
 asE
 aso
 xpa
-aKp
+aRo
 aKr
 aBp
 arW
@@ -53176,7 +53583,7 @@ cjI
 ahz
 aoK
 aqD
-oQr
+aRg
 xUq
 oQr
 hSm
@@ -53187,7 +53594,7 @@ vmX
 eBC
 ewJ
 aoK
-wyn
+aRa
 adU
 acA
 aoe
@@ -54656,7 +55063,7 @@ kzx
 uFV
 aGg
 apc
-aEA
+aRc
 aoK
 aoK
 aoK
@@ -55594,7 +56001,7 @@ ayw
 ays
 aCX
 udV
-avQ
+aRA
 qMH
 awf
 avP
@@ -56312,7 +56719,7 @@ aoe
 aoe
 aoe
 aoe
-wkm
+aQW
 aBd
 hCK
 aoe
@@ -56928,7 +57335,7 @@ aIp
 gzG
 oyg
 auC
-vyD
+aRr
 hPW
 atH
 aHU
@@ -57451,7 +57858,7 @@ tAA
 tAA
 tAA
 aoN
-acI
+aRb
 aDj
 adN
 aoe
@@ -57845,12 +58252,12 @@ eWH
 syq
 lJH
 mmV
-bVH
+aNG
 dvZ
 dvZ
 dvZ
 dvZ
-ueN
+asw
 mmV
 jja
 lOO
@@ -57900,7 +58307,7 @@ vVY
 ppl
 nCu
 axv
-iUh
+aRz
 sSx
 eqd
 uIC
@@ -58008,14 +58415,14 @@ dGb
 aLa
 lJH
 mmV
-bVH
+aNG
 dvZ
 dvZ
 dvZ
 dvZ
 dvZ
 dvZ
-ueN
+asw
 vno
 azF
 ueS
@@ -58171,7 +58578,7 @@ aaL
 dGb
 aLa
 lJH
-bVH
+aNG
 dvZ
 dvZ
 dvZ
@@ -58334,7 +58741,7 @@ aER
 aaL
 nFL
 isl
-mmV
+aNG
 pui
 dvZ
 dvZ
@@ -58777,7 +59184,7 @@ mOQ
 lJH
 lJH
 mOQ
-mOQ
+aQV
 azG
 uuH
 elg
@@ -58835,7 +59242,7 @@ dvZ
 dvZ
 dvZ
 dvZ
-wyv
+aHJ
 mmV
 azF
 qWe
@@ -58998,7 +59405,7 @@ dvZ
 dvZ
 dvZ
 dvZ
-wyv
+aHJ
 mmV
 oRz
 vHz
@@ -59632,7 +60039,7 @@ anm
 anm
 anm
 anm
-ana
+aQT
 amW
 amQ
 gIk
@@ -59649,7 +60056,7 @@ afE
 wTU
 azh
 aan
-lum
+aQC
 rtA
 cnM
 aac
@@ -59697,19 +60104,19 @@ mBb
 sFW
 qkB
 ljU
-gCh
+alA
 aLk
 aLk
 aLk
-alW
+keN
 ljU
-gCh
+alA
 aDV
 aDV
 alQ
-alW
+keN
 ljU
-gCh
+alA
 alQ
 sFW
 keN
@@ -59813,7 +60220,7 @@ lum
 mKY
 aau
 aao
-lum
+aQC
 kyA
 dmH
 aac
@@ -59977,7 +60384,7 @@ fiQ
 afo
 cyG
 qLp
-lum
+aQC
 qfy
 dmH
 aac
@@ -60136,7 +60543,7 @@ rxa
 dmH
 doP
 lum
-lum
+aQI
 qLV
 afC
 cyG
@@ -60633,7 +61040,7 @@ qLV
 aaA
 cyG
 qLp
-mJI
+aQD
 aaf
 dmH
 aac
@@ -60797,7 +61204,7 @@ emH
 afl
 cyG
 qLp
-lum
+aQC
 qfy
 dmH
 aac
@@ -60957,11 +61364,11 @@ rtA
 dmH
 hCD
 bjV
-aay
+aQH
 mKY
 aav
 aap
-lum
+aQC
 qfy
 dmH
 aac
@@ -61125,7 +61532,7 @@ lum
 mKY
 rtA
 aan
-lum
+aQC
 qfy
 dmH
 aac
@@ -61159,7 +61566,7 @@ nSY
 nSY
 mmV
 mmV
-gcp
+aRD
 dgG
 amh
 amg
@@ -61284,7 +61691,7 @@ agZ
 afF
 agY
 agb
-aeq
+aQJ
 afF
 afD
 aDC
@@ -61376,7 +61783,7 @@ aqY
 aok
 aok
 pyn
-hNl
+aRh
 aqk
 uHG
 aox
@@ -61396,7 +61803,7 @@ anz
 aox
 rMH
 aOR
-rjp
+aQX
 aos
 aok
 bLP
@@ -61945,7 +62352,7 @@ mVE
 pTA
 aax
 mJI
-lum
+aQC
 qfy
 dmH
 aac
@@ -62100,16 +62507,16 @@ amz
 rtA
 aXg
 akO
-rtA
-rtA
+aQN
+aQL
 aaS
-rtA
+aQK
 xax
 urW
 rtA
 aax
 mJI
-lum
+aQC
 qfy
 dmH
 aac
@@ -62258,11 +62665,11 @@ anf
 anp
 anh
 amB
-amA
+aQS
 amz
 amz
 dmH
-aXg
+aQQ
 akO
 dmH
 dmH
@@ -62273,7 +62680,7 @@ rxa
 rtA
 qLp
 mJI
-lum
+aQC
 qfy
 dmH
 aac
@@ -63093,7 +63500,7 @@ rxa
 aaE
 qLp
 aai
-lum
+aQC
 rtA
 cnM
 aac
@@ -63257,7 +63664,7 @@ nTP
 fKh
 rtA
 aai
-lum
+aQC
 rtA
 cnM
 aac
@@ -63364,7 +63771,7 @@ ijN
 aox
 sNb
 aOR
-mab
+aQY
 dOx
 aok
 bLP
@@ -63421,7 +63828,7 @@ mVE
 pTA
 rtA
 aai
-lum
+aQF
 kyA
 dmH
 aac
@@ -64722,9 +65129,9 @@ ayV
 amG
 amG
 qLp
-mJI
+aQR
 kTd
-lum
+aQO
 kTd
 aaP
 ahs
@@ -64887,9 +65294,9 @@ amA
 amG
 mJI
 mJI
-lum
-lum
-lum
+aQM
+aQP
+aQM
 qLp
 qLp
 mJI
@@ -65031,7 +65438,7 @@ asq
 amz
 amz
 amz
-amA
+aQU
 vrt
 anl
 anx
@@ -65052,7 +65459,7 @@ amG
 mJI
 mJI
 kTd
-lum
+aQO
 kTd
 qLp
 qLp
@@ -65064,7 +65471,7 @@ dvZ
 dvZ
 dvZ
 dvZ
-ueN
+asw
 mmV
 aaa
 lOO
@@ -65229,7 +65636,7 @@ dvZ
 dvZ
 dvZ
 dvZ
-ueN
+asw
 pco
 qWe
 ycI
@@ -66017,7 +66424,7 @@ pdb
 dvZ
 dvZ
 dvZ
-wyv
+aHJ
 mmV
 azF
 azF
@@ -66042,7 +66449,7 @@ mmV
 mmV
 mmV
 mmV
-cMj
+aQG
 dvZ
 dvZ
 dvZ
@@ -66180,7 +66587,7 @@ dvZ
 dvZ
 dvZ
 dvZ
-wyv
+aHJ
 mmV
 oRz
 abG
@@ -66207,7 +66614,7 @@ mmV
 mmV
 mmV
 mmV
-cMj
+aQG
 dvZ
 dvZ
 dvZ
@@ -66283,7 +66690,7 @@ apz
 apz
 aqO
 aqO
-aqO
+aRp
 apz
 apz
 apz
@@ -67420,7 +67827,7 @@ xFa
 apz
 apz
 apz
-cCc
+aRu
 aFI
 aqP
 ajC
@@ -68074,7 +68481,7 @@ apz
 aqn
 apz
 apz
-aqO
+aRx
 aqP
 aIu
 aqO
@@ -68098,7 +68505,7 @@ asq
 pWK
 aqO
 aFI
-aqP
+aRj
 ahn
 apz
 aqn
@@ -70540,7 +70947,7 @@ aIx
 aqZ
 ajN
 rsV
-rsV
+aRn
 arL
 aGM
 aiU
@@ -70552,7 +70959,7 @@ asz
 aiU
 aiN
 arL
-rsV
+aRn
 rsV
 rsV
 aqZ
@@ -71050,7 +71457,7 @@ rsV
 aqZ
 ahU
 aFL
-qJn
+aRk
 apk
 asq
 qdL
@@ -72505,7 +72912,7 @@ atX
 atk
 aIB
 aIy
-aHY
+aRs
 auT
 aHY
 pSA
@@ -72523,7 +72930,7 @@ eKa
 aGE
 owN
 ein
-eKa
+aRm
 aGm
 aFO
 qJn
@@ -74631,7 +75038,7 @@ mmV
 cMj
 iaX
 tAA
-ajS
+aRy
 avw
 avw
 avw
@@ -74661,7 +75068,7 @@ aFW
 lkn
 lkn
 lkn
-lkn
+aRe
 apk
 asq
 asq
@@ -77259,7 +77666,7 @@ kcW
 kcW
 asq
 kcW
-pnG
+aRv
 iof
 nij
 qqR

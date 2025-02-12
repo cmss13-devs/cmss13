@@ -1228,6 +1228,11 @@
 	desc = "A metal grate."
 	icon_state = "zhalfgrate1"
 
+/obj/structure/prop/hybrisa/misc/floorprops/grate4
+	name = "solid metal grate"
+	desc = "A metal grate."
+	icon_state = "zhalfgrate2"
+
 /obj/structure/prop/hybrisa/misc/floorprops/plate
 	name = "plating"
 	desc = "A metal plate."

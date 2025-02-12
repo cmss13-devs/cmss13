@@ -1,0 +1,4 @@
+author: "Vile Beggar, thwomper"
+delete-after: True
+changes:
+  - rscadd: "Adds a new shotgun choke attachment to squad prep and requisitions vendors for the M37A2 shotgun."

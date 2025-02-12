@@ -833,7 +833,7 @@
 		holo_card_color = null
 		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
 	else if(newcolor != holo_card_color)
-		if(newcolor == "black" && is_revivable())
+		if(newcolor == "black" && is_revivable() && check_tod())
 			to_chat(user, SPAN_WARNING("They are yet saveable."))
 			return
 		holo_card_color = newcolor

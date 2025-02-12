@@ -795,6 +795,11 @@
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/plating/asteroidwarning/west,
 /area/lv624/lazarus/landing_zones/lz2)
+"adm" = (
+/obj/structure/foamed_metal,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship_containers)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -851,19 +856,9 @@
 "ady" = (
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
-"adz" = (
-/obj/structure/flora/jungle/vines/light_1,
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/lv624/lazarus/yggdrasil)
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
-"adB" = (
-/obj/structure/foamed_metal,
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship_containers)
 "adC" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
@@ -6777,6 +6772,11 @@
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass2,
+/area/lv624/lazarus/yggdrasil)
+"aKq" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
 /area/lv624/lazarus/yggdrasil)
 "aKr" = (
 /obj/structure/window_frame/colony,
@@ -42174,7 +42174,7 @@ rGu
 mNz
 hSn
 aJz
-adz
+aKq
 aKI
 aLh
 aLg
@@ -48899,7 +48899,7 @@ acf
 acf
 acf
 ecy
-adB
+adm
 acU
 acT
 kRr

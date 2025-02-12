@@ -60,6 +60,10 @@
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/north)
+"aar" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/complex_border/med_rec)
 "aas" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
@@ -138,34 +142,30 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
 "aaL" = (
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaM" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaN" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/shuttle/drop1/kutjevo)
-"aaM" = (
+"aaO" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
-"aaN" = (
+"aaP" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
-"aaO" = (
-/turf/open/floor/kutjevo/plate,
-/area/kutjevo/exterior/complex_border/med_rec)
-"aaP" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/exterior/complex_border/med_rec)
-"aaQ" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/floor/kutjevo/plate,
-/area/kutjevo/exterior/complex_border/med_rec)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -16207,7 +16207,7 @@ dxF
 dxF
 dxF
 dxF
-aaN
+aaP
 dxF
 dxF
 dxF
@@ -18592,7 +18592,7 @@ lAI
 lAI
 lAI
 lAI
-aaL
+aaN
 lAI
 lAI
 lAI
@@ -34713,9 +34713,9 @@ msK
 msK
 hpy
 aEl
-aaQ
-aaP
-aaO
+aaM
+aar
+aaL
 msK
 msK
 nAc
@@ -43628,7 +43628,7 @@ bpj
 bpj
 bpj
 bpj
-aaM
+aaO
 bpj
 bpj
 bpj

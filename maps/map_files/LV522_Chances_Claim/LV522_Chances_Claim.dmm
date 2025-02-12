@@ -605,6 +605,12 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
+"aco" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -619,6 +625,11 @@
 "acs" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/storage_blocks/east)
+"act" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_1)
 "acu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -643,6 +654,14 @@
 "acy" = (
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/b_block/hydro/glass)
+"acz" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/central_streets)
+"acA" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "acB" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
@@ -656,6 +675,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/bridge)
+"acF" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "acG" = (
 /turf/open/asphalt/cement/cement1,
 /area/lv522/atmos/filt)
@@ -664,51 +687,15 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/nw_rockies)
 "acI" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/drop2/lv522)
-"acJ" = (
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/south_west_street)
-"acK" = (
+"acJ" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/south_street)
-"acL" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/landing_zone_1)
-"acM" = (
+"acK" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/central_streets)
-"acN" = (
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/central_streets)
-"acO" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/north_west_street)
-"acP" = (
-/obj/item/storage/firstaid/adv/empty,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/floor/prison/blue/north,
-/area/lv522/indoors/a_block/hallway)
-"acQ" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
-/turf/open/floor/prison/floor_plate,
-/area/lv522/indoors/a_block/garden)
-"acR" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/north_east_street)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -12399,6 +12386,12 @@
 	},
 /turf/open/asphalt/cement/cement1,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"gLd" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/a_block/garden)
 "gLg" = (
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
@@ -14649,6 +14642,13 @@
 /obj/structure/closet/radiation,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
+"hXW" = (
+/obj/item/storage/firstaid/adv/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/floor/prison/blue/north,
+/area/lv522/indoors/a_block/hallway)
 "hYf" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks/east)
@@ -53088,7 +53088,7 @@ max
 osN
 sSQ
 vGo
-acL
+act
 jZD
 jZD
 jZD
@@ -54074,7 +54074,7 @@ xXP
 tNa
 luu
 nLm
-acO
+acA
 hJZ
 hJZ
 hJZ
@@ -61334,7 +61334,7 @@ tSL
 tSL
 tSL
 fnA
-acJ
+acI
 uOd
 fnA
 wIr
@@ -64603,31 +64603,31 @@ wdy
 rMF
 jmG
 jmG
-acM
-acM
+acK
+acK
 jmG
 jmG
-acM
-acM
+acK
+acK
 jmG
 jmG
-acM
-acM
+acK
+acK
 jmG
 rSX
 six
 ndK
 jmG
-acN
-acM
-jmG
-jmG
-acM
-acM
+acz
+acK
 jmG
 jmG
 acK
 acK
+jmG
+jmG
+acJ
+acJ
 jmG
 jmG
 pqR
@@ -70744,7 +70744,7 @@ poM
 sjy
 sjy
 sjy
-acQ
+gLd
 ulZ
 ulZ
 ulZ
@@ -76315,7 +76315,7 @@ uAv
 tDS
 gdO
 swY
-acP
+hXW
 uuH
 pej
 pqU
@@ -76914,7 +76914,7 @@ vGp
 cpy
 cpy
 pZo
-acR
+acF
 tDS
 nLe
 yke
@@ -79899,7 +79899,7 @@ aIp
 aIp
 aIp
 aIp
-acI
+aco
 aIp
 aIp
 aIp

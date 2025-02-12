@@ -1156,10 +1156,11 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aet" = (
-/obj/structure/flora/grass/desert/lightgrass_7,
-/obj/structure/machinery/power/apc/power/north,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/eta)
+/area/bigredv2/outside/space_port_lz2)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1276,10 +1277,10 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aeR" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
+	insert_tag = "hvhuscmlz1"
 	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port_lz2)
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -1332,18 +1333,6 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
-"afe" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/telecomm/lz2_cave)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1354,12 +1343,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"afh" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -25447,6 +25430,18 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
+"kjY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/bigredv2/outside/telecomm/lz2_cave)
 "kkF" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/bed,
@@ -28688,6 +28683,11 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/outside/nw)
+"nJu" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/bigredv2/outside/eta)
 "nKL" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "An exchange valve";
@@ -39963,7 +39963,7 @@ aao
 aao
 aao
 aao
-afh
+aeR
 aao
 aao
 aao
@@ -46323,7 +46323,7 @@ bie
 bie
 bie
 bmM
-aeR
+aet
 bie
 bie
 bie
@@ -57594,7 +57594,7 @@ aBR
 eTj
 bhi
 dbi
-afe
+kjY
 dZL
 olK
 abb
@@ -60669,7 +60669,7 @@ tYm
 bjA
 bjA
 azO
-aet
+nJu
 meT
 vrt
 ydn

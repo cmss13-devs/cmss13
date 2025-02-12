@@ -181,9 +181,12 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
 "aaF" = (
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
 "aaG" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -191,22 +194,6 @@
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
 "aaH" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/maintenance/south)
-"aaI" = (
-/obj/item/device/flashlight/lamp/tripod,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/caves/north_research)
-"aaJ" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior/caves/north_research)
-"aaK" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
@@ -8975,6 +8962,11 @@
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/mess)
+"heu" = (
+/obj/item/device/flashlight/lamp/tripod,
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/north_research)
 "hfo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -9879,6 +9871,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
+"hRs" = (
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "hRv" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/sand_white/layer1,
@@ -13044,6 +13040,10 @@
 	},
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
+"kuE" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
 "kuX" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
@@ -35470,7 +35470,7 @@ qul
 qul
 qul
 qHc
-aaJ
+aaF
 xCn
 xCn
 oPQ
@@ -35667,7 +35667,7 @@ xCn
 qHc
 qHc
 xCn
-aaI
+heu
 vQe
 xCn
 uHY
@@ -42451,7 +42451,7 @@ cty
 cty
 cty
 iFb
-aaH
+kuE
 cto
 etv
 ksX
@@ -56541,7 +56541,7 @@ wlB
 wlB
 wlB
 wlB
-aaK
+aaH
 wlB
 wlB
 wlB
@@ -59213,10 +59213,10 @@ avD
 mqe
 mqe
 avD
-aaF
+hRs
 cHV
 wsG
-aaF
+hRs
 avD
 mqe
 mqe

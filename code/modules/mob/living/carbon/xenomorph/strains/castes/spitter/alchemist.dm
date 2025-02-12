@@ -298,3 +298,209 @@
 				target.AddComponent(/datum/component/status_effect/xeno_stat_buff/speed_buff, total_pool)
 			if("Xenosterine") // Makes fireproof
 				target.AddComponent(/datum/component/status_effect/xeno_stat_buff/fireproof_buff, total_pool)
+
+// Powers
+
+/datum/action/xeno_action/activable/tail_inject/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/spitter_alchemist/alchemist = xeno.behavior_delegate
+	var/mob/living/carbon/carbon = target
+
+	if(!isxeno(xeno))
+		return
+
+	if(!istype(xeno.behavior_delegate, alchemist))
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(get_dist(xeno, target) > 2)
+		return
+
+	if(alchemist.producing_alchem)
+		to_chat(xeno, SPAN_XENOWARNING("We should wait until we've finished making chemicals!"))
+		return
+
+	var/list/turf/path = get_line(xeno, target, include_start_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+			return
+		var/atom/barrier = path_turf.handle_barriers(A = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+			return
+		for(var/obj/structure/current_structure in path_turf)
+			if(current_structure.density && !current_structure.throwpass)
+				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+				return
+
+	if(!iscarbon(target) && carbon.stat == DEAD)
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
+		apply_cooldown(0.2)
+		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+		return
+
+	if(xeno.can_not_harm(carbon) && ishuman(carbon)|| islarva(carbon)) // Don't want to try using on friendly humans or larva
+		return
+
+	var/obj/limb/target_limb = carbon.get_limb(check_zone(xeno.zone_selected))
+	if(ishuman(target) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+		target_limb = carbon.get_limb("chest")
+
+	alchemist.parse_final_alchem()
+	if(alchemist.final_alchem_reagent != null && alchemist.final_alchem_source != null)
+		if(isxeno(target))
+			var/mob/living/carbon/xenomorph/xenoid = target
+			alchemist.alchem_xeno_reaction(xenoid)
+
+		if(!xeno.can_not_harm(carbon) && ishuman(target) && !issynth(target) && !HAS_TRAIT(target, TRAIT_NESTED) && carbon.status_flags & XENO_HOST)
+			var/mob/living/carbon/human/humanoid = target
+			if(isyautja(humanoid))
+				humanoid.reagents.add_reagent(alchemist.final_alchem_reagent, alchemist.total_pool / 2)
+				humanoid.reagents.set_source_mob(xeno, alchemist.final_alchem_source)
+			else
+				humanoid.reagents.add_reagent(alchemist.final_alchem_reagent, alchemist.total_pool)
+				humanoid.reagents.set_source_mob(xeno, alchemist.final_alchem_source)
+		alchemist.final_alchem_info(carbon)
+		if(alchemist.total_pool > 14)
+			alchem_cooldown_modifier = alchemist.total_pool * 0.07
+		else
+			alchem_cooldown_modifier = 1
+		alchemist.empty_entire_stockpile()
+		check_and_use_plasma_owner()
+
+	if(!xeno.can_not_harm(carbon))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] stabs [carbon] in the [target_limb ? target_limb.display_name : "chest"] with their tail!"), \
+		SPAN_XENOWARNING("We stab [carbon] in the [target_limb ? target_limb.display_name : "chest"] with our tail!"))
+		playsound(carbon,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+
+		carbon.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_lower), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
+		carbon.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+		log_attack("[key_name(xeno)] attacked [key_name(carbon)] with Tail Injection")
+	else
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] gently jabs [carbon] with their tail!"), \
+		SPAN_XENOWARNING("We gently jab our tail into [carbon], making sure not to harm them!"))
+		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+		if(alchemist.final_alchem_name == null)
+			alchem_cooldown_modifier = 0.2
+	var/stab_direction
+	stab_direction = turn(get_dir(xeno, target), 180)
+
+	/// To reset the direction if they haven't moved since then in below callback.
+	var/last_dir = xeno.dir
+
+	xeno.setDir(stab_direction)
+	xeno.flick_attack_overlay(target, "tail")
+	xeno.animation_attack_on(target)
+
+	var/new_dir = xeno.dir
+	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
+
+	apply_cooldown(alchem_cooldown_modifier)
+	return ..()
+
+/datum/action/xeno_action/activable/tail_inject/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
+	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
+	if(new_dir == xeno.dir)
+		xeno.setDir(last_dir)
+
+/datum/action/xeno_action/onclick/select_alchem/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/spitter_alchemist/alchemist = xeno.behavior_delegate
+
+	if(!isxeno(xeno))
+		return
+
+	if(!istype(xeno.behavior_delegate, alchemist))
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(alchemist.producing_alchem)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot change what chemicals to produce while producing chemicals!"))
+		return
+
+	alchemist.choose_alchem()
+	return ..()
+
+/datum/action/xeno_action/onclick/produce_alchem/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/spitter_alchemist/alchemist = xeno.behavior_delegate
+
+	if(!isxeno(xeno))
+		return
+
+	if(!istype(xeno.behavior_delegate, alchemist))
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(alchemist.total_pool == alchemist.total_pool_cap)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot stockpile any more chemicals!"))
+		return
+
+	if(alchemist.current_alchem == null)
+		to_chat(xeno, SPAN_XENOWARNING("We haven't chosen any chemical to produce!"))
+		return
+
+	if(alchemist.producing_alchem)
+		to_chat(xeno, SPAN_XENOWARNING("We're already making chemicals!"))
+		return
+
+	if(!check_plasma_owner())
+		return
+
+	alchemist.producing_alchem = TRUE
+	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		alchemist.producing_alchem = FALSE
+		return
+	alchemist.producing_alchem = FALSE
+	alchemist.stockpile_alchem(amount)
+	use_plasma_owner()
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/remove_alchem/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/spitter_alchemist/alchemist = xeno.behavior_delegate
+
+	if(!isxeno(xeno))
+		return
+
+	if(!istype(xeno.behavior_delegate, alchemist))
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(alchemist.total_pool == 0)
+		to_chat(xeno, SPAN_XENOWARNING("We have no chemicals to remove!"))
+		return
+
+	if(alchemist.current_alchem == null)
+		to_chat(xeno, SPAN_XENOWARNING("We haven't chosen any chemical for our body to remove!"))
+		return
+
+	if(alchemist.producing_alchem)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot remove chemicals while making chemicals!"))
+		return
+
+	if(!check_plasma_owner())
+		return
+
+	alchemist.remove_alchem()
+	use_plasma_owner()
+	return ..()

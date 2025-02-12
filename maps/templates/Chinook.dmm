@@ -1,15 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/machinery/vending/cigarette/koorlander/free,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook)
-"ab" = (
-/obj/structure/machinery/vending/cigarette/koorlander/free,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/kutjevo/tan/plate,
-/area/adminlevel/chinook/event)
 "ac" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
@@ -33,10 +22,6 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
-"ae" = (
-/obj/structure/machinery/vending/cigarette/koorlander/free,
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
 "af" = (
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/space)
@@ -50,32 +35,12 @@
 "ai" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
 /area/space)
-"aj" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/sign/prop2{
-	pixel_y = 30
-	},
-/obj/structure/machinery/faxmachine/uscm/highcom{
-	name = "Chinook Fax Machine";
-	department = "Chinook 91 GSO Station";
-	pixel_y = 5
-	},
-/turf/open/floor/almayer/plate,
-/area/adminlevel/chinook/offices)
-"ak" = (
-/obj/structure/machinery/vending/cigarette/koorlander/free,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/offices)
 "al" = (
 /turf/open/floor/almayer_hull,
 /area/space)
 "am" = (
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/chinook/engineering)
-"an" = (
-/obj/structure/machinery/vending/cigarette/koorlander/free,
-/turf/open/floor/almayer/blue,
-/area/adminlevel/chinook/offices)
 "ao" = (
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook)
@@ -107,12 +72,6 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
-"as" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer/cargo,
-/area/adminlevel/chinook)
 "au" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/space)
@@ -2794,6 +2753,10 @@
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
+"kN" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free,
+/turf/open/floor/almayer/blue,
+/area/adminlevel/chinook/offices)
 "kP" = (
 /obj/structure/sign/safety/coffee{
 	pixel_x = -16
@@ -3474,6 +3437,18 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
+"nF" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/sign/prop2{
+	pixel_y = 30
+	},
+/obj/structure/machinery/faxmachine/uscm/highcom{
+	name = "Chinook Fax Machine";
+	department = "Chinook 91 GSO Station";
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/chinook/offices)
 "nG" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/glass,
@@ -3633,6 +3608,10 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
+"on" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/offices)
 "op" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer/plating/northeast,
@@ -4069,6 +4048,10 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
+"qb" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook)
 "qc" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 1
@@ -5650,6 +5633,10 @@
 /obj/structure/machinery/computer/research,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
+"wG" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free,
+/turf/open/floor/kutjevo/plate,
+/area/adminlevel/chinook/event)
 "wH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/ashtray/glass,
@@ -7061,6 +7048,13 @@
 /obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
+"Dp" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/plate,
+/area/adminlevel/chinook/event)
 "Dq" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 27
@@ -9751,6 +9745,12 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
+"OT" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/chinook)
 "OU" = (
 /obj/structure/sign/safety/debark_lounge{
 	pixel_x = 32
@@ -15110,7 +15110,7 @@ ZZ
 ZZ
 ZI
 Tl
-aa
+qb
 wz
 wz
 OY
@@ -17120,7 +17120,7 @@ sr
 vl
 vl
 vl
-an
+kN
 jF
 mY
 ny
@@ -19153,9 +19153,9 @@ jF
 jF
 eB
 Xx
-ak
+on
 YC
-aj
+nF
 uq
 qj
 qp
@@ -21429,7 +21429,7 @@ vR
 PP
 WF
 qI
-as
+OT
 gb
 JD
 MO
@@ -24243,7 +24243,7 @@ sb
 TQ
 TQ
 TQ
-ae
+wG
 yj
 AH
 CU
@@ -28437,7 +28437,7 @@ wk
 EJ
 Mb
 Mb
-ab
+Dp
 Qx
 al
 al

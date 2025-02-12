@@ -338,7 +338,8 @@
 
 	var/turf/TU = get_turf(targeted_atom)
 	var/area/targ_area = get_area(targeted_atom)
-	if(!istype(TU)) return
+	if(!istype(TU))
+		return
 	var/is_outside = FALSE
 	switch(targ_area.ceiling)
 		if(CEILING_NONE)

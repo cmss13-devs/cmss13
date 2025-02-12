@@ -66,6 +66,9 @@
 	var/tmp/list/atom/movable/lighting_mask/hybrid_lights_affecting
 
 	vis_flags = VIS_INHERIT_PLANE
+  
+	/// Is fishing allowed on this turf
+	var/fishing_allowed = FALSE
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -337,7 +340,8 @@
 /turf/proc/inertial_drift(atom/movable/A as mob|obj)
 	if(A.anchored)
 		return
-	if(!(A.last_move_dir)) return
+	if(!(A.last_move_dir))
+		return
 	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
 		var/mob/M = A
 		if(M.Process_Spacemove(1))

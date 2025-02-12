@@ -338,7 +338,8 @@ Make sure their actual health updates immediately.*/
 
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
-			if(!hive) return // can't heal if you have no hive, sorry bud
+			if(!hive)
+				return // can't heal if you have no hive, sorry bud
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds

@@ -79,100 +79,101 @@
 
 	//Barricade collision
 	else if (istype(target, /obj/structure/barricade))
-		var/obj/structure/barricade/B = target
-		visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"), SPAN_XENOWARNING("We ram into [B] and skid to a halt!"))
+		var/obj/structure/barricade/blockade_in_path = target
+		visible_message(SPAN_DANGER("[src] rams into [blockade_in_path] and skids to a halt!"), SPAN_XENOWARNING("We ram into [blockade_in_path] and skid to a halt!"))
 
-		B.Collided(src)
+		blockade_in_path.Collided(src)
 		. =  FALSE
 
 	else if (istype(target, /obj/vehicle/multitile))
-		var/obj/vehicle/multitile/M = target
-		visible_message(SPAN_DANGER("[src] rams into [M] and skids to a halt!"), SPAN_XENOWARNING("We ram into [M] and skid to a halt!"))
+		var/obj/vehicle/multitile/vehicle_in_path = target
+		visible_message(SPAN_DANGER("[src] rams into [vehicle_in_path] and skids to a halt!"), SPAN_XENOWARNING("We ram into [vehicle_in_path] and skid to a halt!"))
 
-		M.Collided(src)
+		vehicle_in_path.Collided(src)
 		. = FALSE
 
 	else if (istype(target, /obj/structure/machinery/m56d_hmg))
-		var/obj/structure/machinery/m56d_hmg/HMG = target
-		visible_message(SPAN_DANGER("[src] rams [HMG]!"), SPAN_XENODANGER("We ram [HMG]!"))
+		var/obj/structure/machinery/m56d_hmg/weapon_in_path = target
+		visible_message(SPAN_DANGER("[src] rams [weapon_in_path]!"), SPAN_XENODANGER("We ram [weapon_in_path]!"))
 		playsound(loc, "punch", 25, 1)
-		HMG.CrusherImpact()
+		weapon_in_path.CrusherImpact()
 		. =  FALSE
 
 	else if (istype(target, /obj/structure/window))
-		var/obj/structure/window/W = target
-		if (W.unacidable)
+		var/obj/structure/window/window_in_path = target
+		if (window_in_path.unacidable)
 			. = FALSE
 		else
-			W.deconstruct(FALSE)
+			window_in_path.deconstruct(FALSE)
 			. =  TRUE // Continue throw
+		playsound(loc, 'sound/effects/Glassbr1.ogg')
 
 	else if (istype(target, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/A = target
+		var/obj/structure/machinery/door/airlock/airlock_in_path = target
 
-		if (A.unacidable)
+		if (airlock_in_path.unacidable)
 			. = FALSE
 		else
-			A.deconstruct()
+			airlock_in_path.deconstruct()
 
 	else if (istype(target, /obj/structure/grille))
-		var/obj/structure/grille/G = target
-		if(G.unacidable)
+		var/obj/structure/grille/grille_in_path = target
+		if(grille_in_path.unacidable)
 			. =  FALSE
 		else
-			G.health -=  80 //Usually knocks it down.
-			G.healthcheck()
+			grille_in_path.health -=  80 //Usually knocks it down.
+			grille_in_path.healthcheck()
 			. = TRUE
 
 	else if (istype(target, /obj/structure/surface/table))
-		var/obj/structure/surface/table/T = target
-		T.Crossed(src)
+		var/obj/structure/surface/table/table_in_path = target
+		table_in_path.Crossed(src)
 		. = TRUE
 
 	else if (istype(target, /obj/structure/machinery/defenses))
-		var/obj/structure/machinery/defenses/DF = target
-		visible_message(SPAN_DANGER("[src] rams [DF]!"), SPAN_XENODANGER("We ram [DF]!"))
+		var/obj/structure/machinery/defenses/defenses_in_path = target
+		visible_message(SPAN_DANGER("[src] rams [defenses_in_path]!"), SPAN_XENODANGER("We ram [defenses_in_path]!"))
 
-		if (!DF.unacidable)
+		if (!defenses_in_path.unacidable)
 			playsound(loc, "punch", 25, 1)
-			DF.stat = 1
-			DF.update_icon()
-			DF.update_health(40)
+			defenses_in_path.stat = 1
+			defenses_in_path.update_icon()
+			defenses_in_path.update_health(40)
 
 		. =  FALSE
 
 	else if (istype(target, /obj/structure/machinery/vending))
-		var/obj/structure/machinery/vending/V = target
+		var/obj/structure/machinery/vending/vending_in_path = target
 
-		if (V.unslashable)
+		if (vending_in_path.unslashable)
 			. = FALSE
 		else
-			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("We smash straight into [V]!"))
+			visible_message(SPAN_DANGER("[src] smashes straight into [vending_in_path]!"), SPAN_XENODANGER("We smash straight into [vending_in_path]!"))
 			playsound(loc, "punch", 25, 1)
-			V.tip_over()
+			vending_in_path.tip_over()
 
 			var/impact_range = 1
-			var/turf/TA = get_diagonal_step(V, dir)
-			TA = get_step_away(TA, src)
+			var/turf/turfs_charged_at = get_diagonal_step(vending_in_path, dir)
+			turfs_charged_at = get_step_away(turfs_charged_at, src)
 			var/launch_speed = 2
-			launch_towards(TA, impact_range, launch_speed)
+			launch_towards(turfs_charged_at, impact_range, launch_speed)
 
 			. =  TRUE
 
 	else if (istype(target, /obj/structure/machinery/cm_vending))
-		var/obj/structure/machinery/cm_vending/V = target
-		if (V.unslashable)
+		var/obj/structure/machinery/cm_vending/vending_in_path = target
+		if (vending_in_path.unslashable)
 			. = FALSE
 		else
-			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("We smash straight into [V]!"))
+			visible_message(SPAN_DANGER("[src] smashes straight into [vending_in_path]!"), SPAN_XENODANGER("We smash straight into [vending_in_path]!"))
 			playsound(loc, "punch", 25, 1)
-			V.tip_over()
+			vending_in_path.tip_over()
 
 			var/impact_range = 1
-			var/turf/TA = get_diagonal_step(V, dir)
-			TA = get_step_away(TA, src)
+			var/turf/turfs_charged_at = get_diagonal_step(vending_in_path, dir)
+			turfs_charged_at = get_step_away(turfs_charged_at, src)
 			var/launch_speed = 2
-			throw_atom(TA, impact_range, launch_speed)
+			throw_atom(turfs_charged_at, impact_range, launch_speed)
 
 			. =  TRUE
 
@@ -188,29 +189,29 @@
 	// Anything else?
 	else
 		if (isobj(target))
-			var/obj/O = target
-			if (O.unacidable)
+			var/obj/objects_in_path = target
+			if (objects_in_path.unacidable)
 				. = FALSE
-			else if (O.anchored)
-				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("We crush [O]!"))
-				if(length(O.contents)) //Hopefully won't auto-delete things inside crushed stuff.
-					var/turf/T = get_turf(src)
-					for(var/atom/movable/S in T.contents) S.forceMove(T)
+			else if (objects_in_path.anchored)
+				visible_message(SPAN_DANGER("[src] crushes [objects_in_path]!"), SPAN_XENODANGER("We crush [objects_in_path]!"))
+				if(length(objects_in_path.contents)) //Hopefully won't auto-delete things inside crushed stuff.
+					var/turf/turf_for_obj = get_turf(src)
+					for(var/atom/movable/stuff_to_move in turf_for_obj.contents) stuff_to_move.forceMove(turf_for_obj)
 
-				qdel(O)
+				qdel(objects_in_path)
 				. = TRUE
 
 			else
-				if(O.buckled_mob)
-					O.unbuckle()
-				visible_message(SPAN_WARNING("[src] knocks [O] aside!"), SPAN_XENOWARNING("We knock [O] aside.")) //Canisters, crates etc. go flying.
+				if(objects_in_path.buckled_mob)
+					objects_in_path.unbuckle()
+				visible_message(SPAN_WARNING("[src] knocks [objects_in_path] aside!"), SPAN_XENOWARNING("We knock [objects_in_path] aside.")) //Canisters, crates etc. go flying.
 				playsound(loc, "punch", 25, 1)
 
 				var/impact_range = 2
-				var/turf/TA = get_diagonal_step(O, dir)
-				TA = get_step_away(TA, src)
+				var/turf/turfs_to_get = get_diagonal_step(objects_in_path, dir)
+				turfs_to_get = get_step_away(turfs_to_get, src)
 				var/launch_speed = 2
-				throw_atom(TA, impact_range, launch_speed)
+				throw_atom(turfs_to_get, impact_range, launch_speed)
 
 				. = TRUE
 
@@ -226,49 +227,49 @@
 	/// Utilized to update charging animation.
 	var/is_charging = FALSE
 
-/datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)
+/datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/target)
 
-	if (!isxeno_human(A))
+	if (!isxeno_human(target))
 		return
 
-	new /datum/effects/xeno_slow(A, bound_xeno, , , 20)
+	new /datum/effects/xeno_slow(target, bound_xeno, 2 SECONDS)
 
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 
-	var/base_cdr_amount = 15
+	var/base_cdr_amount = 1.5 SECONDS
 	var/cdr_amount = base_cdr_amount
-	for (var/mob/living/carbon/H in orange(1, A))
-		if (H.stat == DEAD)
+	for (var/mob/living/carbon/aoe_targets in orange(1, target))
+		if (aoe_targets.stat == DEAD)
 			continue
 
-		if(!isxeno_human(H) || bound_xeno.can_not_harm(H))
+		if(!isxeno_human(aoe_targets) || bound_xeno.can_not_harm(aoe_targets))
 			continue
 
-		cdr_amount += 5
+		cdr_amount += 0.5 SECONDS
 
-		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"),
-			SPAN_DANGER("You slash [H]!"), null, null, CHAT_TYPE_XENO_COMBAT)
+		to_chat(aoe_targets, SPAN_XENODANGER("[bound_xeno] slashes [aoe_targets]!"))
+		to_chat(bound_xeno, SPAN_XENODANGER("We slash [aoe_targets]!"))
 
-		bound_xeno.flick_attack_overlay(H, "slash")
+		bound_xeno.flick_attack_overlay(aoe_targets, "slash")
 
-		H.last_damage_data = create_cause_data(initial(bound_xeno.name), bound_xeno)
+		aoe_targets.last_damage_data = create_cause_data(initial(bound_xeno.name), bound_xeno)
 
 		//Logging, including anti-rulebreak logging
-		if(H.status_flags & XENO_HOST && H.stat != DEAD)
-			if(HAS_TRAIT(H, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
-				H.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(bound_xeno)] while they were infected and nested</B></font>")
-				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(H)] while they were infected and nested</B></font>")
-				message_admins("[key_name(bound_xeno)] slashed [key_name(H)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+		if(aoe_targets.status_flags & XENO_HOST && aoe_targets.stat != DEAD)
+			if(HAS_TRAIT(aoe_targets, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
+				aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(bound_xeno)] while they were infected and nested</B></font>")
+				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(aoe_targets)] while they were infected and nested</B></font>")
+				message_admins("[key_name(bound_xeno)] slashed [key_name(aoe_targets)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 			else //Host might be rogue, needs further investigation
-				H.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")
-				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)] while they were infected</font>")
+				aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")
+				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(aoe_targets)] while they were infected</font>")
 		else //Normal xenomorph friendship with benefits
-			H.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)]</font>")
-			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(H)]</font>")
-		log_attack("[key_name(bound_xeno)] slashed [key_name(H)]")
+			aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)]</font>")
+			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(aoe_targets)]</font>")
+		log_attack("[key_name(bound_xeno)] slashed [key_name(aoe_targets)]")
 
 
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
+		aoe_targets.apply_armoured_damage(get_xeno_damage_slash(aoe_targets, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
 
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (!cAction.action_cooldown_check())

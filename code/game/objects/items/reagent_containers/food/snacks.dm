@@ -27,7 +27,8 @@
 /obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
 	SEND_SIGNAL(M, COMSIG_MOB_EATEN_SNACK, src)
-	if(!usr) return
+	if(!usr)
+		return
 
 	if(!reagents.total_volume)
 		if(M == usr)
@@ -103,7 +104,8 @@
 					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 					SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M))
+				return
 
 			var/rgt_list_text = get_reagent_list_text()
 
@@ -1566,7 +1568,8 @@
 	reagents.add_reagent("meatprotein",10)
 
 /obj/item/reagent_container/food/snacks/monkeycube/afterattack(obj/O, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(O,/obj/structure/sink) && !package)
 		to_chat(user, "You place \the [name] under a stream of water...")
 		user.drop_held_item()

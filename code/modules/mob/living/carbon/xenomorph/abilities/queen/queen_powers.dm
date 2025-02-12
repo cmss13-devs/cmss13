@@ -80,7 +80,8 @@
 	if(!X.check_state())
 		return
 
-	if(X.action_busy) return
+	if(X.action_busy)
+		return
 	var/answer = alert(X, "Are you sure you want to remove your ovipositor? (5min cooldown to grow a new one)", , "Yes", "No")
 	if(answer != "Yes")
 		return
@@ -90,7 +91,8 @@
 		return
 	X.visible_message(SPAN_XENOWARNING("\The [X] starts detaching itself from its ovipositor!"),
 		SPAN_XENOWARNING("You start detaching yourself from your ovipositor."))
-	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10)) return
+	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10))
+		return
 	if(!X.check_state())
 		return
 	if(!X.ovipositor)
@@ -143,7 +145,8 @@
 	SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still)"))
 	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
-	if(!xeno.check_state()) return
+	if(!xeno.check_state())
+		return
 	if(!locate(/obj/effect/alien/weeds) in current_turf)
 		return
 	xeno.use_plasma(plasma_cost)
@@ -842,11 +845,13 @@
 		return
 	var/list/target_list = list()
 	for(var/mob/living/carbon/possible_target in view(7, xeno_player))
-		if(possible_target == xeno_player || !possible_target.client) continue
+		if(possible_target == xeno_player || !possible_target.client)
+			continue
 		target_list += possible_target
 
 	var/mob/living/carbon/target_mob = tgui_input_list(usr, "Target", "Send a Psychic Whisper to whom?", target_list, theme="hive_status")
-	if(!target_mob) return
+	if(!target_mob)
+		return
 
 	if(!xeno_player.check_state(TRUE))
 		return

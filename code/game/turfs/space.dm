@@ -77,6 +77,9 @@
 
 /turf/open/space/Entered(atom/movable/A)
 	..()
+	if(isnewplayer(A))
+		return
+
 	if ((!(A) || src != A.loc)) return
 
 	inertial_drift(A)

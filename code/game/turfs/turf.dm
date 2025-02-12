@@ -65,6 +65,9 @@
 	///hybrid lights affecting this turf
 	var/tmp/list/atom/movable/lighting_mask/hybrid_lights_affecting
 
+	/// Is fishing allowed on this turf
+	var/fishing_allowed = FALSE
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)

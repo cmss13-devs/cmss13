@@ -4124,18 +4124,18 @@
 /area/yautja)
 "oa" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Containment Monitor";
 	pixel_y = 24;
-	density = 0
+	density = 0;
+	desc = "A monitor used for monitoring the containment cell."
 	},
 /obj/structure/machinery/door_control/yautja{
 	id = "researchlockdown";
 	pixel_y = 23;
 	name = "Secure Containment Cell Lockdown";
-	pixel_x = -3;
+	pixel_x = -4;
 	req_one_access_txt = "390"
 	},
 /obj/structure/machinery/door_control/yautja{

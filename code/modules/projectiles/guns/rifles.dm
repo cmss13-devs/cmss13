@@ -20,7 +20,8 @@
 
 /obj/item/weapon/gun/rifle/Initialize(mapload, spawn_empty)
 	. = ..()
-	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
 
 /obj/item/weapon/gun/rifle/set_gun_config_values()
 	..()
@@ -611,6 +612,7 @@
 	. = ..()
 	if(iff_enabled)
 		modify_fire_delay(FIRE_DELAY_TIER_12)
+		modify_burst_delay(FIRE_DELAY_TIER_12)
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
 	linked_human = H

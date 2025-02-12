@@ -56,7 +56,8 @@
 
 /obj/item/weapon/gun/boltaction/Initialize(mapload, spawn_empty)
 	. = ..()
-	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
 	bolt_delay = FIRE_DELAY_TIER_5
 
 /obj/item/weapon/gun/boltaction/update_icon() // needed for bolt action sprites

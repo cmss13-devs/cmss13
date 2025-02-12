@@ -38,39 +38,40 @@
 			nutrition -= HUNGER_FACTOR/5
 
 /mob/living/carbon/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	if(user in src.stomach_contents)
 		if(user.client)
 			user.client.next_movement = world.time + 20
 		if(prob(30))
-			for(var/mob/M in hearers(4, src))
-				if(M.client)
-					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
-		var/obj/item/I = user.get_active_hand()
-		if(I && I.force)
-			var/d = rand(floor(I.force / 4), I.force)
+			for(var/mob/mobs_can_hear in hearers(4, src))
+				if(mobs_can_hear.client)
+					mobs_can_hear.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
+		var/obj/item/item_in_hand = user.get_active_hand()
+		if(item_in_hand && item_in_hand.force)
+			var/damage_of_item = rand(floor(item_in_hand.force / 4), item_in_hand.force)
 			if(istype(src, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = src
-				var/organ = H.get_limb("chest")
+				var/mob/living/carbon/human/human_mob = src
+				var/organ = human_mob.get_limb("chest")
 				if(istype(organ, /obj/limb))
-					var/obj/limb/temp = organ
-					if(temp.take_damage(d, 0))
-						H.UpdateDamageIcon()
-				H.updatehealth()
+					var/obj/limb/organs_in_human = organ
+					if(organs_in_human.take_damage(damage_of_item, 0))
+						human_mob.UpdateDamageIcon()
+				human_mob.updatehealth()
 			else
-				src.take_limb_damage(d)
-			for(var/mob/M as anything in viewers(user, null))
-				if(M.client)
-					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), SHOW_MESSAGE_AUDIBLE)
-			user.track_hit(initial(I.name))
+				src.take_limb_damage(damage_of_item)
+			for(var/mob/mobs_in_view as anything in viewers(user, null))
+				if(mobs_in_view.client)
+					mobs_in_view.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [item_in_hand.name]!")), SHOW_MESSAGE_AUDIBLE)
+			user.track_hit(initial(item_in_hand.name))
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
 				last_damage_data = create_cause_data("chestbursting", user)
 				gib(last_damage_data)
 	else if(!chestburst && (status_flags & XENO_HOST) && islarva(user))
-		var/mob/living/carbon/xenomorph/larva/L = user
-		L.chest_burst(src)
+		var/mob/living/carbon/xenomorph/larva/larva_burst = user
+		larva_burst.chest_burst(src)
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
@@ -159,7 +160,8 @@
 	. = ..()
 
 /mob/living/carbon/attack_hand(mob/target_mob as mob)
-	if(!istype(target_mob, /mob/living/carbon)) return
+	if(!istype(target_mob, /mob/living/carbon))
+		return
 
 	if(target_mob.mob_flags & SURGERY_MODE_ON && target_mob.a_intent & (INTENT_HELP|INTENT_DISARM))
 		var/datum/surgery/current_surgery = active_surgeries[target_mob.zone_selected]
@@ -482,8 +484,10 @@
 
 /mob/living/carbon/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	set waitfor = 0
-	if(buckled) return FALSE //can't slip while buckled
-	if(body_position != STANDING_UP) return FALSE //can't slip if already lying down.
+	if(buckled)
+		return FALSE //can't slip while buckled
+	if(body_position != STANDING_UP)
+		return FALSE //can't slip if already lying down.
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)

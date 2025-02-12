@@ -203,7 +203,8 @@
 
 		to_chat(Q, message)
 		for(var/mob/living/carbon/xenomorph/X in viewers(7, src))
-			if(X == Q) continue
+			if(X == Q)
+				continue
 			to_chat(X, message)
 
 		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src, A)
@@ -443,7 +444,9 @@
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
-		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) && !(xeno.flags_pass_temp & PASS_MOB_THRU))
+		if(xeno.stat == DEAD)
+			continue
+		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) || xeno.flags_pass_temp & PASS_MOB_THRU)
 			continue
 		if(xeno.hivenumber == hivenumber && !(queen.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
@@ -766,15 +769,6 @@
 	if(issynth(victim))
 		var/obj/limb/head/synthhead = victim.get_limb("head")
 		if(synthhead.status & LIMB_DESTROYED)
-			return FALSE
-
-	if(victim.status_flags & XENO_HOST)
-		var/mob/living/carbon/human/human_victim = victim
-		if(victim.stat != DEAD) //Not dead yet.
-			to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
-			return FALSE
-		else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
-			to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
 			return FALSE
 
 	if(isxeno(victim))

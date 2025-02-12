@@ -41,6 +41,9 @@
 	/// A list of all player xenomorph deaths, type /datum/entity/xeno_death
 	var/list/xeno_deaths = list()
 
+	/// A list of all marine deaths, type /datum/entity/marine_death
+	var/list/marine_deaths = list()
+
 	// nanoui data
 	var/list/round_data = list()
 	var/list/death_data = list()
@@ -50,6 +53,7 @@
 	QDEL_NULL(current_map)
 	QDEL_LIST(death_stats_list)
 	QDEL_LIST(xeno_deaths)
+	QDEL_LIST(marine_deaths)
 	QDEL_LIST_ASSOC_VAL(castes_evolved)
 	QDEL_LIST_ASSOC_VAL(abilities_used)
 	QDEL_LIST_ASSOC_VAL(final_participants)
@@ -89,7 +93,6 @@
 
 /datum/game_mode/proc/setup_round_stats()
 	if(!round_stats)
-		var/datum/entity/mc_round/mc_round = SSentity_manager.select(/datum/entity/mc_round)
 		var/operation_name
 		operation_name = "[pick(GLOB.operation_titles)]"
 		operation_name += " [pick(GLOB.operation_prefixes)]"
@@ -98,7 +101,7 @@
 		// Round stats
 		round_stats = DB_ENTITY(/datum/entity/statistic/round)
 		round_stats.round_name = operation_name
-		round_stats.round_id = mc_round.id
+		round_stats.round_id = GLOB.round_id
 		round_stats.map_name = SSmapping.configs[GROUND_MAP].map_name
 		round_stats.game_mode = name
 		round_stats.real_time_start = world.realtime
@@ -238,7 +241,6 @@
 			track_final_participant(M.faction)
 
 	save()
-	detach()
 
 /datum/entity/statistic/round/proc/track_hijack_participant(faction, amount = 1)
 	if(!faction)
@@ -320,11 +322,19 @@
 	caste_picks.castes_picked = castes_evolved
 	caste_picks.save()
 
+/datum/entity/statistic/round/proc/store_spec_kit_data()
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		return
+
+	var/datum/entity/initial_spec_picks/spec_picks = DB_ENTITY(/datum/entity/initial_spec_picks)
+	spec_picks.save()
+
 /datum/entity/statistic/round/proc/log_round_statistics()
 	if(!GLOB.round_stats)
 		return
 
 	store_caste_evo_data()
+	store_spec_kit_data()
 
 	var/total_xenos_created = 0
 	var/total_predators_spawned = 0

@@ -155,17 +155,31 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaE" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
-	},
-/turf/open/floor/plating,
-/area/shiva/exterior/lz1_valley)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
+"aaF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaG" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 8
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
+"aaH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
+"aaI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaJ" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/flamer_tank{
@@ -180,6 +194,17 @@
 /obj/item/tool/pickaxe/drill,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"aaL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
+"aaM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
 "aaN" = (
 /obj/item/weapon/gun/flamer,
 /obj/structure/surface/rack,
@@ -190,6 +215,12 @@
 /obj/item/explosive/plastic,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"aaP" = (
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	icon_state = "psiphon:1"
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/valley)
 "aaQ" = (
 /obj/effect/spider/stickyweb,
 /obj/item/clothing/head/helmet/marine/sof,
@@ -4205,13 +4236,6 @@
 "aKk" = (
 /obj/structure/prop/invuln/ice_prefab/standalone/trim{
 	icon_state = "pink_trim"
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/valley)
-"aKn" = (
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	icon_state = "psiphon:1";
-	needs_power = 0
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/valley)
@@ -12906,11 +12930,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/green/southeast,
 /area/shiva/interior/colony/botany)
-"krU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/barrel/white,
-/turf/open/asphalt/cement,
-/area/shiva/interior/warehouse)
 "krZ" = (
 /obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer2,
@@ -13052,12 +13071,6 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/exterior/valley)
-"kys" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/barrel/green,
-/turf/open/asphalt/cement,
-/area/shiva/interior/warehouse)
 "kyt" = (
 /obj/item/tool/shovel/snow,
 /turf/open/auto_turf/snow/layer1,
@@ -14685,11 +14698,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/bar)
-"mpt" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement,
-/area/shiva/interior/warehouse)
 "mpE" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -27828,7 +27836,7 @@ cQW
 cQW
 cQW
 cQW
-aaE
+aaM
 cQW
 cQW
 cQW
@@ -30916,7 +30924,7 @@ aJt
 dCB
 dKD
 huz
-kys
+aaE
 pef
 rdS
 axJ
@@ -31078,7 +31086,7 @@ aJt
 aJt
 aJt
 huz
-krU
+aaF
 axJ
 axJ
 trX
@@ -31240,7 +31248,7 @@ hbY
 hbY
 hbY
 huz
-axJ
+cio
 axJ
 rBC
 rdS
@@ -32050,7 +32058,7 @@ hbY
 hbY
 hbY
 huz
-aut
+aaH
 rdS
 aCy
 tdc
@@ -32212,7 +32220,7 @@ hbY
 gdI
 aJt
 huz
-rdS
+aaI
 axJ
 amH
 tbR
@@ -32374,7 +32382,7 @@ huz
 huz
 huz
 huz
-mpt
+aaL
 axJ
 rxd
 sFv
@@ -57768,7 +57776,7 @@ abK
 kng
 puZ
 puZ
-aKn
+aaP
 jAL
 jAL
 jAL

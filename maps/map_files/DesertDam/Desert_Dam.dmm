@@ -895,17 +895,37 @@
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "adJ" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
 	},
-/turf/open/desert/rock/deep/transition/west,
-/area/desert_dam/interior/dam_interior/hanger)
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/desert_dam/exterior/valley/valley_hydro)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"adL" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/corsat/spiralplate,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"adM" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/tool/kitchen/utensil/spoon,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"adN" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -6831,10 +6851,6 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"aDR" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/asphalt/cement/cement15,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDS" = (
 /obj/structure/machinery/sentry_holder/colony{
 	dir = 4;
@@ -9782,10 +9798,6 @@
 "aRN" = (
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"aRO" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
-/area/desert_dam/exterior/valley/valley_hydro)
 "aRP" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -43949,15 +43961,6 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_central_north)
-"kAJ" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/snacks/stew,
-/obj/item/tool/kitchen/utensil/spoon,
-/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
-/turf/open/desert/rock/deep/rock4,
-/area/desert_dam/interior/caves/temple)
 "kAV" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -54966,7 +54969,7 @@ bht
 bht
 bht
 bht
-adJ
+adN
 afc
 dTs
 dTs
@@ -71856,7 +71859,7 @@ aDH
 acw
 aDN
 cyD
-aDR
+adL
 bgn
 cAN
 cAP
@@ -72843,7 +72846,7 @@ cRg
 cRg
 cRg
 cOH
-aRO
+hOK
 bYV
 hzC
 hzC
@@ -73545,7 +73548,7 @@ cRi
 cRi
 cSu
 cOH
-mGo
+adJ
 vDJ
 hzC
 rdW
@@ -105050,7 +105053,7 @@ aBE
 aBE
 dTs
 aBL
-kAJ
+adM
 ays
 aAv
 azC

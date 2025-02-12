@@ -8,7 +8,8 @@
 
 /obj/structure/urinal/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/grab))
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		var/obj/item/grab/G = I
 		if(isliving(G.grabbed_thing))
 			var/mob/living/GM = G.grabbed_thing

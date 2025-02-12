@@ -97,10 +97,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
-"aau" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/asphalt/cement/cement12,
-/area/strata/ag/exterior/paths/north_outpost)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -164,11 +160,9 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
 "aaE" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/interior/mountain)
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/plating,
+/area/strata/ug/interior/outpost/platform)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -181,12 +175,10 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
 "aaH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/gm/dirt,
-/area/strata/ug/interior/jungle/carplake/north)
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/caves/shed_five_caves)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -210,6 +202,11 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"aaN" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/caves/shed_five_caves)
 "aaO" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
@@ -249,6 +246,11 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"aaV" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/caves/shed_five_caves)
 "aaW" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -263,6 +265,9 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaY" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/caves/shed_five_caves)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -335,6 +340,16 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abm" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/plating,
+/area/strata/ag/exterior/tcomms/mining_caves)
+"abn" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -343,6 +358,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+"abq" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -367,6 +389,17 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abw" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata,
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/paths/mining_outpost_exterior)
+"abx" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/paths/north_outpost)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -412,6 +445,10 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
+"abG" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/paths/north_outpost)
 "abH" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/explosive_mines,
@@ -438,14 +475,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball)
-"abL" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/asphalt/cement,
-/area/strata/ag/exterior/paths/mining_outpost_exterior)
 "abM" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -15186,10 +15215,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
-"bRf" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/asphalt/cement,
-/area/strata/ag/exterior/tcomms/mining_caves)
 "bRg" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/structure/machinery/camera/autoname{
@@ -18485,10 +18510,6 @@
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outside/checkpoints/west)
-"dCX" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/asphalt/cement/cement3,
-/area/strata/ug/interior/outpost/platform)
 "dDM" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor3,
@@ -20040,11 +20061,6 @@
 /obj/structure/curtain/open/shower,
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/canteen)
-"fEW" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/asphalt/cement,
-/area/strata/ag/exterior/caves/shed_five_caves)
 "fFy" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -20745,10 +20761,6 @@
 /obj/structure/bookcase,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
-"gwY" = (
-/obj/structure/platform/metal/strata/north,
-/turf/open/floor/plating,
-/area/strata/ag/exterior/paths/mining_outpost_exterior)
 "gya" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -21539,9 +21551,6 @@
 "hJE" = (
 /turf/open/gm/river,
 /area/strata/ug/interior/jungle/platform/east)
-"hJT" = (
-/turf/open/asphalt/cement/cement12,
-/area/strata/ag/exterior/paths/north_outpost)
 "hKf" = (
 /obj/structure/platform/stone/strata/north,
 /obj/structure/platform/stone/strata/east,
@@ -21634,9 +21643,6 @@
 	},
 /turf/open/floor/strata/white_cyan3/east,
 /area/strata/ag/interior/outpost/med)
-"hPK" = (
-/turf/open/asphalt/cement,
-/area/strata/ag/exterior/caves/shed_five_caves)
 "hQq" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -21733,11 +21739,6 @@
 "hYc" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/engineering/parts_storage)
-"hYl" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/recharge_station,
-/turf/open/asphalt/cement,
-/area/strata/ag/exterior/caves/shed_five_caves)
 "hYu" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -23208,11 +23209,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/canteen)
-"jVg" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/asphalt/cement,
-/area/strata/ag/exterior/caves/shed_five_caves)
 "jVD" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
@@ -34180,7 +34176,7 @@ alz
 alz
 alz
 aac
-aaE
+abn
 aac
 aac
 aac
@@ -40631,7 +40627,7 @@ crY
 crY
 crY
 aCl
-gwY
+vAw
 aNl
 aNo
 aNl
@@ -40805,7 +40801,7 @@ ctC
 ciA
 aCL
 ciB
-abL
+abw
 qsu
 aNm
 aNo
@@ -42233,7 +42229,7 @@ aZK
 aac
 aZJ
 bMd
-bRf
+abm
 lqX
 mvm
 mvm
@@ -47671,7 +47667,7 @@ jne
 bfc
 xdr
 gOC
-jVg
+aaN
 sXu
 okE
 aac
@@ -47846,7 +47842,7 @@ jne
 bfd
 xdr
 iGp
-fEW
+aaV
 sau
 okE
 aac
@@ -48021,8 +48017,8 @@ bgJ
 bfd
 xdr
 rfB
-hPK
-hYl
+aaY
+aaH
 okE
 aac
 aac
@@ -50232,7 +50228,7 @@ aac
 aac
 aac
 bLj
-hJT
+abx
 ayv
 ayw
 aHh
@@ -50407,7 +50403,7 @@ aac
 aac
 aac
 bLj
-hJT
+abx
 ayw
 azZ
 awJ
@@ -50582,7 +50578,7 @@ aac
 aac
 aac
 bLj
-aau
+abG
 awA
 ayw
 awJ
@@ -63424,11 +63420,11 @@ wLv
 oSN
 tnM
 wZZ
-wZZ
-srk
-aad
-aad
+aaE
 fBG
+aad
+aad
+srk
 aad
 aad
 wZZ
@@ -63603,7 +63599,7 @@ oPN
 oPN
 oPN
 oPN
-dCX
+oPN
 oPN
 oPN
 qrz
@@ -70563,7 +70559,7 @@ jUA
 jUA
 jUA
 cei
-aaH
+abq
 cei
 jUA
 jUA

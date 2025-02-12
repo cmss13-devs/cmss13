@@ -920,7 +920,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
 
 		// Delete everything else.
-		else qdel(movable_atom)
+		else
+			qdel(movable_atom)
 
 	if(screams)
 		for(var/atom/computer as anything in bound_supply_computer_list)
@@ -1074,7 +1075,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/supply/asrs/attack_hand(mob/user as mob)
-	if(!is_mainship_level(z)) return
+	if(!is_mainship_level(z))
+		return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
 		return
@@ -1304,7 +1306,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
-	if(!frequency) return
+	if(!frequency)
+		return
 
 	var/datum/signal/status_signal = new
 	status_signal.source = src

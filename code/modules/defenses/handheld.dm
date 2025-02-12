@@ -213,7 +213,8 @@
 
 /obj/item/defenses/handheld/sentry/flamer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(!ammo_convert) return
+	if(!ammo_convert)
+		return
 
 	if(!istype(target, /obj/item/ammo_magazine/sentry_flamer))
 		return .

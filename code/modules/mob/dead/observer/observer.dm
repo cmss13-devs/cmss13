@@ -67,6 +67,8 @@
 	var/bypass_time_of_death_checks = FALSE
 	///Used to bypass time of death checks for a successful hug
 	var/bypass_time_of_death_checks_hugger = FALSE
+	/// Ref to the moba join panel of this observer, if any
+	var/datum/moba_join_panel/moba_join_panel
 
 	alpha = 127
 
@@ -329,6 +331,7 @@
 	following = null
 	observe_target_mob = null
 	observe_target_client = null
+	moba_join_panel = null
 	return ..()
 
 /mob/dead/observer/MouseDrop(atom/A)

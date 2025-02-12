@@ -1075,7 +1075,9 @@
 		bullet_message(P, damaging = FALSE)
 		return
 
-	if(isxeno(P.firer) && ammo_flags & (AMMO_ACIDIC|AMMO_XENO)) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
+	var/pre_mitigation_damage = damage_result
+
+	if(isxeno(P.firer) && (ammo_flags & (AMMO_ACIDIC|AMMO_XENO))) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
 		var/mob/living/carbon/xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)
@@ -1120,10 +1122,12 @@
 
 	bullet_message(P) //Message us about the bullet, since damage was inflicted.
 
+	var/list/result_list = list(damage_result)
 
-
-	if(SEND_SIGNAL(src, COMSIG_XENO_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
+	if(SEND_SIGNAL(src, COMSIG_XENO_BULLET_ACT, result_list, pre_mitigation_damage, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
 		return
+
+	damage_result = result_list[1]
 
 	if(damage)
 		//only apply the blood splatter if we do damage

@@ -39,7 +39,7 @@
 
 		hive.tunnels += src
 
-	if(!hive)
+	if(!hive && hivenumber)
 		hive = GLOB.hive_datum[hivenumber]
 
 		hive.tunnels += src
@@ -185,6 +185,7 @@
 			return FALSE
 
 		X.forceMove(T)
+		SEND_SIGNAL(X, COMSIG_XENO_USED_TUNNEL, src)
 		to_chat(X, SPAN_XENONOTICE("We have reached our destination."))
 		return TRUE
 

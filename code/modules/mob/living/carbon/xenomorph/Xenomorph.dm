@@ -127,6 +127,18 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
+	// Acid armor
+	// Zonenote look into moving these to the component later, maybe?
+	/// How protected we are against acidic attacks. The *somewhat* equivalent to armor_deflection
+	/// 50 acid armor reduces the amount of acid damage you take by 50%, simple as
+	/// If left unchanged from -1, will default to the xeno's armor_deflection.
+	/// THIS ONLY APPLIES IN THE MOBA GAMEMODE, DOES NOT DO ANYTHING OTHERWISE
+	var/acid_armor = -1
+	/// Temp buffs to acid armor
+	var/acid_armor_buff = 0
+	/// Temp debuffs to acid armor
+	var/acid_armor_debuff = 0
+
 	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
@@ -348,6 +360,8 @@
 	var/cannot_slash = FALSE
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
+	/// Multiplier for plasma regeneration
+	var/plasma_regeneration_mult = 1
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
@@ -507,6 +521,9 @@
 		hive.hive_ui.update_all_xeno_data()
 
 	creation_time = world.time
+
+	if(acid_armor == -1)
+		acid_armor = armor_deflection
 
 	Decorate()
 

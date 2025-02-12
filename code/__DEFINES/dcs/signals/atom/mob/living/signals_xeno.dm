@@ -95,3 +95,6 @@
 
 /// From /mob/living/carbon/xenomorph/proc/do_evolve()
 #define COMSIG_XENO_EVOLVE_TO_NEW_CASTE "xeno_evolve_to_new_caste"
+
+/// From /obj/structure/tunnel/proc/pick_tunnel() : (obj/structure/used_tunnel)
+#define COMSIG_XENO_USED_TUNNEL "xeno_used_tunnel"

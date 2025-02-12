@@ -40,6 +40,19 @@
 	var/client/client = usr.client
 	client.toggle_ghost_hud()
 
+/atom/movable/screen/ghost/moba
+	name = "MOBA"
+	icon_state = "reenter_corpse"
+
+/atom/movable/screen/ghost/moba/Click()
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		return
+
+	var/mob/dead/observer/ghost = usr
+	if(!ghost.moba_join_panel)
+		ghost.moba_join_panel = new /datum/moba_join_panel
+	ghost.moba_join_panel.tgui_interact(ghost)
+
 /datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi', ui_color, ui_alpha = 230)
 	. = ..()
 	var/atom/movable/screen/using
@@ -62,6 +75,10 @@
 
 	using = new /atom/movable/screen/ghost/toggle_huds()
 	using.screen_loc = ui_ghost_slot5
+	static_inventory += using
+
+	using = new /atom/movable/screen/ghost/moba()
+	using.screen_loc = ui_ghost_slot6
 	static_inventory += using
 
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)

@@ -339,9 +339,9 @@ Make sure their actual health updates immediately.*/
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
 			if(!hive) return // can't heal if you have no hive, sorry bud
-			plasma_stored += plasma_gain * plasma_max / 100
+			plasma_stored += (plasma_gain * plasma_max / 100) * plasma_regeneration_mult
 			if(recovery_aura)
-				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
+				plasma_stored += floor((plasma_gain * plasma_max / 100 * recovery_aura/4) * plasma_regeneration_mult) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
@@ -367,7 +367,7 @@ Make sure their actual health updates immediately.*/
 				armor_integrity = armor_integrity_max
 
 		else if(prob(50) && !current_aura) //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
-			plasma_stored += 0.1 * plasma_max / 100
+			plasma_stored += (0.1 * plasma_max / 100) * plasma_regeneration_mult
 
 
 		for(var/datum/action/xeno_action/action in src.actions)

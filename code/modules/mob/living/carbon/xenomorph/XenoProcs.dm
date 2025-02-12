@@ -47,6 +47,8 @@
 
 	. += "Health: [floor(health)]/[floor(maxHealth)]"
 	. += "Armor: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
+	if(acid_armor_buff || acid_armor_debuff || (acid_armor != armor_deflection)) // don't need to always show this when it'll almost always be irrelevant and equal to base armor
+		. += "Acid Armor: [floor(acid_armor + acid_armor_buff - acid_armor_debuff)]/[floor(acid_armor)]"
 	. += "Plasma: [floor(plasma_stored)]/[floor(plasma_max)]"
 	. += "Slash Damage: [floor((melee_damage_lower+melee_damage_upper)/2)]"
 

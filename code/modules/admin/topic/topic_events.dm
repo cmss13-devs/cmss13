@@ -96,13 +96,13 @@
 				GLOB.chemical_data.update_credits(amount)
 
 		if("xenothumbs")
-			var/grant = alert(usr, "Do you wish to grant or revoke Xenomorph firearms permits?", "Give or Take", "Grant", "Revoke", "Cancel")
+			var/grant = tgui_alert(owner, "Do you wish to grant or revoke Xenomorph firearms permits?", "Give or Take", list("Grant", "Revoke", "Cancel"))
 			if(grant == "Cancel")
 				return
 
 			var/list/mob/living/carbon/xenomorph/permit_recipients = list()
 			var/list/datum/hive_status/permit_hives = list()
-			switch(alert(usr, "Do you wish to do this for one Xeno or an entire hive?", "Recipients", "Xeno", "Hive", "All Xenos"))
+			switch(tgui_alert(owner, "Do you wish to do this for one Xeno or an entire hive?", "Recipients", list("Xeno", "Hive", "All Xenos")))
 				if("Xeno")
 					permit_recipients += tgui_input_list(usr, "Select recipient Xenomorph:", "Armed Xenomorph", GLOB.living_xeno_list)
 					if(isnull(permit_recipients[1])) //Cancel button.
@@ -152,13 +152,13 @@
 
 
 		if("xenocards")
-			var/grant = alert(usr, "Do you wish to grant or revoke Xenomorph card playing abilities?", "Give or Take", "Grant", "Revoke", "Cancel")
+			var/grant = tgui_alert(owner, "Do you wish to grant or revoke Xenomorph card playing abilities?", "Give or Take", list("Grant", "Revoke", "Cancel"))
 			if(grant == "Cancel")
 				return
 
 			var/list/mob/living/carbon/xenomorph/permit_recipients = list()
 			var/list/datum/hive_status/permit_hives = list()
-			switch(alert(usr, "Do you wish to do this for one Xeno or an entire hive?", "Recipients", "Xeno", "Hive", "All Xenos"))
+			switch(tgui_alert(owner, "Do you wish to do this for one Xeno or an entire hive?", "Recipients", list("Xeno", "Hive", "All Xenos")))
 				if("Xeno")
 					permit_recipients += tgui_input_list(usr, "Select recipient Xenomorph:", "Ace Xenomorph", GLOB.living_xeno_list)
 					if(isnull(permit_recipients[1])) //Cancel button.

@@ -3,6 +3,7 @@
 #define MENU_CO "co"
 #define MENU_SYNTHETIC "synth"
 #define MENU_YAUTJA "yautja"
+#define MENU_YOUNGBLOOD "youngblood"
 #define MENU_MENTOR "mentor"
 #define MENU_SETTINGS "settings"
 #define MENU_SPECIAL "special"
@@ -42,6 +43,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/static/datum/loadout_picker/loadout_picker = new
 
 	var/static/datum/pred_picker/pred_picker = new
+
+	var/static/datum/young_blood_picker/young_blood_picker = new
 
 	//doohickeys for savefiles
 	var/path
@@ -357,6 +360,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		dat += "<a[current_menu == MENU_SYNTHETIC ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SYNTHETIC]\"><b>Synthetic</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_YAUTJA))
 		dat += "<a[current_menu == MENU_YAUTJA ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=yautja\"><b>Yautja</b></a> - "
+	if(!owner.check_whitelist_status(WHITELIST_YAUTJA))
+		dat += "<a[current_menu == MENU_YOUNGBLOOD ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=youngblood\"><b>Young Blood</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_MENTOR))
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
 	dat += "<a[current_menu == MENU_SETTINGS ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SETTINGS]\"><b>Settings</b></a> - "
@@ -1979,6 +1984,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					pred_picker.tgui_interact(user)
 					return
 
+				if("youngblood")
+					if(owner.check_whitelist_status(WHITELIST_PREDATOR))
+						return
+
+					young_blood_picker.tgui_interact(user)
+					return
+
 	ShowChoices(user)
 	return 1
 
@@ -2305,6 +2317,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 #undef MENU_CO
 #undef MENU_SYNTHETIC
 #undef MENU_YAUTJA
+#undef MENU_YOUNGBLOOD
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
 #undef MENU_SPECIAL

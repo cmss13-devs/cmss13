@@ -226,12 +226,13 @@
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
 	requires_power = FALSE
-	base_lighting_alpha = 155
-	base_lighting_color =  "#ffc49c"
+	base_lighting_alpha = 255
 	flags_area = AREA_YAUTJA_GROUNDS
 
-/area/yautja/lowerdeck
+/area/yautja/lower_deck
+	name = "\improper Yautja Ship - Lower Deck"
 	base_lighting_alpha = 105
 
 /area/yautja/hangar
+	name = "\improper Yautja Ship - Hangar"
 	base_lighting_alpha = 180

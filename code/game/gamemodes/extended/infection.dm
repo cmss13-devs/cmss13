@@ -101,7 +101,8 @@
 		round_finished = MODE_INFECTION_ZOMBIE_WIN
 
 /datum/game_mode/infection/check_finished()
-	if(round_finished) return 1
+	if(round_finished)
+		return 1
 
 /datum/game_mode/infection/process()
 	. = ..()

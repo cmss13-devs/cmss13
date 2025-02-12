@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - sounddel: "the vendor inflation event no longer plays sound"

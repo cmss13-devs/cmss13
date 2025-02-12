@@ -91,6 +91,12 @@
 	flags_heat_protection = BODY_FLAG_CHEST
 	item_state_slots = list(WEAR_JACKET = "armor")
 
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/med
+	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant has a red badge, denoting the medical purpose of the wearer. At least in theory."
+	icon_state = "med_armor"
+	item_state = "med_armor"
+	item_state_slots = list(WEAR_JACKET = "med_armor")
+
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by low-level guards that have elevated in rank due to 'good conduct in the field', also known as corporate bootlicking."
 	icon_state = "lead_armor"

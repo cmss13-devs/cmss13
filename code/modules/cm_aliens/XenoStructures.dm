@@ -1229,8 +1229,6 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья появится на свет примерно 20 секунд."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
-
 /// Causes the cocoon to change visually for hatching and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()
 	flick("hatching", src)

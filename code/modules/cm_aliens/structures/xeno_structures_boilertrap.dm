@@ -13,7 +13,7 @@
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/root_duration = 25
+	var/root_duration = 2.5 SECONDS
 
 	var/mob/living/carbon/xenomorph/bound_xeno // Boiler linked to this trap
 

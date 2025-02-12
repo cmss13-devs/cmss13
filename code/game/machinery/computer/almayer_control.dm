@@ -1,4 +1,4 @@
-#define COMMAND_SHIP_ANNOUNCE "Command Ship Announcement"
+#define COMMAND_SHIP_ANNOUNCE "Оповещение командования корабля"
 
 /obj/structure/machinery/computer/almayer_control
 	name = "almayer control console"

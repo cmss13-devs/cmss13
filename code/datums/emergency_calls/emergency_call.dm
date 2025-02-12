@@ -11,7 +11,7 @@
 	var/ert_dispatched = FALSE
 
 /datum/game_mode/proc/ares_online()
-	var/name = "ARES Онлайн"
+	var/name = "ARES: Онлайн"
 	var/input = "ARES. Онлайн. Доброе утро, морпехи."
 	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
 

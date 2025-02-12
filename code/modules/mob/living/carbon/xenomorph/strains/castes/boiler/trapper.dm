@@ -24,6 +24,7 @@
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
+	boiler.ammo = GLOB.ammo_list[boiler.caste.spit_types[1]]
 	boiler.plasma_types -= PLASMA_NEUROTOXIN
 	boiler.health_modifier -= XENO_HEALTH_MOD_VERY_LARGE
 

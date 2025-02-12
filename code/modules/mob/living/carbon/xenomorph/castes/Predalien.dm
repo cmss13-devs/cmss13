@@ -94,7 +94,7 @@
 	if(!loc)
 		return FALSE
 
-	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(loc)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
+	yautja_announcement(SPAN_YAUTJABOLDBIG("ВНИМАНИЕ!\n\nНа территории [get_area_name(loc)] обнаружена абоминация. Это клеймо на нашей безупречности, и оно недостойно жизни. Уничтожьте это немедленно.\n\nТяжелая оружейная разблокирована."))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 
 	to_chat(src, {"

@@ -333,15 +333,15 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		announcement_helper("ВНИМАНИЕ.\n\nДО ДЕТОНАЦИИ ЗАРЯДА - [floor(timeleft/10)] СЕКУНД.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 		//preds part
 		var/t_left = duration2text_sec(floor(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nYou have approximately [t_left] seconds to abandon the hunting grounds before activation of the human purification device."))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("ВНИМАНИЕ!\n\nУ вас есть примерно [t_left] секунд, чтобы покинуть охотничьи угодья до активации человеческого устройства очистки."))
 		//xenos part
 		var/warning
 		if(timer_warning & NUKE_SHOW_TIMER_HALF)
-			warning = "A shiver goes down our carapace as we feel the approaching end... the hive killer is halfway through its preparation cycle!"
+			warning = "Дрожь пробегает по нашему панцирю, мы чувствуем приближение конца... Убийца ульев прошел половину подготовительного этапа!"
 		else if(timer_warning & NUKE_SHOW_TIMER_MINUTE)
-			warning = "Every sense in our form is screaming... the hive killer is almost ready to trigger!"
+			warning = "Каждый наш орган чувств вопит... Убийца ульев близок к своему воплощению!"
 		else
-			warning = "DISABLE IT! NOW!"
+			warning = "ОТКЛЮЧИТЕ ЭТО! ЖИВО!"
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
@@ -355,21 +355,21 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		announcement_helper("ВНИМАНИЕ.\n\nЯДЕРНЫЙ ЗАРЯД АКТИВИРОВАН.\n\nДО ДЕТОНАЦИИ - [floor(timeleft/10)] СЕКУНД.", "[MAIN_AI_SYSTEM]: Датчик ядерного устройства", humans_uscm, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 		announcement_helper("ВНИМАНИЕ.\n\nЯДЕРНЫЙ ЗАРЯД АКТИВИРОВАН.\n\nДО ДЕТОНАЦИИ - [floor(timeleft/10)] СЕКУНД.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 		var/t_left = duration2text_sec(floor(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human purification device has been detected. You have approximately [t_left] to abandon the hunting grounds before it activates."))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("ВНИМАНИЕ!<br>Обнаружено человеческое устройство очистки. У вас есть примерно [t_left], чтобы покинуть охотничьи угодья до его активации."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!length(hive.totalXenos))
 				continue
-			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [get_area_name(loc)]! Stop it at all costs!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Носители развернули убийцу ульев в [get_area_name(loc)]! Остановите их любой ценой!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	else
 		announcement_helper("ВНИМАНИЕ.\n\nЯДЕРНЫЙ ЗАРЯД ДЕАКТИВИРОВАН.", "[MAIN_AI_SYSTEM]: Датчик ядерного устройства", humans_uscm, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 		announcement_helper("ВНИМАНИЕ.\n\nЯДЕРНЫЙ ЗАРЯД ДЕАКТИВИРОВАН.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device's signature has disappeared."))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("ВНИМАНИЕ!<br>Сигнатура человеческого устройства очистки перестала проявляться."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!length(hive.totalXenos))
 				continue
-			xeno_announcement(SPAN_XENOANNOUNCE("The hive killer has been disabled! Rejoice!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Убийца ульев остановлен! Возрадуемся!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 	return
 
 /obj/structure/machinery/nuclearbomb/ex_act(severity)
@@ -580,14 +580,14 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			announcement_helper("ДЕШИФРОВКА ЗАВЕРШЕНА", "[MAIN_AI_SYSTEM]: Мониторинг ядерного устройства", humans_uscm, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 			announcement_helper("ДЕШИФРОВКА ЗАВЕРШЕНА", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 
-			yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nThe human purification device is able to be activated."))
+			yautja_announcement(SPAN_YAUTJABOLDBIG("ВНИМАНИЕ!\n\nМожет быть активировано человеческое устройство очистки."))
 
 			var/datum/hive_status/hive
 			for(var/hivenumber in GLOB.hive_datum)
 				hive = GLOB.hive_datum[hivenumber]
 				if(!length(hive.totalXenos))
 					return
-				xeno_announcement(SPAN_XENOANNOUNCE("We get a sense of impending doom... the hive killer is ready to be activated. Our only chance now is to disable the device itself."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Мы чувствуем приближение нашей страшной погибели... Убийца ульев готов к применению. Наш единственный шанс - вывести из строя это устройство."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 			return
 
 		announcement_helper("ДО ЗАВЕРШЕНИЯ ДЕШИФРОВКИ - [floor(decryption_time/10)] СЕКУНД.", "[MAIN_AI_SYSTEM]: Мониторинг ядерного устройства", humans_uscm, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
@@ -595,12 +595,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 		//preds part
 		var/time_left = duration2text_sec(floor(rand(decryption_time - decryption_time / 10, decryption_time + decryption_time / 10)))
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nYou have approximately [time_left] seconds to abandon the hunting grounds before the human purification device is able to be activated."))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("ВНИМАНИЕ!\n\nУ вас есть примерно [time_left] секунд, чтобы покинуть охотничьи угодья до того, как человеческое устройство очистки сможет быть активировано."))
 
 		//xenos part
-		var/warning = "We are almost out of time, STOP THEM."
+		var/warning = "Время на исходе, ОСТАНОВИТЕ ИХ."
 		if(timer_warning & NUKE_DECRYPT_SHOW_TIMER_HALF)
-			warning = "The Hive grows restless! it's halfway done..."
+			warning = "Улей взволнован! Половина пути уже пройдена..."
 
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
@@ -615,22 +615,22 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		announcement_helper("ВНИМАНИЕ.\n\nНАЧАТА ДЕШИФРОВКА ЯДЕРНОГО ЗАРЯДА.\n\nДО ЗАВЕРШЕНИЯ ДЕШИФРОВКИ - [floor(decryption_time/10)] СЕКУНД.", "[MAIN_AI_SYSTEM]: Мониторинг ядерного устройства", humans_uscm, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 		announcement_helper("ВНИМАНИЕ.\n\nНАЧАТА ДЕШИФРОВКА ЯДЕРНОГО ЗАРЯДА.\n\nДО ЗАВЕРШЕНИЯ ДЕШИФРОВКИ - [floor(decryption_time/10)] СЕКУНД.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 		var/time_left = duration2text_sec(floor(rand(decryption_time - decryption_time / 10, decryption_time + decryption_time / 10)))
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human purification device has been detected. You have approximately [time_left] before it finishes its initial phase."))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("ВНИМАНИЕ!<br>Обнаружено человеческое устройство очистки. У вас есть примерно [time_left], прежде чем оно завершит свою подготовительную фазу."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!length(hive.totalXenos))
 				continue
-			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have started the initial phase of a hive killer at [get_area_name(loc)]! You have about [time_left] to destroy at least one of their communications relays!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Носители приступили к подготовительной фазе уничтожения улья в [get_area_name(loc)]! У вас есть [time_left], чтобы уничтожить хотя бы одно коммуникационное реле!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return
 
 	announcement_helper("ВНИМАНИЕ.\n\nДЕШИФРОВКА ЯДЕРНОГО ЗАРЯДА ОСТАНОВЛЕНА.", "[MAIN_AI_SYSTEM]: Мониторинг ядерного устройства", humans_uscm, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
 	announcement_helper("ВНИМАНИЕ.\n\nДЕШИФРОВКА ЯДЕРНОГО ЗАРЯДА ОСТАНОВЛЕНА.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg', announcer = TTS_ARES_ANNOUNCER)	// SS220 TTS EDIT announcement
-	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device's signature has disappeared."))
+	yautja_announcement(SPAN_YAUTJABOLDBIG("ВНИМАНИЕ!<br>Сигнатура человеческого устройства очистки перестала проявляться."))
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
 		if(!length(hive.totalXenos))
 			continue
-		xeno_announcement(SPAN_XENOANNOUNCE("The hive killer's initial phase has been halted! Rejoice!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE("Подготовительная фаза убийцы ульев была прервана! Возрадуемся!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 
 /obj/structure/machinery/nuclearbomb/tech/proc/connected_comm_shutdown(obj/structure/machinery/telecomms/relay/preset/tower/telecomm_unit)
 	SIGNAL_HANDLER

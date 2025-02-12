@@ -4209,7 +4209,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/machinery/hunt_ground_spawner{
-	pixel_y = 14;
+	pixel_y = 13;
 	pixel_x = -1
 	},
 /turf/open/floor/corsat/squares,
@@ -7849,11 +7849,11 @@
 	color = "#6b675e"
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for monitoring the ships defences systems.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "overwatch";
 	name = "Ship Defenses Console";
-	pixel_y = 14;
+	pixel_y = 13;
 	density = 0
 	},
 /turf/open/floor/corsat/squares,
@@ -19164,7 +19164,7 @@ aV
 aV
 aV
 aV
-op
+Iz
 Tr
 Si
 Si
@@ -19776,7 +19776,7 @@ BS
 ys
 Co
 aV
-Iz
+op
 gp
 GA
 GA

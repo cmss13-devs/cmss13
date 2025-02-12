@@ -226,7 +226,7 @@
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
 	requires_power = FALSE
-	base_lighting_alpha = 255
+	base_lighting_alpha = 155
 	flags_area = AREA_YAUTJA_GROUNDS
 
 /area/yautja/lower_deck

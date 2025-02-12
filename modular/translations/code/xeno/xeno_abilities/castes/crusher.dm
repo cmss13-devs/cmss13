@@ -28,9 +28,9 @@
 
 /datum/action/xeno_action/onclick/crusher_shield/apply_replaces_in_desc()
 	replace_in_desc("%SHIELD%", shield_amount)
-	replace_in_desc("%TIME%", 7, DESCRIPTION_REPLACEMENT_TIME)
+	replace_in_desc("%TIME%", shield_dur / 10, DESCRIPTION_REPLACEMENT_TIME)
 	replace_in_desc("%DEFENSE%", 10) // Hardcoded
-	replace_in_desc("%EXPL_IMM%", 2.5, DESCRIPTION_REPLACEMENT_TIME)
+	replace_in_desc("%EXPL_IMM%", explosion_immunity_dur / 10, DESCRIPTION_REPLACEMENT_TIME)
 
 /datum/action/xeno_action/activable/fling/charger
 	desc = "Кинуть цель вперёд от вас (%FLING_DISTANCE%). Замедляет цель (%FLING_SLOWDOWN%)."

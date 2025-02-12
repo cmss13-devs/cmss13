@@ -51,7 +51,7 @@
 		return
 	var/datum/effects/boiler_trap/trap = new(victim, bound_xeno, name)
 	QDEL_IN(trap, root_duration)
-	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel one of your traps capture a host!"))
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel one of our traps capture a host!"))
 	to_chat(victim, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
 
 	to_chat(bound_xeno, SPAN_XENONOTICE("We gain the tactical advantage over our opponents!"))

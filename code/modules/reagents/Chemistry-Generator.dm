@@ -194,7 +194,8 @@
 				break
 			else if(gen_tier < 3)
 				gen_value += add_property(0,0, gen_tier - gen_value - 1,FALSE,TRUE) //add property based on our offset from the prefered balance
-			else gen_value += add_property(0,0, gen_tier - gen_value - 1)
+			else
+				gen_value += add_property(0,0, gen_tier - gen_value - 1)
 		while(LAZYLEN(properties) < gen_tier + 1) //We lost properties somewhere to conflicts, so add a random one until we're full
 			add_property()
 

@@ -83,7 +83,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "an" = (
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/young_blood_prep)
@@ -94,13 +94,26 @@
 /obj/effect/landmark/yautja_young_teleport,
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/young_blood_prep)
+"aq" = (
+/turf/closed/wall/cult/hunting_grounds,
+/area/yautja_grounds/young_blood_prep)
 "ar" = (
 /turf/open/gm/dirtgrassborder,
 /area/yautja_grounds/jungle/west)
+"as" = (
+/obj/structure/prop/brazier/torch,
+/turf/closed/wall/cult/hunting_grounds,
+/area/yautja_grounds/young_blood_prep)
 "at" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/north)
+"au" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	color = "#2e1e21"
+	},
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/young_blood_prep)
 "ax" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/jungle/vines{
@@ -146,7 +159,6 @@
 	},
 /obj/item/tool/soap,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room/inside)
 /area/yautja_grounds/young_blood_prep)
 "bn" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
@@ -253,7 +265,6 @@
 /obj/item/storage/backpack/yautja,
 /obj/item/storage/backpack/yautja,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room/inside)
 /area/yautja_grounds/young_blood_prep)
 "dd" = (
 /turf/open/floor/strata/grey_multi_tiles/southwest,
@@ -351,7 +362,6 @@
 /obj/item/device/healthanalyzer/alien,
 /obj/item/device/healthanalyzer/alien,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room/inside)
 /area/yautja_grounds/young_blood_prep)
 "fl" = (
 /obj/structure/stairs/perspective{
@@ -888,7 +898,6 @@
 	},
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room/inside)
 /area/yautja_grounds/young_blood_prep)
 "nx" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -1260,7 +1269,6 @@
 "tO" = (
 /obj/structure/bed/alien/yautja,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room/inside)
 /area/yautja_grounds/young_blood_prep)
 "tY" = (
 /obj/structure/flora/jungle/vines{
@@ -1778,7 +1786,6 @@
 	pixel_y = 35
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room/inside)
 /area/yautja_grounds/young_blood_prep)
 "Cf" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1823,7 +1830,6 @@
 	},
 /obj/item/tool/hand_labeler,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room/inside)
 /area/yautja_grounds/young_blood_prep)
 "CS" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -2596,7 +2602,6 @@
 	},
 /obj/item/tool/hatchet,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room/inside)
 /area/yautja_grounds/young_blood_prep)
 "Qq" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -6605,8 +6610,8 @@ Ow
 Ow
 Ow
 Ow
-rR
-rR
+aq
+aq
 rR
 rR
 nc
@@ -6703,8 +6708,8 @@ Ow
 Ow
 Ow
 Ow
-rR
-rR
+aq
+aq
 BX
 an
 CN
@@ -6801,8 +6806,8 @@ Ow
 Ow
 Ow
 Ow
-rR
-nc
+aq
+as
 an
 ao
 ao
@@ -6900,7 +6905,7 @@ Ow
 Ow
 Ow
 Ow
-rR
+aq
 an
 ao
 tO
@@ -6908,7 +6913,7 @@ tO
 tO
 ao
 cZ
-rR
+aq
 rR
 rR
 bR
@@ -6999,7 +7004,7 @@ du
 Ow
 Ow
 Ow
-wi
+au
 an
 ap
 Qi
@@ -7007,7 +7012,7 @@ bl
 nu
 ao
 an
-rR
+aq
 Th
 bR
 Ya
@@ -7098,7 +7103,7 @@ sy
 Ow
 Ow
 By
-rR
+aq
 an
 ao
 tO
@@ -7106,7 +7111,7 @@ tO
 tO
 ao
 fk
-rR
+aq
 sd
 fV
 Ow
@@ -7197,15 +7202,15 @@ sy
 Ow
 Ow
 Ow
-rR
-nc
+aq
+as
 an
 ao
 ao
 ao
 an
-nc
-rR
+as
+aq
 Vz
 Ow
 Ow
@@ -7297,13 +7302,13 @@ du
 Ow
 Ow
 Ow
-rR
-rR
+aq
+aq
 an
 an
 an
-rR
-rR
+aq
+aq
 DG
 Ow
 Ow
@@ -7397,11 +7402,11 @@ Ow
 Ow
 Ow
 Ow
-rR
-rR
-wi
-rR
-rR
+aq
+aq
+au
+aq
+aq
 Th
 Ow
 By

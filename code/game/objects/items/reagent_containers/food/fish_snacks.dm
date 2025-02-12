@@ -74,7 +74,7 @@
 
 /obj/item/reagent_container/food/snacks/fishable/crab
 	name = "\improper spindle crab"
-	desc = "looks a little crabby"
+	desc = "Looks like a little crab"
 	icon_state = "crab"
 	gut_icon_state = "crab_gutted"
 	guttable = TRUE

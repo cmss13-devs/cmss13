@@ -43,8 +43,8 @@
         580,
         0.0
     ],
-    "survivor_message": "As the city burns, you find yourself among the dwindling few who survived the initial onslaught, The catastrophic breach shattered the once-prosperous world of LV-759, home to the large commercial & industrial Weyland-Yutani colony known as Hybrisa Prospera. Through sheer will or cunning, you've evaded the relentless alien onslaught so far... but the nightmare persists.",
-    "announce_text": "An automated distress signal has been received from the Weyland-Yutani colony, Hybrisa Prospera — a vast, city-like settlement renowned for its immense wealth, extensive mining operations, and thriving commerce. Recently fully acquired from the TWE, this former colony is now a key asset for Weyland-Yutani, with a sprawling urban center housing thousands of residents and numerous smaller outer colonies under its control. The ###SHIPNAME### has been dispatched to investigate the situation.",
+    "survivor_message": "Город в огне. Вы оказались среди тех немногих, кто выжил после первого нашествия. Катастрофическое нарушение условий содержания погубило некогда процветающий мир LV-759, где располагалась крупная торгово-промышленная колония Вейланд-Ютани, известная как \"Гибриса Проспера\". Силой воли или хитростью вам удалось избежать неумолимого натиска чужих... тем не менее, кошмар неотвратим.",
+    "announce_text": "Получен автоматический сигнал бедствия из колонии Вейланд-Ютани, \"Гибриса Проспера\" - огромного, похожего на город поселения, известного своими несметными богатствами, обширной добычей полезных ископаемых и процветающей торговлей. Будучи недавно полностью выкупленной у ИТМ, эта бывшая колония теперь является ключевым активом для Вейланд-Ютани, с разросшимся городским центром, в котором проживают тысячи жителей, и множеством небольших внешних колоний под её контролем. Для расследования сложившейся ситуации был отправлен ###SHIPNAME###.",
     "map_item_type": "/obj/item/map/lv759_map",
 	"monkey_types": [
         "monkey"

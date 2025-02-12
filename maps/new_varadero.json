@@ -28,9 +28,9 @@
         580,
         0.0
     ],
-    "survivor_message": "You are an employee for the United Americas on the island outpost of New Varadero. A newfound discovery has unleashed unspeakable horrors. Do everything you can to survive.",
+    "survivor_message": "Вы - сотрудник Объединенных Америк на острове-аванпосте \"Нью-Варадеро\". Новое открытие привело к неописуемым ужасам. Сделайте все возможное, чтобы выжить.",
     "map_item_type": "/obj/item/map/new_varadero",
-    "announce_text": "An automated distress signal has been received from UA Outpost New Varadero. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.\nDesignation: Island research station and mining facility\n\nPopulation: 47\nCurrent Temperature: 68F Interior, 97F Exterior\nOutpost Commander: UA Rep. Steve Haifisch\nTelecommunications Array: Repairs required\n\nNo further information available at this time.",
+    "announce_text": "Получен автоматический сигнал бедствия с аванпоста ОА \"Нью-Варадеро\". Для расследования сложившейся ситуации, с ###SHIPNAME### в ближайшее время будет отправлена оперативная группа реагирования.\nНазначение: Островная исследовательская и горнодобывающая станция.\n\nНаселение: 47 человек.\nТекущая температура: 20°C внутри, 36°C снаружи.\nКомандир аванпоста: Представитель ОА Стив Хайфиш.\nТелекоммуникационный массив: Требуется ремонт.\n\nДополнительная информация на данный момент отсутствует.",
     "monkey_types": [
         "monkey"
     ],

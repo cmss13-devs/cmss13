@@ -273,7 +273,7 @@
 		SSticker.mode.flags_round_type |= MODE_DS_LANDED
 
 	if(xeno_announce)
-		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
+		xeno_announcement(SPAN_XENOANNOUNCE("Железная птица приземлилась."), "everything")
 		xeno_announce = FALSE
 
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)

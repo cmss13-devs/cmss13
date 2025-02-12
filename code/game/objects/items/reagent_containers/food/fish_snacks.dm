@@ -218,7 +218,7 @@
 	min_length = 2
 	max_length = 9
 
-/obj/item/reagent_container/food/snacks/fishable/Urchin/red
+/obj/item/reagent_container/food/snacks/fishable/urchin/red
 	name = "red urchin"
 	desc = "Glad I didn't step on it, it looks angry!"
 	guttable = FALSE

@@ -95,45 +95,37 @@
 	T.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
 	..(T)
 
-/datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if (!istype(X))
-		return
+/datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!xeno.check_state())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
-	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
-	X.visible_message(SPAN_XENODANGER("[X] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
-	X.create_stomp()
+	playsound(xeno, 'sound/effects/bang.ogg', 25)
+	xeno.visible_message(SPAN_XENODANGER("[xeno] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
+	xeno.create_stomp()
 
-	for (var/mob/living/carbon/H in get_turf(X))
-		if (H.stat == DEAD || X.can_not_harm(H))
+
+	for (var/mob/living/carbon/targets in orange(distance, xeno))
+
+		if (targets.stat == DEAD || xeno.can_not_harm(targets))
 			continue
 
-		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
-		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
+		if(targets in get_turf(xeno))
+			targets.apply_armoured_damage(get_xeno_damage_slash(targets, damage), ARMOR_MELEE, BRUTE)
 
-		if(H.mob_size < MOB_SIZE_BIG)
-			H.apply_effect(get_xeno_stun_duration(H, 0.2), WEAKEN)
+		if(targets.mob_size < MOB_SIZE_BIG)
+			targets.apply_effect(get_xeno_stun_duration(targets, 0.2), WEAKEN)
 
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
-		H.last_damage_data = create_cause_data(X.caste_type, X)
-
-	for (var/mob/living/carbon/H in orange(distance, get_turf(X)))
-		if (H.stat == DEAD || X.can_not_harm(H))
-			continue
-
-		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
-		if(H.mob_size < MOB_SIZE_BIG)
-			H.apply_effect(get_xeno_stun_duration(H, 0.2), WEAKEN)
-		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
+		new /datum/effects/xeno_slow(targets, xeno, ttl = get_xeno_stun_duration(targets, effect_duration))
+		targets.apply_effect(get_xeno_stun_duration(targets, 0.2), WEAKEN)
+		to_chat(targets, SPAN_XENOHIGHDANGER("You are slowed as [xeno] knocks you off balance!"))
 
 	apply_cooldown()
 	return ..()
@@ -210,8 +202,8 @@
 	xeno.explosivearmor_modifier += 1000
 	xeno.recalculate_armor()
 
-	addtimer(CALLBACK(src, PROC_REF(remove_explosion_immunity)), 25, TIMER_UNIQUE|TIMER_OVERRIDE)
-	addtimer(CALLBACK(src, PROC_REF(remove_shield)), 70, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(remove_explosion_immunity)), explosion_immunity_dur)
+	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_dur)
 
 	apply_cooldown()
 	return ..()

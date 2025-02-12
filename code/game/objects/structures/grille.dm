@@ -58,7 +58,8 @@
 	deconstruct(FALSE)
 
 /obj/structure/grille/Collided(atom/user)
-	if(ismob(user)) shock(user, 70)
+	if(ismob(user))
+		shock(user, 70)
 
 /obj/structure/grille/attack_hand(mob/user as mob)
 
@@ -88,7 +89,8 @@
 
 
 /obj/structure/grille/attack_animal(mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	M.visible_message(SPAN_WARNING("[M] smashes against [src]."),

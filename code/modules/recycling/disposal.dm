@@ -111,7 +111,8 @@
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal unit."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !W.isOn()) return
+					if(!src || !W.isOn())
+						return
 					to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal unit."))
 					var/obj/structure/disposalconstruct/C = new(loc)
 					transfer_fingerprints_to(C)
@@ -810,7 +811,8 @@
 			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
 			SPAN_NOTICE("You start slicing [src]."))
 			sleep(30)
-			if(!W.isOn()) return
+			if(!W.isOn())
+				return
 			if(user.loc == uloc && wloc == W.loc)
 				welded()
 			else
@@ -1302,7 +1304,8 @@
 			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
 			SPAN_NOTICE("You start slicing [src]."))
 			sleep(30)
-			if(!W.isOn()) return
+			if(!W.isOn())
+				return
 			if(user.loc == uloc && wloc == W.loc)
 				welded()
 			else
@@ -1408,7 +1411,8 @@
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal outlet."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(!src || !W.isOn()) return
+				if(!src || !W.isOn())
+					return
 				to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal outlet."))
 				var/obj/structure/disposalconstruct/C = new(loc)
 				transfer_fingerprints_to(C)

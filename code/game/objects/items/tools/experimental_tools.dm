@@ -371,7 +371,7 @@
 	if(filtering)
 		attached.reagents.remove_any_but("blood", reagent_removed_per_second*delta_time)
 		attached.take_blood(attached, blood_cost*delta_time)
-		if(attached.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
+		if(attached.blood_volume < BLOOD_VOLUME_SAFE && prob(5))
 			visible_message("\The [src] beeps loudly.")
 		pdcell.use(filter_cost*delta_time)
 

@@ -575,7 +575,8 @@
 //Checks if the round is over//
 ///////////////////////////////
 /datum/game_mode/colonialmarines/check_finished()
-	if(round_finished) return 1
+	if(round_finished)
+		return 1
 
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//

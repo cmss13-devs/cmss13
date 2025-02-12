@@ -397,6 +397,7 @@
 		list("M5 Bayonet", 10.5, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 6.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 6.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
+		list("Shotgun Choke", 4.5, /obj/item/attachable/shotgun_choke, VENDOR_ITEM_REGULAR),
 
 		list("RAIL", -1, null, null),
 		list("B8 Smart-Scope", 3.5, /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),

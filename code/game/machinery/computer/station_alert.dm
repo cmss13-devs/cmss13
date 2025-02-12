@@ -85,7 +85,8 @@
 	var/active_alarms = 0
 	for (var/cat in src.alarms)
 		var/list/L = src.alarms[cat]
-		if(length(L)) active_alarms = 1
+		if(length(L))
+			active_alarms = 1
 	if(active_alarms)
 		icon_state = "alert:2"
 	else

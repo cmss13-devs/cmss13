@@ -36,6 +36,12 @@
 		if(nutrition && stat != DEAD)
 			nutrition -= HUNGER_FACTOR/5
 
+/mob/living/carbon/relaymove(mob/user, direction)
+	if(user.is_mob_incapacitated(TRUE))
+		return
+	if(!chestburst && (status_flags & XENO_HOST) && islarva(user))
+		var/mob/living/carbon/xenomorph/larva/larva_burst = user
+		larva_burst.chest_burst(src)
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)

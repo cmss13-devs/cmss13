@@ -227,6 +227,7 @@
 	ceiling = CEILING_METAL
 	requires_power = FALSE
 	base_lighting_alpha = 155
+	base_lighting_color = "#ffc49c"
 	flags_area = AREA_YAUTJA_GROUNDS
 
 /area/yautja/lower_deck

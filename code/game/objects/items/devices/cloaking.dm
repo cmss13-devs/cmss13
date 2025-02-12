@@ -39,8 +39,10 @@
 	toggle(user)
 
 /obj/item/device/chameleon/proc/toggle(mob/user)
-	if(chameleon_cooldown >= world.time) return
-	if(!ishuman(user)) return
+	if(chameleon_cooldown >= world.time)
+		return
+	if(!ishuman(user))
+		return
 	playsound(get_turf(src), 'sound/effects/pop.ogg', 25, 1, 3)
 	chameleon_on = !chameleon_on
 	chameleon_cooldown = world.time + 20

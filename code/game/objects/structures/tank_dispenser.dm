@@ -26,11 +26,15 @@
 /obj/structure/dispenser/update_icon()
 	overlays.Cut()
 	switch(oxygentanks)
-		if(1 to 3) overlays += "oxygen-[oxygentanks]"
-		if(4 to INFINITY) overlays += "oxygen-4"
+		if(1 to 3)
+			overlays += "oxygen-[oxygentanks]"
+		if(4 to INFINITY)
+			overlays += "oxygen-4"
 	switch(phorontanks)
-		if(1 to 4) overlays += "phoron-[phorontanks]"
-		if(5 to INFINITY) overlays += "phoron-5"
+		if(1 to 4)
+			overlays += "phoron-[phorontanks]"
+		if(5 to INFINITY)
+			overlays += "phoron-5"
 
 /obj/structure/dispenser/attack_remote(mob/user as mob)
 	if(user.Adjacent(src))

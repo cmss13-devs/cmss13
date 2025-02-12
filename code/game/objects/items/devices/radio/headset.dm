@@ -418,25 +418,6 @@
 /obj/item/device/radio/headset/binary
 	initial_keys = list(/obj/item/device/encryptionkey/binary)
 
-/obj/item/device/radio/headset/ai_integrated //No need to care about icons, it should be hidden inside the AI anyway.
-	name = "AI Subspace Transceiver"
-	desc = "Integrated AI radio transceiver."
-	icon = 'icons/obj/items/robot_component.dmi'
-	icon_state = "radio"
-	item_state = "headset"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
-	)
-	initial_keys = list(/obj/item/device/encryptionkey/ai_integrated)
-	var/myAi = null // Atlantis: Reference back to the AI which has this radio.
-	var/disabledAi = 0 // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
-
-/obj/item/device/radio/headset/ai_integrated/receive_range(freq, level)
-	if (disabledAi)
-		return -1 //Transceiver Disabled.
-	return ..(freq, level, 1)
-
 //MARINE HEADSETS
 
 /obj/item/device/radio/headset/almayer
@@ -670,7 +651,7 @@
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/ai
-	initial_keys = list(/obj/item/device/encryptionkey/mcom/ai)
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/synth/ai)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine
@@ -680,7 +661,7 @@
 	name = "radio headset"
 	desc = "A radio headset."
 	frequency = CIA_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/listening_bug/freq_a)
+	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/public)
 
 
 //############################## ALPHA ###############################

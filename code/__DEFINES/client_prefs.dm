@@ -1,5 +1,6 @@
 #define BE_ALIEN_AFTER_DEATH (1<<0)
 #define BE_AGENT (1<<1)
+#define BE_KING (1<<2)
 
 /// Determines how abilities are activated, whether they're activated via middle click, shift click or right click.
 #define XENO_ABILITY_CLICK_MIDDLE 1

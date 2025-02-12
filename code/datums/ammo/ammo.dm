@@ -89,8 +89,16 @@
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
 
+	/// Whether or not this ammo ignores mobs that are lying down
+	var/hits_lying_mobs = FALSE
+
 /datum/ammo/New()
 	set_bullet_traits()
+
+/datum/ammo/proc/setup_faction_clash_values()
+	accuracy = (accuracy - 85)/2
+	penetration = min(penetration, 30) //more ap overpenatrates anyway but makes next calculation cleaner
+	accurate_range = min(accurate_range, 10 - penetration/5) //this makes AP ammo better at clsoe range (and techinicly super far range when the hitchance gets bottom caped at 5% hitchance)
 
 /datum/ammo/proc/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
 	return
@@ -136,6 +144,9 @@
 	return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
 /datum/ammo/proc/knockback(mob/living/living_mob, obj/projectile/fired_projectile, max_range = 2)
+	for(var/list/traits in fired_projectile.bullet_traits)
+		if(locate(/datum/element/bullet_trait_knockback_disabled) in traits)
+			return
 	if(!living_mob || living_mob == fired_projectile.firer)
 		return
 	if(fired_projectile.distance_travelled > max_range || living_mob.body_position == LYING_DOWN)
@@ -196,7 +207,8 @@
 	slam_back(target_mob, fired_projectile, max_range)
 
 /datum/ammo/proc/burst(atom/target, obj/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = SHOW_MESSAGE_VISIBLE) //damage_div says how much we divide damage
-	if(!target || !P) return
+	if(!target || !P)
+		return
 	for(var/mob/living/carbon/M in orange(range,target))
 		if(P.firer == M)
 			continue
@@ -221,7 +233,7 @@
 		else
 			P.play_hit_effect(M)
 
-/datum/ammo/proc/fire_bonus_projectiles(obj/projectile/original_P)
+/datum/ammo/proc/fire_bonus_projectiles(obj/projectile/original_P, gun_damage_mult = 1, projectile_max_range_add = 0, bonus_proj_scatter = 0)
 	set waitfor = 0
 
 	var/turf/curloc = get_turf(original_P.shot_from)
@@ -231,16 +243,17 @@
 		var/final_angle = initial_angle
 
 		var/obj/projectile/P = new /obj/projectile(curloc, original_P.weapon_cause_data)
-		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
+		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type])
+		P.damage *= gun_damage_mult
 		P.accuracy = floor(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 		original_P.give_bullet_traits(P)
 		P.bonus_projectile_check = 2 //It's a bonus projectile!
 
-		var/total_scatter_angle = P.scatter
+		var/total_scatter_angle = P.scatter + bonus_proj_scatter
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
-		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original, FALSE) //Fire!
+		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range + projectile_max_range_add, P.ammo.shell_speed, original_P.original, FALSE) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
 	if(!istype(turf))

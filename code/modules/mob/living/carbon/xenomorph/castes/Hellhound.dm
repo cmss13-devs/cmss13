@@ -27,6 +27,7 @@
 	heal_standing = 1.25
 	heal_knocked_out = 1.25
 	innate_healing = TRUE
+	weed_slowdown_mult = 0 // no slowdown because its already slow
 
 	minimap_icon = "hellhound"
 

@@ -136,7 +136,7 @@
 	/// color of the blood on us if there's any.
 	var/blood_color = ""
 	/// taken from blood.dm
-	appearance_flags = KEEP_TOGETHER
+	// appearance_flags = KEEP_TOGETHER // SS220 REMOVE
 	/// lets us know if the item is an objective or not
 	var/is_objective = FALSE
 

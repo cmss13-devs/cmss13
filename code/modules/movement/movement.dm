@@ -55,19 +55,80 @@
 
 	return NO_BLOCKED_MOVEMENT
 
-/atom/movable/Move(NewLoc, direct)
+/atom/movable/Move(NewLoc, direct, glide_size_override) // SS220 Edit
 	// If Move is not valid, exit
 	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
 		return FALSE
 
 	var/atom/oldloc = loc
 	var/old_dir = dir
+	// SS220 ADD Start
+	if(glide_size_override)
+		set_glide_size(glide_size_override)
 
-	. = ..()
+	if (!(direct & (direct - 1))) //Cardinal move
+	// SS220 ADD End
+		. = ..()
+	// SS220 ADD Start
+	else //Diagonal move, split it into cardinal moves
+		moving_diagonally = FIRST_DIAG_STEP
+		var/first_step_dir
+		// The `&& moving_diagonally` checks are so that a forceMove taking
+		// place due to a Crossed, Bumped, etc. call will interrupt
+		// the second half of the diagonal movement, or the second attempt
+		// at a first half if step() fails because we hit something.
+		if (direct & NORTH)
+			if (direct & EAST)
+				if (step(src, NORTH) && moving_diagonally)
+					first_step_dir = NORTH
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, EAST)
+				else if (moving_diagonally && step(src, EAST))
+					first_step_dir = EAST
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, NORTH)
+			else if (direct & WEST)
+				if (step(src, NORTH) && moving_diagonally)
+					first_step_dir = NORTH
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, WEST)
+				else if (moving_diagonally && step(src, WEST))
+					first_step_dir = WEST
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, NORTH)
+		else if (direct & SOUTH)
+			if (direct & EAST)
+				if (step(src, SOUTH) && moving_diagonally)
+					first_step_dir = SOUTH
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, EAST)
+				else if (moving_diagonally && step(src, EAST))
+					first_step_dir = EAST
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, SOUTH)
+			else if (direct & WEST)
+				if (step(src, SOUTH) && moving_diagonally)
+					first_step_dir = SOUTH
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, WEST)
+				else if (moving_diagonally && step(src, WEST))
+					first_step_dir = WEST
+					moving_diagonally = SECOND_DIAG_STEP
+					. = step(src, SOUTH)
+		if(moving_diagonally == SECOND_DIAG_STEP)
+			if(!. && set_dir_on_move)
+				setDir(first_step_dir)
+		moving_diagonally = 0
+		return
+		// SS220 ADD End
 	if (flags_atom & DIRLOCK)
 		setDir(old_dir)
 	else if(old_dir != direct)
 		setDir(direct)
+	// SS220 ADD Start
+	if(glide_size_override)
+		set_glide_size(glide_size_override)
+	// SS220 ADD End
 	l_move_time = world.time
 	if ((oldloc != loc && oldloc && oldloc.z == z))
 		last_move_dir = get_dir(oldloc, loc)

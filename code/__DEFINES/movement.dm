@@ -58,3 +58,36 @@
 #define PASS_FLAGS_FLAME (PASS_AROUND|PASS_UNDER|PASS_MOB_THRU|PASS_THROUGH|PASS_OVER_FIRE)
 #define PASS_FLAGS_SMOKE (PASS_HIGH_OVER|PASS_AROUND|PASS_UNDER|PASS_MOB_THRU|PASS_THROUGH)
 #define PASS_FLAGS_CRAWLER (PASS_TYPE_CRAWLER|PASS_UNDER)
+// SS220 ADD Start
+/// The minimum for glide_size to be clamped to.
+#define MIN_GLIDE_SIZE 1
+/// The maximum for glide_size to be clamped to.
+/// This shouldn't be higher than the icon size, and generally you shouldn't be changing this, but it's here just in case.
+#define MAX_GLIDE_SIZE 32
+
+/// Compensating for time dilation
+GLOBAL_VAR_INIT(glide_size_multiplier, 1.0)
+
+///Broken down, here's what this does:
+/// divides the world icon_size (32) by delay divided by ticklag to get the number of pixels something should be moving each tick.
+/// The division result is given a min value of 1 to prevent obscenely slow glide sizes from being set
+/// Then that's multiplied by the global glide size multiplier. 1.25 by default feels pretty close to spot on. This is just to try to get byond to behave.
+/// The whole result is then clamped to within the range above.
+/// Not very readable but it works
+#define DELAY_TO_GLIDE_SIZE(delay) (clamp(((world.icon_size / max((delay) / world.tick_lag, 1)) * GLOB.glide_size_multiplier), MIN_GLIDE_SIZE, MAX_GLIDE_SIZE))
+
+///True if the dir is north or south, false therwise
+#define NSCOMPONENT(d) (d&(NORTH|SOUTH))
+///True if the dir is east/west, false otherwise
+#define EWCOMPONENT(d) (d&(EAST|WEST))
+///Flips the dir for north/south directions
+#define NSDIRFLIP(d) (d^(NORTH|SOUTH))
+///Flips the dir for east/west directions
+#define EWDIRFLIP(d) (d^(EAST|WEST))
+
+//Diagonal movement is split into two cardinal moves
+/// The first step of the diagnonal movement
+#define FIRST_DIAG_STEP 1
+/// The second step of the diagnonal movement
+#define SECOND_DIAG_STEP 2
+// SS220 ADD End

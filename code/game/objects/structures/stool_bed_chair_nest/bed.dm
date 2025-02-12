@@ -74,6 +74,14 @@
 
 	update_icon()
 
+// SS220 ADD Start
+/obj/structure/bed/set_glide_size(target)
+	. = ..()
+
+	if(buckled_bodybag)
+		buckled_bodybag.set_glide_size(target)
+// SS220 ADD End
+
 //Unsafe proc
 /obj/structure/bed/proc/do_buckle_bodybag(obj/structure/closet/bodybag/B, mob/user)
 	B.visible_message(SPAN_NOTICE("[user] buckles [B] to [src]!"))
@@ -123,11 +131,11 @@
 		return 0
 
 /obj/structure/bed/proc/handle_buckled_bodybag_movement(NewLoc, direct)
-	if(!(direct & (direct - 1))) //Not diagonal move. the obj's diagonal move is split into two cardinal moves and those moves will handle the buckled bodybag's movement.
-		if(!buckled_bodybag.Move(NewLoc, direct))
-			forceMove(buckled_bodybag.loc)
-			last_move_dir = buckled_bodybag.last_move_dir
-			return 0
+	// if(!(direct & (direct - 1))) //Not diagonal move. the obj's diagonal move is split into two cardinal moves and those moves will handle the buckled bodybag's movement.// SS220 REMOVE
+	if(!buckled_bodybag.Move(NewLoc, direct))
+		forceMove(buckled_bodybag.loc)
+		last_move_dir = buckled_bodybag.last_move_dir
+		return 0
 	return 1
 
 /obj/structure/bed/roller/BlockedPassDirs(atom/movable/mover, target_dir)

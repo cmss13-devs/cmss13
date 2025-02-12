@@ -88,11 +88,10 @@
 /obj/structure/machinery/fob/power_change()
 	var/area/machine_area = get_area(src)
 	var/area/lz_area = get_area(SSticker.mode.active_lz)
-	is_inside_lz = FALSE //REMOVE, FOR EASIER TESTING ONLY!
-	/*if(machine_area == lz_area)
+	if(machine_area == lz_area)
 		is_inside_lz = TRUE
 	else
-		is_inside_lz = FALSE*/
+		is_inside_lz = FALSE
 	update_power()
 
 /obj/structure/machinery/fob/update_icon()
@@ -152,8 +151,8 @@
 
 /obj/structure/machinery/fob/terminal/attack_hand(mob/user)
 
-	/*if(!is_inside_lz)
-		user.balloon_alert(user, "the [src.name] is too far from the LZ to recieve power!")
+	/*if(!is_inside_lz) COMMENTED FOR EASY TESTS
+		user.balloon_alert(user, "the [src.name] is too far from the LZ to recieve power!") COMMENTED FOR EASY TESTS
 		return*/
 
 	if(!is_on)
@@ -289,13 +288,14 @@
 
 /obj/structure/machinery/fob/weapons_platform/process()
 	/*if(!is_on)
-		stop_processing()
+		stop_processing() COMMENTED FOR EASY TESTS
 		if(linked_gun)
 		linked_gun.loose_target()
 		return*/
 
-	if(!linked_gun)
-		return
+	/*if(!linked_gun)
+		stop_processing() COMMENTED FOR EASY TESTS
+		return*/
 
 	linked_gun.check_targets()
 
@@ -313,9 +313,9 @@
 
 /obj/structure/machinery/fob/weapons_platform/update_power()
 	.=..()
-	if(!is_on)
+	/*if(!is_on)
 		stop_processing()
-		//return COMMENTED FOR TESTING
+		return COMMENTED FOR EASY TESTS*/
 	start_processing()
 	if(linked_gun)
 		linked_gun.set_area()

@@ -85,6 +85,7 @@
 	name = "\improper Jungle Moon Young Blood Prep Area"
 	icon_state = "red"
 	ambience_exterior = AMBIENCE_JUNGLE
+	ceiling = CEILING_SANDSTONE_ALLOW_CAS
 
 /area/yautja_grounds/prep_room/inside
 	name = "\improper Jungle Moon Campsite Room"

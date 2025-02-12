@@ -1,0 +1,5 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - bugfix: "Boiler - Purchasing Trapper strain will forcefully change spit type to acid, which makes acid-tail variant the only one. No more neuro-tails on Trappers."
+  - refactor: "Boiler - swapped spit types in caste dastum, removed swapping types in xeno's mob. Shouldn't change anything."

@@ -505,7 +505,8 @@
 /datum/game_mode/colonialmarines/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
-
+	if((SSticker.current_state == GAME_STATE_PLAYING) && (ROUND_TIME < 10 MINUTES))
+		return
 	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
@@ -518,8 +519,6 @@
 	else if(num_humans && !num_xenos)
 		if(SSticker.mode && SSticker.mode.is_in_endgame)
 			round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
-		if((SSticker.current_state == GAME_STATE_PLAYING) && (ROUND_TIME < 10 MINUTES))
-			return
 		else
 			SSticker.roundend_check_paused = TRUE
 			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.

@@ -58,7 +58,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "ak" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
@@ -83,7 +83,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "ar" = (
 /turf/open/gm/dirtgrassborder,
 /area/yautja_grounds/jungle/west)
@@ -136,7 +136,7 @@
 	},
 /obj/item/tool/soap,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "bn" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
@@ -174,7 +174,7 @@
 	icon_state = "spikebloodygreen"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "bH" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /obj/structure/flora/jungle/vines{
@@ -242,7 +242,7 @@
 /obj/item/storage/backpack/yautja,
 /obj/item/storage/backpack/yautja,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "dd" = (
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple/entrance)
@@ -301,7 +301,7 @@
 	pixel_y = 19
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "eG" = (
 /obj/structure/prop/brazier,
 /turf/open/floor/engine/cult,
@@ -339,7 +339,7 @@
 /obj/item/device/healthanalyzer/alien,
 /obj/item/device/healthanalyzer/alien,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "fl" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -837,7 +837,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "mQ" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -847,7 +847,7 @@
 "nc" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/cult/hunting_grounds,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "nh" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
@@ -875,7 +875,7 @@
 	},
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "nx" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
@@ -1031,7 +1031,7 @@
 "qh" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "qk" = (
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno,
 /turf/open/gm/dirt,
@@ -1045,7 +1045,7 @@
 	},
 /obj/item/tool/weldingtool/yautja,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "qp" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /obj/structure/flora/jungle/vines/heavy,
@@ -1136,7 +1136,7 @@
 /area/yautja_grounds/north_east)
 "rR" = (
 /turf/closed/wall/cult/hunting_grounds,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "rV" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass/grass1,
@@ -1246,7 +1246,7 @@
 "tO" = (
 /obj/structure/bed/alien/yautja,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "tY" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -1306,7 +1306,7 @@
 	icon_state = "spikebloody"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "uB" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
@@ -1385,7 +1385,7 @@
 	color = "#2e1e21"
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "wn" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -1670,7 +1670,7 @@
 /obj/item/stack/yautja_rope,
 /obj/item/stack/yautja_rope,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "Ah" = (
 /turf/open/gm/river,
 /area/yautja_grounds/south_west)
@@ -1705,7 +1705,7 @@
 /obj/item/device/flashlight/lantern,
 /obj/item/device/flashlight/lantern,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "AO" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_y = 26
@@ -1763,7 +1763,7 @@
 	pixel_y = 35
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "Cf" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -1775,7 +1775,7 @@
 	pixel_x = -7
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "Cl" = (
 /obj/effect/alien/weeds/node/feral,
 /turf/open/gm/dirt,
@@ -1807,7 +1807,7 @@
 	},
 /obj/item/tool/hand_labeler,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "CS" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
@@ -2059,7 +2059,7 @@
 /area/yautja_grounds/temple)
 "HJ" = (
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "HK" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/grass/grass1,
@@ -2346,7 +2346,7 @@
 /area/yautja_grounds/south)
 "LW" = (
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "LX" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines{
@@ -2579,7 +2579,7 @@
 	},
 /obj/item/tool/hatchet,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "Qq" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/yautja_grounds/south_west)
@@ -2663,7 +2663,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "RA" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -2683,7 +2683,7 @@
 /obj/item/xeno_egg/forsaken,
 /obj/item/xeno_egg/forsaken,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "RK" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -2837,7 +2837,7 @@
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/meat,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "TJ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -2873,7 +2873,7 @@
 	},
 /obj/item/storage/backpack/yautja,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "Vg" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -2927,7 +2927,7 @@
 	pixel_x = 8
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "Vz" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_y = 26
@@ -3104,7 +3104,7 @@
 /obj/item/reagent_container/food/snacks/bearmeat,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/prep_room/inside)
 "XQ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5

@@ -59,16 +59,19 @@
 	name = "\improper Yautja Hunting Grounds Caves"
 	icon_state = "cave"
 	ambience_exterior = AMBIENCE_CAVE
+	ceiling = CEILING_DEEP_UNDERGROUND
 
 /area/yautja_grounds/temple
 	name = "\improper Yautja Hunting Grounds Temple"
 	icon_state = "bluenew"
 	ambience_exterior = AMBIENCE_CAVE
+	ceiling = CEILING_UNDERGROUND_SANDSTONE_BLOCK_CAS
 
 /area/yautja_grounds/temple/entrance
 	name = "\improper Yautja Hunting Grounds Temple"
 	icon_state = "bluenew"
 	ambience_exterior = AMBIENCE_JUNGLE
+	ceiling = CEILING_SANDSTONE_ALLOW_CAS
 
 ///TP Areas
 
@@ -76,3 +79,8 @@
 	name = "\improper Jungle Moon Campsite"
 	icon_state = "red"
 	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/prep_room/inside
+	name = "\improper Jungle Moon Campsite Room"
+	icon_state = "yellow"
+	ceiling = CEILING_SANDSTONE_ALLOW_CAS

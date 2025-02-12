@@ -595,6 +595,10 @@
 			return "It is deep underground. The ceiling above is made of thick metal. Nothing is getting through that."
 		if(CEILING_REINFORCED_METAL)
 			return "The ceiling above is heavy reinforced metal. Nothing is getting through that."
+		if(CEILING_SANDSTONE_ALLOW_CAS)
+			return "The ceiling above is sandstone. That's not going to stop anything."
+		if(CEILING_UNDERGROUND_SANDSTONE_BLOCK_CAS)
+			return "It is underground. The ceiling above is made of sandstone. Can probably stop most ordnance."
 		else
 			return "It is in the open."
 

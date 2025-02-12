@@ -416,7 +416,7 @@
 	dir = 1
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -931,7 +931,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "cR" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/centre,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/centre,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja/lower_deck)
 "cS" = (
@@ -968,6 +968,14 @@
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
+"db" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/bed/bedroll{
+	color = "#6b675e"
+	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/area/yautja/lower_deck)
 "dd" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -1344,7 +1352,7 @@
 	dir = 4
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -1669,10 +1677,10 @@
 	},
 /obj/effect/hunter/rune,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
+	name = "Monitor";
 	pixel_y = 23;
 	density = 0
 	},
@@ -1730,7 +1738,7 @@
 /area/yautja)
 "fJ" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -1794,7 +1802,7 @@
 /area/yautja/lower_deck)
 "fS" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Atmosphere Control Console";
@@ -2020,7 +2028,7 @@
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "gA" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/right,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/right,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja/lower_deck)
 "gC" = (
@@ -2128,7 +2136,7 @@
 /area/yautja)
 "gW" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -2439,10 +2447,10 @@
 /obj/effect/step_trigger/teleporter/yautja_ship,
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for Yautja teleportation.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Atmosphere Control Console";
+	name = "Teleporter Control Console";
 	pixel_y = 24;
 	density = 0
 	},
@@ -2513,7 +2521,7 @@
 	color = "#9b1818"
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for various lab related systems and controls.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
 	name = "Lab Control Console";
@@ -2761,18 +2769,19 @@
 /area/yautja)
 "jp" = (
 /obj/effect/hunter/catwalk/new_alpha,
-/obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
-	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
-	icon_state = "terminal";
-	name = "Atmosphere Control Console";
-	pixel_y = 24;
-	density = 0
-	},
 /obj/effect/hunter/bridge_border/corner{
 	dir = 4
 	},
 /obj/effect/hunter/bridge_border/corner,
+/obj/effect/step_trigger/teleporter/yautja_young,
+/obj/structure/showcase{
+	desc = "A console used for Yautja teleportation.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Teleporter Control Console";
+	pixel_y = 24;
+	density = 0
+	},
 /turf/open/floor/light/red/darker,
 /area/yautja/lower_deck)
 "jq" = (
@@ -3157,7 +3166,7 @@
 	},
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -3301,7 +3310,7 @@
 /area/yautja)
 "lf" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -3330,15 +3339,6 @@
 	name = "Prison Cell Lockdown";
 	pixel_x = 16;
 	req_one_access_txt = "390"
-	},
-/obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
-	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
-	icon_state = "smallmonitor";
-	name = "Monitor";
-	pixel_y = 23;
-	density = 0;
-	pixel_x = 6
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -3574,7 +3574,7 @@
 	dir = 1
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -3621,7 +3621,7 @@
 "mr" = (
 /obj/structure/bed/chair/comfy/yautja,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -3755,10 +3755,10 @@
 /area/yautja)
 "mW" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
+	name = "Monitor";
 	pixel_y = 23;
 	density = 0
 	},
@@ -4089,7 +4089,7 @@
 /area/yautja)
 "nY" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Engine Monitor";
@@ -4221,7 +4221,7 @@
 /area/yautja)
 "oy" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -4580,7 +4580,7 @@
 	color = "#bccab4"
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -4605,7 +4605,7 @@
 	dir = 1
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -4804,7 +4804,7 @@
 /area/yautja)
 "qx" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Engine Monitor";
@@ -5136,7 +5136,7 @@
 	pixel_y = 35
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A security monitor used for monitoring the Hound-Cells.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Hound Containment Monitor";
@@ -5240,6 +5240,7 @@
 	color = "#6b675e"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "sr" = (
@@ -5400,6 +5401,20 @@
 /obj/item/tool/soap/syndie,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
+"sR" = (
+/obj/structure/bed/bedroll{
+	color = "#6b675e";
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
+/turf/open/floor/corsat,
+/area/yautja/lower_deck)
 "sS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -5450,6 +5465,7 @@
 	pixel_y = 10;
 	name = "Bowl"
 	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "tc" = (
@@ -5501,10 +5517,10 @@
 /area/yautja)
 "ti" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
+	name = "Monitor";
 	pixel_y = 23;
 	density = 0
 	},
@@ -5594,7 +5610,7 @@
 	pixel_y = 5
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Atmosphere Control Console";
@@ -5720,10 +5736,10 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
+	name = "Monitor";
 	pixel_y = 23;
 	density = 0
 	},
@@ -6122,11 +6138,12 @@
 	dir = 1
 	},
 /obj/effect/hunter/catwalk/new_alpha,
+/obj/effect/step_trigger/teleporter/yautja_young,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for Yautja teleportation.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Atmosphere Control Console";
+	name = "Teleporter Control Console";
 	pixel_y = 24;
 	density = 0
 	},
@@ -6134,7 +6151,7 @@
 /area/yautja/lower_deck)
 "uX" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for monitoring engine performance and various other ship systems.";
 	dir = 8;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
@@ -6143,7 +6160,7 @@
 	pixel_y = 4
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for monitoring engine performance and various other ship systems.";
 	dir = 8;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
@@ -6320,7 +6337,7 @@
 	req_skill_level = 1
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -6425,6 +6442,16 @@
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
+"wc" = (
+/obj/structure/bed/bedroll{
+	color = "#6b675e";
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
+/turf/open/floor/corsat,
+/area/yautja/lower_deck)
 "wf" = (
 /obj/structure/platform_decoration/metal/hunter/west{
 	layer = 3.2;
@@ -6451,6 +6478,7 @@
 	color = "#212121";
 	name = "dried blood"
 	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "wk" = (
@@ -6478,7 +6506,7 @@
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "wv" = (
-/obj/structure/machinery/cm_vending/clothing/yautja,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja/lower_deck)
 "ww" = (
@@ -6874,7 +6902,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for monitoring engine performance and various other ship systems.";
 	dir = 8;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
@@ -6964,7 +6992,7 @@
 	pixel_x = 4
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -7136,7 +7164,7 @@
 /area/yautja/lower_deck)
 "yU" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -7264,6 +7292,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
+/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "zt" = (
@@ -7476,7 +7505,7 @@
 	req_one_access_txt = "390"
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -7488,7 +7517,7 @@
 "Aa" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -7570,10 +7599,10 @@
 "Ai" = (
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for Yautja teleportation.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Atmosphere Control Console";
+	name = "Teleporter Control Console";
 	pixel_y = 24;
 	density = 0
 	},
@@ -7581,6 +7610,7 @@
 /obj/effect/hunter/bridge_border/corner{
 	dir = 4
 	},
+/obj/effect/step_trigger/teleporter/yautja_young,
 /turf/open/floor/light/red/darker,
 /area/yautja/lower_deck)
 "Aj" = (
@@ -7818,8 +7848,13 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/hunt_ground_spawner{
-	pixel_y = 14
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "overwatch";
+	name = "Ship Defenses Console";
+	pixel_y = 14;
+	density = 0
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -8170,6 +8205,15 @@
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
+"BV" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
+/turf/open/floor/corsat,
+/area/yautja/lower_deck)
 "BW" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/bed/chair/comfy/yautja{
@@ -8541,6 +8585,7 @@
 	color = "#6b675e";
 	dir = 8
 	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "Dj" = (
@@ -9518,7 +9563,7 @@
 /area/yautja)
 "Gz" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -9792,7 +9837,7 @@
 	},
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -10020,7 +10065,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja/lower_deck)
 "Ig" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/right_centre,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/right_centre,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja/lower_deck)
 "Ih" = (
@@ -10091,9 +10136,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/hunting_ground_selection{
+/obj/structure/machinery/blooding_spawner{
 	pixel_x = -1;
-	pixel_y = 13
+	pixel_y = 13;
+	icon_state = "overwatch"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -10309,6 +10355,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "Jw" = (
@@ -10351,7 +10398,7 @@
 	},
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -10578,6 +10625,11 @@
 	},
 /turf/open/floor/corsat,
 /area/yautja)
+"Kq" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/area/yautja/lower_deck)
 "Kt" = (
 /obj/effect/alien/weeds/node/forsaken,
 /turf/open/floor/almayer/research/containment/yautja,
@@ -11373,10 +11425,10 @@
 /obj/effect/step_trigger/teleporter/yautja_ship,
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for Yautja teleportation.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Atmosphere Control Console";
+	name = "Teleporter Control Console";
 	pixel_y = 24;
 	density = 0
 	},
@@ -11429,13 +11481,13 @@
 	pixel_y = 13
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
 	pixel_y = 23;
 	density = 0;
-	pixel_x = -7
+	pixel_x = -16
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -11812,7 +11864,7 @@
 	pixel_x = -4
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -12192,7 +12244,6 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Qc" = (
@@ -12291,7 +12342,7 @@
 	},
 /obj/item/storage/pouch/vials,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -13348,6 +13399,7 @@
 	color = "#6b675e";
 	dir = 8
 	},
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "TZ" = (
@@ -13472,15 +13524,15 @@
 	dir = 4
 	},
 /obj/effect/hunter/catwalk/new_alpha,
+/obj/effect/step_trigger/teleporter/yautja_ship,
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = "A console used for Yautja teleportation.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "terminal";
-	name = "Atmosphere Control Console";
+	name = "Teleporter Control Console";
 	pixel_y = 24;
 	density = 0
 	},
-/obj/effect/step_trigger/teleporter/yautja_ship,
 /turf/open/floor/light/red/darker,
 /area/yautja)
 "Uq" = (
@@ -13506,7 +13558,7 @@
 	dir = 1
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -13520,6 +13572,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
+/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Uv" = (
@@ -13681,7 +13734,7 @@
 /turf/open/shuttle/bright_red/glow,
 /area/yautja/lower_deck)
 "UR" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/left_centre,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/left_centre,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja/lower_deck)
 "US" = (
@@ -13843,10 +13896,10 @@
 	pixel_x = 1
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
+	name = "Monitor";
 	pixel_y = 23;
 	density = 0
 	},
@@ -14122,7 +14175,7 @@
 /area/yautja/lower_deck)
 "Wa" = (
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Atmosphere Control Console";
@@ -15143,7 +15196,7 @@
 	pixel_y = 24
 	},
 /obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Monitor";
@@ -19771,7 +19824,7 @@ aV
 aV
 Gn
 ov
-ov
+kb
 IS
 aV
 aV
@@ -27194,7 +27247,7 @@ rP
 rP
 pl
 fD
-Nf
+wc
 rP
 uP
 uP
@@ -27398,7 +27451,7 @@ sG
 rP
 JX
 zc
-BX
+BV
 rP
 uP
 uP
@@ -28520,7 +28573,7 @@ sr
 rP
 IT
 Sk
-iz
+db
 rP
 sr
 sr
@@ -28724,7 +28777,7 @@ sr
 rP
 Sk
 Bt
-Sk
+Kq
 rP
 sr
 IM
@@ -29030,7 +29083,7 @@ mf
 rP
 ic
 BX
-hV
+sR
 rP
 uP
 uP
@@ -29130,7 +29183,7 @@ Sk
 ra
 JW
 rP
-Sk
+Kq
 Sk
 Sk
 rP

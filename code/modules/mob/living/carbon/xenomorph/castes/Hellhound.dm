@@ -72,7 +72,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	var/weed_slowdown_mult = 0
 
 	icon_xeno = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 	icon_xenonid = 'icons/mob/humans/onmob/hunter/hellhound.dmi'

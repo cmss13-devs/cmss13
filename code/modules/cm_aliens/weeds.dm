@@ -180,6 +180,8 @@
 	var/mob/living/crossing_mob = atom_movable
 
 	var/weed_slow = weed_strength
+	if(istype(crossing_mob, /mob/living/carbon/xenomorph/hellhound))
+		return
 
 	if(crossing_mob.ally_of_hivenumber(linked_hive.hivenumber))
 		if( (crossing_mob.hivenumber != linked_hive.hivenumber) && prob(7)) // small chance for allied mobs to get a message indicating this

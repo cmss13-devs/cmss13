@@ -65,8 +65,8 @@
 
 /datum/component/status_effect/xeno_stat_buff/slash_buff
 	buff_name = "Slash buff"
-	buff_apply_message = "You feel your claws flex with greater strength!"
-	buff_remove_message = "You feel your claws relax to normal strength!"
+	buff_apply_message = "We feel our claws flex with greater strength!"
+	buff_remove_message = "We feel our claws relax to normal strength!"
 
 /datum/component/status_effect/xeno_stat_buff/slash_buff/Initialize()
 	. = ..()
@@ -83,8 +83,8 @@
 
 /datum/component/status_effect/xeno_stat_buff/armor_buff
 	buff_name = "Armor buff"
-	buff_apply_message = "You feel your carapace harden!"
-	buff_remove_message = "You feel your carapace return to normal!"
+	buff_apply_message = "We feel our carapace harden!"
+	buff_remove_message = "We feel our carapace return to normal!"
 
 /datum/component/status_effect/xeno_stat_buff/armor_buff/Initialize()
 	. = ..()
@@ -101,8 +101,8 @@
 
 /datum/component/status_effect/xeno_stat_buff/speed_buff
 	buff_name = "Speed buff"
-	buff_apply_message = "You feel a soothing feeling in your muscles, letting you move faster!"
-	buff_remove_message = "You feel your muscles tense up and slow back down to normal!"
+	buff_apply_message = "We feel a soothing feeling in our muscles, letting us move faster!"
+	buff_remove_message = "We feel our muscles tense up and slow back down to normal!"
 
 /datum/component/status_effect/xeno_stat_buff/speed_buff/Initialize()
 	. = ..()
@@ -119,8 +119,8 @@
 
 /datum/component/status_effect/xeno_stat_buff/fireproof_buff
 	buff_name = "Fireproof buff"
-	buff_apply_message = "You feel your carapace grow colder!"
-	buff_remove_message = "You feel your carapace warm up!"
+	buff_apply_message = "We feel our carapace become ice cold!"
+	buff_remove_message = "We feel our carapace warm up!"
 
 /datum/component/status_effect/xeno_stat_buff/fireproof_buff/Initialize()
 	. = ..()

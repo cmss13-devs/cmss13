@@ -264,10 +264,10 @@
 	if(!bound_xeno.can_not_harm(target))
 		switch(final_alchem_name)
 			if("Saguinine") // Just does bonus damage
-				to_chat(target, SPAN_XENOWARNING("You feel like something has just ruptured!"))
+				to_chat(target, SPAN_XENOWARNING("We feel like something has just ruptured!"))
 				target.apply_damage(total_pool * XVX_UNIVERSAL_DAMAGEMULT)
 			if("Cholinine") // Also just does bonus damage
-				to_chat(target, SPAN_XENOWARNING("You feel like you're burning!"))
+				to_chat(target, SPAN_XENOWARNING("We feel like you're burning!"))
 				target.apply_damage(total_pool * XVX_UNIVERSAL_DAMAGEMULT)
 			if("Noctine") // Weakens armor
 				target.AddComponent(/datum/component/status_effect/xeno_stat_debuff/armor_debuff, total_pool)
@@ -276,7 +276,7 @@
 			if("Vapinine") // Drains plasma
 				if(target.plasma_max > 0)
 					target.plasma_stored = max(target.plasma_stored - (target.plasma_max * (total_pool / 150)), 0)
-					to_chat(target, SPAN_WARNING("You feel your plasma reserves being drained!"))
+					to_chat(target, SPAN_WARNING("We feel our plasma reserves being drained!"))
 			if("Crynine") // Slows down
 				target.AddComponent(/datum/component/status_effect/xeno_stat_debuff/speed_debuff, total_pool)
 			if("Xenosterine") // Blocks hivemind
@@ -293,7 +293,7 @@
 				target.AddComponent(/datum/component/status_effect/xeno_stat_buff/slash_buff, total_pool)
 			if("Vapinine") // Recovers some plasma
 				target.plasma_stored = max(target.plasma_stored + (target.plasma_max * (total_pool / 150)), 0)
-				to_chat(target, SPAN_WARNING("You feel a surge of plasma!"))
+				to_chat(target, SPAN_WARNING("We feel a surge of plasma!"))
 			if("Crynine") // Temporarily boosts speed
 				target.AddComponent(/datum/component/status_effect/xeno_stat_buff/speed_buff, total_pool)
 			if("Xenosterine") // Makes fireproof

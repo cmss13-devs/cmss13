@@ -226,7 +226,7 @@
 			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
 			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
 				var/name = "Неизвестные формы жизни"
-				var/input = "На боту корабля были обнаружены неизвестные формы жизни. Рекомендация: заблокировать внешние шлюзы, включая воздуховоды и вентиляцию."
+				var/input = "На борту корабля были обнаружены неизвестные формы жизни. Рекомендация: заблокировать внешние шлюзы, включая воздуховоды и вентиляцию."
 				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 				set_security_level(SEC_LEVEL_RED)
 				break

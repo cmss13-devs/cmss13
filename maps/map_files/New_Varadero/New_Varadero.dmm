@@ -26,7 +26,15 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
 "aag" = (
-/turf/open/gm/coast/beachcorner2/north_east,
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2";
+	pixel_x = 21
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 15;
+	pixel_x = -14
+	},
+/turf/open/gm/dirt,
 /area/varadero/exterior/islands)
 "aah" = (
 /obj/structure/bed/chair/hunter{
@@ -166,111 +174,39 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior/beach_bar)
+"aaE" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/islands)
+"aaF" = (
+/turf/open/gm/coast/north,
+/area/varadero/exterior/islands)
 "aaG" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
-"aaJ" = (
-/turf/open/gm/coast/north,
-/area/varadero/exterior/islands)
-"aaK" = (
+"aaH" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/islands)
-"aaL" = (
+"aaI" = (
 /turf/open/gm/coast/east,
 /area/varadero/exterior/islands)
-"aaM" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 21;
-	pixel_x = 10
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/islands)
-"aaN" = (
-/obj/structure/surface/table,
-/obj/item/tool/kitchen/knife{
-	pixel_x = 7;
-	pixel_y = -1
-	},
-/obj/item/reagent_container/food/snacks/carpmeat,
-/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/islands)
-"aaO" = (
-/obj/effect/overlay/palmtree_r{
-	icon_state = "palm2";
-	pixel_x = 21
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 15;
-	pixel_x = -14
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/islands)
-"aaP" = (
+"aaJ" = (
 /turf/open/gm/coast/west,
 /area/varadero/exterior/islands)
-"aaQ" = (
-/obj/structure/prop/wooden_cross{
-	desc = "A grave to a fishing buddy, long gone"
-	},
-/obj/item/clothing/head/boaterhat{
-	pixel_y = 5
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/islands)
-"aaR" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/item/reagent_container/glass/bucket{
-	pixel_x = 9;
-	pixel_y = 9
-	},
-/obj/effect/landmark/corpsespawner/colonist,
-/obj/effect/decal/cleanable/blood,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/islands)
-"aaS" = (
-/obj/item/fishing_pole{
-	anchored = 1
-	},
-/turf/open/gm/coast/beachcorner/south_west,
-/area/varadero/exterior/islands)
-"aaT" = (
-/obj/structure/prop/fishing/line/long,
-/turf/open/gm/coast/beachcorner2/south_west,
-/area/varadero/exterior/islands)
-"aaU" = (
+"aaK" = (
 /obj/effect/overlay/palmtree_r,
 /turf/open/gm/dirt,
 /area/varadero/exterior/islands)
-"aaV" = (
-/obj/item/storage/beer_pack,
-/turf/open/gm/dirt,
-/area/varadero/exterior/islands)
-"aaW" = (
+"aaL" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/varadero/exterior/islands)
-"aaX" = (
+"aaM" = (
 /turf/open/gm/coast/south,
 /area/varadero/exterior/islands)
-"aaY" = (
+"aaN" = (
 /turf/open/gm/coast/beachcorner2/south_west,
-/area/varadero/exterior/islands)
-"aaZ" = (
-/obj/effect/overlay/palmtree_r{
-	icon_state = "palm2";
-	pixel_x = 7;
-	pixel_y = 29
-	},
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/dirt,
 /area/varadero/exterior/islands)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -4743,6 +4679,10 @@
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/makeshift_tent)
+"dFt" = (
+/obj/structure/prop/fishing/line/long,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/islands)
 "dGh" = (
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/closet/crate/hydroponics/prespawned,
@@ -7815,6 +7755,15 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"gcF" = (
+/obj/structure/prop/wooden_cross{
+	desc = "A grave to a fishing buddy, long gone"
+	},
+/obj/item/clothing/head/boaterhat{
+	pixel_y = 5
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
 "gcK" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -9689,6 +9638,18 @@
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
+"hJq" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/islands)
 "hJw" = (
 /obj/structure/largecrate/random,
 /obj/item/storage/photo_album{
@@ -10028,6 +9989,19 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/varadero/interior_protected/caves)
+"hXe" = (
+/obj/structure/surface/table,
+/obj/item/tool/kitchen/knife{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
 "hXq" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves/digsite)
@@ -26717,6 +26691,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva/red/southwest,
 /area/varadero/interior/security)
+"vom" = (
+/obj/item/storage/beer_pack,
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
 "voJ" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -27126,6 +27104,12 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
+"vDw" = (
+/obj/item/fishing_pole{
+	anchored = 1
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/islands)
 "vDC" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
@@ -27276,6 +27260,15 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/laundry)
+"vLo" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2";
+	pixel_x = 7;
+	pixel_y = 29
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
 "vLt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28072,6 +28065,13 @@
 /obj/item/trash/crushed_cup,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
+"wnA" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 21;
+	pixel_x = 10
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
 "wnE" = (
 /obj/structure/tunnel{
 	id = "north_research_tunnel"
@@ -44521,9 +44521,9 @@ xVw
 qwQ
 daS
 qwQ
-aaW
 aaL
-aag
+aaI
+aaE
 lTR
 dXg
 dXg
@@ -44703,9 +44703,9 @@ wBp
 qwQ
 qwQ
 lTR
-aaX
-aaZ
-aaJ
+aaM
+vLo
+aaF
 qwQ
 qwQ
 qwQ
@@ -44885,9 +44885,9 @@ xVw
 qwQ
 qwQ
 qwQ
-aaY
-aaP
-aaK
+aaN
+aaJ
+aaH
 qwQ
 qwQ
 qwQ
@@ -45615,11 +45615,11 @@ rYC
 dXg
 qwQ
 lTR
-aaW
 aaL
-aaL
-aaL
-aag
+aaI
+aaI
+aaI
+aaE
 qwQ
 qwQ
 qwQ
@@ -45797,11 +45797,11 @@ wBp
 daS
 dXg
 aTY
-aaX
-aaU
-aaQ
 aaM
-aaJ
+aaK
+gcF
+wnA
+aaF
 qwQ
 qwQ
 qwQ
@@ -45979,11 +45979,11 @@ wBp
 qwQ
 uYJ
 lTR
-aaX
-aaV
-aaR
-aaN
-aaJ
+aaM
+vom
+hJq
+hXe
+aaF
 qwQ
 pAX
 qwQ
@@ -46161,11 +46161,11 @@ wBp
 qwQ
 aTY
 lTR
-aaY
-aaP
-aaS
-aaO
+aaN
 aaJ
+vDw
+aag
+aaF
 qwQ
 lTR
 qwQ
@@ -46345,9 +46345,9 @@ qwQ
 aTY
 qwQ
 aTY
-aaT
-aaP
-aaK
+dFt
+aaJ
+aaH
 lTR
 qwQ
 lTR

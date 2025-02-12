@@ -34,7 +34,7 @@
 	if(!isxeno(user))
 		return ..()
 	. = ..()
-	. += SPAN_XENOWARNING("A trap designed for a catching hosts and holding them still.")
+	. += SPAN_XENOWARNING("A trap designed for catching hosts and holding them still.")
 
 /obj/effect/alien/resin/boilertrap/fire_act()
 	. = ..()

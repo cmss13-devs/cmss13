@@ -66,7 +66,7 @@
 	var/tmp/list/atom/movable/lighting_mask/hybrid_lights_affecting
 
 	vis_flags = VIS_INHERIT_PLANE
-  
+
 	/// Is fishing allowed on this turf
 	var/fishing_allowed = FALSE
 

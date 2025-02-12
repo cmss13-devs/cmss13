@@ -492,9 +492,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<br>"
 			dat += "</div>"
 
-			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Occupation Choices:</u></b></h2>"
-
 		if(MENU_CO)
 			if(owner.check_whitelist_status(WHITELIST_COMMANDER))
 				dat += "<div id='column1'>"

@@ -48,6 +48,10 @@
 "ai" = (
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv759/outdoors/mining_outpost/south_entrance)
+"aj" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "ak" = (
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/lv759/outdoors/mining_outpost/south_entrance)
@@ -4176,7 +4180,6 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Xm" = (
 /obj/structure/machinery/light/blue,
-/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "Xn" = (
@@ -5301,7 +5304,7 @@ au
 ag
 cF
 XI
-an
+aj
 qt
 mo
 LJ

@@ -21,6 +21,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	"whitefull"
 ))
 
+GLOBAL_LIST_INIT(be_special_flags, list(
+	"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
+	"Agent" = BE_AGENT,
+	"King" = BE_KING,
+))
+
 #define MAX_SAVE_SLOTS 10
 
 /datum/preferences
@@ -57,7 +63,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	//game-preferences
 	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
 	var/ooccolor
-	var/be_special = 0 // Special role selection
+	var/be_special = BE_KING // Special role selection
 	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND // flags in #define/mode.dm
 	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
 	var/auto_fit_viewport = FALSE
@@ -350,7 +356,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		dat += "<a[current_menu == MENU_CO ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_CO]\"><b>Commanding Officer</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 		dat += "<a[current_menu == MENU_SYNTHETIC ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SYNTHETIC]\"><b>Synthetic</b></a> - "
-	if(owner.check_whitelist_status(WHITELIST_PREDATOR))
+	if(owner.check_whitelist_status(WHITELIST_YAUTJA))
 		dat += "<a[current_menu == MENU_YAUTJA ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=yautja\"><b>Yautja</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_MENTOR))
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
@@ -495,36 +501,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<br>"
 			dat += "</div>"
 
-			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Occupation Choices:</u></b></h2>"
-			var/n = 0
-			var/list/special_roles = list(
-			"Xenomorph after<br>unrevivably dead" = 1,
-			"Agent" = 0,
-			)
-
-			for(var/role_name in special_roles)
-				var/ban_check_name
-				var/list/missing_requirements = list()
-
-				switch(role_name)
-					if("Xenomorph after<br>unrevivably dead")
-						ban_check_name = JOB_XENOMORPH
-
-					if("Agent")
-						ban_check_name = "Agent"
-
-				if(jobban_isbanned(user, ban_check_name))
-					dat += "<b>Be [role_name]:</b> <font color=red><b>\[BANNED]</b></font><br>"
-				else if(!can_play_special_job(user.client, ban_check_name))
-					dat += "<b>Be [role_name]:</b> <font color=red><b>\[TIMELOCKED]</b></font><br>"
-					for(var/r in missing_requirements)
-						var/datum/timelock/T = r
-						dat += "\t[T.name] - [duration2text(missing_requirements[r])] Hours<br>"
-				else
-					dat += "<b>Be [role_name]:</b> <a href='byond://?_src_=prefs;preference=be_special;num=[n]'><b>[be_special & (1<<n) ? "Yes" : "No"]</b></a><br>"
-
-				n++
 		if(MENU_CO)
 			if(owner.check_whitelist_status(WHITELIST_COMMANDER))
 				dat += "<div id='column1'>"
@@ -650,9 +626,33 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Spawn as Engineer:</b> <a href='byond://?_src_=prefs;preference=toggles_ert;flag=[PLAY_ENGINEER]'><b>[toggles_ert & PLAY_ENGINEER ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Specialist:</b> <a href='byond://?_src_=prefs;preference=toggles_ert;flag=[PLAY_HEAVY]'><b>[toggles_ert & PLAY_HEAVY ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Smartgunner:</b> <a href='byond://?_src_=prefs;preference=toggles_ert;flag=[PLAY_SMARTGUNNER]'><b>[toggles_ert & PLAY_SMARTGUNNER ? "Yes" : "No"]</b></a><br>"
+
 			if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 				dat += "<b>Spawn as Synth:</b> <a href='byond://?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='byond://?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
+
+			dat += "<br><h2><b><u>Special Roles:</u></b></h2>"
+
+			for(var/role_name in GLOB.be_special_flags)
+				var/flag = GLOB.be_special_flags[role_name]
+
+				var/ban_check_name
+				switch(role_name)
+					if("Xenomorph after unrevivable death")
+						ban_check_name = JOB_XENOMORPH
+
+					if("Agent")
+						ban_check_name = "Agent"
+
+				if(ban_check_name && jobban_isbanned(user, ban_check_name))
+					dat += "<b>Be [role_name]:</b> <font color=red><b>\[BANNED]</b></font><br>"
+				else if(!can_play_special_job(user.client, ban_check_name))
+					dat += "<b>Be [role_name]:</b> <font color=red><b>\[TIMELOCKED]</b></font><br>"
+				else
+					dat += "<b>Be [role_name]:</b> <a href='byond://?_src_=prefs;preference=be_special;num=[flag]'><b>[be_special & flag ? "Yes" : "No"]</b></a><br>"
+
+
+
 			dat += "</div>"
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Hunting Ground ERT Settings:</u></b></h2>"
@@ -675,6 +675,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>Colonial Marshal Bureau:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
 				dat += "<b>Free Press:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
 				dat += "<b>CLF Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
+				dat += "</div>"
+
 
 	dat += "</div></body>"
 
@@ -1800,7 +1802,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("be_special")
 					var/num = text2num(href_list["num"])
-					be_special ^= (1<<num)
+					be_special ^= num
 
 				if("rand_name")
 					be_random_name = !be_random_name

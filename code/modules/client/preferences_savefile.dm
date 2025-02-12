@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 29
+#define SAVEFILE_VERSION_MAX 30
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -191,6 +191,12 @@
 				hair_style = "Longer Fringe"
 
 		S["hair_style_name"] << hair_style
+
+	if(savefile_version < 30)
+		var/be_special = 0
+		S["be_special"] >> be_special
+		be_special &= ~BE_KING
+		S["be_special"] << be_special
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -648,7 +654,6 @@
 	S["med_record"] >> med_record
 	S["sec_record"] >> sec_record
 	S["gen_record"] >> gen_record
-	S["be_special"] >> be_special
 	S["organ_data"] >> organ_data
 	S["gear"] >> gear
 	S["origin"] >> origin
@@ -815,7 +820,6 @@
 	S["med_record"] << med_record
 	S["sec_record"] << sec_record
 	S["gen_record"] << gen_record
-	S["be_special"] << be_special
 	S["organ_data"] << organ_data
 	S["gear"] << gear
 	S["origin"] << origin

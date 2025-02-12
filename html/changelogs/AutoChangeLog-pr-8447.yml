@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - qol: "Updates turf descriptions to account for medevacs+CAS instead of just CAS."

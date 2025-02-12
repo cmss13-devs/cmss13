@@ -11282,7 +11282,7 @@
 "ME" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/effect/projector{
+/obj/effect/step_trigger/teleporter_vector{
 	name = "Hunter_Up";
 	vector_x = 90
 	},
@@ -12218,10 +12218,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
-/obj/effect/projector{
-	name = "Hunter_Up";
-	vector_x = 90
-	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat,
 /area/yautja)
 "PU" = (
@@ -12766,10 +12763,7 @@
 /area/yautja)
 "RK" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/effect/projector{
-	name = "Hunter_Down";
-	vector_x = -90
-	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat,
 /area/yautja/hangar)
 "RO" = (
@@ -13312,7 +13306,7 @@
 "TJ" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/effect/projector{
+/obj/effect/step_trigger/teleporter_vector{
 	name = "Hunter_Up";
 	vector_x = 90
 	},
@@ -15047,10 +15041,7 @@
 	pixel_y = 24;
 	layer = 3.1
 	},
-/obj/effect/projector{
-	name = "Hunter_Up";
-	vector_x = 90
-	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat,
 /area/yautja)
 "Zm" = (
@@ -26574,8 +26565,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 ig
 tr
 DB
@@ -26584,6 +26573,8 @@ tr
 DB
 tr
 MI
+dI
+dI
 dI
 dI
 dI
@@ -26670,8 +26661,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 ig
 tr
 tr
@@ -26687,6 +26676,8 @@ DB
 DB
 tr
 MI
+dI
+dI
 dI
 dI
 dI
@@ -26755,8 +26746,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 ig
 tr
 DB
@@ -26790,6 +26779,8 @@ DB
 DB
 DB
 MI
+dI
+dI
 dI
 dI
 dI
@@ -26856,8 +26847,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 ig
 MX
 DB
@@ -26881,7 +26870,7 @@ NH
 NH
 DB
 Np
-RK
+Np
 RK
 nD
 GH
@@ -26892,6 +26881,8 @@ AU
 DB
 NH
 bx
+dI
+dI
 dI
 dI
 dI
@@ -26957,8 +26948,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 ig
 MX
 DB
@@ -26983,7 +26972,7 @@ NH
 NH
 DB
 Np
-RK
+Np
 RK
 nD
 Gm
@@ -26994,6 +26983,8 @@ Ge
 DB
 DB
 DB
+dI
+dI
 dI
 dI
 dI
@@ -27056,8 +27047,6 @@ tn
 dI
 "}
 (117,1,1) = {"
-dI
-dI
 dI
 dI
 dI
@@ -27127,6 +27116,8 @@ dI
 dI
 dI
 dI
+dI
+dI
 zL
 rP
 rP
@@ -27158,8 +27149,6 @@ rP
 dI
 "}
 (118,1,1) = {"
-dI
-dI
 dI
 dI
 dI
@@ -27198,6 +27187,8 @@ av
 DB
 NH
 bx
+dI
+dI
 dI
 dI
 dI
@@ -27263,8 +27254,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 NH
 NH
@@ -27300,6 +27289,8 @@ av
 DB
 DB
 DB
+dI
+dI
 dI
 dI
 dI
@@ -27365,8 +27356,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 NH
 DB
@@ -27402,6 +27391,8 @@ av
 DB
 NH
 bx
+dI
+dI
 dI
 dI
 dI
@@ -27467,8 +27458,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 DB
 DB
 DB
@@ -27504,6 +27493,8 @@ Ge
 DB
 bx
 eC
+dI
+dI
 dI
 dI
 dI
@@ -27569,8 +27560,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 yA
 MX
 Mb
@@ -27605,6 +27594,8 @@ eJ
 Ge
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -27672,8 +27663,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -27707,6 +27696,8 @@ gE
 Ge
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -27774,8 +27765,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -27809,6 +27798,8 @@ ti
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -27876,8 +27867,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -27911,6 +27900,8 @@ Hs
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -27978,8 +27969,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -28013,6 +28002,8 @@ Hs
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28080,8 +28071,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -28115,6 +28104,8 @@ Hs
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28182,8 +28173,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -28217,6 +28206,8 @@ Hs
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28284,8 +28275,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -28319,6 +28308,8 @@ Hs
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28386,8 +28377,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -28421,6 +28410,8 @@ Hs
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28488,8 +28479,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -28523,6 +28512,8 @@ Hs
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28590,8 +28581,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -28625,6 +28614,8 @@ mW
 Ve
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28692,8 +28683,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 Mb
 oC
@@ -28727,6 +28716,8 @@ TO
 Ge
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28793,8 +28784,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 ig
 MX
 Mb
@@ -28829,6 +28818,8 @@ eJ
 Ge
 DB
 bx
+dI
+dI
 dI
 dI
 dI
@@ -28895,8 +28886,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 DB
 DB
 DB
@@ -28932,6 +28921,8 @@ Ge
 DB
 bx
 MI
+dI
+dI
 dI
 dI
 dI
@@ -28997,8 +28988,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 NH
 DB
@@ -29034,6 +29023,8 @@ Ve
 DB
 NH
 bx
+dI
+dI
 dI
 dI
 dI
@@ -29099,8 +29090,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 NH
 NH
@@ -29136,6 +29125,8 @@ Ve
 DB
 DB
 DB
+dI
+dI
 dI
 dI
 dI
@@ -29201,8 +29192,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 YO
 NH
 NH
@@ -29265,6 +29254,8 @@ dI
 dI
 dI
 dI
+dI
+dI
 aa
 aa
 aa
@@ -29300,8 +29291,6 @@ rP
 dI
 "}
 (139,1,1) = {"
-dI
-dI
 dI
 dI
 dI
@@ -29371,6 +29360,8 @@ dI
 dI
 dI
 dI
+dI
+dI
 zL
 rP
 rP
@@ -29402,8 +29393,6 @@ rP
 dI
 "}
 (140,1,1) = {"
-dI
-dI
 dI
 dI
 dI
@@ -29473,6 +29462,8 @@ dI
 dI
 dI
 dI
+dI
+dI
 zL
 rP
 rP
@@ -29504,8 +29495,6 @@ jc
 dI
 "}
 (141,1,1) = {"
-dI
-dI
 dI
 dI
 dI
@@ -29575,6 +29564,8 @@ dI
 dI
 dI
 dI
+dI
+dI
 DN
 rP
 rP
@@ -29606,8 +29597,6 @@ dI
 dI
 "}
 (142,1,1) = {"
-dI
-dI
 dI
 dI
 dI
@@ -29646,6 +29635,8 @@ DB
 DB
 DB
 eC
+dI
+dI
 dI
 dI
 dI
@@ -29730,8 +29721,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 yA
 tk
 tk
@@ -29747,6 +29736,8 @@ DB
 DB
 tk
 eC
+dI
+dI
 dI
 dI
 dI
@@ -29838,8 +29829,6 @@ dI
 dI
 dI
 dI
-dI
-dI
 yA
 tk
 DB
@@ -29848,6 +29837,8 @@ tk
 DB
 tk
 eC
+dI
+dI
 dI
 dI
 dI

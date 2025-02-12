@@ -27,7 +27,6 @@
 	heal_standing = 1.25
 	heal_knocked_out = 1.25
 	innate_healing = TRUE
-	weed_slowdown_mult = 0 // no slowdown because its already slow
 
 	minimap_icon = "hellhound"
 
@@ -73,6 +72,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
+	var/weed_slowdown_mult = 0
 
 	icon_xeno = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 	icon_xenonid = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
@@ -124,6 +124,11 @@
 	SSmob.living_misc_mobs -= src
 	return ..()
 
+/mob/living/carbon/xenomorph/hellhound/resist_fire()
+	..()
+	SetKnockDown(0.5 SECONDS) // faster because theyre already slow as hell
+
+
 /mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir)
 	new /obj/effect/bloodsplatter/hellhound(loc, splatter_dir)
 
@@ -144,7 +149,6 @@
 		. += "You have no owner, try to listen to any other yautja..."
 	else
 		. += "Your owner is [pred_owner.real_name]"
-
 
 
 /mob/living/carbon/xenomorph/hellhound/get_examine_text(mob/user)

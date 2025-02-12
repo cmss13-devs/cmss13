@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"ab" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc/medium_priority,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
 "ai" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/snow/layer2,
@@ -417,7 +425,7 @@
 /area/shiva/interior/colony/s_admin)
 "rQ" = (
 /obj/item/ammo_magazine/rifle/boltaction,
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng/medium_priority,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "sq" = (
@@ -455,7 +463,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci/medium_priority,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "tu" = (
@@ -1098,7 +1106,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "Nu" = (
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "NC" = (
@@ -1146,7 +1154,7 @@
 /area/shiva/interior/colony/s_admin)
 "PV" = (
 /obj/structure/bed/bedroll,
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_pmc,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Qh" = (
@@ -1582,7 +1590,7 @@ ul
 dF
 dF
 ov
-yQ
+aa
 kB
 ce
 Ik
@@ -1707,7 +1715,7 @@ Fc
 CZ
 DY
 dF
-BU
+ab
 ce
 ce
 cS

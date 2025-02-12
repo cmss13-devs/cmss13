@@ -11,8 +11,7 @@
 	icon_state = "warhead_rocket"
 	max_container_volume = 180
 	allow_star_shape = FALSE
-	use_dir = TRUE
-	angle = 90
+	shrapnel_spread = 90
 	matter = list("metal" = 11250) //3 sheets
 	reaction_limits = list( "max_ex_power" = 220, "base_ex_falloff" = 160,"max_ex_shards" = 40,
 							"max_fire_rad" = 4, "max_fire_int" = 50, "max_fire_dur" = 36,

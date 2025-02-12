@@ -110,7 +110,8 @@
 
 /mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
-	if(!client || !client.prefs) return
+	if(!client || !client.prefs)
+		return
 
 	if (type)
 		if(type & SHOW_MESSAGE_VISIBLE && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
@@ -147,7 +148,8 @@
 
 	var/view_dist = 7
 	var/flags = message_flags
-	if(max_distance) view_dist = max_distance
+	if(max_distance)
+		view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
 		var/msg = message
 		if(self_message && M == src)
@@ -204,13 +206,15 @@
 // deaf_message (optional) is what deaf people will see e.g. "[X] shouts something silently."
 /atom/proc/audible_message(message, deaf_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/hear_dist = 7
-	if(max_distance) hear_dist = max_distance
+	if(max_distance)
+		hear_dist = max_distance
 	for(var/mob/M as anything in hearers(hear_dist, src.loc))
 		M.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
-	if(max_distance) view_dist = max_distance
+	if(max_distance)
+		view_dist = max_distance
 	for(var/mob/M in orange(view_dist, src))
 		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
@@ -340,7 +344,8 @@
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
 /mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
-	if(!istype(W)) return 0
+	if(!istype(W))
+		return 0
 
 	for(var/slot in slot_equipment_priority)
 		if(equip_to_slot_if_possible(W, slot, ignore_delay, 0, 1, 1)) //del_on_fail = 0; disable_warning = 0; redraw_mob = 1
@@ -631,7 +636,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return
 
 /mob/living/carbon/human/make_jittery(amount)
-	if(stat == DEAD) return //dead humans can't jitter
+	if(stat == DEAD)
+		return //dead humans can't jitter
 	jitteriness = min(1000, jitteriness + amount) // store what will be new value
 													// clamped to max 1000
 	if(jitteriness > 100 && !is_jittery)
@@ -685,17 +691,23 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(client?.moving) return 0
-	if(stat==2) return 0
-	if(anchored) return 0
-	if(monkeyizing) return 0
-	if(is_mob_restrained()) return 0
+	if(client?.moving)
+		return 0
+	if(stat==2)
+		return 0
+	if(anchored)
+		return 0
+	if(monkeyizing)
+		return 0
+	if(is_mob_restrained())
+		return 0
 	if(HAS_TRAIT(src, TRAIT_INCAPACITATED)) // We allow rotation if simply floored
 		return FALSE
 	return 1
 
 /mob/proc/face_dir(ndir, specific_dir)
-	if(!canface()) return 0
+	if(!canface())
+		return 0
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
 		setDir(ndir)

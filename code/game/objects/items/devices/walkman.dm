@@ -82,7 +82,8 @@
 	update_song(break_sound, current_listener, 0)
 
 /obj/item/device/walkman/proc/update_song(sound/S, mob/M, flags = SOUND_UPDATE)
-	if(!istype(M) || !istype(S)) return
+	if(!istype(M) || !istype(S))
+		return
 	if(M.ear_deaf > 0)
 		flags |= SOUND_MUTE
 	S.status = flags
@@ -91,7 +92,8 @@
 	sound_to(M,S)
 
 /obj/item/device/walkman/proc/pause(mob/user)
-	if(!current_song) return
+	if(!current_song)
+		return
 	paused = TRUE
 	update_song(current_song,current_listener, SOUND_PAUSED | SOUND_UPDATE)
 
@@ -113,7 +115,8 @@
 	update_song(current_song,current_listener)
 
 /obj/item/device/walkman/proc/insert_tape(obj/item/device/cassette_tape/CT)
-	if(tape || !istype(CT)) return
+	if(tape || !istype(CT))
+		return
 
 	tape = CT
 	if(ishuman(CT.loc))
@@ -132,7 +135,8 @@
 
 
 /obj/item/device/walkman/proc/eject_tape(mob/user)
-	if(!tape) return
+	if(!tape)
+		return
 
 	break_sound()
 
@@ -148,7 +152,8 @@
 
 /obj/item/device/walkman/proc/next_song(mob/user)
 
-	if(user.is_mob_incapacitated() || length(current_playlist) == 0) return
+	if(user.is_mob_incapacitated() || length(current_playlist) == 0)
+		return
 
 	break_sound()
 
@@ -205,7 +210,8 @@
 	set category = "Object"
 	set src in usr
 
-	if(usr.is_mob_incapacitated()) return
+	if(usr.is_mob_incapacitated())
+		return
 
 	attack_self(usr)
 
@@ -228,17 +234,22 @@
 	set category = "Object"
 	set src in usr
 
-	if(usr.is_mob_incapacitated() || !current_song) return
+	if(usr.is_mob_incapacitated() || !current_song)
+		return
 
 	var/tmp = tgui_input_number(usr,"Change the volume (0 - 100)","Volume", volume, 100, 0)
-	if(tmp == null) return
-	if(tmp > 100) tmp = 100
-	if(tmp < 0) tmp = 0
+	if(tmp == null)
+		return
+	if(tmp > 100)
+		tmp = 100
+	if(tmp < 0)
+		tmp = 0
 	volume = tmp
 	update_song(current_song, current_listener)
 
 /obj/item/device/walkman/proc/restart_song(mob/user)
-	if(user.is_mob_incapacitated() || !current_song) return
+	if(user.is_mob_incapacitated() || !current_song)
+		return
 
 	update_song(current_song, current_listener, 0)
 	to_chat(user,SPAN_INFO("You restart the song"))

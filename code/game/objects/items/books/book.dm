@@ -101,7 +101,8 @@
 				return
 
 	else if(istype(W, /obj/item/tool/kitchen/knife) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		if(carved) return
+		if(carved)
+			return
 		to_chat(user, SPAN_NOTICE("You begin to carve out [title]."))
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_NOTICE("You carve out the pages from [title]! You didn't want to read it anyway."))
@@ -112,7 +113,7 @@
 
 /obj/item/book/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(user.zone_selected == "eyes")
-		user.visible_message(SPAN_NOTICE("You open up the book and show it to [M]. "), \
+		user.visible_message(SPAN_NOTICE("You open up the book and show it to [M]. "),
 			SPAN_NOTICE(" [user] opens up a book and shows it to [M]. "))
 		show_browser(M, "<body class='paper'><TT><I>Penned by [author].</I></TT> <BR>[dat]</body>", "window=book")
 

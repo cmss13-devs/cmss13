@@ -72,7 +72,8 @@
 /obj/structure/droppod/container/attackby(obj/item/W, mob/user)
 	if(droppod_flags & DROPPOD_OPEN)
 		if(istype(W, /obj/item/grab))
-			if(isxeno(user)) return
+			if(isxeno(user))
+				return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
 				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet

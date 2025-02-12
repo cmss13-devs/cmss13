@@ -1,6 +1,8 @@
 /datum/equipment_preset/uscm_co
 	name = "USCM Commanding Officer (CO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_MARINE
 
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
@@ -285,7 +287,7 @@
 	assignment = JOB_USCM_OBSV
 	rank = JOB_USCM_OBSV
 	role_comm_title = "VO"
-
+	minimap_background = "background_visit_command"
 
 /datum/equipment_preset/uscm_co/council
 	name = "USCM Commanding Officer (CO+)"

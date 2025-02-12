@@ -92,7 +92,8 @@
 				template.x = new_turf_source.x
 				template.y = new_turf_source.y
 				template.z = new_turf_source.z
-			else sound_range = 0
+			else
+				sound_range = 0
 	// Range for 'nearby interiors' aswell
 	for(var/datum/interior/vehicle_interior in SSinterior.interiors)
 		if(vehicle_interior?.ready && vehicle_interior.exterior?.z == turf_source.z && get_dist(vehicle_interior.exterior, turf_source) <= sound_range)
@@ -123,7 +124,10 @@
 		template.file = get_sfx(soundin)
 
 	if(random_freq)
-		template.frequency = GET_RANDOM_FREQ
+		if(random_freq == "minor")
+			template.frequency = GET_RANDOM_FREQ_MINOR
+		else
+			template.frequency = GET_RANDOM_FREQ
 	template.volume = vol
 	template.volume_cat = vol_cat
 	template.channel = channel
@@ -423,6 +427,8 @@
 				sound = pick('sound/effects/giant_lizard_growl1.ogg', 'sound/effects/giant_lizard_growl2.ogg')
 			if("giant_lizard_hiss")
 				sound = pick('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')
+			if("evo_screech")
+				sound = pick('sound/voice/alien_echoroar_1.ogg', 'sound/voice/alien_echoroar_2.ogg', 'sound/voice/alien_echoroar_3.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

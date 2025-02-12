@@ -578,7 +578,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	add_fingerprint(user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && opened)
 		if(has_electronics == 1)
-			if(user.action_busy) return
+			if(user.action_busy)
+				return
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to deconstruct [src]."))
 				return
@@ -1461,6 +1462,23 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	dir = 4
 
 /obj/structure/machinery/power/apc/upgraded/no_power/west
+	pixel_x = -30
+	dir = 8
+
+// apc that start broken
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/fully_broken/no_cell/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/fully_broken/no_cell/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/fully_broken/no_cell/west
 	pixel_x = -30
 	dir = 8
 

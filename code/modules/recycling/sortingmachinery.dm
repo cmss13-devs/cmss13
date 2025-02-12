@@ -219,7 +219,8 @@
 
 
 /obj/item/packageWrap/afterattack(obj/target as obj, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(!istype(target)) //this really shouldn't be necessary (but it is). -Pete
 		return
 	if(istype(target, /obj/item/smallDelivery) || istype(target,/obj/structure/bigDelivery) \
@@ -249,10 +250,14 @@
 			if(i in list(1,2,3,4,5))
 				P.icon_state = "deliverycrate[i]"
 				switch(i)
-					if(1) P.name = "tiny parcel"
-					if(3) P.name = "normal-sized parcel"
-					if(4) P.name = "large parcel"
-					if(5) P.name = "huge parcel"
+					if(1)
+						P.name = "tiny parcel"
+					if(3)
+						P.name = "normal-sized parcel"
+					if(4)
+						P.name = "large parcel"
+					if(5)
+						P.name = "huge parcel"
 			if(i < 1)
 				P.icon_state = "deliverycrate1"
 				P.name = "tiny parcel"
@@ -384,16 +389,21 @@
 	return
 
 /obj/structure/machinery/disposal/deliveryChute/Collided(atom/movable/AM) //Go straight into the chute
-	if(istype(AM, /obj/projectile) || istype(AM, /obj/effect)) return
+	if(istype(AM, /obj/projectile) || istype(AM, /obj/effect))
+		return
 	switch(dir)
 		if(NORTH)
-			if(AM.loc.y != src.loc.y+1) return
+			if(AM.loc.y != src.loc.y+1)
+				return
 		if(EAST)
-			if(AM.loc.x != src.loc.x+1) return
+			if(AM.loc.x != src.loc.x+1)
+				return
 		if(SOUTH)
-			if(AM.loc.y != src.loc.y-1) return
+			if(AM.loc.y != src.loc.y-1)
+				return
 		if(WEST)
-			if(AM.loc.x != src.loc.x-1) return
+			if(AM.loc.x != src.loc.x-1)
+				return
 
 	if(istype(AM, /obj))
 		var/obj/O = AM
@@ -445,7 +455,8 @@
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			to_chat(user, "You start slicing the floorweld off the delivery chute.")
 			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(!src || !W.isOn()) return
+				if(!src || !W.isOn())
+					return
 				to_chat(user, "You sliced the floorweld off the delivery chute.")
 				var/obj/structure/disposalconstruct/C = new (src.loc)
 				C.ptype = 8 // 8 =  Delivery chute

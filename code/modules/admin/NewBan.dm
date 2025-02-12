@@ -267,7 +267,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 			unban_player.save()
 
 			message_admins("[key_name_admin(user)] has removed the permanent ban on [unban_player.ckey].")
-			important_message_external("[user] has removed the permanent ban on [unban_player.ckey].", "Permaban Removed")
+			important_message_external("[user.ckey] has removed the permanent ban on [unban_player.ckey].", "Permaban Removed")
 
 			return TRUE
 

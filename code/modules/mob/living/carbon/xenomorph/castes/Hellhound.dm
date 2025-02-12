@@ -72,7 +72,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-
+	var/no_weed_slowdown = 0
 	icon_xeno = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 	icon_xenonid = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 
@@ -88,6 +88,7 @@
 	GLOB.xeno_mob_list -= src
 	SSmob.living_misc_mobs += src
 	GLOB.hellhound_list += src
+	RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 
 /mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -108,6 +109,7 @@
 	emote("roar")
 	GLOB.hellhound_list -= src
 	SSmob.living_misc_mobs -= src
+	UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 
 /mob/living/carbon/xenomorph/hellhound/get_organ_icon()
@@ -127,6 +129,10 @@
 	..()
 	SetKnockDown(0.5 SECONDS) // faster because theyre already slow as hell
 
+
+/mob/living/carbon/xenomorph/hellhound/proc/handle_weed_slowdown(mob/user, list/slowdata)
+	SIGNAL_HANDLER
+	slowdata["movement_slowdown"] *= no_weed_slowdown
 
 /mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir)
 	new /obj/effect/bloodsplatter/hellhound(loc, splatter_dir)

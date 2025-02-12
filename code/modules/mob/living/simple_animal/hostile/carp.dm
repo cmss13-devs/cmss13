@@ -37,6 +37,7 @@
 	break_stuff_probability = 15
 
 	faction = "carp"
+	var/bite_knockdown_chance = 15
 
 /mob/living/simple_animal/hostile/carp/Process_Spacemove(check_drift = 0)
 	return 1 //No drifting in space for space carp! //original comments do not steal
@@ -50,6 +51,6 @@
 	. =..()
 	var/mob/living/L = .
 	if(istype(L))
-		if(prob(15))
+		if(prob(bite_knockdown_chance))
 			L.apply_effect(3, WEAKEN)
 			L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))

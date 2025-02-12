@@ -2,8 +2,22 @@
 "a" = (
 /turf/open/space/basic,
 /area/space)
+"b" = (
+/obj/effect/landmark/moba_base,
+/turf/open/floor,
+/area/misc/moba)
 "c" = (
 /turf/open/floor/almayer/redfull,
+/area/misc/moba)
+"d" = (
+/obj/effect/moba_camp_spawner,
+/turf/open/floor/almayer/greenfull,
+/area/misc/moba)
+"e" = (
+/obj/effect/landmark/moba_base{
+	right_side = 1
+	},
+/turf/open/floor,
 /area/misc/moba)
 "u" = (
 /turf/open/floor/almayer/aicore,
@@ -18,6 +32,7 @@
 /turf/open/floor/almayer/bluefull2,
 /area/misc/moba)
 "A" = (
+/obj/effect/landmark/moba_tunnel_spawner,
 /turf/open/floor/almayer/emeraldfull,
 /area/misc/moba)
 "C" = (
@@ -3964,7 +3979,7 @@ P
 P
 P
 P
-P
+b
 P
 P
 P
@@ -8004,7 +8019,7 @@ v
 v
 v
 D
-D
+d
 D
 v
 v
@@ -11422,7 +11437,7 @@ Z
 C
 v
 D
-D
+d
 v
 v
 v
@@ -15268,7 +15283,7 @@ v
 v
 v
 v
-D
+d
 D
 v
 c
@@ -35678,7 +35693,7 @@ P
 P
 P
 P
-P
+e
 P
 P
 P

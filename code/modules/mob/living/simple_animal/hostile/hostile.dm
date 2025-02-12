@@ -132,6 +132,8 @@
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)
 				target_mob_ref = WEAKREF(FindTarget())
+				if(target_mob_ref)
+					MoveToTarget()
 
 			if(HOSTILE_STANCE_ATTACK)
 				if(destroy_surroundings)

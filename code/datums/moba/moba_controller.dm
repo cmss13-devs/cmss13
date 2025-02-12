@@ -29,8 +29,8 @@
 		var/obj/structure/tunnel/moba/new_tunnel = new(tunnel_turf)
 		new_tunnel.map_id = map_id
 
-	for(var/obj/effect/landmark/moba_base in GLOB.landmarks_list)
-		if(moba_base.right_base)
+	for(var/obj/effect/landmark/moba_base/moba_base in GLOB.landmarks_list)
+		if(moba_base.right_side)
 			right_base = get_turf(moba_base)
 		else
 			left_base = get_turf(moba_base)

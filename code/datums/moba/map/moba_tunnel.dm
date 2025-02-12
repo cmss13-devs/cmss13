@@ -45,5 +45,5 @@
 		to_chat(M, SPAN_WARNING("Our crawling was interrupted!"))
 		return XENO_NO_DELAY_ACTION
 
-	SEND_SIGNAL(X, COMSIG_XENO_USED_TUNNEL, src)
+	SEND_SIGNAL(M, COMSIG_XENO_USED_TUNNEL, src)
 	return XENO_NO_DELAY_ACTION

@@ -94,6 +94,9 @@
 			if (!isxeno_human(target) || xeno.can_not_harm(target))
 				continue
 
+			if (HAS_TRAIT(target, TRAIT_NESTED))
+				continue
+
 			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"),
 			SPAN_XENOWARNING("We slash [target] multiple times!"))
 			xeno.flick_attack_overlay(target, "slash")

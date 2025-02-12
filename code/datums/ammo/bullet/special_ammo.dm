@@ -28,6 +28,7 @@
 	max_range = 17
 	accurate_range = 12
 	effective_range_max = 12
+	penetration = min(penetration + ARMOR_PENETRATION_TIER_1, 30)
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "\improper AP smartgun tracer bullet"
@@ -170,6 +171,7 @@
 /datum/ammo/bullet/machinegun/setup_faction_clash_values()
 	. = ..()
 	accurate_range = 12 //we revert the reduction
+	accuracy += HIT_ACCURACY_TIER_4
 
 /datum/ammo/bullet/machinegun/set_bullet_traits()
 	. = ..()
@@ -266,4 +268,4 @@
 
 /datum/ammo/bullet/pkp/setup_faction_clash_values()
 	. = ..()
-	accurate_range = 14
+	accurate_range = 5

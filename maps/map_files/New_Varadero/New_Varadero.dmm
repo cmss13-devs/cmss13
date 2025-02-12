@@ -25,6 +25,9 @@
 /obj/structure/prop/pred_flight,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/islands)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	dir = 8
@@ -163,36 +166,112 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior/beach_bar)
-"aaE" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 15;
-	pixel_x = -14
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/lz1_near)
-"aaF" = (
-/obj/item/fishing_pole{
-	anchored = 1
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/lz1_near)
 "aaG" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
-"aaH" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
+"aaJ" = (
+/turf/open/gm/coast/north,
+/area/varadero/exterior/islands)
+"aaK" = (
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/varadero/exterior/islands)
+"aaL" = (
+/turf/open/gm/coast/east,
+/area/varadero/exterior/islands)
+"aaM" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 21;
+	pixel_x = 10
 	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
+"aaN" = (
+/obj/structure/surface/table,
+/obj/item/tool/kitchen/knife{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
+"aaO" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2";
+	pixel_x = 21
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 15;
+	pixel_x = -14
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
+"aaP" = (
+/turf/open/gm/coast/west,
+/area/varadero/exterior/islands)
+"aaQ" = (
+/obj/structure/prop/wooden_cross{
+	desc = "A grave to a fishing buddy, long gone"
+	},
+/obj/item/clothing/head/boaterhat{
+	pixel_y = 5
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
+"aaR" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/islands)
+"aaS" = (
+/obj/item/fishing_pole{
+	anchored = 1
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/islands)
+"aaT" = (
 /obj/structure/prop/fishing/line/long,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
-"aaI" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/islands)
+"aaU" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
+"aaV" = (
 /obj/item/storage/beer_pack,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/lz1_near)
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
+"aaW" = (
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/islands)
+"aaX" = (
+/turf/open/gm/coast/south,
+/area/varadero/exterior/islands)
+"aaY" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/islands)
+"aaZ" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2";
+	pixel_x = 7;
+	pixel_y = 29
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -3440,10 +3519,6 @@
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = -9;
 	pixel_y = 12
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 21;
-	pixel_x = 10
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
@@ -7664,8 +7739,6 @@
 	pixel_x = -7;
 	pixel_y = -4
 	},
-/obj/effect/landmark/corpsespawner/colonist,
-/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "fZB" = (
@@ -8952,7 +9025,7 @@
 "heu" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/machinery/power/apc/no_power/west,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
 "hfo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -10641,9 +10714,6 @@
 /obj/item/stool{
 	pixel_x = 7;
 	pixel_y = -6
-	},
-/obj/item/clothing/head/boaterhat{
-	pixel_y = 5
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
@@ -13012,7 +13082,7 @@
 /area/varadero/interior/hall_SE)
 "kuE" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "kuX" = (
 /turf/open/floor/shiva/multi_tiles,
@@ -43913,8 +43983,8 @@ vzz
 ygh
 qVq
 asx
-qVD
-fXu
+asx
+asx
 cDm
 asx
 asx
@@ -44277,9 +44347,9 @@ qhE
 bcF
 egU
 dKy
-aaI
-aaF
-aaE
+qVD
+fXu
+asx
 asx
 asx
 wMw
@@ -44451,16 +44521,16 @@ xVw
 qwQ
 daS
 qwQ
-qwQ
-qwQ
-qwQ
+aaW
+aaL
+aag
 lTR
 dXg
 dXg
 qhE
 gEH
 viu
-aaH
+viu
 viu
 wEz
 asx
@@ -44633,16 +44703,16 @@ wBp
 qwQ
 qwQ
 lTR
-qwQ
-qwQ
-qwQ
+aaX
+aaZ
+aaJ
 qwQ
 qwQ
 qwQ
 dXg
 qwQ
 qwQ
-qHl
+qwQ
 pAX
 iOM
 asx
@@ -44815,9 +44885,9 @@ xVw
 qwQ
 qwQ
 qwQ
-qwQ
-qwQ
-lTR
+aaY
+aaP
+aaK
 qwQ
 qwQ
 qwQ
@@ -45366,7 +45436,7 @@ qwQ
 lTR
 qwQ
 qwQ
-lTR
+qwQ
 qwQ
 qwQ
 qwQ
@@ -45545,11 +45615,11 @@ rYC
 dXg
 qwQ
 lTR
-qwQ
-qwQ
-qwQ
-qwQ
-qwQ
+aaW
+aaL
+aaL
+aaL
+aag
 qwQ
 qwQ
 qwQ
@@ -45727,11 +45797,11 @@ wBp
 daS
 dXg
 aTY
-qwQ
-qwQ
-qwQ
-qwQ
-qwQ
+aaX
+aaU
+aaQ
+aaM
+aaJ
 qwQ
 qwQ
 qwQ
@@ -45909,11 +45979,11 @@ wBp
 qwQ
 uYJ
 lTR
-qwQ
-qwQ
-qwQ
-qwQ
-qwQ
+aaX
+aaV
+aaR
+aaN
+aaJ
 qwQ
 pAX
 qwQ
@@ -46091,11 +46161,11 @@ wBp
 qwQ
 aTY
 lTR
-qwQ
-qwQ
-qwQ
-qwQ
-qwQ
+aaY
+aaP
+aaS
+aaO
+aaJ
 qwQ
 lTR
 qwQ
@@ -46275,9 +46345,9 @@ qwQ
 aTY
 qwQ
 aTY
-qwQ
-qwQ
-qwQ
+aaT
+aaP
+aaK
 lTR
 qwQ
 lTR
@@ -46457,7 +46527,7 @@ lTR
 qwQ
 qwQ
 qwQ
-qwQ
+qHl
 qwQ
 lTR
 qwQ

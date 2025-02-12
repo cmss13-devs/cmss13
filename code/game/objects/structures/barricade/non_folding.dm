@@ -235,6 +235,10 @@
 					if(B != src && B.dir == dir)
 						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
+				var/area/area = get_area(src)
+				if(!area.allow_construction)
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				var/turf/open/turf = loc
 				if(!(istype(turf) && turf.allow_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))

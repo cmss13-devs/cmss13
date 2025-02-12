@@ -8,6 +8,10 @@
 
 /obj/item/inflatable/attack_self(mob/user)
 	..()
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("[src] must be inflated on a proper surface!"))
+		return
 	var/turf/open/T = user.loc
 	if(!(istype(T) && T.allow_construction))
 		to_chat(user, SPAN_WARNING("[src] must be inflated on a proper surface!"))

@@ -148,6 +148,12 @@
 	icon_state = "varadero3"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
+/area/varadero/exterior/islands
+	name = "New Varadero - Islands"
+	icon_state = "varadero1"
+	allow_construction = FALSE
+
+
 //interior areas
 
 

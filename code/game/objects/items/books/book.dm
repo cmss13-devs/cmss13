@@ -14,7 +14,26 @@
 
 	var/book_title = "A guide to unreality"
 	var/book_author = "Notreal FakeDude"
-	var/book_contents = {"# This book's not written in! It shouldn't exist!"}
+	var/book_contents = {"
+		# This book's not written in! It shouldn't exist! Aah!
+
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+
+		## Some subtitle!
+
+		```
+		Code block! Code block! For emphasis and quotes! Like the tech manual!
+		```
+
+		This is some text! **This is some bold text!** And *this text* is in italics!
+
+		This is a list:
+		- It has elements!
+		- It has another one! Woah!
+
+	"}
 
 /obj/item/lore_book/attack_self(mob/user)
 	. = ..()
@@ -38,6 +57,10 @@
 	.["title"] = book_title
 	.["author"] = book_author
 	.["contents"] = book_contents
+
+/obj/item/lore_book/ui_assets(mob/user)
+	. = ..()
+	. += get_asset_datum(/datum/asset/simple/paper)
 
 /*
  * Book

@@ -4084,7 +4084,8 @@
 "amP" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	req_one_access = list(19,22)
+	req_one_access = null;
+	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/pilotbunks)
@@ -12250,7 +12251,10 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aKt" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = null;
+	req_one_access_txt = "19"
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -13929,7 +13933,8 @@
 	name = "Outer Telecommunications Controls";
 	pixel_x = -22;
 	pixel_y = -10;
-	req_one_access_txt = list(19,7)
+	req_one_access_txt = list(19,7);
+	needs_power = 0
 	},
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/upper_engineering)
@@ -14397,14 +14402,16 @@
 	id = "tcomms_outer";
 	name = "Outer Telecommunications Controls";
 	pixel_x = 8;
-	req_one_access_txt = list(19,7)
+	req_one_access_txt = list(19,7);
+	needs_power = 0
 	},
 /obj/structure/machinery/door_control{
 	id = "tcomms_inner";
 	name = "Inner Telecommunications Controls";
 	pixel_x = 8;
 	pixel_y = 8;
-	req_access_txt = list(19)
+	req_access_txt = list(19);
+	needs_power = 0
 	},
 /obj/item/device/flashlight/lamp/on{
 	pixel_y = 12;

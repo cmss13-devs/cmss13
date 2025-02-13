@@ -857,7 +857,7 @@
 
 /obj/item/storage/box/MRE
 	name = "\improper USCM MRE"
-	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
+	desc = "Готовая к употреблению пища. Одноразовый армейский рацион, предназначенный для снабжения солдата необходимым уровнем питательных веществ для целого дня напряженной работы. Срок годности по меньшей мере на 20 лет превышает ожидаемый срок службы."
 	icon_state = "mealpack"
 	item_state = "mealpack"
 	icon = 'icons/obj/items/storage/mre.dmi'
@@ -881,6 +881,7 @@
 	var/side = pick("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
 	var/desert = pick("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
 	name = "[initial(name)] ([main])"
+	ru_names_rename(ru_names_toml(initial(name), suffix = " ([declent_ru_initial(main, NOMINATIVE, main)])", override_base = name))
 	//1 in 3 chance of getting a fortune cookie
 	var/cookie = rand(1,3)
 	var/matches_type = rand(1, 5)

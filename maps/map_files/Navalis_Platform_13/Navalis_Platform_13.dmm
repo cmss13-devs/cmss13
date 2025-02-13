@@ -707,6 +707,17 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/mid)
+"acd" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = -16;
+	color = "#FFFF00"
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/navalis/indoors/industrial/power)
 "ace" = (
 /obj/structure/monorail{
 	dir = 9;
@@ -6140,6 +6151,13 @@
 "aqs" = (
 /turf/open/floor/prison/whitered,
 /area/navalis/indoors/med_sci/main_floor)
+"aqt" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/industrial/mining)
 "aqu" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -17112,6 +17130,10 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/residential/port)
+"aSo" = (
+/obj/effect/spawner/random/gun/rifle/midchance,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/residential/accessway)
 "aSp" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/machinery/colony_floodlight/navalis_wall_light{
@@ -17724,6 +17746,10 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/landing_zone_1)
+"aTD" = (
+/obj/effect/spawner/random/gun/rifle/midchance,
+/turf/open/floor/darkred2,
+/area/navalis/indoors/residential/port)
 "aUq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata,
@@ -20444,6 +20470,7 @@
 /turf/open/floor/prison/blue,
 /area/navalis/outdoors/landing_zone_1)
 "dNo" = (
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/corsat/cargo,
 /area/navalis/indoors/industrial/mining)
 "dOx" = (
@@ -26314,6 +26341,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square"
 	},
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "jYP" = (
@@ -34109,6 +34137,7 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/workshop)
 "sbS" = (
@@ -35154,6 +35183,10 @@
 	},
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/device/defibrillator/synthetic/hyperdyne{
+	pixel_x = 4;
+	pixel_y = 7
+	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/command/tertiary_comms)
 "teN" = (
@@ -62465,7 +62498,7 @@ aow
 aov
 aov
 oFY
-aov
+aqt
 oFY
 aSu
 aoC
@@ -63019,7 +63052,7 @@ nTP
 bZW
 bZW
 bZW
-bZW
+acd
 rYp
 fKh
 aax
@@ -66545,7 +66578,7 @@ aja
 aqO
 aqO
 aqO
-apI
+aSo
 aqO
 apI
 aqO
@@ -66697,7 +66730,7 @@ lsv
 asq
 aJN
 aqO
-apI
+aSo
 rew
 aKy
 apI
@@ -69367,7 +69400,7 @@ aze
 all
 asq
 asq
-acK
+acD
 acK
 acK
 acD
@@ -70137,7 +70170,7 @@ ako
 akh
 avz
 atX
-ozC
+aTD
 atk
 aJO
 aqZ

@@ -152,8 +152,6 @@
 	trait_to_give = "scout"
 	kit_typepath = /obj/item/storage/box/spec/scout
 
-
-
 /datum/specialist_set/scout/redeem_set(mob/living/redeemer, kit)
 	. = ..()
 	if(!.)

@@ -13,10 +13,10 @@
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aad" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/oob/water)
 "aae" = (
@@ -2000,40 +2000,6 @@
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/navalis/indoors/residential/starboard)
 "aff" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal";
-	layer = 3
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal";
-	layer = 3
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal";
-	layer = 3
-	},
-/obj/structure/sign/safety/hvac{
-	pixel_x = 7;
-	pixel_y = 11;
-	name = "Creature Hazard Warning";
-	desc = "A warning that aquatic creatures have climbed on to this platform via the lattice support."
-	},
-/obj/structure/sign/safety/north{
-	pixel_x = 7;
-	pixel_y = 26
-	},
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 1;
 	layer = 2.97
@@ -4552,9 +4518,6 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
-"alg" = (
-/turf/closed/wall/hybrisa/colony/engineering,
-/area/navalis/oob)
 "alh" = (
 /obj/structure/platform_decoration/metal/strata,
 /obj/structure/monorail{
@@ -6213,9 +6176,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/corsat/brown,
 /area/navalis/indoors/industrial/mining)
-"aqy" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
-/area/navalis/indoors/residential/starboard)
 "aqz" = (
 /turf/open/floor/prison/whitered/west,
 /area/navalis/indoors/med_sci/main_floor)
@@ -8601,6 +8561,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 1
+	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "ayD" = (
@@ -9654,6 +9617,9 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
+	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "aAr" = (
@@ -10132,9 +10098,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/primary_storage)
-"aBb" = (
-/turf/open/auto_turf/snow/brown_base/layer0/seabed,
-/area/navalis/oob)
 "aBc" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata/navalis,
@@ -13921,7 +13884,7 @@
 /turf/open/floor/darkred2,
 /area/navalis/indoors/residential/port)
 "aKE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -16745,13 +16708,6 @@
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/navalis/indoors/residential/port)
-"aRt" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/prop/hybrisa/misc/floorprops/grate4{
-	dir = 4
-	},
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/exterior/med_ext)
 "aRu" = (
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/darkblue2,
@@ -17280,6 +17236,57 @@
 /obj/structure/machinery/colony_floodlight/navalis_wall_light,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/com_ext)
+"aSM" = (
+/obj/structure/barricade/handrail/strata/navalis,
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 8
+	},
+/turf/open/floor/almayer/mono,
+/area/navalis/outdoors/landing_zone_2)
+"aSN" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata/navalis,
+/turf/open/floor/almayer/mono,
+/area/navalis/outdoors/landing_zone_2)
+"aSO" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal";
+	layer = 3
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal";
+	layer = 3
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal";
+	layer = 3
+	},
+/obj/structure/sign/safety/hvac{
+	pixel_x = 7;
+	pixel_y = 11;
+	name = "Creature Hazard Warning";
+	desc = "A warning that aquatic creatures have climbed on to this platform via the lattice support."
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = 7;
+	pixel_y = 26
+	},
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/outdoors/landing_zone_1)
 "aTh" = (
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/outdoors/landing_zone_2)
@@ -17379,9 +17386,6 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
-"aYg" = (
-/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
-/area/navalis/outdoors/landing_zone_2)
 "aYN" = (
 /obj/effect/decal/hybrisa/trash{
 	pixel_y = 12
@@ -21927,8 +21931,8 @@
 /turf/open/floor/prison,
 /area/navalis/outdoors/landing_zone_1)
 "fLg" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "fLD" = (
@@ -25130,7 +25134,7 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
 /area/navalis/indoors/command/tertiary_comms)
 "jjl" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "jjs" = (
@@ -29056,9 +29060,6 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
-"nFL" = (
-/turf/closed/wall/hybrisa/colony/engineering,
-/area/navalis/outdoors/landing_zone_2)
 "nGA" = (
 /obj/structure/machinery/mech_bay_recharge_port{
 	name = "Power Port"
@@ -31267,7 +31268,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/foyer)
 "pKK" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 8
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -31697,10 +31698,10 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/navalis/indoors/residential/port)
 "qbD" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "qch" = (
@@ -35994,7 +35995,7 @@
 /turf/open/floor/prison/whitered/west,
 /area/navalis/indoors/med_sci/main_floor)
 "utx" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -37946,10 +37947,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_starboard)
-"why" = (
-/obj/structure/platform_decoration/metal/strata,
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/oob)
 "wiY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -38750,10 +38747,10 @@
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/primary_storage)
 "wTK" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 1
 	},
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_1)
 "wTU" = (
@@ -39280,7 +39277,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/navalis/indoors/med_sci/surg_two)
 "xuP" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
 	dir = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
@@ -43850,7 +43847,7 @@ aLj
 bjf
 iTl
 aff
-lWd
+aSO
 kjl
 uor
 apK
@@ -46962,7 +46959,7 @@ lJH
 aoE
 aoE
 lJH
-aRt
+aoE
 hjz
 sMY
 atZ
@@ -54079,7 +54076,7 @@ nwQ
 vrW
 jpD
 dKk
-aaL
+jZh
 unv
 unv
 unv
@@ -54437,7 +54434,7 @@ sCu
 sCu
 sCu
 sCu
-sCu
+aSN
 sXb
 esz
 lJH
@@ -54602,7 +54599,7 @@ tnV
 akX
 tnV
 tnV
-aAt
+aSM
 fgB
 lJH
 mmV
@@ -59182,19 +59179,19 @@ aER
 aER
 aaL
 aaL
-nFL
+amJ
 tAA
 pVI
 gWg
 gWg
 ciX
 isl
-nFL
+amJ
 aaL
 aER
 aER
 aaL
-nFL
+amJ
 isl
 aNG
 pui
@@ -59333,7 +59330,7 @@ eJs
 eJs
 alW
 aER
-alg
+amJ
 isl
 isl
 isl
@@ -59984,8 +59981,8 @@ ipE
 rnI
 feA
 feA
-aYg
-alg
+isl
+amJ
 uBL
 amS
 wcs
@@ -74052,7 +74049,7 @@ afZ
 afB
 izA
 apU
-aBb
+aph
 aph
 aph
 aph
@@ -74216,7 +74213,7 @@ apk
 apk
 apk
 apk
-aBb
+aph
 asq
 aph
 aOj
@@ -76505,8 +76502,8 @@ xmK
 arj
 aFX
 xmK
-aqy
-aqy
+tAA
+tAA
 apk
 apk
 asq
@@ -76674,7 +76671,7 @@ kAa
 ags
 apk
 asq
-why
+jja
 vNi
 lOO
 iMb

@@ -10,7 +10,9 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/ore/coal,
 		/obj/item/ore/slag,
 		/obj/item/reagent_container/food/snacks/fishable/urchin/purple,
-		/obj/item/reagent_container/food/snacks/fishable/fish/bluegill
+		/obj/item/reagent_container/food/snacks/fishable/fish/bluegill,
+		/obj/item/reagent_container/food/snacks/fishable/fish/salmon,
+
 	)
 	var/list/uncommon_fishable_atoms = list(
 		/obj/item/cell/high,

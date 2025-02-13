@@ -107,3 +107,15 @@
 	name = "bluegill meat"
 	desc = "Small strips of pan frying meat!"
 	icon_state = "bluegill_meat"
+
+/obj/item/reagent_container/food/snacks/meat/fish/salmon
+
+	name = "salmon meat"
+	desc = "Considered a 'fancy' cut of fish!"
+	icon_state = "salmon_meat"
+
+/obj/item/reagent_container/food/snacks/meat/fish/white_perch
+
+	name = "white perch meat"
+	desc = "meat of an invasive fish, its oily.."
+	icon_state = "white_perch_meat"

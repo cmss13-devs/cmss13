@@ -97,7 +97,7 @@
 /obj/structure/machinery/fob/update_icon()
 	if(!is_inside_lz)
 		icon_state = "[initial(icon_state)]_undeployed"
-	if(is_on)
+	else if(is_on)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]_off"
@@ -150,12 +150,6 @@
 		return
 
 
-/obj/structure/machinery/fob/terminal/update_icon()
-	. = ..()
-	if(!is_inside_lz)
-		icon_state = initial(icon_state)
-
-
 /obj/structure/machinery/fob/terminal/attack_hand(mob/user)
 
 	/*if(!is_inside_lz) COMMENTED FOR EASY TESTS
@@ -179,11 +173,6 @@
 /obj/structure/machinery/fob/terminal/generator_turn_on()
 	. = ..()
 	generator_time = world.time
-
-/obj/structure/machinery/fob/terminal/update_icon()
-	.=..()
-	if(!is_inside_lz)
-		icon_state = initial(icon_state)
 
 
 
@@ -267,14 +256,11 @@
 
 //****************************************** SENTRYGUN GENERAL ************************************************//
 /obj/structure/machinery/fob/weapons_platform
-	icon_state = "weapons-platform"
-	icon = 'icons/obj/structures/machinery/fob_machinery/rocket-launcher-64x64.dmi'
+	icon_state = "platform"
+	icon = 'icons/obj/structures/machinery/fob_machinery/rocket_launcher.dmi'
 	var/obj/structure/machinery/fob/sentrygun/linked_gun
 
 /obj/structure/machinery/fob/weapons_platform/attack_hand(mob/living/user)
-	return
-
-/obj/structure/machinery/fob/weapons_platform/update_icon()
 	return
 
 /obj/structure/machinery/fob/weapons_platform/attackby(obj/item/item, mob/user)
@@ -306,9 +292,9 @@
 		linked_gun.loose_target()
 		return*/
 
-	/*if(!linked_gun)
-		stop_processing() COMMENTED FOR EASY TESTS
-		return*/
+	if(!linked_gun)
+		stop_processing()
+		return
 
 	linked_gun.check_targets()
 
@@ -332,7 +318,6 @@
 	start_processing()
 	if(linked_gun)
 		linked_gun.set_area()
-
 
 /obj/structure/machinery/fob/sentrygun
 	var/mob/living/target
@@ -419,11 +404,6 @@
 			return FALSE
 		return TRUE
 	return FALSE
-
-/obj/structure/machinery/fob/sentrygun/update_icon()
-	. = ..()
-	if(!linked_platform)
-		icon_state = "[initial(icon_state)]-undeployed"
 
 //****************************************** SENZOR ARRAY ************************************************//
 /obj/structure/machinery/fob/sentrygun/senzor
@@ -558,7 +538,7 @@
 	name = "\improper UE-09 Service Terminal"
 	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
 	icon_state = "rocket-launcher"
-	icon = 'icons/obj/structures/machinery/fob_machinery/rocket-launcher-64x64.dmi'
+	icon = 'icons/obj/structures/machinery/fob_machinery/rocket_launcher.dmi'
 	ammo = /datum/ammo/rocket
 	var/list/locked_on_targets = list()
 
@@ -614,6 +594,18 @@
 		loose_target(target)
 
 
+//****************************************** FLOODLIGHT ************************************************//
+
+/obj/structure/machinery/fob/floodlight
+	var/on_light_range = 18
+
+/obj/structure/machinery/fob/floodlight/power_change()
+	. = ..()
+	set_light(on_light_range)
+	/*if(is_on && is_inside_lz)
+		set_light(on_light_range)
+	else
+		set_light(0)*/
 
 
 

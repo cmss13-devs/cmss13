@@ -707,10 +707,6 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/mid)
-"acd" = (
-/obj/structure/machinery/colony_floodlight,
-/turf/open/floor/kutjevo/grey/plate,
-/area/navalis/outdoors/landing_zone_2)
 "ace" = (
 /obj/structure/monorail{
 	dir = 9;
@@ -6144,24 +6140,6 @@
 "aqs" = (
 /turf/open/floor/prison/whitered,
 /area/navalis/indoors/med_sci/main_floor)
-"aqt" = (
-/obj/effect/decal/medical_decals{
-	icon_state = "triagedecalleft";
-	color = "#d3d3d3"
-	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100;
-	pixel_y = 15;
-	pixel_x = 3
-	},
-/obj/effect/decal/cleanable/dirt{
-	icon_state = "thermite";
-	name = "impact"
-	},
-/turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/landing_zone_1)
 "aqu" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -6460,6 +6438,7 @@
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 4
 	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/kutjevo/grey/plate,
 /area/navalis/outdoors/landing_zone_2)
 "ary" = (
@@ -12019,6 +11998,12 @@
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
+"aFl" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
 "aFm" = (
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
@@ -15808,6 +15793,12 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aPw" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
 "aPx" = (
 /obj/structure/window/framed/hybrisa/colony/engineering/hull,
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -17121,17 +17112,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/residential/port)
-"aSo" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 1
-	},
-/obj/structure/lz_sign/hybrisa_sign/mining{
-	name = "Navalis Platform 13 -  Landing Zone two sign";
-	desc = "A large sign that reads Navalis Platform 13 - Cargo Landing Pad Two";
-	layer = 4
-	},
-/turf/open/floor/almayer/mono,
-/area/navalis/outdoors/landing_zone_2)
 "aSp" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/machinery/colony_floodlight/navalis_wall_light{
@@ -17507,8 +17487,76 @@
 /obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
+"aSZ" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTa" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTb" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTc" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTd" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTe" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTf" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTg" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
 "aTh" = (
 /turf/open/floor/prison/darkyellowfull2,
+/area/navalis/outdoors/landing_zone_2)
+"aTi" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTj" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTk" = (
+/obj/structure/machinery/landinglight/ds2,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTl" = (
+/obj/structure/machinery/landinglight/ds2/delaythree,
+/turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
 "aTm" = (
 /obj/structure/prop/structure_lattice{
@@ -17535,6 +17583,147 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aTn" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTo" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTp" = (
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2)
+"aTq" = (
+/obj/structure/lz_sign/hybrisa_sign/mining{
+	name = "Navalis Platform 13 -  Landing Zone two sign";
+	desc = "A large sign that reads Navalis Platform 13 - Cargo Landing Pad Two";
+	layer = 4
+	},
+/turf/open/floor/kutjevo/grey,
+/area/navalis/outdoors/landing_zone_2)
+"aTr" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTs" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTt" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 1
+	},
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTu" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTv" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 8
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTw" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4
+	},
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTx" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTy" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 4
+	},
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTz" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTA" = (
+/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTB" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTC" = (
+/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
 "aUq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata,
@@ -18074,6 +18263,9 @@
 	light_power = 3;
 	light_range = 5;
 	pixel_y = -32
+	},
+/obj/structure/sign/safety/stairs{
+	pixel_x = 32
 	},
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
@@ -22272,6 +22464,9 @@
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "fPP" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 1
+	},
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
@@ -22507,6 +22702,9 @@
 /turf/open/floor/corsat,
 /area/navalis/indoors/logistic/maintenance_starboard)
 "gaD" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft";
 	color = "#d3d3d3"
@@ -26563,27 +26761,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/residential/accessway)
-"kzw" = (
-/obj/effect/decal/cleanable/blood/gibs/robot{
-	pixel_y = 18;
-	pixel_x = -4
-	},
-/obj/effect/decal/remains/robot{
-	pixel_y = -7
-	},
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100;
-	pixel_y = 15;
-	pixel_x = 3
-	},
-/turf/open/floor/plating/platingdmg3,
-/area/navalis/outdoors/landing_zone_1)
 "kzx" = (
 /obj/structure/bed/chair,
 /turf/open/floor/prison,
@@ -28561,6 +28738,9 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/primary_storage)
 "mIE" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
 /obj/effect/decal/medical_decals{
 	dir = 4;
 	icon_state = "triagedecaldir";
@@ -36147,6 +36327,7 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
 "uor" = (
+/obj/structure/machinery/landinglight/ds1,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir";
 	color = "#d3d3d3"
@@ -43398,25 +43579,25 @@ cTA
 kjl
 xAd
 mIE
+aTy
+aTw
+aTu
 mIE
+aTy
+aTw
+aTu
 mIE
+aTy
+aTw
+aTu
 mIE
+aTy
+aTw
+aTu
 mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
-mIE
+aTy
+aTw
+aTu
 mIE
 dyL
 kjl
@@ -43724,7 +43905,7 @@ bMy
 qkp
 lWd
 kjl
-uor
+aTA
 apK
 apK
 apK
@@ -43746,7 +43927,7 @@ apK
 apK
 apK
 apK
-fPP
+aTr
 kjl
 lWd
 mEm
@@ -43888,7 +44069,7 @@ vrN
 qkp
 lWd
 kjl
-uor
+aTB
 apK
 apK
 apK
@@ -43910,7 +44091,7 @@ apK
 apK
 apK
 apK
-fPP
+aTs
 kjl
 lWd
 mEm
@@ -44052,7 +44233,7 @@ iTl
 aff
 aSO
 kjl
-uor
+aTC
 apK
 apK
 apK
@@ -44074,7 +44255,7 @@ apK
 apK
 apK
 apK
-fPP
+aTt
 kjl
 lWd
 mEm
@@ -44380,7 +44561,7 @@ xHO
 qkp
 lWd
 kjl
-uor
+aTA
 apK
 apK
 apK
@@ -44402,7 +44583,7 @@ apK
 apK
 apK
 apK
-fPP
+aTr
 kjl
 lWd
 mEm
@@ -44544,7 +44725,7 @@ vrN
 qkp
 lWd
 kjl
-uor
+aTB
 apK
 apK
 apK
@@ -44566,7 +44747,7 @@ apK
 apK
 apK
 apK
-fPP
+aTs
 kjl
 lWd
 mEm
@@ -44708,7 +44889,7 @@ vrN
 qkp
 lWd
 kjl
-uor
+aTC
 apK
 apK
 apK
@@ -44730,7 +44911,7 @@ apK
 apK
 apK
 apK
-fPP
+aTt
 kjl
 lWd
 mEm
@@ -45036,7 +45217,7 @@ bMy
 qkp
 lWd
 kjl
-uor
+aTA
 apK
 apK
 apK
@@ -45058,7 +45239,7 @@ apK
 apK
 apK
 apK
-fPP
+aTr
 kjl
 lWd
 mEm
@@ -45200,7 +45381,7 @@ aSB
 qkp
 aHf
 kjl
-uor
+aTB
 apK
 apV
 apK
@@ -45222,7 +45403,7 @@ apK
 apK
 apV
 apK
-fPP
+aTs
 kjl
 lWd
 mEm
@@ -45366,25 +45547,25 @@ vhb
 kjl
 xhm
 gaD
+aTz
+aTx
+aTv
 gaD
+aTz
+aTx
+aTv
 gaD
+aTz
+aTx
+aTv
 gaD
-kzw
-aqt
+aTz
+aTx
+aTv
 gaD
-gaD
-gaD
-gaD
-gaD
-gaD
-gaD
-gaD
-gaD
-gaD
-gaD
-gaD
-gaD
-gaD
+aTz
+aTx
+aTv
 gaD
 sNz
 kjl
@@ -55106,27 +55287,27 @@ iGR
 aAP
 aWu
 jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
+aTb
+aTi
+aTf
+aTd
+aTb
+aTi
+aTf
+aTd
+aTb
+aTi
+aTf
+aTd
+aTb
+aTi
+aTf
+aTd
+aTb
+aTi
+aTf
+aTd
+aTb
 jyc
 tCs
 tnV
@@ -55269,7 +55450,7 @@ jNQ
 dqB
 tnV
 aWu
-jyc
+aTk
 mSw
 aEa
 mSw
@@ -55291,7 +55472,7 @@ mSw
 mSw
 aEa
 mSw
-jyc
+aFl
 tCs
 tnV
 aAt
@@ -55433,7 +55614,7 @@ kIp
 xXV
 tnV
 aWu
-jyc
+aTl
 mSw
 mSw
 mSw
@@ -55455,7 +55636,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aPw
 tCs
 tnV
 aAt
@@ -55597,7 +55778,7 @@ aUq
 iGR
 tnV
 aWu
-jyc
+aTn
 mSw
 mSw
 mSw
@@ -55619,7 +55800,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aSZ
 tCs
 tnV
 aAt
@@ -55761,7 +55942,7 @@ aUq
 eSs
 tnV
 xge
-jyc
+aTo
 mSw
 mSw
 mSw
@@ -55783,7 +55964,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aTa
 oOz
 tnV
 aAt
@@ -55925,7 +56106,7 @@ aUq
 eSs
 tnV
 xge
-jyc
+aTk
 mSw
 mSw
 mSw
@@ -55947,7 +56128,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aFl
 oOz
 tnV
 aAt
@@ -56089,7 +56270,7 @@ aUq
 eSs
 tnV
 xge
-jyc
+aTl
 mSw
 mSw
 mSw
@@ -56111,7 +56292,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aPw
 oOz
 tnV
 aAt
@@ -56253,7 +56434,7 @@ aUq
 eSs
 tnV
 xge
-jyc
+aTn
 mSw
 mSw
 mSw
@@ -56275,7 +56456,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aSZ
 oOz
 tnV
 aAt
@@ -56417,7 +56598,7 @@ aUq
 eSs
 tnV
 xge
-jyc
+aTp
 mSw
 mSw
 mSw
@@ -56439,7 +56620,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aTa
 oOz
 tnV
 aAt
@@ -56581,7 +56762,7 @@ aUq
 iGR
 tnV
 aWu
-jyc
+aTk
 mSw
 mSw
 mSw
@@ -56603,7 +56784,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aFl
 tCs
 tnV
 aAt
@@ -56745,7 +56926,7 @@ jNQ
 irQ
 tnV
 aWu
-jyc
+aTl
 mSw
 mSw
 mSw
@@ -56767,7 +56948,7 @@ mSw
 mSw
 mSw
 mSw
-jyc
+aPw
 tCs
 tnV
 aAt
@@ -56909,7 +57090,7 @@ kIp
 qoi
 tnV
 aWu
-jyc
+aTn
 mSw
 aEa
 mSw
@@ -56931,7 +57112,7 @@ mSw
 mSw
 aEa
 mSw
-jyc
+aSZ
 tCs
 tnV
 aAt
@@ -57074,27 +57255,27 @@ iGR
 aAQ
 aWu
 jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
-jyc
+aTc
+aTj
+aTg
+aTe
+aTc
+aTj
+aTg
+aTe
+aTc
+aTj
+aTg
+aTe
+aTc
+aTj
+aTg
+aTe
+aTc
+aTj
+aTg
+aTe
+aTc
 jyc
 tCs
 tnV
@@ -57234,7 +57415,7 @@ dGb
 bDY
 lJH
 aUq
-aSo
+eSs
 tnV
 ydi
 lwl
@@ -58871,7 +59052,7 @@ aaL
 aaL
 aaL
 aaL
-aaL
+aTq
 eJs
 eJs
 sDb
@@ -59034,7 +59215,7 @@ dKk
 kNL
 kNL
 dKk
-acd
+dKk
 aaL
 kJF
 erU

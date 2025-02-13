@@ -1351,6 +1351,11 @@
 		origin_fax.update_departments()
 
 	else if(href_list["PressFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/target_human = locate(href_list["PressFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
@@ -1370,7 +1375,7 @@
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
@@ -1390,15 +1395,20 @@
 					return
 
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
-		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", "size=500x400")
-		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", "size=500x400")
+		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(usr, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax("Press", fax_message, origin_fax, is_priority_fax, target_human, organization_type)
 
 	else if(href_list["USCMFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/target_human = locate(href_list["USCMFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
@@ -1417,7 +1427,7 @@
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
@@ -1437,15 +1447,20 @@
 					sent_title = "USCM High Command"
 
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
-		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", "size=500x400")
-		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", "size=500x400")
+		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(usr, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_MARINE, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["WYFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/target_human = locate(href_list["WYFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
@@ -1464,7 +1479,7 @@
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
@@ -1480,15 +1495,20 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
-		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", "size=500x400")
-		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", "size=500x400")
+		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(usr, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_WY, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["TWEFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/target_human = locate(href_list["TWEFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
@@ -1507,7 +1527,7 @@
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
@@ -1523,15 +1543,20 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
-		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", "size=500x400")
-		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", "size=500x400")
+		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(usr, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_TWE, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["UPPFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/target_human = locate(href_list["UPPFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
@@ -1550,7 +1575,7 @@
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
@@ -1566,15 +1591,20 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
-		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", "size=500x400")
-		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", "size=500x400")
+		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(usr, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_UPP, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["CLFFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/target_human = locate(href_list["CLFFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
@@ -1593,7 +1623,7 @@
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
@@ -1609,15 +1639,20 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
-		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", "size=500x400")
-		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", "size=500x400")
+		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(usr, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_CLF, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["CMBFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/target_human = locate(href_list["CMBFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
@@ -1636,7 +1671,7 @@
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
@@ -1652,11 +1687,11 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
-		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", "size=500x400")
-		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", "size=500x400")
+		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(usr, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_MARSHAL, fax_message, origin_fax, is_priority_fax, target_human)
 

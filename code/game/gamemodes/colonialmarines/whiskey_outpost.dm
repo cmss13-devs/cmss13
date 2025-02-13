@@ -298,11 +298,10 @@
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
 		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
-
 		GLOB.round_statistics.log_round_statistics()
+		GLOB.round_statistics.save()
 
-		round_finished = 1
-
+	round_finished = 1
 	calculate_end_statistics()
 
 

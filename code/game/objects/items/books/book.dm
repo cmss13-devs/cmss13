@@ -1,3 +1,44 @@
+/obj/item/lore_book
+	name = "book"
+	icon = 'icons/obj/items/books.dmi'
+	icon_state = "book"
+	item_state = "book_dark"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/books_righthand.dmi',
+	)
+	w_class = SIZE_MEDIUM
+	attack_verb = list("bashed", "whacked", "educated")
+	pickup_sound = 'sound/handling/book_pickup.ogg'
+	drop_sound = 'sound/handling/book_pickup.ogg'
+
+	var/book_title = "A guide to unreality"
+	var/book_author = "Notreal FakeDude"
+	var/book_contents = {"# This book's not written in! It shouldn't exist!"}
+
+/obj/item/lore_book/attack_self(mob/user)
+	. = ..()
+
+	tgui_interact(user)
+
+/obj/item/lore_book/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(ui)
+		return
+
+	ui = new(user, src, "Book", book_title)
+	ui.open()
+
+/obj/item/lore_book/ui_state(mob/user, datum/ui_state/state)
+	return GLOB.human_adjacent_state
+
+/obj/item/lore_book/ui_static_data(mob/user)
+	. = ..()
+
+	.["title"] = book_title
+	.["author"] = book_author
+	.["contents"] = book_contents
+
 /*
  * Book
  */

@@ -533,9 +533,6 @@
 			object.HasProximity(src)
 
 
-
-
-
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
 	adjust_fire_stacks(-5, min_stacks = 0)
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)

@@ -83,10 +83,3 @@
 		desc += "<br>Сейчас: <b>6</b> ед. [/datum/reagent/toxin/molecular_acid::name] (всего <b>90</b> урона)."
 	else if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
 		desc += "<br>Сейчас: <b>20</b> стаков нейротоксина."
-
-// TODO220: This is a bugfix, send to upstream!
-/datum/xeno_strain/trapper/apply_strain(mob/living/carbon/xenomorph/boiler/boiler)
-	if(!istype(boiler))
-		return FALSE
-	boiler.ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid]
-	. = ..()

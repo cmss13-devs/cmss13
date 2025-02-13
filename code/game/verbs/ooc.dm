@@ -87,18 +87,22 @@
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
 	if(isCouncil(src))
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
+	var/comm_award = find_community_award_icons()
+	if(comm_award)
+		prefix += comm_award
 	if(admin_holder)
 		var/list/rank_icons = icon_states('icons/ooc.dmi')
 		var/rankname = admin_holder.rank
 		if(rankname in rank_icons)
 			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
-	if(admin_holder.extra_titles?.len)
-		var/list/extra_rank_icons = icon_states('icons/ooc.dmi')
-		var/ooc_icon_state
-		for(var/srank in admin_holder.extra_titles)
-			ooc_icon_state = trim(srank)
-			if(ooc_icon_state in extra_rank_icons)
-				prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, ooc_icon_state)]"
+
+		if(length(admin_holder.extra_titles))
+			var/list/extra_rank_icons = icon_states('icons/ooc.dmi')
+			var/ooc_icon_state
+			for(var/srank in admin_holder.extra_titles)
+				ooc_icon_state = trim(srank)
+				if(ooc_icon_state in extra_rank_icons)
+					prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, ooc_icon_state)]"
 	if(prefix)
 		prefix = "[prefix] "
 	return prefix

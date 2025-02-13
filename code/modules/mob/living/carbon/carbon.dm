@@ -128,11 +128,11 @@
 		return COMPONENT_CANCEL_MOVE
 
 	var/mob/living/carbon/xenomorph/xeno = hauling_xeno
+	next_haul_resist = world.time + 1.3 SECONDS
 
 	if(istype(get_active_hand(), /obj/item))
 		var/obj/item/item = get_active_hand()
 		if(item.force)
-			next_haul_resist = world.time + 1.3 SECONDS
 			var/damage_of_item = rand(floor(item.force / 4), item.force)
 			xeno.take_limb_damage(damage_of_item)
 			for(var/mob/mobs_in_view as anything in viewers(src, null))

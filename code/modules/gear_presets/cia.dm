@@ -212,7 +212,7 @@
 	minimap_background = "background_civillian"
 	minimap_icon = "io"
 	idtype = /obj/item/card/id
-
+	skills = /datum/skills/owlf
 
 /datum/equipment_preset/cia/owlf/load_gear(mob/living/carbon/human/new_human)
 

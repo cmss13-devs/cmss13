@@ -504,7 +504,6 @@
 	add_filter("hauled_shadow", 1, color_matrix_filter(rgb(95, 95, 95)))
 	pixel_y = -7
 
-
 /mob/living/carbon/human/proc/release_haul_death()
 	SIGNAL_HANDLER
 	handle_unhaul()
@@ -520,9 +519,7 @@
 
 // Removing traits and other stuff after xeno releases us from haul
 /mob/living/carbon/human/proc/handle_unhaul()
-	if(!isturf(loc))
-		var/location = get_turf(loc)
-		forceMove(location)
+	var/location = get_turf(loc)
 	src.remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
 	pixel_y = 0
 	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
@@ -530,6 +527,11 @@
 	hauling_xeno = null
 	layer = MOB_LAYER
 	remove_filter("hauled_shadow")
+	forceMove(location)
+	for(var/obj/object in location)
+		if(istype(object, /obj/effect/alien/resin/trap) || istype(object, /obj/effect/alien/egg))
+			object.HasProximity(src)
+
 
 
 

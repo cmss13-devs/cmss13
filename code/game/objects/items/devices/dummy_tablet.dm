@@ -142,7 +142,8 @@
 
 
 /obj/item/device/professor_dummy_tablet/Topic(href, href_list)
-	if(..()) return FALSE
+	if(..())
+		return FALSE
 
 	if (!is_adjacent_to_dummy(usr))
 		return FALSE

@@ -43,7 +43,8 @@
 	return
 
 /obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
 		to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [A]."))
@@ -380,8 +381,8 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
-	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
-						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
+	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"),
+						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"),
 						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 /obj/item/toy/bikehorn

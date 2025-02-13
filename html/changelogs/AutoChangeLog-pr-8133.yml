@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - code_imp: "Xeno wounds now update every time they take damage"

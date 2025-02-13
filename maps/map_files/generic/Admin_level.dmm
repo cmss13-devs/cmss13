@@ -1833,7 +1833,7 @@
 /turf/closed/wall,
 /area/adminlevel/ert_station)
 "VD" = (
-/obj/structure/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "VI" = (
@@ -1901,7 +1901,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "WQ" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "Xi" = (

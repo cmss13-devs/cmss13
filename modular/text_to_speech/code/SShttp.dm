@@ -16,8 +16,10 @@ SUBSYSTEM_DEF(http)
 /datum/controller/subsystem/http/PreInit()
 	. = ..()
 	rustg_create_async_http_client() // Open the door
-///datum/controller/subsystem/http/get_stat_details()
-//	return "P: [length(active_async_requests)] | T: [total_requests]"
+
+/datum/controller/subsystem/http/stat_entry(msg)
+	return "[..()] P:[length(active_async_requests)] T:[total_requests]"
+
 /datum/controller/subsystem/http/fire(resumed)
 	for(var/r in active_async_requests)
 		var/datum/http_request/req = r

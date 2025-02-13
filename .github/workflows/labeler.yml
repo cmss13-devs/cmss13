@@ -1,47 +1,13 @@
-name: Labeling and Verification
+name: "Label"
+
 on:
-  pull_request_target:
-    types: [opened, reopened, synchronize, edited]
+- pull_request_target
+
 jobs:
-  label:
+  labeler:
     runs-on: ubuntu-latest
     steps:
-      - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
-        id: value_holder
-        env:
-          ENABLER_SECRET: ${{ secrets.ACTION_ENABLER }}
-        run: |
-          unset SECRET_EXISTS
-          if [ -n "$ENABLER_SECRET" ]; then SECRET_EXISTS=true ; fi
-          echo "ACTIONS_ENABLED=$SECRET_EXISTS" >> $GITHUB_OUTPUT
-
-      - name: Generate App Token
-        id: app-token-generation
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - name: Get The Script
-        if: steps.value_holder.outputs.ACTIONS_ENABLED
-        run: |
-          wget "https://raw.githubusercontent.com/${{ github.repository }}/master/.github/add_labels.py"
-      - name: Set up Python
-        if: steps.value_holder.outputs.ACTIONS_ENABLED
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.8
-      - name: Install dependencies
-        if: steps.value_holder.outputs.ACTIONS_ENABLED
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install pygithub
-          sudo apt-get install dos2unix
-      - name: Add and verify labels
-        if: steps.value_holder.outputs.ACTIONS_ENABLED
-        run: |
-          python add_labels.py
-        env:
-          REPO: ${{ github.repository }}
-          TOKEN: ${{ steps.app-token-generation.outputs.token }}
-          PR_NUMBER: ${{ github.event.number }}
+    - uses: actions/labeler@v5
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        sync-labels: true

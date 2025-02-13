@@ -1,67 +1,3 @@
-/obj/item/lore_book
-	name = "book"
-	icon = 'icons/obj/items/books.dmi'
-	icon_state = "book"
-	item_state = "book_dark"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/books_righthand.dmi',
-	)
-	w_class = SIZE_MEDIUM
-	attack_verb = list("bashed", "whacked", "educated")
-	pickup_sound = 'sound/handling/book_pickup.ogg'
-	drop_sound = 'sound/handling/book_pickup.ogg'
-
-	var/book_title = "A guide to unreality"
-	var/book_author = "Notreal FakeDude"
-	var/book_contents = {"
-		# This book's not written in! It shouldn't exist! Aah!
-
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-		At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
-
-		## Some subtitle!
-
-		```
-		Code block! Code block! For emphasis and quotes! Like the tech manual!
-		```
-
-		This is some text! **This is some bold text!** And *this text* is in italics!
-
-		This is a list:
-		- It has elements!
-		- It has another one! Woah!
-
-	"}
-
-/obj/item/lore_book/attack_self(mob/user)
-	. = ..()
-
-	tgui_interact(user)
-
-/obj/item/lore_book/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(ui)
-		return
-
-	ui = new(user, src, "Book", book_title)
-	ui.open()
-
-/obj/item/lore_book/ui_state(mob/user, datum/ui_state/state)
-	return GLOB.human_adjacent_state
-
-/obj/item/lore_book/ui_static_data(mob/user)
-	. = ..()
-
-	.["title"] = book_title
-	.["author"] = book_author
-	.["contents"] = book_contents
-
-/obj/item/lore_book/ui_assets(mob/user)
-	. = ..()
-	. += get_asset_datum(/datum/asset/simple/paper)
-
 /*
  * Book
  */
@@ -181,4 +117,66 @@
 			SPAN_NOTICE(" [user] opens up a book and shows it to [M]. "))
 		show_browser(M, "<body class='paper'><TT><I>Penned by [author].</I></TT> <BR>[dat]</body>", "window=book")
 
+/obj/item/lore_book
+	name = "book"
+	icon = 'icons/obj/items/books.dmi'
+	icon_state = "book"
+	item_state = "book_dark"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/books_righthand.dmi',
+	)
+	w_class = SIZE_MEDIUM
+	attack_verb = list("bashed", "whacked", "educated")
+	pickup_sound = 'sound/handling/book_pickup.ogg'
+	drop_sound = 'sound/handling/book_pickup.ogg'
 
+	var/book_title = "A guide to unreality"
+	var/book_author = "Notreal FakeDude"
+	var/book_contents = {"
+		# This book's not written in! It shouldn't exist! Aah!
+
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+
+		## Some subtitle!
+
+		```
+		Code block! Code block! For emphasis and quotes! Like the tech manual!
+		```
+
+		This is some text! **This is some bold text!** And *this text* is in italics!
+
+		This is a list:
+		- It has elements!
+		- It has another one! Woah!
+
+	"}
+
+/obj/item/lore_book/attack_self(mob/user)
+	. = ..()
+
+	tgui_interact(user)
+
+/obj/item/lore_book/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(ui)
+		return
+
+	ui = new(user, src, "Book", book_title)
+	ui.open()
+
+/obj/item/lore_book/ui_state(mob/user, datum/ui_state/state)
+	return GLOB.human_adjacent_state
+
+/obj/item/lore_book/ui_static_data(mob/user)
+	. = ..()
+
+	.["title"] = book_title
+	.["author"] = book_author
+	.["contents"] = book_contents
+
+/obj/item/lore_book/ui_assets(mob/user)
+	. = ..()
+	. += get_asset_datum(/datum/asset/simple/paper)

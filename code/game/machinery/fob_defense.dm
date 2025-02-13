@@ -95,6 +95,8 @@
 	update_power()
 
 /obj/structure/machinery/fob/update_icon()
+	if(!is_inside_lz)
+		icon_state = "[initial(icon_state)]_undeployed"
 	if(is_on)
 		icon_state = initial(icon_state)
 	else
@@ -106,7 +108,7 @@
 	name = "\improper UE-09 Service Terminal"
 	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
 	icon_state = "terminal"
-	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
+	icon = 'icons/obj/structures/machinery/fob_machinery/service_terminal.dmi'
 	layer = ABOVE_FLY_LAYER
 	linked_terminal = null
 	var/generator_time
@@ -148,6 +150,11 @@
 		return
 
 
+/obj/structure/machinery/fob/terminal/update_icon()
+	. = ..()
+	if(!is_inside_lz)
+		icon_state = initial(icon_state)
+
 
 /obj/structure/machinery/fob/terminal/attack_hand(mob/user)
 
@@ -173,6 +180,12 @@
 	. = ..()
 	generator_time = world.time
 
+/obj/structure/machinery/fob/terminal/update_icon()
+	.=..()
+	if(!is_inside_lz)
+		icon_state = initial(icon_state)
+
+
 
 
 
@@ -182,7 +195,7 @@
 	name = "\improper UE-11 Generator Unit"
 	desc = "atom special power module designed to be a backup generator in the event of a transformer malfunction. This generator can only provide power for a short time before being used up."
 	icon_state = "backup_generator"
-	icon = 'icons/obj/structures/machinery/backup_generator.dmi'
+	icon = 'icons/obj/structures/machinery/fob_machinery/backup_generator.dmi'
 	is_on = FALSE
 	var/has_power_remaining = TRUE
 	//how long the generator can power the FOB for
@@ -255,7 +268,7 @@
 //****************************************** SENTRYGUN GENERAL ************************************************//
 /obj/structure/machinery/fob/weapons_platform
 	icon_state = "weapons-platform"
-	icon = 'icons/obj/structures/machinery/rocket-launcher-64x64.dmi'
+	icon = 'icons/obj/structures/machinery/fob_machinery/rocket-launcher-64x64.dmi'
 	var/obj/structure/machinery/fob/sentrygun/linked_gun
 
 /obj/structure/machinery/fob/weapons_platform/attack_hand(mob/living/user)
@@ -456,7 +469,7 @@
 	name = "\improper UE-09 Service Terminal"
 	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
 	icon_state = "terminal"
-	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
+	icon = 'icons/obj/structures/machinery/fob_machinery/service_terminal.dmi'
 	diameter = 13
 	layer = 4
 	var/datum/beam/laser_beam
@@ -545,7 +558,7 @@
 	name = "\improper UE-09 Service Terminal"
 	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
 	icon_state = "rocket-launcher"
-	icon = 'icons/obj/structures/machinery/rocket-launcher-64x64.dmi'
+	icon = 'icons/obj/structures/machinery/fob_machinery/rocket-launcher-64x64.dmi'
 	ammo = /datum/ammo/rocket
 	var/list/locked_on_targets = list()
 

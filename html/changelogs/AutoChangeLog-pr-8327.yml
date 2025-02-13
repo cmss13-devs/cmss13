@@ -1,0 +1,5 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscadd: "Electrogenetic property now triggers with defibrillating."
+  - balance: "Painkilling and Electrogenetic are twice as powerful per level, halved the property levels of Painkilling and Electrogenetic in chemicals, meaning that they act the same."

@@ -81,7 +81,7 @@
 
 /obj/item/ore/pearl
 	name = "pearl"
-	desc = "get fifty of em and have a necklace!"
+	desc = "Get fifty of 'em and have a necklace!"
 	icon = 'icons/obj/items/fishing_atoms.dmi'
 	icon_state = "pearl"
 	oretag = "pearl"

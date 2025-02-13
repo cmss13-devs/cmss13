@@ -773,10 +773,6 @@
 
 /obj/item/weapon/twohanded/yautja/spear/afterattack(atom/target, mob/living/user, proximity_flag, /turf/fishing_allowed, click_parameters)
 	. = ..()
-	var/fishing_allowed = list(
-		/turf/open/gm/river,
-		/turf/open/gm/riverdeep
-		)
 	if(proximity_flag && !busy_fishing && isturf(target))
 		var/turf/T = target
 		if(!T.fishing_allowed)

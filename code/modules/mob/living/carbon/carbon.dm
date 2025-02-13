@@ -121,30 +121,37 @@
 
 	. = ..()
 
-/mob/living/carbon/human/proc/handle_haul_resist(mob/living/resister, mob/living/carbon/xenomorph/xeno, obj/item/item)
-	if(get_dist(xeno, resister))
-		return FALSE
-	if(item.force)
-		var/damage_of_item = rand(floor(item.force / 6), floor(item.force / 2))
-		xeno.take_limb_damage(damage_of_item)
-		for(var/mob/mobs_in_view as anything in viewers(resister, null))
-			if(mobs_in_view.client)
-				mobs_in_view.show_message(text(SPAN_DANGER("<B>[resister] attacks [xeno]'s carapace with the [item.name]!")), SHOW_MESSAGE_AUDIBLE)
-		resister.track_hit(initial(item.name))
-		if(item.sharp)
-			playsound(resister.loc, 'sound/weapons/slash.ogg', 25, 1)
+/mob/living/carbon/human/proc/handle_haul_resist()
+	SIGNAL_HANDLER
+
+	if(world.time <= next_haul_resist)
+		return COMPONENT_CANCEL_MOVE
+
+	var/mob/living/carbon/xenomorph/xeno = hauling_xeno
+
+	if(istype(get_active_hand(), /obj/item))
+		var/obj/item/item = get_active_hand()
+		if(item.force)
+			next_haul_resist = world.time + 1.3 SECONDS
+			var/damage_of_item = rand(floor(item.force / 4), item.force)
+			xeno.take_limb_damage(damage_of_item)
+			for(var/mob/mobs_in_view as anything in viewers(src, null))
+				if(mobs_in_view.client)
+					mobs_in_view.show_message(text(SPAN_DANGER("<B>[src] attacks [xeno]'s carapace with the [item.name]!")), SHOW_MESSAGE_AUDIBLE)
+			track_hit(initial(item.name))
+			if(item.sharp)
+				playsound(loc, 'sound/weapons/slash.ogg', 25, 1)
+			else
+				var/hit_sound = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
+				playsound(loc, hit_sound, 25, 1)
+			if(prob(max(4*(100*xeno.getBruteLoss()/xeno.maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
+				xeno.last_damage_data = create_cause_data("scuffling", src)
+				xeno.gib(last_damage_data)
 		else
-			var/hit_sound = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
-			playsound(resister.loc, hit_sound, 25, 1)
-		if(prob(max(4*(100*xeno.getBruteLoss()/xeno.maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
-			xeno.last_damage_data = create_cause_data("scuffling", resister)
-			xeno.gib(last_damage_data)
-		return TRUE
-	else
-		for(var/mob/mobs_can_hear in hearers(4, xeno))
-			if(mobs_can_hear.client)
-				mobs_can_hear.show_message(SPAN_DANGER("You hear [resister] struggling against [xeno]'s grip..."), SHOW_MESSAGE_AUDIBLE)
-		return TRUE
+			for(var/mob/mobs_can_hear in hearers(4, xeno))
+				if(mobs_can_hear.client)
+					mobs_can_hear.show_message(SPAN_DANGER("You hear [src] struggling against [xeno]'s grip..."), SHOW_MESSAGE_AUDIBLE)
+	return COMPONENT_CANCEL_MOVE
 
 /mob/living/carbon/attack_hand(mob/target_mob as mob)
 	if(!istype(target_mob, /mob/living/carbon))
@@ -494,12 +501,12 @@
 	ADD_TRAIT(src, TRAIT_FLOORED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_HAULED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_XENO_HAUL)
-	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_XENO_HAUL)
 
 	hauling_xeno = xeno
 	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(release_haul_death))
 	RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(haul_fire_shield))
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(haul_fire_shield_callback))
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(handle_haul_resist))
 	layer = LYING_BETWEEN_MOB_LAYER
 	add_filter("hauled_shadow", 1, color_matrix_filter(rgb(95, 95, 95)))
 	pixel_y = -7
@@ -522,7 +529,7 @@
 	var/location = get_turf(loc)
 	src.remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
 	pixel_y = 0
-	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED, COMSIG_MOVABLE_PRE_MOVE))
 	UnregisterSignal(hauling_xeno, COMSIG_MOB_DEATH)
 	hauling_xeno = null
 	layer = MOB_LAYER

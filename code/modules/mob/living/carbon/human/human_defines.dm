@@ -179,6 +179,9 @@
 	// Xenomorph that is hauling us if we are hauled
 	var/mob/living/carbon/xenomorph/hauling_xeno
 
+	// Haul resist cooldown
+	var/next_haul_resist
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

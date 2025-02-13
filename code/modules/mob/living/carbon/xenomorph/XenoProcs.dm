@@ -230,7 +230,16 @@
 	. = ..()
 	var/mob/user = hauled_mob?.resolve()
 	if(user)
-		user.forceMove(src.loc)
+		if(!isturf(destination))
+			user.forceMove(src)
+		else
+			user.forceMove(loc)
+
+/mob/living/carbon/xenomorph/relaymove(mob/user, direction)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		var/mob/living/carbon/human/hauled_mob = user
+		hauled_mob.handle_haul_resist()
 
 //Strip all inherent xeno verbs from your caste. Used in evolution.
 /mob/living/carbon/xenomorph/proc/remove_inherent_verbs()

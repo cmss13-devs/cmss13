@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - code_imp: "Re-wrote some crusher ability code, changes one letter vars and made some byond ticks change seconds macro"

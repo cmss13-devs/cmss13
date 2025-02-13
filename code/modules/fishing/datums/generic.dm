@@ -10,6 +10,14 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/ore/coal,
 		/obj/item/ore/slag,
 		/obj/item/reagent_container/food/snacks/fishable/urchin/purple,
+		/obj/item/reagent_container/food/snacks/fishable/fish/bluegill
+		/obj/item/reagent_container/food/snacks/fishable/crab,
+		/obj/item/reagent_container/food/snacks/fishable/worm,
+		/obj/item/reagent_container/food/snacks/fishable/shell/clam,
+		/obj/item/reagent_container/food/snacks/fishable/squid/sock,
+		/obj/item/ore/coal,
+		/obj/item/ore/slag,
+		/obj/item/reagent_container/food/snacks/fishable/urchin/purple,
 		/obj/item/reagent_container/food/snacks/fishable/fish/bluegill,
 		/obj/item/reagent_container/food/snacks/fishable/fish/salmon,
 

@@ -55,9 +55,11 @@ Defined in conflicts.dm of the #defines folder.
 	var/damage_buildup_mod = 0 //Modifier to damage buildup, works off a multiplier.
 	var/range_min_mod = 0 //Modifier to minimum effective range, tile value.
 	var/range_max_mod = 0 //Modifier to maximum effective range, tile value.
+	var/projectile_max_range_mod = 0 //Modifier to how far the projectile can travel in tiles.
 	var/melee_mod = 0 //Changing to a flat number so this actually doesn't screw up the calculations.
 	var/scatter_mod = 0 //Increases or decreases scatter chance.
 	var/scatter_unwielded_mod = 0 //same as above but for onehanded firing.
+	var/bonus_proj_scatter_mod = 0 //Increses or decrease scatter for bonus projectiles. Mainly used for shotguns.
 	var/recoil_mod = 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
@@ -446,6 +448,45 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
 
+/obj/item/attachable/shotgun_choke
+	name = "shotgun choke"
+	desc = "A modified choke for the M37A2 pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
+	slot = "muzzle"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "choke"
+	attach_icon = "choke_a"
+	pixel_shift_x = 16
+	pixel_shift_y = 17
+	hud_offset_mod = -2
+
+/obj/item/attachable/shotgun_choke/New()
+	..()
+	recoil_mod = RECOIL_AMOUNT_TIER_4
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
+	velocity_mod = AMMO_SPEED_TIER_1
+	delay_mod = -FIRE_DELAY_TIER_2
+	bonus_proj_scatter_mod = -SCATTER_AMOUNT_TIER_6
+	projectile_max_range_mod = 1
+	damage_falloff_mod = -0.3
+
+/obj/item/attachable/shotgun_choke/Attach(obj/item/weapon/gun/shotgun/pump/attaching_gun)
+	if(!istype(attaching_gun, /obj/item/weapon/gun/shotgun/pump))
+		return ..()
+	attaching_gun.pump_delay -= FIRE_DELAY_TIER_5
+	attaching_gun.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("knockback_disabled", /datum/element/bullet_trait_knockback_disabled))
+	attaching_gun.fire_sound = 'sound/weapons/gun_shotgun_choke.ogg'
+
+	return ..()
+
+/obj/item/attachable/shotgun_choke/Detach(mob/user, obj/item/weapon/gun/shotgun/pump/detaching_gun)
+	if(!istype(detaching_gun, /obj/item/weapon/gun/shotgun/pump))
+		return ..()
+	detaching_gun.pump_delay += FIRE_DELAY_TIER_5
+	detaching_gun.remove_bullet_trait("knockback_disabled")
+	detaching_gun.fire_sound = initial(detaching_gun.fire_sound)
+
+	return ..()
 
 /obj/item/attachable/slavicbarrel
 	name = "sniper barrel"

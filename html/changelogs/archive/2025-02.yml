@@ -270,3 +270,77 @@
   zzzmike:
   - qol: Gives hints to newer players about how to destroy or protect a growing xenomorph
       king.
+2025-02-12:
+  Git-Nivrak:
+  - qol: Added a preference on whether you would like to be chosen as King or not,
+      you will no longer receive a prompt asking you for that. This can be toggled
+      under "special role candidacy"
+  - balance: The King hatchery now spawns around the hive core. Destroying pylons
+      will no longer destroy the hatchery but will instead pause its progress. To
+      fully reset the progress you must destroy the hatchery itself.
+  - rscadd: 'Replaced the armor hive buffs with two new hive buffs: Buff of Fire Resistance
+      - Makes all xenomorph immune to being *ignited* by fire. Buff of Adaptability
+      - Gives all xenomorph a new verb under the alien tab named "Transmute" which
+      will allow them to change to a different caste of the same tier.'
+  - bugfix: Fixes new players being teleported into the ground z level
+  Joe Lampost, Forrest2001:
+  - rscadd: A role for non-whitelisted players to play predator.
+  - rscadd: A new console and ert have been added relating to spawning youngbloods.
+  - rscadd: Feral xenos on the hunting grounds now drop weeds when they spawn.
+  - rscadd: A kill button for whitelisted pred players to instantly kill any youngblood
+      acting out of line.
+  - code_imp: Predator teleporting now has checks.
+  - mapadd: added a lower deck on the pred ship for youngbloods.
+  - maptweak: tweaked the fighting pit area of the predship.
+  - admin: Adds a new roleban relating to youngbloods.
+  Red-byte3D:
+  - bugfix: Fixes forecon spotter/marksman being hit by ally bullets while inivsible
+  - code_imp: Re-wrote some crusher ability code, changes one letter vars and made
+      some byond ticks change seconds macro
+  zzzmike:
+  - soundadd: faster defib noises for those who use defibs faster (synth, doctor)
+2025-02-13:
+  BOBAMAx:
+  - maptweak: changed the presets on the shiva's panic room insert to have an engineer
+      and 1 pmc
+  CapCamIII:
+  - rscadd: Adds French as a speakable language.
+  Red-byte3D:
+  - code_imp: Converts stuff into seconds in oppressor code and removes some one letter
+      vars
+  - bugfix: Black holocards are now work properly
+  Sergeant_Lemon:
+  - rscadd: new fish types to the old fishing code
+  - rscadd: added turf flag 'fishable_turf'
+  - rscadd: added items to fishing loot table
+  - bugfix: fixed fishing rod code so it fishes on ocean and rivers
+  - code_imp: Changed code in the fishing category as well as meat, ore, and atoms
+  - imageadd: sprites for new fish and pearl item
+  TheGamerdk:
+  - balance: M46C has slower fire-rate on burst IFF mode
+  Vile Beggar, thwomper:
+  - rscadd: Adds a new shotgun choke attachment to squad prep and requisitions vendors
+      for the M37A2 shotgun.
+  hry-gh:
+  - bugfix: carriers can use their abilities again
+  - bugfix: non-admins have ooc flags again
+  larentoun:
+  - bugfix: Boiler - Purchasing Trapper strain will forcefully change spit type to
+      acid, which makes acid-tail variant the only one. No more neuro-tails on Trappers.
+  - refactor: Boiler - swapped spit types in caste dastum, removed swapping types
+      in xeno's mob. Shouldn't change anything.
+  private-tristan:
+  - balance: Military Contractors (VAIPO/VAISO) spawn chance decreased significantly.
+  - balance: Increased the chances of Pizza galaxy ERT spawning, from 1/176 to 2/157.
+  - balance: Solar Devils SGs are now stuck on frontline mode, but gets a 15% damage
+      boost to compensate.
+  - balance: Solar Devils RFNs spawn with 30 metal (from 50)
+  - balance: Ammo box explosions are capped at 3k bullets.
+  realforest2001:
+  - rscadd: Ghosts can now view faxes sent through the round.
+  - rscadd: Added the functionality for community award OOC icons.
+  zzzmike:
+  - qol: Previously you had to be wearing a valid ID to launch a lifeboat, now you
+      can also hold it in hand
+  - bugfix: Fixes a bug with sub-10 minute marine majors
+  - qol: Updates turf descriptions to account for medevacs+CAS instead of just CAS.

@@ -1,6 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - qol: "Added a preference on whether you would like to be chosen as King or not, you will no longer receive a prompt asking you for that. This can be toggled under \"special role candidacy\""
-  - balance: "The King hatchery now spawns around the hive core. Destroying pylons will no longer destroy the hatchery but will instead pause its progress. To fully reset the progress you must destroy the hatchery itself."
-  - rscadd: "Replaced the armor hive buffs with two new hive buffs: Buff of Fire Resistance - Makes all xenomorph immune to being *ignited* by fire. Buff of Adaptability - Gives all xenomorph a new verb under the alien tab named \"Transmute\" which will allow them to change to a different caste of the same tier."

@@ -323,7 +323,6 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 
 /obj/structure/machinery/colony_floodlight/navalis_wall_light
 	name = "wall mounted colony floodlight"
-//	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	desc = "Powerful wall-mounted lights intended to operate even through a hurricane. Powered directly from the Industrial Rig."
 	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "slight0"

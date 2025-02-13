@@ -4518,6 +4518,19 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"alg" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/pipes/standard/simple/visible/purple{
+	dir = 5
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/log_ext)
 "alh" = (
 /obj/structure/platform_decoration/metal/strata,
 /obj/structure/monorail{
@@ -6176,6 +6189,19 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/corsat/brown,
 /area/navalis/indoors/industrial/mining)
+"aqy" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/pipes/standard/simple/visible/purple{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/log_ext)
 "aqz" = (
 /turf/open/floor/prison/whitered/west,
 /area/navalis/indoors/med_sci/main_floor)
@@ -10098,6 +10124,23 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/primary_storage)
+"aBb" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata/navalis,
+/obj/structure/pipes/standard/simple/visible/purple{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/log_ext)
 "aBc" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
 /obj/structure/barricade/handrail/strata/navalis,
@@ -11976,22 +12019,18 @@
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
-"aFl" = (
-/obj/structure/monorail{
-	dir = 1;
-	name = "support beam";
-	desc = "Do you think the bugs are using these to move around this rig?";
-	explo_proof = 1;
-	unacidable = 1
-	},
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only)
 "aFm" = (
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
 	},
-/turf/closed/wall/mineral/bone_resin,
-/area/navalis/oob)
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior_xeno_only)
 "aFn" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
@@ -12003,6 +12042,9 @@
 /obj/structure/blocker/forcefield/human{
 	invisibility = 101;
 	dir = 4
+	},
+/obj/structure/platform/metal/almayer/east{
+	pixel_x = 4
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior_xeno_only)
@@ -15216,6 +15258,12 @@
 /obj/structure/prop/resin_prop{
 	icon_state = "psiphon:0"
 	},
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0
+	},
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
 "aOk" = (
@@ -15551,9 +15599,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 5
-	},
+/obj/structure/pipes/standard/manifold/hidden/dark,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/mining)
 "aPf" = (
@@ -15634,9 +15680,13 @@
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/logistic/primary_storage)
 "aPn" = (
+/obj/structure/pipes/standard/manifold/fourway/visible/purple,
 /obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
-/obj/structure/pipes/standard/simple/visible/purple{
-	dir = 4
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -15645,6 +15695,12 @@
 /obj/effect/landmark/monkey_spawn,
 /obj/structure/pipes/standard/simple/visible/purple{
 	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -15655,6 +15711,12 @@
 	},
 /obj/structure/pipes/standard/simple/visible/purple{
 	dir = 9
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
@@ -15681,6 +15743,12 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/visible/purple,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
 "aPs" = (
@@ -15739,14 +15807,6 @@
 	explo_proof = 1
 	},
 /turf/open/gm/river/no_overlay/ocean,
-/area/navalis/oob/water)
-"aPw" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
-/obj/structure/blocker/invisible_wall,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/corsat/plate,
 /area/navalis/oob/water)
 "aPx" = (
 /obj/structure/window/framed/hybrisa/colony/engineering/hull,
@@ -16708,6 +16768,22 @@
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/navalis/indoors/residential/port)
+"aRt" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/pipes/standard/simple/visible/purple{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aRu" = (
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/darkblue2,
@@ -17287,6 +17363,150 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/outdoors/landing_zone_1)
+"aSP" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/pipes/standard/simple/visible/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/navalis/oob/water)
+"aSQ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
+"aSR" = (
+/obj/structure/monorail{
+	dir = 1;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101;
+	dir = 4
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior_xeno_only)
+"aSS" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101;
+	dir = 4
+	},
+/obj/structure/platform/metal/almayer/west{
+	pixel_x = -3
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior_xeno_only)
+"aST" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
+"aSU" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/machinery/colony_floodlight/navalis_wall_light{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/visible/purple,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/log_ext)
+"aSV" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/pipes/standard/simple/visible/purple{
+	dir = 6
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/log_ext)
+"aSW" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/pipes/standard/simple/visible/purple{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/log_ext)
+"aSX" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible,
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/visible/purple{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full{
+	layer = 2.15;
+	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/exterior/log_ext)
+"aSY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth"
+	},
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/spawner/random/gun/shotgun/midchance,
+/turf/open/floor/prison/greenfull/east,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
 "aTh" = (
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/outdoors/landing_zone_2)
@@ -25020,6 +25240,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/navalis/indoors/command/meeting_hall)
 "jfH" = (
@@ -26776,6 +26997,7 @@
 "kUH" = (
 /obj/structure/prop/server_equipment/laptop/closed,
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/map_item,
 /turf/open/floor/prison/blue/southeast,
 /area/navalis/indoors/command/cent_com)
 "kVs" = (
@@ -29175,6 +29397,7 @@
 	pixel_y = 3
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/storage/belt/medical/full/with_defib_and_analyzer,
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/main_floor)
 "nPh" = (
@@ -33261,6 +33484,7 @@
 	pixel_y = 10;
 	pixel_x = 9
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/foyer)
 "rAS" = (
@@ -34353,6 +34577,7 @@
 	pixel_y = 9
 	},
 /obj/item/tool/pen,
+/obj/effect/landmark/map_item,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/command/conferance)
 "sMY" = (
@@ -34597,14 +34822,6 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
-"sZU" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
-/turf/open/floor/corsat/box,
-/area/navalis/indoors/industrial/mining)
 "taf" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 2.15;
@@ -35472,8 +35689,8 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 6
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
 	},
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/mining)
@@ -35651,6 +35868,7 @@
 /obj/item/trash/plate{
 	pixel_y = 10
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/prison/blue/east,
 /area/navalis/indoors/logistic/workshop)
 "tZi" = (
@@ -37580,21 +37798,6 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
-"vTi" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101;
-	light_color = "#680b62";
-	needs_power = 0
-	},
-/obj/structure/prop/hybrisa/misc/fake/lattice/full{
-	layer = 2.15;
-	desc = "Too dangerous for a human to walk on, but a xenomorph would have no issue.";
-	unacidable = 1;
-	explo_proof = 1
-	},
-/turf/open/gm/river/no_overlay/ocean_no_slowdown,
-/area/navalis/outdoors/exterior_xeno_only)
 "vTk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods{
@@ -59124,16 +59327,16 @@ pXR
 pXR
 pXR
 pXR
-pXR
-pXR
-aSp
-pXR
-pXR
-pXR
-pXR
+aPi
+aSV
+aSU
+aPY
+aPY
+aPY
+aPY
 aPn
-pXR
-pXR
+aPY
+alg
 pXR
 pXR
 aSp
@@ -59289,15 +59492,15 @@ pXR
 sga
 sga
 pXR
-pXR
+aSW
 pXR
 pXR
 sga
 sga
-pXR
+aPi
 aPo
 pXR
-pXR
+aqy
 sga
 sga
 pXR
@@ -59453,7 +59656,7 @@ vTC
 xwh
 krP
 wfq
-sga
+aSX
 sga
 vTC
 xwh
@@ -59461,7 +59664,7 @@ aPt
 aPr
 aPp
 sga
-vTC
+aBb
 xwh
 krP
 wfq
@@ -59617,15 +59820,15 @@ mOQ
 iVl
 xwC
 mOQ
+aRt
 mOQ
 mOQ
-mOQ
-iVl
+aST
 aPu
+aSQ
 mOQ
 mOQ
-mOQ
-mOQ
+aRt
 iVl
 xwC
 mOQ
@@ -59781,7 +59984,7 @@ mmV
 mmV
 mmV
 mmV
-mmV
+aPv
 mmV
 mmV
 mmV
@@ -59789,7 +59992,7 @@ aPv
 mmV
 mmV
 mmV
-mmV
+aPv
 mmV
 mmV
 mmV
@@ -59945,7 +60148,7 @@ mmV
 nSY
 nSY
 mmV
-mmV
+aPv
 mmV
 mmV
 mmV
@@ -59953,7 +60156,7 @@ aPv
 mmV
 mmV
 mmV
-mmV
+aPv
 mmV
 mmV
 mmV
@@ -60108,17 +60311,17 @@ nSY
 nSY
 nSY
 mmV
-mmV
-mmV
-mmV
+azc
+aPv
+azc
 mmV
 azc
 aPv
 azc
 mmV
-mmV
-mmV
-mmV
+azc
+aPv
+azc
 mmV
 nSY
 nSY
@@ -60273,15 +60476,15 @@ nSY
 mmV
 doN
 pAO
+aSP
 pAO
 pAO
 pAO
-pAO
-aPw
-pAO
+aSP
 pAO
 pAO
 pAO
+aSP
 pAO
 ueN
 mmV
@@ -60437,7 +60640,7 @@ mmV
 bVH
 pAO
 aol
-aPd
+aPx
 aPd
 aol
 aPd
@@ -60445,7 +60648,7 @@ aPx
 aPd
 aol
 aPd
-aPd
+aPx
 aol
 pAO
 ueN
@@ -60601,7 +60804,7 @@ aGV
 aGw
 aol
 aol
-sZU
+aPC
 aov
 aov
 fHE
@@ -60609,7 +60812,7 @@ aOQ
 fHE
 aov
 aov
-jLR
+aPg
 aol
 aol
 aGw
@@ -62527,7 +62730,7 @@ qWZ
 qWZ
 qWZ
 qWZ
-fUY
+aSY
 alF
 hQl
 qWZ
@@ -73891,8 +74094,8 @@ aph
 aph
 aFn
 azp
-vTi
-akI
+azp
+azp
 azp
 azp
 azp
@@ -74053,10 +74256,10 @@ aph
 aph
 aph
 aph
-asq
-aFl
-asq
-asq
+aSR
+aOa
+aOa
+aOa
 aOa
 aOa
 aOa
@@ -74217,10 +74420,10 @@ aph
 asq
 aph
 aOj
-asq
+aSS
 aFm
-asq
-akI
+azr
+azr
 azr
 azr
 azr
@@ -74546,10 +74749,10 @@ asq
 asq
 asq
 asq
+asq
+asq
 gGc
-gGc
-gGc
-gGc
+asq
 gGc
 gGc
 gGc
@@ -74710,11 +74913,11 @@ asq
 asq
 asq
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+asq
+asq
+asq
+asq
+asq
 gGc
 gGc
 gGc
@@ -74873,11 +75076,11 @@ asq
 asq
 asq
 asq
+asq
+asq
 gGc
-gGc
-gGc
-gGc
-gGc
+asq
+asq
 gGc
 gGc
 gGc

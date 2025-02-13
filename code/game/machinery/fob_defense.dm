@@ -266,11 +266,15 @@
 /obj/structure/machinery/fob/weapons_platform/attackby(obj/item/item, mob/user)
 
 	if(istype(item, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/powerloader_clamp = item
 		if(linked_gun)
-			linked_gun.attackby(item, user)
+			linked_gun.attackby(powerloader_clamp, user)
+			if(linked_gun == powerloader_clamp.loaded)
+				linked_gun.linked_platform = null
+				linked_gun = null
 			return
 
-		var/obj/item/powerloader_clamp/powerloader_clamp = item
+
 		if(istype(powerloader_clamp.loaded,/obj/structure/machinery/fob/sentrygun))
 			var/obj/structure/machinery/fob/sentrygun/loaded = powerloader_clamp.loaded
 			loaded.forceMove(get_turf(src))
@@ -537,7 +541,7 @@
 /obj/structure/machinery/fob/sentrygun/missile
 	name = "\improper UE-09 Service Terminal"
 	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
-	icon_state = "rocket-launcher"
+	icon_state = "rocket_launcher"
 	icon = 'icons/obj/structures/machinery/fob_machinery/rocket_launcher.dmi'
 	ammo = /datum/ammo/rocket
 	var/list/locked_on_targets = list()
@@ -598,6 +602,8 @@
 
 /obj/structure/machinery/fob/floodlight
 	var/on_light_range = 18
+	icon = "icons/obj/structures/machinery/fob_machinery/illuminator.dmi"
+	icon_state = "floodlight"
 
 /obj/structure/machinery/fob/floodlight/power_change()
 	. = ..()

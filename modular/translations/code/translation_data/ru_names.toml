@@ -1049,98 +1049,218 @@ gender = "female"
 # tgui\packages\tgui\interfaces\BandaMarines\XenoCastes.tsx
 ["Larva"]
 nominative = "Грудолом"
+genitive = "Грудолома"
+dative = "Грудолому"
+accusative = "Грудолом"
+instrumental = "Грудоломом"
+prepositional = "Грудоломе"
 gender = "female"
 
 ["Predalien Larva"]
 nominative = "Грудолом чужехищника"
+genitive = "Грудолома чужехищника"
+dative = "Грудолому чужехищника"
+accusative = "Грудолом чужехищника"
+instrumental = "Грудоломом чужехищника"
+prepositional = "Грудоломе чужехищника"
 gender = "female"
 
 ["Facehugger"]
 nominative = "Лицехват"
+genitive = "Лицехвата"
+dative = "Лицехвату"
+accusative = "Лицехват"
+instrumental = "Лицехватом"
+prepositional = "Лицехвате"
 gender = "female"
 
 ["Lesser Drone"]
 nominative = "Трутень"
+genitive = "Трутня"
+dative = "Трутню"
+accusative = "Трутня"
+instrumental = "Трутнем"
+prepositional = "Трутне"
 gender = "female"
 
 ["Drone"]
 nominative = "Дрон"
+genitive = "Дрона"
+dative = "Дрону"
+accusative = "Дрон"
+instrumental = "Дроном"
+prepositional = "Дроне"
 gender = "female"
 
 ["Runner"]
 nominative = "Бегун"
+genitive = "Бегуна"
+dative = "Бегуну"
+accusative = "Бегуна"
+instrumental = "Бегуном"
+prepositional = "Бегуне"
 gender = "female"
 
 ["Sentinel"]
 nominative = "Страж"
+genitive = "Стража"
+dative = "Стражу"
+accusative = "Стража"
+instrumental = "Стражем"
+prepositional = "Страже"
 gender = "female"
 
 ["Defender"]
 nominative = "Защитник"
+genitive = "Защитника"
+dative = "Защитнику"
+accusative = "Защитника"
+instrumental = "Защитником"
+prepositional = "Защитнике"
 gender = "female"
 
 ["Burrower"]
 nominative = "Копатель"
+genitive = "Копателя"
+dative = "Копателю"
+accusative = "Копателя"
+instrumental = "Копателем"
+prepositional = "Копателе"
 gender = "female"
 
 ["Carrier"]
 nominative = "Носитель"
+genitive = "Носителя"
+dative = "Носителю"
+accusative = "Носителя"
+instrumental = "Носителем"
+prepositional = "Носителе"
 gender = "female"
 
 ["Hivelord"]
 nominative = "Владыка улья"
+genitive = "Владыки улья"
+dative = "Владыке улья"
+accusative = "Владыку улья"
+instrumental = "Владыкой улья"
+prepositional = "Владыке улья"
 gender = "female"
 
 ["Lurker"]
 nominative = "Охотник"
+genitive = "Охотника"
+dative = "Охотнику"
+accusative = "Охотника"
+instrumental = "Охотником"
+prepositional = "Охотнике"
 gender = "female"
 
 ["Warrior"]
 nominative = "Воин"
+genitive = "Воина"
+dative = "Воину"
+accusative = "Воина"
+instrumental = "Воином"
+prepositional = "Воине"
 gender = "female"
 
 ["Spitter"]
 nominative = "Плевун"
+genitive = "Плевуна"
+dative = "Плевуну"
+accusative = "Плевуна"
+instrumental = "Плевуном"
+prepositional = "Плевуне"
 gender = "female"
 
 ["Boiler"]
 nominative = "Бойлер"
+genitive = "Бойлера"
+dative = "Бойлеру"
+accusative = "Бойлер"
+instrumental = "Бойлером"
+prepositional = "Бойлере"
 gender = "female"
 
 ["Praetorian"]
 nominative = "Преторианец"
+genitive = "Преторианца"
+dative = "Преторианцу"
+accusative = "Преторианца"
+instrumental = "Преторианцем"
+prepositional = "Преторианце"
 gender = "female"
 
 ["Crusher"]
 nominative = "Крушитель"
+genitive = "Крушителя"
+dative = "Крушителю"
+accusative = "Крушителя"
+instrumental = "Крушителем"
+prepositional = "Крушителе"
 gender = "female"
 
 ["Ravager"]
 nominative = "Опустошитель"
+genitive = "Опустошителя"
+dative = "Опустошителю"
+accusative = "Опустошителя"
+instrumental = "Опустошителем"
+prepositional = "Опустошителе"
 gender = "female"
 
 ["King"]
 nominative = "Король"
+genitive = "Короля"
+dative = "Королю"
+accusative = "Короля"
+instrumental = "Королем"
+prepositional = "Короле"
 gender = "male"
 
 ["Queen"]
 nominative = "Королева"
+genitive = "Королевы"
+dative = "Королеве"
+accusative = "Королеву"
+instrumental = "Королевой"
+prepositional = "Королеве"
 gender = "female"
 
 ["Predalien"]
 nominative = "Чужехищник"
+genitive = "Чужехищника"
+dative = "Чужехищнику"
+accusative = "Чужехищника"
+instrumental = "Чужехищником"
+prepositional = "Чужехищнике"
 gender = "female"
 
 ["Hellhound"]
 nominative = "Адская гончая"
+genitive = "Адской гончей"
+dative = "Адской гончей"
+accusative = "Адскую гончую"
+instrumental = "Адской гончей"
+prepositional = "Адской гончей"
 gender = "female"
 
 ["Abomination"]
 nominative = "Абоминация"
+genitive = "Абоминации"
+dative = "Абоминации"
+accusative = "Абоминацию"
+instrumental = "Абоминацией"
+prepositional = "Абоминации"
 gender = "female"
 
 ["Empress"]
 nominative = "Императрица"
+genitive = "Императрицы"
+dative = "Императрице"
+accusative = "Императрицу"
+instrumental = "Императрицей"
+prepositional = "Императрице"
 gender = "female"
 
 # MARK: Security

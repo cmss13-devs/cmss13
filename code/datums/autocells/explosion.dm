@@ -66,6 +66,7 @@
 // If we're on a fake z teleport, teleport over
 /datum/automata_cell/explosion/birth()
 	shockwave = new(in_turf)
+	QDEL_IN(shockwave, 0.2 SECONDS)
 
 	var/obj/effect/step_trigger/teleporter_vector/V = locate() in in_turf
 	if(!V)
@@ -73,10 +74,6 @@
 
 	var/turf/new_turf = locate(in_turf.x + V.vector_x, in_turf.y + V.vector_y, in_turf.z)
 	transfer_turf(new_turf)
-
-/datum/automata_cell/explosion/death()
-	if(shockwave)
-		qdel(shockwave)
 
 // Compare directions. If the other explosion is traveling in the same direction,
 // the explosion is amplified. If not, it's weakened
@@ -147,13 +144,13 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
+	SSexplosions.queued_ex_act(in_turf, power, direction, explosion_cause_data)
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
 		if(A.gc_destroyed)
 			continue
-		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
+		SSexplosions.queued_ex_act(A, power, direction, explosion_cause_data)
 		exploded_atoms += A
 		log_explosion(A, src)
 
@@ -177,6 +174,7 @@
 
 	// Propagate the explosion
 	var/list/to_spread = get_propagation_dirs(reflected)
+	var/list/new_cells = list()
 	for(var/dir in to_spread)
 		// Diagonals are longer, that should be reflected in the power falloff
 		var/dir_falloff = 1
@@ -214,9 +212,11 @@
 				E.delay = 1
 
 			setup_new_cell(E)
+			new_cells += E
 
 	// We've done our duty, now die pls
 	qdel(src)
+	return new_cells
 
 /*
 The issue is that between the cell being birthed and the cell processing,
@@ -241,7 +241,7 @@ as having entered the turf.
 	if(A.gc_destroyed)
 		return
 
-	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data)
+	SSexplosions.queued_ex_act(A, power, null, explosion_cause_data)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
@@ -274,28 +274,38 @@ as having entered the turf.
 		playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
 	else
 		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
-
-	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
+	var/datum/automata_cell/explosion/initial_cell = new /datum/automata_cell/explosion(epicenter)
 	if(power > EXPLOSION_MAX_POWER)
 		log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of [EXPLOSION_MAX_POWER].")
 		power = EXPLOSION_MAX_POWER
 
 	// something went wrong :(
-	if(QDELETED(E))
+	if(QDELETED(initial_cell))
 		return
 
 	if(power >= 150) //shockwave for anything over 150 power
 		new /obj/effect/shockwave(epicenter, power/60)
 
-	E.power = power
-	E.power_falloff = falloff
-	E.falloff_shape = falloff_shape
-	E.direction = direction
-	E.explosion_cause_data = explosion_cause_data
+	initial_cell.power = power
+	initial_cell.power_falloff = falloff
+	initial_cell.falloff_shape = falloff_shape
+	initial_cell.direction = direction
+	initial_cell.explosion_cause_data = explosion_cause_data
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		new /obj/shrapnel_effect(epicenter)
+
+	//we don't yield in this house
+	var/list/cells = list(initial_cell)
+	while(length(cells))
+		var/datum/automata_cell/cur_cell = cells[length(cells)]
+		if (!cur_cell || QDELETED(cur_cell))
+			cells.len--
+			continue
+		var/list/new_cells = cur_cell.update_state()
+		if(new_cells)
+			cells.Add(new_cells)
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))

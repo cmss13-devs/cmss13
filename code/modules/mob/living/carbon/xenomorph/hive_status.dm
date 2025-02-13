@@ -1488,56 +1488,56 @@
 	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
 
 /datum/xeno_mark_define/fortify
-	name = "Fortify"
-	desc = "Fortify this area!"
+	name = "Укрепиться"
+	desc = "Укрепите эту область!"
 	icon_state = "fortify"
 
 /datum/xeno_mark_define/weeds
-	name = "Need Weeds"
-	desc = "Need weeds here!"
+	name = "Нужна трава"
+	desc = "Здесь нужна трава!"
 	icon_state = "weed"
 
 /datum/xeno_mark_define/nest
-	name = "Nest"
-	desc = "Nest enemies here!"
+	name = "Гнездо"
+	desc = "Разместите носителей здесь!"
 	icon_state = "nest"
 
 /datum/xeno_mark_define/hosts
-	name = "Hosts"
-	desc = "Hosts here!"
+	name = "Носители"
+	desc = "Здесь носители!"
 	icon_state = "hosts"
 
 /datum/xeno_mark_define/aide
-	name = "Aide"
-	desc = "Aide here!"
+	name = "Помощь"
+	desc = "Здесь нужна помощь!"
 	icon_state = "aide"
 
 /datum/xeno_mark_define/defend
-	name = "Defend"
-	desc = "Defend the hive here!"
+	name = "Защита"
+	desc = "Защитите улей!"
 	icon_state = "defend"
 
 /datum/xeno_mark_define/danger
-	name = "Danger Warning"
-	desc = "Caution, danger here!"
+	name = "Опасность"
+	desc = "Осторожно, здесь опасность!"
 	icon_state = "danger"
 
 /datum/xeno_mark_define/rally
-	name = "Rally"
-	desc = "Group up here!"
+	name = "Сбор"
+	desc = "Соберитесь здесь!"
 	icon_state = "rally"
 
 /datum/xeno_mark_define/hold
-	name = "Hold"
-	desc = "Hold this area!"
+	name = "Удерживать"
+	desc = "Удерживайте эту область!"
 	icon_state = "hold"
 
 /datum/xeno_mark_define/ambush
-	name = "Ambush"
-	desc = "Ambush the enemy here!"
+	name = "Засада"
+	desc = "Засада на врага здесь!"
 	icon_state = "ambush"
 /datum/xeno_mark_define/attack
-	name = "Attack"
-	desc = "Attack the enemy here!"
+	name = "Атака"
+	desc = "Атакуйте врага здесь!"
 	icon_state = "attack"
 

@@ -22780,3 +22780,179 @@ dative = "юго-западу"
 accusative = "юго-запад"
 instrumental = "юго-западом"
 prepositional = "юго-западе"
+
+["resin wall"]
+nominative = "смоляная стена"
+genitive = "смоляной стены"
+dative = "смоляной стене"
+accusative = "смоляную стену"
+instrumental = "смоляной стеной"
+prepositional = "смоляной стене"
+
+["thick resin wall"]
+nominative = "плотная смоляная стена"
+genitive = "плотной смоляной стены"
+dative = "плотной смоляной стене"
+accusative = "плотную смоляную стену"
+instrumental = "плотной смоляной стеной"
+prepositional = "плотной смоляной стене"
+
+["shifting resin wall"]
+nominative = "движущаяся смоляная стена"
+genitive = "движущейся смоляной стены"
+dative = "движущейся смоляной стене"
+accusative = "движущуюся смоляную стену"
+instrumental = "движущейся смоляной стеной"
+prepositional = "движущейся смоляной стене"
+
+["resin membrane"]
+nominative = "смоляная мембрана"
+genitive = "смоляной мембраны"
+dative = "смоляной мембране"
+accusative = "смоляную мембрану"
+instrumental = "смоляной мембраной"
+prepositional = "смоляной мембране"
+
+["thick resin membrane"]
+nominative = "плотная смоляная мембрана"
+genitive = "плотной смоляной мембраны"
+dative = "плотной смоляной мембране"
+accusative = "плотную смоляную мембрану"
+instrumental = "плотной смоляной мембраной"
+prepositional = "плотной смоляной мембране"
+
+["shifting resin membrane"]
+nominative = "движущаяся смоляная мембрана"
+genitive = "движущейся смоляной мембраны"
+dative = "движущейся смоляной мембране"
+accusative = "движущуюся смоляную мембрану"
+instrumental = "движущейся смоляной мембраной"
+prepositional = "движущейся смоляной мембране"
+
+["shifting thick resin wall"]
+nominative = "движущаяся плотная смоляная стена"
+genitive = "движущейся плотной смоляной стены"
+dative = "движущейся плотной смоляной стене"
+accusative = "движущуюся плотную смоляную стену"
+instrumental = "движущейся плотной смоляной стеной"
+prepositional = "движущейся плотной смоляной стене"
+
+["shifting thick resin membrane"]
+nominative = "движущаяся плотная смоляная мембрана"
+genitive = "движущейся плотной смоляной мембраны"
+dative = "движущейся плотной смоляной мембране"
+accusative = "движущуюся плотную смоляную мембрану"
+instrumental = "движущейся плотной смоляной мембраной"
+prepositional = "движущейся плотной смоляной мембране"
+
+["resin door"]
+nominative = "смоляная дверь"
+genitive = "смоляной двери"
+dative = "смоляной двери"
+accusative = "смоляную дверь"
+instrumental = "смоляной дверью"
+prepositional = "смоляной двери"
+
+["thick resin door"]
+nominative = "плотная смоляная дверь"
+genitive = "плотной смоляной двери"
+dative = "плотной смоляной двери"
+accusative = "плотную смоляную дверь"
+instrumental = "плотной смоляной дверью"
+prepositional = "плотной смоляной двери"
+
+["resin reflective wall"]
+nominative = "смоляная отражающая стена"
+genitive = "смоляной отражающей стены"
+dative = "смоляной отражающей стене"
+accusative = "смоляную отражающую стену"
+instrumental = "смоляной отражающей стеной"
+prepositional = "смоляной отражающей стене"
+
+["reflective resin wall"]
+nominative = "смоляная отражающая стена"
+genitive = "смоляной отражающей стены"
+dative = "смоляной отражающей стене"
+accusative = "смоляную отражающую стену"
+instrumental = "смоляной отражающей стеной"
+prepositional = "смоляной отражающей стене"
+
+["sticky resin"]
+nominative = "липкая смола"
+genitive = "липкой смолы"
+dative = "липкой смоле"
+accusative = "липкую смолу"
+instrumental = "липкой смолой"
+prepositional = "липкой смоле"
+
+["fast resin"]
+nominative = "ускоряющая смола"
+genitive = "ускоряющей смолы"
+dative = "ускоряющей смоле"
+accusative = "ускоряющую смолу"
+instrumental = "ускоряющей смолой"
+prepositional = "ускоряющей смоле"
+
+["resin spike"]
+nominative = "смоляной шип"
+genitive = "смоляного шипа"
+dative = "смоляным шипу"
+accusative = "смоляной шип"
+instrumental = "смоляным шипом"
+prepositional = "смоляном шипе"
+
+["hive core"]
+nominative = "ядро улья"
+genitive = "ядра улья"
+dative = "ядеру улья"
+accusative = "ядро улья"
+instrumental = "ядром улья"
+prepositional = "ядре улья"
+
+["hive cluster"]
+nominative = "кластер улья"
+genitive = "кластера улья"
+dative = "кластеру улья"
+accusative = "кластер улья"
+instrumental = "кластером улья"
+prepositional = "кластере улья"
+
+["hive pylon"]
+nominative = "пилон улья"
+genitive = "пилона улья"
+dative = "пилону улья"
+accusative = "пилон улья"
+instrumental = "пилоном улья"
+prepositional = "пилоне улья"
+
+["egg morpher"]
+nominative = "морфер яиц"
+genitive = "морфера яиц"
+dative = "морферу яиц"
+accusative = "морфер яиц"
+instrumental = "морфером яиц"
+prepositional = "морфере яиц"
+
+["recovery node"]
+nominative = "узел восстановления"
+genitive = "узла восстановления"
+dative = "узлу восстановления"
+accusative = "узел восстановления"
+instrumental = "узлом восстановления"
+prepositional = "узле восстановления"
+
+["thick resin nest"]
+nominative = "плотное смоляное гнездо"
+genitive = "плотного смоляного гнезда"
+dative = "плотному смоляное гнезду"
+accusative = "плотное смоляное гнездо"
+instrumental = "плотным смоляным гнездом"
+prepositional = "плотном смоляном гнезде"
+
+["construction node"]
+nominative = "конструкционный узел"
+genitive = "конструкционного узла"
+dative = "конструкционному узлу"
+accusative = "конструкционный узел"
+instrumental = "конструкционным узлом"
+prepositional = "конструкционном узле"

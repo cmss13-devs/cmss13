@@ -455,7 +455,7 @@
 /mob/living/carbon/xenomorph/queen/generate_name()
 	if(!nicknumber)
 		generate_and_set_nicknumber()
-	var/name_prefix = hive.prefix
+	var/name_prefix = hive.prefix_fem || hive.prefix
 	if(queen_aged)
 		age_xeno()
 		switch(age)

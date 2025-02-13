@@ -98,10 +98,14 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/set_pixel_location()
 	switch(dir)
-		if(NORTH) pixel_y = -18
-		if(SOUTH) pixel_y = 40
-		if(EAST) pixel_x = -27
-		if(WEST) pixel_x = 27
+		if(NORTH)
+			pixel_y = -18
+		if(SOUTH)
+			pixel_y = 40
+		if(EAST)
+			pixel_x = -27
+		if(WEST)
+			pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
 	. = ..()
@@ -187,9 +191,12 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 			info = X.info
 		to_chat(U, "You hold \a [itemname] up to the camera ...")
 		for(var/mob/living/silicon/ai/O in GLOB.alive_mob_list)
-			if(!O.client) continue
-			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
-			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
+			if(!O.client)
+				continue
+			if(U.name == "Unknown")
+				to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
+			else
+				to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			show_browser(O, info, itemname, itemname)
 		for(var/mob/O in GLOB.player_list)
 			if (istype(O.interactee, /obj/structure/machinery/computer/cameras))
@@ -364,3 +371,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/cas/isXRay()
 	return TRUE
+
+/obj/structure/machinery/camera/overwatch
+	name = "overwatch camera"
+	network = list(CAMERA_NET_OVERWATCH)

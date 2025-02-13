@@ -8946,7 +8946,7 @@
 "heu" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/machinery/power/apc/no_power/west,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
 "hfo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -13028,7 +13028,7 @@
 /area/varadero/interior/hall_SE)
 "kuE" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "kuX" = (
 /turf/open/floor/shiva/multi_tiles,

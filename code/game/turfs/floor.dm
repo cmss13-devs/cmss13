@@ -162,7 +162,8 @@
 	return ..()
 
 /turf/open/floor/wet_floor(wet_level = FLOOR_WET_WATER)
-	if(wet >= wet_level) return
+	if(wet >= wet_level)
+		return
 	wet = wet_level
 	if(wet_overlay)
 		overlays -= wet_overlay

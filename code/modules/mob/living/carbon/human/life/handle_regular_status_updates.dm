@@ -65,7 +65,8 @@
 		else
 			set_stat(CONSCIOUS)
 
-		if(in_stasis == STASIS_IN_CRYO_CELL) blinded = TRUE //Always blinded while in stasisTUBES
+		if(in_stasis == STASIS_IN_CRYO_CELL)
+			blinded = TRUE //Always blinded while in stasisTUBES
 
 		if(!regular_update)
 			return

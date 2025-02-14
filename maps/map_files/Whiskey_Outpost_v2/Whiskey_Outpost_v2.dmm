@@ -2941,7 +2941,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/prison/cell_stripe,
+/turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/cic)
 "my" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -17926,7 +17926,7 @@ lm
 lm
 lm
 lm
-lm
+mi
 mL
 nv
 mh
@@ -18938,7 +18938,7 @@ lm
 lm
 mx
 ak
-nv
+mh
 nM
 nK
 oy

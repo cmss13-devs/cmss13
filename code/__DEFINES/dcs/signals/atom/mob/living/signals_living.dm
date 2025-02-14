@@ -50,3 +50,8 @@
 #define COMSIG_LIVING_SHIMMY_LAYER "structure_shimmy_layer"
 	/// Sent when a shimmy component is currently overriding the layer
 	#define COMSIG_LIVING_SHIMMY_LAYER_CANCEL (1<<0)
+
+/// From /mob/living/simple_animal/hostile/proc/evaluate_target() : (mob/living/target)
+#define COMSIG_LIVING_SIMPLEMOB_EVALUATE_TARGET "living_simplemob_evaluate_target"
+	/// Sent in response to block the target from being selected
+	#define COMSIG_LIVING_SIMPLEMOB_EVALUATE_TARGET_BLOCK (1<<0)

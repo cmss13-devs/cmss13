@@ -45,7 +45,7 @@
 /mob/living/simple_animal/hostile/carp/FindTarget()
 	. = ..()
 	if(.)
-		manual_emote("nashes at [.]")
+		manual_emote("gnashes at [.]")
 
 /mob/living/simple_animal/hostile/carp/AttackingTarget()
 	. =..()
@@ -54,3 +54,6 @@
 		if(prob(bite_knockdown_chance))
 			L.apply_effect(3, WEAKEN)
 			L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))
+
+/mob/living/simple_animal/hostile/carp/no_knockdown
+	bite_knockdown_chance = 0

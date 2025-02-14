@@ -1,6 +1,11 @@
 /datum/moba_join_panel
+	#ifdef MOBA_TESTING
+	var/list/picked_castes = list("Drone", "Drone", "Drone")
+	var/list/picked_lanes = list("Jungle", "Jungle", "Jungle")
+	#else
 	var/list/picked_castes = list("", "", "")
 	var/list/picked_lanes = list("", "", "")
+	#endif
 	var/in_queue = FALSE
 	var/datum/moba_player/player
 
@@ -15,6 +20,8 @@
 		ui.open()
 
 /datum/moba_join_panel/ui_state(mob/user)
+	if(HAS_TRAIT(user, TRAIT_MOBA_PARTICIPANT))
+		return GLOB.never_state
 	return GLOB.observer_state
 
 /datum/moba_join_panel/ui_data(mob/user)
@@ -27,6 +34,7 @@
 	data["can_enter_queue"] = (picked_castes[1] && picked_castes[2] && picked_castes[3] && picked_lanes[1] && picked_lanes[2] && picked_lanes[3])
 
 	data["amount_in_queue"] = length(SSmoba.players_in_queue)
+	data["is_moba_participant"] = HAS_TRAIT(user, TRAIT_MOBA_PARTICIPANT)
 
 	return data
 
@@ -52,8 +60,9 @@
 			if(!(lane in list("Top Lane", "Jungle", "Support", "Bottom Lane", "None")))
 				return
 
-			if(priority > MOBA_ALLOWED_POSITIONS || priority <= 0)
+			if(priority > MOBA_ALLOWED_POSITIONS || priority <= 0 || HAS_TRAIT(ui.user, TRAIT_MOBA_PARTICIPANT))
 				return
+
 			if(lane == "None")
 				picked_lanes[priority] = ""
 			else
@@ -69,7 +78,7 @@
 			if(!(caste in GLOB.moba_castes_name) && (caste != "None"))
 				return
 
-			if(priority > MOBA_ALLOWED_POSITIONS || priority <= 0)
+			if(priority > MOBA_ALLOWED_POSITIONS || priority <= 0 || HAS_TRAIT(ui.user, TRAIT_MOBA_PARTICIPANT))
 				return
 
 			if(caste == "None")
@@ -79,14 +88,17 @@
 			return TRUE
 
 		if("enter_queue")
+			if(!ui.user.client || HAS_TRAIT(ui.user, TRAIT_MOBA_PARTICIPANT))
+				return
+
 			if(!picked_castes[1] || !picked_castes[2] || !picked_castes[3])
 				return
 
 			if(!picked_lanes[1] || !picked_lanes[2] || !picked_lanes[3])
 				return
 
-			player = new /datum/moba_player
-			player.tied_ckey = ui.user.ckey
+			player = new /datum/moba_player(ui.user.ckey, ui.user.client)
+
 			for(var/i in 1 to MOBA_ALLOWED_POSITIONS)
 				var/datum/moba_player_slot/new_slot = new
 				new_slot.position = picked_lanes[i]
@@ -98,6 +110,9 @@
 			return TRUE
 
 		if("exit_queue")
+			if(HAS_TRAIT(ui.user, TRAIT_MOBA_PARTICIPANT))
+				return
+
 			SSmoba.remove_from_queue(player)
 			QDEL_NULL(player)
 			in_queue = FALSE

@@ -9,6 +9,11 @@
 	var/turf/left_base
 	var/turf/right_base
 
+	// Game duration in deciseconds. Will only be as precise as SSmoba's `wait` var.
+	var/game_duration = 0
+
+	var/game_started = FALSE
+
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
 	team1 = team1_players
@@ -36,5 +41,17 @@
 			left_base = get_turf(moba_base)
 		qdel(moba_base)
 
+	for(var/obj/effect/moba_camp_spawner/spawner as anything in GLOB.mapless_moba_camps)
+		spawner.set_map_id(map_id)
+
+/datum/moba_controller/proc/load_in_players()
+	// Finish later
+	// Add an abort in case someone's missing a client
+	for(var/datum/moba_player/player as anything in (team1 + team2))
+		player.tied_client.mob.forceMove(left_base)
+
 /datum/moba_controller/proc/handle_tick()
-	return
+	if(!game_started)
+		return
+
+	game_duration += SSmoba.wait

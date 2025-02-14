@@ -18,6 +18,7 @@
 	var/list/friends = list()
 	var/break_stuff_probability = 10
 	var/destroy_surroundings = TRUE
+	var/target_search_range = 10
 
 /mob/living/simple_animal/hostile/Destroy()
 	friends = null
@@ -28,7 +29,7 @@
 
 	var/atom/T = null
 	stop_automated_movement = 0
-	for(var/atom/A in ListTargets(10))
+	for(var/atom/A in ListTargets(target_search_range))
 
 		if(A == src)
 			continue
@@ -59,6 +60,8 @@
 	if((target.faction == faction || (target.faction in faction_group)) && !attack_same)
 		return FALSE
 	if(WEAKREF(target) in friends)
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_LIVING_SIMPLEMOB_EVALUATE_TARGET, target) & COMSIG_LIVING_SIMPLEMOB_EVALUATE_TARGET_BLOCK)
 		return FALSE
 	return target
 

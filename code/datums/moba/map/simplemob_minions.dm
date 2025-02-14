@@ -1,5 +1,3 @@
-
-/*
 /mob/living/simple_animal/hostile/carp/moba //zonenote add health/damage scaling
 	maxHealth = 120
 	health = 120

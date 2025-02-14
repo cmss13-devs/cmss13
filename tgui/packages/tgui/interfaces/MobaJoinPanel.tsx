@@ -10,6 +10,7 @@ type BackendContext = {
   picked_castes: string[];
   picked_lanes: string[];
   amount_in_queue: number;
+  is_moba_participant: BooleanLike;
 };
 
 const MainTab = () => {
@@ -29,13 +30,17 @@ const MainTab = () => {
           Currently {data.amount_in_queue} players in queue.
           <br />
           {data.in_queue ? (
-            <Button color="bad" onClick={() => act('exit_queue')}>
+            <Button
+              color="bad"
+              onClick={() => act('exit_queue')}
+              disabled={!!data.is_moba_participant}
+            >
               Exit Queue
             </Button>
           ) : (
             <Button
               onClick={() => act('enter_queue')}
-              disabled={!data.can_enter_queue}
+              disabled={!data.can_enter_queue || !!data.is_moba_participant}
             >
               Join Queue
             </Button>
@@ -56,7 +61,7 @@ const RoleCastePick = (props) => {
         options={['Top Lane', 'Jungle', 'Support', 'Bottom Lane', 'None']}
         selected={data.picked_lanes[priority - 1]}
         placeholder={'Select lane...'}
-        disabled={!!data.in_queue}
+        disabled={!!data.in_queue || !!data.is_moba_participant}
         onSelected={(value) =>
           act('select_lane', { lane: value, priority: priority })
         }
@@ -65,7 +70,7 @@ const RoleCastePick = (props) => {
         options={Object.keys(data.castes)}
         selected={data.picked_castes[priority - 1]}
         placeholder={'Select caste...'}
-        disabled={!!data.in_queue}
+        disabled={!!data.in_queue || !!data.is_moba_participant}
         onSelected={(value) =>
           act('select_caste', { caste: value, priority: priority })
         }

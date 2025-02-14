@@ -4,11 +4,12 @@
 	hivenumber = null
 
 	var/map_id = 0
+	var/force_tunnel_desc
 
 /obj/structure/tunnel/moba/Initialize(mapload, h_number)
 	. = ..()
-	//var/turf/L = get_turf(src)
-	//tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
+	if(force_tunnel_desc)
+		tunnel_desc = force_tunnel_desc
 
 /obj/structure/tunnel/moba/isfriendly(mob/target)
 	return TRUE

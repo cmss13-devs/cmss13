@@ -360,6 +360,8 @@
 	var/obj/item/hardpoint/hardpoint = shot_from
 	if(istype(hardpoint))
 		LAZYOR(ignore_list, hardpoint.owner) //if fired from a vehicle, exclude the vehicle's body from the adjacency check
+	if(istype(shot_from, /obj/effect/alien/resin/moba_turret)) // These snowflake checks suck
+		LAZYOR(ignore_list, shot_from)
 
 	// Check we can reach the turf at all based on pathed grid
 	if(check_canhit(current_turf, next_turf, ignore_list))

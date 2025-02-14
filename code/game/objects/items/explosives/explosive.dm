@@ -30,9 +30,14 @@
 	var/obj/item/ordnance/data_analyzer/attached_analyzer
 	/// if this explosive should capture a photo when exploding
 	var/take_photo = TRUE
+	/// Whether both explosions and shrapnels use directions
 	var/use_dir = FALSE
-	var/angle = 360
-	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
+	/// Spread angle for shrapnels
+	var/shrapnel_spread = 360
+	/// The angle that this explosive last hits the target at, applies to projectiles, this will override dir if set
+	var/hit_angle
+	/// Whether or not the casing can be toggled between different falloff_mode
+	var/has_blast_wave_dampener = FALSE;
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi'

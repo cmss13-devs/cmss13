@@ -130,7 +130,8 @@
 		var/filename
 		if(CONFIG_GET(flag/ephemeral_map_mode) && i == GROUND_MAP)
 			filename = CONFIG_GET(string/ephemeral_ground_map)
-		else filename = MAP_TO_FILENAME[i]
+		else
+			filename = MAP_TO_FILENAME[i]
 		var/datum/map_config/config = new
 		if(default)
 			configs[i] = config
@@ -232,7 +233,8 @@
 	for(var/surv_type in survivor_types)
 		var/datum/equipment_preset/survivor/surv_equipment = surv_type
 		var/survivor_variant = initial(surv_equipment.survivor_variant)
-		if(!survivor_types_by_variant[survivor_variant]) survivor_types_by_variant[survivor_variant] = list()
+		if(!survivor_types_by_variant[survivor_variant])
+			survivor_types_by_variant[survivor_variant] = list()
 		survivor_types_by_variant[survivor_variant] += surv_type
 
 	if(islist(json["synth_survivor_types"]))
@@ -256,7 +258,8 @@
 	for(var/surv_type in synth_survivor_types)
 		var/datum/equipment_preset/synth/survivor/surv_equipment = surv_type
 		var/survivor_variant = initial(surv_equipment.survivor_variant)
-		if(!synth_survivor_types_by_variant[survivor_variant]) synth_survivor_types_by_variant[survivor_variant] = list()
+		if(!synth_survivor_types_by_variant[survivor_variant])
+			synth_survivor_types_by_variant[survivor_variant] = list()
 		synth_survivor_types_by_variant[survivor_variant] += surv_type
 
 	if(islist(json["CO_survivor_types"]))

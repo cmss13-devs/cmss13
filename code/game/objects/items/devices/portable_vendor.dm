@@ -209,7 +209,8 @@
 	if(covert)
 		return
 
-	if(overlays) overlays.Cut()
+	if(overlays)
+		overlays.Cut()
 	if (broken)
 		overlays += image(icon, "securespark")
 	else if (fabricating)

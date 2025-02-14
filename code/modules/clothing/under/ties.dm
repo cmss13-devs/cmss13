@@ -520,49 +520,52 @@
 	icon_state = "upppatch_alt"
 
 /obj/item/clothing/accessory/patch/falcon/squad_main
+	name = "USCM Falling Falcons squad patch"
+	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in squad colors."
 	icon_state = "fallingfalcons_squad"
+	var/dummy_icon_state = "fallingfalcons_%SQUAD%"
+	var/static/list/valid_icon_states
+	item_state_slots = null
 
-/obj/item/clothing/accessory/patch/falcon/squad_main/equipped(mob/user, slot)
+/obj/item/clothing/accessory/patch/falcon/squad_main/Initialize(mapload, ...)
 	. = ..()
-	self_set()
-	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(self_set), TRUE)
+	if(!valid_icon_states)
+		valid_icon_states = icon_states(icon)
+	adapt_to_squad()
 
-/obj/item/clothing/accessory/patch/falcon/squad_main/dropped(mob/user)
+/obj/item/clothing/accessory/patch/falcon/squad_main/proc/update_clothing_wrapper(mob/living/carbon/human/wearer)
+	SIGNAL_HANDLER
+
+	var/is_worn_by_wearer = recursive_holder_check(src) == wearer
+	if(is_worn_by_wearer)
+		update_clothing_icon()
+	else
+		UnregisterSignal(wearer, COMSIG_SET_SQUAD) // we can't set this in dropped, because dropping into a helmet unsets it and then it never updates
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/update_clothing_icon()
+	adapt_to_squad()
+	if(istype(loc, /obj/item/storage/internal) && istype(loc.loc, /obj/item/clothing/head/helmet))
+		var/obj/item/clothing/head/helmet/headwear = loc.loc
+		headwear.update_icon()
+	return ..()
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/pickup(mob/user, silent)
 	. = ..()
-	UnregisterSignal(user, COMSIG_SET_SQUAD)
+	adapt_to_squad()
 
-/obj/item/clothing/accessory/patch/falcon/squad_main/proc/self_set()
-	var/mob/living/carbon/human/H = loc
-	if(istype(H))
-		if(H.assigned_squad)
-			switch(H.assigned_squad.name)
-				if(SQUAD_MARINE_1)
-					icon_state = "fallingfalcons_alpha"
-					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_alpha")
-				if(SQUAD_MARINE_2)
-					icon_state = "fallingfalcons_bravo"
-					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_bravo")
-					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
-				if(SQUAD_MARINE_3)
-					icon_state = "fallingfalcons_charlie"
-					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_charlie")
-					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Charlie Squad's deep purple."
-				if(SQUAD_MARINE_4)
-					icon_state = "fallingfalcons_delta"
-					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_delta")
-					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Delta Squad's striking blue."
-				if(SQUAD_MARINE_5)
-					icon_state = "fallingfalcons_echo"
-					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_echo")
-					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Echo Squad's vivid green."
-				if(SQUAD_MARINE_CRYO)
-					icon_state = "fallingfalcons_foxtrot"
-					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_foxtrot")
-					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Foxtrot Squad's boring brown."
-		else
-			icon_state = "fallingfalcons_squad"
-			desc = initial(desc)
-		H.update_inv_head()
+/obj/item/clothing/accessory/patch/falcon/squad_main/equipped(mob/user, slot, silent)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
+	adapt_to_squad()
+	return ..()
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/proc/adapt_to_squad()
+	var/squad_color = "squad"
+	var/mob/living/carbon/human/wearer = recursive_holder_check(src)
+	if(istype(wearer) && wearer.assigned_squad)
+		var/squad_name = lowertext(wearer.assigned_squad.name)
+		if("fallingfalcons_[squad_name]" in valid_icon_states)
+			squad_color = squad_name
+	icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
 
 /obj/item/clothing/accessory/patch/cec_patch
 	name = "CEC patch"

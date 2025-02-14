@@ -445,8 +445,8 @@
 			to_chat(user, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
 			log_ares_security("Nuclear Ordnance Request", "Sent a request for nuclear ordnance for the following reason: [reason]", last_login)
 			if(ares_can_interface())
-				ai_silent_announcement("[last_login] has sent a request for nuclear ordnance to USCM High Command.", ".V")
-				ai_silent_announcement("Reason given: [reason].", ".V")
+				ai_silent_announcement("[last_login] направил запрос на ядерный арсенал Верховному командованию КМП.", ".V")
+				ai_silent_announcement("Причина: [reason].", ".V")
 			COOLDOWN_START(datacore, ares_nuclear_cooldown, COOLDOWN_COMM_DESTRUCT)
 			return TRUE
 

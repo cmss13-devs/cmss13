@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	GLOB.frozen_crew += "[occupant.real_name] ([occupant.job])"
 
 	if(!gearless_role(occupant))
-		ai_silent_announcement("[occupant.real_name], [occupant.job], has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
+		ai_silent_announcement("[occupant.real_name], [occupant.job], погружен[genderize_ru(occupant.gender, "", "а", "о", "ы")] в долгосрочное криохранилище. Вещи перемещены на склад криохранилища.")
 	visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
 
 	//Delete the mob.

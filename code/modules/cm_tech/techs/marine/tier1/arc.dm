@@ -7,8 +7,8 @@
 
 	tier = /datum/tier/one
 
-	announce_name = "M540-B ARC ACQUIRED"
-	announce_message = "An M540-B Armored Recon Carrier has been authorized and will be delivered in the vehicle bay."
+	announce_name = "ПРИОБРЕТЕНИЕ M540-B ARC"
+	announce_message = "Получена авторизация на \"Разведывательный бронетранспортёр M540-B\". Он будет доставлен в отсек транспортных средств."
 
 	flags = TREE_FLAG_MARINE
 

@@ -518,7 +518,7 @@
 	new_order.approvedby = MAIN_AI_SYSTEM
 	GLOB.supply_controller.shoppinglist += new_order
 
-	marine_announcement("Ядерное устройство было подготовлено и доставлено по заявкам через ASRS.", "ПОЛУЧЕНИЕ ЯДЕРНОГО АРСЕНАЛА", 'sound/misc/notice2.ogg')
+	marine_announcement("Ядерное устройство было подготовлено и доставлено в Requisitions через систему ASRS.", "ПОЛУЧЕНИЕ ЯДЕРНОГО АРСЕНАЛА", 'sound/misc/notice2.ogg')
 	message_admins("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 	log_game("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 

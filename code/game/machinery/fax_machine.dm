@@ -668,7 +668,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 					receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 					receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
 					if((receiver.radio_alert_tag != null) && !sent_radio_alert)
-						ai_silent_announcement("COMMUNICATIONS REPORT: [single_sending ? "Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] now receiving priority fax.", "[receiver.radio_alert_tag]")
+						ai_silent_announcement("ОТЧЁТНАЯ СИСТЕМА КОММУНИКАЦИЙ: [single_sending ? "Факс-машина [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] сейчас принимает приоритетный факс.", "[receiver.radio_alert_tag]")
 						sent_radio_alert = TRUE
 		qdel(faxcontents)
 

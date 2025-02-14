@@ -3,7 +3,7 @@
 	desc = "Wakes up an additional specialist to fight against any threats."
 	icon_state = "overshield"
 
-	announce_message = "An additional specialist is being taken out of cryo."
+	announce_message = "Из крио был выведен дополнительный специалист."
 
 	required_points = 8
 

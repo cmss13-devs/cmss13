@@ -183,7 +183,7 @@
 
 	if(automated_hangar_id && automated_lz_id && automated_delay && !automated_timer && mode == SHUTTLE_IDLE)
 		if(faction == FACTION_MARINE)
-			ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+			ai_silent_announcement("Автоматическое отправление дропшипа '[name]' осуществлится через [automated_delay * 0.1] секунд.")
 
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
 
@@ -202,7 +202,7 @@
 	else
 		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
 	if(faction == FACTION_MARINE)
-		ai_silent_announcement("Dropship '[name]' departing.")
+		ai_silent_announcement("Осуществляется вылет дропшипа '[name]', будьте осторожны.")
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH

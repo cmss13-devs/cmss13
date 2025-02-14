@@ -359,9 +359,9 @@
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()
-	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
-	ai_silent_announcement("Saving operational report to archive.", ".V")
-	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
+	ai_silent_announcement("Биосканирование завершено. Признаков неизвестных форм жизни не обнаружено.", ".V")
+	ai_silent_announcement("Сохранение оперативного отчета в архив.", ".V")
+	ai_silent_announcement("Начало финального сканирования систем через 3 минуты.", ".V")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

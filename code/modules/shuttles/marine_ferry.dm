@@ -87,7 +87,7 @@
 			automated_launch_timer = TIMER_ID_NULL
 
 /datum/shuttle/ferry/marine/proc/prepare_automated_launch()
-	ai_silent_announcement("The [name] will automatically depart in [automated_launch_delay * 0.1] seconds")
+	ai_silent_announcement("Автоматическое отправление дропшипа '[name]' осуществлится через [automated_launch_delay * 0.1] секунд.")
 	automated_launch_timer = addtimer(CALLBACK(src, PROC_REF(automated_launch)), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /datum/shuttle/ferry/marine/proc/automated_launch()
@@ -96,7 +96,7 @@
 	else
 		automated_launch = FALSE
 	automated_launch_timer = TIMER_ID_NULL
-	ai_silent_announcement("Dropship '[name]' departing.")
+	ai_silent_announcement("Осуществляется вылет дропшипа '[name]', будьте осторожны.")
 	log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
 
 
@@ -112,7 +112,7 @@
 			if(!preflight_checks())
 				announce_preflight_failure()
 				if(automated_launch)
-					ai_silent_announcement("Automated launch of [name] failed. New launch in [DROPSHIP_AUTO_RETRY_COOLDOWN] SECONDS.")
+					ai_silent_announcement("Автоматический запуск '[name]' не осуществлён. Повторный запуск через [DROPSHIP_AUTO_RETRY_COOLDOWN] секунд.")
 					automated_launch_timer = addtimer(CALLBACK(src, PROC_REF(automated_launch)), automated_launch_delay)
 
 				process_state = IDLE_STATE

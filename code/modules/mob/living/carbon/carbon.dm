@@ -129,7 +129,6 @@
 
 	var/mob/living/carbon/xenomorph/xeno = hauling_xeno
 	next_haul_resist = world.time + 1.3 SECONDS
-
 	if(istype(get_active_hand(), /obj/item))
 		var/obj/item/item = get_active_hand()
 		if(item.force)
@@ -510,6 +509,7 @@
 	layer = LYING_BETWEEN_MOB_LAYER
 	add_filter("hauled_shadow", 1, color_matrix_filter(rgb(95, 95, 95)))
 	pixel_y = -7
+	next_haul_resist = 0
 
 /mob/living/carbon/human/proc/release_haul_death()
 	SIGNAL_HANDLER
@@ -538,6 +538,7 @@
 	for(var/obj/object in location)
 		if(istype(object, /obj/effect/alien/resin/trap) || istype(object, /obj/effect/alien/egg))
 			object.HasProximity(src)
+	next_haul_resist = 0
 
 
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)

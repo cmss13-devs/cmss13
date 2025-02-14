@@ -458,14 +458,8 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
 
 	// Sleep while the explosions do their job
-	var/explosion_alive = TRUE
-	while(explosion_alive)
-		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
-			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
-				explosion_alive = TRUE
-				break
-		sleep(1)
+	while(length(SSexplosions.currentrun) || length(SSexplosions.exploded_articles))
+		sleep(10)
 
 	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list))
 		if(affected_mob.z != T_trg.z)

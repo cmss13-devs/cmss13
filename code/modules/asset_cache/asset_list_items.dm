@@ -480,5 +480,5 @@
 
 /datum/asset/directory/book_assets
 	common_dirs = list(
-		"html/book_assets/"
+		"html/book_assets/",
 	)

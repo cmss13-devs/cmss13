@@ -43,7 +43,7 @@
 	var/stage = 1
 	///How much we have left to dispense, if we didn't have enough
 	var/stage_missing = 0
-	///0 = idle, <0 = stuck, 1 = finished, 2 = running
+	///0 = idle, <0 = stuck, 1 = running, 2 = finished
 	var/status = AUTODISPENSER_IDLE
 	///Error status message
 	var/error
@@ -85,7 +85,7 @@
 	else if(status == AUTODISPENSER_RUNNING)
 		overlays += "+running"
 	else if(status == AUTODISPENSER_FINISHED)
-		overlays += "finished"
+		overlays += "+full"
 
 /obj/structure/machinery/autodispenser/proc/connect_storage()
 	if(linked_storage)
@@ -304,7 +304,7 @@
 
 	var/space = container.reagents.maximum_volume - container.reagents.total_volume
 	if(!space || cycle >= cycle_limit) //We done boys
-		stop_program(1)
+		stop_program(2)
 		update_icon()
 		return
 

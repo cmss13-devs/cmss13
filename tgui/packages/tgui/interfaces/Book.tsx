@@ -13,6 +13,7 @@ type BookData = {
 };
 
 const replacementRegex = /^\t*/gm;
+const imageRegex = /src="\/([^ ]*)"/gm;
 
 export const Book = () => {
   const { data } = useBackend<BookData>();
@@ -25,9 +26,17 @@ export const Book = () => {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    const toParse = contents.trim().replaceAll(replacementRegex, '');
+    let toParse = marked.parse(
+      contents.trim().replaceAll(replacementRegex, ''),
+    );
 
-    ref.current!.innerHTML = marked.parse(toParse);
+    const matches = Array.from(toParse.matchAll(imageRegex));
+    for (const match of matches) {
+      const asset = resolveAsset(match[1]);
+      toParse = toParse.replace(match[0], `src="${asset}"`);
+    }
+
+    ref.current!.innerHTML = toParse;
 
     const rect = ref.current!.getBoundingClientRect();
 
@@ -44,7 +53,6 @@ export const Book = () => {
       const element = list[i];
 
       const elementRect = element.getBoundingClientRect();
-      console.log(elementRect);
       if (elementRect.top > limit) {
         page++;
       }
@@ -85,6 +93,7 @@ export const Book = () => {
                   src={resolveAsset('logo_uscm.png')}
                   height={4}
                   fixBlur={false}
+                  className="HeaderImage"
                 />
               </Stack.Item>
               <Stack.Item>
@@ -125,7 +134,6 @@ export const Book = () => {
                   className="PageTurn Forward"
                   onClick={() => {
                     setPage((page) => page + 1);
-                    console.log(page);
                   }}
                 />
               )}

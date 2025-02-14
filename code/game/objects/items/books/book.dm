@@ -133,7 +133,7 @@
 
 	var/book_title = "A guide to unreality"
 	var/book_author = "Notreal FakeDude"
-	var/book_contents = {"
+	var/book_contents = @{"
 		# This book's not written in! It shouldn't exist! Aah!
 
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -151,6 +151,9 @@
 		This is a list:
 		- It has elements!
 		- It has another one! Woah!
+
+		Image:
+		![Alt text](/test.png)
 
 	"}
 
@@ -180,3 +183,4 @@
 /obj/item/lore_book/ui_assets(mob/user)
 	. = ..()
 	. += get_asset_datum(/datum/asset/simple/paper)
+	. += get_asset_datum(/datum/asset/directory/book_assets)

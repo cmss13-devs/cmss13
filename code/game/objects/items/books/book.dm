@@ -168,6 +168,7 @@
 		return
 
 	ui = new(user, src, "Book", book_title)
+	ui.set_autoupdate(FALSE)
 	ui.open()
 
 /obj/item/lore_book/ui_state(mob/user, datum/ui_state/state)

@@ -35,7 +35,7 @@
   - all:
       - changed-files:
           - any-glob-to-any-file: ['code/**', 'icons/**', 'sounds/**', '_maps/map_files/**', 'tgui/**']
-          - any-glob-to-any-file: 'modular_bandastation/**'
+          - any-glob-to-any-file: 'modular/**'
       - base-branch: 'master'
       - head-branch: '!merge-upstream'
 
@@ -43,7 +43,7 @@
   - all:
       - changed-files:
           - any-glob-to-any-file: ['code/**', 'icons/**', 'sounds/**', '_maps/map_files/**']
-          - all-globs-to-all-files: '!modular_bandastation/**'
+          - all-globs-to-all-files: '!modular/**'
       - base-branch: 'master'
       - head-branch: '!merge-upstream'
 

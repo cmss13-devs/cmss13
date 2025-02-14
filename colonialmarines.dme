@@ -2354,6 +2354,8 @@
 #include "code\modules\reagents\Chemistry-Vessel.dm"
 #include "code\modules\reagents\chemical_research\Chemical-Research.dm"
 #include "code\modules\reagents\chemical_research\generated_reagents.dm"
+#include "code\modules\reagents\chemical_research\Ordnance-Research.dm"
+#include "code\modules\reagents\chemical_research\Ordnance-Upgrades.dm"
 #include "code\modules\reagents\chemistry_machinery\acid_harness.dm"
 #include "code\modules\reagents\chemistry_machinery\autodispenser.dm"
 #include "code\modules\reagents\chemistry_machinery\centrifuge.dm"

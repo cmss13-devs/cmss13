@@ -29,7 +29,7 @@ GLOBAL_DATUM_INIT(ordnance_research, /datum/ordnance_research, new)
 
 	//items
 
-	/obj/item/ordnance/tech_disk
+/obj/item/ordnance/tech_disk
 	name = "you aren't supposed to have this"
 	desc = "Insert this in an armylathe or, if applicable, a dropship part fabricator to obtain this technology"
 	icon = 'icons/obj/items/disk.dmi'

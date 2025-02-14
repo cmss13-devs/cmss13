@@ -70,7 +70,8 @@
 	d1 = text2num( copytext( icon_state, 1, dash ) )
 	d2 = text2num( copytext( icon_state, dash+1 ) )
 	var/turf/T = src.loc // hide if turf is not intact
-	if(level==1) hide(T.intact_tile)
+	if(level==1)
+		hide(T.intact_tile)
 	update_icon()
 	GLOB.cable_list += src
 

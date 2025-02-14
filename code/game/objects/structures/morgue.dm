@@ -52,7 +52,8 @@
 
 /obj/structure/morgue/proc/toggle_morgue(mob/user)
 	add_fingerprint(user)
-	if(!connected) return
+	if(!connected)
+		return
 	if(morgue_open)
 		for(var/atom/movable/A in connected.loc)
 			if(!A.anchored)
@@ -98,7 +99,7 @@
 		if(tmp_label == "" || !tmp_label)
 			if(labelcomponent)
 				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."),
 				SPAN_NOTICE("You remove the label from \the [src]."))
 				return
 			else
@@ -106,7 +107,7 @@
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			AddComponent(/datum/component/label, tmp_label)
 			playsound(src, "paper_writing", 15, TRUE)
@@ -201,7 +202,8 @@
 
 
 /obj/structure/morgue/crematorium/relaymove(mob/user)
-	if(cremating) return
+	if(cremating)
+		return
 	..()
 
 
@@ -242,7 +244,8 @@
 			qdel(M)
 
 		for(var/obj/O in contents)
-			if(istype(O, /obj/structure/morgue_tray)) continue
+			if(istype(O, /obj/structure/morgue_tray))
+				continue
 			qdel(O)
 
 		new /obj/effect/decal/cleanable/ash(src)

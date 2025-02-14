@@ -7,7 +7,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	set name = "Show Plant Genes"
 	set desc = "Prints the round's plant gene masks."
 
-	if(!admin_holder) return
+	if(!admin_holder)
+		return
 
 	if(!GLOB.gene_tag_masks)
 		to_chat(usr, "Gene masks not set.")
@@ -311,13 +312,15 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 //Returns a key corresponding to an entry in the global seed list.
 /datum/seed/proc/get_mutant_variant()
-	if(!LAZYLEN(mutants) || immutable > 0) return 0
+	if(!LAZYLEN(mutants) || immutable > 0)
+		return 0
 	return pick(mutants)
 
 //Mutates the plant overall (randomly).
 /datum/seed/proc/mutate(degree, turf/source_turf)
 
-	if(!degree || immutable > 0) return
+	if(!degree || immutable > 0)
+		return
 
 	source_turf.visible_message(SPAN_NOTICE("\The [display_name] quivers!"))
 
@@ -351,7 +354,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 				production = max(1,  min(10,  production    + (rand(-1,1)   * degree)))
 			if(7) //Lifespan
 				lifespan =   max(10, min(30,  lifespan  + (rand(-2,2)   * degree)))
-				if(yield != -1) yield =  max(0,  min(10,  yield + (rand(-2,2)   * degree)))
+				if(yield != -1)
+					yield =  max(0,  min(10,  yield + (rand(-2,2)   * degree)))
 			if(8) //Potency
 				potency =    max(0,  min(200, potency   + (rand(-20,20) * degree)))
 			if(9) //Maturity
@@ -379,7 +383,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
 			else //New chems! (20% chance)
-				var/new_chem = list(pick( prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),\
+				var/new_chem = list(pick( prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),
 											prob(15);pick(GLOB.chemical_gen_classes_list["C2"]),\
 											prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\
@@ -393,23 +397,28 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 //Mutates a specific trait/set of traits.
 /datum/seed/proc/apply_gene(datum/plantgene/gene)
 
-	if(!gene || !gene.values || immutable > 0) return
+	if(!gene || !gene.values || immutable > 0)
+		return
 
 	switch(gene.genetype)
 
 		//Splicing products has some detrimental effects on yield and lifespan.
 		if("products")
 
-			if(length(gene.values) < 6) return
+			if(length(gene.values) < 6)
+				return
 
 			if(yield > 0)  yield =  max(1,floor(yield*0.85))
-			if(endurance > 0) endurance = max(1,floor(endurance*0.85))
+			if(endurance > 0)
+				endurance = max(1,floor(endurance*0.85))
 			if(lifespan > 0)  lifespan =  max(1,floor(lifespan*0.85))
 
-			if(!products) products = list()
+			if(!products)
+				products = list()
 			products |= gene.values[1]
 
-			if(!chems) chems = list()
+			if(!chems)
+				chems = list()
 
 			var/list/gene_value = gene.values[2]
 			for(var/rid in gene_value)
@@ -422,7 +431,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 				for(var/i=1;i<=length(gene_chem);i++)
 
-					if(isnull(gene_chem[i])) gene_chem[i] = 0
+					if(isnull(gene_chem[i]))
+						gene_chem[i] = 0
 
 					if(chems[rid][i])
 						chems[rid][i] = max(1,floor((gene_chem[i] + chems[rid][i])/2))
@@ -431,7 +441,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 			var/list/new_gasses = gene.values[3]
 			if(islist(new_gasses))
-				if(!exude_gasses) exude_gasses = list()
+				if(!exude_gasses)
+					exude_gasses = list()
 				exude_gasses |= new_gasses
 				for(var/gas in exude_gasses)
 					exude_gasses[gas] = max(1,floor(exude_gasses[gas]*0.8))
@@ -442,7 +453,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("consumption")
 
-			if(length(gene.values) < 7) return
+			if(length(gene.values) < 7)
+				return
 
 			consume_gasses =    gene.values[1]
 			requires_nutrients =   gene.values[2]
@@ -454,7 +466,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("environment")
 
-			if(length(gene.values) < 6) return
+			if(length(gene.values) < 6)
+				return
 
 			ideal_heat =    gene.values[1]
 			heat_tolerance =    gene.values[2]
@@ -465,7 +478,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("resistance")
 
-			if(length(gene.values) < 3) return
+			if(length(gene.values) < 3)
+				return
 
 			toxins_tolerance =  gene.values[1]
 			pest_tolerance =    gene.values[2]
@@ -473,7 +487,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("vigour")
 
-			if(length(gene.values) < 6) return
+			if(length(gene.values) < 6)
+				return
 
 			endurance = gene.values[1]
 			yield = gene.values[2]
@@ -484,7 +499,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 		if("flowers")
 
-			if(length(gene.values) < 7) return
+			if(length(gene.values) < 7)
+				return
 
 			product_icon =  gene.values[1]
 			product_color =    gene.values[2]
@@ -497,7 +513,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 //Returns a list of the desired trait values.
 /datum/seed/proc/get_gene(genetype)
 
-	if(!genetype) return 0
+	if(!genetype)
+		return 0
 
 	var/datum/plantgene/P = new()
 	P.genetype = genetype
@@ -628,7 +645,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 // be put into the global datum list until the product is harvested, though.
 /datum/seed/proc/diverge(modified)
 
-	if(immutable > 0) return
+	if(immutable > 0)
+		return
 
 	//Set up some basic information.
 	var/datum/seed/new_seed = new
@@ -638,9 +656,11 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 	//Copy over everything else.
 	if(products)    new_seed.products = products.Copy()
-	if(mutants) new_seed.mutants = mutants.Copy()
+	if(mutants)
+		new_seed.mutants = mutants.Copy()
 	if(chems)   new_seed.chems = chems.Copy()
-	if(consume_gasses) new_seed.consume_gasses = consume_gasses.Copy()
+	if(consume_gasses)
+		new_seed.consume_gasses = consume_gasses.Copy()
 	if(exude_gasses)   new_seed.exude_gasses = exude_gasses.Copy()
 
 	new_seed.seed_name = "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][seed_name]"

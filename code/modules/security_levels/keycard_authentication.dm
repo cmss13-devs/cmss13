@@ -109,7 +109,8 @@
 /obj/structure/machinery/keycard_auth/proc/broadcast_request()
 	icon_state = "auth_on"
 	for(var/obj/structure/machinery/keycard_auth/KA in GLOB.machines)
-		if(KA == src || KA.channel != channel) continue
+		if(KA == src || KA.channel != channel)
+			continue
 		KA.reset()
 		INVOKE_ASYNC(KA, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth, receive_request), src)
 
@@ -146,7 +147,8 @@
 			revoke_maint_all_access()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
-	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
+	if(CONFIG_GET(flag/ert_admin_call_only))
+		return 1
 	return SSticker.mode && SSticker.mode.ert_disabled
 
 GLOBAL_VAR_INIT(maint_all_access, TRUE)

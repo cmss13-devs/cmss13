@@ -539,31 +539,25 @@
 				if(SQUAD_MARINE_1)
 					icon_state = "fallingfalcons_alpha"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_alpha")
-					flags_obj = OBJ_IS_HELMET_GARB
 				if(SQUAD_MARINE_2)
 					icon_state = "fallingfalcons_bravo"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_bravo")
-					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
 				if(SQUAD_MARINE_3)
 					icon_state = "fallingfalcons_charlie"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_charlie")
-					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Charlie Squad's deep purple."
 				if(SQUAD_MARINE_4)
 					icon_state = "fallingfalcons_delta"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_delta")
-					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Delta Squad's striking blue."
 				if(SQUAD_MARINE_5)
 					icon_state = "fallingfalcons_echo"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_echo")
-					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Echo Squad's vivid green."
 				if(SQUAD_MARINE_CRYO)
 					icon_state = "fallingfalcons_foxtrot"
 					item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_foxtrot")
-					flags_obj = OBJ_IS_HELMET_GARB
 					desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Foxtrot Squad's boring brown."
 		else
 			icon_state = "fallingfalcons_squad"
@@ -575,63 +569,54 @@
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Alpha Squad's bold red"
 	icon_state = "fallingfalcons_alpha"
 	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_alpha")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/bravo
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
 	icon_state = "fallingfalcons_bravo"
 	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_bravo")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/charlie
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Charlie Squad's deep purple."
 	icon_state = "fallingfalcons_charlie"
 	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_charlie")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/delta
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Delta Squad's striking blue."
 	icon_state = "fallingfalcons_delta"
 	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_delta")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/echo
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Echo Squad's vivid green."
 	icon_state = "fallingfalcons_echo"
 	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_echo")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/foxtrot
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Foxtrot Squad's boring brown."
 	icon_state = "fallingfalcons_foxtrot"
 	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_foxtrot")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/cec_patch
 	name = "CEC patch"
 	desc = "An old, worn and faded fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."
 	icon_state = "cecpatch"
 	item_state_slots = list(WEAR_AS_GARB = "cecpatch")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/freelancer_patch
 	name = "Freelancer's Guild patch"
 	desc = "A fire-resistant circular patch featuring a white skull on a vertically split black and blue background. Worn by a skilled mercenary of the Freelancers, a well-equipped group for hire across the outer colonies, known for their professionalism and neutrality. This patch is a personal memento from the wearer’s time with the group, representing a life spent navigating the dangerous world of mercenary contracts."
 	icon_state = "mercpatch"
 	item_state_slots = list(WEAR_AS_GARB = "mercpatch")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/merc_patch
 	name = "Old Freelancer's Guild patch"
 	desc = "A faded old, worn fire-resistant circular patch featuring a white skull on a vertically split black and red background. Worn by a well-equipped mercenary group for hire across the outer colonies, known for their professionalism and neutrality. The current owner’s connection to the patch is unclear—whether it was once earned as part of service, kept as a memento, or simply found, disconnected from its original wearer."
 	icon_state = "mercpatch_red"
 	item_state_slots = list(WEAR_AS_GARB = "mercpatch_red")
-	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/medic_patch
 	name = "Field Medic patch"

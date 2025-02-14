@@ -74,7 +74,7 @@
 /obj/item/reagent_container/food/snacks/meat/fish
 	name = "fish meat"
 	desc = "Meat from a fish."
-	icon_state = "fish_meat"
+	icon_state = "fishfillet"
 	icon = 'icons/obj/items/food/fish.dmi'
 
 /obj/item/reagent_container/food/snacks/meat/fish/crab

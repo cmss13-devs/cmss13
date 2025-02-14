@@ -564,42 +564,6 @@
 			desc = initial(desc)
 		H.update_inv_head()
 
-/obj/item/clothing/accessory/patch/falcon/squad/alpha
-	name = "USCM Falling Falcons patch"
-	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Alpha Squad's bold red"
-	icon_state = "fallingfalcons_alpha"
-	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_alpha")
-
-/obj/item/clothing/accessory/patch/falcon/squad/bravo
-	name = "USCM Falling Falcons patch"
-	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
-	icon_state = "fallingfalcons_bravo"
-	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_bravo")
-
-/obj/item/clothing/accessory/patch/falcon/squad/charlie
-	name = "USCM Falling Falcons patch"
-	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Charlie Squad's deep purple."
-	icon_state = "fallingfalcons_charlie"
-	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_charlie")
-
-/obj/item/clothing/accessory/patch/falcon/squad/delta
-	name = "USCM Falling Falcons patch"
-	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Delta Squad's striking blue."
-	icon_state = "fallingfalcons_delta"
-	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_delta")
-
-/obj/item/clothing/accessory/patch/falcon/squad/echo
-	name = "USCM Falling Falcons patch"
-	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Echo Squad's vivid green."
-	icon_state = "fallingfalcons_echo"
-	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_echo")
-
-/obj/item/clothing/accessory/patch/falcon/squad/foxtrot
-	name = "USCM Falling Falcons patch"
-	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Foxtrot Squad's boring brown."
-	icon_state = "fallingfalcons_foxtrot"
-	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_foxtrot")
-
 /obj/item/clothing/accessory/patch/cec_patch
 	name = "CEC patch"
 	desc = "An old, worn and faded fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."

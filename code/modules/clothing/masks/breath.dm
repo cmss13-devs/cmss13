@@ -436,36 +436,6 @@
 	item_state = "neckerchief_black"
 	original_state = "neckerchief_black"
 
-/obj/item/clothing/mask/neckerchief/squad/alpha
-	icon_state = "neckerchief_alpha"
-	item_state = "neckerchief_alpha"
-	original_state = "neckerchief_alpha"
-
-/obj/item/clothing/mask/neckerchief/squad/bravo
-	icon_state = "neckerchief_bravo"
-	item_state = "neckerchief_bravo"
-	original_state = "neckerchief_bravo"
-
-/obj/item/clothing/mask/neckerchief/squad/charlie
-	icon_state = "neckerchief_charlie"
-	item_state = "neckerchief_charlie"
-	original_state = "neckerchief_charlie"
-
-/obj/item/clothing/mask/neckerchief/squad/delta
-	icon_state = "neckerchief_delta"
-	item_state = "neckerchief_delta"
-	original_state = "neckerchief_delta"
-
-/obj/item/clothing/mask/neckerchief/squad/echo
-	icon_state = "neckerchief_echo"
-	item_state = "neckerchief_echo"
-	original_state = "neckerchief_echo"
-
-/obj/item/clothing/mask/neckerchief/squad/foxtrot
-	icon_state = "neckerchief_foxtrot"
-	item_state = "neckerchief_foxtrot"
-	original_state = "neckerchief_foxtrot"
-
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"
 	desc = "A close-fitting mask that can be connected to an air supply."
@@ -479,4 +449,3 @@
 	flags_armor_protection = 0
 	w_class = SIZE_SMALL
 	gas_transfer_coefficient = 0.10
-

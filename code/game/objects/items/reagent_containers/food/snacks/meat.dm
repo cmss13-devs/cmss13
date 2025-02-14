@@ -75,7 +75,7 @@
 	name = "fish meat"
 	desc = "Meat from a fish."
 	icon_state = "fish_meat"
-	icon = 'icons/obj/items/fishing_atoms.dmi'
+	icon = 'icons/obj/items/food/fish.dmi'
 
 /obj/item/reagent_container/food/snacks/meat/fish/crab
 	name = "crab meat"

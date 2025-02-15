@@ -696,11 +696,6 @@
 		list("AUTOINJECTORS", -1, null, null),
 		list("First-Aid Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
-		list("Emergency Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/emergency, VENDOR_ITEM_REGULAR),
-
-		list("PILLS", -1, null, null),
-		list("First-Aid Pill Packet", floor(scale * 5), /obj/item/storage/pill_bottle/packet/tricordrazine, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Pill Packet", floor(scale * 5), /obj/item/storage/pill_bottle/packet/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
 		list("Health Analyzer", floor(scale * 3), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),

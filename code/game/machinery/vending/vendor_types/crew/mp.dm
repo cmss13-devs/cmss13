@@ -12,12 +12,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Police M2 Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-
-		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
 		list("MP Beret", 0, /obj/item/clothing/head/beret/marine/mp, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("USCM MP Ball-Cap", 0, /obj/item/clothing/head/beret/marine/mp/mpcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("USCM MP Peaked Cap", 0, /obj/item/clothing/head/beret/marine/mp/mppeaked, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("M10 Military Police Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("HANDGUN CASE (CHOOSE 1)", 0, null, null, null),
 		list("88 mod 4 Combat Pistol Case", 0, /obj/item/storage/box/guncase/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),

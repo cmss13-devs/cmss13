@@ -25,10 +25,6 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
-"af" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/prison/floor_plate/southwest,
-/area/whiskey_outpost/inside/bunker/bunker/front)
 "ag" = (
 /obj/structure/machinery/door/poddoor{
 	desc = "A podlock that leads to the main Marine base on LV-624. It requires power from the outpost to stay shut. Better not let anything get through this...";
@@ -59,10 +55,6 @@
 "ak" = (
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/cic)
-"al" = (
-/obj/structure/machinery/power/apc/almayer/east,
-/turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves/tunnel)
 "am" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -105,10 +97,6 @@
 	},
 /turf/open/floor/whitegreenfull,
 /area/whiskey_outpost/inside/hospital)
-"ar" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/bunker)
 "as" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s"
@@ -138,10 +126,6 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/whitegreen,
 /area/whiskey_outpost/inside/hospital/triage)
-"aw" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
 "ax" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/fancy/cigar,
@@ -162,18 +146,6 @@
 	},
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
-"aB" = (
-/obj/structure/surface/table,
-/obj/item/storage/box/MRE{
-	pixel_x = 4;
-	pixel_y = 11
-	},
-/obj/item/storage/box/MRE{
-	pixel_x = -3;
-	pixel_y = 4
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
 "aC" = (
 /turf/open/floor/almayer/cargo,
 /area/whiskey_outpost/inside/cic)
@@ -277,6 +249,10 @@
 /obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/jungle/impenetrable,
 /area/whiskey_outpost/outside/south)
+"ba" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/whiskey_outpost/inside/bunker/bunker/front)
 "bb" = (
 /turf/open/floor/whitegreen/northwest,
 /area/whiskey_outpost/inside/hospital)
@@ -2742,6 +2718,18 @@
 /obj/structure/surface/table,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
+"lF" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/MRE{
+	pixel_x = 4;
+	pixel_y = 11
+	},
+/obj/item/storage/box/MRE{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
 "lG" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping"
@@ -3194,6 +3182,10 @@
 	},
 /turf/open/floor/whitegreenfull,
 /area/whiskey_outpost/inside/hospital)
+"nB" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/bunker)
 "nC" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/prison,
@@ -3208,6 +3200,10 @@
 /obj/effect/decal/cleanable/blood/writing,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south/far)
+"nF" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
 "nG" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/prison,
@@ -3946,6 +3942,10 @@
 "qU" = (
 /turf/open/floor/asteroidfloor/north,
 /area/whiskey_outpost/outside/mortar_pit)
+"qW" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/plating,
+/area/whiskey_outpost/inside/caves/tunnel)
 "qX" = (
 /obj/structure/machinery/line_nexter{
 	dir = 1;
@@ -25402,7 +25402,7 @@ Ys
 lH
 Ys
 Ys
-aw
+nF
 pq
 rB
 fj
@@ -25485,7 +25485,7 @@ Ae
 Pp
 iI
 ks
-af
+ba
 fV
 Eh
 XG
@@ -26009,7 +26009,7 @@ lu
 mF
 Ys
 pq
-ar
+nB
 rB
 fj
 aj
@@ -27220,7 +27220,7 @@ pN
 pN
 pN
 Ys
-aw
+nF
 pq
 pR
 ry
@@ -27621,7 +27621,7 @@ pq
 iq
 cy
 le
-aB
+lF
 cy
 iq
 pq
@@ -30657,7 +30657,7 @@ zI
 zI
 zI
 zI
-al
+qW
 ae
 sV
 sV

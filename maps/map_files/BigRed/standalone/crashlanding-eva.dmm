@@ -196,17 +196,6 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
-"aP" = (
-/obj/structure/closet/crate/secure/weyland,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
-/obj/item/device/motiondetector/hacked/pmc,
-/obj/item/defenses/handheld/planted_flag/wy,
-/obj/item/ammo_box/magazine/misc/mre/pmc,
-/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
-/area/bigredv2/outside/general_offices)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -467,6 +456,17 @@
 /area/bigredv2/outside/general_offices)
 "cc" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
+/area/bigredv2/outside/general_offices)
+"cd" = (
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
+/obj/item/device/motiondetector/hacked/pmc,
+/obj/item/defenses/handheld/planted_flag/wy,
+/obj/item/ammo_box/magazine/misc/mre/pmc,
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/bigredv2/outside/general_offices)
 "cf" = (
 /turf/closed/shuttle/ert{
@@ -1781,7 +1781,7 @@ be
 bk
 bk
 aL
-aP
+cd
 aC
 qo
 al

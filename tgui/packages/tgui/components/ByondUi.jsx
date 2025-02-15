@@ -25,6 +25,7 @@ const createByondUiElement = (elementId) => {
   logger.log(`allocated '${id}'`);
   // Return a control structure
   return {
+    id: id,
     render: (params) => {
       logger.log(`rendering '${id}'`);
       byondUiStack[index] = id;
@@ -103,6 +104,11 @@ export class ByondUi extends Component {
     const { params = {} } = this.props;
     const box = getBoundingBox(this.containerRef.current);
     logger.debug('bounding box', box);
+    if (params.id !== this.byondUiElement.id) {
+      this.byondUiElement.unmount();
+      this.byondUiElement = createByondUiElement(params.id);
+    }
+
     this.byondUiElement.render({
       parent: Byond.windowId,
       ...params,

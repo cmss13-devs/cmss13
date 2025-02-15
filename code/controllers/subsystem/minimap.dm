@@ -809,6 +809,11 @@ SUBSYSTEM_DEF(minimaps)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
 
+/datum/tacmap/ui_data(mob/user)
+	. = ..()
+
+	.["mapRef"] = map_holder?.map_ref
+
 /datum/tacmap/drawing/ui_data(mob/user)
 	var/list/data = list()
 
@@ -830,13 +835,13 @@ SUBSYSTEM_DEF(minimaps)
 
 	data["lastUpdateTime"] = last_update_time
 	data["tacmapReady"] = world.time > tacmap_ready_time
+	data["mapRef"] = map_holder?.map_ref
 
 	return data
 
 /datum/tacmap/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
 	data["canChangeZ"] = FALSE
@@ -848,7 +853,6 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/drawing/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["mapRef"] = map_holder?.map_ref
 	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
 	data["canDraw"] = FALSE
 	data["mapFallback"] = wiki_map_fallback
@@ -960,7 +964,7 @@ SUBSYSTEM_DEF(minimaps)
 
 		if("changeZ")
 			var/amount = params["amount"]
-			var/level = SSmapping.levels_by_trait(targeted_ztrait)			
+			var/level = SSmapping.levels_by_trait(targeted_ztrait)
 			if(target_z+amount < 1 || target_z+amount > length(level) || !SSmapping.same_z_map(level[target_z], level[target_z+amount]))
 				return
 
@@ -968,22 +972,20 @@ SUBSYSTEM_DEF(minimaps)
 
 			if(!level[target_z])
 				return
-			
+
 			if(user.client)
 				user.client.clear_map(map_holder.map.name)
 			map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
 			resend_current_map_png(user)
 			if(user.client)
 				user.client.register_map_obj(map_holder.map)
-			
+
 			distribute_current_map_png(faction)
 			last_update_time = world.time
 
 			new_current_map = get_unannounced_tacmap_data_png(faction)
 			old_map = get_tacmap_data_png(faction)
 			current_svg = get_tacmap_data_svg(faction)
-
-			ui.send_full_update(ui_static_data(user) + ui_data(user), force=TRUE, force_refresh=TRUE)
 
 
 		if("selectAnnouncement")

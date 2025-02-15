@@ -157,6 +157,8 @@
 
 	"}
 
+	var/live_preview = FALSE
+
 /obj/item/lore_book/attack_self(mob/user)
 	. = ..()
 
@@ -181,21 +183,91 @@
 	.["author"] = book_author
 	.["contents"] = book_contents
 
+	.["preview"] = live_preview
+
+/obj/item/lore_book/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	if(!live_preview)
+		return
+
+	var/new_contents = params["contents"]
+	if(!new_contents)
+		return
+
+	book_contents = new_contents
+	return TRUE
+
 /obj/item/lore_book/ui_assets(mob/user)
 	. = ..()
 	. += get_asset_datum(/datum/asset/simple/paper)
 	. += get_asset_datum(/datum/asset/directory/book_assets)
 
 /obj/item/lore_book/debug
-	book_title = "Debugging 101"
+	book_title = "Writing for Dummies: Book Authorship in the 22nd Century"
 	book_contents = @{"
-		# You really shouldn't be able to see this.
+		Thank you for wanting to contribute to our library! This book will serve as a reference to the syntax we use in books - Markdown, as well as a guide on how to write new books.
+
+		## Markdown and You
+
+		Markdown allows us to make pretty looking pages very simply, with easy to understand syntax. It's also what Discord uses, so you probably know it already. It looks a bit like this:
+
+		```
+		# This is some big text!
+
+		This is some normal text!
+
+		## This is a slightly smaller header.
+		```
+
+		If you press "Preview" in the top right - you'll open the live editor. This allows you to make changes to the Markdown and get a preview live. If you press Enter, you'll save this to the book in the game - so you won't lose your work if you exit!
+
+		## Headings
+
+		These are indicated by placing a # before your text. The largest heading is only 1 #, increasing numbers will decrease the size of the heading.
+
+		# Big heading!
+
+		## Smaller heading!
+
+		### Smaller still!
+
+		## Images
+
+		These are fun! You need to first add your image files to `html/book_assets`. Then, you can reference them using the Markdown syntax for images.
+
+		```
+		![Some dice](/test.png)
+		```
+
+		![Some dice](/test.png)
+
+		## Text Emphasis
+
+		We can emphasise text using double asterisks, so **this text** is bold. We can also make text italics with *single asterisks*.
+
+		## Blockquotes
+
+		Created by placing a > before your line, these can be used to add quotations into text. An alternative to codeblocks, which we'll discussl ater.
+
+		> This is inside a blockquote!
+
+		## Lists
+
+		We can create lists using - before your sentences, so:
+		- This is an element of a list.
+		- And this is another.
+
+		This also works with numbers:
+		1. This is the first element.
+		2. And this is the second.
+
+		## Code blocks
+
+		We use these for big blocks, like the tech manual. This is 3 backticks (`) before and after. Note: you'll have to manually insert linebreaks into these, as they are considered pre-rendered, and can go off the page.
+
+		```
+		Hi! I'm in a codeblock!
+		```
 	"}
-
-/obj/item/lore_book/debug/attack_self(mob/user)
-	var/contents = tgui_input_text(user, "Enter new book contents.", "Debug Book", multiline = TRUE, encode = FALSE)
-	if(!contents)
-		return
-
-	book_contents = contents
-	return ..()
+	live_preview = TRUE

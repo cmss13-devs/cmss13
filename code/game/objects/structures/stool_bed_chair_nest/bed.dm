@@ -21,6 +21,8 @@
 	var/foldabletype //To fold into an item (e.g. roller bed item)
 	var/buckling_y = 0 //pixel y shift to give to the buckled mob.
 	var/buckling_x = 0 //pixel x shift to give to the buckled mob.
+	///if the bed can carry big mobs (tier 3s)
+	var/can_carry_big = FALSE
 	var/obj/structure/closet/bodybag/buckled_bodybag
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
@@ -253,6 +255,7 @@
 	base_bed_icon = null
 	density = TRUE
 	buildstacktype = /obj/item/stack/sheet/plasteel
+	can_carry_big = TRUE
 
 /obj/structure/bed/roller/heavy/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/roller_holder) && !buckled_bodybag)

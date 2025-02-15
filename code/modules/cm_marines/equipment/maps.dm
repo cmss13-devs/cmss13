@@ -143,12 +143,6 @@
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
-/obj/item/map/bigger_red
-	name = "\improper Solaris Ridge Map"
-	desc = "A censored blueprint of the Solaris Ridge facility"
-	html_link = "images/9/9e/Solaris_Ridge.png"
-	color = "#e88a10"
-
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 /proc/setup_all_maps()
@@ -166,8 +160,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
-		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
-		MAP_BIGGER_RED = new/obj/item/map/bigger_red(),
+		MAP_NEW_VARADERO = new /obj/item/map/new_varadero()
 	)
 
 //used by marine equipment machines to spawn the correct map.

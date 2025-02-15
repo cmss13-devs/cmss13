@@ -19,6 +19,7 @@
 	var/splashable = TRUE
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
+	var/has_lid = TRUE
 
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,
@@ -61,9 +62,9 @@
 
 /obj/item/reagent_container/glass/attack_self()
 	..()
+	if(!has_lid)
+		return
 	if(splashable)
-		if(istype(src, /obj/item/reagent_container/glass/rag))
-			return
 		if(is_open_container())
 			to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
 			flags_atom ^= OPENCONTAINER
@@ -697,6 +698,7 @@
 	can_be_placed_into = null
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
+	has_lid = FALSE
 
 /obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)

@@ -1,1 +1,1 @@
-
+#define COMSIG_ITEM_TOGGLE_BUMP_ATTACK "toggle_bump_attack"

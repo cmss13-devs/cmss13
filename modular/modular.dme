@@ -5,6 +5,7 @@
 #include "_helpers220/_helpers220.dme"
 #include "_signals220/_signals220.dme"
 #include "_singletons/_singletons.dme"
+#include "bump_attacks/_bump_attacks.dme"
 #include "cyrillic_fixes/_cyrillic_fixes.dme"
 #include "sounds/_sounds.dme"
 #include "translations/_translations.dme"

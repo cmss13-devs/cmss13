@@ -51,6 +51,10 @@
 // If object should utilize icon state indexes for map colors (s_ d_ etc) in select_gamemode_skin
 #define MAP_COLOR_INDEX (1<<21)
 
+// BANDASTATION EDIT ADDITION - Bump Attacks
+/// Can this atom be bumped attack
+#define BUMP_ATTACKABLE (1<<12)
+// BANDASTATION EDIT END
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -94,6 +98,10 @@
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
 /// The item will incur click delay if an empty adjacent tile is clicked
 #define ADJACENT_CLICK_DELAY (1<<16)
+// BANDASTATION EDIT ADDITION - Bump Attacks
+/// Item triggers bump attack
+#define CAN_BUMP_ATTACK (1<<17)
+// BANDASTATION EDIT END
 //==========================================================================================
 
 

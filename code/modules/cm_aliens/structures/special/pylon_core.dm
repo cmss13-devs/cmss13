@@ -379,14 +379,14 @@
 			return XENO_NO_DELAY_ACTION
 
 		else if(warn && world.time > XENOMORPH_PRE_SETUP_CUTOFF)
-			if((alert(M, "Are we sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") != "Yes"))
+			if((tgui_alert(M, "Are we sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", "Destroy Core", list("Yes", "No")) != "Yes"))  // BANDASTATION EDIT - Bump Attacks
 				return XENO_NO_DELAY_ACTION
 
 			INVOKE_ASYNC(src, PROC_REF(startDestroying),M)
 			return XENO_NO_DELAY_ACTION
 
 		else if(world.time < XENOMORPH_PRE_SETUP_CUTOFF)
-			if((alert(M, "Are we sure that we want to remove the hive core? No cooldown will be applied.", , "Yes", "No") != "Yes"))
+			if((tgui_alert(M, "Are we sure that we want to remove the hive core? No cooldown will be applied.", "Remove Core", list("Yes", "No")) != "Yes")) // BANDASTATION EDIT - Bump Attacks
 				return XENO_NO_DELAY_ACTION
 
 			INVOKE_ASYNC(src, PROC_REF(startDestroying),M)

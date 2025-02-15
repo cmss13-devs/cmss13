@@ -174,7 +174,7 @@
 
 	/// List of actions (typepaths) that a
 	/// xenomorph type is given upon spawn
-	var/base_actions
+	var/list/base_actions = list() // BANDASTATION EDIT - Bump Attacks. it's a list!
 
 	/// this is the resin mark that is currently being tracked by the xeno
 	var/obj/effect/alien/resin/marker/tracked_marker

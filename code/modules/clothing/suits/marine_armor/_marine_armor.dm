@@ -620,6 +620,22 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/prop/prop_gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/device/flashlight,
+		/obj/item/storage/bible,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/attachable/bayonet,
+		/obj/item/weapon/sword/machete,
+	)
 	light_power = 4
 	light_range = 5
 

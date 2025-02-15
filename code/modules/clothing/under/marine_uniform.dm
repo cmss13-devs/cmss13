@@ -206,7 +206,7 @@
 	icon_state = "pilot_flightsuit_alt"
 	worn_state = "pilot_flightsuit_alt"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 	item_icons = list(

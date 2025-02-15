@@ -209,7 +209,7 @@
     if (message.payload !== null && message.payload !== undefined) {
       message.payload = JSON.stringify(message.payload);
 
-      if(message.payload.length > 512) {
+      if(!Byond.TRIDENT && message.payload.length > 512) {
         var chunks = [];
 
         for(var i = 0, charsLength = message.payload.length; i < charsLength; i += 512) {

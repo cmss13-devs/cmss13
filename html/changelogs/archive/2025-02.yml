@@ -365,3 +365,8 @@
   - balance: Painkilling and Electrogenetic are twice as powerful per level, halved
       the property levels of Painkilling and Electrogenetic in chemicals, meaning
       that they act the same.
+2025-02-15:
+  Furrior:
+  - ui: Job entry text is now boxed and looks bit less awful
+  Red-byte3D:
+  - bugfix: Fixes fire not negating vampire healing

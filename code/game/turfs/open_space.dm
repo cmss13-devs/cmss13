@@ -1,12 +1,12 @@
 GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdrop, new)
 
 /atom/movable/openspace_backdrop
-	name			= "openspace_backdrop"
-	anchored		= TRUE
-	icon            = 'icons/turf/floors/floors.dmi'
-	icon_state      = "grey"
-	plane           = OPENSPACE_BACKDROP_PLANE
-	mouse_opacity 	= MOUSE_OPACITY_TRANSPARENT
+	name = "openspace_backdrop"
+	anchored = TRUE
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "grey"
+	plane = OPENSPACE_BACKDROP_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /turf/open_space
 	name = "open space"
@@ -70,15 +70,13 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	var/turf/current_turf = get_turf(src)
 
 	if(istype(current_turf, /turf/open_space))
-		user.visible_message(SPAN_WARNING("[user] starts climbing down."),\
-			SPAN_WARNING("You start climbing down."))
+		user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			to_chat(user, SPAN_WARNING("You were interrupted!"))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] climbs down."),\
-			SPAN_WARNING("You climb down."))
+		user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
 		var/turf/below = SSmapping.get_turf_below(current_turf)
 		while(istype(below, /turf/open_space))

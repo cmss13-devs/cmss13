@@ -30,15 +30,13 @@
 	if(user.action_busy)
 		return
 
-	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\
-		SPAN_WARNING("You start climbing up the \the [src]."))
+	user.visible_message(SPAN_WARNING("[user] starts climbing up [src]."), SPAN_WARNING("You start climbing up [src]."))
 
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] climbs up \the [src]."),\
-		SPAN_WARNING("You climb up \the [src]."))
+	user.visible_message(SPAN_WARNING("[user] climbs up [src]."), SPAN_WARNING("You climb up [src]."))
 
 	user.forceMove(above_current)
 	return

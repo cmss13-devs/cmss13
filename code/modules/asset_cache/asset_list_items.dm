@@ -50,6 +50,12 @@
 	if(!send_only_temp)
 		SSassets.transport.send_assets(client, common)
 
+/datum/asset/directory/get_url_mappings()
+	. = ..()
+
+	for (var/asset_name in common)
+		.[asset_name] = SSassets.transport.get_asset_url(asset_name)
+
 /datum/asset/directory/nanoui
 	common_dirs = list(
 		"nano/css/",
@@ -470,4 +476,9 @@
 /datum/asset/simple/vv
 	assets = list(
 		"view_variables.css" = 'html/admin/view_variables.css'
+	)
+
+/datum/asset/directory/book_assets
+	common_dirs = list(
+		"html/book_assets/",
 	)

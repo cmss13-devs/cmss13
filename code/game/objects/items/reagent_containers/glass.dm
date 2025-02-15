@@ -62,6 +62,8 @@
 /obj/item/reagent_container/glass/attack_self()
 	..()
 	if(splashable)
+		if(istype(src, /obj/item/reagent_container/glass/rag))
+			return
 		if(is_open_container())
 			to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
 			flags_atom ^= OPENCONTAINER

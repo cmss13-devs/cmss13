@@ -1,0 +1,7 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - code_imp: "Removed some one letter vars"
+  - code_imp: "Removed sone unused code from vanguard praetorian"
+  - qol: "Aoe attacks no longer hit nested marines, including crusher slash"
+  - code_imp: "vanguard byond ticks into seconds"

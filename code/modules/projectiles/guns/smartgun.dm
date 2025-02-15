@@ -372,10 +372,11 @@
 
 //more general procs
 
-/obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user)
+/obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user, silent)
 	to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
-	balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	if(!silent)
+		balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
+		playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
 ///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
 	if (!frontline_enabled)
@@ -859,3 +860,24 @@
 	. = ..()
 	MD.iff_signal = FACTION_TWE
 
+
+//  Solar devils SG, frontline mode only
+
+/obj/item/weapon/gun/smartgun/pve
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_auto_fire,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
+
+/obj/item/weapon/gun/smartgun/pve/Initialize(mapload, ...)
+	. = ..()
+	toggle_frontline_mode(null, TRUE)
+
+/obj/item/weapon/gun/smartgun/pve/set_gun_config_values()
+	..()
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3

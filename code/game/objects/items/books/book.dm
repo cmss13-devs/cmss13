@@ -185,3 +185,17 @@
 	. = ..()
 	. += get_asset_datum(/datum/asset/simple/paper)
 	. += get_asset_datum(/datum/asset/directory/book_assets)
+
+/obj/item/lore_book/debug
+	book_title = "Debugging 101"
+	book_contents = @{"
+		# You really shouldn't be able to see this.
+	"}
+
+/obj/item/lore_book/debug/attack_self(mob/user)
+	var/contents = tgui_input_text(user, "Enter new book contents.", "Debug Book", multiline = TRUE, encode = FALSE)
+	if(!contents)
+		return
+
+	book_contents = contents
+	return ..()

@@ -231,10 +231,28 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
+"aS" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/office_complex)
 "aT" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
 	},
+/area/bigredv2/outside/office_complex)
+"aU" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/mre/pmc,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
+"aV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north{
+	name = "Interview Room APC"
+	},
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
@@ -449,22 +467,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
-"dm" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy1"
-	},
-/area/bigredv2/outside/se)
-"dn" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/se)
-"do" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy3"
-	},
-/area/bigredv2/outside/se)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
@@ -1102,11 +1104,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
-"LQ" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/misc/mre/pmc,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/office_complex)
 "Ml" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/tech_supply,
@@ -1725,7 +1722,7 @@ zH
 ws
 hl
 cE
-dm
+dg
 Is
 "}
 (13,1,1) = {"
@@ -1752,7 +1749,7 @@ GG
 bc
 dz
 bc
-dn
+aS
 Wt
 "}
 (14,1,1) = {"
@@ -1779,7 +1776,7 @@ KK
 KK
 Wd
 cF
-do
+di
 ds
 "}
 (15,1,1) = {"
@@ -1833,7 +1830,7 @@ ue
 Fc
 UR
 cE
-dm
+dg
 Ct
 "}
 (17,1,1) = {"
@@ -1860,7 +1857,7 @@ dJ
 dJ
 dJ
 dJ
-dn
+aS
 mP
 "}
 (18,1,1) = {"
@@ -1887,7 +1884,7 @@ Eo
 ql
 oc
 cF
-do
+di
 jl
 "}
 (19,1,1) = {"
@@ -1902,7 +1899,7 @@ aA
 Fi
 oc
 Al
-LQ
+aU
 KK
 KK
 Al
@@ -1982,7 +1979,7 @@ WB
 ap
 UB
 ap
-Cy
+aV
 nn
 Oi
 WB

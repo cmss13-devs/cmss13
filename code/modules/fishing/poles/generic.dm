@@ -21,7 +21,6 @@
 	var/obj/item/fish_bait/loaded_bait
 
 /obj/item/fishing_pole/examine(mob/user)
-	. = ..()
 	if(loaded_bait)
 		to_chat(user, SPAN_NOTICE("It has [loaded_bait] loaded on its hook."))
 	else
@@ -32,21 +31,19 @@
 	var/turf/forward = get_step(user.loc, user.dir)
 	if(!forward)
 		return
-	if(!forward.supports_fishing)
-		to_chat(user, SPAN_WARNING("There are no fish in the area one unit in front of you!"))
+
+	if(!forward.fishing_allowed)
+		to_chat(user, SPAN_WARNING("You can not fish here!"))
 		return
-	var/turf/fishing_turf = get_step(forward, user.dir)
-	if(!fishing_turf)
-		return
-	if(!fishing_turf.supports_fishing)
-		to_chat(user, SPAN_WARNING("There are no fish in the area two units in front of you!"))
+	
+	user.visible_message(SPAN_NOTICE("[user] starts setting up \the [src]..."))
+	
+	if(!do_after(user, 3 SECONDS, show_busy_icon = BUSY_ICON_BUILD))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts setting up \the [src]..."), SPAN_NOTICE("You start setting up \the [src]..."))
-	if(do_after(user, 3 SECONDS, show_busy_icon = BUSY_ICON_BUILD))
-		user.visible_message(SPAN_NOTICE("[user] finishes setting up \the [src]!"), SPAN_NOTICE("You finish setting up \the [src]!"))
-		var/obj/structure/prop/fishing/pole_interactive/deployed_pole = new deploy_type(get_turf(src))
-		transfer_to_pole(deployed_pole, user)
+	user.visible_message(SPAN_NOTICE("[user] finishes setting up \the [src]!"), SPAN_NOTICE("You finish setting up \the [src]!"))
+	var/obj/structure/prop/fishing/pole_interactive/deployed_pole = new deploy_type(get_turf(src))
+	transfer_to_pole(deployed_pole, user)
 
 /obj/item/fishing_pole/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/fish_bait))

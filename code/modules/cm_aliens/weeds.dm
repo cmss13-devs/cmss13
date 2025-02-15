@@ -32,14 +32,17 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE, do_spread=TRUE)
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength = TRUE, do_spread=TRUE)
 	. = ..()
 
 	if(node)
 		linked_hive = node.linked_hive
 		if(use_node_strength)
 			weed_strength = node.weed_strength
+		if(!use_node_strength)
+			weed_strength = WEED_LEVEL_STANDARD
 		node_range = node.node_range
+
 		if(weed_strength >= WEED_LEVEL_HIVE)
 			name = "hive [name]"
 			health = WEED_HEALTH_HIVE
@@ -89,6 +92,7 @@
 	var/area/area = get_area(src)
 	if(area && area.linked_lz)
 		AddComponent(/datum/component/resin_cleanup)
+	to_chat(world, "test [use_node_strength] in init")
 
 /obj/effect/alien/weeds/proc/set_turf_weeded(datum/source, turf/T)
 	SIGNAL_HANDLER

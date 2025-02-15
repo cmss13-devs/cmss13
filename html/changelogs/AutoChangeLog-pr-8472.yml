@@ -1,4 +1,0 @@
-author: "Furrior"
-delete-after: True
-changes:
-  - ui: "Job entry text is now boxed and looks bit less awful"

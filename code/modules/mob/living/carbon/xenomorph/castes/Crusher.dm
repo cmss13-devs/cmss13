@@ -245,6 +245,9 @@
 		if(!isxeno_human(aoe_targets) || bound_xeno.can_not_harm(aoe_targets))
 			continue
 
+		if (HAS_TRAIT(aoe_targets, TRAIT_NESTED))
+			continue
+
 		cdr_amount += 0.5 SECONDS
 
 		to_chat(aoe_targets, SPAN_XENODANGER("[bound_xeno] slashes [aoe_targets]!"))
@@ -253,22 +256,15 @@
 		bound_xeno.flick_attack_overlay(aoe_targets, "slash")
 
 		aoe_targets.last_damage_data = create_cause_data(initial(bound_xeno.name), bound_xeno)
-
 		//Logging, including anti-rulebreak logging
 		if(aoe_targets.status_flags & XENO_HOST && aoe_targets.stat != DEAD)
-			if(HAS_TRAIT(aoe_targets, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
-				aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(bound_xeno)] while they were infected and nested</B></font>")
-				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(aoe_targets)] while they were infected and nested</B></font>")
-				message_admins("[key_name(bound_xeno)] slashed [key_name(aoe_targets)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
-			else //Host might be rogue, needs further investigation
-				aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")
-				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(aoe_targets)] while they were infected</font>")
+			//Host might be rogue, needs further investigation
+			aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")
+			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(aoe_targets)] while they were infected</font>")
 		else //Normal xenomorph friendship with benefits
 			aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)]</font>")
 			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(aoe_targets)]</font>")
 		log_attack("[key_name(bound_xeno)] slashed [key_name(aoe_targets)]")
-
-
 		aoe_targets.apply_armoured_damage(get_xeno_damage_slash(aoe_targets, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
 
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)

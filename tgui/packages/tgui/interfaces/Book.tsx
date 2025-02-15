@@ -54,10 +54,11 @@ export const Book = () => {
 
     const list = ref.current!.children;
     for (let i = 0; i < list.length; i++) {
-      const limit = (page + 1) * (640 - rect.top);
+      const limit = (page + 1) * (670 - rect.top);
       const element = list[i];
 
       const elementRect = element.getBoundingClientRect();
+
       if (elementRect.top > limit) {
         page++;
       }
@@ -74,7 +75,12 @@ export const Book = () => {
   }, [overrideContents]);
 
   useEffect(() => {
-    ref.current!.innerHTML = '';
+    // Remove with 516
+    if (Byond.TRIDENT) {
+      ref.current!.textContent = '';
+    } else {
+      ref.current!.innerHTML = '';
+    }
 
     const selectedPage = pages[page];
 
@@ -102,16 +108,20 @@ export const Book = () => {
             <Stack vertical fill width="640px">
               <Stack.Item>
                 <Stack justify="space-between">
-                  <Stack.Item>
+                  <Stack.Item width="640px">
                     <BookHeader />
                   </Stack.Item>
                   {preview && (
-                    <Button
-                      icon="eye"
-                      onClick={() => setPreviewing((previewing) => !previewing)}
-                    >
-                      Preview
-                    </Button>
+                    <Stack.Item align="flex-end">
+                      <Button
+                        icon="eye"
+                        onClick={() =>
+                          setPreviewing((previewing) => !previewing)
+                        }
+                      >
+                        Preview
+                      </Button>
+                    </Stack.Item>
                   )}
                 </Stack>
               </Stack.Item>
@@ -120,9 +130,13 @@ export const Book = () => {
                 <Stack.Item>
                   <div ref={ref} />
                 </Stack.Item>
-                <Stack.Item>
-                  <Box className="PaperDivider BottomDivider" />
-                </Stack.Item>
+                <Box
+                  className="PaperDivider BottomDivider"
+                  position="absolute"
+                  width="98%"
+                  bottom="0"
+                  left="8px"
+                />
               </Stack>
               {pages.length && (
                 <>
@@ -180,7 +194,7 @@ const BookHeader = () => {
           className="HeaderImage"
         />
       </Stack.Item>
-      <Stack.Item>
+      <Stack.Item width="640px">
         <Stack vertical justify="center" fill>
           <Stack.Item>
             <Box fontSize="24px">{title}</Box>
@@ -188,7 +202,7 @@ const BookHeader = () => {
         </Stack>
       </Stack.Item>
       <Stack.Item>
-        <Stack vertical justify="center" fill>
+        <Stack vertical justify="flex-end" fill>
           <Stack.Item pt={2}>
             <Box>{author}</Box>
           </Stack.Item>

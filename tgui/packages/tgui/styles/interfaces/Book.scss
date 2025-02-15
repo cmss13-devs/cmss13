@@ -1,6 +1,8 @@
 .Book {
   &.Window__Content {
     padding: 5px;
+
+    overflow: none;
   }
 
   .PaperDivider {

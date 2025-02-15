@@ -264,9 +264,6 @@
 	// contains /atom/movable/screen/alert only
 	var/list/alerts = list()
 
-	// for multiz looking up
-	var/atom/observed_atom
-
 /mob/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")

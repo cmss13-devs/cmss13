@@ -49,7 +49,6 @@
 	item_verbs = null
 	luminosity_sources = null
 	focus = null
-	observed_atom = null
 
 /mob/Initialize()
 	if(!faction_group)

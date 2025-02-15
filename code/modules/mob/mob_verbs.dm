@@ -246,12 +246,9 @@
 				M.client.next_movement = world.time
 			M.update_transform(TRUE)
 
-/mob/verb/look_up()
+/mob/living/verb/look_up()
 	set name = "Look Up"
 	set category = "IC"
-
-	if(!istype(src, /mob/living))
-		return
 
 	if(observed_atom)
 		var/atom/to_delete = observed_atom

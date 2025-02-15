@@ -15,7 +15,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
-
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Operations Uniform", 0, /obj/item/clothing/under/marine/officer/boiler, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -35,7 +34,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer, list(
 		list("Falling Falcons Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
 		list("USCM Shoulder Patch", 1, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
 
-
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -52,7 +50,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer, list(
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-
 
 		list("OTHER SUPPLIES", 0, null, null, null),
 		list("Binoculars", 5,/obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),

@@ -31,7 +31,7 @@
 /obj/item/reagent_container/food/drinks/cans/attackby(obj/item/opening_tool as obj, mob/user as mob)
 	var/opening_time
 	var/opening_sound
-	if(open || !needs_can_opener || !HAS_TRAIT(opening_tool, TRAIT_TOOL_CAN_OPENER))
+	if(user.action_busy ||  open || !needs_can_opener || !HAS_TRAIT(opening_tool, TRAIT_TOOL_CAN_OPENER))
 		return
 
 	if(istype(opening_tool, /obj/item/tool/kitchen/can_opener))
@@ -44,7 +44,7 @@
 	playsound(src.loc, opening_sound, 15, FALSE, 15)
 
 	if(do_after(user, opening_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		if(prob(99) && istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
+		if(prob(25) && istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
 			to_chat(user, SPAN_NOTICE("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
 			playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 15)
 			return
@@ -190,6 +190,9 @@
 
 /obj/item/reagent_container/food/drinks/cans/proc/crush_can(mob/user)
 	if(!ishuman(user))
+		return
+
+	if(user.action_busy)
 		return
 
 	var/mob/living/carbon/human/H = user

@@ -39,8 +39,6 @@ export const Book = () => {
         .replaceAll(replacementRegex, ''),
     );
 
-    console.log(toParse);
-
     const matches = Array.from(toParse.matchAll(imageRegex));
     for (const match of matches) {
       const asset = resolveAsset(match[1]);
@@ -72,7 +70,6 @@ export const Book = () => {
       }
     }
 
-    console.log(pages);
     setPages(pages);
   }, [overrideContents]);
 

@@ -9,8 +9,7 @@
 		return
 
 	if(banished)
-		var/current_health = health
-		apply_armoured_damage(current_health / 23)
+		apply_armoured_damage(ceil(health / 23))
 
 	..()
 

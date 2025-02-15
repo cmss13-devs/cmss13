@@ -32,24 +32,21 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength = TRUE, do_spread=TRUE)
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE, do_spread=TRUE)
 	. = ..()
 
 	if(node)
 		linked_hive = node.linked_hive
 		if(use_node_strength)
 			weed_strength = node.weed_strength
-		if(!use_node_strength)
-			weed_strength = WEED_LEVEL_STANDARD
 		node_range = node.node_range
-
 		if(weed_strength >= WEED_LEVEL_HIVE)
 			name = "hive [name]"
 			health = WEED_HEALTH_HIVE
 		node.add_child(src)
 		hivenumber = linked_hive.hivenumber
 		spread_on_semiweedable = node.spread_on_semiweedable
-		if(weed_strength < WEED_LEVEL_HIVE && spread_on_semiweedable)
+		if(weed_strength == WEED_LEVEL_HARDY && spread_on_semiweedable)
 			name = "hardy [name]"
 			health = WEED_HEALTH_HARDY
 		block_structures = node.block_structures
@@ -58,7 +55,7 @@
 		linked_hive = GLOB.hive_datum[hivenumber]
 
 	set_hive_data(src, hivenumber)
-	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
+	if(spread_on_semiweedable && weed_strength == WEED_LEVEL_HARDY)
 		if(color)
 			var/list/RGB = ReadRGB(color)
 			RGB[1] = clamp(RGB[1] + 35, 0, 255)
@@ -92,7 +89,6 @@
 	var/area/area = get_area(src)
 	if(area && area.linked_lz)
 		AddComponent(/datum/component/resin_cleanup)
-	to_chat(world, "test [use_node_strength] in init")
 
 /obj/effect/alien/weeds/proc/set_turf_weeded(datum/source, turf/T)
 	SIGNAL_HANDLER

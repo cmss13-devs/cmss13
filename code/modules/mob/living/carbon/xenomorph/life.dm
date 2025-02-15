@@ -8,6 +8,10 @@
 	if(!loc)
 		return
 
+	if(banished == TRUE)
+		var/current_health = src.health
+		src.apply_armoured_damage(current_health / 23)
+
 	..()
 
 	// replace this by signals or trait signals

@@ -296,7 +296,7 @@
 /area/navalis/outdoors/exterior_xeno_only
 	name = "Industrial Rig - Exterior Lattice Walkway"
 	icon_state = "red2"
-	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|NOT_WEEDABLE
+	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|NOT_WEEDABLE|AREA_NO_PARA
 	base_lighting_alpha = 35
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	requires_power = FALSE

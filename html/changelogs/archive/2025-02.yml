@@ -344,3 +344,29 @@
       can also hold it in hand
   - bugfix: Fixes a bug with sub-10 minute marine majors
   - qol: Updates turf descriptions to account for medevacs+CAS instead of just CAS.
+2025-02-14:
+  Weuyn:
+  - balance: doubled pain effects from the paining property and defibrilating/cardiopeutic
+      overdose
+  - balance: plants now require adequate food and water to grow instead of instantly
+      dying at 0 nutrition
+  - balance: warrior blood type now matches defender and crusher
+  - balance: added a slight excreting effect to neurotoxin plasma to reflect recent
+      changes
+  - bugfix: electrogenetic no longer tells you its inedible, photosensitive and crystallization
+      properties capped at 1
+  - bugfix: turing machine stops when it should (thank you N.H.C)
+  - bugfix: (hopefully) fixed multiple chemical simulator exploits and bugs (thank
+      you kiVts)
+  cuberound:
+  - balance: USCM specs on HvH are replced with b18s
+  private-tristan:
+  - rscadd: Electrogenetic property now triggers with defibrillating.
+  - balance: Painkilling and Electrogenetic are twice as powerful per level, halved
+      the property levels of Painkilling and Electrogenetic in chemicals, meaning
+      that they act the same.
+2025-02-15:
+  Furrior:
+  - ui: Job entry text is now boxed and looks bit less awful
+  Red-byte3D:
+  - bugfix: Fixes fire not negating vampire healing

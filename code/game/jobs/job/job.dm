@@ -214,14 +214,14 @@
 		var/title_given
 		title_given = lowertext(disp_title)
 
-		//Document syntax cannot have tabs for proper formatting.	// SS220 EDIT - Translate
-		var/entrydisplay = " \
+		//Document syntax cannot have tabs for proper formatting.
+		var/entrydisplay = boxed_message("\
 			[SPAN_ROLE_BODY("|______________________|")] \n\
 			[SPAN_ROLE_HEADER("Вы - [title_given]")] \n\
 			[flags_startup_parameters & ROLE_ADMIN_NOTIFY ? SPAN_ROLE_HEADER("Вы играете за должность, которая важна для игрового прогресса. Если вам нужно отключиться, сообщите об этом администраторам через AdminHelp.") : ""] \n\
 			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Ваш номер аккаунта: <b>[M.account_number]</b>. Ваш пинкод: <b>[M.remote_access_pin]</b>." : "У вас нет банковского счета."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
-		"
+		")
 		to_chat_spaced(H, html = entrydisplay)
 
 /datum/job/proc/generate_entry_conditions(mob/living/M, whitelist_status)

@@ -415,23 +415,24 @@
 			for(var/rec in subtypesof(/datum/autolathe/recipe/armylathe))
 				var/datum/autolathe/recipe/recipe = new rec
 
-				if(recipe.locked)
-					continue
-
-				for(var/datum/casing in recipes)
-					if (casing.type == recipe.type)
+				for(var/datum/autolathe/recipe/casing in recipes)
+					if(!casing)
+						continue
+					if(casing.locked)
+						continue
+					if(casing.type == recipe.type)
 						recipes -= casing
 
-				var/obj/item/item = new recipe.path
-				if(item.matter && !recipe.resources)
-					recipe.resources = list()
-					for(var/material in item.matter)
-						if(!isnull(storage_capacity[material]))
-							if(istype(item,/obj/item/stack/sheet))
-								recipe.resources[material] = item.matter[material]
-							else
-								recipe.resources[material] = floor(item.matter[material]*1.25 * material_multiplier)
-								recipes += recipe
+						var/obj/item/item = new recipe.path
+						if(item.matter && !recipe.resources)
+							recipe.resources = list()
+							for(var/material in item.matter)
+								if(!isnull(storage_capacity[material]))
+									if(istype(item,/obj/item/stack/sheet))
+										recipe.resources[material] = item.matter[material]
+									else
+										recipe.resources[material] = floor(item.matter[material]*1.25 * material_multiplier)
+										recipes += recipe
 
 	update_printables()
 

@@ -800,6 +800,9 @@
 		<A href='byond://?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=give_research_credits'>Give Research Credits</A><BR>
 		<BR>
+		<B>Ordnance</B><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=give_ordnance_credits'>Give Ordnance Credits</A><BR>
+		<BR>
 		<B>Power</B><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=unpower'>Unpower ship SMESs and APCs</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>

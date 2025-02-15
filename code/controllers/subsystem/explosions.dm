@@ -13,12 +13,12 @@ SUBSYSTEM_DEF(explosions)
 	return ..()
 
 /datum/controller/subsystem/explosions/proc/queued_ex_act(exploded_article, power, direction, explosion_cause_data)
-	exploded_articles += list(list(
+	exploded_articles.Insert(1, list(list(
 		"exploded_article" = WEAKREF(exploded_article),
 		"power" = power,
 		"direction" = direction,
 		"explosion_cause_data" = explosion_cause_data
-	))
+	)))
 
 /datum/controller/subsystem/explosions/fire(resumed = FALSE)
 	if(!resumed)

@@ -44,9 +44,6 @@
 	// How much power does the explosion gain (or lose) by bouncing off walls?
 	var/reflection_power_multiplier = 0.4
 
-	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
-	var/delay = 0
-
 	// Which direction is the explosion traveling?
 	// Note that this will be null for the epicenter
 	var/direction = null
@@ -135,9 +132,6 @@
 	return
 
 /datum/automata_cell/explosion/update_state(list/turf/neighbors)
-	if(delay > 0)
-		delay--
-		return
 	// The resistance here will affect the damage taken and the falloff in the propagated explosion
 	var/resistance = max(0, in_turf.get_explosion_resistance(direction))
 	for(var/atom/A in in_turf)
@@ -207,9 +201,6 @@
 
 			// Set the direction the explosion is traveling in
 			E.direction = dir
-			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
-			if(!direction && (dir in GLOB.diagonals))
-				E.delay = 1
 
 			setup_new_cell(E)
 			new_cells += E
@@ -300,8 +291,8 @@ as having entered the turf.
 	var/list/cells = list(initial_cell)
 	while(length(cells))
 		var/datum/automata_cell/cur_cell = cells[length(cells)]
+		cells.len--
 		if (!cur_cell || QDELETED(cur_cell))
-			cells.len--
 			continue
 		var/list/new_cells = cur_cell.update_state()
 		if(new_cells)

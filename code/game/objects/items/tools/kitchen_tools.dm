@@ -165,6 +165,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
+	inherent_traits = list(TRAIT_TOOL_CAN_OPENER)
 
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -311,8 +312,8 @@
  * Can opener
  */
 /obj/item/tool/kitchen/can_opener
-	name = "Can opener"
-	desc = "Can opener"
+	name = "can opener"
+	desc = "A simple can opener, popular tool among UPP due to their doctrine of food preservation."
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	icon_state = "can_opener"
 	w_class = SIZE_SMALL

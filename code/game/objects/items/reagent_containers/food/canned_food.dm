@@ -4,7 +4,7 @@
 	icon_state = ""
 	needs_can_opener = TRUE
 	crushable = FALSE
-	open_sound = 'sound/effects/canopen.ogg'
+	open_sound = 'sound/items/can_opened.ogg'
 	open_message = "You open the drink with an audible pop!"
 	consume_sound = 'sound/items/eatfood.ogg'
 	object_fluff = "can"

@@ -28,11 +28,26 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
 	)
 
-/obj/item/reagent_container/food/drinks/cans/attackby(obj/item/I as obj, mob/user as mob)
-	if(open || !needs_can_opener || !HAS_TRAIT(I, TRAIT_TOOL_CAN_OPENER))
+/obj/item/reagent_container/food/drinks/cans/attackby(obj/item/opening_tool as obj, mob/user as mob)
+	var/opening_time
+	var/opening_sound
+	if(open || !needs_can_opener || !HAS_TRAIT(opening_tool, TRAIT_TOOL_CAN_OPENER))
 		return
 
-	if(do_after(user,3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(istype(opening_tool, /obj/item/tool/kitchen/can_opener))
+		opening_time = 4 SECONDS
+		opening_sound = 'sound/items/can_open2.ogg'
+	if(istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
+		opening_time = 12 SECONDS
+		opening_sound = 'sound/items/can_open1.ogg'
+
+	playsound(src.loc, opening_sound, 15, FALSE, 15)
+
+	if(do_after(user, opening_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		if(prob(99) && istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
+			to_chat(user, SPAN_NOTICE("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
+			playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 15)
+			return
 		playsound(src.loc, open_sound, 15, 1)
 		to_chat(user, SPAN_NOTICE(open_message))
 		open = TRUE
@@ -53,7 +68,7 @@
 	if(crushed)
 		return
 
-	if (!open)
+	if(!open)
 		if(needs_can_opener)
 			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff] using can opener!"))
 			return
@@ -68,7 +83,7 @@
 	if(crushed)
 		return ..()
 
-	if (open && !reagents.total_volume && crushable)
+	if(open && !reagents.total_volume && crushable)
 		if(user.a_intent == INTENT_HARM)
 			if(isturf(loc))
 				if(user.zone_selected == "r_foot" || user.zone_selected == "l_foot" )

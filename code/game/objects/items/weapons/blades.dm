@@ -37,6 +37,7 @@
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
 	item_state = "machete"
+	inherent_traits = list(TRAIT_TOOL_CAN_OPENER)
 
 /obj/item/weapon/sword/machete/attack_self(mob/user)
 	if(user.action_busy)

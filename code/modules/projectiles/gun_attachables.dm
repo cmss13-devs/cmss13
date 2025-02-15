@@ -302,6 +302,8 @@ Defined in conflicts.dm of the #defines folder.
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
+	inherent_traits = list(TRAIT_TOOL_CAN_OPENER)
+
 
 	attach_icon = "bayonet_a"
 	melee_mod = 20

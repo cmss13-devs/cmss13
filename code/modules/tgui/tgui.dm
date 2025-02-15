@@ -43,6 +43,9 @@
 	/// If the window should be closed with other windows when requested
 	var/closeable = TRUE
 
+	/// Any partial packets that we have received from TGUI, waiting to be sent
+	var/partial_packets
+
 /**
  * public
  *
@@ -341,6 +344,26 @@
 	// Pass act type messages to ui_act
 	if(type && copytext(type, 1, 5) == "act/")
 		var/act_type = copytext(type, 5)
+
+		var/id = href_list["packetId"]
+		if(id)
+			id = id
+
+			var/total = href_list["totalPackets"]
+			if(id == 1)
+				partial_packets = new /list(href_list[total])
+
+			partial_packets[id] = href_list["packet"]
+
+			if(id != total)
+				return
+
+			var/assembled_payload = ""
+			for(var/packet in partial_packets)
+				assembled_payload += packet
+
+			payload = json_decode(assembled_payload)
+
 		log_tgui(user, "Action: [act_type] [href_list["payload"]]",
 			window = window,
 			src_object = src_object)

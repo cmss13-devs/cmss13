@@ -80,6 +80,8 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/m10,
 		/obj/item/storage/belt/gun/xm51,
+		/obj/item/storage/belt/knifepouch,
+		/obj/item/storage/belt/utility/construction,
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
 

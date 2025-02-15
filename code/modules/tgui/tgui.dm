@@ -346,12 +346,15 @@
 		var/act_type = copytext(type, 5)
 
 		var/id = href_list["packetId"]
-		if(id)
-			id = id
+		if(!isnull(id))
+			id = text2num(id)
 
-			var/total = href_list["totalPackets"]
+			var/total = text2num(href_list["totalPackets"])
 			if(id == 1)
-				partial_packets = new /list(href_list[total])
+				if(total > MAX_MESSAGE_CHUNKS)
+					return
+
+				partial_packets = new /list(total)
 
 			partial_packets[id] = href_list["packet"]
 
@@ -363,6 +366,7 @@
 				assembled_payload += packet
 
 			payload = json_decode(assembled_payload)
+			partial_packets = null
 
 		log_tgui(user, "Action: [act_type] [href_list["payload"]]",
 			window = window,

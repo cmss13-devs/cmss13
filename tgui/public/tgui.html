@@ -205,25 +205,28 @@
       ? { type: type, payload: payload }
       : type;
     // JSON-encode the payload
+
     if (message.payload !== null && message.payload !== undefined) {
       message.payload = JSON.stringify(message.payload);
 
-      if(message.payload.length > 2000) {
+      if(message.payload.length > 512) {
         var chunks = [];
 
-        for(var i = 0, charsLength = message.payload.length; i < charsLength; i += 2000) {
-          chunks.push(message.payload.substring(i, i + 2000))
+        for(var i = 0, charsLength = message.payload.length; i < charsLength; i += 512) {
+          chunks.push(message.payload.substring(i, i + 512))
         }
 
-        for(var i = 0; i < chunks.length; i += 1) {
-          var to_send = chunk[i]
+        for(var i = 0; i < chunks.length; i++) {
+          var to_send = chunks[i]
 
-          message = { type: type, packet: chunk, packetId: i, totalPackets: chunks.length, tgui: 1, window_id: Byond.windowId };
-
+          message = { type: type, packet: to_send, packetId: i + 1, totalPackets: chunks.length, tgui: 1, window_id: Byond.windowId };
           Byond.topic(message);
         }
+
+        return;
       }
     }
+
     // Append an identifying header
     assign(message, {
       tgui: 1,

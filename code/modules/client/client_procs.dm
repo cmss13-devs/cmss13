@@ -108,6 +108,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
 			return
 
+	var/list = href_list
+	pass(list)
+
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
 		return

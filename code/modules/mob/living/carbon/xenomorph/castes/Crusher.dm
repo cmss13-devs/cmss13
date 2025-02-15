@@ -256,7 +256,7 @@
 		bound_xeno.flick_attack_overlay(aoe_targets, "slash")
 
 		aoe_targets.last_damage_data = create_cause_data(initial(bound_xeno.name), bound_xeno)
-				//Logging, including anti-rulebreak logging
+		//Logging, including anti-rulebreak logging
 		if(aoe_targets.status_flags & XENO_HOST && aoe_targets.stat != DEAD)
 			//Host might be rogue, needs further investigation
 			aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")

@@ -699,7 +699,7 @@
 	recently_built_turfs = null
 	return ..()
 
-/datum/action/xeno_action/activable/expand_weeds/use_ability(atom/Atom)
+/datum/action/xeno_action/activable/expand_weeds/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 
 	if(!xeno.check_state())
@@ -708,21 +708,21 @@
 	if(!action_cooldown_check())
 		return
 
-	var/turf/turfs_to_get = get_turf(Atom)
+	var/turf/turf_to_get = get_turf(atom)
 
-	if(!turfs_to_get || turfs_to_get.is_weedable() < FULLY_WEEDABLE || turfs_to_get.density || (turfs_to_get.z != xeno.z))
+	if(!turf_to_get || turf_to_get.is_weedable() < FULLY_WEEDABLE || turf_to_get.density || (turf_to_get.z != xeno.z))
 		to_chat(xeno, SPAN_XENOWARNING("You can't do that here."))
 
 
-	var/area/area_to_get = get_area(turfs_to_get)
+	var/area/area_to_get = get_area(turf_to_get)
 	if(isnull(area_to_get) || !area_to_get.is_resin_allowed)
 		if(!area_to_get || area_to_get.flags_area & AREA_UNWEEDABLE)
 			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive."))
 			return
-		to_chat(xeno, SPAN_XENOWARNING("It's to early to spread the hive this far."))
+		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
-	var/obj/effect/alien/weeds/located_weeds = locate() in turfs_to_get
+	var/obj/effect/alien/weeds/located_weeds = locate() in turf_to_get
 	if(located_weeds)
 		if(istype(located_weeds, /obj/effect/alien/weeds/node))
 			to_chat(xeno, SPAN_XENOWARNING("There's already a node here."))
@@ -733,36 +733,36 @@
 		if(!check_and_use_plasma_owner(node_plant_plasma_cost))
 			return
 
-		to_chat(xeno, SPAN_XENOWARNING("You plant a node at [turfs_to_get]"))
-		new /obj/effect/alien/weeds/node(turfs_to_get, owner)
-		playsound(turfs_to_get, "alien_resin_build", 35)
+		to_chat(xeno, SPAN_XENOWARNING("You plant a node at [turf_to_get]"))
+		new /obj/effect/alien/weeds/node(turf_to_get, null, owner)
+		playsound(turf_to_get, "alien_resin_build", 35)
 		apply_cooldown_override(node_plant_cooldown)
 		return
 
 	var/obj/effect/alien/weeds/node/node
 	for(var/direction in GLOB.cardinals)
-		var/turf/turf_to_weed = get_step(turfs_to_get, direction)
+		var/turf/turf_to_weed = get_step(turf_to_get, direction)
 		var/obj/effect/alien/weeds/weeds_to_locate = locate() in turf_to_weed
-		if(weeds_to_locate && weeds_to_locate.hivenumber == xeno.hivenumber && weeds_to_locate.parent && !weeds_to_locate.hibernate && !LinkBlocked(weeds_to_locate, turf_to_weed, turfs_to_get))
+		if(weeds_to_locate && weeds_to_locate.hivenumber == xeno.hivenumber && weeds_to_locate.parent && !weeds_to_locate.hibernate && !LinkBlocked(weeds_to_locate, turf_to_weed, turf_to_get))
 			node = weeds_to_locate.parent
 			break
 
 	if(!node)
-		to_chat(xeno, SPAN_XENOWARNING("You can only plant weeds where nodes are."))
+		to_chat(xeno, SPAN_XENOWARNING("You can only plant weeds if there is a nearby node."))
 		return
-	if(turfs_to_get in recently_built_turfs)
+	if(turf_to_get in recently_built_turfs)
 		to_chat(xeno, SPAN_XENOWARNING("You've recently built here already."))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	new /obj/effect/alien/weeds(turfs_to_get, node, FALSE, TRUE)
-	playsound(turfs_to_get, "alien_resin_build", 35)
-	recently_built_turfs += turfs_to_get
-	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), turfs_to_get), turf_build_cooldown)
+	new /obj/effect/alien/weeds(turf_to_get, node, FALSE, TRUE)
+	playsound(turf_to_get, "alien_resin_build", 35)
+	recently_built_turfs += turf_to_get
+	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), turf_to_get), turf_build_cooldown)
 
-	to_chat(xeno, SPAN_XENOWARNING("You plant weeds at [turfs_to_get]"))
+	to_chat(xeno, SPAN_XENOWARNING("You plant weeds at [turf_to_get]"))
 	apply_cooldown()
 	return ..()
 

@@ -9,7 +9,7 @@
 		return
 
 	if(banished)
-		apply_armoured_damage(ceil(health / 23))
+		apply_armoured_damage(ceil(health / XENO_BANISHMENT_DMG_DIVISOR))
 
 	..()
 

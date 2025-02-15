@@ -179,14 +179,14 @@
 		target.apply_effect(0.2, WEAKEN)
 
 		if (LAZYLEN(targets) == 1)
-			new /datum/effects/xeno_slow(target, abduct_user, , ,25)
+			new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)
 			target.apply_effect(1, SLOW)
 		else if (LAZYLEN(targets) == 2)
 			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 			if (ishuman(target))
 				var/mob/living/carbon/human/target_human = target
 				target_human.update_xeno_hostile_hud()
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 25))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
 			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
 
 			target.set_effect(2, DAZE)
@@ -255,8 +255,8 @@
 		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Oppressor Punch"))
 
 		if (ishuman(target_carbon))
-			var/mob/living/carbon/human/Hu = target_carbon
-			Hu.update_xeno_hostile_hud()
+			var/mob/living/carbon/human/human_to_update = target_carbon
+			human_to_update.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Oppressor Punch")), get_xeno_stun_duration(target_carbon, 1.2 SECONDS))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
@@ -276,13 +276,13 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/tail_lash/use_ability(atom/A)
+/datum/action/xeno_action/activable/tail_lash/use_ability(atom/atoms)
 	var/mob/living/carbon/xenomorph/lash_user = owner
 
 	if (!istype(lash_user) || !lash_user.check_state() || !action_cooldown_check())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(lash_user.loc))
+	if(!atoms || atoms.layer >= FLY_LAYER || !isturf(lash_user.loc))
 		return
 
 	if (!check_plasma_owner())
@@ -295,7 +295,7 @@
 
 	// Code to get a 2x3 area of turfs
 	var/turf/root = get_turf(lash_user)
-	var/facing = Get_Compass_Dir(lash_user, A)
+	var/facing = Get_Compass_Dir(lash_user, atoms)
 	var/turf/infront = get_step(root, facing)
 	var/turf/left = get_step(root, turn(facing, 90))
 	var/turf/right = get_step(root, turn(facing, -90))
@@ -307,17 +307,17 @@
 	if(!(!infront || infront.density) && !(!right || right.density))
 		temp_turfs += infront_right
 
-	for(var/turf/T in temp_turfs)
-		if (!istype(T))
+	for(var/turf/turfs_to_check in temp_turfs)
+		if (!istype(turfs_to_check))
 			continue
 
-		if (T.density)
+		if (turfs_to_check.density)
 			continue
 
-		target_turfs += T
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(T, windup)
+		target_turfs += turfs_to_check
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(turfs_to_check, windup)
 
-		var/turf/next_turf = get_step(T, facing)
+		var/turf/next_turf = get_step(turfs_to_check, facing)
 		if (!istype(next_turf) || next_turf.density)
 			continue
 
@@ -331,9 +331,9 @@
 	if(!do_after(lash_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		to_chat(lash_user, SPAN_XENOWARNING("We cancel our tail lash."))
 
-		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
-			telegraph_atom_list -= XT
-			qdel(XT)
+		for(var/obj/effect/xenomorph/xeno_telegraph/tail_telegraph in telegraph_atom_list)
+			telegraph_atom_list -= tail_telegraph
+			qdel(tail_telegraph)
 		return
 
 	if(!action_cooldown_check() || !check_and_use_plasma_owner())
@@ -345,20 +345,20 @@
 	lash_user.spin_circle()
 	lash_user.emote("tail")
 
-	for (var/turf/T in target_turfs)
-		for (var/mob/living/carbon/H in T)
-			if (H.stat == DEAD)
+	for (var/turf/targets_in_turf in target_turfs)
+		for (var/mob/living/carbon/possible_targets in targets_in_turf)
+			if (possible_targets.stat == DEAD)
 				continue
 
-			if(!isxeno_human(H) || lash_user.can_not_harm(H))
+			if(!isxeno_human(possible_targets) || lash_user.can_not_harm(possible_targets))
 				continue
 
-			if(H.mob_size >= MOB_SIZE_BIG)
+			if(possible_targets.mob_size >= MOB_SIZE_BIG)
 				continue
 
-			lash_user.throw_carbon(H, facing, fling_dist)
+			lash_user.throw_carbon(possible_targets, facing, fling_dist)
 
-			H.apply_effect(get_xeno_stun_duration(H, 0.5), WEAKEN)
-			new /datum/effects/xeno_slow(H, lash_user, ttl = get_xeno_stun_duration(H, 25))
+			possible_targets.apply_effect(get_xeno_stun_duration(possible_targets, 0.5), WEAKEN)
+			new /datum/effects/xeno_slow(possible_targets, lash_user, ttl = get_xeno_stun_duration(possible_targets, 2.5 SECONDS))
 
 	return ..()

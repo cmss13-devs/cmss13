@@ -940,3 +940,42 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "mapwindow.map", "right-click=false")
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
+
+GLOBAL_LIST_INIT(community_awards, get_community_awards())
+
+/proc/get_community_awards()
+	var/list/awards_file = file2list("config/community_awards.txt")
+	var/list/processed_awards = list()
+	for(var/awardee in awards_file)
+		if(!length(awardee))
+			return FALSE
+		if(copytext(awardee,1,2) == "#")
+			continue
+
+		//Split the line at every "-"
+		var/list/split_awardee = splittext(awardee, "-")
+		if(!length(split_awardee))
+			return FALSE
+
+		//ckey is before the first "-"
+		var/ckey = ckey(split_awardee[1])
+		if(!ckey)
+			continue
+		processed_awards[ckey] = list()
+
+		//given_awards follows the first "-"
+		var/list/given_awards = list()
+		if(!(length(split_awardee) >= 2))
+			continue
+		given_awards = split_awardee.Copy(2)
+		for(var/the_award in given_awards)
+			processed_awards[ckey] += ckeyEx(the_award)
+
+	return processed_awards
+
+/client/proc/find_community_award_icons()
+	if(GLOB.community_awards[ckey])
+		var/full_prefix = ""
+		for(var/award in GLOB.community_awards[ckey])
+			full_prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, award)]"
+		return full_prefix

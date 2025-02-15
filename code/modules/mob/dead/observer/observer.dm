@@ -935,6 +935,110 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	GLOB.xeno_tacmap_status.tgui_interact(src)
 
+/mob/dead/observer/verb/view_faxes()
+	set name = "View Sent Faxes"
+	set desc = "View faxes from this round"
+	set category = "Ghost.View"
+
+	var/list/options = list(
+		"Weyland-Yutani", "High Command", "Provost", "Press",
+		"Colonial Marshal Bureau", "Union of Progressive Peoples",
+		"Three World Empire", "Colonial Liberation Front",
+		"Other", "Cancel")
+	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
+	switch(answer)
+		if("Weyland-Yutani")
+			var/body = "<body>"
+
+			for(var/text in GLOB.WYFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
+
+		if("High Command")
+			var/body = "<body>"
+
+			for(var/text in GLOB.USCMFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
+
+		if("Provost")
+			var/body = "<body>"
+
+			for(var/text in GLOB.ProvostFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", "size=300x600")
+
+		if("Press")
+			var/body = "<body>"
+
+			for(var/text in GLOB.PressFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", "size=300x600")
+
+		if("Colonial Marshal Bureau")
+			var/body = "<body>"
+
+			for(var/text in GLOB.CMBFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", "size=300x600")
+
+		if("Union of Progressive Peoples")
+			var/body = "<body>"
+
+			for(var/text in GLOB.UPPFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", "size=300x600")
+
+		if("Three World Empire")
+			var/body = "<body>"
+
+			for(var/text in GLOB.TWEFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", "size=300x600")
+
+		if("Colonial Liberation Front")
+			var/body = "<body>"
+
+			for(var/text in GLOB.CLFFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", "size=300x600")
+
+		if("Other")
+			var/body = "<body>"
+
+			for(var/text in GLOB.GeneralFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", "size=300x600")
+		if("Cancel")
+			return
+
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost.Join"
 	set name = "Join as Xeno"

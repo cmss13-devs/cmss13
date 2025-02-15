@@ -191,7 +191,7 @@
 		return
 
 	// Advance plant age.
-	if(prob(30))
+	if(prob(30) && nutrilevel > 0 && waterlevel > 0)
 		age += 1 * HYDRO_SPEED_MULTIPLIER
 
 	//Highly mutable plants have a chance of mutating every tick.
@@ -220,8 +220,6 @@
 		plant_health += (nutrilevel < 2 ? -healthmod : healthmod)
 	if(seed.requires_water && prob(35))
 		plant_health += (waterlevel < 10 ? -healthmod : healthmod)
-	if(nutrilevel < 1)
-		plant_health = 0
 
 	// Check that pressure, heat are all within bounds.
 	// First, handle an open system or an unconnected closed system.

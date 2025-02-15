@@ -108,10 +108,10 @@ export const Book = () => {
             <Stack vertical fill width="640px">
               <Stack.Item>
                 <Stack justify="space-between">
-                  <Stack.Item width="640px">
+                  <Stack.Item width="500px">
                     <BookHeader />
                   </Stack.Item>
-                  {preview && (
+                  {!!preview && (
                     <Stack.Item align="flex-end">
                       <Button
                         icon="eye"
@@ -159,7 +159,7 @@ export const Book = () => {
               )}
             </Stack>
           </Stack.Item>
-          {preview && (
+          {!!preview && (
             <Stack.Item>
               <TextArea
                 value={
@@ -194,7 +194,7 @@ const BookHeader = () => {
           className="HeaderImage"
         />
       </Stack.Item>
-      <Stack.Item width="640px">
+      <Stack.Item width="500px">
         <Stack vertical justify="center" fill>
           <Stack.Item>
             <Box fontSize="24px">{title}</Box>

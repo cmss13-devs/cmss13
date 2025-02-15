@@ -40,6 +40,24 @@
 	var/client/client = usr.client
 	client.toggle_ghost_hud()
 
+/atom/movable/screen/floor_changer
+	icon = 'icons/mob/screen_ghost.dmi'
+	icon_state = "floor_change"
+
+/atom/movable/screen/floor_changer/Click(location,control,params)
+	var/list/modifiers = params2list(params)
+
+	var/mouse_position = text2num(LAZYACCESS(modifiers, ICON_Y))
+	
+	var/mob/dead/observer/ghost = usr
+
+	if(mouse_position > 16)
+		ghost.teleport_z_up()
+		return
+
+	ghost.teleport_z_down()
+	return
+
 /datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi', ui_color, ui_alpha = 230)
 	. = ..()
 	var/atom/movable/screen/using
@@ -62,6 +80,10 @@
 
 	using = new /atom/movable/screen/ghost/toggle_huds()
 	using.screen_loc = ui_ghost_slot5
+	static_inventory += using
+
+	using = new /atom/movable/screen/floor_changer
+	using.screen_loc = ui_ghost_slot6
 	static_inventory += using
 
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)

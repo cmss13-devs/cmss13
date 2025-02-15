@@ -40,20 +40,22 @@
 	var/client/client = usr.client
 	client.toggle_ghost_hud()
 
-/atom/movable/screen/floor_changer
+/atom/movable/screen/move_up
 	icon = 'icons/mob/screen_ghost.dmi'
-	icon_state = "floor_change"
+	icon_state = "move_up"
 
-/atom/movable/screen/floor_changer/Click(location,control,params)
-	var/list/modifiers = params2list(params)
-
-	var/mouse_position = text2num(LAZYACCESS(modifiers, ICON_Y))
-	
+/atom/movable/screen/move_up/Click()
 	var/mob/dead/observer/ghost = usr
 
-	if(mouse_position > 16)
-		ghost.teleport_z_up()
-		return
+	ghost.teleport_z_up()
+	return
+
+/atom/movable/screen/move_down
+	icon = 'icons/mob/screen_ghost.dmi'
+	icon_state = "move_down"
+
+/atom/movable/screen/move_down/Click()
+	var/mob/dead/observer/ghost = usr
 
 	ghost.teleport_z_down()
 	return
@@ -82,7 +84,12 @@
 	using.screen_loc = ui_ghost_slot5
 	static_inventory += using
 
-	using = new /atom/movable/screen/floor_changer
+	// Using the same slot because they are two parts of the same slot
+	using = new /atom/movable/screen/move_up()
+	using.screen_loc = ui_ghost_slot6
+	static_inventory += using
+
+	using = new /atom/movable/screen/move_down()
 	using.screen_loc = ui_ghost_slot6
 	static_inventory += using
 

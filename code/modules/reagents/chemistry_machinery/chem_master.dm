@@ -195,10 +195,15 @@
 			if(length(loaded_pill_bottles) == 0 || bottle_index > length(loaded_pill_bottles))
 				return
 
-			if(!user.put_in_hands(loaded_pill_bottles[bottle_index]))
-				loaded_pill_bottles[bottle_index].forceMove(loc)
+			var/obj/item/storage/pill_bottle/bottle = loaded_pill_bottles[bottle_index]
 
-			loaded_pill_bottles -= loaded_pill_bottles[bottle_index]
+			if (!bottle)
+				return
+
+			if(!user.put_in_hands(loaded_pill_bottles[bottle_index]))
+				bottle.forceMove(loc)
+
+			loaded_pill_bottles -= bottle
 
 			return TRUE
 

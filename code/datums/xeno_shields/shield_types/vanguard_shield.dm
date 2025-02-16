@@ -34,6 +34,11 @@
 		amount -= 50
 		return
 
+	if (linked_xeno)
+		qdel(src)
+	if (QDELETED(linked_xeno) || !istype(linked_xeno))
+		return
+
 	linked_xeno.overlay_shields()
 	var/datum/action/xeno_action/activable/cleave/cAction = get_action(linked_xeno, /datum/action/xeno_action/activable/cleave)
 	if (istype(cAction))

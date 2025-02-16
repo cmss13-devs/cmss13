@@ -13468,6 +13468,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_a)
 "jJL" = (

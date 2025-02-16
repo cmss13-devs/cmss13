@@ -16,10 +16,10 @@
 	var/list/obj/containers = list()
 	var/list/allowed_sensors = list()
 	var/list/allowed_containers = list(/obj/item/reagent_container/glass/beaker, /obj/item/reagent_container/glass/bucket, /obj/item/reagent_container/glass/bottle)
-	var/max_container_volume = 90
+	var/max_container_volume = 120
 	var/current_container_volume = 0
 	var/assembly_stage = ASSEMBLY_EMPTY //The assembly_stage of the assembly
-	var/list/reaction_limits = list("max_ex_power" = 180, "base_ex_falloff" = 100, "max_ex_shards" = 40,
+	var/list/reaction_limits = list("max_ex_power" = 180, "base_ex_falloff" = 80, "max_ex_shards" = 40,
 									"max_fire_rad" = 5, "max_fire_int" = 25, "max_fire_dur" = 24,
 									"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)

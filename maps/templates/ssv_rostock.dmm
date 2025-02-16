@@ -706,13 +706,11 @@
 "acm" = (
 /obj/structure/window/framed/upp_ship/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 1;
 	id = "uppbrig1";
 	name = "Brig Lockdown"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 1;
-	id = s;
+	id = "upp_brig_execution";
 	name = "\improper Entrance Shutters"
 	},
 /turf/open/floor/plating,
@@ -811,7 +809,6 @@
 "acC" = (
 /obj/structure/machinery/door_control{
 	pixel_x = -25;
-	pixel_y = 0;
 	id = "upp_brig_execution";
 	name = "Entrance Shutter";
 	req_one_access = list(230, 240)

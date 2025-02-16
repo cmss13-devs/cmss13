@@ -117,6 +117,16 @@
 	icon_state = "brigcells"
 	fake_zlevel = 1 //upperdeck
 
+/area/rostock/security/execution_room
+	name = "SSV Rostock - Execution Room"
+	icon_state = "brigcells"
+	fake_zlevel = 1 //upperdeck
+
+/area/rostock/security/execution_storage
+	name = "SSV Rostock - Execution Storage Room"
+	icon_state = "brigcells"
+	fake_zlevel = 1 //upperdeck
+
 /area/rostock/security/brig_office
 	name = "SSV Rostock - Brig Office"
 	icon_state = "brig"

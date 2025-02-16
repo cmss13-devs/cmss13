@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(inactivity)
 	priority = SS_PRIORITY_INACTIVITY
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
-	var/list/clients/current_run = list()
+	var/list/client/current_run = list()
 
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
 	if(list_clear_nulls(GLOB.clients))

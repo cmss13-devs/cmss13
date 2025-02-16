@@ -34,16 +34,10 @@
 		amount -= 50
 		return
 
-	if (amount <= 0)
-		if (linked_xeno)
-			qdel(src)
-			if (QDELETED(linked_xeno) || !istype(linked_xeno))
-				return
-
-			linked_xeno.overlay_shields()
-			var/datum/action/xeno_action/activable/cleave/cAction = get_action(linked_xeno, /datum/action/xeno_action/activable/cleave)
-			if (istype(cAction))
-				addtimer(CALLBACK(cAction, TYPE_PROC_REF(/datum/action/xeno_action/activable/cleave, remove_buff)), 7, TIMER_UNIQUE)
+	linked_xeno.overlay_shields()
+	var/datum/action/xeno_action/activable/cleave/cAction = get_action(linked_xeno, /datum/action/xeno_action/activable/cleave)
+	if (istype(cAction))
+		addtimer(CALLBACK(cAction, TYPE_PROC_REF(/datum/action/xeno_action/activable/cleave, remove_buff)), 7, TIMER_UNIQUE)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
 	if (!istype(linked_xeno))

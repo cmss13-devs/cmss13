@@ -31,7 +31,7 @@
 		amount *= 0.70
 		amount -= 50
 
-	if (amount >= 0)
+	if (amount <= 0)
 		if (linked_xeno)
 			if (QDELETED(linked_xeno) || !istype(linked_xeno))
 				return

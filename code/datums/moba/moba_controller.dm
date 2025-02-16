@@ -14,6 +14,11 @@
 
 	var/game_started = FALSE
 
+	var/list/turf/ai_waypoints_topleft = list()
+	var/list/turf/ai_waypoints_topright = list()
+	var/list/turf/ai_waypoints_botleft = list()
+	var/list/turf/ai_waypoints_topright = list()
+
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
 	team1 = team1_players

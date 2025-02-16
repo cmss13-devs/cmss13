@@ -97,8 +97,8 @@
 				qdel(label_component_on_inputed_bottle)
 			bottle.icon_state = main_bottle.icon_state
 
-		loaded_pill_bottles += inputed_bottle
-		user.drop_inv_item_to_loc(inputed_bottle, src)
+		loaded_pill_bottles += bottle
+		user.drop_inv_item_to_loc(bottle, src)
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		SStgui.update_uis(src)
 	return

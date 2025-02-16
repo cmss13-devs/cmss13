@@ -1,3 +1,8 @@
+/datum/caste_datum/spitter
+	available_strains = list(
+			/datum/xeno_strain/suppressor,
+		)
+
 /datum/xeno_strain/suppressor
 	name = "Suppressor"
 	description = "You lose your ability to spit your acid, in exchange you get ability to spit stiky resin for heal your sisters and slow hosts"

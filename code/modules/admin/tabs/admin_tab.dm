@@ -308,9 +308,11 @@
 		return
 
 	var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
-	if(!message) return
+	if(!message)
+		return
 	var/color = input(src, "Input your message color:", "Color Selector") as color|null
-	if(!color) return
+	if(!color)
+		return
 
 	for(var/mob/living/mob in view(usr.client))
 		show_blurb(mob, 15, message, null, "center", "center", color, null, null, 1)

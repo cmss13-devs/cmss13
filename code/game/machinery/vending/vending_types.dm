@@ -569,7 +569,8 @@
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
 		var/price = prices[typepath]
-		if(isnull(amount)) amount = 1
+		if(isnull(amount))
+			amount = 1
 
 		var/obj/item/temp_path = typepath
 		var/datum/data/vending_product/R = shared_products[i]

@@ -26,7 +26,10 @@ export const SecurityRecords = () => {
   const [commentModalOpen, setCommentModalOpen] = useState(false);
   const [newComment, setNewComment] = useState('');
   const [viewFingerprintScanner, setViewFingerprintScanner] = useState(false); // Track fingerprint scanner view
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [sortConfig, setSortConfig] = useState({
+    key: 'general_name',
+    direction: 'asc',
+  });
   const [filterText, setFilterText] = useState('');
   const [currentPhoto, setCurrentPhoto] = useState('front'); // State to track the current photo (front or side)
   const [recordPhotos, setRecordPhotos] = useState({
@@ -34,11 +37,26 @@ export const SecurityRecords = () => {
     side: null,
   });
 
+  // useEffect to sort on data update and on sort config change
   useEffect(() => {
     if (Array.isArray(records)) {
-      setRecordsArray(records);
+      let updatedRecords = [...records];
+
+      if (sortConfig.key) {
+        updatedRecords.sort((a, b) => {
+          if (a[sortConfig.key] < b[sortConfig.key]) {
+            return sortConfig.direction === 'asc' ? -1 : 1;
+          }
+          if (a[sortConfig.key] > b[sortConfig.key]) {
+            return sortConfig.direction === 'asc' ? 1 : -1;
+          }
+          return 0;
+        });
+      }
+
+      setRecordsArray(updatedRecords);
     }
-  }, [records]);
+  }, [records, sortConfig]);
 
   useEffect(() => {
     if (selectedRecord) {
@@ -82,18 +100,15 @@ export const SecurityRecords = () => {
     act('update_photo', { id: selectedRecord.id, photo_profile: currentPhoto });
   };
 
-  const handleSort = (key) => {
+  const handleSort = (key, keepDirection = false) => {
     const direction =
-      sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc';
+      keepDirection && sortConfig.key === key
+        ? sortConfig.direction
+        : sortConfig.key === key && sortConfig.direction === 'asc'
+          ? 'desc'
+          : 'asc';
+
     setSortConfig({ key, direction });
-
-    const sortedRecords = [...recordsArray].sort((a, b) => {
-      if (a[key] < b[key]) return direction === 'asc' ? -1 : 1;
-      if (a[key] > b[key]) return direction === 'asc' ? 1 : -1;
-      return 0;
-    });
-
-    setRecordsArray(sortedRecords);
   };
 
   const filteredRecords = recordsArray.filter((record) =>
@@ -132,7 +147,7 @@ export const SecurityRecords = () => {
     },
     { label: 'ID:', contentKey: 'id', isEditable: false },
     {
-      label: 'Rank:',
+      label: 'Position:',
       contentKey: 'general_rank',
       isEditable: true,
       type: 'text',
@@ -187,6 +202,12 @@ export const SecurityRecords = () => {
   // Function to get styles based on status
   const getStyle = (status) =>
     criminalStatuses[status] || { background: 'inherit', font: 'inherit' };
+
+  const getSortIndicator = (key) => {
+    if (sortConfig.key === key) {
+      return sortConfig.direction === 'asc' ? '▼' : '▲';
+    }
+  };
 
   const selectRecord = useCallback(
     (record) => {
@@ -261,7 +282,7 @@ export const SecurityRecords = () => {
                 Name
               </Table.Cell>
               <Table.Cell bold className="SecurityRecords_CellStyle">
-                Rank
+                Position
               </Table.Cell>
               <Table.Cell bold className="SecurityRecords_CellStyle">
                 Squad
@@ -529,36 +550,28 @@ export const SecurityRecords = () => {
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('general_name')}
           >
-            Name{' '}
-            {sortConfig.key === 'general_name' &&
-              (sortConfig.direction === 'asc' ? '▲' : '▼')}
+            Name {getSortIndicator('general_name')}
           </Table.Cell>
           <Table.Cell
             bold
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('id')}
           >
-            ID{' '}
-            {sortConfig.key === 'id' &&
-              (sortConfig.direction === 'asc' ? '▲' : '▼')}
+            ID {getSortIndicator('id')}
           </Table.Cell>
           <Table.Cell
             bold
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('general_rank')}
           >
-            Rank{' '}
-            {sortConfig.key === 'general_rank' &&
-              (sortConfig.direction === 'asc' ? '▲' : '▼')}
+            Position {getSortIndicator('general_rank')}
           </Table.Cell>
           <Table.Cell
             bold
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('security_criminal')}
           >
-            Status{' '}
-            {sortConfig.key === 'security_criminal' &&
-              (sortConfig.direction === 'asc' ? '▲' : '▼')}
+            Status {getSortIndicator('security_criminal')}
           </Table.Cell>
         </Table.Row>
         {filteredRecords.map((record) => (

@@ -1,5 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - qol: "Adds camera, camera film, tape recorder, clue scanner to SecTech."
-  - bugfix: "Code fixed for sectech machine ads/slogans."

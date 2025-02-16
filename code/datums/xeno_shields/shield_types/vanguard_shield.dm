@@ -12,7 +12,9 @@
 		addtimer(CALLBACK(src, PROC_REF(rapid_decay)),  0.4 SECONDS, TIMER_LOOP)
 		return
 	else
-		return ..(damage)
+		. = ..()
+		if (amount <= 0)
+			rapid_decay() // Reuse its cleanup logic
 
 /datum/xeno_shield/vanguard/Destroy()
 	if (linked_xeno)
@@ -30,9 +32,11 @@
 	if(amount > 0)
 		amount *= 0.70
 		amount -= 50
+		return
 
 	if (amount <= 0)
 		if (linked_xeno)
+			qdel(src)
 			if (QDELETED(linked_xeno) || !istype(linked_xeno))
 				return
 

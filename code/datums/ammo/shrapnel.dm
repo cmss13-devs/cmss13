@@ -21,18 +21,11 @@
 		B.update_health(1)
 
 /datum/ammo/bullet/shrapnel/on_hit_mob(mob/living/carbon/xeno, obj/projectile/projectile, mob/user)
-	if(!shrapnel_chance) // no shrapnel, no special effects
+	if(!shrapnel_chance) // no shrapnell , no special effects
 		return
 	if(isxeno(xeno))
-		// Calculate the base damage
-		var/base_damage = damage * 0.6 // Base damage calculation for xenos
-		// Calculate 90% of the target's current HP
-		var/max_allowed_damage = xeno.health * 0.75
-		// Apply the damage limit: damage cannot exceed 75% of the target's current HP
-		var/final_damage = min(base_damage, max_allowed_damage)
-		// Apply the damage and effects
-		xeno.apply_effect(4, SLOW) // multiple hits don't stack they just renew the duration
-		xeno.apply_armoured_damage(final_damage, ARMOR_BULLET, BRUTE, , penetration)
+		xeno.apply_effect(4, SLOW) // multiple hits dont stack they just renew the duration
+		xeno.apply_armoured_damage(damage * 0.6, ARMOR_BULLET, BRUTE, , penetration) // xenos have a lot of HP
 
 /datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
 	. = ..()

@@ -26,9 +26,9 @@
 			deploy_bodybag(user, T)
 
 /obj/item/bodybag/proc/deploy_bodybag(mob/user, atom/location)
-	if(length(contents) == 0)
+	if(!length(contents))
 		new unfolded_path(src)
-	var/obj/structure/closet/bodybag/deployed = locate(unfolded_path) in src.contents
+	var/obj/structure/closet/bodybag/deployed = locate(unfolded_path) in contents
 	deployed.forceMove(user.loc)
 	user.temp_drop_inv_item(src)
 	forceMove(deployed)
@@ -105,7 +105,7 @@
 /obj/structure/closet/bodybag/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
 		if(labelcomponent)
 			prior_label_text = labelcomponent.label_name
 		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
@@ -122,8 +122,8 @@
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
-		src.overlays.Cut()
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		overlays.Cut()
+		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
 		if(labelcomponent)
 			labelcomponent.remove_label()
 		return
@@ -170,10 +170,11 @@
 		density = FALSE
 		update_name()
 		return 1
-	return 0
+	return FALSE
 
 // bodybags do nothing when called to dump contents
 /obj/structure/closet/bodybag/dump_contents()
+	return
 
 /obj/structure/closet/bodybag/open()
 	. = ..()
@@ -185,10 +186,10 @@
 		if(!ishuman(usr))
 			return
 		var/obj/item/undeployed = locate(item_path) in contents
-		if(!(undeployed))
+		if(!undeployed)
 			undeployed = new item_path(contents)
 		else if(length(contents) > 1)
-			return 0
+			return FALSE
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		usr.put_in_hands(undeployed)
 		forceMove(undeployed)
@@ -200,7 +201,7 @@
 		if (!roller_buckled.anchored)
 			return roller_buckled.Move(NewLoc, direct)
 		else
-			return 0
+			return FALSE
 	else
 		. = ..()
 

@@ -217,15 +217,16 @@
 	. = ..()
 	if(foldabletype && !buckled_mob && !buckled_bodybag)
 		var/mob/living/carbon/human/user = over_object
-		if(length(contents) == 0)
+		if(!length(contents))
 			new foldabletype(src)
-		var/obj/item/roller/rollerholder = locate(foldabletype) in src.contents
-		if (istype(over_object, /mob/living/carbon/human))
-			if (user == usr && !user.is_mob_incapacitated() && Adjacent(user) && in_range(src, over_object))
-				user.put_in_hands(rollerholder)
-				user.visible_message(SPAN_WARNING("[user] grabs [src] from the floor!"),
-				SPAN_WARNING("You grab [src] from the floor!"))
-				forceMove(rollerholder)
+		var/obj/item/roller/rollerholder = locate(foldabletype) in contents
+		if (!istype(over_object, /mob/living/carbon/human))
+			return
+		if (user == usr && !user.is_mob_incapacitated() && Adjacent(user) && in_range(src, over_object))
+			user.put_in_hands(rollerholder)
+			user.visible_message(SPAN_INFO("[user] grabs [src] from the floor!"),
+			SPAN_INFO("You grab [src] from the floor!"))
+			forceMove(rollerholder)
 
 /obj/structure/bed/roller/buckle_mob(mob/mob, mob/user)
 	if(iscarbon(mob))
@@ -270,9 +271,9 @@
 
 /// Handles the switch between a item/roller to a structure/bed/roller, and storing one within the other when not in use
 /obj/item/roller/proc/deploy_roller(mob/user, atom/location)
-	if(length(contents) == 0)
+	if(!length(contents))
 		new rollertype(src)
-	var/obj/structure/bed/roller/roller = locate(rollertype) in src.contents
+	var/obj/structure/bed/roller/roller = locate(rollertype) in contents
 	roller.forceMove(user.loc)
 	to_chat(user, SPAN_NOTICE("You deploy [roller]."))
 	roller.add_fingerprint(user)

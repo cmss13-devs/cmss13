@@ -5,8 +5,9 @@
 	icon_state = "medic"
 	required_tutorial = "marine_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
+	/// Count of the total items to be vended from the starting vendor, included items WITHIN the essentials kit
 	var/clothing_items_to_vend = 4
-
+	/// Tracking list of items vended from the starting vendor. Used as a failsafe in case the player vends them to their hands, instead of direct to slots
 	var/list/vendor_failsafe = list()
 
 // ------------ CONTENTS ------------ //
@@ -797,7 +798,7 @@
 	marine_dummy.rejuvenate()
 	marine_dummy.adjustOxyLoss(40)
 
-	message_to_player("Pvt Dummy is suffering from <b>Oxygen Damage</b>!")
+	message_to_player("PVT Dummy is suffering from <b>Oxygen Damage</b>!")
 	message_to_player("Oxygen damage is treated by the chemical <b>Dexalin</b>, color-coded blue.")
 
 	handle_pill_bottle(marine_dummy, "Dexalin", "Dx", "1", /obj/item/reagent_container/pill/dexalin)
@@ -820,7 +821,7 @@
 	marine_dummy.rejuvenate()
 	marine_dummy.adjustOxyLoss(100)
 
-	message_to_player("Oh no! It appears that, despite our prior treatment, Pvt Dummy is still suffering from <b>Extreme Oxygen Damage</b>!")
+	message_to_player("Oh no! It appears that, despite our prior treatment, PVT Dummy is still suffering from <b>Extreme Oxygen Damage</b>!")
 	message_to_player("Scan him with your <b>Health Analyzer</b> to determine his exact damage amount.")
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(oxy_tutorial_5))
@@ -833,7 +834,7 @@
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
-	message_to_player("As we can see based on our <b>Health Analyzer</b> scan, Pvt Dummy has around <b>100</b> points of <b>Oxygen Damage</b>!")
+	message_to_player("As we can see based on our <b>Health Analyzer</b> scan, PVT Dummy has around <b>100</b> points of <b>Oxygen Damage</b>!")
 	message_to_player("In extreme cases, when Oxygen damage levels are especially high, we can use a chemical called <b>Dexalin+</b> to heal <u>all Oxygen damage instantly</u>.")
 
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_6)), 6 SECONDS)
@@ -842,7 +843,7 @@
 	SIGNAL_HANDLER
 
 	message_to_player("A <b>Dexalin+ Autoinjector</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
-	message_to_player("Use the Autoinjector on Pvt Dummy by clicking on them, to administer the <b>Dexalin+</b>")
+	message_to_player("Use the Autoinjector on PVT Dummy by clicking on them, to administer the <b>Dexalin+</b>")
 
 	var/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use/dexp = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(dexp)
@@ -931,7 +932,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-	message_to_player("It seems that Pvt Dummy has been careless with their self-medicating, and is <b>Overdosed on Bicaridine</b> by just under 10 units.")
+	message_to_player("It seems that PVT Dummy has been careless with their self-medicating, and is <b>Overdosed on Bicaridine</b> by just under 10 units.")
 	message_to_player("On the field, an overdose can not be treated by a Hospital Corpsman using standard equipment. Instead, you will have to wait for the body to <b>metabolize</b> the chemical over time, until it is below its overdose amount.")
 	message_to_player("A small overdose, while annoying, will very rarely prove lethal in the body.")
 

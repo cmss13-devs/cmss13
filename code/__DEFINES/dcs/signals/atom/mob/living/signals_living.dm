@@ -59,7 +59,7 @@
 #define COMSIG_LIVING_STETHOSCOPE_USED "living_stethoscope_used"
 
 /// From /obj/item/device/flashlight/pen/attack(): (mob/living/user, mob/living/carbon/human/being)
-#define COMSIG_LIVING_PENLIGHT_USED "living_penlight_used"
+#define COMSIG_LIVING_USED_PENLIGHT "living_penlight_used"
 
 /// from /datum/component/shimmy_around/proc/on_mob_move to determine if layer should be reset
 #define COMSIG_LIVING_SHIMMY_LAYER "structure_shimmy_layer"

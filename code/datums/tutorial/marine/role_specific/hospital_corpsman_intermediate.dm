@@ -5,16 +5,18 @@
 	icon_state = "medic"
 	required_tutorial = "marine_hm_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
+	/// Count of the total items to be vended from the starting vendor, included items WITHIN the essentials kit
 	var/clothing_items_to_vend = 6
 	var/ontime
 	/// To be used to differentiate subsections in long-winded procs. SET TO 0 WHEN NOT IN USE! CLEAN UP AFTER YOURSELF!
 	var/stage = 0
+	/// Used in the CPR tutorial to count consecutive chest compressions
 	var/cpr_count = 0
 	/// For use in the handle_pill_bottle helper, should always be set to 0 when not in use
 	var/handle_pill_bottle_status = 0
-
+	/// Tracking list of items vended from the starting vendor. Used as a failsafe in case the player vends them to their hands, instead of direct to slots
 	var/list/vendor_failsafe = list()
-
+	/// Variable to track the chest of the marine_dummy. Used instead of tutorial atom tracking, due to the frequency of references
 	var/obj/limb/chest/mob_chest
 
 // ------------ CONTENTS ------------ //
@@ -46,12 +48,23 @@
 
 	init_mob()
 	message_to_player("This tutorial will teach you the more complex elements of playing as a Marine Hospital Corpsman.")
-	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
+	var/starting_section = current_subsection_id
+	if(!current_subsection_id)
+		starting_section = PROC_REF(uniform)
+	addtimer(CALLBACK(src, starting_section), 4 SECONDS)
+
+/datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/register_tutorial_subsections()
+	. = ..()
+	subsection_list = list(
+		list("name" = "Section 1", "title" = "Stabilizing Types of Organ Damage", "id" = PROC_REF(organ_tutorial))
+	)
+
+	return subsection_list
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/proc/uniform()
 	SIGNAL_HANDLER
 
-	message_to_player("Before you're ready to take on the world as a Marine Hospital Corpsman, you should probably put some clothes on...")
+	message_to_player("Before you're ready to take on the world as a Marine Hospital Corpsman, you should probably put some clothes on.")
 	message_to_player("Stroll on over to the outlined vendor and vend everything inside.")
 	update_objective("Vend everything inside the ColMarTech Automated Closet.")
 
@@ -97,8 +110,8 @@
 
 	message_to_player("Like the rest of the body, damage to <b>Internal Organs</b> can be classified in levels.")
 	message_to_player("As an internal organ sustains increasing amounts of damage, its condition will change from:")
-	message_to_player("Healthy -> Slighty Bruised -> Bruised -> Ruptured / Broken")
-	message_to_player("Each increase in organ damage severity will produce similarly life-threatening side effects on the body.")
+	message_to_player("Healthy -> Slightly Bruised -> Bruised -> Ruptured / Broken")
+	message_to_player("Each increase in organ damage severity will produce life-threatening side effects on the body.")
 	message_to_player("A <b>Ruptured Internal Organ</b> has been damaged beyond the point of function, and will require immediate surgical intervention from a <u>trained Doctor</u>.")
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_chest)), 22 SECONDS)
 
@@ -144,9 +157,9 @@
 		if(tutorial_mob.zone_selected != "chest")
 			message_to_player("Make sure to have the Dummys <b>Chest</b> selected as your target. Use the <b>Zone Selection Element</b> on the bottom right of your hud to target the Dummys chest, and try again.")
 		else
-			message_to_player("Well done! If you check the <b>Chat-Box</b> on the right of your screen, you will now see the following message from your <b>Stethoscope</b>:")
+			message_to_player("Well done! If you check the <b>Chat Box</b> on the right of your screen, you will now see the following message from your <b>Stethoscope</b>:")
 			message_to_player("You hear normal heart beating patterns, his heart is surely <u>Healthy</u>. You also hear normal respiration sounds aswell, that means his lungs are <u>Healthy</u>,")
-			message_to_player("This means that all internal organs in Pvt Dummys chest are <b>Fully Healthy</b>!")
+			message_to_player("This means that all internal organs in PVT Dummy's chest are <b>Fully Healthy</b>!")
 
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
 			UnregisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED)
@@ -398,7 +411,7 @@
 	marine_dummy.apply_internal_damage(35, "eyes")
 	marine_dummy.apply_internal_damage(15, "brain")
 
-	RegisterSignal(tutorial_mob, COMSIG_LIVING_PENLIGHT_USED, PROC_REF(organ_tutorial_head_5))
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_USED_PENLIGHT, PROC_REF(organ_tutorial_head_5))
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/proc/organ_tutorial_head_5(datum/source, mob/living/carbon/human/being, mob/living/user)
 	SIGNAL_HANDLER
@@ -409,7 +422,7 @@
 		if(tutorial_mob.zone_selected != "eyes")
 			message_to_player("Make sure to have the Dummys <b>Eyes</b> selected as your target. Use the <b>Zone Selection Element</b> on the bottom right of your hud to target the Dummys Eyes, and try again.")
 		else
-			UnregisterSignal(tutorial_mob, COMSIG_LIVING_PENLIGHT_USED)
+			UnregisterSignal(tutorial_mob, COMSIG_LIVING_USED_PENLIGHT)
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/flashlight/pen, pen)
 			remove_highlight(pen)
 

@@ -77,7 +77,7 @@
 	fade_out_time = 0.5 SECONDS
 
 /atom/movable/screen/text/screen_text/command_order/tutorial/manual
-	fade_out_delay = null // is meant to be manually deleted by players in tutorial
+	fade_out_delay = 0 // is meant to be manually deleted by players in tutorial
 
 /atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
 	if(!player)

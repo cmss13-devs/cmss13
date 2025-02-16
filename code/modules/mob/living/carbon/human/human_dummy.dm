@@ -88,7 +88,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	create_hud()
 	arm_equipment(src, /datum/equipment_preset/uscm/tutorial_rifleman)
 
-/mob/living/carbon/human/realistic_dummy/med_hud_set_health()
+/mob/living/carbon/human/realistic_dummy/updatehealth()
 	. = ..()
 	if((round(health * 100 / species.total_health, 10)) >= 70)
 		SEND_SIGNAL(src, COMSIG_HUMAN_TUTORIAL_HEALED)

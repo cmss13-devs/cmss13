@@ -1003,6 +1003,7 @@
 /datum/equipment_preset/tutorial/fed
 	name = "Tutorial (Fed)"
 	underfed = FALSE
+	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm/tutorial_rifleman
 	name = "Tutorial Rifleman"

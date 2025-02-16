@@ -28,7 +28,7 @@
 		var/base_damage = damage * 0.6 // Base damage calculation for xenos
 		// Calculate 90% of the target's current HP
 		var/max_allowed_damage = xeno.health * 0.75
-		// Apply the damage limit: damage cannot exceed 90% of the target's current HP
+		// Apply the damage limit: damage cannot exceed 75% of the target's current HP
 		var/final_damage = min(base_damage, max_allowed_damage)
 		// Apply the damage and effects
 		xeno.apply_effect(4, SLOW) // multiple hits don't stack they just renew the duration

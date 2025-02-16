@@ -49,6 +49,7 @@
 
 // Interfaces
 @include meta.load-css('./interfaces/BodyPicker.scss');
+@include meta.load-css('./interfaces/Book.scss');
 @include meta.load-css('./interfaces/Changelog.scss');
 @include meta.load-css('./interfaces/ColorPicker.scss');
 @include meta.load-css('./interfaces/ListInput.scss');
@@ -77,6 +78,7 @@
 @include meta.load-css('./interfaces/ResearchTerminal.scss');
 @include meta.load-css('./interfaces/Roulette.scss');
 @include meta.load-css('./interfaces/Safe.scss');
+@include meta.load-css('./interfaces/SecurityRecords.scss');
 @include meta.load-css('./interfaces/SentryUi.scss');
 @include meta.load-css('./interfaces/SidePanel.scss');
 @include meta.load-css('./interfaces/SmartFridge.scss');

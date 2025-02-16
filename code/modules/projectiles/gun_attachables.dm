@@ -55,9 +55,11 @@ Defined in conflicts.dm of the #defines folder.
 	var/damage_buildup_mod = 0 //Modifier to damage buildup, works off a multiplier.
 	var/range_min_mod = 0 //Modifier to minimum effective range, tile value.
 	var/range_max_mod = 0 //Modifier to maximum effective range, tile value.
+	var/projectile_max_range_mod = 0 //Modifier to how far the projectile can travel in tiles.
 	var/melee_mod = 0 //Changing to a flat number so this actually doesn't screw up the calculations.
 	var/scatter_mod = 0 //Increases or decreases scatter chance.
 	var/scatter_unwielded_mod = 0 //same as above but for onehanded firing.
+	var/bonus_proj_scatter_mod = 0 //Increses or decrease scatter for bonus projectiles. Mainly used for shotguns.
 	var/recoil_mod = 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
@@ -113,7 +115,8 @@ Defined in conflicts.dm of the #defines folder.
 	return TRUE
 
 /obj/item/attachable/proc/Attach(obj/item/weapon/gun/G)
-	if(!istype(G)) return //Guns only
+	if(!istype(G))
+		return //Guns only
 
 	/*
 	This does not check if the attachment can be removed.
@@ -170,7 +173,8 @@ Defined in conflicts.dm of the #defines folder.
 		G.in_chamber.apply_bullet_trait(L)
 
 /obj/item/attachable/proc/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
-	if(!istype(detaching_gun)) return //Guns only
+	if(!istype(detaching_gun))
+		return //Guns only
 
 	if(user)
 		detaching_gun.on_detach(user, src)
@@ -344,13 +348,64 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bayonet/rmc
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, the L5 is balanced to also function as an effective throwing knife."
-	icon_state = "upp_bayonet" // PLACEHOLDER PLEASE REPLACE
+	icon_state = "twe_bayonet"
 	item_state = "combat_knife"
-	attach_icon = "upp_bayonet_a" // PLACEHOLDER PLEASE REPLACE
+	attach_icon = "twe_bayonet_a"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
 	throw_range = 7
 	pry_delay = 1 SECONDS
+
+/obj/item/attachable/bayonet/antique
+	name = "\improper antique bayonet"
+	desc = "An antique-style bayonet, has a long blade, wooden handle with brass fittings, reflecting historical craftsmanship."
+	icon_state = "antique_bayonet"
+	item_state = "combat_knife"
+	attach_icon = "antique_bayonet_a"
+
+/obj/item/attachable/bayonet/rmc_replica
+	name = "\improper L5 bayonet"
+	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
+	icon_state = "twe_bayonet"
+	item_state = "combat_knife"
+	attach_icon = "twe_bayonet_a"
+
+/obj/item/attachable/bayonet/custom
+	name = "\improper M5 'Raven's Claw' tactical bayonet"
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool."
+	icon_state = "bayonet_custom"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_a"
+
+/obj/item/attachable/bayonet/custom/red
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a red grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_red"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_red_a"
+
+/obj/item/attachable/bayonet/custom/blue
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a blue grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_blue"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_blue_a"
+
+/obj/item/attachable/bayonet/custom/black
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a black grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_black"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_black_a"
+
+/obj/item/attachable/bayonet/tanto
+	name = "\improper T9 tactical bayonet"
+	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detatchments and outposts across the sector."
+	icon_state = "bayonet_tanto"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_tanto_a"
+
+/obj/item/attachable/bayonet/tanto/blue
+	icon_state = "bayonet_tanto_alt"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_tanto_alt_a"
 
 /obj/item/attachable/bayonet/van_bandolier
 	name = "\improper Fairbairn-Sykes fighting knife"
@@ -444,6 +499,45 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
 
+/obj/item/attachable/shotgun_choke
+	name = "shotgun choke"
+	desc = "A modified choke for the M37A2 pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
+	slot = "muzzle"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "choke"
+	attach_icon = "choke_a"
+	pixel_shift_x = 16
+	pixel_shift_y = 17
+	hud_offset_mod = -2
+
+/obj/item/attachable/shotgun_choke/New()
+	..()
+	recoil_mod = RECOIL_AMOUNT_TIER_4
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
+	velocity_mod = AMMO_SPEED_TIER_1
+	delay_mod = -FIRE_DELAY_TIER_2
+	bonus_proj_scatter_mod = -SCATTER_AMOUNT_TIER_6
+	projectile_max_range_mod = 1
+	damage_falloff_mod = -0.3
+
+/obj/item/attachable/shotgun_choke/Attach(obj/item/weapon/gun/shotgun/pump/attaching_gun)
+	if(!istype(attaching_gun, /obj/item/weapon/gun/shotgun/pump))
+		return ..()
+	attaching_gun.pump_delay -= FIRE_DELAY_TIER_5
+	attaching_gun.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("knockback_disabled", /datum/element/bullet_trait_knockback_disabled))
+	attaching_gun.fire_sound = 'sound/weapons/gun_shotgun_choke.ogg'
+
+	return ..()
+
+/obj/item/attachable/shotgun_choke/Detach(mob/user, obj/item/weapon/gun/shotgun/pump/detaching_gun)
+	if(!istype(detaching_gun, /obj/item/weapon/gun/shotgun/pump))
+		return ..()
+	detaching_gun.pump_delay += FIRE_DELAY_TIER_5
+	detaching_gun.remove_bullet_trait("knockback_disabled")
+	detaching_gun.fire_sound = initial(detaching_gun.fire_sound)
+
+	return ..()
 
 /obj/item/attachable/slavicbarrel
 	name = "sniper barrel"
@@ -1095,6 +1189,12 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "rxfm5_eva_scope_a"
 	desc = "A civilian-grade scope that can be switched between short and long range magnification, intended for use in extraterrestrial scouting. Looks ridiculous on a pistol."
 	aim_speed_mod = 0
+
+/obj/item/attachable/scope/variable_zoom/twe
+	name = "S10 variable zoom telescopic scope"
+	icon_state = "3we_scope"
+	attach_icon = "3we_scope_a"
+	desc = "An ARMAT S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 
 #undef ZOOM_LEVEL_2X
 #undef ZOOM_LEVEL_4X
@@ -2286,6 +2386,18 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "abr40stock_tac"
 	attach_icon = "abr40stock_tac_a"
 
+/obj/item/attachable/stock/carbine/l42a3
+	name = "\improper L42A3 synthetic stock"
+	desc = "A standard issue stock made of sturdy, yet lightweight materials. Attaches to the L42A3 Battle Rifle. Not effective as a blunt force weapon."
+	icon_state = "l42a3stock"
+	attach_icon = "l42a3stock_a"
+
+/obj/item/attachable/stock/carbine/l42a3/marksman
+	name = "\improper L42A3 marksman stock"
+	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42A3 Battle Rifle. Not effective as a blunt force weapon."
+
+	wield_delay_mod = WIELD_DELAY_FAST
+
 /obj/item/attachable/stock/rifle/marksman
 	name = "\improper M41A marksman stock"
 	icon_state = "m4markstock"
@@ -2737,6 +2849,18 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 20
 	hud_offset_mod = 2
 
+/obj/item/attachable/stock/l23
+	name = "L23 stock"
+	desc = "If you can read this, someone screwed up. Go Github this and bug a coder."
+	icon_state = "l23_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	melee_mod = 5
+	size_mod = 2
+	pixel_shift_x = 21
+	pixel_shift_y = 20
+	hud_offset_mod = 2
+
 // ======== Underbarrel Attachments ======== //
 
 
@@ -2750,7 +2874,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/last_fired //When the attachment was last fired.
 	var/attachment_firing_delay = 0 //the delay between shots, for attachments that fires stuff
 	var/fire_sound = null //Sound to play when firing it alternately
-	var/gun_original_damage_mult = 1 //so you don't buff the underbarrell gun with charger for the wrong weapon
 	var/gun_deactivate_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'//allows us to give the attached gun unique activate and de-activate sounds. Not used yet.
 	var/gun_activate_sound  = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/unload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
@@ -2787,23 +2910,26 @@ Defined in conflicts.dm of the #defines folder.
 	SIGNAL_HANDLER
 	target = get_turf(target)
 
+/obj/item/attachable/attached_gun/proc/reset_damage_mult(obj/item/weapon/gun/gun)
+	SIGNAL_HANDLER
+	gun.damage_mult = 1
+
 /obj/item/attachable/attached_gun/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	if(G.active_attachable == src)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are no longer using [src]."))
 			playsound(user, gun_deactivate_sound, 30, 1)
 		G.active_attachable = null
-		var/diff = G.damage_mult - 1 //so that if we buffed gun in process, it still does stuff
-		//yeah you can cheat by placing BC after switching to underbarrell, but that is one time and we can skip it for sake of optimization
-		G.damage_mult = gun_original_damage_mult + diff
 		icon_state = initial(icon_state)
+		UnregisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+		G.recalculate_attachment_bonuses()
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
 			playsound(user, gun_activate_sound, 60, 1)
 		G.active_attachable = src
-		gun_original_damage_mult = G.damage_mult
 		G.damage_mult = 1
+		RegisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(reset_damage_mult))
 		icon_state += "-on"
 
 	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)
@@ -3005,6 +3131,17 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 	grenade_pass_flags = NO_FLAGS
 
+
+/obj/item/attachable/attached_gun/grenade/u1rmc
+	name = "\improper H34 underslung grenade launcher"
+	desc = "A W-Y take on an underslung grenade launcher system, made for the NSG23 line of weapons. Can store up to five grenades and fires them about as far as your U1 UGL for M41A Mk2."
+	icon_state = "u1rmc"
+	attach_icon = "u1rmc_a"
+	current_rounds = 0
+	max_rounds = 5
+	max_range = 10
+	attachment_firing_delay = 24
+
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer
 	name = "mini flamethrower"
@@ -3153,7 +3290,8 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/attached_gun/flamer/proc/flame_turf(turf/T, mob/living/user)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
 		var/datum/reagent/napalm/ut/R = new()
@@ -3223,6 +3361,101 @@ Defined in conflicts.dm of the #defines folder.
 					qdel(mag)
 			return
 	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
+
+/obj/item/attachable/attached_gun/shotgun/af13 //NSG underslung shottie
+	name = "\improper AF13 underbarrel shotgun"
+	icon_state = "masterkey_af13"
+	attach_icon = "masterkey_af13_a"
+	desc = "A Weyland-Yutani AF13 underslung shotgun. Attaches to the underbarrel of NSG23 line of weapons. Only capable of loading up to six buckshot shells. Specialized for breaching into buildings."
+	w_class = SIZE_MEDIUM
+	max_rounds = 6
+	current_rounds = 6
+	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+	slot = "under"
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
+
+/obj/item/attachable/attached_gun/shotgun/af13/New()
+	..()
+	attachment_firing_delay = FIRE_DELAY_TIER_5*3
+
+/obj/item/attachable/attached_gun/shotgun/af13/get_examine_text(mob/user)
+	. = ..()
+	if(current_rounds > 0) . += "It has [current_rounds] shell\s left."
+	else . += "It's empty."
+
+/obj/item/attachable/attached_gun/shotgun/af13/set_bullet_traits()
+	LAZYADD(traits_to_give_attached, list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+	))
+
+/obj/item/attachable/attached_gun/shotgun/af13/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)
+	if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
+		if(mag.default_ammo == /datum/ammo/bullet/shotgun/buckshot)
+			if(current_rounds >= max_rounds)
+				to_chat(user, SPAN_WARNING("[src] is full."))
+			else
+				current_rounds++
+				mag.current_rounds--
+				mag.update_icon()
+				to_chat(user, SPAN_NOTICE("You load one shotgun shell in [src]."))
+				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
+				if(mag.current_rounds <= 0)
+					user.temp_drop_inv_item(mag)
+					qdel(mag)
+			return
+	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
+
+/obj/item/attachable/attached_gun/shotgun/af13b //NSG underslung shottie for Breacher gun
+	name = "\improper AF13-B underbarrel shotgun"
+	icon_state = "masterkey_af13"
+	attach_icon = "masterkey_af13_a"
+	desc = "A Weyland-Yutani AF13-B underslung shotgun, heavily modified by RMC Armourers. Attaches to the underbarrel of NSG23 line of weapons. Only capable of loading up to six buckshot shells. Specialized for breaching into buildings."
+	w_class = SIZE_MEDIUM
+	max_rounds = 6
+	current_rounds = 6
+	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+	slot = "under"
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_WIELD_OVERRIDE
+
+/obj/item/attachable/attached_gun/shotgun/af13b/New()
+	..()
+	attachment_firing_delay = FIRE_DELAY_TIER_5*3
+
+/obj/item/attachable/attached_gun/shotgun/af13b/get_examine_text(mob/user)
+	. = ..()
+	if(current_rounds > 0) . += "It has [current_rounds] shell\s left."
+	else . += "It's empty."
+
+/obj/item/attachable/attached_gun/shotgun/af13b/set_bullet_traits()
+	LAZYADD(traits_to_give_attached, list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_turfs), // 3 hits to break down regular walls, about 6 to break down r-walls
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 3*10.8, GLOB.damage_boost_breaching), // 2-taps the R doors
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_pylons)
+	))
+
+/obj/item/attachable/attached_gun/shotgun/af13b/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)
+	if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
+		if(mag.default_ammo == /datum/ammo/bullet/shotgun/buckshot)
+			if(current_rounds >= max_rounds)
+				to_chat(user, SPAN_WARNING("[src] is full."))
+			else
+				current_rounds++
+				mag.current_rounds--
+				mag.update_icon()
+				to_chat(user, SPAN_NOTICE("You load one shotgun shell in [src]."))
+				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
+				if(mag.current_rounds <= 0)
+					user.temp_drop_inv_item(mag)
+					qdel(mag)
+			return
+	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
+
 
 /obj/item/attachable/attached_gun/extinguisher
 	name = "HME-12 underbarrel extinguisher"

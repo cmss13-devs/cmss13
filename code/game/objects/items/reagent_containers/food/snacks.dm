@@ -27,7 +27,8 @@
 /obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
 	SEND_SIGNAL(M, COMSIG_MOB_EATEN_SNACK, src)
-	if(!usr) return
+	if(!usr)
+		return
 
 	if(!reagents.total_volume)
 		if(M == usr)
@@ -103,7 +104,8 @@
 					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 					SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M))
+				return
 
 			var/rgt_list_text = get_reagent_list_text()
 
@@ -172,9 +174,9 @@
 			to_chat(user, SPAN_DANGER("You already have something on your [U]."))
 			return
 
-		user.visible_message( \
-			"[user] scoops up some [src] with \the [U]!", \
-			SPAN_NOTICE("You scoop up some [src] with \the [U]!") \
+		user.visible_message(
+			"[user] scoops up some [src] with \the [U]!",
+			SPAN_NOTICE("You scoop up some [src] with \the [U]!")
 		)
 
 		src.bitecount++
@@ -208,14 +210,14 @@
 		return 1
 	var/slices_lost = 0
 	if (!inaccurate)
-		user.visible_message( \
-			SPAN_NOTICE("[user] slices \the [src]!"), \
-			SPAN_NOTICE("You slice \the [src]!") \
+		user.visible_message(
+			SPAN_NOTICE("[user] slices \the [src]!"),
+			SPAN_NOTICE("You slice \the [src]!")
 		)
 	else
-		user.visible_message( \
-			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"), \
-			SPAN_NOTICE("You crudely slice \the [src] with your [W]!") \
+		user.visible_message(
+			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"),
+			SPAN_NOTICE("You crudely slice \the [src] with your [W]!")
 		)
 		slices_lost = rand(1,max(1,floor(slices_num/2)))
 	var/reagents_per_slice = reagents.total_volume/slices_num
@@ -1566,7 +1568,8 @@
 	reagents.add_reagent("meatprotein",10)
 
 /obj/item/reagent_container/food/snacks/monkeycube/afterattack(obj/O, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(O,/obj/structure/sink) && !package)
 		to_chat(user, "You place \the [name] under a stream of water...")
 		user.drop_held_item()

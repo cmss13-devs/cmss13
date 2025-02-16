@@ -57,6 +57,19 @@
 	containername = "Webbing Crate"
 	group = "Clothing"
 
+/datum/supply_packs/webbing_large_black
+	name = "Black Webbing Crate (x4)"
+	contains = list(
+		/obj/item/clothing/accessory/storage/webbing/black,
+		/obj/item/clothing/accessory/storage/webbing/black,
+		/obj/item/clothing/accessory/storage/webbing/black,
+		/obj/item/clothing/accessory/storage/webbing/black,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/green
+	containername = "Black Webbing Crate"
+	group = "Clothing"
+
 /datum/supply_packs/drop_pouches
 	name = "Drop Pouch Crate (x4)"
 	contains = list(

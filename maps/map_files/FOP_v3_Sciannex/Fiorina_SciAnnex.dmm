@@ -24,19 +24,55 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "aae" = (
-/obj/effect/landmark/spycam_start,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/floor_plate,
-/area/fiorina/lz/near_lzI)
+/area/fiorina/tumor/aux_engi)
+"aaf" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/prison/darkbrownfull2,
+/area/fiorina/tumor/aux_engi)
+"aag" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aah" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/fiberbush)
+"aai" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/organic/grass/astroturf,
+/area/fiorina/tumor/fiberbush)
+"aaj" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/servers)
-"aaq" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/organic/grass/astroturf,
-/area/fiorina/tumor/fiberbush)
+"aal" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/transit_hub)
+"aam" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzI)
+"aan" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/chapel)
+"aao" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/prison/darkyellow2/east,
+/area/fiorina/lz/near_lzI)
+"aap" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/prison/darkredfull2,
+/area/fiorina/lz/near_lzI)
 "aar" = (
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/almayer,
@@ -49,6 +85,46 @@
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
+"aat" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/civres_blue)
+"aau" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/civres_blue)
+"aav" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/prison,
+/area/fiorina/station/medbay)
+"aaw" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/station/research_cells/west)
+"aax" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"aay" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/tumor/ice_lab)
+"aaz" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/tumor/ice_lab)
+"aaA" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/tumor/ice_lab)
+"aaB" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ice_lab)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -121,14 +197,6 @@
 "aeI" = (
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/central_ring)
-"aeS" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/tumor/ice_lab)
 "afk" = (
 /turf/open/floor/solarpanel,
 /area/fiorina/oob)
@@ -4867,10 +4935,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
-"dNC" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/darkredfull2,
-/area/fiorina/lz/near_lzI)
 "dOc" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
@@ -6826,10 +6890,6 @@
 	},
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells/east)
-"fnn" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/plating/prison,
-/area/fiorina/tumor/ice_lab)
 "fnD" = (
 /turf/closed/shuttle/elevator{
 	dir = 4
@@ -10572,10 +10632,6 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
-"ifN" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/darkyellow2/east,
-/area/fiorina/lz/near_lzI)
 "ifP" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	density = 0;
@@ -12351,10 +12407,6 @@
 /obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
-"jzN" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/civres_blue)
 "jzP" = (
 /turf/open/floor/prison/bluecorner,
 /area/fiorina/station/power_ring)
@@ -14492,10 +14544,6 @@
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/power_ring)
-"lic" = (
-/obj/structure/machinery/vending/cigarette,
-/turf/open/organic/grass/astroturf,
-/area/fiorina/tumor/fiberbush)
 "lit" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -14747,10 +14795,6 @@
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
-"lsn" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison,
-/area/fiorina/station/medbay)
 "lsO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/sheet/mineral/plastic/small_stack,
@@ -15965,10 +16009,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
-"mnR" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/chapel)
 "mok" = (
 /obj/structure/closet/crate/bravo,
 /obj/item/stack/sheet/metal/medium_stack,
@@ -16020,10 +16060,6 @@
 /obj/item/stock_parts/manipulator/pico,
 /turf/open/floor/prison/darkpurple2/east,
 /area/fiorina/tumor/servers)
-"mpR" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/darkpurplefull2,
-/area/fiorina/station/research_cells/west)
 "mqB" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/red,
@@ -20024,10 +20060,6 @@
 /obj/item/alienjar,
 /turf/open/floor/corsat/squares,
 /area/fiorina/station/medbay)
-"ppZ" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/tumor/ice_lab)
 "pqz" = (
 /obj/item/clothing/suit/storage/labcoat,
 /turf/open/organic/grass/astroturf,
@@ -21421,10 +21453,6 @@
 	},
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/park)
-"quL" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
 "qva" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/smg/mp5,
@@ -25606,10 +25634,6 @@
 "tEU" = (
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring/reactor)
-"tEX" = (
-/obj/structure/machinery/vending/cigarette,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/transit_hub)
 "tEY" = (
 /obj/structure/machinery/newscaster{
 	pixel_y = 32
@@ -27214,10 +27238,6 @@
 /obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/power_ring)
-"uTR" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/tumor/aux_engi)
 "uVk" = (
 /obj/effect/decal{
 	icon = 'icons/obj/items/security.dmi';
@@ -30063,10 +30083,6 @@
 "xiL" = (
 /turf/open/floor/prison/blue_plate/north,
 /area/fiorina/station/botany)
-"xiO" = (
-/obj/structure/machinery/vending/cigarette/free,
-/turf/open/floor/prison/darkbrownfull2,
-/area/fiorina/tumor/aux_engi)
 "xiZ" = (
 /turf/open/floor/prison/yellowcorner/west,
 /area/fiorina/station/lowsec/east)
@@ -36185,7 +36201,7 @@ vZV
 vZV
 mkI
 lCl
-uTR
+aae
 jlk
 jlk
 hAI
@@ -36579,7 +36595,7 @@ xwC
 xwC
 tfP
 tfP
-aaq
+aah
 kbT
 kbT
 qPb
@@ -37847,7 +37863,7 @@ tJU
 qPb
 qPb
 qPb
-lic
+aai
 xwC
 xwC
 xwC
@@ -40415,7 +40431,7 @@ rGq
 rGq
 svP
 hlk
-xiO
+aaf
 rGq
 bDU
 rGq
@@ -47543,7 +47559,7 @@ rqG
 pQs
 pQs
 pQs
-bNE
+aat
 rja
 lMq
 jYK
@@ -49630,7 +49646,7 @@ kPf
 kPf
 kPf
 jXz
-jnU
+aax
 jHz
 oiV
 eSH
@@ -50291,7 +50307,7 @@ apf
 ioE
 rja
 rja
-jzN
+aau
 bNE
 bNE
 pQs
@@ -53100,7 +53116,7 @@ cEw
 cEw
 cEw
 bnA
-tEX
+aal
 uSA
 uSA
 wSU
@@ -57538,7 +57554,7 @@ wMi
 wMi
 bis
 tJQ
-mnR
+aan
 bis
 bFr
 fQA
@@ -59183,7 +59199,7 @@ kpq
 mvp
 uno
 ciA
-lsn
+aav
 uno
 bLM
 tja
@@ -61067,7 +61083,7 @@ jFP
 phz
 sWb
 xLi
-mvp
+aaz
 cer
 kpq
 azZ
@@ -62754,7 +62770,7 @@ lAh
 lAh
 azZ
 eRz
-fnn
+aaB
 phz
 guf
 guf
@@ -64244,7 +64260,7 @@ xLi
 xLi
 xLi
 xLi
-ppZ
+aaA
 dqX
 mvp
 mvp
@@ -64680,7 +64696,7 @@ dqX
 rHX
 mvp
 lAh
-aeS
+aay
 mvp
 lkr
 rTd
@@ -66376,7 +66392,7 @@ azZ
 azZ
 azZ
 lAh
-aeS
+aay
 mvp
 ubX
 eqU
@@ -69450,7 +69466,7 @@ goG
 tOM
 tOM
 tOM
-quL
+aag
 tOM
 tOM
 tzU
@@ -70435,7 +70451,7 @@ cIa
 mVE
 sEK
 cIa
-nVK
+urw
 jii
 apg
 cIa
@@ -70629,7 +70645,7 @@ vUP
 kXk
 amn
 tPB
-mpR
+aaw
 eov
 hxJ
 qgd
@@ -72118,7 +72134,7 @@ cIa
 fna
 moQ
 cIa
-urw
+nVK
 jii
 vwX
 cIa
@@ -76855,7 +76871,7 @@ brR
 vDO
 tUs
 mxQ
-pYB
+aaj
 tOM
 gbf
 tOM
@@ -78087,7 +78103,7 @@ nGZ
 kNk
 sPh
 gTy
-ifN
+aao
 ncb
 dOX
 kaF
@@ -78934,7 +78950,7 @@ bQM
 bQM
 bQM
 xDw
-dNC
+aap
 wAt
 oJK
 fDJ
@@ -83191,7 +83207,7 @@ nGZ
 nGZ
 qaL
 fDJ
-aae
+aam
 uYi
 cUd
 cUd

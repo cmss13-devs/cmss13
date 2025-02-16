@@ -365,3 +365,23 @@
   - balance: Painkilling and Electrogenetic are twice as powerful per level, halved
       the property levels of Painkilling and Electrogenetic in chemicals, meaning
       that they act the same.
+2025-02-15:
+  Furrior:
+  - ui: Job entry text is now boxed and looks bit less awful
+  Red-byte3D:
+  - bugfix: Fixes fire not negating vampire healing
+2025-02-16:
+  Drathek:
+  - maptweak: Removed an erronous nightmare insert on BigRed
+  Red-byte3D:
+  - bugfix: You can no longer crush people with unpowered doors via crowbar
+  - bugfix: WO commanding officer can now use the sg pamphlet
+  - code_imp: Removed some one letter vars
+  - code_imp: Removed sone unused code from vanguard praetorian
+  - qol: Aoe attacks no longer hit nested marines, including crusher slash
+  - code_imp: vanguard byond ticks into seconds
+  Zenith, Crowford, Frans_Feiffer, VaNdU-jr, cuberound, armolitskiy, mikoka wei:
+  - rscadd: Added many new loadout items, and more other loadout items previously
+      missing
+  zzzmike:
+  - qol: stops the economy inflation announcements during red/delta alert

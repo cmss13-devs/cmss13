@@ -62,21 +62,21 @@
 		icon_state = (beaker?"[base_state]1":"[base_state]0")
 
 
-/obj/structure/machinery/chem_master/attackby(obj/item/inputed_bottle, mob/living/user)
-	if(istype(inputed_bottle, /obj/item/reagent_container/glass))
+/obj/structure/machinery/chem_master/attackby(obj/item/inputed_item, mob/living/user)
+	if(istype(inputed_item, /obj/item/reagent_container/glass))
 		var/obj/item/old_beaker = beaker
-		beaker = inputed_bottle
-		user.drop_inv_item_to_loc(inputed_bottle, src)
+		beaker = inputed_item
+		user.drop_inv_item_to_loc(inputed_item, src)
 		if(old_beaker)
-			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputed_bottle]."))
+			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputed_item]."))
 			user.put_in_hands(old_beaker)
 		else
 			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		SStgui.update_uis(src)
 		update_icon()
 
-	else if(istype(inputed_bottle, /obj/item/storage/pill_bottle) && pill_maker)
-		var/obj/item/storage/pill_bottle/bottle = inputed_bottle
+	else if(istype(inputed_item, /obj/item/storage/pill_bottle) && pill_maker)
+		var/obj/item/storage/pill_bottle/bottle = inputed_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
 			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))

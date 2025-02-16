@@ -13,7 +13,6 @@
 	var/pill_maker = TRUE
 	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
-	//var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
 	var/list/loaded_pill_bottles = list()
 	var/mode = 0
 	var/condi = 0
@@ -86,14 +85,16 @@
 		//making sure to have same bottles in the machine
 		if (length(loaded_pill_bottles) > 0)
 			var/obj/item/storage/pill_bottle/main_bottle = loaded_pill_bottles[1]
-			var/datum/component/label/label_component = main_bottle.GetComponent(/datum/component/label)
-			if(label_component)
-				bottle.AddComponent(/datum/component/label, label_component.label_name)
+			var/datum/component/label/label_component_on_main_bottle = main_bottle.GetComponent(/datum/component/label)
+			var/datum/component/label/label_component_on_inputed_bottle = bottle.GetComponent(/datum/component/label)
+
+			if(label_component_on_main_bottle)
+				bottle.AddComponent(/datum/component/label, label_component_on_main_bottle.label_name)
 				if(length(main_bottle.maptext_label) < 3)
 					bottle.maptext_label = main_bottle.maptext_label
 					bottle.update_icon()
-			else
-				bottle.RemoveComponent(/datum/component/label)
+			else if(label_component_on_inputed_bottle)
+				qdel(label_component_on_inputed_bottle)
 			bottle.icon_state = main_bottle.icon_state
 
 		loaded_pill_bottles += inputed_bottle

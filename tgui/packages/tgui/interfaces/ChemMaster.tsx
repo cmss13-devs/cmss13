@@ -277,9 +277,6 @@ const PillBottle = (props: { readonly setPicker: (_) => void }) => {
               ) : (
                 <Stack>
                   <Stack.Item>
-                    <Icon name={'tag'} />
-                  </Stack.Item>
-                  <Stack.Item>
                     <DmIcon
                       mt={-1.5}
                       icon={color_pill.icon}

@@ -3575,28 +3575,29 @@
 	..()
 /obj/item/reagent_container/food/snacks/packaged_meal/proc/determinetype(newflavor)
 	name = "\improper MRE component ([newflavor])"
-	flavor = declent_ru_initial(newflavor, NOMINATIVE, newflavor) // BANDAMARINES EDIT
-	ru_names_rename(ru_names_toml("MRE component", suffix = " ([flavor])", override_base = name))
+	flavor = newflavor
+	var/ru_flavor = declent_ru_initial(newflavor, NOMINATIVE, newflavor) // BANDAMARINES EDIT
+	ru_names_rename(ru_names_toml("MRE component", suffix = " ([ru_flavor])", override_base = name))
 
 	switch(newflavor)
 		if("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")
 			icon_state = "entree"
-			desc = "Основное блюдо сухого пойка. Это [flavor]."
+			desc = "Основное блюдо сухого пойка. Это [ru_flavor]."
 			reagents.add_reagent("nutriment", 14)
 			reagents.add_reagent("sodiumchloride", 6)
 		if("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
 			icon_state = "side"
-			desc = "Гарнит к основному блюду сухого пойка. Это [flavor]."
+			desc = "Гарнит к основному блюду сухого пойка. Это [ru_flavor]."
 			reagents.add_reagent("nutriment", 6)
 			reagents.add_reagent("sodiumchloride", 2)
 		if("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
 			icon_state = "snack"
-			desc = "Компонент сухого пойка, рассчитанный на лёгкий перекус. Это [flavor]."
+			desc = "Компонент сухого пойка, рассчитанный на лёгкий перекус. Это [ru_flavor]."
 			reagents.add_reagent("nutriment", 4)
 			reagents.add_reagent("sodiumchloride", 2)
 		if("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
 			icon_state = "dessert"
-			desc = "Сладкий десерт, который можно съесть после основного блюда (или до него, если вы бунтарь). Это [flavor]."
+			desc = "Сладкий десерт, который можно съесть после основного блюда (или до него, если вы бунтарь). Это [ru_flavor]."
 			reagents.add_reagent("nutriment", 2)
 			reagents.add_reagent("sugar", 2)
 			reagents.add_reagent("coco", 1)

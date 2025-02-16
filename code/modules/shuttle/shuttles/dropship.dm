@@ -276,7 +276,7 @@
 		to_chat(affected_mob, SPAN_DANGER("The dropship jolts violently as it enters freefall!"))
 		shake_camera(affected_mob, DROPSHIP_TURBULENCE_FREEFALL_PERIOD / 3, 1)
 		shake_camera(affected_mob, DROPSHIP_TURBULENCE_FREEFALL_PERIOD, 1)
-		if(!affected_mob.buckled)
+		if(!affected_mob.buckled && affected_mob.body_position == STANDING_UP)
 			affected_mob.KnockDown(DROPSHIP_TURBULENCE_FREEFALL_PERIOD * 0.1)
 			affected_mob.throw_random_direction(2, spin = TRUE)
 			affected_mob.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, rand_zone())
@@ -302,7 +302,9 @@
 	for(var/mob/living/affected_mob as anything in affected_list["mobs"])
 		to_chat(affected_mob, SPAN_DANGER("The dropship jolts violently!"))
 		shake_camera(affected_mob, DROPSHIP_TURBULENCE_PERIOD, 1)
-		if(!affected_mob.buckled && affected_mob.m_intent == MOVE_INTENT_RUN && prob(DROPSHIP_TURBULENCE_GRIPLOSS_PROBABILITY))
+		if(!affected_mob.buckled && affected_mob.body_position == STANDING_UP && affected_mob.m_intent == MOVE_INTENT_RUN)
+			if(!prob(DROPSHIP_TURBULENCE_GRIPLOSS_PROBABILITY))
+				continue
 			to_chat(affected_mob, SPAN_DANGER("You lose your grip!"))
 			affected_mob.apply_armoured_damage(50, ARMOR_MELEE, BRUTE, rand_zone())
 			affected_mob.KnockDown(DROPSHIP_TURBULENCE_PERIOD * 0.1)
@@ -324,14 +326,27 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/turbulence_sort_affected()
 	// this prevents atoms from being called more than once as the proc works it way through the turfs (some may be thrown onto a turf that hasn't been called yet)
+	var/list/affected_turfs = list()
 	var/list/affected_mobs = list()
 	var/list/affected_items = list()
-	for(var/area/internal_area in shuttle_areas)
-		for(var/turf/internal_turf in internal_area)
-			for(var/mob/living/M in internal_turf)
-				affected_mobs += M
-			for(var/obj/item/I in internal_turf)
-				affected_items += I
+
+	for(var/area/listed_area as anything in shuttle_areas)
+		for(var/turf/affected_turf in listed_area)
+			affected_turfs += affected_turf
+	for(var/obj/vehicle/multitile/multitile_vehicle as anything in GLOB.all_multi_vehicles) // don't know if this is necessarily the best idea, if you spawn 100 bajillion vehicles, but in my mind it is better than asking it to search each turf for a vehicle.
+		if(!locate(multitile_vehicle.loc.loc) in shuttle_areas)
+			continue
+		if(!multitile_vehicle.interior)
+			continue
+		var/list/bounds = multitile_vehicle.interior.get_bound_turfs()
+		for(var/turf/affected_turf as anything in block(bounds[1], bounds[2]))
+			affected_turfs += affected_turf
+
+	for(var/turf/affected_turf as anything in affected_turfs)
+		for(var/mob/living/M in affected_turf)
+			affected_mobs += M
+		for(var/obj/item/I in affected_turf)
+			affected_items += I
 	return list("mobs" = affected_mobs, "items" = affected_items)
 
 /obj/docking_port/stationary/marine_dropship

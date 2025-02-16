@@ -215,13 +215,13 @@
 		title_given = lowertext(disp_title)
 
 		//Document syntax cannot have tabs for proper formatting.
-		var/entrydisplay = " \
+		var/entrydisplay = boxed_message("\
 			[SPAN_ROLE_BODY("|______________________|")] \n\
 			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
 			[flags_startup_parameters & ROLE_ADMIN_NOTIFY ? SPAN_ROLE_HEADER("You are playing a job that is important for game progression. If you have to disconnect, please notify the admins via adminhelp.") : ""] \n\
 			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
-		"
+		")
 		to_chat_spaced(H, html = entrydisplay)
 
 /datum/job/proc/generate_entry_conditions(mob/living/M, whitelist_status)

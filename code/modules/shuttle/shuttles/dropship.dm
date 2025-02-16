@@ -276,7 +276,7 @@
 		to_chat(affected_mob, SPAN_DANGER("The dropship jolts violently as it enters freefall!"))
 		shake_camera(affected_mob, DROPSHIP_TURBULENCE_FREEFALL_PERIOD / 3, 1)
 		shake_camera(affected_mob, DROPSHIP_TURBULENCE_FREEFALL_PERIOD, 1)
-		if(!affected_mob.buckled && affected_mob.body_position == STANDING_UP)
+		if(!affected_mob.buckled)
 			affected_mob.KnockDown(DROPSHIP_TURBULENCE_FREEFALL_PERIOD * 0.1)
 			affected_mob.throw_random_direction(2, spin = TRUE)
 			affected_mob.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, rand_zone())

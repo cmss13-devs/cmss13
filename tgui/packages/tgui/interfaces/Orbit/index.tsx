@@ -344,7 +344,9 @@ const weyyuSplitter = (members: Array<Observable>) => {
   const other: Array<Observable> = [];
 
   members.forEach((x) => {
-    if (x.job?.includes('WY Death Squad')) {
+    if (x.job?.includes('Whiteout')) {
+      whiteout.push(x);
+    } else if (x.job?.includes('Death Squad')) {
       whiteout.push(x);
     } else if (x.job?.includes('PMC')) {
       pmc.push(x);

@@ -34,8 +34,7 @@
 		amount -= 50
 		return
 
-	if (linked_xeno)
-		qdel(src)
+	qdel(src)
 	if (QDELETED(linked_xeno) || !istype(linked_xeno))
 		return
 

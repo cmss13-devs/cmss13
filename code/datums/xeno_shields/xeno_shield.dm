@@ -32,6 +32,8 @@
 		linked_xeno.xeno_shields -= src
 		linked_xeno.overlay_shields()
 		linked_xeno = null
+	if(processing)
+		STOP_PROCESSING(SSobj, src)
 
 	return ..()
 

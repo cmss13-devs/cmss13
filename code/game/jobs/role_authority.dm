@@ -340,7 +340,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/i = 0
 		var/j
 		while(++i < 3) //Get two passes.
-			if(!length(roles_to_iterate) || prob(65)) break //Base chance to become a marine when being assigned randomly, or there are no roles available.
+			if(!length(roles_to_iterate) || prob(65))
+				break //Base chance to become a marine when being assigned randomly, or there are no roles available.
 			j = pick(roles_to_iterate)
 			J = roles_to_iterate[j]
 
@@ -350,7 +351,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				continue
 
 			if(assign_role(M, J)) //Check to see if they can actually get it.
-				if(J.current_positions >= J.spawn_positions) roles_to_iterate -= j
+				if(J.current_positions >= J.spawn_positions)
+					roles_to_iterate -= j
 				return roles_to_iterate
 
 	//If they fail the two passes, or no regular roles are available, they become a marine regardless.

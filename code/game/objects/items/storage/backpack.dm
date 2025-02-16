@@ -162,7 +162,8 @@
 	var/obj/item/card/id/card = H.get_idcard()
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
-	else return TRUE
+	else
+		return TRUE
 
 /obj/item/storage/backpack/update_icon()
 	overlays.Cut()
@@ -1219,6 +1220,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	worn_accessible = TRUE
 	max_fuel = 180
+
+/obj/item/storage/backpack/marine/engineerpack/ert/four_slot
+	max_fuel = 100
+	max_storage_space = 12
 
 /obj/item/storage/backpack/molle
 	name = "\improper T13 MOLLE Satchel"

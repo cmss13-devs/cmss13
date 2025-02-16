@@ -111,7 +111,8 @@
 
 	else if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		if(isliving(G.grabbed_thing))
 			var/mob/living/M = G.grabbed_thing
 			if(user.grab_level >= GRAB_AGGRESSIVE)

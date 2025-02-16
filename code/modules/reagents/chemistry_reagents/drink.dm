@@ -125,19 +125,19 @@
 	name = "Watermelon Juice"
 	id = "watermelonjuice"
 	description = "Delicious juice made from watermelon."
-	color = "#863333" // rgb: 134, 51, 51
+	color = "#a71d1d" // rgb: 167, 29, 29
 
 /datum/reagent/drink/lemonjuice
 	name = "Lemon Juice"
 	id = "lemonjuice"
 	description = "This juice is VERY sour."
-	color = "#863333" // rgb: 175, 175, 0
+	color = "#d1db42" // rgb: 209, 219, 66
 
 /datum/reagent/drink/banana
 	name = "Banana Juice"
 	id = "banana"
 	description = "The raw essence of a banana."
-	color = "#863333" // rgb: 175, 175, 0
+	color = "#e4c439" // rgb: 228, 196, 57
 
 /datum/reagent/drink/potato_juice
 	name = "Potato Juice"
@@ -464,7 +464,15 @@
 	color = "#104038" // rgb: 16, 64, 56
 	adj_temp = 0
 
-
+/datum/reagent/drink/tea_leaves
+	name = "Tea leaves"
+	id = "tea_leaves"
+	description = "Black tea leaves, freeze dried."
+	color = "#1a2b1c" // rgb: 16, 16, 0
+	adj_dizzy = -2
+	adj_drowsy = -1
+	adj_sleepy = -3
+	chemclass = CHEM_CLASS_SPECIAL
 
 //OTHER//
 

@@ -254,6 +254,13 @@
 	required_reagents = list("tea" = 3, "ice" = 1)
 	result_amount = 4
 
+/datum/chemical_reaction/tea
+	name = "Tea"
+	id = "tea"
+	result = "tea"
+	required_reagents = list("tea_leaves" = 1, "water" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/icecoffee
 	name = "Iced Coffee"
 	id = "icecoffee"

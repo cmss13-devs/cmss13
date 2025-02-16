@@ -319,7 +319,6 @@
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 
-
 /obj/item/storage/box/donkpockets
 	name = "box of donk-pockets"
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
@@ -335,6 +334,42 @@
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+
+/obj/item/storage/box/teabags
+	name = "box of Earl Grey tea bags"
+	desc = "A box of instant tea bags."
+	icon_state = "teabag_box"
+	can_hold = list(/obj/item/reagent_container/pill/teabag)
+	w_class = SIZE_SMALL
+	storage_slots = 8
+
+/obj/item/storage/box/teabags/fill_preset_inventory()
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+
+/obj/item/storage/box/lemondrop
+	name = "box of Lemon Drop candies"
+	desc = "A box of lemon flavored hard candies."
+	icon_state = "lemon_drop_box"
+	can_hold = list(/obj/item/reagent_container/food/snacks/lemondrop)
+	w_class = SIZE_SMALL
+	storage_slots = 8
+
+/obj/item/storage/box/lemondrop/fill_preset_inventory()
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
 
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"

@@ -194,7 +194,7 @@
 	desc = "Building Better Worlds, and rolling better cigarettes. Compact and ready for your executive ventures, protecting corporate assets never felt cooler."
 	icon_state = "wy4packet"
 	icon = 'icons/obj/items/smoking/packets/wy_gold_mini.dmi'
-	item_state = "wy4packet"
+	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 	storage_slots = 4
 
@@ -206,6 +206,15 @@
 	item_state = "bpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_bpack")
 
+/obj/item/storage/fancy/cigarettes/balaji_4
+	name = "\improper Balaji Imperial Mini packet"
+	desc = "Smoke 'em if you gottem! Now a field, in the new compact package!"
+	icon_state = "b4packet"
+	icon = 'icons/obj/items/smoking/packets/balaji_imperials_mini.dmi'
+	item_state = "bpacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_bpack")
+	storage_slots = 4
+
 /obj/item/storage/fancy/cigarettes/lucky_strikes
 	name = "\improper Lucky Strikes Packet"
 	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes... as the leading cause of marine lung cancer."
@@ -214,6 +223,16 @@
 	item_state = "lspacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_ls")
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
+
+/obj/item/storage/fancy/cigarettes/lucky_strikes_4
+	name = "\improper Lucky Strikes Mini Packet"
+	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."
+	icon_state = "ls4packet"
+	icon = 'icons/obj/items/smoking/packets/lucky_strike_mini.dmi'
+	item_state = "lspacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_ls_mre")
+	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
+	storage_slots = 4
 
 /obj/item/storage/fancy/cigarettes/blackpack
 	name = "\improper Executive Select packet"
@@ -229,7 +248,7 @@
 	desc = "Luxury right in your ration. You will have them just in time to use them while observing a nuclear blast and enjoying it."
 	icon_state = "black4packet"
 	icon = 'icons/obj/items/smoking/packets/executive_select_mini.dmi'
-	item_state = "black4packet"
+	item_state = "blackpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_blackpack")
 	default_cig_type = /obj/item/clothing/mask/cigarette/bcigarette
 	storage_slots = 4
@@ -275,16 +294,6 @@
 	icon = 'icons/obj/items/smoking/packets/spirits_yellow.dmi'
 	item_state = "y_naspacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_spirityellow")
-
-/obj/item/storage/fancy/cigarettes/lucky_strikes_4
-	name = "\improper Lucky Strikes Mini Packet"
-	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."
-	icon_state = "ls4packet"
-	icon = 'icons/obj/items/smoking/packets/lucky_strike_mini.dmi'
-	item_state = "lspacket"
-	item_state_slots = list(WEAR_AS_GARB = "cig_ls_mre")
-	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
-	storage_slots = 4
 
 /obj/item/storage/fancy/cigarettes/trading_card
 	name = "\improper WeyYu Gold Military Trading Card packet"
@@ -445,6 +454,13 @@
 	icon_state = "mpacket_es"
 	light_chance = 90
 	burn_chance = 0
+
+/obj/item/storage/fancy/cigar/matchbook/balaji_imperial
+	name = "\improper Balaji Imperial matchbook"
+	desc = "A small book of expensive royal paper matches designed for refined smokers. These ones light almost every time!"
+	icon_state = "bpacket"
+	light_chance = 80
+	burn_chance = 10
 
 /obj/item/storage/fancy/cigar/matchbook/wy_gold
 	name = "\improper Weyland-Yutani Gold matchbook"

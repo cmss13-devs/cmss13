@@ -1139,6 +1139,20 @@
 	reagents.add_reagent("berryjuice", 15)
 	reagents.add_reagent("sugar", 5)
 
+///LEMON DROP CANDY
+
+/obj/item/reagent_container/food/snacks/lemondrop
+	name = "Lemon Drop candy"
+	desc = "A sugar coated, lemon flavored sweet and sour hard candy popular in TWE, with candy itself originating in England."
+	icon_state = "lemondrop"
+	icon = 'icons/obj/items/food/mre_food/twe.dmi'
+	filling_color = "#e3f218"
+
+/obj/item/reagent_container/food/snacks/lemondrop/Initialize()
+	. = ..()
+	reagents.add_reagent("lemonjuice", 3)
+	reagents.add_reagent("sugar", 1)
+
 ///FACTION NEUTRAL RATION
 
 /obj/item/mre_food_packet/merc

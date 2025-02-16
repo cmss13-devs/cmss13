@@ -1245,6 +1245,7 @@
 #include "code\game\objects\items\props\rocks.dm"
 #include "code\game\objects\items\props\souto_land.dm"
 #include "code\game\objects\items\reagent_containers\autoinjectors.dm"
+#include "code\game\objects\items\reagent_containers\beverages.dm"
 #include "code\game\objects\items\reagent_containers\blood_pack.dm"
 #include "code\game\objects\items\reagent_containers\dropper.dm"
 #include "code\game\objects\items\reagent_containers\food.dm"

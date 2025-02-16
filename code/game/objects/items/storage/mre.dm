@@ -199,19 +199,36 @@
 	icon_closed = "twe_mealpack"
 	icon_opened = "twe_mealpackopened"
 	trash_item = /obj/item/trash/twe_mre
-	should_have_beverage = FALSE
-	should_have_utencil = FALSE
 	entree = /obj/item/mre_food_packet/entree/twe
 	side = /obj/item/mre_food_packet/twe/side
 	snack = /obj/item/mre_food_packet/twe/snack
 	dessert = /obj/item/mre_food_packet/twe/dessert
-	misc_item = /obj/item/reagent_container/food/snacks/wrapped/twe_bar
+
+/obj/item/storage/box/MRE/TWE/Initialize()
+	misc_item = pick(/obj/item/reagent_container/food/snacks/wrapped/twe_bar, /obj/item/storage/box/lemondrop)
+	return ..()
+
+/obj/item/storage/box/MRE/TWE/choose_beverage()
+	new /obj/item/reagent_container/pill/teabag(src)
+
+/obj/item/storage/box/MRE/TWE/choose_utencil()
+	new /obj/item/reagent_container/food/drinks/sillycup(src)
 
 /obj/item/storage/box/MRE/TWE/choose_cigarettes()
-	new /obj/item/storage/fancy/cigarettes/wypacket_4(src)
+	var/cig_type = rand(1, 2)
+	switch(cig_type)
+		if(1)
+			new /obj/item/storage/fancy/cigarettes/wypacket_4(src)
+		if(2)
+			new /obj/item/storage/fancy/cigarettes/balaji_4(src)
 
 /obj/item/storage/box/MRE/TWE/choose_matches()
-	new /obj/item/storage/fancy/cigar/matchbook/wy_gold(src)
+	var/matches_type = rand(1, 2)
+	switch(matches_type)
+		if(1)
+			new /obj/item/storage/fancy/cigar/matchbook/balaji_imperial(src)
+		if(2)
+			new /obj/item/storage/fancy/cigar/matchbook/wy_gold(src)
 
 /obj/item/storage/box/MRE/TWE/choose_spread()
 	var/spread_type = rand(1, 3)

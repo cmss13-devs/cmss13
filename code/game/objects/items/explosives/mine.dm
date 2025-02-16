@@ -225,21 +225,8 @@
 	set waitfor = 0
 
 	if(!customizable)
-		// Get all living mobs in the explosion radius
-		var/list/affected_mobs = list()
-		for(var/mob/living/L in range(4, loc)) // Adjust the range as needed
-			if(L.stat != DEAD && !L.get_target_lock(iff_signal))
-				affected_mobs += L
-
-		// Calculate and apply damage to each mob
-		for(var/mob/living/L in affected_mobs)
-			var/damage = L.maxHealth * 0.9 // 90% of max HP
-			L.apply_damage(damage, BRUTE) // Apply the damage
-
-		// Create visual effects (shrapnel and explosion)
 		create_shrapnel(loc, 12, dir, shrapnel_spread, , cause_data)
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
-
 		qdel(src)
 	else
 		. = ..()

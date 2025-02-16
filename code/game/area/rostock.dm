@@ -242,6 +242,7 @@
 	icon_state = "stairs_lowerdeck"
 	fake_zlevel = 2 // lowerdeck
 	resin_construction_allowed = FALSE
+	requires_power = FALSE
 
 /area/rostock/stair_clone/upper
 	name = "SSV Rostock - Upper Deck Stairs"

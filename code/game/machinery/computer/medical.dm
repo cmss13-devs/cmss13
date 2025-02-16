@@ -24,7 +24,8 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.is_mob_incapacitated()) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
@@ -114,7 +115,8 @@
 					var/bdat = null
 					for(var/obj/structure/machinery/bot/medbot/M in GLOB.machines)
 
-						if(M.z != src.z) continue //only find medibots on the same z-level as the computer
+						if(M.z != src.z)
+							continue //only find medibots on the same z-level as the computer
 						var/turf/bl = get_turf(M)
 						if(bl) //if it can't find a turf for the medibot, then it probably shouldn't be showing up
 							bdat += "[M.name] - <b>\[[bl.x],[bl.y]\]</b> - [M.on ? "Online" : "Offline"]<br>"
@@ -471,7 +473,8 @@
 					var/datum/data/record/record
 					if ((istype(src.active1, /datum/data/record) && GLOB.data_core.general.Find(src.active1)))
 						record = active1
-					if(!record) return
+					if(!record)
+						return
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)
 					var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)

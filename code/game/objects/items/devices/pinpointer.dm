@@ -25,7 +25,8 @@
 		to_chat(usr, SPAN_NOTICE(" You deactivate the pinpointer"))
 
 /obj/item/device/pinpointer/proc/workdisk()
-	if(!active) return
+	if(!active)
+		return
 	if(!the_disk)
 		the_disk = locate()
 		if(!the_disk)

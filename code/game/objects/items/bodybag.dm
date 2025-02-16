@@ -111,7 +111,7 @@
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			AddComponent(/datum/component/label, tmp_label)
 			playsound(src, "paper_writing", 15, TRUE)
@@ -157,6 +157,7 @@
 	if(opened && open_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
 		return
+	user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
 	. = ..()
 
 
@@ -174,8 +175,10 @@
 /obj/structure/closet/bodybag/MouseDrop(over_object, src_location, over_location)
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
-		if(!ishuman(usr)) return
-		if(length(contents)) return 0
+		if(!ishuman(usr))
+			return
+		if(length(contents))
+			return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		var/obj/item/I = new item_path(get_turf(src), src)
 		usr.put_in_hands(I)

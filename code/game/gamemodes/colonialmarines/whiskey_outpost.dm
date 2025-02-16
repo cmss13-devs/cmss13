@@ -298,11 +298,10 @@
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
 		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
-
 		GLOB.round_statistics.log_round_statistics()
+		GLOB.round_statistics.save()
 
-		round_finished = 1
-
+	round_finished = 1
 	calculate_end_statistics()
 
 
@@ -677,7 +676,8 @@
 	return
 
 /obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/T, SD)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	var/list/spawnitems = list()
 	var/obj/structure/closet/crate/crate
 	crate = new /obj/structure/closet/crate/secure/weapon(T)
@@ -782,9 +782,12 @@
 	var/a1 = pick(common)
 	var/a2 = pick(attachment_1)
 	var/a3 = pick(attachment_2)
-	if(a1) new a1(src)
-	if(a2) new a2(src)
-	if(a3) new a3(src)
+	if(a1)
+		new a1(src)
+	if(a2)
+		new a2(src)
+	if(a3)
+		new a3(src)
 	return
 
 /obj/item/storage/box/attachments/update_icon()

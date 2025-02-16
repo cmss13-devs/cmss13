@@ -35,7 +35,8 @@
 			understood = 1
 
 		if(understood)
-			if(!speaker_mask) speaker_mask = speaker.name
+			if(!speaker_mask)
+				speaker_mask = speaker.name
 			var/msg = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span> <span class='message'>[speech_verb], \"<span class='[color]'>[message]</span><span class='message'>\"</span></span></span></i>"
 			to_chat(player, "[msg]")
 

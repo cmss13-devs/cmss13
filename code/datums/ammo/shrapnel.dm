@@ -21,11 +21,35 @@
 		B.update_health(1)
 
 /datum/ammo/bullet/shrapnel/on_hit_mob(mob/living/carbon/xeno, obj/projectile/projectile, mob/user)
-	if(!shrapnel_chance) // no shrapnell , no special effects
-		return
-	if(isxeno(xeno))
-		xeno.apply_effect(4, SLOW) // multiple hits dont stack they just renew the duration
-		xeno.apply_armoured_damage(damage * 0.6, ARMOR_BULLET, BRUTE, , penetration) // xenos have a lot of HP
+    if(!shrapnel_chance) // No shrapnel, no special effects
+        return
+
+    // Check if the shrapnel is from a claymore mine
+    if(!istype(projectile.cause_data?.resolved_source, /obj/item/explosive/mine))
+        return
+
+if (isxeno(xeno))
+    // Define an associative list to map caste types to damage cap percentages
+    var/damage_caps = list(
+        XENO_T0_CASTES = 1.0,  // No cap (100% damage)
+        XENO_T1_CASTES = 0.50, // 50% damage cap
+        XENO_T2_CASTES = 0.65, // 65% damage cap
+        XENO_T3_CASTES = 0.75, // 75% damage cap
+        XENO_T4_CASTES = 0.75   // 75% damage cap
+    )
+
+    // Determine the tier and set the damage cap percentage
+    var/damage_cap_percentage = damage_caps[caste.caste_type] || 1.0 // Default to 100% if caste type is not found
+
+        // Calculate the damage cap based on the tier
+        var/max_allowed_damage = xeno.maxHealth * damage_cap_percentage
+
+		// Apply 60% of the damage, respecting the cap
+		var/reduced_damage = damage * 0.6
+		if (xeno)
+			xeno.apply_armoured_damage(min(reduced_damage, max_allowed_damage), ARMOR_BULLET, BRUTE, penetration)
+		// Apply slow effect for 4 seconds, reducing the target's movement speed
+			xeno.apply_effect(4, SLOW)
 
 /datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
 	. = ..()

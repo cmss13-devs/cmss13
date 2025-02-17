@@ -210,7 +210,7 @@
 		return
 	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
 		return
-	if(caste.caste_type in XENO_T0_CASTES) // Check if the Xenomorph is tier_0
+	if(caste(L, XENO_T0_CASTES)) // Check if the Xenomorph is tier_0
 		return // Do not prime the mine for tier_0 Xenomorphs
 
 	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
@@ -242,7 +242,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	// Check if the Xenomorph is tier_0
-	if(caste.caste_type in XENO_T0_CASTES)
+	if(caste(L, XENO_T0_CASTES))
 		to_chat(M, SPAN_XENONOTICE("You are too weak to trigger this mine."))
 		return XENO_NO_DELAY_ACTION
 

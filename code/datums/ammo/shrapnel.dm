@@ -45,9 +45,7 @@ if (isxeno(xeno))
         var/max_allowed_damage = xeno.maxHealth * damage_cap_percentage
 
 		// Apply 60% of the damage, respecting the cap
-		var/reduced_damage = damage * 0.6
-		if (xeno)
-			xeno.apply_armoured_damage(min(reduced_damage, max_allowed_damage), ARMOR_BULLET, BRUTE, penetration)
+			xeno.apply_armoured_damage(min(damage*0.6, max_allowed_damage), ARMOR_BULLET, BRUTE, penetration)
 		// Apply slow effect for 4 seconds, reducing the target's movement speed
 			xeno.apply_effect(4, SLOW)
 

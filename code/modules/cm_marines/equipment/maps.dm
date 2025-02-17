@@ -146,7 +146,7 @@
 /obj/item/map/navalis
 	name = "\improper Navalis Platform 13 map"
 	desc = "A blueprint of Navalis Platform 13"
-	html_link = "images/9/94/New_Varadero.png"
+	html_link = "images/6/67/Navalis_platform_13_ic.png"
 	color = "cyan"
 
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())

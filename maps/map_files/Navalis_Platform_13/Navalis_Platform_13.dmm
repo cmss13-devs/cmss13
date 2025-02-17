@@ -1508,6 +1508,7 @@
 	invisibility = 101;
 	dir = 8
 	},
+/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/corsat/cargo,
 /area/navalis/indoors/industrial/mining)
 "adQ" = (
@@ -1918,11 +1919,13 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
+/obj/item/stack/sheet/metal/med_large_stack,
 /turf/open/floor/strata/multi_tiles,
 /area/navalis/indoors/logistic/mech_bay)
 "aeR" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
+/obj/item/stack/sheet/plasteel/medium_stack,
 /turf/open/floor/strata/multi_tiles,
 /area/navalis/indoors/logistic/mech_bay)
 "aeS" = (
@@ -15301,7 +15304,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/oob/water)
 "aOo" = (
-/obj/effect/spawner/random/gun/special/midchance,
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/plating,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "aOp" = (
@@ -16501,6 +16504,7 @@
 	pixel_x = 6;
 	pixel_y = -5
 	},
+/obj/effect/spawner/random/gun/shotgun/highchance,
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/indoors/industrial/power)
 "aQI" = (
@@ -17753,6 +17757,53 @@
 /obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/darkred2,
 /area/navalis/indoors/residential/port)
+"aTE" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/spawner/random/gun/rifle/highchance,
+/turf/open/floor/plating/plating_catwalk/prison/dark,
+/area/navalis/indoors/industrial/power)
+"aTF" = (
+/obj/effect/alien/resin/sticky,
+/obj/effect/spawner/random/gun/rifle/midchance,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/xeno_growth)
+"aTG" = (
+/obj/effect/spawner/random/gun/rifle/midchance,
+/obj/item/stack/sheet/plasteel/large_stack,
+/turf/open/floor/corsat/cargo,
+/area/navalis/indoors/industrial/mining)
+"aTH" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100;
+	pixel_y = 6;
+	pixel_x = -4
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100;
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/navalis/outdoors/landing_zone_1)
+"aTI" = (
+/obj/effect/spawner/random/gun/special/midchance,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/xeno_growth/residential)
 "aUq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata,
@@ -31441,8 +31492,7 @@
 	icon_state = "test_square"
 	},
 /obj/structure/closet/crate,
-/obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/hybrisa/tile/green_bigtile/west,
 /area/navalis/indoors/command/tertiary_comms)
 "pBj" = (
@@ -34704,7 +34754,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/item/stack/sheet/plasteel/large_stack,
+/obj/item/stack/sheet/plasteel/med_small_stack,
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/navalis/indoors/command/tertiary_comms)
 "sJO" = (
@@ -45594,7 +45644,7 @@ gaD
 aTz
 aTx
 aTv
-gaD
+aTH
 aTz
 aTx
 aTv
@@ -62184,7 +62234,7 @@ mQE
 aee
 jGz
 dOx
-dNo
+aTG
 aPh
 aPa
 lQa
@@ -64608,7 +64658,7 @@ asq
 asq
 asq
 ari
-ari
+aTI
 ari
 ari
 ari
@@ -65153,7 +65203,7 @@ asq
 aJw
 tww
 tww
-agw
+aTF
 tww
 tww
 ieJ
@@ -66011,7 +66061,7 @@ amG
 qLp
 aQR
 kTd
-aQO
+aTE
 kTd
 aaP
 ahs

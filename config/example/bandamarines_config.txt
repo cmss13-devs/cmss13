@@ -1,0 +1,5 @@
+## Time required for the player to be dead for being eligible to respawning. Deciseconds
+# RESPAWN_TIME 18000
+
+## Is respawn allowed on the server
+# RESPAWN

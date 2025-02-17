@@ -7,6 +7,7 @@
 #include "_singletons/_singletons.dme"
 #include "bump_attacks/_bump_attacks.dme"
 #include "cyrillic_fixes/_cyrillic_fixes.dme"
+#include "respawn/_respawn.dme"
 #include "sounds/_sounds.dme"
 #include "translations/_translations.dme"
 #include "speech_filter/_speech_filter.dme"

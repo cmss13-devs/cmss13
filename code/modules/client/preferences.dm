@@ -2017,7 +2017,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	if(job_title)
 		find_assigned_slot(job_title, is_late_join)
-	if(check_datacore && !(be_random_body && be_random_name))
+	if((check_datacore || is_late_join) && !(be_random_body && be_random_name)) // BANDAMARINES EDIT - Respawn
 		for(var/datum/data/record/record as anything in GLOB.data_core.locked)
 			if(record.fields["name"] == real_name)
 				be_random_body = TRUE

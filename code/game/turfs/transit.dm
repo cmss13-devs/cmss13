@@ -276,6 +276,15 @@
 	shuttle_tag = DROPSHIP_DEVANA
 	dir = SOUTH
 
+/turf/open/space/transit/dropship/midway
+	shuttle_tag = DROPSHIP_MIDWAY
+	dir = SOUTH
+
+
+/turf/open/space/transit/dropship/tripoli
+	shuttle_tag = DROPSHIP_TRIPOLI
+	dir = SOUTH
+
 /turf/open/space/transit/south
 	dir = SOUTH
 

@@ -58,6 +58,7 @@
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
+	icon_state = "bullet_ap"
 
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_8
@@ -209,6 +210,7 @@
 
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
+	icon_state = "bullet_ap"
 
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -232,6 +234,7 @@
 
 /datum/ammo/bullet/rifle/l23/ap
 	name = "8.88mm armor-piercing rifle bullet"
+	icon_state = "bullet_ap"
 
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10

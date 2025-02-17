@@ -42,6 +42,7 @@
 // Used by M4A3 AP and mod88
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
+	icon_state = "bullet_ap"
 
 	damage = 25
 	accuracy = HIT_ACCURACY_TIER_2
@@ -127,6 +128,7 @@
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
 	name = ".50 high-impact armor piercing pistol bullet"
+	icon_state = "bullet_ap"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
 
@@ -185,6 +187,7 @@
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
 	name = "squash-head pistol bullet"
+	icon_state = "bullet_ap"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(0,0,0,0,0,0,0,2)
 

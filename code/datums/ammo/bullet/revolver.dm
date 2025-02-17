@@ -13,6 +13,7 @@
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
+	icon_state = "bullet_ap"
 	damage = 55
 	shrapnel_chance = 0
 	damage_falloff = 0
@@ -61,6 +62,7 @@
 
 /datum/ammo/bullet/revolver/penetrating
 	name = "wall-penetrating revolver bullet"
+	icon_state = "bullet_ap"
 	shrapnel_chance = 0
 
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -144,6 +146,7 @@
 
 /datum/ammo/bullet/revolver/mateba/highimpact/ap
 	name = ".454 heavy high-impact armor piercing revolver bullet"
+	icon_state = "bullet_ap"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
 

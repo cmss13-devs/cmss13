@@ -27,6 +27,7 @@
 
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
+	icon_state = "bullet_ap"
 
 	damage = 26
 	penetration = ARMOR_PENETRATION_TIER_6
@@ -158,6 +159,7 @@
 
 /datum/ammo/bullet/smg/p90/twe_ap
 	name = "armor-piercing submachinegun bullet"
+	icon_state = "bullet_ap"
 
 	damage = 26
 	accurate_range = 5

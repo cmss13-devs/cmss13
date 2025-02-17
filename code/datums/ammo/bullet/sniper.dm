@@ -6,6 +6,7 @@
 
 /datum/ammo/bullet/sniper
 	name = "sniper bullet"
+	icon_state = "bullet_ap"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER

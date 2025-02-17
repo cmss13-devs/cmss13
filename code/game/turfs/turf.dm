@@ -26,8 +26,10 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
-	var/can_bloody = TRUE //Can blood spawn on this turf?
+	///Used by floors to indicate the floor is a tile (otherwise its plating)
+	var/intact_tile = TRUE
+	///Can blood spawn on this turf?
+	var/can_bloody = TRUE
 	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
@@ -48,9 +50,6 @@
 
 	var/turf_flags = NO_FLAGS
 
-	/// Whether we've broken through the ceiling yet
-	var/ceiling_debrised = FALSE
-
 	// Fishing
 	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
 
@@ -65,6 +64,9 @@
 
 	///hybrid lights affecting this turf
 	var/tmp/list/atom/movable/lighting_mask/hybrid_lights_affecting
+
+	/// Is fishing allowed on this turf
+	var/fishing_allowed = FALSE
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -312,7 +314,8 @@
 /turf/proc/inertial_drift(atom/movable/A as mob|obj)
 	if(A.anchored)
 		return
-	if(!(A.last_move_dir)) return
+	if(!(A.last_move_dir))
+		return
 	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
 		var/mob/M = A
 		if(M.Process_Spacemove(1))
@@ -518,7 +521,7 @@
 	return
 
 /turf/proc/ceiling_debris(size = 1) //debris falling in response to airstrikes, etc
-	if(ceiling_debrised)
+	if(turf_flags & TURF_DEBRISED)
 		return
 
 	var/area/A = get_area(src)
@@ -562,7 +565,7 @@
 				for(var/i=1, i<=amount, i++)
 					new /obj/item/stack/sheet/metal(pick(turfs))
 					new /obj/item/ore(pick(turfs))
-	ceiling_debrised = TRUE
+	turf_flags |= TURF_DEBRISED
 
 /turf/proc/ceiling_desc(mob/user)
 
@@ -580,13 +583,13 @@
 		if(CEILING_GLASS)
 			return "The ceiling above is glass. That's not going to stop anything."
 		if(CEILING_METAL)
-			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
+			return "The ceiling above is metal. You can't see through it with a camera from above. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)
-			return "It is underground. A thin cavern roof lies above. Doesn't look like it's going to stop much."
+			return "It is underground. A thin cavern roof lies above. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_BLOCK_CAS)
 			return "It is underground. The cavern roof lies above. Can probably stop most ordnance."
 		if(CEILING_UNDERGROUND_METAL_ALLOW_CAS)
-			return "It is underground. The ceiling above is made of thin metal. Doesn't look like it's going to stop much."
+			return "It is underground. The ceiling above is made of thin metal. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_METAL_BLOCK_CAS)
 			return "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance."
 		if(CEILING_DEEP_UNDERGROUND)
@@ -870,3 +873,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/proc/remove_flag(flag)
+	turf_flags &= ~flag

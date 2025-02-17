@@ -150,7 +150,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	else if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		return
-	else return ..()
+	else
+		return ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/attack_hand(mob/user)
 	if(isSilicon(user))

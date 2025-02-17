@@ -696,7 +696,7 @@
 //Tier 4
 #define XENO_CASTE_KING "King"
 #define XENO_CASTE_QUEEN  "Queen"
-#define XENO_T3_CASTES    list(XENO_CASTE_KING, XENO_CASTE_QUEEN) //King and Queen are the only tier 4 castes. Doesnt make sense why they dont have their own list
+#define XENO_T4_CASTES    list(XENO_CASTE_KING, XENO_CASTE_QUEEN) //King and Queen are the only tier 4 castes. Doesnt make sense why they dont have their own list
 
 //special
 #define XENO_CASTE_PREDALIEN  "Predalien"

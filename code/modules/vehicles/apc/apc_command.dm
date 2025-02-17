@@ -101,7 +101,7 @@
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
+
 		))
 
 /obj/vehicle/multitile/apc/command/remove_seated_verbs(mob/living/M, seat)
@@ -121,8 +121,7 @@
 	else if(seat == VEHICLE_GUNNER)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
-			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,,
 		))
 
 /obj/vehicle/multitile/apc/command/initialize_cameras(change_tag = FALSE)

@@ -75,31 +75,31 @@
 
 /obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/sheet/glass))
-		var/obj/item/stack/sheet/glass/G = W
+		var/obj/item/stack/sheet/glass/glass = W
 		if(uses >= max_uses)
-			to_chat(user, SPAN_WARNING("[src.name] is full."))
+			to_chat(user, SPAN_WARNING("[src] is full."))
 			return
-		else if(G.use(1))
+		else if(glass.use(1))
 			AddUses(5)
-			to_chat(user, SPAN_NOTICE("You insert a piece of glass into the [src.name]. You have [uses] lights remaining."))
+			to_chat(user, SPAN_NOTICE("You insert a piece of glass into the [src]. You have [uses] lights remaining."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))
 
 	if(istype(W, /obj/item/light_bulb))
-		var/obj/item/light_bulb/L = W
-		if(L.status == 0) // LIGHT OKAY
+		var/obj/item/light_bulb/bulb = W
+		if(bulb.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)
-				to_chat(user, SPAN_NOTICE("You insert the [L.name] into the [src.name]. You have [uses] lights remaining."))
+				to_chat(user, SPAN_NOTICE("You insert the [bulb] into the [src]. You have [uses] lights remaining."))
 				user.drop_held_item()
-				qdel(L)
+				qdel(bulb)
 				return
 		else
 			Recycle()
-			to_chat(user, SPAN_NOTICE("You insert the [L.name] into the [src.name] for recycling."))
+			to_chat(user, SPAN_NOTICE("You insert the [bulb] into the [src] for recycling."))
 			user.drop_held_item()
-			qdel(L)
+			qdel(bulb)
 			return
 
 
@@ -118,7 +118,7 @@
 
 // Negative numbers will subtract
 /obj/item/device/lightreplacer/proc/AddUses(amount = 1)
-	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
+	playsound(src, 'sound/machines/click.ogg', 25, 1)
 	uses = min(max(uses + amount, 0), max_uses)
 
 /obj/item/device/lightreplacer/proc/Charge(mob/user)
@@ -131,12 +131,11 @@
 	if(recycle == max_recycle)
 		recycle = 0
 		AddUses(1)
-		playsound(src.loc, 'sound/machines/ding.ogg', 5, 1)
+		playsound(src, 'sound/machines/ding.ogg', 5, 1)
 		return
 	else
-		playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
+		playsound(src, 'sound/machines/click.ogg', 25, 1)
 		recycle += 1
-		return
 
 /obj/item/device/lightreplacer/proc/ReplaceLight(obj/structure/machinery/light/target, mob/living/U)
 

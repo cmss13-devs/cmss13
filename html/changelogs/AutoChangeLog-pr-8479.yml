@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - qol: "stops the economy inflation announcements during red/delta alert"

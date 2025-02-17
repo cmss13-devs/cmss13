@@ -535,8 +535,10 @@
 	else
 		var/dx = abs(A.x - B.x)
 		var/dy = abs(A.y - B.y)
-		if(dx>=dy) dist = (0.934*dx) + (0.427*dy)
-		else dist = (0.427*dx) + (0.934*dy)
+		if(dx>=dy)
+			dist = (0.934*dx) + (0.427*dy)
+		else
+			dist = (0.427*dx) + (0.934*dy)
 
 	return dist
 

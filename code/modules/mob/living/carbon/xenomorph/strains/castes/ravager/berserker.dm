@@ -141,3 +141,213 @@
 		next_slash_buffed = FALSE
 
 	return original_damage
+
+
+
+
+/datum/action/xeno_action/onclick/apprehend/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if (!istype(xeno))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
+	if (istype(behavior))
+		behavior.next_slash_buffed = TRUE
+
+	to_chat(xeno, SPAN_XENODANGER("Our next slash will slow!"))
+
+	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
+
+	xeno.speed_modifier -= speed_buff
+	xeno.recalculate_speed()
+
+	addtimer(CALLBACK(src, PROC_REF(apprehend_off)), buff_duration, TIMER_UNIQUE)
+	xeno.add_filter("apprehend_on", 1, list("type" = "outline", "color" = "#522020ff", "size" = 1)) // Dark red because the berserker is scary in this state
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/apprehend/proc/apprehend_off()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.remove_filter("apprehend_on")
+	if (istype(xeno))
+		xeno.speed_modifier += speed_buff
+		xeno.recalculate_speed()
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our speed wane!"))
+
+/datum/action/xeno_action/onclick/apprehend/proc/unbuff_slash()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
+	if (istype(behavior))
+		// In case slash has already landed
+		if (!behavior.next_slash_buffed)
+			return
+		behavior.next_slash_buffed = FALSE
+
+	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer slow enemies!"))
+
+
+/datum/action/xeno_action/activable/clothesline/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state())
+		return
+
+	if (!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
+		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
+		return
+
+	if (!xeno.Adjacent(affected_atom))
+		to_chat(xeno, SPAN_XENOWARNING("We must be adjacent to our target!"))
+		return
+
+	var/mob/living/carbon/carbon = affected_atom
+	var/heal_amount = base_heal
+	var/fling_distance = fling_dist_base
+	var/debilitate = TRUE // Do we apply neg. status effects to the target?
+
+	if (carbon.mob_size >= MOB_SIZE_BIG)
+		to_chat(xeno, SPAN_XENOWARNING("We creature is too massive to target"))
+		return
+
+	if (carbon.stat == DEAD)
+		return
+
+	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
+	if (behavior.rage >= 2)
+		behavior.decrement_rage()
+		heal_amount += additional_healing_enraged
+	else
+		to_chat(xeno, SPAN_XENOWARNING("Our rejuvenation was weaker without rage!"))
+		debilitate = FALSE
+		fling_distance--
+
+	// Damage
+	var/obj/limb/head/head = carbon.get_limb("head")
+	if(ishuman(carbon) && head)
+		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+	else
+		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE) // just for consistency
+
+	// Heal
+	if(!xeno.on_fire)
+		xeno.gain_health(heal_amount)
+
+	// Fling
+	var/facing = get_dir(xeno, carbon)
+	var/turf/turf = get_turf(xeno)
+	var/turf/temp = turf
+
+	for (var/step in 0 to fling_distance-1)
+		temp = get_step(turf, facing)
+		if (!temp)
+			break
+		turf = temp
+
+	carbon.throw_atom(turf, fling_distance, SPEED_VERY_FAST, xeno, TRUE)
+
+	// Negative stat effects
+	if (debilitate)
+		carbon.AdjustDaze(daze_amount)
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/activable/eviscerate/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!action_cooldown_check() || xeno.action_busy)
+		return
+
+	if(!xeno.check_state())
+		return
+
+	var/damage = base_damage
+	var/range = 1
+	var/windup_reduction = 0
+	var/lifesteal_per_marine = 50
+	var/max_lifesteal = 250
+	var/lifesteal_range =  1
+
+	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
+	if (behavior.rage == 0)
+		to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
+		return
+	damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+	range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+	windup_reduction = windup_reduction_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+	behavior.decrement_rage(behavior.rage)
+
+	apply_cooldown()
+
+	if (range > 1)
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
+	else
+		xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a strike!"))
+
+	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
+	xeno.anchored = TRUE
+
+	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		xeno.emote("roar")
+		xeno.spin_circle()
+
+		for (var/mob/living/carbon/targets_to_hit in orange(xeno, range))
+			if(!isxeno_human(targets_to_hit) || xeno.can_not_harm(targets_to_hit))
+				continue
+
+			if (targets_to_hit.stat == DEAD)
+				continue
+
+			if (HAS_TRAIT(targets_to_hit, TRAIT_NESTED))
+				continue
+
+			if(!check_clear_path_to_target(xeno, targets_to_hit))
+				continue
+
+			if (range > 1)
+				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [targets_to_hit]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [targets_to_hit]!"))
+				targets_to_hit.spawn_gibs()
+				playsound(get_turf(targets_to_hit), 'sound/effects/gibbed.ogg', 30, 1)
+				targets_to_hit.apply_effect(get_xeno_stun_duration(targets_to_hit, 1), WEAKEN)
+			else
+				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
+				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
+
+			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+
+	var/valid_count = 0
+	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)
+
+	for(var/mob/mob as anything in mobs_in_range)
+		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
+			continue
+
+		if(xeno.can_not_harm(mob))
+			continue
+
+		valid_count++
+
+	// This is the heal
+	if(!xeno.on_fire)
+		xeno.gain_health(clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+
+	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
+	xeno.anchored = FALSE
+
+	return ..()

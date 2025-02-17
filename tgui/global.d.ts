@@ -168,6 +168,12 @@ type ByondType = {
    * The external URL for the IndexedDB IFrame to use as the origin
    */
   storageCdn: string;
+
+  /**
+   * If this tgui window exists in the IE11 trident browser.
+   * TODO: Remove with 516
+   */
+  TRIDENT: boolean;
 };
 
 /**

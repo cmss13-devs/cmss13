@@ -43,6 +43,13 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 
 	))
 
+GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
+	list("WEAPONS SPECIALIST SETS (CHOOSE 1)", 0, null, null, null),
+	list("Heavy Armor Set", 0, /obj/item/storage/box/spec/B18, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
+))
+
+
+
 /obj/structure/machinery/cm_vending/gear/spec
 	name = "\improper ColMarTech Squad Weapons Specialist Gear Rack"
 	desc = "An automated gear rack for Squad Weapons Specialists."
@@ -54,6 +61,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
 /obj/structure/machinery/cm_vending/gear/spec/get_listed_products(mob/user)
+	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
+		return GLOB.cm_vending_gear_spec_heavy
 	return GLOB.cm_vending_gear_spec
 
 /obj/structure/machinery/cm_vending/gear/spec/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override, stack_amount)
@@ -104,6 +113,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),

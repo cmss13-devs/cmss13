@@ -1,8 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - balance: "Mortar range is now limited."
-  - balance: "Removed free mortar shells from ASRS."
-  - balance: "Lowered the initial costs of mortar shells for requisitions."
-  - balance: "Incendiary mortar shells are now purely incendiary."
-  - balance: "Fragmentation shell shrapnel now deals bonus damage to structures."

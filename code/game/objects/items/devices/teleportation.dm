@@ -153,8 +153,10 @@
 				L["[com.id] (Inactive)"] = com.locked
 	var/list/turfs = list( )
 	for(var/turf/T as anything in ORANGE_TURFS(10, src))
-		if(T.x>world.maxx-8 || T.x<8) continue //putting them at the edge is dumb
-		if(T.y>world.maxy-8 || T.y<8) continue
+		if(T.x>world.maxx-8 || T.x<8)
+			continue //putting them at the edge is dumb
+		if(T.y>world.maxy-8 || T.y<8)
+			continue
 		turfs += T
 	if(length(turfs))
 		L["None (Dangerous)"] = pick(turfs)

@@ -32,7 +32,8 @@
 
 /obj/structure/reagent_dispensers/get_examine_text(mob/user)
 	. = ..()
-	if(get_dist(user, src) > 2 && user != loc) return
+	if(get_dist(user, src) > 2 && user != loc)
+		return
 	. += SPAN_NOTICE("It contains:")
 	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -287,7 +288,8 @@
 
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/Proj)
-	if(exploding) return 0
+	if(exploding)
+		return 0
 	if(ismob(Proj.firer))
 		source_mob = WEAKREF(Proj.firer)
 
@@ -301,7 +303,8 @@
 	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/ex_act(severity)
-	if(exploding) return
+	if(exploding)
+		return
 
 	if(severity >= EXPLOSION_THRESHOLD_HIGH)
 		exploding = TRUE

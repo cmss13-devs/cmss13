@@ -446,7 +446,8 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.is_mob_incapacitated()) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
@@ -519,7 +520,8 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.is_mob_incapacitated()) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
@@ -1058,8 +1060,10 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 			)
 			var/squad_number = 70
 			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")
-				if(!squad_name) squad_number = 120
-				else squad_name += " "
+				if(!squad_name)
+					squad_number = 120
+				else
+					squad_name += " "
 				jobs += list(
 					"[squad_name][JOB_SQUAD_LEADER]" = (squad_number),
 					"[squad_name][JOB_SQUAD_TEAM_LEADER]" = (squad_number + 1),

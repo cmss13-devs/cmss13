@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	var/contents_food
 	var/no_packet_label = FALSE
-	var/food_list = list()
+	var/list/food_list = list()
 
 /obj/item/mre_food_packet/Initialize(mapload, ...)
 	. = ..()
@@ -618,6 +618,7 @@
 
 /obj/item/mre_food_packet/wy
 	icon = 'icons/obj/items/food/mre_food/wy.dmi'
+	icon_state = null
 
 /obj/item/reagent_container/food/snacks/mre_food/wy
 	icon = 'icons/obj/items/food/mre_food/wy.dmi'
@@ -821,6 +822,7 @@
 
 /obj/item/mre_food_packet/twe
 	icon = 'icons/obj/items/food/mre_food/twe.dmi'
+	icon_state = null
 
 /obj/item/reagent_container/food/snacks/mre_food/twe
 	icon = 'icons/obj/items/food/mre_food/twe.dmi'
@@ -1226,6 +1228,7 @@
 
 /obj/item/mre_food_packet/upp
 	icon = 'icons/obj/items/food/mre_food/upp.dmi'
+	icon_state = null
 
 /obj/item/reagent_container/food/snacks/mre_food/upp
 	icon = 'icons/obj/items/food/mre_food/upp.dmi'

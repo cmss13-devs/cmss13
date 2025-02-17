@@ -25,7 +25,7 @@
         return
 
     // Check if the shrapnel is from a claymore mine
-    if(!istype(projectile.cause_data?.resolved_source, /obj/item/explosive/mine))
+    if(!istype(/obj/item/explosive/mine))
         return
 
 if (isxeno(xeno))
@@ -37,17 +37,14 @@ if (isxeno(xeno))
         XENO_T3_CASTES = 0.75, // 75% damage cap
         XENO_T4_CASTES = 0.75   // 75% damage cap
     )
-
     // Determine the tier and set the damage cap percentage
     var/damage_cap_percentage = damage_caps[caste.caste_type] || 1.0 // Default to 100% if caste type is not found
-
-        // Calculate the damage cap based on the tier
-        var/max_allowed_damage = xeno.maxHealth * damage_cap_percentage
-
-		// Apply 60% of the damage, respecting the cap
-			xeno.apply_armoured_damage(min(damage*0.6, max_allowed_damage), ARMOR_BULLET, BRUTE, penetration)
-		// Apply slow effect for 4 seconds, reducing the target's movement speed
-			xeno.apply_effect(4, SLOW)
+    // Calculate the damage cap based on the tier
+    var/max_allowed_damage = xeno.maxHealth * damage_cap_percentage
+	// Apply 60% of the damage, respecting the cap
+	xeno.apply_armoured_damage(min(damage*0.6, max_allowed_damage), ARMOR_BULLET, BRUTE, penetration)
+	// Apply slow effect for 4 seconds, reducing the target's movement speed
+	xeno.apply_effect(4, SLOW)
 
 /datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
 	. = ..()

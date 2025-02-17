@@ -267,7 +267,8 @@
 
 /obj/structure/machinery/recharge_station/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		var/obj/item/grab/G = W
 		if(!ismob(G.grabbed_thing))
 			return
@@ -284,7 +285,8 @@
 			if(occupant)
 				to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 				return
-			if(!G || !G.grabbed_thing) return
+			if(!G || !G.grabbed_thing)
+				return
 			var/mob/M = G.grabbed_thing
 			user.stop_pulling()
 			move_mob_inside(M)

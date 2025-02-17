@@ -21,7 +21,8 @@ GLOBAL_LIST_EMPTY(cached_icons)
 	var/paint_type = ""
 
 /obj/item/reagent_container/glass/paint/afterattack(turf/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target) && reagents.total_volume > 5)
 		for(var/mob/O in viewers(user))
 			O.show_message(SPAN_DANGER("\The [target] has been splashed with something by [user]!"), SHOW_MESSAGE_VISIBLE)

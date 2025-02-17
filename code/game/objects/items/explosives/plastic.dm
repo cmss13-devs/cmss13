@@ -180,6 +180,9 @@
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
 		return FALSE
 
+	if(target.explo_proof)
+		return FALSE
+
 	if(istype(target, /obj/structure/closet))
 		var/obj/structure/closet/C = target
 		if(C.opened)

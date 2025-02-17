@@ -1,0 +1,5 @@
+author: "Drathek Zenith"
+delete-after: True
+changes:
+  - rscadd: "Colony lights and traffic lights can be exploded into a stump now"
+  - imageadd: "Lightpost stumps by Zenith"

@@ -214,7 +214,10 @@
 	if(!istype(M) || M.is_mob_incapacitated(TRUE))
 		return XENO_NO_DELAY_ACTION
 
-	if(!isfriendly(M))
+	if(M.banished)
+		return
+
+	if(M.hivenumber != src.hivenumber)
 		if(M.mob_size < MOB_SIZE_BIG)
 			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION

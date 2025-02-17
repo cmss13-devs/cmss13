@@ -67,6 +67,7 @@
 		list("Brown Webbing Vest", floor(scale * 2), /obj/item/clothing/accessory/storage/black_vest/brown_vest, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", floor(scale * 1.5), /obj/item/clothing/accessory/storage/holster, VENDOR_ITEM_REGULAR),
 		list("Webbing", floor(scale * 5), /obj/item/clothing/accessory/storage/webbing, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", floor(scale * 5), /obj/item/clothing/accessory/storage/webbing/black, VENDOR_ITEM_REGULAR),
 		list("Knife Webbing", floor(scale * 1), /obj/item/clothing/accessory/storage/knifeharness, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", floor(scale * 2), /obj/item/clothing/accessory/storage/droppouch, VENDOR_ITEM_REGULAR),
 		list("External Webbing", floor(scale * 5), /obj/item/clothing/suit/storage/webbing, VENDOR_ITEM_REGULAR),
@@ -462,6 +463,8 @@
 		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
 		list("Marine Brown Combat Boots", 5, /obj/item/clothing/shoes/marine/brown, VENDOR_ITEM_REGULAR),
 		list("Marine Jungle Combat Boots", 5, /obj/item/clothing/shoes/marine/jungle, VENDOR_ITEM_REGULAR),
+		list("Marine Grey Combat Boots", 5, /obj/item/clothing/shoes/marine/grey, VENDOR_ITEM_REGULAR),
+		list("Marine Urban Combat Boots", 5, /obj/item/clothing/shoes/marine/urban, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACKS", -1, null, null),
 		list("Lightweight IMP Backpack", 20, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -489,6 +492,7 @@
 		list("Marine Combat Gloves", 40, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
 		list("Marine Black Combat Gloves", 40, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
 		list("Marine Brown Combat Gloves", 20, /obj/item/clothing/gloves/marine/brown, VENDOR_ITEM_REGULAR),
+		list("Marine Grey Combat Gloves", 20, /obj/item/clothing/gloves/marine/grey, VENDOR_ITEM_REGULAR),
 
 		list("RADIO", -1, null, null),
 		list("Alpha Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/alpha, VENDOR_ITEM_REGULAR),

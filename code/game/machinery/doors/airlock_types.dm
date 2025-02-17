@@ -2,45 +2,44 @@
 /obj/structure/machinery/door/airlock/secure/colony
 	name = "\improper Secure Airlock"
 	icon = 'icons/obj/structures/doors/personaldoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
+	assembly_type = /obj/structure/airlock_assembly
 	openspeed = 4
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/command/colony
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/comdoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/security/colony
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/secdoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_sec
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_SECURITY)
 
 /obj/structure/machinery/door/airlock/engineering/colony
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/structures/doors/engidoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_eng
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/medical/colony
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_med
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 
 /obj/structure/machinery/door/airlock/maintenance/colony
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/structures/doors/maintdoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_mai
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/external/colony
 	name = "\improper External Airlock"
 	icon = 'icons/obj/structures/doors/Doorext.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_ext
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/glass/colony
@@ -60,28 +59,28 @@
 	name = "\improper Vault"
 	icon = 'icons/obj/structures/doors/vault.dmi'
 	opacity = TRUE
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_highsecurity //Until somebody makes better sprites.
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_LEADERSHIP)
 
 /obj/structure/machinery/door/airlock/freezer/colony
 	name = "\improper Freezer Airlock"
 	icon = 'icons/obj/structures/doors/Doorfreezer.dmi'
 	opacity = TRUE
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_fre
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/hatch/colony
 	name = "\improper Airtight Hatch"
 	icon = 'icons/obj/structures/doors/Doorhatchele.dmi'
 	opacity = TRUE
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_hatch
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/glass_command/colony
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/Doorcomglass.dmi'
 	opacity = FALSE
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
+	assembly_type = /obj/structure/airlock_assembly
 	glass = 1
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
@@ -89,7 +88,7 @@
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/structures/doors/engidoor_glass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_eng
+	assembly_type = /obj/structure/airlock_assembly
 	glass = 1
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
@@ -97,7 +96,7 @@
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/secdoor_glass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_sec
+	assembly_type = /obj/structure/airlock_assembly
 	glass = 1
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
 
@@ -105,38 +104,38 @@
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/medidoor_glass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_med
+	assembly_type = /obj/structure/airlock_assembly
 	glass = 1
 	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND)
 
 /obj/structure/machinery/door/airlock/mining/colony
 	name = "\improper Mining Airlock"
 	icon = 'icons/obj/structures/doors/Doormining.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_LOGISTICS)
 
 /obj/structure/machinery/door/airlock/marine/colony
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/door_marines.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
+	assembly_type = /obj/structure/airlock_assembly
 
 /obj/structure/machinery/door/airlock/atmos/colony
 	name = "\improper Atmospherics Airlock"
 	icon = 'icons/obj/structures/doors/engidoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_atmo
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /obj/structure/machinery/door/airlock/research/colony
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_research
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/glass_research/colony
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor_glass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_research
+	assembly_type = /obj/structure/airlock_assembly
 	glass = 1
 	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
@@ -144,7 +143,7 @@
 	name = "\improper Mining Airlock"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
+	assembly_type = /obj/structure/airlock_assembly
 	glass = 1
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_LOGISTICS)
 
@@ -152,7 +151,7 @@
 	name = "\improper Atmospherics Airlock"
 	icon = 'icons/obj/structures/doors/engidoor.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_atmo
+	assembly_type = /obj/structure/airlock_assembly
 	glass = 1
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
@@ -212,21 +211,21 @@
 /obj/structure/machinery/door/airlock/science/colony
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_science
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_RESEARCH)
 
 /obj/structure/machinery/door/airlock/glass_science/colony
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor_glass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_science
+	assembly_type = /obj/structure/airlock_assembly
 	glass = 1
 	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_RESEARCH)
 
 /obj/structure/machinery/door/airlock/highsecurity/colony
 	name = "\improper High Tech Security Airlock"
 	icon = 'icons/obj/structures/doors/hightechsecurity.dmi'
-	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_highsecurity
+	assembly_type = /obj/structure/airlock_assembly
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_SECURITY, ACCESS_WY_LEADERSHIP)
 
 

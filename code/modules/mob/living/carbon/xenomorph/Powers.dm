@@ -189,6 +189,9 @@
 /mob/living/carbon/xenomorph/proc/make_marker(turf/target_turf)
 	if(!target_turf)
 		return FALSE
+	if(istype(target_turf, /turf/open/space/transit))
+		to_chat(src, SPAN_NOTICE("What would that achieve?!"))
+		return
 	var/found_weeds = FALSE
 	if(!selected_mark)
 		to_chat(src, SPAN_NOTICE("Прежде чем сделать метку, нужно придать ей смысл."))

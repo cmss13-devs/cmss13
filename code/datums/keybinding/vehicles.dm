@@ -24,7 +24,7 @@
 	. = ..()
 	if(.)
 		return
-	var/obj/vehicle/multitile/vehicle_get = usr.interactee
+	var/obj/vehicle/multitile/vehicle_get = user.mob.interactee
 	vehicle_get.toggle_door_lock()
 	return TRUE
 
@@ -42,7 +42,7 @@
 	. = ..()
 	if(.)
 		return
-	var/obj/vehicle/multitile/vehicle_user = usr.interactee
+	var/obj/vehicle/multitile/vehicle_user = user.mob.interactee
 	vehicle_user.get_status_info()
 	return TRUE
 
@@ -60,7 +60,7 @@
 	. = ..()
 	if(.)
 		return
-	var/obj/vehicle/multitile/vehicle_user = usr.interactee
+	var/obj/vehicle/multitile/vehicle_user = user.mob.interactee
 	vehicle_user.cycle_hardpoint()
 
 /datum/keybinding/vehicles/activate_horn
@@ -76,7 +76,7 @@
 	. = ..()
 	if(.)
 		return
-	var/obj/vehicle/multitile/vehicle_user = usr.interactee
+	var/obj/vehicle/multitile/vehicle_user = user.mob.interactee
 	vehicle_user.activate_horn()
 	return TRUE
 
@@ -95,6 +95,6 @@
 	. = ..()
 	if(.)
 		return
-	var/obj/vehicle/multitile/vehicle_user = usr.interactee
+	var/obj/vehicle/multitile/vehicle_user = user.mob.interactee
 	vehicle_user.reload_firing_port_weapon()
 	return TRUE

@@ -20,7 +20,7 @@
 		B.health -= rand(5, 10)
 		B.update_health(1)
 
-/datum/ammo/bullet/shrapnel/on_hit_mob(mob/living/carbon/xeno, obj/projectile/projectile, mob/user)
+/datum/ammo/bullet/shrapnel/on_hit_mob(mob/living/carbon/xeno, obj/projectile/projectile, mob/user, mob/caste_type)
     if(!shrapnel_chance) // No shrapnel, no special effects
         return
 
@@ -30,13 +30,7 @@
 
 if (isxeno(xeno))
     // Define an associative list to map caste types to damage cap percentages
-    var/damage_caps = list(
-        XENO_T0_CASTES = 1.0,  // No cap (100% damage)
-        XENO_T1_CASTES = 0.50, // 50% damage cap
-        XENO_T2_CASTES = 0.65, // 65% damage cap
-        XENO_T3_CASTES = 0.75, // 75% damage cap
-        XENO_T4_CASTES = 0.75   // 75% damage cap
-    )
+    var/damage_caps = list(XENO_T1_CASTES = 0.50, XENO_T2_CASTES = 0.65, XENO_T3_CASTES = 0.75, XENO_T4_CASTES = 0.75)
     // Determine the tier and set the damage cap percentage
     var/damage_cap_percentage = damage_caps[caste.caste_type] || 1.0 // Default to 100% if caste type is not found
     // Calculate the damage cap based on the tier

@@ -13,7 +13,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "ab" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/mre_food/twe_side/nigirisushi{
+/obj/item/reagent_container/food/snacks/mre_food/twe/side/nigirisushi{
 	pixel_y = 5;
 	pixel_x = -12
 	},

@@ -315,7 +315,7 @@
 			switch(params["type"])
 				if("glass")
 					new_container = new /obj/item/reagent_container/glass/bottle()
-					new_container.name = "[name] Bottle"
+					new_container.name = "[name] bottle"
 					new_container.icon_state = "bottle-[bottlesprite]"
 					reagents.trans_to(new_container, 60)
 				if("vial")

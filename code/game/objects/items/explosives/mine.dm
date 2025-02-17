@@ -17,7 +17,7 @@
 	antigrief_protection = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
 	max_container_volume = 120
-	reaction_limits = list( "max_ex_power" = 100, "base_ex_falloff" = 80, "max_ex_shards" = 25,
+	reaction_limits = list( "max_ex_power" = 100, "base_ex_falloff" = 80, "max_ex_shards" = 40,
 							"max_fire_rad" = 4, "max_fire_int" = 20, "max_fire_dur" = 15,
 							"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
@@ -210,6 +210,9 @@
 		return
 	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
 		return
+	if(caste.caste_type in XENO_T0_CASTES) // Check if the Xenomorph is tier_0
+		return // Do not prime the mine for tier_0 Xenomorphs
+
 	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
 	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
 	SPAN_DANGER("You hear a click."))
@@ -235,7 +238,12 @@
 
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
-	if(triggered) //Mine is already set to go off
+	if(triggered) // Mine is already set to go off
+		return XENO_NO_DELAY_ACTION
+
+	// Check if the Xenomorph is tier_0
+	if(caste.caste_type in XENO_T0_CASTES)
+		to_chat(M, SPAN_XENONOTICE("You are too weak to trigger this mine."))
 		return XENO_NO_DELAY_ACTION
 
 	if(M.a_intent == INTENT_HELP)
@@ -247,7 +255,7 @@
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
 
-	//We move the tripwire randomly in either of the four cardinal directions
+	// We move the tripwire randomly in either of the four cardinal directions
 	triggered = TRUE
 	if(tripwire)
 		var/direction = pick(GLOB.cardinals)

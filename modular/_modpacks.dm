@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(modpacks)
 		return
 
 	if(length(SSmodpacks.loaded_modpacks))
-		. = "<hr><br><center><b><font size = 3>Список модификаций</font></b></center><br><hr><br>"
+		. = "<meta charset='UTF-8'><hr><br><center><b><font size = 3>Список модификаций</font></b></center><br><hr><br>"
 		for(var/datum/modpack/M as anything in SSmodpacks.loaded_modpacks)
 			if(M.name)
 				. += "<div class = 'statusDisplay'>"

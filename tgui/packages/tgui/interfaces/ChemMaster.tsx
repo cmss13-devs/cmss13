@@ -20,6 +20,7 @@ type PillBottleType = {
   max_size: number;
   label?: string;
   icon_state: string;
+  isNeedsToBeFilled: boolean;
 };
 
 type ChemMasterData = {
@@ -235,7 +236,7 @@ const PillBottle = (props: { readonly setPicker: (_) => void }) => {
   return (
     <Stack>
       <Stack.Item>
-        <Box>Pill Bottles:</Box>
+        <Box>Pill Bottle{pill_bottles.length > 1 ? 's' : ''}:</Box>
       </Stack.Item>
       <Stack.Item grow>
         {pill_bottles.length ? (
@@ -243,6 +244,22 @@ const PillBottle = (props: { readonly setPicker: (_) => void }) => {
             <Stack key={index} justify="space-between">
               <Stack.Item>
                 <Stack>
+                  {pill_bottles.length > 1 && (
+                    <Stack.Item>
+                      <Button.Checkbox
+                        width="100%"
+                        checked={pill_bottle.isNeedsToBeFilled}
+                        onClick={() =>
+                          act('check_pill_bottle', {
+                            bottleIndex: index,
+                            value: !pill_bottle.isNeedsToBeFilled,
+                          })
+                        }
+                      >
+                        Fill bottle
+                      </Button.Checkbox>
+                    </Stack.Item>
+                  )}
                   <Stack.Item>
                     <Box>
                       {pill_bottle.size} / {pill_bottle.max_size}

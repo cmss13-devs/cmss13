@@ -14,6 +14,7 @@
 	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
 	var/list/loaded_pill_bottles = list()
+	var/list/loaded_pill_bottles_to_fill = list()
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
@@ -98,6 +99,7 @@
 			bottle.icon_state = main_bottle.icon_state
 
 		loaded_pill_bottles += bottle
+		loaded_pill_bottles_to_fill += bottle
 		user.drop_inv_item_to_loc(bottle, src)
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		SStgui.update_uis(src)
@@ -133,7 +135,8 @@
 					"size" = length(bottle.contents),
 					"max_size" = bottle.max_storage_space,
 					"label" = label ? label.label_name : null,
-					"icon_state" = bottle.icon_state
+					"icon_state" = bottle.icon_state,
+					"isNeedsToBeFilled" = LAZYFIND(loaded_pill_bottles_to_fill, bottle) > 0
 				)))
 
 	.["beaker"] = null
@@ -203,6 +206,8 @@
 			if(!user.put_in_hands(loaded_pill_bottles[bottle_index]))
 				bottle.forceMove(loc)
 
+			if(LAZYFIND(loaded_pill_bottles_to_fill, bottle) > 0)
+				loaded_pill_bottles_to_fill -= bottle
 			loaded_pill_bottles -= bottle
 
 			return TRUE
@@ -308,10 +313,10 @@
 
 				reagents_in_pill += contained_reagent.name
 
-			var/amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles), 0, 60)
+			var/amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
 
 			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create]) (REAGENTS: [english_list(reagents_in_pill)]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles)
+			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
 				for(var/iterator in 1 to to_create)
 					var/obj/item/reagent_container/pill/creating_pill = new(loc)
 					creating_pill.pill_desc = "A custom pill."
@@ -400,12 +405,21 @@
 				return
 
 			connected.add_local_item(loaded_pill_bottles[bottle_index])
+			if(LAZYFIND(loaded_pill_bottles_to_fill, loaded_pill_bottles[bottle_index]) > 0)
+				loaded_pill_bottles_to_fill -= loaded_pill_bottles[bottle_index]
 			loaded_pill_bottles -= loaded_pill_bottles[bottle_index]
 			return TRUE
 
 		if("connect")
 			connect_smartfridge()
 			return TRUE
+		if("check_pill_bottle")
+			if(params["bottleIndex"] + 1 > length(loaded_pill_bottles))
+				return FALSE
+			if(params["value"])
+				loaded_pill_bottles_to_fill += loaded_pill_bottles[params["bottleIndex"] + 1]
+			else if (LAZYFIND(loaded_pill_bottles_to_fill, loaded_pill_bottles[params["bottleIndex"] + 1]) != 0)
+				loaded_pill_bottles_to_fill -= loaded_pill_bottles[params["bottleIndex"] + 1]
 
 
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)

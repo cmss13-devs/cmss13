@@ -488,12 +488,48 @@
 /obj/structure/window/reinforced/toughened,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
+"abl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig 2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
+"abm" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig 1"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
 "abn" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_p)
+"abo" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig Perma"
+	},
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/perma)
+"abp" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Interrogation"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/interrogation)
 "abs" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/north1)
@@ -20660,6 +20696,9 @@
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "euV" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC"
+	},
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/command/cic)
 "euW" = (
@@ -36253,6 +36292,9 @@
 	phone_id = "Commanding Officer's Office";
 	pixel_x = 16;
 	pixel_y = 8
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CO Office"
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -53714,6 +53756,10 @@
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced/black,
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC Conf";
+	layer = 4
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
 "sct" = (
@@ -77731,7 +77777,7 @@ naB
 naB
 naB
 naB
-naB
+abo
 dcy
 qPD
 qPD
@@ -78534,7 +78580,7 @@ xkc
 xyZ
 hvd
 vGn
-ehl
+abp
 ehl
 uXu
 cQG
@@ -79158,7 +79204,7 @@ oRk
 oRk
 oRk
 utZ
-cMl
+abl
 hTt
 kMH
 tUx
@@ -81391,7 +81437,7 @@ ptq
 oRk
 eNR
 bju
-cMl
+abm
 dEG
 xkd
 uvY

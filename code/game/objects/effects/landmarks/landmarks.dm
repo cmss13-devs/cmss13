@@ -617,7 +617,7 @@
 	icon_state = "transformer"
 
 /obj/effect/landmark/transformer/proc/spawn_transformer()
-	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer/transformer = new /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer(loc)
+	new /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/transformer(loc)
 	qdel(src)
 
 /obj/effect/landmark/transformer/Initialize(mapload, ...)

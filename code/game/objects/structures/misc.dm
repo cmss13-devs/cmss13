@@ -316,7 +316,6 @@
 	icon_state = "orebox0"
 	density = TRUE
 	anchored = FALSE
-	unslashable = FALSE
 
 /obj/structure/ore_box/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

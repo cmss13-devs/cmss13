@@ -105,6 +105,8 @@
 	if(owner)
 		forceMove(owner)
 
+	ru_names_rename(ru_names_toml(display_name, override_base = name)) // BANDAMARINES EDIT
+
 /obj/limb/Destroy()
 	if(parent)
 		parent.children -= src
@@ -1008,7 +1010,7 @@ This function completely restores a damaged organ to perfect condition.
 ///Returns a description of active surgeries.
 /obj/limb/proc/get_active_limb_surgeries()
 	if(owner.active_surgeries[name])
-		return "an incomplete surgical operation"
+		return "незавершённой хирургической операции"
 
 /obj/limb/proc/release_restraints()
 	if(!owner)

@@ -22781,6 +22781,530 @@ accusative = "юго-запад"
 instrumental = "юго-западом"
 prepositional = "юго-западе"
 
+#MARK: Wounds
+
+["wound"]
+nominative = "рана"
+gender = "female"
+
+["ugly ripped cut"]
+nominative = "уродливый рваный порез"
+gender = "male"
+
+["ripped cut"]
+nominative = "рваный порез"
+gender = "male"
+
+["cut"]
+nominative = "порез"
+gender = "male"
+
+["healing cut"]
+nominative = "заживающий порез"
+gender = "male"
+
+["small scab"]
+nominative = "маленькая короста"
+gender = "female"
+
+["ugly deep ripped cut"]
+nominative = "уродливый глубокий рваный порез"
+gender = "male"
+
+["deep ripped cut"]
+nominative = "глубокий рваный порез"
+gender = "male"
+
+["deep cut"]
+nominative = "глубокий порез"
+gender = "male"
+
+["clotted cut"]
+nominative = "свернувшийся порез"
+gender = "male"
+
+["scab"]
+nominative = "короста"
+gender = "female"
+
+["fresh skin"]
+nominative = "свежая кожа"
+gender = "female"
+
+["ugly ripped flesh wound"]
+nominative = "уродливая рваная рана"
+gender = "female"
+
+["ugly flesh wound"]
+nominative = "уродливая рана"
+gender = "female"
+
+["flesh wound"]
+nominative = "рана"
+gender = "female"
+
+["blood soaked clot"]
+nominative = "пропитанный кровью сгусток"
+gender = "male"
+
+["large scab"]
+nominative = "большая короста"
+gender = "female"
+
+["gaping wound"]
+nominative = "зияющая рана"
+gender = "female"
+
+["large blood soaked clot"]
+nominative = "большой пропитанный кровью сгусток"
+gender = "male"
+
+["large clot"]
+nominative = "большой сгусток"
+gender = "male"
+
+["small angry scar"]
+nominative = "маленький красный шрам"
+gender = "male"
+
+["small straight scar"]
+nominative = "маленький прямой шрам"
+gender = "male"
+
+["big gaping wound"]
+nominative = "большая зияющая рана"
+gender = "female"
+
+["healing gaping wound"]
+nominative = "заживающая зияющая рана"
+gender = "female"
+
+["large angry scar"]
+nominative = "большой красный шрам"
+gender = "male"
+
+["large straight scar"]
+nominative = "большой прямой шрам"
+gender = "male"
+
+["massive wound"]
+nominative = "массивная рана"
+gender = "female"
+
+["massive healing wound"]
+nominative = "массивная заживающая рана"
+gender = "female"
+
+["massive angry scar"]
+nominative = "массивный красный шрам"
+gender = "male"
+
+["massive jagged scar"]
+nominative = "массивный неровный шрам"
+gender = "male"
+
+["monumental bruise"]
+nominative = "монументальный синяк"
+gender = "male"
+
+["huge bruise"]
+nominative = "огромный синяк"
+gender = "male"
+
+["large bruise"]
+nominative = "большой синяк"
+gender = "male"
+
+["moderate bruise"]
+nominative = "умеренный синяк"
+gender = "male"
+
+["small bruise"]
+nominative = "маленький синяк"
+gender = "male"
+
+["tiny bruise"]
+nominative = "крошечный синяк"
+gender = "male"
+
+["ripped burn"]
+nominative = "рваный ожог"
+gender = "male"
+
+["moderate burn"]
+nominative = "умеренный ожог"
+gender = "male"
+
+["healing moderate burn"]
+nominative = "заживающий умеренный ожог"
+gender = "male"
+
+["ripped large burn"]
+nominative = "рваный большой ожог"
+gender = "male"
+
+["large burn"]
+nominative = "большой ожог"
+gender = "male"
+
+["healing large burn"]
+nominative = "заживающий большой ожог"
+gender = "male"
+
+["ripped severe burn"]
+nominative = "рваный тяжелый ожог"
+gender = "male"
+
+["severe burn"]
+nominative = "тяжелый ожог"
+gender = "male"
+
+["healing severe burn"]
+nominative = "заживающий тяжелый ожог"
+gender = "male"
+
+["burn scar"]
+nominative = "ожоговый шрам"
+gender = "male"
+
+["ripped deep burn"]
+nominative = "рваный глубокий ожог"
+gender = "male"
+
+["deep burn"]
+nominative = "глубокий ожог"
+gender = "male"
+
+["healing deep burn"]
+nominative = "заживающий глубокий ожог"
+gender = "male"
+
+["large burn scar"]
+nominative = "большой ожоговый шрам"
+gender = "male"
+
+["carbonised area"]
+nominative = "обугленная область"
+gender = "female"
+
+["healing carbonised area"]
+nominative = "заживающая обугленная область"
+gender = "female"
+
+["massive burn scar"]
+nominative = "массивный ожоговый шрам"
+gender = "male"
+
+["bruised artery"]
+nominative = "ушибленная артерия"
+gender = "female"
+
+["clotted stump"]
+nominative = "свернувшийся обрубок"
+gender = "male"
+
+["scarred stump"]
+nominative = "изуродованный обрубок"
+gender = "male"
+
+["ripped stump"]
+nominative = "рваный обрубок"
+gender = "male"
+
+["bloody stump"]
+nominative = "кровавый обрубок"
+gender = "male"
+
+["wounds"]
+nominative = "раны"
+gender = "plural"
+genitive = "ран"
+
+["ugly ripped cuts"]
+nominative = "уродливые рваные порезы"
+gender = "plural"
+genitive = "уродливых рваных порезов"
+
+["ripped cuts"]
+nominative = "рваные порезы"
+gender = "plural"
+genitive = "рваных порезов"
+
+["cuts"]
+nominative = "порезы"
+gender = "plural"
+genitive = "порезов"
+
+["healing cuts"]
+nominative = "заживающие порезы"
+gender = "plural"
+genitive = "заживающих порезов"
+
+["small scabs"]
+nominative = "маленькие коросты"
+gender = "plural"
+genitive = "маленьких корост"
+
+["ugly deep ripped cuts"]
+nominative = "уродливые глубокие рваные порезы"
+gender = "plural"
+genitive = "уродливых глубоких рваных порезов"
+
+["deep ripped cuts"]
+nominative = "глубокие рваные порезы"
+gender = "plural"
+genitive = "глубоких рваных порезов"
+
+["deep cuts"]
+nominative = "глубокие порезы"
+gender = "plural"
+genitive = "глубоких порезов"
+
+["clotted cuts"]
+nominative = "свернувшиеся порезы"
+gender = "plural"
+genitive = "свернувшихся порезов"
+
+["scabs"]
+nominative = "коросты"
+gender = "plural"
+genitive = "корост"
+
+["ugly ripped flesh wounds"]
+nominative = "уродливые рваные раны"
+gender = "plural"
+genitive = "уродливых рваных ран"
+
+["ugly flesh wounds"]
+nominative = "уродливые раны"
+gender = "plural"
+genitive = "уродливых ран"
+
+["flesh wounds"]
+nominative = "раны"
+gender = "plural"
+genitive = "ран"
+
+["blood soaked clots"]
+nominative = "пропитанные кровью сгустки"
+gender = "plural"
+genitive = "пропитанных кровью сгустков"
+
+["large scabs"]
+nominative = "большие коросты"
+gender = "plural"
+genitive = "больших корост"
+
+["gaping wounds"]
+nominative = "зияющие раны"
+gender = "plural"
+genitive = "зияющих ран"
+
+["large blood soaked clots"]
+nominative = "большие пропитанные кровью сгустки"
+gender = "plural"
+genitive = "больших пропитанных кровью сгустков"
+
+["large clots"]
+nominative = "большие сгустки"
+gender = "plural"
+genitive = "больших сгустков"
+
+["small angry scars"]
+nominative = "маленькие красные шрамы"
+gender = "plural"
+genitive = "маленьких красных шрамов"
+
+["small straight scars"]
+nominative = "маленькие прямые шрамы"
+gender = "plural"
+genitive = "маленьких прямых шрамов"
+
+["big gaping wounds"]
+nominative = "большие зияющие раны"
+gender = "plural"
+genitive = "больших зияющих ран"
+
+["healing gaping wounds"]
+nominative = "заживающие зияющие раны"
+gender = "plural"
+genitive = "заживающих зияющих ран"
+
+["large angry scars"]
+nominative = "большие красные шрамы"
+gender = "plural"
+genitive = "больших красных шрамов"
+
+["large straight scars"]
+nominative = "большие прямые шрамы"
+gender = "plural"
+genitive = "больших прямых шрамов"
+
+["massive wounds"]
+nominative = "массивные раны"
+gender = "plural"
+genitive = "массивных ран"
+
+["massive healing wounds"]
+nominative = "массивные заживающие раны"
+gender = "plural"
+genitive = "массивных заживающих ран"
+
+["massive angry scars"]
+nominative = "массивные красные шрамы"
+gender = "plural"
+genitive = "массивных красных шрамов"
+
+["massive jagged scars"]
+nominative = "массивные неровные шрамы"
+gender = "plural"
+genitive = "массивных неровных шрамов"
+
+["monumental bruises"]
+nominative = "монументальные синяки"
+gender = "plural"
+genitive = "монументальных синяков"
+
+["huge bruises"]
+nominative = "огромные синяки"
+gender = "plural"
+genitive = "огромных синяков"
+
+["large bruises"]
+nominative = "большие синяки"
+gender = "plural"
+genitive = "больших синяков"
+
+["moderate bruises"]
+nominative = "умеренные синяки"
+gender = "plural"
+genitive = "умеренных синяков"
+
+["small bruises"]
+nominative = "маленькие синяки"
+gender = "plural"
+genitive = "маленьких синяков"
+
+["tiny bruises"]
+nominative = "крошечные синяки"
+gender = "plural"
+genitive = "крошечных синяков"
+
+["ripped burns"]
+nominative = "рваные ожоги"
+gender = "plural"
+genitive = "рваных ожогов"
+
+["moderate burns"]
+nominative = "умеренные ожоги"
+gender = "plural"
+genitive = "умеренных ожогов"
+
+["healing moderate burns"]
+nominative = "заживающие умеренные ожоги"
+gender = "plural"
+genitive = "заживающих умеренных ожогов"
+
+["fresh skins"]
+nominative = "свежие кожи"
+gender = "plural"
+genitive = "свежих кож"
+
+["ripped large burns"]
+nominative = "рваные большие ожоги"
+gender = "plural"
+genitive = "рваных больших ожогов"
+
+["large burns"]
+nominative = "большие ожоги"
+gender = "plural"
+genitive = "больших ожогов"
+
+["healing large burns"]
+nominative = "заживающие большие ожоги"
+gender = "plural"
+genitive = "заживающих больших ожогов"
+
+["ripped severe burns"]
+nominative = "рваные тяжелые ожоги"
+gender = "plural"
+genitive = "рваных тяжелых ожогов"
+
+["severe burns"]
+nominative = "тяжелые ожоги"
+gender = "plural"
+genitive = "тяжелых ожогов"
+
+["healing severe burns"]
+nominative = "заживающие тяжелые ожоги"
+gender = "plural"
+genitive = "заживающих тяжелых ожогов"
+
+["burn scars"]
+nominative = "ожоговые шрамы"
+gender = "plural"
+genitive = "ожоговых шрамов"
+
+["ripped deep burns"]
+nominative = "рваные глубокие ожоги"
+gender = "plural"
+genitive = "рваных глубоких ожогов"
+
+["deep burns"]
+nominative = "глубокие ожоги"
+gender = "plural"
+genitive = "глубоких ожогов"
+
+["healing deep burns"]
+nominative = "заживающие глубокие ожоги"
+gender = "plural"
+genitive = "заживающих глубоких ожогов"
+
+["large burn scars"]
+nominative = "большие ожоговые шрамы"
+gender = "plural"
+genitive = "больших ожоговых шрамов"
+
+["carbonised areas"]
+nominative = "обугленные области"
+gender = "plural"
+genitive = "обугленных областей"
+
+["healing carbonised areas"]
+nominative = "заживающие обугленные области"
+gender = "plural"
+genitive = "заживающих обугленных областей"
+
+["massive burn scars"]
+nominative = "массивные ожоговые шрамы"
+gender = "plural"
+genitive = "массивных ожоговых шрамов"
+
+["bruised arterys"]
+nominative = "ушибленные артерии"
+gender = "plural"
+genitive = "ушибленных артерий"
+
+["ripped stumps"]
+nominative = "рваные обрубки"
+gender = "plural"
+genitive = "рваных обрубков"
+
+["bloody stumps"]
+nominative = "кровавые обрубки"
+gender = "plural"
+genitive = "кровавых обрубков"
+
+["clotted stumps"]
+nominative = "свернувшиеся обрубки"
+gender = "plural"
+genitive = "свернувшихся обрубков"
+
+["scarred stumps"]
+nominative = "изуродованные обрубки"
+gender = "plural"
+genitive = "изуродованных обрубков"
+
 ["resin wall"]
 nominative = "смоляная стена"
 genitive = "смоляной стены"

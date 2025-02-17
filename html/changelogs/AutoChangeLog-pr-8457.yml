@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - bugfix: "Fixes a bug with sub-10 minute marine majors"

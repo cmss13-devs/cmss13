@@ -198,12 +198,12 @@
 
 //Used for controling tunnel exiting and returning
 /obj/structure/tunnel/clicked(mob/user, list/mods)
-	if(!isxeno(user) || !isfriendly(user))
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!isxeno(user))
 		return ..()
-	var/mob/living/carbon/xenomorph/X = user
-	if(mods["ctrl"] && pick_tunnel(X))//Returning to original tunnel
+	if(mods["ctrl"] && pick_tunnel(xeno))//Returning to original tunnel
 		return TRUE
-	else if(mods["alt"] && exit_tunnel(X))//Exiting the tunnel
+	else if(mods["alt"] && exit_tunnel(xeno))//Exiting the tunnel
 		return TRUE
 	. = ..()
 
@@ -252,9 +252,13 @@
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
 	if(M.mob_size >= MOB_SIZE_BIG)
+		if(M.banished)
+			return
 		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into [src]."),
 			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
 	else
+		if(M.banished)
+			return
 		M.visible_message(SPAN_XENONOTICE("[M] begins crawling down into [src]."),
 			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
 

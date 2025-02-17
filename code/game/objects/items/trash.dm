@@ -128,9 +128,9 @@
 
 /obj/item/trash/wy_mre
 	name = "\improper crumbled W-Y ration"
-	desc = "Reminder, trashing on a workplace is punishable."
+	desc = "Reminder, trashing on a workplace is punished with a cut in your daily ration."
 	icon = 'icons/obj/items/storage/mre.dmi'
-	icon_state = "pmc_mealpackempty"
+	icon_state = "wy_mealpackempty"
 
 /obj/item/trash/merc_mre
 	name = "\improper crumbled FSR ration"

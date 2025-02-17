@@ -2114,6 +2114,7 @@
 /obj/item/clothing/suit/armor/vest,
 /obj/effect/landmark/objective_landmark/far,
 /obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/head/beret,
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "afs" = (
@@ -12473,6 +12474,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "aGv" = (
@@ -16674,10 +16676,11 @@
 /turf/open/floor/prison/blue,
 /area/navalis/indoors/logistic/workshop)
 "aRd" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1;
-	network = list("interrogation")
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 1
 	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "aRe" = (
@@ -18325,6 +18328,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/plate,
 /area/navalis/oob/water)
 "bxK" = (
@@ -19250,6 +19254,7 @@
 	pixel_y = 31
 	},
 /obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/head/beret,
 /turf/open/floor/prison/red/northwest,
 /area/navalis/indoors/command/security)
 "cvA" = (
@@ -23917,7 +23922,6 @@
 	color = "#a6aeab";
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/strata_right,
 /obj/structure/machinery/door/poddoor{
 	explo_proof = 1;
 	needs_power = 0;
@@ -23928,6 +23932,7 @@
 	pixel_x = 32;
 	density = 0
 	},
+/obj/structure/platform/metal/stair_cut/strata_left,
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "hvz" = (
@@ -26615,7 +26620,6 @@
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/med_ext)
 "kpt" = (
-/obj/structure/platform_decoration/metal/strata/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
@@ -27609,10 +27613,11 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_starboard)
 "lqL" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	pixel_x = -1
+	},
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "lqS" = (
@@ -29372,6 +29377,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/plate,
 /area/navalis/oob/water)
 "nyR" = (
@@ -30785,6 +30791,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = -30
 	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "oXL" = (
@@ -31600,7 +31607,6 @@
 /turf/open/floor/plating,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "pHJ" = (
-/obj/structure/platform_decoration/metal/strata,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -34052,9 +34058,11 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/navalis/indoors/command/server_room)
 "rXv" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 1
 	},
+/obj/structure/platform/metal/strata/east,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "rYp" = (
@@ -34588,7 +34596,8 @@
 /area/navalis/oob/water)
 "sFJ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S"
+	icon_state = "cargo_arrow4";
+	pixel_x = -1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
@@ -35070,9 +35079,12 @@
 /turf/open/floor/darkpurple2/east,
 /area/navalis/indoors/residential/starboard)
 "taO" = (
-/obj/structure/platform_decoration/metal/strata/west,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1;
+	network = list("interrogation")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/med_sci/science_lower_entrance)
@@ -35328,7 +35340,6 @@
 /turf/open/floor/prison/green/west,
 /area/navalis/indoors/command/starboard_hallway)
 "tpb" = (
-/obj/structure/platform_decoration/metal/strata,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)

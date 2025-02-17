@@ -355,6 +355,22 @@
 	desc = "Cats really don't like these things."
 	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
 
+/turf/open/floor/plating/catwalk/grate
+	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
+	icon_state = "solidgrate1"
+
+/turf/open/floor/plating/catwalk/grate/is_weedable()
+	return NOT_WEEDABLE
+
+/turf/open/floor/plating/catwalk/grate/alt
+	icon_state = "solidgrate5"
+
+/turf/open/floor/plating/catwalk/grate/net
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	icon_state = "soil_grid"
+
+///turf/open/gm/river
+
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "default"

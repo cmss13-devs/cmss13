@@ -113,12 +113,15 @@
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/duration_time = 10
 	var/point_loc
+	var/old_loc = src.loc
 	if(ship_base)
 		duration_time = 70 //uninstalling equipment takes more time
 		point_loc = ship_base.loc
 	if(!do_after(user, duration_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
+		return
+	if(old_loc != src.loc)
 		return
 	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
 		return

@@ -7,7 +7,8 @@
 	var/list/picks
 	var/list/mappings = list()
 	for(var/icon_class in PILL_ICON_CLASSES)
-		if(!picks) picks = init_list_range(PILL_ICON_CHOICES, 1)
+		if(!picks)
+			picks = init_list_range(PILL_ICON_CHOICES, 1)
 		mappings[icon_class] = "pill[pick_n_take(picks)]"
 	// Keep extra as padding for random pills
 	picks += init_list_range(PILL_ICON_CHOICES, 1)
@@ -17,6 +18,10 @@
 /obj/item/reagent_container/pill
 	name = "pill"
 	icon = 'icons/obj/items/chemistry.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = null
 	item_state = "pill"
 	possible_transfer_amounts = null
@@ -126,7 +131,8 @@
 	return 0
 
 /obj/item/reagent_container/pill/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	if(target.is_open_container() != 0 && target.reagents)
 		if(!target.reagents.total_volume)

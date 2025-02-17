@@ -3,7 +3,6 @@
 #define cur_increment(v) floor((v-1)/8)+1
 
 /turf/closed/wall/update_icon()
-	..()
 	if(QDELETED(src))
 		return
 
@@ -114,7 +113,8 @@
 #define CORNER_CLOCKWISE 4
 
 /proc/dirs_to_corner_states(list/dirs)
-	if(!istype(dirs)) return
+	if(!istype(dirs))
+		return
 
 	var/list/ret = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST)
 

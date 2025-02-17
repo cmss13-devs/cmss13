@@ -44,7 +44,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/assembly_type = /obj/structure/airlock_assembly
 	var/mineral = null
 	var/justzap = 0
-	var/safe = 1
+	/// Whether to delay closing when a mob is present
+	var/safe = TRUE
 	normalspeed = 1
 	var/obj/item/circuitboard/airlock/electronics = null
 	var/hasShocked = 0 //Prevents multiple shocks from happening
@@ -62,16 +63,22 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/announce_hacked = TRUE
 
 	//Resin constructions that will be SMUSHED by closing doors
-	var/static/list/resin_door_shmushereds = list(
+	var/static/list/resin_smushables = list(
 		/obj/effect/resin_construct/door,
 		/obj/structure/mineral_door/resin,
 		/obj/structure/bed/nest,
 		/obj/effect/alien/resin/spike,
 		/obj/effect/alien/resin/acid_pillar,
 		/obj/effect/alien/resin/shield_pillar,
+		/obj/effect/alien/resin/resin_pillar,
 		/obj/item/explosive/grenade/alien/acid,
 		/obj/structure/alien/movable_wall,
 		/turf/closed/wall/resin,
+		/obj/effect/alien/egg,
+		/obj/effect/alien/resin/fruit,
+		/obj/effect/alien/resin/special,
+		/obj/effect/alien/resin/construction,
+		/obj/item/reagent_container/food/snacks/resin_fruit,
 	)
 
 /obj/structure/machinery/door/airlock/Destroy()
@@ -88,14 +95,11 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				spawn (openspeed)
 					justzap = 0
 				return
-		else if(user.hallucination > 50 && prob(10) && operating == 0)
+		else if(user.hallucination > 50 && prob(10) && !operating)
 			to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
 			user.halloss += 10
 			user.apply_effect(10, STUN)
 			return
-	..(user)
-
-/obj/structure/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
 	..(user)
 
 /// DAMAGE CODE
@@ -215,8 +219,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			//tries to open the door without ID
 			//will succeed only if the ID wire is cut or the door requires no access
 			if(!requiresID() || check_access(null))
-				if(density) open()
-				else close()
+				if(density)
+					open()
+				else
+					close()
 
 		if(AIRLOCK_WIRE_SAFETY)
 			safe = !safe
@@ -392,7 +398,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 
 /obj/structure/machinery/door/airlock/update_icon()
-	if(overlays) overlays.Cut()
+	if(overlays)
+		overlays.Cut()
 	if(density)
 		if(locked && lights)
 			icon_state = "door_locked"
@@ -412,14 +419,16 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/do_animate(animation)
 	switch(animation)
 		if("opening")
-			if(overlays) overlays.Cut()
+			if(overlays)
+				overlays.Cut()
 			if(panel_open)
 				spawn(2) // The only work around that works. Downside is that the door will be gone for a millisecond.
 					flick("o_door_opening", src)  //can not use flick due to BYOND bug updating overlays right before flicking
 			else
 				flick("door_opening", src)
 		if("closing")
-			if(overlays) overlays.Cut()
+			if(overlays)
+				overlays.Cut()
 			if(panel_open)
 				flick("o_door_closing", src)
 			else
@@ -568,13 +577,13 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(user)
 
 	if(istype(attacking_item, /obj/item/weapon/zombie_claws) && (welded || locked))
-		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on [src]!"), \
-			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
+		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on [src]!"),
+			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."),
 			SPAN_NOTICE("You hear tearing noises!"))
 
 		if(do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_NOTICE("[user] slams the door open [src]!"), \
-			SPAN_NOTICE("You slam the door open!"), \
+			user.visible_message(SPAN_NOTICE("[user] slams the door open [src]!"),
+			SPAN_NOTICE("You slam the door open!"),
 			SPAN_NOTICE("You hear metal screeching!"))
 			locked = 0
 			welded = 0
@@ -597,8 +606,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			to_chat(user, SPAN_WARNING("\The [W] needs to be on!"))
 			return
 		if(W.remove_fuel(0,user))
-			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with \the [W]."), \
-			SPAN_NOTICE("You start working on \the [src] with \the [W]."), \
+			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with \the [W]."),
+			SPAN_NOTICE("You start working on \the [src] with \the [W]."),
 			SPAN_NOTICE("You hear welding."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, weldtime, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && density)
@@ -689,7 +698,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				if(operating == -1)
 					airlock_electronics.fried = TRUE
 					airlock_electronics.update_icon()
-					operating = 0
+					operating = DOOR_OPERATING_IDLE
 
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
@@ -722,13 +731,23 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else
 		return ..()
 
-
-/obj/structure/machinery/door/airlock/open(forced=0)
-	if( operating || welded || locked || !loc)
+/// Tries to open the door. If forced, operating checks and operable checks are skipped (so you need to prevent spamming yourself)
+/obj/structure/machinery/door/airlock/open(forced = FALSE)
+	if(operating && !forced)
 		return FALSE
+	if(welded)
+		return FALSE
+	if(locked)
+		return FALSE
+	if(!density)
+		return TRUE
+	if(!loc)
+		return FALSE
+
 	if(!forced)
-		if( !arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR) )
+		if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR))
 			return FALSE
+
 	use_power(360) //360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
@@ -736,37 +755,52 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		playsound(loc, 'sound/machines/airlock.ogg', 25, 0)
 	if(closeOther != null && istype(closeOther, /obj/structure/machinery/door/airlock/) && !closeOther.density)
 		closeOther.close()
-	return ..(forced)
 
-/obj/structure/machinery/door/airlock/close(forced = FALSE)
-	if(operating || welded || locked || !loc)
-		return
+	. = ..()
+
 	if(!forced)
-		if( !arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_DOOR_BOLTS) )
-			return
+		send_status()
+	return .
+
+/// Tries to close the door. If forced, operating checks and operable checks are skipped (so you need to prevent spamming yourself)
+/obj/structure/machinery/door/airlock/close(forced = FALSE)
+	if(operating && !forced)
+		return FALSE
+	if(welded)
+		return FALSE
+	if(locked)
+		return FALSE
+	if(!loc)
+		return FALSE
+
+	if(!forced)
+		if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
+			return FALSE
+
 	if(safe)
 		for(var/turf/turf in locs)
 			if(locate(/mob/living) in turf)
-			// playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0) //THE BUZZING IT NEVER STOPS -Pete
-				spawn (60 + openspeed)
-					close()
-				return
+				// playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0) //THE BUZZING IT NEVER STOPS -Pete
+				addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+				return FALSE
 
 	for(var/turf/turf in locs)
-		for(var/mob/living/M in turf)
-			if(HAS_TRAIT(M, TRAIT_SUPER_STRONG))
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
+		for(var/mob/living/crushed in turf)
+			if(!arePowerSystemsOn() && forced)
+				return
+			if(HAS_TRAIT(crushed, TRAIT_SUPER_STRONG))
+				crushed.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-				M.set_effect(5, STUN)
-				M.set_effect(5, WEAKEN)
-				if(ishuman(M))
-					var/mob/living/carbon/human/H = M
-					if(H.pain.feels_pain)
-						M.emote("pain")
+				crushed.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
+				crushed.set_effect(5, STUN)
+				crushed.set_effect(5, WEAKEN)
+				if(ishuman(crushed))
+					var/mob/living/carbon/human/crushed_human = crushed
+					if(crushed_human.pain.feels_pain)
+						crushed.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))
-				location.add_mob_blood(M)
+				location.add_mob_blood(crushed)
 
 	break_resin_objects()
 
@@ -779,28 +813,38 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
 			killthis.ex_act(EXPLOSION_THRESHOLD_LOW)//Smashin windows
-	..()
-	return
+
+	. = ..()
+
+	if(!forced)
+		send_status()
+	return .
 
 /obj/structure/machinery/door/airlock/proc/lock(forced = FALSE)
-	if((operating && !forced) || locked)
-		return
+	if(operating && !forced)
+		return FALSE
+	if(locked)
+		return FALSE
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
 	locked = TRUE
-	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
+	visible_message(SPAN_NOTICE("[src] airlock emits a loud thunk, then a click."))
 	update_icon()
+	return TRUE
 
-/obj/structure/machinery/door/airlock/proc/unlock(forced=0)
-	if(operating || !locked) return
+/obj/structure/machinery/door/airlock/proc/unlock(forced = FALSE)
+	if(operating && !forced)
+		return FALSE
+	if(!locked)
+		return FALSE
 
-	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on
+	if(forced || arePowerSystemsOn()) //only can raise bolts if power's on
 		locked = FALSE
-
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 25)
-		visible_message(SPAN_NOTICE("\The [src] airlock emits a click, then hums slightly."))
+		visible_message(SPAN_NOTICE("[src] airlock emits a click, then hums slightly."))
 		update_icon()
 		return TRUE
+
 	return FALSE
 
 /obj/structure/machinery/door/airlock/Initialize()
@@ -809,6 +853,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(autoname)
 		var/area/A = get_area(loc)
 		name = A.name
+
+	if(frequency)
+		set_frequency(frequency)
+
+	update_icon()
+	start_processing()
 
 	return INITIALIZE_HINT_LATELOAD
 
@@ -840,10 +890,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	for(var/turf/i in things_to_shmush)
 		things_to_shmush |= i.contents
 	for(var/x in things_to_shmush)
-		for(var/i in resin_door_shmushereds)
-			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
+		for(var/i in resin_smushables)
+			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_smushables so it works
 				playsound(loc, "alien_resin_break", 25)
-				visible_message(SPAN_WARNING("The [src.name] closes on [x], shmushing it!"))
+				visible_message(SPAN_WARNING("The [src.name] closes on [x], smushing it!"))
 				if(isturf(x))
 					var/turf/closed/wall/resin_wall_to_destroy = x
 					resin_wall_to_destroy.dismantle_wall()

@@ -206,10 +206,12 @@
 	// If we were to send to a channel we don't have, drop it.
 	return null
 
-/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = FALSE)
-	if(!on) return // the device has to be on
+/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null, listening_device = NOT_LISTENING_BUG)
+	if(!on)
+		return // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
-	if(!M || !message) return
+	if(!M || !message)
+		return
 
 	//  Uncommenting this. To the above comment:
 	// The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
@@ -416,7 +418,8 @@
 			//Foreach goto(83)
 		add_fingerprint(user)
 		return
-	else return
+	else
+		return
 
 /obj/item/device/radio/emp_act(severity)
 	. = ..()

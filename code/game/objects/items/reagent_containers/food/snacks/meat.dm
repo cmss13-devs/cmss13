@@ -2,6 +2,7 @@
 	name = "meat"
 	desc = "A slab of meat"
 	icon_state = "meat"
+	icon = 'icons/obj/items/food/meat.dmi'
 	health = 180
 	filling_color = "#FF1C1C"
 	bitesize = 3
@@ -97,3 +98,12 @@
 	desc = "Pink squishy meat from a squid or squid like creature. You're no marine biologist."
 	icon_state = "squid_meat_2"
 
+/obj/item/reagent_container/food/snacks/meat/fish/bass
+	name = "Bass meat"
+	desc = "Sizeable hunks of cooking fish!"
+	icon_state = "bass_meat"
+
+/obj/item/reagent_container/food/snacks/meat/fish/bluegill
+	name = "bluegill meat"
+	desc = "Small strips of pan frying meat!"
+	icon_state = "bluegill_meat"

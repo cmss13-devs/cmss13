@@ -35,7 +35,7 @@
 
 	var/turns_per_move = 1
 	var/turns_since_move = 0
-	universal_speak = 0 //No, just no.
+	universal_speak = FALSE //No, just no.
 	var/meat_amount = 0
 	var/meat_type
 	///Use this to temporarely stop random movement or to if you write special movement code for animals.
@@ -265,7 +265,8 @@
 	return 1
 
 /mob/living/simple_animal/Collided(atom/movable/AM)
-	if(!AM) return
+	if(!AM)
+		return
 
 	if(resting || buckled)
 		return
@@ -281,7 +282,8 @@
 
 /mob/living/simple_animal/death()
 	. = ..()
-	if(!.) return //was already dead
+	if(!.)
+		return //was already dead
 	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
 	black_market_value = dead_black_market_value
@@ -384,7 +386,7 @@
 			else
 				gib()
 			return
-	..()
+	return ..()
 
 
 /mob/living/simple_animal/movement_delay()

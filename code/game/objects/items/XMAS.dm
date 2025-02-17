@@ -4,7 +4,7 @@
 /obj/item/m_gift //Marine Gift
 	name = "Present"
 	desc = "One, standard issue USCM Present"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift1"
 	item_state = "gift1"
 
@@ -127,7 +127,8 @@
 		/obj/item/attachable/stock/rifle,
 		/obj/item/attachable/scope)
 
-	if(!ispath(gift_type,/obj/item)) return
+	if(!ispath(gift_type,/obj/item))
+		return
 	to_chat(M, SPAN_NOTICE(" At least it's something..."))
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)

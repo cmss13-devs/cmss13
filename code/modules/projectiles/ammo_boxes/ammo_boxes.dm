@@ -3,6 +3,9 @@
 /obj/item/ammo_box
 	name = "\improper generic ammo box"
 	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/ammo_boxes.dmi'
+	)
 	icon_state = "base"
 	w_class = SIZE_HUGE
 	var/empty = FALSE
@@ -167,6 +170,13 @@
 			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
 			return
 
+	// Make sure a platform wouldn't block it
+	if(box_on_tile * 2 >= limit_per_tile) // Allow 2 if limit is 4
+		var/obj/structure/platform/platform = locate() in T
+		if(platform?.dir == NORTH)
+			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
+			return
+
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
 	M.icon_state = icon_state_deployed ? icon_state_deployed : icon_state
 	M.name = name
@@ -210,7 +220,7 @@
 	else
 		for(var/obj/item/ammo_magazine/AM in contents)
 			severity += AM.current_rounds
-		severity = floor(severity / 150)
+		severity = clamp(severity / 150, 0, 20) // explosion caps at 3k bullets
 	return severity
 
 /obj/item/ammo_box/magazine/process_burning(datum/cause_data/flame_cause_data)

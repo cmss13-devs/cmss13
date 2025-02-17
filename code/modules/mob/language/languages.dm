@@ -68,6 +68,17 @@
 
 	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ing", "gen", "et", "pur", "ke", "er", "nei", "hjort", "tysk", "de", "kjae", "en", "stein", "ja", "ull", "sil", "pa", "hun", "kjo", "erg", "ba", "re", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fi", "re", "dag", "god", "jul", "ild", "fem", "jeg", "deg", "bjor", "en", "russ", "land", "sve", "rig", "nor", "ge", "dan", "is")
 
+/datum/language/french
+	name = LANGUAGE_FRENCH
+	desc = "Standard French, spoken by the French Republic, one of the few independent countries left on Earth."
+	speech_verb = "declares"
+	ask_verb = "inquires"
+	exclaim_verb = "exclaims"
+	color = "french"
+	key = "9"
+
+	syllables = list("le", "en", "es", "de", "re", "ai", "an", "ar", "au", "ou", "nt", "on", "er", "ur", "an", "it", "te", "me", "la", "is", "ou", "nt", "on", "er", "ur", "an", "it", "te", "et", "me", "is", "qu", "se", "il", "ent", "que", "ait", "les", "lle", "our", "men", "ais", "est", "tre", "mai", "ous", "par", "ant", "ion", "eme", "tai", "ans", "pas", "ell", "vou", "tou", "pou", "eur", "ont", "res", "dan", "une", "ien", "sur", "son", "mme", "tio", "des")
+
 /datum/language/spanish
 	name = LANGUAGE_SPANISH
 	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
@@ -124,7 +135,7 @@
 	ask_verb = "chimpers"
 	exclaim_verb = "screeches"
 	color = "monkey"
-	key = "9"
+	key = "_"
 
 /datum/language/xenomorph
 	name = LANGUAGE_XENOMORPH
@@ -134,6 +145,7 @@
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
 	key = "x"
+	syllables = list("sss", "sSs", "SSS")
 	flags = RESTRICTED
 
 /datum/language/xenos

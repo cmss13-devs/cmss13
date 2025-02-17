@@ -85,10 +85,34 @@
 	trait_desc = "Boosts the JTAC skill by 1. Crewmember received additional training in using JTAC equipment."
 	skill = SKILL_JTAC
 
+/datum/character_trait/skills/cosmartgun
+	trait_name = "Smartgun Training"
+	trait_desc = "Gives the CO information on his smartgun"
+	skill = SKILL_SPEC_WEAPONS
+	skill_cap =  SKILL_SPEC_SMARTGUN
+	skill_increment = 7
+
+
 /datum/character_trait/skills/spotter
 	trait_name = "Spotter Training"
 	trait_desc = "Boosts the JTAC skill by 1. Crewmember received additional training in using JTAC equipment and Ghillie outfits."
 	skill = SKILL_JTAC
+
+/datum/character_trait/skills/loader
+	trait_name = "Loader Training"
+	trait_desc = "Boosts the endurance skill by 1."
+	skill = SKILL_ENDURANCE
+	skill_cap = SKILL_ENDURANCE_TRAINED
+	skill_increment = 1
+
+/datum/character_trait/skills/mortar
+	trait_name = "Mortar Training"
+	trait_desc = "Boosts the engineering skill by 1 and JTAC skill by 2."
+	skill = SKILL_ENGINEER
+	secondary_skill = SKILL_JTAC
+	skill_cap = SKILL_ENGINEER_NOVICE
+	secondary_skill_cap = SKILL_JTAC_TRAINED
+	skill_increment = 2
 
 /datum/character_trait/skills/k9_handler
 	trait_name = "K9 Handler Training"

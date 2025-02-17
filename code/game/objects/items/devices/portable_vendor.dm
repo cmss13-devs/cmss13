@@ -6,6 +6,10 @@
 	name = "\improper Automated Storage Briefcase"
 	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items."
 	icon = 'icons/obj/items/storage/briefcases.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_righthand.dmi'
+	)
 	icon_state = "secure"
 	flags_atom = FPRINT|CONDUCT
 	force = 8
@@ -22,6 +26,8 @@
 	var/fabricating = FALSE
 	var/broken = FALSE
 	var/contraband = FALSE
+	var/covert = FALSE //covert = no light, no sound
+	var/delay = 3 //fabricating time, in seconds
 
 	var/list/purchase_log = list()
 
@@ -186,11 +192,12 @@
 
 	purchase_log += "[key_name(usr)] bought [product[1]]."
 
-	playsound(src, "sound/machines/fax.ogg", 5)
+	if(!covert)
+		playsound(src, "sound/machines/fax.ogg", 5)
 	fabricating = TRUE
 	update_overlays()
 
-	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), delay SECONDS)
 
 /obj/item/device/portable_vendor/proc/spawn_product(typepath, mob/user)
 	var/obj/new_item = new typepath(get_turf(src))
@@ -199,7 +206,11 @@
 	update_overlays()
 
 /obj/item/device/portable_vendor/proc/update_overlays()
-	if(overlays) overlays.Cut()
+	if(covert)
+		return
+
+	if(overlays)
+		overlays.Cut()
 	if (broken)
 		overlays += image(icon, "securespark")
 	else if (fabricating)

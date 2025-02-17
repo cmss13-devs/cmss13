@@ -82,6 +82,17 @@
 	/// Doesn't need to be set for areas/Z levels that are marked as admin-only
 	var/block_game_interaction = FALSE
 
+	/// Which, if any, LZ this area belongs to. If an area belongs to an LZ, if that LZ is designated as the primary
+	/// LZ, all weeds will be destroyed and further weed placement disabled
+	var/linked_lz = FALSE
+
+	/// How long this area should be un-oviable
+	var/unoviable_timer = 25 MINUTES
+
+	/// How many potentially open turfs can exist in this area
+	var/openable_turf_count = 0
+	/// How much destroyable resin currently exists in this area
+	var/current_resin_count = 0
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -105,6 +116,24 @@
 
 	update_base_lighting()
 
+	if(unoviable_timer)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_ovi_timer)))
+
+	if((flags_area & AREA_UNWEEDABLE) && is_resin_allowed)
+		is_resin_allowed = FALSE
+		log_mapping("[src] has AREA_UNWEEDABLE flag but has is_resin_allowed as true! Forcing is_resin_allowed false...")
+
+	if(!(flags_area & AREA_UNWEEDABLE))
+		for(var/turf/current in src)
+			if(!current.density)
+				openable_turf_count++
+				continue
+			if(istype(current, /turf/closed/wall))
+				var/turf/closed/wall/current_wall = current
+				if(!(current_wall.turf_flags & TURF_HULL))
+					openable_turf_count++
+					continue
+
 /area/proc/initialize_power(override_power)
 	if(requires_power)
 		if(override_power) //Reset everything if you want to override.
@@ -120,7 +149,7 @@
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
-	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src) && weather_enabled)
 		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 
@@ -274,13 +303,19 @@
 /area/proc/updateicon()
 	var/I //More important == bottom. Fire normally takes priority over everything.
 	if(flags_alarm_state && (!requires_power || power_environ)) //It either doesn't require power or the environment is powered. And there is an alarm.
-		if(flags_alarm_state & ALARM_WARNING_READY) I = "alarm_ready" //Area is ready for something.
-		if(flags_alarm_state & ALARM_WARNING_EVAC) I = "alarm_evac" //Evacuation happening.
-		if(flags_alarm_state & ALARM_WARNING_ATMOS) I = "alarm_atmos" //Atmos breach.
-		if(flags_alarm_state & ALARM_WARNING_FIRE) I = "alarm_fire" //Fire happening.
-		if(flags_alarm_state & ALARM_WARNING_DOWN) I = "alarm_down" //Area is shut down.
+		if(flags_alarm_state & ALARM_WARNING_READY)
+			I = "alarm_ready" //Area is ready for something.
+		if(flags_alarm_state & ALARM_WARNING_EVAC)
+			I = "alarm_evac" //Evacuation happening.
+		if(flags_alarm_state & ALARM_WARNING_ATMOS)
+			I = "alarm_atmos" //Atmos breach.
+		if(flags_alarm_state & ALARM_WARNING_FIRE)
+			I = "alarm_fire" //Fire happening.
+		if(flags_alarm_state & ALARM_WARNING_DOWN)
+			I = "alarm_down" //Area is shut down.
 
-	if(icon_state != I) icon_state = I //If the icon state changed, change it. Otherwise do nothing.
+	if(icon_state != I)
+		icon_state = I //If the icon state changed, change it. Otherwise do nothing.
 
 /area/proc/powered(chan) // return true if the area has power to given channel
 	if(!requires_power)
@@ -418,3 +453,14 @@
 		areas_in_z["[z]"] = list()
 	areas_in_z["[z]"] += src
 
+/**
+ * Purges existing weeds, and prevents future weeds from being placed.
+ */
+/area/proc/purge_weeds()
+	SEND_SIGNAL(src, COMSIG_AREA_RESIN_DISALLOWED)
+
+	is_resin_allowed = FALSE
+
+/// From roundstart, sets a timer to make an area oviable.
+/area/proc/handle_ovi_timer()
+	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)

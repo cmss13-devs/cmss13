@@ -7,6 +7,13 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "painless"
 	item_state = "painless"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 	fire_sound = 'sound/weapons/gun_minigun.ogg'
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
@@ -20,7 +27,8 @@
 
 /obj/item/weapon/gun/minigun/Initialize(mapload, spawn_empty)
 	. = ..()
-	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
 
 /obj/item/weapon/gun/minigun/set_gun_config_values()
 	..()
@@ -65,12 +73,20 @@
 /obj/item/weapon/gun/m60
 	name = "\improper M60 General Purpose Machine Gun"
 	desc = "The M60. The Pig. The Action Hero's wet dream. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
 	icon_state = "m60"
 	item_state = "m60"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 	fire_sound = 'sound/weapons/gun_m60.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
+
 	current_mag = /obj/item/ammo_magazine/m60
 	w_class = SIZE_LARGE
 	force = 25
@@ -87,8 +103,8 @@
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
-	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
+	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
 /obj/item/weapon/gun/m60/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -97,7 +113,6 @@
 
 /obj/item/weapon/gun/m60/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 0, "rail_y" = 0, "under_x" = 27, "under_y" = 12, "stock_x" = 10, "stock_y" = 14)
-
 
 /obj/item/weapon/gun/m60/set_gun_config_values()
 	..()
@@ -163,10 +178,15 @@
 /obj/item/weapon/gun/pkp
 	name = "\improper QYJ-72 General Purpose Machine Gun"
 	desc = "The QYJ-72 is the standard GPMG of the Union of Progressive Peoples, chambered in 7.62x54mmR, it fires a hard-hitting cartridge with a high rate of fire. With an extremely large box at 250 rounds, the QJY-72 is designed with suppressing fire and accuracy by volume of fire at its forefront. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
 	icon_state = "qjy72"
 	item_state = "qjy72"
-
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 	fire_sound = 'sound/weapons/gun_mg.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/pkp
@@ -179,8 +199,10 @@
 	attachable_allowed = list(
 		/obj/item/attachable/pkpbarrel,
 		/obj/item/attachable/stock/pkpstock,
+		/obj/item/attachable/bipod/pkp,
 	)
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
+
 
 
 /obj/item/weapon/gun/pkp/handle_starting_attachment()
@@ -196,11 +218,17 @@
 	update_attachable(pkpstock.slot)
 
 	//invisible mag harness
-	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
-	Integrated.hidden = TRUE
-	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
-	Integrated.Attach(src)
-	update_attachable(Integrated.slot)
+	var/obj/item/attachable/magnetic_harness/harness = new(src)
+	harness.hidden = TRUE
+	harness.flags_attach_features &= ~ATTACH_REMOVABLE
+	harness.Attach(src)
+	update_attachable(harness.slot)
+
+	var/obj/item/attachable/bipod/pkp/bipod = new /obj/item/attachable/bipod/pkp(src)
+	bipod.flags_attach_features &= ~ATTACH_REMOVABLE
+	bipod.Attach(src)
+	update_attachable(bipod.slot)
+
 
 /obj/item/weapon/gun/pkp/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -208,7 +236,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pkp/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18,"rail_x" = 5, "rail_y" = 5, "under_x" = 39, "under_y" = 7, "stock_x" = 10, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18,"rail_x" = 5, "rail_y" = 5, "under_x" = 26, "under_y" = 15, "stock_x" = 10, "stock_y" = 13)
 
 
 /obj/item/weapon/gun/pkp/set_gun_config_values()
@@ -278,15 +306,3 @@
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return 0
 
-
-/obj/effect/syringe_gun_dummy
-	name = ""
-	desc = ""
-	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = null
-	anchored = TRUE
-	density = FALSE
-
-/obj/effect/syringe_gun_dummy/Initialize()
-	create_reagents(15)
-	. = ..()

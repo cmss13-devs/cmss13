@@ -72,7 +72,8 @@
 	botcard = new(src)
 	if(GLOB.RoleAuthority)
 		var/datum/job/ctequiv = GLOB.RoleAuthority.roles_by_name[JOB_CARGO_TECH]
-		if(ctequiv) botcard.access = ctequiv.get_access()
+		if(ctequiv)
+			botcard.access = ctequiv.get_access()
 
 	cell = new(src)
 	cell.charge = 2000
@@ -157,7 +158,7 @@
 		else
 			to_chat(user, "You hit [src] with \the [I] but to no effect.")
 	else
-		..()
+		. = ..()
 	return
 
 
@@ -530,7 +531,8 @@
 	// with items dropping as mobs are loaded
 
 	for(var/atom/movable/AM in src)
-		if(AM == cell || AM == botcard) continue
+		if(AM == cell || AM == botcard)
+			continue
 
 		AM.forceMove(loc)
 		AM.layer = initial(AM.layer)
@@ -569,7 +571,8 @@
 			if(3)
 				process_bot()
 
-	if(refresh) updateDialog()
+	if(refresh)
+		updateDialog()
 
 /obj/structure/machinery/bot/mulebot/proc/process_bot()
 	switch(mode)
@@ -613,7 +616,8 @@
 
 
 					var/moved = step_towards(src, next) // attempt to move
-					if(cell) cell.use(1)
+					if(cell)
+						cell.use(1)
 					if(moved) // successful move
 						blockcount = 0
 						path -= loc
@@ -785,7 +789,8 @@
 
 // player on mulebot attempted to move
 /obj/structure/machinery/bot/mulebot/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	if(load == user)
 		unload(0)
 
@@ -878,7 +883,8 @@
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(freq)
 
-	if(!frequency) return
+	if(!frequency)
+		return
 
 
 

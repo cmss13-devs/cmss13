@@ -23,7 +23,8 @@
 	permissions_required = R_BAN
 
 /datum/player_action/eorgban/act(client/user, mob/target, list/params)
-	if(target.client && target.client.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+	if(target.client && target.client.admin_holder)
+		return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!target.ckey)
 		to_chat(user, SPAN_DANGER("<B>Warning: Mob ckey for [target.name] not found.</b>"))
@@ -269,7 +270,7 @@
 		var/mob/living/carbon/human/target_human = target_mob
 		var/obj/item/card/id/card = target_human.get_idcard()
 		if(card?.registered_ref == WEAKREF(target_human))
-			card.name = "[target_human.real_name]'s ID Card"
+			card.name = "[target_human.real_name]'s [card.id_type]"
 			card.registered_name = "[target_human.real_name]"
 			if(card.assignment)
 				card.name += " ([card.assignment])"

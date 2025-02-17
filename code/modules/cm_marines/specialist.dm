@@ -1,22 +1,18 @@
 /datum/action/item_action/specialist
 	var/ability_primacy = SPEC_NOT_PRIMARY_ACTION
 
-/datum/action/item_action/specialist/proc/action_cooldown_check()
-	return FALSE
-
 /datum/action/item_action/specialist/proc/handle_spec_macro()
 	if (can_use_action())
 		action_activate()
 
 /datum/action/item_action/specialist/update_button_icon()
-	if(action_cooldown_check())
+	if(!action_cooldown_check())
 		button.color = rgb(120,120,120,200)
 	else
 		button.color = rgb(255,255,255,255)
 
 // Spec verb macros
 /mob/living/carbon/human/verb/spec_activation_one()
-	set category = "Specialist"
 	set name = "Specialist Activation One"
 	set hidden = TRUE
 
@@ -28,7 +24,6 @@
 			SA.handle_spec_macro()
 
 /mob/living/carbon/human/verb/spec_activation_two()
-	set category = "Specialist"
 	set name = "Specialist Activation Two"
 	set hidden = TRUE
 
@@ -59,9 +54,9 @@
 	/// What is the role title that should go on ID cards
 	VAR_PROTECTED/role_name = "" as text
 	/// How many more of this spec set can be picked from spec vendors
-	VAR_PRIVATE/available_vendor_num = 1 as num
+	VAR_PROTECTED/available_vendor_num = 1 as num
 	/// How many more of this spec set can be picked from /obj/item/spec_kit
-	VAR_PRIVATE/available_kit_num = 2 as num
+	VAR_PROTECTED/available_kit_num = 2 as num
 	/// What skill tier to give the person redeeming the set
 	VAR_PROTECTED/skill_to_give = SKILL_SPEC_DEFAULT as num
 	/// What trait to give the person redeeming the set
@@ -74,6 +69,13 @@
 /datum/specialist_set/New()
 	. = ..()
 	incompatible_sets += type
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(post_round_start))
+
+
+/datum/specialist_set/proc/post_round_start()
+	if(SSticker && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
+		available_vendor_num = 0
+		available_kit_num = 0
 
 /datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -155,8 +157,8 @@
 	if(!.)
 		return .
 
-	if(!skillcheck(redeemer, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		redeemer.skills?.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+	if(!skillcheck(redeemer, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
+		redeemer.skills?.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)
 	return TRUE
 
 /datum/specialist_set/sniper
@@ -192,3 +194,18 @@
 	skill_to_give = SKILL_SPEC_PYRO
 	trait_to_give = "pyro"
 	kit_typepath = /obj/item/storage/box/spec/pyro
+
+/datum/specialist_set/heavy
+	name = "Heavy Armor Set"
+	role_name = "Heavy"
+	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
+	trait_to_give = "heavy"
+	kit_typepath = /obj/item/storage/box/spec/B18
+	available_vendor_num = 0
+	available_kit_num = 0
+
+
+/datum/specialist_set/heavy/post_round_start()
+	if(SSticker && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
+		available_vendor_num = 4
+		available_kit_num = 5

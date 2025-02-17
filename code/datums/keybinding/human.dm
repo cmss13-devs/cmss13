@@ -3,7 +3,7 @@
 	weight = WEIGHT_MOB
 
 /datum/keybinding/human/can_use(client/user)
-	return ishuman(user.mob)
+	return ishuman(user.mob) && user.mob.stat == CONSCIOUS
 
 /datum/keybinding/human/issue_order
 	hotkey_keys = list("Unbound")

@@ -219,6 +219,7 @@
 
 	var/pain_message = pick("OW!!", "AGH!!", "ARGH!!", "OUCH!!", "ACK!!", "OUF!")
 	user.langchat_speech(pain_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
+
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
@@ -360,16 +361,11 @@
 
 /datum/emote/living/carbon/human/warcry/get_sound(mob/living/user)
 	if(ishumansynth_strict(user))
-		if(user.gender == MALE)
-			if(user.faction == FACTION_UPP)
-				return get_sfx("male_upp_warcry")
+		switch(user.faction)
+			if(FACTION_UPP, FACTION_HUNTED_UPP)
+				return get_sfx("[user.gender]_upp_warcry")
 			else
-				return get_sfx("male_warcry")
-		else
-			if(user.faction == FACTION_UPP)
-				return get_sfx("female_upp_warcry")
-			else
-				return get_sfx("female_warcry")
+				return get_sfx("[user.gender]_warcry")
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"
@@ -382,3 +378,24 @@
 		return
 
 	user.show_speech_bubble("scream")
+
+/datum/emote/living/carbon/human/burstscream
+	key = "burstscream"
+	message = "screams in agony!"
+	emote_type = EMOTE_FORCED_AUDIO|EMOTE_AUDIBLE|EMOTE_VISIBLE
+	stat_allowed = UNCONSCIOUS
+
+/datum/emote/living/carbon/human/burstscream/get_sound(mob/living/carbon/human/user)
+	if(!user.species)
+		return
+	if(user.species.burstscreams[user.gender])
+		return user.species.burstscreams[user.gender]
+	if(user.species.burstscreams[NEUTER])
+		return user.species.burstscreams[NEUTER]
+
+/datum/emote/living/carbon/human/burstscream/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	user.show_speech_bubble("pain")

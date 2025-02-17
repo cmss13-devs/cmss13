@@ -35,14 +35,14 @@
 /obj/structure/grille/fence/east_west
 	//width=80
 	//height=42
-	icon='icons/obj/structures/props/fence_ew.dmi'
+	icon = 'icons/obj/structures/props/fences/fence_ew.dmi'
 	icon_state = "fence-ew"
 	dir = EAST
 
 /obj/structure/grille/fence/north_south
 	//width=80
 	//height=42
-	icon='icons/obj/structures/props/fence_ns.dmi'
+	icon = 'icons/obj/structures/props/fences/fence_ns.dmi'
 	icon_state = "fence-ns"
 
 /obj/structure/grille/fence/healthcheck()
@@ -58,7 +58,8 @@
 	deconstruct(FALSE)
 
 /obj/structure/grille/Collided(atom/user)
-	if(ismob(user)) shock(user, 70)
+	if(ismob(user))
+		shock(user, 70)
 
 /obj/structure/grille/attack_hand(mob/user as mob)
 
@@ -69,13 +70,13 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			damage_dealt = 5
-			user.visible_message(SPAN_WARNING("[user] mangles [src]."), \
-						SPAN_WARNING("You mangle [src]."), \
+			user.visible_message(SPAN_WARNING("[user] mangles [src]."),
+						SPAN_WARNING("You mangle [src]."),
 						"You hear twisting metal.")
 
 	if(!damage_dealt)
-		user.visible_message(SPAN_WARNING("[user] kicks [src]."), \
-						SPAN_WARNING("You kick [src]."), \
+		user.visible_message(SPAN_WARNING("[user] kicks [src]."),
+						SPAN_WARNING("You kick [src]."),
 						"You hear twisting metal.")
 
 	if(shock(user, 70))
@@ -88,11 +89,12 @@
 
 
 /obj/structure/grille/attack_animal(mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
-	M.visible_message(SPAN_WARNING("[M] smashes against [src]."), \
-					SPAN_WARNING("You smash against [src]."), \
+	M.visible_message(SPAN_WARNING("[M] smashes against [src]."),
+					SPAN_WARNING("You smash against [src]."),
 					"You hear twisting metal.")
 
 	health -= M.melee_damage_upper
@@ -126,7 +128,7 @@
 		if(!shock(user, 90))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			anchored = !anchored
-			user.visible_message(SPAN_NOTICE("[user] [anchored ? "fastens" : "unfastens"] the grille."), \
+			user.visible_message(SPAN_NOTICE("[user] [anchored ? "fastens" : "unfastens"] the grille."),
 								SPAN_NOTICE("You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor."))
 			return
 

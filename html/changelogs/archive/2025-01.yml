@@ -1,0 +1,561 @@
+2025-01-01:
+  BlackCrystalic:
+  - bugfix: starting of reactor overload message now give right info
+  Geevies:
+  - rscadd: Added a Loader assistant role to the Demolition specialist
+  Git-Nivrak:
+  - rscdel: Removed non-combat click delay, interacting with items not on your person
+      should be significantly smoother
+  - balance: Clicking on the floor (open turfs) with an item will no longer cause
+      a click delay
+  Red-byte3D:
+  - balance: AMR sniper spec magazines reduced to 2 for the box.
+  - balance: requistions amr sniper spec magazine order reduced to 3 mags.
+  Syndro101:
+  - rscadd: Added a new area for the sector relay.
+  - mapadd: Added new offices for Fax Responders.
+  - maptweak: Renamed the old map.
+  - bugfix: Fax responders no longer count to round end.
+  Zenith, Frans_Feiffer:
+  - rscadd: Added M10 Auto Pistol, new belt, magazines and boxes to standard marine
+      vendors
+  - bugfix: fixes the m39 holster sprites not showing correct camo
+  - soundadd: added new M10 gunshot sound
+  casperr04:
+  - rscadd: Squad Leader pointer arrows are now colored based on the color of the
+      squad.
+  cuberound:
+  - rscadd: faction cryo consoles
+  - bugfix: ares no longer announces when non marine factions enter cryo
+  harryob:
+  - ui: adds a pretty tgui for pred prefs
+  realforest2001:
+  - code_imp: Reorganises how paperwork gets image references, and moves them to a
+      new folder.
+  - rscadd: Added prefab paperwork forms for use by Military Police and the Corporate
+      Liaison.
+  - imageadd: Added a dark background often used by staff faxes for easy referencing.
+  - imageadd: Updated WY and USCM logos to higher quality versions.
+  - code_imp: Reorganises the fountain pen into a subtype of obj/item/tool/pen/multicolor
+      to make the functionality usable in multiple pens.
+  - rscadd: Adds a provost pen, a variant of multicolor pen that can switch between
+      Black, White, Orange, Blue, Green and Red. Intended for use in filling out MP
+      forms.
+2025-01-02:
+  Blundir:
+  - rscadd: hud icon for loader
+  - rscadd: minimap/orbit icons for loader and spotter
+  - bugfix: upp political commisar having incorrect minimap/orbit icon
+  - bugfix: k9 handler pamphlet making all corpsmen have minimap/orbit icon of k9
+      handler instead of corpsman one
+  Drathek:
+  - balance: Loader pamphlet now only increases endurance to 2
+  harryob:
+  - server: the server can now support 516 clients - be aware that the current version
+      (516.1648) has some crashing issues, and you may not want to update yet. the
+      server can also be hosted on 516 versions, but this will force all clients to
+      use 516
+  realforest2001:
+  - rscadd: Fax responder preset listening bugs no longer broadcast to ghosts.
+2025-01-03:
+  Awan:
+  - qol: If you examine a radio that is on your person it's menu listing all frequencies
+      will now pop up.
+  Drathek:
+  - balance: Added scaling to the plasma cost of basic resin constructions when an
+      area is at least 40% saturated.
+  - admin: Niche messaging for sealing off dead bodies now only applies to revivable
+      bodies
+  - refactor: Refactored some resin construction code
+  - balance: The PKD special burst values have changed for non-"Double" (l_series)
+      variants
+  - code_imp: Code no longer uses proc redefinitions with a few exceptions for global
+      macros
+  - bugfix: Fixed various things like all backpacks (instead of just JIMA flags) processing
+  - rscadd: Added a maplint for duplicate identical platforms
+  - maptweak: Fixed duplicate platforms on CORSAT, Desert_Dam, Fiorina, Kutjevo, Hybrisa,
+      and the UPP ERT station
+  - bugfix: Fixed various runtimes caused by explosions and throw_atom code
+  Katskan:
+  - rscadd: Added EMS red and green uniform and jumpsuit, and holobadge to synthetic
+      uniform vendor. Added a briefcase to the uniform vendor.
+  LC4492:
+  - spellcheck: Fixed typos in the "items" file, where on the proc to "zoom", the
+      text had an extra "the" that resulted in a wrong display on chat.
+  - rscadd: made facehugger visible on helmet
+  - rscadd: mouse can now be equipped on ear slot and head slot, in ear slot it'd
+      be seen as sitting on your shoulder
+  - code_imp: Changed the combat flashlight's light range to 6 tiles instead of the
+      normal 5, to make it actually a little better than a normal flashlight. Added
+      a yellowish light color to the lantern (which can be found in colonies), to
+      make it more unique.
+  - imageadd: 'Added new and updated "in_hands" icon sprites, with the list being,
+      but not limited to: Clipboard, binoculars (All camos), mortar Shells (All types),
+      space cleaner spray, plant B gone spray, plastic stack, anesthetic and OT canister
+      tanks, flashlight, lantern, mortar (All camos) and more.'
+  efzapa:
+  - mapadd: All Faction ERT Stations now have a Fax Machine linked to their respective
+      faction.
+  harryob, tyeagg (uscm logo), blundir (upp logo):
+  - rscadd: added a new lobby screen
+2025-01-04:
+  Blundir:
+  - imagedel: folder sprites reverted to previous set
+  Nanu, Wei (SleepyNecrons, Esslenek), Spartanbobby, HarryOb:
+  - imageadd: Fixes, tweaks and resprites the body types and muscularity plus the
+      skin tones for humans in the game. Female torso's are now a thing as well, as
+      that is brought back. You can now be a man and have a female body, and vice
+      versa. Try not to get catfished Marines. Underwear and Bra's have also been
+      tweaked to fit new models. Sprites created by Wei.
+2025-01-05:
+  Awan:
+  - bugfix: Fixed some gearsets having improper radio/chat prefixes.
+  Blundir:
+  - imageadd: resprites all beret object icons and makes them match the onmob sprites,
+      beret format standartization
+  nauticall:
+  - ui: Changed the crew manifest to TGUI.
+  private-tristan:
+  - bugfix: CAS no longer has infinite night vision, contact research for matrix upgrades
+      today!
+  realforest2001:
+  - bugfix: Preset corpses and pizza ERTs now have correct paygrade displays.
+2025-01-06:
+  Blundir:
+  - rscadd: added seegson, hyperdyne and makeshift synth reset keys and added them
+      to corresponding factions
+  harryob:
+  - rscadd: the req ordering console has a new ui
+2025-01-07:
+  Git-Nivrak:
+  - rscadd: Xenomorphs can now reset their strain, first use is free then it can be
+      done once every 40 minutes.
+2025-01-08:
+  Blundir:
+  - rscadd: misc ranks are now shown as icons in ooc
+  - rscadd: rank icons now work in asay and mentorsay chats
+  - bugfix: fixed some broken ranks icons not working
+  Diegoflores31:
+  - balance: Shrapnell accuracy and damage increased
+  - balance: Shrapnell now does 60% bonus damage to xenomorphs
+  - balance: Shrapnell slows xenomorphs on hit
+  - balance: Custom rockets will now shoot their shrapnell on a 90 degree angle
+  cuberound:
+  - rscadd: UPP req  console, dropship part fabricato and tank part fabricator
+2025-01-09:
+  AndroBetel:
+  - spellcheck: Formatting of M10 auto pistol.
+2025-01-10:
+  FebrezeNinja:
+  - bugfix: Added a missing reference check to flight/ui_act
+  harryob:
+  - rscadd: added client settings to the statbrowser - under the "Options" buttn
+  - ui: added a search bar to the portable crew monitor
+  private-tristan:
+  - bugfix: Neuraline no longer generates in recipes, and is unobtainable from botany.
+  zzzmike:
+  - qol: Adds messaging when larva and host both survive surgery
+2025-01-11:
+  Blundir:
+  - rscadd: different xeno spits now have different icon depending on their damage
+  - imageadd: new neurotoxin spit sprite
+  - imageadd: new predalien action icons
+  Git-Nivrak:
+  - rscadd: Added another combat technician helmet option
+2025-01-13:
+  harryob:
+  - rscadd: fingerprints must now be revealed by forensic spray. they disappear after
+      a minute
+  - bugfix: you can't accidentally end up ghosting when trying to join as xeno when
+      no larva are available
+  - bugfix: mc buttons work in 516
+  - ui: adds a search bar for hair/facial hair picking, also sorts them alphabetically
+  - ui: if you're on 516, the hair/facial hair picker now previews hair color too
+2025-01-14:
+  BOBAMAx:
+  - imageadd: added kutjevo themed goon uniforms and helmets
+  - maptweak: replaced dead goons on kutjevo with kutjevo goons
+  - maptweak: replaced kutjevo WY sec survivor with kutjevo goon survivor
+  - bugfix: fixed smart minitank flush verb showing a list of all on-screen mobs
+  Blundir:
+  - bugfix: coif not hiding your face when it should've
+  - bugfix: bandana hiding facial hair forever
+  FebrezeNinja:
+  - qol: Dropship autopilot settings can be modified during refuel/recharge
+  - bugfix: Fixes black market TGUI crash
+  Git-Nivrak:
+  - maptweak: Moved the sensor tower on Solaris Ridge
+  - bugfix: Fixes phosphorus smoke bypassing reaction limits
+  Killfish:
+  - rscadd: Added a crappy wrist watch to loadout selector for 1 point. Now you have
+      an IC way to check the time!
+  - code_imp: Altered accessory extra examine text to be a bit more flexible.
+  - imageadd: Added one slight recolor of PDT bracelet as a crappy watch, adds dmi
+      file for future wrist items that currently uses a scarf icon as a placeholder.
+  LC4492:
+  - code_imp: Added and organized the file that contains all the tiles touched by
+      this PR, now its much easier to navigate and find the tile you wish. Coded in
+      the unused tiles, and of course the new combinations and styles.
+  - imageadd: Added tons of different styles for the tiling of the USS Almayer, smooth
+      tiles, smooth edges and etcetera, if you played PVE, you will notice that the
+      tiles are similar (If not straight-up ported from PVE, heh, but most aren't)
+  TheGamerdk:
+  - rscadd: The CO can now vend Falling Falcon challenge coins
+  Vandujr, Amory:
+  - rscadd: Added a brown trenchcoat, tan fedora, brown gloves, tan beret, brown beret,
+      detective suits, and company baseball cap to the liaison's wardrobe.
+  - rscadd: Hybrisa Corpsec hats can now use hat accessories.
+  - rscadd: Tan and brown civilian berets.
+  - rscadd: Added a box of 7 Company Baseball caps to the liaison's office.
+  - rscadd: Added a new colony admin uniform. The LV-624 liaison uses the admin uniform.
+  - rscadd: Replaced all old fedoras, detective clothes, and corpsec hat instances
+      with the hybrisa ones.
+  - rscadd: The Corporate Liaison's wardrobe now has a limited amount of items you
+      can grab per person. 5 Uniforms, 5 Suits, 5 Hats, 2 Glasses, 2 Gloves, 2 Shoes,
+      5 Ties.
+  - rscdel: Replaced the old fedora, detective clothes, and corpsec hats with the
+      hybrisa versions, then removed the hybrisa versions from the hybrisa clothing
+      file.
+  - balance: The PMC fatigues (and by proxy the WY security fatigues) can now wear
+      normal clothes on top of them.
+  - balance: The Labcoat can now store a bunch more medical stuff, including all surgical
+      tools, space cleaner, blood bags, and a few more.
+  - balance: Most jackets can now store the large general pouch in their suit slot,
+      like armors already could.
+  - spellcheck: Changed a few descriptions to be less confusing.
+  - refactor: Refactored all of the utility and detective uniforms to not be 'synthetic'
+      uniforms. They are generic now. In the code.
+  - imageadd: Added a new brown trenchcoat, tan fedora, colonist jumpsuit, and PMC
+      uniform resprites.
+  - imagedel: The old fedora, detective clothes, and corpsec hat.
+  - maptweak: replaced all instances of the old corpsec hat, detective clothes, and
+      grey fedora with hybrisa ones.
+  Yayyay007:
+  - bugfix: adds a line of code to the spec grenadier launcher to respect help intent
+      safety prefs
+  - bugfix: Fixed metal to plasteel alchemy via disassembling upgraded plasteel cades
+  - bugfix: Fixes check status using your own name when using it on others
+  cuberound:
+  - soundadd: SEA jingle when they join the game
+  - balance: reverts changes to xm88 that gave it build in bc
+  - code_imp: decals get burned into turf they are on, maps look the same with less
+      lag
+  realforest2001:
+  - bugfix: Human Psychic Radiance now works as intended.
+  - bugfix: Containment Cell consoles no longer have text overlayed on their sprites.
+2025-01-15:
+  harryob:
+  - balance: synthetic gun restrictions now apply to spray bottles containing reagents
+      with negative chemical properties
+2025-01-16:
+  Blundir:
+  - rscadd: Chief Medical Officer's Labcoat
+  Crowford:
+  - imageadd: replaced trap1, trap0, trapacid1, trapacid2, trapacid3 and trap gas
+      with better sprites.
+  Red-byte3D:
+  - balance: Statistically the m46c is now equal to the mk1 and should be kept this
+      way.
+  - balance: The co can no longer remove the ID lock from his rifle.
+  - balance: The m46c can now use full auto while IFF is enabled
+  cuberound:
+  - bugfix: fixes voiding of decals with negative values
+  harryob:
+  - bugfix: on 516, sometimes the storage backend would not find your preferences
+      correctly. this is fixed, but you still need to be on version 516.1650+
+  - bugfix: 516 clients can consistently click on tickets now
+  nauticall:
+  - imageadd: Resprited the CO armor to a new design. Old CO armor sprites have been
+      repurposed as armor for generals.
+  - rscadd: Added additional vending options to the CO vendor.
+  - bugfix: fixed co and so uniforms not having working camo variants
+2025-01-17:
+  Blundir:
+  - rscadd: WY research consultant labcoat
+  - rscadd: WY research consultant now has a coherent set of items at their disposal
+  - rscadd: WY research new looks
+  - bugfix: fixes WY research consultant not having their gun spawn
+  Lagomorphica:
+  - balance: Dancer praetorian has lost it's acid.
+  - balance: Dancer praetorian tail-trip and impale now have a small cooldown on miss.
+  Red-byte3D:
+  - rscdel: Removed shipside operations synthetic
+  - balance: Queen building buffed back to 2 seconds while boosted. 3 seconds while
+      the buff has ran out
+  - balance: The base synthetic stun resistances have been cut in half, from 5 to
+      2.5
+  - balance: Synthetic smart-pack no longer is an exoskeleton nor has any abilities
+      other then a built in light and is a normal backpack.
+  - spellcheck: Description and name of the smart pack changed
+2025-01-18:
+  Blundir:
+  - rscadd: now all WY jobs have a hud icon and a minimap icon
+  - bugfix: fixed corporate survs having incorrect faction
+  - imageadd: WY headset is now white
+  LC4492:
+  - bugfix: Light replacer received some modifications. Wrenches and Wirecutters now
+      face outwards, so they will not mix with the character's clothes.  Working Joe
+      PDA is now similar to the command tablet. All buckets have been re-positioned
+      to look better. Levels the height of double-holding the mateba with other revolvers
+      on the code. Replaces the current wood stack with a ported and resprited version
+      from Aurora. Fixes riot shield facing the opposite of the intended direction
+      in some specific positions. Tweaks the position of the Maintenance Jack so it
+      will not snap.
+  - imageadd: Added new in_hand wood stack, ported from Aurora and resprited to match
+      with our current wood object.
+  MistChristmas:
+  - qol: OW Consoles are scrollable
+  - bugfix: Fixed eslint not checking jsx files
+  Nomoresolvalou, Thwomper:
+  - imageadd: Added a new predator mask and mask attachment
+2025-01-19:
+  Blundir:
+  - rscadd: synth reset key no longer has medical skillock and has a hint to it being
+      engi skill locked in description
+  - balance: change synth key skill level from engi to trained (you can use key after
+      reading engi pamphlet)
+  - bugfix: fixed wl check on UPP synth not working
+  Git-Nivrak:
+  - code_imp: Xeno wounds now update every time they take damage
+  cuberound:
+  - bugfix: UPP abovehead text respects squad color
+  private-tristan:
+  - balance: Flaming Shrapnel now has 20 AP (from 50)
+  - bugfix: OT special shrapnel is now properly affected by the cap, meaning that
+      you can only have 16 shrapnel (from 32)
+  realforest2001:
+  - rscadd: USCM Synthetics now have an enlisted rank. (Master Sergeant and Master
+      Gunnery Sergeant)
+2025-01-20:
+  Drathek:
+  - ui: Added search bars to stickyban panel, unban panel, view notes, view other
+      notes, antagonists panel
+  - ui: Fixed follow button in antagonists panel
+  - ui: Fixed clear button not refreshing filters for old player panel, and view variables
+  Red-byte3D:
+  - qol: Added a "Send thoughts" panel like the "Manage Hive" one, putting in psychic
+      radiance,  whisper and queen word in there.
+  - code_imp: var changes on burrower abilities and moved burrower abilities from
+      abilities.dm into burrower_abilities.dm thats alot of abilities.
+  - code_imp: Moved Queen abiliites from abilities.dm into its own respective file
+      and reworked them into procs
+  - rscdel: Removed unused queen ability code such as the beacon, the boiler gas and
+      the barricade
+  - qol: Ravager's empowered charge now bypasses intent, meaning if you are empowered
+      you will always damage the person you charge at instead of giving them a pat
+      on the back.
+2025-01-21:
+  sleepynecrons/esselnek:
+  - rscadd: New turtleneck and formal uniforms, including a council jacket and a plain
+      jacket for the CO vendor.
+  - imageadd: New sprites for the old formal black and white uniforms, falcon jacket
+      and a new plain jacket.
+  - rscadd: New uscm officer formal uniform sprite
+  - imagedel: Removes old unused suprised that this pr replaces
+2025-01-22:
+  Blundir:
+  - rscadd: adds support for a headset to have multiple faction huds, instead of being
+      harcoded to one main one
+  - rscadd: 'some headsets can now see multiple huds: CL can see USCM, WY, PMC; CO,
+      XO can see USCM, WY, CMB, etc'
+  - rscadd: mp and hg headsets can now track cmp
+  - bugfix: cl having incorrect minimap/orbit icon
+  Drathek:
+  - bugfix: Fixed joining as lesser drone not always performing banishment check
+  - spellcheck: Fixed cooldown message for lesser drone having the wrong duration
+  Watermelon914:
+  - bugfix: Fixed an exploit that lets you increase your weapon's damage multiplier
+      infinitely.
+  iloveloopers:
+  - qol: Forensic spray can no longer generate in recipes, mutated plants and colony
+      vials.
+2025-01-23:
+  Blundir:
+  - bugfix: people that don't understand xeno speech won't see random letters from
+      the words xenos say
+  Nomoresolvalou, Justlat:
+  - imageadd: Added a new mask attachment for predators
+  Ultimate-Fluff:
+  - bugfix: Replaced the red pixel on the HOS's beret with the an appropriate golden
+      pixel.
+  thevandie:
+  - bugfix: fixed a sprite bug with the VP78
+2025-01-24:
+  BlackCrystalic:
+  - bugfix: Warrior no more decap infected marines that infected within do_after duration
+      (there two stages for decap, all two got check)
+  Drathek:
+  - balance: Halved nutrition cost when cold
+  - code_imp: Standardize some nutrition usage into defines
+  - bugfix: Fixed 3 ways to launder counterfeit money
+  - ui: TGUI Input fields now have their clear button restored on 516
+  - bugfix: Fixed an autofire exploit
+  Git-Nivrak:
+  - code_imp: Humans now check for death on updatehealth, meaning they die as soon
+      as they cross the 200 damage mark.
+  Mikrel0712:
+  - rscadd: Hijack now automatically calls General Quarters
+  Red-byte3D:
+  - balance: Removed CO's sg training by default
+  - rscadd: Added a smartgunner pamphlet for CO's that can only be used by the CO
+      that they can use to use their sg and sg gear
+  - bugfix: USCM Uniform now appears with the correct name on the vendors
+  - code_imp: vendors now strip_improper for names
+  Venuska1117:
+  - code_imp: weeds now clean turf when they spread.
+  - code_imp: changed strain alert() to tgui_alert(), "Yes" and "No" got changed to
+      "Confirm Mutation" and "Cancel".
+  blackcrystall:
+  - code_imp: randomize_squad code qol
+  - bugfix: In case if for some reason we have less open slots in squads for jobs
+      than jobs aval in total, we put in to cryo squad in assumption that this their
+      marine did cryo
+  - bugfix: Bug when you use aimed shot after normal one (your gun fails able_to_fire
+      check and don't fire, but effect accumulate), you can't premade aimed shot buffs
+      to use it later on normal one.
+  cuberound:
+  - bugfix: fixes cryo upp starting naked
+  - qol: properly adjusted access rights on UPP cryo troops
+  - rscadd: OB disabled for HvH events
+  - rscadd: gamemode adjustable ammo values
+  - balance: reduces accurate range of all ammo to 10 on HvH, extra tile reduction
+      per 5 ap. makes ap ammo better at close range and solves off screen combat in
+      a good way
+  - balance: increases MOU firedelay to 1.2 second from 0.25 on HvH
+  - balance: reduces explosion stun and damage and adds slow on HvH
+  ihatethisengine:
+  - balance: adds light and a permanent CAS signal to JIMA flag.
+  jupyterkat:
+  - rscadd: Adds a minimal ui mode for medscanners
+  private-tristan:
+  - rscadd: CIA operatives can purchase more tranquilizers from their vendor
+  - balance: Tranq gun does 60 stamina damage (from 30) per hit
+  - rscadd: Boiler neurotoxin now quickly purges research stimulants.
+  - balance: Boiler's neurotoxin tailstab now inflicts 4 more neurotoxin duration
+      (16 to 20). Acid Tailstab is unaffected.
+  - qol: Duration of dizziness caused by neurotoxin has been reduced.
+  - rscadd: Queen neuro spit now drains 4u of stims per hit.
+  - balance: Sentinel's slowing spit now drains 2u of stims per hit (from 1.75u).
+  - qol: Biomass printer is now significantly quicker at processing acidic hearts
+      and printing items.
+  realforest2001:
+  - bugfix: Fixes a looping check that spams ARES until we die.
+  - admin: Changed Mentor AutoReplies to use the admin autoresponse system.
+2025-01-25:
+  Red-byte3D:
+  - rscadd: Xenomorphs now get lisps if the person they bursted from had that trait
+  Ultimate-Fluff:
+  - imageadd: Synthetic Maintenance Stations now blink red if they cannot be operated
+      under any circumstances.
+  - imageadd: Synthetic Maintenance Stations flash green whether or not an APC is
+      powering it to indicate it can still operate with charge.
+  - bugfix: Synthetic Maintenance Stations now properly display the correct occupied
+      icon state whether or not there is an APC powering the machine whilst somebody
+      is inside.
+  - code_imp: Fixed and added code that makes Synthetic Maintenance Stations automatically
+      eject patients if they run out of charge while operating.
+  - code_imp: Added code that disables patients from entering the Synthetic Maintenance
+      Station if it has no charge left.
+2025-01-26:
+  Diegoflores31:
+  - qol: Adds universal Night Vision color preferences (green by default)
+  realforest2001:
+  - rscadd: Added a button to certain fax machines to send priority faxes, with additional
+      audio cues.
+  - rscadd: Certain faxes when receiving priority messages will also trigger ARES
+      radio alerts.
+  - bugfix: Fax machine receiving a fax now plays the correct sound.
+  - rscadd: It is now possible to navigate between sending a message to an entire
+      fax department, or to any individual fax in that department.
+  - maptweak: Adds in the Fax Responder listening intercomms that I apparently deleted
+      elsewhere.
+2025-01-27:
+  BOBAMAx:
+  - rscadd: Roundstart Xenomorph players will now burst out of map-specific bodies
+      instead of generic ones
+2025-01-28:
+  BlackCrystalic:
+  - bugfix: You can't delete queen via gibber now
+  - code_imp: Moved vars as debrised, hull, burnable, burnt, breakable, broken to
+      turf_flags as TURF_DEBRISED, TURF_HULL, TURF_BURNABLE, TURF_BURNT, TURF_BREAKABLE,
+      TURF_BROKEN
+  Drathek:
+  - balance: Showers and drinks now do not apply as extreme of temperature differences
+  - balance: Cryo effects (like IB cure) now requires 210K (-63.15C) instead of 0C
+      (273.15K)
+  - balance: Heat damage 1 threshold raised to 100C (373.15K) from 87C (360.15K) and
+      heat damage 3 threshold lowered to 526C (800K) from 726C (1000K)
+  - bugfix: Fixed incorrect temperature change in hyperthermic properties, when exiting
+      cryopods, and with shivering symptom
+  - code_imp: Reagents can now specify adj_temp and target_temp to affect body temperature
+  Git-Nivrak:
+  - bugfix: Fixes wounds updating on dead xenos
+  - bugfix: Fixed xeno gib remains not appearing
+  - qol: Stacks inserted into storages will now try to fill other stacks
+  MeH0y:
+  - rscadd: Adds heavy clan armor to the pred vendors
+  Nomoresolvalou:
+  - bugfix: yautja mask attachment now saves to preferences correctly
+  Red-byte3D:
+  - bugfix: You can no longer shock dead people with the electropack and move them
+  Steelpoint:
+  - rscadd: Ports a set of UPP, CANC and USCM cargo containers from the PvE server.
+  detectivegoogle:
+  - rscadd: added some new synthvivor presets and updated older ones.
+  ihatethisengine:
+  - bugfix: fixes jima name stacking
+  nauticall:
+  - rscadd: Changed most structure lights in the game to be either an incandascent
+      warm white/yellow, or a cold blue, depending on their bulb color.
+  private-tristan:
+  - rscadd: When 2 charger crushers collide, they now cause a tremor, knocking down
+      and slowing nearby enemies
+  - balance: reduced charger collision weaken (to the charger crushers) by 1 second
+  realforest2001:
+  - bugfix: Synthetic Reset Key description now only says you need engineering knowledge
+      when you actually do.
+2025-01-29:
+  Weuyn:
+  - balance: Research stim healing properties made more expensive, epinephrine-like
+      and painkilling properties made cheaper.
+2025-01-30:
+  Paperybirch:
+  - rscadd: Added reagent/ethanol/ethanol and defined its chem class as CHEM_CLASS_BASIC
+  - bugfix: Changed oxycodone's chem class from uncommon to CHEM_CLASS_COMMON
+2025-01-31:
+  BlackCrystalic:
+  - bugfix: Now all rockets fired from cas have in causedata user mob
+  Blundir:
+  - bugfix: replaced placeholder mouse named "rat" with an actual rats
+  - spellcheck: specified that Doc the mouse is actually a mouse and not a rat
+  Drathek:
+  - bugfix: Fixed stat browser not saving/restoring font size value on 516
+  Red-byte3D:
+  - rscadd: Eggsac carrier eggs no longer support playable huggers IF there is no
+      cluster BEFORE they are placed, eggs put on clustered/hive weeds still allow
+      huggers
+  Zenith:
+  - maptweak: Tweaked Hybrisa LZ2, added fog and minor map tweaks.
+  Zonespace27:
+  - admin: Xenomorphs are now properly logged in round_stats.log files.
+  efzapa:
+  - bugfix: Fixes Arcade Machines almost only ever giving money cards as a reward.
+  iamtheguy, quicklode:
+  - imageadd: new iamtheguy smartpack sprites are now in the synth vendor.
+  private-tristan:
+  - balance: You can no longer use HPR's slap transfer to transfer bullets to a non-HPR
+      mag.
+  - rscadd: Three Fourths Night Vision option for ghosts and xenos
+  - imageadd: Icon for xenos 3/4ths NV
+  - code_imp: renamed LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE to LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+  - rscadd: Solar Devils come with shielded blowtorches, causing no eye damage when
+      used
+  - rscadd: Solar Devils now spawn with AP loaded in their MK1s.
+  - balance: All Solar Devils know how to use smartguns
+  - balance: Solar Devils SG now gets a machete scabbard
+  - balance: Replaced 2 cells in the Solar Devil engi kit with breaching charges
+  - bugfix: The Solar Devils Platoon Leader now has the correct medical skill and
+      will spawn with medkits.
+  realforest2001:
+  - bugfix: Clarifies that VAI should not be shooting WY or getting into fights with
+      them outside of authorized events.

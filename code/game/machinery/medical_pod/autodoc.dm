@@ -109,7 +109,8 @@
 
 /obj/structure/machinery/medical_pod/autodoc/proc/heal_limb(mob/living/carbon/human/human, brute, burn)
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
-	if(!length(parts)) return
+	if(!length(parts))
+		return
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		picked.heal_damage(brute, burn, TRUE)
@@ -234,7 +235,8 @@
 				if(I.damage > 0)
 					if(I.name == "eyeballs") // treat eye surgery differently
 						continue
-					if(organdamagesurgery > 0) continue // avoid duplicates
+					if(organdamagesurgery > 0)
+						continue // avoid duplicates
 					surgery_list += create_autodoc_surgery(L,ORGAN_SURGERY,"damage",0,I)
 					organdamagesurgery++
 
@@ -344,7 +346,8 @@
 							if(S.organ_ref.damage > BONECHIPS_MAX_DAMAGE)
 								sleep(FIXVEIN_MAX_DURATION*surgery_mod)
 							sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
-						if(!surgery) break
+						if(!surgery)
+							break
 						if(istype(S.organ_ref,/datum/internal_organ))
 							S.organ_ref.rejuvenate()
 						else
@@ -368,23 +371,27 @@
 
 							if(E.eye_surgery_stage == 0)
 								sleep(SCALPEL_MAX_DURATION)
-								if(!surgery) break
+								if(!surgery)
+									break
 								E.eye_surgery_stage = 1
 								H.disabilities |= NEARSIGHTED // code\#define\mobs.dm
 
 							if(E.eye_surgery_stage == 1)
 								sleep(RETRACTOR_MAX_DURATION)
-								if(!surgery) break
+								if(!surgery)
+									break
 								E.eye_surgery_stage = 2
 
 							if(E.eye_surgery_stage == 2)
 								sleep(HEMOSTAT_MAX_DURATION)
-								if(!surgery) break
+								if(!surgery)
+									break
 								E.eye_surgery_stage = 3
 
 							if(E.eye_surgery_stage == 3)
 								sleep(CAUTERY_MAX_DURATION)
-								if(!surgery) break
+								if(!surgery)
+									break
 								H.disabilities &= ~NEARSIGHTED
 								H.sdisabilities &= ~DISABILITY_BLIND
 								E.heal_damage(E.damage)
@@ -420,13 +427,15 @@
 							continue
 						open_incision(H,S.limb_ref)
 						for(var/datum/wound/W in S.limb_ref.wounds)
-							if(!surgery) break
+							if(!surgery)
+								break
 							if(W.internal)
 								sleep(FIXVEIN_MIN_DURATION-30)
 								S.limb_ref.wounds -= W
 								S.limb_ref.remove_all_bleeding(FALSE, TRUE)
 								qdel(W)
-						if(!surgery) break
+						if(!surgery)
+							break
 						close_incision(H,S.limb_ref)
 
 					if("broken")
@@ -441,9 +450,11 @@
 						sleep(BONEGEL_REPAIR_MAX_DURATION*surgery_mod+20)
 						if(S.limb_ref.brute_dam > 20)
 							sleep(((S.limb_ref.brute_dam - 20)/2)*surgery_mod)
-							if(!surgery) break
+							if(!surgery)
+								break
 							S.limb_ref.heal_damage(S.limb_ref.brute_dam - 20)
-						if(!surgery) break
+						if(!surgery)
+							break
 						if(S.limb_ref.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 							new /obj/item/stack/medical/splint/nano(loc, 1)
 						S.limb_ref.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
@@ -478,7 +489,8 @@
 							surgery_todo_list -= S
 							continue
 
-						if(!surgery) break
+						if(!surgery)
+							break
 						S.limb_ref.setAmputatedTree()
 
 						var/spillover = LIMB_PRINTING_TIME - (CAUTERY_MAX_DURATION+RETRACTOR_MAX_DURATION+SCALPEL_MAX_DURATION)
@@ -486,14 +498,16 @@
 							sleep(spillover*surgery_mod)
 
 						sleep(IMPLANT_MAX_DURATION*surgery_mod)
-						if(!surgery) break
+						if(!surgery)
+							break
 						S.limb_ref.robotize()
 						H.update_body()
 						H.updatehealth()
 						H.UpdateDamageIcon()
 
 					if("shrapnel")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
@@ -505,7 +519,8 @@
 							open_encased(H,S.limb_ref)
 						if(length(S.limb_ref.implants))
 							for(var/obj/item/I in S.limb_ref.implants)
-								if(!surgery) break
+								if(!surgery)
+									break
 								if(!is_type_in_list(I,known_implants))
 									sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
 									S.limb_ref.implants -= I
@@ -513,23 +528,28 @@
 									qdel(I)
 						if(S.limb_ref.name == "chest" || S.limb_ref.name == "head")
 							close_encased(H,S.limb_ref)
-						if(!surgery) break
+						if(!surgery)
+							break
 						close_incision(H,S.limb_ref)
 
 					if("open")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(H,S.limb_ref)
 						close_incision(H,S.limb_ref)
 
 
-		if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
+		if(prob(30))
+			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
 		surgery_todo_list -= S
 		continue
 
 	while(heal_brute||heal_burn||heal_toxin||filtering||blood_transfer)
-		if(!surgery) break
+		if(!surgery)
+			break
 		sleep(20)
-		if(prob(5)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps as it continues working.");
+		if(prob(5))
+			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps as it continues working.");
 
 	H.pain.recalculate_pain()
 	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
@@ -662,13 +682,18 @@
 		if(occupant)
 			var/t1
 			switch(occupant.stat)
-				if(0) t1 = "conscious"
-				if(1) t1 = "<font color='blue'>unconscious</font>"
-				if(2) t1 = "<font color='red'><b>dead</b></font>"
+				if(0)
+					t1 = "conscious"
+				if(1)
+					t1 = "<font color='blue'>unconscious</font>"
+				if(2)
+					t1 = "<font color='red'><b>dead</b></font>"
 			var/operating
 			switch(connected.surgery)
-				if(0) operating = "Auto-Doc: STANDING BY"
-				if(1) operating = "Auto-Doc: IN SURGERY: DO NOT MANUALLY EJECT"
+				if(0)
+					operating = "Auto-Doc: STANDING BY"
+				if(1)
+					operating = "Auto-Doc: IN SURGERY: DO NOT MANUALLY EJECT"
 			var/damageOxy = occupant.getOxyLoss() > 50 ? "<b>[occupant.getOxyLoss()]</b>" : occupant.getOxyLoss()
 			var/damageTox = occupant.getToxLoss() > 50 ? "<b>[occupant.getToxLoss()]</b>" : occupant.getToxLoss()
 			var/damageFire = occupant.getFireLoss() > 50 ? "<b>[occupant.getFireLoss()]</b>" : occupant.getFireLoss()
@@ -677,7 +702,7 @@
 			dat += "Damage: [SET_CLASS("[damageOxy]", INTERFACE_BLUE)] - [SET_CLASS("[damageTox]", INTERFACE_GREEN)] - [SET_CLASS("[damageFire]", INTERFACE_ORANGE)] - [SET_CLASS("[damageBrute]", INTERFACE_RED)]<br>"
 			dat += "The patient is [t1]. <br>"
 			dat += "[operating]<br>"
-			dat += "<a href='?src=\ref[src];ejectify=1'>Eject Patient</a>"
+			dat += "<a href='byond://?src=\ref[src];ejectify=1'>Eject Patient</a>"
 			dat += "<hr><b>Surgery Queue:</b><br>"
 
 			var/list/surgeryqueue = list()
@@ -740,26 +765,26 @@
 
 					dat += "<br>"
 
-			dat += "<hr><a href='?src=\ref[src];surgery=1'>Begin Surgery</a> - <a href='?src=\ref[src];refresh=1'>Refresh Menu</a> - <a href='?src=\ref[src];clear=1'>Clear Queue</a><hr>"
+			dat += "<hr><a href='byond://?src=\ref[src];surgery=1'>Begin Surgery</a> - <a href='byond://?src=\ref[src];refresh=1'>Refresh Menu</a> - <a href='byond://?src=\ref[src];clear=1'>Clear Queue</a><hr>"
 			if(!connected.surgery)
 				dat += "<b>Trauma Surgeries</b>"
 				dat += "<br>"
 				if(isnull(surgeryqueue["brute"]))
-					dat += "<a href='?src=\ref[src];brute=1'>Brute Damage Treatment</a><br>"
+					dat += "<a href='byond://?src=\ref[src];brute=1'>Brute Damage Treatment</a><br>"
 				if(isnull(surgeryqueue["burn"]))
-					dat += "<a href='?src=\ref[src];burn=1'>Burn Damage Treatment</a><br>"
+					dat += "<a href='byond://?src=\ref[src];burn=1'>Burn Damage Treatment</a><br>"
 				if(isnull(surgeryqueue["open"]))
-					dat += "<a href='?src=\ref[src];open=1'>Close Open Incisions</a><br>"
+					dat += "<a href='byond://?src=\ref[src];open=1'>Close Open Incisions</a><br>"
 				if(isnull(surgeryqueue["shrapnel"]))
-					dat += "<a href='?src=\ref[src];shrapnel=1'>Shrapnel Removal Surgery</a><br>"
+					dat += "<a href='byond://?src=\ref[src];shrapnel=1'>Shrapnel Removal Surgery</a><br>"
 				dat += "<b>Hematology Treatments</b>"
 				dat += "<br>"
 				if(isnull(surgeryqueue["blood"]))
-					dat += "<a href='?src=\ref[src];blood=1'>Emergency Blood Transfusion</a><br>"
+					dat += "<a href='byond://?src=\ref[src];blood=1'>Emergency Blood Transfusion</a><br>"
 				if(isnull(surgeryqueue["dialysis"]))
-					dat += "<a href='?src=\ref[src];dialysis=1'>Dialysis</a><br>"
+					dat += "<a href='byond://?src=\ref[src];dialysis=1'>Dialysis</a><br>"
 				if(isnull(surgeryqueue["toxin"]))
-					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
+					dat += "<a href='byond://?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
 				dat += "<br>"
 				if(length(upgrades))
 					dat += "<b>Orthopedic Surgeries</b>"
@@ -767,19 +792,19 @@
 						switch(iter)
 							if(RESEARCH_UPGRADE_TIER_2)
 								if(isnull(surgeryqueue["broken"]))
-									dat += "<a href='?src=\ref[src];broken=1'>Broken Bone Surgery</a><br>"
+									dat += "<a href='byond://?src=\ref[src];broken=1'>Broken Bone Surgery</a><br>"
 							if(RESEARCH_UPGRADE_TIER_1)
 								if(isnull(surgeryqueue["internal"]))
-									dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
+									dat += "<a href='byond://?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
 							if(RESEARCH_UPGRADE_TIER_3)
 								if(isnull(surgeryqueue["organdamage"]))
-									dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
+									dat += "<a href='byond://?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
 							if(RESEARCH_UPGRADE_TIER_4)
 								if(isnull(surgeryqueue["larva"]))
-									dat += "<a href='?src=\ref[src];larva=1'>Experimental Parasite Exctraction</a><br>"
+									dat += "<a href='byond://?src=\ref[src];larva=1'>Experimental Parasite Exctraction</a><br>"
 		else
 			dat += "The autodoc is empty."
-	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)
+	dat += text("<a href='byond://?src=\ref[];mach_close=sleeper'>Close</a>", user)
 	show_browser(user, dat, "Auto-Doc Medical System", "sleeper", "size=300x400")
 	onclose(user, "sleeper")
 
@@ -905,7 +930,16 @@
 			updateUsrDialog()
 		add_fingerprint(usr)
 
+/obj/structure/machinery/autodoc_console/yautja
+	name = "medical pod console"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"
 	desc = "A much more expensive model of autodoc modified with an A.I. diagnostic unit. The result is a much simpler, point-and-click interface that anyone, regardless of training, can use. Often employed in autodoc systems deployed to military front lines for soldiers to use."
 	skilllock = null
+
+/obj/structure/machinery/medical_pod/autodoc/yautja
+	name = "alien automated medical pod"
+	desc = "An emergency surgical alien device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

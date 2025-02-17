@@ -20,7 +20,8 @@
 		for(var/datum/disease/D in self.data_properties["viruses"])
 			//var/datum/disease/virus = new D.type(0, D, 1)
 			// We don't spread.
-			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS) continue
+			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS)
+				continue
 
 			if(method == TOUCH)
 				M.contract_disease(D)
@@ -29,10 +30,12 @@
 
 
 /datum/reagent/blood/reaction_turf(turf/T, volume)//splash the blood all over the place
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	var/datum/reagent/blood/self = src
 	src = null
-	if(!(volume >= 3)) return
+	if(!(volume >= 3))
+		return
 
 	T.add_blood(self.color)
 
@@ -115,7 +118,8 @@
 	intensitymod = -3
 
 /datum/reagent/water/reaction_turf(turf/T, volume)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	src = null
 	if(volume >= 3)
 		T.wet_floor(FLOOR_WET_WATER)
@@ -168,7 +172,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 6)
+	properties = list(PROPERTY_PAINKILLING = 3)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -680,8 +684,10 @@
 			H.contract_disease(new /datum/disease/black_goo)
 
 /datum/reagent/blackgoo/reaction_turf(turf/T, volume)
-	if(!istype(T)) return
-	if(volume < 3) return
+	if(!istype(T))
+		return
+	if(volume < 3)
+		return
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 		new /obj/effect/decal/cleanable/blackgoo(T)
 
@@ -843,13 +849,7 @@
 	chemfiresupp = TRUE
 	burncolor = "#ff9300"
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9)
-
-/datum/reagent/chlorinetrifluoride/on_mob_life(mob/living/M) // Not a good idea, instantly messes you up from the inside out.
-	. = ..()
-	M.adjust_fire_stacks(max(M.fire_stacks, 15))
-	M.IgniteMob(TRUE)
-	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
+	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9, PROPERTY_IGNITING = 1)
 
 /datum/reagent/methane
 	name = "Methane"
@@ -1022,7 +1022,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_TOXIC = 1, PROPERTY_HALLUCINOGENIC = 6)
+	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_EXCRETING = 2, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/plasma/antineurotoxin
 	name = "Anti-Neurotoxin"
@@ -1069,3 +1069,21 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
+
+/datum/reagent/forensic_spray
+	name = "Forensic Spray"
+	id = "forensic_spray"
+	description = "A dye-containing spray that binds to the skin oils left behind by fingerprints."
+	reagent_state = LIQUID
+	color = "#79847a"
+	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/forensic_spray/reaction_obj(obj/reacting_on, volume)
+	if(!istype(reacting_on, /obj/effect/decal/prints))
+		return
+
+	var/obj/effect/decal/prints/reacting_prints = reacting_on
+	reacting_prints.set_visiblity(TRUE)
+
+	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, set_visiblity), FALSE), 1 MINUTES, TIMER_UNIQUE|TIMER_OVERRIDE)

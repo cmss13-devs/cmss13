@@ -6,6 +6,9 @@
 /datum/chem_property/negative/process(mob/living/M, potency = 1, delta_time)
 	M.last_damage_data = create_cause_data("Harmful substance", holder.last_source_mob?.resolve())
 
+/datum/chem_property/negative/can_cause_harm()
+	return TRUE
+
 /datum/chem_property/negative/hypoxemic
 	name = PROPERTY_HYPOXEMIC
 	code = "HPX"
@@ -53,7 +56,8 @@
 		qdel(O)
 		return
 	if(istype(O,/obj/effect/plantsegment))
-		if(prob(50)) qdel(O)
+		if(prob(50))
+			qdel(O)
 		return
 	if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
 		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
@@ -507,3 +511,18 @@
 
 /datum/chem_property/negative/hemositic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.disabilities |= NERVOUS
+
+/datum/chem_property/negative/igniting
+	name = PROPERTY_IGNITING
+	code = "IGT"
+	description = "The chemical appears capable of self-igniting on contact with most materials."
+	rarity = PROPERTY_DISABLED
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
+	value = 1
+
+/datum/chem_property/negative/igniting/process(mob/living/reacting_mob, potency, delta_time)
+	. = ..()
+
+	reacting_mob.adjust_fire_stacks(max(reacting_mob.fire_stacks, potency * 30))
+	reacting_mob.IgniteMob(TRUE)
+	to_chat(reacting_mob, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))

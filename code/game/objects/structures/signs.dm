@@ -1,5 +1,5 @@
 /obj/structure/sign
-	icon = 'icons/obj/structures/props/decals.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
@@ -24,14 +24,15 @@
 /obj/item/sign
 	name = "sign"
 	desc = ""
-	icon = 'icons/obj/structures/props/decals.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
 	w_class = SIZE_MEDIUM //big
 	var/sign_state = ""
 
 /obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob) //construction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
-		if(direction == "Cancel") return
+		if(direction == "Cancel")
+			return
 		var/obj/structure/sign/S = new(user.loc)
 		switch(direction)
 			if("North")
@@ -42,7 +43,8 @@
 				S.pixel_y = -32
 			if("West")
 				S.pixel_x = -32
-			else return
+			else
+				return
 		S.name = name
 		S.desc = desc
 		S.icon_state = sign_state
@@ -95,7 +97,7 @@
 //==========//
 
 /obj/structure/sign/banners
-	icon = 'icons/obj/structures/props/banners.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/banners.dmi'
 
 /obj/structure/sign/banners/happybirthdaysteve
 	name = "\improper Happy Birthday Steve banner"
@@ -111,14 +113,48 @@
 	name = "\improper United Americas flag"
 	desc = "A flag of the United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
 	icon_state = "uaflag"
-
-
+/obj/structure/sign/banners/united_americas_flag_worn
+	name = "\improper Worn United Americas flag"
+	desc = "A very worn flag of United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "uaflag_worn"
+/obj/structure/sign/banners/colonial_marines_flag
+	name = "\improper United States Colonial Marine Corps flag"
+	desc = "A flag of the United States Colonial Marine Corps. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "cmflag"
+/obj/structure/sign/banners/colonial_marines_flag_worn
+	name = "\improper Worn United States Colonial Marine Corps flag"
+	desc = "A very worn flag of the United States Colonial Marine Corps. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "cmflag_worn"
+/obj/structure/sign/banners/twe_flag
+	name = "\improper Three World Empire flag"
+	desc = "A flag of the Three World Empire. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "tweflag"
+/obj/structure/sign/banners/twe_worn
+	name = "\improper Worn Three World Empire flag"
+	desc = "A very worn flag of the Three World Empire. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "tweflag_worn"
+/obj/structure/sign/banners/upp_flag
+	name = "\improper Union of Progressive Peoples flag"
+	desc = "A flag of the Union of Progressive Peoples. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "uppflag"
+/obj/structure/sign/banners/upp_worn
+	name = "\improper Worn Union of Progressive Peoples flag"
+	desc = "A very worn flag of the Union of Progressive Peoples. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "uppflag_worn"
+/obj/structure/sign/banners/clf_flag
+	name = "\improper Colonial Liberation Front flag"
+	desc = "A flag of the Colonial Liberation Front. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "clfflag"
+/obj/structure/sign/banners/clf_worn
+	name = "\improper Worn Colonial Liberation Front flag"
+	desc = "A very worn flag of the Colonial Liberation Front. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
+	icon_state = "clfflag_worn"
 //============//
 //  Flags    //
 //==========//
 
 /obj/structure/sign/flag
-	icon = 'icons/obj/structures/props/flags.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/flags.dmi'
 
 /obj/structure/sign/flag/upp
 	name = "\improper Union of Progressive Peoples Flag"
@@ -131,7 +167,7 @@
 
 /obj/structure/sign/safety
 	name = "sign"
-	icon = 'icons/obj/structures/props/semiotic_standard.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/semiotic_standard.dmi'
 	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
 	anchored = TRUE
 	opacity = FALSE
@@ -662,5 +698,9 @@
 /obj/structure/sign/catclock
 	name = "cat clock"
 	desc = "An unbelievably creepy cat clock that surveys the room with every tick and every tock."
-	icon = 'icons/obj/structures/props/catclock.dmi'
+	icon = 'icons/obj/structures/props/furniture/clock.dmi'
 	icon_state = "cat_clock_motion"
+
+/obj/structure/sign/catclock/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The [src] reads: [worldtime2text()]")

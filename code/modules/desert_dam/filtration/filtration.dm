@@ -199,7 +199,8 @@ Each var depends on others
 			M.apply_damage(dam_amount,BURN,"r_foot")
 			M.apply_damage(dam_amount,BURN,"groin")
 		M.apply_effect(20,IRRADIATE,0)
-		if( !issynth(M) ) to_chat(M, SPAN_DANGER("The water burns!"))
+		if( !issynth(M) )
+			to_chat(M, SPAN_DANGER("The water burns!"))
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
@@ -208,7 +209,8 @@ Each var depends on others
 		return
 
 	for(var/direction in GLOB.alldirs)
-		if(direction == from_dir) continue //doesn't check backwards
+		if(direction == from_dir)
+			continue //doesn't check backwards
 
 		var/effective_spread_delay
 		switch(direction)
@@ -263,7 +265,7 @@ Each var depends on others
 
 /obj/structure/machinery/filtration_button
 	name = "\improper Filtration Activation"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
 	desc = "Activates the filtration mechanism."
 	var/id = null

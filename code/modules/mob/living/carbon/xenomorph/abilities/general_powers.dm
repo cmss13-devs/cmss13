@@ -52,7 +52,7 @@
 
 	var/area/area = get_area(turf)
 	if(isnull(area) || !(area.is_resin_allowed))
-		if(area.flags_area & AREA_UNWEEDABLE)
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
 			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
@@ -65,7 +65,7 @@
 	if(node)
 		to_convert = node.children.Copy()
 
-	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"), \
+	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"),
 	SPAN_XENONOTICE("We regurgitate a pulsating node and plant it on the ground!"), null, 5)
 	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
 
@@ -229,19 +229,24 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
 
 // Resin
-/datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
+/datum/action/xeno_action/activable/secrete_resin/use_ability(atom/target)
 	if(!..())
 		return FALSE
-	var/mob/living/carbon/xenomorph/X = owner
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
-	if(A.z != X.z)
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
+	if(isstorage(target.loc))
+		return FALSE
+	if(xeno_owner.contains(target))
+		return FALSE
+	if(istype(target, /atom/movable/screen))
+		return FALSE
+	if(target.z != xeno_owner.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
 	apply_cooldown()
-	switch(X.build_resin(A, thick, make_message, plasma_cost != 0, build_speed_mod))
+	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown)
-				apply_cooldown_override(xeno_cooldown * 2)
+				apply_cooldown_override(xeno_cooldown * 3)
 			return FALSE
 		if(SECRETE_RESIN_FAIL)
 			if(xeno_cooldown)
@@ -269,7 +274,8 @@
 		to_chat(X, SPAN_XENOWARNING("We can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
 	var/turf/target_turf = get_turf(A)
 
 	if(target_turf.z != X.z)
@@ -332,7 +338,7 @@
 	if(!pheromone)
 		if(current_aura)
 			current_aura = null
-			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."), \
+			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."),
 			SPAN_XENOWARNING("We stop emitting pheromones."), null, 5)
 		else
 			if(!check_plasma(emit_cost))
@@ -362,7 +368,7 @@
 			return
 		use_plasma(emit_cost)
 		current_aura = pheromone
-		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
+		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."),
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
@@ -384,14 +390,14 @@
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [ability_name] from here!"))
+		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
 	if(!X.check_state())
 		return
 
 	if(X.legcuffed)
-		to_chat(X, SPAN_XENODANGER("We can't [ability_name] with that thing on our leg!"))
+		to_chat(X, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -418,7 +424,7 @@
 		pre_windup_effects()
 
 		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENODANGER("We cancel our [ability_name]!"))
+			to_chat(X, SPAN_XENODANGER("We cancel our [action_text]!"))
 			if (!windup_interruptable)
 				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 				X.anchored = FALSE
@@ -430,7 +436,7 @@
 			X.anchored = FALSE
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [ability_name] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [action_text] at [A]!"))
 
 	pre_pounce_effects()
 
@@ -450,13 +456,14 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!A) return
+	if(!A)
+		return
 
 	if(A.layer >= FLY_LAYER)
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [ability_name] from here!"))
+		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
 	if(!X.check_state() || X.action_busy)
@@ -597,7 +604,8 @@
 	if(!X.check_state())
 		return FALSE
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
 
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
@@ -614,7 +622,7 @@
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
-		if(AR.flags_area & AREA_UNWEEDABLE)
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
@@ -652,19 +660,33 @@
 	var/datum/construction_template/xenomorph/structure_template = new structure_type()
 
 	if(!spacecheck(X, T, structure_template))
+		// spacecheck already cleans up the template
+		return FALSE
+
+	if((choice == XENO_STRUCTURE_EGGMORPH) && locate(/obj/structure/flora/grass/tallgrass) in T)
+		to_chat(X, SPAN_WARNING("The tallgrass is preventing us from building the egg morpher!"))
+		qdel(structure_template)
 		return FALSE
 
 	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
 	if(!spacecheck(X, T, structure_template)) //doublechecking
+		// spacecheck already cleans up the template
+		return FALSE
+
+	if(choice == XENO_STRUCTURE_CORE && AR.unoviable_timer)
+		to_chat(X, SPAN_WARNING("This area does not feel right for you to build this in."))
+		qdel(structure_template)
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isqueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
 		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("We can't rebuild this structure!"))
+			qdel(structure_template)
 			return FALSE
 		if(alert(X, "Are we sure that we want to move the hive and destroy the old hive core?", , "Yes", "No") != "Yes")
+			qdel(structure_template)
 			return FALSE
 		qdel(X.hive.hive_location)
 	else if(!X.hive.can_build_structure(choice))
@@ -759,7 +781,7 @@
 		if(xeno.ammo.pre_spit_warn)
 			playsound(xeno.loc,"alien_drool", 55, 1)
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
-		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),\
+		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
@@ -772,7 +794,7 @@
 		return
 
 	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"), \
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
@@ -865,12 +887,16 @@
 	return owner
 
 /turf/proc/can_bombard(mob/bombarder)
-	if(!can_be_dissolved() && density) return FALSE
+	if(!can_be_dissolved() && density)
+		return FALSE
 	for(var/atom/A in src)
-		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
-		if(ismob(A)) continue // Mobs shouldn't block boiler gas
+		if(istype(A, /obj/structure/machinery))
+			continue // Machinery shouldn't block boiler gas (e.g. computers)
+		if(ismob(A))
+			continue // Mobs shouldn't block boiler gas
 
-		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER)) return FALSE
+		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER))
+			return FALSE
 
 	return TRUE
 

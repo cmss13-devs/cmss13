@@ -95,7 +95,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			disable()
 			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/nuclearbomb/attack_hand(mob/user as mob)
 	if(user.is_mob_incapacitated() || get_dist(src, user) > 1 || isRemoteControlling(user))
@@ -413,6 +413,17 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				continue
 			alive_mobs |= current_mob
 
+	for(var/datum/interior/interior in SSinterior.interiors)
+		if(!interior.exterior || interior.exterior.z != z)
+			continue
+	
+		for(var/mob/living/passenger in interior.get_passengers())
+			if(!(passenger in (alive_mobs + dead_mobs)))
+				if(passenger.stat != DEAD)
+					passenger.death(create_cause_data("nuclear explosion"))
+				for(var/obj/item/alien_embryo/embryo in passenger)
+					qdel(embryo)
+
 	for(var/mob/current_mob in alive_mobs)
 		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
 			continue
@@ -576,7 +587,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				hive = GLOB.hive_datum[hivenumber]
 				if(!length(hive.totalXenos))
 					return
-				xeno_announcement(SPAN_XENOANNOUNCE("We get a sense of impending doom... the hive killer is ready to be activated."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("We get a sense of impending doom... the hive killer is ready to be activated. Our only chance now is to disable the device itself."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 			return
 
 		announcement_helper("DECRYPTION IN [floor(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')

@@ -7,11 +7,12 @@
  */
 
 export const IMPL_MEMORY = 0;
-export const IMPL_LOCAL_STORAGE = 1;
+export const IMPL_HUB_STORAGE = 1;
 export const IMPL_INDEXED_DB = 2;
+export const IMPL_IFRAME_INDEXED_DB = 3;
 
 const INDEXED_DB_VERSION = 1;
-const INDEXED_DB_NAME = 'tgui';
+const INDEXED_DB_NAME = 'cm-tgui';
 const INDEXED_DB_STORE_NAME = 'storage-v1';
 
 const READ_ONLY = 'readonly';
@@ -25,14 +26,11 @@ const testGeneric = (testFn) => () => {
   }
 };
 
-// Localstorage can sometimes throw an error, even if DOM storage is not
-// disabled in IE11 settings.
-// See: https://superuser.com/questions/1080011
-// prettier-ignore
-const testLocalStorage = testGeneric(() => (
-  window.localStorage && window.localStorage.getItem
-));
+const testHubStorage = testGeneric(
+  () => window.hubStorage && window.hubStorage.getItem,
+);
 
+// TODO: Remove with 516
 // prettier-ignore
 const testIndexedDb = testGeneric(() => (
   (window.indexedDB || window.msIndexedDB)
@@ -45,49 +43,95 @@ class MemoryBackend {
     this.store = {};
   }
 
-  get(key) {
+  async get(key) {
     return this.store[key];
   }
 
-  set(key, value) {
+  async set(key, value) {
     this.store[key] = value;
   }
 
-  remove(key) {
+  async remove(key) {
     this.store[key] = undefined;
   }
 
-  clear() {
+  async clear() {
     this.store = {};
   }
 }
 
-class LocalStorageBackend {
+class HubStorageBackend {
   constructor() {
-    this.impl = IMPL_LOCAL_STORAGE;
+    this.impl = IMPL_HUB_STORAGE;
   }
 
-  get(key) {
-    const value = localStorage.getItem(key);
+  async get(key) {
+    const value = await window.hubStorage.getItem('cm-' + key);
     if (typeof value === 'string') {
       return JSON.parse(value);
     }
   }
 
-  set(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+  async set(key, value) {
+    window.hubStorage.setItem('cm-' + key, JSON.stringify(value));
   }
 
-  remove(key) {
-    localStorage.removeItem(key);
+  async remove(key) {
+    window.hubStorage.removeItem('cm-' + key);
   }
 
-  clear() {
-    localStorage.clear();
+  async clear() {
+    window.hubStorage.clear();
+  }
+}
+
+class IFrameIndexedDbBackend {
+  constructor() {
+    this.impl = IMPL_IFRAME_INDEXED_DB;
+  }
+
+  async ready() {
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = Byond.storageCdn;
+
+    const completePromise = new Promise((resolve) => {
+      iframe.onload = () => resolve(this);
+    });
+
+    this.iframeWindow = document.body.appendChild(iframe).contentWindow;
+
+    return completePromise;
+  }
+
+  async get(key) {
+    const promise = new Promise((resolve) => {
+      window.addEventListener('message', (message) => {
+        if (message.data.key === key) {
+          resolve(message.data.value);
+        }
+      });
+    });
+
+    this.iframeWindow.postMessage({ type: 'get', key: key }, '*');
+    return promise;
+  }
+
+  async set(key, value) {
+    this.iframeWindow.postMessage({ type: 'set', key: key, value: value }, '*');
+  }
+
+  async remove(key) {
+    this.iframeWindow.postMessage({ type: 'remove', key: key }, '*');
+  }
+
+  async clear() {
+    this.iframeWindow.postMessage({ type: 'clear' }, '*');
   }
 }
 
 class IndexedDbBackend {
+  // TODO: Remove with 516
   constructor() {
     this.impl = IMPL_INDEXED_DB;
     /** @type {Promise<IDBDatabase>} */
@@ -108,7 +152,7 @@ class IndexedDbBackend {
     });
   }
 
-  getStore(mode) {
+  async getStore(mode) {
     // prettier-ignore
     return this.dbPromise.then((db) => db
       .transaction(INDEXED_DB_STORE_NAME, mode)
@@ -125,13 +169,6 @@ class IndexedDbBackend {
   }
 
   async set(key, value) {
-    // The reason we don't _save_ null is because IE 10 does
-    // not support saving the `null` type in IndexedDB. How
-    // ironic, given the bug below!
-    // See: https://github.com/mozilla/localForage/issues/161
-    if (value === null) {
-      value = undefined;
-    }
     // NOTE: We deliberately make this operation transactionless
     const store = await this.getStore(READ_WRITE);
     store.put(value, key);
@@ -154,9 +191,29 @@ class IndexedDbBackend {
  * Web Storage Proxy object, which selects the best backend available
  * depending on the environment.
  */
-class StorageProxy {
-  constructor() {
+export class StorageProxy {
+  constructor(chat) {
     this.backendPromise = (async () => {
+      if (!Byond.TRIDENT) {
+        if (chat) {
+          const iframe = new IFrameIndexedDbBackend();
+          await iframe.ready();
+          return iframe;
+        }
+
+        if (!testHubStorage()) {
+          return new Promise((resolve) => {
+            const listener = () => {
+              document.removeEventListener('byondstorageupdated', listener);
+              resolve(new HubStorageBackend());
+            };
+
+            document.addEventListener('byondstorageupdated', listener);
+          });
+        }
+        return new HubStorageBackend();
+      }
+      // TODO: Remove with 516
       if (testIndexedDb()) {
         try {
           const backend = new IndexedDbBackend();
@@ -164,9 +221,9 @@ class StorageProxy {
           return backend;
         } catch {}
       }
-      if (testLocalStorage()) {
-        return new LocalStorageBackend();
-      }
+      console.warn(
+        'No supported storage backend found. Using in-memory storage.',
+      );
       return new MemoryBackend();
     })();
   }

@@ -20,17 +20,56 @@
 /datum/action/xeno_action/activable/queen_heal
 	name = "Heal Xenomorph (600)"
 	action_icon_state = "heal_xeno"
-	ability_name = "xenomorph heal"
 	plasma_cost = 600
 	macro_path = /datum/action/xeno_action/verb/verb_heal_xeno
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 8 SECONDS
 
+/datum/action/xeno_action/onclick/screech
+	name = "Screech (250)"
+	action_icon_state = "screech"
+	macro_path = /datum/action/xeno_action/verb/verb_screech
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 50 SECONDS
+	plasma_cost = 250
+	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
+	no_cooldown_msg = FALSE // Needed for onclick actions
+	ability_primacy = XENO_SCREECH
+
+/datum/action/xeno_action/onclick/queen_tacmap
+	name = "View Xeno Tacmap"
+	action_icon_state = "toggle_queen_zoom"
+	plasma_cost = 0
+
+
+/datum/action/xeno_action/activable/queen_give_plasma
+	name = "Give Plasma (400)"
+	action_icon_state = "queen_give_plasma"
+	plasma_cost = 400
+	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	xeno_cooldown = 12 SECONDS
+
+/datum/action/xeno_action/onclick/queen_word
+	name = "Word of the Queen (50)"
+	action_icon_state = "queen_word"
+	plasma_cost = 50
+	xeno_cooldown = 10 SECONDS
+
+/datum/action/xeno_action/activable/gut
+	name = "Gut (200)"
+	action_icon_state = "gut"
+	macro_path = /datum/action/xeno_action/verb/verb_gut
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 15 MINUTES
+	plasma_cost = 200
+	cooldown_message = "You feel your anger return. You are ready to gut again."
+
 /datum/action/xeno_action/activable/expand_weeds
 	name = "Expand Weeds (50)"
 	action_icon_state = "plant_weeds"
-	ability_name = "weed expansion"
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
@@ -45,18 +84,34 @@
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 0
 
+/datum/action/xeno_action/onclick/send_thoughts // and prayers
+	name = "Psychic Communication"
+	action_icon_state = "psychic_whisper"
+	plasma_cost = 0
+
 /datum/action/xeno_action/activable/secrete_resin/remote/queen
 	name = "Projected Resin (100)"
 	action_icon_state = "secrete_resin"
-	ability_name = "projected resin"
 	plasma_cost = 100
 	xeno_cooldown = 2 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 	care_about_adjacency = FALSE
-	build_speed_mod = 1
+	build_speed_mod = 1.2
 
 	var/boosted = FALSE
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/target_atom, mods)
+	if(boosted)
+		var/area/target_area = get_area(target_atom)
+		if(!target_area)
+			return
+
+		if(target_area.linked_lz && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			to_chat(owner, SPAN_XENONOTICE("It's too early to spread the hive this far."))
+			return
+
+	return ..()
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
@@ -75,13 +130,16 @@
 		boosted = TRUE
 		xeno_cooldown = 0
 		plasma_cost = 0
+		build_speed_mod = 1
+		thick = TRUE // Allow queen to remotely thicken structures.
 		RegisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS, PROC_REF(override_secrete_thick_resin))
 		addtimer(CALLBACK(src, PROC_REF(disable_boost)), boost_duration)
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
-	xeno_cooldown = 2 SECONDS
+	xeno_cooldown = 3 SECONDS
 	plasma_cost = 100
 	boosted = FALSE
+	thick = FALSE
 	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)
@@ -128,7 +186,6 @@
 /datum/action/xeno_action/activable/place_queen_beacon
 	name = "Place Queen Beacon"
 	action_icon_state = "place_queen_beacon"
-	ability_name = "place queen beacon"
 	plasma_cost = 0
 	action_type = XENO_ACTION_CLICK
 
@@ -165,7 +222,6 @@
 /datum/action/xeno_action/activable/blockade
 	name = "Place Blockade"
 	action_icon_state = "place_blockade"
-	ability_name = "place blockade"
 	plasma_cost = 300
 	action_type = XENO_ACTION_CLICK
 

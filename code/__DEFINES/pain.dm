@@ -7,7 +7,8 @@
 #define MOVE_REDUCTION_LIMB_SPLINTED 0.5
 
 // Traumatic shock reduction for different reagents
-#define PAIN_REDUCTION_MULTIPLIER 20
+#define PAIN_REDUCTION_MULTIPLIER_SMALL 20
+#define PAIN_REDUCTION_MULTIPLIER 40
 #define PAIN_REDUCTION_AURA 20
 // The values below are thresholds used for surgery
 #define PAIN_REDUCTION_LIGHT 20  //inaprovaline

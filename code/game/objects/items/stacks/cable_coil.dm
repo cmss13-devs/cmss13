@@ -5,6 +5,10 @@
 /obj/item/stack/cable_coil
 	name = "cable coil"
 	icon = 'icons/obj/structures/machinery/power.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL
@@ -66,7 +70,8 @@
 	var/mob/M = usr
 
 	if(ishuman(M) && !M.is_mob_incapacitated())
-		if(!istype(usr.loc,/turf)) return
+		if(!istype(usr.loc,/turf))
+			return
 		if(src.amount <= 14)
 			to_chat(usr, SPAN_WARNING("You need at least 15 lengths to make restraints!"))
 			return
@@ -321,7 +326,7 @@
 
 		if(S.burn_dam > 0 && use(1))
 			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some burn damage on their [S.display_name]."), \
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some burn damage on their [S.display_name]."),
 					SPAN_WARNING("You begin to carefully patch some burn damage on your [S.display_name] so as not to void your warranty."))
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return

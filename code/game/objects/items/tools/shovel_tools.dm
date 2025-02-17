@@ -4,7 +4,7 @@
 /obj/item/tool/shovel
 	name = "shovel"
 	desc = "A large tool for digging and moving dirt."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "shovel"
 	item_state = "shovel"
 	flags_atom = FPRINT|CONDUCT
@@ -27,11 +27,16 @@
 /obj/item/tool/shovel/update_icon()
 	var/image/I = image(icon,src,dirt_overlay)
 	switch(dirt_type) // We can actually shape the color for what environment we dig up our dirt in.
-		if(DIRT_TYPE_GROUND) I.color = "#512A09"
-		if(DIRT_TYPE_MARS) I.color = "#FF5500"
-		if(DIRT_TYPE_SNOW) I.color = "#EBEBEB"
-		if(DIRT_TYPE_SAND) I.color = "#ab804b"
-		if(DIRT_TYPE_SHALE) I.color = "#1c2142"
+		if(DIRT_TYPE_GROUND)
+			I.color = "#512A09"
+		if(DIRT_TYPE_MARS)
+			I.color = "#FF5500"
+		if(DIRT_TYPE_SNOW)
+			I.color = "#EBEBEB"
+		if(DIRT_TYPE_SAND)
+			I.color = "#ab804b"
+		if(DIRT_TYPE_SHALE)
+			I.color = "#1c2142"
 	overlays -= I
 	if(dirt_amt)
 		overlays += I
@@ -183,6 +188,10 @@
 /obj/item/tool/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_righthand.dmi',
+	)
 	icon_state = "spade"
 	item_state = "spade"
 	force = 5
@@ -208,7 +217,7 @@
 /obj/item/tool/shovel/etool
 	name = "entrenching tool"
 	desc = "Used to dig holes and bash heads in. Folds in to fit in small spaces."
-	icon = 'icons/obj/items/marine-items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "etool"
 	item_state = "etool"
 	force = 30

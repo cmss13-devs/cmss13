@@ -61,7 +61,7 @@
 			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='byond://?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -338,7 +338,8 @@ Make sure their actual health updates immediately.*/
 
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
-			if(!hive) return // can't heal if you have no hive, sorry bud
+			if(!hive)
+				return // can't heal if you have no hive, sorry bud
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
@@ -505,14 +506,26 @@ Make sure their actual health updates immediately.*/
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time
+		update_wounds()
 		blinded = stat == UNCONSCIOUS // Xenos do not go blind from other sources - still, replace that by a status_effect or trait when able
 	if(!gibbing)
 		med_hud_set_health()
+
 
 /mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)
 		SEND_SIGNAL(src, COMSIG_XENO_ENTER_CRIT)
+
+/mob/living/carbon/xenomorph/adjustBruteLoss(amount)
+	if(status_flags & GODMODE)
+		return //godmode
+	bruteloss = max(bruteloss + amount, 0)
+
+/mob/living/carbon/xenomorph/adjustFireLoss(amount)
+	if(status_flags & GODMODE)
+		return //godmode
+	fireloss = max(fireloss + amount, 0)
 
 /mob/living/carbon/xenomorph/set_stat(new_stat)
 	. = ..()

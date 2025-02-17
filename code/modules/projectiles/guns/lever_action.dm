@@ -7,9 +7,15 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action
 	name = "lever-action rifle"
 	desc = "Welcome to the Wild West!\nThis gun is levered via Unique-Action, but it has a bonus feature: Hitting a target directly will grant you a fire rate and damage buff for your next shot during a short interval. Combo precision hits for massive damage."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "r4t-placeholder" //placeholder for a 'base' leveraction
 	item_state = "r4t-placeholder"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+	)
 	w_class = SIZE_LARGE
 	fire_sound = 'sound/weapons/gun_lever_action_fire.ogg'
 	reload_sound = 'sound/weapons/handling/gun_lever_action_reload.ogg'
@@ -152,18 +158,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 		current_mag.chamber_contents[i] = i > number_to_replace ? "empty" : current_mag.default_ammo
 	current_mag.chamber_position = current_mag.current_rounds //The position is always in the beginning [1]. It can move from there.
 
-/obj/item/weapon/gun/lever_action/proc/add_to_internal_mag(mob/user,selection) //bullets are added forward.
-	if(!current_mag)
-		return
-	current_mag.chamber_position++ //We move the position up when loading ammo. New rounds are always fired next, in order loaded.
-	current_mag.chamber_contents[current_mag.chamber_position] = selection //Just moves up one, unless the mag is full.
-	if(current_mag.current_rounds == 1 && !in_chamber) //The previous proc in the reload() cycle adds ammo, so the best workaround here,
-		update_icon() //This is not needed for now. Maybe we'll have loaded sprites at some point, but I doubt it. Also doesn't play well with double barrel.
-		ready_in_chamber()
-		cock_gun(user)
-	if(user) playsound(user, reload_sound, 25, TRUE)
-	return TRUE
-
 /obj/item/weapon/gun/lever_action/proc/empty_chamber(mob/user)
 	if(!current_mag)
 		return
@@ -174,11 +168,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 			playsound(user, reload_sound, 25, TRUE)
 			new_handful.forceMove(get_turf(src))
 		else
-			if(user) to_chat(user, SPAN_WARNING("\The [src] is already empty."))
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [src] is already empty."))
 		return
 
 	unload_bullet(user)
-	if(!current_mag.current_rounds && !in_chamber) update_icon()
+	if(!current_mag.current_rounds && !in_chamber)
+		update_icon()
 
 /obj/item/weapon/gun/lever_action/proc/unload_bullet(mob/user)
 	if(isnull(current_mag) || !length(current_mag.chamber_contents))
@@ -188,7 +184,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(user)
 		user.put_in_hands(new_handful)
 		playsound(user, reload_sound, 25, TRUE)
-	else new_handful.forceMove(get_turf(src))
+	else
+		new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
@@ -221,27 +218,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 		current_mag.chamber_position--
 		return in_chamber
 
-/obj/item/weapon/gun/lever_action/ready_in_chamber()
-	return ready_lever_action_internal_mag()
-
-/obj/item/weapon/gun/lever_action/reload_into_chamber(mob/user)
-	if(!active_attachable)
-		in_chamber = null
-
-		//Time to move the internal_mag position.
-		ready_in_chamber() //We're going to try and reload. If we don't get anything, icon change.
-		if(!current_mag.current_rounds && !in_chamber) //No rounds, nothing chambered.
-			update_icon()
-
-	return TRUE
-
 /obj/item/weapon/gun/lever_action/unique_action(mob/user)
 	work_lever(user)
 
 /obj/item/weapon/gun/lever_action/ready_in_chamber()
 	return
 
-/obj/item/weapon/gun/lever_action/add_to_internal_mag(mob/user, selection) //Load it on the go, nothing chambered.
+/obj/item/weapon/gun/lever_action/proc/add_to_internal_mag(mob/user, selection) //Load it on the go, nothing chambered.
 	if(!current_mag)
 		return
 	current_mag.chamber_position++
@@ -319,6 +302,15 @@ their unique feature is that a direct hit will buff your damage and firerate
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet/upp, // Barrel
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/suppressor,
@@ -353,7 +345,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	name = "\improper XM88 heavy rifle"
 	desc = "An experimental man-portable anti-material rifle chambered in .458 SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armor penetration and damage will increase."
 	desc_lore = "Originally developed by ARMAT Battlefield Systems for the government of the state of Greater Brazil for use in the Favela Wars (2161 - Ongoing) against mechanized infantry. The platform features an onboard computerized targeting system, sensor array, and an electronic autoloader; these features work in tandem to reduce and render inert armor on the users target with successive hits. The Almayer was issued a small amount of XM88s while preparing for Operation Swamp Hopper with the USS Nan-Shan."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overridden with camos anyways
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi' // overridden with camos anyways
 	icon_state = "boomslang"
 	item_state = "boomslang"
 	fire_sound = 'sound/weapons/gun_boomslang_fire.ogg'
@@ -378,6 +370,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/bayonet/upp, // Barrel
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
@@ -392,9 +385,9 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_2 + FIRE_DELAY_TIER_11)
+	set_fire_delay(FIRE_DELAY_TIER_2)
 	lever_delay = FIRE_DELAY_TIER_3
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = 0
@@ -406,41 +399,32 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/wield(mob/user)
 	. = ..()
 	if(.)
-		RegisterSignal(src, COMSIG_ITEM_ZOOM, PROC_REF(scope_on))
-		RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(scope_off))
-
-/obj/item/weapon/gun/lever_action/xm88/proc/scope_on(atom/source, mob/current_user)
-	SIGNAL_HANDLER
-
-	RegisterSignal(current_user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
-	update_mouse_pointer(current_user)
-
-/obj/item/weapon/gun/lever_action/xm88/proc/scope_off(atom/source, mob/current_user)
-	SIGNAL_HANDLER
-
-	UnregisterSignal(current_user, COMSIG_MOB_FIRED_GUN)
-	current_user.client?.mouse_pointer_icon = null
+		RegisterSignal(user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
 
 /obj/item/weapon/gun/lever_action/xm88/unwield(mob/user)
 	. = ..()
-
-	user.client?.mouse_pointer_icon = null
-	UnregisterSignal(src, list(COMSIG_ITEM_ZOOM, COMSIG_ITEM_UNZOOM))
+	UnregisterSignal(user, COMSIG_MOB_FIRED_GUN)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_fired_mouse_pointer(mob/user)
 	SIGNAL_HANDLER
 
-	if(!user.client?.prefs.custom_cursors)
+	if(!user.client?.prefs?.custom_cursors)
 		return
 
-	user.client?.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
-	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
+	user.client.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
+	addtimer(CALLBACK(src, PROC_REF(finish_update_fired_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
 
-/obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
-	if(user.client?.prefs.custom_cursors)
-		user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
+/obj/item/weapon/gun/lever_action/xm88/proc/finish_update_fired_mouse_pointer(mob/user)
+	if(flags_item & WIELDED)
+		update_mouse_pointer(user, TRUE)
 
-/obj/item/weapon/gun/lever_action/xm88/proc/get_mouse_pointer(level)
+/obj/item/weapon/gun/lever_action/xm88/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs?.custom_cursors)
+		return
+
+	user.client.mouse_pointer_icon = new_cursor ? get_scaling_mouse_pointer(floating_penetration) : initial(user.client.mouse_pointer_icon)
+
+/obj/item/weapon/gun/lever_action/xm88/proc/get_scaling_mouse_pointer(level)
 	switch(level)
 		if(FLOATING_PENETRATION_TIER_0)
 			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
@@ -454,7 +438,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 			return 'icons/effects/mouse_pointer/xm88/xm88-4.dmi'
 		else
 			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
-
 
 /obj/item/weapon/gun/lever_action/xm88/proc/get_fired_mouse_pointer(level)
 	switch(level)

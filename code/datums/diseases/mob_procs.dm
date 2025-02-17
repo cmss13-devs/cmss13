@@ -32,7 +32,8 @@
 					fail = FALSE
 					break
 
-		if(fail) return
+		if(fail)
+			return
 
 	if(skip_this == 1)
 		//if(src.virus) < -- this used to replace the current disease. Not anymore!
@@ -46,45 +47,21 @@
 			v.carrier = 1
 		return
 
-	if(prob(15/virus.permeability_mod)) return //the power of immunity compels this disease! but then you forgot resistances
+	if(prob(15/virus.permeability_mod))
+		return //the power of immunity compels this disease! but then you forgot resistances
 	var/passed = 1
-
-	//chances to target this zone
-	var/head_ch
-	var/body_ch
-	var/hands_ch
-	var/feet_ch
 
 	if(spread_type == -5)
 		spread_type = virus.spread_type
 
-	switch(spread_type)
-		if(CONTACT_HANDS)
-			head_ch = 0
-			body_ch = 0
-			hands_ch = 100
-			feet_ch = 0
-		if(CONTACT_FEET)
-			head_ch = 0
-			body_ch = 0
-			hands_ch = 0
-			feet_ch = 100
-		else
-			head_ch = 100
-			body_ch = 100
-			hands_ch = 25
-			feet_ch = 25
-
-
-	var/target_zone = pick(head_ch;1,body_ch;2,hands_ch;3,feet_ch;4)//1 - head, 2 - body, 3 - hands, 4- feet
-
-	passed = check_disease_pass_clothes(target_zone)
+	passed = can_pass_disease()
 
 	if(passed)
 		AddDisease(virus)
 
 /mob/living/carbon/human/contract_disease(datum/disease/virus, skip_this = 0, force_species_check=1, spread_type = -5)
-	if(species.flags & IS_SYNTHETIC) return //synthetic species are immune
+	if(species.flags & IS_SYNTHETIC)
+		return //synthetic species are immune
 	..(virus, skip_this, force_species_check, spread_type)
 
 /mob/proc/AddDisease(datum/disease/D, roll_for_carrier = TRUE)
@@ -101,46 +78,4 @@
 /mob/living/carbon/human/AddDisease(datum/disease/D)
 	. = ..()
 	med_hud_set_status()
-
-//returns whether the mob's clothes stopped the disease from passing through
-/mob/proc/check_disease_pass_clothes(target_zone)
-	return 1
-
-/mob/living/carbon/human/check_disease_pass_clothes(target_zone)
-	var/obj/item/clothing/Cl
-	var/protection = 0
-	switch(target_zone)
-		if(1)
-			if(isobj(head) && !istype(head, /obj/item/paper))
-				Cl = head
-				protection += (Cl.permeability_coefficient*100)-100
-			if(isobj(wear_mask))
-				Cl = wear_mask
-				protection += (Cl.permeability_coefficient*100)-100
-		if(2)//arms and legs included
-			if(isobj(wear_suit))
-				Cl = wear_suit
-				protection += (Cl.permeability_coefficient*100)-100
-			if(isobj(WEAR_BODY))
-				Cl = WEAR_BODY
-				protection += (Cl.permeability_coefficient*100)-100
-		if(3)
-			if(isobj(wear_suit) && wear_suit.flags_armor_protection & BODY_FLAG_HANDS)
-				Cl = wear_suit
-				protection += (Cl.permeability_coefficient*100)-100
-
-			if(isobj(gloves))
-				Cl = gloves
-				protection += (Cl.permeability_coefficient*100)-100
-		if(4)
-			if(isobj(wear_suit) && wear_suit.flags_armor_protection & BODY_FLAG_FEET)
-				Cl = wear_suit
-				protection += (Cl.permeability_coefficient*100)-100
-
-			if(isobj(shoes))
-				Cl = shoes
-				protection += (Cl.permeability_coefficient*100)-100
-		else
-			to_chat(src, "Something bad happened with disease target zone code, tell a dev or admin ")
-	return prob(clamp(protection, 5, 90))
 

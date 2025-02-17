@@ -87,6 +87,13 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
+/obj/effect/overlay/temp/point/big/squad
+	icon_state = "big_arrow_grey"
+
+/obj/effect/overlay/temp/point/big/squad/Initialize(mapload, mob/owner, atom/actual_pointed_atom, squad_color)
+	. = ..()
+	color = squad_color
+
 /obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
 	color = "#1c00f6"
@@ -130,7 +137,8 @@
 /obj/effect/overlay/temp/point/big/queen/Destroy()
 	for(var/i in clients)
 		var/client/C = i
-		if(!C) continue
+		if(!C)
+			continue
 
 		C.images -= self_icon
 		LAZYREMOVE(clients, C)

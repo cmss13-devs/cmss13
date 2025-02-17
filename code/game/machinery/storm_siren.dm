@@ -8,6 +8,7 @@
 	unacidable = 1
 	unslashable = 1
 	use_power = USE_POWER_NONE
+	needs_power = FALSE
 	health = 0
 
 /obj/structure/machinery/storm_siren/Initialize()

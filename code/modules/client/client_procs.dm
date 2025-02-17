@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
+	/client/proc/toggle_auto_shove,
 	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
@@ -284,6 +285,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
+		winset(src, "", "browser-options=byondstorage")
+
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
 	stat_panel.subscribe(src, PROC_REF(on_stat_panel_message))
@@ -384,6 +388,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Initialize tgui panel
 	stat_panel.initialize(
+		assets = list(
+			get_asset_datum(/datum/asset/simple/namespaced/fontawesome),
+			get_asset_datum(/datum/asset/simple/namespaced/sevastopol),
+			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
+		),
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
@@ -409,6 +418,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
 
 	send_assets()
 
@@ -416,7 +426,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
+		stat_panel.send_message("changelog_read", FALSE)
 
 	update_fullscreen()
 
@@ -439,6 +449,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
+
+	if(CONFIG_GET(flag/ooc_country_flags))
+		spawn if(src)
+			ip2country(address, src)
 
 	//////////////
 	//DISCONNECT//
@@ -498,22 +512,24 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if( (M.lastKnownIP == address) )
 					matches += "IP ([address])"
 				if( (connection != "web") && (M.computer_id == computer_id) )
-					if(matches) matches += " and "
+					if(matches)
+						matches += " and "
 					matches += "ID ([computer_id])"
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
 					if(M.client)
-						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
 					else
-						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration) return inactivity
+	if(inactivity > duration)
+		return inactivity
 	return 0
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
@@ -632,7 +648,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/check_panel_loaded()
 	if(stat_panel.is_ready())
 		return
-	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
+	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='byond://?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
 
 /**
  * Handles incoming messages from the stat-panel TGUI.
@@ -885,6 +901,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
 		return TRUE
 
+	if((flag_to_check & WHITELIST_FAX_RESPONDER) && CLIENT_IS_STAFF(src))
+		return TRUE
+
 	if(!player_data)
 		load_player_data()
 	if(!player_data)
@@ -921,3 +940,42 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "mapwindow.map", "right-click=false")
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
+
+GLOBAL_LIST_INIT(community_awards, get_community_awards())
+
+/proc/get_community_awards()
+	var/list/awards_file = file2list("config/community_awards.txt")
+	var/list/processed_awards = list()
+	for(var/awardee in awards_file)
+		if(!length(awardee))
+			return FALSE
+		if(copytext(awardee,1,2) == "#")
+			continue
+
+		//Split the line at every "-"
+		var/list/split_awardee = splittext(awardee, "-")
+		if(!length(split_awardee))
+			return FALSE
+
+		//ckey is before the first "-"
+		var/ckey = ckey(split_awardee[1])
+		if(!ckey)
+			continue
+		processed_awards[ckey] = list()
+
+		//given_awards follows the first "-"
+		var/list/given_awards = list()
+		if(!(length(split_awardee) >= 2))
+			continue
+		given_awards = split_awardee.Copy(2)
+		for(var/the_award in given_awards)
+			processed_awards[ckey] += ckeyEx(the_award)
+
+	return processed_awards
+
+/client/proc/find_community_award_icons()
+	if(GLOB.community_awards[ckey])
+		var/full_prefix = ""
+		for(var/award in GLOB.community_awards[ckey])
+			full_prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, award)]"
+		return full_prefix

@@ -349,6 +349,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
     bottlesprite,
     internal_reagent_name,
     buffer,
+    pill_bottles,
   } = data;
 
   const [numPills, setNumPills] = useSharedState('pillNum', 16);
@@ -362,7 +363,10 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
               <Stack>
                 <Button
                   lineHeight={'35px'}
-                  disabled={!buffer}
+                  disabled={
+                    !buffer ||
+                    !pill_bottles.some((bottle) => bottle.isNeedsToBeFilled)
+                  }
                   onClick={() => act('create_pill', { number: numPills })}
                 >
                   Create Pill{numPills > 1 ? 's' : ''}

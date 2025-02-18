@@ -210,6 +210,9 @@
 				loaded_pill_bottles_to_fill -= bottle
 			loaded_pill_bottles -= bottle
 
+			if(length(loaded_pill_bottles) == 1)
+				loaded_pill_bottles_to_fill = loaded_pill_bottles
+
 			return TRUE
 
 		if("label_pill")
@@ -313,6 +316,9 @@
 
 				reagents_in_pill += contained_reagent.name
 
+			if(length(loaded_pill_bottles_to_fill) == 0)
+				return
+
 			var/amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
 
 			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create]) (REAGENTS: [english_list(reagents_in_pill)]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
@@ -408,6 +414,9 @@
 			if(LAZYFIND(loaded_pill_bottles_to_fill, loaded_pill_bottles[bottle_index]) > 0)
 				loaded_pill_bottles_to_fill -= loaded_pill_bottles[bottle_index]
 			loaded_pill_bottles -= loaded_pill_bottles[bottle_index]
+
+			if(length(loaded_pill_bottles) == 1)
+				loaded_pill_bottles_to_fill = loaded_pill_bottles
 			return TRUE
 
 		if("connect")

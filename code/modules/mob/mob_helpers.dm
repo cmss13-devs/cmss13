@@ -486,6 +486,24 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 /mob/proc/can_see_reagents()
 	return stat == DEAD || issynth(src) || HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
 
+/// Returns TRUE if this mob is an ally of another, depending on the `faction` and `faction_group` variables, FALSE otherwise
+/mob/proc/is_ally_of(mob/potential_ally)
+	. = FALSE
+
+	if(faction == potential_ally.faction)
+		return TRUE
+
+	if(faction in potential_ally.faction_group)
+		return TRUE
+
+	if(potential_ally.faction in faction_group)
+		return TRUE
+
+	if(length(faction_group & potential_ally.faction_group))
+		return TRUE
+
+	return FALSE
+
 /**
  * Examine a mob
  *

@@ -209,14 +209,10 @@
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
 
-	var/list/be_special_flags = list(
-		"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
-		"Agent" = BE_AGENT,
-	)
-	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", be_special_flags)
+	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", GLOB.be_special_flags)
 	if(!role)
 		return
-	var/role_flag = be_special_flags[role]
+	var/role_flag = GLOB.be_special_flags[role]
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))

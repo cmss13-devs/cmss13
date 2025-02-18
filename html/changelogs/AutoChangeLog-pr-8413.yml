@@ -1,4 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - qol: "Gun stats now list \"single fire\" as \"fire rate\""

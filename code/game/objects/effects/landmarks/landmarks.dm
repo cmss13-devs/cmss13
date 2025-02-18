@@ -122,6 +122,9 @@
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
 	name = "hunt spawner xeno"
 
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
+	name = "bloding spawner"
+
 /obj/effect/landmark/monkey_spawn/Initialize(mapload, ...)
 	. = ..()
 	GLOB.monkey_spawns += src
@@ -279,7 +282,21 @@
 	GLOB.yautja_teleport_descs -= desc_index
 	return ..()
 
+/obj/effect/landmark/yautja_young_teleport
+	name = "yautja_teleport_youngblood"
+	var/desc_index
 
+/obj/effect/landmark/yautja_young_teleport/Initialize(mapload, ...)
+	. = ..()
+	var/turf/turf = get_turf(src)
+	desc_index = turf.loc.name + turf.loc_to_string()
+	GLOB.yautja_young_teleports += src
+	GLOB.yautja_young_descs[desc_index] = src
+
+/obj/effect/landmark/yautja_young_teleport/Destroy()
+	GLOB.yautja_young_teleports -= src
+	GLOB.yautja_young_descs -= desc_index
+	return ..()
 
 /obj/effect/landmark/start
 	name = "start"
@@ -478,6 +495,10 @@
 /obj/effect/landmark/late_join/doctor
 	name = "Doctor late join"
 	job = JOB_DOCTOR
+
+/obj/effect/landmark/late_join/field_doctor
+	name = "Field Doctor late join"
+	job = JOB_FIELD_DOCTOR
 
 /obj/effect/landmark/late_join/nurse
 	name = "Nurse late join"

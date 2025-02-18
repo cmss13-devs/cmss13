@@ -786,6 +786,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	for(var/turf/turf in locs)
 		for(var/mob/living/crushed in turf)
+			if(!arePowerSystemsOn() && forced)
+				return
 			if(HAS_TRAIT(crushed, TRAIT_SUPER_STRONG))
 				crushed.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else

@@ -11,7 +11,7 @@
 	var/guttable = TRUE
 	var/gutted = FALSE
 	var/gut_icon_state = null
-	var/gut_time = 3
+	var/gut_time = 0
 	var/initial_desc = ""
 	var/list/guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat, /obj/item/reagent_container/food/snacks/meat/synthmeat)//placeholders, for now
 	var/base_gut_meat = /obj/item/reagent_container/food/snacks/meat
@@ -54,7 +54,7 @@
 		to_chat(user, SPAN_WARNING("[src] cannot be gutted."))
 		return
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
-		user.visible_message("[user] starts to cut [W] open and clean it.", "You start to gut [src].")
+		user.visible_message("[user] cuts [src] open and cleans it.", "You gut [src].")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
 		if(do_after(user, gut_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
 			var/gut_loot = roll(total_length/2 - min_length)
@@ -218,6 +218,11 @@
 	min_length = 2
 	max_length = 9
 
+/obj/item/reagent_container/food/snacks/fishable/urchin/purple/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 1)
+	bitesize = 1
+
 /obj/item/reagent_container/food/snacks/fishable/urchin/red
 	name = "red urchin"
 	desc = "Glad I didn't step on it, it looks angry!"
@@ -225,4 +230,9 @@
 	icon_state = "urchin_red"
 	min_length = 2
 	max_length = 9
+
+/obj/item/reagent_container/food/snacks/fishable/urchin/red/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 1)
+	bitesize = 1
 //finished code on worm and clam fish and items, added 3 new fish types (catfish being non-guttable is on purpose), worm now drops bait when gutted

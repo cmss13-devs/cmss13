@@ -5,6 +5,7 @@ SUBSYSTEM_DEF(modpacks)
 	init_order = INIT_ORDER_MODPACKS
 	flags = SS_NO_FIRE
 	var/list/loaded_modpacks = list()
+	var/list/tgui_data = list()
 
 /datum/controller/subsystem/modpacks/Initialize()
 	var/list/all_modpacks = list()
@@ -33,30 +34,45 @@ SUBSYSTEM_DEF(modpacks)
 
 	return SS_INIT_SUCCESS
 
-/client/verb/modpacks_list()
+/mob/verb/modpacks_list()
 	set name = "Modpacks List"
 	set category = "OOC"
 
-	if(!mob || !SSmodpacks.initialized)
+	if(!client || !SSmodpacks.initialized)
 		return
 
-	if(length(SSmodpacks.loaded_modpacks))
-		. = "<meta charset='UTF-8'><hr><br><center><b><font size = 3>Список модификаций</font></b></center><br><hr><br>"
-		for(var/datum/modpack/M as anything in SSmodpacks.loaded_modpacks)
-			if(M.name)
-				. += "<div class = 'statusDisplay'>"
-				. += "<center><b>[M.name]</b></center>"
-
-				if(M.desc || M.author)
-					. += "<br>"
-					if(M.desc)
-						. += "<br>Описание: [M.desc]"
-					if(M.author)
-						. += "<br><i>Автор: [M.author]</i>"
-				. += "</div><br>"
-
-		var/datum/browser/popup = new(mob, "modpacks_list", "Список Модификаций", 480, 580)
-		popup.set_content(.)
-		popup.open()
-	else
+	if(!length(SSmodpacks.loaded_modpacks))
 		to_chat(src, "Этот сервер не использует какие-либо модификации.")
+		return
+
+	SSmodpacks.tgui_interact(src)
+
+/datum/controller/subsystem/modpacks/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ModpacksList", name)
+		ui.open()
+	ui.set_autoupdate(FALSE)
+
+/datum/controller/subsystem/modpacks/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/controller/subsystem/modpacks/ui_static_data(mob/user)
+	var/list/data = list()
+
+	if(!length(tgui_data))
+		tgui_data = generate_modpacks_data()
+	data["modpacks"] = tgui_data
+
+	return data
+
+/datum/controller/subsystem/modpacks/proc/generate_modpacks_data()
+	var/list/modpacks = list()
+	for(var/datum/modpack/modpack as anything in loaded_modpacks)
+		if(modpack.name)
+			modpacks += list(list(
+				"name" = modpack.name,
+				"desc" = modpack.desc,
+				"author" = modpack.author
+			))
+	return modpacks

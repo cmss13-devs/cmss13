@@ -4241,7 +4241,7 @@
 /obj/structure/machinery/power/apc/almayer/south,
 /obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/sterile_green_corner/west,
-/area/almayer/medical/containment)
+/area/almayer/medical/containment/cell)
 "ajA" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/almayer/plate,

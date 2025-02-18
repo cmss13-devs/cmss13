@@ -1,5 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Fixes double examine text on hivelord when you examine them as a xeno."
-  - spellcheck: "Rewrites Queen and Hivelord xeno examine text"

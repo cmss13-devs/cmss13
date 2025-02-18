@@ -489,6 +489,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "abl" = (
+/obj/effect/landmark/start/doctor,
+/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/start/field_doctor,
+/obj/effect/landmark/late_join/field_doctor,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
+"abm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -500,7 +507,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
-"abm" = (
+"abn" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/maint/hull/upper/u_f_p)
+"abo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -512,19 +525,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
-"abn" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/maint/hull/upper/u_f_p)
-"abo" = (
+"abp" = (
 /obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
 	nametag = "Brig Perma"
 	},
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/perma)
-"abp" = (
+"abq" = (
 /obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
 	nametag = "Interrogation"
 	},
@@ -77777,7 +77784,7 @@ naB
 naB
 naB
 naB
-abo
+abp
 dcy
 qPD
 qPD
@@ -78580,7 +78587,7 @@ xkc
 xyZ
 hvd
 vGn
-abp
+abq
 ehl
 uXu
 cQG
@@ -79204,7 +79211,7 @@ oRk
 oRk
 oRk
 utZ
-abl
+abm
 hTt
 kMH
 tUx
@@ -81437,7 +81444,7 @@ ptq
 oRk
 eNR
 bju
-abm
+abo
 dEG
 xkd
 uvY
@@ -99986,7 +99993,7 @@ bwG
 rUq
 rUq
 sab
-sab
+abl
 izk
 pQc
 cWr

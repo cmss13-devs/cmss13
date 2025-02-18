@@ -10465,9 +10465,6 @@
 	desc = "Do you think the bugs are using these to move around this rig?";
 	unacidable = 1
 	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
 "aBK" = (
@@ -10529,9 +10526,6 @@
 	desc = "Do you think the bugs are using these to move around this rig?";
 	explo_proof = 1;
 	unacidable = 1
-	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
@@ -11589,19 +11583,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/logistic/Port_hallway)
-"aEd" = (
-/obj/structure/monorail{
-	dir = 8;
-	name = "support beam";
-	desc = "Do you think the bugs are using these to move around this rig?";
-	explo_proof = 1;
-	unacidable = 1
-	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/oob/water/far)
 "aEe" = (
 /obj/structure/monorail{
 	dir = 8;
@@ -17804,6 +17785,67 @@
 /obj/effect/spawner/random/gun/special/midchance,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
+"aTJ" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_x = 6;
+	pixel_y = -24
+	},
+/turf/open/floor/plating/kutjevo,
+/area/navalis/indoors/industrial/power)
+"aTK" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_x = -6;
+	pixel_y = -24
+	},
+/turf/open/floor/plating/kutjevo,
+/area/navalis/indoors/industrial/power)
+"aTL" = (
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/navalis/oob)
+"aTM" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_y = 32;
+	pixel_x = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/navalis/indoors/industrial/power)
+"aTN" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_x = -6;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/kutjevo,
+/area/navalis/indoors/industrial/power)
+"aTO" = (
+/obj/structure/machinery/colony_floodlight/navalis_wall_light,
+/turf/open/floor/kutjevo/grey/plate,
+/area/navalis/outdoors/landing_zone_2)
+"aTP" = (
+/obj/structure/machinery/colony_floodlight/navalis_wall_light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/grey,
+/area/navalis/outdoors/landing_zone_2)
+"aTQ" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
+/obj/structure/platform/metal/hybrisa/metalplatform2/north,
+/obj/structure/platform/metal/hybrisa/metalplatform2/west,
+/obj/structure/machinery/colony_floodlight/navalis_wall_light{
+	dir = 1
+	},
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/comm_one)
+"aTR" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
+/obj/structure/platform/metal/hybrisa/metalplatform2/west,
+/obj/structure/platform/metal/hybrisa/metalplatform2,
+/obj/structure/machinery/colony_floodlight/navalis_wall_light,
+/turf/open/gm/river/no_overlay/ocean_no_slowdown,
+/area/navalis/outdoors/comm_one)
 "aUq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata,
@@ -31126,16 +31168,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/exterior/ind_ext)
-"pmW" = (
-/obj/structure/machinery/door_control{
-	id = "sector_two";
-	pixel_y = -28;
-	name = "Sector Two - Lockdown";
-	explo_proof = 1;
-	needs_power = 0
-	},
-/turf/open/floor/corsat/plate,
-/area/navalis/indoors/industrial/power)
 "pmX" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -59643,13 +59675,13 @@ eJs
 eJs
 eJs
 aaL
-dKk
-isl
+aTO
+aTL
 pVI
 gWg
 gWg
 ciX
-isl
+aTL
 adG
 dKk
 aaL
@@ -59658,19 +59690,19 @@ aER
 aaL
 aaL
 amJ
-tAA
+aTL
 pVI
 gWg
 gWg
 ciX
-isl
+aTL
 amJ
 aaL
 aER
 aER
 aaL
 amJ
-isl
+aTL
 aNG
 pui
 dvZ
@@ -59996,8 +60028,8 @@ isl
 eRW
 paD
 paD
-pmW
-isl
+rtA
+aTL
 qLp
 lum
 dmH
@@ -60295,7 +60327,7 @@ rKE
 mXs
 amd
 kNL
-aaL
+aTP
 qYP
 fsg
 uBL
@@ -60451,15 +60483,15 @@ lJH
 lJH
 lJH
 oPE
-wWR
+aTR
 tAA
 tAA
-rKE
+aTQ
 ipE
 rnI
 feA
 feA
-isl
+aTL
 amJ
 uBL
 amS
@@ -60654,7 +60686,7 @@ tKh
 raw
 rtA
 qLp
-cyG
+aTM
 mJI
 mJI
 aal
@@ -61312,7 +61344,7 @@ rWE
 iKJ
 fiQ
 afo
-cyG
+aTJ
 qLp
 aQC
 qfy
@@ -62132,7 +62164,7 @@ ezm
 cnG
 emH
 afl
-cyG
+aTK
 qLp
 aQC
 qfy
@@ -62786,7 +62818,7 @@ aaT
 mJI
 mJI
 qLp
-cyG
+aTN
 mJI
 mJI
 aaq
@@ -65122,8 +65154,8 @@ gGc
 gGc
 gGc
 gGc
-ayU
-aEd
+gGc
+aBN
 gGc
 gGc
 gGc
@@ -65285,10 +65317,10 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aCd
 aEe
-ayU
+gGc
 gGc
 gGc
 gGc
@@ -65448,12 +65480,12 @@ gGc
 gGc
 gGc
 gGc
-ayU
-ayU
+gGc
+gGc
 aCd
 aEe
 aCd
-ayU
+gGc
 gGc
 gGc
 gGc
@@ -65611,13 +65643,13 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aEf
 aDZ
 aDZ
 aBO
 aDZ
-aAb
+acK
 ayz
 gGc
 gGc
@@ -65774,7 +65806,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aEf
 aBR
 dvZ
@@ -65937,7 +65969,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aBW
 aBR
 dvZ
@@ -66101,7 +66133,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aEh
 dvZ
 dvZ
@@ -66265,7 +66297,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aEh
 dvZ
 dvZ
@@ -66429,7 +66461,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aEh
 dvZ
 dvZ
@@ -66593,7 +66625,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aEh
 dvZ
 dvZ
@@ -66757,7 +66789,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aEh
 dvZ
 dvZ
@@ -66921,7 +66953,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aBU
 aBT
 dvZ
@@ -67086,7 +67118,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aBU
 aBT
 dvZ
@@ -67095,7 +67127,7 @@ dvZ
 dvZ
 dvZ
 aBC
-azf
+acn
 gGc
 gGc
 cCP
@@ -67251,7 +67283,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aBU
 aEb
 aEb
@@ -67259,7 +67291,7 @@ aBP
 aEb
 aBH
 aBE
-ayU
+gGc
 gGc
 alk
 uRf
@@ -67416,13 +67448,13 @@ gGc
 gGc
 gGc
 gGc
-ayU
-ayU
+gGc
+gGc
 aCd
 aEe
 aCd
-ayU
-ayU
+gGc
+gGc
 gGc
 gGc
 gGc
@@ -67582,7 +67614,7 @@ gGc
 gGc
 gGc
 gGc
-ayU
+gGc
 aBQ
 aBJ
 gGc

@@ -852,6 +852,7 @@
 #include "code\game\jobs\job\civilians\other\survivors.dm"
 #include "code\game\jobs\job\civilians\support\cmo.dm"
 #include "code\game\jobs\job\civilians\support\doctor.dm"
+#include "code\game\jobs\job\civilians\support\field_doctor.dm"
 #include "code\game\jobs\job\civilians\support\nurse.dm"
 #include "code\game\jobs\job\civilians\support\researcher.dm"
 #include "code\game\jobs\job\civilians\support\synthetic.dm"

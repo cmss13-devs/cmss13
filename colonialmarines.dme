@@ -626,6 +626,7 @@
 #include "code\datums\moba\castes\drone.dm"
 #include "code\datums\moba\items\_item.dm"
 #include "code\datums\moba\map\ai_camp.dm"
+#include "code\datums\moba\map\minion_checkpoint.dm"
 #include "code\datums\moba\map\misc.dm"
 #include "code\datums\moba\map\moba_map_template.dm"
 #include "code\datums\moba\map\moba_simplemobs.dm"

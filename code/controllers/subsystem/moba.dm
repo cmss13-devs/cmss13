@@ -111,7 +111,12 @@ SUBSYSTEM_DEF(moba)
 	for(var/datum/moba_player/player as anything in (team1_players + team2_players))
 		remove_from_queue(player)
 		to_chat(player.tied_client, SPAN_BOLDNOTICE("Your game is now being created."))
-		ADD_TRAIT(player.tied_client.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT) // We add this to observers so we can make sure they can't mess with their MOBA prefs
+		ADD_TRAIT(player.tied_client.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT) // We add this to observers so we can make sure they can't mess with their MOBA prefs and other stuff
+		for(var/datum/tgui/ui as anything in player.tied_client.mob.tgui_open_uis)
+			if(!istype(ui.src_object, /datum/moba_join_panel))
+				continue
+
+			ui.close()
 
 	var/datum/moba_controller/new_controller = new(team1_players, team2_players, current_highest_map_id)
 	controllers += new_controller
@@ -126,7 +131,7 @@ SUBSYSTEM_DEF(moba)
 
 	var/datum/map_template/moba_map/template = new
 	template.load(reservation.bottom_left_turfs[1], FALSE, TRUE)
-	new_controller.handle_map_init()
+	new_controller.handle_map_init(reservation.bottom_left_turfs[1])
 	new_controller.load_in_players()
 
 /datum/controller/subsystem/moba/proc/get_moba_controller(map_id)

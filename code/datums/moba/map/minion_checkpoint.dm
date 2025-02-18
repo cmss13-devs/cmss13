@@ -1,0 +1,190 @@
+GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
+
+// walk_to() has a max range of 2x the world.view, so checkpoints must be within 14 tiles of each other
+
+/obj/effect/moba_minion_checkpoint
+	// Both of these are relative to the bottom left corner of the map
+	var/next_x_coord
+	var/next_y_coord
+	/// List of coords of the bottom left turf of the moba map
+	var/list/bottom_left_turf_coords
+	/// Which side this belongs to
+	var/primary_hive = XENO_HIVE_MOBA_LEFT
+	// If the target hive != primary hive, use these coords instead
+	var/alt_next_x_coord
+	var/alt_next_y_coord
+
+/obj/effect/moba_minion_checkpoint/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(get_turf(src), COMSIG_TURF_ENTERED, PROC_REF(on_turf_enter))
+	GLOB.uninitialized_moba_checkpoints += src
+
+/obj/effect/moba_minion_checkpoint/proc/set_up_checkpoint(turf/bottom_left_turf)
+	bottom_left_turf_coords = list(bottom_left_turf.x, bottom_left_turf.y, bottom_left_turf.z)
+	GLOB.uninitialized_moba_checkpoints -= src
+
+/obj/effect/moba_minion_checkpoint/proc/on_turf_enter(datum/source, atom/movable/entering)
+	SIGNAL_HANDLER
+
+	if(!istype(entering, /mob/living/carbon/xenomorph/lesser_drone/moba))
+		return
+
+	var/mob/living/carbon/xenomorph/lesser_drone/moba/minion = entering
+	if(minion.hive.hivenumber == primary_hive)
+		minion.next_turf_target = locate(bottom_left_turf_coords[1] + next_x_coord, bottom_left_turf_coords[2] + next_y_coord, bottom_left_turf_coords[3])
+	else
+		minion.next_turf_target = locate(bottom_left_turf_coords[1] + alt_next_x_coord, bottom_left_turf_coords[2] + alt_next_y_coord, bottom_left_turf_coords[3])
+	minion.is_moving_to_next_point = FALSE
+	INVOKE_ASYNC(minion, TYPE_PROC_REF(/mob/living/carbon/xenomorph/lesser_drone/moba, process))
+
+/obj/effect/moba_minion_checkpoint/left
+	primary_hive = XENO_HIVE_MOBA_LEFT
+
+/obj/effect/moba_minion_checkpoint/left/top_diag1 // From base to halfway through the diagonal
+	next_x_coord = 27
+	next_y_coord = 45
+	//alt_next_x_coord
+	//alt_next_y_coord // zonenote fill these out once nexus is figured out
+
+/obj/effect/moba_minion_checkpoint/left/top_diag2 // From halfway through the diagonal to the start of top straight
+	next_x_coord = 35
+	next_y_coord = 49
+	alt_next_x_coord = 16
+	alt_next_y_coord = 34
+
+/obj/effect/moba_minion_checkpoint/left/top_straight1
+	next_x_coord = 49
+	next_y_coord = 49
+	alt_next_x_coord = 27
+	alt_next_y_coord = 45
+
+/obj/effect/moba_minion_checkpoint/left/top_straight2
+	next_x_coord = 63
+	next_y_coord = 49
+	alt_next_x_coord = 35
+	alt_next_y_coord = 49
+
+/obj/effect/moba_minion_checkpoint/left/top_straight3
+	next_x_coord = 74
+	next_y_coord = 49
+	alt_next_x_coord = 49
+	alt_next_y_coord = 49
+
+/obj/effect/moba_minion_checkpoint/left/top_straight4
+	next_x_coord = 84
+	next_y_coord = 49
+	alt_next_x_coord = 63
+	alt_next_y_coord = 49
+
+/obj/effect/moba_minion_checkpoint/left/bot_diag1
+	next_x_coord = 27
+	next_y_coord = 1
+	//alt_next_x_coord
+	//alt_next_y_coord // zonenote fill these out once nexus is figured out
+
+/obj/effect/moba_minion_checkpoint/left/bot_diag2
+	next_x_coord = 35
+	next_y_coord = 7
+	alt_next_x_coord = 16
+	alt_next_y_coord = 22
+
+/obj/effect/moba_minion_checkpoint/left/bot_straight1
+	next_x_coord = 49
+	next_y_coord = 7
+	alt_next_x_coord = 27
+	alt_next_y_coord = 11
+
+/obj/effect/moba_minion_checkpoint/left/bot_straight2
+	next_x_coord = 63
+	next_y_coord = 7
+	alt_next_x_coord = 35
+	alt_next_y_coord = 7
+
+/obj/effect/moba_minion_checkpoint/left/bot_straight3
+	next_x_coord = 76
+	next_y_coord = 7
+	alt_next_x_coord = 49
+	alt_next_y_coord = 7
+
+/obj/effect/moba_minion_checkpoint/left/bot_straight4
+	next_x_coord = 84
+	next_y_coord = 7
+	alt_next_x_coord = 63
+	alt_next_y_coord = 7
+
+
+/obj/effect/moba_minion_checkpoint/right
+	primary_hive = XENO_HIVE_MOBA_RIGHT
+
+/obj/effect/moba_minion_checkpoint/right/top_diag1
+	next_x_coord = 133
+	next_y_coord = 45
+	//alt_next_x_coord
+	//alt_next_y_coord // zonenote fill these out once nexus is figured out
+
+/obj/effect/moba_minion_checkpoint/right/top_diag2
+	next_x_coord = 124
+	next_y_coord = 49
+	alt_next_x_coord = 144
+	alt_next_y_coord = 34
+
+/obj/effect/moba_minion_checkpoint/right/top_straight1
+	next_x_coord = 110
+	next_y_coord = 49
+	alt_next_x_coord = 133
+	alt_next_y_coord = 45
+
+/obj/effect/moba_minion_checkpoint/right/top_straight2
+	next_x_coord = 96
+	next_y_coord = 49
+	alt_next_x_coord = 124
+	alt_next_y_coord = 49
+
+/obj/effect/moba_minion_checkpoint/right/top_straight3
+	next_x_coord = 83 // Zonenote: off by one or something? Is the map uneven? I don't think it is and i've done the math but idk
+	next_y_coord = 49
+	alt_next_x_coord = 110
+	alt_next_y_coord = 49
+
+/obj/effect/moba_minion_checkpoint/right/top_straight4
+	next_x_coord = 76
+	next_y_coord = 49
+	alt_next_x_coord = 96
+	alt_next_y_coord = 49
+
+/obj/effect/moba_minion_checkpoint/right/bot_diag1
+	next_x_coord = 132
+	next_y_coord = 11
+	//alt_next_x_coord
+	//alt_next_y_coord // zonenote fill these out once nexus is figured out
+
+/obj/effect/moba_minion_checkpoint/right/bot_diag2
+	next_x_coord = 124
+	next_y_coord = 7
+	alt_next_x_coord = 144
+	alt_next_y_coord = 22
+
+/obj/effect/moba_minion_checkpoint/right/bot_straight1
+	next_x_coord = 111
+	next_y_coord = 7
+	alt_next_x_coord = 133
+	alt_next_y_coord = 11
+
+/obj/effect/moba_minion_checkpoint/right/bot_straight2
+	next_x_coord = 97
+	next_y_coord = 7
+	alt_next_x_coord = 125
+	alt_next_y_coord = 7
+
+/obj/effect/moba_minion_checkpoint/right/bot_straight3
+	next_x_coord = 84 // Zonenote: off by one or something? Is the map uneven? I don't think it is and i've done the math but idk
+	next_y_coord = 7
+	alt_next_x_coord = 111
+	alt_next_y_coord = 7
+
+/obj/effect/moba_minion_checkpoint/right/bot_straight4
+	next_x_coord = 76
+	next_y_coord = 7
+	alt_next_x_coord = 97
+	alt_next_y_coord = 7
+

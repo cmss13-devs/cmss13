@@ -4,8 +4,8 @@
 	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon = 'icons/obj/items/storage/mre.dmi'
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/mres_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/mres_righthand.dmi'
 	)
 	icon_state = "mealpack"
 	item_state = "mealpack"
@@ -157,6 +157,7 @@
 	icon_state = "pmc_mealpack"
 	icon_closed = "pmc_mealpack"
 	icon_opened = "pmc_mealpackopened"
+	item_state = "pmc_mealpack"
 	trash_item = /obj/item/trash/pmc_mre
 	should_have_spread = FALSE
 	should_have_beverage = FALSE
@@ -198,6 +199,7 @@
 	icon_state = "twe_mealpack"
 	icon_closed = "twe_mealpack"
 	icon_opened = "twe_mealpackopened"
+	item_state = "twe_mealpack"
 	trash_item = /obj/item/trash/twe_mre
 	entree = /obj/item/mre_food_packet/entree/twe
 	side = /obj/item/mre_food_packet/twe/side
@@ -246,6 +248,7 @@
 	icon_state = "merc_mealpack"
 	icon_closed = "merc_mealpack"
 	icon_opened = "merc_mealpackopened"
+	item_state = "merc_mealpack"
 	trash_item = /obj/item/trash/merc_mre
 	entree = /obj/item/mre_food_packet/entree/merc
 	side = /obj/item/mre_food_packet/merc/side
@@ -263,6 +266,7 @@
 	icon_state = "wy_mealpack"
 	icon_closed = "wy_mealpack"
 	icon_opened = "wy_mealpackopened"
+	item_state = "wy_mealpack"
 	trash_item = /obj/item/trash/wy_mre
 	entree = /obj/item/mre_food_packet/entree/wy_colonist
 	side = null
@@ -297,6 +301,7 @@
 	icon_state = "upp_mealpack"
 	icon_closed = "upp_mealpack"
 	icon_opened = "upp_mealpackopened"
+	item_state = "upp_mealpack"
 	entree = null
 	side = null
 	trash_item = /obj/item/trash/upp_mre

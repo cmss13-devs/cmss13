@@ -31,29 +31,34 @@
 /obj/item/reagent_container/food/drinks/cans/attackby(obj/item/opening_tool as obj, mob/user as mob)
 	var/opening_time
 	var/opening_sound
-	if(user.action_busy ||  open || !needs_can_opener || !HAS_TRAIT(opening_tool, TRAIT_TOOL_CAN_OPENER))
+	var/hiss = pick("Nice hiss!", "No hiss.", "A small hiss.") //i couldn't not include stevemre reference
+	if(user.action_busy || open || !needs_can_opener || !HAS_TRAIT(opening_tool, TRAIT_TOOL_CAN_OPENER))
 		return
 
 	if(istype(opening_tool, /obj/item/tool/kitchen/can_opener))
 		opening_time = 4 SECONDS
 		opening_sound = 'sound/items/can_open2.ogg'
+		to_chat(user, SPAN_NOTICE("You begin to open the can with a can opener. [hiss]"))
 	if(istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
 		opening_time = 12 SECONDS
 		opening_sound = 'sound/items/can_open1.ogg'
+		to_chat(user, SPAN_NOTICE("You begin to crudely jam the can with a blade. [hiss]"))
 
-	playsound(src.loc, opening_sound, 15, FALSE, 15)
+	playsound(src.loc, opening_sound, 15, FALSE, 5)
 
 	if(do_after(user, opening_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		if(prob(25) && istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
 			to_chat(user, SPAN_NOTICE("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
-			playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 15)
+			playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 5)
 			return
-		playsound(src.loc, open_sound, 15, 1)
+		playsound(src.loc, open_sound, 15, 1, 5)
 		to_chat(user, SPAN_NOTICE(open_message))
 		open = TRUE
 		if(has_open_icon)
 			icon_state += "_open"
 		update_icon()
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 /obj/item/reagent_container/food/drinks/cans/get_examine_text(mob/user)
 	. = ..()

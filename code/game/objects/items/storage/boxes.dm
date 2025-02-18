@@ -339,6 +339,7 @@
 	name = "box of Earl Grey tea bags"
 	desc = "A box of instant tea bags."
 	icon_state = "teabag_box"
+	item_state = "teabag_box"
 	can_hold = list(/obj/item/reagent_container/pill/teabag)
 	w_class = SIZE_SMALL
 	storage_slots = 8
@@ -357,6 +358,7 @@
 	name = "box of Lemon Drop candies"
 	desc = "A box of lemon flavored hard candies."
 	icon_state = "lemon_drop_box"
+	item_state = "lemon_drop_box"
 	can_hold = list(/obj/item/reagent_container/food/snacks/lemondrop)
 	w_class = SIZE_SMALL
 	storage_slots = 8

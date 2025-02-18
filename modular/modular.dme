@@ -11,6 +11,7 @@
 #include "respawn/_respawn.dme"
 #include "sounds/_sounds.dme"
 #include "translations/_translations.dme"
+#include "stats_viewer/_stats_viewer.dme"
 #include "speech_filter/_speech_filter.dme"
 #include "text_to_speech/_tts.dme"
 #include "attachments/_attachments.dme"

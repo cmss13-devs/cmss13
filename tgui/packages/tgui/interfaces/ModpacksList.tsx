@@ -26,7 +26,7 @@ type Modpack = {
   author: string;
 };
 
-export const ModpacksListContent = (props, context) => {
+const ModpacksListContent = (props, context) => {
   const { act, data } = useBackend<ModpacksData>();
   const { modpacks } = data;
 

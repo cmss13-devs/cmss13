@@ -175,6 +175,7 @@ const marineSplitter = (members: Array<Observable>) => {
   const FORECONSquad: Array<Observable> = [];
   const SOFSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
+  const provost: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.job?.includes('Alpha')) {
@@ -195,6 +196,8 @@ const marineSplitter = (members: Array<Observable>) => {
       FORECONSquad.push(x);
     } else if (x.job?.includes('SOF')) {
       SOFSquad.push(x);
+    } else if (x.job?.includes('Provost')) {
+      provost.push(x);
     } else {
       other.push(x);
     }
@@ -211,6 +214,7 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('FORECON', 'green', FORECONSquad),
     buildSquadObservable('SOF', 'red', SOFSquad),
     buildSquadObservable('Other', 'grey', other),
+    buildSquadObservable('Provost', 'red', provost),
   ];
   return squads;
 };

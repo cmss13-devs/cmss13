@@ -1,36 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/structure/surface/table/almayer,
-/obj/item/ammo_box/magazine/misc/mre/twe{
-	pixel_y = 12;
-	pixel_x = -8
-	},
-/obj/item/ammo_box/magazine/misc/mre/twe{
-	pixel_y = 12;
-	pixel_x = 7
-	},
-/turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/royal_marines_station)
-"ab" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/mre_food/twe/side/nigirisushi{
-	pixel_y = 5;
-	pixel_x = -12
-	},
-/obj/item/reagent_container/food/snacks/mre_food/uscm/snack/sushi,
-/turf/open/floor/almayer,
-/area/adminlevel/ert_station/royal_marines_station)
-"ac" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/MRE/TWE,
-/turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/royal_marines_station)
-"ad" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/almayer,
-/area/adminlevel/ert_station/royal_marines_station)
-"ae" = (
-/obj/structure/surface/table/almayer,
 /obj/item/storage/box/teabags{
 	pixel_y = 10;
 	pixel_x = -7
@@ -44,12 +14,42 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
-"af" = (
+"ab" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_box/magazine/misc/mre/twe{
+	pixel_y = 12;
+	pixel_x = -8
+	},
+/obj/item/ammo_box/magazine/misc/mre/twe{
+	pixel_y = 12;
+	pixel_x = 7
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/royal_marines_station)
+"ac" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/mre_food/twe/side/nigirisushi{
+	pixel_y = 5;
+	pixel_x = -12
+	},
+/obj/item/reagent_container/food/snacks/mre_food/uscm/snack/sushi,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"ae" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/almayer/orange/west,
+/area/adminlevel/ert_station/royal_marines_station)
+"af" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/MRE/TWE,
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "ai" = (
 /obj/structure/machinery/light{
@@ -2425,15 +2425,15 @@ WS
 TY
 yK
 Sv
-ac
+af
 Sv
 gS
 TY
 TY
 TY
 gS
+ab
 aa
-ae
 Sv
 uq
 OE
@@ -2478,7 +2478,7 @@ IQ
 gJ
 gJ
 gJ
-af
+ae
 NF
 Ac
 Ac
@@ -2620,7 +2620,7 @@ kh
 kh
 Uv
 ZA
-ab
+ac
 kh
 Uv
 RF

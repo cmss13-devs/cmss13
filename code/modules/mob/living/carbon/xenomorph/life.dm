@@ -8,6 +8,9 @@
 	if(!loc)
 		return
 
+	if(banished)
+		apply_armoured_damage(ceil(health / XENO_BANISHMENT_DMG_DIVISOR))
+
 	..()
 
 	// replace this by signals or trait signals

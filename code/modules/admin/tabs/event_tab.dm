@@ -948,6 +948,8 @@
 			custom = FALSE
 			var/list/warheads = subtypesof(/obj/structure/ob_ammo/warhead/)
 			var/choice = tgui_input_list(usr, "Select the warhead:", "Warhead to use", warheads)
+			if(!choice)
+				return
 			warhead = new choice
 		if("Custom HE")
 			var/obj/structure/ob_ammo/warhead/explosive/OBShell = new
@@ -1034,6 +1036,8 @@
 			warhead = OBShell
 
 	if(custom)
+		if(!warhead)
+			return
 		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes")
 			qdel(warhead)
 			return

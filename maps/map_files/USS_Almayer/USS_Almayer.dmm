@@ -489,16 +489,18 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "abl" = (
+/obj/effect/landmark/start/doctor,
+/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/start/field_doctor,
+/obj/effect/landmark/late_join/field_doctor,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
+"abm" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
 	},
 /obj/structure/machinery/chem_master/industry_mixer,
-/turf/open/floor/almayer,
-/area/almayer/engineering/lower/workshop/hangar)
-"abm" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/ordnance,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "abn" = (
@@ -509,12 +511,17 @@
 /area/almayer/maint/hull/upper/u_f_p)
 "abo" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/ordnance,
+/turf/open/floor/almayer,
+/area/almayer/engineering/lower/workshop/hangar)
+"abp" = (
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder/industrial{
 	pixel_y = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
-"abp" = (
+"abq" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -95452,7 +95459,7 @@ wUK
 dDM
 vPR
 nmY
-abm
+abo
 aId
 aId
 uZV
@@ -95655,10 +95662,10 @@ vwY
 uIA
 acd
 ruL
-abo
+abp
 aId
 tEd
-abl
+abm
 nmY
 qpV
 hNh
@@ -95858,7 +95865,7 @@ wCk
 aId
 lab
 ruL
-abp
+abq
 aId
 aId
 dOe
@@ -99872,7 +99879,7 @@ bwG
 rUq
 rUq
 sab
-sab
+abl
 izk
 pQc
 cWr

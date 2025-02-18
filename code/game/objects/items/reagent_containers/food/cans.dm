@@ -394,12 +394,12 @@
 	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
 	crushed_icon = "wy_water_crushed"
-	has_open_icon = TRUE
-	center_of_mass = "x=15;y=8"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
 	)
+	has_open_icon = TRUE
+	center_of_mass = "x=15;y=8"
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
@@ -417,6 +417,10 @@
 	desc = "Rich in vitamins and (artificial) flavor, quenches thirst in a few sips. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "pmc_cocomilk"
 	crushed_icon = "pmc_cocomilk_crushed"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	has_open_icon = TRUE
 	center_of_mass = "x=15;y=8"
 
@@ -430,6 +434,10 @@
 	desc_lore = "Initially designed in 2173 as meal replacement for high-intensity workers, MRD was recalled from the market multiple times due to reports of gastrointestinal illness, including nausea, vomiting, and diarrhea. Improved formula was created, but the brand name was already stained (quite literally), so now the drink remains as emergency food supply for internal Company use."
 	icon_state = "wy_soylent"
 	crushed_icon = "wy_soylent_crushed"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	has_open_icon = TRUE
 	center_of_mass = "x=15;y=8"
 	volume = 30
@@ -446,6 +454,10 @@
 	desc_lore = "'Bug Juice' Protein Drink, more commonly labeled Bug Juice, is an inexpensive and calorific beverage made with farmed and processed insects such as cockroaches, mealworms, and beetles. Offered by a variety of manufacturers, Bug Juice is packaged in cartons and bottles, and is widely consumed on the Frontier. It is classified as both a drink and a foodstuff, and is a source of protein and water."
 	icon_state = "wy_bug_juice"
 	crushed_icon = "wy_bug_juice_crushed"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	has_open_icon = TRUE
 	center_of_mass = "x=15;y=8"
 	volume = 30

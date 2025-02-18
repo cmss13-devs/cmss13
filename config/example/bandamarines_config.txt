@@ -3,3 +3,6 @@
 
 ## Is respawn allowed on the server
 # RESPAWN
+
+## Enables diagonal movement
+# DIAGONAL_MOVE

@@ -15,12 +15,13 @@
 	round_id = GLOB.round_id || -1
 	time_after_roundstart = floor((world.time - SSticker.mode.round_time_lobby) / 600)
 	total_survivors = /datum/job/civilian/survivor::total_spawned
-	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
-		if(QDELETED(human))
+	for(var/datum/weakref/ref as anything in GLOB.spawned_survivors)
+		var/mob/living/carbon/human/human = ref.resolve()
+		if(!human || (human.stat == DEAD))
 			continue
 
-		if(issurvivorjob(human.job))
-			remaining_survivors++
+		remaining_survivors++
+		
 	xeno_deaths = GLOB.total_dead_xenos
 
 /datum/entity/survivor_survival/post_creation()

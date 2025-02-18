@@ -16,7 +16,7 @@
 	available_strains = list(/datum/xeno_strain/resin_whisperer)
 
 	evolution_allowed = FALSE
-	caste_desc = "A builder of really big hives."
+	caste_desc = "For all your resin needs."
 	deevolves_to = list(XENO_CASTE_DRONE)
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
@@ -121,5 +121,40 @@
 	if(bound_xeno.plasma_stored > 0)
 		return
 	toggle_resin_walker()
-	to_chat(bound_xeno, SPAN_WARNING("You feel dizzy as the world slows down."))
+	to_chat(bound_xeno, SPAN_WARNING("We feel dizzy as the world slows down."))
 	bound_xeno.recalculate_move_delay = TRUE
+
+
+
+/datum/action/xeno_action/active_toggle/toggle_speed/enable_toggle()
+	. = ..()
+	update_weedwalking()
+
+/datum/action/xeno_action/active_toggle/toggle_speed/disable_toggle()
+	. = ..()
+	update_weedwalking()
+
+/datum/action/xeno_action/active_toggle/toggle_speed/proc/update_weedwalking()
+	var/mob/living/carbon/xenomorph/hivelord/xeno = owner
+	if(!xeno.check_state())
+		return
+
+	var/datum/behavior_delegate/hivelord_base/hivelord_delegate = xeno.behavior_delegate
+
+	if(!istype(hivelord_delegate))
+		return
+
+	if(hivelord_delegate.toggle_resin_walker() == TRUE)
+		if(!check_and_use_plasma_owner(plasma_cost))
+			to_chat(xeno, SPAN_WARNING("Not enough plasma!"))
+			return
+		to_chat(xeno, SPAN_NOTICE("We become one with the resin. We feel the urge to run!"))
+		button.icon_state = "template_active"
+		action_active = TRUE
+	else
+		to_chat(xeno, SPAN_WARNING("We feel less in tune with the resin."))
+		button.icon_state = "template"
+		action_active = FALSE
+		return
+
+	xeno.recalculate_move_delay = TRUE

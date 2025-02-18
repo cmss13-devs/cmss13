@@ -1,7 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Valkyrie rejuvenate no longer rejuvenates enemy xenos."
-  - bugfix: "Valkyrie slashes no longer heal enemy xenos."
-  - bugfix: "Valkyrie no longer can empower enemy xenos"
-  - spellcheck: "fixes a small mistake on strain buy"

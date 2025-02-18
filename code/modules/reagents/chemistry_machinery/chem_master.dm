@@ -211,7 +211,7 @@
 			loaded_pill_bottles -= bottle
 
 			if(length(loaded_pill_bottles) == 1)
-				loaded_pill_bottles_to_fill = loaded_pill_bottles
+				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
 
 			return TRUE
 
@@ -416,7 +416,7 @@
 			loaded_pill_bottles -= loaded_pill_bottles[bottle_index]
 
 			if(length(loaded_pill_bottles) == 1)
-				loaded_pill_bottles_to_fill = loaded_pill_bottles
+				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
 			return TRUE
 
 		if("connect")

@@ -214,7 +214,7 @@
 	if(!istype(M) || M.is_mob_incapacitated(TRUE))
 		return XENO_NO_DELAY_ACTION
 
-	if(M.hivenumber != src.hivenumber)
+	if(!M.hivenumber != hivenumber)
 		if(M.mob_size < MOB_SIZE_BIG)
 			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
@@ -252,9 +252,13 @@
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
 	if(M.mob_size >= MOB_SIZE_BIG)
+		if(M.banished)
+			return
 		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into [src]."),
 			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
 	else
+		if(M.banished)
+			return
 		M.visible_message(SPAN_XENONOTICE("[M] begins crawling down into [src]."),
 			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
 

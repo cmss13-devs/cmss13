@@ -370,3 +370,33 @@
   - ui: Job entry text is now boxed and looks bit less awful
   Red-byte3D:
   - bugfix: Fixes fire not negating vampire healing
+2025-02-16:
+  Drathek:
+  - maptweak: Removed an erronous nightmare insert on BigRed
+  Red-byte3D:
+  - bugfix: You can no longer crush people with unpowered doors via crowbar
+  - bugfix: WO commanding officer can now use the sg pamphlet
+  - code_imp: Removed some one letter vars
+  - code_imp: Removed sone unused code from vanguard praetorian
+  - qol: Aoe attacks no longer hit nested marines, including crusher slash
+  - code_imp: vanguard byond ticks into seconds
+  Zenith, Crowford, Frans_Feiffer, VaNdU-jr, cuberound, armolitskiy, mikoka wei:
+  - rscadd: Added many new loadout items, and more other loadout items previously
+      missing
+  zzzmike:
+  - qol: stops the economy inflation announcements during red/delta alert
+2025-02-18:
+  Ansekishoku:
+  - balance: adds AP mags for M4A3 pistol to the squad vendors.
+  - rscadd: A new Field Doctor job to end the arguments between doctors about who
+      wants to deploy.
+  Drathek Zenith:
+  - rscadd: Colony lights and traffic lights can be exploded into a stump now
+  - imageadd: Lightpost stumps by Zenith
+  Red-byte3D:
+  - bugfix: Fixes double examine text on hivelord when you examine them as a xeno.
+  - spellcheck: Rewrites Queen and Hivelord xeno examine text
+  - rscadd: Banishment now does damage per tick
+  - bugfix: You can no longer put down xeno resin marks in hyperspace
+  - code_imp: Fixes some bugs with fire ob admin proc
+  - bugfix: Towels no longer have lids

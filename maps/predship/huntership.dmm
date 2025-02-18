@@ -8348,8 +8348,10 @@
 /turf/open/floor/corsat/squares,
 /area/yautja/lower_deck)
 "Cv" = (
-/obj/effect/alien/egg/forsaken,
 /obj/effect/alien/weeds/node/forsaken,
+/obj/effect/alien/egg/forsaken{
+	huggers_can_spawn = 0
+	},
 /turf/open/floor/almayer/research/containment/yautja,
 /area/yautja)
 "Cx" = (
@@ -14044,6 +14046,13 @@
 	},
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
+"Vz" = (
+/obj/effect/alien/egg/forsaken{
+	huggers_can_spawn = 0
+	},
+/obj/effect/alien/weeds/node/forsaken,
+/turf/open/floor/almayer/research/containment/yautja,
+/area/yautja)
 "VB" = (
 /obj/structure/closet/coffin/predator{
 	pixel_y = 5
@@ -16254,7 +16263,7 @@ Km
 Ia
 Ia
 aV
-Cv
+Vz
 Cv
 Cv
 Kt

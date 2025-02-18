@@ -4,6 +4,7 @@
 	name = "floor"
 	icon = 'icons/turf/floors/hunter_floors.dmi'
 	icon_state = "floor"
+	supports_surgery = TRUE
 
 // Main floor/walkway
 

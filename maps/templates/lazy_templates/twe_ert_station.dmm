@@ -17,7 +17,7 @@
 	pixel_y = 5;
 	pixel_x = -12
 	},
-/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/sushi,
+/obj/item/reagent_container/food/snacks/mre_food/uscm/snack/sushi,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/royal_marines_station)
 "ac" = (
@@ -28,6 +28,28 @@
 "ad" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"ae" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/teabags{
+	pixel_y = 10;
+	pixel_x = -7
+	},
+/obj/item/storage/box/cups{
+	pixel_y = -5;
+	pixel_x = -7
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/royal_marines_station)
+"af" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/water_cooler/stacks,
+/turf/open/floor/almayer/orange/west,
 /area/adminlevel/ert_station/royal_marines_station)
 "ai" = (
 /obj/structure/machinery/light{
@@ -2012,7 +2034,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "UZ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/mre_food/twe_entree/fishnchips{
+/obj/item/reagent_container/food/snacks/mre_food/twe/entree/fishnchips{
 	pixel_y = 11
 	},
 /turf/open/floor/almayer,
@@ -2411,7 +2433,7 @@ TY
 TY
 gS
 aa
-Sv
+ae
 Sv
 uq
 OE
@@ -2456,7 +2478,7 @@ IQ
 gJ
 gJ
 gJ
-IQ
+af
 NF
 Ac
 Ac

@@ -4171,19 +4171,6 @@
 "ajq" = (
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/hallways/upper/midship_hallway)
-"ajr" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
-	dir = 1;
-	name = "\improper Combat Information Center"
-	},
-/turf/open/floor/almayer/silver/north,
-/area/almayer/command/cichallway)
 "ajs" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -4258,7 +4245,7 @@
 /obj/structure/machinery/power/apc/almayer/south,
 /obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/sterile_green_corner/west,
-/area/almayer/medical/containment/cell)
+/area/almayer/medical/containment)
 "ajC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -9886,7 +9873,7 @@
 	pixel_y = -6;
 	throw_range = 15;
 	pixel_x = 25;
-	req_one_access_txt = "4;28"
+	req_one_access_txt = "1;5;39"
 	},
 /obj/structure/sign/safety/storage{
 	pixel_x = 32;
@@ -90229,7 +90216,7 @@ vMI
 gII
 oPy
 wVW
-hlU
+fDU
 uiZ
 mKq
 qCy
@@ -90432,7 +90419,7 @@ wVW
 osz
 wVW
 wVW
-ajr
+aKn
 aKz
 pQy
 jhW

@@ -14,8 +14,7 @@
 		contents_food = pick(food_list)
 	if(!no_packet_label)
 		var/obj/item/reagent_container/food/snacks/food = contents_food
-		if(name)
-			name += " ([food.name])"
+		name += " ([food?.name])"
 
 /obj/item/mre_food_packet/ex_act()
 	deconstruct(FALSE)

@@ -62368,7 +62368,7 @@
 "uFo" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Storage Room";
-	req_one_access_txt = "19;20";
+	req_one_access_txt = "19;8";
 	req_one_access = null
 	},
 /obj/structure/disposalpipe/segment{

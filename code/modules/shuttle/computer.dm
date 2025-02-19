@@ -429,13 +429,41 @@
 					return
 
 				if(launch_initiated)
-					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
-					return
+					var/abort = tgui_alert(user, "Abort the launch?", "Confirm", list("Yes", "No"), 10 SECONDS)
+					switch(abort)
+						if ("Yes")
+							if(lifeboat.mode == SHUTTLE_CALL)
+								to_chat(user, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
+								return
+							if(lifeboat.status == LIFEBOAT_LOCKED)
+								to_chat(user, SPAN_WARNING("Controls not responding, please try again."))
+								return
+							lifeboat.set_mode(SHUTTLE_IDLE)
+							lifeboat.alarm_sound_loop?.stop()
+							lifeboat.playing_launch_announcement_alarm = FALSE
+							var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+							lifeboat_dock.open_dock()
+							launch_initiated = FALSE
+							return
 
 				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
 				if(launch_initiated)
-					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
-					return
+					var/abort = tgui_alert(user, "Abort the launch?", "Confirm", list("Yes", "No"), 10 SECONDS)
+					switch(abort)
+						if ("Yes")
+							if(lifeboat.mode == SHUTTLE_CALL)
+								to_chat(user, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
+								return
+							if(lifeboat.status == LIFEBOAT_LOCKED)
+								to_chat(user, SPAN_WARNING("Controls not responding, please try again."))
+								return
+							lifeboat.set_mode(SHUTTLE_IDLE)
+							lifeboat.alarm_sound_loop?.stop()
+							lifeboat.playing_launch_announcement_alarm = FALSE
+							var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+							lifeboat_dock.open_dock()
+							launch_initiated = FALSE
+							return
 				switch(response)
 					if ("Yes")
 						launch_initiated = TRUE
@@ -454,7 +482,35 @@
 						return
 
 			if(SHUTTLE_IGNITING)
-				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
+				if(!istype(user, /mob/living/carbon/human))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+
+				var/mob/living/carbon/human/human_user = user
+				var/obj/item/card/id/card = human_user.get_idcard()
+
+				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // if no card or not enough access, check for held id
+					card = locate(/obj/item/card/id) in human_user
+
+				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // still no valid card found?
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+				var/abort = tgui_alert(user, "Abort the launch?", "Confirm", list("Yes", "No"), 10 SECONDS)
+				switch(abort)
+					if ("Yes")
+						if(lifeboat.mode == SHUTTLE_CALL)
+							to_chat(user, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
+							return
+						if(lifeboat.status == LIFEBOAT_LOCKED)
+							to_chat(user, SPAN_WARNING("Controls not responding, please try again."))
+							return
+						lifeboat.set_mode(SHUTTLE_IDLE)
+						lifeboat.alarm_sound_loop?.stop()
+						lifeboat.playing_launch_announcement_alarm = FALSE
+						var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+						lifeboat_dock.open_dock()
+						launch_initiated = FALSE
+						return
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
 

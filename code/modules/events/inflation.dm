@@ -32,6 +32,8 @@
 	/* You may be thinking 'Why the fuck would W-Y directly send a broadcast to a in-operation vessel and reveal their location to any hostiles nearby?'
 	The answer is they don't, it's a signal sent across entire sectors for every UA-affiliated vessel and colony to take note of when it passes by.
 	Colony vendors aren't updated because the colony's network has collapsed. */
+	if(GLOB.security_level >= SEC_LEVEL_RED)
+		return
 	shipwide_ai_announcement("An encrypted broadband signal from Weyland-Yutani has been received notifying the sector of sudden changes in the UA's economy during cryosleep, due to [get_random_story()], and have requested UA vessels to increase the prices of [product_type] products by [get_percentage()]%. This change will come into effect in [time_to_update] minutes.", quiet = TRUE)
 
 /datum/round_event/economy_inflation/start()

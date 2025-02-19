@@ -369,6 +369,12 @@
 	SIGNAL_HANDLER
 	bound_xeno = null
 
+
+/obj/item/reagent_container/food/snacks/resin_fruit/attackby(obj/item/item_in_hand, mob/user)
+	if(item_in_hand == IS_SHARP_ITEM_ACCURATE || user.a_intent == INTENT_HARM)
+		playsound(src, "alien_resin_break", 25, FALSE)
+		qdel(src)
+
 /obj/item/reagent_container/food/snacks/resin_fruit/Destroy()
 	delete_fruit()
 	return ..()

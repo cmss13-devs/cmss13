@@ -53,7 +53,7 @@
 	var/list/view_list = view(3, parent_xeno)
 	for(var/mob/living/possible_target in view_list)
 		var/weight = 0
-		if((possible_target.stat == DEAD) || parent_xeno.hive.is_ally(possible_target))
+		if((possible_target.stat == DEAD) || parent_xeno.hive.is_ally(possible_target) || HAS_TRAIT(possible_target, TRAIT_CLOAKED))
 			continue
 
 		if(HAS_TRAIT(possible_target, TRAIT_MOBA_ATTACKED_HIVE(parent_xeno.hive.hivenumber))) // If attacked a friendly player, they're on our shitlist

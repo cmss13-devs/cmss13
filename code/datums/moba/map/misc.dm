@@ -11,6 +11,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/moba
 	cut_level = 1 // Magic number because we don't have the defines in this file
 	opacity = TRUE // won't be an issue since xenos have SEE_TURFS anyway
+	desc = "A clump of vibrant jungle grasses. They look like they would hide someone pretty well."
 	var/list/connected_bushes
 	var/static/list/client_image_dict = list()
 
@@ -49,7 +50,7 @@
 
 			RegisterSignal(living_mover.client, COMSIG_PARENT_QDELETING, PROC_REF(on_client_delete), TRUE)
 
-/obj/structure/flora/grass/tallgrass/jungle/moba/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/flora/grass/tallgrass/jungle/moba/attack_alien(mob/living/carbon/xenomorph/M) // We do this so that players can still be easily attacked in bushes
 	var/mob/living/located_living = locate() in get_turf(src)
 	if(located_living)
 		to_chat(M, SPAN_XENOWARNING("You swing through [src], hitting [located_living]!"))
@@ -61,6 +62,9 @@
 			return XENO_NO_DELAY_ACTION
 		else
 			return XENO_ATTACK_ACTION // Slash-checking bushes from outside inflicts a penalty
+
+// Zonenote: The above doesn't work for shit like tailstab because of how click code works. Maybe come back to eventually.
+// /mob/living/carbon/xenomorph/click() btw
 
 /obj/structure/flora/grass/tallgrass/jungle/moba/proc/on_client_delete(client/deleting, force)
 	SIGNAL_HANDLER

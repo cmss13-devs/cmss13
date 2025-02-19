@@ -119,11 +119,12 @@
 	if(!GLOB.enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
-	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
-		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
-		return
 
 	if(!client?.prefs.update_slot(player_rank.title))
+		return
+
+	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
+		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
 
 	spawning = TRUE

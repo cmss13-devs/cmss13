@@ -288,11 +288,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/list/gear
 
 	/// Loadout items that the user is equipped with on spawn.
-	VAR_PRIVATE/list/loadout
+	VAR_PRIVATE/list/loadout = list()
 
+	/// Mapping of jobs to slot numbers to names, to allow users to customise slots
 	var/list/loadout_slot_names
 
+	/// Which slot is currently in use
 	var/selected_loadout_slot = 1
+
+	/// This contains any potential issues with the users' preferences, and presents them on the lobby screen
+	var/errors = list()
 
 
 /datum/preferences/New(client/C)
@@ -935,6 +940,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	SetJobDepartment(job, priority)
 
 	SetChoices(user)
+
+	check_slot_prefs()
 	return 1
 
 /datum/preferences/proc/ResetJobs()
@@ -950,6 +957,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	for(var/role in GLOB.RoleAuthority.roles_by_path)
 		var/datum/job/J = GLOB.RoleAuthority.roles_by_path[role]
 		job_preference_list[J.title] = NEVER_PRIORITY
+
+	check_slot_prefs()
 
 /datum/preferences/proc/get_job_priority(J)
 	if(!J)
@@ -2374,6 +2383,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	var/loadout_for_role = has_loadout_for_role(picked_job)
 	if(!loadout_for_role)
+		if(!timeout)
+			if(tgui_alert(owner, "You have not selected any loadout for this role. Do you want to select this now?", "Loadout", list("Yes", "No")) == "Yes")
+				loadout_picker.tgui_interact(owner)
+				return FALSE
 		return TRUE
 
 	var/options = list()

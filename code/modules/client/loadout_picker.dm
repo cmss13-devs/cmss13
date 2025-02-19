@@ -167,6 +167,7 @@
 
 			prefs.loadout_slot_names[job]["[slot]"] = name
 
+	prefs.check_slot_prefs()
 	prefs.ShowChoices(ui.user)
 	return TRUE
 

@@ -192,7 +192,7 @@
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
 	if(X in contents)
 		X.forceMove(loc)
-		visible_message(SPAN_XENONOTICE("\The [X] pops out of the tunnel!"), \
+		visible_message(SPAN_XENONOTICE("\The [X] pops out of the tunnel!"),
 		SPAN_XENONOTICE("We pop out through the other side!"))
 		return TRUE
 
@@ -219,7 +219,7 @@
 			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
 
-		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),\
+		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),
 		SPAN_XENONOTICE("We begin to fill [src] with dirt using our massive claws."), max_distance = 3)
 		xeno_attack_delay(M)
 

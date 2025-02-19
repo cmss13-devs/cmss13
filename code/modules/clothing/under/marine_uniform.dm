@@ -261,8 +261,12 @@
 	desc = "The well-ironed utility uniform of a USCM officer. Even looking at it the wrong way could result in being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_jumpsuit"
 	worn_state = "CO_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	)
 	specialty = "USCM officer"
-	flags_atom = FPRINT
+	flags_atom = FPRINT && NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/general
 	name = "general uniform"
@@ -352,20 +356,20 @@
 	worn_state = "CO_service"
 	flags_atom = NO_GAMEMODE_SKIN
 
-/obj/item/clothing/under/marine/officer/formal/white
-	name = "Commanding Officer's white formal uniform"
-	desc = "A well-ironed USCM officer uniform in brilliant white with gold accents, intended for parades or hot weather. Wear this with pride."
-	icon_state = "CO_formal_white"
-	worn_state = "CO_formal_white"
-	specialty = "captain's white formal"
+/obj/item/clothing/under/marine/officer/formal/gray
+	name = "Commanding Officer's gray formal uniform"
+	desc = "A well-ironed USCM officer uniform  intended for parades or hot weather. Wear this with pride."
+	icon_state = "co_gray"
+	worn_state = "co_gray"
+	specialty = "captain's gray formal"
 	flags_atom = NO_GAMEMODE_SKIN
 
-/obj/item/clothing/under/marine/officer/formal/black
-	name = "Commanding Officer's gray formal uniform"
-	desc = "A well-ironed USCM officer uniform in subdued gray with gold accents, intended for more formal or somber events. Wear this with pride."
-	icon_state = "CO_formal_black"
-	worn_state = "CO_formal_black"
-	specialty = "captain's gray formal"
+/obj/item/clothing/under/marine/officer/formal/turtleneck
+	name = "Commanding Officer's turtleneck uniform"
+	desc = "A well-ironed USCM officer uniform intended for more formal or somber events. Wear this with pride."
+	icon_state = "co_turtleneck"
+	worn_state = "co_turtleneck"
+	specialty = "captain's turtleneck"
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/dress
@@ -551,7 +555,22 @@
 	worn_state = "uniform"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
+/obj/item/clothing/under/marine/veteran/pmc/corporate/medic //TODO: make this an armband accessory instead of a jumpsuit
+	name = "\improper WY corporate security medic uniform"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a red armband denoting the wearer's medical purpose."
+	icon_state = "med_uniform"
+	item_state = "med_uniform"
+	worn_state = "med_uniform"
+
+/obj/item/clothing/under/marine/veteran/pmc/corporate/engineer //TODO: make this an armband accessory instead of a jumpsuit
+	name = "\improper WY corporate security engineer uniform"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a yellow armband denoting the wearer's technical purpose."
+	icon_state = "eng_uniform"
+	item_state = "eng_uniform"
+	worn_state = "eng_uniform"
+
 /obj/item/clothing/under/marine/veteran/pmc/corporate/lead
+	name = "\improper WY corporate security leader uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
 	icon_state = "lead_uniform"
 	item_state = "lead_uniform"
@@ -1279,6 +1298,20 @@
 	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
+
+/obj/item/clothing/under/marine/officer/royal_marine
+	name = "royal marines commando service uniform"
+	desc = "The service uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment. Wear your uniform with honour, Commando."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
+	)
+	icon_state = "rmc_uniform_service"
+	worn_state = "rmc_uniform_service"
+
+/obj/item/clothing/under/marine/officer/royal_marine/black
+	icon_state = "rmc_uniform_service_alt"
+	worn_state = "rmc_uniform_service_alt"
 
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"

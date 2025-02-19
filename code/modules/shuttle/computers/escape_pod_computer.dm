@@ -211,7 +211,8 @@
 	xeno_attack_delay(user)
 	visible_message(SPAN_WARNING("[user] begins to pry \the [src]'s cover!"), null, null, 3)
 	playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
-	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) go_out() //Force the occupant out.
+	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		go_out() //Force the occupant out.
 	being_forced = !being_forced
 	return XENO_NO_DELAY_ACTION
 

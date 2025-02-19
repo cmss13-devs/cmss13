@@ -1,6 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "now all WY jobs have a hud icon and a minimap icon"
-  - bugfix: "fixed corporate survs having incorrect faction"
-  - imageadd: "WY headset is now white"

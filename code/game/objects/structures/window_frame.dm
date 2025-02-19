@@ -88,11 +88,11 @@
 		if(sheet.get_amount() < 2)
 			to_chat(user, SPAN_WARNING("You need more [W.name] to install a new window."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts installing a new glass window on the frame."), \
+		user.visible_message(SPAN_NOTICE("[user] starts installing a new glass window on the frame."),
 		SPAN_NOTICE("You start installing a new window on the frame."))
 		playsound(src, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] installs a new glass window on the frame."), \
+			user.visible_message(SPAN_NOTICE("[user] installs a new glass window on the frame."),
 			SPAN_NOTICE("You install a new window on the frame."))
 			sheet.use(2)
 			new window_type(loc) //This only works on Almayer windows!
@@ -111,7 +111,8 @@
 
 	else if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		if(isliving(G.grabbed_thing))
 			var/mob/living/M = G.grabbed_thing
 			if(user.grab_level >= GRAB_AGGRESSIVE)

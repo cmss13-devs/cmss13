@@ -95,9 +95,12 @@
 
 /obj/item/toy/deck/update_icon()
 	var/cards_length = length(cards)
-	if(cards_length == max_cards) icon_state = base_icon
-	else if(!cards_length) icon_state = "[base_icon]_empty"
-	else icon_state = "[base_icon]_open"
+	if(cards_length == max_cards)
+		icon_state = base_icon
+	else if(!cards_length)
+		icon_state = "[base_icon]_empty"
+	else
+		icon_state = "[base_icon]_open"
 
 /obj/item/toy/deck/verb/draw_card()
 	set category = "Object"

@@ -49,9 +49,25 @@
 	name = "Optimized Design Node"
 	icon_state_weeds = "speednode"
 
+/obj/effect/alien/weeds/node/designer/speed/get_examine_text(mob/user)
+	.=..()
+	if(ishuman(user) || isobserver(user) || isyautja(user))
+		. += "\nOn closer examination, this gross looking node is twitching, making weeds under it look more they are moving..."
+	if(isxeno(user) || isobserver(user))
+		. += "\nYou sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
+		. += "You sense that building on top of this node will [SPAN_WARNING("not")] benefit any [SPAN_NOTICE("hivelords")]."
+
 /obj/effect/alien/weeds/node/designer/cost
 	name = "Flexible Design Node"
 	icon_state_weeds = "costnode"
+
+/obj/effect/alien/weeds/node/designer/cost/get_examine_text(mob/user)
+	.=..()
+	if(ishuman(user) || isobserver(user) || isyautja(user))
+		. += "\nOn closer examination, this gross looking node is pulsating, making weeds under it look more soft and squishy."
+	if(isxeno(user) || isobserver(user))
+		. += "\nYou sense that building on top of this node will decrease plasma cost of resin secretions by [SPAN_NOTICE("50%")]."
+		. += "You sense that building on top of this node will [SPAN_WARNING("only")] benefit [SPAN_NOTICE("Resin Walls")], [SPAN_NOTICE("Resin Membranes")] and [SPAN_NOTICE("Resin Doors")]."
 
 // ""animations""" (effects)
 

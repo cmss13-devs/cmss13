@@ -68,10 +68,6 @@
 	uses = max_uses
 	failmsg = "The [name]'s refill light blinks red."
 
-/obj/item/device/lightreplacer/empty/Initialize()
-	. = ..()
-	uses = 0
-
 /obj/item/device/lightreplacer/get_examine_text(mob/user)
 	. = ..()
 	. += "It has [uses] lights remaining, and [recycle] broken lights stored."

@@ -67,6 +67,9 @@ jobs:
     name: Lint with OpenDream
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9
       - uses: actions/checkout@v4
       - uses: robinraju/release-downloader@v1.9
         with:
@@ -111,6 +114,8 @@ jobs:
           shopt -s extglob
           echo "$(ls -mw0 maps/!(*override*).json)" > maps_output.txt
           sed -i -e s+maps/+\"+g -e s+.json+\"+g maps_output.txt
+          echo "Ignored Maps: $(cat .github/maps_to_ignore.txt)"
+          cat .github/maps_to_ignore.txt | sed -r 's/\s*//g' | xargs -i sed -ri 's/(, "{}")|("{}", )//g' maps_output.txt
           echo "Maps: $(cat maps_output.txt)"
           echo "maps={\"paths\":[$(cat maps_output.txt)]}" >> $GITHUB_OUTPUT
       - name: Find Alternate Tests

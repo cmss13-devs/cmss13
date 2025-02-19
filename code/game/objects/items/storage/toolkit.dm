@@ -7,7 +7,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
 	)
 	icon_state = "toolkit"
-	item_state = "fulton"
+	item_state = "toolkit"
 	throw_speed = SPEED_FAST
 	throw_range = 8
 	use_sound = "toolbox"
@@ -53,12 +53,13 @@
 	new /obj/item/circuitboard/apc(src)
 	new /obj/item/circuitboard/apc(src)
 	new /obj/item/cell/high(src)
-	new /obj/item/cell/high(src)
-	new /obj/item/clothing/glasses/welding(src)
+	new /obj/item/explosive/plastic/breaching_charge(src)
+	new /obj/item/explosive/plastic/breaching_charge(src)
 
 
 /obj/item/storage/toolkit/empty/fill_preset_inventory()
 	return
+
 
 /obj/item/storage/toolkit/tactical
 	name = "breaching engineer kit"
@@ -70,4 +71,16 @@
 	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
+
+
+/obj/item/storage/toolkit/rmc
+
+/obj/item/storage/toolkit/rmc/fill_preset_inventory()
+	new /obj/item/stack/cable_coil/random(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/cell/high(src)
 	new /obj/item/cell/high(src)

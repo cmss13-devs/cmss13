@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "coatrack0"
 	var/obj/item/clothing/suit/coat
-	var/list/allowed = list(/obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/det_suit, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt)
+	var/list/allowed = list(/obj/item/clothing/suit/storage/labcoat, /obj/item/clothing/suit/storage/CMB/trenchcoat, /obj/item/clothing/suit/storage/bomber, /obj/item/clothing/suit/storage/bomber/alt)
 
 /obj/structure/coatrack/attack_hand(mob/user as mob)
 	if(coat)
@@ -45,5 +45,5 @@
 	overlays.Cut()
 	if(istype(coat, /obj/item/clothing/suit/storage/labcoat))
 		overlays += image(icon, icon_state = "coat_lab")
-	if(istype(coat, /obj/item/clothing/suit/storage/det_suit))
+	if(istype(coat, /obj/item/clothing/suit/storage/CMB/trenchcoat/brown))
 		overlays += image(icon, icon_state = "coat_det")

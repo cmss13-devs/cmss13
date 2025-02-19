@@ -56,6 +56,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
 		if(cut_hits <= 0)
 			qdel(src)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		. = ..()
 

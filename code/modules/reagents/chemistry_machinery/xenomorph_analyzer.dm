@@ -117,7 +117,7 @@
 		if("process_organ")
 			if(!busy)
 				busy = TRUE
-				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value), 3 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value), 2 SECONDS)
 				flick("xeno_analyzer_on_moving", src)
 				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
 				QDEL_NULL(organ)
@@ -173,7 +173,7 @@
 	busy = TRUE
 	biomass_points -= clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[datum_upgrades], upgrade.minimum_price, upgrade.maximum_price)
 	technology_purchased[datum_upgrades] += 1
-	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path), 1 SECONDS)
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path)
 	busy = FALSE

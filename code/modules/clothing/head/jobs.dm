@@ -116,27 +116,35 @@
 
 //Detective
 
-/obj/item/clothing/head/det_hat
-	name = "hat"
-	desc = "Someone who wears this will look very smart."
-	icon_state = "detective"
+/obj/item/clothing/head/fedora
+	name = "\improper tan fedora"
+	desc = "A classic tan fedora."
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
 	)
-	allowed = list(/obj/item/reagent_container/food/snacks/candy_corn, /obj/item/tool/pen)
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_LOW
+	icon_state = "fedora_tan"
+	item_state = "fedora_tan"
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	siemens_coefficient = 0.9
-	flags_armor_protection = 0
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
 
-/obj/item/clothing/head/det_hat/black
-	icon_state = "detective2"
+/obj/item/clothing/head/fedora/brown
+	name = "\improper brown fedora"
+	desc = "A classic brown fedora."
+	icon_state = "fedora_brown"
+	item_state = "fedora_brown"
+
+/obj/item/clothing/head/fedora/grey
+	name = "\improper grey fedora"
+	desc = "A classic grey fedora."
+	icon_state = "fedora_grey"
+	item_state = "fedora_grey"

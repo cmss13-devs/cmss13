@@ -297,7 +297,7 @@
 			return
 
 		if(target == attached) //are we attached to the target?
-			user.visible_message("[user] detaches \the [src] from [attached].", \
+			user.visible_message("[user] detaches \the [src] from [attached].",
 			"You detach \the [src] from [attached].")
 			attached = null
 			filtering = FALSE
@@ -317,17 +317,17 @@
 			attaching = TRUE
 			update_icon()
 			to_chat(target, SPAN_DANGER("[user] is trying to attach \the [src] to you!"))
-			user.visible_message(SPAN_WARNING("[user] starts setting up \the [src]'s needle on [target]'s arm."), \
+			user.visible_message(SPAN_WARNING("[user] starts setting up \the [src]'s needle on [target]'s arm."),
 				SPAN_WARNING("You start setting up \the [src]'s needle on [target]'s arm."))
 			if(!do_after(user, attach_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				user.visible_message(SPAN_WARNING("[user] stops setting up \the [src]'s needle on [target]'s arm."), \
+				user.visible_message(SPAN_WARNING("[user] stops setting up \the [src]'s needle on [target]'s arm."),
 				SPAN_WARNING("You stop setting up \the [src]'s needle on [target]'s arm."))
 				visible_message("\The [src]'s tubing snaps back onto the machine frame.")
 				attaching = FALSE
 				update_icon()
 				return
 
-			user.visible_message("[user] attaches \the [src] to [target].", \
+			user.visible_message("[user] attaches \the [src] to [target].",
 			"You attach \the [src] to [target].")
 			attached = target
 			filtering = TRUE
@@ -371,7 +371,7 @@
 	if(filtering)
 		attached.reagents.remove_any_but("blood", reagent_removed_per_second*delta_time)
 		attached.take_blood(attached, blood_cost*delta_time)
-		if(attached.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
+		if(attached.blood_volume < BLOOD_VOLUME_SAFE && prob(5))
 			visible_message("\The [src] beeps loudly.")
 		pdcell.use(filter_cost*delta_time)
 

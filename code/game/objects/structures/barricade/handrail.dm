@@ -126,7 +126,8 @@
 					to_chat(user, SPAN_WARNING("You are not trained to unsecure [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				anchored = FALSE
@@ -160,7 +161,8 @@
 					to_chat(user, SPAN_WARNING("You are not trained to secure [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] tightens [src]'s anchor bolts."),
 				SPAN_NOTICE("You tighten [src]'s anchor bolts."))
 				anchored = TRUE
@@ -176,7 +178,8 @@
 				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s panels."),
 				SPAN_NOTICE("You remove [src]'s panels and start taking it apart."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] takes apart [src]."),
 				SPAN_NOTICE("You take apart [src]."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -192,7 +195,8 @@
 						to_chat(user, SPAN_WARNING("You are not trained to unreinforce [src]..."))
 						return
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+						return
 					user.visible_message(SPAN_NOTICE("[user] pries off [src]'s extra metal panel."),
 					SPAN_NOTICE("You pry off [src]'s extra metal panel."))
 					build_state = BARRICADE_BSTATE_SECURED
@@ -209,7 +213,8 @@
 						to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
 						return
 					playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
-					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+						return
 					user.visible_message(SPAN_NOTICE("[user] secures [src]'s metal panel."),
 					SPAN_NOTICE("You secure [src]'s metal panel."))
 					reinforce()

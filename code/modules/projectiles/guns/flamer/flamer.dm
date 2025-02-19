@@ -77,11 +77,12 @@
 	else
 		. += "There's no tank in [src]!"
 
-/obj/item/weapon/gun/flamer/update_icon()
+/obj/item/weapon/gun/flamer/update_icon(mob/user)
 	..()
 
 	// Have to redo this here because we don't want the empty sprite when the tank is empty (just when it's not in the gun)
 	var/new_icon_state = base_gun_icon
+
 	if(has_empty_icon && !current_mag)
 		new_icon_state += "_e"
 	icon_state = new_icon_state
@@ -176,11 +177,13 @@
 		if(user)
 			if(magazine.reload_delay > 1)
 				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
-				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY)) replace_magazine(user)
+				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+					replace_magazine(user)
 				else
 					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 					return
-			else replace_magazine(user, magazine)
+			else
+				replace_magazine(user, magazine)
 		else
 			current_mag = magazine
 			magazine.forceMove(src)
@@ -680,6 +683,11 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
+	var/turf/current_turf = get_turf(src)
+	if(istype(current_turf, /turf/open_space))
+		var/turf/open_space/current_open_turf = current_turf
+		current_open_turf.check_fall(src)
+
 /obj/flamer_fire/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	to_call = null
@@ -886,3 +894,7 @@
 			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
 				continue
 		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+
+// So it doens't do the spinny animation
+/obj/flamer_fire/onZImpact(turf/impact_turf, height)
+	return

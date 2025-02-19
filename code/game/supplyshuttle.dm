@@ -17,16 +17,26 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /area/supply
 	ceiling = CEILING_METAL
 
-/area/supply/station
+/area/supply/station //only to be common ancestor use faction areas
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
+/area/supply/station/uscm
+	name = "Supply Shuttle USCM"
+
+/area/supply/station/upp
+	name = "Supply Shuttle UPP"
 
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
 	requires_power = 0
+/area/supply/dock/uscm
+	name = "USCM Supply Shuttle"
+
+/area/supply/dock/upp
+	name = "Supply Shuttle UPP"
 
 /area/supply/station_vehicle
 	name = "Vehicle ASRS"
@@ -72,7 +82,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	collide_message_busy = world.time + 3 SECONDS
-	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."), \
+	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."),
 	SPAN_NOTICE("You try to go through \the [src]."))
 
 	if(do_after(C, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -93,8 +103,273 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	name = "\improper Airtight plastic flaps"
 	desc = "Heavy-duty, airtight, plastic flaps."
 
+/obj/structure/machinery/computer/supply
+	name = "Supply ordering console"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "request"
+	density = TRUE
+	circuit = /obj/item/circuitboard/computer/ordercomp
+	var/datum/controller/supply/linked_supply_controller
+	var/faction = FACTION_MARINE
+	var/asrs_name = "Automated Storage and Retrieval System"
 
-/obj/structure/machinery/computer/supplycomp
+	/// What message should be displayed to the user when the UI is accessed
+	var/system_message = null
+
+	/// If we should prevent the current_order() contents going over the number of points
+	var/calculate_max_order = FALSE
+
+	/// What the user currently has in their cart
+	var/current_order = list()
+
+/obj/structure/machinery/computer/supply/Initialize()
+	. = ..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+		if(FACTION_UPP)
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input
+	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
+
+/obj/structure/machinery/computer/supply/attack_hand(mob/user)
+	if(..())
+		return
+
+	tgui_interact(user)
+
+/obj/structure/machinery/computer/supply/attack_remote(mob/user)
+	return attack_hand(user)
+
+/obj/structure/machinery/computer/supply/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SupplyComputer")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/obj/structure/machinery/computer/supply/ui_data(mob/user)
+	. = ..()
+
+	.["system_message"] = system_message
+
+	.["points"] = linked_supply_controller.points
+
+	.["current_order"] = list()
+	for(var/pack_type in current_order)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		var/list_pack = pack.get_list_representation()
+		list_pack["quantity"] = current_order[pack_type]
+
+		.["current_order"] += list(list_pack)
+
+	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
+	.["shuttle_status"] = "lowered"
+	if (shuttle.has_arrive_time())
+		.["shuttle_status"] = "moving"
+		return
+
+	if (shuttle.at_station() )
+		.["shuttle_status"] = "raised"
+
+		switch(shuttle.docking_controller?.get_docking_status())
+			if ("docked")
+				.["shuttle_status"] = "raised"
+			if ("undocked")
+				.["shuttle_status"] = "lowered"
+			if ("docking")
+				.["shuttle_status"] = "raising"
+			if ("undocking")
+				.["shuttle_status"] = "lowering"
+
+/obj/structure/machinery/computer/supply/ui_static_data(mob/user)
+	. = ..()
+
+	.["categories"] = linked_supply_controller.all_supply_groups
+
+	.["all_items"] = list()
+	.["valid_categories"] = list()
+
+	.["categories_to_objects"] = list()
+	for(var/pack_type in GLOB.supply_packs_datums)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		if(!pack.buyable)
+			continue
+
+		if(isnull(pack.contains) && isnull(pack.containertype))
+			continue
+
+		if(!(pack.group in (list() + linked_supply_controller.all_supply_groups + linked_supply_controller.contraband_supply_groups)))
+			continue
+
+		if(!pack.contraband && length(pack.group))
+			.["valid_categories"] |= pack.group
+
+		var/list_pack = pack.get_list_representation()
+
+		if(length(pack.group))
+			if(!.["categories_to_objects"][pack.group])
+				.["categories_to_objects"][pack.group] = list()
+
+			.["categories_to_objects"][pack.group] += list(
+				list_pack
+			)
+
+		.["all_items"] += list(
+			list_pack
+		)
+
+/obj/structure/machinery/computer/supply/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	if(!ishuman(ui.user))
+		return
+	var/mob/living/carbon/human/human_user = ui.user
+
+	switch(action)
+		if("adjust_cart")
+			var/picked_pack = text2path(params["pack"])
+			var/datum/supply_packs/pack = GLOB.supply_packs_datums[picked_pack]
+			if(!pack || !is_buyable(pack))
+				return
+
+			var/adjust_to = params["to"]
+			if(adjust_to == "min")
+				current_order -= picked_pack
+				return TRUE
+
+			var/used_points = 0
+			var/used_dollars = 0
+
+			for(var/pack_type in current_order)
+				var/datum/supply_packs/iter_pack = GLOB.supply_packs_datums[pack_type]
+				if(isnum(adjust_to) && pack_type == picked_pack)
+					continue // if manually specifying number, we calculate later how many it can be set to
+
+				used_points += (iter_pack.cost * current_order[pack_type])
+				used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
+
+			if(!isnum(adjust_to))
+				return
+
+			var/number_to_get = floor(adjust_to)
+			if(!calculate_max_order)
+				current_order[picked_pack] = number_to_get
+
+				if(number_to_get <= 0)
+					current_order -= picked_pack
+
+				return TRUE
+
+			var/cost_to_use = pack.dollar_cost ? pack.dollar_cost : pack.cost
+			var/points_to_use = pack.dollar_cost ? linked_supply_controller.black_market_points : linked_supply_controller.points
+			var/used_to_use = pack.dollar_cost ? used_dollars : used_points
+
+			var/available_points = points_to_use - used_to_use
+
+			var/number_to_hold
+			if(cost_to_use * number_to_get > available_points)
+				number_to_hold = floor(available_points / cost_to_use)
+			else
+				number_to_hold = number_to_get
+
+			if(number_to_hold <= 0)
+				current_order -= picked_pack
+				return TRUE
+
+			current_order[picked_pack] = number_to_hold
+			return TRUE
+
+		if("discard_cart")
+			current_order = list()
+
+			return TRUE
+
+		if("request_cart")
+			var/reason = params["reason"]
+			if(!length(reason))
+				return
+
+			var/to_order = list()
+			for(var/item in current_order)
+				var/datum/supply_packs/pack = GLOB.supply_packs_datums[item]
+
+				if(!pack || !is_buyable(pack))
+					continue
+
+				for(var/iterator in 1 to current_order[item])
+					to_order += pack
+
+			var/id_name = human_user.get_authentification_name()
+			var/assignment = human_user.get_assignment()
+
+			var/datum/supply_order/supply_order = new
+			supply_order.ordernum = linked_supply_controller.ordernum++
+			supply_order.objects = to_order
+			supply_order.reason = reason
+			supply_order.orderedby = id_name
+			supply_order.orderedby_rank = assignment
+			current_order = list()
+
+			print_form(supply_order)
+
+			linked_supply_controller.requestlist += supply_order
+			system_message = "Thanks for your request. The cargo team will process it as soon as possible."
+			return TRUE
+
+		if("acknowledged")
+			system_message = null
+			return TRUE
+
+		if("keyboard")
+			playsound(src, "keyboard", 15, 1)
+
+/obj/structure/machinery/computer/supply/proc/print_form(datum/supply_order/order)
+	var/list/accesses = list()
+
+	for(var/datum/supply_packs/pack as anything in order.objects)
+		var/access = get_access_desc(pack.access)
+		if(length(access))
+			accesses += access
+
+	var/obj/item/paper/reqform = new(loc)
+	reqform.name = "Requisition Form - #[order.ordernum]"
+
+	reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
+	reqform.info += "INDEX: #[order.ordernum]<br>"
+	reqform.info += "REQUESTED BY: [order.orderedby]<br>"
+	reqform.info += "RANK: [order.orderedby_rank]<br>"
+	reqform.info += "REASON: [order.reason]<br>"
+	reqform.info += "ACCESS RESTRICTION: [english_list(accesses, nothing_text = "None")]<br>"
+	reqform.info += "CONTENTS:<br>"
+	for(var/datum/supply_packs/supply_pack as anything in order.objects)
+		reqform.info += supply_pack.manifest
+	reqform.info += "<hr>"
+	reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
+
+	reqform.update_icon()
+
+/obj/structure/machinery/computer/supply/proc/is_buyable(datum/supply_packs/supply_pack)
+	if(!supply_pack.buyable)
+		return FALSE
+
+	if(supply_pack.contraband && !contraband_buyable())
+		return FALSE
+
+	if(isnull(supply_pack.contains) && isnull(supply_pack.containertype))
+		return FALSE
+
+	return TRUE
+
+/obj/structure/machinery/computer/supply/proc/contraband_buyable()
+	return FALSE
+
+/obj/structure/machinery/computer/supply/asrs
 	name = "ASRS console"
 	desc = "A console for the Automated Storage Retrieval System"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -102,22 +377,17 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	density = TRUE
 	req_access = list(ACCESS_MARINE_CARGO)
 	circuit = /obj/item/circuitboard/computer/supplycomp
-	var/temp = null
-	var/reqtime = 0 //Cooldown for requisitions - Quarxink
+	calculate_max_order = TRUE
+
 	var/can_order_contraband = FALSE
 	var/black_market_lockout = FALSE
-	var/last_viewed_group = "categories"
-	var/first_time = TRUE
 
-/obj/structure/machinery/computer/supplycomp/Initialize()
+
+/obj/structure/machinery/computer/supply/Destroy()
 	. = ..()
-	LAZYADD(GLOB.supply_controller.bound_supply_computer_list, src)
+	LAZYREMOVE(linked_supply_controller.bound_supply_computer_list, src)
 
-/obj/structure/machinery/computer/supplycomp/Destroy()
-	. = ..()
-	LAZYREMOVE(GLOB.supply_controller.bound_supply_computer_list, src)
-
-/obj/structure/machinery/computer/supplycomp/attackby(obj/item/hit_item, mob/user)
+/obj/structure/machinery/computer/supply/asrs/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/spacecash))
 		if(can_order_contraband)
 			var/obj/item/spacecash/slotted_cash = hit_item
@@ -125,38 +395,31 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [slotted_cash] into it, but it rejects it! Maybe it's counterfeit?"))
 				return
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You feed \the [slotted_cash] into it.."))
-			GLOB.supply_controller.black_market_points += slotted_cash.worth
+			linked_supply_controller.black_market_points += slotted_cash.worth
 			qdel(slotted_cash)
 		else
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [hit_item] into it, but it's seemingly blocked off from the inside."))
 			return
-	..()
+	. = ..()
 
-/obj/structure/machinery/computer/supplycomp/proc/toggle_contraband(contraband_enabled = FALSE)
+/obj/structure/machinery/computer/supply/asrs/contraband_buyable()
+	return can_order_contraband && !black_market_lockout
+
+/obj/structure/machinery/computer/supply/asrs/proc/toggle_contraband(contraband_enabled = FALSE)
 	can_order_contraband = contraband_enabled
-	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
+	for(var/obj/structure/machinery/computer/supply/asrs/computer in linked_supply_controller.bound_supply_computer_list)
 		if(computer.can_order_contraband)
-			GLOB.supply_controller.black_market_enabled = TRUE
+			linked_supply_controller.black_market_enabled = TRUE
 			return
-	GLOB.supply_controller.black_market_enabled = FALSE
+	linked_supply_controller.black_market_enabled = FALSE
 
 	//If any computers are able to order contraband, it's enabled. Otherwise, it's disabled!
 
 /// Prevents use of black market, even if it is otherwise enabled. If any computer has black market locked out, it applies across all of the currently established ones.
-/obj/structure/machinery/computer/supplycomp/proc/lock_black_market(market_locked = FALSE)
-	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
+/obj/structure/machinery/computer/supply/asrs/proc/lock_black_market(market_locked = FALSE)
+	for(var/obj/structure/machinery/computer/supply/asrs/computer in linked_supply_controller.bound_supply_computer_list)
 		if(market_locked)
 			computer.black_market_lockout = TRUE
-
-/obj/structure/machinery/computer/ordercomp
-	name = "Supply ordering console"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "request"
-	density = TRUE
-	circuit = /obj/item/circuitboard/computer/ordercomp
-	var/temp = null
-	var/reqtime = 0 //Cooldown for requisitions - Quarxink
-	var/last_viewed_group = "categories"
 
 /obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"
@@ -166,6 +429,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	req_access = list(ACCESS_MARINE_CARGO)
 	var/x_supply = 0
 	var/y_supply = 0
+	var/z_supply = 0
 	var/datum/squad/current_squad = null
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
@@ -214,6 +478,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
+	data["z_offset"] = z_supply
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -240,6 +505,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			if(!new_y)
 				return
 			y_supply = new_y
+			. = TRUE
+
+		if("set_z")
+			var/new_z = text2num(params["set_z"])
+			if(!new_z)
+				return
+			z_supply = new_z
 			. = TRUE
 
 		if("pick_squad")
@@ -296,11 +568,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
-	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(length(z_coord))
-		z_coord = z_coord[1]
-	else
-		z_coord = 1 // fuck it
+	var/z_coord = deobfuscate_z(z_supply)
+
+	if(!is_ground_level(z_coord))
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
@@ -365,11 +637,81 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /datum/supply_order
 	var/ordernum
-	var/datum/supply_packs/object = null
+	var/list/datum/supply_packs/objects
+
 	var/orderedby = null
+
+	/// The assignment of the user submitting the request
+	var/orderedby_rank
+
 	var/approvedby = null
 
+	/// The user submitted reason as to why they want this order
+	var/reason
+
+/datum/supply_order/proc/get_list_representation()
+	var/type_to_quantity = list()
+	for(var/datum/supply_packs/packs as anything in objects)
+		if(!type_to_quantity[packs.type])
+			type_to_quantity[packs.type] = 0
+
+		type_to_quantity[packs.type]++
+
+	var/order_contents = list()
+	for(var/pack_type in type_to_quantity)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+		var/to_append = pack.get_list_representation()
+		to_append["quantity"] = type_to_quantity[pack_type]
+
+		order_contents += list(to_append)
+
+	return list(
+		"order_num" = ordernum,
+		"contents" = order_contents,
+		"ordered_by" = orderedby,
+		"approved_by" = approvedby,
+		"reason" = reason,
+	)
+
+/datum/supply_order/proc/buy(obj/structure/machinery/computer/supply/asrs/buyer)
+	var/ordered = list()
+
+	for(var/datum/supply_packs/pack as anything in objects)
+		if(!buyer.is_buyable(pack))
+			continue
+
+		if(buyer.linked_supply_controller.points - pack.cost < 0)
+			continue
+
+		if(buyer.linked_supply_controller.black_market_points - pack.dollar_cost < 0)
+			continue
+
+		buyer.linked_supply_controller.points -= pack.cost
+		buyer.linked_supply_controller.black_market_points -= pack.dollar_cost
+
+		if(buyer.linked_supply_controller.black_market_heat != -1) // -1 Heat means heat is disabled
+			// black market heat added is crate heat +- up to 25% of crate heat
+			buyer.linked_supply_controller.black_market_heat = clamp(buyer.linked_supply_controller.black_market_heat + pack.crate_heat + (pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100)
+
+		ordered += pack
+
+	for(var/datum/supply_packs/pack as anything in ordered)
+		pack.cost = floor(pack.cost * SUPPLY_COST_MULTIPLIER)
+
+	if(buyer.linked_supply_controller.black_market_heat == 100)
+		buyer.linked_supply_controller.black_market_investigation()
+
+	if(length(ordered))
+		if(objects ~! ordered)
+			buyer.system_message = "Could not purchase all items. Available items have been purchased."
+
+		objects = ordered
+		buyer.linked_supply_controller.requestlist -= src
+		buyer.linked_supply_controller.shoppinglist += src
+		return TRUE
+
 /datum/controller/supply
+	var/turf/supply_elevator
 	var/processing = 1
 	var/processing_interval = 30 SECONDS
 	var/iteration = 0
@@ -410,7 +752,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
 
-	var/obj/structure/machinery/computer/supplycomp/bound_supply_computer_list
+	var/obj/item/paper/manifest/manifest_to_print = /obj/item/paper/manifest
+	var/obj/structure/machinery/computer/supply/asrs/bound_supply_computer_list
 
 	var/list/all_supply_groups = list(
 		"Operations",
@@ -441,7 +784,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Deep Storage",
 		"Miscellaneous"
 		)
-
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
 	var/tank_points = 0
@@ -460,6 +802,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	random_crates_carry = list()
 	for(var/pool in base_random_crate_intervals)
 		random_crates_carry[pool] = 0
+
+/datum/controller/supply/Destroy(force, ...)
+	. = ..()
+	qdel(supply_elevator)
+	for(var/console in bound_supply_computer_list) //removal of this datum breakes the consoles anyway
+		qdel(console)
 
 /datum/controller/supply/proc/start_processing()
 	START_PROCESSING(SSslowobj, src)
@@ -520,7 +868,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	//We have to create a supply order to make the system spawn it. Here we transform a crate into an order.
 	var/datum/supply_order/supply_order = new /datum/supply_order()
 	supply_order.ordernum = ordernum++
-	supply_order.object = GLOB.supply_packs_datums[supply_info.reference_package]
+	supply_order.objects = list(GLOB.supply_packs_datums[supply_info.reference_package])
 	supply_order.orderedby = "ASRS"
 	supply_order.approvedby = "ASRS"
 	//We add the order to the shopping list
@@ -581,7 +929,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
 
 		// Delete everything else.
-		else qdel(movable_atom)
+		else
+			qdel(movable_atom)
 
 	if(screams)
 		for(var/atom/computer as anything in bound_supply_computer_list)
@@ -612,58 +961,60 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		clear_turfs += T
 
 	for(var/datum/supply_order/order in shoppinglist)
-		// No space! Forget buying, it's no use.
-		if(!length(clear_turfs))
-			shoppinglist.Cut()
-			return
+		for(var/datum/supply_packs/package as anything in order.objects)
 
-		if(order.object.contraband == TRUE && prob(5))
-		// Mendoza loaded the wrong order in. What a dunce!
-			var/list/contraband_list
-			for(var/supply_type in GLOB.supply_packs_datums)
-				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
-				if(supply_pack.contraband == FALSE)
-					continue
-				LAZYADD(contraband_list, supply_pack)
-			order.object = pick(contraband_list)
+			// No space! Forget buying, it's no use.
+			if(!length(clear_turfs))
+				shoppinglist.Cut()
+				return
 
-		// Container generation
-		var/turf/target_turf = pick(clear_turfs)
-		clear_turfs.Remove(target_turf)
-		var/atom/container = target_turf
-		var/datum/supply_packs/package = order.object
-		if(package.containertype)
-			container = new package.containertype(target_turf)
-			if(package.containername)
-				container.name = package.containername
+			if(package.contraband == TRUE && prob(5))
+			// Mendoza loaded the wrong order in. What a dunce!
+				var/list/contraband_list
+				for(var/supply_type in GLOB.supply_packs_datums)
+					var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
+					if(supply_pack.contraband == FALSE)
+						continue
+					LAZYADD(contraband_list, supply_pack)
+				package = pick(contraband_list)
 
-		// Lock it up if it's something that can be
-		if(isobj(container) && package.access)
-			var/obj/lockable = container
-			lockable.req_access = list(package.access)
+			// Container generation
+			var/turf/target_turf = pick(clear_turfs)
+			clear_turfs.Remove(target_turf)
+			var/atom/container = target_turf
 
-		// Contents generation
-		var/list/content_names = list()
-		var/list/content_types = package.contains
-		if(package.randomised_num_contained)
-			content_types = list()
-			for(var/i in 1 to package.randomised_num_contained)
-				content_types += pick(package.contains)
-		for(var/typepath in content_types)
-			var/atom/item = new typepath(container)
-			content_names += item.name
+			if(package.containertype)
+				container = new package.containertype(target_turf)
+				if(package.containername)
+					container.name = package.containername
 
-		// Manifest generation
-		var/obj/item/paper/manifest/slip
-		if(!package.contraband) // I'm sorry boss i misplaced it...
-			slip = new /obj/item/paper/manifest(container)
-			slip.ordername = package.name
-			slip.ordernum = order.ordernum
-			slip.orderedby = order.orderedby
-			slip.approvedby = order.approvedby
-			slip.packages = content_names
-			slip.generate_contents()
-			slip.update_icon()
+			// Lock it up if it's something that can be
+			if(isobj(container) && package.access)
+				var/obj/lockable = container
+				lockable.req_access = list(package.access)
+
+			// Contents generation
+			var/list/content_names = list()
+			var/list/content_types = package.contains
+			if(package.randomised_num_contained)
+				content_types = list()
+				for(var/i in 1 to package.randomised_num_contained)
+					content_types += pick(package.contains)
+			for(var/typepath in content_types)
+				var/atom/item = new typepath(container)
+				content_names += item.name
+
+			// Manifest generation
+			var/obj/item/paper/manifest/slip
+			if(!package.contraband) // I'm sorry boss i misplaced it...
+				slip = new /obj/item/paper/manifest(container)
+				slip.ordername = package.name
+				slip.ordernum = order.ordernum
+				slip.orderedby = order.orderedby
+				slip.approvedby = order.approvedby
+				slip.packages = content_names
+				slip.generate_contents()
+				slip.update_icon()
 	shoppinglist.Cut()
 
 /obj/item/paper/manifest
@@ -673,7 +1024,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/orderedby
 	var/approvedby
 	var/list/packages
-
 
 /obj/item/paper/manifest/read_paper(mob/user, scramble = FALSE)
 	var/paper_info = info
@@ -730,485 +1080,158 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	name = "[name] - [ordername]"
 
-/obj/structure/machinery/computer/ordercomp/attack_remote(mob/user as mob)
+/obj/structure/machinery/computer/supply/asrs/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/supplycomp/attack_remote(mob/user as mob)
-	return attack_hand(user)
-
-/obj/structure/machinery/computer/ordercomp/attack_hand(mob/user as mob)
-	if(..())
+/obj/structure/machinery/computer/supply/asrs/attack_hand(mob/user as mob)
+	if(!is_mainship_level(z))
 		return
-	user.set_interaction(src)
-	var/dat
-	if(temp)
-		dat = temp
-	else
-		var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
-		if (shuttle)
-			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
-			<HR>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
-		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
-		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
-		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
-		<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
-
-	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
-	return
-
-/obj/structure/machinery/computer/ordercomp/Topic(href, href_list)
-	if(..())
-		return
-
-	if( isturf(loc) && (in_range(src, usr) || isSilicon(usr)) )
-		usr.set_interaction(src)
-
-	if(href_list["order"])
-		if(href_list["order"] == "categories")
-			//all_supply_groups
-			//Request what?
-			last_viewed_group = "categories"
-			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
-			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in GLOB.supply_controller.all_supply_groups)
-				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
-		else
-			last_viewed_group = href_list["order"]
-			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
-			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
-			for(var/supply_type in GLOB.supply_packs_datums)
-				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
-				if(supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable)
-					continue //Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
-
-	else if (href_list["doorder"])
-		if(world.time < reqtime)
-			for(var/mob/V in hearers(src))
-				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"", SHOW_MESSAGE_VISIBLE)
-			return
-
-		//Find the correct supply_pack datum
-		var/supply_pack_type = GLOB.supply_packs_types[href_list["doorder"]]
-		if(!supply_pack_type)
-			return
-		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_pack_type]
-
-		if(supply_pack.contraband || !supply_pack.buyable)
-			return
-
-		var/timeout = world.time + 600
-		var/reason = strip_html(input(usr,"Reason:","Why do you require this item?","") as null|text)
-		if(world.time > timeout) return
-		if(!reason) return
-
-		var/idname = "*None Provided*"
-		var/idrank = "*None Provided*"
-		if(ishuman(usr))
-			var/mob/living/carbon/human/H = usr
-			idname = H.get_authentification_name()
-			idrank = H.get_assignment()
-		else if(isSilicon(usr))
-			idname = usr.real_name
-
-		GLOB.supply_controller.ordernum++
-		var/obj/item/paper/reqform = new /obj/item/paper(loc)
-		reqform.name = "Requisition Form - [supply_pack.name]"
-		reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
-		reqform.info += "INDEX: #[GLOB.supply_controller.ordernum]<br>"
-		reqform.info += "REQUESTED BY: [idname]<br>"
-		reqform.info += "RANK: [idrank]<br>"
-		reqform.info += "REASON: [reason]<br>"
-		reqform.info += "SUPPLY CRATE TYPE: [supply_pack.name]<br>"
-		reqform.info += "ACCESS RESTRICTION: [get_access_desc(supply_pack.access)]<br>"
-		reqform.info += "CONTENTS:<br>"
-		reqform.info += supply_pack.manifest
-		reqform.info += "<hr>"
-		reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
-
-		reqform.update_icon() //Fix for appearing blank when printed.
-		reqtime = (world.time + 5) % 1e5
-
-		//make our supply_order datum
-		var/datum/supply_order/supply_order = new /datum/supply_order()
-		supply_order.ordernum = GLOB.supply_controller.ordernum
-		supply_order.object = supply_pack
-		supply_order.orderedby = idname
-		GLOB.supply_controller.requestlist += supply_order
-
-		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
-		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-
-	else if (href_list["vieworders"])
-		temp = "Current approved orders: <BR><BR>"
-		for(var/S in GLOB.supply_controller.shoppinglist)
-			var/datum/supply_order/SO = S
-			temp += "[SO.object.name] approved by [SO.approvedby]<BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-
-	else if (href_list["viewrequests"])
-		temp = "Current requests: <BR><BR>"
-		for(var/S in GLOB.supply_controller.requestlist)
-			var/datum/supply_order/SO = S
-			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby]<BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-
-	else if (href_list["mainmenu"])
-		temp = null
-
-	add_fingerprint(usr)
-	updateUsrDialog()
-	return
-
-/obj/structure/machinery/computer/supplycomp/attack_hand(mob/user as mob)
-	if(!is_mainship_level(z)) return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
 		return
 
 	if(..())
 		return
-	user.set_interaction(src)
-	post_signal("supply")
-	var/dat
-	if (temp)
-		dat = temp
-	else
-		var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
-		if (shuttle)
-			dat += "\nPlatform position: "
-			if (shuttle.has_arrive_time())
-				dat += "Moving<BR>"
-			else
-				if (shuttle.at_station())
-					if (shuttle.docking_controller)
-						switch(shuttle.docking_controller.get_docking_status())
-							if ("docked") dat += "Raised<BR>"
-							if ("undocked") dat += "Lowered<BR>"
-							if ("docking") dat += "Raising [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-					else
-						dat += "Raised<BR>"
 
-					if (shuttle.can_launch())
-						dat += "<A href='?src=\ref[src];send=1'>Lower platform</A>"
-					else if (shuttle.can_cancel())
-						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
-					else
-						dat += "*ASRS is busy*"
-					dat += "<BR>\n<BR>"
-				else
-					dat += "Lowered<BR>"
-					if (shuttle.can_launch())
-						dat += "<A href='?src=\ref[src];send=1'>Raise platform</A>"
-					else if (shuttle.can_cancel())
-						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
-					else
-						dat += "*ASRS is busy*"
-					dat += "<BR>\n<BR>"
+	tgui_interact(user)
 
+/obj/structure/machinery/computer/supply/asrs/ui_data(mob/user)
+	. = ..()
 
-		dat += {"<HR>\nSupply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>\n<BR>
-		\n<A href='?src=\ref[src];order=categories'>Order items</A><BR>\n<BR>
-		\n<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR>\n<BR>
-		\n<A href='?src=\ref[src];vieworders=1'>View orders</A><BR>\n<BR>
-		\n<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
+	.["dollars"] = linked_supply_controller.black_market_points
 
+	.["requests"] = list()
+	for(var/datum/supply_order/order as anything in linked_supply_controller.requestlist)
+		.["requests"] += list(
+			order.get_list_representation()
+		)
 
-	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
-	return
+	.["pending"] = list()
+	for(var/datum/supply_order/order as anything in linked_supply_controller.shoppinglist)
+		.["pending"] += list(
+			order.get_list_representation()
+		)
 
-/obj/structure/machinery/computer/supplycomp/Topic(href, href_list)
-	if(!is_mainship_level(z)) return
-	if(!GLOB.supply_controller)
-		world.log << "## ERROR: Eek. The GLOB.supply_controller controller datum is missing somehow."
+	var/used_points = 0
+	var/used_dollars = 0
+	for(var/pack_type in current_order)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		used_points += (pack.cost * current_order[pack_type])
+		used_dollars += (pack.dollar_cost * current_order[pack_type])
+
+	.["used_points"] = used_points
+	.["used_dollars"] = used_dollars
+
+	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
+	.["can_launch"] = shuttle.can_launch()
+	.["can_force"] = shuttle.can_force()
+	.["can_cancel"] = shuttle.can_cancel()
+
+	.["black_market"] = can_order_contraband
+	.["mendoza_status"] = linked_supply_controller.mendoza_status
+	.["locked_out"] = black_market_lockout
+
+/obj/structure/machinery/computer/supply/asrs/ui_static_data(mob/user)
+	. = ..()
+
+	.["contraband_categories"] = linked_supply_controller.contraband_supply_groups
+
+/obj/structure/machinery/computer/supply/asrs/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	if(!ishuman(ui.user))
 		return
-	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
-	if (!shuttle)
-		world.log << "## ERROR: Eek. The supply/shuttle datum is missing somehow."
-		return
-	if(..())
-		return
+	var/mob/living/carbon/human/human_user = ui.user
+	var/id_name = human_user.get_authentification_name()
+	var/assignment = human_user.get_assignment()
 
-	if(isturf(loc) && in_range(src, usr) )
-		usr.set_interaction(src)
+	switch(action)
+		if("place_order")
+			var/to_order = list()
+			for(var/item in current_order)
+				var/datum/supply_packs/pack = GLOB.supply_packs_datums[item]
 
-	//Calling the shuttle
-	if(href_list["send"])
-		if(shuttle.at_station())
-			if (shuttle.forbidden_atoms_check())
-				temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-			else
+				if(!pack || !is_buyable(pack))
+					continue
+
+				for(var/iterator in 1 to current_order[item])
+					to_order += pack
+
+			var/datum/supply_order/supply_order = new
+			supply_order.ordernum = linked_supply_controller.ordernum++
+			supply_order.objects = to_order
+			supply_order.orderedby = id_name
+			supply_order.orderedby_rank = assignment
+			supply_order.approvedby = id_name
+
+			print_form(supply_order)
+
+			current_order = list()
+
+			if(supply_order.buy(src))
+				return TRUE
+
+			linked_supply_controller.requestlist += supply_order
+			system_message = "Unable to purchase order, order has been placed in Requests."
+			return TRUE
+
+		if("change_order")
+			var/datum/supply_order/order
+
+			var/ordernum = params["ordernum"]
+			if(!isnum(ordernum))
+				return
+
+			for(var/datum/supply_order/iter_order as anything in linked_supply_controller.requestlist)
+				if(ordernum != iter_order.ordernum)
+					continue
+
+				order = iter_order
+				break
+
+			if(!istype(order))
+				return
+
+			switch(params["order_status"])
+				if("approve")
+					order.approvedby = id_name
+					if(order.buy(src))
+						return TRUE
+
+					system_message = "Unable to approve order, order remains in Requests."
+					return TRUE
+				if("deny")
+					linked_supply_controller.requestlist -= order
+					qdel(order)
+
+					return TRUE
+
+		if("send")
+			var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
+
+			if(shuttle.at_station())
+				if (shuttle.forbidden_atoms_check())
+					system_message = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons."
+					return TRUE
 				shuttle.launch(src)
-				temp = "Lowering platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-		else
+				return TRUE
+
 			shuttle.launch(src)
-			temp = "Raising platform.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-			post_signal("supply")
+			return TRUE
 
-	if (href_list["force_send"])
-		shuttle.force_launch(src)
+		if("force_launch")
+			linked_supply_controller.shuttle.force_launch()
+			return TRUE
 
-	if (href_list["cancel_send"])
-		shuttle.cancel_launch(src)
+		if("cancel_launch")
+			linked_supply_controller.shuttle.cancel_launch()
+			return TRUE
 
-	else if (href_list["order"])
-		//if(!shuttle.idle()) return //this shouldn't be necessary it seems
-		if(href_list["order"] == "categories")
-			//all_supply_groups
-			//Request what?
-			last_viewed_group = "categories"
-			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
-			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in GLOB.supply_controller.all_supply_groups)
-				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
-			if(can_order_contraband)
-				temp += "<A href='?src=\ref[src];order=["Black Market"]'>[SPAN_DANGER("$E4RR301¿")]</A><BR>"
-		else
-			last_viewed_group = href_list["order"]
-			if(last_viewed_group == "Black Market")
-				handle_black_market(temp)
-			else if(last_viewed_group in GLOB.supply_controller.contraband_supply_groups)
-				handle_black_market_groups()
-			else
-				temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-				temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
-				temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
-				for(var/supply_type in GLOB.supply_packs_datums)
-					var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
-					if(!is_buyable(supply_pack))
-						continue
-					temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+/obj/structure/machinery/computer/supply/asrs/ui_assets(mob/user)
+	. = ..()
 
-	else if (href_list["doorder"])
-		if(world.time < reqtime)
-			for(var/mob/V in hearers(src))
-				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"", SHOW_MESSAGE_VISIBLE)
-			return
-
-		//Find the correct supply_pack datum
-		var/supply_pack_type = GLOB.supply_packs_types[href_list["doorder"]]
-		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_pack_type]
-
-		if(!istype(supply_pack))
-			return
-
-		if((supply_pack.contraband && !can_order_contraband) || !supply_pack.buyable || supply_pack.contraband && black_market_lockout)
-			return
-
-		var/timeout = world.time + 600
-		//var/reason = copytext(sanitize(input(usr,"Reason:","Why do you require this item?","") as null|text),1,MAX_MESSAGE_LEN)
-		var/reason = "*None Provided*"
-		if(world.time > timeout) return
-		if(!reason) return
-
-		var/idname = "*None Provided*"
-		var/idrank = "*None Provided*"
-		if(ishuman(usr))
-			var/mob/living/carbon/human/H = usr
-			idname = H.get_authentification_name()
-			idrank = H.get_assignment()
-		else if(isSilicon(usr))
-			idname = usr.real_name
-
-		GLOB.supply_controller.ordernum++
-		var/obj/item/paper/reqform = new /obj/item/paper(loc)
-		reqform.name = "Requisition Form - [supply_pack.name]"
-		reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
-		reqform.info += "INDEX: #[GLOB.supply_controller.ordernum]<br>"
-		reqform.info += "REQUESTED BY: [idname]<br>"
-		reqform.info += "RANK: [idrank]<br>"
-		reqform.info += "REASON: [reason]<br>"
-		reqform.info += "SUPPLY CRATE TYPE: [supply_pack.name]<br>"
-		reqform.info += "ACCESS RESTRICTION: [get_access_desc(supply_pack.access)]<br>"
-		reqform.info += "CONTENTS:<br>"
-		reqform.info += supply_pack.manifest
-		reqform.info += "<hr>"
-		reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
-
-		reqform.update_icon() //Fix for appearing blank when printed.
-		reqtime = (world.time + 5) % 1e5
-
-		//make our supply_order datum
-		var/datum/supply_order/supply_order = new /datum/supply_order()
-		supply_order.ordernum = GLOB.supply_controller.ordernum
-		supply_order.object = supply_pack
-		supply_order.orderedby = idname
-		GLOB.supply_controller.requestlist += supply_order
-
-		temp = "Order request placed.<BR>"
-		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>|<A href='?src=\ref[src];confirmorder=[supply_order.ordernum]'>Authorize Order</A>"
-
-	else if(href_list["confirmorder"])
-		//Find the correct supply_order datum
-		var/ordernum = text2num(href_list["confirmorder"])
-		var/datum/supply_order/supply_order
-		var/datum/supply_packs/supply_pack
-		temp = "Invalid Request"
-		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-
-		if(length(GLOB.supply_controller.shoppinglist) > 20)
-			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
-			return
-
-		for(var/i=1, i<=length(GLOB.supply_controller.requestlist), i++)
-			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
-			if(SO.ordernum == ordernum)
-				supply_order = SO
-				supply_pack = supply_order.object
-				if(GLOB.supply_controller.points >= floor(supply_pack.cost) && GLOB.supply_controller.black_market_points >= supply_pack.dollar_cost)
-					GLOB.supply_controller.requestlist.Cut(i,i+1)
-					GLOB.supply_controller.points -= floor(supply_pack.cost)
-					GLOB.supply_controller.black_market_points -= floor(supply_pack.dollar_cost)
-					if(GLOB.supply_controller.black_market_heat != -1) //-1 Heat means heat is disabled
-						GLOB.supply_controller.black_market_heat = clamp(GLOB.supply_controller.black_market_heat + supply_pack.crate_heat + (supply_pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100) // black market heat added is crate heat +- up to 25% of crate heat
-					GLOB.supply_controller.shoppinglist += supply_order
-					supply_pack.cost = supply_pack.cost * SUPPLY_COST_MULTIPLIER
-					temp = "Thank you for your order.<BR>"
-					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-					supply_order.approvedby = usr.name
-					msg_admin_niche("[key_name(usr)] confirmed supply order of [supply_pack.name].")
-					if(GLOB.supply_controller.black_market_heat == 100)
-						GLOB.supply_controller.black_market_investigation()
-					var/pack_source = "Cargo Hold"
-					var/pack_name = supply_pack.name
-					if(supply_pack.dollar_cost)
-						pack_source = "Unknown"
-						if(prob(90))
-							pack_name = "Unknown"
-					log_ares_requisition(pack_source, pack_name, usr.name)
-				else
-					temp = "Not enough money left.<BR>"
-					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-				break
-
-	else if (href_list["vieworders"])
-		temp = "Current approved orders: <BR><BR>"
-		for(var/S in GLOB.supply_controller.shoppinglist)
-			var/datum/supply_order/SO = S
-			temp += "#[SO.ordernum] - [SO.object.name] approved by [SO.approvedby]<BR>"// <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-/*
-	else if (href_list["cancelorder"])
-		var/datum/supply_order/remove_supply = href_list["cancelorder"]
-		supply_shuttle_shoppinglist -= remove_supply
-		supply_shuttle_points += remove_supply.object.cost
-		temp += "Canceled: [remove_supply.object.name]<BR><BR><BR>"
-
-		for(var/S in supply_shuttle_shoppinglist)
-			var/datum/supply_order/SO = S
-			temp += "[SO.object.name] approved by [SO.orderedby] <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-*/
-	else if (href_list["viewrequests"])
-		temp = "Current requests: <BR><BR>"
-		for(var/S in GLOB.supply_controller.requestlist)
-			var/datum/supply_order/SO = S
-			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby] <A href='?src=\ref[src];confirmorder=[SO.ordernum]'>Approve</A> <A href='?src=\ref[src];rreq=[SO.ordernum]'>Remove</A><BR>"
-
-		temp += "<BR><A href='?src=\ref[src];clearreq=1'>Clear list</A>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-
-	else if (href_list["rreq"])
-		var/ordernum = text2num(href_list["rreq"])
-		temp = "Invalid Request.<BR>"
-		for(var/i=1, i<=length(GLOB.supply_controller.requestlist), i++)
-			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
-			if(SO.ordernum == ordernum)
-				GLOB.supply_controller.requestlist.Cut(i,i+1)
-				temp = "Request removed.<BR>"
-				break
-		temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-
-	else if (href_list["clearreq"])
-		GLOB.supply_controller.requestlist.Cut()
-		temp = "List cleared.<BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-
-	else if (href_list["mainmenu"])
-		temp = null
-
-	add_fingerprint(usr)
-	updateUsrDialog()
-	return
-
-/obj/structure/machinery/computer/supplycomp/proc/handle_black_market()
-
-	temp = "<b>W-Y Dollars: $[GLOB.supply_controller.black_market_points]</b><BR>"
-	temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
-	temp += SPAN_DANGER("ERR0R UNK7OWN C4T2G#!$0-<HR><HR><HR>")
-	if(black_market_lockout)
-		temp += "<DIV ALIGN='center'><BR><img src='cmblogo.png'><BR><BR><BR><BR><FONT SIZE=4><B>Unauthorized Access Removed.<BR>This console is currently under CMB investigation.<BR>Thank you for your cooperation.</FONT></div></B>"
-		return
-	temp += "KHZKNHZH#0-"
-	if(!GLOB.supply_controller.mendoza_status) // he's daed
-		temp += "........."
-		return
-	handle_mendoza_dialogue() //mendoza has been in there for a while. he gets lonely sometimes
-	temp += "<b>[last_viewed_group]</b><BR><BR>"
-
-	for(var/supply_group_name in GLOB.supply_controller.contraband_supply_groups)
-		temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
-
-/obj/structure/machinery/computer/supplycomp/proc/handle_black_market_groups()
-	temp = "<b>W-Y Dollars: $[GLOB.supply_controller.black_market_points]</b><BR>"
-	temp += "<A href='?src=\ref[src];order=Black Market'>Back to black market categories</A><HR><BR><BR>"
-	temp += "<b>Purchase from: [last_viewed_group]</b><BR><BR>"
-	for(var/supply_type in GLOB.supply_packs_datums)
-		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
-		if(!is_buyable(supply_pack))
-			continue
-		temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.dollar_cost)]<BR>"
-
-/obj/structure/machinery/computer/supplycomp/proc/handle_mendoza_dialogue()
-
-	if(first_time)
-		first_time = FALSE
-		temp += SPAN_WARNING("Hold on- holy shit, what? Hey, hey! Finally! I've set THAT circuit board for replacement shipping off god knows who long ago. I had totally given up on it.<BR>")
-		temp += SPAN_WARNING("You probably have some questions, yes, yes... let me answer them.<BR><HR>")
-		//linebreak
-		temp += SPAN_WARNING("Name's Mendoza, Cargo Technician. Formerly, I suppose. I tripped into this stupid pit god knows how long ago. A crate of mattresses broke my fall, thankfully. The fuckin' MPs never even bothered to look for me!<BR>")
-		temp += SPAN_WARNING("They probably wrote off my file as a friggin' clerical error. Bastards, all of them.... but I've got a plan. <BR>")
-		temp += SPAN_WARNING("I'm gonna smuggle all these ASRS goods out of the ship next time it docks. I'm gonna sell them, and use the money to sue the fuck out of the USCM!<BR>")
-		temp += SPAN_WARNING("Imagine the look on their faces! Mendoza, the little CT, in court as they lose all their fuckin' money!<BR><HR>")
-		//linebreak
-		temp += SPAN_WARNING("I do need... money. You wouldn't believe the things I've seen here. There's an aisle full of auto-doc crates, and that's the least of it.<BR>")
-		temp += SPAN_WARNING("Here's the deal. There are certain... things that I need to pawn off for my plan. Anything valuable will do. Minerals, gold, unique items... lower them in the ASRS elevator.<BR>")
-		temp += SPAN_WARNING("Can't come back on it, the machinery's too damn dangerous. But in exchange for those valuables.. I'll give you... things. Confiscated equipment, 'Medicine', all the crap I've stumbled upon here.<BR>")
-		temp += SPAN_WARNING("The items will be delivered via the ASRS lift. Check the first item for a jury-rigged scanner, it'll tell you if I give a damn about whatever you're scanning or not.<BR><HR>")
-		//linebreak
-		temp += SPAN_WARNING("I'll repeat, just to clear it up since you chucklefucks can't do anything right. <b>Insert cash, buy my scanner, get valuables, bring them down the lift, gain dollars, buy contraband.</b><BR>")
-		temp += SPAN_WARNING("See you..<BR>")
-		return
-
-	var/rng = rand(1, 100) // Will only sometimes give messages
-	switch(rng)
-		if(1 to 5)
-			temp += "Sometimes I... hear things down 'ere. Crates bein' opened, shufflin', sometimes.. even breathing and chewin'. Even when the ASRS is on maintenance mode.<BR>"
-			temp += "Last month I swear I glimped some shirtless madman runnin' by at the edge of my screen. This place is haunted.<BR>"
-		if(6 to 10)
-			temp += "You know how I said there was a full aisle of autodoc crates? I just found <i>another!</i><BR>"
-			temp += "This one has body scanners, sleepers, WeyMeds.. why the fuck aren't these on the supply list? Why are they here to begin with?<BR>"
-		if(11 to 15)
-			temp += "You know, this place is a real fuckin' massive safety hazard. Nobody does maintenance on this part of the ship.<BR>"
-			temp += "Ever since that colony operation in Schomberg cost us half the damn cargo hold, nothin' here quite works properly.<BR>"
-			temp += "Mechanical arms dropping crates in random places, from way too high up, knockin' shelves over.. it's fuckin' embarrassin'!<BR>"
-			temp += "I pity the damn' scrappers that'll be trying to salvage something from this junkyard of a ship once it's scuttled.<BR>"
-		if(16 to 20)
-			temp += "I still can't believe the whole ship's fucking supply of HEAP blew up. Some fuckin' moron decided our EXPLOSIVE AMMUNITION should be stored right next to the ship's hull.<BR>"
-			temp += "Even with the explosion concerns aside that's our main damn type of ammunition! What the hell are marines usin' this operation? Softpoint? Jesus.<BR>"
-			temp += "I do see a few scattered HEAP magazines every so often, but I know better than to throw them on the lift. Chances are some wet-behind-the-ears greenhorn is goin' to nab it and blow his fellow marines to shreds.<BR>"
-		if(21 to 25)
-			temp += "Wanna know a secret? I'm the one pushin' all those crates with crap on the ASRS lift.<BR>"
-			temp += "Not because I know you guys need surplus SMG ammunition or whatever. The fuckin' crates are taking up way too much space here. Why do we have HUNDREDS of mortar shells? By god, it's almost like a WW2 historical reenactment in here!<BR>"
-		if(26 to 30)
-			temp += "You know... don't tell anyone, but I actually really like blue-flavored Souto for some reason. Not the diet version, that cyan junk's as nasty as any other flavor, but... there's just somethin' about that blue-y goodness. If you see any, I wouldn't mind havin' them thrown down the elevator.<BR>"
-		if(31 to 35)
-			temp += "If you see any, er.. 'elite' equipment, be sure to throw it down here. I know a few people that'd offer quite the amount of money for a USCM commander's gun, or pet. Even the armor is worth a fortune. Don't kill yourself doin' it, though.<BR>"
-			temp += "Hell, any kind of wildlife too, actually! Anythin' that isn't a replicant animal is worth a truly ridiculous sum back on Terra, I'll give ya quite the amount of points for 'em. As long as it isn't plannin' on killing me.<BR>"
+	. += get_asset_datum(/datum/asset/simple/paper)
 
 /proc/get_black_market_value(atom/movable/movable_atom)
 	var/return_value
@@ -1288,27 +1311,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	SSticker.mode.get_specific_call(/datum/emergency_call/inspection_cmb/black_market, TRUE, TRUE) // "Inspection - Colonial Marshals Ledger Investigation Team"
 	log_game("Black Market Inspection auto-triggered.")
 
-/obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
-
-	if(supply_pack.group != last_viewed_group)
-		return
-
-	if(!supply_pack.buyable)
-		return
-
-	if(supply_pack.contraband && !can_order_contraband || supply_pack.contraband && black_market_lockout)
-		return
-
-	if(isnull(supply_pack.contains) && isnull(supply_pack.containertype))
-		return
-
-	return TRUE
-
-/obj/structure/machinery/computer/supplycomp/proc/post_signal(command)
+/obj/structure/machinery/computer/supply/asrs/proc/post_signal(command)
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
-	if(!frequency) return
+	if(!frequency)
+		return
 
 	var/datum/signal/status_signal = new
 	status_signal.source = src
@@ -1317,7 +1325,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	frequency.post_signal(src, status_signal)
 
-/obj/structure/machinery/computer/supplycomp/vehicle
+/obj/structure/machinery/computer/supply/asrs/vehicle
 	name = "vehicle ASRS console"
 	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
 	req_access = list(ACCESS_MARINE_CREWMAN)
@@ -1380,7 +1388,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/vehicle_order/arc/has_vehicle_lock()
 	return
 
-/obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
+/obj/structure/machinery/computer/supply/asrs/vehicle/Initialize()
 	. = ..()
 
 	vehicles = list(
@@ -1390,11 +1398,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!GLOB.VehicleElevatorConsole)
 		GLOB.VehicleElevatorConsole = src
 
-/obj/structure/machinery/computer/supplycomp/vehicle/Destroy()
+/obj/structure/machinery/computer/supply/asrs/vehicle/Destroy()
 	GLOB.VehicleElevatorConsole = null
 	return ..()
 
-/obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(mob/living/carbon/human/H as mob)
+/obj/structure/machinery/computer/supply/asrs/vehicle/attack_hand(mob/living/carbon/human/H as mob)
 	if(inoperable())
 		return
 
@@ -1421,7 +1429,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
 			dat += "Raised"
 			if(!spent)
-				dat += "<br>\[<a href='?src=\ref[src];lower_elevator=1'>Lower</a>\]"
+				dat += "<br>\[<a href='byond://?src=\ref[src];lower_elevator=1'>Lower</a>\]"
 		else
 			dat += "Lowered"
 	dat += "<br><hr>"
@@ -1437,11 +1445,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			if(VO.has_vehicle_lock())
 				dat += VO.failure_message
 			else
-				dat += "<a href='?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
+				dat += "<a href='byond://?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
 
-	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
+	show_browser(H, dat, asrs_name, "computer", "size=575x450")
 
-/obj/structure/machinery/computer/supplycomp/vehicle/Topic(href, href_list)
+/obj/structure/machinery/computer/supply/asrs/vehicle/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return
@@ -1449,8 +1457,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 	if(spent)
 		return
-	if(!GLOB.supply_controller)
-		world.log << "## ERROR: Eek. The GLOB.supply_controller controller datum is missing somehow."
+	if(!linked_supply_controller)
+		world.log << "## ERROR: Eek. The linked_supply_controller controller datum is missing somehow."
 		return
 
 	if (!SSshuttle.vehicle_elevator)

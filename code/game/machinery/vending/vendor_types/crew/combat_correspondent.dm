@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_combat_correspondent, list(
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Combat Correspondent's Helmet", 0, /obj/item/clothing/head/helmet/marine/reporter, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
 		list("Combat Correspondent's Cap", 0, /obj/item/clothing/head/cmcap/reporter, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("Fedora", 0, /obj/item/clothing/head/fedora, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Fedora", 0, /obj/item/clothing/head/fedora/grey, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("REFILLS", 0, null, null, null),
 		list("Camera", 10, /obj/item/device/camera, null, VENDOR_ITEM_REGULAR),

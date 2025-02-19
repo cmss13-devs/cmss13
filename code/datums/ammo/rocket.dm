@@ -192,7 +192,8 @@
 
 /datum/ammo/rocket/wp/drop_flame(turf/turf, datum/cause_data/cause_data)
 	playsound(turf, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
-	if(!istype(turf)) return
+	if(!istype(turf))
+		return
 	smoke.set_up(1, turf)
 	smoke.start()
 	var/datum/reagent/napalm/blue/reagent = new()
@@ -233,7 +234,8 @@
 
 /datum/ammo/rocket/wp/upp/drop_flame(turf/turf, datum/cause_data/cause_data)
 	playsound(turf, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
-	if(!istype(turf)) return
+	if(!istype(turf))
+		return
 	smoke.set_up(1, turf)
 	smoke.start()
 	var/datum/reagent/napalm/upp/reagent = new()
@@ -288,6 +290,7 @@
 		if(rocket.fuel && rocket.fuel.reagents.get_reagent_amount(rocket.fuel_type) >= rocket.fuel_requirement)
 			rocket.forceMove(projectile.loc)
 		rocket.warhead.cause_data = projectile.weapon_cause_data
+		rocket.warhead.hit_angle = Get_Angle(launcher, atom)
 		rocket.warhead.prime()
 		qdel(rocket)
 	smoke.set_up(1, get_turf(atom))

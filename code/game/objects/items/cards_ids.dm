@@ -69,6 +69,8 @@
 	var/faction = FACTION_NEUTRAL
 	var/id_type = "ID Card"
 	var/list/faction_group
+	/// For custom minimap icons
+	var/minimap_icon_override = null
 
 	/// The name registered_name on the card
 	var/registered_name = "Unknown"

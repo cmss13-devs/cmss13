@@ -205,7 +205,7 @@
 		list("Proximity Sensor", 4, /obj/item/device/assembly/prox_sensor, VENDOR_ITEM_REGULAR),
 		list("Signaller", 4, /obj/item/device/assembly/signaller, VENDOR_ITEM_REGULAR),
 
-		list("MISCELLANOUS", -1, null, null),
+		list("MISCELLANEOUS", -1, null, null),
 		list("Anesthetic Tank", 2, /obj/item/tank/anesthetic, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", 2, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR)
 	)

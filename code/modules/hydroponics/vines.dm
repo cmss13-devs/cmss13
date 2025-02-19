@@ -76,22 +76,22 @@
 		if(prob(seed ? min(max(0,100 - seed.potency),100) : 50))
 			if(buckled_mob.buckled == src)
 				if(buckled_mob != user)
-					buckled_mob.visible_message(\
-						SPAN_NOTICE("[user.name] frees [buckled_mob.name] from [src]."),\
-						SPAN_NOTICE("[user.name] frees you from [src]."),\
+					buckled_mob.visible_message(
+						SPAN_NOTICE("[user.name] frees [buckled_mob.name] from [src]."),
+						SPAN_NOTICE("[user.name] frees you from [src]."),
 						SPAN_WARNING("You hear shredding and ripping."))
 				else
-					buckled_mob.visible_message(\
-						SPAN_NOTICE("[buckled_mob.name] struggles free of [src]."),\
-						SPAN_NOTICE("You untangle [src] from around yourself."),\
+					buckled_mob.visible_message(
+						SPAN_NOTICE("[buckled_mob.name] struggles free of [src]."),
+						SPAN_NOTICE("You untangle [src] from around yourself."),
 						SPAN_WARNING("You hear shredding and ripping."))
 			unbuckle()
 			return 1
 		else
 			var/text = pick("rips","tears","pulls")
-			user.visible_message(\
-				SPAN_NOTICE("[user.name] [text] at [src]."),\
-				SPAN_NOTICE("You [text] at [src]."),\
+			user.visible_message(
+				SPAN_NOTICE("[user.name] [text] at [src]."),
+				SPAN_NOTICE("You [text] at [src]."),
 				SPAN_WARNING("You hear shredding and ripping."))
 	return 0
 
@@ -131,7 +131,8 @@
 		if(buckled_mob && seed && (buckled_mob.stat != DEAD)) //Don't bother with a dead mob.
 
 			var/mob/living/M = buckled_mob
-			if(!istype(M)) return
+			if(!istype(M))
+				return
 			var/mob/living/carbon/human/H = buckled_mob
 
 			// Drink some blood/cause some brute.
@@ -163,7 +164,8 @@
 					H.reagents.add_reagent(rid,injecting)
 
 /obj/effect/plantsegment/proc/update()
-	if(!seed) return
+	if(!seed)
+		return
 
 	// Update bioluminescence.
 	if(seed.biolum)
@@ -347,7 +349,8 @@
 		growth_queue -= SV
 
 		SV.life()
-		if(!SV) continue
+		if(!SV)
+			continue
 
 		if(SV.energy < 2) //If tile isn't fully grown
 			var/chance

@@ -158,8 +158,13 @@
 		return
 	var/obj/item/weapon/gun/launcher/in_hand = M.get_active_hand()
 	if(!in_hand || !istype(in_hand))
+		to_chat(user, SPAN_WARNING("[M] isn't holding a rocket launcher in their active hand!"))
 		return
 	if(!in_hand.current_mag)
+		to_chat(user, SPAN_WARNING("[M]'s [in_hand] is already loaded!"))
+		return
+	if(!istype(in_hand, gun_type))
+		to_chat(user, SPAN_WARNING("[src] doesn't fit into [M]'s [in_hand.name]!")) // using name here because otherwise it puts an odd 'the' in front
 		return
 	var/obj/item/weapon/twohanded/offhand/off_hand = M.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))

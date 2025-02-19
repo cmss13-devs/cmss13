@@ -276,6 +276,7 @@
 	desc = "some generic hardcover book, probably sucked"
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "bookSpaceLaw"
+	item_state = "book_red"
 
 /obj/item/prop/magazine/book/spacebeast
 	name = "\improper Space Beast, by Robert Morse"

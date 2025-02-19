@@ -6552,9 +6552,6 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
-"arU" = (
-/turf/closed/wall/mineral/bone_resin,
-/area/navalis/indoors/residential/kitchen)
 "arV" = (
 /obj/effect/alien/resin/sticky,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
@@ -6915,6 +6912,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
+/obj/structure/platform/metal/stair_cut/strata_right,
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/accessway)
 "asY" = (
@@ -11583,6 +11581,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/logistic/Port_hallway)
+"aEd" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aEe" = (
 /obj/structure/monorail{
 	dir = 8;
@@ -14285,7 +14287,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
-/obj/effect/spawner/random/gun/pistol/highchance,
+/obj/effect/spawner/random/gun/pistol/midchance,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "aLB" = (
@@ -15226,7 +15228,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square"
 	},
-/obj/effect/spawner/random/gun/shotgun/highchance,
+/obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "aOh" = (
@@ -15240,7 +15242,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square"
 	},
-/obj/effect/spawner/random/gun/rifle/highchance,
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "aOj" = (
@@ -16876,7 +16878,8 @@
 "aRH" = (
 /obj/structure/platform/metal/kutjevo/north{
 	pixel_y = 9;
-	name = "crate of dirt"
+	name = "crate of dirt";
+	desc = "A crate of dirt"
 	},
 /obj/effect/decal/hybrisa/warningstripes_angled{
 	dir = 8;
@@ -16918,7 +16921,8 @@
 "aRJ" = (
 /obj/structure/platform/metal/kutjevo/east{
 	pixel_x = 5;
-	name = "crate of dirt"
+	name = "crate of dirt";
+	desc = "A crate of dirt"
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/navalis/outdoors/landing_zone_2)
@@ -16928,7 +16932,8 @@
 "aRL" = (
 /obj/structure/platform/metal/kutjevo/west{
 	pixel_x = -5;
-	name = "crate of dirt"
+	name = "crate of dirt";
+	desc = "A crate of dirt"
 	},
 /turf/open/floor/kutjevo/grey,
 /area/navalis/outdoors/landing_zone_2)
@@ -16953,7 +16958,8 @@
 "aRO" = (
 /obj/structure/platform/metal/kutjevo{
 	pixel_y = -5;
-	name = "crate of dirt"
+	name = "crate of dirt";
+	desc = "A crate of dirt"
 	},
 /turf/open/floor/kutjevo/grey,
 /area/navalis/outdoors/landing_zone_2)
@@ -17482,21 +17488,6 @@
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/exterior/log_ext)
-"aSY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_warning_smooth"
-	},
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/effect/spawner/random/gun/shotgun/midchance,
-/turf/open/floor/prison/greenfull/east,
-/area/navalis/outdoors/charon/surface_deck/main_deck)
 "aSZ" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1
@@ -17752,8 +17743,8 @@
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "aTG" = (
-/obj/effect/spawner/random/gun/rifle/midchance,
 /obj/item/stack/sheet/plasteel/large_stack,
+/obj/effect/spawner/random/gun/rifle/highchance,
 /turf/open/floor/corsat/cargo,
 /area/navalis/indoors/industrial/mining)
 "aTH" = (
@@ -17846,6 +17837,20 @@
 /obj/structure/machinery/colony_floodlight/navalis_wall_light,
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/comm_one)
+"aTS" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
+"aTT" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced,
+/area/navalis/oob)
+"aTU" = (
+/obj/effect/spawner/random/gun/shotgun/midchance,
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/navalis/outdoors/charon/surface_deck/main_deck)
 "aUq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
 /obj/structure/platform/metal/strata,
@@ -24090,7 +24095,9 @@
 /area/navalis/indoors/med_sci/main_floor)
 "hzy" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/strata_outpost/reinforced{
+	name = "PSV Charon"
+	},
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "hzD" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
@@ -25895,7 +25902,9 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_port)
 "jwI" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/strata_outpost/reinforced{
+	name = "PSV Charon"
+	},
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "jxL" = (
 /obj/structure/prop/hybrisa/misc/trash/green{
@@ -27727,13 +27736,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
 /area/navalis/indoors/command/office)
-"lrD" = (
-/obj/structure/stairs{
-	dir = 8;
-	icon_state = "ramptop"
-	},
-/turf/open/floor/hybrisa/wood,
-/area/navalis/indoors/residential/accessway)
 "lsl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/prop{
@@ -32806,7 +32808,9 @@
 /area/navalis/indoors/residential/starboard)
 "qCx" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/strata_outpost/reinforced{
+	name = "PSV Charon"
+	},
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "qCM" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -34516,7 +34520,9 @@
 /area/navalis/indoors/command/starboard_hallway)
 "sxP" = (
 /obj/structure/flag/plantable/ua,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/strata_outpost/reinforced{
+	name = "PSV Charon"
+	},
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "sxT" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible,
@@ -35084,7 +35090,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/obj/effect/spawner/random/gun/shotgun/highchance,
+/obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "sXG" = (
@@ -38241,9 +38247,6 @@
 	},
 /turf/open/gm/river/no_overlay/ocean_no_slowdown,
 /area/navalis/outdoors/landing_zone_2)
-"wap" = (
-/turf/closed/wall/hybrisa/colony,
-/area/navalis/oob)
 "waw" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstripingdir";
@@ -62637,7 +62640,7 @@ ahN
 abx
 anL
 abc
-isl
+aTT
 amB
 amz
 abl
@@ -63037,7 +63040,7 @@ qWZ
 qWZ
 qWZ
 qWZ
-aSY
+fUY
 alF
 hQl
 qWZ
@@ -63202,7 +63205,7 @@ alF
 alF
 wyg
 alF
-amb
+aTU
 alF
 wyg
 alF
@@ -67558,15 +67561,15 @@ abA
 mmV
 mmV
 mmV
-mmV
-mmV
-lJH
+xwC
+aEd
+aTS
 akI
 azo
 akI
-lJH
-mmV
-mmV
+aTS
+aEd
+iVl
 mmV
 mmV
 mmV
@@ -69621,7 +69624,7 @@ aqZ
 aqZ
 sNt
 asq
-wap
+tAA
 asq
 apz
 asf
@@ -69783,7 +69786,7 @@ aqZ
 dQr
 sEF
 aqZ
-lrD
+apT
 asq
 asq
 asq
@@ -69947,7 +69950,7 @@ aqZ
 vjq
 ajk
 aqZ
-lrD
+apT
 asq
 aqZ
 nlT
@@ -70110,10 +70113,10 @@ hVX
 nqc
 hVX
 hVX
-tAA
+aqZ
 asX
 alU
-tAA
+aqZ
 aiT
 asq
 asq
@@ -70274,10 +70277,10 @@ hVX
 hVX
 hVX
 hVX
+aqZ
 tAA
 tAA
-tAA
-tAA
+aqZ
 hVX
 arK
 asg
@@ -70765,16 +70768,16 @@ aqZ
 aqZ
 aqZ
 aqZ
+aqZ
 tAA
 tAA
 tAA
-tAA
-tAA
+aqZ
 aqZ
 sQI
 aqZ
 asq
-arU
+asq
 aqZ
 aqZ
 aFL

@@ -557,6 +557,7 @@
 			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
 			launch_initiated = FALSE
 			remaining_time = initial(remaining_time)
+			launch_aborted = FALSE
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()

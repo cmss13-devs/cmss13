@@ -19,9 +19,6 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	set_light_range(0)
 
-	if(!(caste.caste_type in XENO_T0_CASTES))
-		GLOB.total_dead_xenos++
-
 	if(pulledby)
 		pulledby.stop_pulling()
 
@@ -36,6 +33,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
 			var/datum/entity/xeno_death/death_log = DB_ENTITY(/datum/entity/xeno_death)
 			death_log.load_data(src, cause)
+			if(!(caste.caste_type in XENO_T0_CASTES))
+				GLOB.total_dead_xenos++
 
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src

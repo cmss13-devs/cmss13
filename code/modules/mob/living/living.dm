@@ -26,6 +26,7 @@
 	GLOB.living_mob_list -= src
 	cleanup_status_effects()
 	pipes_shown = null
+	observed_atom = null
 
 	. = ..()
 
@@ -699,3 +700,4 @@
 	if(body_position == LYING_DOWN)
 		return
 	return ..()
+

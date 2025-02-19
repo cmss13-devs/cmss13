@@ -429,6 +429,9 @@
 					return
 
 				if(launch_initiated)
+					if(launch_aborted)
+						to_chat(user, SPAN_WARNING("The emergency abort system has already triggered and needs to be reset by high command."))
+						return
 					var/abort = tgui_alert(user, "Abort the launch?", "Confirm", list("Yes", "No"), 10 SECONDS)
 					switch(abort)
 						if ("Yes")
@@ -444,10 +447,14 @@
 							var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 							lifeboat_dock.open_dock()
 							launch_initiated = FALSE
+							launch_aborted = TRUE
 							return
 
 				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
 				if(launch_initiated)
+					if(launch_aborted)
+						to_chat(user, SPAN_WARNING("The emergency abort system has already triggered and needs to be reset by high command."))
+						return
 					var/abort = tgui_alert(user, "Abort the launch?", "Confirm", list("Yes", "No"), 10 SECONDS)
 					switch(abort)
 						if ("Yes")
@@ -463,6 +470,7 @@
 							var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 							lifeboat_dock.open_dock()
 							launch_initiated = FALSE
+							launch_aborted = TRUE
 							return
 				switch(response)
 					if ("Yes")
@@ -485,7 +493,9 @@
 				if(!istype(user, /mob/living/carbon/human))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
-
+				if(launch_aborted)
+					to_chat(user, SPAN_WARNING("The emergency abort system has already triggered and needs to be reset by high command."))
+					return
 				var/mob/living/carbon/human/human_user = user
 				var/obj/item/card/id/card = human_user.get_idcard()
 
@@ -510,6 +520,7 @@
 						var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 						lifeboat_dock.open_dock()
 						launch_initiated = FALSE
+						launch_aborted = TRUE
 						return
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))

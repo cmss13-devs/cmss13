@@ -33,10 +33,7 @@
 /turf/open/gm/river/desert/shallow_edge,
 /area/yautja_grounds/caves)
 "eS" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
+/turf/open_space,
 /area/yautja_grounds/temple)
 "fB" = (
 /turf/open/auto_turf/sand/layer1,
@@ -53,9 +50,6 @@
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/prep_room/desert/interior)
-"gq" = (
-/turf/closed/wall/kutjevo/rock,
-/area/yautja_grounds/desert/north_east)
 "gC" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -138,12 +132,6 @@
 	},
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/prep_room/desert/interior)
-"ky" = (
-/obj/structure/stairs/multiz/up{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/yautja_grounds/caves)
 "kB" = (
 /turf/closed/wall/kutjevo/rock,
 /area/yautja_grounds/caves)
@@ -242,7 +230,7 @@
 /area/yautja_grounds/temple)
 "qD" = (
 /obj/structure/platform/stone/kutjevo,
-/turf/closed/wall/kutjevo/rock,
+/turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/north_east)
 "qF" = (
 /turf/closed/wall/kutjevo/rock,
@@ -280,7 +268,7 @@
 /area/yautja_grounds/temple)
 "rC" = (
 /obj/structure/platform/stone/kutjevo/north,
-/turf/closed/wall/kutjevo/rock,
+/turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/north_east)
 "sd" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -438,7 +426,7 @@
 /area/yautja_grounds/young_blood_prep/desert)
 "Bg" = (
 /obj/structure/platform/stone/kutjevo/west,
-/turf/closed/wall/kutjevo/rock,
+/turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/north_west)
 "Bu" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -511,8 +499,9 @@
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/prep_room/desert/interior)
 "Ga" = (
-/turf/closed/wall/solaris/rock,
-/area/space)
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/turf/open_space,
+/area/yautja_grounds/temple)
 "Gw" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -661,9 +650,6 @@
 /obj/structure/prop/brazier/frame/full,
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/prep_room/desert)
-"QJ" = (
-/turf/closed/wall/solaris/rock,
-/area/yautja_grounds/desert/south_west)
 "QR" = (
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert)
@@ -10190,8 +10176,8 @@ JQ
 ca
 qJ
 qJ
-ky
-ky
+xV
+xV
 qJ
 Gw
 "}
@@ -10289,8 +10275,8 @@ JQ
 ca
 ca
 qJ
-ky
-ky
+xV
+xV
 qJ
 Gw
 "}
@@ -12558,7 +12544,7 @@ qF
 XY
 XY
 XY
-QJ
+XY
 OD
 wU
 wU
@@ -12660,7 +12646,7 @@ XY
 XY
 Eu
 qF
-Ga
+qF
 qF
 qF
 qF
@@ -21477,8 +21463,8 @@ qF
 qF
 qF
 MT
-eS
-eS
+Ga
+Ga
 MT
 Gw
 "}
@@ -22201,7 +22187,7 @@ qF
 qF
 qF
 rC
-gq
+Rn
 qD
 qF
 qF

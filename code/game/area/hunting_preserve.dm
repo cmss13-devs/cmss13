@@ -115,6 +115,7 @@
 /area/yautja_grounds/temple/entrance/desert
 	ambience_exterior = AMBIENCE_BIGRED
 	weather_enabled = TRUE
+	ceiling = CEILING_NONE
 	base_lighting_alpha = 150
 
 ///TP Areas/Young blood prep areas

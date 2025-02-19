@@ -101,7 +101,7 @@
 				return
 		else
 			Recycle()
-			to_chat(user, SPAN_NOTICE("You insert the [bulb] into the [src] for recycling."))
+			to_chat(user, SPAN_NOTICE("You insert the [bulb] into [src] for recycling."))
 			user.drop_held_item()
 			qdel(bulb)
 			return

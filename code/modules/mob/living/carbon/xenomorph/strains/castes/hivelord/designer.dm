@@ -87,7 +87,9 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	delay = 0
 
-// Speed Node
+//////////////////////////
+//     Speed Node       //
+//////////////////////////
 
 /datum/action/xeno_action/verb/verb_speed_node()
 	set category = "Alien"
@@ -121,7 +123,7 @@
 	if(mods["click_catcher"])
 		return
 
-	if(ismob(target_atom)) // to prevent using thermal vision to bypass clickcatcher
+	if(ismob(target_atom))
 		if(!can_see(xeno, target_atom, max_speed_reach))
 			to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
 			return
@@ -134,15 +136,17 @@
 
 	var/turf/target_turf = get_turf(target_atom)
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
-	var/obj/speed_warn
 
+	if(!check_and_use_plasma_owner())
+		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
+		return
+
+	var/obj/speed_warn
 	if(target_turf)
 		speed_warn = new /obj/effect/resin_construct/speed_node(target_turf)
 
 	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		return
-
-	if (!check_and_use_plasma_owner())
+		qdel(speed_warn)
 		return
 
 	qdel(speed_warn)
@@ -160,9 +164,9 @@
 		to_chat(xeno, SPAN_WARNING("We can only construct nodes on our weeds!"))
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 		return FALSE
-	else
-		xeno_cooldown = COOLDOWN_MULTIPLIER
-		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
+
+	xeno_cooldown = COOLDOWN_MULTIPLIER
+	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
 
@@ -179,7 +183,10 @@
 			qdel(oldest_speed_node)
 		xeno.speed_node_list.Cut(1, 2)
 
-// Cost Node
+//////////////////////////
+//      Cost Node       //
+//////////////////////////
+
 /datum/action/xeno_action/verb/verb_cost_node()
 	set category = "Alien"
 	set name = "Design Flexible Node"
@@ -225,15 +232,17 @@
 
 	var/turf/target_turf = get_turf(target_atom)
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
-	var/obj/cost_warn
 
+	if(!check_and_use_plasma_owner())
+		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
+		return
+
+	var/obj/cost_warn
 	if(target_turf)
 		cost_warn = new /obj/effect/resin_construct/cost_node(target_turf)
 
 	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		return
-
-	if (!check_and_use_plasma_owner())
+		qdel(cost_warn)
 		return
 
 	qdel(cost_warn)
@@ -251,9 +260,9 @@
 		to_chat(xeno, SPAN_WARNING("We can only construct nodes on our weeds!"))
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 		return FALSE
-	else
-		xeno_cooldown = COOLDOWN_MULTIPLIER
-		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
+
+	xeno_cooldown = COOLDOWN_MULTIPLIER
+	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
 
@@ -270,7 +279,9 @@
 			qdel(oldest_cost_node) // Safely delete the old node
 		xeno.cost_node_list.Cut(1, 2) // Remove the first element from the list
 
-// Greater Resin Surge.
+//////////////////////////
+// Greater Resin Surge. //
+//////////////////////////
 
 /datum/action/xeno_action/verb/verb_greater_surge()
 	set category = "Alien"

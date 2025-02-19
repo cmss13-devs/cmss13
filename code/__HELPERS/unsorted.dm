@@ -21,11 +21,17 @@
 //Offuscate y for coord system
 #define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
+//Offuscate z for the coord system
+#define obfuscate_z(z) ((z) + GLOB.obfs_z)
+
 //Deoffuscate x for coord system
 #define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
 #define deobfuscate_y(y) ((y) - GLOB.obfs_y)
+
+//Deoffuscate z for the coord system
+#define deobfuscate_z(z) ((z) - GLOB.obfs_z)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
@@ -1261,7 +1267,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
-	var/start_z = start_turf.z
+	var/start_z
+
+	if(end_atom.z > start_atom.z)
+		start_z = end_atom.z
+	else
+		start_z = start_atom.z
 
 	var/list/line = list()
 	if(include_start_atom)

@@ -332,6 +332,8 @@
 			return /datum/equipment_preset/upp/leader/dressed
 		if(JOB_UPP_POLICE)
 			return /datum/equipment_preset/upp/military_police/dressed
+		if(JOB_UPP_CHIEF_POLICE)
+			return /datum/equipment_preset/upp/military_police/chief/dressed
 		if(JOB_UPP_LT_OFFICER)
 			return /datum/equipment_preset/upp/officer/dressed
 		if(JOB_UPP_SUPPLY)

@@ -428,7 +428,7 @@
 /area/adminlevel/ert_station/weyland_station)
 "gL" = (
 /obj/structure/surface/table,
-/obj/item/storage/box/MRE/WY{
+/obj/item/storage/box/mre/wy{
 	pixel_y = 12
 	},
 /turf/open/floor/corsat/whitetan,
@@ -3207,7 +3207,7 @@
 /area/adminlevel/ert_station/weyland_station)
 "Yv" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/storage/box/MRE/WY{
+/obj/item/storage/box/mre/wy{
 	pixel_x = 6;
 	pixel_y = 16
 	},

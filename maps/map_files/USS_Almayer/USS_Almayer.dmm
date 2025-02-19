@@ -1409,10 +1409,10 @@
 /area/almayer/living/cafeteria_officer)
 "ahc" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/MRE/WY{
+/obj/item/storage/box/mre/wy{
 	pixel_y = 10
 	},
-/obj/item/storage/box/MRE/WY{
+/obj/item/storage/box/mre/wy{
 	pixel_y = 10;
 	pixel_x = 16
 	},
@@ -12731,7 +12731,7 @@
 /area/almayer/squads/req)
 "bNB" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/MRE/WY{
+/obj/item/storage/box/mre/wy{
 	pixel_y = 7;
 	pixel_x = 5
 	},
@@ -28949,7 +28949,7 @@
 	pixel_x = 4;
 	pixel_y = 15
 	},
-/obj/item/storage/box/MRE/WY{
+/obj/item/storage/box/mre/wy{
 	pixel_x = 5;
 	pixel_y = 2
 	},
@@ -35048,8 +35048,8 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/storage/box/MRE,
-/obj/item/storage/box/MRE,
+/obj/item/storage/box/mre,
+/obj/item/storage/box/mre,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "kxP" = (
@@ -52071,7 +52071,7 @@
 	pixel_x = -10;
 	pixel_y = 14
 	},
-/obj/item/storage/box/MRE/WY{
+/obj/item/storage/box/mre/wy{
 	pixel_x = 8;
 	pixel_y = 4
 	},
@@ -58155,8 +58155,8 @@
 /area/almayer/maint/lower/constr)
 "tTD" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/MRE,
-/obj/item/storage/box/MRE,
+/obj/item/storage/box/mre,
+/obj/item/storage/box/mre,
 /obj/item/book/manual/chef_recipes,
 /obj/structure/sign/safety/coffee{
 	pixel_x = 15;

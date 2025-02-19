@@ -1,5 +1,5 @@
 ///CORE MRE, ALSO JUST SO HAPPEN TO BE USCM MRE
-/obj/item/storage/box/MRE
+/obj/item/storage/box/mre
 	name = "\improper USCM MRE"
 	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon = 'icons/obj/items/storage/mre.dmi'
@@ -34,10 +34,10 @@
 	var/has_main_name = TRUE
 	var/isopened = FALSE
 
-/obj/item/storage/box/MRE/fill_preset_inventory()
+/obj/item/storage/box/mre/fill_preset_inventory()
 	pickflavor()
 
-/obj/item/storage/box/MRE/proc/pickflavor()
+/obj/item/storage/box/mre/proc/pickflavor()
 	//1 in 3 chance of getting a fortune cookie
 	var/cookie
 	if(should_have_cookie)
@@ -76,13 +76,13 @@
 		choose_matches()
 		storage_slots += 1
 
-/obj/item/storage/box/MRE/proc/choose_cigarettes()
+/obj/item/storage/box/mre/proc/choose_cigarettes()
 	new /obj/item/storage/fancy/cigarettes/lucky_strikes_4(src)
 
-/obj/item/storage/box/MRE/proc/choose_drink()
+/obj/item/storage/box/mre/proc/choose_drink()
 	new /obj/item/reagent_container/food/drinks/cans/waterbottle(src)
 
-/obj/item/storage/box/MRE/proc/choose_spread()
+/obj/item/storage/box/mre/proc/choose_spread()
 	var/spread_type = rand(1, 3)
 	switch(spread_type)
 		if(1)
@@ -92,7 +92,7 @@
 		if(3)
 			new /obj/item/reagent_container/food/drinks/cans/spread/peanut_butter(src)
 
-/obj/item/storage/box/MRE/proc/choose_beverage()
+/obj/item/storage/box/mre/proc/choose_beverage()
 	var/beverage_type = rand(1, 5)
 	switch(beverage_type)
 		if(1)
@@ -106,10 +106,10 @@
 		if(5)
 			new /obj/item/reagent_container/food/drinks/beverage_drink/chocolate_hazelnut(src)
 
-/obj/item/storage/box/MRE/proc/choose_utencil()
+/obj/item/storage/box/mre/proc/choose_utencil()
 	new /obj/item/tool/kitchen/utensil/mre_spork(src)
 
-/obj/item/storage/box/MRE/proc/choose_matches()
+/obj/item/storage/box/mre/proc/choose_matches()
 	var/matches_type = rand(1, 5)
 	switch(matches_type)
 		if(1)
@@ -123,13 +123,13 @@
 		if(5)
 			new /obj/item/storage/fancy/cigar/matchbook/brown(src)
 
-/obj/item/storage/box/MRE/Initialize()
+/obj/item/storage/box/mre/Initialize()
 	. = ..()
 	isopened = FALSE
 	icon_state = icon_closed
 	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
 
-/obj/item/storage/box/MRE/proc/try_forced_folding(datum/source, mob/user)
+/obj/item/storage/box/mre/proc/try_forced_folding(datum/source, mob/user)
 	SIGNAL_HANDLER
 
 	if(!isturf(loc))
@@ -144,14 +144,14 @@
 	new trash_item(user.loc)
 	qdel(src)
 
-/obj/item/storage/box/MRE/update_icon()
+/obj/item/storage/box/mre/update_icon()
 	if(!isopened)
 		isopened = TRUE
 		icon_state = icon_opened
 
 ///WY PMC RATION
 
-/obj/item/storage/box/MRE/PMC
+/obj/item/storage/box/mre/pmc
 	name = "\improper PMC CFR ration"
 	desc = "A Combat Field Ration. Uses similar to USCM MRE format, but utilizes expensive preserving materials and methods and not less expensive foods, not much different from going to a restaurant. Eating better worlds."
 	icon_state = "pmc_mealpack"
@@ -167,7 +167,7 @@
 	snack = /obj/item/mre_food_packet/wy/snack
 	dessert = /obj/item/mre_food_packet/wy/dessert
 
-/obj/item/storage/box/MRE/PMC/choose_cigarettes()
+/obj/item/storage/box/mre/pmc/choose_cigarettes()
 	var/cig_type = rand(1, 2)
 	switch(cig_type)
 		if(1)
@@ -175,7 +175,7 @@
 		if(2)
 			new /obj/item/storage/fancy/cigarettes/blackpack_4(src)
 
-/obj/item/storage/box/MRE/PMC/choose_drink()
+/obj/item/storage/box/mre/pmc/choose_drink()
 	var/matches_type = rand(1, 2)
 	switch(matches_type)
 		if(1)
@@ -183,7 +183,7 @@
 		if(2)
 			new /obj/item/reagent_container/food/drinks/cans/coconutmilk(src)
 
-/obj/item/storage/box/MRE/PMC/choose_matches()
+/obj/item/storage/box/mre/pmc/choose_matches()
 	var/matches_type = rand(1, 2)
 	switch(matches_type)
 		if(1)
@@ -193,7 +193,7 @@
 
 ///TWE RATION
 
-/obj/item/storage/box/MRE/TWE
+/obj/item/storage/box/mre/twe
 	name = "\improper TWE ORP ration"
 	desc = "An Operation Ration Pack. Uses similar to USCM MRE format, but utilizes expensive preserving materials and methods and not less expensive meals from TWE cuisine."
 	icon_state = "twe_mealpack"
@@ -206,17 +206,17 @@
 	snack = /obj/item/mre_food_packet/twe/snack
 	dessert = /obj/item/mre_food_packet/twe/dessert
 
-/obj/item/storage/box/MRE/TWE/Initialize()
+/obj/item/storage/box/mre/twe/Initialize()
 	misc_item = pick(/obj/item/reagent_container/food/snacks/wrapped/twe_bar, /obj/item/storage/box/lemondrop)
 	return ..()
 
-/obj/item/storage/box/MRE/TWE/choose_beverage()
+/obj/item/storage/box/mre/twe/choose_beverage()
 	new /obj/item/reagent_container/pill/teabag(src)
 
-/obj/item/storage/box/MRE/TWE/choose_utencil()
+/obj/item/storage/box/mre/twe/choose_utencil()
 	new /obj/item/reagent_container/food/drinks/sillycup(src)
 
-/obj/item/storage/box/MRE/TWE/choose_cigarettes()
+/obj/item/storage/box/mre/twe/choose_cigarettes()
 	var/cig_type = rand(1, 2)
 	switch(cig_type)
 		if(1)
@@ -224,7 +224,7 @@
 		if(2)
 			new /obj/item/storage/fancy/cigarettes/balaji_4(src)
 
-/obj/item/storage/box/MRE/TWE/choose_matches()
+/obj/item/storage/box/mre/twe/choose_matches()
 	var/matches_type = rand(1, 2)
 	switch(matches_type)
 		if(1)
@@ -232,7 +232,7 @@
 		if(2)
 			new /obj/item/storage/fancy/cigar/matchbook/wy_gold(src)
 
-/obj/item/storage/box/MRE/TWE/choose_spread()
+/obj/item/storage/box/mre/twe/choose_spread()
 	var/spread_type = rand(1, 3)
 	switch(spread_type)
 		if(1)
@@ -242,7 +242,7 @@
 		if(3)
 			new /obj/item/reagent_container/food/drinks/cans/tube/blackberry(src)
 
-/obj/item/storage/box/MRE/FSR
+/obj/item/storage/box/mre/fsr
 	name = "\improper FSR combat ration"
 	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civillian and private markets."
 	icon_state = "merc_mealpack"
@@ -257,10 +257,10 @@
 	should_have_cigarettes = FALSE
 	should_have_matches = FALSE
 
-/obj/item/storage/box/MRE/FSR/choose_utencil()
+/obj/item/storage/box/mre/fsr/choose_utencil()
 	new /obj/item/tool/kitchen/utensil/mre_spork/fsr(src)
 
-/obj/item/storage/box/MRE/WY
+/obj/item/storage/box/mre/wy
 	name = "\improper W-Y brand ration pack"
 	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with a medium quality foods with a long shelf life. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
 	icon_state = "wy_mealpack"
@@ -279,10 +279,10 @@
 	should_have_cookie = FALSE
 	should_have_utencil = FALSE
 
-/obj/item/storage/box/MRE/WY/choose_drink()
+/obj/item/storage/box/mre/wy/choose_drink()
 	new /obj/item/reagent_container/food/drinks/cans/bugjuice(src)
 
-/obj/item/storage/box/MRE/WY/pickflavor()
+/obj/item/storage/box/mre/wy/pickflavor()
 	side = pick(
 		/obj/item/reagent_container/food/snacks/packaged_burger,
 		/obj/item/reagent_container/food/snacks/packaged_burrito,
@@ -295,7 +295,7 @@
 	)
 	return ..()
 
-/obj/item/storage/box/MRE/UPP
+/obj/item/storage/box/mre/upp
 	name = "\improper UPP IRP ration pack"
 	desc = "An Individual Meal Ration, mainly composed of a selection of canned food, despite being heavier, it has proven to be a lot more reliable."
 	icon_state = "upp_mealpack"
@@ -316,13 +316,13 @@
 	should_have_cookie = FALSE
 	should_have_utencil = TRUE
 
-/obj/item/storage/box/MRE/UPP/choose_utencil()
+/obj/item/storage/box/mre/upp/choose_utencil()
 	new /obj/item/tool/kitchen/utensil/pspoon(src)
 
-/obj/item/storage/box/MRE/UPP/choose_drink()
+/obj/item/storage/box/mre/upp/choose_drink()
 	new /obj/item/reagent_container/food/drinks/cans/waterbottle/upp(src)
 
-/obj/item/storage/box/MRE/UPP/pickflavor()
+/obj/item/storage/box/mre/upp/pickflavor()
 	entree = pick(
 		/obj/item/reagent_container/food/drinks/cans/food/upp/meat,
 		/obj/item/reagent_container/food/drinks/cans/food/upp/stew,

@@ -216,7 +216,7 @@
 /area/adminlevel/ert_station/upp_station)
 "dh" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/MRE/UPP{
+/obj/item/storage/box/mre/upp{
 	pixel_y = 12;
 	pixel_x = 4
 	},
@@ -1159,7 +1159,7 @@
 "vH" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/plate,
-/obj/item/storage/box/MRE/UPP{
+/obj/item/storage/box/mre/upp{
 	pixel_y = 14
 	},
 /turf/open/floor/strata/green3/east,
@@ -1958,7 +1958,7 @@
 /area/adminlevel/ert_station/upp_station)
 "ME" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/storage/box/MRE/UPP{
+/obj/item/storage/box/mre/upp{
 	pixel_y = 7
 	},
 /turf/open/floor/strata/multi_tiles/west,

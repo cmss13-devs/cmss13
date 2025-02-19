@@ -10481,7 +10481,7 @@
 /area/bigredv2/caves/lambda/virology)
 "aWb" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/storage/box/MRE/WY,
+/obj/item/storage/box/mre/wy,
 /obj/item/storage/box/donkpockets{
 	pixel_x = 6;
 	pixel_y = 8
@@ -16277,7 +16277,7 @@
 /area/bigredv2/caves/eta/research)
 "bAu" = (
 /obj/structure/surface/table,
-/obj/item/storage/box/MRE/WY,
+/obj/item/storage/box/mre/wy,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
 "bAv" = (
@@ -35474,8 +35474,8 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "uut" = (
-/obj/item/storage/box/MRE/WY,
-/obj/item/storage/box/MRE/WY{
+/obj/item/storage/box/mre/wy,
+/obj/item/storage/box/mre/wy{
 	pixel_x = 7;
 	pixel_y = 8
 	},

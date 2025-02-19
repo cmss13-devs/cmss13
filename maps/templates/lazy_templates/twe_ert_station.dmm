@@ -48,7 +48,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "af" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/MRE/TWE,
+/obj/item/storage/box/mre/twe,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "ai" = (

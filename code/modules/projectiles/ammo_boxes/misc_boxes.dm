@@ -58,7 +58,7 @@
 /obj/item/ammo_box/magazine/misc/mre
 	name = "\improper box of MREs"
 	desc = "A box of MREs. Nutritious, but not delicious."
-	magazine_type = /obj/item/storage/box/MRE
+	magazine_type = /obj/item/storage/box/mre
 	num_of_magazines = 12
 	overlay_content = "_mre"
 
@@ -69,7 +69,7 @@
 	name = "\improper box of UPP military rations"
 	desc = "A box of rations. Tastes like homeland."
 	icon_state = "upp_food_crate"
-	magazine_type = /obj/item/storage/box/MRE/UPP
+	magazine_type = /obj/item/storage/box/mre/upp
 	overlay_content = "_upp_mre"
 
 /obj/item/ammo_box/magazine/misc/mre/upp/empty
@@ -79,7 +79,7 @@
 	name = "\improper box of PMC CFR rations"
 	desc = "A box of expensive rations. You don't need a restaurant to eat nicely."
 	icon_state = "pmc_food_crate"
-	magazine_type = /obj/item/storage/box/MRE/PMC
+	magazine_type = /obj/item/storage/box/mre/pmc
 	overlay_content = "_colony_mre"
 
 /obj/item/ammo_box/magazine/misc/mre/pmc/empty
@@ -89,7 +89,7 @@
 	name = "\improper box of W-Y brand rations"
 	desc = "A box of basic packed foods, comes with all sorts of W-Y branded snacks. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
 	icon_state = "wy_food_crate"
-	magazine_type = /obj/item/storage/box/MRE/WY
+	magazine_type = /obj/item/storage/box/mre/wy
 	overlay_content = "_wy_mre"
 
 /obj/item/ammo_box/magazine/misc/mre/wy/empty
@@ -99,7 +99,7 @@
 	name = "\improper box of TWE ORP rations"
 	desc = "A box of expensive rations. You don't need a restaurant to eat nicely."
 	icon_state = "twe_food_crate"
-	magazine_type = /obj/item/storage/box/MRE/TWE
+	magazine_type = /obj/item/storage/box/mre/twe
 	overlay_content = "_twe_mre"
 
 /obj/item/ammo_box/magazine/misc/mre/twe/empty
@@ -120,7 +120,7 @@
 	name = "\improper box of FSR rations"
 	desc = "A box of First Strike Rations. Nutritious, but not delicious, cigarettes not included."
 	icon_state = "merc_food_crate"
-	magazine_type = /obj/item/storage/box/MRE/FSR
+	magazine_type = /obj/item/storage/box/mre/fsr
 
 /obj/item/ammo_box/magazine/misc/mre/fsr/empty
 	empty = TRUE

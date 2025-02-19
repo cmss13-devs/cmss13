@@ -1,0 +1,4 @@
+author: "SerheyKr"
+delete-after: True
+changes:
+  - qol: "Chem master can process several pill bottles"

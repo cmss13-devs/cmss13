@@ -400,3 +400,9 @@
   - bugfix: You can no longer put down xeno resin marks in hyperspace
   - code_imp: Fixes some bugs with fire ob admin proc
   - bugfix: Towels no longer have lids
+2025-02-19:
+  Red-byte3D:
+  - bugfix: Fixes fractional numbers with extinguishers
+  - bugfix: Queen expand weeds now properly expands weeds as normal weeds instead
+      of the weed type it expands from
+  - code_imp: one letter vars replaced in code

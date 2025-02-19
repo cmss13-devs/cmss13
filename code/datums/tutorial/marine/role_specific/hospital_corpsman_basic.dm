@@ -37,6 +37,15 @@
 	message_to_player("This tutorial will teach you the fundamental skills for playing as a Marine Hospital Corpsman.")
 	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/register_tutorial_subsections()
+	. = ..()
+	subsection_list = list(
+		list("name" = "Section 1", "title" = "Basic Damage Treatment", "id" = PROC_REF(brute_tutorial)),
+		list("name" = "Section 2", "title" = "Intermediate Damage Treatment", "id" = PROC_REF(intermediate_damage_treatment)),
+	)
+
+	return subsection_list
+
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/uniform()
 	SIGNAL_HANDLER
 
@@ -123,7 +132,18 @@
 	message_to_player("When someone does not have a healthbar over their head, or when their healthbar disappears, that means they are <b>fully healthy</b>.")
 	message_to_player("As you progress through the following sections of the tutorial, pay attention to how the Dummys healthbar changes with different injuries.")
 
-	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 16 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(subsection_redirect)), 16 SECONDS)
+
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/subsection_redirect()
+	SIGNAL_HANDLER
+
+	var/starting_section = current_subsection_id
+	if(!current_subsection_id)
+		starting_section = PROC_REF(brute_tutorial)
+	marine_dummy = new(loc_from_corner(2,2))
+	arm_equipment(marine_dummy, /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy)
+
+	addtimer(CALLBACK(src, starting_section), 2 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial()
 
@@ -136,9 +156,6 @@
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_2(datum/source, obj/item/device/healthanalyzer)
 	SIGNAL_HANDLER
 
-	marine_dummy = new(loc_from_corner(2,2))
-	add_to_tracking_atoms(marine_dummy)
-	arm_equipment(marine_dummy, /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy)
 	marine_dummy.apply_damage(10, BRUTE, "chest")
 	message_to_player("The Dummy has taken some kind of brute damage. Stand next to them, and click on their body with your <b>Health Analyzer</b> in hand to scan them.")
 	add_highlight(marine_dummy, COLOR_GREEN)

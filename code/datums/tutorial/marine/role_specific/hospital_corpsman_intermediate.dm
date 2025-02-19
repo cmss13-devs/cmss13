@@ -7,6 +7,7 @@
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
 	/// Count of the total items to be vended from the starting vendor, included items WITHIN the essentials kit
 	var/clothing_items_to_vend = 6
+	/// TRUE or FALSE value. used to track surgery success readouts
 	var/ontime
 	/// To be used to differentiate subsections in long-winded procs. SET TO 0 WHEN NOT IN USE! CLEAN UP AFTER YOURSELF!
 	var/stage = 0
@@ -48,15 +49,14 @@
 
 	init_mob()
 	message_to_player("This tutorial will teach you the more complex elements of playing as a Marine Hospital Corpsman.")
-	var/starting_section = current_subsection_id
-	if(!current_subsection_id)
-		starting_section = PROC_REF(uniform)
-	addtimer(CALLBACK(src, starting_section), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/register_tutorial_subsections()
 	. = ..()
 	subsection_list = list(
-		list("name" = "Section 1", "title" = "Stabilizing Types of Organ Damage", "id" = PROC_REF(organ_tutorial))
+		list("name" = "Section 1", "title" = "Stabilizing Types of Organ Damage", "id" = PROC_REF(organ_tutorial)),
+		list("name" = "Section 2", "title" = "Revivals", "id" = PROC_REF(section_2)),
+		list("name" = "Section 3", "title" = "Field Surgery", "id" = PROC_REF(field_surgery)),
 	)
 
 	return subsection_list
@@ -91,14 +91,26 @@
 		add_highlight(healthanalyzer, COLOR_GREEN)
 		message_to_player("Great. Now pick up your trusty <b>Health Analyzer</b>, and let's get started with the tutorial!")
 		update_objective("")
-		RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
+		RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(subsection_redirect))
 
-/datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/proc/organ_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/proc/subsection_redirect()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
+
+	var/starting_section = current_subsection_id
+	if(!current_subsection_id)
+		starting_section = PROC_REF(organ_tutorial)
+	marine_dummy = new(loc_from_corner(2,2))
+	arm_equipment(marine_dummy, /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy)
+	mob_chest = locate(/obj/limb/chest) in marine_dummy.limbs // used later
+
+	addtimer(CALLBACK(src, starting_section), 2 SECONDS)
+
+/datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/proc/organ_tutorial()
+	SIGNAL_HANDLER
 
 	message_to_player("<b>Section 1: Stabilizing Types of Organ Damage</b>.")
 	message_to_player("In a combat environment, <b>Internal Damage</b> can be just as deadly as its external counterparts.")
@@ -139,9 +151,6 @@
 	message_to_player("When someone takes any amount of <b>Internal Organ Damage</b>, the <b>Stethoscope</b> can be used in exactly the same manner as a Health Analyzer to scan their condition.")
 	message_to_player("Oh, look's like our old friend <b>Pvt Dummy</b> is back, and looking for a health checkup!")
 
-	marine_dummy = new(loc_from_corner(2,2))
-	arm_equipment(marine_dummy, /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy)
-	mob_chest = locate(/obj/limb/chest) in marine_dummy.limbs // used later
 	add_highlight(marine_dummy, COLOR_GREEN)
 
 	message_to_player("Click on the Dummy with your <b>Stethoscope</b> in hand to test the health of their <b>Internal Organs</b>.")

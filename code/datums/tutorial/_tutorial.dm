@@ -14,8 +14,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/category = TUTORIAL_CATEGORY_BASE
 	/// Ref to specific section datums within tutorials. Works the same as tutorial_id, but on a smaller scale
 	var/subsection_list = list()
-	/// List of items that are referenced in a subsection. Makes sure they exist for players joining half way into a tutorial
-	var/subsection_tracking_atoms = list()
+	/// Ref to subsection within a tutorial, used to target a proc when joining at a specific subsection
 	var/current_subsection_id
 	/// Ref to the bottom-left corner tile of the tutorial room
 	var/turf/bottom_left_corner

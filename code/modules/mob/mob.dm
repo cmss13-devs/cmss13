@@ -54,6 +54,7 @@
 	if(!faction_group)
 		faction_group = list(faction)
 
+	vis_flags |= VIS_INHERIT_PLANE
 	GLOB.last_mob_gid++
 	gid = GLOB.last_mob_gid
 

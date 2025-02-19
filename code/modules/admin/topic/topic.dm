@@ -262,32 +262,6 @@
 			X.set_hive_and_update(hivenumber)
 
 	/////////////////////////////////////new ban stuff
-	else if(href_list["unbanf"])
-		var/datum/entity/player/P = get_player_from_key(href_list["unbanf"])
-		switch(alert("Are you sure you want to remove timed ban from [P.ckey]?", , "Yes", "No"))
-			if("No")
-				return
-		if(!P.remove_timed_ban())
-			alert(usr, "This ban has already been lifted / does not exist.", "Error", "Ok")
-		unbanpanel()
-
-	else if(href_list["unban_perma"])
-		var/datum/entity/player/unban_player = get_player_from_key(href_list["unban_perma"])
-		if(!(tgui_alert(owner, "Do you want to unban [unban_player.ckey]? They are currently permabanned for: [unban_player.permaban_reason], since [unban_player.permaban_date].", "Unban Player", list("Yes", "No")) == "Yes"))
-			return
-
-		if(!unban_player.is_permabanned)
-			to_chat(owner, "The player is not currently permabanned.")
-
-		unban_player.is_permabanned = FALSE
-		unban_player.permaban_admin_id = null
-		unban_player.permaban_date = null
-		unban_player.permaban_reason = null
-
-		unban_player.save()
-
-		message_admins("[key_name_admin(owner)] has removed the permanent ban on [unban_player.ckey].")
-		important_message_external("[owner] has removed the permanent ban on [unban_player.ckey].", "Permaban Removed")
 
 	else if(href_list["sticky"])
 		if(href_list["view_all_ckeys"])

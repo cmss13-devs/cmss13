@@ -255,3 +255,23 @@
 				//so we must undo it here so the victim can move right away
 				M.client.next_movement = world.time
 			M.update_transform(TRUE)
+
+/mob/living/verb/look_up()
+	set name = "Look Up"
+	set category = "IC"
+
+	if(observed_atom)
+		var/atom/to_delete = observed_atom
+		observed_atom = null
+		qdel(to_delete)
+		return
+
+	var/turf/above = locate(x, y, z+1)
+
+	if(!istype(above, /turf/open_space))
+		to_chat(src, SPAN_WARNING("You cannot look up here."))
+		return
+
+	var/mob/hologram/look_up/observed_hologram = new(above, src)
+
+	observed_atom = observed_hologram

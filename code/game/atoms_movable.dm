@@ -358,6 +358,10 @@
 	set_light_range(range)
 	set_light_power(power)
 	set_light_color(color)
+
+/atom/movable/proc/onZImpact(turf/impact_turf, height)
+	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
+
 // SS220 ADD Start
 /atom/movable/proc/set_glide_size(target = 8)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)

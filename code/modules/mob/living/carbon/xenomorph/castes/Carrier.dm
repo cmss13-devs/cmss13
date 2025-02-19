@@ -373,6 +373,13 @@
 		return
 
 /mob/living/carbon/xenomorph/carrier/proc/store_eggs_into_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+
+	var/dist = get_dist(src, morpher)
+
+	if(dist > 1)
+		to_chat(src, SPAN_XENOWARNING("We need to be closer to do that."))
+		return
+
 	if(action_busy)
 		return FALSE
 

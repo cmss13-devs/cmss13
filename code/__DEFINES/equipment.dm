@@ -50,6 +50,8 @@
 #define QUICK_DRAWABLE (1<<20)
 // If object should utilize icon state indexes for map colors (s_ d_ etc) in select_gamemode_skin
 #define MAP_COLOR_INDEX (1<<21)
+/// If an object will fall through open space, use this when dashing \ jumping for example
+#define NO_ZFALL (1<<22)
 
 // BANDASTATION EDIT ADDITION - Bump Attacks
 /// Can this atom be bumped attack

@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "You can no longer place C4 or Breaching Charges onto objects that are explosion proof."

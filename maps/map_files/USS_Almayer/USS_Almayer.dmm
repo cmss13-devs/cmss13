@@ -2185,6 +2185,10 @@
 	pixel_y = -1;
 	pixel_x = 1
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "afh" = (
@@ -2218,10 +2222,6 @@
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/space)
 "afn" = (
-/obj/item/prop/flower_vase/bluewhiteflowers{
-	pixel_y = 10;
-	pixel_x = -8
-	},
 /obj/item/device/megaphone{
 	pixel_y = 3
 	},
@@ -2559,10 +2559,6 @@
 /obj/structure/machinery/chem_dispenser/corpsman{
 	pixel_y = 3
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	dir = 8
-	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "age" = (
@@ -2656,11 +2652,15 @@
 	climbable = 0
 	},
 /obj/item/clock{
-	pixel_y = 10;
-	pixel_x = -1
+	pixel_y = 10
 	},
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/item/prop/flower_vase/bluewhiteflowers{
+	pixel_y = -5;
+	pixel_x = -8;
+	layer = 3.04
 	},
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/lower_medical_medbay)
@@ -4405,7 +4405,8 @@
 	},
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_y = 16;
-	pixel_x = 9
+	pixel_x = 9;
+	density = 0
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
@@ -8909,6 +8910,7 @@
 "aLZ" = (
 /obj/structure/bed/sofa/south/white,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname/almayer,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/upper_medical)
 "aMd" = (
@@ -11110,6 +11112,11 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/operating_room_one)
@@ -16992,6 +16999,11 @@
 	dir = 8
 	},
 /obj/structure/machinery/disposal,
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/operating_room_three)
 "cbg" = (
@@ -27351,10 +27363,6 @@
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/command/computerlab)
 "gjK" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
 /obj/structure/machinery/light,
 /obj/structure/machinery/bioprinter{
 	stored_metal = 125
@@ -32973,7 +32981,6 @@
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "iGA" = (
 /obj/structure/bed/sofa/south/white/left,
-/obj/structure/machinery/camera/autoname/almayer,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/upper_medical)
 "iHc" = (
@@ -36955,6 +36962,9 @@
 	},
 /obj/structure/sign/safety/cryo{
 	pixel_y = -27
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/lower_medical_medbay)
@@ -42383,10 +42393,6 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/living/pilotbunks)
 "mBk" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},

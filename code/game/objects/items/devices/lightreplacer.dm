@@ -57,15 +57,17 @@
 	matter = list("metal" = 20,"glass" = 50)
 
 	var/max_uses = 50
-	var/uses = 0
+	var/uses = 50
 	var/failmsg = ""
 	var/charge = 1
 	var/recycle = 0
 	var/max_recycle = 3
 
+/obj/item/device/lightreplacer/empty
+	uses = 0
+
 /obj/item/device/lightreplacer/Initialize()
 	. = ..()
-	uses = max_uses
 	failmsg = "The [name]'s refill light blinks red."
 
 /obj/item/device/lightreplacer/get_examine_text(mob/user)

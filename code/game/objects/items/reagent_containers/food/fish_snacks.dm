@@ -11,7 +11,6 @@
 	var/guttable = TRUE
 	var/gutted = FALSE
 	var/gut_icon_state = null
-	var/gut_time = 0
 	var/initial_desc = ""
 	var/list/guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat, /obj/item/reagent_container/food/snacks/meat/synthmeat)//placeholders, for now
 	var/base_gut_meat = /obj/item/reagent_container/food/snacks/meat

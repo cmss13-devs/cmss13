@@ -230,14 +230,15 @@
 		return
 	if(!customizable)
 		var/shrapnel_damage = 12
+		var/damage_cap
 		if(istype(loc, /mob/living/carbon/xenomorph))
 			if(xeno.caste == XENO_T1_CASTES)
-				shrapnel_damage * 0.5
+				damage_cap = shrapnel_damage * 0.5
 			else if(xeno.caste == XENO_T2_CASTES)
-				shrapnel_damage * 0.65
+				damage_cap = shrapnel_damage * 0.65
 			else if((xeno.caste == XENO_T3_CASTES) || (xeno.caste == XENO_T4_CASTES))
-				shrapnel_damage * 0.75
-		create_shrapnel(loc, min(shrapnel_damage, 12), dir, shrapnel_spread, , cause_data)
+				damage_cap = shrapnel_damage * 0.75
+		create_shrapnel(loc, min(damage_cap, 12), dir, shrapnel_spread, , cause_data)
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
 

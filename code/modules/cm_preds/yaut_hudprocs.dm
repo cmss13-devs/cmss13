@@ -420,14 +420,15 @@
 	if(isyautja(src) && src.hunter_data.thrall)
 		target_list += src.hunter_data.thrall
 
-	var/mob/living/carbon/thrall = tgui_input_list(usr, "Target", "Choose a target.", target_list)
+	var/mob/living/carbon/human/thrall  = tgui_input_list(usr, "Target", "Choose a target.", target_list)
+
 	if(!thrall)
 		return
 	if(!thrall.hunter_data.thralled)
 		to_chat(src, SPAN_YAUTJABOLD("[thrall] is not marked as thralled!"))
 		return
 
-	if(!thrall.hunter_data.thralled_set || src == T.hunter_data.thralled_set)
+	if(!thrall.hunter_data.thralled_set || src == thrall.hunter_data.thralled_set)
 
 		log_interact(src, thrall, "[key_name(src)] has released [key_name(thrall)] from thralldom!")
 		message_all_yautja("[real_name] has released [thrall] from thralldom!'.")

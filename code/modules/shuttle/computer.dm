@@ -448,6 +448,7 @@
 							lifeboat_dock.open_dock()
 							launch_initiated = FALSE
 							launch_aborted = TRUE
+							shipwide_ai_announcement("Emergency abort command processed. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat launch aborted.")
 							return
 
 				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
@@ -471,6 +472,7 @@
 							lifeboat_dock.open_dock()
 							launch_initiated = FALSE
 							launch_aborted = TRUE
+							shipwide_ai_announcement("Emergency abort command processed. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat launch aborted.")
 							return
 				switch(response)
 					if ("Yes")
@@ -521,6 +523,7 @@
 						lifeboat_dock.open_dock()
 						launch_initiated = FALSE
 						launch_aborted = TRUE
+						shipwide_ai_announcement("Emergency abort command processed. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat launch aborted.")
 						return
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))

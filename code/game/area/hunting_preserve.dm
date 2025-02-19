@@ -69,8 +69,7 @@
 	name = "\improper Yautja Hunting Grounds Desert central"
 	icon_state = "central"
 	ambience_exterior = AMBIENCE_BIGRED
-	weather_enabled = TRUE
-	base_lighting_alpha = 150
+	base_lighting_alpha = 50
 
 /area/yautja_grounds/desert/north
 	name = "\improper Yautja Hunting Grounds Desert north"
@@ -114,9 +113,8 @@
 
 /area/yautja_grounds/temple/entrance/desert
 	ambience_exterior = AMBIENCE_BIGRED
-	weather_enabled = TRUE
 	ceiling = CEILING_NONE
-	base_lighting_alpha = 150
+	base_lighting_alpha = 50
 
 ///TP Areas/Young blood prep areas
 
@@ -132,8 +130,7 @@
 /area/yautja_grounds/prep_room/desert
 	name = "\improper Desert Moon Campsite"
 	ambience_exterior = AMBIENCE_BIGRED
-	weather_enabled = TRUE
-	base_lighting_alpha = 150
+	base_lighting_alpha = 50
 
 /area/yautja_grounds/prep_room/desert/interior
 	name ="\improper Desert Moon Campsite Interiors"

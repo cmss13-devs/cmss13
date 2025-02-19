@@ -145,6 +145,8 @@
 
 /obj/structure/bed/MouseDrop_T(atom/dropping, mob/user)
 	if(accepts_bodybag && !buckled_bodybag && !buckled_mob && istype(dropping,/obj/structure/closet/bodybag) && ishuman(user))
+		if(!isturf(user.loc)) // so they do not buckle themselves
+			return
 		var/obj/structure/closet/bodybag/B = dropping
 		if(!B.roller_buckled)
 			do_buckle_bodybag(B, user)

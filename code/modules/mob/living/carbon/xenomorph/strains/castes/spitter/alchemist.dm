@@ -339,13 +339,10 @@
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
 
-	if(!iscarbon(target) && carbon.stat == DEAD)
+	if((!iscarbon(target) && carbon.stat == DEAD) || (xeno.can_not_harm(carbon) && (ishuman(carbon)|| islarva(carbon)))) // Don't want to try using on friendly humans or larva
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
-		return
-
-	if(xeno.can_not_harm(carbon) && ishuman(carbon)|| islarva(carbon)) // Don't want to try using on friendly humans or larva
 		return
 
 	var/obj/limb/target_limb = carbon.get_limb(check_zone(xeno.zone_selected))
@@ -386,6 +383,8 @@
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] gently jabs [carbon] with their tail!"), \
 		SPAN_XENOWARNING("We gently jab our tail into [carbon], making sure not to harm them!"))
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+		sleep(1)
+		playsound(carbon,'sound/weapons/alien_tail_attack.ogg', 5, TRUE)
 		if(alchemist.final_alchem_name == null)
 			alchem_cooldown_modifier = 0.2
 	var/stab_direction

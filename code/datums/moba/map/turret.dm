@@ -23,6 +23,7 @@
 	pixel_y = 16
 	bound_height = 96
 	bound_width = 96
+	maptext_y = 26
 
 	var/hivenumber = XENO_HIVE_NORMAL
 
@@ -44,6 +45,7 @@
 	enable_pixel_scaling()
 	for(var/turf/open/floor/tile in range(1, src))
 		RegisterSignal(tile, COMSIG_TURF_ENTER, PROC_REF(on_try_enter))
+	healthcheck()
 
 /obj/effect/alien/resin/moba_turret/proc/get_target_priority(mob/living/current_mob, mob/living/last_hit)
 	if(get_dist(src, current_mob) > range)
@@ -53,6 +55,9 @@
 		return 0
 
 	if((current_mob == last_hit) && (last_hit.stat == CONSCIOUS))
+		return 5
+
+	if(HAS_TRAIT(current_mob, TRAIT_MOBA_ATTACKED_HIVE(hivenumber)))
 		return 4
 
 	switch(current_mob.stat)
@@ -113,6 +118,24 @@
 	visible_message(SPAN_XENOWARNING("[src] deflects the [Proj]!"))
 	return // Can only be meleed
 	// zonenote check on this once ranged minions are added
+
+/obj/effect/alien/resin/moba_turret/attack_alien(mob/living/carbon/xenomorph/M)
+
+	if((M.a_intent == INTENT_HELP) || (M.hive.hivenumber == hivenumber))
+		return XENO_NO_DELAY_ACTION
+	else
+		M.animation_attack_on(src)
+		M.visible_message(SPAN_XENONOTICE("[M] claws [src]!"),
+		SPAN_XENONOTICE("We claw [src]."))
+		playsound(loc, "alien_resin_break", 25)
+
+		health -= M.melee_damage_upper
+		healthcheck()
+		return XENO_ATTACK_ACTION
+
+/obj/effect/alien/resin/moba_turret/healthcheck()
+	. = ..()
+	maptext = MAPTEXT("<center>[floor(health / initial(health) * 100)]%</center>")
 
 /obj/effect/alien/resin/moba_turret/left
 	hivenumber = XENO_HIVE_MOBA_LEFT

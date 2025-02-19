@@ -48,6 +48,7 @@
 	..()
 	RegisterSignal(parent_xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdel))
 	RegisterSignal(parent_xeno, COMSIG_XENO_BULLET_ACT, PROC_REF(on_bullet_act))
+	RegisterSignal(parent_xeno, COMSIG_XENO_ALIEN_ATTACKED, PROC_REF(on_attacked))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_XP, PROC_REF(grant_xp))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_GOLD, PROC_REF(grant_gold))
 	RegisterSignal(parent_xeno, COMSIG_XENO_USED_TUNNEL, PROC_REF(on_tunnel))
@@ -75,6 +76,15 @@
 	if((acting_projectile.ammo.flags_ammo_behavior|acting_projectile.projectile_override_flags) & AMMO_ACIDIC)
 	// account for penetration
 		damage_result[1] = pre_mitigation_damage * (0.01 * (100 - (parent_xeno.acid_armor + parent_xeno.acid_armor_buff - parent_xeno.acid_armor_debuff - acting_projectile.ammo.penetration)))
+
+/datum/component/moba_player/proc/on_attacked(datum/source, mob/living/carbon/xenomorph/attacking_xeno)
+	SIGNAL_HANDLER
+
+	if(parent_xeno.hive.is_ally(attacking_xeno))
+		return
+
+	ADD_TRAIT(attacking_xeno, TRAIT_MOBA_ATTACKED_HIVE(parent_xeno.hive.hivenumber), TRAIT_SOURCE_HIVE)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_remove_trait), attacking_xeno, TRAIT_MOBA_ATTACKED_HIVE(parent_xeno.hive.hivenumber), TRAIT_SOURCE_HIVE), 4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 // At some point we need to account for acid damage from melee if that ever gets implemented
 

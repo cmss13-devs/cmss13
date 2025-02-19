@@ -196,6 +196,7 @@
 				MD.melee_attack_additional_effects_self()
 
 			SEND_SIGNAL(M, COMSIG_XENO_ALIEN_ATTACK, src)
+			SEND_SIGNAL(src, COMSIG_XENO_ALIEN_ATTACKED, src)
 
 		if(INTENT_DISARM)
 			M.animation_attack_on(src)

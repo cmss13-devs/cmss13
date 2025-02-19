@@ -2,6 +2,8 @@
 
 /// from /mob/living/carbon/xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+/// from /mob/living/carbon/xenomorph/attack_alien()
+#define COMSIG_XENO_ALIEN_ATTACKED "xeno_alien_attacked"
 
 #define COMSIG_XENO_OVERWATCH_XENO "xeno_overwatch_xeno"
 #define COMSIG_XENO_STOP_OVERWATCH "xeno_stop_overwatch"

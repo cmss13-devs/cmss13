@@ -629,7 +629,6 @@
 #include "code\datums\moba\map\minion_checkpoint.dm"
 #include "code\datums\moba\map\misc.dm"
 #include "code\datums\moba\map\moba_map_template.dm"
-#include "code\datums\moba\map\moba_simplemobs.dm"
 #include "code\datums\moba\map\moba_tunnel.dm"
 #include "code\datums\moba\map\simplemob_minions.dm"
 #include "code\datums\moba\map\turret.dm"

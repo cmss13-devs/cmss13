@@ -3,6 +3,7 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 // walk_to() has a max range of 2x the world.view, so checkpoints must be within 14 tiles of each other
 
 /obj/effect/moba_minion_checkpoint
+	invisibility = INVISIBILITY_MAXIMUM
 	// Both of these are relative to the bottom left corner of the map
 	var/next_x_coord
 	var/next_y_coord
@@ -31,11 +32,11 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 
 	var/mob/living/carbon/xenomorph/lesser_drone/moba/minion = entering
 	if(minion.hive.hivenumber == primary_hive)
-		minion.next_turf_target = locate(bottom_left_turf_coords[1] + next_x_coord, bottom_left_turf_coords[2] + next_y_coord, bottom_left_turf_coords[3])
+		minion.next_turf_target = locate(bottom_left_turf_coords[1] + next_x_coord - 1, bottom_left_turf_coords[2] + next_y_coord - 1, bottom_left_turf_coords[3])
 	else
-		minion.next_turf_target = locate(bottom_left_turf_coords[1] + alt_next_x_coord, bottom_left_turf_coords[2] + alt_next_y_coord, bottom_left_turf_coords[3])
+		minion.next_turf_target = locate(bottom_left_turf_coords[1] + alt_next_x_coord - 1, bottom_left_turf_coords[2] + alt_next_y_coord - 1, bottom_left_turf_coords[3])
 	minion.is_moving_to_next_point = FALSE
-	INVOKE_ASYNC(minion, TYPE_PROC_REF(/mob/living/carbon/xenomorph/lesser_drone/moba, process))
+	INVOKE_ASYNC(minion, TYPE_PROC_REF(/datum, process))
 
 /obj/effect/moba_minion_checkpoint/left
 	primary_hive = XENO_HIVE_MOBA_LEFT
@@ -65,7 +66,7 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 	alt_next_y_coord = 49
 
 /obj/effect/moba_minion_checkpoint/left/top_straight3
-	next_x_coord = 74
+	next_x_coord = 76
 	next_y_coord = 49
 	alt_next_x_coord = 49
 	alt_next_y_coord = 49
@@ -141,7 +142,7 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 	alt_next_y_coord = 49
 
 /obj/effect/moba_minion_checkpoint/right/top_straight3
-	next_x_coord = 83 // Zonenote: off by one or something? Is the map uneven? I don't think it is and i've done the math but idk
+	next_x_coord = 83
 	next_y_coord = 49
 	alt_next_x_coord = 110
 	alt_next_y_coord = 49
@@ -177,7 +178,7 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 	alt_next_y_coord = 7
 
 /obj/effect/moba_minion_checkpoint/right/bot_straight3
-	next_x_coord = 84 // Zonenote: off by one or something? Is the map uneven? I don't think it is and i've done the math but idk
+	next_x_coord = 84
 	next_y_coord = 7
 	alt_next_x_coord = 111
 	alt_next_y_coord = 7

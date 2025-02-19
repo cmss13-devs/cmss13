@@ -93,17 +93,25 @@
 
 /datum/moba_controller/proc/spawn_minions()
 	COOLDOWN_START(src, minion_spawn_cooldown, minion_spawn_time)
-	INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_topleft, XENO_HIVE_MOBA_LEFT)
-	INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_topright, XENO_HIVE_MOBA_RIGHT)
-	INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_botleft, XENO_HIVE_MOBA_LEFT)
-	INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_botright, XENO_HIVE_MOBA_RIGHT)
+	var/list/minion_spawns = list("topleft", "topright", "botleft", "botright")
+	minion_spawns = shuffle(minion_spawns)
+	for(var/i in 1 to 4) // I know this looks retarded but I actually have a good reason for this
+		switch(minion_spawns[i]) // If both lanes have a wave spawned simultanenously, then the wave that's spawned later will actually
+			if("topleft") // always win the initial trade. Because we're randomizing it, we allow the outcome to be more coinflippy than "X side wins the initial trade 100% of the time"
+				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_topleft, XENO_HIVE_MOBA_LEFT)
+			if("topright")
+				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_topright, XENO_HIVE_MOBA_RIGHT)
+			if("botleft")
+				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_botleft, XENO_HIVE_MOBA_LEFT)
+			if("botright")
+				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_botright, XENO_HIVE_MOBA_RIGHT)
 
 /datum/moba_controller/proc/spawn_wave(turf/location, side)
 	if(!location || !side)
 		return
 
-	for(var/i in 1 to 1)
+	for(var/i in 1 to 3)
 		var/mob/living/carbon/xenomorph/lesser_drone/moba/minion = new()
 		minion.set_hive_and_update(side)
 		minion.forceMove(location)
-		sleep(0.5 SECONDS)
+		sleep(0.9 SECONDS)

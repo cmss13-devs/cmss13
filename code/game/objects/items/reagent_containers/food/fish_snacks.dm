@@ -65,9 +65,9 @@
 		gutted = TRUE
 		update_desc()
 		update_icon()
-		for(var/i = 1, i < gut_loot, i++)
-			var/T = pick(guttable_atoms)
-			new T(user.loc)
+		for(var/i = 1 in 1 to gut_loot)
+			var/atom_type = pick(guttable_atoms)
+			new atom_type(get_turf(user))
 
 /obj/item/reagent_container/food/snacks/fishable/crab
 	name = "\improper spindle crab"

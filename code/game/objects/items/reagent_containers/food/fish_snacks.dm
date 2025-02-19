@@ -60,7 +60,7 @@
 			gut_loot = 1
 
 		gibs(user.loc)
-		new base_gut_meat(user.loc)//always spawn at least one meat per gut
+		new base_gut_meat(get_turf(user)) //always spawn at least one meat per gut
 		playsound(loc, 'sound/effects/splat.ogg', 25, 1)//replace
 		gutted = TRUE
 		update_desc()

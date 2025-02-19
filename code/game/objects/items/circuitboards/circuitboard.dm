@@ -7,7 +7,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
 	)
 	icon_state = "id_mod"
-	item_state = "electronic"
+	item_state = "circuitboard"
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 50, "glass" = 50)
 	var/build_path = null

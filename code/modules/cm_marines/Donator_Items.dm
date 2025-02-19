@@ -21,13 +21,14 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = NO_FLAGS
 
-/obj/item/clothing/suit/storage/marine/light/fluff/Initialize(mapload)
+/obj/item/clothing/head/helmet/marine/fluff/Initialize(mapload)
 	. = ..()
 	item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_squad_markings()
 	set src in usr
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
@@ -39,7 +40,8 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_garb_overlay()
 	set src in usr
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
@@ -105,7 +107,8 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_squad_markings()
 	set src in usr
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
@@ -117,7 +120,8 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_shoulder_lamp()
 	set src in usr
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))

@@ -30,6 +30,7 @@
 		if(SLOT_LEGS)
 			if(!attacked_carbon.legcuffed)
 				apply_legcuffs(attacked_carbon, user)
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/restraint/proc/place_handcuffs(mob/living/carbon/target, mob/user)
 	playsound(src.loc, cuff_sound, 25, 1, 4)
@@ -188,7 +189,8 @@
 				return
 
 		spawn(30)
-			if(!carbon_mob) return
+			if(!carbon_mob)
+				return
 			if(p_loc == user.loc && p_loc_m == carbon_mob.loc)
 				carbon_mob.handcuffed = new /obj/item/restraint/handcuffs(carbon_mob)
 				carbon_mob.handcuff_update()
@@ -224,7 +226,8 @@
 		for(var/mob/O in viewers(user, null))
 			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), SHOW_MESSAGE_VISIBLE)
 		spawn(30)
-			if(!C) return
+			if(!C)
+				return
 			if(p_loc == user.loc && p_loc_m == C.loc)
 				C.handcuffed = new /obj/item/xeno_restraints(C)
 				C.handcuff_update()

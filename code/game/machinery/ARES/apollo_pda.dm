@@ -1,8 +1,13 @@
 /obj/item/device/working_joe_pda
-	icon = 'icons/obj/items/synth/wj_pda.dmi'
 	name = "KN5500 PDA"
 	desc = "A portable interface used by Working-Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
 	icon_state = "karnak_off"
+	item_state = "wj_pda"
+	icon = 'icons/obj/items/synth/wj_pda.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	unacidable = TRUE
 	explo_proof = TRUE
 	req_one_access = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)

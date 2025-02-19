@@ -54,10 +54,6 @@
 #define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
 #define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 #define COMSIG_KB_HUMAN_CYCLE_HELMET_HUD "keybinding_human_cycle_helmet_hud"
-#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_NORTH "keybinding_human_pixel_shift_grabbed_north"
-#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_SOUTH "keybinding_human_pixel_shift_grabbed_south"
-#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_EAST "keybinding_human_pixel_shift_grabbed_east"
-#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_WEST "keybinding_human_pixel_shift_grabbed_west"
 
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"
@@ -90,7 +86,7 @@
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT "keybinding_human_weapon_attachment"
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL "keybinding_human_weapon_attachment_rail"
 #define COMSIG_KB_HUMAN_WEAPON_SHOTGUN_TUBE "keybinding_human_weapon_shotgun_tube"
-
+#define COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE "keybinding_human_weapon_toggle_frontline_mode"
 #define COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF "keybinding_human_weapon_toggle_iff"
 
 //Living
@@ -127,6 +123,7 @@
 #define COMSIG_KB_MOB_TARGETNEXT_DOWN "keybinding_mob_targetnext_down"
 #define COMSIG_KB_MOB_TARGETPREV_DOWN "keybinding_mob_targetprev_down"
 #define COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN "keybinding_mob_blockmovement_down"
+#define COMSIG_KB_MOB_LOOK_UP "keybinding_mob_look_up"
 
 //Robot
 #define COMSIG_KB_SILICON_TOGGLEMODULEONE_DOWN "keybinding_silicon_togglemoduleone_down"
@@ -167,6 +164,7 @@
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
+#define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 
 // Yautja
 

@@ -40,6 +40,9 @@
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
 
+	/// If the window should be closed with other windows when requested
+	var/closeable = TRUE
+
 /**
  * public
  *
@@ -51,16 +54,16 @@
  * optional title string The title of the UI.
  * optional ui_x int Deprecated: Window width.
  * optional ui_y int Deprecated: Window height.
+ * optional window datum/tgui_window: The window to display this TGUI within
  *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title, ui_x, ui_y)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, ui_x, ui_y, datum/tgui_window/window)
 	log_tgui(user,
 		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		src_object = src_object)
 	src.user = user
 	src.src_object = src_object
-	src.window_key = "[REF(src_object)]-main"
 	src.interface = interface
 	if(title)
 		src.title = title
@@ -68,6 +71,13 @@
 	// Deprecated
 	if(ui_x && ui_y)
 		src.window_size = list(ui_x, ui_y)
+
+	if(window)
+		src.window = window
+		src.window_key = window.id
+	else
+		src.window_key = "[REF(src_object)]-main"
+
 
 /datum/tgui/Destroy()
 	user = null
@@ -79,22 +89,26 @@
  *
  * Open this UI (and initialize it with data).
  *
+ * Args:
+ * preinitialized: bool - if TRUE, we will not attempt to force strict mode on the tgui's window datum
+ *
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
-/datum/tgui/proc/open()
+/datum/tgui/proc/open(preinitialized = FALSE)
 	if(!user.client)
 		return FALSE
-	if(window)
+	if(window && window.status > TGUI_WINDOW_LOADING)
 		return FALSE
 	process_status()
 	if(status < UI_UPDATE)
 		return FALSE
-	window = SStgui.request_pooled_window(user)
+	if(!window)
+		window = SStgui.request_pooled_window(user)
 	if(!window)
 		return FALSE
 	opened_at = world.time
 	window.acquire_lock(src)
-	if(!window.is_ready())
+	if(!window.is_ready() && !preinitialized)
 		window.initialize(
 			strict_mode = TRUE,
 			fancy = user.client?.prefs.tgui_fancy,
@@ -200,8 +214,12 @@
  * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
  */
-/datum/tgui/proc/send_full_update(custom_data, force)
+/datum/tgui/proc/send_full_update(custom_data, force, force_refresh=FALSE)
 	if(!user.client || !initialized || closing)
+		return
+	if(force_refresh)
+		refreshing = TRUE
+		addtimer(CALLBACK(src, PROC_REF(send_full_update), custom_data, force), 1 SECONDS, TIMER_UNIQUE)
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = TRUE

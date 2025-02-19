@@ -35,9 +35,12 @@
 	if(direction)
 		setDir(direction)
 	switch(dir)
-		if(NORTH) layer = ABOVE_TABLE_LAYER
-		if(SOUTH) layer = ABOVE_MOB_LAYER
-		else layer = initial(layer)
+		if(NORTH)
+			layer = ABOVE_TABLE_LAYER
+		if(SOUTH)
+			layer = ABOVE_MOB_LAYER
+		else
+			layer = initial(layer)
 
 /obj/structure/machinery/door/window/Collided(atom/movable/AM)
 	if (!( ismob(AM) ))
@@ -215,7 +218,7 @@
 		visible_message(SPAN_DANGER("<B>[src] was hit by [I].</B>"))
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			take_damage(aforce)
-		return 1
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 	else
 		return try_to_activate_door(user)
 

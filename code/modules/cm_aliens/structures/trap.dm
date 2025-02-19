@@ -32,14 +32,11 @@
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
-/obj/effect/alien/resin/trap/Initialize()
-	. = ..()
-
-	var/obj/effect/alien/weeds/node/WD = locate() in loc
-	if(WD)
-		WD.RegisterSignal(src, COMSIG_PARENT_PREQDELETED, /obj/effect/alien/weeds/node/proc/trap_destroyed)
-		WD.overlay_node = FALSE
-		WD.overlays.Cut()
+	var/obj/effect/alien/weeds/node/weed = locate() in loc
+	if(weed)
+		weed.RegisterSignal(src, COMSIG_PARENT_PREQDELETED, /obj/effect/alien/weeds/node/proc/trap_destroyed)
+		weed.overlay_node = FALSE
+		weed.overlays.Cut()
 
 /obj/effect/alien/resin/trap/get_examine_text(mob/user)
 	if(!isxeno(user))
@@ -94,30 +91,28 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
+/obj/effect/alien/resin/trap/HasProximity(atom/movable/victim)
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			if(can_hug(AM, hivenumber) && !isyautja(AM) && !issynth(AM))
-				var/mob/living/L = AM
-				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
-								SPAN_DANGER("You trip on [src]!"))
-				L.apply_effect(1, WEAKEN)
+			if(can_hug(victim, hivenumber) && !isyautja(victim) && !issynth(victim) && !isthrall(victim))
+				var/mob/living/victim_mob = victim
+				victim_mob.visible_message(SPAN_WARNING("[victim_mob] trips on [src]!"))
+				to_chat(victim_mob, SPAN_DANGER("You trip on [src]!"))
+				victim_mob.apply_effect(1, WEAKEN)
 				trigger_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3, RESIN_TRAP_MIST)
-			if(ishuman(AM))
-				var/mob/living/carbon/human/victim = AM
-				if(issynth(victim) || isyautja(victim))
+			if(ishuman_strict(victim))
+				var/mob/living/carbon/human/victim_human = victim
+				if(victim_human.stat == DEAD || victim_human.body_position == LYING_DOWN)
 					return
-				if(victim.stat == DEAD || victim.body_position == LYING_DOWN)
-					return
-				if(victim.ally_of_hivenumber(hivenumber))
+				if(victim_human.ally_of_hivenumber(hivenumber))
 					return
 				trigger_trap()
-			if(isxeno(AM))
-				var/mob/living/carbon/xenomorph/xeno = AM
-				if(xeno.hivenumber != hivenumber)
+			if(isxeno(victim))
+				var/mob/living/carbon/xenomorph/victim_xeno = victim
+				if(victim_xeno.hivenumber != hivenumber)
 					trigger_trap()
-			if(isVehicleMultitile(AM) && trap_type != (RESIN_TRAP_GAS || RESIN_TRAP_MIST))
+			if(isVehicleMultitile(victim) && trap_type != (RESIN_TRAP_GAS || RESIN_TRAP_MIST))
 				trigger_trap()
 
 /obj/effect/alien/resin/trap/proc/set_state(state = RESIN_TRAP_EMPTY)
@@ -313,7 +308,7 @@
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 		set_state(RESIN_TRAP_GAS)
 		cause_data = create_cause_data("resin gas trap", boiler)
-		boiler.visible_message(SPAN_XENOWARNING("\The [boiler] pressurises the resin trap with acid gas!"), \
+		boiler.visible_message(SPAN_XENOWARNING("\The [boiler] pressurises the resin trap with acid gas!"),
 		SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
 	else
 		//Non-boiler acid types
@@ -345,7 +340,7 @@
 		else
 			set_state(RESIN_TRAP_ACID1 + xeno.acid_level - 1)
 
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] pressurises the resin trap with acid!"), \
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] pressurises the resin trap with acid!"),
 		SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
 	return XENO_NO_DELAY_ACTION
 

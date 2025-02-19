@@ -64,7 +64,7 @@
 	..()
 	if(istype(AM,/mob/living/carbon/xenomorph))
 		return
-	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
+	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."),
 	SPAN_DANGER("You hit \the [src]."))
 	var/tforce = 0
 	if(ismob(AM))
@@ -86,7 +86,7 @@
 		return XENO_NO_DELAY_ACTION
 	else
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 		SPAN_XENONOTICE("We claw \the [src]."))
 		if(istype(src, /obj/effect/alien/resin/sticky))
 			playsound(loc, "alien_resin_move", 25)
@@ -103,7 +103,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/effect/alien/resin/attack_animal(mob/living/M as mob)
-	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
 	SPAN_DANGER("You tear \the [name]."))
 	if(istype(src, /obj/effect/alien/resin/sticky))
 		playsound(loc, "alien_resin_move", 25)
@@ -373,7 +373,7 @@
 		W.update_connections()
 		W.update_icon()
 
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
@@ -382,8 +382,10 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/area/area = get_area(src)
-	if(area && area.linked_lz)
-		AddComponent(/datum/component/resin_cleanup)
+	if(area)
+		if(area.linked_lz)
+			AddComponent(/datum/component/resin_cleanup)
+		area.current_resin_count++
 
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
@@ -404,6 +406,7 @@
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		playsound(loc, "alien_resin_move", 25)
 		healthcheck()
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return attack_hand(user)
 
@@ -481,14 +484,17 @@
 
 /obj/structure/mineral_door/resin/Destroy()
 	relativewall_neighbours()
-	var/turf/U = loc
+	var/area/area = get_area(src)
+	area?.current_resin_count--
+	var/turf/base_turf = loc
 	spawn(0)
-		var/turf/T
-		for(var/i in GLOB.cardinals)
-			T = get_step(U, i)
-			if(!istype(T)) continue
-			for(var/obj/structure/mineral_door/resin/R in T)
-				R.check_resin_support()
+		var/turf/adjacent_turf
+		for(var/cardinal in GLOB.cardinals)
+			adjacent_turf = get_step(base_turf, cardinal)
+			if(!istype(adjacent_turf))
+				continue
+			for(var/obj/structure/mineral_door/resin/door in adjacent_turf)
+				door.check_resin_support()
 	. = ..()
 
 /obj/structure/mineral_door/resin/proc/healthcheck()
@@ -846,7 +852,7 @@
 /obj/effect/alien/resin/resin_pillar/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!brittle)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src], but the slash bounces off!"), \
+		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src], but the slash bounces off!"),
 		SPAN_XENONOTICE("You claw \the [src], but the slash bounces off!"))
 		return XENO_ATTACK_ACTION
 
@@ -855,7 +861,7 @@
 /obj/effect/alien/resin/resin_pillar/attackby(obj/item/W, mob/living/user)
 	user.animation_attack_on(src)
 	if(!brittle)
-		user.visible_message(SPAN_DANGER("[user] hits \the [src], but \the [W] bounces off!"), \
+		user.visible_message(SPAN_DANGER("[user] hits \the [src], but \the [W] bounces off!"),
 			SPAN_DANGER("You hit \the [name], but \the [W] bounces off!"))
 		return
 
@@ -878,12 +884,18 @@
 	var/hive_number = XENO_HIVE_NORMAL
 	/// Whether the cocoon has hatched
 	var/hatched = FALSE
-	/// Current running timer
-	var/timer
 	/// Is currently rolling candidates
 	var/rolling_candidates = FALSE
 	/// Voting for King
 	var/list/mob/living/carbon/xenomorph/votes = list()
+	/// Candidates
+	var/list/mob/living/carbon/xenomorph/candidates = list()
+	/// Time to hatch
+	var/time_to_hatch = 10 MINUTES
+	/// Announced that the hatchery was paused
+	var/announced_paused = FALSE
+	/// Stage of hatching
+	var/stage = 0
 
 /obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
@@ -906,6 +918,7 @@
 
 	votes = null
 	chosen_candidate = null
+	candidates = null
 
 	. = ..()
 
@@ -924,32 +937,64 @@
 			var/obj/effect/build_blocker/blocker = new(turf_to_block, src)
 			blockers += blocker
 
-	timer = addtimer(CALLBACK(src, PROC_REF(start_growing)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
-	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
+	START_PROCESSING(SSobj, src)
 
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it, as well as our pylons at their communications relays, at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-/// Callback for a repeating 10s timer to ensure both pylons are active (otherwise delete) and counts the number of marines groundside (would cause hatching to expedite).
-/obj/effect/alien/resin/king_cocoon/proc/check_pylons()
+
+#define STAGE_GROWING 1
+#define STAGE_HALFWAY 2
+#define STAGE_VOTE 3
+#define STAGE_PICK 4
+#define STAGE_BEFORE_HATCH 5
+#define STAGE_HATCH 6
+
+/obj/effect/alien/resin/king_cocoon/process(delta_time)
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 
 	if(length(hive.active_endgame_pylons) < 2)
-		qdel(src)
-		return
+		if(!announced_paused)
+			marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN PAUSED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+			for(var/cur_hive_num in GLOB.hive_datum)
+				hive = GLOB.hive_datum[cur_hive_num]
+				if(!length(hive.totalXenos))
+					continue
+				if(cur_hive_num == hive_number)
+					xeno_announcement(SPAN_XENOANNOUNCE("One of our pylons was destroyed, the hatchery has paused its progress!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				else
+					xeno_announcement(SPAN_XENOANNOUNCE("One of another hive's pylons was destroyed, the hatchery has paused its progress!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-	if(chosen_candidate || rolling_candidates)
+			announced_paused = TRUE
+			icon_state = "static"
 		return
+	else if (length(hive.active_endgame_pylons) >= 2 && announced_paused)
+		for(var/cur_hive_num in GLOB.hive_datum)
+			hive = GLOB.hive_datum[cur_hive_num]
+			if(!length(hive.totalXenos))
+				continue
+			if(cur_hive_num == hive_number)
+				xeno_announcement(SPAN_XENOANNOUNCE("The hatchery's progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			else
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN RESUMED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+		announced_paused = FALSE
+		icon_state = "growing"
 
+		for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
+			pylon.protection_level = TURF_PROTECTION_OB
+			pylon.update_icon()
+		
 	if(hatched)
+		STOP_PROCESSING(SSobj, src)
 		return
 
 	var/groundside_humans = 0
@@ -962,22 +1007,47 @@
 			groundside_humans += 1
 
 			if(groundside_humans > 12)
-				return
+				break
 
-	// Too few marines are now groundside, hatch immediately
-	deltimer(timer)
-	start_vote(expedite = TRUE)
+	if(groundside_humans < 12)
+		// Too few marines are now groundside, hatch immediately
+		start_vote()
+		addtimer(CALLBACK(src, PROC_REF(roll_candidates)), 20 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(start_hatching), TRUE), 25 SECONDS)
+		STOP_PROCESSING(SSobj, src)
+		return
 
-/// Causes the cocoon to change visually for growing and initiates the next timer.
-/obj/effect/alien/resin/king_cocoon/proc/start_growing()
-	icon_state = "growing"
-	timer = addtimer(CALLBACK(src, PROC_REF(announce_halfway)), 5 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	time_to_hatch -= delta_time SECONDS
+
+	if(!stage && time_to_hatch < 10 MINUTES)
+		icon_state = "growing"
+		stage = STAGE_GROWING
+	else if (stage == STAGE_GROWING && time_to_hatch <= 5 MINUTES)
+		announce_halfway()
+		stage = STAGE_HALFWAY
+	else if (stage == STAGE_HALFWAY && time_to_hatch <= 1 MINUTES)
+		start_vote()
+		stage = STAGE_VOTE
+	else if (stage == STAGE_VOTE && time_to_hatch <= 40 SECONDS)
+		roll_candidates()
+		stage = STAGE_PICK
+	else if (stage == STAGE_PICK && time_to_hatch <= 20 SECONDS)
+		start_hatching()
+		stage = STAGE_BEFORE_HATCH
+	else if (stage == STAGE_BEFORE_HATCH && time_to_hatch <= 0)
+		animate_hatch_king()
+		STOP_PROCESSING(SSobj, src)
+
+#undef STAGE_GROWING
+#undef STAGE_HALFWAY
+#undef STAGE_VOTE
+#undef STAGE_PICK
+#undef STAGE_BEFORE_HATCH
+#undef STAGE_HATCH
 
 /// Causes the halfway announcements and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/announce_halfway()
-	timer = addtimer(CALLBACK(src, PROC_REF(start_vote)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
-
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
@@ -1026,7 +1096,10 @@
 	if(!is_candidate_valid(hive, candidate, playtime_restricted))
 		return FALSE
 
-	return tgui_alert(candidate, "Would you like to become the King?", "Choice", list("Yes", "No"), 10 SECONDS) == "Yes"
+	if(!candidate.client)
+		return FALSE
+	
+	return candidate.client.prefs.be_special & BE_KING
 
 #undef KING_PLAYTIME_HOURS
 
@@ -1046,7 +1119,7 @@
 		votes[choice] = 1
 
 /// Initiates a vote that will end in 20 seconds to vote for the King. Hatching will then begin in 1 minute unless expedited.
-/obj/effect/alien/resin/king_cocoon/proc/start_vote(expedite = FALSE)
+/obj/effect/alien/resin/king_cocoon/proc/start_vote()
 	rolling_candidates = TRUE
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 
@@ -1060,7 +1133,8 @@
 		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
 			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
 
-	addtimer(CALLBACK(src, PROC_REF(roll_candidates), voting_candidates, expedite), 20 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+	candidates = voting_candidates
+
 
 /**
  * Finalizes the vote for King opting to use a series of fallbacks in case a candidate declines.
@@ -1071,12 +1145,8 @@
  * Then all other living xenos not meeting the playtime requirement are asked.
  * Then all other xeno observer candidates not meeting the playtime requirement are asked.
  * Then finally if after all that, the search is given up and will ultimately result in a freed King mob.
- *
- * Arguments:
- * * voting_candidates: A list of xenomorphs that are valid candidates to vote on.
- * * expedite: Whether hatching should begin in a minute or immediately after a candidate is found.
  */
-/obj/effect/alien/resin/king_cocoon/proc/roll_candidates(list/mob/living/carbon/xenomorph/voting_candidates, expedite = FALSE)
+/obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 
 	var/primary_votes = 0
@@ -1097,27 +1167,25 @@
 	if(prob(50) && try_roll_candidate(hive, primary_candidate, playtime_restricted = TRUE))
 		chosen_candidate = primary_candidate.client
 		rolling_candidates = FALSE
-		start_hatching(expedite)
 		return
 
-	voting_candidates -= primary_candidate
+	candidates -= primary_candidate
 
 
 	if(try_roll_candidate(hive, secondary_candidate, playtime_restricted = TRUE))
 		chosen_candidate = secondary_candidate.client
 		rolling_candidates = FALSE
-		start_hatching(expedite)
 		return
 
-	voting_candidates -= secondary_candidate
+	candidates -= secondary_candidate
 
 	// Otherwise ask all the living xenos (minus the player(s) who got voted on earlier)
-	for(var/mob/living/carbon/xenomorph/candidate in shuffle(voting_candidates))
+	for(var/mob/living/carbon/xenomorph/candidate in shuffle(candidates))
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			start_hatching(expedite)
 			return
+
 	// Then observers
 	var/list/observer_list_copy = shuffle(get_alien_candidates(hive))
 
@@ -1125,42 +1193,41 @@
 		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			start_hatching(expedite)
 			return
+
 	// Lastly all of the above again, without playtime requirements
 	for(var/mob/living/carbon/xenomorph/candidate in shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen))
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			start_hatching(expedite)
 			return
+
 	for(var/mob/candidate in observer_list_copy)
 		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
-			start_hatching(expedite)
 			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
-	start_hatching(expedite)
+	
 
-/// Starts the hatching in one minute, otherwise immediately if expedited
+/// Starts the hatching in twenty seconds, otherwise immediately if expedited
 /obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)
+	votes = null
+	candidates = null
 	if(expedite)
 		animate_hatch_king()
 		return
 
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - ONE MINUTE.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 20 SECONDS. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately twenty seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
-
-	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately twenty seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /// Causes the cocoon to change visually for hatching and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()

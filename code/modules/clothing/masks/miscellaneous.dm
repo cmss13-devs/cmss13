@@ -51,7 +51,9 @@
 	item_state = "balaclava"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS

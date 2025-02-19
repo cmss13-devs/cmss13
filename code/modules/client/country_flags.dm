@@ -1,9 +1,3 @@
-/client/New()
-	. = ..()
-	if(CONFIG_GET(flag/ooc_country_flags))
-		spawn if(src)
-			ip2country(address, src)
-
 /proc/ip2country(ipaddr, client/origin)
 	if(!origin || origin?.country)
 		return //null source, or already has a flag

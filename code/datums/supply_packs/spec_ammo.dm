@@ -110,10 +110,8 @@
 	group = "Weapons Specialist Ammo"
 
 /datum/supply_packs/ammo_amr_marksman
-	name = "XM43E1 anti-materiel rifle marksman magazines crate (x5)"
+	name = "XM43E1 anti-materiel rifle marksman magazines crate (x3)"
 	contains = list(
-		/obj/item/ammo_magazine/sniper/anti_materiel,
-		/obj/item/ammo_magazine/sniper/anti_materiel,
 		/obj/item/ammo_magazine/sniper/anti_materiel,
 		/obj/item/ammo_magazine/sniper/anti_materiel,
 		/obj/item/ammo_magazine/sniper/anti_materiel,

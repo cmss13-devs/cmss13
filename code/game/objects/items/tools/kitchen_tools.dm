@@ -73,22 +73,26 @@
 	name = "fork"
 	desc = "It's a fork. Sure is pointy."
 	icon_state = "fork"
+	item_state = "fork"
 
 /obj/item/tool/kitchen/utensil/pfork
 	name = "plastic fork"
 	desc = "Yay, no washing up to do."
 	icon_state = "pfork"
+	item_state = "pfork"
 
 /obj/item/tool/kitchen/utensil/spoon
 	name = "spoon"
 	desc = "It's a spoon. You can see your own upside-down face in it."
 	icon_state = "spoon"
+	item_state = "spoon"
 	attack_verb = list("attacked", "poked")
 
 /obj/item/tool/kitchen/utensil/pspoon
 	name = "plastic spoon"
 	desc = "It's a plastic spoon. How dull."
 	icon_state = "pspoon"
+	item_state = "pspoon"
 	attack_verb = list("attacked", "poked")
 
 /*
@@ -98,6 +102,11 @@
 	name = "knife"
 	desc = "Can cut through any food."
 	icon_state = "knife"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
+	item_state = "knife"
 	force = 10
 	throwforce = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -112,10 +121,15 @@
 	name = "plastic knife"
 	desc = "The bluntest of blades."
 	icon_state = "pknife"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
+	item_state = "pknife"
 	force = 10
 	throwforce = 10
 
-/obj/item/tool/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
+/obj/item/tool/kitchen/utensil/pknife/attack(target as mob, mob/living/user as mob)
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)

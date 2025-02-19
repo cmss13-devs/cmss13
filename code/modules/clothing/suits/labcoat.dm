@@ -17,6 +17,21 @@
 		/obj/item/reagent_container/pill,
 		/obj/item/storage/pill_bottle,
 		/obj/item/paper,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/cautery,
+		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgicaldrill,
+		/obj/item/tool/surgery/circular_saw,
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/FixOVein,
+		/obj/item/tool/surgery/bonesetter,
+		/obj/item/roller,
+		/obj/item/tool/surgery/bonegel,
+		/obj/item/stack/nanopaste,
+		/obj/item/reagent_container/blood,
+		/obj/item/reagent_container/spray/cleaner,
 
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
@@ -24,6 +39,7 @@
 		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
@@ -49,6 +65,8 @@
 	var/buttoned = TRUE
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
 	)
 
 
@@ -133,15 +151,29 @@
 	icon_state = "labcoat_tox"
 
 /obj/item/clothing/suit/storage/labcoat/officer
-	//name = "Medical officer's labcoat"
+	name = "Chief Medical Officer's labcoat"
+	desc = "A green sleek long labcoat, designed to distinguish a higher ranking medical personnel. Fabric has a better protection against chemical hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/labcoat/researcher
 	name = "researcher's labcoat"
 	desc = "A high-quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
 	icon_state = "sciencecoat"
 	item_state = "sciencecoat"
+
+/obj/item/clothing/suit/storage/labcoat/wy
+	name = "W-Y researcher's labcoat"
+	desc = "A high-quality corporate labcoat, seemingly worn by science consultants and researchers alike. Built using robust materials for engaging dangerous experiments."
+	icon_state = "wy_rc_labcoat"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+	)
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/chef/classic/medical
 	name = "medical's apron"

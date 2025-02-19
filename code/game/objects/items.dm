@@ -335,7 +335,7 @@
 
 	if(isstorage(loc))
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc)
+		S.remove_from_storage(src, user.loc, user)
 
 	throwing = 0
 
@@ -943,8 +943,8 @@
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
-	SPAN_NOTICE("You peer through \the [zoom_device]."))
+	user.visible_message(SPAN_NOTICE("[user] peers through [zoom_device]."),
+	SPAN_NOTICE("You peer through [zoom_device]."))
 	zoom = !zoom
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)

@@ -4,6 +4,10 @@
 	name = "glass"
 	desc = "Your standard drinking glass."
 	icon_state = "glass_empty"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 	matter = list("glass" = 500)
 	amount_per_transfer_from_this = 5
 	volume = 50

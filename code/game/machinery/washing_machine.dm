@@ -80,9 +80,9 @@
 				if(user.drop_inv_item_to_loc(crayon, src))
 					crayon = W
 			else
-				..()
+				. = ..()
 		else
-			..()
+			. = ..()
 
 	else if(istype(W,/obj/item/stack/sheet/hairlesshide) || \
 		istype(W,/obj/item/clothing/under) || \
@@ -137,7 +137,7 @@
 		else
 			to_chat(user, SPAN_NOTICE(" The washing machine is full."))
 	else
-		..()
+		. = ..()
 	update_icon()
 
 /obj/structure/machinery/washing_machine/attack_hand(mob/user as mob)

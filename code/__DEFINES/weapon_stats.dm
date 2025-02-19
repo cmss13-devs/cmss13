@@ -169,6 +169,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define DAMAGE_FALLOFF_TIER_7 4
 #define DAMAGE_FALLOFF_TIER_8 3
 #define DAMAGE_FALLOFF_TIER_9 2
+#define DAMAGE_FALLOFF_TIER_9_5 1.5
 #define DAMAGE_FALLOFF_TIER_10 1
 
 #define DAMAGE_BUILDUP_TIER_1 1

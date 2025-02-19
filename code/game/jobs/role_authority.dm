@@ -213,7 +213,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	else
 		chance = 20
 
-	if(prob(chance) && !Check_WO())
+	if((prob(chance) || SSnightmare.get_scenario_value("predator_round")) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
@@ -340,7 +340,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/i = 0
 		var/j
 		while(++i < 3) //Get two passes.
-			if(!length(roles_to_iterate) || prob(65)) break //Base chance to become a marine when being assigned randomly, or there are no roles available.
+			if(!length(roles_to_iterate) || prob(65))
+				break //Base chance to become a marine when being assigned randomly, or there are no roles available.
 			j = pick(roles_to_iterate)
 			J = roles_to_iterate[j]
 
@@ -350,7 +351,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				continue
 
 			if(assign_role(M, J)) //Check to see if they can actually get it.
-				if(J.current_positions >= J.spawn_positions) roles_to_iterate -= j
+				if(J.current_positions >= J.spawn_positions)
+					roles_to_iterate -= j
 				return roles_to_iterate
 
 	//If they fail the two passes, or no regular roles are available, they become a marine regardless.
@@ -545,11 +547,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	for(var/datum/squad/squad in squads)
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
 			mixed_squads += squad
-	mixed_squads = shuffle(mixed_squads)
 
-	var/preferred_squad
-	if(human?.client?.prefs?.preferred_squad)
-		preferred_squad = human.client.prefs.preferred_squad
+	var/preferred_squad = human.client?.prefs?.preferred_squad
+	if(preferred_squad == "None")
+		preferred_squad = null
 
 	var/datum/squad/lowest
 	for(var/datum/squad/squad in mixed_squads)
@@ -557,20 +558,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 
-		if(squad.name == preferred_squad || squad.equivalent_name == preferred_squad) //fav squad or faction equivalent has a spot for us, no more searching needed.
+		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
 			if(squad.put_marine_in_squad(human))
 				return
 
-		if(!lowest)
+		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
 			lowest = squad
-
-		else if(slot_check)
-			if(squad.roles_in[slot_check] < lowest.roles_in[slot_check])
-				lowest = squad
-
-	if(!lowest || !lowest.put_marine_in_squad(human))
-		to_world("Warning! Bug in get_random_squad()!")
-		return
+	if(!lowest)
+		lowest = locate(/datum/squad/marine/cryo) in squads
+	lowest.put_marine_in_squad(human)
 	return
 
 /datum/authority/branch/role/proc/get_caste_by_text(name)

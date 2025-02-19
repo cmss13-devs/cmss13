@@ -12,6 +12,7 @@
 		combined += GLOB.cm_vending_clothing_req_officer
 		combined += GLOB.cm_vending_clothing_cmo
 		combined += GLOB.cm_vending_clothing_military_police_chief
+		combined += GLOB.cm_vending_clothing_auxiliary_officer
 		return combined
 	if(user.job == JOB_XO)
 		return GLOB.cm_vending_clothing_xo
@@ -76,6 +77,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
 
 
@@ -239,6 +241,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Grey Scrubs", 0, /obj/item/clothing/under/rank/medical/grey, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
+		list("Chief Medical Officer's Labcoat", 0, /obj/item/clothing/suit/storage/labcoat/officer, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Medical's apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
@@ -435,7 +438,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("PATCHES", 0, null, null, null),
 		list("Falling Falcons Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
+		list("Falling Falcons UA Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falconalt, null, VENDOR_ITEM_REGULAR),
+		list("USCM Large Chest Patch", 1, /obj/item/clothing/accessory/patch/uscmlarge, null, VENDOR_ITEM_REGULAR),
 		list("USCM Shoulder Patch", 1, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
+		list("United Americas Shoulder patch", 1, /obj/item/clothing/accessory/patch/ua, null, VENDOR_ITEM_REGULAR),
+		list("United Americas Flag Shoulder patch", 1, /obj/item/clothing/accessory/patch/uasquare, null, VENDOR_ITEM_REGULAR),
 
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),

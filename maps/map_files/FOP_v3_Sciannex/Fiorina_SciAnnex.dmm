@@ -19,6 +19,22 @@
 	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
+"aad" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aae" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/civres_blue)
+"aaf" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"aag" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -27,7 +43,7 @@
 /area/fiorina/tumor/servers)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/organic/grass/astroturf,
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "aar" = (
 /obj/structure/machinery/power/apc/power/south,
@@ -114,7 +130,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/central_ring)
 "aeS" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -4860,7 +4876,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "dNC" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/lz/near_lzI)
 "dOc" = (
@@ -6819,7 +6835,7 @@
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells/east)
 "fnn" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "fnD" = (
@@ -10549,12 +10565,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"ifB" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space/basic,
-/area/fiorina/oob)
 "ifJ" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -10571,7 +10581,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "ifN" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/darkyellow2/east,
 /area/fiorina/lz/near_lzI)
 "ifP" = (
@@ -12350,7 +12360,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
 "jzN" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/civres_blue)
 "jzP" = (
@@ -14491,7 +14501,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/power_ring)
 "lic" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/organic/grass/astroturf,
 /area/fiorina/tumor/fiberbush)
 "lit" = (
@@ -14746,7 +14756,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "lsn" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "lsO" = (
@@ -15964,7 +15974,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "mnR" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "mok" = (
@@ -16019,7 +16029,7 @@
 /turf/open/floor/prison/darkpurple2/east,
 /area/fiorina/tumor/servers)
 "mpR" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "mqB" = (
@@ -20023,7 +20033,7 @@
 /turf/open/floor/corsat/squares,
 /area/fiorina/station/medbay)
 "ppZ" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "pqz" = (
@@ -21420,7 +21430,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/park)
 "quL" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "qva" = (
@@ -25605,7 +25615,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring/reactor)
 "tEX" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "tEY" = (
@@ -27213,7 +27223,7 @@
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/power_ring)
 "uTR" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "uVk" = (
@@ -29888,7 +29898,7 @@
 /obj/item/card/id/silver/clearance_badge/cl{
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
@@ -30062,7 +30072,7 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/fiorina/station/botany)
 "xiO" = (
-/obj/structure/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "xiZ" = (
@@ -47541,7 +47551,7 @@ rqG
 pQs
 pQs
 pQs
-bNE
+aae
 rja
 lMq
 jYK
@@ -49628,7 +49638,7 @@ kPf
 kPf
 kPf
 jXz
-jnU
+aaf
 jHz
 oiV
 eSH
@@ -59013,7 +59023,7 @@ mEO
 oou
 aFZ
 blI
-ifB
+axW
 pFE
 uFx
 lud
@@ -61065,7 +61075,7 @@ jFP
 phz
 sWb
 xLi
-mvp
+aag
 cer
 kpq
 azZ
@@ -70433,7 +70443,7 @@ cIa
 mVE
 sEK
 cIa
-nVK
+urw
 jii
 apg
 cIa
@@ -72116,7 +72126,7 @@ cIa
 fna
 moQ
 cIa
-urw
+nVK
 jii
 vwX
 cIa
@@ -76853,7 +76863,7 @@ brR
 vDO
 tUs
 mxQ
-pYB
+aad
 tOM
 gbf
 tOM

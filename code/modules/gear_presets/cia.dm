@@ -15,7 +15,7 @@
 	name = "CIA Agent (Civilian Clothing)"
 	rank = "Intelligence Analyst"
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
-	role_comm_title = PAY_SHORT_CIV
+	role_comm_title = "CIV"
 	minimap_background = "background_civillian"
 	minimap_icon = "io"
 	idtype = /obj/item/card/id/adaptive
@@ -163,6 +163,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/clf_patch, WEAR_ACCESSORY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK)
 

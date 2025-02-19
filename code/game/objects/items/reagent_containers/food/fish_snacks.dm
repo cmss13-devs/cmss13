@@ -106,6 +106,11 @@
 	max_length = 14
 	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/squid
 	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/squid)
+	bitesize = 1
+
+/obj/item/reagent_container/food/snacks/fishable/squid/whorl/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 1)
 
 /obj/item/reagent_container/food/snacks/fishable/squid/sock
 	name = "sock squid"
@@ -117,11 +122,12 @@
 	max_length = 5
 	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/squid/alt
 	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/squid/alt)
+	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/fishable/squid/sock/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 1)
-	bitesize = 1
+
 
 //----------------//
 //WORMS
@@ -132,11 +138,12 @@
 	guttable = TRUE
 	gut_icon_state = "worm_redring_gutted"
 	base_gut_meat = /obj/item/fish_bait
+	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/fishable/worm/Initialize()
 	. = ..()
 	reagents.add_reagent("enzyme", 1)
-	bitesize = 1
+
 	//todo, attackby with a knife so you can make bait objects for fishing with
 /obj/item/reagent_container/food/snacks/fishable/quadtopus
 	name = "quadtopus"
@@ -151,11 +158,12 @@
 	icon_state = "shell_clam"
 	guttable = TRUE
 	base_gut_meat = /obj/item/ore/pearl
+	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/fishable/shell/clam/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 1)
-	bitesize = 1
+
 
 //--------------------//
 // Pan Fish, Regular fish you can gut and clean (additional fish past this point)
@@ -174,7 +182,7 @@
 /obj/item/reagent_container/food/snacks/fishable/fish/bluegill/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 4)
-	bitesize = 2
+
 
 /obj/item/reagent_container/food/snacks/fishable/fish/bass
 	name = "bass"
@@ -191,7 +199,7 @@
 /obj/item/reagent_container/food/snacks/fishable/fish/bass/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 4)
-	bitesize = 3
+
 
 /obj/item/reagent_container/food/snacks/fishable/fish/catfish
 	name = "catfish"
@@ -200,11 +208,12 @@
 	icon_state = "catfish"
 	min_length = 10
 	max_length = 108
+	bitesize = 6
 
 /obj/item/reagent_container/food/snacks/fishable/fish/catfish/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 4)
-	bitesize = 6
+
 
 //--------------------//
 //Urchins, spikey bottom-feeding creatures
@@ -215,11 +224,11 @@
 	guttable = FALSE
 	min_length = 2
 	max_length = 9
+	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/fishable/urchin/purple/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/fishable/urchin/red
 	name = "red urchin"
@@ -228,9 +237,10 @@
 	icon_state = "urchin_red"
 	min_length = 2
 	max_length = 9
+	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/fishable/urchin/red/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 1)
-	bitesize = 1
+
 //finished code on worm and clam fish and items, added 3 new fish types (catfish being non-guttable is on purpose), worm now drops bait when gutted

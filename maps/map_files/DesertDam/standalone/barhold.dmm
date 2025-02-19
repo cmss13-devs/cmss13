@@ -1,8 +1,47 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ay" = (
-/obj/structure/sink,
+"aa" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = -3;
+	pixel_x = 8
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
+"ab" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"ac" = (
+/obj/item/tool/mop{
+	pixel_x = -16;
+	pixel_y = 26
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"ad" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"ae" = (
+/obj/structure/bed/stool{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"af" = (
+/obj/structure/bed/stool{
+	pixel_y = 12
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
 "aR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -164,7 +203,14 @@
 	density = 0;
 	pixel_y = 32
 	},
-/obj/item/weapon/broken_bottle,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_y = 14;
+	pixel_x = -8
+	},
+/obj/item/trash/ceramic_plate,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "lP" = (
@@ -438,7 +484,9 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "Ap" = (
-/obj/structure/bed/stool,
+/obj/structure/bed/stool{
+	pixel_y = 6
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -512,8 +560,12 @@
 /turf/open/floor/carpet15_15/west,
 /area/desert_dam/building/bar/bar)
 "DH" = (
-/obj/structure/sink,
-/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sink{
+	pixel_y = 20
+	},
+/obj/structure/mirror{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "Ea" = (
@@ -622,7 +674,10 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "JD" = (
-/obj/structure/bed/stool,
+/obj/structure/bed/stool{
+	pixel_x = -3;
+	pixel_y = 6
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grimy,
@@ -667,9 +722,9 @@
 /area/desert_dam/building/bar/backroom)
 "LJ" = (
 /obj/structure/machinery/light,
-/obj/structure/bed/chair/wood/normal{
-	dir = 4;
-	pixel_x = -9
+/obj/structure/device/broken_moog{
+	icon_state = "minimoog";
+	pixel_x = -5
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
@@ -689,6 +744,7 @@
 "LS" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ashtray/glass,
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov{
 	pixel_x = -5;
@@ -715,6 +771,9 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/reagent_container/glass/rag{
+	pixel_y = 8
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "NL" = (
@@ -835,7 +894,10 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "Te" = (
-/obj/structure/bed/stool,
+/obj/structure/bed/stool{
+	pixel_y = 12;
+	pixel_x = 3
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "Tv" = (
@@ -869,6 +931,7 @@
 	density = 0;
 	pixel_y = 32
 	},
+/obj/item/reagent_container/food/drinks/shaker,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "Vk" = (
@@ -891,7 +954,9 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "Wv" = (
-/obj/structure/bed/stool,
+/obj/structure/bed/stool{
+	pixel_y = 3
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
@@ -970,7 +1035,7 @@ cm
 cm
 cm
 Mv
-oA
+ab
 Mv
 oA
 Mv
@@ -1027,7 +1092,7 @@ cm
 cm
 Mv
 DH
-sy
+ac
 xj
 GY
 Mv
@@ -1045,8 +1110,8 @@ cm
 cm
 cm
 Mv
-ay
-sy
+DH
+ad
 uT
 sy
 Mv
@@ -1064,10 +1129,10 @@ PV
 PV
 PV
 Mv
-ay
+DH
 sy
 GS
-sy
+aa
 Mv
 "}
 (8,1,1) = {"
@@ -1247,7 +1312,7 @@ tE
 fj
 eB
 Bx
-Te
+ae
 KO
 px
 to
@@ -1304,7 +1369,7 @@ lh
 OM
 OM
 LS
-Te
+af
 KO
 XX
 OX

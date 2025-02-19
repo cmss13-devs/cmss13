@@ -4,6 +4,10 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
+"b" = (
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/atmos_storage)
 "c" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison/green/north,
@@ -12,17 +16,17 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison/green/north,
 /area/desert_dam/interior/dam_interior/atmos_storage)
-"f" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25
-	},
-/obj/item/storage/briefcase/inflatable,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/atmos_storage)
 "g" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
+/obj/item/tank/oxygen/yellow{
+	pixel_y = -3;
+	pixel_x = -3
+	},
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow{
+	pixel_y = 3;
+	pixel_x = 3
+	},
 /turf/open/floor/prison/green,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "j" = (
@@ -37,23 +41,11 @@
 /turf/open/floor/prison/green/north,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "n" = (
-/obj/structure/surface/rack,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
+/obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /turf/open/floor/prison/green,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "o" = (
 /turf/open/floor/prison/greencorner/west,
-/area/desert_dam/interior/dam_interior/atmos_storage)
-"p" = (
-/obj/structure/machinery/portable_atmospherics/powered/scrubber,
-/turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "r" = (
 /obj/structure/machinery/power/port_gen/pacman,
@@ -85,7 +77,10 @@
 /turf/open/floor/prison/green/east,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "C" = (
-/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "F" = (
@@ -93,10 +88,11 @@
 /turf/open/floor/prison/green/southeast,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "G" = (
-/obj/structure/machinery/portable_atmospherics/canister/air,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/surface/rack,
+/obj/item/storage/briefcase/inflatable,
 /turf/open/floor/prison/green/east,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "I" = (
@@ -111,16 +107,21 @@
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "N" = (
 /obj/structure/surface/rack,
+/obj/item/clothing/mask/gas{
+	pixel_y = -3;
+	pixel_x = -3
+	},
 /obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas{
+	pixel_y = 3;
+	pixel_x = 3
+	},
 /turf/open/floor/prison/green/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "P" = (
 /obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25
-	},
-/obj/item/storage/briefcase/inflatable,
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/stack/sheet/mineral/phoron/medium_stack,
 /turf/open/floor/prison/green/east,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "Q" = (
@@ -183,7 +184,7 @@ W
 S
 x
 x
-g
+I
 a
 "}
 (5,1,1) = {"
@@ -191,7 +192,7 @@ s
 l
 x
 C
-x
+b
 n
 a
 "}
@@ -199,9 +200,9 @@ a
 s
 Y
 x
-p
-p
-I
+x
+x
+n
 a
 "}
 (7,1,1) = {"
@@ -209,7 +210,7 @@ s
 T
 x
 R
-f
+x
 r
 a
 "}

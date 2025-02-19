@@ -2,6 +2,18 @@
 "a" = (
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/smes_main)
+"b" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 15;
+	pixel_x = -9
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/smes_main)
+"c" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal/medium_stack,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/smes_main)
 "d" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -21,12 +33,10 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_main)
 "w" = (
-/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/effect/spawner/random/toolbox,
-/obj/effect/spawner/random/toolbox,
+/obj/structure/largecrate/random/case/double,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/interior/dam_interior/smes_main)
 "z" = (
@@ -49,9 +59,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/smes_main)
 "H" = (
-/obj/structure/surface/table,
-/obj/item/stack/cable_coil,
-/obj/effect/spawner/random/toolbox,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/smes_main)
 "K" = (
@@ -64,40 +72,42 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 "R" = (
 /obj/structure/surface/table,
-/obj/item/stack/rods{
-	amount = 25
+/obj/item/stack/cable_coil/random{
+	pixel_y = 7
 	},
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 15
-	},
+/obj/item/stack/sheet/metal/med_large_stack,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/smes_main)
 "U" = (
-/obj/structure/surface/table,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/smes_main)
 "V" = (
 /obj/structure/surface/table,
 /obj/item/stack/rods{
-	amount = 25
+	pixel_y = 5
 	},
-/obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/smes_main)
 "W" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/metal/med_large_stack,
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/phoron/medium_stack,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/smes_main)
 "Y" = (
 /obj/structure/surface/rack,
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 15
+/obj/effect/spawner/random/toolbox{
+	layer = 4;
+	pixel_y = 13
+	},
+/obj/effect/spawner/random/powercell{
+	pixel_x = -1;
+	pixel_y = -1
 	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/smes_main)
@@ -111,7 +121,7 @@ j
 (2,1,1) = {"
 j
 B
-E
+b
 E
 "}
 (3,1,1) = {"
@@ -141,7 +151,7 @@ K
 (7,1,1) = {"
 f
 W
-P
+c
 d
 "}
 (8,1,1) = {"

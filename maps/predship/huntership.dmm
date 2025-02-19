@@ -234,13 +234,13 @@
 	},
 /obj/structure/machinery/chem_dispenser/soda/beer/yautja{
 	pixel_x = -7;
-	pixel_y = 15;
+	pixel_y = 12;
 	layer = 3
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	color = "#9b1818";
-	pixel_x = 6;
-	pixel_y = 3
+	pixel_x = 8;
+	pixel_y = 2
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -791,7 +791,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/machinery/chem_dispenser/soda/yautja{
-	pixel_y = 15;
+	pixel_y = 12;
 	layer = 3
 	},
 /turf/open/floor/corsat/squares,
@@ -1075,6 +1075,11 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
+"dD" = (
+/obj/effect/hunter/bridge_border/brown/large_stair,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/corsat,
+/area/yautja/hangar)
 "dF" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/bed/chair/comfy/yautja{
@@ -1088,6 +1093,14 @@
 "dI" = (
 /turf/open/space/basic,
 /area/space)
+"dJ" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/new_alpha,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
+	},
+/turf/open/shuttle/bright_red/glow,
+/area/yautja)
 "dM" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -1801,14 +1814,6 @@
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "fS" = (
-/obj/structure/showcase{
-	desc = null;
-	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
-	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
-	pixel_y = 23;
-	density = 0
-	},
 /obj/structure/machinery/door_control/yautja{
 	id = "armory";
 	pixel_y = 23;
@@ -1817,6 +1822,14 @@
 	},
 /obj/effect/hunter/rune{
 	dir = 1
+	},
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
 	},
 /turf/open/shuttle/dropship/predship/mainfloor/direction_3/west,
 /area/yautja)
@@ -1841,6 +1854,15 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
+/area/yautja)
+"fX" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	color = "#f0ebd3";
+	id = "researchlockdown2";
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/yautja)
 "fY" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -2160,6 +2182,19 @@
 "gZ" = (
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
+"ha" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8;
+	color = "#912727"
+	},
+/obj/structure/machinery/vending/hydroseeds/yautja{
+	pixel_x = 3;
+	pixel_y = -1;
+	desc = "A plant seeds vendor.";
+	name = "\improper Seed Servitor"
+	},
+/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/area/yautja)
 "hc" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/bed/bedroll{
@@ -2381,6 +2416,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/lower_deck)
 "hY" = (
@@ -2464,6 +2500,10 @@
 /obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
+	},
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26;
+	pixel_x = -6
 	},
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/yautja)
@@ -3086,7 +3126,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/machinery/microwave/yautja{
-	pixel_y = 7
+	pixel_y = 10
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -4217,6 +4257,18 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
+"os" = (
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	density = 0
+	},
+/obj/structure/machinery/portable_atmospherics/hydroponics/yautja,
+/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/area/yautja)
 "ov" = (
 /obj/effect/hunter/bridge_border/brown,
 /obj/effect/landmark/clan_spawn,
@@ -4402,6 +4454,10 @@
 /obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
 	name = "\improper Research Containment"
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	color = "#f0ebd3";
+	id = "researchlockdown"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -4597,10 +4653,7 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Hunter_Up";
-	vector_x = 90
-	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat,
 /area/yautja)
 "pF" = (
@@ -5133,6 +5186,12 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
+"rL" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/lower_deck)
 "rN" = (
 /obj/item/skull/hunter{
 	pixel_x = -16;
@@ -5268,6 +5327,9 @@
 	color = "#9b1818";
 	pixel_x = 2;
 	pixel_y = 8
+	},
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 26
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/lower_deck)
@@ -5616,7 +5678,7 @@
 	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
+	name = "Secure Armory Monitor";
 	pixel_y = 23;
 	pixel_x = 13;
 	density = 0
@@ -5637,6 +5699,10 @@
 /obj/item/tool/surgery/scalpel/predatorscalpel{
 	pixel_x = 1;
 	pixel_y = -9
+	},
+/obj/item/reagent_container/dropper{
+	pixel_x = -2;
+	pixel_y = 13
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
@@ -7019,6 +7085,14 @@
 "ys" = (
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
+"yv" = (
+/obj/item/reagent_container/glass/bucket{
+	color = "#6b675e";
+	pixel_x = -11;
+	pixel_y = -6
+	},
+/turf/open/shuttle/dropship/predship/tile/red,
+/area/yautja)
 "yx" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -7750,7 +7824,7 @@
 /obj/structure/machinery/door/window/ultra{
 	dir = 8;
 	color = "#912727";
-	req_one_access_txt = "392"
+	req_one_access_txt = "390"
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
@@ -8140,15 +8214,25 @@
 /turf/open/shuttle/dropship/predship/mainfloor/direction_1/north,
 /area/yautja)
 "BM" = (
-/obj/structure/window/framed/colony/reinforced/hull/yautja,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	color = "#fbebe2"
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	color = "#912727"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
-	color = "#f0ebd3";
-	id = "researchlockdown2"
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/turf/open/floor/corsat,
+/obj/item/tool/shovel/spade/yautja{
+	pixel_x = -4
+	},
+/obj/item/tool/minihoe/yautja{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/tool/minihoe/yautja{
+	pixel_x = 2;
+	pixel_y = 17
+	},
+/turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
 "BP" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -8815,7 +8899,7 @@
 /obj/structure/machinery/door/window/ultra{
 	dir = 8;
 	color = "#912727";
-	req_one_access_txt = "392"
+	req_one_access_txt = "390"
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
@@ -9051,96 +9135,16 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "ER" = (
-/obj/structure/closet/yautja,
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	pixel_x = 7;
+	density = 0
 	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 1;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = -4;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = -3;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/tool/kitchen/tray{
-	pixel_y = -2;
-	color = "#9bb1be"
-	},
-/obj/item/tool/kitchen/tray{
-	pixel_y = -3;
-	color = "#9bb1be"
-	},
-/obj/item/tool/kitchen/tray{
-	pixel_y = -4;
-	color = "#9bb1be"
-	},
-/obj/item/storage/pouch/vials,
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/vial{
-	pixel_x = 2;
-	pixel_y = 6;
-	color = "#9b1818"
-	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "ET" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -9593,7 +9597,12 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/turf/open/shuttle/dropship/predship/tile/red5,
+/obj/structure/machinery/door/window/ultra{
+	dir = 1;
+	color = "#912727";
+	req_one_access_txt = "390"
+	},
+/turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "GE" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
@@ -9711,9 +9720,19 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "Ha" = (
-/obj/structure/xenoautopsy/tank/hugger/yautja{
-	pixel_y = 8;
-	layer = 4.12
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 6;
+	color = "#9bb1be"
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	color = "#912727"
+	},
+/obj/item/tool/wirecutters/yautja{
+	pixel_y = 7
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
@@ -10163,6 +10182,9 @@
 	dir = 8
 	},
 /obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_x = -6
+	},
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/yautja)
 "IJ" = (
@@ -11266,6 +11288,9 @@
 	color = "#212121";
 	name = "dried blood"
 	},
+/obj/structure/platform_decoration/metal/hunter{
+	pixel_y = 26
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/lower_deck)
 "MB" = (
@@ -11307,6 +11332,12 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/predship/hull/non_weedable_hull/southwest,
 /area/yautja/hangar)
+"MM" = (
+/obj/structure/reagent_dispensers/watertank/yautja{
+	pixel_x = 1
+	},
+/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/area/yautja)
 "MN" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 4
@@ -11451,6 +11482,12 @@
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
 /turf/open/floor/corsat,
 /area/yautja/hangar)
+"Ny" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/predship/tile/red5,
+/area/yautja)
 "Nz" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -11683,48 +11720,8 @@
 /turf/open/shuttle/dropship/predship/mainfloor/direction_1/west,
 /area/yautja)
 "On" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/kitchen/tray{
-	pixel_y = 8;
-	color = "#9bb1be"
-	},
-/obj/item/weed_extract{
-	pixel_x = 1;
-	pixel_y = 4
-	},
-/obj/item/weed_extract{
-	pixel_x = -5;
-	pixel_y = 4
-	},
-/obj/item/weed_extract{
-	pixel_x = -10;
-	pixel_y = 4
-	},
-/obj/item/weed_extract{
-	pixel_x = 10;
-	pixel_y = 8
-	},
-/obj/item/weed_extract{
-	pixel_x = 7;
-	pixel_y = 3
-	},
-/obj/item/weed_extract{
-	pixel_x = 5;
-	pixel_y = 10
-	},
-/obj/item/weed_extract{
-	pixel_x = -1;
-	pixel_y = 9
-	},
-/obj/item/weed_extract{
-	pixel_x = -7;
-	pixel_y = 10
-	},
-/obj/item/tool/surgery/scalpel/predatorscalpel{
-	pixel_x = 1;
-	pixel_y = -9
+/obj/structure/machinery/processor/yautja{
+	pixel_y = 5
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
@@ -12605,6 +12602,18 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja/lower_deck)
+"Rl" = (
+/obj/structure/machinery/vending/hydronutrients/yautja{
+	pixel_x = -3;
+	pixel_y = -1;
+	name = "\improper Nutrient Servitor"
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	color = "#912727"
+	},
+/turf/open/shuttle/dropship/predship/tile/red4/glow,
+/area/yautja)
 "Rn" = (
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
@@ -13024,6 +13033,9 @@
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/catwalk/new_alpha,
+/obj/structure/platform_decoration/metal/hunter/north{
+	pixel_y = 31
+	},
 /turf/open/shuttle/bright_red/glow,
 /area/yautja)
 "SF" = (
@@ -13290,10 +13302,7 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/effect/step_trigger/teleporter_vector{
-	name = "Hunter_Up";
-	vector_x = 90
-	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat,
 /area/yautja)
 "TH" = (
@@ -13766,48 +13775,8 @@
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
 "UT" = (
-/obj/structure/closet/yautja,
-/obj/item/reagent_container/glass/beaker/silver{
-	pixel_x = -1;
-	pixel_y = -1;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/silver{
-	pixel_x = -1;
-	pixel_y = 3;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/silver{
-	pixel_x = -1;
-	pixel_y = 0;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/silver{
-	pixel_x = -2;
-	pixel_y = -6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/silver{
-	pixel_x = -2;
-	pixel_y = -6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/silver{
-	pixel_x = -2;
-	pixel_y = -6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/silver{
-	pixel_x = -2;
-	pixel_y = -6;
-	color = "#9b1818"
-	},
-/obj/item/reagent_container/glass/beaker/silver{
-	pixel_x = -2;
-	pixel_y = -6;
-	color = "#9b1818"
-	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/obj/structure/machinery/portable_atmospherics/hydroponics/yautja,
+/turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
 "UV" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -14183,7 +14152,7 @@
 	desc = null;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
+	name = "Secure Armory Monitor";
 	pixel_y = 23;
 	density = 0
 	},
@@ -14248,6 +14217,18 @@
 	},
 /turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
+"Wn" = (
+/obj/structure/showcase{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	pixel_x = -6;
+	density = 0
+	},
+/turf/open/shuttle/dropship/predship/tile/red,
+/area/yautja)
 "Wp" = (
 /obj/structure/closet/yautja/big{
 	pixel_x = 1;
@@ -14311,10 +14292,104 @@
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
 "Wu" = (
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/shuttle/dropship/predship/red_glow/on,
+/obj/structure/closet/yautja/big{
+	pixel_y = 1
+	},
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/obj/item/tool/shovel/spade/yautja,
+/obj/item/tool/shovel/spade/yautja,
+/obj/item/tool/shovel/spade/yautja,
+/obj/item/tool/shovel/spade/yautja,
+/obj/item/tool/minihoe/yautja,
+/obj/item/tool/minihoe/yautja,
+/obj/item/tool/minihoe/yautja,
+/obj/item/tool/minihoe/yautja,
+/obj/item/reagent_container/glass/bucket{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/glass/bucket{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/glass/bucket{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/glass/bucket{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/glass/beaker/silver{
+	pixel_x = 6;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/silver{
+	pixel_x = 6;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/silver{
+	pixel_x = 6;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/silver{
+	pixel_x = 6;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -11;
+	pixel_y = 9;
+	color = "#9b1818"
+	},
+/turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
 "Ww" = (
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -16268,13 +16343,13 @@ Cv
 Cv
 Kt
 aV
-cN
-cN
+fX
+fX
 aV
 aV
 aV
 aV
-hH
+aV
 ap
 Hx
 vE
@@ -16370,13 +16445,13 @@ hs
 hs
 hs
 oY
-Zo
-bH
+yv
+Wu
 aV
+os
 UT
-ER
+UT
 aV
-hH
 hH
 hH
 hH
@@ -16475,9 +16550,9 @@ ad
 bH
 Zo
 GD
-bn
-bn
-aV
+Hg
+Hg
+Hg
 aV
 aV
 aV
@@ -16575,11 +16650,11 @@ gs
 gs
 aV
 oa
-bH
+ha
 aV
-uA
-uA
-aV
+os
+UT
+UT
 aV
 jy
 ir
@@ -16677,12 +16752,12 @@ SO
 fp
 QG
 bH
-Zo
-uY
-wE
-Zo
-wE
-yN
+Rl
+aV
+aV
+uA
+uA
+aV
 VD
 xC
 VD
@@ -16779,10 +16854,10 @@ bH
 Zo
 Bq
 Zo
+Ny
+MM
 aV
-aV
-aV
-wE
+ER
 Zo
 kN
 bH
@@ -16883,8 +16958,8 @@ Bo
 bH
 Ha
 BM
-Ws
-Zo
+aV
+Wn
 wE
 aV
 aV
@@ -16983,9 +17058,9 @@ bH
 Zo
 bH
 Zo
-Ha
-BM
-Wu
+bH
+Zo
+uY
 wE
 Zo
 aV
@@ -17085,9 +17160,9 @@ DR
 bH
 Zo
 bH
-Ha
-BM
-dM
+Zo
+bH
+uY
 Zo
 wE
 aV
@@ -17286,9 +17361,9 @@ aV
 aV
 aV
 aV
-uA
-uA
-uA
+aV
+aV
+aV
 aV
 OM
 OM
@@ -19227,7 +19302,7 @@ Gc
 qF
 Lf
 AY
-gd
+dJ
 gd
 gd
 SC
@@ -22394,7 +22469,7 @@ Ui
 fV
 Sn
 aV
-IN
+aV
 IN
 IN
 IN
@@ -22496,7 +22571,7 @@ aV
 aV
 aV
 aV
-IN
+aV
 vG
 Df
 Df
@@ -26880,7 +26955,7 @@ DB
 NH
 NH
 DB
-Np
+dD
 Np
 RK
 nD
@@ -26982,7 +27057,7 @@ DB
 NH
 NH
 DB
-Np
+dD
 Np
 RK
 nD
@@ -28668,7 +28743,7 @@ LJ
 nP
 MA
 Mt
-Mt
+rL
 TS
 qo
 KN

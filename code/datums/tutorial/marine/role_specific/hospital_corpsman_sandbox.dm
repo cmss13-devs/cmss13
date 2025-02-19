@@ -329,6 +329,8 @@
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/proc/make_dragging_agent_leave(mob/living/carbon/human/dragging_agent)
 
+	if(dragging_agent in dragging_agents)	// failsafe in case the dragging NPC never had their movement code stopped
+		dragging_agents -= dragging_agent
 	dragging_agent.density = 0
 	QDEL_IN(dragging_agent, 2.5 SECONDS)
 	animate(dragging_agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
@@ -371,6 +373,8 @@
 			agent.balloon_alert_to_viewers("[agent.name] fully treated!")
 			playsound(agent.loc, 'sound/machines/terminal_success.ogg', 20)
 	agents -= agent
+	if(agent in active_agents) // failsafe in case patient NPC was healed, despite never reaching their dropzone
+		active_agents -= agent
 	QDEL_IN(agent, 2.5 SECONDS)
 	animate(agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 	for(var/obj/item/clothing/suit/storage/marine/medium/armor in cleanup)
@@ -475,10 +479,8 @@
 	agent_spawn_location = get_turf(loc_from_corner(12, 2))
 	var/obj/item/storage/pill_bottle/imialky/ia = new /obj/item/storage/pill_bottle/imialky
 	smartfridge.add_local_item(ia) //I have won, but at what cost?
-	//prepdoor.setDir(2)
 	prepdoor.req_one_access = null
 	prepdoor.req_access = null
-	//prepdoor = new(loc_from_corner(4, 1))
 	add_to_tracking_atoms(prepdoor)
 	add_to_tracking_atoms(medevacbed)
 	RegisterSignal(medevacbed, COMSIG_LIVING_BED_BUCKLED, PROC_REF(simulate_evac))
@@ -564,7 +566,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic_sandbox, list(
 	))
 
 /obj/structure/machinery/cm_vending/gear/medic/tutorial
-
 	req_access = null
 
 /obj/structure/machinery/cm_vending/gear/medic/tutorial/get_listed_products(mob/user)

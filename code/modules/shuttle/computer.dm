@@ -409,6 +409,10 @@
 		return
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
+		return
+	else if(lifeboat.status == LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS)
+		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Launch is currently aborting\"."))
+		return
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)

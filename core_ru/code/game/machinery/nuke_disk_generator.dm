@@ -140,6 +140,7 @@
 			if(!time_percent)
 				new disk_type(loc)
 				visible_message(SPAN_NOTICE("[src] beeps as it finishes printing the disc."))
+				time_in = 0
 
 			time_in = time_percent ? time_required_to_unlock - time_percent * time_required_to_unlock : time_required_to_unlock
 			started_time = 0

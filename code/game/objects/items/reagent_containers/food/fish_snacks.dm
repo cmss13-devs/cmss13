@@ -56,21 +56,19 @@
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
 		user.visible_message("[user] cuts [src] open and cleans it.", "You gut [src].")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
-		if(do_after(user, gut_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
-			var/gut_loot = roll(total_length/2 - min_length)
-			if(gut_loot <= 0)
-				gut_loot = 1
+		var/gut_loot = roll(total_length/2 - min_length)
+		if(gut_loot <= 0)
+			gut_loot = 1
 
-			gibs(user.loc)
-			new base_gut_meat(user.loc)//always spawn at least one meat per gut
-			playsound(loc, 'sound/effects/splat.ogg', 25, 1)//replace
-			for(var/i = 1, i < gut_loot, i++)
-				var/T = pick(guttable_atoms)
-				new T(user.loc)
-			gutted = TRUE
-			update_desc()
-			update_icon()
-			return
+		gibs(user.loc)
+		new base_gut_meat(user.loc)//always spawn at least one meat per gut
+		playsound(loc, 'sound/effects/splat.ogg', 25, 1)//replace
+		gutted = TRUE
+		update_desc()
+		update_icon()
+		for(var/i = 1, i < gut_loot, i++)
+			var/T = pick(guttable_atoms)
+			new T(user.loc)
 
 /obj/item/reagent_container/food/snacks/fishable/crab
 	name = "\improper spindle crab"

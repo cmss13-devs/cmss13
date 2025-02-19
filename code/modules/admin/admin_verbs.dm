@@ -303,6 +303,7 @@ GLOBAL_LIST_INIT(admin_verbs_teleport, list(
 ))
 
 GLOBAL_LIST_INIT(mentor_verbs, list(
+	/client/proc/cmd_mentor_check_new_players, // BANDAMARINES ADDITION
 	/client/proc/cmd_mentor_say,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_newplayer_ghost_hud,

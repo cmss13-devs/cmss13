@@ -1,0 +1,3 @@
+#include "_stats_viewer.dm"
+
+#include "code/stats_viewer.dm"

@@ -227,7 +227,7 @@
 
 	can_block_movement = TRUE
 
-	appearance_flags = TILE_BOUND
+	// appearance_flags = TILE_BOUND // SS220 REMOVE
 
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel

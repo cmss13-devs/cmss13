@@ -168,22 +168,23 @@ const marineSplitter = (members: Array<Observable>) => {
   const SOFSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
 
+  // SS220 EDIT - TRANSLATE code/__DEFINES/bandamarines/ru_jobs.dm
   members.forEach((x) => {
-    if (x.job?.includes('Alpha')) {
+    if (x.job?.includes('Альфа')) {
       alphaSquad.push(x);
-    } else if (x.job?.includes('Bravo')) {
+    } else if (x.job?.includes('Браво')) {
       bravoSquad.push(x);
-    } else if (x.job?.includes('Charlie')) {
+    } else if (x.job?.includes('Чарли')) {
       charlieSquad.push(x);
-    } else if (x.job?.includes('Delta')) {
+    } else if (x.job?.includes('Дельта')) {
       deltaSquad.push(x);
-    } else if (x.job?.includes('Foxtrot')) {
+    } else if (x.job?.includes('Фокстрот')) {
       foxtrotSquad.push(x);
-    } else if (x.job?.includes('Echo')) {
+    } else if (x.job?.includes('ЭХО')) {
       echoSquad.push(x);
     } else if (x.job?.includes('CBRN')) {
       CBRNSquad.push(x);
-    } else if (x.job?.includes('FORECON')) {
+    } else if (x.job?.includes('РАЗВЕДКА')) {
       FORECONSquad.push(x);
     } else if (x.job?.includes('SOF')) {
       SOFSquad.push(x);
@@ -286,16 +287,17 @@ const uppSplitter = (members: Array<Observable>) => {
   const UPPKdoSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
 
+  // SS220 EDIT - TRANSLATE code/__DEFINES/bandamarines/ru_jobs.dm
   members.forEach((x) => {
-    if (x.job?.includes('Akula')) {
+    if (x.job?.includes('Акула')) {
       akulaSquad.push(x);
-    } else if (x.job?.includes('Bizon')) {
+    } else if (x.job?.includes('Бизон')) {
       bizonSquad.push(x);
-    } else if (x.job?.includes('Chayka')) {
+    } else if (x.job?.includes('Чайка')) {
       chaykaSquad.push(x);
-    } else if (x.job?.includes('Delfin')) {
+    } else if (x.job?.includes('Дельфин')) {
       delfinSquad.push(x);
-    } else if (x.job?.includes('UPPKdo')) {
+    } else if (x.job?.includes('СПНКом')) {
       UPPKdoSquad.push(x);
     } else {
       other.push(x);

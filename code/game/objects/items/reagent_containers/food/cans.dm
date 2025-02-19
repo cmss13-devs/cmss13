@@ -32,14 +32,14 @@
 	var/opening_time
 	var/opening_sound
 	var/hiss = pick("Nice hiss!", "No hiss.", "A small hiss.") //i couldn't not include stevemre reference
-	if(user.action_busy || open || !needs_can_opener || !HAS_TRAIT(opening_tool, TRAIT_TOOL_CAN_OPENER))
+	if(user.action_busy || open || !needs_can_opener || !(opening_tool.type in CAN_OPENER_EFFECTIVE) && !(opening_tool.type in CAN_OPENER_CRUDE))
 		return
 
-	if(istype(opening_tool, /obj/item/tool/kitchen/can_opener))
+	if(opening_tool.type in CAN_OPENER_EFFECTIVE)
 		opening_time = 4 SECONDS
 		opening_sound = 'sound/items/can_open2.ogg'
 		to_chat(user, SPAN_NOTICE("You begin to open the can with a can opener. [hiss]"))
-	if(istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
+	if(opening_tool.type in CAN_OPENER_CRUDE)
 		opening_time = 12 SECONDS
 		opening_sound = 'sound/items/can_open1.ogg'
 		to_chat(user, SPAN_NOTICE("You begin to crudely jam the can with a blade. [hiss]"))
@@ -48,7 +48,7 @@
 
 	if(!do_after(user, opening_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
-	if(prob(25) && istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
+	if(prob(25) && (opening_tool.type in CAN_OPENER_CRUDE))
 		to_chat(user, SPAN_NOTICE("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
 		playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 5)
 		return

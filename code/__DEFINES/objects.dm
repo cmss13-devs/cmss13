@@ -105,6 +105,18 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define IS_SHARP_ITEM_ACCURATE 2 //knife, scalpel
 #define IS_SHARP_ITEM_BIG 3 //fireaxe, hatchet, energy sword
 
+///can opener defines
+///can open a can without issues
+#define CAN_OPENER_EFFECTIVE list(\
+	/obj/item/tool/kitchen/can_opener\
+	)
+
+///slow can opening with a chance of jamming
+#define CAN_OPENER_CRUDE list(\
+	/obj/item/attachable/bayonet,\
+	/obj/item/tool/kitchen/knife,\
+	/obj/item/weapon/sword/machete\
+	)
 
 //pry capable item defines
 #define IS_PRY_CAPABLE_SIMPLE 1

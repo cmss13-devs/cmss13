@@ -27,47 +27,44 @@
 
 	// holder for the CMO NPC
 	var/mob/living/carbon/human/CMOnpc
-
 	/// Current step of the tutorial we're at
 	var/stage = TUTORIAL_HM_PHASE_PREP
-
+	/// List of patient NPCs. Stored in relation to their end destination turf
 	var/list/mob/living/carbon/human/realistic_dummy/agents = list()
-
+	/// List of active dragging NPCs. Mobs on this list are ACTIVELY dragging a wounded marine
 	var/list/mob/living/carbon/human/dragging_agents = list()
-
+	/// List of ACTIVELY MOVING patient NPCs
 	var/list/mob/living/carbon/human/realistic_dummy/active_agents = list()
-
-	var/list/obj/item/clothing/suit/storage/marine/medium/cleanup = list() // keeps track of inventory that needs to be removed
-
+	/// List of NPC inventory items that needs to be removed when they asked to leave
+	var/list/obj/item/clothing/suit/storage/marine/medium/cleanup = list()
+	/// Ref to any patient NPC actively moving
 	var/mob/living/carbon/human/realistic_dummy/active_agent
-
+	/// Ref to late-spawned patient NPC that has a chance to appear during a treatment phase
 	var/mob/living/carbon/human/realistic_dummy/booboo_agent
-
+	/// Ref to any dragging NPC, bringing a patient to the player
 	var/mob/living/carbon/human/dragging_agent
-
+	/// Spawn point for all NPCs except the CMO
 	var/turf/agent_spawn_location
-
+	/// List of injury severity levels in sequence
 	var/list/difficulties = list(TUTORIAL_HM_INJURY_SEVERITY_BOOBOO, TUTORIAL_HM_INJURY_SEVERITY_MINOR, TUTORIAL_HM_INJURY_SEVERITY_ROUTINE, TUTORIAL_HM_INJURY_SEVERITY_SEVERE, TUTORIAL_HM_INJURY_SEVERITY_FATAL, TUTORIAL_HM_INJURY_SEVERITY_EXTREME, TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
-
-	/// Max amount of agents per survival wave
+	/// Max amount of patient NPCs per survival wave (NOT including booboo NPCs)
 	var/max_survival_agents = 3
-
+	/// Min amount of patient NPCs per survival wave (NOT including booboo NPCs)
 	var/min_survival_agents = 1
 	/// Current survival wave
 	var/survival_wave = 0
-
+	/// Current survival wave difficulty (in terms of injury severity)
 	var/survival_difficulty = TUTORIAL_HM_INJURY_SEVERITY_BOOBOO
-
+	/// Holds a random timer per survival wave for a booboo agent to spawn
 	var/boobootimer
-
+	/// List of injuries on patient NPCs that must be treated before fully healed. Is only tested AFTER they pass 65% health
 	var/list/mob/living/carbon/human/realistic_dummy/agent_healing_tasks = list()
-
+	/// Wave number when the last resupply phase triggered. Will wait 3 waves before rolling again
 	var/last_resupply_round = 1
-
+	/// Wave number when the last mass-casualty (nightmare) phase triggered. Will wait 3 waves before rolling again
 	var/last_masscas_round = 1
-
+	/// Lists possible chemicals that can appear pre-medicated in patient NPCs in harder difficulties
 	var/list/datum/reagent/medical/premeds = list(/datum/reagent/medical/tramadol, /datum/reagent/medical/bicaridine, /datum/reagent/medical/kelotane, /datum/reagent/medical/oxycodone)
-
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
 	. = ..()
@@ -79,11 +76,6 @@
 	init_npcs()
 	remove_action(tutorial_mob, /datum/action/tutorial/skip_text)
 	slower_message_to_player("Welcome to the Hospital Corpsman tutorial sandbox mode!")
-	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
-
-/datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/proc/uniform()
-	SIGNAL_HANDLER
-
 	slower_message_to_player("Gear up in your prefered HM kit, then press the orange 'Ready Up' arrow at the top of your HUD to begin the first round!")
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/proc/handle_round_progression()
@@ -97,6 +89,8 @@
 	switch(stage)
 		if(TUTORIAL_HM_PHASE_RESUPPLY)
 			return // sometimes it double-calls handle_round_progression()
+		// Ensures that a resupply always follows a mass-cas, disregarding minimum rounds between
+		// Lowers difficulty close to, if not slightly below baseline
 		if(TUTORIAL_HM_PHASE_NIGHTMARE)
 			stage = TUTORIAL_HM_PHASE_RESUPPLY
 			survival_wave++
@@ -105,29 +99,36 @@
 			max_survival_agents = 3
 			begin_supply_phase()
 			return
-	if((rand() < (1/5)) && (survival_wave >= (last_masscas_round + 3)))
+	// 1 in 5 chance per round to trigger a resupply phase
+	// Will only roll beyond wave 3, and 3 waves after the previous resupply phase.
+	if((rand() < (1/5)) && (survival_wave >= (last_resupply_round + 3)))
 		begin_supply_phase()
 		last_resupply_round = survival_wave
 		return
 	survival_wave++
-	if((rand() < (1/10)) && (survival_wave >= (last_resupply_round + 3)))
+	// 1 in 10 chance per round to trigger a mass-cas (NIGHTMARE) phase
+	// Will only roll beyond wave 3, and 3 waves after the previous mass-cas phase.
+	if((rand() < (1/10)) && (survival_wave >= (last_masscas_round + 3)))
 		stage = TUTORIAL_HM_PHASE_NIGHTMARE
+		// increases difficulty by 2 levels, but not beyond the max.
 		for(var/i in 1 to 2)
 			var/current_difficulty = survival_difficulty
 			if(current_difficulty != TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 				survival_difficulty = next_in_list(current_difficulty, difficulties)
+		// heightened patient NPC spawn rates, from 4-6
 		min_survival_agents = 4
 		max_survival_agents = 6
 		playsound(tutorial_mob.loc, 'sound/effects/siren.ogg', 50)
 		slower_message_to_player("Warning! Mass-Casualty event detected!")
-	else if((rand() < TUTORIAL_HM_DIFFICULTY_INCREASE) && !(survival_wave <= 2)) // two round grace period
+	// 50% chance per wave of increasing difficulty by one step
+	// two round grace period from start
+	else if((rand() < TUTORIAL_HM_DIFFICULTY_INCREASE) && !(survival_wave <= 2))
 		var/current_difficulty = survival_difficulty
 		if(current_difficulty != TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 			survival_difficulty = next_in_list(current_difficulty, difficulties)
 			difficultyupgradewarning = " Difficulty has increased, watch out!!"
 
 	CMOnpc.say("Now entering round [survival_wave]![difficultyupgradewarning]")
-
 
 	addtimer(CALLBACK(src, PROC_REF(spawn_agents)), 2 SECONDS)
 
@@ -158,35 +159,33 @@
 
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)
 
-
 /datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/proc/spawn_agents()
 	SIGNAL_HANDLER
-
-	agent_spawn_location = get_turf(loc_from_corner(12, 2))
 
 	for(var/i in 1 to (round(rand(min_survival_agents, max_survival_agents))))
 		var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
 		arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
-		var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))
+		var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))	// Picks a random turf to move the NPC to
 		agents[active_agent] = dropoff_point
 		active_agent.a_intent = INTENT_DISARM
 		simulate_condition(active_agent)
 		var/obj/item/clothing/suit/storage/marine/medium/armor = active_agent.get_item_by_slot(WEAR_JACKET)
 		RegisterSignal(armor, COMSIG_ITEM_UNEQUIPPED, PROC_REF(item_cleanup))
 
-	addtimer(CALLBACK(src, PROC_REF(eval_agent_status)), 3 SECONDS)
-
-	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && (rand() <= 0.75))
+	addtimer(CALLBACK(src, PROC_REF(eval_agent_status)), 3 SECONDS)	// Gives time for NPCs to pass out or die, if their condition is severe enough
+	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && (rand() <= 0.75))	// If above difficulty FATAL, starts a random timer to spawn a booboo agent
 		boobootimer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/proc/simulate_condition(mob/living/carbon/human/target)
 	SIGNAL_HANDLER
 
-	var/damageamountsplit = ((round(rand(1, 100))) / 100)
-	var/list/limbs = target.limbs
-	var/amount_of_parts = round(rand(1, 6))
+	// Simulates patient NPC injuries
 
+	var/damageamountsplit = ((round(rand(1, 100))) / 100)	// How damage should be split between brute and burn
+	var/list/limbs = target.limbs
+	var/amount_of_parts = round(rand(1, 6))	// Amount of times to roll for a limb fracture
 	var/patienttype = pick(75;1,15;2,10;3) // 75% chance for mundane damage, 15% for organ damage, 10% for toxin
+
 	if(patienttype >= 1)
 		for(var/i in 1 to amount_of_parts)
 			var/obj/limb/selectedlimb = pick(limbs)
@@ -194,26 +193,27 @@
 			selectedlimb.take_damage(round((damageamount * damageamountsplit) / amount_of_parts), round((damageamount * (1 - damageamountsplit)) / amount_of_parts))
 			if((damageamount > 30) && (rand()) < (survival_difficulty / 10))
 				selectedlimb.fracture()
-	if(patienttype == 2)
+	if(patienttype == 2)	// applies organ damage AS WELL as mundane damage if type 2
 		var/datum/internal_organ/organ = pick(target.internal_organs)
 		target.apply_internal_damage(round(rand(1,(survival_difficulty*3.75))), "[organ.name]")
-	if(patienttype == 3)
+	if(patienttype == 3)	// applies toxin damage AS WELL as mundane damage if type 3
 		target.setToxLoss(round(rand(1,10*survival_difficulty)))
 
-	// premedication simulations
-	if(pick(15;1,85;0))
+	if(pick(15;1,85;0))	// Simulates premedicated patients
 		var/datum/reagent/medical/reagent = pick(premeds)
-		target.reagents.add_reagent(reagent.id, round(rand(0, reagent.overdose - 1)))
+		target.reagents.add_reagent(reagent.id, round(rand(0, reagent.overdose - 1)))	// OD safety
 
 	target.updatehealth()
 	target.UpdateDamageIcon()
 	RegisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(final_health_checks))
-	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
+	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))	// perma detection
 
 	RegisterSignal(target, COMSIG_LIVING_REJUVENATED, PROC_REF(make_agent_leave)) // for debugging
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/proc/final_health_checks(mob/living/carbon/human/target, bypass)
 	SIGNAL_HANDLER
+
+	// Makes sure complex injuries are treated once 65% health is reached
 
 	var/list/healing_tasks = list()
 	UnregisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED)
@@ -301,8 +301,6 @@
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/proc/move_dragging_agent()
 
-	agent_spawn_location = get_turf(loc_from_corner(12, 2)) // fix this
-
 	listclearnulls(dragging_agents)
 	for(var/mob/living/carbon/human/dragging_agent in dragging_agents)
 		var/mob/living/carbon/human/target = dragging_agents[dragging_agent]
@@ -336,8 +334,6 @@
 	animate(dragging_agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_sandbox/proc/move_active_agents()
-
-	agent_spawn_location = get_turf(loc_from_corner(12, 2)) // fix this
 
 	listclearnulls(active_agents) // failsafe
 	for(var/mob/living/carbon/human/realistic_dummy/active_agent as anything in active_agents)
@@ -476,7 +472,7 @@
 	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prepdoor = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
 	var/obj/structure/bed/medevac_stretcher/prop/medevacbed = locate(/obj/structure/bed/medevac_stretcher/prop) in get_turf(loc_from_corner(7, 0))
 	var/obj/structure/machinery/smartfridge/smartfridge = locate(/obj/structure/machinery/smartfridge) in get_turf(loc_from_corner(0, 3))
-
+	agent_spawn_location = get_turf(loc_from_corner(12, 2))
 	var/obj/item/storage/pill_bottle/imialky/ia = new /obj/item/storage/pill_bottle/imialky
 	smartfridge.add_local_item(ia) //I have won, but at what cost?
 	//prepdoor.setDir(2)

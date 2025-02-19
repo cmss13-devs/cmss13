@@ -1104,6 +1104,7 @@
 			"armour_break_flat" = P.ammo.damage_armor_punch,
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
+			"armour_type" = GLOB.xeno_ranged,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],

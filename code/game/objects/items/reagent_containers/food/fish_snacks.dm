@@ -65,7 +65,7 @@
 		gutted = TRUE
 		update_desc()
 		update_icon()
-		for(var/i = 1 in 1 to gut_loot)
+		for(var/i in 1 to gut_loot)
 			var/atom_type = pick(guttable_atoms)
 			new atom_type(get_turf(user))
 

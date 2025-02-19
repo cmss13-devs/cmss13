@@ -467,7 +467,8 @@ log transactions
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.is_mob_incapacitated()) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(ishuman(usr) && held_card)
 		to_chat(usr, "You remove \the [held_card] from \the [src].")

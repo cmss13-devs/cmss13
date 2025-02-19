@@ -95,7 +95,7 @@
 		if(bulb.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)
-				to_chat(user, SPAN_NOTICE("You insert the [bulb] into the [src]. You have [uses] lights remaining."))
+				to_chat(user, SPAN_NOTICE("You insert the [bulb] into [src]. You have [uses] lights remaining."))
 				user.drop_held_item()
 				qdel(bulb)
 				return

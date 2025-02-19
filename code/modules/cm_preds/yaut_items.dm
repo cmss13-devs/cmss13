@@ -1208,6 +1208,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "polishing_rag"
 	reagent_desc_override = TRUE //Hide the fact its actually a reagent container
+	has_lid = FALSE
 
 /obj/item/reagent_container/glass/rag/polishing_rag/get_examine_text(mob/user)
 	. = ..()

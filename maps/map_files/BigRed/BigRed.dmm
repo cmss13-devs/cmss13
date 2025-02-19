@@ -27995,9 +27995,6 @@
 /area/bigredv2/caves/mining)
 "mYo" = (
 /obj/effect/decal/strata_decals/grime/grime3,
-/obj/effect/landmark/nightmare{
-	insert_tag = "cargo_containers"
-	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/w)
 "mYp" = (

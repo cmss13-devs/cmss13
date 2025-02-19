@@ -1,0 +1,6 @@
+{
+    "map_name": "Desert Moon",
+    "map_path": "templates/lazy_templates/pred",
+    "map_file": "desert_moon.dmm",
+    "weather_holder": "/datum/weather_ss_map_holder/desert_moon"
+}

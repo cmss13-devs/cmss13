@@ -1,5 +1,5 @@
 
-///Predator Hunting Grounds stuff
+///Predator Hunting Grounds stuff | Jungle Moon
 /area/yautja_grounds
 	name = "\improper Yautja Hunting Grounds"
 	icon_state = "green"
@@ -59,7 +59,66 @@
 	base_muffle = MUFFLE_HIGH
 	soundscape_interval = 30
 
-///TP Areas/Prep areas
+/area/yautja_grounds/temple/entrance
+	name = "\improper Yautja Hunting Grounds Temple"
+	icon_state = "bluenew"
+	ambience_exterior = AMBIENCE_JUNGLE
+
+// Hunting Grounds | Desert Moon
+/area/yautja_grounds/desert
+	name = "\improper Yautja Hunting Grounds Desert central"
+	icon_state = "central"
+	ambience_exterior = AMBIENCE_BIGRED
+	weather_enabled = TRUE
+	base_lighting_alpha = 150
+
+/area/yautja_grounds/desert/north
+	name = "\improper Yautja Hunting Grounds Desert north"
+	icon_state = "north"
+	ambience_exterior = AMBIENCE_BIGRED
+
+/area/yautja_grounds/desert/north_east
+	name = "\improper Yautja Hunting Grounds Desert north east"
+	icon_state = "northeast"
+	ambience_exterior = AMBIENCE_BIGRED
+
+/area/yautja_grounds/desert/north_west
+	name = "\improper Yautja Hunting Grounds Desert north west"
+	icon_state = "northwest"
+	ambience_exterior = AMBIENCE_BIGRED
+
+/area/yautja_grounds/desert/east
+	name = "\improper Yautja Hunting Grounds Desert east"
+	icon_state = "east"
+	ambience_exterior = AMBIENCE_BIGRED
+
+/area/yautja_grounds/desert/south
+	name = "\improper Yautja Hunting Grounds Desert south"
+	icon_state = "south"
+	ambience_exterior = AMBIENCE_BIGRED
+
+/area/yautja_grounds/desert/south_east
+	name = "\improper Yautja Hunting Grounds Desert south east"
+	icon_state = "southeast"
+	ambience_exterior = AMBIENCE_BIGRED
+
+/area/yautja_grounds/desert/south_west
+	name = "\improper Yautja Hunting Grounds Desert south west"
+	icon_state = "southwest"
+	ambience_exterior = AMBIENCE_BIGRED
+
+/area/yautja_grounds/desert/west
+	name = "\improper Yautja Hunting Grounds Desert west"
+	icon_state = "west"
+	ambience_exterior = AMBIENCE_BIGRED
+
+/area/yautja_grounds/temple/entrance/desert
+	ambience_exterior = AMBIENCE_BIGRED
+	weather_enabled = TRUE
+	base_lighting_alpha = 150
+
+///TP Areas/Young blood prep areas
+
 /area/yautja_grounds/prep_room
 	name = "\improper Jungle Moon Campsite"
 	icon_state = "red"
@@ -68,3 +127,19 @@
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_MEDIUM
 	ceiling = CEILING_SANDSTONE_ALLOW_CAS
+
+/area/yautja_grounds/prep_room/desert
+	name = "\improper Desert Moon Campsite"
+	ambience_exterior = AMBIENCE_BIGRED
+	weather_enabled = TRUE
+	base_lighting_alpha = 150
+
+/area/yautja_grounds/prep_room/desert/interior
+	name ="\improper Desert Moon Campsite Interiors"
+	base_lighting_alpha = 0
+	ceiling = CEILING_METAL
+
+/area/yautja_grounds/young_blood_prep/desert
+	name = "\improper Desert Moon Young Blood Prep Area"
+	ambience_exterior = AMBIENCE_BIGRED
+	ceiling = CEILING_METAL

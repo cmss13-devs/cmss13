@@ -372,6 +372,10 @@
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
 	icon_state = "soil_grid"
 
+/turf/open/floor/plating/catwalk/grate/lattice
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
+	icon_state = "latticefull"
+
 ///turf/open/gm/river
 
 /turf/open/floor/almayer

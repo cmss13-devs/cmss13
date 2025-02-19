@@ -43,6 +43,9 @@
 /obj/docking_port/mobile/crashable/lifeboat/evac_launch()
 	if (status == LIFEBOAT_LOCKED)
 		return
+	if (status == LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS)
+		status = LIFEBOAT_ACTIVE
+		return
 
 	. = ..()
 

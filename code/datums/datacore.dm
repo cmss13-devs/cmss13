@@ -191,7 +191,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
 	for(var/obj/limb/E in H.limbs)
-		if(E.status & LIMB_DESTROYED) continue
+		if(E.status & LIMB_DESTROYED)
+			continue
 		temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, E.name, skin_color_icon))
 		if(E.status & LIMB_ROBOT)
 			temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))

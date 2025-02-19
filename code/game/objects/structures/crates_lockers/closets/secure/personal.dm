@@ -58,12 +58,15 @@
 			to_chat(user, SPAN_DANGER("It appears to be broken."))
 			return
 		var/obj/item/card/id/I = W
-		if(!I || !I.registered_name) return
+		if(!I || !I.registered_name)
+			return
 		if(src.allowed(user) || !src.registered_name || (istype(I) && (src.registered_name == I.registered_name)))
 			//they can open all lockers, or nobody owns this, or they own this locker
 			src.locked = !( src.locked )
-			if(src.locked) src.icon_state = src.icon_locked
-			else src.icon_state = src.icon_closed
+			if(src.locked)
+				src.icon_state = src.icon_locked
+			else
+				src.icon_state = src.icon_closed
 
 			if(!src.registered_name)
 				src.registered_name = I.registered_name

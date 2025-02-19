@@ -488,6 +488,13 @@
 /obj/structure/window/reinforced/toughened,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
+"abl" = (
+/obj/effect/landmark/start/doctor,
+/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/start/field_doctor,
+/obj/effect/landmark/late_join/field_doctor,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "abn" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -17752,12 +17759,6 @@
 "dmA" = (
 /turf/open/floor/almayer,
 /area/almayer/living/synthcloset)
-"dmE" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/incendiary,
-/obj/item/mortar_shell/incendiary,
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/req)
 "dmF" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -18323,6 +18324,9 @@
 "dzG" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = 26
+	},
+/obj/structure/reagent_dispensers/forensictank{
+	pixel_y = 41
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/general_equipment)
@@ -27935,12 +27939,6 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
-"hAc" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/flare,
-/obj/item/mortar_shell/flare,
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/req)
 "hAf" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_side/north,
@@ -28011,10 +28009,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/lower/vehiclehangar)
-"hBz" = (
-/obj/item/mortar_kit,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/squads/req)
 "hBF" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -30326,6 +30320,9 @@
 "iEx" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = 26
+	},
+/obj/structure/reagent_dispensers/forensictank{
+	pixel_y = 41
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
@@ -41446,12 +41443,6 @@
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/brig/lobby)
-"ngw" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/frag,
-/obj/item/mortar_shell/frag,
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/req)
 "ngA" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -55129,6 +55120,9 @@
 	icon_state = "W";
 	pixel_x = -2
 	},
+/obj/structure/reagent_dispensers/forensictank{
+	pixel_y = 41
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/armory)
 "sFf" = (
@@ -67958,8 +67952,7 @@
 /area/almayer/maint/hull/lower/p_bow)
 "xId" = (
 /obj/structure/surface/rack,
-/obj/item/mortar_shell/he,
-/obj/item/mortar_shell/he,
+/obj/item/storage/box/spec/mortar,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "xIj" = (
@@ -99954,7 +99947,7 @@ bwG
 rUq
 rUq
 sab
-sab
+abl
 izk
 pQc
 cWr
@@ -111340,7 +111333,7 @@ bdl
 bEi
 bZr
 bmD
-ngw
+bNP
 pjG
 boz
 bpR
@@ -111746,7 +111739,7 @@ bdl
 bEl
 wup
 bmD
-hBz
+bmD
 pjG
 boA
 bpR
@@ -111949,7 +111942,7 @@ bdl
 buz
 bZr
 bmD
-dmE
+bNP
 pjG
 boz
 bpR
@@ -112152,7 +112145,7 @@ bdl
 bEm
 bZr
 bmD
-hAc
+bNP
 pjG
 boz
 bpR

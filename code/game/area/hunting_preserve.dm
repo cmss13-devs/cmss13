@@ -69,7 +69,7 @@
 	name = "\improper Yautja Hunting Grounds Desert central"
 	icon_state = "central"
 	ambience_exterior = AMBIENCE_BIGRED
-	base_lighting_alpha = 50
+	base_lighting_alpha = 10
 
 /area/yautja_grounds/desert/north
 	name = "\improper Yautja Hunting Grounds Desert north"

@@ -95,6 +95,8 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 	var/cooldown_reduction_percentage = 0 // By what % cooldown are reduced by. 1 => No cooldown. Should normally be clamped at 50%
+	/// How much cooldowns can be reduced by at most. 1 is 100%.
+	var/cooldown_reduction_max = 0.5
 
 	var/death_fontsize = 3
 

@@ -58,20 +58,16 @@
 
 	var/max_uses = 50
 	var/uses = 0
-	var/failmsg = ""
+	var/failmsg = "The [name]'s refill light blinks red."
 	var/charge = 1
 	var/recycle = 0
 	var/max_recycle = 3
 
 /obj/item/device/lightreplacer/Initialize()
-	. = ..()
 	uses = max_uses
-	failmsg = "The [name]'s refill light blinks red."
 
 /obj/item/device/lightreplacer/empty/Initialize()
-	. = ..()
 	uses = 0
-	failmsg = "The [name]'s refill light blinks red."
 
 /obj/item/device/lightreplacer/get_examine_text(mob/user)
 	. = ..()

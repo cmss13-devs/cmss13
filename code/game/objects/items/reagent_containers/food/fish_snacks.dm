@@ -11,7 +11,6 @@
 	var/guttable = TRUE
 	var/gutted = FALSE
 	var/gut_icon_state = null
-	var/gut_time = 0
 	var/initial_desc = ""
 	var/list/guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat, /obj/item/reagent_container/food/snacks/meat/synthmeat)//placeholders, for now
 	var/base_gut_meat = /obj/item/reagent_container/food/snacks/meat
@@ -56,19 +55,19 @@
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
 		user.visible_message("[user] cuts [src] open and cleans it.", "You gut [src].")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
-		var/gut_loot = roll(total_length/2 - min_length)
+		var/gut_loot = roll(total_length / 2 - min_length)
 		if(gut_loot <= 0)
 			gut_loot = 1
 
 		gibs(user.loc)
-		new base_gut_meat(user.loc)//always spawn at least one meat per gut
+		new base_gut_meat(get_turf(user)) //always spawn at least one meat per gut
 		playsound(loc, 'sound/effects/splat.ogg', 25, 1)//replace
 		gutted = TRUE
 		update_desc()
 		update_icon()
-		for(var/i = 1, i < gut_loot, i++)
-			var/T = pick(guttable_atoms)
-			new T(user.loc)
+		for(var/i = 1 in 1 to gut_loot)
+			var/atom_type = pick(guttable_atoms)
+			new atom_type(get_turf(user))
 
 /obj/item/reagent_container/food/snacks/fishable/crab
 	name = "\improper spindle crab"

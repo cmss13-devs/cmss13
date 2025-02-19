@@ -167,37 +167,114 @@ GLOBAL_DATUM(Banlist, /savefile)
 			timeleftstring = "[exp] Minutes"
 		return timeleftstring
 
-/datum/admins/proc/unbanpanel()
-	var/data = {"
-	<B>Bans:</B> <span class='[INTERFACE_BLUE]'>(UP) = Unban Perma (UT) = Unban Timed"
-	</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span>
-	<br>
-	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
-	<br>
-	<table border=1 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
-	"}
+/datum/unban_panel
 
-	var/list/datum/view_record/players/PBV = DB_VIEW(/datum/view_record/players, DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))) // a filter
+	/// The search term that is currently in use
+	var/search
 
-	for(var/datum/view_record/players/ban in PBV)
-		var/expiry
-		if(!ban.is_permabanned)
-			expiry = GetExp(ban.expiration)
+/datum/unban_panel/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "UnbanPanel", "Unban Panel")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/unban_panel/ui_state(mob/user)
+	return GLOB.admin_state
+
+/datum/unban_panel/ui_data(mob/user)
+	. = ..()
+
+	var/list/datum/view_record/players/banned_players = DB_VIEW(/datum/view_record/players,
+		DB_AND(
+			DB_COMP("ckey", DB_EQUALS, search),
+			DB_OR(
+				DB_COMP("is_permabanned", DB_EQUALS, TRUE),
+				DB_COMP("is_time_banned", DB_EQUALS, TRUE)
+		)))
+
+	.["banned_players"] = list()
+	for(var/datum/view_record/players/player in banned_players)
+		var/expiry = "Permaban"
+		if(!player.is_permabanned)
+			expiry = GetExp(player.expiration)
 			if(!expiry)
 				expiry = "Removal Pending"
-		else
-			expiry = "Permaban"
-		var/unban_link
-		if(ban.is_permabanned)
-			unban_link = "<a href='byond://?src=\ref[src];[HrefToken()];unban_perma=[ban.ckey]'>(UP)</a>"
-		else
-			unban_link = "<A href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(UT)</A>"
 
-		data += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin ? ban.admin : "AdminBot"])</td><td>(Reason: [ban.reason])</td></tr>"
+		.["banned_players"] += list(
+			list(
+				"ckey" = player.ckey,
+				"ip" = player.last_known_ip,
+				"cid" = player.last_known_cid,
+				"permaban" = player.is_permabanned,
+				"timeban" = player.is_time_banned,
+				"expiry" = expiry,
+				"admin" = player.admin,
+				"reason" = player.reason,
+			)
+		)
 
-	data += "</table>"
+	.["search"] = search
 
-	show_browser(usr, data, "Unban Panel", "unbanp", "size=875x400")
+/datum/unban_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	var/mob/user = ui.user
+
+	switch(action)
+		if("change_search")
+			var/new_search = ckey(params["ckey"])
+			if(!length(new_search))
+				return
+
+			search = new_search
+			return TRUE
+
+		if("unban_timed")
+			var/ckey_to_unban = ckey(params["ckey"])
+			if(!length(ckey_to_unban))
+				return
+
+			var/datum/entity/player/unban_player = get_player_from_key(ckey_to_unban)
+			if(tgui_alert("Are you sure you want to remove timed ban from [unban_player.ckey]?", "Confirm", list("Yes", "No")) == "No")
+				return
+
+			if(!unban_player.remove_timed_ban())
+				tgui_alert(user, "This ban has already been lifted / does not exist.", "Error", list("Ok"))
+
+			return TRUE
+
+		if("unban_perma")
+			var/ckey_to_unban = ckey(params["ckey"])
+			if(!length(ckey_to_unban))
+				return
+
+			var/datum/entity/player/unban_player = get_player_from_key(ckey_to_unban)
+			if(!(tgui_alert(user, "Do you want to unban [unban_player.ckey]? They are currently permabanned for: [unban_player.permaban_reason], since [unban_player.permaban_date].", "Unban Player", list("Yes", "No")) == "Yes"))
+				return
+
+			if(!unban_player.is_permabanned)
+				to_chat(user, SPAN_WARNING("The player is not currently permabanned."))
+				return
+
+			unban_player.is_permabanned = FALSE
+			unban_player.permaban_admin_id = null
+			unban_player.permaban_date = null
+			unban_player.permaban_reason = null
+
+			unban_player.save()
+
+			message_admins("[key_name_admin(user)] has removed the permanent ban on [unban_player.ckey].")
+			important_message_external("[user.ckey] has removed the permanent ban on [unban_player.ckey].", "Permaban Removed")
+
+			return TRUE
+
+
+/datum/admins/proc/unbanpanel()
+	var/datum/unban_panel/unban_panel = new
+	unban_panel.tgui_interact(owner.mob)
 
 /datum/admins/proc/stickypanel()
 	var/add_sticky = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=1;new_sticky=1'>Add Sticky Ban</a>"

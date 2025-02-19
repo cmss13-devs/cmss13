@@ -172,7 +172,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 6)
+	properties = list(PROPERTY_PAINKILLING = 3)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -1022,7 +1022,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_TOXIC = 1, PROPERTY_HALLUCINOGENIC = 6)
+	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_EXCRETING = 2, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/plasma/antineurotoxin
 	name = "Anti-Neurotoxin"

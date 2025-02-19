@@ -283,23 +283,30 @@ const Range = (props) => {
   const { data } = useBackend();
   const {
     max_range,
+    projectile_max_range_add,
     range_max,
     falloff,
     falloff_max,
     effective_range,
     effective_range_max,
+    effective_range_max_mod,
   } = data;
   return (
     <>
-      <ProgressBar value={max_range / range_max} ranges={RedGreenRange}>
-        Max range: {max_range} / {range_max}
+      <ProgressBar
+        value={(max_range + projectile_max_range_add) / range_max}
+        ranges={RedGreenRange}
+      >
+        Max range: {max_range + projectile_max_range_add} / {range_max}
       </ProgressBar>
       <Box height="5px" />
       <ProgressBar
-        value={effective_range / effective_range_max}
+        value={
+          (effective_range + effective_range_max_mod) / effective_range_max
+        }
         ranges={RedGreenRange}
       >
-        Effective range: {effective_range}
+        Effective range: {effective_range + effective_range_max_mod}
       </ProgressBar>
       <Box height="5px" />
       <ProgressBar value={falloff / falloff_max} ranges={GreedRedRange}>

@@ -187,7 +187,7 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE)
+/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
@@ -231,7 +231,7 @@
 	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		randomize_speed = FALSE
-		ammo.fire_bonus_projectiles(src)
+		ammo.fire_bonus_projectiles(src, gun_damage_mult, projectile_max_range_add, gun_bonus_proj_scatter)
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
@@ -1104,6 +1104,7 @@
 			"armour_break_flat" = P.ammo.damage_armor_punch,
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
+			"armour_type" = GLOB.xeno_ranged,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],

@@ -18,8 +18,7 @@
 
 /obj/item/reagent_container/pill/teabag/Initialize(mapload, ...)
 	. = ..()
-	var/tea_name
-	tea_name = pick(tea_blends)
+	var/tea_name = pick(tea_blends)
 	name = "instant [tea_name] tea bag"
 	desc = "A bag of instant [tea_name] black tea. Fully dilutable including the bag itself, bag is probably made out of tea as well. No heating required."
 

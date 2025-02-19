@@ -46,19 +46,20 @@
 
 	playsound(src.loc, opening_sound, 15, FALSE, 5)
 
-	if(do_after(user, opening_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		if(prob(25) && istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
-			to_chat(user, SPAN_NOTICE("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
-			playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 5)
-			return
-		playsound(src.loc, open_sound, 15, 1, 5)
-		to_chat(user, SPAN_NOTICE(open_message))
-		open = TRUE
-		if(has_open_icon)
-			icon_state += "_open"
-		update_icon()
-		user.update_inv_l_hand()
-		user.update_inv_r_hand()
+	if(!do_after(user, opening_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+	if(prob(25) && istype(opening_tool, /obj/item/attachable/bayonet || /obj/item/tool/kitchen/knife  || /obj/item/weapon/sword/machete))
+		to_chat(user, SPAN_NOTICE("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
+		playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 5)
+		return
+	playsound(src.loc, open_sound, 15, 1, 5)
+	to_chat(user, SPAN_NOTICE(open_message))
+	open = TRUE
+	if(has_open_icon)
+		icon_state += "_open"
+	update_icon()
+	user.update_inv_l_hand()
+	user.update_inv_r_hand()
 
 /obj/item/reagent_container/food/drinks/cans/get_examine_text(mob/user)
 	. = ..()
@@ -73,16 +74,19 @@
 	if(crushed)
 		return
 
-	if(!open)
-		if(needs_can_opener)
-			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff] using some sort of a can opener!"))
-			return
-		playsound(src.loc, open_sound, 15, 1)
-		to_chat(user, SPAN_NOTICE(open_message))
-		open = TRUE
-		if(has_open_icon)
-			icon_state += "_open"
-		update_icon()
+	if(open)
+		return
+
+	if(needs_can_opener)
+		to_chat(user, SPAN_NOTICE("You need to open the [object_fluff] using some sort of a can opener!"))
+		return
+
+	playsound(src.loc, open_sound, 15, 1)
+	to_chat(user, SPAN_NOTICE(open_message))
+	open = TRUE
+	if(has_open_icon)
+		icon_state += "_open"
+	update_icon()
 
 /obj/item/reagent_container/food/drinks/cans/attack_hand(mob/user)
 	if(crushed)

@@ -144,7 +144,8 @@
 
 /datum/reagent/vegemite/on_mob_life(mob/living/carbon/target_mob, potency = 1, delta_time)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	if(prob(4) && ishuman(target_mob) && target_mob.faction != FACTION_TWE)
 		var/mob/living/carbon/human/target_human = target_mob
 		target_mob.make_dizzy(10)

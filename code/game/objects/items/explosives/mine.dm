@@ -2,7 +2,6 @@
 //Mines have an invisible "tripwire" atom that explodes when crossed
 //Stepping directly on the mine will also blow it up
 /obj/item/explosive/mine
-	proc/caste_type()
 	name = "\improper M20 Claymore anti-personnel mine"
 	desc = "The M20 Claymore is a directional proximity-triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. The mine is triggered by movement both on the mine itself, and on the space immediately in front of it. Detonation sprays shrapnel forwards in a 120-degree cone. The words \"FRONT TOWARD ENEMY\" are embossed on the front."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
@@ -200,7 +199,9 @@
 	try_to_prime(AM)
 
 
-/obj/item/explosive/mine/proc/try_to_prime(mob/living/L)
+/obj/item/explosive/mine/proc/try_to_prime(mob/living/L,/mob/living/carbon/xenomorph/xeno)
+	if(L.caste_type == XENO_T0_CASTES) // T0 caste can't trigger mines
+		return
 	if(!active || triggered || (customizable && !detonator))
 		return
 	if(!istype(L))
@@ -211,8 +212,6 @@
 		return
 	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
 		return
-	if(caste_type(L, XENO_T0_CASTES)) // Check if the Xenomorph is tier_0
-		return // Do not prime the mine for tier_0 Xenomorphs
 
 	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
 	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
@@ -225,13 +224,23 @@
 
 
 //Note : May not be actual explosion depending on linked method
-/obj/item/explosive/mine/prime()
+/obj/item/explosive/mine/prime(mob/living/carbon/xenomorph/xeno)
 	set waitfor = 0
-
+	if(xeno.caste_type == XENO_T0_CASTES) //Check if the caste is T0. If it is, don't trigger the mine.
+		return
 	if(!customizable)
-		create_shrapnel(loc, 12, dir, shrapnel_spread, , cause_data)
+		var/shrapnel_damage = 12
+		if(istype(loc, /mob/living/carbon/xenomorph))
+			if(xeno.caste == XENO_T1_CASTES)
+				shrapnel_damage * 0.5
+			else if(xeno.caste == XENO_T2_CASTES)
+				shrapnel_damage * 0.65
+			else if((xeno.caste == XENO_T3_CASTES) || (xeno.caste == XENO_T4_CASTES))
+				shrapnel_damage * 0.75
+		create_shrapnel(loc, min(shrapnel_damage, 12), dir, shrapnel_spread, , cause_data)
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
+
 	else
 		. = ..()
 		if(!QDELETED(src))
@@ -239,16 +248,15 @@
 
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
-	if(triggered) // Mine is already set to go off
-		return XENO_NO_DELAY_ACTION
-
-	// Check if the Xenomorph is tier_0
-	if(caste_type(M, XENO_T0_CASTES))
-		to_chat(M, SPAN_XENONOTICE("You are too weak to trigger this mine."))
+	if(triggered) //Mine is already set to go off
 		return XENO_NO_DELAY_ACTION
 
 	if(M.a_intent == INTENT_HELP)
 		to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+		return XENO_NO_DELAY_ACTION
+
+	if(M.caste_type == XENO_T0_CASTES)
+		to_chat(M, SPAN_XENONOTICE("You are too weak to slash this mine.")) //If they are part of T0 caste. They are too weak to slash it
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
@@ -256,7 +264,7 @@
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
 
-	// We move the tripwire randomly in either of the four cardinal directions
+	//We move the tripwire randomly in either of the four cardinal directions
 	triggered = TRUE
 	if(tripwire)
 		var/direction = pick(GLOB.cardinals)

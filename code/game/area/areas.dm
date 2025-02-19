@@ -303,13 +303,19 @@
 /area/proc/updateicon()
 	var/I //More important == bottom. Fire normally takes priority over everything.
 	if(flags_alarm_state && (!requires_power || power_environ)) //It either doesn't require power or the environment is powered. And there is an alarm.
-		if(flags_alarm_state & ALARM_WARNING_READY) I = "alarm_ready" //Area is ready for something.
-		if(flags_alarm_state & ALARM_WARNING_EVAC) I = "alarm_evac" //Evacuation happening.
-		if(flags_alarm_state & ALARM_WARNING_ATMOS) I = "alarm_atmos" //Atmos breach.
-		if(flags_alarm_state & ALARM_WARNING_FIRE) I = "alarm_fire" //Fire happening.
-		if(flags_alarm_state & ALARM_WARNING_DOWN) I = "alarm_down" //Area is shut down.
+		if(flags_alarm_state & ALARM_WARNING_READY)
+			I = "alarm_ready" //Area is ready for something.
+		if(flags_alarm_state & ALARM_WARNING_EVAC)
+			I = "alarm_evac" //Evacuation happening.
+		if(flags_alarm_state & ALARM_WARNING_ATMOS)
+			I = "alarm_atmos" //Atmos breach.
+		if(flags_alarm_state & ALARM_WARNING_FIRE)
+			I = "alarm_fire" //Fire happening.
+		if(flags_alarm_state & ALARM_WARNING_DOWN)
+			I = "alarm_down" //Area is shut down.
 
-	if(icon_state != I) icon_state = I //If the icon state changed, change it. Otherwise do nothing.
+	if(icon_state != I)
+		icon_state = I //If the icon state changed, change it. Otherwise do nothing.
 
 /area/proc/powered(chan) // return true if the area has power to given channel
 	if(!requires_power)

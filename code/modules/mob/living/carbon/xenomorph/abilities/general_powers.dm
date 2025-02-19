@@ -274,7 +274,8 @@
 		to_chat(X, SPAN_XENOWARNING("We can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
 	var/turf/target_turf = get_turf(A)
 
 	if(target_turf.z != X.z)
@@ -455,7 +456,8 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!A) return
+	if(!A)
+		return
 
 	if(A.layer >= FLY_LAYER)
 		return
@@ -602,7 +604,8 @@
 	if(!X.check_state())
 		return FALSE
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
 
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
@@ -884,12 +887,16 @@
 	return owner
 
 /turf/proc/can_bombard(mob/bombarder)
-	if(!can_be_dissolved() && density) return FALSE
+	if(!can_be_dissolved() && density)
+		return FALSE
 	for(var/atom/A in src)
-		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
-		if(ismob(A)) continue // Mobs shouldn't block boiler gas
+		if(istype(A, /obj/structure/machinery))
+			continue // Machinery shouldn't block boiler gas (e.g. computers)
+		if(ismob(A))
+			continue // Mobs shouldn't block boiler gas
 
-		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER)) return FALSE
+		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER))
+			return FALSE
 
 	return TRUE
 

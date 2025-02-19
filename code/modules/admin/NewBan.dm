@@ -272,7 +272,8 @@ GLOBAL_DATUM(Banlist, /savefile)
 		return PROC_BLOCKED
 	if(!check_rights(R_BAN|R_MOD))  return
 
-	if(!ismob(M)) return
+	if(!ismob(M))
+		return
 
 	if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
 		return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
@@ -284,7 +285,8 @@ GLOBAL_DATUM(Banlist, /savefile)
 	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
 	if(!mins)
 		return
-	if(mins >= 525600) mins = 525599
+	if(mins >= 525600)
+		mins = 525599
 	var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
 	if(!reason)
 		return

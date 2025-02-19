@@ -243,7 +243,13 @@ export const LobbyMenu = () => {
           <Box className="bgLoad authorAttrib styledText">
             {lobby_author ? `Art by ${lobby_author}` : ''}
           </Box>
-          <Box position="absolute" left={3} top={-2} height="100%">
+          <Box
+            position="absolute"
+            left={3}
+            top={-2}
+            height="100%"
+            className="messageHolder"
+          >
             <Stack vertical justify="flex-end" fill>
               {preference_issues.map((issue, index) => (
                 <Section key={index} className="sectionLoad">

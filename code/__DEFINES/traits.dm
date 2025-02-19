@@ -249,6 +249,8 @@
 #define TRAIT_MOBA_CAMP_TARGET "t_moba_camp_target"
 /// If the mob has recently attacked a member of the given MOBA hive
 #define TRAIT_MOBA_ATTACKED_HIVE(hive) "t_moba_attacked_hive_[hive]"
+/// If this mob is a minion
+#define TRAIT_MOBA_MINION "t_moba_minion"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

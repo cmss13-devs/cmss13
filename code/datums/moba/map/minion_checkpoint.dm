@@ -27,11 +27,12 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 /obj/effect/moba_minion_checkpoint/proc/on_turf_enter(datum/source, atom/movable/entering)
 	SIGNAL_HANDLER
 
-	if(!istype(entering, /mob/living/carbon/xenomorph/lesser_drone/moba))
+	if(!HAS_TRAIT(entering, TRAIT_MOBA_MINION))
 		return
 
-	var/mob/living/carbon/xenomorph/lesser_drone/moba/minion = entering
-	if(minion.hive.hivenumber == primary_hive)
+	//var/mob/living/carbon/xenomorph/lesser_drone/moba/minion = entering
+	var/datum/component/moba_minion/minion = entering.GetComponent(/datum/component/moba_minion) // Zonenote: unshittify this later
+	if(minion.parent_xeno.hive.hivenumber == primary_hive)
 		minion.next_turf_target = locate(bottom_left_turf_coords[1] + next_x_coord - 1, bottom_left_turf_coords[2] + next_y_coord - 1, bottom_left_turf_coords[3])
 	else
 		minion.next_turf_target = locate(bottom_left_turf_coords[1] + alt_next_x_coord - 1, bottom_left_turf_coords[2] + alt_next_y_coord - 1, bottom_left_turf_coords[3])

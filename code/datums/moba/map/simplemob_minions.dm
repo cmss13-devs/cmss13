@@ -1,4 +1,4 @@
-/mob/living/carbon/xenomorph/lesser_drone/moba
+/*mob/living/carbon/xenomorph/lesser_drone/moba // Zonenote componentize?
 	need_weeds = FALSE
 	var/atom/movable/target
 	var/turf/next_turf_target
@@ -93,3 +93,4 @@
 		target = obstacle
 		walk(src, 0)
 		is_moving_to_next_point = FALSE
+*/

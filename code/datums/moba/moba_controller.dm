@@ -111,7 +111,8 @@
 		return
 
 	for(var/i in 1 to 3)
-		var/mob/living/carbon/xenomorph/lesser_drone/moba/minion = new()
+		var/mob/living/carbon/xenomorph/lesser_drone/minion = new()
+		minion.AddComponent(/datum/component/moba_minion)
 		minion.set_hive_and_update(side)
 		minion.forceMove(location)
 		sleep(0.9 SECONDS)

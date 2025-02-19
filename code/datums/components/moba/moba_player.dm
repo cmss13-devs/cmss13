@@ -83,8 +83,8 @@
 	if(parent_xeno.hive.is_ally(attacking_xeno))
 		return
 
-	ADD_TRAIT(attacking_xeno, TRAIT_MOBA_ATTACKED_HIVE(parent_xeno.hive.hivenumber), TRAIT_SOURCE_HIVE)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_remove_trait), attacking_xeno, TRAIT_MOBA_ATTACKED_HIVE(parent_xeno.hive.hivenumber), TRAIT_SOURCE_HIVE), 4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+	ADD_TRAIT(attacking_xeno, TRAIT_MOBA_ATTACKED_HIVE(parent_xeno.hive.hivenumber), "[REF(attacking_xeno)]")
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_remove_trait), attacking_xeno, TRAIT_MOBA_ATTACKED_HIVE(parent_xeno.hive.hivenumber), "[REF(attacking_xeno)]"), 4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 // At some point we need to account for acid damage from melee if that ever gets implemented
 

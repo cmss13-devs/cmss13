@@ -55,7 +55,7 @@
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
 		user.visible_message("[user] cuts [src] open and cleans it.", "You gut [src].")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
-		var/gut_loot = roll(total_length/2 - min_length)
+		var/gut_loot = roll(total_length / 2 - min_length)
 		if(gut_loot <= 0)
 			gut_loot = 1
 

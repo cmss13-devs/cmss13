@@ -788,7 +788,7 @@
 #include "code\datums\weather\weather_map_holders\lv759_hybrisa_prospera.dm"
 #include "code\datums\weather\weather_map_holders\new_varadero.dm"
 #include "code\datums\weather\weather_map_holders\sorokyne.dm"
-#include "code\datums\weather\weather_map_holders\desert_moon.dm""
+#include "code\datums\weather\weather_map_holders\desert_moon.dm"
 #include "code\datums\xeno_shields\xeno_shield.dm"
 #include "code\datums\xeno_shields\shield_types\crusher_shield.dm"
 #include "code\datums\xeno_shields\shield_types\hedgehog_shield.dm"

@@ -471,3 +471,19 @@
 	new /obj/item/ammo_magazine/smg/ppsh(src)
 	new /obj/item/ammo_magazine/smg/ppsh(src)
 	new /obj/item/ammo_magazine/smg/ppsh(src)
+
+/obj/item/storage/box/guncase/t73
+	name = "\improper Type 73 Combat Pistol case"
+	desc = "A gun case containing a Type 73 Combat Pistol."
+	storage_slots = 8
+	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/t73, /obj/item/ammo_magazine/pistol/t73)
+
+/obj/item/storage/box/guncase/t73/fill_preset_inventory()
+	new /obj/item/attachable/flashlight(src)
+	new /obj/item/weapon/gun/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)
+	new /obj/item/ammo_magazine/pistol/t73(src)

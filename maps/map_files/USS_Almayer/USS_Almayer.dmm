@@ -30746,7 +30746,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
 	dir = 1;
-	name = "Morgue"
+	name = "Morgue";
+	req_one_access = list(25)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/morgue)

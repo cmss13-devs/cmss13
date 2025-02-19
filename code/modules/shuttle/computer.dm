@@ -368,6 +368,8 @@
 	unacidable = TRUE
 	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
 	var/launch_initiated = FALSE
+	///If true, a lifeboat launch has already been aborted.
+	var/launch_aborted = FALSE
 	///If true, the lifeboat is in the process of having the xeno override removed by the pilot.
 	var/override_being_removed = FALSE
 	///How long it takes to unlock the console

@@ -32,9 +32,6 @@
 
 	cleaning = FALSE
 
-/datum/weather_event/sand/infinite
-	length = INFINITY
-
 /datum/weather_event/rock
 	name = "Rockstorm"
 	display_name = "Rockstorm"

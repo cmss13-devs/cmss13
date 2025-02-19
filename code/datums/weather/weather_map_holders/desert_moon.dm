@@ -9,7 +9,7 @@
 	no_weather_turf_icon_state = "strata_clearsky"
 
 	potential_weather_events = list(
-		/datum/weather_event/sand/infinite,
+		/datum/weather_event/moonsand,
 	)
 
 /datum/weather_ss_map_holder/desert_moon/should_affect_area(area/A)

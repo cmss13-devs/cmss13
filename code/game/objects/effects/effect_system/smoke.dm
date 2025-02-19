@@ -754,9 +754,6 @@
 
 	return ..()
 
-/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(mob/living/carbon/affected_mob)
-	return
-
 /obj/effect/particle_effect/smoke/reaper_mist/affect(mob/living/carbon/affected_mob)
 	. = ..()
 	if(!.)

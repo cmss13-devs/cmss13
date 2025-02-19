@@ -199,9 +199,7 @@
 	try_to_prime(AM)
 
 
-/obj/item/explosive/mine/proc/try_to_prime(mob/living/L,/mob/living/carbon/xenomorph/xeno)
-	if(L.caste_type == XENO_T0_CASTES) // T0 caste can't trigger mines
-		return
+/obj/item/explosive/mine/proc/try_to_prime(mob/living/carbon/xenomorph/xeno,mob/living/L)
 	if(!active || triggered || (customizable && !detonator))
 		return
 	if(!istype(L))
@@ -211,6 +209,8 @@
 	if(L.get_target_lock(iff_signal))
 		return
 	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
+		return
+	if(xeno.caste_type == XENO_T0_CASTES)
 		return
 
 	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),

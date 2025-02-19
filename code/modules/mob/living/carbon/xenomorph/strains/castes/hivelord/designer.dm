@@ -137,13 +137,18 @@
 	var/turf/target_turf = get_turf(target_atom)
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 
+	// Prevent plasma loss & overlays if target is invalid
+	if(!target_weeds || target_weeds.hivenumber != xeno.hivenumber || !istype(target_turf, /turf/open))
+		to_chat(xeno, SPAN_WARNING("We can only construct nodes on our weeds!"))
+		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
+		return FALSE
+
 	if(!check_and_use_plasma_owner())
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 		return
 
-	var/obj/speed_warn
-	if(target_turf)
-		speed_warn = new /obj/effect/resin_construct/speed_node(target_turf)
+	// Only create speed_warn if the target is valid
+	var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf)
 
 	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		qdel(speed_warn)
@@ -151,19 +156,13 @@
 
 	qdel(speed_warn)
 
-	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
-		SPAN_XENONOTICE("We surge sustenance, creating a optimized node!"), null, 5)
-		var/speed_nodes = new /obj/effect/alien/weeds/node/designer/speed(target_turf)
-		xeno.speed_node_list += speed_nodes
-		playsound(target_turf, "alien_resin_build", 25)
-		if(length(xeno.speed_node_list) > max_speed_nodes)
-			addtimer(CALLBACK(src, "remove_oldest_speed_node", xeno), 0)
-
-	else if(target_turf)
-		to_chat(xeno, SPAN_WARNING("We can only construct nodes on our weeds!"))
-		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
-		return FALSE
+	xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
+	SPAN_XENONOTICE("We surge sustenance, creating an optimized node!"), null, 5)
+	var/speed_nodes = new /obj/effect/alien/weeds/node/designer/speed(target_turf)
+	xeno.speed_node_list += speed_nodes
+	playsound(target_turf, "alien_resin_build", 25)
+	if(length(xeno.speed_node_list) > max_speed_nodes)
+		addtimer(CALLBACK(src, "remove_oldest_speed_node", xeno), 0)
 
 	xeno_cooldown = COOLDOWN_MULTIPLIER
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
@@ -233,13 +232,17 @@
 	var/turf/target_turf = get_turf(target_atom)
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 
+	// Prevent plasma loss & overlays if target is invalid
+	if(!target_weeds || target_weeds.hivenumber != xeno.hivenumber || !istype(target_turf, /turf/open))
+		to_chat(xeno, SPAN_WARNING("We can only construct nodes on our weeds!"))
+		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
+		return FALSE
+
 	if(!check_and_use_plasma_owner())
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 		return
 
-	var/obj/cost_warn
-	if(target_turf)
-		cost_warn = new /obj/effect/resin_construct/cost_node(target_turf)
+	var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf)
 
 	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		qdel(cost_warn)
@@ -247,19 +250,13 @@
 
 	qdel(cost_warn)
 
-	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating a strange looking node!"), \
-		SPAN_XENONOTICE("We surge sustenance, creating a flexible node!"), null, 5)
-		var/cost_nodes = new /obj/effect/alien/weeds/node/designer/cost(target_turf)
-		xeno.cost_node_list += cost_nodes
-		playsound(target_turf, "alien_resin_build", 25)
-		if(length(xeno.cost_node_list) > max_cost_nodes) // Delete the oldest node (the first one in the list)
-			addtimer(CALLBACK(src, "remove_oldest_cost_node", xeno), 0)
-
-	else if(target_turf)
-		to_chat(xeno, SPAN_WARNING("We can only construct nodes on our weeds!"))
-		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
-		return FALSE
+	xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating a strange looking node!"), \
+	SPAN_XENONOTICE("We surge sustenance, creating a flexible node!"), null, 5)
+	var/cost_nodes = new /obj/effect/alien/weeds/node/designer/cost(target_turf)
+	xeno.cost_node_list += cost_nodes
+	playsound(target_turf, "alien_resin_build", 25)
+	if(length(xeno.cost_node_list) > max_cost_nodes) // Delete the oldest node (the first one in the list)
+		addtimer(CALLBACK(src, "remove_oldest_cost_node", xeno), 0)
 
 	xeno_cooldown = COOLDOWN_MULTIPLIER
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))

@@ -1,4 +1,0 @@
-author: "larentoun"
-delete-after: True
-changes:
-  - rscadd: "Добавлена кнопка OOC -> \"View My Stats\", которая позволяет посмотреть вашу статистику за раунд."

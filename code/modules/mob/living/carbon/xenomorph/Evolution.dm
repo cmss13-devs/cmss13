@@ -238,7 +238,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow us to evolve."))
 		return FALSE
 
-	if(isnull(caste.evolves_to))
+	if(isnull(caste.evolves_to) || !length(caste.evolves_to))
 		to_chat(src, SPAN_WARNING("We are already the apex of form and function. Go forth and spread the hive!"))
 		return FALSE
 

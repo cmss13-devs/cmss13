@@ -2749,7 +2749,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor/almayer/sterile_green,
+/turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/lower_medical_lobby)
 "agp" = (
 /obj/structure/extinguisher_cabinet{
@@ -47619,12 +47619,6 @@
 /obj/structure/barricade/handrail,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/hallways/lower/port_midship_hallway)
-"oDY" = (
-/obj/structure/barricade/handrail/medical{
-	dir = 1
-	},
-/turf/open/floor/almayer/sterile_green2,
-/area/almayer/medical/lower_medical_lobby)
 "oEf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -52195,7 +52189,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
-/turf/open/floor/almayer/sterile_green,
+/turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/lower_medical_lobby)
 "qyG" = (
 /obj/structure/sign/safety/hazard{
@@ -53084,10 +53078,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_p)
-"qOZ" = (
-/obj/structure/barricade/handrail/medical,
-/turf/open/floor/almayer/sterile_green2,
-/area/almayer/medical/lower_medical_lobby)
 "qPk" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_fore_hallway)
@@ -97385,13 +97375,13 @@ tzO
 ahg
 qpQ
 nvM
-qOZ
+agn
 tzP
 ham
 ham
 ham
 tzP
-oDY
+adI
 ady
 eTC
 adb

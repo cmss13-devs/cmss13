@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - config: "Теперь флаг tts_enabled работает корректно"

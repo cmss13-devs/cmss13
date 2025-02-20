@@ -54,8 +54,11 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!evolve_checks())
 		return
 
-	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
-		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
+	if(!hive.living_xeno_queen && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
+		if(hive.xeno_queen_timer > world.time)
+			to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
+		else
+			to_chat(src, SPAN_XENONOTICE("The hive currently has no Queen! We can't find the strength to evolve."))
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae

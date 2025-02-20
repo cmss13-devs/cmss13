@@ -66,8 +66,8 @@
 		. += "\nOn closer examination, this node look like its made of smaller blue bulbs grown together, making weeds under them look more soft and squishy."
 	if(isxeno(user) || isobserver(user))
 		. += "\nYou sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
-// ""animations""" (effects)
 
+// ""animations""" (effects)
 /obj/effect/resin_construct/fastweak
 	icon_state = "WeakConstructFast"
 

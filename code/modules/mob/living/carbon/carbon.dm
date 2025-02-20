@@ -122,13 +122,11 @@
 	. = ..()
 
 /mob/living/carbon/human/proc/handle_haul_resist()
-	SIGNAL_HANDLER
-
 	if(world.time <= next_haul_resist)
-		return COMPONENT_CANCEL_MOVE
+		return
 
 	var/mob/living/carbon/xenomorph/xeno = hauling_xeno
-	next_haul_resist = world.time + 1.3 SECONDS
+	next_haul_resist = world.time + 1.4 SECONDS
 	if(istype(get_active_hand(), /obj/item))
 		var/obj/item/item = get_active_hand()
 		if(item.force)
@@ -150,7 +148,7 @@
 			for(var/mob/mobs_can_hear in hearers(4, xeno))
 				if(mobs_can_hear.client)
 					mobs_can_hear.show_message(SPAN_DANGER("You hear [src] struggling against [xeno]'s grip..."), SHOW_MESSAGE_AUDIBLE)
-	return COMPONENT_CANCEL_MOVE
+	return
 
 /mob/living/carbon/attack_hand(mob/target_mob as mob)
 	if(!istype(target_mob, /mob/living/carbon))
@@ -505,7 +503,6 @@
 	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(release_haul_death))
 	RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(haul_fire_shield))
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(haul_fire_shield_callback))
-	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(handle_haul_resist))
 	layer = LYING_BETWEEN_MOB_LAYER
 	add_filter("hauled_shadow", 1, color_matrix_filter(rgb(95, 95, 95)))
 	pixel_y = -7
@@ -529,7 +526,7 @@
 	var/location = get_turf(loc)
 	src.remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
 	pixel_y = 0
-	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED, COMSIG_MOVABLE_PRE_MOVE))
+	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
 	UnregisterSignal(hauling_xeno, COMSIG_MOB_DEATH)
 	hauling_xeno = null
 	layer = MOB_LAYER

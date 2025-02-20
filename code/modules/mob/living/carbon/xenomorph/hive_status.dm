@@ -421,6 +421,22 @@
 	for(var/mob/living/carbon/xenomorph/L in xeno_leader_list)
 		L.handle_xeno_leader_pheromones()
 
+/// Returns a count of xenos that can potentially evolve to queen (larva and tier 1 that aren't job banned)
+/datum/hive_status/proc/get_potential_queen_count()
+	var/potential_queens = 0
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.stat == DEAD)
+			continue
+		switch(xeno.tier)
+			if(0)
+				if(islarva(xeno) && !ispredalienlarva(xeno))
+					if(xeno.client && xeno.ckey && !jobban_isbanned(xeno, XENO_CASTE_QUEEN))
+						potential_queens++
+			if(1)
+				if(xeno.client && xeno.ckey && !jobban_isbanned(xeno, XENO_CASTE_QUEEN))
+					potential_queens++
+	return potential_queens
+
 /*
  * Helper procs for the Hive Status UI
  * These are all called by the hive status UI manager to update its data

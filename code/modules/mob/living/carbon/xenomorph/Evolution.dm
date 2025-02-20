@@ -15,12 +15,14 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	do_evolve()
 
 /mob/living/carbon/xenomorph/proc/do_evolve()
-	var/potential_queens = 0
-
-	if (!evolve_checks())
+	if(!evolve_checks())
 		return
 
 	var/castes_available = caste.evolves_to.Copy()
+
+	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
+	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
+		castes_available |= XENO_CASTE_QUEEN
 
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
@@ -57,41 +59,27 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
-		if(!hardcore)
-			if(SSticker.mode && hive.xeno_queen_timer > world.time)
-				to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
-				return
-
-			if(plasma_stored >= 500)
-				if(hive.living_xeno_queen)
-					to_chat(src, SPAN_WARNING("There already is a living Queen."))
-					return
-			else
-				to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / 500."))
-				return
-		else
+		if(hardcore)
 			to_chat(src, SPAN_WARNING("Nuh-uhh."))
 			return
+
+		if(SSticker.mode && hive.xeno_queen_timer > world.time)
+			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
+			return
+
+		var/required_plasma = min(500, plasma_max)
+		if(plasma_stored >= required_plasma)
+			if(hive.living_xeno_queen)
+				to_chat(src, SPAN_WARNING("There already is a living Queen."))
+				return
+		else
+			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
+			return
+
 	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
-
-	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
-	for(var/mob/living/carbon/xenomorph/M in GLOB.living_xeno_list)
-		if(hivenumber != M.hivenumber)
-			continue
-
-		switch(M.tier)
-			if(0)
-				if(islarva(M) && !ispredalienlarva(M))
-					if(M.client && M.ckey)
-						potential_queens++
-				continue
-			if(1)
-				if(isdrone(M))
-					if(M.client && M.ckey)
-						potential_queens++
 
 	var/mob/living/carbon/xenomorph/M = null
 
@@ -100,6 +88,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(isnull(M))
 		to_chat(usr, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
+
+	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
+	var/potential_queens = hive.get_potential_queen_count()
 
 	if(!can_evolve(castepick, potential_queens))
 		return
@@ -324,9 +315,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien"
 
-	var/newcaste
-	var/alleged_queens = 0
-
 	if(!check_state())
 		return
 	if(is_ventcrawling)
@@ -348,25 +336,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
-	for(var/mob/living/carbon/xenomorph/xenos_to_check in GLOB.living_xeno_list)
-		if(hivenumber != xenos_to_check.hivenumber)
-			continue
-
-		switch(xenos_to_check.tier)
-			if(0)
-				if(islarva(xenos_to_check) && !ispredalienlarva(xenos_to_check))
-					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
-						alleged_queens++
-				continue
-			if(1)
-				if(isdrone(xenos_to_check))
-					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
-						alleged_queens++
-
+	var/alleged_queens = hive.get_potential_queen_count()
 	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
 		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
 		return FALSE
 
+	var/newcaste
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)

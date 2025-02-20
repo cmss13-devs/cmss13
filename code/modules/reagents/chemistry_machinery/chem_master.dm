@@ -319,23 +319,40 @@
 					return
 
 				reagents_in_pill += contained_reagent.name
-
+			var/amount_per_pill = null
+			var/total_possible_pills = null
 			if(length(loaded_pill_bottles_to_fill) == 0)
-				return
-
-			var/amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
+				amount_per_pill = clamp((reagents.total_volume / to_create), 0, 60)
+			else
+				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					if(bottle && length(bottle.contents) == bottle.max_storage_space)
+						loaded_pill_bottles_to_fill -= bottle
+					else
+						total_possible_pills +=  (bottle.max_storage_space - length(bottle.contents))
+				if (to_create > total_possible_pills)
+					to_chat(user, SPAN_WARNING("Selected pill bottles do not have enough space."))
+					return
+				else
+					amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
 
 			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create]) (REAGENTS: [english_list(reagents_in_pill)]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+			if (length(loaded_pill_bottles_to_fill) > 0)
+				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					for(var/iterator in 1 to to_create)
+						var/obj/item/reagent_container/pill/creating_pill = new(loc)
+						creating_pill.pill_desc = "A custom pill."
+						creating_pill.icon_state = "pill[pillsprite]"
+
+						reagents.trans_to(creating_pill, amount_per_pill)
+						if(bottle && length(bottle.contents) < bottle.max_storage_space)
+							bottle.handle_item_insertion(creating_pill, TRUE)
+			else
 				for(var/iterator in 1 to to_create)
 					var/obj/item/reagent_container/pill/creating_pill = new(loc)
 					creating_pill.pill_desc = "A custom pill."
 					creating_pill.icon_state = "pill[pillsprite]"
 
 					reagents.trans_to(creating_pill, amount_per_pill)
-					if(bottle && length(bottle.contents) < bottle.max_storage_space)
-						bottle.handle_item_insertion(creating_pill, TRUE)
-
 			return TRUE
 
 		if("create_glass")

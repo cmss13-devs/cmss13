@@ -52,7 +52,7 @@
 /obj/effect/alien/weeds/node/designer/speed/get_examine_text(mob/user)
 	.=..()
 	if(ishuman(user) || isobserver(user) || isyautja(user))
-		. += "\nOn closer examination, this node look like it have big green oozing bulb at its center, making weeds under it look like they are moving..."
+		. += "\nOn closer examination, this node looks like it has a big green oozing bulb at its center, making the weeds under it twitch..."
 	if(isxeno(user) || isobserver(user))
 		. += "\nYou sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
 
@@ -63,7 +63,7 @@
 /obj/effect/alien/weeds/node/designer/cost/get_examine_text(mob/user)
 	.=..()
 	if(ishuman(user) || isobserver(user) || isyautja(user))
-		. += "\nOn closer examination, this node look like its made of smaller blue bulbs grown together, making weeds under them look more soft and squishy."
+		. += "\nOn closer examination, this node looks like its made of smaller blue bulbs grown together, making the weeds under them look soft and squishy."
 	if(isxeno(user) || isobserver(user))
 		. += "\nYou sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
 

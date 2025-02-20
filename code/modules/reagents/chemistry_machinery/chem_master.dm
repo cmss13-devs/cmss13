@@ -329,8 +329,8 @@
 						loaded_pill_bottles_to_fill -= bottle
 					else
 						total_possible_pills +=  (bottle.max_storage_space - length(bottle.contents))
-				if (to_create > total_possible_pills)
-					to_chat(user, SPAN_WARNING("Selected pill bottles do not have enough space."))
+				if (to_create > total_possible_pills || (to_create * length(loaded_pill_bottles_to_fill)) > total_possible_pills)
+					to_chat(user, SPAN_WARNING("Selected pill bottles do not have enough space in each bottle."))
 					return
 				else
 					amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)

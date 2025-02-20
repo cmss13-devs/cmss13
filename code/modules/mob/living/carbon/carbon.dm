@@ -125,6 +125,9 @@
 	if(world.time <= next_haul_resist)
 		return
 
+	if(is_mob_incapacitated())
+		return
+
 	var/mob/living/carbon/xenomorph/xeno = hauling_xeno
 	next_haul_resist = world.time + 1.4 SECONDS
 	if(istype(get_active_hand(), /obj/item))

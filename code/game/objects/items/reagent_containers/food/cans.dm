@@ -36,6 +36,11 @@
 		return
 
 	if(opening_tool.type in CAN_OPENER_EFFECTIVE)
+		if(istype(opening_tool, /obj/item/tool/kitchen/can_opener/compact))
+			var/obj/item/tool/kitchen/can_opener/compact/tool = opening_tool
+			if(!tool.active)
+				to_chat(user, SPAN_WARNING("You need to unfold it before trying to use it."))
+				return
 		opening_time = 4 SECONDS
 		opening_sound = 'sound/items/can_open2.ogg'
 		to_chat(user, SPAN_NOTICE("You begin to open the can with a can opener. [hiss]"))
@@ -49,7 +54,7 @@
 	if(!do_after(user, opening_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 	if(prob(25) && (opening_tool.type in CAN_OPENER_CRUDE))
-		to_chat(user, SPAN_NOTICE("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
+		to_chat(user, SPAN_WARNING("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
 		playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 5)
 		return
 	playsound(src.loc, open_sound, 15, 1, 5)

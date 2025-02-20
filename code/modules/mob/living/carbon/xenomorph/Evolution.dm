@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!evolve_checks())
 		return
 
-	var/castes_available = caste.evolves_to.Copy()
+	var/list/castes_available = caste.evolves_to.Copy()
 
 	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
 	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
@@ -84,11 +84,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
 
-	var/mob/living/carbon/xenomorph/M = null
+	var/mob/living/carbon/xenomorph/xeno_type = null
+	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
 
-	M = GLOB.RoleAuthority.get_caste_by_text(castepick)
-
-	if(isnull(M))
+	if(isnull(xeno_type))
 		to_chat(usr, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
 
@@ -99,7 +98,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
 
-	visible_message(SPAN_XENONOTICE("\The [src] begins to twist and contort."),
+	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
 	SPAN_XENONOTICE("We begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
@@ -107,7 +106,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
 		to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
-
 		evolving = FALSE
 		return
 
@@ -130,11 +128,14 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
+
+	// don't drop their organ
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
+
 	//From there, the new xeno exists, hopefully
-	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 	new_xeno.creation_time = creation_time
 
 	if(!istype(new_xeno))

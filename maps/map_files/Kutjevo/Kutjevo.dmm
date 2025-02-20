@@ -3719,7 +3719,6 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power/comms)
 "eAS" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_pan";
 	name = "\improper Medical North Shutters"

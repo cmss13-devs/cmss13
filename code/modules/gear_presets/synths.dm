@@ -508,7 +508,8 @@
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
 		WEAR_R_HAND = /obj/item/storage/pouch/flare/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/upp/knife,
-		WEAR_L_HAND = /obj/item/storage/large_holster/katana/full
+		WEAR_L_HAND = /obj/item/storage/large_holster/katana/full,
+		WEAR_ACCESSORY = /obj/item/clothing/accessory/patch/freelancer_patch
 	)
 
 /datum/equipment_preset/synth/survivor/surveyor_synth

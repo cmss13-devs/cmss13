@@ -472,7 +472,7 @@
 							if(lifeboat.status == LIFEBOAT_LOCKED)
 								to_chat(user, SPAN_WARNING("Controls not responding, please try again."))
 								return
-							lifeboat.status == LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS
+							lifeboat.status = LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS
 							lifeboat.set_mode(SHUTTLE_IDLE)
 							lifeboat.alarm_sound_loop?.stop()
 							lifeboat.playing_launch_announcement_alarm = FALSE
@@ -524,7 +524,7 @@
 						if(lifeboat.status == LIFEBOAT_LOCKED)
 							to_chat(user, SPAN_WARNING("Controls not responding, please try again."))
 							return
-						lifeboat.status == LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS
+						lifeboat.status = LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS
 						lifeboat.set_mode(SHUTTLE_IDLE)
 						lifeboat.alarm_sound_loop?.stop()
 						lifeboat.playing_launch_announcement_alarm = FALSE

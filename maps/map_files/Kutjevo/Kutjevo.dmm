@@ -2446,7 +2446,7 @@
 	health = null;
 	id = "kutjevo_medlock_east";
 	idle_power_usage = 0;
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Medical East Lock Override";
 	pixel_y = 22;
 	range = 15
@@ -5135,7 +5135,7 @@
 /obj/structure/monorail,
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	indestructible = 1
+	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
@@ -7347,7 +7347,7 @@
 /obj/structure/monorail,
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	indestructible = 1
+	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
@@ -8365,7 +8365,7 @@
 	health = null;
 	id = "kutjevo_medlock_west";
 	idle_power_usage = 0;
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Medical West Lock Override";
 	pixel_y = 22;
 	range = 15

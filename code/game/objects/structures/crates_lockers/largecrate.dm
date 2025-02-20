@@ -127,7 +127,8 @@
 
 /obj/structure/largecrate/random/Initialize()
 	. = ..()
-	if(!num_things) num_things = rand(0,3)
+	if(!num_things)
+		num_things = rand(0,3)
 
 	for(var/i in 1 to num_things)
 		var/obj/item/thing = pick(stuff)

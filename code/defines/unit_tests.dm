@@ -54,6 +54,9 @@
 #define UNIT_TEST_FAILED 1
 #define UNIT_TEST_SKIPPED 2
 
+#define TEST_STAGE_PREGAME "PREGAME"
+#define TEST_STAGE_GAME "GAME"
+
 #define TEST_PRE 0
 #define TEST_DEFAULT 1
 /// After most test steps, used for tests that run long so shorter issues can be noticed faster
@@ -78,24 +81,25 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // Unit tests
-#include "autowiki.dm"
-#include "check_runtimes.dm"
-#include "create_and_destroy.dm"
-#include "duplicate_sprite_accessories.dm"
-#include "emote_panels.dm"
-#include "missing_icons.dm"
-#include "resist.dm"
-#include "spawn_humans.dm"
-#include "spritesheets.dm"
-#include "subsystem_init.dm"
-#include "tgui_create_message.dm"
-#include "timer_sanity.dm"
-#include "tutorials.dm"
-#include "xeno_strains.dm"
+#include "..\modules\unit_tests\areas_unpowered.dm"
+#include "..\modules\unit_tests\autowiki.dm"
+#include "..\modules\unit_tests\check_runtimes.dm"
+#include "..\modules\unit_tests\create_and_destroy.dm"
+#include "..\modules\unit_tests\duplicate_sprite_accessories.dm"
+#include "..\modules\unit_tests\emote_panels.dm"
+#include "..\modules\unit_tests\missing_icons.dm"
+#include "..\modules\unit_tests\resist.dm"
+#include "..\modules\unit_tests\spawn_humans.dm"
+#include "..\modules\unit_tests\spritesheets.dm"
+#include "..\modules\unit_tests\subsystem_init.dm"
+#include "..\modules\unit_tests\tgui_create_message.dm"
+#include "..\modules\unit_tests\timer_sanity.dm"
+#include "..\modules\unit_tests\tutorials.dm"
+#include "..\modules\unit_tests\xeno_strains.dm"
 
 // Unit tests backend
-#include "focus_only_tests.dm"
-#include "unit_test.dm"
+#include "..\modules\unit_tests\focus_only_tests.dm"
+#include "..\modules\unit_tests\unit_test.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

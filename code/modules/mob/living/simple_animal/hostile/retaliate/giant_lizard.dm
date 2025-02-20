@@ -30,7 +30,7 @@
 	response_harm  = "punches"
 	friendly = "nuzzles"
 	see_in_dark = 50
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 	speak_chance = 2
 	speak_emote = "hisses"

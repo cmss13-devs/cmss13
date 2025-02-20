@@ -384,6 +384,8 @@
 	see_in_dark = 12
 	sight |= SEE_MOBS
 	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+	else if (lighting_alpha == LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	else if(lighting_alpha == LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
 		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
@@ -504,7 +506,7 @@
 	if(!hive)
 		return
 	var/mob/living/carbon/xenomorph/queen/Q = hive.living_xeno_queen
-	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
+	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || !SSmapping.same_z_map(Q.loc.z, loc.z)) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
 		to_chat(src, SPAN_XENOWARNING("Our pheromones wane. The Queen is no longer granting us her pheromones."))

@@ -89,8 +89,6 @@
 	melee_damage_upper = 10
 	var/melee_vehicle_damage = 10
 	var/claw_type = CLAW_TYPE_NORMAL
-	var/burn_damage_lower = 0
-	var/burn_damage_upper = 0
 	var/plasma_stored = 10
 	var/plasma_max = 10
 	var/plasma_gain = 5
@@ -346,6 +344,8 @@
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
+	/// The world.time when the xeno was created. Carries over between strains and evolving
+	var/creation_time = 0
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
@@ -504,6 +504,8 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
+	creation_time = world.time
+
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
@@ -608,7 +610,7 @@
 		if(XENO_VISION_LEVEL_NO_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		if(XENO_VISION_LEVEL_MID_NVG)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+			lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
@@ -621,6 +623,8 @@
 		if(XENO_VISION_LEVEL_NO_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		if(XENO_VISION_LEVEL_MID_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+		if(XENO_VISION_LEVEL_HIGH_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
@@ -632,7 +636,7 @@
 	switch(lighting_alpha)
 		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
 			return XENO_VISION_LEVEL_FULL_NVG
-		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+		if(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 			return XENO_VISION_LEVEL_MID_NVG
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			return XENO_VISION_LEVEL_NO_NVG
@@ -1125,3 +1129,12 @@
 	if(new_player.mind)
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
+
+/mob/living/carbon/xenomorph/onZImpact(turf/impact_turf, height)
+	if(mob_size >= MOB_SIZE_BIG)
+		KnockDown(height * 5)
+		Stun(height * 5)
+
+		var/total_damage = (60 * height) ** 1.3
+		apply_damage(total_damage / 2, BRUTE)
+		playsound(impact_turf.loc, "slam", 50, 1)

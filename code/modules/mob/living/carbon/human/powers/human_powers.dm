@@ -89,7 +89,8 @@
 	addtimer(CALLBACK(src, PROC_REF(finish_leap), T), 5)
 
 /mob/living/carbon/human/proc/finish_leap(mob/living/T)
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & LEAPING)
+		status_flags &= ~LEAPING
 
 	if(!Adjacent(T))
 		to_chat(src, SPAN_DANGER("You miss!"))
@@ -296,7 +297,7 @@
 	if(usr.is_mob_incapacitated())
 		return
 
-	default_lighting_alpha = default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE : LIGHTING_PLANE_ALPHA_VISIBLE
+	default_lighting_alpha = default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE : LIGHTING_PLANE_ALPHA_VISIBLE
 	update_sight()
 
 	to_chat(src, SPAN_NOTICE("Your vision is now set to <b>[default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? "Normal Vision" : "Nightvision"]</b>."))

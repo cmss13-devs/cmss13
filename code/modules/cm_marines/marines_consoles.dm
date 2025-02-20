@@ -983,7 +983,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_RESEARCHER = 41,
 				JOB_DOCTOR = 42,
 				JOB_SURGEON = 42,
-				JOB_NURSE = 43,
+				JOB_FIELD_DOCTOR = 43,
+				JOB_NURSE = 44,
 				// 50-59: Engineering
 				JOB_CHIEF_ENGINEER = 50,
 				JOB_ORDNANCE_TECH = 51,

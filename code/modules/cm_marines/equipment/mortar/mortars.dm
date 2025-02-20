@@ -16,6 +16,7 @@
 	// Initial target coordinates
 	var/targ_x = 0
 	var/targ_y = 0
+	var/targ_z = 0
 	// Automatic offsets from target
 	var/offset_x = 0
 	var/offset_y = 0
@@ -45,6 +46,7 @@
 	// Makes coords appear as 0 in UI
 	targ_x = deobfuscate_x(0)
 	targ_y = deobfuscate_y(0)
+	targ_z = deobfuscate_z(0)
 	internal_camera = new(loc)
 
 	var/new_icon_state
@@ -138,6 +140,7 @@
 	return list(
 		"data_target_x" = obfuscate_x(targ_x),
 		"data_target_y" = obfuscate_y(targ_y),
+		"data_target_z" = obfuscate_z(targ_z),
 		"data_dial_x" = dial_x,
 		"data_dial_y" = dial_y
 	)
@@ -153,7 +156,7 @@
 
 	switch(action)
 		if("set_target")
-			handle_target(user, text2num(params["target_x"]), text2num(params["target_y"]))
+			handle_target(user, text2num(params["target_x"]),  text2num(params["target_y"]), text2num(params["target_z"]))
 			return TRUE
 
 		if("set_offset")
@@ -163,12 +166,13 @@
 		if("operate_cam")
 			internal_camera.tgui_interact(user)
 
-/obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, manual = FALSE)
+/obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, temp_targ_z = 0, manual = FALSE)
 	if(manual)
 		temp_targ_x = tgui_input_real_number(user, "Input the longitude of the target.")
 		temp_targ_y = tgui_input_real_number(user, "Input the latitude of the target.")
+		temp_targ_z = tgui_input_real_number(user, "Input the height of the target.")
 
-	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y)))
+	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y), test_targ_z = deobfuscate_z(temp_targ_z)))
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts adjusting [src]'s firing angle and distance."),
@@ -188,6 +192,7 @@
 	SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
 	targ_x = deobfuscate_x(temp_targ_x)
 	targ_y = deobfuscate_y(temp_targ_y)
+	targ_z = deobfuscate_z(temp_targ_z)
 	var/offset_x_max = floor(abs((targ_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
 	var/offset_y_max = floor(abs((targ_y) - y)/offset_per_turfs)
 	offset_x = rand(-offset_x_max, offset_x_max)
@@ -226,7 +231,7 @@
 /obj/structure/mortar/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = item
-		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
+		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, targ_z)
 		var/area/target_area = get_area(target_turf)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
@@ -235,7 +240,7 @@
 			to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 			return
 		if(!ship_side)
-			if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
+			if(targ_x == 0 && targ_y == 0 && targ_z == 0) //Mortar wasn't set
 				to_chat(user, SPAN_WARNING("[src] needs to be aimed first."))
 				return
 			if(!target_turf)
@@ -378,7 +383,7 @@
 	qdel(shell)
 	firing = FALSE
 
-/obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_dial_x, test_dial_y)
+/obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_targ_z = targ_z, test_dial_x, test_dial_y)
 	var/dialing = test_dial_x || test_dial_y
 	if(ship_side)
 		to_chat(user, SPAN_WARNING("You cannot aim the mortar while on a ship."))
@@ -394,6 +399,9 @@
 		return FALSE
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) < min_range)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is too close to your mortar."))
+		return FALSE
+	if(!is_ground_level(test_targ_z))
+		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
 		return FALSE
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) > max_range)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is too far from your mortar."))

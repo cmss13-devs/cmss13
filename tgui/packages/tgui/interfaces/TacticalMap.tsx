@@ -37,6 +37,7 @@ interface TacMapProps {
   canvasCooldown: any;
   exportedTacMapImage: any;
   tacmapReady: boolean;
+  canChangeZ: boolean;
 }
 
 const PAGES = [
@@ -107,6 +108,45 @@ export const TacticalMap = (props) => {
     });
   };
 
+  const tryIncrementZ = () => {
+    act('changeZ', {
+      amount: 1,
+    });
+  };
+
+  const tryDecrementZ = () => {
+    act('changeZ', {
+      amount: -1,
+    });
+  };
+
+  const getZTabs = () => {
+    if (!data.canChangeZ) return;
+
+    return (
+      <>
+        <Tabs.Tab
+          key={PAGES.length}
+          color={data.isxeno ? 'purple' : 'blue'}
+          selected={false}
+          icon={'plus'}
+          onClick={() => tryIncrementZ()}
+        >
+          Move up
+        </Tabs.Tab>
+        <Tabs.Tab
+          key={PAGES.length + 1}
+          color={data.isxeno ? 'purple' : 'blue'}
+          selected={false}
+          icon={'minus'}
+          onClick={() => tryDecrementZ()}
+        >
+          Move down
+        </Tabs.Tab>
+      </>
+    );
+  };
+
   return (
     <Window
       width={700}
@@ -144,6 +184,7 @@ export const TacticalMap = (props) => {
                     </Tabs.Tab>
                   );
                 })}
+                {getZTabs()}
               </Tabs>
             </Stack.Item>
           </Stack>

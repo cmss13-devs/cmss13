@@ -152,6 +152,9 @@
 			if(JOB_DOCTOR)
 				marine_rk = "doctor"
 				border_rk = "command"
+			if(JOB_FIELD_DOCTOR)
+				marine_rk = "field_doctor"
+				border_rk = "command"
 			if(JOB_RESEARCHER)
 				marine_rk = "researcher"
 				border_rk = "command"

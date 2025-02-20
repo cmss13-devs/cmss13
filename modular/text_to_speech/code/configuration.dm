@@ -1,12 +1,7 @@
 /// Is TTS enabled
 /datum/config_entry/flag/tts_enabled
-	config_entry_value = TRUE
+	config_entry_value = FALSE
 	protection = CONFIG_ENTRY_HIDDEN
-
-// /datum/config_entry/flag/tts_enabled/New()
-// 	. = ..()
-// 	tts_enabled = CONFIG_GET(string/tts_token_silero) && SStts220.is_enabled
-
 
 /// TTS API token for silero provider
 /datum/config_entry/string/tts_token_silero

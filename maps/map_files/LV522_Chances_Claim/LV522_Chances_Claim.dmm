@@ -605,6 +605,12 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
+"aco" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -14638,6 +14644,9 @@
 /area/lv522/atmos/east_reactor/south)
 "hXW" = (
 /obj/item/storage/firstaid/adv/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/hallway)
 "hYf" = (
@@ -79890,7 +79899,7 @@ aIp
 aIp
 aIp
 aIp
-aIp
+aco
 aIp
 aIp
 aIp

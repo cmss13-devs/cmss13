@@ -1,0 +1,10812 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"ad" = (
+/obj/structure/machinery/light,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/red/west,
+/area/varadero/interior/morgue)
+"ah" = (
+/turf/closed/wall/r_wall/elevator/gears,
+/area/varadero/interior/hall_N)
+"ai" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"ak" = (
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"al" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 2;
+	pixel_y = 15;
+	explo_proof = 1;
+	unacidable = 1;
+	layer = 4.1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/comms4)
+"aq" = (
+/obj/structure/machinery/bot/medbot{
+	name = "FOXYBOT 3000";
+	desc = "A little medical robot. He looks somewhat traumatized."
+	},
+/turf/open/floor/prison/chapel_carpet,
+/area/varadero/interior/chapel)
+"ar" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"ax" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"ay" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"aA" = (
+/obj/structure/machinery/conveyor,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"aD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/packageWrap,
+/obj/item/tool/hand_labeler,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"aF" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"aJ" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"aK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"aM" = (
+/obj/structure/prop/invuln/minecart_tracks,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"aQ" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/varadero/interior/hall_N)
+"aR" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 13
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"aU" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/comms4)
+"aX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/cargo)
+"aY" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"be" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"bg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"bi" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bk" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"bl" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"bm" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/exterior/farocean)
+"bp" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.01
+	},
+/obj/structure/catwalk,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/varadero/interior/maintenance/north)
+"bu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"bw" = (
+/obj/item/facepaint/sunscreen_stick,
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/lz1_near)
+"bx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/greenfull/west,
+/area/varadero/interior/hall_N)
+"bz" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Underground Chapel"
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"bA" = (
+/obj/structure/surface/rack,
+/obj/item/tool/crowbar,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"bC" = (
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/maintenance/north)
+"bG" = (
+/obj/structure/machinery/conveyor_switch,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"bH" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10
+	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"bL" = (
+/turf/open/floor/asteroidwarning/east,
+/area/varadero/exterior/lz1_near)
+"bO" = (
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"bR" = (
+/obj/item/stool{
+	layer = 2.5;
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"bS" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/cargo)
+"bU" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
+"bV" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"cb" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"cd" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"ce" = (
+/obj/item/stack/sheet/wood/small_stack,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"cg" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/prop/invuln/minecart_tracks,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"ch" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"ci" = (
+/obj/structure/prop/invuln/minecart_tracks,
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"cj" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/item/trash/crushed_cup,
+/obj/item/prop/magazine/dirty/torn,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"ck" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"cl" = (
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access/dormatory,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/hall_N)
+"cm" = (
+/turf/open/floor/asteroidwarning/north,
+/area/varadero/exterior/lz1_near)
+"cn" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"cq" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/shuttle/elevator/grating,
+/area/varadero/interior/hall_N)
+"cs" = (
+/turf/open/floor/plating,
+/area/varadero/interior/morgue)
+"cx" = (
+/obj/structure/closet/crate/secure,
+/obj/item/trash/sosjerky,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"cA" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"cF" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/comms4)
+"cG" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"cI" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"cJ" = (
+/obj/structure/largecrate/random/mini/chest/b,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"cK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellowcorners,
+/area/varadero/interior/cargo)
+"cM" = (
+/obj/item/tool/shovel/spade,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"cQ" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"cR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"cS" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "Underground Hangar Power Substation";
+	req_access = null
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/maintenance/north)
+"cT" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"cU" = (
+/turf/open/floor/plating/icefloor/warnplate,
+/area/varadero/interior/maintenance/north)
+"cW" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 9
+	},
+/area/varadero/interior/hall_N)
+"da" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/obj/structure/machinery/alarm{
+	pixel_y = 24
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"db" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt/desert1,
+/area/varadero/exterior/lz1_near)
+"dd" = (
+/obj/structure/closet/toolcloset,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"de" = (
+/obj/item/book/manual/hydroponics_beekeeping,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"dg" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"di" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/plating/icefloor,
+/area/varadero/exterior/lz1_near)
+"dz" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"dC" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/pontoon_beach)
+"dG" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/gm/coast/beachcorner/south_east,
+/area/varadero/exterior/pontoon_beach)
+"dR" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/hall_N)
+"dS" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"eb" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"ed" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/largecrate/random/mini/small_case/b{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/blue{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"ef" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent4";
+	pixel_y = 25
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 10;
+	pixel_y = 22;
+	explo_proof = 1;
+	unacidable = 1;
+	layer = 4.1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/comms4)
+"ei" = (
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"ek" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"eu" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"ey" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"ez" = (
+/turf/open/floor/shiva/red/north,
+/area/varadero/interior/morgue)
+"eB" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/glass{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"eF" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/warnplate/east,
+/area/varadero/exterior/lz1_near)
+"eG" = (
+/obj/structure/catwalk,
+/obj/structure/largecrate/random,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/varadero/interior/maintenance/north)
+"eH" = (
+/turf/open/floor/shiva/multi_tiles/west,
+/area/varadero/interior/maintenance/north)
+"eR" = (
+/obj/effect/landmark/hunter_secondary,
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"eS" = (
+/obj/structure/catwalk,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.01
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/varadero/interior/maintenance/north)
+"eT" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_bishop{
+	pixel_x = -10;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/blood/empty{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/item/storage/box/cups{
+	pixel_x = -13;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"eV" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/west,
+/area/varadero/exterior/pontoon_beach)
+"eY" = (
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/shiva/redcorners,
+/area/varadero/interior/morgue)
+"fc" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/comms4)
+"ff" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"fh" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"fk" = (
+/obj/item/trash/barcardine,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"fo" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"fp" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"fr" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"fw" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"fx" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"fB" = (
+/obj/structure/largecrate/random,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"fC" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"fD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/scalpel,
+/turf/open/floor/shiva/red/north,
+/area/varadero/interior/morgue)
+"fE" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"fF" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"fG" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"fH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = -16;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"fJ" = (
+/turf/open/floor/asteroidwarning,
+/area/varadero/interior/comms1)
+"fM" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"fN" = (
+/obj/item/book/manual/detective,
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"fP" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/wood,
+/area/varadero/interior/chapel)
+"fR" = (
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"fS" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/lz1_near)
+"fT" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Underground Requesitions Bay"
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"fW" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/coast/north,
+/area/varadero/exterior/lz1_near)
+"fX" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"fZ" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/effect/overlay/palmtree_r,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"gb" = (
+/obj/item/explosive/mine/active{
+	dir = 4
+	},
+/turf/open/gm/dirt/desert1,
+/area/varadero/exterior/pontoon_beach)
+"gc" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"gd" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"gf" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/north)
+"gh" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"gm" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"go" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown{
+	explo_proof = 1;
+	unacidable = 1;
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -15;
+	pixel_y = 5;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/gm/coast/south,
+/area/varadero/exterior/pontoon_beach)
+"gx" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
+"gy" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"gz" = (
+/obj/item/ore/diamond,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"gA" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"gB" = (
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"gD" = (
+/obj/structure/machinery/requests_console{
+	icon_state = "req_comp_open"
+	},
+/turf/closed/wall,
+/area/varadero/interior/cargo)
+"gH" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"gI" = (
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"gK" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"gL" = (
+/obj/structure/surface/table,
+/obj/item/circuitboard/machine/batteryrack,
+/obj/item/stack/cable_coil{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/morgue)
+"gN" = (
+/turf/open/floor/plating/icefloor,
+/area/varadero/exterior/lz1_near)
+"gO" = (
+/obj/structure/prop/almayer/computers/sensor_computer2,
+/turf/open/floor/prison/darkredfull2,
+/area/varadero/interior/dock_control)
+"gS" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"gT" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"gY" = (
+/obj/structure/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"hb" = (
+/obj/structure/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"hd" = (
+/obj/structure/closet/crate/secure,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/trash/wy_chips_pepper,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"hh" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"hi" = (
+/turf/open/floor/bcircuit,
+/area/varadero/interior/maintenance/north)
+"hm" = (
+/obj/item/stack/sheet/wood/small_stack,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"hp" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/trash/candle,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"hr" = (
+/obj/structure/prop/turbine,
+/obj/structure/prop/turbine_extras/border,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"hs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"ht" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/shield/riot,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"hw" = (
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"hy" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"hB" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"hD" = (
+/obj/item/tool/wrench{
+	pixel_x = -1;
+	pixel_y = -2
+	},
+/obj/item/stack/tile/plasteel{
+	layer = 2.89;
+	pixel_x = 17;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"hF" = (
+/turf/open/gm/dirt/desert_dug,
+/area/varadero/exterior/lz1_near)
+"hG" = (
+/obj/structure/machinery/power/port_gen/pacman/mrs,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"hI" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/coast/west,
+/area/varadero/exterior/pontoon_beach)
+"hL" = (
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"hP" = (
+/turf/open/gm/coast/beachcorner/north_west,
+/area/varadero/exterior/pontoon_beach)
+"hQ" = (
+/obj/structure/prop/broken_arcade,
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"hR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/chapel_carpet,
+/area/varadero/interior/chapel)
+"hS" = (
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/pontoon_beach)
+"hZ" = (
+/turf/closed/wall,
+/area/varadero/interior/oob)
+"ib" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"id" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/item/trash/barcardine,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"ig" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"il" = (
+/obj/item/stool{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"im" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"io" = (
+/obj/structure/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"it" = (
+/turf/open/floor/shiva/red/southeast,
+/area/varadero/interior/morgue)
+"iv" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/pontoon_beach)
+"iH" = (
+/obj/structure/machinery/light,
+/obj/structure/closet/toolcloset,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"iI" = (
+/obj/vehicle/powerloader/ft,
+/turf/open/shuttle/elevator/grating,
+/area/varadero/interior/hall_N)
+"iL" = (
+/obj/structure/window/framed/colony/reinforced/hull,
+/turf/open/floor/plating/icefloor,
+/area/varadero/interior/dock_control)
+"iP" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"iQ" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/dock_control)
+"iT" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15
+	},
+/obj/structure/sign/safety/hvac_old,
+/turf/closed/wall,
+/area/varadero/interior/cargo)
+"iW" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"iY" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/cargo)
+"iZ" = (
+/obj/structure/filtration/coagulation_arm{
+	explo_proof = 1;
+	layer = 2.1;
+	density = 0
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 2.991
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/gm/river/desert/deep/covered,
+/area/varadero/interior/maintenance/north)
+"jd" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"je" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"jf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"jg" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/hall_N)
+"jj" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/cargo)
+"jk" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/warnplate,
+/area/varadero/interior/maintenance/north)
+"jo" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"ju" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"jv" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"jy" = (
+/obj/structure/largecrate/random,
+/turf/open/shuttle/elevator/grating,
+/area/varadero/interior/hall_N)
+"jA" = (
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 6
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"jB" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 8;
+	explo_proof = 1
+	},
+/obj/structure/sign/safety/bulkhead_door,
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/cargo)
+"jO" = (
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"jR" = (
+/turf/open/gm/dirt/desert3,
+/area/varadero/exterior/lz1_near)
+"jS" = (
+/mob/living/simple_animal/cat{
+	desc = "A domesticated, feline pet. The collar says 'Orion'.";
+	name = "Orion";
+	real_name = "Orion"
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/morgue)
+"jT" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"jV" = (
+/obj/structure/largecrate/random,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"jW" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/cargo)
+"jX" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"jZ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Underground Requesitions Office";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"ka" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"kb" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"kf" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/asteroidwarning,
+/area/varadero/exterior/lz1_near)
+"kn" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"kp" = (
+/turf/open/gm/coast/west,
+/area/varadero/exterior/pontoon_beach)
+"kq" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/shuttle/elevator,
+/area/varadero/interior/hall_N)
+"kt" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/newspaper{
+	desc = "It's a character sheet from the critically acclaimed TTRPG Pinwizard IV.";
+	name = "character sheet";
+	pixel_x = -3
+	},
+/obj/item/toy/dice/d20{
+	pixel_x = 13;
+	pixel_y = 10
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"kA" = (
+/obj/structure/machinery/conveyor,
+/obj/structure/largecrate/random,
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"kD" = (
+/obj/structure/surface/table,
+/obj/structure/largecrate/random/mini/chest{
+	pixel_x = -4;
+	pixel_y = 13
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"kO" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"kP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"kS" = (
+/turf/open/floor/shiva/yellowcorners/north,
+/area/varadero/interior/cargo)
+"kU" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"kV" = (
+/obj/item/reagent_container/food/snacks/fishfingers{
+	pixel_y = 7
+	},
+/obj/structure/surface/table,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"kW" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"kX" = (
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"le" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/beachcorner/north_east,
+/area/varadero/exterior/comms4)
+"lm" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"lr" = (
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"ls" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "cargobay";
+	name = "\improper Requesitions Storage Shutters"
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"lv" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-3";
+	name = "book case"
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"lw" = (
+/turf/open/floor/shiva/green/west,
+/area/varadero/interior/maintenance/north)
+"lx" = (
+/obj/structure/sign/safety/bulkhead_door,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/north)
+"lB" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"lG" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"lH" = (
+/obj/item/book/manual/evaguide,
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"lJ" = (
+/turf/open/floor/shiva/red,
+/area/varadero/interior/morgue)
+"lM" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	pixel_x = -18;
+	pixel_y = -8
+	},
+/obj/structure/prop/ice_colony/dense/planter_box/hydro{
+	pixel_x = -17;
+	pixel_y = -19
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"lO" = (
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"lP" = (
+/obj/structure/prop/turbine_extras,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"lR" = (
+/obj/structure/catwalk,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/varadero/interior/maintenance/north)
+"lS" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_2"
+	},
+/turf/open/gm/dirt/desert3,
+/area/varadero/exterior/lz1_near)
+"lT" = (
+/obj/structure/machinery/landinglight/ds2,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"lY" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 5
+	},
+/area/varadero/interior/hall_N)
+"ma" = (
+/obj/structure/morgue,
+/turf/open/floor/shiva/red/east,
+/area/varadero/interior/morgue)
+"mb" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"mc" = (
+/turf/open/floor/asteroidwarning/southeast,
+/area/varadero/exterior/lz1_near)
+"md" = (
+/obj/structure/machinery/conveyor,
+/obj/item/paper_bin,
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"mf" = (
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"mi" = (
+/obj/structure/prop/turbine_extras,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"mj" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"ml" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/dock_control)
+"mm" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"mn" = (
+/obj/structure/sign/safety/water{
+	pixel_x = 15
+	},
+/turf/closed/wall,
+/area/varadero/interior/library)
+"mr" = (
+/obj/structure/pipes/binary/passive_gate,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/varadero/interior/maintenance/north)
+"mD" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"mG" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_x = 3;
+	pixel_y = 17
+	},
+/obj/item/tool/weldpack{
+	pixel_x = -2;
+	pixel_y = 11
+	},
+/obj/structure/barricade/handrail/wire,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"mN" = (
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"mU" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/varadero/interior/cargo)
+"mW" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"mZ" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/varadero/exterior/pontoon_beach/lz)
+"nc" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Underground Library";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/maintenance/north)
+"nf" = (
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/floor/asteroidwarning/west,
+/area/varadero/exterior/lz1_near)
+"nh" = (
+/obj/structure/largecrate/random,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"no" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/cargo)
+"nu" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"nw" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"nA" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"nC" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"nE" = (
+/obj/structure/plasticflaps/mining,
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"nF" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"nJ" = (
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"nN" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/glass{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"nR" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/gm/dirt,
+/area/varadero/interior/maintenance/north)
+"nS" = (
+/obj/structure/closet/toolcloset,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"nW" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/comms4)
+"oe" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/chapel)
+"of" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"og" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"oi" = (
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"ok" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"ol" = (
+/obj/structure/window/framed/colony,
+/obj/structure/sign/banners/happybirthdaysteve,
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"oo" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"oq" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/cargo)
+"os" = (
+/obj/item/explosive/mine/active,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"ow" = (
+/obj/structure/surface/table,
+/obj/item/storage/wallet/random{
+	pixel_y = 3
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"oz" = (
+/turf/open/floor/carpet,
+/area/varadero/interior/maintenance/north)
+"oA" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"oB" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2";
+	pixel_x = 21
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"oD" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/coast/west,
+/area/varadero/exterior/lz1_near)
+"oE" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"oG" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"oH" = (
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet/crate/ammo/alt,
+/obj/item/ammo_magazine/rifle/m4ra{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/rifle/m4ra{
+	pixel_y = -5;
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/rifle{
+	pixel_x = -7
+	},
+/turf/open/shuttle/elevator/grating,
+/area/varadero/interior/hall_N)
+"oJ" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"oK" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"oN" = (
+/obj/structure/closet/crate/ammo/alt,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78{
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78{
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"oO" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/autopsy_scanner{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/structure/prop/server_equipment/laptop{
+	pixel_x = -16;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/shiva/red,
+/area/varadero/interior/morgue)
+"oP" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"oQ" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/varadero/interior/dock_control)
+"oS" = (
+/obj/structure/catwalk,
+/turf/open/floor/plating/plating_catwalk,
+/area/varadero/interior/maintenance/north)
+"oW" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"oX" = (
+/obj/structure/machinery/light,
+/turf/open/floor/asteroidwarning,
+/area/varadero/interior/comms1)
+"oY" = (
+/obj/item/explosive/mine/active{
+	dir = 4
+	},
+/turf/open/gm/coast/beachcorner/north_west,
+/area/varadero/exterior/lz1_near)
+"oZ" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"pa" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/library)
+"pb" = (
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"pd" = (
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
+"pg" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"ph" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/shiva/green/west,
+/area/varadero/interior/hall_N)
+"pi" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"pj" = (
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 22
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"pr" = (
+/turf/open/gm/dirt/desert_dug,
+/area/varadero/exterior/pontoon_beach)
+"pt" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"py" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 8
+	},
+/obj/structure/machinery/floodlight/landing/floor{
+	pixel_x = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"pz" = (
+/obj/structure/surface/table,
+/obj/item/device/binoculars,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"pC" = (
+/obj/item/tool/pickaxe,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"pD" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/maintenance/north)
+"pF" = (
+/turf/open/gm/coast/east,
+/area/varadero/exterior/comms4)
+"pJ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/northwest,
+/area/varadero/interior/cargo)
+"pL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"pN" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"pP" = (
+/obj/item/paper/crumpled/bloody,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/morgue)
+"pV" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"pW" = (
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"pY" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/chapel)
+"qb" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/comms4)
+"qc" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"qg" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/shiva/green/west,
+/area/varadero/interior/maintenance/north)
+"qh" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"qi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"qo" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/lz1_near)
+"qp" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"qv" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/gm/dirt/desert3,
+/area/varadero/exterior/lz1_near)
+"qz" = (
+/obj/item/device/camera{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/item/evidencebag{
+	pixel_x = 13;
+	pixel_y = 5
+	},
+/obj/structure/surface/table,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"qA" = (
+/obj/structure/bed/chair,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"qC" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/icefloor/warnplate/north,
+/area/varadero/exterior/lz1_near)
+"qD" = (
+/obj/structure/machinery/bot/mulebot,
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"qE" = (
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"qG" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"qI" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"qK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/closet/crate/ammo/alt,
+/obj/item/storage/belt/utility,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"qM" = (
+/turf/open/floor/shiva/multi_tiles/west,
+/area/varadero/interior/cargo)
+"qP" = (
+/turf/closed/wall,
+/area/varadero/interior/cargo)
+"qR" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/pontoon_beach)
+"qU" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"qV" = (
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"qY" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/comms1)
+"qZ" = (
+/obj/structure/machinery/light,
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"ra" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"rd" = (
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	id = "undergroundhangarsouth";
+	unacidable = 1;
+	name = "Pontoon South Door";
+	openspeed = 17
+	},
+/turf/open/floor/plating/icefloor/warnplate/north,
+/area/varadero/interior/maintenance/north)
+"rf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/red/southwest,
+/area/varadero/interior/morgue)
+"ri" = (
+/turf/open/gm/coast/beachcorner/north_west,
+/area/varadero/exterior/lz1_near)
+"rk" = (
+/turf/open/gm/coast/north,
+/area/varadero/exterior/pontoon_beach)
+"rp" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"rr" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"rw" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/wall,
+/area/varadero/interior/hall_N)
+"rx" = (
+/obj/structure/closet/crate/secure,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"rA" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/lz1_near)
+"rC" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"rD" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/item/tool/warning_cone,
+/obj/item/explosive/mine/active{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"rG" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"rH" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"rJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/guestpass{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"rL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Underground Library";
+	req_one_access = null;
+	req_access = null
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"rO" = (
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"rP" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/hall_N)
+"rQ" = (
+/obj/item/fishing_pole{
+	anchored = 1
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/pontoon_beach)
+"rR" = (
+/obj/structure/largecrate/random,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"rS" = (
+/obj/structure/machinery/light,
+/turf/open/floor/bcircuit,
+/area/varadero/interior/maintenance/north)
+"rU" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor/shiva/yellow/southeast,
+/area/varadero/interior/cargo)
+"rY" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"sb" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-3";
+	name = "book case"
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"se" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"sj" = (
+/turf/open/floor/asteroidwarning/west,
+/area/varadero/exterior/lz1_near)
+"sk" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"sl" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname,
+/turf/open/floor/wood,
+/area/varadero/interior/dock_control)
+"sm" = (
+/obj/item/facepaint/sunscreen_stick,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"sq" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"sr" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"ss" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "cargobay";
+	name = "Cargo Bay Lock";
+	pixel_y = 20
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"su" = (
+/turf/open/floor/shiva/multi_tiles/east,
+/area/varadero/interior/morgue)
+"sv" = (
+/obj/structure/machinery/alarm{
+	pixel_y = 24
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"sy" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"sD" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/item/reagent_container/food/snacks/wrapped/chunk{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/structure/surface/table,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"sE" = (
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe/jackhammer,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"sG" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"sI" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"sK" = (
+/obj/structure/prop/fishing/line/long/part2,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"sP" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"sV" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"sW" = (
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/lz1_near)
+"sZ" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/north)
+"td" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/prop/magazine/boots,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"tf" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"tg" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/paper_bin/uscm{
+	pixel_x = 12;
+	pixel_y = 14
+	},
+/obj/item/weapon/twohanded/fireaxe,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"tj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/guestpass{
+	dir = 1
+	},
+/obj/item/card/id/silver/clearance_badge{
+	pixel_x = 14
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"tp" = (
+/obj/item/device/flashlight,
+/turf/open/gm/dirt/desert3,
+/area/varadero/exterior/lz1_near)
+"tq" = (
+/obj/item/tool/kitchen/knife,
+/obj/structure/surface/table,
+/turf/open/floor/asteroidwarning/east,
+/area/varadero/exterior/lz1_near)
+"ts" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/trash/crushed_cup,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"tt" = (
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/hall_N)
+"tu" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"tC" = (
+/obj/structure/closet/crate/radiation,
+/obj/item/stack/sheet/mineral/phoron/medium_stack{
+	pixel_x = -5
+	},
+/obj/item/stack/sheet/mineral/uranium/small_stack{
+	pixel_y = -7;
+	pixel_x = 5
+	},
+/obj/item/stack/sheet/mineral/lead{
+	pixel_x = 2;
+	pixel_y = 6;
+	amount = 5
+	},
+/turf/open/shuttle/elevator,
+/area/varadero/interior/hall_N)
+"tE" = (
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/hall_N)
+"tF" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/research)
+"tK" = (
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/pontoon_beach)
+"tM" = (
+/obj/structure/barricade/metal/wired,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"tR" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/comms4)
+"tS" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"tT" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-3";
+	name = "book case"
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"tW" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"tX" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"ub" = (
+/turf/open/gm/dirt/desert1,
+/area/varadero/exterior/pontoon_beach)
+"uc" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/pontoon_beach)
+"ug" = (
+/turf/open/floor/asteroidwarning/southwest,
+/area/varadero/exterior/lz1_near)
+"uh" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"uj" = (
+/turf/open/floor/asteroidwarning/northwest,
+/area/varadero/exterior/lz1_near)
+"um" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/comms4)
+"ur" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/pontoon_beach/lz)
+"uv" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"ux" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/camera{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/shiva/red,
+/area/varadero/interior/morgue)
+"uy" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-5";
+	name = "book case"
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"uA" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"uF" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/asteroidwarning,
+/area/varadero/interior/comms1)
+"uG" = (
+/turf/open/floor/shiva/yellowcorners/east,
+/area/varadero/interior/cargo)
+"uJ" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = -3
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/interior/cargo)
+"uN" = (
+/obj/structure/bed/chair/wood/normal,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"uP" = (
+/turf/open/floor/shiva/north,
+/area/varadero/interior/morgue)
+"uS" = (
+/obj/structure/largecrate/supply/medicine/medkits,
+/turf/open/floor/shiva/red/north,
+/area/varadero/interior/morgue)
+"uU" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/machinery/constructable_frame,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"uV" = (
+/obj/structure/closet/crate/ammo/alt/flame,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"uX" = (
+/obj/structure/machinery/floodlight/landing{
+	desc = "A powerful light stationed near construction zones to provide better visibility.";
+	name = "Construction Light"
+	},
+/obj/effect/decal/warning_stripes,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"uY" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/item/book/manual/research_and_development,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"uZ" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/pontoon_beach)
+"vb" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/pontoon_beach)
+"vc" = (
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 22
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"vd" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"ve" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/comms4)
+"vf" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Underground Requesitions Freezer";
+	req_access_txt = "100"
+	},
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"vg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"vi" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/icefloor,
+/area/varadero/exterior/lz1_near)
+"vk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"vm" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"vo" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"vp" = (
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"vr" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"vw" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"vx" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"vy" = (
+/turf/closed/wall,
+/area/varadero/interior/maintenance/north)
+"vz" = (
+/obj/item/cell/high,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"vA" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/item/trash/boonie,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"vD" = (
+/obj/item/trash/candle,
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"vE" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/lz1_near)
+"vF" = (
+/obj/structure/sign/safety/water,
+/turf/closed/wall,
+/area/varadero/interior/library)
+"vH" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"vP" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/comms4)
+"vU" = (
+/obj/structure/closet/crate,
+/obj/item/tool/stamp,
+/obj/item/tool/wet_sign,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"vV" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"vW" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
+"vX" = (
+/obj/item/circuitboard/apc,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"vZ" = (
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"wb" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"wc" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"we" = (
+/obj/item/tool/shovel/spade,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"wl" = (
+/obj/structure/bed/chair,
+/turf/open/floor/asteroidwarning/west,
+/area/varadero/exterior/lz1_near)
+"wq" = (
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"wt" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/interior/maintenance/north)
+"wv" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"wz" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/multi_tiles/east,
+/area/varadero/interior/morgue)
+"wB" = (
+/obj/item/stack/sandbags_empty/full,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"wH" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"wK" = (
+/obj/structure/machinery/conveyor,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"wM" = (
+/obj/item/storage/firstaid,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/morgue)
+"wN" = (
+/turf/open/gm/coast/east,
+/area/varadero/exterior/pontoon_beach)
+"wT" = (
+/turf/open/floor/shiva/yellow/northwest,
+/area/varadero/interior/cargo)
+"wU" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"wV" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"wW" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/drinks/bottle/holywater,
+/obj/item/tool/lighter/random{
+	pixel_x = -9;
+	pixel_y = 15
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"xa" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-3";
+	name = "book case"
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"xb" = (
+/obj/item/stack/sheet/metal/med_large_stack,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"xe" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/maintenance/north)
+"xh" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/hall_N)
+"xk" = (
+/turf/open/floor/plating/icefloor/warnplate/west,
+/area/varadero/interior/cargo)
+"xm" = (
+/obj/structure/largecrate/random,
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/comms4)
+"xn" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"xq" = (
+/obj/item/card/id/silver{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/structure/surface/table,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"xr" = (
+/obj/structure/machinery/door/airlock/multi_tile/elevator/research,
+/turf/open/shuttle/elevator/grating,
+/area/varadero/interior/hall_N)
+"xs" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/sheet/mineral/phoron/medium_stack,
+/obj/item/stack/sheet/metal/med_small_stack,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"xt" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	dir = 1;
+	icon_state = "warning_s"
+	},
+/turf/open/floor/shiva/green/west,
+/area/varadero/interior/hall_N)
+"xx" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"xB" = (
+/obj/item/tool/shovel,
+/turf/open/gm/dirt/desert_dug,
+/area/varadero/exterior/lz1_near)
+"xF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/shiva/yellowcorners/north,
+/area/varadero/interior/cargo)
+"xJ" = (
+/turf/open/gm/dirt/desert1,
+/area/varadero/exterior/lz1_near)
+"xL" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"xM" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/morgue)
+"xO" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"xQ" = (
+/obj/item/stool{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"xW" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"yc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"yf" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"yj" = (
+/obj/item/toy/deck/uno{
+	pixel_y = 6
+	},
+/obj/structure/surface/table,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"ym" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"yo" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"ys" = (
+/obj/structure/largecrate/random/mini/chest,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/maintenance/north)
+"yu" = (
+/obj/structure/machinery/door_control{
+	id = "undergroundhangarsouth";
+	name = "South Dock Door";
+	pixel_x = -24;
+	explo_proof = 1
+	},
+/turf/open/floor/plating/icefloor/warnplate,
+/area/varadero/interior/maintenance/north)
+"yw" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"yz" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"yA" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"yC" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"yD" = (
+/obj/structure/machinery/light,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"yE" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"yI" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/recharger{
+	pixel_y = 4
+	},
+/turf/open/floor/wood/wood_broken3,
+/area/varadero/interior/dock_control)
+"yJ" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"yN" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"yQ" = (
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"yU" = (
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/cargo)
+"yX" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/comms4)
+"za" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"zb" = (
+/obj/structure/morgue{
+	dir = 8
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"zd" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/farocean)
+"zg" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach)
+"zi" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"zk" = (
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"zn" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 9
+	},
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"zr" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt/desert2,
+/area/varadero/exterior/lz1_near)
+"zv" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/key/cargo_train,
+/turf/open/floor/shiva/yellowcorners,
+/area/varadero/interior/cargo)
+"zx" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"zy" = (
+/obj/structure/sign/safety/bulkhead_door,
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 3;
+	explo_proof = 1
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/exterior/lz1_near)
+"zA" = (
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 22
+	},
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/north)
+"zC" = (
+/obj/structure/reagent_dispensers/beerkeg/alt_dark,
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"zE" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"zF" = (
+/turf/open/gm/dirt/desert3,
+/area/varadero/interior/maintenance/north)
+"zG" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_y = 9
+	},
+/obj/item/tool/pen/blue,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"zI" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"zO" = (
+/obj/structure/lz_sign/new_varadero,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"zS" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"zU" = (
+/turf/open/floor/shiva/red/east,
+/area/varadero/interior/morgue)
+"zY" = (
+/obj/structure/prop/almayer/computers/sensor_computer1{
+	name = "computer"
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/varadero/interior/dock_control)
+"zZ" = (
+/obj/structure/surface/rack,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"Ae" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/warnplate/east,
+/area/varadero/exterior/lz1_near)
+"Aj" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Al" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Ap" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 4
+	},
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Aq" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/lz1_near)
+"Ar" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/comms4)
+"At" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/trash/ceramic_plate,
+/obj/item/trash/popcorn,
+/obj/item/trash/candy,
+/obj/item/tool/crowbar,
+/obj/item/tool/lighter/zippo,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"Au" = (
+/obj/structure/surface/rack,
+/obj/item/tool/crowbar/red,
+/obj/item/tank/emergency_oxygen,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Az" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/dock_control)
+"AD" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/platform/metal/almayer/north,
+/turf/open/gm/river/desert/deep/covered,
+/area/varadero/interior/maintenance/north)
+"AE" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/shuttle/elevator/grating,
+/area/varadero/interior/hall_N)
+"AK" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"AO" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/pontoon_beach)
+"AP" = (
+/turf/open/floor/wood,
+/area/varadero/interior/chapel)
+"AR" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"AT" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/newspaper{
+	desc = "It's a character sheet from the critically acclaimed TTRPG Pinwizard IV.";
+	name = "character sheet";
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"Be" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
+"Bg" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/hall_N)
+"Bh" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Bi" = (
+/turf/open/shuttle/elevator,
+/area/varadero/interior/hall_N)
+"Bk" = (
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"Bl" = (
+/obj/item/stool,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Bm" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/chapel)
+"Bo" = (
+/turf/open/floor/shiva/greenfull/west,
+/area/varadero/interior/hall_N)
+"Bp" = (
+/obj/item/storage/beer_pack,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"Bq" = (
+/turf/open/floor/shiva/yellow/northeast,
+/area/varadero/interior/cargo)
+"Bt" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/red{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/paper{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -14;
+	pixel_y = 14
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"Bw" = (
+/obj/structure/machinery/constructable_frame,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"Bx" = (
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/maintenance/north)
+"By" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Underground Requesitions Freezer";
+	req_access_txt = "100"
+	},
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"BG" = (
+/turf/open/floor/shiva/yellow/southeast,
+/area/varadero/interior/cargo)
+"BL" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"BR" = (
+/obj/item/stack/sheet/wood/small_stack,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"BS" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/comms4)
+"BW" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown{
+	explo_proof = 1;
+	unacidable = 1;
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
+	},
+/turf/open/gm/coast/south,
+/area/varadero/exterior/pontoon_beach)
+"BZ" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Ca" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown{
+	explo_proof = 1;
+	unacidable = 1;
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -15;
+	pixel_y = 16;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/pontoon_beach)
+"Cc" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/shiva/yellow/southeast,
+/area/varadero/interior/cargo)
+"Cf" = (
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access/dormatory,
+/turf/open/floor/shiva/greenfull/west,
+/area/varadero/interior/hall_N)
+"Cg" = (
+/turf/open/gm/coast/beachcorner/south_east,
+/area/varadero/exterior/pontoon_beach)
+"Cm" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Co" = (
+/turf/template_noop,
+/area/template_noop)
+"Cp" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Cq" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"Cr" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"Cs" = (
+/obj/structure/ore_box,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Ct" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Cy" = (
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"CB" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"CC" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe/drill{
+	pixel_y = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"CK" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/bed/roller,
+/turf/open/floor/shiva/red/west,
+/area/varadero/interior/morgue)
+"CL" = (
+/obj/item/reagent_container/glass/bucket,
+/turf/open/gm/dirt,
+/area/varadero/interior/maintenance/north)
+"CM" = (
+/obj/structure/machinery/light,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"CN" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"CV" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/item/explosive/mine/active{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"CW" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"CX" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"Da" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"Dd" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
+"Di" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Dj" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"Dm" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/machinery/alarm{
+	pixel_y = 24
+	},
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"Do" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/red/north,
+/area/varadero/interior/morgue)
+"Dp" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 4
+	},
+/obj/item/storage/bible/booze{
+	pixel_x = 6
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"Ds" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"Dv" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"DA" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"DB" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"DE" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/radiation,
+/obj/structure/barricade/handrail/wire,
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"DH" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"DI" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/east,
+/area/varadero/exterior/comms4)
+"DP" = (
+/obj/structure/plasticflaps/mining,
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"DQ" = (
+/obj/structure/machinery/conveyor,
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"DR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/tool/stamp,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"DS" = (
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"DT" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"DV" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_one_access = null;
+	req_access = null
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/north)
+"DW" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -13;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Ee" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Ef" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 6
+	},
+/area/varadero/interior/hall_N)
+"En" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/red/southeast,
+/area/varadero/interior/morgue)
+"Eo" = (
+/obj/structure/largecrate/random/case,
+/turf/open/shuttle/elevator,
+/area/varadero/interior/hall_N)
+"Ep" = (
+/obj/structure/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/shiva/yellow/northeast,
+/area/varadero/interior/cargo)
+"Eq" = (
+/obj/structure/bed/chair/comfy/beige,
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"Es" = (
+/obj/structure/closet/crate/secure,
+/obj/item/trash/chunk,
+/obj/item/trash/raisins,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Eu" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"Ew" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"Ex" = (
+/turf/open/gm/dirt/desert2,
+/area/varadero/exterior/lz1_near)
+"Ey" = (
+/obj/structure/reagent_dispensers/beerkeg/alt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"Ez" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/interior/hall_N)
+"EA" = (
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"EC" = (
+/obj/item/device/flashlight,
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"EH" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/greenfull/west,
+/area/varadero/interior/hall_N)
+"EM" = (
+/turf/open/floor/asteroidwarning/northeast,
+/area/varadero/exterior/lz1_near)
+"EN" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
+"ER" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/floor/asteroidwarning,
+/area/varadero/interior/comms1)
+"ES" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"ET" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"EX" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
+"Fc" = (
+/obj/structure/prop/fishing/line/long,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/pontoon_beach)
+"Ff" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/gm/coast/east,
+/area/varadero/exterior/comms4)
+"Fg" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Fi" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"Fj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"Fv" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/library)
+"Fy" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/hall_N)
+"FF" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/newspaper{
+	desc = "It's a character sheet from the critically acclaimed TTRPG Pinwizard IV.";
+	name = "character sheet";
+	pixel_y = 8
+	},
+/obj/item/toy/dice{
+	pixel_x = -7;
+	pixel_y = -6
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"FJ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"FK" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_x = -16;
+	pixel_y = 13
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"FO" = (
+/obj/structure/closet/wardrobe/chaplain_black,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/varadero/interior/chapel)
+"FP" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"FR" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/maintenance/north)
+"FS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"FY" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/comms4)
+"FZ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"Ga" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/glass{
+	amount = 30
+	},
+/obj/item/trash/crushed_cup,
+/obj/item/trash/c_tube,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Gd" = (
+/turf/open/shuttle/elevator/grating,
+/area/varadero/interior/hall_N)
+"Gj" = (
+/obj/structure/catwalk,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.01
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/varadero/interior/maintenance/north)
+"Gk" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "cargobay";
+	name = "\improper Requesitions Storage Shutters"
+	},
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/cargo)
+"Go" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Gs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"Gw" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Gz" = (
+/obj/item/book/manual/nuclear,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"GA" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"GC" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 9
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"GE" = (
+/obj/structure/largecrate/random/mini,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/maintenance/north)
+"GF" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"GH" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/pipes/binary/passive_gate,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/varadero/interior/maintenance/north)
+"GQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Underground Requesitions Lobby"
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"GT" = (
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"GV" = (
+/turf/open/gm/coast/beachcorner/north_east,
+/area/varadero/exterior/pontoon_beach)
+"Ha" = (
+/obj/structure/reagent_dispensers/water_cooler{
+	density = 0;
+	pixel_y = 19
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"Hb" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"Hc" = (
+/turf/closed/wall,
+/area/varadero/interior/dock_control)
+"Hh" = (
+/turf/open/floor/asteroidwarning,
+/area/varadero/exterior/lz1_near)
+"Hi" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/shiva/yellow/east,
+/area/varadero/interior/cargo)
+"Ht" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/comms4)
+"Hw" = (
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"Hx" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.01
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Hy" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/red/west,
+/area/varadero/interior/morgue)
+"HA" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"HB" = (
+/obj/item/explosive/mine/active{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/pontoon_beach)
+"HG" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"HH" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/gm/river/desert/deep/covered,
+/area/varadero/interior/maintenance/north)
+"HI" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/morgue)
+"HL" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_3"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/comms4)
+"HM" = (
+/obj/item/device/camera,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"HU" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/pontoon_beach)
+"HV" = (
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Ia" = (
+/obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"Ie" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Ih" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
+	dir = 1;
+	name = "LZ1 Pontoon Dock computer"
+	},
+/turf/open/floor/asteroidwarning/west,
+/area/varadero/exterior/lz1_console)
+"In" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Is" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -3
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"Iw" = (
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Iz" = (
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/obj/structure/closet/firecloset,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"IE" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"IG" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/varadero/exterior/pontoon_beach/lz)
+"IH" = (
+/obj/item/device/camera_film{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"IL" = (
+/obj/structure/prop/ice_colony/soil_net,
+/turf/open/gm/dirt/desert_dug,
+/area/varadero/interior/maintenance/north)
+"IS" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/comms4)
+"IW" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname,
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"IZ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_3"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"Jc" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Je" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_3"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Jf" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"Jh" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/varadero/interior/maintenance/north)
+"Jl" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/trash/chips,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Jr" = (
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Js" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	dir = 1;
+	icon_state = "warning_s"
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/varadero/interior/hall_N)
+"Jw" = (
+/obj/structure/prop/wooden_cross{
+	desc = "A grave to a fishing buddy, long gone"
+	},
+/obj/item/clothing/head/boaterhat{
+	pixel_y = 5
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"Jx" = (
+/obj/item/paper,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"JB" = (
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"JD" = (
+/obj/item/packageWrap,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"JH" = (
+/turf/open/floor/dark2,
+/area/varadero/interior/morgue)
+"JI" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/east,
+/area/varadero/exterior/comms4)
+"JL" = (
+/obj/structure/bed/chair/office/dark,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"JN" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/pontoon_beach/lz)
+"JO" = (
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/varadero/exterior/pontoon_beach)
+"JR" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"JT" = (
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"JX" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"JZ" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Ka" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray,
+/obj/item/storage/box/bodybags{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"Kb" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Kc" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/south,
+/area/varadero/exterior/pontoon_beach)
+"Kd" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown{
+	explo_proof = 1;
+	unacidable = 1;
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
+	},
+/turf/open/gm/coast/beachcorner/south_east,
+/area/varadero/exterior/pontoon_beach)
+"Kf" = (
+/obj/structure/machinery/light,
+/turf/open/floor/shiva/red/north,
+/area/varadero/interior/morgue)
+"Kg" = (
+/obj/structure/morgue,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/shiva/red/east,
+/area/varadero/interior/morgue)
+"Kh" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/coast/east,
+/area/varadero/exterior/comms4)
+"Ki" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/shiva/yellowcorners,
+/area/varadero/interior/cargo)
+"Kn" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Kr" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/plasticflaps/mining,
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"Kw" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"KC" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"KF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"KG" = (
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"KI" = (
+/obj/structure/machinery/door_control{
+	id = "undergroundhangarsouth";
+	name = "South Dock Door";
+	pixel_x = -32;
+	pixel_y = -18;
+	explo_proof = 1
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/icefloor/warnplate/north,
+/area/varadero/exterior/lz1_near)
+"KJ" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"KL" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 6
+	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"KO" = (
+/obj/structure/closet/crate/secure,
+/obj/item/trash/eat,
+/obj/item/trash/cheesie,
+/obj/item/reagent_container/food/drinks/flask/vacuumflask{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"KP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
+"KQ" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"KS" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/cargo)
+"KU" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/north)
+"KV" = (
+/turf/open/gm/coast/west,
+/area/varadero/exterior/lz1_near)
+"KW" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/comms4)
+"Ld" = (
+/turf/open/floor/shiva/red/northeast,
+/area/varadero/interior/morgue)
+"Le" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/plating,
+/area/varadero/interior/morgue)
+"Lh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"Ln" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
+"Lq" = (
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/shiva/multi_tiles/east,
+/area/varadero/interior/morgue)
+"Lr" = (
+/turf/open/floor/prison/chapel_carpet,
+/area/varadero/interior/chapel)
+"Lu" = (
+/obj/item/stack/sandbags_empty/half,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"Lx" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Ly" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"LA" = (
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	id = "undergroundhangarwest";
+	unacidable = 1;
+	name = "Pontoon West Door";
+	openspeed = 17;
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/warnplate/east,
+/area/varadero/interior/cargo)
+"LC" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"LE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/shiva/yellowcorners/west,
+/area/varadero/interior/cargo)
+"LG" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/shiva/red,
+/area/varadero/interior/morgue)
+"LH" = (
+/obj/structure/closet/wardrobe/chaplain_black,
+/turf/open/floor/wood,
+/area/varadero/interior/chapel)
+"LK" = (
+/obj/structure/closet/secure_closet/cargotech,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"LM" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"LN" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"LP" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"LQ" = (
+/turf/closed/wall,
+/area/varadero/interior/chapel)
+"LS" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"LV" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Mc" = (
+/obj/structure/machinery/conveyor,
+/obj/structure/plasticflaps,
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"Mj" = (
+/obj/structure/closet/crate/secure,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Mk" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Mn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/shiva/yellowcorners/east,
+/area/varadero/interior/cargo)
+"Mp" = (
+/obj/structure/surface/table,
+/obj/item/storage/pill_bottle/packet/bicaridine,
+/obj/item/tool/kitchen/utensil/pknife{
+	pixel_x = 9;
+	pixel_y = 2
+	},
+/obj/item/spacecash/c100{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Mr" = (
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"Ms" = (
+/obj/structure/machinery/photocopier{
+	pixel_y = 4
+	},
+/turf/open/floor/wood/wood_broken6,
+/area/varadero/interior/dock_control)
+"Mz" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"MB" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"MC" = (
+/turf/open/gm/coast/beachcorner/north_east,
+/area/varadero/exterior/comms4)
+"MH" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"MI" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"MP" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/book/manual/marine_law{
+	desc = "A set of guidelines for the player's of the Pinwizard game. Wait a minute, this is just a copy of Marine Law.";
+	name = "Pinwizard IV - Player's Handbook";
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/obj/item/book/manual/marine_law{
+	desc = "A set of guidelines for keeping a game of Pinwizard in check. Wait a minute, this is just a copy of Marine Law.";
+	name = "Pinwizard IV - Dungeon Master's Handbook";
+	pixel_x = 11;
+	pixel_y = 3
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"MR" = (
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"MV" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/coast/beachcorner/south_east,
+/area/varadero/exterior/pontoon_beach)
+"MY" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"Nb" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
+"Nk" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-4";
+	name = "book case"
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"Nm" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 10
+	},
+/area/varadero/interior/hall_N)
+"Nr" = (
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"Nt" = (
+/obj/item/tool/shovel/spade,
+/turf/open/gm/dirt,
+/area/varadero/interior/maintenance/north)
+"Nv" = (
+/obj/item/paper,
+/turf/open/floor/shiva/multi_tiles/east,
+/area/varadero/interior/morgue)
+"Nx" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Ny" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating,
+/area/varadero/interior/morgue)
+"NE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"NH" = (
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/asteroidwarning/west,
+/area/varadero/exterior/lz1_near)
+"NI" = (
+/obj/item/tool/mop{
+	pixel_x = -16;
+	pixel_y = 26
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"NJ" = (
+/obj/structure/closet/crate/secure,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/trash/kepler,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"NK" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"NO" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -11;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"NQ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"NR" = (
+/turf/open/floor/shiva/red/northwest,
+/area/varadero/interior/morgue)
+"NT" = (
+/obj/item/paper/crumpled,
+/turf/open/floor/shiva/red/west,
+/area/varadero/interior/morgue)
+"NV" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = -16;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"NY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/hall_N)
+"Oc" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/shuttle/elevator,
+/area/varadero/interior/hall_N)
+"Of" = (
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/pontoon_beach)
+"Oh" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Oj" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"Ol" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/gm/dirt,
+/area/varadero/interior/maintenance/north)
+"Ot" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"Ou" = (
+/obj/structure/closet/crate/freezer/cooler/oj,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/souto/grape,
+/obj/item/reagent_container/food/drinks/cans/souto/lime,
+/obj/item/reagent_container/food/drinks/cans/souto/grape,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Oz" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/green/west,
+/area/varadero/interior/hall_N)
+"OC" = (
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"OF" = (
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
+"OJ" = (
+/obj/structure/machinery/light,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"OL" = (
+/obj/structure/catwalk{
+	explo_proof = 1
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/varadero/interior/maintenance/north)
+"ON" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"OP" = (
+/turf/open/floor/shiva/green/west,
+/area/varadero/interior/hall_N)
+"OQ" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/varadero/interior/maintenance/north)
+"OR" = (
+/obj/item/tool/pickaxe,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"OT" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"OZ" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/pontoon_beach)
+"Pc" = (
+/obj/item/explosive/mine/active{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"Pe" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall,
+/area/varadero/interior/chapel)
+"Pg" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/yellowcorners/north,
+/area/varadero/interior/cargo)
+"Pi" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/yellowcorners/west,
+/area/varadero/interior/cargo)
+"Pr" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/west,
+/area/varadero/exterior/lz1_near)
+"PC" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 4
+	},
+/obj/item/prop/almayer/comp_open,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"PG" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"PH" = (
+/obj/structure/reagent_dispensers/beerkeg/alt,
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"PK" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"PL" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"PN" = (
+/turf/closed/wall/r_wall/elevator,
+/area/varadero/interior/hall_N)
+"PO" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"PP" = (
+/obj/structure/closet/toolcloset,
+/obj/structure/barricade/handrail/wire,
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"PQ" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
+"PR" = (
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"Qa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"Qc" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/varadero/interior/cargo)
+"Qf" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/maintenance/north)
+"Qg" = (
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"Qi" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"Qm" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "cargobay";
+	name = "\improper Requesitions Storage Shutters"
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Qq" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"Qt" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/plasticflaps/mining,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"Qu" = (
+/obj/item/trash/candle,
+/turf/open/floor/wood,
+/area/varadero/interior/chapel)
+"Qv" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 1
+	},
+/area/varadero/interior/hall_N)
+"Qy" = (
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/floor/shiva/green/west,
+/area/varadero/interior/hall_N)
+"QD" = (
+/turf/open/floor/wood,
+/area/varadero/interior/dock_control)
+"QJ" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/closet/crate/freezer/cooler,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/souto/grape,
+/obj/item/reagent_container/food/drinks/cans/souto/lime,
+/obj/item/reagent_container/food/drinks/cans/souto/peach,
+/obj/item/reagent_container/food/drinks/bottle/sake,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"QL" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"QM" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"QO" = (
+/obj/structure/surface/table,
+/obj/item/tool/weldpack{
+	pixel_x = -2;
+	pixel_y = 11
+	},
+/obj/item/tool/hand_labeler{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"QP" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall,
+/area/varadero/interior/cargo)
+"QR" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	pixel_x = -18;
+	pixel_y = -8
+	},
+/obj/structure/prop/ice_colony/dense/planter_box/hydro{
+	pixel_x = -17;
+	pixel_y = -19
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"QS" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"QT" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"QX" = (
+/obj/structure/machinery/conveyor_switch,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Re" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"Rh" = (
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
+"Ri" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Rm" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Rq" = (
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 22
+	},
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/dock_control)
+"Rr" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"Rs" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/caves/north_research)
+"Rv" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Ry" = (
+/obj/structure/largecrate/random/case,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"RA" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"RB" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/gm/dirt/desert3,
+/area/varadero/exterior/lz1_near)
+"RQ" = (
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"Sb" = (
+/obj/structure/surface/table/woodentable{
+	icon_state = "reinf_table"
+	},
+/obj/structure/machinery/door/window/brigdoor/westleft{
+	dir = 1;
+	icon_state = "leftsecure";
+	id = null;
+	name = "Requesitions Desk"
+	},
+/obj/structure/machinery/door/window/northright{
+	dir = 2;
+	name = "Requesitions Desk"
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/clipboard,
+/obj/structure/noticeboard{
+	pixel_x = 32
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"Se" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Sg" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 4
+	},
+/obj/structure/machinery/floodlight/landing/floor{
+	pixel_x = -1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Sh" = (
+/obj/structure/sign/safety/high_voltage,
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/north)
+"Sl" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/comms4)
+"Sn" = (
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/maintenance/north)
+"Sz" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"SD" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"SE" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall,
+/area/varadero/interior/maintenance/north)
+"SF" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"SG" = (
+/obj/structure/barricade/handrail/wire,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/cargo)
+"SH" = (
+/obj/item/stack/sheet/wood/small_stack,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"SM" = (
+/obj/structure/surface/table,
+/obj/item/tool/kitchen/knife{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"SP" = (
+/obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"SQ" = (
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"SW" = (
+/obj/structure/machinery/bot/mulebot,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Ta" = (
+/obj/structure/machinery/landinglight/ds2/delaythree,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Tb" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"Th" = (
+/obj/item/book/manual/security_space_law,
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"Ti" = (
+/turf/closed/wall,
+/area/varadero/interior/library)
+"Tj" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Tm" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 7;
+	pixel_y = 26;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 7;
+	pixel_y = 11;
+	name = "minefield hazard semiotic";
+	desc = "A signal denoting a minefield nearby. Watch out!"
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Tq" = (
+/obj/effect/sentry_landmark/lz_1/top_right,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Ts" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/pontoon_beach)
+"Tx" = (
+/obj/item/storage/belt/utility,
+/obj/structure/surface/rack,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"TB" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/red/west,
+/area/varadero/interior/morgue)
+"TC" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/beachcorner/north_west,
+/area/varadero/exterior/pontoon_beach/lz)
+"TD" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/item/reagent_container/food/snacks/wrapped/barcardine{
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/wrapped/barcardine,
+/obj/item/reagent_container/food/snacks/wrapped/barcardine{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/structure/surface/table,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"TE" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating,
+/area/varadero/interior/morgue)
+"TH" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"TL" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/maintenance/north)
+"TN" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"TO" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"TQ" = (
+/obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/trash/chunk,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"TV" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"TW" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/maintenance/north)
+"TX" = (
+/obj/structure/closet/secure_closet/cargotech,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"TZ" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/cargo)
+"Ua" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent4";
+	pixel_y = 25
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Ud" = (
+/obj/item/stool{
+	layer = 2.5;
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"Ui" = (
+/obj/item/tool/wrench,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Uj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Uk" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Ul" = (
+/obj/structure/prop/turbine_extras/left,
+/obj/item/tool/crowbar,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"Um" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"Uo" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	dir = 9;
+	icon_state = "planter_box_soil"
+	},
+/obj/structure/flora/bush/ausbushes/pointybush{
+	pixel_y = 11
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
+"Uq" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/pontoon_beach/lz)
+"Ur" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"Us" = (
+/obj/structure/sign/safety/restrictedarea,
+/turf/closed/wall,
+/area/varadero/interior/dock_control)
+"Uw" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/varadero/interior/dock_control)
+"UA" = (
+/obj/structure/closet/crate/ammo/alt,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/revolver/cmb{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"UC" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/barricade/metal/wired,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"UD" = (
+/obj/structure/prop/dam/van{
+	desc = "An older Weyland Yutani space crawler. These things are most commonly seen along former trails on shake and bake colonies.";
+	icon_state = "crawler_crate_wy";
+	name = "crawler";
+	pixel_y = 7
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"UE" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/pontoon_beach/lz)
+"UT" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"UY" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/dirt,
+/area/varadero/exterior/comms4)
+"Vc" = (
+/turf/open/gm/dirt,
+/area/varadero/interior/maintenance/north)
+"Vd" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Ve" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	dir = 1;
+	icon_state = "warning_s"
+	},
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
+"Vf" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Vi" = (
+/turf/open/floor/shiva/multi_tiles/west,
+/area/varadero/interior/hall_N)
+"Vk" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/cargo)
+"Vp" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirt/desert3,
+/area/varadero/exterior/lz1_near)
+"Vq" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/book/manual/security_space_law{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet,
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/wood,
+/area/varadero/interior/dock_control)
+"Vs" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Vt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"Vx" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"VC" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = -3
+	},
+/obj/item/tool/hatchet{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/pontoon_beach)
+"VE" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/varadero/interior/maintenance/north)
+"VF" = (
+/obj/structure/closet/crate/secure,
+/obj/item/trash/popcorn,
+/obj/item/hardpoint/locomotion/van_wheels,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"VG" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt/desert1,
+/area/varadero/exterior/lz1_near)
+"VJ" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"VN" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"VO" = (
+/turf/open/gm/dirt/desert_dug,
+/area/varadero/interior/maintenance/north)
+"VX" = (
+/obj/structure/prop/turbine_extras/left,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"VY" = (
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/lz1_near)
+"VZ" = (
+/obj/item/tool/candle,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"Wa" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Wc" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown{
+	explo_proof = 1;
+	unacidable = 1;
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable."
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"Wd" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall,
+/area/varadero/interior/cargo)
+"We" = (
+/obj/item/ore/coal,
+/obj/item/ore/silver{
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Wg" = (
+/turf/open/gm/dirt/desert2,
+/area/varadero/exterior/pontoon_beach)
+"Wh" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-5";
+	name = "book case"
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"Wk" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/turf/open/floor/shiva/yellow/southwest,
+/area/varadero/interior/cargo)
+"Wl" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"Wp" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"Wt" = (
+/obj/structure/sign/safety/water{
+	pixel_x = 15
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/hall_N)
+"Wu" = (
+/obj/structure/closet/crate/freezer/rations,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -3
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 6
+	},
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"Wv" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"Wx" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Wy" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
+"WA" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"WC" = (
+/obj/structure/morgue,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"WD" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"WE" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"WF" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"WI" = (
+/obj/structure/largecrate/random,
+/obj/structure/largecrate/random/mini{
+	pixel_x = 1;
+	pixel_y = 14
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"WJ" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
+"WN" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/plasticflaps/mining,
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"WP" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"WR" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 4
+	},
+/area/varadero/interior/hall_N)
+"WW" = (
+/obj/structure/closet/crate/freezer,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"WY" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Xb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Xc" = (
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe/drill{
+	pixel_x = -2;
+	pixel_y = -3
+	},
+/obj/item/tool/pickaxe/drill{
+	pixel_y = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms1)
+"Xe" = (
+/obj/structure/closet/crate,
+/obj/item/tool/lighter,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Xh" = (
+/obj/effect/landmark/ert_spawns/groundside_xeno,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Xk" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"Xn" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/maintenance/north)
+"Xo" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"Xp" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Xr" = (
+/obj/structure/closet/crate/ammo/alt,
+/obj/item/trash/ceramic_plate,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
+"Xt" = (
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 22
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
+"Xx" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"XB" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"XD" = (
+/turf/closed/wall/r_wall/elevator{
+	dir = 8
+	},
+/area/varadero/interior/hall_N)
+"XE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"XF" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"XH" = (
+/obj/structure/window/framed/colony/reinforced/hull{
+	explo_proof = 1
+	},
+/turf/open/floor/plating/icefloor,
+/area/varadero/interior/maintenance/north)
+"XI" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/comms1)
+"XN" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/comms4)
+"XR" = (
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"XV" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/north)
+"XW" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/morgue)
+"XX" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-5";
+	name = "book case"
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"XZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Ya" = (
+/obj/item/explosive/mine/active{
+	dir = 4
+	},
+/turf/open/gm/coast/west,
+/area/varadero/exterior/lz1_near)
+"Yc" = (
+/obj/structure/machinery/conveyor,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Yk" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"Yl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/cargo)
+"Yn" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
+"Yp" = (
+/obj/structure/prop/turbine,
+/obj/structure/prop/turbine_extras/border,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/comms1)
+"Yq" = (
+/obj/structure/machinery/optable{
+	desc = "This maybe could be used for advanced medical procedures.";
+	name = "Exam Table"
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"Yr" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"Yt" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/north)
+"Yv" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
+"YK" = (
+/turf/closed/wall,
+/area/varadero/interior/hall_N)
+"YM" = (
+/obj/item/stack/sandbags/large_stack,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"YO" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/adv,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
+"YT" = (
+/turf/open/floor/shiva/north,
+/area/varadero/interior/hall_N)
+"YV" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent4";
+	pixel_y = 25
+	},
+/obj/structure/sign/safety/waterhazard,
+/obj/structure/sign/safety/water{
+	pixel_x = 15
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz1_near)
+"YZ" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach/lz)
+"Zb" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"Zd" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/dark2,
+/area/varadero/interior/morgue)
+"Ze" = (
+/turf/open/gm/coast/south,
+/area/varadero/exterior/pontoon_beach)
+"Zh" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/cargo)
+"Zl" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/pontoon_beach)
+"Zq" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
+"Zr" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"Zs" = (
+/obj/item/storage/fancy/candle_box,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"Zt" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/cargo)
+"Zv" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/carpet,
+/area/varadero/interior/maintenance/north)
+"Zw" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/platform/metal/almayer/north,
+/turf/open/gm/river/desert/deep/covered,
+/area/varadero/interior/maintenance/north)
+"ZE" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
+"ZF" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/bible/booze,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+"ZH" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"ZI" = (
+/obj/structure/surface/table,
+/obj/item/stack/sheet/plasteel{
+	amount = 24
+	},
+/turf/open/floor/shiva/yellow/southwest,
+/area/varadero/interior/cargo)
+"ZL" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/hall_N)
+"ZN" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/morgue)
+"ZO" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating/icefloor,
+/area/varadero/exterior/lz1_near)
+"ZP" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall,
+/area/varadero/interior/library)
+"ZQ" = (
+/obj/structure/prop/almayer/computers/sensor_computer3,
+/turf/open/floor/prison/darkredfull2,
+/area/varadero/interior/dock_control)
+"ZW" = (
+/obj/item/weapon/sword/katana,
+/turf/open/floor/carpet,
+/area/varadero/interior/chapel)
+
+(1,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+XI
+XI
+XI
+XI
+XI
+XN
+IS
+MC
+pF
+ve
+Ht
+cF
+cF
+cF
+Kh
+pF
+pF
+yX
+qb
+Ht
+cF
+cF
+cF
+Ar
+vP
+xm
+KW
+Sl
+Sl
+Be
+Be
+fH
+tF
+Rs
+Rs
+Rs
+GT
+zS
+"}
+(2,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+XI
+JX
+MR
+Ot
+XI
+KS
+XN
+HL
+XN
+MC
+Ff
+cF
+ef
+cF
+BS
+aU
+UY
+le
+JI
+DI
+cF
+ef
+cF
+tR
+FY
+nW
+nW
+nW
+al
+Be
+Be
+aK
+tF
+Rs
+Rs
+Rs
+gA
+gA
+"}
+(3,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+MY
+RQ
+RQ
+RQ
+Xc
+KS
+KS
+KS
+KS
+KS
+qP
+cF
+um
+cF
+qP
+ff
+qP
+ff
+qP
+qP
+fc
+um
+cF
+qP
+KS
+KS
+KS
+KS
+KS
+Be
+Be
+aK
+tF
+Rs
+Rs
+gA
+gA
+uv
+"}
+(4,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+sq
+QM
+QM
+mi
+sE
+qP
+qP
+qP
+qP
+qP
+qP
+ff
+qP
+nN
+qP
+TX
+LK
+QO
+kD
+qP
+ff
+qP
+eB
+qP
+qP
+qP
+qP
+qP
+qP
+iW
+iW
+Fj
+iY
+Rs
+sk
+gA
+gA
+gA
+"}
+(5,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+mW
+QM
+QM
+Yp
+fJ
+qP
+cQ
+Bk
+Ey
+PH
+PH
+zC
+qP
+wT
+lr
+lr
+lr
+lr
+lr
+Bw
+Wk
+hy
+wT
+fx
+lr
+lr
+lr
+fx
+hy
+jo
+ar
+hs
+sP
+gA
+gA
+gA
+WA
+gA
+"}
+(6,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+sq
+QM
+QM
+Ul
+oX
+qP
+Dm
+Bk
+Bk
+Bk
+RA
+PH
+qP
+FZ
+Iw
+TZ
+Qg
+Qg
+Qg
+Qg
+fR
+QP
+vZ
+VF
+NJ
+oi
+hd
+mm
+qP
+lm
+iW
+NV
+sP
+gA
+gA
+gA
+GT
+GT
+"}
+(7,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+uU
+RQ
+RQ
+xb
+fJ
+By
+Bk
+Bk
+Bk
+Bk
+Gs
+Rr
+hy
+qD
+Iw
+ts
+cj
+SW
+oi
+mm
+LE
+ls
+xF
+Qg
+Qg
+Qg
+Qg
+Qg
+QP
+iW
+iW
+Fj
+oq
+Rs
+gA
+gA
+gA
+gA
+"}
+(8,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+Zq
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+oG
+VN
+VN
+WN
+ci
+cI
+GC
+eb
+fJ
+hy
+Wu
+WW
+WW
+Bk
+Gs
+Ia
+qP
+ss
+Iw
+cR
+Qg
+Qg
+Qg
+Qg
+qi
+Qm
+XZ
+oi
+KO
+Rm
+Es
+rx
+Rv
+iW
+iW
+Fj
+iW
+Rs
+Rs
+gA
+gA
+gA
+"}
+(9,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+BL
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+SD
+PQ
+PQ
+PQ
+mW
+cn
+Ur
+RQ
+fJ
+qP
+qP
+hy
+qP
+QP
+vf
+qP
+qP
+Zt
+Iw
+ka
+Xr
+Ga
+TQ
+Jl
+Ki
+Gk
+Mn
+Qg
+Qg
+Qg
+Qg
+Qg
+hy
+iW
+iW
+Fj
+NO
+Ud
+Rs
+Rs
+sk
+sk
+"}
+(10,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+aY
+aY
+aY
+aY
+bH
+PQ
+hZ
+PQ
+sq
+RQ
+yJ
+RQ
+fJ
+Um
+ed
+mG
+DE
+yQ
+vd
+SG
+PP
+kS
+Xh
+cR
+Qg
+Qg
+Qg
+Qg
+fR
+qP
+ss
+cx
+mm
+oi
+Mj
+mm
+qP
+pb
+iW
+Fj
+hD
+iW
+Uo
+Rs
+Rs
+Rs
+"}
+(11,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+hZ
+PQ
+sq
+RQ
+Ur
+RQ
+fJ
+Nr
+yU
+yU
+Nr
+Iw
+cb
+Iw
+Iw
+Iw
+Iw
+qK
+vA
+mm
+SW
+oi
+fR
+qP
+Ep
+no
+yU
+yU
+yU
+no
+qP
+iW
+zZ
+Fj
+wb
+uJ
+dg
+Rs
+Rs
+Rs
+"}
+(12,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+Hb
+eb
+Fi
+RQ
+fJ
+Qg
+qM
+qM
+Qg
+Iw
+cb
+Iw
+Iw
+Iw
+Iw
+cR
+Qg
+Qg
+Qg
+Qg
+fR
+qP
+qP
+qP
+qP
+hy
+hy
+qP
+qP
+iW
+yz
+Fj
+iW
+iW
+zZ
+Rs
+Rs
+Rs
+"}
+(13,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+vH
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+Kr
+aM
+cI
+zn
+RQ
+uF
+Qg
+qM
+qM
+Qg
+Iw
+cb
+Iw
+Iw
+Iw
+Iw
+cb
+Iw
+Iw
+Iw
+Iw
+fR
+hy
+pJ
+fh
+kn
+kb
+ZI
+qP
+YK
+fw
+dR
+Lh
+rP
+dR
+Ez
+dR
+dR
+dR
+"}
+(14,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+sq
+pC
+Ur
+RQ
+fJ
+Nr
+lr
+CX
+FJ
+Ie
+Uk
+Ie
+Ie
+Ie
+Ie
+Yn
+Ie
+Ie
+Ie
+Ie
+Pi
+fT
+Pg
+jf
+jf
+Cr
+qp
+QP
+tE
+tE
+tE
+bx
+pd
+Dd
+Bo
+pd
+gx
+pd
+"}
+(15,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+mW
+RQ
+Ur
+RQ
+fJ
+vZ
+oi
+UD
+EC
+oi
+Iw
+oi
+Iw
+Iw
+Iw
+cK
+jj
+yU
+yU
+yU
+yU
+yU
+uG
+Qg
+Qg
+cR
+ck
+hy
+je
+gI
+tt
+KP
+OF
+OF
+OF
+OF
+OF
+OF
+"}
+(16,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+qY
+DB
+yo
+CC
+ER
+aJ
+oi
+oi
+fR
+oN
+Iw
+oi
+Iw
+QX
+Uj
+Yl
+qP
+hy
+hy
+hy
+hy
+QP
+Vt
+Uj
+Iw
+cR
+oi
+GQ
+gI
+YT
+tt
+KP
+OF
+Nb
+OF
+OF
+OF
+OF
+"}
+(17,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+DP
+PQ
+PQ
+KS
+Al
+uV
+fR
+UA
+Iw
+oi
+Iw
+Se
+kA
+aA
+Mc
+md
+DQ
+wK
+DQ
+Mc
+DQ
+vg
+eu
+zI
+pL
+pL
+oK
+Fy
+xh
+ZL
+vW
+vW
+Yv
+Yv
+Yv
+Yv
+"}
+(18,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+Oj
+PQ
+PQ
+qP
+sv
+kX
+fR
+mm
+Iw
+oi
+Iw
+Xb
+Xb
+se
+QP
+bu
+td
+DR
+bG
+gD
+vk
+yc
+Iw
+nJ
+Qa
+hy
+je
+gI
+tt
+OF
+KP
+WJ
+OF
+OF
+OF
+OF
+"}
+(19,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+Cq
+PQ
+PQ
+qP
+yC
+oi
+fR
+oi
+Iw
+oi
+Iw
+Iw
+Iw
+tu
+jZ
+Ew
+cG
+Sz
+JL
+Sb
+rY
+WY
+zv
+aX
+rU
+QP
+tE
+tE
+tE
+EH
+NY
+gI
+EH
+OP
+OP
+Qy
+"}
+(20,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+BL
+BL
+BL
+BL
+BL
+BL
+Rh
+Cs
+PQ
+Qt
+PQ
+PQ
+qP
+bS
+yU
+Nr
+yU
+yU
+Nr
+yU
+jW
+Hi
+Cc
+qP
+rp
+aD
+Nr
+Vk
+qP
+Bq
+yU
+BG
+qP
+hy
+qP
+Qf
+LQ
+oe
+LQ
+FS
+bz
+Pe
+pY
+pY
+LQ
+"}
+(21,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+BL
+BL
+tS
+vp
+wB
+vp
+TO
+gz
+OR
+Yk
+PQ
+PQ
+qP
+qP
+iT
+rC
+Eu
+Eu
+rC
+qP
+qP
+hy
+hy
+qP
+qP
+hy
+fF
+hy
+qP
+hy
+Zh
+hy
+qP
+cA
+OC
+LC
+LQ
+PK
+Qq
+hp
+EA
+Qq
+aq
+Bm
+pY
+"}
+(22,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+BL
+BL
+Cs
+xB
+vp
+vp
+wv
+vp
+We
+Yk
+PQ
+PQ
+PQ
+PQ
+Wd
+Nr
+lr
+lr
+Nr
+hy
+Vs
+cA
+YO
+NQ
+GA
+cA
+LC
+cA
+Xo
+Wa
+LC
+cA
+uA
+Xo
+Oh
+Xo
+LQ
+eT
+VZ
+FS
+EA
+EA
+Hw
+fP
+pY
+"}
+(23,1,1) = {"
+BL
+BL
+BL
+BL
+BL
+BL
+PQ
+PQ
+Cq
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+pi
+dS
+wv
+vp
+vp
+Ry
+xJ
+vp
+Yc
+CW
+PQ
+PQ
+PQ
+PQ
+qP
+Ha
+Qc
+qM
+fR
+Kw
+qI
+Xo
+Xo
+Xo
+Xo
+Xo
+Xo
+LV
+Xo
+Xo
+Xo
+Xo
+Xo
+Xo
+Xo
+qI
+QS
+Hw
+Xx
+XB
+Dp
+wq
+Zb
+AP
+LQ
+"}
+(24,1,1) = {"
+zd
+BL
+BL
+PQ
+PQ
+PQ
+PQ
+PQ
+Cq
+PQ
+BL
+BL
+PQ
+PQ
+PQ
+PQ
+qA
+Mp
+vp
+JR
+wv
+vp
+vp
+Lu
+wc
+PQ
+PQ
+PQ
+PQ
+PQ
+qP
+NI
+qM
+qM
+fR
+hy
+Vs
+Vx
+Xo
+Xo
+Ri
+QT
+Xo
+Xo
+Xo
+Xo
+LV
+Xo
+QT
+Xo
+oW
+WD
+pY
+Zb
+EA
+za
+ES
+Is
+jT
+AP
+pY
+"}
+(25,1,1) = {"
+XR
+zd
+zd
+PQ
+PQ
+PQ
+PQ
+PQ
+DP
+PQ
+BL
+BL
+PQ
+PQ
+PQ
+PQ
+HV
+nC
+JD
+wv
+VY
+zi
+vp
+hF
+vp
+wv
+PQ
+PQ
+PQ
+PQ
+qP
+FZ
+qM
+qM
+qZ
+QP
+LV
+Hx
+Zw
+OL
+iZ
+oS
+Gj
+Zw
+OL
+iZ
+oS
+Gj
+Zw
+OL
+iZ
+WD
+pY
+Zb
+Xx
+XB
+yw
+wq
+ek
+AP
+pY
+"}
+(26,1,1) = {"
+XR
+fo
+bm
+PQ
+PQ
+BL
+fS
+fZ
+Tj
+QL
+BL
+BL
+PQ
+PQ
+PQ
+PQ
+wv
+xJ
+vp
+vp
+YM
+vp
+WI
+zi
+vp
+JR
+PQ
+PQ
+PQ
+PQ
+qP
+vZ
+qM
+mU
+fR
+hy
+Vs
+eS
+mr
+OL
+GH
+lR
+bp
+mr
+OL
+GH
+eG
+bp
+mr
+OL
+GH
+WD
+pY
+vD
+EA
+gc
+ZW
+Jx
+ig
+Qu
+pY
+"}
+(27,1,1) = {"
+XR
+fo
+bm
+Cq
+PQ
+BL
+Tx
+wv
+uh
+vp
+At
+BL
+PQ
+PQ
+PQ
+zO
+sj
+sj
+sj
+ug
+NE
+vp
+we
+wv
+mj
+vp
+PQ
+PQ
+PQ
+PQ
+qP
+Nr
+yU
+yU
+Nr
+qP
+lO
+Hx
+AD
+OL
+HH
+oS
+Gj
+AD
+OL
+HH
+oS
+Gj
+AD
+OL
+HH
+Xo
+LQ
+Hw
+jA
+EA
+Zs
+EA
+ig
+AP
+LQ
+"}
+(28,1,1) = {"
+XR
+fo
+bm
+Cq
+PQ
+BL
+PO
+vp
+Di
+wv
+Je
+BL
+PQ
+PQ
+Xt
+DS
+DS
+Ly
+DS
+Hh
+vp
+zr
+Ex
+vp
+Xe
+SP
+PQ
+PQ
+PQ
+PQ
+jB
+xk
+xk
+xk
+xk
+KS
+Xo
+Xo
+Xo
+Xo
+Xo
+Xo
+QT
+Xo
+Xo
+LV
+Xo
+Xo
+Xo
+Xo
+LV
+qI
+QS
+Hw
+CN
+ZF
+wW
+CN
+ig
+FO
+pY
+"}
+(29,1,1) = {"
+XR
+fo
+bm
+Cq
+PQ
+PQ
+Fg
+vp
+Di
+vp
+vp
+ey
+cm
+NK
+Iz
+DS
+DS
+nw
+DS
+Hh
+mj
+jV
+vp
+BR
+Je
+vU
+PQ
+PQ
+PQ
+PQ
+KS
+LA
+LA
+LA
+LA
+KS
+WE
+Xo
+QT
+Xo
+cJ
+LV
+Kn
+nS
+Xo
+oW
+Xo
+Xo
+QT
+Xo
+vz
+LM
+LQ
+Lr
+io
+fG
+tW
+EA
+hR
+LH
+pY
+"}
+(30,1,1) = {"
+qc
+hh
+bm
+KL
+Dj
+nE
+cg
+HA
+nF
+RB
+tp
+Vp
+cm
+DS
+DS
+DS
+DS
+DS
+gH
+DS
+wl
+Ih
+sj
+sj
+sj
+sj
+dz
+gB
+bi
+In
+zy
+eF
+Ae
+Ae
+eF
+TW
+Xo
+pz
+xO
+Xo
+Jc
+Ri
+fB
+ow
+Xo
+Go
+JB
+Ri
+Xo
+Xo
+Xo
+LV
+HI
+HI
+HI
+HI
+HI
+JH
+Zd
+HI
+HI
+"}
+(31,1,1) = {"
+fo
+Az
+Az
+iQ
+Az
+Az
+Fg
+wv
+sy
+vp
+xW
+Yr
+cm
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+JT
+DS
+vc
+DS
+DS
+DS
+pj
+DS
+DS
+DS
+yD
+xe
+sZ
+OQ
+TW
+DV
+OQ
+OQ
+Yt
+Yt
+nu
+OQ
+Yt
+Xo
+xn
+Xo
+zE
+WD
+cs
+zU
+ma
+Kg
+ma
+En
+ZN
+Do
+TE
+"}
+(32,1,1) = {"
+fo
+iL
+ZQ
+ml
+Ms
+Hc
+VG
+KJ
+KJ
+lP
+Ee
+ET
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+Cy
+DS
+DS
+DS
+Cy
+DS
+dz
+Aj
+nh
+Vd
+Aj
+dd
+UC
+OQ
+OC
+vX
+Co
+OQ
+Xo
+Xo
+Xo
+Xo
+qI
+bO
+bO
+bO
+bO
+bO
+bO
+KF
+ez
+Le
+"}
+(33,1,1) = {"
+fo
+iL
+gO
+oQ
+yI
+Uw
+Fg
+KJ
+KJ
+hr
+Ee
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+ce
+DS
+DS
+ai
+DS
+DS
+DS
+Sh
+hi
+hi
+Co
+Yt
+LV
+vr
+Xo
+DA
+WD
+cs
+NT
+CK
+Hy
+Hy
+rf
+of
+Kf
+HI
+"}
+(34,1,1) = {"
+fo
+iL
+zY
+QD
+Vq
+Hc
+Fg
+KJ
+KJ
+VX
+bV
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+Wx
+DS
+DS
+DS
+DS
+DS
+Wx
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+Cy
+DS
+DS
+Mk
+DS
+ce
+ak
+DS
+ak
+oo
+cS
+Xo
+Xo
+Xo
+oP
+Xo
+Xo
+Xo
+Xo
+Xo
+HI
+XW
+pP
+wM
+jS
+lJ
+KF
+ez
+HI
+"}
+(35,1,1) = {"
+oZ
+Az
+Us
+sl
+Hc
+Rq
+Fg
+bA
+aF
+gd
+Ee
+DS
+DS
+DS
+Ly
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+OT
+OQ
+Xo
+wV
+Xo
+OQ
+Xo
+Bh
+Xo
+xn
+WD
+cs
+Nv
+su
+eY
+zU
+it
+KF
+Ld
+Le
+"}
+(36,1,1) = {"
+pV
+Gw
+dz
+DS
+dz
+ok
+fE
+KJ
+KJ
+lP
+Ee
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+Wx
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+Wx
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+ak
+iH
+Yt
+hi
+hi
+rS
+Yt
+lO
+Xo
+Xo
+Xo
+WD
+cs
+bO
+zb
+ux
+XF
+bO
+IE
+PG
+Ny
+"}
+(37,1,1) = {"
+AR
+DS
+DS
+DS
+Hh
+vx
+nA
+KJ
+KJ
+hr
+bV
+DS
+uj
+sj
+sj
+sj
+sj
+sj
+sj
+NH
+sj
+sj
+sj
+nf
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+sj
+ug
+DS
+DS
+DS
+DS
+OT
+OQ
+hG
+gT
+xs
+OQ
+Go
+LV
+Xo
+Xo
+Xo
+HI
+bO
+WC
+oO
+bO
+NR
+TB
+ad
+HI
+"}
+(38,1,1) = {"
+AR
+DS
+DS
+DS
+Hh
+FP
+qv
+KJ
+KJ
+VX
+Ee
+DS
+cm
+BZ
+fr
+fr
+oA
+PC
+Ap
+fr
+oA
+iP
+MB
+eR
+oA
+Sg
+MB
+fr
+oA
+iP
+MB
+UT
+oA
+iP
+MB
+BZ
+Hh
+DS
+DS
+DS
+DS
+DS
+zA
+OQ
+lx
+OQ
+Yt
+Xo
+Xo
+Xo
+Xo
+WD
+cs
+wz
+Lq
+lJ
+bO
+uS
+bO
+Ka
+HI
+"}
+(39,1,1) = {"
+AR
+DS
+DS
+DS
+DS
+ok
+Cp
+vw
+kU
+vw
+Kb
+DS
+cm
+xL
+gN
+ZO
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+ZO
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+ZO
+gN
+Zr
+Hh
+DS
+DS
+DS
+DS
+DS
+gB
+HG
+DS
+OJ
+TW
+wH
+Xo
+Xo
+Xo
+Xo
+HI
+gL
+uP
+LG
+vo
+fD
+Yq
+zG
+HI
+"}
+(40,1,1) = {"
+AR
+qz
+Bl
+DS
+DS
+DS
+ET
+ET
+ET
+ET
+ET
+DS
+cm
+zk
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+vi
+gN
+gN
+gN
+oJ
+Hh
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+vc
+DS
+TW
+lx
+Xo
+Xo
+Xo
+Xo
+HI
+cs
+cs
+HI
+HI
+HI
+HI
+HI
+xM
+"}
+(41,1,1) = {"
+AR
+kV
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+cm
+lT
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+vi
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+pt
+Hh
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+KI
+rd
+yu
+bC
+bC
+bC
+FR
+pd
+EN
+bU
+pd
+Dd
+pd
+Ln
+pd
+pd
+"}
+(42,1,1) = {"
+AR
+tq
+bL
+bL
+QJ
+TD
+sD
+tX
+tX
+tX
+DS
+DS
+cm
+Ta
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+yA
+Hh
+DS
+DS
+DS
+Mk
+DS
+DS
+DS
+DS
+qC
+rd
+cU
+Sn
+eH
+Sn
+Jh
+OF
+Vi
+OF
+Vi
+OF
+Vi
+EX
+Vi
+OF
+"}
+(43,1,1) = {"
+hB
+DW
+KJ
+bR
+qV
+YZ
+Uq
+UE
+TC
+IG
+YV
+Lx
+cm
+xL
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+Zr
+Hh
+DS
+DS
+DS
+DS
+DS
+JZ
+DS
+DS
+qC
+rd
+cU
+Sn
+eH
+Sn
+Jh
+OF
+Vi
+OF
+Vi
+OF
+Vi
+EX
+aQ
+OF
+"}
+(44,1,1) = {"
+hB
+rH
+Ct
+rH
+mf
+WF
+sG
+JN
+mZ
+AR
+DS
+yj
+cm
+zk
+gN
+gN
+gN
+gN
+vi
+gN
+gN
+gN
+gN
+gN
+Co
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+ay
+Hh
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+qC
+rd
+jk
+lw
+lw
+lw
+qg
+OP
+OP
+OP
+OP
+Oz
+Qy
+ph
+OP
+OP
+"}
+(45,1,1) = {"
+Wp
+Jr
+sm
+KJ
+mf
+WF
+ur
+WF
+WF
+AR
+DS
+xq
+cm
+lT
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+vi
+gN
+gN
+pt
+Hh
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+vc
+yD
+xe
+Yt
+Xo
+Xo
+Xo
+Xo
+dR
+dR
+dR
+dR
+dR
+dR
+jg
+ym
+gI
+"}
+(46,1,1) = {"
+yN
+zx
+TV
+pN
+lB
+WF
+ur
+ur
+sG
+AR
+fk
+jv
+cm
+Ta
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+vi
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+fC
+Hh
+DS
+DS
+DS
+DS
+gh
+DS
+DS
+DS
+oo
+Bx
+Xo
+Xo
+Xo
+Xo
+Xo
+dR
+cW
+PN
+PN
+PN
+Nm
+dR
+Ds
+gI
+"}
+(47,1,1) = {"
+ei
+Wp
+TV
+LS
+Da
+Da
+Da
+Da
+Da
+sI
+Ua
+DS
+cm
+xL
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+Zr
+Hh
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+OT
+Bx
+Xo
+Xo
+Xo
+Xo
+Xo
+dR
+ah
+tC
+jy
+kq
+XD
+dR
+da
+LP
+"}
+(48,1,1) = {"
+ei
+hB
+TV
+gy
+KJ
+KJ
+KJ
+pW
+KJ
+KJ
+gB
+DS
+cm
+zk
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+di
+gN
+gN
+gN
+gN
+gN
+vi
+gN
+gN
+gN
+gN
+gN
+gN
+oJ
+Hh
+DS
+DS
+DS
+DS
+DS
+DS
+Au
+Vf
+oo
+Bx
+Xo
+Xo
+Wl
+Xo
+Nx
+cl
+xr
+Gd
+Gd
+Gd
+xr
+Cf
+Ve
+pd
+"}
+(49,1,1) = {"
+dC
+hB
+KJ
+KJ
+im
+xQ
+il
+KJ
+uX
+KJ
+DS
+DS
+cm
+lT
+gN
+ZO
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+ZO
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+gN
+ZO
+gN
+pt
+Hh
+DS
+DS
+gh
+DS
+SE
+IW
+kW
+Xn
+TW
+TW
+WE
+Wl
+vr
+Xo
+jX
+Bg
+Gd
+AE
+Bi
+cq
+Gd
+Bo
+Js
+OF
+"}
+(50,1,1) = {"
+dC
+qR
+mb
+gK
+Ou
+Xp
+id
+KJ
+KJ
+KJ
+DS
+DS
+cm
+BZ
+LN
+LN
+TH
+GF
+Cm
+LN
+TH
+GF
+Cm
+LN
+TH
+py
+Cm
+LN
+TH
+GF
+Cm
+LN
+TH
+GF
+Cm
+BZ
+Hh
+DS
+bL
+bL
+bL
+ol
+SQ
+SQ
+Eq
+tj
+kW
+Wl
+Wl
+Wl
+Xo
+jX
+Bg
+Gd
+Gd
+Bi
+Gd
+Gd
+Bo
+Js
+OF
+"}
+(51,1,1) = {"
+Wy
+dC
+dC
+qR
+dC
+dC
+dC
+dC
+dC
+KJ
+KJ
+Ui
+EM
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+bL
+mc
+Hh
+KJ
+KJ
+KJ
+kW
+SQ
+oz
+oz
+rJ
+kW
+rR
+Wl
+Xo
+Xo
+XV
+Bg
+Gd
+iI
+Gd
+jy
+Gd
+Bo
+xt
+OP
+"}
+(52,1,1) = {"
+hw
+hw
+hw
+dC
+hw
+hw
+dC
+dC
+dC
+KJ
+Ua
+KJ
+DS
+DS
+Tq
+DS
+DS
+DS
+DS
+Tq
+DS
+DS
+DS
+DS
+DS
+DS
+Tq
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+gh
+DS
+DS
+Hh
+KJ
+Ua
+KJ
+kW
+SQ
+oz
+Zv
+Bt
+Yt
+ju
+Wl
+Xo
+Xo
+Xo
+dR
+ah
+Oc
+oH
+Eo
+WR
+dR
+yE
+gI
+"}
+(53,1,1) = {"
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+dC
+KJ
+KJ
+bk
+DS
+DS
+DS
+DS
+DS
+DS
+Tm
+DT
+ZH
+ZH
+DS
+DS
+ZH
+ZH
+ZH
+DS
+Tm
+DT
+ZH
+ZH
+DS
+Tm
+DT
+ZH
+ZH
+kf
+KJ
+hL
+KJ
+Yt
+Qi
+oz
+oz
+oz
+Yt
+Wl
+Wl
+Wl
+Wl
+SF
+dR
+lY
+Qv
+Qv
+Qv
+Ef
+dR
+xx
+gI
+"}
+(54,1,1) = {"
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+dC
+dC
+dC
+dC
+OZ
+dC
+dC
+dC
+dC
+iv
+dC
+KJ
+KJ
+KJ
+fS
+fS
+qU
+WP
+WP
+Aq
+fS
+KJ
+KJ
+KJ
+fS
+fS
+qU
+WP
+WP
+yf
+fS
+fS
+fS
+TW
+qG
+oz
+oz
+oz
+nc
+Xo
+zF
+zF
+zF
+Wl
+dR
+dR
+dR
+dR
+Wt
+dR
+jg
+gI
+gI
+"}
+(55,1,1) = {"
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+Wy
+hw
+dC
+dC
+dC
+dC
+dC
+dC
+dC
+cM
+XE
+dC
+KJ
+KJ
+KJ
+vm
+Je
+vp
+qo
+vp
+jR
+vE
+KJ
+KJ
+KJ
+og
+lS
+vp
+vp
+vp
+ri
+fS
+db
+KJ
+TW
+qG
+SQ
+cT
+SQ
+kW
+ON
+Xo
+Wl
+Vc
+PL
+Vc
+Xo
+Xo
+Wl
+FK
+WD
+KU
+gI
+gI
+"}
+(56,1,1) = {"
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+Wy
+Wy
+Wy
+Wy
+hw
+AO
+VC
+gb
+pr
+hP
+eV
+KJ
+KJ
+KJ
+oD
+Ya
+sW
+bw
+nC
+oY
+Pr
+Dv
+KJ
+KJ
+oD
+KV
+sW
+wv
+vp
+fW
+rA
+Pr
+KJ
+TW
+qG
+Mz
+ZE
+MH
+kW
+vV
+Xo
+Wl
+Xo
+Ol
+Wl
+Wl
+hm
+Xo
+lG
+qI
+gf
+gI
+gI
+"}
+(57,1,1) = {"
+wN
+wN
+wN
+vb
+hw
+hw
+hw
+hw
+hw
+Wy
+Wy
+Wy
+hw
+Wy
+Ze
+Wg
+CB
+rk
+AK
+MI
+KQ
+sr
+VJ
+Wy
+Ze
+qE
+Xk
+rk
+AK
+MI
+KQ
+sr
+VJ
+Wy
+Ze
+qE
+ub
+rk
+Wy
+AK
+fM
+TW
+kW
+kW
+Yt
+Yt
+Yt
+TW
+lO
+Xo
+Vc
+jd
+Wl
+SH
+qh
+ch
+aR
+tM
+vy
+sV
+rw
+"}
+(58,1,1) = {"
+Xk
+Jw
+qE
+rk
+hw
+hw
+hw
+hw
+hw
+Wy
+Wy
+hw
+hw
+Wy
+Ze
+ax
+hP
+JO
+Wy
+pg
+CV
+DH
+Wy
+Wy
+Ze
+IZ
+hP
+JO
+Wy
+pg
+KQ
+DH
+Wy
+Wy
+Ze
+qE
+qE
+rk
+Wy
+dC
+AK
+Kc
+kO
+kO
+HU
+kO
+Wc
+TW
+TL
+bl
+VE
+Fv
+Ti
+pa
+Ti
+pa
+vF
+pa
+Ti
+pa
+ZP
+"}
+(59,1,1) = {"
+Bp
+uc
+SM
+rk
+hw
+mD
+hw
+hw
+zg
+Wy
+hw
+hw
+hw
+hw
+AO
+kp
+JO
+Wy
+hw
+pg
+Ts
+DH
+Wy
+Wy
+AO
+kp
+JO
+Wy
+Wy
+pg
+rD
+DH
+Wy
+Wy
+Ze
+Pc
+qE
+rk
+dC
+Wy
+Wy
+Zl
+kp
+hI
+kp
+kp
+Ca
+XH
+Bx
+Wl
+Wl
+Ti
+tT
+lH
+lv
+rO
+uy
+fN
+lv
+fp
+Ti
+"}
+(60,1,1) = {"
+kp
+rQ
+oB
+rk
+hw
+Wy
+hw
+hw
+Wy
+Wy
+hw
+hw
+hw
+hw
+Wy
+hw
+hw
+hw
+Wy
+pg
+Ts
+PR
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+pg
+Ts
+PR
+dC
+dC
+Ze
+qE
+uZ
+rk
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+oE
+BW
+XH
+Bx
+Vc
+Wl
+pa
+sb
+jO
+Wh
+uY
+Wh
+jO
+Wh
+jO
+pa
+"}
+(61,1,1) = {"
+oE
+Fc
+kp
+JO
+Wy
+hw
+Wy
+hw
+hw
+Wy
+hw
+hw
+hw
+hw
+hw
+lM
+hw
+Wy
+hw
+AK
+Mr
+Mr
+Wy
+Wy
+Wy
+oE
+Wy
+Wy
+Wy
+pg
+Mr
+Mr
+dC
+Wy
+Ze
+qE
+qE
+rk
+Wy
+Wy
+Wy
+Wy
+Wy
+oE
+Wy
+Wy
+go
+XH
+Bx
+Wl
+Xo
+pa
+XX
+jO
+Nk
+bg
+Wh
+jO
+Wh
+jO
+pa
+"}
+(62,1,1) = {"
+hw
+sK
+hw
+Wy
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+mD
+Wy
+Wy
+hw
+dC
+hw
+Wy
+Mr
+Wy
+Wy
+Wy
+oE
+Wy
+Wy
+Wy
+Wy
+AK
+Mr
+Wy
+Wy
+hS
+Cg
+qE
+qE
+rk
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+hS
+Kd
+TW
+Xo
+Wl
+mN
+Ti
+XX
+jO
+Wh
+bg
+xa
+Gz
+Wh
+jO
+pa
+"}
+(63,1,1) = {"
+hw
+hw
+hw
+mD
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+dC
+hw
+hw
+dC
+hw
+hw
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+rr
+Wy
+Wy
+Wy
+Wy
+Wy
+Ze
+uZ
+qE
+qE
+rk
+dC
+dC
+rr
+Wy
+Wy
+hS
+wN
+dG
+pD
+pD
+ys
+Xo
+Vc
+Ti
+Th
+jO
+jO
+bg
+jO
+jO
+jO
+gY
+Ti
+"}
+(64,1,1) = {"
+hw
+oE
+Wy
+hw
+hw
+hw
+hw
+Wy
+hw
+hw
+hw
+Wy
+hw
+dC
+dC
+hw
+dC
+hw
+lM
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+pg
+Mr
+Wy
+Wy
+Ze
+qE
+Of
+HB
+rk
+dC
+rr
+Wy
+Wy
+Wy
+Ze
+qE
+pD
+pD
+GE
+Bx
+Xo
+Wl
+rL
+rO
+jO
+jO
+gS
+kP
+kP
+kP
+kP
+rL
+"}
+(65,1,1) = {"
+Wy
+Wy
+Wy
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+Wy
+hw
+Wy
+Wy
+hw
+hw
+hw
+hw
+Wy
+Wy
+Wy
+TN
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+tK
+KG
+Wy
+Ze
+qE
+uZ
+qE
+GV
+vb
+dC
+Wy
+Wy
+Wy
+Ze
+Pc
+pD
+pD
+Bx
+Bx
+Xo
+Xo
+Ti
+gm
+de
+Wv
+rG
+Wv
+Wv
+jO
+CM
+Ti
+"}
+(66,1,1) = {"
+hw
+hw
+mD
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+pg
+Wy
+hw
+hw
+hw
+hw
+hw
+hw
+Wy
+Wy
+Wy
+Mr
+oE
+Wy
+Wy
+Wy
+Wy
+QR
+Wy
+Wy
+Wy
+Mr
+Wy
+Ze
+Tb
+qE
+qE
+qE
+rk
+Wy
+Wy
+Wy
+dC
+Ze
+uZ
+pD
+pD
+Bx
+Bx
+Wl
+Xo
+Ti
+rO
+uN
+MP
+kt
+tg
+cd
+ab
+jO
+pa
+"}
+(67,1,1) = {"
+hw
+hw
+hw
+Wy
+hw
+hw
+dC
+hw
+hw
+hw
+KQ
+DH
+hw
+lM
+Wy
+hw
+hw
+Wy
+hw
+Wy
+pg
+DH
+Wy
+Wy
+oE
+Wy
+Wy
+dC
+Wy
+Wy
+Wy
+Wy
+Wy
+Ze
+qE
+qE
+uZ
+qE
+GV
+vb
+Wy
+Wy
+Wy
+Ze
+qE
+pD
+Yt
+wt
+Wl
+Xo
+Vc
+pa
+rO
+uN
+FF
+AT
+ht
+tf
+ab
+jO
+pa
+"}
+(68,1,1) = {"
+hw
+hw
+Wy
+Wy
+Wy
+Wy
+dC
+hw
+hw
+hw
+Wy
+Wy
+mD
+hw
+hw
+hw
+QR
+Wy
+hw
+pg
+CV
+DH
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Mr
+hS
+wN
+Cg
+Of
+qE
+Wg
+uZ
+Pc
+rk
+Wy
+Wy
+Wy
+Ze
+qE
+pD
+Yt
+nR
+Nt
+Wl
+Vc
+pa
+rO
+jO
+Jf
+KC
+Jf
+Jf
+jO
+jO
+pa
+"}
+(69,1,1) = {"
+hw
+hw
+hw
+hw
+dC
+dC
+Wy
+hw
+mD
+Wy
+tK
+KG
+wU
+wU
+wU
+wU
+wU
+wU
+wU
+be
+KQ
+DH
+Wy
+Wy
+Wy
+dC
+dC
+dC
+Wy
+Wy
+Wy
+Ze
+HB
+qE
+qE
+uZ
+qE
+qE
+qE
+rk
+Wy
+Wy
+hS
+MV
+Re
+pD
+Yt
+IL
+VO
+Vc
+Vc
+Ti
+hQ
+rO
+hb
+ra
+fX
+rO
+rO
+rO
+Ti
+"}
+(70,1,1) = {"
+hw
+hw
+hw
+Wy
+dC
+dC
+hw
+hw
+Wy
+pg
+os
+ib
+ib
+ib
+ib
+ib
+ib
+ib
+ib
+ib
+KQ
+DH
+Wy
+Wy
+Wy
+dC
+dC
+Wy
+Wy
+Wy
+Wy
+Ze
+qE
+qE
+qE
+qE
+qE
+qE
+uZ
+rk
+Wy
+Wy
+Ze
+qE
+uZ
+pD
+HM
+Xo
+IH
+CL
+Wl
+Ti
+pa
+pa
+Ti
+mn
+Ti
+Ti
+pa
+pa
+ZP
+"}

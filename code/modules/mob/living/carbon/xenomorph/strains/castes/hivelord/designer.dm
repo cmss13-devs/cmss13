@@ -3,7 +3,7 @@
 
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
-	description = "You lose your ability to build, sacrifice half of your plasma pool, have slower plasma regeneration and slightly less health in exchange for stronger phermones, ability to create Design Nodes that benefit other builders. Now you can design nodes that increase building speed or decrease cost. You gain ability to call Greater Resin Surge on your Design Nodes location."
+	description = "You lose your ability to build, sacrifice half of your plasma pool, have slower plasma regeneration and slightly less health in exchange for stronger pheromones, ability to create Design Nodes that benefit other builders. Now you can design nodes that increase building speed or decrease cost. You gain ability to call Greater Resin Surge on your Design Nodes location."
 	flavor_description = "You understand weeds, you control them, they tremble in your presence."
 	icon_state_prefix = "Designer"
 
@@ -52,7 +52,7 @@
 /obj/effect/alien/weeds/node/designer/speed/get_examine_text(mob/user)
 	.=..()
 	if(ishuman(user) || isobserver(user) || isyautja(user))
-		. += "\nOn closer examination, this gross looking node is twitching, making weeds under it look more they are moving..."
+		. += "\nOn closer examination, this node look like it have big green oozing bulb at its center, making weeds under it look like they are moving..."
 	if(isxeno(user) || isobserver(user))
 		. += "\nYou sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
 		. += "You sense that building on top of this node will [SPAN_WARNING("not")] benefit any [SPAN_NOTICE("hivelords")]."
@@ -64,7 +64,7 @@
 /obj/effect/alien/weeds/node/designer/cost/get_examine_text(mob/user)
 	.=..()
 	if(ishuman(user) || isobserver(user) || isyautja(user))
-		. += "\nOn closer examination, this gross looking node is pulsating, making weeds under it look more soft and squishy."
+		. += "\nOn closer examination, this node look like its made of smaller blue bulbs grown together, making weeds under them look more soft and squishy."
 	if(isxeno(user) || isobserver(user))
 		. += "\nYou sense that building on top of this node will decrease plasma cost of resin secretions by [SPAN_NOTICE("50%")]."
 		. += "You sense that building on top of this node will [SPAN_WARNING("only")] benefit [SPAN_NOTICE("Resin Walls")], [SPAN_NOTICE("Resin Membranes")] and [SPAN_NOTICE("Resin Doors")]."
@@ -166,12 +166,12 @@
 		xeno.speed_node_list -= existing_speed_node
 		qdel(existing_speed_node)
 		new /obj/effect/alien/weeds(target_turf)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] depletes node roots, reverting the node into normal weeds!"), \
-		SPAN_XENONOTICE("We restructure the node, reverting it into weeds!"), null, 5)
+		xeno.visible_message(SPAN_XENODANGER("[xeno] reverts the node into weeds."), \
+		SPAN_XENONOTICE("We restructure the node, reverting it into weeds."), null, 5)
 	else
 		// Create a new speed node normally
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the sustenance, creating a strange-looking node!"), \
-		SPAN_XENONOTICE("We surge sustenance, creating a optimized node!"), null, 5)
+		xeno.visible_message(SPAN_XENODANGER("[xeno] surges the resin, creating a strange looking node!"), \
+		SPAN_XENONOTICE("We create an optimized node!"), null, 5)
 		var/speed_nodes = new /obj/effect/alien/weeds/node/designer/speed(target_turf)
 		xeno.speed_node_list += speed_nodes
 		playsound(target_turf, "alien_resin_build", 25)
@@ -276,12 +276,12 @@
 		xeno.cost_node_list -= existing_cost_node
 		qdel(existing_cost_node)
 		new /obj/effect/alien/weeds(target_turf)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, reverting the node into dense weeds!"), \
-		SPAN_XENONOTICE("We restructure the node, reverting it into weeds!"), null, 5)
+		xeno.visible_message(SPAN_XENODANGER("[xeno] reverts the node into weeds."), \
+		SPAN_XENONOTICE("We restructure the node, reverting it into weeds."), null, 5)
 	else
 		// Create a new cost node normally
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating a strange-looking node!"), \
-		SPAN_XENONOTICE("We surge sustenance, creating a flexible node!"), null, 5)
+		xeno.visible_message(SPAN_XENODANGER("[xeno] surges the resin, creating a strange looking node!"), \
+		SPAN_XENONOTICE("We create a flexible node!"), null, 5)
 		var/cost_nodes = new /obj/effect/alien/weeds/node/designer/cost(target_turf)
 		xeno.cost_node_list += cost_nodes
 		playsound(target_turf, "alien_resin_build", 25)

@@ -1,3 +1,7 @@
 #include "_stats_viewer.dm"
 
+#include "code/stats_game_mode.dm"
+#include "code/stats_mob.dm"
+#include "code/stats_player_entity.dm"
+#include "code/stats_player_stats.dm"
 #include "code/stats_viewer.dm"

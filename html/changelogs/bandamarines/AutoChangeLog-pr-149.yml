@@ -1,0 +1,4 @@
+author: "MiraHell"
+delete-after: True
+changes:
+  - bugfix: "Исправлена смена голоса через VV topic"

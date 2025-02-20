@@ -16,11 +16,17 @@ SUBSYSTEM_DEF(moba)
 
 	// Add a list of unused maps here using /datum/unused_moba_map
 
-/datum/controller/subsystem/moba/Initialize()
+	var/list/datum/moba_item/items = list()
+
+/datum/controller/subsystem/moba/Initialize() //random zonenote add sudden death for when the game round ends
 	for(var/caste_path in subtypesof(/datum/moba_caste))
 		var/datum/moba_caste/caste = new caste_path
 		GLOB.moba_castes[caste.equivalent_caste_path] = caste
 		GLOB.moba_castes_name[caste.name] = caste
+	for(var/item_path as anything in subtypesof(/datum/moba_item))
+		var/datum/moba_item/item = new item_path
+		items += item
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/moba/stat_entry(msg)
@@ -47,7 +53,7 @@ SUBSYSTEM_DEF(moba)
 	if(length(players_in_queue))
 		make_game(list(players_in_queue[1]), list())
 	#else
-	if(COOLDOWN_FINISHED(src, matchmaking_cooldown) && (length(players_in_queue) >= 8)) // We can actually make a match
+	if(COOLDOWN_FINISHED(src, matchmaking_cooldown) && (length(players_in_queue) >= 8) && !SSticker.mode.round_finished) // We can actually make a match
 		do_matchmaking()
 	#endif
 
@@ -89,12 +95,20 @@ SUBSYSTEM_DEF(moba)
 				if((player.queue_slots[i].position in team1_needed_roles) && !(player.queue_slots[i].caste in already_taken_castes_team1))
 					team1_needed_roles -= player.queue_slots[i].position
 					already_taken_castes_team1 += player.queue_slots[i].caste
-					team1_players += player
+					team1_players += list(list(
+						"player" = player,
+						"role" = player.queue_slots[i].position,
+						"caste" = already_taken_castes_team1 += player.queue_slots[i].caste,
+					))
 					randomized_queue -= player
 				else if((player.queue_slots[i].position in team2_needed_roles) && !(player.queue_slots[i].caste in already_taken_castes_team2))
 					team2_needed_roles -= player.queue_slots[i].position
 					already_taken_castes_team2 += player.queue_slots[i].caste
-					team2_players += player
+					team2_players += list(list(
+						"player" = player,
+						"role" = player.queue_slots[i].position,
+						"caste" = already_taken_castes_team1 += player.queue_slots[i].caste,
+					))
 					randomized_queue -= player
 
 				if(length(team1_players) == 4 && length(team2_players) == 4)

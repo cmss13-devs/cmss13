@@ -52,6 +52,9 @@
 	RegisterSignal(parent_xeno, COMSIG_XENO_ALIEN_ATTACKED, PROC_REF(on_attacked))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_XP, PROC_REF(grant_xp))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_GOLD, PROC_REF(grant_gold))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_OWNED_ITEMS, PROC_REF(get_owned_items))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_GOLD, PROC_REF(get_gold))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_ADD_ITEM, PROC_REF(add_item))
 	RegisterSignal(parent_xeno, COMSIG_XENO_USED_TUNNEL, PROC_REF(on_tunnel))
 
 /datum/component/moba_player/proc/handle_level_up()
@@ -110,6 +113,22 @@
 	SIGNAL_HANDLER
 
 	gold += gold_amount
+
+/datum/component/moba_player/proc/get_owned_items(datum/source, list/datum/moba_item/items)
+	SIGNAL_HANDLER
+
+	for(var/datum/moba_item/item as anything in held_items)
+		items += item
+
+/datum/component/moba_player/proc/get_gold(datum/source, list/gold_list)
+	SIGNAL_HANDLER
+
+	gold_list += gold
+
+/datum/component/moba_player/proc/add_item(datum/source, datum/moba_item/new_item)
+	SIGNAL_HANDLER
+
+	held_items += new_item
 
 /datum/component/moba_player/proc/on_tunnel(datum/source, obj/structure/tunnel/used_tunnel)
 	SIGNAL_HANDLER

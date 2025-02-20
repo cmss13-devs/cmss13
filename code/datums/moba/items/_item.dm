@@ -1,6 +1,10 @@
 /datum/moba_item
 	var/name = ""
 	var/gold_cost = 0
+	/// Populated by SSmoba
+	var/static/description = ""
+	/// If TRUE, a player can only hold one of this item at a time.
+	var/unique = FALSE
 
 	var/health = 0
 	/// Adds to a multiplier
@@ -8,9 +12,9 @@
 	var/plasma = 0
 	/// Adds to a multiplier
 	var/plasma_regen = 0
-	/// Diminishing
+	/// Diminishing (NOT CURRENTLY)
 	var/armor = 0
-	/// Diminishing
+	/// Diminishing (NOT CURRENTLY)
 	var/acid_armor = 0
 	/// Negative is better
 	var/speed = 0
@@ -22,6 +26,30 @@
 
 	var/amount_armor_applied = 0
 	var/amount_acid_armor_applied = 0
+
+/datum/moba_item/New()
+	. = ..()
+	description = "[name]\nCost: [gold_cost] [MOBA_GOLD_NAME_SHORT]"
+	if(health)
+		description += "\nHealth: +[health]"
+	if(health_regen)
+		description += "\nHealth Regen: +[health_regen]x"
+	if(plasma)
+		description += "\nPlasma: +[plasma]"
+	if(plasma_regen)
+		description += "\nPlasma Regen: +[plasma_regen]x"
+	if(armor)
+		description += "\nArmor: +[armor]"
+	if(acid_armor)
+		description += "\nAcid Armor: +[acid_armor]"
+	if(speed)
+		description += "\nMovement Delay: [speed]"
+	if(attack_speed)
+		description += "\nAttack Speed Modifier: [attack_speed]"
+	if(attack_damage)
+		description += "\nDamage: +[attack_damage]"
+	if(ability_cooldown_reduction)
+		description += "\nCooldown Reduction: x[ability_cooldown_reduction * 100]%"
 
 /datum/moba_item/proc/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -72,11 +100,13 @@
 	xeno.plasma_regeneration_mult += plasma_regen
 
 /datum/moba_item/proc/apply_armor(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)
-	amount_armor_applied = armor * (1 - (xeno.armor_deflection_buff / 100))
+	//amount_armor_applied = armor * (1 - (xeno.armor_deflection_buff / 100))
+	amount_armor_applied = armor
 	xeno.armor_deflection_buff += amount_armor_applied
 
 /datum/moba_item/proc/apply_acid_armor(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)
-	amount_acid_armor_applied = acid_armor * (1 - (xeno.acid_armor_buff / 100))
+	//amount_acid_armor_applied = acid_armor * (1 - (xeno.acid_armor_buff / 100))
+	amount_acid_armor_applied = acid_armor
 	xeno.acid_armor_buff += amount_acid_armor_applied
 
 /datum/moba_item/proc/apply_speed(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)

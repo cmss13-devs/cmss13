@@ -2,8 +2,10 @@
 	var/map_id = 0
 
 	var/list/datum/moba_player/players
-	var/list/datum/moba_player/team1
-	var/list/datum/moba_player/team2
+	var/list/datum/moba_player/team1 = list()
+	var/list/team1_data
+	var/list/datum/moba_player/team2 = list()
+	var/list/team2_data
 
 	// Map stuff
 	var/turf/left_base
@@ -30,8 +32,12 @@
 
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
-	team1 = team1_players
-	team2 = team2_players
+	for(var/list/player as anything in team1_players)
+		team1 += player["player"]
+	team1_data = team1_players
+	for(var/list/player as anything in team2_players)
+		team2 += player["player"]
+	team2_data = team2_players
 	players = team1_players + team2_players
 
 	map_id = id
@@ -79,8 +85,11 @@
 /datum/moba_controller/proc/load_in_players()
 	// Finish later
 	// Add an abort in case someone's missing a client
-	for(var/datum/moba_player/player as anything in (team1 + team2))
+	for(var/list/player_data as anything in team1_data)
+		var/mob/living/carbon/xenomorph/xeno = new player_data["caste"] //zonenote finishs
 		player.tied_client.mob.forceMove(left_base)
+	for(var/datum/moba_player/player as anything in team2)
+		player.tied_client.mob.forceMove(right_base)
 
 /datum/moba_controller/proc/handle_tick()
 	if(!game_started)

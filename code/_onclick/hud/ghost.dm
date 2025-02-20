@@ -46,6 +46,11 @@
 
 /atom/movable/screen/ghost/moba/Click()
 	if(SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(usr, SPAN_WARNING("You must wait for the round to start before starting a game."))
+		return
+
+	if(SSticker.mode.round_finished)
+		to_chat(usr, SPAN_WARNING("You cannot start a new game after the round has finished."))
 		return
 
 	var/mob/dead/observer/ghost = usr

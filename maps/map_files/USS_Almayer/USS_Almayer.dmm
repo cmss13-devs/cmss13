@@ -498,6 +498,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
+"abm" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/flooredge/north,
+/area/almayer/hallways/lower/port_fore_hallway)
 "abn" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1605,7 +1610,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/flooredge/east,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "adX" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -98210,7 +98215,7 @@ lqF
 gGJ
 pjw
 bCd
-knm
+abq
 lLO
 knm
 yfy
@@ -98413,7 +98418,7 @@ acJ
 akP
 imo
 abl
-hqp
+abm
 abb
 knm
 yfy
@@ -98616,7 +98621,7 @@ qjN
 qjN
 bei
 akO
-abq
+knm
 jZe
 knm
 hnP
@@ -98819,7 +98824,7 @@ acO
 ace
 abO
 akO
-abq
+knm
 sAD
 cIO
 tAb

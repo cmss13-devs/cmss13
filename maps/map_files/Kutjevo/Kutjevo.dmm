@@ -1297,15 +1297,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/spring)
 "bBc" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/monorail,
-/obj/structure/machinery/door/poddoor/shutters/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	explo_proof = 1
-	},
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/interior/power)
@@ -8383,16 +8375,14 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/construction)
 "kCA" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/filtration/machine_32x64/indestructible{
 	bound_height = 32;
 	icon_state = "solo_tank_empty"
 	},
 /obj/structure/platform/metal/kutjevo/north,
 /obj/structure/platform/metal/kutjevo/east,
-/obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/closed/wall/kutjevo/rock/border,
 /area/kutjevo/interior/colony_South/power2)
 "kDD" = (
@@ -8710,13 +8700,13 @@
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/colony_South/power2)
 "kYg" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/platform/metal/kutjevo/west,
 /obj/structure/filtration/machine_32x64/indestructible{
 	bound_height = 32;
 	icon_state = "solo_tank_empty"
 	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/closed/wall/kutjevo/rock/border,
 /area/kutjevo/interior/colony_South/power2)
@@ -14270,9 +14260,9 @@
 	},
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo/east,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/closed/wall/kutjevo/rock/border,
+/turf/open/space/basic,
 /area/kutjevo/interior/colony_South/power2)
 "sbX" = (
 /turf/open/auto_turf/sand/layer2,
@@ -16152,7 +16142,6 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/interior/complex/med)
 "umo" = (
@@ -17657,13 +17646,6 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland/south)
-"whS" = (
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/complex_border/med_rec)
 "wiw" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 1;
@@ -39183,7 +39165,7 @@ feY
 mYM
 qaI
 qaI
-whS
+vKQ
 sYo
 mHa
 smo

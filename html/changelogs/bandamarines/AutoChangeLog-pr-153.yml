@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - rscadd: "Больше инфы в Stat"

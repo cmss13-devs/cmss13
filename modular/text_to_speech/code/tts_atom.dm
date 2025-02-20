@@ -1,6 +1,9 @@
 /atom/proc/add_tts_component()
 	return
 
+/atom/proc/remove_tts_component()
+	return
+
 /atom/Initialize(mapload, ...)
 	. = ..()
 	add_tts_component()

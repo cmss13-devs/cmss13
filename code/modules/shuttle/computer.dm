@@ -411,7 +411,15 @@
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 		return
 	else if(lifeboat.status == LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS)
-		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Launch is currently aborting\"."))
+		var/reset = tgui_alert(user, "Lifeboat set to abort. Reset status?", "Confirm", list("Yes", "No"), 10 SECONDS)
+		switch(reset)
+			if ("Yes")
+				if(do_after(usr, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					if(lifeboat.status == LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS)
+						lifeboat.status = LIFEBOAT_ACTIVE
+						return
+				else 
+					to_chat(user, SPAN_NOTICE("You were interrupted."))
 		return
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)

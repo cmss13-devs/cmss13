@@ -99,7 +99,9 @@
 			bottle.icon_state = main_bottle.icon_state
 
 		loaded_pill_bottles += bottle
-		loaded_pill_bottles_to_fill += bottle
+		if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
+			loaded_pill_bottles_to_fill += bottle
+
 		user.drop_inv_item_to_loc(bottle, src)
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		SStgui.update_uis(src)
@@ -210,6 +212,8 @@
 				loaded_pill_bottles_to_fill -= bottle
 			loaded_pill_bottles -= bottle
 
+			if(length(loaded_pill_bottles_to_fill) == 0)
+				loaded_pill_bottles_to_fill += loaded_pill_bottles[1]
 			if(length(loaded_pill_bottles) == 1)
 				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
 
@@ -414,6 +418,9 @@
 			if(LAZYFIND(loaded_pill_bottles_to_fill, loaded_pill_bottles[bottle_index]) > 0)
 				loaded_pill_bottles_to_fill -= loaded_pill_bottles[bottle_index]
 			loaded_pill_bottles -= loaded_pill_bottles[bottle_index]
+
+			if(length(loaded_pill_bottles_to_fill) == 0)
+				loaded_pill_bottles_to_fill += loaded_pill_bottles[1] //Indexs starting at one - Kill me
 
 			if(length(loaded_pill_bottles) == 1)
 				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)

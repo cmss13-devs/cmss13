@@ -60843,10 +60843,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
-"tYw" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer/white,
-/area/almayer/medical/lower_medical_medbay)
 "tYM" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -99213,7 +99209,7 @@ abD
 ahU
 ahF
 ahq
-tYw
+kan
 agN
 agG
 jCK

@@ -1,18 +1,11 @@
-/obj/effect/decal
-	plane = FLOOR_PLANE
-
-// Used for spray that you spray at walls, tables, hydrovats etc
-/obj/effect/decal/spraystill
-	density = FALSE
-	anchored = TRUE
-	layer = FLY_LAYER
-
 //Used by spraybottles.
 /obj/effect/decal/chempuff
 	name = "chemicals"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "chempuff"
+	keep_as_object = TRUE
 	var/mob/source_user
+
 
 /obj/effect/decal/chempuff/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

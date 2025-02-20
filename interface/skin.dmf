@@ -8,160 +8,6 @@ macro "default"
 		name = "SHIFT+UP"
 		command = ".winset :map.right-click=true"
 
-menu "menu"
-	elem
-		name = "&File"
-		command = ""
-		saved-params = "is-checked"
-	elem
-		name = "&Quick screenshot\tF2"
-		command = ".screenshot auto"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Save screenshot as...\tShift+F2"
-		command = ".screenshot"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = ""
-		command = ""
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Reconnect"
-		command = ".reconnect"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Options and Messages"
-		command = ".options"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Quit"
-		command = ".quit"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Icons"
-		command = ""
-		saved-params = "is-checked"
-	elem "stretch"
-		name = "&Stretch to fit"
-		command = ".winset \"mapwindow.map.icon-size=0\""
-		category = "&Icons"
-		is-checked = true
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon256"
-		name = "&256x256 (4x)"
-		command = ".winset \"mapwindow.map.icon-size=256\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon128"
-		name = "&128x128 (3x)"
-		command = ".winset \"mapwindow.map.icon-size=128\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon96"
-		name = "&96x96 (2.5x)"
-		command = ".winset \"mapwindow.map.icon-size=96\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon64"
-		name = "&64x64 (2x)"
-		command = ".winset \"mapwindow.map.icon-size=64\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon48"
-		name = "&48x48 (1.5x)"
-		command = ".winset \"mapwindow.map.icon-size=48\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon32"
-		name = "&32x32"
-		command = ".winset \"mapwindow.map.icon-size=32\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem
-		name = ""
-		command = ""
-		category = "&Icons"
-		saved-params = "is-checked"
-	elem "textmode"
-		name = "&Text"
-		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
-		category = "&Icons"
-		can-check = true
-		saved-params = "is-checked"
-	elem
-		name = "Rendering"
-		command = ""
-		saved-params = "is-checked"
-	elem
-		name = "&Nearest Neighbor"
-		command = ".winset \"mapwindow.map.zoom-mode=distort\""
-		category = "Rendering"
-		can-check = true
-		group = "RM"
-		saved-params = "is-checked"
-	elem
-		name = "&Point Sampling"
-		command = ".winset \"mapwindow.map.zoom-mode=normal\""
-		category = "Rendering"
-		can-check = true
-		group = "RM"
-		saved-params = "is-checked"
-	elem
-		name = "&Bilinear"
-		command = ".winset \"mapwindow.map.zoom-mode=blur\""
-		category = "Rendering"
-		can-check = true
-		group = "RM"
-		saved-params = "is-checked"
-	elem
-		name = "&Help"
-		command = ""
-		saved-params = "is-checked"
-	elem
-		name = "&Admin Help\tF1"
-		command = "adminhelp"
-		category = "&Help"
-		saved-params = "is-checked"
-	elem
-		name = "Volume"
-		command = ""
-		saved-params = "is-checked"
-	elem
-		name = "&Effects"
-		command = "Adjust-Volume-SFX"
-		category = "Volume"
-		saved-params = "is-checked"
-	elem
-		name = "&Ambience"
-		command = "Adjust-Volume-Ambience"
-		category = "Volume"
-		saved-params = "is-checked"
-	elem
-		name = "Admin &Music"
-		command = "Adjust-Volume-Admin-Music"
-		category = "Volume"
-		saved-params = "is-checked"
-
 
 window "mainwindow"
 	elem "mainwindow"
@@ -179,8 +25,8 @@ window "mainwindow"
 		menu = "menu"
 	elem "split"
 		type = CHILD
-		pos = 3,0
-		size = 634x440
+		pos = 0,0
+		size = 640x440
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
@@ -222,8 +68,16 @@ window "mapwindow"
 		font-family = "Arial"
 		font-size = 7
 		is-default = true
-		saved-params = "zoom;letterbox;zoom-mode"
-		style = ".maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_small { font-size: 6px; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic; } .langchat_italic {font-style: italic; }"
+		saved-params = "zoom;letterbox;zoom-mode;icon-size;text-mode"
+	elem "lobby_browser"
+		type = BROWSER
+		pos = 0,0
+		size = 640,480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-visible = false
+		is-disabled = true
+		background-color = #222222
 	elem "status_bar"
 		type = LABEL
 		pos = 0,464
@@ -248,74 +102,19 @@ window "infowindow"
 		is-pane = true
 	elem "info"
 		type = CHILD
-		pos = 0,30
-		size = 640x445
+		pos = 0,0
+		size = 640x475
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
 		left = "statwindow"
 		right = "outputwindow"
 		is-vert = false
-	elem "changelog"
-		type = BUTTON
-		pos = 16,5
-		size = 104x20
-		anchor1 = 3,0
-		anchor2 = 19,0
-		saved-params = "is-checked"
-		text = "Changelog"
-		command = "Changelog"
-	elem "rules"
-		type = BUTTON
-		pos = 120,5
-		size = 100x20
-		anchor1 = 19,0
-		anchor2 = 34,0
-		saved-params = "is-checked"
-		text = "Rules"
-		command = "rules"
-	elem "wiki"
-		type = BUTTON
-		pos = 220,5
-		size = 100x20
-		anchor1 = 34,0
-		anchor2 = 50,0
-		saved-params = "is-checked"
-		text = "Wiki"
-		command = "wiki"
-	elem "forum"
-		type = BUTTON
-		pos = 320,5
-		size = 100x20
-		anchor1 = 50,0
-		anchor2 = 66,0
-		saved-params = "is-checked"
-		text = "Forum"
-		command = "forum"
-	elem "report-issue"
-		type = BUTTON
-		pos = 420,5
-		size = 100x20
-		anchor1 = 66,0
-		anchor2 = 81,0
-		saved-params = "is-checked"
-		text = "Submit Bug"
-		command = "submit-bug"
-	elem "discord"
-		type = BUTTON
-		pos = 520,5
-		size = 100x20
-		anchor1 = 81,0
-		anchor2 = 97,0
-		background-color = #7289da
-		saved-params = "is-checked"
-		text = "Discord"
-		command = "discord"
 
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 0,0
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
@@ -372,15 +171,26 @@ window "outputwindow"
 		command = ".winset \"mebutton.is-checked=true ? input.command=\"!me \\\"\" : input.command=\"\"mebutton.is-checked=true ? saybutton.is-checked=false\"\"mebutton.is-checked=true ? oocbutton.is-checked=false\""
 		is-flat = true
 		button-type = pushbox
-	elem "browseroutput"
-		type = BROWSER
+	elem "legacy_output_selector"
+		type = CHILD
 		pos = 0,0
 		size = 640x456
 		anchor1 = 0,0
 		anchor2 = 100,100
-		is-visible = false
-		is-disabled = true
-		saved-params = ""
+		saved-params = "splitter"
+		left = "output_legacy"
+		is-vert = false
+
+window "output_legacy"
+	elem "output_legacy"
+		type = MAIN
+		pos = 0,0
+		size = 640x456
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
@@ -390,6 +200,24 @@ window "outputwindow"
 		is-default = true
 		saved-params = ""
 
+window "output_browser"
+	elem "output_browser"
+		type = MAIN
+		pos = 0,0
+		size = 640x456
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+	elem "browseroutput"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		saved-params = ""
 
 window "popupwindow"
 	elem "popupwindow"

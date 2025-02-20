@@ -295,7 +295,7 @@
 /turf/open/floor/darkyellowcorners2/east,
 /area/bigredv2/outside/engineering)
 "bL" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bM" = (
@@ -576,14 +576,14 @@
 /area/bigredv2/outside/lz2_south_cas)
 "cP" = (
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "cR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "cS" = (
 /turf/open/gm/river,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "cT" = (
 /turf/open/mars/mars_dirt_13,
 /area/bigredv2/outside/lz2_south_cas)
@@ -602,12 +602,12 @@
 /area/bigredv2/outside/lz2_south_cas)
 "da" = (
 /turf/closed/wall/mineral/uranium,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "db" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/extinguisher,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dc" = (
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/outside/lz2_south_cas)
@@ -621,7 +621,7 @@
 "df" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "di" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -632,7 +632,7 @@
 "dj" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/gm/river,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dk" = (
 /obj/structure/girder,
 /turf/open/floor/plating,
@@ -648,19 +648,19 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light_construct{
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dq" = (
 /obj/item/bananapeel,
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dr" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "rad_door";
@@ -674,21 +674,21 @@
 "dv" = (
 /obj/structure/machinery/power/turbine,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dx" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dy" = (
 /obj/structure/machinery/power/reactor/colony{
 	name = "Reactor Turbine"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dz" = (
 /obj/structure/machinery/light_construct,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dA" = (
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/s)
@@ -706,7 +706,7 @@
 /obj/structure/machinery/power/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dJ" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/mars_cave/mars_cave_2,
@@ -717,7 +717,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dO" = (
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/outside/lz2_south_cas)
@@ -726,17 +726,17 @@
 /area/bigredv2/outside/lz2_south_cas)
 "dS" = (
 /turf/open/mars_cave/mars_cave_7,
-/area/bigredv2/outside/lz2_south_cas)
+/area/bigredv2/caves_sw)
 "dT" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "dU" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_10,
-/area/bigredv2/outside/lz2_south_cas)
+/area/bigredv2/caves_sw)
 "dV" = (
 /turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/outside/lz2_south_cas)
+/area/bigredv2/caves_sw)
 "dW" = (
 /turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/outside/lz2_south_cas)
@@ -747,47 +747,47 @@
 "dY" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/floor/wall_thermite,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "dZ" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ec" = (
 /obj/structure/catwalk/bigred,
 /turf/open/gm/river/desert/shallow/covered,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ee" = (
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ef" = (
 /obj/structure/machinery/light_construct{
 	dir = 4
 	},
 /turf/open/gm/river,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ei" = (
 /obj/structure/machinery/compressor{
 	dir = 1
 	},
 /turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ej" = (
 /obj/structure/machinery/light_construct{
 	dir = 4
 	},
 /turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ek" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -796,42 +796,42 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "el" = (
 /obj/structure/machinery/light_construct{
 	dir = 8
 	},
 /turf/open/gm/river,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "em" = (
 /obj/structure/machinery/light_construct{
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "en" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/girder,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eo" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_7,
-/area/bigredv2/outside/lz2_south_cas)
+/area/bigredv2/caves_sw)
 "ep" = (
 /obj/item/tool/extinguisher,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eq" = (
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "er" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "et" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/plating/panelscorched,
@@ -839,7 +839,7 @@
 "ev" = (
 /obj/structure/machinery/light_construct,
 /turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ew" = (
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/engineering)
@@ -847,14 +847,14 @@
 /obj/effect/decal/cleanable/molten_item,
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/floor/wall_thermite,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ey" = (
 /obj/structure/machinery/light_construct{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "ez" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/panelscorched,
@@ -864,7 +864,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/panelscorched,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eB" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -893,11 +893,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/floor/wall_thermite,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eH" = (
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/panelscorched,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eI" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/darkyellow2/west,
@@ -905,28 +905,28 @@
 "eJ" = (
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/wall_thermite,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eK" = (
 /obj/effect/decal/cleanable/molten_item,
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/gm/river,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wall_thermite,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eM" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/gm/river,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "eN" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
 /turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/outside/lz2_south_cas)
+/area/bigredv2/caves_sw)
 "eO" = (
 /turf/closed/wall/mineral/uranium/leaking,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/outside/engineering/reactor)
 "fI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
@@ -969,6 +969,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
+"pK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/engineering/reactor)
+"sy" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/bigredv2/outside/engineering/reactor)
 "sU" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_dirt_6,
@@ -986,6 +994,10 @@
 	},
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/telecomm/engi)
+"wu" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating,
+/area/bigredv2/outside/engineering/reactor)
 "xl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkyellowcorners2/west,
@@ -1000,6 +1012,9 @@
 	},
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/telecomm/engi)
+"Af" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/engineering/reactor)
 "Ah" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars,
@@ -1022,14 +1037,24 @@
 "Dq" = (
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
+"EG" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/bigredv2/outside/engineering/reactor)
 "ET" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
+"FO" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_sw)
+"GC" = (
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/engineering/reactor)
 "IE" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_7,
-/area/bigredv2/outside/lz2_south_cas)
+/area/bigredv2/caves_sw)
 "KJ" = (
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
@@ -1079,6 +1104,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
+"YX" = (
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/caves_sw)
 
 (1,1,1) = {"
 au
@@ -1141,7 +1169,7 @@ dW
 dR
 dR
 dR
-dR
+FO
 dT
 "}
 (3,1,1) = {"
@@ -1172,9 +1200,9 @@ dR
 dR
 dO
 dR
-dR
-dR
-dR
+FO
+FO
+FO
 "}
 (4,1,1) = {"
 au
@@ -1204,9 +1232,9 @@ kN
 kN
 kN
 dn
-dR
-dR
-dR
+FO
+FO
+FO
 "}
 (5,1,1) = {"
 au
@@ -1221,24 +1249,24 @@ aF
 aq
 aq
 aq
-dX
-dX
-aq
-aq
-dk
-aq
-aq
+EG
+EG
+Af
+Af
+sy
+Af
+Af
 ex
 eG
-dk
-dk
-aq
-aq
+sy
+sy
+Af
+Af
 dT
 dT
 dS
-dW
-dR
+YX
+FO
 "}
 (6,1,1) = {"
 au
@@ -1256,7 +1284,7 @@ aq
 cP
 cR
 dp
-cP
+wu
 df
 do
 dv
@@ -1265,12 +1293,12 @@ dZ
 dG
 dK
 dv
-aq
-aq
+Af
+Af
 dT
 dS
 dV
-dR
+FO
 "}
 (7,1,1) = {"
 au
@@ -1286,23 +1314,23 @@ cn
 cB
 cn
 cP
-ez
-ez
+pK
+pK
 cR
 cR
 cP
 eh
 eh
 eh
-ew
-ew
-ew
-aq
-aq
+GC
+GC
+GC
+Af
+Af
 dT
 dT
 dS
-dR
+FO
 "}
 (8,1,1) = {"
 au
@@ -1321,20 +1349,20 @@ db
 cR
 cR
 eH
-ew
+GC
 cR
 eh
 eh
-ew
-ez
-ez
+GC
+pK
+pK
 cP
-aq
-aq
-aq
+Af
+Af
+Af
 dT
 dS
-dR
+FO
 "}
 (9,1,1) = {"
 au
@@ -1362,11 +1390,11 @@ cS
 cS
 cS
 cP
-aq
-aq
+Af
+Af
 dT
 dS
-dR
+FO
 "}
 (10,1,1) = {"
 bC
@@ -1394,11 +1422,11 @@ cS
 da
 cS
 dz
-aq
-aq
+Af
+Af
 dT
 dS
-dR
+FO
 "}
 (11,1,1) = {"
 au
@@ -1426,11 +1454,11 @@ dj
 dj
 dj
 cP
-aq
-aq
+Af
+Af
 dT
 dS
-dR
+FO
 "}
 (12,1,1) = {"
 au
@@ -1459,10 +1487,10 @@ eO
 dj
 dZ
 dZ
-aq
+Af
 dT
 dS
-dR
+FO
 "}
 (13,1,1) = {"
 au
@@ -1491,10 +1519,10 @@ dj
 dj
 eh
 dZ
-aq
+Af
 dU
 dV
-dR
+FO
 "}
 (14,1,1) = {"
 au
@@ -1515,7 +1543,7 @@ da
 cS
 ec
 ev
-aq
+Af
 em
 ec
 cS
@@ -1526,7 +1554,7 @@ eb
 dY
 eo
 eN
-dR
+FO
 "}
 (15,1,1) = {"
 au
@@ -1546,19 +1574,19 @@ cS
 cS
 cS
 cP
-ew
+GC
 ek
 eq
-ez
+pK
 cS
 cS
 cS
-ez
+pK
 cR
 eL
 eo
-dR
-dR
+FO
+FO
 "}
 (16,1,1) = {"
 ak
@@ -1577,20 +1605,20 @@ oE
 cS
 da
 cS
-ew
+GC
 ee
 dy
-ez
+pK
 er
 cS
 da
 cS
-ew
+GC
 ee
 en
 IE
-dR
-dR
+FO
+FO
 "}
 (17,1,1) = {"
 au
@@ -1609,20 +1637,20 @@ oE
 cS
 cS
 cS
-ew
-ew
+GC
+GC
 ey
-ez
-ez
+pK
+pK
 cS
 cS
 cS
 cP
 cP
-aq
+Af
 IE
-dR
-dR
+FO
+FO
 "}
 (18,1,1) = {"
 au
@@ -1643,7 +1671,7 @@ da
 cS
 ec
 dz
-aq
+Af
 eA
 ec
 cS
@@ -1651,10 +1679,10 @@ da
 dj
 cP
 cR
-dk
+sy
 IE
-dR
-dR
+FO
+FO
 "}
 (19,1,1) = {"
 au
@@ -1682,8 +1710,8 @@ dj
 dj
 dj
 dZ
-ez
-dX
+pK
+EG
 dT
 dT
 dT
@@ -1713,9 +1741,9 @@ ec
 dj
 eO
 dj
-ez
-ez
-aq
+pK
+pK
+Af
 dT
 dT
 dT
@@ -1746,8 +1774,8 @@ cS
 dj
 dj
 cP
-aq
-aq
+Af
+Af
 dT
 dT
 dT
@@ -1809,9 +1837,9 @@ ec
 cS
 cS
 cS
-ew
-dX
-aq
+GC
+EG
+Af
 dT
 dT
 dT
@@ -1835,15 +1863,15 @@ dZ
 dZ
 dZ
 dZ
-ew
-ez
-ez
-ew
+GC
+pK
+pK
+GC
 cP
 cP
 ee
-dX
-aq
+EG
+Af
 dT
 dT
 dT
@@ -1869,12 +1897,12 @@ cR
 eh
 eb
 ep
-ez
+pK
 cP
 cP
 cP
-dk
-aq
+sy
+Af
 dT
 dT
 dT
@@ -1900,12 +1928,12 @@ dZ
 df
 ei
 dv
-ew
+GC
 cP
 df
 do
 dv
-aq
+Af
 dT
 dT
 dT
@@ -1926,18 +1954,18 @@ aq
 aq
 dX
 dY
-aq
-aq
-dk
+Af
+Af
+sy
 eJ
 eJ
 eJ
-aq
-dk
-dX
-dk
-aq
-aq
+Af
+sy
+EG
+sy
+Af
+Af
 dT
 dT
 dT

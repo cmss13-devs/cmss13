@@ -33,7 +33,7 @@
 
 /obj/item/defenses/handheld/proc/connect()
 	if(dropped && !TR)
-		TR = new defense_type
+		TR = new defense_type(src)
 		if(!TR.HD)
 			TR.HD = src
 			return TRUE
@@ -110,7 +110,7 @@
 
 /obj/item/defenses/handheld/sentry/get_upgrade_list()
 	. = list()
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		. += list("DMR Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "DMR uac_sentry_handheld"))
 	. += list(
 		"Shotgun Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Shotgun uac_sentry_handheld"),
@@ -198,7 +198,7 @@
 
 /obj/item/defenses/handheld/sentry/flamer/get_upgrade_list()
 	. = list()
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		. += list("Long-Range Plasma Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Plasma uac_flamer_handheld"))
 	. += list(
 		"Mini-Flamer Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Mini uac_flamer_handheld")
@@ -213,7 +213,8 @@
 
 /obj/item/defenses/handheld/sentry/flamer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(!ammo_convert) return
+	if(!ammo_convert)
+		return
 
 	if(!istype(target, /obj/item/ammo_magazine/sentry_flamer))
 		return .

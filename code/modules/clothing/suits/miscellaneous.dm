@@ -73,35 +73,17 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
-
-/obj/item/clothing/suit/cyborg_suit
-	name = "cyborg suit"
-	desc = "Suit for a cyborg costume."
-	icon_state = "death"
-	item_state = "death"
-	flags_atom = FPRINT|CONDUCT
-	fire_resist = T0C+5200
-	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-
-/obj/item/clothing/suit/johnny_coat
-	name = "johnny~~ coat"
-	desc = "Johnny~~"
-	icon_state = "johnny"
-	item_state = "johnny"
-
-/obj/item/clothing/suit/justice
-	name = "justice suit"
-	desc = "This pretty much looks ridiculous."
-	icon_state = "justice"
-	item_state = "justice"
-	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HANDS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-
 /obj/item/clothing/suit/judgerobe
 	name = "judge's robe"
 	desc = "This robe commands authority."
 	icon_state = "judge"
 	item_state = "judge"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	allowed = list(
 		/obj/item/storage/fancy/cigarettes,
@@ -121,6 +103,12 @@
 	desc = "For some classy, murderous fun."
 	icon_state = "vest"
 	item_state = "wcoat"
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
+	)
 	blood_overlay_type = "armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	allowed = list(
@@ -181,9 +169,13 @@
 
 /obj/item/clothing/suit/syndicatefake
 	name = "red space suit replica"
-	icon_state = "syndicate"
-	item_state = "space_suit_syndicate"
 	desc = "A plastic replica of the syndicate space suit, you'll look just like a real murderous syndicate agent in this! This is a toy, it is not made for use in space!"
+	icon_state = "syndicate"
+	item_state = "syndicate"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+	)
 	w_class = SIZE_MEDIUM
 	allowed = list(
 		/obj/item/toy,
@@ -197,15 +189,6 @@
 	)
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HANDS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-
-/obj/item/clothing/suit/hastur
-	name = "Hastur's Robes"
-	desc = "Robes not meant to be worn by man"
-	icon_state = "hastur"
-	item_state = "hastur"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS
-	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-
 
 /obj/item/clothing/suit/imperium_monk
 	name = "Imperium monk"
@@ -226,21 +209,15 @@
 	siemens_coefficient = 2
 
 
-/obj/item/clothing/suit/monkeysuit
-	name = "Monkey Suit"
-	desc = "A suit that looks like a primate"
-	icon_state = "monkeysuit"
-	item_state = "monkeysuit"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_HANDS
-	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2
-
-
 /obj/item/clothing/suit/holidaypriest
 	name = "Holiday Priest"
 	desc = "This is a nice holiday my son."
 	icon_state = "holidaypriest"
 	item_state = "holidaypriest"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEJUMPSUIT
 	allowed = list(
@@ -276,13 +253,6 @@
 		H.drop_r_hand()
 	..()
 
-/obj/item/clothing/suit/ianshirt
-	name = "worn shirt"
-	desc = "A worn out, curiously comfortable t-shirt with a picture of Ian. You wouldn't go so far as to say it feels like being hugged when you wear it but it's pretty close. Good for sleeping in."
-	icon_state = "ianshirt"
-	item_state = "ianshirt"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-
 /obj/item/clothing/suit/storage/webbing
 	name = "external webbing"
 	desc = "Designed to be worn over a jumpsuit rather than clipped on."
@@ -316,6 +286,10 @@
 	desc = "A utility vest to hold tools in."
 	icon_state = "synth_utility_vest"
 	item_state = "synth_utility_vest"
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
+	)
 	allowed = list(
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
@@ -377,28 +351,24 @@
 	item_state = "red_pyjamas"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 
-//stripper
-/obj/item/clothing/under/stripper
-	flags_armor_protection = 0
-
-/obj/item/clothing/under/stripper/mankini
-	name = "the mankini"
-	desc = "No honest man would wear this abomination"
-	icon_state = "mankini"
-	siemens_coefficient = 1
-
 /obj/item/clothing/suit/xenos
 	name = "xenos suit"
 	desc = "A suit made out of chitinous alien hide."
 	icon_state = "xenos"
-	item_state = "xenos_helm"
+	item_state = "xenos_suit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 2
+
 //swimsuit
+
 /obj/item/clothing/under/swimsuit
 	siemens_coefficient = 1
 	flags_armor_protection = 0
+	icon = 'icons/obj/items/clothing/uniforms/underwear_uniforms.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/underwear_uniforms.dmi',
+	)
 
 /obj/item/clothing/under/swimsuit/black
 	name = "black swimsuit"
@@ -449,6 +419,10 @@
 	name = "brown bomber jacket"
 	desc = "A well-worn leather bomber jacket."
 	icon_state = "bomber"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list (
@@ -488,8 +462,9 @@
 /obj/item/clothing/suit/storage/manager
 	name = "manager's jacket"
 	desc = "A suit that belongs to someone important. It is made of insulating material and offers minor protection from all forms of damage."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 	item_state = "manager_suit"
 	icon_state = "manager_suit"
@@ -520,8 +495,9 @@
 /obj/item/clothing/suit/storage/director
 	name = "director's jacket"
 	desc = "A jacket that belongs to someone very important. It is made of insulating material and offers minor protection from all forms of damage."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 	item_state = "director_suit"
 	icon_state = "director_suit"

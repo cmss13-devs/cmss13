@@ -1,7 +1,7 @@
 /datum/action/xeno_action/activable/pounce/facehugger
 	name = "Leap"
 	action_icon_state = "pounce"
-	ability_name = "leap"
+	action_text = "leap"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1

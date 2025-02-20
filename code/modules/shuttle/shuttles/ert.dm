@@ -333,6 +333,12 @@
 	height = 29
 	roundstart_template = /datum/map_template/shuttle/twe_ert
 
+/obj/docking_port/stationary/emergency_response/chinook_port
+	name = "Chinook Station Landing Pad 1"
+	dir = NORTH
+	id = ADMIN_LANDING_PAD_6
+	roundstart_template = /datum/map_template/shuttle/response_ert
+
 /datum/map_template/shuttle/response_ert
 	name = "Response Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT1

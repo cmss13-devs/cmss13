@@ -2,7 +2,7 @@
 	name = "legcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/security.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 0

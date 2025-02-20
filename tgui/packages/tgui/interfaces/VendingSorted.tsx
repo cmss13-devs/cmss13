@@ -23,6 +23,7 @@ const THEME_COMP = 0;
 const THEME_USCM = 1;
 const THEME_CLF = 2;
 const THEME_UPP = 3;
+const THEME_YAUTJA = 4;
 
 const VENDOR_ITEM_REGULAR = 1;
 const VENDOR_ITEM_MANDATORY = 2;
@@ -313,6 +314,8 @@ const getTheme = (value: string | number): string => {
       return 'retro';
     case THEME_COMP:
       return 'weyland';
+    case THEME_YAUTJA:
+      return 'ntos_spooky';
     default:
       return 'usmc';
   }

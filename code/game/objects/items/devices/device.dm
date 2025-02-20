@@ -3,6 +3,10 @@
 
 /obj/item/device
 	icon = 'icons/obj/items/devices.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	var/serial_number
 
 /obj/item/device/Initialize(mapload, ...)

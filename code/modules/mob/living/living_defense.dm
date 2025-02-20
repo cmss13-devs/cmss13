@@ -40,8 +40,10 @@
 	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
 
 	var/datum/launch_metadata/LM = O.launch_metadata
+	var/launch_meta_valid = istype(LM)
+
 	var/dist = 2
-	if(istype(LM))
+	if(launch_meta_valid)
 		dist = LM.dist
 	var/miss_chance = min(15*(dist - 2), 0)
 
@@ -65,7 +67,7 @@
 	O.throwing = 0 //it hit, so stop moving
 
 	var/mob/M
-	if(ismob(LM.thrower))
+	if(launch_meta_valid && ismob(LM.thrower))
 		M = LM.thrower
 		if(damage_done > 5)
 			M.track_hit(initial(O.name))
@@ -84,11 +86,13 @@
 		last_damage_data = create_cause_data(last_damage_source, M)
 
 /mob/living/mob_launch_collision(mob/living/L)
-	L.Move(get_step_away(L, src))
+	if(!L.anchored)
+		L.Move(get_step_away(L, src))
 
 /mob/living/obj_launch_collision(obj/O)
 	var/datum/launch_metadata/LM = launch_metadata
-	if(!rebounding && LM.thrower != src)
+	var/launch_meta_valid = istype(LM)
+	if(!rebounding && (!launch_meta_valid || LM.thrower != src))
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [O]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
@@ -98,7 +102,8 @@
 //This is called when the mob or human is thrown into a dense turf or wall
 /mob/living/turf_launch_collision(turf/T)
 	var/datum/launch_metadata/LM = launch_metadata
-	if(!rebounding && LM.thrower != src)
+	var/launch_meta_valid = istype(LM)
+	if(!rebounding && (!launch_meta_valid || LM.thrower != src))
 		if(LM.thrower)
 			last_damage_data = create_cause_data("wall tossing", LM.thrower)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
@@ -206,7 +211,7 @@
 	var/starting_weather_type = current_weather_effect_type
 	var/area/area = get_area(src)
 	// Check if we're supposed to be something affected by weather
-	if(!SSweather.weather_event_instance || !SSweather.map_holder.should_affect_area(area))
+	if(!SSweather.weather_event_instance || !SSweather.map_holder.should_affect_area(area) || !area.weather_enabled)
 		current_weather_effect_type = null
 	else
 		current_weather_effect_type = SSweather.weather_event_type

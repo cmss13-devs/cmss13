@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/grenade_launcher
 	name = "\improper M92T Grenade Launcher"
-	desc = "A secondary weapon for tanks that shoots grenades."
+	desc = "A magazine fed secondary grenade launcher for tanks that shoots M40 grenades."
 
 	icon_state = "glauncher"
 	disp_icon = "tank"

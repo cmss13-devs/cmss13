@@ -49,6 +49,7 @@
 	var/list/data = list()
 
 	var/list/humans = list()
+	var/list/responders = list()
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
@@ -64,6 +65,7 @@
 	var/list/marshal = list()
 	var/list/synthetics = list()
 	var/list/predators = list()
+	var/list/hunted = list()
 	var/list/animals = list()
 	var/list/dead = list()
 	var/list/ghosts = list()
@@ -119,6 +121,7 @@
 					var/datum/caste_datum/caste = xeno.caste
 					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
+					serialized["background_icon"] = caste.minimap_background
 					serialized["hivenumber"] = xeno.hivenumber
 					serialized["area_name"] = get_area_name(xeno)
 				xenos += list(serialized)
@@ -142,12 +145,14 @@
 				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)
-					serialized["background_color"] = human.assigned_squad.equipment_color ? human.assigned_squad.equipment_color : human.assigned_squad.minimap_color
+					serialized["background_icon"] = human.assigned_squad.background_icon
 				else
-					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
+					serialized["background_icon"] = human.assigned_equipment_preset?.minimap_background
 
 				if(istype(get_area(human), /area/tdome))
 					in_thunderdome += list(serialized)
+				else if(human.job in FAX_RESPONDER_JOB_LIST)
+					responders += list(serialized)
 				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
@@ -158,6 +163,8 @@
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)
+				else if(human.faction in FACTION_LIST_HUNTED)
+					hunted += list(serialized)
 				else if(human.faction in FACTION_LIST_UPP)
 					upp += list(serialized)
 				else if(human.faction in FACTION_LIST_CLF)
@@ -193,6 +200,7 @@
 	data["clf"] = clf
 	data["wy"] = wy
 	data["twe"] = twe
+	data["responders"] = responders
 	data["freelancer"] = freelancer
 	data["contractor"] = contractor
 	data["mercenary"] = mercenary
@@ -200,6 +208,7 @@
 	data["marshal"] = marshal
 	data["synthetics"] = synthetics
 	data["predators"] = predators
+	data["hunted"] = hunted
 	data["animals"] = animals
 	data["dead"] = dead
 	data["ghosts"] = ghosts

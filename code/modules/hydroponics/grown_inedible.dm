@@ -4,7 +4,7 @@
 
 /obj/item/grown // Grown things that are not edible
 	name = "grown_weapon"
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	var/plantname
 	var/potency = 1
 
@@ -79,7 +79,7 @@
 /obj/item/grown/nettle // -- Skie
 	plantname = "nettle"
 	desc = "It's probably <B>not</B> wise to touch it with bare hands..."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	name = "nettle"
 	icon_state = "nettle"
 	damtype = "fire"
@@ -142,13 +142,15 @@
 
 /obj/item/grown/nettle/attack(mob/living/carbon/M as mob, mob/user as mob)
 
-	if(!..()) return
+	if(!..())
+		return
 
 	lose_leaves(user)
 
 /obj/item/grown/nettle/death/attack(mob/living/carbon/M as mob, mob/user as mob)
 
-	if(!..()) return
+	if(!..())
+		return
 
 	if(istype(M, /mob/living))
 		to_chat(M, SPAN_WARNING("You are stunned by the powerful acid of the deathnettle!"))

@@ -63,6 +63,9 @@
 /obj/structure/closet/secure_closet/freezer/fridge/ex_act(severity) // positively devious
 	return
 
+/obj/structure/closet/secure_closet/freezer/fridge/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/closet/secure_closet/freezer/fridge/groceries
 	name = "Groceries"
 
@@ -99,6 +102,9 @@
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/reagent_container/food/snacks/grown/banana(src)
 
+/obj/structure/closet/secure_closet/freezer/fridge/groceries/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/closet/secure_closet/freezer/money
 	name = "Freezer"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -130,7 +136,7 @@
 	var/obj/structure/machinery/paraform_cooler/CU
 
 /obj/structure/closet/secure_closet/freezer/industry/Initialize()
-	CU = new /obj/structure/machinery/paraform_cooler()
+	CU = new /obj/structure/machinery/paraform_cooler(get_turf(src))
 	CU.freezer = src
 	CU.start_processing()
 	. = ..()
@@ -140,6 +146,7 @@
 	return ..()
 
 /obj/structure/machinery/paraform_cooler
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/cooldown = 5
 	var/list/polymerization_recipe = list("formaldehyde" = 3, "water" = 3)
 	var/obj/structure/closet/secure_closet/freezer/industry/freezer

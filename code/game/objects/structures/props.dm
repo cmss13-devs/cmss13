@@ -15,7 +15,7 @@
 /obj/structure/prop/dam/drill
 	name = "mining drill"
 	desc = "An old mining drill, seemingly used for mining. And possibly drilling."
-	icon = 'icons/obj/structures/props/drill.dmi'
+	icon = 'icons/obj/structures/props/industrial/drill.dmi'
 	icon_state = "drill"
 	bound_height = 96
 	var/on = FALSE//if this is set to on by default, the drill will start on, doi
@@ -47,7 +47,7 @@
 /obj/structure/prop/dam/truck
 	name = "truck"
 	desc = "An old truck, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "truck"
 	bound_height = 64
 	bound_width = 64
@@ -70,7 +70,7 @@
 /obj/structure/prop/dam/van
 	name = "van"
 	desc = "An old van, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
@@ -82,7 +82,7 @@
 
 /obj/structure/prop/dam/crane
 	name = "cargo crane"
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "crane"
 	bound_height = 64
 	bound_width = 64
@@ -98,7 +98,7 @@
 /obj/structure/prop/dam/torii
 	name = "torii arch"
 	desc = "A traditional Japanese archway, made out of wood, and adorned with lanterns."
-	icon = 'icons/obj/structures/props/torii.dmi'
+	icon = 'icons/obj/structures/props/furniture/torii.dmi'
 	icon_state = "torii"
 	density = FALSE
 	pixel_x = -16
@@ -201,13 +201,14 @@
 	name = "boulder"
 	icon_state = "boulder1"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/structures/props/dam.dmi'
-	unslashable = TRUE
-	unacidable = TRUE
+	icon = 'icons/obj/structures/props/natural/vegetation/dam.dmi'
+
 /obj/structure/prop/dam/boulder/boulder1
 	icon_state = "boulder1"
+
 /obj/structure/prop/dam/boulder/boulder2
 	icon_state = "boulder2"
+
 /obj/structure/prop/dam/boulder/boulder3
 	icon_state = "boulder3"
 
@@ -215,20 +216,20 @@
 /obj/structure/prop/dam/large_boulder
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/structures/props/boulder_large.dmi'
+	icon = 'icons/obj/structures/props/natural/boulder_large.dmi'
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
+
 /obj/structure/prop/dam/large_boulder/boulder1
 	icon_state = "boulder_large1"
+
 /obj/structure/prop/dam/large_boulder/boulder2
 	icon_state = "boulder_large2"
 
 /obj/structure/prop/dam/wide_boulder
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/structures/props/boulder_wide.dmi'
+	icon = 'icons/obj/structures/props/natural/boulder_wide.dmi'
 	bound_height = 32
 	bound_width = 64
 
@@ -279,7 +280,7 @@
 
 /obj/structure/prop/turbine //maybe turn this into an actual power generation device? Would be cool!
 	name = "power turbine"
-	icon = 'icons/obj/structures/props/biomass_turbine.dmi'
+	icon = 'icons/obj/structures/props/industrial/biomass_turbine.dmi'
 	icon_state = "biomass_turbine"
 	desc = "A gigantic turbine that runs on god knows what. It could probably be turned on by someone with the correct know-how."
 	density = TRUE
@@ -316,7 +317,7 @@
 
 /obj/structure/prop/turbine_extras
 	name = "power turbine struts"
-	icon = 'icons/obj/structures/props/biomass_turbine.dmi'
+	icon = 'icons/obj/structures/props/industrial/biomass_turbine.dmi'
 	icon_state = "support_struts_r"
 	desc = "Pipes, or maybe support struts that lead into, or perhaps support that big ol' turbine."
 	density = FALSE
@@ -342,7 +343,7 @@
 
 /obj/structure/prop/power_transformer
 	name = "power transformer"
-	icon = 'icons/obj/structures/props/power_transformer.dmi'
+	icon = 'icons/obj/structures/props/industrial/power_transformer.dmi'
 	icon_state = "transformer"
 	bound_width = 64
 	bound_height = 64
@@ -440,7 +441,7 @@
 /obj/structure/prop/brazier
 	name = "brazier"
 	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bonfire.dmi'
 	icon_state = "brazier"
 	density = TRUE
 	health = 150
@@ -517,7 +518,7 @@
 
 /obj/item/prop/torch_frame
 	name = "unlit torch"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bonfire.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
 
@@ -537,7 +538,7 @@
 /obj/structure/prop/brazier/campfire
 	name = "campfire"
 	desc = "A circle of stones surrounding a burning pile of wood. The fire is roaring and you can hear its crackle. You could probably stomp the fire out."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bonfire.dmi'
 	icon_state = "campfire_on"
 	density = FALSE
 	///How many tiles the heating and sound goes
@@ -773,7 +774,7 @@
 /obj/structure/prop/vehicles
 	name = "van"
 	desc = "An old van, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
@@ -797,7 +798,7 @@
 
 /obj/structure/prop/invuln/overhead
 	layer = ABOVE_FLY_LAYER
-	icon = 'icons/obj/structures/props/overhead_ducting.dmi'
+	icon = 'icons/obj/structures/props/industrial/overhead_ducting.dmi'
 	icon_state = "flammable_pipe_1"
 
 /obj/structure/prop/invuln/overhead/flammable_pipe
@@ -812,7 +813,7 @@
 /obj/structure/prop/static_tank
 	name = "liquid tank"
 	desc = "Warning, contents under pressure!"
-	icon = 'icons/obj/structures/props/generic_props.dmi'
+	icon = 'icons/obj/structures/props/industrial/generic_props.dmi'
 	icon_state = "tank"
 	density = TRUE
 
@@ -964,7 +965,7 @@
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"
 	desc = "A wooden grave marker. Is it more respectful because someone made it by hand, or less, because it's crude and misshapen?"
-	icon = 'icons/obj/structures/props/crosses.dmi'
+	icon = 'icons/obj/structures/props/furniture/crosses.dmi'
 	icon_state = "cross1"
 	density = FALSE
 	health = 30
@@ -1024,7 +1025,7 @@
 		return
 
 	if(user.a_intent == INTENT_HARM)
-		..()
+		. = ..()
 		if(W.force && !(W.flags_item & NOBLUDGEON))
 			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 			update_health(W.force)
@@ -1043,13 +1044,13 @@
 		var/message = sanitize(input(user, "What do you write on [src]?", "Inscription"))
 		if(!message)
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),\
+		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),
 			SPAN_NOTICE("You begin to [action_msg] [src]."), null, 4)
 
 		if(!do_after(user, length(message) * time_multiplier, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			to_chat(user, SPAN_WARNING("You were interrupted!"))
 		else
-			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),\
+			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),
 				SPAN_NOTICE("You [action_msg] [src] with your [W.name]."), null, 4)
 			if(inscription)
 				inscription += "\n[message]"
@@ -1075,29 +1076,29 @@
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+		M.visible_message(SPAN_DANGER("[M] slashes [src]!"),
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/wooden_cross/update_icon()
 	if(tagged)
-		overlays += mutable_appearance('icons/obj/structures/props/crosses.dmi', "cross_overlay")
+		overlays += mutable_appearance('icons/obj/structures/props/furniture/crosses.dmi', "cross_overlay")
 
 
 /obj/structure/prop/invuln/rope
 	name = "rope"
 	desc = "A secure rope looks like someone might've been hiding out on those rocks."
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
 
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"
 	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 

@@ -6,7 +6,11 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine
 	name = "generic ammo"
 	desc = "A box of ammo."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/assault_rifles.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi',
+	)
 	icon_state = null
 	item_state = "ammo_mag" //PLACEHOLDER. This ensures the mag doesn't use the icon state instead.
 	var/bonus_overlay = null //Sprite pointer in ammo.dmi to an overlay to add to the gun, for extended mags, box mags, and so on
@@ -46,9 +50,11 @@ They're all essentially identical when it comes to getting the job done.
 	GLOB.ammo_magazine_list += src
 	base_mag_icon = icon_state
 	base_mag_item = item_state
-	if(spawn_empty) current_rounds = 0
+	if(spawn_empty)
+		current_rounds = 0
 	switch(current_rounds)
-		if(-1) current_rounds = max_rounds //Fill it up. Anything other than -1 and 0 will just remain so.
+		if(-1)
+			current_rounds = max_rounds //Fill it up. Anything other than -1 and 0 will just remain so.
 		if(0)
 			icon_state += "_e" //In case it spawns empty instead.
 			item_state += "_e"
@@ -109,7 +115,8 @@ They're all essentially identical when it comes to getting the job done.
 			if (current_rounds > 0)
 				if(create_handful(user))
 					return
-			else to_chat(user, "[src] is empty. Nothing to grab.")
+			else
+				to_chat(user, "[src] is empty. Nothing to grab.")
 			return
 	return ..() //Do normal stuff.
 
@@ -117,7 +124,7 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, bypass_hold_check = 0)
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/MG = I
-		if((MG.flags_magazine & AMMUNITION_HANDFUL) || (MG.flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
+		if((MG.flags_magazine & AMMUNITION_HANDFUL) || (MG.flags_magazine & AMMUNITION_SLAP_TRANSFER && flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
 			if(flags_magazine & AMMUNITION_REFILLABLE) //and a refillable magazine
 				var/obj/item/ammo_magazine/handful/transfer_from = I
 				if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
@@ -146,7 +153,8 @@ They're all essentially identical when it comes to getting the job done.
 		if(user)
 			user.temp_drop_inv_item(source)
 		qdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
-	else source.update_icon()
+	else
+		source.update_icon()
 
 	if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun) && !istype(source, /obj/item/ammo_magazine/shotgun)) //if we are shotgun or revolver or whatever not using normal mag system
 		playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
@@ -181,7 +189,8 @@ They're all essentially identical when it comes to getting the job done.
 			user.put_in_hands(new_handful)
 			to_chat(user, SPAN_NOTICE("You grab <b>[amount_to_transfer]</b> round\s from [obj_name]."))
 
-		else new_handful.forceMove(get_turf(src))
+		else
+			new_handful.forceMove(get_turf(src))
 		update_icon(-amount_to_transfer) //Update the other one.
 	return amount_to_transfer //Give the number created.
 
@@ -239,6 +248,12 @@ bullets/shells. ~N
 	desc = "A handful of rounds to reload on the go."
 	icon = 'icons/obj/items/weapons/guns/handful.dmi'
 	icon_state = "bullet_1"
+	item_state_slots = list(WEAR_AS_GARB = "bullet")
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
+	)
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
 	w_class = SIZE_SMALL
@@ -257,6 +272,7 @@ bullets/shells. ~N
 		var/I = current_rounds*50 // For the metal.
 		matter = list("metal" = I)
 	icon_state = handful_state + "_[current_rounds]"
+	item_state = handful_state
 
 /obj/item/ammo_magazine/handful/pickup(mob/user)
 	var/olddir = dir
@@ -277,7 +293,8 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	if(istype(transfer_from)) // We have a handful. They don't need to hold it.
 		if(default_ammo == transfer_from.default_ammo) //Has to match.
 			transfer_ammo(transfer_from,user, transfer_from.current_rounds) // Transfer it from currently held to src
-		else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
+		else
+			to_chat(user, "Those aren't the same rounds. Better not mix them up.")
 
 /obj/item/ammo_magazine/handful/proc/generate_handful(new_ammo, new_caliber, new_max_rounds, new_rounds, new_gun_type)
 	var/datum/ammo/A = GLOB.ammo_list[new_ammo]
@@ -336,7 +353,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 //This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
 /obj/item/ammo_casing/update_icon()
 	if(max_casings >= current_casings)
-		if(current_casings == 2) name += "s" //In case there is more than one.
+		if(current_casings == 2)
+			name += "s" //In case there is more than one.
 		if(floor((current_casings-1)/8) > current_icon)
 			current_icon++
 			icon_state += "_[current_icon]"
@@ -346,8 +364,10 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		var/base_direction = current_casings - (current_icon * 8)
 		setDir(base_direction + floor(base_direction)/3)
 		switch(current_casings)
-			if(3 to 5) w_class = SIZE_SMALL //Slightly heavier.
-			if(9 to 10) w_class = SIZE_MEDIUM //Can't put it in your pockets and stuff.
+			if(3 to 5)
+				w_class = SIZE_SMALL //Slightly heavier.
+			if(9 to 10)
+				w_class = SIZE_MEDIUM //Can't put it in your pockets and stuff.
 
 
 //Making child objects so that locate() and istype() doesn't screw up.

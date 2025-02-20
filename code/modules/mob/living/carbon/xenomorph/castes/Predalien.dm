@@ -35,9 +35,9 @@
 	caste_type = XENO_CASTE_PREDALIEN
 	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
-	icon = 'icons/mob/xenos/predalien.dmi'
-	icon_xeno = 'icons/mob/xenos/predalien.dmi'
-	icon_xenonid = 'icons/mob/xenos/predalien.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
+	icon_xenonid = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_state = "Predalien Walking"
 	speaking_noise = 'sound/voice/predalien_click.ogg'
 	plasma_types = list(PLASMA_CATECHOLAMINE)

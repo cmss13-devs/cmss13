@@ -1,4 +1,10 @@
 /obj/item/restraint
+	icon = 'icons/obj/items/security.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/security_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/security_righthand.dmi'
+	)
 	/// SLOT_HANDS or SLOT_LEGS, for handcuffs or legcuffs
 	var/target_zone = SLOT_HANDS
 	/// How long to break out
@@ -24,6 +30,7 @@
 		if(SLOT_LEGS)
 			if(!attacked_carbon.legcuffed)
 				apply_legcuffs(attacked_carbon, user)
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/restraint/proc/place_handcuffs(mob/living/carbon/target, mob/user)
 	playsound(src.loc, cuff_sound, 25, 1, 4)
@@ -65,7 +72,6 @@
 	name = "handcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -75,11 +81,12 @@
 	throw_range = 5
 	matter = list("metal" = 500)
 
-/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot)
+/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
-	var/image/handcuffs = overlay_image('icons/mob/mob.dmi', "handcuff1", color, RESET_COLOR)
-	ret.overlays += handcuffs
+	if(slot == WEAR_HANDCUFFS)
+		var/image/handcuffs = overlay_image('icons/mob/humans/onmob/cuffs.dmi', "handcuff1", color, RESET_COLOR)
+		ret.overlays += handcuffs
 
 	return ret
 
@@ -182,7 +189,8 @@
 				return
 
 		spawn(30)
-			if(!carbon_mob) return
+			if(!carbon_mob)
+				return
 			if(p_loc == user.loc && p_loc_m == carbon_mob.loc)
 				carbon_mob.handcuffed = new /obj/item/restraint/handcuffs(carbon_mob)
 				carbon_mob.handcuff_update()
@@ -195,7 +203,7 @@
 	name = "xeno restraints"
 	desc = "Use this to hold xenomorphic creatures safely."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/security.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -218,7 +226,8 @@
 		for(var/mob/O in viewers(user, null))
 			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), SHOW_MESSAGE_VISIBLE)
 		spawn(30)
-			if(!C) return
+			if(!C)
+				return
 			if(p_loc == user.loc && p_loc_m == C.loc)
 				C.handcuffed = new /obj/item/xeno_restraints(C)
 				C.handcuff_update()

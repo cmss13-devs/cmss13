@@ -256,6 +256,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 25
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/seized/p90
+	name = "FN P90 submachinegun crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/seized/mp27
 	name = "MP-27 submachinegun crate (x5 magazines included)"
 	contains = list(
@@ -605,8 +618,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/horrible,
-		/obj/item/storage/belt/marine/quackers,
-		/obj/item/storage/belt/shotgun/full/quackers,
+		/obj/item/toy/inflatable_duck,
 		/obj/item/pamphlet/skill/powerloader,
 		/obj/item/pamphlet/language/russian,
 		/obj/item/pamphlet/language/japanese,
@@ -739,6 +751,24 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	contains = list(/obj/item/ammo_box/magazine/lever_action/training)
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/ammo/uppshot
+	name = "shotgun shell box crate (Type 23, x100 8g slug shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot/buck
+	name = "shotgun shell box crate (Type 23, x100 8g buckshot shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/buckshot)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot/flech
+	name = "shotgun shell box crate (Type 23, x100 8g flechette shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/flechette)
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/ammo/m16
 	name = "Magazine box (M16, 12x regular mags)"
 	dollar_cost = 100
@@ -784,6 +814,12 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "Magazines box (FN FP9000, 10x mags)"
 	dollar_cost = 35
 	contains = list(/obj/item/ammo_box/magazine/fp9000)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/p90
+	name = "Magazines box (FN P90, 10x mags)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/p90)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/mp27
@@ -1085,6 +1121,16 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "M44 Custom Revolver"
 	contains = list(/obj/item/weapon/gun/revolver/m44/custom)
 	dollar_cost = 70
+	crate_heat = 4
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/deep_storage/gunslinger_holster
+	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	contains = list(
+		/obj/item/storage/belt/gun/m44/gunslinger,
+		/obj/item/storage/belt/gun/m44/gunslinger,
+	)
+	dollar_cost = 20
 	crate_heat = 4
 	containertype = /obj/structure/largecrate/black_market
 

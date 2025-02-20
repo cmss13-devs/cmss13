@@ -24,6 +24,10 @@
 			to_chat(src, SPAN_WARNING("You can't resist in your current state."))
 			return
 
+	if(pulledby && isxeno(pulledby))
+		to_chat(src, SPAN_WARNING("You can't resist while a xeno is grabbing you."))
+		return
+
 	resisting = TRUE
 
 	next_move = world.time + 20

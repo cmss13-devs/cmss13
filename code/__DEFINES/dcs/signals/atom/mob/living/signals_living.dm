@@ -45,3 +45,8 @@
 
 /// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
 #define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
+
+/// from /datum/component/shimmy_around/proc/on_mob_move to determine if layer should be reset
+#define COMSIG_LIVING_SHIMMY_LAYER "structure_shimmy_layer"
+	/// Sent when a shimmy component is currently overriding the layer
+	#define COMSIG_LIVING_SHIMMY_LAYER_CANCEL (1<<0)

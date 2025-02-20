@@ -228,8 +228,6 @@
 		UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 		parent_buckle = null
 
-	if(parent_mob.is_xeno_grabbable())
-		return FALSE
 	if(!(parent_mob.status_flags & PERMANENTLY_DEAD))
 		var/mob/living/carbon/human/parent_human = parent_mob
 		if(istype(parent_human) && !parent_human.undefibbable)

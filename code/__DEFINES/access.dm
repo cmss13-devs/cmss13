@@ -68,6 +68,9 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 ///The generic "I'm a bad guy" access
 #define ACCESS_ILLEGAL_PIRATE 120
 
+//CIA-locked covert items
+#define ACCESS_CIA 125
+
 //=================================================
 
 //Weyland Yutani access levels (200-229)
@@ -147,10 +150,12 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 // Yautja Access Levels
 /// Requires a visible ID chip to open
 #define ACCESS_YAUTJA_SECURE 390
+/// Elites+ only
+#define ACCESS_YAUTJA_ELITE 391
 /// Elders+ only
-#define ACCESS_YAUTJA_ELDER 391
+#define ACCESS_YAUTJA_ELDER 392
 /// Ancients only
-#define ACCESS_YAUTJA_ANCIENT 392
+#define ACCESS_YAUTJA_ANCIENT 393
 
 /// Anything in a tutorial sequence that shouldn't be accessed
 #define ACCESS_TUTORIAL_LOCKED 998

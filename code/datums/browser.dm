@@ -68,7 +68,6 @@
 
 /datum/browser/proc/get_header()
 	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()[stylesheet]]'>"
-	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["search.js"]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
 
 	for (var/file in stylesheets)
@@ -77,6 +76,7 @@
 
 	for (var/file in scripts)
 		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(file)]'></script>"
+	head_content += "<script type='text/javascript' src='[other_asset.get_url_mappings()["search.js"]]'></script>"
 
 	var/title_attributes = "class='uiTitle'"
 	if (title_image)
@@ -88,7 +88,7 @@
 	<head>
 		[head_content]
 	</head>
-	<body scroll=auto>
+	<body scroll=auto onload='selectFilterField()'>
 		<div class='uiWrapper'>
 			[title ? "<div class='uiTitleWrapper'><div [title_attributes]><tt>[title]</tt></div><div class='uiTitleButtons'>[title_buttons]</div></div>" : ""]
 			<div class='uiContent'>

@@ -3,6 +3,7 @@
 	singular_name = "wired glass floor tile"
 	desc = "A glass tile, which is wired, somehow."
 	icon_state = "glass_wire"
+	icon = 'icons/obj/items/floor_tiles.dmi'
 	w_class = SIZE_MEDIUM
 	force = 3
 	throwforce = 5

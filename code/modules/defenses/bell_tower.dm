@@ -223,7 +223,10 @@
 
 /obj/item/storage/backpack/imp
 	name = "IMP frame mount"
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
 	icon_state = "bell_backpack"
 	max_storage_space = 10
 	worn_accessible = TRUE

@@ -130,6 +130,8 @@
 #define ABOVE_XENO_LAYER 4.12
 /// For facehuggers
 #define FACEHUGGER_LAYER 4.13
+/// For Signs above everything but below weather
+#define BILLBOARD_LAYER 4.13
 /// For WEATHER
 #define WEATHER_LAYER 4.14
 
@@ -217,6 +219,10 @@
 
 /// NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
+
+#define OPEN_SPACE_PLANE -9
+
+#define OPENSPACE_BACKDROP_PLANE -8
 
 /// Floor plane, self explanatory. Used for Ambient Occlusion filter
 #define FLOOR_PLANE -7

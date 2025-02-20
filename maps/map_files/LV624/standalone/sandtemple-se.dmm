@@ -8,7 +8,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
 "br" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "cC" = (
@@ -154,7 +154,7 @@
 /obj/structure/flora/jungle/vines/light_2{
 	pixel_y = -22
 	},
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/south_east_jungle)
 "Wr" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -205,7 +205,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
 "Ze" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_east_jungle)
 "Zi" = (
 /obj/structure/flora/jungle/vines/heavy{

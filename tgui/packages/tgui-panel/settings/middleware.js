@@ -6,7 +6,7 @@
 
 import { storage } from 'common/storage';
 
-import { setClientTheme } from '../themes';
+import { setClientTheme, THEMES } from '../themes';
 import {
   addHighlightSetting,
   loadSettings,
@@ -47,10 +47,16 @@ export const settingsMiddleware = (store) => {
       type === updateHighlightSetting.type
     ) {
       // Set client theme
-      const theme = payload?.theme;
-      if (theme) {
-        setClientTheme(theme);
+      let theme = payload?.theme;
+      if (!theme) {
+        store.dispatch(
+          updateSettings({
+            theme: THEMES[0],
+          }),
+        );
+        theme = THEMES[0];
       }
+      setClientTheme(theme);
       // Pass action to get an updated state
       next(action);
       const settings = selectSettings(store.getState());

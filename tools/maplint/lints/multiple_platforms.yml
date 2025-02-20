@@ -1,0 +1,4 @@
+/obj/structure/platform:
+  banned_neighbors:
+    /obj/structure/platform:
+      identical: true

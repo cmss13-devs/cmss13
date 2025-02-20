@@ -1,5 +1,6 @@
 #define BE_ALIEN_AFTER_DEATH (1<<0)
 #define BE_AGENT (1<<1)
+#define BE_KING (1<<2)
 
 /// Determines how abilities are activated, whether they're activated via middle click, shift click or right click.
 #define XENO_ABILITY_CLICK_MIDDLE 1
@@ -36,6 +37,7 @@
 #define TOGGLE_LATE_JOIN_CURRENT_SLOT (1<<17) //Whether joining during the round ignores assigned character slot for the job and uses currently selected slot.
 #define TOGGLE_ABILITY_DEACTIVATION_OFF (1<<18) // This toggles whether selecting the same ability again can toggle it off
 #define TOGGLE_AMMO_DISPLAY_TYPE (1<<19)/// limit how often the ammo is displayed when using semi-automatic fire
+#define TOGGLE_AUTO_SHOVE_OFF (1<<20) /// Toggles between automatically shoving xenomorphs in the way as Queen.
 
 #define JOB_SLOT_RANDOMISED_SLOT -1
 #define JOB_SLOT_CURRENT_SLOT 0

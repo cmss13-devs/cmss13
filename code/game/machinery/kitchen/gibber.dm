@@ -38,7 +38,8 @@
 		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
 
 /obj/structure/machinery/gibber/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	go_out()
 
 
@@ -64,7 +65,7 @@
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 
-	if( !iscarbon(grabbed.grabbed_thing) && !istype(grabbed.grabbed_thing, /mob/living/simple_animal) )
+	if((!iscarbon(grabbed.grabbed_thing) && !istype(grabbed.grabbed_thing, /mob/living/simple_animal)) || isqueen(grabbed.grabbed_thing))
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 
@@ -254,4 +255,5 @@
 	operating = FALSE
 	update_icon()
 
-
+/obj/structure/machinery/gibber/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

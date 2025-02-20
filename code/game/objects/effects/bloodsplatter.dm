@@ -7,6 +7,7 @@
 	var/duration = 5
 	layer = ABOVE_XENO_LAYER
 	var/splatter_type = "splatter"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/bloodsplatter/Initialize(mapload, set_dir, fx_duration, color_override)
 	. = ..()

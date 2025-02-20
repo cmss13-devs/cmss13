@@ -121,7 +121,8 @@
 		"penetration" = penetration,
 		"armour_break_pr_pen" = armour_break_pr_pen,
 		"armour_break_flat" = armour_break_flat,
-		"armor_integrity" = armor_integrity
+		"armor_integrity" = armor_integrity,
+		"armour_type" = armour_type,
 	)
 	SEND_SIGNAL(src, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, damagedata)
 	var/modified_damage = armor_damage_reduction(armour_config, damage,
@@ -144,7 +145,8 @@
 
 
 	var/list/damagedata = list("damage" = damage)
-	if(SEND_SIGNAL(src, COMSIG_XENO_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	if(SEND_SIGNAL(src, COMSIG_XENO_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
+		return
 	damage = damagedata["damage"]
 
 	//We still want to check for blood splash before we get to the damage application.
@@ -209,7 +211,8 @@
 	if(GLOB.xeno_general.armor_ignore_integrity)
 		return FALSE
 
-	if(stat == DEAD) return
+	if(stat == DEAD)
+		return
 
 	if(armor_deflection<=0)
 		return
@@ -235,7 +238,8 @@
 
 /mob/living/carbon/xenomorph/proc/post_apply_armorbreak()
 	set waitfor = 0
-	if(!caste) return
+	if(!caste)
+		return
 	sleep(XENO_ARMOR_BREAK_PASS_TIME)
 	if(warding_aura && armor_break_to_apply > 0) //Damage to armor reduction
 		armor_break_to_apply = floor(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
@@ -250,7 +254,8 @@
 	if(!damage || !acid_blood_damage || world.time < acid_splash_last + acid_splash_cooldown || SSticker?.mode?.hardcore)
 		return FALSE
 	var/chance = 20 //base chance
-	if(damtype == BRUTE) chance += 5
+	if(damtype == BRUTE)
+		chance += 5
 	chance += chancemod + (damage * 0.33)
 	var/turf/T = loc
 	if(!T || !istype(T))
@@ -281,7 +286,7 @@
 				if(SEND_SIGNAL(src, COMSIG_XENO_DEAL_ACID_DAMAGE, victim, dmg) & COMPONENT_BLOCK_DAMAGE)
 					continue
 				i++
-				victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"), \
+				victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"),
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 				if(prob(60) && !victim.stat && victim.pain.feels_pain)
 					INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek

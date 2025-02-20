@@ -152,7 +152,7 @@
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.add_filter("nvg", 1, color_matrix_filter(color_matrix_from_string(matrixcol)))
-	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 
 /datum/component/camera_manager/proc/disable_nvg()
 	SIGNAL_HANDLER
@@ -192,6 +192,9 @@
 		var/obj/item/clothing/clothing = current.loc
 		cam_location = clothing.loc
 
+	else if(istype(current.loc, /obj/item/device/overwatch_camera))
+		var/obj/item/device/overwatch_camera/cam_gear = current.loc
+		cam_location = cam_gear.loc
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.
 	// Most security cameras will end here as they're not moving.

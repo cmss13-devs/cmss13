@@ -369,6 +369,12 @@ The default value assumes youtube-dl is in your system PATH
 /datum/config_entry/string/invoke_youtubedl
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+/datum/config_entry/string/cobalt_base_api
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+
+/datum/config_entry/string/cobalt_api_key
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
 /datum/config_entry/number/error_cooldown // The "cooldown" time for each occurrence of a unique error
 	config_entry_value = 600

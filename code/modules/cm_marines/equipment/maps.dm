@@ -1,6 +1,10 @@
 /obj/item/map
 	name = "map"
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
 	icon_state = "map"
 	item_state = "map"
 	throw_speed = SPEED_FAST
@@ -127,6 +131,12 @@
 	html_link = "images/b/bb/C_claim.png"
 	color = "cyan"
 
+/obj/item/map/lv759_map
+	name = "\improper LV-759 Map"
+	desc = "An overview of LV-759 schematics."
+	html_link = "images/6/60/LV759_Hybrisa_Prospera.png" //needs proper image still.
+	color = "#005eab"
+
 /obj/item/map/new_varadero
 	name = "\improper New Varadero map"
 	desc = "A labeled blueprint of the UA outpost New Varadero"
@@ -149,6 +159,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_CORSAT = new /obj/item/map/corsat(),
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
+		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero()
 	)
 

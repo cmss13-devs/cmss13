@@ -7,7 +7,6 @@
 
 /datum/action/xeno_action/activable/acid_lance
 	name = "Acid Lance"
-	ability_name = "acid lance"
 	action_icon_state = "acid_lance"
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/verb_acid_lance
@@ -50,9 +49,8 @@
 
 /datum/action/xeno_action/activable/xeno_spit/bombard
 	name = "Bombard"
-	ability_name = "Bombard"
 	action_icon_state = "bombard"
-	cooldown_message = "Our belly fills with another gas glob. We are ready to bombard again."
+	cooldown_message = "Our stomach fills with another gas glob. We are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
 	aim_turf = TRUE
 	/// These are actions that will be placed on cooldown for the cooldown_duration when activates. Added acid shroud for now because it can be abused
@@ -65,7 +63,6 @@
 
 /datum/action/xeno_action/onclick/acid_shroud  // acid dump alternative
 	name = "Acid Shroud"
-	ability_name = "Acid Shroud"
 	action_icon_state = "acid_shroud"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
@@ -90,7 +87,6 @@
 
 /datum/action/xeno_action/activable/boiler_trap
 	name = "Deploy Trap"
-	ability_name = "deploy trap"
 	action_icon_state = "resin_pit"
 	plasma_cost = 60
 	macro_path = /datum/action/xeno_action/verb/verb_boiler_trap
@@ -106,7 +102,6 @@
 
 /datum/action/xeno_action/activable/acid_mine
 	name = "Acid Mine"
-	ability_name = "acid mine"
 	action_icon_state = "acid_mine"
 	plasma_cost = 40
 	macro_path = /datum/action/xeno_action/verb/verb_acid_mine
@@ -121,7 +116,6 @@
 
 /datum/action/xeno_action/activable/acid_shotgun
 	name = "Acid Shotgun"
-	ability_name = "acid shotgun"
 	action_icon_state = "acid_shotgun"
 	plasma_cost = 60
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shotgun

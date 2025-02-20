@@ -28,11 +28,11 @@
 			accuracy_mult = 0.1
 			fire_delay = 0.5
 
-/obj/structure/machinery/defenses/sentry/flamer/actual_fire(atom/A)
-	var/obj/projectile/P = new(create_cause_data(initial(name), owner_mob))
-	P.generate_bullet(new ammo.default_ammo)
-	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)
-	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null)
+/obj/structure/machinery/defenses/sentry/flamer/actual_fire(atom/target)
+	var/obj/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
+	new_projectile.generate_bullet(new ammo.default_ammo)
+	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
+	new_projectile.fire_at(target, owner_mob, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	ammo.current_rounds--
 	track_shot()
 	if(ammo.current_rounds == 0)

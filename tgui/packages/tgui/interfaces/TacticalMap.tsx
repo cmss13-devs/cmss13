@@ -37,6 +37,7 @@ interface TacMapProps {
   canvasCooldown: any;
   exportedTacMapImage: any;
   tacmapReady: boolean;
+  canChangeZ: boolean;
 }
 
 const PAGES = [
@@ -107,6 +108,45 @@ export const TacticalMap = (props) => {
     });
   };
 
+  const tryIncrementZ = () => {
+    act('changeZ', {
+      amount: 1,
+    });
+  };
+
+  const tryDecrementZ = () => {
+    act('changeZ', {
+      amount: -1,
+    });
+  };
+
+  const getZTabs = () => {
+    if (!data.canChangeZ) return;
+
+    return (
+      <>
+        <Tabs.Tab
+          key={PAGES.length}
+          color={data.isxeno ? 'purple' : 'blue'}
+          selected={false}
+          icon={'plus'}
+          onClick={() => tryIncrementZ()}
+        >
+          Move up
+        </Tabs.Tab>
+        <Tabs.Tab
+          key={PAGES.length + 1}
+          color={data.isxeno ? 'purple' : 'blue'}
+          selected={false}
+          icon={'minus'}
+          onClick={() => tryDecrementZ()}
+        >
+          Move down
+        </Tabs.Tab>
+      </>
+    );
+  };
+
   return (
     <Window
       width={700}
@@ -144,6 +184,7 @@ export const TacticalMap = (props) => {
                     </Tabs.Tab>
                   );
                 })}
+                {getZTabs()}
               </Tabs>
             </Stack.Item>
           </Stack>
@@ -163,8 +204,10 @@ const ViewMapPanel = (props) => {
   }
 
   return (
-    <Section fitted height="86%">
+    <Section fill fitted height="86%">
       <ByondUi
+        height="100%"
+        width="100%"
         params={{
           id: data.mapRef,
           type: 'map',
@@ -179,7 +222,7 @@ const ViewMapPanel = (props) => {
 const OldMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
   return (
-    <Section fitted height="86%" align="center" fontSize="30px">
+    <Section fill fitted height="86%" align="center" fontSize="30px">
       {data.canViewCanvas ? (
         <DrawnMap
           svgData={data.svgData}
@@ -224,6 +267,8 @@ const DrawMapPanel = (props) => {
         title="Canvas Options"
         className={'canvas-options'}
         width="688px"
+        position="absolute"
+        style={{ zIndex: '1' }}
       >
         <Stack height="15px">
           <Stack.Item grow>
@@ -320,7 +365,13 @@ const DrawMapPanel = (props) => {
           </Stack.Item>
         </Stack>
       </Section>
-      <Section width="688px" align="center" textAlign="center">
+      <Section
+        width="688px"
+        height="694px"
+        align="center"
+        textAlign="center"
+        fitted
+      >
         <CanvasLayer
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}

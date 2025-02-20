@@ -7,15 +7,12 @@
 /obj/item/reagent_container/food/condiment
 	name = "Condiment Container"
 	desc = "Just your average condiment container."
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	icon_state = "emptycondiment"
 	flags_atom = FPRINT|OPENCONTAINER
 	possible_transfer_amounts = list(1,5,10)
 	center_of_mass = "x=16;y=6"
 	volume = 50
-
-/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/user)
-	return
 
 /obj/item/reagent_container/food/condiment/attack(mob/M, mob/user)
 	if(!reagents?.total_volume)
@@ -52,7 +49,7 @@
 	playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 	return TRUE
 
-/obj/item/reagent_container/food/condiment/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/living/user, list/mods)
 	return
 
 /obj/item/reagent_container/food/condiment/afterattack(obj/target, mob/user , flag)
@@ -184,7 +181,7 @@
 	reagents.add_reagent("blackpepper", 20)
 
 /obj/item/reagent_container/food/condiment/hotsauce
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	name = "hotsauce parent object"
 	possible_transfer_amounts = list(1,5,60) //60 allows marines to chug the bottle in one go.
 	volume = 60

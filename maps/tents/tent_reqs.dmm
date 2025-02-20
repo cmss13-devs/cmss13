@@ -65,7 +65,7 @@
 /obj/structure/blocker/tent{
 	dir = 1
 	},
-/obj/structure/machinery/computer/ordercomp/tent{
+/obj/structure/machinery/computer/supply/tent{
 	pixel_y = 25
 	},
 /turf/template_noop,

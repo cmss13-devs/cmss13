@@ -1,5 +1,6 @@
 /obj/effect/afterimage
 	as_image = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /**
  * Params:
@@ -8,6 +9,8 @@
  * - fading_duration: How long it takes for afterimage to fade
  * - fading_to_shift_ratio: How quickly afterimage will reach its target atom before fading (relative to the fading time)
  */
+	
+
 /obj/effect/afterimage/Initialize(mapload, atom/to_copy, fading_duration, fading_to_shift_ratio = 0.5)
 	. = ..()
 	if (!to_copy)

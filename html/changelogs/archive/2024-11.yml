@@ -1,0 +1,512 @@
+2024-11-01:
+  Ansekishoku:
+  - bugfix: Headsets no longer accept multiple encryption keys of the same kind.
+  BeagleGaming1:
+  - bugfix: Bracers properly update owner when unequipped or worn
+  - rscadd: When gibbed, the ghost will stay as the character instead of turning into
+      a brain
+  Blundir:
+  - rscadd: dead marines now have minimap revival icons animated, different icons
+      depending on how much time is left
+  - bugfix: fixed working joe not being able to use ai lockdown/nerve gas
+  GoldenDarkness55:
+  - balance: OT M40 grenade casing volume from 90 to 120, power 175 to 180, falloff
+      75 to 80, shards 32 to 40, fire intensity 20 to 25, metal cost from 3750 to
+      4250 which is 12% of a single metal sheet
+  - balance: OT M15 grenade casing power 215 to 220, falloff 90 to 120, shards 32
+      to 80, fire radius from 5 to 6, fire intensity 20 to 30 and fire duration 24
+      to 32
+  - balance: OT claymore casing power 105 to 100, falloff 60 to 80, shards 32 to 40,
+      fire radius 5 to 4, fire intensity 12 to 20
+  - balance: OT C4 casing damage multiplier against walls from 1.5 to 2, power 260
+      to 280, falloff 90 to 120, shards 64 to 100, fire radius 6 to 4, fire intensity
+      26 to 50, duration 30 to 20
+  - balance: OT rocket casing power 240 to 220, falloff 90 to 160, shards 64 to 80,
+      fire radius 6 to 4, fire intensity 40 to 45
+  - balance: OT mortar casing falloff 90 to 130, shards 128 to 200, fire intensity
+      40 to 45
+  - balance: Custom rocket accuracy raised from tier 2 to 5 and range lowered from
+      8 to 7
+  Red-byte3D:
+  - balance: base ravager empowered charge stun is increased from 1.3 to 1.6
+  Steelpoint:
+  - maptweak: The north-east and south-east areas of Shivas Snowball start of pre-weeded,
+      in addition to a few resin doors and walls near the main entrances to hive locations.
+  ghostsheet:
+  - balance: Beserker Ravs no longer heals while on fire.
+  harryob:
+  - rscadd: the chem master ui is now tgui, and faster. hopefully better
+  - server: server hosts can now configure a cobalt.tools api to provide media playing
+      with "COBALT_BASE_API" and "COBALT_API_KEY"
+  realforest2001:
+  - bugfix: No store cryo pods now work as intended.
+2024-11-02:
+  Drathek:
+  - ui: The ghost observer tacmap will now scroll both horizontally and vertically
+      as needed to display a large map.
+  - ui: The TGUI panels for tacmaps and drawings have been polished to utilize more
+      minimap space fully.
+  - refactor: Refactored minimap generation code to calculate min and max faster,
+      to more aggressively trim minimaps, and to support larger minimaps (was 480px
+      now 512px).
+  - bugfix: Fixes an issue where predator tacmap would take over the ghost tacmap
+      preventing it from opening for observers
+  - bugfix: Fix hive core placement restriction
+  Red-byte3D:
+  - balance: sg effective range nerfed to 5
+  - balance: sg falloff increased
+  Sporticusmge:
+  - balance: Night Vision Optic now works 2 times longer, and recharge 2 times longer.
+      Squad Leader NVO prices changed, from 20 to 25.
+  Zenith00000:
+  - bugfix: fixed some un-needed code and added missing tiles
+  deathrobotpunch:
+  - balance: The Tactical compact nail gun is now available in the Chief Engineers
+      vendor.
+  private-tristan:
+  - balance: Forecon M39 spawn now has its spawn ammo in belt, instead of in satchel.
+2024-11-03:
+  Ansekishoku:
+  - bugfix: Smartpack abilities no longer function if the user is dead.
+  GoldenDarkness55:
+  - balance: Cooldown multiplier for interrupting remote building raised from 2 to
+      3
+  - balance: Queen remote building modifier raised from 1 to 1.5 (slower, around 2.3-2.5s),
+      cooldown raised from 2s to 4s
+  - balance: Resin Whisperer remote building modifier raised from 2 to 2.5 (slower,
+      around 2.5s), cooldown raised from 1s to 2.5s
+  - balance: Sentinel neuro spit cooldown raised 1.5 to 2s, superslow 2.5 to 4s
+  - balance: Sentinel scatter spit scatter lowered 60 to 45, cooldown lowered 8s to
+      6s
+  - balance: Sentinel paralyzing slash stuns after 3 seconds instead of 4 and lasts
+      2.5 seconds from 2.
+2024-11-04:
+  Drathek:
+  - bugfix: Fixes additional projectiles being fired from humans that placed a shotgun
+      sentry instead of the sentry.
+  - bugfix: Fixes cause_data for flamer sentries so now kills they make are explained
+      in the message and attributed to the kill counter for the sentry.
+  - bugfix: Fix reloading under barrel flamers with any reagent from a flamer tank
+  - ui: Fixed the ping relay buttons not displaying anything when clicked on the first
+      time. Now Button.Confirm.confirmContent will only replace children if it is
+      truthy.
+  - balance: Buffed SG armor penetration ammo damage falloff from 5 to 3.
+  VileBeggar:
+  - qol: You can now use the 'check status' verb and any stethoscope you might have
+      attached to your uniform directly by examining an adjacent human.
+  harryob:
+  - rscadd: a new tgui with better previews for the different skin colors / body types
+      / body sizes
+  - admin: you can add "known alts" to players, now
+  vero5123:
+  - bugfix: Special characters are now properly sanitized and removed in bug reports.
+2024-11-05:
+  Drathek:
+  - code_imp: Enabled 3 more OD pragmas for linting and fixed some ambiguous usage
+      of In
+  Killfish:
+  - balance: Improved consistency of Scatter Spits accuracy. Now one of your projectiles
+      is guaranteed to to go in the direction you're aiming at, instead of potentially
+      going everywhere except where you're aiming and missing everything.
+  Nanu, HarryOb:
+  - code_imp: Adds some code so if you're above the pointcap on your loadout, items
+      will be removed to put you at the point cap limit.
+  Sargeantmuffinman:
+  - rscadd: Added more lore emails to the computers
+2024-11-06:
+  BOBAMA:
+  - balance: You can now go on Ovi and build Hive Cores anywhere in the Atmospheric
+      Processor on Chance's Claim
+  - bugfix: bugged Shivas areas
+  - maptweak: Removed Sorokyne "hallway areas"
+  - balance: Areas on Sorokyne that were only CASable because of the "hallway areas"
+      can now just be CASd
+  Blundir:
+  - rscadd: XO spawning is now announced just like SEA/CO
+  detectivegoogle Drathek:
+  - balance: Morphers generate huggers twice as fast if queen is on ovi
+  efzapa:
+  - rscadd: All USCM Flag Officers now understand and can use Tactical Sign Language.
+  - qol: Tactical Sign Language is now the default language for all MARSOC spawned.
+  harryob:
+  - bugfix: you can transfer riflemen between squads again
+  - bugfix: sebb grenades can no longer degroin synths through EMPs, which was unintended
+  thevandie:
+  - imageadd: added a new sprite for the liaison's wall divider behind his desk
+  - mapadd: added a WY mre to the liaison's liquor cabinet (cardboard box full of
+      donk pockets)
+  - mapadd: added a tv to the liaison's desk, in place of the containment cell console
+  - mapadd: added a new button to the liaison's desk to replace the wall divider button.
+      it controls the back office shutters
+  - maptweak: moved the liaison's shutters button and console to the back office
+  - maptweak: moved some stuff around in the liquor cabinet to accommodate the MRE
+      being placed into it
+  - maptweak: moved some stuff around on the liaison's desk to make it look cleaner
+2024-11-07:
+  Drathek:
+  - balance: Fix XvX landmarks being used for roundstart oviable locations
+  - balance: Roundstart oviable locations are expanded on Kurjevo, Shivas, Trijent
+      Dam, Chances's Claim, and Fiorina
+  - bugfix: XvX now makes all areas oviable
+  Joe Lampost:
+  - code_imp: Makes using LOOC use your real name instead of unknown
+  - code_imp: Sding preds now have their name shown instead of unknown
+  Joelampost:
+  - rscadd: Added first names for spawned preds
+  - rscadd: Added last names for spawned preds
+  Nomoresolvalou:
+  - rscadd: Hunters can now put their bone trophies on their armor to have it show
+      up there instead of on their mesh.
+  TheDonkified:
+  - code_imp: Xeno ability names in chat and stats page changed to match the names
+      for xeno ability buttons
+  VileBeggar:
+  - bugfix: Memorial ghosts will now face the user instead of facing south.
+2024-11-08:
+  BOBAMA:
+  - maptweak: quadrupled the limit for roundstart corpses on maps.
+  - maptweak: Removed Corpses from Solaris. Added corpses to Shivas, Fiorina, and
+      Trijent
+  - maptweak: added some "last stand" holds to Trijent and Shivas to put bodies in.
+      Trijent research lab had most CMB weapons replaced with corporate/goon stuff.
+  - balance: Intel points from human bodies are now capped at 5 (50 bodies)
+  BOBAMAx:
+  - bugfix: extra apc in shivas removed
+  Nomoresolvalou, Thwomper:
+  - rscadd: Adds a new predator mask accessory
+  - ui: added a selection for mask accessories in yautja prefs
+  - bugfix: fixes one speicifc yautja mask having no sprite onmob
+  - code_imp: infrastructure for adding in new mask accessories
+  - imageadd: added Thwomp's cool as hell horn sprites
+  Red-byte3D:
+  - rscadd: New preference toggle that allows Queen's to pick if they want to automatically
+      shove people they step on or not
+  cuberound:
+  - balance: binoculars have miniscope level zoom on HvH
+  harryob, drathek:
+  - ui: replaces the lists for hair/facial hair with images in a separate picker
+  - ui: replaces the eye color picker with a tgui color picker
+  - code_imp: added unit test for duplicate sprite accessories (hair)
+2024-11-09:
+  SerheyKr:
+  - balance: Changing the UPP vendors stuff
+  cuberound:
+  - bugfix: UPP req vendor no longer spends points
+  - rscadd: adds UPP vs USCM gamemode, event only
+  - ui: adds option to both early and latejoin UPP roles from lobby on UPP vs USCM
+  - rscadd: adds early and latespawners for UPP roles
+  - balance: updates UPP ERT vendors to have 45 points
+  - rscadd: Added standard apparel to every UPP roles to clothing vendor
+  - balance: A lot of changes to upp vendor stuff in order to make them on pair with
+      USCM
+  - rscadd: adds option for spawners to use lists of jobs
+  - rscadd: enables overwatch consoles of other factions
+  - rscadd: UPP squad supply drops
+2024-11-10:
+  Joe Lampost:
+  - code_imp: Changes the spawn message for predators
+  Venuska1117:
+  - code_imp: Added ability to Destroy Platform Edges by xenos on "Disarm" intent,
+      now depending on xenos "size" they can break Platform Edges quicker or Slower,
+      Now Explosives have chance to destroy Platform Edges by depending on how strong
+      explosion is.
+  - imageadd: Added Sprites for Broken Platforms Edges.
+  - soundadd: Added Sound for Breaking "Stone" Edges.
+  cuberound:
+  - qol: handrails are autoclimbable when on harm intent, you take some harm when
+      doing so
+  - balance: crusher and ravager destroy handrails when trying to pass them similar
+      to tables
+  harryob:
+  - ui: adds a prettier custom loadout menu with images
+2024-11-11:
+  Drathek:
+  - balance: Queen remote building (while boosted) is now prevented in LZ linked weed
+      restricted areas
+  - balance: Adjusted/added LZ linked weed restriction areas on all maps in rotation
+  - maptweak: Fixed misplaced areas on Shivas.
+  - maptweak: Split the Telecoms Valley area to make a Security Valley area on Trijent.
+  cuberound:
+  - bugfix: UPP CO joining from lobby should recive proper rank
+  harryob:
+  - ui: added a new tgui to select character traits. it's quite similar to the old
+      one
+2024-11-12:
+  An A Jay:
+  - balance: Made Medicomp heal to full for predators.
+  Katskan:
+  - bugfix: G2 cosmetic working properly
+  Nomoresolvalou, Thwomper:
+  - rscadd: 'Added two new yautja weapons: the longaxe and the staff'
+  - imageadd: Added sprites for the new weapons
+  Sunless2:
+  - rscadd: Added the ability for bayonets to cut down fences
+  - balance: It now takes twice the amount of throws to bring down a fence
+2024-11-13:
+  Blundir:
+  - rscadd: working joe's and early gen synth's eyes now glow in a dark
+  - rscadd: working joe's and early gen synth's eyes color tweak on disarm and grab
+  Drathek:
+  - maptweak: Fixed the rotation of the telecoms APC in the Aerodome on Shivas
+  - balance: LZ smoke is now disabled by default on distress signal
+  - admin: Added game mode toggle to toggle LZ smoke during the first 3 minutes of
+      the round (otherwise is locked in)
+  - balance: Eggs that lose their hive weeds will now turn fragile (like egg carrier
+      eggs) lasting 5 minutes.
+  - bugfix: Fixed an exploit allowing egg carrier eggs to last indefinitely.
+  - bugfix: Fixed the inability to examine planted eggs from further than one tile.
+  - code_imp: Added some more sanity code to ensure time of death is recorded for
+      larva queue
+  JustLat:
+  - imageadd: Adds icon states for l_hand and r_hand for yautja accessories.
+  Steelpoint, Zenith:
+  - mapadd: Two UPP dropships have been added for event use, the Morana and the Devana.
+  - maptweak: Fixes a issue preventing the Saipan, a USCM dropship, from being spawned
+      by admins for events.
+  cuberound:
+  - bugfix: removes dupe definitions and corrects items i UPP Loudouts
+  - bugfix: makes UPP synth lobby joinable for events
+  zzzmike:
+  - rscadd: tip of the round regarding lesser known cryotube utility
+2024-11-16:
+  BeagleGaming1:
+  - rscadd: Adds the personal gear vendor, where people can get their donator items
+      or a random loadout item
+  - rscadd: Custom Items can be gotten from Requisitions instead of spawning with
+      them
+  - config: Changes to config/custom_items.txt
+2024-11-18:
+  Drulikar:
+  - code_imp: dmm_test now checks if there are pending mapmerge2 conversions.
+  - code_imp: Improved dmm_test error handling
+  - code_imp: mapmerge2 now uses keys sequentially rather than randomly.
+  - code_imp: mapmerge2 fixup script now assigns upstream remote if needed, and checks/fixes
+      pending mapmerge2 conversions.
+  SASoperative:
+  - rscadd: Personal Gear Vendor allows retrieval of additional kits for multi-kit
+      donators
+2024-11-19:
+  AlanParkerMasters:
+  - rscdel: A single period from the ABR-40 description that shouldn't be there.
+  An A Jay:
+  - balance: Gave predators the ability to cut through fences
+  Red-byte3D:
+  - code_imp: rewrote tremor code
+  cuberound:
+  - bugfix: emp act is called once on each limb not three time
+  - balance: reduces g2 electroshock grenade stamina damage
+  - bugfix: yauta bracers get properly drained by emp
+  harryob:
+  - ui: adds a search bar to the pred/wj emote panels
+  zzzmike:
+  - qol: nuclear device messaging more helpful for newbies
+2024-11-20:
+  BOBAMA:
+  - rscadd: Added a new corporate version of the M-39.
+  - rscadd: Added new PMC TL to the Big Red nightmare insert.
+  - rscadd: corporate M-39, Mk221, and corporate FP9000 to PMC survivor weapon pool
+      to replace the MAR, FP9000, CMB shotgun, custom shotgun, and MP5.
+  - mapadd: Changed the PMC Big Red nightmare insert to now have supplies in the second
+      crashed dropship near EVA.
+  - maptweak: Changed standard M-39 gun lockers in Eta Labs to the new corporate version.
+  Drathek:
+  - bugfix: Fixed xenos sometimes becoming immortal with warding pheros (xenos do
+      not cap brute/fire damage now)
+  - code_imp: Added sanity checks for whenever AREA_UNWEEDABLE is used or when an
+      area is somehow null
+  - balance: All maps have their round start is_resin_allowed restriction lifted unless
+      out of bounds
+  - maptweak: All maps with OOB areas have now AREA_UNWEEDABLE set to make the restriction
+      permanent
+  - bugfix: Resin walls and doors will now properly get weed killed
+  - bugfix: Fixed corrupted xenos not getting the English language
+  - bugfix: Fixed ammo boxes allowing cramming under north facing platforms
+  Drulikar:
+  - code_imp: Refactored donator lists to GLOBs that automatically initialize and
+      made ckeys in custom_items.txt more flexible
+  - config: Updated example config for custom_items.txt
+  Joe Lampost:
+  - rscadd: Thwei crystals now delete themselves after a set time
+  Steelpoint:
+  - rscadd: UPP synthetics spawned as part of events may now have access to a Snowflake
+      clothing vendor, to better allow them to customise their appearance.
+  - balance: During the 'Faction Clash' (HvH) game mode. Marine Helmets, gloves and
+      boots will have similar armour values to their UPP counterparts.
+  TheGamerdk:
+  - rscadd: Barricades have been covered in petroleum jelly. They can no longer be
+      pixelshifted.
+  cuberound:
+  - balance: add flashing light to mortar impacts for UPP vs USCM gamemode
+  - imageadd: tacmap icon for sensor tower (displayed to all factions)
+  - rscadd: UPP HUD icons get their squad color
+  - balance: launchbay is now useable on transport run
+  - balance: changes UPP rifleman, medic,engi and squad leader skills to be the same
+      as USCM coutnerparts for HvH events
+  - bugfix: UPP CO and synth whitelists work on lobby joning
+  private-tristan:
+  - bugfix: SOF Encryption Keys now properly give you SOF comms.
+  realforest2001:
+  - rscadd: Added unique identifier to all fax machines.
+  - rscadd: Added a new way to contact fax machines directly, titled Specific Machine
+      Code in the select department setting.
+  - rscadd: Added a Fax Responder role, broken down into subsidiary jobs for each
+      faction. This is currently experimental in handling, and access is restricted.
+  - rscadd: Fax Machines will tell you (when selecting a faction's High Command) if
+      a Fax Responder is awake.
+  - code_imp: Makes the Whitelist Panel use the correct permissions for Overseer.
+  stanalbatross:
+  - bugfix: made the first-aid pouch descriptions accurately reflect their contents
+2024-11-21:
+  SpypigDev:
+  - bugfix: no longer forces pill bottles to begin emptying on a click
+  stanalbatross:
+  - code_imp: slightly optimised how pulse is checked by checking it when required
+      rather than every lifetick
+2024-11-22:
+  Drathek:
+  - rscadd: Added 5 minute cooldown when de-evolving to evolve into the same caste
+  - bugfix: Fixed queen de-evolve deleting her own organ rather than target xeno's
+  - bugfix: Fixed queen de-evolve not transferring built_structures list
+  - bugfix: Fixed regular de-evolve not stopping stat tracking on old xeno
+  - bugfix: Fixed de-evolve verb getting restored if it was taken away (Wouldn't without
+      admin intervention currently)
+  - bugfix: Fixed mature larva name never getting applied when full evo threshold
+  - rscdel: De-evolving to larva is now never bloodied (bloody used to only depend
+      on evolution points to determine bloody status)
+  - rscadd: Monkeys in lockers can cause the locker to emote and have a higher chance
+      of escaping
+  - soundadd: Monkeys now have a chance to use two different chimpers (existing sfx)
+  - balance: Increased orphan egg time from 5 mins to 6 mins.
+  - balance: Xeno ammo can no longer push items (e.g. Oppressor Tail Seize)
+  SpartanBobby:
+  - maptweak: Readds LV522 LZ1 shortfog
+  realforest2001:
+  - bugfix: Staff can properly access Fax Responder WL.
+2024-11-23:
+  MaximusRex:
+  - balance: Increased flare duration from a variable 9.5 --> 10.5 minute length to
+      16 minutes flat.
+  - balance: Flares start out strong (7 radius) and burn down to nothingness.
+  - balance: Increased flare_damage from acid by 20% across the board.
+  - balance: 'Weak Acid: 150-->180'
+  - balance: 'Medium Acid: 500-->600'
+  - balance: 'Strong Acid: 1875 -->2250 (RIP flare)'
+  - balance: Starshell ash fuel variance changed from (4.5 to 6.0) minutes ----> (6.0
+      to 6.5) minute variance.
+  - balance: Starshell ash starts out semi-bright (6 radius) and burns down to nothingness.
+  - balance: Flare Mortars now have a static 7 tile radius , and variably last from
+      5 to 6 minutes.
+  - balance: Flare gun unique-action now produces a static 7 tile radius light for
+      3 minutes. Slightly lower luminosity than normal.
+  - code_imp: Implemented a new proc, flare_burn_down, and incorporated it into process(delta_time).
+  Nivrak Birdtalon Wei Zenith:
+  - rscdel: Removed passive larva gain from pylons
+  - rscadd: Added a new currency, Royal resin which is gained 1 per 5 minutes per
+      pylon which can be used to buy various buffs. Minor buffs require one pylon
+      while major buffs require both.
+  - rscadd: Current royal resin can be viewed on the Queen's status panel and buffs
+      can be bought through Manage the Hive ability.
+  - rscadd: Minor Hive buff - Larva Surge - Costs 5 royal resin, Gives 5 larva, one
+      time use
+  - rscadd: Minor Hive Buff - Boon of Evolution - Costs 1 royal resin, Gain 2x evolution
+      speed for 5 minutes
+  - rscadd: Minor Hive Buff - Boon of Defense - Costs 1 royal resin, Gain 2.5 additional
+      armor for 5 minutes
+  - rscadd: Minor Hive Buff - Boon of Aggression - Costs 1 royal resin, Gain 5 additional
+      damage for 5 minutes
+  - rscadd: Major variants of Plenty, Defense and Aggression, Each costing 2 royal
+      resin, having usually twice as strong effect and duration. Major boon of evolution
+      also allows gaining evolution with the Queen out of ovi.
+  - balance: Pylons will have OB protection while the King is hatching.
+  - rscadd: Major Hive Buff - His Grace - Costs 0 royal resin, Can only be bought
+      between 1:35 and 1:55 minutes (random). Spawns a cocoon of the King. The cocoon
+      requires both comms to be held for 10 minutes. If any of the comms are lost
+      or the cocoon itself is the destroyed it will despawn and will be on cooldown
+      for 5-15 minutes. Can be rebought like most other buffs. All living xenos can
+      vote for a candidate after which one of the top 2 will be randomally picked,
+      otherwise a player is randomly selected from all living xenos > 50 hours (will
+      fallbacks to ghosts and then again with no playtime requirements). Evacuating
+      while the destroyer is hatching will cause it to instantly hatch.
+  - rscadd: The King - A new xenomorph caste which is serves as the xeno's counterpart
+      to a nuke and is designed to end sieges. Has a rend to attack around it, a light
+      extinguishing smoke, a gigantic leap, group bulwark shield that caps all incoming
+      damage, and very strong pheromones. Cannot be body blocked.
+  - imageadd: Sprites by Mikoka Wei and Zenith
+2024-11-25:
+  Drathek:
+  - balance: emp_pulse, flash_powder, and foam reactions are no longer possible in
+      mobs
+  - balance: flash_powder has been reworked to attach to its holder (so it can be
+      destroyed), and values retuned/capped.
+  - refactor: Refactored the metabolize proc for chemistry reactors (removed required_other
+      and changed required_container to use a path check instead)
+  efzapa:
+  - maptweak: Replaced a shutter in Lambda on Solaris Ridge so Larva aren't hard trapped
+      on roundstart.
+  realforest2001:
+  - maptweak: Lifeboat air pipes are now reinforced (again) and no longer explode.
+2024-11-26:
+  Drdodo:
+  - bugfix: now CEs can buy all of their essentials
+2024-11-27:
+  cuberound:
+  - qol: when lobby joining as UPP you getassigned to equivalen of prefered USCM squad
+      if possible
+  - rscdel: removes navbeacon code
+2024-11-28:
+  Drathek:
+  - balance: Player huggers now have to wait 1 minute to respawn as a lesser on successful
+      hug (same as death). They can still immediately respawn as a hugger on successful
+      hug.
+  - balance: Lesser drones respawn time has been increased from 30s to 1 minute.
+  - bugfix: Join as xeno button/verb (much like larva queue) no longer considers a
+      recent hugger/lesser death as a reason to deny it.
+  - bugfix: Fixed join as xeno button/verb allowing 0 health afk xenos to be controlled.
+  - bugfix: Fixed the xeno_bypass_timer gamemode flag skipping inactivity checks.
+  - refactor: Refactored some of the join as xeno code inconsistencies and changed
+      prompts to tgui_alert
+  - spellcheck: Mentioned eggs when using join as facehugger verb.
+  FslashN:
+  - bugfix: preds not spawning with correct legacy armor sprites
+  ihatethisengine:
+  - rscadd: makes langchat readable through tgui menus.
+  realforest2001:
+  - bugfix: Hologram mobs no longer trigger ares sensors.
+2024-11-29:
+  Drathek:
+  - code_imp: Merge hook installer now can handle duplicate/old hook installs
+  irakligabunia:
+  - rscdel: Removes access to pred for legacy WL holders
+2024-11-30:
+  Drathek:
+  - code_imp: Missing Icons unit test now instantiates items and generally tests more
+      icon_states
+  - code_imp: Unit tests can now log warnings that appear as a separate collapsed
+      list but do not fail checks
+  - bugfix: Fixed various hardrefs and missing icons
+  - bugfix: Pipes retain their dir when picked up, no longer go invisible when re-anchored,
+      and reconnect when re-anchored.
+  - bugfix: Disabled various admin only pistols from being equipped in pistol belts
+      since they only honk their underlay
+  - refactor: Giant lizards and parent types now use weakrefs
+  - refactor: Removed has_gamemode_skin and renamed NO_SNOW_TYPE to NO_GAMEMODE_SKIN
+  - refactor: Removed uses_skin_color in favor of the existing flag HAS_SKIN_COLOR
+  - maptweak: Fixed droppod floors on trijent elevator, lifeboats, corsat, and bigred
+  - imageadd: Added missing unlocked overlay to lockable satchel
+  - imageadd: Restored the missing overlays to spike launcher
+  - imageadd: Tweaked the old sample jars and samples
+  - admin: Admin spawned predators now have random skin color
+  Steelpoint:
+  - bugfix: Fix bug on UPP Synth Snowflake Vendor that prevented some items being
+      vended.
+  - rscadd: UPP Commanders will have access to a set of custom vendors, similar to
+      the vendors the USCM Commanders have access to.
+  - rscadd: UPP vendors have been added. Equilivants to the surplus marine vendor
+      and cargo vendors.
+  cuberound:
+  - qol: HvH roundstart AI announcements
+  ihatethisengine:
+  - rscadd: You can use the camera with one hand. You still need to turn it on. It
+      keeps broadcasting even if dropped, but loses range. Xeno can turn the camera
+      off by slashing it.
+  - rscadd: You can unanchor TV with a wrench

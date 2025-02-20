@@ -384,6 +384,9 @@
 	//vehicle is dead, no more lights
 	if(health <= 0 && lighting_holder.light_range)
 		lighting_holder.set_light_on(FALSE)
+	else
+		if(!lighting_holder.light)
+			lighting_holder.set_light_on(TRUE)
 	update_icon()
 
 /*

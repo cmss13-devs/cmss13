@@ -33,32 +33,6 @@
 #define DO_SOMETHING_IF_DEBUGGING_SHADOWS(something)
 #endif
 
-/atom/movable/lighting_mask
-	///Turfs that are being affected by this mask, this is for the sake of luminosity
-	var/list/turf/affecting_turfs
-	///list of mutable appearance shadows
-	var/list/mutable_appearance/shadows
-	var/times_calculated = 0
-
-	//Please dont change these
-	var/calculated_position_x
-	var/calculated_position_y
-
-/atom/movable/lighting_mask/Destroy()
-	//Make sure we werent destroyed in init
-	SSlighting.mask_queue -= src
-	//Remove from affecting turfs
-	if(affecting_turfs)
-		for(var/turf/thing as anything in affecting_turfs)
-			var/area/A = thing.loc
-			LAZYREMOVE(thing.hybrid_lights_affecting, src)
-			if(!A.base_lighting_alpha)
-				thing.luminosity -= 1
-		affecting_turfs = null
-	//Cut the shadows. Since they are overlays they will be deleted when cut from overlays.
-	LAZYCLEARLIST(shadows)
-	return ..()
-
 /atom/movable/lighting_mask/proc/link_turf_to_light(turf/T)
 	LAZYOR(affecting_turfs, T)
 	LAZYOR(T.hybrid_lights_affecting, src)

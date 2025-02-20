@@ -9,7 +9,7 @@
 
 /obj/structure/machinery/telecomms/broadcaster
 	name = "Subspace Broadcaster"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "broadcaster"
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
 	density = TRUE
@@ -83,7 +83,7 @@
 						vmask, vmessage, obj/item/device/radio/radio,
 						message, name, job, realname, vname,
 						data, compression, list/level, freq, verbage = "says",
-						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = FALSE)
+						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = NOT_LISTENING_BUG)
 
 	/* ###### Prepare the radio connection ###### */
 	var/display_freq = freq
@@ -182,7 +182,7 @@
 		// Ghosts hearing all radio chat don't want to hear syndicate intercepts, they're duplicates
 		if(data == 3 && is_ghost && R.client && (R.client.prefs.toggles_chat & CHAT_GHOSTRADIO))
 			continue
-		if(is_ghost && listening_device && !(R.client.prefs.toggles_chat & CHAT_LISTENINGBUG))
+		if(is_ghost && ((listening_device && !(R.client.prefs.toggles_chat & CHAT_LISTENINGBUG)) || listening_device == LISTENING_BUG_NEVER))
 			continue
 		// --- Check for compression ---
 		if(compression > 0)

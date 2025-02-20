@@ -5,9 +5,13 @@
 /obj/item/ammo_magazine/flamer_tank
 	name = "incinerator tank"
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. Handle with care."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/flamers.dmi'
 	icon_state = "flametank_custom"
 	item_state = "flametank"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
 	max_rounds = 100
 	default_ammo = /datum/ammo/flamethrower //doesn't actually need bullets. But we'll get null ammo error messages if we don't
 	w_class = SIZE_MEDIUM //making sure you can't sneak this onto your belt.

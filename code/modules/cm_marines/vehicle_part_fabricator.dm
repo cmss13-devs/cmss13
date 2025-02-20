@@ -12,7 +12,14 @@
 	var/generate_points = TRUE
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
+	var/faction = FACTION_MARINE
+	var/datum/controller/supply/linked_supply_controller
 	var/list/datum/build_queue_entry/build_queue = list()
+
+/obj/structure/machinery/part_fabricator/upp
+	name = "UPP part fabricator"
+	faction = FACTION_UPP
+
 
 /datum/build_queue_entry
 	var/item
@@ -26,9 +33,15 @@
 	. = ..()
 	to_chat(user, build_queue ? "It has [length(build_queue)] items in the queue" : "the build queue is empty")
 
-
 /obj/structure/machinery/part_fabricator/New()
 	..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+		if(FACTION_UPP)
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller
 	start_processing()
 
 /obj/structure/machinery/part_fabricator/proc/get_point_store()
@@ -140,8 +153,16 @@
 		var/index = params["index"]
 
 		if(is_ammo == 0)
-			var/obj/structure/dropship_equipment/produce = (typesof(/obj/structure/dropship_equipment))[index]
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
+			var/produce_list = list()
+			var/possible_produce = typesof(/obj/structure/dropship_equipment)
+			for(var/p_produce in possible_produce)
+				var/obj/structure/dropship_equipment/produce = p_produce
+				if(produce.faction_exclusive)
+					if(produce.faction_exclusive != faction)
+						continue
+				produce_list += produce
+			var/obj/structure/dropship_equipment/produce = produce_list[index]
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
@@ -149,8 +170,16 @@
 			return TRUE
 
 		else
-			var/obj/structure/ship_ammo/produce = (typesof(/obj/structure/ship_ammo))[index]
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
+			var/produce_list = list()
+			var/possible_produce = typesof(/obj/structure/ship_ammo)
+			for(var/p_produce in possible_produce)
+				var/obj/structure/dropship_equipment/produce = p_produce
+				if(produce.faction_exclusive)
+					if(produce.faction_exclusive != faction)
+						continue
+				produce_list += produce
+			var/obj/structure/dropship_equipment/produce = produce_list[index]
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
@@ -171,7 +200,6 @@
 			var/datum/build_queue_entry/entry = build_queue[index]
 
 			build_queue.Remove(entry)
-			add_to_point_store(entry.cost)
 			return TRUE
 
 	else
@@ -208,16 +236,22 @@
 
 	unslashable = TRUE
 	unacidable = TRUE
+	faction = FACTION_MARINE
+
+/obj/structure/machinery/part_fabricator/dropship/upp
+	name = "UPP dropship part fabricator"
+	faction = FACTION_UPP
+	req_access = list(ACCESS_UPP_FLIGHT)
 
 
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
-	return GLOB.supply_controller.dropship_points
+	return linked_supply_controller.dropship_points
 
 /obj/structure/machinery/part_fabricator/dropship/add_to_point_store(number = 1)
-	GLOB.supply_controller.dropship_points += number
+	linked_supply_controller.dropship_points += number
 
 /obj/structure/machinery/part_fabricator/dropship/spend_point_store(number = 1)
-	GLOB.supply_controller.dropship_points -= number
+	linked_supply_controller.dropship_points -= number
 
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
 	var/list/static_data = list()
@@ -226,7 +260,11 @@
 	var/index = 1
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && dropship_equipment_data.combat_equipment)
+		if(dropship_equipment_data.faction_exclusive)
+			if(faction != dropship_equipment_data.faction_exclusive)
+				continue
+
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && dropship_equipment_data.combat_equipment)
 			index +=  1
 			continue
 		var/build_name = initial(dropship_equipment_data.name)
@@ -247,7 +285,10 @@
 	index = 1
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/ship_ammo_data = build_type
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && ship_ammo_data.combat_equipment)
+		if(ship_ammo_data.faction_exclusive)
+			if(faction != ship_ammo_data.faction_exclusive)
+				continue
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && ship_ammo_data.combat_equipment)
 			index = index + 1
 			continue
 		var/build_name = initial(ship_ammo_data.name)
@@ -328,15 +369,20 @@
 
 	unacidable = TRUE
 	explo_proof = TRUE
+	faction = FACTION_MARINE
+
+/obj/structure/machinery/part_fabricator/tank/upp
+	name = "UPP vehicle part fabricator"
+	faction = FACTION_UPP
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
-	return GLOB.supply_controller.tank_points
+	return linked_supply_controller.tank_points
 
 /obj/structure/machinery/part_fabricator/tank/add_to_point_store(number = 1)
-	GLOB.supply_controller.tank_points += number
+	linked_supply_controller.tank_points += number
 
 /obj/structure/machinery/part_fabricator/tank/spend_point_store(number = 1)
-	GLOB.supply_controller.tank_points -= number
+	linked_supply_controller.tank_points -= number
 
 /obj/structure/machinery/part_fabricator/tank/ui_static_data(mob/user)
 	var/list/static_data = list()

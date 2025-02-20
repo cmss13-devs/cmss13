@@ -31,6 +31,9 @@
 
 #define COMSIG_STRUCTURE_WRENCHED "structure_wrenched"
 #define COMSIG_STRUCTURE_UNWRENCHED "structure_unwrenched"
+/// from /obj/structure/Collided() if not overriden for /datum/component/shimmy_around
+#define COMSIG_STRUCTURE_COLLIDED "structure_collided"
+
 #define COMSIG_TENT_COLLAPSING "tent_collapsing"
 
 /// from /obj/proc/afterbuckle()

@@ -24,6 +24,13 @@
 /tools/docker/ @Fira
 /Dockerfile @Fira
 
+# Forest2001
+
+/code/game/machinery/ARES @realforest2001
+/tgui/packages/tgui/interfaces/AresAdmin.jsx @realforest2001
+/tgui/packages/tgui/interfaces/AresInterface.jsx @realforest2001
+/tgui/packages/tgui/interfaces/WorkingJoe.jsx @realforest2001
+
 # Nanu
 
 /maps @Nanu308

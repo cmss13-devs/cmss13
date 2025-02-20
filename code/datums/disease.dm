@@ -68,7 +68,8 @@ GLOBAL_LIST_INIT(diseases, typesof(/datum/disease) - /datum/disease)
 	return
 
 /datum/disease/proc/has_cure()//check if affected_mob has required reagents.
-	if(!cure_id) return 0
+	if(!cure_id)
+		return 0
 	var/result = 1
 	if(cure_list == list(cure_id))
 		if(istype(cure_id, /list))
@@ -104,16 +105,20 @@ GLOBAL_LIST_INIT(diseases, typesof(/datum/disease) - /datum/disease)
 		how_spread = force_spread
 
 	if(how_spread == SPECIAL || how_spread == NON_CONTAGIOUS || how_spread == BLOOD)//does not spread
-		return
+		return FALSE
 
 	if(stage < contagious_period) //the disease is not contagious at this stage
-		return
+		return FALSE
 
 	if(!source)//no holder specified
 		if(affected_mob)//no mob affected holder
 			source = affected_mob
 		else //no source and no mob affected. Rogue disease. Break
-			return
+			return FALSE
+
+	var/mob/source_mob = source
+	if(istype(source_mob) && !source_mob.can_pass_disease())
+		return FALSE
 
 	var/check_range = airborne_range//defaults to airborne - range 2
 
@@ -122,7 +127,7 @@ GLOBAL_LIST_INIT(diseases, typesof(/datum/disease) - /datum/disease)
 
 	if(isturf(source.loc))
 		FOR_DOVIEW(var/mob/living/carbon/victim, check_range, source, HIDE_INVISIBLE_OBSERVER)
-			if(isturf(victim.loc))
+			if(isturf(victim.loc) && victim.can_pass_disease())
 				if(AStar(source.loc, victim.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
 					victim.contract_disease(src, 0, 1, force_spread)
 		FOR_DOVIEW_END

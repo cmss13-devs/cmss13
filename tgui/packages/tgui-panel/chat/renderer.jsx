@@ -5,7 +5,6 @@
  */
 
 import { EventEmitter } from 'common/events';
-import { classes } from 'common/react';
 import { createRoot } from 'react-dom/client';
 import { Tooltip } from 'tgui/components';
 import { createLogger } from 'tgui/logging';
@@ -22,6 +21,8 @@ import {
   MESSAGE_TYPE_INTERNAL,
   MESSAGE_TYPE_UNKNOWN,
   MESSAGE_TYPES,
+  RENDERER_RELOAD_WAIT,
+  RENDERER_RELOAD_WAIT_TRIDENT,
 } from './constants';
 import { canPageAcceptType, createMessage, isSameMessage } from './model';
 import { highlightNode, linkifyNode } from './replaceInTextNode';
@@ -107,10 +108,7 @@ const updateMessageBadge = (message) => {
   const foundBadge = node.querySelector('.Chat__badge');
   const badge = foundBadge || document.createElement('div');
   badge.textContent = times;
-  badge.className = classes(['Chat__badge', 'Chat__badge--animate']);
-  requestAnimationFrame(() => {
-    badge.className = 'Chat__badge';
-  });
+  badge.className = 'Chat__badge';
   if (!foundBadge) {
     node.appendChild(badge);
   }
@@ -311,11 +309,7 @@ class ChatRenderer {
     }
   }
 
-  getCombinableMessage(predicate) {
-    const now = Date.now();
-    const len = this.visibleMessages.length;
-    const from = len - 1;
-    const to = Math.max(0, len - COMBINE_MAX_MESSAGES);
+  getCombinableMessage(predicate, now, from, to) {
     for (let i = from; i >= to; i--) {
       const message = this.visibleMessages[i];
 
@@ -349,10 +343,14 @@ class ChatRenderer {
     const fragment = document.createDocumentFragment();
     const countByType = {};
     let node;
+
+    const len = this.visibleMessages.length;
+    const from = len - 1;
+    const to = Math.max(0, len - COMBINE_MAX_MESSAGES);
     for (let payload of batch) {
       const message = createMessage(payload);
       // Combine messages
-      const combinable = this.getCombinableMessage(message);
+      const combinable = this.getCombinableMessage(message, now, from, to);
       if (combinable) {
         combinable.times = (combinable.times || 1) + 1;
         updateMessageBadge(combinable);
@@ -638,3 +636,12 @@ if (!window.__chatRenderer__) {
 
 /** @type {ChatRenderer} */
 export const chatRenderer = window.__chatRenderer__;
+
+setTimeout(
+  () => {
+    if (!chatRenderer.isReady()) {
+      location.reload();
+    }
+  },
+  Byond.TRIDENT ? RENDERER_RELOAD_WAIT_TRIDENT : RENDERER_RELOAD_WAIT,
+);

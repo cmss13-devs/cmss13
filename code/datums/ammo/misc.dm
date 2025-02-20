@@ -51,6 +51,7 @@
 /datum/ammo/flamethrower/tank_flamer
 	flamer_reagent_id = "highdamagenapalm"
 	max_range = 8
+	shell_speed = 1.5
 
 /datum/ammo/flamethrower/tank_flamer/drop_flame(turf/turf, datum/cause_data/cause_data)
 	if(!istype(turf))
@@ -184,7 +185,7 @@
 /datum/ammo/flare/starshell/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 1)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 2)
 	))
 
 /datum/ammo/souto
@@ -208,7 +209,8 @@
 			target_organ.embed(new can_type)
 
 /datum/ammo/souto/on_hit_mob(mob/M, obj/projectile/P)
-	if(!M || M == P.firer) return
+	if(!M || M == P.firer)
+		return
 	if(M.throw_mode && !M.get_active_hand()) //empty active hand and we're in throw mode. If so we catch the can.
 		if(!M.is_mob_incapacitated()) // People who are not able to catch cannot catch.
 			if(length(P.contents) == 1)

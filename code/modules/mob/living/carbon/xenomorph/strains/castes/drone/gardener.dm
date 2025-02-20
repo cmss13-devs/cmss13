@@ -40,7 +40,6 @@
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"
 	action_icon_state = "gardener_plant"
-	ability_name = "plant resin fruit"
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/plant_resin_fruit
 	action_type = XENO_ACTION_CLICK
@@ -100,7 +99,7 @@
 			xeno.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
 
-		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shape it into a fruit!"), \
+		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shape it into a fruit!"),
 		SPAN_XENONOTICE("We secrete a portion of our vital fluids and shape them into a fruit!"), null, 5)
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)
@@ -123,7 +122,6 @@
 /datum/action/xeno_action/onclick/change_fruit
 	name = "Change Fruit"
 	action_icon_state = "blank"
-	ability_name = "change fruit"
 	plasma_cost = 0
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
@@ -224,7 +222,6 @@
 /datum/action/xeno_action/activable/resin_surge
 	name = "Resin Surge (75)"
 	action_icon_state = "gardener_resin_surge"
-	ability_name = "resin surge"
 	plasma_cost = 75
 	xeno_cooldown = 10 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
@@ -283,7 +280,7 @@
 
 		if(!buff_already_present)
 			new /datum/effects/xeno_structure_reinforcement(structure_to_buff, xeno, ttl = 15 SECONDS)
-			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), \
+			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin around [structure_to_buff], making it temporarily nigh unbreakable!"),
 			SPAN_XENONOTICE("We surge the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), null, 5)
 		else
 			to_chat(xeno, SPAN_XENONOTICE("We haplessly try to surge resin around [structure_to_buff], but it's already reinforced. It'll take a moment for us to recover."))
@@ -298,7 +295,7 @@
 			F.reduce_timer(5 SECONDS)
 
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"), \
+		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
 		SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
 		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = target_turf
@@ -313,7 +310,7 @@
 			channel_in_progress = FALSE
 			return
 		channel_in_progress = FALSE
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges deep resin, creating an unstable sticky resin patch!"), \
+		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges deep resin, creating an unstable sticky resin patch!"),
 		SPAN_XENONOTICE("We surge the deep resin, creating an unstable sticky resin patch!"), null, 5)
 		for (var/turf/targetTurf in orange(1, target_turf))
 			if(!locate(/obj/effect/alien/resin/sticky) in targetTurf)
@@ -338,7 +335,6 @@
 
 /datum/action/xeno_action/onclick/plant_weeds/gardener
 	name = "Plant Hardy Weeds (125)"
-	ability_name = "Plant Hardy Weeds"
 	action_icon_state = "plant_gardener_weeds"
 	plasma_cost = 125
 	macro_path = /datum/action/xeno_action/verb/verb_plant_gardening_weeds
@@ -366,7 +362,7 @@
 
 /datum/behavior_delegate/drone_gardener/on_update_icons()
 	if(!fruit_sac_overlay_icon)
-		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi', "Gardener Drone Walking")
+		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/drone_strain_overlays.dmi', "Gardener Drone Walking")
 
 	bound_xeno.overlays -= fruit_sac_overlay_icon
 	fruit_sac_overlay_icon.overlays.Cut()

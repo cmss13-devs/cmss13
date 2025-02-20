@@ -579,6 +579,9 @@
 			icon_state = "nightvision_full"
 			vision_define = XENO_VISION_LEVEL_FULL_NVG
 		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			icon_state = "nightvision_three_quarters"
+			vision_define = XENO_VISION_LEVEL_HIGH_NVG
+		if(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 			icon_state = "nightvision_half"
 			vision_define = XENO_VISION_LEVEL_MID_NVG
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)

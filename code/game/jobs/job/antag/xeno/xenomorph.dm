@@ -34,12 +34,7 @@
 	human_to_transform.set_stat(UNCONSCIOUS)
 	human_to_transform.forceMove(get_turf(pick(GLOB.xeno_spawns)))
 
-	var/list/survivor_types = list(
-		/datum/equipment_preset/survivor/scientist,
-		/datum/equipment_preset/survivor/doctor,
-		/datum/equipment_preset/survivor/security,
-		/datum/equipment_preset/survivor/engineer
-	)
+	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 	arm_equipment(human_to_transform, pick(survivor_types), FALSE, FALSE)
 
 	for(var/obj/item/device/radio/radio in human_to_transform.contents_recursive())

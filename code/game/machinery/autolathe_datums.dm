@@ -49,7 +49,7 @@
 
 /datum/autolathe/recipe/weldertool
 	name = "blowtorch"
-	path = /obj/item/tool/weldingtool
+	path = /obj/item/tool/weldingtool/empty
 	category = AUTOLATHE_CATEGORY_TOOLS
 
 /datum/autolathe/recipe/screwdriver

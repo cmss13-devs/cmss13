@@ -55,7 +55,6 @@
 		. += "\nOn closer examination, this node look like it have big green oozing bulb at its center, making weeds under it look like they are moving..."
 	if(isxeno(user) || isobserver(user))
 		. += "\nYou sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
-		. += "You sense that building on top of this node will [SPAN_WARNING("not")] benefit any [SPAN_NOTICE("hivelords")]."
 
 /obj/effect/alien/weeds/node/designer/cost
 	name = "Flexible Design Node"
@@ -66,9 +65,7 @@
 	if(ishuman(user) || isobserver(user) || isyautja(user))
 		. += "\nOn closer examination, this node look like its made of smaller blue bulbs grown together, making weeds under them look more soft and squishy."
 	if(isxeno(user) || isobserver(user))
-		. += "\nYou sense that building on top of this node will decrease plasma cost of resin secretions by [SPAN_NOTICE("50%")]."
-		. += "You sense that building on top of this node will [SPAN_WARNING("only")] benefit [SPAN_NOTICE("Resin Walls")], [SPAN_NOTICE("Resin Membranes")] and [SPAN_NOTICE("Resin Doors")]."
-
+		. += "\nYou sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
 // ""animations""" (effects)
 
 /obj/effect/resin_construct/fastweak

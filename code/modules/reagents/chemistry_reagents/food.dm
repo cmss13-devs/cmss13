@@ -135,7 +135,7 @@
 	reagent_state = LIQUID
 	nutriment_factor = 7 * REAGENTS_METABOLISM
 	color = "#312007" // rgb: 115, 16, 8
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_NUTRITIOUS = 3)
 
 /datum/reagent/vegemite/reaction_mob(mob/target_mob, method=TOUCH, volume, permeable)

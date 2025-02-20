@@ -182,6 +182,7 @@
 	id = "coconutmilk"
 	description = "A very light, half opague milk from coconuts, barely has any taste on its own."
 	color = "#DFDFC7" // rgb: 223, 223, 199
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/drink/milk/cream
 	name = "Cream"
@@ -472,7 +473,7 @@
 	adj_dizzy = -2
 	adj_drowsy = -1
 	adj_sleepy = -3
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_NONE
 
 //OTHER//
 

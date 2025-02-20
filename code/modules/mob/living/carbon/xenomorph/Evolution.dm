@@ -31,15 +31,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!length(castes_available))
 		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))
 		return
+
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
-		castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
+		castepick = tgui_input_list(src, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
 	else
 		var/list/fancy_caste_list = list()
 		for(var/caste in castes_available)
 			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
 
-		castepick = show_radial_menu(src, src.client?.eye, fancy_caste_list)
+		castepick = show_radial_menu(src, client?.eye, fancy_caste_list)
 	if(!castepick) //Changed my mind
 		return
 
@@ -88,7 +89,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
 
 	if(isnull(xeno_type))
-		to_chat(usr, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
+		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
@@ -140,7 +141,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
-		to_chat(usr, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
+		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
 		stack_trace("Xeno evolution failed: [src] attempted to evolve into \'[castepick]\'")
 		if(new_xeno)
 			qdel(new_xeno)
@@ -158,7 +159,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else
-		new_xeno.key = src.key
+		new_xeno.key = key
 		if(new_xeno.client)
 			new_xeno.client.change_view(GLOB.world_view_size)
 
@@ -167,8 +168,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
 	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
-		new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
-		new_xeno.fireloss = src.fireloss //Transfers the damage over.
+		new_xeno.bruteloss = bruteloss //Transfers the damage over.
+		new_xeno.fireloss = fireloss //Transfers the damage over.
 		new_xeno.updatehealth()
 
 	if(plasma_max == 0)
@@ -180,14 +181,14 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	built_structures = null
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of [src]."),
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
 
-	src.transfer_observers_to(new_xeno)
-	new_xeno._status_traits = src._status_traits
+	transfer_observers_to(new_xeno)
+	new_xeno._status_traits = _status_traits
 
 	qdel(src)
 	new_xeno.xeno_jitter(25)

@@ -429,10 +429,13 @@
 			continue
 		switch(xeno.tier)
 			if(0)
-				if(islarva(xeno) && !ispredalienlarva(xeno))
-					if(xeno.client && xeno.ckey && !jobban_isbanned(xeno, XENO_CASTE_QUEEN))
-						potential_queens++
+				if(!islarva(xeno) || ispredalienlarva(xeno))
+					continue
+				if(xeno.client && xeno.ckey && !jobban_isbanned(xeno, XENO_CASTE_QUEEN))
+					potential_queens++
 			if(1)
+				if(isnull(xeno.caste.evolves_to) || !length(xeno.caste.evolves_to))
+					continue
 				if(xeno.client && xeno.ckey && !jobban_isbanned(xeno, XENO_CASTE_QUEEN))
 					potential_queens++
 	return potential_queens

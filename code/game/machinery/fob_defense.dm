@@ -1,6 +1,8 @@
 /obj/structure/machinery/fob
 	name = "fob defense"
 	desc = "go away don't look at this."
+	icon_state = "terminal"
+	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
 	unacidable = TRUE
 	density = TRUE
 	anchored = TRUE

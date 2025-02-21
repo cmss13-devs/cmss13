@@ -1153,7 +1153,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26
 	},
-/turf/open/floor/almayer/flooredgesmooth3,
+/turf/open/floor/almayer/flooredgesmooth3/south,
 /area/almayer/medical/lower_medical_lobby)
 "acH" = (
 /obj/effect/decal/warning_stripes{
@@ -1169,7 +1169,7 @@
 	pixel_y = 28;
 	pixel_x = 26
 	},
-/turf/open/floor/almayer/flooredgesmooth2,
+/turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/medical/lower_medical_lobby)
 "acI" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -3274,9 +3274,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -28
 	},
-/turf/open/floor/almayer/flooredgesmooth2{
-	dir = 1
-	},
+/turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/medical/lower_medical_lobby)
 "ahr" = (
 /obj/effect/decal/warning_stripes{
@@ -3293,9 +3291,7 @@
 	pixel_y = -28;
 	pixel_x = 26
 	},
-/turf/open/floor/almayer/flooredgesmooth3{
-	dir = 1
-	},
+/turf/open/floor/almayer/flooredgesmooth3/north,
 /area/almayer/medical/lower_medical_lobby)
 "ahs" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -3546,7 +3542,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/flooredgesmooth2,
+/turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/medical/lower_medical_lobby)
 "ahX" = (
 /obj/structure/machinery/iv_drip,
@@ -23353,7 +23349,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/flooredgesmooth3,
+/turf/open/floor/almayer/flooredgesmooth3/south,
 /area/almayer/medical/lower_medical_lobby)
 "eyR" = (
 /obj/structure/sign/safety/bulkhead_door{
@@ -56285,9 +56281,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
-/turf/open/floor/almayer/flooredgesmooth3{
-	dir = 1
-	},
+/turf/open/floor/almayer/flooredgesmooth3/north,
 /area/almayer/medical/lower_medical_lobby)
 "seL" = (
 /obj/structure/pipes/vents/pump{
@@ -69543,9 +69537,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
-/turf/open/floor/almayer/flooredgesmooth2{
-	dir = 1
-	},
+/turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/medical/lower_medical_lobby)
 "xtT" = (
 /obj/structure/platform/metal/almayer/east,

@@ -724,8 +724,7 @@
 		/obj/item/ammo_magazine/rifle/sharp/flechette,
 		/obj/item/ammo_magazine/rifle/sharp/incendiary,
 	)
-	has_gamemode_skin = FALSE
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/marine/upp
 	name = "\improper Type 41 pattern load rig"

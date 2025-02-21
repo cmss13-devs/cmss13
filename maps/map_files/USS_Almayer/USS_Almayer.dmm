@@ -438,6 +438,17 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"abb" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/flooredge/east,
+/area/almayer/hallways/hangar)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -482,6 +493,23 @@
 /obj/structure/window/reinforced/toughened,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
+"abl" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/closet/emcloset{
+	pixel_y = -1
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/medical/lower_medical_lobby)
 "abm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -1368,7 +1396,13 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/turf/open/floor/almayer/plate,
+/obj/structure/closet/firecloset{
+	pixel_y = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/cargo,
 /area/almayer/medical/lower_medical_lobby)
 "adg" = (
 /obj/structure/machinery/medical_pod/bodyscanner{
@@ -1521,6 +1555,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/sign/safety/bulkhead_door{
+	pixel_x = 36
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
@@ -2312,7 +2349,7 @@
 /area/almayer/living/offices/flight)
 "afz" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
+	icon_state = "SE-out";
 	pixel_x = 1
 	},
 /turf/open/floor/almayer/flooredge/east,
@@ -2748,14 +2785,13 @@
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/lower_medical_medbay)
 "ago" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28;
 	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
@@ -10972,6 +11008,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/sign/safety/bulkhead_door{
+	pixel_x = 36
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
@@ -96122,7 +96161,7 @@ bPr
 adm
 bdI
 ago
-mha
+abb
 afz
 kTY
 ehi
@@ -98757,7 +98796,7 @@ jpp
 iaF
 acg
 abO
-adf
+abl
 kan
 mKw
 rcx

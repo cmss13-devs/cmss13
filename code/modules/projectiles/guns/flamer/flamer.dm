@@ -683,6 +683,11 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
+	var/turf/current_turf = get_turf(src)
+	if(istype(current_turf, /turf/open_space))
+		var/turf/open_space/current_open_turf = current_turf
+		current_open_turf.check_fall(src)
+
 /obj/flamer_fire/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	to_call = null
@@ -889,3 +894,7 @@
 			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
 				continue
 		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+
+// So it doens't do the spinny animation
+/obj/flamer_fire/onZImpact(turf/impact_turf, height)
+	return

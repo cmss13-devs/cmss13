@@ -525,14 +525,14 @@
 ///BEVERAGE DRINKS
 
 /obj/item/reagent_container/food/drinks/beverage_drink
-	name = "beverage packet"
+	name = "beverage powder packet"
 	desc = "A packet of a beverage, to be mixed with water, makes a ready-in-a-field drink."
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	icon_state = "beverage"
 	volume = 20
 
 /obj/item/reagent_container/food/drinks/beverage_drink/grape
-	name = "electrolyte beverage packet (grape)"
+	name = "electrolyte beverage powder packet (grape)"
 	desc = "A packet of an electrolyte beverage, to be mixed with water, makes a ready-in-a-field drink. Has a grape flavor."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/grape/Initialize()
@@ -540,7 +540,7 @@
 	reagents.add_reagent("dehydrated_grape_beverage", 4)
 
 /obj/item/reagent_container/food/drinks/beverage_drink/orange
-	name = "electrolyte beverage packet (orange)"
+	name = "electrolyte beverage powder packet (orange)"
 	desc = "A packet of an electrolyte beverage, to be mixed with water, makes a ready-in-a-field drink. Has a citrusy orange flavor."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/orange/Initialize()
@@ -548,7 +548,7 @@
 	reagents.add_reagent("electrolyte_orange_beverage", 4)
 
 /obj/item/reagent_container/food/drinks/beverage_drink/lemonlime
-	name = "electrolyte beverage packet (lemon-lime)"
+	name = "electrolyte beverage powder packet (lemon-lime)"
 	desc = "A packet of an electrolyte beverage, to be mixed with water, makes a ready-in-a-field drink. Has a citrusy lemon-lime flavor."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/lemonlime/Initialize()
@@ -556,7 +556,7 @@
 	reagents.add_reagent("electrolyte_lemonlime_beverage", 4)
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate
-	name = "protein drink beverage packet (milk chocolate)"
+	name = "protein drink beverage powder packet (milk chocolate)"
 	desc = "A packet of a protein drink, to be mixed with water, makes a ready-in-a-field drink. Has a chocolate flavor."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate/Initialize()
@@ -564,7 +564,7 @@
 	reagents.add_reagent("chocolate_beverage", 4)
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate_hazelnut
-	name = "protein drink beverage packet (chocolate hazelnut)"
+	name = "protein drink beverage powder packet (chocolate hazelnut)"
 	desc = "A packet of a protein drink, to be mixed with water, makes a ready-in-a-field drink. Has a chocolate hazelnut flavor."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate_hazelnut/Initialize()

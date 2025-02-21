@@ -6619,7 +6619,7 @@
 /obj/structure/showcase/yautja/alt{
 	dir = 8;
 	pixel_y = 11;
-	layer = 3.2
+	layer = 4.1
 	},
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = -2;
@@ -6685,7 +6685,7 @@
 /obj/structure/showcase/yautja/alt{
 	dir = 4;
 	pixel_y = 11;
-	layer = 3.2
+	layer = 4.1
 	},
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 32;
@@ -8270,12 +8270,6 @@
 	layer = 2.9;
 	name = "ancient double war scythe"
 	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#3d3b3a";
-	icon_state = "pred_mask5_ebony";
-	pixel_y = 40
-	},
 /turf/closed/wall/huntership,
 /area/yautja)
 "BS" = (
@@ -9734,6 +9728,7 @@
 /obj/item/tool/wirecutters/yautja{
 	pixel_y = 7
 	},
+/obj/item/device/analyzer/plant_analyzer/yautja,
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
 "Hb" = (
@@ -11574,7 +11569,8 @@
 	},
 /obj/item/weapon/shield/riot/yautja/ancient{
 	pixel_x = -3;
-	pixel_y = 3
+	pixel_y = 3;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = 8;
@@ -14389,6 +14385,10 @@
 	pixel_y = 9;
 	color = "#9b1818"
 	},
+/obj/item/device/analyzer/plant_analyzer/yautja,
+/obj/item/device/analyzer/plant_analyzer/yautja,
+/obj/item/device/analyzer/plant_analyzer/yautja,
+/obj/item/device/analyzer/plant_analyzer/yautja,
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
 "Ww" = (

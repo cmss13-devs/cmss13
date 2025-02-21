@@ -265,7 +265,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /datum/radial_menu/proc/extract_image(image/E, label, use_labels)
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
-		SET_LAYER(MA, ABOVE_HUD_LAYER)
+		MA.layer = ABOVE_HUD_LAYER
 		MA.plane = ABOVE_HUD_PLANE
 		MA.appearance_flags |= RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 		if(use_labels)

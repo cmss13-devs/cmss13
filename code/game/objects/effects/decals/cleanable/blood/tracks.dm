@@ -28,7 +28,7 @@
 
 	var/mutable_appearance/MA = new(image)
 	MA.color = tcolor
-	SET_LAYER(MA, layer)
+	MA.layer = layer
 	MA.appearance_flags |= RESET_COLOR
 	image.appearance = MA
 

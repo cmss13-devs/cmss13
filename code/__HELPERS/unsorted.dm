@@ -708,7 +708,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	else if(busy_type == ACTION_GREEN_POWER_UP)
 		if(!GLOB.action_green_power_up)
 			GLOB.action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
-		SET_LAYER(GLOB.action_green_power_up, FLY_LAYER)
+			SET_LAYER(GLOB.action_green_power_up, FLY_LAYER)
 			GLOB.action_green_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_green_power_up
 	else if(busy_type == ACTION_BLUE_POWER_UP)

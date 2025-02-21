@@ -162,9 +162,9 @@
 	. = ..()
 	reagents.add_reagent("coco", 3)
 	reagents.add_reagent("milk", 2)
-	reagents.add_reagent("nuts", 1)
+	reagents.add_reagent("nuts", 2)
 	reagents.add_reagent("coconutmilk", 2)
-	reagents.add_reagent("sugar", 2)
+	reagents.add_reagent("sugar", 1)
 
 //WY GENERAL RATION
 

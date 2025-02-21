@@ -4,6 +4,7 @@
 	name = "\improper wrapped makeshift meal"
 	desc = "Some home cooked or salvaged meal, you do what you must within your capabilities."
 	icon_state = "clf_mealpack"
+	no_packet_label = TRUE
 	icon = 'icons/obj/items/food/mre_food/clf.dmi'
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/clf/meatpie,

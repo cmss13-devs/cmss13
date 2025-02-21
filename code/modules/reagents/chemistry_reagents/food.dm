@@ -137,6 +137,7 @@
 	color = "#312007" // rgb: 115, 16, 8
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_NUTRITIOUS = 3)
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/vegemite/reaction_mob(mob/target_mob, method=TOUCH, volume, permeable)
 	if(target_mob.faction != FACTION_TWE)
@@ -346,7 +347,7 @@
 	reagent_state = SOLID
 	nutriment_factor = 1 * REAGENTS_METABOLISM
 	color = COLOR_BROWN
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION
 

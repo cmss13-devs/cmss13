@@ -578,7 +578,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	add_fingerprint(user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && opened)
 		if(has_electronics == 1)
-			if(user.action_busy) return
+			if(user.action_busy)
+				return
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to deconstruct [src]."))
 				return

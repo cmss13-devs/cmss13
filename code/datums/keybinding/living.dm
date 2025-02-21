@@ -93,3 +93,23 @@
 		var/mob/living/living_mob = used_mob
 		if(living_mob.cameraFollow)
 			living_mob.cameraFollow = null
+
+/datum/keybinding/living/look_up
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "look_up"
+	full_name = "Look Up"
+	description = ""
+	keybind_signal = COMSIG_KB_MOB_LOOK_UP
+
+/datum/keybinding/living/look_up/down(client/user)
+	. = ..()
+	if (.)
+		return
+
+	if(!isliving(user.mob))
+		return
+
+	var/mob/living/user_mob = user.mob
+	user_mob.look_up()
+	return TRUE

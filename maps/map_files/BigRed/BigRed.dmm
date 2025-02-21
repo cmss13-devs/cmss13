@@ -1027,6 +1027,14 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
+"adY" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfmining"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1149,6 +1157,10 @@
 /obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
+"aet" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/bigredv2/outside/w)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -27779,14 +27791,6 @@
 /obj/structure/pipes/standard/tank/oxygen,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"mOZ" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/queen_spawn,
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfmining"
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves/mining)
 "mPm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -27996,13 +28000,6 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves/mining)
-"mYo" = (
-/obj/effect/decal/strata_decals/grime/grime3,
-/obj/effect/landmark/nightmare{
-	insert_tag = "cargo_containers"
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/bigredv2/outside/w)
 "mYp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -42915,7 +42912,7 @@ wVQ
 rxh
 rxh
 rxh
-mOZ
+adY
 rxh
 rxh
 rxh
@@ -47375,7 +47372,7 @@ vna
 jzO
 jzO
 jzO
-mYo
+aet
 eJp
 pBX
 pBX

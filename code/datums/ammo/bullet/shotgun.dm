@@ -59,7 +59,8 @@
 	handful_state = "beanbag_slug"
 
 /datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/projectile/P)
-	if(!M || M == P.firer) return
+	if(!M || M == P.firer)
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		shake_camera(H, 2, 1)

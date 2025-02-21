@@ -13,7 +13,7 @@
     {
 		"type": "map_insert",
 		"landmark": "iasf_souter_airbase",
-		"chance": 0.25,
+		"chance": 0.28,
 		"path": "standalone/twe_airbase.dmm",
         "when": { "lvevent": "none" }
 	}

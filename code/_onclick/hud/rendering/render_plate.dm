@@ -71,7 +71,7 @@
 	relay = new()
 	relay.render_source = render_target
 	relay.plane = relay_plane
-	relay.layer = (plane + abs(LOWEST_EVER_PLANE))*0.5 //layer must be positive but can be a decimal
+	SET_LAYER(relay, (plane + abs(LOWEST_EVER_PLANE))*0.5) //layer must be positive but can be a decimal
 
 	#if MIN_COMPILER_VERSION == 516
 		#error Default relay loc should be "1,1".

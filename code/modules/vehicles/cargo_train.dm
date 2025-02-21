@@ -38,7 +38,8 @@
 	. = ..()
 	cell = new /obj/item/cell/apc
 	key = new()
-	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
+	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay") //over mobs
+	SET_LAYER(I, layer + 0.2)
 	overlays += I
 
 	if(light_range)

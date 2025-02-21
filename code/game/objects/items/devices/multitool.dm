@@ -68,7 +68,7 @@
 			//Make it an image we can give to the client
 			var/image/final_image = image(apc_appearance)
 
-			final_image.layer = WALL_OBJ_LAYER
+			SET_LAYER(final_image, WALL_OBJ_LAYER)
 			final_image.plane = GAME_PLANE
 			final_image.loc = get_turf(APC)
 			final_image.dir = apc_appearance.dir

@@ -50,7 +50,7 @@
 		return // Specifically checked because of the possiible addtimer
 
 	density = FALSE
-	layer = open_layer
+	SET_LAYER(src, open_layer)
 	set_opacity(0)
 
 	operating = DOOR_OPERATING_IDLE
@@ -64,7 +64,7 @@
 	operating = DOOR_OPERATING_CLOSING
 	flick("[base_icon_state]c1", src)
 	icon_state = "[base_icon_state]1"
-	layer = closed_layer
+	SET_LAYER(src, closed_layer)
 	density = TRUE
 	if(visible)
 		set_opacity(1)

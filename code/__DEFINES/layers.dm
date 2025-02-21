@@ -3,6 +3,9 @@
 
 //the hardcoded ones are AREA_LAYER = 1, TURF_LAYER = 2, OBJ_LAYER = 3, MOB_LAYER = 4, FLY_LAYER = 5
 
+// This keeps things from stacking on top of each other in multiz
+#define SET_LAYER(thing, _layer) thing.layer = thing.z + _layer / 100
+
 /*=============================*\
 | |
 |   LAYER DEFINES |

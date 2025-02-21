@@ -408,6 +408,8 @@ Parameters are passed from New.
 		initialize_pass_flags()
 	Decorate(mapload)
 
+	SET_LAYER(src, layer)
+
 	return INITIALIZE_HINT_NORMAL
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD

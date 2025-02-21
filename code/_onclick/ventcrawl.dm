@@ -108,7 +108,8 @@
 
 	for(var/obj/structure/pipes/next_pipe in P.connected_to)
 		if(!next_pipe.pipe_vision_img)
-			next_pipe.pipe_vision_img = image(next_pipe, next_pipe.loc, layer = BELOW_MOB_LAYER, dir = next_pipe.dir)
+			next_pipe.pipe_vision_img = image(next_pipe, next_pipe.loc, dir = next_pipe.dir)
+			SET_LAYER(next_pipe, BELOW_MOB_LAYER)
 			next_pipe.pipe_vision_img.alpha = 180
 
 		addToListNoDupe(pipes_shown, next_pipe.pipe_vision_img)

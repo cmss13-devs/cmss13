@@ -57,11 +57,11 @@
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
-			buckled_mob.layer = ABOVE_TURF_LAYER
+			SET_LAYER(buckled_mob, ABOVE_TURF_LAYER)
 			if(ishuman(current_mob))
 				var/mob/living/carbon/human/current_human = current_mob
 				for(var/obj/limb/current_mobs_limb in current_human.limbs)
-					current_mobs_limb.layer = TURF_LAYER
+					SET_LAYER(current_mobs_limb, TURF_LAYER)
 		update_icon()
 		return
 
@@ -69,11 +69,11 @@
 	current_mob.pixel_x = initial(buckled_mob.pixel_x)
 	REMOVE_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 	if(dir == SOUTH)
-		current_mob.layer = initial(current_mob.layer)
+		SET_LAYER(current_mob, initial(current_mob.layer))
 		if(!ishuman(current_mob))
 			var/mob/living/carbon/human/current_human = current_mob
 			for(var/obj/limb/current_mobs_limb in current_human.limbs)
-				current_mobs_limb.layer =  initial(current_mobs_limb.layer)
+				SET_LAYER(current_mobs_limb, initial(current_mobs_limb.layer))
 	if(!QDESTROYING(src))
 		qdel(src)
 
@@ -302,7 +302,10 @@
 	if(on_fire)
 		overlays += "alien_fire"
 	if(buckled_mob)
-		overlays += image(icon_state = "nest_overlay", dir = buckled_mob.dir, layer = ABOVE_MOB_LAYER, pixel_y = 1)
+		var/image/overlay = image(icon_state = "nest_overlay", dir = buckled_mob.dir, pixel_y = 1)
+		SET_LAYER(overlay, ABOVE_MOB_LAYER)
+		overlays += overlay
+		
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)

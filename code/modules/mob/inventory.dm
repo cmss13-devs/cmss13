@@ -41,7 +41,7 @@
 		W.pickup(src)
 		W.forceMove(src)
 		l_hand = W
-		W.layer = ABOVE_HUD_LAYER
+		SET_LAYER(W, ABOVE_HUD_LAYER)
 		W.plane = ABOVE_HUD_PLANE
 		W.equipped(src,WEAR_L_HAND)
 		update_inv_l_hand()
@@ -58,7 +58,7 @@
 		W.pickup(src)
 		W.forceMove(src)
 		r_hand = W
-		W.layer = ABOVE_HUD_LAYER
+		SET_LAYER(W, ABOVE_HUD_LAYER)
 		W.plane = ABOVE_HUD_PLANE
 		W.equipped(src,WEAR_R_HAND)
 		update_inv_r_hand()
@@ -92,7 +92,7 @@
 	else
 		if(drop_on_fail)
 			W.forceMove(get_turf(src))
-			W.layer = initial(W.layer)
+			SET_LAYER(W, initial(W.layer))
 			W.dropped(src)
 		return FALSE
 
@@ -109,7 +109,7 @@
 	item.pickup(src)
 	item.forceMove(src)
 	back = item
-	item.layer = ABOVE_HUD_LAYER
+	SET_LAYER(item, ABOVE_HUD_LAYER)
 	item.plane = ABOVE_HUD_PLANE
 	item.equipped(src, WEAR_BACK)
 	update_inv_back()
@@ -219,7 +219,7 @@
 	if (client)
 		client.remove_from_screen(I)
 
-	I.layer = initial(I.layer)
+	SET_LAYER(I, initial(I.layer))
 	I.plane = initial(I.plane)
 	if(newloc)
 		if(!nomoveupdate)
@@ -422,7 +422,7 @@
 
 	if(equipped)
 		recalculate_move_delay = TRUE
-		W.layer = ABOVE_HUD_LAYER
+		SET_LAYER(W, ABOVE_HUD_LAYER)
 		W.plane = ABOVE_HUD_PLANE
 		if(src.back && W.loc != src.back)
 			W.forceMove(src)

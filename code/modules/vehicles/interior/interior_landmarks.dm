@@ -68,7 +68,7 @@
 
 	S.icon = icon
 	S.icon_state = icon_state
-	S.layer = layer
+	SET_LAYER(S, layer)
 	S.vehicle = I.exterior
 	S.required_skill = S.vehicle.required_skill
 	S.setDir(dir)
@@ -92,7 +92,7 @@
 
 	S.icon = icon
 	S.icon_state = icon_state
-	S.layer = layer
+	SET_LAYER(S, layer)
 	S.vehicle = I.exterior
 	S.setDir(dir)
 	S.alpha = alpha
@@ -220,7 +220,7 @@
 
 	Phone.icon = icon
 	Phone.icon_state = icon_state
-	Phone.layer = layer
+	SET_LAYER(Phone, layer)
 	Phone.setDir(dir)
 	Phone.alpha = alpha
 	Phone.update_icon()
@@ -243,7 +243,7 @@
 
 	R.icon = icon
 	R.icon_state = icon_state
-	R.layer = layer
+	SET_LAYER(R, layer)
 	R.pixel_x = pixel_x
 	R.pixel_y = pixel_y
 	R.vehicle = I.exterior
@@ -267,7 +267,7 @@
 	V.vehicle = I.exterior
 	V.pixel_x = pixel_x
 	V.pixel_y = pixel_y
-	V.layer = layer
+	SET_LAYER(V, layer)
 	V.alpha = alpha
 	V.update_icon()
 
@@ -287,7 +287,7 @@
 	V.vehicle = I.exterior
 	V.pixel_x = pixel_x
 	V.pixel_y = pixel_y
-	V.layer = layer
+	SET_LAYER(V, layer)
 	V.alpha = alpha
 
 	qdel(src)

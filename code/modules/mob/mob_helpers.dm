@@ -629,8 +629,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 				alert_overlay.pixel_y = -(iheight * 0.5) * diff
 				alert_overlay.pixel_x = -(iwidth * 0.5) * diff
 
-
-	alert_overlay.layer = FLOAT_LAYER
+	SET_LAYER(alert_overlay, FLOAT_LAYER)
 	alert_overlay.plane = FLOAT_PLANE
 	alert_overlay.underlays.Cut()
 	screen_alert.overlays += alert_overlay

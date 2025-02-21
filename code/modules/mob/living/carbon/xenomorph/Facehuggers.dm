@@ -460,7 +460,7 @@
 		var/mob/holder_mob = loc
 		holder_mob.drop_inv_item_on_ground(src)
 
-	layer = TURF_LAYER //so dead hugger appears below live hugger if stacked on same tile. (and below nested hosts)
+	SET_LAYER(src, TURF_LAYER) //so dead hugger appears below live hugger if stacked on same tile. (and below nested hosts)
 
 	if(hivenumber == XENO_HIVE_TUTORIAL)
 		addtimer(CALLBACK(src, PROC_REF(decay)), 5 SECONDS)

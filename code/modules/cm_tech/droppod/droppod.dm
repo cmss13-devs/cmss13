@@ -144,7 +144,7 @@
 		warning_zone = null
 
 	droppod_flags &= ~DROPPOD_DROPPING
-	layer = land_layer
+	SET_LAYER(src, land_layer)
 
 	forceMove(T)
 

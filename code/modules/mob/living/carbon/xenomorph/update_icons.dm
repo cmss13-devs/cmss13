@@ -197,9 +197,9 @@
 
 	backpack_icon_holder.icon_state = backpack.xeno_icon_state + state_modifier
 
-	backpack_icon_holder.layer = -X_BACK_LAYER
+	SET_LAYER(backpack_icon_holder, -X_BACK_LAYER)
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
-		backpack_icon_holder.layer = -X_BACK_FRONT_LAYER
+		SET_LAYER(backpack_icon_holder, -X_BACK_FRONT_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)

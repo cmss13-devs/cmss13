@@ -113,7 +113,7 @@
 							I.pixel_x = -32
 							I.pixel_y = -32
 
-					I.layer = layer + 0.001 + bleed_layer * 0.0001
+					SET_LAYER(I, layer + 0.001 + bleed_layer * 0.0001)
 					overlays += I
 
 

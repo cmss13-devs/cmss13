@@ -52,7 +52,7 @@
 	if(!target)
 		return
 	playsound(target.loc, 'sound/effects/snap.ogg', 25, 1)
-	layer = MOB_LAYER - 0.2
+	SET_LAYER(src, MOB_LAYER - 0.2)
 	armed = 0
 	update_icon()
 	pulse(0)
@@ -128,5 +128,5 @@
 	if(usr.stat)
 		return
 
-	layer = TURF_LAYER+0.2
+	SET_LAYER(src, TURF_LAYER+0.2)
 	to_chat(usr, SPAN_NOTICE("You hide [src]."))

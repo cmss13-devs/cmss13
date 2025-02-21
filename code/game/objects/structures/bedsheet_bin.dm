@@ -25,9 +25,9 @@ LINEN BINS
 	..()
 	user.drop_held_item()
 	if(layer == initial(layer))
-		layer = ABOVE_MOB_LAYER
+		SET_LAYER(src, ABOVE_MOB_LAYER)
 	else
-		layer = initial(layer)
+		SET_LAYER(src, initial(layer))
 	add_fingerprint(user)
 
 

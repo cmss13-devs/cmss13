@@ -105,7 +105,7 @@
 
 /area/Initialize(mapload, ...)
 	icon = null
-	layer = AREAS_LAYER
+	SET_LAYER(src, AREAS_LAYER)
 	uid = ++global_uid
 	. = ..()
 	GLOB.active_areas += src

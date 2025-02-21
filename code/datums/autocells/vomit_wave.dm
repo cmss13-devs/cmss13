@@ -16,7 +16,7 @@
 
 /datum/automata_cell/vomit_wave/birth()
 	vomit = new(in_turf)
-	vomit.layer = 3
+	SET_LAYER(vomit, 3)
 
 /datum/automata_cell/vomit_wave/death()
 	if(vomit)

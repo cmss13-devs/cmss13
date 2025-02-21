@@ -349,7 +349,7 @@
 		inv_box.alpha = ui_alpha
 	if(ui_color)
 		inv_box.color = ui_color
-	inv_box.layer = HUD_LAYER
+	SET_LAYER(inv_box, HUD_LAYER)
 	inv_box.slot_id = WEAR_L_HAND
 	l_hand_hud_object = inv_box
 	static_inventory += inv_box
@@ -367,7 +367,7 @@
 		inv_box.alpha = ui_alpha
 	if(ui_color)
 		inv_box.color = ui_color
-	inv_box.layer = HUD_LAYER
+	SET_LAYER(inv_box, HUD_LAYER)
 	inv_box.slot_id = WEAR_R_HAND
 	r_hand_hud_object = inv_box
 	static_inventory += inv_box
@@ -382,7 +382,7 @@
 		using.alpha = ui_alpha
 	if(ui_color)
 		using.color = ui_color
-	using.layer = HUD_LAYER
+	SET_LAYER(using, HUD_LAYER)
 	static_inventory += using
 
 /datum/hud/proc/draw_healths(datum/custom_hud/ui_datum, ui_alpha)

@@ -38,7 +38,7 @@
 		source_gun.desc = custom_gun_desc
 	source_gun.pixel_x = pixel_x
 	source_gun.pixel_y = pixel_y
-	source_gun.layer = layer
+	SET_LAYER(source_gun, layer)
 
 	///The prop itself, which the skin will be copied to
 	var/obj/item/prop/prop_gun/prop_gun = new /obj/item/prop/prop_gun(loc)
@@ -70,7 +70,7 @@
 	flags_equip_slot = source_gun.flags_equip_slot
 	pixel_x = source_gun.pixel_x
 	pixel_y = source_gun.pixel_y
-	layer = source_gun.layer
+	SET_LAYER(src, source_gun.layer)
 	overlays = source_gun.overlays
 
 /obj/item/prop/prop_gun/attack_self(mob/user) //Mimic wielding of real guns

@@ -56,7 +56,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							slots_free += ui_datum.ui_storage2
 					if(length(slots_free))
 						halitem.screen_loc = pick(slots_free)
-						halitem.layer = 50
+						SET_LAYER(halitem, 50)
 						switch(rand(1,6))
 							if(1) //revolver
 								halitem.icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'

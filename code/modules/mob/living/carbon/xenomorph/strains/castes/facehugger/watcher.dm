@@ -14,7 +14,7 @@
 
 /datum/xeno_strain/watcher/apply_strain(mob/living/carbon/xenomorph/facehugger/huggy)
 	huggy.viewsize = 10
-	huggy.layer = initial(huggy.layer)
+	SET_LAYER(huggy, initial(huggy.layer))
 
 // This has no special effects, it's just here to skip `/datum/behavior_delegate/facehugger_base/on_life()`.
 /datum/behavior_delegate/facehugger_watcher

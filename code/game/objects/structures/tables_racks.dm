@@ -455,7 +455,7 @@
 
 	setDir(direction)
 	if(dir != NORTH)
-		layer = FLY_LAYER
+		SET_LAYER(src, FLY_LAYER)
 	flipped = TRUE
 	flags_can_pass_all_temp &= ~PASS_UNDER
 	flags_atom |= ON_BORDER
@@ -480,7 +480,7 @@
 
 	projectile_coverage = upright_projectile_coverage
 
-	layer = initial(layer)
+	SET_LAYER(src, initial(layer))
 	flipped = FALSE
 	climbable = initial(climbable)
 	flags_can_pass_all_temp |= PASS_UNDER

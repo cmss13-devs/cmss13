@@ -48,7 +48,8 @@
 	if (isnull(viewer_client))
 		return
 
-	var/image/balloon_alert = image(loc = get_atom_on_turf(src), layer = ABOVE_MOB_LAYER)
+	var/image/balloon_alert = image(loc = get_atom_on_turf(src))
+	SET_LAYER(balloon_alert, ABOVE_MOB_LAYER)
 	balloon_alert.plane = RUNECHAT_PLANE
 	balloon_alert.alpha = 0
 	balloon_alert.color = text_color

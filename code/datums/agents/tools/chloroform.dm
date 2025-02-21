@@ -66,7 +66,7 @@
 	switch(M.dir)
 		if(NORTH)
 			target_y = -24
-			M.layer = ABOVE_LYING_MOB_LAYER
+			SET_LAYER(M, ABOVE_LYING_MOB_LAYER)
 		if(SOUTH)
 			target_y = 24
 		if(EAST)
@@ -81,7 +81,7 @@
 	animate(M, pixel_x = 0, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
 	M.anchored = FALSE
 	M.able_to_speak = TRUE
-	M.layer = MOB_LAYER
+	SET_LAYER(M, MOB_LAYER)
 	REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, CHLOROFORM_TRAIT)
 	REMOVE_TRAIT(M, TRAIT_UNDENSE, CHLOROFORM_TRAIT)
 

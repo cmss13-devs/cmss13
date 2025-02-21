@@ -98,13 +98,13 @@
 	cause_data = create_cause_data(initial(name), user)
 	plant_target = target
 	icon_state = overlay_image
-	layer = BELOW_MOB_LAYER
+	SET_LAYER(src, BELOW_MOB_LAYER)
 
 	if(!istype(target, /obj/structure/window) && !istype(target, /turf/closed))
 		user.drop_held_item()
 		target.contents += src
 		overlay = image('icons/obj/items/assemblies.dmi', overlay_image)
-		overlay.layer = ABOVE_XENO_LAYER
+		SET_LAYER(overlay, ABOVE_XENO_LAYER)
 		target.overlays += overlay
 	else
 		calculate_pixel_offset(user, target)
@@ -277,7 +277,7 @@
 			return
 		else if(issignaller(detonator.a_right) || issignaller(detonator.a_left))
 			overlays += new /obj/effect/overlay/danger
-			layer = INTERIOR_DOOR_LAYER
+			SET_LAYER(src, INTERIOR_DOOR_LAYER)
 			addtimer(CALLBACK(src, PROC_REF(delayed_prime), target_turf), 3 SECONDS)
 			return
 		else

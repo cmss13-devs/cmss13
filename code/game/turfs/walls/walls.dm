@@ -287,7 +287,7 @@
 	O.icon_state = "red_3"
 	O.anchored = TRUE
 	O.density = TRUE
-	O.layer = FLY_LAYER
+	SET_LAYER(O, FLY_LAYER)
 
 	to_chat(user, SPAN_WARNING("The thermite starts melting through [src]."))
 

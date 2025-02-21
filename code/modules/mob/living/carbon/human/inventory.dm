@@ -252,7 +252,7 @@
 		if(equipping_item.loc != src)
 			equipping_item.pickup(src, disable_warning)
 		equipping_item.forceMove(src)
-		equipping_item.layer = ABOVE_HUD_LAYER
+		SET_LAYER(equipping_item, ABOVE_HUD_LAYER)
 		equipping_item.plane = ABOVE_HUD_PLANE
 
 	switch(slot)

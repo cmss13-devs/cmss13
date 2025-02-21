@@ -11,8 +11,8 @@
 	set category = "Abilities"
 
 	if (layer != ANIMAL_HIDING_LAYER)
-		layer = ANIMAL_HIDING_LAYER
+		SET_LAYER(src, ANIMAL_HIDING_LAYER)
 		to_chat(src, text(SPAN_NOTICE("You are now hiding.")))
 	else
-		layer = MOB_LAYER
+		SET_LAYER(src, MOB_LAYER)
 		to_chat(src, text(SPAN_NOTICE("You have stopped hiding.")))

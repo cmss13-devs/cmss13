@@ -486,7 +486,7 @@
 
 	C.pixel_y += 9
 	if(C.layer < layer)
-		C.layer = layer + 0.1
+		SET_LAYER(C, layer + 0.1)
 	overlays += C
 
 	if(ismob(C))
@@ -510,7 +510,7 @@
 
 	load.forceMove(loc)
 	load.pixel_y -= 9
-	load.layer = initial(load.layer)
+	SET_LAYER(load, initial(load.layer))
 	if(ismob(load))
 		var/mob/M = load
 		if(M.client)
@@ -535,7 +535,7 @@
 			continue
 
 		AM.forceMove(loc)
-		AM.layer = initial(AM.layer)
+		SET_LAYER(AM, initial(AM.layer))
 		AM.pixel_y = initial(AM.pixel_y)
 		if(ismob(AM))
 			var/mob/M = AM

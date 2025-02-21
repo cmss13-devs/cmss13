@@ -243,7 +243,7 @@
 	for(var/gear_slot in gear)
 		var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 		inv_box.icon = ui_datum.ui_style_icon
-		inv_box.layer = HUD_LAYER
+		SET_LAYER(inv_box, HUD_LAYER)
 		inv_box.color = ui_color
 		inv_box.alpha = ui_alpha
 

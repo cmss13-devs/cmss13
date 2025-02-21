@@ -694,7 +694,7 @@
 /mob/living/carbon/human/proc/add_flay_overlay(stage = 1)
 	remove_overlay(FLAY_LAYER)
 	var/image/flay_icon = new /image('icons/mob/humans/dam_human.dmi', "human_[stage]")
-	flay_icon.layer = -FLAY_LAYER
+	SET_LAYER(flay_icon, -FLAY_LAYER)
 	flay_icon.blend_mode = BLEND_INSET_OVERLAY
 	overlays_standing[FLAY_LAYER] = flay_icon
 	apply_overlay(FLAY_LAYER)

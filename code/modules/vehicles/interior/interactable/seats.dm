@@ -24,9 +24,9 @@
 
 /obj/structure/bed/chair/comfy/vehicle/handle_rotation()
 	if(dir == NORTH)
-		layer = FLY_LAYER
+		SET_LAYER(src, FLY_LAYER)
 	else
-		layer = BELOW_MOB_LAYER
+		SET_LAYER(src, BELOW_MOB_LAYER)
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
 
@@ -138,7 +138,7 @@
 
 /obj/structure/bed/chair/comfy/vehicle/driver/armor/Initialize(mapload)
 	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
-	over_image.layer = ABOVE_MOB_LAYER
+	SET_LAYER(over_image, ABOVE_MOB_LAYER)
 
 	return ..()
 
@@ -160,7 +160,7 @@
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/Initialize(mapload)
 	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
-	over_image.layer = ABOVE_MOB_LAYER
+	SET_LAYER(over_image, ABOVE_MOB_LAYER)
 
 	return ..()
 
@@ -220,7 +220,7 @@
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/Initialize(mapload)
 	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
-	over_image.layer = ABOVE_MOB_LAYER
+	SET_LAYER(over_image, ABOVE_MOB_LAYER)
 
 	return ..()
 
@@ -317,7 +317,7 @@
 /obj/structure/bed/chair/vehicle/Initialize()
 	. = ..()
 	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
-	chairbar.layer = ABOVE_MOB_LAYER
+	SET_LAYER(chairbar, ABOVE_MOB_LAYER)
 
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
 
@@ -331,9 +331,9 @@
 
 /obj/structure/bed/chair/vehicle/handle_rotation()
 	if(dir == NORTH)
-		layer = FLY_LAYER
+		SET_LAYER(src, FLY_LAYER)
 	else
-		layer = BELOW_MOB_LAYER
+		SET_LAYER(src, BELOW_MOB_LAYER)
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
 

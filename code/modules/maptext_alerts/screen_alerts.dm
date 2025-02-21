@@ -179,10 +179,10 @@
 	if(new_master)
 		var/old_layer = new_master.layer
 		var/old_plane = new_master.plane
-		new_master.layer = FLOAT_LAYER
+		SET_LAYER(new_master, FLOAT_LAYER)
 		new_master.plane = FLOAT_PLANE
 		thealert.overlays += new_master
-		new_master.layer = old_layer
+		SET_LAYER(new_master, old_layer)
 		new_master.plane = old_plane
 		thealert.icon_state = "template" // We'll set the icon to the client's ui pref in reorganize_alerts()
 		thealert.master = new_master

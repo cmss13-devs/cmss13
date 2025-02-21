@@ -291,7 +291,7 @@
 	clone.dir = dir
 	clone.flags_atom = flags_atom
 	clone.density = density
-	clone.layer = layer
+	SET_LAYER(clone, layer)
 	clone.level = level
 	clone.name = name
 	clone.pixel_x = pixel_x

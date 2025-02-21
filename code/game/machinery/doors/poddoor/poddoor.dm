@@ -96,7 +96,7 @@
 	operating = DOOR_OPERATING_CLOSING
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 
-	layer = closed_layer
+	SET_LAYER(src, closed_layer)
 	flick("[base_icon_state]c1", src)
 	icon_state = "[base_icon_state]1"
 	density = TRUE

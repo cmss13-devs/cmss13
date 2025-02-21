@@ -89,7 +89,8 @@
 
 	client.images.Remove(current_image)
 
-	current_image = image(friend_image, src, layer = MOB_LAYER, dir = dir)
+	current_image = image(friend_image, src, dir = dir)
+	SET_LAYER(current_image, MOB_LAYER)
 	current_image.override = TRUE
 	current_image.name = name
 	if(hidden)

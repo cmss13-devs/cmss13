@@ -122,7 +122,9 @@
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
 		icon_state = base_state
-		overlays += image(icon_state = overlay_state, layer = MOB_LAYER + 0.1)
+		var/image/overlay = image(icon_state = overlay_state)
+		SET_LAYER(overlay, MOB_LAYER + 0.1)
+		overlays += overlay
 		if(M.mind && M.skills)
 			move_delay = max(4, move_delay - 2 * M.skills.get_skill_level(SKILL_POWERLOADER))
 		if(!M.put_in_l_hand(PC_left))

@@ -259,9 +259,9 @@
 	. = ..()
 	// Bump up a living player in the bag to layer of an actual corpse and not just an accidentally coverable prop
 	if(stasis_mob)
-		layer = LYING_BETWEEN_MOB_LAYER
+		SET_LAYER(src, LYING_BETWEEN_MOB_LAYER)
 	else
-		layer = initial(layer)
+		SET_LAYER(src, initial(layer))
 
 /obj/structure/closet/bodybag/cryobag/open()
 	var/mob/living/L = locate() in contents

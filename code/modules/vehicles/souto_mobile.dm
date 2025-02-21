@@ -8,7 +8,8 @@
 
 /obj/vehicle/souto/Initialize()
 	. = ..()
-	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay", layer = ABOVE_MOB_LAYER) //over mobs
+	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay") //over mobs
+	SET_LAYER(I, ABOVE_MOB_LAYER)
 	overlays += I
 
 /obj/vehicle/souto/manual_unbuckle(mob/user)

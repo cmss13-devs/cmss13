@@ -108,7 +108,7 @@
 		alpha = 127
 		invisibility = INVISIBILITY_OBSERVER
 		plane = GHOST_PLANE
-		layer = ABOVE_FLY_LAYER
+		SET_LAYER(src, ABOVE_FLY_LAYER)
 		mouse_opacity = MOUSE_OPACITY_ICON // In case we were weed_food
 
 		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF

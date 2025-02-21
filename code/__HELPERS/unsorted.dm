@@ -531,7 +531,7 @@
 	if(direction)
 		animation.setDir(direction)
 	animation.icon = a_icon
-	animation.layer = target.layer+0.1
+	SET_LAYER(animation, target.layer+0.1)
 	if(a_icon_state)
 		animation.icon_state = a_icon_state
 	else
@@ -624,103 +624,103 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	if(busy_type == BUSY_ICON_GENERIC)
 		if(!GLOB.busy_indicator_clock)
 			GLOB.busy_indicator_clock = image('icons/mob/do_afters.dmi', null, "busy_generic", "pixel_y" = 22)
-			GLOB.busy_indicator_clock.layer = FLY_LAYER
+			SET_LAYER(GLOB.busy_indicator_clock, FLY_LAYER)
 			GLOB.busy_indicator_clock.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_clock
 	else if(busy_type == BUSY_ICON_MEDICAL)
 		if(!GLOB.busy_indicator_medical)
 			GLOB.busy_indicator_medical = image('icons/mob/do_afters.dmi', null, "busy_medical", "pixel_y" = 0) //This shows directly on top of the mob, no offset!
-			GLOB.busy_indicator_medical.layer = FLY_LAYER
+			SET_LAYER(GLOB.busy_indicator_medical, FLY_LAYER)
 			GLOB.busy_indicator_medical.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_medical
 	else if(busy_type == BUSY_ICON_BUILD)
 		if(!GLOB.busy_indicator_build)
 			GLOB.busy_indicator_build = image('icons/mob/do_afters.dmi', null, "busy_build", "pixel_y" = 22)
-			GLOB.busy_indicator_build.layer = FLY_LAYER
+			SET_LAYER(GLOB.busy_indicator_build, FLY_LAYER)
 			GLOB.busy_indicator_build.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_build
 	else if(busy_type == BUSY_ICON_FRIENDLY)
 		if(!GLOB.busy_indicator_friendly)
 			GLOB.busy_indicator_friendly = image('icons/mob/do_afters.dmi', null, "busy_friendly", "pixel_y" = 22)
-			GLOB.busy_indicator_friendly.layer = FLY_LAYER
+			SET_LAYER(GLOB.busy_indicator_friendly, FLY_LAYER)
 			GLOB.busy_indicator_friendly.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_friendly
 	else if(busy_type == BUSY_ICON_HOSTILE)
 		if(!GLOB.busy_indicator_hostile)
 			GLOB.busy_indicator_hostile = image('icons/mob/do_afters.dmi', null, "busy_hostile", "pixel_y" = 22)
-			GLOB.busy_indicator_hostile.layer = FLY_LAYER
+			SET_LAYER(GLOB.busy_indicator_hostile, FLY_LAYER)
 			GLOB.busy_indicator_hostile.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_hostile
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
 		if(!GLOB.emote_indicator_highfive)
 			GLOB.emote_indicator_highfive = image('icons/mob/do_afters.dmi', null, "emote_highfive", "pixel_y" = 22)
-			GLOB.emote_indicator_highfive.layer = FLY_LAYER
+			SET_LAYER(GLOB.emote_indicator_highfive, FLY_LAYER)
 			GLOB.emote_indicator_highfive.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_highfive
 	else if(busy_type == EMOTE_ICON_FISTBUMP)
 		if(!GLOB.emote_indicator_fistbump)
 			GLOB.emote_indicator_fistbump = image('icons/mob/do_afters.dmi', null, "emote_fistbump", "pixel_y" = 22)
-			GLOB.emote_indicator_fistbump.layer = FLY_LAYER
+			SET_LAYER(GLOB.emote_indicator_fistbump, FLY_LAYER)
 			GLOB.emote_indicator_fistbump.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_fistbump
 	else if(busy_type == EMOTE_ICON_ROCK_PAPER_SCISSORS)
 		if(!GLOB.emote_indicator_rock_paper_scissors)
 			GLOB.emote_indicator_rock_paper_scissors = image('icons/mob/do_afters.dmi', null, "emote_rps", "pixel_y" = 22)
-			GLOB.emote_indicator_rock_paper_scissors.layer = FLY_LAYER
+			SET_LAYER(GLOB.emote_indicator_rock_paper_scissors, FLY_LAYER)
 			GLOB.emote_indicator_rock_paper_scissors.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_rock_paper_scissors
 	else if(busy_type == EMOTE_ICON_ROCK)
 		if(!GLOB.emote_indicator_rock)
 			GLOB.emote_indicator_rock = image('icons/mob/do_afters.dmi', null, "emote_rock", "pixel_y" = 22)
-			GLOB.emote_indicator_rock.layer = FLY_LAYER
+			SET_LAYER(GLOB.emote_indicator_rock, FLY_LAYER)
 			GLOB.emote_indicator_rock.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_rock
 	else if(busy_type == EMOTE_ICON_PAPER)
 		if(!GLOB.emote_indicator_paper)
 			GLOB.emote_indicator_paper = image('icons/mob/do_afters.dmi', null, "emote_paper", "pixel_y" = 22)
-			GLOB.emote_indicator_paper.layer = FLY_LAYER
+			SET_LAYER(GLOB.emote_indicator_paper, FLY_LAYER)
 			GLOB.emote_indicator_paper.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_paper
 	else if(busy_type == EMOTE_ICON_SCISSORS)
 		if(!GLOB.emote_indicator_scissors)
 			GLOB.emote_indicator_scissors = image('icons/mob/do_afters.dmi', null, "emote_scissors", "pixel_y" = 22)
-			GLOB.emote_indicator_scissors.layer = FLY_LAYER
+			SET_LAYER(GLOB.emote_indicator_scissors, FLY_LAYER)
 			GLOB.emote_indicator_scissors.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_scissors
 	else if(busy_type == EMOTE_ICON_HEADBUTT)
 		if(!GLOB.emote_indicator_headbutt)
 			GLOB.emote_indicator_headbutt = image('icons/mob/do_afters.dmi', null, "emote_headbutt", "pixel_y" = 22)
-			GLOB.emote_indicator_headbutt.layer = FLY_LAYER
+			SET_LAYER(GLOB.emote_indicator_headbutt, FLY_LAYER)
 			GLOB.emote_indicator_headbutt.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_headbutt
 	else if(busy_type == EMOTE_ICON_TAILSWIPE)
 		if(!GLOB.emote_indicator_tailswipe)
 			GLOB.emote_indicator_tailswipe = image('icons/mob/do_afters.dmi', null, "emote_tailswipe", "pixel_y" = 22)
-			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
+			SET_LAYER(GLOB.emote_indicator_tailswipe, FLY_LAYER)
 			GLOB.emote_indicator_tailswipe.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_tailswipe
 	else if(busy_type == ACTION_RED_POWER_UP)
 		if(!GLOB.action_red_power_up)
 			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
-			GLOB.action_red_power_up.layer = FLY_LAYER
+			SET_LAYER(GLOB.action_red_power_up, FLY_LAYER)
 			GLOB.action_red_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_red_power_up
 	else if(busy_type == ACTION_GREEN_POWER_UP)
 		if(!GLOB.action_green_power_up)
 			GLOB.action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
-			GLOB.action_green_power_up.layer = FLY_LAYER
+		SET_LAYER(GLOB.action_green_power_up, FLY_LAYER)
 			GLOB.action_green_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_green_power_up
 	else if(busy_type == ACTION_BLUE_POWER_UP)
 		if(!GLOB.action_blue_power_up)
 			GLOB.action_blue_power_up = image('icons/effects/effects.dmi', null, "shock", "pixel_x" = 16)
-			GLOB.action_blue_power_up.layer = FLY_LAYER
+			SET_LAYER(GLOB.action_blue_power_up, FLY_LAYER)
 			GLOB.action_blue_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_blue_power_up
 	else if(busy_type == ACTION_PURPLE_POWER_UP)
 		if(!GLOB.action_purple_power_up)
 			GLOB.action_purple_power_up = image('icons/effects/effects.dmi', null, "pain", "pixel_x" = 16)
-			GLOB.action_purple_power_up.layer = FLY_LAYER
+			SET_LAYER(GLOB.action_purple_power_up, FLY_LAYER)
 			GLOB.action_purple_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_purple_power_up
 

@@ -25,7 +25,7 @@
 	open = floor(rand(0, 1))
 	cistern_overlay = new()
 	cistern_overlay.icon = icon
-	cistern_overlay.layer = ABOVE_MOB_LAYER
+	SET_LAYER(cistern_overlay, ABOVE_MOB_LAYER)
 	cistern_overlay.vis_flags = VIS_INHERIT_DIR|VIS_INHERIT_ID
 	vis_contents += cistern_overlay
 	update_icon()

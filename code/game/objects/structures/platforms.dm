@@ -26,16 +26,16 @@
 	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
 	switch(dir)
 		if(SOUTH)
-			layer = ABOVE_MOB_LAYER
+			SET_LAYER(src, ABOVE_MOB_LAYER)
 			I.pixel_y = -16
 		if(NORTH)
 			I.pixel_y = 16
 		if(EAST)
 			I.pixel_x = 16
-			layer = MOB_LAYER
+			SET_LAYER(src, MOB_LAYER)
 		if(WEST)
 			I.pixel_x = -16
-			layer = MOB_LAYER
+			SET_LAYER(src, MOB_LAYER)
 	overlays += I
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -85,7 +85,7 @@
 /obj/structure/platform/proc/broken()
 	stat |= BROKEN
 	density = FALSE
-	layer = ABOVE_BLOOD_LAYER //lets hope it will appear under everything except weeds and blood.
+	SET_LAYER(src, ABOVE_BLOOD_LAYER) //lets hope it will appear under everything except weeds and blood.
 	update_icon()
 
 /obj/structure/platform/attackby(obj/item/W, mob/user)
@@ -164,17 +164,17 @@
 	. = ..()
 	switch(dir)
 		if (NORTH)
-			layer = OBJ_LAYER+0.1
+			SET_LAYER(src, OBJ_LAYER+0.1)
 		if (SOUTH)
-			layer = ABOVE_MOB_LAYER+0.1
+			SET_LAYER(src, ABOVE_MOB_LAYER+0.1)
 		if (SOUTHEAST)
-			layer = ABOVE_MOB_LAYER+0.1
+			SET_LAYER(src, ABOVE_MOB_LAYER+0.1)
 		if (SOUTHWEST)
-			layer = ABOVE_MOB_LAYER+0.1
+			SET_LAYER(src, ABOVE_MOB_LAYER+0.1)
 		if (EAST)
-			layer = MOB_LAYER+0.1
+			SET_LAYER(src, MOB_LAYER+0.1)
 		if (WEST)
-			layer = MOB_LAYER+0.1
+			SET_LAYER(src, MOB_LAYER+0.1)
 
 /obj/structure/platform_decoration/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

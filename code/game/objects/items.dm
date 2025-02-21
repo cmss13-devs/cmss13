@@ -970,7 +970,8 @@
 /obj/item/proc/do_pickup_animation(atom/target)
 	if(!istype(loc, /turf))
 		return
-	var/image/pickup_animation = image(icon = src, loc = loc, layer = layer + 0.1)
+	var/image/pickup_animation = image(icon = src, loc = loc)
+	SET_LAYER(pickup_animation, layer + 0.1)
 	var/animation_alpha = 175
 	if(target.alpha < 175)
 		animation_alpha = target.alpha
@@ -1090,7 +1091,8 @@
 	if(visual_effect_icon)
 		attack_image = image('icons/effects/effects.dmi', attacked_atom, visual_effect_icon, attacked_atom.layer + 0.1)
 	else if(used_item)
-		attack_image = image(icon = used_item, loc = attacked_atom, layer = attacked_atom.layer + 0.1)
+		attack_image = image(icon = used_item, loc = attacked_atom)
+		SET_LAYER(attack_image, attacked_atom.layer + 0.1)
 		attack_image.plane = attacked_atom.plane + 1
 
 		// Scale the icon.

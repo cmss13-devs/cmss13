@@ -187,7 +187,7 @@
 			// Delayed since our layer already satisfies the requirement and we might be moving off of another shimmy
 			addtimer(VARSET_CALLBACK(mob, layer, desired_layer), animate_time * 0.5)
 		else
-			mob.layer = desired_layer
+			SET_LAYER(mob, desired_layer)
 
 	// Offset them
 	switch(direction)
@@ -272,11 +272,11 @@
 				var/datum/action/xeno_action/onclick/xenohide/hide = get_action(mob, /datum/action/xeno_action/onclick/xenohide)
 				if(hide)
 					hide.post_attack()
-			mob.layer = desired_layer
+			SET_LAYER(mob, desired_layer)
 		else
 			UnregisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER)
 			if(mob.layer != XENO_HIDING_LAYER || !isxeno(mob))
-				mob.layer = initial(mob.layer)
+				SET_LAYER(mob, initial(mob.layer))
 
 	return .
 
@@ -295,7 +295,7 @@
 	if(!(SEND_SIGNAL(mob, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
 		if(mob.layer != XENO_HIDING_LAYER || !isxeno(mob))
 			if(dir & NORTH)
-				mob.layer = initial(mob.layer)
+				SET_LAYER(mob, initial(mob.layer))
 			else
 				addtimer(VARSET_CALLBACK(mob, layer, initial(mob.layer)), animate_time * 0.5)
 

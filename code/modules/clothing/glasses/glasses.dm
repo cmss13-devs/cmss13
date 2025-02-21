@@ -405,14 +405,14 @@
 	obj_glass_overlay = new()
 	obj_glass_overlay.vis_flags = VIS_INHERIT_ID|VIS_INHERIT_ICON
 	obj_glass_overlay.icon_state = "discovision_glass"
-	obj_glass_overlay.layer = FLOAT_LAYER
+	SET_LAYER(obj_glass_overlay, FLOAT_LAYER)
 	vis_contents += obj_glass_overlay
 
 	mob_glass_overlay = new()
 	mob_glass_overlay.icon = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi'
 	mob_glass_overlay.vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
 	mob_glass_overlay.icon_state = "discovision_glass"
-	mob_glass_overlay.layer = FLOAT_LAYER
+	SET_LAYER(mob_glass_overlay, FLOAT_LAYER)
 
 	//The overlays are painted in shades of pure red. These matrices convert them to various shades of the new color.
 	onmob_colors = list(

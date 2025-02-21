@@ -597,7 +597,7 @@ world
 			I.pixel_x = 8
 		if(64)
 			I.pixel_x = 16
-	I.layer = FLY_LAYER
+	SET_LAYER(I, FLY_LAYER)
 	I.appearance_flags = RESET_COLOR
 
 	I.color = color

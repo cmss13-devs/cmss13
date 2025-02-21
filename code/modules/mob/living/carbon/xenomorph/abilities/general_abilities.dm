@@ -407,7 +407,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
 	if(xeno.layer == XENO_HIDING_LAYER)
-		xeno.layer = initial(xeno.layer)
+		SET_LAYER(xeno, initial(xeno.layer))
 		button.icon_state = "template"
 		xeno.update_wounds()
 		xeno.update_layer()

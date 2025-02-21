@@ -20,7 +20,7 @@
 	if(dir == SOUTH)
 		closed_layer = ABOVE_MOB_LAYER
 	if(density)//Allows preset-open to work
-		layer = closed_layer
+		SET_LAYER(src, closed_layer)
 
 	set_opacity(initial(opacity))
 
@@ -44,7 +44,7 @@
 	operating = DOOR_OPERATING_OPENING
 	flick("railingc0", src)
 	icon_state = "railing0"
-	layer = open_layer
+	SET_LAYER(src, open_layer)
 
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), 1.2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
@@ -62,7 +62,7 @@
 
 	density = TRUE
 	operating = DOOR_OPERATING_CLOSING
-	layer = closed_layer
+	SET_LAYER(src, closed_layer)
 	flick("railingc1", src)
 	icon_state = "railing1"
 

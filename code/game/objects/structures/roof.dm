@@ -14,10 +14,12 @@
 
 /obj/structure/roof/Initialize()
 	. = ..()
-	under_image = image(icon, src, icon_state, layer = layer)
+	under_image = image(icon, src, icon_state)
+	SET_LAYER(under_image, layer)
 	under_image.alpha = 127
 
-	normal_image = image(icon, src, icon_state, layer = layer)
+	normal_image = image(icon, src, icon_state)
+	SET_LAYER(normal_image, layer)
 
 	icon_state = null
 

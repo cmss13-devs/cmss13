@@ -48,7 +48,8 @@
 		var/turf/open/auto_turf/xy_turf = auto_turf_dirs["[direction]"]
 		if(("[x_dir]" in auto_turf_dirs) && ("[y_dir]" in auto_turf_dirs))
 			var/special_icon_state = "[xy_turf.icon_prefix]_innercorner"
-			var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
+			var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction))
+			SET_LAYER(I, layer + 0.001 + xy_turf.bleed_layer * 0.0001)
 			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 			overlays += I
 			handled_dirs += "[x_dir]"
@@ -56,7 +57,8 @@
 			continue
 
 		var/special_icon_state = "[xy_turf.icon_prefix]_outercorner"
-		var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + xy_turf.bleed_layer * 0.0001)
+		var/image/I = image(xy_turf.icon, special_icon_state, dir = REVERSE_DIR(direction))
+		SET_LAYER(I, layer + 0.001 + xy_turf.bleed_layer * 0.0001)
 		I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 		overlays += I
 		unhandled_dirs |= x_dir
@@ -66,7 +68,8 @@
 		if(("[direction]" in auto_turf_dirs) && !("[direction]" in handled_dirs))
 			var/turf/open/auto_turf/turf = auto_turf_dirs["[direction]"]
 			var/special_icon_state = "[turf.icon_prefix]_[pick("innercorner", "outercorner")]"
-			var/image/I = image(turf.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + turf.bleed_layer * 0.0001)
+			var/image/I = image(turf.icon, special_icon_state, dir = REVERSE_DIR(direction))
+			SET_LAYER(I, layer + 0.001 + turf.bleed_layer * 0.0001)
 			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 			overlays += I
 

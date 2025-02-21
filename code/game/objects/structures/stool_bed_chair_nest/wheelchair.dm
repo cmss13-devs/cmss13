@@ -11,7 +11,8 @@
 
 /obj/structure/bed/chair/wheelchair/handle_rotation()
 	overlays.Cut()
-	var/image/O = image(icon = 'icons/obj/structures/props/furniture/chairs.dmi', icon_state = "w_overlay", layer = FLY_LAYER, dir = src.dir)
+	var/image/O = image(icon = 'icons/obj/structures/props/furniture/chairs.dmi', icon_state = "w_overlay", dir = src.dir)
+	SET_LAYER(O, FLY_LAYER)
 	overlays += O
 	if(buckled_mob)
 		buckled_mob.setDir(dir)

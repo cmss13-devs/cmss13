@@ -27,9 +27,9 @@
 
 /obj/structure/bed/chair/handle_rotation() //Making this into a separate proc so office chairs can call it on Move()
 	if(dir == NORTH)
-		layer = north_layer
+		SET_LAYER(src, north_layer)
 	else
-		layer = non_north_layer
+		SET_LAYER(src, non_north_layer)
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
 
@@ -67,7 +67,7 @@
 		stacked_size--
 		update_overlays()
 		if(!stacked_size)
-			layer = OBJ_LAYER
+			SET_LAYER(src, OBJ_LAYER)
 			unslashable = FALSE
 			can_buckle = TRUE
 			density = FALSE
@@ -94,7 +94,7 @@
 		update_overlays()
 
 		if(stacked_size == 1)
-			layer = ABOVE_MOB_LAYER
+			SET_LAYER(src, ABOVE_MOB_LAYER)
 			unslashable = TRUE
 			can_buckle = FALSE
 			density = TRUE
@@ -392,12 +392,12 @@
 /obj/structure/bed/chair/dropship/passenger/Initialize()
 	. = ..()
 	chairbar = image(icon, "hotseat_bars")
-	chairbar.layer = ABOVE_MOB_LAYER
+	SET_LAYER(chairbar, ABOVE_MOB_LAYER)
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/Initialize()
 	. = ..()
 	chairbar = image(icon, "hotseat_bars")
-	chairbar.layer = ABOVE_MOB_LAYER
+	SET_LAYER(chairbar, ABOVE_MOB_LAYER)
 
 
 /obj/structure/bed/chair/dropship/passenger/afterbuckle()

@@ -176,7 +176,7 @@ There are several things that need to be remembered:
 
 	var/datum/sprite_accessory/underwear/underwear_datum = gender == MALE ? GLOB.underwear_m[underwear] : GLOB.underwear_f[underwear]
 	var/image/underwear_icon = underwear_datum.get_image(gender)
-	underwear_icon.layer = -UNDERWEAR_LAYER
+	SET_LAYER(underwear_icon, -UNDERWEAR_LAYER)
 
 	overlays_standing[UNDERWEAR_LAYER] = underwear_icon
 	apply_overlay(UNDERWEAR_LAYER)
@@ -190,7 +190,7 @@ There are several things that need to be remembered:
 		return
 
 	var/image/undershirt_icon = undershirt_datum.get_image(gender)
-	undershirt_icon.layer = -UNDERSHIRT_LAYER
+	SET_LAYER(undershirt_icon, -UNDERSHIRT_LAYER)
 	overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
 	apply_overlay(UNDERSHIRT_LAYER)
 
@@ -215,7 +215,7 @@ There are several things that need to be remembered:
 		var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[f_style]
 		if(facial_hair_style && facial_hair_style.species_allowed && (species.name in facial_hair_style.species_allowed))
 			var/image/facial_s = new/image("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			facial_s.layer = -FACIAL_LAYER
+			SET_LAYER(facial_s, FACIAL_LAYER)
 			if(facial_hair_style.do_coloration)
 				facial_s.color = list(null, null, null, null, rgb(r_facial, g_facial, b_facial))
 			overlays_standing[FACIAL_LAYER] = facial_s
@@ -225,7 +225,7 @@ There are several things that need to be remembered:
 		var/datum/sprite_accessory/hair_style = species.get_hairstyle(h_style)
 		if(hair_style && (species.name in hair_style.species_allowed))
 			var/image/hair_s = new/image("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-			hair_s.layer = -HAIR_LAYER
+			SET_LAYER(hair_s, -HAIR_LAYER)
 			if(hair_style.do_coloration)
 				hair_s.color = list(null, null, null, null, rgb(r_hair, g_hair, b_hair))
 
@@ -237,7 +237,7 @@ There are several things that need to be remembered:
 					var/icon/temp_hair = icon(hair_style.icon, "[hair_style.icon_state]_s")
 					temp_hair.Blend(temp, ICON_SUBTRACT)
 					gradient_overlay.icon = temp_hair
-					gradient_overlay.layer = -HAIR_GRADIENT_LAYER
+					SET_LAYER(gradient_overlay, -HAIR_GRADIENT_LAYER)
 					gradient_overlay.color = list(null, null, null, null, rgb(r_gradient, g_gradient, b_gradient))
 					overlays_standing[HAIR_GRADIENT_LAYER] = gradient_overlay
 					apply_overlay(HAIR_GRADIENT_LAYER)
@@ -274,7 +274,7 @@ There are several things that need to be remembered:
 			L.splinted_icon = null
 
 	if(standing_image)
-		standing_image.layer = -MEDICAL_LAYER
+		SET_LAYER(standing_image, -MEDICAL_LAYER)
 		overlays_standing[MEDICAL_LAYER] = standing_image
 		apply_overlay(MEDICAL_LAYER)
 
@@ -299,7 +299,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 	headshot.appearance_flags = RESET_COLOR
 	headshot.blend_mode = BLEND_INSET_OVERLAY
-	headshot.layer = -HEADSHOT_LAYER
+	SET_LAYER(headshot, -HEADSHOT_LAYER)
 	overlays_standing[HEADSHOT_LAYER] = headshot
 	apply_overlay(HEADSHOT_LAYER)
 
@@ -353,7 +353,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 		if(!(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT))
 			var/image/I = w_uniform.get_mob_overlay(src, WEAR_BODY)
-			I.layer = -UNIFORM_LAYER
+			SET_LAYER(I, -UNIFORM_LAYER)
 			overlays_standing[UNIFORM_LAYER] = I
 			apply_overlay(UNIFORM_LAYER)
 
@@ -376,7 +376,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		return
 	if(!card.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
 		var/image/id_overlay = card.get_mob_overlay(src, WEAR_ID)
-		id_overlay.layer = -ID_LAYER
+		SET_LAYER(id_overlay, -ID_LAYER)
 		overlays_standing[ID_LAYER] = id_overlay
 		apply_overlay(ID_LAYER)
 
@@ -399,7 +399,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 	if(!I)
 		return
-	I.layer = -GLOVES_LAYER
+	SET_LAYER(I, -GLOVES_LAYER)
 	overlays_standing[GLOVES_LAYER] = I
 	apply_overlay(GLOVES_LAYER)
 
@@ -414,7 +414,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			return
 
 		var/image/I = glasses.get_mob_overlay(src, WEAR_EYES)
-		I.layer = -GLASSES_LAYER
+		SET_LAYER(I, -GLASSES_LAYER)
 		overlays_standing[GLASSES_LAYER] = I
 		apply_overlay(GLASSES_LAYER)
 
@@ -434,7 +434,8 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(species.flags & NO_OVERLAYS)
 			return
 
-		var/image/standing_image = image('icons/mob/humans/onmob/med_human.dmi', icon_state = "blank", layer = -EARS_LAYER)
+		var/image/standing_image = image('icons/mob/humans/onmob/med_human.dmi', icon_state = "blank")
+		SET_LAYER(standing_image, -EARS_LAYER)
 
 		standing_image.overlays +=  wear_l_ear?.get_mob_overlay(src, WEAR_L_EAR)
 		standing_image.overlays +=  wear_r_ear?.get_mob_overlay(src, WEAR_R_EAR)
@@ -462,7 +463,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		I = overlay_image(species.blood_mask, "feet_blood", feet_blood_color, RESET_COLOR)
 	if(!I)
 		return
-	I.layer = -SHOES_LAYER
+	SET_LAYER(I, -SHOES_LAYER)
 	overlays_standing[SHOES_LAYER] = I
 	apply_overlay(SHOES_LAYER)
 
@@ -478,7 +479,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			return
 
 		var/image/I = s_store.get_mob_overlay(src, WEAR_J_STORE)
-		I.layer = -SUIT_STORE_LAYER
+		SET_LAYER(I, -SUIT_STORE_LAYER)
 		overlays_standing[SUIT_STORE_LAYER] = I
 		apply_overlay(SUIT_STORE_LAYER)
 
@@ -499,7 +500,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		return
 
 	var/image/head_overlay = head.get_mob_overlay(src, WEAR_HEAD)
-	head_overlay.layer = -HEAD_LAYER
+	SET_LAYER(head_overlay, -HEAD_LAYER)
 	overlays_standing[HEAD_LAYER] = head_overlay
 	apply_overlay(HEAD_LAYER)
 
@@ -511,7 +512,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 				var/image/helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state="std-helmet")
 				if(leader == src)
 					helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state="sql-helmet")
-				helmet_overlay.layer = -HEAD_SQUAD_LAYER
+				SET_LAYER(helmet_overlay, -HEAD_SQUAD_LAYER)
 				helmet_overlay.alpha = assigned_squad.armor_alpha
 				helmet_overlay.color = assigned_squad.equipment_color
 				overlays_standing[HEAD_SQUAD_LAYER] = helmet_overlay
@@ -550,7 +551,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		return
 
 	var/image/I = belt.get_mob_overlay(src, WEAR_WAIST)
-	I.layer = -BELT_LAYER
+	SET_LAYER(I, -BELT_LAYER)
 	overlays_standing[BELT_LAYER] = I
 	apply_overlay(BELT_LAYER)
 
@@ -570,7 +571,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			return
 
 		var/image/I = wear_suit.get_mob_overlay(src, WEAR_JACKET)
-		I.layer = -SUIT_LAYER
+		SET_LAYER(I, -SUIT_LAYER)
 		overlays_standing[SUIT_LAYER] = I
 		apply_overlay(SUIT_LAYER)
 
@@ -582,7 +583,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 					var/image/squad_overlay = image(marine_armor.squad_overlay_icon, icon_state = "std-armor")
 					if(leader == src)
 						squad_overlay = image(marine_armor.squad_overlay_icon, icon_state = "sql-armor")
-					squad_overlay.layer = -SUIT_SQUAD_LAYER
+					SET_LAYER(squad_overlay, -SUIT_SQUAD_LAYER)
 					squad_overlay.alpha = assigned_squad.armor_alpha
 					squad_overlay.color = assigned_squad.equipment_color
 					overlays_standing[SUIT_SQUAD_LAYER] = squad_overlay
@@ -639,7 +640,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 	if(!(head && head.flags_inv_hide & HIDEMASK))
 		var/image/I = wear_mask.get_mob_overlay(src, WEAR_FACE)
-		I.layer = -FACEMASK_LAYER
+		SET_LAYER(I, -FACEMASK_LAYER)
 		overlays_standing[FACEMASK_LAYER] = I
 		apply_overlay(FACEMASK_LAYER)
 
@@ -655,10 +656,10 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		return
 
 	var/image/I = back.get_mob_overlay(src, WEAR_BACK)
-	I.layer = -BACK_LAYER
+	SET_LAYER(I, -BACK_LAYER)
 
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
-		I.layer = -BACK_FRONT_LAYER
+		SET_LAYER(I, -BACK_FRONT_LAYER)
 	overlays_standing[BACK_LAYER] = I
 	apply_overlay(BACK_LAYER)
 
@@ -668,7 +669,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!handcuffed)
 		return
 	var/image/I = handcuffed.get_mob_overlay(src, WEAR_HANDCUFFS)
-	I.layer = -HANDCUFF_LAYER
+	SET_LAYER(I, -HANDCUFF_LAYER)
 	overlays_standing[HANDCUFF_LAYER] = I
 	apply_overlay(HANDCUFF_LAYER)
 
@@ -679,7 +680,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!legcuffed)
 		return
 	var/image/I = legcuffed.get_mob_overlay(src, WEAR_LEGCUFFS)
-	I.layer = -LEGCUFF_LAYER
+	SET_LAYER(I, -LEGCUFF_LAYER)
 	overlays_standing[LEGCUFF_LAYER] = I
 	apply_overlay(LEGCUFF_LAYER)
 
@@ -693,7 +694,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		r_hand.screen_loc = hud_used.ui_datum.hud_slot_offset(r_hand, hud_used.ui_datum.ui_rhand)
 
 	var/image/I = r_hand.get_mob_overlay(src, WEAR_R_HAND)
-	I.layer = -R_HAND_LAYER
+	SET_LAYER(I, -R_HAND_LAYER)
 	overlays_standing[R_HAND_LAYER] = I
 	apply_overlay(R_HAND_LAYER)
 
@@ -708,7 +709,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		l_hand.screen_loc = hud_used.ui_datum.hud_slot_offset(l_hand, hud_used.ui_datum.ui_lhand)
 
 	var/image/I = l_hand.get_mob_overlay(src, WEAR_L_HAND)
-	I.layer = -L_HAND_LAYER
+	SET_LAYER(I, -L_HAND_LAYER)
 	overlays_standing[L_HAND_LAYER] = I
 	apply_overlay(L_HAND_LAYER)
 
@@ -764,10 +765,12 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/image/I
 	switch(fire_stacks)
 		if(1 to 14)
-			I = image(icon = fire_sprite_sheet, icon_state = "[fire_sprite_prefix]_weak", layer = -FIRE_LAYER)
+			I = image(icon = fire_sprite_sheet, icon_state = "[fire_sprite_prefix]_weak")
+			SET_LAYER(I, -FIRE_LAYER)
 			set_light_range(2)
 		if(15 to INFINITY)
-			I = image(icon = fire_sprite_sheet, icon_state = "[fire_sprite_prefix]_medium",  layer = -FIRE_LAYER)
+			I = image(icon = fire_sprite_sheet, icon_state = "[fire_sprite_prefix]_medium")
+			SET_LAYER(I, -FIRE_LAYER)
 			set_light_range(3)
 		else
 			return

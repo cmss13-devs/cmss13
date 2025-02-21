@@ -35,5 +35,6 @@
 		overlay.pixel_y = pixel_y
 	if(color)
 		overlay.color = color
+	SET_LAYER(overlay, layer)
 	applied_turf.overlays += overlay
 	qdel(src)

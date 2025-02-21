@@ -80,7 +80,7 @@
 	set_stat(DEAD)
 	icon_dead = "[icon_base]_[body_color]_splat"
 	icon_state = "[icon_base]_[body_color]_splat"
-	layer = ABOVE_LYING_MOB_LAYER
+	SET_LAYER(src, ABOVE_LYING_MOB_LAYER)
 	set_body_position(LYING_DOWN)
 	if(client)
 		client.time_died_as_mouse = world.time
@@ -102,7 +102,7 @@
 	..()
 
 /mob/living/simple_animal/mouse/death()
-	layer = ABOVE_LYING_MOB_LAYER
+	SET_LAYER(src, ABOVE_LYING_MOB_LAYER)
 	if(client)
 		client.time_died_as_mouse = world.time
 	..()

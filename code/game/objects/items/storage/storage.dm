@@ -191,7 +191,7 @@
 			ND.sample_object.mouse_opacity = MOUSE_OPACITY_OPAQUE
 			ND.sample_object.screen_loc = "[cx]:16,[cy]:16"
 			ND.sample_object.maptext = "<font color='white'>[(ND.number > 1)? "[ND.number]" : ""]</font>"
-			ND.sample_object.layer = ABOVE_HUD_LAYER
+			SET_LAYER(ND.sample_object, ABOVE_HUD_LAYER)
 			ND.sample_object.plane = ABOVE_HUD_PLANE
 			cx++
 			if (cx > (4+cols))
@@ -201,7 +201,7 @@
 		for (var/obj/item/O in contents)
 			O.mouse_opacity = MOUSE_OPACITY_OPAQUE //So storage items that start with contents get the opacity trick.
 			O.screen_loc = "[cx]:[16+O.hud_offset],[cy]:16"
-			O.layer = ABOVE_HUD_LAYER
+			SET_LAYER(O, ABOVE_HUD_LAYER)
 			O.plane = ABOVE_HUD_PLANE
 			cx++
 			if (cx > (4+cols))
@@ -294,7 +294,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		storage_start.overlays += ISB.end
 
 		O.screen_loc = "4:[floor((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
-		O.layer = ABOVE_HUD_LAYER
+		SET_LAYER(O, ABOVE_HUD_LAYER)
 		O.plane = ABOVE_HUD_PLANE
 
 	src.closer.screen_loc = "4:[storage_width+19],2:16"
@@ -340,12 +340,12 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 /obj/item/storage/Entered(atom/movable/AM, oldloc)
 	. = ..()
-	AM.layer = ABOVE_HUD_LAYER
+	SET_LAYER(AM, ABOVE_HUD_LAYER)
 	AM.plane = ABOVE_HUD_PLANE
 
 /obj/item/storage/Exited(atom/movable/AM, newloc)
 	. = ..()
-	AM.layer = initial(AM.layer)
+	SET_LAYER(AM, initial(AM.layer))
 	AM.plane = initial(AM.plane)
 
 /datum/numbered_display
@@ -829,7 +829,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	boxes.master = src
 	boxes.icon_state = "block"
 	boxes.screen_loc = "7,7 to 10,8"
-	boxes.layer = HUD_LAYER
+	SET_LAYER(boxes, HUD_LAYER)
 
 	storage_start = new /atom/movable/screen/storage()
 	storage_start.name = "storage"

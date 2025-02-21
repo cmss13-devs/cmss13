@@ -439,7 +439,7 @@
 	open = TRUE
 	update_icon()
 	isSwitchingStates = FALSE
-	layer = DOOR_OPEN_LAYER
+	SET_LAYER(src, DOOR_OPEN_LAYER)
 	addtimer(CALLBACK(src, PROC_REF(close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/mineral_door/resin/proc/close_blocked()
@@ -470,7 +470,7 @@
 	open = FALSE
 	update_icon()
 	isSwitchingStates = FALSE
-	layer = DOOR_CLOSED_LAYER
+	SET_LAYER(src, DOOR_CLOSED_LAYER)
 
 	if(close_blocked())
 		open()

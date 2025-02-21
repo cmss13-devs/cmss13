@@ -72,11 +72,11 @@
 			setDir(direction)
 		switch(dir)
 			if(NORTH)
-				layer = BELOW_TABLE_LAYER
+				SET_LAYER(src, BELOW_TABLE_LAYER)
 			if(SOUTH)
-				layer = ABOVE_MOB_LAYER
+				SET_LAYER(src, ABOVE_MOB_LAYER)
 			else
-				layer = initial(layer)
+				SET_LAYER(src, initial(layer))
 	else if(legacy_full)
 		junction = 0
 		if(anchored)

@@ -35,13 +35,13 @@
 	overlays.Cut()
 	switch(dir)
 		if(SOUTH)
-			layer = ABOVE_MOB_LAYER
+			SET_LAYER(src, ABOVE_MOB_LAYER)
 		if(NORTH)
-			layer = initial(layer) - 0.01
+			SET_LAYER(src, initial(layer) - 0.01)
 		else
-			layer = initial(layer)
+			SET_LAYER(src, initial(layer))
 	if(!anchored)
-		layer = initial(layer)
+		SET_LAYER(src, initial(layer))
 	if(build_state == BARRICADE_BSTATE_FORTIFIED)
 		if(reinforced)
 			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_reinforced_[damage_state]")

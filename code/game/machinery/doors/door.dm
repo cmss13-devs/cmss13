@@ -36,7 +36,8 @@
 
 /obj/structure/machinery/door/Initialize(mapload, ...)
 	. = ..()
-	layer = density ? closed_layer : open_layer
+	var/layer_to_set = density ? closed_layer : open_layer
+	SET_LAYER(src, layer_to_set)
 	handle_multidoor()
 
 /obj/structure/machinery/door/Destroy()
@@ -235,7 +236,7 @@
 	if(QDELETED(src))
 		return // Specifically checked because of the possiible addtimer
 
-	layer = open_layer
+	SET_LAYER(src, open_layer)
 	density = FALSE
 	update_icon()
 
@@ -266,7 +267,7 @@
 
 	operating = DOOR_OPERATING_CLOSING
 	density = TRUE
-	layer = closed_layer
+	SET_LAYER(src, closed_layer)
 	do_animate("closing")
 	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE

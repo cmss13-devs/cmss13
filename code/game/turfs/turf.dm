@@ -117,6 +117,8 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
+	SET_LAYER(src, layer)
+
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)

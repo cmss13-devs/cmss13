@@ -146,9 +146,9 @@
 		A.icon_state += "_wall"
 
 	if(istype(O, /obj/structure) || istype(O, /obj/structure/machinery)) //Always appears above machinery
-		A.layer = O.layer + 0.1
+		SET_LAYER(A, O.layer + 0.1)
 	else //If not, appear on the floor or on an item
-		A.layer = LOWER_ITEM_LAYER //below any item, above BELOW_OBJ_LAYER (smartfridge)
+		SET_LAYER(A, LOWER_ITEM_LAYER)//below any item, above BELOW_OBJ_LAYER (smartfridge)
 
 	A.add_hiddenprint(src)
 	A.name += " ([O])"

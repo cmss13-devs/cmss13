@@ -117,7 +117,7 @@
 	if(operating != DOOR_OPERATING_OPENING)
 		return
 
-	layer = open_layer
+	SET_LAYER(src, open_layer)
 	density = FALSE
 	update_icon()
 	set_opacity(0)
@@ -149,7 +149,7 @@
 	operating = DOOR_OPERATING_CLOSING
 	density = TRUE
 	set_opacity(1)
-	layer = closed_layer
+	SET_LAYER(src, closed_layer)
 	do_animate("closing")
 
 	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)

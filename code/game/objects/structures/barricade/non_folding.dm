@@ -25,7 +25,7 @@
 /obj/structure/barricade/metal/update_icon()
 	. = ..()
 	if(dir > 2)
-		layer = OBJ_LAYER //This prevents cades from becoming invisible under a north/south facing plasteel cade.
+		SET_LAYER(src, OBJ_LAYER) //This prevents cades from becoming invisible under a north/south facing plasteel cade.
 
 /obj/structure/barricade/metal/get_examine_text(mob/user)
 	. = ..()

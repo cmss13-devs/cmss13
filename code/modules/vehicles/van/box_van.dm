@@ -75,10 +75,12 @@
 
 /obj/vehicle/multitile/box_van/Initialize()
 	. = ..()
-	under_image = image(icon, src, icon_state, layer = BELOW_MOB_LAYER)
+	under_image = image(icon, src, icon_state)
+	SET_LAYER(under_image, BELOW_MOB_LAYER)
 	under_image.alpha = 127
 
-	normal_image = image(icon, src, icon_state, layer = layer)
+	normal_image = image(icon, src, icon_state)
+	SET_LAYER(normal_image, layer)
 
 	icon_state = null
 

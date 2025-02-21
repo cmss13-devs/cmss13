@@ -107,11 +107,11 @@
 	if(isobserver(usr))
 		if(usr.invisibility <> 60 && usr.layer <> 4.0)
 			usr.invisibility = 60
-			usr.layer = MOB_LAYER
+			SET_LAYER(usr, MOB_LAYER)
 			to_chat(usr, SPAN_WARNING("Ghost visibility returned to normal."))
 		else
 			usr.invisibility = 70
-			usr.layer = BELOW_MOB_LAYER
+			SET_LAYER(usr, BELOW_MOB_LAYER)
 			to_chat(usr, SPAN_WARNING("Your ghost is now invisibile to other ghosts."))
 		log_admin("Admin [key_name(src)] has toggled Ordukai Mode.")
 	else

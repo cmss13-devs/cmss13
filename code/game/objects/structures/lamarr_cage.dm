@@ -98,5 +98,5 @@
 		var/mob/M = loc
 		M.drop_inv_item_on_ground(src)
 
-	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
+	SET_LAYER(src, BELOW_MOB_LAYER)  //so dead hugger appears below live hugger if stacked on same tile.
 	//override function prevents Lamarr from decaying like other huggers so you can keep it in your helmet, otherwise the code is identical.

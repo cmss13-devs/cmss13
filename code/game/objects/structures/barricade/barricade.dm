@@ -87,19 +87,19 @@
 			icon_state = "[barricade_type]"
 		switch(dir)
 			if(SOUTH)
-				layer = ABOVE_MOB_LAYER
+				SET_LAYER(src, ABOVE_MOB_LAYER)
 			if(NORTH)
-				layer = initial(layer) - 0.01
+				SET_LAYER(src, initial(layer) - 0.01)
 			else
-				layer = initial(layer)
+				SET_LAYER(src, initial(layer))
 		if(!anchored)
-			layer = initial(layer)
+			SET_LAYER(src, initial(layer))
 	else
 		if(can_change_dmg_state)
 			icon_state = "[barricade_type]_closed_[damage_state]"
 		else
 			icon_state = "[barricade_type]_closed"
-		layer = OBJ_LAYER
+		SET_LAYER(src, OBJ_LAYER)
 
 	if(upgraded)
 		switch(upgraded)

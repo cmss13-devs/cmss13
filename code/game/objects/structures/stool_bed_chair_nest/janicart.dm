@@ -78,9 +78,9 @@
 
 /obj/structure/bed/chair/janicart/handle_rotation()
 	if(dir == SOUTH)
-		layer = FLY_LAYER
+		SET_LAYER(src, FLY_LAYER)
 	else
-		layer = OBJ_LAYER
+		SET_LAYER(src, OBJ_LAYER)
 
 	update_mob()
 

@@ -14,7 +14,7 @@
 	var/mutable_appearance/MA = new()
 	MA.icon = icon
 	MA.icon_state = icon_state
-	MA.layer = layer
+	SET_LAYER(MA, layer)
 	MA.plane = plane
 	MA.alpha = alpha
 	MA.appearance_flags |= appearance_flags

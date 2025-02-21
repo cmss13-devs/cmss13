@@ -201,7 +201,7 @@
 	if(length(chemholder.reagents.reagent_list))
 		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
 	smoke.icon = I
-	smoke.layer = FLY_LAYER
+	SET_LAYER(smoke, FLY_LAYER)
 	smoke.setDir(pick(GLOB.cardinals))
 	smoke.pixel_x = -32 + rand(-8,8)
 	smoke.pixel_y = -32 + rand(-8,8)

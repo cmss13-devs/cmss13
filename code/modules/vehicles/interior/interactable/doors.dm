@@ -82,9 +82,9 @@
 	switch(dir)
 		if(NORTH)
 			pixel_y = 31
-			layer = WALL_LAYER
+			SET_LAYER(src, WALL_LAYER)
 		if(SOUTH)
-			layer = INTERIOR_WALL_SOUTH_LAYER
+			SET_LAYER(src, INTERIOR_WALL_SOUTH_LAYER)
 
 /obj/structure/interior_exit/vehicle/proc/get_exit_turf()
 	var/obj/vehicle/multitile/V = interior.exterior

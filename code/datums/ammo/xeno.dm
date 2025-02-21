@@ -380,7 +380,8 @@
 
 /datum/ammo/xeno/oppressor_tail/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator)
 	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
-	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
+	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook")
+	SET_LAYER(hook_overlay, BELOW_MOB_LAYER)
 	generated_projectile.overlays += hook_overlay
 
 /datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/projectile/fired_proj)

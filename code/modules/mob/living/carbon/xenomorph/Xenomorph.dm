@@ -388,7 +388,7 @@
 		//We are hiding, let's keep hiding if we can!
 		if(old_xeno.layer == XENO_HIDING_LAYER)
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
-				layer = XENO_HIDING_LAYER
+				SET_LAYER(src, XENO_HIDING_LAYER)
 				hide.button.icon_state = "template_active"
 
 		//If we're holding things drop them

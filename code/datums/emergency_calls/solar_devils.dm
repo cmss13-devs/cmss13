@@ -21,21 +21,21 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		arm_equipment(mob, /datum/equipment_preset/uscm/tl_pve, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/pve/tl, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Solar Devils Team Leader!"))
 
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		arm_equipment(mob, /datum/equipment_preset/uscm/medic_pve, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/pve/medic, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Solar Devils Platoon Corpsman!"))
 
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Solar Devils Smartgunner!"))
-		arm_equipment(mob, /datum/equipment_preset/uscm/sg_pve, TRUE, TRUE)
+		arm_equipment(mob,/datum/equipment_preset/uscm/pve/sg, TRUE, TRUE)
 
 	else
-		arm_equipment(mob, /datum/equipment_preset/uscm/rifleman_pve, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/pve, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Solar Devils Rifleman!"))
 
 	to_chat(mob, SPAN_ROLE_BODY("You are a member of the 3rd Battalion 'Solar Devils', part of the USCM's 2nd Division, 1st Regiment. Unlike most of the USS Almayer's troops, you are well-trained and properly-equipped career marines. Semper Fidelis."))
@@ -65,26 +65,26 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		arm_equipment(mob, /datum/equipment_preset/uscm/sl_pve, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/pve/sl, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Solar Devils Platoon Leader!"))
 
 	else if(engineers < max_engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		engineers++
-		arm_equipment(mob, /datum/equipment_preset/uscm/tl_pve, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/pve/tl, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Solar Devils Team Leader!"))
 
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		arm_equipment(mob, /datum/equipment_preset/uscm/medic_pve, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/pve/medic, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Solar Devils Platoon Corpsman!"))
 
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Solar Devils Smartgunner!"))
-		arm_equipment(mob, /datum/equipment_preset/uscm/sg_pve, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/pve/sg, TRUE, TRUE)
 
 	else
-		arm_equipment(mob, /datum/equipment_preset/uscm/rifleman_pve, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/pve, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Solar Devils Rifleman!"))
 
 	to_chat(mob, SPAN_ROLE_BODY("You are a member of the 3rd Battalion 'Solar Devils', part of the USCM's 2nd Division, 1st Regiment. Unlike most of the USS Almayer's troops, you are well-trained and properly-equipped career marines. Semper Fidelis."))

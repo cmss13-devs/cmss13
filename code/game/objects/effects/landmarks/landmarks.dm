@@ -496,6 +496,10 @@
 	name = "Doctor late join"
 	job = JOB_DOCTOR
 
+/obj/effect/landmark/late_join/field_doctor
+	name = "Field Doctor late join"
+	job = JOB_FIELD_DOCTOR
+
 /obj/effect/landmark/late_join/nurse
 	name = "Nurse late join"
 	job = JOB_NURSE

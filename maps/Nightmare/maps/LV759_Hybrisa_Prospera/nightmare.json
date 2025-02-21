@@ -9,9 +9,12 @@
 		"chance": 1.0,
 		"path": "standalone/clfadmin.dmm",
 		"when": { "lvevent": "clfraid" }
+    },
+    {
 		"type": "map_insert",
 		"landmark": "iasf_souter_airbase",
 		"chance": 0.25,
-		"path": "standalone/twe_airbase.dmm"
+		"path": "standalone/twe_airbase.dmm",
+        "when": { "lvevent": "none" }
 	}
 ]

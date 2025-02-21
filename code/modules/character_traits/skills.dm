@@ -105,6 +105,15 @@
 	skill_cap = SKILL_ENDURANCE_TRAINED
 	skill_increment = 1
 
+/datum/character_trait/skills/mortar
+	trait_name = "Mortar Training"
+	trait_desc = "Boosts the engineering skill by 1 and JTAC skill by 2."
+	skill = SKILL_ENGINEER
+	secondary_skill = SKILL_JTAC
+	skill_cap = SKILL_ENGINEER_NOVICE
+	secondary_skill_cap = SKILL_JTAC_TRAINED
+	skill_increment = 2
+
 /datum/character_trait/skills/k9_handler
 	trait_name = "K9 Handler Training"
 	trait_desc = "Allows the user to interface with Wey-Yu Synthetic K9 Units for rescue purposes"

@@ -16,33 +16,6 @@
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_container/food/snacks/tofu(location)
 
-
-/datum/chemical_reaction/chocolate_bar
-	name = "Chocolate Bar"
-	id = "chocolate_bar"
-	result = null
-	required_reagents = list("soymilk" = 2, "coco" = 2, "sugar" = 2)
-	result_amount = 1
-
-/datum/chemical_reaction/chocolate_bar/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_container/food/snacks/chocolatebar(location)
-
-
-/datum/chemical_reaction/chocolate_bar2
-	name = "Chocolate Bar"
-	id = "chocolate_bar"
-	result = null
-	required_reagents = list("milk" = 2, "coco" = 2, "sugar" = 2)
-	result_amount = 1
-
-/datum/chemical_reaction/chocolate_bar2/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_container/food/snacks/chocolatebar(location)
-
-
 /datum/chemical_reaction/hot_coco
 	name = "Hot Coco"
 	id = "hot_coco"

@@ -507,6 +507,13 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/predship/hull/non_weedable_hull,
 /area/yautja/hangar)
+"by" = (
+/obj/structure/machinery/body_scanconsole/yautja{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja)
 "bB" = (
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -5016,6 +5023,12 @@
 	pixel_y = 7;
 	buckling_x = 6;
 	buckling_y = 7
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja)
+"rd" = (
+/obj/structure/machinery/medical_pod/bodyscanner/yautja{
+	pixel_y = 8
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -16661,7 +16674,7 @@ ir
 VD
 ir
 VD
-ir
+rd
 VD
 aV
 aV
@@ -16763,7 +16776,7 @@ xC
 VD
 xC
 VD
-xC
+by
 VD
 Zo
 yN

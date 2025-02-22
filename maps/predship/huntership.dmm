@@ -9889,7 +9889,6 @@
 	color = "#6b675e"
 	},
 /obj/item/weapon/twohanded/breacher{
-	anchored = 1;
 	pixel_y = 3;
 	pixel_x = -17
 	},
@@ -11582,8 +11581,7 @@
 	},
 /obj/item/weapon/shield/riot/yautja/ancient{
 	pixel_x = -3;
-	pixel_y = 3;
-	anchored = 1
+	pixel_y = 3
 	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = 8;
@@ -12539,12 +12537,11 @@
 	},
 /obj/item/weapon/sword/ceremonial{
 	pixel_y = 9;
-	pixel_x = 1;
-	anchored = 1
+	pixel_x = 1
 	},
 /obj/item/explosive/grenade/incendiary/rmc{
-	anchored = 1;
-	pixel_x = 8
+	pixel_x = 8;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -13031,7 +13028,6 @@
 	color = "#6b675e"
 	},
 /obj/item/weapon/sword/claymore{
-	anchored = 1;
 	pixel_x = -1;
 	pixel_y = 4
 	},
@@ -13799,8 +13795,7 @@
 	},
 /obj/item/weapon/sword/katana{
 	pixel_x = 20;
-	pixel_y = 8;
-	anchored = 1
+	pixel_y = 8
 	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = -7;

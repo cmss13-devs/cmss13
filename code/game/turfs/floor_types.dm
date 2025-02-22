@@ -320,6 +320,12 @@
 /turf/open/floor/plating/plating_catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'
 
+/turf/open/floor/plating/plating_catwalk/prison/dark
+	color = "#aba39d"
+
+/turf/open/floor/plating/plating_catwalk/prison/green
+	color = "#74ff8dff"
+
 /turf/open/floor/plating/plating_catwalk/strata
 	icon = 'icons/turf/floors/strata_floor.dmi'
 
@@ -351,6 +357,38 @@
 	name = "catwalk"
 	desc = "Cats really don't like these things."
 	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
+
+/turf/open/floor/plating/catwalk/grate
+	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
+	icon_state = "solidgrate1"
+
+/turf/open/floor/plating/catwalk/grate/is_weedable()
+	return NOT_WEEDABLE
+
+/turf/open/floor/plating/catwalk/grate/alt
+	icon_state = "solidgrate5"
+
+/turf/open/floor/plating/catwalk/grate/net
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	icon_state = "soil_grid"
+	var/slow_amt = 4
+
+/turf/open/floor/plating/catwalk/grate/net/Crossed(atom/movable/AM)
+	. = ..()
+	var/mob/living/carbon/human/slowhuman = AM
+	if(istype(slowhuman))
+		slowhuman.next_move_slowdown = max(slowhuman.next_move_slowdown, slow_amt)
+		return .
+	var/mob/living/carbon/xenomorph/slowxeno = AM
+	if(istype(slowxeno))
+		slowxeno.next_move_slowdown = max(slowxeno.next_move_slowdown, slow_amt)
+		return .
+
+/turf/open/floor/plating/catwalk/grate/lattice
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
+	icon_state = "latticefull"
+
+///turf/open/gm/river
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'
@@ -4806,3 +4844,35 @@
 
 /turf/open/gm/grass/grass2/pred
 	icon_state = "grass2"
+
+// Half Plate
+
+/turf/open/floor/half_plate
+	icon = 'icons/turf/half_plate.dmi'
+	icon_state = "green_plate"
+	plating_type = /turf/open/floor/plating/almayer
+
+/turf/open/floor/half_plate/green
+	dir = SOUTH
+
+/turf/open/floor/half_plate/green/north
+	dir = NORTH
+
+/turf/open/floor/half_plate/green/east
+	dir = EAST
+
+/turf/open/floor/half_plate/green/west
+	dir = WEST
+
+/turf/open/floor/half_plate/dark_yellow
+	icon_state = "darkyellow_plate"
+	dir = SOUTH
+
+/turf/open/floor/half_plate/dark_yellow/north
+	dir = NORTH
+
+/turf/open/floor/half_plate/dark_yellow/east
+	dir = EAST
+
+/turf/open/floor/half_plate/dark_yellow/west
+	dir = WEST

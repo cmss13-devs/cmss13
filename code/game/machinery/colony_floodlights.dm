@@ -321,6 +321,22 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 		set_light(is_on ? lum_value : 0)
 	return .
 
+/obj/structure/machinery/colony_floodlight/navalis_wall_light
+	name = "wall mounted colony floodlight"
+	desc = "Powerful wall-mounted lights intended to operate even through a hurricane. Powered directly from the Industrial Rig."
+	icon = 'icons/obj/items/lighting.dmi'
+	icon_state = "slight0"
+	density = FALSE
+	light_color = "#FFEFD2"
+
+/obj/structure/machinery/colony_floodlight/navalis_wall_light/update_icon()
+	if(damaged)
+		icon_state = "slight-burned"
+	else if(is_on)
+		icon_state = "slight1"
+	else
+		icon_state = "slight0"
+
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR
 #undef FLOODLIGHT_REPAIR_WELD

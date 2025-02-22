@@ -3,6 +3,7 @@
 #define STATE_WALL 2
 #define STATE_REINFORCED_WALL 3
 #define STATE_DISPLACED 4
+#define STATE_DESTROYED 5 // this is so they can get destroyed by xenos
 
 #define STATE_SCREWDRIVER 1
 #define STATE_WIRECUTTER 2
@@ -364,6 +365,7 @@
 	if(health <= 0 && density)
 		icon_state = "[icon_state]_damaged"
 		density = FALSE
+		state = STATE_DESTROYED
 
 	else if(health > 0 && !density)
 		var/underscore_position =  findtext(icon_state,"_")

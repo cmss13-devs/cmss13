@@ -208,6 +208,14 @@
 #define COMSIG_KB_OBSERVER_JOIN_PREDATOR "keybinding_observer_join_pred"
 #define COMSIG_KB_OBSERVER_JOIN_LESSER_DRONE "keybinding_observer_join_lesser_drone"
 
+// Vehicles
+
+#define COMSIG_KB_VEHICLE_TOGGLE_LOCKS "keybinding_vehicle_toggle_locks"
+#define COMSIG_KB_VEHICLE_GET_STATUS "keybinding_vehicle_get_status"
+#define COMSIG_KB_VEHICLE_CHANGE_SELECTED_WEAPON "keybinding_change_selected_weapon"
+#define COMSIG_KB_VEHICLE_ACTIVATE_HORN "keybinding_activate_horn"
+#define COMSIG_KB_VEHICLE_RELOAD_WEAPON "keybinding_reload_weapon"
+
 #define CATEGORY_CLIENT "CLIENT"
 #define CATEGORY_EMOTE "EMOTE"
 #define CATEGORY_ADMIN "ADMIN"
@@ -218,6 +226,7 @@
 #define CATEGORY_HUMAN_INVENTORY "HUMAN INVENTORY"
 #define CATEGORY_ROBOT "ROBOT"
 #define CATEGORY_YAUTJA "YAUTJA"
+#define CATEGORY_VEHICLE "Vehicles"
 #define CATEGORY_MISC "MISC"
 #define CATEGORY_MOVEMENT "MOVEMENT"
 #define CATEGORY_COMMUNICATION "COMMUNICATION"
@@ -235,7 +244,8 @@
 #define WEIGHT_ROBOT 30
 #define WEIGHT_XENO 30
 #define WEIGHT_MOB 40
-#define WEIGHT_LIVING 50
-#define WEIGHT_DEAD 60
-#define WEIGHT_EMOTE 70
+#define WEIGHT_VEHICLE 50
+#define WEIGHT_LIVING 60
+#define WEIGHT_DEAD 70
+#define WEIGHT_EMOTE 80
 #define WEIGHT_LOWEST 999

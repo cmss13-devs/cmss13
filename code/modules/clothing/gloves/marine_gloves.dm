@@ -48,6 +48,12 @@
 	icon_state = "black"
 	item_state = "black"
 
+/obj/item/clothing/gloves/marine/insulated/damaged_m5x
+	name = "\improper damaged M5X gauntlets"
+	desc = "A pair of heavily armored gloves made to complete the M5X exoskeleton armor. This pair looks to be damaged."
+	icon_state = "gauntlets"
+	item_state = "bgloves"
+
 /obj/item/clothing/gloves/marine/black
 	name = "marine black combat gloves"
 	adopts_squad_color = FALSE

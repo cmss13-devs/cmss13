@@ -317,7 +317,7 @@
 		. += desc
 	if(desc_lore)
 		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
-	if(flags_item & ITEM_DISSOLVING)
+	if(HAS_TRAIT(src, TRAIT_ITEM_DISSOLVING))
 		. += SPAN_WARNING("It is currently dissolving into bits!")
 
 /obj/item/attack_hand(mob/user)
@@ -1124,43 +1124,6 @@
 	animate(attack_image, alpha = 175, transform = copy_transform.Scale(0.75), pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
-
-/obj/item/proc/handle_dissolve(mob/user)
-	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You have no idea what this even does..."))
-		return FALSE
-	if(user.alpha < 255)
-		to_chat(user, SPAN_BOLDWARNING("It would not be safe to attempt this while cloaked!"))
-		return FALSE
-	if(anchored)
-		to_chat(user, SPAN_WARNING("\The [src] cannot be moved by any means, why dissolve it?"))
-		return FALSE
-
-	var/mob/living/location = loc
-	if(istype(location))
-		to_chat(user, SPAN_WARNING("You cannot dissolve this while it is being held!"))
-		return FALSE
-
-	dissolve(user)
-	return TRUE
-
-/obj/item/proc/dissolve(mob/user)
-	user.visible_message(SPAN_DANGER("[user] uncaps a vial and begins to pour out a vibrant blue liquid over \the [src]!"),
-					SPAN_NOTICE("You begin to spread dissolving gel onto \the [src]!"))
-	if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_DANGER("[user] pours blue liquid all over \the [src]!"),
-					SPAN_NOTICE("You cover \the [src] with dissolving gel!"))
-		playsound(src.loc, 'sound/effects/acid_sizzle1.ogg', 25)
-		add_filter("dissolve_gel", 1, list("type" = "outline", "color" = "#3333FFff", "size" = 1))
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 15 SECONDS)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[src] crumbles into pieces!")), 15 SECONDS)
-		flags_item |= ITEM_DISSOLVING
-		log_attack("[key_name(user)] dissolved [src] with Yautja Cleaner!")
-		return TRUE
-	else
-		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to \the [src]!"),
-					SPAN_WARNING("You decide not to cover \the [src] with dissolving gel."))
-		return FALSE
 
 ///Called by /mob/living/carbon/swap_hand() when hands are swapped
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)

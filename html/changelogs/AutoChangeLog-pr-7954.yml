@@ -1,5 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - mapadd: "IASF Outpost Souter has been added as a nightmare insert for Hybrisa Prospera. Part of the larger detachment of Imperial Armed Space Forces that defended the colony. The IASF had been forced to withdraw prior to the events of the xenomorph outbreak, however this insert represents a timeline where the IASF had not fully completed their withdrawal."
-  - code_imp: "Added a set of transparent versions of the TWE cosmetic Dropship for mappers to use, instead of the older version that leaves a void overlay."

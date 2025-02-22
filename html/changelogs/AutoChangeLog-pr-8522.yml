@@ -1,6 +1,0 @@
-author: "Nomoresolvou"
-delete-after: True
-changes:
-  - bugfix: "Fixed preds being unable to use abilities after SDing a thrall"
-  - bugfix: "Thralls are now set back to humans and can shoot guns again after being unthralled"
-  - code_imp: "removed a couple one letter vars"

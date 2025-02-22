@@ -41,29 +41,29 @@
 /mob/living/carbon/xenomorph/get_status_tab_items()
 	. = ..()
 
-	. += "Name: [name]"
+	. += "Имя: [declent_ru(NOMINATIVE)]"
 
 	. += ""
 
-	. += "Health: [floor(health)]/[floor(maxHealth)]"
-	. += "Armor: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
-	. += "Plasma: [floor(plasma_stored)]/[floor(plasma_max)]"
-	. += "Slash Damage: [floor((melee_damage_lower+melee_damage_upper)/2)]"
+	. += "Здоровье: [floor(health)]/[floor(maxHealth)]"
+	. += "Броня: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
+	. += "Плазма: [floor(plasma_stored)]/[floor(plasma_max)]"
+	. += "Урон когтями: [floor((melee_damage_lower+melee_damage_upper)/2)]"
 
 	var/shieldtotal = 0
 	for (var/datum/xeno_shield/XS in xeno_shields)
 		shieldtotal += XS.amount
 
-	. += "Shield: [shieldtotal]"
+	. += "Щит: [shieldtotal]"
 
 	if(selected_ability)
 		. += ""
-		. += "Selected Ability: [selected_ability.name]"
+		. += "Выбранная способность: [selected_ability.name]"
 		if(selected_ability.charges != NO_ACTION_CHARGES)
-			. += "Charges Left: [selected_ability.charges]"
+			. += "Зарядов осталось: [selected_ability.charges]"
 
 		if(selected_ability.cooldown_timer_id != TIMER_ID_NULL)
-			. += "On Cooldown: [DisplayTimeText(timeleft(selected_ability.cooldown_timer_id))]"
+			. += "Перезарядка: [DisplayTimeText(timeleft(selected_ability.cooldown_timer_id))]"
 
 	. += ""
 
@@ -74,14 +74,14 @@
 		evolve_progress = "[min(stored_evolution, evolution_threshold)]/[evolution_threshold]"
 		if(hive && !hive.allow_no_queen_evo && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
-				evolve_progress += " (NO QUEEN)"
+				evolve_progress += " (НЕТ КОРОЛЕВЫ)"
 			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
-				evolve_progress += " (NO OVIPOSITOR)"
+				evolve_progress += " (НЕТ ЯЙЦЕКЛАДА)"
 
 	if(evolve_progress)
-		. += "Evolve Progress: [evolve_progress]"
+		. += "Прогресс эволюции: [evolve_progress]"
 	if(stored_evolution > evolution_threshold)
-		. += "Bonus Evolution: [stored_evolution - evolution_threshold]"
+		. += "Бонусная эволюция: [stored_evolution - evolution_threshold]"
 
 	. += ""
 
@@ -100,50 +100,50 @@
 		var/msg_holder = "-"
 		if(frenzy_aura)
 			msg_holder = get_pheromone_aura_strength(frenzy_aura)
-		. += "Frenzy: [msg_holder]"
+		. += "Феромоны безумия: [msg_holder]"
 		msg_holder = "-"
 		if(warding_aura)
 			msg_holder = get_pheromone_aura_strength(warding_aura)
-		. += "Warding: [msg_holder]"
+		. += "Феромоны защиты: [msg_holder]"
 		msg_holder = "-"
 		if(recovery_aura)
 			msg_holder = get_pheromone_aura_strength(recovery_aura)
-		. += "Recovery: [msg_holder]"
+		. += "Феромоны восстановления: [msg_holder]"
 		. += ""
 
 	if(hive)
 		if(!hive.living_xeno_queen)
-			. += "Queen's Location: NO QUEEN"
+			. += "Местоположение королевы: НЕТ КОРОЛЕВЫ"
 		else if(!(caste_type == XENO_CASTE_QUEEN))
-			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
+			. += "Местоположение королевы: [hive.living_xeno_queen.loc.loc.name]"
 
 		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
-			. += "Slashing: PERMITTED"
+			. += "Убийство носителей: РАЗРЕШЕНО"
 		else
-			. += "Slashing: FORBIDDEN"
+			. += "Убийство носителей: ЗАПРЕЩЕНО"
 
 		if(hive.construction_allowed == XENO_LEADER)
-			. += "Construction Placement: LEADERS"
+			. += "Строительство продвинутых структур: ЛИДЕРЫ"
 		else if(hive.construction_allowed == NORMAL_XENO)
-			. += "Construction Placement: ANYONE"
+			. += "Строительство продвинутых структур: ВСЕ"
 		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Construction Placement: NOBODY"
+			. += "Строительство продвинутых структур: НИКТО"
 		else
-			. += "Construction Placement: QUEEN"
+			. += "Строительство продвинутых структур: КОРОЛЕВА"
 
 		if(hive.destruction_allowed == XENO_LEADER)
-			. += "Special Structure Destruction: LEADERS"
+			. += "Разрушение продвинутых структур: ЛИДЕРЫ"
 		else if(hive.destruction_allowed == NORMAL_XENO)
-			. += "Special Structure Destruction: BUILDERS and LEADERS"
+			. += "Разрушение продвинутых структур: СТРОИТЕЛИ и ЛИДЕРЫ"
 		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Construction Placement: NOBODY"
+			. += "Строительство продвинутых структур: НИКТО"
 		else
-			. += "Special Structure Destruction: QUEEN"
+			. += "Разрушение продвинутых структур: КОРОЛЕВА"
 
 		if(hive.hive_orders)
-			. += "Hive Orders: [hive.hive_orders]"
+			. += "Приказы улья: [hive.hive_orders]"
 		else
-			. += "Hive Orders: -"
+			. += "Приказы улья: -"
 
 	. += ""
 
@@ -611,17 +611,17 @@
 /proc/get_pheromone_aura_strength(aura)
 	switch(aura)
 		if(-INFINITY to 0.9)
-			return "Very Weak"
+			return "Очень слабые"
 		if(1 to 1.9)
-			return "Weak"
+			return "Слабые"
 		if(2 to 2.9)
-			return "Moderate"
+			return "Умеренные"
 		if(3 to 3.9)
-			return "Strong"
+			return "Сильные"
 		if(4 to 4.9)
-			return "Very Strong"
+			return "Очень сильные"
 		if(4.9 to INFINITY)
-			return "Overwhelming"
+			return "Переполняющие"
 
 /mob/living/carbon/xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
 	if(!target)

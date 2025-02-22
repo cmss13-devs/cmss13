@@ -6,7 +6,7 @@
         "/datum/equipment_preset/survivor/goon"
     ],
     "map_item_type": "/obj/item/map/big_red_map",
-    "announce_text": "We've lost contact with a Weyland-Yutani's research facility. The ###SHIPNAME### has been dispatched to assist.",
+    "announce_text": "Мы потеряли связь с исследовательским центром Вейланд-Ютани. ###SHIPNAME### был отправлен на помощь.",
     "monkey_types": [
         "neaera"
     ],

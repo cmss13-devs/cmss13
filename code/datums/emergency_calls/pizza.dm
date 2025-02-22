@@ -4,8 +4,8 @@
 	name = "Pizza Delivery"
 	mob_max = 1
 	mob_min = 1
-	arrival_message = "'That'll be... sixteen orders of cheesy fries, eight large double topping pizzas, nine bottles of Four Loko... hello? Is anyone on this ship? Your pizzas are getting cold.'"
-	objectives = "Make sure you get a tip!"
+	arrival_message = "'Так... шестнадцать порций сырной картошки фри, восемь больших пицц с двойной начинкой, девять бутылок \"Четырех Локо\"... Алло? Кто-нибудь есть на этом корабле? Ваша пицца остывает.'"
+	objectives = "Обязательно возьмите чаевые!"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_SMALL
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pizza
 	home_base = /datum/lazy_template/ert/pizza_station

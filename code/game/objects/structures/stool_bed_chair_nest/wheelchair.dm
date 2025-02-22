@@ -17,7 +17,7 @@
 		buckled_mob.setDir(dir)
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
-	if(world.time <= l_move_time + move_delay)
+	if((world.time <= l_move_time + move_delay) || (direction & (direction - 1))) // fix later // SS220 EDIT
 		return
 	// Redundant check?
 	if(user.is_mob_incapacitated())

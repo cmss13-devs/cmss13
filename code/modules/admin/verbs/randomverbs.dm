@@ -5,7 +5,7 @@
 
 /client/proc/cmd_mentor_check_new_players() //Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
-	set name = "Check new Players"
+	set name = "Check New Players"
 
 	if(!admin_holder)
 		to_chat(src, "You do not have permission to use this.")
@@ -18,25 +18,34 @@
 		if(!CONFIG_GET(flag/mentor_tools))
 			to_chat(src, "Mentors do not have permission to use this.")
 
-	var/age = alert(src, "Age check", "Show accounts up to how many days old ?", "7", "30" , "All")
-
-	if(age == "All")
-		age = 9999999
-	else
-		age = text2num(age)
+	var/age = input(src, "Show accounts younger then ___ days", "Age check") as num|null
+	var/playtime_hours = input(src, "Show accounts with less than ___ hours", "Playtime check") as num|null
+	if(isnull(age))
+		age = -1
+	if(isnull(playtime_hours))
+		playtime_hours = -1
+	if(age <= 0 && playtime_hours <= 0)
+		return
 
 	var/missing_ages = FALSE
 	var/msg = ""
 
 	for(var/client/C in GLOB.clients)
-		if(C.player_age == "Requires database")
-			missing_ages = 1
+		if(CLIENT_IS_STEALTHED(src) && !CLIENT_IS_STAFF(src))
+			continue // Skip those in stealth mode if an admin isnt viewing the panel
+		if(!isnum(C.player_age))
+			missing_ages = TRUE
 			continue
 		if(C.player_age < age)
 			msg += "[key_name(C, 1, 1, CLIENT_IS_STAFF(src))]: account is [C.player_age] days old<br>"
 
+		var/client_hours = get_total_living_playtime(C)
+		client_hours /= 60 // minutes to hours
+		if(client_hours < playtime_hours)
+			msg += "[key_name(C, 1, 1, CLIENT_IS_STAFF(src))]: [client_hours] living + ghost hours<br>"
+
 	if(missing_ages)
-		to_chat(src, "Some accounts did not have proper ages set in their clients.  This function requires database to be present")
+		to_chat(src, "Some accounts did not have proper ages set in their clients. This function requires database to be present.")
 
 	if(msg != "")
 		show_browser(src, msg, "Check New Players", "Player_age_check")

@@ -21,11 +21,11 @@
 /datum/emergency_call/upp/New()
 	. = ..()
 	hostility = pick(50;FALSE,50;TRUE)
-	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
+	arrival_message = "[MAIN_SHIP_NAME], э*то ф^от ОП*. уДа*аЯ ГруппА, #*раз*%нИе на ст*ко*%^у. орУ#%е в б@евую гт**%сть... ок@зт$ть по#@щь."
 	if(hostility)
-		objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
+		objectives = "Уничтожьте силы UA, чтобы обеспечить дальнейшее присутствие UPP в этом секторе. Слушайтесь своих старших офицеров и любой ценой захватите [MAIN_SHIP_NAME]."
 	else
-		objectives = "Render assistance towards the UA Forces, do not engage UA forces. Listen to your superior officers."
+		objectives = "Оказывайте помощь силам UA, не вступайте в бой с силами UA. Слушайте своих старших офицеров."
 
 /datum/emergency_call/upp/print_backstory(mob/living/carbon/human/M)
 	if(ishuman_strict(M))
@@ -108,8 +108,8 @@
 
 /datum/emergency_call/upp/hostile/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
-	objectives = "Eliminate the UA Forces to ensure the UPP presence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
+	arrival_message = "[MAIN_SHIP_NAME], э*то ф^от ОП*. уДа*аЯ ГруппА, #*раз*%нИе на ст*ко*%^у. орУ#%е в б@евую гт**%сть... ок@зт$ть по#@щь."
+	objectives = "Уничтожьте силы UA, чтобы обеспечить дальнейшее присутствие UPP в этом секторе. Слушайтесь своих старших офицеров и любой ценой захватите [MAIN_SHIP_NAME]."
 
 /datum/emergency_call/upp/friendly //ditto
 	name = "UPP Naval Infantry (Squad) (Friendly)"
@@ -118,8 +118,8 @@
 
 /datum/emergency_call/upp/friendly/New()
 	..()
-	arrival_message = "This is UPP dispatch. USS Almayer, We are responding to your distress call, we will render aid as able, do not fire."
-	objectives = "Render assistance towards the UA Forces, Listen to your superior officers."
+	arrival_message = "Это ударная группа ОПН. [MAIN_SHIP_NAME], мы получили ваш сигнал бедствия, мы окажем помощь по мере возможности, не открывайте огонь."
+	objectives = "Оказывайте помощь силам UA. Слушайте своих старших офицеров."
 
 /datum/emergency_call/upp/platoon
 	name = "UPP Naval Infantry (Platoon) (Hostile)"
@@ -135,8 +135,8 @@
 
 /datum/emergency_call/upp/platoon/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
-	objectives = "Eliminate the UA Forces to ensure the UPP presence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
+	arrival_message = "[MAIN_SHIP_NAME], э*то ф^от ОП*. уДа*аЯ ГруппА, #*раз*%нИе на ст*ко*%^у. орУ#%е в б@евую гт**%сть... ок@зт$ть по#@щь."
+	objectives = "Уничтожьте силы UA, чтобы обеспечить дальнейшее присутствие UPP в этом секторе. Слушайтесь своих старших офицеров и любой ценой захватите [MAIN_SHIP_NAME]."
 
 /datum/emergency_call/upp/platoon/friendly
 	name = "UPP Naval Infantry (Platoon) (Friendly)"
@@ -144,8 +144,8 @@
 
 /datum/emergency_call/upp/platoon/friendly/New()
 	..()
-	arrival_message = "This is UPP dispatch. USS Almayer, We are responding to your distress call, we will render aid as able, do not fire."
-	objectives = "Render assistance towards the UA Forces, Listen to your superior officers."
+	arrival_message = "Это ударная группа ОПН. [MAIN_SHIP_NAME], мы получили ваш сигнал бедствия, мы окажем помощь по мере возможности, не открывайте огонь."
+	objectives = "Оказывайте помощь силам UA. Слушайте своих старших офицеров."
 
 /obj/effect/landmark/ert_spawns/distress_upp
 	name = "Distress_UPP"

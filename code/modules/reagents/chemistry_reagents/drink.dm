@@ -183,6 +183,7 @@
 	description = "A very light, half opague milk from coconuts, barely has any taste on its own."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 	chemclass = CHEM_CLASS_NONE
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/drink/milk/cream
 	name = "Cream"
@@ -474,6 +475,7 @@
 	adj_drowsy = -1
 	adj_sleepy = -3
 	chemclass = CHEM_CLASS_NONE
+	flags = REAGENT_NO_GENERATION
 
 //OTHER//
 
@@ -711,5 +713,4 @@
 	description = "Soda drink made from all kinds of insects, very nutritious."
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#2ca314" // rgb: 48, 32, 0
-	chemclass = CHEM_CLASS_SPECIAL
-	flags = REAGENT_NO_GENERATION
+	chemclass = CHEM_CLASS_RARE

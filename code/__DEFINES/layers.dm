@@ -5,6 +5,7 @@
 
 // This keeps things from stacking on top of each other in multiz
 #define SET_LAYER(thing, _layer) thing.layer = thing.z + _layer / 100
+#define SET_LAYER_OVERLAY(thing, parent, _layer) thing.layer = parent.z + _layer / 100
 
 /*=============================*\
 | |

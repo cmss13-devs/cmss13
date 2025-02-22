@@ -317,11 +317,16 @@
 /obj/structure/bed/chair/vehicle/Initialize()
 	. = ..()
 	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
-	SET_LAYER(chairbar, ABOVE_MOB_LAYER)
+	SET_LAYER_OVERLAY(chairbar, src, ABOVE_MOB_LAYER)
 
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
 
 	handle_rotation()
+
+/obj/structure/bed/chair/vehicle/onTransitZ(old_z, new_z)
+	. = ..()
+	
+	chairbar.layer += new_z - old_z
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)

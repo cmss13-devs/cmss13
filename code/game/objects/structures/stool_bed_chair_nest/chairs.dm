@@ -392,12 +392,17 @@
 /obj/structure/bed/chair/dropship/passenger/Initialize()
 	. = ..()
 	chairbar = image(icon, "hotseat_bars")
-	SET_LAYER(chairbar, ABOVE_MOB_LAYER)
+	SET_LAYER_OVERLAY(chairbar, src, ABOVE_MOB_LAYER)
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/Initialize()
 	. = ..()
 	chairbar = image(icon, "hotseat_bars")
-	SET_LAYER(chairbar, ABOVE_MOB_LAYER)
+	SET_LAYER_OVERLAY(chairbar, src, ABOVE_MOB_LAYER)
+
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/onTransitZ(old_z, new_z)
+	. = ..()
+
+	chairbar.layer += new_z - old_z
 
 
 /obj/structure/bed/chair/dropship/passenger/afterbuckle()

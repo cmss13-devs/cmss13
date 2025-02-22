@@ -44,11 +44,13 @@
 	// State
 	var/base_fury = 0
 	var/transferred_healing = 0
+	var/damage_mitigated = 0
 
 /datum/behavior_delegate/praetorian_valkyrie/append_to_stat()
 	. = list()
 	. += "Fury: [base_fury]/[fury_max]"
 	. += "Healing Done: [transferred_healing]"
+	. += "Damage Mitigated: [floor(damage_mitigated)]"
 
 /datum/behavior_delegate/praetorian_valkyrie/on_life()
 	base_fury = min(fury_max, base_fury + fury_per_life)
@@ -158,6 +160,7 @@
 	raging_valkyrie.armor_modifier += armor_buff
 	ADD_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 	raging_valkyrie.recalculate_armor()
+	RegisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_self))
 
 	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
 		playsound(get_turf(buffing_target), "alien_roar", 40)
@@ -175,6 +178,7 @@
 		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 		buffing_target.recalculate_armor()
 		addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
+		RegisterSignal(buffing_target, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_target))
 
 	addtimer(CALLBACK(src, PROC_REF(remove_rage)), armor_buffs_duration)
 
@@ -191,6 +195,7 @@
 	behavior.raging = FALSE
 	REMOVE_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 	raging_valkyrie.recalculate_armor()
+	UnregisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
 	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 
 
@@ -212,11 +217,50 @@
 		target_xeno.remove_filter("raging")
 		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 		target_xeno.recalculate_armor()
+		UnregisterSignal(target_xeno, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
 		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 	armor_buffs_active_target = FALSE
 
+/datum/action/xeno_action/activable/valkyrie_rage/proc/calculate_damage_mitigation_self(mob/living/carbon/xenomorph/source, list/damagedata)
+	SIGNAL_HANDLER
+
+	var/armour_config = GLOB.xeno_ranged
+	if(damagedata["armour_type"] == ARMOR_MELEE)
+		armour_config = GLOB.xeno_melee
+
+	var/pre_mit_damage = armor_damage_reduction(armour_config, damagedata["damage"],
+		damagedata["armor"] - armor_buff, damagedata["penetration"], damagedata["armour_break_pr_pen"],
+		damagedata["armour_break_flat"], damagedata["armor_integrity"])
+
+	var/post_mit_damage = armor_damage_reduction(armour_config, damagedata["damage"],
+		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
+		damagedata["armour_break_flat"], damagedata["armor_integrity"])
+
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(istype(xeno.behavior_delegate, /datum/behavior_delegate/praetorian_valkyrie))
+		var/datum/behavior_delegate/praetorian_valkyrie/valk = xeno.behavior_delegate
+		valk.damage_mitigated += pre_mit_damage - post_mit_damage
 
 
+/datum/action/xeno_action/activable/valkyrie_rage/proc/calculate_damage_mitigation_target(mob/living/carbon/xenomorph/source, list/damagedata)
+	SIGNAL_HANDLER
+
+	var/armour_config = GLOB.xeno_ranged
+	if(damagedata["armour_type"] == ARMOR_MELEE)
+		armour_config = GLOB.xeno_melee
+
+	var/pre_mit_damage = armor_damage_reduction(armour_config, damagedata["damage"],
+		damagedata["armor"] - target_armor_buff, damagedata["penetration"], damagedata["armour_break_pr_pen"],
+		damagedata["armour_break_flat"], damagedata["armor_integrity"])
+
+	var/post_mit_damage = armor_damage_reduction(armour_config, damagedata["damage"],
+		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
+		damagedata["armour_break_flat"], damagedata["armor_integrity"])
+
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(istype(xeno.behavior_delegate, /datum/behavior_delegate/praetorian_valkyrie))
+		var/datum/behavior_delegate/praetorian_valkyrie/valk = xeno.behavior_delegate
+		valk.damage_mitigated += pre_mit_damage - post_mit_damage
 
 /datum/action/xeno_action/activable/high_gallop/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/valkyrie = owner

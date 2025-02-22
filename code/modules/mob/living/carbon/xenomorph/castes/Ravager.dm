@@ -330,6 +330,9 @@
 			if (carbon_target.stat == DEAD)
 				continue
 
+			if (HAS_TRAIT(carbon_target, TRAIT_NESTED))
+				continue
+
 			if(ravager_user.can_not_harm(carbon_target))
 				continue
 			ravager_user.flick_attack_overlay(carbon_target, "slash")

@@ -356,6 +356,57 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
+/obj/item/attachable/bayonet/antique
+	name = "\improper antique bayonet"
+	desc = "An antique-style bayonet, has a long blade, wooden handle with brass fittings, reflecting historical craftsmanship."
+	icon_state = "antique_bayonet"
+	item_state = "combat_knife"
+	attach_icon = "antique_bayonet_a"
+
+/obj/item/attachable/bayonet/rmc_replica
+	name = "\improper L5 bayonet"
+	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
+	icon_state = "twe_bayonet"
+	item_state = "combat_knife"
+	attach_icon = "twe_bayonet_a"
+
+/obj/item/attachable/bayonet/custom
+	name = "\improper M5 'Raven's Claw' tactical bayonet"
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool."
+	icon_state = "bayonet_custom"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_a"
+
+/obj/item/attachable/bayonet/custom/red
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a red grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_red"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_red_a"
+
+/obj/item/attachable/bayonet/custom/blue
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a blue grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_blue"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_blue_a"
+
+/obj/item/attachable/bayonet/custom/black
+	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a black grip and gold detailing, giving it a unique and distinctive appearance."
+	icon_state = "bayonet_custom_black"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_custom_black_a"
+
+/obj/item/attachable/bayonet/tanto
+	name = "\improper T9 tactical bayonet"
+	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detatchments and outposts across the sector."
+	icon_state = "bayonet_tanto"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_tanto_a"
+
+/obj/item/attachable/bayonet/tanto/blue
+	icon_state = "bayonet_tanto_alt"
+	item_state = "combat_knife"
+	attach_icon = "bayonet_tanto_alt_a"
+
 /obj/item/attachable/bayonet/van_bandolier
 	name = "\improper Fairbairn-Sykes fighting knife"
 	desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."
@@ -3420,12 +3471,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/extinguisher/get_examine_text(mob/user)
 	. = ..()
 	if(internal_extinguisher)
-		. += SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!")
+		. += SPAN_NOTICE("It has [floor(internal_extinguisher.reagents.total_volume)] unit\s of water left!")
 		return
 	. += SPAN_WARNING("It's empty.")
 
 /obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(slot)
-	return "It has a [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"
+	return "It has a [icon2html(src)] [name] ([floor(internal_extinguisher.reagents.total_volume)]/[internal_extinguisher.max_water]) mounted underneath.<br>"
 
 /obj/item/attachable/attached_gun/extinguisher/New()
 	..()

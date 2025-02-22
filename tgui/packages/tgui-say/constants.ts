@@ -339,6 +339,10 @@ export const RADIO_PREFIXES = {
     id: 'upp-cmd',
     label: 'UPP Cmd.',
   },
+  '#s ': {
+    id: 'upp-mp',
+    label: 'UPP MP',
+  },
   '#a ': {
     id: 'clf-med',
     label: 'CLF Med',
@@ -414,6 +418,10 @@ export const RADIO_PREFIXES = {
   '#V ': {
     id: 'upp-cmd',
     label: 'UPP Cmd.',
+  },
+  '#S ': {
+    id: 'upp-mp',
+    label: 'UPP MP',
   },
   '#A ': {
     id: 'clf-med',

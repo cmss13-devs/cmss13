@@ -1111,13 +1111,50 @@
 /obj/item/tool/yautja_cleaner/afterattack(obj/item/target, mob/user, proximity)
 	if(!isitem(target))
 		return
-	if(istype(target, /obj/item/storage) && user.a_intent !=INTENT_HARM)
+	if(src.loc != user) //Early returns if the cleaner has been inserted into a container. Whether or not this happens is based on the user's intent; see storage.dm for info.
 		return
-	target.handle_dissolve(user)
+	if(!can_dissolve(target, user))
+		return
+	handle_dissolve(target, user)
 
-/obj/item/tool/yautja_cleaner/handle_dissolve(mob/user)
-	to_chat(user, SPAN_WARNING("You cannot dissolve more dissolving fluid..."))
-	return FALSE
+/obj/item/tool/yautja_cleaner/proc/can_dissolve(obj/item/target, mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You have no idea what this even does."))
+		return FALSE
+	if(HAS_TRAIT(target, TRAIT_ITEM_DISSOLVING))
+		to_chat(user, SPAN_WARNING("\The [target] is already covered in dissolving gel."))
+		return FALSE
+	if(user.alpha < 255)
+		to_chat(user, SPAN_WARNING("It would not be safe to attempt this while cloaked!"))
+		return FALSE
+	if(target.anchored)
+		to_chat(user, SPAN_WARNING("\The [target] cannot be moved by any means, why dissolve it?"))
+		return FALSE
+	if(istype(target.loc, /mob/living))
+		to_chat(user, SPAN_WARNING("You cannot dissolve \the [target] while it is being held."))
+		return
+	if(istype(target, /obj/item/tool/yautja_cleaner))
+		to_chat(user, SPAN_WARNING("You cannot dissolve more dissolving fluid."))
+		return FALSE
+	return TRUE
+
+/obj/item/tool/yautja_cleaner/proc/handle_dissolve(obj/item/target, mob/user)
+	user.visible_message(SPAN_DANGER("[user] uncaps a vial and begins to pour out a vibrant blue liquid over \the [target]!"),
+					SPAN_NOTICE("You begin to spread dissolving gel onto \the [target]!"))
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to \the [target]!"),
+					SPAN_WARNING("You decide not to cover \the [target] with dissolving gel."))
+		return
+	if(!locate(target) in oview(1, user)) //Late check to ensure the item hasn't moved out of range.
+		return
+	user.visible_message(SPAN_DANGER("[user] pours blue liquid all over \the [target]!"),
+				SPAN_NOTICE("You cover \the [target] with dissolving gel!"))
+	playsound(target.loc, 'sound/effects/acid_sizzle1.ogg', 25)
+	target.add_filter("dissolve_gel", 1, list("type" = "outline", "color" = "#3333FFff", "size" = 1))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), target), 15 SECONDS)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[target] crumbles into pieces!")), 15 SECONDS)
+	ADD_TRAIT(target, TRAIT_ITEM_DISSOLVING, TRAIT_SOURCE_ITEM) //Used to modify the item's description.
+	log_attack("[key_name(user)] dissolved [target] with Yautja Cleaner!")
 
 /obj/item/storage/medicomp
 	name = "medicomp"

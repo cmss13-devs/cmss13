@@ -404,10 +404,10 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 		if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
 			return TRUE
-	
+
 	if(storage_slots != null && length(contents) < storage_slots)
 		return TRUE //At least one open slot.
-	
+
 	//calculate storage space only for containers that don't have slots
 	if (storage_slots == null)
 		var/sum_storage_cost = W_class_override ? W_class_override : new_item.get_storage_cost() //Takes the override if there is one, the given item otherwise.
@@ -457,6 +457,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		var/obj/item/tool/hand_labeler/L = W
 		if(L.mode)
 			return 0
+
+	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+		return
 
 	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
 		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
@@ -510,12 +513,12 @@ user can be null, it refers to the potential mob doing the insertion.**/
 				if(!istype(cur_item, /obj/item/stack))
 					continue
 				var/obj/item/stack/cur_stack = cur_item
-				
+
 				if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
 					var/amount = min(cur_stack.max_amount - cur_stack.amount, new_stack.amount)
 					new_stack.use(amount)
 					cur_stack.add(amount)
-			
+
 			if(!QDELETED(new_stack) && can_be_inserted(new_stack, user))
 				if(!user.drop_inv_item_to_loc(new_item, src))
 					return FALSE
@@ -595,8 +598,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM)
-		return
 	return attempt_item_insertion(W, FALSE, user)
 
 /obj/item/storage/equipped(mob/user, slot, silent)

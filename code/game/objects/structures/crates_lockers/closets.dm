@@ -80,6 +80,13 @@
 	for(var/obj/I in src)
 		I.forceMove(loc)
 
+/obj/structure/closet/proc/open()
+	if(opened)
+		return 0
+
+	if(!can_open())
+		return 0
+
 	for(var/mob/M in src)
 		M.forceMove(loc)
 		if(exit_stun)
@@ -89,13 +96,6 @@
 			if(living_M.mobility_flags & MOBILITY_MOVE)
 				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
-
-/obj/structure/closet/proc/open()
-	if(opened)
-		return 0
-
-	if(!can_open())
-		return 0
 
 	dump_contents()
 

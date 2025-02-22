@@ -371,6 +371,18 @@
 /turf/open/floor/plating/catwalk/grate/net
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
 	icon_state = "soil_grid"
+	var/slow_amt = 4
+
+/turf/open/floor/plating/catwalk/grate/net/Crossed(atom/movable/AM)
+	. = ..()
+	var/mob/living/carbon/human/slowhuman = AM
+	if(istype(slowhuman))
+		slowhuman.next_move_slowdown = max(slowhuman.next_move_slowdown, slow_amt)
+		return .
+	var/mob/living/carbon/xenomorph/slowxeno = AM
+	if(istype(slowxeno))
+		slowxeno.next_move_slowdown = max(slowxeno.next_move_slowdown, slow_amt)
+		return .
 
 /turf/open/floor/plating/catwalk/grate/lattice
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'

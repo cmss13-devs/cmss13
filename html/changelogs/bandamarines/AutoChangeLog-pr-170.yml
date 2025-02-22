@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - rscadd: "Добавлен скрипт RUN_SERVER.cmd в корневую папку, которая за вас соберет билд и запустит сервер"

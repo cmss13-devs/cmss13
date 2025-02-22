@@ -420,23 +420,26 @@
 	if(isyautja(src) && src.hunter_data.thrall)
 		target_list += src.hunter_data.thrall
 
-	var/mob/living/carbon/T = tgui_input_list(usr, "Target", "Choose a target.", target_list)
-	if(!T)
+	var/mob/living/carbon/human/thrall  = tgui_input_list(usr, "Target", "Choose a target.", target_list)
+
+	if(!thrall)
 		return
-	if(!T.hunter_data.thralled)
-		to_chat(src, SPAN_YAUTJABOLD("[T] is not marked as thralled!"))
+	if(!thrall.hunter_data.thralled)
+		to_chat(src, SPAN_YAUTJABOLD("[thrall] is not marked as thralled!"))
 		return
 
-	if(!T.hunter_data.thralled_set || src == T.hunter_data.thralled_set)
+	if(!thrall.hunter_data.thralled_set || src == thrall.hunter_data.thralled_set)
 
-		log_interact(src, T, "[key_name(src)] has released [key_name(T)] from thralldom!")
-		message_all_yautja("[real_name] has released [T] from thralldom!'.")
+		log_interact(src, thrall, "[key_name(src)] has released [key_name(thrall)] from thralldom!")
+		message_all_yautja("[real_name] has released [thrall] from thralldom!'.")
 
-		T.hunter_data.thralled_set = null
-		T.hunter_data.thralled = FALSE
-		T.hunter_data.thralled_reason = null
+		thrall.set_species("Human")
+		thrall.allow_gun_usage = TRUE
+		thrall.hunter_data.thralled_set = null
+		thrall.hunter_data.thralled = FALSE
+		thrall.hunter_data.thralled_reason = null
 		hunter_data.thrall = null
-		T.hud_set_hunter()
+		thrall.hud_set_hunter()
 	else
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
 

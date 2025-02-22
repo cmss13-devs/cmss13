@@ -153,7 +153,15 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
 		return
 
+	flags_atom |= NO_ZFALL
+
 	launch_towards(LM)
+
+	flags_atom &= ~NO_ZFALL
+	var/turf/end_turf = get_turf(src)
+	if(end_turf)
+		end_turf.on_throw_end(src)
+
 
 // Proc for throwing or propelling movable atoms towards a target
 /atom/movable/proc/launch_towards(datum/launch_metadata/LM)

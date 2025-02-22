@@ -56,11 +56,6 @@
 
 //------------CLOTHING VENDOR---------------
 
-/obj/effect/essentials_set/po_alternate
-	spawned_gear_list = list(
-		/obj/item/clothing/under/marine/officer/pilot/flight,
-		/obj/item/clothing/suit/storage/jacket/marine/pilot,
-	)
 
 GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
@@ -69,9 +64,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("Leather Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
+		list("STANDARD UNIFORM (CHOOSE 1)", 0, null, null, null),
+		list("Pilot Officer Bodysuit", 0, /obj/item/clothing/under/marine/officer/pilot, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Tactical Pilot Officer Flightsuit", 0, /obj/item/clothing/under/marine/officer/pilot/flight, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("M70 Flak Jacket", 0, /obj/item/clothing/suit/armor/vest/pilot, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("M3-VL Pattern Flak Vest", 0, /obj/item/clothing/suit/storage/marine/light/vest/dcc, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("M70B1 Light Flak Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/pilot, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("88 Mod 4 Combat Pistol", 0, /obj/item/weapon/gun/pistol/mod88, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
@@ -145,7 +145,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("M44 Heavy Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
-		list("PO Flightsuit Kit", 10, /obj/effect/essentials_set/po_alternate, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 15, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
 		list("Large Magazine Pouch", 15, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),
@@ -243,7 +242,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED)
 	))
 
-//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
+//MARINE_CAN_BUY_SHOES currently not used
 /obj/structure/machinery/cm_vending/clothing/pilot_officer
 	name = "\improper ColMarTech Dropship Crew Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Dropship Crew standard-issue equipment."

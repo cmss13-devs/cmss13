@@ -21,6 +21,8 @@
 	var/foldabletype //To fold into an item (e.g. roller bed item)
 	var/buckling_y = 0 //pixel y shift to give to the buckled mob.
 	var/buckling_x = 0 //pixel x shift to give to the buckled mob.
+	///if the bed can carry big mobs (tier 3s)
+	var/can_carry_big = FALSE
 	var/obj/structure/closet/bodybag/buckled_bodybag
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
@@ -241,6 +243,28 @@
 			return ..()
 
 	return
+
+/obj/structure/bed/roller/heavy
+	name = "heavy-duty roller bed"
+	desc = "A reinforced plasteel board resting on a small but sturdy frame. Not very comfortable at all, but allows heavy cargo to rest lying down while moved to another location rapidly. Cannot be collapsed."
+	icon = 'icons/obj/structures/rollerbed.dmi'
+	icon_state = "heavy_roller_up"
+	anchored = FALSE
+	drag_delay = 0 //Pulling something on wheels is easy
+	buckling_y = 3
+	foldabletype = null
+	accepts_bodybag = TRUE
+	base_bed_icon = null
+	density = TRUE
+	buildstacktype = /obj/item/stack/sheet/plasteel
+	can_carry_big = TRUE
+
+/obj/structure/bed/roller/heavy/attackby(obj/item/W, mob/user)
+	if(istype(W,/obj/item/roller_holder) && !buckled_bodybag)
+		if(buckled_mob || buckled_bodybag)
+			manual_unbuckle()
+			return
+	return ..()
 
 /obj/item/roller
 	name = "roller bed"

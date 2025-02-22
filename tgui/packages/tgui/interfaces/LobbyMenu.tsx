@@ -42,6 +42,8 @@ type LobbyData = {
   xenomorph_enabled: BooleanLike;
   predator_enabled: BooleanLike;
   fax_responder_enabled: BooleanLike;
+
+  preference_issues: string[];
 };
 
 type LobbyContextType = {
@@ -58,7 +60,8 @@ const LobbyContext = createContext<LobbyContextType>({
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
 
-  const { lobby_author, upp_enabled, confirmation_message } = data;
+  const { lobby_author, upp_enabled, confirmation_message, preference_issues } =
+    data;
 
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
 
@@ -239,6 +242,21 @@ export const LobbyMenu = () => {
           </Stack>
           <Box className="bgLoad authorAttrib styledText">
             {lobby_author ? `Art by ${lobby_author}` : ''}
+          </Box>
+          <Box
+            position="absolute"
+            left={3}
+            top={-2}
+            height="100%"
+            className="messageHolder"
+          >
+            <Stack vertical justify="flex-end" fill>
+              {preference_issues.map((issue, index) => (
+                <Section key={index} className="sectionLoad">
+                  <Box>{issue}</Box>
+                </Section>
+              ))}
+            </Stack>
           </Box>
         </LobbyContext.Provider>
       </Window.Content>

@@ -1,29 +1,92 @@
 GLOBAL_LIST_EMPTY(gear_datums_by_category)
+
 GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
+GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_type, /datum/gear)
+
+GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /proc/populate_gear_list()
 	var/datum/gear/G
 	for(var/gear_type in subtypesof(/datum/gear))
 		G = new gear_type()
-		if(!G.display_name)
+		if(!G.path)
 			continue //Skipping parent types that are not actual items.
+		if(!G.display_name)
+			G.display_name = capitalize(strip_improper(G.path::name))
 		if(!G.category)
 			log_debug("Improper gear datum: [gear_type].")
 			continue
-		if(G.display_name in GLOB.gear_datums_by_name)
-			log_debug("Duplicate gear datum name: [G.display_name].")
-			continue
-		LAZYSET(GLOB.gear_datums_by_category[G.category], "[G.display_name] [G.cost == 1 ? "(1 point)" : "([G.cost] points)"]", G)
+		LAZYADD(GLOB.gear_datums_by_category[G.category], G)
+		GLOB.gear_datums_by_type[G.type] = G
+
+		// it's okay if this gets clobbered by duplicate names, it's just used for a best guess to convert old names to types
 		GLOB.gear_datums_by_name[G.display_name] = G
 
+		if(G.allowed_roles)
+			for(var/allowed_role in G.allowed_roles)
+				GLOB.roles_with_gear |= allowed_role
+
 /datum/gear
-	var/display_name  // Name/index.
-	var/category //Used for sorting in the loadout selection.
-	var/obj/item/path  // Path to item.
-	var/cost = 2 // Number of points used.
-	var/slot // Slot to equip to, if any.
-	var/list/allowed_roles   // Roles that can spawn with this item.
+
+	/// Overrides the display name
+	var/display_name
+
+	/// Used for sorting in the loadout selection.
+	var/category
+
+	/// Path to item.
+	var/obj/item/path
+
+	/// Number of job specific loadout points used.
+	var/loadout_cost = 0
+
+	/// Number of fluff points used.
+	var/fluff_cost = 2
+
+	/// Slot to equip to, if any.
+	var/slot
+
+	/// Roles that can spawn with this item.
+	var/list/allowed_roles
+
+	/// Origins that can sapwn with this item.
 	var/list/allowed_origins
+
+/// Returns a list with the various variables used to display this gear in a UI
+/datum/gear/proc/get_list_representation()
+	return list(
+		"name" = display_name,
+		"type" = type,
+		"fluff_cost" = fluff_cost,
+		"loadout_cost" = loadout_cost,
+
+		"icon" = path::icon,
+		"icon_state" = path::icon_state
+	)
+
+/// Attempt to wear this equipment, in the given slot if possible. If not, any slot is used.
+/datum/gear/proc/equip_to_user(mob/living/carbon/human/user, override_checks = FALSE, drop_instead_of_del = TRUE)
+	if(!override_checks && allowed_roles && !(user.job in allowed_roles))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role"))
+		return
+
+	if(!override_checks && allowed_origins && !(user.origin in allowed_origins))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Origin"))
+		return
+
+	if(!(slot && user.equip_to_slot_or_del(new path, slot)))
+		var/obj/equipping_gear = new path
+		if(user.equip_to_appropriate_slot(equipping_gear))
+			return
+
+		if(user.equip_to_slot_if_possible(equipping_gear, WEAR_IN_BACK, disable_warning = TRUE))
+			return
+
+		if(drop_instead_of_del)
+			equipping_gear.forceMove(get_turf(user))
+			return
+
+		qdel(equipping_gear)
 
 /datum/gear/eyewear
 	category = "Eyewear"
@@ -109,17 +172,17 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/eyewear/new_bimex/black
 	display_name = "BiMex tactical shades, black"
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/black
-	cost = 4
+	fluff_cost = 4
 
 /datum/gear/eyewear/new_bimex
 	display_name = "BiMex polarized shades, yellow"
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex
-	cost = 4
+	fluff_cost = 4
 
 /datum/gear/eyewear/new_bimex/bronze
 	display_name = "BiMex polarized shades, bronze"
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
-	cost = 4
+	fluff_cost = 4
 
 /datum/gear/eyewear/prescription_sunglasses
 	display_name = "Prescription sunglasses"
@@ -259,18 +322,18 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/mask/uscm/skull_balaclava_blue
 	display_name = "USCM balaclava, blue skull"
 	path = /obj/item/clothing/mask/rebreather/skull
-	cost = 4 //same as skull facepaint
+	fluff_cost = 4 //same as skull facepaint
 	slot = WEAR_FACE
 
 /datum/gear/mask/uscm/skull_balaclava_black
 	display_name = "USCM balaclava, black skull"
 	path = /obj/item/clothing/mask/rebreather/skull/black
-	cost = 4
+	fluff_cost = 4
 	slot = WEAR_FACE
 
 /datum/gear/headwear
 	category = "Headwear"
-	cost = 2
+	fluff_cost = 2
 	slot = WEAR_HEAD
 
 /datum/gear/headwear/durag_black
@@ -366,7 +429,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/helmet_garb
 	category = "Helmet accessories"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/helmet_garb/flair_initech
 	display_name = "Flair, Initech"
@@ -492,7 +555,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/paperwork
 	category = "Paperwork"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/paperwork/pen
 	display_name = "Pen, black"
@@ -513,12 +576,12 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/paperwork/pen_fountain
 	display_name = "Pen, fountain"
 	path = /obj/item/tool/pen/multicolor/fountain
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/paperwork/paper
 	display_name = "Sheet of paper"
 	path = /obj/item/paper
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/paperwork/clipboard
 	display_name = "Clipboard"
@@ -562,15 +625,15 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/toy
 	category = "Recreational"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/toy/camera
 	display_name = "Camera"
 	path = /obj/item/device/camera
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/toy/mags
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/toy/mags/magazine_dirty
 	display_name = "Magazine"
@@ -599,10 +662,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/toy/film
 	display_name = "Camera film"
 	path = /obj/item/device/camera_film
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/toy/card
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/toy/card/ace_of_spades
 	display_name = "Card, ace of spades"
@@ -651,7 +714,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/toy/walkman
 	display_name = "Walkman"
 	path = /obj/item/device/walkman
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/toy/crayon
 	display_name = "Crayon"
@@ -663,7 +726,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/weapon
 	category = "Weapons"
-	cost = 4
+	fluff_cost = 4
 
 /datum/gear/weapon/type_80_bayonet
 	display_name = "Type 80 Bayonet"
@@ -713,7 +776,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Type 73 Pistol"
 	path = /obj/item/storage/box/upp
 	slot = WEAR_IN_BACK
-	cost = 4
+	fluff_cost = 4
 
 /datum/gear/weapon/m4a3_custom
 	display_name = "M4A3 Custom Pistol"
@@ -727,12 +790,12 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/drink
 	category = "Canned drinks"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/drink/water
 	display_name = "Bottled water"
 	path = /obj/item/reagent_container/food/drinks/cans/waterbottle
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/drink/grape_juice
 	display_name = "Grape juice"
@@ -769,14 +832,14 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/drink/boda
 	display_name = "Boda Soda"
 	path = /obj/item/reagent_container/food/drinks/cans/boda
-	cost = 2 //Legally imported from UPP.
+	fluff_cost = 2 //Legally imported from UPP.
 
 /datum/gear/drink/boda/plus
 	display_name = "Boda Cola"
 	path = /obj/item/reagent_container/food/drinks/cans/bodaplus
 
 /datum/gear/drink/alcohol
-	cost = 2 //Illegal in military.
+	fluff_cost = 2 //Illegal in military.
 
 /datum/gear/drink/alcohol/ale
 	display_name = "Weyland-Yutani IPA Ale"
@@ -796,7 +859,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/flask
 	category = "Flasks"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/flask/canteen
 	display_name = "Canteen"
@@ -828,7 +891,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/snack_sweet
 	category = "Food (sweets)"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/snack_sweet/candy
 	display_name = "Bar of candy"
@@ -864,7 +927,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/snack_packaged
 	category = "Food (packaged)"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/snack_packaged/beef_jerky
 	display_name = "Beef jerky"
@@ -896,7 +959,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/snack_grown
 	category = "Food (healthy)"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/snack_grown/apple
 	display_name = "Apple"
@@ -928,33 +991,33 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/smoking
 	category = "Smoking"
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/smoking/cigarette
 	display_name = "Cigarette"
 	path = /obj/item/clothing/mask/cigarette
-	cost = 1
+	fluff_cost = 1
 	slot = WEAR_FACE
 
 /datum/gear/smoking/cigarette/cigar_classic
 	display_name = "Classic cigar"
 	path = /obj/item/clothing/mask/cigarette/cigar/classic
-	cost = 3
+	fluff_cost = 3
 
 /datum/gear/smoking/cigarette/cigar_premium
 	display_name = "Premium cigar"
 	path = /obj/item/clothing/mask/cigarette/cigar
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/smoking/cigarette/tarbacks
 	display_name = "Tarbacks case"
 	path = /obj/item/storage/fancy/cigar/tarbacks
-	cost = 6
+	fluff_cost = 6
 
 /datum/gear/smoking/cigarette/tarbacktube
 	display_name = "Tarback tube"
 	path = /obj/item/storage/fancy/cigar/tarbacktube
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/smoking/pack_emerald_green
 	display_name = "Pack Of Emerald Greens"
@@ -979,7 +1042,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/smoking/wypacket
 	display_name = "Pack Of Weyland-Yutani Gold"
 	path = /obj/item/storage/fancy/cigarettes/wypacket
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/smoking/spirit
 	display_name = "Pack Of Turquoise American Spirit"
@@ -992,17 +1055,17 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/smoking/kpack
 	display_name = "Pack Of Koorlander Gold"
 	path = /obj/item/storage/fancy/cigarettes/kpack
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/smoking/weed_joint
 	display_name = "Joint of space weed"
 	path = /obj/item/clothing/mask/cigarette/weed
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/smoking/lighter
 	display_name = "Lighter, cheap"
 	path = /obj/item/tool/lighter/random
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/smoking/zippo
 	display_name = "Lighter, zippo"
@@ -1015,12 +1078,12 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/smoking/zippo/gold
 	display_name = "Golden lighter, zippo"
 	path = /obj/item/tool/lighter/zippo/gold
-	cost = 3
+	fluff_cost = 3
 
 /datum/gear/smoking/zippo/executive
 	display_name = "Weyland-Yutani executive Zippo lighter"
 	path = /obj/item/tool/lighter/zippo/executive
-	cost = 3
+	fluff_cost = 3
 
 /datum/gear/smoking/zippo/blue
 	display_name = "Blue lighter, zippo"
@@ -1052,65 +1115,65 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/facepaint_skull
 	display_name = "Facepaint, skull"
 	path = /obj/item/facepaint/skull
-	cost = 3
+	fluff_cost = 3
 
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"
 	path = /obj/item/facepaint/sniper
-	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
+	fluff_cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
 
 /datum/gear/misc/jungle_boots
 	display_name = "Jungle pattern combat boots"
 	path = /obj/item/clothing/shoes/marine/jungle
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/misc/brown_boots
 	display_name = "brown combat boots"
 	path = /obj/item/clothing/shoes/marine/brown
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/misc/brown_gloves
 	display_name = "brown combat gloves"
 	path = /obj/item/clothing/gloves/marine/brown
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/misc/grey_boots
 	display_name = "grey combat boots"
 	path = /obj/item/clothing/shoes/marine/grey
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/misc/urban_boots
 	display_name = "Urban pattern combat boots"
 	path = /obj/item/clothing/shoes/marine/urban
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/misc/grey_gloves
 	display_name = "grey combat gloves"
 	path = /obj/item/clothing/gloves/marine/grey
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/misc/pdt_kit
 	display_name = "PDT/L kit"
 	path = /obj/item/storage/box/pdt_kit
-	cost = 3
+	fluff_cost = 3
 
 /datum/gear/misc/sunscreen_stick
 	display_name = "USCM issue sunscreen"
 	path = /obj/item/facepaint/sunscreen_stick
-	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
+	fluff_cost = 1 //The cadmium poisoning pays for the discounted cost longterm
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/misc/dogtags
 	display_name = "Attachable Dogtags"
 	path = /obj/item/clothing/accessory/dogtags
-	cost = 1
+	fluff_cost = 1
 	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/misc/patch_uscm
 	display_name = "Falling Falcons shoulder patch, squad specific"
 	path = /obj/item/clothing/accessory/patch/falcon/squad_main
-	cost = 1
+	fluff_cost = 1
 	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
@@ -1121,27 +1184,27 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/family_photo
 	display_name = "Family photo"
 	path = /obj/item/prop/helmetgarb/family_photo
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/misc/compass
 	display_name = "Compass"
 	path = /obj/item/prop/helmetgarb/compass
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/misc/bug_spray
 	display_name = "Bug spray"
 	path = /obj/item/prop/helmetgarb/bug_spray
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/misc/straight_razor
 	display_name = "Cut-throat razor"
 	path = /obj/item/weapon/straight_razor
-	cost = 2
+	fluff_cost = 2
 
 /datum/gear/misc/watch
 	display_name = "Cheap wrist watch"
 	path = /obj/item/clothing/accessory/wrist/watch
-	cost = 1 // Cheap and crappy
+	fluff_cost = 1 // Cheap and crappy
 
 // Civilian only
 
@@ -1152,7 +1215,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/civilian/patch
 	display_name = "Weyland-Yutani shoulder patch, black"
 	path = /obj/item/clothing/accessory/patch/wy
-	cost = 1
+	fluff_cost = 1
 	slot = WEAR_IN_ACCESSORY
 
 /datum/gear/civilian/patch/wysquare
@@ -1240,7 +1303,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/civilian/shoes
 	display_name = "black shoes"
 	path = /obj/item/clothing/shoes/black
-	cost = 1
+	fluff_cost = 1
 
 /datum/gear/civilian/shoes/brown
 	display_name = "brown shoes"

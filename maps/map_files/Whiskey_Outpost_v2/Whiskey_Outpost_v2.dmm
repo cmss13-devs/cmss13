@@ -45,10 +45,6 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
-"ai" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
 "aj" = (
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker)
@@ -17117,7 +17113,7 @@ mT
 mT
 mT
 ak
-ai
+fx
 aC
 qe
 ih

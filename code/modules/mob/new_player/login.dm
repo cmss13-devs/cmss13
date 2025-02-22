@@ -72,6 +72,8 @@
 	.["predator_enabled"] = SSticker.mode?.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
 	.["fax_responder_enabled"] = SSticker.mode?.check_fax_responder_late_join(src, FALSE)
 
+	.["preference_issues"] = client.prefs.errors
+
 /mob/new_player/ui_static_data(mob/user)
 	. = ..()
 

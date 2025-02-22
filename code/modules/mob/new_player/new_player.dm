@@ -119,10 +119,13 @@
 	if(!GLOB.enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
+
+	if(!client?.prefs.update_slot(player_rank.title))
+		return
+
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
-
 
 	spawning = TRUE
 	close_spawn_windows()
@@ -368,6 +371,9 @@
 	close_browser(src, "latechoices") //closes late choices window
 	close_browser(src, "playersetup") //closes the player setup window
 	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // Stops lobby music.
+
+	client?.prefs.close_all_pickers()
+
 	if(src.open_uis)
 		for(var/datum/nanoui/ui in src.open_uis)
 			if(ui.allowed_user_stat == -1)

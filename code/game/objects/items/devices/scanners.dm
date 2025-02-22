@@ -45,20 +45,20 @@ K9 SCANNER
 		if(!T.intact_tile)
 			continue
 
-		for(var/obj/O in T.contents)
+		for(var/obj/item in T.contents)
 
-			if(O.level != 1)
+			if(item.level != 1)
 				continue
 
-			if(O.invisibility == 101)
-				O.invisibility = 0
-				O.alpha = 128
+			if(item.invisibility == 101)
+				item.invisibility = 0
+				item.alpha = 128
 				spawn(10)
-					if(O && !QDELETED(O))
-						var/turf/U = O.loc
+					if(item && !QDELETED(item))
+						var/turf/U = item.loc
 						if(U.intact_tile)
-							O.invisibility = 101
-							O.alpha = 255
+							item.invisibility = 101
+							item.alpha = 255
 
 		var/mob/living/M = locate() in T
 		if(M && M.invisibility == 2)
@@ -266,7 +266,7 @@ K9 SCANNER
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/device/reagent_scanner/afterattack(obj/O, mob/user as mob, proximity)
+/obj/item/device/reagent_scanner/afterattack(obj/item, mob/user as mob, proximity)
 	if(!proximity)
 		return
 	if (user.stat)
@@ -274,17 +274,17 @@ K9 SCANNER
 	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if(!istype(O))
+	if(!istype(item))
 		return
 	if (crit_fail)
 		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
 		return
 
-	if(!QDELETED(O.reagents))
+	if(!QDELETED(item.reagents))
 		var/dat = ""
-		if(length(O.reagents.reagent_list) > 0)
-			var/one_percent = O.reagents.total_volume / 100
-			for (var/datum/reagent/R in O.reagents.reagent_list)
+		if(length(item.reagents.reagent_list) > 0)
+			var/one_percent = item.reagents.total_volume / 100
+			for (var/datum/reagent/R in item.reagents.reagent_list)
 				if(prob(reliability))
 					dat += "\n \t \blue [R.name][details ? ": [R.volume / one_percent]%" : ""]"
 					recent_fail = 0
@@ -297,9 +297,9 @@ K9 SCANNER
 		if(dat)
 			to_chat(user, SPAN_NOTICE(" Chemicals found: [dat]"))
 		else
-			to_chat(user, SPAN_NOTICE(" No active chemical agents found in [O]."))
+			to_chat(user, SPAN_NOTICE(" No active chemical agents found in [item]."))
 	else
-		to_chat(user, SPAN_NOTICE(" No significant chemical agents found in [O]."))
+		to_chat(user, SPAN_NOTICE(" No significant chemical agents found in [item]."))
 
 	return
 
@@ -327,7 +327,7 @@ K9 SCANNER
 	var/rad_potential = 0
 	var/datum/reagents/holder
 
-/obj/item/device/demo_scanner/afterattack(obj/O, mob/user as mob, proximity)
+/obj/item/device/demo_scanner/afterattack(obj/item, mob/user as mob, proximity)
 	if(!proximity)
 		return
 	if(user.stat)
@@ -338,19 +338,19 @@ K9 SCANNER
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You do not know how to use the [name]."))
 		return
-	if(!istype(O))
+	if(!istype(item))
 		return
 
-	scan_name = O.name
+	scan_name = item.name
 	dat = ""
 	ex_potential = 0
 	int_potential = 0
 	rad_potential = 0
 
-	if(istype(O, /obj/item/ammo_magazine/flamer_tank))
-		var/obj/item/ammo_magazine/flamer_tank/tank = O
+	if(istype(item, /obj/item/ammo_magazine/flamer_tank))
+		var/obj/item/ammo_magazine/flamer_tank/tank = item
 		if(!length(tank.reagents.reagent_list))
-			to_chat(user, SPAN_NOTICE("No fuel detected in [O]"))
+			to_chat(user, SPAN_NOTICE("No fuel detected in [item]"))
 			return
 		var/result
 		var/datum/reagent/chem = tank.reagents.reagent_list[1]
@@ -361,34 +361,50 @@ K9 SCANNER
 		to_chat(user, SPAN_NOTICE("[result]"))
 		return
 
-	if(istype(O,/obj/item/explosive))
-		var/obj/item/explosive/E = O
+	if(istype(item,/obj/item/explosive))
+		var/obj/item/explosive/E = item
 		if(!E.customizable)
 			to_chat(user, SPAN_NOTICE("ERROR: This brand of explosive is under data protection. Scan has been cancelled."))
 			return
 		holder = E.reagents
 		for(var/obj/container in E.containers)
 			scan(container)
-	else if(istype(O,/obj/item/ammo_magazine/rocket/custom))
-		var/obj/item/ammo_magazine/rocket/custom/E = O
+	else if(istype(item,/obj/item/ammo_magazine/rocket/custom))
+		var/obj/item/ammo_magazine/rocket/custom/E = item
 		if(!E.warhead)
 			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
 			return
 		holder = E.warhead.reagents
 		for(var/obj/container in E.warhead.containers)
 			scan(container)
-	else if(istype(O,/obj/item/mortar_shell/custom))
-		var/obj/item/mortar_shell/custom/E = O
+	else if(istype(item,/obj/item/mortar_shell/custom))
+		var/obj/item/mortar_shell/custom/E = item
 		if(!E.warhead)
 			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
 			return
 		holder = E.warhead.reagents
 		for(var/obj/container in E.warhead.containers)
 			scan(container)
+
+	else if(istype(item, /obj/structure/ob_ammo/warhead/custom))
+		var/obj/structure/ob_ammo/warhead/custom/ob = item
+		if(length(ob.containers) < 1)
+			to_chat(user, SPAN_NOTICE("No containers detected in [ob]."))
+			return
+
+		var/obj/item/explosive/temp = new() //this is kinda janky but required
+		temp.create_reagents(1000)
+		for(var/limit in temp.reaction_limits)
+			temp.reagents.vars[limit] = ob.reaction_limits[limit]
+		holder = temp.reagents
+
+		for(var/obj/container in ob.containers)
+			scan(container)
+
 	else
-		scan(O)
-		if(O.reagents)
-			holder = O.reagents
+		scan(item)
+		if(item.reagents)
+			holder = item.reagents
 	if(dat && holder)
 		if(ex_potential)
 			dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, holder.max_ex_power)]")
@@ -396,14 +412,14 @@ K9 SCANNER
 			dat += SPAN_RED("<br>FIRE HAZARD: ignition will create chemical fire.<br>Expected fire intensity rating of [min(max(int_potential,holder.min_fire_int),holder.max_fire_int)] in a [min(max(rad_potential,holder.min_fire_rad),holder.max_fire_rad)] meter radius.")
 		to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
 	else
-		to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
+		to_chat(user, SPAN_NOTICE("No active chemical agents found in [item]."))
 	return
 
-/obj/item/device/demo_scanner/proc/scan(obj/O)
-	if(QDELETED(O.reagents))
+/obj/item/device/demo_scanner/proc/scan(obj/item)
+	if(QDELETED(item.reagents))
 		return
-	if(length(O.reagents.reagent_list) > 0)
-		for(var/datum/reagent/R in O.reagents.reagent_list)
+	if(length(item.reagents.reagent_list) > 0)
+		for(var/datum/reagent/R in item.reagents.reagent_list)
 			dat += SPAN_BLUE("<br>[R.name]: [R.volume]u")
 			if(R.explosive)
 				ex_potential += R.volume*R.power

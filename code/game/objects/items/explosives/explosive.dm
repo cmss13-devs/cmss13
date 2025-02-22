@@ -26,6 +26,10 @@
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	/// Whether a star shape is possible when the intensity meets CHEM_FIRE_STAR_THRESHOLD
 	var/allow_star_shape = TRUE
+	/// If there is a /obj/item/ordnance/data_analyzer attached
+	var/obj/item/ordnance/data_analyzer/attached_analyzer
+	/// if this explosive should capture a photo when exploding
+	var/take_photo = TRUE
 	/// Whether both explosions and shrapnels use directions
 	var/use_dir = FALSE
 	/// Spread angle for shrapnels
@@ -91,7 +95,7 @@
 			current_container_volume = 0
 		desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 		return
-	cause_data = create_cause_data(initial(name), user)
+	cause_data = create_cause_data(initial(name), user, src)
 	return TRUE
 
 /obj/item/explosive/update_icon()
@@ -111,14 +115,29 @@
 		else
 			icon_state = base_icon_state
 
-/obj/item/explosive/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/explosive/attackby(obj/item/item as obj, mob/user as mob)
 	if(!customizable || active)
 		return
+
+	if(istype(item, /obj/item/ordnance/data_analyzer))
+		if(attached_analyzer)
+			to_chat(user, SPAN_WARNING("\the [name] already has an analyzer!."))
+			return
+		if(current_container_volume || length(containers))
+			to_chat(user, SPAN_WARNING("\the [name] must be empty before inserting \the [item]."))
+			return
+		attached_analyzer = item
+		attached_analyzer.attached = item
+		attached_analyzer.apply_casing_limit(src)
+		user.temp_drop_inv_item(attached_analyzer)
+		attached_analyzer.forceMove(src)
+		return
+
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
-	if(istype(W,/obj/item/device/assembly_holder) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
-		var/obj/item/device/assembly_holder/det = W
+	if(istype(item,/obj/item/device/assembly_holder) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
+		var/obj/item/device/assembly_holder/det = item
 		if(detonator)
 			to_chat(user, SPAN_DANGER("This casing already has a detonator."))
 			return
@@ -131,7 +150,7 @@
 		if(!det.secured)
 			to_chat(user, SPAN_DANGER("Assembly must be secured with screwdriver."))
 			return
-		to_chat(user, SPAN_NOTICE("You add [W] to the [name]."))
+		to_chat(user, SPAN_NOTICE("You add [item] to the [name]."))
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 		user.temp_drop_inv_item(det)
 		det.forceMove(src)
@@ -139,7 +158,7 @@
 		assembly_stage = ASSEMBLY_UNLOCKED
 		desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 		update_icon()
-	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(assembly_stage == ASSEMBLY_UNLOCKED)
 			if(length(containers))
 				to_chat(user, SPAN_NOTICE("You lock the assembly."))
@@ -147,7 +166,7 @@
 				to_chat(user, SPAN_NOTICE("You lock the empty assembly."))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 			creator = user
-			cause_data = create_cause_data(initial(name), user)
+			cause_data = create_cause_data(initial(name), user, src)
 			assembly_stage = ASSEMBLY_LOCKED
 		else if(assembly_stage == ASSEMBLY_LOCKED)
 			to_chat(user, SPAN_NOTICE("You unlock the assembly."))
@@ -155,24 +174,24 @@
 			desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 			assembly_stage = ASSEMBLY_UNLOCKED
 		update_icon()
-	else if(is_type_in_list(W, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
+	else if(is_type_in_list(item, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
 		if(current_container_volume >= max_container_volume)
 			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
 			return
 		else
-			if(W.reagents.total_volume)
-				if(W.reagents.maximum_volume + current_container_volume > max_container_volume)
-					to_chat(user, SPAN_DANGER("\the [W] is too large for [name]."))
+			if(item.reagents.total_volume)
+				if(item.reagents.maximum_volume + current_container_volume > max_container_volume)
+					to_chat(user, SPAN_DANGER("\the [item] is too large for [name]."))
 					return
-				if(user.temp_drop_inv_item(W))
-					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
-					W.forceMove(src)
-					containers += W
-					current_container_volume += W.reagents.maximum_volume
+				if(user.temp_drop_inv_item(item))
+					to_chat(user, SPAN_NOTICE("You add \the [item] to the assembly."))
+					item.forceMove(src)
+					containers += item
+					current_container_volume += item.reagents.maximum_volume
 					assembly_stage = ASSEMBLY_UNLOCKED
 					desc = initial(desc) + "\n Contains [length(containers)] containers[detonator?" and detonator":""]"
 			else
-				to_chat(user, SPAN_DANGER("\the [W] is empty."))
+				to_chat(user, SPAN_DANGER("\the [item] is empty."))
 
 /obj/item/explosive/proc/activate_sensors()
 	if(!detonator || active || assembly_stage < ASSEMBLY_LOCKED)
@@ -187,6 +206,14 @@
 		active = TRUE
 
 /obj/item/explosive/proc/prime(force = FALSE)
+	if(attached_analyzer)
+		attached_analyzer.forceMove(loc)
+		attached_analyzer.anchored = TRUE
+		attached_analyzer.activate()
+
+	if(customizable && take_photo)
+		GLOB.ordnance_research.take_image(src, loc)
+
 	if(!force && (!customizable || !assembly_stage || assembly_stage < ASSEMBLY_LOCKED))
 		return
 
@@ -217,6 +244,7 @@
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob) //so we don't message for simulations
 		reagents.source_mob = WEAKREF(cause_mob)
+		reagents.cause_obj = src
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 
 	if(length(containers) < 2)

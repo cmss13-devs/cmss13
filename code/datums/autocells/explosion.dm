@@ -307,6 +307,12 @@ as having entered the turf.
 
 		M.last_damage_data = E.explosion_cause_data
 		var/explosion_source = E.explosion_cause_data?.cause_name
+
+		var/obj/item/explosive/bomb = E.explosion_cause_data?.cause_obj
+		if(bomb)
+			if(bomb.attached_analyzer)
+				bomb.attached_analyzer.add_mob(M)
+
 		var/mob/explosion_source_mob = E.explosion_cause_data?.resolve_mob()
 
 		if(explosion_source_mob)

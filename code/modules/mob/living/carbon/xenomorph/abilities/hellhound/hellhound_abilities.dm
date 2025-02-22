@@ -1,5 +1,4 @@
 /datum/action/xeno_action/activable/pounce/gorge // charge them with your spikes
-
 	name = "Gorge"
 	action_icon_state = "headbite"
 	action_type = XENO_ACTION_CLICK
@@ -11,10 +10,7 @@
 	can_be_shield_blocked = FALSE
 	var/gorge_damage = 30
 
-
-
 /datum/action/xeno_action/onclick/sense_owner // tells them where the pred is
-
 	name = "Find Owner"
 	action_icon_state = "mark_hosts"
 	action_type = XENO_ACTION_CLICK

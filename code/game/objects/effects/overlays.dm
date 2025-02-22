@@ -137,7 +137,8 @@
 /obj/effect/overlay/temp/point/big/queen/Destroy()
 	for(var/i in clients)
 		var/client/C = i
-		if(!C) continue
+		if(!C)
+			continue
 
 		C.images -= self_icon
 		LAZYREMOVE(clients, C)

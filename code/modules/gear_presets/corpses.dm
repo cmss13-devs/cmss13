@@ -385,7 +385,7 @@
 /datum/equipment_preset/corpse/administrator
 	name = "Corpse - Colony Administrator"
 	assignment = "Colonial Administrator"
-	rank = JOB_DIRECTOR
+	rank = JOB_DEPUTY_DIRECTOR
 	faction_group = FACTION_LIST_WY
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
@@ -833,6 +833,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/freelancer_patch, WEAR_ACCESSORY)
 	spawn_merc_helmet(new_human)
 
 /datum/equipment_preset/corpse/freelancer/burst

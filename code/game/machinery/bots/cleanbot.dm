@@ -39,7 +39,8 @@
 	src.botcard = new(src)
 	if(GLOB.RoleAuthority)
 		var/datum/job/ctequiv = GLOB.RoleAuthority.roles_by_name[JOB_CARGO_TECH]
-		if(ctequiv) botcard.access = ctequiv.get_access()
+		if(ctequiv)
+			botcard.access = ctequiv.get_access()
 
 	src.locked = 0 // Start unlocked so roboticist can set them to patrol.
 
@@ -183,7 +184,8 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 		if (LAZYLEN(patrol_path) < 1)
 			var/datum/radio_frequency/frequency = SSradio.return_frequency(beacon_freq)
 
-			if(!frequency) return
+			if(!frequency)
+				return
 
 			closest_dist = 9999
 			closest_loc = null
@@ -206,7 +208,8 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 
 	if(target && length(path) == 0)
 		spawn(0)
-			if(!src || !target) return
+			if(!src || !target)
+				return
 			src.path = AStar(src.loc, src.target.loc, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30, id=botcard)
 			if (!path) path = list()
 			if(length(src.path) == 0)

@@ -311,6 +311,8 @@
 			return /datum/equipment_preset/uscm_ship/uscm_medical/cmo
 		if(JOB_DOCTOR)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/doctor
+		if(JOB_FIELD_DOCTOR)
+			return /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
 		if(JOB_RESEARCHER)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 		if(JOB_NURSE)
@@ -364,7 +366,7 @@
 		if(JOB_CO_SURVIVOR)
 			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))
 				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
-			return /datum/equipment_preset/uscm_ship/commander
+			return /datum/equipment_preset/uscm_co
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]

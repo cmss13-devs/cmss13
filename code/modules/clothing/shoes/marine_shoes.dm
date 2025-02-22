@@ -52,6 +52,20 @@
 /obj/item/clothing/shoes/marine/brown/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/grey
+	icon_state = "marine_grey"
+	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are grey."
+
+/obj/item/clothing/shoes/marine/grey/knife
+	spawn_item_type = /obj/item/attachable/bayonet
+
+/obj/item/clothing/shoes/marine/urban
+	icon_state = "marine_grey_alt"
+	desc = "Don't go walkin' slow, the devil's on the loose."
+
+/obj/item/clothing/shoes/marine/urban/knife
+	spawn_item_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/marine/monkey
 	name = "monkey combat boots"
 	desc = "A sturdy pair of combat boots, the reflection of the polished leather reflects your true self."
@@ -228,6 +242,7 @@
 	name = "\improper L10 pattern combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
 	icon_state = "rmc_boots"
+	item_state = "rmc_boots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_LOW

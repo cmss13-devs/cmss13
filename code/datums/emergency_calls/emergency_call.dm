@@ -88,8 +88,10 @@
 		return FALSE
 	for(var/S in total_calls)
 		var/datum/emergency_call/C= new S()
-		if(!C) continue
-		if(C.name == "name") continue //The default parent, don't add it
+		if(!C)
+			continue
+		if(C.name == "name")
+			continue //The default parent, don't add it
 		all_calls += C
 
 //Randomizes and chooses a call datum.

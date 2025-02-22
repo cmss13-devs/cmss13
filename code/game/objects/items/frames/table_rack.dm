@@ -56,6 +56,10 @@
 	if(AC)
 		to_chat(user, SPAN_WARNING("You can't construct the table here!"))
 		return
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		return
 	var/turf/open/OT = user.loc
 	if(!(istype(OT) && OT.allow_construction))
 		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
@@ -206,6 +210,10 @@
 
 /obj/item/frame/rack/attack_self(mob/user)
 	..()
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		return
 	var/turf/open/OT = user.loc
 	if(!(istype(OT) && OT.allow_construction))
 		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))

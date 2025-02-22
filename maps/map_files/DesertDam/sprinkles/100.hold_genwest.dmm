@@ -106,6 +106,9 @@
 	pixel_y = 6;
 	pixel_x = 3
 	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
 /turf/open/floor/darkyellowcorners2/east,
 /area/desert_dam/interior/dam_interior/control_room)
 "gR" = (
@@ -655,6 +658,9 @@
 /obj/structure/largecrate/random/mini{
 	pixel_x = 4;
 	pixel_y = 2
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 32
 	},
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/dam_interior/smes_backup)

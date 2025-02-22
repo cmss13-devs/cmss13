@@ -253,6 +253,15 @@
 /obj/structure/machinery/big_computers/computerbrown/computer3,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
+"aQ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 30
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/water_treatment_one/garage)
 "aZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -379,6 +388,9 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
 /turf/open/floor/prison/red/northeast,
 /area/desert_dam/building/water_treatment_one/lobby)
 "fO" = (
@@ -2302,7 +2314,7 @@ fz
 ft
 In
 Wk
-og
+aQ
 Ml
 op
 kx

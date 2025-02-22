@@ -75,6 +75,12 @@
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"kW" = (
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "ll" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/burnt_platingdmg3,
@@ -232,6 +238,9 @@
 /obj/structure/bed/sofa{
 	icon_state = "couch_hori3"
 	},
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "Cm" = (
@@ -268,6 +277,9 @@
 "Lw" = (
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = 3
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
@@ -512,7 +524,7 @@ Ov
 Ov
 Ov
 iv
-Uv
+kW
 NB
 gL
 fL

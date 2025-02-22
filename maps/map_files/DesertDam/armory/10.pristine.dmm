@@ -22,12 +22,11 @@
 /turf/open/floor/prison/darkred2/northeast,
 /area/desert_dam/building/security/armory)
 "h" = (
-/obj/item/clothing/mask/gas/swat,
-/obj/item/clothing/mask/gas/swat,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
-/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/mask/gas/swat,
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/building/security/armory)
 "i" = (
@@ -52,6 +51,9 @@
 "n" = (
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
 	},
 /turf/open/floor/prison/darkredcorners2/east,
 /area/desert_dam/building/security/armory)
@@ -97,14 +99,6 @@
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/prison/floor_marked,
 /area/desert_dam/building/security/armory)
-"w" = (
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/desert_dam/building/security/armory)
 "x" = (
 /turf/template_noop,
 /area/template_noop)
@@ -139,11 +133,11 @@
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/armory)
 "J" = (
-/obj/item/clothing/suit/storage/marine/veteran/cmb,
-/obj/item/clothing/suit/storage/marine/veteran/cmb,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
+/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/suit/armor/riot,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
 "K" = (
@@ -202,13 +196,11 @@
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
 "Y" = (
-/obj/item/clothing/under/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
+/obj/item/clothing/head/helmet/riot/vintage_riot,
+/obj/item/clothing/head/helmet/riot/vintage_riot,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/building/security/armory)
 "Z" = (
@@ -256,7 +248,7 @@ d
 d
 d
 H
-w
+J
 a
 "}
 (4,1,1) = {"

@@ -1,4 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ab" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "bg" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -186,14 +199,6 @@
 /obj/item/tool/pickaxe/drill,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"oP" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "Emergency NanoMed";
-	pixel_x = 30;
-	req_access = null
-	},
-/turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "oV" = (
 /turf/open/desert/dirt/desert_transition_edge1,
@@ -769,7 +774,7 @@ BH
 BH
 BH
 BH
-bk
+aa
 Py
 Fp
 pF
@@ -869,7 +874,7 @@ BH
 BH
 BH
 BH
-pF
+ab
 uX
 uX
 pF
@@ -969,7 +974,7 @@ BH
 BH
 BH
 BH
-oP
+pF
 pF
 pF
 uv

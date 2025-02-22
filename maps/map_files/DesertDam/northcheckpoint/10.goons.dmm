@@ -326,6 +326,9 @@
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "FL" = (

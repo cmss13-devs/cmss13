@@ -2329,6 +2329,9 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "Tl" = (
@@ -2352,6 +2355,9 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "TR" = (

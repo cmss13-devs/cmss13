@@ -51,6 +51,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
 /turf/open/floor/platingdmg3,
 /area/desert_dam/building/security/armory)
 "ri" = (
@@ -154,11 +157,11 @@
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
 "JT" = (
-/obj/item/clothing/under/marine/veteran/cmb,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null;
 	opened = 1
 	},
+/obj/item/clothing/head/helmet/riot/vintage_riot,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/building/security/armory)
 "Kc" = (
@@ -189,11 +192,11 @@
 /turf/open/floor/prison/darkredcorners2/north,
 /area/desert_dam/building/security/armory)
 "Od" = (
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null;
 	opened = 1
 	},
+/obj/item/clothing/suit/armor/riot,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
 "Oj" = (

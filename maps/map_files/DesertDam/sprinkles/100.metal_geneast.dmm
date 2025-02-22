@@ -140,10 +140,16 @@
 "T" = (
 /obj/structure/machinery/floodlight,
 /obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/green/north,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "W" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/green/north,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "Y" = (

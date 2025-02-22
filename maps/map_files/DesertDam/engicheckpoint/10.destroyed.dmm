@@ -1,4 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aq" = (
 /turf/closed/wall,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -246,14 +253,6 @@
 "qf" = (
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"qg" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	name = "Emergency NanoMed";
-	pixel_x = 30;
-	req_access = null
-	},
-/turf/open/floor/interior/wood/alt,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "qr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -545,6 +544,9 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
 	pixel_y = -8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -956,7 +958,7 @@ aq
 aq
 aq
 aq
-Nk
+aa
 gQ
 sl
 JM
@@ -1156,7 +1158,7 @@ aq
 aq
 aq
 aq
-qg
+JM
 JM
 Pw
 qY

@@ -413,8 +413,8 @@
 "qX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/security/marshal/riot,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "rc" = (
@@ -804,6 +804,9 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl1"
 	},
+/obj/item/ammo_magazine/smg/mp5{
+	current_rounds = 0
+	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "Eg" = (
@@ -1065,6 +1068,9 @@
 	dir = 1
 	},
 /obj/item/trash/cigbutt,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 30
+	},
 /turf/open/floor/white,
 /area/template_noop)
 "Mc" = (

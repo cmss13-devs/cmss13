@@ -102,7 +102,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_L_HAND)
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/engineer
@@ -122,7 +122,7 @@
 	switch(choice)
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/kutjevo/drysuit(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/kutjevo (new_human), WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/kutjevo(new_human), WEAR_FACE)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/black(new_human), WEAR_JACKET)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
@@ -149,7 +149,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_L_HAND)
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate_security
@@ -214,7 +214,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/tox(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(new_human), WEAR_IN_BACK)
 	..()
 
@@ -238,5 +238,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe, WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_L_HAND)
 	..()

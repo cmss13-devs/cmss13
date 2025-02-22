@@ -9,6 +9,7 @@
 	if(undefibbable && stat == DEAD || spawned_corpse)
 		GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
 		SShuman.processable_human_list -= src
+		layer = OBJ_LAYER
 		if(hardcore)
 			qdel(src) //We just delete the corpse on WO to keep things simple and lag-free
 		return

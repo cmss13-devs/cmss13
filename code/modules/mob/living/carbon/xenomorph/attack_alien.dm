@@ -1031,3 +1031,6 @@
 	playsound(loc, "alien_claw_metal", 25, 1)
 	attacked()
 	return XENO_ATTACK_ACTION
+
+
+#undef STATE_DESTROYED

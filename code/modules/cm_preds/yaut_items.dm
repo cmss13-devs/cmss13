@@ -1176,7 +1176,7 @@
 /obj/item/tool/yautja_cleaner/afterattack(obj/item/target, mob/user, proximity)
 	if(!isitem(target))
 		return
-	if(src.loc != user) //Early returns if the cleaner has been inserted into a container. Whether or not this happens is based on the user's intent; see storage.dm for info.
+	if(loc != user) //Early returns if the cleaner has been inserted into a container. Whether or not this happens is based on the user's intent; see storage.dm for info.
 		return
 	if(!can_dissolve(target, user))
 		return

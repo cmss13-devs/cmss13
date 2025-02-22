@@ -25,25 +25,25 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 	rank = check_jobban_path(rank)
 	GLOB.jobban_keylist[rank][ckey] = "Reason Unspecified"
 
-//returns a reason if M is banned from rank, returns 0 otherwise
-/proc/jobban_isbanned(mob/M, rank, datum/entity/player/P = null)
+/// Returns a reason if player (mob) is banned from rank, returns null otherwise
+/proc/jobban_isbanned(mob/player, rank, datum/entity/player/player_entity = null)
 	if(!rank)
 		return "Non-existant job"
 	rank = ckey(rank)
-	if(P)
+	if(player_entity)
 		// asking for a friend
-		if(!P.jobbans_loaded)
+		if(!player_entity.jobbans_loaded)
 			return "Not yet loaded"
-		var/datum/entity/player_job_ban/PJB = P.job_bans[rank]
-		return PJB ? PJB.text : null
-	if(M)
-		if(!M.client || !M.client.player_data || !M.client.player_data.jobbans_loaded)
+		var/datum/entity/player_job_ban/job_ban = player_entity.job_bans[rank]
+		return job_ban ? job_ban.text : null
+	if(player)
+		if(!player.client || !player.client.player_data || !player.client.player_data.jobbans_loaded)
 			return "Not yet loaded"
 		if(guest_jobbans(rank))
-			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(M.key))
+			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(player.key))
 				return "Guest Job-ban"
-		var/datum/entity/player_job_ban/PJB = M.client.player_data.job_bans[rank]
-		return PJB ? PJB.text : null
+		var/datum/entity/player_job_ban/job_ban = player.client.player_data.job_bans[rank]
+		return job_ban ? job_ban.text : null
 
 /proc/jobban_loadbanfile()
 	var/savefile/S=new("data/job_new.ban")

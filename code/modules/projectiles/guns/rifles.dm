@@ -612,6 +612,7 @@
 	. = ..()
 	if(iff_enabled)
 		modify_fire_delay(FIRE_DELAY_TIER_12)
+		modify_burst_delay(FIRE_DELAY_TIER_12)
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
 	linked_human = H

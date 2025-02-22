@@ -436,3 +436,27 @@
   realforest2001:
   - bugfix: You can no longer place C4 or Breaching Charges onto objects that are
       explosion proof.
+2025-02-22:
+  Drathek:
+  - spellcheck: Fixed a missing 'and' in acider strain purchase message
+  Nomoresolvou:
+  - bugfix: Fixed preds being unable to use abilities after SDing a thrall
+  - bugfix: Thralls are now set back to humans and can shoot guns again after being
+      unthralled
+  - code_imp: removed a couple one letter vars
+  Red-byte3D:
+  - code_imp: Removed all var/lol
+  - bugfix: Oreboxes are no longer unslashable and unbreakable
+  Steelpoint:
+  - mapadd: IASF Outpost Souter has been added as a nightmare insert for Hybrisa Prospera.
+      Part of the larger detachment of Imperial Armed Space Forces that defended the
+      colony. The IASF had been forced to withdraw prior to the events of the xenomorph
+      outbreak, however this insert represents a timeline where the IASF had not fully
+      completed their withdrawal.
+  - code_imp: Added a set of transparent versions of the TWE cosmetic Dropship for
+      mappers to use, instead of the older version that leaves a void overlay.
+  Steelpoint, Blundir:
+  - rscadd: Adds a UPP Squad gun and ammo vendor. Similar in function to the USCM
+      squad vendor. Supplies UPP soldiers with their weapons and munitions.
+  - rscadd: Shotgun shell boxes for UPP shotgun ammunition have been added to the
+      game, they have also been added to all UPP vendors.

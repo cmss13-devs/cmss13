@@ -833,6 +833,12 @@
 /obj/structure/machinery/landinglight/ds2
 	id = "USS Almayer Dropship 2" // ID for landing zone
 
+/obj/structure/machinery/landinglight/upp_ds1
+	id = "SSV Rostock Dropship 1" // ID for landing zone
+
+/obj/structure/machinery/landinglight/upp_ds2
+	id = "SSV Rostock Dropship 2" // ID for landing zone
+
 /obj/structure/machinery/landinglight/proc/turn_on()
 	icon_state = initial(icon_state) + "0"
 	set_light(2)
@@ -858,6 +864,30 @@
 	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaythree/turn_on()
 	icon_state = initial(icon_state) + "3"
 	set_light(2)
 

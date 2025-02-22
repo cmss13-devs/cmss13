@@ -84,7 +84,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/w_y_whiteout/medic
-	name = "Whiteout Team Medic"
+	name = "Whiteout Team Medic (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Medic"
 	role_comm_title = "WO-TM"
@@ -281,7 +281,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic
-	name = "Whiteout Team Operative Medic"
+	name = "Whiteout Team Medic"
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic/load_gear(mob/living/carbon/human/new_human)
 	// back

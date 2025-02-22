@@ -363,6 +363,7 @@
 
 		/obj/item/storage/box/matches = 5,
 		/obj/item/storage/fancy/cigar/matchbook/exec_select = 10,
+		/obj/item/storage/fancy/cigar/matchbook/balaji_imperial = 10,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 10,
 		/obj/item/tool/lighter/random = 20,
 		/obj/item/tool/lighter/zippo/black = 5,
@@ -379,6 +380,7 @@
 
 		/obj/item/storage/box/matches = 2,
 		/obj/item/storage/fancy/cigar/matchbook/exec_select = 7,
+		/obj/item/storage/fancy/cigar/matchbook/balaji_imperial = 6,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 5,
 		/obj/item/tool/lighter/random = 3,
 		/obj/item/tool/lighter/zippo/black = 15,

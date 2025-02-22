@@ -465,7 +465,7 @@
 		/obj/item/tool/hatchet = null,
 		/obj/item/tool/hatchet = null,
 		/obj/item/tool/hatchet = null,
-		/obj/item/storage/box/MRE = null,
+		/obj/item/storage/box/mre = null,
 		/obj/item/clothing/glasses/night/m42_night_goggles/upp = null,
 		/obj/item/storage/box/handcuffs = null,
 		/obj/item/storage/pill_bottle/happy = null,
@@ -724,7 +724,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/proc/add_ice_colony_survivor_equipment(mob/living/carbon/human/new_human)
 	if((SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD]) && (SSmapping.configs[GROUND_MAP].map_name != MAP_CORSAT))

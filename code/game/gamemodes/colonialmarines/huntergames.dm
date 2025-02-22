@@ -34,7 +34,7 @@
 \
 								50; /obj/item/storage/firstaid/regular, \
 								50; /obj/item/storage/firstaid/fire, \
-								75; /obj/item/storage/box/wy_mre, \
+								75; /obj/item/storage/box/mre/wy, \
 \
 								100; /obj/item/storage/backpack/commando, \
 								100; /obj/item/storage/backpack/yautja, \

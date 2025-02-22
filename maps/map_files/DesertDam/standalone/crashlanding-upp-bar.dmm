@@ -252,6 +252,10 @@
 	icon_state = "paper_words";
 	item_state = "paper_words"
 	},
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = -10;
+	pixel_y = 24
+	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "fk" = (

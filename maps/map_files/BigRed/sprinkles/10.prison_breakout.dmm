@@ -956,7 +956,7 @@
 /area/bigredv2/outside/marshal_office)
 "yY" = (
 /obj/item/ammo_casing/shell,
-/obj/item/storage/box/MRE{
+/obj/item/storage/box/mre{
 	pixel_x = -1;
 	pixel_y = -6
 	},
@@ -1305,7 +1305,7 @@
 /area/bigredv2/outside/marshal_office)
 "UU" = (
 /obj/item/ammo_casing/shell,
-/obj/item/storage/box/MRE{
+/obj/item/storage/box/mre{
 	pixel_x = 3;
 	pixel_y = 3
 	},

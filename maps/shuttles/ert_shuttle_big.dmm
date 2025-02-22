@@ -43,9 +43,9 @@
 	pixel_x = -5;
 	pixel_y = 5
 	},
-/obj/item/storage/box/wy_mre,
-/obj/item/storage/box/wy_mre,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
+/obj/item/storage/box/mre/wy,
+/obj/item/storage/box/mre/wy,
 /obj/item/tool/pen,
 /obj/item/tool/pen,
 /obj/item/tool/pen,

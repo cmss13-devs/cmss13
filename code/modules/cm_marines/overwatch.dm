@@ -487,7 +487,7 @@
 		if("tacmap_unpin")
 			tacmap.tgui_interact(user)
 		if("dropbomb")
-			if(!params["x"] || !params["y"] || !params["z"])
+			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
 			x_bomb = text2num(params["x"])
 			y_bomb = text2num(params["y"])
@@ -500,7 +500,7 @@
 				handle_bombard(user)
 
 		if("dropsupply")
-			if(!params["x"] || !params["y"] || !params["z"])
+			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
 			x_supply = text2num(params["x"])
 			y_supply = text2num(params["y"])

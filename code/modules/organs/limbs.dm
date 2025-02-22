@@ -978,8 +978,8 @@ This function completely restores a damaged organ to perfect condition.
 
 			if(organ)
 				//Throw organs around
-				var/lol = pick(GLOB.cardinals)
-				step(organ,lol)
+				var/dir_to_throw = pick(GLOB.cardinals)
+				step(organ,dir_to_throw)
 
 		owner.update_body() //Among other things, this calls update_icon() and updates our visuals.
 		owner.update_med_icon()

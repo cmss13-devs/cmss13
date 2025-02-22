@@ -46,7 +46,7 @@
 		node.add_child(src)
 		hivenumber = linked_hive.hivenumber
 		spread_on_semiweedable = node.spread_on_semiweedable
-		if(weed_strength < WEED_LEVEL_HIVE && spread_on_semiweedable)
+		if(weed_strength == WEED_LEVEL_HARDY && spread_on_semiweedable)
 			name = "hardy [name]"
 			health = WEED_HEALTH_HARDY
 		block_structures = node.block_structures
@@ -55,7 +55,7 @@
 		linked_hive = GLOB.hive_datum[hivenumber]
 
 	set_hive_data(src, hivenumber)
-	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
+	if(spread_on_semiweedable && weed_strength == WEED_LEVEL_HARDY)
 		if(color)
 			var/list/RGB = ReadRGB(color)
 			RGB[1] = clamp(RGB[1] + 35, 0, 255)

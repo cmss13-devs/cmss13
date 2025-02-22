@@ -257,7 +257,7 @@ directive is properly returned.
 		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
 		return
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
-	to_chat(user, examine_block(examine_strings.Join("\n")))
+	to_chat(user, boxed_message(examine_strings.Join("\n")))
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()

@@ -80,6 +80,9 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/m10,
 		/obj/item/storage/belt/gun/xm51,
+		/obj/item/storage/belt/knifepouch,
+		/obj/item/storage/belt/utility/construction,
+		/obj/item/storage/belt/gun/mortarbelt,
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
 
@@ -461,6 +464,29 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 2
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/prop/prop_gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/storage/bible,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt/gun/type47,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/belt/gun/flaregun,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/storage/belt/gun/m39,
+		/obj/item/storage/belt/gun/m10,
+		/obj/item/storage/belt/gun/xm51,
+		/obj/item/storage/belt/knifepouch,
+	)
 
 /obj/item/clothing/suit/storage/marine/light/padded
 	icon_state = "L1"
@@ -618,6 +644,22 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/prop/prop_gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/device/flashlight,
+		/obj/item/storage/bible,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/attachable/bayonet,
+		/obj/item/weapon/sword/machete,
+	)
 	light_power = 4
 	light_range = 5
 

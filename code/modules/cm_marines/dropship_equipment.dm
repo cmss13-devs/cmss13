@@ -121,6 +121,8 @@
 		return
 	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
 		return
+	if(user.action_busy)
+		return
 	if(old_loc != src.loc)
 		return
 	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)

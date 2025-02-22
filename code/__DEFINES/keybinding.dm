@@ -123,6 +123,7 @@
 #define COMSIG_KB_MOB_TARGETNEXT_DOWN "keybinding_mob_targetnext_down"
 #define COMSIG_KB_MOB_TARGETPREV_DOWN "keybinding_mob_targetprev_down"
 #define COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN "keybinding_mob_blockmovement_down"
+#define COMSIG_KB_MOB_LOOK_UP "keybinding_mob_look_up"
 
 //Robot
 #define COMSIG_KB_SILICON_TOGGLEMODULEONE_DOWN "keybinding_silicon_togglemoduleone_down"

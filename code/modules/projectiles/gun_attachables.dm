@@ -3471,12 +3471,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/extinguisher/get_examine_text(mob/user)
 	. = ..()
 	if(internal_extinguisher)
-		. += SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!")
+		. += SPAN_NOTICE("It has [floor(internal_extinguisher.reagents.total_volume)] unit\s of water left!")
 		return
 	. += SPAN_WARNING("It's empty.")
 
 /obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(slot)
-	return "It has a [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"
+	return "It has a [icon2html(src)] [name] ([floor(internal_extinguisher.reagents.total_volume)]/[internal_extinguisher.max_water]) mounted underneath.<br>"
 
 /obj/item/attachable/attached_gun/extinguisher/New()
 	..()

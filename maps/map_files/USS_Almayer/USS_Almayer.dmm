@@ -488,6 +488,13 @@
 /obj/structure/window/reinforced/toughened,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
+"abl" = (
+/obj/effect/landmark/start/doctor,
+/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/start/field_doctor,
+/obj/effect/landmark/late_join/field_doctor,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "abn" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -99940,7 +99947,7 @@ bwG
 rUq
 rUq
 sab
-sab
+abl
 izk
 pQc
 cWr

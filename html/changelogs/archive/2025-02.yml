@@ -385,3 +385,24 @@
       missing
   zzzmike:
   - qol: stops the economy inflation announcements during red/delta alert
+2025-02-18:
+  Ansekishoku:
+  - balance: adds AP mags for M4A3 pistol to the squad vendors.
+  - rscadd: A new Field Doctor job to end the arguments between doctors about who
+      wants to deploy.
+  Drathek Zenith:
+  - rscadd: Colony lights and traffic lights can be exploded into a stump now
+  - imageadd: Lightpost stumps by Zenith
+  Red-byte3D:
+  - bugfix: Fixes double examine text on hivelord when you examine them as a xeno.
+  - spellcheck: Rewrites Queen and Hivelord xeno examine text
+  - rscadd: Banishment now does damage per tick
+  - bugfix: You can no longer put down xeno resin marks in hyperspace
+  - code_imp: Fixes some bugs with fire ob admin proc
+  - bugfix: Towels no longer have lids
+2025-02-19:
+  Red-byte3D:
+  - bugfix: Fixes fractional numbers with extinguishers
+  - bugfix: Queen expand weeds now properly expands weeds as normal weeds instead
+      of the weed type it expands from
+  - code_imp: one letter vars replaced in code

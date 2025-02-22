@@ -1099,7 +1099,7 @@
 
 /obj/item/tool/yautja_cleaner
 	name = "cleanser gel vial"
-	desc = "Used for dissolving the gear of the fallen whilst in the field."
+	desc = "A small vial containing a liquid capable of dissolving the gear of the fallen whilst in the field."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "blue_gel"
 	force = 0
@@ -1153,8 +1153,8 @@
 	target.add_filter("dissolve_gel", 1, list("type" = "outline", "color" = "#3333FFff", "size" = 1))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), target), 15 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[target] crumbles into pieces!")), 15 SECONDS)
-	ADD_TRAIT(target, TRAIT_ITEM_DISSOLVING, TRAIT_SOURCE_ITEM) //Used to modify the item's description.
-	log_attack("[key_name(user)] dissolved [target] with Yautja Cleaner!")
+	ADD_TRAIT(target, TRAIT_ITEM_DISSOLVING, TRAIT_SOURCE_ITEM)
+	log_attack("[key_name(user)] dissolved [target] with Yautja Cleaner.")
 
 /obj/item/storage/medicomp
 	name = "medicomp"

@@ -72,7 +72,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	var/no_weed_slowdown = 0
 	icon_xeno = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 	icon_xenonid = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 
@@ -99,7 +98,7 @@
 /mob/living/carbon/xenomorph/hellhound/Login()
 	. = ..()
 	if(SSticker.mode) SSticker.mode.xenomorphs -= mind
-	to_chat(src, "<span style='font-weight: bold; color: red;'>Attention!! You are playing as a hellhound. This is a roleplay role which means you must maintain a high degree of roleplay or you risk getting job banned. LISTEN TO THE YAUTJA THAT CALLED YOU. Their order takes priority. If you dont, you will be ghosted and replaced and potentially punished if you are breaking the rules. If the yautja who called you dies, try to listen to other yautja or otherwise ask for one to give you a fight that will surely end in your demise. You are loyal to yautja above all else, do not act without their permission and do not disturb the round too much!</span>")
+	to_chat(src, SPAN_RED("Attention!! You are playing as a hellhound. This is a roleplay role which means you must maintain a high degree of roleplay or you risk getting job banned. LISTEN TO THE YAUTJA THAT CALLED YOU. Their order takes priority. If you dont, you will be ghosted and replaced and potentially punished if you are breaking the rules. If the yautja who called you dies, try to listen to other yautja or otherwise ask for one to give you a fight that will surely end in your demise. You are loyal to yautja above all else, do not act without their permission and do not disturb the round too much!"))
 
 
 /mob/living/carbon/xenomorph/hellhound/death(cause, gibbed)
@@ -132,7 +131,7 @@
 
 /mob/living/carbon/xenomorph/hellhound/proc/handle_weed_slowdown(mob/user, list/slowdata)
 	SIGNAL_HANDLER
-	slowdata["movement_slowdown"] *= no_weed_slowdown
+	slowdata["movement_slowdown"] *= 0
 
 /mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir)
 	new /obj/effect/bloodsplatter/hellhound(loc, splatter_dir)
@@ -160,19 +159,14 @@
 	. = ..()
 	var/datum/behavior_delegate/hellhound_base/owner = behavior_delegate
 	if(ishuman_strict(user))
-		. += "\improper You can barely make out the symbols but it reads out ⵍⴻⴱⵔⵓ" // those who know
+		. += "You can barely make out the symbols but it reads out ⵍⴻⴱⵔⵓ" // those who know
 	else if(isyautja(user))
 		if(!owner.pred_owner)
 			. += "It's not owned by anyone."
 			return
 		. += "It's owner is [owner.pred_owner.real_name]!"
 
-
-
-
 /datum/action/xeno_action/activable/pounce/gorge/additional_effects(mob/living/target_living)
-
-
 	var/mob/living/carbon = target_living
 	var/mob/living/carbon/xenomorph/hellhound/hellhound_gorger = owner
 
@@ -180,9 +174,6 @@
 	carbon.apply_armoured_damage(gorge_damage, BRUTE)
 	playsound(hellhound_gorger, "giant_lizard_growl", 30)
 	playsound(carbon, "alien_bite", 30)
-
-
-
 
 /datum/action/xeno_action/onclick/sense_owner/use_ability(atom/layer)
 	var/mob/living/carbon/xenomorph/hellhound/xeno = owner
@@ -199,9 +190,9 @@
 	if(hound_owner.pred_owner.z != xeno.z)
 		to_chat(xeno, SPAN_XENOWARNING("You do not sense your owner in this place."))
 		return
-	else
-		for(var/mob/living/carbon/viewers in orange(xeno, 5))
-			to_chat(viewers, SPAN_WARNING("[xeno] sniffs the ground in a hurry, what the hell.."))
+
+	for(var/mob/living/carbon/viewers in orange(xeno, 5))
+		to_chat(viewers, SPAN_WARNING("[xeno] sniffs the ground in a hurry, what the hell.."))
 		to_chat(xeno, SPAN_XENOWARNING("You sniff the ground in a hurry to find where your master is."))
 		to_chat(xeno, SPAN_XENOWARNING("Your owner is [dist] meters to the [dir2text(direction)]"))
 

@@ -372,6 +372,22 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
+
+/obj/structure/ore_box/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"))
+		playsound(src, 'sound/effects/woodhit.ogg')
+		to_chat(xeno, SPAN_WARNING("We slice the [src] apart!"))
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+
+
 /obj/structure/computer3frame
 	density = TRUE
 	anchored = FALSE

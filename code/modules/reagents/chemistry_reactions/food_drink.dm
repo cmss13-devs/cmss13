@@ -188,7 +188,7 @@
 	result_amount = 5
 
 /datum/chemical_reaction/chocolate_beverage
-	name = "Hazelnut Beverage"
+	name = "Chocolate Beverage"
 	id = "chocolate_beverage"
 	result = "coco_drink"
 	required_reagents = list("chocolate_beverage" = 1, "water" = 5)

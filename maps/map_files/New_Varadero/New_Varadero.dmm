@@ -174,6 +174,12 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior/beach_bar)
+"aaE" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
 "aaG" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -32038,7 +32044,7 @@ srg
 srg
 xCn
 fzc
-jQa
+aaE
 hdh
 jQa
 jQa

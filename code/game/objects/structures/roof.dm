@@ -34,7 +34,7 @@
 			neighbor = locate() in adjacent_loc
 			if(!neighbor)
 				neighbor = new(adjacent_loc)
-	return INITIALIZE_HINT_LATELOAD
+	return INITIALIZE_HINT_ROUNDSTART
 
 /obj/structure/roof/LateInitialize() //we use late init to allow for lazy nodes to spawn first on mapload
 	. = ..()
@@ -51,9 +51,9 @@
 /obj/structure/roof/Destroy(force, ...)
 	if(linked_master)
 		linked_master.remove_roof(src)
-	for(var/icon in GLOB.player_list)
-		var/mob/mob = icon
-		mob.client.images -= normal_image
+	linked_master = null;
+	for(var/mob/mob as anything in GLOB.player_list)
+		mob.client?.images -= normal_image
 	return ..()
 
 /obj/structure/roof/proc/add_default_image(subsystem, mob/mob)
@@ -65,9 +65,12 @@
 		return
 	master.connected_roof += src
 	linked_master = master
+	var/list/unprocesed_roofs = list()
 	for(var/direction in CARDINAL_ALL_DIRS)
 		for(var/obj/structure/roof/roof in get_step(src,direction))
-			roof.link_master(master)
+			if(!roof.linked_master)
+				unprocesed_roofs |= roof
+	return unprocesed_roofs
 
 
 /obj/effect/roof_node //used for observing if mob is near the roof
@@ -96,9 +99,12 @@
 		return
 	master.connected_nodes += src
 	linked_master = master
+	var/list/nerby_nodes = list()
 	for(var/direction in CARDINAL_ALL_DIRS)
 		for(var/obj/effect/roof_node/node in get_step(src,direction))
-			node.link_master(master)
+			if(!node.linked_master)
+				nerby_nodes += node
+	return nerby_nodes
 
 
 /datum/roof_master_node //maintains one block of roof
@@ -111,7 +117,7 @@
 	if(connected_nodes)
 		for(var/obj/effect/roof_node/roof_node in connected_nodes)
 			qdel(roof_node)
-	if(connected_nodes)
+	if(connected_roof)
 		for(var/obj/structure/roof/roof in connected_roof)
 			qdel(roof)
 	return ..()
@@ -154,10 +160,27 @@
 	remove_under_roof(living)
 
 /datum/roof_master_node/proc/connect(location)
+	var/list/unprocesed_nodes = list()
 	for(var/obj/effect/roof_node/node in location)
-		node.link_master(src)
+		unprocesed_nodes |= node
+
+
+	while(length(unprocesed_nodes))
+		var/obj/effect/roof_node/node = popleft(unprocesed_nodes)
+		var/list/new_nodes = node.link_master(src)
+		if(new_nodes)
+			unprocesed_nodes += new_nodes
+
+	var/list/unprocesed_roofs = list()
+
 	for(var/obj/structure/roof/roof in location)
-		roof.link_master(src)
+		unprocesed_roofs |= roof
+
+	while(length(unprocesed_roofs))
+		var/obj/structure/roof/roof = popleft(unprocesed_roofs)
+		var/list/new_roofs = roof.link_master(src)
+		if(new_roofs)
+			unprocesed_roofs += new_roofs
 
 /datum/roof_master_node/proc/remove_roof(obj/structure/roof/roof) //roof tile got removed
 	connected_roof -= roof

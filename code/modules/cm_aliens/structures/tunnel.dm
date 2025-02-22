@@ -246,19 +246,18 @@
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
 
+	if(M.banished)
+		return
+
 	if(M.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
 	else if(islarva(M)) //Larva can zip through near-instantly, they are wormlike after all
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
 	if(M.mob_size >= MOB_SIZE_BIG)
-		if(M.banished)
-			return
 		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into [src]."),
 			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
 	else
-		if(M.banished)
-			return
 		M.visible_message(SPAN_XENONOTICE("[M] begins crawling down into [src]."),
 			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
 

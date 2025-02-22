@@ -69,6 +69,8 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("The Agile Drone", 0, /obj/item/falcon_drone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Steadfast Shield", 0, /obj/item/weapon/shield/riot/yautja, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("The Gilded Warlord’s Aegis", 0, /obj/item/weapon/shield/riot/yautja/ancient, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("The Dread Hunter’s Bulwark", 0, /obj/item/weapon/shield/riot/yautja/ancient/alt, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Formidable Plate Armor", 0, /obj/item/clothing/suit/armor/yautja/hunter/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("Clothing Accessory (CHOOSE 1)", 0, null, null, null),

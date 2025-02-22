@@ -587,6 +587,19 @@
 /obj/item/device/flashlight/lantern/on
 	on = TRUE
 
+/obj/item/device/flashlight/lantern/yautja
+	name = "lantern"
+	icon_state = "yautja"
+	item_state = ""
+	light_range = 6 // luminosity when on
+	desc = "A rugged alien lantern with a metallic frame, emitting a steady red glow. Its light has an unsettling, otherworldly aura."
+	light_color = "#f03939"
+
+/obj/item/device/flashlight/lantern/yautja/on
+	name = "lantern"
+	desc = "A rugged alien lantern with a metallic frame, emitting a steady red glow. Its light has an unsettling, otherworldly aura."
+	on = TRUE
+
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
 	name = "signal flare"

@@ -712,7 +712,7 @@
 
 	if(!turf_to_get || turf_to_get.is_weedable() < FULLY_WEEDABLE || turf_to_get.density || (turf_to_get.z != xeno.z))
 		to_chat(xeno, SPAN_XENOWARNING("You can't do that here."))
-
+		return
 
 	var/area/area_to_get = get_area(turf_to_get)
 	if(isnull(area_to_get) || !area_to_get.is_resin_allowed)

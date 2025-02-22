@@ -224,7 +224,6 @@
 /obj/item/reagent_container/food/snacks/fishable/fish/salmon/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 4)
-	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/fishable/fish/white_perch
 
@@ -242,7 +241,7 @@
 /obj/item/reagent_container/food/snacks/fishable/fish/white_perch/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 4)
-	bitesize = 5
+
 //--------------------//
 //Urchins, spikey bottom-feeding creatures
 /obj/item/reagent_container/food/snacks/fishable/urchin/purple

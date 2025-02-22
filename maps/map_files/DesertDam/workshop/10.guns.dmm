@@ -17,8 +17,8 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
 "j" = (
-/obj/structure/surface/rack,
-/obj/item/storage/box/lights/mixed,
+/obj/structure/closet/crate,
+/obj/item/defenses/handheld/sentry/shotgun,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
 "m" = (

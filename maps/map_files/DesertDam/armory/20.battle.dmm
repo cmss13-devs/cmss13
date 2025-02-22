@@ -8,11 +8,6 @@
 "cq" = (
 /turf/open/floor/prison/darkred2/southeast,
 /area/desert_dam/building/security/armory)
-"dt" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/prison/darkred2,
-/area/desert_dam/building/security/staffroom)
 "dU" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null;
@@ -20,10 +15,6 @@
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
-"eC" = (
-/obj/structure/machinery/vending/security,
-/turf/open/floor/prison/darkredfull2,
-/area/desert_dam/building/security/staffroom)
 "iV" = (
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/armory)
@@ -68,10 +59,6 @@
 "rB" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
-"sf" = (
-/obj/structure/machinery/light,
-/turf/open/floor/prison/darkred2,
-/area/desert_dam/building/security/staffroom)
 "ss" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
@@ -104,12 +91,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
-"za" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/security/staffroom)
 "zl" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -121,12 +102,6 @@
 /obj/item/explosive/plastic/breaching_charge/rubber,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
-"Bz" = (
-/turf/open/floor/prison/darkredcorners2/west,
-/area/desert_dam/building/security/staffroom)
-"Dm" = (
-/turf/open/floor/prison/darkred2,
-/area/desert_dam/building/security/staffroom)
 "DO" = (
 /turf/open/floor/prison/darkredcorners2/east,
 /area/desert_dam/building/security/armory)
@@ -149,10 +124,8 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "Ff" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/prison/darkred2/southwest,
-/area/desert_dam/building/security/staffroom)
+/turf/template_noop,
+/area/template_noop)
 "Fk" = (
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/armory)
@@ -230,12 +203,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
-"OT" = (
-/turf/open/floor/prison/darkred2/southeast,
-/area/desert_dam/building/security/staffroom)
-"Ps" = (
-/turf/open/floor/prison,
-/area/desert_dam/building/security/staffroom)
 "QR" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
@@ -291,7 +258,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/landmark/corpsespawner/security/marshal,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/floor/prison/floor_marked,
 /area/desert_dam/building/security/armory)
 "XV" = (
@@ -306,7 +273,7 @@
 /area/desert_dam/building/security/armory)
 
 (1,1,1) = {"
-Bz
+Ff
 Ff
 ri
 ri
@@ -318,8 +285,8 @@ ri
 ri
 "}
 (2,1,1) = {"
-Ps
-dt
+Ff
+Ff
 ri
 mY
 JT
@@ -330,7 +297,7 @@ dU
 ri
 "}
 (3,1,1) = {"
-Ps
+Ff
 Rp
 ri
 rf
@@ -342,7 +309,7 @@ Od
 ri
 "}
 (4,1,1) = {"
-Ps
+Ff
 Gv
 lQ
 XY
@@ -354,7 +321,7 @@ OJ
 ri
 "}
 (5,1,1) = {"
-Ps
+Ff
 XV
 ri
 wd
@@ -366,8 +333,8 @@ ri
 ri
 "}
 (6,1,1) = {"
-za
-sf
+Ff
+Ff
 ri
 XS
 QR
@@ -378,8 +345,8 @@ It
 ri
 "}
 (7,1,1) = {"
-za
-Dm
+Ff
+Ff
 ri
 mJ
 uQ
@@ -390,8 +357,8 @@ Xb
 ri
 "}
 (8,1,1) = {"
-za
-Dm
+Ff
+Ff
 ri
 bx
 iV
@@ -402,8 +369,8 @@ SO
 ri
 "}
 (9,1,1) = {"
-za
-Dm
+Ff
+Ff
 ri
 ri
 zl
@@ -414,8 +381,8 @@ ri
 ri
 "}
 (10,1,1) = {"
-XV
-OT
+Ff
+Ff
 ri
 wy
 iV
@@ -426,8 +393,8 @@ Kc
 ri
 "}
 (11,1,1) = {"
-sf
-Tz
+Ff
+Ff
 ri
 wy
 iV
@@ -438,8 +405,8 @@ ks
 ri
 "}
 (12,1,1) = {"
-Dm
-eC
+Ff
+Ff
 ri
 Vh
 Oj
@@ -450,8 +417,8 @@ vU
 ri
 "}
 (13,1,1) = {"
-Dm
-eC
+Ff
+Ff
 ri
 ri
 ri
@@ -462,8 +429,8 @@ ri
 ri
 "}
 (14,1,1) = {"
-OT
-eC
+Ff
+Ff
 Tz
 ss
 ri

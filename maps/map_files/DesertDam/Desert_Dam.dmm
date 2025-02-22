@@ -41,6 +41,10 @@
 /obj/structure/prop/hybrisa/xenobiology/small/cracked1,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
+"aag" = (
+/obj/structure/flora/bush/desert/cactus/multiple,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "aah" = (
 /obj/structure/closet/fireaxecabinet,
 /turf/closed/wall/r_wall/chigusa,
@@ -2907,6 +2911,12 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
+"akh" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_8"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "aki" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -2923,16 +2933,20 @@
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akm" = (
 /obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/prop/ice_colony/surveying_device,
 /turf/open/floor/prison/darkpurple2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akn" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "ako" = (
-/obj/structure/closet/radiation,
+/obj/structure/closet/secure_closet/miner,
 /turf/open/floor/prison/darkpurple2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akp" = (
@@ -3006,6 +3020,12 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
+"akD" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_11"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "akE" = (
 /obj/structure/surface/table,
 /obj/item/clothing/gloves/yellow,
@@ -3013,12 +3033,18 @@
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akF" = (
 /obj/structure/surface/table,
-/obj/item/device/reagent_scanner,
+/obj/item/device/flashlight/lantern{
+	pixel_x = -6
+	},
+/obj/item/device/flashlight/lantern,
 /turf/open/floor/prison/darkpurple2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akG" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/item/tool/shovel{
+	pixel_x = -4
+	},
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akH" = (
@@ -3111,6 +3137,10 @@
 "akZ" = (
 /turf/open/floor/prison/darkpurple2/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
+"ala" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "alb" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/tray{
@@ -3147,11 +3177,14 @@
 /turf/open/floor/prison/darkpurplecorners2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alf" = (
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alg" = (
-/obj/structure/closet/crate,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/closet/crate/science,
 /turf/open/floor/prison/darkpurple2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alh" = (
@@ -3173,6 +3206,10 @@
 	},
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/desert_dam/building/warehouse/warehouse)
+"alk" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/prison/whitepurple,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "all" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -3239,33 +3276,43 @@
 /turf/open/floor/coagulation/icon5_8,
 /area/desert_dam/exterior/valley/valley_mining)
 "aly" = (
-/obj/structure/closet/crate,
 /obj/item/storage/fancy/vials/random,
+/obj/structure/closet/crate/science,
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alz" = (
 /obj/structure/surface/rack,
-/obj/item/device/multitool,
-/obj/item/storage/belt/utility/full,
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison/darkpurple2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alA" = (
 /obj/structure/surface/rack,
-/obj/item/device/flashlight,
-/obj/item/device/t_scanner,
+/obj/item/device/t_scanner{
+	pixel_x = -3
+	},
+/obj/item/device/t_scanner{
+	pixel_x = 3
+	},
+/obj/item/device/t_scanner{
+	pixel_x = 8
+	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alB" = (
 /obj/structure/surface/rack,
+/obj/item/device/flashlight{
+	pixel_y = -5
+	},
 /obj/item/device/flashlight,
-/obj/item/tool/hand_labeler,
+/obj/item/device/flashlight{
+	pixel_y = 5
+	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alC" = (
 /obj/structure/surface/rack,
-/obj/item/tool/shovel/snow,
-/obj/item/tool/shovel/snow,
 /obj/effect/landmark/crap_item,
+/obj/item/tool/pickaxe,
 /turf/open/floor/prison/darkpurple2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alD" = (
@@ -3278,6 +3325,7 @@
 /turf/open/floor/prison/darkpurplecorners2,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alG" = (
+/obj/structure/prop/ice_colony/surveying_device/measuring_device,
 /turf/open/floor/prison/darkpurple2,
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alH" = (
@@ -3466,6 +3514,10 @@
 /obj/item/storage/fancy/vials,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
+"amq" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
+/turf/open/floor/prison/whitepurple,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "amr" = (
 /turf/open/floor/prison/whitepurple/north,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
@@ -3616,6 +3668,10 @@
 	},
 /turf/open/floor/carpet,
 /area/desert_dam/building/warehouse/breakroom)
+"amR" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright,
+/turf/open/floor/prison/whitepurple,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "amS" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light{
@@ -4126,6 +4182,10 @@
 "aoB" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/interior/dam_interior/west_tunnel)
+"aoC" = (
+/obj/structure/largecrate/empty/case,
+/turf/open/floor/prison/whitepurple,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "aoD" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
@@ -4215,6 +4275,10 @@
 /obj/structure/bed/chair,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
+"aoS" = (
+/obj/item/paper/crumpled,
+/turf/open/floor/prison/whitepurple,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "aoT" = (
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
@@ -4305,6 +4369,10 @@
 "apn" = (
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
+"apo" = (
+/obj/item/paper,
+/turf/open/floor/prison/whitepurple/north,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "app" = (
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
@@ -4646,6 +4714,10 @@
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
+"aqx" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/prison/darkpurple2,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "aqy" = (
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/valley_northwest)
@@ -6983,6 +7055,10 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayg" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/prison/darkpurple2,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "ayh" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -7061,6 +7137,17 @@
 	},
 /turf/open/floor/wood,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayv" = (
+/obj/structure/surface/rack,
+/obj/item/tool/hand_labeler{
+	pixel_x = -5
+	},
+/obj/item/tool/hand_labeler,
+/obj/item/tool/hand_labeler{
+	pixel_x = 5
+	},
+/turf/open/floor/prison/darkpurple2/east,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "ayw" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison/red/northwest,
@@ -9724,6 +9811,11 @@
 /obj/structure/flora/grass/desert/heavygrass_3,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"aHH" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/lightstick,
+/turf/open/floor/prison/darkpurple2/west,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "aHI" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
@@ -20128,6 +20220,14 @@
 "bqF" = (
 /turf/open/floor/darkyellow2/southeast,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"bqG" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno{
+	dir = 4;
+	icon_state = "xsplatter3"
+	},
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "bqH" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/cardboard/small_stack{
@@ -20255,6 +20355,13 @@
 "brj" = (
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/valley/valley_mining)
+"brk" = (
+/obj/item/tool/pickaxe/hammer{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "brl" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
@@ -20668,6 +20775,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
+"bsB" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	dir = 8;
+	icon_state = "xsplatter5"
+	},
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "bsC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -29849,7 +29963,6 @@
 "bXr" = (
 /obj/structure/largecrate/empty/secure,
 /obj/item/tool/shovel{
-	pixel_y = -9;
 	pixel_x = -4
 	},
 /obj/item/clothing/head/hardhat/orange{
@@ -36442,6 +36555,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement14,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
+"ctw" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/surveying_device/measuring_device,
+/turf/open/floor/prison/darkpurple2/north,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "ctA" = (
 /obj/item/device/flashlight,
 /turf/open/floor/prison/darkyellow2/west,
@@ -91443,7 +91563,7 @@ dTs
 dTs
 ady
 aeE
-aeE
+aag
 ayD
 dTs
 dTs
@@ -95193,7 +95313,7 @@ aam
 ady
 aeE
 aeE
-aeE
+akD
 ayD
 aam
 aam
@@ -97314,7 +97434,7 @@ aBu
 aeE
 aeE
 aeE
-aeE
+akh
 bRg
 aam
 aam
@@ -97327,7 +97447,7 @@ aam
 ayp
 aeE
 aeE
-aeE
+aag
 aeE
 ayD
 aam
@@ -102410,7 +102530,7 @@ alI
 alI
 ajY
 anH
-cos
+cot
 anH
 cno
 afP
@@ -102644,7 +102764,7 @@ alI
 alI
 coR
 anI
-cot
+cos
 anI
 anZ
 afP
@@ -104766,7 +104886,7 @@ amz
 amz
 brl
 bqO
-bqO
+ala
 bqO
 cga
 apW
@@ -108027,7 +108147,7 @@ apW
 amx
 amz
 amz
-apj
+alk
 anP
 cmT
 aod
@@ -108261,7 +108381,7 @@ apW
 alT
 amz
 amz
-apj
+amq
 anP
 bsj
 aod
@@ -108495,7 +108615,7 @@ akk
 amx
 amz
 amz
-apj
+amR
 anP
 bsv
 aod
@@ -108722,14 +108842,14 @@ dTs
 akk
 akl
 akI
-alz
+aHH
 alz
 alC
 alP
 amy
 amz
 amz
-apj
+aoC
 anP
 bsx
 cmr
@@ -109188,7 +109308,7 @@ acu
 acu
 dTs
 akk
-akn
+ctw
 akK
 akK
 akK
@@ -109431,7 +109551,7 @@ alP
 amB
 amz
 amz
-apj
+aoS
 anP
 anU
 aoR
@@ -109894,9 +110014,9 @@ akE
 akK
 akK
 akK
-alH
+aqx
 alP
-amx
+apo
 amz
 amz
 apj
@@ -110125,7 +110245,7 @@ acu
 dTs
 akk
 akF
-akK
+bsB
 akK
 akK
 alH
@@ -110360,9 +110480,9 @@ dTs
 akk
 akG
 ale
+bqG
 akK
-akK
-alH
+ayg
 akk
 alT
 ant
@@ -110594,7 +110714,7 @@ dTs
 akk
 akk
 alf
-akK
+brk
 akK
 alJ
 alP
@@ -111079,7 +111199,7 @@ anP
 aoA
 aoT
 aoT
-aoT
+aFA
 aoT
 aoT
 apI
@@ -111297,7 +111417,7 @@ dTs
 akk
 aly
 alA
-alB
+ayv
 alB
 alP
 amB

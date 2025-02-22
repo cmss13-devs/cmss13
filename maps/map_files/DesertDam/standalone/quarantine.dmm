@@ -231,8 +231,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "lg" = (
@@ -391,7 +391,6 @@
 "ql" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -4;
 	pixel_y = -6
@@ -400,6 +399,7 @@
 	icon_state = "gib6";
 	pixel_y = 12
 	},
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
 "qM" = (
@@ -902,8 +902,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Hi" = (
-/obj/effect/landmark/corpsespawner/security/marshal/riot,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_medical)
 "Hm" = (

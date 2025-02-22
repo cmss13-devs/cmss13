@@ -2,10 +2,6 @@
 "a" = (
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/armory)
-"b" = (
-/obj/structure/machinery/light,
-/turf/open/floor/prison/darkredcorners2/west,
-/area/desert_dam/building/security/staffroom)
 "d" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
@@ -37,9 +33,6 @@
 "i" = (
 /turf/open/floor/prison/darkredcorners2/east,
 /area/desert_dam/building/security/armory)
-"j" = (
-/turf/open/floor/prison/darkredcorners2/southwest,
-/area/desert_dam/building/security/staffroom)
 "k" = (
 /turf/open/floor/prison/darkred2/southeast,
 /area/desert_dam/building/security/armory)
@@ -113,14 +106,8 @@
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
 "x" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/prison/darkred2/southwest,
-/area/desert_dam/building/security/staffroom)
-"y" = (
-/obj/structure/machinery/vending/security,
-/turf/open/floor/prison/darkredfull2,
-/area/desert_dam/building/security/staffroom)
+/turf/template_noop,
+/area/template_noop)
 "z" = (
 /obj/structure/closet/l3closet/security,
 /obj/effect/landmark/objective_landmark/science,
@@ -132,9 +119,6 @@
 "B" = (
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/building/security/armory)
-"C" = (
-/turf/open/floor/prison/darkred2,
-/area/desert_dam/building/security/staffroom)
 "D" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
@@ -143,12 +127,6 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
-"E" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/security/staffroom)
 "F" = (
 /turf/open/floor/prison/darkredcorners2/north,
 /area/desert_dam/building/security/armory)
@@ -160,9 +138,6 @@
 "H" = (
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/armory)
-"I" = (
-/turf/open/floor/prison/darkred2/southeast,
-/area/desert_dam/building/security/staffroom)
 "J" = (
 /obj/item/clothing/suit/storage/marine/veteran/cmb,
 /obj/item/clothing/suit/storage/marine/veteran/cmb,
@@ -199,23 +174,12 @@
 "O" = (
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/staffroom)
-"P" = (
-/turf/open/floor/prison,
-/area/desert_dam/building/security/staffroom)
-"Q" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/prison/darkred2,
-/area/desert_dam/building/security/staffroom)
 "R" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/beanbag/riot,
 /obj/item/ammo_magazine/shotgun/beanbag/riot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
-"S" = (
-/turf/open/floor/prison/darkredcorners2/west,
-/area/desert_dam/building/security/staffroom)
 "T" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -223,10 +187,6 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
-"U" = (
-/obj/structure/machinery/light,
-/turf/open/floor/prison/darkred2,
-/area/desert_dam/building/security/staffroom)
 "V" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -264,7 +224,7 @@
 /area/desert_dam/building/security/armory)
 
 (1,1,1) = {"
-S
+x
 x
 a
 a
@@ -276,8 +236,8 @@ a
 a
 "}
 (2,1,1) = {"
-P
-Q
+x
+x
 a
 h
 Y
@@ -288,8 +248,8 @@ J
 a
 "}
 (3,1,1) = {"
-P
-b
+x
+x
 a
 n
 d
@@ -300,8 +260,8 @@ w
 a
 "}
 (4,1,1) = {"
-P
-P
+x
+x
 T
 d
 d
@@ -312,8 +272,8 @@ r
 a
 "}
 (5,1,1) = {"
-P
-j
+x
+x
 a
 N
 F
@@ -324,8 +284,8 @@ a
 a
 "}
 (6,1,1) = {"
-E
-U
+x
+x
 a
 u
 A
@@ -336,8 +296,8 @@ L
 a
 "}
 (7,1,1) = {"
-E
-C
+x
+x
 a
 z
 A
@@ -348,8 +308,8 @@ D
 a
 "}
 (8,1,1) = {"
-E
-C
+x
+x
 a
 p
 A
@@ -360,8 +320,8 @@ e
 a
 "}
 (9,1,1) = {"
-E
-C
+x
+x
 a
 a
 V
@@ -372,8 +332,8 @@ a
 a
 "}
 (10,1,1) = {"
-j
-I
+x
+x
 a
 v
 A
@@ -384,8 +344,8 @@ s
 a
 "}
 (11,1,1) = {"
-U
-O
+x
+x
 a
 v
 A
@@ -396,8 +356,8 @@ f
 a
 "}
 (12,1,1) = {"
-C
-y
+x
+x
 a
 v
 g
@@ -408,8 +368,8 @@ W
 a
 "}
 (13,1,1) = {"
-C
-y
+x
+x
 a
 a
 a
@@ -420,8 +380,8 @@ a
 a
 "}
 (14,1,1) = {"
-I
-y
+x
+x
 O
 X
 a

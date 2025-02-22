@@ -37,7 +37,12 @@
 /area/desert_dam/interior/dam_interior/workshop)
 "n" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/lights/mixed,
+/obj/item/storage/pouch/firstaid/ert{
+	pixel_x = -5
+	},
+/obj/item/storage/pouch/firstaid/ert{
+	pixel_x = 6
+	},
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
 "x" = (

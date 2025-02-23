@@ -1,8 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Defenders, Sentinels, and Runners can now also evolve to Queen if there is no queen (no need to de-evolve)"
-  - bugfix: "Fixed incorrect evolve messaging when there is no queen (always would say queen had died recently)"
-  - bugfix: "Fixed incorrect evolve messaging when the caste cannot evolve any further (would say there were no castes to evolve to currently)"
-  - bugfix: "Fixed do_evolve considering queen job banned players as potential queen candidates"
-  - code_imp: "Cleaned up code in do_evolve and hive_status"

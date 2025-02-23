@@ -22,6 +22,7 @@
 	name = "canned beef"
 	desc = "Canned premium 100% beef. The question of, what part of cow is here exactly, is open to debate."
 	icon_state = "Canned_meat"
+	volume = 20
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/meat/Initialize()
 	. = ..()
@@ -32,6 +33,7 @@
 	name = "canned stew"
 	desc = "Canned stew consisting of carrot, tomato, mushroom, meat, beans and god knows what else, makes for a great food when heated."
 	icon_state = "Canned_stew"
+	volume = 30
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/stew/Initialize()
 	. = ..()
@@ -47,6 +49,7 @@
 	desc = "Canned cooked and salted pig fat, also known as speck. It is often used as a bread spread, or eaten on itself."
 	icon_state = "Canned_speck"
 	food_interactable = TRUE
+	volume = 20
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/speck/Initialize()
 	. = ..()
@@ -58,6 +61,7 @@
 	desc = "Canned soup consisting of beef boullion, potato, peas and god knows what else, makes for a great food when heated."
 	icon_state = "Canned_stew"
 	consume_sound = 'sound/items/drink.ogg'
+	volume = 25
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/soup/Initialize()
 	. = ..()
@@ -72,6 +76,7 @@
 	desc = "Canned boiled rice with bits of beef."
 	icon_state = "Canned_rice"
 	needs_can_opener = FALSE
+	volume = 10
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/rice/Initialize()
 	. = ..()
@@ -84,6 +89,7 @@
 	desc = "Canned buckwheat porridge with bits of pork. As they said, eat kasha, grow strong!"
 	icon_state = "Canned_buckwheat"
 	needs_can_opener = FALSE
+	volume = 10
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/buckwheat/Initialize()
 	. = ..()
@@ -96,6 +102,7 @@
 	desc = "Dish originated on a revolted Russian dreadnought, dish itself being a cooked pasta with minced meat."
 	icon_state = "Canned_pasta"
 	needs_can_opener = FALSE
+	volume = 10
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/pasta/Initialize()
 	. = ..()
@@ -108,6 +115,7 @@
 	desc = "An assortment of cooked and mixed corn, eggplant, tomato, garlic, onion and probably something else."
 	icon_state = "Canned_vegetables"
 	needs_can_opener = FALSE
+	volume = 10
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/vegetables/Initialize()
 	. = ..()
@@ -119,6 +127,7 @@
 	desc = "A milk can preserved with sugar, can be eaten on itself or added to drinks or used as an ingredient."
 	icon_state = "Canned_condensed_milk"
 	food_interactable = TRUE
+	volume = 30
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk/Initialize()
 	. = ..()
@@ -130,6 +139,7 @@
 	desc = "A caramelized boiled milk can preserved with sugar, can be eaten on itself or added to drinks or used as an ingredient."
 	icon_state = "Canned_boiled_condensed_milk"
 	food_interactable = TRUE
+	volume = 30
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/condensed_boiled_milk/Initialize()
 	. = ..()

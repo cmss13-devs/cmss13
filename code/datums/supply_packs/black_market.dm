@@ -1252,7 +1252,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
-		if(21 to 29)
+		if(21 to 25)
 			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
 			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
@@ -1260,6 +1260,14 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/weapon/twohanded/yautja/glaive/damaged(loc)
 			new /obj/item/stack/yautja_rope(loc)
 			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
+		if(26 to 29)
+			// stevemre1989's secret stash
+			new /obj/item/storage/box/mre/fsr(loc)
+			new /obj/item/storage/box/mre/twe(loc)
+			new /obj/item/storage/box/mre/wy(loc)
+			new /obj/item/storage/box/mre/pmc(loc)
+			new /obj/item/storage/box/mre/upp(loc)
+			loot_message = SPAN_NOTICE("It's some rations...?")
 		if(30 to 35)
 		// CLF nades!
 			loot_message = SPAN_NOTICE("It's a package of assorted CLF grenades!")

@@ -5,14 +5,14 @@
 #define HIDE_NONE 0
 
 /obj/structure/machinery/computer/overwatch
-	name = "Cental Overwatch Console"
+	name = "Central Overwatch Console"
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
 	req_access = list(ACCESS_MARINE_SENIOR)
 	unslashable = TRUE
 	unacidable = TRUE
 
-	var/datum/squad/current_squad = null
+	var/datum/squad/current_squad = /datum/squad/marine
 	var/datum/squad/squad
 	var/state = 0
 	var/obj/structure/machinery/camera/cam = null
@@ -54,6 +54,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
 	req_access = list(ACCESS_MARINE_DATABASE)
+	current_squad = null
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -547,7 +548,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
 		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
-			var/list/unpackaged_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "ref" = REF(index_squad))
+			var/list/unpackaged_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad))
 			unpackaged_data += overview_data(index_squad)
 			var/list/squad_data = list(unpackaged_data)
 			data["squad_data"] += squad_data

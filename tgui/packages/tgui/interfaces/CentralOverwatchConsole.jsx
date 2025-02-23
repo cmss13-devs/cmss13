@@ -20,8 +20,6 @@ import { Window } from '../layouts';
 export const CentralOverwatchConsole = (props) => {
   const { act, data } = useBackend();
 
-  const [category, setCategory] = useSharedState('selected', 'monitor');
-
   return (
     <Window
       width={850}
@@ -29,60 +27,16 @@ export const CentralOverwatchConsole = (props) => {
       theme={data.theme ? data.theme : 'crtblue'}
     >
       <Window.Content>
-        {(!data.current_squad && <HomePanel />) || (
-          <Stack vertical>
-            <Stack.Item>
-              <DebugSquadPanel />
-            </Stack.Item>
-            <Stack.Item m="0">
-              <SecondaryFunctions />
-            </Stack.Item>
-          </Stack>
-        )}
+        <Stack vertical>
+          <Stack.Item>
+            <DebugSquadPanel />
+          </Stack.Item>
+          <Stack.Item m="0">
+            <SecondaryFunctions />
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
-  );
-};
-
-const HomePanel = (props) => {
-  const { act, data } = useBackend();
-
-  // Buttons don't seem to support hexcode colors, so we'll have to do this manually, sadly
-  const squadColorMap = {
-    alpha: 'red',
-    bravo: 'yellow',
-    charlie: 'purple',
-    delta: 'blue',
-    echo: 'green',
-    foxtrot: 'brown',
-    intel: 'green',
-  };
-
-  return (
-    <Section
-      fontSize="20px"
-      textAlign="center"
-      title="OVERWATCH DISABLED - SELECT SQUAD"
-    >
-      <Stack justify="center" align="end" fontSize="20px">
-        {data.squad_list.map((squad, index) => {
-          return (
-            <Stack.Item key={index}>
-              <Button
-                color={
-                  squadColorMap[squad.toLowerCase()]
-                    ? squadColorMap[squad.toLowerCase()]
-                    : 'red'
-                }
-                onClick={() => act('pick_squad', { squad: squad })}
-              >
-                {squad.toUpperCase()}
-              </Button>
-            </Stack.Item>
-          );
-        })}
-      </Stack>
-    </Section>
   );
 };
 
@@ -91,7 +45,7 @@ const SecondaryFunctions = (props) => {
 
   const [secondarycategory, setsecondaryCategory] = useSharedState(
     'secondaryselected',
-    'secondarymonitor',
+    'squadmonitor',
   );
 
   const squadStringify = {
@@ -126,6 +80,15 @@ const SecondaryFunctions = (props) => {
               bold
             >
               Executive Panel
+            </Tabs.Tab>
+            <Tabs.Tab
+              selected={secondarycategory === 'monitoringpanel'}
+              icon="id-card"
+              onClick={() => setsecondaryCategory('monitoringpanel')}
+              p="3px"
+              bold
+            >
+              Crew Monitoring
             </Tabs.Tab>
             <Tabs.Tab
               selected={secondarycategory === 'emergencypanel'}
@@ -164,6 +127,7 @@ const SecondaryFunctions = (props) => {
             <OrbitalBombardment />
           )}
           {secondarycategory === 'squadmonitor' && <SquadMonitor />}
+          {secondarycategory === 'monitoringpanel' && <MonitoringPanel />}
           {secondarycategory === 'execpanel' && <ExecutivePanel />}
           {secondarycategory === 'emergencypanel' && <EmergencyPanel />}
         </Stack.Item>
@@ -175,7 +139,7 @@ const SecondaryFunctions = (props) => {
 const DebugSquadPanel = (props) => {
   const { act, data } = useBackend();
 
-  const [category, setCategory] = useSharedState('selected', 'monitor');
+  const [category, setCategory] = useSharedState('selected', 'red');
 
   const squadStringify = {
     alpha: 'red',
@@ -404,8 +368,13 @@ const DebugSquadPanel = (props) => {
                               </Button>
                             </Stack.Item>
                             <Stack.Item>
-                              <Button icon="user" inline width="100%">
-                                Operator - {squad.operator}
+                              <Button icon="user" inline width="100%" compact>
+                                Overwatch Officer
+                                <Box>
+                                  {squad.overwatch_officer
+                                    ? squad.overwatch_officer
+                                    : 'NONE'}
+                                </Box>
                               </Button>
                             </Stack.Item>
                           </Box>
@@ -518,7 +487,7 @@ const ExecutivePanel = (props) => {
                 icon="map"
                 p="4px"
                 mt="3px"
-                onClick={() => act('set_secondary')}
+                onClick={() => act('tacmap_unpin')}
               >
                 VIEW TACTICAL MAP
               </Button>
@@ -688,6 +657,20 @@ const EmergencyPanel = (props) => {
               </ButtonConfirm>
             </Stack.Item>
           </Box>
+        </Stack.Item>
+      </Stack>
+    </Section>
+  );
+};
+
+const MonitoringPanel = (props) => {
+  const { act, data } = useBackend();
+
+  return (
+    <Section fill fontSize="14px">
+      <Stack horizontal>
+        <Stack.Item width="25%">
+          <Section title="Alpha Squad">hi!</Section>
         </Stack.Item>
       </Stack>
     </Section>

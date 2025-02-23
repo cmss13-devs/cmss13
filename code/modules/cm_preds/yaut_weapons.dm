@@ -771,7 +771,7 @@
 	var/rare_weight = 5
 	var/ultra_rare_weight = 1
 
-/obj/item/weapon/twohanded/yautja/spear/afterattack(atom/target, mob/living/user, proximity_flag, /turf/fishing_allowed, click_parameters)
+/obj/item/weapon/twohanded/yautja/spear/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
 	. = ..()
 	if(proximity_flag && !busy_fishing && isturf(target))
 		var/turf/T = target

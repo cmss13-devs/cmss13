@@ -50,22 +50,22 @@
 	icon_state_weeds = "speednode"
 
 /obj/effect/alien/weeds/node/designer/speed/get_examine_text(mob/user)
-	.=..()
-	if(ishuman(user) || isobserver(user) || isyautja(user))
-		. += "\nOn closer examination, this node looks like it has a big green oozing bulb at its center, making the weeds under it twitch..."
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this node looks like it has a big green oozing bulb at its center, making the weeds under it twitch..."
 	if(isxeno(user) || isobserver(user))
-		. += "\nYou sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
+		. += "You sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
 
 /obj/effect/alien/weeds/node/designer/cost
 	name = "Flexible Design Node"
 	icon_state_weeds = "costnode"
 
 /obj/effect/alien/weeds/node/designer/cost/get_examine_text(mob/user)
-	.=..()
-	if(ishuman(user) || isobserver(user) || isyautja(user))
-		. += "\nOn closer examination, this node looks like its made of smaller blue bulbs grown together, making the weeds under them look soft and squishy."
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this node looks like its made of smaller blue bulbs grown together, making the weeds under them look soft and squishy."
 	if(isxeno(user) || isobserver(user))
-		. += "\nYou sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
+		. += "You sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
 
 // ""animations"" (effects)
 /obj/effect/resin_construct/fastweak
@@ -108,9 +108,6 @@
 
 /datum/action/xeno_action/activable/design_speed_node/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!istype(xeno))
-		return
-
 	if(!action_cooldown_check())
 		return
 
@@ -174,7 +171,7 @@
 		playsound(target_turf, "alien_resin_build", 25)
 
 		if(length(xeno.speed_node_list) > max_speed_nodes)
-			addtimer(CALLBACK(src, "remove_oldest_speed_node", xeno), 0)
+			addtimer(CALLBACK(src, PROC_REF(remove_oldest_speed_node), xeno), 0)
 
 	xeno_cooldown = COOLDOWN_MULTIPLIER
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
@@ -218,9 +215,6 @@
 
 /datum/action/xeno_action/activable/design_cost_node/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!istype(xeno))
-		return
-
 	if(!action_cooldown_check())
 		return
 
@@ -284,7 +278,7 @@
 		playsound(target_turf, "alien_resin_build", 25)
 
 		if(length(xeno.cost_node_list) > max_cost_nodes)
-			addtimer(CALLBACK(src, "remove_oldest_cost_node", xeno), 0)
+			addtimer(CALLBACK(src, PROC_REF(remove_oldest_cost_node), xeno), 0)
 
 	xeno_cooldown = COOLDOWN_MULTIPLIER
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
@@ -326,9 +320,6 @@
 
 /datum/action/xeno_action/activable/greater_resin_surge/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!istype(xeno))
-		return
-
 	if(!action_cooldown_check())
 		return
 
@@ -341,49 +332,34 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	// Create overlays for speed nodes and schedule their replacement
-	for(var/obj/effect/alien/weeds/node/designer/speed/node in xeno.speed_node_list)
-		if(node)
-			var/turf/node_loc = get_turf(node.loc)
-			if(node_loc)
-				create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
+	// Create overlays for all nodes in the speed and cost node lists
+	for(var/obj/effect/alien/weeds/node/designer/node in xeno.speed_node_list + xeno.cost_node_list)
+		var/turf/node_loc = get_turf(node.loc)
+		if(node_loc)
+			create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
 
-	for(var/obj/effect/alien/weeds/node/designer/cost/node in xeno.cost_node_list)
-		if(node)
-			var/turf/node_loc = get_turf(node.loc)
-			if(node_loc)
-				create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
-
-	//Wait 1 second, then replace the nodes
-	addtimer(CALLBACK(src, "replace_nodes"), DO_AFTER_DELAY)
+	// Wait 1 second, then replace the nodes
+	addtimer(CALLBACK(src, PROC_REF(replace_nodes)), DO_AFTER_DELAY)
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
 	return ..()
 
 /datum/action/xeno_action/activable/greater_resin_surge/proc/replace_nodes()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!istype(xeno))
-		return
 
-	for(var/obj/effect/alien/weeds/node/designer/speed/node in xeno.speed_node_list)
-		if(node)
-			var/turf/node_loc = get_turf(node.loc)
-			if(node_loc)
-				node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater) // Replace with weeds
-				playsound(node_loc, "alien_resin_build", 25) // Play sound for wall placement
-			qdel(node) // Delete the node
-	xeno.speed_node_list.Cut() // Clear the speed node list
+	// Replace all nodes in the speed and cost node lists
+	for(var/obj/effect/alien/weeds/node/designer/node in xeno.speed_node_list + xeno.cost_node_list)
+		var/turf/node_loc = get_turf(node.loc)
+		if(node_loc)
+			node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater)
+			playsound(node_loc, "alien_resin_build", 25)
+		qdel(node)
 
-	for(var/obj/effect/alien/weeds/node/designer/cost/node in xeno.cost_node_list)
-		if(node)
-			var/turf/node_loc = get_turf(node.loc)
-			if(node_loc)
-				node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater)
-				playsound(node_loc, "alien_resin_build", 25)
-			qdel(node)
+	// Clear both lists
+	xeno.speed_node_list.Cut()
 	xeno.cost_node_list.Cut()
 
-/proc/create_animation_overlay(turf/target_turf, animation_type)
+/datum/action/xeno_action/activable/greater_resin_surge/proc/create_animation_overlay(turf/target_turf, animation_type)
 	if(!istype(target_turf, /turf)) // Ensure the target is a valid turf
 		return
 
@@ -397,7 +373,7 @@
 	addtimer(CALLBACK(animation, "delete_animation"), DO_AFTER_DELAY)
 
 /obj/effect/resin_construct/fastweak/proc/delete_animation()
-	if(src)
+	if(!QDELETED(src))
 		qdel(src)
 
 #undef DO_AFTER_DELAY

@@ -460,3 +460,30 @@
       squad vendor. Supplies UPP soldiers with their weapons and munitions.
   - rscadd: Shotgun shell boxes for UPP shotgun ammunition have been added to the
       game, they have also been added to all UPP vendors.
+2025-02-23:
+  Drathek:
+  - rscadd: Defenders, Sentinels, and Runners can now also evolve to Queen if there
+      is no queen (no need to de-evolve)
+  - bugfix: Fixed incorrect evolve messaging when there is no queen (always would
+      say queen had died recently)
+  - bugfix: Fixed incorrect evolve messaging when the caste cannot evolve any further
+      (would say there were no castes to evolve to currently)
+  - bugfix: Fixed do_evolve considering queen job banned players as potential queen
+      candidates
+  - code_imp: Cleaned up code in do_evolve and hive_status
+  - bugfix: Fixed young blood job ban check and end game note who played as Predator
+  - bugfix: Fixed young blood leader objectives
+  - code_imp: Cleaned up the jobban_isbanned proc
+  Git-Nivrak:
+  - bugfix: Fixed issues with overwatch console when ground height is 0
+  detectivegoogle, ihatethisengine:
+  - balance: The smartscope now uses alt IFF and cannot fire through friendlies.
+  - balance: The smartscope now only applies a small damage and falloff malus to the
+      mounted weapon.
+  - balance: The smartscope can be mounted to the m41a MK2
+  - balance: The smartscope has lost it's zoom functionality.
+  realforest2001:
+  - rscadd: Added follow tabs to Mutated xeno hive and to Hellhounds.
+  - rscadd: Added sub-follow tabs to Weyland-Yutani.
+  - rscadd: Synthetics now appear in their faction follow tabs, as well as Synth tab.
+  - bugfix: Fixed the name of Whiteout Medic deathsquad version.

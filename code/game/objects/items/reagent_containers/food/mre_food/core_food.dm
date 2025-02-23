@@ -4,6 +4,7 @@
 	desc = "A ration package."
 	icon_state = "entree"
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
+	w_class = SIZE_SMALL
 	var/contents_food
 	var/no_packet_label = FALSE
 	var/list/food_list = list()
@@ -38,6 +39,4 @@
 //CORE MRE FOOD ITEM
 /obj/item/reagent_container/food/snacks/mre_food
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
-	package = 1
-	bitesize = 5
-	package = 0
+	bitesize = 3

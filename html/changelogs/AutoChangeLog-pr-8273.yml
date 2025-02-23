@@ -1,0 +1,7 @@
+author: "detectivegoogle, ihatethisengine"
+delete-after: True
+changes:
+  - balance: "The smartscope now uses alt IFF and cannot fire through friendlies."
+  - balance: "The smartscope now only applies a small damage and falloff malus to the mounted weapon."
+  - balance: "The smartscope can be mounted to the m41a MK2"
+  - balance: "The smartscope has lost it's zoom functionality."

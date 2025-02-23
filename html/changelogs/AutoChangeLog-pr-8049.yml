@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - code_imp: "decals get burned into turf they are on, maps look the same with less lag"

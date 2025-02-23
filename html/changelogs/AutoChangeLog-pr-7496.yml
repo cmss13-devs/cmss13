@@ -1,5 +1,0 @@
-author: "LC4492"
-delete-after: True
-changes:
-  - code_imp: "Added and organized the file that contains all the tiles touched by this PR, now its much easier to navigate and find the tile you wish. Coded in the unused tiles, and of course the new combinations and styles."
-  - imageadd: "Added tons of different styles for the tiling of the USS Almayer, smooth tiles, smooth edges and etcetera, if you played PVE, you will notice that the tiles are similar (If not straight-up ported from PVE, heh, but most aren't)"

@@ -74,7 +74,7 @@
 				to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
 				return
 
-	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."),
 					SPAN_NOTICE("You start planting [src]."), null, 5)
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return

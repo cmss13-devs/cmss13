@@ -27,6 +27,14 @@
 		xeno.apply_effect(4, SLOW) // multiple hits dont stack they just renew the duration
 		xeno.apply_armoured_damage(damage * 0.6, ARMOR_BULLET, BRUTE, , penetration) // xenos have a lot of HP
 
+/datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+	))
+
 /datum/ammo/bullet/shrapnel/rubber
 	name = "rubber pellets"
 	icon_state = "rubber_pellets"
@@ -63,7 +71,7 @@
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	shell_speed = AMMO_SPEED_TIER_1
 	damage = 30
-	penetration = ARMOR_PENETRATION_TIER_10 //molten metal pierces your armor
+	penetration = ARMOR_PENETRATION_TIER_4
 
 /datum/ammo/bullet/shrapnel/incendiary/set_bullet_traits()
 	. = ..()

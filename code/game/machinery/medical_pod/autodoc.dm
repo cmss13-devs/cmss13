@@ -234,7 +234,8 @@
 				if(organ.damage > 0)
 					if(organ.name == "eyeballs") // treat eye surgery differently
 						continue
-					if(organdamagesurgery > 0) continue // avoid duplicates
+					if(organdamagesurgery > 0)
+						continue // avoid duplicates
 					surgery_list += create_autodoc_surgery(limb,ORGAN_SURGERY,"organdamage",0,organ)
 					organdamagesurgery++
 
@@ -344,7 +345,8 @@
 							if(current_surgery.organ_ref.damage > BONECHIPS_MAX_DAMAGE)
 								sleep(FIXVEIN_MAX_DURATION*surgery_mod)
 							sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
-						if(!surgery) break
+						if(!surgery)
+							break
 						if(istype(current_surgery.organ_ref,/datum/internal_organ))
 							current_surgery.organ_ref.rejuvenate()
 						else
@@ -368,23 +370,27 @@
 
 							if(eye.eye_surgery_stage == 0)
 								sleep(SCALPEL_MAX_DURATION)
-								if(!surgery) break
+								if(!surgery)
+									break
 								eye.eye_surgery_stage = 1
 								patient.disabilities |= NEARSIGHTED // code\#define\mobs.dm
 
 							if(eye.eye_surgery_stage == 1)
 								sleep(RETRACTOR_MAX_DURATION)
-								if(!surgery) break
+								if(!surgery)
+									break
 								eye.eye_surgery_stage = 2
 
 							if(eye.eye_surgery_stage == 2)
 								sleep(HEMOSTAT_MAX_DURATION)
-								if(!surgery) break
+								if(!surgery)
+									break
 								eye.eye_surgery_stage = 3
 
 							if(eye.eye_surgery_stage == 3)
 								sleep(CAUTERY_MAX_DURATION)
-								if(!surgery) break
+								if(!surgery)
+									break
 								patient.disabilities &= ~NEARSIGHTED
 								patient.sdisabilities &= ~DISABILITY_BLIND
 								eye.heal_damage(eye.damage)
@@ -420,13 +426,15 @@
 							continue
 						open_incision(patient,current_surgery.limb_ref)
 						for(var/datum/wound/wound in current_surgery.limb_ref.wounds)
-							if(!surgery) break
+							if(!surgery)
+								break
 							if(wound.internal)
 								sleep(FIXVEIN_MIN_DURATION-30)
 								current_surgery.limb_ref.wounds -= wound
 								current_surgery.limb_ref.remove_all_bleeding(FALSE, TRUE)
 								qdel(wound)
-						if(!surgery) break
+						if(!surgery)
+							break
 						close_incision(patient,current_surgery.limb_ref)
 
 					if("broken")
@@ -441,9 +449,11 @@
 						sleep(BONEGEL_REPAIR_MAX_DURATION*surgery_mod+20)
 						if(current_surgery.limb_ref.brute_dam > 20)
 							sleep(((current_surgery.limb_ref.brute_dam - 20)/2)*surgery_mod)
-							if(!surgery) break
+							if(!surgery)
+								break
 							current_surgery.limb_ref.heal_damage(current_surgery.limb_ref.brute_dam - 20)
-						if(!surgery) break
+						if(!surgery)
+							break
 						if(current_surgery.limb_ref.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 							new /obj/item/stack/medical/splint/nano(loc, 1)
 						current_surgery.limb_ref.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
@@ -478,7 +488,8 @@
 							surgery_todo_list -= current_surgery
 							continue
 
-						if(!surgery) break
+						if(!surgery)
+							break
 						current_surgery.limb_ref.setAmputatedTree()
 
 						var/spillover = LIMB_PRINTING_TIME - (CAUTERY_MAX_DURATION+RETRACTOR_MAX_DURATION+SCALPEL_MAX_DURATION)
@@ -486,14 +497,16 @@
 							sleep(spillover*surgery_mod)
 
 						sleep(IMPLANT_MAX_DURATION*surgery_mod)
-						if(!surgery) break
+						if(!surgery)
+							break
 						current_surgery.limb_ref.robotize()
 						patient.update_body()
 						patient.updatehealth()
 						patient.UpdateDamageIcon()
 
 					if("shrapnel")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
 						if(current_surgery.unneeded)
 							sleep(UNNEEDED_DELAY)
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
@@ -505,7 +518,8 @@
 							open_encased(patient,current_surgery.limb_ref)
 						if(length(current_surgery.limb_ref.implants))
 							for(var/obj/item/implant in current_surgery.limb_ref.implants)
-								if(!surgery) break
+								if(!surgery)
+									break
 								if(!is_type_in_list(implant,known_implants))
 									sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
 									current_surgery.limb_ref.implants -= implant
@@ -513,16 +527,19 @@
 									qdel(implant)
 						if(current_surgery.limb_ref.name == "chest" || current_surgery.limb_ref.name == "head")
 							close_encased(patient,current_surgery.limb_ref)
-						if(!surgery) break
+						if(!surgery)
+							break
 						close_incision(patient,current_surgery.limb_ref)
 
 					if("open")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(patient,current_surgery.limb_ref)
 						close_incision(patient,current_surgery.limb_ref)
 
 
-		if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
+		if(prob(30))
+			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
 		surgery_todo_list -= current_surgery
 		continue
 

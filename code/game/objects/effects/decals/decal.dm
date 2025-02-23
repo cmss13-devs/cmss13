@@ -17,6 +17,13 @@
 /obj/effect/decal/LateInitialize()
 	. = ..()
 	var/turf/applied_turf = get_turf(src)
+	while(pixel_x < 0) //we offset east and walk west to display the decal on correct place, it NEEDS positive offsets
+		pixel_x += 32
+		applied_turf = get_step(applied_turf, WEST)
+	while(pixel_y < 0)
+		pixel_y += 32
+		applied_turf = get_step(applied_turf, SOUTH)
+
 
 	if(!applied_turf)
 		qdel(src)

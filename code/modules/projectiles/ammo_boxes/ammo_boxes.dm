@@ -220,7 +220,7 @@
 	else
 		for(var/obj/item/ammo_magazine/AM in contents)
 			severity += AM.current_rounds
-		severity = floor(severity / 150)
+		severity = clamp(severity / 150, 0, 20) // explosion caps at 3k bullets
 	return severity
 
 /obj/item/ammo_box/magazine/process_burning(datum/cause_data/flame_cause_data)

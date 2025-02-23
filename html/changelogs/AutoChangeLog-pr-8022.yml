@@ -1,4 +1,0 @@
-author: "Yayyay007"
-delete-after: True
-changes:
-  - bugfix: "adds a line of code to the spec grenadier launcher to respect help intent safety prefs"

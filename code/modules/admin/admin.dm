@@ -67,8 +67,10 @@
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(!LAZYLEN(infos)) return 0
-	else return 1
+	if(!LAZYLEN(infos))
+		return 0
+	else
+		return 1
 
 /datum/admins/proc/player_notes_all(key as text)
 	set category = null
@@ -109,7 +111,8 @@
 
 
 /datum/admins/proc/Jobbans()
-	if(!check_rights(R_BAN)) return
+	if(!check_rights(R_BAN))
+		return
 	var/L[] //List reference.
 	var/r //rank --This will always be a string.
 	var/c //ckey --This will always be a string.
@@ -129,7 +132,8 @@
 
 
 /datum/admins/proc/Game()
-	if(!check_rights(0)) return
+	if(!check_rights(0))
+		return
 
 	var/dat = {"
 		<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
@@ -170,7 +174,8 @@
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
 
-	if(!check_rights(R_SPAWN)) return
+	if(!check_rights(R_SPAWN))
+		return
 
 	var/list/types = typesof(/atom)
 	var/list/matches = new()

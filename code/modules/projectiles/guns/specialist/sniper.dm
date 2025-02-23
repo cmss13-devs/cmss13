@@ -101,7 +101,7 @@
 		return
 
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
-	if(world.time < sniper_rifle.aimed_shot_cooldown)
+	if(world.time < sniper_rifle.aimed_shot_cooldown || !sniper_rifle.able_to_fire(human))
 		return
 
 	if(!check_can_use(target))
@@ -183,7 +183,7 @@
 	target.overlays -= lockon_direction_icon
 	qdel(laser_beam)
 
-	if(!check_can_use(target, TRUE) || target.is_dead())
+	if(!check_can_use(target, TRUE) || target.is_dead() || !sniper_rifle.able_to_fire(human))
 		return
 
 	var/obj/projectile/aimed_proj = sniper_rifle.in_chamber
@@ -508,6 +508,15 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		//Under,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/bipod,

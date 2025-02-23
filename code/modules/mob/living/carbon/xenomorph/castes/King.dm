@@ -91,7 +91,7 @@
 				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 		else
 			if(carbon.stat != DEAD)
-				carbon.apply_armoured_damage(20)
+				carbon.apply_armored_damage(20)
 				carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
 				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 /mob/living/carbon/xenomorph/king/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
@@ -131,7 +131,7 @@
 			continue
 		if(xeno.can_not_harm(carbon))
 			continue
-		carbon.apply_armoured_damage(damage)
+		carbon.apply_armored_damage(damage)
 		carbon.last_damage_data = create_cause_data(initial(xeno.name), xeno)
 		xeno.flick_attack_overlay(carbon, "slash")
 		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons."))

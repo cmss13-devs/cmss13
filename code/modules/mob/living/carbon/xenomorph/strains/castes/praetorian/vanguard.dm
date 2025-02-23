@@ -164,7 +164,7 @@
 			continue
 
 		current_mob.flick_attack_overlay(current_mob, "slash")
-		current_mob.apply_armoured_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
+		current_mob.apply_armored_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
 		playsound(current_mob, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 	if (length(target_mobs) >= shield_regen_threshold)
@@ -225,7 +225,7 @@
 			continue
 
 		dash_user.flick_attack_overlay(targets_in_range, "slash")
-		targets_in_range.apply_armoured_damage(get_xeno_damage_slash(targets_in_range, damage), ARMOR_MELEE, BRUTE)
+		targets_in_range.apply_armored_damage(get_xeno_damage_slash(targets_in_range, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(targets_in_range), "alien_claw_flesh", 30, 1)
 	dash_user.visible_message(SPAN_XENODANGER("[dash_user] slashes its claws through the area around it!"), SPAN_XENODANGER("We slash our claws through the area around us!"))
 	dash_user.spin_circle()

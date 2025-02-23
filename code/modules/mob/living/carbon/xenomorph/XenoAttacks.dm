@@ -195,7 +195,7 @@
 				playsound(loc, custom_slashed_sound, 25, 1)
 			else
 				playsound(loc, slash_sound, 25, 1)
-			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
+			apply_armored_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 
 			if(xeno.behavior_delegate)
 				var/datum/behavior_delegate/MD = xeno.behavior_delegate

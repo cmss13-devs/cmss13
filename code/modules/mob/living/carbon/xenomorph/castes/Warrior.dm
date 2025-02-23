@@ -415,7 +415,7 @@
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
 
 
-	carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
+	carbon.apply_armored_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 
 	// Hmm today I will kill a marine while looking away from them
 	warrior.face_atom(carbon)

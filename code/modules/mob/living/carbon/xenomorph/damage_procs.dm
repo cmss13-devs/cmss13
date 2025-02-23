@@ -107,7 +107,7 @@
 			else
 				Slow(powerfactor_value/3)
 
-/mob/living/carbon/xenomorph/apply_armoured_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0, effectiveness_mult = 1)
+/mob/living/carbon/xenomorph/apply_armored_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0, effectiveness_mult = 1)
 	if(damage <= 0)
 		return ..(damage, armour_type, damage_type, def_zone)
 
@@ -124,7 +124,7 @@
 		"armor_integrity" = armor_integrity,
 		"armour_type" = armour_type,
 	)
-	SEND_SIGNAL(src, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, damagedata)
+	SEND_SIGNAL(src, COMSIG_XENO_PRE_APPLY_ARMORED_DAMAGE, damagedata)
 	var/modified_damage = armor_damage_reduction(armour_config, damage,
 		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
 		damagedata["armour_break_flat"], damagedata["armor_integrity"])
@@ -290,7 +290,7 @@
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 				if(prob(60) && !victim.stat && victim.pain.feels_pain)
 					INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
-				victim.apply_armoured_damage(dmg["damage"], ARMOR_BIO, BURN) //Sizzledam! This automagically burns a random existing body part.
+				victim.apply_armored_damage(dmg["damage"], ARMOR_BIO, BURN) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
 				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)

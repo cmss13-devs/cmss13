@@ -114,7 +114,7 @@
 		dancer_user.flick_attack_overlay(target_atom, "tail")
 		dancer_user.emote("roar") // Feedback for the player that we got the magic double impale
 
-		target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+		target_carbon.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 		playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 		// Reroll damage
@@ -125,7 +125,7 @@
 	dancer_user.flick_attack_overlay(target_atom, "tail")
 
 	target_carbon.last_damage_data = create_cause_data(initial(dancer_user.caste_type), dancer_user)
-	target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+	target_carbon.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 	playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 	return ..()
 

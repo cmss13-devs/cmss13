@@ -160,7 +160,7 @@
 	raging_valkyrie.armor_modifier += armor_buff
 	ADD_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 	raging_valkyrie.recalculate_armor()
-	RegisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_self))
+	RegisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMORED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_self))
 
 	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
 		playsound(get_turf(buffing_target), "alien_roar", 40)
@@ -178,7 +178,7 @@
 		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 		buffing_target.recalculate_armor()
 		addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
-		RegisterSignal(buffing_target, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_target))
+		RegisterSignal(buffing_target, list(COMSIG_XENO_PRE_APPLY_ARMORED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_target))
 
 	addtimer(CALLBACK(src, PROC_REF(remove_rage)), armor_buffs_duration)
 
@@ -195,7 +195,7 @@
 	behavior.raging = FALSE
 	REMOVE_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 	raging_valkyrie.recalculate_armor()
-	UnregisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
+	UnregisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMORED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
 	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 
 
@@ -217,7 +217,7 @@
 		target_xeno.remove_filter("raging")
 		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
 		target_xeno.recalculate_armor()
-		UnregisterSignal(target_xeno, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
+		UnregisterSignal(target_xeno, list(COMSIG_XENO_PRE_APPLY_ARMORED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
 		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 	armor_buffs_active_target = FALSE
 

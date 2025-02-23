@@ -25,7 +25,7 @@
 		return
 	if(isxeno(xeno))
 		xeno.apply_effect(4, SLOW) // multiple hits dont stack they just renew the duration
-		xeno.apply_armoured_damage(damage * 0.6, ARMOR_BULLET, BRUTE, , penetration) // xenos have a lot of HP
+		xeno.apply_armored_damage(damage * 0.6, ARMOR_BULLET, BRUTE, , penetration) // xenos have a lot of HP
 
 /datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
 	. = ..()

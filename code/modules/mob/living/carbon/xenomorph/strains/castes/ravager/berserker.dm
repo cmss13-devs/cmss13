@@ -240,9 +240,9 @@
 	// Damage
 	var/obj/limb/head/head = carbon.get_limb("head")
 	if(ishuman(carbon) && head)
-		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+		carbon.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "head")
 	else
-		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE) // just for consistency
+		carbon.apply_armored_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
 	if(!xeno.on_fire)
@@ -329,7 +329,7 @@
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
 				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
 
-			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+			targets_to_hit.apply_armored_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

@@ -1065,7 +1065,7 @@
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
 		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
 
-	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
+	target.apply_armored_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
 	if(stabbing_xeno.mob_size >= MOB_SIZE_BIG)
 		target.apply_effect(3, DAZE)
 	else if(stabbing_xeno.mob_size == MOB_SIZE_XENO)

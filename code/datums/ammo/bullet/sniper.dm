@@ -23,7 +23,7 @@
 /datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
-		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
+		L.apply_armored_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/incendiary
@@ -74,7 +74,7 @@
 			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 4
 		M.adjust_effect(slow_duration, SUPERSLOW)
-		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+		L.apply_armored_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 	else
 		burst(get_turf(M),P,damage_type, 2 , 2)
@@ -229,10 +229,10 @@
 				final_xeno_damage *= (0.25 + (0.25 * amr_counter))
 				slow_duration *= (0.25 + (0.25 * amr_counter)) // 0-3s slow on Big mobs, based on Focus and falloff.
 
-			living_target.apply_armoured_damage((final_xeno_damage), ARMOR_BULLET, BRUTE, null, penetration)
+			living_target.apply_armored_damage((final_xeno_damage), ARMOR_BULLET, BRUTE, null, penetration)
 
 		else
-			living_target.apply_armoured_damage((damage*size_damage_mod), ARMOR_BULLET, BRUTE, null, penetration)
+			living_target.apply_armored_damage((damage*size_damage_mod), ARMOR_BULLET, BRUTE, null, penetration)
 
 		if(slow_duration && (living_target.mob_size != MOB_SIZE_XENO_SMALL) && !(HAS_TRAIT(living_target, TRAIT_CHARGING))) // Runners and Charging Crushers are not slowed.
 			living_target.Slow((slow_duration / 2))
@@ -333,8 +333,8 @@
 				size_damage_mod += 0.5
 			if(target.mob_size >= MOB_SIZE_BIG)
 				size_damage_mod += 1
-			L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+			L.apply_armored_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
 		else
-			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+			L.apply_armored_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
 		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))

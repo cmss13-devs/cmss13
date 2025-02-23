@@ -225,7 +225,7 @@
 	if(H.ally_of_hivenumber(hivenumber))
 		return
 
-	H.apply_armoured_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
+	H.apply_armored_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
 	H.last_damage_data = construction_data
 
 /obj/effect/alien/resin/spike/proc/forsaken_handling()
@@ -992,7 +992,7 @@
 		for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
 			pylon.protection_level = TURF_PROTECTION_OB
 			pylon.update_icon()
-		
+
 	if(hatched)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -1098,7 +1098,7 @@
 
 	if(!candidate.client)
 		return FALSE
-	
+
 	return candidate.client.prefs.be_special & BE_KING
 
 #undef KING_PLAYTIME_HOURS
@@ -1208,7 +1208,7 @@
 			rolling_candidates = FALSE
 			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
-	
+
 
 /// Starts the hatching in twenty seconds, otherwise immediately if expedited
 /obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)

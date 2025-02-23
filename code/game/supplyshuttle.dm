@@ -945,7 +945,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	mauled_human.throw_random_direction(2, spin = TRUE)
 	mauled_human.apply_effect(5, WEAKEN)
 	shake_camera(mauled_human, 20, 1)
-	mauled_human.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, rand_zone())
+	mauled_human.apply_armored_damage(60, ARMOR_MELEE, BRUTE, rand_zone())
 
 //Buyin
 /datum/controller/supply/proc/buy()

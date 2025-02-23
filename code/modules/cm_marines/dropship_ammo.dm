@@ -187,7 +187,7 @@
 			if(iscarbon(explosion_effect))
 				var/mob/living/carbon/bullet_effect = explosion_effect
 				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
+				bullet_effect.apply_armored_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
 			else
 				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		new /obj/effect/particle_effect/expl_particles(impact_tile)

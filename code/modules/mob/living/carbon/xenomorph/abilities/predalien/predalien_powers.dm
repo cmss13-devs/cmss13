@@ -70,7 +70,7 @@
 				playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 30, 1)
 				carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
 				playsound(get_turf(carbon), "alien_claw_flesh", 30, 1)
-				carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+				carbon.apply_armored_damage(get_xeno_damage_slash(carbon, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 			playsound(owner, 'sound/voice/predalien_death.ogg', 75, 0, status = 0)
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = FALSE
@@ -106,7 +106,7 @@
 			carbon.spawn_gibs()
 			playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 50, 1)
 			carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
-			carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage + damage_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+			carbon.apply_armored_damage(get_xeno_damage_slash(carbon, base_damage + damage_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
 			xeno.animation_attack_on(carbon)
 			xeno.spin_circle()
@@ -245,7 +245,7 @@
 		playsound(carbon, 'sound/effects/bang.ogg', 25, 0)
 		playsound(carbon,"slam", 50, 1)
 		animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING) //animates the smash
-		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+		carbon.apply_armored_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))
 

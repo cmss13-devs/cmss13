@@ -2575,6 +2575,7 @@
 #include "code\modules\vehicles\tank\interior.dm"
 #include "code\modules\vehicles\tank\tank.dm"
 #include "code\modules\vehicles\van\box_van.dm"
+#include "code\modules\vehicles\van\clf_van.dm"
 #include "code\modules\vehicles\van\interior.dm"
 #include "code\modules\vehicles\van\pizza_van.dm"
 #include "code\modules\vehicles\van\van.dm"

@@ -382,10 +382,7 @@
 /turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "fN" = (
-/obj/effect/vehicle_spawner/van/fixed{
-	color = "#4a9eed";
-	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
-	name = "CLF Van";
+/obj/effect/vehicle_spawner/clf_van/fixed{
 	dir = 1
 	},
 /turf/open/floor/plating,

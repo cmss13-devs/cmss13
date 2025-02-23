@@ -15,12 +15,14 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	do_evolve()
 
 /mob/living/carbon/xenomorph/proc/do_evolve()
-	var/potential_queens = 0
-
-	if (!evolve_checks())
+	if(!evolve_checks())
 		return
 
-	var/castes_available = caste.evolves_to.Copy()
+	var/list/castes_available = caste.evolves_to.Copy()
+
+	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
+	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
+		castes_available |= XENO_CASTE_QUEEN
 
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
@@ -39,13 +41,13 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
-		castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available_ru, theme="hive_status") // BANDAMARINES EDIT - Translation
+		castepick = tgui_input_list(src, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available_ru, theme="hive_status") // BANDAMARINES EDIT - Translation
 	else
 		var/list/fancy_caste_list = list()
 		for(var/caste in castes_available_ru) // BANDAMARINES EDIT - Translation
 			fancy_caste_list[caste] = hive.evolution_menu_images[castes_available_ru[caste]] // BANDAMARINES EDIT - Translation
 
-		castepick = show_radial_menu(src, src.client?.eye, fancy_caste_list)
+		castepick = show_radial_menu(src, client?.eye, fancy_caste_list)
 	castepick = castes_available_ru[castepick] || castepick // BANDAMARINES EDIT - Translation
 	if(!castepick) //Changed my mind
 		return
@@ -61,60 +63,51 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!evolve_checks())
 		return
 
-	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
-		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
+	if(!hive.living_xeno_queen && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
+		if(hive.xeno_queen_timer > world.time)
+			to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
+		else
+			to_chat(src, SPAN_XENONOTICE("The hive currently has no Queen! We can't find the strength to evolve."))
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
-		if(!hardcore)
-			if(SSticker.mode && hive.xeno_queen_timer > world.time)
-				to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
-				return
-
-			if(plasma_stored >= 500)
-				if(hive.living_xeno_queen)
-					to_chat(src, SPAN_WARNING("There already is a living Queen."))
-					return
-			else
-				to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / 500."))
-				return
-		else
+		if(hardcore)
 			to_chat(src, SPAN_WARNING("Nuh-uhh."))
 			return
+
+		if(SSticker.mode && hive.xeno_queen_timer > world.time)
+			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
+			return
+
+		var/required_plasma = min(500, plasma_max)
+		if(plasma_stored >= required_plasma)
+			if(hive.living_xeno_queen)
+				to_chat(src, SPAN_WARNING("There already is a living Queen."))
+				return
+		else
+			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
+			return
+
 	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
 
-	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
-	for(var/mob/living/carbon/xenomorph/M in GLOB.living_xeno_list)
-		if(hivenumber != M.hivenumber)
-			continue
+	var/mob/living/carbon/xenomorph/xeno_type = null
+	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
 
-		switch(M.tier)
-			if(0)
-				if(islarva(M) && !ispredalienlarva(M))
-					if(M.client && M.ckey)
-						potential_queens++
-				continue
-			if(1)
-				if(isdrone(M))
-					if(M.client && M.ckey)
-						potential_queens++
-
-	var/mob/living/carbon/xenomorph/M = null
-
-	M = GLOB.RoleAuthority.get_caste_by_text(castepick)
-
-	if(isnull(M))
-		to_chat(usr, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
+	if(isnull(xeno_type))
+		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
+
+	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
+	var/potential_queens = hive.get_potential_queen_count()
 
 	if(!can_evolve(castepick, potential_queens))
 		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
 
-	visible_message(SPAN_XENONOTICE("\The [src] begins to twist and contort."),
+	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
 	SPAN_XENONOTICE("We begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
@@ -122,7 +115,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
 		to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
-
 		evolving = FALSE
 		return
 
@@ -145,16 +137,19 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
+
+	// don't drop their organ
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
+
 	//From there, the new xeno exists, hopefully
-	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 	new_xeno.creation_time = creation_time
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
-		to_chat(usr, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
+		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
 		stack_trace("Xeno evolution failed: [src] attempted to evolve into \'[castepick]\'")
 		if(new_xeno)
 			qdel(new_xeno)
@@ -172,7 +167,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else
-		new_xeno.key = src.key
+		new_xeno.key = key
 		if(new_xeno.client)
 			new_xeno.client.change_view(GLOB.world_view_size)
 
@@ -181,8 +176,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
 	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
-		new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
-		new_xeno.fireloss = src.fireloss //Transfers the damage over.
+		new_xeno.bruteloss = bruteloss //Transfers the damage over.
+		new_xeno.fireloss = fireloss //Transfers the damage over.
 		new_xeno.updatehealth()
 
 	if(plasma_max == 0)
@@ -194,14 +189,14 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	built_structures = null
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of [src]."),
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
 
-	src.transfer_observers_to(new_xeno)
-	new_xeno._status_traits = src._status_traits
+	transfer_observers_to(new_xeno)
+	new_xeno._status_traits = _status_traits
 
 	qdel(src)
 	new_xeno.xeno_jitter(25)
@@ -256,7 +251,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow us to evolve."))
 		return FALSE
 
-	if(isnull(caste.evolves_to))
+	if(isnull(caste.evolves_to) || !length(caste.evolves_to))
 		to_chat(src, SPAN_WARNING("We are already the apex of form and function. Go forth and spread the hive!"))
 		return FALSE
 
@@ -333,9 +328,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien"
 
-	var/newcaste
-	var/alleged_queens = 0
-
 	if(!check_state())
 		return
 	if(is_ventcrawling)
@@ -357,25 +349,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
-	for(var/mob/living/carbon/xenomorph/xenos_to_check in GLOB.living_xeno_list)
-		if(hivenumber != xenos_to_check.hivenumber)
-			continue
-
-		switch(xenos_to_check.tier)
-			if(0)
-				if(islarva(xenos_to_check) && !ispredalienlarva(xenos_to_check))
-					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
-						alleged_queens++
-				continue
-			if(1)
-				if(isdrone(xenos_to_check))
-					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
-						alleged_queens++
-
+	var/alleged_queens = hive.get_potential_queen_count()
 	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
 		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
 		return FALSE
 
+	var/newcaste
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)

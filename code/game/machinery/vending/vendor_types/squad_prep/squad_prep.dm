@@ -381,7 +381,7 @@
 		list("Shotgun Choke", 1.5, /obj/item/attachable/shotgun_choke, VENDOR_ITEM_REGULAR),
 
 		list("RAIL", -1, null, null),
-		list("B8 Smart-Scope", 4.5, /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),		// SS220 EDIT - Balance attachments
+		list("B8 Smart-Scope", 4.5, /obj/item/attachable/alt_iff_scope, VENDOR_ITEM_REGULAR),		// SS220 EDIT - Balance attachments
 		list("Magnetic Harness", 8, /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments
 		list("S4 2x Telescopic Mini-Scope", 2, /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
 		list("S5 Red-Dot Sight", 8, /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),	// SS220 EDIT - Balance attachments

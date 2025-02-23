@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed young blood job ban check and end game note who played as Predator"
+  - bugfix: "Fixed young blood leader objectives"
+  - code_imp: "Cleaned up the jobban_isbanned proc"

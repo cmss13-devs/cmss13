@@ -1,7 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added follow tabs to Mutated xeno hive and to Hellhounds."
-  - rscadd: "Added sub-follow tabs to Weyland-Yutani."
-  - rscadd: "Synthetics now appear in their faction follow tabs, as well as Synth tab."
-  - bugfix: "Fixed the name of Whiteout Medic deathsquad version."

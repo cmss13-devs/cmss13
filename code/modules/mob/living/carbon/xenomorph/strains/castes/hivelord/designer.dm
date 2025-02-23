@@ -1,6 +1,3 @@
-#define DO_AFTER_DELAY (1 SECONDS)
-#define COOLDOWN_MULTIPLIER (xeno_cooldown * 0.5)
-
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
 	description = "You lose your ability to build, sacrifice half of your plasma pool, have slower plasma regeneration and slightly less health in exchange for stronger pheromones, ability to create Design Nodes that benefit other builders. Now you can design nodes that increase building speed or decrease cost. You gain ability to call Greater Resin Surge on your Design Nodes location."
@@ -140,7 +137,7 @@
 
 	// Check if replacing an existing speed node
 	var/is_replacing = existing_speed_node ? TRUE : FALSE
-	var/do_after_time = is_replacing ? DO_AFTER_DELAY / 2 : DO_AFTER_DELAY
+	var/do_after_time = is_replacing ? 0.5 SECONDS : 1 SECONDS
 
 	// Only consume plasma when creating a new node
 	if(!is_replacing && !check_and_use_plasma_owner())
@@ -173,7 +170,7 @@
 		if(length(xeno.speed_node_list) > max_speed_nodes)
 			addtimer(CALLBACK(src, PROC_REF(remove_oldest_speed_node), xeno), 0)
 
-	xeno_cooldown = COOLDOWN_MULTIPLIER
+	xeno_cooldown = apply_cooldown(0.5)
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
@@ -247,7 +244,7 @@
 
 	// Check if replacing an existing cost node
 	var/is_replacing = existing_cost_node ? TRUE : FALSE
-	var/do_after_time = is_replacing ? DO_AFTER_DELAY / 2 : DO_AFTER_DELAY
+	var/do_after_time = is_replacing ? 0.5 SECONDS : 1 SECONDS
 
 	// Only consume plasma when creating a new node
 	if(!is_replacing && !check_and_use_plasma_owner())
@@ -280,7 +277,7 @@
 		if(length(xeno.cost_node_list) > max_cost_nodes)
 			addtimer(CALLBACK(src, PROC_REF(remove_oldest_cost_node), xeno), 0)
 
-	xeno_cooldown = COOLDOWN_MULTIPLIER
+	xeno_cooldown = apply_cooldown(0.5)
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
@@ -326,7 +323,7 @@
 	if(!xeno.check_state(TRUE))
 		return
 
-	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -339,7 +336,7 @@
 			create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
 
 	// Wait 1 second, then replace the nodes
-	addtimer(CALLBACK(src, PROC_REF(replace_nodes)), DO_AFTER_DELAY)
+	addtimer(CALLBACK(src, PROC_REF(replace_nodes)), 1 SECONDS)
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
 	return ..()
@@ -370,11 +367,12 @@
 	animation.loc = target_turf
 
 	// Schedule deletion of the animation after 1 second
-	addtimer(CALLBACK(animation, "delete_animation"), DO_AFTER_DELAY)
+	addtimer(CALLBACK(animation, TYPE_PROC_REF(/obj/effect/resin_construct/fastweak, delete_animation), 1 SECONDS))
 
 /obj/effect/resin_construct/fastweak/proc/delete_animation()
 	if(!QDELETED(src))
-		qdel(src)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/effect/resin_construct/fastweak, perform_deletion)), 1 SECONDS)
 
-#undef DO_AFTER_DELAY
-#undef COOLDOWN_MULTIPLIER
+/obj/effect/resin_construct/fastweak/proc/perform_deletion()
+	if(!QDELETED(src))
+		qdel(src)

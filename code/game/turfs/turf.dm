@@ -50,9 +50,6 @@
 
 	var/turf_flags = NO_FLAGS
 
-	// Fishing
-	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
-
 	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
 	var/dynamic_lumcount = 0
 
@@ -91,7 +88,7 @@
 
 	if(above)
 		above.multiz_new(dir=DOWN)
-	
+
 	if(below)
 		below.multiz_new(dir=UP)
 
@@ -137,7 +134,7 @@
 	var/turf/below = SSmapping.get_turf_below(src)
 	if(above)
 		above.multiz_del(dir=DOWN)
-	
+
 	if(below)
 		below.multiz_del(dir=UP)
 

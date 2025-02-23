@@ -631,41 +631,8 @@
 	. = ..()
 
 /obj/item/weapon/gun/revolver/mateba/unique_action(mob/user)
-	if(!user || !isturf(user.loc) || !current_mag || !current_mag.current_rounds)
-		return
-
-	var/turf/mateba_turf = user.loc
-	var/area/mateba_area = mateba_turf.loc
-
-	if(user.a_intent < INTENT_GRAB)
+	if(fire_into_air(user))
 		return ..()
-
-	if(user.action_busy)
-		return
-
-	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		return
-
-	if(!current_mag || !current_mag.current_rounds)
-		return
-
-	current_mag.current_rounds--
-
-	if(mateba_area.ceiling <= CEILING_GLASS)
-		mateba_turf.ceiling_debris()
-
-	user.visible_message(SPAN_HIGHDANGER(uppertext("[user] FIRES THEIR [name] INTO THE AIR!")),
-	SPAN_HIGHDANGER(uppertext("YOU FIRE YOUR [name] INTO THE AIR!")))
-
-	playsound(user, fire_sound, 120, FALSE)
-
-	FOR_DVIEW(var/mob/mob, world.view, user, HIDE_INVISIBLE_OBSERVER)
-		if(mob && mob.client)
-			if(ishuman(mob))
-				shake_camera(mob, 3, 4)
-	FOR_DVIEW_END
-
-	update_icon()
 
 /obj/item/weapon/gun/revolver/mateba/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 24, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 23, "special_y" = 22)

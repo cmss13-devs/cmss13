@@ -308,7 +308,7 @@
 
 /obj/item/reagent_container/food/drinks/flask
 	name = "metal flask"
-	desc = "A metal flask with a decent liquid capacity."
+	desc = "Металлическая фляга с поразительной вместимостью."
 	icon_state = "flask"
 	item_state = "flask"
 	item_state_slots = list(WEAR_AS_GARB = "flask")
@@ -322,7 +322,7 @@
 
 /obj/item/reagent_container/food/drinks/flask/marine
 	name = "\improper USCM flask"
-	desc = "A metal flask embossed with the USCM logo and probably filled with a slurry of water, motor oil, and medicinal alcohol."
+	desc = "Металлическая фляжка c гравировкой логотипа ККМП. Вероятно заполнена суспензией из воды, моторного масла и медицинского спирта."
 	icon_state = "flask_uscm"
 	item_state = "flask_uscm"
 	volume = 60
@@ -335,7 +335,7 @@
 
 /obj/item/reagent_container/food/drinks/flask/weylandyutani
 	name = "\improper Weyland-Yutani flask"
-	desc = "A metal flask embossed with Weyland-Yutani's signature logo that some corporate bootlicker probably ordered to be stocked in USS military vessels' canteen vendors."
+	desc = "Металлическая фляжка c гравировкой логотипа Вейланд-Ютани. В раздатчиках военных кораблей США данные фляжки вероятно появились из-за какого-то корпората-подхалима."
 	icon_state = "flask_wy"
 	item_state = "flask_wy"
 	volume = 60
@@ -347,7 +347,7 @@
 
 /obj/item/reagent_container/food/drinks/flask/canteen
 	name = "canteen"
-	desc = "You take a sip from your trusty USCM canteen..."
+	desc = "Вы делаете глоток из своей верной фляжки ККМП..."
 	icon_state = "canteen"
 	item_state = "canteen"
 	volume = 60

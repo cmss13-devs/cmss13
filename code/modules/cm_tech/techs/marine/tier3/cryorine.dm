@@ -4,7 +4,7 @@
 	desc = "Wakes up additional troops to fight against any threats."
 	icon_state = "cryotroops"
 
-	announce_message = "Additional troops are being taken out of cryo."
+	announce_message = "Из крио был выведен дополнительный отряд."
 
 	required_points = 6
 	increase_per_purchase = 6

@@ -1,59 +1,59 @@
-Acid pillars can be sneakily placed next to a door in order to surprise marines.
-Alien structures like clusters, walls, or pillars are vital to your victory, be it as cover or to delay and funnel marines.
-Always thank your drones and Hivelords for supporting the hive!
-Don't underestimate survivors. They have no armor but that makes them very fast, they're inherently hardier than marines and have various tricks up their sleeves.
-While the Queen is de-ovied, the hive does not gain evolution points.
-Try out new castes or strains that you might have passed up initially. You might find them to be surprisingly fun.
-As an Alien, it is EXTREMELY IMPORTANT that you have your abilities set up on hotkeys or macros. Ask for help if you don't know how.
-Pouncing or lunging into a marine that's almost offscreen is not very wise. A marine with a shotgun may be right next to them.
-Most alien deaths are caused by over-aggression, especially off weeds. Rein yourself in, or you may find yourself dying round after round.
-You can spit at or shoot a welding fuel tank to blow it up next to hostiles.
-Quickly rest if you're right next to an explosive about to blow, you'll absorb half the explosion damage. The same method can be used to avoid shrapnel from certain explosion types.
-On grab intent, click vendors to knock them over. After a few seconds, they'll fall on their side and you can walk through them.
-Unpowered shutters can be manually opened by clicking on them. The Queen can also open containment shutters, but this takes some time.
-Moving through pipes is noisy and entering/leaving the vents has a noticeable visual and auditory cue.
-If a fellow alien is stunned, be sure to drag them to safety.
-On help intent, click a xenomorph who is on fire to pat them out. This works on marines too!
-Frenzy increases your speed and damage, Recovery increases your health regeneration, and Warding increases the time you have until you bleed out in critical health.
-Remember that, as a Xenomorph, you can fully disable your night-vision. This helps put into perspective how hidden your position is to marines onscreen.
-You can drag larva corpses (not embryos) onto the hive core to gain a new burrowed larva.
-The bigger you are, the more time it'll take to enter a tunnel.
-Drag yourself onto a hole in a wall as a medium-sized or smaller Xeno to pass through it.
-Claymores have directional explosions. Set them off early by slashing them from behind.
-If you have difficulty clicking marines, try using Directional Slashing, though there's no directional slashing for abilities.
-You can diagonally pounce through the corners of fire as a Lurker or Runner without getting ignited.
-When playing as Xeno, consider aiming at the limbs instead of the chest. Marine armor doesn't protect the arms and legs as well as it does the body.
-You can dodge pounces that aren't aimed directly at you by laying down.
-You may rest immediately during a pounce to pounce straight through mobs. It's not very practical or useful though.
-Pouncing someone who is buckled to a chair will still stun them, but you won't jump into their tile and they will not be knocked to the ground.
-Star shell dust from said grenades is just as meltable as normal flares.
-You can join the hive as a living Facehugger by clicking on the hive's Eggmorpher. This works on other hives too..
-Playable Facehuggers can leap onto targets with a one-second windup, but this will only infect them if they are adjacent to it. Otherwise, it will simply knock them down for a small duration.
-As a Facehugger, you cannot talk in hivemind, but you can still open Hive Status and overwatch your sisters. This can be useful if you're locating other Facehuggers, flanker castes, or trying to learn from experienced Facehugger players.
-Shift-clicking the Queen indicator will tell you what area you are in, on the map.
-As a Ravager your abilities become greatly enhanced when you empower with three or more people around you.
-Resisting on a water tile will immediately put out fires. Make sure you're alone though - It's usually better to let a friendly Xenomorph pat you out than it is to expose yourself to open water.
-You can filter out the Xenomorphs displayed in hive status by health, allowing you to look only for wounded sisters.
-Each xeno has their own ‘tackle counter’ on a marine. The range to successfully tackle can be anywhere from two to six tackles based on caste. If a marine gets stunned or knocked over by other means it will reset everyone's tackle counters and they may get up!
-As a Xenomorph, the list of available tunnels is sorted by their distance to the player!
-As a Xenomorph, pay attention to what a marine is wearing. If they have no helmet, aiming for the head will be significantly more damaging, if they aren't wearing gloves, then think about going for their hands.
-The M540-A Armored Recon Carrier can be crawled under as a xenomorph when destroyed.
-The M540-A Armored Recon Carrier is very vulnerable to acid damage.
-Applying acid to flares makes them burn faster.
-Melting weapons, ammo or other valuables owned by marines is a good way to debilitate them.
-The secrete acid shortcut is (by default) Shift + C.
-Placing acid traps under map debris such as metal sheets, wooden planks or other semi-large to large items is good for catching marines by surprise.
-Burrower can place tunnels underneath tables or lockers.
-Lesser drones and facehuggers cannot speak or use the Hivemind for three minutes after spawning.
-Alt-clicking on the Queen tracker allows you to set it to also track the Hive Core, any living leaders or any existing tunnels. Tunnels are ordered by closest to furthest; top to bottom.
-Be mindful of not blocking the escape of injured sisters.
-As a Xenomorph, you are able to melt advanced body scanners, sleepers, MarineMeds and limb printers.
-You can break roller beds with a single slash to stop a medic from quickly transporting a body.
-As a Defender, lowering your crest gives you increased resistance to stuns like explosives or shotgun shells.
-Tail stab will always hit the targetted limb and will do 1.2x your normal melee damage; it has a two tile range.
-You can check if a door is shocked by tailstabbing it.
-You can use your tail stab to slowly damage and break doors; this takes some time.
-Some smaller Xenomorphs such as Runners can hide behind barricades by resting against them, a good surprise tactic.
-Defenders with a lowered crest can open existing holes in walls.
-As a Defender, you can deal an additional stage of damage to an APC by lowering your crest and then attacking it.
-Any Xenomorph with acid can melt any kind of window frame; you may use this to create additional paths.
+Кислотные столбы можно незаметно разместить рядом с дверью, чтобы удивить морпехов.
+Такие структуры ксеноморфов, как кластеры, стены или столбы, жизненно важны для вашей победы, будь они укрытием, задержкой или направлением морпехов.
+Всегда благодарите своих дронов и владык улья за поддержку улья!
+Не недооценивайте выживших. У них нет брони, но это делает их очень быстрыми, они от природы выносливее морпехов и имеют различные трюки в рукаве.
+Пока королева не на яйцекладе, улей не получает очки эволюции.
+Попробуйте новые касты или подвиды, которые вы, возможно, изначально пропустили. Может, вы откроете для себя что-то интересное.
+Будучи ксеноморфом, ОЧЕНЬ ВАЖНО, чтобы ваши способности были назначены на хоткеи или макросы. Попросите помощи, если не знаете, как это сделать.
+Прыжок или бросок на морпеха, который почти за пределами экрана, не очень разумен. Морпех с дробовиком может быть прямо рядом с ним.
+Большинство смертей ксеноморфов вызвано чрезмерной агрессией, особенно вне зоны травы. Не лезьте на рожон, иначе вы обнаружите, что умираете раунд за раундом.
+Вы можете плюнуть или выстрелить в бак с топливом, чтобы взорвать его рядом с врагами.
+Быстро лягте, если вы рядом с взрывчаткой, которая вот-вот взорвётся, вы поглотите половину урона от взрыва. Тот же метод можно использовать, чтобы избежать осколков от определённых типов взрывов.
+В жёлтом интенте кликните по вендору, чтобы опрокинуть его. Через несколько секунд он упадёт, и вы сможете пройти сквозь него.
+Незапитанные ставни можно открыть вручную, кликнув на них. Королева также может открывать защитные ставни зоны содержания, но это занимает некоторое время.
+Перемещение по трубам шумное, а вход/выход из вентиляции имеет заметное визуальное и звуковое отображение.
+Если другой ксеноморф оглушён, обязательно оттащите его в безопасное место.
+В зелёном интенте кликните на ксеноморфа, который горит, чтобы потушить его. Это работает и на морпехах!
+Феромоны безумия увеличивают вашу скорость и урон, восстановительные увеличивают регенерацию здоровья, а защитные увеличивают время, оставшееся до смерти в критическом состоянии.
+Помните, что будучи ксеноморфом, вы можете полностью отключить своё ночное зрение. Это помогает понять, насколько скрыто ваше положение для морпехов на экране.
+Вы можете перетащить трупы грудоломов (не эмбрионов) на ядро улья, чтобы получить нового грудолома.
+Чем больше вы по размеру, тем больше времени потребуется, чтобы войти в туннель.
+Перетащите себя на дыру в стене, будучи ксеноморфом среднего или меньшего размера, чтобы пройти через неё.
+Клеймор имеет направленный взрыв. Активируйте его раньше, ударив сзади.
+Если у вас возникают трудности с кликанием по морпехам, попробуйте использовать Directional Slashing, но учтите, что для способностей это не работает.
+Вы можете прыгать по диагонали через огонь, будучи охотником или бегуном, не загораясь.
+Будучи ксеноморфом, подумайте о том, чтобы целиться в конечности, а не в грудь. Броня морпехов не так хорошо защищает руки и ноги, как тело.
+Вы можете уклоняться от рывков, направленных прямо на вас, лёжа на земле.
+Вы можете лечь мгновенно во время рывка, чтобы сделать рывок сквозь мобов. Это, к слову, не очень практично или полезно.
+Рывок на того, кто пристёгнут к стулу, всё ещё оглушит его, но вы не попадёте на его тайл, и он не упадёт на землю.
+Пыль от осветительных гранат горит столько же, сколько и обычные флаеры.
+Вы можете присоединиться к улью в качестве лицехвата, кликнув на морфер яиц улья. Это работает и с другими ульями.
+Лицехваты под управлением игроков могут прыгать на людей с задержкой в одну секунду, но это заразит их только если они находятся рядом. В противном случае это просто собьёт их с ног на небольшое время.
+Будучи лицехватом, вы не можете говорить в коллективный разум, но всё ещё можете просмотреть статус улья и наблюдать за сёстрами. Это может быть полезно, если вы ищете других лицехватов, фланкеров или пытаетесь учиться у опытных игроков за лицехватов.
+Shift-клик по индикатору королевы покажет вам, в какой области вы находитесь на карте.
+Будучи опустошителем, ваши способности значительно усиливаются, когда вы усиливаетесь с тремя или более людьми вокруг.
+Попытавшись потушиться в воде, вы мгновенно потушите огонь. Убедитесь, что вы одни - обычно лучше позволить дружественному ксеноморфу потушить вас, чем выходить на открытую воду.
+Вы можете фильтровать ксеноморфов, отображаемых в статусе улья, по здоровью, что позволяет вам следить только за ранеными сёстрами.
+У каждого ксеноморфа есть свой "счётчик захвата" на морпеха. Диапазон для успешного захвата может быть от двух до шести захватов в зависимости от касты. Если морпех оглушён или сбит с ног другими способами, это сбросит счётчики захвата всех, и он сможет встать!
+Будучи ксеноморфом, список доступных туннелей сортируется по их расстоянию до игрока!
+Будучи ксеноморфом, обратите внимание на то, что носит морпех. Если у него нет шлема, удары по голове будут значительно более разрушительными; если у него нет перчаток, подумайте о том, чтобы бить по его рукам.
+Будучи ксеноморфом, вы можете проползти под бронированным разведывательным носителем M540-A, когда он уничтожен.
+Бронированный разведывательный носитель M540-A очень уязвим к кислотному урону.
+После нанесения кислоты на флаер, он прогорит быстрее.
+Уничтожение кислотой оружия, боеприпасов или других ценных вещей, принадлежащих морпехам, - это хороший способ ослабить их.
+Секретная комбинация для кислоты (по умолчанию) - Shift + C.
+Размещение кислотных ловушек под обломками карты, такими как металлические листы, деревянные доски или другие полубольшие или большие предметы, хорошо для неожиданной атаки на морпехов.
+Копатель может размещать туннели под столами или шкафчиками.
+Трутни и лицехваты не могут говорить или использовать коллективный разум в течение трёх минут после появления.
+Alt-клик по трекеру Королевы позволяет вам настроить его для отслеживания ядра улья, любых живых лидеров или существующих туннелей. Туннели упорядочены от ближайшего к дальнему; сверху вниз.
+Будьте внимательны, чтобы не блокировать путь для отступления раненым сёстрам.
+Будучи ксеноморфом, вы можете плавить продвинутые сканеры тела, слиперы, автоматы MarineMeds и принтеры конечностей.
+Вы можете сломать каталки одним ударом, чтобы замедлить медика и замедлить доставку раненого к укрытию.
+Будучи защитником, опускание гребня увеличивает вашу устойчивость к оглушению, например, от взрывов или дробовиков.
+Удар хвостом всегда попадает в конечность, на которую вы нацелились, и наносит 1.2x вашего обычного урона в ближнем бою; он имеет дальность в две плитки.
+Вы можете проверить, находится ли дверь под напряжением, ударив её хвостом.
+Вы можете использовать удар хвостом, чтобы медленно повреждать и ломать двери; для этого потребуется некоторое количество времени.
+Некоторые маленькие ксеноморфы, такие как Бегуны, могут прятаться за баррикадами, ложась рядом с ними, что является хорошей тактикой для неожиданной атаки.
+Защитники с опущенным гребнем могут открывать существующие дыры в стенах.
+Будучи защитником, вы можете нанести дополнительный урон ЛКП, опустив гребень и затем атаковав его.
+Любой ксеноморф с кислотой может плавить любые оконные рамы; вы можете использовать это для создания дополнительных троп.

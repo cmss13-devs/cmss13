@@ -26,7 +26,7 @@
         0.0
     ],
     "map_item_type": "/obj/item/map/desert_dam",
-    "announce_text": "We've lost contact with Weyland-Yutani's extra-solar colony, \"Trijent Dam\", on the planet \"Raijin.\" The ###SHIPNAME### has been dispatched to assist.",
+    "announce_text": "Мы потеряли связь с внесолнечной колонией Вейланд-Ютани, \"Дамба Триджент\", на планете \"Райджин\". ###SHIPNAME### был отправлен на помощь.",
     "liaison_briefing": "maps/map_briefings/cl_brief_trijent.html",
     "monkey_types": [
         "stok"

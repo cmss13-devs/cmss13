@@ -5,7 +5,7 @@
 		winset(client, "mapwindow.status_bar", "is-visible=false");\
 		return;\
 	}\
-	winset(client, "mapwindow.status_bar", "text=\"[name]\"");\
+	winset(client, "mapwindow.status_bar", "text=\"[declent_ru(NOMINATIVE)]\"");\
 };\
 ##type/MouseExited(location, control, params){\
 	var/client/client = usr.client;\
@@ -13,7 +13,7 @@
 		return;\
 	}\
 	winset(client, "mapwindow.status_bar", "text=\"\"");\
-}
+} // BANDAMARINES EDIT - translation
 
 SHOW_ON_STATUSBAR(/mob)
 SHOW_ON_STATUSBAR(/obj/item)

@@ -17,6 +17,3 @@
 	xeno_cooldown = 10 SECONDS // relatively short since we want them to be close most of the time
 	plasma_cost = 0
 	xeno_cooldown = 1 SECONDS
-
-
-

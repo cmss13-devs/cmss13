@@ -69,8 +69,6 @@
 			attacking_xeno.track_slashes(attacking_xeno.caste_type) //Adds to slash stat.
 			var/damage = rand(attacking_xeno.melee_damage_lower, attacking_xeno.melee_damage_upper) + dam_bonus
 			var/acid_damage = 0
-			if(attacking_xeno.burn_damage_lower)
-				acid_damage = rand(attacking_xeno.burn_damage_lower, attacking_xeno.burn_damage_upper)
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(attacking_xeno.frenzy_aura > 0)
@@ -944,23 +942,6 @@
 			M.visible_message(SPAN_DANGER("[M] smashes [src]!"),
 			SPAN_DANGER("We smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		return XENO_ATTACK_ACTION
-
-/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
-	if((M.caste && M.caste.tier < 2 && M.claw_type < CLAW_TYPE_VERY_SHARP) || unacidable)
-		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
-		return XENO_NO_DELAY_ACTION
-	M.animation_attack_on(src)
-	health -= floor(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
-	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"),
-		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
-		dismantle()
-	else
-		M.visible_message(SPAN_DANGER("[M] smashes [src]!"),
-		SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
-	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_tipped_over)

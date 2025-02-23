@@ -214,8 +214,12 @@
  * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
  */
-/datum/tgui/proc/send_full_update(custom_data, force)
+/datum/tgui/proc/send_full_update(custom_data, force, force_refresh=FALSE)
 	if(!user.client || !initialized || closing)
+		return
+	if(force_refresh)
+		refreshing = TRUE
+		addtimer(CALLBACK(src, PROC_REF(send_full_update), custom_data, force), 1 SECONDS, TIMER_UNIQUE)
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = TRUE

@@ -385,3 +385,105 @@
       missing
   zzzmike:
   - qol: stops the economy inflation announcements during red/delta alert
+2025-02-18:
+  Ansekishoku:
+  - balance: adds AP mags for M4A3 pistol to the squad vendors.
+  - rscadd: A new Field Doctor job to end the arguments between doctors about who
+      wants to deploy.
+  Drathek Zenith:
+  - rscadd: Colony lights and traffic lights can be exploded into a stump now
+  - imageadd: Lightpost stumps by Zenith
+  Red-byte3D:
+  - bugfix: Fixes double examine text on hivelord when you examine them as a xeno.
+  - spellcheck: Rewrites Queen and Hivelord xeno examine text
+  - rscadd: Banishment now does damage per tick
+  - bugfix: You can no longer put down xeno resin marks in hyperspace
+  - code_imp: Fixes some bugs with fire ob admin proc
+  - bugfix: Towels no longer have lids
+2025-02-19:
+  Red-byte3D:
+  - bugfix: Fixes fractional numbers with extinguishers
+  - bugfix: Queen expand weeds now properly expands weeds as normal weeds instead
+      of the weed type it expands from
+  - code_imp: one letter vars replaced in code
+2025-02-20:
+  Git-Nivrak:
+  - rscadd: Multiz
+  NHC:
+  - rscadd: Added a passive acid generation cap of 400 to acider runner
+  - rscadd: Added an additional passive acid generation that activates when in combat
+      for acider
+  - ui: Added status panel info to show if combat acid generation is active or not
+      for acider
+  - ui: Updated status panel info to show acid gen cap and max acid for acider
+  - ui: The tgui_alert modal now calculates height differently to better handle large
+      messages
+  - ui: Purchase Strain buttons are now "Mutate" and "Cancel" so they don't stack
+      in the modal
+  - imageadd: Added overlays for caps for 10, 20, 30, 40, 50, 60, 70, 80 and 90%
+  - imageadd: Added overlays showing acider drooling when combat acid generation is
+      active
+  - spellcheck: Revised acider purchase strain information
+  Red-byte3D:
+  - bugfix: Carriers can no longer refills morpher from infinite range
+  SerheyKr:
+  - qol: Chem master can process several pill bottles
+  Zonespace27:
+  - rscadd: Valkyries can now see how much damage they have mitigated through use
+      of their Tantrum ability.
+  hry-gh:
+  - ui: unban panel is now tgui, less laggy on the whole entire server
+  realforest2001:
+  - bugfix: You can no longer place C4 or Breaching Charges onto objects that are
+      explosion proof.
+2025-02-22:
+  Drathek:
+  - spellcheck: Fixed a missing 'and' in acider strain purchase message
+  Nomoresolvou:
+  - bugfix: Fixed preds being unable to use abilities after SDing a thrall
+  - bugfix: Thralls are now set back to humans and can shoot guns again after being
+      unthralled
+  - code_imp: removed a couple one letter vars
+  Red-byte3D:
+  - code_imp: Removed all var/lol
+  - bugfix: Oreboxes are no longer unslashable and unbreakable
+  Steelpoint:
+  - mapadd: IASF Outpost Souter has been added as a nightmare insert for Hybrisa Prospera.
+      Part of the larger detachment of Imperial Armed Space Forces that defended the
+      colony. The IASF had been forced to withdraw prior to the events of the xenomorph
+      outbreak, however this insert represents a timeline where the IASF had not fully
+      completed their withdrawal.
+  - code_imp: Added a set of transparent versions of the TWE cosmetic Dropship for
+      mappers to use, instead of the older version that leaves a void overlay.
+  Steelpoint, Blundir:
+  - rscadd: Adds a UPP Squad gun and ammo vendor. Similar in function to the USCM
+      squad vendor. Supplies UPP soldiers with their weapons and munitions.
+  - rscadd: Shotgun shell boxes for UPP shotgun ammunition have been added to the
+      game, they have also been added to all UPP vendors.
+2025-02-23:
+  Drathek:
+  - rscadd: Defenders, Sentinels, and Runners can now also evolve to Queen if there
+      is no queen (no need to de-evolve)
+  - bugfix: Fixed incorrect evolve messaging when there is no queen (always would
+      say queen had died recently)
+  - bugfix: Fixed incorrect evolve messaging when the caste cannot evolve any further
+      (would say there were no castes to evolve to currently)
+  - bugfix: Fixed do_evolve considering queen job banned players as potential queen
+      candidates
+  - code_imp: Cleaned up code in do_evolve and hive_status
+  - bugfix: Fixed young blood job ban check and end game note who played as Predator
+  - bugfix: Fixed young blood leader objectives
+  - code_imp: Cleaned up the jobban_isbanned proc
+  Git-Nivrak:
+  - bugfix: Fixed issues with overwatch console when ground height is 0
+  detectivegoogle, ihatethisengine:
+  - balance: The smartscope now uses alt IFF and cannot fire through friendlies.
+  - balance: The smartscope now only applies a small damage and falloff malus to the
+      mounted weapon.
+  - balance: The smartscope can be mounted to the m41a MK2
+  - balance: The smartscope has lost it's zoom functionality.
+  realforest2001:
+  - rscadd: Added follow tabs to Mutated xeno hive and to Hellhounds.
+  - rscadd: Added sub-follow tabs to Weyland-Yutani.
+  - rscadd: Synthetics now appear in their faction follow tabs, as well as Synth tab.
+  - bugfix: Fixed the name of Whiteout Medic deathsquad version.

@@ -104,7 +104,7 @@
 	. = ..(cause, gibbed, msg)
 	if(!.)
 		return
-	playsound(user, 'sound/voice/ed209_20sec.ogg')
+	playsound(src, 'sound/voice/ed209_20sec.ogg')
 	GLOB.hellhound_list -= src
 	SSmob.living_misc_mobs -= src
 	UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))

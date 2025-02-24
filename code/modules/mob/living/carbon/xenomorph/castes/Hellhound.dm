@@ -185,8 +185,8 @@
 		to_chat(xeno, SPAN_XENOWARNING("You do not sense your owner in this place."))
 		return
 
-	for(var/mob/living/carbon/viewers in orange(xeno, 5))
-		to_chat(viewers, SPAN_WARNING("[xeno] sniffs the ground in a hurry, what the hell.."))
+	for(var/mob/living/carbon/viewer in orange(xeno, 5))
+		to_chat(viewer, SPAN_WARNING("[xeno] sniffs the ground in a hurry."))
 		to_chat(xeno, SPAN_XENOWARNING("You sniff the ground in a hurry to find where your master is."))
 		to_chat(xeno, SPAN_XENOWARNING("Your owner is [dist] meters to the [dir2text(direction)]"))
 

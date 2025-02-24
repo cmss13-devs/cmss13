@@ -127,7 +127,6 @@
 
 /obj/vis_contents_holder
 	plane = OPEN_SPACE_PLANE
-	vis_flags = NO_FLAGS
 
 /obj/vis_contents_holder/Initialize(mapload, vis)
 	. = ..()
@@ -138,10 +137,13 @@
 		return
 
 	vis_contents.Cut()
+	for(var/obj/vis_contents_holder/holder in src)
+		qdel(holder)
+
 	var/turf/below = SSmapping.get_turf_below(src)
 
 	if(below)
-		vis_contents += new /obj/vis_contents_holder(src, below)
+		new /obj/vis_contents_holder(src, below)
 
 /turf/proc/multiz_new(dir)
 	if(dir == DOWN)

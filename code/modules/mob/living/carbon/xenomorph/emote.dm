@@ -68,11 +68,11 @@
 /datum/emote/living/carbon/xeno/hellhound/growl
 	key = "growl"
 	message = "emits a strange, menacing growl."
-	sound = "giant_lizard_growl2"
+	sound = "giant_lizard_growl"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/hellhound/hiss
 	key = "hiss"
 	message = "hisses."
-	sound = "giant_lizard_hiss2"
+	sound = "giant_lizard_hiss"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

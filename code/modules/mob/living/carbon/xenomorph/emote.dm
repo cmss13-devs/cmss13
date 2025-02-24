@@ -61,59 +61,18 @@
 
 /datum/emote/living/carbon/xeno/hellhound/roar
 	key = "roar"
-	key_third_person = "roars"
 	message = "roars!"
 	sound = 'sound/voice/ed209_20sec.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/xeno/hellhound/scratch
-	key = "scratch"
-	key_third_person = "scratches"
-	message = "scratches."
-	hands_use_check = TRUE
-
-/datum/emote/living/carbon/xeno/hellhound/paw
-	key = "paw"
-	key_third_person = "paws"
-	message = "flails its paw."
-	hands_use_check = TRUE
-
-/datum/emote/living/carbon/xeno/hellhound/sway
-	key = "sway"
-	key_third_person = "sways"
-	message = "sways around dizzily."
-
-/datum/emote/living/carbon/xeno/hellhound/snore
-	key = "snore"
-	key_third_person = "snores"
-	message = "snores."
-
-/datum/emote/living/carbon/xeno/hellhound/grunt
-	key = "grunt"
-	key_third_person = "grunts"
-	message = "grunts."
-
-/datum/emote/living/carbon/xeno/hellhound/rumble
-	key = "rumble"
-	key_third_person = "rumbles"
-	message = "rumbles deeply."
-
-/datum/emote/living/carbon/xeno/hellhound/howl
-	key = "howl"
-	key_third_person = "howls"
-	message = "howls!"
-
 /datum/emote/living/carbon/xeno/hellhound/growl
 	key = "growl"
-	key_third_person = "growls"
 	message = "emits a strange, menacing growl."
+	sound = "giant_lizard_growl2"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/xeno/hellhound/stare
-	key = "stare"
-	key_third_person = "stares"
-	message = "stares."
-
-/datum/emote/living/carbon/xeno/hellhound/sniff
-	key = "sniff"
-	key_third_person = "sniffs"
-	message = "sniffs about."
+/datum/emote/living/carbon/xeno/hellhound/hiss
+	key = "hiss"
+	message = "hisses."
+	sound = "giant_lizard_hiss2"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

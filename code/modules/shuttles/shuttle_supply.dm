@@ -4,7 +4,6 @@
 
 /obj/effect/landmark/supply_elevator/upp
 	icon_state = "elevator_upp"
-
 	faction = FACTION_UPP
 
 /obj/effect/landmark/supply_elevator/Initialize(mapload, ...)

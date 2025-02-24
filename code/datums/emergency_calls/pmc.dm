@@ -147,4 +147,3 @@
 /obj/effect/landmark/ert_spawns/distress_pmc/item
 	name = "Distress_PMCitem"
 	icon_state = "distress_item"
-

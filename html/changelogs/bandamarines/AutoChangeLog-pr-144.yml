@@ -1,0 +1,4 @@
+author: "Danilcus-W"
+delete-after: True
+changes:
+  - rscadd: "Новый преференс в настройках - Instant Ability Cast"

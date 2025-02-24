@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - rscadd: "Добавляет перевод для категорий в списке игроков в обсерве"

@@ -158,7 +158,7 @@
 		if(!owner.pred_owner)
 			. += "It's not owned by anyone."
 			return
-		. += "It's owner is [owner.pred_owner.real_name]!"
+		. += "Its owner is [owner.pred_owner.real_name]!"
 
 /datum/action/xeno_action/activable/pounce/gorge/additional_effects(mob/living/target_living)
 	var/mob/living/carbon = target_living

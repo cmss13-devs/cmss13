@@ -117,6 +117,7 @@
 
 /obj/effect/landmark/hunter_primary
 	name = "hunter_primary"
+	icon_state = "hunter_primary"
 
 /obj/effect/landmark/hunter_primary/Initialize(mapload, ...)
 	. = ..()
@@ -128,6 +129,7 @@
 
 /obj/effect/landmark/hunter_secondary
 	name = "hunter_secondary"
+	icon_state = "hunter_secondary"
 
 /obj/effect/landmark/hunter_secondary/Initialize(mapload, ...)
 	. = ..()
@@ -139,6 +141,7 @@
 
 /obj/effect/landmark/crap_item
 	name = "crap_item"
+	icon_state = "item_crap"
 
 /obj/effect/landmark/crap_item/Initialize(mapload, ...)
 	. = ..()
@@ -150,6 +153,7 @@
 
 /obj/effect/landmark/good_item
 	name = "good_item"
+	icon_state = "item_good"
 
 /obj/effect/landmark/good_item/Initialize(mapload, ...)
 	. = ..()

@@ -487,3 +487,7 @@
   - rscadd: Added sub-follow tabs to Weyland-Yutani.
   - rscadd: Synthetics now appear in their faction follow tabs, as well as Synth tab.
   - bugfix: Fixed the name of Whiteout Medic deathsquad version.
+2025-02-24:
+  Red-byte3D:
+  - bugfix: Smashing through stuff now takes the objects range instead of the users
+  - bugfix: Girders are now no longer immortal against xenos.

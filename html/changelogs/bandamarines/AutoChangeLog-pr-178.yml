@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - balance: "Уменьшен таймлок для \"молодой крови\" хищников с 60-и часов маринов И чужих на 5 часов."

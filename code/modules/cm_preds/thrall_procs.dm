@@ -253,6 +253,7 @@
 	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
 	to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
 	explode(thrall)
+	exploding = FALSE
 
 	if(thrall.stat == DEAD)
 		return

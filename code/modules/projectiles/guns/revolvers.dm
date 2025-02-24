@@ -334,7 +334,7 @@
 		/obj/item/attachable/scope,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope/mini_iff,
+		/obj/item/attachable/alt_iff_scope,
 	)
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
@@ -415,7 +415,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope/mini_iff,
+		/obj/item/attachable/alt_iff_scope,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049/set_gun_attachment_offsets()

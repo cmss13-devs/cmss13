@@ -12277,10 +12277,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/item/clothing/glasses/disco_fever{
-	pixel_x = 5;
-	pixel_y = 4
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_f_s)
 "bLf" = (
@@ -17299,10 +17295,6 @@
 	pixel_x = 9
 	},
 /obj/item/reagent_container/pill/happy,
-/obj/item/clothing/glasses/disco_fever{
-	pixel_x = -3;
-	pixel_y = -2
-	},
 /turf/open/floor/plating,
 /area/almayer/living/starboard_emb)
 "dbq" = (
@@ -55968,10 +55960,6 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/item/clothing/glasses/disco_fever{
-	pixel_x = 5;
-	pixel_y = 4
-	},
 /turf/open/floor/almayer/blue/northeast,
 /area/almayer/living/port_emb)
 "sZY" = (
@@ -67376,10 +67364,6 @@
 /obj/item/reagent_container/food/drinks/cans/dr_gibb{
 	pixel_x = 8;
 	pixel_y = 4
-	},
-/obj/item/clothing/glasses/disco_fever{
-	pixel_x = -8;
-	pixel_y = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)

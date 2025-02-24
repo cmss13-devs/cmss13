@@ -118,6 +118,31 @@
 		directional_opacity = ALL_CARDINALS
 
 	return INITIALIZE_HINT_NORMAL
+	if(istransparentturf(src))
+		return INITIALIZE_HINT_LATELOAD
+	else
+		return INITIALIZE_HINT_NORMAL
+
+/turf/LateInitialize(mapload)
+	update_vis_contents()
+
+/turf/proc/update_vis_contents()
+	if(!istransparentturf(src))
+		return
+
+	vis_contents.Cut()
+	var/turf/below = locate(x, y, z-1)
+
+	if(below)
+		vis_contents += below
+
+/turf/proc/multiz_new(dir)
+	if(dir == DOWN)
+		update_vis_contents()
+
+/turf/proc/multiz_del(dir)
+	if(dir == DOWN)
+		update_vis_contents()
 
 /turf/Destroy(force)
 	if(hybrid_lights_affecting)
@@ -152,12 +177,6 @@
 		return
 	flags_atom &= ~INITIALIZED
 	..()
-
-/turf/proc/multiz_new(dir)
-	return
-
-/turf/proc/multiz_del(dir)
-	return
 
 /turf/vv_get_dropdown()
 	. = ..()

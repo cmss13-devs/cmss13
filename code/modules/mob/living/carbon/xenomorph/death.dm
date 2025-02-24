@@ -5,6 +5,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 /mob/living/carbon/xenomorph/death(cause, gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
+	if(isHellhound(src))
+		msg = "lets out a horrible roar as it collapses and stops moving..."
 	. = ..(cause, gibbed, msg)
 	if(!.)
 		return //If they're already dead, it will return.
@@ -89,6 +91,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 			playsound(loc,'sound/voice/predalien_death.ogg', 25, TRUE)
 		else if(isfacehugger(src))
 			playsound(loc, 'sound/voice/alien_facehugger_dies.ogg', 25, TRUE)
+		else if(isHellhound(src))
+			playsound(loc, 'sound/voice/ed209_20sec.ogg', 25, TRUE)
 		else
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)

@@ -36,6 +36,7 @@
 	parent_xeno = parent
 	parent_xeno.melee_damage_lower = parent_xeno.melee_damage_upper // Randomization is bad so we set melee damage to be the max possible
 	parent_xeno.cooldown_reduction_max = 1 // We allow for cooldown reductions up to 100%, though not feasibly possible
+	parent_xeno.sight = SEE_TURFS // We allow seeing turfs but not mobs
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	player_datum = player
 	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
@@ -59,6 +60,7 @@
 	RegisterSignal(parent_xeno, COMSIG_MOBA_ADD_ITEM, PROC_REF(add_item))
 	RegisterSignal(parent_xeno, COMSIG_XENO_USED_TUNNEL, PROC_REF(on_tunnel))
 	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
+	RegisterSignal(parent_xeno, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
 
 /datum/component/moba_player/proc/handle_level_up()
 	level++
@@ -150,3 +152,14 @@
 	SIGNAL_HANDLER
 
 	remove_action(parent_xeno, /datum/action/ghost/xeno)
+
+/datum/component/moba_player/proc/get_status_tab_item(datum/source, list/status_tab_items)
+	SIGNAL_HANDLER
+
+	status_tab_items += "<b>[MOBA_GOLD_NAME]:</b> [gold]"
+	status_tab_items += "<b>Level:</b> [level]/[level_cap]"
+	status_tab_items += "<b>XP:</b> [xp]/[level_up_thresholds[level]]"
+	var/item_names = ""
+	for(var/datum/moba_item/item as anything in held_items)
+		item_names += item.name + (item == held_items[length(held_items)] ? "" : ", ")
+	status_tab_items += "<b>Items:</b> [item_names]"

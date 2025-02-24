@@ -369,20 +369,28 @@
 	icon_state = "solidgrate5"
 
 /turf/open/floor/plating/catwalk/grate/net
+	name = "safety net"
+	desc = "Special net intended to catch anyone, or anything, that falls off the rig. Difficult to move around in, but preferable to falling into the endless ocean below."
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
 	icon_state = "soil_grid"
 	var/slow_amt = 4
 
-/turf/open/floor/plating/catwalk/grate/net/Crossed(atom/movable/AM)
-	. = ..()
-	var/mob/living/carbon/human/slowhuman = AM
-	if(istype(slowhuman))
-		slowhuman.next_move_slowdown = max(slowhuman.next_move_slowdown, slow_amt)
-		return .
-	var/mob/living/carbon/xenomorph/slowxeno = AM
-	if(istype(slowxeno))
-		slowxeno.next_move_slowdown = max(slowxeno.next_move_slowdown, slow_amt)
-		return .
+/turf/open/floor/plating/catwalk/grate/net/Entered(atom/movable/AM)
+	if(iscarbon(AM))
+		var/mob/living/carbon/C = AM
+		var/slow_amount = 0.5
+		var/can_stuck = 1
+		if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
+			slow_amount = 0.35
+			can_stuck = 0
+		var/new_slowdown = C.next_move_slowdown + slow_amount
+		if(prob(2))
+			to_chat(C, SPAN_WARNING("Moving through the [src] slows you down.")) //Warning only
+		else if(can_stuck == 4 && prob(2))
+			to_chat(C, SPAN_WARNING("You get stuck in the [src] for a moment!"))
+			new_slowdown += 10
+		C.next_move_slowdown = new_slowdown
+	..()
 
 /turf/open/floor/plating/catwalk/grate/lattice
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'

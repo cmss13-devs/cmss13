@@ -14,6 +14,9 @@
 	if(istype(target, /atom/movable/screen/action_button)){\
 		return ..();\
 	}\
+	if(istype(target, /atom/movable/screen/click_catcher)){\
+		return ..();\
+	}\
 	if(istype(target, /atom/movable/screen)){\
 		return;\
 	}\

@@ -4,6 +4,7 @@
 /obj/item/weapon/gun/rifle/sharp
 	name = "\improper P9 SHARP rifle"
 	desc = "An experimental harpoon launcher rifle with an inbuilt magnetic harness manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magazine, best used for area denial and disruption."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "sharprifle"
 	item_state = "sharp"
 	fire_sound = 'sound/weapons/gun_sharp.ogg'

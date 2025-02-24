@@ -495,6 +495,40 @@
 
 	return ..()
 
+/datum/action/xeno_action/activable/spray_acid/action_activate()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno) //This is just so if we have non-xenos with acid spray, they won't drool. Dunno if it's actually needed...
+		return
+	var/was_selected_before = (xeno.selected_ability == src) //action_deselect() doesn't work for toggling the same ability, so we need to account for this.
+	..()
+	var/is_selected_now = (xeno.selected_ability == src)
+	if(!was_selected_before && is_selected_now)
+		if(istype(xeno, /mob/living/carbon/xenomorph/spitter))
+			xeno.overlays += icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
+		if(istype(xeno, /mob/living/carbon/xenomorph/praetorian))
+			xeno.overlays += icon('icons/mob/xenos/castes/tier_3/praetorian.dmi', "Praetorian-Spit")
+		if(istype(xeno, /mob/living/carbon/xenomorph/boiler))
+			xeno.overlays += icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
+	else if(was_selected_before && !is_selected_now)
+		if(istype(xeno, /mob/living/carbon/xenomorph/spitter))
+			xeno.overlays -= icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
+		if(istype(xeno, /mob/living/carbon/xenomorph/praetorian))
+			xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/praetorian.dmi', "Praetorian-Spit")
+		if(istype(xeno, /mob/living/carbon/xenomorph/boiler))
+			xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
+
+/datum/action/xeno_action/activable/spray_acid/action_deselect()
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return
+	if(istype(xeno, /mob/living/carbon/xenomorph/spitter))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
+	if(istype(xeno, /mob/living/carbon/xenomorph/praetorian))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/praetorian.dmi', "Praetorian-Spit")
+	if(istype(xeno, /mob/living/carbon/xenomorph/boiler))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
+
 /datum/action/xeno_action/onclick/xenohide/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state(TRUE))
@@ -748,23 +782,40 @@
 	return TRUE
 
 /datum/action/xeno_action/activable/xeno_spit/action_activate()
-    var/mob/living/carbon/xenomorph/xeno = owner
-    if(!xeno) //This is just so if we have non-xenos with acid spit, they won't drool. Dunno if it's actually needed...
-        return
-    var/was_selected_before = (xeno.selected_ability == src) //action_deselect() doesn't work for toggling the same ability, so we need to account for this.
-    ..()
-    var/is_selected_now = (xeno.selected_ability == src)
-    if(!was_selected_before && is_selected_now)
-        xeno.overlays += icon('icons/mob/xenos/xeno_drooling.dmi', "Spitter-Spit")
-    else if(was_selected_before && !is_selected_now)
-        xeno.overlays -= icon('icons/mob/xenos/xeno_drooling.dmi', "Spitter-Spit")
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno) //This is just so if we have non-xenos with acid spit, they won't drool. Dunno if it's actually needed...
+		return
+	var/was_selected_before = (xeno.selected_ability == src) //action_deselect() doesn't work for toggling the same ability, so we need to account for this.
+	..()
+	var/is_selected_now = (xeno.selected_ability == src)
+	if(!was_selected_before && is_selected_now)
+		if(istype(xeno, /mob/living/carbon/xenomorph/spitter))
+			xeno.overlays += icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
+		if(istype(xeno, /mob/living/carbon/xenomorph/praetorian))
+			xeno.overlays += icon('icons/mob/xenos/castes/tier_3/praetorian.dmi', "Praetorian-Spit")
+		if(istype(xeno, /mob/living/carbon/xenomorph/queen))
+			xeno.overlays += icon('icons/mob/xenos/castes/tier_4/queen.dmi', "Queen-Spit")
+	else if(was_selected_before && !is_selected_now)
+		if(istype(xeno, /mob/living/carbon/xenomorph/spitter))
+			xeno.overlays -= icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
+		if(istype(xeno, /mob/living/carbon/xenomorph/praetorian))
+			xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/praetorian.dmi', "Praetorian-Spit")
+		if(istype(xeno, /mob/living/carbon/xenomorph/queen))
+			xeno.overlays -= icon('icons/mob/xenos/castes/tier_4/queen.dmi', "Queen-Spit")
 
 /datum/action/xeno_action/activable/xeno_spit/action_deselect()
 	..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno)
 		return
-	xeno.overlays -= icon('icons/mob/xenos/xeno_drooling.dmi', "Spitter-Spit")
+	if(istype(xeno, /mob/living/carbon/xenomorph/spitter))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
+	if(istype(xeno, /mob/living/carbon/xenomorph/praetorian))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/praetorian.dmi', "Praetorian-Spit")
+	if(istype(xeno, /mob/living/carbon/xenomorph/boiler))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
+	if(istype(xeno, /mob/living/carbon/xenomorph/queen))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_4/queen.dmi', "Queen-Spit")
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -797,10 +848,12 @@
 		if(xeno.ammo.pre_spit_warn)
 			playsound(xeno.loc,"alien_drool", 55, 1)
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
+		xeno.overlays += icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
 		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),\
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
+			xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
 			spitting = FALSE
 			return
 	plasma_cost = xeno.ammo.spit_cost
@@ -813,6 +866,8 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"), \
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
+	if(istype(xeno, /mob/living/carbon/xenomorph/boiler))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
@@ -830,6 +885,7 @@
 
 /datum/action/xeno_action/activable/bombard/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(X) || !X.check_state() || !action_cooldown_check() || X.action_busy)
 		return FALSE
@@ -866,6 +922,7 @@
 
 	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
 	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)
+	xeno.overlays -= icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
 
 	recursive_spread(T, effect_range, effect_range)
 

@@ -35,7 +35,7 @@
 
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND
-	desc = "A disgusting beast from hell, it's covered in menacing spikes.. and dear god that face.. only it's houndmaster could love."
+	desc = "A disgusting beast from hell, it's covered in menacing spikes.. and dear god that face.. only its houndmaster could love."
 	icon = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 	icon_state = "Hellhound Walking"
 	icon_size = 32

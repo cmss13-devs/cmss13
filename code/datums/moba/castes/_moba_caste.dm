@@ -4,6 +4,7 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 /datum/moba_caste
 	/// Path of the /datum/caste_datum that is the equivalent of this caste
 	var/equivalent_caste_path
+	var/equivalent_xeno_path
 
 	var/name = ""
 	var/category = ""

@@ -1,5 +1,6 @@
 /datum/moba_caste/drone
 	equivalent_caste_path = /datum/caste_datum/drone
+	equivalent_xeno_path = /mob/living/carbon/xenomorph/drone
 	name = XENO_CASTE_DRONE
 	category = MOBA_ARCHETYPE_CONTROLLER
 	ideal_roles = list(MOBA_LANE_SUPPORT)

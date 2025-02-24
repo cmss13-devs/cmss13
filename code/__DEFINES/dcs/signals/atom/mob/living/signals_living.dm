@@ -30,6 +30,10 @@
 	#define COMPONENT_LIVING_COLLIDE_HANDLED (1<<0)
 
 /// From /mob/living/proc/do_ghost() : (mob/dead/observer/ghost)
+#define COMSIG_LIVING_PRE_GHOSTED "living_pre_ghosted"
+	#define COMPONENT_DISALLOW_GHOSTING (1<<0)
+
+/// From /mob/living/proc/do_ghost() : ()
 #define COMSIG_LIVING_GHOSTED "living_ghosted"
 
 /// From /mob/living/carbon/human/attack_hand() : (mob/living/carbon/human/attacked_mob)

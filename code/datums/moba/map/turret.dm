@@ -92,7 +92,7 @@
 /obj/effect/alien/resin/moba_turret/proc/fire_at_target(mob/living/target)
 	COOLDOWN_START(src, firing_cooldown, firing_cooldown_time)
 	var/mob/living/last_hit = last_fired_target?.resolve()
-	if(last_hit == target)
+	if((last_hit == target) && (HAS_TRAIT(target, TRAIT_MOBA_PARTICIPANT))) // minions are exempt from damage scaling
 		times_fired_at_last_fired_target++
 		addtimer(CALLBACK(src, PROC_REF(reset_last_fired_target)), 4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 	else
@@ -100,7 +100,7 @@
 
 	var/obj/projectile/proj = new(get_turf(src), create_cause_data(used_ammo.name, C=src))
 	proj.generate_bullet(used_ammo)
-	proj.damage *= (1.2 ** times_fired_at_last_fired_target) // Ramping damage if you decide to try and facetank a turret
+	proj.damage *= (1.4 ** times_fired_at_last_fired_target) // Ramping damage if you decide to try and facetank a turret
 	proj.permutated += src
 	proj.fire_at(target, src, src, used_ammo.max_range, used_ammo.shell_speed)
 	last_fired_target = WEAKREF(target)

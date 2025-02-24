@@ -1,12 +1,10 @@
+GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
+
 /datum/moba_item_store
 	var/static/list/lazy_ui_data = list()
-	var/mob/living/carbon/xenomorph/xeno
-	var/datum/weakref/shop
 
-/datum/moba_item_store/New(mob/living/carbon/xenomorph/our_xeno, obj/effect/alien/resin/moba_shop/opened_from)
+/datum/moba_item_store/New()
 	. = ..()
-	xeno = our_xeno
-	shop = WEAKREF(opened_from)
 
 	if(!length(lazy_ui_data))
 		lazy_ui_data["items"] = list()
@@ -20,7 +18,6 @@
 			))
 
 /datum/moba_item_store/Destroy(force, ...)
-	xeno = null
 	return ..()
 
 /datum/moba_item_store/tgui_interact(mob/user, datum/tgui/ui)
@@ -30,21 +27,24 @@
 		ui.open()
 
 /datum/moba_item_store/ui_state(mob/user)
-	var/obj/effect/alien/resin/moba_shop/shop_ref = shop.resolve()
-	if(get_dist(xeno, shop_ref) > 1)
+	if(!istype(get_area(user), /area/misc/moba/base))
 		return GLOB.never_state
-	return GLOB.conscious_state // zonenote eventually make this require someone being in spawn somehow
+	return GLOB.conscious_state
 
 /datum/moba_item_store/ui_data(mob/user)
 	var/list/data = list()
 
 	var/list/datum/moba_item/items = list()
 	var/list/item_name_list = list()
-	SEND_SIGNAL(xeno, COMSIG_MOBA_GET_OWNED_ITEMS, items)
+	SEND_SIGNAL(user, COMSIG_MOBA_GET_OWNED_ITEMS, items)
 	for(var/datum/moba_item/item as anything in items)
 		item_name_list += item.name
 
+	var/list/gold_list = list()
+	SEND_SIGNAL(user, COMSIG_MOBA_GET_GOLD, gold_list)
+
 	data["owned_items"] = item_name_list
+	data["gold"] = gold_list[1]
 
 	return data
 
@@ -62,14 +62,14 @@
 
 	switch(action)
 		if("buy_item")
-			if(!params["path"])
+			if(!params["path"] || !istype(get_area(ui.user), /area/misc/moba/base))
 				return
 			var/item_path = text2path(params["path"])
 			if(!ispath(item_path, /datum/moba_item))
 				return
 
 			var/list/gold_list = list()
-			SEND_SIGNAL(xeno, COMSIG_MOBA_GET_GOLD, gold_list)
+			SEND_SIGNAL(ui.user, COMSIG_MOBA_GET_GOLD, gold_list)
 			if(!length(gold_list) || !gold_list[1])
 				return
 
@@ -79,11 +79,11 @@
 
 			if(item.unique)
 				var/list/datum/moba_item/items = list()
-				SEND_SIGNAL(xeno, COMSIG_MOBA_GET_OWNED_ITEMS, items)
+				SEND_SIGNAL(ui.user, COMSIG_MOBA_GET_OWNED_ITEMS, items)
 				for(var/datum/moba_item/item2 as anything in items)
 					if(item.type == item2.type)
 						return
 
-			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_GOLD, -item.gold_cost)
-			SEND_SIGNAL(xeno, COMSIG_MOBA_ADD_ITEM, item)
+			SEND_SIGNAL(ui.user, COMSIG_MOBA_GIVE_GOLD, -item.gold_cost)
+			SEND_SIGNAL(ui.user, COMSIG_MOBA_ADD_ITEM, item)
 			return TRUE

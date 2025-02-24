@@ -16,6 +16,7 @@ type Item = {
 type BackendContext = {
   items: Item[];
   owned_items: string[];
+  gold: number;
 };
 
 export const MobaItemStore = (props) => {

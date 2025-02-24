@@ -51,7 +51,8 @@ SUBSYSTEM_DEF(moba)
 
 	#ifdef MOBA_TESTING
 	if(length(players_in_queue))
-		make_game(list(players_in_queue[1]), list())
+		var/datum/moba_player/player = players_in_queue[1]
+		make_game(list(new /datum/moba_queue_player(player, player.queue_slots[1].position, player.queue_slots[1].caste)), list())
 	#else
 	if(COOLDOWN_FINISHED(src, matchmaking_cooldown) && (length(players_in_queue) >= 8) && !SSticker.mode.round_finished) // We can actually make a match
 		do_matchmaking()
@@ -95,20 +96,12 @@ SUBSYSTEM_DEF(moba)
 				if((player.queue_slots[i].position in team1_needed_roles) && !(player.queue_slots[i].caste in already_taken_castes_team1))
 					team1_needed_roles -= player.queue_slots[i].position
 					already_taken_castes_team1 += player.queue_slots[i].caste
-					team1_players += list(list(
-						"player" = player,
-						"role" = player.queue_slots[i].position,
-						"caste" = already_taken_castes_team1 += player.queue_slots[i].caste,
-					))
+					team1_players += new /datum/moba_queue_player(player, player.queue_slots[i].position, player.queue_slots[i].caste)
 					randomized_queue -= player
 				else if((player.queue_slots[i].position in team2_needed_roles) && !(player.queue_slots[i].caste in already_taken_castes_team2))
 					team2_needed_roles -= player.queue_slots[i].position
 					already_taken_castes_team2 += player.queue_slots[i].caste
-					team2_players += list(list(
-						"player" = player,
-						"role" = player.queue_slots[i].position,
-						"caste" = already_taken_castes_team1 += player.queue_slots[i].caste,
-					))
+					team2_players += new /datum/moba_queue_player(player, player.queue_slots[i].position, player.queue_slots[i].caste)
 					randomized_queue -= player
 
 				if(length(team1_players) == 4 && length(team2_players) == 4)
@@ -122,11 +115,11 @@ SUBSYSTEM_DEF(moba)
 		// Should eventually add something that autofills people if there's enough in queue but missing players for a given lane
 
 /datum/controller/subsystem/moba/proc/make_game(list/team1_players, list/team2_players)
-	for(var/datum/moba_player/player as anything in (team1_players + team2_players))
-		remove_from_queue(player)
-		to_chat(player.tied_client, SPAN_BOLDNOTICE("Your game is now being created."))
-		ADD_TRAIT(player.tied_client.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT) // We add this to observers so we can make sure they can't mess with their MOBA prefs and other stuff
-		for(var/datum/tgui/ui as anything in player.tied_client.mob.tgui_open_uis)
+	for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
+		remove_from_queue(player.player)
+		to_chat(player.player.tied_client, SPAN_BOLDNOTICE("Your game is now being created."))
+		ADD_TRAIT(player.player.tied_client.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT) // We add this to observers so we can make sure they can't mess with their MOBA prefs and other stuff
+		for(var/datum/tgui/ui as anything in player.player.tied_client.mob.tgui_open_uis)
 			if(!istype(ui.src_object, /datum/moba_join_panel))
 				continue
 
@@ -146,7 +139,13 @@ SUBSYSTEM_DEF(moba)
 	var/datum/map_template/moba_map/template = new
 	template.load(reservation.bottom_left_turfs[1], FALSE, TRUE)
 	new_controller.handle_map_init(reservation.bottom_left_turfs[1])
-	new_controller.load_in_players()
+	if(!new_controller.load_in_players())
+		for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
+			remove_from_queue(player.player)
+			to_chat(player.player.tied_client, SPAN_BOLDNOTICE("Someone disconnected while the game was loading. Your game has been aborted."))
+			REMOVE_TRAIT(player.player.tied_client?.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+		// Zonenote add the map to the unused list afterwards
+		return
 
 /datum/controller/subsystem/moba/proc/get_moba_controller(map_id)
 	RETURN_TYPE(/datum/moba_controller)

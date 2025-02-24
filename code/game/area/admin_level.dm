@@ -205,3 +205,6 @@
 	. = ..()
 	update_base_lighting()
 
+/area/misc/moba/base
+	name = "Moba - Base"
+	icon_state = "green"

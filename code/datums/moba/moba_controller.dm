@@ -32,13 +32,13 @@
 
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
-	for(var/list/player as anything in team1_players)
-		team1 += player["player"]
+	for(var/datum/moba_queue_player/player as anything in team1_players)
+		team1 += player.player
 	team1_data = team1_players
-	for(var/list/player as anything in team2_players)
-		team2 += player["player"]
+	for(var/datum/moba_queue_player/player as anything in team2_players)
+		team2 += player.player
 	team2_data = team2_players
-	players = team1_players + team2_players
+	players = team1 + team2
 
 	map_id = id
 
@@ -85,11 +85,29 @@
 /datum/moba_controller/proc/load_in_players()
 	// Finish later
 	// Add an abort in case someone's missing a client
-	for(var/list/player_data as anything in team1_data)
-		var/mob/living/carbon/xenomorph/xeno = new player_data["caste"] //zonenote finishs
-		player.tied_client.mob.forceMove(left_base)
-	for(var/datum/moba_player/player as anything in team2)
-		player.tied_client.mob.forceMove(right_base)
+	for(var/datum/moba_player/player as anything in players)
+		if(!player.tied_client)
+			return FALSE
+
+	for(var/datum/moba_queue_player/player_data as anything in team1_data) //zonenote add components
+		var/datum/moba_player/player = player_data.player
+		var/mob/living/carbon/xenomorph/xeno = new player_data.caste.equivalent_xeno_path
+		xeno.forceMove(left_base)
+		xeno.set_hive_and_update(XENO_HIVE_MOBA_LEFT)
+		xeno.AddComponent(/datum/component/moba_player, player, map_id, FALSE)
+		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
+
+	for(var/datum/moba_queue_player/player_data as anything in team2_data)
+		var/datum/moba_player/player = player_data.player
+		var/mob/living/carbon/xenomorph/xeno = new player_data.caste.equivalent_xeno_path
+		xeno.forceMove(right_base)
+		xeno.set_hive_and_update(XENO_HIVE_MOBA_RIGHT)
+		xeno.AddComponent(/datum/component/moba_player, player, map_id, TRUE)
+		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
+
+	return TRUE
 
 /datum/moba_controller/proc/handle_tick()
 	if(!game_started)

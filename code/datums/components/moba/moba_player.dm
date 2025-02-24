@@ -3,6 +3,7 @@
 	var/mob/living/carbon/xenomorph/parent_xeno
 	var/datum/moba_player/player_datum
 	var/datum/moba_caste/player_caste
+	var/datum/moba_item_store/store_ui
 
 	var/level = 1
 	var/level_cap = 12
@@ -40,6 +41,7 @@
 	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
 	map_id = id
 	right_side = right
+	store_ui = new(parent_xeno)
 
 /datum/component/moba_player/Destroy(force, silent)
 	handle_qdel()
@@ -56,6 +58,7 @@
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_GOLD, PROC_REF(get_gold))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_ADD_ITEM, PROC_REF(add_item))
 	RegisterSignal(parent_xeno, COMSIG_XENO_USED_TUNNEL, PROC_REF(on_tunnel))
+	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
 
 /datum/component/moba_player/proc/handle_level_up()
 	level++
@@ -129,6 +132,7 @@
 	SIGNAL_HANDLER
 
 	held_items += new_item
+	new_item.apply_stats(parent_xeno, src, player_datum, TRUE)
 
 /datum/component/moba_player/proc/on_tunnel(datum/source, obj/structure/tunnel/used_tunnel)
 	SIGNAL_HANDLER
@@ -141,3 +145,8 @@
 
 	to_chat(parent_xeno, SPAN_XENO("We travel back to our hive."))
 	playsound(parent_xeno, 'sound/effects/burrowoff.ogg', 25)
+
+/datum/component/moba_player/proc/on_death(datum/source)
+	SIGNAL_HANDLER
+
+	remove_action(parent_xeno, /datum/action/ghost/xeno)

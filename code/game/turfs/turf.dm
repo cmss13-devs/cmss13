@@ -130,6 +130,7 @@
 
 /obj/vis_contents_holder/Initialize(mapload, vis)
 	. = ..()
+	vis_contents += GLOB.openspace_backdrop_one_for_all
 	vis_contents += vis
 
 /turf/proc/update_vis_contents()

@@ -718,3 +718,4 @@
 /// Marks the bottom left of the tutorial zone.
 /obj/effect/landmark/tutorial_bottom_left
 	name = "tutorial bottom left"
+	icon_state = "new_player"

@@ -1,5 +1,6 @@
 #define SHOW_ON_STATUSBAR(type)\
 ##type/MouseEntered(location, control, params){\
+	. = ..();\
 	var/client/client = usr.client;\
 	if(client.prefs?.hide_statusbar){\
 		winset(client, "mapwindow.status_bar", "is-visible=false");\
@@ -8,12 +9,13 @@
 	winset(client, "mapwindow.status_bar", "text=\"[declent_ru(NOMINATIVE)]\"");\
 };\
 ##type/MouseExited(location, control, params){\
+	. = ..();\
 	var/client/client = usr.client;\
 	if(client.prefs?.hide_statusbar){\
 		return;\
 	}\
 	winset(client, "mapwindow.status_bar", "text=\"\"");\
-} // BANDAMARINES EDIT - translation
+} // BANDAMARINES EDIT - translation, quickcast
 
 SHOW_ON_STATUSBAR(/mob)
 SHOW_ON_STATUSBAR(/obj/item)

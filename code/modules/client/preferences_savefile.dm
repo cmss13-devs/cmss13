@@ -463,6 +463,11 @@
 	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6, // Game, music, admin midis, lobby music
 		1, 0.5)) // SS220 TTS EDIT from "modular/text_to_speech/code/sound.dm"
 
+	// BANDAMARINES EDIT START
+	S["quick_cast"] >> quick_cast
+	quick_cast = sanitize_integer(quick_cast, FALSE, TRUE, FALSE)
+	// BANDAMARINES EDIT END
+
 	return 1
 
 /datum/preferences/proc/save_preferences()
@@ -576,6 +581,10 @@
 	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	S["lastchangelog"] << lastchangelog
+
+	// BANDAMARINES EDIT START
+	S["quick_cast"] << quick_cast
+	// BANDAMARINES EDIT END
 
 	return TRUE
 

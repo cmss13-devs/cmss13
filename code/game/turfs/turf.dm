@@ -117,7 +117,6 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
-	return INITIALIZE_HINT_NORMAL
 	if(istransparentturf(src))
 		return INITIALIZE_HINT_LATELOAD
 	else
@@ -126,15 +125,23 @@
 /turf/LateInitialize(mapload)
 	update_vis_contents()
 
+/obj/vis_contents_holder
+	plane = OPEN_SPACE_PLANE
+	vis_flags = NO_FLAGS
+
+/obj/vis_contents_holder/Initialize(mapload, vis)
+	. = ..()
+	vis_contents += vis
+
 /turf/proc/update_vis_contents()
 	if(!istransparentturf(src))
 		return
 
 	vis_contents.Cut()
-	var/turf/below = locate(x, y, z-1)
+	var/turf/below = SSmapping.get_turf_below(src)
 
 	if(below)
-		vis_contents += below
+		vis_contents += new /obj/vis_contents_holder(src, below)
 
 /turf/proc/multiz_new(dir)
 	if(dir == DOWN)

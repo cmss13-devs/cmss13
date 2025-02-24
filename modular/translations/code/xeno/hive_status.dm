@@ -1,12 +1,16 @@
+// IMPORTANT!
+// If you change anything here, keep in sync with:
+// tgui\packages\tgui\interfaces\BandaMarines\XenoCastes.tsx
+
 // Hives
 /datum/hive_status
 	name = "Нормальный улей"
 	var/prefix_fem
 
 /datum/hive_status/corrupted
-	name = "Искаженный улей"
-	prefix = "Искаженный "
-	prefix_fem = "Искаженная "
+	name = "Искажённый улей"
+	prefix = "Искажённый "
+	prefix_fem = "Искажённая "
 
 /datum/hive_status/alpha
 	name = "Альфа улей"

@@ -1,3 +1,7 @@
+// IMPORTANT!!!
+// If you change anything, keep the change in sync with:
+// tgui\packages\tgui\interfaces\BandaMarines\MarineJobs.tsx
+
 // Squad name defines
 #define SQUAD_MARINE_1_RU "Альфа"
 #define SQUAD_MARINE_2_RU "Браво"
@@ -177,14 +181,14 @@
 
 //---- Contractors ----//
 #define JOB_CONTRACTOR_RU "ВЭИЧВК Контрактник"
-#define JOB_CONTRACTOR_ST_RU "ВЭИЧВК Наемник"
+#define JOB_CONTRACTOR_ST_RU "ВЭИЧВК Контрактник"
 #define JOB_CONTRACTOR_MEDIC_RU "ВЭИМС Медик-Специалист"
 #define JOB_CONTRACTOR_ENGI_RU "ВЭИЧВК Инженер-Специалист"
 #define JOB_CONTRACTOR_MG_RU "ВЭИЧВК Стрелок"
 #define JOB_CONTRACTOR_TL_RU "ВЭИЧВК Командир"
 #define JOB_CONTRACTOR_SYN_RU "ВЭИЧВК Синтетик Поддержки"
-#define JOB_CONTRACTOR_COV_RU "ВЭИОФ Наемник"
-#define JOB_CONTRACTOR_COVST_RU "ВЭИОФ Наемник"
+#define JOB_CONTRACTOR_COV_RU "ВЭИОФ Контрактник"
+#define JOB_CONTRACTOR_COVST_RU "ВЭИОФ Контрактник"
 #define JOB_CONTRACTOR_COVMED_RU "ВЭИМС Медик-Специалист"
 #define JOB_CONTRACTOR_COVENG_RU "ВЭИОФ Инженер-Специалист"
 #define JOB_CONTRACTOR_COVMG_RU "ВЭИОФ Стрелок"
@@ -281,7 +285,7 @@
 //-------- TWE --------//
 #define JOB_TWE_REPRESENTATIVE_RU "ИТМ Представитель"
 
-//RMC	// Royal Marine Command - Королевский Морпех Командования
+//RMC	// Royal Marine Command - Королевский Морпех-Коммандос
 #define JOB_TWE_RMC_RU "Королевский Морпех"
 #define JOB_TWE_RMC_RIFLEMAN_RU "КМК Стрелок"
 #define JOB_TWE_RMC_MARKSMAN_RU "КМК Старший Стрелок"

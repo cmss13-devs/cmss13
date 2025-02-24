@@ -6,6 +6,14 @@
  */
 
 const CASTES_RU = {
+  // MARK: Hives
+  Prime: 'Прайм',
+  Corrupted: 'Искажённые',
+  Forsaken: 'Забытые',
+  Mutated: 'Мутировавшие',
+  Other: 'Другие',
+  Yautja: 'Yautja',
+  // MARK: Castes
   Larva: 'Грудолом',
   'Predalien Larva': 'Грудолом чужехищника',
   Facehugger: 'Лицехват',

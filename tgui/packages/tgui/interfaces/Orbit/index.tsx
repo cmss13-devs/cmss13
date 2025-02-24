@@ -15,6 +15,8 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { JobsRu } from '../BandaMarines/MarineJobs';
+import { CastesRu } from '../BandaMarines/XenoCastes';
 import {
   getDisplayName,
   getHealthColor,
@@ -153,13 +155,13 @@ const xenoSplitter = (members: Array<Observable>) => {
     }
   });
   const squads = [
-    buildSquadObservable('Thunderdome', 'xeno', tdomeHive),
-    buildSquadObservable('Prime', 'xeno', primeHive),
-    buildSquadObservable('Corrupted', 'green', corruptedHive),
-    buildSquadObservable('Forsaken', 'grey', forsakenHive),
-    buildSquadObservable('Mutated', 'pink', mutatedHive),
-    buildSquadObservable('Other', 'light-grey', otherHives),
-    buildSquadObservable('Yautja', 'green', yautjaHive),
+    buildSquadObservable(CastesRu('Thunderdome'), 'xeno', tdomeHive),
+    buildSquadObservable(CastesRu('Prime'), 'xeno', primeHive),
+    buildSquadObservable(CastesRu('Corrupted'), 'green', corruptedHive),
+    buildSquadObservable(CastesRu('Forsaken'), 'grey', forsakenHive),
+    buildSquadObservable(CastesRu('Mutated'), 'pink', mutatedHive),
+    buildSquadObservable(CastesRu('Other'), 'light-grey', otherHives),
+    buildSquadObservable(CastesRu('Yautja'), 'green', yautjaHive),
   ];
   return squads;
 };
@@ -179,25 +181,25 @@ const marineSplitter = (members: Array<Observable>) => {
 
   // SS220 EDIT - TRANSLATE code/__DEFINES/bandamarines/ru_jobs.dm
   members.forEach((x) => {
-    if (x.job?.includes('Альфа')) {
+    if (x.job?.includes(JobsRu('Alpha'))) {
       alphaSquad.push(x);
-    } else if (x.job?.includes('Браво')) {
+    } else if (x.job?.includes(JobsRu('Bravo'))) {
       bravoSquad.push(x);
-    } else if (x.job?.includes('Чарли')) {
+    } else if (x.job?.includes(JobsRu('Charlie'))) {
       charlieSquad.push(x);
-    } else if (x.job?.includes('Дельта')) {
+    } else if (x.job?.includes(JobsRu('Delta'))) {
       deltaSquad.push(x);
-    } else if (x.job?.includes('Фокстрот')) {
+    } else if (x.job?.includes(JobsRu('Foxtrot'))) {
       foxtrotSquad.push(x);
-    } else if (x.job?.includes('ЭХО')) {
+    } else if (x.job?.includes(JobsRu('Echo'))) {
       echoSquad.push(x);
-    } else if (x.job?.includes('CBRN')) {
+    } else if (x.job?.includes(JobsRu('CBRN'))) {
       CBRNSquad.push(x);
-    } else if (x.job?.includes('РАЗВЕДКА')) {
+    } else if (x.job?.includes(JobsRu('FORECON'))) {
       FORECONSquad.push(x);
-    } else if (x.job?.includes('SOF')) {
+    } else if (x.job?.includes(JobsRu('SOF'))) {
       SOFSquad.push(x);
-    } else if (x.job?.includes('Provost')) {
+    } else if (x.job?.includes(JobsRu('Provost'))) {
       provost.push(x);
     } else {
       other.push(x);
@@ -205,30 +207,30 @@ const marineSplitter = (members: Array<Observable>) => {
   });
 
   const squads = [
-    buildSquadObservable('Alpha', 'red', alphaSquad),
-    buildSquadObservable('Bravo', 'yellow', bravoSquad),
-    buildSquadObservable('Charlie', 'purple', charlieSquad),
-    buildSquadObservable('Delta', 'blue', deltaSquad),
-    buildSquadObservable('Foxtrot', 'brown', foxtrotSquad),
-    buildSquadObservable('Echo', 'teal', echoSquad),
-    buildSquadObservable('CBRN', 'dark-blue', CBRNSquad),
-    buildSquadObservable('FORECON', 'green', FORECONSquad),
-    buildSquadObservable('SOF', 'red', SOFSquad),
-    buildSquadObservable('Other', 'grey', other),
-    buildSquadObservable('Provost', 'red', provost),
+    buildSquadObservable(JobsRu('Alpha'), 'red', alphaSquad),
+    buildSquadObservable(JobsRu('Bravo'), 'yellow', bravoSquad),
+    buildSquadObservable(JobsRu('Charlie'), 'purple', charlieSquad),
+    buildSquadObservable(JobsRu('Delta'), 'blue', deltaSquad),
+    buildSquadObservable(JobsRu('Foxtrot'), 'brown', foxtrotSquad),
+    buildSquadObservable(JobsRu('Echo'), 'teal', echoSquad),
+    buildSquadObservable(JobsRu('CBRN'), 'dark-blue', CBRNSquad),
+    buildSquadObservable(JobsRu('FORECON'), 'green', FORECONSquad),
+    buildSquadObservable(JobsRu('SOF'), 'red', SOFSquad),
+    buildSquadObservable(JobsRu('Other'), 'grey', other),
+    buildSquadObservable(JobsRu('Provost'), 'red', provost),
   ];
   return squads;
 };
 
 const rankList = [
-  'Rifleman',
-  'Spotter',
-  'Hospital Corpsman',
-  'Combat Technician',
-  'Smartgunner',
-  'Weapons Specialist',
-  'Fireteam Leader',
-  'Squad Leader',
+  JobsRu('Rifleman'),
+  JobsRu('Spotter'),
+  JobsRu('Hospital Corpsman'),
+  JobsRu('Combat Technician'),
+  JobsRu('Smartgunner'),
+  JobsRu('Weapons Specialist'),
+  JobsRu('Fireteam Leader'),
+  JobsRu('Squad Leader'),
 ];
 const marineSort = (a: Observable, b: Observable) => {
   const a_index = rankList.findIndex((str) => a.job?.includes(str)) ?? 0;
@@ -317,22 +319,22 @@ const uppSplitter = (members: Array<Observable>) => {
   });
 
   const squads = [
-    buildSquadObservable('Akula', 'red', akulaSquad),
-    buildSquadObservable('Bizon', 'yellow', bizonSquad),
-    buildSquadObservable('Chayka', 'purple', chaykaSquad),
-    buildSquadObservable('Delfin', 'blue', delfinSquad),
-    buildSquadObservable('UPPKdo', 'red', UPPKdoSquad),
-    buildSquadObservable('Other', 'grey', other),
+    buildSquadObservable(JobsRu('Akula'), 'red', akulaSquad),
+    buildSquadObservable(JobsRu('Bizon'), 'yellow', bizonSquad),
+    buildSquadObservable(JobsRu('Chayka'), 'purple', chaykaSquad),
+    buildSquadObservable(JobsRu('Delfin'), 'blue', delfinSquad),
+    buildSquadObservable(JobsRu('UPPKdo'), 'red', UPPKdoSquad),
+    buildSquadObservable(JobsRu('Other'), 'grey', other),
   ];
   return squads;
 };
 
 const upprankList = [
-  'UPP Ryadovoy',
-  'UPP MSzht Engineer',
-  'UPP MSzht Medic',
-  'UPP Serzhant',
-  'UPP Starshiy Serzhant',
+  JobsRu('UPP Ryadovoy'),
+  JobsRu('UPP MSzht Engineer'),
+  JobsRu('UPP MSzht Medic'),
+  JobsRu('UPP Serzhant'),
+  JobsRu('UPP Starshiy Serzhant'),
 ];
 const uppSort = (a: Observable, b: Observable) => {
   const a_index = upprankList.findIndex((str) => a.job?.includes(str)) ?? 0;
@@ -350,13 +352,13 @@ const weyyuSplitter = (members: Array<Observable>) => {
   const other: Array<Observable> = [];
 
   members.forEach((x) => {
-    if (x.job?.includes('Whiteout')) {
+    if (x.job?.includes(JobsRu('Whiteout'))) {
       whiteout.push(x);
-    } else if (x.job?.includes('Death Squad')) {
+    } else if (x.job?.includes(JobsRu('Death Squad'))) {
       whiteout.push(x);
-    } else if (x.job?.includes('PMC')) {
+    } else if (x.job?.includes(JobsRu('PMC'))) {
       pmc.push(x);
-    } else if (x.job?.includes('Corporate Security')) {
+    } else if (x.job?.includes(JobsRu('Corporate Security'))) {
       goons.push(x);
     } else {
       other.push(x);
@@ -364,10 +366,10 @@ const weyyuSplitter = (members: Array<Observable>) => {
   });
 
   const squads = [
-    buildSquadObservable('PMCs', 'white', pmc),
-    buildSquadObservable('Goons', 'orange', goons),
-    buildSquadObservable('Corporate', 'white', other),
-    buildSquadObservable('Whiteout', 'red', whiteout),
+    buildSquadObservable(JobsRu('PMCs'), 'white', pmc),
+    buildSquadObservable(JobsRu('Goons'), 'orange', goons),
+    buildSquadObservable(JobsRu('Corporate'), 'white', other),
+    buildSquadObservable(JobsRu('Whiteout'), 'red', whiteout),
   ];
   return squads;
 };
@@ -413,95 +415,115 @@ const ObservableContent = () => {
       <GroupedObservable
         color="blue"
         section={marines}
-        title="Marines"
+        title={JobsRu('Marines')}
         splitter={marineSplitter}
         sorter={marineSort}
       />
-      <ObservableSection color="teal" section={humans} title="Humans" />
+      <ObservableSection
+        color="teal"
+        section={humans}
+        title={JobsRu('Humans')}
+      />
       <GroupedObservable
         color="xeno"
         section={xenos}
-        title="Xenomorphs"
+        title={JobsRu('Xenomorphs')}
         splitter={xenoSplitter}
       />
-      <ObservableSection color="good" section={survivors} title="Survivors" />
+      <ObservableSection
+        color="good"
+        section={survivors}
+        title={JobsRu('Survivors')}
+      />
       <ObservableSection
         color="average"
         section={ert_members}
-        title="ERT Members"
+        title={JobsRu('ERT Members')}
       />
       <ObservableSection
         color="light-grey"
         section={synthetics}
-        title="Synthetics"
+        title={JobsRu('Synthetics')}
       />
       <GroupedObservable
         color="green"
         section={upp}
-        title="Union of Progressive Peoples"
+        title={JobsRu('Union of Progressive Peoples')}
         splitter={uppSplitter}
         sorter={uppSort}
       />
       <ObservableSection
         color="teal"
         section={clf}
-        title="Colonial Liberation Front"
+        title={JobsRu('Colonial Liberation Front')}
       />
       <GroupedObservable
         color="white"
         section={wy}
-        title="Weyland Yutani"
+        title={JobsRu('Weyland Yutani')}
         splitter={weyyuSplitter}
       />
       <ObservableSection
         color="red"
         section={twe}
-        title="Royal Marines Commando"
+        title={JobsRu('Royal Marines Commando')}
       />
       <ObservableSection
         color="orange"
         section={freelancer}
-        title="Freelancers"
+        title={JobsRu('Freelancers')}
       />
       <ObservableSection
         color="label"
         section={mercenary}
-        title="Mercenaries"
+        title={JobsRu('Mercenaries')}
       />
       <ObservableSection
         color="light-grey"
         section={contractor}
-        title="Military Contractors"
+        title={JobsRu('Military Contractors')}
       />
       <ObservableSection
         color="red"
         section={hunted}
-        title="Hunted Personnel"
+        title={JobsRu('Hunted Personnel')}
       />
-      <ObservableSection color="good" section={dutch} title="Dutchs Dozen" />
+      <ObservableSection
+        color="good"
+        section={dutch}
+        title={JobsRu('Dutchs Dozen')}
+      />
       <ObservableSection
         color="dark-blue"
         section={marshal}
-        title="Colonial Marshal Bureau"
+        title={JobsRu('Colonial Marshal Bureau')}
       />
       <ObservableSection
         color="pink"
         section={responders}
-        title="Fax Responders"
+        title={JobsRu('Fax Responders')}
       />
-      <ObservableSection color="green" section={predators} title="Predators" />
-      <ObservableSection color="olive" section={escaped} title="Escaped" />
+      <ObservableSection
+        color="green"
+        section={predators}
+        title={JobsRu('Predators')}
+      />
+      <ObservableSection
+        color="olive"
+        section={escaped}
+        title={JobsRu('Escaped')}
+      />
       <ObservableSection
         color="orange"
         section={in_thunderdome}
-        title="Thunderdome"
+        title={JobsRu('Thunderdome')}
       />
-      <ObservableSection section={vehicles} title="Vehicles" />
-      <ObservableSection section={animals} title="Animals" />
-      <ObservableSection section={dead} title="Dead" />
-      <ObservableSection section={ghosts} title="Ghosts" />
-      <ObservableSection section={misc} title="Misc" />
-      <ObservableSection section={npcs} title="NPCs" />
+      <ObservableSection section={vehicles} title={JobsRu('Vehicles')} />
+      <ObservableSection section={animals} title={JobsRu('Animals')} />
+      <ObservableSection section={dead} title={JobsRu('Dead')} />
+      <ObservableSection section={ghosts} title={JobsRu('Ghosts')} />
+      <ObservableSection section={misc} title={JobsRu('Misc')} />
+      <ObservableSection section={npcs} title={JobsRu('NPCs')} />
     </Stack>
   );
 };
@@ -619,15 +641,15 @@ const ObservableTooltip = (props: { readonly item: Observable }) => {
   } = props;
 
   const displayHealth = typeof health === 'number';
-  const healthText = !!health && health >= 0 ? `${health}%` : 'Critical';
+  const healthText = !!health && health >= 0 ? `${health}%` : 'Критическое';
 
   return (
     <LabeledList>
       {!!full_name && (
-        <LabeledList.Item label="Full Name">{full_name}</LabeledList.Item>
+        <LabeledList.Item label="Полное имя">{full_name}</LabeledList.Item>
       )}
       {!!caste && (
-        <LabeledList.Item label="Caste">
+        <LabeledList.Item label="Каста">
           {!!icon && (
             <ObservableIcon
               icon={icon}
@@ -639,7 +661,7 @@ const ObservableTooltip = (props: { readonly item: Observable }) => {
         </LabeledList.Item>
       )}
       {!!job && (
-        <LabeledList.Item label="Job">
+        <LabeledList.Item label="Должность">
           {!!icon && (
             <ObservableIcon
               icon={icon}
@@ -651,7 +673,7 @@ const ObservableTooltip = (props: { readonly item: Observable }) => {
         </LabeledList.Item>
       )}
       {displayHealth && (
-        <LabeledList.Item label="Health">{healthText}</LabeledList.Item>
+        <LabeledList.Item label="Здоровье">{healthText}</LabeledList.Item>
       )}
     </LabeledList>
   );

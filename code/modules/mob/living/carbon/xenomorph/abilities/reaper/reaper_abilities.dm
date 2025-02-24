@@ -15,6 +15,7 @@
 	action_icon_state = "haul_corpse"
 	macro_path = /datum/action/xeno_action/verb/verb_haul_corpse
 	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 1 SECONDS
 
 /datum/action/xeno_action/activable/flesh_harvest
 	name = "Flesh Harvest"
@@ -23,6 +24,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 1 SECONDS
+	no_cooldown_msg = TRUE
 
 	var/harvest_gain = 30
 	var/affect_living = FALSE // Option to let it be used on living

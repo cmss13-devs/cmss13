@@ -43,7 +43,7 @@
 /mob/living/carbon/xenomorph/reaper
 	caste_type = XENO_CASTE_REAPER
 	name = XENO_CASTE_REAPER
-	desc = "A horrifying alien with a grim visage. The stench of rot follows it wherever it goes."
+	desc = "A large gangly alien with a grim visage. The stench of rot follows it wherever it goes."
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/reaper.dmi'
 	icon_state = "Reaper Walking"
@@ -472,15 +472,44 @@
 	if((distance > 2) && !xeno.Adjacent(target))
 		return
 
-	if(!iscarbon(carbon))
-		return
-
 	if(xeno.harvesting == TRUE)
 		to_chat(xeno, SPAN_XENOWARNING("We are busy harvesting!"))
 		return
 
+	if(istype(target, /obj/effect/alien/weeds)) // To get at weed fooded corpses, can be used to restart weed growth
+		var/obj/effect/alien/weeds/target_weeds = target
+		var/target_weeds_loc = target.loc
+		var/obj/effect/alien/weeds/node/target_weeds_node = null
+		var/target_weeds_hive = target_weeds.hivenumber
+		if(target_weeds.parent)
+			target_weeds_node = target_weeds.parent
+		playsound(target_weeds.loc, "alien_resin_break", 25)
+		qdel(target_weeds)
+		apply_cooldown()
+		if(target_weeds_node)
+			if((target_weeds_hive == xeno.hivenumber)) // If our hive, weeds are pruned; pruned weeds can restart spreading, pruned nodes get a bit funky but otherwise work
+				xeno.visible_message(SPAN_DANGER("[xeno] prunes [target_weeds]!"),
+				SPAN_DANGER("We prune [target_weeds]!"))
+				sleep(0.5 SECONDS) // Necessary so any weed food actually stops being weed food
+				if(istype(target_weeds, /obj/effect/alien/weeds/node))
+					new /obj/effect/alien/weeds/node(target_weeds_loc, target_weeds_node, xeno)
+				if(!istype(target_weeds, /obj/effect/alien/weeds/weedwall/window) && !istype(target_weeds, /obj/effect/alien/weeds/weedwall/frame)) // These are a bit fucky, so don't regrow
+					if(istype(target_weeds, /obj/effect/alien/weeds/weedwall))
+						new /obj/effect/alien/weeds/weedwall(target_weeds_loc)
+					else
+						new /obj/effect/alien/weeds(target_weeds_loc, target_weeds_node, TRUE, TRUE)
+					playsound(target_weeds_loc, "alien_resin_build", 5)
+			else // If not our hive, just destroy!
+				xeno.visible_message(SPAN_DANGER("[xeno] forcefully uproots [target_weeds]!"),
+				SPAN_DANGER("We uproot [target_weeds]!"))
+		target_weeds_node = null
+		return
+
 	if(xeno.corpse_no == xeno.corpse_max)
 		to_chat(xeno, SPAN_XENOWARNING("We cannot haul more!"))
+		return
+
+	if(!iscarbon(carbon))
 		return
 
 	if(issynth(carbon))
@@ -499,22 +528,22 @@
 /datum/action/xeno_action/activable/haul_corpse/proc/corpse_add(mob/living/corpse)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
 
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] stabs a wing-like back limb through the gaping hole on [corpse]'s chest, lifting them into the air."), \
-	SPAN_XENONOTICE("We hoist the corpse onto one of our back limbs for hauling."))
 	xeno.corpses_hauled.Add(corpse)
 	xeno.corpse_no += 1
 	corpse.forceMove(xeno)
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] impales [corpse] with a wing-like limb."), \
+	SPAN_XENONOTICE("We hoist the corpse onto our back for hauling."))
 
 /datum/action/xeno_action/activable/haul_corpse/proc/corpse_retrieve(mob/living/corpse)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
 
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] deftly uses its tail to slide a corpse off one of its wing-like back limbs."), \
-	SPAN_XENONOTICE("We remove a corpse from one of our back limbs."))
 	for(var/atom/movable/corpse_mob in xeno.corpses_hauled)
 		xeno.corpses_hauled.Remove(corpse_mob)
 		xeno.corpse_no -= 1
 		corpse_mob.forceMove(get_true_turf(xeno.loc))
 		break
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] slides a corpse off one of its wing-like limbs with it's tail."), \
+	SPAN_XENONOTICE("We remove a corpse from one of our back limbs."))
 
 /datum/action/xeno_action/activable/flesh_harvest/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
@@ -619,7 +648,7 @@
 	playsound(xeno, limb_remove_end, 25, TRUE)
 	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion and drops it!"), \
-		SPAN_XENOWARNING("We harvest the [limb.display_name], but it's a fake! Useless!"))
+		SPAN_XENOWARNING("We harvest the [limb.display_name], but it's a useless fake!"))
 		limb.droplimb(FALSE, FALSE, "flesh harvest")
 	else
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion and swallows it whole!"), \
@@ -635,11 +664,11 @@
 	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 
 	if(victim.chestburst)
-		to_chat(xeno, SPAN_XENOWARNING("A sister has already burst from them, there is nothing to harvest!"))
+		to_chat(xeno, SPAN_XENOWARNING("There is nothing to harvest!"))
 		return
 
 	xeno.harvesting = TRUE
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] bends over and reaches [victim]!"), \
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] gently lifts [victim]!"), \
 	SPAN_XENONOTICE("We prepare our inner jaw to harvest [victim]'s chest organs!"))
 
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -662,7 +691,7 @@
 		victim.death(cause)
 	playsound(victim, 'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	xeno.visible_message(SPAN_XENOWARNING("[xeno]'s inner jaw shoots out of it's mouth, gouging a large hole in [victim]'s chest!"), \
-	SPAN_XENOWARNING("We plunge our inner jaw into [victim]'s chest and consume their organs!"))
+	SPAN_XENOWARNING("We plunge our inner jaw into [victim]'s chest and harvest their organs!"))
 	victim.chestburst = 2
 	victim.update_burst()
 	xeno.modify_flesh_plasma(harvest_gain * 2)
@@ -717,10 +746,10 @@
 		var/obj/effect/alien/weeds/user_weeds = locate() in xeno.loc
 		var/obj/effect/alien/weeds/target_weeds = locate() in xeno_carbon.loc
 		if((!user_weeds && !target_weeds))
-			to_chat(xeno, SPAN_XENOWARNING("We must either be adjacent to our target or both of us must be on weeds!"))
+			to_chat(xeno, SPAN_XENOWARNING("We must either be adjacent to our target or both of us must be on our hive's weeds!"))
 			return
 		if(user_weeds.linked_hive.hivenumber != xeno.hivenumber && target_weeds.linked_hive.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_XENOWARNING("Both us and our target must be on allied weeds!"))
+			to_chat(xeno, SPAN_XENOWARNING("Both us and our target must be on our hive's weeds!"))
 			return
 	else
 		plas_mod = 0.5
@@ -791,7 +820,7 @@
 	return ..()
 
 
-// Strain Powers (Here since I'm not working on it yet)
+// Strain Powers (Here as it's a WIP and maybe not a great idea to include with a brand new xeno)
 
 /datum/action/xeno_action/activable/reap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner

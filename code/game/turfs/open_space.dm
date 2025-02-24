@@ -19,14 +19,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	
 	return INITIALIZE_HINT_LATELOAD
 
-/turf/open_space/update_vis_contents()
-	vis_contents.Cut()
-	vis_contents += GLOB.openspace_backdrop_one_for_all
-	var/turf/below = SSmapping.get_turf_below(src)
-
-	if(below)
-		vis_contents += below
-
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
 

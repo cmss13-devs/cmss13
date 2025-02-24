@@ -348,7 +348,7 @@
 	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
 	icon_state = "sharp_explosive_mine"
 	layer = ABOVE_OBJ_LAYER
-	angle = 360
+	shrapnel_spread = 360
 	health = 50
 	var/disarmed = FALSE
 	var/explosion_size = 100

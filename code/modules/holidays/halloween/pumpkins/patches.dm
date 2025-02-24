@@ -22,9 +22,12 @@
 	overlays?.Cut()
 	. = ..()
 	switch(pumpkin_count)
-		if(3) icon_state = "[icon_prefix]pumpkins_full"
-		if(2) icon_state = "[icon_prefix]pumpkins_half"
-		if(1) icon_state = "[icon_prefix]pumpkin"
+		if(3)
+			icon_state = "[icon_prefix]pumpkins_full"
+		if(2)
+			icon_state = "[icon_prefix]pumpkins_half"
+		if(1)
+			icon_state = "[icon_prefix]pumpkin"
 		else  icon_state = "empty"
 	if(has_vines)
 		overlays += image(icon, loc, "[icon_prefix]vines")

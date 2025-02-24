@@ -84,7 +84,8 @@
 
 
 /obj/item/device/assembly/prox_sensor/proc/toggle_scan()
-	if(!secured) return 0
+	if(!secured)
+		return 0
 	scanning = !scanning
 	update_icon()
 	return

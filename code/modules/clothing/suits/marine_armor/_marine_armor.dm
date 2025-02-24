@@ -148,8 +148,10 @@
 			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "lamp-off")
 		armor_overlays["lamp"] = I
 		overlays += I
-	else armor_overlays["lamp"] = null
-	if(user) user.update_inv_wear_suit()
+	else
+		armor_overlays["lamp"] = null
+	if(user)
+		user.update_inv_wear_suit()
 
 /obj/item/clothing/suit/storage/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()

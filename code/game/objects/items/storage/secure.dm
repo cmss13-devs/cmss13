@@ -53,7 +53,8 @@
 				else
 					user.show_message(text(SPAN_DANGER("Unable to reset internal memory.")), SHOW_MESSAGE_VISIBLE)
 					l_hacking = 0
-			else l_hacking = 0
+			else
+				l_hacking = 0
 			return
 		//At this point you have exhausted all the special things to do when locked
 		// ... but it's still locked.

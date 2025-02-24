@@ -175,8 +175,10 @@
 /obj/structure/closet/bodybag/MouseDrop(over_object, src_location, over_location)
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
-		if(!ishuman(usr)) return
-		if(length(contents)) return 0
+		if(!ishuman(usr))
+			return
+		if(length(contents))
+			return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		var/obj/item/I = new item_path(get_turf(src), src)
 		usr.put_in_hands(I)

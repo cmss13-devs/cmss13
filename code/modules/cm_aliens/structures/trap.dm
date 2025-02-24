@@ -89,30 +89,28 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
+/obj/effect/alien/resin/trap/HasProximity(atom/movable/victim)
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			if(can_hug(AM, hivenumber) && !isyautja(AM) && !issynth(AM))
-				var/mob/living/L = AM
-				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),
-								SPAN_DANGER("You trip on [src]!"))
-				L.apply_effect(1, WEAKEN)
+			if(can_hug(victim, hivenumber) && !isyautja(victim) && !issynth(victim) && !isthrall(victim))
+				var/mob/living/victim_mob = victim
+				victim_mob.visible_message(SPAN_WARNING("[victim_mob] trips on [src]!"))
+				to_chat(victim_mob, SPAN_DANGER("You trip on [src]!"))
+				victim_mob.apply_effect(1, WEAKEN)
 				trigger_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
-			if(ishuman(AM))
-				var/mob/living/carbon/human/H = AM
-				if(issynth(H) || isyautja(H))
+			if(ishuman_strict(victim))
+				var/mob/living/carbon/human/victim_human = victim
+				if(victim_human.stat == DEAD || victim_human.body_position == LYING_DOWN)
 					return
-				if(H.stat == DEAD || H.body_position == LYING_DOWN)
-					return
-				if(H.ally_of_hivenumber(hivenumber))
+				if(victim_human.ally_of_hivenumber(hivenumber))
 					return
 				trigger_trap()
-			if(isxeno(AM))
-				var/mob/living/carbon/xenomorph/X = AM
-				if(X.hivenumber != hivenumber)
+			if(isxeno(victim))
+				var/mob/living/carbon/xenomorph/victim_xeno = victim
+				if(victim_xeno.hivenumber != hivenumber)
 					trigger_trap()
-			if(isVehicleMultitile(AM) && trap_type != RESIN_TRAP_GAS)
+			if(isVehicleMultitile(victim) && trap_type != RESIN_TRAP_GAS)
 				trigger_trap()
 
 /obj/effect/alien/resin/trap/proc/set_state(state = RESIN_TRAP_EMPTY)

@@ -994,12 +994,19 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["displayed_categories"] = vendor_user_inventory_list(user, null, 4)
 
 /obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/A, mob/user)
+
 	if(inoperable())
 		return
+
+	if(!isturf(A.loc) && !ishuman(A.loc))
+		return
+
 	if(user.stat || user.is_mob_restrained())
 		return
+
 	if(get_dist(user, src) > 1 || get_dist(src, A) > 1)
 		return
+
 	if(!ishuman(user))
 		return
 

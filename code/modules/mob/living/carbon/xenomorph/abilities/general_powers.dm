@@ -975,7 +975,7 @@
 		xeno_attack_delay(stabbing_xeno)
 		return ..()
 
-	if(!isxeno_human(targetted_atom))
+	if(!isliving(targetted_atom))
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)

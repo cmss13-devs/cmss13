@@ -11,7 +11,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
 	matter = list("metal" = 50)
 
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
@@ -222,7 +222,7 @@
 	item_state = "etool"
 	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
-	w_class = SIZE_LARGE
+	w_class = SIZE_MEDIUM
 
 	dirt_overlay = "etool_overlay"
 	dirt_amt_per_dig = 5
@@ -245,7 +245,7 @@
 		w_class = SIZE_SMALL
 		force = MELEE_FORCE_TIER_1
 	else
-		w_class = SIZE_LARGE
+		w_class = SIZE_MEDIUM
 		force = MELEE_FORCE_TIER_7
 	..()
 

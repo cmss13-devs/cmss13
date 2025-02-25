@@ -9,6 +9,27 @@
 	},
 /turf/open/floor/dark,
 /area/space)
+"ac" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = 12;
+	name = "holy water";
+	desc = "A basin filled with water."
+	},
+/turf/open/floor/dark,
+/area/space)
+"ad" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes"
+	},
+/turf/open/floor/dark,
+/area/space)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet10_8/west,
@@ -370,10 +391,10 @@ QU
 oe
 Th
 LM
-oa
+ad
 ii
 oa
-oa
+ac
 LM
 Th
 Th

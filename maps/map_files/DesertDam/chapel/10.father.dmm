@@ -1,4 +1,25 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = 12;
+	name = "holy water";
+	desc = "A basin filled with water."
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"ab" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes"
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
 "ay" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/carpet5_1/west,
@@ -364,10 +385,10 @@ AK
 gL
 gT
 JB
-Ke
+ab
 aU
 Ke
-Ke
+aa
 JB
 gT
 gT

@@ -8406,6 +8406,15 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"aCO" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = 12;
+	name = "holy water";
+	desc = "A basin filled with water."
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
 "aCP" = (
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/west_tunnel)
@@ -37268,6 +37277,18 @@
 	},
 /turf/open/floor/prison/whitepurple/north,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
+"cvC" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes"
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
 "cvF" = (
 /turf/open/floor/prison/greencorner,
 /area/desert_dam/building/substation/west)
@@ -70493,10 +70514,10 @@ dFo
 cru
 doE
 cJd
-cJg
+cvC
 cNZ
 cJg
-cJg
+aCO
 cJd
 doE
 doE

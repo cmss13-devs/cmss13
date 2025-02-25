@@ -1,0 +1,5 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - maptweak: "Updates Lower Medbay to uh... *different* standards. Updates morgue to allow for more symmetry. Changes the CMO's bunks a little to accomodate the new set of ladders. Updates research to have more internal space in the containment area, including other addons."
+  - rscadd: "Adds an access define for Field Medical supply room."

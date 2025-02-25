@@ -105,6 +105,10 @@
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+		return
 	var/turf/T = get_turf(usr)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
@@ -198,6 +202,10 @@
 		return
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 		return
 	var/turf/T = get_turf(user)
 	if(istype(T, /turf/open))
@@ -397,6 +405,10 @@
 					break
 		if(fail)
 			to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
+			return
+		var/area/area = get_area(src)
+		if(!area.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return
 		if(istype(T, /turf/open))
 			var/turf/open/floor = T

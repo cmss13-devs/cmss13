@@ -41,7 +41,6 @@
 	var/range = 3
 	var/flesh_plasma_cost = 100
 	var/plas_mod = 0.5
-	var/heal_message = 0
 
 /datum/action/xeno_action/onclick/emit_mist
 	name = "Emit Mist"

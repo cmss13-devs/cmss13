@@ -717,6 +717,9 @@
 	if(!istype(xeno_carbon))
 		return
 
+	if(xeno_carbon == xeno)
+		return
+
 	if(xeno.flesh_plasma < flesh_plasma_cost)
 		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [flesh_plasma_cost - xeno.flesh_plasma] more!"))
 		return
@@ -772,19 +775,17 @@
 	xeno_carbon.xeno_jitter(1 SECONDS)
 	xeno_carbon.flick_heal_overlay(3 SECONDS, "#c5bc81")
 
-	if(xeno_carbon == xeno)
-		xeno.visible_message(SPAN_XENOWARNING("[xeno]'s wounds emit a foul scent and close up faster!"), \
-		SPAN_XENOWARNING("We absorb flesh plasma, healing some of our injuries!"))
-	else if(xeno.Adjacent(xeno_carbon))
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] smears a foul-smelling ooze onto [xeno_carbon]'s wounds, causing them to close up faster!"), \
+	if(xeno.Adjacent(xeno_carbon))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] smears a foul-smelling ooze onto [xeno_carbon]'s wounds, causing them to rapidly close!"), \
 		SPAN_XENOWARNING("We use flesh plasma to heal [xeno_carbon]'s wounds!"))
 		to_chat(xeno_carbon, SPAN_XENOWARNING("[xeno] smears a pale ooze onto our wounds, causing them to close up faster!"))
 	else if(!xeno.Adjacent(xeno_carbon))
-		xeno.visible_message(SPAN_XENOWARNING("The weeds between [xeno] and [xeno_carbon] ripple and emit a foul scent as [xeno_carbon]'s wounds close up faster!"), \
+		xeno.visible_message(SPAN_XENOWARNING("The weeds between [xeno] and [xeno_carbon] ripple and emit a foul scent as [xeno_carbon]'s wounds to rapidly close!"), \
 		SPAN_XENOWARNING("We channel flesh plasma to heal [xeno_carbon]'s wounds from afar!"))
 		to_chat(xeno_carbon, SPAN_XENOWARNING("The weeds beneath us shudder as a pale ooze forms on our wounds, causing them to close up faster!"))
 
 	use_plasma_owner(plasma_cost * plas_mod)
+	xeno.modify_flesh_plasma(-flesh_plasma_cost)
 	apply_cooldown()
 	return ..()
 

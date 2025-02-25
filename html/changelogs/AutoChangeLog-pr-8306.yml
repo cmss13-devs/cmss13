@@ -1,0 +1,5 @@
+author: "BOBAMAx"
+delete-after: True
+changes:
+  - maptweak: "Areas can now disallow construction. Applies this to the islands north of the LZ on NV, along with depowering it permanently."
+  - maptweak: "Ocean tiles no longer allow construction"

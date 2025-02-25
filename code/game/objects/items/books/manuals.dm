@@ -596,7 +596,7 @@
 	desc = "A huge book containing lots and lots of cooking recipes, perfect for those who wish to actually cook and not stand in front of the microwave, staring at it."
 	icon_state = "cooked_book"
 	item_state = "cooked_book"
-	author = "Food Service Specialist Louis Kovale, UA"
+	author = "Food Service Specialist Lawrence Kovale, UA"
 	title = "Pans and Dishes: Your Way Around the Marine Kitchens"
 
 	dat = {"<html>

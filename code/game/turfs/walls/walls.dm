@@ -119,7 +119,67 @@
 	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(current_mob, src)
+
+	// wall leaning by androbetel
+	if(!ishuman(current_mob))
+		return
+
+	if(current_mob != user)
+		return
+	var/mob/living/carbon/hiding_human = current_mob
+
+	var/direction = get_dir(src, current_mob)
+	var/shift_pixel_x = 0
+	var/shift_pixel_y = 0
+	switch(direction)
+		if(NORTH)
+			shift_pixel_y = -10
+		if(SOUTH)
+			shift_pixel_y = 16
+		if(WEST)
+			shift_pixel_x = 10
+		if(EAST)
+			shift_pixel_x = -10
+		else
+			return
+
+	for(var/mob/living/carbon/human/hiding in hiding_humans)
+		if(hiding_humans[hiding] == direction)
+			return
+
+	hiding_humans += current_mob
+	hiding_humans[current_mob] = direction
+	hiding_human.Moved() //just to be safe
+	hiding_human.setDir(direction)
+	animate(hiding_human, pixel_x = shift_pixel_x, pixel_y = shift_pixel_y, time = 1)
+	if(direction == NORTH)
+		hiding_human.add_filter("cutout", 1, alpha_mask_filter(icon = icon('icons/effects/effects.dmi', "cutout")))
+	ADD_TRAIT(hiding_human, TRAIT_UNDENSE, WALL_HIDING_TRAIT)
+	RegisterSignal(hiding_human, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_HUMAN_UNARMED_ATTACK), PROC_REF(unhide_human), hiding_human)
 	..()
+
+/turf/closed/wall/proc/unhide_human(mob/living/carbon/human/to_unhide)
+	SIGNAL_HANDLER
+	if(!to_unhide)
+		return
+
+	REMOVE_TRAIT(to_unhide, TRAIT_UNDENSE, WALL_HIDING_TRAIT)
+	to_unhide.pixel_x = initial(to_unhide.pixel_x)
+	to_unhide.pixel_y = initial(to_unhide.pixel_y)
+	to_unhide.layer = initial(to_unhide.layer)
+	to_unhide.apply_effect(1, SUPERSLOW)
+	to_unhide.apply_effect(2, SLOW)
+	hiding_humans -= to_unhide
+	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_HUMAN_UNARMED_ATTACK))
+	to_unhide.remove_filter("cutout")
+
+/turf/closed/wall/Destroy()
+	if(hiding_humans.len)
+		for(var/mob/living/carbon/human/human in hiding_humans)
+			unhide_human(human)
+
+	return ..()
+
 
 /turf/closed/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)
@@ -599,64 +659,3 @@
 
 /turf/closed/wall/can_be_dissolved()
 	return !(turf_flags & TURF_HULL)
-
-// wall leaning by androbetel
-/turf/closed/wall/MouseDrop_T(atom/dropping, mob/user)
-	. = ..()
-	if(!ishuman(dropping))
-		return
-
-	if(dropping != user)
-		return
-	var/mob/living/carbon/hiding_human = dropping
-
-	var/direction = get_dir(src, dropping)
-	var/shift_pixel_x = 0
-	var/shift_pixel_y = 0
-	switch(direction)
-		if(NORTH)
-			shift_pixel_y = -10
-		if(SOUTH)
-			shift_pixel_y = 16
-		if(WEST)
-			shift_pixel_x = 10
-		if(EAST)
-			shift_pixel_x = -10
-		else
-			return
-
-	for(var/mob/living/carbon/human/hiding in hiding_humans)
-		if(hiding_humans[hiding] == direction)
-			return
-
-	hiding_humans += dropping
-	hiding_humans[dropping] = direction
-	hiding_human.Moved() //just to be safe
-	hiding_human.setDir(direction)
-	animate(hiding_human, pixel_x = shift_pixel_x, pixel_y = shift_pixel_y, time = 1)
-	if(direction == NORTH)
-		hiding_human.add_filter("cutout", 1, alpha_mask_filter(icon = icon('icons/effects/effects.dmi', "cutout")))
-	ADD_TRAIT(hiding_human, TRAIT_UNDENSE, WALL_HIDING_TRAIT)
-	RegisterSignal(hiding_human, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_HUMAN_UNARMED_ATTACK), PROC_REF(unhide_human), hiding_human)
-
-/turf/closed/wall/proc/unhide_human(mob/living/carbon/human/to_unhide)
-	SIGNAL_HANDLER
-	if(!to_unhide)
-		return
-
-	REMOVE_TRAIT(to_unhide, TRAIT_UNDENSE, WALL_HIDING_TRAIT)
-	to_unhide.pixel_x = initial(to_unhide.pixel_x)
-	to_unhide.pixel_y = initial(to_unhide.pixel_y)
-	to_unhide.layer = initial(to_unhide.layer)
-	to_unhide.apply_effect(1, SUPERSLOW)
-	to_unhide.apply_effect(2, SLOW)
-	hiding_humans -= to_unhide
-	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_HUMAN_UNARMED_ATTACK))
-	to_unhide.remove_filter("cutout")
-
-/turf/closed/wall/Destroy()
-	if(hiding_humans.len)
-		for(var/mob/living/carbon/human/human in hiding_humans)
-			unhide_human(human)
-
-	return ..()

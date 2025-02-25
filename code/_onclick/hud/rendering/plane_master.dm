@@ -199,9 +199,11 @@
 
 /atom/movable/screen/plane_master/open_space
 	name = "open space plane"
-	plane = OPEN_SPACE_PLANE
+	plane = OPEN_SPACE_PLANE_START
 
-/atom/movable/screen/plane_master/open_space/Initialize()
+/atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
+	name = "open space plane [offset]"
+	plane -= offset
 	. = ..()
 	add_filter("multizblur", 1, gauss_blur_filter(0.5))
 

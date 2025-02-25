@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	name = "open space"
 	icon_state = "transparent"
 	baseturfs = /turf/open_space
-	plane = OPEN_SPACE_PLANE
+	plane = OPEN_SPACE_PLANE_START
 
 /turf/open_space/Initialize()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)

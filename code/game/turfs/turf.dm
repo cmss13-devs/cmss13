@@ -126,12 +126,16 @@
 	update_vis_contents()
 
 /obj/vis_contents_holder
-	plane = OPEN_SPACE_PLANE
+	plane = OPEN_SPACE_PLANE_START
+	vis_flags = VIS_HIDE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/vis_contents_holder/Initialize(mapload, vis)
+/obj/vis_contents_holder/Initialize(mapload, vis, offset)
 	. = ..()
+	plane -= offset
 	vis_contents += GLOB.openspace_backdrop_one_for_all
 	vis_contents += vis
+	name = null // Makes it invisible on right click
 
 /turf/proc/update_vis_contents()
 	if(!istransparentturf(src))
@@ -142,9 +146,13 @@
 		qdel(holder)
 
 	var/turf/below = SSmapping.get_turf_below(src)
-
-	if(below)
-		new /obj/vis_contents_holder(src, below)
+	var/depth = 0
+	while(below)
+		new /obj/vis_contents_holder(src, below, depth)
+		if(!istransparentturf(below))
+			break
+		below = SSmapping.get_turf_below(below)
+		depth++
 
 /turf/proc/multiz_new(dir)
 	if(dir == DOWN)

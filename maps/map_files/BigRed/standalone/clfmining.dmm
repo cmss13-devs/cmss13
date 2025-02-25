@@ -2523,7 +2523,6 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "Np" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves/mining)
 "NJ" = (

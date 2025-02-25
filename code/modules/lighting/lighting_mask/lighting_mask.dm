@@ -161,6 +161,21 @@
 	. = ..()
 	icon_state = "light_rotating-[rand(1, 3)]"
 
+//For when a rotating light needs to be stoppable
+/atom/movable/lighting_mask/rotating_toggleable
+	icon_state = "no_animation_light_rotating-1"
+	var/picked_number = 0
+	var/toggled = FALSE
+
+/atom/movable/lighting_mask/rotating_toggleable/Initialize(mapload, ...)
+	. = ..()
+	picked_number = rand(1, 3)
+	icon_state = "no_animation_light_rotating-[picked_number]"
+
+/atom/movable/lighting_mask/rotating_toggleable/proc/toggle()
+	toggled = toggled ? FALSE : TRUE
+	icon_state = "[toggled ? "light_rotating" : "no_animation_light_rotating"]-[picked_number]"
+
 ///rotating light mask, but only pointing in one direction
 /atom/movable/lighting_mask/rotating_conical
 	icon_state = "light_conical_rotating"

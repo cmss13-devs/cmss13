@@ -9,6 +9,20 @@
 /obj/effect/alien/resin/moba_shop,
 /turf/open/floor,
 /area/misc/moba/base)
+"ad" = (
+/obj/effect/landmark/moba_hive_core,
+/turf/open/floor,
+/area/misc/moba/base)
+"ae" = (
+/obj/effect/landmark/moba_hive_core_turret,
+/turf/open/floor,
+/area/misc/moba/base)
+"af" = (
+/obj/effect/landmark/moba_hive_core{
+	right_side = 1
+	},
+/turf/open/floor,
+/area/misc/moba/base)
 "aR" = (
 /obj/effect/alien/resin/moba_turret/right,
 /turf/open/floor/almayer,
@@ -652,7 +666,7 @@ ac
 ab
 ab
 ab
-ab
+ad
 ab
 ab
 ab
@@ -880,7 +894,7 @@ ab
 ab
 ab
 ab
-ab
+ae
 ab
 ab
 ab
@@ -8575,7 +8589,7 @@ ab
 ab
 ab
 ab
-ab
+ae
 ab
 ab
 ab
@@ -8803,7 +8817,7 @@ ab
 ab
 ab
 ab
-ab
+af
 ab
 ab
 ab

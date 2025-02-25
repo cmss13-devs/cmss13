@@ -1,8 +1,7 @@
 /datum/moba_item
 	var/name = ""
 	var/gold_cost = 0
-	/// Populated by SSmoba
-	var/static/description = ""
+	var/description = ""
 	/// If TRUE, a player can only hold one of this item at a time.
 	var/unique = FALSE
 

@@ -62,19 +62,30 @@
 		else if(HAS_TRAIT(possible_target, TRAIT_MOBA_PARTICIPANT))
 			weight = 1
 
-		else if(HAS_TRAIT(possible_target, TRAIT_MOBA_MINION)) // zonenote update if other types are added
+		else if(HAS_TRAIT(possible_target, TRAIT_MOBA_MINION))
 			weight = 2
 
 		if(weight > best_weight_found)
 			best_target_found = possible_target
 			best_weight_found = weight
 
+	var/seen_turret = FALSE
+
 	for(var/obj/effect/alien/resin/moba_turret/turret in view_list)
 		if(turret.hivenumber == parent_xeno.hive.hivenumber)
 			continue
 
-		if(best_weight_found < 3)
+		if(best_weight_found <= 2)
 			best_target_found = turret
+			seen_turret = TRUE
+
+	if(!seen_turret) // We prioritize the things that are shooting at us first
+		for(var/obj/effect/alien/resin/moba_hive_core/nexus in view_list)
+			if(nexus.hivenumber == parent_xeno.hive.hivenumber)
+				continue
+
+			if(best_weight_found <= 2)
+				best_target_found = nexus
 
 	target = best_target_found
 	if(target) // Zonenote consider having them return to the tile they came from if they move to target someone

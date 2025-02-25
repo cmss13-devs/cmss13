@@ -120,7 +120,6 @@
 	// zonenote check on this once ranged minions are added
 
 /obj/effect/alien/resin/moba_turret/attack_alien(mob/living/carbon/xenomorph/M)
-
 	if((M.a_intent == INTENT_HELP) || (M.hive.hivenumber == hivenumber))
 		return XENO_NO_DELAY_ACTION
 	else
@@ -142,3 +141,7 @@
 
 /obj/effect/alien/resin/moba_turret/right
 	hivenumber = XENO_HIVE_MOBA_RIGHT
+
+/obj/effect/alien/resin/moba_turret/hive_core
+	range = 6
+	health = 3500 // 75% more HP than standard

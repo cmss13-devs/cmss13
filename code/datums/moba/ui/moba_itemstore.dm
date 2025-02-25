@@ -44,6 +44,7 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 	SEND_SIGNAL(user, COMSIG_MOBA_GET_GOLD, gold_list)
 
 	data["owned_items"] = item_name_list
+	data["at_item_capacity"] = (length(items) >= MOBA_MAX_ITEM_COUNT)
 	data["gold"] = gold_list[1]
 
 	return data
@@ -77,9 +78,13 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 			if(gold_list[1] < item.gold_cost)
 				return
 
+			var/list/datum/moba_item/items = list()
+			SEND_SIGNAL(ui.user, COMSIG_MOBA_GET_OWNED_ITEMS, items)
+
+			if(length(items) >= MOBA_MAX_ITEM_COUNT)
+				return
+
 			if(item.unique)
-				var/list/datum/moba_item/items = list()
-				SEND_SIGNAL(ui.user, COMSIG_MOBA_GET_OWNED_ITEMS, items)
 				for(var/datum/moba_item/item2 as anything in items)
 					if(item.type == item2.type)
 						return

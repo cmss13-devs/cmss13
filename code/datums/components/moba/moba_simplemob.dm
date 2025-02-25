@@ -8,7 +8,7 @@
 	var/ending_max_health = 400
 	var/map_id
 
-/datum/component/moba_simplemob/Initialize(starting_health, ending_health, new_map_id, gold_to_grant, xp_to_grant)
+/datum/component/moba_simplemob/Initialize(starting_health, ending_health, new_map_id, gold_to_grant, starting_xp_to_grant, ending_xp_to_grant)
 	. = ..()
 	if(!istype(parent, /mob/living/simple_animal/hostile))
 		return COMPONENT_INCOMPATIBLE
@@ -22,11 +22,11 @@
 	parent_simplemob.target_search_range = 5
 	parent_simplemob.wander = FALSE
 
-	var/datum/moba_controller/controller = SSmoba.controller_id_dict["[map_id]"]
-	parent_simplemob.setMaxHealth(starting_max_health + (((ending_max_health - starting_max_health) * 0.1) * floor(controller.game_duration / (2.5 MINUTES))))
+	var/scale = (SSmoba.get_moba_controller(map_id).game_level - 1) / (MOBA_MAX_LEVEL - 1) // camps don't scale until they respawn
+	parent_simplemob.setMaxHealth(starting_max_health + ((ending_max_health - starting_max_health) * scale))
 	parent_simplemob.health = parent_simplemob.getMaxHealth()
 
-	parent_simplemob.AddComponent(/datum/component/moba_death_reward, gold_to_grant, xp_to_grant)
+	parent_simplemob.AddComponent(/datum/component/moba_death_reward, gold_to_grant, starting_xp_to_grant + ((ending_xp_to_grant - starting_xp_to_grant) * scale))
 
 /datum/component/moba_simplemob/Destroy(force, silent)
 	handle_qdel()

@@ -3,9 +3,9 @@
 
 	var/list/datum/moba_player/players
 	var/list/datum/moba_player/team1 = list()
-	var/list/team1_data
+	var/list/datum/moba_queue_player/team1_data
 	var/list/datum/moba_player/team2 = list()
-	var/list/team2_data
+	var/list/datum/moba_queue_player/team2_data
 
 	// Map stuff
 	var/turf/left_base
@@ -71,6 +71,15 @@
 		else
 			left_base = get_turf(moba_base)
 		qdel(moba_base)
+
+	for(var/obj/effect/landmark/moba_hive_core/nexus in GLOB.landmarks_list)
+		if(nexus.right_side)
+			var/obj/effect/alien/resin/moba_hive_core/right/core = new(get_turf(nexus))
+			core.map_id = map_id
+		else
+			var/obj/effect/alien/resin/moba_hive_core/core = new(get_turf(nexus))
+			core.map_id = map_id
+		qdel(nexus)
 
 	for(var/obj/effect/moba_camp_spawner/spawner as anything in GLOB.mapless_moba_camps)
 		spawner.set_map_id(map_id)
@@ -155,7 +164,7 @@
 		sleep(0.9 SECONDS)
 
 /datum/moba_controller/proc/get_respawn_time()
-	return (10 SECONDS) + ((game_level / MOBA_MAX_LEVEL) * (50 SECONDS)) // Starts at 10 seconds and scales to 60 over the course of the game
+	return (10 SECONDS) + (((game_level - 1) / (MOBA_MAX_LEVEL - 1)) * (50 SECONDS)) // Starts at 10 seconds and scales to 60 over the course of the game
 
 /datum/moba_controller/proc/start_respawn(datum/moba_player/player_datum)
 	var/respawn_time = get_respawn_time()
@@ -199,3 +208,20 @@
 		total_level_count += level_list[1]
 
 	game_level = clamp(floor(total_level_count * 0.125), 1, 12)
+
+/datum/moba_controller/proc/end_game(losing_hive)
+	set waitfor = FALSE
+
+	if(!losing_hive)
+		return
+
+	var/winning_hive = (losing_hive == XENO_HIVE_MOBA_LEFT) ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT
+	var/datum/hive_status/hive = GLOB.hive_datum[winning_hive]
+
+	for(var/datum/moba_player/player as anything in players)
+		player.tied_xeno.play_screen_text("[hive.name] wins.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+
+	sleep(5 SECONDS)
+
+	for(var/datum/moba_player/player as anything in players)
+		player.tied_xeno.send_to_lobby()

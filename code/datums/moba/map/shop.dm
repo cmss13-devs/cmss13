@@ -9,6 +9,7 @@
 	. = ..()
 	if(!GLOB.moba_shop)
 		GLOB.moba_shop = new /datum/moba_item_store
+	set_hive_data(src, hivenumber)
 
 /obj/effect/alien/resin/moba_shop/attack_alien(mob/living/carbon/xenomorph/M)
 	. = ..()

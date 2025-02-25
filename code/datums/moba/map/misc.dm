@@ -8,6 +8,11 @@
 	var/top = FALSE
 	var/left = FALSE
 
+/obj/effect/landmark/moba_hive_core
+	var/right_side = FALSE
+
+/obj/effect/landmark/moba_hive_core_turret
+
 /obj/structure/flora/grass/tallgrass/jungle/moba
 	cut_level = 1 // Magic number because we don't have the defines in this file
 	opacity = TRUE // won't be an issue since xenos have SEE_TURFS anyway

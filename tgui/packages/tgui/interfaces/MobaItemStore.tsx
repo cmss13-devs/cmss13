@@ -17,13 +17,13 @@ type BackendContext = {
   items: Item[];
   owned_items: string[];
   gold: number;
+  at_item_capacity: BooleanLike;
 };
 
 export const MobaItemStore = (props) => {
   const { data, act } = useBackend<BackendContext>();
   const { items, owned_items } = data;
   const [chosenItem, setItem] = useState<Item | null>(null);
-  // const [categoryIndex, setCategoryIndex] = useState('Space Station 13');
   return (
     <Window title="Mutation Store" width={800} height={600} theme="xeno">
       <Window.Content>
@@ -71,6 +71,12 @@ export const MobaItemStore = (props) => {
                         <Button
                           textAlign="center"
                           width="100%"
+                          disabled={data.at_item_capacity}
+                          tooltip={
+                            data.at_item_capacity
+                              ? 'You have the maximum number of items allowed.'
+                              : null
+                          }
                           onClick={() =>
                             act('buy_item', {
                               path: chosenItem.path,

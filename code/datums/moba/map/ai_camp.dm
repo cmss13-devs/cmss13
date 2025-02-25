@@ -16,7 +16,8 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 	var/list/mob/living/simple_animal/hostile/spawned_mobs = list()
 	var/list/turf/open/floor/watched_tiles = list()
 
-	var/xp_per_mob = 60 // Zonenote add XP scaling over time
+	var/starting_xp_per_mob = 60
+	var/ending_xp_per_mob = 90
 	var/gold_per_mob = 50
 
 /obj/effect/moba_camp_spawner/Initialize(mapload, ...)
@@ -35,7 +36,7 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 
 	for(var/i in 1 to amount_to_spawn)
 		var/mob/living/spawned_mob = new simplemob_type(pick_n_take(viable_turfs))
-		spawned_mob.AddComponent(/datum/component/moba_simplemob, starting_max_health, ending_max_health, map_id, gold_per_mob, xp_per_mob)
+		spawned_mob.AddComponent(/datum/component/moba_simplemob, starting_max_health, ending_max_health, map_id, gold_per_mob, starting_xp_per_mob, ending_xp_per_mob)
 		spawned_mobs += spawned_mob
 		RegisterSignal(spawned_mob, COMSIG_MOB_DEATH, PROC_REF(on_mob_death))
 

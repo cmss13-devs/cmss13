@@ -10,5 +10,11 @@
 /// (list/gold_holder)
 #define COMSIG_MOBA_GET_GOLD "moba_get_gold"
 
+/// (list/level_holder)
+#define COMSIG_MOBA_GET_LEVEL "moba_get_level"
+
 /// (datum/moba_item/item)
 #define COMSIG_MOBA_ADD_ITEM "moba_add_item"
+
+/// (level)
+#define COMSIG_MOBA_LEVEL_UP "moba_level_up"

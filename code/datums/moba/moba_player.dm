@@ -5,10 +5,10 @@
 	var/mob/living/carbon/xenomorph/tied_xeno
 	var/client/tied_client
 	var/list/datum/moba_player_slot/queue_slots = list()
+	var/right_team = FALSE
 
 	var/kills = 0
 	var/deaths = 0
-	var/damage_dealt = 0
 	var/list/held_item_types = list()
 
 /datum/moba_player/New(ckey, client/new_client)

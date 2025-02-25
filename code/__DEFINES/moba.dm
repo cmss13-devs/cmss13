@@ -15,3 +15,5 @@
 #define MOBA_ARCHETYPE_TANK "Tank"
 
 #define MOBA_ALLOWED_POSITIONS 3
+
+#define MOBA_MAX_LEVEL 12

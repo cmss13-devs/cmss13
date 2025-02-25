@@ -185,3 +185,6 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+/// From /mob/proc/track_mob_death() : (mob/killed)
+#define COMSIG_MOB_KILLED_MOB "mob_killed_mob"

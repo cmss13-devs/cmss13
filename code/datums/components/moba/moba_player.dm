@@ -6,7 +6,7 @@
 	var/datum/moba_item_store/store_ui
 
 	var/level = 1
-	var/level_cap = 12
+	var/level_cap = MOBA_MAX_LEVEL
 	var/xp = 0
 	var/gold = 0
 	var/static/list/level_up_thresholds = list(
@@ -37,6 +37,7 @@
 	parent_xeno.melee_damage_lower = parent_xeno.melee_damage_upper // Randomization is bad so we set melee damage to be the max possible
 	parent_xeno.cooldown_reduction_max = 1 // We allow for cooldown reductions up to 100%, though not feasibly possible
 	parent_xeno.sight = SEE_TURFS // We allow seeing turfs but not mobs
+	parent_xeno.need_weeds = FALSE
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	player_datum = player
 	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
@@ -57,10 +58,12 @@
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_GOLD, PROC_REF(grant_gold))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_OWNED_ITEMS, PROC_REF(get_owned_items))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_GOLD, PROC_REF(get_gold))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_LEVEL, PROC_REF(get_level))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_ADD_ITEM, PROC_REF(add_item))
 	RegisterSignal(parent_xeno, COMSIG_XENO_USED_TUNNEL, PROC_REF(on_tunnel))
 	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
 	RegisterSignal(parent_xeno, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
+	RegisterSignal(parent_xeno, COMSIG_MOB_KILLED_MOB, PROC_REF(on_kill))
 
 /datum/component/moba_player/proc/handle_level_up()
 	level++
@@ -69,6 +72,7 @@
 	player_caste.handle_level_up(parent_xeno, src, player_datum, level)
 	for(var/datum/moba_item/item as anything in held_items)
 		item.apply_stats(parent_xeno, src, player_datum, TRUE)
+	SEND_SIGNAL(player_datum, COMSIG_MOBA_LEVEL_UP, level)
 
 /datum/component/moba_player/proc/handle_qdel()
 	SIGNAL_HANDLER
@@ -130,11 +134,17 @@
 
 	gold_list += gold
 
+/datum/component/moba_player/proc/get_level(datum/source, list/level_list)
+	SIGNAL_HANDLER
+
+	level_list += level
+
 /datum/component/moba_player/proc/add_item(datum/source, datum/moba_item/new_item)
 	SIGNAL_HANDLER
 
 	held_items += new_item
 	new_item.apply_stats(parent_xeno, src, player_datum, TRUE)
+	player_datum.held_item_types += new_item.type
 
 /datum/component/moba_player/proc/on_tunnel(datum/source, obj/structure/tunnel/used_tunnel)
 	SIGNAL_HANDLER
@@ -152,10 +162,30 @@
 	SIGNAL_HANDLER
 
 	remove_action(parent_xeno, /datum/action/ghost/xeno)
+	player_datum.deaths++
+	SSmoba.get_moba_controller(map_id).start_respawn(player_datum)
+
+/datum/component/moba_player/proc/on_kill(datum/source, mob/killed)
+	SIGNAL_HANDLER
+
+	player_datum.kills++
 
 /datum/component/moba_player/proc/get_status_tab_item(datum/source, list/status_tab_items)
 	SIGNAL_HANDLER
 
+	status_tab_items += "---------------------------"
+	var/duration = SSmoba.get_moba_controller(map_id).game_duration
+	var/minutes = floor(SSmoba.get_moba_controller(map_id).game_duration / 600)
+	var/seconds = floor((duration - (minutes * 600)) * 0.1)
+	if(minutes <= 9)
+		minutes = "0[minutes]"
+	else
+		minutes = "[minutes]"
+	if(seconds <= 9)
+		seconds = "0[seconds]"
+	else
+		seconds = "[seconds]"
+	status_tab_items += "<b>Round Time:</b> [minutes]:[seconds]"
 	status_tab_items += "<b>[MOBA_GOLD_NAME]:</b> [gold]"
 	status_tab_items += "<b>Level:</b> [level]/[level_cap]"
 	status_tab_items += "<b>XP:</b> [xp]/[level_up_thresholds[level]]"
@@ -163,3 +193,4 @@
 	for(var/datum/moba_item/item as anything in held_items)
 		item_names += item.name + (item == held_items[length(held_items)] ? "" : ", ")
 	status_tab_items += "<b>Items:</b> [item_names]"
+	status_tab_items += "---------------------------"

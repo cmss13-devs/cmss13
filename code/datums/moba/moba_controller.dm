@@ -11,8 +11,10 @@
 	var/turf/left_base
 	var/turf/right_base
 
-	// Game duration in deciseconds. Will only be as precise as SSmoba's `wait` var.
+	/// Game duration in deciseconds. Will only be as precise as SSmoba's `wait` var.
 	var/game_duration = 0
+	/// The floored level of everyone in-game. Used to determine how things like respawn timers and camp health scale. Caps at the level cap.
+	var/game_level = 1
 
 	var/game_started = FALSE
 
@@ -25,6 +27,9 @@
 	var/turf/minion_spawn_topright
 	var/turf/minion_spawn_botleft
 	var/turf/minion_spawn_botright
+
+	/// Dict of mobs : player datums that are waiting for a player to reconnect after death
+	var/list/awaiting_reconnection_dict = list()
 
 	// We handle timers for game events using cooldowns and boolean flags
 	COOLDOWN_DECLARE(minion_spawn_cooldown)
@@ -39,6 +44,8 @@
 		team2 += player.player
 	team2_data = team2_players
 	players = team1 + team2
+	for(var/datum/moba_player/player as anything in players)
+		RegisterSignal(player, COMSIG_MOBA_LEVEL_UP, PROC_REF(on_player_level_up))
 
 	map_id = id
 
@@ -89,7 +96,7 @@
 		if(!player.tied_client)
 			return FALSE
 
-	for(var/datum/moba_queue_player/player_data as anything in team1_data) //zonenote add components
+	for(var/datum/moba_queue_player/player_data as anything in team1_data)
 		var/datum/moba_player/player = player_data.player
 		var/mob/living/carbon/xenomorph/xeno = new player_data.caste.equivalent_xeno_path
 		xeno.forceMove(left_base)
@@ -97,15 +104,18 @@
 		xeno.AddComponent(/datum/component/moba_player, player, map_id, FALSE)
 		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
+		player.tied_xeno = xeno
 
 	for(var/datum/moba_queue_player/player_data as anything in team2_data)
 		var/datum/moba_player/player = player_data.player
+		player.right_team = TRUE
 		var/mob/living/carbon/xenomorph/xeno = new player_data.caste.equivalent_xeno_path
 		xeno.forceMove(right_base)
 		xeno.set_hive_and_update(XENO_HIVE_MOBA_RIGHT)
 		xeno.AddComponent(/datum/component/moba_player, player, map_id, TRUE)
 		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
+		player.tied_xeno = xeno
 
 	return TRUE
 
@@ -143,3 +153,49 @@
 		minion.set_hive_and_update(side)
 		minion.forceMove(location)
 		sleep(0.9 SECONDS)
+
+/datum/moba_controller/proc/get_respawn_time()
+	return (10 SECONDS) + ((game_level / MOBA_MAX_LEVEL) * (50 SECONDS)) // Starts at 10 seconds and scales to 60 over the course of the game
+
+/datum/moba_controller/proc/start_respawn(datum/moba_player/player_datum)
+	var/respawn_time = get_respawn_time()
+	player_datum.tied_xeno.play_screen_text("You have died. You will respawn in [respawn_time * 0.1] seconds.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+	addtimer(CALLBACK(src, PROC_REF(spawn_xeno), player_datum), respawn_time)
+
+/datum/moba_controller/proc/spawn_xeno(datum/moba_player/player_datum)
+	var/datum/moba_queue_player/found_playerdata
+	for(var/datum/moba_queue_player/player_data as anything in (team1_data + team2_data))
+		if(player_data.player == player_datum)
+			found_playerdata = player_data
+			break
+
+	if(!found_playerdata.player.tied_client)
+		RegisterSignal(player_datum.tied_xeno, COMSIG_MOB_LOGGED_IN, PROC_REF(move_disconnected_player_to_body))
+		awaiting_reconnection_dict[player_datum.tied_xeno] = player_datum
+		return
+
+	var/mob/living/carbon/xenomorph/xeno = new found_playerdata.caste.equivalent_xeno_path
+	xeno.forceMove(player_datum.right_team ? right_base : left_base)
+	xeno.set_hive_and_update(player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT)
+	xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, TRUE)
+	ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+	found_playerdata.player.tied_client.mob.mind.transfer_to(xeno, TRUE)
+	found_playerdata.player.tied_xeno = xeno
+
+/datum/moba_controller/proc/move_disconnected_player_to_body(mob/source)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(source, COMSIG_MOB_LOGGED_IN)
+	spawn_xeno(awaiting_reconnection_dict[source])
+	awaiting_reconnection_dict -= source
+
+/datum/moba_controller/proc/on_player_level_up(datum/source, level)
+	SIGNAL_HANDLER
+
+	var/total_level_count = 0
+	for(var/datum/moba_player/player as anything in players)
+		var/list/level_list = list()
+		SEND_SIGNAL(player.tied_xeno, COMSIG_MOBA_GET_LEVEL, level_list)
+		total_level_count += level_list[1]
+
+	game_level = clamp(floor(total_level_count * 0.125), 1, 12)

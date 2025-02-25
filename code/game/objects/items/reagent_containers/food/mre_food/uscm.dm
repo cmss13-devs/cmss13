@@ -217,9 +217,9 @@
 	reagents.add_reagent("sodiumchloride", 1)
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/kale
-	name = "pickled kale"
+	name = "marinated kale"
 	icon_state = "kale"
-	desc = "A sort of cabbage, pickled in spices, still has a lot of moist and crunch to it."
+	desc = "A sort of cabbage, marinated in spices, still has a lot of moist and crunch to it."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/kale/Initialize()
 	. = ..()

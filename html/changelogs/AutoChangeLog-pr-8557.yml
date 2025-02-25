@@ -1,5 +1,0 @@
-author: "IowaPotatoFarmer"
-delete-after: True
-changes:
-  - rscadd: "Added unique map-specific synthetic survivors to Kutjevo Refinery."
-  - rscadd: "Added a lower quality goon squad synthetic vest, only used by the Kutjevo Refinery corporate security synth for now."

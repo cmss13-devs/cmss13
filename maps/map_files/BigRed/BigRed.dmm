@@ -24652,7 +24652,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "jDG" = (
-/obj/item/trash/uscm_mre,
+/obj/item/trash/wy_mre,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "jDT" = (
@@ -27983,9 +27983,9 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "mXm" = (
-/obj/item/trash/uscm_mre{
-	pixel_x = 10;
-	pixel_y = -2
+/obj/item/trash/wy_mre{
+	pixel_y = 8;
+	pixel_x = 7
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)

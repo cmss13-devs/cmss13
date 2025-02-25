@@ -94,6 +94,11 @@
 			if(amount != 0) //can add negative numbers too!
 				message_admins("[key_name_admin(usr)] added [amount] research credits.")
 				GLOB.chemical_data.update_credits(amount)
+		if("give_ordnance_credits")
+			var/amount = tgui_input_real_number(usr, "How many credits to add?")
+			if(amount != 0) //can add negative numbers too!
+				message_admins("[key_name_admin(usr)] added [amount] ordnance credits.")
+				GLOB.ordnance_research.update_credits(amount)
 
 		if("xenothumbs")
 			var/grant = alert(usr, "Do you wish to grant or revoke Xenomorph firearms permits?", "Give or Take", "Grant", "Revoke", "Cancel")

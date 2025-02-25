@@ -169,6 +169,19 @@
 #define MATRIX_NVG 1
 #define MATRIX_WIDE 2
 
+// OT stuff
+#define ORDNANCE_UPGRADE_TECH "Technologies"
+#define ORDNANCE_UPGRADE_ITEM "Items"
+#define ORDNANCE_UPGRADE_LATHE "Armylathe Upgrades"
+#define ARMYLATHE_MATS_UPGRADE "Armylathe Efficiency Upgrade"
+#define CUSTOM_ROCKET "88mm Rocket Tube"
+#define CUSTOM_ROCKET_WARHEAD "88mm Rocket Warhead"
+#define CUSTOM_SHELL "80mm Mortar Shell"
+#define CUSTOM_SHELL_WARHEAD "80mm Mortar Warhead"
+#define CUSTOM_SHELL_CAMERA "80mm Mortar Camera Warhead"
+#define CUSTOM_C4 "C4 Plastic Casing"
+#define CUSTOM_CLAYMORE "M20 Mine Casing"
+
 #define RESEARCH_UPGRADE_NOTHING_TO_PASS null
 #define RESEARCH_UPGRADE_EXCLUDE_BUY -2
 #define RESEARCH_UPGRADE_CATEGORY -1 //lord forgive me

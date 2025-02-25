@@ -1,0 +1,4 @@
+author: "NHC"
+delete-after: True
+changes:
+  - bugfix: "fixed PO tactical fligthsuit to use the TOGGLEJACKET verb instead of the ROLL_SLEEVES verb to toggle its jacket"

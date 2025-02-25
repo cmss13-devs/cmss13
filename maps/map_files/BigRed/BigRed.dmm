@@ -12092,7 +12092,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bdA" = (
-/obj/structure/sign/prop1,
+/obj/effect/decal/warning_stripes/uscm_logo/desat,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bdB" = (

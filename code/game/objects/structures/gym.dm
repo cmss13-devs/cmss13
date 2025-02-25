@@ -5,7 +5,15 @@
 	icon_state = "punchingbag"
 	anchored = TRUE
 	layer = WALL_OBJ_LAYER
-	var/list/hit_sounds = list('sound/weapons/genhit1.ogg','sound/weapons/genhit2.ogg','sound/weapons/genhit3.ogg','sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	var/list/hit_sounds = list(
+'sound/weapons/genhit1.ogg',
+'sound/weapons/genhit2.ogg',
+'sound/weapons/genhit3.ogg',
+'sound/weapons/punch1.ogg',
+'sound/weapons/punch2.ogg',
+'sound/weapons/punch3.ogg',
+'sound/weapons/punch4.ogg'
+)
 
 /obj/structure/punching_bag/attack_hand(mob/user)
 	if(!ishuman(user))
@@ -37,14 +45,26 @@
 		user.setDir(SOUTH)
 		user.Stun(inuse_stun_time / GLOBAL_STATUS_MULTIPLIER)
 		user.forceMove(src.loc)
-		var/bragmessage = pick("pushing it to the limit","going into overdrive","burning with determination","rising up to the challenge","getting strong now","getting ripped")
+		var/bragmessage = pick(
+		"pushing it to the limit",
+		"going into overdrive",
+		"burning with determination",
+		"rising up to the challenge",
+		"getting strong now",
+		"getting ripped"
+		)
 		user.visible_message(SPAN_BOLD("[user] is [bragmessage]!"))
 		animate_machine(user)
 
 		playsound(user, 'sound/machines/click.ogg', 40, TRUE, 2)
 		in_use = FALSE
 		user.pixel_y = 0
-		var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
+		var/finishmessage = pick(
+		"You feel stronger!",
+		"You feel like you can take on the world!",
+		"You feel robust!",
+		"You feel indestructible!"
+		)
 		icon_state = initial(icon_state)
 		to_chat(user, SPAN_NOTICE(finishmessage))
 
@@ -74,7 +94,8 @@
 /obj/structure/weightmachine/weightlifter/animate_machine(mob/living/user)
 	var/mutable_appearance/swole_overlay = mutable_appearance(icon, "fitnessweight-w", ABOVE_MOB_LAYER)
 	overlays += swole_overlay
-	var/reps = 0
+	overlays += swole_overlay
+	for(var/reps = 0; reps <6; reps++)
 	user.pixel_y = 5
 	while(reps++ < 6)
 		if(user.loc != src.loc)
@@ -87,3 +108,17 @@
 	animate(user, pixel_y = 2, time = 3)
 	sleep(3)
 	overlays -= swole_overlay
+
+// Treadmill
+
+/obj/structure/treadmill
+	icon = 'icons/obj/structures/32x64_treadmill.dmi'
+	icon_state = "treadmill_off"
+	name = "treadmill"
+	desc = "A treadmill used for cardio related exercise."
+	layer = CONVEYOR_LAYER // so they appear under stuff
+	anchored = TRUE
+
+/obj/structure/treadmill/overlay
+	icon_state = "treadmill_overlay"
+	layer = BIG_XENO_LAYER

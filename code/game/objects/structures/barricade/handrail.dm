@@ -259,6 +259,11 @@
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	layer = MOB_LAYER + 0.01
 
+/obj/structure/barricade/handrail/boxing_ring
+	name = "\improper ring ropes"
+	icon_state = "handrail_boxing"
+	destroyed_stack_amount = 0
+
 // Hybrisa Barricades
 
 /obj/structure/barricade/handrail/hybrisa

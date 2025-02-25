@@ -23268,10 +23268,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "rTH" = (
-/obj/structure/sign/prop1{
-	layer = 2.5;
-	name = "\improper USCM Emblem"
-	},
+/obj/effect/decal/warning_stripes/uscm_logo/desat,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "rTY" = (

@@ -177,7 +177,7 @@
 /datum/emergency_call/young_bloods //YOUNG BLOOD ERT ONLY FOR HUNTING GROUNDS IF SOME MOD USES THIS INSIDE THE MAIN GAME THE COUNCIL WONT BE HAPPY (Joe Lampost)
 	name = "Template"
 	var/blooding_name
-	time_required_for_job = 60 HOURS
+	time_required_for_job = 5 HOURS // BANDAMARINES EDIT - Original: 60
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""

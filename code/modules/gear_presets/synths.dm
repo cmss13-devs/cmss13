@@ -795,6 +795,8 @@
 	new_human.g_facial = 255
 	new_human.b_facial = 255
 
+	new_human.remove_tts_component() // BANDAMARINES ADD
+
 /datum/equipment_preset/synth/working_joe/load_vanity(mob/living/carbon/human/new_human)
 	return
 

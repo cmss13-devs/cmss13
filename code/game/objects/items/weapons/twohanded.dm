@@ -358,8 +358,9 @@
 	item_state = "d2_breacher"
 	force = MELEE_FORCE_TIER_5
 	force_wielded = MELEE_FORCE_TIER_11
+	attack_speed = 21 //This is practically the best speed for a hammer
 	w_class = SIZE_LARGE
-	flags_item = TWOHANDED
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY //Think of it as hitting the floor if you miss
 	flags_equip_slot = SLOT_BACK
 	attack_verb = list("pulverized", "smashed", "thwacked", "crushed", "hammered", "wrecked")
 	var/really_heavy = FALSE
@@ -370,6 +371,7 @@
 	icon_state = "syn_breacher"
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_TIER_12
+	attack_speed = 21 //Same as D2 for balancing purposes
 	really_heavy = TRUE
 	var/move_delay_addition = 1.5
 

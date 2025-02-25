@@ -10,8 +10,8 @@
 	)
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_WEAK
-	throwforce = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
+	throwforce = MELEE_FORCE_TIER_2
 	w_class = SIZE_MEDIUM
 
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
@@ -21,8 +21,8 @@
 	desc = "A bottle with a sharp broken bottom."
 	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = "broken_bottle"
-	force = MELEE_FORCE_WEAK
-	throwforce = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
+	throwforce = MELEE_FORCE_TIER_2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	item_state = "broken_beer"
@@ -52,8 +52,8 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
 	)
 	icon_state = "broken_glass"
-	force = MELEE_FORCE_WEAK
-	throwforce = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
+	throwforce = MELEE_FORCE_TIER_2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	item_state = "shard-glass"
@@ -75,8 +75,8 @@
 	desc = "A dart. For throwing. This one's red."
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "red_dart"
-	force = MELEE_FORCE_WEAK
-	throwforce = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
+	throwforce = MELEE_FORCE_TIER_2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	hitsound = 'sound/weapons/bladeslice.ogg'

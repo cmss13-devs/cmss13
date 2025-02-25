@@ -109,7 +109,7 @@
 	)
 	icon_state = "hatchet"
 	flags_atom = FPRINT|CONDUCT
-	force = MELEE_FORCE_NORMAL
+	force = MELEE_FORCE_TIER_5
 	w_class = SIZE_SMALL
 	throwforce = 20
 	throw_speed = SPEED_VERY_FAST

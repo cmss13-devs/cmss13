@@ -191,7 +191,7 @@
 	name = "\improper PIZZA TIME"
 	desc = "Before you is a holy relic of a bygone era when the great Pizza Lords reigned supreme. You know either that or it's just a big damn pizza cutter."
 	icon_state = "holyrelicpizzacutter"
-	force = MELEE_FORCE_VERY_STRONG
+	force = MELEE_FORCE_TIER_9
 
 /*
  * Bucher's cleaver
@@ -205,7 +205,7 @@
 	)
 	icon_state = "butch"
 	flags_atom = FPRINT|CONDUCT
-	force = MELEE_FORCE_NORMAL
+	force = MELEE_FORCE_TIER_5
 	w_class = SIZE_SMALL
 	throwforce = 8
 	throw_speed = SPEED_VERY_FAST

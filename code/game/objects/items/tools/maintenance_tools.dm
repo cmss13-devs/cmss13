@@ -119,7 +119,7 @@
 	name = "tactical screwdriver"
 	desc = "Sharp, matte black, and deadly. In a pinch this will substitute for a pencil in a fight."
 	force = MELEE_FORCE_TIER_2
-	throwforce = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_TIER_5
 
 /obj/item/tool/screwdriver/tactical/Initialize()
 	. = ..()
@@ -512,8 +512,8 @@
 	name = "tactical prybar"
 	desc = "Holding this makes you want to raid a townhouse filled with terrorists. Also doubles as a blunt weapon."
 	icon_state = "tac_prybar"
-	force = MELEE_FORCE_NORMAL
-	throwforce = MELEE_FORCE_NORMAL
+	force = MELEE_FORCE_TIER_5
+	throwforce = MELEE_FORCE_TIER_5
 
 /obj/item/maintenance_jack
 	name = "\improper K92 Maintenance Jack"
@@ -527,7 +527,7 @@
 	)
 	hitsound = "swing_hit"
 	w_class = SIZE_LARGE
-	force = MELEE_FORCE_STRONG
+	force = MELEE_FORCE_TIER_7
 	flags_equip_slot = SLOT_SUIT_STORE
 	flags_atom = FPRINT|QUICK_DRAWABLE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really

@@ -9,8 +9,8 @@
 	item_state = "shovel"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 8
-	throwforce = 4
+	force = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_5
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 50)
 
@@ -194,8 +194,8 @@
 	)
 	icon_state = "spade"
 	item_state = "spade"
-	force = 5
-	throwforce = 7
+	force = MELEE_FORCE_TIER_5
+	throwforce = MELEE_FORCE_TIER_1
 	w_class = SIZE_SMALL
 	dirt_overlay = "spade_overlay"
 	shovelspeed = 60
@@ -207,8 +207,8 @@
 	name = "snow shovel"
 	desc = "I had enough winter for this year!"
 	w_class = SIZE_LARGE
-	force = 5
-	throwforce = 3
+	force = MELEE_FORCE_TIER_5
+	throwforce = MELEE_FORCE_TIER_1
 
 
 
@@ -220,8 +220,8 @@
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "etool"
 	item_state = "etool"
-	force = 30
-	throwforce = 2
+	force = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_5
 	w_class = SIZE_LARGE
 
 	dirt_overlay = "etool_overlay"
@@ -243,15 +243,15 @@
 	folded = !folded
 	if(folded)
 		w_class = SIZE_SMALL
-		force = 2
+		force = MELEE_FORCE_TIER_1
 	else
 		w_class = SIZE_LARGE
-		force = 30
+		force = MELEE_FORCE_TIER_7
 	..()
 
 /obj/item/tool/shovel/etool/folded
 	folded = TRUE
 	w_class = SIZE_SMALL
-	force = 2
+	force = MELEE_FORCE_TIER_1
 	icon_state = "etool_c"
 	item_state = "etool_c"

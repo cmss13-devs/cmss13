@@ -28,7 +28,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
 	)
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_NORMAL
+	force = MELEE_FORCE_TIER_5
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	. = ..()
@@ -53,7 +53,7 @@
 	item_state = "telebaton_0"
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
-	force = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
 	var/on = 0
 	var/stun_force = 10
 
@@ -77,7 +77,7 @@
 		icon_state = "telebaton_1"
 		item_state = "telebaton_1"
 		w_class = SIZE_MEDIUM
-		force = MELEE_FORCE_VERY_STRONG
+		force = MELEE_FORCE_TIER_9
 		stun_force = 40
 		attack_verb = list("smacked", "struck", "slapped", "beat")
 	else
@@ -87,7 +87,7 @@
 		icon_state = "telebaton_0"
 		item_state = "telebaton_0"
 		w_class = SIZE_SMALL
-		force = MELEE_FORCE_WEAK
+		force = MELEE_FORCE_TIER_2
 		stun_force = initial(stun_force)
 		attack_verb = list("hit", "punched")
 

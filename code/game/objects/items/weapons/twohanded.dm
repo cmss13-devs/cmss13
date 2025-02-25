@@ -8,8 +8,9 @@
 	var/force_wielded = 0
 	var/wieldsound = null
 	var/unwieldsound = null
-	force = MELEE_FORCE_NORMAL
-	force_wielded = MELEE_FORCE_VERY_STRONG
+	force = MELEE_FORCE_TIER_7
+	force_wielded = MELEE_FORCE_TIER_10
+	throwforce = MELEE_FORCE_TIER_5
 	flags_item = TWOHANDED
 
 /obj/item/weapon/twohanded/update_icon()
@@ -257,7 +258,8 @@
 	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
-	throwforce = 35
+	throwforce = MELEE_FORCE_TIER_9
+	force_wielded = MELEE_FORCE_TIER_9 //The fact you can easily produce these things should only be as strong as a machete
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -275,7 +277,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
 	)
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
-	force = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
 	force_wielded = 1
 	attack_verb = list("whacked")
 	hitsound = "swing_hit"
@@ -354,8 +356,8 @@
 	)
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"
-	force = MELEE_FORCE_NORMAL
-	force_wielded = MELEE_FORCE_NORMAL
+	force = MELEE_FORCE_TIER_5
+	force_wielded = MELEE_FORCE_TIER_11
 	w_class = SIZE_LARGE
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
@@ -367,7 +369,7 @@
 	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
 	icon_state = "syn_breacher"
 	item_state = "syn_breacher"
-	force_wielded = MELEE_FORCE_VERY_STRONG
+	force_wielded = MELEE_FORCE_TIER_12
 	really_heavy = TRUE
 	var/move_delay_addition = 1.5
 

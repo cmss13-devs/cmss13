@@ -11,8 +11,8 @@
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_STRONG
-	throwforce = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_2
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_LARGE
@@ -25,18 +25,22 @@
 	desc = "What are you standing around staring at this for? Get to killing!"
 	icon_state = "claymore"
 	item_state = "claymore"
+	force = MELEE_FORCE_TIER_10
 
 /obj/item/weapon/sword/ceremonial
 	name = "Ceremonial Sword"
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
 	icon_state = "ceremonial"
 	item_state = "ceremonial"
+	force = MELEE_FORCE_TIER_10
+
 
 /obj/item/weapon/sword/machete
 	name = "\improper M2132 machete"
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
 	item_state = "machete"
+	force = MELEE_FORCE_TIER_9
 
 /obj/item/weapon/sword/machete/attack_self(mob/user)
 	if(user.action_busy)
@@ -60,7 +64,7 @@
 	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
 	icon_state = "arnold-machete"
 	item_state = "arnold-machete"
-	force = MELEE_FORCE_TIER_11
+	force = MELEE_FORCE_TIER_15
 
 /obj/item/weapon/sword/hefa
 	name = "HEFA sword"
@@ -108,13 +112,13 @@
 	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
 	icon_state = "katana"
 	item_state = "katana"
-	force = MELEE_FORCE_VERY_STRONG
+	force = MELEE_FORCE_TIER_11
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
 	name = "replica katana"
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
-	force = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
 	throwforce = 7
 
 /obj/item/weapon/throwing_knife
@@ -152,8 +156,8 @@
 	)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
-	force = MELEE_FORCE_STRONG
-	throwforce = MELEE_FORCE_STRONG
+	force = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_7
 	edge = 1
 
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.
@@ -233,8 +237,8 @@
 	icon_state = "dark_blade"
 	item_state = "dark_blade"
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
-	force = MELEE_FORCE_VERY_STRONG
-	throwforce = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_9
+	throwforce = MELEE_FORCE_TIER_2
 	sharp = IS_SHARP_ITEM_BIG
 	edge = TRUE
 	w_class = SIZE_MEDIUM
@@ -304,8 +308,8 @@
 	razor_opened = opening
 	update_icon()
 	if(opening)
-		force = MELEE_FORCE_NORMAL
-		throwforce = MELEE_FORCE_NORMAL
+		force = MELEE_FORCE_TIER_5
+		throwforce = MELEE_FORCE_TIER_5
 		sharp = IS_SHARP_ITEM_ACCURATE
 		edge = TRUE
 		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

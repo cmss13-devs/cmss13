@@ -1,4 +1,0 @@
-author: "VileBeggar"
-delete-after: True
-changes:
-  - qol: "Clicking 'Watch' while already overwatching a xeno will now make you exit overwatch. You can now overwatch leader xenos with the hive tracker, instead of only being able to see the Queen."

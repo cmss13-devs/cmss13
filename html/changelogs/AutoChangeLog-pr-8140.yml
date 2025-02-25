@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added Leader uniform for Kutjevo Goon camo, and changed backend for how the goon presets pick their uniform and helmets to allow for simpler use by staff in events."
+  - imageadd: "Added Leader uniform for Kutjevo Goon camo."
+  - imageadd: "Added Lead Researcher hud icon for WY."

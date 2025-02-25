@@ -1,9 +1,0 @@
-author: "SubjectD9341, Red-byte3D"
-delete-after: True
-changes:
-  - balance: "Reworked hellhounds, now they have slightly less health, better dodge and a better pounce that slashes the person you land on."
-  - imageadd: "New hellhound sprites"
-  - rscadd: "Hellhounds now get assigned to their own predator, that being whomever called it in."
-  - spellcheck: "Rewrites hellhound spawn text"
-  - bugfix: "Fixes a long standing bug with hellhound pack (hive status) not working"
-  - balance: "Hellhounds are no longer slowed by xeno weeds."

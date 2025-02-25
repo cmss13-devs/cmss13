@@ -587,5 +587,9 @@
 /mob/living/carbon/xenomorph/proc/add_abilities()
 	if(!base_actions)
 		return
+
+	if(SEND_SIGNAL(src, COMSIG_XENO_ADD_ABILITIES) & COMPONENT_CANCEL_ADDING_ABILITIES)
+		return
+
 	for(var/action_path in base_actions)
 		give_action(src, action_path)

@@ -21,7 +21,7 @@
 		1080, // 10
 		1180, // 11
 		1280, // 12
-	)
+	) // 8580 XP to level 12
 
 	var/list/datum/moba_item/held_items = list()
 	var/map_id = 0
@@ -39,6 +39,12 @@
 	parent_xeno.sight = SEE_TURFS // We allow seeing turfs but not mobs
 	parent_xeno.need_weeds = FALSE
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+	parent_xeno.AddComponent(
+		/datum/component/moba_death_reward,
+		300,
+		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,
+		player.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT, TRUE
+	)
 	player_datum = player
 	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
 	map_id = id
@@ -64,6 +70,7 @@
 	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
 	RegisterSignal(parent_xeno, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
 	RegisterSignal(parent_xeno, COMSIG_MOB_KILLED_MOB, PROC_REF(on_kill))
+	RegisterSignal(parent_xeno, COMSIG_XENO_ADD_ABILITIES, PROC_REF(on_add_abilities))
 
 /datum/component/moba_player/proc/handle_level_up()
 	level++
@@ -73,6 +80,13 @@
 	for(var/datum/moba_item/item as anything in held_items)
 		item.apply_stats(parent_xeno, src, player_datum, TRUE)
 	SEND_SIGNAL(player_datum, COMSIG_MOBA_LEVEL_UP, level)
+	qdel(parent_xeno.GetComponent(/datum/component/moba_death_reward))
+	parent_xeno.AddComponent(
+		/datum/component/moba_death_reward,
+		300,
+		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,
+		player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT, TRUE
+	) // We refresh this because we're a level higher, so more XP on kill
 
 /datum/component/moba_player/proc/handle_qdel()
 	SIGNAL_HANDLER
@@ -87,8 +101,14 @@
 	SIGNAL_HANDLER
 
 	if((acting_projectile.ammo.flags_ammo_behavior|acting_projectile.projectile_override_flags) & AMMO_ACIDIC)
-	// account for penetration
-		damage_result[1] = pre_mitigation_damage * (0.01 * (100 - (parent_xeno.acid_armor + parent_xeno.acid_armor_buff - parent_xeno.acid_armor_debuff - acting_projectile.ammo.penetration)))
+		//damage_result[1] = pre_mitigation_damage * (0.01 * (100 - (parent_xeno.acid_armor + parent_xeno.acid_armor_buff - parent_xeno.acid_armor_debuff - acting_projectile.ammo.penetration)))
+		damage_result[1] = armor_damage_reduction(
+			GLOB.xeno_ranged,
+			damage_result[1],
+			parent_xeno.acid_armor + parent_xeno.acid_armor_buff - parent_xeno.acid_armor_debuff,
+			acting_projectile.ammo.penetration,
+			//zonenote modify this if we ever add armor integrity for acid armor
+		)
 
 /datum/component/moba_player/proc/on_attacked(datum/source, mob/living/carbon/xenomorph/attacking_xeno)
 	SIGNAL_HANDLER
@@ -185,12 +205,18 @@
 		seconds = "0[seconds]"
 	else
 		seconds = "[seconds]"
-	status_tab_items += "<b>Round Time:</b> [minutes]:[seconds]"
-	status_tab_items += "<b>[MOBA_GOLD_NAME]:</b> [gold]"
-	status_tab_items += "<b>Level:</b> [level]/[level_cap]"
-	status_tab_items += "<b>XP:</b> [xp]/[level_up_thresholds[level]]"
+	status_tab_items += "Round Time: [minutes]:[seconds]"
+	status_tab_items += "[MOBA_GOLD_NAME]: [gold]"
+	status_tab_items += "Level: [level]/[level_cap]"
+	status_tab_items += "XP: [xp]/[level_up_thresholds[level]]"
 	var/item_names = ""
 	for(var/datum/moba_item/item as anything in held_items)
 		item_names += item.name + (item == held_items[length(held_items)] ? "" : ", ")
-	status_tab_items += "<b>Items:</b> [item_names]"
+	status_tab_items += "Items: [item_names]"
 	status_tab_items += "---------------------------"
+
+/// None of the default xeno abilities really matter for us
+/datum/component/moba_player/proc/on_add_abilities(datum/source)
+	SIGNAL_HANDLER
+
+	return COMPONENT_CANCEL_ADDING_ABILITIES

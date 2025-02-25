@@ -33,7 +33,10 @@
 	var/range = 5
 	var/datum/ammo/used_ammo
 	var/datum/weakref/last_fired_target
-	var/times_fired_at_last_fired_target = 0
+	/// Every time the turret fires at a player, we add a stack of heat. Heat increases damage by matter of projectile_damage * 1.4^H
+	/// Heat decays after a few seconds of not shooting at anything
+	var/heat_stacks = 0
+
 
 /obj/effect/alien/resin/moba_turret/Initialize(mapload, hive)
 	. = ..()
@@ -92,25 +95,26 @@
 
 /obj/effect/alien/resin/moba_turret/proc/fire_at_target(mob/living/target)
 	COOLDOWN_START(src, firing_cooldown, firing_cooldown_time)
-	var/mob/living/last_hit = last_fired_target?.resolve()
-	if((last_hit == target) && (HAS_TRAIT(target, TRAIT_MOBA_PARTICIPANT))) // minions are exempt from damage scaling
-		times_fired_at_last_fired_target++
-		addtimer(CALLBACK(src, PROC_REF(reset_last_fired_target)), 4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
-	else
-		times_fired_at_last_fired_target = 0
 
 	var/obj/projectile/proj = new(get_turf(src), create_cause_data(used_ammo.name, C=src))
 	proj.generate_bullet(used_ammo)
-	proj.damage *= (1.4 ** times_fired_at_last_fired_target) // Ramping damage if you decide to try and facetank a turret
+
+	if(HAS_TRAIT(target, TRAIT_MOBA_PARTICIPANT)) // minions are exempt from damage scaling
+		heat_stacks++
+		proj.damage *= (1.4 ** (heat_stacks - 1)) // Ramping damage if you decide to try and facetank a turret
+
+	if(heat_stacks)
+		addtimer(CALLBACK(src, PROC_REF(reset_heat)), 4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+
 	proj.permutated += src
 	proj.fire_at(target, src, src, used_ammo.max_range, used_ammo.shell_speed)
 	last_fired_target = WEAKREF(target)
 	playsound(loc, 'sound/effects/splat.ogg', 50, TRUE)
 	flick("acid_pillar_attack", src)
 
-/obj/effect/alien/resin/moba_turret/proc/reset_last_fired_target()
-	last_fired_target = null
-	times_fired_at_last_fired_target = 0
+/obj/effect/alien/resin/moba_turret/proc/reset_heat()
+	heat_stacks = 0
+	//visible_message(SPAN_XENONOTICE("[src]")) // maybe add a text indictation eventually
 
 /obj/effect/alien/resin/moba_turret/get_projectile_hit_boolean(obj/projectile/P)
 	return TRUE

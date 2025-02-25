@@ -1,23 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/landmark/survivor_spawner/clf,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "ab" = (
 /obj/effect/landmark/survivor_spawner/clf,
-/turf/open/floor/platingdmg1,
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "ac" = (
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/platingdmg1,
+/area/lv624/lazarus/crashed_ship)
+"ad" = (
 /obj/effect/landmark/survivor_spawner/clf_medic,
 /turf/open/floor/almayer/emeraldcorner/west,
 /area/lv624/lazarus/crashed_ship)
-"ad" = (
+"ae" = (
 /obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv624/lazarus/crashed_ship)
-"ae" = (
-/obj/item/ammo_magazine/rifle/mar40,
-/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -2136,7 +2136,7 @@ DY
 HR
 Xq
 DO
-ac
+ad
 lr
 ch
 Xq
@@ -2320,7 +2320,7 @@ wr
 Xq
 vb
 RS
-ad
+ae
 Ik
 Dp
 Qd
@@ -2376,7 +2376,7 @@ lr
 xI
 Xq
 AQ
-ab
+ac
 lh
 Qf
 yT
@@ -2566,7 +2566,7 @@ Xq
 XM
 dN
 dN
-aa
+ab
 Ex
 Qf
 xs
@@ -2708,7 +2708,7 @@ dN
 ok
 Pu
 qU
-ae
+aa
 Xx
 xk
 dN

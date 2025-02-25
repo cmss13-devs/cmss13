@@ -5,7 +5,7 @@
 /area/kutjevo/interior/colony/clf_shuttle)
 "aA" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/sniper/svd,
+/obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/clf_lz)
 "aH" = (
@@ -499,10 +499,6 @@
 	opacity = 0
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
-"Ab" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/clf_lz)
 "Aj" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan8"
@@ -766,10 +762,11 @@
 /area/kutjevo/interior/colony/clf_shuttle)
 "NP" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/clf_lz)
 "NR" = (
@@ -1810,7 +1807,7 @@ mr
 mr
 cf
 oH
-Ab
+cf
 tZ
 qP
 cf

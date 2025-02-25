@@ -19,6 +19,10 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
+"af" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
 "ag" = (
 /obj/structure/sign/banners/clf_flag{
 	pixel_y = 32
@@ -154,10 +158,6 @@
 "dB" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/shiva/north,
-/area/shiva/interior/colony/s_admin)
-"dL" = (
-/obj/item/ammo_magazine/sniper/svd,
-/turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "dN" = (
 /obj/structure/machinery/light,
@@ -590,10 +590,6 @@
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva/north,
-/area/shiva/interior/colony/s_admin)
-"rb" = (
-/obj/item/ammo_magazine/sniper/svd,
-/turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "rg" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -1039,10 +1035,6 @@
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
-"CU" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/s_admin)
 "CW" = (
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
@@ -1110,6 +1102,7 @@
 /area/shiva/interior/colony/s_admin)
 "Em" = (
 /obj/effect/landmark/survivor_spawner/clf_engi/shivas,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Eu" = (
@@ -1287,7 +1280,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "IW" = (
@@ -1420,7 +1413,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
 "Ld" = (
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "Lg" = (
@@ -1728,10 +1721,6 @@
 "Vf" = (
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
-"Vl" = (
-/obj/item/weapon/gun/rifle/sniper/svd,
-/turf/open/floor/shiva/floor3,
-/area/shiva/interior/colony/s_admin)
 "Vv" = (
 /obj/structure/largecrate/supply/supplies/mre{
 	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
@@ -2096,7 +2085,7 @@ Gz
 Gz
 Gz
 Gz
-CU
+EM
 EM
 cj
 YC
@@ -2153,7 +2142,7 @@ pM
 DH
 Gz
 oX
-EM
+af
 EM
 EM
 lh
@@ -2236,7 +2225,7 @@ Co
 pM
 DH
 Vy
-Vl
+af
 Bi
 pX
 Yf
@@ -2263,9 +2252,9 @@ pM
 pM
 nc
 ad
-rb
+Kf
 JM
-dL
+DH
 DH
 Ms
 DH

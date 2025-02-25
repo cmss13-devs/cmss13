@@ -231,7 +231,7 @@
 /area/varadero/interior/maintenance/research)
 "fG" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/research)
 "fL" = (
@@ -916,7 +916,12 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "vw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/obj/item/storage/box/masks,
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
 "vz" = (
@@ -1291,8 +1296,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_magazine/sniper/svd,
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/research)
 "Em" = (
@@ -2100,7 +2105,6 @@
 /area/varadero/interior/maintenance/research)
 "VH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_magazine/sniper/svd,
 /turf/open/floor/plating/platingdmg2,
 /area/varadero/interior/research)
 "VO" = (
@@ -2144,6 +2148,7 @@
 /area/varadero/interior/research)
 "Wg" = (
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "Wo" = (
@@ -2221,11 +2226,11 @@
 "Yn" = (
 /obj/item/stack/rods,
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_magazine/sniper/svd,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "Yq" = (
-/obj/item/weapon/gun/rifle/sniper/svd,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/research)
 "YN" = (

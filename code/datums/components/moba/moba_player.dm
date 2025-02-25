@@ -39,6 +39,12 @@
 	parent_xeno.sight = SEE_TURFS // We allow seeing turfs but not mobs
 	parent_xeno.need_weeds = FALSE
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+	parent_xeno.AddComponent(
+		/datum/component/moba_death_reward,
+		300,
+		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,
+		player.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT, TRUE
+	)
 	player_datum = player
 	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
 	map_id = id
@@ -73,6 +79,13 @@
 	for(var/datum/moba_item/item as anything in held_items)
 		item.apply_stats(parent_xeno, src, player_datum, TRUE)
 	SEND_SIGNAL(player_datum, COMSIG_MOBA_LEVEL_UP, level)
+	qdel(parent_xeno.GetComponent(/datum/component/moba_death_reward))
+	parent_xeno.AddComponent(
+		/datum/component/moba_death_reward,
+		300,
+		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,
+		player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT, TRUE
+	) // We refresh this because we're a level higher, so more XP on kill
 
 /datum/component/moba_player/proc/handle_qdel()
 	SIGNAL_HANDLER

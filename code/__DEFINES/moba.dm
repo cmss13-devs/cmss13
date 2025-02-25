@@ -18,3 +18,5 @@
 
 #define MOBA_MAX_LEVEL 12
 #define MOBA_MAX_ITEM_COUNT 5
+/// When killing a player, how much xp (mult by their level) to grant
+#define MOBA_XP_ON_KILL_PER_PLAYER_LEVEL 50

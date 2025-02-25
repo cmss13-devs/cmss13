@@ -21,7 +21,7 @@
 		1080, // 10
 		1180, // 11
 		1280, // 12
-	)
+	) // 8580 XP to level 12
 
 	var/list/datum/moba_item/held_items = list()
 	var/map_id = 0
@@ -185,12 +185,12 @@
 		seconds = "0[seconds]"
 	else
 		seconds = "[seconds]"
-	status_tab_items += "<b>Round Time:</b> [minutes]:[seconds]"
-	status_tab_items += "<b>[MOBA_GOLD_NAME]:</b> [gold]"
-	status_tab_items += "<b>Level:</b> [level]/[level_cap]"
-	status_tab_items += "<b>XP:</b> [xp]/[level_up_thresholds[level]]"
+	status_tab_items += "Round Time: [minutes]:[seconds]"
+	status_tab_items += "[MOBA_GOLD_NAME]: [gold]"
+	status_tab_items += "Level: [level]/[level_cap]"
+	status_tab_items += "XP: [xp]/[level_up_thresholds[level]]"
 	var/item_names = ""
 	for(var/datum/moba_item/item as anything in held_items)
 		item_names += item.name + (item == held_items[length(held_items)] ? "" : ", ")
-	status_tab_items += "<b>Items:</b> [item_names]"
+	status_tab_items += "Items: [item_names]"
 	status_tab_items += "---------------------------"

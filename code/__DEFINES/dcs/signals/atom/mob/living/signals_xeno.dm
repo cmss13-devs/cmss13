@@ -100,3 +100,7 @@
 
 /// From /obj/structure/tunnel/proc/pick_tunnel() : (obj/structure/used_tunnel)
 #define COMSIG_XENO_USED_TUNNEL "xeno_used_tunnel"
+
+/// From /mob/living/carbon/xenomorph/proc/add_abilities() : ()
+#define COMSIG_XENO_ADD_ABILITIES "xeno_add_abilites"
+	#define COMPONENT_CANCEL_ADDING_ABILITIES (1<<0)

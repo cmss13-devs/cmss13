@@ -70,6 +70,7 @@
 	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
 	RegisterSignal(parent_xeno, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
 	RegisterSignal(parent_xeno, COMSIG_MOB_KILLED_MOB, PROC_REF(on_kill))
+	RegisterSignal(parent_xeno, COMSIG_XENO_ADD_ABILITIES, PROC_REF(on_add_abilities))
 
 /datum/component/moba_player/proc/handle_level_up()
 	level++
@@ -213,3 +214,9 @@
 		item_names += item.name + (item == held_items[length(held_items)] ? "" : ", ")
 	status_tab_items += "Items: [item_names]"
 	status_tab_items += "---------------------------"
+
+/// None of the default xeno abilities really matter for us
+/datum/component/moba_player/proc/on_add_abilities(datum/source)
+	SIGNAL_HANDLER
+
+	return COMPONENT_CANCEL_ADDING_ABILITIES

@@ -1282,7 +1282,8 @@
 		var/turf/T
 		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
-			if(!istype(T)) continue
+			if(!istype(T))
+				continue
 			for(var/obj/structure/mineral_door/resin/R in T)
 				R.check_resin_support()
 

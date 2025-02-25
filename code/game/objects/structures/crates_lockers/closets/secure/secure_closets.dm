@@ -45,7 +45,7 @@
 				src.req_access += pick(get_access(ACCESS_LIST_MARINE_MAIN))
 
 /obj/structure/closet/secure_closet/proc/togglelock(mob/living/user)
-	if(opened)
+	if(opened && !locked)
 		to_chat(user, SPAN_NOTICE("Close the locker first."))
 		return
 	if(broken)

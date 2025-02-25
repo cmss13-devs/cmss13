@@ -239,6 +239,7 @@
 		list("Black Webbing Vest", 10, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", 10, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
@@ -4057,7 +4058,7 @@
 
 /datum/equipment_preset/upp/soldier/hunted
 	name = "UPP Soldier (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/soldier/hunted/load_gear(mob/living/carbon/human/new_human)
 	//head
@@ -4072,6 +4073,9 @@
 	//limbs
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
+	//pockets
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
@@ -4091,7 +4095,7 @@
 
 /datum/equipment_preset/upp/machinegunner/hunted
 	name = "UPP Machinegunner (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/machinegunner/hunted/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -4112,6 +4116,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)
 
 	//body
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/minigun/upp, WEAR_J_STORE)
@@ -4123,7 +4128,7 @@
 
 /datum/equipment_preset/upp/leader/hunted
 	name = "UPP Squad Leader (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/leader/hunted/load_gear(mob/living/carbon/human/new_human)
 	var/UPPleadsidearm = rand(1,4)
@@ -4165,10 +4170,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)
 
 /datum/equipment_preset/upp/sapper/hunted
 	name = "UPP Sapper (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/sapper/hunted/load_gear(mob/living/carbon/human/new_human)
 
@@ -4198,3 +4204,4 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)

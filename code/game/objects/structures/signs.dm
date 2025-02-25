@@ -31,7 +31,8 @@
 /obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob) //construction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
-		if(direction == "Cancel") return
+		if(direction == "Cancel")
+			return
 		var/obj/structure/sign/S = new(user.loc)
 		switch(direction)
 			if("North")
@@ -42,7 +43,8 @@
 				S.pixel_y = -32
 			if("West")
 				S.pixel_x = -32
-			else return
+			else
+				return
 		S.name = name
 		S.desc = desc
 		S.icon_state = sign_state

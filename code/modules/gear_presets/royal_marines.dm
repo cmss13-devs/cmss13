@@ -577,7 +577,7 @@
 
 /datum/equipment_preset/twe/royal_marine/standard/hunted
 	name = "TWE Royal Marine Commando (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/standard/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine, WEAR_HEAD)
@@ -615,7 +615,7 @@
 
 /datum/equipment_preset/twe/royal_marine/team_leader/hunted
 	name = "TWE Royal Marine Commando TL (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/team_leader/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine, WEAR_HEAD)
@@ -653,7 +653,7 @@
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/hunted
 	name = "TWE Royal Marine Commando Officer (Hunted)"
-	faction = FACTION_HUNTED
+	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine/team_leader, WEAR_HEAD)
@@ -688,7 +688,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/m94, WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact, WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/cautery, WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/syringe_case/rmc, WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_officer_aid, WEAR_R_STORE)

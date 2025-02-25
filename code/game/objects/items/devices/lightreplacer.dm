@@ -124,7 +124,8 @@
 
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))
-			if(!Use(U)) return
+			if(!Use(U))
+				return
 			to_chat(U, SPAN_NOTICE("You replace the [target.fitting] with [src]."))
 
 			if(target.status != LIGHT_EMPTY)

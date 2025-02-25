@@ -66,10 +66,6 @@
 #define SINGLETARGETGUT 0
 #define AOETARGETGUT 1
 
-#define WARDEN_HEAL_SHIELD 0
-#define WARDEN_HEAL_HP 1
-#define WARDEN_HEAL_DEBUFFS 2
-
 #define HUD_PAIN_STATES_XENO   4
 #define HUD_HEALTH_STATES_XENO 16
 #define HUD_PLASMA_STATES_XENO 16
@@ -203,6 +199,9 @@
 #define XENO_FACEHUGGER_LEAVE_TIMER 420 //420 seconds
 /// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
 #define XENO_AVAILABLE_TIMER 60 //60 seconds
+
+/// The damage that xeno health gets divided by for banish tick damage
+#define XENO_BANISHMENT_DMG_DIVISOR 23
 
 /// Between 2% to 10% of explosion severity
 #define WEED_EXPLOSION_DAMAGEMULT rand(2, 10)*0.01
@@ -404,7 +403,7 @@
 // Praetorian strain flags
 #define PRAETORIAN_VANGUARD "Vanguard"
 #define PRAETORIAN_DANCER "Dancer"
-#define PRAETORIAN_WARDEN "Warden"
+#define PRAETORIAN_VALKYRIE "Valkyrie"
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
 /////////////////////////////////////////////////////////////////////////////////////

@@ -49,6 +49,8 @@
 
 	/// Sound sets for different defibs.
 	var/sound_charge = 'sound/items/defib_charge.ogg'
+	var/sound_charge_skill4 = 'sound/items/defib_charge_skill4.ogg'
+	var/sound_charge_skill3 = 'sound/items/defib_charge_skill3.ogg'
 	var/sound_failed = 'sound/items/defib_failed.ogg'
 	var/sound_success = 'sound/items/defib_success.ogg'
 	var/sound_safety_on = 'sound/items/defib_safetyOn.ogg'
@@ -211,13 +213,18 @@
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
 			(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[G];reentercorpse=1'>click here!</a>)")))
 
-	user.visible_message(SPAN_NOTICE("[user] starts setting up the [fluff_tool] on [target]'s [fluff_target_part]"), \
+	user.visible_message(SPAN_NOTICE("[user] starts setting up the [fluff_tool] on [target]'s [fluff_target_part]"),
 		SPAN_HELPFUL("You start <b>setting up</b> the [fluff_tool] on <b>[target]</b>'s [fluff_target_part]."))
-	playsound(get_turf(src), sound_charge, 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
+	if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.35)
+		playsound(get_turf(src), sound_charge_skill4, 25, 0)
+	else if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.75)
+		playsound(get_turf(src), sound_charge_skill3, 25, 0)
+	else 
+		playsound(get_turf(src), sound_charge, 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	//Taking square root not to make defibs too fast...
 	if(!do_after(user, (4 + (3 * user.get_skill_duration_multiplier(SKILL_MEDICAL))) SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		user.visible_message(SPAN_WARNING("[user] stops setting up the [fluff_tool] on [target]'s [fluff_target_part]."), \
+		user.visible_message(SPAN_WARNING("[user] stops setting up the [fluff_tool] on [target]'s [fluff_target_part]."),
 		SPAN_WARNING("You stop setting up the [fluff_tool] on [target]'s [fluff_target_part]."))
 		return FALSE
 
@@ -329,8 +336,8 @@
 	charge_cost = 1000
 	force = 0
 	throwforce = 0
-	skill_to_check_alt = SKILL_ENGINEER
-	skill_level_alt = SKILL_ENGINEER_ENGI
+	skill_to_check = SKILL_ENGINEER
+	skill_level = SKILL_ENGINEER_TRAINED
 	blocked_by_suit = FALSE
 	should_spark = FALSE
 
@@ -341,6 +348,8 @@
 	fluff_revive_message = "Reset complete"
 
 	sound_charge = 'sound/mecha/powerup.ogg'
+	sound_charge_skill4 = 'sound/mecha/powerup.ogg'
+	sound_charge_skill3 = 'sound/mecha/powerup.ogg'
 	sound_failed = 'sound/items/synth_reset_key/shortbeep.ogg'
 	sound_success = 'sound/items/synth_reset_key/boot_on.ogg'
 	sound_safety_on = 'sound/machines/click.ogg'
@@ -352,6 +361,11 @@
 	overlays.Cut()
 	if(ready)
 		icon_state += "_on"
+
+/obj/item/device/defibrillator/synthetic/get_examine_text(mob/user)
+	. = ..()
+	if(!noskill)
+		. += SPAN_NOTICE("You need some knowledge of electronics and circuitry to use this.")
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))

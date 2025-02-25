@@ -227,7 +227,7 @@
 		affected_mob.coughedtime = world.time + 2 SECONDS
 		if(ishuman(affected_mob)) //Humans only to avoid issues
 			if(issynth(affected_mob))
-				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
 				if(prob(50))
@@ -329,6 +329,11 @@
 	var/applied_fire_stacks = 5
 	var/xeno_yautja_reduction = 0.75
 
+/obj/effect/particle_effect/smoke/phosphorus/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, intensity, max_intensity)
+	burn_damage = min(burn_damage, max_intensity - intensity) // Applies reaction limits
+
+	. = ..()
+
 /obj/effect/particle_effect/smoke/phosphorus/weak
 	time_to_live = 2
 	smokeranking = SMOKE_RANK_MED
@@ -357,7 +362,7 @@
 		if(affected_mob.coughedtime < world.time && !affected_mob.stat)
 			affected_mob.coughedtime = world.time + next_cough
 			if(issynth(affected_mob))
-				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
 				affected_mob.emote("cough")
@@ -552,7 +557,7 @@
 	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob)) //Coughing/gasping
 		affected_mob.coughedtime = world.time + 1.5 SECONDS
 		if(issynth(affected_mob))
-			affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+			affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 			SPAN_DANGER("Your skin is sloughing off!"))
 		else
 			if(prob(50))
@@ -771,6 +776,15 @@
 
 /datum/effect_system/smoke_spread/phosphorus
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus
+
+/datum/effect_system/smoke_spread/phosphorus/start(intensity, max_intensity)
+	if(holder)
+		location = get_turf(holder)
+	var/obj/effect/particle_effect/smoke/phosphorus/smoke = new smoke_type(location, amount+1, cause_data, intensity, max_intensity)
+	if(lifetime)
+		smoke.time_to_live = lifetime
+	if(smoke.amount > 0)
+		smoke.spread_smoke(direction)
 
 /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/weak

@@ -57,7 +57,9 @@
 	. += SPAN_NOTICE(get_damage_status())
 
 /obj/item/clothing/accessory/health/additional_examine_text()
-	return ". [get_damage_status()]"
+	. = ..()
+
+	. += "[get_damage_status()]"
 
 /obj/item/clothing/accessory/health/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()

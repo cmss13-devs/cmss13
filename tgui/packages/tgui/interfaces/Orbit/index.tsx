@@ -428,7 +428,7 @@ const ObservableContent = () => {
       <ObservableSection
         color="red"
         section={hunted}
-        title="Hunted In Preserve"
+        title="Hunted Personnel"
       />
       <ObservableSection color="good" section={dutch} title="Dutchs Dozen" />
       <ObservableSection

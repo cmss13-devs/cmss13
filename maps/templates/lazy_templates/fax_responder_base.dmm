@@ -342,7 +342,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "cW" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/wy/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -733,12 +733,15 @@
 /area/adminlevel/ert_station/fax_response_station)
 "hn" = (
 /obj/structure/machinery/space_heater{
-	pixel_x = 5;
-	pixel_y = 15;
+	pixel_x = -1;
+	pixel_y = 13;
 	layer = 2.99;
 	anchored = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/device/radio/intercom/fax/uscm_hc{
+	pixel_y = 24
+	},
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "hs" = (
@@ -798,7 +801,7 @@
 /turf/open/gm/grass/grassbeach/east,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "hJ" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_y = 0;
 	pixel_x = 4;
@@ -943,7 +946,7 @@
 /turf/open/floor/darkgreen2/north,
 /area/adminlevel/ert_station/fax_response_station)
 "jD" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/wy/free{
 	wrenchable = 0;
 	pixel_x = 13;
 	pixel_y = 16;
@@ -1056,7 +1059,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "kZ" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -1129,7 +1132,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "mi" = (
 /turf/closed/wall/prison{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1;
 	name = "colony wall"
 	},
@@ -1410,7 +1413,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "oP" = (
 /turf/closed/wall/prison{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1;
 	name = "colony wall"
 	},
@@ -1480,7 +1483,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station/fax_response_station)
 "pl" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -1799,9 +1802,7 @@
 	pixel_y = -4;
 	pixel_x = 17
 	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
+/mob/living/simple_animal/mouse/rat/brown,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2197,11 +2198,9 @@
 /area/adminlevel/ert_station/fax_response_station)
 "xm" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/highcom{
-	pixel_y = 0
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/highcom,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
 "xn" = (
@@ -2595,6 +2594,10 @@
 "AT" = (
 /obj/structure/flora/pottedplant/random{
 	pixel_y = 14
+	},
+/obj/item/device/radio/intercom/fax/wy{
+	pixel_y = 24;
+	layer = 2.99
 	},
 /turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3009,7 +3012,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "ET" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -3024,7 +3027,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "Fc" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = -6;
 	wires = 12
@@ -3202,7 +3205,7 @@
 /turf/open/gm/grass/grass1,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "Hh" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -3555,11 +3558,9 @@
 /area/adminlevel/ert_station/fax_response_station)
 "JX" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/brig/provost{
-	pixel_y = 0
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/provost,
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
 "JY" = (
@@ -3907,7 +3908,7 @@
 /turf/closed/wall/kutjevo{
 	name = "cement wall";
 	desc = "A huge chunk of reinforced cement used to separate rooms.";
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1
 	},
 /area/adminlevel/ert_station/fax_response_station)
@@ -4088,7 +4089,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Rp" = (
 /turf/closed/wall/wood{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1
 	},
 /area/adminlevel/ert_station/fax_response_station)
@@ -4506,10 +4507,13 @@
 /area/adminlevel/ert_station/fax_response_station)
 "VK" = (
 /obj/structure/machinery/space_heater{
-	pixel_x = -5;
+	pixel_x = -1;
 	pixel_y = 15;
 	layer = 2.99;
 	anchored = 1
+	},
+/obj/item/device/radio/intercom/fax/uscm_pvst{
+	pixel_y = 24
 	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4534,9 +4538,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Wt" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
+/mob/living/simple_animal/mouse/rat/brown,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)

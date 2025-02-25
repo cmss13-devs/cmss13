@@ -491,3 +491,25 @@
   Red-byte3D:
   - bugfix: Smashing through stuff now takes the objects range instead of the users
   - bugfix: Girders are now no longer immortal against xenos.
+2025-02-25:
+  IowaPotatoFarmer:
+  - rscadd: Added unique map-specific synthetic survivors to Kutjevo Refinery.
+  - rscadd: Added a lower quality goon squad synthetic vest, only used by the Kutjevo
+      Refinery corporate security synth for now.
+  SpypigDev:
+  - rscadd: Mateba and CO Deagle unique ability 'fire into the air'
+  SubjectD9341, Red-byte3D:
+  - balance: Reworked hellhounds, now they have slightly less health, better dodge
+      and a better pounce that slashes the person you land on.
+  - imageadd: New hellhound sprites
+  - rscadd: Hellhounds now get assigned to their own predator, that being whomever
+      called it in.
+  - spellcheck: Rewrites hellhound spawn text
+  - bugfix: Fixes a long standing bug with hellhound pack (hive status) not working
+  - balance: Hellhounds are no longer slowed by xeno weeds.
+  TrollerNoob:
+  - imageadd: Added missing back sprites for the M42A's Urban variant.
+  VileBeggar:
+  - qol: Clicking 'Watch' while already overwatching a xeno will now make you exit
+      overwatch. You can now overwatch leader xenos with the hive tracker, instead
+      of only being able to see the Queen.

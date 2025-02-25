@@ -310,8 +310,14 @@
 			do_buckle(M, user)
 			return
 	if ((M.mob_size > MOB_SIZE_HUMAN))
-		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
-		return
+		if(istype(src, /obj/structure/bed/roller))
+			var/obj/structure/bed/roller/roller = src
+			if(!roller.can_carry_big)
+				to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
+				return
+			if(M.stat != DEAD)
+				to_chat(user, SPAN_WARNING("[M] resists your attempt to buckle!"))
+				return
 	do_buckle(M, user)
 
 // the actual buckling proc

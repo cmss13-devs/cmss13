@@ -255,6 +255,17 @@
 	desc = "A highly specified technical manual, may be of use to someone in the relevant field."
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "book"
+	item_state = "book_dark"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/books_righthand.dmi',
+	)
+	throw_speed = SPEED_FAST
+	throw_range = 5
+	w_class = SIZE_MEDIUM
+	attack_verb = list("bashed", "whacked", "educated")
+	pickup_sound = "sound/handling/book_pickup.ogg"
+	drop_sound = "sound/handling/book_pickup.ogg"
 	reading_time = 200
 	objective_type = /datum/cm_objective/document/technical_manual
 

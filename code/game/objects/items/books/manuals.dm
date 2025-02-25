@@ -521,8 +521,8 @@
 				<br>
 				<h1>The Oath</h1>
 
-				<i>Below, the Medical Oath sworn by recognised medical practitioners in service all around the Neroid Sector, including in the military branches of the United Americas.</i><br>
-				<i>Ci-dessous, le serment medical prete par des medecins reconnus en service dans tout le secteur neroide, y compris dans les branches militaires des Ameriques unies.</i><br>
+				<i>Below, the Medical Oath sworn by recognised medical practitioners on service everywhere in space, including in the military branches of the United Americas.</i><br>
+				<i>Ci-dessous, le serment medical prete par des medecins reconnus en service partout dans l'espace, y compris dans les branches militaires des Ameriques unies.</i><br>
 
 				<ol>
 					<li>Now, as part of the medical staff, I solemnly promise that I will, to the best of my ability, serve humanity-caring for the sick, promoting good health, and alleviating pain and suffering.</li>
@@ -596,7 +596,7 @@
 	desc = "A huge book containing lots and lots of cooking recipes, perfect for those who wish to actually cook and not stand in front of the microwave, staring at it."
 	icon_state = "cooked_book"
 	item_state = "cooked_book"
-	author = "Food Service Specialist Lawrence Kovale, UA"
+	author = "Food Service Specialist Louis Kovale, UA"
 	title = "Pans and Dishes: Your Way Around the Marine Kitchens"
 
 	dat = {"<html>

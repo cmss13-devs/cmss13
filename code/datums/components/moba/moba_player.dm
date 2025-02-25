@@ -87,8 +87,14 @@
 	SIGNAL_HANDLER
 
 	if((acting_projectile.ammo.flags_ammo_behavior|acting_projectile.projectile_override_flags) & AMMO_ACIDIC)
-	// account for penetration
-		damage_result[1] = pre_mitigation_damage * (0.01 * (100 - (parent_xeno.acid_armor + parent_xeno.acid_armor_buff - parent_xeno.acid_armor_debuff - acting_projectile.ammo.penetration)))
+		//damage_result[1] = pre_mitigation_damage * (0.01 * (100 - (parent_xeno.acid_armor + parent_xeno.acid_armor_buff - parent_xeno.acid_armor_debuff - acting_projectile.ammo.penetration)))
+		damage_result[1] = armor_damage_reduction(
+			GLOB.xeno_ranged,
+			damage_result[1],
+			parent_xeno.acid_armor + parent_xeno.acid_armor_buff - parent_xeno.acid_armor_debuff,
+			acting_projectile.ammo.penetration,
+			//zonenote modify this if we ever add armor integrity for acid armor
+		)
 
 /datum/component/moba_player/proc/on_attacked(datum/source, mob/living/carbon/xenomorph/attacking_xeno)
 	SIGNAL_HANDLER

@@ -15,7 +15,6 @@
 
 /obj/structure/flora/grass/tallgrass/jungle/moba
 	cut_level = 1 // Magic number because we don't have the defines in this file
-	opacity = TRUE // won't be an issue since xenos have SEE_TURFS anyway
 	desc = "A clump of vibrant jungle grasses. They look like they would hide someone pretty well."
 	var/list/connected_bushes
 	var/static/list/client_image_dict = list()

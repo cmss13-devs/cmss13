@@ -1113,6 +1113,10 @@
 	name = "UPP-CMD headset"
 	desc = "A special headset used by UPP military. Channels are as follows: :o - colony, #j - combat controller, #n - engineering, #m - medical, #v - command, #u - UPP general."
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp/command)
+	volume = RADIO_VOLUME_CRITICAL
+
+/obj/item/device/radio/headset/distress/UPP/command/junior //literally the same as the command headset, just not big font
+	volume = RADIO_VOLUME_QUIET
 
 /obj/item/device/radio/headset/distress/UPP/kdo
 	name = "UPP-Kdo headset"

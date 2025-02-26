@@ -406,6 +406,9 @@
 #define PRAETORIAN_VALKYRIE "Valkyrie"
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
+// Spitter strain flags
+#define SPITTER_ALCHEMIST "Alchemist"
+
 /////////////////////////////////////////////////////////////////////////////////////
 //
 // Modifiers

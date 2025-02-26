@@ -114,6 +114,7 @@
 	icon_state = "katana"
 	item_state = "katana"
 	force = MELEE_FORCE_TIER_9
+	throwforce = MELEE_FORCE_TIER_5 //amuse me
 	flags_item = ADJACENT_CLICK_DELAY //direct buffs to the machete needs compensation
 	attack_speed = 9
 

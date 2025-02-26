@@ -8,9 +8,9 @@
 	var/force_wielded = 0
 	var/wieldsound = null
 	var/unwieldsound = null
-	force = MELEE_FORCE_TIER_7
-	force_wielded = MELEE_FORCE_TIER_10
-	throwforce = MELEE_FORCE_TIER_5
+	force = MELEE_FORCE_TIER_1 //these vars shouldn't be touched
+	force_wielded = MELEE_FORCE_TIER_1
+	throwforce = MELEE_FORCE_TIER_1
 	flags_item = TWOHANDED
 
 /obj/item/weapon/twohanded/update_icon()
@@ -147,6 +147,10 @@
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	attack_speed = 17
+	force = MELEE_FORCE_TIER_7
+	force_wielded = MELEE_FORCE_TIER_10
+	throwforce = MELEE_FORCE_TIER_4
+	throw_range = 5
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
@@ -180,10 +184,15 @@
 	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
 	sharp = null
 	edge = 0
+	attack_speed = 17
+	force = MELEE_FORCE_TIER_7
+	force_wielded = MELEE_FORCE_TIER_10
+	throwforce = MELEE_FORCE_TIER_4
+	throw_range = 5
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = TWOHANDED
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 
 //The following is copypasta and not the sledge being a child of the fireaxe due to the fire axe being able to crowbar airlocks
@@ -259,6 +268,7 @@
 	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
+	force = MELEE_FORCE_5
 	throwforce = MELEE_FORCE_TIER_9
 	force_wielded = MELEE_FORCE_TIER_9 //The fact you can easily produce these things should only be as strong as a machete
 	throw_speed = SPEED_VERY_FAST
@@ -359,6 +369,8 @@
 	item_state = "d2_breacher"
 	force = MELEE_FORCE_TIER_5
 	force_wielded = MELEE_FORCE_TIER_11
+	throwforce = MELEE_FORCE_TIER_4
+	throw_range = 3
 	attack_speed = 21 //This is practically the best speed for a hammer
 	w_class = SIZE_LARGE
 	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
@@ -371,7 +383,10 @@
 	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
 	icon_state = "syn_breacher"
 	item_state = "syn_breacher"
+	force = MELEE_FORCE_TIER_3 //even a synth would be beating something helplessly one handed with this thing
 	force_wielded = MELEE_FORCE_TIER_12
+	throwforce = MELEE_FORCE_TIER_7
+	throw_range = 3
 	attack_speed = 21 //Same as D2 for balancing purposes
 	really_heavy = TRUE
 	var/move_delay_addition = 1.5

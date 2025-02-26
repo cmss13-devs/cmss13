@@ -83,21 +83,6 @@
 			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
 			return
 
-		//making sure to have same bottles in the machine
-		if (length(loaded_pill_bottles) > 0)
-			var/obj/item/storage/pill_bottle/main_bottle = loaded_pill_bottles[1]
-			var/datum/component/label/label_component_on_main_bottle = main_bottle.GetComponent(/datum/component/label)
-			var/datum/component/label/label_component_on_inputed_bottle = bottle.GetComponent(/datum/component/label)
-
-			if(label_component_on_main_bottle)
-				bottle.AddComponent(/datum/component/label, label_component_on_main_bottle.label_name)
-				if(length(main_bottle.maptext_label) < 3)
-					bottle.maptext_label = main_bottle.maptext_label
-					bottle.update_icon()
-			else if(label_component_on_inputed_bottle)
-				qdel(label_component_on_inputed_bottle)
-			bottle.icon_state = main_bottle.icon_state
-
 		loaded_pill_bottles += bottle
 		if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
 			loaded_pill_bottles_to_fill += bottle
@@ -212,7 +197,7 @@
 				loaded_pill_bottles_to_fill -= bottle
 			loaded_pill_bottles -= bottle
 
-			if(length(loaded_pill_bottles_to_fill) == 0)
+			if(length(loaded_pill_bottles_to_fill) == 0 && length(loaded_pill_bottles) > 0)
 				loaded_pill_bottles_to_fill += loaded_pill_bottles[1]
 			if(length(loaded_pill_bottles) == 1)
 				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
@@ -339,6 +324,18 @@
 
 			if (length(loaded_pill_bottles_to_fill) > 0)
 				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					var/obj/item/storage/pill_bottle/main_bottle = loaded_pill_bottles_to_fill[1]
+					var/datum/component/label/label_component_on_main_bottle = main_bottle.GetComponent(/datum/component/label)
+					var/datum/component/label/label_component_on_inputed_bottle = bottle.GetComponent(/datum/component/label)
+
+					if(label_component_on_main_bottle)
+						bottle.AddComponent(/datum/component/label, label_component_on_main_bottle.label_name)
+						if(length(main_bottle.maptext_label) < 3)
+							bottle.maptext_label = main_bottle.maptext_label
+							bottle.update_icon()
+					else if(label_component_on_inputed_bottle)
+						qdel(label_component_on_inputed_bottle)
+					bottle.icon_state = main_bottle.icon_state
 					for(var/iterator in 1 to to_create)
 						var/obj/item/reagent_container/pill/creating_pill = new(loc)
 						creating_pill.pill_desc = "A custom pill."
@@ -437,7 +434,7 @@
 				loaded_pill_bottles_to_fill -= loaded_pill_bottles[bottle_index]
 			loaded_pill_bottles -= loaded_pill_bottles[bottle_index]
 
-			if(length(loaded_pill_bottles_to_fill) == 0)
+			if(length(loaded_pill_bottles_to_fill) == 0 && length(loaded_pill_bottles) > 0)
 				loaded_pill_bottles_to_fill += loaded_pill_bottles[1] //Indexs starting at one - Kill me
 
 			if(length(loaded_pill_bottles) == 1)

@@ -62,6 +62,9 @@
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
+	skull = /obj/item/skull/sentinel
+	pelt = /obj/item/pelt/sentinel
+
 /datum/behavior_delegate/sentinel_base
 	name = "Base Sentinel Behavior Delegate"
 

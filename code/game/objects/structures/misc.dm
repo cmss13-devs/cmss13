@@ -206,7 +206,7 @@
 	occupant = /obj/item/clothing/mask/facehugger
 
 /obj/structure/xenoautopsy/tank/hugger/yautja
-	desc = "Someone keeps those for a mere amusement..."
+	desc = "There's something floating in the tank, perhaps it's kept for someones mere amusement..."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	broken_state = /obj/structure/xenoautopsy/tank/broken/yautja
 

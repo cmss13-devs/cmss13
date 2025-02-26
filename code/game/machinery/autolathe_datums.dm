@@ -67,6 +67,11 @@
 	path = /obj/item/tool/wrench
 	category = AUTOLATHE_CATEGORY_TOOLS
 
+/datum/autolathe/recipe/lightreplacer
+	name = "light replacer"
+	path = /obj/item/device/lightreplacer/empty
+	category = AUTOLATHE_CATEGORY_TOOLS
+
 /datum/autolathe/recipe/mop
 	name = "mop"
 	path = /obj/item/tool/mop

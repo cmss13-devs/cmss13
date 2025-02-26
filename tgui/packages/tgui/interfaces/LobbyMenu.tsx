@@ -282,6 +282,8 @@ const ModalConfirm = (props: PropsWithChildren) => {
   );
 };
 
+const SMALL_BUTTON_DELAY = 3;
+
 const LobbyButtons = (props: {
   readonly setModal: (_) => void;
   readonly hidden: boolean;
@@ -399,14 +401,19 @@ const LobbyButtons = (props: {
         >
           Setup Character
         </LobbyButton>
-        <LobbyButton index={3} onClick={() => act('playtimes')} icon="list-ul">
+
+        <LobbyButton index={3} icon="check-to-slot" onClick={() => act('poll')}>
+          Polls
+        </LobbyButton>
+
+        <LobbyButton index={4} onClick={() => act('playtimes')} icon="list-ul">
           View Playtimes
         </LobbyButton>
 
         <TimedDivider />
 
         <LobbyButton
-          index={4}
+          index={5}
           icon="eye"
           onClick={() => {
             setModal(
@@ -438,7 +445,7 @@ const LobbyButtons = (props: {
         {round_start ? (
           <Stack.Item>
             <LobbyButton
-              index={5}
+              index={6}
               selected={!!readied}
               onClick={() => act(readied ? 'unready' : 'ready')}
               icon={readied ? 'check' : 'xmark'}
@@ -455,7 +462,7 @@ const LobbyButtons = (props: {
               <Stack>
                 <Stack.Item grow>
                   <LobbyButton
-                    index={5}
+                    index={6}
                     onClick={() => act('late_join')}
                     icon="users"
                   >
@@ -466,7 +473,7 @@ const LobbyButtons = (props: {
                   <LobbyButton
                     icon="list"
                     tooltip="View Crew Manifest"
-                    index={8}
+                    index={6 + SMALL_BUTTON_DELAY}
                     onClick={() => act('manifest')}
                   />
                 </Stack.Item>
@@ -476,7 +483,7 @@ const LobbyButtons = (props: {
               <Stack>
                 <Stack.Item grow>
                   <LobbyButton
-                    index={6}
+                    index={7}
                     icon="viruses"
                     onClick={() => act('late_join_xeno')}
                   >
@@ -487,7 +494,7 @@ const LobbyButtons = (props: {
                   <LobbyButton
                     icon="users-rays"
                     tooltip="View Hive Leaders"
-                    index={9}
+                    index={7 + SMALL_BUTTON_DELAY}
                     onClick={() => act('hiveleaders')}
                   />
                 </Stack.Item>
@@ -496,7 +503,7 @@ const LobbyButtons = (props: {
             {!!upp_enabled && (
               <Stack.Item>
                 <LobbyButton
-                  index={7}
+                  index={8}
                   onClick={() => act('late_join_upp')}
                   icon="users-between-lines"
                 >
@@ -507,7 +514,7 @@ const LobbyButtons = (props: {
             {!!predator_enabled && (
               <Stack.Item>
                 <LobbyButton
-                  index={7 + (upp_enabled ? 1 : 0)}
+                  index={8 + (upp_enabled ? 1 : 0)}
                   onClick={() => {
                     setModal(
                       <ModalConfirm>
@@ -542,7 +549,7 @@ const LobbyButtons = (props: {
             {!!fax_responder_enabled && (
               <Stack.Item>
                 <LobbyButton
-                  index={7 + (upp_enabled ? 1 : 0) + (predator_enabled ? 1 : 0)}
+                  index={9 + (upp_enabled ? 1 : 0) + (predator_enabled ? 1 : 0)}
                   icon="fax"
                   onClick={() => {
                     setModal(

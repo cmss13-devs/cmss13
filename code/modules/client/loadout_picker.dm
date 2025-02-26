@@ -105,7 +105,7 @@
 
 				prefs.gear += gear.type
 
-				prefs.ShowChoices()
+				prefs.ShowChoices(ui.user)
 				return TRUE
 
 			var/loadout_list = prefs.get_active_loadout()

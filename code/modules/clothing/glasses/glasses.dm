@@ -477,6 +477,10 @@
 	if(!user.client) //Shouldn't happen but can't hurt to check.
 		return
 
+	if(!user.client.prefs?.allow_flashing_lights_pref)
+		to_chat(user, SPAN_NOTICE("Your preferences don't allow the effect from [src]."))
+		return
+
 	var/base_colors
 	if(!user.client.color) //No set client color.
 		base_colors = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.

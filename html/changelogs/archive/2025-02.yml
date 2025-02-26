@@ -487,3 +487,55 @@
   - rscadd: Added sub-follow tabs to Weyland-Yutani.
   - rscadd: Synthetics now appear in their faction follow tabs, as well as Synth tab.
   - bugfix: Fixed the name of Whiteout Medic deathsquad version.
+2025-02-24:
+  Red-byte3D:
+  - bugfix: Smashing through stuff now takes the objects range instead of the users
+  - bugfix: Girders are now no longer immortal against xenos.
+2025-02-25:
+  IowaPotatoFarmer:
+  - rscadd: Added unique map-specific synthetic survivors to Kutjevo Refinery.
+  - rscadd: Added a lower quality goon squad synthetic vest, only used by the Kutjevo
+      Refinery corporate security synth for now.
+  SpypigDev:
+  - rscadd: Mateba and CO Deagle unique ability 'fire into the air'
+  SubjectD9341, Red-byte3D:
+  - balance: Reworked hellhounds, now they have slightly less health, better dodge
+      and a better pounce that slashes the person you land on.
+  - imageadd: New hellhound sprites
+  - rscadd: Hellhounds now get assigned to their own predator, that being whomever
+      called it in.
+  - spellcheck: Rewrites hellhound spawn text
+  - bugfix: Fixes a long standing bug with hellhound pack (hive status) not working
+  - balance: Hellhounds are no longer slowed by xeno weeds.
+  TrollerNoob:
+  - imageadd: Added missing back sprites for the M42A's Urban variant.
+  VileBeggar:
+  - qol: Clicking 'Watch' while already overwatching a xeno will now make you exit
+      overwatch. You can now overwatch leader xenos with the hive tracker, instead
+      of only being able to see the Queen.
+2025-02-26:
+  BOBAMAx:
+  - maptweak: Areas can now disallow construction. Applies this to the islands north
+      of the LZ on NV, along with depowering it permanently.
+  - maptweak: Ocean tiles no longer allow construction
+  LC4492:
+  - maptweak: Updates Lower Medbay to uh... *different* standards. Updates morgue
+      to allow for more symmetry. Changes the CMO's bunks a little to accomodate the
+      new set of ladders. Updates research to have more internal space in the containment
+      area, including other addons.
+  - rscadd: Adds an access define for Field Medical supply room.
+  NHC:
+  - bugfix: fixed PO tactical fligthsuit to use the TOGGLEJACKET verb instead of the
+      ROLL_SLEEVES verb to toggle its jacket
+  efzapa:
+  - rscadd: Added Sandstone Ceilings.
+  - mapadd: Jungle Moon Hunting Grounds Rooms now have proper Sandstone Ceilings.
+  neeshacark:
+  - balance: the skill required to use a synth reset key has been reduced to novice
+      (you can use it w/ a pamphlet)
+  realforest2001:
+  - rscadd: Added Leader uniform for Kutjevo Goon camo, and changed backend for how
+      the goon presets pick their uniform and helmets to allow for simpler use by
+      staff in events.
+  - imageadd: Added Leader uniform for Kutjevo Goon camo.
+  - imageadd: Added Lead Researcher hud icon for WY.

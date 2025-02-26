@@ -974,7 +974,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "OA" = (
-/obj/item/implanter/compressed,
 /obj/structure/safe,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/redfull,

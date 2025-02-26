@@ -869,10 +869,6 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/hunting_trap{
-	desc = "A bizarre alien device used for trapping and killing prey.";
-	name = "Alien Mine"
-	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -1073,10 +1069,6 @@
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
-	},
-/obj/item/hunting_trap{
-	desc = "A bizarre alien device used for trapping and killing prey.";
-	name = "Alien Mine"
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)

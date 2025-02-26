@@ -229,7 +229,7 @@ const Sidebar = (props: {
           height="100%"
           scrollable
         >
-          <Stack wrap width="180px" height="165px">
+          <Stack wrap width="180px" height="240px">
             {(menu === 'fluff' ? fluff_gear : loadout).map((item, index) => (
               <Stack.Item key={`${index}${item.type}`} className="ItemPicker">
                 <ItemRender item={item} loadout />

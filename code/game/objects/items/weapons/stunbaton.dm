@@ -154,8 +154,17 @@
 				human_target.visible_message(SPAN_DANGER("[human_target] has been prodded with [src] by [user]!"))
 
 	//stun effects
+	if(isxeno(target))
+		var/mob/living/carbon/xenomorph/beno = target
+		if(beno.caste.caste_type in XENO_T0_CASTES)
+			beno.apply_effect(2, WEAKEN) // shock those small critters
+			beno.xeno_jitter(2 SECONDS)
 
-	if(!isyautja(human_target) && !isxeno(human_target)) //Xenos and Predators are IMMUNE to all baton stuns.
+		if(beno.caste.caste_type in (XENO_T1_CASTES + XENO_T2_CASTES))
+			beno.apply_effect(1, SLOW)
+			beno.xeno_jitter(1 SECONDS) // small shock to T1s and T2s xenos pretty much just for the effects
+
+	if(!isyautja(human_target)) //Predators are IMMUNE to all baton stuns.
 		human_target.emote("pain")
 		human_target.apply_stamina_damage(stunforce, target_zone, ARMOR_ENERGY)
 		human_target.sway_jitter(2,1)

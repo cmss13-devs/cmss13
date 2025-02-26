@@ -111,7 +111,6 @@
 
 		if("name")
 			var/picked_name = params["name"]
-
 			picked_name = reject_bad_name(picked_name)
 			if(!picked_name)
 				return

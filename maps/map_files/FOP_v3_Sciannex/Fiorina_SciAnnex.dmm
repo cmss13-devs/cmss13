@@ -43,7 +43,7 @@
 /area/fiorina/tumor/servers)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/organic/grass/astroturf,
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "aar" = (
 /obj/structure/machinery/power/apc/power/south,

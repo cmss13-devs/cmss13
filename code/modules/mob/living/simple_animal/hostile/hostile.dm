@@ -117,7 +117,8 @@
 
 /mob/living/simple_animal/hostile/death()
 	. = ..()
-	if(!.) return //was already dead
+	if(!.)
+		return //was already dead
 	walk(src, 0)
 
 /mob/living/simple_animal/hostile/Life(delta_time)

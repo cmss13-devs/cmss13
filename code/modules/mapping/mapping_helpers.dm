@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 /// are placed, it picks randomly.
 /obj/effect/sentry_landmark
 	icon = 'icons/landmarks.dmi'
-	icon_state = "x3"
+	icon_state = "map_sentry"
 
 	var/abstract_type = /obj/effect/sentry_landmark
 

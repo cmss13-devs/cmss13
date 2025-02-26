@@ -13,5 +13,5 @@ AddTimelock(/datum/job/command/warden, list(
 
 /obj/effect/landmark/start/warden
 	name = JOB_WARDEN
-	icon_state = "wmp_spawn"
+	icon_state = "mw_spawn"
 	job = /datum/job/command/warden

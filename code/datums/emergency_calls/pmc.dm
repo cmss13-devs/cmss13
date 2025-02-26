@@ -142,6 +142,8 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 /obj/effect/landmark/ert_spawns/distress_pmc
 	name = "Distress_PMC"
+	icon_state = "spawn_distress_pmc"
 
 /obj/effect/landmark/ert_spawns/distress_pmc/item
 	name = "Distress_PMCitem"
+	icon_state = "distress_item"

@@ -9,11 +9,11 @@
 
 /obj/effect/landmark/whiskey_outpost/supplydrops
 	name = "whiskey_outpost_supply"
-	icon_state = "x2"
+	icon_state = "supply"
 
 /obj/effect/landmark/whiskey_outpost/xenospawn
 	name = "Xeno Spawn"
-	icon_state = "x"
+	icon_state = "xeno_spawn"
 
 
 //Landmarks to spawn in more landmarks. Would you like redundancy on your redundancy?
@@ -36,9 +36,11 @@
 
 /obj/effect/landmark/wo_spawners/supplydrops
 	name = "supply drop location"
+	icon_state = "supply"
 	Landmark = /obj/effect/landmark/whiskey_outpost/supplydrops
 	range = 2
 
 /obj/effect/landmark/wo_spawners/xenospawn
 	name = "xeno location 1 spawn point"
+	icon_state = "xeno_spawn"
 	Landmark = /obj/effect/landmark/whiskey_outpost/xenospawn

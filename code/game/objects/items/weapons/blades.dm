@@ -11,7 +11,7 @@
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_TIER_8
+	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_2
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -25,14 +25,14 @@
 	desc = "What are you standing around staring at this for? Get to killing!"
 	icon_state = "claymore"
 	item_state = "claymore"
-	force = MELEE_FORCE_TIER_10
+	force = MELEE_FORCE_TIER_9
 
 /obj/item/weapon/sword/ceremonial
 	name = "Ceremonial Sword"
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
 	icon_state = "ceremonial"
 	item_state = "ceremonial"
-	force = MELEE_FORCE_TIER_10
+	force = MELEE_FORCE_TIER_9
 
 
 /obj/item/weapon/sword/machete
@@ -40,7 +40,7 @@
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
 	item_state = "machete"
-	force = MELEE_FORCE_TIER_9
+	force = MELEE_FORCE_TIER_8
 
 /obj/item/weapon/sword/machete/attack_self(mob/user)
 	if(user.action_busy)
@@ -113,7 +113,7 @@
 	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
 	icon_state = "katana"
 	item_state = "katana"
-	force = MELEE_FORCE_TIER_9
+	force = MELEE_FORCE_TIER_8
 	throwforce = MELEE_FORCE_TIER_5 //amuse me
 	flags_item = ADJACENT_CLICK_DELAY //direct buffs to the machete needs compensation
 	attack_speed = 9

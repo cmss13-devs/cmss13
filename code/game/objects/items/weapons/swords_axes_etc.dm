@@ -78,7 +78,7 @@
 		icon_state = "telebaton_1"
 		item_state = "telebaton_1"
 		w_class = SIZE_MEDIUM
-		force = MELEE_FORCE_TIER_9
+		force = MELEE_FORCE_TIER_8
 		flags_item = ADJACENT_CLICK_DELAY //direct buffs to the machete needs compensation
 		attack_speed = 9
 		stun_force = 40

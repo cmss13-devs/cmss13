@@ -457,7 +457,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
-				if(!client)
+				if(!client && !(status_flags & FAKESOUL))
 					var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
 					if(!G)
 						holder.icon_state = "huddeaddnr"

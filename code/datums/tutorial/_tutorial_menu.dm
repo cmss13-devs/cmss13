@@ -6,6 +6,7 @@
 /datum/tutorial_menu/New()
 	if(!length(categories))
 		var/list/categories_2 = list()
+		var/list/subsection_list = list()
 		for(var/datum/tutorial/tutorial as anything in subtypesof(/datum/tutorial))
 			if(tutorial::parent_path == tutorial)
 				continue
@@ -13,19 +14,27 @@
 			if(!(tutorial::category in categories_2))
 				categories_2[tutorial::category] = list()
 
+			tutorial = new tutorial
+			subsection_list[tutorial::tutorial_id] += tutorial.register_tutorial_subsections()
+
 			categories_2[tutorial::category] += list(list(
 				"name" = tutorial::name,
-				"path" = "[tutorial]",
+				"path" = "[tutorial.type]",
 				"id" = tutorial::tutorial_id,
 				"description" = tutorial::desc,
 				"image" = tutorial::icon_state,
+				"subsections" = subsection_list[tutorial::tutorial_id],
 			))
+
+			qdel(tutorial)
 
 		for(var/category in categories_2)
 			categories += list(list(
 				"name" = category,
 				"tutorials" = categories_2[category],
 			))
+
+
 
 /datum/tutorial_menu/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -51,6 +60,7 @@
 	data["tutorial_categories"] = categories
 	data["completed_tutorials"] = list()
 	data["locked_tutorials"] = list()
+	data["tutorial_subsections"] = list()
 
 	if(user.client?.prefs)
 		data["completed_tutorials"] = user.client.prefs.completed_tutorials
@@ -86,6 +96,10 @@
 				return
 
 			path = new path
+
+			if(params["subsection_id"])
+				path.current_subsection_id = params["subsection_id"]
+
 			if(path.start_tutorial(usr))
 				ui.close()
 				return TRUE

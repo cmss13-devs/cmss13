@@ -35,18 +35,34 @@
 /// From /mob/living/carbon/human/attack_hand() : (mob/living/carbon/human/attacked_mob)
 #define COMSIG_LIVING_ATTACKHAND_HUMAN "living_attackhand_human"
 
+/// From /obj/item/device/healthanalyzer/attack()
+#define COMSIG_LIVING_HEALTH_ANALYZED "living_health_analyzed"
+
+//From /datum/action/surgery_toggle/action_activate(): (mob/owner)
+#define COMSIG_LIVING_SURGERY_MODE_TOGGLED "living_surgery_mode_toggled"
+
 /// From /obj/item/reagent_container/hypospray/attack() : (obj/item/reagent_container/hypospray/injector)
 #define COMSIG_LIVING_HYPOSPRAY_INJECTED "living_hypospray_injected"
 
 ///from base of mob/living/set_buckled(): (new_buckled)
 #define COMSIG_LIVING_SET_BUCKLED "living_set_buckled"
+/// From /obj/structure/bed/buckle_mob() : (mob/living/carbon/human/mob)
+#define COMSIG_LIVING_BED_BUCKLED "living_bed_buckled"
 ///from base of mob/living/set_body_position()
 #define COMSIG_LIVING_SET_BODY_POSITION  "living_set_body_position"
 
 /// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
 #define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
 
+
+/// From /obj/item/clothing/accessory/stethoscope/attack(): (mob/living/user, mob/living/carbon/human/being, body_part)
+#define COMSIG_LIVING_STETHOSCOPE_USED "living_stethoscope_used"
+
+/// From /obj/item/device/flashlight/pen/attack(): (mob/living/user, mob/living/carbon/human/being)
+#define COMSIG_LIVING_USED_PENLIGHT "living_penlight_used"
+
 /// from /datum/component/shimmy_around/proc/on_mob_move to determine if layer should be reset
 #define COMSIG_LIVING_SHIMMY_LAYER "structure_shimmy_layer"
 	/// Sent when a shimmy component is currently overriding the layer
 	#define COMSIG_LIVING_SHIMMY_LAYER_CANCEL (1<<0)
+

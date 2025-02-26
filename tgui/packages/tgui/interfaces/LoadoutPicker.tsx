@@ -171,15 +171,17 @@ const Sidebar = (props: {
     <Stack vertical fill>
       <Stack.Item>
         <Stack>
-          <Stack.Item grow>
-            <Button
-              fluid
-              icon={'person-rifle'}
-              onClick={() => setMenu('loadout')}
-            >
-              Loadout
-            </Button>
-          </Stack.Item>
+          {loadout_categories.length > 0 && (
+            <Stack.Item grow>
+              <Button
+                fluid
+                icon={'person-rifle'}
+                onClick={() => setMenu('loadout')}
+              >
+                Loadout
+              </Button>
+            </Stack.Item>
+          )}
           <Stack.Item grow>
             <Button fluid icon={'shirt'} onClick={() => setMenu('fluff')}>
               Fluff

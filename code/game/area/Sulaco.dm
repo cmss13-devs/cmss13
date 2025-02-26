@@ -273,7 +273,7 @@
 	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/tripoli
-	name = "dropship Tripoli"
+	name = "\improper Dropship Tripoli"
 	icon_state = "shuttlered"
 	base_muffle = MUFFLE_HIGH
 	soundscape_interval = 30

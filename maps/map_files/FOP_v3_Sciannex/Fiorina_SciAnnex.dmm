@@ -35,6 +35,12 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
+"aah" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "rocinante"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -46186,7 +46192,7 @@ wbI
 itN
 baC
 baC
-bQM
+aah
 bQM
 bQM
 bQM

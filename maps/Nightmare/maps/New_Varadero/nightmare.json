@@ -1,0 +1,13 @@
+[
+    {
+        "type": "map_sprinkle",
+        "path": "sprinkles/"
+    },
+    {
+		"type": "map_insert",
+		"landmark": "clfraid",
+		"chance": 1.0,
+		"path": "standalone/clfraid.dmm",
+		"when": { "lvevent": "clfraid" }
+	}
+]

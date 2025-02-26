@@ -12,14 +12,14 @@
 	throwforce = 5
 	throw_range = 6
 	throw_speed = SPEED_VERY_FAST
-	unacidable = FALSE
+	unacidable = TRUE
 	flags_atom = FPRINT|CONDUCT
 	antigrief_protection = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
 	max_container_volume = 120
 	reaction_limits = list( "max_ex_power" = 100, "base_ex_falloff" = 80, "max_ex_shards" = 40,
-							"max_fire_rad" = 4, "max_fire_int" = 20, "max_fire_dur" = 15,
-							"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
+							"max_fire_rad" = 4, "max_fire_int" = 20, "max_fire_dur" = 18,
+							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	shrapnel_spread = 60
 	use_dir = TRUE
@@ -48,6 +48,7 @@
 	. = ..()
 	prime() //Same here. Don't care about the effect strength.
 
+
 //checks for things that would prevent us from placing the mine.
 /obj/item/explosive/mine/proc/check_for_obstacles(mob/living/user)
 	if(locate(/obj/item/explosive/mine) in get_turf(src))
@@ -59,6 +60,8 @@
 	if(SSinterior.in_interior(user))
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return TRUE
+
+
 
 //Arming
 /obj/item/explosive/mine/attack_self(mob/living/user)
@@ -106,6 +109,7 @@
 	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
 	update_icon()
+
 
 //Disarming
 /obj/item/explosive/mine/attackby(obj/item/W, mob/user)
@@ -172,6 +176,7 @@
 			use_dir = FALSE
 			triggered = TRUE // Delegating the tripwire/crossed function to the sensor.
 
+
 /obj/item/explosive/mine/proc/set_tripwire()
 	if(!active && !tripwire)
 		var/tripwire_loc = get_turf(get_step(loc, dir))
@@ -179,59 +184,55 @@
 		tripwire.linked_claymore = src
 		active = TRUE
 
+
 //Mine can also be triggered if you "cross right in front of it" (same tile)
 /obj/item/explosive/mine/Crossed(atom/A)
 	..()
 	if(isliving(A))
 		var/mob/living/L = A
-		if(!L.stat == DEAD) //so dragged corpses don't trigger mines.
+		if(!L.stat == DEAD)//so dragged corpses don't trigger mines.
 			return
-		try_to_prime(A)
+		else
+			try_to_prime(A)
 
 /obj/item/explosive/mine/Collided(atom/movable/AM)
 	try_to_prime(AM)
 
+
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/L)
-    if(!active || triggered || (customizable && !detonator))
-        return
-    if(!istype(L))
-        return
-    if(L.stat == DEAD)
-        return
-    if(L.get_target_lock(iff_signal))
-        return
-    if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
-        return
+	if(!active || triggered || (customizable && !detonator))
+		return
+	if(!istype(L))
+		return
+	if(L.stat == DEAD)
+		return
+	if(L.get_target_lock(iff_signal))
+		return
+	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
+		return
+	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
+	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
+	SPAN_DANGER("You hear a click."))
 
-    L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
-    SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
-    SPAN_DANGER("You hear a click."))
+	triggered = TRUE
+	playsound(loc, 'sound/weapons/mine_tripped.ogg', 25, 1)
+	prime()
 
-    triggered = TRUE
-    playsound(loc, 'sound/weapons/mine_tripped.ogg', 25, 1)
-    prime()
+
 
 //Note : May not be actual explosion depending on linked method
-/obj/item/explosive/mine/prime(mob/living/carbon/xenomorph/xeno)
+/obj/item/explosive/mine/prime()
 	set waitfor = 0
+
 	if(!customizable)
-		var/shrapnel_damage = 12
-		var/damage_cap
-		if(istype(loc, /mob/living/carbon/xenomorph))
-			if(xeno.caste == XENO_T1_CASTES)
-				damage_cap = shrapnel_damage * 0.5
-			else if(xeno.caste == XENO_T2_CASTES)
-				damage_cap = shrapnel_damage * 0.65
-			else if((xeno.caste == XENO_T3_CASTES) || (xeno.caste == XENO_T4_CASTES))
-				damage_cap = shrapnel_damage * 0.75
-		create_shrapnel(loc, min(damage_cap, 12), dir, shrapnel_spread, , cause_data)
+		create_shrapnel(loc, 12, dir, shrapnel_spread, , cause_data)
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
-
 	else
 		. = ..()
 		if(!QDELETED(src))
 			disarm()
+
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
 	if(triggered) //Mine is already set to go off
@@ -262,6 +263,7 @@
 	prime()
 	if(!QDELETED(src))
 		disarm()
+
 
 /obj/effect/mine_tripwire
 	name = "claymore tripwire"
@@ -303,6 +305,7 @@
 
 /obj/item/explosive/mine/active/no_iff
 	iff_signal = null
+
 
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"

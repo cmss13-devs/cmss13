@@ -1,6 +1,6 @@
 /datum/caste_datum/lesser_drone
 	caste_type = XENO_CASTE_LESSER_DRONE
-	tier = 1
+	tier = 0
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_1
 	melee_vehicle_damage = XENO_DAMAGE_TIER_1

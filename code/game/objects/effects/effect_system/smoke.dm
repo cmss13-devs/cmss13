@@ -727,6 +727,15 @@
 		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
+/obj/effect/particle_effect/smoke/xeno_visual_acid
+	time_to_live = 12
+	color = "#86B028" //Mostly green?
+	anchored = TRUE
+	spread_speed = 6
+	opacity = FALSE
+	alpha = 100
+	smokeranking = SMOKE_RANK_HARMLESS
+	amount = 0
 
 /////////////////////////////////////////////
 // Smoke spread
@@ -794,6 +803,9 @@
 
 /datum/effect_system/smoke_spread/cn20/xeno
 	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
+
+/datum/effect_system/smoke_spread/xeno_visual_acid
+	smoke_type = /obj/effect/particle_effect/smoke/xeno_visual_acid
 
 // XENO SMOKES
 

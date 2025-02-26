@@ -279,6 +279,11 @@
 	subspace_switchable = FALSE
 	broadcasting = TRUE
 	bug_broadcast_level = LISTENING_BUG_NEVER //Don't want fax responder devices broadcasting to ghosts because it will duplicate a lot of messages every round all the time.
+	alpha = 0
+	mouse_opacity = 0
+	explo_proof = TRUE
+	unacidable = TRUE
+	emp_proof = TRUE
 
 /obj/item/device/radio/listening_bug/radio_linked/fax/wy
 	frequency = FAX_WY_FREQ

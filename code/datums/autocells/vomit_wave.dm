@@ -14,6 +14,14 @@
 
 	var/obj/effect/decal/cleanable/vomit/vomit = null
 
+/datum/automata_cell/vomit_wave/New(turf/T)
+	..()
+	GLOB.cellauto_cells += src
+
+/datum/automata_cell/vomit_wave/Destroy()
+	..()
+	GLOB.cellauto_cells -= src
+
 /datum/automata_cell/vomit_wave/birth()
 	vomit = new(in_turf)
 	vomit.layer = 3

@@ -227,7 +227,7 @@
 			if(!label)
 				return
 
-			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles)
+			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
 				bottle.AddComponent(/datum/component/label, label)
 				if(length(label) < 3)
 					bottle.maptext_label = label
@@ -241,7 +241,7 @@
 
 			var/picked_color = params["color"]
 
-			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles)
+			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
 				if(picked_color && (picked_color in bottle.possible_colors))
 					bottle.icon_state = bottle.base_icon + bottle.possible_colors[picked_color]
 
@@ -335,9 +335,9 @@
 				else
 					amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
 
-			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create * clamp((length(loaded_pill_bottles_to_fill)), 1, max_bottles_count)] in [length(loaded_pill_bottles_to_fill)] pill bottles) (REAGENTS: [english_list(reagents_in_pill)]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			if (length(loaded_pill_bottles_to_fill) > 0)
+			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create * clamp((length(loaded_pill_bottles_to_fill)), 1, max_bottles_count)] in [length(loaded_pill_bottles_to_fill)] pill bottles) (REAGENTS: [english_list(reagents_in_pill)] AMOUNT PER PILL: [amount_per_pill]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
+			if (length(loaded_pill_bottles_to_fill) > 0)
 				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
 					for(var/iterator in 1 to to_create)
 						var/obj/item/reagent_container/pill/creating_pill = new(loc)

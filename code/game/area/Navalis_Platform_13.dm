@@ -168,6 +168,9 @@
 /area/navalis/indoors/med_sci/upper_level/entrance
 	name = "Medi-Sci Rig - Level-2: Entrance"
 
+/area/navalis/indoors/med_sci/upper_level/morgue
+	name = "Medi-Sci Rig - Level-2: Morgue"
+
 /area/navalis/indoors/med_sci/upper_level/sec
 	name = "Medi-Sci Rig - Level-2: Security Office"
 

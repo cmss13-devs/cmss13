@@ -219,6 +219,10 @@
 	name = "Intel folder"
 	desc = "A folder with some documents inside."
 	icon = 'icons/obj/items/paper.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
 	icon_state = "folder"
 	var/folder_color = "white" //display color
 	reading_time = 40
@@ -241,6 +245,7 @@
 		if ("White")
 			folder_color = "#e8eded"
 	icon_state = "folder_[lowertext(col)]"
+	item_state = "folder_[lowertext(col)]"
 	F.color = col
 	F.display_color = folder_color
 	name = "[initial(name)] ([label])"

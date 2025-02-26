@@ -1816,3 +1816,24 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+
+/mob/living/carbon/human/onZImpact(turf/impact_turf, height)
+	if(isyautja(src))
+		return
+
+	. = ..()
+
+	KnockDown(height * 5)
+	Stun(height * 5)
+
+	var/total_damage = (20 * height) ** 1.3
+	apply_damage(total_damage / 2, BRUTE, "r_leg")
+	apply_damage(total_damage / 2, BRUTE, "l_leg")
+
+	var/obj/limb/leg/found_rleg = locate(/obj/limb/leg/l_leg) in limbs
+	var/obj/limb/leg/found_lleg = locate(/obj/limb/leg/r_leg) in limbs
+
+	found_rleg?.fracture(100)
+	found_lleg?.fracture(100)
+
+	playsound(impact_turf.loc, "slam", 50, 1)

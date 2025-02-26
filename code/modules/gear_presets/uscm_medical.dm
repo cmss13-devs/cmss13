@@ -33,6 +33,7 @@
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_CHEMISTRY,
 		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_FIELD_DOC,
 	)
 	assignment = JOB_CMO
 	rank = JOB_CMO
@@ -108,6 +109,8 @@
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Fld Doc"
 	skills = /datum/skills/doctor
+
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC)
 
 	minimap_icon = "field_doctor"
 	minimap_background = "background_medical"

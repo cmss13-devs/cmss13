@@ -4572,7 +4572,7 @@
 	},
 /obj/item/clothing/suit/storage/marine/light/vest,
 /obj/item/clothing/head/helmet/marine/medic,
-/obj/item/storage/box/MRE,
+/obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
 /turf/open/floor/plating/plating_catwalk,

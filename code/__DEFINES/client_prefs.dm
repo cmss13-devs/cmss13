@@ -121,3 +121,6 @@
 ///Overlays your screen a dark grey.
 #define CRIT_OVERLAY_DARK 1
 //=================================================
+
+/// How many slots players have access to, both for loadout slots and character slots
+#define MAX_SAVE_SLOTS 10

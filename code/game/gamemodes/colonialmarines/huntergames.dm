@@ -422,7 +422,7 @@
 		GLOB.round_statistics.end_round_player_population = count_humans()
 
 		GLOB.round_statistics.log_round_statistics()
-
+		GLOB.round_statistics.save()
 
 	return 1
 

@@ -93,7 +93,7 @@
 		else if((disabilities & NEARSIGHTED) && HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT) && pain.current_pain < 80 && peepers.organ_status == ORGAN_HEALTHY)
 			SetEyeBlur(0)
 
-		if(druggy)
+		if(druggy && src.client?.prefs?.allow_flashing_lights_pref)
 			overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)
 		else
 			clear_fullscreen("high")

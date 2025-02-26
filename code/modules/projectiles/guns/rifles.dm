@@ -1758,6 +1758,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,

@@ -51,6 +51,12 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
+"ai" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/whiskey_outpost/inside/cic)
 "aj" = (
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker)
@@ -17716,7 +17722,7 @@ cz
 ak
 fx
 fx
-lm
+ai
 fx
 lm
 lm

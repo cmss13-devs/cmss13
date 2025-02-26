@@ -942,3 +942,33 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/on_throw_end(atom/movable/thrown_atom)
 	return TRUE
+
+/turf/proc/z_impact(atom/movable/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 1)
+	if(ishuman_strict(victim))
+		if (stun_modifier > 0)
+			KnockDown(5 * height * stun_modifier)
+			Stun(5 * height * stun_modifier)
+
+		if (damage_modifier > 0)
+			var/total_damage = ((20 * height) ** 1.3) * damage_modifier
+			apply_damage(total_damage / 2, BRUTE, "r_leg")
+			apply_damage(total_damage / 2, BRUTE, "l_leg")
+
+		if (fracture_modifier > 0)
+			var/obj/limb/leg/found_rleg = locate(/obj/limb/leg/l_leg) in limbs
+			var/obj/limb/leg/found_lleg = locate(/obj/limb/leg/r_leg) in limbs
+
+			found_rleg?.fracture(100 * fracture_modifier)
+			found_lleg?.fracture(100 * fracture_modifier)
+
+	if(isxeno(victim) && mob_size >= MOB_SIZE_BIG)
+		if(stun_modifier > 0)
+			KnockDown(5 * height * stun_modifier)
+			Stun(5 * height * stun_modifier)
+
+		if (damage_modifier > 0)
+			var/total_damage = ((60 * height) ** 1.3) * damage_modifier
+			apply_damage(total_damage / 2, BRUTE)
+
+	if(damage_modifier > 0.5)
+		playsound(loc, "slam", 50, 1)

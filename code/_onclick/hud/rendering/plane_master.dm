@@ -205,7 +205,7 @@
 	name = "open space plane [offset]"
 	plane -= offset
 	. = ..()
-	add_filter("multizblur", 1, gauss_blur_filter(0.5))
+	add_filter("multizblur", 1, gauss_blur_filter(0.5 + 0.25 * (offset + 1)))
 
 /atom/movable/screen/plane_master/openspace_backdrop
 	name = "open space plane master"

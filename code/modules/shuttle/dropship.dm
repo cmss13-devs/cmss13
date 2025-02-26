@@ -547,6 +547,8 @@
 /obj/structure/shuttle/part/twe_cosmetic1/transparent
 	opacity = FALSE
 
+// Midway
+
 /obj/structure/shuttle/part/midway
 	name = "\improper Midway"
 	icon = 'icons/turf/dropship5.dmi'

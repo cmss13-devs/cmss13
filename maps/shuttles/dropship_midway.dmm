@@ -149,7 +149,7 @@
 	},
 /area/shuttle/midway)
 "oy" = (
-/obj/structure/bed/chair/dropship/passenger/folded{
+/obj/structure/bed/chair/dropship/passenger{
 	pixel_y = 8;
 	buckling_y = 8
 	},

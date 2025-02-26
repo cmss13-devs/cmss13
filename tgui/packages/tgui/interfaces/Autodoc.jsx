@@ -64,16 +64,9 @@ const AutodocMain = (props) => {
 
 const AutodocOccupant = (props) => {
   const { act, data } = useBackend();
-  const { occupant, auto_eject_dead } = data;
+  const { occupant } = data;
   return (
-    <Section
-      title="Occupant"
-      buttons={
-        <Button icon="user-slash" onClick={() => act('ejectify')}>
-          Eject
-        </Button>
-      }
-    >
+    <Section title="Occupant">
       <LabeledList>
         <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
         <LabeledList.Item label="Health">
@@ -148,7 +141,7 @@ const AutodocControls = (props) => {
   const { surgery, surgeries } = data;
   return (
     <Section>
-      <Flex>
+      <Flex justify="space-between">
         <Flex.Item>
           <Button
             onClick={() => act('surgery')}
@@ -168,6 +161,16 @@ const AutodocControls = (props) => {
             iconPosition="right"
           >
             Clear selected
+          </Button>
+        </Flex.Item>
+        <Flex.Item>
+          <Button
+            onClick={() => act('ejectify')}
+            icon="user-slash"
+            iconPosition="right"
+            backgroundColor={!!surgery && 'red'}
+          >
+            Eject patient
           </Button>
         </Flex.Item>
       </Flex>
@@ -305,7 +308,7 @@ const AutodocSurgeries = (props) => {
               {(surgeries['blood'] === 1 || !!blood_transfer) && (
                 <Icon
                   name={
-                    blood_transfer && surgery
+                    blood_transfer && !!surgery
                       ? 'arrows-rotate'
                       : surgeries['blood'] === 1 && 'plus'
                   }

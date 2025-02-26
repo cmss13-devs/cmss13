@@ -69,6 +69,11 @@
 		visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
 		occupant.take_limb_damage(rand(30,50),rand(30,50))
 		surgery = FALSE
+		heal_brute = 0
+		heal_burn = 0
+		heal_toxin = 0
+		filtering = 0
+		blood_transfer = 0
 		// message_admins for now, may change to message_admins later
 		message_admins("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
 		return TRUE

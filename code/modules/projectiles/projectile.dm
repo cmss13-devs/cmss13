@@ -421,7 +421,7 @@
 
 		// If the ammo should hit the surface of the target and the next turf is dense
 		// The current turf is the "surface" of the target
-		if(ammo_flags & AMMO_STRIKES_SURFACE)
+		if(ammo_flags & (AMMO_STRIKES_SURFACE|AMMO_STRIKES_SURFACE_ONLY))
 			// We "hit" the current turf but strike the actual blockage
 			ammo.on_hit_turf(get_turf(src),src)
 		else
@@ -482,7 +482,7 @@
 
 		// If the ammo should hit the surface of the target and there is an object blocking
 		// The current turf is the "surface" of the target
-		if(ammo_flags & AMMO_STRIKES_SURFACE)
+		if(ammo_flags & (AMMO_STRIKES_SURFACE|AMMO_STRIKES_SURFACE_ONLY))
 			var/turf/T = get_turf(O)
 
 			// We "hit" the current turf but strike the actual blockage

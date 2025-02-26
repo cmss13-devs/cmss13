@@ -1780,6 +1780,7 @@
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	set_burst_amount(0)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))

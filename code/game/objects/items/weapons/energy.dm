@@ -11,8 +11,8 @@
 	name = "energy axe"
 	desc = "An energised battle axe."
 	icon_state = "axe0"
-	force = MELEE_FORCE_VERY_STRONG
-	throwforce = MELEE_FORCE_NORMAL
+	force = MELEE_FORCE_TIER_9
+	throwforce = MELEE_FORCE_TIER_5
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM

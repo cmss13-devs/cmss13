@@ -556,11 +556,11 @@
 	item_state = "folding_chair"
 	attack_verb = list("bashed", "battered", "chaired")
 	force = 1
-	throwforce = 3
+	throwforce = MELEE_FORCE_TIER_1
 	sharp = null
 	edge = 0
 	w_class = SIZE_LARGE
-	force_wielded = 10
+	force_wielded = MELEE_FORCE_TIER_2
 	flags_item = TWOHANDED
 	var/placed_object = /obj/structure/bed/chair
 

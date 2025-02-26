@@ -77,7 +77,7 @@
 	sharp = 0
 	edge = 0
 	w_class = SIZE_MEDIUM
-	force = MELEE_FORCE_NORMAL
+	force = MELEE_FORCE_TIER_5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	throwforce = 7
@@ -89,7 +89,7 @@
 	desc = "A large metal baseball bat. Compared to its wooden cousin, the metal bat offers a bit more more force. Often carried by thugs and ruffians."
 	icon_state = "metalbat"
 	item_state = "metalbat"
-	force = MELEE_FORCE_STRONG
+	force = MELEE_FORCE_TIER_7
 	w_class = SIZE_MEDIUM
 
 
@@ -107,7 +107,7 @@
 	hitsound = null
 	var/active = 0
 	w_class = SIZE_TINY
-	force = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
 	sharp = 0
 	edge = 0
 	throw_speed = SPEED_VERY_FAST
@@ -124,8 +124,8 @@
 	if(active)
 		to_chat(user, SPAN_NOTICE("You flip out your [src]."))
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
-		force = MELEE_FORCE_STRONG //bay adjustments
-		throwforce = MELEE_FORCE_NORMAL
+		force = MELEE_FORCE_TIER_7 //bay adjustments
+		throwforce = MELEE_FORCE_TIER_5
 		edge = 1
 		sharp = IS_SHARP_ITEM_ACCURATE
 		hitsound = 'sound/weapons/bladeslice.ogg'
@@ -153,7 +153,7 @@
 	desc = "A ancient weapon from Japan."
 	icon_state = "samurai"
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
-	force = MELEE_FORCE_VERY_STRONG
+	force = MELEE_FORCE_TIER_9
 
 /obj/item/weapon/wirerod
 	name = "wired rod"
@@ -162,8 +162,8 @@
 	item_state = "rods"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	force = MELEE_FORCE_WEAK
-	throwforce = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
+	throwforce = MELEE_FORCE_TIER_2
 	w_class = SIZE_MEDIUM
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 
@@ -199,7 +199,7 @@
 	icon_state = "katana"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	force = 4444
-	throwforce = MELEE_FORCE_VERY_STRONG
+	throwforce = MELEE_FORCE_TIER_9
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_MEDIUM

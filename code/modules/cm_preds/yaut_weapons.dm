@@ -775,7 +775,7 @@
 	. = ..()
 	if(proximity_flag && !busy_fishing && isturf(target))
 		var/turf/T = target
-		if(!T.supports_fishing)
+		if(!T.fishing_allowed)
 			return
 		busy_fishing = TRUE
 		user.visible_message(SPAN_NOTICE("[user] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)

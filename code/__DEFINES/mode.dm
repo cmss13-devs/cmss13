@@ -69,34 +69,12 @@
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY 4
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 2.5
 
-//=================================================
-#define SHOW_ITEM_ANIMATIONS_NONE 0 //Do not show any item pickup animations
-#define SHOW_ITEM_ANIMATIONS_HALF 1 //Toggles tg-style item animations on and off, default on.
-#define SHOW_ITEM_ANIMATIONS_ALL 2 //Toggles being able to see animations that occur on the same tile.
-//=================================================
-
-//=================================================
-#define PAIN_OVERLAY_BLURRY 0 //Blurs your screen a varying amount depending on eye_blur.
-#define PAIN_OVERLAY_IMPAIR 1 //Impairs your screen like a welding helmet does depending on eye_blur.
-#define PAIN_OVERLAY_LEGACY 2 //Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.
-//=================================================
-
-//=================================================
-#define FLASH_OVERLAY_WHITE 0 //Flashes your screen white.
-#define FLASH_OVERLAY_DARK 1 //Flashes your screen a dark grey.
-//=================================================
-
 #define NV_COLOR_GREEN "#39FF14"
 #define NV_COLOR_WHITE "#D3D3D3"
 #define NV_COLOR_ORANGE "#FFCC66"
 #define NV_COLOR_YELLOW "#FFFF66" //crazy ? i was crazy once
 #define NV_COLOR_RED "#FF3333"
 #define NV_COLOR_BLUE "#66CCFF"
-
-//=================================================
-#define CRIT_OVERLAY_WHITE 0 //Overlays your screen white.
-#define CRIT_OVERLAY_DARK 1 //Overlays your screen a dark grey.
-//=================================================
 
 /// Number of weighted marine players for 1 gear_scale. gear_scale is clamped to 1 minimum
 #define MARINE_GEAR_SCALING_NORMAL 50
@@ -133,7 +111,7 @@ GLOBAL_LIST_INIT(ROLES_ENGINEERING, list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, 
 GLOBAL_LIST_INIT(ROLES_ENGINEERING_ANTAG, list())
 GLOBAL_LIST_INIT(ROLES_REQUISITION, list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION))
 GLOBAL_LIST_INIT(ROLES_REQUISITION_ANTAG, list(JOB_UPP_SUPPLY))
-GLOBAL_LIST_INIT(ROLES_MEDICAL, list(JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR))
+GLOBAL_LIST_INIT(ROLES_MEDICAL, list(JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR))
 GLOBAL_LIST_INIT(ROLES_MEDICAL_ANTAG, list(JOB_UPP_LT_DOKTOR))
 GLOBAL_LIST_INIT(ROLES_MARINES,  list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE))
 GLOBAL_LIST_INIT(ROLES_MARINES_ANTAG, list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER))
@@ -163,7 +141,7 @@ GLOBAL_LIST_INIT(ROLES_UNASSIGNED, list(JOB_SQUAD_MARINE))
 #define BLURB_USCM_FLIGHT JOB_CAS_PILOT, JOB_DROPSHIP_PILOT, JOB_DROPSHIP_CREW_CHIEF
 #define BLURB_USCM_MP JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE
 #define BLURB_USCM_ENGI JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH, JOB_TANK_CREW, JOB_WO_PILOT
-#define BLURB_USCM_MEDICAL JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR
+#define BLURB_USCM_MEDICAL JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR
 #define BLURB_USCM_REQ JOB_CHIEF_REQUISITION, JOB_CARGO_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION
 #define BLURB_USCM_WY JOB_CORPORATE_LIAISON
 

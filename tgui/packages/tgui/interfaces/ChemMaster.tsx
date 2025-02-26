@@ -363,10 +363,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
               <Stack>
                 <Button
                   lineHeight={'35px'}
-                  disabled={
-                    !buffer ||
-                    !pill_bottles.some((bottle) => bottle.isNeedsToBeFilled)
-                  }
+                  disabled={!buffer}
                   onClick={() => act('create_pill', { number: numPills })}
                 >
                   Create Pill{numPills > 1 ? 's' : ''}

@@ -178,6 +178,10 @@
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				var/area/area = get_area(W)
+				if(!area.allow_construction)
+					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
+					return
 				var/turf/open/floor = loc
 				if(!floor.allow_construction)
 					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))

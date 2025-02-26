@@ -269,8 +269,8 @@
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_5
-	throwforce = MELEE_FORCE_TIER_9
-	force_wielded = MELEE_FORCE_TIER_9 //The fact you can easily produce these things should only be as strong as a machete
+	throwforce = MELEE_FORCE_TIER_8
+	force_wielded = MELEE_FORCE_TIER_8 //The fact you can easily produce these things should only be as strong as a machete
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_SIMPLE

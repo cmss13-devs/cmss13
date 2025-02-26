@@ -498,11 +498,6 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"bJ" = (
-/obj/structure/machinery/cm_vending/gear/synth,
-/obj/structure/machinery/cm_vending/gear/synth,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
 "bK" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/jungle,
@@ -16113,7 +16108,7 @@ mT
 mT
 mT
 ak
-bJ
+ar
 aY
 bE
 PM

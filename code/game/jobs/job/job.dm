@@ -268,6 +268,22 @@
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 			WO.self_set_headset(human)
 
+		load_loadout(M)
+
+		if(gear_preset_whitelist[job_whitelist])
+			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
+			var/generated_account = generate_money_account(human)
+			announce_entry_message(human, generated_account, whitelist_status) //Tell them their spawn info.
+			generate_entry_conditions(human, whitelist_status) //Do any other thing that relates to their spawn.
+		else
+			arm_equipment(human, gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
+			var/generated_account = generate_money_account(human)
+			announce_entry_message(human, generated_account) //Tell them their spawn info.
+			generate_entry_conditions(human) //Do any other thing that relates to their spawn.
+
+		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
+			GLOB.RoleAuthority.randomize_squad(human)
+
 		var/assigned_squad
 		if(human.assigned_squad)
 			assigned_squad = human.assigned_squad.name
@@ -284,22 +300,6 @@
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
 		human.forceMove(join_turf)
-
-		load_loadout(M)
-
-		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-			GLOB.RoleAuthority.randomize_squad(human)
-
-		if(gear_preset_whitelist[job_whitelist])
-			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
-			var/generated_account = generate_money_account(human)
-			announce_entry_message(human, generated_account, whitelist_status) //Tell them their spawn info.
-			generate_entry_conditions(human, whitelist_status) //Do any other thing that relates to their spawn.
-		else
-			arm_equipment(human, gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-			var/generated_account = generate_money_account(human)
-			announce_entry_message(human, generated_account) //Tell them their spawn info.
-			generate_entry_conditions(human) //Do any other thing that relates to their spawn.
 
 		for(var/cardinal in GLOB.cardinals)
 			var/obj/structure/machinery/cryopod/pod = locate() in get_step(human, cardinal)

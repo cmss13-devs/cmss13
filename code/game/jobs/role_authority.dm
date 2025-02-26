@@ -459,7 +459,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	new_human.job = new_job.title //TODO Why is this a mob variable at all?
 
-if(new_job.gear_preset_whitelist[job_whitelist])
+	if(new_job.gear_preset_whitelist[job_whitelist])
 		arm_equipment(new_human, new_job.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
 		var/generated_account = new_job.generate_money_account(new_human)
 		new_job.announce_entry_message(new_human, generated_account, whitelist_status) //Tell them their spawn info.

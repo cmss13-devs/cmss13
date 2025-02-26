@@ -413,12 +413,6 @@
 	},
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
-"mE" = (
-/obj/structure/sign/poster/clf,
-/turf/closed/shuttle/ert{
-	icon_state = "stan21"
-	},
-/area/shiva/interior/colony/clf_shuttle)
 "nc" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/north,
@@ -1498,6 +1492,9 @@
 /turf/open/floor/platingdmg1,
 /area/shiva/interior/garage)
 "NY" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/shiva/interior/colony/clf_shuttle)
 "Ob" = (
@@ -2921,7 +2918,7 @@ wr
 wr
 wr
 wr
-mE
+eT
 NY
 LK
 LK

@@ -1062,6 +1062,9 @@
 	icon_state = "sovietsoda-broken";
 	stat = 1
 	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "qN" = (
@@ -1128,10 +1131,6 @@
 /obj/item/stack/rods,
 /obj/item/stack/cable_coil,
 /turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/caves/mining)
-"rH" = (
-/obj/structure/sign/poster/clf,
-/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "rK" = (
 /obj/item/trash/cigbutt/ucigbutt{
@@ -3955,7 +3954,7 @@ gR
 lK
 FO
 Ja
-rH
+NT
 qM
 ZM
 Cg

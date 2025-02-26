@@ -64,6 +64,19 @@
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"ai" = (
+/obj/item/weapon/gun/smg/fp9000,
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/strata/ag/exterior/paths/far_north_outpost)
+"aj" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "aE" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/cans/beer{
@@ -645,10 +658,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/far_north_outpost)
-"vj" = (
-/obj/structure/sign/poster/clf,
-/turf/closed/wall/wood,
-/area/strata/ag/interior/outpost/clf_office)
 "vu" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1126,10 +1135,6 @@
 /obj/structure/largecrate/supply/ammo/m56d,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/exterior/paths/far_north_outpost)
-"MH" = (
-/obj/structure/sign/poster/clf,
-/turf/closed/wall/wood,
-/area/strata/ag/interior/outpost/clf_dorms)
 "Ni" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -1899,8 +1904,8 @@ Bb
 xt
 BZ
 xt
-vj
-kE
+eN
+aj
 pd
 qm
 pd
@@ -2336,8 +2341,8 @@ ob
 DF
 FY
 qU
-MH
-JY
+Pa
+ai
 Zf
 ad
 KC

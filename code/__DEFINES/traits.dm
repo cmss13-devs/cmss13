@@ -245,8 +245,6 @@
 #define TRAIT_SPEC(spec_type) "t_spec_[spec_type]"
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
-/// When the mob is hiding near a wall
-#define TRAIT_WALL_HIDING "t_wall_hiding"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -520,7 +518,4 @@ GLOBAL_LIST(trait_name_map)
 #define CHLOROFORM_TRAIT "chloroform"
 /// traits transparent turf
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
-/// traits from wall hiding
-#define WALL_HIDING_TRAIT "wallhiding"
-=======
 

@@ -332,6 +332,12 @@
 	name = "\improper Devana cargo door"
 	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
 
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds5
+	name = "\improper Midway cargo door"
+	icon = 'icons/obj/structures/doors/dropship5_cargo.dmi'
+
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
 	width = 2
 

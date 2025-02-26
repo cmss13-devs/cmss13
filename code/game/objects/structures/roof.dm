@@ -73,6 +73,8 @@
 /obj/effect/roof_node //used for observing if mob is near the roof
 	name = "roof_node"
 	anchored = TRUE
+	icon = 'icons/landmarks.dmi'
+	icon_state = "roof_node"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE

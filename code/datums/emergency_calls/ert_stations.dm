@@ -21,3 +21,6 @@
 
 /datum/lazy_template/fax_response_base
 	map_name = "fax_responder_base"
+
+/datum/lazy_template/ert/solar_devils_station
+	map_name = "solar_devils_ert_station"

@@ -10,10 +10,11 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_7
-	throwforce = MELEE_FORCE_TIER_5
+	throwforce = MELEE_FORCE_TIER_4
 	w_class = SIZE_LARGE
 	matter = list("metal" = 50)
 	hitsound = "swing_hit"
+	attack_speed = 14
 
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	var/dirt_overlay = "shovel_overlay"
@@ -207,9 +208,10 @@
 /obj/item/tool/shovel/snow
 	name = "snow shovel"
 	desc = "I had enough winter for this year!"
+	flags_item = ADJACENT_CLICK_DELAY //snow shovel realism
 	w_class = SIZE_LARGE
-	force = MELEE_FORCE_TIER_5
-	throwforce = MELEE_FORCE_TIER_1
+	force = MELEE_FORCE_TIER_8
+	throwforce = MELEE_FORCE_TIER_2
 
 
 
@@ -223,6 +225,7 @@
 	item_state = "etool"
 	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
+	attack_speed = 11
 	w_class = SIZE_MEDIUM
 
 	dirt_overlay = "etool_overlay"

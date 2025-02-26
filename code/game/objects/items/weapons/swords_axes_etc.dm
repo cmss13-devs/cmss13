@@ -29,6 +29,7 @@
 	)
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_TIER_5
+	throwforce = MELEE_FORCE_TIER_3
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	. = ..()
@@ -78,6 +79,8 @@
 		item_state = "telebaton_1"
 		w_class = SIZE_MEDIUM
 		force = MELEE_FORCE_TIER_9
+		flags_item = ADJACENT_CLICK_DELAY //direct buffs to the machete needs compensation
+		attack_speed = 9
 		stun_force = 40
 		attack_verb = list("smacked", "struck", "slapped", "beat")
 	else

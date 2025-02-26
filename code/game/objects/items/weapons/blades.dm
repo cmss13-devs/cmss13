@@ -11,14 +11,14 @@
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_TIER_7
+	force = MELEE_FORCE_TIER_8
 	throwforce = MELEE_FORCE_TIER_2
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_LARGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	attack_speed = 9
+	attack_speed = 11
 
 /obj/item/weapon/sword/claymore
 	name = "claymore"
@@ -65,6 +65,7 @@
 	icon_state = "arnold-machete"
 	item_state = "arnold-machete"
 	force = MELEE_FORCE_TIER_15
+	attack_speed = 14
 
 /obj/item/weapon/sword/hefa
 	name = "HEFA sword"
@@ -112,14 +113,16 @@
 	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
 	icon_state = "katana"
 	item_state = "katana"
-	force = MELEE_FORCE_TIER_11
+	force = MELEE_FORCE_TIER_9
+	flags_item = ADJACENT_CLICK_DELAY //direct buffs to the machete needs compensation
+	attack_speed = 9
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
 	name = "replica katana"
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
 	force = MELEE_FORCE_TIER_2
-	throwforce = 7
+	throwforce = MELEE_FORCE_TIER_1
 
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
@@ -135,6 +138,7 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = MELEE_FORCE_TIER_1
+	attack_speed = 7 //this wouldn't affect much at 5 damage
 	w_class = SIZE_SMALL
 	throwforce = MELEE_FORCE_TIER_10 //increased by throwspeed to roughly 80
 	throw_speed = SPEED_VERY_FAST

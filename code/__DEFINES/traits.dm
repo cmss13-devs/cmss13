@@ -163,6 +163,8 @@
 #define TRAIT_TEMPORARILY_MUTED "temporarily_muted"
 /// Mob wont get hit by stray projectiles
 #define TRAIT_NO_STRAY "trait_no_stray"
+/// When a Xeno hauls us. We can take out our knife or gun if hauled though we are immobilized, also shielded from most damage.
+#define TRAIT_HAULED "hauled"
 // only used by valkyrie
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
 
@@ -439,6 +441,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_STRAIN "t_s_strain"
 ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
+//Status trait coming from being hauled by a xeno.
+#define TRAIT_SOURCE_XENO_HAUL "t_s_xeno_haul"
 ///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
 ///Status trait coming from their job

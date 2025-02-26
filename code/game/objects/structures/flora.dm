@@ -708,6 +708,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				var/stuck = rand(0,10)
+				if(HAS_TRAIT(L, TRAIT_HAULED))
+					return
 				switch(stuck)
 					if(0 to 4)
 						var/new_slowdown = H.next_move_slowdown + rand(2,3)

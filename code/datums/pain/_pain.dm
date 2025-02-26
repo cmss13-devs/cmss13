@@ -195,7 +195,7 @@
 
 	if(new_level >= PAIN_LEVEL_SEVERE && feels_pain)
 		RegisterSignal(source_mob, COMSIG_MOB_DRAGGED, PROC_REF(oxyloss_drag), override = TRUE)
-		RegisterSignal(source_mob, COMSIG_MOB_DEVOURED, PROC_REF(handle_devour), override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOB_HAULED, PROC_REF(handle_haul), override = TRUE)
 		RegisterSignal(source_mob, COMSIG_MOVABLE_PRE_THROW, PROC_REF(oxy_kill), override = TRUE)
 
 	last_level = new_level
@@ -232,7 +232,7 @@
 	if(new_level < PAIN_LEVEL_SEVERE)
 		UnregisterSignal(source_mob, list(
 			COMSIG_MOB_DRAGGED,
-			COMSIG_MOB_DEVOURED,
+			COMSIG_MOB_HAULED,
 			COMSIG_MOVABLE_PRE_THROW
 		))
 
@@ -294,14 +294,14 @@
 			if(H.species.flags & HAS_HARDCRIT)
 				source.apply_damage(20, OXY)
 
-/datum/pain/proc/handle_devour(mob/living/source, mob/living/carbon/xenomorph/devourer)
+/datum/pain/proc/handle_haul(mob/living/source, mob/living/carbon/xenomorph/hauler)
 	SIGNAL_HANDLER
 	if(source.chestburst)
 		return
-	if(source.ally_of_hivenumber(devourer.hivenumber))
+	if(source.ally_of_hivenumber(hauler.hivenumber))
 		return
 	oxy_kill(source)
-	return COMPONENT_CANCEL_DEVOUR
+	return COMPONENT_CANCEL_HAUL
 
 /datum/pain/proc/oxy_kill(mob/living/source)
 	SIGNAL_HANDLER

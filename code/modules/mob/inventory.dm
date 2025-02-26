@@ -169,6 +169,9 @@
 	if(is_mob_incapacitated())
 		return
 
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		return
+
 	if(pickup_recent_item_on_turf(user_turf))
 		return
 

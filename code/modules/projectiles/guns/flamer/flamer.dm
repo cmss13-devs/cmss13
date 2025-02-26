@@ -749,7 +749,10 @@
 		burn_damage = 0
 
 	if(!burn_damage)
-		to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
+		if(HAS_TRAIT(M, TRAIT_HAULED))
+			M.visible_message(SPAN_WARNING("[M] is shielded from the flames!"), SPAN_WARNING("You are shielded from the flames!"))
+		else
+			to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
 		return
 
 	M.last_damage_data = weapon_cause_data

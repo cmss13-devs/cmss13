@@ -17,6 +17,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 /mob/living/carbon/xenomorph/proc/do_evolve()
 	if(!evolve_checks())
 		return
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(user)
+		to_chat(src, "Release [user] before evolving!")
+		return
 
 	var/list/castes_available = caste.evolves_to.Copy()
 

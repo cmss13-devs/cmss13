@@ -328,12 +328,12 @@
 					var/datum/component/label/label_component_on_main_bottle = main_bottle.GetComponent(/datum/component/label)
 					var/datum/component/label/label_component_on_inputed_bottle = bottle.GetComponent(/datum/component/label)
 
-					if(label_component_on_main_bottle)
+					if(label_component_on_main_bottle != label_component_on_inputed_bottle)
 						bottle.AddComponent(/datum/component/label, label_component_on_main_bottle.label_name)
 						if(length(main_bottle.maptext_label) < 3)
 							bottle.maptext_label = main_bottle.maptext_label
 							bottle.update_icon()
-					else if(label_component_on_inputed_bottle)
+					else if(label_component_on_inputed_bottle != label_component_on_main_bottle)
 						qdel(label_component_on_inputed_bottle)
 					bottle.icon_state = main_bottle.icon_state
 					for(var/iterator in 1 to to_create)

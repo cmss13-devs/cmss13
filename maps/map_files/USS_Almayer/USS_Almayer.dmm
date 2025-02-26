@@ -29058,6 +29058,11 @@
 	phone_category = "Offices"
 	},
 /obj/structure/surface/table/almayer,
+/obj/item/tool/stamp/ce{
+	pixel_y = -4;
+	pixel_x = -6;
+	name = "Aux. Support Officer's rubber stamp"
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/auxiliary_officer_office)
 "fmZ" = (
@@ -29589,6 +29594,11 @@
 	pixel_y = 18;
 	req_access_txt = list();
 	req_one_access_txt = "1;6"
+	},
+/obj/item/tool/stamp/ce{
+	pixel_y = 14;
+	pixel_x = 7;
+	name = "Chief Engineer's rubber stamp"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
@@ -69487,6 +69497,11 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/item/tool/stamp/hos{
+	pixel_y = 7;
+	pixel_x = -8;
+	name = "Chief MP's rubber stamp"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)

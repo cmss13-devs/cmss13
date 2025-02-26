@@ -888,6 +888,9 @@
 		if(!human.allow_gun_usage)
 			to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(human, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 	// If the user isn't actually allowed to use guns.
 	else if (!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [src]!"))

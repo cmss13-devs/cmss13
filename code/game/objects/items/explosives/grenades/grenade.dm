@@ -43,6 +43,9 @@
 	if(harmful && ishuman(user) && !user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 		return FALSE
+	if(harmful && ishuman(user) && MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+		to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+		return FALSE
 
 	return TRUE
 

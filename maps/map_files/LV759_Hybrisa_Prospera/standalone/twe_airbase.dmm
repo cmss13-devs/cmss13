@@ -178,6 +178,10 @@
 /obj/item/reagent_container/food/snacks/packaged_burger{
 	pixel_y = 11
 	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = 16;
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/blackfull/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "bG" = (
@@ -187,6 +191,10 @@
 	pixel_y = 2
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/storage/box/mre/twe{
+	pixel_y = 24;
+	pixel_x = -15
+	},
 /turf/open/floor/almayer/blackfull/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "bN" = (
@@ -1595,6 +1603,10 @@
 /obj/item/explosive/grenade/high_explosive/rmc,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/item/ammo_box/magazine/misc/mre/twe{
+	pixel_x = -16;
+	pixel_y = 16
+	},
 /turf/open/floor/strata/red2,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "qW" = (
@@ -3032,6 +3044,18 @@
 /obj/structure/surface/table/reinforced/black,
 /obj/item/trash/tray,
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/item/storage/box/teabags{
+	pixel_y = 9;
+	pixel_x = 21
+	},
+/obj/item/reagent_container/pill/teabag{
+	pixel_y = 11;
+	pixel_x = 9
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -5;
+	pixel_y = 10
+	},
 /turf/open/floor/almayer/blackfull/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "WQ" = (

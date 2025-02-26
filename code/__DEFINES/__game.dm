@@ -274,6 +274,7 @@
 /// Blocks mortar placement, lasing, and medevac
 #define CEILING_PROTECTION_TIER_1 1
 #define CEILING_METAL 1.1
+#define CEILING_SANDSTONE_ALLOW_CAS 1.2
 
 /// Blocks CAS signals, supply drops, fultoning, and mortar fire
 #define CEILING_PROTECTION_TIER_2 2
@@ -284,6 +285,7 @@
 #define CEILING_PROTECTION_TIER_3 3
 #define CEILING_UNDERGROUND_BLOCK_CAS 3.1
 #define CEILING_UNDERGROUND_METAL_BLOCK_CAS 3.2
+#define CEILING_UNDERGROUND_SANDSTONE_BLOCK_CAS 3.3
 
 /// Blocks OB fire
 #define CEILING_PROTECTION_TIER_4 4

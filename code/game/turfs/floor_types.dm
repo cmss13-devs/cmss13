@@ -358,6 +358,12 @@
 	desc = "Cats really don't like these things."
 	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
 
+/turf/open/floor/plating/catwalk/Initialize(mapload, ...)
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+
+	. = ..()
+
+
 /turf/open/floor/plating/catwalk/grate
 	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
 	icon_state = "solidgrate1"

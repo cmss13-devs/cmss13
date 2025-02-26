@@ -146,10 +146,11 @@
 	)
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
+	attack_speed = 17
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_item = TWOHANDED
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 
 /obj/item/weapon/twohanded/fireaxe/wield(mob/user)
@@ -360,7 +361,7 @@
 	force_wielded = MELEE_FORCE_TIER_11
 	attack_speed = 21 //This is practically the best speed for a hammer
 	w_class = SIZE_LARGE
-	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY //Think of it as hitting the floor if you miss
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 	flags_equip_slot = SLOT_BACK
 	attack_verb = list("pulverized", "smashed", "thwacked", "crushed", "hammered", "wrecked")
 	var/really_heavy = FALSE

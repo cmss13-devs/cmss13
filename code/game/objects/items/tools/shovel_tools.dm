@@ -13,6 +13,7 @@
 	throwforce = MELEE_FORCE_TIER_5
 	w_class = SIZE_LARGE
 	matter = list("metal" = 50)
+	hitsound = "swing_hit"
 
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	var/dirt_overlay = "shovel_overlay"
@@ -253,5 +254,6 @@
 	folded = TRUE
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_TIER_1
+	hitsound = "swing_hit"
 	icon_state = "etool_c"
 	item_state = "etool_c"

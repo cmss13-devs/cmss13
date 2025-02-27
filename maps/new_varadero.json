@@ -14,8 +14,7 @@
         "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/nv",
         "/datum/equipment_preset/survivor/security/nv",
         "/datum/equipment_preset/survivor/beachbum",
-        "/datum/equipment_preset/survivor/miner",
-        "/datum/equipment_preset/survivor/clf"
+        "/datum/equipment_preset/survivor/miner"
     ],
 	"CO_survivor_types": [
         "/datum/equipment_preset/survivor/new_varadero/commander"
@@ -36,6 +35,7 @@
     ],
     "environment_traits": { "Fog": true },
     "traits": [{ "Ground": true }],
+    "nightmare_path": "maps/Nightmare/maps/New_Varadero/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,

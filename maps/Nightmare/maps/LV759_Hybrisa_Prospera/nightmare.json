@@ -1,8 +1,20 @@
 [
     {
+        "type": "map_sprinkle",
+        "path": "sprinkles/"
+    },
+    {
+		"type": "map_insert",
+		"landmark": "clfadmin",
+		"chance": 1.0,
+		"path": "standalone/clfadmin.dmm",
+		"when": { "lvevent": "clfraid" }
+    },
+    {
 		"type": "map_insert",
 		"landmark": "iasf_souter_airbase",
-		"chance": 0.25,
-		"path": "standalone/twe_airbase.dmm"
+		"chance": 0.28,
+		"path": "standalone/twe_airbase.dmm",
+        "when": { "lvevent": "none" }
 	}
 ]

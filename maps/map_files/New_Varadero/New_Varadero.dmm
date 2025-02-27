@@ -208,6 +208,12 @@
 "aaN" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/islands)
+"aaO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -32066,7 +32072,7 @@ srg
 srg
 xCn
 fzc
-jQa
+aaO
 hdh
 jQa
 jQa

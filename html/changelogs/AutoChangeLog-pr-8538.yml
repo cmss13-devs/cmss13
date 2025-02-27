@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed WO doctor job overlapping with new Field Doctor"
-  - code_imp: "Added a check to ensure all usage of GLOBAL_SUBTYPE_INDEXED has uniquely indexed entries"
-  - rscdel: "Removed unused young blood leader job datum"

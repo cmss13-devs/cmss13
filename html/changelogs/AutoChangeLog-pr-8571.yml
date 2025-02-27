@@ -1,6 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - code_imp: "Added support for transparent turfs"
-  - bugfix: "Fixed layering issues with multiz"
-  - code_imp: "Added support for turf-specific modifiers for falling"

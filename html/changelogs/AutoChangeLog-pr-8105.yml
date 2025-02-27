@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - rscadd: "the synthetic snowflake vendor items are now found in the loadout in the character setup menu"

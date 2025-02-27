@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WO_REQUISITION "Bunker Crew Logistics"
 
 #define JOB_WO_CMO "Head Surgeon"
-#define JOB_WO_DOCTOR "Field Doctor"
+#define JOB_WO_DOCTOR "Field Surgeon"
 #define JOB_WO_RESEARCHER "Chemist"
 
 #define JOB_WO_CORPORATE_LIAISON "Combat Reporter"

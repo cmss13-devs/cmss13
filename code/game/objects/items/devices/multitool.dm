@@ -29,6 +29,8 @@
 
 	var/list/encryption_keys = list()
 
+	var/is_terminal_linked = FALSE
+
 /obj/item/device/multitool/proc/load_encryption_key(key, obj/object)
 	encryption_keys[key] = WEAKREF(object)
 

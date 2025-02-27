@@ -364,7 +364,6 @@
 		return
 	//Spawn an animation effect
 	var/obj/effect/resin_construct/fastweak/animation = new animation_type(target_turf)
-	animation.loc = target_turf
 
 	// Schedule deletion of the animation after 1 second
 	addtimer(CALLBACK(animation, TYPE_PROC_REF(/obj/effect/resin_construct/fastweak, delete_animation), 1 SECONDS))

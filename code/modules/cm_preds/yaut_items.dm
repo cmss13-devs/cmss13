@@ -720,8 +720,6 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	SSticker.mode.get_specific_call(un_blooded[choice], TRUE, FALSE)
 	GLOB.blooding_activated = TRUE
 
-
-
 //=================//\\=================\\
 //======================================\\
 

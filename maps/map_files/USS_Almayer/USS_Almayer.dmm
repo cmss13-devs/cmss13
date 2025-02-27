@@ -3077,6 +3077,9 @@
 	dir = 8;
 	name = "ship-grade camera"
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/cafeteria_officer)
 "ahf" = (
@@ -4454,7 +4457,7 @@
 	},
 /obj/item/clothing/suit/storage/marine/light/vest,
 /obj/item/clothing/head/helmet/marine/medic,
-/obj/item/storage/box/MRE,
+/obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
 /turf/open/floor/plating/plating_catwalk,
@@ -19347,7 +19350,10 @@
 /area/almayer/squads/req)
 "bNB" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy{
+	pixel_y = 7;
+	pixel_x = 5
+	},
 /obj/effect/spawner/random/tool,
 /obj/item/tool/hand_labeler,
 /obj/item/clipboard,
@@ -34927,7 +34933,7 @@
 	pixel_x = 4;
 	pixel_y = 15
 	},
-/obj/item/storage/box/wy_mre{
+/obj/item/storage/box/mre/wy{
 	pixel_x = 5;
 	pixel_y = 2
 	},
@@ -40824,8 +40830,8 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/storage/box/uscm_mre,
-/obj/item/storage/box/uscm_mre,
+/obj/item/storage/box/mre,
+/obj/item/storage/box/mre,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "kxP" = (
@@ -57214,8 +57220,9 @@
 	pixel_x = -10;
 	pixel_y = 14
 	},
-/obj/item/storage/box/wy_mre{
-	pixel_x = 8
+/obj/item/storage/box/mre/wy{
+	pixel_x = 8;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -62452,7 +62459,7 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
 "tFJ" = (
-/obj/structure/largecrate/supply/supplies/mre,
+/obj/structure/largecrate/supply/supplies/wy_emergency_food,
 /turf/open/floor/almayer/red/north,
 /area/almayer/maint/upper/u_a_p)
 "tFO" = (

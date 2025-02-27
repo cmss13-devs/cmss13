@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;action&#x2F;minimap - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/action/minimap.html#var">Var Details</a> - <a href="datum/action/minimap.html#proc">Proc Details</a></header>
+<main>
+<h1>Toggle Minimap <aside>/<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/minimap.html">minimap</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm#L603">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 603"/></a></h1>
+
+<p>Action that gives the owner access to the minimap pool</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/action/minimap.html#var/default_overwatch_level">default_overwatch_level</a></th><td>This is mostly for the AI &amp; other things which do not move groundside.</td></tr>
+            <tr><th><a href="datum/action/minimap.html#var/map">map</a></th><td>Minimap object we'll be displaying</td></tr>
+            <tr><th><a href="datum/action/minimap.html#var/marker_flags">marker_flags</a></th><td>marker flags this will give the target, mostly used for marine minimaps</td></tr>
+            <tr><th><a href="datum/action/minimap.html#var/minimap_displayed">minimap_displayed</a></th><td>boolean as to whether the minimap is currently shown</td></tr>
+            <tr><th><a href="datum/action/minimap.html#var/minimap_flags">minimap_flags</a></th><td>Flags to allow the owner to see others of this type</td></tr>
+            <tr><th><a href="datum/action/minimap.html#var/shifting">shifting</a></th><td>Whether this minimap should shift or not</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/action/minimap.html#proc/on_owner_z_change">on_owner_z_change</a></th><td>Updates the map when the owner changes zlevel</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/default_overwatch_level"><aside class="declaration">var </aside>default_overwatch_level
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm#L615">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 615"/></a></h3>
+        <p>This is mostly for the AI &amp; other things which do not move groundside.</p><h3 id="var/map"><aside class="declaration">var </aside>map
+            <aside>&ndash; /<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/<a href="atom/movable/screen.html">screen</a>/<a href="atom/movable/screen/minimap.html">minimap</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm#L613">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 613"/></a></h3>
+        <p>Minimap object we'll be displaying</p><h3 id="var/marker_flags"><aside class="declaration">var </aside>marker_flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm#L609">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 609"/></a></h3>
+        <p>marker flags this will give the target, mostly used for marine minimaps</p><h3 id="var/minimap_displayed"><aside class="declaration">var </aside>minimap_displayed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm#L611">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 611"/></a></h3>
+        <p>boolean as to whether the minimap is currently shown</p><h3 id="var/minimap_flags"><aside class="declaration">var </aside>minimap_flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm#L607">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 607"/></a></h3>
+        <p>Flags to allow the owner to see others of this type</p><h3 id="var/shifting"><aside class="declaration">var </aside>shifting
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm#L617">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 617"/></a></h3>
+        <p>Whether this minimap should shift or not</p><h2 id="proc">Proc Details</h2><h3 id="proc/on_owner_z_change"><aside class="declaration">proc </aside>on_owner_z_change<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/source, oldz, newz) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm#L661">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 661"/></a></aside>
+        </h3>
+        <p>Updates the map when the owner changes zlevel</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/b1137cb00e2c2f29304b6020ae0423b566bf5544">b1137cb</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

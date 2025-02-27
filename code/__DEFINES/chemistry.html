@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;chemistry.dm - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/chemistry.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/chemistry.dm 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/BOTTLE_ICON_CHOICES">BOTTLE_ICON_CHOICES</a></th><td>Amount of bottle icon variations in total</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/PILL_ICON_CHOICES">PILL_ICON_CHOICES</a></th><td>Amount of random icon variations for pills in total</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/HUNGER_FACTOR">HUNGER_FACTOR</a></th><td>How fast mob nutrition normally decreases</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/BLOOD_NUTRITION_COST">BLOOD_NUTRITION_COST</a></th><td>Additional mob nutrition cost when regenerating blood</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/COLD_NUTRITION_COST">COLD_NUTRITION_COST</a></th><td>Additional mob nutrition cost when cold</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_CLASS_NONE">CHEM_CLASS_NONE</a></th><td>Default. Chemicals not used in the chem generator</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_CLASS_BASIC">CHEM_CLASS_BASIC</a></th><td>Chemicals that can be dispensed directly from the dispenser (iron, oxygen)</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_CLASS_COMMON">CHEM_CLASS_COMMON</a></th><td>Chemicals which recipe is commonly known and made (bicaridine, alkysine, salt)</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_CLASS_UNCOMMON">CHEM_CLASS_UNCOMMON</a></th><td>Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_CLASS_RARE">CHEM_CLASS_RARE</a></th><td>Chemicals without a recipe but can be obtained on the Almayer, or requires rare components</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_CLASS_SPECIAL">CHEM_CLASS_SPECIAL</a></th><td>Chemicals without a recipe and can't be obtained on the Almayer, or requires special components</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_CLASS_ULTRA">CHEM_CLASS_ULTRA</a></th><td>Randomly generated chemicals</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/REAGENT_TYPE_MEDICAL">REAGENT_TYPE_MEDICAL</a></th><td>Used to restrict recipes in the generator from employing all reagents of this type</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/REAGENT_SCANNABLE">REAGENT_SCANNABLE</a></th><td>Whether the reagent shows up on health analysers.</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/REAGENT_NOT_INGESTIBLE">REAGENT_NOT_INGESTIBLE</a></th><td>Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/REAGENT_CANNOT_OVERDOSE">REAGENT_CANNOT_OVERDOSE</a></th><td>Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/REAGENT_NO_GENERATION">REAGENT_NO_GENERATION</a></th><td>Reagent doesn't randomly generate in chemicals</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/PROPERTY_DISABLED">PROPERTY_DISABLED</a></th><td>the property is disabled and can't spawn anywhere, however is still functional</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/PROPERTY_COMMON">PROPERTY_COMMON</a></th><td>can be generated anywhere and available in round start chems</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/PROPERTY_UNCOMMON">PROPERTY_UNCOMMON</a></th><td>can be generated anywhere, but not available in round start chems</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/PROPERTY_RARE">PROPERTY_RARE</a></th><td>can only be generated at specific gen_tiers, but can also be made through specific property combinations</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/PROPERTY_LEGENDARY">PROPERTY_LEGENDARY</a></th><td>can strictly only be generated at specific gen_tiers</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/PROPERTY_ADMIN">PROPERTY_ADMIN</a></th><td>can only be spawned through admin powers</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/RESEARCH_LEVEL_INCREASE_MULTIPLIER">RESEARCH_LEVEL_INCREASE_MULTIPLIER</a></th><td>Scales cost of increasing clearance using credits</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/TECHTREE_LEVEL_MULTIPLIER">TECHTREE_LEVEL_MULTIPLIER</a></th><td>Scales tech level to max amplification level</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_FIRE_PENETRATION_THRESHOLD">CHEM_FIRE_PENETRATION_THRESHOLD</a></th><td>The minimum amount of a fire penetrating chemical required to turn a fire into fire penetrating</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_FIRE_STAR_THRESHOLD">CHEM_FIRE_STAR_THRESHOLD</a></th><td>An intensity greater than this will cause a fire to be star shape</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/CHEM_FIRE_PHOSPHORUS_PER_RADIUS">CHEM_FIRE_PHOSPHORUS_PER_RADIUS</a></th><td>Amount of phosphorus that equals 1 radius of white phosphorus smoke</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/EXPLOSION_PHORON_THRESHOLD">EXPLOSION_PHORON_THRESHOLD</a></th><td>The minimum amount of chems required to turn shrapnel into a special type</td></tr>
+        <tr><th><a href="code/__DEFINES/chemistry.html#define/INCENDIARY_SHARDS_MAX_REDUCTION">INCENDIARY_SHARDS_MAX_REDUCTION</a></th><td>The maximum amount of shards is divided by this number if the shards are of special type</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/BLOOD_NUTRITION_COST"><aside class="declaration">#define </aside>BLOOD_NUTRITION_COST
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 52"/></a>
+    </h3>
+    <p>Additional mob nutrition cost when regenerating blood</p><h3 id="define/BOTTLE_ICON_CHOICES"><aside class="declaration">#define </aside>BOTTLE_ICON_CHOICES
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 6"/></a>
+    </h3>
+    <p>Amount of bottle icon variations in total</p><h3 id="define/CHEM_CLASS_BASIC"><aside class="declaration">#define </aside>CHEM_CLASS_BASIC
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 75"/></a>
+    </h3>
+    <p>Chemicals that can be dispensed directly from the dispenser (iron, oxygen)</p><h3 id="define/CHEM_CLASS_COMMON"><aside class="declaration">#define </aside>CHEM_CLASS_COMMON
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L77">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 77"/></a>
+    </h3>
+    <p>Chemicals which recipe is commonly known and made (bicaridine, alkysine, salt)</p><h3 id="define/CHEM_CLASS_NONE"><aside class="declaration">#define </aside>CHEM_CLASS_NONE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L73">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 73"/></a>
+    </h3>
+    <p>Default. Chemicals not used in the chem generator</p><h3 id="define/CHEM_CLASS_RARE"><aside class="declaration">#define </aside>CHEM_CLASS_RARE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 81"/></a>
+    </h3>
+    <p>Chemicals without a recipe but can be obtained on the Almayer, or requires rare components</p><h3 id="define/CHEM_CLASS_SPECIAL"><aside class="declaration">#define </aside>CHEM_CLASS_SPECIAL
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L83">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 83"/></a>
+    </h3>
+    <p>Chemicals without a recipe and can't be obtained on the Almayer, or requires special components</p><h3 id="define/CHEM_CLASS_ULTRA"><aside class="declaration">#define </aside>CHEM_CLASS_ULTRA
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L85">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 85"/></a>
+    </h3>
+    <p>Randomly generated chemicals</p><h3 id="define/CHEM_CLASS_UNCOMMON"><aside class="declaration">#define </aside>CHEM_CLASS_UNCOMMON
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L79">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 79"/></a>
+    </h3>
+    <p>Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)</p><h3 id="define/CHEM_FIRE_PENETRATION_THRESHOLD"><aside class="declaration">#define </aside>CHEM_FIRE_PENETRATION_THRESHOLD
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L313">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 313"/></a>
+    </h3>
+    <p>The minimum amount of a fire penetrating chemical required to turn a fire into fire penetrating</p><h3 id="define/CHEM_FIRE_PHOSPHORUS_PER_RADIUS"><aside class="declaration">#define </aside>CHEM_FIRE_PHOSPHORUS_PER_RADIUS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L320">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 320"/></a>
+    </h3>
+    <p>Amount of phosphorus that equals 1 radius of white phosphorus smoke</p><h3 id="define/CHEM_FIRE_STAR_THRESHOLD"><aside class="declaration">#define </aside>CHEM_FIRE_STAR_THRESHOLD
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L315">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 315"/></a>
+    </h3>
+    <p>An intensity greater than this will cause a fire to be star shape</p><h3 id="define/COLD_NUTRITION_COST"><aside class="declaration">#define </aside>COLD_NUTRITION_COST
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 54"/></a>
+    </h3>
+    <p>Additional mob nutrition cost when cold</p><h3 id="define/EXPLOSION_PHORON_THRESHOLD"><aside class="declaration">#define </aside>EXPLOSION_PHORON_THRESHOLD
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L322">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 322"/></a>
+    </h3>
+    <p>The minimum amount of chems required to turn shrapnel into a special type</p><h3 id="define/HUNGER_FACTOR"><aside class="declaration">#define </aside>HUNGER_FACTOR
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 50"/></a>
+    </h3>
+    <p>How fast mob nutrition normally decreases</p><h3 id="define/INCENDIARY_SHARDS_MAX_REDUCTION"><aside class="declaration">#define </aside>INCENDIARY_SHARDS_MAX_REDUCTION
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L330">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 330"/></a>
+    </h3>
+    <p>The maximum amount of shards is divided by this number if the shards are of special type</p><h3 id="define/PILL_ICON_CHOICES"><aside class="declaration">#define </aside>PILL_ICON_CHOICES
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 8"/></a>
+    </h3>
+    <p>Amount of random icon variations for pills in total</p><h3 id="define/PROPERTY_ADMIN"><aside class="declaration">#define </aside>PROPERTY_ADMIN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L247">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 247"/></a>
+    </h3>
+    <p>can only be spawned through admin powers</p><h3 id="define/PROPERTY_COMMON"><aside class="declaration">#define </aside>PROPERTY_COMMON
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L239">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 239"/></a>
+    </h3>
+    <p>can be generated anywhere and available in round start chems</p><h3 id="define/PROPERTY_DISABLED"><aside class="declaration">#define </aside>PROPERTY_DISABLED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L237">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 237"/></a>
+    </h3>
+    <p>the property is disabled and can't spawn anywhere, however is still functional</p><h3 id="define/PROPERTY_LEGENDARY"><aside class="declaration">#define </aside>PROPERTY_LEGENDARY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L245">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 245"/></a>
+    </h3>
+    <p>can strictly only be generated at specific gen_tiers</p><h3 id="define/PROPERTY_RARE"><aside class="declaration">#define </aside>PROPERTY_RARE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L243">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 243"/></a>
+    </h3>
+    <p>can only be generated at specific gen_tiers, but can also be made through specific property combinations</p><h3 id="define/PROPERTY_UNCOMMON"><aside class="declaration">#define </aside>PROPERTY_UNCOMMON
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L241">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 241"/></a>
+    </h3>
+    <p>can be generated anywhere, but not available in round start chems</p><h3 id="define/REAGENT_CANNOT_OVERDOSE"><aside class="declaration">#define </aside>REAGENT_CANNOT_OVERDOSE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L113">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 113"/></a>
+    </h3>
+    <p>Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.</p><h3 id="define/REAGENT_NOT_INGESTIBLE"><aside class="declaration">#define </aside>REAGENT_NOT_INGESTIBLE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L111">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 111"/></a>
+    </h3>
+    <p>Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.</p><h3 id="define/REAGENT_NO_GENERATION"><aside class="declaration">#define </aside>REAGENT_NO_GENERATION
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L118">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 118"/></a>
+    </h3>
+    <p>Reagent doesn't randomly generate in chemicals</p><h3 id="define/REAGENT_SCANNABLE"><aside class="declaration">#define </aside>REAGENT_SCANNABLE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L109">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 109"/></a>
+    </h3>
+    <p>Whether the reagent shows up on health analysers.</p><h3 id="define/REAGENT_TYPE_MEDICAL"><aside class="declaration">#define </aside>REAGENT_TYPE_MEDICAL
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L107">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 107"/></a>
+    </h3>
+    <p>Used to restrict recipes in the generator from employing all reagents of this type</p><h3 id="define/RESEARCH_LEVEL_INCREASE_MULTIPLIER"><aside class="declaration">#define </aside>RESEARCH_LEVEL_INCREASE_MULTIPLIER
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L275">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 275"/></a>
+    </h3>
+    <p>Scales cost of increasing clearance using credits</p><h3 id="define/TECHTREE_LEVEL_MULTIPLIER"><aside class="declaration">#define </aside>TECHTREE_LEVEL_MULTIPLIER
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/__DEFINES/chemistry.dm#L277">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;chemistry.dm 277"/></a>
+    </h3>
+    <p>Scales tech level to max amplification level</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/b1137cb00e2c2f29304b6020ae0423b566bf5544">b1137cb</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

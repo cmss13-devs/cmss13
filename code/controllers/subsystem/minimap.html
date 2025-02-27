@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>code/controllers/subsystem/minimap.dm 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/b1137cb00e2c2f29304b6020ae0423b566bf5544/code/controllers/subsystem/minimap.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th>/var/<a href="global.html#var/SSminimaps">SSminimaps</a></th>
+                <td></td></tr>
+        <tr><th><a href="datum&#x2F;hud_displays.html">&#x2F;datum&#x2F;hud_displays</a></th><td>Holder datum for a zlevels data, concerning the overlays and the drawn level itself
+The individual image trackers have a raw and a normal list
+raw lists just store the images, while the normal ones are assoc list of [tracked_atom] = image
+the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
+WARNING!
+There is a byond bug: http://www.byond.com/forum/post/2661309
+That that forces us to use a separate list ref when accessing the lists of this datum
+Yea it hurts me too</td></tr>
+        <tr><th><a href="datum&#x2F;minimap_updator.html">&#x2F;datum&#x2F;minimap_updator</a></th><td>Holder datum to ease updating of atoms to update</td></tr>
+        <tr><th>/proc/<a href="global.html#proc/get_tacmap_data_png">get_tacmap_data_png</a></th>
+                <td>Fetches the datum containing an announced flattend map png reference.</td></tr>
+        <tr><th>/proc/<a href="global.html#proc/get_unannounced_tacmap_data_png">get_unannounced_tacmap_data_png</a></th>
+                <td>Fetches the datum containing the latest unannounced flattend map png reference.</td></tr>
+        <tr><th>/proc/<a href="global.html#proc/get_tacmap_data_svg">get_tacmap_data_svg</a></th>
+                <td>Fetches the last set of svg coordinates for the tacmap drawing.</td></tr>
+        <tr><th>/proc/<a href="global.html#proc/resend_current_map_png">resend_current_map_png</a></th>
+                <td>Re-sends relevant flattened tacmaps to a single client.</td></tr>
+        <tr><th><a href="atom&#x2F;movable&#x2F;screen&#x2F;minimap.html">&#x2F;atom&#x2F;movable&#x2F;screen&#x2F;minimap</a></th><td>Default HUD screen minimap object</td></tr>
+        <tr><th><a href="datum&#x2F;action&#x2F;minimap.html">&#x2F;datum&#x2F;action&#x2F;minimap</a></th><td>Action that gives the owner access to the minimap pool</td></tr>
+        <tr><th>/proc/<a href="global.html#proc/get_minimap_flag_for_faction">get_minimap_flag_for_faction</a></th>
+                <td>Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists</td></tr></table></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/b1137cb00e2c2f29304b6020ae0423b566bf5544">b1137cb</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

@@ -207,7 +207,7 @@
 /datum/emergency_call/young_bloods/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
 	if(length(members) < mob_min)
-		message_all_yautja("No youngbloods answered the call, reseting the caller...")
+		message_all_yautja("No youngbloods answered the call.")
 		GLOB.blooding_activated = FALSE
 	else
 		message_all_yautja("Awoke [length(members)] youngbloods for the ritual.")

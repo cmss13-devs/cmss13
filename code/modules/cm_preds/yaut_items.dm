@@ -1,5 +1,5 @@
 GLOBAL_VAR_INIT(blooding_activated, FALSE)
-GLOBAL_VAR_INIT(hunt_timer_yautja, null)
+GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 
 //Items specific to yautja. Other people can use em, they're not restricted or anything.
 //They can't, however, activate any of the special functions.

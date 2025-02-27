@@ -12816,6 +12816,11 @@
 	pixel_x = -7;
 	pixel_y = 13
 	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_x = -8;
+	pixel_y = 12
+	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/office)
 "aRH" = (
@@ -22106,6 +22111,10 @@
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "bwO" = (
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_y = 12
+	},
 /turf/open/floor/prison/floor_plate,
 /area/desert_dam/building/security/evidence)
 "bwP" = (
@@ -37289,6 +37298,18 @@
 	},
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
+"cvD" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8"
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/warden)
+"cvE" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8"
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/staffroom)
 "cvF" = (
 /turf/open/floor/prison/greencorner,
 /area/desert_dam/building/substation/west)
@@ -37325,6 +37346,14 @@
 "cvM" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/lobby)
+"cvN" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/desert_dam/building/security/evidence)
 "cvO" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/bed/chair/comfy/teal{
@@ -37348,10 +37377,22 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/desert_dam/building/medical/lobby)
+"cvR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "nspa"
+	},
+/turf/closed/wall/r_wall/prison,
+/area/desert_dam/building/security/northern_hallway)
 "cvS" = (
 /obj/structure/cargo_container/trijent/mid/alt,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
+"cvT" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8"
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/security/office)
 "cvU" = (
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/primary_storage)
@@ -37366,12 +37407,33 @@
 /obj/structure/bed/chair,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/surgury_observation)
+"cvX" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "admin_fight"
+	},
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/lobby)
+"cvY" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clipboard,
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "cvZ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Observation"
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/surgury_observation)
+"cwa" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/pen/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper{
+	pixel_x = 7
+	},
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "cwb" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -37385,6 +37447,11 @@
 "cwd" = (
 /turf/open/floor/prison/whitegreencorner/north,
 /area/desert_dam/building/medical/east_wing_hallway)
+"cwe" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/gloves/latex,
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "cwf" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -65547,7 +65614,7 @@ aya
 aSN
 aRY
 aZp
-aZp
+cvT
 aWF
 bnD
 bou
@@ -66017,7 +66084,7 @@ aoj
 aoj
 aoj
 act
-bnF
+cvR
 bpf
 bqn
 bom
@@ -67663,7 +67730,7 @@ bIJ
 aWK
 aOs
 bpN
-bpN
+cvN
 bpN
 bKe
 bFk
@@ -70481,7 +70548,7 @@ bIW
 bJV
 aEE
 bNJ
-bNi
+cvD
 bNi
 bWt
 azj
@@ -74685,7 +74752,7 @@ dTs
 aNH
 aMc
 bvS
-bvD
+cvE
 bHF
 bvD
 bHF
@@ -75278,7 +75345,7 @@ bff
 baD
 dJQ
 bbh
-bbC
+cvX
 aiZ
 aIa
 apz
@@ -96319,7 +96386,7 @@ cpF
 ahr
 ahr
 ahr
-coq
+cvY
 agH
 ucG
 cmO
@@ -96553,7 +96620,7 @@ amE
 ahr
 ahr
 ahr
-coq
+cwa
 agH
 amr
 aoP
@@ -96787,7 +96854,7 @@ cpK
 ahr
 ahr
 ahr
-coq
+cwe
 agH
 amr
 aoP

@@ -2,7 +2,7 @@
 	name = "USCM (police roles)"
 	faction = FACTION_MARINE
 	minimap_background = "background_mp"
-	minimum_age = 27
+	minimum_age = 21
 
 //*****************************************************************************************************/
 
@@ -88,6 +88,7 @@
 	rank = JOB_WARDEN
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "MW"
+	minimum_age = 25
 	skills = /datum/skills/MW
 
 	minimap_icon = "warden"
@@ -148,6 +149,7 @@
 	assignment = JOB_CHIEF_POLICE
 	rank = JOB_CHIEF_POLICE
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_1)
+	minimum_age = 23
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 

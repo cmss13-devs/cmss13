@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Added a preference to opt in for flashing lights (e.g. AR goggles and happy pills)"
-  - code_imp: "Cleanup client_prefs"

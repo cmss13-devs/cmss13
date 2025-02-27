@@ -3508,10 +3508,6 @@
 "amP" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_northwest)
-"amQ" = (
-/obj/structure/window/framed/colony,
-/turf/open/space/basic,
-/area/desert_dam/building/dorms/hallway_westwing)
 "amS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/white,
@@ -31747,9 +31743,9 @@
 "cfI" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/clothing/under/marine/veteran/pmc/corporate/medic,
-/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/med,
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/med,
 /obj/item/storage/belt/medical/full,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic,
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/medic,
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "cfJ" = (
@@ -102901,13 +102897,13 @@ duC
 auO
 dXI
 dAD
-amQ
+dBo
 dZS
 dFf
 dFf
 dFf
 dFf
-amQ
+dBo
 eaP
 dZm
 dHD

@@ -309,6 +309,7 @@
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /turf/open/floor/prison/red/north,
 /area/desert_dam/building/security/lobby)
 "zZ" = (

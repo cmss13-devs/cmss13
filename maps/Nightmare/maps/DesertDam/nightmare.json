@@ -1,10 +1,4 @@
 [
-	{ "type": "pick", "choices": [
-		{ "type": "map_insert",  "landmark": "green-new-bridge", "path": "greenriver/newbridge.dmm" }
-	], "chance": 1 },
-	{ "type": "pick", "choices": [
-		{ "weight": 2, "type": "map_insert",  "landmark": "purple-new-bridge", "path": "purpleriver/newbridge.dmm" }
-	], "chance": 1 },
 	{ "type": "map_sprinkle", "path": "sprinkles/" },
     {
 		"type": "map_insert",

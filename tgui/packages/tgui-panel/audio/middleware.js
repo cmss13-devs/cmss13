@@ -4,12 +4,10 @@
  * @license MIT
  */
 
-import { TridentAudioPlayer, WebviewAudioPlayer } from './player';
+import { AudioPlayer } from './player';
 
 export const audioMiddleware = (store) => {
-  const player = Byond.TRIDENT
-    ? new TridentAudioPlayer()
-    : new WebviewAudioPlayer();
+  const player = new AudioPlayer();
   player.onPlay(() => {
     store.dispatch({ type: 'audio/playing' });
   });

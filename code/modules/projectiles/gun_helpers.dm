@@ -266,9 +266,15 @@ DEFINES in setup.dm, referenced here.
 			return
 
 
-	if(istype(attack_item,/obj/item/attachable))
-		if(check_inactive_hand(user))
-			attach_to_gun(user,attack_item)
+	if(istype(attack_item, /obj/item/attachable))
+
+		for(var/slot in attachments)
+			var/obj/item/attachable/attachment = attachments[slot]
+			if(attachment && attachment.grip_attachment_on)
+				to_chat(user, SPAN_WARNING("Turn off the attachment"))
+				return
+			if(check_inactive_hand(user))
+				attach_to_gun(user,attack_item)
 
 	//the active attachment is reloadable
 	else if(active_attachable && active_attachable.flags_attach_features & ATTACH_RELOADABLE)
@@ -647,6 +653,10 @@ DEFINES in setup.dm, referenced here.
 		attachment = choice_to_attachment[choice]
 
 	if(!attachment || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(attachment == attachments[attachment.slot])) || !(attachment.flags_attach_features & ATTACH_REMOVABLE))
+		return
+
+	if(attachment.grip_attachment_on)
+		to_chat(usr, SPAN_WARNING("You cannot remove this attachment while its on."))
 		return
 
 	usr.visible_message(SPAN_NOTICE("[usr] begins stripping [attachment] from [src]."),

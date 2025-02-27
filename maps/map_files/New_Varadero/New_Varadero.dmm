@@ -19654,7 +19654,7 @@
 "pPf" = (
 /obj/structure/surface/table,
 /obj/item/prop/helmetgarb/flair_uscm,
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = -4;
 	pixel_y = 13
 	},
@@ -23677,7 +23677,7 @@
 /area/varadero/interior/research)
 "sKz" = (
 /obj/structure/closet/crate/supply,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /obj/item/storage/beer_pack,
 /obj/item/spacecash,
 /turf/open/gm/dirt,

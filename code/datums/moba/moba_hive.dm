@@ -1,6 +1,8 @@
 /datum/hive_status/moba
 	latejoin_burrowed = FALSE
 	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	evolution_without_ovipositor = FALSE
 
 // We're not really a full-on hive, so we can just override return a bunch of procs that might mess with stuff
 /datum/hive_status/moba/set_living_xeno_queen(mob/living/carbon/xenomorph/queen/queen)

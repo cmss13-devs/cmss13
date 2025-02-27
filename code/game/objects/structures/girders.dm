@@ -363,6 +363,7 @@
 
 /obj/structure/girder/proc/repair()
 	health = initial(health)
+	state = STATE_STANDARD
 	update_state()
 
 /obj/structure/girder/proc/update_state()

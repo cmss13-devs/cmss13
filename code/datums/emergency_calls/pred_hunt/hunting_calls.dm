@@ -22,7 +22,7 @@
 	. = ..()
 	if(length(members) < mob_min)
 		message_all_yautja("Not enough humans in storage for the hunt to start.")
-		GLOB.hunt_timer_yautja = 0 MINUTES
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 	else
 		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
 
@@ -118,7 +118,7 @@
 /datum/emergency_call/pred/xeno/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
 	if(length(members) < mob_min)
-		GLOB.hunt_timer_yautja = 0
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 		message_all_yautja("Not enough serpents in storage for the hunt to start.")
 	else
 		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence!")

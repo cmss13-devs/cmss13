@@ -44,6 +44,14 @@
 	containername = "\improper .458 bullets crate"
 	group = "Ammo"
 
+/datum/supply_packs/loose_ammo_smartgun
+	name = "M56 smartgun ammo crate (x1000 rounds)"
+	contains = list(/obj/item/ammo_box/rounds/smartgun)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper smartgun ammo crate"
+	group = "Ammo"
+
 //------------------------Magazine Boxes crates----------------
 
 //------------------------For M41A----------------

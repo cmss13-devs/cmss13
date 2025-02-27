@@ -33,7 +33,7 @@ export class AudioPlayer {
     this.element = null;
   }
 
-  play(url: string, options = {}) {
+  play(url: string, options: AudioOptions = {}) {
     this.options = options;
 
     const audio = (this.element = new Audio(url));

@@ -815,7 +815,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	var/turf/deployturf = get_turf(user)
 	if(istype(deployturf, /turf/open))
 		var/turf/open/floor = deployturf
-		if(!floor.allow_construction)
+		var/area/area = get_area(user)
+		if(!floor.allow_construction || !area.allow_construction)
 			to_chat(user, SPAN_WARNING("You cannot deploy [src] here, find a more secure surface!"))
 			return FALSE
 	var/fail = FALSE

@@ -438,6 +438,18 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"abb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig 2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -482,6 +494,18 @@
 /obj/structure/window/reinforced/toughened,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
+"abl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig 1"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
 "abm" = (
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -4492,6 +4516,18 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
+"akq" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig Perma"
+	},
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/perma)
+"akr" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Interrogation"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/interrogation)
 "akt" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -23256,6 +23292,9 @@
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "euV" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC"
+	},
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/command/cic)
 "euW" = (
@@ -38727,6 +38766,9 @@
 	phone_id = "Commanding Officer's Office";
 	pixel_x = 16;
 	pixel_y = 8
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CO Office"
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -56261,6 +56303,10 @@
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced/black,
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC Conf";
+	layer = 4
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
 "sct" = (
@@ -80102,7 +80148,7 @@ naB
 naB
 naB
 naB
-naB
+akq
 dcy
 qPD
 qPD
@@ -80905,7 +80951,7 @@ xkc
 xyZ
 hvd
 vGn
-ehl
+akr
 ehl
 uXu
 cQG
@@ -81529,7 +81575,7 @@ oRk
 oRk
 oRk
 utZ
-cMl
+abb
 hTt
 kMH
 tUx
@@ -83762,7 +83808,7 @@ ptq
 oRk
 eNR
 bju
-cMl
+abl
 dEG
 xkd
 uvY

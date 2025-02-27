@@ -31,15 +31,8 @@
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 
-	var/evasion_buff_amount = 40
-	var/evasion_buff_ttl = 25  // 2.5 seconds seems reasonable
-
 	// State
-	var/next_slash_buffed = FALSE
-	var/slash_evasion_buffed = FALSE
-	var/slash_evasion_timer = TIMER_ID_NULL
 	var/dodge_activated = FALSE
-
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))

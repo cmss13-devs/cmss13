@@ -313,6 +313,14 @@
 /turf/closed/shuttle/dropship2/transparent
 	opacity = FALSE
 
+/turf/closed/shuttle/tripoli
+	name = "\improper Tripoli"
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/tripoli/transparent
+	opacity = FALSE
+
 /turf/closed/shuttle/twe_dropship
 	name = "\improper UD4-UK"
 	icon = 'icons/turf/twedropship.dmi'
@@ -349,6 +357,14 @@
 	icon_state = "1"
 
 /turf/closed/shuttle/upp_dropship2/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/midway
+	name = "\improper Midway"
+	icon = 'icons/turf/dropship5.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/midway/transparent
 	opacity = FALSE
 
 /turf/closed/shuttle/escapepod

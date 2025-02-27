@@ -45,7 +45,6 @@ const saveChatToStorage = async (store) => {
   if (usingCdnStorage) {
     const indexedDbBackend = await storage.backendPromise;
     indexedDbBackend.processChatMessages(chatRenderer.storeQueue);
-    chatRenderer.storeQueue = [];
   } else {
     const fromIndex = Math.max(
       0,
@@ -59,6 +58,7 @@ const saveChatToStorage = async (store) => {
     storage.set('chat-messages-cm', messages);
   }
 
+  chatRenderer.storeQueue = [];
   storage.set('chat-state-cm', state);
 };
 

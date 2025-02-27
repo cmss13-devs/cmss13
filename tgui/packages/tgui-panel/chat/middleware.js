@@ -36,7 +36,7 @@ import { selectChat, selectCurrentChatPage } from './selectors';
 const FORBID_TAGS = ['a', 'iframe', 'link', 'video'];
 
 const usingCdnStorage =
-  !Byond.TRIDENT && Byond.storageCdn === 'tgui:storagecdn';
+  !Byond.TRIDENT && Byond.storageCdn !== 'tgui:storagecdn';
 const storage = usingCdnStorage ? new StorageProxy(true) : realStorage;
 
 let savedTo = 0;

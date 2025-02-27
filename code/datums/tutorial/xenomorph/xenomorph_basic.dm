@@ -209,15 +209,15 @@
 	SIGNAL_HANDLER
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_MOVABLE_XENO_START_PULLING)
-	message_to_player("Well done. Now devour the human by clicking on your character with the grab selected in your hand. You must not move during this process.")
-	update_objective("Devour the grabbed human by clicking on them with the grab in-hand.")
-	RegisterSignal(human_dummy, COMSIG_MOB_DEVOURED, PROC_REF(nest_cap_phase_five))
+	message_to_player("Well done. Now haul the human by clicking on your character with the grab selected in your hand. You must not move during this process.")
+	update_objective("Haul the grabbed human by clicking on them with the grab in-hand.")
+	RegisterSignal(human_dummy, COMSIG_MOB_HAULED, PROC_REF(nest_cap_phase_five))
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_five()
 	SIGNAL_HANDLER
-	message_to_player("Well done, you can reguritate the human using the new ability you have gained.")
-	message_to_player("Be careful. Real humans may put up a fight and can try to cut out of you from inside!")
-	give_action(xeno, /datum/action/xeno_action/onclick/regurgitate)
+	message_to_player("Well done, you can release the human using the new ability you have gained.")
+	message_to_player("Be careful. Real humans may put up a fight and can try to cut out of your grip, killing you!")
+	give_action(xeno, /datum/action/xeno_action/onclick/release_haul)
 	addtimer(CALLBACK(src, PROC_REF(nest_cap_phase_six)), 15 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_six()
@@ -227,7 +227,7 @@
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_seven()
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_MOB_DEVOURED)
+	UnregisterSignal(human_dummy, COMSIG_MOB_HAULED)
 	RegisterSignal(human_dummy, COMSIG_MOB_NESTED, PROC_REF(on_mob_nested))
 	message_to_player("Nest the captive human!")
 	update_objective("Nest the captive human!")

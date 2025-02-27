@@ -42,7 +42,7 @@
 
 	if(issynth(affected_atom))
 		return
-	
+
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
@@ -73,7 +73,7 @@
 			stumble_prob = 25
 
 		if(25 to INFINITY) // 5+ ticks in smoke
-			msg = pick(SPAN_BOLDNOTICE("What am I doing?"),SPAN_DANGER("Your hearing fades away, you can't hear anything!"),SPAN_HIGHDANGER("A sharp pain eminates from your abdomin!"),SPAN_HIGHDANGER("EVERYTHING IS HURTING!! AGH!!!"),SPAN_HIGHDANGER("Your entire body is numb, you can't feel anything!"),SPAN_HIGHDANGER("You can't feel your limbs at all!"),SPAN_HIGHDANGER("Your mind goes blank, you can't think of anything!"))
+			msg = pick(SPAN_BOLDNOTICE("What am I doing?"),SPAN_DANGER("Your hearing fades away, you can't hear anything!"),SPAN_HIGHDANGER("A sharp pain eminates from your abdomen!"),SPAN_HIGHDANGER("EVERYTHING IS HURTING!! AGH!!!"),SPAN_HIGHDANGER("Your entire body is numb, you can't feel anything!"),SPAN_HIGHDANGER("You can't feel your limbs at all!"),SPAN_HIGHDANGER("Your mind goes blank, you can't think of anything!"))
 
 // Stacking effects below
 

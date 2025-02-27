@@ -31,6 +31,9 @@
 	/// Dict of mobs : player datums that are waiting for a player to reconnect after death
 	var/list/awaiting_reconnection_dict = list()
 
+	/// List of /obj/effect/moba_reuse_object_spawner, held so that we can pass it to a /datum/moba_unused_map so that if this map gets used again, we can respawn everything
+	var/list/obj/effect/moba_reuse_object_spawner/reuse_spawners = list()
+
 	// We handle timers for game events using cooldowns and boolean flags
 	COOLDOWN_DECLARE(minion_spawn_cooldown)
 	var/minion_spawn_time = 30 SECONDS
@@ -56,6 +59,8 @@
 	minion_spawn_topright = null
 	minion_spawn_botleft = null
 	minion_spawn_botright = null
+	SSmoba.controllers -= src
+	SSmoba.controller_id_dict -= "[map_id]"
 	return ..()
 
 /datum/moba_controller/proc/handle_map_init(turf/bottom_left_turf)
@@ -97,6 +102,9 @@
 		else
 			minion_spawn_botright = get_turf(spawner)
 		qdel(spawner)
+
+/datum/moba_controller/proc/handle_map_reuse_init()
+	return
 
 /datum/moba_controller/proc/load_in_players()
 	// Finish later
@@ -225,3 +233,6 @@
 
 	for(var/datum/moba_player/player as anything in players)
 		player.tied_xeno.send_to_lobby()
+
+	SSmoba.unused_maps += new /datum/unused_moba_map(src)
+	qdel(src)

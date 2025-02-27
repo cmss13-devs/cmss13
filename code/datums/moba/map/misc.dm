@@ -13,6 +13,16 @@
 
 /obj/effect/landmark/moba_hive_core_turret
 
+/obj/effect/moba_reuse_object_spawner
+	invisibility = INVISIBILITY_MAXIMUM
+	anchored = TRUE
+	unacidable = TRUE
+	var/path_to_spawn
+
+/obj/effect/moba_reuse_object_spawner/Initialize(mapload, path_to_spawn)
+	. = ..()
+	src.path_to_spawn = path_to_spawn //zonenote we need to get these things to talk to the moba_controller
+
 /obj/structure/flora/grass/tallgrass/jungle/moba
 	cut_level = 1 // Magic number because we don't have the defines in this file
 	desc = "A clump of vibrant jungle grasses. They look like they would hide someone pretty well."

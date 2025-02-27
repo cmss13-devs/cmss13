@@ -24,6 +24,10 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 	. = ..()
 	GLOB.mapless_moba_camps += src
 
+/obj/effect/moba_camp_spawner/Destroy(force)
+	. = ..()
+	QDEL_LIST(spawned_mobs)
+
 /obj/effect/moba_camp_spawner/proc/spawn_mobs()
 	if(!length(watched_tiles))
 		for(var/turf/open/floor/floor in view(hostile_range, src))

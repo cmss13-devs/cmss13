@@ -50,6 +50,7 @@
 	for(var/turf/open/floor/tile in range(1, src))
 		RegisterSignal(tile, COMSIG_TURF_ENTER, PROC_REF(on_try_enter))
 	healthcheck()
+	new /obj/effect/moba_reuse_object_spawner(get_turf(src), type)
 
 /obj/effect/alien/resin/moba_turret/proc/get_target_priority(mob/living/current_mob, mob/living/last_hit)
 	if(get_dist(src, current_mob) > range)

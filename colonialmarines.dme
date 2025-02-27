@@ -625,6 +625,7 @@
 #include "code\datums\moba\moba_player.dm"
 #include "code\datums\moba\moba_player_slot.dm"
 #include "code\datums\moba\moba_queue_player.dm"
+#include "code\datums\moba\unused_moba_map.dm"
 #include "code\datums\moba\castes\_moba_caste.dm"
 #include "code\datums\moba\castes\drone.dm"
 #include "code\datums\moba\items\_item.dm"

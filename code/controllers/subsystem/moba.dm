@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(moba)
 	var/current_highest_map_id = 1
 
 	// Add a list of unused maps here using /datum/unused_moba_map
+	var/list/datum/unused_moba_map/unused_maps = list()
 
 	var/list/datum/moba_item/items = list()
 
@@ -125,27 +126,51 @@ SUBSYSTEM_DEF(moba)
 
 			ui.close()
 
-	var/datum/moba_controller/new_controller = new(team1_players, team2_players, current_highest_map_id)
-	controllers += new_controller
-	controller_id_dict["[current_highest_map_id]"] = new_controller
-	current_highest_map_id++
+	var/datum/unused_moba_map/found_map
+	if(length(unused_maps))
+		found_map = unused_maps[1]
+		unused_maps -= found_map
 
-	var/datum/turf_reservation/reservation = SSmapping.request_turf_block_reservation(/datum/map_template/moba_map::width, /datum/map_template/moba_map::height, 1)
-	if(!reservation)
-		return // zonenote add error message
+	var/datum/moba_controller/new_controller
+	if(found_map)
+		new_controller = new(team1_players, team2_players, found_map.map_id)
+		controllers += new_controller
+		controller_id_dict["[found_map.map_id]"] = new_controller
+	else
+		new_controller = new(team1_players, team2_players, current_highest_map_id)
+		controllers += new_controller
+		controller_id_dict["[current_highest_map_id]"] = new_controller
+		current_highest_map_id++
 
-	CHECK_TICK
+	if(found_map)
+		new_controller.handle_map_reuse_init()
+		if(!new_controller.load_in_players())
+			for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
+				remove_from_queue(player.player)
+				to_chat(player.player.tied_client, SPAN_BOLDNOTICE("Someone disconnected while the game was loading. Your game has been aborted."))
+				REMOVE_TRAIT(player.player.tied_client?.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+			SSmoba.unused_maps += new /datum/unused_moba_map(new_controller)
+			qdel(new_controller)
+			return
 
-	var/datum/map_template/moba_map/template = new
-	template.load(reservation.bottom_left_turfs[1], FALSE, TRUE)
-	new_controller.handle_map_init(reservation.bottom_left_turfs[1])
-	if(!new_controller.load_in_players())
-		for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
-			remove_from_queue(player.player)
-			to_chat(player.player.tied_client, SPAN_BOLDNOTICE("Someone disconnected while the game was loading. Your game has been aborted."))
-			REMOVE_TRAIT(player.player.tied_client?.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
-		// Zonenote add the map to the unused list afterwards
-		return
+	else
+		var/datum/turf_reservation/reservation = SSmapping.request_turf_block_reservation(/datum/map_template/moba_map::width, /datum/map_template/moba_map::height, 1)
+		if(!reservation)
+			return // zonenote add error message
+
+		CHECK_TICK
+
+		var/datum/map_template/moba_map/template = new
+		template.load(reservation.bottom_left_turfs[1], FALSE, TRUE)
+		new_controller.handle_map_init(reservation.bottom_left_turfs[1])
+		if(!new_controller.load_in_players())
+			for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
+				remove_from_queue(player.player)
+				to_chat(player.player.tied_client, SPAN_BOLDNOTICE("Someone disconnected while the game was loading. Your game has been aborted."))
+				REMOVE_TRAIT(player.player.tied_client?.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+			SSmoba.unused_maps += new /datum/unused_moba_map(new_controller)
+			qdel(new_controller)
+			return
 
 /datum/controller/subsystem/moba/proc/get_moba_controller(map_id)
 	RETURN_TYPE(/datum/moba_controller)

@@ -147,6 +147,7 @@
 			return
 
 	var/list/hps = list()
+	var/old_loc = src.loc
 	for(var/obj/item/hardpoint/H in get_hardpoints_copy())
 		// Only allow uninstalls of massive hardpoints when using powerloaders
 		if(H.w_class == SIZE_MASSIVE && !ispowerclamp(O) || H.w_class <= SIZE_HUGE && ispowerclamp(O) || istype(H, /obj/item/hardpoint/special))
@@ -165,7 +166,8 @@
 
 	if(!old.can_be_removed(user))
 		return
-
+	if(old_loc != src.loc)
+		return
 	// It's in a holder
 	if(!(old in hardpoints))
 		for(var/obj/item/hardpoint/holder/H in hardpoints)

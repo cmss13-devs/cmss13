@@ -22152,7 +22152,7 @@
 /area/shiva/interior/caves/cp_camp)
 "vsi" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "vtf" = (

@@ -2716,11 +2716,11 @@
 /area/whiskey_outpost/inside/living)
 "lF" = (
 /obj/structure/surface/table,
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = 4;
 	pixel_y = 11
 	},
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = -3;
 	pixel_y = 4
 	},

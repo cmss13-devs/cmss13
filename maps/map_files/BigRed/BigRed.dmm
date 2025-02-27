@@ -10481,7 +10481,7 @@
 /area/bigredv2/caves/lambda/virology)
 "aWb" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /obj/item/storage/box/donkpockets{
 	pixel_x = 6;
 	pixel_y = 8
@@ -16277,7 +16277,7 @@
 /area/bigredv2/caves/eta/research)
 "bAu" = (
 /obj/structure/surface/table,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
 "bAv" = (
@@ -24652,7 +24652,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "jDG" = (
-/obj/item/trash/uscm_mre,
+/obj/item/trash/wy_mre,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "jDT" = (
@@ -27983,9 +27983,9 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "mXm" = (
-/obj/item/trash/uscm_mre{
-	pixel_x = 10;
-	pixel_y = -2
+/obj/item/trash/wy_mre{
+	pixel_y = 8;
+	pixel_x = 7
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -31484,7 +31484,7 @@
 	pixel_y = -2;
 	pixel_x = -8
 	},
-/obj/item/reagent_container/food/snacks/packaged_meal{
+/obj/item/mre_food_packet/entree/wy_colonist{
 	pixel_x = 8;
 	pixel_y = 9
 	},
@@ -35474,13 +35474,10 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "uut" = (
-/obj/item/storage/box/MRE{
-	pixel_x = -1;
-	pixel_y = -6
-	},
-/obj/item/storage/box/MRE{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/storage/box/mre/wy,
+/obj/item/storage/box/mre/wy{
+	pixel_x = 7;
+	pixel_y = 8
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)

@@ -956,9 +956,8 @@
 /area/bigredv2/outside/marshal_office)
 "yY" = (
 /obj/item/ammo_casing/shell,
-/obj/item/storage/box/MRE{
-	pixel_x = -1;
-	pixel_y = -6
+/obj/item/storage/box/mre/wy{
+	pixel_y = 10
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -1305,9 +1304,8 @@
 /area/bigredv2/outside/marshal_office)
 "UU" = (
 /obj/item/ammo_casing/shell,
-/obj/item/storage/box/MRE{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/storage/box/mre/wy{
+	pixel_x = 10
 	},
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)

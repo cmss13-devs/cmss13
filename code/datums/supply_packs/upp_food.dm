@@ -19,28 +19,10 @@
 	group = "UPP Food"
 
 /datum/supply_packs/upp/ration_crate
-	name = "UPP ration crate (x20)"
+	name = "UPP IRP crate (x2)"
 	contains = list(
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
-		/obj/item/reagent_container/food/snacks/upp,
+		/obj/item/ammo_box/magazine/misc/mre/upp,
+		/obj/item/ammo_box/magazine/misc/mre/upp,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply

@@ -28,9 +28,6 @@
 	origin_override = ORIGIN_UPP
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
-/datum/equipment_preset/upp/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_UPP_ALL) //ACCESS_COME_BACK_TO_ME
 /datum/equipment_preset/upp
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -273,7 +270,47 @@
 
 /datum/equipment_preset/upp/soldier/get_antag_gear_equipment()
 	return list(
+		list("ENGINEERING SUPPLIES", 0, null, null, null),
+		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
+		list("Sandbags", 20, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
+		list("ES-11 Mobile Fuel Canister", 5, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
+		list("ME3 Hand Welder", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
 
+		list("SPECIAL AMMUNITION", 0, null, null, null),
+		list("Type 71 AP Magazine (5.45x39mm)", 10, /obj/item/ammo_magazine/rifle/type71/ap , null, VENDOR_ITEM_REGULAR),
+
+		list("EXPLOSIVES", 0, null, null, null),
+		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
+
+		list("UTILITIES", 0, null, null, null),
+		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
+		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
+		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 15, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
+
+
+		list("ATTACHMENTS", 0, null, null, null),
+		list("Angled Grip", 10, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
+		list("Extended Barrel", 10, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
+		list("Laser Sight", 10, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
+		list("Red-Dot Sight", 10, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
+		list("Reflex Sight", 10, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
+		list("Suppressor", 10, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
+		list("Vertical Grip", 10, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
+
+		list("HELMET OPTICS", 0, null, null, null),
+		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
+
+		list("BINOCULARS", 0, null, null, null),
+		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
+		list("Range Finder", 10, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
+		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
+
+		list("PAMPHLETS", 0, null, null, null),
+		list("JTAC Pamphlet", 15, /obj/item/pamphlet/skill/jtac, null, VENDOR_ITEM_REGULAR),
+		list("Engineering Pamphlet", 15, /obj/item/pamphlet/skill/engineer, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -2751,6 +2788,13 @@
 	minimap_icon = "upp_synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+		ACCESS_UPP_ENGINEERING,
+		ACCESS_UPP_FLIGHT,
+		ACCESS_UPP_LEADERSHIP,
+	)
 
 
 /datum/equipment_preset/upp/synth/dressed
@@ -3626,6 +3670,12 @@
 
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_ENGINEERING,
+		ACCESS_UPP_FLIGHT,
+		ACCESS_UPP_LEADERSHIP,
+	)
 
 /datum/equipment_preset/upp/tank/dressed
 	name = "UPP Vehicle Crewman (TANK)"
@@ -3834,6 +3884,7 @@
 	minimap_icon = "upp_plt"
 	minimum_age = 30
 	skills = /datum/skills/upp/commissar
+	access = list(ACCESS_UPP_GENERAL, ACCESS_UPP_LEADERSHIP)
 
 /datum/equipment_preset/upp/commissar/dressed
 	name = "UPP Political Commissar"
@@ -3950,6 +4001,9 @@
 	role_comm_title = "Cons"
 	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
+	access = list(
+		ACCESS_UPP_GENERAL,
+	)
 
 /datum/equipment_preset/upp/conscript/load_gear(mob/living/carbon/human/new_human)
 	//back

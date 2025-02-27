@@ -684,6 +684,16 @@
 	desc = "The symbol of the United States Colonial Marines corps."
 	icon_state = "prop1"
 
+/obj/structure/sign/prop1_alt
+	name = "\improper USCM Poster"
+	desc = "The symbol of the United States Colonial Marines corps, it's faded over time."
+	icon_state = "prop1_alt"
+
+/obj/structure/sign/prop1_alt2
+	name = "\improper Worn USCM Poster"
+	desc = "The symbol of the United States Colonial Marines corps, very worn and faded over time."
+	icon_state = "prop1_alt2"
+
 /obj/structure/sign/prop2
 	name = "\improper USCM Poster"
 	desc = "A deeply faded poster of a group of glamorous Colonial Marines in uniform. Probably taken pre-Alpha."

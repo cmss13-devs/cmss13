@@ -8,7 +8,15 @@ import { createLogger } from 'tgui/logging';
 
 const logger = createLogger('AudioPlayer');
 
-export class AudioPlayer {
+export class TridentAudioPlayer implements AudioPlayer {
+  node: HTMLAudioElement;
+  playing: boolean;
+  volume: number;
+  options: AudioOptions;
+  onPlaySubscribers: { (): void }[];
+  onStopSubscribers: { (): void }[];
+  playbackInterval: NodeJS.Timeout;
+
   constructor() {
     // Set up the HTMLAudioElement node
     this.node = document.createElement('audio');
@@ -50,7 +58,9 @@ export class AudioPlayer {
         return;
       }
       const shouldStop =
-        this.options.end > 0 && this.node.currentTime >= this.options.end;
+        this.options.end &&
+        this.options.end > 0 &&
+        this.node.currentTime >= this.options.end;
       if (shouldStop) {
         this.stop();
       }
@@ -61,7 +71,6 @@ export class AudioPlayer {
     if (!this.node) {
       return;
     }
-    this.node.stop();
     document.removeChild(this.node);
     clearInterval(this.playbackInterval);
   }
@@ -89,7 +98,7 @@ export class AudioPlayer {
     this.node.src = '';
   }
 
-  setVolume(volume) {
+  setVolume(volume: number) {
     if (!this.node) {
       return;
     }
@@ -97,17 +106,104 @@ export class AudioPlayer {
     this.node.volume = volume;
   }
 
-  onPlay(subscriber) {
+  onPlay(subscriber: () => {}) {
     if (!this.node) {
       return;
     }
     this.onPlaySubscribers.push(subscriber);
   }
 
-  onStop(subscriber) {
+  onStop(subscriber: () => {}) {
     if (!this.node) {
       return;
     }
     this.onStopSubscribers.push(subscriber);
   }
+}
+
+export class WebviewAudioPlayer implements AudioPlayer {
+  element: HTMLAudioElement | null;
+  options: AudioOptions;
+  volume: number;
+
+  onPlaySubscribers: { (): void }[];
+  onStopSubscribers: { (): void }[];
+
+  constructor() {
+    this.element = null;
+
+    this.onPlaySubscribers = [];
+    this.onStopSubscribers = [];
+  }
+
+  destroy() {
+    this.element = null;
+  }
+
+  play(url: string, options = {}) {
+    this.options = options;
+
+    const audio = (this.element = new Audio(url));
+    audio.volume = this.volume;
+    audio.playbackRate = this.options.pitch || 1;
+
+    audio.addEventListener('ended', () => this.stop());
+    audio.addEventListener('error', () => this.stop());
+
+    if (this.options.end) {
+      audio.addEventListener('timeupdate', () => {
+        if (
+          this.options.end &&
+          this.options.end > 0 &&
+          audio.currentTime >= this.options.end
+        ) {
+          this.stop();
+        }
+      });
+    }
+
+    audio.play();
+
+    this.onPlaySubscribers.forEach((subscriber) => subscriber());
+  }
+
+  stop() {
+    if (!this.element) return;
+
+    this.element.pause();
+    this.element = null;
+
+    this.onStopSubscribers.forEach((subscriber) => subscriber());
+  }
+
+  setVolume(volume: number): void {
+    this.volume = volume;
+
+    if (!this.element) return;
+
+    this.element.volume = volume;
+  }
+
+  onPlay(subscriber: () => {}): void {
+    this.onPlaySubscribers.push(subscriber);
+  }
+
+  onStop(subscriber: () => {}): void {
+    this.onStopSubscribers.push(subscriber);
+  }
+}
+
+type AudioOptions = {
+  pitch?: number;
+  start?: number;
+  end?: number;
+};
+
+interface AudioPlayer {
+  destroy(): void;
+  play(url: string, options: AudioOptions): void;
+  stop(): void;
+  setVolume(volume: number): void;
+  onPlay(subscriber: () => {}): void;
+  onStop(subscriber: () => {}): void;
 }

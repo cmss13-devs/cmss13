@@ -452,6 +452,7 @@ class ChatRenderer {
           }
         }
       }
+      this.storeQueue.push({ ...message });
       // Store the node in the message
       message.node = node;
       // Query all possible selectors to find out the message type
@@ -468,7 +469,6 @@ class ChatRenderer {
       countByType[message.type] += 1;
       // TODO: Detect duplicates
       this.messages.push(message);
-      this.storeQueue.push(message);
       if (canPageAcceptType(this.page, message.type)) {
         fragment.appendChild(node);
         this.visibleMessages.push(message);

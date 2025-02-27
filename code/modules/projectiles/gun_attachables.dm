@@ -72,6 +72,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/movement_onehanded_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
 	var/velocity_mod = 0 // Added velocity to bullets
 	var/hud_offset_mod  = 0 //How many pixels to adjust the gun's sprite coords by. Ideally, this should keep the gun approximately centered.
+	var/grip_attachment_on = FALSE // This is so you can't remove or replace a weapons grip attachment WHILE its on.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
@@ -777,6 +778,7 @@ Defined in conflicts.dm of the #defines folder.
 	deactivation_sound = 'sound/handling/click_2.ogg'
 	var/original_state = "flashlight"
 	var/original_attach = "flashlight_a"
+	var/attachement_on = FALSE
 
 	var/helm_mounted_light_power = 2
 	var/helm_mounted_light_range = 3
@@ -837,6 +839,7 @@ Defined in conflicts.dm of the #defines folder.
 		if(!toggle_on || light_on)
 			if(light_on)
 				playsound(user, deactivation_sound, 15, 1)
+				attachement_on = FALSE
 			icon_state = original_state
 			attach_icon = original_attach
 			light_on = FALSE
@@ -845,6 +848,7 @@ Defined in conflicts.dm of the #defines folder.
 			icon_state += "-on"
 			attach_icon += "-on"
 			light_on = TRUE
+			attachement_on = TRUE
 		attached_item.update_icon()
 		attached_item.set_light_range(helm_mounted_light_range)
 		attached_item.set_light_power(helm_mounted_light_power)
@@ -877,11 +881,13 @@ Defined in conflicts.dm of the #defines folder.
 	if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
 		icon_state += "-on"
 		attach_icon += "-on"
+		grip_attachment_on = TRUE
 		playsound(user, deactivation_sound, 15, 1)
 	else
 		icon_state = original_state
 		attach_icon = original_attach
 		playsound(user, activation_sound, 15, 1)
+		grip_attachment_on = FALSE
 	attached_gun.update_attachable(slot)
 
 	for(var/X in attached_gun.actions)
@@ -3701,6 +3707,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	UnregisterSignal(detaching_gun, COMSIG_ITEM_DROPPED)
 
+
 	//clear out anything related to full auto switching
 	full_auto_switch = FALSE
 	old_firemode = null
@@ -3710,8 +3717,8 @@ Defined in conflicts.dm of the #defines folder.
 			qdel(item_action)
 			break
 
-	if(bipod_deployed)
-		undeploy_bipod(detaching_gun, user)
+	if(grip_attachment_on)
+		return
 	..()
 
 /obj/item/attachable/bipod/update_icon()
@@ -3747,6 +3754,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_12
+	grip_attachment_on = FALSE
 	//if we are no longer on full auto, don't bother switching back to the old firemode
 	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC && gun.gun_firemode != old_firemode)
 		gun.do_toggle_firemode(user, null, old_firemode)
@@ -3794,6 +3802,7 @@ Defined in conflicts.dm of the #defines folder.
 					delay_mod = -FIRE_DELAY_TIER_12
 				gun.recalculate_attachment_bonuses()
 				gun.stop_fire()
+				grip_attachment_on = TRUE
 
 				initial_mob_dir = user.dir
 				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))

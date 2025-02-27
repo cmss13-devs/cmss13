@@ -1886,13 +1886,13 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
-/obj/item/stack/sheet/metal/med_large_stack,
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/strata/multi_tiles,
 /area/navalis/indoors/logistic/mech_bay)
 "aeR" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
-/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/item/stack/sheet/plasteel/med_small_stack,
 /turf/open/floor/strata/multi_tiles,
 /area/navalis/indoors/logistic/mech_bay)
 "aeS" = (
@@ -15164,7 +15164,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square"
 	},
-/obj/effect/spawner/random/gun/shotgun/midchance,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "aOh" = (
@@ -15178,7 +15178,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square"
 	},
-/obj/effect/spawner/random/gun/rifle/midchance,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "aOj" = (
@@ -15215,7 +15215,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
 "aOo" = (
-/obj/effect/spawner/random/gun/rifle/midchance,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/plating,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "aOp" = (
@@ -16384,7 +16384,7 @@
 	pixel_x = 6;
 	pixel_y = -5
 	},
-/obj/effect/spawner/random/gun/shotgun/highchance,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/indoors/industrial/power)
 "aQI" = (
@@ -17022,7 +17022,7 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/navalis/indoors/residential/port)
 "aSo" = (
-/obj/effect/spawner/random/gun/rifle/midchance,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/accessway)
 "aSp" = (
@@ -17627,7 +17627,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/landing_zone_1)
 "aTD" = (
-/obj/effect/spawner/random/gun/rifle/midchance,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/darkred2,
 /area/navalis/indoors/residential/port)
 "aTE" = (
@@ -17635,17 +17635,17 @@
 	dir = 4;
 	pixel_y = -2
 	},
-/obj/effect/spawner/random/gun/rifle/highchance,
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/indoors/industrial/power)
 "aTF" = (
 /obj/effect/alien/resin/sticky,
-/obj/effect/spawner/random/gun/rifle/midchance,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth)
 "aTG" = (
 /obj/item/stack/sheet/plasteel/large_stack,
-/obj/effect/spawner/random/gun/rifle/highchance,
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/corsat/cargo,
 /area/navalis/indoors/industrial/mining)
 "aTH" = (
@@ -17743,7 +17743,7 @@
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/navalis/oob)
 "aTU" = (
-/obj/effect/spawner/random/gun/shotgun/midchance,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "aTV" = (
@@ -20352,10 +20352,6 @@
 	color = "#b7b8b2"
 	},
 /obj/effect/spawner/random/toolbox,
-/obj/item/stack/sheet/metal/medium_stack{
-	pixel_x = 5;
-	pixel_y = 3
-	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/command/tertiary_comms)
 "dCO" = (
@@ -20500,7 +20496,7 @@
 /turf/open/floor/prison/blue,
 /area/navalis/outdoors/landing_zone_1)
 "dNo" = (
-/obj/effect/spawner/random/gun/rifle/midchance,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/corsat/cargo,
 /area/navalis/indoors/industrial/mining)
 "dOx" = (
@@ -27434,7 +27430,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/effect/spawner/random/gun/shotgun/highchance,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/floor/prison/red/southwest,
 /area/navalis/indoors/command/security)
 "leh" = (
@@ -33231,7 +33227,6 @@
 /area/navalis/indoors/command/meeting_hall)
 "rie" = (
 /obj/structure/closet/secure_closet/security,
-/obj/effect/spawner/random/gun/shotgun/midchance,
 /obj/effect/landmark/objective_landmark/far,
 /obj/structure/sign/safety/ammunition{
 	pixel_x = 23;
@@ -33240,6 +33235,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/floor/prison/red/north,
 /area/navalis/indoors/command/security)
 "rio" = (
@@ -34113,7 +34109,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/spawner/random/gun/rifle/midchance,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/navalis/indoors/command/server_room)
 "sga" = (
@@ -34617,7 +34613,7 @@
 	pixel_x = -4;
 	pixel_y = 2
 	},
-/obj/effect/spawner/random/gun/smg/midchance,
+/obj/effect/spawner/random/gun/smg/lowchance,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/command_kitchen)
 "sJD" = (
@@ -34657,7 +34653,7 @@
 /area/navalis/oob/water)
 "sKk" = (
 /obj/structure/surface/rack,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/prison/blue,
 /area/navalis/indoors/logistic/workshop)
 "sKx" = (
@@ -34926,7 +34922,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/obj/effect/spawner/random/gun/shotgun/midchance,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/navalis/indoors/command/conferance)
 "sXG" = (
@@ -35288,7 +35284,7 @@
 	color = "#b7b8b2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/gun/rifle/highchance,
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/server_room)
 "tsq" = (
@@ -36686,7 +36682,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
-/obj/effect/spawner/random/gun/smg/highchance,
+/obj/effect/spawner/random/gun/smg/lowchance,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/workshop)
 "uGi" = (
@@ -39041,8 +39037,8 @@
 /area/navalis/indoors/med_sci/storage)
 "wQV" = (
 /obj/structure/closet/secure_closet/security,
-/obj/effect/spawner/random/gun/smg/highchance,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/spawner/random/gun/smg/lowchance,
 /turf/open/floor/prison/red/northeast,
 /area/navalis/indoors/command/security)
 "wRq" = (

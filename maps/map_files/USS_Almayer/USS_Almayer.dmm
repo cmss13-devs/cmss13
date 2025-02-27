@@ -189,6 +189,12 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/cryo_cells)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -10241,7 +10247,7 @@
 	name = "Outer Telecommunications Controls";
 	pixel_x = -22;
 	pixel_y = -10;
-	req_one_access_txt = list(19,7);
+	req_one_access_txt = "7;19";
 	needs_power = 0
 	},
 /turf/open/floor/almayer/orange/west,
@@ -14050,7 +14056,6 @@
 	pixel_y = -6;
 	throw_range = 15;
 	pixel_x = 25;
-	req_one_access = list(5,19,39);
 	req_one_access_txt = "5;19;39"
 	},
 /obj/structure/sign/safety/storage{
@@ -91892,7 +91897,7 @@ ivu
 gSy
 ltw
 iPq
-cmr
+cGA
 kcH
 rlf
 soq
@@ -92095,7 +92100,7 @@ nHu
 sit
 snx
 oVY
-cGA
+cmr
 kcH
 rBa
 eqN
@@ -119422,7 +119427,7 @@ tXM
 anj
 anb
 vub
-jmK
+aaB
 jmK
 jmK
 cdn

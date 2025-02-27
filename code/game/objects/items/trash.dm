@@ -72,14 +72,6 @@
 	name = "Kepler Flamehot wrapper"
 	icon_state = "flamehotkepler"
 
-/obj/item/trash/liquidfood
-	name = "\improper \"LiquidFood\" ration"
-	icon_state = "liquidfood"
-
-/obj/item/trash/pistachios
-	name = "Pistachios pack"
-	icon_state = "pistachios_pack"
-
 /obj/item/trash/popcorn
 	name = "Popcorn"
 	icon_state = "popcorn"
@@ -88,10 +80,6 @@
 	name = "4no raisins"
 	gender = PLURAL
 	icon_state= "4no_raisins"
-
-/obj/item/trash/semki
-	name = "Semki pack"
-	icon_state = "semki_pack"
 
 /obj/item/trash/sosjerky
 	name = "Scaredy's Private Reserve Beef Jerky"

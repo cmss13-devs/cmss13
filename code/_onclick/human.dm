@@ -86,6 +86,7 @@
 		to_chat(src, SPAN_NOTICE("You try to move your [temp.display_name], but cannot!"))
 		return
 
+	SEND_SIGNAL(src, COMSIG_HUMAN_UNARMED_ATTACK, A)
 	A.attack_hand(src, click_parameters)
 
 /datum/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
@@ -167,6 +168,6 @@
 		return
 
 	var/turf/target_turf = get_turf(get_step(src, Get_Compass_Dir(src, A)))
-	
+
 	if(istype(target_turf, /turf/open_space))
 		return target_turf.attack_hand(src)

@@ -70,3 +70,6 @@
 
 /// From /obj/item/proc/dig_out_shrapnel() : ()
 #define COMSIG_HUMAN_SHRAPNEL_REMOVED "human_shrapnel_removed"
+
+/// From /mob/living/carbon/human/UnarmedAttack()
+#define COMSIG_HUMAN_UNARMED_ATTACK "human_unarmed_attack"

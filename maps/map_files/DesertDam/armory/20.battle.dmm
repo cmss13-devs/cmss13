@@ -37,6 +37,9 @@
 	req_access = null;
 	opened = 1
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/building/security/armory)
 "nB" = (
@@ -48,9 +51,6 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "rf" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 28
 	},

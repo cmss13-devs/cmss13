@@ -432,9 +432,6 @@
 /obj/item/ammo_magazine/smg/nailgun{
 	pixel_y = 4
 	},
-/obj/structure/sign/nosmoking_2{
-	pixel_y = 32
-	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Oy" = (

@@ -10,6 +10,12 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aac" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/desert_dam/building/medical/lobby)
 "aad" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
@@ -34,6 +40,13 @@
 /obj/structure/prop/hybrisa/xenobiology/small/cracked1,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
+"aag" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
 "aah" = (
 /obj/structure/closet/fireaxecabinet,
 /turf/closed/wall/r_wall/chigusa,
@@ -196,6 +209,13 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aaR" = (
+/obj/structure/flora/pottedplant,
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/whitegreen/northeast,
+/area/desert_dam/building/medical/outgoing)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -366,6 +386,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_labs)
+"abz" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp,
+/obj/structure/sign/poster/pinup{
+	pixel_y = 32
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "abA" = (
 /obj/structure/floodgate{
 	icon_state = "0,3"
@@ -725,6 +753,12 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
+"acX" = (
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/engine_room)
 "acY" = (
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/east_caves)
@@ -784,9 +818,6 @@
 	},
 /obj/item/paper,
 /obj/item/tool/pen/clicky,
-/obj/structure/sign/poster/corporate{
-	pixel_y = 32
-	},
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "adl" = (
@@ -796,6 +827,9 @@
 	health = 80
 	},
 /obj/item/device/flashlight/lamp,
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "adm" = (
@@ -1551,6 +1585,13 @@
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
+"afY" = (
+/obj/structure/largecrate/random/barrel/blue,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
 "afZ" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
@@ -2842,6 +2883,9 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "aku" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "akv" = (
@@ -4123,9 +4167,6 @@
 /turf/open/floor/prison/whitepurple,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aoY" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 28
-	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/interior/dam_interior/hanger)
 "aoZ" = (
@@ -13468,9 +13509,6 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
-	pixel_y = 40
-	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/office)
 "aWd" = (
@@ -14297,9 +14335,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1
-	},
-/obj/structure/sign/poster/music{
-	pixel_y = 32
 	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
@@ -19685,9 +19720,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 28
-	},
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/lobby)
 "brs" = (
@@ -20483,9 +20515,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
-	pixel_y = 38
-	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "bul" = (
@@ -24182,6 +24211,9 @@
 /area/desert_dam/building/security/southern_hallway)
 "bGA" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bGB" = (
@@ -24638,9 +24670,6 @@
 /obj/item/ammo_magazine/smg/nailgun,
 /obj/item/ammo_magazine/smg/nailgun{
 	pixel_x = 4
-	},
-/obj/structure/sign/nosmoking_2{
-	pixel_y = 32
 	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
@@ -26367,12 +26396,12 @@
 	req_access = null;
 	opened = 1
 	},
-/turf/open/floor/prison/darkred2/northwest,
-/area/desert_dam/building/security/armory)
-"bNT" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/desert_dam/building/security/armory)
+"bNT" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 28
 	},
@@ -26831,15 +26860,6 @@
 "bPr" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 28
-	},
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/engine_room)
-"bPs" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/sign/nosmoking_2{
-	pixel_y = 32
 	},
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/engine_room)
@@ -30652,15 +30672,6 @@
 	},
 /turf/open/floor/whiteyellowcorner/east,
 /area/desert_dam/interior/dam_interior/break_room)
-"cbX" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/sign/poster/wylogo{
-	pixel_y = 32
-	},
-/turf/open/floor/whiteblue/north,
-/area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "cbY" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement/cement14,
@@ -32864,9 +32875,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1
-	},
-/obj/structure/sign/poster/art{
-	pixel_y = 32
 	},
 /turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/outgoing)
@@ -45209,9 +45217,7 @@
 	pixel_x = 5;
 	pixel_y = -4
 	},
-/obj/effect/spawner/random/technology_scanner{
-	bound_x = -4
-	},
+/obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dvz" = (
@@ -45231,9 +45237,6 @@
 	},
 /obj/item/bedsheet/colorable{
 	color = "#798675"
-	},
-/obj/structure/sign/poster/clf{
-	pixel_y = 32
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_northwing)
@@ -55944,6 +55947,9 @@
 /obj/structure/surface/table,
 /obj/item/clothing/mask/cigarette/weed{
 	pixel_y = 6
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_northwing)
@@ -71149,7 +71155,7 @@ aQW
 bgN
 aSa
 bhu
-bhN
+afY
 bin
 anf
 bjd
@@ -79644,7 +79650,7 @@ dTs
 bCG
 dTs
 adw
-aku
+aag
 bkL
 cdq
 cea
@@ -82428,7 +82434,7 @@ dTs
 dTs
 dTs
 aEa
-aCl
+abz
 aCA
 aEa
 aCN
@@ -87082,7 +87088,7 @@ bgp
 bgp
 bgp
 btQ
-bvi
+acX
 bwt
 bxD
 bxD
@@ -88486,7 +88492,7 @@ bhk
 bhk
 bhk
 btQ
-bPs
+bvj
 bwu
 bwv
 bwv
@@ -94630,7 +94636,7 @@ cqr
 buw
 btn
 bsV
-crF
+aac
 cvO
 dQK
 bpl
@@ -95321,7 +95327,7 @@ chZ
 civ
 dQa
 dQa
-bCb
+aaR
 coS
 clL
 bAl
@@ -109268,7 +109274,7 @@ aqs
 aoT
 cdh
 anP
-auF
+cbQ
 avh
 bYn
 aww
@@ -109736,7 +109742,7 @@ aqs
 aoT
 asL
 anP
-cbX
+auQ
 avh
 aww
 aww

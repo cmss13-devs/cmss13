@@ -25,6 +25,13 @@
 /obj/item/shard,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
+"ae" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -885,6 +892,9 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "sp" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "su" = (
@@ -2329,9 +2339,6 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/structure/sign/poster/music{
-	pixel_y = 32
-	},
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "Tl" = (
@@ -2355,9 +2362,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
-	pixel_y = 38
-	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "TR" = (
@@ -3210,7 +3214,7 @@ xT
 "}
 (14,1,1) = {"
 hv
-sp
+ae
 Vr
 ad
 jj

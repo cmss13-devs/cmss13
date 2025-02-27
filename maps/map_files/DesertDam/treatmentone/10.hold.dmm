@@ -645,6 +645,7 @@
 	pixel_x = 5;
 	pixel_y = -4
 	},
+/obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "oz" = (

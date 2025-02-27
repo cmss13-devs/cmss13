@@ -411,6 +411,9 @@
 "tE" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
 /turf/open/floor/plating/burnt_platingdmg3/west,
 /area/desert_dam/building/bar/bar)
 "ut" = (
@@ -533,9 +536,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
-	pixel_y = 38
-	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "BI" = (
@@ -887,6 +887,9 @@
 /area/desert_dam/building/bar/bar)
 "SR" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
 /turf/open/floor/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "SX" = (
@@ -981,9 +984,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1
-	},
-/obj/structure/sign/poster/music{
-	pixel_y = 32
 	},
 /turf/open/floor/platingdmg1,
 /area/desert_dam/building/bar/bar)

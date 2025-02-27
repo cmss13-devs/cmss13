@@ -12,6 +12,14 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ac" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp,
+/obj/structure/sign/poster/pinup{
+	pixel_y = 32
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "bg" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -946,7 +954,7 @@ Sh
 "}
 (13,1,1) = {"
 BH
-WV
+ac
 dz
 BH
 bH

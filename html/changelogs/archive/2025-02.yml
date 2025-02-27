@@ -539,3 +539,21 @@
       staff in events.
   - imageadd: Added Leader uniform for Kutjevo Goon camo.
   - imageadd: Added Lead Researcher hud icon for WY.
+2025-02-27:
+  Drathek:
+  - code_imp: Set ScopeOperandNamedType to be an error
+  - bugfix: Fixed WO doctor job overlapping with new Field Doctor
+  - code_imp: Added a check to ensure all usage of GLOBAL_SUBTYPE_INDEXED has uniquely
+      indexed entries
+  - rscdel: Removed unused young blood leader job datum
+  - rscadd: Added a preference to opt in for flashing lights (e.g. AR goggles and
+      happy pills)
+  - code_imp: Cleanup client_prefs
+  Git-Nivrak:
+  - bugfix: Fixed Queen being able to expand weeds into unweedable tiles
+  - code_imp: Added support for transparent turfs
+  - bugfix: Fixed layering issues with multiz
+  - code_imp: Added support for turf-specific modifiers for falling
+  hry-gh:
+  - rscadd: the synthetic snowflake vendor items are now found in the loadout in the
+      character setup menu

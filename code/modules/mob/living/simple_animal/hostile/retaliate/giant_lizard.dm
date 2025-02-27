@@ -896,7 +896,7 @@
 
 	if(ishuman(pounced_mob) && (pounced_mob.dir in reverse_nearby_direction(dir)))
 		var/mob/living/carbon/human/human = pounced_mob
-		if(human.check_shields(15, "the pounce")) //Human shield block.
+		if(human.check_shields(15, "the pounce", dir)) //Human shield block.
 			visible_message(SPAN_DANGER("[src] slams into [human]!"))
 			KnockDown(1)
 			Stun(1)

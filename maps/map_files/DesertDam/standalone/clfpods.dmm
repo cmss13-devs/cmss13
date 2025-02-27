@@ -71,6 +71,10 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"aj" = (
+/obj/item/ammo_box/magazine/misc/mre/emergency,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/exterior/valley/valley_medical)
 "ak" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -295,10 +299,12 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_medical)
 "es" = (
-/obj/structure/largecrate/supply/supplies/mre{
-	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
-	name = "\improper CLF Supply MRE crate (x50)"
-	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "eI" = (
@@ -2338,7 +2344,7 @@ JD
 GM
 fx
 TN
-Rr
+aj
 Ro
 kH
 kH

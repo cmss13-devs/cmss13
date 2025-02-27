@@ -29,6 +29,19 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
+"ah" = (
+/obj/item/map/ice_colony_map_v3,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"ai" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/turf/open/floor/corsat/cargo,
+/area/shiva/interior/colony/clf_shuttle)
 "aj" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	dir = 1;
@@ -1213,7 +1226,9 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "Ht" = (
 /obj/structure/surface/table,
-/obj/item/map/ice_colony_map_v3,
+/obj/item/ammo_box/magazine/misc/mre/emergency{
+	pixel_y = 10
+	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Hy" = (
@@ -1719,10 +1734,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "Vv" = (
-/obj/structure/largecrate/supply/supplies/mre{
-	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
-	name = "\improper CLF Supply MRE crate (x50)"
-	},
+/obj/item/ammo_box/magazine/misc/mre/wy,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
 "Vy" = (
@@ -2338,7 +2350,7 @@ qK
 ZC
 VK
 Pa
-DH
+ah
 hf
 ZO
 YE
@@ -2951,7 +2963,7 @@ Kx
 hZ
 hs
 hs
-Vv
+ai
 kI
 Kx
 xA

@@ -198,6 +198,14 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/park)
+"aE" = (
+/obj/item/mre_food_packet/clf,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"aF" = (
+/obj/item/ammo_box/magazine/misc/mre/wy,
+/turf/open/floor/almayer/green/north,
+/area/fiorina/station/clf_ship)
 "aI" = (
 /turf/open/floor/almayer/blue/southwest,
 /area/fiorina/station/clf_ship)
@@ -288,6 +296,12 @@
 /area/fiorina/station/botany)
 "dR" = (
 /obj/structure/machinery/light,
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
 /turf/open/floor/platingdmg3,
 /area/fiorina/station/clf_ship)
 "dW" = (
@@ -1532,13 +1546,6 @@
 /obj/structure/platform/metal/almayer/east,
 /turf/open/floor/prison/greenblue/southeast,
 /area/fiorina/station/botany)
-"PJ" = (
-/obj/structure/largecrate/supply/supplies/mre{
-	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
-	name = "\improper CLF Supply MRE crate (x50)"
-	},
-/turf/open/floor/plating,
-/area/fiorina/station/clf_ship)
 "PO" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	name = "\improper Rocinante Airlock"
@@ -2434,7 +2441,7 @@ DF
 DF
 Bl
 rJ
-dG
+aF
 Wq
 hV
 DF
@@ -2521,7 +2528,7 @@ Rb
 dG
 qR
 GV
-DF
+aE
 Ee
 rJ
 CO
@@ -2546,7 +2553,7 @@ Nv
 Nv
 WE
 cK
-PJ
+Nv
 YV
 dR
 rJ

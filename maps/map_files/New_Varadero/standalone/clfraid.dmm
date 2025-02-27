@@ -869,10 +869,12 @@
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
 "uU" = (
-/obj/structure/largecrate/supply/supplies/mre{
-	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
-	name = "\improper CLF Supply MRE crate (x50)"
-	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
 /turf/open/floor/shiva/purple/west,
 /area/varadero/interior/research)
 "uV" = (

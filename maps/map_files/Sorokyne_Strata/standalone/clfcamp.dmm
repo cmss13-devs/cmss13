@@ -77,6 +77,10 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"ak" = (
+/obj/item/trash/crushed_cup,
+/turf/open/floor/wood,
+/area/strata/ag/interior/outpost/clf_dorms)
 "aE" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/cans/beer{
@@ -251,10 +255,12 @@
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/ashtray/bronze{
 	icon_state = "ashtray_half_br";
-	pixel_x = -8;
+	pixel_x = -13;
 	pixel_y = 7
 	},
-/obj/item/trash/crushed_cup,
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_y = 6
+	},
 /turf/open/floor/wood/wood_broken,
 /area/strata/ag/interior/outpost/clf_dorms)
 "fh" = (
@@ -1333,13 +1339,15 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "Ux" = (
-/obj/structure/largecrate/supply/supplies/mre{
-	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
-	name = "\improper CLF Supply MRE crate (x50)"
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "Va" = (
@@ -2404,7 +2412,7 @@ Cp
 LC
 vu
 Vm
-LC
+ak
 Ad
 LC
 kp

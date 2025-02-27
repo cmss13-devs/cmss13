@@ -488,6 +488,9 @@
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "yT" = (
 /obj/structure/surface/table,
+/obj/item/ammo_box/magazine/misc/mre/wy{
+	pixel_y = 5
+	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "zp" = (
@@ -657,10 +660,12 @@
 /turf/open/floor/almayer,
 /area/kutjevo/interior/colony/clf_shuttle)
 "Jz" = (
-/obj/structure/largecrate/supply/supplies/mre{
-	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
-	name = "\improper CLF Supply MRE crate (x50)"
-	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
 /turf/open/floor/plating/warnplate/east,
 /area/kutjevo/interior/colony/clf_shuttle)
 "JJ" = (

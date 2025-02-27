@@ -229,6 +229,10 @@
 	},
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
+"aL" = (
+/obj/item/ammo_box/magazine/misc/mre/emergency,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
 "aM" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/stack/cable_coil/cut{
@@ -947,10 +951,15 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/largecrate/supply/supplies/mre,
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "op" = (
@@ -2996,8 +3005,13 @@
 /area/bigredv2/caves/mining)
 "UC" = (
 /obj/structure/surface/table,
-/obj/item/restraint/handcuffs,
-/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs{
+	pixel_y = 12
+	},
+/obj/item/restraint/handcuffs{
+	pixel_y = 10
+	},
+/obj/item/mre_food_packet/clf,
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
 "UE" = (
@@ -4427,7 +4441,7 @@ jD
 NT
 CU
 ON
-bc
+aL
 lc
 NT
 kH

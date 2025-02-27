@@ -35,27 +35,45 @@ import { selectChat, selectCurrentChatPage } from './selectors';
 // List of blacklisted tags
 const FORBID_TAGS = ['a', 'iframe', 'link', 'video'];
 
-const storage =
-  Byond.storageCdn === 'tgui:storagecdn' ? realStorage : new StorageProxy(true);
+const usingCdnStorage =
+  !Byond.TRIDENT && Byond.storageCdn === 'tgui:storagecdn';
+const storage = usingCdnStorage ? new StorageProxy(true) : realStorage;
+
+let savedTo = 0;
 
 const saveChatToStorage = async (store) => {
   const state = selectChat(store.getState());
-  const fromIndex = Math.max(
-    0,
-    chatRenderer.messages.length - MAX_PERSISTED_MESSAGES,
-  );
-  const messages = chatRenderer.messages
-    .slice(fromIndex)
-    .map((message) => serializeMessage(message));
+
+  if (usingCdnStorage) {
+    const indexedDbBackend = await storage.backendPromise;
+    indexedDbBackend.processChatMessages(chatRenderer.storeQueue);
+    chatRenderer.storeQueue = [];
+  } else {
+    const fromIndex = Math.max(
+      0,
+      chatRenderer.messages.length - MAX_PERSISTED_MESSAGES,
+    );
+
+    const messages = chatRenderer.messages
+      .slice(fromIndex)
+      .map((message) => serializeMessage(message));
+
+    storage.set('chat-messages-cm', messages);
+  }
+
   storage.set('chat-state-cm', state);
-  storage.set('chat-messages-cm', messages);
 };
 
 const loadChatFromStorage = async (store) => {
-  const [state, messages] = await Promise.all([
-    storage.get('chat-state-cm'),
-    storage.get('chat-messages-cm'),
-  ]);
+  const state = await storage.get('chat-state-cm');
+
+  let messages;
+  if (usingCdnStorage) {
+    messages = await (await storage.backendPromise).getChatMessages();
+  } else {
+    messages = await storage.get('chat-messages-cm');
+  }
+
   // Discard incompatible versions
   if (state && state.version <= 4) {
     store.dispatch(loadChat());

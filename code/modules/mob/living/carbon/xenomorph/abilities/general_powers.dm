@@ -776,17 +776,13 @@
 	var/was_selected_before = (xeno.selected_ability == src) //action_deselect() doesn't work for toggling the same ability, so we need to account for this.
 	..()
 	var/is_selected_now = (xeno.selected_ability == src)
-///Impossible to shorten this because acid overlay should only apply on Boiler Bombard usage, not upon selection (as requested by Blundir).
-///Boiler Bombard is a type of xeno_spit so we can't use xeno.acid_overlay here, and have to use the long version for specificity.
-	if(istype(xeno, /mob/living/carbon/xenomorph/spitter))
-		xeno.overlays += icon('icons/mob/xenos/castes/tier_1/sentinel.dmi', "Sentinel-Spit")
-	if(istype(xeno, /mob/living/carbon/xenomorph/spitter))
-		xeno.overlays += icon('icons/mob/xenos/castes/tier_2/spitter.dmi', "Spitter-Spit")
-	if(istype(xeno, /mob/living/carbon/xenomorph/praetorian))
-		xeno.overlays += icon('icons/mob/xenos/castes/tier_3/praetorian.dmi', "Praetorian-Spit")
 	if(istype(xeno, /mob/living/carbon/xenomorph/boiler))
-		xeno.overlays += icon('icons/mob/xenos/castes/tier_4/queen.dmi', "Queen-Spit")
-	else if(was_selected_before && !is_selected_now)
+		return
+	else
+		xeno.overlays += xeno.acid_overlay
+	if(is_selected_now)
+		xeno.overlays += xeno.acid_overlay
+	if(was_selected_before && !is_selected_now)
 		xeno.overlays -= xeno.acid_overlay
 
 /datum/action/xeno_action/activable/xeno_spit/action_deselect()
@@ -845,8 +841,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
-	if(istype(xeno, /mob/living/carbon/xenomorph/boiler))
-		xeno.overlays -= xeno.acid_overlay
+	xeno.overlays -= xeno.acid_overlay
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))

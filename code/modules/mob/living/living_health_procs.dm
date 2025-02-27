@@ -585,7 +585,6 @@
 
 	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
 
-
 /mob/living/proc/heal_all_damage()
 	// shut down various types of badness
 	heal_overall_damage(getBruteLoss(), getFireLoss())

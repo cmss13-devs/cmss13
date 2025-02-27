@@ -500,7 +500,7 @@
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
 				else
-					embryo.counter = embryo.per_stage_hugged_time
+					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)

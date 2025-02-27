@@ -8,9 +8,8 @@
 	icon_state = "late_join_upp"
 	job_list = UPP_JOB_LIST
 
-/datum/job/antag/upp
+/datum/job/antag/upp // Abstract type (null title)
 	allow_additional = TRUE
-	title = FACTION_UPP
 	selection_class = "job_synth" //setup colour
 	total_positions = 1
 	spawn_positions = 1
@@ -282,7 +281,7 @@
 //*****************************************************************************************************/
 
 
-/datum/job/antag/upp/cryo/medic
+/datum/job/antag/upp/medic
 	title = JOB_UPP_MEDIC
 	gear_preset = /datum/equipment_preset/upp/medic
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
@@ -1671,7 +1670,6 @@
 
 
 /datum/job/antag/upp/officer //this is placeholder for stuff that is supposed to be the same for all officers
-	title = JOB_UPP_SRLT_OFFICER
 	selection_class = "job_command"
 
 /datum/equipment_preset/upp/officer/load_gear(mob/living/carbon/human/new_human)
@@ -2195,10 +2193,10 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/co_whitelist
-	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
-	flags_whitelist = WHITELIST_COMMANDER
 	title = JOB_UPP_CO_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/major/co
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER
 
 /datum/job/antag/upp/officer/co_whitelist/New()
 	. = ..()
@@ -2209,10 +2207,10 @@
 	)
 
 /datum/job/antag/upp/officer/major
-	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
-	flags_whitelist = WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/major
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/major
 	name = "UPP Mayjor (Cryo)"
@@ -2393,11 +2391,10 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/podpolkovnik
-	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
-	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/flag/podpolkovnik
-
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 
 /datum/equipment_preset/upp/officer/flag/podpolkovnik
 	name = "UPP Podpolkovnik (Cryo)"
@@ -2589,11 +2586,10 @@
 
 
 /datum/job/antag/upp/officer/kolonel
-	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
-	flags_whitelist = WHITELIST_COMMANDER_COLONEL|WHITELIST_COMMANDER_LEADER
 	title = JOB_UPP_KOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/flag/podpolkovnik
-
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER_COLONEL|WHITELIST_COMMANDER_LEADER
 
 /datum/equipment_preset/upp/officer/flag/polkovnik
 	name = "UPP Polkovnik (Cryo)"
@@ -2656,7 +2652,6 @@
 /datum/job/antag/upp/officer/ley_gen
 	title = JOB_UPP_LT_GENERAL
 	gear_preset = /datum/equipment_preset/upp/officer/flag/ley_gen
-
 	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/flag/ley_gen

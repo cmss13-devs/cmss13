@@ -1129,12 +1129,3 @@
 	if(new_player.mind)
 		new_player.mind_initialize()
 		new_player.mind.transfer_to(target, TRUE)
-
-/mob/living/carbon/xenomorph/onZImpact(turf/impact_turf, height)
-	if(mob_size >= MOB_SIZE_BIG)
-		KnockDown(height * 5)
-		Stun(height * 5)
-
-		var/total_damage = (60 * height) ** 1.3
-		apply_damage(total_damage / 2, BRUTE)
-		playsound(impact_turf.loc, "slam", 50, 1)

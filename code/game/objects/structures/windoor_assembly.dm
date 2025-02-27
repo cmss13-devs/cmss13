@@ -68,6 +68,10 @@
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
 			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !anchored)
+				var/area/area = get_area(W)
+				if(!area.allow_construction)
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				var/turf/open/T = loc
 				if(!(istype(T) && T.allow_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))

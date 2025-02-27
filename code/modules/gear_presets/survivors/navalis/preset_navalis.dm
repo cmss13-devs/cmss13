@@ -175,6 +175,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yellow, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/small_stack, WEAR_IN_BACK)

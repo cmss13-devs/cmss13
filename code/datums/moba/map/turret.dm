@@ -20,7 +20,8 @@
 	anchored = TRUE
 	density = TRUE
 	health = 2000
-	pixel_y = 16
+	pixel_y = 32
+	pixel_x = 32
 	bound_height = 96
 	bound_width = 96
 	maptext_y = 26

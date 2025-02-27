@@ -24,7 +24,7 @@
 
           req.result.createObjectStore("ring");
           req.result.createObjectStore("messages", { autoIncrement: true }).transaction.oncomplete = async () => {
-            const trans = db.transaction("messages", "readwrite").objectStore("messages");
+            const trans = req.result.transaction("messages", "readwrite").objectStore("messages");
 
             for (let index = 0; index < MAX_MESSAGES; index++) {
                 await promiseForRequest(trans.add(null));
@@ -36,7 +36,7 @@
         }
       };
       req.onsuccess = async () => {
-        const ringPos = await promiseForRequest(db.transaction("ring", "readonly").objectStore("ring").get("value"));
+        const ringPos = await promiseForRequest(req.result.transaction("ring", "readonly").objectStore("ring").get("value"));
 
         writeFrom = ringPos || 0;
 

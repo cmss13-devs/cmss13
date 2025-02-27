@@ -16,8 +16,7 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 */
 
-/datum/supply_packs/contraband //base
-	name = "contraband crate"
+/datum/supply_packs/contraband // Abstract type (null name)
 	contains = null
 	containertype = null
 	containername = "large crate"

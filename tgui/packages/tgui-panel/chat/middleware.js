@@ -39,8 +39,6 @@ const usingCdnStorage =
   !Byond.TRIDENT && Byond.storageCdn !== 'tgui:storagecdn';
 const storage = usingCdnStorage ? new StorageProxy(true) : realStorage;
 
-let savedTo = 0;
-
 const saveChatToStorage = async (store) => {
   const state = selectChat(store.getState());
 

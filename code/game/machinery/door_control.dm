@@ -387,7 +387,7 @@
 		to_chat(user, SPAN_WARNING("The external access blastdoor has already been sealed off."))
 		return
 	. = ..()
-	marine_announcement("The Industrial Rig's external blastdoor has been permanently sealed off. The xenomorphs will no longer be able to use this entrance.")
+	marine_announcement("The Industrial Rig's external eastern blastdoor has been permanently sealed off.")
 	xeno_announcement("The hosts have shut off the external lattice access to the industrial area! We can now no longer access this area via our hidden external walkway!")
 	used = TRUE
 

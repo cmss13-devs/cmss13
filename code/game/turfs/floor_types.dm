@@ -381,6 +381,9 @@
 	icon_state = "soil_grid"
 	var/slow_amt = 4
 
+/turf/open/floor/plating/catwalk/grate/net/is_weedable()
+	return NOT_WEEDABLE
+
 /turf/open/floor/plating/catwalk/grate/net/Entered(atom/movable/AM)
 	if(iscarbon(AM))
 		var/mob/living/carbon/C = AM

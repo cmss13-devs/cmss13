@@ -124,6 +124,10 @@
 					to_chat(user, SPAN_WARNING("[src] cannot be unwrenched."))
 					return
 				if(!anchored)
+					var/area/area = get_area(src)
+					if(!area.allow_construction)
+						to_chat(user, SPAN_WARNING("\The [src] cannot be secured here!"))
+						return
 					var/turf/open/checked_turf = loc
 					if(!(istype(checked_turf) && checked_turf.allow_construction))
 						to_chat(user, SPAN_WARNING("\The [src] cannot be secured here!"))

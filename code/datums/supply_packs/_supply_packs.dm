@@ -7,7 +7,7 @@
 // The lists of supply groups and contraband groups have been moved to /obj/structure/machinery/computer/supply/asrs definition as static variables.
 
 /datum/supply_packs
-	var/name = "Basic supply pack."
+	var/name = null // Abstract type
 	/// If this variable is null (not if it's an empty list), *and* so is containertype, it won't show up on the order computer.
 	var/list/contains = list()
 	var/manifest = ""

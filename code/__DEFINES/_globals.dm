@@ -28,6 +28,8 @@
 	##X = list();\
 	for(var/t in subtypesof(TypePath)){\
 		var##TypePath/A = t;\
+		var##TypePath/existing = ##X[initial(A.##Index)];\
+		if(existing && !isnull(initial(A.##Index))) stack_trace("'[initial(A.##Index)]' index for [t] in [#X] overlaps with [existing]! It must have a unique index for lookup!");\
 		##X[initial(A.##Index)] = t;\
 	}\
 	gvars_datum_init_order += #X;\

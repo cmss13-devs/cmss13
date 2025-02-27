@@ -253,7 +253,7 @@
 			to_chat(xeno, SPAN_WARNING("That's too far away!"))
 			return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/turf/target_turf = get_turf(target_atom)

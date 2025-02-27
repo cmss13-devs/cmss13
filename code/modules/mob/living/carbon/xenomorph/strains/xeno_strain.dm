@@ -125,7 +125,7 @@
 
 	new_xeno.xeno_jitter(1.5 SECONDS)
 	if(evolution_stored == evolution_threshold)
-		if(new_xeno.caste_type ==  XENO_CASTE_FACEHUGGER)
+		if(new_xeno.caste_type == XENO_CASTE_FACEHUGGER)
 			return
 		give_action(new_xeno, /datum/action/xeno_action/onclick/evolve)
 

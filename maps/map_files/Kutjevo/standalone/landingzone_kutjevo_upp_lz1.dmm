@@ -36,16 +36,127 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
-"al" = (
+"ac" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"ad" = (
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_S_East)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"ae" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"af" = (
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"ag" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"ah" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"ai" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"aj" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"ak" = (
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"am" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"an" = (
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"ao" = (
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/colony_south)
+"ap" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/kutjevo/interior/colony_south)
+"aq" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/kutjevo/interior/colony_south)
 "ar" = (
 /turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/event/deep_underground/dynamic)
+"as" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"at" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
+"au" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/kutjevo/interior/colony_south)
+"av" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/kutjevo/interior/colony_south)
 "aw" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/event/deep_underground/dynamic)
+"ax" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 11;
+	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	name = "\improper landing zone traffic signal"
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 7;
+	pixel_y = 26;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_south)
+"ay" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/kutjevo/interior/colony_south)
+"az" = (
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/colony_south)
 "aH" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/event/deep_underground/dynamic)
@@ -74,8 +185,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
 /area/event/deep_underground/dynamic)
 "bx" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
-/area/kutjevo/interior/colony_South/power2)
+/turf/closed/wall/kutjevo/colony/reinforced)
 "bO" = (
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
@@ -115,7 +225,9 @@
 /area/kutjevo/interior/colony_central)
 "dk" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "eh" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4"
@@ -158,7 +270,7 @@
 "fm" = (
 /obj/structure/prop/dam/gravestone,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "fv" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -190,7 +302,7 @@
 /area/event/deep_underground/dynamic)
 "fR" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "gq" = (
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/almayer/research/containment/floor1,
@@ -226,11 +338,11 @@
 /area/kutjevo/interior/colony_central)
 "hn" = (
 /turf/open/floor/almayer/research/containment/floor1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "hp" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_S_East)
+/area/kutjevo/interior/colony_south)
 "hs" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -254,7 +366,7 @@
 "hS" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "ia" = (
 /turf/open/floor/kutjevo/colors/orange/inner_corner/east,
 /area/event/deep_underground/dynamic)
@@ -299,7 +411,7 @@
 /area/event/deep_underground/dynamic)
 "je" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "jm" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -317,7 +429,7 @@
 /area/event/deep_underground/dynamic)
 "jo" = (
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "jw" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -354,11 +466,11 @@
 "kH" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "kU" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "ld" = (
 /turf/open/auto_turf/sand/layer2,
 /area/event/deep_underground/dynamic)
@@ -381,20 +493,17 @@
 /area/event/deep_underground/dynamic)
 "lD" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/kutjevo/interior/colony_S_East)
+/area/kutjevo/interior/colony_central)
 "lL" = (
 /turf/open/auto_turf/sand/layer1,
 /area/event/deep_underground/dynamic)
 "mr" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/kutjevo/interior/colony_S_East)
+/area/kutjevo/interior/colony_central)
 "mM" = (
 /obj/structure/fence,
 /turf/open/auto_turf/sand/layer2,
 /area/event/deep_underground/dynamic)
-"mQ" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
-/area/kutjevo/interior/colony_S_East)
 "nj" = (
 /turf/open/floor/kutjevo/colors/orange/inner_corner/west,
 /area/event/deep_underground/dynamic)
@@ -404,7 +513,7 @@
 /area/event/deep_underground/dynamic)
 "nz" = (
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "nA" = (
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
@@ -417,7 +526,7 @@
 /area/event/deep_underground/dynamic)
 "nX" = (
 /turf/closed/wall/kutjevo/rock,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "on" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/kutjevo/interior/colony_central)
@@ -426,7 +535,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_S_East)
+/area/kutjevo/interior/colony_central)
 "pd" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/event/deep_underground/dynamic)
@@ -463,7 +572,7 @@
 "pL" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "pT" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -499,7 +608,7 @@
 /area/event/deep_underground/dynamic)
 "qY" = (
 /turf/closed/wall/kutjevo/rock,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "ra" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 5
@@ -550,7 +659,9 @@
 /area/event/deep_underground/dynamic)
 "sw" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "sH" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/sand/layer2,
@@ -575,7 +686,7 @@
 /area/event/deep_underground/dynamic)
 "tG" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "tM" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
 	dir = 1
@@ -621,7 +732,9 @@
 	desc = "A traffic signal denoting the nearby presence of something to the East."
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "tV" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/event/deep_underground/dynamic)
@@ -630,10 +743,12 @@
 	icon_state = "gravestone3"
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "uf" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "uj" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
 	name = "Eastern Colony Landing Zone";
@@ -643,7 +758,7 @@
 /area/event/deep_underground/dynamic)
 "uC" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "uP" = (
 /turf/template_noop,
 /area/template_noop)
@@ -660,7 +775,7 @@
 /area/event/deep_underground/dynamic)
 "vi" = (
 /turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "vr" = (
 /obj/structure/platform/metal/strata/west,
 /obj/effect/decal/warning_stripes{
@@ -687,13 +802,13 @@
 /area/event/deep_underground/dynamic)
 "vH" = (
 /turf/open/floor/kutjevo/plate,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "vW" = (
 /obj/structure/prop/dam/gravestone{
 	icon_state = "gravestone2"
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "wi" = (
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/tan/alt_edge,
@@ -718,19 +833,20 @@
 /area/event/deep_underground/dynamic)
 "xE" = (
 /turf/open/floor/almayer/research/containment/floor2,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "xG" = (
 /turf/open/floor/kutjevo/colors/orange/edge/north,
 /area/event/deep_underground/dynamic)
 "yc" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "yH" = (
 /obj/structure/prop/dam/gravestone{
 	icon_state = "gravestone3"
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "yV" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/syndi_cakes,
@@ -738,7 +854,7 @@
 /area/event/deep_underground/dynamic)
 "yX" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "zk" = (
 /obj/structure/surface/rack,
 /turf/open/floor/kutjevo/colors/orange,
@@ -751,7 +867,7 @@
 "zv" = (
 /obj/structure/platform/metal/strata,
 /turf/open/floor/almayer/research/containment/floor2,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "zB" = (
 /turf/open/floor/kutjevo/tan/alt_edge/southwest,
 /area/event/deep_underground/dynamic)
@@ -777,7 +893,7 @@
 /area/event/deep_underground/dynamic)
 "AB" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "AL" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/kutjevo/interior/colony_central)
@@ -799,11 +915,12 @@
 /area/event/deep_underground/dynamic)
 "Bt" = (
 /turf/open/floor/kutjevo/colors/orange,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "BB" = (
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/almayer/research/containment/floor1,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "BP" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
@@ -818,7 +935,7 @@
 "Ch" = (
 /obj/structure/prop/dam/torii,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "Cl" = (
 /turf/open/floor/kutjevo/tan/alt_inner_edge/east,
 /area/event/deep_underground/dynamic)
@@ -827,7 +944,8 @@
 	dir = 10
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "Db" = (
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/plating,
@@ -887,9 +1005,6 @@
 /obj/structure/platform_decoration/metal/strata,
 /turf/open/floor/kutjevo/plate,
 /area/event/deep_underground/dynamic)
-"Gn" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/kutjevo/interior/colony_S_East)
 "Gv" = (
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_central)
@@ -933,7 +1048,7 @@
 /area/kutjevo/interior/oob)
 "HJ" = (
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "HK" = (
 /turf/open/floor/kutjevo/tan,
 /area/event/deep_underground/dynamic)
@@ -986,7 +1101,7 @@
 /area/kutjevo/interior/colony_central)
 "JN" = (
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "Kh" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
@@ -994,18 +1109,17 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/event/deep_underground/dynamic)
-"Kl" = (
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_S_East)
 "Ku" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/event/deep_underground/dynamic)
 "Kv" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "Kz" = (
 /turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "KD" = (
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/event/deep_underground/dynamic)
@@ -1050,7 +1164,7 @@
 /area/event/deep_underground/dynamic)
 "MF" = (
 /turf/open/floor/kutjevo/tan/alt_edge/west,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "MH" = (
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/event/deep_underground/dynamic)
@@ -1064,7 +1178,7 @@
 "Nq" = (
 /obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "Nr" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails{
@@ -1081,9 +1195,6 @@
 /obj/structure/closet/crate,
 /turf/open/floor/kutjevo/tan,
 /area/event/deep_underground/dynamic)
-"NT" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
-/area/kutjevo/interior/colony_S_East)
 "NU" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 8;
@@ -1130,7 +1241,8 @@
 /area/kutjevo/interior/colony_central)
 "PB" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "PI" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -1156,7 +1268,7 @@
 "PZ" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "Qb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
 	dir = 1
@@ -1296,9 +1408,6 @@
 	},
 /turf/open/floor/almayer/research/containment/floor1,
 /area/event/deep_underground/dynamic)
-"Us" = (
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/colony_S_East)
 "UH" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 1;
@@ -1319,7 +1428,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/bottle/sake,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_N_East)
+/area/kutjevo/interior/colony_northeast)
 "Vh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/sheet/metal/large_stack,
@@ -1376,7 +1485,7 @@
 	desc = "A traffic signal denoting the nearby presence of something to the East."
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_S_East)
+/area/kutjevo/interior/colony_central)
 "VO" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/kutjevo/interior/colony_central)
@@ -1441,7 +1550,8 @@
 	dir = 6
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south,
+/area/kutjevo/interior/colony_south)
 "Xl" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2-8"
@@ -1492,7 +1602,7 @@
 /area/event/deep_underground/dynamic)
 "ZP" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_south)
 "ZT" = (
 /obj/structure/fence,
 /turf/open/floor/almayer/research/containment/floor2/west,
@@ -1645,9 +1755,9 @@ bx
 bx
 nz
 uC
-yc
-yc
-yc
+ao
+ao
+ao
 uC
 nz
 HJ
@@ -1726,8 +1836,8 @@ nz
 hS
 HJ
 AB
-dk
-PB
+au
+ay
 nz
 HJ
 HJ
@@ -1807,14 +1917,14 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 nz
-HJ
+ac
 nX
-nX
-nX
-nX
-nX
+ae
+ae
+ae
+ae
 nX
 uP
 uP
@@ -1881,15 +1991,15 @@ uP
 uP
 uP
 HJ
-yc
-yc
-tS
+ao
+ao
+ax
 HJ
 tG
 ZP
-uf
+ap
 vi
-HJ
+ac
 nX
 nX
 nX
@@ -1967,13 +2077,13 @@ HJ
 vi
 tG
 ZP
-uf
+ap
 HJ
-nz
-nX
-nX
-nX
-nX
+ad
+ae
+ae
+ae
+ae
 nX
 uP
 uP
@@ -2045,9 +2155,9 @@ vH
 HJ
 HJ
 uC
-Bt
-yc
-Bt
+az
+ao
+az
 uC
 HJ
 nX
@@ -2127,13 +2237,13 @@ HJ
 vi
 tG
 ZP
-uf
+ap
 nz
 nz
 nX
 nX
 nX
-nX
+ae
 nz
 HJ
 HJ
@@ -2205,15 +2315,15 @@ nX
 nX
 HJ
 uC
-Bt
-yc
-Bt
+az
+ao
+az
 uC
 HJ
 nX
 nX
 nX
-nX
+ae
 nz
 HJ
 vi
@@ -2287,13 +2397,13 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 nz
 nz
 nX
 nX
 nX
-nX
+ae
 nX
 HJ
 HJ
@@ -2365,15 +2475,15 @@ uP
 nX
 hS
 uC
-Bt
-yc
-Bt
+az
+ao
+az
 uC
 HJ
 nX
 nX
 nX
-uC
+aj
 uC
 nz
 HJ
@@ -2447,23 +2557,23 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 vi
 nz
 nX
-nX
-uC
-uC
-uC
-nz
-HJ
-HJ
-ZP
-HJ
-HJ
-HJ
-HJ
-HJ
+ae
+aj
+am
+aj
+ad
+ac
+ac
+ag
+ac
+ac
+ac
+ac
+ac
 "}
 (13,1,1) = {"
 uP
@@ -2528,22 +2638,22 @@ HJ
 tG
 ZP
 ZP
-dk
-dk
-dk
+au
+au
+au
 PB
 Bt
-Bt
+an
 yc
-HJ
-ZP
-HJ
-ZP
-vi
-HJ
-HJ
-HJ
-HJ
+ac
+ag
+ac
+ag
+af
+ac
+ac
+ac
+ac
 "}
 (14,1,1) = {"
 uP
@@ -2611,19 +2721,19 @@ ZP
 ZP
 ZP
 ZP
-uf
+ap
+ao
 yc
 yc
-yc
-HJ
-HJ
-ZP
-HJ
-HJ
-vi
-HJ
-HJ
-HJ
+ac
+ac
+ag
+ac
+ac
+af
+ac
+ac
+ac
 "}
 (15,1,1) = {"
 uP
@@ -2688,22 +2798,22 @@ HJ
 tG
 ZP
 ZP
-sw
-sw
-sw
-Kv
+av
+av
+av
+aq
 Bt
-Bt
-yc
-HJ
+an
+ak
+ah
 tS
-HJ
-HJ
-nz
-vi
-HJ
-HJ
-HJ
+ah
+ah
+ad
+af
+ac
+ac
+ac
 "}
 (16,1,1) = {"
 uP
@@ -2767,18 +2877,18 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
 HJ
 HJ
 HJ
-uC
-Bt
-uC
-uC
-HJ
-HJ
-nz
+aj
+an
+am
+aj
+ac
+ac
+ad
 uC
 uC
 nz
@@ -2842,20 +2952,20 @@ df
 Le
 df
 Le
-dk
-dk
-dk
+au
+au
+au
 ZP
 ZP
-uf
+ap
 nz
 HJ
-tS
+ax
 HJ
-HJ
-HJ
-HJ
-uC
+ac
+ah
+ah
+aj
 yc
 yc
 yc
@@ -2929,12 +3039,12 @@ ZP
 ZP
 ZP
 ZP
-PB
+ay
 HJ
 HJ
-HJ
-HJ
-HJ
+ac
+ac
+ac
 Bt
 Bt
 yc
@@ -3002,22 +3112,22 @@ tu
 Le
 tu
 Le
-sw
-sw
-sw
+av
+av
+av
 ZP
 ZP
 ZP
 ZP
-uf
+ap
 HJ
 HJ
-HJ
-HJ
-HJ
-uC
-ZP
-ZP
+ac
+ac
+ac
+aj
+ag
+ag
 PB
 fR
 nX
@@ -3086,23 +3196,23 @@ HJ
 HJ
 HJ
 yX
-sw
+av
 ZP
 ZP
 ZP
+au
+as
 dk
 dk
 dk
 dk
-dk
-dk
-ZP
-ZP
+ai
+ai
 uf
-nX
-nX
-nX
-nX
+ae
+ae
+ae
+ae
 nX
 "}
 (21,1,1) = {"
@@ -3171,18 +3281,18 @@ tG
 ZP
 ZP
 ZP
-ZP
-ZP
-ZP
-ZP
-ZP
-ZP
-ZP
+ag
+ai
+ai
+ai
+ai
+ai
+ai
 uf
-nX
-nX
-nX
-nX
+ae
+ae
+ae
+ae
 nX
 "}
 (22,1,1) = {"
@@ -3250,8 +3360,8 @@ HJ
 tG
 ZP
 ZP
-sw
-sw
+av
+at
 sw
 sw
 sw
@@ -3259,10 +3369,10 @@ sw
 sw
 sw
 Kv
-nX
-nX
-nX
-nX
+ae
+ae
+ae
+ae
 nX
 "}
 (23,1,1) = {"
@@ -3329,20 +3439,20 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
-HJ
-HJ
-HJ
-nz
-vi
-vi
-vi
-nX
-nX
-nX
-nX
-nX
+ac
+ac
+ac
+ad
+af
+af
+af
+ae
+ae
+ae
+ae
+ae
 nX
 "}
 (24,1,1) = {"
@@ -3409,20 +3519,20 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
-HJ
-HJ
-HJ
-vi
-nX
-nX
-nX
-nX
-nX
-nX
-nX
-nX
+ac
+ac
+ac
+af
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 nX
 "}
 (25,1,1) = {"
@@ -3489,20 +3599,20 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
-HJ
-HJ
-nz
-nX
-nX
-nX
-nX
-nX
-nX
-nX
-nX
-nX
+ac
+ac
+ad
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 nX
 "}
 (26,1,1) = {"
@@ -3569,20 +3679,20 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
-HJ
-vi
-vi
-nX
-nX
-nX
-nX
-nX
-nX
-nX
-nX
-nX
+ac
+af
+af
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 nX
 "}
 (27,1,1) = {"
@@ -3647,22 +3757,22 @@ NP
 vi
 HJ
 uC
-Bt
-yc
-Bt
+az
+ao
+az
 uC
-vi
-vi
-uC
-uC
-uC
-nX
-nX
-nX
-nX
-nX
-nX
-nX
+af
+af
+aj
+aj
+aj
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 nz
 "}
 (28,1,1) = {"
@@ -3729,20 +3839,20 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
-vi
-vi
-uC
-uC
-uC
-nX
-nX
-nX
-nX
-nX
-nX
-nX
+af
+af
+aj
+aj
+aj
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 nz
 "}
 (29,1,1) = {"
@@ -3807,22 +3917,22 @@ NP
 vi
 HJ
 uC
-Bt
-yc
-Bt
+az
+ao
+az
 uC
-vi
-vi
-uC
-uC
-uC
-nX
-nX
-nX
-nX
-nX
-nX
-HJ
+af
+af
+aj
+aj
+aj
+ae
+ae
+ae
+ae
+ae
+ae
+ac
 HJ
 "}
 (30,1,1) = {"
@@ -3889,20 +3999,20 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
-HJ
-nz
-nX
-nX
-nX
-nX
-nX
-nX
-nX
-HJ
-nz
-HJ
+ac
+ad
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ac
+ad
+ac
 HJ
 "}
 (31,1,1) = {"
@@ -3969,20 +4079,20 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
-HJ
-nz
-nX
-nX
-nX
-nX
-nX
-nX
-nX
-HJ
-HJ
-HJ
+ac
+ad
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ac
+ac
+ac
 HJ
 "}
 (32,1,1) = {"
@@ -4049,20 +4159,20 @@ HJ
 HJ
 tG
 ZP
-uf
+ap
 HJ
-vi
-HJ
-nz
-nX
-nX
-nX
-nX
-nX
-nz
-HJ
-HJ
-HJ
+af
+ac
+ad
+ae
+ae
+ae
+ae
+ae
+ad
+ac
+ac
+ac
 HJ
 "}
 (33,1,1) = {"
@@ -4129,20 +4239,20 @@ nz
 vi
 tG
 ZP
-uf
+ap
 HJ
-HJ
-vi
-HJ
-nX
-nX
-nX
-nX
-nX
-nX
-nz
-HJ
-HJ
+ac
+af
+ac
+ae
+ae
+ae
+ae
+ae
+ae
+ad
+ac
+ac
 HJ
 "}
 (34,1,1) = {"
@@ -4200,29 +4310,29 @@ JJ
 JJ
 FN
 JJ
-Kl
-Kl
+JJ
+JJ
 oA
-Kl
-Kl
-Kl
+HJ
+HJ
+HJ
 nz
 tG
 ZP
-uf
+ap
 HJ
-HJ
-HJ
-vi
-nX
-nX
-nX
-nX
-nX
-nX
-HJ
-HJ
-HJ
+ac
+ac
+af
+ae
+ae
+ae
+ae
+ae
+ae
+ac
+ac
+ac
 HJ
 "}
 (35,1,1) = {"
@@ -4262,7 +4372,7 @@ JJ
 JJ
 JJ
 Gv
-Kl
+JJ
 JJ
 JJ
 JI
@@ -4279,17 +4389,17 @@ JJ
 JJ
 JJ
 JJ
-Kl
-Kl
-Kl
-Kl
+JJ
+JJ
+JJ
+JJ
 hp
-Kl
-Kl
-Kl
+HJ
+HJ
+HJ
 tG
 ZP
-uf
+ap
 HJ
 HJ
 HJ
@@ -4342,34 +4452,34 @@ JJ
 JJ
 JJ
 Gv
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-hp
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-mr
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JI
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+HJ
+HJ
+HJ
+HJ
+tG
 ZP
-uf
+ap
 HJ
 HJ
 HJ
@@ -4415,41 +4525,41 @@ JN
 JN
 JN
 JN
-JN
-Kl
-hp
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
+JJ
+JJ
+JI
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+HJ
+HJ
+HJ
+HJ
 tG
 ZP
-uf
+ap
 HJ
 HJ
 HJ
@@ -4495,41 +4605,41 @@ JN
 JN
 JN
 JN
-JN
-JN
-Kl
-Kl
-Kl
-Kl
-al
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+Gv
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+HJ
+HJ
+HJ
+HJ
 tG
 ZP
-uf
+ap
 HJ
 HJ
 HJ
@@ -4575,41 +4685,41 @@ qY
 qY
 JN
 JN
-JN
-JN
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Us
-Us
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+FN
+FN
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
 lD
-NT
-NT
-NT
-NT
+au
+au
+au
+au
 ZP
 ZP
-uf
+ap
 HJ
 HJ
 HJ
@@ -4655,41 +4765,41 @@ qY
 qY
 JN
 qY
-JN
-JN
-JN
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-al
-Kl
-Kl
-Kl
-Us
-Us
-Us
-Us
-Kl
-Kl
-Kl
-Us
-Kl
-Kl
-Kl
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+Gv
+JJ
+JJ
+JJ
+FN
+FN
+FN
+FN
+JJ
+JJ
+JJ
+FN
+JJ
+JJ
+JJ
 VK
 mr
-mQ
-mQ
-mQ
-mQ
-mQ
 ZP
-uf
+ZP
+ZP
+ZP
+ZP
+ZP
+ap
 HJ
 HJ
 HJ
@@ -4735,15 +4845,15 @@ qY
 qY
 qY
 qY
-JN
-JN
-JN
-JN
-Kl
-Kl
-Kl
-Us
-Us
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+FN
+FN
 gY
 jZ
 WV
@@ -4754,22 +4864,22 @@ jZ
 Xf
 jZ
 gY
-Kl
-Kl
-Kl
-Kl
-Kl
-Us
-Kl
-Kl
+JJ
+JJ
+JJ
+JJ
+JJ
+FN
+JJ
+JJ
 mr
-mQ
-mQ
-Gn
-sw
-sw
-sw
-Kv
+ZP
+ZP
+av
+av
+av
+av
+aq
 vH
 hn
 hn
@@ -4817,13 +4927,13 @@ qY
 qY
 qY
 gY
-JN
-JN
-Kl
-Us
-Kl
-Us
-Us
+JJ
+JJ
+JJ
+FN
+JJ
+FN
+FN
 gY
 iS
 LL
@@ -4834,13 +4944,13 @@ iS
 PT
 ia
 gY
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
-Kl
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
+JJ
 gY
 QI
 rs
@@ -4863,7 +4973,7 @@ nX
 vi
 HJ
 HJ
-HJ
+ac
 "}
 (43,1,1) = {"
 Kz
@@ -4943,7 +5053,7 @@ nX
 vi
 nz
 HJ
-HJ
+ac
 "}
 (44,1,1) = {"
 Kz
@@ -5023,7 +5133,7 @@ nX
 nX
 nz
 HJ
-HJ
+ac
 "}
 (45,1,1) = {"
 jo
@@ -5257,12 +5367,12 @@ XT
 eP
 eP
 nX
-HJ
-HJ
-nX
-nX
-nX
-HJ
+ac
+ac
+ae
+ae
+ae
+ac
 CI
 "}
 (48,1,1) = {"
@@ -5340,10 +5450,10 @@ eP
 nX
 nX
 nX
-nX
-HJ
-HJ
-HJ
+ae
+ac
+ac
+ac
 "}
 (49,1,1) = {"
 jo
@@ -5422,8 +5532,8 @@ eP
 eP
 nX
 nz
-nz
-nz
+ad
+ad
 "}
 (50,1,1) = {"
 eP

@@ -127,10 +127,27 @@
 	if(current_mob != user)
 		return
 	var/mob/living/carbon/hiding_human = current_mob
+	var/can_lean = TRUE
+
+	if(istype(user.l_hand, /obj/item/grab) || istype(user.r_hand, /obj/item/grab))
+		to_chat(user, SPAN_WARNING("You can't lean while grabbing someone!"))
+		can_lean = FALSE
+	if(current_mob.is_mob_incapacitated())
+		to_chat(user, SPAN_WARNING("You can't lean while incapacitated!"))
+		can_lean = FALSE
+	if(current_mob.resting)
+		to_chat(user, SPAN_WARNING("You can't lean while resting!"))
+		can_lean = FALSE
+	if(current_mob.buckled)
+		to_chat(user, SPAN_WARNING("You can't lean while buckled!"))
+		can_lean = FALSE
 
 	var/direction = get_dir(src, current_mob)
 	var/shift_pixel_x = 0
 	var/shift_pixel_y = 0
+
+	if(!can_lean)
+		return
 	switch(direction)
 		if(NORTH)
 			shift_pixel_y = -10
@@ -170,7 +187,7 @@
 	to_unhide.apply_effect(1, SUPERSLOW)
 	to_unhide.apply_effect(2, SLOW)
 	hiding_humans -= to_unhide
-	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_HUMAN_UNARMED_ATTACK))
+	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION))
 	to_unhide.remove_filter("cutout")
 
 /turf/closed/wall/Destroy()

@@ -2507,6 +2507,8 @@
 #include "code\modules\vehicles\arc\arc.dm"
 #include "code\modules\vehicles\arc\interior.dm"
 #include "code\modules\vehicles\arc\verbs.dm"
+#include "code\modules\vehicles\chimera\chimera.dm"
+#include "code\modules\vehicles\chimera\interior.dm"
 #include "code\modules\vehicles\hardpoints\hardpoint.dm"
 #include "code\modules\vehicles\hardpoints\armor\armor.dm"
 #include "code\modules\vehicles\hardpoints\armor\ballistic.dm"

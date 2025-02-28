@@ -22,6 +22,8 @@
 	icon_state = "arrow"
 
 	var/exit_type = /obj/structure/interior_exit
+	var/offset_x = 0
+	var/offset_y = 0
 
 /obj/effect/landmark/interior/spawn/entrance/on_load(datum/interior/I)
 	var/exit_path = exit_type

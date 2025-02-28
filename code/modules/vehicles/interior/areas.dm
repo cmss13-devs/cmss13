@@ -40,3 +40,6 @@
 /area/interior/vehicle/arc
 	name = "\improper ARC interior"
 	icon_state = "arc"
+
+/area/interior/vehicle/chimera
+	name = "chimera interior"

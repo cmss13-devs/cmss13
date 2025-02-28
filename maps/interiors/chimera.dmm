@@ -1,0 +1,95 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/void/vehicle,
+/area/interior/vehicle/chimera)
+"f" = (
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/chimera,
+/turf/open/floor/transparent,
+/area/interior/vehicle/chimera)
+"n" = (
+/obj/structure/bed/chair/vehicle/chimera/top_left_top,
+/obj/structure/bed/chair/vehicle/chimera/top_left_bottom,
+/turf/open/void/vehicle,
+/area/interior/vehicle/chimera)
+"o" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	tag = "right";
+	exit_type = /obj/structure/interior_exit/vehicle/chimera/right;
+	name = "chimera side door";
+	pixel_y = 5;
+	pixel_x = -15
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/transparent,
+/area/interior/vehicle/chimera)
+"p" = (
+/obj/structure/prop/vehicle/chimera,
+/turf/open/void/vehicle,
+/area/interior/vehicle/chimera)
+"q" = (
+/obj/structure/bed/chair/vehicle/chimera/bottom_left_top,
+/obj/structure/bed/chair/vehicle/chimera/bottom_left_bottom,
+/turf/open/void/vehicle,
+/area/interior/vehicle/chimera)
+"G" = (
+/obj/structure/bed/chair/vehicle/chimera/top_right_top,
+/obj/structure/bed/chair/vehicle/chimera/top_right_bottom,
+/turf/open/void/vehicle,
+/area/interior/vehicle/chimera)
+"M" = (
+/obj/structure/bed/chair/vehicle/chimera/bottom_right_top,
+/obj/structure/bed/chair/vehicle/chimera/bottom_right_bottom,
+/turf/open/void/vehicle,
+/area/interior/vehicle/chimera)
+"O" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	tag = "back";
+	exit_type = /obj/structure/interior_exit/vehicle/chimera/back;
+	name = "chimera side door";
+	pixel_x = null;
+	pixel_y = 24
+	},
+/turf/open/floor/transparent,
+/area/interior/vehicle/chimera)
+"R" = (
+/turf/open/floor/transparent,
+/area/interior/vehicle/chimera)
+"T" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 4;
+	tag = "left";
+	exit_type = /obj/structure/interior_exit/vehicle/chimera/left;
+	name = "chimera side door";
+	pixel_x = 15;
+	pixel_y = 5
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/transparent,
+/area/interior/vehicle/chimera)
+
+(1,1,1) = {"
+a
+n
+o
+q
+a
+p
+"}
+(2,1,1) = {"
+a
+O
+R
+R
+f
+a
+"}
+(3,1,1) = {"
+a
+G
+T
+M
+a
+a
+"}

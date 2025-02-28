@@ -264,8 +264,10 @@
 
 //****************************************** SENTRYGUN GENERAL ************************************************//
 /obj/structure/machinery/fob/weapons_platform
+	name = "\improper UH-02 Systems Platform"
+	desc = "atom large weapons system platform designed to deploy multiple types of automated defense systems, such as the UH-46 Heavy Sentry Gun and the UH-99 Smart Rocket Launcher."
 	icon_state = "platform"
-	icon = 'icons/obj/structures/machinery/fob_machinery/rocket_launcher.dmi'
+	icon = 'icons/obj/structures/machinery/fob_machinery/weapons_platform.dmi'
 	var/obj/structure/machinery/fob/sentrygun/linked_gun
 
 /obj/structure/machinery/fob/weapons_platform/attack_hand(mob/living/user)
@@ -419,6 +421,8 @@
 
 //****************************************** SENSOR ARRAY ************************************************//
 /obj/structure/machinery/fob/sentrygun/sensor
+	name = "\improper UE-04 Grid Sensor"
+	desc = "atom field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
 	diameter = 13
 
 /obj/structure/machinery/fob/sentrygun/sentrygun/update_power()
@@ -458,8 +462,8 @@
 //****************************************** SENTRYGUN PLASMA ************************************************//
 
 /obj/structure/machinery/fob/sentrygun/plasma
-	name = "\improper UE-09 Service Terminal"
-	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
+	name = "\improper UH-46 Heavy Sentry Gun"
+	desc = "atom massive omni directional dual barrelled 30mm automated heavy sentry gun. When powered it must acquire a lock on enemy units before firing."
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/fob_machinery/service_terminal.dmi'
 	diameter = 13
@@ -547,8 +551,8 @@
 //****************************************** SENTRYGUN MISSILE ************************************************//
 
 /obj/structure/machinery/fob/sentrygun/missile
-	name = "\improper UE-09 Service Terminal"
-	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
+	name = "\improper UH-99 Smart Rocket Launcher"
+	desc = "atom short range surface-to-surface rocket launcher system firing 60mm AMLE guided smart rockets. This system can be fired from behind cover, but it requires UE-04 Grid Sensors in order to paint targets."
 	icon_state = "rocket_launcher"
 	icon = 'icons/obj/structures/machinery/fob_machinery/rocket_launcher.dmi'
 	ammo = /datum/ammo/rocket
@@ -609,9 +613,13 @@
 //****************************************** FLOODLIGHT ************************************************//
 
 /obj/structure/machinery/fob/floodlight
-	var/on_light_range = 18
+	name = "\improper UE-92 Area Illuminator"
+	desc = "atom large deployable floodlight designed to illuminate large areas."
 	icon = 'icons/obj/structures/machinery/fob_machinery/illuminator.dmi'
 	icon_state = "floodlight"
+	var/on_light_range = 18
+
+
 
 /obj/structure/machinery/fob/floodlight/power_change()
 	. = ..()

@@ -23,7 +23,7 @@
 	xeno_cooldown = 10 SECONDS
 
 	// Configurables
-	var/grab_range = 4
+	var/grab_range = 7
 	var/click_miss_cooldown = 15
 	var/twitch_message_cooldown = 0 //apparently this is necessary for a tiny code that makes the lunge message on cooldown not be spammable, doesn't need to be big so 5 will do.
 

@@ -569,6 +569,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/outdoors)
 "abH" = (
@@ -823,6 +826,9 @@
 	unacidable = 1;
 	layer = 1.9
 	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/outdoors)
 "acn" = (
@@ -841,6 +847,9 @@
 	explo_proof = 1;
 	unacidable = 1;
 	layer = 1.9
+	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
 	},
 /turf/open_space,
 /area/navalis/outdoors)
@@ -1777,12 +1786,6 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
-"aeZ" = (
-/obj/structure/stairs/multiz/down,
-/obj/structure/platform/metal/strata/west,
-/obj/structure/platform/metal/strata/east,
-/turf/open/floor/prison/darkbrown3/east,
-/area/navalis/indoors/logistic/mech_bay)
 "afa" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
@@ -9050,6 +9053,9 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/outdoors)
 "aBA" = (
@@ -9071,6 +9077,9 @@
 	explo_proof = 1;
 	unacidable = 1;
 	layer = 1.9
+	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
 	},
 /turf/open_space,
 /area/navalis/outdoors)
@@ -10542,6 +10551,9 @@
 	explo_proof = 1;
 	unacidable = 1;
 	layer = 1.9
+	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
 	},
 /turf/open_space,
 /area/navalis/outdoors)
@@ -17861,6 +17873,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/outdoors)
 "cvJ" = (
@@ -20536,6 +20551,9 @@
 	explo_proof = 1;
 	unacidable = 1;
 	layer = 1.9
+	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
 	},
 /turf/open_space,
 /area/navalis/outdoors)
@@ -25295,10 +25313,6 @@
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
-"gtw" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/closed/wall/hybrisa/colony,
-/area/navalis/indoors/residential/port)
 "gtC" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -30838,6 +30852,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/pipes/standard/simple/visible/purple,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/outdoors)
 "jFk" = (
@@ -31632,6 +31649,9 @@
 	explo_proof = 1;
 	unacidable = 1;
 	layer = 1.9
+	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
 	},
 /turf/open_space,
 /area/navalis/outdoors)
@@ -33662,10 +33682,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/logistic/lower_deck/port)
-"lhP" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/closed/wall/hybrisa/colony,
-/area/navalis/indoors/residential/starboard)
 "lhU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
@@ -37225,6 +37241,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/pipes/standard/simple/visible/purple,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/outdoors)
 "npi" = (
@@ -43734,6 +43753,9 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/outdoors)
 "qOh" = (
@@ -44779,12 +44801,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/navalis/outdoors/exterior/com_ext/upper)
-"rrb" = (
-/obj/structure/platform/metal/strata,
-/obj/structure/platform/metal/strata/west,
-/obj/structure/platform/metal/strata/east,
-/turf/open_space,
-/area/navalis/indoors/logistic/mech_bay)
 "rrG" = (
 /obj/effect/decal/cleanable/vomit,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -47724,6 +47740,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/effect/hybrisa/misc/fake/pipes{
 	pixel_y = 19
+	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
 	},
 /turf/open_space,
 /area/navalis/outdoors)
@@ -55860,6 +55879,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/pipes/standard/simple/visible/purple,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/outdoors)
 "xqJ" = (
@@ -156602,8 +156624,8 @@ syS
 lKg
 afK
 aft
-aei
-aeP
+uGi
+aen
 txI
 uGi
 uGi
@@ -156766,8 +156788,8 @@ agD
 fjp
 aqc
 roQ
-aeR
-aeQ
+aei
+aeP
 aoN
 rvc
 raz
@@ -156930,8 +156952,8 @@ eKW
 suG
 rfX
 xwz
-aeZ
-rrb
+aeR
+aeQ
 aoN
 qqT
 kQv
@@ -172160,7 +172182,7 @@ auT
 aHY
 pSA
 abK
-gtw
+atX
 unR
 atD
 wPp
@@ -172168,7 +172190,7 @@ aje
 qEC
 aHx
 eSn
-lhP
+apk
 eKa
 aGE
 owN

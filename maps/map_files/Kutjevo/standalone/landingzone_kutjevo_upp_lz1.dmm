@@ -127,8 +127,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
 /area/event/deep_underground/dynamic)
-"bx" = (
-/turf/closed/wall/kutjevo/colony/reinforced)
 "bO" = (
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
@@ -1538,12 +1536,12 @@ uP
 uP
 uP
 uP
-bx
-bx
-bx
-bx
-bx
-bx
+uC
+uC
+uC
+uC
+uC
+uC
 HJ
 HJ
 nz
@@ -1618,12 +1616,12 @@ uP
 uP
 uP
 uP
-bx
-bx
-bx
-bx
-bx
-bx
+uC
+uC
+uC
+uC
+uC
+uC
 nz
 uC
 ao

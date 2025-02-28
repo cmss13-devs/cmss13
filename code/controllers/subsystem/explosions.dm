@@ -1,7 +1,7 @@
 
 SUBSYSTEM_DEF(explosions)
 	name  = "Explosions"
-	wait  = 0.5 SECONDS
+	wait  = 0.05 SECONDS
 	priority = SS_PRIORITY_EXPLOSIONS
 	flags = SS_NO_INIT
 

@@ -836,6 +836,11 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
+"aco" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc,
+/turf/open/floor/prison/darkbrown3,
+/area/navalis/indoors/logistic/lower_deck/port)
 "acp" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
@@ -887,6 +892,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/primary_storage)
+"acw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown3/southwest,
+/area/navalis/indoors/med_sci/lower_level/delivery)
 "acx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -956,6 +965,10 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/ind_ext)
+"acG" = (
+/obj/structure/machinery/power/apc,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/navalis/outdoors/landing_zone_2/under)
 "acH" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_12"
@@ -8167,7 +8180,8 @@
 	dir = 4;
 	unacidable = 1;
 	name = "Sector C: External Access";
-	explo_proof = 1
+	explo_proof = 1;
+	needs_power = 0
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/outdoors)
@@ -8345,7 +8359,8 @@
 	light_power = 2;
 	light_color = "#FFEFD2";
 	light_on = 1;
-	light_range = 3
+	light_range = 3;
+	needs_power = 0
 	},
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
 /turf/open/floor/plating/catwalk/grate/alt,
@@ -18510,7 +18525,8 @@
 /area/navalis/indoors/med_sci/chemical_store)
 "cNM" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/hybrisa/street/cement3,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown3/west,
 /area/navalis/indoors/med_sci/lower_level/delivery)
 "cOj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21736,7 +21752,8 @@
 "eCX" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/hybrisa/street/cement3,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown3/west,
 /area/navalis/indoors/med_sci/lower_level/delivery)
 "eCZ" = (
 /turf/open/floor/plating/catwalk/grate/net,
@@ -25795,17 +25812,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/cement3,
 /area/navalis/indoors/logistic/lower_deck/port)
-"gEp" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open_space,
-/area/navalis/oob)
 "gEr" = (
 /obj/effect/decal/cleanable/blood/gibs/robot{
 	pixel_y = 18;
@@ -33054,7 +33060,7 @@
 	dir = 4
 	},
 /turf/closed/wall/solaris/reinforced/hull,
-/area/navalis/outdoors)
+/area/navalis/oob)
 "kOV" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/surgery/circular_saw{
@@ -34312,10 +34318,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/charon/below_deck/rear)
-"lzk" = (
-/obj/structure/machinery/power/apc,
-/turf/open/hybrisa/street/cement3,
-/area/navalis/indoors/logistic/lower_deck/port)
 "lzl" = (
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/floor/plating/catwalk/rusted,
@@ -36158,13 +36160,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/prison/blue,
 /area/navalis/indoors/logistic/workshop)
-"mGV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/west,
-/area/navalis/indoors/command/upper_deck/starboard)
 "mHf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -39460,7 +39455,6 @@
 "oCH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/fueltank,
-/obj/structure/machinery/power/apc,
 /turf/open/floor/prison/darkbrown3,
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "oCR" = (
@@ -46134,7 +46128,8 @@
 /area/navalis/indoors/logistic/lower_deck/port)
 "sec" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/hybrisa/street/cement3,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown3/west,
 /area/navalis/indoors/med_sci/lower_level/delivery)
 "set" = (
 /obj/structure/blocker/forcefield/all{
@@ -47472,7 +47467,8 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	icon_state = "grime3"
 	},
-/turf/open/hybrisa/street/cement3,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown3/northwest,
 /area/navalis/indoors/med_sci/lower_level/delivery)
 "sPE" = (
 /obj/effect/decal/hybrisa/road/lines2,
@@ -52528,7 +52524,8 @@
 /obj/structure/machinery/power/apc{
 	dir = 4
 	},
-/turf/open/hybrisa/street/cement3,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown3/west,
 /area/navalis/indoors/med_sci/lower_level/delivery)
 "vCa" = (
 /obj/effect/decal/cleanable/dirt,
@@ -53203,9 +53200,6 @@
 /obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
-	},
-/obj/structure/machinery/light/small{
-	dir = 1
 	},
 /turf/open_space,
 /area/navalis/oob)
@@ -55823,6 +55817,7 @@
 /obj/structure/tunnel/maint_tunnel/hybrisa{
 	pixel_y = 7
 	},
+/obj/structure/machinery/power/apc,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/upper_deck/entrance)
 "xpa" = (
@@ -109546,7 +109541,7 @@ eCX
 cNM
 vBS
 sec
-fRK
+acw
 fRK
 sjr
 fkF
@@ -113936,7 +113931,7 @@ ajk
 ajk
 sIQ
 uOW
-gEp
+tBn
 vym
 oiu
 bSw
@@ -115811,7 +115806,7 @@ sOp
 qxr
 jRV
 tSH
-lzk
+tSH
 cdW
 tEK
 tAt
@@ -116137,7 +116132,7 @@ gLQ
 gLQ
 kIQ
 qLA
-jRV
+aco
 yhX
 yhX
 cdW
@@ -154708,7 +154703,7 @@ yfT
 vtq
 neL
 uCz
-etb
+acG
 lXO
 mCL
 izw
@@ -196282,7 +196277,7 @@ kUw
 iWI
 wqb
 gjJ
-mGV
+brA
 aQG
 exc
 kUw

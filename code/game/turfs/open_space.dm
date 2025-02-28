@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/open_space/Initialize()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
-	
+
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
@@ -48,10 +48,12 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/attack_hand(mob/user)
 	if(user.action_busy)
 		return
-	
+
 	var/turf/current_turf = get_turf(src)
 
 	if(istype(current_turf, /turf/open_space))
+		if(!current_turf.Enter(user))
+			return
 		user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))

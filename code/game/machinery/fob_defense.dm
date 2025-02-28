@@ -2,7 +2,7 @@
 	name = "fob defense"
 	desc = "go away don't look at this."
 	icon_state = "terminal"
-	icon = 'icons/obj/structures/machinery/service_terminal.dmi'
+	icon = 'icons/obj/structures/machinery/fob_machinery/service_terminal.dmi'
 	unacidable = TRUE
 	density = TRUE
 	anchored = TRUE
@@ -411,14 +411,14 @@
 		return TRUE
 	return FALSE
 
-//****************************************** SENZOR ARRAY ************************************************//
-/obj/structure/machinery/fob/sentrygun/senzor
+//****************************************** SENSOR ARRAY ************************************************//
+/obj/structure/machinery/fob/sentrygun/sensor
 	diameter = 13
 
 /obj/structure/machinery/fob/sentrygun/sentrygun/update_power()
 	return //we do not want to process... I should have use brain first code later
 
-/obj/structure/machinery/fob/sentrygun/senzor/obtain_targets()
+/obj/structure/machinery/fob/sentrygun/sensor/obtain_targets()
 	var/list/targets = list()
 	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	if(!length(targets))
@@ -442,10 +442,10 @@
 
 	return targets
 
-/obj/structure/machinery/fob/sentrygun/senzor/update_power()
+/obj/structure/machinery/fob/sentrygun/sensor/update_power()
 	set_area()
 
-/obj/structure/machinery/fob/sentrygun/senzor/set_area()
+/obj/structure/machinery/fob/sentrygun/sensor/set_area()
 	range_bounds = SQUARE(x, y, diameter)
 
 
@@ -556,8 +556,8 @@
 	if(!linked_platform.linked_terminal)
 		return
 	targets = list()
-	for(var/obj/structure/machinery/fob/sentrygun/senzor/senzor in linked_platform.linked_terminal.linked_machinery)
-		var/list/new_targets = senzor.obtain_targets()
+	for(var/obj/structure/machinery/fob/sentrygun/sensor/sensor in linked_platform.linked_terminal.linked_machinery)
+		var/list/new_targets = sensor.obtain_targets()
 		if(length(new_targets))
 			for(var/mob/living/possible_target in new_targets)
 				targets |= possible_target
@@ -604,7 +604,7 @@
 
 /obj/structure/machinery/fob/floodlight
 	var/on_light_range = 18
-	icon = "icons/obj/structures/machinery/fob_machinery/illuminator.dmi"
+	icon = 'icons/obj/structures/machinery/fob_machinery/illuminator.dmi'
 	icon_state = "floodlight"
 
 /obj/structure/machinery/fob/floodlight/power_change()

@@ -202,6 +202,7 @@
 	if(!client.prefs.playtime_perks)
 		age = XENO_NORMAL
 
+	/* BANDASTATION EDIT START - Age Prefixes
 	switch(age)
 		if(XENO_NORMAL)
 			age_prefix = "Young "
@@ -213,6 +214,9 @@
 			age_prefix = "Baneful "
 		if(XENO_PRIME)
 			age_prefix = "Royal "
+	*/
+	age_prefix = caste.get_age_prefix(age)
+	// BANDASTATION EDIT END
 
 	hud_update() //update the age level insignia on our xeno hud.
 
@@ -256,9 +260,9 @@
 /mob/living/carbon/xenomorph/facehugger/get_status_tab_items()
 	. = ..()
 	if(next_facehug_goal)
-		. += "Lifetime Hugs: [total_facehugs] / [next_facehug_goal]"
+		. += "Всего обнимашек: [total_facehugs] / [next_facehug_goal]"
 	else
-		. += "Lifetime Hugs: [total_facehugs]"
+		. += "Всего обнимашек: [total_facehugs]"
 
 /datum/behavior_delegate/facehugger_base
 	name = "Base Facehugger Behavior Delegate"

@@ -1,51 +1,51 @@
-Queens: Remember to set at least one larva as leader at all times.
-Click marine until horizontal.
-One shotgun isn't enough. Take six.
-Don't do the conga, the queen mother knows all.
-Jones is very important. Protect him at all costs.
-Install VSC.
-Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL + Click) and then click on yourself to begin devouring. The host can break out of your belly, which will result in your death - so make sure your target is incapacitated! After approximately 1 minute the host will be automatically regurgitated. To release your target voluntarily, click 'Regurgitate' on the HUD to throw them back up.
-As an MP, remember that staff may give you antagonist objectives to help weaken the marines!
-There's actually a hidden box of HEFA grenades in Requisitions. It can be reached by having one of your buddies throw you down the ASRS elevator.
-Don't waste crayons by jamming them up your nose - they make excellent emergency rations in a pinch!
-Contrary to popular belief, turning off IFF as a Smartgunner does not actually increase damage.
-When playing as a Xenomorph, remember to aim for the groin to inflict additional psychological damage to marines.
-Never tell an officer that you're smarter than them - especially if it's true.
-There is no USS Sulaco.
-There is no such thing as a Radio-Telephone Operator.
-There is no such thing as a techweb.
-There is no such thing as a tip.
-There is no such thing as a Fatty.
-Dropship update is dropping tomorrow.
-Don't forget your ceramic plates.
-Echo Squad does not exist.
-Reqs should always spend all its resources on the Black Market.
-Foxtrot Squad DEFINITELY does not exist.
-Intel Squad is a unicorn.
-Spec rolls are not actually random.
-Watch out for Queen's charge ability.
-Never, ever attempt to correct a Provost about anything.
-If you die, make sure to ahelp so staff can restart the round!
-You can obtain spec tokens by climbing outside the map and into space.
-There is no alcohol on Whiskey Outpost, other than in the Ground Commander's locker.
-Hitting enemies with weapons damages them.
-Don't swap East and West. AGAIN.
-Don't swap Minus and Positive coordinates... AGAIN.
-OB'ing the FOB is always an option.
-OB'ing the FOB is the best way to get some recognition from the aCO.
-The sky erupts into flames right above you!
-This tip is a lie.
-Stay hydrated.
-Have a good day.
-There is no tip.
-These tips suck. Please write more.
-This tip is not ready, please wait until next round.
-Someone stole this tip, ask staff for a new one.
-If it's stupid but it works, it isn't stupid.
-If it's stupid but it works, it's still stupid and you got lucky.
-Corroders aren't real. They can't hurt you.
-ARES is not sentient. It has no feelings and its only thoughts are pre-programmed subroutines.
-Remember that as Yautja HPCs are your primary weapons.
-You can always bully staff into giving you more awesome tips.
-Embrace the suck.
-Jump out of the Alamo during transit to deploy quicker than other players.
+Королевы, не забудьте поставить хотя бы одну лярву в качестве лидера любой ценой.
+Кликайте по морпеху, пока он не загоризонталится.
+Одного дробовика недостаточно. Возьмите шесть.
+Не танцуйте конгу, мать-королева всё знает.
+Джонс очень важен. Защитите его любой ценой.
+Установите VSC.
+Поглощение - полезно для быстрой транспортировки носителей без сознания из одного места в другое. Чтобы поглотить носителя, будучи ксеноморфом, возьмите моба (CTRL + клик), затем кликните по себе, чтобы начать поглощение. Носитель может вырваться из вашего живота, что приведёт к вашей смерти, так что убедитесь, что ваша цель без сознания! Спустя примерно 1 минуту носитель будет автоматически срыгнут. Чтобы самостоятельно освободить свою цель, кликните на 'Regurgitate', расположенную на HUD, чтобы срыгнуть цель из себя.
+Будучи военным полицейским, запомните, что администрация может дать вам цели антагониста, чтобы помочь ослабить морпехов!
+В карго на самом деле есть спрятанная коробка с HEFA гранатами. Её можно достать, сбросив одного из товарищей в ASRS лифт.
+Не тратьте мелки попусту, засовывая их в свой нос, они являются отличными аварийными пайками на крайний случай!
+Вопреки распространённому мнению, отключение системы "свой-чужой", будучи смартганнером, не увеличивает урон.
+Играя за ксеноморфа, не забывайте целиться в пах для нанесения дополнительного психологического урона морпехам.
+Никогда не говорите офицеру, что вы умнее него, особенно если это правда.
+Не существует никакого USS Sulaco.
+Не существует никакого радио-телефонного оператора.
+Не существует никакого технологического дерева.
+Не существует никаких советов.
+Не существует никаких жирных людей.
+Обновление десантного корабля десантируется завтра.
+Не забудьте ваши керамические плиты.
+Отряд Эхо не существует.
+Карго должно тратить все свои ресурсы на чёрном рынке.
+Отряд Фокстрот АБСОЛЮТНО точно не существует.
+Отряд разведки это единорог.
+На самом деле ролл специалистов - не случайность.
+Остерегайтесь способности 'Рывок' королевы.
+Никогда даже не пытайтесь поправить проректора.
+Если вы умерли, то напишите ахелп, чтобы администрация могла перезапустить раунд!
+Вы можете получить токены оружейного специалиста отряда, выйдя за пределы карты в космос.
+На Виски аванпосте нет алкоголя, разве что в шкафчике полевого командира.
+Ударив врага оружием, вы нанесёте ему урон.
+Не перепутайте восток и запад. ОПЯТЬ.
+Не перепутайте отрицательные и положительные координаты... ОПЯТЬ.
+Вы всегда можете вызвать орбитальную бомбардировку на FOB.
+Вызвать орбитальную бомбардировку на FOB - лучший способ получить известность от действующего КО.
+Небо вспыхивает огнём прямо над вами!
+Этот совет это ложь.
+Не забывайте пить воду.
+Приятного вам дня.
+Сегодня без совета.
+Эти советы отстой. Напишите больше, пожалуйста.
+Этот совет не готов, пожалуйста, подождите следующего раунда.
+Кто-то украл этот совет, попросите администрацию выдать вам новый.
+Если это глупо, но работает, значит это не глупо.
+Если это глупо, но работает, значит это всё ещё глупо, и вам повезло.
+Корродеров не существует. Они не могут вам навредить.
+ARES не разумен. У него нет чувств, и его единственные мысли - это запрограммированные подпрограммы.
+Помните, что тяжёлые плазменные винтовки яутдж - ваше основное оружие.
+Вы можете запугать администрацию, чтобы она дала вам ещё больше потрясающих советов.
+Приготовтесь сосать.
+Выпрыгните из Аламо во время полёта, чтобы высадиться быстрее других игроков.

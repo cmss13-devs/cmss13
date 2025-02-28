@@ -184,7 +184,7 @@ SUBSYSTEM_DEF(statpanels)
 			continue
 		// We already have it. Success!
 		if(existing_image)
-			turf_items[++turf_items.len] = list("[turf_item.name]", REF(turf_item), existing_image)
+			turf_items[++turf_items.len] = list("[turf_item.declent_ru(NOMINATIVE)]", REF(turf_item), existing_image) // BANDAMARINES EDIT - translastions
 			continue
 		// Now, we're gonna queue image generation out of those refs
 		to_make += turf_item

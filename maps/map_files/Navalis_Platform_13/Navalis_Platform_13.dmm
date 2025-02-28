@@ -983,6 +983,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/navalis/indoors/logistic/primary_storage)
+"acK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/navalis/indoors/landing_zone_2)
 "acL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/tool,
@@ -33060,7 +33067,7 @@
 	dir = 4
 	},
 /turf/closed/wall/solaris/reinforced/hull,
-/area/navalis/oob)
+/area/navalis/oob/powered)
 "kOV" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/surgery/circular_saw{
@@ -41255,7 +41262,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull{
 	name = "PSV Charon"
 	},
-/area/navalis/oob)
+/area/navalis/oob/powered)
 "pAy" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#a57451"
@@ -114034,7 +114041,7 @@ hlm
 rnM
 psc
 aAp
-vUv
+acK
 vUv
 vUv
 vUv

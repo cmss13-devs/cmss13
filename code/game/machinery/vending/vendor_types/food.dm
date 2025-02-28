@@ -11,7 +11,6 @@
 /obj/structure/machinery/cm_vending/sorted/marine_food/populate_product_list(scale)
 	listed_products = list(
 		list("ГОТОВЫЕ БЛЮДА", -1, null, null),
-		list("Сухой паёк ККМП", 15, /obj/item/storage/box/MRE, VENDOR_ITEM_REGULAR),
 		list("Готовое блюдо ККМП (курица)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal5, VENDOR_ITEM_REGULAR),
 		list("Готовое блюдо ККМП (кукурузный хлеб)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal1, VENDOR_ITEM_REGULAR),
 		list("Готовое блюдо ККМП (паста)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal3, VENDOR_ITEM_REGULAR),

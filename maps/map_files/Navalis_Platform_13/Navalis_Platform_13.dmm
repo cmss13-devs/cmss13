@@ -8998,12 +8998,6 @@
 	},
 /turf/open_space,
 /area/navalis/outdoors)
-"aBv" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/turf/open_space,
-/area/navalis/outdoors,
-/area/navalis/outdoors)
 "aBw" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/item/lightstick/red/planted{
@@ -9177,11 +9171,6 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/lower_level/port)
-"aBR" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/turf/open_space,
-/area/navalis/outdoors,
-/area/navalis/outdoors)
 "aBS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -15900,11 +15889,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkpurplefull2,
 /area/navalis/indoors/med_sci/upper_level/sci_lab)
-"bsX" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
-/turf/open_space,
-/area/navalis/outdoors,
-/area/navalis/outdoors)
 "bsY" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
 /turf/open/floor/plating/catwalk/grate/alt,
@@ -24595,32 +24579,6 @@
 "fXm" = (
 /turf/open/floor/prison,
 /area/navalis/indoors/command/lower_deck/sub_pen)
-"fXp" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/prop/structure_lattice{
-	dir = 4;
-	layer = 1.4;
-	pixel_x = 16;
-	density = 0
-	},
-/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	layer = 1.3;
-	pixel_x = 16
-	},
-/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
-	pixel_y = 15;
-	layer = 1.3;
-	pixel_x = 16
-	},
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/item/lightstick/planted{
-	pixel_y = 15;
-	layer = 4.11;
-	pixel_x = 16
-	},
-/turf/open_space,
-/area/navalis/outdoors,
-/area/navalis/outdoors)
 "fXs" = (
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#6e272e";
@@ -28341,11 +28299,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/navalis/outdoors/exterior/med_ext/upper)
-"ies" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
-/turf/open_space,
-/area/navalis/outdoors,
-/area/navalis/outdoors)
 "iex" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1;
@@ -28751,32 +28704,6 @@
 	invisibility = 101
 	},
 /turf/open_space,
-/area/navalis/outdoors)
-"irC" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/prop/structure_lattice{
-	dir = 4;
-	layer = 1.4;
-	pixel_x = 16;
-	density = 0
-	},
-/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	layer = 1.3;
-	pixel_x = 16
-	},
-/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
-	pixel_y = 15;
-	layer = 1.3;
-	pixel_x = 16
-	},
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/item/lightstick/red/planted{
-	pixel_y = 15;
-	pixel_x = 16;
-	layer = 4.11
-	},
-/turf/open_space,
-/area/navalis/outdoors,
 /area/navalis/outdoors)
 "irH" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_on{
@@ -39406,10 +39333,6 @@
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/prison/red/southeast,
 /area/navalis/indoors/command/security)
-"oyh" = (
-/turf/open_space,
-/area/navalis/outdoors,
-/area/navalis/outdoors)
 "oyC" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8;
@@ -145822,8 +145745,8 @@ tAt
 tAt
 tAt
 kVD
-ies
-oyh
+aKX
+tAt
 aoE
 aoE
 tAt
@@ -145986,7 +145909,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 wmy
 aoE
 aoE
@@ -146150,7 +146073,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 wmy
 aoE
 aoE
@@ -146314,7 +146237,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 wmy
 aoE
 aoE
@@ -146478,7 +146401,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 oTy
 aoE
 aoG
@@ -146642,7 +146565,7 @@ tAt
 tAt
 tAt
 kVD
-bsX
+wsJ
 dQB
 wmy
 aoE
@@ -146806,7 +146729,7 @@ tAt
 tAt
 tAt
 kVD
-ies
+aKX
 aPt
 wmy
 aoE
@@ -146970,7 +146893,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 xLS
 aoE
 aoE
@@ -147134,7 +147057,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 wmy
 aoE
 aoE
@@ -147298,7 +147221,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 wmy
 aoE
 aoE
@@ -147462,7 +147385,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 oTy
 aoE
 aSK
@@ -147626,8 +147549,8 @@ tAt
 tAt
 tAt
 kVD
-bsX
-irC
+wsJ
+rjb
 wmy
 aoE
 asM
@@ -147790,8 +147713,8 @@ tAt
 tAt
 tAt
 kVD
-ies
-aBv
+aKX
+aPt
 wmy
 aoE
 asM
@@ -147954,7 +147877,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 xLS
 aoE
 aoE
@@ -148118,7 +148041,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 wmy
 aoE
 aoE
@@ -148282,7 +148205,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 wmy
 aoE
 aoE
@@ -148446,7 +148369,7 @@ tAt
 tAt
 tAt
 kVD
-aBR
+iwj
 oTy
 aoE
 aoE
@@ -148610,8 +148533,8 @@ tAt
 tAt
 tAt
 kVD
-bsX
-fXp
+wsJ
+dQB
 wmy
 aoE
 asM
@@ -148774,8 +148697,8 @@ tAt
 tAt
 tAt
 kVD
-ies
-aBv
+aKX
+aPt
 wmy
 aoE
 asM

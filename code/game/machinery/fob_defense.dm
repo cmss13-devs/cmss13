@@ -151,6 +151,12 @@
 		user.balloon_alert(user, "the [src.name] has no power!")
 		return
 
+/obj/structure/machinery/fob/terminal/update_power()
+	if(is_inside_lz && (is_transformer_on || backup_generator_on))
+		is_on = TRUE
+	else
+		is_on = FALSE
+	update_icon()
 
 /obj/structure/machinery/fob/terminal/attack_hand(mob/user)
 

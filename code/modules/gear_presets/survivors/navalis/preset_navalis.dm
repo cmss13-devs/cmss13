@@ -131,7 +131,7 @@
 /datum/equipment_preset/survivor/navalis/first_officer
 	name = "Survivor - Navalis - Platform First Officer"
 	assignment = "First Officer"
-	skills = /datum/skills/civilian/survivor
+	skills = /datum/skills/civilian/survivor/manager
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC,)

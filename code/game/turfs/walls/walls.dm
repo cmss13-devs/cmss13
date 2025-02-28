@@ -187,7 +187,7 @@
 	to_unhide.apply_effect(1, SUPERSLOW)
 	to_unhide.apply_effect(2, SLOW)
 	hiding_humans -= to_unhide
-	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION))
+	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_HUMAN_UNARMED_ATTACK))
 	to_unhide.remove_filter("cutout")
 
 /turf/closed/wall/Destroy()

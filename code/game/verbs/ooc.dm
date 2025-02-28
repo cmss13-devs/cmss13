@@ -103,7 +103,7 @@
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
 	if(admin_holder)
 		var/list/rank_icons = icon_states('icons/ooc.dmi')
-		var/rankname = admin_holder.rank
+		var/rankname = trim(admin_holder.rank)
 		if(rankname in rank_icons)
 			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
 /*

@@ -143,6 +143,7 @@
 					else
 						ghostrend = SPAN_XENO("Разум улья, [declent_ru(NOMINATIVE)][track] [ru_say_verb("hisses")], <span class='normal'>'[message]'</span>")
 					S.show_message(ghostrend, SHOW_MESSAGE_AUDIBLE)
+					cast_tts(S, message, S, FALSE, SOUND_EFFECT_HIVEMIND) // BANDAMARINES EDIT ADD - TTS
 
 			else if(hive.hivenumber == xeno_hivenumber(S) || hive.hivenumber == hear_hivemind)
 				if(isxeno(src) && isxeno(S))
@@ -156,4 +157,5 @@
 					rendered = SPAN_XENO("Разум улья, [declent_ru(NOMINATIVE)][overwatch_insert] [ru_say_verb("hisses")], <span class='normal'>'[message]'</span>")
 
 				S.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
+				cast_tts(S, message, S, FALSE, SOUND_EFFECT_HIVEMIND) // BANDAMARINES EDIT ADD - TTS
 

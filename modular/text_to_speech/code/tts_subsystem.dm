@@ -457,6 +457,8 @@ SUBSYSTEM_DEF(tts220)
 			voice = "[filename]_megaphone.ogg"
 		if(SOUND_EFFECT_MEGAPHONE_ROBOT)
 			voice = "[filename]_megaphone_robot.ogg"
+		if(SOUND_EFFECT_HIVEMIND)
+			voice = "[filename]_hivemind.ogg"
 		else
 			CRASH("Invalid sound effect chosen.")
 	if(effect != SOUND_EFFECT_NONE)

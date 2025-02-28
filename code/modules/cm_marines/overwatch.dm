@@ -18,8 +18,10 @@
 	var/list/network = list(CAMERA_NET_OVERWATCH)
 	var/x_supply = 0
 	var/y_supply = 0
+	var/z_supply = 0
 	var/x_bomb = 0
 	var/y_bomb = 0
+	var/z_bomb = 0
 	var/living_marines_sorting = FALSE
 	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
@@ -38,7 +40,7 @@
 
 	var/freq = CRYO_FREQ
 
-	///List of saved coordinates, format of ["x", "y", "comment"]
+	///List of saved coordinates, format of ["x", "y", "z", "comment"]
 	var/list/saved_coordinates = list()
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
@@ -336,7 +338,7 @@
 
 	data["saved_coordinates"] = list()
 	for(var/i in 1 to length(saved_coordinates))
-		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "comment" = saved_coordinates[i]["comment"], "index" = i))
+		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "z" = saved_coordinates[i]["z"], "comment" = saved_coordinates[i]["comment"], "index" = i))
 
 	var/has_supply_pad = FALSE
 	var/obj/structure/closet/crate/supply_crate
@@ -485,10 +487,11 @@
 		if("tacmap_unpin")
 			tacmap.tgui_interact(user)
 		if("dropbomb")
-			if(!params["x"] || !params["y"])
+			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
 			x_bomb = text2num(params["x"])
 			y_bomb = text2num(params["y"])
+			z_bomb = text2num(params["z"])
 			if(current_orbital_cannon.is_disabled)
 				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
 			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
@@ -497,10 +500,11 @@
 				handle_bombard(user)
 
 		if("dropsupply")
-			if(!params["x"] || !params["y"])
+			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
 			x_supply = text2num(params["x"])
 			y_supply = text2num(params["y"])
+			z_supply = text2num(params["z"])
 			if(current_squad)
 				if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Supply drop not yet ready to launch again!")]")
@@ -508,11 +512,11 @@
 					handle_supplydrop()
 
 		if("save_coordinates")
-			if(!params["x"] || !params["y"])
+			if(!params["x"] || !params["y"] || !params["z"])
 				return
 			if(length(saved_coordinates) >= MAX_SAVED_COORDINATES)
 				popleft(saved_coordinates)
-			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"])))
+			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"]), "z" = text2num(params["z"])))
 			return TRUE
 		if("change_coordinate_comment")
 			if(!params["index"] || !params["comment"])
@@ -883,11 +887,11 @@
 
 	var/x_coord = deobfuscate_x(x_bomb)
 	var/y_coord = deobfuscate_y(y_bomb)
-	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(length(z_coord))
-		z_coord = z_coord[1]
-	else
-		z_coord = 1 // fuck it
+	var/z_coord = deobfuscate_z(z_bomb)
+
+	if(!is_ground_level(z_coord))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 
@@ -932,7 +936,7 @@
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb] in [get_area(T)]")
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb], Z[z_bomb] in [get_area(T)]")
 
 	busy = FALSE
 	if(istype(T))
@@ -955,11 +959,11 @@
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
-	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(length(z_coord))
-		z_coord = z_coord[1]
-	else
-		z_coord = 1 // fuck it
+	var/z_coord = deobfuscate_z(z_supply)
+
+	if(!is_ground_level(z_coord))
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
@@ -990,7 +994,7 @@
 	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	var/obj/structure/droppod/supply/pod = new(null, crate)
 	pod.launch(T)
-	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
+	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply], Z[z_supply].", usr.real_name)
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE

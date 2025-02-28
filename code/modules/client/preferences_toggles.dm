@@ -284,6 +284,7 @@
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
 	)
 
 	var/dat = ""
@@ -500,6 +501,17 @@
 	else if(result == "Dark")
 		prefs.crit_overlay_pref = CRIT_OVERLAY_DARK
 		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be dark."))
+	prefs.save_preferences()
+
+/// Toggle in character preferences and toggle preferences to allow or disable flashing lights e.g. /obj/item/clothing/glasses/disco_fever and druggy status
+/client/proc/set_flashing_lights_pref()
+	var/result = tgui_alert(src, "Allow effects that could trigger epilepsy?", "Allow flashing lights?", list("Allow", "Disable"))
+	if(!result)
+		return
+	prefs.allow_flashing_lights_pref = result == "Allow"
+	to_chat(src, SPAN_NOTICE("Flashing lights (e.g. AR Goggles and Happy pills) are now [prefs.allow_flashing_lights_pref ? "allowed" : "disabled"]."))
+	if(!prefs.allow_flashing_lights_pref)
+		mob?.update_client_color_matrices() // Update immediately
 	prefs.save_preferences()
 
 /client/verb/toggle_tgui_say()

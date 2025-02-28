@@ -19,5 +19,11 @@
 		"chance": 1.0,
 		"path": "standalone/landingzone_hybrisa_uscm_lz2.dmm",
 		"when": { "$gamemode": "Faction Clash UPP CM" }
+    },
+    {
+		"type": "map_insert",
+		"landmark": "iasf_souter_airbase",
+		"chance": 0.25,
+		"path": "standalone/twe_airbase.dmm"
 	}
 ]

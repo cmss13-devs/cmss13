@@ -24,4 +24,4 @@
 
 /datum/action/xeno_action/onclick/paralyzing_slash/apply_replaces_in_desc()
 	replace_in_desc("%DAZE%", convert_effect_time(4, DAZE), DESCRIPTION_REPLACEMENT_TIME)
-	replace_in_desc("%STUN%", convert_effect_time(2.5, STUN), DESCRIPTION_REPLACEMENT_TIME)
+	replace_in_desc("%STUN%", convert_effect_time(2, STUN), DESCRIPTION_REPLACEMENT_TIME)

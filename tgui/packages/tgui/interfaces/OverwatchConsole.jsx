@@ -107,15 +107,6 @@ const SquadPanel = (props) => {
               Supply Drop
             </Tabs.Tab>
           )}
-          {!!data.can_launch_obs && (
-            <Tabs.Tab
-              selected={category === 'ob'}
-              icon="bomb"
-              onClick={() => setCategory('ob')}
-            >
-              Orbital Bombardment
-            </Tabs.Tab>
-          )}
           <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
             Tactical Map
           </Tabs.Tab>
@@ -124,7 +115,6 @@ const SquadPanel = (props) => {
       <Stack.Item grow>
         {category === 'monitor' && <SquadMonitor />}
         {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
-        {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
       </Stack.Item>
     </Stack>
   );
@@ -668,110 +658,20 @@ const SupplyDrop = (props) => {
   );
 };
 
-const OrbitalBombardment = (props) => {
-  const { act, data } = useBackend();
-
-  const [OBX, setOBX] = useSharedState('obx', 0);
-  const [OBY, setOBY] = useSharedState('oby', 0);
-  const [OBZ, setOBZ] = useSharedState('obz', 0);
-
-  let ob_status = 'Ready';
-  let ob_color = 'green';
-  if (data.ob_cooldown) {
-    ob_status = 'Cooldown - ' + data.ob_cooldown / 10 + ' seconds';
-    ob_color = 'yellow';
-  } else if (!data.ob_loaded) {
-    ob_status = 'Not chambered';
-    ob_color = 'red';
-  }
-
-  return (
-    <Section fill fontSize="14px" title="Orbital Bombardment">
-      <Stack justify={'space-between'} m="10px">
-        <Stack.Item fontSize="14px">
-          <LabeledControls mb="5px">
-            <LabeledControls.Item label="LONGITUDE">
-              <NumberInput
-                value={OBX}
-                onChange={(value) => setOBX(value)}
-                width="75px"
-              />
-            </LabeledControls.Item>
-            <LabeledControls.Item label="LATITUDE">
-              <NumberInput
-                value={OBY}
-                onChange={(value) => setOBY(value)}
-                width="75px"
-              />
-            </LabeledControls.Item>
-            <LabeledControls.Item label="HEIGHT">
-              <NumberInput
-                value={OBZ}
-                onChange={(value) => setOBZ(value)}
-                width="75px"
-              />
-            </LabeledControls.Item>
-
-            <LabeledControls.Item label="STATUS">
-              <Box color={ob_color} bold>
-                {ob_status}
-              </Box>
-            </LabeledControls.Item>
-          </LabeledControls>
-          <Box textAlign="center">
-            <Button
-              fontSize="20px"
-              width="100%"
-              icon="bomb"
-              color="red"
-              onClick={() => act('dropbomb', { x: OBX, y: OBY, z: OBZ })}
-            >
-              Fire
-            </Button>
-            <Button
-              fontSize="20px"
-              width="100%"
-              icon="save"
-              color="yellow"
-              onClick={() =>
-                act('save_coordinates', { x: OBX, y: OBY, z: OBZ })
-              }
-            >
-              Save
-            </Button>
-          </Box>
-        </Stack.Item>
-        <Stack.Item>
-          <Divider vertical />
-        </Stack.Item>
-        <SavedCoordinates forOB />
-      </Stack>
-      <Divider horizontal />
-    </Section>
-  );
-};
-
 const SavedCoordinates = (props) => {
   const { act, data } = useBackend();
 
-  const [OBX, setOBX] = useSharedState('obx', 0);
-  const [OBY, setOBY] = useSharedState('oby', 0);
-  const [OBZ, setOBZ] = useSharedState('obz', 0);
   const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
   const [supplyY, setSupplyY] = useSharedState('supply', 0);
   const [supplyZ, setSupplyZ] = useSharedState('supplyz', 0);
 
-  const { forOB, forSupply } = props;
+  const { forSupply } = props;
 
   let transferCoords = (x, y, z) => {
     if (forSupply) {
       setSupplyX(x);
       setSupplyY(y);
       setSupplyZ(z);
-    } else if (forOB) {
-      setOBX(x);
-      setOBY(y);
-      setOBZ(z);
     }
   };
 

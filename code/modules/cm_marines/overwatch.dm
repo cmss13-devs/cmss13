@@ -19,9 +19,6 @@
 	var/x_supply = 0
 	var/y_supply = 0
 	var/z_supply = 0
-	var/x_bomb = 0
-	var/y_bomb = 0
-	var/z_bomb = 0
 	var/living_marines_sorting = FALSE
 	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
@@ -29,7 +26,6 @@
 	var/marine_filter = list() // individual marine hiding control - list of string references
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
-	var/obj/structure/orbital_cannon/current_orbital_cannon
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
@@ -49,14 +45,12 @@
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 	if(faction == FACTION_MARINE)
-		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
 		tacmap = new(src, minimap_type) // Non-drawing version
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)
-	current_orbital_cannon = null
 	concurrent_users = null
 	if(!camera_holder)
 		return ..()
@@ -347,10 +341,6 @@
 		has_supply_pad = TRUE
 	data["can_launch_crates"] = has_supply_pad
 	data["has_crate_loaded"] = supply_crate
-	data["can_launch_obs"] = current_orbital_cannon
-	if(current_orbital_cannon)
-		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
-		data["ob_loaded"] = current_orbital_cannon.chambered_tray
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["operator"] = operator.name
@@ -486,19 +476,6 @@
 					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
 		if("tacmap_unpin")
 			tacmap.tgui_interact(user)
-		if("dropbomb")
-			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
-				return
-			x_bomb = text2num(params["x"])
-			y_bomb = text2num(params["y"])
-			z_bomb = text2num(params["z"])
-			if(current_orbital_cannon.is_disabled)
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
-			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
-			else
-				handle_bombard(user)
-
 		if("dropsupply")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
@@ -757,26 +734,6 @@
 		cam_gear = wear_r_ear
 		return cam_gear
 
-// Alerts all groundside marines about the incoming OB
-/obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)
-	var/area/ob_area = get_area(target)
-	if(!ob_area)
-		return
-	var/ob_type = current_orbital_cannon.tray.warhead ? current_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
-
-	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
-		if(!S.active)
-			continue
-		for(var/mob/living/carbon/human/M in S.marines_list)
-			if(!is_ground_level(M.z))
-				continue
-			if(M.stat != CONSCIOUS || !M.client)
-				continue
-			playsound_client(M.client, 'sound/effects/ob_alert.ogg', M)
-			to_chat(M, SPAN_HIGHDANGER("Orbital bombardment launch command detected!"))
-			to_chat(M, SPAN_DANGER("Launch command informs [ob_type] warhead. Estimated impact area: [ob_area.name]"))
-
-
 /obj/structure/machinery/computer/overwatch/proc/mark_insubordination()
 	if(!usr)
 		return
@@ -864,84 +821,6 @@
 		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
 	else
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] transfer from squad '[old_squad]' to squad '[new_squad]' unsuccessful.")]")
-
-/obj/structure/machinery/computer/overwatch/proc/handle_bombard(mob/user)
-	if(!user)
-		return
-
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ob))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("A remote lock has been placed on the orbital cannon.")]")
-		return
-
-	if(busy)
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The [name] is busy processing another action!")]")
-		return
-
-	if(!current_squad)
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("No squad selected!")]")
-		return
-
-	if(!current_orbital_cannon.chambered_tray)
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
-		return
-
-	var/x_coord = deobfuscate_x(x_bomb)
-	var/y_coord = deobfuscate_y(y_bomb)
-	var/z_coord = deobfuscate_z(z_bomb)
-
-	if(!is_ground_level(z_coord))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
-		return
-
-	var/turf/T = locate(x_coord, y_coord, z_coord)
-
-	if(isnull(T) || istype(T, /turf/open/space))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
-		return
-
-	if(protected_by_pylon(TURF_PROTECTION_OB, T))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
-		return
-
-	var/area/A = get_area(T)
-
-	if(istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_DEEP_UNDERGROUND))
-		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
-		return
-
-
-	//All set, let's do this.
-	busy = TRUE
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
-	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, alert_ob), T), 2 SECONDS)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, begin_fire)), 6 SECONDS)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, T), 6 SECONDS + 6)
-
-/obj/structure/machinery/computer/overwatch/proc/begin_fire()
-	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
-		if(is_mainship_level(H.z) && !H.stat) //USS Almayer decks.
-			to_chat(H, SPAN_WARNING("The deck of the [MAIN_SHIP_NAME] shudders as the orbital cannons open fire on the colony."))
-			if(H.client)
-				shake_camera(H, 10, 1)
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
-	current_squad.send_message("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
-
-/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user,turf/T)
-	if(!T)
-		return
-
-	var/ob_name = lowertext(current_orbital_cannon.tray.warhead.name)
-	var/mutable_appearance/warhead_appearance = mutable_appearance(current_orbital_cannon.tray.warhead.icon, current_orbital_cannon.tray.warhead.icon_state)
-	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
-
-	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb], Z[z_bomb] in [get_area(T)]")
-
-	busy = FALSE
-	if(istype(T))
-		current_orbital_cannon.fire_ob_cannon(T, user, current_squad)
-		user.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
 	SHOULD_NOT_SLEEP(TRUE)

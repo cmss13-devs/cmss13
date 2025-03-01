@@ -16,6 +16,8 @@
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 	var/is_announcement_active = TRUE
+	var/obj/structure/orbital_cannon/current_orbital_cannon
+	var/bombardment_cooldown = 0
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = FALSE
@@ -25,9 +27,19 @@
 	var/freq = CRYO_FREQ
 	var/show_command_squad = FALSE
 
+	var/x_bomb = 0
+	var/y_bomb = 0
+	var/z_bomb = 0
+
+	var/busy = FALSE
+
 	var/list/concurrent_users = list()
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
+	if(faction == FACTION_MARINE)
+		current_orbital_cannon = current_orbital_cannon = GLOB.almayer_orbital_cannon
+		bombardment_cooldown = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
+
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
@@ -40,6 +52,7 @@
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/Destroy()
+	current_orbital_cannon = null
 	QDEL_NULL(tacmap)
 	QDEL_NULL(cam)
 	current_squad = null
@@ -78,8 +91,13 @@
 /obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user as mob)
 	user.set_interaction(src)
 
+	if(faction == FACTION_MARINE)
+		bombardment_cooldown = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
+
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
 	dat += "<BR><A href='byond://?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
+	dat += "<BR><BR><A href='byond://?src=\ref[src];operation=bombard'>[bombardment_cooldown <= 0 ? "!!FIRE ORBITAL BOMBARDMENT!! (Dialed at: [x_bomb] [y_bomb] [z_bomb])" : "*Available in [bombardment_cooldown]"]</A>"
+	dat += "<BR><BR><A href='byond://?src=\ref[src];operation=dial_bombard'>Dial Orbital Bombardment</A>"
 	dat += "<BR><A href='byond://?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
 	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
@@ -372,9 +390,119 @@
 			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
 
 		if("refresh")
-			attack_hand(usr)
+			attack_hand(usr)	
+
+		if("dial_bombard")
+			var/mob/living/carbon/human/human_user = usr
+			var/x = tgui_input_number(human_user, "Longitude", min_value = -10000)
+			var/y = tgui_input_number(human_user, "Latitude", min_value = -10000)
+			var/z = tgui_input_number(human_user, "Height", min_value = -10000)	
+
+			x_bomb = x ? x : x_bomb
+			y_bomb = y ? y : y_bomb	
+			z_bomb = z ? z : z_bomb
+
+		if("bombard")
+			var/mob/living/carbon/human/human_user = usr
+			if(current_orbital_cannon.is_disabled)
+				to_chat(human_user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
+			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
+				to_chat(human_user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
+			else
+				handle_bombard(human_user)
 
 	updateUsrDialog()
+
+/obj/structure/machinery/computer/groundside_operations/proc/handle_bombard(mob/user)
+	if(!user)
+		return
+
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ob))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("A remote lock has been placed on the orbital cannon.")]")
+		return
+
+	if(busy)
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The [name] is busy processing another action!")]")
+		return
+
+	if(!current_orbital_cannon.chambered_tray)
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
+		return
+
+	var/x_coord = deobfuscate_x(x_bomb)
+	var/y_coord = deobfuscate_y(y_bomb)
+	var/z_coord = deobfuscate_z(z_bomb)
+
+	if(!is_ground_level(z_coord))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
+
+	var/turf/T = locate(x_coord, y_coord, z_coord)
+
+	if(isnull(T) || istype(T, /turf/open/space))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
+
+	if(protected_by_pylon(TURF_PROTECTION_OB, T))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
+		return
+
+	var/area/A = get_area(T)
+
+	if(istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_DEEP_UNDERGROUND))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
+		return
+
+	//All set, let's do this.
+	busy = TRUE
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request accepted. Orbital cannons are now calibrating.")]")
+	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/groundside_operations, alert_ob), T), 2 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/groundside_operations, begin_fire)), 6 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/groundside_operations, fire_bombard), user, T), 6 SECONDS + 6)
+
+/obj/structure/machinery/computer/groundside_operations/proc/begin_fire()
+	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
+		if(is_mainship_level(H.z) && !H.stat) //USS Almayer decks.
+			to_chat(H, SPAN_WARNING("The deck of the [MAIN_SHIP_NAME] shudders as the orbital cannons open fire on the colony."))
+			if(H.client)
+				shake_camera(H, 10, 1)
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment has been fired! Impact imminent!")]")
+	current_squad.send_message("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
+
+/obj/structure/machinery/computer/groundside_operations/proc/fire_bombard(mob/user, turf/T)
+	if(!T)
+		return
+
+	var/ob_name = lowertext(current_orbital_cannon.tray.warhead.name)
+	var/mutable_appearance/warhead_appearance = mutable_appearance(current_orbital_cannon.tray.warhead.icon, current_orbital_cannon.tray.warhead.icon_state)
+	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
+
+	/// Project ARES interface log.
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb], Z[z_bomb] in [get_area(T)]")
+
+	busy = FALSE
+	if(istype(T))
+		current_orbital_cannon.fire_ob_cannon(T, user)
+		user.count_niche_stat(STATISTICS_NICHE_OB)
+
+/obj/structure/machinery/computer/groundside_operations/proc/alert_ob(turf/target)
+	var/area/ob_area = get_area(target)
+	if(!ob_area)
+		return
+	var/ob_type = current_orbital_cannon.tray.warhead ? current_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
+
+	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
+		if(!S.active)
+			continue
+		for(var/mob/living/carbon/human/M in S.marines_list)
+			if(!is_ground_level(M.z))
+				continue
+			if(M.stat != CONSCIOUS || !M.client)
+				continue
+			playsound_client(M.client, 'sound/effects/ob_alert.ogg', M)
+			to_chat(M, SPAN_HIGHDANGER("Orbital bombardment launch command detected!"))
+			to_chat(M, SPAN_DANGER("Launch command informs [ob_type] warhead. Estimated impact area: [ob_area.name]"))
 
 /obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(mob/user)
 	is_announcement_active = TRUE

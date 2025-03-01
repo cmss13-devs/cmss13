@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			return abs(GLOB.ob_type_fuel_requirements[3] - tray.fuel_amt)
 	return 0
 
-/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, squad_behalf)
+/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user)
 	set waitfor = 0
 
 	if(!chambered_tray || !loaded_tray || !tray || !tray.warhead || ob_cannon_busy)
@@ -232,12 +232,12 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/turf/target = locate(target_x, target_y, T.z)
 	var/area/target_area = get_area(target)
 
-	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in '[target_area]' for squad '[squad_behalf]' landing at ([target.x],[target.y],[target.z])"), target.x, target.y, target.z)
+	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in '[target_area]' landing at ([target.x],[target.y],[target.z])"), target.x, target.y, target.z)
 	var/message = "Orbital bombardment original target was ([T.x],[T.y],[T.z]) - offset by [abs(off_x)+abs(off_y)]"
 	if(inaccurate_fuel)
 		message += " - It was misfueled by [inaccurate_fuel] units!"
 	message_admins(message, T.x, T.y, T.z)
-	log_attack("[key_name(user)] fired an orbital bombardment in [area.name] for squad '[squad_behalf]'")
+	log_attack("[key_name(user)] fired an orbital bombardment in [area.name]")
 
 	if(user)
 		tray.warhead.source_mob = user

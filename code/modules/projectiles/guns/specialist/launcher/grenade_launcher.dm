@@ -320,17 +320,14 @@
 	..()
 	playsound(usr, unload_sound, 30, 1)
 
-/obj/item/weapon/gun/launcher/grenade/m81/riot/able_to_fire(mob/living/user)
-	. = ..()
-	if (. && istype(user))
-		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
-			return FALSE
+//-------------------------------------------------------
+//M84 GRENADE LAUNCHER
 
-
-/obj/item/weapon/gun/launcher/grenade/m81/riot
-	name = "\improper M81 riot grenade launcher"
-	desc = "A lightweight, single-shot low-angle grenade launcher designed to launch non-lethal or concussive ammunition. Used by the Colonial Marines Military Police during riots."
+/obj/item/weapon/gun/launcher/grenade/m84
+	name = "\improper M84 riot grenade launcher"
+	desc = "A lightweight, multiple-shot variant of the M81 grenade launcher retrofitted to launch non-lethal or concussive ammunition. Used by the Colonial Marines Military Police during riots."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/grenade_launchers.dmi'
+	icon_state = "m81"
 	valid_munitions = list(
 		/obj/item/explosive/grenade/custom/teargas,
 		/obj/item/explosive/grenade/slug/baton,
@@ -338,9 +335,25 @@
 		/obj/item/explosive/grenade/sebb,
 		/obj/item/explosive/grenade/smokebomb/airburst,
 		/obj/item/explosive/grenade/flashbang,
+		/obj/item/explosive/grenade/high_explosive/m15/rubber,
 	)
 	preload = /obj/item/explosive/grenade/slug/baton
 	disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov)
+	actions_types = list(/datum/action/item_action/toggle_firing_level)
+
+	is_lobbing = TRUE
+	internal_slots = 3
+
+/obj/item/weapon/gun/launcher/grenade/m84/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_4*4)
+
+/obj/item/weapon/gun/launcher/grenade/m84/able_to_fire(mob/living/user)
+	. = ..()
+	if (. && istype(user))
+		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			return FALSE
 
 //-------------------------------------------------------
 //M79 Grenade Launcher subtype of the M81

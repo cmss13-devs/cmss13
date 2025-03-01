@@ -25,7 +25,7 @@
 		return
 	if(isxeno(xeno))
 		if(xeno.slowed > 4)
-			xeno.adjust_effect(0.5, SLOW) // multiple hits dont stack they just renew the duration
+			xeno.adjust_effect(0.5, SLOW)
 
 /datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
 	. = ..()

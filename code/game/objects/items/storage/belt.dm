@@ -1,11 +1,12 @@
 /obj/item/storage/belt
 	name = "belt"
 	desc = "Can hold various things."
-	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "utilitybelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi'
 	)
 	item_state = "utility"
 	flags_equip_slot = SLOT_WAIST
@@ -15,26 +16,8 @@
 	cant_hold = list(/obj/item/weapon/throwing_knife)
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
-
-/obj/item/storage/belt/gun/flaregun/dump_into(obj/item/storage/origin_storage, mob/user)
-
-	if(length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
-
-		to_chat(user, SPAN_WARNING("[src] is full."))
-		return FALSE
-	return ..()
-
-/obj/item/storage/belt/gun/flaregun/handle_item_insertion(obj/item/new_item, prevent_warning = FALSE, mob/user)
-
-	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
-		return FALSE
-	return ..()
-
-/obj/item/storage/belt/gun/flaregun/has_room(obj/item/new_item, W_class_override = null)
-
-	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
-		return FALSE //No slot open because gun in holster.
-	return ..()
+	/// Indiciates whether the _half and _full overlays should be applied in update_icon
+	var/skip_fullness_overlays = FALSE
 
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
@@ -48,11 +31,15 @@
 
 /obj/item/storage/belt/update_icon()
 	overlays.Cut()
+
+	if(skip_fullness_overlays)
+		return
 	if(!length(contents))
 		return
 	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
-	else if(length(contents) <= storage_slots * 0.5)
+
+	if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
 		overlays += "+[icon_state]_full"
@@ -71,13 +58,13 @@
 	desc = "Proves to the world that you are the strongest!"
 	icon_state = "championbelt"
 	item_state = "champion"
+	icon = 'icons/obj/items/clothing/belts/misc.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi'
+	)
 	storage_slots = 1
 	can_hold = list(/obj/item/clothing/mask/luchador)
-
-
-
-
-
+	skip_fullness_overlays = TRUE
 
 //============================//MARINE BELTS\\==================================\\
 //=======================================================================\\
@@ -110,6 +97,7 @@
 		/obj/item/device/analyzer,
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
+		/obj/item/device/defibrillator/synthetic,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
@@ -168,6 +156,7 @@
 		/obj/item/defenses/handheld/sentry,
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
+		/obj/item/device/defibrillator/synthetic,
 	)
 
 	bypass_w_limit = list(
@@ -178,13 +167,6 @@
 		/obj/item/stack/sandbags,
 		/obj/item/defenses/handheld/sentry,
 	)
-
-/obj/item/storage/belt/utility/full/pred
-	name = "\improper Yautja toolbelt"
-	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "utilitybelt_pred"
-	item_state = "utility"
 
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
@@ -264,6 +246,10 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicbag"
 	item_state = "medicbag"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+	)
 	storage_slots = 21 //can hold 3 "rows" of very limited medical equipment, but it *should* give a decent boost to squad medics.
 	max_storage_space = 42
 	max_w_class = SIZE_SMALL
@@ -281,7 +267,26 @@
 		/obj/item/device/reagent_scanner,
 		/obj/item/device/analyzer/plant_analyzer,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
+
+/obj/item/storage/belt/medical/lifesaver/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/medical/lifesaver/full/fill_preset_inventory()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -319,6 +324,15 @@
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/imidazoline(src)
 	new /obj/item/storage/pill_bottle/alkysine(src)
+
+/obj/item/storage/belt/medical/lifesaver/full/dutch/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/medical/lifesaver/full/forecon/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
@@ -359,7 +373,13 @@
 	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics."
 	icon_state = "medicbag_u"
 	item_state = "medicbag_u"
-	has_gamemode_skin = FALSE
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/medical/lifesaver/upp/full/fill_preset_inventory()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -424,9 +444,14 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This configuration is commonly seen among USCM Military Police and peacekeepers, though it can hold some light munitions."
 	icon_state = "securitybelt"
 	item_state = "security"//Could likely use a better one.
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
 	item_state_slots = list(
-		WEAR_L_HAND = "s_marinebelt",
-		WEAR_R_HAND = "s_marinebelt")
+		WEAR_L_HAND = "marinebelt",
+		WEAR_R_HAND = "marinebelt"
+	)
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 21
@@ -451,21 +476,6 @@
 		/obj/item/weapon,
 		/obj/item/device/clue_scanner,
 	)
-
-
-
-/obj/item/storage/belt/security/tactical
-	name = "combat belt"
-	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
-	icon_state = "swatbelt"
-	item_state = "swatbelt"
-	item_state_slots = list(
-		WEAR_L_HAND = "upp_belt",
-		WEAR_R_HAND = "upp_belt")
-	storage_slots = 9
-	max_w_class = SIZE_MEDIUM
-	max_storage_space = 21
-
 
 /obj/item/storage/belt/security/MP
 	name = "\improper M276 pattern military police rig"
@@ -535,6 +545,10 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This is the standard variant, designed for bulk ammunition-carrying operations."
 	icon_state = "marinebelt"
 	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+	)
 	w_class = SIZE_LARGE
 	storage_slots = 5
 	max_w_class = SIZE_MEDIUM
@@ -556,7 +570,26 @@
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
+
+/obj/item/storage/belt/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/marine/m41a/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -676,22 +709,18 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 
-/obj/item/storage/belt/marine/quackers
-	name = "Mr. Quackers"
-	desc = "What are we going to do today, Mr. Quackers?"
-	icon_state = "inflatable"
-	item_state = "inflatable"
-	item_state_slots = list(
-		WEAR_L_HAND = "marinebelt",
-		WEAR_R_HAND = "marinebelt")
-	has_gamemode_skin = FALSE
-
 /obj/item/storage/belt/marine/upp
 	name = "\improper Type 41 pattern load rig"
 	desc = "The Type 41 load rig is the standard-issue load-bearing equipment of the UPP military. The primary function of this belt is to provide easy access to mags for the Type 71 during operations. Despite being designed for the Type 71 weapon system, the pouches are modular enough to fit other types of ammo and equipment."
 	icon_state = "upp_belt"
 	item_state = "upp_belt"
-	has_gamemode_skin = FALSE
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 //version full of type 71 mags
 /obj/item/storage/belt/marine/upp/full/fill_preset_inventory()
@@ -716,9 +745,16 @@
 	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified to carry ammunition for heavy machinegun systems, and engineering tools for the gunner."
 	icon_state = "m2c_ammo_rig"
 	item_state = "m2c_ammo_rig"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
 	item_state_slots = list(
-		WEAR_L_HAND = "s_marinebelt",
-		WEAR_R_HAND = "s_marinebelt")
+		WEAR_L_HAND = "marinebelt",
+		WEAR_R_HAND = "marinebelt"
+	)
 	storage_slots = 7
 	max_w_class = SIZE_LARGE
 	max_storage_space = 30
@@ -734,20 +770,43 @@
 		/obj/item/tool/wirecutters,
 		/obj/item/ammo_magazine/m56d,
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/shotgun
 	name = "\improper M276 pattern shotgun shell loading rig"
 	desc = "An ammunition belt designed to hold shotgun shells or individual bullets."
 	icon_state = "shotgunbelt"
 	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+	)
 	w_class = SIZE_LARGE
 	storage_slots = 14 // Make it FLUSH with the UI. *scream
 	max_w_class = SIZE_SMALL
 	max_storage_space = 28
 	can_hold = list(/obj/item/ammo_magazine/handful)
 	flap = FALSE
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
+
+/obj/item/storage/belt/shotgun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -764,6 +823,15 @@
 		dump_ammo_to(M, user, M.transfer_handful_amount)
 	else
 		return ..()
+
+/obj/item/storage/belt/shotgun/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/shotgun/upp
 	name = "\improper Type 42 pattern shotgun shell loading rig"
@@ -784,16 +852,23 @@
 	name = "two bore bandolier"
 	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armor, worn over the back, or attached to belt loops."
 	icon_state = "van_bandolier_5"
+	icon = 'icons/obj/items/clothing/belts/misc.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/misc.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	storage_slots = null
 	max_storage_space = 20
 	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	item_state_slots = list(
 		WEAR_J_STORE = "van_bandolier_10",
 		WEAR_BACK = "van_bandolier_10",
 		WEAR_WAIST = "van_bandolier_10"
-		)
+	)
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/shotgun/van_bandolier/update_icon()
 	var/mob/living/carbon/human/user = loc
@@ -863,24 +938,19 @@
 	else
 		return ..()
 
-/obj/item/storage/belt/shotgun/full/quackers
-	icon_state = "inflatable"
-	item_state = "inflatable"
-	item_state_slots = list(
-		WEAR_L_HAND = "marinebelt",
-		WEAR_R_HAND = "marinebelt")
-	name = "Mrs. Quackers"
-	desc = "She always did have a meaner temper."
-	has_gamemode_skin = FALSE
-
 /obj/item/storage/belt/knifepouch
 	name="\improper M276 pattern knife rig"
 	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is specially designed to store knives. Not commonly issued, but kept in service."
 	icon_state = "knifebelt"
 	item_state = "marinebelt" // aslo temp, maybe somebody update these icons with better ones?
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+	)
 	w_class = SIZE_LARGE
 	storage_slots = 12
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	flags_atom = FPRINT // has gamemode skin
 	max_w_class = SIZE_SMALL
 	max_storage_space = 48
 	can_hold = list(
@@ -891,6 +961,25 @@
 	flap = FALSE
 
 	COOLDOWN_DECLARE(draw_cooldown)
+
+/obj/item/storage/belt/knifepouch/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -914,13 +1003,19 @@
 		return FALSE
 
 /obj/item/storage/belt/grenade
-	name="\improper M276 pattern M40 Grenade rig"
-	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of M40 pattern and AGM pattern Grenades."
-	icon_state = "grenadebelt" // temp
+	name= "\improper M276 pattern M40 Grenade rig"
+	desc= "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of M40 pattern and AGM pattern Grenades."
+	icon_state = "grenadebelt"
 	item_state = "grenadebelt"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
 	item_state_slots = list(
-		WEAR_L_HAND = "s_marinebelt",
-		WEAR_R_HAND = "s_marinebelt")
+		WEAR_L_HAND = "marinebelt",
+		WEAR_R_HAND = "marinebelt"
+	)
 	w_class = SIZE_LARGE
 	storage_slots = 12
 	max_w_class = SIZE_MEDIUM
@@ -980,6 +1075,35 @@
 		new /obj/item/explosive/grenade/high_explosive/impact(src)
 		new /obj/item/explosive/grenade/high_explosive/airburst/buckshot(src)
 
+/obj/item/storage/belt/grenade/upp
+	name="\improper Type 46 pattern Type 6/8 Grenade rig"
+	desc="The Type 46 is the standard load-bearing equipment of the UPP. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of Type 6 and 8 pattern grenades."
+	icon_state = "grenadebelt" // temp
+	item_state = "grenadebelt"
+	item_state_slots = list(
+		WEAR_L_HAND = "s_marinebelt",
+		WEAR_R_HAND = "s_marinebelt")
+	w_class = SIZE_LARGE
+	storage_slots = 12
+	max_w_class = SIZE_MEDIUM
+	max_storage_space = 24
+	can_hold = list(/obj/item/explosive/grenade)
+
+/obj/item/storage/belt/grenade/upp/full/fill_preset_inventory()
+	new /obj/item/explosive/grenade/phosphorus/upp(src)
+	new /obj/item/explosive/grenade/phosphorus/upp(src)
+	new /obj/item/explosive/grenade/phosphorus/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+
+/obj/item/storage/belt/grenade/upp/attackby(obj/item/attacked_item, mob/user)
+	if(istype(attacked_item, /obj/item/storage/box/nade_box) || istype(attacked_item, /obj/item/storage/backpack/marine/grenadepack))
+		dump_into(attacked_item, user)
+	else
+		return ..()
 
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
@@ -989,6 +1113,10 @@
 	desc = "A belt-holster assembly that allows one to hold a pistol and two magazines."
 	icon_state = "m4a3_holster"
 	item_state = "marinebelt" //see post_skin_selection() - this is used for inhand states, the belt sprites use the same filename as the icon state.
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+	)
 	use_sound = null
 	w_class = SIZE_LARGE
 	storage_slots = 5
@@ -1015,6 +1143,36 @@
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
 	)
+	cant_hold = list(
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
+
+/obj/item/storage/belt/gun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/urban.dmi'
 
 /obj/item/storage/belt/gun/post_skin_selection()
 	base_icon = icon_state
@@ -1027,11 +1185,14 @@
 /obj/item/storage/belt/gun/update_icon()
 	overlays.Cut()
 
+	if(skip_fullness_overlays)
+		return
 	if(content_watchers && flap)
 		return
 	var/magazines = length(contents) - length(holstered_guns)
 	if(!magazines)
 		return
+
 	if(magazines <= (storage_slots - length(holster_slots)) * 0.5) //Don't count slots reserved for guns, even if they're empty.
 		overlays += "+[base_icon]_half"
 	else
@@ -1073,15 +1234,17 @@
 		sure that we don't have to do any extra calculations.
 		*/
 		playsound(src, drawSound, 7, TRUE)
-		var/image/gun_underlay = image(icon, current_gun.base_gun_icon)
-		if(gun_has_gamemode_skin)
+		var/image/gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', current_gun.base_gun_icon)
+		if(gun_has_gamemode_skin && current_gun.map_specific_decoration)
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("snow")
-					gun_underlay = image(icon, "s_" + current_gun.base_gun_icon)
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "s_" + current_gun.base_gun_icon)
 				if("desert")
-					gun_underlay = image(icon, "d_" + current_gun.base_gun_icon)
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "d_" + current_gun.base_gun_icon)
 				if("classic")
-					gun_underlay = image(icon, "c_" + current_gun.base_gun_icon)
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "c_" + current_gun.base_gun_icon)
+				if("urban")
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "u_" + current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color
@@ -1163,7 +1326,8 @@
 		if(ammo_dumping.current_rounds != 0)
 			if(length(contents) < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
-				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+					return
 				for(var/i = 1 to handfuls)
 					if(length(contents) < storage_slots - 1)
 						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
@@ -1179,7 +1343,6 @@
 			else
 				to_chat(user, SPAN_WARNING("[src] is full."))
 
-
 /obj/item/storage/belt/gun/m4a3
 	name = "\improper M276 pattern general pistol holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol magazines."
@@ -1194,8 +1357,12 @@
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/m4a3/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
@@ -1244,6 +1411,15 @@
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 
+/obj/item/storage/belt/gun/m4a3/m1911/socom/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
 /obj/item/storage/belt/gun/m4a3/heavy/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
 	new /obj/item/ammo_magazine/pistol/heavy(src)
@@ -1286,16 +1462,36 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
+/obj/item/storage/belt/gun/m4a3/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
 /obj/item/storage/belt/gun/m4a3/nailgun
 	name = "customized nailgun holster"
 	desc = "Combination of a M276 pistol holster and engineering toolbelt that have been cannibalized into a unique belt that can holster a compact nailgun and two spare nailgun magazines."
 	icon_state = "nailgun_holster"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_WAIST = "combatutility",
+		WEAR_L_HAND = "utility",
+		WEAR_R_HAND = "utility"
+	)
 	storage_slots = 3
 	can_hold = list(
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/ammo_magazine/smg/nailgun,
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/gun/m4a3/nailgun/prefilled/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact())
@@ -1306,9 +1502,16 @@
 	name = "\improper M276 pattern M39 holster rig"
 	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel."
 	icon_state = "m39_armor"
-	item_state = "s_marinebelt"
+	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
 	storage_slots = 3
 	max_w_class = 5
+	gun_has_gamemode_skin = TRUE
 	can_hold = list(
 		/obj/item/weapon/gun/smg/m39,
 		/obj/item/ammo_magazine/smg,
@@ -1330,11 +1533,50 @@
 
 #define MAXIMUM_MAGAZINE_COUNT 2
 
+/obj/item/storage/belt/gun/m10
+	name = "\improper M276 pattern M10 holster rig"
+	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and eight spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
+	icon_state = "m10_armor"
+	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	gun_has_gamemode_skin = TRUE
+	storage_slots = 9
+	max_w_class = 5
+	can_hold = list(
+		/obj/item/weapon/gun/pistol/m10,
+		/obj/item/ammo_magazine/pistol,
+	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -11,
+			"icon_y" = -4))
+
+/obj/item/storage/belt/gun/m10/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m10(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/m10(src)
+
+/obj/item/storage/belt/gun/m10/full/extended/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m10(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/m10/extended(src)
+
+/obj/item/storage/belt/gun/m10/full/drum/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m10(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/m10/drum(src)
+
+
 /obj/item/storage/belt/gun/xm51
 	name = "\improper M276 pattern XM51 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
 	icon_state = "xm51_holster"
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 	gun_has_gamemode_skin = TRUE
 	storage_slots = 8
 	max_w_class = 5
@@ -1380,6 +1622,21 @@
 	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
 		magazines--
 
+/obj/item/storage/belt/gun/xm51/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/gun/xm51/black/cmb
+	name = "\improper M276 pattern Model 1771 holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the Office of the Colonial Marshals. It consists of a modular belt with various clips. This version is for the Model 1771 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
+	gun_has_gamemode_skin = FALSE
+
+
 #undef MAXIMUM_MAGAZINE_COUNT
 
 /obj/item/storage/belt/gun/m44
@@ -1391,7 +1648,7 @@
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
@@ -1416,15 +1673,23 @@
 	name = "custom-tooled gunslinger's belt"
 	desc = "It's always high noon <i>somewhere</i>."
 	icon_state = "gunslinger_holster"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
 		"1" = list("icon_x" = -9, "icon_y" = -3),
 		"2" = list("icon_x" = 9, "icon_y" = -3))
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/m44/gunslinger/Initialize()
 	var/matrix/M = matrix()
@@ -1494,12 +1759,19 @@
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
 	)
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/mateba
 	name = "\improper M276 pattern Mateba holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. This one is aging poorly, and seems to be surplus equipment. It's stamped '3rd 'Dust Raiders' Battalion'."
-	icon_state = "s_cmateba_holster"
-	item_state = "s_marinebelt"
+	icon_state = "cmateba_holster"
+	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
@@ -1525,7 +1797,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. It was included with the mail-order USCM edition of the Mateba autorevolver in the early 2170s."
 	icon_state = "cmateba_holster"
 	item_state = "marinebelt"
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/mateba/cmateba/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/cmateba())
@@ -1550,9 +1822,15 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
 	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
-
 	icon_state = "amateba_holster"
-	item_state = "s_marinebelt"
+	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/gun/mateba/council/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/engraved())
@@ -1563,13 +1841,19 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/mateba/general
-	name = "general's M276 pattern Mateba holster rig"
+	name = "luxurious M276 pattern Mateba holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
 	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
-
 	icon_state = "amateba_holster"
-	item_state = "s_marinebelt"
+	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/gun/mateba/general/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/general())
@@ -1600,9 +1884,15 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
 	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
-
 	icon_state = "amateba_holster"
-	item_state = "s_marinebelt"
+	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/gun/mateba/pmc/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/general())
@@ -1617,6 +1907,12 @@
 	desc = "This UPP-designed sidearm rig can very snugly and securely fit a Type-73, NP92, or a ZHNK-72, and their magazines or speedloaders. However, it lacks versatility in stored weaponry."
 	icon_state = "korovin_holster"
 	item_state = "upp_belt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/t73,
@@ -1668,7 +1964,7 @@
 	icon_state = "ivan_belt"
 	storage_slots = 56
 	max_storage_space = 56
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_w_class = SIZE_MASSIVE
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
@@ -1688,9 +1984,18 @@
 		/obj/item/ammo_magazine/pistol/rubber,
 		/obj/item/ammo_magazine/pistol/mod88/rubber) //Ivan doesn't bring children's ammo.
 
+	var/list/bad_guns = list(
+		/obj/item/weapon/gun/pistol/m4a3/training,
+		/obj/item/weapon/gun/pistol/mod88/training,
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
+
 	var/list/picklist = subtypesof(/obj/item/ammo_magazine) - (internal_mags + bad_mags + sentry_mags + training_mags)
 	var/random_mag = pick(picklist)
-	var/guntype = pick(subtypesof(/obj/item/weapon/gun/revolver) + subtypesof(/obj/item/weapon/gun/pistol) - list(/obj/item/weapon/gun/pistol/m4a3/training, /obj/item/weapon/gun/pistol/mod88/training))
+	var/guntype = pick(subtypesof(/obj/item/weapon/gun/revolver) + subtypesof(/obj/item/weapon/gun/pistol) - bad_guns)
 	handle_item_insertion(new guntype())
 	for(var/total_storage_slots in 2 to storage_slots) //minus templates
 		new random_mag(src)
@@ -1709,7 +2014,7 @@
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
@@ -1726,7 +2031,13 @@
 	storage_slots = 17
 	max_storage_space = 20
 	icon_state = "m82f_holster"
-	item_state = "s_marinebelt"
+	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
 		/obj/item/weapon/gun/flare,
 		/obj/item/device/flashlight/flare,
@@ -1735,6 +2046,26 @@
 		"1" = list(
 			"icon_x" = -1,
 			"icon_y" = -3))
+
+/obj/item/storage/belt/gun/flaregun/dump_into(obj/item/storage/origin_storage, mob/user)
+
+	if(length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+
+		to_chat(user, SPAN_WARNING("[src] is full."))
+		return FALSE
+	return ..()
+
+/obj/item/storage/belt/gun/flaregun/handle_item_insertion(obj/item/new_item, prevent_warning = FALSE, mob/user)
+
+	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+		return FALSE
+	return ..()
+
+/obj/item/storage/belt/gun/flaregun/has_room(obj/item/new_item, W_class_override = null)
+
+	if(istype(new_item, /obj/item/device/flashlight/flare) && length(holstered_guns) < 1 && length(contents) >= (storage_slots-1))
+		return FALSE //No slot open because gun in holster.
+	return ..()
 
 /obj/item/storage/belt/gun/flaregun/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/flare())
@@ -1756,12 +2087,18 @@
 	name = "\improper Webley Mk VI gunbelt"
 	desc = "Finely-tooled British leather, a Webley, and six speedloaders of .455. More than enough to kill anything with legs."
 	icon_state = "m44r_holster"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/m44/custom/webley,
 		/obj/item/ammo_magazine/revolver,
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
@@ -1789,7 +2126,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/smartgunner/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
@@ -1800,6 +2137,13 @@
 /obj/item/storage/belt/gun/smartgunner/pmc
 	name = "\improper M802 pattern 'Dirty' smartgunner sidearm rig"
 	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a sidearm."
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -1810,7 +2154,6 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun,
 	)
-	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/pmc/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
@@ -1822,6 +2165,13 @@
 /obj/item/storage/belt/gun/smartgunner/whiteout
 	name = "\improper M802 pattern 'Terminator' smartgunner sidearm rig"
 	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver."
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -1832,7 +2182,6 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun,
 	)
-	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/whiteout/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/pmc())
@@ -1844,6 +2193,13 @@
 /obj/item/storage/belt/gun/smartgunner/clf
 	name = "\improper M802 pattern 'Freedom' smartgunner sidearm rig"
 	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver. This one has the CLF logo carved over the manufacturing stamp."
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -1854,7 +2210,6 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun,
 	)
-	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/clf/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
@@ -1875,7 +2230,7 @@
 		/obj/item/mortar_shell,
 	)
 	bypass_w_limit = list(/obj/item/mortar_shell)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/utility
 	name = "\improper M276 pattern combat toolbelt rig"
@@ -1883,6 +2238,17 @@
 	storage_slots = 9
 	icon_state = "combatutility"
 	item_state= "utility"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_WAIST = "combatutility",
+		WEAR_L_HAND = "utility",
+		WEAR_R_HAND = "utility"
+	)
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver,
@@ -1933,7 +2299,8 @@
 	item_state = "tankbelt"
 	item_state_slots = list(
 		WEAR_L_HAND = "utility",
-		WEAR_R_HAND = "utility")
+		WEAR_R_HAND = "utility"
+	)
 	storage_slots = 2 //can hold 2 only two large items such as Tank Ammo.
 	max_w_class = SIZE_LARGE
 	max_storage_space = 2
@@ -1955,15 +2322,20 @@
 	name = "\improper Souto belt"
 	desc = "Souto Man's trusty utility belt with breakaway Souto cans. They cannot be put back."
 	icon_state = "souto_man"
-	item_state = "souto_man"
-	item_state_slots = list(
-		WEAR_L_HAND = "s_marinebelt",
-		WEAR_R_HAND = "s_marinebelt")
+	item_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/misc.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	flags_equip_slot = SLOT_WAIST
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
 	storage_slots = 8
 	flags_inventory = CANTSTRIP
 	max_w_class = 0 //this belt cannot hold anything
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/souto/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -1984,8 +2356,17 @@
 	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
 	icon_state = "rmc_ammo"
 	item_state = "rmc_ammo"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
-	has_gamemode_skin = FALSE
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "upp_belt",
+		WEAR_R_HAND = "upp_belt"
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/marine/rmc/rmc_f90_ammo/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
@@ -1995,25 +2376,72 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/rmc_f90/marksman(src)
 
+/obj/item/storage/belt/marine/rmc/l42a3/marksman/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+
+/obj/item/storage/belt/marine/rmc/rmc_l23_ammo/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/l23(src)
+
 /obj/item/storage/belt/medical/rmc
 	name = "\improper L75 pattern medical storage rig"
 	desc = "The L75 is the standard load-bearing equipment of the RMC. It consists of a modular belt with various clips. This version is designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
-	icon_state = "rmc_medical"
-	item_state = "rmc_medical"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
+	icon_state ="rmc_medical"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "upp_belt",
+		WEAR_R_HAND = "upp_belt"
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+	storage_slots = 21
+
+/obj/item/storage/belt/medical/rmc/full/fill_preset_inventory()
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/storage/pill_bottle/peridaxon(src)
+	new /obj/item/storage/pill_bottle/dexalin(src)
+	new /obj/item/storage/pill_bottle/alkysine(src)
+	new /obj/item/storage/pill_bottle/imidazoline(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/device/healthanalyzer(src)
 
 /obj/item/storage/belt/gun/l905
 	name = "\improper L905 gunbelt"
 	desc = "Finely-tooled leather, a L905, and six magazines. More than enough for the standard RMC commando."
 	icon_state = "rmc_pistol"
-	item_state = "rmc_pistol"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	item_state = "upp_belt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
 	)
-	has_gamemode_skin = FALSE
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,

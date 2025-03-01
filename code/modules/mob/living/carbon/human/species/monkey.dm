@@ -45,39 +45,55 @@
 /datum/species/monkey/get_bodytype(mob/living/carbon/human/H)
 	return SPECIES_MONKEY
 
-/datum/species/monkey/handle_npc(mob/living/carbon/human/H)
-	if(H.stat != CONSCIOUS)
+/datum/species/monkey/handle_npc(mob/living/carbon/human/monkey)
+	if(monkey.stat != CONSCIOUS)
 		return
-	if(prob(33) && isturf(H.loc) && !H.pulledby && (H.mobility_flags & MOBILITY_MOVE) && !H.is_mob_restrained()) //won't move if being pulled
-		step(H, pick(GLOB.cardinals))
 
-	var/obj/held = H.get_active_hand()
+	var/is_on_turf = isturf(monkey.loc)
+	var/monkey_turf = get_turf(monkey)
+
+	if(prob(33) && is_on_turf && !monkey.pulledby && (monkey.mobility_flags & MOBILITY_MOVE) && !monkey.is_mob_restrained()) //won't move if being pulled
+		step(monkey, pick(GLOB.cardinals))
+
+	var/obj/held = monkey.get_active_hand()
 	if(held && prob(1))
-		var/turf/T = get_random_turf_in_range(H, 7, 2)
-		if(T)
+		var/turf/turf = get_random_turf_in_range(monkey, 7, 2)
+		if(turf)
 			if(isgun(held) && prob(80))
-				var/obj/item/weapon/gun/G = held
-				G.Fire(T, H)
-			else if(prob(80) && H.equip_to_appropriate_slot(held, 0))
-				if(H.hand)
-					H.update_inv_l_hand(0)
+				var/obj/item/weapon/gun/firearm = held
+				firearm.Fire(turf, monkey)
+			else if(prob(80) && monkey.equip_to_appropriate_slot(held, 0))
+				if(monkey.hand)
+					monkey.update_inv_l_hand(0)
 				else
-					H.update_inv_r_hand(0)
+					monkey.update_inv_r_hand(0)
 			else
-				H.throw_item(T)
+				monkey.throw_item(turf)
 		else
-			H.drop_held_item()
-	if(!held && !H.buckled && prob(5))
+			monkey.drop_held_item()
+	if(!held && !monkey.buckled && prob(5))
 		var/list/touchables = list()
-		for(var/obj/O in range(1,get_turf(H)))
-			if(O.Adjacent(H))
-				touchables += O
+		for(var/obj/thing in range(1, monkey_turf))
+			if(thing.Adjacent(monkey))
+				touchables += thing
 		if(length(touchables))
 			var/obj/touchy = pick(touchables)
-			touchy.attack_hand(H)
+			touchy.attack_hand(monkey)
 
-	if(prob(1))
-		H.emote(pick("chimper","scratch","jump","roll","tail"))
+	var/prob_cry = is_on_turf ? 1 : 5
+	if(prob(prob_cry))
+		monkey.emote(pick("chimper","scratch","jump","roll","tail"))
+		if(!is_on_turf && isobj(monkey.loc))
+			var/obj/container = monkey.loc
+			if(prob(50))
+				var/list/heard = get_mobs_in_view(GLOB.world_view_size, container)
+				var/message = pick("rocks about.", "creaks.", "chimpers.")
+				container.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+				container.visible_message("<b>[container]</b> [message]")
+			else
+				container.attack_hand(monkey)
+		if(prob(50))
+			playsound(monkey_turf, pick('sound/voice/monkey_chimper1.ogg', 'sound/voice/monkey_chimper2.ogg'), 25)
 
 /datum/species/monkey/handle_on_fire(humanoidmob)
 	. = ..()

@@ -387,7 +387,7 @@
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_y = 4;
 	pixel_x = -8
 	},
@@ -1525,7 +1525,7 @@
 "fC" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin/uscm,
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_y = -3
 	},
 /turf/open/floor/wood,
@@ -1588,7 +1588,7 @@
 	pixel_y = 8;
 	pixel_x = 6
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = -8;
 	pixel_y = 5
 	},
@@ -2754,7 +2754,7 @@
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "kN" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "kP" = (
@@ -2879,7 +2879,7 @@
 /area/adminlevel/chinook/offices)
 "ln" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -3442,7 +3442,7 @@
 /obj/structure/sign/prop2{
 	pixel_y = 30
 	},
-/obj/structure/machinery/faxmachine/uscm/command/highcom{
+/obj/structure/machinery/faxmachine/uscm/highcom{
 	name = "Chinook Fax Machine";
 	department = "Chinook 91 GSO Station";
 	pixel_y = 5
@@ -3609,7 +3609,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "on" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
 "op" = (
@@ -4049,7 +4049,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "qb" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
 "qc" = (
@@ -5634,7 +5634,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "wG" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "wH" = (
@@ -7049,7 +7049,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "Dp" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -9746,7 +9746,6 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "OT" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -10143,7 +10142,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/engineering)
 "Qs" = (
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 3;
 	pixel_y = -1
 	},
@@ -10153,7 +10152,7 @@
 	pixel_y = 2
 	},
 /obj/structure/surface/table/reinforced/black,
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -10214,7 +10213,7 @@
 	pixel_y = 1;
 	pixel_x = 1
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 10;
 	pixel_y = 6
 	},
@@ -12269,7 +12268,7 @@
 	pixel_y = 8;
 	pixel_x = 5
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 5;
 	pixel_y = 6
 	},

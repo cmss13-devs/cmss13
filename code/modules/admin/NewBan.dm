@@ -167,50 +167,139 @@ GLOBAL_DATUM(Banlist, /savefile)
 			timeleftstring = "[exp] Minutes"
 		return timeleftstring
 
-/datum/admins/proc/unbanpanel()
-	var/dat
+/datum/unban_panel
 
-	var/list/datum/view_record/players/PBV = DB_VIEW(/datum/view_record/players, DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))) // a filter
+	/// The search term that is currently in use
+	var/search
 
-	for(var/datum/view_record/players/ban in PBV)
-		var/expiry
-		if(!ban.is_permabanned)
-			expiry = GetExp(ban.expiration)
+/datum/unban_panel/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "UnbanPanel", "Unban Panel")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/unban_panel/ui_state(mob/user)
+	return GLOB.admin_state
+
+/datum/unban_panel/ui_data(mob/user)
+	. = ..()
+
+	var/list/datum/view_record/players/banned_players = DB_VIEW(/datum/view_record/players,
+		DB_AND(
+			DB_COMP("ckey", DB_EQUALS, search),
+			DB_OR(
+				DB_COMP("is_permabanned", DB_EQUALS, TRUE),
+				DB_COMP("is_time_banned", DB_EQUALS, TRUE)
+		)))
+
+	.["banned_players"] = list()
+	for(var/datum/view_record/players/player in banned_players)
+		var/expiry = "Permaban"
+		if(!player.is_permabanned)
+			expiry = GetExp(player.expiration)
 			if(!expiry)
 				expiry = "Removal Pending"
-		else
-			expiry = "Permaban"
-		var/unban_link
-		if(ban.is_permabanned)
-			unban_link = "<a href='?src=\ref[src];[HrefToken()];unban_perma=[ban.ckey]'>(UP)</a>"
-		else
-			unban_link = "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(UT)</A>"
 
-		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin ? ban.admin : "AdminBot"])</td><td>(Reason: [ban.reason])</td></tr>"
+		.["banned_players"] += list(
+			list(
+				"ckey" = player.ckey,
+				"ip" = player.last_known_ip,
+				"cid" = player.last_known_cid,
+				"permaban" = player.is_permabanned,
+				"timeban" = player.is_time_banned,
+				"expiry" = expiry,
+				"admin" = player.admin,
+				"reason" = player.reason,
+			)
+		)
 
-	dat += "</table>"
-	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(UP) = Unban Perma (UT) = Unban Timed"
-	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
-	show_browser(usr, dat_header, "Unban Panel", "unbanp", "size=875x400")
+	.["search"] = search
+
+/datum/unban_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	var/mob/user = ui.user
+
+	switch(action)
+		if("change_search")
+			var/new_search = ckey(params["ckey"])
+			if(!length(new_search))
+				return
+
+			search = new_search
+			return TRUE
+
+		if("unban_timed")
+			var/ckey_to_unban = ckey(params["ckey"])
+			if(!length(ckey_to_unban))
+				return
+
+			var/datum/entity/player/unban_player = get_player_from_key(ckey_to_unban)
+			if(tgui_alert("Are you sure you want to remove timed ban from [unban_player.ckey]?", "Confirm", list("Yes", "No")) == "No")
+				return
+
+			if(!unban_player.remove_timed_ban())
+				tgui_alert(user, "This ban has already been lifted / does not exist.", "Error", list("Ok"))
+
+			return TRUE
+
+		if("unban_perma")
+			var/ckey_to_unban = ckey(params["ckey"])
+			if(!length(ckey_to_unban))
+				return
+
+			var/datum/entity/player/unban_player = get_player_from_key(ckey_to_unban)
+			if(!(tgui_alert(user, "Do you want to unban [unban_player.ckey]? They are currently permabanned for: [unban_player.permaban_reason], since [unban_player.permaban_date].", "Unban Player", list("Yes", "No")) == "Yes"))
+				return
+
+			if(!unban_player.is_permabanned)
+				to_chat(user, SPAN_WARNING("The player is not currently permabanned."))
+				return
+
+			unban_player.is_permabanned = FALSE
+			unban_player.permaban_admin_id = null
+			unban_player.permaban_date = null
+			unban_player.permaban_reason = null
+
+			unban_player.save()
+
+			message_admins("[key_name_admin(user)] has removed the permanent ban on [unban_player.ckey].")
+			important_message_external("[user.ckey] has removed the permanent ban on [unban_player.ckey].", "Permaban Removed")
+
+			return TRUE
+
+
+/datum/admins/proc/unbanpanel()
+	var/datum/unban_panel/unban_panel = new
+	unban_panel.tgui_interact(owner.mob)
 
 /datum/admins/proc/stickypanel()
-	var/add_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;new_sticky=1'>Add Sticky Ban</a>"
-	var/find_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;find_sticky=1'>Find Sticky Ban</a>"
+	var/add_sticky = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=1;new_sticky=1'>Add Sticky Ban</a>"
+	var/find_sticky = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=1;find_sticky=1'>Find Sticky Ban</a>"
 
-	var/data = "<hr><b>Sticky Bans:</b> [add_sticky] [find_sticky] <table border=1 rules=all frame=void cellspacing=0 cellpadding=3>"
+	var/data = {"
+	<b>Sticky Bans:</b> [add_sticky] [find_sticky]
+	<br>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
+	<br>
+	<table border=1 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
+	"}
 
 	var/list/datum/view_record/stickyban/stickies = DB_VIEW(/datum/view_record/stickyban,
 		DB_COMP("active", DB_EQUALS, TRUE)
 	)
 
 	for(var/datum/view_record/stickyban/current_sticky in stickies)
-		var/whitelist_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];whitelist_ckey=1'>(WHITELIST)</a>"
-		var/remove_sticky_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];remove=1'>(REMOVE)</a>"
-		var/add_to_sticky_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];add=1'>(ADD)</a>"
+		var/whitelist_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];whitelist_ckey=1'>(WHITELIST)</a>"
+		var/remove_sticky_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];remove=1'>(REMOVE)</a>"
+		var/add_to_sticky_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];add=1'>(ADD)</a>"
 
-		var/impacted_ckey_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ckeys=1'>CKEYs</a>"
-		var/impacted_ip_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ips=1'>IPs</a>"
-		var/impacted_cid_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_cids=1'>CIDs</a>"
+		var/impacted_ckey_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ckeys=1'>CKEYs</a>"
+		var/impacted_ip_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ips=1'>IPs</a>"
+		var/impacted_cid_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_cids=1'>CIDs</a>"
 
 		data += "<tr><td>[whitelist_link][remove_sticky_link][add_to_sticky_link]</td><td>Identifier: [current_sticky.identifier]</td><td>Reason: [current_sticky.reason]</td><td>Message: [current_sticky.message]</td> <td>Admin: [current_sticky.admin]</td> <td>View: [impacted_ckey_link][impacted_ip_link][impacted_cid_link]</td></tr>"
 
@@ -260,7 +349,8 @@ GLOBAL_DATUM(Banlist, /savefile)
 		return PROC_BLOCKED
 	if(!check_rights(R_BAN|R_MOD))  return
 
-	if(!ismob(M)) return
+	if(!ismob(M))
+		return
 
 	if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
 		return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
@@ -272,7 +362,8 @@ GLOBAL_DATUM(Banlist, /savefile)
 	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
 	if(!mins)
 		return
-	if(mins >= 525600) mins = 525599
+	if(mins >= 525600)
+		mins = 525599
 	var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
 	if(!reason)
 		return

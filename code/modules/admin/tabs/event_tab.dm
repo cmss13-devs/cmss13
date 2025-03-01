@@ -47,7 +47,7 @@
 	set category = "Admin.Events"
 	if(!admin_holder)
 		return
-	
+
 	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
 
 	var/list/ckeys = list()
@@ -307,6 +307,26 @@
 	message_admins("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
 	if(points_to_add >= 0)
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
+	message_admins("[key_name_admin(usr)] granted UPP requisitions [points_to_add] points.")
+
+/datum/admins/proc/add_upp_req_points()
+	set name = "Add UPP Requisitions Points"
+	set desc = "Add points to the UPP ship requisitions department."
+	set category = "Admin.Events"
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+
+	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
+	if(!points_to_add)
+		return
+	else if((GLOB.supply_controller_upp.points + points_to_add) < 0)
+		GLOB.supply_controller_upp.points = 0
+	else if((GLOB.supply_controller_upp.points + points_to_add) > 99999)
+		GLOB.supply_controller_upp.points = 99999
+	else
+		GLOB.supply_controller.points += points_to_add
+	message_admins("[key_name_admin(usr)] granted UPP requisitions [points_to_add] points.")
+
 
 /datum/admins/proc/check_req_heat()
 	set name = "Check Requisitions Heat"
@@ -339,7 +359,7 @@
 	message_admins("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()
-	set name = "View Faxes"
+	set name = "Reply to Faxes"
 	set desc = "View faxes from this round"
 	set category = "Admin.Events"
 
@@ -493,7 +513,7 @@
 
 	var/datum/supply_order/new_order = new()
 	new_order.ordernum = GLOB.supply_controller.ordernum++
-	new_order.object = GLOB.supply_packs_datums[nuketype]
+	new_order.objects = list(GLOB.supply_packs_datums[nuketype])
 	new_order.orderedby = MAIN_AI_SYSTEM
 	new_order.approvedby = MAIN_AI_SYSTEM
 	GLOB.supply_controller.shoppinglist += new_order
@@ -519,7 +539,7 @@
 			var/obj/item/card/id/card = H.get_idcard()
 			if(card)
 				card.registered_name = H.real_name
-				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
+				card.name = "[card.registered_name]'s [card.id_type] ([card.assignment])"
 
 	message_admins("Admin [key_name(usr)] has turned everyone into a primitive")
 
@@ -530,7 +550,8 @@
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
 	var/tag = tgui_input_list(usr, "Which dropship should be force hijacked?", "Select a dropship:", shuttles)
-	if(!tag) return
+	if(!tag)
+		return
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
 
@@ -576,7 +597,7 @@
 
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
 			if(alert("Do you want PMCs (not Death Squad) to see this announcement?",,"Yes","No") == "Yes")
-				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
+				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, TRUE)
 			else
 				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, FALSE)
 	else
@@ -765,39 +786,40 @@
 
 	var/dat = {"
 		<B>Ship</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=securitylevel'>Set Security Level</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=distress'>Send a Distress Beacon</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=selfdestruct'>Activate Self-Destruct</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=evacuation_start'>Trigger Evacuation</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=check_req_heat'>Modify Requisitions Heat</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=securitylevel'>Set Security Level</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=distress'>Send a Distress Beacon</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=selfdestruct'>Activate Self-Destruct</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=evacuation_start'>Trigger Evacuation</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=add_upp_req_points'>Add UPP Requisitions Points</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=check_req_heat'>Modify Requisitions Heat</A><BR>
 		<BR>
 		<B>Research</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=give_research_credits'>Give Research Credits</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=give_research_credits'>Give Research Credits</A><BR>
 		<BR>
 		<B>Power</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=unpower'>Unpower ship SMESs and APCs</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Repair and power all ship reactors</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=unpower'>Unpower ship SMESs and APCs</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=powershipreactors'>Repair and power all ship reactors</A><BR>
 		<BR>
 		<B>Events</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=whiteout'>Repair all lights</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=destructible_terrain'>Toggle destructible terrain</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=whiteout'>Repair all lights</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=destructible_terrain'>Toggle destructible terrain</A><BR>
 		<BR>
 		<B>Misc</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
 		<BR>
 		"}
 
@@ -813,25 +835,26 @@
 
 
 /datum/admins/proc/chempanel()
-	if(!check_rights(R_MOD)) return
+	if(!check_rights(R_MOD))
+		return
 
 	var/dat
 	if(check_rights(R_MOD,0))
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=view_reagent'>View Reagent</A><br>
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=view_reagent'>View Reagent</A><br>
 				"}
 	if(check_rights(R_VAREDIT,0))
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=view_reaction'>View Reaction</A><br>"}
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=sync_filter'>Sync Reaction</A><br>
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=view_reaction'>View Reaction</A><br>"}
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=sync_filter'>Sync Reaction</A><br>
 				<br>"}
 	if(check_rights(R_SPAWN,0))
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
-				<A href='?src=\ref[src];[HrefToken()];chem_panel=make_report'>Make Chem Report</A><br>
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
+				<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=make_report'>Make Chem Report</A><br>
 				<br>"}
 	if(check_rights(R_ADMIN,0))
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=create_random_reagent'>Generate Reagent</A><br>
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=create_random_reagent'>Generate Reagent</A><br>
 				<br>
-				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
-				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
+				<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
+				<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
 				"}
 
 	show_browser(usr, dat, "Chem Panel", "chempanel", "size=210x300")
@@ -922,71 +945,96 @@
 			custom = FALSE
 			var/list/warheads = subtypesof(/obj/structure/ob_ammo/warhead/)
 			var/choice = tgui_input_list(usr, "Select the warhead:", "Warhead to use", warheads)
+			if(!choice)
+				return
 			warhead = new choice
 		if("Custom HE")
 			var/obj/structure/ob_ammo/warhead/explosive/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "HE orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
-			if(isnull(OBShell.clear_power)) return
+			if(isnull(OBShell.clear_power))
+				return
 			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
-			if(isnull(OBShell.clear_falloff)) return
+			if(isnull(OBShell.clear_falloff))
+				return
 			OBShell.standard_power = tgui_input_number(src, "How much explosive power should the main blasts have?", "Set blast power", 600, 3000)
-			if(isnull(OBShell.standard_power)) return
+			if(isnull(OBShell.standard_power))
+				return
 			OBShell.standard_falloff = tgui_input_number(src, "How much falloff should the main blasts have?", "Set blast falloff", 30)
-			if(isnull(OBShell.standard_falloff)) return
+			if(isnull(OBShell.standard_falloff))
+				return
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
-			if(isnull(OBShell.clear_delay)) return
+			if(isnull(OBShell.clear_delay))
+				return
 			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
-			if(isnull(OBShell.double_explosion_delay)) return
+			if(isnull(OBShell.double_explosion_delay))
+				return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
 		if("Custom Cluster")
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.total_amount = tgui_input_number(src, "How many salvos should be fired?", "Set cluster number", 60)
-			if(isnull(OBShell.total_amount)) return
+			if(isnull(OBShell.total_amount))
+				return
 			OBShell.instant_amount = tgui_input_number(src, "How many shots per salvo? (Max 10)", "Set shot count", 3)
-			if(isnull(OBShell.instant_amount)) return
+			if(isnull(OBShell.instant_amount))
+				return
 			if(OBShell.instant_amount > 10)
 				OBShell.instant_amount = 10
 			OBShell.explosion_power = tgui_input_number(src, "How much explosive power should the blasts have?", "Set blast power", 300, 1500)
-			if(isnull(OBShell.explosion_power)) return
+			if(isnull(OBShell.explosion_power))
+				return
 			OBShell.explosion_falloff = tgui_input_number(src, "How much falloff should the blasts have?", "Set blast falloff", 150)
-			if(isnull(OBShell.explosion_falloff)) return
+			if(isnull(OBShell.explosion_falloff))
+				return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
 		if("Custom Incendiary")
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
-			if(isnull(OBShell.clear_power)) return
+			if(isnull(OBShell.clear_power))
+				return
 			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
-			if(isnull(OBShell.clear_falloff)) return
+			if(isnull(OBShell.clear_falloff))
+				return
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
-			if(isnull(OBShell.clear_delay)) return
+			if(isnull(OBShell.clear_delay))
+				return
 			OBShell.distance = tgui_input_number(src, "How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18, 30)
-			if(isnull(OBShell.distance)) return
+			if(isnull(OBShell.distance))
+				return
 			if(OBShell.distance > 30)
 				OBShell.distance = 30
 			OBShell.fire_level = tgui_input_number(src, "How long should the fire last?", "Set fire duration", 70)
-			if(isnull(OBShell.fire_level)) return
+			if(isnull(OBShell.fire_level))
+				return
 			OBShell.burn_level = tgui_input_number(src, "How damaging should the fire be?", "Set fire strength", 80)
-			if(isnull(OBShell.burn_level)) return
+			if(isnull(OBShell.burn_level))
+				return
 			var/list/firetypes = list("white","blue","red","green","custom")
 			OBShell.fire_type = tgui_input_list(usr, "Select the fire color:", "Fire color", firetypes)
-			if(isnull(OBShell.fire_type)) return
+			if(isnull(OBShell.fire_type))
+				return
 			OBShell.fire_color = null
 			if(OBShell.fire_type == "custom")
 				OBShell.fire_type = "dynamic"
 				OBShell.fire_color = input(src, "Please select Fire color.", "Fire color") as color|null
-				if(isnull(OBShell.fire_color)) return
+				if(isnull(OBShell.fire_color))
+					return
 			statsmessage = "Custom Incendiary OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Fire Distance: [OBShell.distance], Fire Duration: [OBShell.fire_level], Fire Strength: [OBShell.burn_level]."
 			warhead = OBShell
 
 	if(custom)
+		if(!warhead)
+			return
 		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes")
 			qdel(warhead)
 			return

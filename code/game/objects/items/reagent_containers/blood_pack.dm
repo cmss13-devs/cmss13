@@ -39,13 +39,20 @@
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 
 		switch(percent)
-			if(1 to 9) filling.icon_state = "[icon_state]5"
-			if(10 to 19) filling.icon_state = "[icon_state]10"
-			if(20 to 39) filling.icon_state = "[icon_state]25"
-			if(40 to 64) filling.icon_state = "[icon_state]50"
-			if(65 to 79) filling.icon_state = "[icon_state]75"
-			if(80 to 90) filling.icon_state = "[icon_state]80"
-			if(91 to INFINITY) filling.icon_state = "[icon_state]100"
+			if(1 to 9)
+				filling.icon_state = "[icon_state]5"
+			if(10 to 19)
+				filling.icon_state = "[icon_state]10"
+			if(20 to 39)
+				filling.icon_state = "[icon_state]25"
+			if(40 to 64)
+				filling.icon_state = "[icon_state]50"
+			if(65 to 79)
+				filling.icon_state = "[icon_state]75"
+			if(80 to 90)
+				filling.icon_state = "[icon_state]80"
+			if(91 to INFINITY)
+				filling.icon_state = "[icon_state]100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		underlays += filling
@@ -65,7 +72,7 @@
 
 	if(connected_to == attacked_mob)
 		STOP_PROCESSING(SSobj, src)
-		user.visible_message("[user] detaches [src] from [connected_to].", \
+		user.visible_message("[user] detaches [src] from [connected_to].",
 			"You detach [src] from [connected_to].")
 		connected_to.active_transfusions -= src
 		connected_to.base_pixel_x = 0
@@ -91,7 +98,7 @@
 		connected_to.active_transfusions += src
 		connected_to.base_pixel_x = 5
 		START_PROCESSING(SSobj, src)
-		user.visible_message("[user] attaches \the [src] to [connected_to].", \
+		user.visible_message("[user] attaches \the [src] to [connected_to].",
 			"You attach \the [src] to [connected_to].")
 		update_beam()
 

@@ -18,79 +18,6 @@
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
-	dress_under = list(
-		/obj/item/clothing/under/liaison_suit/black,
-		/obj/item/clothing/under/liaison_suit/blue,
-		/obj/item/clothing/under/liaison_suit/brown,
-		/obj/item/clothing/under/liaison_suit/corporate_formal,
-		/obj/item/clothing/under/liaison_suit,
-		/obj/item/clothing/under/liaison_suit/charcoal,
-		/obj/item/clothing/under/liaison_suit/formal,
-		/obj/item/clothing/under/liaison_suit/blazer,
-		/obj/item/clothing/under/liaison_suit/suspenders,
-		/obj/item/clothing/under/blackskirt,
-		/obj/item/clothing/under/suit_jacket/trainee,
-		/obj/item/clothing/under/liaison_suit/ivy,
-		/obj/item/clothing/under/liaison_suit/orange,
-		/obj/item/clothing/under/liaison_suit/field,
-		/obj/item/clothing/under/colonist/workwear,
-		/obj/item/clothing/under/colonist/workwear/khaki,
-		/obj/item/clothing/under/colonist/workwear/pink,
-		/obj/item/clothing/under/colonist/workwear/green,
-		/obj/item/clothing/under/colonist/workwear/blue,
-	)
-	dress_over = list(
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/brown,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/blue,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber/red,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber,
-		/obj/item/clothing/suit/storage/bomber,
-		/obj/item/clothing/suit/storage/bomber/alt,
-		/obj/item/clothing/suit/storage/snow_suit/liaison,
-		/obj/item/clothing/suit/storage/labcoat,
-		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
-		/obj/item/clothing/suit/storage/jacket/marine/vest,
-		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
-		/obj/item/clothing/suit/storage/webbing,
-		/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown,
-		/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray,
-		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
-		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
-	)
-	dress_extra = list(
-		/obj/item/clothing/accessory/black,
-		/obj/item/clothing/accessory/red,
-		/obj/item/clothing/accessory/purple,
-		/obj/item/clothing/accessory/blue,
-		/obj/item/clothing/accessory/green,
-		/obj/item/clothing/accessory/gold,
-		/obj/item/clothing/accessory/horrible,
-		/obj/item/clothing/glasses/sunglasses/big,
-		/obj/item/clothing/glasses/sunglasses/aviator,
-		/obj/item/clothing/glasses/sunglasses,
-		/obj/item/clothing/glasses/sunglasses/prescription,
-		/obj/item/clothing/glasses/regular/hipster,
-	)
-	dress_gloves = list(
-		/obj/item/clothing/gloves/black,
-		/obj/item/clothing/gloves/marine/dress,
-	)
-	dress_shoes = list(
-		/obj/item/clothing/shoes/laceup,
-		/obj/item/clothing/shoes/laceup/brown,
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/shoes/marine/corporate,
-	)
-	dress_hat = list(
-		/obj/item/clothing/head/fedora,
-		/obj/item/clothing/head/beret/cm/black/civilian,
-		/obj/item/clothing/head/beret/cm/white/civilian,
-	)
-
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
@@ -267,6 +194,9 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	minimap_background = "background_cmb"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
+	rank = JOB_CMB
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	role_comm_title = "CMB DEP"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -313,13 +243,15 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	add_survivor_weapon_civilian(new_human)
+
+	add_survivor_weapon_civilian(new_human) //40 percent chance to equip a weapon in hand with ammo in belt slot
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST) //Attempt to equip a toolbelt in belt slot. Will delete itself if the above proc equiped an ammo belt.
+
 	add_ice_colony_survivor_equipment(new_human)
 	..()
 
@@ -367,6 +299,9 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
 	faction_group = FACTION_LIST_SURVIVOR_WY
+	rank = JOB_EXECUTIVE
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -378,7 +313,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	survivor_variant = CORPORATE_SURVIVOR
 	minimap_icon = "cl"
-	minimap_background = "background_civillian"
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human, client/mob_client)
 	if(paygrades.len == 1)
@@ -434,7 +369,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND) //will sometimes prevent add_random_survivor_equipment() from equiping first aid kit or fire axe.
 	add_survivor_weapon_civilian(new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	..()

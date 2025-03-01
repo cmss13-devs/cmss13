@@ -285,7 +285,6 @@
 
 /area/lv624/lazarus/landing_zones
 	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 
 /area/lv624/lazarus/landing_zones/lz1

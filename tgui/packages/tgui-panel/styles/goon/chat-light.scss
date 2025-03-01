@@ -999,7 +999,9 @@ h2.alert {
 .pvstradio {
   color: #9b0612;
 }
-
+.ciaradio {
+  color: #e6754c;
+}
 .airadio {
   color: #ff00ff;
 }
@@ -1289,7 +1291,6 @@ h2.alert {
 }
 
 .role_body {
-  color: #000099;
   display: block;
   text-align: center;
   font-size: 125%;
@@ -1421,6 +1422,10 @@ h2.alert {
   color: #1e8f8c;
 }
 
+.french {
+  color: #0c4688;
+}
+
 .spanish {
   color: #cf982b;
 }
@@ -1529,21 +1534,47 @@ h2.alert {
   }
 }
 
-.examine_block {
-  background: #f2f7fa;
-  border: 1px solid #111a27;
-  margin: 0.5em;
-  padding: 0.5em 0.75em;
+.tooltip {
+  font-style: italic;
+  border-bottom: 1px dashed;
 }
 
-.examine_block .icon {
+.fieldset_legend {
+  background: #ffffff; // Chat background color
+
+  &:before {
+    background: #ffffff; // Chat background color
+  }
+}
+
+.boxed_message {
+  background: hsl(220, 100%, 97.5%);
+  border-color: hsla(220, 75%, 25%, 0.5);
+
+  &.red_box {
+    background: hsl(0, 100%, 97.5%);
+    border-color: hsla(0, 100%, 50%, 0.5);
+  }
+
+  &.green_box {
+    background: hsl(140, 100%, 97.5%);
+    border-color: hsl(120, 100%, 33%, 0.5);
+  }
+
+  &.blue_box {
+    background: hsl(220, 100%, 97.5%);
+    border-color: hsla(225, 100%, 50%, 0.5);
+  }
+
+  &.purple_box {
+    background: hsl(260, 100%, 97.5%);
+    border-color: hsla(260, 100%, 50%, 0.5);
+  }
+}
+
+.boxed_message .icon {
   width: 1.5em;
   height: 1.5em;
   margin: 0;
   padding: 0;
-}
-
-.tooltip {
-  font-style: italic;
-  border-bottom: 1px dashed #000;
 }

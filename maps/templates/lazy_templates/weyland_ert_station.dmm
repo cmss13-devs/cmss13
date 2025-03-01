@@ -428,7 +428,9 @@
 /area/adminlevel/ert_station/weyland_station)
 "gL" = (
 /obj/structure/surface/table,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy{
+	pixel_y = 12
+	},
 /turf/open/floor/corsat/whitetan,
 /area/adminlevel/ert_station/weyland_station)
 "gW" = (
@@ -877,6 +879,7 @@
 "nT" = (
 /obj/structure/showcase{
 	icon_state = "broadcast receiver";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Subspace Receiver"
 	},
 /turf/open/floor/corsat/plate,
@@ -1302,12 +1305,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/cargo,
 /area/adminlevel/ert_station/weyland_station)
-"uF" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/closed/wall/r_wall/biodome,
-/area/adminlevel/ert_station/weyland_station)
 "uG" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
@@ -1395,6 +1392,15 @@
 	dir = 8;
 	pixel_x = -10;
 	pixel_y = 1
+	},
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/mre/pmc{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/obj/item/ammo_box/magazine/misc/mre/pmc{
+	pixel_x = -1;
+	pixel_y = 11
 	},
 /turf/open/floor/corsat/brown/west,
 /area/adminlevel/ert_station/weyland_station)
@@ -1778,6 +1784,7 @@
 "Cm" = (
 /obj/structure/showcase{
 	icon_state = "hub";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Telecommunication Hub"
 	},
 /turf/open/floor/corsat/plate,
@@ -1873,6 +1880,7 @@
 "DL" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/plate,
@@ -1885,6 +1893,7 @@
 "DO" = (
 /obj/structure/showcase{
 	icon_state = "relay";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Telecommunication Relay"
 	},
 /turf/open/floor/corsat/plate,
@@ -2474,7 +2483,8 @@
 /area/adminlevel/ert_station/weyland_station)
 "NO" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/weyland_station)
@@ -2595,10 +2605,6 @@
 	name = "\improper Aft Medbay Shutters"
 	},
 /turf/open/floor/corsat/marked,
-/area/adminlevel/ert_station/weyland_station)
-"PI" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/r_wall/biodome,
 /area/adminlevel/ert_station/weyland_station)
 "PL" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -2854,7 +2860,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station/weyland_station)
 "SM" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy/free,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
 "SY" = (
@@ -3201,6 +3207,10 @@
 /area/adminlevel/ert_station/weyland_station)
 "Yv" = (
 /obj/structure/surface/table/reinforced/black,
+/obj/item/storage/box/mre/wy{
+	pixel_x = 6;
+	pixel_y = 16
+	},
 /turf/open/floor/corsat/blue/west,
 /area/adminlevel/ert_station/weyland_station)
 "YB" = (
@@ -4209,8 +4219,8 @@ IQ
 eQ
 Dr
 HM
-PI
-uF
+fX
+fX
 fX
 fX
 QT

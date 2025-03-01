@@ -85,3 +85,24 @@
 /obj/item/device/radio/intercom/saipan
 	name = "dropship saipan intercom"
 	frequency = DS3_FREQ
+
+/obj/item/device/radio/intercom/morana
+	name = "dropship morana intercom"
+	frequency = UPP_DS1_FREQ
+
+/obj/item/device/radio/intercom/devana
+	name = "dropship devana intercom"
+	frequency = UPP_DS2_FREQ
+
+/obj/item/device/radio/intercom/fax
+	name = "Monitoring Frequency Speaker"
+	canhear_range = 4
+
+/obj/item/device/radio/intercom/fax/wy
+	frequency = FAX_WY_FREQ
+
+/obj/item/device/radio/intercom/fax/uscm_hc
+	frequency = FAX_USCM_HC_FREQ
+
+/obj/item/device/radio/intercom/fax/uscm_pvst
+	frequency = FAX_USCM_PVST_FREQ

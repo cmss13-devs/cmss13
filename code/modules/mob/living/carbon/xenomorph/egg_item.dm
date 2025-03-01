@@ -3,7 +3,12 @@
 	name = "egg"
 	desc = "Some sort of egg."
 	icon = 'icons/mob/xenos/effects.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/xeno_items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/xeno_items_righthand.dmi',
+	)
 	icon_state = "egg_item"
+	item_state = "xeno_egg"
 	w_class = SIZE_MASSIVE
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
@@ -69,7 +74,7 @@
 				to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
 				return
 
-	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."),
 					SPAN_NOTICE("You start planting [src]."), null, 5)
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
@@ -135,8 +140,9 @@
 	var/plant_time = 35
 	if(isdrone(user))
 		plant_time = 25
-	if(iscarrier(user))
+	else if(iscarrier(user))
 		plant_time = 10
+
 	if(!do_after(user, plant_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(!user.check_alien_construction(T, ignore_nest = TRUE))

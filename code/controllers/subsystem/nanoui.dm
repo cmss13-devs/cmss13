@@ -7,9 +7,7 @@ SUBSYSTEM_DEF(nano)
 	var/list/currentrun = list()
 	var/datum/nanomanager/nanomanager
 
-/datum/controller/subsystem/nano/New()
-	. = ..()
-
+/datum/controller/subsystem/nano/PreInit()
 	nanomanager = new()
 
 /datum/controller/subsystem/nano/stat_entry(msg)

@@ -1,7 +1,7 @@
 /obj/item/poster
 	name = "rolled-up poster"
 	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
-	icon = 'icons/obj/structures/props/posters.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi'
 	icon_state = "rolled_poster"
 	force = 0
 	w_class = SIZE_SMALL
@@ -21,7 +21,7 @@
 /obj/structure/sign/poster
 	name = "poster"
 	desc = "A large piece of cheap printed paper."
-	icon = 'icons/obj/structures/props/posters.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi'
 	anchored = TRUE
 	var/serial_number //determines the design of the poster
 	var/ruined = 0
@@ -125,14 +125,14 @@
 	icon_state = "poster7"
 
 /obj/structure/sign/poster/ad/Initialize()
-	serial_number = pick(7,8,9,10,11,13,18,22,35,36,37)
+	serial_number = pick(7,8,9,10,11,13,18,22,35,36,37,43,45,47,48,56,59,70,72)
 	.=..()
 
 /obj/structure/sign/poster/art
 	icon_state = "poster6"
 
 /obj/structure/sign/poster/art/Initialize()
-	serial_number = pick(6,23,24)
+	serial_number = pick(6,23,24,57,58)
 	.=..()
 
 /obj/structure/sign/poster/blacklight
@@ -174,14 +174,14 @@
 	icon_state = "poster4"
 
 /obj/structure/sign/poster/propaganda/Initialize()
-	serial_number = pick(4,14,15,20,21,40,41)
+	serial_number = pick(4,14,15,20,21,40,41,42,49,64,65,73,74,77,79)
 	.=..()
 
 /obj/structure/sign/poster/safety
 	icon_state = "poster27"
 
 /obj/structure/sign/poster/safety/Initialize()
-	serial_number = pick(27,28,30,31)
+	serial_number = pick(27,28,30,31,44,66,68,69,71,75,78,80,81,84)
 	.=..()
 
 /obj/structure/sign/poster/io
@@ -199,4 +199,47 @@
 
 /obj/structure/sign/poster/hero/voteno/Initialize()
 	serial_number = 40
+	.=..()
+
+
+////////////////
+//Hybrisa Posters//
+////////////////
+
+/obj/structure/sign/poster/corporate
+	icon_state = "poster50"
+
+/obj/structure/sign/poster/corporate/Initialize()
+	serial_number = pick(50,51,60,61,62,63,67,76,82,83)
+	.=..()
+/obj/structure/sign/poster/kellandmining
+	icon_state = "poster46"
+
+/obj/structure/sign/poster/kellandmining/Initialize()
+	serial_number = 46
+	.=..()
+/obj/structure/sign/poster/marshalls
+	icon_state = "poster52"
+
+/obj/structure/sign/poster/marshalls/Initialize()
+	serial_number = pick(52,53)
+	.=..()
+/obj/structure/sign/poster/wylogo
+	icon_state = "poster55"
+
+/obj/structure/sign/poster/wylogo/Initialize()
+	serial_number = pick(18,55)
+	.=..()
+/obj/structure/sign/poster/pimp
+	icon_state = "poster54"
+
+/obj/structure/sign/poster/pimp/Initialize()
+	serial_number = 54
+	.=..()
+
+/obj/structure/sign/poster/nspa
+	icon_state = "poster87"
+
+/obj/structure/sign/poster/nspa/Initialize()
+	serial_number = pick(85,86,87)
 	.=..()

@@ -36,7 +36,6 @@
 
 	if(mapload)
 		create_valid_directions()
-
 		search_for_connections()
 
 	if(!is_mainship_level(z))

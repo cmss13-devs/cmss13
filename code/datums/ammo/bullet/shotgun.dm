@@ -7,6 +7,11 @@
 /datum/ammo/bullet/shotgun
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 
+/datum/ammo/bullet/shotgun/setup_faction_clash_values()
+	. = ..()
+	accuracy = accuracy * 2 + 85 //we revert accuracy reduction that is applied on other bullets shotguns are accurate but already have short range only
+
+
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
 	handful_state = "slug_shell"
@@ -54,7 +59,8 @@
 	handful_state = "beanbag_slug"
 
 /datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/projectile/P)
-	if(!M || M == P.firer) return
+	if(!M || M == P.firer)
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		shake_camera(H, 2, 1)
@@ -106,6 +112,10 @@
 	handful_state = "flechette_shell"
 	multiple_handful_name = TRUE
 
+/datum/ammo/bullet/shotgun/flechette/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
+
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
 	icon_state = "flechette"
@@ -118,6 +128,10 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
+
+/datum/ammo/bullet/shotgun/flechette_spread/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
 
 /datum/ammo/bullet/shotgun/buckshot
 	name = "buckshot shell"
@@ -300,6 +314,10 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
 
+/datum/ammo/bullet/shotgun/heavy/flechette/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
+
 /datum/ammo/bullet/shotgun/heavy/flechette_spread
 	name = "additional heavy flechette"
 	icon_state = "flechette"
@@ -311,6 +329,10 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_4
+
+/datum/ammo/bullet/shotgun/heavy/flechette_spread/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
 
 /*
 					16 GAUGE SHOTGUN AMMO
@@ -337,6 +359,30 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_3
 	damage = 10
+
+/datum/ammo/bullet/shotgun/light/rubber
+	name = "rubber buckshot shell"
+	icon_state = "buckshot"
+	handful_state = "rubbershot_shell"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/light/rubber/spread
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
+	headshot_state = HEADSHOT_OVERLAY_LIGHT  //It's not meant to kill people... but if you put it in your mouth, it will.
+	accuracy = HIT_ACCURACY_TIER_3
+	shell_speed = AMMO_SPEED_TIER_2
+	max_range = 5
+	shrapnel_chance = 0
+	damage = 0
+	stamina_damage = 35
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_1
+
+/datum/ammo/bullet/shotgun/light/rubber/spread
+	name = "additional rubber buckshot"
+	bonus_projectiles_amount = 0
+	scatter = SCATTER_AMOUNT_TIER_3
+	stamina_damage = 10
+
 
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
 /datum/ammo/bullet/shotgun/twobore

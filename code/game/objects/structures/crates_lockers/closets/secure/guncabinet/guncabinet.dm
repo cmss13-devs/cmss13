@@ -2,7 +2,7 @@
 	name = "gun cabinet"
 	req_access = null
 	health = 1000
-	icon = 'icons/obj/structures/props/misc.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "base"
 	icon_off ="base"
 	icon_broken ="base"

@@ -2,6 +2,10 @@
 	name = "implant box"
 	desc = "A sterile metal lockbox housing hypodermic implant injectors."
 	icon = 'icons/obj/items/storage/kits.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_righthand.dmi',
+	)
 	icon_state = "implantbox"
 	use_sound = "toolbox"
 	storage_slots = 5
@@ -49,7 +53,7 @@
 /obj/item/device/implanter
 	name = "implanter"
 	desc = "An injector that drives an implant into your body. The injection stings quite badly."
-	icon = 'icons/obj/items/devices.dmi'
+	icon = 'icons/obj/items/syringe.dmi'
 	icon_state = "implanter"
 
 	w_class = SIZE_SMALL
@@ -156,7 +160,7 @@
 /obj/item/device/internal_implant/nvg/proc/give_nvg(mob/living/M)
 	SIGNAL_HANDLER
 	M.see_in_dark = 12
-	M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	M.lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	M.sync_lighting_plane_alpha()
 
 /obj/item/device/implanter/rejuv

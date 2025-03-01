@@ -50,6 +50,10 @@
 	name = "Colonial Marshal Deputy"
 	equip_path = /datum/equipment_preset/corpse/security/cmb
 
+/obj/effect/landmark/corpsespawner/security/marshal/riot
+	name = "CMB Riot Control Officer"
+	equip_path = /datum/equipment_preset/corpse/security/cmb/riot
+
 /obj/effect/landmark/corpsespawner/security/liaison
 	name = "Corporate Liaison"
 	equip_path = /datum/equipment_preset/corpse/liaison
@@ -87,6 +91,11 @@
 /obj/effect/landmark/corpsespawner/wygoon/lead/burst
 	name = "Burst Weyland-Yutani Corporate Security Lead"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/burst
+
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo
+	name = "Weyland-Yutani Kutjevo Corporate Security"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/kutjevo
+
 
 ///CM specific jobs///
 
@@ -210,3 +219,144 @@
 /obj/effect/landmark/corpsespawner/forecon_spotter
 	name = "USCM Reconnaissance Spotter"
 	equip_path = /datum/equipment_preset/corpse/forecon_spotter
+
+
+///////////////////////
+/////// HYBRISA ///////
+///////////////////////
+
+// Hybrisa - Goons
+
+/obj/effect/landmark/corpsespawner/hybrisa_goon
+	name = "Weyland-Yutani Corporate Security Officer"
+	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon
+
+/obj/effect/landmark/corpsespawner/hybrisa_goon/burst
+	name = "Burst Weyland-Yutani Corporate Security Officer"
+	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
+
+/obj/effect/landmark/corpsespawner/hybrisa_goon/lead
+	name = "Weyland-Yutani Corporate Security Lead"
+	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead
+
+/obj/effect/landmark/corpsespawner/hybrisa_goon/lead/burst
+	name = "Burst Weyland-Yutani Corporate Security Lead"
+	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
+
+//*****************************************************************************************************/
+
+// Civilian
+
+/obj/effect/landmark/corpsespawner/hybrisa/civilian
+	name = "Corpse - Civilian"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian
+
+/obj/effect/landmark/corpsespawner/hybrisa/civilian/burst
+	name = "Corpse - Burst - Civilian"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian/burst
+
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office
+	name = "Corpse - Civilian - Office Worker"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian_office
+
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office/burst
+	name = "Corpse - Burst - Civilian - Office Worker"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian_office/burst
+
+// Weymart
+
+/obj/effect/landmark/corpsespawner/hybrisa/weymart
+	name = "Corpse - Civilian - Weymart Employee"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/weymart
+
+/obj/effect/landmark/corpsespawner/hybrisa/weymart/burst
+	name = "Corpse - Burst - Civilian - Weymart Employee"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/weymart/burst
+
+// Sanitation
+
+/obj/effect/landmark/corpsespawner/hybrisa/sanitation
+	name = "Corpse - Civilian - Material Reprocessing Technician"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation
+
+/obj/effect/landmark/corpsespawner/hybrisa/sanitation/burst
+	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation/burst
+
+// Pizza Galaxy
+
+/obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy
+	name = "Corpse - Civilian - Pizza Galaxy Delivery Driver"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/pizza_galaxy
+
+/obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy/burst
+	name = "Corpse - Burst - Civilian - Pizza Galaxy Delivery Driver"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/pizza_galaxy/burst
+
+//*****************************************************************************************************/
+
+// Colonial Marshals
+
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable
+	name = "Corpse - NSPA Constable"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable
+
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable/burst
+	name = "Corpse - Burst - NSPA Constable"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/burst
+
+//*****************************************************************************************************/
+
+// KMCC Mining
+
+/obj/effect/landmark/corpsespawner/hybrisa/kelland_miner
+	name = "Corpse - KMCC - Miner"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/kelland_miner
+
+/obj/effect/landmark/corpsespawner/hybrisa/kelland_miner/burst
+	name = "Corpse - Burst - KMCC - Miner"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/kelland_miner/burst
+
+//*****************************************************************************************************/
+
+// Medical
+
+/obj/effect/landmark/corpsespawner/hybrisa/medical_doctor_corpse
+
+	name = "Corpse - Civilian - Medical Doctor"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse
+
+/obj/effect/landmark/corpsespawner/hybrisa/medical_doctor_corpse/burst
+
+	name = "Corpse - Burst - Civilian - Medical Doctor"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse/burst
+
+//*****************************************************************************************************/
+
+// Science
+
+// Xenobiologist
+
+/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenobiologist
+
+	name = "Corpse - Civilian - Xenobiologist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist
+
+/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenobiologist/burst
+
+	name = "Corpse - Burst - Civilian - Xenobiologist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist/burst
+
+// Xenoarchaeologist
+
+/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenoarchaeologist
+
+	name = "Corpse - Civilian - Xenoarchaeologist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist
+
+/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenoarchaeologist/burst
+
+	name = "Corpse - Burst - Civilian - Xenoarchaeologist"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist/burst
+
+//*****************************************************************************************************/

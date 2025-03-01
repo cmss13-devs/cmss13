@@ -14,13 +14,19 @@
 	penetration= ARMOR_PENETRATION_TIER_2
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/setup_faction_clash_values()
+	. = ..()
+	accuracy += 20
+	accurate_range -= 2 //we want pistols to be more accurate but only at short range
+
+
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
 
 /datum/ammo/bullet/pistol/tranq
 	name = "tranquilizer bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	stamina_damage = 30
+	stamina_damage = 60
 	damage = 15
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.

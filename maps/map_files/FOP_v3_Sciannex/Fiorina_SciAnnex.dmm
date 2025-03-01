@@ -7,6 +7,34 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
+"aab" = (
+/obj/effect/landmark/corpsespawner/security/marshal/riot,
+/turf/open/floor/prison/whitegreen,
+/area/fiorina/tumor/ice_lab)
+"aac" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/clock{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/tumor/ice_lab)
+"aad" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aae" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/civres_blue)
+"aaf" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"aag" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -15,7 +43,7 @@
 /area/fiorina/tumor/servers)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/organic/grass/astroturf,
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "aar" = (
 /obj/structure/machinery/power/apc/power/south,
@@ -66,7 +94,7 @@
 /area/fiorina/station/flight_deck)
 "acO" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /obj/structure/machinery/light/double/blue{
@@ -102,7 +130,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/central_ring)
 "aeS" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -4848,7 +4876,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "dNC" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/lz/near_lzI)
 "dOc" = (
@@ -5383,7 +5411,7 @@
 /area/fiorina/station/security)
 "ejM" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/wy_mre{
+/obj/item/storage/box/mre/wy{
 	pixel_x = 5;
 	pixel_y = 2
 	},
@@ -6807,7 +6835,7 @@
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells/east)
 "fnn" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "fnD" = (
@@ -7610,7 +7638,7 @@
 /area/fiorina/station/chapel)
 "fVY" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -8712,6 +8740,9 @@
 /area/fiorina/station/power_ring)
 "gPs" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 9
+	},
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "gPS" = (
@@ -8804,7 +8835,7 @@
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
 "gTc" = (
-/obj/item/storage/belt/shotgun/full/quackers,
+/obj/item/toy/inflatable_duck,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/gm/river/darkred_pool,
 /area/fiorina/station/park)
@@ -10534,12 +10565,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"ifB" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space/basic,
-/area/fiorina/oob)
 "ifJ" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -10556,7 +10581,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "ifN" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/darkyellow2/east,
 /area/fiorina/lz/near_lzI)
 "ifP" = (
@@ -10590,8 +10615,8 @@
 "igQ" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/rank/janitor,
-/obj/item/clothing/suit/bio_suit/janitor,
-/obj/item/clothing/head/bio_hood/janitor,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/clothing/head/bio_hood,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "igV" = (
@@ -11699,7 +11724,7 @@
 /turf/open/floor/prison/blue/southeast,
 /area/fiorina/station/civres_blue)
 "iXV" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "iYa" = (
@@ -12335,7 +12360,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
 "jzN" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/civres_blue)
 "jzP" = (
@@ -12676,7 +12701,7 @@
 /area/fiorina/tumor/servers)
 "jOd" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -13356,7 +13381,7 @@
 /area/fiorina/station/medbay)
 "koK" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -13966,7 +13991,7 @@
 /area/fiorina/maintenance)
 "kMV" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -14476,7 +14501,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/power_ring)
 "lic" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/organic/grass/astroturf,
 /area/fiorina/tumor/fiberbush)
 "lit" = (
@@ -14731,7 +14756,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "lsn" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "lsO" = (
@@ -15949,7 +15974,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "mnR" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "mok" = (
@@ -16004,7 +16029,7 @@
 /turf/open/floor/prison/darkpurple2/east,
 /area/fiorina/tumor/servers)
 "mpR" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "mqB" = (
@@ -16219,11 +16244,6 @@
 /obj/item/tool/plantspray/pests,
 /turf/open/floor/prison/blue_plate/east,
 /area/fiorina/station/botany)
-"mxs" = (
-/obj/item/storage/belt/marine/quackers,
-/obj/effect/spawner/gibspawner/human,
-/turf/open/gm/river/darkred_pool,
-/area/fiorina/station/park)
 "mxN" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -17943,7 +17963,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/xenos/queen.dmi';
+	icon = 'icons/mob/xenos/castes/tier_4/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18114,7 +18134,7 @@
 /obj/structure/prop/invuln{
 	desc = "It is slimy.";
 	dir = 4;
-	icon = 'icons/mob/xenos/sentinel.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/sentinel.dmi';
 	icon_state = "Normal Sentinel Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18124,7 +18144,7 @@
 /obj/structure/prop/invuln{
 	desc = "He knows something that you don't.";
 	dir = 4;
-	icon = 'icons/mob/xenos/larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Sleeping";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18255,7 +18275,7 @@
 /area/fiorina/station/power_ring)
 "nZU" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -18486,7 +18506,7 @@
 /area/fiorina/tumor/ice_lab)
 "ojj" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -18544,7 +18564,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/xenos/xenonid_crab.dmi';
+	icon = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18554,7 +18574,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/xenos/xenonid_crab.dmi';
+	icon = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18564,7 +18584,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/xenos/xenonid_crab.dmi';
+	icon = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18574,7 +18594,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/xenos/xenonid_crab.dmi';
+	icon = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -18657,7 +18677,7 @@
 /area/fiorina/tumor/ice_lab)
 "omb" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "omh" = (
@@ -19940,7 +19960,7 @@
 /area/fiorina/tumor/servers)
 "pmC" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /turf/open/floor/prison/darkyellow2,
@@ -20013,7 +20033,7 @@
 /turf/open/floor/corsat/squares,
 /area/fiorina/station/medbay)
 "ppZ" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "pqz" = (
@@ -20731,7 +20751,7 @@
 /area/fiorina/station/telecomm/lz1_tram)
 "pXJ" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -21410,7 +21430,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/park)
 "quL" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "qva" = (
@@ -21825,14 +21845,17 @@
 /area/fiorina/tumor/fiberbush)
 "qJv" = (
 /obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
+	req_access = null;
+	name = "CMB riot locker"
 	},
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/clothing/under/marine/ua_riot,
-/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
-/obj/item/prop/helmetgarb/riot_shield,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "qJK" = (
@@ -23597,7 +23620,7 @@
 /area/fiorina/station/research_cells/west)
 "sga" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -23860,6 +23883,7 @@
 /area/fiorina/station/disco)
 "spR" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/clock,
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "sqx" = (
@@ -24519,7 +24543,7 @@
 /area/fiorina/tumor/civres)
 "sQr" = (
 /obj/structure/janitorialcart,
-/obj/item/clothing/head/bio_hood/janitor{
+/obj/item/clothing/head/bio_hood{
 	pixel_x = -4;
 	pixel_y = 5
 	},
@@ -25591,7 +25615,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring/reactor)
 "tEX" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "tEY" = (
@@ -26755,9 +26779,8 @@
 /area/fiorina/tumor/aux_engi)
 "uEh" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
+/obj/structure/machinery/computer/communications{
+	dir = 4
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
@@ -26825,7 +26848,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
 "uFW" = (
-/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/floor/prison/whitepurple/north,
 /area/fiorina/station/research_cells/west)
 "uGu" = (
@@ -27200,12 +27223,12 @@
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/power_ring)
 "uTR" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "uVk" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /obj/structure/machinery/light/double/blue{
@@ -27223,7 +27246,7 @@
 /area/fiorina/station/medbay)
 "uVH" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /turf/open/floor/prison/darkyellow2/north,
@@ -27369,7 +27392,7 @@
 /area/fiorina/station/power_ring)
 "uZZ" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -27560,12 +27583,13 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/clothing/under/marine/ua_riot,
 /obj/item/storage/pill_bottle/alkysine,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "vhd" = (
@@ -29361,7 +29385,7 @@
 /area/fiorina/station/chapel)
 "wGX" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
@@ -29874,7 +29898,7 @@
 /obj/item/card/id/silver/clearance_badge/cl{
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
@@ -30048,7 +30072,7 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/fiorina/station/botany)
 "xiO" = (
-/obj/structure/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "xiZ" = (
@@ -30548,7 +30572,7 @@
 /area/fiorina/station/lowsec/showers_laundry)
 "xFL" = (
 /obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
+	icon = 'icons/obj/items/security.dmi';
 	icon_state = "engineering_v"
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -45718,7 +45742,7 @@ oyT
 oWw
 oer
 gLC
-mxs
+gTc
 vhI
 gAs
 tkj
@@ -47527,7 +47551,7 @@ rqG
 pQs
 pQs
 pQs
-bNE
+aae
 rja
 lMq
 jYK
@@ -49614,7 +49638,7 @@ kPf
 kPf
 kPf
 jXz
-jnU
+aaf
 jHz
 oiV
 eSH
@@ -55969,7 +55993,7 @@ azZ
 xLi
 xLi
 oZf
-tYU
+aac
 knW
 fop
 xLi
@@ -58085,7 +58109,7 @@ sWb
 mvp
 mvp
 cer
-kpq
+aab
 mvp
 ddL
 dMT
@@ -58999,7 +59023,7 @@ mEO
 oou
 aFZ
 blI
-ifB
+axW
 pFE
 uFx
 lud
@@ -61051,7 +61075,7 @@ jFP
 phz
 sWb
 xLi
-mvp
+aag
 cer
 kpq
 azZ
@@ -70419,7 +70443,7 @@ cIa
 mVE
 sEK
 cIa
-nVK
+urw
 jii
 apg
 cIa
@@ -72102,7 +72126,7 @@ cIa
 fna
 moQ
 cIa
-urw
+nVK
 jii
 vwX
 cIa
@@ -76839,7 +76863,7 @@ brR
 vDO
 tUs
 mxQ
-pYB
+aad
 tOM
 gbf
 tOM

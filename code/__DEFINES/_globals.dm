@@ -15,6 +15,8 @@
 	##X = list();\
 	for(var/t in subtypesof(TypePath)){\
 		var##TypePath/A = new t;\
+		var##TypePath/existing = ##X[A.##Index];\
+		if(existing && !isnull(A.##Index)) stack_trace("'[A.##Index]' index for [t] in [#X] overlaps with [existing.type]! It must have a unique index for lookup!");\
 		##X[A.##Index] = A;\
 	}\
 	gvars_datum_init_order += #X;\
@@ -35,6 +37,7 @@
 #ifndef TESTING
 #define GLOBAL_PROTECT(X)\
 /datum/controller/global_vars/InitGlobal##X(){\
+	CAN_BE_REDEFINED(TRUE);\
 	..();\
 	gvars_datum_protected_varlist[#X] = TRUE;\
 }
@@ -44,6 +47,7 @@
 
 #define GLOBAL_SORTED(X)\
 /datum/controller/global_vars/InitGlobal##X(){\
+	CAN_BE_REDEFINED(TRUE);\
 	..();\
 	##X = sortAssoc(##X);\
 }

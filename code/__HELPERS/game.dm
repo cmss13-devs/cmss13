@@ -256,7 +256,7 @@
 
 		// copied from join as xeno
 		var/deathtime = world.time - cur_obs.timeofdeath
-		if(deathtime < XENO_JOIN_DEAD_TIME && ( !cur_obs.client.admin_holder || !(cur_obs.client.admin_holder.rights & R_ADMIN)) && !cur_obs.bypass_time_of_death_checks)
+		if(deathtime < XENO_JOIN_DEAD_TIME && !cur_obs.bypass_time_of_death_checks && !check_client_rights(cur_obs.client, R_ADMIN, FALSE))
 			continue
 
 		// AFK players cannot be drafted

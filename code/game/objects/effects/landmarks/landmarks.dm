@@ -85,7 +85,8 @@
 	var/autoremove = TRUE  // Delete mapped turf when landmark is deleted, such as by an insert in replace mode
 /obj/effect/landmark/nightmare/Initialize(mapload, ...)
 	. = ..()
-	if(!insert_tag) return
+	if(!insert_tag)
+		return
 	if(!replace && GLOB.nightmare_landmarks[insert_tag])
 		return
 	GLOB.nightmare_landmarks[insert_tag] = get_turf(src)
@@ -112,6 +113,17 @@
 /obj/effect/landmark/monkey_spawn
 	name = "monkey_spawn"
 	icon_state = "monkey_spawn"
+
+///hunting grounds
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner
+	name = "hunt spawner"
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
+	name = "hunt spawner xeno"
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
+	name = "bloding spawner"
 
 /obj/effect/landmark/monkey_spawn/Initialize(mapload, ...)
 	. = ..()
@@ -270,7 +282,21 @@
 	GLOB.yautja_teleport_descs -= desc_index
 	return ..()
 
+/obj/effect/landmark/yautja_young_teleport
+	name = "yautja_teleport_youngblood"
+	var/desc_index
 
+/obj/effect/landmark/yautja_young_teleport/Initialize(mapload, ...)
+	. = ..()
+	var/turf/turf = get_turf(src)
+	desc_index = turf.loc.name + turf.loc_to_string()
+	GLOB.yautja_young_teleports += src
+	GLOB.yautja_young_descs[desc_index] = src
+
+/obj/effect/landmark/yautja_young_teleport/Destroy()
+	GLOB.yautja_young_teleports -= src
+	GLOB.yautja_young_descs -= desc_index
+	return ..()
 
 /obj/effect/landmark/start
 	name = "start"
@@ -361,10 +387,10 @@
 	job = /datum/job/logistics/engineering/whiskey
 
 /obj/effect/landmark/start/whiskey/maint
-	job = /datum/job/logistics/tech/maint/whiskey
+	job = /datum/job/logistics/maint/whiskey
 
 /obj/effect/landmark/start/whiskey/tech
-	job = /datum/job/logistics/tech //Need to create a WO variant in the future
+	job = /datum/job/logistics/otech //Need to create a WO variant in the future
 
 //****************************************** MILITARY POLICE- HONOR-GUARD ************************************************/
 /obj/effect/landmark/start/whiskey/warrant
@@ -454,6 +480,9 @@
 	name = "working joe late join"
 	job = JOB_WORKING_JOE
 
+/obj/effect/landmark/late_join/dzho_automaton
+	name = "dzho automaton late join"
+	job = JOB_UPP_JOE
 
 /obj/effect/landmark/late_join/cmo
 	name = "Chief Medical Officer late join"
@@ -466,6 +495,10 @@
 /obj/effect/landmark/late_join/doctor
 	name = "Doctor late join"
 	job = JOB_DOCTOR
+
+/obj/effect/landmark/late_join/field_doctor
+	name = "Field Doctor late join"
+	job = JOB_FIELD_DOCTOR
 
 /obj/effect/landmark/late_join/nurse
 	name = "Nurse late join"
@@ -512,6 +545,39 @@
 	else
 		GLOB.latejoin -= src
 	return ..()
+
+
+/obj/effect/landmark/late_join/responder/uscm
+	name = "USCM HC Fax Responder late join"
+	job = JOB_FAX_RESPONDER_USCM_HC
+
+/obj/effect/landmark/late_join/responder/uscm/provost
+	name = "USCM Provost Fax Responder late join"
+	job = JOB_FAX_RESPONDER_USCM_PVST
+
+/obj/effect/landmark/late_join/responder/wey_yu
+	name = "W-Y Fax Responder late join"
+	job = JOB_FAX_RESPONDER_WY
+
+/obj/effect/landmark/late_join/responder/upp
+	name = "UPP Fax Responder late join"
+	job = JOB_FAX_RESPONDER_UPP
+
+/obj/effect/landmark/late_join/responder/twe
+	name = "TWE Fax Responder late join"
+	job = JOB_FAX_RESPONDER_TWE
+
+/obj/effect/landmark/late_join/responder/clf
+	name = "CLF Fax Responder late join"
+	job = JOB_FAX_RESPONDER_CLF
+
+/obj/effect/landmark/late_join/responder/cmb
+	name = "CMB Fax Responder late join"
+	job = JOB_FAX_RESPONDER_CMB
+
+/obj/effect/landmark/late_join/responder/press
+	name = "Press Fax Responder late join"
+	job = JOB_FAX_RESPONDER_PRESS
 
 //****************************************** STATIC COMMS ************************************************//
 /obj/effect/landmark/static_comms

@@ -3,6 +3,12 @@
 	desc = "A stun baton for incapacitating people with."
 	icon_state = "stunbaton"
 	item_state = "baton"
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/weapons.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST
 	force = 15
 	throwforce = 7
@@ -119,10 +125,10 @@
 	var/target_zone = check_zone(user.zone_selected)
 	if(user.a_intent == INTENT_HARM)
 		if (!..()) //item/attack() does it's own messaging and logs
-			return FALSE // item/attack() will return TRUE if they hit, 0 if they missed.
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE // item/attack() will return TRUE if they hit, 0 if they missed.
 
 		if(!status)
-			return TRUE
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	else
 		//copied from human_defense.dm - human defence code should really be refactored some time.
@@ -130,20 +136,20 @@
 
 			if(!target_zone) //shouldn't ever happen
 				human_target.visible_message(SPAN_DANGER("<B>[user] misses [human_target] with \the [src]!"))
-				return FALSE
+				return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 			var/mob/living/carbon/human/H = human_target
 			var/obj/limb/affecting = H.get_limb(target_zone)
 			if (affecting)
 				if(!status)
 					human_target.visible_message(SPAN_WARNING("[human_target] has been prodded in the [affecting.display_name] with [src] by [user]. Luckily it was off."))
-					return TRUE
+					return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 				else
 					H.visible_message(SPAN_DANGER("[human_target] has been prodded in the [affecting.display_name] with [src] by [user]!"))
 		else
 			if(!status)
 				human_target.visible_message(SPAN_WARNING("[human_target] has been prodded with [src] by [user]. Luckily it was off."))
-				return TRUE
+				return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 			else
 				human_target.visible_message(SPAN_DANGER("[human_target] has been prodded with [src] by [user]!"))
 
@@ -168,7 +174,7 @@
 
 	deductcharge(hitcost)
 
-	return TRUE
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/item/weapon/baton/emp_act(severity)
 	. = ..()
@@ -181,6 +187,11 @@
 	desc = "An improvised stun baton."
 	icon_state = "stunprod"
 	item_state = "prod"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
+	)
 	force = 3
 	throwforce = 5
 	stunforce = 40

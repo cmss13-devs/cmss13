@@ -24,9 +24,10 @@
 /area/lv522/oob
 	name = "LV522 - Out Of Bounds"
 	icon_state = "unknown"
+	requires_power = FALSE
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 
 /area/lv522/oob/w_y_vault
 	name = "LV522 - Weyland Secure Vault"
@@ -37,7 +38,6 @@
 /area/lv522/landing_zone_1
 	name = "Chance's Claim - Landing Zone One"
 	icon_state = "explored"
-	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ1
@@ -70,7 +70,6 @@
 /area/lv522/landing_zone_2
 	name = "Chance's Claim - Landing Zone Two"
 	icon_state = "explored"
-	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ2
@@ -188,6 +187,7 @@
 	name = "LV522 - Outdoor Toilets"
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ2
+	requires_power = FALSE
 
 /area/lv522/indoors/lone_buildings/engineering
 	name = "Emergency Engineering"
@@ -199,7 +199,6 @@
 	name = "North LZ1 - Spaceport"
 	icon_state = "red"
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
 
 /area/lv522/indoors/lone_buildings/outdoor_bot
 	name = "East LZ1 - Outdoor T-Comms"
@@ -209,8 +208,19 @@
 
 /area/lv522/indoors/lone_buildings/storage_blocks
 	name = "Outdoor Storage"
-	icon_state = "blue"
 	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
+
+/area/lv522/indoors/lone_buildings/storage_blocks/south
+	name = "Southern Outdoor Storage"
+	icon_state = "red"
+
+/area/lv522/indoors/lone_buildings/storage_blocks/north_west
+	name = "Northwestern Outdoor Storage"
+	icon_state = "blue"
+
+/area/lv522/indoors/lone_buildings/storage_blocks/east
+	name = "Eastern Outdoor Storage"
+	icon_state = "yellow"
 
 /area/lv522/indoors/lone_buildings/chunk
 	name = "Chunk 'N Dump"

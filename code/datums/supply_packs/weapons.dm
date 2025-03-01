@@ -130,12 +130,3 @@
 	containername = "M707 crate"
 	group = "Weapons"
 */
-
-/datum/supply_packs/gun/merc
-	contains = list()
-	name = "black market firearms (x1)"
-	cost = 40
-	contraband = 1
-	containertype = /obj/structure/largecrate/guns/merc
-	containername = "\improper black market firearms crate"
-	group = "Weapons"

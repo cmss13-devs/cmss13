@@ -449,6 +449,18 @@
 	baseturfs = /turf/open/gm/dirt
 	minimap_color = MINIMAP_DIRT
 
+/turf/open/gm/dirt/beach
+	icon_state = "beach"
+
+/turf/open/gm/dirt/beach/northeast
+	dir = NORTHEAST
+
+/turf/open/gm/dirt/beach/southeast
+	dir = SOUTHEAST
+
+/turf/open/gm/dirt/beach/northwest
+	dir = NORTHWEST
+
 /turf/open/gm/dirt/Initialize(mapload, ...)
 	. = ..()
 	if(rand(0,15) == 0)
@@ -536,9 +548,10 @@
 	scorchable = "grass1"
 
 /turf/open/gm/dirtgrassborder/north
+	dir = NORTH
 
 /turf/open/gm/dirtgrassborder/south
-	dir = 1
+	dir = SOUTH
 
 /turf/open/gm/dirtgrassborder/west
 	dir = 4
@@ -628,6 +641,7 @@
 	name = "river"
 	icon_state = "seashallow"
 	can_bloody = FALSE
+	fishing_allowed = TRUE
 	var/icon_overlay = "riverwater"
 	var/covered = 0
 	var/covered_name = "grate"
@@ -711,7 +725,8 @@
 
 
 /turf/open/gm/river/proc/cleanup(mob/living/carbon/human/M)
-	if(!M || !istype(M)) return
+	if(!M || !istype(M))
+		return
 
 	if(M.back)
 		if(M.back.clean_blood())
@@ -741,7 +756,8 @@
 
 /turf/open/gm/river/poison/Entered(mob/living/M)
 	..()
-	if(istype(M)) M.apply_damage(55,TOX)
+	if(istype(M))
+		M.apply_damage(55,TOX)
 
 /turf/open/gm/river/darkred_pool
 	color = "#990000"
@@ -763,6 +779,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
 	default_name = "shallow ocean"
+	allow_construction = FALSE
 
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
@@ -771,6 +788,7 @@
 /turf/open/gm/river/ocean/deep_ocean
 	name = "deep ocean"
 	default_name = "deep ocean"
+	allow_construction = FALSE
 
 /turf/open/gm/river/ocean/Entered(atom/movable/AM)
 	. = ..()
@@ -778,7 +796,7 @@
 		if(!ismob(AM))
 			return
 		var/mob/unlucky_mob = AM
-		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
+		var/turf/target_turf = get_random_turf_in_range(AM, 3, 0)
 		var/datum/launch_metadata/LM = new()
 		LM.target = target_turf
 		LM.range = get_dist(AM.loc, target_turf)
@@ -787,7 +805,8 @@
 		LM.spin = TRUE
 		LM.pass_flags = NO_FLAGS
 		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
-		unlucky_mob.launch_towards(LM)
+		// Entered can occur during Initialize so we need to not sleep
+		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), LM)
 		return
 
 	if(world.time % 5)
@@ -832,6 +851,9 @@
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
 
+/turf/open/gm/coast/beachcorner2/east
+	dir = EAST
+
 /turf/open/gm/coast/beachcorner2/north_west
 
 /turf/open/gm/coast/beachcorner2/north_east
@@ -851,6 +873,7 @@
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_groundmap_turf = FALSE // Not real ground
+	fishing_allowed = TRUE
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -861,7 +884,8 @@
 	no_overlay = TRUE
 	supports_surgery = FALSE
 
-
+/turf/open/gm/river/no_overlay/sewage
+	name = "sewage"
 
 
 //ELEVATOR SHAFT-----------------------------------//
@@ -1028,16 +1052,16 @@
 		if(prob(90))
 			var/image/I
 			if(prob(35))
-				I = image('icons/obj/structures/props/jungleplants.dmi',"plant[rand(1,7)]")
+				I = image('icons/obj/structures/props/natural/vegetation/jungleplants.dmi',"plant_[rand(1,7)]")
 			else
 				if(prob(30))
-					I = image('icons/obj/structures/props/ausflora.dmi',"reedbush_[rand(1,4)]")
+					I = image('icons/obj/structures/props/natural/vegetation/ausflora.dmi',"reedbush_[rand(1,4)]")
 				else if(prob(33))
-					I = image('icons/obj/structures/props/ausflora.dmi',"leafybush_[rand(1,3)]")
+					I = image('icons/obj/structures/props/natural/vegetation/ausflora.dmi',"leafybush_[rand(1,3)]")
 				else if(prob(50))
-					I = image('icons/obj/structures/props/ausflora.dmi',"fernybush_[rand(1,3)]")
+					I = image('icons/obj/structures/props/natural/vegetation/ausflora.dmi',"fernybush_[rand(1,3)]")
 				else
-					I = image('icons/obj/structures/props/ausflora.dmi',"stalkybush_[rand(1,3)]")
+					I = image('icons/obj/structures/props/natural/vegetation/ausflora.dmi',"stalkybush_[rand(1,3)]")
 			I.pixel_x = rand(-6,6)
 			I.pixel_y = rand(-6,6)
 			overlays += I
@@ -1095,20 +1119,6 @@
 	icon_state = "grass_clear"
 	icon_spawn_state = "grass1"
 
-/turf/open/jungle/path
-	bushes_spawn = 0
-	name = "dirt"
-	desc = "it is very dirty."
-	icon = 'icons/turf/floors/jungle.dmi'
-	icon_state = "grass_path"
-	icon_spawn_state = "dirt"
-	minimap_color = MINIMAP_DIRT
-
-/turf/open/jungle/path/Initialize(mapload, ...)
-	. = ..()
-	for(var/obj/structure/flora/jungle/thickbush/B in src)
-		qdel(B)
-
 /turf/open/jungle/impenetrable
 	bushes_spawn = FALSE
 	icon_state = "grass_impenetrable"
@@ -1126,7 +1136,7 @@
 	bushes_spawn = 0
 	name = "murky water"
 	desc = "thick, murky water"
-	icon = 'icons/turf/floors//beach.dmi'
+	icon = 'icons/turf/floors/beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"
 	can_bloody = FALSE
@@ -1254,6 +1264,9 @@
 /turf/open/shuttle/dropship/light_grey_middle
 	icon_state = "rasputin13"
 
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right
+	icon_state = "rasputin14"
+
 /turf/open/shuttle/dropship/can_surgery
 	icon_state = "rasputin1"
 	allow_construction = TRUE
@@ -1333,38 +1346,50 @@
 /turf/open/shuttle/escapepod/floor0/north
 	dir = NORTH
 
+/turf/open/shuttle/escapepod/floor0/east
+	dir = EAST
+
 /turf/open/shuttle/escapepod/floor0/west
 	dir = WEST
 
 /turf/open/shuttle/escapepod/floor1
 	icon_state = "floor1"
 
+/turf/open/shuttle/escapepod/floor1/north
+	dir = NORTH
+
 /turf/open/shuttle/escapepod/floor1/east
 	dir = EAST
 
-/turf/open/shuttle/escapepod/floor11
-	icon_state = "floor11"
-
-/turf/open/shuttle/escapepod/floor12
-	icon_state = "floor12"
+/turf/open/shuttle/escapepod/floor1/west
+	dir = WEST
 
 /turf/open/shuttle/escapepod/floor2
 	icon_state = "floor2"
 
+/turf/open/shuttle/escapepod/floor2/north
+	dir = NORTH
+
+/turf/open/shuttle/escapepod/floor2/east
+	dir = EAST
+
+/turf/open/shuttle/escapepod/floor2/west
+	dir = WEST
+
+/turf/open/shuttle/escapepod/floor3
+	icon_state = "floor3"
+
+/turf/open/shuttle/escapepod/floor3/north
+	dir = NORTH
+
+/turf/open/shuttle/escapepod/floor3/east
+	dir = EAST
+
+/turf/open/shuttle/escapepod/floor3/west
+	dir = WEST
+
 /turf/open/shuttle/escapepod/floor4
 	icon_state = "floor4"
-
-/turf/open/shuttle/escapepod/floor5
-	icon_state = "floor5"
-
-/turf/open/shuttle/escapepod/floor7
-	icon_state = "floor7"
-
-/turf/open/shuttle/escapepod/floor8
-	icon_state = "floor8"
-
-/turf/open/shuttle/escapepod/floor9
-	icon_state = "floor9"
 
 /turf/open/shuttle/lifeboat
 	icon = 'icons/turf/almayer.dmi'
@@ -1404,6 +1429,12 @@
 	name = "floor"
 	icon_state = "dark_sterile"
 	supports_surgery = TRUE
+
+/turf/open/shuttle/vehicle/med/slate
+	color = "#495462"
+
+/turf/open/shuttle/vehicle/med/gray
+	color = "#9c9a97"
 
 /turf/open/shuttle/vehicle/dark_sterile
 	icon_state = "dark_sterile"

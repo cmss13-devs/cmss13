@@ -154,6 +154,13 @@ if grep -P '^/*var/' $code_files; then
 	st=1
 fi;
 
+part "ambiguous bitwise or"
+if grep -P '^(?:[^\/\n]|\/[^\/\n])*(&[ \t]*\w+[ \t]*\|[ \t]*\w+)' $code_files; then
+	echo
+	echo -e "${RED}ERROR: Likely operator order mistake with bitwise OR. Use parentheses to specify intention.${NC}"
+	st=1
+fi;
+
 
 part "map json naming"
 if ls maps/*.json | grep -P "[A-Z]"; then
@@ -212,6 +219,15 @@ if $grep '\.proc/' $code_x_515 ; then
     echo -e "${RED}ERROR: Outdated proc reference use detected in code, please use proc reference helpers.${NC}"
     st=1
 fi;
+
+section "516 HREF Syntax"
+part "href syntax"
+if $grep "href[\s='\"\\\\]*\?" $code_files; then
+	echo
+    echo -e "${RED}ERROR: BYOND requires internal href links to begin with \"byond://\".${NC}"
+	st=1
+fi;
+
 
 if [ "$pcre2_support" -eq 1 ]; then
 	section "regexes requiring PCRE2"

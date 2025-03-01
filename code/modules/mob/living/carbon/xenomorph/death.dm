@@ -1,5 +1,8 @@
 #define DELETE_TIME 1800
 
+/// Doesn't count tier 0
+GLOBAL_VAR_INIT(total_dead_xenos, 0)
+
 /mob/living/carbon/xenomorph/death(cause, gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
 	. = ..(cause, gibbed, msg)
@@ -27,6 +30,12 @@
 		update_icons()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
+		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			var/datum/entity/xeno_death/death_log = DB_ENTITY(/datum/entity/xeno_death)
+			death_log.load_data(src, cause)
+			if(!(caste.caste_type in XENO_T0_CASTES))
+				GLOB.total_dead_xenos++
+
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
@@ -136,54 +145,28 @@
 	give_action(src, /datum/action/ghost/xeno)
 
 /mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
-	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
-	var/icon_path
-	var/gib_state = "gibbed-a-corpse"
-	remains.pixel_x = pixel_x //For 2x2.
-
+	var/no_remains
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
-	if(mob_size >= MOB_SIZE_BIG)
-		icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
-	else
-		icon_path = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	switch(caste.caste_type)
-		if(XENO_CASTE_RUNNER)
-			icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
-			gib_state = "gibbed-a-corpse-runner"
 		if(XENO_CASTE_BOILER)
 			var/mob/living/carbon/xenomorph/boiler/src_boiler = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
 			src_boiler.smoke.set_up(2, 0, get_turf(src), new_cause_data = src_boiler.smoke.cause_data)
 			src_boiler.smoke.start()
-		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
-			icon_path = 'icons/mob/xenos/larva.dmi'
+		if(XENO_CASTE_FACEHUGGER)
+			no_remains = TRUE
 
-	remains.icon_state = gib_state
-	remains.icon = icon_path
+	if(!no_remains)
+		new /obj/effect/decal/remains/xeno(get_turf(src), icon, "gibbed-a-corpse", pixel_x)
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 
 	..(cause)
 
 /mob/living/carbon/xenomorph/gib_animation()
-	var/to_flick = "gibbed-a"
-	var/icon_path
-	if(mob_size >= MOB_SIZE_BIG)
-		icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
-	else
-		icon_path = 'icons/mob/xenos/xenomorph_48x48.dmi'
-	switch(caste.caste_type)
-		if(XENO_CASTE_RUNNER)
-			icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
-			to_flick = "gibbed-a-runner"
-		if(XENO_CASTE_BOILER)
-			to_flick = "gibbed-a-boiler"
-		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
-			icon_path = 'icons/mob/xenos/larva.dmi'
-			to_flick = "larva_gib"
-	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon_path)
+	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, "gibbed-a", icon)
 
 /mob/living/carbon/xenomorph/spawn_gibs()
 	xgibs(get_turf(src))

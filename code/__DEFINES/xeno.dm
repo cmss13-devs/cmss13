@@ -66,10 +66,6 @@
 #define SINGLETARGETGUT 0
 #define AOETARGETGUT 1
 
-#define WARDEN_HEAL_SHIELD 0
-#define WARDEN_HEAL_HP 1
-#define WARDEN_HEAL_DEBUFFS 2
-
 #define HUD_PAIN_STATES_XENO   4
 #define HUD_HEALTH_STATES_XENO 16
 #define HUD_PLASMA_STATES_XENO 16
@@ -174,7 +170,7 @@
 /// The time when xenos can start taking over comm towers
 #define XENO_COMM_ACQUISITION_TIME (55 MINUTES)
 
-/// The time it takes for a pylon to give one larva while activated
+/// The time it takes for a pylon to give one royal resin while activated
 #define XENO_PYLON_ACTIVATION_COOLDOWN (5 MINUTES)
 
 /// The time until you can re-corrupt a comms relay after the last pylon was destroyed
@@ -203,6 +199,9 @@
 #define XENO_FACEHUGGER_LEAVE_TIMER 420 //420 seconds
 /// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
 #define XENO_AVAILABLE_TIMER 60 //60 seconds
+
+/// The damage that xeno health gets divided by for banish tick damage
+#define XENO_BANISHMENT_DMG_DIVISOR 23
 
 /// Between 2% to 10% of explosion severity
 #define WEED_EXPLOSION_DAMAGEMULT rand(2, 10)*0.01
@@ -255,6 +254,7 @@
 #define XENO_HEALTH_TIER_14 950 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_QUEEN 1000 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_IMMORTAL 1200 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_KING 1500 * XENO_UNIVERSAL_HPMULT
 
 // Plasma bands
 #define XENO_NO_PLASMA 0
@@ -403,7 +403,7 @@
 // Praetorian strain flags
 #define PRAETORIAN_VANGUARD "Vanguard"
 #define PRAETORIAN_DANCER "Dancer"
-#define PRAETORIAN_WARDEN "Warden"
+#define PRAETORIAN_VALKYRIE "Valkyrie"
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -434,6 +434,7 @@
 // Armor mods. Use the above defines for some guidance
 // In general, +20 armor should be a little more than +20% effective HP, however,
 // the higher the Xeno's base armor, the greater the effect.
+#define XENO_ARMOR_MOD_TINY  2.5
 #define XENO_ARMOR_MOD_VERY_SMALL  5
 #define XENO_ARMOR_MOD_SMALL   10
 #define XENO_ARMOR_MOD_MED 15
@@ -665,9 +666,10 @@
 #define XENO_SHIELD_SOURCE_GARDENER 8
 #define XENO_SHIELD_SOURCE_SHIELD_PILLAR 9
 #define XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC 10
+#define XENO_SHIELD_SOURCE_KING_BULWARKSPELL 11
 
 //XENO CASTES
-#define XENO_CASTE_LARVA  "Bloody Larva"
+#define XENO_CASTE_LARVA  "Larva"
 #define XENO_CASTE_PREDALIEN_LARVA   "Predalien Larva"
 #define XENO_CASTE_FACEHUGGER "Facehugger"
 #define XENO_CASTE_LESSER_DRONE "Lesser Drone"
@@ -693,13 +695,17 @@
 #define XENO_CASTE_CRUSHER    "Crusher"
 #define XENO_CASTE_RAVAGER    "Ravager"
 #define XENO_T3_CASTES    list(XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER)
-//special
+
+//Tier 4
+#define XENO_CASTE_KING "King"
 #define XENO_CASTE_QUEEN  "Queen"
+
+//special
 #define XENO_CASTE_PREDALIEN  "Predalien"
 #define XENO_CASTE_HELLHOUND  "Hellhound"
 #define XENO_SPECIAL_CASTES   list(XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
 
-#define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_LESSER_DRONE, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
+#define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_LESSER_DRONE, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND, XENO_CASTE_KING)
 
 // Checks if two hives are allied to each other.
 // PARAMETERS:
@@ -735,6 +741,7 @@
 
 #define XENO_VISION_LEVEL_NO_NVG "No Night Vision"
 #define XENO_VISION_LEVEL_MID_NVG "Half Night Vision"
+#define XENO_VISION_LEVEL_HIGH_NVG "Three Quarters Night Vision"
 #define XENO_VISION_LEVEL_FULL_NVG "Full Night Vision"
 
 
@@ -766,4 +773,9 @@
 #define FRENZY_DAMAGE_MULTIPLIER 2
 
 #define JOIN_AS_FACEHUGGER_DELAY (3 MINUTES)
-#define JOIN_AS_LESSER_DRONE_DELAY (30 SECONDS)
+#define JOIN_AS_LESSER_DRONE_DELAY (1 MINUTES)
+
+// larva states
+#define LARVA_STATE_BLOODY 0
+#define LARVA_STATE_NORMAL 1
+#define LARVA_STATE_MATURE 2

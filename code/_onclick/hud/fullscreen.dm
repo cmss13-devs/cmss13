@@ -8,10 +8,13 @@
 	if (!screen || screen.type != type)
 		// needs to be recreated
 		clear_fullscreen(category, FALSE)
-		fullscreens[category] = screen = new type()
+		fullscreens[category] = screen = type ? new type() : null
 	else if ((!severity || severity == screen.severity) && (!client || screen.screen_loc != "CENTER-7,CENTER-7" || screen.fs_view == client.view))
 		// doesn't need to be updated
 		return screen
+
+	if(!screen)
+		return
 
 	screen.icon_state = "[initial(screen.icon_state)][severity]"
 	screen.severity = severity
@@ -55,12 +58,19 @@
 		var/atom/movable/screen/fullscreen/screen
 		for(var/category in fullscreens)
 			screen = fullscreens[category]
-			if(screen.should_show_to(src))
+			if(screen?.should_show_to(src))
 				screen.update_for_view(client.view)
 				client.add_to_screen(screen)
 			else
 				client.remove_from_screen(screen)
 
+//Get the distance to the farthest edge of the screen
+/mob/proc/get_maximum_view_range()
+	if(!client)
+		return world.view
+
+	var/offset = max(abs(client.pixel_x), abs(client.pixel_y))
+	return client.view + offset / 32
 
 /atom/movable/screen/fullscreen
 	icon = 'icons/mob/hud/screen1_full.dmi'

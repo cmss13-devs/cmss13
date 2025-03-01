@@ -29,7 +29,7 @@
 	if(length(ties))
 		.+= " with [english_list(ties)] attached"
 	if(LAZYLEN(accessories) > length(ties))
-		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
+		.+= ". <a href='byond://?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
@@ -44,8 +44,18 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if(drag_unequip && ishuman(usr) && src.loc == user) //make it harder to accidentally undress yourself
+	//only forward to the attached accessory if the clothing is equipped (not in a storage)
+	if(LAZYLEN(accessories) && loc == user)
+		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armor vests with medals, but can't hurt in general.
+		for(var/obj/item/clothing/accessory/A in accessories)
+			if(A.attack_hand(user))
+				delegated = TRUE
+		if(delegated)
+			return
+
+	if(drag_unequip && ishuman(usr) && loc == user) //make it harder to accidentally undress yourself
 		return
+
 	..()
 
 /obj/item/clothing/hear_talk(mob/M, msg)
@@ -91,7 +101,7 @@
 /obj/item/clothing/proc/update_clothing_icon()
 	return
 
-/obj/item/clothing/get_mob_overlay(mob/user_mob, slot)
+/obj/item/clothing/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
 	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
@@ -128,6 +138,13 @@
 	desc = "Protects your hearing from loud noises, and quiet ones as well."
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
+	icon = 'icons/obj/items/radio.dmi'
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
+	)
 	flags_equip_slot = SLOT_EAR
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	black_market_value = 20
@@ -146,8 +163,8 @@
 ///////////////////////////////////////////////////////////////////////
 //Suit
 /obj/item/clothing/suit
-	icon = 'icons/obj/items/clothing/suits.dmi'
 	name = "suit"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	var/fire_resist = T0C+100
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	allowed = list(
@@ -170,6 +187,10 @@
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_0.dmi')
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
+	)
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -191,13 +212,6 @@
 			return 0
 	return 1
 
-/obj/item/clothing/suit/proc/get_collar()
-	var/icon/C = new('icons/mob/humans/onmob/collar.dmi')
-	if(icon_state in C.IconStates())
-		var/image/I = image(C, icon_state)
-		I.color = color
-		return I
-
 /////////////////////////////////////////////////////////
 //Gloves
 /obj/item/clothing/gloves
@@ -205,12 +219,18 @@
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/clothing/gloves.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/gloves_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/gloves_righthand.dmi',
+	)
 	siemens_coefficient = 0.50
 	var/wired = 0
 	var/obj/item/cell/cell = 0
 	flags_armor_protection = BODY_FLAG_HANDS
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
+	valid_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R) // To prevent infinitely putting watches/wrist accessories on your gloves. That can be reserved for uniforms, where you have the whole ARM to put shit on
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
 	blood_overlay_type = "hands"
 	var/gloves_blood_amt = 0 //taken from blood.dm
@@ -240,10 +260,14 @@
 //Mask
 /obj/item/clothing/mask
 	name = "mask"
-	icon = 'icons/obj/items/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks/masks.dmi'
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	blood_overlay_type = "mask"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
+	)
 	var/anti_hug = 0
 
 /obj/item/clothing/mask/update_clothing_icon()
@@ -333,9 +357,13 @@
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_FEET
 	flags_equip_slot = SLOT_FEET
-	permeability_coefficient = 0.50
+
 	slowdown = SHOES_SLOWDOWN
 	blood_overlay_type = "feet"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/boots_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/boots_righthand.dmi'
+	)
 	/// The currently inserted item.
 	var/obj/item/stored_item
 	/// List of item types that can be inserted.
@@ -443,6 +471,11 @@
 	return null
 
 /obj/item/clothing/clicked(mob/user, list/mods)
+	if(mods["alt"] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		for(var/V in verbs)
+			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
+				return
+
 	var/obj/item/storage/internal/pockets = get_pockets()
 	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
 		pockets.open(user)

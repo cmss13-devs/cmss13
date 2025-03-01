@@ -6,7 +6,6 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
-	uses_skin_color = TRUE
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,

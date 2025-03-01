@@ -6,8 +6,8 @@
 	name = "combat flashlight"
 	desc = "A Flashlight designed to be held in the hand, or attached to a rifle, has better bulb compared to a normal flashlight."
 	icon_state = "combat_flashlight"
-	item_state = "flashlight"
-	light_range = 5 //Pretty luminous, but still a flashlight that fits in a pocket
+	item_state = ""
+	light_range = 6 //Pretty luminous, but still a flashlight that fits in a pocket
 
 //MARINE SNIPER TARPS
 
@@ -149,6 +149,7 @@
 		return FALSE
 	. = ..()
 	handle_cloaking()
+
 /obj/structure/broken_apc
 	name = "\improper M577 armored personnel carrier"
 	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."
@@ -158,39 +159,11 @@
 	icon = 'icons/obj/apc.dmi'
 	icon_state = "apc"
 
-
-/obj/item/storage/box/uscm_mre
-	name = "\improper USCM meal ready to eat"
-	desc = "<B>Instructions:</B> Extract food using maximum firepower. Eat.\n\nOn the box is a picture of a shouting Squad Leader. \n\"YOU WILL EAT YOUR NUTRIENT GOO AND YOU WILL ENJOY IT, MAGGOT.\""
-	icon_state = "mre1"
-
-/obj/item/storage/box/uscm_mre/Initialize()
-	. = ..()
-	pixel_y = rand(-3,3)
-	pixel_x = rand(-3,3)
-	for(var/i = 0,i < 6,i++)
-		var/rand_type = rand(0,8)
-		switch(rand_type)
-			if(0 to 2)
-				new /obj/item/reagent_container/food/snacks/protein_pack(src)
-			if(3)
-				new /obj/item/reagent_container/food/snacks/mre_pack/meal1(src)
-			if(4)
-				new /obj/item/reagent_container/food/snacks/mre_pack/meal2(src)
-			if(5)
-				new /obj/item/reagent_container/food/snacks/mre_pack/meal3(src)
-			if(6)
-				new /obj/item/reagent_container/food/snacks/mre_pack/meal4(src)
-			if(7)
-				new /obj/item/reagent_container/food/snacks/mre_pack/meal5(src)
-			if(8)
-				new /obj/item/reagent_container/food/snacks/mre_pack/meal6(src)
-
-
 /obj/item/reagent_container/food/snacks/protein_pack
 	name = "stale USCM protein bar"
 	desc = "The most fake-looking protein bar you have ever laid eyes on, covered in a substitution chocolate. The powder used to make these is a substitute of a substitute of whey substitute."
 	icon_state = "yummers"
+	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	filling_color = "#ED1169"
 	w_class = SIZE_TINY
 
@@ -203,6 +176,7 @@
 /obj/item/reagent_container/food/snacks/mre_pack
 	name = "\improper generic MRE pack"
 	//trash = /obj/item/trash/USCMtray
+	icon = 'icons/obj/items/food/trays.dmi'
 	trash = null
 	w_class = SIZE_SMALL
 
@@ -333,30 +307,53 @@
 	icon_state = "pamphlet"
 	info = "In loving memory of Cub Johnson."
 
-/obj/item/storage/box/wy_mre
-	name = "\improper Weyland-Yutani brand MRE"
-	desc = "A prepackaged, long-lasting food box from Weyland-Yutani Industries.\nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. BUILDING BETTER LUNCHES</b>"
-	icon_state = "mre2"
-	can_hold = list(/obj/item/reagent_container/food/snacks)
-	w_class = SIZE_LARGE
+/obj/item/device/overwatch_camera
+	name = "M5 Camera Gear"
+	desc = "A camera and associated headgear designed to allow marine commanders to see what their troops can see. A more robust version of this equipment is integrated into all standard USCM combat helmets."
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	icon_state = "cam_gear_off"
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+	)
+	item_state_slots = list(
+		WEAR_L_EAR = "cam_gear",
+		WEAR_R_EAR = "cam_gear",
+	)
+	flags_equip_slot = SLOT_EAR
+	var/obj/structure/machinery/camera/camera
 
-/obj/item/storage/box/wy_mre/Initialize()
+/obj/item/device/overwatch_camera/Initialize(mapload, ...)
 	. = ..()
-	pixel_y = rand(-3,3)
-	pixel_x = rand(-3,3)
-	new /obj/item/reagent_container/food/snacks/donkpocket(src)
-	new /obj/item/reagent_container/food/snacks/donkpocket(src)
-	new /obj/item/reagent_container/food/snacks/donkpocket(src)
-	new /obj/item/reagent_container/food/drinks/coffee(src)
-	var/randsnack = rand(0,5)
-	switch(randsnack)
-		if(0)
-			new /obj/item/reagent_container/food/snacks/cheesiehonkers(src)
-		if(1)
-			new /obj/item/reagent_container/food/snacks/no_raisin(src)
-		if(2)
-			new /obj/item/reagent_container/food/snacks/spacetwinkie(src)
-		if(4)
-			new /obj/item/reagent_container/food/snacks/cookie(src)
-		if(5)
-			new /obj/item/reagent_container/food/snacks/chocolatebar(src)
+	camera = new /obj/structure/machinery/camera/overwatch(src)
+	AddComponent(/datum/component/overwatch_console_control)
+
+/obj/item/device/overwatch_camera/Destroy()
+	QDEL_NULL(camera)
+	return ..()
+
+/obj/item/device/overwatch_camera/equipped(mob/living/carbon/human/mob, slot)
+	if(camera)
+		camera.c_tag = mob.name
+		camera.status = TRUE
+		icon_state = "cam_gear_on"
+		update_icon()
+	..()
+
+/obj/item/device/overwatch_camera/unequipped(mob/user, slot)
+	. = ..()
+	if(camera)
+		camera.status = FALSE
+		icon_state = "cam_gear_off"
+		update_icon()
+
+/obj/item/device/overwatch_camera/dropped(mob/user)
+	if(camera)
+		camera.c_tag = "Unknown"
+	..()
+
+/obj/item/device/overwatch_camera/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, loc == sourcemob)
+
+/obj/item/device/overwatch_camera/see_emote(mob/living/sourcemob, emote, audible)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)

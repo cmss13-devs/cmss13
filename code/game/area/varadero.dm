@@ -78,21 +78,19 @@
 	ceiling = CEILING_MAX
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 
 //landing zone computers
 
 /area/varadero/exterior/lz1_console
 	name = "New Varadero - Pontoon Dock"
 	requires_power = FALSE
-	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz1_console/two
 	name = "New Varadero - Palm Airfield"
 	requires_power = FALSE
-	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
 //exterior areas
@@ -146,10 +144,16 @@
 
 /area/varadero/exterior/farocean
 	name = "New Varadero - Far Ocean"
-	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	icon_state = "varadero3"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
+
+/area/varadero/exterior/islands
+	name = "New Varadero - Islands"
+	icon_state = "varadero1"
+	allow_construction = FALSE
+	always_unpowered = 1
+
 
 //interior areas
 
@@ -333,6 +337,10 @@
 /area/varadero/interior_protected/caves/digsite
 	name = "New Varadero - Dig Site"
 	icon_state = "deepcaves3"
+
+/area/varadero/interior_protected/caves/makeshift_tent
+	name = "New Varadero - Makeshift Tent"
+	icon_state = "offices4"
 
 /area/varadero/interior_protected/caves/swcaves
 	name = "New Varadero - Southwest Caves"

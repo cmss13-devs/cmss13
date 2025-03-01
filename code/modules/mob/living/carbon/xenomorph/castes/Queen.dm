@@ -22,7 +22,7 @@
 	is_intelligent = 1
 	evolution_allowed = FALSE
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
-	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
+	caste_desc = "The Queen, in all her glory."
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
@@ -172,7 +172,7 @@
 
 	if(istype(crossing_turf, /turf/closed/wall))
 		var/turf/closed/wall/crossing_wall = crossing_turf
-		if(crossing_wall.hull)
+		if(crossing_wall.turf_flags & TURF_HULL)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
 	var/list/turf_area = range(3, crossing_turf)
@@ -203,7 +203,8 @@
 
 		to_chat(Q, message)
 		for(var/mob/living/carbon/xenomorph/X in viewers(7, src))
-			if(X == Q) continue
+			if(X == Q)
+				continue
 			to_chat(X, message)
 
 		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src, A)
@@ -276,8 +277,8 @@
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 	organ_value = 8000 // queen is expensive
 
-	icon_xeno = 'icons/mob/xenos/queen.dmi'
-	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_4/queen.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_4/queen.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Queen_1","Queen_2","Queen_3")
@@ -303,8 +304,6 @@
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
-		/datum/action/xeno_action/onclick/psychic_whisper,
-		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/activable/gut,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
@@ -312,6 +311,7 @@
 		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
+		/datum/action/xeno_action/onclick/send_thoughts,
 	)
 
 	inherent_verbs = list(
@@ -334,14 +334,13 @@
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
-		/datum/action/xeno_action/onclick/psychic_whisper,
-		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/activable/gut,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
 		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/onclick/manage_hive,
+		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
@@ -445,7 +444,9 @@
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
-		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) && !(xeno.flags_pass_temp & PASS_MOB_THRU))
+		if(xeno.stat == DEAD)
+			continue
+		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) || xeno.flags_pass_temp & PASS_MOB_THRU)
 			continue
 		if(xeno.hivenumber == hivenumber && !(queen.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
@@ -579,6 +580,7 @@
 
 	. += "Pooled Larvae: [stored_larvae]"
 	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
+	. += "Royal Resin: [hive?.buff_points]"
 	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
 		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
 
@@ -769,16 +771,6 @@
 		if(synthhead.status & LIMB_DESTROYED)
 			return FALSE
 
-	if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
-		var/mob/living/carbon/human/human_victim = victim
-		if(human_victim.status_flags & XENO_HOST)
-			if(victim.stat != DEAD) //Not dead yet.
-				to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
-				return FALSE
-			else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
-				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
-				return FALSE
-
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
@@ -795,7 +787,7 @@
 	if(!check_plasma(200))
 		return FALSE
 
-	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
+	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."),
 	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
@@ -807,7 +799,7 @@
 
 		use_plasma(200)
 
-		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
+		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"),
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
 
@@ -862,10 +854,9 @@
 		/datum/action/xeno_action/activable/place_construction/not_primary,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
-		/datum/action/xeno_action/onclick/psychic_whisper,
-		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/onclick/manage_hive,
+		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		// Screech is typically new for this list, but its possible they never ovi and it then is forced here:
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
@@ -874,7 +865,6 @@
 		/datum/action/xeno_action/onclick/set_xeno_lead,
 		/datum/action/xeno_action/activable/queen_heal, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
-		/datum/action/xeno_action/onclick/queen_order,
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
 		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro
 		/datum/action/xeno_action/onclick/queen_tacmap,

@@ -45,7 +45,7 @@
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()
-		winset(src, "infowindow.changelog", "font-style=;")
+		stat_panel.send_message("changelog_read", TRUE)
 
 /client/verb/discord()
 	set name = "Discord"

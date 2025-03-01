@@ -47,8 +47,8 @@
 	xeno.queued_action = action
 	to_chat(xeno, SPAN_WARNING("Your next click will use [action.name]!"))
 
-	if(xeno.client)
-		xeno.client.mouse_pointer_icon = file("icons/mob/hud/mecha_mouse.dmi")
+	if(xeno.client?.prefs?.custom_cursors)
+		xeno.client.mouse_pointer_icon = 'icons/mob/hud/mecha_mouse.dmi'
 
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_one()

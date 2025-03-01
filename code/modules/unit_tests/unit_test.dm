@@ -33,16 +33,20 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	/// The bottom left floor turf of the testing zone
 	var/turf/run_loc_floor_bottom_left
-
 	/// The top right floor turf of the testing zone
 	var/turf/run_loc_floor_top_right
+
 	///The priority of the test, the larger it is the later it fires
 	var/priority = TEST_DEFAULT
+	///When the test will run
+	var/stage = TEST_STAGE_GAME
+
 	//internal shit
 	var/focus = FALSE
 	var/succeeded = TRUE
 	var/list/allocated
 	var/list/fail_reasons
+	var/list/warn_reasons
 
 	var/static/datum/space_level/reservation
 
@@ -81,6 +85,12 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 		reason = "FORMATTED: [reason != null ? reason : "NULL"]"
 
 	LAZYADD(fail_reasons, list(list(reason, file, line)))
+
+/datum/unit_test/proc/Warn(reason = "No reason", file = "OUTDATED_TEST", line = 1)
+	if(!istext(reason))
+		reason = "FORMATTED: [reason != null ? reason : "NULL"]"
+
+	LAZYADD(warn_reasons, list(list(reason, file, line)))
 
 /// Allocates an instance of the provided type, and places it somewhere in an available loc
 /// Instances allocated through this proc will be destroyed when the test is over
@@ -182,40 +192,73 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	log_world("::endgroup::")
 
-	if (!test.succeeded)
+	// Group warnings together
+	var/list/warn_reasons = test.warn_reasons
+	if(length(warn_reasons))
+		log_world("::group::[test_path] Warnings")
+
+		log_entry = list()
+		for(var/reasonID in 1 to length(warn_reasons))
+			var/text = warn_reasons[reasonID][1]
+			var/file = warn_reasons[reasonID][2]
+			var/line = warn_reasons[reasonID][3]
+
+			test.log_for_test(text, "warning", file, line)
+
+			// Normal log message
+			log_entry += "\tWARNING #[reasonID]: [text] at [file]:[line]"
+
+		var/warn_messages = log_entry.Join("\n")
+		log_test(warn_messages)
+
+		log_test("::endgroup::")
+
+	if(!test.succeeded)
 		log_world("::error::[TEST_OUTPUT_RED("FAIL")] [test_output_desc]")
 
 	test_results[test_path] = list("status" = test.succeeded ? UNIT_TEST_PASSED : UNIT_TEST_FAILED, "message" = message, "name" = test_path)
 
 	qdel(test)
 
-/proc/RunUnitTests()
+/proc/RunUnitTests(stage)
 	CHECK_TICK
 
-	var/list/tests_to_run = subtypesof(/datum/unit_test)
+	var/list/tests_to_run = list()
 	var/list/focused_tests = list()
-	for (var/_test_to_run in tests_to_run)
-		var/datum/unit_test/test_to_run = _test_to_run
-		if (initial(test_to_run.focus))
+	var/any_focus = FALSE // Just used to detect a focus that might only apply to one stage
+	for(var/datum/unit_test/test_to_run as anything in subtypesof(/datum/unit_test))
+		if(initial(test_to_run.stage) != stage)
+			if(initial(test_to_run.focus))
+				any_focus = TRUE
+			continue
+		if(initial(test_to_run.focus))
 			focused_tests += test_to_run
-	if(length(focused_tests))
+			continue
+		tests_to_run += test_to_run
+	if(length(focused_tests) || any_focus)
 		tests_to_run = focused_tests
 
 	tests_to_run = sortTim(tests_to_run, GLOBAL_PROC_REF(cmp_unit_test_priority))
 
 	var/list/test_results = list()
 
+	var/file_name = "data/unit_tests.json"
+	if(stage == TEST_STAGE_GAME)
+		test_results = json_decode(file2text(file_name))
+	fdel(file_name)
+
 	for(var/unit_path in tests_to_run)
 		CHECK_TICK //We check tick first because the unit test we run last may be so expensive that checking tick will lock up this loop forever
 		RunUnitTest(unit_path, test_results)
 
-	var/file_name = "data/unit_tests.json"
-	fdel(file_name)
 	file(file_name) << json_encode(test_results)
 
-	SSticker.force_ending = TRUE
-	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
-	world.Reboot()
+	if(stage == TEST_STAGE_GAME)
+		SSticker.force_ending = TRUE
+		//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
+		world.Reboot()
+	else
+		SSticker.delay_start = FALSE
 
 /datum/map_template/unit_tests
 	name = "Unit Tests Zone"

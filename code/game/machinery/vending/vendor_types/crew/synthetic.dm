@@ -5,7 +5,7 @@
 	desc = "An automated gear rack hooked up to a colossal storage of various medical and engineering supplies. Can be accessed only by synthetic units."
 	icon_state = "gear"
 	req_access = list(ACCESS_MARINE_SYNTH)
-	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_PMC_SYNTH)
+	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_CMB_RSYN, JOB_PMC_SYNTH)
 
 	listed_products = list(
 		list("ENGINEER SUPPLIES", 0, null, null, null),
@@ -87,10 +87,9 @@
 //------------CLOTHING VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
-		list("EXPERIMENTAL TOOL TOKEN (TAKE ALL)", 0, null, null, null),
+		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Experimental Tool Vendor Token", 0, /obj/item/coin/marine/synth, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-
-		list("RADIO (TAKE ALL)", 0, null, null, null),
+		list("Synthetic Reset Key", 0, /obj/item/device/defibrillator/synthetic, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/synth, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
@@ -103,6 +102,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest", 0, /obj/item/clothing/accessory/storage/surg_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest (Blue)", 0, /obj/item/clothing/accessory/storage/surg_vest/blue, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Drop Pouch", 0, /obj/item/clothing/accessory/storage/surg_vest/drop_green, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
@@ -134,11 +134,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Latex Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
-		list("Smartpack, Blue", 0, /obj/item/storage/backpack/marine/smartpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Smartpack, Green", 0, /obj/item/storage/backpack/marine/smartpack/green, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Smartpack, Tan", 0, /obj/item/storage/backpack/marine/smartpack/tan, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Smartpack, White", 0, /obj/item/storage/backpack/marine/smartpack/white, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Smartpack, Black", 0, /obj/item/storage/backpack/marine/smartpack/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42 Smartpack, Blue", 0, /obj/item/storage/backpack/marine/smartpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42 Smartpack, Green", 0, /obj/item/storage/backpack/marine/smartpack/green, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42 Smartpack, Tan", 0, /obj/item/storage/backpack/marine/smartpack/tan, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42 Smartpack, White", 0, /obj/item/storage/backpack/marine/smartpack/white, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42 Smartpack, Black", 0, /obj/item/storage/backpack/marine/smartpack/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42A1 Smartpack, Blue", 0, /obj/item/storage/backpack/marine/smartpack/a1, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42A1 Smartpack, Green", 0, /obj/item/storage/backpack/marine/smartpack/a1/green, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42A1 Smartpack, Tan", 0, /obj/item/storage/backpack/marine/smartpack/a1/tan, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42A1 Smartpack, Black", 0, /obj/item/storage/backpack/marine/smartpack/a1/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("S-V42A1 Smartpack, White", 0, /obj/item/storage/backpack/marine/smartpack/a1/white, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Logistics IMP Backpack", 0, /obj/item/storage/backpack/marine/satchel/big, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Expedition Chestrig", 0, /obj/item/storage/backpack/marine/satchel/intel/chestrig, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 
@@ -179,200 +184,385 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	name = "\improper ColMarTech Synthetic Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of various equipment. Can be accessed only by synthetic units."
 	req_access = list(ACCESS_MARINE_SYNTH)
-	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_PMC_SYNTH)
+	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_CMB_RSYN, JOB_PMC_SYNTH)
 
 /obj/structure/machinery/cm_vending/clothing/synth/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_synth
 
 //------------SNOWFLAKE VENDOR---------------
 
-GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
-	list("USCM UNIFORMS", 0, null, null, null),
-	list("Medical Scrubs, Blue", 12, /obj/item/clothing/under/rank/medical/blue, null, VENDOR_ITEM_REGULAR),
-	list("Medical Scrubs, Light Blue", 12, /obj/item/clothing/under/rank/medical/lightblue, null, VENDOR_ITEM_REGULAR),
-	list("Medical Scrubs, Green", 12, /obj/item/clothing/under/rank/medical/green, null, VENDOR_ITEM_REGULAR),
-	list("Medical Scrubs, Purple", 12, /obj/item/clothing/under/rank/medical/purple, null, VENDOR_ITEM_REGULAR),
-	list("Medical Scrubs, Olive", 12, /obj/item/clothing/under/rank/medical/olive, null, VENDOR_ITEM_REGULAR),
-	list("Medical Scrubs, Grey", 12, /obj/item/clothing/under/rank/medical/grey, null, VENDOR_ITEM_REGULAR),
-	list("Medical Scrubs, White", 12, /obj/item/clothing/under/rank/medical, null, VENDOR_ITEM_REGULAR),
-	list("USCM Service Uniform, Tan", 12, /obj/item/clothing/under/marine/officer/bridge, null, VENDOR_ITEM_REGULAR),
-	list("USCM Service Uniform, White", 12, /obj/item/clothing/under/marine/dress, null, VENDOR_ITEM_REGULAR),
-	list("USCM Flightsuit", 12, /obj/item/clothing/under/rank/synthetic/flight, null, VENDOR_ITEM_REGULAR),
-	list("USCM Engineers Uniform", 12, /obj/item/clothing/under/marine/engineer/standard, null, VENDOR_ITEM_REGULAR),
-	list("USCM Engineers Uniform (Darker)", 12, /obj/item/clothing/under/marine/engineer/darker, null, VENDOR_ITEM_REGULAR),
-	list("USCM Engineering Officers Uniform", 12, /obj/item/clothing/under/marine/officer/engi, null, VENDOR_ITEM_REGULAR),
-	list("USCM Military Police Uniform", 12, /obj/item/clothing/under/marine/mp/standard, null, VENDOR_ITEM_REGULAR),
-	list("USCM Military Police Uniform (Darker)", 12, /obj/item/clothing/under/marine/mp/darker, null, VENDOR_ITEM_REGULAR),
+/datum/gear/synthetic
+	category = "Other"
+	allowed_roles = list(JOB_SYNTH)
 
-	list("NON-STANDARD UNIFORMS", 0, null, null, null),
-	list("White T-Shirt and Brown Jeans", 12, /obj/item/clothing/under/tshirt/w_br, null, VENDOR_ITEM_REGULAR),
-	list("Gray T-Shirt and Blue Jeans", 12, /obj/item/clothing/under/tshirt/gray_blu, null, VENDOR_ITEM_REGULAR),
-	list("Red T-Shirt and Black Jeans", 12, /obj/item/clothing/under/tshirt/r_bla, null, VENDOR_ITEM_REGULAR),
-	list("Frontier Jumpsuit", 12, /obj/item/clothing/under/rank/synthetic/frontier, null, VENDOR_ITEM_REGULAR),
-	list("UA Grey Jumpsuit", 12, /obj/item/clothing/under/colonist/ua_civvies, null, VENDOR_ITEM_REGULAR),
-	list("UA Brown Jumpsuit", 12, /obj/item/clothing/under/colonist/wy_davisone, null, VENDOR_ITEM_REGULAR),
-	list("UA Green Utility Uniform", 12, /obj/item/clothing/under/rank/synthetic/utility, null, VENDOR_ITEM_REGULAR),
-	list("Grey Utilities", 12, /obj/item/clothing/under/rank/synthetic/utility/yellow, null, VENDOR_ITEM_REGULAR),
-	list("Grey Utilities and Blue Jeans", 12, /obj/item/clothing/under/rank/synthetic/utility/red, null, VENDOR_ITEM_REGULAR),
-	list("Blue Utilities and Brown Jeans", 12, /obj/item/clothing/under/rank/synthetic/utility/blue, null, VENDOR_ITEM_REGULAR),
-	list("White Service Uniform", 12, /obj/item/clothing/under/colonist/white_service, null, VENDOR_ITEM_REGULAR),
-	list("Steward Clothes", 12, /obj/item/clothing/under/colonist/wy_joliet_shopsteward, null, VENDOR_ITEM_REGULAR),
-	list("Red Dress Skirt", 12, /obj/item/clothing/under/blackskirt, null, VENDOR_ITEM_REGULAR),
-	list("Blue Suit Pants", 12, /obj/item/clothing/under/liaison_suit/blue, null, VENDOR_ITEM_REGULAR),
-	list("Brown Suit Pants", 12, /obj/item/clothing/under/liaison_suit/brown, null, VENDOR_ITEM_REGULAR),
-	list("White Suit Pants", 12, /obj/item/clothing/under/liaison_suit/corporate_formal, null, VENDOR_ITEM_REGULAR),
-	list("Working Joe Uniform", 36, /obj/item/clothing/under/rank/synthetic/joe, null, VENDOR_ITEM_REGULAR),
+	fluff_cost = 0
+	loadout_cost = 12
 
-	list("GLASSES", 0, null, null, null),
-	list("HealthMate HUD", 12, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_REGULAR),
-	list("Marine RPG Glasses", 12, /obj/item/clothing/glasses/regular, null, VENDOR_ITEM_REGULAR),
-	list("Optical Meson Scanner", 12, /obj/item/clothing/glasses/meson, null, VENDOR_ITEM_REGULAR),
-	list("PatrolMate HUD", 12, /obj/item/clothing/glasses/hud/security, null, VENDOR_ITEM_REGULAR),
-	list("Security HUD Glasses", 12, /obj/item/clothing/glasses/sunglasses/sechud, null, VENDOR_ITEM_REGULAR),
-	list("Sunglasses", 12, /obj/item/clothing/glasses/sunglasses, null, VENDOR_ITEM_REGULAR),
-	list("Welding Goggles", 12, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
+/datum/gear/synthetic/uscm
+	category = "USCM Uniforms"
 
-	list("SHOES", 0, null, null, null),
-	list("Boots", 12, /obj/item/clothing/shoes/marine, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, Black", 12, /obj/item/clothing/shoes/black, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, Blue", 12, /obj/item/clothing/shoes/blue, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, Brown", 12, /obj/item/clothing/shoes/brown, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, Green", 12, /obj/item/clothing/shoes/green, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, Purple", 12, /obj/item/clothing/shoes/purple, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, Red", 12, /obj/item/clothing/shoes/red, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, White", 12, /obj/item/clothing/shoes/white, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, Yellow", 12, /obj/item/clothing/shoes/yellow, null, VENDOR_ITEM_REGULAR),
-	list("Shoes, Seegson", 24, /obj/item/clothing/shoes/dress, null, VENDOR_ITEM_REGULAR),
+/datum/gear/synthetic/uscm/medical_blue
+	path = /obj/item/clothing/under/rank/medical/blue
 
-	list("HEADWEAR", 0, null, null, null),
-	list("Beanie", 12, /obj/item/clothing/head/beanie, null, VENDOR_ITEM_REGULAR),
-	list("Beret, Engineering", 12, /obj/item/clothing/head/beret/eng, null, VENDOR_ITEM_REGULAR),
-	list("Beret, Purple", 12, /obj/item/clothing/head/beret/jan, null, VENDOR_ITEM_REGULAR),
-	list("Beret, Red", 12, /obj/item/clothing/head/beret/cm/red, null, VENDOR_ITEM_REGULAR),
-	list("Beret, Standard", 12, /obj/item/clothing/head/beret/cm, null, VENDOR_ITEM_REGULAR),
-	list("Beret, Tan", 12, /obj/item/clothing/head/beret/cm/tan, null, VENDOR_ITEM_REGULAR),
-	list("Beret, Green", 12, /obj/item/clothing/head/beret/cm, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-	list("Beret, Black", 12, /obj/item/clothing/head/beret/cm/black, null, VENDOR_ITEM_REGULAR),
-	list("Beret, White", 12, /obj/item/clothing/head/beret/cm/white, null, VENDOR_ITEM_REGULAR),
-	list("Surgical Cap, Blue", 12, /obj/item/clothing/head/surgery/blue, null, VENDOR_ITEM_REGULAR),
-	list("Surgical Cap, Blue", 12, /obj/item/clothing/head/surgery/purple, null, VENDOR_ITEM_REGULAR),
-	list("Surgical Cap, Green", 12, /obj/item/clothing/head/surgery/green, null, VENDOR_ITEM_REGULAR),
-	list("Ushanka", 12, /obj/item/clothing/head/ushanka, null, VENDOR_ITEM_REGULAR),
-	list("Cap", 12, /obj/item/clothing/head/cmcap, null, VENDOR_ITEM_REGULAR),
-	list("MP Cap", 12, /obj/item/clothing/head/beret/marine/mp/mpcap, null, VENDOR_ITEM_REGULAR),
-	list("QM Cap", 12, /obj/item/clothing/head/cmcap/req/ro, null, VENDOR_ITEM_REGULAR),
-	list("Req Cap", 12, /obj/item/clothing/head/cmcap/req, null, VENDOR_ITEM_REGULAR),
-	list("Officer Cap", 12, /obj/item/clothing/head/cmcap/bridge, null, VENDOR_ITEM_REGULAR),
-	list("Bio Hood", 12, /obj/item/clothing/head/bio_hood/synth, null, VENDOR_ITEM_REGULAR),
-	list("Fedora", 12, /obj/item/clothing/head/fedora, null, VENDOR_ITEM_REGULAR),
+/datum/gear/synthetic/uscm/medical_lightblue
+	path = /obj/item/clothing/under/rank/medical/lightblue
 
-	list("HELMET", 0, null, null, null),
-	list("Marine Helmet (Mission-Specific Camo)", 12, /obj/item/clothing/head/helmet/marine, null, VENDOR_ITEM_REGULAR),
-	list("Marine Helmet (Grey)", 12, /obj/item/clothing/head/helmet/marine/grey, null, VENDOR_ITEM_REGULAR),
-	list("Marine Helmet (Jungle)", 12, /obj/item/clothing/head/helmet/marine/jungle, null, VENDOR_ITEM_REGULAR),
-	list("Marine Helmet (Snow)", 12, /obj/item/clothing/head/helmet/marine/snow, null, VENDOR_ITEM_REGULAR),
-	list("Marine Helmet (Desert)", 12, /obj/item/clothing/head/helmet/marine/desert, null, VENDOR_ITEM_REGULAR),
-	list("Technician Helmet", 12, /obj/item/clothing/head/helmet/marine/tech, null, VENDOR_ITEM_REGULAR),
-	list("Corpsman Helmet", 12, /obj/item/clothing/head/helmet/marine/medic, null, VENDOR_ITEM_REGULAR),
-	list("White Corpsman Helmet", 12, /obj/item/clothing/head/helmet/marine/medic/white, null, VENDOR_ITEM_REGULAR),
-	list("Attachable Helmet Shield", 12, /obj/item/prop/helmetgarb/riot_shield, null, VENDOR_ITEM_REGULAR),
+/datum/gear/synthetic/uscm/medical_green
+	path = /obj/item/clothing/under/rank/medical/green
 
-	list("MASK", 0, null, null, null),
-	list("Surgical Mask", 12, /obj/item/clothing/mask/surgical, null, VENDOR_ITEM_REGULAR),
-	list("Rebreather", 12, /obj/item/clothing/mask/rebreather, null, VENDOR_ITEM_REGULAR),
-	list("Skull Balaclava, Blue", 12, /obj/item/clothing/mask/rebreather/skull, null, VENDOR_ITEM_REGULAR),
-	list("Skull balaclava, Black", 12, /obj/item/clothing/mask/rebreather/skull/black, null, VENDOR_ITEM_REGULAR),
-	list("Balaclava", 12, /obj/item/clothing/mask/rebreather/scarf, null, VENDOR_ITEM_REGULAR),
-	list("Balaclava (Green)", 12, /obj/item/clothing/mask/rebreather/scarf/green, null, VENDOR_ITEM_REGULAR),
-	list("Balaclava (Tan)", 12, /obj/item/clothing/mask/rebreather/scarf/tan, null, VENDOR_ITEM_REGULAR),
-	list("Balaclava (Grey)", 12, /obj/item/clothing/mask/rebreather/scarf/gray, null, VENDOR_ITEM_REGULAR),
-	list("Wrap (Grey)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask, null, VENDOR_ITEM_REGULAR),
-	list("Wrap (Red)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red, null, VENDOR_ITEM_REGULAR),
-	list("Wrap (Green)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, null, VENDOR_ITEM_REGULAR),
-	list("Wrap (Tan)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan, null, VENDOR_ITEM_REGULAR),
-	list("Wrap (Black)", 12, /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black, null, VENDOR_ITEM_REGULAR),
-	list("Scarf", 12, /obj/item/clothing/mask/tornscarf, null, VENDOR_ITEM_REGULAR),
-	list("Scarf (Green)", 12, /obj/item/clothing/mask/tornscarf/green, null, VENDOR_ITEM_REGULAR),
-	list("Scarf (Snow)", 12, /obj/item/clothing/mask/tornscarf/snow, null, VENDOR_ITEM_REGULAR),
-	list("Scarf (Desert)", 12, /obj/item/clothing/mask/tornscarf/desert, null, VENDOR_ITEM_REGULAR),
-	list("Scarf (Urban)", 12, /obj/item/clothing/mask/tornscarf/urban, null, VENDOR_ITEM_REGULAR),
-	list("Scarf (Black)", 12, /obj/item/clothing/mask/tornscarf/black, null, VENDOR_ITEM_REGULAR),
+/datum/gear/synthetic/uscm/medical_purple
+	path = /obj/item/clothing/under/rank/medical/purple
 
-	list("SUIT", 0, null, null, null),
-	list("Bomber Jacket, Brown", 12, /obj/item/clothing/suit/storage/bomber, null, VENDOR_ITEM_REGULAR),
-	list("Bomber Jacket, Black", 12, /obj/item/clothing/suit/storage/bomber/alt, null, VENDOR_ITEM_REGULAR),
-	list("External Webbing", 12, /obj/item/clothing/suit/storage/webbing, null, VENDOR_ITEM_REGULAR),
-	list("Utility Vest", 12, /obj/item/clothing/suit/storage/utility_vest, null, VENDOR_ITEM_REGULAR),
-	list("Hazard Vest(Orange)", 12, /obj/item/clothing/suit/storage/hazardvest, null, VENDOR_ITEM_REGULAR),
-	list("Hazard Vest(Blue)", 12, /obj/item/clothing/suit/storage/hazardvest/blue, null, VENDOR_ITEM_REGULAR),
-	list("Hazard Vest(Yellow)", 12, /obj/item/clothing/suit/storage/hazardvest/yellow, null, VENDOR_ITEM_REGULAR),
-	list("Hazard Vest(Black)", 12, /obj/item/clothing/suit/storage/hazardvest/black, null, VENDOR_ITEM_REGULAR),
-	list("Synthetic's Snow Suit", 12, /obj/item/clothing/suit/storage/snow_suit/synth, null, VENDOR_ITEM_REGULAR),
-	list("USCM Service Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/service, null, VENDOR_ITEM_REGULAR),
-	list("USCM MP Service Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/service/mp, null, VENDOR_ITEM_REGULAR),
-	list("Windbreaker, Brown", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown, null, VENDOR_ITEM_REGULAR),
-	list("Windbreaker, Grey", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_gray, null, VENDOR_ITEM_REGULAR),
-	list("Windbreaker, Green", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_green, null, VENDOR_ITEM_REGULAR),
-	list("Windbreaker, First Responder", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_fr, null, VENDOR_ITEM_REGULAR),
-	list("Windbreaker, Exploration", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant, null, VENDOR_ITEM_REGULAR),
-	list("Labcoat", 12, /obj/item/clothing/suit/storage/labcoat, null, VENDOR_ITEM_REGULAR),
-	list("Labcoat, Researcher", 12, /obj/item/clothing/suit/storage/labcoat/researcher, null, VENDOR_ITEM_REGULAR),
-	list("Quartermaster Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/RO, null, VENDOR_ITEM_REGULAR),
-	list("Bio Suit", 12, /obj/item/clothing/suit/storage/synthbio, null, VENDOR_ITEM_REGULAR),
-	list("Black Suit Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, null, VENDOR_ITEM_REGULAR),
-	list("Brown Suit Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, null, VENDOR_ITEM_REGULAR),
-	list("Blue Suit Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, null, VENDOR_ITEM_REGULAR),
-	list("Brown Vest", 12, /obj/item/clothing/suit/storage/jacket/marine/vest, null, VENDOR_ITEM_REGULAR),
-	list("Tan Vest", 12, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, null, VENDOR_ITEM_REGULAR),
-	list("Grey Vest", 12, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, null, VENDOR_ITEM_REGULAR),
-	list("USCM Poncho (Mission-Specific Camo)", 12, /obj/item/clothing/accessory/poncho, null, VENDOR_ITEM_REGULAR),
-	list("USCM Poncho (Green)", 12, /obj/item/clothing/accessory/poncho/green, null, VENDOR_ITEM_REGULAR),
-	list("USCM Poncho (Brown)", 12, /obj/item/clothing/accessory/poncho/brown, null, VENDOR_ITEM_REGULAR),
-	list("USCM Poncho (Black)", 12, /obj/item/clothing/accessory/poncho/black, null, VENDOR_ITEM_REGULAR),
-	list("USCM Poncho (Blue)", 12, /obj/item/clothing/accessory/poncho/blue, null, VENDOR_ITEM_REGULAR),
-	list("USCM Poncho (Purple)", 12, /obj/item/clothing/accessory/poncho/purple, null, VENDOR_ITEM_REGULAR),
+/datum/gear/synthetic/uscm/medical_olive
+	path = /obj/item/clothing/under/rank/medical/olive
 
+/datum/gear/synthetic/uscm/medical_grey
+	path = /obj/item/clothing/under/rank/medical/grey
 
-	list("BACKPACK", 0, null, null, null),
-	list("Backpack, Industrial", 12, /obj/item/storage/backpack/industrial, null, VENDOR_ITEM_REGULAR),
-	list("Backpack, USCM Medical", 12, /obj/item/storage/backpack/marine/medic, null, VENDOR_ITEM_REGULAR),
-	list("Chestrig, Technician", 12, /obj/item/storage/backpack/marine/satchel/tech, null, VENDOR_ITEM_REGULAR),
-	list("Satchel, USCM", 12, /obj/item/storage/backpack/marine/satchel, null, VENDOR_ITEM_REGULAR),
-	list("Satchel, Leather", 12, /obj/item/storage/backpack/satchel, null, VENDOR_ITEM_REGULAR),
-	list("Satchel, Medical", 12, /obj/item/storage/backpack/satchel/med, null, VENDOR_ITEM_REGULAR),
-	list("USCM RTO Pack", 12, /obj/item/storage/backpack/marine/satchel/rto, null, VENDOR_ITEM_REGULAR),
-	list("USCM Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack, null, VENDOR_ITEM_REGULAR),
-	list("USCM Weldersatchel", 12, /obj/item/storage/backpack/marine/engineerpack/satchel, null, VENDOR_ITEM_REGULAR),
-	list("USCM Welder Chestrig", 12, /obj/item/storage/backpack/marine/engineerpack/welder_chestrig, null, VENDOR_ITEM_REGULAR),
+/datum/gear/synthetic/uscm/service_tan
+	path = /obj/item/clothing/under/marine/officer/bridge
 
-	list("OTHER", 0, null, null, null),
-	list("Red Armband", 6, /obj/item/clothing/accessory/armband, null, VENDOR_ITEM_REGULAR),
-	list("Purple Armband", 6, /obj/item/clothing/accessory/armband/science, null, VENDOR_ITEM_REGULAR),
-	list("Yellow Armband", 6, /obj/item/clothing/accessory/armband/engine, null, VENDOR_ITEM_REGULAR),
-	list("Green Armband", 6, /obj/item/clothing/accessory/armband/medgreen, null, VENDOR_ITEM_REGULAR),
-	list("Blue Tie", 6, /obj/item/clothing/accessory/blue, null, VENDOR_ITEM_REGULAR),
-	list("Green Tie", 6, /obj/item/clothing/accessory/green, null, VENDOR_ITEM_REGULAR),
-	list("Black Tie", 6, /obj/item/clothing/accessory/black, null, VENDOR_ITEM_REGULAR),
-	list("Gold Tie", 6, /obj/item/clothing/accessory/gold, null, VENDOR_ITEM_REGULAR),
-	list("Red Tie", 6, /obj/item/clothing/accessory/red, null, VENDOR_ITEM_REGULAR),
-	list("Purple Tie", 6, /obj/item/clothing/accessory/purple, null, VENDOR_ITEM_REGULAR),
-	list("Dress Gloves", 6, /obj/item/clothing/gloves/marine/dress, null, VENDOR_ITEM_REGULAR),
-))
+/datum/gear/synthetic/uscm/service_white
+	path = /obj/item/clothing/under/marine/dress
 
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake
-	name = "\improper W-Y Synthetic Conformity Unit"
-	desc = "A vendor with a large snowflake on it. Provided by Wey-Yu Fashion Division(TM)."
-	icon_state = "snowflake"
-	show_points = TRUE
-	use_snowflake_points = TRUE
-	vendor_theme = VENDOR_THEME_COMPANY
-	req_access = list(ACCESS_MARINE_SYNTH)
-	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR, JOB_WORKING_JOE, JOB_UPP_SUPPORT_SYNTH, JOB_CMB_SYN, JOB_PMC_SYNTH)
+/datum/gear/synthetic/uscm/engineer
+	path = /obj/item/clothing/under/marine/engineer/standard
 
-	vend_delay = 1 SECONDS
+/datum/gear/synthetic/uscm/engineer_dark
+	path = /obj/item/clothing/under/marine/engineer/darker
 
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_synth_snowflake
+/datum/gear/synthetic/uscm/engineer_officer
+	path = /obj/item/clothing/under/marine/officer/engi
+
+/datum/gear/synthetic/uscm/mp
+	path = /obj/item/clothing/under/marine/mp/standard
+
+/datum/gear/synthetic/uscm/mp_dark
+	path = /obj/item/clothing/under/marine/mp/darker
+
+/datum/gear/synthetic/civilian
+	category = "Civilian Uniforms"
+
+/datum/gear/synthetic/civilian/white_tshirt_brown_jeans
+	path = /obj/item/clothing/under/tshirt/w_br
+
+/datum/gear/synthetic/civilian/gray_tshirt_blue_jeans
+	path = /obj/item/clothing/under/tshirt/gray_blu
+
+/datum/gear/synthetic/civilian/red_tshirt_black_jeans
+	path = /obj/item/clothing/under/tshirt/r_bla
+
+/datum/gear/synthetic/civilian/frontier
+	path = /obj/item/clothing/under/rank/frontier
+
+/datum/gear/synthetic/civilian/grey_jumpsuit
+	path = /obj/item/clothing/under/rank/utility/gray
+
+/datum/gear/synthetic/civilian/brown_jumpsuit
+	path = /obj/item/clothing/under/rank/utility/brown
+
+/datum/gear/synthetic/civilian/green_utility
+	path = /obj/item/clothing/under/rank/utility
+
+/datum/gear/synthetic/civilian/grey_utility
+	path = /obj/item/clothing/under/rank/utility/yellow
+
+/datum/gear/synthetic/civilian/grey_utility_blue_jeans
+	path = /obj/item/clothing/under/rank/utility/red
+
+/datum/gear/synthetic/civilian/blue_utility_brown_jeans
+	path = /obj/item/clothing/under/rank/utility/blue
+
+/datum/gear/synthetic/civilian/white_service
+	path = /obj/item/clothing/under/colonist/white_service
+
+/datum/gear/synthetic/civilian/steward
+	path = /obj/item/clothing/under/colonist/steward
+
+/datum/gear/synthetic/civilian/blue_suit_pants
+	path = /obj/item/clothing/under/liaison_suit/blue
+
+/datum/gear/synthetic/civilian/brown_suit_pants
+	path = /obj/item/clothing/under/liaison_suit/brown
+
+/datum/gear/synthetic/civilian/white_suit_pants
+	path = /obj/item/clothing/under/liaison_suit/corporate_formal
+
+/datum/gear/synthetic/glasses
+	category = "Glasses"
+
+/datum/gear/synthetic/glasses/marine_rpg
+	path = /obj/item/clothing/glasses/regular
+
+/datum/gear/synthetic/glasses/security_hud
+	path = /obj/item/clothing/glasses/sunglasses/sechud
+
+/datum/gear/synthetic/glasses/sunglasses
+	path = /obj/item/clothing/glasses/sunglasses
+
+/datum/gear/synthetic/shoes
+	category = "Shoes"
+
+/datum/gear/synthetic/shoes/black
+	path = /obj/item/clothing/shoes/marine
+
+/datum/gear/synthetic/shoes/blue
+	path = /obj/item/clothing/shoes/black
+
+/datum/gear/synthetic/shoes/brown
+	path = /obj/item/clothing/shoes/brown
+
+/datum/gear/synthetic/shoes/green
+	path = /obj/item/clothing/shoes/green
+
+/datum/gear/synthetic/shoes/purple
+	path = /obj/item/clothing/shoes/purple
+
+/datum/gear/synthetic/shoes/red
+	path = /obj/item/clothing/shoes/red
+
+/datum/gear/synthetic/shoes/white
+	path = /obj/item/clothing/shoes/white
+
+/datum/gear/synthetic/shoes/yellow
+	path = /obj/item/clothing/shoes/yellow
+
+/datum/gear/synthetic/headwear
+	category = "Headwear"
+
+/datum/gear/synthetic/headwear/beanie
+	path = /obj/item/clothing/head/beanie
+
+/datum/gear/synthetic/headwear/beret_engineering
+	path = /obj/item/clothing/head/beret/eng
+
+/datum/gear/synthetic/headwear/beret_purple
+	path = /obj/item/clothing/head/beret/jan
+
+/datum/gear/synthetic/headwear/beret_red
+	path = /obj/item/clothing/head/beret/cm/red
+
+/datum/gear/synthetic/headwear/beret
+	path = /obj/item/clothing/head/beret/cm
+
+/datum/gear/synthetic/headwear/beret_tan
+	path = /obj/item/clothing/head/beret/cm/tan
+
+/datum/gear/synthetic/headwear/beret_black
+	path = /obj/item/clothing/head/beret/cm/black
+
+/datum/gear/synthetic/headwear/beret_white
+	path = /obj/item/clothing/head/beret/cm/white
+
+/datum/gear/synthetic/headwear/cap
+	path = /obj/item/clothing/head/cmcap
+
+/datum/gear/synthetic/headwear/mp_cap
+	path = /obj/item/clothing/head/beret/marine/mp/mpcap
+
+/datum/gear/synthetic/headwear/ro_cap
+	path = /obj/item/clothing/head/cmcap/req/ro
+
+/datum/gear/synthetic/headwear/req_cap
+	path = /obj/item/clothing/head/cmcap/req
+
+/datum/gear/synthetic/headwear/officer_cap
+	path = /obj/item/clothing/head/cmcap/bridge
+
+/datum/gear/synthetic/headwear/fedora
+	path = /obj/item/clothing/head/fedora/grey
+
+/datum/gear/synthetic/helmet
+	category = "Helmet"
+
+/datum/gear/synthetic/helmet/marine
+	path = /obj/item/clothing/head/helmet/marine
+
+/datum/gear/synthetic/helmet/marine_grey
+	path = /obj/item/clothing/head/helmet/marine/grey
+
+/datum/gear/synthetic/helmet/marine_jungle
+	path = /obj/item/clothing/head/helmet/marine/jungle
+
+/datum/gear/synthetic/helmet/marine_snow
+	path = /obj/item/clothing/head/helmet/marine/snow
+
+/datum/gear/synthetic/helmet/marine_desert
+	path = /obj/item/clothing/head/helmet/marine/desert
+
+/datum/gear/synthetic/mask
+	category = "Mask"
+
+/datum/gear/synthetic/mask/surgical
+	path = /obj/item/clothing/mask/surgical
+
+/datum/gear/synthetic/mask/tacticalmask
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
+
+/datum/gear/synthetic/mask/tacticalmask_red
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
+
+/datum/gear/synthetic/mask/tacticalmask_green
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
+
+/datum/gear/synthetic/mask/tacticalmask_tan
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
+
+/datum/gear/synthetic/mask/tacticalmask_black
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
+
+/datum/gear/synthetic/mask/tornscarf
+	path = /obj/item/clothing/mask/tornscarf
+
+/datum/gear/synthetic/mask/tornscarf_green
+	path = /obj/item/clothing/mask/tornscarf/green
+
+/datum/gear/synthetic/mask/tornscarf_snow
+	path = /obj/item/clothing/mask/tornscarf/snow
+
+/datum/gear/synthetic/mask/tornscarf_desert
+	path = /obj/item/clothing/mask/tornscarf/desert
+
+/datum/gear/synthetic/mask/tornscarf_urban
+	path = /obj/item/clothing/mask/tornscarf/urban
+
+/datum/gear/synthetic/mask/tornscarf_black
+	path = /obj/item/clothing/mask/tornscarf/black
+
+/datum/gear/synthetic/suit
+	category = "Suit"
+
+/datum/gear/synthetic/suit/bomber
+	path = /obj/item/clothing/suit/storage/bomber
+
+/datum/gear/synthetic/suit/bomber_alt
+	path = /obj/item/clothing/suit/storage/bomber/alt
+
+/datum/gear/synthetic/suit/webbing
+	path = /obj/item/clothing/suit/storage/webbing
+
+/datum/gear/synthetic/suit/utility_vest
+	path = /obj/item/clothing/suit/storage/utility_vest
+
+/datum/gear/synthetic/suit/hazardvest
+	path = /obj/item/clothing/suit/storage/hazardvest
+
+/datum/gear/synthetic/suit/hazardvest_blue
+	path = /obj/item/clothing/suit/storage/hazardvest/blue
+
+/datum/gear/synthetic/suit/hazardvest_yellow
+	path = /obj/item/clothing/suit/storage/hazardvest/yellow
+
+/datum/gear/synthetic/suit/hazardvest_black
+	path = /obj/item/clothing/suit/storage/hazardvest/black
+
+/datum/gear/synthetic/suit/snowsuit
+	path = /obj/item/clothing/suit/storage/snow_suit/synth
+
+/datum/gear/synthetic/suit/marine_service
+	path = /obj/item/clothing/suit/storage/jacket/marine/service
+
+/datum/gear/synthetic/suit/windbreaker_brown
+	path = /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown
+
+/datum/gear/synthetic/suit/windbreaker_gray
+	path = /obj/item/clothing/suit/storage/windbreaker/windbreaker_gray
+
+/datum/gear/synthetic/suit/windbreaker_green
+	path = /obj/item/clothing/suit/storage/windbreaker/windbreaker_green
+
+/datum/gear/synthetic/suit/windbreaker_fr
+	path = /obj/item/clothing/suit/storage/windbreaker/windbreaker_fr
+
+/datum/gear/synthetic/suit/windbreaker_covenant
+	path = /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant
+
+/datum/gear/synthetic/suit/labcoat
+	path = /obj/item/clothing/suit/storage/labcoat
+
+/datum/gear/synthetic/suit/labcoat_researcher
+	path = /obj/item/clothing/suit/storage/labcoat/researcher
+
+/datum/gear/synthetic/suit/ro_jacket
+	path = /obj/item/clothing/suit/storage/jacket/marine/RO
+
+/datum/gear/synthetic/suit/corporate_black
+	path = /obj/item/clothing/suit/storage/jacket/marine/corporate/black
+
+/datum/gear/synthetic/suit/corporate_brown
+	path = /obj/item/clothing/suit/storage/jacket/marine/corporate/brown
+
+/datum/gear/synthetic/suit/corporate_blue
+	path = /obj/item/clothing/suit/storage/jacket/marine/corporate/blue
+
+/datum/gear/synthetic/suit/vest
+	path = /obj/item/clothing/suit/storage/jacket/marine/vest
+
+/datum/gear/synthetic/suit/vest_tan
+	path = /obj/item/clothing/suit/storage/jacket/marine/vest/tan
+
+/datum/gear/synthetic/suit/vest_gray
+	path = /obj/item/clothing/suit/storage/jacket/marine/vest/grey
+
+/datum/gear/synthetic/backpack
+	category = "Backpack"
+
+/datum/gear/synthetic/backpack/industrial
+	path = /obj/item/storage/backpack/industrial
+
+/datum/gear/synthetic/backpack/marine_medic
+	path = /obj/item/storage/backpack/marine/medic
+
+/datum/gear/synthetic/backpack/marine_medic_satchel
+	path = /obj/item/storage/backpack/marine/satchel/tech
+
+/datum/gear/synthetic/backpack/marine_satchel
+	path = /obj/item/storage/backpack/marine/satchel
+
+/datum/gear/synthetic/backpack/satchel
+	path = /obj/item/storage/backpack/satchel
+
+/datum/gear/synthetic/backpack/satchel_med
+	path = /obj/item/storage/backpack/satchel/med
+
+/datum/gear/synthetic/backpack/marine_engineer_satchel
+	path = /obj/item/storage/backpack/marine/engineerpack/satchel
+
+/datum/gear/synthetic/backpack/marine_engineer_chestrig
+	path = /obj/item/storage/backpack/marine/engineerpack/welder_chestrig
+
+/datum/gear/synthetic/armband
+	path = /obj/item/clothing/accessory/armband
+
+/datum/gear/synthetic/armband_sci
+	path = /obj/item/clothing/accessory/armband/science
+
+/datum/gear/synthetic/armband_eng
+	path = /obj/item/clothing/accessory/armband/engine
+
+/datum/gear/synthetic/armband_med
+	path = /obj/item/clothing/accessory/armband/medgreen
+
+/datum/gear/synthetic/blue_tie
+	path = /obj/item/clothing/accessory/blue
+
+/datum/gear/synthetic/green_tie
+	path = /obj/item/clothing/accessory/green
+
+/datum/gear/synthetic/black_tie
+	path = /obj/item/clothing/accessory/black
+
+/datum/gear/synthetic/gold_tie
+	path = /obj/item/clothing/accessory/gold
+
+/datum/gear/synthetic/red_tie
+	path = /obj/item/clothing/accessory/red
+
+/datum/gear/synthetic/purple_tie
+	path = /obj/item/clothing/accessory/purple
+
+/datum/gear/synthetic/dress_gloves
+	path = /obj/item/clothing/gloves/marine/dress
 
 
 //------------EXPERIMENTAL TOOLS---------------

@@ -26,7 +26,7 @@ FLOOR SAFES
 /obj/structure/safe
 	name = "safe"
 	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and assistant resistant.\""
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/safes.dmi'
 	icon_state = "safe"
 	anchored = TRUE
 	density = TRUE
@@ -80,7 +80,8 @@ FLOOR SAFES
 		if(tumbler_2_pos == tumbler_2_open)
 			to_chat(user, SPAN_NOTICE("You hear a [pick("tink", "krink", "plink")] from [src]."))
 	if(tumbler_1_pos == tumbler_1_open && tumbler_2_pos == tumbler_2_open)
-		if(user) visible_message("<b>[pick("Spring", "Sprang", "Sproing", "Clunk", "Click")]!</b>")
+		if(user)
+			visible_message("<b>[pick("Spring", "Sprang", "Sproing", "Clunk", "Click")]!</b>")
 		return 1
 	return 0
 
@@ -119,14 +120,14 @@ FLOOR SAFES
 /obj/structure/safe/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 	var/dat = "<center>"
-	dat += "<a href='?src=\ref[src];open=1'>[open ? "Close" : "Open"] [src]</a><br>"
-	dat += "Dial 1: <a href='?src=\ref[src];decrement=1'>-</a> [tumbler_1_pos] <a href='?src=\ref[src];increment=1'>+</a><br>"
-	dat += "Dial 2: <a href='?src=\ref[src];decrement2=1'>-</a> [tumbler_2_pos] <a href='?src=\ref[src];increment2=1'>+</a><br>"
+	dat += "<a href='byond://?src=\ref[src];open=1'>[open ? "Close" : "Open"] [src]</a><br>"
+	dat += "Dial 1: <a href='byond://?src=\ref[src];decrement=1'>-</a> [tumbler_1_pos] <a href='byond://?src=\ref[src];increment=1'>+</a><br>"
+	dat += "Dial 2: <a href='byond://?src=\ref[src];decrement2=1'>-</a> [tumbler_2_pos] <a href='byond://?src=\ref[src];increment2=1'>+</a><br>"
 	if(open)
 		dat += "<table>"
 		for(var/i = length(contents), i>=1, i--)
 			var/obj/item/P = contents[i]
-			dat += "<tr><td><a href='?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
+			dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
 		dat += "</table></center>"
 	show_browser(user, dat, name, "safe", "size=350x300")
 	onclose(user, "safe")
@@ -135,7 +136,8 @@ FLOOR SAFES
 	. = ..()
 	if(.)
 		return
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 	var/mob/living/carbon/human/user = usr
 
 	var/canhear = 0
@@ -246,4 +248,7 @@ FLOOR SAFES
 	new /obj/item/clothing/accessory/storage/holster(src)
 	new /obj/item/spacecash/c1000/counterfeit(src)
 	new /obj/item/spacecash/c1000/counterfeit(src)
+	new /obj/item/storage/box/mre/wy(src)
+	new /obj/item/storage/box/mre/wy(src)
 	new /obj/item/coin/platinum(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src)

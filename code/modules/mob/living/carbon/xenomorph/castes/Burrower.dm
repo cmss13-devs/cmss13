@@ -146,6 +146,12 @@
 	invisibility = 101
 	alpha = 100
 	anchored = TRUE
+
+	var/mob/living/carbon/human/hauled = hauled_mob?.resolve()
+
+	if(hauled)
+		hauled.forceMove(src)
+
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
 		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 		RegisterSignal(src, list(
@@ -183,6 +189,11 @@
 	invisibility = FALSE
 	alpha = initial(alpha)
 	anchored = FALSE
+
+	var/mob/living/carbon/human/hauled = hauled_mob?.resolve()
+	if(hauled)
+		hauled.forceMove(src.loc)
+
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 	for(var/mob/living/carbon/mob in loc)
 		if(!can_not_harm(mob))

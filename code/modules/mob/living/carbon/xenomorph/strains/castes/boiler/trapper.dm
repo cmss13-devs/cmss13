@@ -54,11 +54,6 @@
 	. = list()
 	var/datum/action/xeno_action/activable/boiler_trap/trap_ability = get_action(bound_xeno, /datum/action/xeno_action/activable/boiler_trap)
 	. += "Insight Amount: [trap_ability.empowering_charge_counter]/[trap_ability.empower_charge_max]"
-	if(trap_ability.empowered)
-		. += "Your next [trap_ability.name] will be empowered."
-	var/datum/action/xeno_action/activable/acid_mine/mine_ability = get_action(bound_xeno, /datum/action/xeno_action/activable/acid_mine)
-	if(mine_ability.empowered)
-		. += "Your next [mine_ability.name] will be empowered."
 
 /datum/behavior_delegate/boiler_trapper/on_hitby_projectile(ammo)
 	if (temp_movespeed_usable)

@@ -423,10 +423,68 @@
 /obj/structure/machinery/fob/sentrygun/sensor
 	name = "\improper UE-04 Grid Sensor"
 	desc = "atom field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
+	icon_state = "sensor"
+	icon = 'icons/obj/structures/machinery/fob_machinery/sensor.dmi'
 	diameter = 13
+	var/placed
+	var/mob/owner_mob = null
+	var/obj/item/defenses/handheld/sensor/HD
 
-/obj/structure/machinery/fob/sentrygun/sentrygun/update_power()
-	return //we do not want to process... I should have use brain first code later
+
+
+/obj/structure/machinery/fob/sentrygun/sensor/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
+		var/obj/item/device/multitool/tool = item
+
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			user.balloon_alert(user, "you do not know how to link your multitool to the [src.name].")
+			return
+
+		if(!do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+			return
+
+		if(!tool.linked_terminal)
+			user.balloon_alert(user, "your multitool is not linked to a terminal!")
+			return
+
+		if(linked_terminal == tool.linked_terminal)
+			user.balloon_alert(user, " [src.name] is already linked to that terminal.")
+			return
+
+		if(!linked_terminal)
+			linked_terminal.linked_machinery += src
+			linked_terminal = tool.linked_terminal
+			user.balloon_alert(user, "you link the [src.name] to the new terminal.")
+			return
+
+		linked_terminal.linked_machinery -= src
+		user.balloon_alert(user, "you unlink the [src.name] from the old terminal.")
+	update_icon()
+
+
+	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+
+		if(is_on)
+			to_chat(user, SPAN_WARNING("[src] is currently active. The motors will prevent you from disassembling it safely."))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."),
+		SPAN_NOTICE("You begin disassembling [src]."))
+
+		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] disassembles the [src]."),
+		SPAN_NOTICE("You disassemble the [src]."))
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+		var/turf/turf = get_turf(src)
+		HD.forceMove(turf)
+		transfer_label_component(HD)
+		HD.dropped = 1
+		placed = 0
+		HD.update_icon()
+		forceMove(HD)
+		return
 
 /obj/structure/machinery/fob/sentrygun/sensor/obtain_targets()
 	var/list/targets = list()
@@ -457,6 +515,18 @@
 
 /obj/structure/machinery/fob/sentrygun/sensor/set_area()
 	range_bounds = SQUARE(x, y, diameter)
+
+/obj/item/defenses/handheld/sensor
+	name = "\improper UE-04 Grid Sensor"
+	desc = "atom field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
+	icon_state = "sensor_undeployed"
+	icon = 'icons/obj/structures/machinery/fob_machinery/sensor.dmi'
+	defense_type = /obj/structure/machinery/fob/sentrygun/sensor
+
+/obj/item/defenses/handheld/sensor/get_examine_text(mob/user)
+	. += SPAN_INFO("It is ready for deployment.")
+
+
 
 
 //****************************************** SENTRYGUN PLASMA ************************************************//

@@ -11,7 +11,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "researchlockdown"
 	},
@@ -1864,7 +1864,7 @@
 /area/yautja)
 "fX" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "researchlockdown2";
 	dir = 4
@@ -2025,7 +2025,7 @@
 	color = "#fbebe2";
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	dir = 4;
 	color = "#f0ebd3";
 	id = "researchlockdown"
@@ -2133,7 +2133,7 @@
 	opacity = 0;
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -3555,7 +3555,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja{
 	id = "youngbloodlowercenter";
 	color = "#f0ebd3"
 	},
@@ -3568,7 +3568,7 @@
 /turf/open/shuttle/dropship/predship/mainfloor/direction_2/north,
 /area/yautja)
 "ma" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja{
 	id = "youngbloodlowereast";
 	color = "#f0ebd3"
 	},
@@ -3683,7 +3683,7 @@
 	opacity = 0;
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -3959,7 +3959,7 @@
 /area/yautja)
 "nD" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja{
 	id = "hangar";
 	color = "#f0ebd3"
 	},
@@ -4085,7 +4085,7 @@
 /obj/effect/hunter/rune{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -4462,7 +4462,7 @@
 	dir = 1;
 	name = "\improper Research Containment"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "researchlockdown"
 	},
@@ -5267,7 +5267,7 @@
 /area/yautja)
 "rY" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja{
 	id = "hangar";
 	color = "#f0ebd3"
 	},
@@ -5347,7 +5347,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/lower_deck)
 "sv" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja/armory{
 	id = "armory";
 	color = "#f0ebd3"
 	},
@@ -6033,7 +6033,7 @@
 	color = "#fbebe2";
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "researchlockdown2";
 	dir = 4
@@ -6267,7 +6267,7 @@
 	dir = 1;
 	name = "\improper Research Chamber"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "researchlockdown2"
 	},
@@ -6454,7 +6454,7 @@
 /area/yautja)
 "vI" = (
 /obj/effect/hunter/rune,
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -6595,7 +6595,7 @@
 /obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Hound Cells"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "houndcells2";
 	dir = 4
@@ -8216,7 +8216,7 @@
 	opacity = 0;
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -10066,7 +10066,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja{
 	id = "youngbloodlowerwest";
 	color = "#f0ebd3"
 	},
@@ -10122,7 +10122,7 @@
 /obj/effect/hunter/rune/corner{
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -10222,7 +10222,7 @@
 /area/yautja)
 "IQ" = (
 /obj/effect/hunter/rune/corner,
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -10411,7 +10411,7 @@
 /obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Hound Cells"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "houndcells1";
 	dir = 4
@@ -10501,7 +10501,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -10930,7 +10930,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja{
 	id = "hangar3";
 	color = "#f0ebd3"
 	},
@@ -10946,7 +10946,7 @@
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja/hangar)
 "Lq" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja{
 	id = "youngbloodlowerwest";
 	color = "#f0ebd3"
 	},
@@ -11127,7 +11127,7 @@
 	opacity = 0;
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -13457,7 +13457,7 @@
 	opacity = 0;
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -13673,7 +13673,7 @@
 /turf/open/shuttle/bright_red/glow,
 /area/yautja)
 "UH" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja/armory{
 	id = "armory2";
 	color = "#f0ebd3"
 	},
@@ -14057,7 +14057,7 @@
 	name = "\improper Storage Room";
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -14616,7 +14616,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/yautja{
 	id = "hangar2";
 	color = "#f0ebd3"
 	},
@@ -14798,7 +14798,7 @@
 	opacity = 0;
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+/obj/structure/machinery/door/poddoor/yautja/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},

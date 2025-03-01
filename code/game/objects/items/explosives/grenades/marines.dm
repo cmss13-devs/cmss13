@@ -115,7 +115,7 @@
 	throw_range = 6
 	underslug_launchable = FALSE
 	explosion_power = 120
-	shrapnel_count = 48
+	shrapnel_count = 40
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 
@@ -129,7 +129,7 @@
 	throw_range = 6
 	underslug_launchable = FALSE
 	explosion_power = 60
-	shrapnel_count = 56
+	shrapnel_count = 40
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 /*

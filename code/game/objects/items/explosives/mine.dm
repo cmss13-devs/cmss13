@@ -149,7 +149,6 @@
 		activate_sensors()
 	anchored = FALSE
 	active = FALSE
-	triggered = FALSE
 	update_icon()
 	QDEL_NULL(tripwire)
 
@@ -176,7 +175,6 @@
 			use_dir = FALSE
 			triggered = TRUE // Delegating the tripwire/crossed function to the sensor.
 
-
 /obj/item/explosive/mine/proc/set_tripwire()
 	if(!active && !tripwire)
 		var/tripwire_loc = get_turf(get_step(loc, dir))
@@ -186,39 +184,52 @@
 
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
-/obj/item/explosive/mine/Crossed(atom/A)
-	..()
-	if(isliving(A))
-		var/mob/living/L = A
-		if(!L.stat == DEAD)//so dragged corpses don't trigger mines.
-			return
-		else
-			try_to_prime(A)
+/obj/item/explosive/mine/Crossed(atom/movable/AM)
+    ..()
+    if(isliving(AM))
+        var/mob/living/L = AM
+        if(L.stat == DEAD) // So dragged corpses don't trigger mines.
+            return
+        if(istype(L, /mob/living/carbon/xenomorph)) // Check if the entity is a Xenomorph
+            var/mob/living/carbon/xenomorph/X = L
+            if(X.caste.tier == 1) // Directly check if the Xenomorph is tier 0
+                to_chat(X, SPAN_XENONOTICE("You are too weak to trigger this mine."))
+                return // Tier 0 Xenomorphs cannot trigger the mine
+        try_to_prime(L) // Proceed to check if the mine should trigger
 
 /obj/item/explosive/mine/Collided(atom/movable/AM)
 	try_to_prime(AM)
 
 
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/L)
-	if(!active || triggered || (customizable && !detonator))
-		return
-	if(!istype(L))
-		return
-	if(L.stat == DEAD)
-		return
-	if(L.get_target_lock(iff_signal))
-		return
-	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
-		return
-	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
-	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
-	SPAN_DANGER("You hear a click."))
+    if(!active || triggered || (customizable && !detonator))
+        return
 
-	triggered = TRUE
-	playsound(loc, 'sound/weapons/mine_tripped.ogg', 25, 1)
-	prime()
+    // Tier 0 Xenomorphs cannot trigger the mine
+    if(istype(L, /mob/living/carbon/xenomorph))
+        var/mob/living/carbon/xenomorph/X = L
+        if(X.caste.tier == 1)
+            to_chat(X, SPAN_XENONOTICE("You are too weak to trigger this mine."))
+            return
 
+    // General entity checks
+    if(!istype(L))
+        return
+    if(L.stat == DEAD)
+        return
+    if(L.get_target_lock(iff_signal))
+        return
+    if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
+        return
 
+    // Trigger the mine
+    L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
+        SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
+        SPAN_DANGER("You hear a click."))
+
+    triggered = TRUE
+    playsound(loc, 'sound/weapons/mine_tripped.ogg', 25, 1)
+    prime()
 
 //Note : May not be actual explosion depending on linked method
 /obj/item/explosive/mine/prime()
@@ -235,28 +246,33 @@
 
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
-	if(triggered) //Mine is already set to go off
-		return XENO_NO_DELAY_ACTION
+    if(M.caste.tier == 1) // Directly check if the Xenomorph is tier 0
+        to_chat(M, SPAN_XENONOTICE("You are too weak to interact with this mine."))
+        return XENO_NO_DELAY_ACTION
 
-	if(M.a_intent == INTENT_HELP)
-		to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
-		return XENO_NO_DELAY_ACTION
+    if(triggered) // Mine is already set to go off
+        return XENO_NO_DELAY_ACTION
 
-	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
-		SPAN_DANGER("You slash [src]!"))
-	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
+    if(M.a_intent == INTENT_HELP)
+        to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+        return XENO_NO_DELAY_ACTION
 
-	//We move the tripwire randomly in either of the four cardinal directions
-	triggered = TRUE
-	if(tripwire)
-		var/direction = pick(GLOB.cardinals)
-		var/step_direction = get_step(src, direction)
-		tripwire.forceMove(step_direction)
-	prime()
-	if(!QDELETED(src))
-		disarm()
-	return XENO_ATTACK_ACTION
+    M.animation_attack_on(src)
+    M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
+        SPAN_DANGER("You slash [src]!"))
+    playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
+    if(!QDELETED(src))
+        disarm()
+
+    // Move the tripwire randomly in one of the four cardinal directions
+    if(tripwire)
+        var/direction = pick(GLOB.cardinals)
+        var/step_direction = get_step(src, direction)
+        tripwire.forceMove(step_direction)
+    prime()
+    if(!QDELETED(src))
+        disarm()
+    return XENO_ATTACK_ACTION
 
 /obj/item/explosive/mine/flamer_fire_act(damage, flame_cause_data) //adding mine explosions
 	cause_data = flame_cause_data
@@ -270,7 +286,7 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
-	unacidable = TRUE //You never know
+	unacidable = TRUE
 	var/obj/item/explosive/mine/linked_claymore
 
 /obj/effect/mine_tripwire/Destroy()

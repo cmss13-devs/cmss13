@@ -1039,6 +1039,12 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_starboard)
+"acR" = (
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/green_bigtile/east,
+/area/navalis/indoors/residential/cafeteria)
 "acS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/structure_lattice{
@@ -207612,7 +207618,7 @@ qKH
 sZk
 qKH
 fFV
-fFV
+acR
 fFV
 fFV
 fFV

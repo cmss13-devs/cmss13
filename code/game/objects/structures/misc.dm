@@ -303,6 +303,7 @@
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
 	if(!istype(enterer, /mob))
@@ -329,7 +330,7 @@
 		actual_turf = SSmapping.get_turf_above(target_turf)
 	else
 		actual_turf = SSmapping.get_turf_below(target_turf)
-	
+
 	if(actual_turf)
 		if(istype(mover, /mob))
 			var/mob/mover_mob = mover

@@ -6,7 +6,7 @@
 
 	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
-	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
+	if((attacking_mob != src) && check_shields(0, attacking_mob.name, attacking_mob.dir))
 		visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to touch [src]!</B>"), null, null, 5)
 		return FALSE
 

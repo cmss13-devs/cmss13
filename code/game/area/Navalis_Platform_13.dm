@@ -35,21 +35,25 @@
 	icon_state = "blue2"
 	ceiling = CEILING_NONE
 	requires_power = FALSE
-	base_lighting_alpha = 20
+	base_lighting_alpha = 35
 	minimap_color = MINIMAP_WATER
 
 /area/navalis/oob/water/mid
 	name = "Water - Middle"
-	base_lighting_alpha = 30
+	base_lighting_alpha = 45
 
 /area/navalis/oob/water/far
 	name = "Water - Far"
-	base_lighting_alpha = 35
+	base_lighting_alpha = 55
 
 //Additional Out Of Bounds
 
 /area/navalis/oob/powered
 	requires_power = FALSE
+
+/area/navalis/oob/empty_space
+	requires_power = FALSE
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NO_PARA
 
 // PSV Charon
 
@@ -305,7 +309,7 @@
 	name = "Logistic Rig - Level-1:Mech-Bay"
 
 /area/navalis/indoors/logistic/primary_storage
-	name = "Logistic Rig - Level-1:rimary Storage"
+	name = "Logistic Rig - Level-1:Primary Storage"
 
 /area/navalis/indoors/logistic/elevator
 	name = "Logistic Rig - Level-1:Elevator"
@@ -403,6 +407,11 @@
 
 /area/navalis/indoors/residential/landing_pad
 	name = "Residential Rig - Landing-Pad"
+
+/area/navalis/indoors/residential/cafeteria
+	name = "Residential Rig - Cafeteria"
+	ceiling = CEILING_NONE
+	unoviable_timer = TRUE
 
 // Landing Zones
 /area/navalis/outdoors/landing_zone_1

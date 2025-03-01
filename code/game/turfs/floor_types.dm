@@ -387,10 +387,10 @@
 /turf/open/floor/plating/catwalk/grate/net/Entered(atom/movable/AM)
 	if(iscarbon(AM))
 		var/mob/living/carbon/C = AM
-		var/slow_amount = 0.5
+		var/slow_amount = 0.75
 		var/can_stuck = 1
 		if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
-			slow_amount = 0.35
+			slow_amount = 0.5
 			can_stuck = 0
 		var/new_slowdown = C.next_move_slowdown + slow_amount
 		if(prob(2))
@@ -404,6 +404,9 @@
 /turf/open/floor/plating/catwalk/grate/lattice
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "latticefull"
+
+/turf/open/floor/plating/catwalk/grate/lattice/is_weedable()
+	return NOT_WEEDABLE
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'

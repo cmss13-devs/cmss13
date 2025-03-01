@@ -240,6 +240,10 @@
 			execute_on_confirm = null
 			return TRUE
 
+		if("poll")
+			SSpolls.tgui_interact(src)
+			return TRUE
+
 		if("keyboard")
 			playsound_client(client, get_sfx("keyboard"), vol = 20)
 

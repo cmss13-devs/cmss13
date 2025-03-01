@@ -25,10 +25,26 @@
 /datum/action/xeno_action/activable/info_marker
 
 /datum/action/xeno_action/activable/corrosive_acid
-	desc = "Уничтожает источники света и окружение. Скорость зависит от силы кислоты (взависимости от касты)."
+	desc = "%POWER%, способная уничтожать источники света и окружение."
+
+/datum/action/xeno_action/activable/corrosive_acid/apply_replaces_in_desc()
+	switch(level)
+		if(1)
+			replace_in_desc("%POWER%", "Слабая кислота")
+		if(2)
+			replace_in_desc("%POWER%", "Обычная кислота")
+		if(3)
+			replace_in_desc("%POWER%", "Сильная кислота")
+		else
+			replace_in_desc("%POWER%", "Необычная кислота")
 
 /datum/action/xeno_action/onclick/emit_pheromones
-	desc = "Выбрать излучаемые феромоны. Феромоны одного типа не стакаются; если имеется несколько доступных феромонов одного типа, выбирается сильнейший."
+	desc = "Выбрать излучаемые феромоны. Если имеется несколько доступных феромонов одного типа, выбирается сильнейший.\
+		<br><br>Сила ваших феромонов: %STRENGTH%"
+
+/datum/action/xeno_action/onclick/emit_pheromones/apply_replaces_in_desc()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	replace_in_desc("%STRENGTH%", get_pheromone_aura_strength(xeno.caste.aura_strength + xeno.phero_modifier))
 
 /datum/action/xeno_action/activable/pounce
 	desc = "Наброситься на клетку (%DISTANCE%)."
@@ -53,6 +69,13 @@
 /datum/action/xeno_action/onclick/toggle_long_range
 	desc = "Позволяет смотреть вдаль."
 
+/datum/action/xeno_action/onclick/toggle_long_range/apply_replaces_in_desc()
+	if(should_delay)
+		desc += "<br>Имеется задержка активации в %DELAY%"
+		replace_in_desc("%DELAY%", delay / 10, DESCRIPTION_REPLACEMENT_TIME)
+	if(!handles_movement)
+		desc += "<br>Вы не можете двигаться в этом режиме."
+
 /datum/action/xeno_action/activable/spray_acid
 	desc = "Спрей из линии кислоты, наносящий %DAMAGE% урона на расстоянии %RANGE%"
 
@@ -66,13 +89,18 @@
 		desc += "<br>Оглушает цель на <b>[convert_effect_time(spray::stun_duration, WEAKEN)] сек.</b>"
 
 /datum/action/xeno_action/activable/transfer_plasma
-	desc = "Передать плазму сестре."
+	desc = "Передаёт плазму (%PLASMA%) сестре с задержкой в %DELAY% на расстоянии %RANGE%"
+
+/datum/action/xeno_action/activable/transfer_plasma/apply_replaces_in_desc()
+	replace_in_desc("%PLASMA%", plasma_transfer_amount)
+	replace_in_desc("%DELAY%", transfer_delay / 10, DESCRIPTION_REPLACEMENT_TIME)
+	replace_in_desc("%RANGE%", max_range, DESCRIPTION_REPLACEMENT_DISTANCE)
 
 /datum/action/xeno_action/onclick/xenohide
 	desc = "Прятаться под объектами окружения."
 
 /datum/action/xeno_action/onclick/place_trap
-	desc = "Поставить ловушку на траве. Необходимо её заполнить после установки. Активируется при приближении."
+	desc = "Поставить ловушку на траве. Её можно заполнить кислотой, газом или лицехватом. Активируется при приближении."
 
 /datum/action/xeno_action/activable/place_construction
 	desc = "Построить продвинутые структуры. Требуется усиленная трава с Hive Core/Hive Cluster, а также свободное пространство вокруг точки установки."
@@ -86,7 +114,13 @@
 	desc += "[spit.get_description()]"
 
 /datum/action/xeno_action/activable/tail_stab
-	desc = "Удар хвостом на расстоянии 2-х клеток, который наносит на 20% больше урона, чем удар когтями, а также дезориентирирует цель."
+	desc = "Удар хвостом на расстоянии %TAIL_DISTANCE%, наносящий %TAIL_DAMAGE% урона, а также дезориентирирует цель (%TAIL_DAZE%)."
+
+/datum/action/xeno_action/activable/tail_stab/apply_replaces_in_desc()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	replace_in_desc("%TAIL_DAMAGE%", xeno.melee_damage_upper * TAILSTAB_MOB_DAMAGE_MULTIPLIER)
+	replace_in_desc("%TAIL_DISTANCE%", stab_range, DESCRIPTION_REPLACEMENT_DISTANCE)
+	replace_in_desc("%TAIL_DAZE%", xeno.mob_size >= MOB_SIZE_BIG ? convert_effect_time(3, DAZE) : convert_effect_time(1, DAZE), DESCRIPTION_REPLACEMENT_TIME)
 
 /datum/action/xeno_action/onclick/evolve
 	desc = "Эволюционировать в следующий уровень. Количество доступных слотов можно посмотреть в Hive Status."

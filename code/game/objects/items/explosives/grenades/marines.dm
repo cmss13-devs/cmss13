@@ -145,7 +145,7 @@
 	item_state = "grenade_m74_airburst_f_active"
 	explosion_power = 0
 	explosion_falloff = 25
-	shrapnel_count = 16
+	shrapnel_count = 12
 	det_time = 0 // Unused, because we don't use prime.
 	hand_throwable = FALSE
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR

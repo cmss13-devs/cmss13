@@ -24,8 +24,8 @@
 	if(!shrapnel_chance) // no shrapnell , no special effects
 		return
 	if(isxeno(xeno))
-		xeno.apply_effect(4, SLOW) // multiple hits dont stack they just renew the duration
-		xeno.apply_armoured_damage(damage * 0.6, ARMOR_BULLET, BRUTE, , penetration) // xenos have a lot of HP
+		if(xeno.slowed > 4)
+			xeno.adjust_effect(0.5, SLOW) // multiple hits dont stack they just renew the duration
 
 /datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
 	. = ..()
@@ -86,11 +86,13 @@
 
 	shell_speed = AMMO_SPEED_TIER_1
 	damage = 30
+	damage_type = BURN // acid
 	penetration = ARMOR_PENETRATION_TIER_4
 
+
 /datum/ammo/bullet/shrapnel/neuro/on_hit_mob(mob/living/mob, obj/projectile/projectile)
-	if(mob.slowed < 6)
-		mob.adjust_effect(0.8, SLOW)
+	if(mob.superslowed < 4)
+		mob.adjust_effect(0.5, SUPERSLOW)
 
 /datum/ammo/bullet/shrapnel/metal
 	name = "metal shrapnel"

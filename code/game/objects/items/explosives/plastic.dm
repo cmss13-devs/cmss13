@@ -335,7 +335,7 @@
 	min_timer = 3
 	penetration = 0.60
 	deploying_time = 10
-	var/shrapnel_volume = 40
+	var/shrapnel_volume = 20
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/metal
 	var/explosion_strength = 60
 

@@ -53,6 +53,7 @@
 
 /area/navalis/oob/empty_space
 	requires_power = FALSE
+	ceiling = CEILING_NONE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NO_PARA
 
 // PSV Charon

@@ -63,6 +63,9 @@ endmap
 map navalis_platform_13
 endmap
 
+map navalis_platform_13_singlez
+endmap
+
 map new_varadero
 endmap
 

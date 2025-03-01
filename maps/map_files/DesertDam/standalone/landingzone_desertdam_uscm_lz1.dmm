@@ -1,0 +1,5827 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/interior/dam_interior/hanger)
+"ac" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"ak" = (
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/landing_pad_one)
+"al" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "32"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"ao" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/landing_pad_one)
+"ar" = (
+/turf/open/floor/prison/cell_stripe/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"au" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"av" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/hallway)
+"ay" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"aD" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"aR" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"aS" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"aU" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/obj/structure/prop/dam/truck/damaged,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"aY" = (
+/obj/structure/surface/table,
+/obj/item/tool/stamp,
+/turf/open/floor/darkred2/southwest,
+/area/desert_dam/building/administration/lobby)
+"aZ" = (
+/obj/structure/prop/dam/truck/cargo,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"be" = (
+/turf/open/floor/prison/bluecorner/north,
+/area/desert_dam/building/administration/lobby)
+"bi" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/landing_pad_one)
+"bk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/cell_stripe/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"bm" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"bo" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/darkred2,
+/area/desert_dam/building/administration/lobby)
+"bq" = (
+/obj/structure/prop/dam/boulder/boulder1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_one)
+"br" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/blue,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"bt" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/landing_pad_one)
+"by" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"bz" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/landing_pad_one)
+"bA" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/darkbrown2/west,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"bJ" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "18"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"bK" = (
+/obj/structure/surface/rack,
+/turf/open/floor/darkred2,
+/area/desert_dam/building/administration/lobby)
+"bX" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_one)
+"ck" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"cm" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "67"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"cp" = (
+/obj/structure/safe,
+/obj/item/weapon/sword/katana/replica,
+/obj/item/reagent_container/food/drinks/bottle/absinthe,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"cr" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"cv" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"cx" = (
+/turf/open/floor/prison/darkyellowcorners2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"cG" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/prison,
+/area/desert_dam/interior/dam_interior/hanger)
+"cI" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"cL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"cO" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/landing_pad_one)
+"cQ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_northwest)
+"cR" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "86"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"cX" = (
+/turf/open/floor/prison/blue/southwest,
+/area/desert_dam/building/administration/control_room)
+"df" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/landing_pad_one)
+"dw" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "102"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"dx" = (
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/landing_pad_one)
+"dF" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/head/welding,
+/turf/open/floor/prison/blue/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"dI" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"dX" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 2;
+	name = "\improper Secure Tech Storage"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"eb" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"ei" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/landing_pad_one)
+"ej" = (
+/turf/open/floor/prison/darkyellowcorners2/north,
+/area/desert_dam/interior/dam_interior/hanger)
+"er" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal9"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"es" = (
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/landing_pad_one)
+"ew" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"ez" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/three{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"eB" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/landing_pad_one)
+"eL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"eN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"eT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"eU" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"eV" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_northwest)
+"eX" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"fc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_northwest)
+"fn" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "75"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"fv" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 9
+	},
+/obj/structure/barricade/sandbags{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_northwest)
+"fw" = (
+/obj/structure/surface/table,
+/obj/item/cell/high/empty,
+/obj/structure/machinery/cell_charger,
+/turf/open/floor/prison/darkbrown2/west,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"fC" = (
+/obj/docking_port/stationary/trijent_elevator/occupied{
+	id = "trijent_lz1";
+	name = "Lz1 Elevator";
+	elevator_network = "A";
+	airlock_area = /area/shuttle/trijent_shuttle/lz1;
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator/A
+	},
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/lz1)
+"fE" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"fM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/exterior/landing_pad_one)
+"fT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"ga" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"gi" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/landing_pad_one)
+"gq" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/control_room)
+"gt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/cell_stripe/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"gz" = (
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/desert_dam/exterior/valley/valley_northwest)
+"gB" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"gC" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"gJ" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "22"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"gU" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"gV" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"hd" = (
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"hf" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_northwest)
+"hi" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"hk" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"hq" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/darkbrown3/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"ht" = (
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/valley_northwest)
+"hy" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"hE" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_one)
+"hK" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"hL" = (
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"hN" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"hR" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/landing/console)
+"ii" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/bluecorner/north,
+/area/desert_dam/building/administration/control_room)
+"ik" = (
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/control_room)
+"il" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/landing_pad_one)
+"io" = (
+/obj/structure/surface/table,
+/obj/item/tool/lighter/zippo,
+/obj/item/tool/lighter/zippo,
+/turf/open/floor/prison/darkbrown2/northwest,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"it" = (
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"iz" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "48"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"iA" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 6
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"iG" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"iI" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"iQ" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "27"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"je" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "hangar_dam_2";
+	name = "\improper Hangar Shutters"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"jl" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/bluecorner,
+/area/desert_dam/building/administration/control_room)
+"jo" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"jx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"jy" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"jA" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/bluecorner,
+/area/desert_dam/building/administration/hallway)
+"jO" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"jR" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	layer = 3;
+	opacity = 0
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"jS" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/carpet11_12/west,
+/area/desert_dam/building/administration/office)
+"jY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"kc" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "61"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"ke" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"kh" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_northwest)
+"kw" = (
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/hanger)
+"ky" = (
+/turf/open/floor/prison/bluecorner/west,
+/area/desert_dam/building/administration/control_room)
+"kE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"kJ" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/landing_pad_one)
+"kL" = (
+/obj/item/device/flashlight/lamp,
+/obj/item/tool/pen/blue{
+	pixel_x = 5
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"kP" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"kS" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"kV" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "24"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"lb" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_northwest)
+"lc" = (
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/landing_pad_one)
+"lg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"lk" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "100"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"lr" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/plasteel{
+	amount = 15
+	},
+/turf/open/floor/prison/blue/northeast,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"lu" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"lx" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison/darkbrown2/west,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"lz" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/faxmachine,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/control_room)
+"lJ" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"lV" = (
+/obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"lY" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+	name = "\improper Administration Hallway"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"mb" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/valley_northwest)
+"mn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"mo" = (
+/turf/open/floor/prison/bluecorner/east,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"mp" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/landing_pad_one)
+"mr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"mA" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"mH" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/control_room)
+"mI" = (
+/obj/structure/surface/rack,
+/obj/item/cell/high/empty,
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/darkbrown2/east,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"mO" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"mP" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/control_room)
+"mR" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+	dir = 1;
+	name = "\improper Administration Control Room"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"mS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"mV" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/control_room)
+"na" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/prison/bluecorner,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"nj" = (
+/obj/structure/flora/pottedplant,
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/blue/northwest,
+/area/desert_dam/building/administration/lobby)
+"nl" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/office)
+"nm" = (
+/turf/open/floor/carpet9_4/west,
+/area/desert_dam/building/administration/office)
+"nn" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/control_room)
+"no" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/hanger)
+"nz" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/lobby)
+"nD" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_northwest)
+"nI" = (
+/obj/structure/cargo_container/kelland/right,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"nP" = (
+/obj/structure/window/framed/hangar/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"nQ" = (
+/turf/open/floor/darkredcorners2/east,
+/area/desert_dam/building/administration/lobby)
+"nU" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/airlock,
+/obj/item/circuitboard/airlock,
+/obj/item/circuitboard/airlock,
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"nZ" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"ob" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"ok" = (
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/valley/valley_northwest)
+"op" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "30"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"ov" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/largecrate/random/case,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"oy" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/landing_pad_one)
+"oz" = (
+/obj/structure/machinery/computer/cameras{
+	name = "Security Cameras - Operations";
+	network = list("chigusa_1")
+	},
+/obj/structure/surface/table,
+/turf/open/floor/darkred2/northwest,
+/area/desert_dam/building/administration/lobby)
+"oG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/lobby)
+"oK" = (
+/turf/open/desert/rock/deep/transition/northwest,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"oM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/tool/warning_cone,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"oU" = (
+/turf/open/floor/prison/bluecorner/east,
+/area/desert_dam/building/administration/lobby)
+"oY" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/landing_pad_one)
+"pc" = (
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	dir = 1;
+	name = "\improper Colony Administration Office"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/office)
+"pf" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"pk" = (
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"po" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"pq" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"pr" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"pw" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/landing_pad_one)
+"pG" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/landing_pad_one)
+"pI" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/computer/powermonitor,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"pL" = (
+/turf/open/floor/prison/bluecorner/north,
+/area/desert_dam/building/administration/hallway)
+"pO" = (
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"pQ" = (
+/obj/structure/flora/grass/desert/heavygrass_6,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"pX" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/landing_pad_one)
+"qb" = (
+/obj/structure/surface/rack,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"qg" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/darkred2/northeast,
+/area/desert_dam/building/administration/lobby)
+"qi" = (
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"qm" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"qn" = (
+/obj/structure/machinery/door_control{
+	id = "hangar_dam_2";
+	name = "Hangar Shutters"
+	},
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"qx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"qy" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_one)
+"qC" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	dir = 1;
+	name = "\improper Colony Administration Office"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/office)
+"qD" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"qH" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"qS" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/airlock,
+/obj/item/circuitboard/airlock,
+/obj/item/circuitboard/airlock,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"qU" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/window/eastleft{
+	dir = 8;
+	name = "Security Desk"
+	},
+/obj/structure/machinery/door/window/brigdoor/westright{
+	dir = 4;
+	name = "Security Desk"
+	},
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/dark2,
+/area/desert_dam/building/administration/lobby)
+"qW" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/darkblue2/northeast,
+/area/desert_dam/building/administration/control_room)
+"rb" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "31"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"re" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/control_room)
+"rf" = (
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/desert_dam/exterior/landing_pad_one)
+"rh" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"rk" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/trackimp,
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"rG" = (
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/lobby)
+"rH" = (
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/lz1)
+"sd" = (
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/administration/office)
+"sg" = (
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"sj" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
+"sn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
+/area/desert_dam/exterior/landing_pad_one)
+"st" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor/prison/blue/northwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"sF" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_one)
+"sH" = (
+/obj/structure/machinery/door/airlock/dropship_hatch/two{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"sJ" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1
+	},
+/area/shuttle/trijent_shuttle/lz1)
+"sT" = (
+/obj/structure/barricade/sandbags{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags{
+	dir = 1;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_northwest)
+"sW" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_northwest)
+"sY" = (
+/obj/structure/prop/dam/boulder/boulder3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"ta" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison/darkbrown2/west,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"tc" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_northwest)
+"tf" = (
+/obj/structure/surface/rack,
+/obj/item/cell/high/empty,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/darkbrown2/east,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"tj" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"to" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/darkbrown3/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"tA" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"tV" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"tW" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "97"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"uj" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"up" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "72"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"uu" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"uw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bluecorner/west,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"vc" = (
+/obj/structure/flora/grass/desert/heavygrass_9,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"vd" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"vh" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor/prison/darkbrown2/north,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"vk" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
+/area/desert_dam/exterior/landing_pad_one)
+"vs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"vy" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 10
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"vB" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_northwest)
+"vC" = (
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"vM" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"vQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"vT" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/lobby)
+"wd" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "45"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"wf" = (
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"wk" = (
+/turf/open/floor/prison/blue/southeast,
+/area/desert_dam/building/administration/control_room)
+"wl" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/landing_pad_one)
+"wr" = (
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/desert_dam/exterior/valley/valley_northwest)
+"wu" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/bluecorner/west,
+/area/desert_dam/building/administration/hallway)
+"wB" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 4
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = -25
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_northwest)
+"wG" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = null;
+	name = "\improper Elevator Lock"
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/shuttle/trijent_shuttle/lz1)
+"wM" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/desert_dam/exterior/landing_pad_one)
+"wO" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/lobby)
+"wU" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "74"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"wY" = (
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"wZ" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "47"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"xq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"xr" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/hallway)
+"xx" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_one)
+"xJ" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "15"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"xL" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"xX" = (
+/turf/open/floor/prison/bluecorner,
+/area/desert_dam/building/administration/lobby)
+"ya" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "4"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"ye" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"yj" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/hallway)
+"yy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bluecorner/north,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"yD" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"yO" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_northwest)
+"yR" = (
+/obj/structure/surface/rack,
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 32
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 15
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"yS" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/landing_pad_one)
+"yX" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "71"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"zf" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"zi" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"zn" = (
+/obj/structure/machinery/computer/cameras{
+	desc = "The flight controls for a UD6 Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
+	name = "\improper 'Tornado' flight controls";
+	network = null;
+	pixel_y = 21
+	},
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 9
+	},
+/obj/item/prop/almayer/flight_recorder{
+	layer = 2.9;
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"zq" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer/west,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"zr" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"zw" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/computer/atmos_alert,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"zy" = (
+/turf/closed/shuttle/dropship3/tornado,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"zC" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"zU" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/prison,
+/area/desert_dam/interior/dam_interior/hanger)
+"zZ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"An" = (
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/hallway)
+"AB" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_one)
+"AE" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"AV" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"AX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Bb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/landing_pad_one)
+"Bo" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/office)
+"Bq" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/hallway)
+"Bv" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_northwest)
+"BC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"BN" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"BS" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/landing_pad_one)
+"BV" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/machinery/computer/communications,
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"BY" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Cg" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Ci" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/darkred2/north,
+/area/desert_dam/building/administration/lobby)
+"Cn" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/landing_pad_one)
+"Co" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/landing_pad_one)
+"Ct" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/office)
+"Cu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown3/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"Cy" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/turf/open/floor/prison/blue/northwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Cz" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"CD" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"CJ" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light,
+/turf/open/floor/darkred2,
+/area/desert_dam/building/administration/lobby)
+"CN" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/control_room)
+"CP" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+	dir = 1;
+	name = "\improper Administration Control Room"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/building/administration/control_room)
+"CW" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Di" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "6"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Do" = (
+/obj/structure/prop/dam/truck/cargo,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Dq" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"Du" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/landing_pad_one)
+"Dv" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Dz" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"DF" = (
+/turf/open/floor/prison/darkbrown3/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"DI" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/landing_pad_one)
+"DK" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"DM" = (
+/turf/open/floor/prison/darkbrown2/east,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"DO" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"DU" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"DX" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Ed" = (
+/turf/open/floor/prison/cell_stripe/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"Eh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"Ei" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "95"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Ej" = (
+/obj/structure/surface/table,
+/obj/item/trash/kepler,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown2/west,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"En" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "99"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Ep" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "5"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Eq" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/landing_pad_one)
+"Ew" = (
+/obj/item/paper_bin,
+/obj/item/tool/stamp,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"EA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"EB" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "3"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"EC" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "28"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"EI" = (
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/exterior/landing_pad_one)
+"EJ" = (
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/desert_dam/exterior/landing_pad_one)
+"EM" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "53"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"ES" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/landing_pad_one)
+"Fc" = (
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/darkbrown2/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"Fi" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags{
+	dir = 1;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Fl" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_northwest)
+"FE" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/landing_pad_one)
+"FG" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "64"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"FH" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/prop/dam/truck/damaged,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_one)
+"FI" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/blue/southwest,
+/area/desert_dam/building/administration/lobby)
+"FK" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "76"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"FS" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/landing_pad_one)
+"FT" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/lobby)
+"FU" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"FX" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Ga" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"Ge" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Gf" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Gt" = (
+/turf/open/floor/prison/bluecorner/west,
+/area/desert_dam/building/administration/lobby)
+"Gz" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	layer = 3.25
+	},
+/turf/open/floor/carpet7_3/west,
+/area/desert_dam/building/administration/office)
+"GA" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/landing_pad_one)
+"GB" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/turf/open/floor/prison/blue/northeast,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"GD" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/hallway)
+"GE" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"GP" = (
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/landing_pad_one)
+"GV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/dam/truck/damaged,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"Hh" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"Hi" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"Ho" = (
+/obj/structure/dispenser,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Hp" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"Hx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/item/tool/warning_cone,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"Hy" = (
+/obj/structure/barricade/sandbags{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_northwest)
+"HA" = (
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/desert_dam/exterior/landing_pad_one)
+"HG" = (
+/turf/open/floor/prison/darkbrown2/north,
+/area/desert_dam/interior/dam_interior/hanger)
+"HH" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_northwest)
+"HK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"HL" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "26"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"HU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/tool/warning_cone,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"HX" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_one)
+"Ia" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"If" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Ij" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/landing_pad_one)
+"Is" = (
+/obj/structure/machinery/photocopier,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/control_room)
+"Iu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/exterior/landing_pad_one)
+"Iz" = (
+/obj/structure/cargo_container/kelland/left,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"IB" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "62"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"IF" = (
+/turf/open/floor/prison/darkbrown3/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"II" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "68"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"IL" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"IR" = (
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_northwest)
+"IV" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"Jd" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Jf" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Jy" = (
+/obj/structure/flora/grass/desert/heavygrass_10,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"JA" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"JF" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"JG" = (
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"JS" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/machinery/computer/communications,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"JZ" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_one)
+"Ka" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/control_room)
+"Kh" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"Km" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+	name = "\improper Administration Lobby"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/lobby)
+"Ks" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Kt" = (
+/obj/structure/pipes/vents/pump/on,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Kv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"Kz" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "101"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"KC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"KF" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/largecrate/random/case/small,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"KG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"KS" = (
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"KZ" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/landing_pad_one)
+"La" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Lb" = (
+/obj/structure/lz_sign/dam_sign/damaged,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Le" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/apc,
+/obj/item/circuitboard/apc,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Lk" = (
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"Ls" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/blue,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"LG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/engineer,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"LH" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_one)
+"LI" = (
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/building/administration/control_room)
+"LJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/hallway)
+"LK" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_rightengine"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"LM" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"LP" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellowcorners2/north,
+/area/desert_dam/interior/dam_interior/hanger)
+"Mc" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/landing_pad_one)
+"Mf" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"Mh" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison/darkbrown2/east,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"Mj" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"Mk" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Mp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"My" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"MA" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "25"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"MM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"MP" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/landing_pad_one)
+"MU" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_one)
+"MZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"Nf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"Nj" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "77"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Nk" = (
+/turf/open/floor/carpet5_1/west,
+/area/desert_dam/building/administration/office)
+"No" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "83"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Nr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Nt" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"NF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"NO" = (
+/obj/structure/dispenser,
+/turf/open/floor/prison/blue/northwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"NZ" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_one)
+"Oi" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/darkred2/west,
+/area/desert_dam/building/administration/lobby)
+"Ol" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Oo" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Or" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/landing_pad_one)
+"Ow" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Oz" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/prison/darkbrown3/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"OC" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/landing_pad_one)
+"OD" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"OG" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/obj/structure/barricade/sandbags{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_northwest)
+"OQ" = (
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/landing_pad_one)
+"OT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"OU" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/carpet15_15/west,
+/area/desert_dam/building/administration/office)
+"Pd" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/landing_pad_one)
+"Pk" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/landing_pad_one)
+"Pv" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "9"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"PF" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"PG" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	layer = 3
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"PH" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison/darkbrown3/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"PK" = (
+/obj/structure/closet/firecloset,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/northwest,
+/area/desert_dam/building/administration/control_room)
+"PM" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/faxmachine,
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/control_room)
+"PO" = (
+/obj/structure/sign/safety/restrictedarea,
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1
+	},
+/area/shuttle/trijent_shuttle/lz1)
+"PT" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "23"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"PX" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/hallway)
+"Qa" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Qp" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Qr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellowcorners2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"Qx" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"QF" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 5
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_northwest)
+"QJ" = (
+/turf/open/floor/prison/bluecorner/east,
+/area/desert_dam/building/administration/control_room)
+"QN" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"QR" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/turf/open/floor/prison/darkbrown2/northeast,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"QU" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"QV" = (
+/obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/darkred2/north,
+/area/desert_dam/building/administration/lobby)
+"QZ" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Rb" = (
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/control_room)
+"Rh" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "70"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Rk" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "29"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Rl" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/landing_pad_one)
+"Rq" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Rr" = (
+/obj/structure/prop/dam/boulder/boulder2,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/landing_pad_one)
+"Rv" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Rz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/hallway)
+"RC" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/control_room)
+"RE" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/machinery/computer/atmos_alert,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"RG" = (
+/obj/structure/bed/chair/dropship/passenger,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"RO" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"RQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"RS" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_northwest)
+"RT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Sh" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"So" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/landing_pad_one)
+"Sr" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/blue,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Sx" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/control_room)
+"SA" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/darkbrown2/east,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"SF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"SK" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "40"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"SO" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"ST" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"SX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/lobby)
+"Tf" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = 30
+	},
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"TB" = (
+/obj/effect/landmark/survivor_spawner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"TD" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"TF" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/landing_pad_one)
+"TH" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "63"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"TS" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/landing_pad_one)
+"TX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/lobby)
+"Ua" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Ub" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Uc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"Ue" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan27"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"Ug" = (
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/hallway)
+"Ur" = (
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Ut" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Uu" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"Uz" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/exterior/valley/valley_northwest)
+"UJ" = (
+/turf/closed/shuttle/ert,
+/area/desert_dam/interior/dam_interior/hanger)
+"UW" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Vd" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/control_room)
+"Vo" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"Vp" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/landing_pad_one)
+"Vy" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "2"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"VJ" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/control_room)
+"VO" = (
+/turf/open/floor/prison/darkbrown2/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"VP" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"VQ" = (
+/obj/structure/window/framed/hangar/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/hanger)
+"VZ" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Wg" = (
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Wi" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/prison,
+/area/desert_dam/interior/dam_interior/hanger)
+"Wn" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "33"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Wp" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "69"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Wy" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"WA" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/computer/crew,
+/turf/open/floor/prison/blue/northeast,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"WB" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"WI" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "17"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"WT" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "19"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Xb" = (
+/turf/open/floor/prison/bluecorner/east,
+/area/desert_dam/building/administration/hallway)
+"Xe" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Xf" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/computer/crew,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/greengrid,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"Xs" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Xt" = (
+/obj/structure/flora/grass/desert/lightgrass_12,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Xu" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/landing_pad_one)
+"XB" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_northwest)
+"XC" = (
+/turf/open/floor/prison/darkbrown2/northwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"XG" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "73"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"XH" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "66"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"XJ" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"XP" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/lobby)
+"XQ" = (
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
+"XV" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"XX" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"Ya" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "89"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Yg" = (
+/turf/template_noop,
+/area/template_noop)
+"Yh" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/darkbrown3/east,
+/area/desert_dam/interior/dam_interior/hanger)
+"Yo" = (
+/obj/structure/surface/table,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/darkbrown2/north,
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"Yp" = (
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/desert_dam/exterior/valley/valley_northwest)
+"Yr" = (
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Yu" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "16"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"YA" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/blue/southeast,
+/area/desert_dam/interior/dam_interior/tech_storage)
+"YU" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_one)
+"YX" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"Zb" = (
+/turf/closed/shuttle/dropship3/tornado{
+	icon_state = "65"
+	},
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Zd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"Zj" = (
+/turf/open/floor/darkred2/west,
+/area/desert_dam/building/administration/lobby)
+"Zn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"Zo" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+"Zw" = (
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/control_room)
+"ZN" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"ZT" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/control_room)
+"ZV" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/landing_pad_one)
+"ZY" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"ZZ" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer/east,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Tornado)
+
+(1,1,1) = {"
+NZ
+LH
+ak
+GP
+LH
+LH
+LH
+LH
+LH
+LH
+Rl
+ak
+es
+GP
+LH
+LH
+ak
+es
+GP
+LH
+LH
+ao
+LH
+LH
+LH
+LH
+LH
+Rr
+es
+GP
+ak
+es
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+AE
+hL
+"}
+(2,1,1) = {"
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+pX
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+pX
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+TF
+vk
+AE
+DU
+bm
+DF
+ZY
+Lk
+DF
+Lk
+Lk
+Yh
+Lk
+Hp
+DF
+Lk
+uj
+DF
+Lk
+Lk
+DF
+IV
+vy
+"}
+(3,1,1) = {"
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+Nr
+AE
+vC
+vC
+vC
+nZ
+vC
+vC
+vC
+vC
+vC
+SK
+EC
+gJ
+Yu
+vC
+vC
+vC
+vC
+vC
+vC
+LP
+"}
+(4,1,1) = {"
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ia
+BC
+gU
+gU
+gU
+gU
+yX
+XH
+kc
+gU
+gU
+wd
+Rk
+PT
+WI
+SK
+EC
+gJ
+Yu
+zy
+gU
+kw
+"}
+(5,1,1) = {"
+Ur
+Ur
+Zd
+Zd
+Ur
+Ur
+Ur
+Zd
+Zd
+Ur
+Ur
+Ur
+Zd
+Zd
+Ur
+Ur
+Ur
+Zd
+Zd
+Ur
+Ur
+Ur
+Zd
+Zd
+Ur
+Ur
+Ur
+Zd
+Zd
+Ur
+Ur
+Ia
+BC
+gU
+gU
+gU
+fn
+up
+cm
+IB
+sH
+sH
+bJ
+op
+kV
+Pv
+wd
+Rk
+PT
+WI
+Vy
+gU
+kw
+"}
+(6,1,1) = {"
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ia
+BC
+gU
+gU
+SK
+FK
+JA
+FX
+JA
+zi
+zi
+JA
+zf
+JA
+wZ
+bJ
+op
+kV
+bJ
+EB
+gU
+kw
+"}
+(7,1,1) = {"
+Ur
+Ur
+Nr
+Nr
+Ur
+Ur
+Ur
+Nr
+Nr
+Ur
+Ur
+Ur
+Nr
+Nr
+Ur
+Ur
+Ur
+Nr
+Nr
+Ur
+Ur
+Ur
+Nr
+Nr
+Ur
+Ur
+Ur
+Nr
+Nr
+Ur
+Ur
+Ur
+BC
+lk
+Ei
+cR
+Nj
+Ua
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Ow
+zq
+zr
+FX
+JA
+eU
+hk
+Ed
+kw
+"}
+(8,1,1) = {"
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+BC
+Kz
+tW
+zn
+ez
+by
+qD
+II
+TH
+TH
+EM
+RG
+by
+cr
+Zo
+Zo
+Zo
+UW
+gU
+gU
+kw
+"}
+(9,1,1) = {"
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Zd
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+BC
+dw
+En
+Ya
+Nj
+QZ
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Rv
+ZZ
+ay
+Qx
+gV
+DO
+Cz
+ar
+kw
+"}
+(10,1,1) = {"
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+DI
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+DI
+ZV
+Vp
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ia
+BC
+gU
+gU
+wd
+FK
+gV
+Qx
+Tf
+zi
+zi
+gV
+Jd
+gV
+iz
+WT
+rb
+MA
+WT
+ya
+gU
+kw
+"}
+(11,1,1) = {"
+So
+AB
+sF
+qy
+MU
+AB
+sF
+qy
+MU
+AB
+il
+mp
+So
+AB
+sF
+qy
+MU
+AB
+sF
+qy
+TS
+bz
+oy
+Du
+eT
+Ur
+lg
+Ur
+eT
+Ur
+Ur
+Ia
+BC
+gU
+gU
+gU
+No
+XG
+Wp
+FG
+sH
+sH
+WT
+rb
+MA
+xJ
+SK
+al
+HL
+Yu
+Ep
+gU
+kw
+"}
+(12,1,1) = {"
+XQ
+sj
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+sj
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+sj
+XQ
+FS
+OC
+Du
+eT
+Ur
+lg
+Ur
+eT
+Ur
+Ur
+Ia
+BC
+gU
+gU
+gU
+gU
+wU
+Rh
+Zb
+gU
+gU
+SK
+al
+HL
+Yu
+wd
+Wn
+iQ
+WI
+Di
+gU
+kw
+"}
+(13,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+df
+OC
+Du
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+lg
+Iu
+Wy
+it
+it
+it
+it
+it
+hN
+it
+it
+it
+wd
+Wn
+iQ
+WI
+it
+it
+it
+it
+it
+it
+cx
+"}
+(14,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+BS
+JZ
+pw
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+lg
+Mc
+VQ
+Lk
+Lk
+IF
+Lk
+rh
+AE
+Lk
+Lk
+IF
+Lk
+Hp
+IF
+Lk
+Lk
+IF
+Lk
+rh
+AE
+Lk
+Lk
+"}
+(15,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+DX
+Ur
+cI
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+lg
+kJ
+ke
+kS
+kS
+Uu
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+Dq
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(16,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+Gf
+Ur
+cI
+eT
+Ur
+lg
+Ur
+eT
+Ur
+lg
+kJ
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+"}
+(17,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+Yg
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+jO
+Ur
+cI
+eT
+Ur
+lg
+Ur
+eT
+Ur
+lg
+Mc
+VQ
+Lk
+Lk
+DF
+Lk
+rh
+AE
+Lk
+Lk
+DF
+Lk
+Lk
+DF
+Lk
+Iz
+PH
+Lk
+rh
+AE
+Nt
+Lk
+"}
+(18,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+ZN
+Ur
+cI
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+lg
+sn
+Wy
+Hx
+Kv
+Kv
+Kv
+Kv
+Kv
+Kv
+Kv
+Kv
+Hx
+Mp
+Kv
+Kv
+nI
+ov
+Kv
+Kv
+Kv
+Hx
+ej
+"}
+(19,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+DX
+Ur
+cI
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ia
+je
+gU
+gU
+gU
+CD
+gU
+gU
+Ga
+Ga
+gU
+gU
+CD
+gU
+gU
+gU
+gU
+gU
+gU
+gU
+BC
+kw
+"}
+(20,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+FS
+ZV
+Vp
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ia
+je
+gU
+gU
+gU
+CD
+gU
+mS
+gU
+gU
+gU
+gU
+eb
+UJ
+UJ
+Kh
+PG
+gU
+gU
+gU
+BC
+kw
+"}
+(21,1,1) = {"
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+df
+OC
+Du
+eT
+Ur
+lg
+Ur
+eT
+Ur
+Ur
+Ia
+je
+gU
+Ga
+gU
+Ga
+Ga
+gU
+gU
+gU
+Ga
+Ga
+Ue
+cG
+Wi
+zU
+gU
+gU
+gU
+gU
+BC
+kw
+"}
+(22,1,1) = {"
+XQ
+sj
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+sj
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+sj
+XQ
+BS
+OC
+Du
+eT
+Ur
+lg
+Ur
+eT
+Ur
+Ur
+Ur
+je
+Ed
+gU
+Ga
+Ed
+gU
+gU
+Ed
+gU
+gU
+Ed
+au
+ga
+ga
+LK
+jR
+gt
+gU
+gU
+MM
+kw
+"}
+(23,1,1) = {"
+oY
+Cn
+bt
+bi
+gi
+Cn
+bt
+bi
+gi
+Cn
+Or
+pG
+oY
+Cn
+bt
+bi
+gi
+Cn
+bt
+bi
+cO
+bz
+oy
+Du
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+je
+Lk
+gU
+Ga
+gU
+gU
+gU
+GV
+Ga
+gU
+Ga
+CD
+gU
+gU
+gU
+Ga
+mS
+Ga
+gU
+BC
+no
+"}
+(24,1,1) = {"
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+DI
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+JZ
+DI
+JZ
+pw
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+Do
+Ur
+je
+ar
+gU
+gU
+bk
+gU
+gU
+ar
+gU
+mS
+bk
+CD
+Ga
+ar
+gU
+Ga
+ar
+gU
+gU
+MZ
+no
+"}
+(25,1,1) = {"
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+VZ
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+Ur
+Ia
+je
+gU
+gU
+gU
+Ga
+Ga
+gU
+Ga
+mS
+gU
+gU
+gU
+gU
+Ga
+gU
+gU
+gU
+gU
+gU
+BC
+kw
+"}
+(26,1,1) = {"
+Zd
+Ur
+Ur
+Zd
+Ur
+Ur
+Zd
+Ur
+Ur
+Zd
+Ur
+Ur
+Zd
+Ur
+Ur
+Zd
+Ur
+Ur
+Zd
+Ur
+Ur
+Zd
+Ur
+Ur
+eT
+Ur
+lg
+Ur
+eT
+Ur
+Ur
+Ia
+je
+gU
+gU
+gU
+CD
+gU
+gU
+gU
+Ga
+gU
+gU
+Ga
+gU
+gU
+gU
+gU
+gU
+gU
+gU
+BC
+kw
+"}
+(27,1,1) = {"
+Nr
+Ur
+Ur
+Nr
+Ur
+Ur
+Nr
+Ur
+Ur
+Nr
+Ur
+Ur
+Nr
+Ur
+Ur
+Nr
+Ur
+Ur
+Nr
+Ur
+Ur
+Nr
+Ur
+Ur
+eT
+Ur
+lg
+Ur
+eT
+Ur
+Ur
+Ia
+je
+gU
+gU
+gU
+CD
+gU
+gU
+gU
+gU
+gU
+Ga
+Ga
+gU
+gU
+gU
+gU
+gU
+gU
+gU
+BC
+no
+"}
+(28,1,1) = {"
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+VP
+Ur
+Ur
+BN
+cv
+cv
+cv
+cv
+eT
+Ur
+Ur
+Ur
+Ur
+Ur
+lg
+fM
+qn
+HU
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+SF
+HU
+Zn
+SF
+SF
+SF
+SF
+SF
+Uc
+Uc
+oM
+Qr
+"}
+(29,1,1) = {"
+ZV
+ZV
+ZV
+ZV
+ZV
+ZV
+DI
+DI
+ZV
+ZV
+DI
+DI
+DI
+DI
+DI
+Vp
+Qa
+Cg
+JF
+iG
+Pk
+DI
+DI
+Vp
+RQ
+Zd
+Zd
+Zd
+Zd
+Zd
+mn
+eB
+AE
+DU
+pr
+Oz
+fE
+mA
+hq
+mA
+mA
+to
+Lk
+Hp
+IF
+Lk
+fE
+IF
+Lk
+kE
+Cu
+fE
+Lk
+"}
+(30,1,1) = {"
+xx
+xx
+FH
+hE
+xx
+Ij
+ei
+KZ
+oy
+Du
+MP
+ei
+ei
+ei
+ei
+FE
+Ol
+JF
+JF
+iG
+eB
+MP
+ei
+yS
+ES
+ES
+ES
+ES
+ES
+ES
+ES
+Ij
+AE
+AE
+AE
+AE
+AE
+HG
+Lk
+Lk
+aa
+AE
+AE
+AE
+AE
+AE
+Vo
+nP
+nP
+nP
+nP
+xL
+xL
+"}
+(31,1,1) = {"
+LH
+HX
+LH
+LH
+LH
+bq
+LH
+Eq
+Bb
+Xu
+wl
+YU
+LH
+LH
+bX
+Pd
+tV
+jx
+mr
+kP
+GA
+wl
+bX
+wM
+dx
+LH
+rf
+EJ
+dx
+LH
+LH
+rf
+mO
+mO
+mO
+mO
+sJ
+Fc
+VO
+VO
+XC
+AE
+mO
+mO
+mO
+mO
+Vo
+io
+fw
+Ej
+lx
+ta
+bA
+"}
+(32,1,1) = {"
+mH
+mH
+mH
+mH
+mH
+mH
+VJ
+gq
+LI
+CP
+gq
+mH
+mH
+VJ
+yD
+cQ
+gC
+hd
+hd
+WB
+yO
+iA
+rf
+HA
+Co
+EJ
+mO
+mO
+lc
+EJ
+EJ
+mO
+mO
+mO
+mO
+sJ
+PO
+wG
+wG
+wG
+wG
+PO
+sJ
+mO
+mO
+mO
+Vo
+Yo
+wf
+KG
+KG
+wf
+wf
+"}
+(33,1,1) = {"
+PK
+Zw
+Zw
+Zw
+Zw
+Sx
+Zw
+QJ
+KC
+KC
+ky
+Zw
+cX
+mH
+yD
+cQ
+gC
+hd
+hd
+WB
+HH
+yD
+OQ
+EI
+mO
+mO
+mO
+mO
+mO
+EI
+mO
+mO
+mO
+mO
+mO
+sJ
+rH
+rH
+rH
+rH
+rH
+fC
+sJ
+mO
+mO
+mO
+Vo
+vh
+KG
+TB
+KG
+KG
+KG
+"}
+(34,1,1) = {"
+CN
+JG
+JG
+JG
+KC
+XX
+jY
+JG
+vd
+jY
+aS
+JG
+nn
+gq
+yD
+cQ
+gC
+ew
+My
+WB
+HH
+pf
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+sJ
+rH
+rH
+rH
+rH
+rH
+rH
+sJ
+mO
+mO
+mO
+Vo
+QR
+DM
+Mh
+tf
+mI
+SA
+"}
+(35,1,1) = {"
+Ka
+JG
+JG
+JG
+YX
+RE
+GE
+KC
+KC
+FU
+RE
+ZT
+nn
+gq
+yD
+cQ
+gC
+hd
+hd
+WB
+HH
+yD
+mb
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+sJ
+rH
+rH
+rH
+rH
+rH
+rH
+sJ
+mO
+mO
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+"}
+(36,1,1) = {"
+mV
+JG
+KC
+JG
+OD
+BV
+Hh
+KC
+jY
+OD
+JS
+hK
+Rb
+mH
+yD
+cQ
+gC
+hd
+hd
+WB
+HH
+vM
+yD
+vM
+aU
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+sJ
+rH
+rH
+rH
+rH
+rH
+rH
+sJ
+mO
+Dv
+Dv
+Cy
+gB
+rk
+ac
+zC
+dF
+Dv
+"}
+(37,1,1) = {"
+hR
+Hi
+iI
+QU
+ye
+dI
+KC
+KC
+KC
+tA
+jo
+JG
+nn
+gq
+sY
+cQ
+gC
+ew
+My
+WB
+HH
+yD
+yD
+tj
+yD
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+sJ
+rH
+rH
+rH
+rH
+rH
+rH
+sJ
+Dv
+Dv
+st
+mo
+EA
+pk
+pk
+pk
+br
+Dv
+"}
+(38,1,1) = {"
+lz
+JG
+JG
+KC
+qx
+vQ
+jY
+KC
+ST
+JG
+QU
+JG
+nn
+gq
+yD
+cQ
+gC
+hd
+hd
+WB
+HH
+yD
+Xt
+KF
+yD
+ok
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+sJ
+rH
+rH
+rH
+rH
+rH
+rH
+sJ
+Dv
+NO
+mo
+EA
+zw
+If
+Xf
+EA
+Sr
+Dv
+"}
+(39,1,1) = {"
+qW
+ik
+re
+mP
+ii
+Nf
+PF
+jl
+Vd
+Is
+PM
+RC
+wk
+mH
+yD
+cQ
+gC
+hd
+hd
+WB
+HH
+yD
+Rq
+Jy
+vc
+ht
+Yp
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+sJ
+rH
+rH
+rH
+rH
+rH
+rH
+sJ
+Dv
+Ho
+pk
+EA
+pO
+pO
+pO
+EA
+uw
+Dv
+"}
+(40,1,1) = {"
+mH
+mH
+mH
+mH
+gq
+vs
+mR
+gq
+mH
+mH
+mH
+mH
+mH
+mH
+Lb
+cQ
+gC
+ew
+My
+WB
+HH
+yD
+Ub
+pQ
+Rq
+Ub
+ht
+IR
+Yp
+mO
+mO
+mO
+mO
+mO
+mO
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+Dv
+cp
+pk
+Kt
+pI
+pI
+qb
+lu
+aR
+dX
+"}
+(41,1,1) = {"
+sg
+sg
+sg
+Ct
+yj
+zZ
+qi
+Ug
+GD
+nj
+FT
+FT
+FI
+wO
+yD
+cQ
+gC
+hd
+hd
+WB
+kh
+AV
+sT
+OG
+QF
+fv
+Hy
+Hy
+Hy
+Hy
+Hy
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+Dv
+yR
+pk
+EA
+pO
+pO
+pO
+pk
+na
+Dv
+"}
+(42,1,1) = {"
+Gz
+Nk
+sg
+Bo
+Xb
+eX
+Eh
+wu
+Bq
+oU
+rG
+rG
+Gt
+XP
+DK
+Xe
+gC
+hd
+hd
+WB
+RS
+XB
+Fi
+eV
+eV
+eV
+wB
+eV
+eV
+eV
+eV
+eV
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+Dv
+lr
+yy
+EA
+Le
+Le
+Le
+Qp
+Ls
+Dv
+"}
+(43,1,1) = {"
+OU
+sd
+sg
+pc
+qi
+eX
+cL
+fT
+lY
+SX
+SX
+SX
+SX
+Km
+La
+hf
+gC
+ew
+My
+WB
+RS
+lJ
+DK
+DK
+DK
+DK
+DK
+DK
+DK
+DK
+DK
+DK
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+Dv
+Dv
+GB
+yy
+EA
+EA
+EA
+LG
+Ls
+Dv
+"}
+(44,1,1) = {"
+jS
+nm
+RO
+Bo
+pL
+eX
+Eh
+pq
+qi
+SX
+oG
+oG
+SX
+SX
+fc
+hf
+gC
+hd
+hd
+WB
+Xs
+Ks
+Ks
+vB
+vB
+vB
+vB
+vB
+vB
+vB
+vB
+vB
+Oo
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+Dv
+Dv
+WA
+nU
+qS
+qH
+wY
+YA
+Dv
+"}
+(45,1,1) = {"
+sg
+sg
+sg
+Bo
+An
+eX
+Eh
+jA
+PX
+be
+rG
+rG
+xX
+XP
+uu
+tc
+gC
+hd
+hd
+hi
+IL
+IL
+IL
+IL
+IL
+IL
+IL
+IL
+IL
+IL
+IL
+IL
+BY
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+"}
+(46,1,1) = {"
+sg
+xq
+Sh
+nl
+xr
+Mf
+eN
+av
+GD
+XP
+qU
+XP
+XP
+vT
+yD
+cQ
+gC
+ew
+My
+hd
+RT
+hd
+hd
+RT
+hd
+hd
+RT
+hd
+hd
+RT
+hd
+hd
+WB
+Uz
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+XV
+aD
+ob
+"}
+(47,1,1) = {"
+sg
+OT
+Ew
+Bo
+An
+eX
+Eh
+Ug
+GD
+oz
+Oi
+Zj
+aY
+wO
+yD
+cQ
+gC
+hd
+hd
+hd
+ck
+hd
+hd
+ck
+hd
+hd
+ck
+hd
+hd
+ck
+hd
+hd
+WB
+HH
+ht
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+Wg
+SO
+er
+Dz
+"}
+(48,1,1) = {"
+RO
+OT
+kL
+Bo
+Xb
+eX
+Eh
+Ug
+Bq
+Ci
+rG
+rG
+CJ
+wO
+yD
+cQ
+AX
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+QN
+hd
+hd
+WB
+HH
+yD
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+Wg
+SO
+Jf
+KS
+"}
+(49,1,1) = {"
+TD
+NF
+qm
+qC
+Mj
+lV
+Rz
+LJ
+Bq
+QV
+rG
+nz
+bK
+wO
+aZ
+sW
+Ge
+Ge
+Ge
+nD
+Ks
+Ks
+Ks
+Ut
+Ut
+Ut
+Ut
+Fl
+Bv
+gC
+ew
+My
+WB
+HH
+gz
+wr
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+Yr
+oK
+SO
+Jf
+KS
+"}
+(50,1,1) = {"
+XJ
+sg
+sg
+Bo
+pL
+HK
+eL
+LJ
+GD
+qg
+nQ
+TX
+bo
+wO
+yD
+yD
+yD
+yD
+yD
+LM
+jy
+jy
+jy
+jy
+jy
+jy
+jy
+lb
+hf
+gC
+hd
+hd
+WB
+HH
+ht
+IR
+Yp
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+mO
+po
+hy
+Mk
+Jf
+KS
+"}

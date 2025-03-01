@@ -1,0 +1,2789 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aH" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"aZ" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"bk" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"bP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"cD" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"cZ" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/landing_zones/lz1)
+"dy" = (
+/turf/open/floor/warning/east,
+/area/lv624/lazarus/landing_zones/lz1)
+"dE" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"dK" = (
+/obj/structure/machinery/newscaster{
+	pixel_y = 30
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"dN" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"eg" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/main_hall)
+"el" = (
+/turf/open/floor/loadingarea/north,
+/area/lv624/lazarus/quartstorage)
+"en" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/mousetraps,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"eA" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/landing_zones/lz1)
+"eF" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"eI" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/loadingarea/east,
+/area/lv624/lazarus/quartstorage)
+"fo" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	health = 10;
+	is_wired = 1
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"gt" = (
+/turf/closed/wall,
+/area/lv624/lazarus/quartstorage)
+"gv" = (
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/quartstorage)
+"gU" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"hb" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"hm" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"hs" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"iy" = (
+/turf/open/floor/loadingarea/east,
+/area/lv624/lazarus/quartstorage)
+"iS" = (
+/turf/open/floor/whiteyellow/north,
+/area/lv624/lazarus/main_hall)
+"jb" = (
+/obj/structure/surface/rack,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"ju" = (
+/turf/open/floor/whiteyellow/west,
+/area/lv624/lazarus/main_hall)
+"jL" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"jX" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/gas,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"kd" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"kl" = (
+/turf/open/floor/loadingarea/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"ks" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/landing_zones/lz1)
+"kw" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper LZ1 Access";
+	req_one_access = null
+	},
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"kF" = (
+/obj/structure/largecrate,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"kT" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"lj" = (
+/obj/structure/surface/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP"
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"ll" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/loadingarea/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"lz" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"lG" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"mc" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/landing_zones/lz1)
+"mY" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"na" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"nw" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"nI" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/warning/northwest,
+/area/lv624/lazarus/landing_zones/lz1)
+"nM" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"oi" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"ok" = (
+/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"om" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"op" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"oz" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"oM" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/warning/southwest,
+/area/lv624/lazarus/landing_zones/lz1)
+"oT" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"ph" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"pl" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"pn" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"pO" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/warning/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"pR" = (
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"pT" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"pW" = (
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"qA" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"qB" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/warning/southwest,
+/area/lv624/lazarus/landing_zones/lz1)
+"qK" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"qO" = (
+/turf/open/floor/warning/southeast,
+/area/lv624/lazarus/landing_zones/lz1)
+"qS" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"qZ" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"sn" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"sN" = (
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"sZ" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -1
+	},
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv624/lazarus/landing_zones/lz1)
+"tr" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/warning/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"ts" = (
+/turf/open/floor/warning,
+/area/lv624/lazarus/landing_zones/lz1)
+"tD" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"tS" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"up" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"uz" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"uI" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"uK" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"uN" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"uP" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"uY" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/warningcorner/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"vA" = (
+/obj/structure/fence,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"vF" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"vG" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"vY" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"wE" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"xi" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/quartstorage)
+"xp" = (
+/obj/structure/machinery/landinglight/ds1/delayone,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"xt" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/colonist,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"xx" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"xQ" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"xR" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"xS" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper LZ1 Access";
+	req_one_access = null
+	},
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"xW" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"yg" = (
+/turf/open/floor/loadingarea/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"ys" = (
+/obj/structure/noticeboard{
+	pixel_y = 30
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"yu" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"yz" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"yY" = (
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"zg" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"zH" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"zI" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"zN" = (
+/turf/open/floor/whiteyellow,
+/area/lv624/lazarus/main_hall)
+"zS" = (
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"Au" = (
+/obj/structure/closet/crate/supply,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"Bf" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/quartstorage)
+"Bg" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"Br" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating/platebotc,
+/area/lv624/lazarus/quartstorage)
+"Bs" = (
+/turf/open/floor/whiteyellowcorner/north,
+/area/lv624/lazarus/main_hall)
+"Bx" = (
+/obj/structure/machinery/telecomms/relay/preset/tower/all,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"BX" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"CO" = (
+/obj/item/tool/crowbar/red,
+/turf/open/floor/warningcorner/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"CS" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"CT" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/landing_zones/lz1)
+"DH" = (
+/obj/structure/largecrate,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Ee" = (
+/turf/open/floor/whiteyellowcorner/west,
+/area/lv624/lazarus/main_hall)
+"Eh" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/quartstorage)
+"Et" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"ET" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"EU" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	health = 10;
+	is_wired = 1
+	},
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"Fd" = (
+/turf/open/floor/warning/northeast,
+/area/lv624/lazarus/landing_zones/lz1)
+"Fn" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Fw" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/warning/northwest,
+/area/lv624/lazarus/landing_zones/lz1)
+"FT" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"Gh" = (
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"Gu" = (
+/turf/open/floor/warning/southwest,
+/area/lv624/lazarus/landing_zones/lz1)
+"GR" = (
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"HQ" = (
+/obj/structure/surface/rack,
+/obj/item/storage/fancy/cigarettes/wypacket,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Io" = (
+/turf/open/floor/warningcorner/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"IL" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/warning/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"IZ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"Jx" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"Kh" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/main_hall)
+"Kt" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/warning/northeast,
+/area/lv624/lazarus/landing_zones/lz1)
+"KE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"KG" = (
+/obj/item/stack/rods{
+	amount = 15
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Lx" = (
+/obj/item/storage/firstaid,
+/obj/structure/surface/rack,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"LF" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"LZ" = (
+/obj/structure/machinery/landinglight/ds1/delaythree,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"Md" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"Mf" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"Mx" = (
+/obj/structure/machinery/landinglight/ds1,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"Nc" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"NA" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/quartstorage)
+"Pr" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Ps" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"Pv" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Pw" = (
+/obj/structure/largecrate/random,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/loadingarea/east,
+/area/lv624/lazarus/quartstorage)
+"Qt" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv624/lazarus/landing_zones/lz1)
+"QA" = (
+/obj/effect/landmark/hunter_secondary,
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"QV" = (
+/turf/template_noop,
+/area/template_noop)
+"Rd" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Rl" = (
+/turf/open/floor/wood,
+/area/lv624/lazarus/main_hall)
+"RM" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Sj" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"So" = (
+/turf/open/floor/warning/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"Sw" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/warning/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"SY" = (
+/obj/structure/transmitter/colony_net{
+	phone_category = "Lazarus Landing";
+	phone_id = "Cargo";
+	pixel_y = 24
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Tx" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/lv624/lazarus/quartstorage)
+"Tz" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"TJ" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/quartstorage)
+"TT" = (
+/obj/structure/largecrate/random,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"Ub" = (
+/obj/structure/surface/rack,
+/obj/item/tool/crowbar,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"UI" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Vy" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"VN" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"VQ" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/quartstorage)
+"Wa" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"Wi" = (
+/turf/open/floor/warningcorner/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"WG" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/landing_zones/lz1)
+"WL" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"Xo" = (
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"XB" = (
+/obj/structure/lz_sign/lazarus_sign{
+	density = 0
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
+"XE" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/warning/northwest,
+/area/lv624/lazarus/landing_zones/lz1)
+"XP" = (
+/turf/open/floor/warningcorner/east,
+/area/lv624/lazarus/landing_zones/lz1)
+"XR" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/warning/southwest,
+/area/lv624/lazarus/landing_zones/lz1)
+"Ye" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"Yg" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"Yn" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+"Yp" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"YR" = (
+/turf/closed/wall,
+/area/lv624/lazarus/main_hall)
+"Za" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Zb" = (
+/obj/item/trash/cheesie,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"Zg" = (
+/turf/open/floor,
+/area/lv624/lazarus/quartstorage)
+"Zy" = (
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
+"ZJ" = (
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"ZO" = (
+/obj/docking_port/stationary/marine_dropship/upp{
+	name = "LZ1: Nexus Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
+
+(1,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+ys
+zN
+Rl
+iS
+Zy
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(2,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Bg
+zN
+Rl
+iS
+up
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(3,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+hs
+zN
+Rl
+iS
+Zy
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(4,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+dK
+zN
+Rl
+iS
+Zy
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(5,1,1) = {"
+VQ
+VQ
+VQ
+gt
+GR
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Zy
+zN
+Rl
+iS
+Zy
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(6,1,1) = {"
+GR
+GR
+DH
+GR
+GR
+cD
+GR
+nM
+Bf
+gt
+QV
+QV
+QV
+QV
+QV
+QV
+ok
+Zy
+Zy
+Ee
+ju
+Bs
+Zy
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(7,1,1) = {"
+DH
+GR
+GR
+jb
+GR
+jb
+GR
+jb
+GR
+gt
+eI
+Pw
+eI
+iy
+Zg
+gt
+xQ
+Zy
+qK
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+ks
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(8,1,1) = {"
+Za
+GR
+GR
+jb
+GR
+VN
+GR
+UI
+GR
+Vy
+TJ
+gv
+gv
+gv
+el
+NA
+Zy
+Zy
+Zy
+Zb
+Zy
+Zy
+Zy
+Zy
+Zy
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+yY
+ks
+ks
+ks
+ks
+ks
+QV
+QV
+QV
+QV
+QV
+"}
+(9,1,1) = {"
+GR
+GR
+ZJ
+xt
+GR
+VN
+GR
+jb
+GR
+Vy
+gv
+gv
+Eh
+gv
+el
+NA
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+om
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+yY
+yY
+kd
+ks
+ks
+ks
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(10,1,1) = {"
+GR
+GR
+GR
+jb
+GR
+KG
+GR
+jb
+GR
+gt
+gt
+gt
+Zg
+Zg
+Zg
+gt
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+hm
+QV
+QV
+QV
+QV
+QV
+Xo
+Gu
+yY
+yY
+aH
+kd
+ks
+ks
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(11,1,1) = {"
+GR
+GR
+GR
+RM
+GR
+Lx
+GR
+jb
+GR
+qZ
+Pr
+gt
+xi
+Bf
+Bf
+xi
+YR
+uK
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+eg
+QV
+QV
+QV
+op
+zS
+zS
+ts
+yY
+yY
+aH
+kd
+ks
+ks
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(12,1,1) = {"
+GR
+oz
+GR
+Sj
+nw
+Sj
+GR
+Sj
+GR
+GR
+GR
+GR
+GR
+Fw
+bP
+XR
+eg
+Kh
+Zy
+Zy
+eg
+uK
+Zy
+Kh
+eg
+yY
+vF
+So
+Gh
+ET
+Gh
+ts
+Wa
+yY
+xW
+xW
+ks
+ks
+ks
+QV
+QV
+QV
+QV
+QV
+"}
+(13,1,1) = {"
+GR
+GR
+GR
+UI
+GR
+pW
+GR
+en
+GR
+GR
+GR
+GR
+oi
+pO
+zS
+Wi
+zI
+bP
+wE
+wE
+Xo
+wE
+wE
+bP
+oM
+Xo
+Xo
+XP
+zS
+zS
+zS
+ts
+Gu
+yY
+yY
+aH
+kd
+ks
+ks
+QV
+QV
+ks
+ks
+QV
+"}
+(14,1,1) = {"
+gU
+DH
+GR
+HQ
+GR
+jb
+GR
+jb
+GR
+oi
+Fn
+xi
+xi
+Fd
+dy
+dy
+CO
+Yg
+yg
+ll
+yg
+yg
+yg
+Gh
+ts
+tD
+Gh
+kF
+tD
+Gh
+ET
+ts
+ts
+yY
+vA
+xW
+kd
+ks
+ks
+ks
+ks
+ks
+QV
+QV
+"}
+(15,1,1) = {"
+GR
+GR
+GR
+jb
+GR
+jb
+GR
+jb
+GR
+GR
+Pv
+VQ
+fo
+yY
+yY
+Wa
+So
+kF
+zS
+Gh
+zS
+Gh
+zS
+ET
+ts
+kl
+zS
+zS
+zS
+zS
+zS
+ts
+ts
+yY
+vA
+yY
+xW
+kd
+ks
+ks
+ks
+QV
+QV
+QV
+"}
+(16,1,1) = {"
+GR
+GR
+GR
+Ub
+GR
+KG
+GR
+jX
+GR
+GR
+Rd
+VQ
+fo
+Mf
+yY
+XB
+So
+Gh
+zS
+Gh
+sN
+tD
+zS
+tD
+ts
+kl
+Gh
+Gh
+ET
+Gh
+kF
+ts
+ts
+yY
+vA
+yY
+yY
+xW
+kd
+ks
+ks
+ks
+QV
+QV
+"}
+(17,1,1) = {"
+GR
+Za
+Za
+GR
+GR
+GR
+GR
+GR
+GR
+GR
+GR
+VQ
+EU
+Gu
+yY
+yY
+So
+Gh
+zS
+Au
+Ps
+Gh
+zS
+kF
+ts
+kl
+zS
+TT
+zS
+zS
+zS
+ts
+ts
+yY
+vA
+vA
+vA
+vA
+mc
+mc
+Wa
+ks
+ks
+QV
+"}
+(18,1,1) = {"
+Tx
+Tx
+Tx
+gt
+SY
+GR
+GR
+gt
+VQ
+VQ
+VQ
+xi
+Bx
+ts
+yY
+lj
+So
+ET
+zS
+Gh
+zS
+tD
+zS
+Gh
+ts
+tD
+Gh
+Gh
+Gh
+ET
+tD
+ts
+ts
+yY
+yY
+yY
+yY
+yY
+vY
+mc
+yz
+pR
+pR
+pR
+"}
+(19,1,1) = {"
+ks
+ks
+ks
+gt
+Br
+vG
+Br
+gt
+sZ
+bP
+bP
+Xo
+XP
+Wi
+Xo
+Xo
+XP
+zS
+zS
+zS
+Qt
+zS
+zS
+zS
+Wi
+Xo
+Xo
+Xo
+Xo
+Xo
+Xo
+Xo
+Qt
+yY
+yY
+yY
+yY
+yY
+nI
+mc
+Gu
+pR
+pR
+bk
+"}
+(20,1,1) = {"
+ks
+ks
+na
+yY
+IL
+op
+uY
+Xo
+XP
+pl
+dN
+qS
+Ye
+hb
+dN
+qS
+Ye
+hb
+dN
+qS
+Ye
+hb
+dN
+qS
+Ye
+QA
+dN
+qS
+Ye
+hb
+dN
+pl
+ts
+yY
+yY
+yY
+yY
+yY
+tr
+xS
+ts
+pR
+pR
+yu
+"}
+(21,1,1) = {"
+ks
+kd
+aH
+yY
+So
+jL
+zS
+zS
+zS
+xp
+pl
+Et
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+Et
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+Et
+pl
+zg
+ts
+yY
+yY
+yY
+yY
+yY
+Sw
+Yn
+ts
+pR
+pR
+pR
+"}
+(22,1,1) = {"
+ks
+aH
+na
+yY
+Fd
+dy
+dy
+dy
+Io
+Mx
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+xR
+ts
+yY
+yY
+yY
+yY
+yY
+tr
+xS
+ts
+pR
+pR
+oT
+"}
+(23,1,1) = {"
+pn
+kd
+kd
+vA
+vA
+vA
+vA
+vA
+So
+LZ
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+sn
+ts
+yY
+yY
+yY
+yY
+yY
+Kt
+mc
+qO
+pR
+pR
+lz
+"}
+(24,1,1) = {"
+kd
+kd
+aH
+Wa
+yY
+yY
+dE
+vA
+So
+Md
+pl
+pl
+pl
+pl
+CS
+pl
+pl
+pl
+pl
+pl
+pl
+CS
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+FT
+ts
+yY
+yY
+yY
+yY
+yY
+vY
+mc
+yY
+pR
+pR
+lz
+"}
+(25,1,1) = {"
+ks
+kd
+kd
+tS
+xx
+yY
+yY
+vA
+So
+xp
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+zg
+ts
+yY
+vA
+vA
+vA
+vA
+mc
+mc
+Wa
+ks
+ks
+ks
+"}
+(26,1,1) = {"
+ks
+ks
+na
+na
+Jx
+IZ
+yY
+vA
+So
+Mx
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+ZO
+pl
+pl
+pl
+CS
+pl
+pl
+pl
+pl
+pl
+pl
+xR
+ts
+yY
+vA
+yY
+yY
+xW
+CT
+ks
+ks
+ks
+ks
+QV
+"}
+(27,1,1) = {"
+ks
+ks
+aH
+xW
+mY
+uz
+IZ
+vA
+So
+LZ
+pl
+pl
+pl
+pl
+pl
+aZ
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+sn
+ts
+yY
+vA
+yY
+yY
+kd
+kd
+ks
+ks
+QV
+QV
+QV
+"}
+(28,1,1) = {"
+ks
+ks
+na
+kd
+mY
+uz
+pT
+vA
+So
+Md
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+CS
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+FT
+ts
+yY
+vA
+yY
+xW
+kd
+ks
+ks
+QV
+QV
+QV
+QV
+"}
+(29,1,1) = {"
+ks
+ks
+ks
+kd
+WL
+uz
+pT
+vA
+So
+xp
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+zg
+ts
+yY
+yY
+yY
+xW
+CT
+ks
+ks
+ks
+QV
+QV
+QV
+"}
+(30,1,1) = {"
+ks
+ks
+ks
+xW
+yY
+WL
+eF
+vA
+So
+Mx
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+xR
+ts
+yY
+Tz
+xW
+kd
+kd
+ks
+QV
+QV
+QV
+QV
+QV
+"}
+(31,1,1) = {"
+ks
+ks
+kd
+aH
+kd
+yY
+Mf
+vA
+So
+LZ
+pl
+Et
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+Et
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+Et
+pl
+sn
+ts
+yY
+yY
+yY
+kd
+ks
+ks
+QV
+QV
+QV
+QV
+QV
+"}
+(32,1,1) = {"
+ks
+ks
+ks
+ks
+na
+yY
+yY
+vA
+So
+pl
+zH
+ph
+LF
+uN
+zH
+ph
+LF
+uN
+zH
+ph
+LF
+uN
+zH
+ph
+LF
+uN
+zH
+ph
+LF
+uN
+zH
+pl
+ts
+yY
+yY
+yY
+kd
+xW
+ks
+ks
+QV
+QV
+QV
+QV
+"}
+(33,1,1) = {"
+ks
+ks
+ks
+ks
+kd
+KE
+yY
+vA
+Qt
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+Qt
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+dy
+Qt
+yY
+yY
+xW
+eA
+xW
+ks
+QV
+QV
+QV
+QV
+QV
+"}
+(34,1,1) = {"
+ks
+ks
+ks
+ks
+ks
+na
+yY
+vA
+vA
+vA
+vA
+vA
+vA
+vA
+vA
+vA
+vA
+vA
+vA
+vA
+vA
+yY
+yY
+yY
+yY
+yY
+yY
+yY
+yY
+yY
+yY
+lG
+yY
+yY
+xW
+kd
+ks
+ks
+ks
+QV
+QV
+QV
+QV
+QV
+"}
+(35,1,1) = {"
+ks
+QV
+ks
+ks
+ks
+kd
+kd
+yY
+yY
+yY
+yY
+yY
+dE
+yY
+yY
+yY
+kd
+yY
+na
+yY
+yY
+kd
+na
+yY
+yY
+yY
+yY
+yY
+kT
+yY
+yY
+yY
+yY
+yY
+kd
+CT
+ks
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(36,1,1) = {"
+QV
+QV
+ks
+ks
+ks
+ks
+na
+na
+BX
+kd
+kd
+yY
+na
+kd
+Tz
+kd
+na
+xW
+aH
+xW
+kd
+ks
+aH
+xW
+kd
+kd
+yY
+yY
+yY
+yY
+yY
+yY
+yY
+yY
+WG
+ks
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(37,1,1) = {"
+QV
+QV
+QV
+QV
+ks
+ks
+ks
+ks
+na
+na
+ks
+na
+kd
+kd
+na
+aH
+ks
+ks
+xW
+aH
+ks
+ks
+ks
+na
+WG
+ks
+ks
+mc
+uI
+XE
+Yp
+qB
+uI
+mc
+ks
+ks
+ks
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(38,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+na
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+mc
+mc
+Yn
+kw
+Yn
+mc
+mc
+ks
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(39,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+ks
+QV
+QV
+ks
+ks
+QV
+QV
+QV
+ks
+ks
+ks
+cZ
+kd
+yY
+Fd
+dy
+qO
+yY
+yY
+Wa
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(40,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+ks
+QV
+ks
+ks
+QV
+ks
+QV
+QV
+QV
+QV
+ks
+QV
+QV
+QV
+ks
+QV
+QV
+QV
+Nc
+pR
+pR
+uP
+pR
+pR
+pR
+yu
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}
+(41,1,1) = {"
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+pR
+pR
+pR
+pR
+pR
+pR
+qA
+lz
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+"}

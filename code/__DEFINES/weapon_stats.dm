@@ -211,6 +211,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define BURST_AMOUNT_TIER_4 4
 #define BURST_AMOUNT_TIER_5 5
 #define BURST_AMOUNT_TIER_6 6
+#define BURST_AMOUNT_REVOLVER 7 // used for revolver only
 
 /*
 ////EXTRA////

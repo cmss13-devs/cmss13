@@ -34,6 +34,8 @@
 	var/trick_delay = 4 SECONDS
 	var/recent_trick //So they're not spamming tricks.
 	var/russian_roulette = 0 //God help you if you do this.
+	var/can_fan = FALSE // Fan the hammer
+	var/currently_fanning = FALSE
 
 /obj/item/weapon/gun/revolver/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -299,6 +301,35 @@
 		to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
 		return FALSE
 
+/datum/action/item_action/fan_the_hammers/New(Target)
+	..()
+	name = "Fan The Hammer"
+	button.name = name
+
+/datum/action/item_action/fan_the_hammers/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/revolver/revolvers = holder_item
+	revolvers.fan_the_hammer()
+	if(revolvers.currently_fanning)
+		to_chat(owner, SPAN_NOTICE("You will now fan the hammer."))
+	else
+		to_chat(owner, SPAN_NOTICE("You will no longer fan the hammer."))
+	playsound(owner, 'sound/machines/click.ogg', 15, 1)
+
+/obj/item/weapon/gun/revolver/proc/fan_the_hammer(obj/item/weapon/gun/revolver/fanner, mob/living/user)
+	icon_state = initial(icon_state)
+	if(can_fan)
+		if(!currently_fanning)
+			burst_delay = 0
+			add_firemode(GUN_FIREMODE_BURSTFIRE)
+			set_burst_amount(BURST_AMOUNT_REVOLVER)
+			do_toggle_firemode(GUN_FIREMODE_BURSTFIRE)
+			currently_fanning = TRUE
+		else
+			add_firemode(GUN_FIREMODE_SEMIAUTO)
+			do_toggle_firemode(GUN_FIREMODE_SEMIAUTO)
+			remove_firemode(GUN_FIREMODE_BURSTFIRE)
+			currently_fanning = FALSE
 
 //-------------------------------------------------------
 //M44 Revolver
@@ -337,7 +368,7 @@
 		/obj/item/attachable/alt_iff_scope,
 	)
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
-
+	actions_types = list(/datum/action/item_action/fan_the_hammers)
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 16, "stock_x" = 16, "stock_y" = 20)
 

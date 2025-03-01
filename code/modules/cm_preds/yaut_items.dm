@@ -1,3 +1,6 @@
+GLOBAL_VAR_INIT(blooding_activated, FALSE)
+GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
+
 //Items specific to yautja. Other people can use em, they're not restricted or anything.
 //They can't, however, activate any of the special functions.
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
@@ -559,7 +562,6 @@
 	///List of what ERTs can be called
 	var/static/list/potential_prey = list()
 	var/obj/structure/machinery/hunting_ground_selection/hunt
-	COOLDOWN_DECLARE(yautja_hunt_cooldown)
 
 /obj/structure/machinery/hunt_ground_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -582,8 +584,8 @@
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
-	if(!COOLDOWN_FINISHED(src, yautja_hunt_cooldown))
-		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(src, yautja_hunt_cooldown))
+	if(!COOLDOWN_FINISHED(GLOB, hunt_timer_yautja))
+		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
 		to_chat(user, SPAN_WARNING("You may begin another hunt in: [remaining_time]."))
 		return
 
@@ -600,7 +602,8 @@
 	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
 	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
-	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
+	COOLDOWN_START(GLOB, hunt_timer_yautja, 20 MINUTES)
+
 
 /obj/structure/machinery/hunt_ground_escape
 	name = "preserve shutter console"
@@ -676,7 +679,6 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/static/list/un_blooded = list()
-	var/blooding_activated = FALSE
 
 /obj/structure/machinery/blooding_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -699,7 +701,7 @@
 		to_chat(user, SPAN_WARNING("This is not for you."))
 		return
 
-	if(blooding_activated) //only one per round unless admins spawn more or var edit the console.
+	if(GLOB.blooding_activated) //only one per round unless admins spawn more or var edit the console.
 		to_chat(user, SPAN_WARNING("A blooding ritual has already taken place. Maybe ask the AI for another."))
 		return
 
@@ -716,7 +718,7 @@
 	message_all_yautja("[user.real_name] has chosen to awaken: [choice].")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) has called [choice] (Youngblood ERT)."))
 	SSticker.mode.get_specific_call(un_blooded[choice], TRUE, FALSE)
-	blooding_activated = TRUE
+	GLOB.blooding_activated = TRUE
 
 //=================//\\=================\\
 //======================================\\

@@ -74,6 +74,20 @@
 /obj/vehicle/multitile/chimera/Initialize(mapload, ...)
 	. = ..()
 	add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
+	create_lights()
+
+/atom/movable/chimera_light
+	light_system = DIRECTIONAL_LIGHT
+
+/obj/vehicle/multitile/chimera/proc/create_lights()
+	var/atom/movable/chimera_light/light_holder = new(src)
+	light_holder.light_pixel_x = side_lights_x_offset
+	light_holder.light_pixel_y = side_lights_y_offset
+	light_holder.set_light_color(side_light_color_1)
+	light_holder.set_light_flags(LIGHT_ATTACHED)
+	light_holder.set_light_range(light_range)
+	light_holder.set_light_power(lights_power)
+	light_holder.set_light_on(TRUE)
 
 /obj/vehicle/multitile/chimera/relaymove(mob/user, direction)
 	if(state == STATE_GROUNDED)

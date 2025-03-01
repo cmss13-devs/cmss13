@@ -25,4 +25,5 @@
 
 /obj/effect/landmark/start/tank_crew
 	name = JOB_TANK_CREW
+	icon_state = "vc_spawn"
 	job = /datum/job/command/tank_crew

@@ -5,7 +5,7 @@
 	if(bonus_projectiles_amount)
 		desc += "<br>Создаёт <b>[bonus_projectiles_amount + 1]</b> снарядов."
 	if(damage && damage_falloff)
-		desc += " Уменьшается на [damage_falloff] за каждую пройденную клетку."
+		desc += " Урон уменьшается на [damage_falloff] за каждую пройденную клетку."
 
 	if(flags_ammo_behavior & AMMO_SKIPS_ALIENS)
 		desc += "<br>Проходит сквозь сестёр."
@@ -56,4 +56,10 @@
 		<br>Накладывает кислоту на барикады в области.\
 		<br>Наносит [damage] урона в секунду при вдыхании носителями, а также дополнительно <b>15-20</b> урона в секунду по телу."
 	desc += call(src, /datum/ammo/xeno::get_description())()
+	return desc
+
+/datum/ammo/xeno/bone_chips/get_description()
+	var/desc = ""
+	desc += ..()
+	desc += "Замедляет цель на [convert_effect_time(3, SLOW)] сек."
 	return desc

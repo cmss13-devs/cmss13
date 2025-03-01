@@ -168,7 +168,7 @@
 
 	if(!fendy.crest_defense)
 		apply_cooldown()
-		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy)
+		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
 	if(!fendy.Adjacent(carbone))
 		on_cooldown_end()
 		return

@@ -50,6 +50,11 @@
 	var/temp_movespeed_usable = FALSE
 	var/temp_movespeed_messaged = FALSE
 
+/datum/behavior_delegate/boiler_trapper/append_to_stat()
+	. = list()
+	var/datum/action/xeno_action/activable/boiler_trap/trap_ability = get_action(bound_xeno, /datum/action/xeno_action/activable/boiler_trap)
+	. += "Insight Amount: [trap_ability.empowering_charge_counter]/[trap_ability.empower_charge_max]"
+
 /datum/behavior_delegate/boiler_trapper/on_hitby_projectile(ammo)
 	if (temp_movespeed_usable)
 		temp_movespeed_time_used = world.time
@@ -84,7 +89,7 @@
 
 	if(!trap_ability.empowered && trap_ability.empowering_charge_counter >= trap_ability.empower_charge_max)
 		trap_ability.empowered = TRUE
-		trap_ability.button.overlays += "+empowered"
+		trap_ability.button.overlays += image('icons/mob/hud/actions_xeno.dmi', "+empowered")
 		to_chat(bound_xeno, SPAN_XENODANGER("You have gained sufficient insight in your prey to empower your next [trap_ability.name]."))
 
 	if(trap_ability.empowering_charge_counter > trap_ability.empower_charge_max)
@@ -104,7 +109,7 @@
 		xeno.speed_modifier += temp_movespeed_amount
 		xeno.recalculate_speed()
 		temp_movespeed_messaged = FALSE
-	
+
 /datum/action/xeno_action/activable/boiler_trap/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -158,11 +163,11 @@
 	if(empowered)
 		empowered = FALSE
 		empowering_charge_counter = 0
-		button.overlays -= "+empowered"
+		button.overlays -= image('icons/mob/hud/actions_xeno.dmi', "+empowered")
 		var/datum/action/xeno_action/activable/acid_mine/mine = get_action(xeno, /datum/action/xeno_action/activable/acid_mine)
 		if(!mine.empowered)
 			mine.empowered = TRUE
-			mine.button.overlays += "+empowered"
+			mine.button.overlays += image('icons/mob/hud/actions_xeno.dmi', "+empowered")
 			to_chat(xeno, SPAN_XENODANGER("We tap into our reserves to prepare a stronger [mine.name]!"))
 
 	apply_cooldown()
@@ -203,7 +208,7 @@
 
 	if(empowered)
 		empowered = FALSE
-		button.overlays -= "+empowered"
+		button.overlays -= image('icons/mob/hud/actions_xeno.dmi', "+empowered")
 
 	apply_cooldown()
 	return ..()

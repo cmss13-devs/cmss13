@@ -27,8 +27,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	"King" = BE_KING,
 ))
 
-#define MAX_SAVE_SLOTS 10
-
 /datum/preferences
 	var/client/owner
 	var/atom/movable/screen/preview/preview_front
@@ -83,6 +81,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
 	var/flash_overlay_pref = FLASH_OVERLAY_WHITE
 	var/crit_overlay_pref = CRIT_OVERLAY_WHITE
+	var/allow_flashing_lights_pref = FALSE
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -189,7 +188,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/body_size = "Average" // Body Size
 	var/body_type = "Lean" // Body Type
 	var/language = "None" //Secondary language
-	var/list/gear //Custom/fluff item loadout.
 	var/preferred_squad = "None"
 	var/night_vision_preference = "Green"
 	var/list/nv_color_list = list(
@@ -286,6 +284,22 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/list/completed_tutorials = list()
 	/// If this client has auto observe enabled, used by /datum/orbit_menu
 	var/auto_observe = TRUE
+
+	/// Fluff items that the user is equipped with on spawn.
+	var/list/gear
+
+	/// Loadout items that the user is equipped with on spawn.
+	VAR_PRIVATE/list/loadout = list()
+
+	/// Mapping of jobs to slot numbers to names, to allow users to customise slots
+	var/list/loadout_slot_names
+
+	/// Which slot is currently in use
+	var/selected_loadout_slot = 1
+
+	/// This contains any potential issues with the users' preferences, and presents them on the lobby screen
+	var/errors = list()
+
 
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -441,10 +455,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			if(length(gear))
 				dat += "<br>"
 				for(var/i = 1; i <= length(gear); i++)
-					var/datum/gear/G = GLOB.gear_datums_by_name[gear[i]]
+					var/datum/gear/G = GLOB.gear_datums_by_type[gear[i]]
 					if(G)
-						total_cost += G.cost
-						dat += "[gear[i]] ([G.cost] points)<br>"
+						total_cost += G.fluff_cost
+						var/fluff_cost = G.fluff_cost ? " ([G.fluff_cost] fluff point\s)" : ""
+						var/loadout_cost = G.loadout_cost ? " ([G.loadout_cost]) loadout point\s" : ""
+						dat += "[G.display_name][fluff_cost][loadout_cost]<br>"
 
 				dat += "<b>Used:</b> [total_cost] points"
 			else
@@ -569,6 +585,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Set Eye Blur Type:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Set Flash Type:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set</a><br>"
 			dat += "<b>Set Crit Type:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set</a><br>"
+			dat += "<b>Allow Flashing Lights:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='byond://?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='byond://?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
@@ -925,6 +942,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	SetJobDepartment(job, priority)
 
 	SetChoices(user)
+
+	check_slot_prefs()
 	return 1
 
 /datum/preferences/proc/ResetJobs()
@@ -940,6 +959,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	for(var/role in GLOB.RoleAuthority.roles_by_path)
 		var/datum/job/J = GLOB.RoleAuthority.roles_by_path[role]
 		job_preference_list[J.title] = NEVER_PRIORITY
+
+	check_slot_prefs()
 
 /datum/preferences/proc/get_job_priority(J)
 	if(!J)
@@ -1024,6 +1045,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("input")
 					var/priority = text2num(href_list["target_priority"])
 					SetJob(user, href_list["text"], priority)
+					ShowChoices(user)
+					update_all_pickers(user)
 				else
 					SetChoices(user)
 			return TRUE
@@ -2288,11 +2311,26 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	picker_ui = SStgui.get_open_ui(user, body_picker)
 	picker_ui?.send_update()
 
+	/// the loadout picker does a lot of work in static data, so
 	picker_ui = SStgui.get_open_ui(user, loadout_picker)
-	picker_ui?.send_update()
+	picker_ui?.send_full_update()
 
 	picker_ui = SStgui.get_open_ui(user, traits_picker)
 	picker_ui?.send_update()
+
+/// Closes all the TGUI interfaces inside the character prefs menu
+/datum/preferences/proc/close_all_pickers(mob/user)
+	var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+	picker_ui?.close()
+
+	picker_ui = SStgui.get_open_ui(user, body_picker)
+	picker_ui?.close()
+
+	picker_ui = SStgui.get_open_ui(user, loadout_picker)
+	picker_ui?.close()
+
+	picker_ui = SStgui.get_open_ui(user, traits_picker)
+	picker_ui?.close()
 
 /datum/preferences/proc/get_body_presentation()
 	return body_presentation || gender
@@ -2339,3 +2377,70 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			else
 				name = "[pick(GLOB.first_names_male_clf)] [pick(GLOB.last_names_clf)]"
 	return name
+
+/// If the role being equipped into has role-specific loadout, offer the player the option to change their slot
+/datum/preferences/proc/update_slot(picked_job, timeout = FALSE)
+	if(!(picked_job in GLOB.roles_with_gear))
+		return TRUE
+
+	var/loadout_for_role = has_loadout_for_role(picked_job)
+	if(!loadout_for_role)
+		if(!timeout)
+			if(tgui_alert(owner, "You have not selected any loadout for this role. Do you want to select this now?", "Loadout", list("Yes", "No")) == "Yes")
+				loadout_picker.tgui_interact(owner)
+				return FALSE
+		return TRUE
+
+	var/options = list()
+
+	for(var/slot in loadout_for_role)
+		var/string_to_use = "Slot [slot]"
+		if(loadout_slot_names[picked_job] && loadout_slot_names[picked_job][slot])
+			string_to_use = loadout_slot_names[picked_job][slot]
+		options[string_to_use] = slot
+
+	owner.mob.sight = BLIND
+	var/selected = tgui_input_list(owner, "You have loadout available - which slot would you like to use?", "Slot Selection", options, theme = "crtgreen", timeout = timeout)
+	owner.mob.sight = owner.mob::sight
+
+	if(!selected)
+		return FALSE
+
+
+	selected_loadout_slot = options[selected]
+	return TRUE
+
+
+/// Gets the currently selected loadout of the provided job, or the job selected on "High"
+/datum/preferences/proc/get_active_loadout(job)
+	if(!job)
+		job = get_high_priority_job()
+
+	if(!job)
+		return
+
+	if(!islist(loadout[job]))
+		loadout[job] = list()
+
+	if(!islist(loadout[job]["[selected_loadout_slot]"]))
+		loadout[job]["[selected_loadout_slot]"] = list()
+
+	return loadout[job]["[selected_loadout_slot]"]
+
+/// If the user has any loadout pre-selected for the given role
+/datum/preferences/proc/has_loadout_for_role(job)
+	if(!job)
+		return
+
+	if(!loadout[job])
+		return
+
+	var/slots_with_stuff = list()
+	for(var/slot in loadout[job])
+		if(length(loadout[job][slot]))
+			slots_with_stuff += slot
+
+	if(!length(slots_with_stuff))
+		return
+
+	return slots_with_stuff

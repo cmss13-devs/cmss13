@@ -1,0 +1,10 @@
+2025-03-01:
+  Blundir:
+  - imageadd: monkey, yiren, neaera, farwa, stok resprite
+  - imagedel: deleted unused dmi various legacy with monkey icons
+  - imageadd: new NSPA badges sprites
+  - imageadd: resprites pathogen zombies with new sprites
+  Red-byte3D:
+  - bugfix: Banished tier 3's can no longer no longer destroy their own tunnels
+  - bugfix: Fixes banished xenos not being able to leave tunnels
+  - spellcheck: Fixes a small grammatical error within neurotoxin pain message

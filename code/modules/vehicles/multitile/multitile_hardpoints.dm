@@ -147,7 +147,6 @@
 			return
 
 	var/list/hps = list()
-	var/old_loc = src.loc
 	for(var/obj/item/hardpoint/H in get_hardpoints_copy())
 		// Only allow uninstalls of massive hardpoints when using powerloaders
 		if(H.w_class == SIZE_MASSIVE && !ispowerclamp(O) || H.w_class <= SIZE_HUGE && ispowerclamp(O) || istype(H, /obj/item/hardpoint/special))
@@ -165,8 +164,6 @@
 		return
 
 	if(!old.can_be_removed(user))
-		return
-	if(old_loc != src.loc)
 		return
 	// It's in a holder
 	if(!(old in hardpoints))
@@ -193,7 +190,7 @@
 		if(HDPT_TREADS)
 			num_delays = 7
 
-	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
+	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays, target_flags = INTERRUPT_DIFF_LOC, target = old,))
 		user.visible_message(SPAN_WARNING("[user] stops removing \the [old] on \the [src]."), SPAN_WARNING("You stop removing \the [old] on \the [src]."))
 		return
 

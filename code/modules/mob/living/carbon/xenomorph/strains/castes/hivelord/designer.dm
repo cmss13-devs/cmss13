@@ -144,7 +144,7 @@
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 		return
 
-	var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf)
+	var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno)
 
 	if(!do_after(xeno, do_after_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		qdel(speed_warn)
@@ -156,14 +156,14 @@
 		// Remove the existing node from the speed node list
 		xeno.speed_node_list -= existing_speed_node
 		qdel(existing_speed_node)
-		new /obj/effect/alien/weeds(target_turf)
-		xeno.visible_message(SPAN_XENODANGER("[xeno] reverts the node into weeds."), \
+		new /obj/effect/alien/weeds(target_turf, src, xeno)
+		xeno.visible_message(SPAN_XENODANGER("[xeno] reverts the node into weeds."),
 		SPAN_XENONOTICE("We restructure the node, reverting it into weeds."), null, 5)
 	else
 		// Create a new speed node normally
-		xeno.visible_message(SPAN_XENODANGER("[xeno] surges the resin, creating a strange looking node!"), \
+		xeno.visible_message(SPAN_XENODANGER("[xeno] surges the resin, creating a strange looking node!"),
 		SPAN_XENONOTICE("We create an optimized node!"), null, 5)
-		var/speed_nodes = new /obj/effect/alien/weeds/node/designer/speed(target_turf)
+		var/speed_nodes = new /obj/effect/alien/weeds/node/designer/speed(target_turf, src, xeno)
 		xeno.speed_node_list += speed_nodes
 		playsound(target_turf, "alien_resin_build", 25)
 
@@ -251,7 +251,7 @@
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 		return
 
-	var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf)
+	var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf, src, xeno)
 
 	if(!do_after(xeno, do_after_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		qdel(cost_warn)
@@ -263,14 +263,14 @@
 		// Remove the existing node from the cost node list
 		xeno.cost_node_list -= existing_cost_node
 		qdel(existing_cost_node)
-		new /obj/effect/alien/weeds(target_turf)
-		xeno.visible_message(SPAN_XENODANGER("[xeno] reverts the node into weeds."), \
+		new /obj/effect/alien/weeds(target_turf, src, xeno)
+		xeno.visible_message(SPAN_XENODANGER("[xeno] reverts the node into weeds."),
 		SPAN_XENONOTICE("We restructure the node, reverting it into weeds."), null, 5)
 	else
 		// Create a new cost node normally
-		xeno.visible_message(SPAN_XENODANGER("[xeno] surges the resin, creating a strange looking node!"), \
+		xeno.visible_message(SPAN_XENODANGER("[xeno] surges the resin, creating a strange looking node!"),
 		SPAN_XENONOTICE("We create a flexible node!"), null, 5)
-		var/cost_nodes = new /obj/effect/alien/weeds/node/designer/cost(target_turf)
+		var/cost_nodes = new /obj/effect/alien/weeds/node/designer/cost(target_turf, src, xeno)
 		xeno.cost_node_list += cost_nodes
 		playsound(target_turf, "alien_resin_build", 25)
 
@@ -347,8 +347,18 @@
 	// Replace all nodes in the speed and cost node lists
 	for(var/obj/effect/alien/weeds/node/designer/node in xeno.speed_node_list + xeno.cost_node_list)
 		var/turf/node_loc = get_turf(node.loc)
-		if(node_loc)
+		if(!node_loc)
+			continue
+
+		var/obj/effect/alien/weeds/target_weeds = node_loc.weeds
+		if(target_weeds && target_weeds.hivenumber == xeno.hivenumber)
+			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
+			SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
 			node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater)
+			var/turf/closed/wall/resin/weak/greater/good_wall = node_loc
+			if(good_wall)
+				good_wall.hivenumber = xeno.hivenumber
+				set_hive_data(good_wall, xeno.hivenumber) // Ensure it is properly linked to the hive
 			playsound(node_loc, "alien_resin_build", 25)
 		qdel(node)
 

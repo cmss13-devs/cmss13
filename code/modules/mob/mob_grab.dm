@@ -129,6 +129,9 @@
 		if(xeno.hauled_mob?.resolve()) // We can't carry more than one mob
 			to_chat(xeno, SPAN_WARNING("You already are carrying something, there's no way that will work."))
 			return 0
+		if(HAS_TRAIT(pulled, TRAIT_HAULED))
+			to_chat(xeno, SPAN_WARNING("They are already being hauled by someone else."))
+			return 0
 			/* Saving this in case we want to allow hauling of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still inside the body
 			else // The client is observing
@@ -145,7 +148,7 @@
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to restrain you!")))
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			if(isxeno(pulled.loc) && !xeno.hauled_mob)
+			if((isxeno(pulled.loc) && !xeno.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
 				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
 				return 0
 			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive

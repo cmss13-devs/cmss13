@@ -9,7 +9,8 @@
 	// Loading the same shuttle map at a different time will produce distinct area instances.
 	unique = FALSE
 
-	base_lighting_alpha = 255
+	area_has_base_lighting = FALSE
+	base_lighting_alpha = 0
 
 
 ///area/shuttle/Initialize()

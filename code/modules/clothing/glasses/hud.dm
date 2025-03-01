@@ -108,6 +108,19 @@
 		if(report)
 			report.read_paper(user)
 
+/obj/item/clothing/glasses/hud/health/basic
+	name = "\improper Basic HealthMate HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one is a simpler model."
+	hud_type = MOB_HUD_MEDICAL_BASIC
+	req_skill = NONE
+	req_skill_level = NONE
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/glasses/hud/health/basic/prescription
+	name = "\improper Prescription Basic HealthMate HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This simpler model contains prescription lenses."
+	prescription = TRUE
+
 /obj/item/clothing/glasses/hud/health/science
 	name = "custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO
 	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagent analyzer, allowing them to combine the functionality of a HealthMate and reagent scanner HUD without compromising on the form of the googles."

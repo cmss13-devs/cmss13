@@ -324,6 +324,7 @@
 			add_firemode(GUN_FIREMODE_BURSTFIRE)
 			set_burst_amount(BURST_AMOUNT_REVOLVER)
 			do_toggle_firemode(GUN_FIREMODE_BURSTFIRE)
+			remove_firemode(GUN_FIREMODE_SEMIAUTO)
 			currently_fanning = TRUE
 		else
 			add_firemode(GUN_FIREMODE_SEMIAUTO)

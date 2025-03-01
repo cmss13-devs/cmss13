@@ -4,7 +4,7 @@
 
 /datum/caste_datum/queen
 	caste_type = XENO_CASTE_QUEEN
-	tier = 0
+	tier = 4
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
 	melee_damage_upper = XENO_DAMAGE_TIER_6

@@ -1,4 +1,24 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
+"ab" = (
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
+"ac" = (
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/platingdmg1,
+/area/lv624/lazarus/crashed_ship)
+"ad" = (
+/obj/effect/landmark/survivor_spawner/clf_medic,
+/turf/open/floor/almayer/emeraldcorner/west,
+/area/lv624/lazarus/crashed_ship)
+"ae" = (
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/rifle/mar40/lmg{
@@ -147,11 +167,12 @@
 	phone_id = "Armoury";
 	pixel_y = 32
 	},
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
 "fX" = (
 /obj/item/stool,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_leader,
+/obj/effect/landmark/survivor_spawner/clf_lead,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "gg" = (
@@ -314,6 +335,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/crashed_ship)
 "jR" = (
@@ -395,14 +417,14 @@
 /area/lv624/lazarus/crashed_ship)
 "ln" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "lr" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "lC" = (
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "lD" = (
@@ -435,7 +457,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "nj" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_engineer,
+/obj/effect/landmark/survivor_spawner/clf_engi,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "nt" = (
@@ -462,7 +484,7 @@
 /turf/open/floor/almayer/greencorner/east,
 /area/lv624/lazarus/crashed_ship)
 "ok" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "ou" = (
@@ -476,7 +498,9 @@
 /area/lv624/lazarus/crashed_ship)
 "oO" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_3"
+	icon_state = "plasteel_3";
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
@@ -640,7 +664,7 @@
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "wh" = (
-/obj/item/weapon/gun/rifle/sniper/svd,
+/obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "wo" = (
@@ -692,10 +716,6 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-"xo" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/almayer,
-/area/lv624/lazarus/crashed_ship)
 "xs" = (
 /obj/effect/landmark/corpsespawner/wysec,
 /turf/open/gm/dirt,
@@ -730,11 +750,6 @@
 	pixel_y = 20
 	},
 /turf/open/floor/wood,
-/area/lv624/lazarus/crashed_ship)
-"yK" = (
-/obj/item/stack/rods,
-/obj/item/ammo_magazine/sniper/svd,
-/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "yT" = (
 /obj/structure/barricade/metal/wired{
@@ -789,20 +804,12 @@
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Aa" = (
-/obj/effect/vehicle_spawner/van/fixed{
-	color = "#4a9eed";
-	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
-	name = "CLF Van"
-	},
+/obj/effect/vehicle_spawner/clf_van/fixed,
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/lazarus/crashed_ship)
 "Ab" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"Ac" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_medic,
-/turf/open/floor/plating/plating_catwalk,
-/area/lv624/lazarus/crashed_ship)
 "Ar" = (
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
@@ -831,7 +838,9 @@
 /area/lv624/lazarus/crashed_ship)
 "AT" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2"
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
@@ -966,8 +975,8 @@
 /turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/crashed_ship)
 "Em" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/structure/sign/banners/clf_worn{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
@@ -1087,7 +1096,6 @@
 /area/lv624/lazarus/crashed_ship)
 "JC" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "JG" = (
@@ -1174,7 +1182,12 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Mw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/pills/highchance,
+/obj/item/prop/helmetgarb/prescription_bottle{
+	pixel_x = -4;
+	pixel_y = -4
+	},
 /turf/open/floor/almayer/emerald/northeast,
 /area/lv624/lazarus/crashed_ship)
 "Mz" = (
@@ -1207,6 +1220,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "NC" = (
@@ -1317,10 +1331,6 @@
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer/emerald/northwest,
 /area/lv624/lazarus/crashed_ship)
-"PY" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/almayer/bluecorner/east,
-/area/lv624/lazarus/crashed_ship)
 "Qc" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer/emeraldcorner/west,
@@ -1408,10 +1418,14 @@
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "Tx" = (
-/obj/structure/largecrate/supply/supplies/mre{
-	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
-	name = "\improper CLF Supply MRE crate (x50)"
-	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/ammo_box/magazine/misc/mre/emergency,
+/obj/item/ammo_box/magazine/misc/mre/emergency,
 /turf/open/floor/plating/warnplate/northwest,
 /area/lv624/lazarus/crashed_ship)
 "Tz" = (
@@ -1482,7 +1496,9 @@
 /area/lv624/ground/caves/south_west_caves)
 "UD" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2"
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
@@ -1557,7 +1573,6 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Wa" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer/green,
 /area/lv624/lazarus/crashed_ship)
 "Wg" = (
@@ -1618,7 +1633,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Ya" = (
-/obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "Yh" = (
@@ -1670,6 +1685,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
+/obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/crashed_ship)
 "ZS" = (
@@ -2124,7 +2140,7 @@ DY
 HR
 Xq
 DO
-Ud
+ad
 lr
 ch
 Xq
@@ -2161,7 +2177,7 @@ UV
 Ro
 Sy
 Up
-ok
+dN
 dN
 Bc
 Dp
@@ -2172,7 +2188,7 @@ Qd
 DZ
 Gm
 gF
-Ac
+lr
 Qc
 Xq
 XG
@@ -2308,7 +2324,7 @@ wr
 Xq
 vb
 RS
-lr
+ae
 Ik
 Dp
 Qd
@@ -2354,7 +2370,7 @@ Qf
 mS
 LG
 bc
-xo
+RS
 lr
 lr
 KK
@@ -2364,7 +2380,7 @@ lr
 xI
 Xq
 AQ
-Qf
+ac
 lh
 Qf
 yT
@@ -2492,7 +2508,7 @@ Qf
 lU
 mS
 mS
-xo
+RS
 Xq
 tB
 DS
@@ -2554,7 +2570,7 @@ Xq
 XM
 dN
 dN
-Bc
+ab
 Ex
 Qf
 xs
@@ -2642,7 +2658,7 @@ lr
 xF
 lr
 lr
-PY
+bL
 QQ
 VB
 Qf
@@ -2696,8 +2712,8 @@ dN
 ok
 Pu
 qU
-Bc
-yK
+aa
+Xx
 xk
 dN
 Dm
@@ -2745,7 +2761,7 @@ Ya
 Bc
 BY
 Pu
-lC
+dN
 Dm
 VX
 iq
@@ -2824,7 +2840,7 @@ dN
 wG
 DZ
 PA
-xo
+RS
 bF
 lr
 lr
@@ -3101,7 +3117,7 @@ Hj
 Ab
 Ab
 Ab
-jz
+Ab
 Ab
 Ab
 Ab

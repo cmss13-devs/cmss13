@@ -1,0 +1,2795 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"ab" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"ac" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/damaged3/west,
+/area/fiorina/station/clf_ship)
+"ad" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/park)
+"ae" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/park)
+"af" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"ag" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"ah" = (
+/obj/item/bedsheet/brown,
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	pixel_y = 13
+	},
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"ai" = (
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/park)
+"aj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"ak" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"al" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"am" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"an" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/area/fiorina/station/clf_ship)
+"ao" = (
+/obj/structure/shuttle/engine/router{
+	dir = 1
+	},
+/obj/structure/prop/invuln/fire,
+/turf/closed/wall/almayer,
+/area/fiorina/station/clf_ship)
+"ap" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 1;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating/platebot,
+/area/fiorina/station/clf_ship)
+"aq" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"ar" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"as" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"at" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"au" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"av" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/warnplate/north,
+/area/fiorina/station/clf_ship)
+"aw" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/fiorina/station/clf_ship)
+"ax" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"ay" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"az" = (
+/obj/structure/girder,
+/obj/item/stack/rods,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"aA" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"aB" = (
+/obj/item/stack/rods,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/park)
+"aC" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 4
+	},
+/turf/open/floor/almayer/green/northeast,
+/area/fiorina/station/clf_ship)
+"aD" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/park)
+"aE" = (
+/obj/item/mre_food_packet/clf,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"aF" = (
+/obj/item/ammo_box/magazine/misc/mre/wy,
+/turf/open/floor/almayer/green/north,
+/area/fiorina/station/clf_ship)
+"aI" = (
+/turf/open/floor/almayer/blue/southwest,
+/area/fiorina/station/clf_ship)
+"aM" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/emerald/southwest,
+/area/fiorina/station/clf_ship)
+"aO" = (
+/turf/open/floor/damaged3/west,
+/area/fiorina/station/clf_ship)
+"aT" = (
+/turf/open/floor/almayer/green/west,
+/area/fiorina/station/clf_ship)
+"bn" = (
+/turf/open/organic/grass/astroturf,
+/area/fiorina/station/park)
+"ci" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/rack,
+/obj/item/storage/backpack/general_belt{
+	pixel_y = 7
+	},
+/obj/item/storage/backpack/general_belt,
+/turf/open/floor/almayer/emerald/northwest,
+/area/fiorina/station/clf_ship)
+"cp" = (
+/obj/item/storage/fancy/cigarettes/lucky_strikes,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"cK" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"cS" = (
+/obj/effect/landmark/survivor_spawner/clf_medic/fiorina,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"cW" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/almayer/orange/east,
+/area/fiorina/station/clf_ship)
+"dq" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/delivery,
+/area/fiorina/station/clf_ship)
+"ds" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "shell_9_1"
+	},
+/obj/effect/spawner/random/gun/shotgun/highchance,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"du" = (
+/obj/structure/window/framed/prison/reinforced/hull,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/park)
+"dy" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_rightengine"
+	},
+/area/fiorina/station/clf_ship)
+"dA" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"dG" = (
+/turf/open/floor/almayer/green/north,
+/area/fiorina/station/clf_ship)
+"dJ" = (
+/obj/structure/machinery/floodlight,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/cargo,
+/area/fiorina/station/clf_ship)
+"dK" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/botany)
+"dR" = (
+/obj/structure/machinery/light,
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"dW" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/park)
+"dY" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"ei" = (
+/turf/open/space,
+/area/fiorina/oob)
+"el" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"em" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"eq" = (
+/turf/open/floor/plating/prison,
+/area/fiorina/station/park)
+"es" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_white_t_up"
+	},
+/area/fiorina/station/clf_ship)
+"eO" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"eQ" = (
+/turf/open/floor/plating/platebot,
+/area/fiorina/station/clf_ship)
+"fe" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/obj/structure/barricade/handrail/type_b{
+	dir = 8;
+	layer = 3.5
+	},
+/turf/open/organic/grass/astroturf,
+/area/fiorina/station/park)
+"ff" = (
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/park)
+"fg" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"fj" = (
+/obj/structure/machinery/power/smes/buildable/charged,
+/turf/open/floor/almayer/orange/west,
+/area/fiorina/station/clf_ship)
+"fz" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/obj/structure/barricade/handrail/type_b{
+	dir = 8;
+	layer = 3.5
+	},
+/turf/open/organic/grass/astroturf,
+/area/fiorina/station/park)
+"fC" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/prison/cell_stripe/west,
+/area/fiorina/station/park)
+"fS" = (
+/turf/open/floor/almayer/emerald/west,
+/area/fiorina/station/clf_ship)
+"fU" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/almayer/emerald,
+/area/fiorina/station/clf_ship)
+"gn" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/vending/cigarette,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"gr" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"gu" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_l_w"
+	},
+/area/fiorina/station/clf_ship)
+"gF" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"gO" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/spawner/random/toolbox,
+/obj/item/toy/deck/uno{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"gT" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_2"
+	},
+/area/fiorina/station/clf_ship)
+"gW" = (
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"hp" = (
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"hr" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine"
+	},
+/area/fiorina/station/clf_ship)
+"hC" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"hJ" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/station_alert{
+	icon_state = "atmosb";
+	stat = 1
+	},
+/turf/open/floor/almayer/blue/north,
+/area/fiorina/station/clf_ship)
+"hP" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"hV" = (
+/obj/effect/landmark/survivor_spawner/clf/fiorina,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"hY" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison/darkbrownfull2,
+/area/fiorina/station/park)
+"hZ" = (
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/transit_hub)
+"im" = (
+/obj/item/reagent_container/food/snacks/meat,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/park)
+"iH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prison_security,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"iJ" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"iQ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/turf/open/organic/grass/astroturf,
+/area/fiorina/station/park)
+"iZ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/item/stack/sheet/plasteel/med_large_stack,
+/turf/open/floor/almayer/orange,
+/area/fiorina/station/clf_ship)
+"jh" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"js" = (
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"jz" = (
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/park)
+"jG" = (
+/obj/effect/landmark/survivor_spawner/clf/fiorina,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"jH" = (
+/obj/item/stack/rods,
+/turf/open/floor/prison/cell_stripe/west,
+/area/fiorina/station/park)
+"jN" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "clf_umbilical_1";
+	pixel_x = 1;
+	pixel_y = 28;
+	range = 20
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"jQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray,
+/turf/open/floor/almayer/emerald,
+/area/fiorina/station/clf_ship)
+"jS" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/almayer/orange/east,
+/area/fiorina/station/clf_ship)
+"ke" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"kw" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
+	faction_group = list("CLF")
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/orange/north,
+/area/fiorina/station/clf_ship)
+"kY" = (
+/turf/open/floor/prison/darkbrownfull2,
+/area/fiorina/station/park)
+"ls" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/orange/east,
+/area/fiorina/station/clf_ship)
+"lv" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan9"
+	},
+/area/fiorina/station/clf_ship)
+"lA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/red/northwest,
+/area/fiorina/station/clf_ship)
+"lF" = (
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"lM" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/almayer/orange/northeast,
+/area/fiorina/station/clf_ship)
+"mj" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"mw" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/green/east,
+/area/fiorina/station/clf_ship)
+"mG" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/platebot,
+/area/fiorina/station/clf_ship)
+"mM" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"mQ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/red/northeast,
+/area/fiorina/station/clf_ship)
+"nb" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"nc" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"nf" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/almayer/emerald/east,
+/area/fiorina/station/clf_ship)
+"no" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications{
+	icon_state = "commb";
+	stat = 1
+	},
+/turf/open/floor/almayer/blue/north,
+/area/fiorina/station/clf_ship)
+"ny" = (
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/park)
+"nz" = (
+/obj/effect/landmark/survivor_spawner/clf/fiorina,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"nC" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/warnplate/north,
+/area/fiorina/station/clf_ship)
+"nD" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"nF" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
+/turf/open/floor/almayer/emerald/southeast,
+/area/fiorina/station/clf_ship)
+"nI" = (
+/turf/open/floor/almayer/blue,
+/area/fiorina/station/clf_ship)
+"oi" = (
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/delivery,
+/area/fiorina/station/clf_ship)
+"pg" = (
+/obj/structure/shuttle/engine/heater,
+/turf/closed/shuttle/ert{
+	icon_state = "stan_rightengine"
+	},
+/area/fiorina/station/clf_ship)
+"pv" = (
+/obj/structure/girder,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"pI" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 9
+	},
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"pL" = (
+/obj/structure/closet,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/attached_gun/flamer,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"pM" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/aux_engi)
+"pP" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating/platebot,
+/area/fiorina/station/clf_ship)
+"pU" = (
+/obj/structure/bed/sofa/south/grey/left,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"qK" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/transit_hub)
+"qQ" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"qR" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"qW" = (
+/obj/structure/window/framed/prison,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/park)
+"qZ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"ra" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"ro" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/almayer/orange/southeast,
+/area/fiorina/station/clf_ship)
+"ry" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"rJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
+	},
+/area/fiorina/station/clf_ship)
+"si" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0
+	},
+/area/fiorina/station/clf_ship)
+"ss" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_r_w"
+	},
+/area/fiorina/station/clf_ship)
+"tx" = (
+/obj/item/stack/rods,
+/turf/open/floor/platingdmg1,
+/area/fiorina/station/clf_ship)
+"tz" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
+	},
+/area/fiorina/station/clf_ship)
+"tN" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"tR" = (
+/obj/structure/machinery/floodlight,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"tS" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/prison/darkbrown2/north,
+/area/fiorina/station/park)
+"tW" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/obj/effect/landmark/corpsespawner/prison_security,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/transit_hub)
+"tX" = (
+/turf/open/floor/almayer/emerald/north,
+/area/fiorina/station/clf_ship)
+"uj" = (
+/turf/open/space/basic,
+/area/fiorina/oob)
+"ul" = (
+/obj/item/stack/rods,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"up" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"vm" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"vo" = (
+/turf/open/floor/plating/prison,
+/area/fiorina/station/transit_hub)
+"vs" = (
+/obj/item/stack/rods,
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"vz" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"vA" = (
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"vF" = (
+/obj/structure/shuttle/engine/heater,
+/turf/closed/wall/almayer,
+/area/fiorina/station/clf_ship)
+"vZ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/prison_security,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"wp" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/almayer/green/south,
+/area/fiorina/station/clf_ship)
+"ww" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan1"
+	},
+/area/fiorina/station/clf_ship)
+"wE" = (
+/turf/open/floor/almayer/orange/north,
+/area/fiorina/station/clf_ship)
+"xf" = (
+/obj/item/bedsheet/brown,
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	pixel_y = 13
+	},
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"xn" = (
+/obj/structure/largecrate/supply/ammo/m56d,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"xp" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"xu" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan21"
+	},
+/area/fiorina/station/clf_ship)
+"xx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/park)
+"xH" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/plating/platebot,
+/area/fiorina/station/clf_ship)
+"yf" = (
+/turf/open/floor/platingdmg1,
+/area/fiorina/station/clf_ship)
+"yv" = (
+/obj/structure/shuttle/engine/router{
+	dir = 1
+	},
+/turf/closed/wall/almayer,
+/area/fiorina/station/clf_ship)
+"yw" = (
+/obj/item/stack/rods,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/warnplate/north,
+/area/fiorina/station/clf_ship)
+"yx" = (
+/obj/structure/machinery/light,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"yJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1"
+	},
+/area/fiorina/station/clf_ship)
+"zk" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"zm" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/aux_engi)
+"zw" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf/fiorina,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"zy" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"zM" = (
+/obj/item/stack/rods,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"zY" = (
+/turf/closed/wall/r_wall/prison,
+/area/fiorina/station/botany)
+"Ah" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Aj" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/transit_hub)
+"Am" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/prison/darkbrown2/north,
+/area/fiorina/station/park)
+"Av" = (
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/delivery,
+/area/fiorina/station/clf_ship)
+"AQ" = (
+/obj/effect/landmark/survivor_spawner/clf/fiorina,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"AX" = (
+/turf/open/floor/prison/darkbrown2/north,
+/area/fiorina/station/park)
+"AZ" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/park)
+"Bk" = (
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	name = "\improper Rocinante Bridge";
+	req_one_access = null
+	},
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"Bl" = (
+/obj/structure/machinery/power/apc/power/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"Bw" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/almayer/orange/southwest,
+/area/fiorina/station/clf_ship)
+"BI" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf/fiorina,
+/turf/open/floor/whitebluefull,
+/area/fiorina/station/clf_ship)
+"BO" = (
+/obj/item/trash/boonie,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"BS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/platebot,
+/area/fiorina/station/clf_ship)
+"BZ" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Cf" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"Cw" = (
+/turf/open/floor/almayer/orange,
+/area/fiorina/station/clf_ship)
+"CD" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/organic/grass/astroturf,
+/area/fiorina/station/park)
+"CL" = (
+/obj/item/stool,
+/obj/item/weapon/gun/shotgun/merc,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"CO" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/emerald/north,
+/area/fiorina/station/clf_ship)
+"Da" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2"
+	},
+/area/fiorina/station/clf_ship)
+"De" = (
+/obj/structure/surface/rack,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/turf/open/floor/almayer/orange/west,
+/area/fiorina/station/clf_ship)
+"Dm" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf/fiorina,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"Dn" = (
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/platingdmg1,
+/area/fiorina/station/clf_ship)
+"Dx" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"DF" = (
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"DP" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"Eb" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/almayer/orange/west,
+/area/fiorina/station/clf_ship)
+"Ec" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Ee" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/almayer/green/south,
+/area/fiorina/station/clf_ship)
+"Ef" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"EY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/gloves{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 6
+	},
+/turf/open/floor/almayer/emeraldfull,
+/area/fiorina/station/clf_ship)
+"Fa" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/obj/structure/machinery/m56d_hmg{
+	rounds = 700;
+	dir = 1
+	},
+/turf/open/floor/plating/platebot,
+/area/fiorina/station/clf_ship)
+"Fh" = (
+/obj/structure/sink{
+	pixel_y = 15
+	},
+/obj/item/tool/soap{
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/turf/open/floor/whitebluefull,
+/area/fiorina/station/clf_ship)
+"FK" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"Gj" = (
+/obj/structure/transmitter/clf_net{
+	phone_category = "CR-116";
+	phone_id = "Canteen";
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/green/north,
+/area/fiorina/station/clf_ship)
+"Gn" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"Gv" = (
+/obj/structure/machinery/light,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Gy" = (
+/obj/structure/surface/rack,
+/obj/item/restraint/handcuffs{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/restraint/handcuffs,
+/turf/open/floor/almayer/blue/east,
+/area/fiorina/station/clf_ship)
+"GH" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/rack,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/almayer/emerald/southeast,
+/area/fiorina/station/clf_ship)
+"GV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"GW" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_3"
+	},
+/area/fiorina/station/clf_ship)
+"GY" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"Hn" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_3";
+	opacity = 0
+	},
+/area/fiorina/station/clf_ship)
+"Hr" = (
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"Hy" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/prison/darkbrown2,
+/area/fiorina/station/park)
+"HA" = (
+/obj/structure/machinery/vending/coffee/simple,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"HD" = (
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"HF" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/transit_hub)
+"HZ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan8"
+	},
+/area/fiorina/station/clf_ship)
+"Il" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/transit_hub)
+"Ip" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"It" = (
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"IH" = (
+/turf/closed/wall/prison,
+/area/fiorina/station/park)
+"IR" = (
+/obj/item/ammo_casing,
+/turf/open/floor/delivery,
+/area/fiorina/station/clf_ship)
+"IY" = (
+/turf/open/floor/prison,
+/area/fiorina/station/park)
+"Jn" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/prison/greenblue/southwest,
+/area/fiorina/station/botany)
+"Js" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/organic/grass/astroturf,
+/area/fiorina/station/park)
+"Ju" = (
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"Jx" = (
+/obj/structure/closet,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"JH" = (
+/obj/structure/closet/crate/miningcar{
+	name = "\improper materials storage bin"
+	},
+/obj/item/reagent_container/food/snacks/meat,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"JN" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/circuitboard/apc{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/cell/high,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/orange/west,
+/area/fiorina/station/clf_ship)
+"JQ" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 9
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = -3
+	},
+/turf/open/floor/almayer/orange/east,
+/area/fiorina/station/clf_ship)
+"JX" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/green/northwest,
+/area/fiorina/station/clf_ship)
+"Ko" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -2
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -6
+	},
+/obj/item/ammo_magazine/rifle/m16/ap{
+	pixel_x = -8
+	},
+/obj/item/weapon/throwing_knife{
+	pixel_x = 18;
+	pixel_y = 9
+	},
+/obj/item/weapon/throwing_knife{
+	pixel_x = 18;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/red/southwest,
+/area/fiorina/station/clf_ship)
+"Kp" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"KM" = (
+/obj/item/stack/rods,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"KN" = (
+/obj/item/stack/rods,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/park)
+"KW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"Lf" = (
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Lh" = (
+/turf/closed/shuttle/ert,
+/area/fiorina/station/clf_ship)
+"Li" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"LZ" = (
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Md" = (
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/damaged3/west,
+/area/fiorina/station/clf_ship)
+"Ml" = (
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/floor/plating/warnplate/north,
+/area/fiorina/station/clf_ship)
+"Mu" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -1
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/orange/west,
+/area/fiorina/station/clf_ship)
+"My" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Rocinante Airlock"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"MF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"Nv" = (
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Nz" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/almayer/cargo,
+/area/fiorina/station/clf_ship)
+"NH" = (
+/obj/structure/closet,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/compensator,
+/obj/item/attachable/compensator,
+/obj/item/attachable/compensator,
+/obj/item/attachable/extended_barrel,
+/obj/item/attachable/extended_barrel,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"NS" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/park)
+"OF" = (
+/turf/open/floor/prison/greenblue,
+/area/fiorina/station/botany)
+"OH" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/tumor/aux_engi)
+"OQ" = (
+/turf/open/floor/damaged3/west,
+/area/fiorina/station/park)
+"Pc" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/blue/northwest,
+/area/fiorina/station/clf_ship)
+"Pm" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/orange/east,
+/area/fiorina/station/clf_ship)
+"Pr" = (
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/structure/surface/rack,
+/turf/open/floor/almayer/blue/west,
+/area/fiorina/station/clf_ship)
+"PA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/fiorina/station/clf_ship)
+"PF" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/prison/greenblue/southeast,
+/area/fiorina/station/botany)
+"PO" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	name = "\improper Rocinante Airlock"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"PQ" = (
+/obj/structure/bed/chair,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"PS" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/organic/grass/astroturf,
+/area/fiorina/station/park)
+"PV" = (
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"PX" = (
+/obj/structure/largecrate/supply/ammo/m56d,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Qc" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan3"
+	},
+/area/fiorina/station/clf_ship)
+"Qg" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 1
+	},
+/turf/open/floor/plating/platebot,
+/area/fiorina/station/clf_ship)
+"Qo" = (
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"Qv" = (
+/turf/open/floor/prison/darkbrown2,
+/area/fiorina/station/park)
+"Qw" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"QB" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/almayer/green/south,
+/area/fiorina/station/clf_ship)
+"QG" = (
+/turf/open/floor/almayer/green/east,
+/area/fiorina/station/clf_ship)
+"QM" = (
+/obj/structure/bed/sofa/south/grey/right,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"Ra" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/park)
+"Rb" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Rf" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/transit_hub)
+"Rk" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"Rq" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Rocinante Airlock"
+	},
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"RC" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/ammo_magazine/shotgun/incendiary{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/incendiary,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"RI" = (
+/obj/item/frame/table,
+/obj/item/frame/table,
+/obj/item/frame/table,
+/obj/item/frame/table,
+/obj/structure/surface/rack,
+/turf/open/floor/almayer/green/southeast,
+/area/fiorina/station/clf_ship)
+"RN" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_s_w"
+	},
+/area/fiorina/station/clf_ship)
+"RR" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/area/fiorina/station/clf_ship)
+"Sc" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 1;
+	name = "\improper Rocinante Secondary Airlock"
+	},
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"Ss" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/paper/prison_station/pirate_note,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/faxmachine{
+	department = "CLF - Cell 42"
+	},
+/turf/open/floor/almayer/blue/northeast,
+/area/fiorina/station/clf_ship)
+"Sx" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/almayer/emerald/north,
+/area/fiorina/station/clf_ship)
+"SB" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan2"
+	},
+/area/fiorina/station/clf_ship)
+"SN" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"Tg" = (
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"Tp" = (
+/obj/structure/bed/chair{
+	can_buckle = 0
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/green/southwest,
+/area/fiorina/station/clf_ship)
+"TN" = (
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"TT" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/almayer/cargo,
+/area/fiorina/station/clf_ship)
+"Ua" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"Uh" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"Ul" = (
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"Uy" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
+"UJ" = (
+/turf/open/floor/almayer/blue/southeast,
+/area/fiorina/station/clf_ship)
+"UM" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/park)
+"UN" = (
+/obj/effect/vehicle_spawner/clf_van/fixed{
+	dir = 4
+	},
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"UQ" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 8
+	},
+/turf/open/floor/almayer/orange/northwest,
+/area/fiorina/station/clf_ship)
+"Vx" = (
+/obj/item/stool,
+/obj/effect/landmark/survivor_spawner/clf_lead/fiorina,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"VJ" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/almayer/emerald,
+/area/fiorina/station/clf_ship)
+"VK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 2
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 4
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 6
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 8
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = 10
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = -2
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_x = -4
+	},
+/turf/open/floor/almayer/red/southeast,
+/area/fiorina/station/clf_ship)
+"VN" = (
+/obj/item/attachable/heavy_barrel,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/attached_gun/flamer,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/structure/closet,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"VS" = (
+/obj/effect/landmark/survivor_spawner/clf_engi/fiorina,
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
+"VY" = (
+/obj/effect/landmark/corpsespawner/prison_security,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/park)
+"Wc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/platingdmg1,
+/area/fiorina/station/clf_ship)
+"Wg" = (
+/obj/structure/surface/rack,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/emerald/southeast,
+/area/fiorina/station/clf_ship)
+"Wq" = (
+/obj/item/trash/buritto,
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"Wr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"Wt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan22"
+	},
+/area/fiorina/station/clf_ship)
+"WE" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"WG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Xf" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"XB" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4;
+	icon_state = "metal_1"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/transmitter/clf_net{
+	phone_category = "CR-116";
+	phone_id = "Cargo Bay";
+	pixel_y = 32
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"XD" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/transit_hub)
+"XF" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/structure/transmitter/clf_net{
+	phone_category = "CR-116";
+	phone_color = "green";
+	phone_id = "Storage";
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/cargo,
+/area/fiorina/station/clf_ship)
+"XI" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/park)
+"XT" = (
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"Yh" = (
+/obj/item/trash/crushed_cup,
+/turf/open/floor/almayer/green/west,
+/area/fiorina/station/clf_ship)
+"YA" = (
+/obj/structure/barricade/handrail/type_b{
+	layer = 3.5
+	},
+/turf/open/floor/plating,
+/area/fiorina/station/park)
+"YV" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/plating,
+/area/fiorina/station/clf_ship)
+"Zz" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/fiorina/station/park)
+"ZG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/fiorina/station/clf_ship)
+"ZI" = (
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+zk
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ei
+"}
+(2,1,1) = {"
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+vF
+yv
+an
+Tg
+Rk
+ag
+NS
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ei
+ei
+ei
+"}
+(3,1,1) = {"
+OH
+du
+du
+du
+NS
+NS
+pv
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+ss
+Lh
+Lh
+Lh
+ss
+Lh
+Lh
+Lh
+Lh
+Lh
+ss
+DF
+Sc
+Lh
+Lh
+Lh
+eO
+Lh
+ww
+ZI
+ZI
+ZI
+ZI
+ei
+ei
+ei
+"}
+(4,1,1) = {"
+OH
+FK
+SN
+js
+dY
+aw
+Wt
+ar
+BZ
+Uy
+Nv
+Nv
+Nv
+yx
+rJ
+De
+Mu
+Eb
+rJ
+Jx
+PQ
+qZ
+nb
+qQ
+rJ
+UQ
+nc
+JN
+fj
+Bw
+rJ
+TT
+HZ
+Lh
+hr
+Hn
+si
+RR
+uj
+uj
+"}
+(5,1,1) = {"
+pM
+XI
+UM
+aB
+js
+xu
+jN
+Xf
+Ah
+ry
+aO
+Nv
+UN
+Nv
+PO
+ra
+ZG
+ra
+PO
+ra
+PQ
+RC
+gO
+zw
+rJ
+kw
+ra
+VS
+DF
+iZ
+rJ
+XF
+Nz
+dJ
+HZ
+hr
+Hn
+si
+RR
+ei
+"}
+(6,1,1) = {"
+pM
+XI
+jz
+ad
+fg
+xu
+XB
+up
+dA
+Wc
+jG
+Nv
+hp
+em
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+Dm
+hC
+GV
+eO
+wE
+ra
+GV
+DF
+Cw
+Nv
+Cf
+GV
+DF
+pI
+HZ
+hr
+Hn
+si
+RR
+"}
+(7,1,1) = {"
+pM
+jz
+VY
+jz
+Rk
+dq
+nC
+LZ
+vz
+Fa
+mG
+It
+Nv
+Nv
+es
+gT
+gT
+Bk
+RN
+VN
+ZG
+DF
+GV
+DF
+rJ
+lM
+ra
+jS
+JQ
+ro
+es
+gT
+Rq
+DP
+TN
+It
+SB
+ei
+ei
+ei
+"}
+(8,1,1) = {"
+zm
+ai
+lF
+ad
+xx
+Av
+tx
+Md
+ab
+xH
+BS
+am
+Nv
+yx
+rJ
+Pc
+Pr
+aI
+rJ
+xf
+ra
+ra
+ra
+XT
+es
+gT
+My
+gT
+eO
+gT
+RN
+ci
+fS
+fS
+fS
+aM
+SB
+ei
+ei
+ei
+"}
+(9,1,1) = {"
+zm
+HD
+HD
+OQ
+iH
+oi
+av
+zM
+WG
+Qg
+mG
+xp
+yf
+xn
+Gn
+no
+Vx
+nI
+eO
+xf
+ra
+lA
+Ko
+ra
+PO
+ra
+ra
+Uh
+ra
+ra
+PO
+ra
+ZG
+ZG
+DF
+fU
+SB
+ei
+ei
+ei
+"}
+(10,1,1) = {"
+zm
+ae
+jz
+aD
+Wr
+IR
+nD
+MF
+yf
+Qg
+pP
+Lf
+mM
+PX
+vm
+hJ
+CL
+nI
+rJ
+ah
+ra
+mQ
+VK
+ra
+ra
+ra
+ra
+ra
+ZG
+ra
+ra
+ak
+aj
+af
+ra
+VJ
+SB
+ei
+ei
+ei
+"}
+(11,1,1) = {"
+XD
+Aj
+Rf
+tW
+Rk
+iJ
+Ml
+ac
+Nv
+xH
+ap
+Nv
+AQ
+Gv
+rJ
+Ss
+Gy
+UJ
+rJ
+xf
+ra
+ra
+ra
+XT
+rJ
+JX
+ra
+Yh
+aT
+Tp
+rJ
+Sx
+cS
+ra
+ra
+jQ
+SB
+ei
+ei
+ei
+"}
+(12,1,1) = {"
+vo
+hZ
+HF
+qK
+KW
+ax
+yw
+Nv
+tR
+Fa
+eQ
+TN
+Ec
+Nv
+es
+gT
+gT
+Bk
+RN
+NH
+ra
+DF
+DF
+Bl
+rJ
+aF
+Wq
+hV
+DF
+QB
+al
+tX
+DF
+DF
+DF
+nF
+SB
+ei
+ei
+ei
+"}
+(13,1,1) = {"
+XD
+Aj
+Il
+Rf
+HD
+xu
+KM
+aO
+mj
+aq
+zy
+nz
+em
+TN
+PO
+ra
+ra
+ra
+PO
+ra
+ZG
+DF
+eO
+Rq
+RN
+Gj
+ZG
+DF
+BO
+wp
+Rb
+tX
+DF
+GV
+Wg
+lv
+dy
+GW
+Da
+yJ
+"}
+(14,1,1) = {"
+dK
+js
+jz
+dW
+js
+ay
+TN
+as
+Nv
+Dn
+vs
+aa
+Nv
+Nv
+ra
+ra
+ZG
+ra
+ra
+ra
+DF
+tN
+rJ
+Fh
+Rb
+dG
+qR
+GV
+aE
+Ee
+rJ
+CO
+nf
+GH
+lv
+dy
+GW
+Da
+yJ
+ei
+"}
+(15,1,1) = {"
+Jn
+fC
+jz
+jz
+jH
+az
+el
+Nv
+Nv
+WE
+cK
+Nv
+YV
+dR
+rJ
+Pm
+ls
+cW
+rJ
+pL
+Ul
+gn
+rJ
+BI
+rJ
+aC
+Ua
+mw
+QG
+RI
+rJ
+EY
+lv
+PA
+dy
+GW
+Da
+yJ
+uj
+uj
+"}
+(16,1,1) = {"
+OF
+js
+XI
+XI
+aA
+ny
+tz
+at
+PA
+PA
+PA
+PA
+PA
+PA
+gu
+PA
+PA
+PA
+gu
+PA
+PA
+PA
+gu
+PA
+gu
+DF
+Sc
+PA
+PA
+PA
+gu
+PA
+Qc
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+"}
+(17,1,1) = {"
+PF
+gr
+js
+js
+HD
+KN
+ny
+js
+AZ
+HD
+ai
+eq
+js
+ai
+Ra
+ul
+HD
+HD
+Hr
+HD
+Dx
+vZ
+pg
+ao
+yJ
+HD
+bn
+HD
+ai
+ai
+ke
+IH
+NS
+NS
+NS
+ei
+ei
+ei
+ei
+ei
+"}
+(18,1,1) = {"
+zY
+Li
+XI
+XI
+js
+ny
+XI
+ny
+XI
+ai
+Qv
+eq
+HA
+HD
+ai
+Zz
+HD
+YA
+QM
+ny
+au
+gW
+Js
+hP
+jh
+Ip
+Tg
+AZ
+Hr
+Ra
+au
+IH
+IH
+IH
+NS
+ei
+ei
+ei
+ei
+ei
+"}
+(19,1,1) = {"
+Jn
+GY
+js
+js
+JH
+js
+ai
+js
+js
+KN
+Qv
+IH
+Qo
+IY
+HD
+ff
+CD
+Qw
+Ef
+tS
+Qv
+vA
+Js
+iQ
+ds
+Hr
+Kp
+ai
+Hr
+IY
+IY
+kY
+hY
+IH
+NS
+NS
+NS
+ei
+ei
+ei
+"}
+(20,1,1) = {"
+OF
+js
+im
+XI
+js
+XI
+XI
+gF
+XI
+Am
+Qv
+qW
+cp
+XI
+IY
+PV
+Js
+PS
+pU
+AX
+Hy
+Ju
+Js
+iQ
+Hr
+PV
+fz
+fe
+pU
+IY
+IY
+IY
+kY
+IH
+IH
+IH
+NS
+ei
+ei
+ei
+"}

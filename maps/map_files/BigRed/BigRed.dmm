@@ -27782,6 +27782,9 @@
 "mOZ" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfmining"
+	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "mPm" = (

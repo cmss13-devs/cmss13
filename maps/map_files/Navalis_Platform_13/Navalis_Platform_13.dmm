@@ -1076,6 +1076,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/west,
 /area/navalis/indoors/logistic/primary_storage)
+"acV" = (
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	explo_proof = 1;
+	id = "vesselsecond";
+	name = "PSV Charon - Lower Vehicle Accessway";
+	needs_power = 0;
+	unacidable = 1;
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/navalis/indoors/charon/below_deck/middle)
 "acW" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9";
@@ -1113,6 +1124,27 @@
 "adc" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/navalis/indoors/landing_zone_2)
+"add" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	dir = 8;
+	pixel_x = 7
+	},
+/obj/structure/machinery/door_control{
+	pixel_y = 28;
+	id = "vesselsecond";
+	explo_proof = 1;
+	name = "Lower Vehicle Access";
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_range = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/charon/below_deck/middle)
+"ade" = (
+/turf/open/floor/plating/catwalk/grate/net,
+/area/navalis/outdoors/exterior/com_ext)
 "adf" = (
 /obj/structure/prop/server_equipment/laptop/closed,
 /turf/open/floor/corsat/brown/northwest,
@@ -1333,6 +1365,11 @@
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/navalis/indoors/industrial/mining)
+"adK" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
+/turf/open/floor/plating/catwalk/grate/net,
+/area/navalis/outdoors/exterior/com_ext)
 "adL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
@@ -1546,6 +1583,13 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
+"aer" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/grate/net,
+/area/navalis/outdoors/exterior/com_ext)
 "aes" = (
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	pixel_x = -4
@@ -3469,7 +3513,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/starboard)
 "ajf" = (
 /obj/effect/decal/hybrisa/trash{
@@ -4365,7 +4409,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "alw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -4379,7 +4423,7 @@
 "aly" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
 /turf/open/floor/plating/catwalk/grate/net,
-/area/navalis/oob/empty_space)
+/area/navalis/outdoors/exterior/com_ext)
 "alA" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/prop/hybrisa/misc/floorprops/grate4,
@@ -4445,7 +4489,7 @@
 "alI" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/floor/plating/catwalk/grate/net,
-/area/navalis/oob/empty_space)
+/area/navalis/outdoors/exterior/com_ext)
 "alJ" = (
 /turf/open/floor/plating,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
@@ -5166,7 +5210,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/refinery)
 "anU" = (
 /obj/structure/machinery/light{
@@ -5891,7 +5935,7 @@
 /area/navalis/indoors/logistic/maintenance_port)
 "aqU" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "aqV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6595,7 +6639,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/port)
 "atE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7302,7 +7346,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/port)
 "awa" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
@@ -11211,7 +11255,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/starboard)
 "aHy" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12342,17 +12386,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/indoors/charon/below_deck/rear)
-"aLz" = (
-/obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
-	layer = 2
-	},
-/obj/item/lightstick/red/planted{
-	pixel_y = -10;
-	pixel_x = -14;
-	layer = 4.11
-	},
-/turf/open/floor/plating/catwalk/grate/net,
-/area/navalis/outdoors/exterior/com_ext/lower)
 "aLA" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/black{
@@ -12636,7 +12669,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/navalis/indoors/charon/below_deck/front)
 "aMQ" = (
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/empty_space)
 "aMW" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -13950,7 +13983,7 @@
 "aRd" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/stairs/multiz/up,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "aRe" = (
 /obj/structure/machinery/camera/autoname{
@@ -15017,7 +15050,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "aVQ" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/floor/roof_weedable/outerhull_dir/southeast,
 /area/navalis/indoors/industrial/power)
 "aWm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15031,7 +15064,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/maintenance_port)
 "aWt" = (
 /obj/effect/decal/medical_decals{
@@ -15141,7 +15174,7 @@
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "aYJ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/indoors/logistic/primary_storage)
 "aYN" = (
 /obj/effect/decal/hybrisa/trash{
@@ -15459,7 +15492,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/strata,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/upper_deck/starboard)
 "bjh" = (
 /obj/structure/barricade/handrail/strata/navalis{
@@ -15503,7 +15536,7 @@
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "bkp" = (
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "bkz" = (
 /obj/effect/decal/warning_stripes{
@@ -16143,7 +16176,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/upper_level/entrance)
 "bAm" = (
-/turf/open/floor/almayer_hull/outerhull_dir/north,
+/turf/open/floor/roof_weedable/outerhull_dir/north,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "bAs" = (
 /obj/structure/bed/chair{
@@ -16199,7 +16232,7 @@
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/accessway)
 "bAL" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "bBe" = (
 /turf/closed/wall/hybrisa/colony/office,
@@ -16650,7 +16683,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "bNd" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -16983,7 +17016,7 @@
 	icon_state = "N";
 	layer = 3.33
 	},
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/floor/roof_weedable/outerhull_dir,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "bUG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17056,14 +17089,14 @@
 	pixel_y = 12
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "bXn" = (
 /obj/structure/cargo_container/uscm/chinook/left,
 /turf/open/floor/corsat/box,
 /area/navalis/indoors/logistic/lower_deck/fore)
 "bXx" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/turf/open/floor/roof_weedable/outerhull_dir/southwest,
 /area/navalis/indoors/industrial/accessway)
 "bXC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -17383,7 +17416,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/upper_level/entrance)
 "ckz" = (
 /obj/structure/surface/table/almayer,
@@ -17842,7 +17875,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "windsock"
 	},
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "cBd" = (
 /obj/effect/decal/warning_stripes{
@@ -18039,7 +18072,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/command/lower_deck/port)
 "cEG" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/floor/roof_weedable/outerhull_dir/southeast,
 /area/navalis/indoors/industrial/accessway)
 "cEH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18050,7 +18083,7 @@
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/cafeteria)
 "cFv" = (
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "cFE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18256,7 +18289,7 @@
 	pixel_y = 3
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "cMh" = (
 /obj/effect/decal/warning_stripes{
@@ -18653,7 +18686,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent2"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "cXN" = (
 /obj/effect/decal/hybrisa/trash{
@@ -18774,7 +18807,7 @@
 "dbF" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/prop/almayer/CICmap/pmc,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "dca" = (
 /obj/structure/machinery/power/port_gen/pacman/mrs,
@@ -19219,7 +19252,7 @@
 	dir = 4
 	},
 /obj/structure/platform/stone/strata/north,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/xeno_growth/residential)
 "dqB" = (
 /obj/structure/barricade/handrail/strata/navalis{
@@ -19437,7 +19470,7 @@
 	icon_state = "E";
 	pixel_x = 2
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "dxj" = (
 /turf/closed/wall/hybrisa/colony/office,
@@ -19458,7 +19491,7 @@
 	dir = 4
 	},
 /obj/structure/platform/stone/strata,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/xeno_growth/residential)
 "dxJ" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/west,
@@ -19604,7 +19637,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/cafeteria)
 "dAm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19733,7 +19766,7 @@
 	color = "#36454F";
 	dir = 4
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "dDQ" = (
 /obj/effect/decal/warning_stripes{
@@ -19922,7 +19955,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/charon/below_deck/front)
 "dKB" = (
 /obj/structure/barricade/handrail/strata/navalis{
@@ -19956,7 +19989,7 @@
 /area/navalis/oob/powered)
 "dKZ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/indoors/logistic/primary_storage)
 "dLf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20073,7 +20106,7 @@
 "dOT" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/floor/roof_weedable/outerhull_dir,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "dPu" = (
 /turf/open/floor/darkgreen2/north,
@@ -20274,14 +20307,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green/east,
 /area/navalis/indoors/command/port_hallway)
-"dTo" = (
-/obj/structure/lattice,
-/obj/structure/barricade/handrail/strata/navalis,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "dTv" = (
 /turf/open/floor/prison/ramptop/east,
 /area/navalis/oob/water)
@@ -20354,7 +20379,7 @@
 	needs_power = 0
 	},
 /obj/structure/platform/stone/strata/north,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/xeno_growth/residential)
 "dVo" = (
 /obj/item/card/id/captains_spare{
@@ -20372,7 +20397,7 @@
 	req_access = list(213);
 	explo_proof = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "dVL" = (
 /obj/item/device/flashlight/lamp/tripod{
@@ -20459,7 +20484,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/logistic/lower_deck/maint)
 "eaE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20642,7 +20667,7 @@
 /turf/open/floor/prison/blue/east,
 /area/navalis/indoors/logistic/workshop)
 "efR" = (
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/floor/roof_weedable/outerhull_dir,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "egi" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -20879,7 +20904,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/cafeteria)
 "eqd" = (
 /obj/effect/decal/hybrisa/road/lines3{
@@ -21002,7 +21027,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/navalis/outdoors/landing_zone_2/under)
 "ete" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/outdoors/landing_zone_2)
 "etl" = (
 /obj/structure/prop/tower{
@@ -21026,7 +21051,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/landing_pad)
 "etT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21286,7 +21311,7 @@
 /area/navalis/indoors/residential/port)
 "eAj" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "eAv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21594,7 +21619,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/lower_deck/starboard)
 "eJn" = (
 /turf/closed/wall/solaris,
@@ -21629,7 +21654,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/upper_deck/starboard)
 "eJV" = (
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "eKa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -21866,7 +21891,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/logistic/primary_storage)
 "eQI" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -21896,7 +21921,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "eRg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21951,7 +21976,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/starboard)
 "eSs" = (
 /obj/structure/barricade/handrail/strata/navalis{
@@ -22048,7 +22073,7 @@
 /area/navalis/indoors/med_sci/lower_level/records)
 "eUJ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/logistic/primary_storage)
 "eUS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22302,7 +22327,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/refinery)
 "fcE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22325,7 +22350,7 @@
 /turf/open/floor/prison/ramptop,
 /area/navalis/oob/water)
 "fdR" = (
-/turf/open/floor/almayer_hull/outerhull_dir/north,
+/turf/open/floor/roof_weedable/outerhull_dir/north,
 /area/navalis/indoors/logistic/primary_storage)
 "feA" = (
 /obj/structure/platform/metal/almayer/west,
@@ -22978,7 +23003,7 @@
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/power)
 "ftM" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/turf/open/floor/roof_weedable/outerhull_dir/southwest,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "ftU" = (
 /obj/effect/decal/hybrisa/road/lines4{
@@ -23028,7 +23053,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent4"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "fvJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -23172,7 +23197,7 @@
 	},
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "fzk" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -23356,13 +23381,13 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/starboard)
 "fEs" = (
 /obj/structure/barricade/handrail/pizza{
 	color = "#36454F"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "fEv" = (
 /obj/structure/prop/hybrisa/Factory/Robotic_arm{
@@ -23439,7 +23464,7 @@
 /turf/open/floor/hybrisa/tile/green_bigtile/east,
 /area/navalis/indoors/residential/cafeteria)
 "fGf" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/turf/open/floor/roof_weedable/outerhull_dir/southwest,
 /area/navalis/outdoors/landing_zone_2)
 "fGj" = (
 /obj/item/tool/mop{
@@ -23606,7 +23631,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "smokestack"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "fLz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -23687,7 +23712,7 @@
 "fMt" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "fMN" = (
 /obj/effect/decal/warning_stripes{
@@ -23926,7 +23951,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent3"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "fTt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24250,7 +24275,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/kitchen)
 "fZo" = (
 /obj/structure/barricade/handrail/wire,
@@ -24258,7 +24283,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/command/maintenance_starboard)
 "fZp" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/floor/roof_weedable/outerhull_dir/northeast,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "fZQ" = (
 /obj/structure/surface/table/almayer,
@@ -24273,7 +24298,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/logistic/primary_storage)
 "gaD" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -24366,7 +24391,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/maintenance_port)
 "geS" = (
 /turf/open_space,
@@ -24425,7 +24450,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/upper_level/corridor)
 "ggj" = (
 /obj/effect/decal/hybrisa/road/road_edge,
@@ -24620,7 +24645,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/charon/below_deck/front)
 "gmE" = (
 /obj/effect/decal/hybrisa/road/road_edge,
@@ -24675,7 +24700,7 @@
 	pixel_y = -4;
 	pixel_x = -6
 	},
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "goi" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24884,7 +24909,7 @@
 /area/navalis/indoors/command/upper_deck/naval_traffic_control)
 "guz" = (
 /obj/item/lightstick/red/spoke/planted,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "guA" = (
 /obj/structure/surface/table/almayer{
@@ -24960,13 +24985,6 @@
 	},
 /turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors/med_sci/upper_level/entrance)
-"gvV" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 1
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/exterior/com_ext/lower)
 "gwb" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 8
@@ -25452,7 +25470,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent1"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "gKT" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -25533,7 +25551,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "gNS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3,
@@ -26030,7 +26048,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/corridor)
 "hcY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26114,7 +26132,7 @@
 /area/navalis/indoors/command/upper_deck/air_traffic_control)
 "hfZ" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "hgn" = (
 /obj/structure/bed/chair{
@@ -26187,7 +26205,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/refinery)
 "hhH" = (
 /turf/closed/wall/mineral/bone_resin,
@@ -26478,7 +26496,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/command/upper_deck/naval_traffic_control)
 "hoK" = (
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/landing_zone_2)
 "hoR" = (
 /obj/structure/surface/table/almayer,
@@ -26640,7 +26658,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "windsock"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "huT" = (
 /obj/effect/decal/cleanable/blood/gibs/robot{
@@ -26689,7 +26707,7 @@
 	density = 0
 	},
 /obj/structure/platform/metal/stair_cut/strata_left,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "hvy" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
@@ -26742,7 +26760,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/upper_deck/port)
 "hxc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26915,7 +26933,7 @@
 /area/navalis/outdoors/landing_zone_2)
 "hCB" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "hCD" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
@@ -27079,7 +27097,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/kitchen)
 "hIN" = (
 /obj/effect/decal/warning_stripes{
@@ -27277,7 +27295,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/command/meeting_hall)
 "hPY" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "hQe" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -27328,7 +27346,7 @@
 	dir = 8
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "hRE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27405,7 +27423,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "solarpanel2"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "hTQ" = (
 /obj/effect/decal/navalis/plate_edge/darker{
@@ -27416,7 +27434,7 @@
 "hTU" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "hUx" = (
 /obj/structure/bed/chair/comfy/hybrisa/blue{
@@ -27436,10 +27454,6 @@
 "hVb" = (
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
-"hVj" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/exterior/com_ext/lower)
 "hVp" = (
 /obj/structure/prop/resin_prop{
 	dir = 8;
@@ -27657,7 +27671,7 @@
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/computer/communications,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "icG" = (
 /turf/closed/wall/hybrisa/colony/engineering,
@@ -27741,7 +27755,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent5"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "iex" = (
 /obj/structure/barricade/handrail/wire{
@@ -28389,7 +28403,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/industrial/refinery)
 "izg" = (
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/floor/roof_weedable/outerhull_dir,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "izk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29338,7 +29352,7 @@
 	pixel_y = 16;
 	pixel_x = -6
 	},
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "jdd" = (
 /obj/effect/decal/cleanable/generic,
@@ -29732,7 +29746,7 @@
 /turf/open/floor/corsat/cargo,
 /area/navalis/indoors/med_sci/lower_level/port)
 "joM" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/floor/roof_weedable/outerhull_dir/southeast,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "jpm" = (
 /obj/structure/machinery/meter{
@@ -30001,13 +30015,13 @@
 /turf/open/floor/corsat/brown,
 /area/navalis/indoors/industrial/refinery)
 "jAf" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/indoors/industrial/accessway)
 "jAD" = (
 /turf/open/floor/prison/whitegreencorner/north,
 /area/navalis/indoors/med_sci/main_floor)
 "jAE" = (
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "jAN" = (
 /obj/structure/platform/stone/strata,
@@ -30316,7 +30330,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent2"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "jIN" = (
 /obj/effect/decal/hybrisa/road/lines4,
@@ -30490,7 +30504,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/aft_hallway)
 "jNQ" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -30809,7 +30823,7 @@
 /turf/open/floor/prison,
 /area/navalis/indoors/command/upper_deck/port)
 "jXP" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/floor/roof_weedable/outerhull_dir/southeast,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "jXY" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -31005,7 +31019,7 @@
 "kdC" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
 /turf/open/floor/plating/catwalk/grate/alt,
-/area/navalis/outdoors/charon/surface_deck/main_deck)
+/area/navalis/outdoors/exterior/com_ext)
 "keo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -31777,7 +31791,7 @@
 /area/navalis/indoors/charon/below_deck/rear)
 "kAP" = (
 /obj/structure/stairs/multiz/down,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/upper_level/sci_ent)
 "kAU" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -32218,7 +32232,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/command/lower_deck/port)
 "kKq" = (
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/refinery)
 "kKQ" = (
 /obj/structure/prop/hybrisa/airport/dropshipenginedamage{
@@ -32233,7 +32247,7 @@
 	},
 /area/navalis/oob/water)
 "kKR" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/floor/roof_weedable/outerhull_dir/northeast,
 /area/navalis/indoors/industrial/power)
 "kLU" = (
 /obj/structure/blocker/invisible_wall,
@@ -33053,7 +33067,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "solarpanel1"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "lmb" = (
 /obj/structure/barricade/handrail/strata/navalis,
@@ -33410,7 +33424,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "solarpanel1"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "lvW" = (
 /obj/structure/machinery/light{
@@ -33844,7 +33858,7 @@
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/starboard_hallway)
 "lJR" = (
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/accessway)
 "lKg" = (
 /obj/structure/platform/metal/strata/north,
@@ -34095,7 +34109,7 @@
 	pixel_y = 16;
 	pixel_x = -6
 	},
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/floor/roof_weedable/outerhull_dir/southeast,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "lSo" = (
 /obj/effect/decal/hybrisa/road/road_stop,
@@ -34168,7 +34182,7 @@
 "lUr" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "lUx" = (
 /obj/structure/sign/safety/refridgeration{
@@ -34238,7 +34252,7 @@
 "lWf" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "lWl" = (
 /obj/structure/sign/poster/art{
@@ -34580,7 +34594,7 @@
 /area/navalis/indoors/charon/below_deck/middle)
 "mgc" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "mgp" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34591,7 +34605,7 @@
 /area/navalis/indoors/command/upper_deck/air_traffic_control)
 "mgH" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "mgL" = (
 /obj/structure/barricade/handrail/strata/navalis{
@@ -34963,7 +34977,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/logistic/lower_deck/fore)
 "mtm" = (
-/turf/open/floor/almayer_hull/outerhull_dir/north,
+/turf/open/floor/roof_weedable/outerhull_dir/north,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "mtv" = (
 /obj/structure/surface/table/reinforced/cloth{
@@ -35387,7 +35401,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/lower_deck/starboard)
 "mHP" = (
 /obj/effect/decal/hybrisa/road/road_stop{
@@ -35668,7 +35682,7 @@
 	icon_state = "E";
 	pixel_x = 2
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "mQE" = (
 /obj/effect/decal/warning_stripes{
@@ -35905,7 +35919,7 @@
 /turf/open/floor/prison/darkbrown3/west,
 /area/navalis/indoors/command/lower_deck/starboard)
 "mZF" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/floor/roof_weedable/outerhull_dir/northeast,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "mZH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35954,7 +35968,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/logistic/lower_deck/fore)
 "naP" = (
-/turf/open/floor/almayer_hull/outerhull_dir/north,
+/turf/open/floor/roof_weedable/outerhull_dir/north,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "nbx" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -35970,7 +35984,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent3"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "nbT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35980,7 +35994,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/indoors/industrial/power)
 "ncD" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/indoors/logistic/primary_storage)
 "ncP" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -36125,7 +36139,7 @@
 /area/navalis/indoors/med_sci/lower_level/port)
 "niU" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north,
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/floor/roof_weedable/outerhull_dir,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "njc" = (
 /obj/structure/machinery/big_computers/messaging_server/white{
@@ -36258,7 +36272,7 @@
 /area/navalis/outdoors/landing_zone_2)
 "nmr" = (
 /obj/structure/largecrate/supply/explosives/grenades,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "nmz" = (
 /obj/structure/disposalpipe/segment{
@@ -36466,7 +36480,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "nsd" = (
 /obj/effect/decal/hybrisa/road/lines2,
@@ -36552,7 +36566,7 @@
 	dir = 4
 	},
 /obj/structure/stairs/multiz/up,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/mining)
 "num" = (
 /obj/structure/bed/chair/office/dark{
@@ -36990,7 +37004,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "solarpanel1"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "nIC" = (
 /obj/structure/surface/table/almayer,
@@ -37164,7 +37178,7 @@
 	pixel_x = -32;
 	density = 0
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/upper_deck/starboard)
 "nNQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -37342,7 +37356,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/aft_hallway)
 "nTP" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -37354,7 +37368,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/power)
 "nUa" = (
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/indoors/logistic/primary_storage)
 "nUq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -37515,7 +37529,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/cafeteria)
 "nYx" = (
 /turf/closed/wall/solaris,
@@ -37859,7 +37873,7 @@
 	pixel_y = 24;
 	pixel_x = -7
 	},
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "ojG" = (
 /obj/structure/window/framed/hybrisa/colony,
@@ -37904,7 +37918,7 @@
 "okS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /obj/structure/platform/metal/hybrisa/metalplatform5,
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "olG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -38062,7 +38076,7 @@
 /turf/open/floor/prison/darkbrown3/east,
 /area/navalis/indoors/logistic/lower_deck/fore)
 "opd" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/floor/roof_weedable/outerhull_dir/southeast,
 /area/navalis/indoors/logistic/primary_storage)
 "opg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -38096,7 +38110,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/xeno_growth/residential)
 "oqr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -38193,7 +38207,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/corridor)
 "otw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -38524,7 +38538,7 @@
 	pixel_y = 16;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "oEs" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -38694,7 +38708,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "oJq" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "oJH" = (
 /turf/open/floor/prison/darkyellow2/west,
@@ -39275,7 +39289,7 @@
 "oZL" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/logistic/primary_storage)
 "oZP" = (
 /obj/structure/largecrate/random{
@@ -39460,7 +39474,7 @@
 "pfo" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/indoors/logistic/primary_storage)
 "pfT" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -39797,10 +39811,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/whitegreen/northwest,
 /area/navalis/indoors/med_sci/chemical_store)
-"poO" = (
-/obj/structure/lattice,
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "poP" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /turf/open_space,
@@ -39842,7 +39852,7 @@
 /area/navalis/oob/powered)
 "pqC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/floor/roof_weedable/outerhull_dir/northeast,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "pqT" = (
 /obj/structure/bed/chair/office/light{
@@ -40015,7 +40025,7 @@
 /area/navalis/indoors/command/aft_hallway)
 "pvc" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/floor/roof_weedable/outerhull_dir,
 /area/navalis/indoors/logistic/primary_storage)
 "pvA" = (
 /obj/structure/prop/resin_prop{
@@ -40380,7 +40390,7 @@
 	dir = 2;
 	id = "secret_access"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "pGH" = (
 /turf/open/floor/prison/darkbrownfull2,
@@ -40521,7 +40531,7 @@
 	pixel_y = 28;
 	layer = 3.5
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "pJA" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -41165,12 +41175,12 @@
 	pixel_x = -32;
 	density = 0
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/upper_deck/starboard)
 "pZw" = (
 /obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "pZH" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -41240,7 +41250,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/power)
 "qbx" = (
 /obj/structure/flora/pottedplant{
@@ -41361,7 +41371,7 @@
 	color = "#36454F";
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "qfh" = (
 /obj/effect/decal/hybrisa/trash{
@@ -41441,7 +41451,7 @@
 "qgR" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "qhd" = (
 /obj/structure/window/framed/hybrisa/colony/office/reinforced,
@@ -41568,21 +41578,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/navalis/indoors/command/upper_deck/port)
-"qkc" = (
-/obj/item/device/flashlight/lamp/tripod{
-	pixel_y = -3;
-	pixel_x = -5
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/exterior/com_ext/lower)
-"qkm" = (
-/obj/structure/barricade/handrail/strata/navalis,
-/obj/item/tool/warning_cone{
-	pixel_x = -13;
-	pixel_y = 20
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/exterior/com_ext/lower)
 "qko" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras{
@@ -41668,7 +41663,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/navalis/indoors/med_sci/surg_two)
 "qnr" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/floor/roof_weedable/outerhull_dir/northeast,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "qnx" = (
 /obj/structure/machinery/chem_dispenser,
@@ -41856,7 +41851,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "qrJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -42066,7 +42061,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/charon/surface_deck/rear_deck)
 "qxT" = (
 /obj/effect/decal/remains/robot,
@@ -42187,7 +42182,7 @@
 	dir = 4;
 	pixel_y = 3
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "qAE" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname,
@@ -42264,7 +42259,7 @@
 "qCE" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/logistic/primary_storage)
 "qCM" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -42296,7 +42291,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/starboard)
 "qEE" = (
 /turf/closed/wall/solaris/reinforced/hull,
@@ -42360,7 +42355,7 @@
 	pixel_y = 10
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "qGh" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -42670,7 +42665,7 @@
 	icon_state = "3"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "qPE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -42687,7 +42682,7 @@
 "qPM" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/indoors/logistic/primary_storage)
 "qPP" = (
 /obj/structure/monorail{
@@ -42727,7 +42722,7 @@
 "qRK" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/computer/communications,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "qSa" = (
 /obj/effect/decal/cleanable/dirt,
@@ -43109,7 +43104,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/upper_deck/port)
 "rbi" = (
 /obj/effect/decal/cleanable/greenglow,
@@ -43525,7 +43520,7 @@
 	light_color = "#680b62";
 	needs_power = 0
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/xeno_growth/residential)
 "rnA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -43666,7 +43661,7 @@
 /turf/open/floor/prison,
 /area/navalis/indoors/command/upper_deck/port)
 "rsz" = (
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/power)
 "rsA" = (
 /obj/structure/disposalpipe/segment{
@@ -44012,7 +44007,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/navalis/indoors/logistic/lower_deck/maint)
 "rBO" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "rBQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
@@ -44140,7 +44135,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/upper_level/entrance)
 "rGy" = (
 /turf/open/floor/prison/blue/east,
@@ -44301,7 +44296,7 @@
 /turf/open/floor/plating/catwalk/grate/net,
 /area/navalis/outdoors/landing_zone_2)
 "rMv" = (
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "rMH" = (
 /obj/effect/decal/navalis/plate_edge/darker,
@@ -44313,7 +44308,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/landing_zone_2)
 "rMK" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/floor/roof_weedable/outerhull_dir/east,
 /area/navalis/indoors/industrial/accessway)
 "rNg" = (
 /obj/structure/surface/table/almayer,
@@ -44539,16 +44534,6 @@
 	},
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors/med_sci/corridor)
-"rTE" = (
-/obj/structure/lattice,
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 1
-	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "rUh" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/med_sci/upper_level/entrance)
@@ -44706,7 +44691,7 @@
 "rXv" = (
 /obj/structure/platform/metal/strata/east,
 /obj/structure/stairs/multiz/up,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "rXJ" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
@@ -44719,7 +44704,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_y = 16
 	},
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/floor/roof_weedable/outerhull_dir,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "rXV" = (
 /obj/effect/decal/warning_stripes{
@@ -44787,7 +44772,7 @@
 	color = "#36454F";
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "sax" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty{
@@ -45044,7 +45029,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "skC" = (
 /obj/structure/blocker/invisible_wall,
@@ -45319,12 +45304,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/command/lower_deck/port)
-"ssr" = (
-/obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
-	layer = 2
-	},
-/turf/open/floor/plating/catwalk/grate/net,
-/area/navalis/outdoors/exterior/com_ext/lower)
 "ssv" = (
 /turf/open/floor/darkgreen2/west,
 /area/navalis/indoors/residential/accessway)
@@ -45698,7 +45677,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/accessway)
 "sEW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -45866,7 +45845,7 @@
 	icon_state = "S";
 	pixel_x = -1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "sIF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -46020,7 +45999,7 @@
 /turf/open/floor/prison/whitegreen/southeast,
 /area/navalis/indoors/med_sci/foyer)
 "sKU" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/turf/open/floor/roof_weedable/outerhull_dir/southwest,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "sKX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -46354,7 +46333,7 @@
 	icon_state = "N";
 	layer = 3.33
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "sRX" = (
 /obj/structure/machinery/space_heater/radiator/red{
@@ -46546,7 +46525,7 @@
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/mining)
 "sXb" = (
 /obj/structure/platform/metal/strata/north,
@@ -46617,7 +46596,7 @@
 /area/navalis/indoors/residential/cafeteria)
 "sZs" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/floor/almayer_hull/outerhull_dir/north,
+/turf/open/floor/roof_weedable/outerhull_dir/north,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "tae" = (
 /obj/effect/decal/cleanable/dirt,
@@ -46680,7 +46659,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/logistic/primary_storage)
 "taX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -46928,7 +46907,7 @@
 /turf/open/floor/prison/blue/east,
 /area/navalis/indoors/med_sci/upper_level/sci_scan)
 "tfI" = (
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/indoors/industrial/accessway)
 "tfV" = (
 /obj/structure/prop/hybrisa/airport/refuelinghose2{
@@ -47147,7 +47126,7 @@
 /area/navalis/outdoors/landing_zone_2)
 "tom" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/logistic/primary_storage)
 "tov" = (
 /obj/structure/barricade/wooden{
@@ -47372,7 +47351,7 @@
 /area/navalis/indoors/command/lower_deck/sub_pen)
 "txX" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "tya" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -47632,7 +47611,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/power)
 "tGf" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/east,
@@ -47696,7 +47675,7 @@
 /turf/open/floor/prison/darkbrown3/northeast,
 /area/navalis/indoors/command/lower_deck/starboard)
 "tIn" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/turf/open/floor/roof_weedable/outerhull_dir/southwest,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "tIB" = (
 /obj/structure/cable/heavyduty{
@@ -47723,7 +47702,7 @@
 	pixel_x = 32;
 	density = 0
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "tJc" = (
 /obj/effect/decal/hybrisa/warningstripes_angled{
@@ -47751,7 +47730,7 @@
 /turf/open/floor/prison,
 /area/navalis/outdoors/comm_one)
 "tJP" = (
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/floor/roof_weedable/outerhull_dir,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "tJZ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -47782,7 +47761,7 @@
 /turf/open/floor/prison/blue/north,
 /area/navalis/outdoors/landing_zone_1)
 "tKp" = (
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "tKr" = (
 /obj/effect/decal/hybrisa/road/lines2,
@@ -47909,7 +47888,7 @@
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/landing_zone_1)
 "tNM" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/floor/roof_weedable/outerhull_dir/southeast,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "tNO" = (
 /obj/structure/platform/metal/almayer/west{
@@ -48331,7 +48310,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/strata/north,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/command/upper_deck/starboard)
 "tYW" = (
 /obj/effect/decal/cleanable/dirt,
@@ -48511,7 +48490,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/kitchen)
 "uco" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -48543,7 +48522,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_starboard)
 "udB" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/outdoors/exterior/log_ext/upper)
 "udR" = (
 /obj/effect/decal/hybrisa/road/road_stop{
@@ -48821,7 +48800,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/port)
 "unX" = (
 /obj/structure/platform/metal/strata/east,
@@ -48909,7 +48888,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/power)
 "urX" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "usc" = (
 /obj/structure/prop/oilrig/support_beam/red,
@@ -48927,7 +48906,7 @@
 	light_color = "#680b62";
 	needs_power = 0
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/xeno_growth/residential)
 "usj" = (
 /obj/effect/decal/warning_stripes{
@@ -49498,7 +49477,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "uFV" = (
 /obj/structure/surface/table/almayer,
@@ -49563,7 +49542,7 @@
 "uIh" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/floor/roof_weedable/outerhull_dir/northeast,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "uIn" = (
 /obj/structure/platform_decoration/metal/strata/east,
@@ -49741,7 +49720,7 @@
 	pixel_y = 12
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "uMi" = (
 /obj/effect/decal/hybrisa/road/lines1{
@@ -49897,7 +49876,7 @@
 	needs_power = 0
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "uOW" = (
 /turf/closed/wall/solaris/reinforced,
@@ -50148,7 +50127,7 @@
 /area/navalis/indoors/logistic/primary_storage)
 "uXu" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/indoors/logistic/primary_storage)
 "uXS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -50809,7 +50788,7 @@
 /area/navalis/indoors/logistic/mech_bay)
 "vuB" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/indoors/logistic/primary_storage)
 "vuK" = (
 /turf/open/floor/prison/whitegreencorner,
@@ -51307,17 +51286,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/industrial/mining)
-"vFS" = (
-/obj/structure/prop/ice_colony/soil_net/navalis_indestructible{
-	layer = 2
-	},
-/obj/item/lightstick/red/planted{
-	pixel_y = -10;
-	pixel_x = 13;
-	layer = 4.11
-	},
-/turf/open/floor/plating/catwalk/grate/net,
-/area/navalis/outdoors/exterior/com_ext/lower)
 "vGh" = (
 /obj/structure/prop/hybrisa/misc/cabinet{
 	pixel_x = 7;
@@ -51414,7 +51382,7 @@
 /area/navalis/indoors/residential/kitchen)
 "vIV" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/east,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "vIX" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/frame{
@@ -52253,7 +52221,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/cafeteria)
 "wjM" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/south,
@@ -52594,7 +52562,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/charon/below_deck/front)
 "wsE" = (
 /obj/effect/decal/hybrisa/trash{
@@ -52967,7 +52935,7 @@
 /area/navalis/indoors/logistic/lower_deck/fuel)
 "wCa" = (
 /obj/structure/prop/almayer/computers/mapping_computer,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "wCn" = (
 /obj/effect/decal/hybrisa/trash{
@@ -53025,7 +52993,7 @@
 /obj/item/ammo_magazine/rifle/l42a/heap,
 /obj/item/ammo_magazine/rifle/l42a/heap,
 /obj/item/weapon/gun/rifle/l42a,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "wEe" = (
 /obj/effect/decal/warning_stripes{
@@ -53177,7 +53145,7 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
 "wIx" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/floor/roof_weedable/outerhull_dir/northeast,
 /area/navalis/indoors/industrial/accessway)
 "wIJ" = (
 /obj/item/paper/crumpled{
@@ -53240,7 +53208,7 @@
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/prop/almayer/CICmap/pmc,
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "wLc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -53297,7 +53265,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent5"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "wMV" = (
 /obj/item/stack/rods{
@@ -53389,7 +53357,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/indoors/residential/port)
 "wPK" = (
 /obj/effect/decal/warning_stripes{
@@ -54133,7 +54101,7 @@
 /area/navalis/indoors/command/lower_deck/starboard)
 "xli" = (
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "xlA" = (
 /obj/effect/decal/hybrisa/workers_decal{
@@ -54499,7 +54467,7 @@
 	pixel_y = 28
 	},
 /obj/structure/prop/almayer/computers/sensor_computer2,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "xxz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -55260,7 +55228,7 @@
 /area/navalis/indoors/logistic/upper_deck/office)
 "xRA" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/floor/roof_weedable/outerhull_dir/west,
 /area/navalis/indoors/logistic/primary_storage)
 "xRC" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
@@ -55314,7 +55282,7 @@
 "xTJ" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/med_ext/upper)
 "xUl" = (
 /obj/effect/decal/warning_stripes{
@@ -55412,7 +55380,7 @@
 	pixel_x = -14
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/oob/water)
 "xXz" = (
 /turf/closed/wall/hybrisa/research,
@@ -55585,7 +55553,7 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent4"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/roof_weedable,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "yeh" = (
 /obj/effect/decal/hybrisa/road/lines3,
@@ -116090,7 +116058,7 @@ crn
 crn
 cXC
 sAU
-qkc
+fqh
 fqh
 eli
 hAg
@@ -116256,7 +116224,7 @@ oFq
 sAU
 eaG
 fvC
-qkm
+eli
 uak
 kVD
 kVD
@@ -116416,11 +116384,11 @@ tAt
 tAt
 tAt
 tAt
-kVD
-rTE
-hVj
-hVj
-dTo
+oFq
+sAU
+fqh
+fqh
+eli
 tEK
 tAt
 tAt
@@ -116580,12 +116548,12 @@ tAt
 tAt
 tAt
 tAt
-mhH
-gvV
-hVj
-hVj
-poO
-tAt
+eXd
+sAU
+fqh
+fqh
+eli
+uak
 tAt
 tAt
 tAt
@@ -116744,25 +116712,25 @@ tAt
 tAt
 tAt
 tAt
-tAt
-poO
-poO
-poO
-hVj
-tAt
+oFq
+sAU
+fqh
+fqh
+eli
+uak
 tAt
 tAt
 tAt
 tAt
 tAt
 kVD
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
+crn
+crn
+crn
+crn
+crn
+crn
+crn
 kVD
 tAt
 tAt
@@ -116908,26 +116876,26 @@ kVD
 kVD
 kVD
 kVD
+oFq
+sAU
+fqh
+fqh
+eli
+uak
 kVD
 kVD
 kVD
 kVD
 kVD
 kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-ssr
+crn
 hCk
 hCk
 hCk
 hCk
 hCk
-ssr
-ssr
+crn
+crn
 kVD
 tAt
 tAt
@@ -117060,39 +117028,39 @@ tAt
 tAt
 kVD
 fRq
-vFS
-ssr
-ssr
-ssr
-ssr
 crn
 crn
-vFS
-ssr
-ssr
-ssr
 crn
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
-ssr
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+cXC
+fqh
+fqh
+fqh
+eli
+hAg
+crn
+crn
+crn
+crn
+crn
+crn
+crn
 hCk
 bvN
 aMA
 bvN
 hCk
 hCk
-ssr
-ssr
+crn
+crn
 kVD
 tAt
 tAt
@@ -117237,10 +117205,10 @@ hCk
 hCk
 hCk
 hCk
-pAq
-pAq
-pAq
-pAq
+acV
+acV
+acV
+acV
 hCk
 hCk
 hCk
@@ -117256,8 +117224,8 @@ xFk
 bvN
 hCk
 hCk
-ssr
-ssr
+crn
+crn
 kVD
 tAt
 tAt
@@ -117401,7 +117369,7 @@ pBd
 fRB
 aLr
 hWD
-lyI
+add
 quk
 quk
 lyI
@@ -117421,8 +117389,8 @@ bvN
 bvN
 hCk
 hCk
-ssr
-ssr
+crn
+crn
 kVD
 tAt
 tAt
@@ -117586,7 +117554,7 @@ xFk
 qzT
 hCk
 hCk
-ssr
+crn
 kVD
 tAt
 tAt
@@ -117750,7 +117718,7 @@ qjQ
 xFk
 bvN
 hCk
-ssr
+crn
 crn
 kVD
 tAt
@@ -119848,23 +119816,23 @@ tAt
 tAt
 tAt
 kso
-aLz
-ssr
-ssr
-ssr
-ssr
 crn
-ssr
-aLz
-ssr
-ssr
-ssr
 crn
-ssr
-ssr
-ssr
-ssr
-ssr
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
+crn
 crn
 crn
 crn
@@ -156768,9 +156736,9 @@ tAt
 tAt
 wsJ
 alI
-pYk
-pYk
-pYk
+awq
+awq
+awq
 aly
 wsJ
 eyY
@@ -156931,11 +156899,11 @@ kVD
 kVD
 kVD
 kVD
-wJw
-pYk
-pYk
-pYk
-wJw
+ade
+awq
+awq
+awq
+ade
 kVD
 kVD
 kVD
@@ -157095,11 +157063,11 @@ tAt
 tAt
 tAt
 kVD
-wJw
-pYk
-pYk
-pYk
-wJw
+ade
+awq
+awq
+awq
+ade
 kVD
 tAt
 tAt
@@ -157259,11 +157227,11 @@ tAt
 tAt
 tAt
 kVD
-wJw
-pYk
-pYk
-pYk
-wJw
+ade
+awq
+awq
+awq
+ade
 kVD
 kVD
 kVD
@@ -157423,11 +157391,11 @@ tAt
 tAt
 tAt
 kVD
-wJw
-pYk
-pYk
-pYk
-wJw
+ade
+awq
+awq
+awq
+ade
 kVD
 jOx
 aTm
@@ -157587,11 +157555,11 @@ kVD
 kVD
 kVD
 kVD
-wJw
-pYk
-pYk
-pYk
-wJw
+ade
+awq
+awq
+awq
+ade
 kVD
 ack
 gib
@@ -157751,11 +157719,11 @@ ljU
 alA
 aLk
 aTm
-keN
+aer
 kdC
-ljU
-ljU
-alA
+awq
+awq
+adK
 aTm
 aMW
 hCk

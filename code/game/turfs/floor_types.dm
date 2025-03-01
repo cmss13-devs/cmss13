@@ -2225,6 +2225,39 @@
 /turf/open/floor/almayer_hull/outerhull_dir/northwest
 	dir = NORTHWEST
 
+//Outerhull Weedable
+
+/turf/open/floor/roof_weedable
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull"
+	name = "roof"
+	turf_flags = TURF_HULL
+	allow_construction = FALSE
+
+/turf/open/floor/roof_weedable/outerhull_dir
+	icon_state = "outerhull_dir"
+
+/turf/open/floor/roof_weedable/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/roof_weedable/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/roof_weedable/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/roof_weedable/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/roof_weedable/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/roof_weedable/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/roof_weedable/outerhull_dir/northwest
+	dir = NORTHWEST
+
 
 
 //////////////////////////////////////////////////////////////////////

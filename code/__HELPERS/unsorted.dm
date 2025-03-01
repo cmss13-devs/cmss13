@@ -1329,6 +1329,32 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	if(length(turfs))
 		return pick(turfs)
 
+/proc/get_random_turf_in_range_unblocked(atom/origin, outer_range, inner_range)
+	origin = get_turf(origin)
+	if(!origin)
+		return
+	var/list/turfs = list()
+	for(var/turf/T in RANGE_TURFS(outer_range, origin))
+		if(inner_range && get_dist(origin, T) < inner_range)
+			continue
+
+		if(T.density)
+			continue
+
+		var/failed = FALSE
+		for(var/i in T)
+			var/atom/A = i
+			if(A.density)
+				failed = TRUE
+				break
+
+		if(failed)
+			continue
+
+		turfs += T
+	if(turfs.len)
+		return pick(turfs)
+
 // Returns true if arming a given explosive might be considered grief
 // Explosives are considered "griefy" if they are primed when all the following are true:
 // * The explosive is on the Almayer/dropship transit z levels

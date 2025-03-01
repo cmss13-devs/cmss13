@@ -95,3 +95,9 @@
 
 /// From /mob/living/carbon/xenomorph/proc/do_evolve()
 #define COMSIG_XENO_EVOLVE_TO_NEW_CASTE "xeno_evolve_to_new_caste"
+
+/// From /datum/action/xeno_action/activable/pounce/use_ability()
+#define COMSIG_XENO_USED_POUNCE "xeno_used_pounce"
+
+/// From /mob/living/carbon/xenomorph/proc/handle_ai_shot()
+#define COMSIG_XENO_HANDLE_AI_SHOT "xeno_handle_ai_shot"

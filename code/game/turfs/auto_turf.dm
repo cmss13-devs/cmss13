@@ -235,12 +235,13 @@
 				slow_amount = 0.15
 				can_stuck = 0
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
-			if(prob(2))
-				to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
-			else if(can_stuck && bleed_layer == 4 && prob(2))
-				to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
-				new_slowdown += 10
-			C.next_move_slowdown = new_slowdown
+			if(!HAS_TRAIT(C, TRAIT_HAULED))
+				if(prob(2))
+					to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
+				else if(can_stuck && bleed_layer == 4 && prob(2))
+					to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
+					new_slowdown += 10
+				C.next_move_slowdown = new_slowdown
 	..()
 
 /turf/open/auto_turf/snow/layer0 //still have to manually define the layers for the editor

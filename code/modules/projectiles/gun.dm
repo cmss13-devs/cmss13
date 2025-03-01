@@ -1609,6 +1609,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return TRUE
 	if(user.is_mob_incapacitated())
 		return
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if(world.time < guaranteed_delay_time)
 		return
 	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0))

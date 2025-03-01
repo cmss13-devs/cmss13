@@ -162,6 +162,11 @@
 
 	visible = TRUE
 
+/obj/structure/blocker/forcefield/human/dummypass
+	strict_types = list(/mob/living/carbon/human/realistic_dummy)
+
+	is_whitelist = TRUE
+
 /obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
 	return TRUE
 

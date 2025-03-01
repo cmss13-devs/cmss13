@@ -37,6 +37,8 @@
 	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, T))
 		if(H.stat == DEAD)
 			continue
+		if(!ishumansynth_strict(H))
+			continue
 		H.activate_order_buff(order, command_aura_strength, command_aura_duration)
 
 	if(loc != T) //if we were inside something, the range() missed us.

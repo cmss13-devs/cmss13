@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;admins - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/admins.html#var">Var Details</a> - <a href="datum/admins.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="datum.html">datum</a>/<a href="datum/admins.html">admins</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/holder2.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;holder2.dm 6"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/admins.html#var/invisimined">invisimined</a></th><td>Whether this admin is invisiminning</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/admins.html#proc/accept_ert">accept_ert</a></th><td>new ban stuff
+new ban stuff</td></tr>
+            <tr><th><a href="datum/admins.html#proc/accept_handheld_ert">accept_handheld_ert</a></th><td>Handles calling the ERT sent by handheld distress beacons</td></tr>
+            <tr><th><a href="datum/admins.html#proc/add_tagged_datum">add_tagged_datum</a></th><td>Inserts the target_datum into [/datum/admins/var/tagged_datums], for later reference.</td></tr>
+            <tr><th><a href="datum/admins.html#proc/display_tags">display_tags</a></th><td>Display all of the tagged datums</td></tr>
+            <tr><th><a href="datum/admins.html#proc/get_tgui_say_extra_channels">get_tgui_say_extra_channels</a></th><td>gets any additional channels for tgui-say (admin &amp; mentor)</td></tr>
+            <tr><th><a href="datum/admins.html#proc/handle_tagged_del">handle_tagged_del</a></th><td>Get ahead of the curve with deleting</td></tr>
+            <tr><th><a href="datum/admins.html#proc/modify_traits">modify_traits</a></th><td>Allow admin to add or remove traits of datum</td></tr>
+            <tr><th><a href="datum/admins.html#proc/remove_tagged_datum">remove_tagged_datum</a></th><td>Attempts to remove the specified datum from [/datum/admins/var/tagged_datums] if it exists</td></tr>
+            <tr><th><a href="datum/admins.html#proc/spawn_atom">spawn_atom</a></th><td>ADMIN HELPER PROCS</td></tr>
+            <tr><th><a href="datum/admins.html#proc/toggleaban">toggleaban</a></th><td>admins2.dm merge</td></tr>
+            <tr><th><a href="datum/admins.html#proc/view_attack_log">view_attack_log</a></th><td>Shows this round's attack log</td></tr>
+            <tr><th><a href="datum/admins.html#proc/view_game_log">view_game_log</a></th><td>Shows this round's server log</td></tr>
+            <tr><th><a href="datum/admins.html#proc/view_href_log">view_href_log</a></th><td>Shows this round's href log</td></tr>
+            <tr><th><a href="datum/admins.html#proc/view_runtime_log">view_runtime_log</a></th><td>Shows this round's runtime log</td></tr>
+            <tr><th><a href="datum/admins.html#proc/view_tgui_log">view_tgui_log</a></th><td>Shows this round's tgui log</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/invisimined"><aside class="declaration">var </aside>invisimined
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/holder2.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;holder2.dm 19"/></a></h3>
+        <p>Whether this admin is invisiminning</p><h2 id="proc">Proc Details</h2><h3 id="proc/accept_ert"><aside class="declaration">proc </aside>accept_ert<aside>(/<a href="mob.html">mob</a>/approver, /<a href="mob.html">mob</a>/ref_person) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/topic/topic.dm#L2177">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;topic&#x2F;topic.dm 2177"/></a></aside>
+        </h3>
+        <p>new ban stuff
+new ban stuff</p><h3 id="proc/accept_handheld_ert"><aside class="declaration">proc </aside>accept_handheld_ert<aside>(/<a href="mob.html">mob</a>/approver, /<a href="mob.html">mob</a>/ref_person, ert_called) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/topic/topic.dm#L2186">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;topic&#x2F;topic.dm 2186"/></a></aside>
+        </h3>
+        <p>Handles calling the ERT sent by handheld distress beacons</p><h3 id="proc/add_tagged_datum"><aside class="declaration">proc </aside>add_tagged_datum<aside>(/<a href="datum.html">datum</a>/target_datum) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/tag.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;tag.dm 7"/></a></aside>
+        </h3>
+        <p>Inserts the target_datum into [/datum/admins/var/tagged_datums], for later reference.</p>
+<p>Arguments:</p>
+<ul>
+<li>target_datum - The datum you want to create a tag for</li>
+</ul><h3 id="proc/display_tags"><aside class="declaration">proc </aside>display_tags<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/tag.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;tag.dm 54"/></a></aside>
+        </h3>
+        <p>Display all of the tagged datums</p><h3 id="proc/get_tgui_say_extra_channels"><aside class="declaration">proc </aside>get_tgui_say_extra_channels<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/holder2.dm#L145">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;holder2.dm 145"/></a></aside>
+        </h3>
+        <p>gets any additional channels for tgui-say (admin &amp; mentor)</p><h3 id="proc/handle_tagged_del"><aside class="declaration">proc </aside>handle_tagged_del<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/tag.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;tag.dm 17"/></a></aside>
+        </h3>
+        <p>Get ahead of the curve with deleting</p><h3 id="proc/modify_traits"><aside class="declaration">proc </aside>modify_traits<aside>(/<a href="datum.html">datum</a>/D) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/admin.dm#L246">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;admin.dm 246"/></a></aside>
+        </h3>
+        <p>Allow admin to add or remove traits of datum</p><h3 id="proc/remove_tagged_datum"><aside class="declaration">proc </aside>remove_tagged_datum<aside>(/<a href="datum.html">datum</a>/target_datum, silent) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/tag.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;tag.dm 31"/></a></aside>
+        </h3>
+        <p>Attempts to remove the specified datum from [/datum/admins/var/tagged_datums] if it exists</p>
+<p>Arguments:</p>
+<ul>
+<li>target_datum - The datum you want to remove from the tagged_datums list</li>
+<li>silent - If TRUE, won't print messages to the owner's chat</li>
+</ul><h3 id="proc/spawn_atom"><aside class="declaration">proc </aside>spawn_atom<aside>(object) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/admin.dm#L172">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;admin.dm 172"/></a></aside>
+        </h3>
+        <p>ADMIN HELPER PROCS</p><h3 id="proc/toggleaban"><aside class="declaration">proc </aside>toggleaban<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/admin.dm#L157">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;admin.dm 157"/></a></aside>
+        </h3>
+        <p>admins2.dm merge</p><h3 id="proc/view_attack_log"><aside class="declaration">proc </aside>view_attack_log<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/verbs/getlogs.dm#L102">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;getlogs.dm 102"/></a></aside>
+        </h3>
+        <p>Shows this round's attack log</p><h3 id="proc/view_game_log"><aside class="declaration">proc </aside>view_game_log<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/verbs/getlogs.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;getlogs.dm 81"/></a></aside>
+        </h3>
+        <p>Shows this round's server log</p><h3 id="proc/view_href_log"><aside class="declaration">proc </aside>view_href_log<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/verbs/getlogs.dm#L144">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;getlogs.dm 144"/></a></aside>
+        </h3>
+        <p>Shows this round's href log</p><h3 id="proc/view_runtime_log"><aside class="declaration">proc </aside>view_runtime_log<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/verbs/getlogs.dm#L123">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;getlogs.dm 123"/></a></aside>
+        </h3>
+        <p>Shows this round's runtime log</p><h3 id="proc/view_tgui_log"><aside class="declaration">proc </aside>view_tgui_log<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/modules/admin/verbs/getlogs.dm#L165">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;getlogs.dm 165"/></a></aside>
+        </h3>
+        <p>Shows this round's tgui log</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8">4811d6e</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

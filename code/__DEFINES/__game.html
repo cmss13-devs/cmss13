@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;__game.dm - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/__game.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/__game.dm 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/__game.html#define/NO_FLAGS">NO_FLAGS</a></th><td>To make it even more clear that something is a bitfield.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PLAYERCOUNT_LOWPOP_MAP_LIMIT">PLAYERCOUNT_LOWPOP_MAP_LIMIT</a></th><td>Number of players before we switch to lowpop maps only (LV, BR, Prison).</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PREROUND_TIME">PREROUND_TIME</a></th><td>Time before the round starts.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CANDLE_LUM">CANDLE_LUM</a></th><td>For how bright candles are.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/SPLIT_ADMIN_TABS">SPLIT_ADMIN_TABS</a></th><td>Splits admin tabs in Statpanel</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/DOCK_ATTEMPT_TIMEOUT">DOCK_ATTEMPT_TIMEOUT</a></th><td>how long in ticks we wait before assuming the docking controller is broken or blown up.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/ROUNDSTART_LOGOUT_REPORT_TIME">ROUNDSTART_LOGOUT_REPORT_TIME</a></th><td>Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/TRANSITIONEDGE">TRANSITIONEDGE</a></th><td>Distance from edge to move to another z-level.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/GET_RANDOM_FREQ">GET_RANDOM_FREQ</a></th><td>Frequency stuff only works with 45kbps oggs.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_NO_PROTECTION">CEILING_NO_PROTECTION</a></th><td>Do not block any ordnance</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_PROTECTION_TIER_1">CEILING_PROTECTION_TIER_1</a></th><td>Blocks mortar placement, lasing, and medevac</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_PROTECTION_TIER_2">CEILING_PROTECTION_TIER_2</a></th><td>Blocks CAS signals, supply drops, fultoning, and mortar fire</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_PROTECTION_TIER_3">CEILING_PROTECTION_TIER_3</a></th><td>Blocks CAS fire</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_PROTECTION_TIER_4">CEILING_PROTECTION_TIER_4</a></th><td>Blocks OB fire</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CEILING_IS_PROTECTED">CEILING_IS_PROTECTED</a></th><td>Only use the CEILING_PROTECTION_TIER_X defines for <code>protection_level</code></td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/BARRICADE_BSTATE_UNSECURED">BARRICADE_BSTATE_UNSECURED</a></th><td>Intermediate state before cade is movable (no apparent effect on health).</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/BARRICADE_BSTATE_MOVABLE">BARRICADE_BSTATE_MOVABLE</a></th><td>Ready to be deconstructed and can be moved.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/EXTINGUISHER_WATER_USE_AMT">EXTINGUISHER_WATER_USE_AMT</a></th><td>Amount of water consumed by extinguisher per use.//why is this a define let alone a GLOBAL define oh my good lord</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CHAT_CPM_ALLOWED">CHAT_CPM_ALLOWED</a></th><td>Max characters per minute allowed to speak</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CHAT_CPM_MINIMUM">CHAT_CPM_MINIMUM</a></th><td>Minimum character length counted for a single message</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CHAT_CPM_PERIOD">CHAT_CPM_PERIOD</a></th><td>Buffer period over which speaking budget is considered</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CHAT_TYPE_ALL">CHAT_TYPE_ALL</a></th><td>This is so if we have newer flags, we still have ALL working. This will work for 16 first flags.</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/CHAT_TYPE_ALL_COMBAT">CHAT_TYPE_ALL_COMBAT</a></th><td>Used for pre-setting tgchat message type as combat messages</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/TOGGLE_WINDOW_SKIN">TOGGLE_WINDOW_SKIN</a></th><td>Window skin types</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/QUADTREE_CAPACITY">QUADTREE_CAPACITY</a></th><td>Max amount of player coordinates in a quadtree cell</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/QUADTREE_BOUNDARY_MINIMUM_WIDTH">QUADTREE_BOUNDARY_MINIMUM_WIDTH</a></th><td>Minimum X width up to which we keep dividing the tree (meaning cells can be half that)</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/QUADTREE_BOUNDARY_MINIMUM_HEIGHT">QUADTREE_BOUNDARY_MINIMUM_HEIGHT</a></th><td>Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/QTREE_SCAN_MOBS">QTREE_SCAN_MOBS</a></th><td>Return mob list instead of client list.</td></tr>
+        <tr><th>/proc/<a href="global.html#proc/get_ceiling_protection_level">get_ceiling_protection_level</a></th>
+                <td>Convert a turf protection level to a ceiling protection level</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/BEAM_INFINITE_DURATION">BEAM_INFINITE_DURATION</a></th><td>For beams with an infinite duration (deletion is handled separately)</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/AMOUNT_PER_TIME">AMOUNT_PER_TIME</a></th><td>Used for calculations with delta_time when figuring how much &quot;amount&quot; to give per &quot;time&quot;
+<code>amount</code> - The number to get per time
+<code>time</code> - The time period in which to gain this amount
+To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_LAZYSS">PERF_TOGGLE_LAZYSS</a></th><td>Set conservative MC timings on game start</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_NOBLOODPRINTS">PERF_TOGGLE_NOBLOODPRINTS</a></th><td>Disable bloody footprints</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_ATTACKLOGS">PERF_TOGGLE_ATTACKLOGS</a></th><td>Disable file-based attacklogs</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_SHUTTLES">PERF_TOGGLE_SHUTTLES</a></th><td>Disables loading/ticking shuttle controllers</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/PERF_TOGGLE_TECHWEBS">PERF_TOGGLE_TECHWEBS</a></th><td>Disables loading Techwebs and additional Z-Levels</td></tr>
+        <tr><th><a href="code/__DEFINES/__game.html#define/MAP_STYLESHEET">MAP_STYLESHEET</a></th><td>Maptext styles</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/AMOUNT_PER_TIME"><aside class="declaration">#define </aside>AMOUNT_PER_TIME
+            <aside>(amount, time)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L555">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 555"/></a>
+    </h3>
+    <p>Used for calculations with delta_time when figuring how much &quot;amount&quot; to give per &quot;time&quot;
+<code>amount</code> - The number to get per time
+<code>time</code> - The time period in which to gain this amount
+To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds</p><h3 id="define/BARRICADE_BSTATE_MOVABLE"><aside class="declaration">#define </aside>BARRICADE_BSTATE_MOVABLE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L333">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 333"/></a>
+    </h3>
+    <p>Ready to be deconstructed and can be moved.</p><h3 id="define/BARRICADE_BSTATE_UNSECURED"><aside class="declaration">#define </aside>BARRICADE_BSTATE_UNSECURED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L331">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 331"/></a>
+    </h3>
+    <p>Intermediate state before cade is movable (no apparent effect on health).</p><h3 id="define/BEAM_INFINITE_DURATION"><aside class="declaration">#define </aside>BEAM_INFINITE_DURATION
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L549">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 549"/></a>
+    </h3>
+    <p>For beams with an infinite duration (deletion is handled separately)</p><h3 id="define/CANDLE_LUM"><aside class="declaration">#define </aside>CANDLE_LUM
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L94">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 94"/></a>
+    </h3>
+    <p>For how bright candles are.</p><h3 id="define/CEILING_IS_PROTECTED"><aside class="declaration">#define </aside>CEILING_IS_PROTECTED
+            <aside>(ceiling, protection_level)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L299">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 299"/></a>
+    </h3>
+    <p>Only use the CEILING_PROTECTION_TIER_X defines for <code>protection_level</code></p><h3 id="define/CEILING_NO_PROTECTION"><aside class="declaration">#define </aside>CEILING_NO_PROTECTION
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L269">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 269"/></a>
+    </h3>
+    <p>Do not block any ordnance</p><h3 id="define/CEILING_PROTECTION_TIER_1"><aside class="declaration">#define </aside>CEILING_PROTECTION_TIER_1
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L274">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 274"/></a>
+    </h3>
+    <p>Blocks mortar placement, lasing, and medevac</p><h3 id="define/CEILING_PROTECTION_TIER_2"><aside class="declaration">#define </aside>CEILING_PROTECTION_TIER_2
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L279">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 279"/></a>
+    </h3>
+    <p>Blocks CAS signals, supply drops, fultoning, and mortar fire</p><h3 id="define/CEILING_PROTECTION_TIER_3"><aside class="declaration">#define </aside>CEILING_PROTECTION_TIER_3
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L284">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 284"/></a>
+    </h3>
+    <p>Blocks CAS fire</p><h3 id="define/CEILING_PROTECTION_TIER_4"><aside class="declaration">#define </aside>CEILING_PROTECTION_TIER_4
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L290">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 290"/></a>
+    </h3>
+    <p>Blocks OB fire</p><h3 id="define/CHAT_CPM_ALLOWED"><aside class="declaration">#define </aside>CHAT_CPM_ALLOWED
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L445">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 445"/></a>
+    </h3>
+    <p>Max characters per minute allowed to speak</p><h3 id="define/CHAT_CPM_MINIMUM"><aside class="declaration">#define </aside>CHAT_CPM_MINIMUM
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L447">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 447"/></a>
+    </h3>
+    <p>Minimum character length counted for a single message</p><h3 id="define/CHAT_CPM_PERIOD"><aside class="declaration">#define </aside>CHAT_CPM_PERIOD
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L449">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 449"/></a>
+    </h3>
+    <p>Buffer period over which speaking budget is considered</p><h3 id="define/CHAT_TYPE_ALL"><aside class="declaration">#define </aside>CHAT_TYPE_ALL
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L472">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 472"/></a>
+    </h3>
+    <p>This is so if we have newer flags, we still have ALL working. This will work for 16 first flags.</p><h3 id="define/CHAT_TYPE_ALL_COMBAT"><aside class="declaration">#define </aside>CHAT_TYPE_ALL_COMBAT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L477">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 477"/></a>
+    </h3>
+    <p>Used for pre-setting tgchat message type as combat messages</p><h3 id="define/DOCK_ATTEMPT_TIMEOUT"><aside class="declaration">#define </aside>DOCK_ATTEMPT_TIMEOUT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L198">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 198"/></a>
+    </h3>
+    <p>how long in ticks we wait before assuming the docking controller is broken or blown up.</p><h3 id="define/EXTINGUISHER_WATER_USE_AMT"><aside class="declaration">#define </aside>EXTINGUISHER_WATER_USE_AMT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L436">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 436"/></a>
+    </h3>
+    <p>Amount of water consumed by extinguisher per use.//why is this a define let alone a GLOBAL define oh my good lord</p><h3 id="define/GET_RANDOM_FREQ"><aside class="declaration">#define </aside>GET_RANDOM_FREQ
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L260">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 260"/></a>
+    </h3>
+    <p>Frequency stuff only works with 45kbps oggs.</p><h3 id="define/MAP_STYLESHEET"><aside class="declaration">#define </aside>MAP_STYLESHEET
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L576">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 576"/></a>
+    </h3>
+    <p>Maptext styles</p><h3 id="define/NO_FLAGS"><aside class="declaration">#define </aside>NO_FLAGS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 4"/></a>
+    </h3>
+    <p>To make it even more clear that something is a bitfield.</p><h3 id="define/PERF_TOGGLE_ATTACKLOGS"><aside class="declaration">#define </aside>PERF_TOGGLE_ATTACKLOGS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L569">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 569"/></a>
+    </h3>
+    <p>Disable file-based attacklogs</p><h3 id="define/PERF_TOGGLE_LAZYSS"><aside class="declaration">#define </aside>PERF_TOGGLE_LAZYSS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L565">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 565"/></a>
+    </h3>
+    <p>Set conservative MC timings on game start</p><h3 id="define/PERF_TOGGLE_NOBLOODPRINTS"><aside class="declaration">#define </aside>PERF_TOGGLE_NOBLOODPRINTS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L567">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 567"/></a>
+    </h3>
+    <p>Disable bloody footprints</p><h3 id="define/PERF_TOGGLE_SHUTTLES"><aside class="declaration">#define </aside>PERF_TOGGLE_SHUTTLES
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L571">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 571"/></a>
+    </h3>
+    <p>Disables loading/ticking shuttle controllers</p><h3 id="define/PERF_TOGGLE_TECHWEBS"><aside class="declaration">#define </aside>PERF_TOGGLE_TECHWEBS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L573">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 573"/></a>
+    </h3>
+    <p>Disables loading Techwebs and additional Z-Levels</p><h3 id="define/PLAYERCOUNT_LOWPOP_MAP_LIMIT"><aside class="declaration">#define </aside>PLAYERCOUNT_LOWPOP_MAP_LIMIT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 43"/></a>
+    </h3>
+    <p>Number of players before we switch to lowpop maps only (LV, BR, Prison).</p><h3 id="define/PREROUND_TIME"><aside class="declaration">#define </aside>PREROUND_TIME
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 45"/></a>
+    </h3>
+    <p>Time before the round starts.</p><h3 id="define/QTREE_SCAN_MOBS"><aside class="declaration">#define </aside>QTREE_SCAN_MOBS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L495">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 495"/></a>
+    </h3>
+    <p>Return mob list instead of client list.</p><h3 id="define/QUADTREE_BOUNDARY_MINIMUM_HEIGHT"><aside class="declaration">#define </aside>QUADTREE_BOUNDARY_MINIMUM_HEIGHT
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L489">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 489"/></a>
+    </h3>
+    <p>Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)</p><h3 id="define/QUADTREE_BOUNDARY_MINIMUM_WIDTH"><aside class="declaration">#define </aside>QUADTREE_BOUNDARY_MINIMUM_WIDTH
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L487">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 487"/></a>
+    </h3>
+    <p>Minimum X width up to which we keep dividing the tree (meaning cells can be half that)</p><h3 id="define/QUADTREE_CAPACITY"><aside class="declaration">#define </aside>QUADTREE_CAPACITY
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L485">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 485"/></a>
+    </h3>
+    <p>Max amount of player coordinates in a quadtree cell</p><h3 id="define/ROUNDSTART_LOGOUT_REPORT_TIME"><aside class="declaration">#define </aside>ROUNDSTART_LOGOUT_REPORT_TIME
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L249">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 249"/></a>
+    </h3>
+    <p>Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.</p><h3 id="define/SPLIT_ADMIN_TABS"><aside class="declaration">#define </aside>SPLIT_ADMIN_TABS
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L161">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 161"/></a>
+    </h3>
+    <p>Splits admin tabs in Statpanel</p><h3 id="define/TOGGLE_WINDOW_SKIN"><aside class="declaration">#define </aside>TOGGLE_WINDOW_SKIN
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L480">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 480"/></a>
+    </h3>
+    <p>Window skin types</p><h3 id="define/TRANSITIONEDGE"><aside class="declaration">#define </aside>TRANSITIONEDGE
+            <a href="https://github.com/cmss13-devs/cmss13/blob/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8/code/__DEFINES/__game.dm#L255">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;__game.dm 255"/></a>
+    </h3>
+    <p>Distance from edge to move to another z-level.</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/4811d6e21fa4aae35b568d67d0190be7c4e6d6e8">4811d6e</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

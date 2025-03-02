@@ -174,20 +174,17 @@
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
 "aB" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = -32
-	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "aC" = (
 /turf/open/floor/almayer/cargo,
 /area/whiskey_outpost/inside/cic)
 "aD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid{
-	dir = 1;
-	name = "\improper Synth Prep"
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = -32
 	},
-/turf/open/space/basic,
+/turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "aE" = (
 /obj/structure/bed,
@@ -235,6 +232,13 @@
 "aK" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/whiskey_outpost/outside/lane/two_south)
+"aL" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid{
+	dir = 1;
+	name = "\improper Synth Prep"
+	},
+/turf/open/space/basic,
+/area/whiskey_outpost/inside/cic)
 "aM" = (
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 10
@@ -273,9 +277,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/cic)
 "aR" = (
-/obj/structure/closet/secure_closet/surgical{
-	pixel_y = 30
-	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/start/whiskey/synthetic,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "aS" = (
@@ -283,9 +286,24 @@
 /turf/open/floor/whitegreenfull,
 /area/whiskey_outpost/inside/hospital)
 "aT" = (
-/turf/open/space/basic,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_y = 30
+	},
+/turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "aU" = (
+/turf/open/space/basic,
+/area/whiskey_outpost/inside/cic)
+"aV" = (
+/turf/open/floor/whitegreen/southwest,
+/area/whiskey_outpost/inside/hospital)
+"aW" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/whiskey_outpost/inside/living)
+"aX" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -298,30 +316,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/whiskey_outpost/inside/cic)
-"aV" = (
-/turf/open/floor/whitegreen/southwest,
-/area/whiskey_outpost/inside/hospital)
-"aW" = (
-/obj/structure/machinery/shower{
-	dir = 4
-	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/whiskey_outpost/inside/living)
-"aX" = (
+"aY" = (
 /obj/structure/machinery/cm_vending/gear/synth,
 /turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
-"aY" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	name = "Emergency NanoMed";
-	pixel_x = -30;
-	req_access = null
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/flora/pottedplant/random,
-/turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/cic)
 "aZ" = (
 /obj/structure/cargo_container/watatsumi/rightmid,
@@ -367,9 +364,16 @@
 /turf/open/floor/whitegreen/north,
 /area/whiskey_outpost/inside/hospital)
 "bg" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm,
-/turf/open/floor/prison,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	name = "Emergency NanoMed";
+	pixel_x = -30;
+	req_access = null
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/cic)
 "bh" = (
 /obj/structure/sign/poster,
@@ -415,6 +419,11 @@
 /turf/open/floor/almayer/emeraldfull,
 /area/whiskey_outpost/inside/living)
 "bq" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/uscm,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/cic)
+"br" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -422,13 +431,6 @@
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /turf/open/floor/prison/floor_plate,
-/area/whiskey_outpost/inside/cic)
-"br" = (
-/obj/structure/closet/secure_closet/cmdcabinet{
-	pixel_y = 24
-	},
-/obj/item/device/cotablet,
-/turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "bs" = (
 /turf/open/floor/carpet,
@@ -446,11 +448,11 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "bv" = (
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/structure/closet/secure_closet/cmdcabinet{
+	pixel_y = 24
 	},
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/prison/floor_plate,
+/obj/item/device/cotablet,
+/turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "bw" = (
 /obj/structure/machinery/cryopod,
@@ -461,7 +463,11 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "by" = (
-/turf/open/floor/prison/kitchen,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/cic)
 "bz" = (
 /obj/structure/machinery/disposal,
@@ -493,12 +499,6 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/whiskey_outpost/outside/lane/three_south)
 "bE" = (
-/obj/structure/mirror{
-	pixel_y = 30
-	},
-/obj/structure/toilet{
-	dir = 8
-	},
 /turf/open/floor/prison/kitchen,
 /area/whiskey_outpost/inside/cic)
 "bF" = (
@@ -509,8 +509,13 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/whiskey_outpost/inside/living)
 "bH" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison,
+/obj/structure/mirror{
+	pixel_y = 30
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/open/floor/prison/kitchen,
 /area/whiskey_outpost/inside/cic)
 "bK" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
@@ -8879,11 +8884,6 @@
 "PL" = (
 /turf/open/gm/grass/grassbeach/north,
 /area/whiskey_outpost/outside/lane/one_north)
-"PM" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/landmark/start/whiskey/synthetic,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
 "PO" = (
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_north)
@@ -15720,7 +15720,7 @@ mT
 mT
 ak
 ak
-aU
+aX
 aC
 aC
 ai
@@ -15921,9 +15921,9 @@ mT
 mT
 mT
 ak
-aX
+aY
 aC
-PM
+aR
 fx
 aC
 af
@@ -16123,7 +16123,7 @@ mT
 mT
 mT
 ak
-aX
+aY
 aC
 fx
 aw
@@ -16328,7 +16328,7 @@ ak
 ak
 al
 fx
-bH
+aB
 al
 ak
 ak
@@ -16529,8 +16529,8 @@ mT
 mT
 ak
 ak
-aR
-aB
+aT
+aD
 ak
 ak
 mT
@@ -16731,8 +16731,8 @@ mT
 mT
 mT
 ak
-aT
-aD
+aU
+aL
 ak
 mT
 mT
@@ -17323,8 +17323,8 @@ mT
 mT
 mT
 ak
+bH
 bE
-by
 ak
 ak
 ak
@@ -17528,8 +17528,8 @@ ak
 ak
 cG
 ak
+br
 bq
-bg
 gp
 gT
 kK
@@ -17739,7 +17739,7 @@ lm
 lm
 lm
 lm
-aY
+bg
 ak
 mh
 mh
@@ -18134,7 +18134,7 @@ bs
 bs
 cI
 ak
-br
+bv
 fA
 gA
 fx
@@ -19144,7 +19144,7 @@ cz
 bV
 cz
 ak
-bv
+by
 ft
 gp
 gW

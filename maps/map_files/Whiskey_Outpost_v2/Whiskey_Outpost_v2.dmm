@@ -50,11 +50,19 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "ai" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /obj/structure/machinery/light{
 	dir = 2
 	},
-/turf/open/floor/prison,
+/obj/structure/platform/metal/almayer{
+	dir = 1
+	},
+/obj/structure/platform/metal/almayer{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/almayer/northwest{
+	layer = 3.01
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/whiskey_outpost/inside/cic)
 "aj" = (
 /turf/closed/wall/r_wall,
@@ -169,7 +177,7 @@
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = -32
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "aC" = (
 /turf/open/floor/almayer/cargo,
@@ -227,11 +235,6 @@
 "aK" = (
 /turf/open/gm/dirtgrassborder/west,
 /area/whiskey_outpost/outside/lane/two_south)
-"aL" = (
-/obj/effect/landmark/start/whiskey/synthetic,
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
 "aM" = (
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 10
@@ -283,11 +286,17 @@
 /turf/open/space/basic,
 /area/whiskey_outpost/inside/cic)
 "aU" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/prison,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/almayer/southeast{
+	layer = 3.01
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/whiskey_outpost/inside/cic)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
@@ -499,6 +508,10 @@
 "bG" = (
 /turf/open/floor/prison/kitchen/southwest,
 /area/whiskey_outpost/inside/living)
+"bH" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/cic)
 "bK" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/jungle,
@@ -8867,7 +8880,9 @@
 /turf/open/gm/grass/grassbeach/north,
 /area/whiskey_outpost/outside/lane/one_north)
 "PM" = (
-/turf/open/floor/plating/plating_catwalk,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/start/whiskey/synthetic,
+/turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "PO" = (
 /turf/open/gm/river,
@@ -15909,7 +15924,7 @@ ak
 aX
 aC
 PM
-aw
+fx
 aC
 af
 ak
@@ -16110,8 +16125,8 @@ mT
 ak
 aX
 aC
-aL
-PM
+fx
+aw
 aC
 af
 ak
@@ -16312,8 +16327,8 @@ mT
 ak
 ak
 al
-PM
 fx
+bH
 al
 ak
 ak

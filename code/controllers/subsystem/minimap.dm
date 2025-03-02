@@ -727,10 +727,10 @@ SUBSYSTEM_DEF(minimaps)
 	/// A temporary lock out time before we can open the new canvas tab to allow the tacmap time to fire
 	var/tacmap_ready_time = 0
 
-	var/isAlmayer = FALSE
+	var/is_mainship = FALSE
 
 	///What name we will use for the change to [name] button
-	var/change_to_almayer_name = MAIN_SHIP_DEFAULT_NAME
+	var/change_to_name = MAIN_SHIP_DEFAULT_NAME
 
 /datum/tacmap/New(atom/source, minimap_type)
 	allowed_flags = minimap_type
@@ -847,8 +847,8 @@ SUBSYSTEM_DEF(minimaps)
 	data["lastUpdateTime"] = last_update_time
 	data["tacmapReady"] = world.time > tacmap_ready_time
 	data["mapRef"] = map_holder?.map_ref
-	data["isAlmayer"] = isAlmayer
-	data["changeToMapName"] = isAlmayer ? SSmapping.configs?[GROUND_MAP]?.map_name : change_to_almayer_name
+	data["isMainship"] = is_mainship
+	data["changeToMapName"] = is_mainship ? SSmapping.configs?[GROUND_MAP]?.map_name : change_to_name
 
 	return data
 
@@ -975,11 +975,11 @@ SUBSYSTEM_DEF(minimaps)
 		if("onDraw")
 			updated_canvas = FALSE
 
-		if("ChangeMapViewToAlmayer")
-			isAlmayer = !isAlmayer
+		if("ChangeMapView")
+			is_mainship = !is_mainship
 			map_holder = null
 
-			if(isAlmayer)
+			if(is_mainship)
 				current_ztrait = targeted_ztrait_for_mainship
 			else
 				current_ztrait = targeted_ztrait

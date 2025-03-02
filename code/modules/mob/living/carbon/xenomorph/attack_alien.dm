@@ -598,7 +598,7 @@
 		delay = 1 SECONDS
 		playsound(loc, "alien_doorpry", 25, TRUE)
 	else
-		if(M.mob_size == MOB_SIZE_XENO_SMALL && MOB_SIZE_XENO_SMALL && MOB_SIZE_XENO_VERY_SMALL)
+		if(M.mob_size == MOB_SIZE_XENO_SMALL  && MOB_SIZE_XENO_VERY_SMALL)
 			delay = 4 SECONDS
 		if(M.mob_size == MOB_SIZE_BIG)
 			delay = 1 SECONDS

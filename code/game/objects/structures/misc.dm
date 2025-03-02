@@ -303,7 +303,6 @@
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
 	if(!istype(enterer, /mob))
@@ -347,6 +346,19 @@
 
 /obj/structure/stairs/multiz/down
 	direction = DOWN
+
+/obj/effect/stairs
+	var/direction
+
+/obj/effect/stairs/Initialize(mapload, ...)
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
+
+/obj/effect/stairs/up
+	direction = "up"
+
+/obj/effect/stairs/down
+	direction = "down"
 
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'

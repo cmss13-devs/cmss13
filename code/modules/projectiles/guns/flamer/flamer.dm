@@ -88,9 +88,11 @@
 	icon_state = new_icon_state
 
 	if(current_mag && current_mag.reagents)
-		var/image/I = image(icon, icon_state="[base_gun_icon]_strip")
-		I.color = mix_color_from_reagents(current_mag.reagents.reagent_list)
-		overlays += I
+		var/obj/item/ammo_magazine/flamer_tank/flamtank = current_mag
+		if(flamtank.stripe_icon)
+			var/image/I = image(icon, icon_state="[base_gun_icon]_strip")
+			I.color = mix_color_from_reagents(current_mag.reagents.reagent_list)
+			overlays += I
 
 	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
 		var/obj/item/attachable/attached_gun/flamer_nozzle/nozzle = locate() in contents
@@ -887,3 +889,34 @@
 			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
 				continue
 		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+
+/obj/item/weapon/gun/flamer/survivor
+	name = "\improper improvised flamethrower"
+	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/flamers.dmi'
+	icon_state = "flamer"
+	item_state = "flamer"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/flamer_mouse.dmi'
+
+	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
+	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
+	fire_sound = ""
+
+	current_mag = /obj/item/ammo_magazine/flamer_tank/survivor
+
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+	)
+
+/obj/item/weapon/gun/flamer/survivor/get_fire_sound()
+	var/list/fire_sounds = list(
+							'sound/weapons/gun_flamethrower1.ogg',
+							'sound/weapons/gun_flamethrower2.ogg',
+							'sound/weapons/gun_flamethrower3.ogg')
+	return pick(fire_sounds)

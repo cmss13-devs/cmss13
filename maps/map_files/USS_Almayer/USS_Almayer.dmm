@@ -2827,6 +2827,10 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_medbay)
+"agz" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/medical/lower_medical_medbay)
 "agA" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -2834,6 +2838,10 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/basketball)
+"agB" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/sterile_green,
+/area/almayer/medical/lower_medical_medbay)
 "agD" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomright";
@@ -3163,6 +3171,7 @@
 	req_one_access = null;
 	req_one_access_txt = "19;20"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "ahh" = (
@@ -103022,8 +103031,8 @@ ahX
 rlZ
 akZ
 ahg
-akV
-adT
+agB
+agz
 thP
 eBZ
 tAU

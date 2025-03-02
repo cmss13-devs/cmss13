@@ -31,6 +31,7 @@ interface TacMapProps {
   exportedColor: string;
   mapFallback: string;
   mapRef: string;
+  changeToMapName: string;
   currentMenu: string;
   lastUpdateTime: number;
   canvasCooldownDuration: number;
@@ -156,7 +157,7 @@ export const TacticalMap = (props) => {
       <Window.Content>
         <Section
           fitted
-          width="688px"
+          width="100%"
           fontSize="20px"
           textAlign="center"
           title="Tactical Map Options"
@@ -185,6 +186,18 @@ export const TacticalMap = (props) => {
                   );
                 })}
                 {getZTabs()}
+                {data.canDraw && !data.isxeno ? (
+                  <Tabs.Tab
+                    onClick={() => {
+                      act('ChangeMapViewToAlmayer', {});
+                      setPageIndex(0);
+                    }}
+                  >
+                    Change to {data.changeToMapName}
+                  </Tabs.Tab>
+                ) : (
+                  ''
+                )}
               </Tabs>
             </Stack.Item>
           </Stack>
@@ -222,12 +235,15 @@ const ViewMapPanel = (props) => {
 const OldMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
   return (
-    <Section fill fitted height="86%" align="center" fontSize="30px">
+    <Section fill fitted height="86%" textAlign="center" fontSize="30px">
       {data.canViewCanvas ? (
         <DrawnMap
+          width="100%"
+          height="100%"
           svgData={data.svgData}
           flatImage={data.oldCanvasFlatImage}
           backupImage={data.mapFallback}
+          className="TacticalMap"
         />
       ) : (
         <Box my="40%">
@@ -266,7 +282,7 @@ const DrawMapPanel = (props) => {
       <Section
         title="Canvas Options"
         className={'canvas-options'}
-        width="688px"
+        width="100%"
         position="absolute"
         style={{ zIndex: '1' }}
       >
@@ -365,13 +381,7 @@ const DrawMapPanel = (props) => {
           </Stack.Item>
         </Stack>
       </Section>
-      <Section
-        width="688px"
-        height="694px"
-        align="center"
-        textAlign="center"
-        fitted
-      >
+      <Section fill fitted height="86%" textAlign="center" fontSize="30px">
         <CanvasLayer
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}

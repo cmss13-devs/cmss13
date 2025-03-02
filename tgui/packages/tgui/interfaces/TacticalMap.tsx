@@ -189,7 +189,7 @@ export const TacticalMap = (props) => {
                 {data.canDraw && !data.isxeno ? (
                   <Tabs.Tab
                     onClick={() => {
-                      act('ChangeMapViewToAlmayer', {});
+                      act('ChangeMapView', {});
                       setPageIndex(0);
                     }}
                   >

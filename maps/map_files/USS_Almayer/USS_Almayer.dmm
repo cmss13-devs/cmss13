@@ -189,22 +189,6 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
-"aaB" = (
-/obj/structure/prop/invuln/lattice_prop{
-	alpha = 150;
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/synthcloset)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -69663,6 +69647,22 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
+"wvU" = (
+/obj/structure/prop/invuln/lattice_prop{
+	alpha = 150;
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/synthcloset)
 "wvX" = (
 /obj/structure/sign/safety/analysis_lab{
 	pixel_y = 26
@@ -92456,7 +92456,7 @@ sWw
 kcH
 rIW
 oGx
-aaB
+wvU
 yiX
 nrb
 hyQ

@@ -189,10 +189,24 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -361,6 +375,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
+"aaT" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "aaU" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -2819,19 +2841,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/lower_medical_medbay)
-"agE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 4
-	},
-/obj/structure/sign/safety/bulkhead_door{
-	pixel_x = 36
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "agF" = (
 /turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/chemistry)
@@ -5498,6 +5507,10 @@
 "anI" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "anJ" = (
@@ -5983,6 +5996,10 @@
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -15340,9 +15357,6 @@
 /turf/open/space/basic,
 /area/space)
 "bdI" = (
-/obj/structure/machinery/light/almayer{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -16056,16 +16070,6 @@
 "bkb" = (
 /turf/open/floor/almayer/red/east,
 /area/almayer/hallways/upper/aft_hallway)
-"bkd" = (
-/obj/structure/machinery/floodlight/landing/floor/almayer{
-	layer = 2.97
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "bkg" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/spec,
 /turf/open/floor/almayer/test_floor4,
@@ -18646,6 +18650,10 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bGN" = (
@@ -18790,6 +18798,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -33095,14 +33107,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
-"hbA" = (
-/obj/structure/machinery/floodlight/landing/dropship_airlock/almayer_two,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "hbE" = (
 /obj/structure/largecrate/random,
 /obj/item/reagent_container/food/snacks/cheesecakeslice{
@@ -42179,6 +42183,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
@@ -71931,13 +71938,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
-"xpT" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "xqh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/weldingtool{
@@ -89903,7 +89903,7 @@ aYt
 aYt
 wqh
 anH
-xyw
+aaD
 btO
 bcc
 aYt
@@ -90106,7 +90106,7 @@ aYu
 aYu
 bwm
 anH
-xyw
+bcm
 btO
 bSR
 aYu
@@ -90299,8 +90299,8 @@ mpV
 bdL
 bvf
 bGM
-bvf
-bvf
+aaB
+aaB
 aoU
 anI
 anI
@@ -90309,19 +90309,19 @@ anI
 anI
 anI
 bIe
-baN
-bvf
-bvf
-bvf
-bvf
-bvf
-bvf
-bvf
+aaT
+aaB
+aaB
+aaB
+aaB
+aaB
+aaB
+aaB
 bGM
-bvf
-bvf
-bvf
-bvf
+aaB
+aaB
+aaB
+aaB
 bdL
 bvf
 srh
@@ -90501,30 +90501,30 @@ lxd
 uaG
 vCg
 xyw
-xpT
-xpT
-xpT
-xpT
-xpT
-bkd
-xpT
-xpT
-xpT
-xpT
-xpT
-hbA
-xpT
-xpT
-xpT
-xpT
-xpT
-bkd
-xpT
-xpT
-xpT
-xpT
-xpT
-xpT
+xyw
+xyw
+xyw
+xyw
+xyw
+baX
+xyw
+xyw
+xyw
+xyw
+xyw
+aZO
+xyw
+xyw
+xyw
+xyw
+xyw
+baX
+xyw
+xyw
+xyw
+xyw
+xyw
+xyw
 bHB
 grT
 rgt
@@ -94375,7 +94375,7 @@ xyw
 xyw
 xyw
 xyw
-xyw
+baX
 xyw
 xyw
 xyw
@@ -98628,7 +98628,7 @@ bPr
 alq
 bPr
 ado
-agE
+bdI
 agt
 afV
 afA

@@ -326,11 +326,13 @@
 			do_toggle_firemode(GUN_FIREMODE_BURSTFIRE)
 			remove_firemode(GUN_FIREMODE_SEMIAUTO)
 			currently_fanning = TRUE
+			flags_gun_features -= GUN_CAN_POINTBLANK
 		else
 			add_firemode(GUN_FIREMODE_SEMIAUTO)
 			do_toggle_firemode(GUN_FIREMODE_SEMIAUTO)
 			remove_firemode(GUN_FIREMODE_BURSTFIRE)
 			currently_fanning = FALSE
+			flags_gun_features += GUN_CAN_POINTBLANK
 
 //-------------------------------------------------------
 //M44 Revolver

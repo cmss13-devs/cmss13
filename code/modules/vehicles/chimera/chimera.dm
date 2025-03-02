@@ -1,5 +1,6 @@
-#define STATE_GROUNDED "grounded"
-#define STATE_AIRBORNE "airborne"
+#define STATE_STOWED "grounded"
+#define STATE_VTOL "vtol"
+#define STATE_FLIGHT "flight"
 
 /obj/vehicle/multitile/chimera
 	name = "AD-19D chimera"
@@ -24,8 +25,8 @@
 	move_momentum_build_factor = 1.5
 	move_turn_momentum_loss_factor = 0.8
 
-	vehicle_light_power = 0
-	vehicle_light_range = 0
+	vehicle_light_power = 4
+	vehicle_light_range = 5
 
 	vehicle_flags = VEHICLE_CLASS_LIGHT
 
@@ -49,51 +50,84 @@
 		VEHICLE_DRIVER = null,
 	)
 
+	var/image/thrust_overlay
 
-	var/state = STATE_GROUNDED
+	var/last_turn = 0
+	var/turn_delay = 1 SECONDS
 
-	//----------------------------
-	// Light Related Vars
-	var/side_lights_x_offset = 32
-	var/side_lights_y_offset = 0
+	var/state = STATE_STOWED
 
-	var/rear_lights_x_offset = 20
-	var/rear_lights_y_offset = 60
+	var/obj/chimera_shadow/shadow_holder
 
-	var/front_lights_x_offset = -18
-	var/front_lights_y_offset = -46
 
-	var/lights_range = 3
-	var/lights_power = 3
+/obj/chimera_shadow
+	icon = 'icons/obj/vehicles/chimera.dmi'
+	flags_atom = NOINTERACT
+	var/datum/weakref/parent
 
-	var/side_light_color_1 = LIGHT_COLOR_RED
-	var/side_light_color_2 = LIGHT_COLOR_GREEN
-	var/rear_light_color = LIGHT_COLOR_LIGHT_CYAN
-	var/front_light_color = COLOR_WHITE
+/obj/chimera_shadow/Initialize(mapload, parent)
+	. = ..()
+	name = null
+	src.parent = WEAKREF(parent)
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(handle_parent_move))
+	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_parent_dir_change))
+
+/obj/chimera_shadow/proc/handle_parent_move()
+	var/obj/vehicle/multitile/chimera/bound_chimera = parent?.resolve()
+
+	if(!bound_chimera)
+		return
+
+	Move()
 
 /obj/vehicle/multitile/chimera/Initialize(mapload, ...)
 	. = ..()
 	add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
-	create_lights()
+	shadow_holder = new(src, src)
 
-/atom/movable/chimera_light
-	light_system = DIRECTIONAL_LIGHT
+/obj/vehicle/multitile/chimera/update_icon()
+	. = ..()
 
-/obj/vehicle/multitile/chimera/proc/create_lights()
-	var/atom/movable/chimera_light/light_holder = new(src)
-	light_holder.light_pixel_x = side_lights_x_offset
-	light_holder.light_pixel_y = side_lights_y_offset
-	light_holder.set_light_color(side_light_color_1)
-	light_holder.set_light_flags(LIGHT_ATTACHED)
-	light_holder.set_light_range(light_range)
-	light_holder.set_light_power(lights_power)
-	light_holder.set_light_on(TRUE)
+	switch (state)
+		if(STATE_VTOL)
+			icon_state = "vtol"
+			overlays += image(icon, "vtol_thrust")
+			overlays += image(icon, "fan-overlay")
+			overlays += image(icon, "flight_lights")
+		if(STATE_FLIGHT)
+			icon_state = "flight"
+			overlays += image(icon, "fan-overlay")
+			overlays += image(icon, "flight_lights")
+		if(STATE_STOWED)
+			icon_state = "stowed"
+
 
 /obj/vehicle/multitile/chimera/relaymove(mob/user, direction)
-	if(state == STATE_GROUNDED)
+	if(last_turn + turn_delay > world.time)
 		return FALSE
 
-	return ..()
+	if(state == STATE_STOWED)
+		return
+
+	if (dir == turn(direction, 180) || dir == direction)
+		return FALSE
+
+	try_rotate(turning_angle(dir, direction))
+
+/obj/vehicle/multitile/chimera/try_rotate(deg)
+	. = ..()
+
+	if(.)
+		last_turn = world.time
+
+/obj/vehicle/multitile/chimera/process(deltatime)
+	shadow_holder.icon_state = "[state]_shadow"
+
+	if (state == STATE_FLIGHT)
+		overlays -= thrust_overlay
+		pre_movement(dir)
+		thrust_overlay = image(icon, "flight_thrust")
+		overlays += thrust_overlay
 
 /obj/vehicle/multitile/chimera/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
@@ -105,6 +139,7 @@
 		/obj/vehicle/multitile/proc/name_vehicle,
 		/obj/vehicle/multitile/chimera/proc/takeoff,
 		/obj/vehicle/multitile/chimera/proc/land,
+		/obj/vehicle/multitile/chimera/proc/toggle_vtol
 	))
 
 /obj/vehicle/multitile/chimera/remove_seated_verbs(mob/living/M, seat)
@@ -117,8 +152,35 @@
 		/obj/vehicle/multitile/proc/name_vehicle,
 		/obj/vehicle/multitile/chimera/proc/takeoff,
 		/obj/vehicle/multitile/chimera/proc/land,
+		/obj/vehicle/multitile/chimera/proc/toggle_vtol
 	))
 	SStgui.close_user_uis(M, src)	
+
+/obj/vehicle/multitile/chimera/proc/start_takeoff()
+	playsound(loc, 'sound/vehicles/vtol/flight_transition.ogg', 25, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(finish_takeoff)), 18 SECONDS)
+
+/obj/vehicle/multitile/chimera/proc/finish_takeoff()
+	flags_atom |= NO_ZFALL
+	state = STATE_VTOL
+	update_icon()
+	forceMove(SSmapping.get_turf_above(get_turf(src)))
+	START_PROCESSING(SSsuperfastobj, src)
+
+/obj/vehicle/multitile/chimera/proc/start_landing()
+	if(state != STATE_VTOL)
+		state = STATE_VTOL
+		update_icon()
+
+	playsound(loc, 'sound/vehicles/vtol/landing.ogg', 25, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(finish_landing)), 18 SECONDS)
+
+/obj/vehicle/multitile/chimera/proc/finish_landing()
+	forceMove(SSmapping.get_turf_below(get_turf(src)))
+	flags_atom &= ~NO_ZFALL
+	state = STATE_STOWED
+	update_icon()
+	STOP_PROCESSING(SSsuperfastobj, src)
 
 /obj/vehicle/multitile/chimera/proc/takeoff()
 	set name = "Takeoff"
@@ -142,12 +204,43 @@
 	if(!seat)
 		return
 
-	if(vehicle.state == STATE_AIRBORNE)
+	if(vehicle.state == STATE_FLIGHT)
 		return
 
-	vehicle.forceMove(locate(vehicle.x, vehicle.y, vehicle.z + 1))
-	vehicle.state = STATE_AIRBORNE
+	vehicle.start_takeoff()
 	return
+
+/obj/vehicle/multitile/chimera/proc/toggle_vtol()
+	set name = "Toggle VTOL"
+	set desc = "Toggle VTOL mode."
+	set category = "Vehicle"
+
+	var/mob/user = usr
+	if(!istype(user))
+		return
+
+	var/obj/vehicle/multitile/chimera/vehicle = user.interactee
+	if(!istype(vehicle))
+		return
+
+	var/seat
+	for(var/vehicle_seat in vehicle.seats)
+		if(vehicle.seats[vehicle_seat] == user)
+			seat = vehicle_seat
+			break
+
+	if(!seat)
+		return
+
+	if(vehicle.state == STATE_STOWED)
+		return
+
+	if(vehicle.state == STATE_FLIGHT)
+		vehicle.state = STATE_VTOL
+		vehicle.update_icon()
+	else if (vehicle.state == STATE_VTOL)
+		vehicle.state = STATE_FLIGHT
+		vehicle.update_icon()
 
 /obj/vehicle/multitile/chimera/proc/land()
 	set name = "Land"
@@ -171,9 +264,12 @@
 	if(!seat)
 		return
 
-	if(vehicle.state == STATE_GROUNDED)
+	if(vehicle.state == STATE_STOWED)
 		return
 
-	vehicle.forceMove(locate(vehicle.x, vehicle.y, vehicle.z - 1))
-	vehicle.state = STATE_GROUNDED
-	return
+	vehicle.start_landing()
+
+
+#undef STATE_STOWED
+#undef STATE_VTOL
+#undef STATE_FLIGHT

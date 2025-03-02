@@ -18,7 +18,8 @@
 	exit_type = /obj/structure/interior_exit/vehicle/chimera/right;
 	name = "chimera side door";
 	pixel_y = 5;
-	pixel_x = -15
+	pixel_x = -15;
+	offset_x = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/transparent,
@@ -49,7 +50,8 @@
 	exit_type = /obj/structure/interior_exit/vehicle/chimera/back;
 	name = "chimera side door";
 	pixel_x = null;
-	pixel_y = 24
+	pixel_y = 24;
+	offset_y = -1
 	},
 /turf/open/floor/transparent,
 /area/interior/vehicle/chimera)
@@ -63,7 +65,8 @@
 	exit_type = /obj/structure/interior_exit/vehicle/chimera/left;
 	name = "chimera side door";
 	pixel_x = 15;
-	pixel_y = 5
+	pixel_y = 5;
+	offset_x = -1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/transparent,

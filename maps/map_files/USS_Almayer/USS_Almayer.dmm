@@ -189,6 +189,22 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/structure/prop/invuln/lattice_prop{
+	alpha = 150;
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/synthcloset)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -12105,6 +12121,14 @@
 "aGe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform_decoration/metal/almayer/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/synthcloset)
 "aGf" = (
@@ -28444,6 +28468,10 @@
 	alpha = 150;
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/synthcloset)
@@ -50801,6 +50829,10 @@
 	pixel_x = 30
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/synthcloset)
 "oGy" = (
@@ -59453,6 +59485,10 @@
 /area/almayer/shipboard/brig/processing)
 "soq" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/synthcloset)
 "sov" = (
@@ -92420,7 +92456,7 @@ sWw
 kcH
 rIW
 oGx
-eYQ
+aaB
 yiX
 nrb
 hyQ

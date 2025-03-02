@@ -14,4 +14,4 @@
 	plasma = 1000
 	plasma_regen = 50
 	armor = 20
-	attack_speed = -0.6
+	attack_speed = -6

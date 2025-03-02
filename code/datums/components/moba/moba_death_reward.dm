@@ -44,7 +44,7 @@
 		if(xp)
 			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_XP, floor(xp / length(awarding_xenos)))
 
-	if(gold && gold_award_to_killer && cause.weak_mob)
+	if(gold && gold_award_to_killer && cause?.weak_mob)
 		var/mob/killer = cause.weak_mob.resolve()
 		if(killer)
 			SEND_SIGNAL(killer, COMSIG_MOBA_GIVE_GOLD, gold)

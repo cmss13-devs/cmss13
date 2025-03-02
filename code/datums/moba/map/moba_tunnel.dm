@@ -2,6 +2,7 @@
 	desc = "A tunnel entrance that can be used to return to your base."
 	tunnel_desc = ""
 	hivenumber = null
+	explo_proof = TRUE
 
 	var/map_id = 0
 	var/force_tunnel_desc

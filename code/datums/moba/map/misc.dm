@@ -1,3 +1,8 @@
+GLOBAL_LIST_EMPTY(uninitialized_moba_reuse_object_spawners)
+
+/// Dict of "map id" : list(spawners)
+GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
+
 /obj/effect/landmark/moba_tunnel_spawner
 
 /obj/effect/landmark/moba_base
@@ -21,7 +26,8 @@
 
 /obj/effect/moba_reuse_object_spawner/Initialize(mapload, path_to_spawn)
 	. = ..()
-	src.path_to_spawn = path_to_spawn //zonenote we need to get these things to talk to the moba_controller
+	src.path_to_spawn = path_to_spawn
+	GLOB.uninitialized_moba_reuse_object_spawners += src
 
 /obj/structure/flora/grass/tallgrass/jungle/moba
 	cut_level = 1 // Magic number because we don't have the defines in this file

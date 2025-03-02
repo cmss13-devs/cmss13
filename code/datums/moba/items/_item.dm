@@ -17,7 +17,7 @@
 	var/acid_armor = 0
 	/// Negative is better
 	var/speed = 0
-	/// Each 0.1 is a tenth of a second less delay. Negative is better
+	/// Negative is better. Each 1 is a 10th a second of delay
 	var/attack_speed = 0
 	var/attack_damage = 0
 	/// Diminishing, multiplier (0.25 would cut down the remaining cooldown by 75%)

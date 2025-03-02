@@ -10,6 +10,9 @@
 	var/kills = 0
 	var/deaths = 0
 	var/list/held_item_types = list()
+	var/gold = 0
+	var/level = 1
+	var/xp = 1
 
 /datum/moba_player/New(ckey, client/new_client)
 	. = ..()

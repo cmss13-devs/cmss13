@@ -103,12 +103,21 @@
 			minion_spawn_botright = get_turf(spawner)
 		qdel(spawner)
 
+	for(var/obj/effect/moba_reuse_object_spawner/spawner as anything in GLOB.uninitialized_moba_reuse_object_spawners)
+		if(!GLOB.moba_reuse_object_spawners["[map_id]"])
+			GLOB.moba_reuse_object_spawners["[map_id]"] = list()
+		GLOB.moba_reuse_object_spawners["[map_id]"] += spawner
+		GLOB.uninitialized_moba_reuse_object_spawners -= spawner
+
 /datum/moba_controller/proc/handle_map_reuse_init()
-	return
+	for(var/obj/effect/moba_reuse_object_spawner/spawner as anything in GLOB.moba_reuse_object_spawners["[map_id]"])
+		var/turf/spawner_turf = get_turf(spawner)
+		var/obj/found_object = locate(spawner.path_to_spawn) in spawner_turf
+		if(found_object)
+			qdel(found_object)
+		new spawner.path_to_spawn(spawner_turf)
 
 /datum/moba_controller/proc/load_in_players()
-	// Finish later
-	// Add an abort in case someone's missing a client
 	for(var/datum/moba_player/player as anything in players)
 		if(!player.tied_client)
 			return FALSE
@@ -119,6 +128,7 @@
 		xeno.forceMove(left_base)
 		xeno.set_hive_and_update(XENO_HIVE_MOBA_LEFT)
 		xeno.AddComponent(/datum/component/moba_player, player, map_id, FALSE)
+		xeno.got_evolution_message = TRUE
 		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 		player.tied_xeno = xeno
@@ -130,10 +140,12 @@
 		xeno.forceMove(right_base)
 		xeno.set_hive_and_update(XENO_HIVE_MOBA_RIGHT)
 		xeno.AddComponent(/datum/component/moba_player, player, map_id, TRUE)
+		xeno.got_evolution_message = TRUE
 		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 		player.tied_xeno = xeno
 
+	game_started = TRUE
 	return TRUE
 
 /datum/moba_controller/proc/handle_tick()
@@ -166,6 +178,7 @@
 
 	for(var/i in 1 to 3)
 		var/mob/living/carbon/xenomorph/lesser_drone/minion = new()
+		minion.gibs_path = /obj/effect/decal/remains/xeno/decaying
 		minion.AddComponent(/datum/component/moba_minion)
 		minion.set_hive_and_update(side)
 		minion.forceMove(location)
@@ -195,8 +208,12 @@
 	xeno.forceMove(player_datum.right_team ? right_base : left_base)
 	xeno.set_hive_and_update(player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT)
 	xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, TRUE)
+	xeno.got_evolution_message = TRUE
 	ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	found_playerdata.player.tied_client.mob.mind.transfer_to(xeno, TRUE)
+
+	QDEL_NULL(found_playerdata.player.tied_xeno)
+
 	found_playerdata.player.tied_xeno = xeno
 
 /datum/moba_controller/proc/move_disconnected_player_to_body(mob/source)

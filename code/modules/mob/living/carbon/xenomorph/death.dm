@@ -143,6 +143,10 @@
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
+	if(HAS_TRAIT(src, TRAIT_MOBA_PARTICIPANT))
+		death(cause)
+		return
+
 	switch(caste.caste_type)
 		if(XENO_CASTE_BOILER)
 			var/mob/living/carbon/xenomorph/boiler/src_boiler = src
@@ -153,7 +157,7 @@
 			no_remains = TRUE
 
 	if(!no_remains)
-		new /obj/effect/decal/remains/xeno(get_turf(src), icon, "gibbed-a-corpse", pixel_x)
+		new gibs_path(get_turf(src), icon, "gibbed-a-corpse", pixel_x)
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 

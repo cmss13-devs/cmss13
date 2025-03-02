@@ -20,10 +20,12 @@
 	anchored = TRUE
 	density = TRUE
 	health = 2000
-	pixel_y = 32
-	pixel_x = 32
+	//pixel_y = 32
+	//pixel_x = 32
 	bound_height = 96
 	bound_width = 96
+	bound_x = -32
+	bound_y = -32
 	maptext_y = 26
 
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -50,7 +52,8 @@
 	for(var/turf/open/floor/tile in range(1, src))
 		RegisterSignal(tile, COMSIG_TURF_ENTER, PROC_REF(on_try_enter))
 	healthcheck()
-	new /obj/effect/moba_reuse_object_spawner(get_turf(src), type)
+	if(!(locate(/obj/effect/moba_reuse_object_spawner) in get_turf(src)))
+		new /obj/effect/moba_reuse_object_spawner(get_turf(src), type)
 
 /obj/effect/alien/resin/moba_turret/proc/get_target_priority(mob/living/current_mob, mob/living/last_hit)
 	if(get_dist(src, current_mob) > range)

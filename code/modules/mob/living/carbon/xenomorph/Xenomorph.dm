@@ -364,6 +364,8 @@
 	var/creation_time = 0
 	/// Multiplier for plasma regeneration
 	var/plasma_regeneration_mult = 1
+	/// What gibs this xeno should produce on death
+	var/gibs_path = /obj/effect/decal/remains/xeno
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)

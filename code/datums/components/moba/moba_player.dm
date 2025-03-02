@@ -33,18 +33,26 @@
 	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
+	level = player.level
+	xp = player.xp
+	gold = player.gold
+
 	parent_xeno = parent
 	parent_xeno.melee_damage_lower = parent_xeno.melee_damage_upper // Randomization is bad so we set melee damage to be the max possible
 	parent_xeno.cooldown_reduction_max = 1 // We allow for cooldown reductions up to 100%, though not feasibly possible
 	parent_xeno.sight = SEE_TURFS // We allow seeing turfs but not mobs
 	parent_xeno.need_weeds = FALSE
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
-	parent_xeno.AddComponent(
-		/datum/component/moba_death_reward,
-		300,
-		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,
-		player.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT, TRUE
+	parent_xeno.AddComponent(\
+		/datum/component/moba_death_reward,\
+		300,\
+		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,\
+		player.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT,\
+		TRUE,\
 	)
+	for(var/datum/action/action_path as anything in parent_xeno.base_actions)
+		remove_action(parent_xeno, action_path)
+
 	player_datum = player
 	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
 	map_id = id
@@ -81,17 +89,17 @@
 		item.apply_stats(parent_xeno, src, player_datum, TRUE)
 	SEND_SIGNAL(player_datum, COMSIG_MOBA_LEVEL_UP, level)
 	qdel(parent_xeno.GetComponent(/datum/component/moba_death_reward))
-	parent_xeno.AddComponent(
-		/datum/component/moba_death_reward,
-		300,
-		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,
-		player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT, TRUE
+	parent_xeno.AddComponent(\
+		/datum/component/moba_death_reward,\
+		300,\
+		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,\
+		player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT,\
+		TRUE,\
 	) // We refresh this because we're a level higher, so more XP on kill
 
 /datum/component/moba_player/proc/handle_qdel()
 	SIGNAL_HANDLER
 
-	REMOVE_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	parent_xeno = null
 	player_caste = null
 	QDEL_NULL(player_datum)
@@ -138,10 +146,16 @@
 		else
 			break
 
+	if(parent_xeno.stat == DEAD)
+		player_datum.xp = xp
+		player_datum.level = level
+
 /datum/component/moba_player/proc/grant_gold(datum/source, gold_amount = 0)
 	SIGNAL_HANDLER
 
 	gold += gold_amount
+	if(parent_xeno.stat == DEAD)
+		player_datum.gold += gold_amount
 
 /datum/component/moba_player/proc/get_owned_items(datum/source, list/datum/moba_item/items)
 	SIGNAL_HANDLER
@@ -183,6 +197,9 @@
 
 	remove_action(parent_xeno, /datum/action/ghost/xeno)
 	player_datum.deaths++
+	player_datum.gold = gold
+	player_datum.xp = xp
+	player_datum.level = level
 	SSmoba.get_moba_controller(map_id).start_respawn(player_datum)
 
 /datum/component/moba_player/proc/on_kill(datum/source, mob/killed)

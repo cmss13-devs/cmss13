@@ -6,6 +6,8 @@
 	plane = FLOOR_PLANE
 	pixel_x = -16
 	pixel_y = -16
+	maptext_x = 16
+	maptext_y = 50
 	health = 4000
 	var/hivenumber = XENO_HIVE_MOBA_LEFT
 	var/map_id
@@ -19,6 +21,9 @@
 		linked_turret = new(get_turf(turret_marker))
 		linked_turret.hivenumber = hivenumber
 		set_hive_data(linked_turret, linked_turret.hivenumber)
+	healthcheck()
+	if(!(locate(/obj/effect/moba_reuse_object_spawner) in get_turf(src)))
+		new /obj/effect/moba_reuse_object_spawner(get_turf(src), type)
 
 /obj/effect/alien/resin/moba_hive_core/Destroy()
 	linked_turret = null
@@ -50,7 +55,7 @@
 
 /obj/effect/alien/resin/moba_hive_core/healthcheck()
 	. = ..()
-	maptext = MAPTEXT("<center>[floor(health / initial(health) * 100)]%</center>")
+	maptext = MAPTEXT("<center><h2>[floor(health / initial(health) * 100)]%</h2></center>")
 
 /obj/effect/alien/resin/moba_hive_core/right
 	hivenumber = XENO_HIVE_MOBA_RIGHT

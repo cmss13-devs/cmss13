@@ -19,6 +19,9 @@ SUBSYSTEM_DEF(moba)
 
 	var/list/datum/moba_item/items = list()
 
+	/// I'd like to avoid any weirdness so I have this
+	var/currently_creating_map = FALSE
+
 /datum/controller/subsystem/moba/Initialize() //random zonenote add sudden death for when the game round ends
 	for(var/caste_path in subtypesof(/datum/moba_caste))
 		var/datum/moba_caste/caste = new caste_path
@@ -55,7 +58,7 @@ SUBSYSTEM_DEF(moba)
 		var/datum/moba_player/player = players_in_queue[1]
 		make_game(list(new /datum/moba_queue_player(player, player.queue_slots[1].position, player.queue_slots[1].caste)), list())
 	#else
-	if(COOLDOWN_FINISHED(src, matchmaking_cooldown) && (length(players_in_queue) >= 8) && !SSticker.mode.round_finished) // We can actually make a match
+	if(COOLDOWN_FINISHED(src, matchmaking_cooldown) && (length(players_in_queue) >= 8) && !SSticker.mode.round_finished && !currently_creating_map) // We can actually make a match
 		do_matchmaking()
 	#endif
 
@@ -110,12 +113,15 @@ SUBSYSTEM_DEF(moba)
 
 	if(length(team1_players) == 4 && length(team2_players) == 4)
 		make_game(team1_players, team2_players)
+		currently_creating_map = FALSE
 	else
 		COOLDOWN_START(src, matchmaking_cooldown, 5 SECONDS)
 		// We redo this check every 5s until we either drop below 8 in queue or finally make a game
 		// Should eventually add something that autofills people if there's enough in queue but missing players for a given lane
 
 /datum/controller/subsystem/moba/proc/make_game(list/team1_players, list/team2_players)
+	currently_creating_map = TRUE
+
 	for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
 		remove_from_queue(player.player)
 		to_chat(player.player.tied_client, SPAN_BOLDNOTICE("Your game is now being created."))

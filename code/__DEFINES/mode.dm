@@ -69,34 +69,12 @@
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY 4
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 2.5
 
-//=================================================
-#define SHOW_ITEM_ANIMATIONS_NONE 0 //Do not show any item pickup animations
-#define SHOW_ITEM_ANIMATIONS_HALF 1 //Toggles tg-style item animations on and off, default on.
-#define SHOW_ITEM_ANIMATIONS_ALL 2 //Toggles being able to see animations that occur on the same tile.
-//=================================================
-
-//=================================================
-#define PAIN_OVERLAY_BLURRY 0 //Blurs your screen a varying amount depending on eye_blur.
-#define PAIN_OVERLAY_IMPAIR 1 //Impairs your screen like a welding helmet does depending on eye_blur.
-#define PAIN_OVERLAY_LEGACY 2 //Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.
-//=================================================
-
-//=================================================
-#define FLASH_OVERLAY_WHITE 0 //Flashes your screen white.
-#define FLASH_OVERLAY_DARK 1 //Flashes your screen a dark grey.
-//=================================================
-
 #define NV_COLOR_GREEN "#39FF14"
 #define NV_COLOR_WHITE "#D3D3D3"
 #define NV_COLOR_ORANGE "#FFCC66"
 #define NV_COLOR_YELLOW "#FFFF66" //crazy ? i was crazy once
 #define NV_COLOR_RED "#FF3333"
 #define NV_COLOR_BLUE "#66CCFF"
-
-//=================================================
-#define CRIT_OVERLAY_WHITE 0 //Overlays your screen white.
-#define CRIT_OVERLAY_DARK 1 //Overlays your screen a dark grey.
-//=================================================
 
 /// Number of weighted marine players for 1 gear_scale. gear_scale is clamped to 1 minimum
 #define MARINE_GEAR_SCALING_NORMAL 50

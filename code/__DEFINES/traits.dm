@@ -516,3 +516,5 @@ GLOBAL_LIST(trait_name_map)
 #define HACKED_TRAIT "hacked"
 /// traits from chloroform usage
 #define CHLOROFORM_TRAIT "chloroform"
+/// traits transparent turf
+#define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"

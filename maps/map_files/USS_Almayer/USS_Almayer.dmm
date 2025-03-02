@@ -189,10 +189,33 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/cryo_cells)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/cryo_cells)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -361,6 +384,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
+"aaT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/cryo_cells)
 "aaU" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -375,6 +405,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
+"aaV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/cryo_cells)
 "aaW" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer/no_build,
@@ -416,6 +458,18 @@
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
+"abe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/pilotbunks)
 "abf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -576,6 +630,17 @@
 "abE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
+"abF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/pilotbunks)
 "abG" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
@@ -1275,6 +1340,14 @@
 "add" = (
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north1)
+"ade" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/intel)
 "adf" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/lifesaver/full,
@@ -5210,6 +5283,10 @@
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 30
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/cryo_cells)
 "amU" = (
@@ -6189,6 +6266,10 @@
 /area/almayer/living/pilotbunks)
 "apD" = (
 /obj/structure/platform_decoration/metal/almayer/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "apE" = (
@@ -6461,7 +6542,7 @@
 /obj/structure/flora/pottedplant/random{
 	pixel_y = 6
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "aql" = (
 /obj/structure/machinery/firealarm{
@@ -20945,6 +21026,14 @@
 /area/almayer/squads/charlie)
 "cdn" = (
 /obj/structure/flora/pottedplant/random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/cryo_cells)
 "cdo" = (
@@ -27409,6 +27498,10 @@
 "eDu" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -24
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/bridgebunks)
@@ -41036,6 +41129,10 @@
 "kBY" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/tankerbunks)
 "kCd" = (
@@ -71147,11 +71244,12 @@
 /area/almayer/living/grunt_rnr)
 "xfO" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = 32
+	icon_state = "S";
+	pixel_y = 0
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out"
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/bridgebunks)
@@ -73490,6 +73588,14 @@
 "ydM" = (
 /obj/structure/flora/pottedplant/random{
 	pixel_y = 16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/cryo_cells)
@@ -88354,8 +88460,8 @@ nBJ
 eQR
 eox
 aiX
-amh
-apq
+abF
+abe
 apD
 apu
 aiX
@@ -113655,7 +113761,7 @@ vcG
 qdJ
 xLw
 aug
-axi
+ade
 mQC
 aaX
 nIN
@@ -119420,9 +119526,9 @@ qIf
 bqc
 bbr
 ydM
-jmK
-jmK
-jmK
+aaB
+aaV
+aaT
 vub
 vub
 anI
@@ -119435,8 +119541,8 @@ ank
 anc
 vub
 amT
-jmK
-jmK
+aaD
+aaB
 cdn
 bbr
 uPE

@@ -51,6 +51,11 @@
 	right_side = right
 	store_ui = new(parent_xeno)
 
+	for(var/path in player_datum.held_item_types) // recreate any items that we had before we died
+		var/datum/moba_item/new_item = new path
+		held_items += new_item
+		new_item.apply_stats(parent_xeno, src, player_datum, TRUE)
+
 /datum/component/moba_player/Destroy(force, silent)
 	handle_qdel()
 	return ..()

@@ -18,6 +18,10 @@
 	parent_xeno.a_intent_change(INTENT_HARM)
 	parent_xeno.need_weeds = FALSE
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_MINION, TRAIT_SOURCE_INHERENT)
+	// We don't want minions passing through each other and players
+	parent_xeno.pass_flags = new()
+	parent_xeno.pass_flags.flags_pass = PASS_MOB_IS_XENO
+	parent_xeno.pass_flags.flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
 /datum/component/moba_minion/Destroy(force, silent)
 	REMOVE_TRAIT(parent_xeno, TRAIT_MOBA_MINION, TRAIT_SOURCE_INHERENT)

@@ -5597,6 +5597,10 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/med_ext)
+"aoz" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/navalis/indoors/residential/starboard)
 "aoA" = (
 /obj/structure/barricade/handrail/strata/navalis,
 /turf/open/floor/plating/catwalk/grate,
@@ -71727,10 +71731,10 @@ aFJ
 qJn
 apk
 asq
-asq
+asJ
 twr
 qxs
-asq
+xmK
 vQo
 asq
 asq
@@ -71892,7 +71896,7 @@ apn
 vaw
 apn
 apo
-asq
+asJ
 bqU
 iPS
 qxs
@@ -72056,7 +72060,7 @@ aph
 apn
 apv
 gEr
-asq
+asJ
 hSo
 kJe
 aph
@@ -72220,8 +72224,8 @@ qJn
 apk
 qxT
 iTk
-asq
-asq
+aoz
+xmK
 jXI
 apk
 asq
@@ -77446,7 +77450,7 @@ avA
 aSj
 gtO
 nij
-jjW
+nij
 asq
 asq
 gAG

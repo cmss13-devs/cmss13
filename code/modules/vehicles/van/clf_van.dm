@@ -1,6 +1,6 @@
 /obj/vehicle/multitile/clf_van
 	name = "CLF Technical"
-	desc = "A repurposed civilian truck, plastered with CLF emblems and insignias. Armor plates have been attached on all sides. There is a gun port in the back, but the weapon is damaged beyond repair."
+	desc = "A repurposed civilian truck, plastered with CLF emblems and insignias. Armor plates have been attached on all sides, including the front windows. Bulletholes riddle the vehicle."
 	layer = ABOVE_XENO_LAYER
 
 	icon = 'icons/obj/vehicles/clf_van.dmi'

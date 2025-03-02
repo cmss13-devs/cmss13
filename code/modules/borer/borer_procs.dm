@@ -737,7 +737,7 @@
 			var/chem = current_chem.chem_id
 			var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
 			if(R)
-				content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[current_chem.quantity] units of [current_chem.chem_name] ([current_chem.cost] Enzymes)</a><p>[current_chem.desc]</p></td></tr>"
+				content += "<tr><td><a href='byond://?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[current_chem.quantity] units of [current_chem.chem_name] ([current_chem.cost] Enzymes)</a><p>[current_chem.desc]</p></td></tr>"
 
 	content += "</table>"
 

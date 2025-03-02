@@ -1,26 +1,34 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/item/ammo_magazine/rifle/mar40,
-/turf/open/floor/damaged3/west,
-/area/lv624/lazarus/crashed_ship)
-"ab" = (
-/obj/effect/landmark/survivor_spawner/clf,
-/turf/open/floor/damaged3/west,
-/area/lv624/lazarus/crashed_ship)
-"ac" = (
-/obj/effect/landmark/survivor_spawner/clf,
-/turf/open/floor/platingdmg1,
-/area/lv624/lazarus/crashed_ship)
-"ad" = (
-/obj/effect/landmark/survivor_spawner/clf_medic,
-/turf/open/floor/almayer/emeraldcorner/west,
-/area/lv624/lazarus/crashed_ship)
-"ae" = (
-/obj/effect/landmark/survivor_spawner/clf,
-/turf/open/floor/plating/plating_catwalk,
-/area/lv624/lazarus/crashed_ship)
-"af" = (
 /obj/effect/decal/cleanable/blood,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"ab" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"ac" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"ad" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 25
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"ae" = (
+/obj/item/ammo_casing,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"af" = (
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ag" = (
@@ -39,103 +47,108 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "ah" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = 4;
-	pixel_y = 18
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"ai" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"aj" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = 10;
-	pixel_y = 25
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"ak" = (
-/obj/item/ammo_casing,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"al" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"am" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
 	pixel_y = 9
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"an" = (
+"ai" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"ao" = (
+"aj" = (
 /obj/structure/cargo_container/hybrisa/containersextended/tanleft,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"ap" = (
+"ak" = (
 /obj/structure/cargo_container/hybrisa/containersextended/tanright,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"aq" = (
+"al" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"ar" = (
+"am" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
-"as" = (
+"an" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
-"au" = (
+"ao" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenleft,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"av" = (
+"ap" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenright{
 	layer = 4
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"aw" = (
+"aq" = (
 /obj/structure/barricade/wooden,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"ax" = (
+"ar" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"ay" = (
+"as" = (
 /obj/structure/largecrate/supply,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"az" = (
+"au" = (
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"aA" = (
+"av" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
-"aB" = (
+"aw" = (
 /obj/item/device/flashlight/flare/on,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"ax" = (
+/obj/item/ammo_casing,
+/turf/open/floor/platingdmg1,
+/area/lv624/lazarus/crashed_ship)
+"ay" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"az" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
+"aA" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"aB" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aC" = (
@@ -146,41 +159,39 @@
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "aD" = (
-/obj/item/ammo_casing,
-/turf/open/floor/platingdmg1,
-/area/lv624/lazarus/crashed_ship)
-"aE" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"aF" = (
-/obj/item/tool/warning_cone{
-	pixel_x = 5;
-	pixel_y = 13
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"aG" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF")
-	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"aH" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"aE" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/platingdmg1,
+/area/lv624/lazarus/crashed_ship)
+"aF" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/crashed_ship)
+"aG" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/crashed_ship)
+"aH" = (
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
 "aI" = (
+/obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -188,30 +199,28 @@
 /area/lv624/lazarus/crashed_ship)
 "aJ" = (
 /obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/floor/plating/platingdmg3,
+/turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "aK" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/floor/plating/platingdmg3,
-/area/lv624/lazarus/crashed_ship)
+/obj/item/ammo_casing,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "aL" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/floor/platingdmg1,
-/area/lv624/lazarus/crashed_ship)
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "aM" = (
-/obj/item/ammo_casing,
-/turf/open/floor/plating,
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "aN" = (
 /obj/item/ammo_casing,
@@ -219,20 +228,18 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
 "aO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aP" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
-	density = 1;
-	closed = 0;
-	dir = 4
-	},
+/obj/item/stack/sheet/metal/large_stack,
+/obj/structure/closet/coffin/woodencrate,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aQ" = (
@@ -242,35 +249,32 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "aR" = (
-/obj/item/stack/sheet/metal/large_stack,
-/obj/structure/closet/coffin/woodencrate,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"aS" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"aT" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/device/flashlight/flare/on,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"aU" = (
+"aS" = (
+/obj/effect/landmark/survivor_spawner/clf_medic,
+/turf/open/floor/almayer/emeraldcorner/west,
+/area/lv624/lazarus/crashed_ship)
+"aT" = (
 /obj/effect/timed_event/scrapeaway{
 	time = 2
 	},
 /turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/south_west_caves)
+"aU" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aV" = (
 /obj/structure/barricade/sandbags/wired{
@@ -279,19 +283,16 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aW" = (
+/obj/effect/landmark/survivor_spawner/clf,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
+"aX" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
 	icon_state = "sandbag_2"
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
-"aX" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF")
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aY" = (
@@ -301,6 +302,13 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aZ" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"ba" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
 	icon_state = "sandbag_2"
@@ -311,7 +319,7 @@
 /obj/item/ammo_casing,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
-"ba" = (
+"bb" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
 	icon_state = "sandbag_3"
@@ -1085,14 +1093,6 @@
 /obj/item/ammo_casing,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
-"AT" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
-	density = 1;
-	closed = 0
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "Bc" = (
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
@@ -2200,7 +2200,7 @@ Hj
 "}
 (7,1,1) = {"
 LV
-aU
+aT
 Hj
 Hj
 Hj
@@ -2247,10 +2247,10 @@ Yj
 "}
 (8,1,1) = {"
 LV
-aU
-aU
+aT
+aT
 Hj
-aU
+aT
 Ve
 te
 jS
@@ -2294,10 +2294,10 @@ Yj
 "}
 (9,1,1) = {"
 LV
-aU
-aU
-aU
-aU
+aT
+aT
+aT
+aT
 eY
 Xm
 Ro
@@ -2341,9 +2341,9 @@ Yj
 "}
 (10,1,1) = {"
 LV
-aU
-aU
-aU
+aT
+aT
+aT
 ur
 Ab
 gv
@@ -2359,7 +2359,7 @@ DY
 HR
 Xq
 DO
-ad
+aS
 lr
 ch
 Xq
@@ -2388,9 +2388,9 @@ Yj
 "}
 (11,1,1) = {"
 LV
-aU
-aU
-aU
+aT
+aT
+aT
 te
 UV
 Ro
@@ -2435,9 +2435,9 @@ Yj
 "}
 (12,1,1) = {"
 by
-aU
-aU
-aU
+aT
+aT
+aT
 UV
 Mv
 gW
@@ -2482,7 +2482,7 @@ Yj
 "}
 (13,1,1) = {"
 by
-aU
+aT
 Ab
 UV
 Mv
@@ -2543,7 +2543,7 @@ wr
 Xq
 vb
 RS
-ae
+aW
 Ik
 Dp
 Qd
@@ -2599,9 +2599,9 @@ lr
 xI
 Xq
 AQ
-ac
+aM
 lh
-aI
+aE
 yT
 dN
 Bc
@@ -2648,13 +2648,13 @@ vO
 Wo
 rX
 dN
-aJ
+aF
 kw
 dN
 Qp
-aA
+av
 Qf
-ar
+am
 Qf
 CO
 Ab
@@ -2694,7 +2694,7 @@ QQ
 Xq
 Wt
 SW
-aL
+aI
 rw
 UD
 mS
@@ -2742,13 +2742,13 @@ vO
 dN
 oI
 rX
-aK
+aG
 oO
 ro
-aD
+ax
 lD
 ro
-as
+an
 bP
 CO
 Ab
@@ -2787,13 +2787,13 @@ gD
 QQ
 Xq
 XM
-aQ
-aM
-ab
+aN
+aJ
+aH
 Ex
 Qf
 xs
-as
+an
 Bc
 ro
 ro
@@ -2931,7 +2931,7 @@ dN
 ok
 Pu
 qU
-aa
+az
 Xx
 xk
 dN
@@ -2987,7 +2987,7 @@ iq
 BC
 ZS
 Ab
-af
+aa
 Ab
 Hj
 Yj
@@ -3032,9 +3032,9 @@ VX
 iq
 BC
 ZS
-ai
-aj
-ah
+ac
+ad
+ab
 Hj
 Hj
 Yj
@@ -3078,10 +3078,10 @@ VX
 iq
 BC
 ZS
-an
-al
-ak
 ai
+af
+ae
+ac
 Hj
 Hj
 Yj
@@ -3100,10 +3100,10 @@ eG
 Uw
 Ab
 Ab
-ak
-aE
+ae
+ay
 mH
-aE
+ay
 Ns
 AD
 Dw
@@ -3122,10 +3122,10 @@ Kt
 Kt
 VF
 Ab
-aw
-ax
-au
-am
+aq
+ar
+ao
+ah
 Ab
 Ab
 Ab
@@ -3146,10 +3146,10 @@ Hj
 kj
 OU
 Ab
-aE
-aE
-aE
-aW
+ay
+ay
+ay
+aX
 lf
 WH
 Kt
@@ -3162,18 +3162,18 @@ Xq
 Zu
 Dm
 VF
-aR
-ay
+aP
+as
 Ab
 Ab
-aF
+aA
 Ab
 Ab
-aw
-ay
-av
-ao
-am
+aq
+as
+ap
+aj
+ah
 Ab
 Hj
 Hj
@@ -3192,10 +3192,10 @@ Hj
 Hj
 kj
 gt
-aE
-aE
-aX
-AT
+ay
+ay
+aZ
+aU
 Ab
 Ab
 Ab
@@ -3217,10 +3217,10 @@ Ab
 Ab
 Ab
 Ab
-az
-aw
-ap
-am
+au
+aq
+ak
+ah
 Hj
 Hj
 Hj
@@ -3240,8 +3240,8 @@ Hj
 Hj
 Hj
 jz
+bb
 ba
-aZ
 qT
 Ab
 Ab
@@ -3263,10 +3263,10 @@ Ab
 Ab
 Ab
 Ab
-aB
-Ab
 aw
+Ab
 aq
+al
 Hj
 Hj
 Hj
@@ -3293,10 +3293,10 @@ Ab
 Ab
 Ab
 Ab
-aB
+aw
 Ab
 uq
-AT
+aU
 Ab
 Ab
 Ab
@@ -3307,7 +3307,7 @@ Ab
 Ab
 Ab
 Ab
-ai
+ac
 Ab
 Ab
 Ab
@@ -3349,14 +3349,14 @@ Ab
 Ab
 Ab
 Ab
-ai
-aE
+ac
+ay
 Ab
 Ab
-ai
-aE
-aE
-ak
+ac
+ay
+ay
+ae
 Ab
 Ab
 Hj
@@ -3394,15 +3394,15 @@ Ab
 Hj
 Hj
 Ab
-ak
-aT
-aS
-aG
+ae
+aR
+aQ
+aB
 Ab
-aN
+aK
 Ab
-aG
-ai
+aB
+ac
 Ab
 Ab
 Hj
@@ -3437,18 +3437,18 @@ Ab
 Ab
 Ab
 Ab
-aU
-aU
+aT
+aT
 Hj
 Hj
 Ab
 Ab
 jz
 jz
-aP
-aP
+aL
+aL
 jz
-ak
+ae
 Ab
 Hj
 Hj
@@ -3484,9 +3484,9 @@ Ab
 Ab
 Ab
 Ab
-aU
-aU
-aU
+aT
+aT
+aT
 Hj
 Hj
 Hj
@@ -3495,7 +3495,7 @@ Ab
 Ab
 Ab
 Ab
-aH
+aD
 Ab
 Hj
 Hj
@@ -3530,14 +3530,14 @@ Ab
 Ab
 Ab
 Ab
-aU
-aU
-aU
-aU
-aU
+aT
+aT
+aT
+aT
+aT
 Hj
 Ab
-aF
+aA
 Ab
 Ab
 Ab
@@ -3579,13 +3579,13 @@ Ab
 Ab
 Hj
 Hj
-aU
-aU
-aU
+aT
+aT
+aT
 Ab
 Ab
 Ab
-aF
+aA
 Ab
 Ab
 Ab
@@ -3626,14 +3626,14 @@ Ab
 Hj
 Hj
 Hj
-aU
-aU
-aU
+aT
+aT
+aT
 Ab
 Ab
 Ab
 Ab
-aF
+aA
 Ab
 Hj
 Hj

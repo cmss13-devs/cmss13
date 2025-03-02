@@ -6,6 +6,7 @@ import {
   Button,
   Collapsible,
   Divider,
+  Flex,
   Input,
   LabeledControls,
   NumberInput,
@@ -23,20 +24,74 @@ export const CentralOverwatchConsole = (props) => {
   return (
     <Window
       width={850}
-      height={820}
+      height={700}
       theme={data.theme ? data.theme : 'crtblue'}
     >
       <Window.Content>
-        <Stack vertical>
-          <Stack.Item>
-            <DebugSquadPanel />
-          </Stack.Item>
-          <Stack.Item m="0">
-            <SecondaryFunctions />
-          </Stack.Item>
-        </Stack>
+        {(!data.operator && <LoginPanel />) || (
+          <Stack vertical>
+            <Stack.Item>
+              <DebugSquadPanel />
+            </Stack.Item>
+            <Stack.Item m="0">
+              <SecondaryFunctions />
+            </Stack.Item>
+          </Stack>
+        )}
       </Window.Content>
     </Window>
+  );
+};
+
+const LoginPanel = (props) => {
+  const { act, data } = useBackend();
+
+  // Buttons don't seem to support hexcode colors, so we'll have to do this manually, sadly
+  const squadColorMap = {
+    alpha: 'red',
+    bravo: 'yellow',
+    charlie: 'purple',
+    delta: 'blue',
+    echo: 'green',
+    foxtrot: 'brown',
+    intel: 'green',
+  };
+
+  return (
+    <Flex
+      direction="column"
+      justify="center"
+      align="center"
+      height="100%"
+      fontSize="2rem"
+      mt="-3rem"
+      bold
+    >
+      <Box fontSize="2.5rem">GROUNDSIDE OPERATIONS CONSOLE</Box>
+      <Box mb="7rem" fontFamily="monospace" fontSize="1.5rem">
+        [ Version 2.1.8 | Copyright © 2182, Weyland Yutani Corp. ]
+      </Box>
+      <Box fontSize="2rem">INTERFACE ACCESS RESTRICTED</Box>
+      <Box fontFamily="monospace" fontSize="1.7rem">
+        [ IDENTITY VERIFICATION REQUIRED ]
+      </Box>
+
+      <Button
+        icon="id-card"
+        width="60vw"
+        textAlign="center"
+        fontSize="1.5rem"
+        p="1rem"
+        m="1rem"
+        onClick={() => act('pick_squad', { squad: 'Root' })}
+      >
+        Login
+      </Button>
+
+      <Box fontFamily="monospace" fontSize="1.6rem">
+        - UNAUTHORIZED USE STRICTLY PROHIBITED -1
+      </Box>
+    </Flex>
   );
 };
 
@@ -214,17 +269,17 @@ const DebugSquadPanel = (props) => {
                           <Table.Row>
                             {(squad.squad_leader && (
                               <Table.Cell textAlign="center">
-                                {squad.squad_leader.name
-                                  ? squad.squad_leader.name
+                                {squad.squad_leader
+                                  ? squad.squad_leader
                                   : 'NONE'}
                                 <Box
                                   color={
-                                    squad.squad_leader.state !== 'Dead'
+                                    squad.squad_leader.stat !== 2
                                       ? 'green'
                                       : 'red'
                                   }
                                 >
-                                  {squad.squad_leader.state !== 'Dead'
+                                  {squad.squad_leader.stat !== 2
                                     ? 'ALIVE'
                                     : 'DEAD'}
                                 </Box>

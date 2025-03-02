@@ -5,14 +5,14 @@
 #define HIDE_NONE 0
 
 /obj/structure/machinery/computer/overwatch
-	name = "Central Overwatch Console"
-	desc = "This can be used for various important functions."
-	icon_state = "comm"
-	req_access = list(ACCESS_MARINE_SENIOR)
+	name = "Overwatch Console"
+	desc = "State of the art machinery for giving orders to a squad."
+	icon_state = "dummy"
+	req_access = list(ACCESS_MARINE_DATABASE)
 	unslashable = TRUE
 	unacidable = TRUE
 
-	var/datum/squad/current_squad = /datum/squad/marine
+	var/datum/squad/current_squad
 	var/datum/squad/squad
 	var/state = 0
 	var/obj/structure/machinery/camera/cam = null
@@ -49,12 +49,11 @@
 
 GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
 
-/obj/structure/machinery/computer/overwatch/squad
-	name = "Overwatch Console"
-	desc = "State of the art machinery for giving orders to a squad."
-	icon_state = "dummy"
-	req_access = list(ACCESS_MARINE_DATABASE)
-	current_squad = null
+/obj/structure/machinery/computer/overwatch/goc
+	name = "Groundside Operations Console"
+	desc = "This can be used for various important functions."
+	icon_state = "comm"
+	req_access = list(ACCESS_MARINE_SENIOR)
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -86,7 +85,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	playsound(loc, 'sound/machines/ping.ogg', 75)
 	ob_cannon_safety = GLOB.ob_cannon_safety
 
-/obj/structure/machinery/computer/overwatch/squad/toggle_ob_cannon_safety()
+/obj/structure/machinery/computer/overwatch/goc/toggle_ob_cannon_safety()
+	playsound(loc, 'sound/machines/ping.ogg', 75)
 	ob_cannon_safety = GLOB.ob_cannon_safety
 
 /obj/structure/machinery/computer/overwatch/attack_remote(mob/user as mob)
@@ -141,10 +141,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		user.client.register_map_obj(tacmap.map_holder.map)
-		ui = new(user, src, "CentralOverwatchConsole", "Central Overwatch Console")
+		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 
-/obj/structure/machinery/computer/overwatch/squad/tgui_interact(mob/user, datum/tgui/ui)
+/obj/structure/machinery/computer/overwatch/goc/tgui_interact(mob/user, datum/tgui/ui)
 
 	if(!tacmap.map_holder)
 		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
@@ -155,10 +155,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		user.client.register_map_obj(tacmap.map_holder.map)
-		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
+		ui = new(user, src, "CentralOverwatchConsole", "Central Overwatch Console")
 		ui.open()
 
-/obj/structure/machinery/computer/overwatch/proc/count_marines(list/data, datum/squad/index_squad)
+/obj/structure/machinery/computer/overwatch/proc/count_marines(list/data, datum/squad/index_squad, variable_format)
 	var/leader_count = 0
 	var/ftl_count = 0
 	var/spec_count = 0
@@ -309,181 +309,56 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(mob_state != "Dead")
 					marines_alive++
 
-		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
-		data["marines"] += marine_data
-		if(is_squad_leader)
-			if(!data["squad_leader"])
-				data["squad_leader"] = marine_data[1]
+		if(!variable_format)
+			var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
+			data["marines"] += marine_data
+			if(is_squad_leader)
+				if(!data["squad_leader"])
+					data["squad_leader"] = marine_data[1]
 
-	data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
-	data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
+	if(variable_format)	// will have been set to TRUE if original proc was called by the groundside ops console
+		var/list/squad_count = list(
+			"total_deployed" = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count,
+			"living_count" = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive,
+			"leader_count" = leader_count,
+			"ftl_count" = ftl_count,
+			"spec_count" = spec_count,
+			"medic_count" = medic_count,
+			"engi_count" = engi_count,
+			"smart_count" = smart_count,
+			"leaders_alive" = leaders_alive,
+			"ftl_alive" = ftl_alive,
+			"spec_alive" = spec_alive,
+			"medic_alive" = medic_alive,
+			"engi_alive" = engi_alive,
+			"smart_alive" = smart_alive,
+			"specialist_type" = specialist_type ? specialist_type : "NONE",
+		)
 
-	data["leader_count"] = leader_count
-	data["ftl_count"] = ftl_count
-	data["spec_count"] = spec_count
-	data["medic_count"] = medic_count
-	data["engi_count"] = engi_count
-	data["smart_count"] = smart_count
+		return squad_count
 
-	data["leaders_alive"] = leaders_alive
-	data["ftl_alive"] = ftl_alive
-	data["spec_alive"] = spec_alive
-	data["medic_alive"] = medic_alive
-	data["engi_alive"] = engi_alive
-	data["smart_alive"] = smart_alive
-	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
-	return data
+	else
+		data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
+		data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
 
+		data["leader_count"] = leader_count
+		data["ftl_count"] = ftl_count
+		data["spec_count"] = spec_count
+		data["medic_count"] = medic_count
+		data["engi_count"] = engi_count
+		data["smart_count"] = smart_count
 
-/obj/structure/machinery/computer/overwatch/proc/overview_data(datum/squad/index_squad)
-	var/leader_count = 0
-	var/ftl_count = 0
-	var/spec_count = 0
-	var/medic_count = 0
-	var/engi_count = 0
-	var/smart_count = 0
-	var/marine_count = 0
+		data["leaders_alive"] = leaders_alive
+		data["ftl_alive"] = ftl_alive
+		data["spec_alive"] = spec_alive
+		data["medic_alive"] = medic_alive
+		data["engi_alive"] = engi_alive
+		data["smart_alive"] = smart_alive
+		data["specialist_type"] = specialist_type ? specialist_type : "NONE"
 
-	var/leaders_alive = 0
-	var/ftl_alive = 0
-	var/spec_alive= 0
-	var/medic_alive= 0
-	var/engi_alive = 0
-	var/smart_alive = 0
-	var/marines_alive = 0
+		return data
 
-	var/specialist_type
-
-	var/SL_z //z level of the Squad Leader
-	if(index_squad.squad_leader)
-		var/turf/SL_turf = get_turf(index_squad.squad_leader)
-		SL_z = SL_turf.z
-
-	for(var/marine in index_squad.marines_list)
-		if(!marine)
-			continue //just to be safe
-		var/mob_name = "unknown"
-		var/mob_state = ""
-		var/has_helmet = TRUE
-		var/role = "unknown"
-		var/acting_sl = ""
-		var/fteam = ""
-		var/distance = "???"
-		var/area_name = "???"
-		var/is_squad_leader = FALSE
-		var/mob/living/carbon/human/marine_human
-
-
-		if(ishuman(marine))
-			marine_human = marine
-			if(istype(marine_human.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
-				continue
-			mob_name = marine_human.real_name
-			var/area/current_area = get_area(marine_human)
-			var/turf/current_turf = get_turf(marine_human)
-			if(!current_turf)
-				continue
-			if(current_area)
-				area_name = sanitize_area(current_area.name)
-
-			var/obj/item/card/id/card = marine_human.get_idcard()
-			if(marine_human.job)
-				role = marine_human.job
-			else if(card?.rank) //decapitated marine is mindless,
-				role = card.rank
-
-			switch(marine_human.stat)
-				if(CONSCIOUS)
-					mob_state = "Conscious"
-
-				if(UNCONSCIOUS)
-					mob_state = "Unconscious"
-
-				if(DEAD)
-					mob_state = "Dead"
-
-			if(!istype(marine_human.head, /obj/item/clothing/head/helmet/marine))
-				has_helmet = FALSE
-
-			if(!marine_human.key || !marine_human.client)
-				if(marine_human.stat != DEAD)
-					mob_state += " (SSD)"
-
-
-			if(marine_human.assigned_fireteam)
-				fteam = " [marine_human.assigned_fireteam]"
-
-		else //listed marine was deleted or gibbed, all we have is their name
-			for(var/datum/data/record/marine_record as anything in GLOB.data_core.general)
-				if(marine_record.fields["name"] == marine)
-					role = marine_record.fields["real_rank"]
-					break
-			mob_state = "Dead"
-			mob_name = marine
-
-
-		switch(role)
-			if(JOB_SQUAD_LEADER, JOB_UPP_LEADER)
-				leader_count++
-				if(mob_state != "Dead")
-					leaders_alive++
-			if(JOB_SQUAD_TEAM_LEADER)
-				ftl_count++
-				if(mob_state != "Dead")
-					ftl_alive++
-			if(JOB_SQUAD_SPECIALIST, JOB_UPP_SPECIALIST)
-				spec_count++
-				if(marine_human)
-					var/obj/item/card/id/card = marine_human.get_idcard()
-					if(card?.assignment) //decapitated marine is mindless,
-						if(specialist_type)
-							specialist_type = "MULTIPLE"
-						else
-							var/list/spec_type = splittext(card.assignment, "(")
-							if(islist(spec_type) && (length(spec_type) > 1))
-								specialist_type = splittext(spec_type[2], ")")[1]
-				else if(!specialist_type)
-					specialist_type = "UNKNOWN"
-				if(mob_state != "Dead")
-					spec_alive++
-			if(JOB_SQUAD_MEDIC, JOB_UPP_MEDIC)
-				medic_count++
-				if(mob_state != "Dead")
-					medic_alive++
-			if(JOB_SQUAD_ENGI, JOB_UPP_ENGI)
-				engi_count++
-				if(mob_state != "Dead")
-					engi_alive++
-			if(JOB_SQUAD_SMARTGUN)
-				smart_count++
-				if(mob_state != "Dead")
-					smart_alive++
-			if(JOB_SQUAD_MARINE, JOB_UPP)
-				marine_count++
-				if(mob_state != "Dead")
-					marines_alive++
-
-	var/list/squad_count = list(
-		"total_deployed" = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count,
-		"living_count" = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive,
-		"leader_count" = leader_count,
-		"ftl_count" = ftl_count,
-		"spec_count" = spec_count,
-		"medic_count" = medic_count,
-		"engi_count" = engi_count,
-		"smart_count" = smart_count,
-		"leaders_alive" = leaders_alive,
-		"ftl_alive" = ftl_alive,
-		"spec_alive" = spec_alive,
-		"medic_alive" = medic_alive,
-		"engi_alive" = engi_alive,
-		"smart_alive" = smart_alive,
-		"specialist_type" = specialist_type ? specialist_type : "NONE",
-	)
-
-	return squad_count
-
-/obj/structure/machinery/computer/overwatch/squad/ui_data(mob/user)
+/obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
 	data["theme"] = ui_theme
@@ -529,7 +404,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	return data
 
 
-/obj/structure/machinery/computer/overwatch/ui_data(mob/user)
+/obj/structure/machinery/computer/overwatch/goc/ui_data(mob/user)
 	var/list/data = list()
 
 	data["theme"] = ui_theme
@@ -548,8 +423,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
 		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
-			var/list/unpackaged_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad))
-			unpackaged_data += overview_data(index_squad)
+			var/list/unpackaged_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "squad_leader" = index_squad.squad_leader, "ref" = REF(index_squad))
+			unpackaged_data += count_marines(null, index_squad, TRUE)
 			var/list/squad_data = list(unpackaged_data)
 			data["squad_data"] += squad_data
 
@@ -579,7 +454,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	data = count_marines(data)
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
-	data["operator"] = operator.name
+	if(operator)
+		data["operator"] = operator.name
 
 	return data
 
@@ -598,7 +474,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			var/datum/squad/selected_squad
 			for(var/datum/squad/searching_squad in GLOB.RoleAuthority.squads)
-				if(searching_squad.active && !searching_squad.overwatch_officer && searching_squad.faction == faction && searching_squad.name != "Root" && searching_squad.name == params["squad"])
+				if(searching_squad.active && !searching_squad.overwatch_officer && searching_squad.faction == faction && searching_squad.name == params["squad"])
 					selected_squad = searching_squad
 					break
 
@@ -608,9 +484,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(selected_squad.assume_overwatch(user))
 				current_squad = selected_squad
 				operator = user
-				current_squad.send_squad_message("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.", displayed_icon = src)
-				current_squad.send_squad_message("Your Overwatch officer is: [operator.name].", displayed_icon = src)
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
+				if(current_squad.name == "Root")
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Welcome [operator.name], access credentials verified. All tactical functions initialized.")]")
+				else
+					current_squad.send_squad_message("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.", displayed_icon = src)
+					current_squad.send_squad_message("Your Overwatch officer is: [operator.name].", displayed_icon = src)
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
 				return TRUE
 		if("logout")
 			if(current_squad?.release_overwatch())

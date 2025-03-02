@@ -658,7 +658,7 @@ const RenderScreen = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <>
-      {data.is_airlocked && <DropshipAirlockSelect />}
+      {data.is_airlocked === 1 && <DropshipAirlockSelect />}
       {data.alternative_shuttles.length > 0 && <DropshipSelector />}
       {data.shuttle_mode === 'idle' && <DropshipDestinationSelection />}
       {data.shuttle_mode === 'idle' && data.can_set_automated === 1 && (

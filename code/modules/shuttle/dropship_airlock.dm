@@ -63,7 +63,7 @@ Docking Port Definitions
 /obj/docking_port/stationary/marine_dropship/airlock/outer/almayer_one
 	name = "Almayer Hangar Airlock 1 Outer"
 	id = ALMAYER_A1_OUTER
-	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO
+	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_ONE
 
 /obj/docking_port/stationary/marine_dropship/airlock/outer/almayer_two
 	name = "Almayer Hangar Airlock 2 Outer"
@@ -256,7 +256,7 @@ Player Interactablility Procs
 	.["successful"] = TRUE
 
 /*#############################################################################
-Backend Timer Delayed/Looping Procs
+Timer Delayed/Looping Procs
 #############################################################################*/
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/delayed_airlock_alarm()
@@ -306,6 +306,8 @@ Backend Timer Delayed/Looping Procs
 		SSshuttle.generate_transit_dock(docked_mobile)
 	docked_mobile.set_mode(SHUTTLE_IDLE)
 	docked_mobile.initiate_docking(docked_mobile.assigned_transit)
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = docked_mobile.getControlConsole()
+	root_console.update_static_data_for_all_viewers()
 	INVOKE_NEXT_TICK(docked_mobile, TYPE_PROC_REF(/obj/docking_port/mobile/marine_dropship, dropship_freefall))
 	end_of_interaction()
 

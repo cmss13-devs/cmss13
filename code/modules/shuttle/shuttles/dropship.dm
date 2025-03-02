@@ -334,9 +334,9 @@
 		for(var/turf/affected_turf in listed_area)
 			affected_turfs += affected_turf
 	for(var/obj/vehicle/multitile/multitile_vehicle as anything in GLOB.all_multi_vehicles) // don't know if this is necessarily the best idea, if you spawn 100 bajillion vehicles, but in my mind it is better than asking it to search each turf for a vehicle.
-		if(!locate(multitile_vehicle.loc.loc) in shuttle_areas)
-			continue
 		if(!multitile_vehicle.interior)
+			continue
+		if(!locate(multitile_vehicle.loc.loc) in shuttle_areas)
 			continue
 		var/list/bounds = multitile_vehicle.interior.get_bound_turfs()
 		for(var/turf/affected_turf as anything in block(bounds[1], bounds[2]))

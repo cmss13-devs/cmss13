@@ -89,7 +89,7 @@ const LoginPanel = (props) => {
       </Button>
 
       <Box fontFamily="monospace" fontSize="1.6rem">
-        - UNAUTHORIZED USE STRICTLY PROHIBITED -1
+        - UNAUTHORIZED USE STRICTLY PROHIBITED -
       </Box>
     </Flex>
   );

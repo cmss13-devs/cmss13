@@ -598,8 +598,12 @@
 		delay = 1 SECONDS
 		playsound(loc, "alien_doorpry", 25, TRUE)
 	else
-		delay = 4 SECONDS
-		playsound(loc, "alien_doorpry", 25, TRUE)
+		if(M.mob_size == MOB_SIZE_XENO_SMALL && MOB_SIZE_XENO_SMALL && MOB_SIZE_XENO_VERY_SMALL)
+			delay = 4 SECONDS
+		if(M.mob_size == MOB_SIZE_BIG)
+			delay = 1 SECONDS
+		if(M.mob_size == MOB_SIZE_XENO)
+			delay = 3 SECONDS
 
 	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."),
 	SPAN_WARNING("We dig into [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)

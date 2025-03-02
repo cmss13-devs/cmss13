@@ -48,3 +48,4 @@
 		else
 			if(options[selection])
 				request(options[selection])
+	message_admins("[usr] has modified [name || id ] with selection [selection]")

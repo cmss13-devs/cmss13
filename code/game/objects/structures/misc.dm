@@ -352,7 +352,6 @@
 
 /obj/effect/stairs/Initialize(mapload, ...)
 	. = ..()
-	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
 	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
 
 /obj/effect/stairs/up

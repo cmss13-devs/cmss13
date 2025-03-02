@@ -37,12 +37,12 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 /datum/moba_caste/proc/apply_caste(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/player_component, datum/moba_player/player_datum)
 	xeno.ability_speed_modifier = speed
 	xeno.attack_speed_modifier = attack_delay_modifier
-	handle_level_up(xeno, player_component, player_datum, player_component.level)
+	handle_level_up(xeno, player_component, player_datum, player_datum.level)
 	for(var/path in abilities_to_add)
 		give_action(xeno, path)
 
 /datum/moba_caste/proc/handle_level_up(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/player_component, datum/moba_player/player_datum, new_level = 1)
-	var/multiplier = new_level / player_component.level_cap
+	var/multiplier = (new_level - 1) / (MOBA_MAX_LEVEL - 1)
 	xeno.maxHealth = round(starting_health + ((ending_health - starting_health) * multiplier), 1)
 	xeno.regeneration_multiplier = round(starting_health_regen + ((ending_health_regen - starting_health_regen) * multiplier), 0.1)
 	xeno.plasma_max = round(starting_plasma + ((ending_plasma_regen - starting_plasma_regen) * multiplier), 1)

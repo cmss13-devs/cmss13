@@ -5,10 +5,6 @@
 	var/datum/moba_caste/player_caste
 	var/datum/moba_item_store/store_ui
 
-	var/level = 1
-	var/level_cap = MOBA_MAX_LEVEL
-	var/xp = 0
-	var/gold = 0
 	var/static/list/level_up_thresholds = list(
 		280, // level 2
 		380, // 3
@@ -33,10 +29,6 @@
 	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	level = player.level
-	xp = player.xp
-	gold = player.gold
-
 	parent_xeno = parent
 	parent_xeno.melee_damage_lower = parent_xeno.melee_damage_upper // Randomization is bad so we set melee damage to be the max possible
 	parent_xeno.cooldown_reduction_max = 1 // We allow for cooldown reductions up to 100%, though not feasibly possible
@@ -46,7 +38,7 @@
 	parent_xeno.AddComponent(\
 		/datum/component/moba_death_reward,\
 		300,\
-		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,\
+		player_datum.level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,\
 		player.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT,\
 		TRUE,\
 	)
@@ -81,18 +73,18 @@
 	RegisterSignal(parent_xeno, COMSIG_XENO_ADD_ABILITIES, PROC_REF(on_add_abilities))
 
 /datum/component/moba_player/proc/handle_level_up()
-	level++
+	player_datum.level++
 	for(var/datum/moba_item/item as anything in held_items)
 		item.unapply_stats(parent_xeno, src, player_datum)
-	player_caste.handle_level_up(parent_xeno, src, player_datum, level)
+	player_caste.handle_level_up(parent_xeno, src, player_datum, player_datum.level)
 	for(var/datum/moba_item/item as anything in held_items)
 		item.apply_stats(parent_xeno, src, player_datum, TRUE)
-	SEND_SIGNAL(player_datum, COMSIG_MOBA_LEVEL_UP, level)
+	SEND_SIGNAL(player_datum, COMSIG_MOBA_LEVEL_UP, player_datum.level)
 	qdel(parent_xeno.GetComponent(/datum/component/moba_death_reward))
 	parent_xeno.AddComponent(\
 		/datum/component/moba_death_reward,\
 		300,\
-		level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,\
+		player_datum.level * MOBA_XP_ON_KILL_PER_PLAYER_LEVEL,\
 		player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT,\
 		TRUE,\
 	) // We refresh this because we're a level higher, so more XP on kill
@@ -132,30 +124,24 @@
 /datum/component/moba_player/proc/grant_xp(datum/source, xp_amount = 0)
 	SIGNAL_HANDLER
 
-	if(level >= level_cap)
+	if(player_datum.level >= MOBA_MAX_LEVEL)
 		return
 
-	xp += xp_amount
+	player_datum.xp += xp_amount
 	while(TRUE)
-		if(level >= level_cap)
+		if(player_datum.level >= MOBA_MAX_LEVEL)
 			break
 
-		if(xp > level_up_thresholds[level])
-			xp = max(0, xp - level_up_thresholds[level])
+		if(player_datum.xp > level_up_thresholds[player_datum.level])
+			player_datum.xp = max(0, player_datum.xp - level_up_thresholds[player_datum.level])
 			handle_level_up()
 		else
 			break
 
-	if(parent_xeno.stat == DEAD)
-		player_datum.xp = xp
-		player_datum.level = level
-
 /datum/component/moba_player/proc/grant_gold(datum/source, gold_amount = 0)
 	SIGNAL_HANDLER
 
-	gold += gold_amount
-	if(parent_xeno.stat == DEAD)
-		player_datum.gold += gold_amount
+	player_datum.gold += gold_amount
 
 /datum/component/moba_player/proc/get_owned_items(datum/source, list/datum/moba_item/items)
 	SIGNAL_HANDLER
@@ -166,12 +152,12 @@
 /datum/component/moba_player/proc/get_gold(datum/source, list/gold_list)
 	SIGNAL_HANDLER
 
-	gold_list += gold
+	gold_list += player_datum.gold
 
 /datum/component/moba_player/proc/get_level(datum/source, list/level_list)
 	SIGNAL_HANDLER
 
-	level_list += level
+	level_list += player_datum.level
 
 /datum/component/moba_player/proc/add_item(datum/source, datum/moba_item/new_item)
 	SIGNAL_HANDLER
@@ -197,9 +183,6 @@
 
 	remove_action(parent_xeno, /datum/action/ghost/xeno)
 	player_datum.deaths++
-	player_datum.gold = gold
-	player_datum.xp = xp
-	player_datum.level = level
 	SSmoba.get_moba_controller(map_id).start_respawn(player_datum)
 
 /datum/component/moba_player/proc/on_kill(datum/source, mob/killed)
@@ -223,9 +206,9 @@
 	else
 		seconds = "[seconds]"
 	status_tab_items += "Round Time: [minutes]:[seconds]"
-	status_tab_items += "[MOBA_GOLD_NAME]: [gold]"
-	status_tab_items += "Level: [level]/[level_cap]"
-	status_tab_items += "XP: [xp]/[level_up_thresholds[level]]"
+	status_tab_items += "[MOBA_GOLD_NAME]: [player_datum.gold]"
+	status_tab_items += "Level: [player_datum.level]/[MOBA_MAX_LEVEL]"
+	status_tab_items += "XP: [player_datum.xp]/[level_up_thresholds[player_datum.level]]"
 	var/item_names = ""
 	for(var/datum/moba_item/item as anything in held_items)
 		item_names += item.name + (item == held_items[length(held_items)] ? "" : ", ")

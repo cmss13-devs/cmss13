@@ -49,7 +49,7 @@
 
 	no_cooldown_msg = TRUE
 
-	build_speed_mod = 2.5 // Slow and annoying
+	build_speed_mod = 2.5
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
@@ -58,10 +58,14 @@
 	var/care_about_adjacency = TRUE
 
 /datum/action/xeno_action/activable/secrete_resin/remote/whisperer
-	xeno_cooldown = 1.5 SECONDS // Slower than a drone, faster than a queen.
-	xeno_cooldown_interrupt_modifier = 1 // Spam penalty like value of xeno_cooldown
-	xeno_cooldown_fail = 0.5 // She specializes in this, which is why she adapts better after mistakes.
-	build_speed_mod = 1.5 // She builds the walls and then proceeds to the next ones as planned without any unnecessary waiting.
+	/// Slower than a drone, faster than a queen.
+	xeno_cooldown = 1.5 SECONDS
+	/// Spam penalty like value of xeno_cooldown
+	xeno_cooldown_interrupt_modifier = 1
+	/// She specializes in this, which is why she adapts better after mistakes.
+	xeno_cooldown_fail = 0.5
+	/// She builds the walls and then proceeds to the next ones as planned without any unnecessary waiting.
+	build_speed_mod = 1.5
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
 	if(!can_remote_build())

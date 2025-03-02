@@ -26,6 +26,7 @@
 	GLOB.living_mob_list -= src
 	cleanup_status_effects()
 	pipes_shown = null
+	observed_atom = null
 
 	. = ..()
 
@@ -69,7 +70,8 @@
 		var/divided_damage = (burn_amount)/(length(H.limbs))
 		var/extradam = 0 //added to when organ is at max dam
 		for(var/obj/limb/affecting in H.limbs)
-			if(!affecting) continue
+			if(!affecting)
+				continue
 			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
 				H.UpdateDamageIcon()
 		H.updatehealth()
@@ -698,3 +700,7 @@
 	if(body_position == LYING_DOWN)
 		return
 	return ..()
+
+/mob/living/onZImpact(turf/impact_turf, height)
+	. = ..()
+	impact_turf.z_impact(src, height)

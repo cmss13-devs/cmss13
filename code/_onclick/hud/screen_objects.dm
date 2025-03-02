@@ -550,7 +550,11 @@
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
-	user.overwatch(user.hive.living_xeno_queen)
+	//Xenos should not be able to track tunnels. Queen's weakref is equal to null if selected.
+	if(tracker_type != TRACKER_LEADER || !tracking_ref)
+		user.overwatch(user.hive.living_xeno_queen)
+		return
+	user.overwatch(tracking_ref.resolve())
 
 // Reset to the defaults
 /atom/movable/screen/queen_locator/proc/reset_tracking()

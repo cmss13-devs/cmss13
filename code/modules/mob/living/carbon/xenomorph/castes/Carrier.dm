@@ -332,7 +332,8 @@
 		to_chat(src, SPAN_WARNING("We can't carry more eggs on ourselves."))
 
 /mob/living/carbon/xenomorph/carrier/proc/retrieve_egg(atom/T)
-	if(!T) return
+	if(!T)
+		return
 
 	if(!check_state())
 		return
@@ -372,6 +373,13 @@
 		return
 
 /mob/living/carbon/xenomorph/carrier/proc/store_eggs_into_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+
+	var/dist = get_dist(src, morpher)
+
+	if(dist > 1)
+		to_chat(src, SPAN_XENOWARNING("We need to be closer to do that."))
+		return
+
 	if(action_busy)
 		return FALSE
 
@@ -438,3 +446,23 @@
 /datum/behavior_delegate/carrier_base/on_update_icons()
 	var/mob/living/carbon/xenomorph/carrier/bound_carrier = bound_xeno
 	bound_carrier.update_hugger_overlays()
+
+/datum/action/xeno_action/activable/throw_hugger/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/carrier/carrier_owner = owner
+	carrier_owner.throw_hugger(target)
+	return ..()
+
+/datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/carrier/carrier_owner = owner
+	carrier_owner.retrieve_egg(target)
+	return ..()
+
+/datum/action/xeno_action/onclick/set_hugger_reserve/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/carrier/carrier = owner
+	carrier.huggers_reserved = tgui_input_number(usr,
+		"How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?",
+		"How many to reserve?",
+		carrier.huggers_reserved, carrier.huggers_max, 0
+	)
+	to_chat(carrier, SPAN_XENONOTICE("We reserve [carrier.huggers_reserved] facehuggers for ourself."))
+	return ..()

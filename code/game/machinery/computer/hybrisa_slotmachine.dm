@@ -78,7 +78,7 @@
 	if(!.)
 		return .
 
-	prize_money += round(seconds_per_tick / 2) //SPESSH MAJICKS
+	prize_money += round(seconds_per_tick / 2, 1) //SPESSH MAJICKS
 
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/update_icon()
 	..()

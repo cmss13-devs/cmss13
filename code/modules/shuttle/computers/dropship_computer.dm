@@ -293,6 +293,9 @@
 			return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/alien_call_dropship(mob/living/carbon/xenomorph/xeno, obj/docking_port/mobile/shuttle, obj/docking_port/stationary/marine_dropship/airlock/inner/inner_airlock)
+	if(!linked_lz)
+		to_chat(xeno, SPAN_WARNING("ERROR. NO LINKED LZ."))
+		return
 	var/result = SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
 	if(result != DOCKING_SUCCESS)
 		to_chat(xeno, SPAN_WARNING("The dropship can not land here. It might be currently occupied!"))
@@ -312,6 +315,7 @@
 		shuttleId = pick(alternatives)["id"]
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/stationary/marine_dropship/docked_port = dropship?.get_docked()
 
 	// If the attacking xeno isn't the queen.
 	if(xeno.hive_pos != XENO_QUEEN)
@@ -328,6 +332,37 @@
 
 	if(!is_ground_level(z))
 		// "you" rather than "we" for this one since non-queen castes will have returned above.
+		if(istype(docked_port, /obj/docking_port/stationary/marine_dropship/airlock))
+			xeno.animation_attack_on(src)
+			to_chat(xeno, SPAN_XENONOTICE("You slash at the terminal, the screen flickers."))
+			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
+			if(istype(docked_port, /obj/docking_port/stationary/marine_dropship/airlock/outer))
+				var/obj/docking_port/stationary/marine_dropship/airlock/outer/outer_dock = docked_port
+				outer_dock.linked_inner.update_outer_airlock(FALSE, TRUE)
+				outer_dock.linked_inner.disable_manual_input = TRUE
+			if(istype(docked_port, /obj/docking_port/stationary/marine_dropship/airlock/inner))
+				var/obj/docking_port/stationary/marine_dropship/airlock/inner/inner_dock = docked_port
+				inner_dock.update_inner_airlock(FALSE, TRUE)
+				inner_dock.disable_manual_input = TRUE
+			return XENO_NONCOMBAT_ACTION
+
+		if(docked_port == dropship?.assigned_transit && dropship?.mode == SHUTTLE_IDLE)
+			if(linked_lz)
+				alien_call_dropship(xeno, dropship)
+				return XENO_NONCOMBAT_ACTION
+			for(var/obj/docking_port/stationary/possible_lz as anything in compatible_landing_zones)
+				if(!possible_lz.registered)
+					continue
+				if(possible_lz.get_docked())
+					continue
+				var/result = SSshuttle.moveShuttle(shuttleId, possible_lz.id, TRUE)
+				if(result == DOCKING_SUCCESS)
+					to_chat(xeno, SPAN_XENONOTICE("You command the dropship elsewhere!"))
+					return XENO_NONCOMBAT_ACTION
+				break
+			to_chat(xeno, SPAN_WARNING("You are clueless of where to send the dropship. Maybe Queen Mother can help?"))
+			return XENO_NONCOMBAT_ACTION
+
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION

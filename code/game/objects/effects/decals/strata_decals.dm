@@ -30,6 +30,12 @@
 	name = "some foliage"
 	desc = "A few brave tufts of snow grass."
 
+/obj/effect/decal/strata_decals/mud_corner
+	icon_state = "soro_mud_innercorner"
+	name = "mud"
+	desc = null
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 ////////////////INDOORS STUFF////////////////////
 
 /obj/effect/decal/strata_decals/grime

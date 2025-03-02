@@ -3,9 +3,7 @@
     "map_path": "map_files/Sorokyne_Strata",
     "map_file": "Sorokyne_Strata.dmm",
     "webmap_url": "Sorokyne",
-    "environment_traits": {
-        "COLD": true
-    },
+
     "weather_holder": "/datum/weather_ss_map_holder/sorokyne",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/soro",
@@ -25,7 +23,7 @@
     "map_item_type": "/obj/item/map/sorokyne_map",
     "announce_text": "An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "monkey_types": [
-        "yiren"
+        "stok"
     ],
     "traits": [{ "Ground": true }],
     "nightmare_path": "maps/Nightmare/maps/Sorokyne_Strata/",
@@ -34,7 +32,7 @@
         "xeno_hive_bravo": 0,
         "xeno_hive_charlie": 70
     },
-    "camouflage": "snow",
+    "camouflage": "jungle",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

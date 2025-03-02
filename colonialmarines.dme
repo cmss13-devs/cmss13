@@ -1459,6 +1459,7 @@
 #include "code\game\turfs\shale.dm"
 #include "code\game\turfs\shiva.dm"
 #include "code\game\turfs\snow.dm"
+#include "code\game\turfs\soro.dm"
 #include "code\game\turfs\space.dm"
 #include "code\game\turfs\strata.dm"
 #include "code\game\turfs\transit.dm"

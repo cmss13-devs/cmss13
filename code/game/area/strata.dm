@@ -13,8 +13,10 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "strata"
 	can_build_special = TRUE //T-Comms structure
 	powernet_name = "ground"
-	temperature = SOROKYNE_TEMPERATURE //If not in a building, it'll be cold. All interior areas are set to T20C
+	temperature = TROPICAL_TEMP
 	minimap_color = MINIMAP_AREA_COLONY
+	ambience_exterior = AMBIENCE_JUNGLE
+	base_lighting_color = "#99ff00ff"
 
 /area/shuttle/drop1/strata //Not in Sulaco.DM because holy shit we need to sort things.
 	name = "Dropship Alamo Landing Zone"
@@ -67,13 +69,11 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Interior Under Ground Area"
 	icon_state = "ug_i"
 	requires_power = 1
-	temperature = T20C
 
 /area/strata/ug/exterior
 	name = "Exterior Under Ground Area"
 	icon_state = "ug_i"
 	requires_power = 1
-	temperature = T20C
 	ceiling = CEILING_NONE
 	weather_enabled = TRUE
 
@@ -90,14 +90,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	minimap_color = MINIMAP_AREA_LZ
 
 /area/strata/ag/exterior/landing_zones/lz2
-	name = "Landing Zone 2 Pad - Ice Fields"
+	name = "Landing Zone 2 Pad - Rocky Fields"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	weather_enabled = FALSE
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/landing_zones/near_lz2
-	name = "Landing Zone 2 - Ice Fields"
+	name = "Landing Zone 2 - Rocky Fields"
 	icon_state = "nearlz2"
 	weather_enabled = TRUE
 	is_landing_zone = TRUE
@@ -148,42 +148,41 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "marsh"
 
 /area/strata/ag/exterior/marsh/spring_marshes
-	name = "Cryo-Thermal Springs Marshes"
+	name = "Geothermal Springs Marshes"
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/water_marshes
-	name = "Cryo-Thermal Water Marshes"
+	name = "Geothermal Water Marshes"
 	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/island_marshes
-	name = "Cryo-Thermal Island Marshes"
+	name = "Geothermal Island Marshes"
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/relay_marshes
-	name = "Cryo-Thermal Relay Marshes"
+	name = "Geothermal Relay Marshes"
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/marsh/center
-	name = "Cryo-Thermal Springs"
+	name = "Geothermal Springs"
 	icon_state = "marshcenter"
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/river
-	name = "Cryo-Thermal River"
+	name = "Geothermal River"
 	icon_state = "marshriver"
 	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/marsh/crash
-	name = "Cryo-Thermal Crashed Lifeboat"
+	name = "Geothermal Crashed Lifeboat"
 	icon_state = "marshship"
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/strata/ag/exterior/marsh/water
-	name = "Cryo-Thermal Water"
+	name = "Geothermal Water"
 	icon_state = "marshwater"
-	temperature = TCMB //space cold
 	linked_lz = DROPSHIP_LZ2
 
 //-Outside "interiors"
@@ -202,14 +201,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 //-Outpost
 
 /area/strata/ag/exterior/outpost_decks
-	name = "Outpost Decks"
+	name = "Outpost - Decks"
 	icon_state = "rdecks"
 	minimap_color = MINIMAP_AREA_CAVES
 
 //-Paths
 
 /area/strata/ag/exterior/paths
-	name = "Ice Path"
+	name = "Rocky Path"
 	icon_state = "path"
 
 /area/strata/ag/exterior/paths/flight_control_exterior
@@ -217,7 +216,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/paths/mining_outpost_exterior
-	name = "Mining Outpost Exterior"
+	name = "Mining Outpost - Exterior"
 	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/paths/north_outpost
@@ -251,25 +250,25 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/outpost/foyer
-	name = "Outpost Main Foyer"
+	name = "Outpost - Main Foyer"
 	icon_state = "outpost_gen_1"
 
 /area/strata/ag/interior/outpost/maint
-	name = "Outpost Canteen - Eastern Maintenance"
+	name = "Outpost - Canteen - Eastern Maintenance"
 	icon_state = "outpost_maint"
 
 /area/strata/ag/interior/outpost/med
-	name = "Outpost Medical"
+	name = "Outpost - Medical"
 	icon_state = "outpost_med"
 	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/strata/ag/interior/outpost/engi
-	name = "Outpost Engineering"
+	name = "Outpost - Engineering"
 	icon_state = "outpost_engi_0"
 	minimap_color = MINIMAP_AREA_ENGI
 
 /area/strata/ag/interior/outpost/engi/drome
-	name = "Outpost Aerodome"
+	name = "Outpost - Aerodome"
 	icon_state = "outpost_engi_4"
 
 /area/strata/ag/interior/outpost/engi/drome/shuttle
@@ -277,23 +276,23 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "outpost_engi_3"
 
 /area/strata/ag/interior/outpost/security
-	name = "Outpost Security"
+	name = "Outpost - Security"
 	icon_state = "outpost_sec_0"
 	minimap_color = MINIMAP_AREA_SEC
 
 /area/strata/ag/interior/outpost/admin
-	name = "Outpost Administration"
+	name = "Outpost - Administration"
 	icon_state = "outpost_admin_0"
 	minimap_color = MINIMAP_AREA_COMMAND
 	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/outpost/canteen
-	name = "Outpost Canteen"
+	name = "Outpost - Canteen"
 	icon_state = "outpost_canteen_0"
 	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/outpost/canteen/bar
-	name = "Outpost Bar"
+	name = "Outpost - Bar"
 	icon_state = "outpost_canteen_2"
 
 //-Mining Outpost
@@ -305,30 +304,30 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/ag/interior/mining_outpost/central
-	name = "Mining Outpost Central"
+	name = "Mining Outpost - Central"
 	icon_state = "dorms_0"
 	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/mining_outpost/south_dormitories
-	name = "Mining Outpost South Dormitories"
+	name = "Mining Outpost - South Dormitories"
 	icon_state = "dorms_3"
 	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/mining_outpost/maintenance
-	name = "Mining Outpost Dormitory Maintenance"
+	name = "Mining Outpost - Dormitory Maintenance"
 	icon_state = "outpost_maint"
 
 /area/strata/ag/interior/mining_outpost/hive
-	name = "Mining Outpost Dormitory Thermal Storage"
+	name = "Mining Outpost - Dormitory Geothermal Storage"
 	icon_state = "dorms_beno"
 
 /area/strata/ag/interior/mining_outpost/canteen
-	name = "Mining Outpost Dormitory Canteen"
+	name = "Mining Outpost - Dormitory Canteen"
 	icon_state = "dorms_canteen"
 	ceiling = CEILING_GLASS
 
 /area/strata/ag/interior/mining_outpost/flight_control
-	name = "Mining Outpost Flight Control"
+	name = "Mining Outpost - Flight Control"
 	icon_state = "dorms_lobby"
 	is_landing_zone = TRUE
 
@@ -379,7 +378,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	is_landing_zone = TRUE
 
 /area/strata/ag/interior/outside/checkpoints/outpost
-	name = "Outpost Deck Security Checkpoint"
+	name = "Outpost - Deck Security Checkpoint"
 	icon_state = "rdecks_sec"
 
 /area/strata/ag/interior/outside/engineering
@@ -404,7 +403,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 /area/strata/ag/interior/outside/bball //come on and SLAM.
-	name = "Outpost Basket Ball Court"
+	name = "Outpost - Basket Ball Court"
 	icon_state = "outpost_gen_4"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_CAVES
@@ -416,6 +415,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	minimap_color = MINIMAP_AREA_CAVES_DEEP
 	unoviable_timer = FALSE
 
+/area/strata/ag/interior/outside/secure_checkpoint
+	name = "Secure Checkpoint Passthrough"
+	icon_state = "outpost_engi_0"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	minimap_color = MINIMAP_AREA_CAVES_DEEP
+	unoviable_timer = FALSE
 
 //-Underground Dorms
 

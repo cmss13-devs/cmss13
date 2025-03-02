@@ -1,7 +1,7 @@
-#define COLD_WATER_DAMAGE 1.5
-#define COLD_WATER_TEMP_EFFECT 5
+#define HOT_WATER_DAMAGE 1.5
+#define HOT_WATER_TEMP_EFFECT 5
 
-/obj/effect/blocker/sorokyne_cold_water
+/obj/effect/blocker/sorokyne_hot_water
 	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
@@ -12,12 +12,12 @@
 
 	icon_state = "map_blocker_hazard"
 
-/obj/effect/blocker/sorokyne_cold_water/Initialize(mapload, ...)
+/obj/effect/blocker/sorokyne_hot_water/Initialize(mapload, ...)
 	. = ..()
 	invisibility = 101
 
 
-/obj/effect/blocker/sorokyne_cold_water/Crossed(mob/living/M as mob)
+/obj/effect/blocker/sorokyne_hot_water/Crossed(mob/living/M as mob)
 
 	if(!istype(M))
 		return
@@ -29,7 +29,7 @@
 	START_PROCESSING(SSobj, src)
 
 
-/obj/effect/blocker/sorokyne_cold_water/process()
+/obj/effect/blocker/sorokyne_hot_water/process()
 	var/mobs_present = 0
 	for(var/mob/living/carbon/M in range(0, src))
 		mobs_present++
@@ -38,13 +38,13 @@
 		STOP_PROCESSING(SSobj, src)
 
 
-/obj/effect/blocker/sorokyne_cold_water/proc/cause_damage(mob/living/M)
+/obj/effect/blocker/sorokyne_hot_water/proc/cause_damage(mob/living/M)
 	if(M.stat == DEAD)
 		return
 	if(isxeno(M))
 		return
 
-	var/dam_amount = COLD_WATER_DAMAGE
+	var/dam_amount = HOT_WATER_DAMAGE
 	if(issynth(M) || isyautja(M))
 		dam_amount -= 0.5
 	if(M.body_position == STANDING_UP)
@@ -56,12 +56,12 @@
 		M.apply_damage(5*dam_amount,BURN)
 
 	if (ishuman(M))
-		if (M.bodytemperature > BODYTEMP_CRYO_LIQUID_THRESHOLD)
-			M.bodytemperature -= COLD_WATER_TEMP_EFFECT
+		if (M.bodytemperature > T90C)
+			M.bodytemperature -= HOT_WATER_TEMP_EFFECT
 		else
-			M.bodytemperature = BODYTEMP_CRYO_LIQUID_THRESHOLD
+			M.bodytemperature = T90C
 		if(!issynth(M))
-			to_chat(M, SPAN_DANGER("You feel your body start to shake as the water chills you to the bone..."))
+			to_chat(M, SPAN_DANGER("You feel your body start to shake as the scalding water sears your skin, heat overwhelming your senses..."))
 
-#undef COLD_WATER_DAMAGE
-#undef COLD_WATER_TEMP_EFFECT
+#undef HOT_WATER_DAMAGE
+#undef HOT_WATER_TEMP_EFFECT

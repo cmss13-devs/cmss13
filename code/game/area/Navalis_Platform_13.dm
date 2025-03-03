@@ -35,16 +35,16 @@
 	icon_state = "blue2"
 	ceiling = CEILING_NONE
 	requires_power = FALSE
-	base_lighting_alpha = 35
+	base_lighting_alpha = 25
 	minimap_color = MINIMAP_WATER
 
 /area/navalis/oob/water/mid
 	name = "Water - Middle"
-	base_lighting_alpha = 45
+	base_lighting_alpha = 30
 
 /area/navalis/oob/water/far
 	name = "Water - Far"
-	base_lighting_alpha = 55
+	base_lighting_alpha = 35
 
 //Additional Out Of Bounds
 

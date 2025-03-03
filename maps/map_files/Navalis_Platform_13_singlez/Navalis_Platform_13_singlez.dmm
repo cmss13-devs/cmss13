@@ -3474,8 +3474,9 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
 	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101;
+	dir = 4
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/oob/empty_space)
@@ -7738,9 +7739,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/port)
-"axi" = (
-/turf/open/space/basic,
-/area/navalis/oob/water)
 "axj" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/navalis/indoors/command/conferance)
@@ -8080,6 +8078,13 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/logistic/primary_storage)
+"ayp" = (
+/obj/structure/barricade/handrail/wire,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open_space,
+/area/navalis/oob/empty_space)
 "ayq" = (
 /obj/structure/barricade/handrail/wire,
 /turf/open/floor/plating,
@@ -8109,6 +8114,14 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/command/port_hallway)
+"ayx" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open_space,
+/area/navalis/oob/empty_space)
 "ayy" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
@@ -8217,6 +8230,13 @@
 	invisibility = 101
 	},
 /turf/open_space,
+/area/navalis/oob/empty_space)
+"ayM" = (
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101;
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/oob/empty_space)
 "ayN" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
@@ -8650,11 +8670,8 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior_xeno_only)
 "aAc" = (
 /obj/structure/safe{
 	spawnkey = 0
@@ -8692,8 +8709,9 @@
 /area/navalis/oob/empty_space)
 "aAg" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101;
+	dir = 4
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/oob/empty_space)
@@ -9323,6 +9341,9 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest,
 /area/navalis/indoors/command/tertiary_comms)
 "aBP" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
 /turf/open_space,
 /area/navalis/indoors/industrial/refinery)
 "aBQ" = (
@@ -14068,11 +14089,8 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior_xeno_only)
 "aPv" = (
 /obj/structure/monorail{
 	dir = 9;
@@ -17883,7 +17901,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/structure/stairs/multiz/up,
 /turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/mining)
 "cZt" = (
@@ -20901,12 +20918,6 @@
 "gta" = (
 /turf/open/floor/plating/kutjevo/panelscorched,
 /area/navalis/outdoors/landing_zone_1)
-"gtv" = (
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open/floor/plating/catwalk/grate/lattice,
-/area/navalis/oob/empty_space)
 "gtC" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -30138,23 +30149,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
 /area/navalis/indoors/command/office)
-"qXR" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/prop/structure_lattice{
-	dir = 4;
-	layer = 1.5;
-	level = 3
-	},
-/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
-	pixel_y = 7
-	},
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/item/lightstick/planted{
-	pixel_y = 15;
-	layer = 4.11
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "qXW" = (
 /obj/structure/filtration/machine_64x128/filtrationtank{
 	pixel_y = -16;
@@ -30309,17 +30303,6 @@
 "rew" = (
 /turf/open/floor/darkblue2/northwest,
 /area/navalis/indoors/residential/accessway)
-"rfc" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/prop/hybrisa/misc/floorprops/grate3{
-	dir = 1
-	},
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
-	},
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "rfo" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
@@ -31645,6 +31628,9 @@
 /obj/item/lightstick/red/planted{
 	pixel_y = 15;
 	layer = 4.11
+	},
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
 	},
 /turf/open_space,
 /area/navalis/oob/empty_space)
@@ -33950,8 +33936,9 @@
 /area/navalis/oob/empty_space)
 "uYp" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
-/obj/structure/blocker/forcefield/all{
-	invisibility = 101
+/obj/structure/blocker/forcefield/human{
+	invisibility = 101;
+	dir = 4
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/oob/empty_space)
@@ -34828,10 +34815,6 @@
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/navalis/indoors/residential/accessway)
-"vVu" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/turf/open_space,
-/area/navalis/oob/empty_space)
 "vVQ" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 4
@@ -47214,7 +47197,7 @@ mmV
 mmV
 mmV
 mmV
-axi
+mmV
 mmV
 mmV
 nSY
@@ -89807,7 +89790,7 @@ ueS
 bIp
 bIp
 aTD
-eWH
+tEK
 aKX
 aKX
 ihH
@@ -90016,7 +89999,7 @@ aKf
 aoE
 kns
 qld
-rfc
+ajk
 uYp
 aKX
 aKX
@@ -90030,8 +90013,8 @@ bIp
 aBW
 nFt
 bIp
-vVu
-eWH
+aTD
+tEK
 aKX
 ihH
 ihH
@@ -90181,7 +90164,7 @@ aoA
 aDZ
 aQd
 acg
-gtv
+ayM
 aSX
 aTD
 aTD
@@ -90195,7 +90178,7 @@ aNK
 kGI
 kGI
 pPp
-qXR
+aaa
 mfg
 aKX
 ihH
@@ -90345,7 +90328,7 @@ iUO
 sJD
 acb
 aKX
-gtv
+ayM
 nLC
 aNL
 kGI
@@ -90523,8 +90506,8 @@ aog
 aog
 acF
 acF
-aKX
-ihH
+ayM
+ayM
 aKX
 aKX
 aKX
@@ -90688,8 +90671,8 @@ aog
 aog
 aKX
 aKX
-ihH
-aKX
+ayM
+ayM
 acl
 aTD
 tEK
@@ -90850,9 +90833,9 @@ acT
 kVV
 muE
 ebV
-aKX
-aKX
-aKX
+ayM
+ayM
+ayM
 acF
 acF
 pPp
@@ -96802,7 +96785,7 @@ aER
 aaL
 pzV
 pzV
-cSK
+sBd
 aly
 dvZ
 dvZ
@@ -102346,9 +102329,9 @@ tww
 tww
 aJw
 asq
-ihH
-ihH
-ihH
+aKX
+aKX
+aKX
 amz
 anf
 rIY
@@ -102512,7 +102495,7 @@ asq
 asq
 asq
 ihH
-cOF
+ayp
 amz
 abX
 abR
@@ -111027,8 +111010,8 @@ dvZ
 dvZ
 aPu
 aAb
+aTW
 aKX
-ihH
 ihH
 ihH
 ihH
@@ -111190,8 +111173,8 @@ dvZ
 dvZ
 dvZ
 dvZ
-unX
-ayG
+ayx
+wvA
 ihH
 ihH
 ihH

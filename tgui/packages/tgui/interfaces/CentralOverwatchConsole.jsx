@@ -137,15 +137,6 @@ const SecondaryFunctions = (props) => {
               Executive Panel
             </Tabs.Tab>
             <Tabs.Tab
-              selected={secondarycategory === 'monitoringpanel'}
-              icon="id-card"
-              onClick={() => setsecondaryCategory('monitoringpanel')}
-              p="3px"
-              bold
-            >
-              Crew Monitoring
-            </Tabs.Tab>
-            <Tabs.Tab
               selected={secondarycategory === 'emergencypanel'}
               icon="exclamation-triangle"
               onClick={() => setsecondaryCategory('emergencypanel')}
@@ -182,7 +173,6 @@ const SecondaryFunctions = (props) => {
             <OrbitalBombardment />
           )}
           {secondarycategory === 'squadmonitor' && <SquadMonitor />}
-          {secondarycategory === 'monitoringpanel' && <MonitoringPanel />}
           {secondarycategory === 'execpanel' && <ExecutivePanel />}
           {secondarycategory === 'emergencypanel' && <EmergencyPanel />}
         </Stack.Item>
@@ -209,7 +199,7 @@ const DebugSquadPanel = (props) => {
   return (
     <Section
       fontSize="18px"
-      title="Combined Operations Console | "
+      title="Combined Overwatch Functions | "
       buttons={
         <>
           <Button icon="user" onClick={() => act('change_operator')}>
@@ -521,6 +511,26 @@ const MainDashboard = (props) => {
 
 const ExecutivePanel = (props) => {
   const { act, data } = useBackend();
+  const AlertLevel = data.alert_level;
+
+  let alertLevelString;
+  let alertLevelColor;
+  if (AlertLevel === 3) {
+    alertLevelString = 'DELTA';
+    alertLevelColor = 'purple';
+  }
+  if (AlertLevel === 2) {
+    alertLevelString = 'RED';
+    alertLevelColor = 'red';
+  }
+  if (AlertLevel === 1) {
+    alertLevelString = 'BLUE';
+    alertLevelColor = 'blue';
+  }
+  if (AlertLevel === 0) {
+    alertLevelString = 'GREEN';
+    alertLevelColor = 'transperant';
+  }
 
   return (
     <Section fill fontSize="14px">
@@ -531,7 +541,13 @@ const ExecutivePanel = (props) => {
           </Box>
           <Box mb="10px" align="center">
             <Stack.Item>
-              <Button inline width="100%" icon="bullhorn" p="4px">
+              <Button
+                inline
+                width="100%"
+                icon="bullhorn"
+                p="4px"
+                onClick={() => act('announce')}
+              >
                 MAKE AN ANNOUNCEMENT
               </Button>
             </Stack.Item>
@@ -555,8 +571,8 @@ const ExecutivePanel = (props) => {
                 icon="home"
                 p="3px"
                 mt="1px"
-                color="transperant"
-                onClick={() => act('message')}
+                color={data.primary_lz ? 'transperant' : 'default'}
+                onClick={() => act('selectlz')}
               >
                 DESIGNATE PRIMARY LZ
               </Button>
@@ -568,7 +584,7 @@ const ExecutivePanel = (props) => {
                 icon="users"
                 mt="1px"
                 p="3px"
-                onClick={() => act('sl_message')}
+                onClick={() => act('activate_echo')}
               >
                 ACTIVATE ECHO SQUAD
               </Button>
@@ -587,8 +603,8 @@ const ExecutivePanel = (props) => {
               </Button>
             </Stack.Item>
             <Stack.Item>
-              <Button inline width="100%" color="transperant">
-                CURRENT ALERT LEVEL: GREEN
+              <Button inline width="100%" color={alertLevelColor}>
+                CURRENT ALERT LEVEL: {alertLevelString}
               </Button>
             </Stack.Item>
             <Divider />
@@ -598,7 +614,9 @@ const ExecutivePanel = (props) => {
                 width="100%"
                 icon="bullhorn"
                 mb="3px"
-                onClick={() => act('set_secondary')}
+                onClick={() =>
+                  act('announce', { announcement_type: 'shipside' })
+                }
               >
                 MAKE A SHIPWIDE ANNOUNCEMENT
               </Button>
@@ -608,7 +626,7 @@ const ExecutivePanel = (props) => {
                 inline
                 width="100%"
                 icon="paper-plane"
-                onClick={() => act('message')}
+                onClick={() => act('messageUSCM')}
               >
                 MESSAGE USCM HIGH COMMAND
               </Button>
@@ -712,20 +730,6 @@ const EmergencyPanel = (props) => {
               </ButtonConfirm>
             </Stack.Item>
           </Box>
-        </Stack.Item>
-      </Stack>
-    </Section>
-  );
-};
-
-const MonitoringPanel = (props) => {
-  const { act, data } = useBackend();
-
-  return (
-    <Section fill fontSize="14px">
-      <Stack horizontal>
-        <Stack.Item width="25%">
-          <Section title="Alpha Squad">hi!</Section>
         </Stack.Item>
       </Stack>
     </Section>

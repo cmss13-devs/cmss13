@@ -47,9 +47,19 @@
 	var/list/concurrent_users = list()
 	var/ob_cannon_safety = FALSE
 
+	var/is_announcement_active = TRUE
+	var/announcement_title = COMMAND_ANNOUNCE
+	var/announcement_faction = FACTION_MARINE
+	var/add_pmcs = FALSE
+
+	/// messaging HC (admins)
+	COOLDOWN_DECLARE(cooldown_central)
+	/// making a ship announcement
+	COOLDOWN_DECLARE(cooldown_message)
+
 GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
 
-/obj/structure/machinery/computer/overwatch/goc
+/obj/structure/machinery/computer/overwatch/groundside_operations
 	name = "Groundside Operations Console"
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
@@ -85,7 +95,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	playsound(loc, 'sound/machines/ping.ogg', 75)
 	ob_cannon_safety = GLOB.ob_cannon_safety
 
-/obj/structure/machinery/computer/overwatch/goc/toggle_ob_cannon_safety()
+/obj/structure/machinery/computer/overwatch/groundside_operations/toggle_ob_cannon_safety()
 	playsound(loc, 'sound/machines/ping.ogg', 75)
 	ob_cannon_safety = GLOB.ob_cannon_safety
 
@@ -128,6 +138,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapRef"] = tacmap.map_holder.map_ref
+	if(SSticker.mode.active_lz)
+		data["primary_lz"] = SSticker.mode.active_lz
+	data["alert_level"] = GLOB.security_level
 	return data
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
@@ -144,7 +157,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 
-/obj/structure/machinery/computer/overwatch/goc/tgui_interact(mob/user, datum/tgui/ui)
+/obj/structure/machinery/computer/overwatch/groundside_operations/tgui_interact(mob/user, datum/tgui/ui)
 
 	if(!tacmap.map_holder)
 		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
@@ -155,7 +168,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		user.client.register_map_obj(tacmap.map_holder.map)
-		ui = new(user, src, "CentralOverwatchConsole", "Central Overwatch Console")
+		ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
 		ui.open()
 
 /obj/structure/machinery/computer/overwatch/proc/count_marines(list/data, datum/squad/index_squad, variable_format)
@@ -404,7 +417,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	return data
 
 
-/obj/structure/machinery/computer/overwatch/goc/ui_data(mob/user)
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
 	var/list/data = list()
 
 	data["theme"] = ui_theme
@@ -709,11 +722,122 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					var/obj/item/card/id/ID = H.get_idcard()
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
 					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
+
+		// groundside ops functions
+
 		if("red_alert")
 			set_security_level(SEC_LEVEL_RED)
+
 		if("gather_index_squad_data")
 			if(params["squad"])
 				current_squad = locate(params["squad"])
+
+		if("announce")
+			var/mob/living/carbon/human/human_user = usr	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
+			if(usr.client.prefs.muted & MUTE_IC)
+				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+				return
+
+			if(!is_announcement_active)
+				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+				return FALSE
+			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
+				to_chat(usr, SPAN_WARNING("Access denied."))
+				return
+			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			if(!input || !is_announcement_active || !(usr in dview(1, src)))
+				return FALSE
+
+			is_announcement_active = FALSE
+
+			var/signed = null
+			if(ishuman(usr))
+				var/mob/living/carbon/human/H = usr
+				var/obj/item/card/id/id = H.get_idcard()
+				if(id)
+					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+					signed = "[paygrade] [id.registered_name]"
+
+				if(params["announcement_type"] == "shipside")
+					COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
+					shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
+					message_admins("[key_name(user)] has made a shipwide annoucement.")
+					log_announcement("[key_name(user)] has announced the following to the ship: [input]")
+				else
+					marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
+					addtimer(CALLBACK(src, PROC_REF(reactivate_announcement), usr), COOLDOWN_COMM_MESSAGE)
+					message_admins("[key_name(usr)] has made a command announcement.")
+					log_announcement("[key_name(usr)] has announced the following: [input]")
+
+		if("selectlz")
+			if(SSticker.mode.active_lz)
+				return
+			var/lz_choices = list("lz1", "lz2")
+			var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
+			if(!new_lz)
+				return
+			if(new_lz == "lz1")
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+			else
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+
+		if("messageUSCM")
+			if(!COOLDOWN_FINISHED(src, cooldown_central))
+				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
+				return FALSE
+			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
+				return FALSE
+
+			high_command_announce(input, user)
+			to_chat(user, SPAN_NOTICE("Message transmitted."))
+			log_announcement("[key_name(user)] has made an USCM announcement: [input]")
+			COOLDOWN_START(src, cooldown_central, COOLDOWN_COMM_CENTRAL)
+
+		if("award")
+			open_medal_panel(user, src)
+
+		if("activate_echo")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
+			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
+			if(!reason)
+				return
+			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
+			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
+			if(!echo_squad)
+				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
+				return
+			echo_squad.engage_squad(TRUE)
+			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
+
+/obj/structure/machinery/computer/overwatch/proc/reactivate_announcement(mob/user)
+	is_announcement_active = TRUE
+	updateUsrDialog()
+
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER

@@ -8599,13 +8599,6 @@
 "azI" = (
 /turf/closed/wall/shiva/ice,
 /area/navalis/oob/water/far)
-"azJ" = (
-/obj/structure/platform/stone/strata/west,
-/obj/structure/platform/stone/strata/north,
-/obj/structure/platform/stone/strata/west,
-/obj/structure/platform/stone/strata/west,
-/turf/open/gm/river/no_overlay/ocean,
-/area/navalis/oob/water/far)
 "azK" = (
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/ice_cavern)
@@ -65055,7 +65048,7 @@ azW
 azM
 azP
 azI
-azJ
+azW
 gGc
 gGc
 gGc

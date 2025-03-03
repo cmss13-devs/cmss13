@@ -27,6 +27,13 @@
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
+	round_outcomes = list(
+		MODE_INFESTATION_DRAW_DEATH,
+		MODE_INFESTATION_X_MAJOR,
+		MODE_INFESTATION_M_MAJOR,
+		MODE_INFESTATION_X_MINOR,
+		MODE_INFESTATION_M_MINOR,
+	)
 
 	/**
 	 * How long, after first drop, should the resin protection in proximity to the selected LZ last

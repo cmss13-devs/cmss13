@@ -143,14 +143,15 @@
 
 	if(!check_rights(R_SERVER) || !SSticker.mode)
 		return
-
-	if(alert("Are you sure you want to end the round?",,"Yes","No") != "Yes")
-		return
 	// trying to end the round before it even starts. bruh
 	if(!SSticker.mode)
 		return
-
-	SSticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
+	var/who_won = MODE_INFESTATION_DRAW_DEATH
+	if(length(SSticker.mode.round_outcomes))
+		who_won = tgui_input_list(usr, "What round outcome it should be?", "End Round", SSticker.mode.round_outcomes)
+		if(who_won == null)
+			return
+	SSticker.mode.round_finished = who_won
 	message_admins("[key_name(usr)] has made the round end early.")
 	for(var/client/C in GLOB.admins)
 		to_chat(C, {"

@@ -20224,15 +20224,6 @@
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/staffroom)
-"btg" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Observation"
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Observation"
-	},
-/turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/building/medical/surgury_observation)
 "bth" = (
 /obj/effect/decal/sand_overlay/sand2,
 /turf/open/floor/prison/southwest,
@@ -29275,7 +29266,6 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "bXz" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/kepler{
 	pixel_y = 14
@@ -99295,7 +99285,7 @@ cpN
 cqx
 dPJ
 dPO
-btg
+ctZ
 cvb
 cvW
 bqM

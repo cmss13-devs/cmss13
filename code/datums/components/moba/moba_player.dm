@@ -78,7 +78,7 @@
 	RegisterSignal(parent_xeno, COMSIG_XENO_ADD_ABILITIES, PROC_REF(on_add_abilities))
 
 /datum/component/moba_player/proc/handle_level_up()
-	player_datum.level++
+	player_datum.level_up()
 	for(var/datum/moba_item/item as anything in held_items)
 		item.unapply_stats(parent_xeno, src, player_datum)
 	player_caste.handle_level_up(parent_xeno, src, player_datum, player_datum.level)

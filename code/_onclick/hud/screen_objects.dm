@@ -62,7 +62,12 @@
 /atom/movable/screen/action_button/clicked(mob/user, list/mods)
 	if(!user || !source_action)
 		return TRUE
+
 	if(source_action.owner != user)
+		return TRUE
+
+	if(mods[SHIFT_CLICK] && source_action.desc)
+		examine(user)
 		return TRUE
 
 	if(source_action.can_use_action())
@@ -73,6 +78,11 @@
 	source_action = null
 	QDEL_NULL(maptext_overlay)
 	return ..()
+
+/atom/movable/screen/action_button/get_examine_text(mob/user)
+	. = ..()
+	if(source_action.desc)
+		. += source_action.desc
 
 /atom/movable/screen/action_button/proc/get_button_screen_loc(button_number)
 	var/row = floor((button_number-1)/13) //13 is max amount of buttons per row

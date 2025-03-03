@@ -150,7 +150,7 @@ export const TacticalMap = (props) => {
 
   return (
     <Window
-      width={700}
+      width={850}
       height={850}
       theme={data.isxeno ? 'hive_status' : 'crtblue'}
     >
@@ -235,7 +235,7 @@ const ViewMapPanel = (props) => {
 const OldMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
   return (
-    <Section fill fitted height="86%" textAlign="center" fontSize="30px">
+    <Section fill fitted height="86%">
       {data.canViewCanvas ? (
         <DrawnMap
           width="100%"
@@ -280,13 +280,13 @@ const DrawMapPanel = (props) => {
   return (
     <>
       <Section
+        fitted
         title="Canvas Options"
-        className={'canvas-options'}
+        textAlign="center"
         width="100%"
-        position="absolute"
         style={{ zIndex: '1' }}
       >
-        <Stack height="15px">
+        <Stack justify="center" align="center">
           <Stack.Item grow>
             {(!data.updatedCanvas && (
               <Button
@@ -381,7 +381,7 @@ const DrawMapPanel = (props) => {
           </Stack.Item>
         </Stack>
       </Section>
-      <Section fill fitted height="86%" textAlign="center" fontSize="30px">
+      <Section fill fitted height="86%" top="-65px" align="center">
         <CanvasLayer
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}

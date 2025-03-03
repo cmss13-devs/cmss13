@@ -57,8 +57,11 @@ export class CanvasLayer extends Component {
     this.isPainting = true;
 
     const rect = this.canvasRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const scaleX = this.canvasRef.current.width / rect.width;
+    const scaleY = this.canvasRef.current.height / rect.height;
+
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
 
     this.ctx.beginPath();
     this.ctx.moveTo(this.lastX, this.lastY);
@@ -67,9 +70,7 @@ export class CanvasLayer extends Component {
   };
 
   handleMouseMove = (e) => {
-    if (!this.isPainting || !this.state.selection) {
-      return;
-    }
+    if (!this.isPainting || !this.state.selection) return;
     if (e.buttons === 0) {
       // We probably dragged off the window - lets not get stuck drawing
       this.handleMouseUp(e);
@@ -79,8 +80,11 @@ export class CanvasLayer extends Component {
     this.ctx.strokeStyle = this.state.selection;
 
     const rect = this.canvasRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const scaleX = this.canvasRef.current.width / rect.width;
+    const scaleY = this.canvasRef.current.height / rect.height;
+
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
 
     if (this.lastX !== null && this.lastY !== null) {
       // this controls how often we make new strokes
@@ -105,35 +109,25 @@ export class CanvasLayer extends Component {
   };
 
   handleMouseUp = (e) => {
-    if (
-      this.isPainting &&
-      this.state.selection &&
-      this.lastX !== null &&
-      this.lastY !== null
-    ) {
-      const rect = this.canvasRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    if (!this.isPainting) return;
 
-      this.ctx.moveTo(this.lastX, this.lastY);
-      this.ctx.lineTo(x, y);
-      this.ctx.stroke();
-      this.currentLine.push([
-        this.lastX,
-        this.lastY,
-        x,
-        y,
-        this.ctx.strokeStyle,
-      ]);
-    }
+    const rect = this.canvasRef.current.getBoundingClientRect();
+    const scaleX = this.canvasRef.current.width / rect.width;
+    const scaleY = this.canvasRef.current.height / rect.height;
+
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+
+    this.ctx.moveTo(this.lastX, this.lastY);
+    this.ctx.lineTo(x, y);
+    this.ctx.stroke();
+    this.currentLine.push([this.lastX, this.lastY, x, y, this.ctx.strokeStyle]);
 
     this.isPainting = false;
     this.lastX = null;
     this.lastY = null;
 
-    if (this.currentLine.length === 0) {
-      return;
-    }
+    if (this.currentLine.length === 0) return;
 
     this.lineStack.push([...this.currentLine]);
     this.currentLine = [];
@@ -258,6 +252,8 @@ export class CanvasLayer extends Component {
   }
 
   displayCanvas() {
+    const size = this.getSize();
+
     return (
       <div>
         {this.complexity > 500 && (
@@ -284,6 +280,11 @@ export class CanvasLayer extends Component {
           ref={this.canvasRef}
           width={684}
           height={684}
+          className="TacticalMap"
+          style={{
+            width: size.width,
+            height: size.height,
+          }}
           onMouseDown={(e) => this.handleMouseDown(e)}
           onMouseUp={(e) => this.handleMouseUp(e)}
           onMouseMove={(e) => this.handleMouseMove(e)}
@@ -302,6 +303,14 @@ export class CanvasLayer extends Component {
         </Box>
       </div>
     );
+  }
+
+  getSize() {
+    const ratio = Math.min(
+      (self.innerWidth - 16) / 684,
+      (self.innerHeight - 166) / 684,
+    );
+    return { width: 684 * ratio, height: 684 * ratio };
   }
 
   render() {

@@ -64,7 +64,7 @@ export class DrawnMap extends Component {
     return (
       <div ref={this.containerRef} className="TacticalMapDrawn">
         {this.state.loadingBackup && !this.state.mapLoad && (
-          <Box my="40%">
+          <Box my="40%" textAlign="center">
             <h1>Loading map...</h1>
           </Box>
         )}

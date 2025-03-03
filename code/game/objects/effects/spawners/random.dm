@@ -343,6 +343,8 @@
 	var/ammopath
 	if(ispath(gunpath, /obj/item/weapon/gun/shotgun))
 		ammopath = pick(GLOB.shotgun_boxes_12g)
+		mags_min = 1
+		mags_max = 2
 	else if(ispath(gunpath, /obj/item/weapon/gun/launcher/grenade))
 		ammopath = pick(GLOB.grenade_packets)
 	else
@@ -605,6 +607,8 @@
 /obj/effect/spawner/random/gun/civ
 	name = "civilian gun loot spawner"
 	desc = "spawns a surv special gun and some ammo"
+	mags_min = 1
+	mags_max = 3
 	icon_state = "loot_civ"
 	guns = list(
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,

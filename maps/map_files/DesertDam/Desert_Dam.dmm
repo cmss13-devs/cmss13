@@ -14168,11 +14168,6 @@
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/deathrow)
-"aYD" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/handful/shotgun/buckshot,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_two/hallway)
 "aYE" = (
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/marshals_office)
@@ -17997,7 +17992,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "blP" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/spawner/random/gun/shotgun/highchance,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "blQ" = (
@@ -107278,7 +107273,7 @@ aXi
 aXh
 bpc
 aTM
-aYD
+aYg
 bmt
 bdN
 bfX

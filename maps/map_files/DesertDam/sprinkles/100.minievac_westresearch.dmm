@@ -109,6 +109,7 @@
 	icon_state = "road_edge_decal7"
 	},
 /obj/structure/closet/crate/secure/weyland,
+/obj/item/ammo_box/magazine/misc/mre/pmc,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "tu" = (

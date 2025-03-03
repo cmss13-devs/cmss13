@@ -10091,7 +10091,7 @@
 /obj/structure/largecrate/random,
 /obj/structure/largecrate/random/mini{
 	layer = 4;
-	pixel_y = s;
+	pixel_y = 14;
 	pixel_x = -2
 	},
 /turf/open/floor/plating,

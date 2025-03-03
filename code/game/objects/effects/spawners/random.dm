@@ -577,8 +577,8 @@
 	desc = "spawns a surv special gun and some ammo"
 	icon_state = "loot_corporate"
 	guns = list(
-		/obj/item/weapon/gun/rifle/corporate/no_lock = /obj/item/ammo_magazine/rifle,
-		/obj/item/weapon/gun/rifle/corporate/no_lock = /obj/item/ammo_magazine/rifle,
+		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
+		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
 		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23,
 		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23,
 		/obj/item/weapon/gun/smg/m39/corporate/no_lock = /obj/item/ammo_magazine/smg/m39,

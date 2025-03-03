@@ -35,11 +35,15 @@ SUBSYSTEM_DEF(tgui)
 	basehtml = replacetext(basehtml, "tgui:stylesheet", MAP_STYLESHEET)
 
 /datum/controller/subsystem/tgui/OnConfigLoad()
+	var/storage_iframe = CONFIG_GET(string/storage_cdn_iframe)
+
 	if(CONFIG_GET(string/asset_transport) == "webroot")
 		var/datum/asset_transport/webroot/webroot = SSassets.transport
 
 		var/datum/asset_cache_item/item = webroot.register_asset("iframe.html", file("tgui/public/iframe.html"))
 		basehtml = replacetext(basehtml, "tgui:storagecdn", webroot.get_asset_url("iframe.html", item))
+	else if(storage_iframe)
+		basehtml = replacetext(basehtml, "tgui:storagecdn", storage_iframe)
 
 /datum/controller/subsystem/tgui/Shutdown()
 	close_all_uis()

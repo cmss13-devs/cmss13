@@ -28,5 +28,5 @@ jobs:
           BRANCH: gh-pages
           CLEAN: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SINGLE_COMMIT: true
+          TARGET_FOLDER: docs
           FOLDER: dmdoc

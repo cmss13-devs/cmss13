@@ -14,6 +14,39 @@
 	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ac" = (
+/obj/structure/machinery/light,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ae" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"af" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ag" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ah" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aq" = (
 /turf/closed/wall,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -544,6 +577,9 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "KE" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "KI" = (
@@ -636,6 +672,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -867,7 +906,7 @@ Bv
 Bv
 aq
 SA
-NW
+ae
 ou
 Jw
 aq
@@ -969,7 +1008,7 @@ aq
 aa
 gQ
 sl
-JM
+ac
 aq
 NQ
 zV
@@ -991,7 +1030,7 @@ aq
 Hv
 xQ
 aq
-xQ
+af
 zW
 fk
 Gz
@@ -1044,7 +1083,7 @@ aq
 JM
 Or
 Or
-Nk
+ad
 aq
 KE
 Tr
@@ -1091,7 +1130,7 @@ aq
 vt
 Or
 aq
-JM
+ag
 Ky
 Or
 JM
@@ -1166,7 +1205,7 @@ aq
 aq
 aq
 aq
-JM
+ah
 JM
 Pw
 qY

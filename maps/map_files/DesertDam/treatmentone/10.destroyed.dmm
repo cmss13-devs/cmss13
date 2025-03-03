@@ -2053,6 +2053,9 @@
 /obj/structure/toilet{
 	dir = 8
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "Yf" = (

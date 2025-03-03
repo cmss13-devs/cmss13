@@ -542,7 +542,7 @@
 
 /obj/effect/spawner/random/gun/cmb
 	name = "cmb gun loot spawner"
-	desc = "spawns a surv special gun and some ammo"
+	desc = "spawns a surv cmb gun and some ammo"
 	icon_state = "loot_cmb"
 	guns = list(
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
@@ -575,7 +575,7 @@
 
 /obj/effect/spawner/random/gun/corporate
 	name = "corporate gun loot spawner"
-	desc = "spawns a surv special gun and some ammo"
+	desc = "spawns a surv corporate gun and some ammo"
 	icon_state = "loot_corporate"
 	guns = list(
 		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
@@ -605,7 +605,7 @@
 
 /obj/effect/spawner/random/gun/civ
 	name = "civilian gun loot spawner"
-	desc = "spawns a surv special gun and some ammo"
+	desc = "spawns a surv civ gun and some ammo"
 	mags_min = 1
 	mags_max = 3
 	icon_state = "loot_civ"

@@ -728,6 +728,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/tacmap_ready_time = 0
 
 	var/is_mainship = FALSE
+	var/can_change_map_view = TRUE
 
 	///What name we will use for the change to [name] button
 	var/change_to_name = MAIN_SHIP_DEFAULT_NAME
@@ -775,6 +776,12 @@ SUBSYSTEM_DEF(minimaps)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
+
+	if(is_xeno || faction != FACTION_MARINE)
+		can_change_map_view = FALSE
+	else if(faction == FACTION_MARINE)
+		can_change_map_view = TRUE
+
 	if(faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 
@@ -849,6 +856,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["mapRef"] = map_holder?.map_ref
 	data["isMainship"] = is_mainship
 	data["changeToMapName"] = is_mainship ? SSmapping.configs?[GROUND_MAP]?.map_name : change_to_name
+	data["canChangeMapview"] = can_change_map_view
 
 	return data
 
@@ -976,6 +984,9 @@ SUBSYSTEM_DEF(minimaps)
 			updated_canvas = FALSE
 
 		if("ChangeMapView")
+			if(!can_change_map_view)
+				return
+
 			is_mainship = !is_mainship
 			map_holder = null
 

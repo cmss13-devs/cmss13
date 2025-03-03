@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - imageadd: "Added a blank OOC icon for missing sprites."
-  - imageadd: "Added a StaffManager OOC icon."
-  - imageadd: "Re-Added missing RatKing OOC icon."

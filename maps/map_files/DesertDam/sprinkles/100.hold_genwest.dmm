@@ -418,6 +418,7 @@
 "Dl" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/effect/spawner/random/gun/civ/highchance,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/control_room)
 "Ex" = (

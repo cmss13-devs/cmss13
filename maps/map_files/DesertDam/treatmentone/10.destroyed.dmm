@@ -1230,9 +1230,6 @@
 "AI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/boltaction{
-	current_rounds = 0
-	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/control_room)
 "AK" = (
@@ -2106,9 +2103,7 @@
 "ZA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/boltaction{
-	current_mag = null
-	},
+/obj/effect/spawner/random/gun/civ,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/control_room)
 "ZL" = (

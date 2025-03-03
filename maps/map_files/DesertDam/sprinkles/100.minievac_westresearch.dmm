@@ -8,7 +8,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "fS" = (
-/obj/item/ammo_magazine/smg/p90,
+/obj/effect/spawner/random/gun/corporate,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "gD" = (
@@ -109,7 +109,6 @@
 	icon_state = "road_edge_decal7"
 	},
 /obj/structure/closet/crate/secure/weyland,
-/obj/item/storage/pouch/magazine/large/pmc_p90,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "tu" = (
@@ -221,10 +220,6 @@
 	pixel_x = 4;
 	pixel_y = -9
 	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_wilderness)
-"DL" = (
-/obj/item/weapon/gun/smg/p90,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "Fv" = (
@@ -343,7 +338,6 @@
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/item/ammo_magazine/smg/p90,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "SQ" = (
@@ -446,7 +440,6 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/item/ammo_magazine/smg/p90,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 
@@ -508,7 +501,7 @@ Bh
 Ri
 pI
 fS
-DL
+HY
 yi
 Dq
 an

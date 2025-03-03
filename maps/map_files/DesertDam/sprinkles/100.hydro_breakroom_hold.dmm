@@ -124,7 +124,7 @@
 	pixel_x = 4;
 	pixel_y = 18
 	},
-/obj/effect/spawner/random/gun/shotgun/highchance,
+/obj/effect/spawner/random/gun/civ/highchance,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "oz" = (

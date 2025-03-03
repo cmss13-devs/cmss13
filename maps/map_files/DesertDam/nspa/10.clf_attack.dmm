@@ -393,7 +393,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_security)
 "Gi" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/spawner/random/gun/cmb,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "Gp" = (

@@ -190,10 +190,6 @@
 /obj/structure/barricade/deployable,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
-"tv" = (
-/obj/item/ammo_magazine/rifle,
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "tw" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt,
@@ -218,7 +214,6 @@
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "wj" = (
 /obj/structure/machinery/power/apc/no_power/west,
-/obj/item/ammo_magazine/rifle,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "wH" = (
@@ -241,6 +236,7 @@
 	},
 /obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/random/gun/corporate,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "xP" = (
@@ -363,11 +359,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
-"GQ" = (
-/obj/structure/desertdam/decals/road_edge,
-/obj/item/ammo_magazine/rifle,
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "HM" = (
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
@@ -478,11 +469,6 @@
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "QO" = (
 /obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
-"QX" = (
-/obj/structure/desertdam/decals/road_edge,
-/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "Rh" = (
@@ -691,8 +677,8 @@ GK
 QO
 sl
 QO
-QX
-GQ
+QO
+QO
 xP
 QO
 gx
@@ -704,7 +690,7 @@ nN
 fx
 wH
 OR
-tv
+OR
 xG
 OR
 OR

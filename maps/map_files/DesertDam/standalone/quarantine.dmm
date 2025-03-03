@@ -1,4 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/obj/effect/spawner/random/gun/cmb/midchance,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/cmb/highchance,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "al" = (
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/lobby)
@@ -331,11 +343,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/secure/ammo,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/flamer_tank,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "pb" = (
@@ -349,7 +357,6 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/item/weapon/gun/rifle/m16,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl4"
 	},
@@ -461,12 +468,10 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/effect/spawner/random/gun/cmb,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "sd" = (
-/obj/item/weapon/gun/smg/mp5/mp5a5/tactical{
-	current_mag = null
-	},
 /obj/item/ammo_casing,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -803,9 +808,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl1"
-	},
-/obj/item/ammo_magazine/smg/mp5{
-	current_rounds = 0
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1246,7 +1248,6 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "QS" = (
@@ -1829,7 +1830,7 @@ kv
 Cs
 Dw
 Dw
-ud
+aa
 hp
 cG
 lg
@@ -1960,7 +1961,7 @@ cX
 fx
 iR
 kQ
-fx
+ab
 Ew
 fx
 yB

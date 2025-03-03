@@ -185,10 +185,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
-	pixel_x = -5;
-	pixel_y = -9
-	},
+/obj/effect/spawner/random/gun/cmb/highchance,
 /turf/open/floor/prison/darkredcorners2/north,
 /area/desert_dam/building/security/armory)
 "Od" = (

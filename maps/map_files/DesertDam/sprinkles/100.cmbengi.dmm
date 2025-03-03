@@ -70,7 +70,6 @@
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "t" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "u" = (
@@ -93,7 +92,6 @@
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "z" = (
-/obj/item/weapon/gun/smg/mp5,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "A" = (
@@ -145,10 +143,6 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
-"T" = (
-/obj/item/ammo_magazine/smg/mp5,
-/turf/open/floor/prison/darkyellow2,
-/area/desert_dam/interior/dam_interior/engine_west_wing)
 "U" = (
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -166,7 +160,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/item/ammo_magazine/smg/mp5,
+/obj/effect/spawner/random/gun/cmb,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "Z" = (
@@ -183,7 +177,7 @@ y
 G
 r
 X
-T
+Z
 "}
 (3,1,1) = {"
 P

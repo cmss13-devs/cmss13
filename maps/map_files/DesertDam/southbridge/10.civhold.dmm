@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/ammo_casing,
+/obj/effect/spawner/random/gun/civ,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "bA" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/item/weapon/broken_bottle,
@@ -51,7 +56,7 @@
 "dp" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/spawner/random/gun/shotgun/highchance,
+/obj/effect/spawner/random/gun/rifle/highchance,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "dr" = (
@@ -992,10 +997,6 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical)
-"Tf" = (
-/obj/effect/spawner/random/gun/rifle/highchance,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_medical)
 "Ur" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -1402,7 +1403,7 @@ Qu
 Nb
 Mz
 lb
-ri
+aa
 hk
 fF
 AK
@@ -1428,7 +1429,7 @@ MB
 tH
 AC
 BD
-Tf
+Qu
 MC
 uj
 GU

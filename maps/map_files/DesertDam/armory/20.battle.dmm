@@ -258,7 +258,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
 /turf/open/floor/prison/floor_marked,
 /area/desert_dam/building/security/armory)
 "XV" = (

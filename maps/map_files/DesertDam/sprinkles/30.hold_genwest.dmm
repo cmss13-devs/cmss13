@@ -20,14 +20,6 @@
 /obj/item/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/control_room)
-"cF" = (
-/obj/structure/machinery/power/smes/buildable{
-	capacity = 1e+006;
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/southeast,
-/area/desert_dam/interior/dam_interior/smes_backup)
 "cK" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -80,12 +72,8 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/control_room)
 "eH" = (
-/obj/structure/machinery/power/smes/buildable{
-	capacity = 1e+006;
-	dir = 1
-	},
-/turf/open/floor/plating/warnplate/southwest,
-/area/desert_dam/interior/dam_interior/smes_backup)
+/turf/template_noop,
+/area/template_noop)
 "eX" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
@@ -411,10 +399,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/smes_backup)
-"CQ" = (
-/obj/structure/machinery/power/terminal,
-/turf/open/floor/plating/warnplate/northeast,
-/area/desert_dam/interior/dam_interior/smes_backup)
 "Dl" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -600,10 +584,6 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_main)
-"Tt" = (
-/obj/structure/machinery/power/terminal,
-/turf/open/floor/plating/warnplate/northwest,
-/area/desert_dam/interior/dam_interior/smes_backup)
 "VT" = (
 /obj/item/shard,
 /turf/open/floor/prison/darkyellowcorners2/north,
@@ -762,7 +742,7 @@ ds
 dA
 GI
 Fy
-Tt
+eH
 eH
 Ms
 FU
@@ -779,8 +759,8 @@ Ks
 fc
 FT
 Zn
-CQ
-cF
+eH
+eH
 Cw
 FU
 "}

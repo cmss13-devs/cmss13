@@ -1078,6 +1078,14 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/under/hybrisa/nspa_officer/warm
+	desc = "An olive green uniform; standard issue for NSPA forces in warm weather environments. Supposed to be more breathable, allegedly."
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
+	)
+	icon_state = "nspa_police_warm"
+	worn_state = "nspa_police_warm"
+
 // Suits & Armor
 
 /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest

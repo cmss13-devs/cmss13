@@ -356,7 +356,7 @@
 	icon_state = "gib6";
 	pixel_y = -8
 	},
-/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "rt" = (

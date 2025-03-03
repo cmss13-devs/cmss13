@@ -184,7 +184,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "rb" = (
@@ -527,7 +527,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "NW" = (

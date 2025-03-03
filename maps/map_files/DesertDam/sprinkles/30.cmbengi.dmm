@@ -84,7 +84,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "y" = (

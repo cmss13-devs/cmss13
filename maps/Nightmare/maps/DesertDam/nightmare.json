@@ -17,14 +17,14 @@
     {
 		"type": "map_insert",
 		"landmark": "barhold",
-		"chance": 1.0,
+		"chance": 0.4,
 		"path": "standalone/barhold.dmm",
 		"when": { "lvevent": "none" }
 	},
     {
 		"type": "map_insert",
 		"landmark": "quarantine",
-		"chance": 1.0,
+		"chance": 0.4,
 		"path": "standalone/quarantine.dmm",
 		"when": { "lvevent": "none" }
 	},

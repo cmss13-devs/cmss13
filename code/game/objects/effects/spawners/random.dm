@@ -369,12 +369,11 @@
 		for(var/i in 0 to ammo_amount-1)
 			ammo = new ammopath(spawnloc)
 			if(scatter)
-				for(i=0, i<rand(1,3), i++)
-					var/direction = pick(GLOB.alldirs)
-					var/turf/turf = get_step(ammo, direction)
-					if(!turf || turf.density)
-						break
-					ammo.forceMove(turf)
+				var/direction = pick(GLOB.alldirs)
+				var/turf/turf = get_step(ammo, direction)
+				if(!turf || turf.density)
+					return
+				ammo.forceMove(turf)
 
 /*
 // the actual spawners themselves

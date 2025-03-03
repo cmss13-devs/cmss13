@@ -56,3 +56,7 @@
 			else if(istype(action, /datum/action/xeno_action/activable/moba))
 				var/datum/action/xeno_action/activable/moba/moba_action = action
 				moba_action.start_level_up_overlay()
+
+/datum/moba_player/proc/spend_level(path)
+	ability_path_level_dict[path]++
+	unspent_levels--

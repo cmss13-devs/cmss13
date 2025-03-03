@@ -6298,6 +6298,10 @@
 "arX" = (
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"arY" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/floor/plating/catwalk/grate/net,
+/area/navalis/oob/empty_space)
 "arZ" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -8200,6 +8204,9 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"ayy" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/navalis/oob)
 "ayz" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
@@ -8207,6 +8214,32 @@
 /obj/structure/platform_decoration/metal/almayer/northeast,
 /obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open_space,
+/area/navalis/oob/empty_space)
+"ayA" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = 16;
+	pixel_y = -15
+	},
+/obj/structure/prop/dam/crane/cargo{
+	pixel_y = -12;
+	dir = 4
+	},
+/turf/open/floor/corsat/box,
+/area/navalis/indoors/charon/below_deck/middle)
+"ayB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/blue/west,
+/area/navalis/oob)
+"ayC" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/floor/plating/catwalk/grate/net,
 /area/navalis/oob/empty_space)
 "ayD" = (
 /obj/structure/monorail{
@@ -8226,6 +8259,14 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
+"ayF" = (
+/obj/effect/stairs/up,
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/power)
+"ayG" = (
+/obj/effect/stairs/up,
+/turf/open/floor/corsat/squares,
+/area/navalis/indoors/industrial/refinery)
 "ayH" = (
 /obj/structure/monorail{
 	dir = 8;
@@ -8298,11 +8339,23 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/outdoors/landing_zone_2/under)
+"ayP" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/navalis/indoors/industrial/power)
 "ayQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only)
+"ayR" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/navalis/indoors/industrial/refinery)
+"ayS" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/navalis/indoors/industrial/mining)
 "ayT" = (
 /obj/structure/monorail{
 	dir = 5;
@@ -13904,6 +13957,7 @@
 /area/navalis/indoors/industrial/power)
 "aQD" = (
 /obj/structure/reagent_dispensers/fueltank,
+/obj/effect/stairs/up,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aQF" = (
@@ -24027,19 +24081,6 @@
 	},
 /turf/open_space,
 /area/navalis/oob/empty_space)
-"fRB" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = -15
-	},
-/obj/structure/prop/dam/crane/cargo{
-	pixel_y = -12;
-	dir = 4
-	},
-/turf/open/floor/corsat/plate,
-/area/navalis/indoors/charon/below_deck/middle)
 "fRK" = (
 /turf/open/hybrisa/street/cement3,
 /area/navalis/indoors/med_sci/lower_level/delivery)
@@ -36711,6 +36752,7 @@
 	dir = 4
 	},
 /obj/structure/stairs/multiz/up,
+/obj/effect/stairs/up,
 /turf/open/floor/roof_weedable,
 /area/navalis/indoors/industrial/mining)
 "num" = (
@@ -116687,15 +116729,15 @@ tAt
 tAt
 tAt
 tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
+kVD
+kVD
+kVD
+kVD
+kVD
+kVD
+kVD
+kVD
+kVD
 eXd
 sAU
 fqh
@@ -116849,18 +116891,18 @@ tAt
 tAt
 tAt
 tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-tAt
-oFq
+kVD
+kVD
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+arY
 sAU
 fqh
 fqh
@@ -117012,19 +117054,19 @@ tAt
 tAt
 tAt
 tAt
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-kVD
-oFq
+ayC
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+wJw
+arY
 sAU
 fqh
 fqh
@@ -117339,19 +117381,19 @@ kVD
 kVD
 kVD
 dBg
-hCk
-hCk
+ayy
+ayy
 sbz
 sbz
-hCk
-hCk
-hCk
-hCk
-hCk
+ayy
+ayy
+ayy
+ayy
+ayB
 sbz
-hCk
-hCk
-hCk
+ayB
+ayy
+ayy
 hCk
 acV
 acV
@@ -117499,22 +117541,22 @@ tAt
 tAt
 kVD
 tfw
-hCk
-hCk
-hCk
-hCk
-hCk
+ayy
+ayy
+ayy
+ayy
+ayy
 gLf
 gLf
 gLf
 aMB
 aHu
 xKv
-pBd
 aNd
 pBd
 pBd
-fRB
+pBd
+pBd
 aLr
 hWD
 add
@@ -119483,7 +119525,7 @@ inF
 inF
 inF
 pWx
-pWx
+ayA
 niP
 wbk
 nGT
@@ -158296,7 +158338,7 @@ qLV
 afC
 cyG
 qLp
-mJI
+ayF
 qfy
 dmH
 aac
@@ -161235,7 +161277,7 @@ anh
 amB
 amA
 amN
-amA
+ayG
 rtA
 tyB
 akO
@@ -163202,7 +163244,7 @@ vSh
 anl
 aKL
 aAj
-amA
+ayG
 amG
 mJI
 mJI
@@ -198969,7 +199011,7 @@ geS
 geS
 hqv
 qLp
-geS
+ayP
 geS
 bdL
 tAt
@@ -199461,7 +199503,7 @@ geS
 geS
 hqv
 qLp
-geS
+ayP
 geS
 bdL
 tAt
@@ -201207,7 +201249,7 @@ cmK
 aoz
 aoz
 aoz
-aoz
+ayS
 sWt
 azQ
 tOZ
@@ -201744,7 +201786,7 @@ fAt
 fAt
 fAt
 fAt
-eEP
+ayR
 geS
 geS
 geS
@@ -203711,7 +203753,7 @@ xRs
 oGN
 mwR
 fAt
-eEP
+ayR
 amz
 geS
 geS

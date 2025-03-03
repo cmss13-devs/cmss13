@@ -703,6 +703,12 @@ SUBSYSTEM_DEF(minimaps)
 	/// tacmap holder for holding the minimap
 	var/datum/tacmap_holder/map_holder
 
+	var/is_mainship = FALSE
+	var/can_change_map_view = TRUE
+
+	///Name for targeted_ztrait_for_mainship
+	var/change_to_name = MAIN_SHIP_DEFAULT_NAME
+
 /datum/tacmap/drawing
 	/// A url that will point to the wiki map for the current map as a fall back image
 	var/static/wiki_map_fallback
@@ -726,12 +732,6 @@ SUBSYSTEM_DEF(minimaps)
 	var/last_update_time = 0
 	/// A temporary lock out time before we can open the new canvas tab to allow the tacmap time to fire
 	var/tacmap_ready_time = 0
-
-	var/is_mainship = FALSE
-	var/can_change_map_view = TRUE
-
-	///What name we will use for the change to [name] button
-	var/change_to_name = MAIN_SHIP_DEFAULT_NAME
 
 /datum/tacmap/New(atom/source, minimap_type)
 	allowed_flags = minimap_type

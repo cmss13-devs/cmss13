@@ -1489,7 +1489,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/open/auto_turf/ice/layer1,
 /area/navalis/oob/empty_space)
 "ael" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7739,6 +7739,10 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/port)
+"axi" = (
+/obj/structure/platform/stone/strata/north,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
 "axj" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/navalis/indoors/command/conferance)
@@ -8397,7 +8401,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/open/auto_turf/ice/layer2,
 /area/navalis/oob/empty_space)
 "azf" = (
 /obj/structure/platform/metal/strata,
@@ -8588,6 +8592,34 @@
 "azG" = (
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/oob/empty_space)
+"azH" = (
+/obj/structure/stairs/multiz/up,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/ice_cavern)
+"azI" = (
+/turf/closed/wall/shiva/ice,
+/area/navalis/oob/water/far)
+"azJ" = (
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
+"azK" = (
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/ice_cavern)
+"azL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/ice_cavern)
+"azM" = (
+/obj/structure/platform/stone/strata/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
+"azN" = (
+/turf/closed/wall/shiva/ice,
+/area/navalis/oob)
 "azO" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstripingdir";
@@ -8600,6 +8632,26 @@
 	},
 /turf/open/floor/prison/whitegreen/southeast,
 /area/navalis/indoors/med_sci/foyer)
+"azP" = (
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
+"azQ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/ice_cavern)
+"azR" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"azS" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"azT" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "azU" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard{
@@ -8618,6 +8670,11 @@
 	},
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/landing_zone_1)
+"azW" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
 "azX" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
 /obj/structure/monorail{
@@ -8661,6 +8718,10 @@
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
 /area/navalis/indoors/command/office)
+"aAa" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/ice_cavern)
 "aAb" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
 /obj/structure/monorail{
@@ -8691,6 +8752,15 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/navalis/indoors/command/director_office)
+"aAd" = (
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#1ba0a4";
+	needs_power = 0;
+	dir = 1
+	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/ice_cavern)
 "aAe" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
@@ -8705,7 +8775,8 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/turf/open_space,
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
 /area/navalis/oob/empty_space)
 "aAg" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
@@ -8746,12 +8817,19 @@
 	},
 /turf/open_space,
 /area/navalis/oob/empty_space)
+"aAi" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
 "aAj" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/refinery)
+"aAk" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
 "aAl" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 10
@@ -8839,7 +8917,8 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open_space,
+/obj/structure/platform_decoration/stone/strata/west,
+/turf/open/auto_turf/ice/layer1,
 /area/navalis/oob/empty_space)
 "aAw" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
@@ -8858,6 +8937,25 @@
 /obj/structure/pipes/standard/manifold/hidden/dark,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/refinery)
+"aAy" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -1;
+	dir = 1;
+	pixel_x = -6
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aAz" = (
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#1ba0a4";
+	needs_power = 0;
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
 "aAA" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2";
@@ -9011,6 +9109,10 @@
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only)
+"aAS" = (
+/obj/structure/platform_decoration/stone/strata/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aAT" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -9104,6 +9206,10 @@
 	icon_state = "wy14"
 	},
 /area/navalis/oob/water)
+"aBc" = (
+/obj/structure/platform/stone/strata/north,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aBd" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -9175,6 +9281,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/primary_storage)
+"aBp" = (
+/obj/structure/platform_decoration/stone/strata/east,
+/obj/structure/platform_decoration/stone/strata/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aBq" = (
 /obj/structure/tunnel/maint_tunnel/hybrisa{
 	pixel_y = 7
@@ -9189,6 +9300,9 @@
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
+"aBs" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/navalis/indoors/ice_cavern)
 "aBt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -9224,6 +9338,11 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open_space,
 /area/navalis/oob/empty_space)
+"aBx" = (
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata/north,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
 "aBy" = (
 /obj/structure/blocker/forcefield/human{
 	dir = 4;
@@ -9555,6 +9674,11 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
+"aCs" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aCt" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -12360,6 +12484,12 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"aKr" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aKs" = (
 /obj/item/prop/alien/hugger,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
@@ -12368,6 +12498,18 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/darkgreen2/west,
 /area/navalis/indoors/residential/accessway)
+"aKu" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aKv" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/indoors/ice_cavern)
+"aKw" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
 "aKx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/alien/hugger,
@@ -12389,6 +12531,11 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/port)
+"aKB" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/indoors/ice_cavern)
 "aKC" = (
 /obj/item/prop/alien/hugger,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
@@ -12431,6 +12578,20 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"aKJ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/indoors/ice_cavern)
+"aKK" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -1;
+	pixel_x = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "aKL" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat/red/north,
@@ -13436,6 +13597,15 @@
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aNH" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -8;
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "aNI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/blue{
@@ -13444,6 +13614,9 @@
 	},
 /turf/open/floor/prison/green/northeast,
 /area/navalis/indoors/command/starboard_hallway)
+"aNJ" = (
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob)
 "aNK" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/structure/barricade/handrail/strata/navalis{
@@ -13990,6 +14163,11 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/mining)
+"aPi" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aPj" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/plating/plating_catwalk/prison/dark,
@@ -14275,6 +14453,16 @@
 "aPT" = (
 /turf/open/floor/plating,
 /area/navalis/indoors/industrial/mining)
+"aPU" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -1;
+	dir = 8;
+	pixel_x = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "aPV" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
@@ -14319,6 +14507,10 @@
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors/med_sci/chemical_store)
+"aQc" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/indoors/ice_cavern)
 "aQd" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/blocker/forcefield/all{
@@ -14344,6 +14536,10 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"aQh" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/indoors/ice_cavern)
 "aQi" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
@@ -14352,6 +14548,10 @@
 	},
 /turf/open_space,
 /area/navalis/oob/empty_space)
+"aQj" = (
+/obj/structure/platform/stone/strata/north,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob)
 "aQk" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -14368,6 +14568,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/command/starboard_hallway)
+"aQm" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob)
 "aQn" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/prop/hybrisa/misc/floorprops/grate4{
@@ -14376,7 +14581,7 @@
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/open/auto_turf/ice/layer2,
 /area/navalis/oob/empty_space)
 "aQo" = (
 /obj/structure/disposalpipe/segment{
@@ -14797,6 +15002,14 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/navalis/indoors/residential/kitchen)
+"aRo" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -8
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "aRp" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -15274,6 +15487,10 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"aSG" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water)
 "aSH" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 4
@@ -15297,6 +15514,13 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"aSK" = (
+/obj/structure/cable/white{
+	icon_state = "4-9";
+	pixel_x = -5
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "aSL" = (
 /obj/structure/machinery/colony_floodlight/navalis_wall_light,
 /turf/open/floor/plating/catwalk/grate,
@@ -15696,6 +15920,21 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/outdoors/landing_zone_1)
+"aTI" = (
+/obj/structure/prop/dam/drill{
+	pixel_y = 6;
+	density = 0;
+	desc = "Intended for a controlled detonation to help fracture this iceberg.";
+	name = "Explosive Insertion Drill"
+	},
+/obj/structure/cable/white{
+	icon_state = "5-9";
+	level = 2;
+	pixel_x = -6;
+	pixel_y = -15
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "aTJ" = (
 /obj/structure/machinery/power/reactor/colony,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
@@ -15855,6 +16094,13 @@
 "aUd" = (
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/exterior/com_ext)
+"aUe" = (
+/obj/item/device/flashlight/lamp/tripod{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
 "aUf" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -15940,12 +16186,49 @@
 	},
 /turf/open_space,
 /area/navalis/oob/empty_space)
+"aUo" = (
+/obj/structure/cable/white{
+	icon_state = "6-9";
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUp" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -7;
+	dir = 5;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "aUq" = (
 /obj/structure/platform/metal/strata/west{
 	layer = 2.5
 	},
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
+"aUr" = (
+/obj/structure/cable/white{
+	icon_state = "1-6";
+	level = 2;
+	pixel_y = -2;
+	pixel_x = -2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUs" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -1;
+	dir = 5;
+	pixel_x = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
 "aUt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker/cryoxadone{
@@ -15965,11 +16248,643 @@
 	},
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors/med_sci/pharmacy)
+"aUu" = (
+/obj/item/device/flashlight/lamp/tripod{
+	pixel_x = -2;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUv" = (
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
+"aUw" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/mid)
+"aUx" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -4;
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUy" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -8;
+	dir = 8;
+	pixel_x = 5
+	},
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#1ba0a4";
+	needs_power = 0;
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUz" = (
+/turf/closed/wall/shiva/ice,
+/area/navalis/indoors/ice_cavern)
+"aUA" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUB" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/indoors/ice_cavern)
+"aUC" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/indoors/ice_cavern)
+"aUD" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUE" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = 5;
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUF" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -1;
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUG" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
+"aUH" = (
+/obj/structure/prop/almayer/cannon_cables{
+	name = "\improper Large Cables";
+	pixel_y = 12;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUI" = (
+/obj/structure/cable/white{
+	icon_state = "1-5";
+	level = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUJ" = (
+/obj/structure/prop/invuln/rope{
+	pixel_y = 5
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/navalis/indoors/ice_cavern)
+"aUK" = (
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#1ba0a4";
+	needs_power = 0;
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUL" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUM" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/indoors/ice_cavern)
+"aUN" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/oob)
+"aUO" = (
+/obj/structure/computerframe{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUP" = (
+/obj/structure/prop/hybrisa/misc/detonator{
+	pixel_y = 7;
+	pixel_x = -2
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2";
+	level = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUQ" = (
+/obj/structure/cable/white{
+	icon_state = "2-5";
+	level = 2;
+	pixel_x = -16
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUR" = (
+/obj/structure/closet/crate/explosives,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUS" = (
+/obj/item/device/flashlight/lamp/tripod{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUT" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -10;
+	dir = 10;
+	pixel_x = -4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUU" = (
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob)
+"aUV" = (
+/obj/item/tool/wirecutters/tactical{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUW" = (
+/obj/structure/cable/white{
+	icon_state = "5-9";
+	level = 2;
+	pixel_x = 13;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aUX" = (
+/obj/item/device/flashlight/lamp/tripod{
+	pixel_x = -3
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUY" = (
+/obj/structure/cable/white{
+	icon_state = "4-10";
+	pixel_y = 9;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aUZ" = (
+/obj/structure/cable/white{
+	icon_state = "1-8";
+	pixel_y = 9
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVa" = (
+/obj/structure/cable/white{
+	icon_state = "5-10";
+	level = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aVb" = (
+/obj/structure/cable/white{
+	icon_state = "6-9";
+	pixel_x = 14;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aVc" = (
+/obj/item/stack/cable_coil/yellow{
+	pixel_x = 6;
+	pixel_y = -7
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aVd" = (
+/obj/structure/cable/white{
+	icon_state = "2-5";
+	level = 2;
+	pixel_x = 1;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/navalis/indoors/ice_cavern)
+"aVe" = (
+/obj/structure/prop/dam/drill{
+	pixel_y = 6;
+	density = 0;
+	desc = "Intended for a controlled detonation to help fracture this iceberg.";
+	name = "Explosive Insertion Drill"
+	},
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVf" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -1;
+	dir = 6;
+	pixel_x = -6
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVg" = (
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
+"aVh" = (
+/obj/structure/cable/white{
+	icon_state = "2-4";
+	level = 2;
+	pixel_x = -16
+	},
+/obj/structure/cable/white{
+	icon_state = "4-9";
+	pixel_x = 15;
+	pixel_y = -15
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVi" = (
+/obj/structure/cable/white{
+	icon_state = "4-10";
+	pixel_y = 16
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVj" = (
+/obj/structure/prop/invuln/dense/excavator{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVk" = (
+/obj/structure/platform/stone/strata,
+/turf/open/gm/river/no_overlay/ocean,
+/area/navalis/oob/water/far)
+"aVl" = (
+/obj/structure/prop/dam/drill{
+	pixel_y = 6;
+	density = 0;
+	desc = "Intended for a controlled detonation to help fracture this iceberg.";
+	name = "Explosive Insertion Drill"
+	},
+/obj/structure/cable/white{
+	icon_state = "5-10";
+	level = 2
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVm" = (
+/obj/structure/platform/stone/strata/west,
+/turf/closed/wall/shiva/ice,
+/area/navalis/oob)
+"aVn" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = 4;
+	dir = 5;
+	pixel_x = -4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVo" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -1;
+	dir = 5;
+	pixel_x = -9
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVp" = (
+/obj/structure/prop/ice_colony/ice_crystal{
+	name = "deep sea crystal";
+	desc = "A giant ice crystal.";
+	pixel_y = -1;
+	dir = 9;
+	pixel_x = -6
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/navalis/indoors/ice_cavern)
+"aVq" = (
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
+/turf/closed/wall/shiva/ice,
+/area/navalis/oob)
+"aVr" = (
+/obj/structure/machinery/light{
+	invisibility = 101;
+	light_color = "#680b62";
+	needs_power = 0;
+	dir = 4
+	},
+/turf/open/auto_turf/snow/brown_base/layer0/seabed,
+/area/navalis/indoors/xeno_growth/residential)
+"aVs" = (
+/obj/structure/stairs/multiz/down,
+/turf/open/floor/corsat/plate,
+/area/navalis/indoors/xeno_growth/residential)
+"aVt" = (
+/turf/open_space,
+/area/navalis/indoors/xeno_growth/residential)
+"aVu" = (
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVv" = (
+/obj/structure/platform/stone/strata/west,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aVw" = (
+/obj/structure/platform/stone/strata/north,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVx" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aVy" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/navalis/oob)
+"aVz" = (
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/north,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aVA" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aVB" = (
+/obj/structure/platform/stone/strata/north,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aVC" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aVD" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVE" = (
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVF" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVG" = (
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aVH" = (
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVI" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVJ" = (
+/obj/structure/platform/stone/strata/north,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aVK" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVL" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVM" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVN" = (
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVO" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aVP" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aVQ" = (
+/obj/structure/platform/stone/strata,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVR" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aVS" = (
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aVT" = (
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVU" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVV" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVW" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aVX" = (
+/obj/structure/platform_decoration/stone/strata/west,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aVY" = (
+/obj/structure/platform_decoration/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata/east,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aVZ" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/north,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aWa" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWb" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWc" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/north,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWd" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/north,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aWe" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aWf" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWg" = (
+/obj/structure/platform_decoration/stone/strata/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWh" = (
+/obj/structure/platform_decoration/stone/strata/west,
+/obj/structure/platform_decoration/stone/strata/east,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aWi" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform_decoration/stone/strata/east,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWj" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWk" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWl" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/navalis/oob)
 "aWm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/foyer)
+"aWn" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/east,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aWo" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWp" = (
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	unacidable = 1
+	},
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aWq" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/closed/wall/shiva/ice,
+/area/navalis/oob)
+"aWr" = (
+/obj/structure/stairs/multiz/down,
+/turf/open/floor/corsat/plate,
+/area/navalis/outdoors/exterior/com_ext)
+"aWs" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open_space,
+/area/navalis/oob/empty_space)
 "aWt" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir";
@@ -15981,6 +16896,18 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/blackfull/west,
 /area/navalis/outdoors/landing_zone_2)
+"aWv" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWw" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/north,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
 "aWx" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8;
@@ -15990,6 +16917,35 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/navalis/indoors/command/security)
+"aWy" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/north,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWz" = (
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWA" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
 "aWB" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
@@ -15997,6 +16953,186 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/logistic/maintenance_starboard)
+"aWC" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWD" = (
+/obj/structure/monorail{
+	dir = 8;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aWE" = (
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWF" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
+/turf/closed/wall/shiva/ice,
+/area/navalis/oob)
+"aWG" = (
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWH" = (
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWI" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/closed/wall/shiva/ice,
+/area/navalis/oob)
+"aWJ" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWK" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWL" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/north,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWM" = (
+/obj/structure/platform_decoration/stone/strata/north,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWN" = (
+/obj/structure/platform_decoration/stone/strata,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWO" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWP" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWQ" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aWR" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aWS" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWT" = (
+/obj/structure/platform_decoration/stone/strata,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aWU" = (
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aWV" = (
+/obj/structure/platform/stone/strata,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aWW" = (
+/obj/structure/platform_decoration/stone/strata/north,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWX" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aWY" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/obj/structure/platform/stone/strata/north,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"aWZ" = (
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aXa" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXb" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXc" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/obj/structure/platform/metal/hybrisa/metalplatform5/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXd" = (
+/obj/structure/prop/ice_colony/surveying_device{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXe" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform_decoration/stone/strata,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aXf" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/navalis/oob/empty_space)
 "aXg" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -16006,6 +17142,75 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/power)
+"aXh" = (
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXi" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXj" = (
+/obj/structure/platform_decoration/stone/strata/east,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aXk" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"aXl" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXm" = (
+/obj/structure/platform/metal/hybrisa/metalplatform5,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXn" = (
+/obj/item/device/flashlight/lamp/tripod{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXo" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/prop/invuln/rope{
+	pixel_y = -1
+	},
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aXp" = (
+/obj/item/device/flashlight/lamp/tripod{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXq" = (
+/obj/structure/platform_decoration/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXr" = (
+/obj/item/weapon/ice_axe/green{
+	pixel_x = 13;
+	pixel_y = 4
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"aXs" = (
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/navalis/oob/empty_space)
+"aXt" = (
+/obj/structure/platform_decoration/stone/strata/north,
+/turf/open_space,
+/area/navalis/oob/empty_space)
 "aXw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -20151,13 +21356,10 @@
 /area/navalis/indoors/med_sci/corridor)
 "fGS" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
-/obj/structure/prop/hybrisa/misc/floorprops/grate4{
-	dir = 8
-	},
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
 	},
-/turf/open_space,
+/turf/open/auto_turf/ice/layer1,
 /area/navalis/outdoors/charon/surface_deck/main_deck)
 "fGZ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -30385,7 +31587,7 @@
 "rjI" = (
 /obj/structure/prop/ice_colony/ice_crystal{
 	name = "deep sea crystal";
-	desc = "A giant crystal brought up from the ocean floor during the excavation and mining operations of this rig. According to the inscryption on the table, this crystal was dragged up manually by the site director.";
+	desc = "A giant ice crystal.";
 	pixel_y = 5
 	},
 /obj/structure/surface/table/reinforced/cloth{
@@ -31948,29 +33150,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/kutjevo/grey,
 /area/navalis/outdoors/landing_zone_2)
-"sZk" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 1;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe";
-	layer = 2;
-	pixel_y = 12;
-	pixel_x = -14
-	},
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 9;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe";
-	pixel_y = -8;
-	pixel_x = -14;
-	layer = 2.5
-	},
-/turf/open/floor/prison/whitegreenfull,
-/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "taf" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /turf/open/floor/plating/catwalk/grate/alt,
@@ -53192,15 +54371,15 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
+aUG
+aUG
+aUG
+aUG
+aUw
+aUw
+aSG
+aSG
+aSG
 mmV
 mmV
 mmV
@@ -53354,18 +54533,18 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
+aUG
+aVg
+aNJ
+aUU
+azN
+azN
+azN
+azN
+azN
+aQm
+aNJ
+aCs
 mmV
 mmV
 mmV
@@ -53517,20 +54696,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+aNJ
+aNJ
+aUU
+azN
+azN
+azN
+azN
+azN
+azN
+azN
+aQm
+aNJ
+aBc
 mmV
 mmV
 mmV
@@ -53681,20 +54860,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+aNJ
+aUU
+azN
+azN
+azN
+azR
+azR
+aUx
+azN
+azN
+azN
+aQj
+aBc
 mmV
 mmV
 mmV
@@ -53845,20 +55024,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
+aVk
+aUU
+azN
+azN
+azN
+azR
+azR
+azR
+aAi
+azR
+azH
+azN
+aQj
+aCs
 mmV
 mmV
 mmV
@@ -54009,21 +55188,21 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azN
+azR
+azR
+aAi
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aNJ
+aBc
 mmV
 mmV
 mmV
@@ -54173,21 +55352,21 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+azR
+aUO
+aUH
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aNJ
+aBc
 mmV
 mmV
 mmV
@@ -54337,21 +55516,21 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+azR
+aAi
+aUP
+aUI
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aNJ
+aBc
 mmV
 mmV
 mmV
@@ -54501,20 +55680,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+aAi
+aUV
+aUQ
+aAi
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aPi
 mmV
 mmV
 mmV
@@ -54665,20 +55844,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+aVa
+aAi
+aUR
+aAi
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aBc
 mmV
 mmV
 mmV
@@ -54829,20 +56008,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+aVh
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aBc
 mmV
 mmV
 mmV
@@ -54993,20 +56172,20 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
+aVg
+azN
+azR
+aVb
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aBc
 mmV
 mmV
 mmV
@@ -55156,21 +56335,21 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+aAi
+aUW
+aAi
+aBs
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aBc
 mmV
 mmV
 mmV
@@ -55320,21 +56499,21 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+aAi
+aAi
+aUS
+aBs
+aAi
+aAi
+azR
+azH
+azN
+aQj
+aBc
 mmV
 mmV
 mmV
@@ -55484,21 +56663,21 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+aVc
+aAi
+aBs
+aUJ
+aAi
+aAi
+aUp
+azN
+azN
+aQj
+aBc
 mmV
 mmV
 mmV
@@ -55648,21 +56827,21 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aBs
+aAi
+aAi
+azR
+azN
+azN
+aQm
+aBc
 mmV
 mmV
 mmV
@@ -55812,22 +56991,22 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+azN
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -55976,22 +57155,22 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+aRo
+azN
+aBc
 mmV
 mmV
 mmV
@@ -56140,23 +57319,23 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
+aVg
+azN
+azR
+aAi
+aAi
+azR
+azR
+aUK
+azR
+aAi
+aAi
+aAi
+aAi
+azR
+azN
+aCs
+aAS
 mmV
 mmV
 mmV
@@ -56303,24 +57482,24 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
+aVk
+azN
+azN
+azR
+aAi
+aAi
+azR
+azN
+azN
+azR
+azR
+aAi
+aAi
+aAi
+azR
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -56467,25 +57646,25 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
+aVk
+azN
+azN
+azR
+aAi
+aAi
+azR
+azN
+azN
+aUE
+azR
+aAi
+aAi
+aAi
+azR
+azR
+azN
+aCs
+aAS
 mmV
 mmV
 mmV
@@ -56631,25 +57810,25 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
+aVk
+azN
+azN
+azR
+aAi
+aAi
+aUX
+azN
+azN
+azN
+azR
+aAi
+aAi
+aAi
+azR
+azN
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -56795,25 +57974,25 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-mmV
+aVk
+azN
+azN
+azR
+aAi
+aAi
+azR
+aUT
+azN
+azN
+azR
+azR
+aAi
+aAi
+azR
+azR
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -56959,25 +58138,25 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-mmV
+aVk
+azN
+aVn
+azR
+aAi
+aAi
+aAi
+azR
+azR
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+azR
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -57123,25 +58302,25 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
+aVk
+azN
+aVo
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aUe
+aAi
+azR
+azR
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -57287,25 +58466,25 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
+aVk
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aUr
+aAi
+aAi
+aAi
+azR
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -57451,26 +58630,26 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aBs
+aAi
+aAi
+aAi
+azR
+aUo
+azR
+aAi
+azR
+azR
+azN
+aCs
+aAS
 mmV
 mmV
 mmV
@@ -57615,26 +58794,26 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+aAi
+aVd
+aBs
+aBs
+aAi
+aAi
+azR
+azR
+azN
+aSK
+azR
+aAi
+aNH
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -57779,26 +58958,26 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVg
+azN
+azN
+azR
+aVi
+aAi
+aAi
+aBs
+aAi
+azR
+aUy
+azN
+azN
+aTI
+azR
+aAi
+azR
+azN
+azN
+aBc
 mmV
 mmV
 mmV
@@ -57942,27 +59121,27 @@ wIw
 wIw
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azN
+aVl
+azR
+aAi
+aAi
+aBs
+aAi
+azR
+azN
+azN
+azN
+azR
+azR
+aAi
+azR
+azN
+aKr
+aBp
 mmV
 mmV
 mmV
@@ -58107,26 +59286,26 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aUv
+azN
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+azR
+azN
+azR
+azR
+azR
+aAi
+azR
+azR
+azN
+azN
+aBc
 mmV
 hCk
 hCk
@@ -58271,22 +59450,22 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+azR
+azR
+azR
+azR
+aPU
 hCk
 hCk
 hCk
@@ -58435,20 +59614,20 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+aVp
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+azR
 hCk
 hCk
 hCk
@@ -58599,18 +59778,18 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azR
 hCk
 hCk
 hCk
@@ -58763,17 +59942,17 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
 hCk
 hCk
 hCk
@@ -58927,17 +60106,17 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
+aVg
+azN
+azR
+azR
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aPU
 hCk
 hCk
 hCk
@@ -59090,19 +60269,19 @@ wIw
 wIw
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+azR
+aVj
+azR
+aAi
+aAi
+aAi
+aAi
+azR
+aUs
 hCk
 hCk
 hCk
@@ -59254,21 +60433,21 @@ wIw
 wIw
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+azR
+azR
+azR
+aAi
+aAi
+aBs
+aAi
+aAi
+azR
+azR
+azR
 hCk
 hCk
 hCk
@@ -59418,23 +60597,23 @@ wIw
 wIw
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+azR
+azR
+azR
+aAi
+aAi
+aBs
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+azR
 hCk
 hCk
 hCk
@@ -59582,28 +60761,28 @@ wIw
 wIw
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+azR
+azR
+azR
+aAi
+aBs
+aBs
+aAi
+aAi
+aUu
+aAi
+aAi
+aAi
+azR
+azR
+azR
+azR
+azR
+azR
 hCk
 hCk
 hCk
@@ -59746,32 +60925,32 @@ wIw
 wIw
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azN
+azN
+azN
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+azN
+azN
+azN
 mmV
 mmV
 mmV
@@ -59911,31 +61090,31 @@ wIw
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aUv
+azN
+aVq
+azN
+azN
+azR
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+azN
+azN
 mmV
 mmV
 mmV
@@ -60076,29 +61255,29 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aUv
+azN
+aVm
+azN
+azR
+aAi
+aAi
+azR
+aUF
+aUz
+azR
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azN
 mmV
 mmV
 mmV
@@ -60241,28 +61420,28 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aUv
+azN
+azN
+azR
+aAi
+aAi
+azR
+azN
+azN
+azN
+azN
+azR
+aAi
+aAi
+aAi
+aBs
+aBs
+aBs
+aAi
+aAi
+azR
+azN
 mmV
 mmV
 mmV
@@ -60405,30 +61584,30 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+azR
+aUY
+aUe
+azR
+azN
+azN
+azN
+aKK
+azR
+aAi
+aAi
+aAi
+aBs
+aBs
+aAi
+aAi
+aAi
+azR
+azN
+azN
+azN
 mmV
 mmV
 mmV
@@ -60569,29 +61748,29 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azN
+aVe
+aUZ
+aAi
+azR
+azR
+aPU
+azN
+azN
+azR
+aAi
+aAi
+aBs
+aBs
+aAi
+aAi
+aAi
+aAi
+azR
+azN
+azN
 mmV
 mmV
 mmV
@@ -60734,29 +61913,29 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-mmV
-mmV
-mmV
-mmV
-mmV
+aVk
+azN
+azR
+azR
+aAi
+aAi
+aAi
+azR
+azN
+azN
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAz
+aAi
+azR
+azR
+azN
+asq
 nSY
 mmV
 mmV
@@ -60898,30 +62077,30 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
+aVg
+azN
+azN
+azR
+azR
+aAi
+aAi
+azR
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azN
+azN
+aAi
+azK
+azK
+azL
+asq
+asq
 nSY
 nSY
 nSY
@@ -61061,33 +62240,33 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-nSY
-gGc
-gGc
+aVk
+azN
+azN
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azN
+azN
+azN
+azK
+azK
+azK
+azK
+azS
+asq
+asq
+asq
 gGc
 gGc
 gGc
@@ -61226,32 +62405,32 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azM
+aUv
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azN
+azN
+azN
+azQ
+aAa
+aAa
+azS
+azQ
+azK
+asq
 gGc
 gGc
 gGc
@@ -61391,33 +62570,33 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aVk
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azK
+aAa
+azK
+azK
+azK
+azK
+azL
+asq
+asq
+asq
 gGc
 gGc
 gGc
@@ -61555,33 +62734,33 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aVg
+azN
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aBs
+aBs
+aBs
+aBs
+aAi
+aAi
+aAi
+aAi
+aAi
+azK
+aAa
+azK
+azK
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -61718,34 +62897,34 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aVk
+azN
+azN
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aBs
+aBs
+aBs
+aAi
+aAi
+aAi
+aAi
+aAi
+azK
+aAa
+azK
+azK
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -61882,34 +63061,34 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aVk
+azN
+azR
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azK
+azQ
+azL
+azK
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -62046,34 +63225,34 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-aEf
-uGw
-uGw
-uGw
-uGw
-uGw
-dRh
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aVk
+azN
+azR
+aAi
+aAi
+aAi
+aAi
+aUA
+aQc
+aQc
+aQc
+aQc
+aQc
+aKu
+aAi
+aAi
+aAi
+azK
+azK
+azN
+azN
+azK
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -62210,34 +63389,34 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-aEf
-aCq
+aVg
+azN
+azR
+aAi
+aAi
+aAi
+aUA
+aUB
 dvZ
 dvZ
 dvZ
 dvZ
 dvZ
-brp
-dRh
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKB
+aKu
+aAi
+aAi
+azK
+azK
+azN
+asq
+azK
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -62373,14 +63552,14 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-iEQ
-aCq
+aVk
+azN
+azN
+azR
+aAi
+aAi
+aUL
+aUB
 dvZ
 dvZ
 dvZ
@@ -62388,20 +63567,20 @@ dvZ
 dvZ
 dvZ
 dvZ
-brp
-dRh
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKB
+aKu
+aAi
+azK
+azK
+azN
+asq
+aAd
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -62537,13 +63716,13 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-aDN
+aVk
+azN
+azN
+azR
+aAi
+aAi
+aUM
 dvZ
 dvZ
 dvZ
@@ -62553,19 +63732,19 @@ dvZ
 dvZ
 dvZ
 dvZ
-acm
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKv
+aAi
+aAi
+aAi
+azN
+asq
+azK
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -62701,13 +63880,13 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-aDN
+aVk
+azN
+azN
+azR
+aAi
+aAi
+aUM
 dvZ
 dvZ
 dvZ
@@ -62717,19 +63896,19 @@ usc
 dvZ
 dvZ
 dvZ
-acm
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKv
+aAi
+aAi
+aAi
+azK
+azN
+azK
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -62866,12 +64045,12 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-aDN
+aUv
+azN
+azR
+aAi
+aAi
+aUM
 dvZ
 dvZ
 dvZ
@@ -62881,19 +64060,19 @@ usc
 dvZ
 dvZ
 dvZ
-acm
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKv
+aAi
+aAi
+aAi
+azK
+azQ
+azK
+azK
+azK
+azK
+azK
+azH
+asq
 gGc
 gGc
 gGc
@@ -63030,12 +64209,12 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-aDN
+aVk
+azN
+azR
+aAi
+aAi
+aUM
 dvZ
 dvZ
 dvZ
@@ -63045,19 +64224,19 @@ pdb
 dvZ
 dvZ
 dvZ
-acm
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKv
+aAi
+aAi
+aAi
+azK
+aAa
+azK
+azK
+azK
+azK
+azL
+azH
+asq
 gGc
 gGc
 gGc
@@ -63194,12 +64373,12 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-aDN
+aVk
+azN
+azR
+aAi
+aAi
+aUM
 dvZ
 dvZ
 dvZ
@@ -63209,19 +64388,19 @@ dvZ
 dvZ
 dvZ
 dvZ
-acm
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKv
+aAi
+aAi
+aAi
+aAi
+aAa
+azK
+azK
+azK
+azK
+asq
+asq
+asq
 gGc
 gGc
 gGc
@@ -63358,13 +64537,13 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-oJj
-aBA
+aVk
+azN
+aVf
+azR
+aAi
+aUD
+aUC
 dvZ
 dvZ
 dvZ
@@ -63372,20 +64551,20 @@ dvZ
 dvZ
 dvZ
 dvZ
-aBD
-aBE
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKJ
+aKw
+aAi
+aAi
+aAi
+aAk
+aAa
+azR
+azK
+azK
+asq
+asq
+asq
+asq
 gGc
 gGc
 gGc
@@ -63522,34 +64701,34 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-oJj
-aBA
+aVk
+azN
+azN
+azR
+aAi
+aAi
+aUD
+aUC
 dvZ
 dvZ
 dvZ
 dvZ
 dvZ
-aBD
-aBE
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aKJ
+aKw
+aAi
+aAi
+aAi
+aAi
+aAi
+azQ
+azS
+azT
+azR
+asq
+azI
+azI
+axi
 gGc
 gGc
 gGc
@@ -63687,33 +64866,33 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-oJj
-aBH
-aBH
-aBH
-aBH
-aBH
-aBE
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aUv
+azN
+azR
+azR
+azR
+aAi
+aUD
+aQh
+aQh
+aQh
+aQh
+aQh
+aKw
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azS
+azN
+azN
+azN
+azN
+azI
+azI
+axi
 gGc
 gGc
 gGc
@@ -63851,32 +65030,32 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aVk
+azN
+azN
+aUK
+aAi
+aAi
+aAi
+aBs
+aBs
+aBs
+aBs
+aAi
+aAi
+aAi
+azR
+azR
+azR
+azR
+aAy
+azN
+azN
+azW
+azM
+azP
+azI
+azJ
 gGc
 gGc
 gGc
@@ -64016,30 +65195,30 @@ gGc
 gGc
 gGc
 gGc
+aUv
+azN
+azN
+aUN
+azR
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+aAi
+azR
+azR
+azN
+azN
+azN
+azN
+azN
+azW
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azM
 gGc
 gGc
 gGc
@@ -64181,24 +65360,24 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aUv
+azI
+azN
+azR
+azR
+azR
+azR
+azR
+aAi
+aAi
+azR
+azR
+azN
+azN
+azW
+azM
+azM
+azM
 gGc
 gGc
 gGc
@@ -64346,19 +65525,19 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+aUv
+azN
+azN
+azN
+azN
+azN
+azR
+azR
+azR
+azR
+aKK
+azN
+aBx
 gGc
 gGc
 gGc
@@ -64511,18 +65690,18 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azM
+azM
+azM
+aUv
+azN
+azN
+azN
+azN
+azN
+azN
+azN
+axi
 gGc
 gGc
 gGc
@@ -64679,13 +65858,13 @@ gGc
 gGc
 gGc
 gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
-gGc
+azM
+azM
+azM
+azM
+azM
+azM
+azM
 gGc
 gGc
 gGc
@@ -94033,11 +95212,11 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ayZ
-xRC
+aWS
+azN
+azN
+aWF
+aWq
 aIF
 kso
 kso
@@ -94191,17 +95370,17 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-nLC
+aWT
+aVx
+aVL
+aWg
+aVu
+aVu
+aWM
+aWG
+azN
+aSl
+aSl
 aIF
 kso
 kso
@@ -94354,19 +95533,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-nLC
-aNT
+aWT
+aWH
+azN
+azN
+aVw
+aVu
+aVu
+aXd
+aWS
+azN
+aSl
+aSl
+aIF
 kso
 kso
 ayw
@@ -94518,20 +95697,20 @@ ihH
 ihH
 ihH
 ihH
+aVQ
+azN
+azN
+aVM
+aXq
+aXn
+aVA
+aVv
+aVv
+aVv
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-ayZ
-tIQ
-aIF
+aWr
+kso
+kso
 kso
 aQB
 aQA
@@ -94681,21 +95860,21 @@ ihH
 ihH
 ihH
 ihH
+aWT
+aWH
+azN
+aVM
+aXq
+aVu
+aVA
+aXj
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aSX
-bUK
-aIF
+aWr
+kso
+kso
 kso
 ayu
 ayu
@@ -94845,20 +96024,20 @@ ihH
 ihH
 ihH
 ihH
+aXs
+azN
+azN
+aVw
+aVA
+aVv
+aXj
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-nLC
-aUj
+aWr
+kso
 kso
 kso
 ayu
@@ -95008,6 +96187,12 @@ ihH
 ihH
 ihH
 ihH
+aWT
+aWH
+azN
+azN
+aVw
+aVB
 ihH
 ihH
 ihH
@@ -95015,14 +96200,8 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-nLC
-aIF
+aWr
+kso
 kso
 kso
 ayu
@@ -95172,6 +96351,12 @@ ihH
 ihH
 ihH
 ihH
+aXs
+azN
+azN
+aVM
+aXq
+aVB
 ihH
 ihH
 ihH
@@ -95179,14 +96364,8 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-nLC
-aIF
+aWr
+kso
 kso
 kso
 ayu
@@ -95336,6 +96515,12 @@ ihH
 ihH
 ihH
 ihH
+aXs
+azN
+azN
+aVw
+aVA
+aXj
 ihH
 ihH
 ihH
@@ -95343,14 +96528,8 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-nLC
-aNT
+aWr
+kso
 kso
 kso
 ayu
@@ -95500,6 +96679,11 @@ ihH
 ihH
 ihH
 ihH
+aXt
+aWG
+azN
+aVw
+aVB
 ihH
 ihH
 ihH
@@ -95508,14 +96692,9 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-ayZ
-aEe
-aIF
+aWr
+kso
+kso
 aSL
 awa
 ayf
@@ -95665,6 +96844,10 @@ ihH
 ihH
 ihH
 ihH
+aWM
+aVE
+aXq
+aVB
 ihH
 ihH
 ihH
@@ -95673,13 +96856,9 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-aKX
-tOO
-bUK
-aIF
+aWr
+kso
+kso
 kso
 jJV
 ale
@@ -95827,6 +97006,12 @@ ihH
 ihH
 ihH
 ihH
+aVu
+aVu
+aVu
+aVu
+aVu
+aVB
 ihH
 ihH
 ihH
@@ -95835,14 +97020,8 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-nLC
-aUj
+aWr
+kso
 kso
 kso
 awa
@@ -95991,22 +97170,22 @@ ihH
 ihH
 ihH
 ihH
+aVu
+aVu
+aVu
+aVG
+aVu
+aVC
+aVx
+aVx
+aVX
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-nLC
-atU
+aWr
+kso
 kso
 kso
 aKI
@@ -96157,20 +97336,20 @@ ihH
 ihH
 ihH
 ihH
+aVu
+aVu
+aVG
+aVu
+aVG
+aXr
+aXo
+aVX
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-ayZ
-acE
+aWl
+aWl
+aSl
 atU
 kso
 kso
@@ -96321,20 +97500,20 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aKX
-ayZ
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aXp
+aVC
+aVX
+aWT
+aVx
+aWl
+aWl
+aWl
 acE
 atU
 afG
@@ -96485,20 +97664,20 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aKX
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVG
+aVu
+aXe
+aWU
+aVF
+aVu
+aWs
+aWn
 aPo
 aDL
 atU
@@ -96650,19 +97829,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
+aVu
+aVu
+aVG
+aVG
+aVu
+aVu
+aVu
+aXf
+aVu
+aVG
+aVu
+aVu
+aVF
 nyA
 aRD
 acE
@@ -96813,19 +97992,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVu
+aVG
+aVG
+aVu
+aVu
+aVG
+aVG
+aVG
+aVG
+aVu
+aVu
 aek
 gqE
 aKX
@@ -96977,22 +98156,22 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aWN
+aVL
+aVL
 aAf
 aAv
-aKX
-aKX
+aVF
+aWd
 aKX
 ayZ
 aQd
@@ -97142,21 +98321,21 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVQ
+azN
+azN
+azN
+aVw
+aVu
+aVB
 ihH
 ihH
 ihH
@@ -97305,23 +98484,23 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVL
+aVL
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aWM
+aWG
+azN
+azN
+aVD
+aWg
+aVC
+aVX
 aKX
 aKX
 aKX
@@ -97469,23 +98648,23 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+azN
+azN
+aVD
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aWM
+aWG
+azN
+azN
+aVw
+aVu
+aVB
 ihH
 ihH
 ihH
@@ -97633,23 +98812,23 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+azN
+azN
+azN
+aVw
+aVu
+aVG
+aVu
+aVu
+aVu
+aVu
+aVQ
+azN
+azN
+aVw
+aVu
+aVB
 ihH
 ihH
 ihH
@@ -97797,23 +98976,23 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+azN
+azN
+azN
+aVw
+aVu
+aVG
+aVu
+aVu
+aVu
+aVu
+aVQ
+azN
+aWo
+aWh
+aVG
+aVB
 ihH
 ihH
 ihH
@@ -97961,23 +99140,23 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+azN
+azN
+aVM
+aVu
+aVu
+aVG
+aVu
+aVu
+aVu
+aVu
+aVQ
+azN
+azN
+aVJ
+aWe
+aVY
 ihH
 ihH
 ihH
@@ -98125,23 +99304,23 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVE
+azN
+aVw
+aVu
+aVu
+aVG
+aVu
+aVu
+aVu
+aWN
+aWH
+azN
+azN
+aVw
+aVS
+aVB
 ihH
 aTL
 abO
@@ -98289,23 +99468,23 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aKX
-aTL
+aVu
+aVu
+azN
+aVw
+aVu
+aVu
+aVG
+aVu
+aVu
+aWN
+aWH
+azN
+azN
+aVM
+aWi
+aWf
+aVZ
 abO
 uWu
 hCk
@@ -98453,21 +99632,21 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aTL
+aVu
+aVu
+azN
+aVw
+aVu
+aVG
+aVu
+aVu
+aVu
+aVQ
+azN
+azN
+aWv
+aWi
+aWj
 aKF
 osE
 hCk
@@ -98618,19 +99797,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aTL
+aVu
+azN
+azN
+aVw
+aVG
+aVu
+aVu
+aVG
+aWV
+azN
+azN
+aWw
+aWj
 acn
 amu
 ams
@@ -98781,19 +99960,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aTL
+aVu
+aVu
+aVE
+aVE
+aVu
+aVu
+aVu
+aVG
+aVG
+aWV
+azN
+aWI
+aWy
 acn
 tHw
 amf
@@ -98944,19 +100123,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aTL
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVL
+aWQ
+aWW
+aWO
+aWJ
 acn
 tHw
 amf
@@ -99107,19 +100286,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aTL
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVL
+aVL
+azN
+azN
+aWw
+aWj
 acn
 tHw
 amf
@@ -99271,18 +100450,18 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aTL
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVL
+azN
+azN
+azN
+aWv
+aWX
 aAJ
 tHw
 aJT
@@ -99435,17 +100614,17 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+azN
+azN
+azN
+aXk
+aVS
 aze
 tHw
 vbI
@@ -99599,17 +100778,17 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVu
+aVG
+aVu
+aVu
+azN
+azN
+azN
+aVD
+aWQ
 aQn
 dgG
 amh
@@ -99764,17 +100943,17 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-azv
+aVu
+aVu
+aVG
+aVu
+aVu
+aVE
+azN
+azN
+azN
+azN
+aWY
 wbk
 dgG
 amh
@@ -99928,18 +101107,18 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-azv
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aWZ
+azN
+azN
+azN
+aWP
+aWa
 wbk
 dgG
 amh
@@ -99947,7 +101126,7 @@ amg
 amv
 aFV
 aFV
-sZk
+hch
 mCt
 amg
 cCN
@@ -100093,18 +101272,18 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-azv
+aVu
+aVu
+aVG
+aVG
+aVu
+aVu
+aWZ
+azN
+azN
+azN
+aWP
+aWK
 wbk
 dgG
 amh
@@ -100257,19 +101436,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-azv
+aVu
+aVu
+aVG
+aVG
+aVG
+aVG
+aVu
+aVE
+aVE
+azN
+azN
+aWL
+aWa
 wbk
 dgG
 amh
@@ -100421,20 +101600,20 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-azv
+aVu
+aVu
+aVu
+aVG
+aVG
+aVu
+aVG
+aVu
+aVG
+aWZ
+aVE
+aVu
+aWf
+aWa
 wbk
 dgG
 amt
@@ -100586,20 +101765,20 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-azv
+aVu
+aVu
+aVu
+aVu
+aVG
+aVu
+aVu
+aVG
+aVG
+aVu
+aVu
+aVS
+aVF
+aWa
 aAG
 adl
 hCk
@@ -100752,22 +101931,22 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aKX
-azv
-sXe
-aGS
+aVu
+aVu
+aVG
+aVu
+aVu
+aVu
+aVu
+aVu
+aVG
+aVG
+aVS
+aVF
+aVF
+aWa
+aVR
+aVO
 hCk
 hCk
 thk
@@ -100916,24 +102095,24 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-acK
-lgZ
-sXe
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVG
+aVG
+aVu
+aVS
+aVS
+aVS
+aVS
+aVP
+aVK
+aVI
 fGS
 pRd
 xjZ
@@ -101080,28 +102259,28 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aKX
-aKX
-aKX
-aKX
-aKX
+aVu
+aVu
+aVu
+aVG
+aVu
+aVu
+aWQ
+aWQ
+aVu
+aVu
+aVu
+aVu
+aVG
+aVG
+aVG
+aVG
+aVu
+aVF
+aVF
+aVy
+aVy
+aVy
 asq
 asq
 ars
@@ -101244,26 +102423,26 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVu
+aVG
+aVu
+aVT
+azN
+azN
+aVw
+aVu
+aVG
+aVG
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+asq
 asq
 asq
 asq
@@ -101408,28 +102587,28 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVu
+aVu
+aVQ
+azN
+azN
+azN
+aVD
+aVL
+aVG
+aVG
+aVG
+aVG
+aVu
+aVu
+aVu
+aVu
+aVu
 asq
 asq
-ihH
+aVu
 asq
 asq
 asq
@@ -101571,30 +102750,30 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVG
+aVG
+aVu
+aVQ
+azN
+azN
+azN
+azN
+azN
+aVw
+aVu
+aVu
+aVG
+aVu
+aVL
+aVL
+aVu
+azN
+azN
+azN
+azN
+aVw
 asq
 asq
 asq
@@ -101735,31 +102914,31 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVL
+aVG
+aVG
+aVu
+aVQ
+azN
+azN
+azN
+azN
+azN
+aVw
+aVu
+aVu
+aVu
+aVQ
+azN
+azN
+aVw
+aVG
+aVu
+azN
+aVw
+aVu
+aVu
 asq
 asq
 asq
@@ -101899,31 +103078,31 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+azN
+aVD
+aVu
+aVu
+aVu
+aXh
+azN
+azN
+aVM
+aVE
+aVu
+aVu
+aVG
+aVu
+aVT
+azN
+azN
+aVw
+aVG
+aVA
+aVv
+aVv
+aVv
+aVv
 asq
 asq
 asq
@@ -102063,36 +103242,36 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-xdv
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+azN
+azN
+aVD
+aVu
+aVQ
+azN
+azN
+aVM
+aVu
+aWz
+aVu
+aVu
+aVG
+aVQ
+azN
+azN
+azN
+aVJ
+aVu
+aVB
 ihH
 ihH
 ihH
 ihH
 asq
 asq
-ihH
 asq
 asq
-asq
+ari
 ari
 arT
 ari
@@ -102227,37 +103406,37 @@ ihH
 ihH
 ihH
 ihH
+aVu
+azN
+azN
+azN
+aVw
+aVu
+aVE
+aVE
+aVu
+aVu
+aWz
+aVu
+aVG
+aVG
+aVQ
+azN
+azN
+aVM
+aVu
+aVG
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-xdv
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-asq
-asq
-ihH
-asq
-asq
-asq
-asq
+aVt
+aVs
+art
+ari
+ari
 ari
 ari
 ari
@@ -102391,39 +103570,39 @@ ihH
 ihH
 ihH
 ihH
+aVu
+aVE
+azN
+aVM
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aWz
+aVu
+aVG
+aVu
+aVQ
+azN
+aVM
+aVu
+aVu
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-aPl
-xHO
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-asq
-ihH
-ihH
-ihH
-asq
-asq
-asq
-asq
-auQ
+aVt
+aVs
+ari
+ari
+ari
+ari
+ari
 ari
 ari
 ari
@@ -102556,37 +103735,37 @@ ihH
 ihH
 ihH
 ihH
+aVu
+aVE
+aVu
+aVu
+aVu
+aVG
+aVG
+aVu
+aVG
+aWz
+aVu
+aVG
+aVG
+aVG
+aVE
+aVu
+aVG
+aVu
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-aPl
-xHO
-aPl
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-ihH
-asq
-asq
+aVt
+aVs
+ari
+arT
+ari
+ari
 ars
 ars
 ars
@@ -102720,37 +103899,37 @@ ihH
 ihH
 ihH
 ihH
+aVu
+aVu
+aVu
+aVu
+aVu
+aVG
+aXa
+aWR
+aWk
+aWA
+aWk
+aWk
+aVU
+aVu
+aVu
+aVu
+aVG
+aVu
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
 ihH
-aUg
-ies
-ies
-aAB
-ies
-aBw
-ayG
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-asq
-asq
-ihH
-ihH
-asq
+aVt
+aVs
+ari
+ari
+ari
+ari
 asq
 asq
 ars
@@ -102884,37 +104063,37 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aUg
-xQF
+aVu
+aVu
+aVG
+aVG
+aVu
+aXa
+aXb
 dvZ
 dvZ
 dvZ
 dvZ
 dvZ
-unX
-ayG
+aWb
+aVU
+aVu
+aVu
+aVG
+aVu
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-asq
-ihH
-ihH
-ihH
-asq
+aVt
+aVs
+ari
+ari
+ari
+ari
 asq
 ari
 ari
@@ -103048,12 +104227,12 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-uAA
-xQF
+aVu
+aVu
+aVu
+aVu
+aXl
+aXb
 dvZ
 dvZ
 dvZ
@@ -103061,24 +104240,24 @@ dvZ
 dvZ
 dvZ
 dvZ
-unX
-ayG
+aWb
+aVU
+aVu
+aVL
+aVu
+aVC
 ihH
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-asq
+aVt
+aVs
+ari
+ari
+ari
+ari
 ari
 ari
 ari
@@ -103212,11 +104391,11 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-vFS
+aVu
+aVu
+aVG
+aVG
+aXm
 dvZ
 dvZ
 dvZ
@@ -103226,22 +104405,22 @@ dvZ
 dvZ
 dvZ
 dvZ
-aDG
+aVV
+aVQ
+azN
+aVD
+aVu
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-asq
-asq
+aVt
+aVs
+ari
+ari
+ari
 arv
 ari
 ari
@@ -103376,11 +104555,11 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-vFS
+aVu
+aVu
+aVu
+aVG
+aXm
 dvZ
 dvZ
 dvZ
@@ -103390,22 +104569,22 @@ usc
 dvZ
 dvZ
 dvZ
-aDG
+aVV
+aVQ
+azN
+azN
+aVu
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-art
+aVt
+aVs
+ari
+ari
+ari
 ari
 ari
 ari
@@ -103540,11 +104719,11 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-vFS
+aVu
+aVu
+aVG
+aVG
+aXm
 dvZ
 dvZ
 dvZ
@@ -103554,23 +104733,23 @@ usc
 dvZ
 dvZ
 dvZ
-aDG
+aVV
+aVQ
+azN
+azN
+aVw
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-asq
-asq
-asq
-asq
+aVt
+aVs
 ari
 ari
+ari
+arT
 ari
 ari
 ari
@@ -103704,11 +104883,11 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-vFS
+aVu
+aVu
+aVG
+aVu
+aXm
 dvZ
 dvZ
 dvZ
@@ -103718,20 +104897,20 @@ pdb
 dvZ
 dvZ
 dvZ
-aDG
+aVV
+aVQ
+azN
+azN
+aVw
+aVB
 ihH
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-eeg
-asq
-asq
+aVt
+aVs
+aVr
 ari
 ari
 arT
@@ -103868,11 +105047,11 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-vFS
+aVu
+aVu
+aVG
+aVu
+aXm
 dvZ
 dvZ
 dvZ
@@ -103882,19 +105061,19 @@ dvZ
 dvZ
 dvZ
 dvZ
-aDG
+aVV
+aVQ
+azN
+azN
+aVD
+aVC
 ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+asq
+asq
+asq
 asq
 ari
 arv
@@ -104032,12 +105211,12 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-aSB
-ppF
+aVu
+aVu
+aVG
+aVG
+aXi
+aXc
 dvZ
 dvZ
 dvZ
@@ -104045,19 +105224,19 @@ dvZ
 dvZ
 dvZ
 dvZ
-aKE
-wgN
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aWc
+aVW
+aVu
+aVN
+azN
+azN
+aVD
+aVz
+aVx
+aVx
+asq
+asq
+asq
 asq
 asq
 ari
@@ -104196,31 +105375,31 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aSB
-ppF
+aVu
+aVu
+aVu
+aVG
+aVG
+aXi
+aXc
 dvZ
 dvZ
 dvZ
 dvZ
 dvZ
-aSY
-wgN
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aWc
+aVW
+aVu
+aVQ
+azN
+azN
+azN
+azN
+aVw
+aVu
+aVu
+asq
+asq
 ihH
 asq
 asq
@@ -104361,30 +105540,30 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aSB
-qnS
-qnS
-sFj
-qnS
-qnS
-krP
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVu
+aVG
+aVG
+aVP
+aVK
+aVK
+aWC
+aVK
+aVK
+aVW
+aVu
+aVu
+aVu
+aVE
+aVE
+aVH
+azN
+aVw
+aVu
+azN
+azN
+asq
 ihH
 asq
 asq
@@ -104525,29 +105704,29 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aPl
-xHO
-aPl
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+aVu
+aVL
+aVL
+aVL
+aVu
+aVG
+aVG
+aWD
+aVu
+aVu
+aVu
+aVG
+aVG
+aVG
+aVG
+aVu
+aVu
+aVE
+aVu
+azN
+azN
+azN
 ihH
 asq
 asq
@@ -104690,24 +105869,24 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-aFT
-pVx
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+aVu
+azN
+azN
+azN
+aVw
+aVG
+aVu
+aWE
+aWp
+aVG
+aVG
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
 ihH
 ihH
 ihH
@@ -104855,19 +106034,19 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+azN
+azN
+azN
+aVD
+aVL
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
 ihH
 ihH
 ihH
@@ -105020,17 +106199,17 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+azN
+azN
+azN
+azN
+aVD
+aVu
+aVu
+aVu
+aVu
+aVu
+aVu
 ihH
 ihH
 ihH
@@ -105184,17 +106363,17 @@ ihH
 ihH
 ihH
 ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
-ihH
+azN
+azN
+aVM
+aVE
+azN
+aVw
+aVu
+aVu
+aVu
+aVu
+aVu
 ihH
 ihH
 ihH

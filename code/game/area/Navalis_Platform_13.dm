@@ -535,3 +535,11 @@
 
 /area/navalis/indoors/xeno_growth/residential
 	name = "Unidentified Xeno-biological Growth: Residential Entrance Area"
+
+/area/navalis/indoors/ice_cavern
+	name = "Iceberg Interior"
+	icon_state = "medbay3"
+	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	requires_power = FALSE

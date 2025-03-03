@@ -314,6 +314,10 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 		else
+			var/area/area = get_area(src)
+			if(!area.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
+				return
 			var/turf/open/floor = get_turf(src)
 			if(!floor.allow_construction)
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))

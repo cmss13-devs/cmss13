@@ -57,7 +57,8 @@
 		return  list(SPAN_NOTICE("It is too far away."))
 
 /obj/item/photo/proc/show(mob/living/user)
-	if(!isicon(img)) return // this should stop a runtime error
+	if(!isicon(img))
+		return // this should stop a runtime error
 	user << browse_rsc(img, "tmp_photo.png")
 	var/dat = "<html>" \
 		+ "<body style='overflow:hidden;margin:0;text-align:center' class='paper'>" \

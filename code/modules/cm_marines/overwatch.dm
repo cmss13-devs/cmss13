@@ -16,12 +16,14 @@
 	var/datum/squad/squad
 	var/state = 0
 	var/obj/structure/machinery/camera/cam = null
-	var/obj/item/clothing/head/helmet/marine/helm = null
+	var/obj/item/camera_holder = null
 	var/list/network = list(CAMERA_NET_OVERWATCH)
 	var/x_supply = 0
 	var/y_supply = 0
+	var/z_supply = 0
 	var/x_bomb = 0
 	var/y_bomb = 0
+	var/z_bomb = 0
 	var/living_marines_sorting = FALSE
 	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
@@ -40,7 +42,7 @@
 
 	var/freq = CRYO_FREQ
 
-	///List of saved coordinates, format of ["x", "y", "comment"]
+	///List of saved coordinates, format of ["x", "y", "z", "comment"]
 	var/list/saved_coordinates = list()
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
@@ -78,12 +80,22 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	QDEL_NULL(tacmap)
 	current_orbital_cannon = null
 	concurrent_users = null
-	if(!helm)
+	if(!camera_holder)
 		return ..()
-	helm.overwatch_consoles -= WEAKREF(src)
-	if(length(helm.overwatch_consoles) == 0)
-		helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+	disconnect_holder()
 	return ..()
+
+/obj/structure/machinery/computer/overwatch/proc/connect_holder(new_holder)
+	camera_holder = new_holder
+	SEND_SIGNAL(camera_holder, COMSIG_OW_CONSOLE_OBSERVE_START, WEAKREF(src))
+	RegisterSignal(camera_holder, COMSIG_BROADCAST_HEAR_TALK, PROC_REF(transfer_talk))
+	RegisterSignal(camera_holder, COMSIG_BROADCAST_SEE_EMOTE, PROC_REF(transfer_emote))
+
+/obj/structure/machinery/computer/overwatch/proc/disconnect_holder()
+	SEND_SIGNAL(camera_holder, COMSIG_OW_CONSOLE_OBSERVE_END, WEAKREF(src))
+	UnregisterSignal(camera_holder, COMSIG_BROADCAST_HEAR_TALK)
+	UnregisterSignal(camera_holder, COMSIG_BROADCAST_SEE_EMOTE)
+	camera_holder = null
 
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
@@ -261,7 +273,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(DEAD)
 					mob_state = "Dead"
 
-			if(!istype(marine_human.head, /obj/item/clothing/head/helmet/marine))
+			if(!marine_has_camera(marine_human))
 				has_helmet = FALSE
 
 			if(!marine_human.key || !marine_human.client)
@@ -396,7 +408,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	data["saved_coordinates"] = list()
 	for(var/i in 1 to length(saved_coordinates))
-		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "comment" = saved_coordinates[i]["comment"], "index" = i))
+		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "z" = saved_coordinates[i]["z"], "comment" = saved_coordinates[i]["comment"], "index" = i))
 
 	var/has_supply_pad = FALSE
 	var/obj/structure/closet/crate/supply_crate
@@ -524,13 +536,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					concurrent.reset_view(null)
 					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			cam = null
-			if(helm)
-				UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
-				UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
-				helm.overwatch_consoles -= WEAKREF(src)
-				if(length(helm.overwatch_consoles) == 0)
-					helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
-			helm = null
+			if(camera_holder)
+				disconnect_holder()
+			camera_holder = null
 			ui.close()
 			return TRUE
 
@@ -615,10 +623,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if("tacmap_unpin")
 			tacmap.tgui_interact(user)
 		if("dropbomb")
-			if(!params["x"] || !params["y"])
+			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
 			x_bomb = text2num(params["x"])
 			y_bomb = text2num(params["y"])
+			z_bomb = text2num(params["z"])
 			if(current_orbital_cannon.is_disabled)
 				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
 			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
@@ -627,10 +636,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				handle_bombard(user)
 
 		if("dropsupply")
-			if(!params["x"] || !params["y"])
+			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
 			x_supply = text2num(params["x"])
 			y_supply = text2num(params["y"])
+			z_supply = text2num(params["z"])
 			if(current_squad)
 				if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Supply drop not yet ready to launch again!")]")
@@ -638,11 +648,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					handle_supplydrop()
 
 		if("save_coordinates")
-			if(!params["x"] || !params["y"])
+			if(!params["x"] || !params["y"] || !params["z"])
 				return
 			if(length(saved_coordinates) >= MAX_SAVED_COORDINATES)
 				popleft(saved_coordinates)
-			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"])))
+			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"]), "z" = text2num(params["z"])))
 			return TRUE
 		if("change_coordinate_comment")
 			if(!params["index"] || !params["comment"])
@@ -660,30 +670,27 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(!params["target_ref"])
 				return
 			if(current_squad)
-				var/mob/cam_target = locate(params["target_ref"])
-				var/obj/item/clothing/head/helmet/marine/new_helm = get_helm_from_target(cam_target)
-				var/obj/structure/machinery/camera/new_cam = new_helm?.camera
+				var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+				var/obj/item/new_holder = cam_target.get_camera_holder()
+				var/obj/structure/machinery/camera/new_cam
+				if(new_holder)
+					new_cam = new_holder.get_camera()
 				if(user.interactee != src) //if we multitasking
 					user.set_interaction(src)
 					if(cam == new_cam) //if we switch to a console that is already watching this cam
 						return
 				if(!new_cam || !new_cam.can_use())
-					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this marine! Tell your squad to put their cameras on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view of [cam_target].")]")
 					for(var/datum/weakref/user_ref in concurrent_users)
 						var/mob/concurrent = user_ref.resolve()
 						if(!concurrent)
 							continue
 						concurrent.reset_view(null)
 						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-					UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
-					UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
-					helm.overwatch_consoles -= WEAKREF(src)
-					if(length(helm.overwatch_consoles) == 0)
-						helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+					disconnect_holder()
 					cam = null
-					helm = null
 				else if(user.client.view != GLOB.world_view_size)
 					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
@@ -695,18 +702,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 							concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 						concurrent.reset_view(new_cam)
 						concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
-					if(helm)
-						UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
-						UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
-						helm.overwatch_consoles -= WEAKREF(src)
-						if(length(helm.overwatch_consoles) == 0)
-							helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+					if(camera_holder)
+						disconnect_holder()
 					cam = new_cam
-					helm = new_helm
-					helm.overwatch_consoles += WEAKREF(src)
-					helm.flags_atom |= (USES_HEARING|USES_SEEING)
-					RegisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK, PROC_REF(transfer_talk))
-					RegisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE, PROC_REF(transfer_emote))
+					connect_holder(new_holder)
 		if("change_operator")
 			if(operator != user)
 				if(operator && isSilicon(operator))
@@ -953,14 +952,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(cam)
 				concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			concurrent.reset_view(null)
-		if(helm)
-			UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
-			UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
-			helm.overwatch_consoles -= WEAKREF(src)
-			if(length(helm.overwatch_consoles) == 0)
-				helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+		if(camera_holder)
+			disconnect_holder()
 		cam = null
-		helm = null
 
 /obj/structure/machinery/computer/overwatch/on_set_interaction(mob/user)
 	if(user.interactee != src)
@@ -985,14 +979,35 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(user.interactee == src)
 		user.unset_interaction()
 
-//returns the helmet the human is wearing
-/obj/structure/machinery/computer/overwatch/proc/get_helm_from_target(mob/living/carbon/human/target)
-	if(!current_squad)
-		return
+/// checks if the human has an overwatch camera at all
+/obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
+	if(istype(marine.head, /obj/item/clothing/head/helmet/marine))
+		return TRUE
+	if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera) || istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
+		return TRUE
+	return FALSE
+/// returns the overwatch camera the human is wearing
+/obj/item/proc/get_camera()
+	return null
 
-	if(istype(target) && istype(target.head, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helm = target.head
+/obj/item/clothing/head/helmet/marine/get_camera()
+	return camera
+
+/obj/item/device/overwatch_camera/get_camera()
+	return camera
+
+///returns camera holder
+/mob/living/carbon/human/proc/get_camera_holder()
+	if(istype(head, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/helm = head
 		return helm
+	var/obj/item/device/overwatch_camera/cam_gear
+	if(istype(wear_l_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_l_ear
+		return cam_gear
+	if(istype(wear_r_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_r_ear
+		return cam_gear
 
 // Alerts all groundside marines about the incoming OB
 /obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)
@@ -1124,11 +1139,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/x_coord = deobfuscate_x(x_bomb)
 	var/y_coord = deobfuscate_y(y_bomb)
-	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(length(z_coord))
-		z_coord = z_coord[1]
-	else
-		z_coord = 1 // fuck it
+	var/z_coord = deobfuscate_z(z_bomb)
+
+	if(!is_ground_level(z_coord))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 
@@ -1173,7 +1188,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb] in [get_area(T)]")
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb], Z[z_bomb] in [get_area(T)]")
 
 	busy = FALSE
 	if(istype(T))
@@ -1196,11 +1211,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
-	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(length(z_coord))
-		z_coord = z_coord[1]
-	else
-		z_coord = 1 // fuck it
+	var/z_coord = deobfuscate_z(z_supply)
+
+	if(!is_ground_level(z_coord))
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
@@ -1231,7 +1246,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	var/obj/structure/droppod/supply/pod = new(null, crate)
 	pod.launch(T)
-	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
+	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply], Z[z_supply].", usr.real_name)
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE

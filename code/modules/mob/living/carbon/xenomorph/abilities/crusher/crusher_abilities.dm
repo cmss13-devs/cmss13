@@ -5,7 +5,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 140
+	xeno_cooldown = 14 SECONDS
 	plasma_cost = 20
 	// Config options
 	distance = 9
@@ -14,7 +14,7 @@
 	slash = FALSE
 	freeze_self = FALSE
 	windup = TRUE
-	windup_duration = 12
+	windup_duration = 1.2 SECONDS
 	windup_interruptable = FALSE
 	should_destroy_objects = TRUE
 	throw_speed = SPEED_FAST
@@ -45,7 +45,7 @@
 
 	var/distance = 2
 	var/effect_type_base = /datum/effects/xeno_slow/superslow
-	var/effect_duration = 10
+	var/effect_duration = 1 SECONDS
 
 /datum/action/xeno_action/onclick/crusher_stomp/charger
 	name = "Crush"
@@ -68,6 +68,8 @@
 	plasma_cost = 50
 	xeno_cooldown = 26 SECONDS
 	var/shield_amount = 200
+	var/explosion_immunity_dur = 2.5 SECONDS
+	var/shield_dur = 7 SECONDS
 
 /datum/action/xeno_action/activable/fling/charger
 	name = "Headbutt"
@@ -134,8 +136,8 @@
 	if(Xeno.is_mob_incapacitated())
 		if(!momentum)
 			return
-		var/lol = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
-		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), lol, momentum/2, SPEED_FAST, null, TRUE)
+		var/distance_to_throw = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
+		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), distance_to_throw, momentum/2, SPEED_FAST, null, TRUE)
 		stop_momentum()
 		return
 	if(!isturf(Xeno.loc))

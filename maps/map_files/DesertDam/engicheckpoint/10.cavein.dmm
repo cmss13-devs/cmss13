@@ -71,7 +71,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "bC" = (
 /obj/structure/machinery/power/apc/no_power/east,
-/turf/open/asphalt/cement/cement15,
+/turf/open/floor/corsat/spiralplate,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "bH" = (
 /obj/effect/decal/cleanable/dirt,

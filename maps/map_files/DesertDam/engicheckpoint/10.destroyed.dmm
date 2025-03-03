@@ -435,7 +435,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "Bu" = (
 /obj/structure/machinery/power/apc/no_power/east,
-/turf/open/asphalt/cement/cement15,
+/turf/open/floor/corsat/spiralplate,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Bv" = (
 /turf/closed/wall/rock/orange,

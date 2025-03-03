@@ -39,6 +39,7 @@ interface TacMapProps {
   exportedTacMapImage: any;
   tacmapReady: boolean;
   canChangeZ: boolean;
+  canChangeMapview: boolean;
 }
 
 const PAGES = [
@@ -186,7 +187,7 @@ export const TacticalMap = (props) => {
                   );
                 })}
                 {getZTabs()}
-                {data.canDraw && !data.isxeno ? (
+                {data.canDraw && data.canChangeMapview ? (
                   <Tabs.Tab
                     onClick={() => {
                       act('ChangeMapView', {});
@@ -202,7 +203,7 @@ export const TacticalMap = (props) => {
             </Stack.Item>
           </Stack>
         </Section>
-        <PageComponent fitted />
+        <PageComponent />
       </Window.Content>
     </Window>
   );

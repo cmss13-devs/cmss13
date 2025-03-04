@@ -9,19 +9,17 @@
 	accuracy = HIT_ACCURACY_TIER_MAX
 	damage = 100
 	max_range = 10
-	penetration = ARMOR_PENETRATION_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_10 // Fuck your acid armor
 	shell_speed = AMMO_SPEED_TIER_6 // As close to undodgable as possible
 
 /obj/effect/alien/resin/moba_turret
 	name = "acid pillar"
-	desc = "A resin pillar that is oozing with acid."
+	desc = "A resin pillar that is oozing with acid potent enough to pierce even the strongest armor."
 	icon = 'icons/obj/structures/alien/structures.dmi'
 	icon_state = "acid_pillar_idle"
 	anchored = TRUE
 	density = TRUE
 	health = 2000
-	//pixel_y = 32
-	//pixel_x = 32
 	bound_height = 96
 	bound_width = 96
 	bound_x = -32

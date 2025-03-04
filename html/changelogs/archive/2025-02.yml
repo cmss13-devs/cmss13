@@ -557,3 +557,25 @@
   hry-gh:
   - rscadd: the synthetic snowflake vendor items are now found in the loadout in the
       character setup menu
+2025-02-28:
+  Blundir, Crowford, Nauticall, Cuberound, Triiodine, LC4492:
+  - rscadd: added UPP, WY, PMC, TWE, WY emergency, Generic food rations, floor boxes
+      for them
+  - rscadd: USCM MRE now has cheese spread in multiple variations, beverage bag in
+      multiple variations (you need to pour water into it)
+  - rscadd: balaji imperial 4 packs and matches, matches added to WY vendor, both
+      matches and cigs can appear in TWE ration
+  - rscadd: USCM MRE now has an iconic MRE spoon
+  - rscadd: added numerous new mains, sides, snacks and desserts to USCM MRE
+  - rscadd: all ration food now has unique descriptions and reagents inside them having
+      custom reagents now displays food taste correctly
+  - rscadd: new rations to loadouts that should logically have them
+  - rscdel: WY brand MRE box got removed and replaced with an actual WY rations
+  - rscdel: USCM tray boxes got removed and replaced with an actual MREs
+  - rscdel: remove MRE from prep vendors
+  - refactor: mre backend changed severely and moved to separate .dm files
+  - rscdel: core nutrient reagent is no longer used for mre foods, apart from some
+      exceptions
+  - maptweak: added new rations around the maps where they logically make sense
+  Git-Nivrak:
+  - bugfix: Fixed squad assignment

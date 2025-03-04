@@ -692,12 +692,22 @@ SUBSYSTEM_DEF(minimaps)
 	var/allowed_flags = MINIMAP_FLAG_USCM
 	/// by default the ground map - this picks the first level matching the trait. if it exists
 	var/targeted_ztrait = ZTRAIT_GROUND
+	/// by default the main ship map
+	var/targeted_ztrait_for_mainship = ZTRAIT_MARINE_MAIN_SHIP
+	/// ztrait to use for displaying minimap
+	var/current_ztrait = ZTRAIT_GROUND
 	/// the current z level within the z stack
 	var/target_z = 1
 	var/atom/owner
 
 	/// tacmap holder for holding the minimap
 	var/datum/tacmap_holder/map_holder
+
+	var/is_mainship = FALSE
+	var/can_change_map_view = TRUE
+
+	///Name for targeted_ztrait_for_mainship
+	var/change_to_name = MAIN_SHIP_DEFAULT_NAME
 
 /datum/tacmap/drawing
 	/// A url that will point to the wiki map for the current map as a fall back image
@@ -750,7 +760,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	if(!map_holder)
-		var/level = SSmapping.levels_by_trait(targeted_ztrait)
+		var/level = SSmapping.levels_by_trait(current_ztrait)
 		if(!level[target_z])
 			return
 		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
@@ -766,12 +776,18 @@ SUBSYSTEM_DEF(minimaps)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
+
+	if(is_xeno || faction != FACTION_MARINE)
+		can_change_map_view = FALSE
+	else if(faction == FACTION_MARINE)
+		can_change_map_view = TRUE
+
 	if(faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 
-	if(is_xeno && xeno.hive.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
+	if(is_xeno && xeno.hive.see_humans_on_tacmap && current_ztrait != targeted_ztrait_for_mainship)
 		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
-		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
+		current_ztrait = targeted_ztrait_for_mainship
 		map_holder = null
 
 	new_current_map = get_unannounced_tacmap_data_png(faction)
@@ -781,10 +797,12 @@ SUBSYSTEM_DEF(minimaps)
 	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno
 
 	if(use_live_map && !map_holder)
-		var/level = SSmapping.levels_by_trait(targeted_ztrait)
+		var/level = SSmapping.levels_by_trait(current_ztrait)
 		if(!level[target_z])
 			return
 		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
+		resend_current_map_png(user)
+		user.client.register_map_obj(map_holder.map)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -836,6 +854,9 @@ SUBSYSTEM_DEF(minimaps)
 	data["lastUpdateTime"] = last_update_time
 	data["tacmapReady"] = world.time > tacmap_ready_time
 	data["mapRef"] = map_holder?.map_ref
+	data["isMainship"] = is_mainship
+	data["changeToMapName"] = is_mainship ? SSmapping.configs?[GROUND_MAP]?.map_name : change_to_name
+	data["canChangeMapview"] = can_change_map_view
 
 	return data
 
@@ -962,9 +983,21 @@ SUBSYSTEM_DEF(minimaps)
 		if("onDraw")
 			updated_canvas = FALSE
 
+		if("ChangeMapView")
+			if(!can_change_map_view)
+				return
+
+			is_mainship = !is_mainship
+			map_holder = null
+
+			if(is_mainship)
+				current_ztrait = targeted_ztrait_for_mainship
+			else
+				current_ztrait = targeted_ztrait
+
 		if("changeZ")
 			var/amount = params["amount"]
-			var/level = SSmapping.levels_by_trait(targeted_ztrait)
+			var/level = SSmapping.levels_by_trait(current_ztrait)
 			if(target_z+amount < 1 || target_z+amount > length(level) || !SSmapping.same_z_map(level[target_z], level[target_z+amount]))
 				return
 

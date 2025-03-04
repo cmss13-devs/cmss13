@@ -1,0 +1,6986 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 4.1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 11;
+	pixel_x = -5
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ab" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	icon_state = "bluemultimonitorbig_on";
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"ac" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	pixel_y = 10
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office)
+"ad" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"ae" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"af" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	pixel_y = 32;
+	layer = 3.2
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"ag" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"ah" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"ai" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"aj" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"ak" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"al" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -4;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"am" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"an" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/hallway)
+"ao" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"ap" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"aq" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 9
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"at" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"aw" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime3";
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"ax" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -12;
+	buckling_x = -12
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 4;
+	buckling_x = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"az" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -14;
+	buckling_x = -14
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"aC" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
+/area/lv759/indoors/weyyu_office/floor)
+"aH" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"aR" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/sign/safety/conference_room{
+	pixel_x = 2;
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office/pressroom)
+"aT" = (
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 12
+	},
+/obj/item/tool/pen/multicolor/fountain,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"ba" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/breakroom)
+"bb" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"bh" = (
+/turf/open/floor/plating/platingdmg3,
+/area/lv759/indoors/weyyu_office/hallway)
+"bk" = (
+/obj/structure/bed/sofa/hybrisa/misc/bench{
+	pixel_x = 7;
+	dir = 1;
+	layer = 3
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80;
+	pixel_x = -2;
+	color = "#a6aeab"
+	},
+/obj/structure/window/reinforced{
+	color = "#a6aeab"
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_street)
+"bx" = (
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/central_streets)
+"bH" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/vip)
+"bI" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
+/area/lv759/indoors/weyyu_office/floor)
+"bQ" = (
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"bR" = (
+/obj/structure/closet/cabinet,
+/obj/item/reagent_container/food/drinks/bottle/sake,
+/obj/item/reagent_container/food/drinks/bottle/sake,
+/obj/item/reagent_container/food/drinks/bottle/wine,
+/obj/item/reagent_container/food/drinks/bottle/pwine,
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"bW" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/vip)
+"bZ" = (
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ce" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/newscaster{
+	pixel_y = 30
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"cf" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/stairs{
+	color = "#b7b8b2"
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_street)
+"cg" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/east,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"ch" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office/floor)
+"cj" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"co" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"cx" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"cH" = (
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/pressroom)
+"cN" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"cS" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"cX" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = 32
+	},
+/obj/item/weapon/gun/smg/p90,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"cY" = (
+/obj/item/device/toner{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"de" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/breakroom)
+"dj" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/item/paper{
+	layer = 2
+	},
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"dm" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office/breakroom)
+"do" = (
+/obj/structure/toilet,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"dp" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"dt" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"dy" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetalcorner/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"dA" = (
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"dE" = (
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/drinks/h_chocolate{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/item/storage/box/donkpockets,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"dI" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"dQ" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/vehicle_spawner/clf_van/fixed,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"dR" = (
+/obj/structure/safe{
+	spawnkey = 0
+	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/storage/box/stompers,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/storage/box/kit/pursuit,
+/obj/item/spacecash/c1000{
+	worth = 10000;
+	name = "10000 dollars"
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"dW" = (
+/obj/structure/cargo_container/hd/right,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"dZ" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -12;
+	buckling_x = -12
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"ea" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"ed" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"ei" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"el" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"em" = (
+/obj/structure/prop/hybrisa/furniture/tables/tableblack/blacktablecomputer{
+	pixel_x = 2
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/vip)
+"en" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10;
+	pixel_x = 12
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"eo" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/outdoors/colony_streets/central_streets)
+"eq" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office)
+"er" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"ev" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_x = -2;
+	pixel_y = 20
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15"
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/shard,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_street)
+"ex" = (
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"ey" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"eB" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/breakroom)
+"eC" = (
+/obj/structure/machinery/disposal{
+	pixel_x = -4
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/lid{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/lv759/indoors/weyyu_office)
+"eD" = (
+/obj/structure/machinery/light/spot{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"eE" = (
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 10;
+	pixel_y = 14
+	},
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = -4;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 12
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"eF" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"eK" = (
+/obj/item/clipboard{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/paper{
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 22;
+	pixel_x = 12
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"eO" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"eP" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 17
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/southeast,
+/area/lv759/indoors/weyyu_office)
+"eR" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/lv759/indoors/weyyu_office/hallway)
+"eU" = (
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"eV" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"fa" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southwest,
+/area/lv759/indoors/weyyu_office/floor)
+"fb" = (
+/obj/item/clipboard{
+	pixel_y = 6;
+	pixel_x = -3
+	},
+/obj/item/paper{
+	pixel_y = 7;
+	pixel_x = -3
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_y = 9;
+	pixel_x = -2
+	},
+/obj/structure/prop/hybrisa/furniture/tables/tableblack/blacktablecomputer{
+	dir = 1;
+	layer = 2.9;
+	pixel_x = -2
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/vip)
+"ff" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"fg" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"fk" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/pressroom)
+"fF" = (
+/obj/item/folder/blue{
+	pixel_x = 4;
+	pixel_y = -5
+	},
+/obj/item/card/id/guest{
+	pixel_y = 12;
+	pixel_x = -4
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -9;
+	pixel_y = -2
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"fG" = (
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"fN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"fX" = (
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"gq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	layer = 2.01;
+	dir = 1;
+	name = "rubber mat";
+	pixel_y = -40;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"gs" = (
+/obj/effect/decal/hybrisa/deco_edging/corner{
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"gt" = (
+/obj/item/folder/black{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/barricade/handrail/strata,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"gA" = (
+/obj/structure/toilet,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"gC" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/open/floor/hybrisa/metal/bluemetal1/southwest,
+/area/lv759/indoors/weyyu_office)
+"gI" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office)
+"gJ" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"gM" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -6
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
+/area/lv759/indoors/weyyu_office/floor)
+"gO" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"gX" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/east,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"hg" = (
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard1{
+	dir = 10;
+	pixel_y = 34;
+	lazy_nodes = 0;
+	layer = 3
+	},
+/obj/item/spacecash/ewallet{
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/central_streets)
+"hk" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 14;
+	pixel_x = 3
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"hp" = (
+/obj/item/storage/briefcase{
+	pixel_y = 12
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/hallway)
+"hq" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"hr" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani{
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"hy" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	icon_state = "wy_water_crushed"
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe3{
+	dir = 8
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"hQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office)
+"hS" = (
+/obj/structure/window_frame/hybrisa/colony/office,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/floor)
+"hU" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"hX" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/flask/vacuumflask{
+	pixel_y = 20;
+	pixel_x = -4
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"ih" = (
+/obj/structure/machinery/colony_floodlight/traffic/alt{
+	dir = 4;
+	pixel_y = 12
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black{
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ii" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ij" = (
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"iA" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"iB" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"iF" = (
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office)
+"iK" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/vip)
+"iN" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"iO" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetalcorner/north,
+/area/lv759/indoors/weyyu_office/pressroom)
+"iQ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_street)
+"iW" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/supervisor)
+"ja" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/west,
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"jh" = (
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office)
+"jn" = (
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/colony_streets/central_streets)
+"jq" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/breakroom)
+"jr" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"jB" = (
+/obj/item/paper/crumpled,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
+/area/lv759/indoors/weyyu_office/floor)
+"jR" = (
+/obj/item/paper/crumpled{
+	pixel_x = 20
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 8;
+	pixel_y = 2;
+	layer = 4.01
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/card/id/guest{
+	pixel_y = 10;
+	pixel_x = 2
+	},
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetalcorner,
+/area/lv759/indoors/weyyu_office)
+"kd" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	alpha = 220;
+	layer = 3.2;
+	pixel_y = -32
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"kh" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 32;
+	pixel_y = -4
+	},
+/obj/structure/sign/safety/conference_room{
+	pixel_y = 8;
+	pixel_x = 32
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ki" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"kl" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"km" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/fancy/cigar{
+	pixel_y = 2
+	},
+/obj/item/storage/fancy/cigar/tarbacks{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"ko" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/lv759/indoors/weyyu_office/pressroom)
+"kC" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"kE" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_y = 22;
+	pixel_x = -23;
+	layer = 4
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	density = 0;
+	pixel_x = 6;
+	pixel_y = 18;
+	layer = 3.21
+	},
+/obj/effect/landmark/objective_landmark/close{
+	layer = 5
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	pixel_y = 32;
+	layer = 3.2
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"kK" = (
+/obj/item/tool/warning_cone{
+	layer = 4;
+	pixel_x = -20
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"kL" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"kP" = (
+/obj/structure/machinery/vending/coffee{
+	density = 0;
+	pixel_x = 11;
+	pixel_y = 16;
+	layer = 4
+	},
+/obj/structure/reagent_dispensers/water_cooler{
+	density = 0;
+	pixel_x = -7;
+	pixel_y = 16;
+	layer = 4
+	},
+/obj/effect/decal/hybrisa/trash,
+/obj/item/trash/cigbutt,
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office)
+"kR" = (
+/obj/effect/decal/hybrisa/WY/WYworn{
+	pixel_y = 16
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"kU" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4;
+	color = "#a6aeab"
+	},
+/obj/structure/window/reinforced{
+	color = "#a6aeab"
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_street)
+"kW" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/structure/reagent_dispensers/water_cooler{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"lk" = (
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"lr" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ls" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -12;
+	buckling_x = -12
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 8;
+	buckling_x = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"lt" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_street)
+"lw" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"lB" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
+/area/lv759/indoors/weyyu_office/floor)
+"lE" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"lJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/sign/poster/corporate{
+	layer = 2.9;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"lL" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/vip)
+"lN" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"lO" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"lT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"lV" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 11;
+	pixel_x = -5
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = 30
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"lZ" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"ma" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/faxmachine/corporate{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"mb" = (
+/obj/structure/machinery/light/spot{
+	dir = 4;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"mf" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office/pressroom)
+"mg" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 22;
+	pixel_x = 12
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"mk" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"mo" = (
+/obj/structure/bed/chair/comfy/hybrisa/black,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/northeast,
+/area/lv759/indoors/weyyu_office/vip)
+"mr" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4.12
+	},
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/turf/open/floor/prison/darkyellow2/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"mt" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"my" = (
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/hybrisa/metal/bluemetal1/northeast,
+/area/lv759/indoors/weyyu_office)
+"mI" = (
+/obj/item/device/megaphone{
+	pixel_y = 10
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/barricade/handrail/strata,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"mO" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/hallway)
+"mS" = (
+/obj/structure/stairs{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"nd" = (
+/turf/open/floor/hybrisa/metal/bluemetal1/northeast,
+/area/lv759/indoors/weyyu_office)
+"ng" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"nl" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"nx" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetalcorner/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"nG" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_street)
+"nH" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/prop/hybrisa/misc/trash/green,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_street)
+"nM" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"nP" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange{
+	dir = 8;
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"nQ" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"nW" = (
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard4{
+	pixel_y = 18;
+	pixel_x = -8;
+	layer = 9
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"nY" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"oj" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ol" = (
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/folder/white,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"on" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"oq" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office/breakroom)
+"ot" = (
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"oC" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/south,
+/area/lv759/indoors/weyyu_office/vip)
+"oN" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"oP" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 11;
+	pixel_x = -5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/breakroom)
+"oU" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"oV" = (
+/obj/structure/machinery/photocopier/wyphotocopier{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"oX" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3"
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"pf" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/item/paper/crumpled,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4"
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"pk" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
+/area/lv759/indoors/weyyu_office/supervisor)
+"pm" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office/vip)
+"pu" = (
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"pw" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"pA" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 14
+	},
+/obj/structure/machinery/photocopier{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/west,
+/area/lv759/indoors/weyyu_office)
+"pH" = (
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office)
+"pJ" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"pK" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"pL" = (
+/turf/template_noop,
+/area/template_noop)
+"pO" = (
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11{
+	pixel_x = -16;
+	pixel_y = 18
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"pV" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office/pressroom)
+"pX" = (
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"pY" = (
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_small_bl_full";
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = 3;
+	pixel_y = 11
+	},
+/obj/item/trash/cigbutt,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 12
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"qp" = (
+/obj/structure/prop/hybrisa/furniture/tables/tableblack{
+	dir = 1
+	},
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_y = 7;
+	pixel_x = 3
+	},
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -11;
+	pixel_y = 18
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/vip)
+"qq" = (
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 17;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 4
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"qr" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 11;
+	pixel_x = -5
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"qv" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office)
+"qw" = (
+/obj/structure/bed/chair/comfy/hybrisa/black{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/northwest,
+/area/lv759/indoors/weyyu_office/vip)
+"qA" = (
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"qB" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/item/device/m56d_gun/mounted,
+/obj/structure/largecrate/supply/ammo/m56d,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"qC" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"qG" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 41;
+	pixel_x = 9
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = 8;
+	pixel_y = 21;
+	layer = 3.20;
+	density = 0
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"qN" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 14;
+	pixel_y = 5
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"qV" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"re" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"rq" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"rr" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"ru" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_street)
+"rI" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"rM" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_13"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_y = 12
+	},
+/obj/item/trash/hotdog,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -6;
+	pixel_y = 20
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_street)
+"rO" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/floor)
+"rP" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office)
+"rR" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"rT" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/storage/briefcase{
+	pixel_y = 18;
+	layer = 2.9;
+	pixel_x = -4
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"sd" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 10;
+	buckling_x = 7;
+	buckling_y = 10
+	},
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"sf" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"sj" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/item/reagent_container/food/drinks/cans/classcola{
+	icon_state = "cola_crushed"
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"sD" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"sE" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"sG" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"sM" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_x = -1
+	},
+/obj/structure/machinery/light/spot{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/effect/landmark/corpsespawner/hybrisa_goon/lead,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"sX" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10{
+	pixel_x = -16;
+	pixel_y = 18
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_street)
+"sY" = (
+/obj/structure/bed/chair/comfy/hybrisa/black{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/obj/item/storage/briefcase{
+	layer = 3;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/northwest,
+/area/lv759/indoors/weyyu_office/vip)
+"tc" = (
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/central_streets)
+"tm" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = -32
+	},
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"tr" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 16;
+	pixel_y = 19
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"tv" = (
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"tx" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"tF" = (
+/obj/item/tool/pen{
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/west,
+/area/lv759/indoors/weyyu_office/vip)
+"tK" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west,
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/cement1,
+/area/lv759/outdoors/colony_streets/north_street)
+"tM" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/lv759/indoors/weyyu_office/hallway)
+"tP" = (
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"tS" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"tY" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/pressroom)
+"uc" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/item/paper,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"uo" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"up" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"ut" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"uA" = (
+/obj/item/tool/pen,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office)
+"uE" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"uG" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"uN" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -14;
+	pixel_y = 22
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/east,
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/west,
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"uQ" = (
+/obj/structure/machinery/photocopier/wyphotocopier{
+	pixel_y = 6;
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
+/area/lv759/indoors/weyyu_office/floor)
+"uU" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"va" = (
+/obj/structure/flora/pottedplant{
+	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
+	icon_state = "pottedplant_21";
+	layer = 4;
+	name = "synthethic potted plant";
+	pixel_y = 14
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	pixel_y = 32;
+	layer = 3.2
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"vb" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/sign/safety/east{
+	pixel_x = -17;
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"vf" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"vh" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"vk" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf_medic/hybrisa,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"vC" = (
+/obj/structure/prop/hybrisa/misc/firehydrant{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"vD" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"vG" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg3,
+/area/lv759/indoors/weyyu_office/pressroom)
+"vH" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 11;
+	pixel_x = -4
+	},
+/obj/item/tool/mop{
+	pixel_y = 3
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/metal/bluemetalcorner,
+/area/lv759/indoors/weyyu_office/pressroom)
+"vJ" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/pressroom)
+"vL" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/supervisor)
+"vM" = (
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/hallway)
+"vN" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"vP" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/stairs{
+	color = "#b7b8b2";
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_street)
+"vS" = (
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/central_streets)
+"vX" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/structure/largecrate/supply/ammo/shotgun,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/incendiary{
+	pixel_y = -12;
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"wb" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = -32
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"we" = (
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/item/pizzabox/pizza_galaxy/vegetable{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"wg" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 4;
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"wn" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/structure/prop/hybrisa/misc/trash/green{
+	pixel_y = 2
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"wq" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = 30
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"ws" = (
+/obj/structure/filingcabinet/chestdrawer{
+	density = 0;
+	pixel_x = -6;
+	pixel_y = 18;
+	layer = 2.9
+	},
+/obj/structure/closet/walllocker{
+	pixel_y = 30;
+	opened = 1
+	},
+/obj/structure/bed/chair/comfy/hybrisa/red,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"wy" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/breakroom)
+"wz" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
+/area/lv759/indoors/weyyu_office/floor)
+"wE" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office)
+"wM" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
+/area/lv759/indoors/weyyu_office/floor)
+"wO" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southwest,
+/area/lv759/indoors/weyyu_office/floor)
+"wW" = (
+/obj/effect/decal/hybrisa/trash{
+	dir = 4;
+	icon_state = "trash_11"
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"xe" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 8;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"xl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_street)
+"xm" = (
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 13;
+	pixel_x = -7
+	},
+/obj/item/storage/secure/briefcase{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/storage/fancy/cigar/matchbook/wy_gold{
+	pixel_x = 13;
+	pixel_y = 3
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = -32
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"xn" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"xp" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"xR" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/prison/darkyellow2/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"xS" = (
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/lv759/indoors/weyyu_office)
+"xT" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/floor)
+"yh" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = -32
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"yi" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"yp" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"yt" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"yz" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/obj/effect/decal/hybrisa/trash,
+/obj/effect/decal/hybrisa/trash{
+	dir = 8;
+	icon_state = "trash_11"
+	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"yD" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southwest,
+/area/lv759/indoors/weyyu_office/floor)
+"yF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/southeast,
+/area/lv759/indoors/weyyu_office)
+"yJ" = (
+/obj/item/paper,
+/obj/item/paper/crumpled,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"yP" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = 32
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"yR" = (
+/obj/structure/prop/hybrisa/misc/cabinet{
+	pixel_x = -6;
+	pixel_y = 15
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4"
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"yW" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black{
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"zb" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/central_streets)
+"zc" = (
+/obj/structure/filingcabinet/chestdrawer{
+	density = 0;
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"zj" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"zk" = (
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"zo" = (
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"zp" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/hallway)
+"zt" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/faxmachine/corporate{
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"zA" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/breakroom)
+"zB" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"zC" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office/hallway)
+"zG" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office)
+"zP" = (
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/south,
+/area/lv759/indoors/weyyu_office)
+"zQ" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"zR" = (
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"zS" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"zT" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"zX" = (
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"zZ" = (
+/obj/structure/machinery/vending/snack{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office)
+"Ac" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/shard,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_street)
+"Ae" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 10;
+	buckling_x = 7;
+	buckling_y = 10
+	},
+/obj/item/paper/crumpled,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south,
+/area/lv759/indoors/weyyu_office/floor)
+"Am" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"Aq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_street)
+"Aw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"Ax" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"AK" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3"
+	},
+/obj/structure/machinery/colony_floodlight/traffic{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"AL" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 4;
+	pixel_y = 32
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"AR" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	layer = 3.25
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
+/area/lv759/indoors/weyyu_office/floor)
+"AV" = (
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_x = 2
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/lv759/indoors/weyyu_office)
+"AW" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office)
+"Bb" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 11;
+	pixel_x = -5
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Bg" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Bh" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/eat,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"Bi" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office/supervisor)
+"Bo" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 1;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Bs" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"By" = (
+/obj/structure/bed/chair/comfy/hybrisa/black{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/southeast,
+/area/lv759/indoors/weyyu_office/vip)
+"BL" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"BP" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"BS" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"BT" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Cb" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"Cc" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/north_street)
+"Cf" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	welded = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Co" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black{
+	dir = 1
+	},
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ct" = (
+/obj/effect/decal/hybrisa/deco_edging/corner{
+	dir = 1;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Cw" = (
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -7;
+	pixel_y = 2;
+	layer = 2.9
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/drinks/milk{
+	layer = 2.9
+	},
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = -4;
+	pixel_y = -14
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Cy" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"CA" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"CM" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"CN" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -14;
+	buckling_x = -14
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 4;
+	buckling_x = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Df" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/clipboard{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -14;
+	pixel_y = 6
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"Dh" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -12;
+	buckling_x = -12
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 8;
+	buckling_x = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Dl" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Dr" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/faxmachine/corporate{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/paper{
+	pixel_y = 5
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Dy" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/north,
+/area/lv759/indoors/weyyu_office/vip)
+"DD" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"DF" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"DG" = (
+/obj/structure/machinery/light,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"DM" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"DX" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 10;
+	buckling_x = 7;
+	buckling_y = 10
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south,
+/area/lv759/indoors/weyyu_office/floor)
+"Ec" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/no_power/south,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Ed" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"Ee" = (
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Ev" = (
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/obj/item/tool/pen,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 12
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Ew" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/structure/closet/crate/green,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Ey" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"EF" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/breakroom)
+"EL" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"EM" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/prison/darkyellow2/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"EN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/hallway)
+"Fj" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/trash/c_tube,
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = -13;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/trash/green,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_street)
+"Fn" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"Fu" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Fw" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"FA" = (
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"FC" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 9;
+	pixel_x = -22
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"FD" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_x = -1
+	},
+/obj/structure/machinery/light/spot{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"FG" = (
+/obj/structure/window_frame/hybrisa/colony/office,
+/obj/item/shard,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/floor)
+"FH" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"FM" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/floor)
+"Gv" = (
+/obj/structure/machinery/photocopier{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"Gw" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Gx" = (
+/obj/effect/landmark/corpsespawner/hybrisa_goon,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Gz" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"GC" = (
+/obj/effect/decal/hybrisa/deco_edging/corner{
+	dir = 4;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"GE" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/snacks/donkpocket,
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"GI" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"GO" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20;
+	layer = 3.20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20;
+	layer = 3.20
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
+/area/lv759/indoors/weyyu_office/floor)
+"GP" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"GQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal/autoname,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/vip)
+"Hb" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -14;
+	buckling_x = -14
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Ht" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/hybrisa/metal/bluemetal1/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Hx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Hy" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/trash/cigbutt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/hallway)
+"HA" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/breakroom)
+"HC" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/floor)
+"HJ" = (
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -6;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 10;
+	pixel_y = 20
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"HN" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"HO" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"HQ" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"HW" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Ia" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright{
+	layer = 4
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ib" = (
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/clipboard,
+/obj/item/folder/white,
+/obj/item/device/flashlight/pen,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/hybrisa/metal/bluemetalcorner/east,
+/area/lv759/indoors/weyyu_office/hallway)
+"Ie" = (
+/obj/item/weapon/gun/revolver/cmb{
+	pixel_y = 5
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"If" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/east,
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"In" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"Is" = (
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 21
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"Ix" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/machinery/light/spot{
+	dir = 4;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Iz" = (
+/obj/structure/machinery/newscaster{
+	pixel_y = 30
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"IF" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"IH" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	desc = "A small desktop computer. Someone has switched to personal emails and disabled the inventory sort system.";
+	dir = 1;
+	icon_state = "alert:2";
+	name = "inventory computer"
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south,
+/area/lv759/indoors/weyyu_office/floor)
+"IJ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/faxmachine/corporate{
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
+/area/lv759/indoors/weyyu_office/floor)
+"IN" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 8;
+	buckling_x = 8
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -14;
+	buckling_x = -14
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"IS" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Je" = (
+/obj/structure/surface/rack,
+/obj/item/device/toner,
+/obj/item/document_objective/folder{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/folder/black{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	pixel_y = -32;
+	layer = 3.2
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"Jn" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"Jr" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"JJ" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"JM" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/floor)
+"JO" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office/pressroom)
+"JS" = (
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/tool/stamp/weyyu{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"JT" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"JX" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Ka" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ki" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/supervisor)
+"Ko" = (
+/obj/item/storage/briefcase,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"Kp" = (
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"Kq" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/vip)
+"Kv" = (
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Ky" = (
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/hallway)
+"KC" = (
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"KD" = (
+/obj/item/stack/sheet/cardboard/small_stack,
+/obj/item/paper{
+	layer = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"KO" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/obj/item/tool/pen,
+/obj/structure/prop/hybrisa/misc/machinery/screens/frame{
+	pixel_y = 32
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood3,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"KR" = (
+/obj/structure/machinery/faxmachine{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"KY" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Lb" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 16;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 7;
+	pixel_y = 21
+	},
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -9;
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 17;
+	pixel_y = 20
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_y = 5
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	pixel_y = -32;
+	layer = 3.2
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"Le" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Lq" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = 8;
+	pixel_y = 14;
+	layer = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"Ly" = (
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"LE" = (
+/obj/structure/filingcabinet/chestdrawer{
+	density = 0;
+	pixel_x = -6;
+	pixel_y = 18;
+	layer = 3.21
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3"
+	},
+/obj/effect/decal/hybrisa/trash,
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	pixel_y = 32;
+	layer = 3.2
+	},
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"LO" = (
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"LT" = (
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 20;
+	pixel_y = 18
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_half_br";
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = -3;
+	pixel_y = 19
+	},
+/obj/item/clothing/mask/cigarette/cigar/tarbacks{
+	pixel_y = 3
+	},
+/obj/item/spacecash/ewallet{
+	pixel_x = 11;
+	pixel_y = -2
+	},
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"Ma" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	layer = 3.25
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"Mb" = (
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
+/obj/structure/machinery/light/small,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Mc" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/obj/item/shard,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southwest,
+/area/lv759/indoors/weyyu_office/floor)
+"Md" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"Mf" = (
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Mn" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/southeast,
+/area/lv759/indoors/weyyu_office)
+"Mq" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -14;
+	buckling_x = -14
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 4;
+	buckling_x = 4
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Mt" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office)
+"Mu" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office)
+"Mv" = (
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office)
+"Mw" = (
+/obj/structure/disposalpipe/tagger{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Mx" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Mz" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"MS" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/hallway)
+"MT" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 9;
+	pixel_x = 5
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = 32
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"MY" = (
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"MZ" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Nb" = (
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/vip)
+"Nc" = (
+/obj/item/tool/mop{
+	pixel_y = 23
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office)
+"Ne" = (
+/obj/structure/machinery/photocopier/wyphotocopier,
+/obj/item/weapon/gun/smg/p90,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"Nn" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Np" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Nr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"Ny" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/device/flashlight/flare/on,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"NJ" = (
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -12;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/WY/WY1{
+	pixel_x = -18;
+	pixel_y = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf_lead/hybrisa,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	layer = 3.1;
+	pixel_y = 38
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"NK" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"NO" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black{
+	dir = 1
+	},
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -20
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"NV" = (
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 16;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/vegetablepizzaslice{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"NZ" = (
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
+/area/lv759/indoors/weyyu_office/floor)
+"Oe" = (
+/obj/item/tool/pen/blue{
+	pixel_x = 6;
+	pixel_y = -7
+	},
+/obj/item/weapon/gun/rifle/mar40,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"Om" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -14;
+	buckling_x = -14
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 4;
+	buckling_x = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Oo" = (
+/obj/structure/machinery/atm{
+	icon = 'icons/obj/structures/props/atm.dmi';
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 14
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Ot" = (
+/obj/structure/machinery/vending/coffee{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 30;
+	pixel_x = -12
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office)
+"Oy" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office)
+"Oz" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"OA" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe3{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"OB" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"OL" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
+/area/lv759/indoors/weyyu_office/supervisor)
+"OM" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"ON" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"OU" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"OW" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -22
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Pi" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_y = 3
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"Pk" = (
+/obj/item/tool/pen/blue{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Pl" = (
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/east,
+/area/lv759/indoors/weyyu_office/vip)
+"Px" = (
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"PA" = (
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 4;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"PJ" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime1"
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"PK" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"PR" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_street)
+"PU" = (
+/obj/item/folder/black{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/tool/pen{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/tool/pen{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"PW" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"PZ" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 2
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -9;
+	pixel_y = 11
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -22
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Qh" = (
+/obj/structure/sign/safety/conference_room{
+	pixel_y = 32;
+	pixel_x = 8
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Qi" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office)
+"Qo" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/lv759/indoors/weyyu_office/hallway)
+"Qw" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_street)
+"Qy" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"QH" = (
+/obj/structure/bed/stool{
+	buckling_y = 14;
+	pixel_y = 13;
+	pixel_x = 6
+	},
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/north,
+/area/lv759/indoors/weyyu_office)
+"QI" = (
+/obj/item/storage/lockbox/loyalty{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	pixel_x = -4;
+	pixel_y = 20;
+	density = 0
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"QK" = (
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"QQ" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -12;
+	buckling_x = -12
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 4;
+	buckling_x = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"QR" = (
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 1
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_street)
+"QS" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 8;
+	pixel_y = -2
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"QT" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/shard,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"QV" = (
+/obj/structure/machinery/disposal,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_y = 12
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"QX" = (
+/obj/structure/bed/chair/comfy/hybrisa/black,
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/northeast,
+/area/lv759/indoors/weyyu_office/vip)
+"Ra" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/lv759/indoors/weyyu_office)
+"Rb" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"Re" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 9
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Rk" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	layer = 2.7
+	},
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Rq" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Rr" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = -8;
+	pixel_x = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Rx" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/west,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Rz" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"RE" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	pixel_y = 32;
+	layer = 3.2
+	},
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"RK" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/indoors/weyyu_office/floor)
+"RL" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
+	dir = 1;
+	pixel_y = 18;
+	layer = 9
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"RP" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"RS" = (
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -9;
+	pixel_y = -1
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/east,
+/area/lv759/indoors/weyyu_office)
+"Se" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office)
+"Sh" = (
+/obj/item/paper/crumpled,
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = 32
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"Si" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Sl" = (
+/obj/structure/machinery/microwave{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/blue,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Sm" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/photocopier/wyphotocopier{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/supervisor)
+"SH" = (
+/obj/effect/decal/hybrisa/trash,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
+/area/lv759/indoors/weyyu_office/floor)
+"SP" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	alpha = 220;
+	layer = 3.2;
+	pixel_y = -32
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"ST" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"SV" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 8;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"SW" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = 32
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"SZ" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
+/area/lv759/indoors/weyyu_office/floor)
+"Tc" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Tg" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/structure/bed/chair/office/light{
+	layer = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Th" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Tn" = (
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"To" = (
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/storage/fancy/cigar/matchbook/exec_select{
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/vip)
+"Ts" = (
+/obj/structure/bed/chair/comfy/hybrisa/black,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = 30
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/northeast,
+/area/lv759/indoors/weyyu_office/vip)
+"Tt" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"TI" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = -32
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"TJ" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"TK" = (
+/obj/structure/prop/ice_colony/tiger_rug,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
+/area/lv759/indoors/weyyu_office/supervisor)
+"TL" = (
+/obj/structure/prop/hybrisa/misc/concretestatue{
+	layer = 5;
+	pixel_y = 16
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"TO" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/item/weapon/gun/smg/p90,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"TQ" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/hybrisa/metal/bluemetal1/southeast,
+/area/lv759/indoors/weyyu_office/hallway)
+"TR" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/trash/eat{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"TU" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe3{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"TV" = (
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"TW" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Uf" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/hallway)
+"Ug" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 12
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Ui" = (
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Uk" = (
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Ul" = (
+/obj/structure/cargo_container/hd/left,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ut" = (
+/obj/structure/bed/chair,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Uz" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/supervisor)
+"UA" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4"
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"UC" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/breakroom)
+"UD" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"UE" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe3{
+	dir = 8
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"UF" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"UG" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	icon_state = "wy_water_crushed"
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"UU" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Vd" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Vj" = (
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_White,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Vo" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3"
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Vp" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Vv" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Vy" = (
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south,
+/area/lv759/indoors/weyyu_office/supervisor)
+"VA" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office)
+"VF" = (
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"VP" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"VS" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office/pressroom)
+"VV" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office)
+"Wb" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -12;
+	buckling_x = -12
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Wd" = (
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_street)
+"Wf" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Wk" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/east,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Wl" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1
+	},
+/obj/structure/closet/crate/secure/gear,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Wm" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Wn" = (
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Wq" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	layer = 2.7
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"Ws" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	icon_state = "bluemultimonitorbig_on";
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Wv" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 4;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Wy" = (
+/obj/structure/cargo_container/hd/mid,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"WD" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 12
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/frame{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"WJ" = (
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = -12;
+	buckling_x = -12
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1;
+	pixel_y = 5;
+	pixel_x = 8;
+	buckling_x = 8
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/weyyu_office/pressroom)
+"WO" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/weyyu_office/floor)
+"WR" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/trash/hybrisa/cuppa_joes_static/lid{
+	pixel_y = 2;
+	pixel_x = 16
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 22;
+	pixel_x = 12
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 22;
+	pixel_x = 12
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 22;
+	pixel_x = 12
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 22;
+	pixel_x = 12
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"WV" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"WW" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/effect/landmark/survivor_spawner/clf_engi/hybrisa,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"WX" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"Xn" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/item/paper_bin{
+	pixel_x = 10;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
+/area/lv759/indoors/weyyu_office/floor)
+"Xp" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Xq" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/deco_edging{
+	dir = 1;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Xv" = (
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"Xx" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Xy" = (
+/obj/effect/decal/hybrisa/deco_edging/corner{
+	dir = 8;
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"XJ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper,
+/obj/item/tool/pen/blue{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"XL" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/paper_bin{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"XO" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating/platingdmg3,
+/area/lv759/indoors/weyyu_office/hallway)
+"XP" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/deco_edging{
+	color = "#bbbaae"
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"XX" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_x = 2
+	},
+/turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
+/area/lv759/indoors/weyyu_office/floor)
+"XY" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/lv759/indoors/weyyu_office)
+"XZ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 1;
+	pixel_y = 26
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/weyyu_office)
+"Yb" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 6
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
+/area/lv759/indoors/weyyu_office/floor)
+"Yj" = (
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/paper/crumpled,
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/item/tool/pen{
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	layer = 3.2;
+	pixel_x = -32
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"Yo" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"Ys" = (
+/obj/structure/bed/chair/comfy/hybrisa/black{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/southwest,
+/area/lv759/indoors/weyyu_office/vip)
+"Yt" = (
+/obj/item/clothing/mask/cigarette/cigar{
+	pixel_x = 16;
+	pixel_y = 8
+	},
+/obj/item/folder/black{
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/vip)
+"Yv" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/platform/metal/hybrisa/metalplatform3/east,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"YA" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"YE" = (
+/obj/structure/sign/safety/bathunisex{
+	layer = 2;
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office/breakroom)
+"YG" = (
+/obj/structure/bed/chair,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/breakroom)
+"YY" = (
+/obj/item/ammo_casing,
+/obj/item/weapon/gun/pistol/mod88,
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/lv759/indoors/weyyu_office/supervisor)
+"Zh" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 4.12
+	},
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/turf/open/floor/prison/darkyellow2/east,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Zj" = (
+/obj/item/paper/crumpled,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/hybrisa/carpet/rug_colorable/black/southwest,
+/area/lv759/indoors/weyyu_office)
+"Zl" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Zp" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"Zs" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/item/trash/cigbutt,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/weyyu_office)
+"Zt" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/east,
+/obj/effect/decal/hybrisa/road/lines1{
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Zu" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/indoors/weyyu_office/pressroom)
+"Zy" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	icon_state = "bluemultimonitorbig_on";
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/effect/landmark/corpsespawner/wy/manager,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
+"ZA" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"ZK" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/lv759/indoors/weyyu_office/floor)
+"ZQ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northeast,
+/area/lv759/indoors/weyyu_office/floor)
+"ZX" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+
+(1,1,1) = {"
+ih
+vC
+pu
+pu
+pu
+pu
+pu
+pu
+pu
+pJ
+bZ
+bZ
+yi
+zT
+zT
+ZX
+yi
+ut
+ut
+ZX
+yi
+ut
+zT
+ZX
+yi
+ut
+ut
+VP
+"}
+(2,1,1) = {"
+vf
+Zl
+nY
+Si
+ii
+ij
+tv
+Si
+ii
+wn
+lE
+tv
+TW
+mf
+mf
+fk
+fk
+VS
+VS
+fk
+fk
+VS
+mf
+fk
+fk
+VS
+VS
+jn
+"}
+(3,1,1) = {"
+Vj
+Dl
+ot
+ot
+gs
+Wv
+PA
+Xy
+ot
+ot
+tS
+HQ
+cx
+VS
+vH
+Bs
+Ee
+eD
+eD
+Gx
+Gx
+sM
+FD
+Bs
+Bs
+iO
+VS
+Qh
+"}
+(4,1,1) = {"
+ij
+oj
+NO
+Ly
+Ey
+Tn
+TL
+Bo
+Ly
+Tt
+ij
+tv
+Mw
+Kv
+JO
+dQ
+nl
+oU
+LO
+nl
+UD
+UD
+Pk
+UD
+kl
+Ht
+vJ
+bx
+"}
+(5,1,1) = {"
+yW
+Ia
+eV
+eO
+XP
+Px
+TV
+Xq
+Ie
+yi
+Ka
+Ny
+fg
+vG
+Wk
+uN
+If
+ja
+Gz
+rq
+zB
+zB
+zB
+oX
+rR
+zS
+Cf
+Wf
+"}
+(6,1,1) = {"
+ij
+Ul
+kK
+aH
+Ct
+SV
+xe
+GC
+Wn
+aa
+zX
+sG
+UF
+pV
+VS
+Zh
+EM
+Ew
+re
+ls
+ax
+Dh
+IN
+WJ
+TJ
+UU
+cH
+ZA
+"}
+(7,1,1) = {"
+ij
+Wy
+Co
+Si
+ii
+CM
+Oz
+Si
+kh
+Le
+Fu
+lr
+PK
+VS
+AL
+Zt
+bb
+mS
+Xp
+CA
+eF
+iB
+nQ
+BL
+MZ
+VS
+VS
+zk
+"}
+(8,1,1) = {"
+ij
+dW
+ch
+ch
+ch
+xT
+xT
+ch
+ch
+Uf
+EN
+XO
+Uf
+VS
+Ws
+MY
+mI
+qB
+vk
+Om
+CN
+CN
+Wb
+Hb
+Mz
+vJ
+UG
+gJ
+"}
+(9,1,1) = {"
+BT
+ch
+ch
+Tg
+IH
+Lq
+uQ
+Dr
+ch
+zC
+bh
+Ky
+Qo
+VS
+Zy
+NJ
+gt
+vX
+Xp
+Ui
+Ui
+KC
+OW
+EL
+Mz
+vJ
+lO
+Wm
+"}
+(10,1,1) = {"
+ij
+RK
+gM
+yR
+Df
+KD
+cY
+SP
+JM
+TQ
+an
+zp
+tM
+VS
+ab
+aT
+eK
+Wl
+WW
+uE
+FC
+lw
+zB
+BP
+Mz
+vJ
+TR
+ei
+"}
+(11,1,1) = {"
+uo
+RK
+XJ
+IS
+lB
+Mc
+aC
+kC
+FM
+MS
+Hy
+vM
+eR
+VS
+Yv
+Rx
+Vo
+mS
+Xp
+dZ
+mg
+Dh
+IN
+WJ
+MZ
+VS
+VS
+Uk
+"}
+(12,1,1) = {"
+ij
+RK
+zt
+Vv
+aq
+fX
+ap
+kd
+JM
+hp
+mO
+mO
+Ib
+VS
+VS
+mr
+xR
+IF
+JJ
+PZ
+eF
+ed
+nQ
+BL
+TJ
+UU
+Cf
+Nn
+"}
+(13,1,1) = {"
+ij
+RK
+IJ
+qC
+Ae
+wM
+NZ
+Ec
+ch
+JM
+FG
+rO
+JM
+VS
+aR
+gX
+zj
+cg
+Rr
+az
+CN
+CN
+QQ
+Mq
+DF
+Th
+cH
+Np
+"}
+(14,1,1) = {"
+Fw
+ch
+ch
+kW
+oN
+QS
+tx
+ao
+KY
+fX
+dA
+yh
+TI
+tY
+vb
+mk
+OU
+ng
+vN
+uc
+mk
+Vd
+Vd
+TO
+Gw
+ko
+vJ
+Vp
+"}
+(15,1,1) = {"
+uo
+OB
+ch
+qG
+pw
+lN
+ki
+Vv
+DX
+wM
+AR
+jB
+DG
+VS
+nx
+hq
+gO
+sf
+Zu
+Ix
+mb
+sf
+ad
+xp
+HO
+dy
+VS
+Iz
+"}
+(16,1,1) = {"
+ij
+ch
+ch
+pf
+WV
+dp
+Ed
+JT
+Zp
+XX
+Cb
+zQ
+oV
+pm
+pm
+pm
+lL
+lL
+pm
+Bi
+Bi
+iW
+iW
+Bi
+Bi
+VS
+VS
+Ax
+"}
+(17,1,1) = {"
+ij
+RK
+Xn
+Xv
+sd
+dj
+Oe
+el
+pw
+iA
+up
+dI
+Ug
+pm
+Cy
+nM
+wb
+Yj
+ma
+Bi
+HJ
+xm
+tm
+RP
+Bi
+hy
+Xx
+zo
+"}
+(18,1,1) = {"
+ij
+RK
+Yb
+YA
+DD
+xn
+GE
+Re
+ZQ
+dp
+uU
+dI
+XL
+pm
+zc
+oC
+By
+Pl
+Ne
+Bi
+ws
+LT
+YY
+KR
+Uz
+HW
+Hx
+dt
+"}
+(19,1,1) = {"
+ij
+RK
+Gv
+QT
+Pi
+HN
+wg
+ZK
+SZ
+yD
+fa
+SH
+dA
+bH
+kE
+Ts
+em
+qw
+ff
+Bi
+QI
+JS
+Rb
+PU
+Uz
+uG
+OA
+Tc
+"}
+(20,1,1) = {"
+FA
+RK
+GO
+tr
+wz
+wO
+bI
+yJ
+dA
+dA
+Rz
+dA
+QV
+pm
+hX
+QX
+To
+qw
+Is
+vL
+RE
+Vy
+TK
+Sm
+Bi
+co
+sD
+dt
+"}
+(21,1,1) = {"
+at
+ch
+ch
+hk
+SW
+SW
+cX
+pX
+ON
+MT
+rI
+dA
+JX
+pm
+WD
+QX
+qp
+qw
+Kq
+Ki
+PW
+OL
+pk
+Ma
+Uz
+bQ
+Bg
+vh
+"}
+(22,1,1) = {"
+hr
+iQ
+dm
+dm
+wy
+wy
+wy
+UC
+dm
+JM
+WO
+HC
+hS
+pm
+KO
+QX
+Yt
+qw
+wq
+vL
+af
+Am
+lk
+lk
+Uz
+UE
+TU
+dt
+"}
+(23,1,1) = {"
+FA
+dm
+dm
+Rq
+PJ
+Cw
+eE
+jq
+dm
+XZ
+uA
+jh
+my
+bH
+LE
+QX
+fb
+qw
+WX
+Bi
+bR
+qN
+km
+dR
+Bi
+sj
+OM
+Tc
+"}
+(24,1,1) = {"
+hU
+ba
+Sl
+aw
+Bb
+qr
+lV
+oP
+dm
+Ot
+zG
+ac
+wE
+GQ
+iK
+mo
+iK
+sY
+iN
+Bi
+Bi
+Bi
+Bi
+Bi
+Bi
+XY
+XY
+ce
+"}
+(25,1,1) = {"
+nP
+ba
+Ev
+QK
+Jr
+ST
+kL
+de
+dm
+zZ
+AW
+jh
+jh
+Nb
+bW
+Dy
+Ys
+tF
+Je
+rP
+jR
+rT
+BS
+cS
+Ra
+rP
+tc
+tc
+"}
+(26,1,1) = {"
+FA
+ba
+zR
+YG
+dE
+NV
+Wq
+Mx
+dm
+Nc
+Se
+Oy
+xS
+bH
+va
+Sh
+yP
+yp
+Lb
+rP
+kP
+Zs
+In
+eU
+gq
+hQ
+ZA
+kR
+"}
+(27,1,1) = {"
+at
+ba
+Mf
+Ut
+we
+pY
+Rk
+de
+dm
+Mt
+Qi
+gI
+Mt
+XY
+XY
+qv
+VA
+XY
+XY
+XY
+zZ
+ae
+eU
+cj
+In
+iF
+Qy
+Vp
+"}
+(28,1,1) = {"
+FA
+dm
+dm
+dm
+dm
+dm
+dm
+EF
+wy
+Mn
+Jn
+am
+nd
+ey
+ak
+fG
+cN
+DM
+ah
+fG
+eP
+VF
+AV
+fF
+qq
+rP
+zb
+tc
+"}
+(29,1,1) = {"
+AK
+nH
+dm
+do
+lZ
+NK
+yt
+HA
+eB
+Yo
+GP
+Yo
+al
+Md
+WR
+aj
+FH
+ai
+pK
+Yo
+ag
+GI
+zP
+yF
+RS
+XY
+eo
+lJ
+"}
+(30,1,1) = {"
+fN
+bk
+dm
+dm
+dm
+en
+dm
+YE
+wy
+ol
+ea
+gC
+Nr
+vD
+eC
+Ko
+ea
+VV
+ea
+Kp
+jr
+qV
+QH
+Zj
+pA
+XY
+Oo
+rr
+"}
+(31,1,1) = {"
+lT
+kU
+dm
+gA
+lZ
+on
+dm
+Mb
+dm
+XY
+XY
+XY
+Mv
+pH
+XY
+XY
+XY
+XY
+XY
+XY
+XY
+XY
+XY
+XY
+XY
+XY
+XY
+hg
+"}
+(32,1,1) = {"
+Aw
+ru
+dm
+oq
+dm
+dm
+dm
+zA
+dm
+Fj
+rM
+XY
+iF
+Mu
+XY
+Ac
+tK
+Qw
+sX
+eq
+eq
+ev
+lt
+pO
+XY
+XY
+XY
+bx
+"}
+(33,1,1) = {"
+PR
+nG
+QR
+RL
+ex
+Wd
+Bh
+yz
+sE
+UA
+vP
+Cc
+Aq
+xl
+qA
+cf
+Fn
+wW
+ex
+mt
+nW
+ex
+er
+vS
+pL
+pL
+vS
+tP
+"}

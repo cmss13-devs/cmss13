@@ -5,6 +5,13 @@
     "landmark": "riot_control",
     "chance": 0.5,
     "path": "standalone/riot_in_progress.dmm",
-    "when": { "riot_in_progress": "true" }
+    "when": { "riot_in_progress": "riot" }
+},
+{
+    "type": "map_insert",
+    "landmark": "rocinante",
+    "chance": 1.0,
+    "path": "standalone/rocinante.dmm",
+    "when": { "riot_in_progress": "rocinante" }
 }
 ]

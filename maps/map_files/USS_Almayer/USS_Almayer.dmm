@@ -11602,6 +11602,9 @@
 	req_access = list(37);
 	pixel_x = -3
 	},
+/obj/item/dogtag{
+	desc = "A blank marine's information dog tag. The word Ranger and a pawprint is scratched into it."
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/auxiliary_officer_office)
 "aEF" = (

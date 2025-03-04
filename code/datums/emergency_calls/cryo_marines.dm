@@ -96,6 +96,7 @@
 
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"
+	icon_state = "marine_spawn_foxtrot"
 
 /datum/emergency_call/cryo_squad/tech
 	name = "Marine Cryo Reinforcements (Tech)"

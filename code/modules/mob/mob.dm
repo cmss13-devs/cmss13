@@ -240,7 +240,8 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
-	if(client == null || (client.inactivity > 1 && world.time > 20 MINUTES)) //Do not start away_timer on connected clients until 20 minutes has passed.
+	var/game_started = SSticker.current_state == GAME_STATE_PLAYING && ROUND_TIME > 3 MINUTES
+	if(client == null || (client.inactivity > 1 && game_started)) //Do not start away_timer on connected clients until the round has been active for 3 mins.
 		away_timer++
 	else
 		away_timer = 0

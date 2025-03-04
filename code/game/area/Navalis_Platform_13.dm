@@ -85,6 +85,19 @@
 	unoviable_timer = FALSE
 	minimap_color = MINIMAP_AREA_JUNGLE
 
+// Middle Deck Indoor
+
+/area/navalis/indoors/charon/surface_deck
+	icon_state = "syndie-ship"
+
+/area/navalis/indoors/charon/surface_deck/main_deck
+	name = "PSV Charon - Main Deck"
+
+/area/navalis/indoors/charon/surface_deck/rear_deck
+	name = "PSV Charon - Poop Deck"
+
+// Lower Deck
+
 /area/navalis/indoors/charon/below_deck
 	icon_state = "syndie-ship"
 
@@ -92,10 +105,21 @@
 	name = "PSV Charon - Below-Deck Fore"
 
 /area/navalis/indoors/charon/below_deck/middle
-	name = "PSV Charon - Below-Deck Cargo Hold"
+	name = "PSV Charon - Below-Deck: Cargo Hold"
 
 /area/navalis/indoors/charon/below_deck/rear
 	name = "PSV Charon - Below-Deck Aft"
+
+// Upper Deck
+
+/area/navalis/indoors/charon/upper_deck
+	icon_state = "syndie-ship"
+
+/area/navalis/indoors/charon/upper_deck/front
+	name = "PSV Charon - Upper-Deck: Bridge"
+
+/area/navalis/indoors/charon/upper_deck/rear
+	name = "PSV Charon - Upper-Deck: Engineering"
 
 
 // Medical-Science Rig
@@ -410,9 +434,21 @@
 	name = "Residential Rig - Landing-Pad"
 
 /area/navalis/indoors/residential/cafeteria
-	name = "Residential Rig - Cafeteria"
-	ceiling = CEILING_NONE
-	unoviable_timer = TRUE
+	name = "Residential Rig - Level 2: Cafeteria"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
+/area/navalis/indoors/residential/access
+	name = "Residential Rig - Level 2: Starboard Access"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
+/area/navalis/indoors/residential/maint_stern
+	name = "Residential Rig - Level 2: Stern Maintenance"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
+/area/navalis/indoors/residential/maint_starboard
+	name = "Residential Rig - Level 2: Starboard Maintenance"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
 
 // Landing Zones
 /area/navalis/outdoors/landing_zone_1

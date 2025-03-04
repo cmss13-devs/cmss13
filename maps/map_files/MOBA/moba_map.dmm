@@ -23,9 +23,13 @@
 	},
 /turf/open/floor,
 /area/misc/moba/base)
-"aR" = (
+"ag" = (
+/obj/effect/alien/resin/moba_turret/left,
+/turf/open/floor/almayer,
+/area/misc/moba)
+"ah" = (
 /obj/effect/alien/resin/moba_turret/right,
-/turf/open/floor/almayer/bluefull2,
+/turf/open/floor/almayer,
 /area/misc/moba)
 "dE" = (
 /obj/effect/moba_minion_checkpoint/right/top_diag2,
@@ -61,10 +65,6 @@
 "jf" = (
 /turf/open/space/basic,
 /area/space)
-"kW" = (
-/obj/effect/alien/resin/moba_turret/left,
-/turf/open/floor/almayer/bluefull2,
-/area/misc/moba)
 "ln" = (
 /obj/effect/landmark/moba_minion_spawner{
 	top = 1
@@ -4175,9 +4175,9 @@ Uv
 (70,1,1) = {"
 Uv
 xo
-WK
-WK
-kW
+xo
+xo
+xo
 xo
 xo
 xo
@@ -4232,9 +4232,9 @@ Uv
 (71,1,1) = {"
 Uv
 xo
-WK
 xo
-WK
+ag
+xo
 xo
 xo
 xo
@@ -4289,9 +4289,9 @@ Uv
 (72,1,1) = {"
 Uv
 xo
-WK
-WK
-WK
+xo
+xo
+xo
 xo
 xo
 xo
@@ -5315,9 +5315,9 @@ Uv
 (90,1,1) = {"
 Uv
 xo
-WK
-WK
-aR
+xo
+xo
+xo
 xo
 xo
 xo
@@ -5372,9 +5372,9 @@ Uv
 (91,1,1) = {"
 Uv
 xo
-WK
-WK
-WK
+xo
+ah
+xo
 xo
 xo
 xo
@@ -5429,9 +5429,9 @@ Uv
 (92,1,1) = {"
 Uv
 xo
-WK
-WK
-WK
+xo
+xo
+xo
 xo
 xo
 xo

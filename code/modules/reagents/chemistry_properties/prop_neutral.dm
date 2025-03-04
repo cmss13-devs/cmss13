@@ -269,10 +269,26 @@
 	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/neutral/hypothermic/process(mob/living/M, potency = 1, delta_time)
+	var/mob/living/carbon/human/effected_human = M
 	if(prob(5 * delta_time))
 		M.emote("shiver")
 	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
+	///IF body temp below 0C AND Cryo or Clonex in system, AND hypothermic_clot_toggle false apply CHEM_EFFECT_NO_BLEEDING
+	if ((M.bodytemperature <= (BODYTEMP_CRYO_LIQUID_THRESHOLD + 63.15) && (effected_human.reagents.get_reagent_amount("cryoxadone") || effected_human.reagents.get_reagent_amount("clonexadone"))) && M.hypothermic_clot_toggle == FALSE)
+		M.hypothermic_clot_toggle = TRUE
+		effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+		to_chat(effected_human, SPAN_NOTICE("Bleed Cancel applied"))
+
+	///IF are above 0C or no cryo/clonex AND hypothermic_clot_toggle true, remove no bleed flag.
+	if ((M.bodytemperature > (BODYTEMP_CRYO_LIQUID_THRESHOLD + 63.15) || (effected_human.reagents.get_reagent_amount("cryoxadone") == 0 && effected_human.reagents.get_reagent_amount("clonexadone") == 0)) && M.hypothermic_clot_toggle == TRUE)
+		M.hypothermic_clot_toggle = FALSE
+		effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 	M.recalculate_move_delay = TRUE
+
+///Repurposed hemostatic/on_delete , removes chem flag when removed
+/datum/chem_property/neutral/hypothermic/on_delete(mob/living/affected_mob)
+	var/mob/living/carbon/human/effected_human = affected_mob
+	effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
 	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)

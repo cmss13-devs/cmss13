@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed UPP supply packs overriding all normal variant supply packs"
+  - code_imp: "Added a check to ensure all usage of GLOBAL_SUBTYPE_PATH_INDEXED has uniquely indexed entries"

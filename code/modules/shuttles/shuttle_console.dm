@@ -124,10 +124,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	var/shuttle_state
 	switch(shuttle.moving_status)
-		if(SHUTTLE_IDLE) shuttle_state = "idle"
-		if(SHUTTLE_WARMUP) shuttle_state = "warmup"
-		if(SHUTTLE_INTRANSIT) shuttle_state = "in_transit"
-		if(SHUTTLE_CRASHED) shuttle_state = "crashed"
+		if(SHUTTLE_IDLE)
+			shuttle_state = "idle"
+		if(SHUTTLE_WARMUP)
+			shuttle_state = "warmup"
+		if(SHUTTLE_INTRANSIT)
+			shuttle_state = "in_transit"
+		if(SHUTTLE_CRASHED)
+			shuttle_state = "crashed"
 
 	var/shuttle_status
 	switch (shuttle.process_state)
@@ -325,7 +329,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				to_chat(M, SPAN_WARNING("Hrm, that didn't work. Maybe try the one on the ship?"))
 				return
 			else
-				if(is_ground_level(z)) shuttle.transit_gun_mission = 0 //remote launch always do transport flight.
+				if(is_ground_level(z))
+					shuttle.transit_gun_mission = 0 //remote launch always do transport flight.
 				shuttle.launch(src)
 				if(onboard && !shuttle.iselevator)
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)

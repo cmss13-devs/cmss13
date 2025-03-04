@@ -457,6 +457,11 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
+"acc" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
 "acd" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -787,6 +792,23 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
+"adl" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/grimy,
+/area/lv624/lazarus/hop)
+"adm" = (
+/obj/item/trash/candy,
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Secure Outer Doors";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/hop)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -801,6 +823,10 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
+"adq" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -820,6 +846,14 @@
 	icon_state = "wall3"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adv" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/redcorner/north,
+/area/lv624/lazarus/security)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
@@ -831,9 +865,20 @@
 "ady" = (
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
+"adz" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
+"adB" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
 "adC" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
@@ -870,6 +915,11 @@
 /obj/item/tool/shovel,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
+"adG" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/lv624/lazarus/yggdrasil)
 "adH" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
@@ -892,6 +942,14 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"adK" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/main_hall)
+"adL" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "adM" = (
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
@@ -906,6 +964,11 @@
 	},
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
+"adO" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/white,
+/area/lv624/lazarus/main_hall)
 "adP" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -939,6 +1002,11 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
+"adV" = (
+/obj/structure/foamed_metal,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship_containers)
 "adX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -1974,17 +2042,6 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
-"akh" = (
-/obj/item/trash/candy,
-/obj/structure/machinery/power/apc/power/north,
-/obj/structure/machinery/door_control{
-	id = "secure_outer_blast";
-	name = "Secure Outer Doors";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/turf/open/floor/wood,
-/area/lv624/lazarus/hop)
 "akj" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
@@ -4441,11 +4498,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/sleep_male)
-"azr" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/obj/effect/landmark/crap_item,
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
 "azs" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
@@ -6119,10 +6171,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
-"aHe" = (
-/obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/main_hall)
 "aHf" = (
 /obj/structure/flora/pottedplant,
 /obj/structure/machinery/light/spot{
@@ -6174,10 +6222,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/open/floor/white,
-/area/lv624/lazarus/main_hall)
-"aHq" = (
-/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHr" = (
@@ -6747,11 +6791,6 @@
 "aKp" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grass2,
-/area/lv624/lazarus/yggdrasil)
-"aKq" = (
-/obj/structure/flora/jungle/vines/light_1,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aKr" = (
@@ -9167,11 +9206,6 @@
 /obj/item/device/aicard,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
-"aWU" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/flamer/survivor,
-/turf/open/floor/greengrid,
-/area/lv624/lazarus/secure_storage)
 "aWV" = (
 /obj/item/stack/rods/plasteel,
 /obj/effect/decal/cleanable/dirt,
@@ -9752,17 +9786,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
-"aZz" = (
-/obj/structure/filingcabinet/security{
-	desc = "A large cabinet with hard copy security records.";
-	name = "Security Records"
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/redcorner/north,
-/area/lv624/lazarus/security)
 "aZA" = (
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light/small{
@@ -14231,13 +14254,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"jQX" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/grimy,
-/area/lv624/lazarus/hop)
 "jRm" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
@@ -18440,13 +18456,6 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
-"sBg" = (
-/obj/structure/machinery/vending/cigarette,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/whiteblue/southeast,
-/area/lv624/lazarus/corporate_dome)
 "sBC" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -27793,7 +27802,7 @@ uzH
 uzH
 uzH
 uzH
-uzH
+adz
 aDV
 aRG
 tZD
@@ -29404,7 +29413,7 @@ aUQ
 aUQ
 aVY
 aUQ
-aWU
+acc
 aUQ
 aXD
 aUQ
@@ -33945,7 +33954,7 @@ dLn
 cfT
 rah
 rah
-sBg
+adB
 xgE
 wWK
 sIi
@@ -42153,7 +42162,7 @@ rGu
 mNz
 hSn
 aJz
-aKq
+adG
 aKI
 aLh
 aLg
@@ -47164,7 +47173,7 @@ aFn
 aFR
 aFn
 aGs
-aHe
+adK
 aHJ
 azt
 abr
@@ -47176,15 +47185,15 @@ aMe
 aKQ
 aNS
 aOK
-aZz
+adv
 aLl
-akh
+adm
 aRI
 aao
 aal
 aTC
 aQM
-jQX
+adl
 aVq
 aVM
 aSB
@@ -47605,7 +47614,7 @@ oUy
 sgj
 mXR
 ayu
-azr
+adO
 azt
 aAy
 azt
@@ -48878,7 +48887,7 @@ acf
 acf
 acf
 ecy
-acw
+adV
 acU
 acT
 kRr
@@ -52408,7 +52417,7 @@ aFF
 aFF
 aGy
 asN
-aHq
+adL
 azt
 azt
 azt
@@ -52422,7 +52431,7 @@ aOd
 aNo
 nIZ
 aNo
-aDG
+adq
 aGQ
 aky
 btF

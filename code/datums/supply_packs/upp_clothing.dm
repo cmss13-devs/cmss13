@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/ushanka_crate
-	name = "Ushanka crate (x10)"
+	name = "UPP Ushanka crate (x10)"
 	contains = list(
 		/obj/item/clothing/head/uppcap/ushanka,
 		/obj/item/clothing/head/uppcap/ushanka,

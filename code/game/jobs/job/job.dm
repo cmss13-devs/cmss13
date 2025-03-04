@@ -1,7 +1,7 @@
 /datum/job
 	//The name of the job
-	var/title = ""  //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
-	var/disp_title  //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
+	var/title = null //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
+	var/disp_title //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
 	var/role_ban_alternative // If the roleban title needs to be an extra check, like Xenomorphs = Alien.
 
 	var/total_positions = 0 //How many players can be this job
@@ -42,6 +42,9 @@
 	/// Under what faction menu the job gets displayed in lobby
 	var/faction_menu = FACTION_NEUTRAL //neutral to cover uscm jobs for now as loads of them are under civil and stuff mainly ment for other faction
 
+	/// How many points people with this role selected get to pick from
+	var/loadout_points = 0
+
 /datum/job/New()
 	. = ..()
 
@@ -78,9 +81,12 @@
 
 /datum/timelock/New(name, time_required, list/roles)
 	. = ..()
-	if(name) src.name = name
-	if(time_required) src.time_required = time_required
-	if(roles) src.roles = roles
+	if(name)
+		src.name = name
+	if(time_required)
+		src.time_required = time_required
+	if(roles)
+		src.roles = roles
 
 /datum/job/proc/setup_requirements(list/L)
 	var/list/to_return = list()
@@ -212,13 +218,13 @@
 		title_given = lowertext(disp_title)
 
 		//Document syntax cannot have tabs for proper formatting.
-		var/entrydisplay = " \
+		var/entrydisplay = boxed_message("\
 			[SPAN_ROLE_BODY("|______________________|")] \n\
 			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
 			[flags_startup_parameters & ROLE_ADMIN_NOTIFY ? SPAN_ROLE_HEADER("You are playing a job that is important for game progression. If you have to disconnect, please notify the admins via adminhelp.") : ""] \n\
 			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
-		"
+		")
 		to_chat_spaced(H, html = entrydisplay)
 
 /datum/job/proc/generate_entry_conditions(mob/living/M, whitelist_status)
@@ -257,6 +263,8 @@
 			job_whitelist = "[title][whitelist_status]"
 
 		human.job = title //TODO Why is this a mob variable at all?
+
+		load_loadout(M)
 
 		if(gear_preset_whitelist[job_whitelist])
 			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
@@ -305,6 +313,22 @@
 		SSround_recording.recorder.track_player(human)
 
 	return TRUE
+
+/// If we have one, equip our mob with their job gear
+/datum/job/proc/load_loadout(mob/living/carbon/human/new_human)
+	if(!new_human.client || !new_human.client.prefs)
+		return
+
+	var/equipment_slot = new_human.client.prefs.get_active_loadout(title)
+	if(!length(equipment_slot))
+		return
+
+	for(var/gear_type in equipment_slot)
+		var/datum/gear/current_gear = GLOB.gear_datums_by_type[gear_type]
+		if(!current_gear)
+			continue
+
+		current_gear.equip_to_user(new_human)
 
 /// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)

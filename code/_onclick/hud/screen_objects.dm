@@ -85,6 +85,8 @@
 
 /atom/movable/screen/action_button/proc/set_maptext(new_maptext, new_maptext_x, new_maptext_y)
 	overlays -= maptext_overlay
+	if(!new_maptext)
+		return
 	maptext_overlay = image(null, null, null, layer + 0.1)
 	maptext_overlay.maptext = new_maptext
 	if(new_maptext_x)

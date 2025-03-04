@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - bugfix: "Antiparasitic chems can cure stage 2+ infected again."

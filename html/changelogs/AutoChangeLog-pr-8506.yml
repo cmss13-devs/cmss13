@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "A bug with cas hardpoints being able to picked up despite being already picked up"

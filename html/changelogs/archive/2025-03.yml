@@ -8,3 +8,19 @@
   - bugfix: Banished tier 3's can no longer no longer destroy their own tunnels
   - bugfix: Fixes banished xenos not being able to leave tunnels
   - spellcheck: Fixes a small grammatical error within neurotoxin pain message
+2025-03-02:
+  Red-byte3D:
+  - bugfix: A bug with cas hardpoints being able to picked up despite being already
+      picked up
+2025-03-03:
+  Syndro101:
+  - rscadd: Added replacement rooms for XO, ASO, Synth, Flight Crew, Officer's Mess,
+      Intel Office, Intel Quarters, Reporter Office, new areas for the CIC conference
+      room and lower cryocells above medbay
+  - rscdel: Removed old rooms for XO, ASO, Synth, Flight Crew, Officer's Mess
+  - code_imp: changed ASO and Flight Crew bunks areas, Fake_Zlevels swapped.
+  - maptweak: added new sections, removed old sections
+  realforest2001:
+  - imageadd: Added a blank OOC icon for missing sprites.
+  - imageadd: Added a StaffManager OOC icon.
+  - imageadd: Re-Added missing RatKing OOC icon.

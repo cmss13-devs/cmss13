@@ -27,7 +27,16 @@
 /datum/moba_join_panel/ui_data(mob/user)
 	var/list/data = list()
 
-	data["picked_castes"] = picked_castes
+	data["picked_castes"] = list()
+	for(var/caste_name in picked_castes)
+		var/datum/moba_caste/caste = GLOB.moba_castes_name[caste_name]
+		data["picked_castes"] += list(list(
+			"name" = caste.name,
+			"desc" = caste.desc,
+			"icon_state" = caste.icon_state,
+			"category" = caste.category,
+			"ideal_roles" = caste.ideal_roles,
+		))
 	data["picked_lanes"] = picked_lanes
 	data["in_queue"] = in_queue
 
@@ -41,7 +50,19 @@
 /datum/moba_join_panel/ui_static_data(mob/user)
 	var/list/data = list()
 
+	data["categories"] = list(MOBA_ARCHETYPE_ASSASSIN, MOBA_ARCHETYPE_CASTER, MOBA_ARCHETYPE_CONTROLLER, MOBA_ARCHETYPE_FIGHTER, MOBA_ARCHETYPE_TANK)
+
 	data["castes"] = GLOB.moba_castes_name + "None"
+	data["castes_2"] = list()
+	for(var/caste_name in GLOB.moba_castes_name)
+		var/datum/moba_caste/caste = GLOB.moba_castes_name[caste_name]
+		data["castes_2"] += list(list(
+			"name" = caste.name,
+			"desc" = caste.desc,
+			"icon_state" = caste.icon_state,
+			"category" = caste.category,
+			"ideal_roles" = caste.ideal_roles,
+		))
 
 	return data
 

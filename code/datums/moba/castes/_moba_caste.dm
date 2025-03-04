@@ -8,7 +8,10 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	var/equivalent_xeno_path
 
 	var/name = ""
+	var/desc = "Empty description"
 	var/category = ""
+	var/icon = 'icons/misc/moba/caste_icons.dmi'
+	var/icon_state = ""
 	var/list/ideal_roles = list()
 
 	var/starting_health = 500

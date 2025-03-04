@@ -386,11 +386,21 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 /obj/item/weapon/gun/revolver/m44/able_to_fire(mob/user)
-	if (folded)
+	if(folded)
 		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))//this is stupid
-		return 0
-	else
+		return FALSE
+	if(!currently_fanning)
 		return ..()
+	if(currently_fanning && user.get_inactive_hand() && !istype(user.get_inactive_hand(), /obj/item/weapon/twohanded/offhand))
+		to_chat(user, SPAN_NOTICE("You can't fan the hammer when something else is in your hand"))
+		return FALSE
+	var/hand_to_check = user.r_hand == src ? "l_hand" : "r_hand"
+	var/mob/living/carbon/human/revolver_wielder = user
+	var/obj/limb/limb_to_check = revolver_wielder.get_limb(hand_to_check)
+	if(limb_to_check && !limb_to_check.is_usable())
+		to_chat(user, SPAN_NOTICE("You cannot fan the hammer with a missing limb."))
+		return FALSE
+	return ..()
 
 /obj/item/weapon/gun/revolver/m44/mp //No differences (yet) beside spawning with marksman ammo loaded
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman

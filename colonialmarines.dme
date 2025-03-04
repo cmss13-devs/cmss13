@@ -620,6 +620,7 @@
 #include "code\datums\looping_sounds\_looping_sound.dm"
 #include "code\datums\looping_sounds\item_sounds.dm"
 #include "code\datums\looping_sounds\misc_sounds.dm"
+#include "code\datums\moba\moba_action.dm"
 #include "code\datums\moba\moba_controller.dm"
 #include "code\datums\moba\moba_hive.dm"
 #include "code\datums\moba\moba_player.dm"

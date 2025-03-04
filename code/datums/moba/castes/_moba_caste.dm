@@ -39,7 +39,9 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	xeno.attack_speed_modifier = attack_delay_modifier
 	handle_level_up(xeno, player_component, player_datum, player_datum.level)
 	for(var/path in abilities_to_add)
-		give_action(xeno, path)
+		give_action(xeno, path, player_datum)
+		if(!player_datum.ability_path_level_dict[path])
+			player_datum.ability_path_level_dict[path] = 0
 
 /datum/moba_caste/proc/handle_level_up(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/player_component, datum/moba_player/player_datum, new_level = 1)
 	var/multiplier = (new_level - 1) / (MOBA_MAX_LEVEL - 1)

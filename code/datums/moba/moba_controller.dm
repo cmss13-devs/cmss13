@@ -214,7 +214,7 @@
 
 	QDEL_NULL(found_playerdata.player.tied_xeno)
 
-	found_playerdata.player.tied_xeno = xeno
+	found_playerdata.player.set_tied_xeno(xeno)
 
 /datum/moba_controller/proc/move_disconnected_player_to_body(mob/source)
 	SIGNAL_HANDLER

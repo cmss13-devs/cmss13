@@ -1,6 +1,8 @@
 
 /datum/action
 	var/name = "Generic Action"
+	/// If desc is truthy, then the button can be examined
+	var/desc = ""
 	var/icon_file = 'icons/mob/hud/actions.dmi'
 	var/action_icon_state
 	var/button_icon_state

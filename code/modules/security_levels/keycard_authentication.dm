@@ -40,6 +40,11 @@
 					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
+				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access))	// need to be senior CIC staff to toggle ob safety
+					balloon_alert_to_viewers("Error! Insufficient clearence!")
+					playsound(loc, 'sound/items/defib_failed.ogg')
+					sleep(confirm_delay)
+					return
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
 
 /obj/structure/machinery/keycard_auth/power_change()

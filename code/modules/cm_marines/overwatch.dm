@@ -72,6 +72,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(faction == FACTION_MARINE)
 		GLOB.active_overwatch_consoles += src
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
+		ob_cannon_safety = GLOB.ob_cannon_safety
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
 		tacmap = new(src, minimap_type) // Non-drawing version

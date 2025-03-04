@@ -19313,6 +19313,24 @@
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/access)
+"beC" = (
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/navalis/indoors/xeno_growth/residential)
+"beD" = (
+/obj/structure/platform/stone/strata,
+/turf/open_space,
+/area/navalis/indoors/xeno_growth/residential)
+"beE" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open_space,
+/area/navalis/indoors/xeno_growth/residential)
+"beF" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/almayer/tcomms,
+/area/navalis/indoors/command/upper_deck/server)
 "bfl" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5"
@@ -27255,12 +27273,11 @@
 /turf/open/floor/prison/green/west,
 /area/navalis/indoors/med_sci/upper_level/corridor)
 "fCp" = (
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "comacc";
-	dir = 2;
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	unacidable = 1;
-	name = "Command Upper Access";
 	explo_proof = 1;
+	name = "Command Upper Access";
+	id = "comacc";
 	needs_power = 0
 	},
 /turf/open/floor/almayer/pod_landing_floor,
@@ -28592,6 +28609,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_smooth"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "gne" = (
@@ -30550,7 +30568,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/navalis/indoors/command/upper_deck/port)
 "hsx" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "hsG" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -32568,6 +32586,7 @@
 	pixel_y = 5;
 	pixel_x = 11
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/darkpurplefull2,
 /area/navalis/indoors/command/upper_deck/server)
 "iHo" = (
@@ -42172,6 +42191,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/upper_deck/port)
 "oux" = (
@@ -51546,6 +51566,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/blue/east,
 /area/navalis/indoors/med_sci/upper_level/flight)
 "tEK" = (
@@ -165461,13 +165482,13 @@ ari
 ari
 ars
 ari
-ari
-ari
+aJI
+asq
 gAG
 piM
 piM
 gAG
-ari
+asq
 arT
 ari
 ari
@@ -165626,12 +165647,12 @@ ari
 aKs
 ari
 ari
-aJI
-gAG
-gAG
-gAG
-gAG
-ari
+asq
+beE
+swv
+swv
+beC
+asq
 ari
 ari
 ari
@@ -165791,11 +165812,11 @@ ari
 ari
 ari
 asq
-gAG
-gAG
-gAG
-gAG
-ari
+aTS
+aTS
+aTS
+beD
+asq
 ari
 ari
 ars
@@ -165954,12 +165975,12 @@ ari
 ari
 ari
 ari
-ari
-swv
-swv
-swv
-swv
-ari
+asq
+aTS
+aTS
+aTS
+aTS
+asq
 ari
 ari
 ars
@@ -197423,7 +197444,7 @@ keo
 tDM
 vfx
 caW
-nYL
+beF
 nYL
 krK
 bgt

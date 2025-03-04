@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	data["ssd"] = null //clear the data in case we have an old input from a previous scan
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())
 		data["ssd"] = "Subject has taken extreme amounts of brain damage."
-	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob))
+	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob) && !(target_mob.status_flags & FAKESOUL))
 		if(!target_mob.key)
 			data["ssd"] = "No soul detected." // they ghosted
 		else if(!target_mob.client)

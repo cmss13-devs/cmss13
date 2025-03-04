@@ -163,6 +163,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 			SPAN_HELPFUL("You <b>finish [description_verbing]</b> the [description_wounds] on [possessive] <b>[target_limb.display_name]</b>."),
 			SPAN_HELPFUL("[user] <b>finishes [description_verbing]</b> the [description_wounds] on your <b>[target_limb.display_name]</b>."),
 			SPAN_NOTICE("[user] finishes [description_verbing] the [description_wounds] on [possessive_their] [target_limb.display_name]."))
+		SEND_SIGNAL(target_limb, COMSIG_LIMB_FULLY_SUTURED)
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You [description_verb] some of the [description_wounds] on [possessive] [target_limb.display_name]."),

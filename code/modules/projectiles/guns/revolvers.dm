@@ -396,6 +396,8 @@
 		return FALSE
 	var/hand_to_check = user.r_hand == src ? "l_hand" : "r_hand"
 	var/mob/living/carbon/human/revolver_wielder = user
+	if(!istype(revolver_wielder))
+		return ..()
 	var/obj/limb/limb_to_check = revolver_wielder.get_limb(hand_to_check)
 	if(limb_to_check && !limb_to_check.is_usable())
 		to_chat(user, SPAN_NOTICE("You cannot fan the hammer with a missing limb."))

@@ -408,6 +408,16 @@
 
 	return ..()
 
+/datum/asset/spritesheet/moba
+	name = "moba"
+
+/datum/asset/spritesheet/moba/register()
+	for(var/icon_state in icon_states('icons/misc/moba/caste_icons.dmi'))
+		var/icon/icon_sprite = icon('icons/misc/moba/caste_icons.dmi', icon_state)
+		icon_sprite.Scale(60, 60)
+		Insert(icon_state, icon_sprite)
+
+	return ..()
 
 /datum/asset/spritesheet/gun_lineart
 	name = "gunlineart"

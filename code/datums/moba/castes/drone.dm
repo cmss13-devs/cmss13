@@ -3,6 +3,7 @@
 	equivalent_xeno_path = /mob/living/carbon/xenomorph/drone
 	name = XENO_CASTE_DRONE
 	category = MOBA_ARCHETYPE_CONTROLLER
+	icon_state = "drone"
 	ideal_roles = list(MOBA_LANE_SUPPORT)
 	starting_health = 500
 	ending_health = 2000

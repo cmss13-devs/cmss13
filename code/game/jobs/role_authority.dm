@@ -33,8 +33,8 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 /datum/authority/branch/role
 	var/name = "Role Authority"
 
-	var/list/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
-	var/list/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
+	var/list/datum/job/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
+	var/list/datum/job/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
 	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.
@@ -445,6 +445,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	var/mob/living/carbon/human/new_human = new_mob
 
+	if(!late_join)
+		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
+
 	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
 		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
 
@@ -504,6 +507,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
 		new_human.forceMove(join_turf)
+
+	new_job.load_loadout(new_human)
 
 	for(var/cardinal in GLOB.cardinals)
 		var/obj/structure/machinery/cryopod/pod = locate() in get_step(new_human, cardinal)

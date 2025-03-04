@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Fixes hunting ground spawner code checking for if theres people above the min_mob instead of below"
+  - rscadd: "Hunting ground prey and youngblood now reset their timers if nobody elligible were found"

@@ -18,6 +18,14 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	return INITIALIZE_HINT_LATELOAD
 
+/turf/open_space/Enter(atom/movable/mover, atom/forget)
+	. = ..()
+	if(. && mover.move_intentionally && istype(src, /turf/open_space) && istype(mover,/mob/living))
+		var/turf/open_space/space = src
+		var/mob/living/climber = mover
+		space.climb_down(climber)
+		return FALSE
+
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
 

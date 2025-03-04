@@ -27,7 +27,7 @@
 	no_cooldown_msg = TRUE
 
 	var/harvest_gain = 30
-	var/affect_living = FALSE // Option to let it be used on living
+	var/affect_living = FALSE // Option to let it be used on living, because why not?
 
 /datum/action/xeno_action/activable/replenish
 	name = "Replenish"
@@ -40,7 +40,7 @@
 
 	var/range = 3
 	var/flesh_plasma_cost = 100
-	var/plas_mod = 0.5
+	var/plas_mod = 0.5 // Cost multiplier for adjacent healing
 
 /datum/action/xeno_action/onclick/emit_mist
 	name = "Emit Mist"

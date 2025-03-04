@@ -744,8 +744,9 @@
 		to_chat(xeno, SPAN_XENOWARNING("[xeno_carbon] is already at max health!"))
 		return
 
-	if(xeno_carbon != xeno && !xeno.Adjacent(xeno_carbon))
-		plas_mod = 1
+	var/final_cost_mult = plas_mod
+	if(!xeno.Adjacent(xeno_carbon))
+		final_cost_mult = 1
 		var/obj/effect/alien/weeds/user_weeds = locate() in xeno.loc
 		var/obj/effect/alien/weeds/target_weeds = locate() in xeno_carbon.loc
 		if((!user_weeds && !target_weeds))
@@ -754,8 +755,6 @@
 		if(user_weeds.linked_hive.hivenumber != xeno.hivenumber && target_weeds.linked_hive.hivenumber != xeno.hivenumber)
 			to_chat(xeno, SPAN_XENOWARNING("Both us and our target must be on our hive's weeds!"))
 			return
-	else
-		plas_mod = 0.5
 
 	xeno.face_atom(xeno_carbon)
 
@@ -784,7 +783,7 @@
 		SPAN_XENOWARNING("We channel flesh plasma to heal [xeno_carbon]'s wounds from afar!"))
 		to_chat(xeno_carbon, SPAN_XENOWARNING("The weeds beneath us shudder as a pale ooze forms on our wounds, causing them to close up faster!"))
 
-	use_plasma_owner(plasma_cost * plas_mod)
+	use_plasma_owner(plasma_cost * final_cost_mult)
 	xeno.modify_flesh_plasma(-flesh_plasma_cost)
 	apply_cooldown()
 	return ..()
@@ -812,7 +811,7 @@
 	var/datum/cause_data/cause_data = create_cause_data("reaper mist", owner)
 	cloud.set_up(3, 0, get_turf(xeno), null, 10, new_cause_data = cause_data)
 	cloud.start()
-	xeno.emote("roar")
+	xeno.emote("hiss")
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] belches a sickly green mist!"), \
 		SPAN_XENOWARNING("We breath a cloud of mist of evaporated flesh plasma!"))
 

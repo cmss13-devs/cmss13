@@ -102,6 +102,7 @@
 
 	var/obj/projectile/proj = new(get_turf(src), create_cause_data(used_ammo.name, C=src))
 	proj.generate_bullet(used_ammo)
+	RegisterSignal(proj, COMSIG_BULLET_PRE_HANDLE_MOB, PROC_REF(on_target_hit))
 
 	if(HAS_TRAIT(target, TRAIT_MOBA_PARTICIPANT)) // minions are exempt from damage scaling
 		heat_stacks++
@@ -115,6 +116,14 @@
 	last_fired_target = WEAKREF(target)
 	playsound(loc, 'sound/effects/splat.ogg', 50, TRUE)
 	flick("acid_pillar_attack", src)
+
+/obj/effect/alien/resin/moba_turret/proc/on_target_hit(datum/source, mob/living/hit, retval)
+	SIGNAL_HANDLER
+
+	if(isxeno(hit))
+		var/mob/living/carbon/xenomorph/xeno = hit
+		if(xeno.hive.hivenumber == hivenumber)
+			return COMPONENT_BULLET_PASS_THROUGH
 
 /obj/effect/alien/resin/moba_turret/proc/reset_heat()
 	heat_stacks = 0

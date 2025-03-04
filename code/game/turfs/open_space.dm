@@ -26,25 +26,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/on_throw_end(atom/movable/thrown_atom)
 	check_fall(thrown_atom)
 
-/turf/open_space/proc/check_fall(atom/movable/movable)
-	if(movable.flags_atom & NO_ZFALL)
-		return
-
-	var/height = 1
-	var/turf/below = SSmapping.get_turf_below(get_turf(src))
-
-	while(istype(below, /turf/open_space))
-		below = SSmapping.get_turf_below(below)
-		height++
-
-	movable.forceMove(below)
-	movable.onZImpact(below, height)
-
-
-/turf/open_space/attack_alien(mob/user)
-	attack_hand(user)
-
-/turf/open_space/attack_hand(mob/user)
+/turf/open_space/proc/climb_down(mob/user)
 	if(user.action_busy)
 		return
 
@@ -70,6 +52,27 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.forceMove(below)
 	return
+
+/turf/open_space/proc/check_fall(atom/movable/movable)
+	if(movable.flags_atom & NO_ZFALL)
+		return
+
+	var/height = 1
+	var/turf/below = SSmapping.get_turf_below(get_turf(src))
+
+	while(istype(below, /turf/open_space))
+		below = SSmapping.get_turf_below(below)
+		height++
+
+	movable.forceMove(below)
+	movable.onZImpact(below, height)
+
+
+/turf/open_space/attack_alien(mob/user)
+	attack_hand(user)
+
+/turf/open_space/attack_hand(mob/user)
+	climb_down(user)
 
 /turf/open_space/is_weedable()
 	return NOT_WEEDABLE

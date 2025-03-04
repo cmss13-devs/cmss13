@@ -29,6 +29,8 @@
 	var/fuel_pressure = 1 //How much fuel is used per tile fired
 	var/max_pressure = 10
 
+	var/stripe_icon = TRUE
+
 /obj/item/ammo_magazine/flamer_tank/empty
 	flamer_chem = null
 
@@ -119,6 +121,9 @@
 	update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/update_icon()
+	if(!stripe_icon)
+		return
+
 	overlays.Cut()
 
 	var/image/I = image(icon, icon_state="[icon_state]_strip")
@@ -274,3 +279,11 @@
 	flamer_chem = null
 	custom = TRUE
 	max_rounds = 150
+
+/obj/item/ammo_magazine/flamer_tank/survivor
+	name = "alt tank"
+	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. Handle with care."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/flamers.dmi'
+	icon_state = "flamer_fuel"
+	gun_type = /obj/item/weapon/gun/flamer/survivor
+	stripe_icon = FALSE

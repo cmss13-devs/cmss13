@@ -427,7 +427,6 @@
 		/obj/item/reagent_container/spray/investigation = 4,
 		/obj/item/weapon/baton = 4,
 		/obj/item/device/flashlight = 4,
-		/obj/item/storage/belt/security/MP = 4,
 		/obj/item/device/flash = 5,
 		/obj/item/reagent_container/food/snacks/donut/normal = 12,
 		/obj/item/storage/box/evidence = 6,

@@ -64,12 +64,5 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
 
-
-/turf/open_space/attack_alien(mob/user)
-	attack_hand(user)
-
-/turf/open_space/attack_hand(mob/user)
-	src.Enter(user)
-
 /turf/open_space/is_weedable()
 	return NOT_WEEDABLE

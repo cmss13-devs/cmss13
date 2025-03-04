@@ -17,19 +17,17 @@ jobs:
           key: ${{ runner.os }}-spacemandmm-${{ secrets.CACHE_PURGE_KEY }}
       - name: Install SpacemanDMM
         run: bash tools/ci/install_spaceman_dmm.sh dmdoc
-      - name: Generate documentation
+      - name: Generate documentation and static assets
         run: |
           ~/dmdoc
-          mkdir deploy
-          mv dmdoc/ deploy/doc
-          mv tgui/public/ deploy/assets
-          touch deploy/.nojekyll
-          echo docs.cm-ss13.com > deploy/CNAME
-          echo "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0;url=https://docs.cm-ss13.com/docs' /></head><body></body></html>" > deploy/index.html
+          touch dmdoc/.nojekyll
+          echo docs.cm-ss13.com > dmdoc/CNAME
+          mv tgui/public/ dmdoc/assets
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           BRANCH: gh-pages
           CLEAN: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FOLDER: deploy
+          SINGLE_COMMIT: true
+          FOLDER: dmdoc

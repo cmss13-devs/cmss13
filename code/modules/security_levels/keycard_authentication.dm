@@ -40,6 +40,11 @@
 					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
+				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access))	// need to be senior CIC staff to toggle ob safety
+					balloon_alert_to_viewers("Error! Insufficient clearence!")
+					playsound(loc, 'sound/items/defib_failed.ogg')
+					sleep(confirm_delay)
+					return
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
 
 /obj/structure/machinery/keycard_auth/power_change()
@@ -68,6 +73,7 @@
 		if(!CONFIG_GET(flag/ert_admin_call_only))
 			dat += "<li><A href='byond://?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
 
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=toggle_ob_safety'>Toggle OB Cannon Safety</A></li>"
 		dat += "<li><A href='byond://?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
 		dat += "<li><A href='byond://?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
 		dat += "</ul>"
@@ -145,6 +151,8 @@
 			make_maint_all_access()
 		if("enable_maint_sec")
 			revoke_maint_all_access()
+		if("toggle_ob_safety")
+			toggle_ob_cannon_safety()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
 	if(CONFIG_GET(flag/ert_admin_call_only))
@@ -160,6 +168,14 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 /proc/revoke_maint_all_access()
 	GLOB.maint_all_access = FALSE
 	ai_announcement("The maintenance access requirement has been added on all airlocks.")
+
+GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
+
+/proc/toggle_ob_cannon_safety()
+	GLOB.ob_cannon_safety = pick(GLOB.ob_cannon_safety == TRUE ? FALSE : TRUE)
+	for(var/obj/structure/machinery/computer/overwatch/overwatch in GLOB.active_overwatch_consoles)
+		overwatch.toggle_ob_cannon_safety()
+
 
 // Keycard reader at the CORSAT locks
 /obj/structure/machinery/keycard_auth/lockdown

@@ -1,5 +1,6 @@
 /obj/effect/landmark/survivor_spawner
 	name = "special survivor spawner"
+	icon_state = "surv"
 	var/equipment = null
 	var/synth_equipment = null
 	var/CO_equipment = null
@@ -37,6 +38,7 @@
 //LV-624 CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf
+	icon_state = "surv_clf"
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
@@ -51,6 +53,7 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/clf_lead
+	icon_state = "surv_clf"
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
@@ -65,6 +68,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/clf_engi
+	icon_state = "surv_clf"
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
@@ -79,6 +83,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/clf_medic
+	icon_state = "surv_clf"
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
@@ -315,6 +320,7 @@
 //Weyland-Yutani Survivors//
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/corporate/executive
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are the last alive Executive of Lazarus Landing!</h2>",\
@@ -325,6 +331,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Officer!</h2>",\
@@ -335,6 +342,7 @@
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Medic!</h2>",\
@@ -345,6 +353,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Technician!</h2>",\
@@ -355,6 +364,7 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/lead
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Lead!</h2>",\
@@ -365,6 +375,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -378,6 +389,7 @@
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -391,6 +403,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -404,6 +417,7 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/pmc_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -417,6 +431,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/corporate/manager
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -432,6 +447,7 @@
 //Shivas Panic Room Survivors//
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_pmc
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/shivas
 	intro_text = list("<h2>You are the last living security element on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -441,6 +457,7 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_cl
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/corporate/asstmanager
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	intro_text = list("<h2>You are the last alive Senior Administrator on the Colony!</h2>",\
@@ -451,6 +468,7 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_doc
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/doctor/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/emt_synth_teal
 	intro_text = list("<h2>You are a Medical Doctor on the Colony!</h2>",\
@@ -464,6 +482,7 @@
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_eng
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/engineer/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/engineer_synth
 	intro_text = list("<h2>You are an Engineer on the Colony!</h2>",\
@@ -477,6 +496,7 @@
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_sci
+	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/scientist/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/scientist_synth
 	intro_text = list("<h2>You are a Weyland-Yutani Scientist on the Colony!</h2>",\
@@ -544,6 +564,7 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/upp/soldier
+	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/soldier
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
@@ -553,6 +574,7 @@
 	spawn_priority = SPAWN_PRIORITY_LOW
 
 /obj/effect/landmark/survivor_spawner/upp_sapper
+	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/sapper
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
@@ -562,6 +584,7 @@
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/upp_medic
+	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
@@ -571,6 +594,7 @@
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/upp_specialist
+	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/specialist
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
@@ -580,6 +604,7 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/squad_leader
+	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/squad_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\

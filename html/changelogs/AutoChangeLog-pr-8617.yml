@@ -1,0 +1,4 @@
+author: "MeH0y"
+delete-after: True
+changes:
+  - bugfix: "burrower blip is correctly colored"

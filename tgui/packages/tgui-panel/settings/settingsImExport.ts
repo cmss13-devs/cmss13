@@ -26,14 +26,10 @@ export function exportChatSettings(
   window
     .showSaveFilePicker(opts)
     .then((fileHandle) => {
-      try {
-        fileHandle.createWritable().then((writableHandle) => {
-          writableHandle.write(JSON.stringify(exportObject));
-          writableHandle.close();
-        });
-      } catch (e) {
-        console.error(e);
-      }
+      fileHandle.createWritable().then((writableHandle) => {
+        writableHandle.write(JSON.stringify(exportObject));
+        writableHandle.close();
+      });
     })
     .catch((e) => {
       // Log the error if the error has nothing to do with the user aborting the download

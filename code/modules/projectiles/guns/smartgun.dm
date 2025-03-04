@@ -36,6 +36,10 @@
 	auto_retrieval_slot = WEAR_J_STORE
 	start_semiauto = FALSE
 	start_automatic = TRUE
+	can_jam = TRUE
+	jam_chance = 0.02 //preferably you increment the chances to double decimal places, above that could be problematic
+	unjam_chance = 80 //preferably you dont change this at all unless its a snowflake gun
+	durability_loss = 100 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right
 
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
@@ -413,7 +417,10 @@
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
 		return
-	toggle_ammo_type(usr)
+	if(jammed)
+		jam_unique_action(user)
+	else
+		toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	secondary_toggled = !secondary_toggled

@@ -34,10 +34,14 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	can_jam = TRUE
+	jam_chance = 0.02 //preferably you increment the chances to double decimal places, above that could be problematic
+	unjam_chance = 80 //preferably you dont change this at all unless its a snowflake gun
+	durability_loss = 100 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right
 
 /obj/item/weapon/gun/rifle/unique_action(mob/user)
+	jam_unique_action(user)
 	cock(user)
-
 
 //-------------------------------------------------------
 //M41A PULSE RIFLE

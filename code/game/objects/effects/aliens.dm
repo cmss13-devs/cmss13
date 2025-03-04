@@ -333,6 +333,7 @@
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
+	RegisterSignal(target, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
 	START_PROCESSING(SSoldeffects, src)
 
 /obj/effect/xenomorph/acid/Destroy()
@@ -435,6 +436,31 @@
 			mob.forceMove(loc)
 		qdel(acid_t)
 	qdel(src)
+
+// doganesi's code on github with some modifications, add a scrape off unique action?
+/obj/effect/xenomorph/acid/proc/on_pickup(datum/source, mob/living/carbon/mob)
+	SIGNAL_HANDLER
+
+	var/durability_damage = 0
+	if(istype(src, /obj/effect/xenomorph/acid/strong))
+		acid_effect_enhanced
+		to_chat(mob, SPAN_DANGER("As you scrape the concentrated acid off \the [acid_t], it gets all over you!"))
+		var/durability_damage = 100
+	else if(istype(src, /obj/effect/xenomorph/acid/weak))
+		acid_effect
+		to_chat(mob, SPAN_DANGER("You wipe the acidic residue off \the [acid_t], but it leaves blistered and smoking burns on your body!"))
+		var/durability_damage = 25
+	else if(istype(src, /obj/effect/xenomorph/acid))
+		acid_effect
+		to_chat(mob, SPAN_DANGER("The acid sizzles as you scrape it off \the [acid_t], and eats into your skin!"))
+		var/durability_damage = 50
+
+	if(istype(src, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/gun = src
+		gun.gun_durability -= durability_damage
+		to_chat(mob, SPAN_DANGER("The acid damages the gun's durability!"))
+	else
+		qdel(src)
 
 /obj/effect/xenomorph/boiler_bombard
 	name = "???"

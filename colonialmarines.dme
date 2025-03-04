@@ -2114,7 +2114,6 @@
 #include "code\modules\mob\living\carbon\xenomorph\abilities\carrier\carrier_macros.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\crusher\crusher_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\crusher\crusher_macros.dm"
-#include "code\modules\mob\living\carbon\xenomorph\abilities\crusher\crusher_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\defender\defender_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\defender\defender_macros.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\facehugger\facehugger_abilities.dm"

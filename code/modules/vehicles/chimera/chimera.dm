@@ -57,33 +57,9 @@
 
 	var/state = STATE_STOWED
 
-	var/obj/chimera_shadow/shadow_holder
-
-
-/obj/chimera_shadow
-	icon = 'icons/obj/vehicles/chimera.dmi'
-	flags_atom = NOINTERACT
-	var/datum/weakref/parent
-
-/obj/chimera_shadow/Initialize(mapload, parent)
-	. = ..()
-	name = null
-	src.parent = WEAKREF(parent)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(handle_parent_move))
-	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_parent_dir_change))
-
-/obj/chimera_shadow/proc/handle_parent_move()
-	var/obj/vehicle/multitile/chimera/bound_chimera = parent?.resolve()
-
-	if(!bound_chimera)
-		return
-
-	Move()
-
 /obj/vehicle/multitile/chimera/Initialize(mapload, ...)
 	. = ..()
 	add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
-	shadow_holder = new(src, src)
 
 /obj/vehicle/multitile/chimera/update_icon()
 	. = ..()
@@ -121,7 +97,6 @@
 		last_turn = world.time
 
 /obj/vehicle/multitile/chimera/process(deltatime)
-	shadow_holder.icon_state = "[state]_shadow"
 
 	if (state == STATE_FLIGHT)
 		overlays -= thrust_overlay
@@ -157,8 +132,8 @@
 	SStgui.close_user_uis(M, src)	
 
 /obj/vehicle/multitile/chimera/proc/start_takeoff()
-	playsound(loc, 'sound/vehicles/vtol/flight_transition.ogg', 25, TRUE)
-	addtimer(CALLBACK(src, PROC_REF(finish_takeoff)), 18 SECONDS)
+	playsound(loc, 'sound/vehicles/vtol/takeoff.ogg', 25, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(finish_takeoff)), 40 SECONDS)
 
 /obj/vehicle/multitile/chimera/proc/finish_takeoff()
 	flags_atom |= NO_ZFALL

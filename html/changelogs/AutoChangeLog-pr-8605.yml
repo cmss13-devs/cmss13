@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Strain resetting no longer gives you an evolution button as facehugger"

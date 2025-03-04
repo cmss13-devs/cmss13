@@ -1,0 +1,4 @@
+author: "NHC"
+delete-after: True
+changes:
+  - imageadd: "changed jacket icon name from pilot_flightsuit_dj to pilot_flightsuit_alt_dj"

@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Grace timer for being AFK is reduced from 20 mins down to 3 mins after round start"

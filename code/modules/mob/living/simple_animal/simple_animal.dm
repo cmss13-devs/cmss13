@@ -301,6 +301,7 @@
 	if(icon_gib)
 		new /obj/effect/overlay/temp/gib_animation/animal(loc, src, icon_gib)
 
+
 /mob/living/simple_animal/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)
 		M.emote("[M.friendly] [src]")

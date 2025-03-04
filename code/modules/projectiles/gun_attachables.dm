@@ -292,8 +292,8 @@ Defined in conflicts.dm of the #defines folder.
 	)
 	desc = "The standard-issue bayonet of the Colonial Marines. You can slide this knife into your boots, or attach it to the end of a rifle."
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = MELEE_FORCE_NORMAL
-	throwforce = MELEE_FORCE_NORMAL
+	force = MELEE_FORCE_TIER_5
+	throwforce = MELEE_FORCE_TIER_5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'

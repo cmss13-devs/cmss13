@@ -13,6 +13,7 @@ import { Window } from '../layouts';
 type PollType = {
   id: number;
   question: string;
+  expiry: string;
   answers: { [id: string]: string };
 };
 
@@ -69,8 +70,21 @@ const RenderConcludedPoll = (props: { readonly poll: ConcludedPoll }) => {
     0,
   );
 
+  const { act, data } = useBackend<PollData>();
+
+  const { is_poll_maker } = data;
+
   return (
-    <Collapsible title={poll.question}>
+    <Collapsible
+      title={poll.question}
+      buttons={
+        is_poll_maker && (
+          <Button onClick={() => act('delete', { poll_id: poll.id })}>
+            Delete
+          </Button>
+        )
+      }
+    >
       <Stack vertical>
         {Object.keys(poll.answers).map((answer) => (
           <Stack.Item key={answer}>
@@ -104,15 +118,24 @@ const RenderPoll = (props: { readonly poll: PollType }) => {
     <Section
       key={poll.id}
       title={`${poll.question}${votedIn ? ' (Voted)' : ''}`}
-      buttons={
-        is_poll_maker && (
-          <Button onClick={() => act('delete', { poll_id: poll.id })}>
-            Delete
-          </Button>
-        )
-      }
     >
       <Stack vertical>
+        {is_poll_maker && (
+          <Stack.Item>
+            <Button onClick={() => act('delete', { poll_id: poll.id })}>
+              Delete
+            </Button>
+            <Button onClick={() => act('add-answer', { poll_id: poll.id })}>
+              Add Answer
+            </Button>
+            <Button onClick={() => act('edit-time', { poll_id: poll.id })}>
+              Change Time
+            </Button>
+          </Stack.Item>
+        )}
+        <Stack.Item style={{ color: '#999999' }}>
+          Finishes {poll.expiry}
+        </Stack.Item>
         {Object.keys(poll.answers).map((answerId) => (
           <Stack.Item key={answerId}>
             <Button

@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(polls)
 
 		var/voted_ids = list()
 		for(var/datum/view_record/player_poll_vote/vote as anything in votes)
-			voted_ids += vote.player_id
+			voted_ids += "[vote.player_id]"
 
 		var/datum/poll/active_poll = active_polls[id]
 
@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(polls)
 	)
 
 	for(var/datum/view_record/poll/poll as anything in all_active_polls)
-		var/datum/poll/new_poll = new(poll.question)
+		var/datum/poll/new_poll = new(poll.question, poll.expiry)
 
 		var/list/datum/view_record/poll_answer/poll_answers = DB_VIEW(
 			/datum/view_record/poll_answer,
@@ -137,7 +137,7 @@ SUBSYSTEM_DEF(polls)
 	for(var/id in active_polls)
 		var/datum/poll/poll = active_polls[id]
 		.["polls"] += list(
-			list("id" = id, "question" = poll.question, "answers" = poll.answers)
+			list("id" = id, "question" = poll.question, "answers" = poll.answers, "expiry" = poll.expiry)
 		)
 
 	.["concluded_polls"] = list()
@@ -265,6 +265,12 @@ SUBSYSTEM_DEF(polls)
 
 			var/datum/poll/delete_poll = active_polls[to_delete]
 			if(!delete_poll)
+				delete_poll = concluded_polls[to_delete]
+
+			if(!delete_poll)
+				return
+
+			if(tgui_alert(ui.user, "Confirm deletion of \"[delete_poll.question]\"?", "Delete Poll", list("Confirm", "Cancel")) != "Confirm")
 				return
 
 			var/datum/entity/poll/poll = DB_ENTITY(/datum/entity/poll, text2num(to_delete))
@@ -278,6 +284,95 @@ SUBSYSTEM_DEF(polls)
 
 			setup_polls()
 
+		if("edit-title")
+			if(!CLIENT_HAS_RIGHTS(ui.user.client, R_PERMISSIONS))
+				return
+
+			var/to_edit = params["poll_id"]
+			if(!isnum(text2num(to_edit)))
+				return
+
+			var/datum/poll/edit_poll = active_polls[to_edit]
+			if(!edit_poll)
+				return
+
+			var/new_question = params["question"]
+			if(!length(new_question))
+				return
+
+			var/datum/entity/poll/poll = DB_ENTITY(/datum/entity/poll, text2num(to_edit))
+			poll.sync()
+
+			poll.question = new_question
+			poll.save()
+			poll.sync()
+
+			to_chat(ui.user, SPAN_ALERT("Question updated to [new_question]."))
+
+			edit_poll.question = new_question
+
+		if("add-answer")
+			if(!CLIENT_HAS_RIGHTS(ui.user.client, R_PERMISSIONS))
+				return
+
+			var/to_edit = params["poll_id"]
+			if(!isnum(text2num(to_edit)))
+				return
+
+			var/datum/poll/edit_poll = active_polls[to_edit]
+			if(!edit_poll)
+				return
+
+			var/answer = tgui_input_text(ui.user, "What's the new answer?", "New Answer")
+			if(!length(answer))
+				return
+
+			var/datum/entity/poll_answer/new_answer = DB_ENTITY(/datum/entity/poll_answer)
+			new_answer.answer = answer
+			new_answer.poll_id = text2num(to_edit)
+			new_answer.save()
+			new_answer.sync()
+
+			setup_polls()
+
+			to_chat(ui.user, SPAN_ALERT("New answer ([answer]) added to poll \"[edit_poll.question]\"."))
+
+		if("edit-time")
+			if(!CLIENT_HAS_RIGHTS(ui.user.client, R_PERMISSIONS))
+				return
+
+			var/to_edit = params["poll_id"]
+			if(!isnum(text2num(to_edit)))
+				return
+
+			var/datum/poll/edit_poll = active_polls[to_edit]
+			if(!edit_poll)
+				return
+
+			var/time
+			var/alert = tgui_alert(ui.user, "Conclude now, or specify a time?", "Time Picker", list("Now", "Custom Time"))
+
+			switch(alert)
+				if("Now")
+					time = time2text(world.realtime - 1 SECONDS, "YYYY-MM-DD hh:mm:ss")
+
+				if("Custom Time")
+					var/hours = tgui_input_number(ui.user, "Conclude in how many hours?", "Time Picker", 24, 1000, 1)
+					time = time2text(world.realtime + (hours * 1 HOURS), "YYYY-MM-DD hh:mm:ss")
+
+			if(!time)
+				return
+
+			var/datum/entity/poll/poll = DB_ENTITY(/datum/entity/poll, text2num(to_edit))
+			poll.sync()
+
+			poll.expiry = time
+			poll.save()
+			poll.sync()
+
+			to_chat(ui.user, SPAN_ALERT("Time updated to [time]."))
+			setup_polls()
+
 	return TRUE
 
 /datum/controller/subsystem/polls/ui_state(mob/user)
@@ -285,10 +380,12 @@ SUBSYSTEM_DEF(polls)
 
 /datum/poll
 	var/question
+	var/expiry
 	var/list/answers = list()
 
-/datum/poll/New(question)
+/datum/poll/New(question, expiry)
 	src.question = question
+	src.expiry = expiry
 
 /datum/poll/concluded
 	var/answer_totals = list()

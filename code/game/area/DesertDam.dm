@@ -371,8 +371,8 @@
 	name = "Medical Emergency Room"
 	icon_state = "medbay"
 
-/area/desert_dam/building/medical/treatment_room
-	name = "Medical Treatment Room"
+/area/desert_dam/building/medical/outgoing
+	name = "Medical Outgoing"
 	icon_state = "medbay2"
 
 /area/desert_dam/building/medical/lobby
@@ -578,7 +578,7 @@
 	icon_state = "sec_prison"
 
 /area/desert_dam/building/security/marshals_office
-	name = "Security Marshal's Office"
+	name = "Security Chief's Office"
 	icon_state = "sec_hos"
 
 /area/desert_dam/building/security/armory

@@ -344,6 +344,12 @@
 			if(!mover.Collide(A))
 				return FALSE
 
+	if(mover.move_intentionally && istype(src, /turf/open_space) && istype(mover,/mob/living))
+		var/turf/open_space/space = src
+		var/mob/living/climber = mover
+		space.climb_down(climber)
+		return FALSE
+
 	return TRUE //Nothing found to block so return success!
 
 /turf/Entered(atom/movable/A)

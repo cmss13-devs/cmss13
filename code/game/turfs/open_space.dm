@@ -35,9 +35,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(!istype(current_turf, /turf/open_space))
 		return
 
-	if(!current_turf.Enter(user))
-		return
-
 	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -72,7 +69,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	attack_hand(user)
 
 /turf/open_space/attack_hand(mob/user)
-	climb_down(user)
+	src.Enter(user)
 
 /turf/open_space/is_weedable()
 	return NOT_WEEDABLE

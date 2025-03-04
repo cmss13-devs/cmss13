@@ -1,0 +1,5 @@
+author: "Syndro101"
+delete-after: True
+changes:
+  - code_imp: "changed lots of landmarks to use their new icons"
+  - imageadd: "new landmark icons"

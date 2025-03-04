@@ -200,7 +200,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 	//Tail
 	if(H.species.tail)
-		temp = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[H.species.tail]_s")
+		temp = new/icon("icon" = H.species.icobase, "icon_state" = "[H.species.tail]_s")
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 

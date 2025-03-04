@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - rscadd: "added a poll button to the lobby screen. engage democratically."

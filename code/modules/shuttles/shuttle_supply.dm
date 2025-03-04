@@ -1,7 +1,9 @@
 /obj/effect/landmark/supply_elevator
+	icon_state = "elevator"
 	var/faction = FACTION_MARINE
 
 /obj/effect/landmark/supply_elevator/upp
+	icon_state = "elevator_upp"
 	faction = FACTION_UPP
 
 /obj/effect/landmark/supply_elevator/Initialize(mapload, ...)

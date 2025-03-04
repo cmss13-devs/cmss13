@@ -66,6 +66,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/p90, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)

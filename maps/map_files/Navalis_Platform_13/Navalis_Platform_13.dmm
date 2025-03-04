@@ -9126,7 +9126,7 @@
 "aAR" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aAS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
@@ -9738,7 +9738,7 @@
 	dir = 4
 	},
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aCs" = (
 /obj/structure/pipes/standard/simple/visible/purple{
 	dir = 4
@@ -11213,7 +11213,7 @@
 "aGi" = (
 /obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aGj" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/structure_lattice{
@@ -13592,7 +13592,7 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aNj" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -13634,7 +13634,7 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aNq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/heavyduty{
@@ -15556,7 +15556,7 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aSK" = (
 /obj/structure/machinery/colony_floodlight/navalis_wall_light,
 /turf/open/floor/plating/catwalk/grate,
@@ -16102,7 +16102,7 @@
 /obj/structure/platform/stone/strata/east,
 /obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer1,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUh" = (
 /obj/structure/platform/stone/strata/west,
 /obj/structure/platform/stone/strata,
@@ -16114,7 +16114,7 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUj" = (
 /obj/structure/platform/stone/strata/north,
 /obj/structure/blocker/forcefield/all{
@@ -16164,7 +16164,7 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUq" = (
 /obj/structure/platform/metal/strata,
 /turf/open/floor/plating/catwalk/grate/alt,
@@ -16236,11 +16236,11 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUw" = (
 /obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -16279,7 +16279,7 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUF" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
@@ -16309,7 +16309,7 @@
 "aUJ" = (
 /obj/structure/platform_decoration/stone/strata/east,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUK" = (
 /obj/structure/platform_decoration/stone/strata/west,
 /turf/open/auto_turf/ice/layer1,
@@ -16322,11 +16322,11 @@
 "aUM" = (
 /obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUN" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aUO" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open/auto_turf/ice/layer1,
@@ -16403,7 +16403,7 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aVa" = (
 /obj/structure/monorail{
 	dir = 8;
@@ -16480,7 +16480,7 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aVk" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /turf/open/auto_turf/ice/layer1,
@@ -16507,7 +16507,7 @@
 /obj/structure/platform/stone/strata/north,
 /obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aVq" = (
 /obj/structure/platform/stone/strata/east,
 /turf/open/auto_turf/ice/layer0,
@@ -16533,7 +16533,7 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer0,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aVv" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -16549,7 +16549,7 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aVy" = (
 /obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer0,
@@ -16597,7 +16597,7 @@
 /obj/structure/platform/stone/strata/north,
 /obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/ice/layer0,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aVH" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
@@ -16733,7 +16733,7 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aWd" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
@@ -16885,10 +16885,10 @@
 	invisibility = 101
 	},
 /turf/open/auto_turf/ice/layer0,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aWH" = (
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "aWI" = (
 /obj/structure/platform_decoration/stone/strata/east,
 /obj/structure/blocker/forcefield/all{
@@ -18383,9 +18383,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange2smooth/east,
 /area/navalis/indoors/charon/upper_deck/rear)
-"bbJ" = (
-/turf/open/floor/redfull,
-/area/navalis/oob/empty_space)
 "bbK" = (
 /turf/open_space,
 /area/navalis/indoors/residential/access)
@@ -18443,7 +18440,7 @@
 "bbU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/redfull,
-/area/navalis/oob/empty_space)
+/area/navalis/indoors/charon/upper_deck/rear)
 "bbV" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -19331,6 +19328,62 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/almayer/tcomms,
 /area/navalis/indoors/command/upper_deck/server)
+"beG" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"beH" = (
+/obj/structure/platform/stone/strata/north,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"beI" = (
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"beJ" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"beK" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"beL" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer2,
+/area/navalis/oob/empty_space)
+"beM" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"beN" = (
+/obj/structure/platform/stone/strata,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"beO" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"beP" = (
+/obj/structure/platform/stone/strata/west,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"beQ" = (
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer0,
+/area/navalis/oob/empty_space)
+"beR" = (
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
+/turf/open/auto_turf/ice/layer1,
+/area/navalis/oob/empty_space)
+"beS" = (
+/obj/structure/window/framed/hybrisa/colony/hull/blastdoor,
+/turf/open/floor/corsat,
+/area/navalis/indoors/industrial/mining)
 "bfl" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5"
@@ -53372,7 +53425,7 @@
 	dir = 8
 	},
 /turf/open/auto_turf/ice/layer2,
-/area/navalis/oob)
+/area/navalis/oob/empty_space)
 "uEm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -161845,7 +161898,7 @@ aVn
 aVh
 azG
 azG
-aSR
+beK
 aUM
 aUJ
 aUD
@@ -162008,7 +162061,7 @@ aDK
 aUs
 azG
 azG
-aUX
+beL
 aUJ
 aUN
 aqU
@@ -162825,7 +162878,7 @@ azG
 azG
 azG
 aUX
-aVw
+beO
 lUr
 tHw
 aJT
@@ -163151,8 +163204,8 @@ aDK
 azG
 azG
 azG
-aFm
-aVq
+beR
+beQ
 uEk
 dgG
 amh
@@ -163647,7 +163700,7 @@ azG
 azG
 azG
 aVp
-aVk
+beM
 uIh
 dgG
 amh
@@ -163811,7 +163864,7 @@ aUf
 aUh
 azG
 azG
-aFh
+beH
 aAR
 uIh
 dgG
@@ -163973,7 +164026,7 @@ aDK
 aQE
 aDK
 aQE
-aVy
+beP
 aWc
 aNi
 aGi
@@ -164138,7 +164191,7 @@ aDK
 aDK
 aQE
 aQE
-aDK
+beI
 aNp
 azG
 aUg
@@ -164303,11 +164356,11 @@ aDK
 aDK
 aDK
 aDK
-aTZ
+beN
 azG
 azG
 aFm
-aUn
+beJ
 aUE
 aUv
 aUp
@@ -164474,7 +164527,7 @@ azG
 azG
 azG
 azG
-aFh
+beH
 aUi
 aUi
 aSJ
@@ -164639,9 +164692,9 @@ aml
 azG
 azG
 azG
-aFh
-aPi
-aPi
+beH
+beG
+beG
 asq
 asq
 asq
@@ -164803,7 +164856,7 @@ aDK
 aUf
 aUf
 aUf
-aDK
+beI
 asq
 asq
 asq
@@ -204367,7 +204420,7 @@ asq
 asq
 asq
 lfp
-hhH
+asq
 lfp
 lfp
 qPX
@@ -204380,9 +204433,9 @@ lfp
 dFa
 aBp
 aKu
-aKu
-aKu
-aKu
+beS
+beS
+beS
 aKu
 aBp
 dFa
@@ -204869,7 +204922,7 @@ aoz
 aoz
 aoz
 aBl
-aKu
+beS
 aRD
 aRD
 aRD
@@ -204877,7 +204930,7 @@ aRD
 aRD
 aRD
 aRD
-aKu
+beS
 cmK
 aoz
 aoz
@@ -204995,7 +205048,7 @@ lyT
 asq
 bbU
 bbU
-bbJ
+bcD
 asq
 asq
 asq
@@ -205033,7 +205086,7 @@ aoz
 aoz
 aoz
 aBl
-aKu
+beS
 aRD
 aRD
 aRD
@@ -205041,7 +205094,7 @@ aRD
 aRD
 aRD
 aRD
-aKu
+beS
 cmK
 aoz
 aoz
@@ -205197,7 +205250,7 @@ aoz
 aoz
 aoz
 aBl
-aKu
+beS
 aRD
 aRD
 aRD
@@ -205205,7 +205258,7 @@ aRD
 aRD
 aRD
 aRD
-aKu
+beS
 cmK
 aoz
 aoz
@@ -205692,9 +205745,9 @@ rVq
 gjc
 aBp
 aKu
-aKu
-aKu
-aKu
+beS
+beS
+beS
 aKu
 aBp
 gjc
@@ -207831,7 +207884,7 @@ aXI
 aXF
 aVZ
 aol
-tHP
+isl
 asq
 asq
 asq
@@ -207994,7 +208047,7 @@ aWa
 aWa
 aWa
 aWa
-hhH
+asq
 asq
 asq
 asq
@@ -210120,8 +210173,8 @@ asq
 asq
 asq
 tAA
-tAt
-tAt
+asq
+asq
 asq
 tAA
 asq
@@ -210285,8 +210338,8 @@ asq
 asq
 asq
 asq
-tAt
-tAt
+asq
+asq
 asq
 asq
 asq
@@ -210448,8 +210501,8 @@ asq
 asq
 asq
 asq
-tAt
-tAt
+asq
+asq
 asq
 asq
 asq
@@ -210612,10 +210665,10 @@ asq
 asq
 asq
 asq
-tAt
-tAt
 asq
 asq
+tAA
+tAA
 asq
 asq
 asq
@@ -210776,11 +210829,11 @@ asq
 asq
 asq
 asq
+tAA
 asq
 asq
-tAt
-tAt
-tAt
+asq
+asq
 asq
 asq
 asq
@@ -210942,8 +210995,8 @@ asq
 asq
 asq
 asq
-tAt
-tAt
+asq
+asq
 asq
 asq
 asq

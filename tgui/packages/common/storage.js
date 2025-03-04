@@ -128,6 +128,21 @@ class IFrameIndexedDbBackend {
   async clear() {
     this.iframeWindow.postMessage({ type: 'clear' }, '*');
   }
+
+  async ping() {
+    const promise = new Promise((resolve) => {
+      window.addEventListener('message', (message) => {
+        if (message.data === true) {
+          resolve(true);
+        }
+      });
+
+      setTimeout(() => resolve(false), 10);
+    });
+
+    this.iframeWindow.postMessage({ type: 'ping' }, '*');
+    return promise;
+  }
 }
 
 class IndexedDbBackend {
@@ -192,16 +207,19 @@ class IndexedDbBackend {
  * depending on the environment.
  */
 export class StorageProxy {
-  constructor(chat) {
+  constructor() {
     this.backendPromise = (async () => {
       if (!Byond.TRIDENT) {
-        if (chat) {
-          const iframe = new IFrameIndexedDbBackend();
-          await iframe.ready();
+        const iframe = new IFrameIndexedDbBackend();
+        await iframe.ready();
+
+        if ((await iframe.ping()) === true) {
           return iframe;
         }
 
         if (!testHubStorage()) {
+          Byond.winset(null, 'browser-options', '+byondstorage');
+
           return new Promise((resolve) => {
             const listener = () => {
               document.removeEventListener('byondstorageupdated', listener);

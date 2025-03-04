@@ -24,16 +24,22 @@
 	/// If true, on the right team. If false, on the left team
 	var/right_side = FALSE
 
+	var/healing_value_standing = 0
+	var/healing_value_resting = 0
+
 /datum/component/moba_player/Initialize(datum/moba_player/player, id, right)
 	. = ..()
 	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
+
+	player_datum = player
 
 	parent_xeno = parent
 	parent_xeno.melee_damage_lower = parent_xeno.melee_damage_upper // Randomization is bad so we set melee damage to be the max possible
 	parent_xeno.cooldown_reduction_max = 1 // We allow for cooldown reductions up to 100%, though not feasibly possible
 	parent_xeno.sight = SEE_TURFS // We allow seeing turfs but not mobs
 	parent_xeno.need_weeds = FALSE
+	parent_xeno.passive_healing = FALSE // We do this ourselves
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	parent_xeno.AddComponent(\
 		/datum/component/moba_death_reward,\
@@ -45,16 +51,18 @@
 	for(var/datum/action/action_path as anything in parent_xeno.base_actions)
 		remove_action(parent_xeno, action_path)
 
-	player_datum = player
-	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
 	map_id = id
 	right_side = right
 	store_ui = new(parent_xeno)
+	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
+	player_caste.apply_caste(parent_xeno, src, player_datum)
 
 	for(var/path in player_datum.held_item_types) // recreate any items that we had before we died
 		var/datum/moba_item/new_item = new path
 		held_items += new_item
 		new_item.apply_stats(parent_xeno, src, player_datum, TRUE)
+
+	START_PROCESSING(SSprocessing, src)
 
 /datum/component/moba_player/Destroy(force, silent)
 	handle_qdel()
@@ -93,6 +101,20 @@
 		player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT,\
 		TRUE,\
 	) // We refresh this because we're a level higher, so more XP on kill
+
+/datum/component/moba_player/process(delta_time)
+	if(parent_xeno.health < parent_xeno.maxHealth && parent_xeno.last_hit_time + parent_xeno.caste.heal_delay_time <= world.time && (!parent_xeno.caste || (parent_xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !parent_xeno.fire_stacks) && parent_xeno.health < 0)
+		var/damage_to_heal = 0
+		if(parent_xeno.body_position == LYING_DOWN || parent_xeno.resting)
+			damage_to_heal = healing_value_resting
+		else
+			damage_to_heal = healing_value_standing
+		var/brute = parent_xeno.getBruteLoss()
+		var/burn = parent_xeno.getFireLoss()
+		var/percentage_brute = brute / (brute + burn)
+		var/percentage_burn = burn / (brute + burn)
+		parent_xeno.apply_damage(-(damage_to_heal * percentage_brute), BRUTE)
+		parent_xeno.apply_damage(-(damage_to_heal * percentage_burn), BURN)
 
 /datum/component/moba_player/proc/handle_qdel()
 	SIGNAL_HANDLER
@@ -225,3 +247,10 @@
 	SIGNAL_HANDLER
 
 	return COMPONENT_CANCEL_ADDING_ABILITIES
+
+#ifdef MOBA_TESTING
+/mob/living/carbon/xenomorph/proc/gxp()
+	var/datum/component/moba_player/MP = GetComponent(/datum/component/moba_player)
+	if(MP)
+		MP.grant_xp(null, 1000)
+#endif

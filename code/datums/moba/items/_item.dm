@@ -54,7 +54,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	apply_health(xeno, player, restore_plasma_health)
-	apply_health_regen(xeno, player)
+	apply_health_regen(xeno, player, component)
 	apply_plasma(xeno, player, restore_plasma_health)
 	apply_plasma_regen(xeno, player)
 	apply_armor(xeno, player)
@@ -68,7 +68,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	xeno.maxHealth -= health
-	xeno.regeneration_multiplier -= health_regen
+	component.healing_value_standing -= health_regen
+	component.healing_value_resting -= health_regen * MOBA_RESTING_HEAL_MULTIPLIER
 	xeno.plasma_max -= plasma
 	xeno.plasma_regeneration_mult -= plasma_regen
 	xeno.armor_deflection_buff -= amount_armor_applied
@@ -87,8 +88,9 @@
 	if(restore_plasma_health)
 		xeno.health += health
 
-/datum/moba_item/proc/apply_health_regen(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)
-	xeno.regeneration_multiplier += health_regen
+/datum/moba_item/proc/apply_health_regen(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
+	component.healing_value_standing += health_regen
+	component.healing_value_resting += health_regen * MOBA_RESTING_HEAL_MULTIPLIER
 
 /datum/moba_item/proc/apply_plasma(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, restore_plasma_health = FALSE)
 	xeno.plasma_max += plasma

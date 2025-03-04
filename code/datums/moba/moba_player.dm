@@ -34,6 +34,10 @@
 	QDEL_NULL_LIST(queue_slots)
 	return ..()
 
+/datum/moba_player/proc/get_tied_xeno()
+	RETURN_TYPE(/mob/living/carbon/xenomorph)
+	return tied_xeno
+
 /datum/moba_player/proc/set_tied_xeno(mob/living/carbon/xenomorph/xeno)
 	tied_xeno = xeno
 	if(tied_xeno && unspent_levels)
@@ -60,3 +64,13 @@
 /datum/moba_player/proc/spend_level(path)
 	ability_path_level_dict[path]++
 	unspent_levels--
+	if(tied_xeno)
+		for(var/datum/action/action as anything in tied_xeno.actions)
+			if(istype(action, /datum/action/xeno_action/moba))
+				var/datum/action/xeno_action/moba/moba_action = action
+				if((ability_path_level_dict[type] >= moba_action.max_level) || !unspent_levels)
+					moba_action.stop_level_up_overlay()
+			else if(istype(action, /datum/action/xeno_action/activable/moba))
+				var/datum/action/xeno_action/activable/moba/moba_action = action
+				if((ability_path_level_dict[type] >= moba_action.max_level) || !unspent_levels)
+					moba_action.stop_level_up_overlay()

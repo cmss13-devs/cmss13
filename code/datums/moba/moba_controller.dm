@@ -131,7 +131,7 @@
 		xeno.got_evolution_message = TRUE
 		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
-		player.tied_xeno = xeno
+		player.set_tied_xeno(xeno)
 
 	for(var/datum/moba_queue_player/player_data as anything in team2_data)
 		var/datum/moba_player/player = player_data.player
@@ -143,7 +143,7 @@
 		xeno.got_evolution_message = TRUE
 		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
-		player.tied_xeno = xeno
+		player.set_tied_xeno(xeno)
 
 	game_started = TRUE
 	return TRUE
@@ -189,7 +189,7 @@
 
 /datum/moba_controller/proc/start_respawn(datum/moba_player/player_datum)
 	var/respawn_time = get_respawn_time()
-	player_datum.tied_xeno.play_screen_text("You have died. You will respawn in [respawn_time * 0.1] seconds.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+	player_datum.get_tied_xeno().play_screen_text("You have died. You will respawn in [respawn_time * 0.1] seconds.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
 	addtimer(CALLBACK(src, PROC_REF(spawn_xeno), player_datum), respawn_time)
 
 /datum/moba_controller/proc/spawn_xeno(datum/moba_player/player_datum)
@@ -200,8 +200,8 @@
 			break
 
 	if(!found_playerdata.player.tied_client)
-		RegisterSignal(player_datum.tied_xeno, COMSIG_MOB_LOGGED_IN, PROC_REF(move_disconnected_player_to_body))
-		awaiting_reconnection_dict[player_datum.tied_xeno] = player_datum
+		RegisterSignal(player_datum.get_tied_xeno(), COMSIG_MOB_LOGGED_IN, PROC_REF(move_disconnected_player_to_body))
+		awaiting_reconnection_dict[player_datum.get_tied_xeno()] = player_datum
 		return
 
 	var/mob/living/carbon/xenomorph/xeno = new found_playerdata.caste.equivalent_xeno_path
@@ -212,7 +212,7 @@
 	ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	found_playerdata.player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 
-	QDEL_NULL(found_playerdata.player.tied_xeno)
+	qdel(found_playerdata.player.get_tied_xeno())
 
 	found_playerdata.player.set_tied_xeno(xeno)
 
@@ -229,7 +229,7 @@
 	var/total_level_count = 0
 	for(var/datum/moba_player/player as anything in players)
 		var/list/level_list = list()
-		SEND_SIGNAL(player.tied_xeno, COMSIG_MOBA_GET_LEVEL, level_list)
+		SEND_SIGNAL(player.get_tied_xeno(), COMSIG_MOBA_GET_LEVEL, level_list)
 		total_level_count += level_list[1]
 
 	game_level = clamp(floor(total_level_count * 0.125), 1, 12)
@@ -244,12 +244,12 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[winning_hive]
 
 	for(var/datum/moba_player/player as anything in players)
-		player.tied_xeno.play_screen_text("[hive.name] wins.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+		player.get_tied_xeno().play_screen_text("[hive.name] wins.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
 
 	sleep(5 SECONDS)
 
 	for(var/datum/moba_player/player as anything in players)
-		player.tied_xeno.send_to_lobby()
+		player.get_tied_xeno().send_to_lobby()
 
 	SSmoba.unused_maps += new /datum/unused_moba_map(src)
 	qdel(src)

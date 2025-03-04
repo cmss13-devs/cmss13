@@ -42,10 +42,10 @@
 	if(target && (target_dist >= 4))
 		target = null
 
-	if(target && (target_dist > ((target.bound_height + target.bound_width) / 64)))
+	if(target && (target_dist > max((target.bound_height + target.bound_width) / 96, 1)))
 		move_to_target()
 
-	if(target && ((target_dist <= ((target.bound_height + target.bound_width) / 64))))
+	if(target && ((target_dist <= max((target.bound_height + target.bound_width) / 96, 1))))
 		attack_target()
 
 	if(!target && !is_moving_to_next_point)

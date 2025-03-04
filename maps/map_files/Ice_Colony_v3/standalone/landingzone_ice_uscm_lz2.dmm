@@ -1,0 +1,26 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
+"f" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	faction = "Yautja"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
+
+(1,1,1) = {"
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+f
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+"}

@@ -1,0 +1,1954 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/turf/open/floor/shiva/redfull/west,
+/area/event/underground/dynamic)
+"ah" = (
+/obj/structure/surface/table,
+/obj/item/clothing/suit/armor/hos,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"aQ" = (
+/obj/structure/closet/crate/trashcart,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"bD" = (
+/obj/structure/machinery/landinglight/ds1/spoke,
+/turf/open/auto_turf/snow/layer0,
+/area/event/underground/dynamic)
+"cg" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/floor3,
+/area/event/underground/dynamic)
+"ct" = (
+/obj/structure/platform/metal/strata/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"cu" = (
+/turf/open/floor/plating,
+/area/shiva/interior/caves/research_caves)
+"cZ" = (
+/obj/item/weapon/ice_axe,
+/turf/open/auto_turf/snow/layer2,
+/area/event/dynamic/lit)
+"dC" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"dG" = (
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/snow/layer3,
+/area/event/dynamic/lit)
+"dO" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/multi_tiles/north,
+/area/shiva/interior/colony/research_hab)
+"dT" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"ed" = (
+/obj/structure/machinery/landinglight/ds1/spoke,
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"el" = (
+/obj/structure/surface/table,
+/obj/item/paper/janitor{
+	pixel_y = 8
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"ep" = (
+/turf/open/floor/shiva,
+/area/event/underground/dynamic)
+"es" = (
+/obj/structure/machinery/space_heater,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/research_caves)
+"eR" = (
+/turf/open/auto_turf/snow/layer3,
+/area/event/dynamic/lit)
+"eY" = (
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"fn" = (
+/obj/item/lightstick/red/variant/planted,
+/turf/open/auto_turf/snow/layer1,
+/area/event/dynamic/lit)
+"fW" = (
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"gf" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"gi" = (
+/turf/closed/wall/shiva/prefabricated/red,
+/area/event/underground/dynamic)
+"gN" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"gW" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"hd" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"hP" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"ic" = (
+/obj/structure/barricade/metal/wired,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"iL" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"jb" = (
+/obj/structure/flora/tree/dead/tree_6,
+/turf/open/auto_turf/snow/layer4,
+/area/event/dynamic/lit)
+"jB" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/gas,
+/turf/open/floor/shiva/yellow/southwest,
+/area/shiva/interior/colony/research_hab)
+"jD" = (
+/turf/open/floor/shiva/multi_tiles/north,
+/area/shiva/interior/colony/research_hab)
+"jZ" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"kr" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7;
+	pixel_x = 17
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"kL" = (
+/obj/docking_port/stationary/marine_dropship/upp{
+	name = "Research Base Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"lO" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/auto_turf/snow/layer0,
+/area/event/underground/dynamic)
+"lP" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"lR" = (
+/turf/open/auto_turf/snow/layer1,
+/area/event/dynamic/lit)
+"mn" = (
+/turf/closed/wall/shiva/prefabricated/orange,
+/area/shiva/interior/colony/research_hab)
+"mG" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/event/underground/dynamic)
+"mR" = (
+/obj/structure/surface/table,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"nv" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"nG" = (
+/turf/open/floor/shiva/multi_tiles/north,
+/area/event/underground/dynamic)
+"nW" = (
+/obj/structure/machinery/landinglight/ds1/spoke,
+/turf/open/auto_turf/snow/layer1,
+/area/event/dynamic/lit)
+"or" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/shiva/floor3,
+/area/event/underground/dynamic)
+"pa" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"pg" = (
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/event/underground/dynamic)
+"pE" = (
+/turf/open/floor/carpet,
+/area/shiva/interior/colony/research_hab)
+"qd" = (
+/turf/closed/wall/shiva/ice,
+/area/event/underground/dynamic)
+"qG" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/multi_tiles/east,
+/area/shiva/interior/colony/research_hab)
+"qY" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/floor3,
+/area/event/underground/dynamic)
+"re" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/caves/research_caves)
+"rU" = (
+/turf/open/auto_turf/snow/layer0,
+/area/event/underground/dynamic)
+"sM" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/shiva/yellow/southeast,
+/area/shiva/interior/colony/research_hab)
+"sX" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"tq" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/shiva/multi_tiles/east,
+/area/event/underground/dynamic)
+"tJ" = (
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP"
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/darkblue2,
+/area/event/underground/dynamic)
+"tS" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/event/underground/dynamic)
+"ut" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/cameras{
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"uM" = (
+/turf/open/auto_turf/ice/layer1,
+/area/event/dynamic/lit)
+"uR" = (
+/turf/open/floor/shiva/multi_tiles,
+/area/event/underground/dynamic)
+"vq" = (
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/research_hab)
+"vJ" = (
+/turf/open/auto_turf/snow/layer4,
+/area/event/dynamic/lit)
+"wB" = (
+/obj/structure/platform/metal/strata/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"wL" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/event/underground/dynamic)
+"wM" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"xP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7;
+	pixel_x = 17
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"yl" = (
+/obj/item/clothing/shoes/snow,
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/item/clothing/mask/rebreather,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/item/clothing/mask/rebreather,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/research_caves)
+"yG" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"yH" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"yM" = (
+/turf/open/floor/shiva/floor3,
+/area/event/underground/dynamic)
+"zn" = (
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"zN" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"AH" = (
+/turf/open/auto_turf/snow/layer0,
+/area/event/dynamic/lit)
+"AQ" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/auto_turf/ice/layer0,
+/area/event/underground/dynamic)
+"Cx" = (
+/turf/closed/wall/shiva/prefabricated/red,
+/area/shiva/interior/colony/research_hab)
+"CM" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/cameras{
+	pixel_y = 6
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"Dt" = (
+/turf/open/auto_turf/snow/layer2,
+/area/event/dynamic/lit)
+"DH" = (
+/obj/structure/flora/tree/dead/tree_3,
+/turf/open/auto_turf/snow/layer4,
+/area/event/dynamic/lit)
+"DZ" = (
+/obj/item/lightstick/red/variant/planted,
+/turf/open/auto_turf/snow/layer3,
+/area/event/dynamic/lit)
+"Er" = (
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/snow/layer1,
+/area/event/dynamic/lit)
+"EO" = (
+/obj/structure/machinery/landinglight/ds1/spoke,
+/turf/open/auto_turf/snow/layer0,
+/area/event/dynamic/lit)
+"Fb" = (
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"Fj" = (
+/turf/closed/wall/shiva/ice,
+/area/shiva/interior/oob)
+"GA" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/caves/research_caves)
+"GY" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"Hd" = (
+/turf/closed/wall/rock,
+/area/shiva/interior/oob)
+"Iu" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/auto_turf/ice/layer1,
+/area/event/underground/dynamic)
+"IN" = (
+/obj/structure/machinery/landinglight/ds1/spoke,
+/turf/open/floor/shiva/floor3,
+/area/event/underground/dynamic)
+"Jl" = (
+/obj/structure/machinery/light/double,
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/gas,
+/turf/open/floor/shiva/yellow,
+/area/shiva/interior/colony/research_hab)
+"KW" = (
+/turf/open/floor/shiva/multi_tiles/east,
+/area/shiva/interior/colony/research_hab)
+"Lb" = (
+/obj/structure/machinery/landinglight/ds1/spoke,
+/turf/open/floor/shiva,
+/area/event/underground/dynamic)
+"LK" = (
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"MA" = (
+/turf/closed/wall/shiva/ice,
+/area/shiva/interior/caves/research_caves)
+"Ny" = (
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"NB" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"OE" = (
+/turf/open/auto_turf/ice/layer2,
+/area/event/underground/dynamic)
+"Pf" = (
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"PZ" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/plating,
+/area/event/underground/dynamic)
+"Ql" = (
+/turf/open/auto_turf/ice/layer2,
+/area/event/dynamic/lit)
+"QM" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"QQ" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/open/floor/shiva/yellowfull,
+/area/shiva/interior/colony/research_hab)
+"QW" = (
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/research_caves)
+"Ri" = (
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/colony/research_hab)
+"Rr" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"Ru" = (
+/obj/structure/lz_sign/ice_sign,
+/turf/open/auto_turf/snow/layer4,
+/area/event/dynamic/lit)
+"Sf" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"SJ" = (
+/turf/open/auto_turf/ice/layer0,
+/area/event/underground/dynamic)
+"Tm" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/storage/belt/marine,
+/obj/item/clothing/suit/armor/riot/marine,
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"To" = (
+/obj/structure/window/framed/shiva,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"Tu" = (
+/turf/open/auto_turf/ice/layer0,
+/area/shiva/interior/caves/research_caves)
+"TX" = (
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/shiva/interior/oob)
+"Ux" = (
+/turf/open/floor/shiva/yellowfull,
+/area/shiva/interior/colony/research_hab)
+"UL" = (
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"Vo" = (
+/obj/item/lightstick/red/variant/planted,
+/turf/open/auto_turf/snow/layer4,
+/area/event/dynamic/lit)
+"Vq" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"Vs" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"WF" = (
+/obj/structure/surface/table,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 7
+	},
+/turf/open/floor/shiva/redfull/west,
+/area/shiva/interior/colony/research_hab)
+"XR" = (
+/obj/item/weapon/ice_axe,
+/turf/open/auto_turf/snow/layer4,
+/area/event/dynamic/lit)
+"Yb" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/shiva/multi_tiles/north,
+/area/event/underground/dynamic)
+"YH" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"Zc" = (
+/obj/structure/machinery/telecomms/relay/preset/tower/all,
+/turf/open/floor/almayer/tcomms,
+/area/event/underground/dynamic)
+"Zi" = (
+/turf/open/auto_turf/ice/layer2,
+/area/shiva/interior/caves/research_caves)
+"ZY" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+
+(1,1,1) = {"
+LK
+Ux
+mn
+mn
+mn
+mn
+mn
+mn
+MA
+MA
+MA
+QW
+QW
+QW
+Tu
+Zi
+Zi
+QW
+Zi
+Zi
+MA
+MA
+MA
+MA
+MA
+gf
+pa
+gf
+qd
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(2,1,1) = {"
+eY
+Ux
+LK
+LK
+Ri
+mn
+MA
+MA
+MA
+Zi
+Zi
+Zi
+Zi
+QW
+QW
+QW
+QW
+Tu
+Tu
+QW
+MA
+MA
+MA
+MA
+qd
+zn
+Pf
+ep
+qd
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(3,1,1) = {"
+jD
+Ux
+LK
+Ri
+LK
+Ny
+QW
+Zi
+QW
+Zi
+Zi
+Zi
+Tu
+QW
+Tu
+Tu
+QW
+Tu
+Tu
+QW
+es
+MA
+MA
+MA
+qd
+zn
+ep
+Pf
+qd
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(4,1,1) = {"
+Ux
+Ux
+eY
+eY
+Ny
+Ri
+cu
+QW
+QW
+Zi
+QW
+QW
+Tu
+Tu
+QW
+QW
+QW
+Tu
+QW
+QW
+QW
+MA
+MA
+MA
+gi
+Pf
+Pf
+ep
+gi
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(5,1,1) = {"
+LK
+LK
+LK
+LK
+LK
+LK
+QW
+QW
+Zi
+Tu
+QW
+QW
+QW
+QW
+QW
+Tu
+Tu
+QW
+cu
+Zi
+yl
+MA
+MA
+MA
+gi
+wL
+nG
+pg
+gi
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(6,1,1) = {"
+mn
+mn
+eY
+eY
+Ny
+eY
+Ny
+QW
+QW
+Tu
+Tu
+Tu
+QW
+Zi
+Zi
+Tu
+Tu
+Zi
+GA
+re
+MA
+MA
+MA
+MA
+gi
+uR
+nG
+uR
+gi
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(7,1,1) = {"
+sM
+mn
+LK
+LK
+LK
+LK
+Ri
+Ri
+cu
+QW
+MA
+QW
+QW
+QW
+QW
+QW
+Zi
+qd
+yM
+yM
+qd
+qd
+qd
+qd
+qd
+pg
+nG
+pg
+gi
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(8,1,1) = {"
+Jl
+mn
+eY
+Ny
+eY
+eY
+eY
+Ny
+QW
+QW
+MA
+MA
+QW
+Zi
+MA
+MA
+MA
+qd
+yM
+yM
+qd
+qd
+qd
+qd
+qd
+ae
+ae
+ae
+gi
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(9,1,1) = {"
+jB
+mn
+mn
+LK
+Ri
+LK
+Ny
+Ri
+Ri
+Ri
+QW
+MA
+MA
+MA
+MA
+MA
+MA
+qd
+yM
+zn
+qd
+qd
+gi
+qd
+qd
+pg
+nG
+pg
+gi
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(10,1,1) = {"
+mn
+mn
+mn
+mn
+eY
+eY
+eY
+eY
+Ny
+Ri
+MA
+MA
+MA
+MA
+MA
+gi
+gi
+qd
+wM
+qY
+ae
+yM
+tS
+yM
+Lb
+mG
+Yb
+mG
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(11,1,1) = {"
+mn
+mn
+mn
+mn
+mn
+LK
+Ri
+ep
+ep
+Pf
+qd
+qd
+qd
+qd
+MA
+gi
+or
+ep
+zn
+zn
+pg
+pg
+pg
+ae
+uR
+uR
+zn
+uM
+lR
+Dt
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(12,1,1) = {"
+mn
+Sf
+ut
+Cx
+Cx
+Cx
+nv
+cg
+cg
+qY
+yM
+IN
+qd
+qd
+MA
+qd
+ep
+zn
+zn
+rU
+rU
+rU
+rU
+rU
+SJ
+OE
+SJ
+AH
+lR
+vJ
+eR
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(13,1,1) = {"
+mn
+CM
+dC
+Fb
+Fb
+gW
+sX
+nG
+ep
+nG
+Pf
+yM
+qd
+qd
+qd
+qd
+ep
+zn
+zn
+zn
+rU
+rU
+rU
+zn
+SJ
+rU
+rU
+AH
+fn
+lR
+cZ
+vJ
+Fj
+Fj
+Fj
+Fj
+"}
+(14,1,1) = {"
+mn
+Cx
+QM
+eY
+Fb
+Cx
+Cx
+yM
+yM
+zn
+zn
+yM
+zn
+ep
+ep
+zn
+yM
+zn
+zn
+zn
+rU
+zn
+rU
+rU
+bD
+rU
+rU
+AH
+AH
+lR
+Dt
+Fj
+Fj
+Fj
+Fj
+Fj
+"}
+(15,1,1) = {"
+Ux
+Cx
+Fb
+eY
+eY
+Tm
+Cx
+gi
+ep
+zn
+zn
+zn
+SJ
+SJ
+OE
+zn
+zn
+zn
+rU
+zn
+zn
+OE
+OE
+zn
+rU
+OE
+rU
+AH
+Ql
+AH
+lR
+lR
+Dt
+Fj
+Fj
+Fj
+"}
+(16,1,1) = {"
+Ux
+NB
+Fb
+Vs
+eY
+eY
+Tm
+gi
+kr
+zn
+zn
+SJ
+OE
+OE
+OE
+zn
+zn
+rU
+rU
+rU
+rU
+SJ
+SJ
+SJ
+SJ
+OE
+rU
+AH
+AH
+AH
+AH
+AH
+fn
+vJ
+Fj
+Fj
+"}
+(17,1,1) = {"
+QQ
+Cx
+mR
+Rr
+ah
+YH
+Tm
+gi
+zn
+zn
+SJ
+OE
+zn
+zn
+zn
+zn
+ed
+rU
+rU
+rU
+zn
+rU
+rU
+rU
+rU
+rU
+rU
+AH
+AH
+AH
+AH
+AH
+AH
+lR
+Fj
+Fj
+"}
+(18,1,1) = {"
+Ux
+Cx
+Cx
+Cx
+Cx
+Cx
+Cx
+gi
+zn
+zn
+SJ
+zn
+zn
+zn
+zn
+Pf
+Pf
+Pf
+rU
+rU
+rU
+rU
+rU
+Pf
+Pf
+Pf
+Pf
+Pf
+AH
+nW
+lR
+AH
+AH
+lR
+DH
+Fj
+"}
+(19,1,1) = {"
+Ux
+Cx
+LK
+KW
+qG
+Cx
+tq
+yM
+pg
+pg
+zn
+zn
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+lR
+lR
+fW
+AH
+AH
+lR
+vJ
+Fj
+"}
+(20,1,1) = {"
+Ux
+NB
+jD
+iL
+Fb
+ZY
+Iu
+zn
+zn
+zn
+ed
+zn
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+lR
+fW
+AH
+AH
+lR
+Fj
+Fj
+"}
+(21,1,1) = {"
+Ux
+Cx
+dO
+Fb
+aQ
+Cx
+dT
+zn
+zn
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+fW
+fW
+AH
+lR
+Er
+vJ
+Fj
+"}
+(22,1,1) = {"
+Ux
+To
+jD
+eY
+Cx
+Cx
+dT
+zn
+zn
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+AH
+AH
+AH
+AH
+lR
+vJ
+Fj
+"}
+(23,1,1) = {"
+pE
+To
+jD
+Fb
+lP
+Cx
+xP
+SJ
+SJ
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+kL
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+AH
+AH
+AH
+AH
+fn
+vJ
+Fj
+"}
+(24,1,1) = {"
+pE
+To
+jD
+eY
+GY
+Cx
+dT
+SJ
+OE
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+AH
+AH
+AH
+EO
+lR
+eR
+Fj
+"}
+(25,1,1) = {"
+pE
+To
+LK
+Fb
+Cx
+Cx
+AQ
+SJ
+OE
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+fW
+fW
+lR
+lR
+Dt
+Ru
+Fj
+"}
+(26,1,1) = {"
+To
+Cx
+Vq
+Vq
+Cx
+Cx
+AQ
+OE
+OE
+zn
+zn
+zn
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+lR
+fW
+lR
+Dt
+eR
+eR
+Fj
+"}
+(27,1,1) = {"
+Fb
+Fb
+Fb
+yG
+Fb
+To
+dT
+SJ
+SJ
+zn
+zn
+zn
+zn
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+Pf
+AH
+lR
+fW
+lR
+eR
+eR
+Fj
+Fj
+"}
+(28,1,1) = {"
+zN
+LK
+LK
+eY
+Fb
+To
+AQ
+OE
+SJ
+zn
+zn
+zn
+SJ
+SJ
+zn
+Pf
+Pf
+Pf
+zn
+SJ
+SJ
+SJ
+rU
+Pf
+Pf
+Pf
+Pf
+Pf
+AH
+lR
+lR
+lR
+vJ
+vJ
+dG
+Fj
+"}
+(29,1,1) = {"
+eY
+LK
+LK
+eY
+Fb
+To
+AQ
+OE
+SJ
+zn
+zn
+zn
+SJ
+SJ
+SJ
+rU
+zn
+zn
+SJ
+SJ
+zn
+zn
+rU
+rU
+rU
+rU
+rU
+AH
+AH
+AH
+lR
+eR
+vJ
+vJ
+Fj
+Fj
+"}
+(30,1,1) = {"
+Fb
+Fb
+Fb
+Fb
+el
+Cx
+AQ
+OE
+SJ
+zn
+zn
+zn
+zn
+zn
+zn
+zn
+rU
+zn
+SJ
+rU
+zn
+rU
+SJ
+SJ
+rU
+rU
+rU
+uM
+AH
+lR
+Dt
+vJ
+jb
+Fj
+Fj
+Fj
+"}
+(31,1,1) = {"
+Fb
+vq
+vq
+Fb
+WF
+Cx
+dT
+zn
+SJ
+zn
+zn
+zn
+zn
+zn
+zn
+rU
+rU
+zn
+zn
+rU
+rU
+SJ
+SJ
+rU
+OE
+OE
+rU
+AH
+AH
+lR
+vJ
+Vo
+Fj
+Fj
+Fj
+Fj
+"}
+(32,1,1) = {"
+Fb
+UL
+UL
+Fb
+Fb
+Cx
+dT
+zn
+zn
+zn
+zn
+Fj
+hd
+wB
+hP
+rU
+zn
+rU
+zn
+zn
+rU
+SJ
+OE
+OE
+SJ
+rU
+rU
+AH
+lR
+eR
+vJ
+eR
+eR
+DZ
+Fj
+Fj
+"}
+(33,1,1) = {"
+Fb
+vq
+vq
+Fb
+el
+Cx
+dT
+zn
+zn
+zn
+Fj
+Fj
+TX
+Zc
+ct
+jZ
+lO
+rU
+rU
+gN
+ic
+rU
+zn
+rU
+rU
+rU
+rU
+lR
+Dt
+DZ
+Fj
+Fj
+Fj
+eR
+Fj
+Fj
+"}
+(34,1,1) = {"
+Cx
+Cx
+Cx
+Cx
+Cx
+Cx
+gi
+gi
+gi
+gi
+Fj
+Fj
+TX
+TX
+yH
+jZ
+Fj
+zn
+TX
+PZ
+tJ
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+XR
+Hd
+Fj
+"}
+(35,1,1) = {"
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+Fj
+"}

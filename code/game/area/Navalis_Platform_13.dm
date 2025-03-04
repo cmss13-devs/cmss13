@@ -11,6 +11,7 @@
 	icon_state = "unknown"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_OOB
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NO_PARA
 
 /area/navalis/indoors
@@ -54,6 +55,7 @@
 /area/navalis/oob/empty_space
 	requires_power = FALSE
 	ceiling = CEILING_NONE
+	minimap_color = MINIMAP_WATER
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NO_PARA
 
 // PSV Charon
@@ -456,7 +458,7 @@
 	icon_state = "medbay3"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
-	minimap_color = MINIMAP_AREA_LZ
+	minimap_color = MINIMAP_AREA_CELL_VIP
 	linked_lz = DROPSHIP_LZ1
 
 /area/navalis/outdoors/landing_zone_1/under
@@ -467,7 +469,7 @@
 	icon_state = "bunker01_engineering"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
-	minimap_color = MINIMAP_AREA_LZ
+	minimap_color = MINIMAP_AREA_CELL_MED
 	linked_lz = DROPSHIP_LZ2
 
 /area/navalis/outdoors/landing_zone_2/under

@@ -4,6 +4,8 @@
 #define HIDE_GROUND 1
 #define HIDE_NONE 0
 
+GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
+
 /obj/structure/machinery/computer/overwatch
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
@@ -59,8 +61,6 @@
 	/// making a ship announcement
 	COOLDOWN_DECLARE(cooldown_message)
 
-GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
-
 /obj/structure/machinery/computer/overwatch/groundside_operations
 	name = "Groundside Operations Console"
 	desc = "This can be used for various important functions."
@@ -78,6 +78,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)
+	GLOB.active_overwatch_consoles -= src
 	current_orbital_cannon = null
 	concurrent_users = null
 	if(!camera_holder)
@@ -150,9 +151,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapRef"] = tacmap.map_holder.map_ref
-	if(SSticker.mode.active_lz)
-		data["primary_lz"] = SSticker.mode.active_lz
-	data["alert_level"] = GLOB.security_level
+
 	return data
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
@@ -482,6 +481,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(operator)
 		data["operator"] = operator.name
 
+	if(SSticker.mode.active_lz)
+		data["primary_lz"] = SSticker.mode.active_lz
+	data["alert_level"] = GLOB.security_level
+
 	return data
 
 /obj/structure/machinery/computer/overwatch/ui_state(mob/user)
@@ -726,6 +729,25 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("red_alert")
 			set_security_level(SEC_LEVEL_RED)
+
+		if("change_sec_level")
+			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
+			switch(GLOB.security_level)
+				if(SEC_LEVEL_GREEN)
+					alert_list -= num2seclevel(SEC_LEVEL_GREEN)
+				if(SEC_LEVEL_BLUE)
+					alert_list -= num2seclevel(SEC_LEVEL_BLUE)
+				if(SEC_LEVEL_DELTA)
+					return
+
+			var/level_selected = tgui_input_list(user, "What alert would you like to set it as?", "Alert Level", alert_list)
+			if(!level_selected)
+				return
+
+			set_security_level(seclevel2num(level_selected), log = ARES_LOG_NONE)
+			log_game("[key_name(user)] has changed the security level to [get_security_level()].")
+			message_admins("[key_name_admin(user)] has changed the security level to [get_security_level()].")
+			log_ares_security("Manual Security Update", "Changed the security level to [get_security_level()].", user)
 
 		if("gather_index_squad_data")
 			if(params["squad"])

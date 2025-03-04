@@ -637,7 +637,7 @@ const ExecutivePanel = (props) => {
                 width="100%"
                 icon="medal"
                 mt="1px"
-                onClick={() => act('sl_message')}
+                onClick={() => act('award')}
               >
                 AWARD A MEDAL
               </Button>

@@ -391,7 +391,7 @@
 		return FALSE
 	if(!currently_fanning)
 		return ..()
-	if(currently_fanning && user.get_inactive_hand() && !istype(user.get_inactive_hand(), /obj/item/weapon/twohanded/offhand))
+	if(user.get_inactive_hand() && !istype(user.get_inactive_hand(), /obj/item/weapon/twohanded/offhand))
 		to_chat(user, SPAN_NOTICE("You can't fan the hammer when something else is in your hand"))
 		return FALSE
 	var/hand_to_check = user.r_hand == src ? "l_hand" : "r_hand"

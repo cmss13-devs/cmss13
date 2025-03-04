@@ -77,6 +77,8 @@
 		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
+	skull = /obj/item/skull/boiler
+	pelt = /obj/item/pelt/boiler
 
 /mob/living/carbon/xenomorph/boiler/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()

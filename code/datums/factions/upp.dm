@@ -28,6 +28,8 @@
 			default_color = TRUE
 		if(JOB_UPP_POLICE)
 			hud_icon_state = "mp"
+		if(JOB_UPP_CHIEF_POLICE)
+			hud_icon_state = "cmp"
 		if(JOB_UPP_LT_OFFICER)
 			hud_icon_state = "lt"
 		if(JOB_UPP_SRLT_OFFICER)

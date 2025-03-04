@@ -9,8 +9,8 @@
 
 /datum/emergency_call/xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
-	objectives = "For the Empress!"
+	arrival_message = "[MAIN_SHIP_NAME], это ККС \"Вриесс\", ответьте--... #&...*#&^#... сигнал... о боже, они в вентиляции---... Приоритетное предупреждение: Сигнал потерян."
+	objectives = "За Императрицу!"
 
 
 /datum/emergency_call/xenos/spawn_items()

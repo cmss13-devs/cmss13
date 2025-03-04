@@ -509,7 +509,12 @@
 	if(!istype(id_card))
 		return FALSE //No ID found
 
+	// SS220 EDIT START	 TRANSLATE
 	var/assignment = target_mob.job
+	var/datum/job/job_temp = GET_MAPPED_ROLE(target_mob.job)
+	if(job_temp && job_temp.disp_title)
+		assignment = job_temp.disp_title
+	// SS220 EDIT END	 TRANSLATE
 	var/paygrade
 
 	var/list/extra_access = list()
@@ -517,72 +522,72 @@
 	var/mob_role = GET_DEFAULT_ROLE(target_mob.job)
 	switch(mob_role)
 		if(JOB_SQUAD_ENGI)
-			assignment = JOB_SQUAD_ENGI
+			assignment = JOB_SQUAD_ENGI_RU	// SS220 EDIT TRANSLATE
 			id_card.claimedgear = FALSE
 		if(JOB_SQUAD_MEDIC)
-			assignment = JOB_SQUAD_MEDIC
+			assignment = JOB_SQUAD_MEDIC_RU	// SS220 EDIT TRANSLATE
 			id_card.claimedgear = FALSE
 		if(JOB_SQUAD_SPECIALIST)
-			assignment = JOB_SQUAD_SPECIALIST
+			assignment = JOB_SQUAD_SPECIALIST_RU	// SS220 EDIT TRANSLATE
 		if(JOB_SQUAD_TEAM_LEADER)
-			assignment = JOB_SQUAD_TEAM_LEADER
+			assignment = JOB_SQUAD_TEAM_LEADER_RU	// SS220 EDIT TRANSLATE
 			target_mob.important_radio_channels += radio_freq
 		if(JOB_SQUAD_SMARTGUN)
-			assignment = JOB_SQUAD_SMARTGUN
+			assignment = JOB_SQUAD_SMARTGUN_RU	// SS220 EDIT TRANSLATE
 		if(JOB_SQUAD_LEADER)
 			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_SQUAD_LEADER) //field promoted SL
 				var/old_lead = squad_leader
 				demote_squad_leader() //replaced by the real one
 				SStracking.start_tracking(tracking_id, old_lead)
-			assignment = squad_type + " Leader"
+			assignment = "Командир " + squad_type_ru	// SS220 EDIT TRANSLATE
 			squad_leader = target_mob
 			SStracking.set_leader(tracking_id, target_mob)
 			SStracking.start_tracking("marine_sl", target_mob)
 
 		if(JOB_UPP_ENGI)
-			assignment = JOB_SQUAD_ENGI
+			assignment = JOB_SQUAD_ENGI_RU	// SS220 EDIT TRANSLATE
 			id_card.claimedgear = FALSE
 		if(JOB_UPP_MEDIC)
-			assignment = JOB_SQUAD_MEDIC
+			assignment = JOB_SQUAD_MEDIC_RU	// SS220 EDIT TRANSLATE
 			id_card.claimedgear = FALSE
 		if(JOB_UPP_SPECIALIST)
-			assignment = JOB_SQUAD_SPECIALIST
+			assignment = JOB_SQUAD_SPECIALIST_RU	// SS220 EDIT TRANSLATE
 		if(JOB_UPP_LEADER)
 			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_UPP_LEADER) //field promoted SL
 				var/old_lead = squad_leader
 				demote_squad_leader() //replaced by the real one
 				SStracking.start_tracking(tracking_id, old_lead)
-			assignment = squad_type + " Leader"
+			assignment = "Командир " + squad_type_ru	// SS220 EDIT TRANSLATE
 			squad_leader = target_mob
 			SStracking.set_leader(tracking_id, target_mob)
 			SStracking.start_tracking("marine_sl", target_mob)
 
 		if(JOB_MARINE_RAIDER)
-			assignment = JOB_MARINE_RAIDER
+			assignment = JOB_MARINE_RAIDER_RU	// SS220 EDIT TRANSLATE
 			if(name == JOB_MARINE_RAIDER)
-				assignment = "Special Operator"
+				assignment = "Спец-Оператор"	// SS220 EDIT TRANSLATE
 		if(JOB_MARINE_RAIDER_SL)
-			assignment = JOB_MARINE_RAIDER_SL
+			assignment = JOB_MARINE_RAIDER_SL_RU	// SS220 EDIT TRANSLATE
 			if(name == JOB_MARINE_RAIDER)
 				if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_MARINE_RAIDER_SL) //field promoted SL
 					var/old_lead = squad_leader
 					demote_squad_leader() //replaced by the real one
 					SStracking.start_tracking(tracking_id, old_lead)
-				assignment = squad_type + " Leader"
+				assignment = "Командир " + squad_type_ru	// SS220 EDIT TRANSLATE
 				squad_leader = target_mob
 				SStracking.set_leader(tracking_id, target_mob)
 				SStracking.start_tracking("marine_sl", target_mob)
 				mob_role = JOB_SQUAD_LEADER
 		if(JOB_MARINE_RAIDER_CMD)
-			assignment = JOB_MARINE_RAIDER_CMD
+			assignment = JOB_MARINE_RAIDER_CMD_RU	// SS220 EDIT TRANSLATE
 			if(name == JOB_MARINE_RAIDER)
-				assignment = "Officer"
+				assignment = "Офицер"	// SS220 EDIT TRANSLATE
 
 	if(mob_role in roles_cap)
 		roles_in[mob_role]++
 
 	RegisterSignal(target_mob, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
-	if(assignment != JOB_SQUAD_LEADER)
+	if(mob_role != JOB_SQUAD_LEADER)
 		SStracking.start_tracking(tracking_id, target_mob)
 
 	count++ //Add up the tally. This is important in even squad distribution.
@@ -594,7 +599,7 @@
 	target_mob.assigned_squad = src //Add them to the squad
 	id_card.access += (src.access + extra_access) //Add their squad access to their ID
 	if(prepend_squad_name_to_assignment)
-		id_card.assignment = "[name] [assignment]"
+		id_card.assignment = "[assignment] [get_name_ru()]"	// SS220 EDIT TRANSLATE
 	else
 		id_card.assignment = assignment
 
@@ -718,7 +723,7 @@
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays
 	old_lead.update_inv_wear_suit()
-	to_chat(old_lead, FONT_SIZE_BIG(SPAN_BLUE("You're no longer the [squad_type] Leader for [src]!")))
+	to_chat(old_lead, FONT_SIZE_BIG(SPAN_BLUE("Вы больше не Лидер [squad_type] для [src]!")))
 
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.

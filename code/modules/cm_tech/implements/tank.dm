@@ -18,7 +18,7 @@
 	name = "tank coupon"
 	desc = "We're done playing! This coupon allows the ship crew to retrieve a complete Longstreet tank from Vehicle ASRS. Make sure to send the ASRS lift down so it can be retrieved. One use only. LTB not included. Comes with free friendly fire."
 	vehicle_type = /datum/vehicle_order/tank/broken
-	vehicle_category = "LONGSTREET"
+	vehicle_category = "TANK"
 
 /obj/item/vehicle_coupon/attack_self(mob/user)
 	if(QDELETED(src))

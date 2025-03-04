@@ -70,7 +70,7 @@
 
 /mob/living/carbon/human/UnarmedAttack(atom/A, proximity, click_parameters)
 
-	if(body_position == LYING_DOWN) //No attacks while laying down
+	if(body_position == LYING_DOWN && !HAS_TRAIT(src, TRAIT_HAULED)) //No attacks while laying down
 		return 0
 
 	var/obj/item/clothing/gloves/G = gloves // not typecast specifically enough in defines

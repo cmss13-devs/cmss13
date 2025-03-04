@@ -124,6 +124,7 @@ export const PredPicker = () => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Age">
                   <NumberInput
+                    step={1}
                     value={age}
                     minValue={175}
                     maxValue={3000}

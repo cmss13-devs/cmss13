@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 import { capitalizeAll, capitalizeFirst } from 'common/string';
 
 import { useBackend } from '../../backend';

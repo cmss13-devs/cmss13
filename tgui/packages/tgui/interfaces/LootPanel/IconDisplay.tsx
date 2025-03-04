@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 import { DmIcon, Icon, Image } from '../../components';
 import { SearchItem } from './types';
 

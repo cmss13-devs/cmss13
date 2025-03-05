@@ -245,6 +245,8 @@
 #define TRAIT_IRON_TEETH "t_iron_teeth"
 /// If the mob is part of the MOBA gamemode
 #define TRAIT_MOBA_PARTICIPANT "t_moba_participant"
+/// If the mob is a part of the MOBA gamemode on a given map ID
+#define TRAIT_MOBA_MAP_PARTICIPANT(map_id) "t_moba_map_participant_[map_id]"
 /// If the mob is in range of a MOBA simplemob camp
 #define TRAIT_MOBA_CAMP_TARGET "t_moba_camp_target"
 /// If the mob has recently attacked a member of the given MOBA hive

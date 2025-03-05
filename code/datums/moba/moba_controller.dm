@@ -10,6 +10,7 @@
 	// Map stuff
 	var/turf/left_base
 	var/turf/right_base
+	var/datum/moba_scoreboard/scoreboard
 
 	/// Game duration in deciseconds. Will only be as precise as SSmoba's `wait` var.
 	var/game_duration = 0
@@ -51,6 +52,7 @@
 		RegisterSignal(player, COMSIG_MOBA_LEVEL_UP, PROC_REF(on_player_level_up))
 
 	map_id = id
+	scoreboard = new()
 
 /datum/moba_controller/Destroy(force, ...)
 	left_base = null
@@ -61,6 +63,7 @@
 	minion_spawn_botright = null
 	SSmoba.controllers -= src
 	SSmoba.controller_id_dict -= "[map_id]"
+	QDEL_NULL(scoreboard)
 	return ..()
 
 /datum/moba_controller/proc/handle_map_init(turf/bottom_left_turf)
@@ -130,6 +133,7 @@
 		xeno.AddComponent(/datum/component/moba_player, player, map_id, FALSE)
 		xeno.got_evolution_message = TRUE
 		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+		ADD_TRAIT(xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id), TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 		player.set_tied_xeno(xeno)
 
@@ -142,6 +146,7 @@
 		xeno.AddComponent(/datum/component/moba_player, player, map_id, TRUE)
 		xeno.got_evolution_message = TRUE
 		ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+		ADD_TRAIT(xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id), TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 		player.set_tied_xeno(xeno)
 

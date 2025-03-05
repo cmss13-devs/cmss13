@@ -20,8 +20,8 @@
 
 //Used for controling tunnel exiting and returning
 /obj/structure/tunnel/moba/clicked(mob/user, list/mods)
-	mods -= "ctrl"
-	mods -= "alt"
+	mods -= CTRL_CLICK
+	mods -= ALT_CLICK
 	return ..()
 
 /obj/structure/tunnel/moba/attack_alien(mob/living/carbon/xenomorph/M)

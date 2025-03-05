@@ -28,6 +28,8 @@
 
 	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
 
+	var/list/castes_evolved = list() // dict of any caste that has been evolved into, and how many times, "Ravager" = 5, "Warrior" = 2
+
 	var/list/participants = list() // types of /datum/entity/statistic, "[human.faction]" = 10, "xeno" = 2
 	var/list/final_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
 	var/list/hijack_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
@@ -35,6 +37,12 @@
 	var/list/caste_stats_list = list() // list of types /datum/entity/player_stats/caste
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
+
+	/// A list of all player xenomorph deaths, type /datum/entity/xeno_death
+	var/list/xeno_deaths = list()
+
+	/// A list of all marine deaths, type /datum/entity/marine_death
+	var/list/marine_deaths = list()
 
 	// nanoui data
 	var/list/round_data = list()
@@ -44,6 +52,9 @@
 	. = ..()
 	QDEL_NULL(current_map)
 	QDEL_LIST(death_stats_list)
+	QDEL_LIST(xeno_deaths)
+	QDEL_LIST(marine_deaths)
+	QDEL_LIST_ASSOC_VAL(castes_evolved)
 	QDEL_LIST_ASSOC_VAL(abilities_used)
 	QDEL_LIST_ASSOC_VAL(final_participants)
 	QDEL_LIST_ASSOC_VAL(hijack_participants)
@@ -82,7 +93,6 @@
 
 /datum/game_mode/proc/setup_round_stats()
 	if(!round_stats)
-		var/datum/entity/mc_round/mc_round = SSentity_manager.select(/datum/entity/mc_round)
 		var/operation_name
 		operation_name = "[pick(GLOB.operation_titles)]"
 		operation_name += " [pick(GLOB.operation_prefixes)]"
@@ -91,7 +101,7 @@
 		// Round stats
 		round_stats = DB_ENTITY(/datum/entity/statistic/round)
 		round_stats.round_name = operation_name
-		round_stats.round_id = mc_round.id
+		round_stats.round_id = GLOB.round_id
 		round_stats.map_name = SSmapping.configs[GROUND_MAP].map_name
 		round_stats.game_mode = name
 		round_stats.real_time_start = world.realtime
@@ -231,7 +241,6 @@
 			track_final_participant(M.faction)
 
 	save()
-	detach()
 
 /datum/entity/statistic/round/proc/track_hijack_participant(faction, amount = 1)
 	if(!faction)
@@ -305,9 +314,28 @@
 		death_data["death_stats_list"] = new_death_list
 	track_dead_participant(new_death.faction_name)
 
+/datum/entity/statistic/round/proc/store_caste_evo_data()
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		return
+
+	var/datum/entity/round_caste_picks/caste_picks = SSentity_manager.tables[/datum/entity/round_caste_picks].make_new()
+	caste_picks.castes_picked = castes_evolved
+	caste_picks.save()
+
+/datum/entity/statistic/round/proc/store_spec_kit_data()
+	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		return
+
+	var/datum/entity/initial_spec_picks/spec_picks = DB_ENTITY(/datum/entity/initial_spec_picks)
+	spec_picks.save()
+
 /datum/entity/statistic/round/proc/log_round_statistics()
 	if(!GLOB.round_stats)
 		return
+
+	store_caste_evo_data()
+	store_spec_kit_data()
+
 	var/total_xenos_created = 0
 	var/total_predators_spawned = 0
 	var/total_predaliens = 0
@@ -354,13 +382,13 @@
 	var/stats = ""
 	stats += "[SSticker.mode.round_finished]\n"
 	stats += "Game mode: [game_mode]\n"
-	stats += "Map name: [current_map.name]\n"
+	stats += "Map name: [current_map.map_name]\n"
 	stats += "Round time: [duration2text(round_length)]\n"
 	stats += "End round player population: [end_round_player_population]\n"
 
 	stats += "Total xenos spawned: [total_xenos_created]\n"
-	stats += "Total Preds spawned: [total_predators_spawned]\n"
-	stats += "Total Predaliens spawned: [total_predaliens]\n"
+	stats += "Total preds spawned: [total_predators_spawned]\n"
+	stats += "Total predaliens spawned: [total_predaliens]\n"
 	stats += "Total humans spawned: [total_humans_created]\n"
 
 	stats += "Xeno count during hijack: [xeno_count_during_hijack]\n"

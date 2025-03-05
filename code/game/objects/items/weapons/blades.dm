@@ -183,7 +183,7 @@
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 	else
-		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."), \
+		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."),
 			SPAN_NOTICE("You begin searching your body for shrapnel."))
 		address_mode = "out of your"
 		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))

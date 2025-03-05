@@ -382,11 +382,20 @@
 			charger_ability.stop_momentum() // antigrief
 			return
 		if(HAS_TRAIT(src, TRAIT_CHARGING))
-			apply_effect(2, WEAKEN)
-			xeno.apply_effect(2, WEAKEN)
+			apply_effect(1, WEAKEN)
+			xeno.apply_effect(1, WEAKEN)
 			throw_atom(get_step(src, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
 			xeno.throw_atom(get_step(xeno, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
 			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
+			for(var/mob/living/carbon/carbon_target in range(7, xeno))
+				to_chat(carbon_target, SPAN_WARNING("The chargers colliding causes the ground to shake!"))
+				shake_camera(carbon_target, 2, 3)
+				if(get_dist(xeno, carbon_target) <= 3 && !xeno.can_not_harm(carbon_target))
+					if(carbon_target.mob_size >= MOB_SIZE_BIG)
+						carbon_target.apply_effect(1, SLOW)
+					else
+						carbon_target.apply_effect(1, WEAKEN)
+						to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 			return
 		var/list/ram_dirs = get_perpen_dir(xeno.dir)

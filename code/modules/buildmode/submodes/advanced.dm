@@ -90,11 +90,14 @@
 
 	for(var/variable in A.vars)
 		if(!(variable in must_include))
-			if(variable in ignore_vars) continue
-			if(A.vars[variable] == initial(A.vars[variable])) continue
+			if(variable in ignore_vars)
+				continue
+			if(A.vars[variable] == initial(A.vars[variable]))
+				continue
 
 			for(var/type in ignore_types)
-				if(istype(A.vars[variable], type)) continue
+				if(istype(A.vars[variable], type))
+					continue
 
 		filtered_vars += list("[variable]" = A.vars[variable])
 

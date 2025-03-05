@@ -184,7 +184,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(R.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
-			if(!OT.allow_construction)
+			var/area/area = get_area(usr)
+			if(!OT.allow_construction || !area.allow_construction)
 				to_chat(usr, SPAN_WARNING("The [R.title] must be constructed on a proper surface!"))
 				return
 
@@ -211,7 +212,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			if(usr.action_busy)
 				return
 			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
-			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
+			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."),
 				SPAN_NOTICE("You start assembling \a [R.title]."))
 			if(!do_after(usr, max(R.time * time_mult, R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return

@@ -3,7 +3,7 @@
 	real_name = "imaginary friend"
 	desc = "A wonderful yet fake friend."
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	stat = DEAD // Keep hearing ghosts and other IFs
 	invisibility = INVISIBILITY_MAXIMUM
@@ -120,6 +120,8 @@
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+		if(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 		else
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE

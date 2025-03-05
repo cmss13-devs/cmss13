@@ -105,6 +105,10 @@
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+		return
 	var/turf/T = get_turf(usr)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
@@ -198,6 +202,10 @@
 		return
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 		return
 	var/turf/T = get_turf(user)
 	if(istype(T, /turf/open))
@@ -397,6 +405,10 @@
 					break
 		if(fail)
 			to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
+			return
+		var/area/area = get_area(src)
+		if(!area.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return
 		if(istype(T, /turf/open))
 			var/turf/open/floor = T
@@ -625,7 +637,8 @@
 			if(rounds)
 				to_chat(user, SPAN_WARNING("You only know how to swap the ammo drum when it's empty."))
 				return
-			if(user.action_busy) return
+			if(user.action_busy)
+				return
 			if(!do_after(user, 25 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
 		user.visible_message(SPAN_NOTICE("[user] loads [src]!"), SPAN_NOTICE("You load [src]!"))
@@ -653,11 +666,11 @@
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 				SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 					SPAN_NOTICE("You repair [src]."))
 				update_health(-floor(health_max*0.2))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -696,10 +709,14 @@
 /obj/structure/machinery/m56d_hmg/proc/update_damage_state()
 	var/health_percent = floor(health/health_max * 100)
 	switch(health_percent)
-		if(0 to 25) damage_state = M56D_DMG_HEAVY
-		if(25 to 50) damage_state = M56D_DMG_MODERATE
-		if(50 to 75) damage_state = M56D_DMG_SLIGHT
-		if(75 to INFINITY) damage_state = M56D_DMG_NONE
+		if(0 to 25)
+			damage_state = M56D_DMG_HEAVY
+		if(25 to 50)
+			damage_state = M56D_DMG_MODERATE
+		if(50 to 75)
+			damage_state = M56D_DMG_SLIGHT
+		if(75 to INFINITY)
+			damage_state = M56D_DMG_NONE
 
 /obj/structure/machinery/m56d_hmg/bullet_act(obj/projectile/P) //Nope.
 	bullet_ping(P)
@@ -722,7 +739,8 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_hmg/proc/load_into_chamber()
-	if(in_chamber) return 1 //Already set!
+	if(in_chamber)
+		return 1 //Already set!
 	if(rounds == 0)
 		update_icon() //make sure the user can see the lack of ammo.
 		return 0 //Out of ammo.

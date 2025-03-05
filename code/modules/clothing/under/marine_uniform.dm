@@ -206,7 +206,7 @@
 	icon_state = "pilot_flightsuit_alt"
 	worn_state = "pilot_flightsuit_alt"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 	item_icons = list(
@@ -551,21 +551,42 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate
 	name = "\improper WY corporate security uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
-	icon_state = "uniform"
-	worn_state = "uniform"
+	icon_state = "sec_uniform"
+	worn_state = "sec_uniform"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
+/obj/item/clothing/under/marine/veteran/pmc/corporate/medic //TODO: make this an armband accessory instead of a jumpsuit
+	name = "\improper WY corporate security medic uniform"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a red armband denoting the wearer's medical purpose."
+	icon_state = "med_uniform"
+	item_state = "med_uniform"
+	worn_state = "med_uniform"
+
+/obj/item/clothing/under/marine/veteran/pmc/corporate/engineer //TODO: make this an armband accessory instead of a jumpsuit
+	name = "\improper WY corporate security engineer uniform"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a yellow armband denoting the wearer's technical purpose."
+	icon_state = "eng_uniform"
+	item_state = "eng_uniform"
+	worn_state = "eng_uniform"
+
 /obj/item/clothing/under/marine/veteran/pmc/corporate/lead
+	name = "\improper WY corporate security leader uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
-	icon_state = "lead_uniform"
-	item_state = "lead_uniform"
-	worn_state = "lead_uniform"
+	icon_state = "sec_lead_uniform"
+	item_state = "sec_lead_uniform"
+	worn_state = "sec_lead_uniform"
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is more breathable for use in hot, dry environments."
-	icon_state = "kutjevo_uniform"
-	item_state = "kutjevo_uniform"
-	worn_state = "kutjevo_uniform"
+	icon_state = "sec_kutjevo_uniform"
+	item_state = "sec_kutjevo_uniform"
+	worn_state = "sec_kutjevo_uniform"
+
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo/lead
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is more breathable for use in hot, dry environments and has gold armbands denoting the team leader."
+	icon_state = "sec_lead_kutjevo_uniform"
+	item_state = "sec_lead_kutjevo_uniform"
+	worn_state = "sec_lead_kutjevo_uniform"
 
 //=========================//UPP\\================================\\
 
@@ -1283,6 +1304,20 @@
 	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
+
+/obj/item/clothing/under/marine/officer/royal_marine
+	name = "royal marines commando service uniform"
+	desc = "The service uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment. Wear your uniform with honour, Commando."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
+	)
+	icon_state = "rmc_uniform_service"
+	worn_state = "rmc_uniform_service"
+
+/obj/item/clothing/under/marine/officer/royal_marine/black
+	icon_state = "rmc_uniform_service_alt"
+	worn_state = "rmc_uniform_service_alt"
 
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"

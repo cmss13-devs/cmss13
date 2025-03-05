@@ -190,7 +190,7 @@ export const TacticalMap = (props) => {
                       );
                     })}
                     {getZTabs()}
-                    {data.canDraw && data.canChangeMapview ? (
+                    {data.canChangeMapview ? (
                       <Tabs.Tab
                         onClick={() => {
                           act('ChangeMapView', {});

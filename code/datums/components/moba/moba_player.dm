@@ -26,6 +26,10 @@
 
 	var/healing_value_standing = 0
 	var/healing_value_resting = 0
+	var/plasma_value_standing = 0
+	var/plasma_value_resting = 0
+	/// How much HP we have that isn't from our caste. Used for item scaling and etc.
+	var/bonus_hp = 0
 
 /datum/component/moba_player/Initialize(datum/moba_player/player, id, right)
 	. = ..()
@@ -109,12 +113,18 @@
 			damage_to_heal = healing_value_resting
 		else
 			damage_to_heal = healing_value_standing
+		if(istype(get_area(parent_xeno), /area/misc/moba/base/fountain))
+			damage_to_heal *= MOBA_FOUNTAIN_HEAL_MULTIPLIER
 		var/brute = parent_xeno.getBruteLoss()
 		var/burn = parent_xeno.getFireLoss()
 		var/percentage_brute = brute / (brute + burn)
 		var/percentage_burn = burn / (brute + burn)
 		parent_xeno.apply_damage(-(damage_to_heal * percentage_brute), BRUTE)
 		parent_xeno.apply_damage(-(damage_to_heal * percentage_burn), BURN)
+		parent_xeno.updatehealth()
+
+	if(parent_xeno.plasma_stored < parent_xeno.plasma_max)
+		parent_xeno.plasma_stored += (parent_xeno.body_position == LYING_DOWN || parent_xeno.resting) ? plasma_value_resting : plasma_value_standing
 
 /datum/component/moba_player/proc/handle_qdel()
 	SIGNAL_HANDLER

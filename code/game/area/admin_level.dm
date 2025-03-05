@@ -208,3 +208,7 @@
 /area/misc/moba/base
 	name = "Moba - Base"
 	icon_state = "green"
+
+/area/misc/moba/base/fountain
+	name = "Moba - Fountain"
+	icon_state = "red"

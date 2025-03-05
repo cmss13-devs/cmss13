@@ -366,7 +366,7 @@
 	var/plasma_regeneration_mult = 1
 	/// What gibs this xeno should produce on death
 	var/gibs_path = /obj/effect/decal/remains/xeno
-	/// If FALSE, blocks passive healing
+	/// If FALSE, blocks passive healing and plasma regen
 	var/passive_healing = TRUE
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)

@@ -220,7 +220,9 @@
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	minimap_background = "background_clf"
-	minimap_icon = "clf_mil"
+	minimap_icon = "CLF Guerilla"
+	assignment = "CLF Guerilla"
+	rank = JOB_CLF
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	survivor_variant = HOSTILE_SURVIVOR
 
@@ -270,11 +272,10 @@
 
 	..()
 
-
-/obj/item/clothing/head/welding
-
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/tech
 	name = "Survivor - Navalis - CLF Special Force: Technician"
+	assignment = "CLF Field Technician"
+	rank = JOB_CLF_ENGI
 	role_comm_title = "TECH."
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/tech/load_gear(mob/living/carbon/human/new_human)
@@ -319,6 +320,8 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/medic
 	name = "Survivor - Navalis - CLF Special Force: Medic"
+	assignment = "CLF Field Medic"
+	rank = JOB_CLF_MEDIC
 	role_comm_title = "MED."
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/medic/load_gear(mob/living/carbon/human/new_human)
@@ -369,6 +372,8 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/spec
 	name = "Survivor - Navalis - CLF Special Force: Heavy Weapons"
+	assignment = "CLF Field Specialist"
+	rank = JOB_CLF_SPECIALIST
 	role_comm_title = "SPEC."
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/spec/load_gear(mob/living/carbon/human/new_human)
@@ -396,6 +401,8 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/leader
 	name = "Survivor - Navalis - CLF Special Force: Unit Leader"
+	assignment = "CLF Cell Leader"
+	rank = JOB_CLF_LEADER
 	role_comm_title = "LEAD."
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/leader/load_gear(mob/living/carbon/human/new_human)

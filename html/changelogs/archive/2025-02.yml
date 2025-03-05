@@ -513,3 +513,69 @@
   - qol: Clicking 'Watch' while already overwatching a xeno will now make you exit
       overwatch. You can now overwatch leader xenos with the hive tracker, instead
       of only being able to see the Queen.
+2025-02-26:
+  BOBAMAx:
+  - maptweak: Areas can now disallow construction. Applies this to the islands north
+      of the LZ on NV, along with depowering it permanently.
+  - maptweak: Ocean tiles no longer allow construction
+  LC4492:
+  - maptweak: Updates Lower Medbay to uh... *different* standards. Updates morgue
+      to allow for more symmetry. Changes the CMO's bunks a little to accomodate the
+      new set of ladders. Updates research to have more internal space in the containment
+      area, including other addons.
+  - rscadd: Adds an access define for Field Medical supply room.
+  NHC:
+  - bugfix: fixed PO tactical fligthsuit to use the TOGGLEJACKET verb instead of the
+      ROLL_SLEEVES verb to toggle its jacket
+  efzapa:
+  - rscadd: Added Sandstone Ceilings.
+  - mapadd: Jungle Moon Hunting Grounds Rooms now have proper Sandstone Ceilings.
+  neeshacark:
+  - balance: the skill required to use a synth reset key has been reduced to novice
+      (you can use it w/ a pamphlet)
+  realforest2001:
+  - rscadd: Added Leader uniform for Kutjevo Goon camo, and changed backend for how
+      the goon presets pick their uniform and helmets to allow for simpler use by
+      staff in events.
+  - imageadd: Added Leader uniform for Kutjevo Goon camo.
+  - imageadd: Added Lead Researcher hud icon for WY.
+2025-02-27:
+  Drathek:
+  - code_imp: Set ScopeOperandNamedType to be an error
+  - bugfix: Fixed WO doctor job overlapping with new Field Doctor
+  - code_imp: Added a check to ensure all usage of GLOBAL_SUBTYPE_INDEXED has uniquely
+      indexed entries
+  - rscdel: Removed unused young blood leader job datum
+  - rscadd: Added a preference to opt in for flashing lights (e.g. AR goggles and
+      happy pills)
+  - code_imp: Cleanup client_prefs
+  Git-Nivrak:
+  - bugfix: Fixed Queen being able to expand weeds into unweedable tiles
+  - code_imp: Added support for transparent turfs
+  - bugfix: Fixed layering issues with multiz
+  - code_imp: Added support for turf-specific modifiers for falling
+  hry-gh:
+  - rscadd: the synthetic snowflake vendor items are now found in the loadout in the
+      character setup menu
+2025-02-28:
+  Blundir, Crowford, Nauticall, Cuberound, Triiodine, LC4492:
+  - rscadd: added UPP, WY, PMC, TWE, WY emergency, Generic food rations, floor boxes
+      for them
+  - rscadd: USCM MRE now has cheese spread in multiple variations, beverage bag in
+      multiple variations (you need to pour water into it)
+  - rscadd: balaji imperial 4 packs and matches, matches added to WY vendor, both
+      matches and cigs can appear in TWE ration
+  - rscadd: USCM MRE now has an iconic MRE spoon
+  - rscadd: added numerous new mains, sides, snacks and desserts to USCM MRE
+  - rscadd: all ration food now has unique descriptions and reagents inside them having
+      custom reagents now displays food taste correctly
+  - rscadd: new rations to loadouts that should logically have them
+  - rscdel: WY brand MRE box got removed and replaced with an actual WY rations
+  - rscdel: USCM tray boxes got removed and replaced with an actual MREs
+  - rscdel: remove MRE from prep vendors
+  - refactor: mre backend changed severely and moved to separate .dm files
+  - rscdel: core nutrient reagent is no longer used for mre foods, apart from some
+      exceptions
+  - maptweak: added new rations around the maps where they logically make sense
+  Git-Nivrak:
+  - bugfix: Fixed squad assignment

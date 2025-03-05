@@ -11,9 +11,9 @@ Instead of being uniform, it starts out a littler slower, goes fast in the middl
 */
 
 /proc/send_animating_signal(atom/A) //following code is intended for signalling pixel shifting animations, unsure of function to others
-    if(istype(A, /mob/living/carbon/human))
-        var/mob/living/carbon/human/H = A
-        SEND_SIGNAL(H, COMSIG_HUMAN_ANIMATING)
+	if(istype(A, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = A
+		SEND_SIGNAL(H, COMSIG_HUMAN_ANIMATING)
 
 /proc/animation_wrist_flick(atom/A, direction = 1, loop_num = 0) //-1 for a left spin.
 	animate(A, transform = matrix(120 * direction, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)

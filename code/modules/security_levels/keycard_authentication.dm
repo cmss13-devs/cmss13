@@ -21,6 +21,8 @@
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
+	// so that folks dont constantly spam their ID, and play an 'id rejected' noise over and over
+	COOLDOWN_DECLARE(id_scan_cooldown)
 
 /obj/structure/machinery/keycard_auth/attack_remote(mob/user as mob)
 	to_chat(user, "The station AI is not to interact with these devices.")
@@ -40,10 +42,10 @@
 					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
-				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access))	// need to be senior CIC staff to toggle ob safety
+				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access) && (COOLDOWN_FINISHED(src, id_scan_cooldown)))	// need to be senior CIC staff to toggle ob safety
 					balloon_alert_to_viewers("Error! Insufficient clearence!")
 					playsound(loc, 'sound/items/defib_failed.ogg')
-					sleep(confirm_delay)
+					COOLDOWN_START(src, id_scan_cooldown, 1 SECONDS)
 					return
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
 

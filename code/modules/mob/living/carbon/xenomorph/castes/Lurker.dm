@@ -159,15 +159,6 @@
 	if(!lurker_invisibility_action)
 		return
 
-	// Recharged
-	if(lurker_invisibility_action.cooldown_timer_id == TIMER_ID_NULL)
-		. += "Invisibility Recharge: Ready."
-		return
-
-	// Recharging
-	var/time_left = timeleft(lurker_invisibility_action.cooldown_timer_id) / 10
-	. += "Invisibility Recharge: [time_left] second\s."
-
 /datum/behavior_delegate/lurker_base/on_collide(atom/movable/movable_atom)
 	. = ..()
 

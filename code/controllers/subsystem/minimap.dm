@@ -527,6 +527,7 @@ SUBSYSTEM_DEF(minimaps)
 		debug_log("SVG coordinates for [faction] are not implemented!")
 
 #define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
+#define can_change_view(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)))
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -704,7 +705,6 @@ SUBSYSTEM_DEF(minimaps)
 	var/datum/tacmap_holder/map_holder
 
 	var/is_mainship = FALSE
-	var/can_change_map_view = TRUE
 
 	///Name for targeted_ztrait_for_mainship
 	var/change_to_name = MAIN_SHIP_DEFAULT_NAME
@@ -776,11 +776,6 @@ SUBSYSTEM_DEF(minimaps)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
-
-	if(is_xeno || faction != FACTION_MARINE)
-		can_change_map_view = FALSE
-	else if(faction == FACTION_MARINE)
-		can_change_map_view = TRUE
 
 	if(faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
@@ -856,7 +851,6 @@ SUBSYSTEM_DEF(minimaps)
 	data["mapRef"] = map_holder?.map_ref
 	data["isMainship"] = is_mainship
 	data["changeToMapName"] = is_mainship ? SSmapping.configs?[GROUND_MAP]?.map_name : change_to_name
-	data["canChangeMapview"] = can_change_map_view
 
 	return data
 
@@ -890,6 +884,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(can_draw(faction, user))
 		data["canDraw"] = TRUE
 		data["canViewTacmap"] = TRUE
+	if(can_change_view(faction, user))
+		data["canChangeMapview"] = TRUE
 
 	return data
 
@@ -939,6 +935,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(faction == FACTION_NEUTRAL && is_observer)
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 	var/drawing_allowed = !is_observer && can_draw(faction, user)
+	var/can_change_map_view = !is_observer && can_change_view(faction, user)
 
 	switch (action)
 		if ("menuSelect")
@@ -1177,3 +1174,4 @@ SUBSYSTEM_DEF(minimaps)
 #undef CANVAS_COOLDOWN_TIME
 #undef FLATTEN_MAP_COOLDOWN_TIME
 #undef can_draw
+#undef can_change_view

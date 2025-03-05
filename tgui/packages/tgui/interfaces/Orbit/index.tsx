@@ -131,7 +131,9 @@ const xenoSplitter = (members: Array<Observable>) => {
   const primeHive: Array<Observable> = [];
   const corruptedHive: Array<Observable> = [];
   const forsakenHive: Array<Observable> = [];
+  const mutatedHive: Array<Observable> = [];
   const otherHives: Array<Observable> = [];
+  const yautjaHive: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.area_name?.includes('Thunderdome')) {
@@ -142,6 +144,10 @@ const xenoSplitter = (members: Array<Observable>) => {
       corruptedHive.push(x);
     } else if (x.hivenumber?.includes('forsaken')) {
       forsakenHive.push(x);
+    } else if (x.hivenumber?.includes('mutated')) {
+      mutatedHive.push(x);
+    } else if (x.hivenumber?.includes('yautja')) {
+      yautjaHive.push(x);
     } else {
       otherHives.push(x);
     }
@@ -151,7 +157,9 @@ const xenoSplitter = (members: Array<Observable>) => {
     buildSquadObservable('Prime', 'xeno', primeHive),
     buildSquadObservable('Corrupted', 'green', corruptedHive),
     buildSquadObservable('Forsaken', 'grey', forsakenHive),
+    buildSquadObservable('Mutated', 'pink', mutatedHive),
     buildSquadObservable('Other', 'light-grey', otherHives),
+    buildSquadObservable('Yautja', 'green', yautjaHive),
   ];
   return squads;
 };
@@ -170,6 +178,7 @@ const marineSplitter = (members: Array<Observable>) => {
   const FORECONSquad: Array<Observable> = [];
   const SOFSquad: Array<Observable> = [];
   const other: Array<Observable> = [];
+  const provost: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.mutiny_status?.includes('Mutineer')) {
@@ -198,6 +207,8 @@ const marineSplitter = (members: Array<Observable>) => {
       FORECONSquad.push(x);
     } else if (x.job?.includes('SOF')) {
       SOFSquad.push(x);
+    } else if (x.job?.includes('Provost')) {
+      provost.push(x);
     } else {
       other.push(x);
     }
@@ -217,6 +228,7 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('FORECON', 'green', FORECONSquad),
     buildSquadObservable('SOF', 'red', SOFSquad),
     buildSquadObservable('Other', 'grey', other),
+    buildSquadObservable('Provost', 'red', provost),
   ];
   return squads;
 };
@@ -343,6 +355,35 @@ const uppSort = (a: Observable, b: Observable) => {
   return a_index > b_index ? -1 : 1;
 };
 
+const weyyuSplitter = (members: Array<Observable>) => {
+  const whiteout: Array<Observable> = [];
+  const pmc: Array<Observable> = [];
+  const goons: Array<Observable> = [];
+  const other: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.job?.includes('Whiteout')) {
+      whiteout.push(x);
+    } else if (x.job?.includes('Death Squad')) {
+      whiteout.push(x);
+    } else if (x.job?.includes('PMC')) {
+      pmc.push(x);
+    } else if (x.job?.includes('Corporate Security')) {
+      goons.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
+  const squads = [
+    buildSquadObservable('PMCs', 'white', pmc),
+    buildSquadObservable('Goons', 'orange', goons),
+    buildSquadObservable('Corporate', 'white', other),
+    buildSquadObservable('Whiteout', 'red', whiteout),
+  ];
+  return squads;
+};
+
 /**
  * The primary content display for points of interest.
  * Renders a scrollable section replete with subsections for each
@@ -418,7 +459,12 @@ const ObservableContent = () => {
         section={clf}
         title="Colonial Liberation Front"
       />
-      <ObservableSection color="white" section={wy} title="Weyland Yutani" />
+      <GroupedObservable
+        color="white"
+        section={wy}
+        title="Weyland Yutani"
+        splitter={weyyuSplitter}
+      />
       <ObservableSection
         color="red"
         section={twe}

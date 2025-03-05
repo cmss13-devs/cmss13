@@ -434,6 +434,9 @@
 	else if(istype(held_item, /obj/item/walker_gun))
 		var/remaining_slots = list()
 		for(var/hardpoint_slot in list(WALKER_HARDPOIN_LEFT, WALKER_HARDPOIN_RIGHT))
+			if (module_map[WALKER_HARDPOIN_LEFT]?.type == held_item.type || module_map[WALKER_HARDPOIN_RIGHT]?.type == held_item.type)
+				to_chat(user, "You cannot install two of the same type of gun")
+				return
 			if(module_map[hardpoint_slot])
 				continue
 			remaining_slots += hardpoint_slot

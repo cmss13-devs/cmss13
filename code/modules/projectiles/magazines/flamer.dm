@@ -281,8 +281,8 @@
 	max_rounds = 150
 
 /obj/item/ammo_magazine/flamer_tank/survivor
-	name = "alt tank"
-	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. Handle with care."
+	name = "improvised flamer tank"
+	desc = "A repurposed tank from heavy welding equipment, holds a mix similar to napalm."
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/flamers.dmi'
 	icon_state = "flamer_fuel"
 	gun_type = /obj/item/weapon/gun/flamer/survivor

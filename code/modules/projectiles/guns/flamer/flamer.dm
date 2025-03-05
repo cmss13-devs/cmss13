@@ -903,7 +903,7 @@
 
 /obj/item/weapon/gun/flamer/survivor
 	name = "\improper improvised flamethrower"
-	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
+	desc = "A custom made incinerator, made from repurposed welding and piping equipment."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/flamers.dmi'
 	icon_state = "flamer"
 	item_state = "flamer"
@@ -913,7 +913,6 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
 	)
-	mouse_pointer = 'icons/effects/mouse_pointer/flamer_mouse.dmi'
 
 	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
 	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'

@@ -1,0 +1,4 @@
+author: "TheKillfish"
+delete-after: True
+changes:
+  - rscadd: "Added the Light Replacer to tool storage and to the autolathe. The Light Replacer can now also recycle broken bulbs, either directly when replacing or when inserted by hand."

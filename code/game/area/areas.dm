@@ -41,6 +41,7 @@
 	var/pressure = ONE_ATMOSPHERE
 	var/can_build_special = FALSE
 	var/is_resin_allowed = TRUE // can xenos weed, place resin holes or dig tunnels at said areas
+	var/allow_construction = TRUE // whether or not you can build things like barricades in this area
 	var/is_landing_zone = FALSE // primarily used to prevent mortars from hitting this location
 	var/resin_construction_allowed = TRUE // Allow construction of resin walls, and other special
 
@@ -464,3 +465,8 @@
 /// From roundstart, sets a timer to make an area oviable.
 /area/proc/handle_ovi_timer()
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
+
+/area/sky
+	name = "Sky"
+	icon_state = "lv-626"
+	flags_area = AREA_UNWEEDABLE

@@ -8,8 +8,6 @@
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 500
 	xeno_cooldown = 5 MINUTES
-	cooldown_message = "You are ready to grow an ovipositor again."
-	no_cooldown_msg = FALSE // Needed for onclick actions
 
 /datum/action/xeno_action/onclick/set_xeno_lead
 	name = "Choose/Follow Xenomorph Leaders"
@@ -33,8 +31,6 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
 	plasma_cost = 250
-	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
-	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
 /datum/action/xeno_action/onclick/queen_tacmap
@@ -65,7 +61,6 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 15 MINUTES
 	plasma_cost = 200
-	cooldown_message = "You feel your anger return. You are ready to gut again."
 
 /datum/action/xeno_action/activable/expand_weeds
 	name = "Expand Weeds (50)"

@@ -9,8 +9,6 @@
 	/// Cooldown of the ability (do not use the cooldown var)
 	/// Probably should only have the cooldown var, but that is for another rework
 	var/xeno_cooldown = null
-	var/cooldown_message = null
-	var/no_cooldown_msg = FALSE
 
 	var/cooldown_timer_id = TIMER_ID_NULL // holds our timer ID
 
@@ -210,7 +208,6 @@
 // use_ability. Anything that uses onclick should not require an argument to be handed to action_activate in order to function.
 /datum/action/xeno_action/onclick
 	action_type = XENO_ACTION_CLICK
-	no_cooldown_msg = TRUE
 
 /datum/action/xeno_action/onclick/action_activate()
 	. = ..()
@@ -354,11 +351,6 @@
 	for(var/X in owner.actions)
 		var/datum/action/act = X
 		act.update_button_icon()
-	if(!no_cooldown_msg)
-		if(cooldown_message)
-			to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
-		else
-			to_chat(owner, SPAN_XENODANGER("We feel our strength return! We can use [name] again!"))
 
 /datum/action/xeno_action/proc/start_charging_ability()
 	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)

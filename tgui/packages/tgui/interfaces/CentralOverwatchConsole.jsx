@@ -651,6 +651,45 @@ const ExecutivePanel = (props) => {
 
 const EmergencyPanel = (props) => {
   const { act, data } = useBackend();
+  const AlertLevel = data.alert_level;
+  const evacstatus = data.evac_status;
+  const worldTime = data.worldtime;
+
+  let emergencylockout;
+  if (AlertLevel >= 2) {
+    emergencylockout = null;
+  }
+  if (AlertLevel < 2) {
+    emergencylockout = 1;
+  }
+
+  const minimumTimeElapsed = worldTime > data.distresstimelock;
+
+  const canRequest = // requesting distress beacon
+    data.time_request < worldTime && AlertLevel === 2 && minimumTimeElapsed;
+
+  let distress_reason;
+  let destruct_reason;
+  if (AlertLevel === 3) {
+    distress_reason = 'Self-destruct in progress. Beacon disabled.';
+    destruct_reason = 'Self-destruct is already active!';
+  } else if (AlertLevel !== 2) {
+    distress_reason = 'Ship is not under an active emergency.';
+    destruct_reason = 'Ship is not under an active emergency.';
+  } else if (data.time_request < worldTime) {
+    distress_reason =
+      'Beacon is currently recharging. Time remaining: ' +
+      Math.ceil((data.time_message - worldTime) / 10) +
+      'secs.';
+  } else if (data.time_destruct < worldTime) {
+    destruct_reason =
+      'A request has already been sent to HC. Please wait: ' +
+      Math.ceil((data.time_destruct - worldTime) / 10) +
+      'secs to send another.';
+  } else if (!minimumTimeElapsed) {
+    distress_reason = "It's too early to launch a distress beacon.";
+    destruct_reason = "It's too early to initiate the self-destruct.";
+  }
 
   return (
     <Section fill fontSize="14px">
@@ -671,23 +710,25 @@ const EmergencyPanel = (props) => {
             inline
             textAlign="center"
             width="100%"
-            icon="exclamation-triangle"
+            icon={emergencylockout ? 'exclamation-triangle' : null}
             mt="1px"
             p="7px"
-            color="red"
-            onClick={() => act('red_alert')}
+            color={emergencylockout ? 'red' : 'transperant'}
+            onClick={emergencylockout ? () => act('red_alert') : null}
           >
-            ELEVATE TO RED ALERT
+            {emergencylockout
+              ? 'ELEVATE TO RED ALERT'
+              : '- ALREADY AT RED ALERT -'}
           </ButtonConfirm>
           <ButtonConfirm
             inline
             textAlign="center"
             width="100%"
-            icon="ban"
+            icon={emergencylockout ? 'ban' : 'exclamation-triangle'}
             mt="5px"
             p="4px"
-            color="transperant"
-            onClick={() => act('set_secondary')}
+            color={emergencylockout ? 'transperant' : 'red'}
+            onClick={emergencylockout ? null : () => act('general_quarters')}
           >
             CALL GENERAL QUARTERS
           </ButtonConfirm>
@@ -700,34 +741,59 @@ const EmergencyPanel = (props) => {
                 inline
                 width="100%"
                 icon="door-open"
-                color="transperant"
+                color={emergencylockout ? 'transperant' : 'red'}
+                onClick={
+                  emergencylockout
+                    ? null
+                    : () =>
+                        act(
+                          evacstatus ? 'evacuation_cancel' : 'evacuation_start',
+                        )
+                }
               >
-                INITIATE EVACUATION
+                {evacstatus ? 'CANCEL EVACUATION' : 'INITIATE EVACUATION'}
               </ButtonConfirm>
             </Stack.Item>
             <Stack.Item>
-              <ButtonConfirm
+              <Button
                 inline
                 width="100%"
                 icon="ban"
                 mt="1px"
                 color="transperant"
-                onClick={() => act('set_secondary')}
               >
                 SELF-DESTRUCT DISABLED
-              </ButtonConfirm>
+              </Button>
             </Stack.Item>
             <Stack.Item>
-              <ButtonConfirm
-                inline
-                width="100%"
-                icon="ban"
-                mt="1px"
-                color="transperant"
-                onClick={() => act('set_secondary')}
-              >
-                DISTRESS BEACON DISABLED
-              </ButtonConfirm>
+              {!canRequest && (
+                <Button
+                  tooltip={distress_reason}
+                  fluid
+                  icon="ban"
+                  color="transperant"
+                  inline
+                  width="100%"
+                  mt="1px"
+                >
+                  DISTRESS BEACON DISABLED
+                </Button>
+              )}
+              {canRequest && (
+                <Button.Confirm
+                  color="orange"
+                  icon="phone-volume"
+                  confirmColor="bad"
+                  confirmContent="Confirm?"
+                  confirmIcon="question"
+                  inline
+                  width="100%"
+                  mt="1px"
+                  onClick={() => act('distress')}
+                >
+                  SEND DISTRESS BEACON
+                </Button.Confirm>
+              )}
             </Stack.Item>
           </Box>
         </Stack.Item>
@@ -1027,7 +1093,7 @@ const SquadMonitor = (props) => {
                   <Table.Cell />
                 </Table.Row>
               )}
-              {marines &&
+              {(marines &&
                 marines
                   .sort(sortByRole)
                   .filter((marine) => {
@@ -1110,7 +1176,7 @@ const SquadMonitor = (props) => {
                         </Table.Cell>
                       </Table.Row>
                     );
-                  })}
+                  })) || <Box>hi!</Box>}
             </Table>
           </Section>
         </Stack.Item>

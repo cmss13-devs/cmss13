@@ -56,10 +56,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = FALSE
 
+	/// requesting a distress beacon
+	COOLDOWN_DECLARE(cooldown_request)
 	/// messaging HC (admins)
 	COOLDOWN_DECLARE(cooldown_central)
 	/// making a ship announcement
 	COOLDOWN_DECLARE(cooldown_message)
+	/// 10 minute cooldown between calls for 'general quarters'
+	COOLDOWN_DECLARE(general_quarters)
 
 /obj/structure/machinery/computer/overwatch/groundside_operations
 	name = "Groundside Operations Console"
@@ -154,6 +158,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	data["mapRef"] = tacmap.map_holder.map_ref
 
 	return data
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_static_data(mob/user)
+	var/list/data = list()
+	data["distresstimelock"] = DISTRESS_TIME_LOCK
+	data["mapRef"] = tacmap.map_holder.map_ref
+
+	return data
+
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
 
@@ -485,6 +497,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(SSticker.mode.active_lz)
 		data["primary_lz"] = SSticker.mode.active_lz
 	data["alert_level"] = GLOB.security_level
+	data["evac_status"] = SShijack.evac_status
+	data["worldtime"] = world.time
 
 	return data
 
@@ -856,6 +870,88 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			echo_squad.engage_squad(TRUE)
 			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
 
+		if("distress")
+			if(world.time < DISTRESS_TIME_LOCK)
+				to_chat(user, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
+				return FALSE
+
+			if(!SSticker.mode)
+				return FALSE //Not a game mode?
+
+			if(SSticker.mode.force_end_at == 0)
+				to_chat(user, SPAN_WARNING("ARES has denied your request for operational security reasons."))
+				return FALSE
+
+			if(!COOLDOWN_FINISHED(src, cooldown_request))
+				to_chat(user, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
+				return FALSE
+
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
+				to_chat(user, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
+				return FALSE
+
+			for(var/client/admin_client as anything in GLOB.admins)
+				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
+					admin_client << 'sound/effects/sos-morse-code.ogg'
+			SSticker.mode.request_ert(user)
+			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
+
+			COOLDOWN_START(src, cooldown_request, COOLDOWN_COMM_REQUEST)
+
+		if("evacuation_start")
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+				return FALSE
+
+			if(SShijack.evac_admin_denied)
+				to_chat(user, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+				return FALSE
+
+			if(!SShijack.initiate_evacuation())
+				to_chat(user, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+				return FALSE
+
+			log_game("[key_name(user)] has called for an emergency evacuation.")
+			message_admins("[key_name_admin(user)] has called for an emergency evacuation.")
+			log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", user)
+
+		if("evacuation_cancel")
+			var/mob/living/carbon/human/human_user = user
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
+			if(!SShijack.cancel_evacuation())
+				to_chat(user, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
+				return FALSE
+
+			log_game("[key_name(user)] has canceled the emergency evacuation.")
+			message_admins("[key_name_admin(user)] has canceled the emergency evacuation.")
+			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
+
+		if("general_quarters")
+			if(!COOLDOWN_FINISHED(src, general_quarters))
+				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+			log_game("[key_name(user)] has called for general quarters via the groundside operations console.")
+			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
+			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
+			COOLDOWN_START(src, general_quarters, 10 MINUTES)
+			. = TRUE
+
+
 /obj/structure/machinery/computer/overwatch/proc/reactivate_announcement(mob/user)
 	is_announcement_active = TRUE
 	updateUsrDialog()
@@ -1144,7 +1240,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!user)
 		return
 
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ob))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ob) || ob_cannon_safety)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("A remote lock has been placed on the orbital cannon.")]")
 		return
 

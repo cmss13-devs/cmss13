@@ -33,7 +33,7 @@
 /obj/item/weapon/gun/flamer/survivor{
 	pixel_y = 6
 	},
-/obj/item/weapon/gun/flamer/suvivor,
+/obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "J" = (

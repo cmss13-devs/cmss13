@@ -207,7 +207,7 @@
 
 	if(istype(crossing_turf, /turf/closed/wall))
 		var/turf/closed/wall/crossing_wall = crossing_turf
-		if(crossing_wall.hull)
+		if(crossing_wall.turf_flags & TURF_HULL)
 			if(!move_warn)
 				move_warn = TRUE
 				addtimer(CALLBACK(src, PROC_REF(reset_warn)), 3 SECONDS)

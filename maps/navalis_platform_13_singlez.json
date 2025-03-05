@@ -14,7 +14,11 @@
         "/datum/equipment_preset/survivor/navalis/first_officer",
         "/datum/equipment_preset/survivor/navalis/operations_engineer",
         "/datum/equipment_preset/survivor/navalis/maint_tech",
-        "/datum/equipment_preset/survivor/navalis/clf_wet_ops"
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/operative",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/tech",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/medic",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/spec",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/leader"
     ],
     "defcon_triggers": [
         3750,

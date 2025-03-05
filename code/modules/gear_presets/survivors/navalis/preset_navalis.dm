@@ -213,7 +213,7 @@
 // Hostile Survivors //
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops
-	name = "Survivor - Navalis - CLF Special Force: Operative"
+	name = "Survivor - CLF Special Forces (Template Base)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/civilian/survivor/clf
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -224,7 +224,11 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	survivor_variant = HOSTILE_SURVIVOR
 
-/datum/equipment_preset/survivor/navalis/clf_wet_ops/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/navalis/clf_wet_ops/operative
+	name = "Survivor - Navalis - CLF Special Force: Operative"
+	role_comm_title = "OPER."
+
+/datum/equipment_preset/survivor/navalis/clf_wet_ops/operative/load_gear(mob/living/carbon/human/new_human)
 	var/random_helm = rand(1,2)
 	var/random_armor = rand(1,2)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf/operative(new_human), WEAR_BODY)
@@ -271,15 +275,7 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/tech
 	name = "Survivor - Navalis - CLF Special Force: Technician"
-	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/clf/combat_engineer
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	minimap_background = "background_clf"
-	minimap_icon = "clf_mil"
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
+	role_comm_title = "TECH."
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/tech/load_gear(mob/living/carbon/human/new_human)
 	var/random_helm = rand(1,2)
@@ -323,15 +319,7 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/medic
 	name = "Survivor - Navalis - CLF Special Force: Medic"
-	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/clf/combat_medic
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	minimap_background = "background_clf"
-	minimap_icon = "clf_mil"
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
+	role_comm_title = "MED."
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/medic/load_gear(mob/living/carbon/human/new_human)
 	var/random_helm = rand(1,2)
@@ -352,9 +340,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife(new_human), WEAR_FEET)
 
 	switch(random_helm)
@@ -368,29 +355,21 @@
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr(new_human), WEAR_IN_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/tactical(new_human), WEAR_IN_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/tactical(new_human), WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_JACKET)
 
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf/jacket(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf(new_human), WEAR_IN_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/tactical(new_human), WEAR_IN_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/tactical(new_human), WEAR_IN_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/tactical(new_human), WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_JACKET)
 
 	..()
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/spec
 	name = "Survivor - Navalis - CLF Special Force: Heavy Weapons"
-	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/clf/leader
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	minimap_background = "background_clf"
-	minimap_icon = "clf_mil"
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
+	role_comm_title = "SPEC."
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/spec/load_gear(mob/living/carbon/human/new_human)
 
@@ -417,15 +396,7 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/leader
 	name = "Survivor - Navalis - CLF Special Force: Unit Leader"
-	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/civilian/survivor/clf
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
-	minimap_background = "background_clf"
-	minimap_icon = "clf_mil"
-	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
+	role_comm_title = "LEAD."
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf/leader, WEAR_BODY)

@@ -641,6 +641,7 @@
 #include "code\datums\moba\map\turret.dm"
 #include "code\datums\moba\ui\moba_ghost.dm"
 #include "code\datums\moba\ui\moba_itemstore.dm"
+#include "code\datums\moba\ui\moba_scoreboard.dm"
 #include "code\datums\origin\civilian.dm"
 #include "code\datums\origin\origin.dm"
 #include "code\datums\origin\upp.dm"

@@ -88,6 +88,7 @@
 	RegisterSignal(parent_xeno, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
 	RegisterSignal(parent_xeno, COMSIG_MOB_KILLED_MOB, PROC_REF(on_kill))
 	RegisterSignal(parent_xeno, COMSIG_XENO_ADD_ABILITIES, PROC_REF(on_add_abilities))
+	RegisterSignal(parent_xeno, COMSIG_XENO_TRY_HIVEMIND_TALK, PROC_REF(on_hivemind_talk))
 
 /datum/component/moba_player/proc/handle_level_up()
 	player_datum.level_up()
@@ -258,9 +259,36 @@
 
 	return COMPONENT_CANCEL_ADDING_ABILITIES
 
+/// We use our own bespoke hivemind speech so that we only talk to hive members in our map ID
+/datum/component/moba_player/proc/on_hivemind_talk(datum/source, message)
+	SIGNAL_HANDLER
+
+	if(!message)
+		return
+
+	log_hivemind("[key_name(parent_xeno)] : [message]")
+
+	for(var/mob/listener in GLOB.player_list)
+		if(!QDELETED(listener) && (isxeno(listener) || listener.stat == DEAD) && !istype(listener, /mob/new_player))
+			if(istype(listener, /mob/dead/observer))
+				if(listener.client.prefs && listener.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+					var/track = "(<a href='byond://?src=\ref[listener];track=\ref[parent_xeno]'>F</a>)"
+					listener.show_message(SPAN_XENO("Hivemind, [parent_xeno.name][track] hisses, <span class='normal'>'[message]'</span>"), SHOW_MESSAGE_AUDIBLE)
+
+			else if((hive.hivenumber == xeno_hivenumber(listener)) && HAS_TRAIT(listener, TRAIT_MOBA_MAP_PARTICIPANT(map_id)))
+				var/overwatch_insert = " (<a href='byond://?src=\ref[listener];[XENO_OVERWATCH_TARGET_HREF]=\ref[parent_xeno];[XENO_OVERWATCH_SRC_HREF]=\ref[listener]'>watch</a>)"
+				listener.show_message(SPAN_XENO("Hivemind, [parent_xeno.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>"), SHOW_MESSAGE_AUDIBLE)
+
+	return COMPONENT_OVERRIDE_HIVEMIND_TALK
+
 #ifdef MOBA_TESTING
 /mob/living/carbon/xenomorph/proc/gxp()
 	var/datum/component/moba_player/MP = GetComponent(/datum/component/moba_player)
 	if(MP)
 		MP.grant_xp(null, 1000)
+
+/mob/living/carbon/xenomorph/proc/ggxp()
+	var/datum/component/moba_player/MP = GetComponent(/datum/component/moba_player)
+	if(MP)
+		MP.grant_xp(null, 8580) // enough for level 12
 #endif

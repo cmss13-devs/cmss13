@@ -16,7 +16,7 @@
   // Commenting out color maps will adjust all colors based on the lightness
   // settings above, but will add extra 10KB to the theme.
   // $fg-map-keys: (),
-  // $bg-map-keys: (),
+   // $bg-map-keys: (),
 );
 @use '~tgui/styles/base.scss' with (
   $color-fg: hsl(0, 0%, 0%),
@@ -34,7 +34,10 @@
   // Components
   @include meta.load-css(
     '~tgui/styles/components/Tabs.scss',
-    $with: ('text-color': hsla(0, 0%, 0%, 0.5), 'color-default': hsla(0, 0%, 0%, 1))
+    $with: (
+      'text-color': hsla(0, 0%, 0%, 0.5),
+      'color-default': hsla(0, 0%, 0%, 1)
+    )
   );
   @include meta.load-css('~tgui/styles/components/Section.scss');
   @include meta.load-css(

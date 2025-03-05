@@ -25,7 +25,7 @@ $weyland: hsl(36, 52%, 45%);
 
   // Components
   @include meta.load-css(
-    '~tgui-core/styles/components/Button',
+    '~tgui/styles/components/Button',
     $with: (
       'color-default': $weyland,
       'color-selected': hsl(36, 58%, 75%),
@@ -35,13 +35,13 @@ $weyland: hsl(36, 52%, 45%);
     )
   );
   @include meta.load-css(
-    '~tgui-core/styles/components/ProgressBar',
+    '~tgui/styles/components/ProgressBar',
     $with: (
       'background-color': hsl(226, 15%, 17%),
       'color-default-fill': $weyland
     )
   );
-  @include meta.load-css('~tgui-core/styles/components/Section');
+  @include meta.load-css('~tgui/styles/components/Section');
 
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
@@ -53,7 +53,7 @@ $weyland: hsl(36, 52%, 45%);
     )
   );
   @include meta.load-css(
-    '~tgui-core/styles/components/Divider',
+    '~tgui/styles/components/Divider',
     $with: ('color': hsla(210, 7%, 12%, 0.932), 'thickness': base.em(4px))
   );
 

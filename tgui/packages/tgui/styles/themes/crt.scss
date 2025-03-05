@@ -15,15 +15,15 @@ $scrollbar-color-multiplier: 0.5 !default;
 
 %theme-crt {
   @include meta.load-css(
-    '~tgui-core/styles/components/Divider',
+    '~tgui/styles/components/Divider',
     $with: ('color': base.$color-fg)
   );
-  @include meta.load-css('~tgui-core/styles/components/Stack');
+  @include meta.load-css('~tgui/styles/components/Stack');
 
   @include meta.load-css(
-    '~tgui-core/styles/components/Slider',
+    '~tgui/styles/components/Slider',
     $with: (
-      'cursor-color': darken(base.$color-fg, 0.2),
+      'cursor-color': color.adjust(base.$color-fg, $lightness: -0.2%),
       'popup-background-color': base.$color-bg,
       'popup-text-color': base.$color-fg
     )
@@ -41,7 +41,7 @@ $scrollbar-color-multiplier: 0.5 !default;
   );
 
   @include meta.load-css(
-    '~tgui-core/styles/components/NumberInput',
+    '~tgui/styles/components/NumberInput',
     $with: (
       'text-color': base.$color-fg,
       'background-color': base.$color-bg,
@@ -50,7 +50,7 @@ $scrollbar-color-multiplier: 0.5 !default;
   );
 
   @include meta.load-css(
-    '~tgui-core/styles/components/Knob',
+    '~tgui/styles/components/Knob',
     $with: (
       'ring-color': base.$color-fg,
       'knob-color': base.$color-bg,
@@ -60,12 +60,12 @@ $scrollbar-color-multiplier: 0.5 !default;
   );
 
   @include meta.load-css(
-    '~tgui-core/styles/components/ProgressBar',
+    '~tgui/styles/components/ProgressBar',
     $with: ('color-default-fill': base.$color-fg)
   );
 
   @include meta.load-css(
-    '~tgui-core/styles/components/BlockQuote',
+    '~tgui/styles/components/BlockQuote',
     $with: ('color-default': base.$color-fg)
   );
 
@@ -79,19 +79,19 @@ $scrollbar-color-multiplier: 0.5 !default;
     $with: ('scrollbar-color-multiplier': $scrollbar-color-multiplier)
   );
   @include meta.load-css(
-    '~tgui-core/styles/components/Section',
+    '~tgui/styles/components/Section',
     $with: ('title-text-color': base.$color-fg)
   );
   @include meta.load-css(
-    '~tgui-core/styles/components/Button',
+    '~tgui/styles/components/Button',
     $with: (
       'color-default': base.$color-fg,
-      'color-disabled': darken(base.$color-fg, 30)
+      'color-disabled': color.adjust(base.$color-fg, $lightness: -30%)
     )
   );
 
   @include meta.load-css(
-    '~tgui-core/styles/components/Tabs',
+    '~tgui/styles/components/Tabs',
     $with: (
       'tab-color': base.$color-bg,
       'tab-color-selected': base.$color-fg,
@@ -102,7 +102,7 @@ $scrollbar-color-multiplier: 0.5 !default;
   );
 
   @include meta.load-css(
-    '~tgui-core/styles/components/Modal',
+    '~tgui/styles/components/Modal',
     $with: ('background-color': base.$color-bg)
   );
 

@@ -87,10 +87,8 @@
         left: 0;
         bottom: 0;
         right: 0;
-        background: linear-gradient(
-            hsla(0, 6%, 7%, 0) 50%,
-            hsla(0, 0%, 0%, 0.25) 50%
-          ),
+        background:
+          linear-gradient(hsla(0, 6%, 7%, 0) 50%, hsla(0, 0%, 0%, 0.25) 50%),
           linear-gradient(
             90deg,
             hsla(0, 100%, 50%, 0.06),

@@ -115,7 +115,7 @@
 	trait = /datum/character_trait/skills/cosmartgun
 
 /obj/item/pamphlet/skill/cosmartgun/can_use(mob/living/carbon/human/user)
-	if(user.job != JOB_CO)
+	if(user.job != JOB_CO && user.job != JOB_WO_CO)
 		to_chat(user, SPAN_WARNING("Only the Commanding Officer can use this."))
 		return
 	return ..()

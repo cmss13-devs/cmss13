@@ -1,4 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - balance: "Ammo box explosions are capped at 3k bullets."

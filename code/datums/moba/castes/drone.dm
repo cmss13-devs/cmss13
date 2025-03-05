@@ -2,6 +2,7 @@
 	equivalent_caste_path = /datum/caste_datum/drone
 	equivalent_xeno_path = /mob/living/carbon/xenomorph/drone
 	name = XENO_CASTE_DRONE
+	desc = "Supportive caste focused on healing allies while providing some offensive power."
 	category = MOBA_ARCHETYPE_CONTROLLER
 	icon_state = "drone"
 	ideal_roles = list(MOBA_LANE_SUPPORT)

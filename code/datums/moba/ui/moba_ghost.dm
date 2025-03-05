@@ -19,6 +19,11 @@
 		ui = new(user, src, "MobaJoinPanel")
 		ui.open()
 
+/datum/moba_join_panel/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/moba),
+	)
+
 /datum/moba_join_panel/ui_state(mob/user)
 	if(HAS_TRAIT(user, TRAIT_MOBA_PARTICIPANT))
 		return GLOB.never_state

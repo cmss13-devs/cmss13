@@ -9696,6 +9696,10 @@
 /obj/effect/sentry_landmark/lz_1/top_left,
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/outdoors/landing_zone_1)
+"aCn" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/hybrisa/street/asphalt,
+/area/navalis/indoors/logistic/lower_deck/fore)
 "aCo" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/largecrate/empty/secure,
@@ -20055,12 +20059,36 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/navalis/indoors/residential/cafeteria)
+"bgT" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/hybrisa/street/cement3,
+/area/navalis/indoors/med_sci/lower_level/port)
+"bgU" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/prison,
+/area/navalis/indoors/command/lower_deck/sub_pen)
+"bgV" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/almayer/plate,
+/area/navalis/outdoors/exterior/med_ext/upper)
 "bgW" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/navalis/indoors/residential/starboard)
+"bgX" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/plating,
+/area/navalis/indoors/charon/upper_deck/rear)
+"bgY" = (
+/turf/closed/wall/prison,
+/area/navalis/indoors/charon/upper_deck/rear)
+"bgZ" = (
+/obj/structure/window/framed/prison,
+/turf/open/floor/plating,
+/area/navalis/indoors/charon/upper_deck/rear)
 "bhs" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -28846,6 +28874,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/plating_catwalk,
 /area/navalis/outdoors/exterior/com_ext/upper)
 "fZl" = (
@@ -110323,7 +110352,7 @@ rfc
 fMb
 fMb
 fMb
-gnF
+bgT
 fMb
 fMb
 fMb
@@ -117189,7 +117218,7 @@ rPJ
 vxz
 fXm
 fXm
-fXm
+bgU
 mYB
 tya
 vxz
@@ -117221,7 +117250,7 @@ rea
 kzg
 nSh
 aZC
-psO
+aCn
 oVo
 xce
 sYz
@@ -166252,7 +166281,7 @@ arT
 ars
 asq
 asq
-aol
+aoo
 apx
 apx
 apx
@@ -166416,8 +166445,8 @@ ari
 ari
 asq
 asq
-aol
-aol
+aoo
+aoo
 aor
 lQa
 aor
@@ -166581,8 +166610,8 @@ arv
 art
 ari
 cpS
-aol
-aol
+aoo
+aoo
 lQa
 aor
 lQa
@@ -166746,8 +166775,8 @@ ari
 ari
 cya
 cpS
-aol
-aol
+aoo
+aoo
 aor
 lQa
 aor
@@ -166911,8 +166940,8 @@ ari
 wxU
 agw
 tww
-aol
-aol
+aoo
+aoo
 afP
 jkm
 jkm
@@ -167076,8 +167105,8 @@ gnf
 rio
 tww
 tww
-aol
-aol
+aoo
+aoo
 aor
 aor
 aor
@@ -167241,8 +167270,8 @@ cya
 tww
 tww
 aql
-aol
-aol
+aoo
+aoo
 jkm
 jkm
 aeI
@@ -167406,8 +167435,8 @@ tww
 tww
 tww
 tww
-aol
-aol
+aoo
+aoo
 aDp
 aeJ
 aXb
@@ -167571,8 +167600,8 @@ rio
 tww
 tww
 tww
-aol
-aol
+aoo
+aoo
 aVP
 aVO
 aDg
@@ -192329,7 +192358,7 @@ rMv
 izg
 miy
 qoC
-qoC
+bgV
 qoC
 xog
 kBt
@@ -201475,17 +201504,17 @@ tAt
 tAt
 tAt
 tAt
-aZe
+bgY
 bcF
 bcu
 bbE
-aZe
+bgY
 tAt
-aZe
+bgY
 bbY
 bbN
 bbE
-aZe
+bgY
 tAt
 tAt
 tAt
@@ -201639,17 +201668,17 @@ tAt
 tAt
 tAt
 tAt
-aZg
+bgZ
 bca
 bbQ
 bcm
-aZg
+bgZ
 tAt
-aZg
+bgZ
 bbZ
 bbO
 bbF
-aZg
+bgZ
 tAt
 tAt
 tAt
@@ -201803,17 +201832,17 @@ tAt
 tAt
 tAt
 tAt
-aZg
+bgZ
 bca
 bcv
 bbF
-aZg
+bgZ
 tAt
-aZg
+bgZ
 bbZ
 bbP
 bbG
-aZg
+bgZ
 tAt
 tAt
 tAt
@@ -201967,17 +201996,17 @@ tAt
 tAt
 tAt
 tAt
-aZg
+bgZ
 bca
 bbO
 bbG
-aZg
+bgZ
 tAt
-aZg
+bgZ
 bbZ
 bbO
 bbF
-aZg
+bgZ
 tAt
 tAt
 tAt
@@ -202131,17 +202160,17 @@ kVD
 kVD
 kVD
 kVD
-aZe
+bgY
 bca
 bbQ
 bbF
-aZe
+bgY
 kVD
-aZe
+bgY
 bca
 bbQ
 bbG
-aZe
+bgY
 kVD
 tAt
 kVD
@@ -202295,17 +202324,17 @@ tAt
 tAt
 tAt
 kVD
-aZe
+bgY
 bbZ
 bcv
 bbF
-aZe
+bgY
 kVD
-aZe
+bgY
 bca
 bbR
 bbG
-aZe
+bgY
 kVD
 tAt
 tAt
@@ -202459,17 +202488,17 @@ tAt
 tAt
 tAt
 kVD
-aZg
+bgZ
 bbZ
 bbQ
 bbG
-aZg
+bgZ
 kVD
-aZg
+bgZ
 bca
 bbQ
 bbG
-aZg
+bgZ
 kVD
 tAt
 tAt
@@ -202623,17 +202652,17 @@ tAt
 tAt
 tAt
 kVD
-aZg
+bgZ
 bbZ
 bbQ
 bbG
-aZg
+bgZ
 tAt
-aZg
+bgZ
 bbZ
 bbQ
 bbG
-aZg
+bgZ
 tAt
 tAt
 tAt
@@ -202787,17 +202816,17 @@ tAt
 tAt
 tAt
 kVD
-aZg
+bgZ
 bbZ
 bcw
 bbF
-aZg
+bgZ
 tAt
-aZg
+bgZ
 bbZ
 bbP
 bbF
-aZg
+bgZ
 tAt
 tAt
 kVD
@@ -202951,17 +202980,17 @@ tAt
 kVD
 kVD
 tAt
-aZe
+bgY
 bcb
 bbS
 bbH
-aZe
+bgY
 tAt
-aZe
+bgY
 bcb
 bbS
 bbH
-aZe
+bgY
 tAt
 tAt
 tAt
@@ -204288,7 +204317,7 @@ aZn
 baf
 aZM
 aZM
-aZr
+bgX
 aZx
 aZx
 asq

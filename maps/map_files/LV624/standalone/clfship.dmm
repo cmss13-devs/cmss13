@@ -1270,7 +1270,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "OL" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "OS" = (

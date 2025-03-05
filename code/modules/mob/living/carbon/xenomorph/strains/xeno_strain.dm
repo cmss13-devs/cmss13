@@ -85,7 +85,7 @@
 	if(!can_take_strain())
 		return
 	// Show the user the strain's description, and double check that they want it.
-	if(tgui_alert(usr, "[initial(chosen_strain.description)]", "Choose Strain", list("Confirm Mutation", "Cancel")) != "Confirm Mutation")
+	if(tgui_alert(usr, "[initial(chosen_strain.description)]", "Choose Strain", list("Mutate", "Cancel")) != "Mutate")
 		return
 	// One more time after they confirm.
 	if(!can_take_strain())
@@ -124,6 +124,11 @@
 		return
 
 	new_xeno.xeno_jitter(1.5 SECONDS)
+	if(evolution_stored == evolution_threshold)
+		if(new_xeno.caste_type == XENO_CASTE_FACEHUGGER)
+			return
+		give_action(new_xeno, /datum/action/xeno_action/onclick/evolve)
+
 	// If it applied successfully, add it to the logs.
 	log_strain("[new_xeno.name] reset their strain.")
 	COOLDOWN_START(new_xeno, next_strain_reset, 40 MINUTES)
@@ -139,6 +144,10 @@
 
 	if(!strain && reset)
 		to_chat(src, SPAN_WARNING("You must first pick a strain before resetting it."))
+		return FALSE
+
+	if(is_zoomed)
+		to_chat(src, SPAN_WARNING("We can't do that while looking far away."))
 		return FALSE
 
 	if(is_ventcrawling)

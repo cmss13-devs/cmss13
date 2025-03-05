@@ -90,8 +90,10 @@
 			stored_matter[material] -= sheets * 3750
 			var/obj/item/stack/sheet/sheet_stack
 			switch(material)
-				if("metal") sheet_stack = new /obj/item/stack/sheet/metal(loc)
-				if("glass") sheet_stack = new /obj/item/stack/sheet/glass(loc)
+				if("metal")
+					sheet_stack = new /obj/item/stack/sheet/metal(loc)
+				if("glass")
+					sheet_stack = new /obj/item/stack/sheet/glass(loc)
 			if(sheet_stack)
 				sheet_stack.amount = sheets
 				sheet_stack.update_icon()

@@ -1,0 +1,65 @@
+.Book {
+  &.Window__Content {
+    padding: 5px;
+
+    overflow: none;
+  }
+
+  .PaperDivider {
+    margin: 0.5em 0;
+  }
+
+  .TopDivider {
+    border-top: 1.5rem solid rgb(32, 37, 32);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-top-width: 1.5rem !important;
+  }
+
+  .BottomDivider {
+    border-bottom: 1.5rem solid rgb(32, 37, 32);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-width: 1.5rem !important;
+  }
+
+  .PageTurn {
+    background-color: transparent;
+    outline: 2px solid rgb(32, 37, 32);
+    background-color: #dfdfdf;
+    position: absolute;
+    cursor: pointer;
+
+    rotate: 45deg;
+    height: 80px;
+    width: 80px;
+
+    bottom: -40px;
+
+    &.Forward {
+      right: -40px;
+    }
+
+    &.Backward {
+      left: -40px;
+    }
+  }
+
+  .HeaderImage {
+    filter: grayscale(1);
+  }
+
+  .TextArea {
+    color: white;
+  }
+
+  pre {
+    background-color: rgb(32, 37, 32);
+    border-radius: 0.5rem;
+    color: white;
+    padding: 1em;
+  }
+
+  font-family: monospace;
+  font-size: 16px;
+}

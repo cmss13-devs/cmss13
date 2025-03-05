@@ -148,6 +148,13 @@
 	icon_state = "varadero3"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
+/area/varadero/exterior/islands
+	name = "New Varadero - Islands"
+	icon_state = "varadero1"
+	allow_construction = FALSE
+	always_unpowered = 1
+
+
 //interior areas
 
 
@@ -330,6 +337,10 @@
 /area/varadero/interior_protected/caves/digsite
 	name = "New Varadero - Dig Site"
 	icon_state = "deepcaves3"
+
+/area/varadero/interior_protected/caves/makeshift_tent
+	name = "New Varadero - Makeshift Tent"
+	icon_state = "offices4"
 
 /area/varadero/interior_protected/caves/swcaves
 	name = "New Varadero - Southwest Caves"

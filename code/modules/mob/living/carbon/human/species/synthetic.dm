@@ -10,6 +10,7 @@
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_IRON_TEETH)
 	rarity_value = 2
 	insulated = TRUE
+	darksight = 20
 
 	bloodsplatter_type = /obj/effect/bloodsplatter/synthsplatter
 

@@ -127,7 +127,8 @@
 
 /obj/structure/largecrate/random/Initialize()
 	. = ..()
-	if(!num_things) num_things = rand(0,3)
+	if(!num_things)
+		num_things = rand(0,3)
 
 	for(var/i in 1 to num_things)
 		var/obj/item/thing = pick(stuff)
@@ -542,10 +543,10 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/weapon/throwing_knife(src)
 	new /obj/item/weapon/throwing_knife(src)
-	new /obj/item/storage/box/uscm_mre(src)
+	new /obj/item/storage/box/mre(src)
 	new /obj/item/storage/box/donkpockets(src)
-	new /obj/item/storage/box/MRE(src)
-	new /obj/item/storage/box/MRE(src)
+	new /obj/item/storage/box/mre(src)
+	new /obj/item/storage/box/mre(src)
 	new /obj/item/storage/box/pizza(src)
 
 

@@ -77,7 +77,8 @@
 				visible_message(SPAN_XENOWARNING("[hugger] crawls back into \the [src]!"))
 			stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 			qdel(hugger)
-		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
+		else
+			to_chat(user, SPAN_XENOWARNING("This child is dead."))
 		return
 
 	//refill egg morpher from an egg

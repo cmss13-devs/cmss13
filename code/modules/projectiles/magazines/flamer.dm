@@ -287,3 +287,6 @@
 	icon_state = "flamer_fuel"
 	gun_type = /obj/item/weapon/gun/flamer/survivor
 	stripe_icon = FALSE
+
+/obj/item/ammo_magazine/flamer_tank/survivor/empty
+	flamer_chem = null

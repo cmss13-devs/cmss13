@@ -922,8 +922,6 @@
 	ignite_sound = 'sound/weapons/surv_flamer_ignite.ogg'
 	extinguish_sound = 'sound/weapons/surv_flamer_extinguish.ogg'
 
-	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
-	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
 	fire_sound = ""
 
 	current_mag = /obj/item/ammo_magazine/flamer_tank/survivor

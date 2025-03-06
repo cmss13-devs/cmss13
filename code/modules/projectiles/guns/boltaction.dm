@@ -96,7 +96,7 @@
 	durability_loss = 0.01 //why make bolties more useless
 
 /obj/item/weapon/gun/boltaction/unique_action(mob/M)
-	jam_unique_action(user)
+	jam_unique_action(M)
 	if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
 		to_chat(M, SPAN_DANGER("You can't cycle the bolt again right now."))
 		return

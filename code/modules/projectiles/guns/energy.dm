@@ -112,7 +112,7 @@
 	else
 		. += SPAN_NOTICE("It has no power cell inside.")
 
-/obj/item/weapon/gun/energy/taser/unique_action(mob/user)
+/obj/item/weapon/gun/energy/unique_action(mob/user)
 	jam_unique_action(user)
 
 /obj/item/weapon/gun/energy/rxfm5_eva

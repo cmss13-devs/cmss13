@@ -11,8 +11,8 @@ import { ChatPageSettings } from '../chat';
 import { changeSettingsTab } from './actions';
 import { SETTINGS_TABS } from './constants';
 import { selectActiveTab } from './selectors';
-import { SettingsGeneral } from './SettingsGeneral';
-import { TextHighlightSettings } from './TextHighlight';
+import { SettingsGeneral } from './SettingTabs/SettingsGeneral';
+import { TextHighlightSettings } from './SettingTabs/TextHighlight';
 
 export const SettingsPanel = (props) => {
   const activeTab = useSelector(selectActiveTab);

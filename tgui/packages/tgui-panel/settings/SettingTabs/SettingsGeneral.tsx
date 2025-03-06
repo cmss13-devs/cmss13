@@ -13,12 +13,12 @@ import {
   Stack,
 } from 'tgui/components';
 
-import { clearChat, saveChatToDisk } from '../chat/actions';
-import { THEMES } from '../themes';
-import { exportSettings, updateSettings } from './actions';
-import { FONTS } from './constants';
-import { selectSettings } from './selectors';
-import { importChatSettings } from './settingsImExport';
+import { clearChat, saveChatToDisk } from '../../chat/actions';
+import { THEMES } from '../../themes';
+import { exportSettings, updateSettings } from '../actions';
+import { FONTS } from '../constants';
+import { selectSettings } from '../selectors';
+import { importChatSettings } from '../settingsImExport';
 
 export function SettingsGeneral(props) {
   const { theme, fontFamily, fontSize, lineHeight } =

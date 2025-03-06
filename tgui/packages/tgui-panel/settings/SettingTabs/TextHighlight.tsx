@@ -10,16 +10,16 @@ import {
   TextArea,
 } from 'tgui/components';
 
-import { rebuildChat } from '../chat/actions';
+import { rebuildChat } from '../../chat/actions';
 import {
   addHighlightSetting,
   removeHighlightSetting,
   updateHighlightSetting,
-} from './actions';
+} from '../actions';
 import {
   selectHighlightSettingById,
   selectHighlightSettings,
-} from './selectors';
+} from '../selectors';
 
 export function TextHighlightSettings(props) {
   const highlightSettings = useSelector(selectHighlightSettings);

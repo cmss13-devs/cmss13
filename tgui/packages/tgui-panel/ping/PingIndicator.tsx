@@ -7,7 +7,7 @@
 import { Color } from 'common/color';
 import { toFixed } from 'common/math';
 import { useBackend, useSelector } from 'tgui/backend';
-import { Box, Button } from 'tgui/components';
+import { Box, Tooltip } from 'tgui/components';
 
 import { selectPing } from './selectors';
 
@@ -20,20 +20,22 @@ export const PingIndicator = (props) => {
     new Color(60, 220, 40),
   ]).toString();
   const roundtrip = ping.roundtrip ? toFixed(ping.roundtrip) : '--';
+
+  function handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    e.preventDefault();
+    act('ping_relays');
+  }
   return (
-    <Button
-      lineHeight="15px"
-      width="50px"
-      className="Ping"
-      color="transparent"
-      py="0.125em" // Override what light theme does to this
-      px="0.25em" // Override what light theme does to this
-      tooltip="Ping relays"
-      tooltipPosition="bottom-start"
-      onClick={() => act('ping_relays')}
-    >
-      <Box className="Ping__indicator" backgroundColor={color} />
-      {roundtrip}
-    </Button>
+    <Tooltip content="Ping relays" position="bottom-start">
+      <div
+        tabIndex={0}
+        role="button"
+        className="Ping"
+        onClick={(e) => handleClick(e)}
+      >
+        <Box className="Ping__indicator" backgroundColor={color} />
+        {roundtrip}
+      </div>
+    </Tooltip>
   );
 };

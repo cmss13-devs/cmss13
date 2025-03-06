@@ -7,6 +7,10 @@
 	var/is_moving_to_target = FALSE
 	var/walk_to_delay = 0.7 SECONDS
 
+	/// If we don't move for a while then we die
+	var/ticks_since_last_move = 0
+	var/turf/last_turf
+
 /datum/component/moba_minion/Initialize()
 	. = ..()
 	if(!isxeno(parent))
@@ -22,17 +26,30 @@
 	parent_xeno.pass_flags = new()
 	parent_xeno.pass_flags.flags_pass = PASS_MOB_IS_XENO
 	parent_xeno.pass_flags.flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
+	parent_xeno.melee_damage_lower *= 0.75 // Less damage overall since they shouldn't be a massive threat to players
+	parent_xeno.melee_damage_upper = parent_xeno.melee_damage_lower
 
 /datum/component/moba_minion/Destroy(force, silent)
 	REMOVE_TRAIT(parent_xeno, TRAIT_MOBA_MINION, TRAIT_SOURCE_INHERENT)
 	parent_xeno = null
 	target = null
 	next_turf_target = null
+	last_turf = null
 	return ..()
 
 /datum/component/moba_minion/process(delta_time) // We do the bound_width/height bullshit so that AI can actually attack large objects
 	if(parent_xeno.stat == DEAD)
 		return
+
+	if(ticks_since_last_move >= 10)
+		parent_xeno.death("being stuck")
+		return
+
+	var/turf/parent_turf = get_turf(parent_xeno)
+	if(parent_turf == last_turf)
+		ticks_since_last_move++
+
+	last_turf = parent_turf
 
 	if(!target)
 		try_find_target()
@@ -105,6 +122,7 @@
 
 	is_moving_to_target = FALSE
 	target.attack_alien(parent_xeno)
+	ticks_since_last_move = 0 // if we're attacking something, we can assume we're not really stuck
 
 /datum/component/moba_minion/proc/move_to_target()
 	walk_to(parent_xeno, target, 1, walk_to_delay)

@@ -24,27 +24,27 @@
 
 /datum/moba_item/New()
 	. = ..()
-	description = "[name]\nCost: [gold_cost] [MOBA_GOLD_NAME_SHORT]"
+	description = "[name]<br>Cost: [gold_cost] [MOBA_GOLD_NAME_SHORT]"
 	if(health)
-		description += "\nHealth: +[health]"
+		description += "<br>Health: +[health]"
 	if(health_regen)
-		description += "\nHealth Regen: +[health_regen]"
+		description += "<br>Health Regen: +[health_regen]"
 	if(plasma)
-		description += "\nPlasma: +[plasma]"
+		description += "<br>Plasma: +[plasma]"
 	if(plasma_regen)
-		description += "\nPlasma Regen: +[plasma_regen]"
+		description += "<br>Plasma Regen: +[plasma_regen]"
 	if(armor)
-		description += "\nArmor: +[armor]"
+		description += "<br>Armor: +[armor]"
 	if(acid_armor)
-		description += "\nAcid Armor: +[acid_armor]"
+		description += "<br>Acid Armor: +[acid_armor]"
 	if(speed)
-		description += "\nMovement Delay: [speed]"
+		description += "<br>Movement Delay: [speed]"
 	if(attack_speed)
-		description += "\nAttack Speed Modifier: [attack_speed]"
+		description += "<br>Attack Speed Modifier: [attack_speed]"
 	if(attack_damage)
-		description += "\nDamage: +[attack_damage]"
+		description += "<br>Damage: +[attack_damage]"
 	if(ability_cooldown_reduction)
-		description += "\nCooldown Reduction: x[ability_cooldown_reduction * 100]%"
+		description += "<br>Cooldown Reduction: x[ability_cooldown_reduction * 100]%"
 
 /datum/moba_item/proc/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health = FALSE)
 	SHOULD_CALL_PARENT(TRUE)

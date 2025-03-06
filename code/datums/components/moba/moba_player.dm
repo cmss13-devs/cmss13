@@ -55,6 +55,8 @@
 	for(var/datum/action/action_path as anything in parent_xeno.base_actions)
 		remove_action(parent_xeno, action_path)
 
+	give_action(parent_xeno, /datum/action/xeno_action/watch_xeno)
+
 	map_id = id
 	right_side = right
 	store_ui = new(parent_xeno)
@@ -89,6 +91,7 @@
 	RegisterSignal(parent_xeno, COMSIG_MOB_KILLED_MOB, PROC_REF(on_kill))
 	RegisterSignal(parent_xeno, COMSIG_XENO_ADD_ABILITIES, PROC_REF(on_add_abilities))
 	RegisterSignal(parent_xeno, COMSIG_XENO_TRY_HIVEMIND_TALK, PROC_REF(on_hivemind_talk))
+	RegisterSignal(parent_xeno, COMSIG_XENO_TRY_OVERWATCH, PROC_REF(on_overwatch))
 
 /datum/component/moba_player/proc/handle_level_up()
 	player_datum.level_up()
@@ -246,7 +249,10 @@
 	status_tab_items += "Round Time: [minutes]:[seconds]"
 	status_tab_items += "[MOBA_GOLD_NAME]: [player_datum.gold]"
 	status_tab_items += "Level: [player_datum.level]/[MOBA_MAX_LEVEL]"
-	status_tab_items += "XP: [player_datum.xp]/[level_up_thresholds[player_datum.level]]"
+	if(player_datum.level < MOBA_MAX_LEVEL)
+		status_tab_items += "XP: [player_datum.xp]/[level_up_thresholds[player_datum.level]]"
+	else
+		status_tab_items += "XP: MAX"
 	var/item_names = ""
 	for(var/datum/moba_item/item as anything in held_items)
 		item_names += item.name + (item == held_items[length(held_items)] ? "" : ", ")
@@ -281,6 +287,40 @@
 
 	return COMPONENT_OVERRIDE_HIVEMIND_TALK
 
+/// We also have our own overwatch
+/datum/component/moba_player/proc/on_overwatch(datum/source)
+	SIGNAL_HANDLER
+
+	INVOKE_ASYNC(src, PROC_REF(handle_overwatch))
+
+	return COMPONENT_CANCEL_OVERWATCH
+
+/datum/component/moba_player/proc/handle_overwatch()
+	if(parent_xeno.observed_xeno)
+		parent_xeno.overwatch(parent_xeno.observed_xeno, TRUE)
+		return
+
+	var/list/possible_xenos = list()
+	for(var/datum/moba_player/player as anything in SSmoba.get_moba_controller(map_id).players)
+		var/mob/living/carbon/xenomorph/player_xeno = player.get_tied_xeno()
+		if((player == player_datum) || !player_xeno)
+			continue
+
+		if(player_xeno.hivenumber != player_datum.get_tied_xeno().hivenumber)
+			continue
+
+		if(!HAS_TRAIT(player_xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id)))
+			continue
+
+		possible_xenos += player_xeno
+
+	var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(parent_xeno, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
+
+	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == parent_xeno.observed_xeno || selected_xeno.stat == DEAD || !parent_xeno.check_state(TRUE))
+		parent_xeno.overwatch(parent_xeno.observed_xeno, TRUE) // Cancel OW
+	else
+		parent_xeno.overwatch(selected_xeno)
+
 #ifdef MOBA_TESTING
 /mob/living/carbon/xenomorph/proc/gxp()
 	var/datum/component/moba_player/MP = GetComponent(/datum/component/moba_player)
@@ -291,4 +331,10 @@
 	var/datum/component/moba_player/MP = GetComponent(/datum/component/moba_player)
 	if(MP)
 		MP.grant_xp(null, 8580) // enough for level 12
+
+/mob/living/carbon/xenomorph/proc/ggold()
+	var/datum/component/moba_player/MP = GetComponent(/datum/component/moba_player)
+	if(MP)
+		MP.grant_gold(null, 10000)
+
 #endif

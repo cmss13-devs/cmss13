@@ -23,6 +23,9 @@
 	if (!X.check_state(TRUE))
 		return FALSE
 
+	if(SEND_SIGNAL(X, COMSIG_XENO_TRY_OVERWATCH) & COMPONENT_CANCEL_OVERWATCH)
+		return
+
 	var/isQueen = FALSE
 	if (X.caste_type == XENO_CASTE_QUEEN)
 		isQueen = TRUE

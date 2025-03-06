@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { BooleanLike } from '../../common/react';
 import { useBackend } from '../backend';
-import { Button, Divider, Section, Stack } from '../components';
+import { Box, Button, Divider, Section, Stack, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 type Item = {
@@ -53,7 +53,7 @@ export const MobaItemStore = (props) => {
                     <Stack.Item>
                       <center>{chosenItem.name}</center>
                     </Stack.Item>
-                    <Stack.Item>{chosenItem.description}</Stack.Item>
+                    <Stack.Item><Box dangerouslySetInnerHTML={{__html: chosenItem.description}} /></Stack.Item>
                     {owned_items.indexOf(chosenItem.name) !== -1 &&
                     chosenItem.unique ? (
                       <Stack.Item

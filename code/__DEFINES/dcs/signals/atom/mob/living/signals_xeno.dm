@@ -104,3 +104,7 @@
 /// From /mob/living/carbon/xenomorph/proc/add_abilities() : ()
 #define COMSIG_XENO_ADD_ABILITIES "xeno_add_abilites"
 	#define COMPONENT_CANCEL_ADDING_ABILITIES (1<<0)
+
+/// From /datum/action/xeno_action/watch_xeno/action_activate() : ()
+#define COMSIG_XENO_TRY_OVERWATCH "xeno_try_overwatch"
+	#define COMPONENT_CANCEL_OVERWATCH (1<<0)

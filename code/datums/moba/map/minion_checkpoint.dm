@@ -45,11 +45,12 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 			minion_xeno.maxHealth *= alt_health_mult
 			var/brute = minion_xeno.getBruteLoss()
 			var/burn = minion_xeno.getFireLoss()
-			var/percentage_brute = brute / (brute + burn)
-			var/percentage_burn = burn / (brute + burn)
-			minion_xeno.apply_damage(-(health_to_add * percentage_brute), BRUTE)
-			minion_xeno.apply_damage(-(health_to_add * percentage_burn), BURN)
-			minion_xeno.updatehealth()
+			if(brute || burn)
+				var/percentage_brute = brute / (brute + burn)
+				var/percentage_burn = burn / (brute + burn)
+				minion_xeno.apply_damage(-(health_to_add * percentage_brute), BRUTE)
+				minion_xeno.apply_damage(-(health_to_add * percentage_burn), BURN)
+				minion_xeno.updatehealth()
 
 	minion.is_moving_to_next_point = FALSE
 	INVOKE_ASYNC(minion, TYPE_PROC_REF(/datum, process))

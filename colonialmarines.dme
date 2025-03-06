@@ -638,6 +638,7 @@
 #include "code\datums\moba\map\moba_map_template.dm"
 #include "code\datums\moba\map\moba_tunnel.dm"
 #include "code\datums\moba\map\shop.dm"
+#include "code\datums\moba\map\simplemobs.dm"
 #include "code\datums\moba\map\turret.dm"
 #include "code\datums\moba\ui\moba_ghost.dm"
 #include "code\datums\moba\ui\moba_itemstore.dm"

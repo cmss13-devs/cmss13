@@ -44,7 +44,7 @@
 
 /mob/living/simple_animal/hostile/carp/FindTarget()
 	. = ..()
-	if(.)
+	if(. && prob(33))
 		manual_emote("gnashes at [.]")
 
 /mob/living/simple_animal/hostile/carp/AttackingTarget()
@@ -57,3 +57,6 @@
 
 /mob/living/simple_animal/hostile/carp/no_knockdown
 	bite_knockdown_chance = 0
+
+/mob/living/simple_animal/hostile/carp/low_knockdown
+	bite_knockdown_chance = 4

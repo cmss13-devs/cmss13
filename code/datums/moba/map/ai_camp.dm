@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 
 /obj/effect/moba_camp_spawner
 	invisibility = INVISIBILITY_MAXIMUM
-	var/simplemob_type = /mob/living/simple_animal/hostile/carp/no_knockdown
+	var/simplemob_type = /mob/living/simple_animal/hostile/carp/low_knockdown
 	var/hostile_range = 3
 	var/amount_to_spawn = 2
 	var/respawn_timer = 4 MINUTES
@@ -83,4 +83,15 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 	REMOVE_TRAIT(source, TRAIT_MOBA_CAMP_TARGET, TRAIT_SOURCE_INHERENT)
 
+// A swarm that occasionally stuns on-hit
+/obj/effect/moba_camp_spawner/carp
 
+// Tough bastard that deals max HP damage
+/obj/effect/moba_camp_spawner/hellhound
+	simplemob_type = /mob/living/simple_animal/hostile/hellhound
+	amount_to_spawn = 1
+	starting_max_health = 400
+	ending_max_health = 1600
+	starting_xp_per_mob = 150
+	ending_xp_per_mob = 225
+	gold_per_mob = 120

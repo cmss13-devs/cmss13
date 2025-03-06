@@ -3,6 +3,8 @@
 	desc = "Alan please add details"
 	icon = 'icons/obj/structures/alien/structures.dmi'
 	icon_state = "acid_pillar_idle"
+	can_block_movement = TRUE
+	density = TRUE
 	var/hivenumber = XENO_HIVE_MOBA_LEFT
 
 /obj/effect/alien/resin/moba_shop/Initialize(mapload, mob/builder)

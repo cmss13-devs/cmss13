@@ -54,7 +54,7 @@
 /datum/component/moba_minion/proc/try_find_target()
 	var/mob/living/best_target_found
 	var/best_weight_found
-	var/list/view_list = view(3, parent_xeno)
+	var/list/view_list = view(4, parent_xeno)
 	for(var/mob/living/possible_target in view_list)
 		var/weight = 0
 		if((possible_target.stat == DEAD) || parent_xeno.hive.is_ally(possible_target) || HAS_TRAIT(possible_target, TRAIT_CLOAKED))

@@ -36,7 +36,7 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 	if(mapload)
 		return INITIALIZE_HINT_LATELOAD
 	else
-		addtimer(CALLBACK(src, PROC_REF(LateInitialize)), 2 SECONDS) // gross hack to make sure everything else on the turf is loaded first
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, LateInitialize)), 2 SECONDS) // gross hack to make sure everything else on the turf is loaded first
 
 /obj/effect/moba_unslashinator/LateInitialize()
 	. = ..()

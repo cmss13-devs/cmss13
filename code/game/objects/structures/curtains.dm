@@ -23,7 +23,6 @@
 
 /obj/structure/curtain/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!unslashable)
-		to_chat(M, SPAN_WARNING("We stare at [src] cluelessly."))
 		return
 
 	M.animation_attack_on(src)

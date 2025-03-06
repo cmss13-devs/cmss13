@@ -4,6 +4,9 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 
 /obj/effect/moba_minion_checkpoint
 	invisibility = INVISIBILITY_MAXIMUM
+	/// Minions who pass an alt_next_x/y_coord checkpoint gain bonus max/current HP so that eventually waves get pushed to one base
+	/// The goal isn't an immediate push to base, but a gradual shove instead
+	var/alt_health_mult = 1.1
 	// Both of these are relative to the bottom left corner of the map
 	var/next_x_coord
 	var/next_y_coord
@@ -30,12 +33,24 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 	if(!HAS_TRAIT(entering, TRAIT_MOBA_MINION))
 		return
 
-	//var/mob/living/carbon/xenomorph/lesser_drone/moba/minion = entering
-	var/datum/component/moba_minion/minion = entering.GetComponent(/datum/component/moba_minion) // Zonenote: unshittify this later
+	var/mob/living/carbon/xenomorph/minion_xeno = entering
+	var/datum/component/moba_minion/minion = minion_xeno.GetComponent(/datum/component/moba_minion) // Zonenote: unshittify this later
 	if(minion.parent_xeno.hive.hivenumber == primary_hive)
 		minion.next_turf_target = locate(bottom_left_turf_coords[1] + next_x_coord - 1, bottom_left_turf_coords[2] + next_y_coord - 1, bottom_left_turf_coords[3])
 	else
+		var/turf/old_target = minion.next_turf_target
 		minion.next_turf_target = locate(bottom_left_turf_coords[1] + alt_next_x_coord - 1, bottom_left_turf_coords[2] + alt_next_y_coord - 1, bottom_left_turf_coords[3])
+		if(old_target != minion.next_turf_target)
+			var/health_to_add = (minion_xeno.maxHealth * alt_health_mult) - minion_xeno.maxHealth
+			minion_xeno.maxHealth *= alt_health_mult
+			var/brute = minion_xeno.getBruteLoss()
+			var/burn = minion_xeno.getFireLoss()
+			var/percentage_brute = brute / (brute + burn)
+			var/percentage_burn = burn / (brute + burn)
+			minion_xeno.apply_damage(-(health_to_add * percentage_brute), BRUTE)
+			minion_xeno.apply_damage(-(health_to_add * percentage_burn), BURN)
+			minion_xeno.updatehealth()
+
 	minion.is_moving_to_next_point = FALSE
 	INVOKE_ASYNC(minion, TYPE_PROC_REF(/datum, process))
 

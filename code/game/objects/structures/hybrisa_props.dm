@@ -17,7 +17,6 @@
 
 /obj/structure/prop/hybrisa/vehicles/attack_alien(mob/living/carbon/xenomorph/user)
 	if(unslashable)
-		to_chat(user, SPAN_WARNING("We stare at [src] cluelessly."))
 		return
 
 	user.animation_attack_on(src)

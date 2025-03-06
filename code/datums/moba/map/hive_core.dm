@@ -4,6 +4,8 @@
 	icon_state = "core"
 	icon = 'icons/mob/xenos/structures64x64.dmi'
 	plane = FLOOR_PLANE
+	can_block_movement = TRUE
+	density = TRUE
 	pixel_x = -16
 	pixel_y = -16
 	maptext_x = 16

@@ -488,7 +488,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(GLOB.almayer_aa_cannon.protecting_section)
 		data["aa_targeting"] = GLOB.almayer_aa_cannon.protecting_section
 
-	data = count_marines(data)
+	data["marines"] = list()
+	data = count_marines(data, current_squad)
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	if(operator)

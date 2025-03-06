@@ -8,8 +8,6 @@ import {
   Divider,
   Flex,
   Input,
-  LabeledControls,
-  NumberInput,
   Section,
   Stack,
   Table,
@@ -154,21 +152,9 @@ const SecondaryFunctions = (props) => {
             >
               Ordnance Systems
             </Tabs.Tab>
-            <Tabs.Tab
-              selected={secondarycategory === 'supply'}
-              icon="wrench"
-              onClick={() => setsecondaryCategory('supply')}
-              p="3px"
-              bold
-            >
-              Supply Drop
-            </Tabs.Tab>
           </Tabs>
         </Stack.Item>
         <Stack.Item grow>
-          {secondarycategory === 'supply' && data.can_launch_crates && (
-            <SupplyDrop />
-          )}
           {secondarycategory === 'ob' && data.can_launch_obs && (
             <OrbitalBombardment />
           )}
@@ -218,11 +204,9 @@ const DebugSquadPanel = (props) => {
             {data.squad_data.map((squad, index) => {
               return (
                 <Tabs.Tab
-                  selected={
-                    category === squadStringify[squad.name.toLowerCase()]
-                  }
+                  selected={category === squad.name.toLowerCase()}
                   onClick={() => {
-                    setCategory(squadStringify[squad.name.toLowerCase()]);
+                    setCategory(squad.name.toLowerCase());
                     act('gather_index_squad_data', { squad: squad.ref });
                   }}
                   key={index}
@@ -237,7 +221,7 @@ const DebugSquadPanel = (props) => {
           {data.squad_data.map((squad, index) => {
             return (
               <Stack.Item key={index} fontSize="13px">
-                {category === squadStringify[squad.name.toLowerCase()] && (
+                {category === squad.name.toLowerCase() && (
                   <Table>
                     <Table.Row>
                       <Table.Cell fontSize="15px" bold p="6px" colSpan={2}>
@@ -598,7 +582,13 @@ const ExecutivePanel = (props) => {
           </Box>
           <Box mb="10px" align="center">
             <Stack.Item>
-              <Button inline width="100%" icon="exclamation-triangle" p="3px">
+              <Button
+                inline
+                width="100%"
+                icon="exclamation-triangle"
+                p="3px"
+                onClick={() => act('change_sec_level')}
+              >
                 CHANGE ALERT LEVEL
               </Button>
             </Stack.Item>
@@ -1062,15 +1052,16 @@ const SquadMonitor = (props) => {
                 <Table.Cell textAlign="center" collapsing fontSize="12px">
                   SL Dist.
                 </Table.Cell>
-                <Table.Cell textAlign="center" />
               </Table.Row>
-              {squad_leader && (
-                <Table.Row key="index" bold>
+              {data.leader_count ? (
+                <Table.Row bold>
                   <Table.Cell collapsing p="2px">
                     {(squad_leader.has_helmet && (
                       <Button
                         onClick={() =>
-                          act('watch_camera', { target_ref: squad_leader.ref })
+                          act('watch_camera', {
+                            target_ref: squad_leader.ref,
+                          })
                         }
                       >
                         {squad_leader.name}
@@ -1090,10 +1081,11 @@ const SquadMonitor = (props) => {
                   <Table.Cell p="2px" collapsing>
                     {squad_leader.distance}
                   </Table.Cell>
-                  <Table.Cell />
                 </Table.Row>
+              ) : (
+                <div />
               )}
-              {(marines &&
+              {marines.length ? (
                 marines
                   .sort(sortByRole)
                   .filter((marine) => {
@@ -1124,12 +1116,14 @@ const SquadMonitor = (props) => {
                     }
 
                     return (
-                      <Table.Row key={index}>
+                      <Table.Row key={marine.ref}>
                         <Table.Cell collapsing p="2px">
                           {(marine.has_helmet && (
                             <Button
                               onClick={() =>
-                                act('watch_camera', { target_ref: marine.ref })
+                                act('watch_camera', {
+                                  target_ref: marine.ref,
+                                })
                               }
                             >
                               {marine.name}
@@ -1149,112 +1143,16 @@ const SquadMonitor = (props) => {
                         <Table.Cell p="2px" collapsing>
                           {marine.distance}
                         </Table.Cell>
-                        <Table.Cell p="2px">
-                          {(hidden_marines.includes(marine.ref) && (
-                            <Button
-                              icon="plus"
-                              color="green"
-                              tooltip="Show marine"
-                              onClick={() => toggle_marine_hidden(marine.ref)}
-                            />
-                          )) || (
-                            <Button
-                              icon="minus"
-                              color="red"
-                              tooltip="Hide marine"
-                              onClick={() => toggle_marine_hidden(marine.ref)}
-                            />
-                          )}
-                          <Button
-                            icon="arrow-up"
-                            color="green"
-                            tooltip="Promote marine to Squad Leader"
-                            onClick={() =>
-                              act('replace_lead', { ref: marine.ref })
-                            }
-                          />
-                        </Table.Cell>
                       </Table.Row>
                     );
-                  })) || <Box>hi!</Box>}
+                  })
+              ) : (
+                <div />
+              )}
             </Table>
           </Section>
         </Stack.Item>
       </Stack>
-    </Section>
-  );
-};
-
-const SupplyDrop = (props) => {
-  const { act, data } = useBackend();
-
-  const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
-  const [supplyY, setSupplyY] = useSharedState('supply', 0);
-
-  let crate_status = 'Crate Loaded';
-  let crate_color = 'green';
-  if (data.supply_cooldown) {
-    crate_status = 'Cooldown - ' + data.supply_cooldown / 10 + ' seconds';
-    crate_color = 'yellow';
-  } else if (!data.has_crate_loaded) {
-    crate_status = 'No crate loaded';
-    crate_color = 'red';
-  }
-
-  return (
-    <Section fill fontSize="14px" title="Supply Drop">
-      <Stack justify={'space-between'} m="10px">
-        <Stack.Item fontSize="14px">
-          <LabeledControls mb="5px">
-            <LabeledControls.Item label="LONGITUDE">
-              <NumberInput
-                value={supplyX}
-                onChange={(value) => setSupplyX(value)}
-                width="75px"
-              />
-            </LabeledControls.Item>
-            <LabeledControls.Item label="LATITUDE">
-              <NumberInput
-                value={supplyY}
-                onChange={(value) => setSupplyY(value)}
-                width="75px"
-              />
-            </LabeledControls.Item>
-            <LabeledControls.Item label="STATUS">
-              <Box color={crate_color} bold>
-                {crate_status}
-              </Box>
-            </LabeledControls.Item>
-          </LabeledControls>
-          <Box textAlign="center">
-            <Button
-              fontSize="20px"
-              width="100%"
-              icon="box"
-              color="yellow"
-              onClick={() => act('dropsupply', { x: supplyX, y: supplyY })}
-            >
-              Launch
-            </Button>
-            <Button
-              fontSize="20px"
-              width="100%"
-              icon="save"
-              color="yellow"
-              onClick={() =>
-                act('save_coordinates', { x: supplyX, y: supplyY })
-              }
-            >
-              Save
-            </Button>
-          </Box>
-        </Stack.Item>
-        <Stack.Item>
-          <Divider vertical />
-        </Stack.Item>
-        <SavedCoordinates forSupply />
-      </Stack>
-      <Divider horizontal />
     </Section>
   );
 };
@@ -1293,7 +1191,7 @@ const OrbitalBombardment = (props) => {
           </Box>
           Cannon Status:
           <Box color={ob_color} bold m="2px">
-            [ {ob_status} ]
+            [ {ob_status.toUpperCase()} ]
           </Box>
         </Stack.Item>
         <Stack.Divider />
@@ -1315,7 +1213,6 @@ const OrbitalBombardment = (props) => {
                   color="transperant"
                   p="5px"
                   m="4px"
-                  onClick={() => act('dropbomb', { x: OBX, y: OBY })}
                 >
                   Keycard Override Required
                 </Button>

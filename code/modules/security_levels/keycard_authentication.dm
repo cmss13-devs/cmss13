@@ -34,7 +34,7 @@
 		return
 	if(istype(W,/obj/item/card/id))
 		var/obj/item/card/id/ID = W
-		if(ACCESS_MARINE_COMMAND in ID.access)
+		if((ACCESS_MARINE_COMMAND in ID.access) && (COOLDOWN_FINISHED(src, id_scan_cooldown)))
 			if(active == 1)
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
@@ -42,7 +42,7 @@
 					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
-				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access) && (COOLDOWN_FINISHED(src, id_scan_cooldown)))	// need to be senior CIC staff to toggle ob safety
+				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access))	// need to be senior CIC staff to toggle ob safety
 					balloon_alert_to_viewers("Error! Insufficient clearence!")
 					playsound(loc, 'sound/items/defib_failed.ogg')
 					COOLDOWN_START(src, id_scan_cooldown, 1 SECONDS)

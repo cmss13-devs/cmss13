@@ -454,6 +454,10 @@
 			client.prefs.process_link(src, href_list)
 		return TRUE
 
+	if(href_list["poll"])
+		SSpolls.tgui_interact(src)
+		return TRUE
+
 /mob/proc/swap_hand()
 	hand = !hand
 	SEND_SIGNAL(src, COMSIG_MOB_SWAPPED_HAND)

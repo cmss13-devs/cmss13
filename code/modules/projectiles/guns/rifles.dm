@@ -40,8 +40,10 @@
 	durability_loss = 0.35 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
 
 /obj/item/weapon/gun/rifle/unique_action(mob/user)
-	jam_unique_action(user)
-	cock(user)
+	if(jammed)
+		jam_unique_action(user)
+	else
+		cock(user)
 
 //-------------------------------------------------------
 //M41A PULSE RIFLE
@@ -450,6 +452,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	jam_chance = 0.05 // some lore nerd is gonna yell at my ear saying that the mk1 is a beautiful piece of machinery that never jams
+	unjam_chance = 75
+	durability_loss = 0.50
 
 /obj/item/weapon/gun/rifle/m41aMK1/ap //for making it start with ap loaded
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap

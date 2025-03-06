@@ -47,7 +47,9 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
+	if(jammed)
 		jam_unique_action(user)
+	else
 		cock(user)
 
 /obj/item/weapon/gun/pistol/set_gun_config_values()

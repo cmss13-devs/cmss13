@@ -594,7 +594,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_gun_durability()
 
 /obj/item/weapon/gun/proc/check_jam(mob/living/user)
-	if(gun_durability <= 0) //prevents firing without spamming your screen with both jamming and worn out noises
+	if(gun_durability <= GUN_DURABILITY_BROKEN) //prevents firing without spamming your screen with both jamming and worn out noises
+		check_worn_out(user)
 		return NONE
 	if(jammed)
 		if(world.time % 3)
@@ -653,13 +654,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(gun_durability < GUN_DURABILITY_MAX)
 		gun_durability = min(gun_durability + amount, GUN_DURABILITY_MAX)
 	if(gun_durability <= GUN_DURABILITY_BROKEN)
-		to_chat(user, SPAN_GREEN("The [name] is no longer worn out."))
-		playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
-		balloon_alert(user, "*functional*")
+		if(user) // i admit, i dont know what im doing here, might need a refactor
+			to_chat(user, SPAN_GREEN("The [name] is no longer worn out."))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
+			balloon_alert(user, "*functional*")
 	else
-		to_chat(user, SPAN_GREEN("The [name] has been successfully repaired."))
-		playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
-		balloon_alert(user, "*repaired*")
+		if(user)
+			to_chat(user, SPAN_GREEN("The [name] has been successfully repaired."))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
+			balloon_alert(user, "*repaired*")
 	check_worn_out(user)
 
 /obj/item/weapon/gun/proc/destroy_gun_durability() //for acid use specifically, ill probably refactor this
@@ -679,7 +682,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	check_worn_out()
 
 /obj/item/weapon/gun/proc/blast_gun_durability(amount = 1) //for more static use, such as explosive power
-	if(gun_durability <= GUN_DURABILITY_BROKEN - 50) //we dont want weak explosions to delete the gun
+	if(gun_durability <= GUN_DURABILITY_BROKEN - 149) //we dont want weak explosions to delete the gun e.g. grenades
 		qdel(src)
 	else
 		gun_durability = max(gun_durability - (amount / 2), GUN_DURABILITY_BROKEN)
@@ -1797,6 +1800,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		// this only really exists to prevent PBs or suicides while jammed
 		if(jammed)
 			to_chat(user, SPAN_WARNING("The gun is jammed and cannot fire!"))
+			return
+		if(gun_durability == GUN_DURABILITY_BROKEN)
+			to_chat(user, SPAN_WARNING("The gun is worn out and cannot fire!"))
 			return
 
 		//Has to be on the bottom of the stack to prevent delay when failing to fire the weapon for the first time.

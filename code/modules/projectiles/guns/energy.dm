@@ -113,7 +113,8 @@
 		. += SPAN_NOTICE("It has no power cell inside.")
 
 /obj/item/weapon/gun/energy/unique_action(mob/user)
-	jam_unique_action(user)
+	if(jammed)
+		jam_unique_action(user)
 
 /obj/item/weapon/gun/energy/rxfm5_eva
 	name = "RXF-M5 EVA pistol"

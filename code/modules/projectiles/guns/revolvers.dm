@@ -205,8 +205,10 @@
 
 // FLUFF
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
-	jam_unique_action(user)
-	spin_cylinder(user)
+	if(jammed)
+		jam_unique_action(user)
+	else
+		spin_cylinder(user)
 
 /obj/item/weapon/gun/revolver/proc/revolver_basic_spin(mob/living/carbon/human/user, direction = 1, obj/item/weapon/gun/revolver/double)
 	set waitfor = 0

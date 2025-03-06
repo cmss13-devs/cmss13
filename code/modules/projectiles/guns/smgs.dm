@@ -40,8 +40,10 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/smg/unique_action(mob/user)
-	jam_unique_action(user)
-	cock(user)
+	if(jammed)
+		jam_unique_action(user)
+	else
+		cock(user)
 
 /obj/item/weapon/gun/smg/set_gun_config_values()
 	..()

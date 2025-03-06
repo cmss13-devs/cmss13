@@ -13,6 +13,8 @@ import { byondMessages } from './timers';
 
 type ByondOpen = {
   channel: Channel;
+  mapfocus: BooleanLike;
+  lobbyfocus: BooleanLike;
 };
 
 type ByondProps = {
@@ -209,9 +211,13 @@ export function TguiSay() {
   function handleOpen(data: ByondOpen): void {
     setTimeout(() => {
       innerRef.current?.focus();
-    }, 0);
+    }, 1);
 
-    const { channel } = data;
+    const { channel, mapfocus, lobbyfocus } = data;
+
+    if (!mapfocus && !lobbyfocus) {
+      return;
+    }
     const iterator = channelIterator.current;
     // Catches the case where the modal is already open
     if (iterator.isSay()) {
@@ -293,6 +299,14 @@ export function TguiSay() {
           rows={ROWS[size] || 1}
           value={value}
         />
+        <button
+          key="escape"
+          className={`button button-${theme}`}
+          onClick={handleClose}
+          type="submit"
+        >
+          X
+        </button>
       </div>
     </>
   );

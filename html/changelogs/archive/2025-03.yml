@@ -73,3 +73,8 @@
   - admin: Create-Xenos range defaults to 0, instead of 1, hooray!
   remindme:
   - bugfix: Some MREs that should've had veggies in them had no veggies (ripoff!)
+2025-03-06:
+  TheKillfish:
+  - rscadd: Added the Light Replacer to tool storage and to the autolathe. The Light
+      Replacer can now also recycle broken bulbs, either directly when replacing or
+      when inserted by hand.

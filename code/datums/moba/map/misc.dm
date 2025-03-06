@@ -29,16 +29,16 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 	src.path_to_spawn = path_to_spawn
 	GLOB.uninitialized_moba_reuse_object_spawners += src
 
-/obj/effect/moba_unslashanator
+/obj/effect/moba_unslashinator
 
-/obj/effect/moba_unslashanator/Initialize(mapload)
+/obj/effect/moba_unslashinator/Initialize(mapload)
 	. = ..()
 	if(mapload)
 		return INITIALIZE_HINT_LATELOAD
 	else
 		addtimer(CALLBACK(src, PROC_REF(LateInitialize)), 2 SECONDS) // gross hack to make sure everything else on the turf is loaded first
 
-/obj/effect/moba_unslashanator/LateInitialize()
+/obj/effect/moba_unslashinator/LateInitialize()
 	. = ..()
 	for(var/obj/structure/thing in loc.contents)
 		thing.unslashable = TRUE

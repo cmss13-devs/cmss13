@@ -628,9 +628,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/check_worn_out(mob/living/user)
 	if(gun_durability <= GUN_DURABILITY_BROKEN)
-		to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
-		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
-		balloon_alert(user, "*worn-out*")
+		if(prob(45))
+			to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
+			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
+			balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
 	if(!can_jam)

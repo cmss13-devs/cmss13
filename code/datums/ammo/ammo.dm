@@ -139,8 +139,8 @@
 /datum/ammo/proc/on_hit_obj(obj/O, obj/projectile/P) //Special effects when hitting objects.
 	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(O, /obj/item/weapon/gun))
-		var/obj/item/weapon/gun/G = O
-		G.damage_gun_durability(P.damage) //handles gun durability damage on projectile hit
+		var/obj/item/weapon/gun/damaged_gun = O
+		damaged_gun.damage_gun_durability(P.damage) //handles gun durability damage on projectile hit
 	return
 
 /datum/ammo/proc/on_near_target(turf/T, obj/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.

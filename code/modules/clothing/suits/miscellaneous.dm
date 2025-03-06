@@ -285,6 +285,10 @@
 	icon_state = "webbing_black"
 	item_state = "webbing_black"
 
+/obj/item/clothing/suit/storage/webbing/brown
+	icon_state = "webbing_brown"
+	item_state = "webbing_brown"
+
 /obj/item/clothing/suit/storage/utility_vest
 	name = "utility vest"
 	desc = "A utility vest to hold tools in."

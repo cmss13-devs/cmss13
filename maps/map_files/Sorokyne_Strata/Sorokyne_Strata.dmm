@@ -54,7 +54,16 @@
 "aal" = (
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/upp,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/interior/outside/bball/cave)
 "aam" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -425,6 +434,9 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
 "abH" = (
@@ -458,6 +470,7 @@
 /obj/effect/landmark/wo_supplies/storage/mines,
 /obj/effect/landmark/objective_landmark/far,
 /obj/structure/machinery/light,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "abL" = (
@@ -509,6 +522,9 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
@@ -1435,7 +1451,7 @@
 	pixel_x = -11
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata/orange_cover,
+/turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "afu" = (
 /obj/structure/flora/pottedplant{
@@ -1553,7 +1569,7 @@
 /area/strata/ag/interior/outside/bball)
 "afO" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/dogtag,
+/obj/item/card/id/dogtag/upp,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outside/bball)
 "afP" = (
@@ -2769,6 +2785,21 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
+"ala" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = 13;
+	pixel_y = -2
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/ag/interior/outside/bball/cave)
 "ale" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/toastedsandwich,
@@ -2935,7 +2966,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "amx" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -3274,6 +3305,7 @@
 	color = "#98a3ab"
 	},
 /obj/structure/barricade/handrail/strata,
+/obj/item/clothing/accessory/patch/upp/alt,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "aoD" = (
@@ -3692,7 +3724,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/stack/folding_barricade,
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "aqA" = (
@@ -3783,7 +3815,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/research)
 "arb" = (
-/obj/item/storage/belt/security,
+/obj/item/storage/belt/security/brown,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/research)
 "arc" = (
@@ -3933,7 +3965,7 @@
 	dir = 8
 	},
 /obj/item/stack/folding_barricade,
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "arE" = (
@@ -3941,11 +3973,13 @@
 	color = "#98a3ab"
 	},
 /obj/item/stack/folding_barricade,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "arF" = (
@@ -4210,8 +4244,10 @@
 	color = "#98a3ab"
 	},
 /obj/item/stack/folding_barricade,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "asK" = (
@@ -4448,7 +4484,7 @@
 "atV" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/item/device/encryptionkey/dutch,
-/obj/item/dogtag,
+/obj/item/card/id/dogtag/upp,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/canteen)
 "atW" = (
@@ -4578,7 +4614,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/flight_control_exterior)
 "auz" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -5560,7 +5596,7 @@
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
 "azn" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -5571,7 +5607,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "azo" = (
-/obj/item/dogtag,
+/obj/item/card/id/dogtag/upp,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/maint)
@@ -5877,6 +5913,18 @@
 	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
+"aAL" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = -2
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/ag/interior/outside/bball/cave)
 "aAM" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -5943,7 +5991,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/ruin)
 "aBa" = (
-/obj/item/dogtag,
+/obj/item/card/id/dogtag/upp,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/structures/ruin)
@@ -6318,7 +6366,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/exterior/outpost_decks)
 "aCY" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = 1;
@@ -6557,7 +6605,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/structures/ruin)
 "aEv" = (
-/obj/structure/curtain/medical,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/ruin)
 "aEw" = (
@@ -8880,7 +8928,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "aRG" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -8906,7 +8954,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "aRO" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -15;
@@ -10278,7 +10326,7 @@
 /area/strata/ug/interior/outpost/underground_dorms/admin4)
 "aZF" = (
 /obj/structure/toilet,
-/obj/structure/curtain/medical,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/outpost/underground_dorms/admin4)
 "aZG" = (
@@ -10629,7 +10677,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
 "bbW" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -14;
@@ -10673,7 +10721,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi/drome)
 "bct" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -11330,7 +11378,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -22;
@@ -11444,7 +11492,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/vanyard)
 "bhl" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -13;
@@ -11605,13 +11653,13 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "bij" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/effect/landmark/wo_supplies/storage/belts/m41abelt,
+/obj/item/storage/belt/security/brown,
+/obj/item/weapon/gun/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "bik" = (
@@ -11827,7 +11875,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 37;
+	pixel_y = -10
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "bjO" = (
@@ -11841,7 +11892,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "bjR" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = 16;
@@ -13538,7 +13589,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/strata/ug/interior/outpost/platform)
 "btO" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -1;
@@ -14130,7 +14181,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
 "bxs" = (
@@ -14309,6 +14360,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/flight_control_exterior)
+"byz" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/jungle/structures/monitoring/west)
 "byF" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -15726,7 +15784,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "bNw" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -16035,6 +16093,10 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river/soro,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
+"bQI" = (
+/obj/structure/machinery/door/airlock/almayer/generic/rusted_white,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outside/engineering/parts_storage)
 "bRf" = (
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/plating,
@@ -16592,7 +16654,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
 "bXF" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -16886,7 +16948,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "caC" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -15;
@@ -16983,7 +17045,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/outpost_decks)
 "cbL" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -17105,6 +17167,12 @@
 "ccJ" = (
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ug/interior/outpost/platform)
+"ccO" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 2
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/med)
 "ccV" = (
 /obj/structure/machinery/weather_siren{
 	dir = 1;
@@ -17535,10 +17603,10 @@
 	dir = 4
 	},
 /obj/effect/landmark/wo_supplies/storage/belts/medical,
-/obj/item/dogtag,
+/obj/item/card/id/dogtag/upp,
 /obj/item/clothing/suit/armor/riot,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/admin)
 "cgX" = (
@@ -17754,8 +17822,8 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "cjj" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "cjk" = (
@@ -18775,9 +18843,9 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
 "ctA" = (
@@ -19151,7 +19219,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/mining_outpost/maintenance)
 "cyu" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -19234,7 +19302,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/storage/box/ids,
-/obj/item/clothing/glasses/thermal/syndi,
+/obj/item/clothing/glasses/thermal/syndi/soro,
 /turf/open/floor/strata/purp1,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "czT" = (
@@ -19290,7 +19358,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/outpost/platform)
 "cBG" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -24;
@@ -19343,6 +19411,13 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/river)
+"cDx" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 31;
+	pixel_y = 17
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "cDL" = (
 /obj/item/lightstick/planted,
 /turf/open/gm/dirt/brown,
@@ -19453,6 +19528,12 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/monitoring/west)
+"cIs" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "cIt" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
@@ -19593,7 +19674,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/caves/shed_five_caves)
 "cMX" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -16;
@@ -20087,7 +20168,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "dfG" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -20138,7 +20219,7 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/ag/exterior/marsh/water_marshes)
 "dhH" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -16;
@@ -20438,6 +20519,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/structures/monitoring/west)
+"dsp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "dsq" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 13;
@@ -20544,6 +20632,18 @@
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
+"duV" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "dva" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/strata_grass/layer0,
@@ -20662,6 +20762,13 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outpost/med)
+"dAb" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -2;
+	pixel_y = 15
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "dAs" = (
 /obj/structure/platform_decoration/stone/soro/west,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -20852,7 +20959,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/outpost_decks)
 "dGf" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -17;
 	pixel_y = -4
@@ -20927,7 +21034,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "dJV" = (
-/obj/structure/curtain/medical,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/sec1)
 "dJW" = (
@@ -21100,7 +21207,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/research/hot_springs)
 "dQB" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -21128,7 +21235,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ug/interior/jungle/structures/monitoring/west)
 "dRI" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -21363,12 +21470,12 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "dZE" = (
-/obj/effect/decal/strata_decals/mud_corner,
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 1
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = -14
 	},
-/turf/open/gm/dirt/brown,
-/area/strata/ag/interior/outside/bball/cave)
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "dZQ" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/structure/prop/colorable_rock/colorable{
@@ -21497,13 +21604,13 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "eee" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = 11;
 	pixel_y = -4
 	},
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = 11;
@@ -21576,7 +21683,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/mining_outpost/canteen)
 "egh" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -15;
 	pixel_y = -7
@@ -21944,7 +22051,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/jungle/carplake_center)
 "esm" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -22183,7 +22290,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/bball/cave)
 "ezN" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -22260,6 +22367,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/clothing/accessory/patch/upp/alt,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
 "eBo" = (
@@ -22756,7 +22864,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/tearlake)
 "eRm" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -23077,6 +23185,13 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/carplake/east)
+"fcf" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/ag/interior/outside/bball/cave)
 "fch" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -23361,6 +23476,13 @@
 	},
 /turf/open/asphalt/cement,
 /area/strata/ug/interior/outpost/platform)
+"foD" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 15;
+	pixel_y = -13
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "foN" = (
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/outpost_decks)
@@ -23581,7 +23703,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/security)
 "fwx" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -22;
@@ -23675,7 +23797,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/outpost_decks)
 "fzJ" = (
-/obj/structure/curtain/medical,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/admin3)
 "fzT" = (
@@ -23771,7 +23893,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/central)
 "fCO" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -16;
@@ -23798,7 +23920,7 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/ag/exterior/caves/lz_caves)
 "fDU" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -25;
@@ -23891,6 +24013,17 @@
 "fHZ" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/tearlake)
+"fIx" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 4;
+	pixel_y = 23
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "fIA" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -23928,6 +24061,12 @@
 	},
 /turf/open/floor/plating,
 /area/strata/ag/interior/outside/engineering/parts_storage)
+"fIO" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 19
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "fIS" = (
 /obj/structure/platform_decoration/metal/strata/west,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -23971,7 +24110,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "fJS" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -22;
@@ -24045,7 +24184,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outside/bball)
 "fLH" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -24412,7 +24551,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/north_outpost)
 "gbq" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -28;
@@ -24690,6 +24829,12 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"gip" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/launcher/grenade/m81/m79,
+/obj/structure/closet/cabinet,
+/turf/open/floor/strata/fake_wood,
+/area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "giq" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -24774,7 +24919,10 @@
 /area/strata/ug/interior/jungle/structures/monitoring)
 "gla" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -16;
+	pixel_y = -6
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "glb" = (
@@ -24818,6 +24966,15 @@
 	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/checkpoints/west)
+"gmi" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "gmA" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/effect/blocker/sorokyne_hot_water,
@@ -25031,7 +25188,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/engi/drome)
 "gro" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -16;
@@ -25066,7 +25223,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "grQ" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -25435,7 +25592,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/sec1)
 "gHS" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -20;
@@ -25719,7 +25876,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
 "gRT" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -15;
@@ -25884,7 +26041,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen)
 "gXH" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -17;
 	pixel_y = -4
@@ -25901,6 +26058,10 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/engi/drome)
+"gYo" = (
+/obj/item/ammo_casing,
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "gZf" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = 3;
@@ -26331,7 +26492,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "hpD" = (
-/obj/structure/curtain/medical,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/med2)
 "hpI" = (
@@ -26452,7 +26613,7 @@
 /turf/open/floor/plating/asteroidfloor,
 /area/strata/ag/exterior/landing_zones/lz2)
 "hug" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -17;
 	pixel_y = -9
@@ -26553,7 +26714,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
 "hBf" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -7;
@@ -26834,7 +26995,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/north_outpost)
 "hLx" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -26876,7 +27037,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/outpost_decks)
 "hNk" = (
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/paths/south_outpost)
 "hNm" = (
@@ -27148,6 +27309,10 @@
 /area/strata/ag/interior/outpost/security)
 "hVO" = (
 /obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 2
+	},
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/interior/outside/bball/cave)
 "hVY" = (
@@ -27167,7 +27332,7 @@
 /area/strata/ag/exterior/jungle/carplake_center)
 "hXw" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -27240,7 +27405,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "iaD" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = 14;
@@ -27425,7 +27590,7 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ug/interior/jungle/tearlake)
 "ieT" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -27745,7 +27910,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/mining_outpost/central)
 "iqV" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -27783,7 +27948,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/outpost/engi)
 "irB" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -27844,10 +28009,23 @@
 "isa" = (
 /turf/open/floor/strata,
 /area/strata/ag/interior/outside/checkpoints/north)
+"isd" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 11
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "ise" = (
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/outpost_decks)
+"isi" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -3;
+	pixel_y = -15
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "isj" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -28038,6 +28216,18 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/checkpoints/south)
+"ixZ" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = -12
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "iym" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -28207,8 +28397,20 @@
 "iEU" = (
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/underground_dorms/med1)
+"iFF" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "iFT" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -28317,6 +28519,13 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
+"iKi" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "iKp" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -28332,6 +28541,7 @@
 /area/strata/ag/exterior/paths/far_north_outpost)
 "iKN" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/clothing/accessory/patch/upp/alt,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
 "iKW" = (
@@ -28407,7 +28617,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "iOh" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -20;
@@ -28518,6 +28728,18 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/river)
+"iQs" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgibdown1"
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "iQt" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -28623,7 +28845,10 @@
 /area/strata/ug/interior/jungle/platform/south)
 "iUq" = (
 /obj/item/lightstick/planted,
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -11;
+	pixel_y = 36
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "iUr" = (
@@ -28750,7 +28975,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/outpost_decks)
 "iYK" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -29120,6 +29345,16 @@
 "jkp" = (
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/med)
+"jkx" = (
+/obj/effect/landmark/xeno_spawn,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/turf/open/gm/dirt/brown/variant_6,
+/area/strata/ag/interior/outside/bball/cave)
 "jkU" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/effect/mist/steam{
@@ -29143,7 +29378,7 @@
 /turf/open/asphalt/brown,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "jme" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -29162,7 +29397,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/exterior/vanyard)
 "jmE" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -29183,7 +29418,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
-/turf/open/gm/dirt/brown,
+/turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "jmO" = (
 /obj/structure/platform/stone/soro,
@@ -29314,7 +29549,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/marsh/crash)
 "jqJ" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -29333,7 +29568,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
 "jrY" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -15;
@@ -29376,7 +29611,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/crash)
 "jsR" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -29448,9 +29683,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/relay_marshes)
 "juw" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	locked = 1
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/med)
 "juz" = (
@@ -29627,7 +29860,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/caves/lz_caves)
 "jBE" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -29792,7 +30025,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "jIk" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -21;
@@ -29847,6 +30080,18 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
+"jJn" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "jJq" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/tcomms/mining_caves)
@@ -30187,7 +30432,7 @@
 "jVU" = (
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata/orange_cover,
+/turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "jWi" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -30238,7 +30483,7 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/ag/interior/outside/bball/cave)
 "jZq" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -30770,6 +31015,15 @@
 /obj/structure/platform_decoration/stone/soro/west,
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
+"krU" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "krW" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = 5;
@@ -30841,7 +31095,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
 "kuj" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -16;
@@ -31078,6 +31332,7 @@
 	pixel_x = 1;
 	pixel_y = -5
 	},
+/obj/item/ammo_magazine/rifle/type71,
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/bball/cave)
 "kCZ" = (
@@ -31120,6 +31375,17 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/outpost/underground_dorms/admin2)
+"kEK" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = -19
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/ag/interior/outside/bball/cave)
 "kEX" = (
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/ag/exterior/paths/south_outpost)
@@ -31380,7 +31646,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/mining_outpost/canteen)
 "kPM" = (
-/obj/structure/curtain/medical,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/admin1)
 "kQt" = (
@@ -31411,7 +31677,7 @@
 	dir = 6
 	},
 /obj/effect/decal/strata_decals/mud_corner{
-	dir = 1
+	dir = 8
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/exterior/marsh/spring_marshes)
@@ -31469,7 +31735,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "kSg" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -1;
@@ -31489,7 +31755,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "kSN" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -17;
 	pixel_y = -4
@@ -31577,6 +31843,13 @@
 "kVX" = (
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/ag/exterior/landing_zones/near_lz2)
+"kWj" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "kWS" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -31749,7 +32022,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/carplake/north)
 "ldc" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -31775,7 +32048,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/jungle/carplake_center)
 "ldL" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -19;
@@ -32107,7 +32380,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "lpP" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -32290,7 +32563,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ug/interior/jungle/tearlake)
 "lwn" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -32576,6 +32849,12 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/river)
+"lER" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgibdown1"
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/ag/interior/outside/bball/cave)
 "lET" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal8";
@@ -32958,6 +33237,15 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
+"lSG" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/exterior/landing_zones/near_lz2)
 "lTE" = (
 /obj/structure/platform/stone/soro/east,
 /obj/structure/blocker/invisible_wall,
@@ -33035,7 +33323,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
 "lVu" = (
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/asphalt/brown,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "lVJ" = (
@@ -33284,7 +33572,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/jungle/carplake_center)
 "mdK" = (
-/obj/item/storage/belt/security,
+/obj/item/storage/belt/security/brown,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/research)
@@ -33338,7 +33626,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/flight_control_exterior)
 "meS" = (
-/obj/structure/curtain/medical,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/admin2)
 "mfp" = (
@@ -33382,7 +33670,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/research)
 "mgK" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -33400,6 +33688,18 @@
 /obj/structure/platform_decoration/stone/soro/west,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/spring_marshes)
+"mgY" = (
+/obj/structure/bed/nest,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -4;
+	pixel_y = -13
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "mhc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/blood,
@@ -33407,7 +33707,7 @@
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/restricted)
 "mhd" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -33471,7 +33771,7 @@
 	dir = 10
 	},
 /obj/effect/decal/strata_decals/mud_corner{
-	dir = 9
+	dir = 4
 	},
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/exterior/marsh/spring_marshes)
@@ -33571,7 +33871,6 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen)
 "mms" = (
-/obj/effect/glowshroom,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -33850,7 +34149,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/river)
 "mws" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -15;
@@ -34200,7 +34499,7 @@
 /turf/open/floor/strata/white_cyan3,
 /area/strata/ag/interior/outpost/med)
 "mJx" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -34226,6 +34525,13 @@
 	},
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/ag/interior/outside/bball/cave)
+"mKa" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outside/engineering/parts_storage)
 "mKv" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata/multi_tiles/west,
@@ -34243,6 +34549,19 @@
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/strata/ag/interior/outside/checkpoints/south)
+"mLl" = (
+/obj/effect/landmark/xeno_spawn,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "mLo" = (
 /obj/structure/platform/stone/soro/east,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -34343,6 +34662,9 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
 "mOP" = (
@@ -34708,6 +35030,12 @@
 "ndi" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = 6;
+	pixel_y = 11
 	},
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/interior/outside/bball/cave)
@@ -35164,7 +35492,7 @@
 /area/strata/ag/interior/outpost/canteen)
 "nsp" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = 12;
 	pixel_y = -8
@@ -35252,7 +35580,7 @@
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/carplake/north)
 "nwH" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -35420,7 +35748,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/outpost/foyer)
 "nBJ" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -35583,7 +35911,7 @@
 /area/strata/ag/interior/outpost/med)
 "nJh" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/dogtag,
+/obj/item/card/id/dogtag/upp,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen/bar)
 "nJr" = (
@@ -36474,7 +36802,7 @@
 /area/strata/ug/interior/jungle/platform/east)
 "oqf" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -36483,7 +36811,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
 "oqo" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -36565,6 +36893,10 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
+"otj" = (
+/obj/item/clothing/accessory/patch/upp/alt,
+/turf/open/floor/almayer/plate,
+/area/strata/ug/interior/jungle/structures/research)
 "otl" = (
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/exterior/marsh/relay_marshes)
@@ -36653,7 +36985,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/flight_control_exterior)
 "owO" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -16;
@@ -36779,7 +37111,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -36796,6 +37128,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
+"oDx" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "oDB" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -36847,6 +37186,13 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/asteroidwarning,
 /area/strata/ag/exterior/landing_zones/lz2)
+"oFO" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = 15
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "oGQ" = (
 /obj/structure/platform_decoration/stone/soro/east,
 /obj/structure/blocker/invisible_wall,
@@ -37016,7 +37362,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "oMA" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -37039,11 +37385,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/caves/shed_five_caves)
 "oMZ" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/strata/orange_cover,
+/turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "oNd" = (
 /obj/structure/bed/chair{
@@ -37172,7 +37514,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -37327,7 +37669,7 @@
 /area/strata/ag/exterior/marsh/water)
 "oUB" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/dogtag,
+/obj/item/card/id/dogtag/upp,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "oUD" = (
@@ -37880,7 +38222,7 @@
 /turf/open/floor/strata/purp2,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "pmQ" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -37945,7 +38287,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/structures/monitoring/east)
 "poa" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -15
@@ -38033,7 +38375,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
 "pqO" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -16;
@@ -38241,7 +38583,7 @@
 /turf/open/gm/dirt/brown/variant_3,
 /area/strata/ug/interior/jungle/structures/monitoring/west)
 "pxb" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -38323,7 +38665,7 @@
 /area/strata/ug/interior/jungle/structures/monitoring)
 "pzC" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -22;
@@ -38487,6 +38829,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/landing_zones/near_lz2)
+"pEg" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "pEm" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -38547,7 +38896,7 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/exterior/paths/south_outpost)
 "pFI" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -38688,7 +39037,7 @@
 /area/strata/ag/exterior/marsh/water_marshes)
 "pKr" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -38697,7 +39046,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/outpost/platform)
 "pKW" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -38815,8 +39164,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
 "pOH" = (
-/obj/structure/curtain/medical,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/admin2)
 "pPi" = (
@@ -38828,7 +39177,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "pPs" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -43;
@@ -39012,9 +39361,12 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/bball/cave)
 "pVw" = (
-/obj/structure/machinery/light/small,
-/turf/closed/wall/strata_ice/jungle,
-/area/strata/ug/interior)
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/jungle/structures/monitoring/south)
 "pVy" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = 2;
@@ -39132,11 +39484,12 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "pZr" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 4
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 4;
+	pixel_y = 10
 	},
-/turf/open/gm/dirt/brown,
-/area/strata/ag/interior/outside/bball/cave)
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "pZK" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner,
 /obj/structure/platform/stone/soro,
@@ -39197,7 +39550,7 @@
 /turf/open/floor/plating/asteroidfloor,
 /area/strata/ag/exterior/landing_zones/lz2)
 "qcx" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -39257,7 +39610,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
 "qej" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -21;
 	pixel_y = -8
@@ -39712,9 +40065,9 @@
 "quN" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
+	dir = 1
 	},
-/turf/open/gm/dirt/brown,
+/turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/interior/outside/bball/cave)
 "quO" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -39885,7 +40238,7 @@
 /turf/open/floor/strata/cyan2/east,
 /area/strata/ag/interior/outpost/med)
 "qzw" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -39900,6 +40253,7 @@
 /area/strata/ag/interior/outpost/engi)
 "qAr" = (
 /obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/curtain/open/shower,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/outpost/underground_dorms/sec2)
 "qAD" = (
@@ -40144,7 +40498,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/canteen)
 "qKi" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -40308,7 +40662,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "qPF" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -40529,7 +40883,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "qVH" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -40665,12 +41019,12 @@
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
 /area/strata/ag/exterior/jungle/carplake_center)
 "qYZ" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/paths/south_outpost)
 "qZp" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -13;
@@ -40836,7 +41190,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/marsh/center)
 "rhg" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -40933,8 +41287,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "rkb" = (
-/obj/item/clothing/glasses/thermal/syndi,
+/obj/item/clothing/glasses/thermal/syndi/soro,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/checkpoints/north)
 "rkE" = (
@@ -41157,7 +41512,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -11;
@@ -41501,8 +41856,15 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
+"rCZ" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -4;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/jungle/structures/monitoring/west)
 "rDi" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -22;
@@ -41584,7 +41946,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/engi)
 "rFS" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -41680,6 +42042,15 @@
 	},
 /turf/open/gm/coast/dirt/south,
 /area/strata/ug/interior/jungle/carplake/north)
+"rIS" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "rJf" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ug/interior/jungle/structures/monitoring)
@@ -41802,7 +42173,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "rNx" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -15;
@@ -41883,6 +42254,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"rQp" = (
+/obj/effect/decal/remains/xeno,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "rQO" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = 7;
@@ -42031,6 +42409,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"rUH" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 4;
+	pixel_y = -8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "rUM" = (
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/jungle/tearlake)
@@ -42084,7 +42469,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "rXz" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -42294,7 +42679,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "scR" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -42420,7 +42805,7 @@
 /turf/open/floor/strata/cyan3/east,
 /area/strata/ag/interior/outpost/med)
 "siq" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -11;
@@ -42722,6 +43107,13 @@
 /obj/item/stack/sheet/wood,
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/ag/exterior/paths/south_outpost)
+"suq" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 9;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "svg" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/camera/autoname{
@@ -42825,7 +43217,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/relay_marshes)
 "szH" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -42893,6 +43285,13 @@
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
+"sCH" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "sDh" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata,
@@ -43036,7 +43435,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/underground_dorms/sec1)
 "sIe" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -16;
@@ -43180,7 +43579,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
 "sNl" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -22;
@@ -43314,7 +43713,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/outpost_decks)
 "sRR" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -43454,6 +43853,13 @@
 	},
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/ag/interior/outside/bball/cave)
+"sWH" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 15
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "sWO" = (
 /turf/open/asphalt/cement/cement15,
 /area/strata/ag/exterior/marsh/spring_marshes)
@@ -43544,7 +43950,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/outpost/platform)
 "sYk" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -43575,11 +43981,11 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "tad" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
 	dir = 1;
 	pixel_x = 1;
-	pixel_y = -1
+	pixel_y = 5
 	},
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/exterior/marsh/relay_marshes)
@@ -43616,7 +44022,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/strata/ug/interior/outpost/platform)
 "tbi" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -16;
@@ -43860,7 +44266,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/south_outpost)
 "tkE" = (
-/obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_casing,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
@@ -43868,6 +44273,7 @@
 	pixel_x = 4;
 	pixel_y = -4
 	},
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/asphalt/brown,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "tkU" = (
@@ -43947,7 +44353,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/flight_control_exterior)
 "tnf" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -15
@@ -44118,7 +44524,7 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "ttC" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -44210,7 +44616,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/jungle/carplake_center)
 "twy" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -44345,7 +44751,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "tBF" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -16;
@@ -44360,7 +44766,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/marsh/river)
 "tBV" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -18;
@@ -44763,7 +45169,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/marsh/water_marshes)
 "tOV" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -44862,6 +45268,13 @@
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/interior/outside/bball/cave)
+"tRP" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -4;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/jungle/structures/monitoring/west)
 "tRV" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/lines4,
@@ -45025,6 +45438,13 @@
 	},
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
+"tWL" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 9;
+	pixel_y = 15
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "tWO" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/bed/chair{
@@ -45072,6 +45492,18 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/marsh/center)
+"tYY" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgibdown1"
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "tZm" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -45200,8 +45632,13 @@
 /obj/effect/decal/strata_decals/mud_corner,
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/ag/interior/outside/bball/cave)
+"ucN" = (
+/obj/item/clothing/accessory/patch/upp/alt,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outside/bball/cave)
 "udh" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -9;
 	pixel_y = -4
@@ -45390,7 +45827,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/outpost/underground_dorms/admin3)
 "uhi" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -18;
@@ -45530,7 +45967,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "umZ" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -45806,7 +46243,7 @@
 /turf/open/gm/dirt/brown/variant_6,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
 "uwi" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -15;
 	pixel_y = -7
@@ -45948,7 +46385,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/caves/shed_five_caves)
 "uAb" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -16;
@@ -45981,6 +46418,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ug/interior/jungle/carplake/north)
+"uBi" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "uBv" = (
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro/west,
@@ -46073,6 +46517,13 @@
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/exterior/marsh/spring_marshes)
+"uDT" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "uEj" = (
 /obj/structure/largecrate/random,
 /obj/item/toy/deck,
@@ -46110,7 +46561,7 @@
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/ag/exterior/paths/south_outpost)
 "uEM" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -46341,6 +46792,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/strata/ag/interior/restricted)
+"uNm" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 17;
+	pixel_y = -16
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "uNI" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
@@ -46423,6 +46881,7 @@
 /obj/item/weapon/gun/pistol/t73,
 /obj/item/attachable/bayonet/upp,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/west)
 "uPR" = (
@@ -46491,11 +46950,16 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
 "uTd" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/decal/strata_decals/mud_corner{
-	dir = 10
+	dir = 5
 	},
-/turf/open/gm/dirt/brown,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/interior/outside/bball/cave)
 "uTv" = (
 /turf/open/floor/strata/white_cyan2/west,
@@ -46915,6 +47379,9 @@
 "viG" = (
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/exterior/marsh/river)
+"viU" = (
+/turf/open/gm/dirt/brown/variant_3,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "viY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -12;
@@ -46942,7 +47409,7 @@
 /area/strata/ag/interior/mining_outpost/canteen)
 "vjF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -46999,8 +47466,16 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "vlC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/bball/cave)
 "vlG" = (
 /turf/open/floor/strata/orange_cover,
@@ -47024,7 +47499,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/strata/orange_cover,
+/turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "vmo" = (
 /obj/structure/platform_decoration/stone/soro/east,
@@ -47216,6 +47691,13 @@
 /obj/item/reagent_container/food/snacks/donkpocket,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/engineering/parts_storage)
+"vsM" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "vsR" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/structure/platform_decoration/stone/soro/north,
@@ -47300,6 +47782,12 @@
 /obj/item/device/camera,
 /turf/open/floor/carpet,
 /area/strata/ag/interior/restricted)
+"vwb" = (
+/obj/structure/machinery/door/airlock/almayer/generic/rusted_white{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/jungle/structures/research)
 "vwg" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/structure/platform/stone/soro/north,
@@ -47720,7 +48208,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/south)
 "vIy" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -47840,6 +48328,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/jungle/tearlake)
+"vLC" = (
+/obj/structure/bed/nest,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "vLP" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
 	pixel_x = -2;
@@ -48085,6 +48580,12 @@
 	},
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/exterior/marsh/island_marshes)
+"vWa" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_y = 6
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/jungle/structures/monitoring/west)
 "vWh" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = -8;
@@ -48165,6 +48666,13 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outside/secure_checkpoint)
+"wbq" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "wbr" = (
 /obj/structure/platform/stone/soro,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -48457,7 +48965,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east)
 "wkA" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -48566,6 +49074,15 @@
 	},
 /turf/open/asphalt/brown,
 /area/strata/ag/interior/outside/secure_checkpoint)
+"wnI" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/turf/open/gm/dirt/brown/variant_3,
+/area/strata/ag/interior/outside/bball/cave)
 "wnL" = (
 /obj/structure/platform_decoration/stone/soro/east,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -48864,7 +49381,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/research)
 "wxR" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -15;
@@ -49000,6 +49517,13 @@
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/underground_dorms/med2)
+"wCn" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "wCL" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = -6;
@@ -49101,7 +49625,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/exterior/marsh/crash)
 "wGC" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -49139,7 +49663,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/outpost_decks)
 "wJu" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = 7;
 	pixel_y = -8
@@ -49179,7 +49703,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "wKY" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -49230,7 +49754,7 @@
 /turf/open/asphalt/brown,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "wNn" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	layer = 4.1;
 	pixel_x = -16;
@@ -49300,8 +49824,8 @@
 /area/strata/ag/interior/outside/bball/cave)
 "wPD" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = -16;
-	pixel_y = -15
+	pixel_x = -22;
+	pixel_y = -23
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/spring_marshes)
@@ -49630,6 +50154,15 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/marsh/crash)
+"wZV" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/ag/interior/outside/bball/cave)
 "wZW" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -50268,7 +50801,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "xxt" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -18;
@@ -50333,7 +50866,7 @@
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/outpost_decks)
 "xzw" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	pixel_x = -15;
 	pixel_y = -7
@@ -50677,7 +51210,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/north_outpost)
 "xKb" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
 	pixel_x = -17;
@@ -51042,7 +51575,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen)
 "xUZ" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -51145,7 +51678,7 @@
 /turf/open/floor/strata/white_cyan3/west,
 /area/strata/ag/interior/outpost/med)
 "xXe" = (
-/obj/structure/flora/bush/large_jungle_bush{
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush2";
 	pixel_x = -17;
@@ -51371,12 +51904,8 @@
 /turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/strata/ag/exterior/jungle/carplake_center)
 "ydp" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
 /obj/item/reagent_container/spray/cleaner,
-/obj/item/reagent_container/spray/cleaner,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/underground_dorms/sec2)
 "ydz" = (
 /obj/item/toy/deck,
@@ -59601,7 +60130,7 @@ beY
 tFA
 wSb
 wSb
-tzN
+vsM
 wSb
 wSb
 iUq
@@ -60127,7 +60656,7 @@ eYE
 cxn
 rJr
 tFA
-tzN
+oFO
 wSb
 wSb
 tFA
@@ -60827,7 +61356,7 @@ qjD
 jRs
 tFA
 tFA
-tzN
+pEg
 wSb
 bjO
 tFA
@@ -61032,9 +61561,9 @@ tFA
 tFA
 tFA
 kRF
-bvD
-bvD
-bvD
+krU
+gmi
+xTU
 bvD
 bvM
 sQs
@@ -61207,9 +61736,9 @@ tFA
 pHO
 wSb
 miZ
+lSG
 bvD
-bvD
-bvD
+jJn
 xgU
 bvD
 bvD
@@ -61526,7 +62055,7 @@ lXd
 qkU
 jRs
 tFA
-tzN
+dsp
 wSb
 wSb
 bjO
@@ -61703,7 +62232,7 @@ lUg
 tFA
 wSb
 wSb
-tzN
+suq
 bjO
 tFA
 tFA
@@ -62227,7 +62756,7 @@ bdw
 wSb
 wSb
 tFA
-tzN
+uBi
 wSb
 bgx
 tFA
@@ -64704,7 +65233,7 @@ bTs
 hYc
 vmm
 aft
-vlG
+oMZ
 vxd
 vxd
 vxd
@@ -64879,7 +65408,7 @@ bTs
 hYc
 jVU
 oMZ
-vlG
+mKa
 vxd
 oIi
 oIi
@@ -65052,7 +65581,7 @@ kBr
 btX
 bTs
 hYc
-hOw
+bQI
 vxd
 vxd
 vxd
@@ -67773,7 +68302,7 @@ aFV
 aCu
 anu
 aHh
-ayw
+tjl
 aHh
 aHh
 goG
@@ -69310,8 +69839,8 @@ aHz
 nUz
 nUz
 aHz
-aag
-aam
+mLl
+wZV
 phA
 pIa
 aAD
@@ -69479,11 +70008,11 @@ nUz
 nUz
 pIa
 pIa
-aam
-aaq
+ixZ
+rQp
 aHz
-aao
-aao
+mgY
+vLC
 aam
 aam
 aam
@@ -69651,11 +70180,11 @@ aab
 nUz
 nUz
 nUz
-aag
-aam
+jkx
+fIx
 aan
-aan
-aam
+iQs
+rIS
 aam
 aam
 aam
@@ -69829,14 +70358,14 @@ nUz
 aal
 aHz
 wPs
-aan
+tYY
 aas
 bgn
 eMI
 wfK
 pIa
 pIa
-juz
+aAL
 aam
 seb
 xzL
@@ -70182,11 +70711,11 @@ aao
 kag
 sOO
 duF
-gcR
+wnI
 pIa
 nUz
 nUz
-uTd
+jYU
 twW
 aHz
 aQB
@@ -70361,7 +70890,7 @@ pIa
 nUz
 nUz
 nUz
-vlC
+ala
 aam
 aHz
 cfH
@@ -70535,8 +71064,8 @@ pIa
 nUz
 nUz
 vlC
-aam
-xUU
+kEK
+fcf
 aam
 pIa
 aaR
@@ -70706,7 +71235,7 @@ nUz
 pIa
 aam
 iZY
-ahn
+lxH
 dvc
 xVA
 aam
@@ -70879,10 +71408,10 @@ nUz
 nUz
 nUz
 pIa
-aam
-kHX
-aaw
-ahn
+rIS
+ucG
+lER
+hhg
 fdA
 aaq
 aam
@@ -71053,15 +71582,15 @@ nUz
 nUz
 nUz
 pIa
-aam
+duV
 aam
 hVO
 nXk
-aaw
+cfH
 tsI
 aan
-aan
-aam
+iZY
+uTd
 tgN
 pIa
 cVt
@@ -71229,13 +71758,13 @@ cpV
 cpV
 cpV
 cpV
-xVA
-phA
+iFF
+jYU
 aJn
 hhg
 sWC
 ivG
-pZr
+lxH
 quN
 cJH
 ikq
@@ -71410,10 +71939,10 @@ nMO
 aKw
 aLu
 gjP
-nMO
+ucN
 gjP
 gGX
-xyE
+cIs
 nMO
 adW
 aam
@@ -71762,7 +72291,7 @@ phA
 pIa
 aax
 cZZ
-ahn
+wxe
 twW
 nMO
 abr
@@ -72112,7 +72641,7 @@ aaw
 aaw
 aar
 duI
-mMN
+xVA
 kag
 nMO
 aam
@@ -72287,7 +72816,7 @@ aan
 abb
 aan
 aar
-dZE
+cSg
 naa
 nMO
 aam
@@ -72984,7 +73513,7 @@ bTs
 cpV
 aXZ
 qds
-nMO
+tJu
 cpV
 aaz
 csG
@@ -73611,7 +74140,7 @@ xmR
 vlm
 xjH
 bTF
-fzT
+ccO
 gbU
 hkC
 vtz
@@ -74394,7 +74923,7 @@ pIa
 rXZ
 mMN
 aam
-aWc
+adC
 nUz
 sLX
 aam
@@ -77724,7 +78253,7 @@ aUp
 bTs
 bTs
 apz
-cIb
+sCH
 ahZ
 eQo
 vCe
@@ -78422,7 +78951,7 @@ bof
 aUp
 akH
 ahZ
-tqK
+fIO
 ahZ
 ahZ
 pZi
@@ -78598,7 +79127,7 @@ aUp
 aaW
 akH
 apz
-cIb
+tWL
 jfo
 uyb
 aaI
@@ -79639,7 +80168,7 @@ mJN
 mHu
 bpE
 xGr
-oFy
+gYo
 apz
 blI
 aba
@@ -79821,7 +80350,7 @@ ado
 ado
 apz
 apz
-cIb
+oDx
 ahZ
 agS
 ahZ
@@ -79990,12 +80519,12 @@ arq
 akH
 bpE
 bpE
-acO
+viU
 apz
 apz
-cIb
+iKi
 ahZ
-cIb
+kWj
 ahZ
 ahZ
 ahZ
@@ -80169,7 +80698,7 @@ apz
 ahZ
 apz
 ahZ
-cIb
+foD
 ahZ
 ahZ
 ahZ
@@ -80337,17 +80866,17 @@ aaO
 cIb
 mND
 apz
-cIb
+dZE
 apz
 apz
 apz
-cIb
+sWH
 ahZ
 ahZ
 ahZ
 apz
 apz
-cIb
+dAb
 ahZ
 ahZ
 eQo
@@ -80517,7 +81046,7 @@ ahZ
 ahZ
 ahZ
 ahZ
-cIb
+cDx
 ahZ
 ahZ
 ahZ
@@ -80687,7 +81216,7 @@ aaQ
 ahZ
 ahZ
 ahZ
-cIb
+uNm
 ahZ
 ahZ
 apz
@@ -80695,7 +81224,7 @@ apz
 ahZ
 ahZ
 ahZ
-cIb
+uDT
 ahZ
 ado
 bmZ
@@ -80865,13 +81394,13 @@ cIb
 ahZ
 apz
 apz
-cIb
-cIb
+pZr
+rUH
 apz
 apz
 cIb
 apz
-cIb
+wbq
 ado
 bmZ
 abQ
@@ -81042,7 +81571,7 @@ aiW
 akH
 apz
 apz
-cIb
+wCn
 ahZ
 apz
 cIb
@@ -82356,7 +82885,7 @@ aad
 cxW
 qbR
 qAr
-ydp
+cxW
 cxW
 lpk
 aLc
@@ -82706,7 +83235,7 @@ xkj
 cxW
 hmA
 ekh
-ekh
+ydp
 uzb
 viA
 viA
@@ -82997,12 +83526,12 @@ vVK
 vVK
 bDm
 vVK
+isd
+isi
 vVK
 vVK
 vVK
-vVK
-vVK
-vVK
+isd
 vVK
 lmL
 bon
@@ -83180,7 +83709,7 @@ aez
 aMz
 vVK
 vVK
-lmL
+isd
 bon
 lmL
 vVK
@@ -83695,7 +84224,7 @@ bon
 lmL
 bon
 bon
-vVK
+lmL
 vVK
 aMz
 vVK
@@ -84997,7 +85526,7 @@ aad
 fSR
 uvw
 uvw
-oIU
+rCZ
 vit
 vit
 pwY
@@ -85171,7 +85700,7 @@ vit
 vit
 vit
 vit
-oIU
+tRP
 uvw
 uvw
 uvw
@@ -85346,7 +85875,7 @@ vit
 fSR
 vit
 vit
-oIU
+vWa
 aQM
 uvw
 uvw
@@ -86404,7 +86933,7 @@ iRk
 vit
 uvw
 uvw
-oIU
+byz
 uvw
 vit
 vit
@@ -86650,7 +87179,7 @@ bef
 aad
 aad
 bDm
-aex
+gip
 bDn
 bDn
 bDn
@@ -88768,7 +89297,7 @@ aiV
 ajC
 aiV
 abX
-bRU
+vwb
 bEE
 amY
 uux
@@ -90428,9 +90957,9 @@ oxW
 uno
 riq
 wFG
-pVw
+aad
 lno
-lXl
+pVw
 diZ
 dqo
 wFG
@@ -92088,7 +92617,7 @@ afX
 afY
 ahj
 ahJ
-ahh
+otj
 ahh
 bMP
 akj

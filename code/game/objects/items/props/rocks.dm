@@ -54,7 +54,6 @@
 	icon_state = "ground_colorable"
 	icon = 'icons/obj/structures/props/natural/rocks.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	density = TRUE
 	layer = TURF_LAYER
 
 /obj/structure/prop/colorable_rock/colorable/alt

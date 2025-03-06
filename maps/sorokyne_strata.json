@@ -3,7 +3,6 @@
     "map_path": "map_files/Sorokyne_Strata",
     "map_file": "Sorokyne_Strata.dmm",
     "webmap_url": "Sorokyne",
-
     "weather_holder": "/datum/weather_ss_map_holder/sorokyne",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/soro",
@@ -11,6 +10,7 @@
         "/datum/equipment_preset/survivor/engineer/soro",
         "/datum/equipment_preset/survivor/corporate/soro",
         "/datum/equipment_preset/survivor/security/soro",
+        "/datum/equipment_preset/survivor/upp/army",
         "/datum/equipment_preset/survivor/interstellar_human_rights_observer/soro"
     ],
     "defcon_triggers": [

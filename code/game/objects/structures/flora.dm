@@ -785,9 +785,9 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 // Large Jungle Bush - SORO - (Colorable)
 
-/obj/structure/flora/bush/large_jungle_bush
+/obj/structure/flora/jungle/thickbush/large_jungle_bush
 	name = "bush"
-	desc = "A pretty large jungle bush, it'll take something sharp and a lot of determination to clear away."
+	desc = "A large jungle bush, it'll take something sharp and a lot of determination to clear away."
 	icon = 'icons/obj/structures/props/natural/vegetation/colorable_junge_bush.dmi'
 	icon_state = "bush1"
 	density = FALSE
@@ -795,7 +795,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	fire_flag = FLORA_BURN_NO_SPREAD
 	health = 100
 
-/obj/structure/flora/bush/large_jungle_bush/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+/obj/structure/flora/jungle/thickbush/large_jungle_bush/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)

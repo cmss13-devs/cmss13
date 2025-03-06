@@ -136,7 +136,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	linked_lz = DROPSHIP_LZ1
 
 /area/strata/ag/exterior/jungle/carplake_center
-	name = "Deep Jungle - Carp Lake Center Island"
+	name = "Deep Jungle - Lake Center Island"
 	icon_state = "ug_jung_1"
 	weather_enabled = TRUE
 	unoviable_timer = FALSE

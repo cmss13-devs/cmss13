@@ -43,3 +43,4 @@
 
 /area/interior/vehicle/chimera
 	name = "chimera interior"
+	ambience_exterior = 'sound/vehicles/vtol/interior.ogg'

@@ -668,6 +668,23 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	else
 		gun_durability = 0
 	update_gun_durability()
+	check_worn_out()
+
+/obj/item/weapon/gun/proc/damage_gun_durability(amount = 1) //for more incremental use, such as rifle fire
+	if(gun_durability <= GUN_DURABILITY_BROKEN - 100) //as to prevent problems with normal rifle fire deleting the gun
+		qdel(src)
+	else if(prob(durability_loss * 2)) //durability loss should be doubled when shot
+		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
+	update_gun_durability()
+	check_worn_out()
+
+/obj/item/weapon/gun/proc/blast_gun_durability(amount = 1) //for more static use, such as explosive power
+	if(gun_durability <= GUN_DURABILITY_BROKEN - 50) //we dont want weak explosions to delete the gun
+		qdel(src)
+	else
+		gun_durability = max(gun_durability - (amount / 2), GUN_DURABILITY_BROKEN)
+	update_gun_durability()
+	check_worn_out()
 
 //JAM CODE END
 //

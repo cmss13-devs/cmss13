@@ -169,6 +169,7 @@
 		if(isigniter(detonator.a_right) && isigniter(detonator.a_left))
 			set_tripwire()
 			use_dir = TRUE
+			reaction_limits["max_ex_shards"] = round(reaction_limits["max_ex_shards"]/2)
 			return
 		else
 			..()

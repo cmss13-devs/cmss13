@@ -115,7 +115,7 @@
 	throw_range = 6
 	underslug_launchable = FALSE
 	explosion_power = 120
-	shrapnel_count = 48
+	shrapnel_count = 40
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 
@@ -129,7 +129,7 @@
 	throw_range = 6
 	underslug_launchable = FALSE
 	explosion_power = 60
-	shrapnel_count = 56
+	shrapnel_count = 40
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 /*
@@ -145,7 +145,7 @@
 	item_state = "grenade_m74_airburst_f_active"
 	explosion_power = 0
 	explosion_falloff = 25
-	shrapnel_count = 16
+	shrapnel_count = 12
 	det_time = 0 // Unused, because we don't use prime.
 	hand_throwable = FALSE
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR

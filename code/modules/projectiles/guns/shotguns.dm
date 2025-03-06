@@ -25,8 +25,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
 	can_jam = TRUE
 	jam_chance = 0.02 //preferably you increment the chances to double decimal places, above that could be problematic
-	unjam_chance = 80 //preferably you dont change this at all unless its a snowflake gun
-	durability_loss = 100 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right
+	unjam_chance = 95 //preferably you dont change this at all unless its a snowflake gun
+	durability_loss = 0.30 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
 
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = "shell_load"

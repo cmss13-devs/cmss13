@@ -15,6 +15,10 @@
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_SLOW
+	can_jam = TRUE
+	jam_chance = 0.05
+	unjam_chance = 100
+	durability_loss = 25
 
 	var/has_aimed_shot = TRUE
 	var/aiming_time = 1.25 SECONDS

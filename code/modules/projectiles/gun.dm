@@ -640,10 +640,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		update_gun_durability()
 		check_worn_out(user)
 
-	if(gun_durability <= GUN_DURABILITY_LOW)
-		jam_chance = 80 // near - guaranteed jam, clean your shit
-	else
-		jam_chance = 0.05 * (GUN_DURABILITY_MEDIUM - gun_durability) // scale jam chance based on durability
+	jam_chance = 0.05 * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -665,6 +662,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		balloon_alert(user, "*repaired*")
 	check_worn_out(user)
 
+/obj/item/weapon/gun/proc/destroy_gun_durability() //for acid use specifically, ill probably refactor this
+	if(gun_durability == GUN_DURABILITY_BROKEN) //fix your guns man
+		qdel(src)
+	else
+		gun_durability = 0
+	update_gun_durability()
 
 //JAM CODE END
 //

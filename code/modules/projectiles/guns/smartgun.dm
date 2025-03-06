@@ -37,9 +37,9 @@
 	start_semiauto = FALSE
 	start_automatic = TRUE
 	can_jam = TRUE
-	jam_chance = 0.02 //preferably you increment the chances to double decimal places, above that could be problematic
-	unjam_chance = 80 //preferably you dont change this at all unless its a snowflake gun
-	durability_loss = 100 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right
+	jam_chance = 0.01 //preferably you increment the chances to double decimal places, above that could be problematic
+	unjam_chance = 75 //preferably you dont change this at all unless its a snowflake gun
+	durability_loss = 1 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
 
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(

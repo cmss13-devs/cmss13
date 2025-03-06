@@ -36,8 +36,8 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	can_jam = TRUE
 	jam_chance = 0.02 //preferably you increment the chances to double decimal places, above that could be problematic
-	unjam_chance = 80 //preferably you dont change this at all unless its a snowflake gun
-	durability_loss = 100 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right
+	unjam_chance = 95 //preferably you dont change this at all unless its a snowflake gun
+	durability_loss = 0.35 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
 
 /obj/item/weapon/gun/rifle/unique_action(mob/user)
 	jam_unique_action(user)
@@ -909,6 +909,9 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	recoil = RECOIL_AMOUNT_TIER_5
+	jam_chance = 0.15
+	unjam_chance = 75
+	durability_loss = 0.50
 
 /obj/item/weapon/gun/rifle/mar40/lmg/tactical
 	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals. This one has been equipped with an after-market ammo-counter."
@@ -1420,6 +1423,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	jam_chance = 0.25
+	unjam_chance = 85
+	durability_loss = 0.45
 
 
 /obj/item/weapon/gun/rifle/lmg/tactical

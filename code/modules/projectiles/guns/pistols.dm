@@ -37,8 +37,8 @@
 	gun_category = GUN_CATEGORY_HANDGUN
 	can_jam = TRUE
 	jam_chance = 0.02 //preferably you increment the chances to double decimal places, above that could be problematic
-	unjam_chance = 80 //preferably you dont change this at all unless its a snowflake gun
-	durability_loss = 100 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right
+	unjam_chance = 95 //preferably you dont change this at all unless its a snowflake gun
+	durability_loss = 0.25 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
 
 
 /obj/item/weapon/gun/pistol/Initialize(mapload, spawn_empty)

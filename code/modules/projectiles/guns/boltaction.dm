@@ -90,8 +90,13 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	can_jam = TRUE
+	jam_chance = 0.01
+	unjam_chance = 95
+	durability_loss = 0.01 //why make bolties more useless
 
 /obj/item/weapon/gun/boltaction/unique_action(mob/M)
+	jam_unique_action(user)
 	if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
 		to_chat(M, SPAN_DANGER("You can't cycle the bolt again right now."))
 		return
@@ -213,6 +218,11 @@
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
+	can_jam = TRUE
+	jam_chance = 0.01
+	unjam_chance = 95
+	durability_loss = 0.50 //ok this is an exception
+
 
 /obj/item/weapon/gun/boltaction/vulture/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 24, "under_x" = 25, "under_y" = 14, "stock_x" = 11, "stock_y" = 15)

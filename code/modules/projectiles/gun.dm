@@ -598,7 +598,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		check_worn_out(user)
 		return NONE
 	if(jammed)
-		if(world.time % 3)
+		if(prob(30))
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")

@@ -1033,6 +1033,7 @@
 "adU" = (
 /obj/structure/closet/secure_closet/security/soro,
 /obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/structures/research)
 "adV" = (
@@ -2939,8 +2940,8 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/item/tank/emergency_oxygen/engi,
 /turf/open/floor/strata/multi_tiles/west,
@@ -3735,6 +3736,10 @@
 "aqB" = (
 /obj/item/storage/box/nade_box/tear_gas,
 /obj/structure/closet/secure_closet/security/soro,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "aqC" = (
@@ -4867,13 +4872,13 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/exterior/outpost_decks)
 "avK" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
@@ -5162,9 +5167,6 @@
 "axd" = (
 /obj/structure/closet/bombcloset,
 /obj/item/clothing/suit/armor/bulletproof,
-/obj/item/stack/sheet/mineral/plastic,
-/obj/item/stack/sheet/mineral/plastic,
-/obj/item/stack/sheet/mineral/plastic,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "axe" = (
@@ -6567,9 +6569,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/stack/sheet/mineral/plastic,
-/obj/item/stack/sheet/mineral/plastic,
-/obj/item/stack/sheet/mineral/plastic,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "aEo" = (
@@ -7279,9 +7278,6 @@
 /obj/structure/closet/bombcloset,
 /obj/item/clothing/suit/armor/bulletproof,
 /obj/item/stack/sheet/plasteel/medium_stack,
-/obj/item/stack/sheet/mineral/plastic,
-/obj/item/stack/sheet/mineral/plastic,
-/obj/item/stack/sheet/mineral/plastic,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "aIZ" = (
@@ -7728,13 +7724,13 @@
 /turf/open/floor/strata/orange_edge/west,
 /area/strata/ag/interior/mining_outpost/central)
 "aLk" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
@@ -8180,13 +8176,13 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "aNM" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
@@ -8194,13 +8190,13 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
 "aNN" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/asphalt/cement,
@@ -11420,13 +11416,13 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
 "bgQ" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
@@ -11598,13 +11594,13 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/ag/exterior/caves/lz_caves)
 "bhL" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
@@ -12820,9 +12816,6 @@
 /obj/structure/closet/emcloset,
 /obj/item/coin/marine/engineer,
 /obj/item/storage/pill_bottle/kelotane/skillless,
-/obj/item/stack/sheet/mineral/plastic,
-/obj/item/stack/sheet/mineral/plastic,
-/obj/item/stack/sheet/mineral/plastic,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/foyer)
 "bpg" = (
@@ -18129,6 +18122,7 @@
 /obj/item/clothing/shoes/jackboots,
 /obj/item/clothing/shoes/jackboots,
 /obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/engi/drome)
 "clG" = (
@@ -33999,13 +33993,13 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/outpost/underground_dorms/admin1)
 "mrG" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
@@ -34041,9 +34035,9 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/exterior/outpost_decks)
@@ -37442,13 +37436,13 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "oOB" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
@@ -41744,13 +41738,13 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "rxL" = (
-/obj/item/clothing/shoes/marine/upp,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},

@@ -339,14 +339,13 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/rocket_launchers.dmi'
 	icon_state = "hjra12"
 	item_state = "hjra12"
-	skill_locked = FALSE
+	skill_locked = TRUE
 	current_mag = /obj/item/ammo_magazine/rocket/upp/at
 
 	attachable_allowed = list(/obj/item/attachable/upp_rpg_breech)
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
-
-	flags_item = TWOHANDED
+	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/launcher/rocket/upp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = -6, "stock_y" = 16, "special_x" = 37, "special_y" = 16)

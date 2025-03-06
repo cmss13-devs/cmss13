@@ -1,45 +1,44 @@
-// as far as i understand this is only done for one insert
-//crashlanding-upp-bar.dmm map.
+// "SOF's 121st Special Reconnaissance Detachment the SOF's primary Reconnaissance group in the Bau Sau sector, often training along side the CEC and recruiting from the CEC, they are the first to be deployed in the event of war."
+
 /datum/equipment_preset/survivor/upp/SOF_survivor
 	name = "Survivor - UPP SOF"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	origin_override = ORIGIN_UPP
 	rank = JOB_SURVIVOR
+	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	minimap_icon = "upp_pvt"
 	minimap_background = "background_upp"
-	role_comm_title = "173/RECON"
+	role_comm_title = "121/RECON"
 	idtype = /obj/item/card/id/dogtag/upp
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 	)
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/SOF_belt/t73, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/ak4047, WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak4047, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak4047, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak4047, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak4047, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)
+	..()
 
-// /obj/effect/landmark/survivor_spawner/upp/soldier
-//crashlanding-upp-bar.dmm
+// /obj/effect/landmark/survivor_spawner/SOF_survivor/soldier
+
 /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
 	name = "Survivor - UPP SOF Soldier"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
@@ -50,11 +49,12 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/soldier/load_gear(mob/living/carbon/human/new_human)
-
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(new_human), WEAR_R_STORE)
 	..()
 
-// /obj/effect/landmark/survivor_spawner/upp_sapper
-//crashlanding-upp-bar.dmm
+// /obj/effect/landmark/survivor_spawner/SOF_survivor/sapper
+
 /datum/equipment_preset/survivor/upp/SOF_survivor/sapper
 	name = "Survivor - UPP SOF Sapper"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
@@ -67,15 +67,15 @@
 	skills = /datum/skills/military/survivor/upp_sapper
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/sapper/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert/black(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical(new_human), WEAR_R_STORE)
-
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full(new_human), WEAR_R_STORE)
 	..()
 
-// /obj/effect/landmark/survivor_spawner/upp_medic
-//crashlanding-upp-bar.dmm
+// /obj/effect/landmark/survivor_spawner/SOF_survivor/medic
+
 /datum/equipment_preset/survivor/upp/SOF_survivor/medic
 	name = "Survivor - UPP SOF Medic"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
@@ -88,17 +88,17 @@
 	skills = /datum/skills/military/survivor/upp_medic
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/medic/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/medic(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new/obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/partial(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/black/partial(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/medic(new_human), WEAR_BACK)
-
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 	..()
 
-// /obj/effect/landmark/survivor_spawner/upp_specialist
-//crashlanding-upp-bar.dmm
+// /obj/effect/landmark/survivor_spawner/SOF_survivor/specialist
+
 /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
 	name = "Survivor - UPP SOF Specialist"
 	assignment = JOB_UPP_SPECIALIST
@@ -106,37 +106,45 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/military/survivor/upp_spec
+	skills = /datum/skills/military/survivor/upp_spec/rocket
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/specialist/load_gear(mob/living/carbon/human/new_human)
-
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/heavy, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/upp(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/upp/at(new_human), WEAR_IN_BACK)
 	..()
 
-//crashlanding-upp-bar.dmm
-// /obj/effect/landmark/survivor_spawner/squad_leader
+
+// /obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader
+
 /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader
 	name = "Survivor - UPP SOF Squad Leader"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_LEADER
 	rank = JOB_UPP_LEADER
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
-	role_comm_title = "173/RECON SL"
+	role_comm_title = "121/RECON SL"
 
 	minimap_icon = "upp_sl"
 
 	skills = /datum/skills/military/survivor/upp_sl
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/medium, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet/SOF_beret(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/SOF_belt/revolver/upp(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/SOF_belt/revolver/upp(new_human), WEAR_WAIST)
-
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 	..()
 
 //it's used on all of the above in their spawner.
-/datum/equipment_preset/synth/survivor/upp
-	name = "Survivor - Synthetic - UPP Synth"
+
+/datum/equipment_preset/synth/survivor/upp/SOF_synth
+	name = "Survivor - Synthetic - UPP SOF Synth"
 
 	languages = ALL_SYNTH_LANGUAGES_UPP
 	assignment = JOB_UPP_SUPPORT_SYNTH
@@ -146,27 +154,28 @@
 	skills = /datum/skills/colonial_synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
-	role_comm_title = "173/RECON Syn"
+	role_comm_title = "121/RECON Syn"
 	minimap_background = "background_upp"
 	minimap_icon = "upp_synth"
 
-/datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet, WEAR_HEAD)
+/datum/equipment_preset/synth/survivor/upp/SOF_synth/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet/SOF_beret(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/synth, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/small_stack, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/hyperdyne, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/partial, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/black/partial, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/uppsynth, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet(new_human), WEAR_IN_BACK)

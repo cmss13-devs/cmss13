@@ -902,6 +902,16 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/ivanberet/SOF_beret
+	name = "\improper SOF Beret"
+	desc = "A finely crafted beret worn by members of the UPP Space Operations Forces. It signifies service in the void, from deep-space missions to planetary operations, and is a mark of discipline and camaraderie among its wearers."
+	icon_state = "SOF_beret"
+	item_state = "SOF_beret"
+
+/obj/item/clothing/head/ivanberet/SOF_beret/blue
+	icon_state = "SOF_blue_beret"
+	item_state = "SOF_blue_beret"
+
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."

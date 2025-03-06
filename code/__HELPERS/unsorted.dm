@@ -442,8 +442,8 @@
  * An alternative to orange() that should perform better for distances >= 5 because
  * of ORANGE_TURFS utilizing RECT_TURFS.
  *
- * Returns a list of turfs and those turf's contents, excluding center and
- * ignoring visibility (like orange).
+ * Returns a list of turfs and those turf's contents, excluding center (and
+ * its contents). Ignores visibility (like orange).
  */
 /proc/long_orange(dist=0, atom/center)
 	if(!dist)
@@ -460,8 +460,8 @@
  * An alternative to range() that should perform better for distances >= 5 because
  * of RANGE_TURFS utilizing RECT_TURFS.
  *
- * Returns a list of turfs and those turf's contents, including center and
- * ignoring visibility (like orange).
+ * Returns a list of turfs and those turf's contents, including center (and its
+ * contents if a turf). Ignores visibility (like range).
  */
 /proc/long_range(dist=0, atom/center)
 	var/list/turfs = RANGE_TURFS(dist, center)

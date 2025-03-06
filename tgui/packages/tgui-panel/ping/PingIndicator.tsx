@@ -20,18 +20,13 @@ export const PingIndicator = (props) => {
     new Color(60, 220, 40),
   ]).toString();
   const roundtrip = ping.roundtrip ? toFixed(ping.roundtrip) : '--';
-
-  function handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    e.preventDefault();
-    act('ping_relays');
-  }
   return (
     <Tooltip content="Ping relays" position="bottom-start">
       <div
         tabIndex={0}
         role="button"
         className="Ping"
-        onClick={(e) => handleClick(e)}
+        onClick={() => act('ping_relays')}
       >
         <Box className="Ping__indicator" backgroundColor={color} />
         {roundtrip}

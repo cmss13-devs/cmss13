@@ -275,7 +275,7 @@
 					var/track = "(<a href='byond://?src=\ref[listener];track=\ref[parent_xeno]'>F</a>)"
 					listener.show_message(SPAN_XENO("Hivemind, [parent_xeno.name][track] hisses, <span class='normal'>'[message]'</span>"), SHOW_MESSAGE_AUDIBLE)
 
-			else if((hive.hivenumber == xeno_hivenumber(listener)) && HAS_TRAIT(listener, TRAIT_MOBA_MAP_PARTICIPANT(map_id)))
+			else if((parent_xeno.hive.hivenumber == xeno_hivenumber(listener)) && HAS_TRAIT(listener, TRAIT_MOBA_MAP_PARTICIPANT(map_id)))
 				var/overwatch_insert = " (<a href='byond://?src=\ref[listener];[XENO_OVERWATCH_TARGET_HREF]=\ref[parent_xeno];[XENO_OVERWATCH_SRC_HREF]=\ref[listener]'>watch</a>)"
 				listener.show_message(SPAN_XENO("Hivemind, [parent_xeno.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>"), SHOW_MESSAGE_AUDIBLE)
 

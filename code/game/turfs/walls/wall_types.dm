@@ -351,6 +351,9 @@
 	color = "#c6a480"
 	baseturfs = /turf/open/gm/dirt
 
+/turf/closed/wall/mineral/sandstone/hull
+	turf_flags = TURF_HULL
+
 /turf/closed/wall/mineral/sandstone/runed
 	name = "sandstone temple wall"
 	desc = "A heavy wall of sandstone."
@@ -491,6 +494,9 @@
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "wood_variant")
+
+/turf/closed/wall/wood/hull
+	turf_flags = TURF_HULL
 
 //Colorable rocks. Looks like moonsand.
 

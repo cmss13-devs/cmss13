@@ -29,6 +29,22 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 	src.path_to_spawn = path_to_spawn
 	GLOB.uninitialized_moba_reuse_object_spawners += src
 
+/obj/effect/moba_unslashanator
+
+/obj/effect/moba_unslashanator/Initialize(mapload)
+	. = ..()
+	if(mapload)
+		return INITIALIZE_HINT_LATELOAD
+	else
+		addtimer(CALLBACK(src, PROC_REF(LateInitialize)), 2 SECONDS) // gross hack to make sure everything else on the turf is loaded first
+
+/obj/effect/moba_unslashanator/LateInitialize()
+	. = ..()
+	for(var/obj/structure/thing in loc.contents)
+		thing.unslashable = TRUE
+		thing.unacidable = TRUE
+	qdel(src)
+
 /obj/structure/flora/grass/tallgrass/jungle/moba
 	cut_level = 1 // Magic number because we don't have the defines in this file
 	desc = "A clump of vibrant jungle grasses. They look like they would hide someone pretty well."

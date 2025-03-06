@@ -1220,6 +1220,9 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
+"eb" = (
+/turf/open/floor/hybrisa/engineership/engineer_floor8,
+/area/misc/moba/base/fountain)
 "ec" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	pixel_x = -26;
@@ -2602,7 +2605,7 @@
 "ic" = (
 /obj/effect/landmark/moba_base,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/west,
-/area/misc/moba/base)
+/area/misc/moba/base/fountain)
 "id" = (
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_y = 32
@@ -4118,10 +4121,10 @@
 	dir = 8
 	},
 /turf/open/floor/hybrisa/engineership/engineer_floor9,
-/area/misc/moba/base)
+/area/misc/moba/base/fountain)
 "mW" = (
 /turf/open/floor/hybrisa/engineership/engineer_floor13/west,
-/area/misc/moba/base)
+/area/misc/moba/base/fountain)
 "mX" = (
 /turf/open/floor/hybrisa/engineership/engineer_floor1,
 /area/misc/moba/base)
@@ -4168,7 +4171,7 @@
 	right_side = 1
 	},
 /turf/open/shuttle/red,
-/area/misc/moba/base)
+/area/misc/moba/base/fountain)
 "nf" = (
 /obj/item/stool{
 	layer = 5;
@@ -4375,7 +4378,7 @@
 "nF" = (
 /obj/effect/decal/hybrisa/hull_angled2,
 /turf/open/floor/hybrisa/engineership/engineer_floor3,
-/area/misc/moba/base)
+/area/misc/moba/base/fountain)
 "nG" = (
 /obj/effect/landmark/moba_tunnel_spawner,
 /turf/open/floor/almayer/emeraldfull,
@@ -5250,7 +5253,7 @@
 	dir = 4
 	},
 /turf/open/floor/hybrisa/engineership/engineer_floor3,
-/area/misc/moba/base)
+/area/misc/moba/base/fountain)
 "qu" = (
 /obj/effect/decal/hybrisa/hull_angled2{
 	dir = 8
@@ -9064,6 +9067,52 @@
 /obj/effect/moba_minion_checkpoint/left/top_straight3,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/misc/moba)
+"AR" = (
+/turf/open/floor/hybrisa/engineership/engineer_floor1,
+/area/misc/moba/base/fountain)
+"AS" = (
+/turf/open/floor/corsat/squareswood/north,
+/area/misc/moba/base/fountain)
+"AT" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/misc/moba/base/fountain)
+"AU" = (
+/obj/effect/decal/hybrisa/hull_angled,
+/turf/open/floor/hybrisa/engineership/engineer_floor8,
+/area/misc/moba/base/fountain)
+"AV" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 8
+	},
+/turf/open/floor/plating/engineer_ship,
+/area/misc/moba/base/fountain)
+"AW" = (
+/turf/open/floor/hybrisa/engineership/engineer_floor4,
+/area/misc/moba/base/fountain)
+"AX" = (
+/turf/open/shuttle/red,
+/area/misc/moba/base/fountain)
+"AY" = (
+/turf/open/floor/hybrisa/engineership/engineer_floor3,
+/area/misc/moba/base/fountain)
+"AZ" = (
+/obj/effect/decal/hybrisa/hull_angled{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/engineership/engineer_floor8,
+/area/misc/moba/base/fountain)
+"Ba" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full";
+	dir = 1
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/misc/moba/base/fountain)
 "BG" = (
 /obj/effect/moba_minion_checkpoint/left/top_straight4,
 /turf/open/hybrisa/street/sidewalk/north,
@@ -9235,9 +9284,9 @@ ss
 lZ
 mV
 mV
-lZ
+AV
 mV
-lZ
+AV
 mV
 mV
 lZ
@@ -9347,13 +9396,13 @@ ss
 jw
 mb
 iH
-jz
+eb
 mW
 mW
 mW
 mW
 mW
-jz
+eb
 lp
 lq
 jw
@@ -9404,13 +9453,13 @@ jw
 jx
 ra
 jz
-mX
-ma
+AR
+AZ
 mW
 mW
 mW
-ls
-mX
+AU
+AR
 jz
 lr
 jx
@@ -9463,9 +9512,9 @@ ra
 ra
 ma
 qt
-nH
-nI
-nH
+AW
+AY
+AW
 nF
 ls
 lr
@@ -17898,11 +17947,11 @@ kw
 kw
 ku
 ku
-ku
-kv
-kv
-kv
-ku
+AS
+AX
+AX
+AX
+AS
 ku
 ku
 kw
@@ -17954,13 +18003,13 @@ ju
 lo
 ju
 sr
-ku
-ku
-kv
-kv
-kv
-ku
-ku
+AS
+AS
+AX
+AX
+AX
+AS
+AS
 mU
 ju
 lo
@@ -18011,13 +18060,13 @@ ju
 lo
 ju
 ju
-rF
-ku
-kv
-kv
-kv
-ku
-js
+Ba
+AS
+AX
+AX
+AX
+AS
+AT
 ju
 ju
 lo
@@ -18068,13 +18117,13 @@ iC
 ju
 lo
 lo
-rF
-ku
-kv
+Ba
+AS
+AX
 ne
-kv
-ku
-js
+AX
+AS
+AT
 lo
 lo
 ju
@@ -18125,13 +18174,13 @@ iC
 iC
 ju
 ju
-rF
-ku
-kv
-kv
-kv
-ku
-js
+Ba
+AS
+AX
+AX
+AX
+AS
+AT
 ju
 ju
 iC

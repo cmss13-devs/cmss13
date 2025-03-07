@@ -27,6 +27,9 @@
 	move_momentum_build_factor = 1.5
 	move_turn_momentum_loss_factor = 0.8
 
+	passengers_slots = 9
+	xenos_slots = 5
+
 	vehicle_light_power = 4
 	vehicle_light_range = 5
 
@@ -93,6 +96,19 @@
 	QDEL_NULL(shadow_holder)
 
 	. = ..()
+
+/obj/vehicle/multitile/chimera/load_role_reserved_slots()
+	var/datum/role_reserved_slots/RRS = new
+	RRS.category_name = "Crewmen"
+	RRS.roles = list(JOB_OPERATIONS_PILOT, JOB_DROPSHIP_CREW_CHIEF)
+	RRS.total = 2
+	role_reserved_slots += RRS
+
+	RRS = new
+	RRS.category_name = "Synthetic Unit"
+	RRS.roles = list(JOB_SYNTH, JOB_WO_SYNTH)
+	RRS.total = 1
+	role_reserved_slots += RRS
 
 /obj/vehicle/multitile/chimera/update_icon()
 	. = ..()

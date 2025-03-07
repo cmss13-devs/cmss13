@@ -977,9 +977,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
-		if(stun_modifier > 0) //only big xenos get stun, all take damage
+		if(stun_modifier > 0)
 			var/base_stun_duration = 2
-			is(xeno_victim.mob_size >= MOB_SIZE_BIG)
+			if(xeno_victim.mob_size >= MOB_SIZE_BIG)
 				base_stun_duration = 5
 			xeno_victim.KnockDown(base_stun_duration * height * stun_modifier)
 			xeno_victim.Stun(base_stun_duration * height * stun_modifier)

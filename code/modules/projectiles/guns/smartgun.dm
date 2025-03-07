@@ -371,11 +371,12 @@
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 //more general procs
-// ISSUE = When I toggle frontline mode on, everything goes to shit and muzzle flashes stop working
-/obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user)
-	to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "have no damage falloff but be unable to shoot through friendlies"].")
-	balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
+
+/obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user, silent)
+	to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
+	if(!silent)
+		balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
+		playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
 ///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
 	if (!frontline_enabled)
@@ -557,9 +558,11 @@
 	var/turf/T
 
 	for(var/mob/living/M in orange(range, user)) // orange allows sentry to fire through gas and darkness
-		if((M.stat & DEAD)) continue // No dead or non living.
+		if((M.stat & DEAD))
+			continue // No dead or non living.
 
-		if(M.get_target_lock(user.faction_group)) continue
+		if(M.get_target_lock(user.faction_group))
+			continue
 		if(angle > 0)
 			var/opp
 			var/adj
@@ -579,7 +582,8 @@
 					adj = user.x-M.x
 
 			var/r = 9999
-			if(adj != 0) r = abs(opp/adj)
+			if(adj != 0)
+				r = abs(opp/adj)
 			var/angledegree = arcsin(r/sqrt(1+(r*r)))
 			if(adj < 0)
 				continue
@@ -854,3 +858,25 @@
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_TWE
+
+
+//  Solar devils SG, frontline mode only
+
+/obj/item/weapon/gun/smartgun/pve
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_auto_fire,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
+
+/obj/item/weapon/gun/smartgun/pve/Initialize(mapload, ...)
+	. = ..()
+	toggle_frontline_mode(null, TRUE)
+
+/obj/item/weapon/gun/smartgun/pve/set_gun_config_values()
+	..()
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3

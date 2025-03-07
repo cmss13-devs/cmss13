@@ -220,7 +220,7 @@
 			return
 
 		playsound(tool, 'sound/machines/lockenable.ogg', 25)
-		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),\
+		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),
 		SPAN_NOTICE("You begin to fix any tampering to [src]."))
 		tool.icon_state = "[tool.icon_state]_on"
 

@@ -1,7 +1,7 @@
 /datum/emergency_call/contractors
 	name = "Military Contractors (Squad) (Friendly)"
 	mob_max = 7
-	probability = 20
+	probability = 10
 
 	max_engineers =  1
 	max_medics = 1
@@ -71,7 +71,7 @@
 	to_chat(M, SPAN_BOLD("Under the directive of the VAI executive board, you have been assist in riot control, military aid, and to assist USCMC forces wherever possible."))
 	to_chat(M, SPAN_BOLD("The USCSS Inheritor is staffed with crew of roughly three hundred military contractors, and fifty support personnel."))
 	to_chat(M, SPAN_BOLD("Assist the USCMC Force of the [MAIN_SHIP_NAME] however you can."))
-	to_chat(M, SPAN_BOLD("As a side-objective, VAI has been hired by an unknown benefactor to engage in corporate espionage and sabotage against Weyland-Yutani, avoid direct conflict; you aren't VAISO; but attempt to recover Wey-Yu secrets and plans if possible."))
+	to_chat(M, SPAN_BOLD("As a side-objective, VAI has been hired by an unknown benefactor to engage in corporate espionage and sabotage against Weyland-Yutani, do not get into a fight, but attempt to recover Wey-Yu secrets and plans if possible."))
 
 
 /datum/emergency_call/contractors/platoon
@@ -85,9 +85,9 @@
 	max_synths = 2
 
 /datum/emergency_call/contractors/covert
-	name = "Military Contractors (Covert) (Hostile to WY)"
+	name = "Military Contractors (Covert) (Friendly)"
 	mob_max = 7
-	probability = 20
+	probability = 10
 	max_medics = 1
 	max_engineers = 1
 	max_heavies = 1

@@ -73,6 +73,10 @@
 
 	give_action(src, /datum/action/ghost)
 
+	if(!should_block_game_interaction(src) && istype(SSticker.mode, /datum/game_mode/colonialmarines) && !(datum_flags & DF_VAR_EDITED) && ckey)
+		var/datum/entity/marine_death/death_entry = DB_ENTITY(/datum/entity/marine_death)
+		death_entry.load_data(src, cause)
+
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)
 

@@ -861,6 +861,7 @@
 #include "code\game\jobs\job\command\auxiliary\crew_chief.dm"
 #include "code\game\jobs\job\command\auxiliary\dropship_pilot.dm"
 #include "code\game\jobs\job\command\auxiliary\intel.dm"
+#include "code\game\jobs\job\command\auxiliary\operations_pilot.dm"
 #include "code\game\jobs\job\command\auxiliary\senior.dm"
 #include "code\game\jobs\job\command\auxiliary\tank_crew.dm"
 #include "code\game\jobs\job\command\cic\captain.dm"

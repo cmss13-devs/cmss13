@@ -47,16 +47,17 @@ export const settingsMiddleware = (store) => {
       type === updateHighlightSetting.type
     ) {
       // Set client theme
-      let theme = payload?.theme;
-      if (!theme) {
+      const theme = payload?.theme;
+      if (theme) {
+        setClientTheme(theme);
+      } else if (type === loadSettings.type) {
         store.dispatch(
           updateSettings({
             theme: THEMES[0],
           }),
         );
-        theme = THEMES[0];
+        setClientTheme(THEMES[0]);
       }
-      setClientTheme(theme);
       // Pass action to get an updated state
       next(action);
       const settings = selectSettings(store.getState());

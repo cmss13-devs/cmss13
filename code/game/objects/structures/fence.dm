@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	name = "electrified grille"
 	desc = "A dark reinforced mesh grille with warning stripes, equipped with Tesla-like coils to regulate high voltage current. It is highly electrified and dangerous when powered."
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	icon_state = "highvoltagegrille_off"
+	icon_state = "highvoltagegrille0_off"
 	basestate = "highvoltagegrille"
 	throwpass = TRUE
 	unacidable = TRUE

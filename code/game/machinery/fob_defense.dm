@@ -708,7 +708,7 @@
 	name = "\improper UE-02 Deployable Fence"
 	desc = "Light deployable fencing. While incredibly lacking in durability, it is able to transmit near-lethal electric shocks when powered."
 	icon = 'icons/obj/structures/machinery/fob_machinery/electric_fence.dmi'
-	icon_state = "fence0"
+	icon_state = "fence0_off"
 	basestate = "fence"
 	throwpass = TRUE
 	unacidable = TRUE

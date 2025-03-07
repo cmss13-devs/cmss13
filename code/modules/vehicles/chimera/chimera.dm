@@ -1,4 +1,6 @@
+#define STATE_TUGGED "tugged"
 #define STATE_STOWED "grounded"
+#define STATE_DEPLOYED "deployed"
 #define STATE_TAKEOFF_LANDING "takeoff_landing"
 #define STATE_VTOL "vtol"
 #define STATE_FLIGHT "flight"
@@ -12,13 +14,11 @@
 	bound_width = 96
 	bound_height = 96
 
-	bound_x = -32
-	bound_y = -64
-
 	pixel_x = -64
-	pixel_y = -80
+	pixel_y = -32
 
-	luminosity = 0
+	bound_x = -32
+	bound_y = 0
 
 	interior_map = /datum/map_template/interior/chimera
 
@@ -38,9 +38,9 @@
 	)
 
 	entrances = list(
-		"left" = list(2, 0),
-		"right" = list(-2, 0),
-		"back" = list(0, 1),
+		"left" = list(2, 1),
+		"right" = list(-2, 1),
+		"back" = list(0, 3),
 	)
 
 	seats = list(
@@ -63,6 +63,8 @@
 
 	var/obj/chimera_shadow/shadow_holder
 
+	var/busy = FALSE
+
 /obj/chimera_shadow
 	icon = 'icons/obj/vehicles/chimera.dmi'
 	pixel_x = -64
@@ -73,6 +75,7 @@
 	. = ..()
 	add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
 	shadow_holder = new(src)
+	update_icon()
 
 /obj/vehicle/multitile/chimera/Destroy()
 	QDEL_NULL(shadow_holder)
@@ -81,10 +84,6 @@
 
 /obj/vehicle/multitile/chimera/update_icon()
 	. = ..()
-
-	var/display_state = state == STATE_TAKEOFF_LANDING ? STATE_VTOL : state
-
-	shadow_holder.icon_state = "[display_state]_shadow"
 
 	switch (state)
 		if(STATE_VTOL, STATE_TAKEOFF_LANDING)
@@ -99,9 +98,21 @@
 		if(STATE_STOWED)
 			icon_state = "stowed"
 			overlays += image(icon, "stowed_lights")
+		if(STATE_DEPLOYED)
+			icon_state = "flight"
+			overlays += image(icon, "stowed_lights")
+		if(STATE_TUGGED)
+			icon_state = "stowed"
+			overlays += image(icon, "stowed_lights")
+			overlays += image(icon, "tug_underlay", layer = BELOW_MOB_LAYER)
 
+	if(shadow_holder)
+		shadow_holder.icon_state = "[icon_state]_shadow"
 
 /obj/vehicle/multitile/chimera/relaymove(mob/user, direction)
+	if(state == STATE_TUGGED)
+		return ..()
+
 	if(last_turn + turn_delay > world.time)
 		return FALSE
 
@@ -117,8 +128,11 @@
 /obj/vehicle/multitile/chimera/try_rotate(deg)
 	. = ..()
 
-	if(.)
-		last_turn = world.time
+	if(!.)
+		return
+
+	last_turn = world.time
+		
 
 /obj/vehicle/multitile/chimera/process(deltatime)
 	if (state == STATE_FLIGHT)
@@ -132,8 +146,16 @@
 		playsound(loc, 'sound/vehicles/vtol/exteriorflight.ogg', 25, FALSE)
 
 /obj/vehicle/multitile/chimera/before_move(direction)
+	if(state != STATE_FLIGHT && state != STATE_VTOL)
+		return
+	
+	var/turf/below = SSmapping.get_turf_below(get_turf(src))
+
+	if(!below)	
+		return
+
 	shadow_holder.dir = direction
-	shadow_holder.forceMove(get_step(SSmapping.get_turf_below(src), direction))
+	shadow_holder.forceMove(below)
 
 /obj/vehicle/multitile/chimera/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
@@ -145,12 +167,15 @@
 		/obj/vehicle/multitile/proc/name_vehicle,
 		/obj/vehicle/multitile/chimera/proc/takeoff,
 		/obj/vehicle/multitile/chimera/proc/land,
-		/obj/vehicle/multitile/chimera/proc/toggle_vtol
+		/obj/vehicle/multitile/chimera/proc/toggle_vtol,
+		/obj/vehicle/multitile/chimera/proc/toggle_stow
 	))
 
 	give_action(M, /datum/action/human_action/chimera/takeoff)
 	give_action(M, /datum/action/human_action/chimera/land)
 	give_action(M, /datum/action/human_action/chimera/toggle_vtol)
+	give_action(M, /datum/action/human_action/chimera/toggle_stow)
+	give_action(M, /datum/action/human_action/chimera/disconnect_tug)
 
 
 /obj/vehicle/multitile/chimera/remove_seated_verbs(mob/living/M, seat)
@@ -163,15 +188,61 @@
 		/obj/vehicle/multitile/proc/name_vehicle,
 		/obj/vehicle/multitile/chimera/proc/takeoff,
 		/obj/vehicle/multitile/chimera/proc/land,
-		/obj/vehicle/multitile/chimera/proc/toggle_vtol
+		/obj/vehicle/multitile/chimera/proc/toggle_vtol,
+		/obj/vehicle/multitile/chimera/proc/toggle_stow
 	))
 
 	remove_action(M, /datum/action/human_action/chimera/takeoff)
 	remove_action(M, /datum/action/human_action/chimera/land)
 	remove_action(M, /datum/action/human_action/chimera/toggle_vtol)
+	remove_action(M, /datum/action/human_action/chimera/toggle_stow)
+	remove_action(M, /datum/action/human_action/chimera/disconnect_tug)
+
 	SStgui.close_user_uis(M, src)	
 
+/obj/vehicle/multitile/chimera/give_seated_mob_actions(mob/seated_mob)
+	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle/chimera)
+
+/obj/vehicle/multitile/chimera/Collided(atom/movable/collided_atom)
+	if(!istype(collided_atom, /obj/structure/chimera_tug))
+		return
+	
+	if(collided_atom.dir != REVERSE_DIR(dir))
+		return
+
+	qdel(collided_atom)
+	state = STATE_TUGGED
+	move_delay = VEHICLE_SPEED_NORMAL
+	update_icon()
+
+/obj/vehicle/multitile/chimera/proc/disconnect_tug()
+	state = STATE_STOWED
+	update_icon()
+
+	var/turf/disconnect_turf
+
+	switch(dir)
+		if(SOUTH)
+			disconnect_turf = locate(x, y - 2, z)
+		if(NORTH)
+			disconnect_turf = locate(x, y + 2, z)
+		if(EAST)
+			disconnect_turf = locate(x + 2, y, z)
+		if(WEST)
+			disconnect_turf = locate(x - 2, y, z)
+
+	var/obj/structure/chimera_tug/tug = new(disconnect_turf)
+	tug.dir = dir
+
 /obj/vehicle/multitile/chimera/proc/start_takeoff()
+	if(!is_ground_level(z))
+		return
+	
+	if(busy)
+		return
+
+	busy = TRUE
+
 	playsound(loc, 'sound/vehicles/vtol/takeoff.ogg', 25, FALSE)
 	addtimer(CALLBACK(src, PROC_REF(takeoff_engage_vtol)), 20 SECONDS)
 
@@ -188,8 +259,16 @@
 	forceMove(SSmapping.get_turf_above(get_turf(src)))
 	shadow_holder.forceMove(SSmapping.get_turf_below(src))
 	START_PROCESSING(SSsuperfastobj, src)
+	busy = FALSE
 
 /obj/vehicle/multitile/chimera/proc/start_landing()
+	if(!is_ground_level(z))
+		return
+	
+	if(busy)
+		return
+
+	busy = TRUE
 	state = STATE_TAKEOFF_LANDING
 	update_icon()
 
@@ -202,6 +281,24 @@
 	state = STATE_STOWED
 	update_icon()
 	STOP_PROCESSING(SSsuperfastobj, src)
+	busy = FALSE
+
+/obj/vehicle/multitile/chimera/proc/toggle_stowed()
+	if(busy)
+		return
+
+	busy = TRUE
+	playsound(loc, 'sound/vehicles/vtol/mechanical.ogg', 25, FALSE)
+	addtimer(CALLBACK(src, PROC_REF(transition_stowed)), 4 SECONDS)
+
+/obj/vehicle/multitile/chimera/proc/transition_stowed()
+	if(state == STATE_DEPLOYED)
+		state = STATE_STOWED
+	else
+		state = STATE_DEPLOYED
+
+	update_icon()
+	busy = FALSE
 
 /obj/vehicle/multitile/chimera/proc/takeoff()
 	set name = "Takeoff"
@@ -225,7 +322,7 @@
 	if(!seat)
 		return
 
-	if(vehicle.state != STATE_STOWED)
+	if(vehicle.state != STATE_DEPLOYED)
 		return
 
 	vehicle.start_takeoff()
@@ -253,7 +350,10 @@
 	if(!seat)
 		return
 
-	if(vehicle.state == STATE_STOWED || vehicle.state == STATE_TAKEOFF_LANDING)
+	if(!is_ground_level(vehicle.z))
+		return
+
+	if(vehicle.state != STATE_FLIGHT && vehicle.state != STATE_VTOL)
 		return
 
 	if(vehicle.state == STATE_FLIGHT)
@@ -289,6 +389,34 @@
 		return
 
 	vehicle.start_landing()
+
+/obj/vehicle/multitile/chimera/proc/toggle_stow()
+	set name = "Toggle Stow Mode"
+	set desc = "Toggle between stowed and deployed mode."
+	set category = "Vehicle"
+
+	var/mob/user = usr
+	if(!istype(user))
+		return
+
+	var/obj/vehicle/multitile/chimera/vehicle = user.interactee
+	if(!istype(vehicle))
+		return
+
+	var/seat
+	for(var/vehicle_seat in vehicle.seats)
+		if(vehicle.seats[vehicle_seat] == user)
+			seat = vehicle_seat
+			break
+
+	if(!seat)
+		return
+
+	if(vehicle.state != STATE_DEPLOYED && vehicle.state != STATE_STOWED)
+		return
+
+	vehicle.toggle_stowed()
+	return
 
 
 /datum/action/human_action/chimera/New(Target, obj/item/holder)
@@ -342,7 +470,51 @@
 
 	vehicle.toggle_vtol()
 
+/datum/action/human_action/chimera/toggle_stow
+	name = "Toggle Stow Mode"
+	action_icon_state = "stow-mode-transition"
+
+/datum/action/human_action/chimera/toggle_stow/action_activate()
+	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+	
+	if(!istype(vehicle))
+		return
+
+	. = ..()
+
+	vehicle.toggle_stow()
+
+/datum/action/human_action/chimera/disconnect_tug
+	name = "Disconnect Tug"
+	action_icon_state = "tug-disconnect"
+
+/datum/action/human_action/chimera/disconnect_tug/action_activate()
+	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+	
+	if(!istype(vehicle))
+		return
+
+	. = ..()
+
+	vehicle.disconnect_tug()
+
+/datum/action/human_action/vehicle_unbuckle/chimera
+	action_icon_state = "pilot-unbuckle"
+
+/obj/structure/chimera_tug
+	name = "aerospace tug"
+	desc = ""
+	icon = 'icons/obj/vehicles/chimera_tug.dmi'
+	icon_state = "aerospace-tug"
+	density = TRUE
+	anchored = FALSE
+
+	pixel_x = -16
+	pixel_y = 0
+
+#undef STATE_TUGGED
 #undef STATE_STOWED
+#undef STATE_DEPLOYED
 #undef STATE_TAKEOFF_LANDING
 #undef STATE_VTOL
 #undef STATE_FLIGHT

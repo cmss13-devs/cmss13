@@ -1,6 +1,5 @@
-/datum/job/special/wey_yu
+/datum/job/special/wey_yu // Abstract type (null title)
 	supervisors = "Weyland-Yutani Corporate Office"
-	title = "Weyland-Yutani Representative"
 	selection_class = "job_cl"
 	flags_startup_parameters = ROLE_CUSTOM_SPAWN
 	gear_preset = /datum/equipment_preset/wy/trainee
@@ -55,7 +54,7 @@
 
 
 // PMCS //
-/datum/job/special/wey_yu/pmc
+/datum/job/special/wey_yu/pmc // Abstract type (null title)
 	supervisors = "Weyland-Yutani PMC Dispatch"
 
 /datum/job/special/wey_yu/pmc/standard

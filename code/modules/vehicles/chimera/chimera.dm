@@ -100,13 +100,13 @@
 /obj/vehicle/multitile/chimera/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_OPERATIONS_PILOT, JOB_DROPSHIP_CREW_CHIEF)
-	RRS.total = 2
+	RRS.roles = list(JOB_OPERATIONS_PILOT)
+	RRS.total = 1
 	role_reserved_slots += RRS
 
 	RRS = new
-	RRS.category_name = "Synthetic Unit"
-	RRS.roles = list(JOB_SYNTH, JOB_WO_SYNTH)
+	RRS.category_name = "Crew"
+	RRS.roles = list(JOB_DROPSHIP_CREW_CHIEF)
 	RRS.total = 1
 	role_reserved_slots += RRS
 

@@ -1939,17 +1939,6 @@
 	},
 /turf/open/floor/almayer/blue/east,
 /area/almayer/living/basketball)
-"aeJ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Under Construction Shutters";
-	name = "\improper Construction Site"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "VTOL Bay Shutters";
-	name = "\improper Construction Site"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
 "aeK" = (
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/starboard_missiles)
@@ -31061,6 +31050,17 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
+"goY" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Under Construction Shutters";
+	name = "\improper Construction Site"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "VTOL Bay Shutters";
+	name = "\improper Construction Site"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "gpc" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -90887,7 +90887,7 @@ arI
 abF
 aaV
 aaT
-aeJ
+goY
 xyw
 bHB
 sXB

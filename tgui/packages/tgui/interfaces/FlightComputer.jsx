@@ -1,58 +1,52 @@
 import { useBackend } from '../backend';
-import { Box, Button, ProgressBar } from '../components';
+import { Button, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
 export const FlightComputer = (props) => {
-    const { act, data } = useBackend();
+  const { act, data } = useBackend();
 
-    const vtol_detected = data.vtol_detected;
-    const fuel = data.fuel;
-    const max_fuel = data.max_fuel;
-    const fueling = data.fueling;
+  const vtol_detected = data.vtol_detected;
+  const fuel = data.fuel;
+  const max_fuel = data.max_fuel;
+  const fueling = data.fueling;
 
-    const message = vtol_detected ? "Aircraft detected - AD-19D chimera" : "No aircraft detected.";
+  const message = vtol_detected
+    ? 'Aircraft detected - AD-19D chimera'
+    : 'No aircraft detected.';
 
-    function fuel_button() {
-        if(!vtol_detected) {
-            return null;
-        }
-
-        if(fueling) {
-            return (
-                <Button onClick={() => act('stop_fueling')}>
-                    Stop Fueling
-                </Button>
-            );
-        }
-        else {
-            return (
-                <Button onClick={() => act('start_fueling')}>
-                    Start Fueling
-                </Button>
-            );
-        }
+  const fuel_button = () => {
+    if (!vtol_detected) {
+      return null;
     }
 
-    return (
-    <Window width={450} height={445}>
-        <Window.Content scrollable>
-            {message + "\n"}
-            
-            {vtol_detected ? (
-                <ProgressBar
-                    value={fuel / max_fuel}
-                    ranges={{
-                    good: [0.7, Infinity],
-                    average: [0.2, 0.7],
-                    bad: [-Infinity, 0.2],
-                    }}
-                />
-            ) : null
-            }
-            {"\n"}
+    if (fueling) {
+      return <Button onClick={() => act('stop_fueling')}>Stop Fueling</Button>;
+    } else {
+      return (
+        <Button onClick={() => act('start_fueling')}>Start Fueling</Button>
+      );
+    }
+  }
 
-            {fuel_button()}
-        </Window.Content>
+  return (
+    <Window width={450} height={445}>
+      <Window.Content scrollable>
+        {message + '\n'}
+
+        {vtol_detected ? (
+          <ProgressBar
+            value={fuel / max_fuel}
+            ranges={{
+              good: [0.7, Infinity],
+              average: [0.2, 0.7],
+              bad: [-Infinity, 0.2],
+            }}
+          />
+        ) : null}
+        {'\n'}
+
+        {fuel_button()}
+      </Window.Content>
     </Window>
-    );
+  );
 };

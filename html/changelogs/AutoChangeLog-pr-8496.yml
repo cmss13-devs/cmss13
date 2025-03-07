@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - code_imp: "Moves all of crusher abilities to its own files, strains to theirs and removes some one letter vars"

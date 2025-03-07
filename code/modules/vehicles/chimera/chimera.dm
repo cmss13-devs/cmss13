@@ -4,6 +4,7 @@
 #define STATE_TAKEOFF_LANDING "takeoff_landing"
 #define STATE_VTOL "vtol"
 #define STATE_FLIGHT "flight"
+#define STATE_DESTROYED "destroyed"
 
 /obj/vehicle/multitile/chimera
 	name = "AD-19D chimera"
@@ -68,6 +69,10 @@
 	var/fuel = 30
 	var/max_fuel = 300
 
+	var/list/atom/movable/screen/chimera/custom_hud = list(
+		new /atom/movable/screen/chimera/fuel()
+	)
+
 /obj/chimera_shadow
 	icon = 'icons/obj/vehicles/chimera.dmi'
 	pixel_x = -64
@@ -108,6 +113,10 @@
 			icon_state = "stowed"
 			overlays += image(icon, "stowed_lights")
 			overlays += image(icon, "tug_underlay", layer = BELOW_MOB_LAYER)
+		if(STATE_DESTROYED)
+			icon_state = "flight"
+			overlays += image(icon, "stowed_lights")
+			overlays += image(icon, "damage")
 
 	if(shadow_holder)
 		shadow_holder.icon_state = "[icon_state]_shadow"
@@ -135,7 +144,6 @@
 		return
 
 	last_turn = world.time
-		
 
 /obj/vehicle/multitile/chimera/process(deltatime)
 	if (state == STATE_FLIGHT)
@@ -147,6 +155,39 @@
 	if(world.time > last_flight_sound + flight_sound_cooldown)
 		last_flight_sound = world.time
 		playsound(loc, 'sound/vehicles/vtol/exteriorflight.ogg', 25, FALSE)
+
+	for(var/atom/movable/screen/chimera/custom_screen as anything in custom_hud)
+		custom_screen.update(fuel, max_fuel, health, maxhealth)
+
+	if(state == STATE_VTOL)
+		fuel -= deltatime * 2
+	else if (state == STATE_FLIGHT)
+		fuel -= deltatime
+
+	if(fuel <= 0)
+		STOP_PROCESSING(SSsuperfastobj, src)
+		crash()
+
+/obj/vehicle/multitile/chimera/proc/crash()
+	for(var/mob/living/passenger in interior.get_passengers())
+		var/turf/fall_turf = locate(x + rand(-5, 5), y + rand(-5, 5), z)
+
+		if(passenger.buckled)
+			passenger.buckled.unbuckle()
+
+		passenger.unset_interaction()
+		passenger.client.change_view(GLOB.world_view_size, passenger)
+		passenger.client.pixel_x = 0
+		passenger.client.pixel_y = 0
+		passenger.reset_view()
+		passenger.forceMove(fall_turf)
+
+	playsound(loc, 'sound/effects/metal_crash.ogg', 50, FALSE)
+	state = STATE_DESTROYED
+	update_icon()
+	forceMove(SSmapping.get_turf_below(get_turf(src)))
+	qdel(shadow_holder)
+	entrances = null
 
 /obj/vehicle/multitile/chimera/before_move(direction)
 	if(state != STATE_FLIGHT && state != STATE_VTOL)
@@ -180,6 +221,28 @@
 	give_action(M, /datum/action/human_action/chimera/toggle_stow)
 	give_action(M, /datum/action/human_action/chimera/disconnect_tug)
 
+	for(var/atom/movable/screen/chimera/screen_to_add as anything in custom_hud)
+		M.client.add_to_screen(screen_to_add)
+		screen_to_add.update(fuel, max_fuel, health, maxhealth)
+
+/atom/movable/screen/chimera
+	icon = 'icons/obj/vehicles/chimera_hud.dmi'
+
+/atom/movable/screen/chimera/proc/update(fuel, max_fuel, health, max_health)
+	return
+
+/atom/movable/screen/chimera/fuel
+	icon_state = "fuel"
+	screen_loc = "WEST,CENTER"
+
+/atom/movable/screen/chimera/fuel/update(fuel, max_fuel, health, max_health)
+	var/fuel_percent = min(round(fuel / max_fuel * 100), 99)
+	var/tens = round(fuel_percent / 10)
+	var/digits = fuel_percent % 10
+
+	overlays.Cut()
+	overlays += image(icon, "[tens]", pixel_y = -8, pixel_x = -1)
+	overlays += image(icon, "[digits]", pixel_y = -8, pixel_x = 4)
 
 /obj/vehicle/multitile/chimera/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
@@ -200,6 +263,9 @@
 	remove_action(M, /datum/action/human_action/chimera/toggle_vtol)
 	remove_action(M, /datum/action/human_action/chimera/toggle_stow)
 	remove_action(M, /datum/action/human_action/chimera/disconnect_tug)
+
+	for(var/atom/movable/screen/chimera/screen_to_remove as anything in custom_hud)
+		M.client.remove_from_screen(screen_to_remove) 
 
 	SStgui.close_user_uis(M, src)	
 
@@ -754,3 +820,4 @@
 #undef STATE_TAKEOFF_LANDING
 #undef STATE_VTOL
 #undef STATE_FLIGHT
+#undef STATE_DESTROYED

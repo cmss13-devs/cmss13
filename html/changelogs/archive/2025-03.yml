@@ -78,3 +78,9 @@
   - rscadd: Added the Light Replacer to tool storage and to the autolathe. The Light
       Replacer can now also recycle broken bulbs, either directly when replacing or
       when inserted by hand.
+2025-03-07:
+  Mister-moon1:
+  - balance: 'reverted all direct shrapnel buffs from #7581'
+  Red-byte3D:
+  - code_imp: Moves all of crusher abilities to its own files, strains to theirs and
+      removes some one letter vars

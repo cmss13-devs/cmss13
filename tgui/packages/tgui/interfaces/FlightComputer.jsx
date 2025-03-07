@@ -26,7 +26,7 @@ export const FlightComputer = (props) => {
         <Button onClick={() => act('start_fueling')}>Start Fueling</Button>
       );
     }
-  }
+  };
 
   return (
     <Window width={450} height={445}>

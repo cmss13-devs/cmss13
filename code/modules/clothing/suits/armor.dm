@@ -52,12 +52,14 @@
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
-		/obj/item/weapon/baton,
-		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/belt/gun/m4a3,
 		/obj/item/storage/belt/gun/m44,
+		/obj/item/device/motiondetector,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
 	)
 
 /obj/item/clothing/suit/armor/vest/pilot
@@ -150,6 +152,18 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	allowed = list(
+		/obj/item/weapon/gun/,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/device/motiondetector,
+		/obj/item/storage/backpack/general_belt,
+	)
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "Warden's jacket"
@@ -195,6 +209,15 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	allowed = list(
+		/obj/item/weapon/gun/,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/device/motiondetector,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
+		/obj/item/storage/backpack/general_belt,
+	)
 
 
 /obj/item/clothing/suit/armor/bulletproof/badge

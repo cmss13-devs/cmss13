@@ -9,5 +9,5 @@
 
 /obj/effect/landmark/start/pilot/operations_pilot
 	name = JOB_OPERATIONS_PILOT
-	icon_state = "po_spawn"
+	icon_state = "dp_spawn"
 	job = /datum/job/command/pilot/operations_pilot

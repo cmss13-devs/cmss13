@@ -8,6 +8,7 @@
 
 /obj/structure/interior_exit/vehicle/chimera
 	icon = 'icons/obj/vehicles/interiors/chimera.dmi'
+	icon_state = "door left"
 	opacity = FALSE
 
 /obj/structure/interior_exit/vehicle/chimera/left
@@ -69,7 +70,7 @@
 
 /obj/structure/bed/chair/comfy/vehicle/driver/chimera
 	icon = 'icons/obj/vehicles/interiors/chimera.dmi'
-	icon_state = "sit"
+	icon_state = "seat"
 	skill_to_check = SKILL_PILOT
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/chimera

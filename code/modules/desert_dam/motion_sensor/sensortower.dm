@@ -68,7 +68,7 @@
 
 /obj/structure/machinery/sensortower/proc/add_xenos_to_minimap()
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
-		if(WEAKREF(current_xeno) in minimap_added || is_mainship_level(current_xeno.z))
+		if((WEAKREF(current_xeno) in minimap_added) || (is_mainship_level(current_xeno.z)))
 			continue
 
 		SSminimaps.remove_marker(current_xeno)

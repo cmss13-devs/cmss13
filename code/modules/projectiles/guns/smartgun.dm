@@ -378,18 +378,13 @@
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
 ///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
-	if (frontline_enabled && iff_enabled) //When IFF is on and frontline is off, we use the blue muzzle flash and alt IFF disabled.
+	if (!frontline_enabled)
 		muzzle_flash = "muzzle_flash_blue"
 		muzzle_flash_color = COLOR_MUZZLE_BLUE
-		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
-	if (!iff_enabled) //When IFF is off, we use orange muzzle flash and alt IFF disabled.
+	else
 		muzzle_flash = "muzzle_flash"
 		muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
-		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
-	else //In every other case (i.e. IFF is on, frontline is on), we use orange muzzle flash and alt IFF enabled.
-		muzzle_flash = "muzzle_flash"
-		muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
-		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
+	SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
 	recalculate_attachment_bonuses()
 ///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
 ///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
@@ -443,10 +438,7 @@
 		drain += 10
 		MD.iff_signal = initial(MD.iff_signal)
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
-		recalculate_attachment_bonuses()
-	if(!iff_enabled) //If IFF is off, muzzle flash should be orange + no alt IFF
-		muzzle_flash = "muzzle_flash"
-		muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
+	if(!iff_enabled)
 		remove_bullet_trait("iff")
 		drain -= 10
 		MD.iff_signal = null

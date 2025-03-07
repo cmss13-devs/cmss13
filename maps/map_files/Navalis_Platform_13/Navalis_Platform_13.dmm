@@ -20089,6 +20089,15 @@
 /obj/structure/window/framed/prison,
 /turf/open/floor/plating,
 /area/navalis/indoors/charon/upper_deck/rear)
+"bha" = (
+/obj/structure/stairs/multiz/down,
+/obj/effect/stairs/down,
+/turf/open/floor/almayer_hull,
+/area/navalis/outdoors/exterior/com_ext)
+"bhb" = (
+/obj/effect/stairs/down,
+/turf/open/floor/corsat/marked,
+/area/navalis/indoors/charon/upper_deck/rear)
 "bhs" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -29433,6 +29442,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/stairs/up,
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/main_deck)
 "gta" = (
@@ -77505,7 +77515,7 @@ aAf
 aAf
 aAf
 azL
-aoD
+aDv
 azG
 aFh
 aDK
@@ -78653,7 +78663,7 @@ aBm
 aAf
 aAf
 azL
-aoD
+aDv
 azG
 aFh
 aBc
@@ -158854,7 +158864,7 @@ aMS
 aMS
 aMS
 aMS
-aUU
+bha
 arX
 arX
 arX
@@ -160002,7 +160012,7 @@ aMS
 aMS
 aMS
 aMS
-aUU
+bha
 arX
 arX
 arX
@@ -205606,7 +205616,7 @@ bcN
 bcN
 bcN
 bcM
-baN
+bhb
 bcp
 lyT
 lyT

@@ -108,7 +108,7 @@
 
 /obj/structure/machinery/fob/terminal
 	name = "\improper UE-09 Service Terminal"
-	desc = "atom terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
+	desc = "Terminal used to monitor the power levels of marine defenses. Use a multitool to link defenses to the grid."
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/fob_machinery/service_terminal.dmi'
 	layer = ABOVE_FLY_LAYER
@@ -190,7 +190,7 @@
 
 /obj/structure/machinery/fob/backup_generator
 	name = "\improper UE-11 Generator Unit"
-	desc = "atom special power module designed to be a backup generator in the event of a transformer malfunction. This generator can only provide power for a short time before being used up."
+	desc = "Special power module designed to be a backup generator in the event of a transformer malfunction. This generator can only provide power for a short time before being used up."
 	icon_state = "backup_generator"
 	icon = 'icons/obj/structures/machinery/fob_machinery/backup_generator.dmi'
 	is_on = FALSE
@@ -265,7 +265,7 @@
 //****************************************** SENTRYGUN GENERAL ************************************************//
 /obj/structure/machinery/fob/weapons_platform
 	name = "\improper UH-02 Systems Platform"
-	desc = "atom large weapons system platform designed to deploy multiple types of automated defense systems, such as the UH-46 Heavy Sentry Gun and the UH-99 Smart Rocket Launcher."
+	desc = "Large weapons system platform designed to deploy multiple types of automated defense systems, such as the UH-46 Heavy Sentry Gun and the UH-99 Smart Rocket Launcher."
 	icon_state = "platform"
 	icon = 'icons/obj/structures/machinery/fob_machinery/weapons_platform.dmi'
 	var/obj/structure/machinery/fob/sentrygun/linked_gun
@@ -422,7 +422,7 @@
 //****************************************** SENSOR ARRAY ************************************************//
 /obj/structure/machinery/fob/sentrygun/sensor
 	name = "\improper UE-04 Grid Sensor"
-	desc = "atom field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
+	desc = "Field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
 	icon_state = "sensor"
 	icon = 'icons/obj/structures/machinery/fob_machinery/sensor.dmi'
 	diameter = 13
@@ -452,8 +452,9 @@
 			return
 
 		if(!linked_terminal)
-			linked_terminal.linked_machinery += src
 			linked_terminal = tool.linked_terminal
+			linked_terminal.linked_machinery += src
+
 			user.balloon_alert(user, "you link the [src.name] to the new terminal.")
 			return
 
@@ -518,12 +519,13 @@
 
 /obj/item/defenses/handheld/sensor
 	name = "\improper UE-04 Grid Sensor"
-	desc = "atom field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
+	desc = "Field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
 	icon_state = "sensor_undeployed"
 	icon = 'icons/obj/structures/machinery/fob_machinery/sensor.dmi'
 	defense_type = /obj/structure/machinery/fob/sentrygun/sensor
 
 /obj/item/defenses/handheld/sensor/get_examine_text(mob/user)
+	.= ..()
 	. += SPAN_INFO("It is ready for deployment.")
 
 
@@ -533,7 +535,7 @@
 
 /obj/structure/machinery/fob/sentrygun/plasma
 	name = "\improper UH-46 Heavy Sentry Gun"
-	desc = "atom massive omni directional dual barrelled 30mm automated heavy sentry gun. When powered it must acquire a lock on enemy units before firing."
+	desc = "Massive omni directional dual barrelled 30mm automated heavy sentry gun. When powered it must acquire a lock on enemy units before firing."
 	icon_state = "terminal"
 	icon = 'icons/obj/structures/machinery/fob_machinery/service_terminal.dmi'
 	diameter = 13
@@ -622,7 +624,7 @@
 
 /obj/structure/machinery/fob/sentrygun/missile
 	name = "\improper UH-99 Smart Rocket Launcher"
-	desc = "atom short range surface-to-surface rocket launcher system firing 60mm AMLE guided smart rockets. This system can be fired from behind cover, but it requires UE-04 Grid Sensors in order to paint targets."
+	desc = "Short range surface-to-surface rocket launcher system firing 60mm AMLE guided smart rockets. This system can be fired from behind cover, but it requires UE-04 Grid Sensors in order to paint targets."
 	icon_state = "rocket_launcher"
 	icon = 'icons/obj/structures/machinery/fob_machinery/rocket_launcher.dmi'
 	ammo = /datum/ammo/rocket
@@ -684,7 +686,7 @@
 
 /obj/structure/machinery/fob/floodlight
 	name = "\improper UE-92 Area Illuminator"
-	desc = "atom large deployable floodlight designed to illuminate large areas."
+	desc = "Large deployable floodlight designed to illuminate large areas."
 	icon = 'icons/obj/structures/machinery/fob_machinery/illuminator.dmi'
 	icon_state = "floodlight"
 	var/on_light_range = 18
@@ -700,6 +702,190 @@
 		set_light(0)*/
 
 
+//****************************************** ELECTRIC FENCE ************************************************//
+
+/obj/structure/fence/electrified/fob_fence
+	name = "\improper UE-02 Deployable Fence"
+	desc = "Light deployable fencing. While incredibly lacking in durability, it is able to transmit near-lethal electric shocks when powered."
+	icon = 'icons/obj/structures/machinery/fob_machinery/electric_fence.dmi'
+	icon_state = "fence0"
+	basestate = "fence"
+	throwpass = TRUE
+	unacidable = TRUE
+	forms_junctions = TRUE
+	electrified = FALSE
+	var/obj/structure/machinery/fob/terminal/linked_terminal
 
 
 
+/obj/structure/fence/electrified/fob_fence/hitby(atom/movable/AM)
+	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
+	var/tforce = 0
+	if(ismob(AM))
+		if(electrified)
+			electrocute_mob(AM, get_area(src), src, 0.7)
+			to_chat(AM, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
+		else
+			tforce = 40
+	health = max(0, health - tforce)
+	healthcheck()
+
+/obj/structure/fence/electrified/fob_fence/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
+		var/obj/item/device/multitool/tool = item
+
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			user.balloon_alert(user, "you do not know how to link your multitool to the [src.name].")
+			return
+
+		if(!do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+			return
+
+		if(!tool.linked_terminal)
+			user.balloon_alert(user, "your multitool is not linked to a terminal!")
+			return
+
+		if(linked_terminal == tool.linked_terminal)
+			user.balloon_alert(user, " [src.name] is already linked to that terminal.")
+			return
+
+		if(!linked_terminal)
+			linked_terminal = tool.linked_terminal
+			linked_terminal.linked_machinery += src
+			user.balloon_alert(user, "you link the [src.name] to the new terminal.")
+			add_nearby_link()
+			update_icon()
+			return
+
+		remove_nearby_link()
+		linked_terminal.linked_machinery -= src
+		linked_terminal = null
+		user.balloon_alert(user, "you unlink the [src.name] from the old terminal.")
+		update_icon()
+		return
+
+	if(electrified)
+		electrocute_mob(user, get_area(src), src, 0.7)
+		to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
+		return
+
+	if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
+
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			user.balloon_alert(user, "you do not know how to disassemble the [src.name].")
+			return
+
+		if(electrified)
+			user.balloon_alert(user, "you cannot dissassemble the [src.name] while it is electrified.")
+
+		if(!do_after(usr, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+			return
+
+		if(linked_terminal)
+			linked_terminal.linked_machinery -= src
+			linked_terminal = null
+
+		new /obj/item/stack/electric_fence(loc)
+		qdel(src)
+		return
+	. = ..()
+
+
+
+/obj/structure/fence/electrified/fob_fence/Collided(atom/movable/AM)
+	if(!ismob(AM))
+		return
+	var/mob/mob = AM
+	if(electrified)
+		electrocute_mob(mob, get_area(src), src, 0.7)
+		to_chat(mob, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
+
+
+/obj/structure/fence/electrified/fob_fence/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(electrified)
+		electrocute_mob(xeno, get_area(src), src, 0.75)
+		to_chat(xeno, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
+		return
+
+	xeno.animation_attack_on(src)
+	var/damage_dealt = 25
+	xeno.visible_message(SPAN_DANGER("[xeno] mangles [src]!"),
+	SPAN_DANGER("We mangle [src]!"),
+	SPAN_DANGER("We hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
+	health -= damage_dealt
+	healthcheck()
+	return XENO_ATTACK_ACTION
+
+/obj/structure/fence/electrified/fob_fence/proc/add_nearby_link()
+	for(var/direction in GLOB.cardinals)
+		for(var/obj/structure/fence/electrified/fob_fence/fence in get_step(src, direction))
+			if(fence.linked_terminal != linked_terminal)
+				fence.linked_terminal = linked_terminal
+				linked_terminal.linked_machinery += fence
+
+/obj/structure/fence/electrified/fob_fence/proc/remove_nearby_link()
+	for(var/direction in GLOB.cardinals)
+		for(var/obj/structure/fence/electrified/fob_fence/fence in get_step(src, direction))
+			if(fence.linked_terminal == linked_terminal)
+				fence.linked_terminal.linked_machinery -= fence
+				fence.linked_terminal = null
+
+/obj/item/stack/electric_fence
+	name = "UE-02 Deployable Fences"
+	singular_name = "UE-02 Deployable Fence"
+	desc = "Some undeployed UE-02 Electric Fences."
+	icon = 'icons/obj/items/marine-items.dmi'
+	icon_state = "electric_fence"
+	item_state = "electric_fence"
+	w_class = SIZE_LARGE
+	force = 9
+	throwforce = 15
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 20
+	max_amount = 10
+	attack_verb = list("hit", "bludgeoned", "whacked")
+	stack_id = "electric fences"
+
+
+
+/obj/item/stack/electric_fence/attack_self(mob/living/user)
+	..()
+
+	if(!isturf(user.loc))
+		return
+	if(istype(user.loc, /turf/open/shuttle))
+		to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
+		return
+	if(!istype(user.loc, /turf/open))
+		var/turf/open/turf = user.loc
+		if(!turf.allow_construction)
+			to_chat(user, SPAN_WARNING("The [singular_name] must be constructed on a proper surface!"))
+			return
+
+
+	for(var/obj/object in user.loc)
+		var/obj/structure/blocker/anti_cade/anti_cade = locate(/obj/structure/blocker/anti_cade) in user.loc
+		if(object.density)
+			to_chat(user, SPAN_WARNING("You need a clear, open area to build the [singular_name]!"))
+			return
+		if(anti_cade)
+			to_chat(usr, SPAN_WARNING("The [singular_name] cannot be built here!"))
+			return
+
+	if(user.action_busy)
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] starts assembling a [singular_name]."),
+	SPAN_NOTICE("You start assembling a [singular_name]."))
+
+	if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return
+
+	new /obj/structure/fence/electrified/fob_fence(user.loc)
+	user.visible_message(SPAN_NOTICE("[user] assembles a [singular_name]."),
+	SPAN_NOTICE("You assemble a [singular_name]."))
+
+	use(1)
+
+/obj/item/stack/electric_fence/full
+	amount = STACK_10

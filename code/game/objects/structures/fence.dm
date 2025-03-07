@@ -224,10 +224,12 @@
 //This proc is used to update the icons of nearby windows.
 /obj/structure/fence/proc/update_nearby_icons()
 	update_icon()
+
 	for(var/direction in GLOB.cardinals)
 		for(var/obj/structure/fence/fence in get_step(src, direction))
-			if(fence.forms_junctions)
-				fence.update_icon()
+			if(!fence.forms_junctions)
+				continue
+			fence.update_icon()
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/fence/update_icon()
@@ -282,17 +284,21 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	health = max(0, health - tforce)
 	healthcheck()
 
-/obj/structure/fence/electrified/update_nearby_icons()
-	return
+
 
 /obj/structure/fence/electrified/update_icon()
+
+	if(forms_junctions)
+		. = ..()
+
 	if(cut)
-		icon_state = "[basestate]_broken"
+		icon_state = "[basestate][junction]_broken"
+		return
+
+	if(electrified)
+		icon_state = "[basestate][junction]"
 	else
-		if(electrified)
-			icon_state = "[basestate]"
-		else
-			icon_state = "[basestate]_off"
+		icon_state = "[basestate][junction]_off"
 
 /obj/structure/fence/electrified/proc/toggle_power()
 	electrified = !electrified

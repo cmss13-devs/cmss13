@@ -900,7 +900,7 @@
 	supplies = list(
 		/obj/item/fuel_pump = 1,
 		/obj/item/flight_cpu = 1,
-		/obj/item/landing_pad_light = 4
+		/obj/item/landing_pad_light = 4,
 	)
 	icon_state = "secure_crate_strapped"
 

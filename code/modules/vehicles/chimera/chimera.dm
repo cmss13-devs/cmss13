@@ -87,7 +87,6 @@
 /obj/vehicle/multitile/chimera/Initialize(mapload, ...)
 	. = ..()
 	add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
-	shadow_holder = new(src)
 	update_icon()
 
 /obj/vehicle/multitile/chimera/Destroy()
@@ -128,7 +127,18 @@
 
 /obj/vehicle/multitile/chimera/relaymove(mob/user, direction)
 	if(state == STATE_TUGGED)
-		return ..()
+		. = ..()
+
+		var/turf/possible_pad_turf = locate(x - 1, y - 1, z)
+		var/obj/structure/landing_pad = locate() in possible_pad_turf
+
+		if(!landing_pad)
+			return
+
+		to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Landing pad detected, Starting fueling procedures."))
+		START_PROCESSING(SSobj, landing_pad)
+
+		return
 
 	if(last_turn + turn_delay > world.time)
 		return FALSE
@@ -293,6 +303,9 @@
 	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle/chimera)
 
 /obj/vehicle/multitile/chimera/Collided(atom/movable/collided_atom)
+	if(state != STATE_STOWED)
+		return
+
 	if(!istype(collided_atom, /obj/structure/chimera_tug))
 		return
 	
@@ -361,7 +374,7 @@
 	state = STATE_VTOL
 	update_icon()
 	forceMove(SSmapping.get_turf_above(get_turf(src)))
-	shadow_holder.forceMove(SSmapping.get_turf_below(src))
+	shadow_holder = new(SSmapping.get_turf_below(src))
 	START_PROCESSING(SSsuperfastobj, src)
 	busy = FALSE
 
@@ -389,11 +402,20 @@
 /obj/vehicle/multitile/chimera/proc/finish_landing()
 	STOP_PROCESSING(SSsuperfastobj, src)
 	forceMove(SSmapping.get_turf_below(get_turf(src)))
-	shadow_holder.forceMove(src)
+	qdel(shadow_holder)
 	flags_atom &= ~NO_ZFALL
 	state = STATE_STOWED
 	update_icon()
 	busy = FALSE
+
+	var/turf/possible_pad_turf = locate(x - 1, y - 1, z)
+	var/obj/structure/landing_pad = locate() in possible_pad_turf
+
+	if(!landing_pad)
+		return
+
+	to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Landing pad detected, Starting fueling procedures."))
+	START_PROCESSING(SSobj, landing_pad)
 
 /obj/vehicle/multitile/chimera/proc/toggle_stowed()
 	if(state != STATE_DEPLOYED && state != STATE_STOWED)
@@ -770,7 +792,7 @@
 		return
 
 	if(parked_aircraft.fuel < parked_aircraft.max_fuel)
-		parked_aircraft.fuel = min(parked_aircraft.fuel + 2 * deltatime, parked_aircraft.max_fuel)
+		parked_aircraft.fuel = min(parked_aircraft.fuel + 5 * deltatime, parked_aircraft.max_fuel)
 	else
 		STOP_PROCESSING(SSobj, src)
 		fueling = FALSE
@@ -795,6 +817,21 @@
 	var/installed_lights = 0
 	var/flight_cpu_installed = FALSE
 	var/fuelpump_installed = FALSE
+
+/obj/structure/landing_pad/process(deltatime)
+	var/turf/center_turf = locate(x + 1, y + 1, z)
+	var/obj/vehicle/multitile/chimera/parked_aircraft
+
+	for(var/obj/vehicle/multitile/chimera/aircraft in center_turf.contents)
+		if(aircraft.x == center_turf.x && aircraft.y == aircraft.y)
+			parked_aircraft = aircraft
+			break
+
+	if(!parked_aircraft)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	parked_aircraft.fuel = max(parked_aircraft.fuel + deltatime, parked_aircraft.max_fuel)
 
 /obj/structure/landing_pad/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/landing_pad_light))

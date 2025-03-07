@@ -382,7 +382,9 @@
 	if(!is_ground_level(z))
 		return
 
-	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(SSmapping.get_turf_below(get_turf(src)), 3, 3, -1, 0))
+	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
+
+	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(below_turf, 3, 3, -1, 0))
 		var/area/takeoff_turf_area = get_area(takeoff_turf)
 
 		if(CEILING_IS_PROTECTED(takeoff_turf_area.ceiling, CEILING_PROTECTION_TIER_1))
@@ -563,6 +565,8 @@
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/human_action/chimera/action_activate()
+	. = ..()
+
 	playsound(owner.loc, 'sound/vehicles/vtol/buttonpress.ogg', 25, FALSE)
 
 /datum/action/human_action/chimera/takeoff

@@ -975,9 +975,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			found_rleg?.fracture(100 * fracture_modifier)
 			found_lleg?.fracture(100 * fracture_modifier)
 
-	if(isxeno(victim) && victim.mob_size >= MOB_SIZE_BIG)
+	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
-		if(stun_modifier > 0)
+		if(stun_modifier > 0 && xeno_victim.mob_size >= MOB_SIZE_BIG) //only big xenos get stun, all take damage
 			xeno_victim.KnockDown(5 * height * stun_modifier)
 			xeno_victim.Stun(5 * height * stun_modifier)
 

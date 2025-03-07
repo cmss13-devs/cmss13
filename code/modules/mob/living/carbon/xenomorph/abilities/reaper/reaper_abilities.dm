@@ -16,6 +16,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_haul_corpse
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 1 SECONDS
+	no_cooldown_msg = TRUE
 
 /datum/action/xeno_action/activable/flesh_harvest
 	name = "Flesh Harvest"
@@ -65,4 +66,3 @@
 	plasma_cost = 50
 
 	var/range = 2
-	var/toxin_amount = 1

@@ -784,7 +784,7 @@
 			affected_xeno.set_effect(1, SLOW)
 		else
 			if(prob(10))
-				to_chat(affected_xeno, SPAN_XENOHIGHDANGER("We feel *very* lethargic!"))
+				to_chat(affected_xeno, SPAN_XENOHIGHDANGER("We feel very lethargic!"))
 			affected_xeno.set_effect(1, SUPERSLOW)
 
 	if(!issynth(affected_mob))

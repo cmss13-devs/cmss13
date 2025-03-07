@@ -107,10 +107,13 @@
 /mob/living/carbon/xenomorph/reaper/get_status_tab_items()
 	. = ..()
 	. += "Flesh Plasma: [flesh_plasma]/[flesh_plasma_max]"
-	. += "Hauled Corpses: [corpse_no] / [corpse_max]"
+	if(corpse_max > 0)
+		. += "Hauled Corpses: [corpse_no] / [corpse_max]"
 	. += ""
-	. += "Stored Huggers: [huggers_cur] / [huggers_max]"
-	. += "Stored Eggs: [eggs_cur] / [eggs_max]"
+	if(huggers_max > 0)
+		. += "Stored Huggers: [huggers_cur] / [huggers_max]"
+	if(eggs_max > 0)
+		. += "Stored Eggs: [eggs_cur] / [eggs_max]"
 
 /mob/living/carbon/xenomorph/reaper/proc/modify_flesh_plasma(amount)
 	flesh_plasma += amount
@@ -341,7 +344,7 @@
 	join_as_facehugger_from_this(user)
 
 /mob/living/carbon/xenomorph/reaper/proc/join_as_facehugger_from_this(mob/dead/observer/user)
-	if(!huggers_max) //Eggsac doesn't have huggers, do nothing!
+	if(!huggers_max)
 		return
 	if(stat == DEAD)
 		to_chat(user, SPAN_WARNING("\The [src] is dead and all their huggers died with it."))
@@ -820,7 +823,7 @@
 	return ..()
 
 
-// Strain Powers (Here as it's a WIP and maybe not a great idea to include with a brand new xeno)
+// Strain Powers (Here as it's a WIP and maybe not a great idea to include with a brand new xeno right off the bat)
 
 /datum/action/xeno_action/activable/reap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
@@ -883,10 +886,9 @@
 	if(iscarbon(carbon))
 		var/mob/living/carbon/human/victim = carbon
 		if(!issynth(victim))
-			victim.reagents.add_reagent("sepsicine", toxin_amount)
-			victim.reagents.set_source_mob(xeno, /datum/reagent/toxin/sepsicine)
+			carbon.apply_damage(round(xeno.flesh_plasma * 0.05, 1))
 	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
-	carbon.apply_effect(2, DAZE)
+	carbon.apply_effect(1, DAZE)
 	reaper.pause_decay = TRUE
 	reaper.modify_passive_mult(1)
 	shake_camera(target, 2, 1)

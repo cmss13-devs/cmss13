@@ -170,7 +170,7 @@ const SecondaryFunctions = (props) => {
 const DebugSquadPanel = (props) => {
   const { act, data } = useBackend();
 
-  const [category, setCategory] = useSharedState('selected', 'red');
+  const [category, setCategory] = useSharedState('selected', 'alpha');
 
   const squadStringify = {
     alpha: 'red',

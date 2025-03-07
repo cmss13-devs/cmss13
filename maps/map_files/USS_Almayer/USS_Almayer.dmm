@@ -1941,7 +1941,7 @@
 /area/almayer/living/basketball)
 "aeJ" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = s;
+	id = "Under Construction Shutters";
 	name = "\improper Construction Site"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{

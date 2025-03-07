@@ -274,13 +274,12 @@
 		M.emote("shiver")
 	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
 	///IF body temp below 0C AND Cryo or Clonex in system, AND hypothermic_clot_toggle false apply CHEM_EFFECT_NO_BLEEDING
-	if ((M.bodytemperature <= (BODYTEMP_CRYO_LIQUID_THRESHOLD + 63.15) && (effected_human.reagents.get_reagent_amount("cryoxadone") || effected_human.reagents.get_reagent_amount("clonexadone"))) && M.hypothermic_clot_toggle == FALSE)
+	if ((M.bodytemperature < T0C && (effected_human.reagents.get_reagent_amount("cryoxadone") || effected_human.reagents.get_reagent_amount("clonexadone"))) && M.hypothermic_clot_toggle == FALSE)
 		M.hypothermic_clot_toggle = TRUE
 		effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
-		to_chat(effected_human, SPAN_NOTICE("Bleed Cancel applied"))
 
 	///IF are above 0C or no cryo/clonex AND hypothermic_clot_toggle true, remove no bleed flag.
-	if ((M.bodytemperature > (BODYTEMP_CRYO_LIQUID_THRESHOLD + 63.15) || (effected_human.reagents.get_reagent_amount("cryoxadone") == 0 && effected_human.reagents.get_reagent_amount("clonexadone") == 0)) && M.hypothermic_clot_toggle == TRUE)
+	if ((M.bodytemperature >= T0C || (effected_human.reagents.get_reagent_amount("cryoxadone") == 0 && effected_human.reagents.get_reagent_amount("clonexadone") == 0)) && M.hypothermic_clot_toggle == TRUE)
 		M.hypothermic_clot_toggle = FALSE
 		effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 	M.recalculate_move_delay = TRUE

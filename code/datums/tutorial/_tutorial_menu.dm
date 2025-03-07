@@ -98,7 +98,9 @@
 			path = new path
 
 			if(params["subsection_id"])
-				path.current_subsection_id = params["subsection_id"]
+				for(var/list/subsection_check in path.register_tutorial_subsections())
+					if(subsection_check["id"] == params["subsection_id"])
+						path.current_subsection_id = params["subsection_id"]
 
 			if(path.start_tutorial(usr))
 				ui.close()

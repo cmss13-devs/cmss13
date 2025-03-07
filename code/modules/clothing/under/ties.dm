@@ -447,6 +447,8 @@
 	return ..()
 
 /obj/item/clothing/accessory/armband/squad/proc/adapt_to_squad()
+	if(has_suit)
+		has_suit.overlays -= get_inv_overlay()
 	var/squad_color = "squad"
 	var/mob/living/carbon/human/wearer = recursive_holder_check(src)
 	if(istype(wearer) && wearer.assigned_squad)
@@ -454,6 +456,9 @@
 		if("armband_[squad_name]" in valid_icon_states)
 			squad_color = squad_name
 	icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
+	inv_overlay = image("icon" = inv_overlay_icon, "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]")
+	if(has_suit)
+		has_suit.overlays += get_inv_overlay()
 
 //patches
 /obj/item/clothing/accessory/patch

@@ -67,10 +67,11 @@
 	var/busy = FALSE
 
 	var/fuel = 30
-	var/max_fuel = 300
+	var/max_fuel = 600
 
 	var/list/atom/movable/screen/chimera/custom_hud = list(
-		new /atom/movable/screen/chimera/fuel()
+		new /atom/movable/screen/chimera/fuel(),
+		new /atom/movable/screen/chimera/integrity()
 	)
 
 /obj/chimera_shadow
@@ -185,7 +186,9 @@
 	playsound(loc, 'sound/effects/metal_crash.ogg', 50, FALSE)
 	state = STATE_DESTROYED
 	update_icon()
-	forceMove(SSmapping.get_turf_below(get_turf(src)))
+	var/turf/crash_turf = SSmapping.get_turf_below(get_turf(src))
+	forceMove(crash_turf)
+	cell_explosion(crash_turf, 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("chimera crash"))
 	qdel(shadow_holder)
 	entrances = null
 
@@ -239,6 +242,19 @@
 	var/fuel_percent = min(round(fuel / max_fuel * 100), 99)
 	var/tens = round(fuel_percent / 10)
 	var/digits = fuel_percent % 10
+
+	overlays.Cut()
+	overlays += image(icon, "[tens]", pixel_y = -8, pixel_x = -1)
+	overlays += image(icon, "[digits]", pixel_y = -8, pixel_x = 4)
+
+/atom/movable/screen/chimera/integrity
+	icon_state = "integrity"
+	screen_loc = "WEST,CENTER+1"
+
+/atom/movable/screen/chimera/integrity/update(fuel, max_fuel, health, max_health)
+	var/integrity = min(round(health / max_health * 100), 99)
+	var/tens = round(integrity / 10)
+	var/digits = integrity % 10
 
 	overlays.Cut()
 	overlays += image(icon, "[tens]", pixel_y = -8, pixel_x = -1)

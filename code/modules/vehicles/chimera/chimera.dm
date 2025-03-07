@@ -34,6 +34,8 @@
 
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
 
+	required_skill = SKILL_PILOT_EXPERT
+
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/arc_wheels,
 	)
@@ -66,8 +68,10 @@
 
 	var/busy = FALSE
 
-	var/fuel = 30
+	var/fuel = 600
 	var/max_fuel = 600
+
+	var/previous_move_delay
 
 	var/list/atom/movable/screen/chimera/custom_hud = list(
 		new /atom/movable/screen/chimera/fuel(),
@@ -297,10 +301,14 @@
 
 	qdel(collided_atom)
 	state = STATE_TUGGED
+	previous_move_delay = move_delay
 	move_delay = VEHICLE_SPEED_NORMAL
 	update_icon()
 
 /obj/vehicle/multitile/chimera/proc/disconnect_tug()
+	if(state != STATE_TUGGED)
+		return
+
 	state = STATE_STOWED
 	update_icon()
 
@@ -316,12 +324,23 @@
 		if(WEST)
 			disconnect_turf = locate(x - 2, y, z)
 
+	move_delay = previous_move_delay
 	var/obj/structure/chimera_tug/tug = new(disconnect_turf)
 	tug.dir = dir
+
+/obj/vehicle/multitile/chimera/crew_mousedown(datum/source, atom/object, turf/location, control, params)
+	return
 
 /obj/vehicle/multitile/chimera/proc/start_takeoff()
 	if(!is_ground_level(z))
 		return
+
+	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(get_turf(src), 3, 3, -1, 0))
+		var/area/takeoff_turf_area = get_area(takeoff_turf)
+
+		if(CEILING_IS_PROTECTED(takeoff_turf_area.ceiling, CEILING_PROTECTION_TIER_1))
+			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't takeoff here, the area is roofed."))
+			return
 	
 	if(busy)
 		return
@@ -349,6 +368,13 @@
 /obj/vehicle/multitile/chimera/proc/start_landing()
 	if(!is_ground_level(z))
 		return
+
+	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(SSmapping.get_turf_below(get_turf(src)), 3, 3, -1, 0))
+		var/area/takeoff_turf_area = get_area(takeoff_turf)
+
+		if(CEILING_IS_PROTECTED(takeoff_turf_area.ceiling, CEILING_PROTECTION_TIER_1))
+			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't land here, the area is roofed."))
+			return
 	
 	if(busy)
 		return
@@ -361,15 +387,18 @@
 	addtimer(CALLBACK(src, PROC_REF(finish_landing)), 18 SECONDS)
 
 /obj/vehicle/multitile/chimera/proc/finish_landing()
+	STOP_PROCESSING(SSsuperfastobj, src)
 	forceMove(SSmapping.get_turf_below(get_turf(src)))
 	shadow_holder.forceMove(src)
 	flags_atom &= ~NO_ZFALL
 	state = STATE_STOWED
 	update_icon()
-	STOP_PROCESSING(SSsuperfastobj, src)
 	busy = FALSE
 
 /obj/vehicle/multitile/chimera/proc/toggle_stowed()
+	if(state != STATE_DEPLOYED && state != STATE_STOWED)
+		return
+	
 	if(busy)
 		return
 
@@ -471,7 +500,7 @@
 	if(!seat)
 		return
 
-	if(vehicle.state == STATE_STOWED || vehicle.state == STATE_TAKEOFF_LANDING)
+	if(vehicle.state != STATE_FLIGHT && vehicle.state != STATE_VTOL)
 		return
 
 	vehicle.start_landing()
@@ -828,6 +857,15 @@
 		fuelpump_installed = TRUE
 		return
 
+/obj/structure/largecrate/supply/chimera_peripherals
+	name = "\improper chimera peripherals crate"
+	desc = "A supply crate containig the peripherals for the VTOL landing pad."
+	supplies = list(
+		/obj/item/fuel_pump = 1,
+		/obj/item/flight_cpu = 1,
+		/obj/item/landing_pad_light = 4
+	)
+	icon_state = "secure_crate_strapped"
 
 
 #undef STATE_TUGGED

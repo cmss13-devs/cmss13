@@ -2568,6 +2568,7 @@
 #include "code\modules\vehicles\hardpoints\support\support.dm"
 #include "code\modules\vehicles\hardpoints\wheels\apc_wheels.dm"
 #include "code\modules\vehicles\hardpoints\wheels\arc_wheels.dm"
+#include "code\modules\vehicles\hardpoints\wheels\chimera_thrusters.dm"
 #include "code\modules\vehicles\hardpoints\wheels\locomotion.dm"
 #include "code\modules\vehicles\hardpoints\wheels\treads.dm"
 #include "code\modules\vehicles\hardpoints\wheels\van_wheels.dm"

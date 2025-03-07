@@ -67,8 +67,30 @@
 	pixel_y = 3
 	dir = EAST
 
+/obj/structure/bed/chair/comfy/vehicle/driver/chimera
+	icon = 'icons/obj/vehicles/interiors/chimera.dmi'
+	icon_state = "sit"
+	skill_to_check = SKILL_PILOT
+
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/chimera
 	pixel_y = -10
+
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/chimera/on_load(datum/interior/I)
+	var/obj/structure/bed/chair/comfy/vehicle/driver/chimera/S = new(loc)
+
+	S.icon = icon
+	S.icon_state = icon_state
+	S.layer = layer
+	S.vehicle = I.exterior
+	S.required_skill = S.vehicle.required_skill
+	S.setDir(dir)
+	S.alpha = alpha
+	S.update_icon()
+	S.handle_rotation()
+	S.pixel_x = pixel_x
+	S.pixel_y = pixel_y
+
+	qdel(src)
 
 /obj/structure/bed/chair/vehicle/chimera/buckle_mob(mob/M, mob/user)
 	if (!ismob(M) || (get_dist(src, user) > 1) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))

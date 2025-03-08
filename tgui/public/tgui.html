@@ -200,6 +200,8 @@
     }
   };
 
+  let MAX_PACKET_SIZE = 1024;
+
   Byond.sendMessage = function (type, payload) {
     var message = typeof type === 'string'
       ? { type: type, payload: payload }
@@ -209,11 +211,11 @@
     if (message.payload !== null && message.payload !== undefined) {
       message.payload = JSON.stringify(message.payload);
 
-      if(!Byond.TRIDENT && message.payload.length > 512) {
+      if(!Byond.TRIDENT && message.payload.length > MAX_PACKET_SIZE) {
         var chunks = [];
 
-        for(var i = 0, charsLength = message.payload.length; i < charsLength; i += 512) {
-          chunks.push(message.payload.substring(i, i + 512))
+        for(var i = 0, charsLength = message.payload.length; i < charsLength; i += MAX_PACKET_SIZE) {
+          chunks.push(message.payload.substring(i, i + MAX_PACKET_SIZE))
         }
 
         for(var i = 0; i < chunks.length; i++) {

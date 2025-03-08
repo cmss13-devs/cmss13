@@ -18,6 +18,12 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	return INITIALIZE_HINT_LATELOAD
 
+/turf/open_space/attack_alien(mob/user)
+	attack_hand(user)
+
+/turf/open_space/attack_hand(mob/user)
+	climb_down(user)
+
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
 
@@ -35,9 +41,21 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(!istype(current_turf, /turf/open_space))
 		return
 
+	var/climb_down_time = 1 SECONDS
+
+	if(ishuman_strict(user))
+		climb_down_time = 2.5 SECONDS
+
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno_victim = user
+		if(xeno_victim.mob_size >= MOB_SIZE_BIG)
+			climb_down_time = 3 SECONDS
+		else
+			climb_down_time = 1.5 SECONDS
+
 	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
-	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 

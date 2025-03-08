@@ -2158,19 +2158,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	wield_delay_mod = WIELD_DELAY_FAST
 
-/obj/item/attachable/stock/twobore
-	name = "heavy wooden stock"
-	icon_state = "twobore_stock"
-	attach_icon = "twobore_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-	pixel_shift_x = 24
-	pixel_shift_y = 16
-	hud_offset_mod = 10 //A sprite long enough to touch the Moon.
-
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
 	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"

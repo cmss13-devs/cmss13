@@ -527,7 +527,7 @@
 // Removing traits and other stuff after xeno releases us from haul
 /mob/living/carbon/human/proc/handle_unhaul()
 	var/location = get_turf(loc)
-	src.remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
+	remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
 	pixel_y = 0
 	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
 	UnregisterSignal(hauling_xeno, COMSIG_MOB_DEATH)

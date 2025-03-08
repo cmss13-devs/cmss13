@@ -92,7 +92,7 @@
 
 
 /datum/tacmap/drawing/chimera/ui_status(mob/user)
-	var/obj/vehicle.multitile/chimera/chimera_owner = owner
+	var/obj/vehicle/multitile/chimera/chimera_owner = owner
 
 	if(chimera_owner.seats[VEHICLE_DRIVER] != user)
 		return UI_CLOSE

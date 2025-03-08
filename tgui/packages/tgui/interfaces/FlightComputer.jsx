@@ -22,10 +22,16 @@ export const FlightComputer = (props) => {
     }
 
     if (fueling) {
-      return <Button onClick={() => act('stop_fueling')}>Stop Fueling & Charging</Button>;
+      return (
+        <Button onClick={() => act('stop_fueling')}>
+          Stop Fueling & Charging
+        </Button>
+      );
     } else {
       return (
-        <Button onClick={() => act('start_fueling')}>Start Fueling & Charing</Button>
+        <Button onClick={() => act('start_fueling')}>
+          Start Fueling & Charing
+        </Button>
       );
     }
   };

@@ -408,7 +408,7 @@
 	update_sight()
 
 /mob/living/carbon/xenomorph/proc/haul(mob/living/carbon/human/victim)
-	src.visible_message(SPAN_WARNING("[src] restrains [victim], hauling them effortlessly!"),
+	visible_message(SPAN_WARNING("[src] restrains [victim], hauling them effortlessly!"),
 	SPAN_WARNING("We fully restrain [victim] and start hauling them!"), null, 5)
 	log_interact(src, victim, "[key_name(src)] started hauling [key_name(victim)] at [get_area_name(src)]")
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)

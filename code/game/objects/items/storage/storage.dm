@@ -400,8 +400,8 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 			var/obj/item/stack/cur_stack = cur_item
 			var/obj/item/stack/new_stack = new_item
 
-		if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
-			return TRUE
+			if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
+				return TRUE
 
 		else if(istype(cur_item, /obj/item/ammo_magazine/handful) && istype(new_item, /obj/item/ammo_magazine/handful))
 			var/obj/item/ammo_magazine/handful/cur_handful = cur_item

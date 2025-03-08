@@ -170,7 +170,6 @@
 	if (dir == turn(direction, 180) || dir == direction)
 		return FALSE
 
-	shadow_holder.dir = direction
 	try_rotate(turning_angle(dir, direction))
 
 /obj/vehicle/multitile/chimera/try_rotate(deg)
@@ -179,6 +178,7 @@
 	if(!.)
 		return
 
+	shadow_holder.dir = direction
 	last_turn = world.time
 
 /obj/vehicle/multitile/chimera/process(deltatime)

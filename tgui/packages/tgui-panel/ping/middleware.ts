@@ -10,7 +10,7 @@ import { PING_QUEUE_SIZE, PING_TIMEOUT } from './constants';
 export const pingMiddleware = (store) => {
   let initialized = false;
   let index = 0;
-  const pings = [];
+  const pings: ({ sentAt: number } | null)[] = [];
 
   const sendPing = () => {
     for (let i = 0; i < PING_QUEUE_SIZE; i++) {

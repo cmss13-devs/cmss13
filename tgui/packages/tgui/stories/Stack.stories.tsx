@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { Box, Section, Stack } from '../components';
+import { Box, Section, Stack } from 'tgui/components';
 
 export const meta = {
   title: 'Stack',

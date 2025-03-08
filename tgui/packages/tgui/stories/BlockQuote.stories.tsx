@@ -4,17 +4,21 @@
  * @license MIT
  */
 
-import { Blink, Section } from '../components';
+import { BlockQuote, Section } from 'tgui/components';
+
+import { BoxWithSampleText } from './common';
 
 export const meta = {
-  title: 'Blink',
+  title: 'BlockQuote',
   render: () => <Story />,
 };
 
 const Story = (props) => {
   return (
     <Section>
-      <Blink>Blink</Blink>
+      <BlockQuote>
+        <BoxWithSampleText />
+      </BlockQuote>
     </Section>
   );
 };

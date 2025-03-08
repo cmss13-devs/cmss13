@@ -4,7 +4,8 @@
  * @license MIT
  */
 
-import { Box, Button, Section, Tooltip } from '../components';
+import { Placement } from '@popperjs/core';
+import { Box, Button, Section, Tooltip } from 'tgui/components';
 
 export const meta = {
   title: 'Tooltip',
@@ -37,7 +38,7 @@ const Story = () => {
             key={position}
             color="transparent"
             tooltip="Tooltip text."
-            tooltipPosition={position}
+            tooltipPosition={position as Placement}
           >
             {position}
           </Button>

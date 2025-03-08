@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { Box } from '../components';
+import { Box } from 'tgui/components';
 
 export const BoxWithSampleText = (props) => {
   return (

@@ -10,6 +10,10 @@ const isSafeNumber = (value) => {
 };
 
 export class TimeDisplay extends Component {
+  timer: NodeJS.Timeout | null;
+  last_seen_value?: number;
+  state: { value: number };
+  props: { readonly auto?: string; readonly value: number };
   constructor(props) {
     super(props);
     this.timer = null;
@@ -26,7 +30,9 @@ export class TimeDisplay extends Component {
 
   componentDidUpdate() {
     if (this.props.auto !== undefined) {
-      clearInterval(this.timer);
+      if (this.timer) {
+        clearInterval(this.timer);
+      }
       this.timer = setInterval(() => this.tick(), 1000); // every 1 s
     }
   }
@@ -49,7 +55,9 @@ export class TimeDisplay extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer);
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   }
 
   render() {

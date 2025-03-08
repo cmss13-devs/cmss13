@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { Button, LabeledList } from '../components';
+import { Button, LabeledList } from 'tgui/components';
 
 export const meta = {
   title: 'LabeledList',

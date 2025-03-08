@@ -5,9 +5,8 @@
  */
 
 import { useState } from 'react';
-
-import { Box, Button, ByondUi, Section } from '../components';
-import { logger } from '../logging';
+import { Button, ByondUi, Section, TextArea } from 'tgui/components';
+import { logger } from 'tgui/logging';
 
 export const meta = {
   title: 'ByondUi',
@@ -53,14 +52,13 @@ const Story = (props) => {
           </Button>
         }
       >
-        <Box
-          as="textarea"
+        <TextArea
           width="100%"
           height="10em"
-          onChange={(e) => setCode(e.target.value)}
+          onChange={(_, value) => setCode(value)}
         >
           {code}
-        </Box>
+        </TextArea>
       </Section>
     </>
   );

@@ -4,14 +4,17 @@
  * @license MIT
  */
 
-import { Input, LabeledList, Section } from '../components';
+import { Input, LabeledList, Section } from 'tgui/components';
 
 export const meta = {
   title: 'Themes',
   render: (theme, setTheme) => <Story theme={theme} setTheme={setTheme} />,
 };
 
-const Story = (props) => {
+const Story = (props: {
+  readonly theme: string;
+  readonly setTheme: Function;
+}) => {
   return (
     <Section>
       <LabeledList>

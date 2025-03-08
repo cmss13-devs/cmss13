@@ -5,18 +5,26 @@
  */
 
 import { useState } from 'react';
-
-import { Button, Section, Tabs } from '../components';
+import { Button, Section, Tabs } from 'tgui/components';
 
 export const meta = {
   title: 'Tabs',
   render: () => <Story />,
 };
 
+type TabProps = {
+  vertical: boolean;
+  leftSlot: boolean;
+  rightSlot: boolean;
+  icon: boolean;
+  fluid: boolean;
+  centered: boolean;
+};
+
 const TAB_RANGE = ['Tab #1', 'Tab #2', 'Tab #3', 'Tab #4'];
 
 const Story = (props) => {
-  const [tabProps, setTabProps] = useState({});
+  const [tabProps, setTabProps] = useState({} as TabProps);
   return (
     <>
       <Section>
@@ -108,26 +116,27 @@ const Story = (props) => {
   );
 };
 
-const TabsPrefab = (props) => {
+const TabsPrefab = (props: { readonly tabProps: TabProps }) => {
   const [tabIndex, setTabIndex] = useState(0);
+  const { tabProps } = props;
   return (
     <Tabs
-      vertical={props.tabProps.vertical}
-      fluid={props.tabProps.fluid}
-      textAlign={props.tabProps.centered && 'center'}
+      vertical={tabProps.vertical}
+      fluid={tabProps.fluid}
+      textAlign={tabProps.centered && 'center'}
     >
       {TAB_RANGE.map((text, i) => (
         <Tabs.Tab
           key={i}
           selected={i === tabIndex}
-          icon={props.tabProps.icon && 'info-circle'}
+          icon={tabProps.icon ? 'info-circle' : undefined}
           leftSlot={
-            props.tabProps.leftSlot && (
+            tabProps.leftSlot && (
               <Button circular compact color="transparent" icon="times" />
             )
           }
           rightSlot={
-            props.tabProps.rightSlot && (
+            tabProps.rightSlot && (
               <Button circular compact color="transparent" icon="times" />
             )
           }

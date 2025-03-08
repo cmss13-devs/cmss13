@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { Box, Button, Section } from '../components';
+import { Box, Button, Section } from 'tgui/components';
 
 export const meta = {
   title: 'Button',
@@ -34,7 +34,6 @@ const Story = (props) => {
       <Box mb={1}>
         <Button>Simple</Button>
         <Button selected>Selected</Button>
-        <Button altSelected>Alt Selected</Button>
         <Button disabled>Disabled</Button>
         <Button color="transparent">Transparent</Button>
         <Button icon="cog">Icon</Button>

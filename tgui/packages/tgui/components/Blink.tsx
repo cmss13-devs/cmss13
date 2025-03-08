@@ -1,9 +1,29 @@
-import { Component } from 'react';
+import { Component, type PropsWithChildren } from 'react';
+
+type Props = Partial<{
+  /**
+   * The interval between blinks, in milliseconds.
+   */
+  interval: number;
+
+  /**
+   * The time to wait before blinking again, in milliseconds.
+   */
+  time: number;
+}> &
+  PropsWithChildren;
+
+type State = {
+  hidden: boolean;
+};
 
 const DEFAULT_BLINKING_INTERVAL = 1000;
 const DEFAULT_BLINKING_TIME = 1000;
 
-export class Blink extends Component {
+export class Blink extends Component<Props, State> {
+  interval: NodeJS.Timeout;
+  timer: NodeJS.Timeout;
+
   constructor(props) {
     super(props);
     this.state = {

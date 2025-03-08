@@ -5,7 +5,6 @@
  */
 
 import { useState } from 'react';
-
 import {
   Box,
   Button,
@@ -13,7 +12,7 @@ import {
   LabeledList,
   ProgressBar,
   Section,
-} from '../components';
+} from 'tgui/components';
 
 export const meta = {
   title: 'ProgressBar',
@@ -24,23 +23,28 @@ const Story = (props) => {
   const [progress, setProgress] = useState(0.5);
   const [color, setColor] = useState('');
 
-  const color_data = color
-    ? { color: color }
-    : {
-        ranges: {
-          good: [0.5, Infinity],
-          bad: [-Infinity, 0.1],
-          average: [0, 0.5],
-        },
-      };
-
   return (
     <Section>
-      <ProgressBar {...color_data} minValue={-1} maxValue={1} value={progress}>
-        Value: {Number(progress).toFixed(1)}
-      </ProgressBar>
-      <Box mt={1}>
-        <LabeledList mt="2em">
+      {color ? (
+        <ProgressBar color={color} minValue={-1} maxValue={1} value={progress}>
+          Value: {Number(progress).toFixed(1)}
+        </ProgressBar>
+      ) : (
+        <ProgressBar
+          ranges={{
+            good: [0.5, Infinity],
+            bad: [-Infinity, 0.1],
+            average: [0, 0.5],
+          }}
+          minValue={-1}
+          maxValue={1}
+          value={progress}
+        >
+          Value: {Number(progress).toFixed(1)}
+        </ProgressBar>
+      )}
+      <Box mt={1} mb="2em">
+        <LabeledList>
           <LabeledList.Item label="Adjust value">
             <Button onClick={() => setProgress(progress - 0.1)}>-0.1</Button>
             <Button onClick={() => setProgress(progress + 0.1)}>+0.1</Button>

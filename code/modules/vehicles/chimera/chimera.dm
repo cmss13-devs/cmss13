@@ -495,7 +495,6 @@
 
 /obj/vehicle/multitile/chimera/proc/start_landing()
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
-	new /obj/downwash_effect(below_turf)
 
 	for(var/turf/landing_turf in CORNER_BLOCK_OFFSET(below_turf, 3, 3, -1, 0))
 		var/area/landing_turf_area = get_area(landing_turf)
@@ -508,6 +507,8 @@
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
 		return
 
+	animate(shadow_holder, pixel_x = src.pixel_x, pixel_y = src.pixel_y, time = 18 SECONDS)
+	new /obj/downwash_effect(below_turf)
 	busy = TRUE
 	state = STATE_TAKEOFF_LANDING
 	update_icon()

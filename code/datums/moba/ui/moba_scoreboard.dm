@@ -20,10 +20,14 @@
 /datum/moba_scoreboard/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/spritesheet/moba_items),
+		get_asset_datum(/datum/asset/spritesheet/moba_castes),
 	)
 
 /datum/moba_scoreboard/ui_data(mob/user)
 	var/list/data = list()
+
+	data["team1_total_kills"] = 0
+	data["team2_total_kills"] = 0
 
 	data["team1_players"] = list()
 	data["team2_players"] = list()
@@ -37,14 +41,16 @@
 				"icon_state" = item_path::icon_state
 			))
 		data["team1_players"] += list(list(
-			"name" = player_data.player.tied_xeno.real_name,
+			"name" = player_data.player.get_tied_xeno().real_name,
+			"caste" = player_data.caste.name,
+			"caste_icon" = player_data.caste.icon_state,
 			"kills" = player_data.player.kills,
 			"deaths" = player_data.player.deaths,
 			"level" = player_data.player.level,
 			"items" = item_list,
 		))
+		data["team1_total_kills"] += player_data.player.kills
 
-	var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
 	for(var/datum/moba_queue_player/player_data as anything in controller.team2_data)
 		var/list/item_list = list()
 		for(var/datum/moba_item/item_path as anything in player_data.player.held_item_types)
@@ -54,12 +60,15 @@
 				"icon_state" = item_path::icon_state
 			))
 		data["team2_players"] += list(list(
-			"name" = player_data.player.tied_xeno.real_name,
+			"name" = player_data.player.get_tied_xeno().real_name,
+			"caste" = player_data.caste.name,
+			"caste_icon" = player_data.caste.icon_state,
 			"kills" = player_data.player.kills,
 			"deaths" = player_data.player.deaths,
 			"level" = player_data.player.level,
 			"items" = item_list,
 		))
+		data["team2_total_kills"] += player_data.player.kills
 
 	return data
 
@@ -67,14 +76,3 @@
 	var/list/data = list()
 
 	return data
-
-/datum/moba_scoreboard/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-
-	switch(action)
-		if("buy_item")
-			if(!params["path"])
-				return FALSE
-			return TRUE

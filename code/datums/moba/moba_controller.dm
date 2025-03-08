@@ -52,7 +52,7 @@
 		RegisterSignal(player, COMSIG_MOBA_LEVEL_UP, PROC_REF(on_player_level_up))
 
 	map_id = id
-	scoreboard = new()
+	scoreboard = new(map_id)
 
 /datum/moba_controller/Destroy(force, ...)
 	left_base = null

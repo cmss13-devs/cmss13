@@ -7,13 +7,6 @@ import { BooleanLike } from '../../common/react';
 import { useBackend } from '../backend';
 import { Box, Button, Dropdown } from '../components';
 import { Window } from '../layouts';
-/*
-			"name" = caste.name,
-			"desc" = caste.desc,
-			"icon_state" = caste.icon_state,
-			"category" = caste.category,
-			"ideal_roles" = caste.ideal_roles,
-*/
 
 type Caste = {
   name: string;
@@ -113,7 +106,10 @@ const MobaCastePicked = (props) => {
       >
         {data.picked_castes.length >= priority ? (
           <span
-            className={classes(['mobacastes60x60', `${pickedCaste.icon_state}`])}
+            className={classes([
+              'mobacastes60x60',
+              `${pickedCaste.icon_state}`,
+            ])}
           />
         ) : (
           <span className={classes(['mobacastes60x60', 'empty'])} />

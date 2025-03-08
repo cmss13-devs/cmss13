@@ -52,12 +52,15 @@
 		player.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT,\
 		TRUE,\
 	)
+
+	map_id = id
+
 	for(var/datum/action/action_path as anything in parent_xeno.base_actions)
 		remove_action(parent_xeno, action_path)
 
+	give_action(parent_xeno, /datum/action/open_moba_scoreboard, map_id)
 	give_action(parent_xeno, /datum/action/xeno_action/watch_xeno)
 
-	map_id = id
 	right_side = right
 	store_ui = new(parent_xeno)
 	player_caste = GLOB.moba_castes[parent_xeno.caste.type]

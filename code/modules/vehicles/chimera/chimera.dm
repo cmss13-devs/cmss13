@@ -158,10 +158,13 @@
 
 		return
 
+	if(state == STATE_VTOL)
+		return ..()
+
 	if(last_turn + turn_delay > world.time)
 		return FALSE
 
-	if(state != STATE_FLIGHT && state != STATE_VTOL)
+	if(state != STATE_FLIGHT)
 		return
 
 	if (dir == turn(direction, 180) || dir == direction)
@@ -193,7 +196,7 @@
 		custom_screen.update(fuel, max_fuel, health, maxhealth)
 
 	if(state == STATE_VTOL)
-		fuel -= deltatime * 2
+		fuel -= deltatime * 3
 	else if (state == STATE_FLIGHT)
 		fuel -= deltatime
 

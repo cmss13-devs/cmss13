@@ -60,6 +60,19 @@
 /datum/action/xeno_action/moba/proc/level_up_ability(new_level)
 	return
 
+
+/datum/action/xeno_action/moba/onclick // god is dead
+	action_type = XENO_ACTION_CLICK
+	no_cooldown_msg = TRUE
+
+/datum/action/xeno_action/moba/onclick/action_activate()
+	. = ..()
+	use_ability_wrapper(null)
+
+
+
+
+
 /datum/action/xeno_action/activable/moba
 	var/datum/weakref/player_datum
 	var/static/mutable_appearance/level_up_overlay

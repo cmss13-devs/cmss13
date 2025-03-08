@@ -192,7 +192,7 @@
 
 	var/mob/living/carbon/human/hauled = hauled_mob?.resolve()
 	if(hauled)
-		hauled.forceMove(src.loc)
+		hauled.forceMove(loc)
 
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 	for(var/mob/living/carbon/mob in loc)

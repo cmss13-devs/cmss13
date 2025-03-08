@@ -6,7 +6,7 @@
 @use 'sass:color';
 @use 'sass:meta';
 
-$nanotrasen: hsl(0, 0%, 100%);
+$weyland_yutani: hsl(0, 0%, 100%);
 
 @use '../colors.scss' with (
   $primary: hsl(0, 0%, 0%),
@@ -21,12 +21,12 @@ $nanotrasen: hsl(0, 0%, 100%);
   // Components
   @include meta.load-css(
     '~tgui/styles/components/Button',
-    $with: ('color-default': $nanotrasen)
+    $with: ('color-default': $weyland_yutani)
   );
   @include meta.load-css(
     '~tgui/styles/components/ProgressBar',
     $with: (
-      'color-default-fill': $nanotrasen,
+      'color-default-fill': $weyland_yutani,
       'background-color': hsla(0, 0%, 0%, 0.5)
     )
   );

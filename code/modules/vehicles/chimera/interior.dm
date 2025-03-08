@@ -30,12 +30,40 @@
 	overlays += image('icons/obj/vehicles/interiors/chimera_rear_overlay.dmi', "overlay", pixel_x = -32)
 
 /obj/structure/interior_exit/vehicle/chimera/back/proc/toggle_open()
+	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 	if(open)
 		open = FALSE
 		icon_state = "rear door closed"
 	else
 		open = TRUE
 		icon_state = "rear door open"
+
+/obj/structure/machinery/door_control/chimera_rear_door
+	var/obj/vehicle/multitile/chimera/linked_chimera
+
+/obj/structure/machinery/door_control/chimera_rear_door/attack_hand(mob/user)
+	linked_chimera.toggle_rear_door()
+
+	. = ..()
+
+/obj/effect/landmark/interior/spawn/chimera_rear_door_button
+	name = "rear door button"
+
+/obj/effect/landmark/interior/spawn/chimera_rear_door_button/on_load(datum/interior/interior)
+	var/obj/structure/machinery/door_control/chimera_rear_door/door_control = new(get_turf(src))
+
+	door_control.name = name
+	door_control.setDir(dir)
+	door_control.alpha = alpha
+	door_control.update_icon()
+	door_control.pixel_x = pixel_x
+	door_control.pixel_y = pixel_y
+
+	if(istype(interior.exterior, /obj/vehicle/multitile/chimera))
+		var/obj/vehicle/multitile/chimera/linked_chimera = interior.exterior
+		door_control.linked_chimera = linked_chimera
+
+	qdel(src)	
 
 /obj/effect/landmark/interior/spawn/entrance/chimera_rear_door
 	name = "chimera back door"

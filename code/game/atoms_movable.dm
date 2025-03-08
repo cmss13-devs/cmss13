@@ -352,4 +352,7 @@
 	set_light_color(color)
 
 /atom/movable/proc/onZImpact(turf/impact_turf, height)
+	if(height <= 0)
+		return
+	
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)		

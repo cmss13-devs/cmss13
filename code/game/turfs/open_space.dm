@@ -40,7 +40,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 		height++
-
+	
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
 
@@ -73,20 +73,20 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/is_weedable()
 	return NOT_WEEDABLE
 
-// Projects a tile that isn't the one directly below it
-/turf/open_space/custom
+/turf/open_space/chimera
 	var/target_x = 1
 	var/target_y = 1
 	var/target_z = 1
 	var/backdrop = FALSE
+	var/should_fall = FALSE
 
-/turf/open_space/custom/attack_hand(mob/user)
+/turf/open_space/chimera/attack_hand(mob/user)
 	return
 
-/turf/open_space/custom/get_projected_turf()
+/turf/open_space/chimera/get_projected_turf()
 	return locate(target_x, target_y, target_z)
 
-/turf/open_space/custom/update_vis_contents()
+/turf/open_space/chimera/update_vis_contents()
 	if(!istransparentturf(src))
 		return
 
@@ -103,3 +103,16 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		below = SSmapping.get_turf_below(below)
 		depth++
 
+/turf/open_space/chimera/check_fall(atom/movable/movable)
+	if(movable.flags_atom & NO_ZFALL)
+		return
+
+	var/height = should_fall ? 1 : 0
+	var/turf/below = get_projected_turf()
+
+	while(istype(below, /turf/open_space))
+		below = SSmapping.get_turf_below(below)
+		height++
+	
+	movable.forceMove(below)
+	movable.onZImpact(below, height)

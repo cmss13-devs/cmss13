@@ -368,20 +368,26 @@
 	return
 
 /obj/vehicle/multitile/chimera/proc/update_rear_view()
-	var/turf/open_space/custom/new_turf = get_turf(back_door)
+	var/turf/open_space/chimera/new_turf = get_turf(back_door)
 	new_turf = locate(new_turf.x, new_turf.y + 1, new_turf.z)
 
 	var/turf/rear_turf
 
 	switch(dir)
 		if(SOUTH)
-			rear_turf = SSmapping.get_turf_below(locate(x, y + 2, z))
+			rear_turf = locate(x, y + 2, z)
 		if(NORTH)
-			rear_turf = SSmapping.get_turf_below(locate(x, y, z))
+			rear_turf = locate(x, y, z)
 		if(EAST)
-			rear_turf = SSmapping.get_turf_below(locate(x - 1, y + 1, z))
+			rear_turf = locate(x - 1, y + 1, z)
 		if(WEST)
-			rear_turf = SSmapping.get_turf_below(locate(x - 1, y + 1, z))
+			rear_turf = locate(x - 1, y + 1, z)
+
+	if(state == STATE_VTOL || state == STATE_FLIGHT)
+		rear_turf = SSmapping.get_turf_below(rear_turf)
+		new_turf.should_fall = TRUE
+	else
+		new_turf.should_fall = FALSE
 	
 	new_turf.target_x = rear_turf.x
 	new_turf.target_y = rear_turf.y
@@ -393,16 +399,12 @@
 		vis_holder.transform = transform_matrix
 
 /obj/vehicle/multitile/chimera/proc/toggle_rear_door()
-	if(state != STATE_FLIGHT && state != STATE_VTOL)
-		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in the air."))
-		return
-
 	back_door.toggle_open()
 
 	if(back_door.open)
 		var/turf/back_door_turf = get_turf(back_door)
 		back_door_turf = locate(back_door_turf.x, back_door_turf.y + 1, back_door_turf.z)
-		back_door_turf.ChangeTurf(/turf/open_space/custom)
+		back_door_turf.ChangeTurf(/turf/open_space/chimera)
 		update_rear_view()
 	else
 		var/turf/back_door_turf = get_turf(back_door)

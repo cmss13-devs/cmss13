@@ -540,49 +540,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	return ..()
 
-/obj/item/attachable/sniperbarrel
-	name = "sniper barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "sniperbarrel"
-	desc = "A heavy barrel. CANNOT BE REMOVED."
-	slot = "muzzle"
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = -3
-
-/obj/item/attachable/sniperbarrel/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-
-/obj/item/attachable/pmc_sniperbarrel
-	name = "sniper barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "pmc_sniperbarrel"
-	desc = "A heavy barrel. CANNOT BE REMOVED."
-	slot = "muzzle"
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = -3
-
-/obj/item/attachable/pmc_sniperbarrel/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-
-/obj/item/attachable/sniperbarrel/vulture
-	name = "\improper M707 barrel"
-	icon_state = "vulture_barrel"
-	hud_offset_mod = -1
-
-/obj/item/attachable/smartbarrel
-	name = "smartgun barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "m56_barrel"
-	desc = "The very end of the M56 smart gun, featuring a compensator. CANNOT BE REMOVED."
-	slot = "muzzle"
-	flags_attach_features = NO_FLAGS
-	pixel_shift_x = 14
-	hud_offset_mod = -4
-
 // Mateba barrels
 
 /obj/item/attachable/mateba
@@ -1862,12 +1819,6 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
 
-/obj/item/attachable/stock/vulture
-	name = "\improper M707 heavy stock"
-	icon_state = "vulture_stock"
-	attach_icon = "vulture_stock"
-	hud_offset_mod = 3
-
 /obj/item/attachable/stock/vulture/Initialize(mapload, ...)
 	. = ..()
 	select_gamemode_skin(type)
@@ -2025,7 +1976,6 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "Very illegal in the state of California."
 	icon_state = "m16_folding"
 	attach_icon = "m16_folding"
-	hud_offset_mod = 3
 	collapsible = TRUE
 	stock_activated = FALSE
 	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
@@ -2220,72 +2170,6 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 24
 	pixel_shift_y = 16
 	hud_offset_mod = 10 //A sprite long enough to touch the Moon.
-
-/obj/item/attachable/m4ra_barrel
-	name = "M4RA barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon_state = "m4ra_barrel"
-	attach_icon = "m4ra_barrel"
-	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-
-/obj/item/attachable/m4ra_barrel/New()
-	..()
-	select_gamemode_skin(type)
-
-/obj/item/attachable/m4ra_barrel/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..() // We are forcing attach_icon skin
-	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-			. = TRUE
-		if("desert")
-			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-			. = TRUE
-		if("classic")
-			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
-			. = TRUE
-		if("urban")
-			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
-			. = TRUE
-	return .
-
-/obj/item/attachable/m4ra_barrel_custom
-	name = "custom M4RA barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon_state = "m4ra_custom_barrel"
-	attach_icon = "m4ra_custom_barrel"
-	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-
-/obj/item/attachable/m4ra_barrel_custom/New()
-	..()
-	select_gamemode_skin(type)
-
-/obj/item/attachable/m4ra_barrel_custom/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..() // We are forcing attach_icon skin
-	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-			. = TRUE
-		if("desert")
-			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-			. = TRUE
-		if("classic")
-			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
-			. = TRUE
-		if("urban")
-			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
-			. = TRUE
-	return .
 
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"

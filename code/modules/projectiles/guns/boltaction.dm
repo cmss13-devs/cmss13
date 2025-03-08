@@ -169,16 +169,12 @@
 	map_specific_decoration = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction/vulture
 	attachable_allowed = list(
-		/obj/item/attachable/sniperbarrel/vulture,
 		/obj/item/attachable/vulture_scope,
 		/obj/item/attachable/bipod/vulture,
-		/obj/item/attachable/stock/vulture,
 	)
 	starting_attachment_types = list(
-		/obj/item/attachable/sniperbarrel/vulture,
 		/obj/item/attachable/vulture_scope,
 		/obj/item/attachable/bipod/vulture,
-		/obj/item/attachable/stock/vulture,
 	)
 	civilian_usable_override = FALSE
 	projectile_type = /obj/projectile/vulture
@@ -207,9 +203,9 @@
 /obj/item/weapon/gun/boltaction/vulture/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_VULTURE)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
-	scatter = SCATTER_AMOUNT_TIER_10
+	scatter = SCATTER_AMOUNT_NONE
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT

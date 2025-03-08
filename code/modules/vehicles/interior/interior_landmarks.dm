@@ -42,6 +42,8 @@
 	E.update_icon()
 	E.pixel_x = pixel_x
 	E.pixel_y = pixel_y
+
+	return E
 	// Don't qdel this because it's used for entering as well
 
 /obj/effect/landmark/interior/spawn/entrance/step_toward/on_load(datum/interior/I)

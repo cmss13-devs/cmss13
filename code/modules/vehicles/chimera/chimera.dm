@@ -40,7 +40,7 @@
 	required_skill = SKILL_PILOT_EXPERT
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/locomotion/arc_wheels,
+		/obj/item/hardpoint/locomotion/chimera_thrusters,
 	)
 
 	entrances = list(
@@ -80,6 +80,8 @@
 		new /atom/movable/screen/chimera/fuel(),
 		new /atom/movable/screen/chimera/integrity()
 	)
+	
+	var/obj/structure/interior_exit/vehicle/chimera/back/back_door
 
 /obj/chimera_shadow
 	icon = 'icons/obj/vehicles/chimera.dmi'
@@ -146,7 +148,7 @@
 		. = ..()
 
 		var/turf/possible_pad_turf = locate(x - 1, y - 1, z)
-		var/obj/structure/landing_pad = locate() in possible_pad_turf
+		var/obj/structure/landing_pad/landing_pad = locate() in possible_pad_turf
 
 		if(!landing_pad)
 			return
@@ -198,6 +200,9 @@
 	if(fuel <= 0)
 		STOP_PROCESSING(SSsuperfastobj, src)
 		crash()
+
+	if(back_door.open)
+		update_rear_view()
 
 /obj/vehicle/multitile/chimera/proc/crash()
 	for(var/mob/living/passenger in interior.get_passengers())
@@ -253,6 +258,7 @@
 	give_action(M, /datum/action/human_action/chimera/toggle_vtol)
 	give_action(M, /datum/action/human_action/chimera/toggle_stow)
 	give_action(M, /datum/action/human_action/chimera/disconnect_tug)
+	give_action(M, /datum/action/human_action/chimera/toggle_rear_door)
 
 	for(var/atom/movable/screen/chimera/screen_to_add as anything in custom_hud)
 		M.client.add_to_screen(screen_to_add)
@@ -309,6 +315,7 @@
 	remove_action(M, /datum/action/human_action/chimera/toggle_vtol)
 	remove_action(M, /datum/action/human_action/chimera/toggle_stow)
 	remove_action(M, /datum/action/human_action/chimera/disconnect_tug)
+	remove_action(M, /datum/action/human_action/chimera/toggle_rear_door)
 
 	for(var/atom/movable/screen/chimera/screen_to_remove as anything in custom_hud)
 		M.client.remove_from_screen(screen_to_remove) 
@@ -360,18 +367,58 @@
 /obj/vehicle/multitile/chimera/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	return
 
-/obj/vehicle/multitile/chimera/proc/start_takeoff()
-	if(!is_ground_level(z))
+/obj/vehicle/multitile/chimera/proc/update_rear_view()
+	var/turf/open_space/custom/new_turf = get_turf(back_door)
+	new_turf = locate(new_turf.x, new_turf.y + 1, new_turf.z)
+
+	var/turf/rear_turf
+
+	switch(dir)
+		if(SOUTH)
+			rear_turf = SSmapping.get_turf_below(locate(x, y + 2, z))
+		if(NORTH)
+			rear_turf = SSmapping.get_turf_below(locate(x, y, z))
+		if(EAST)
+			rear_turf = SSmapping.get_turf_below(locate(x - 1, y + 1, z))
+		if(WEST)
+			rear_turf = SSmapping.get_turf_below(locate(x - 1, y + 1, z))
+	
+	new_turf.target_x = rear_turf.x
+	new_turf.target_y = rear_turf.y
+	new_turf.target_z = rear_turf.z
+	new_turf.update_vis_contents()
+	var/matrix/transform_matrix = matrix()
+	transform_matrix.Translate(0, -16)
+	for(var/obj/vis_contents_holder/vis_holder in new_turf)
+		vis_holder.transform = transform_matrix
+
+/obj/vehicle/multitile/chimera/proc/toggle_rear_door()
+	if(state != STATE_FLIGHT && state != STATE_VTOL)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in the air."))
 		return
 
+	back_door.toggle_open()
+
+	if(back_door.open)
+		var/turf/back_door_turf = get_turf(back_door)
+		back_door_turf = locate(back_door_turf.x, back_door_turf.y + 1, back_door_turf.z)
+		back_door_turf.ChangeTurf(/turf/open_space/custom)
+		update_rear_view()
+	else
+		var/turf/back_door_turf = get_turf(back_door)
+		back_door_turf = locate(back_door_turf.x, back_door_turf.y + 1, back_door_turf.z)
+		back_door_turf.ChangeTurf(/turf/open/void/vehicle)
+
+/obj/vehicle/multitile/chimera/proc/start_takeoff()
 	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(get_turf(src), 3, 3, -1, 0))
 		var/area/takeoff_turf_area = get_area(takeoff_turf)
 
-		if(CEILING_IS_PROTECTED(takeoff_turf_area.ceiling, CEILING_PROTECTION_TIER_1))
+		if(CEILING_IS_PROTECTED(takeoff_turf_area.ceiling, CEILING_PROTECTION_TIER_1) || takeoff_turf.density)
 			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't takeoff here, the area is roofed."))
 			return
 	
 	if(busy)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
 		return
 
 	busy = TRUE
@@ -395,19 +442,17 @@
 	busy = FALSE
 
 /obj/vehicle/multitile/chimera/proc/start_landing()
-	if(!is_ground_level(z))
-		return
-
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
 
-	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(below_turf, 3, 3, -1, 0))
-		var/area/takeoff_turf_area = get_area(takeoff_turf)
+	for(var/turf/landing_turf in CORNER_BLOCK_OFFSET(below_turf, 3, 3, -1, 0))
+		var/area/landing_turf_area = get_area(landing_turf)
 
-		if(CEILING_IS_PROTECTED(takeoff_turf_area.ceiling, CEILING_PROTECTION_TIER_1))
-			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't land here, the area is roofed."))
+		if(CEILING_IS_PROTECTED(landing_turf_area.ceiling, CEILING_PROTECTION_TIER_1) || landing_turf.density)
+			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't land here, the area is roofed or blocked by something."))
 			return
 	
 	if(busy)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
 		return
 
 	busy = TRUE
@@ -422,7 +467,7 @@
 	forceMove(SSmapping.get_turf_below(get_turf(src)))
 	qdel(shadow_holder)
 	flags_atom &= ~NO_ZFALL
-	state = STATE_STOWED
+	state = STATE_DEPLOYED
 	update_icon()
 	busy = FALSE
 
@@ -437,9 +482,11 @@
 
 /obj/vehicle/multitile/chimera/proc/toggle_stowed()
 	if(state != STATE_DEPLOYED && state != STATE_STOWED)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in stowed or deployed mode."))
 		return
 	
 	if(busy)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
 		return
 
 	busy = TRUE
@@ -478,6 +525,7 @@
 		return
 
 	if(vehicle.state != STATE_DEPLOYED)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in deployed mode."))
 		return
 
 	vehicle.start_takeoff()
@@ -509,6 +557,7 @@
 		return
 
 	if(vehicle.state != STATE_FLIGHT && vehicle.state != STATE_VTOL)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in flight or hover mode."))
 		return
 
 	if(vehicle.state == STATE_FLIGHT)
@@ -541,6 +590,7 @@
 		return
 
 	if(vehicle.state != STATE_FLIGHT && vehicle.state != STATE_VTOL)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in the air."))
 		return
 
 	vehicle.start_landing()
@@ -565,9 +615,6 @@
 			break
 
 	if(!seat)
-		return
-
-	if(vehicle.state != STATE_DEPLOYED && vehicle.state != STATE_STOWED)
 		return
 
 	vehicle.toggle_stowed()
@@ -654,6 +701,20 @@
 	. = ..()
 
 	vehicle.disconnect_tug()
+
+/datum/action/human_action/chimera/toggle_rear_door
+	name = "Toggle Rear Door"
+	action_icon_state = "tug-disconnect"
+
+/datum/action/human_action/chimera/toggle_rear_door/action_activate()
+	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+	
+	if(!istype(vehicle))
+		return
+
+	. = ..()
+
+	vehicle.toggle_rear_door()
 
 /datum/action/human_action/vehicle_unbuckle/chimera
 	action_icon_state = "pilot-unbuckle"
@@ -763,28 +824,21 @@
 /obj/item/flight_cpu/ui_data(mob/user)
 	var/list/data = list()
 
-	var/turf/center_turf = locate(x + 1, y + 1, z)
-
-
-	for(var/obj/vehicle/multitile/chimera/aircraft in center_turf.contents)
-		if(aircraft.x == center_turf.x + 1 && aircraft.y == aircraft.y)
-			data["vtol_detected"] = TRUE
-			data["fuel"] = aircraft.fuel
-			data["max_fuel"] = aircraft.max_fuel
-			data["fueling"] = fueling
+	var/turf/center_turf = locate(x + 2, y + 1, z)
+	var/obj/vehicle/multitile/chimera/aircraft = locate() in center_turf
+	if(aircraft)
+		data["vtol_detected"] = TRUE
+		data["fuel"] = aircraft.fuel
+		data["max_fuel"] = aircraft.max_fuel
+		data["fueling"] = fueling
 
 	return data
 
 /obj/item/flight_cpu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
-	var/turf/center_turf = locate(x + 1, y + 1, z)
-	var/obj/vehicle/multitile/chimera/parked_aircraft
-
-	for(var/obj/vehicle/multitile/chimera/aircraft in center_turf.contents)
-		if(aircraft.x == center_turf.x + 1 && aircraft.y == aircraft.y)
-			parked_aircraft = aircraft
-			break
+	var/turf/center_turf = locate(x + 2, y + 1, z)
+	var/obj/vehicle/multitile/chimera/parked_aircraft = locate() in center_turf
 
 	if(!parked_aircraft)
 		return
@@ -851,7 +905,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	parked_aircraft.fuel = max(parked_aircraft.fuel + deltatime, parked_aircraft.max_fuel)
+	parked_aircraft.fuel = min(parked_aircraft.fuel + deltatime, parked_aircraft.max_fuel)
 
 /obj/structure/landing_pad/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/landing_pad_light))

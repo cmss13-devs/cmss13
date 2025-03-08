@@ -22,6 +22,38 @@
 /obj/structure/interior_exit/vehicle/chimera/back
 	name = "chimera back door"
 	icon_state = "rear door closed"
+	flags_atom = NO_ZFALL
+	var/open = FALSE
+
+/obj/structure/interior_exit/vehicle/chimera/back/Initialize()
+	. = ..()
+	overlays += image('icons/obj/vehicles/interiors/chimera_rear_overlay.dmi', "overlay", pixel_x = -32)
+
+/obj/structure/interior_exit/vehicle/chimera/back/proc/toggle_open()
+	if(open)
+		open = FALSE
+		icon_state = "rear door closed"
+	else
+		open = TRUE
+		icon_state = "rear door open"
+
+/obj/effect/landmark/interior/spawn/entrance/chimera_rear_door
+	name = "chimera back door"
+	pixel_x = 0
+	pixel_y = 24
+	dir = 1
+	offset_y = -1
+	exit_type = /obj/structure/interior_exit/vehicle/chimera/back
+
+/obj/effect/landmark/interior/spawn/entrance/chimera_rear_door/on_load(datum/interior/interior)
+	var/obj/structure/interior_exit/vehicle/chimera/back_door = ..()
+
+	if(!back_door)
+		return
+
+	if(istype(interior.exterior, /obj/vehicle/multitile/chimera))
+		var/obj/vehicle/multitile/chimera/linked_chimera = interior.exterior
+		linked_chimera.back_door = back_door
 
 /obj/structure/bed/chair/vehicle/chimera
 	name = "passenger seat"

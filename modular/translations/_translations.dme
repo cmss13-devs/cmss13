@@ -39,6 +39,7 @@
 #include "code/job/civilians/other/survivors.dm"
 #include "code/job/civilians/support/cmo.dm"
 #include "code/job/civilians/support/doctor.dm"
+#include "code/job/civilians/support/field_doctor.dm"
 #include "code/job/civilians/support/nurse.dm"
 #include "code/job/civilians/support/researcher.dm"
 #include "code/job/civilians/support/synthetic.dm"

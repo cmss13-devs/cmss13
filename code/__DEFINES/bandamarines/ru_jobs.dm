@@ -45,6 +45,7 @@
 #define JOB_CMO_RU "Главрач"
 #define JOB_DOCTOR_RU "Доктор"
 #define JOB_SURGEON_RU "Хирург"
+#define JOB_FIELD_DOCTOR_RU "Полевой врач"
 
 #define JOB_NURSE_RU "Медработник"
 #define JOB_NURSE_RU_MALE "Медбрат"

@@ -10,6 +10,11 @@
 	//name = "USCM Surgeon"
 	assignment = JOB_SURGEON_RU
 
+/datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
+	// name = "USCM Field Doctor"
+	assignment = JOB_FIELD_DOCTOR_RU
+	role_comm_title = "Пол. Врач"
+
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse
 	//name = "USCM Nurse"
 	assignment = JOB_NURSE_RU

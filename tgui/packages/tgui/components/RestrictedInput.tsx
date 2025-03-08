@@ -147,8 +147,8 @@ export class RestrictedInput extends Component {
   props: {
     readonly autoSelect?: boolean;
     readonly autoFocus?: boolean;
-    readonly maxValue: number;
-    readonly minValue: number;
+    readonly maxValue?: number | null;
+    readonly minValue?: number | null;
     readonly fluid?: boolean;
     readonly monospace?: boolean;
     readonly onBlur?: (e: any, number: number) => void;

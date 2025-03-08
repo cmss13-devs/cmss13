@@ -12,30 +12,12 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	name = "open space"
 	icon_state = "transparent"
 	baseturfs = /turf/open_space
-	plane = OPEN_SPACE_PLANE
+	plane = OPEN_SPACE_PLANE_START
 
 /turf/open_space/Initialize()
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	
 	return INITIALIZE_HINT_LATELOAD
-
-/turf/open_space/LateInitialize()
-	update_vis_contents()
-
-/turf/open_space/proc/update_vis_contents()
-	vis_contents.Cut()
-	vis_contents += GLOB.openspace_backdrop_one_for_all
-	var/turf/below = locate(x, y, z-1)
-
-	if(below)
-		vis_contents += below
-
-
-/turf/open_space/multiz_new(dir)
-	if(dir == DOWN)
-		update_vis_contents()
-
-/turf/open_space/multiz_del(dir)
-	if(dir == DOWN)
-		update_vis_contents()
 
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()

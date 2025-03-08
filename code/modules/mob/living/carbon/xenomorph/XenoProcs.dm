@@ -417,7 +417,7 @@
 		var/mob/living/carbon/human/pulled_human = victim
 		pulled_human.disable_lights()
 	hauled_mob = WEAKREF(victim)
-	victim.forceMove(src.loc, get_dir(victim.loc, src.loc))
+	victim.forceMove(loc, get_dir(victim.loc, loc))
 	victim.handle_haul(src)
 	RegisterSignal(victim, COMSIG_MOB_DEATH, PROC_REF(release_dead_haul))
 	haul_timer = addtimer(CALLBACK(src, PROC_REF(about_to_release_hauled)), 40 SECONDS + rand(0 SECONDS, 20 SECONDS), TIMER_STOPPABLE)

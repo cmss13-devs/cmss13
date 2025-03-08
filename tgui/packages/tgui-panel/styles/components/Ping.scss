@@ -13,7 +13,11 @@ $border-color: hsla(0, 0%, 55%, 0.5) !default;
   border: math.div(1em, 12) solid $border-color;
   border-radius: 0.25em;
   width: 3.75em;
+  user-select: none;
   text-align: right;
+  &:hover {
+    background-color: lighten($border-color, 30%);
+  }
 }
 
 .Ping__indicator {

@@ -268,23 +268,37 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
 
+/**
+ * For QuickClot removes CHEM_EFFECT_NO_BLEEDING. if above 0C, has no Cryox/Clonex in system. Exception check for cryometabolizing hypothermics
+ *
+ * Affected mob will be evaluated for QuickClot conditions, above 0c, has cryo/clonex no in system and remove the flag regardless of reagent cancel
+ * arguments:
+ * *M - the affected Mob
+ */
+/datum/chem_property/neutral/hypothermic/pre_process(mob/living/M)
+	var/mob/living/carbon/human/effected_human = M
+	///IF are above 0C or no cryo/clonex remove no bleed flag.
+	if ((M.bodytemperature >= T0C || (effected_human.reagents.get_reagent_amount("cryoxadone") == 0 && effected_human.reagents.get_reagent_amount("clonexadone") == 0)) && (effected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING))
+		effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
+
 /datum/chem_property/neutral/hypothermic/process(mob/living/M, potency = 1, delta_time)
 	var/mob/living/carbon/human/effected_human = M
 	if(prob(5 * delta_time))
 		M.emote("shiver")
-	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
-	///IF body temp below 0C AND Cryo or Clonex in system, AND hypothermic_clot_toggle false apply CHEM_EFFECT_NO_BLEEDING
-	if ((M.bodytemperature < T0C && (effected_human.reagents.get_reagent_amount("cryoxadone") || effected_human.reagents.get_reagent_amount("clonexadone"))) && M.hypothermic_clot_toggle == FALSE)
+	///IF body temp below 0C AND Cryo or Clonex in system,apply CHEM_EFFECT_NO_BLEEDING
+	if ((M.bodytemperature < T0C && (effected_human.reagents.get_reagent_amount("cryoxadone") || effected_human.reagents.get_reagent_amount("clonexadone"))) && !(effected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING))
 		M.hypothermic_clot_toggle = TRUE
 		effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
-
-	///IF are above 0C or no cryo/clonex AND hypothermic_clot_toggle true, remove no bleed flag.
-	if ((M.bodytemperature >= T0C || (effected_human.reagents.get_reagent_amount("cryoxadone") == 0 && effected_human.reagents.get_reagent_amount("clonexadone") == 0)) && M.hypothermic_clot_toggle == TRUE)
-		M.hypothermic_clot_toggle = FALSE
-		effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
+	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
 	M.recalculate_move_delay = TRUE
 
-///Repurposed hemostatic/on_delete , removes chem flag when removed
+/**
+ * For QuickClot removes CHEM_EFFECT_NO_BLEEDING. when drug fully metabolized
+ *
+ * Affected mob will have no bleed tag removed when drug metabolized
+ * arguments:
+ * *affected_mob - the affected Mob
+ */
 /datum/chem_property/neutral/hypothermic/on_delete(mob/living/affected_mob)
 	var/mob/living/carbon/human/effected_human = affected_mob
 	effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
@@ -306,6 +320,7 @@
 	max_level = 2
 
 /datum/chem_property/neutral/balding/process(mob/living/M, potency = 1, delta_time)
+	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if((H.h_style != "Bald" || H.f_style != "Shaved"))

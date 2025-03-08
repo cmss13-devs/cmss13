@@ -13,7 +13,7 @@
 	speed = XENO_SPEED_HELLHOUND
 	attack_delay = -2
 	behavior_delegate_type = /datum/behavior_delegate/hellhound_base
-
+	evolution_allowed = FALSE //Prevents Hellhounds from being able to "fake evolve". If you add a caste for hellhounds to evolve to, delete this!
 	minimum_evolve_time = 0
 
 	tackle_min = 4

@@ -17,6 +17,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
+	MOB_HUD_FACTION_WO = new /datum/mob_hud/faction/wo(),
 	MOB_HUD_FACTION_CMB = new /datum/mob_hud/faction/cmb(),
 	MOB_HUD_FACTION_NSPA = new /datum/mob_hud/faction/nspa(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
@@ -217,6 +218,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 /datum/mob_hud/faction/pmc
 	faction_to_check = FACTION_PMC
+
+/datum/mob_hud/faction/wo
+	faction_to_check = FACTION_WY_DEATHSQUAD
 
 /datum/mob_hud/faction/nspa
 	faction_to_check = FACTION_NSPA

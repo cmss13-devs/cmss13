@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 /obj/structure/flora/grass/tallgrass/jungle/moba/attack_alien(mob/living/carbon/xenomorph/M) // We do this so that players can still be easily attacked in bushes
 	var/mob/living/located_living = locate() in get_turf(src)
 	if(located_living)
-		to_chat(M, SPAN_XENOWARNING("You swing through [src], hitting [located_living]!"))
+		//to_chat(M, SPAN_XENOWARNING("You swing through [src], hitting [located_living]!")) // don't really need this line since there's an attack message already
 		located_living.attack_alien(M)
 		return XENO_ATTACK_ACTION
 	else

@@ -2,6 +2,7 @@
 	var/name = ""
 	var/gold_cost = 0
 	var/description = ""
+	var/icon_state = ""
 	/// If TRUE, a player can only hold one of this item at a time.
 	var/unique = FALSE
 

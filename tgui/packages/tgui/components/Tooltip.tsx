@@ -8,6 +8,7 @@ type TooltipProps = {
   readonly children?: ReactNode;
   readonly content: ReactNode;
   readonly position?: Placement;
+  readonly innerhtml?: ReactNode;
 };
 
 type TooltipState = {
@@ -108,7 +109,17 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
       return;
     }
 
-    render(<span>{this.props.content}</span>, renderedTooltip, () => {
+    let real_content; // code stolen from Kapu
+    /* eslint-disable react/no-danger */
+    if (this.props.innerhtml) {
+      real_content = (
+        <span dangerouslySetInnerHTML={{ __html: this.props.innerhtml }} />
+      );
+    } else {
+      real_content = <span>{this.props.content}</span>;
+    }
+
+    render(real_content, renderedTooltip, () => {
       let singletonPopper = Tooltip.singletonPopper;
       if (singletonPopper === undefined) {
         singletonPopper = createPopper(

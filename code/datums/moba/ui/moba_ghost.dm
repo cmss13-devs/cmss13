@@ -21,7 +21,7 @@
 
 /datum/moba_join_panel/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/moba),
+		get_asset_datum(/datum/asset/spritesheet/moba_castes),
 	)
 
 /datum/moba_join_panel/ui_state(mob/user)

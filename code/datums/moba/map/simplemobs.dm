@@ -58,13 +58,12 @@
 	speak = list("ALERT.","Hostile-ile-ile entities dee-twhoooo-wected.","Threat parameterszzzz- szzet.","Bring sub-sub-sub-systems uuuup to combat alert alpha-a-a.")
 	emote_see = list("beeps menacingly","whirrs threateningly","scans its immediate vicinity")
 	a_intent = INTENT_HARM
-	stop_automated_movement_when_pulled = 0
 	health = 300
 	maxHealth = 300
 	speed = 8
 	projectiletype = /obj/projectile/beam/drone
 	projectilesound = 'sound/weapons/Laser3.ogg'
-	destroy_surroundings = 0
+	destroy_surroundings = FALSE
 	faction = "malf_drone"
 	var/datum/effect_system/ion_trail_follow/ion_trail
 

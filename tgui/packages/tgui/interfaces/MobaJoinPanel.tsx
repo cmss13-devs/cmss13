@@ -113,10 +113,10 @@ const MobaCastePicked = (props) => {
       >
         {data.picked_castes.length >= priority ? (
           <span
-            className={classes(['moba60x60', `${pickedCaste.icon_state}`])}
+            className={classes(['mobacastes60x60', `${pickedCaste.icon_state}`])}
           />
         ) : (
-          <span className={classes(['moba60x60', 'empty'])} />
+          <span className={classes(['mobacastes60x60', 'empty'])} />
         )}
       </Button>
       <Dropdown
@@ -190,7 +190,7 @@ const MobaCasteSelectorButton = (props) => {
         setCasteSelectorOpen(false);
       }}
     >
-      <span className={classes(['moba60x60', `${caste.icon_state}`])} />
+      <span className={classes(['mobacastes60x60', `${caste.icon_state}`])} />
     </Button>
   );
 };

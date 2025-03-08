@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	. = ..()
 
 /mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
-	var/turf/new_turf = get_step(loc, direct)
+	var/turf/new_turf = SSmapping.get_turf_above(M)
 	forceMove(new_turf)
 	
 	if(!istype(new_turf, /turf/open_space))

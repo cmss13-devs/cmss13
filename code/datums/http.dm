@@ -11,6 +11,9 @@
 
 	var/_raw_response
 
+	var/datum/callback/cb	// SS220 TTS EDIT
+
+
 /datum/http_request/proc/prepare(method, url, body = "", list/headers, output_file)
 	if (!length(headers))
 		headers = ""

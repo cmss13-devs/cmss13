@@ -204,8 +204,8 @@
 /mob/living/carbon/xenomorph/carrier/get_status_tab_items()
 	. = ..()
 	if(huggers_max > 0)
-		. += "Stored Huggers: [huggers_cur] / [huggers_max]"
-	. += "Stored Eggs: [eggs_cur] / [eggs_max]"
+		. += "Имеется лицехватов: [huggers_cur] / [huggers_max]"
+	. += "Имеется яиц: [eggs_cur] / [eggs_max]"
 
 /mob/living/carbon/xenomorph/carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
 	if(F.hivenumber != hivenumber)

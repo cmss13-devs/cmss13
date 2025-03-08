@@ -893,14 +893,17 @@
 	icon_state = initial(icon_state) + "_active"
 	active = 1
 	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime), user), det_time)
 
-/obj/item/explosive/grenade/spawnergrenade/hellhound/prime()
+/obj/item/explosive/grenade/spawnergrenade/hellhound/prime(mob/user)
 	if(spawner_type && deliveryamt)
 		// Make a quick flash
-		var/turf/T = get_turf(src)
+		var/turf/spawn_turf = get_turf(src)
 		if(ispath(spawner_type))
-			new spawner_type(T)
+			var/mob/living/carbon/xenomorph/hellhound/hound = new spawner_type(spawn_turf)
+			var/datum/behavior_delegate/hellhound_base/hound_owner = hound.behavior_delegate
+			hound_owner.pred_owner = user
+			notify_ghosts(header = "Hellhound", message = "A hellhound has been called in [get_area(user)] by [user.real_name] click play as hellhound to play as one.", extra_large = TRUE)
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)
@@ -1208,6 +1211,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "polishing_rag"
 	reagent_desc_override = TRUE //Hide the fact its actually a reagent container
+	has_lid = FALSE
 
 /obj/item/reagent_container/glass/rag/polishing_rag/get_examine_text(mob/user)
 	. = ..()

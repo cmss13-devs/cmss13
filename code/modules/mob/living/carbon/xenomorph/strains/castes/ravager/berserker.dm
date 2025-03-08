@@ -307,26 +307,29 @@
 		xeno.emote("roar")
 		xeno.spin_circle()
 
-		for (var/mob/living/carbon/human in orange(xeno, range))
-			if(!isxeno_human(human) || xeno.can_not_harm(human))
+		for (var/mob/living/carbon/targets_to_hit in orange(xeno, range))
+			if(!isxeno_human(targets_to_hit) || xeno.can_not_harm(targets_to_hit))
 				continue
 
-			if (human.stat == DEAD)
+			if (targets_to_hit.stat == DEAD)
 				continue
 
-			if(!check_clear_path_to_target(xeno, human))
+			if (HAS_TRAIT(targets_to_hit, TRAIT_NESTED))
+				continue
+
+			if(!check_clear_path_to_target(xeno, targets_to_hit))
 				continue
 
 			if (range > 1)
-				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [human]!"))
-				human.spawn_gibs()
-				playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
-				human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
+				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [targets_to_hit]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [targets_to_hit]!"))
+				targets_to_hit.spawn_gibs()
+				playsound(get_turf(targets_to_hit), 'sound/effects/gibbed.ogg', 30, 1)
+				targets_to_hit.apply_effect(get_xeno_stun_duration(targets_to_hit, 1), WEAKEN)
 			else
-				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("We claw [human]!"))
-				playsound(get_turf(human), "alien_claw_flesh", 30, 1)
+				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
+				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
 
-			human.apply_armoured_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

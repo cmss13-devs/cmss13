@@ -5411,7 +5411,7 @@
 /area/fiorina/station/security)
 "ejM" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/wy_mre{
+/obj/item/storage/box/mre/wy{
 	pixel_x = 5;
 	pixel_y = 2
 	},

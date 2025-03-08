@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
+@use 'sass:color';
 @use 'sass:math';
 
 $border-color: hsla(0, 0%, 55%, 0.5) !default;
@@ -16,7 +17,7 @@ $border-color: hsla(0, 0%, 55%, 0.5) !default;
   user-select: none;
   text-align: right;
   &:hover {
-    background-color: lighten($border-color, 30%);
+    background-color: color.scale($border-color, $lightness: 66.6666666667%);
   }
 }
 

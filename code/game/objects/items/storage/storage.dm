@@ -396,18 +396,25 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 ///Returns TRUE if there is room for the given item. W_class_override allows checking for just a generic W_class, meant for checking shotgun handfuls without having to spawn and delete one just to check.
 /obj/item/storage/proc/has_room(obj/item/new_item, W_class_override = null)
 	for(var/obj/item/cur_item in contents)
-		if(!istype(cur_item, /obj/item/stack) || !istype(new_item, /obj/item/stack))
-			continue
-
-		var/obj/item/stack/cur_stack = cur_item
-		var/obj/item/stack/new_stack = new_item
+		if(istype(cur_item, /obj/item/stack) && istype(new_item, /obj/item/stack))
+			var/obj/item/stack/cur_stack = cur_item
+			var/obj/item/stack/new_stack = new_item
 
 		if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
 			return TRUE
-	
+
+		else if(istype(cur_item, /obj/item/ammo_magazine/handful) && istype(new_item, /obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/handful/cur_handful = cur_item
+			var/obj/item/ammo_magazine/handful/new_handful = new_item
+
+			if(cur_handful.is_transferable(new_handful))
+				return TRUE
+		else
+			continue
+
 	if(storage_slots != null && length(contents) < storage_slots)
 		return TRUE //At least one open slot.
-	
+
 	//calculate storage space only for containers that don't have slots
 	if (storage_slots == null)
 		var/sum_storage_cost = W_class_override ? W_class_override : new_item.get_storage_cost() //Takes the override if there is one, the given item otherwise.
@@ -510,14 +517,29 @@ user can be null, it refers to the potential mob doing the insertion.**/
 				if(!istype(cur_item, /obj/item/stack))
 					continue
 				var/obj/item/stack/cur_stack = cur_item
-				
+
 				if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
 					var/amount = min(cur_stack.max_amount - cur_stack.amount, new_stack.amount)
 					new_stack.use(amount)
 					cur_stack.add(amount)
-			
+
 			if(!QDELETED(new_stack) && can_be_inserted(new_stack, user))
 				if(!user.drop_inv_item_to_loc(new_item, src))
+					return FALSE
+			else
+				return TRUE
+		else if(istype(new_item, /obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/handful/new_handful = new_item
+
+			for(var/obj/item/cur_item in contents)
+				if(!istype(cur_item, /obj/item/ammo_magazine/handful))
+					continue
+				var/obj/item/ammo_magazine/handful/cur_handful = cur_item
+				if(cur_handful.is_transferable(new_handful))
+					cur_handful.transfer_ammo(new_handful, user, new_handful.current_rounds)
+
+			if(!QDELETED(new_handful) && can_be_inserted(new_handful, user))
+				if(!user.drop_inv_item_to_loc(new_handful, src))
 					return FALSE
 			else
 				return TRUE

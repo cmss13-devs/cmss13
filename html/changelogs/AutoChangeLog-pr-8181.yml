@@ -1,0 +1,6 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - balance: "Increased facehugger leap windup time from 1 second to 2 seconds (crawling hug time unchanged)"
+  - balance: "Increased facehugger health loss off weeds from 1 to 2"
+  - balance: "Facehuggers now lose health off weeds regardless of if resting or not (exception is watcher in watch mode)"

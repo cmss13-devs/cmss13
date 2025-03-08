@@ -56,6 +56,7 @@
 		enter_cooldown()
 
 	SEND_SIGNAL(src, COMSIG_ACTION_ACTIVATED)
+	return TRUE
 
 /// handler for when a keybind signal is received by the action, calls the action_activate proc asynchronous
 /datum/action/proc/keybind_activation()

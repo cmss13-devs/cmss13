@@ -41,7 +41,7 @@
 	if(player.unspent_levels && (player.ability_path_level_dict[type] < max_level))
 		player.spend_level(type)
 		level_up_ability()
-		return
+		return FALSE
 	return ..()
 
 /datum/action/xeno_action/moba/update_button_icon()
@@ -80,6 +80,8 @@
 
 /datum/action/xeno_action/moba/onclick/action_activate()
 	. = ..()
+	if(!.)
+		return .
 	use_ability_wrapper(null)
 
 

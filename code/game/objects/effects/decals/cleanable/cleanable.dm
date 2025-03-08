@@ -23,6 +23,8 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 	garbage = TRUE
 
+	keep_as_object = TRUE
+
 /obj/effect/decal/cleanable/Initialize(mapload, ...)
 	. = ..()
 	if (random_icon_states && length(src.random_icon_states) > 0)
@@ -82,7 +84,13 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 /obj/effect/decal/cleanable/proc/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state)
 	overlayed_image = image(overlay_icon, icon_state = overlay_icon_state)
-	overlayed_image.appearance = appearance
+	if(pixel_x)
+		overlayed_image.pixel_x = pixel_x
+	if(pixel_y)
+		overlayed_image.pixel_y = pixel_y
+	if(color)
+		overlayed_image.color = color
+	
 	cleanable_turf.overlays += overlayed_image
 	moveToNullspace() // This obj should not be on the turf for performance
 

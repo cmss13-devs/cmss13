@@ -509,7 +509,7 @@ const SquadMonitor = (props) => {
             marines
               .sort(sortByRole)
               .filter((marine) => {
-                if (marineSearch) {
+                if (marineSearch && !marineSearch.includes('\\')) {
                   const searchableString = String(marine.name).toLowerCase();
                   return searchableString.match(new RegExp(marineSearch, 'i'));
                 }
@@ -589,6 +589,7 @@ const SupplyDrop = (props) => {
 
   const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
   const [supplyY, setSupplyY] = useSharedState('supply', 0);
+  const [supplyZ, setSupplyZ] = useSharedState('supplyz', 0);
 
   let crate_status = 'Crate Loaded';
   let crate_color = 'green';
@@ -607,6 +608,7 @@ const SupplyDrop = (props) => {
           <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
+                step={1}
                 value={supplyX}
                 onChange={(value) => setSupplyX(value)}
                 width="75px"
@@ -614,8 +616,17 @@ const SupplyDrop = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
+                step={1}
                 value={supplyY}
                 onChange={(value) => setSupplyY(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="HEIGHT">
+              <NumberInput
+                step={1}
+                value={supplyZ}
+                onChange={(value) => setSupplyZ(value)}
                 width="75px"
               />
             </LabeledControls.Item>
@@ -631,7 +642,9 @@ const SupplyDrop = (props) => {
               width="100%"
               icon="box"
               color="yellow"
-              onClick={() => act('dropsupply', { x: supplyX, y: supplyY })}
+              onClick={() =>
+                act('dropsupply', { x: supplyX, y: supplyY, z: supplyZ })
+              }
             >
               Launch
             </Button>
@@ -641,7 +654,7 @@ const SupplyDrop = (props) => {
               icon="save"
               color="yellow"
               onClick={() =>
-                act('save_coordinates', { x: supplyX, y: supplyY })
+                act('save_coordinates', { x: supplyX, y: supplyY, z: supplyZ })
               }
             >
               Save
@@ -663,6 +676,7 @@ const OrbitalBombardment = (props) => {
 
   const [OBX, setOBX] = useSharedState('obx', 0);
   const [OBY, setOBY] = useSharedState('oby', 0);
+  const [OBZ, setOBZ] = useSharedState('obz', 0);
 
   let ob_status = 'Ready';
   let ob_color = 'green';
@@ -681,6 +695,7 @@ const OrbitalBombardment = (props) => {
           <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
+                step={1}
                 value={OBX}
                 onChange={(value) => setOBX(value)}
                 width="75px"
@@ -688,8 +703,17 @@ const OrbitalBombardment = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
+                step={1}
                 value={OBY}
                 onChange={(value) => setOBY(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="HEIGHT">
+              <NumberInput
+                step={1}
+                value={OBZ}
+                onChange={(value) => setOBZ(value)}
                 width="75px"
               />
             </LabeledControls.Item>
@@ -706,7 +730,7 @@ const OrbitalBombardment = (props) => {
               width="100%"
               icon="bomb"
               color="red"
-              onClick={() => act('dropbomb', { x: OBX, y: OBY })}
+              onClick={() => act('dropbomb', { x: OBX, y: OBY, z: OBZ })}
             >
               Fire
             </Button>
@@ -715,7 +739,9 @@ const OrbitalBombardment = (props) => {
               width="100%"
               icon="save"
               color="yellow"
-              onClick={() => act('save_coordinates', { x: OBX, y: OBY })}
+              onClick={() =>
+                act('save_coordinates', { x: OBX, y: OBY, z: OBZ })
+              }
             >
               Save
             </Button>
@@ -736,18 +762,22 @@ const SavedCoordinates = (props) => {
 
   const [OBX, setOBX] = useSharedState('obx', 0);
   const [OBY, setOBY] = useSharedState('oby', 0);
+  const [OBZ, setOBZ] = useSharedState('obz', 0);
   const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
   const [supplyY, setSupplyY] = useSharedState('supply', 0);
+  const [supplyZ, setSupplyZ] = useSharedState('supplyz', 0);
 
   const { forOB, forSupply } = props;
 
-  let transferCoords = (x, y) => {
+  let transferCoords = (x, y, z) => {
     if (forSupply) {
       setSupplyX(x);
       setSupplyY(y);
+      setSupplyZ(z);
     } else if (forOB) {
       setOBX(x);
       setOBY(y);
+      setOBZ(z);
     }
   };
 
@@ -764,6 +794,9 @@ const SavedCoordinates = (props) => {
           <Table.Cell p="5px" collapsing>
             LAT.
           </Table.Cell>
+          <Table.Cell p="5px" collapsing>
+            HEIGHT
+          </Table.Cell>
           <Table.Cell p="5px">COMMENT</Table.Cell>
           <Table.Cell p="5px" collapsing />
         </Table.Row>
@@ -771,6 +804,7 @@ const SavedCoordinates = (props) => {
           <Table.Row key={index}>
             <Table.Cell p="6px">{coords.x}</Table.Cell>
             <Table.Cell p="5px">{coords.y}</Table.Cell>
+            <Table.Cell p="4px">{coords.z}</Table.Cell>
             <Table.Cell p="5px">
               <Input
                 width="100%"
@@ -787,7 +821,7 @@ const SavedCoordinates = (props) => {
               <Button
                 color="yellow"
                 icon="arrow-left"
-                onClick={() => transferCoords(coords.x, coords.y)}
+                onClick={() => transferCoords(coords.x, coords.y, coords.z)}
               />
             </Table.Cell>
           </Table.Row>

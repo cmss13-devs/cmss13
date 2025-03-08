@@ -446,7 +446,8 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.is_mob_incapacitated()) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
@@ -519,7 +520,8 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.is_mob_incapacitated()) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
@@ -981,7 +983,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_RESEARCHER = 41,
 				JOB_DOCTOR = 42,
 				JOB_SURGEON = 42,
-				JOB_NURSE = 43,
+				JOB_FIELD_DOCTOR = 43,
+				JOB_NURSE = 44,
 				// 50-59: Engineering
 				JOB_CHIEF_ENGINEER = 50,
 				JOB_ORDNANCE_TECH = 51,
@@ -1058,8 +1061,10 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 			)
 			var/squad_number = 70
 			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")
-				if(!squad_name) squad_number = 120
-				else squad_name += " "
+				if(!squad_name)
+					squad_number = 120
+				else
+					squad_name += " "
 				jobs += list(
 					"[squad_name][JOB_SQUAD_LEADER]" = (squad_number),
 					"[squad_name][JOB_SQUAD_TEAM_LEADER]" = (squad_number + 1),
@@ -1088,19 +1093,23 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_ASSISTANT_MANAGER = 11,
 				// 20-29: Corporate Staff
 				JOB_EXECUTIVE_SUPERVISOR = 20,
-				JOB_SENIOR_EXECUTIVE = 21,
-				JOB_EXECUTIVE_SPECIALIST = 22,
+				JOB_LEGAL_SUPERVISOR = 20,
+				JOB_EXECUTIVE_SPECIALIST = 21,
+				JOB_LEGAL_SPECIALIST = 21,
+				JOB_SENIOR_EXECUTIVE = 22,
 				JOB_EXECUTIVE = 23,
 				JOB_JUNIOR_EXECUTIVE = 24,
 				// 30-39: Security
 				JOB_WY_GOON_LEAD = 30,
+				JOB_WY_GOON_MEDIC = 31,
 				JOB_WY_GOON_TECH = 32,
-				JOB_WY_GOON = 32,
+				JOB_WY_GOON = 33,
 				// 40-49: MedSci
 				JOB_PMC_SYNTH = 40,
+				JOB_WY_RESEARCH_LEAD = 40,
 				JOB_PMC_XENO_HANDLER = 41,
 				JOB_PMC_DOCTOR = 42,
-				JOB_WY_GOON_RESEARCHER = 43,
+				JOB_WY_RESEARCHER = 43,
 				// 50-59: Engineering & Vehicle Crew
 				JOB_PMC_CREWMAN = 51,
 				JOB_PMC_ENGINEER = 52,

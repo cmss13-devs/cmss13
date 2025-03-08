@@ -32083,11 +32083,11 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "qVN" = (
-/obj/item/storage/box/MRE{
+/obj/item/storage/box/mre{
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/storage/box/MRE{
+/obj/item/storage/box/mre{
 	pixel_x = -1;
 	pixel_y = -6
 	},

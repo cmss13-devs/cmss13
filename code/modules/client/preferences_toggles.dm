@@ -3,7 +3,8 @@
 	set name = "Show/Hide Radio Chatter"
 	set category = "Preferences.Chat"
 	set desc = "Toggle seeing radio chatter from radios and speakers"
-	if(!admin_holder) return
+	if(!admin_holder)
+		return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers"))
@@ -12,7 +13,8 @@
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences.Sound"
 	set desc = "Toggle hearing a notification when admin PMs are received"
-	if(!admin_holder) return
+	if(!admin_holder)
+		return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
@@ -207,14 +209,10 @@
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
 
-	var/list/be_special_flags = list(
-		"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
-		"Agent" = BE_AGENT,
-	)
-	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", be_special_flags)
+	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", GLOB.be_special_flags)
 	if(!role)
 		return
-	var/role_flag = be_special_flags[role]
+	var/role_flag = GLOB.be_special_flags[role]
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
@@ -286,6 +284,7 @@
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
 	)
 
 	var/dat = ""
@@ -502,6 +501,17 @@
 	else if(result == "Dark")
 		prefs.crit_overlay_pref = CRIT_OVERLAY_DARK
 		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be dark."))
+	prefs.save_preferences()
+
+/// Toggle in character preferences and toggle preferences to allow or disable flashing lights e.g. /obj/item/clothing/glasses/disco_fever and druggy status
+/client/proc/set_flashing_lights_pref()
+	var/result = tgui_alert(src, "Allow effects that could trigger epilepsy?", "Allow flashing lights?", list("Allow", "Disable"))
+	if(!result)
+		return
+	prefs.allow_flashing_lights_pref = result == "Allow"
+	to_chat(src, SPAN_NOTICE("Flashing lights (e.g. AR Goggles and Happy pills) are now [prefs.allow_flashing_lights_pref ? "allowed" : "disabled"]."))
+	if(!prefs.allow_flashing_lights_pref)
+		mob?.update_client_color_matrices() // Update immediately
 	prefs.save_preferences()
 
 /client/verb/toggle_tgui_say()

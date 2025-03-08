@@ -131,7 +131,8 @@ Please wait until completion...</TT><BR>
 						src.update_use_power(USE_POWER_IDLE)
 						src.operating = 0
 						src.overlays -= "fab-active"
-			else return //Someone's doing href fuckery if this gets here.
+			else
+				return //Someone's doing href fuckery if this gets here.
 		return
 
 	for (var/mob/M as anything in viewers(1, src))

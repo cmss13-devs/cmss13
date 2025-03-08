@@ -93,7 +93,6 @@
 
 /datum/game_mode/proc/setup_round_stats()
 	if(!round_stats)
-		var/datum/entity/mc_round/mc_round = SSentity_manager.select(/datum/entity/mc_round)
 		var/operation_name
 		operation_name = "[pick(GLOB.operation_titles)]"
 		operation_name += " [pick(GLOB.operation_prefixes)]"
@@ -102,7 +101,7 @@
 		// Round stats
 		round_stats = DB_ENTITY(/datum/entity/statistic/round)
 		round_stats.round_name = operation_name
-		round_stats.round_id = mc_round.id
+		round_stats.round_id = GLOB.round_id
 		round_stats.map_name = SSmapping.configs[GROUND_MAP].map_name
 		round_stats.game_mode = name
 		round_stats.real_time_start = world.realtime
@@ -242,7 +241,6 @@
 			track_final_participant(M.faction)
 
 	save()
-	detach()
 
 /datum/entity/statistic/round/proc/track_hijack_participant(faction, amount = 1)
 	if(!faction)

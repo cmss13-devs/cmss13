@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 29
+#define SAVEFILE_VERSION_MAX 31
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -192,11 +192,37 @@
 
 		S["hair_style_name"] << hair_style
 
+	if(savefile_version < 30)
+		var/be_special = 0
+		S["be_special"] >> be_special
+		be_special &= ~BE_KING
+		S["be_special"] << be_special
+
+	if(savefile_version < 31)
+		for(var/i in 1 to MAX_SAVE_SLOTS)
+			S.cd = "/character[i]"
+
+			var/list/existing_gear
+			S["gear"] >> existing_gear
+
+			var/list/new_list = list()
+			for(var/entry in existing_gear)
+				var/datum/gear/gear = GLOB.gear_datums_by_name[entry]
+				if(!gear)
+					continue
+
+				new_list += "[gear.type]"
+
+			S["gear"] = new_list
+
+		S.cd = "/"
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
-	if(!ckey) return
+	if(!ckey)
+		return
 	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
 
@@ -220,10 +246,13 @@
 	return volume_preferences
 
 /datum/preferences/proc/load_preferences()
-	if(!path) return 0
-	if(!fexists(path)) return 0
+	if(!path)
+		return 0
+	if(!fexists(path))
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S) return 0
+	if(!S)
+		return 0
 	S.cd = "/"
 
 	S["version"] >> savefile_version
@@ -261,6 +290,7 @@
 	S["pain_overlay_pref_level"] >> pain_overlay_pref_level
 	S["flash_overlay_pref"] >> flash_overlay_pref
 	S["crit_overlay_pref"] >> crit_overlay_pref
+	S["allow_flashing_lights_pref"] >> allow_flashing_lights_pref
 	S["stylesheet"] >> stylesheet
 	S["window_skin"] >> window_skin
 	S["fps"] >> fps
@@ -340,6 +370,9 @@
 
 	S["lastchangelog"] >> lastchangelog
 
+	S["job_loadout"] >> loadout
+	S["job_loadout_names"] >> loadout_slot_names
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -365,6 +398,7 @@
 	pain_overlay_pref_level = sanitize_integer(pain_overlay_pref_level, PAIN_OVERLAY_BLURRY, PAIN_OVERLAY_LEGACY, PAIN_OVERLAY_BLURRY)
 	flash_overlay_pref = sanitize_integer(flash_overlay_pref, FLASH_OVERLAY_WHITE, FLASH_OVERLAY_DARK)
 	crit_overlay_pref = sanitize_integer(crit_overlay_pref, CRIT_OVERLAY_WHITE, CRIT_OVERLAY_DARK)
+	allow_flashing_lights_pref = sanitize_integer(allow_flashing_lights_pref, FALSE, TRUE, FALSE)
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
@@ -421,7 +455,9 @@
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
-	vars["fps"] = fps
+
+	loadout = sanitize_loadout(loadout, owner)
+	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -475,6 +511,7 @@
 	S["pain_overlay_pref_level"] << pain_overlay_pref_level
 	S["flash_overlay_pref"] << flash_overlay_pref
 	S["crit_overlay_pref"] << crit_overlay_pref
+	S["allow_flashing_lights_pref"] << allow_flashing_lights_pref
 	S["stylesheet"] << stylesheet
 	S["be_special"] << be_special
 	S["default_slot"] << default_slot
@@ -566,15 +603,22 @@
 
 	S["lastchangelog"] << lastchangelog
 
+	S["job_loadout"] << save_loadout(loadout)
+	S["job_loadout_names"] << loadout_slot_names
+
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
-	if(!path) return 0
-	if(!fexists(path)) return 0
+	if(!path)
+		return 0
+	if(!fexists(path))
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S) return 0
+	if(!S)
+		return 0
 	S.cd = "/"
-	if(!slot) slot = default_slot
+	if(!slot)
+		slot = default_slot
 	slot = sanitize_integer(slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	if(slot != default_slot)
 		default_slot = slot
@@ -639,7 +683,6 @@
 	S["med_record"] >> med_record
 	S["sec_record"] >> sec_record
 	S["gen_record"] >> gen_record
-	S["be_special"] >> be_special
 	S["organ_data"] >> organ_data
 	S["gear"] >> gear
 	S["origin"] >> origin
@@ -660,10 +703,14 @@
 	metadata = sanitize_text(metadata, initial(metadata))
 	real_name = reject_bad_name(real_name)
 
-	if(isnull(language)) language = "None"
-	if(isnull(spawnpoint)) spawnpoint = "Arrivals Shuttle"
-	if(isnull(weyland_yutani_relation)) weyland_yutani_relation = initial(weyland_yutani_relation)
-	if(!real_name) real_name = random_name(gender)
+	if(isnull(language))
+		language = "None"
+	if(isnull(spawnpoint))
+		spawnpoint = "Arrivals Shuttle"
+	if(isnull(weyland_yutani_relation))
+		weyland_yutani_relation = initial(weyland_yutani_relation)
+	if(!real_name)
+		real_name = random_name(gender)
 	be_random_name = sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
 	be_random_body = sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
 	gender = sanitize_gender(gender)
@@ -712,6 +759,8 @@
 		for(var/job in job_preference_list)
 			job_preference_list[job] = sanitize_integer(job_preference_list[job], 0, 3, initial(job_preference_list[job]))
 
+	check_slot_prefs()
+
 	if(!organ_data)
 		organ_data = list()
 
@@ -720,19 +769,23 @@
 	traits = sanitize_list(traits)
 	read_traits = FALSE
 	trait_points = initial(trait_points)
-	close_browser(owner, "character_traits")
 
-	if(!origin) origin = ORIGIN_USCM
+	if(!origin)
+		origin = ORIGIN_USCM
 	if(!faction)  faction =  "None"
-	if(!religion) religion = RELIGION_AGNOSTICISM
-	if(!preferred_squad) preferred_squad = "None"
+	if(!religion)
+		religion = RELIGION_AGNOSTICISM
+	if(!preferred_squad)
+		preferred_squad = "None"
 
 	return 1
 
 /datum/preferences/proc/save_character()
-	if(!path) return 0
+	if(!path)
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S) return 0
+	if(!S)
+		return 0
 	S.cd = "/character[default_slot]"
 
 	//Character
@@ -791,9 +844,9 @@
 	S["med_record"] << med_record
 	S["sec_record"] << sec_record
 	S["gen_record"] << gen_record
-	S["be_special"] << be_special
 	S["organ_data"] << organ_data
-	S["gear"] << gear
+	S["gear"] << save_gear(gear)
+	S["job_loadout"] << save_loadout(loadout)
 	S["origin"] << origin
 	S["faction"] << faction
 	S["religion"] << religion
@@ -839,6 +892,19 @@
 
 	if(length(notadded))
 		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
+
+/// Checks if any job selected has a loadout, and if this is not selected, prompt the user to select it on the lobby screen
+/datum/preferences/proc/check_slot_prefs()
+	errors = list()
+
+	for(var/job in GLOB.roles_with_gear)
+		if(!job_preference_list[job])
+			continue
+
+		if(has_loadout_for_role(job))
+			continue
+
+		errors += "Job [job] has loadout available, but none has been selected."
 
 /datum/preferences/proc/announce_conflict(list/notadded)
 	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))

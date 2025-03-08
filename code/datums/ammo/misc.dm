@@ -209,7 +209,8 @@
 			target_organ.embed(new can_type)
 
 /datum/ammo/souto/on_hit_mob(mob/M, obj/projectile/P)
-	if(!M || M == P.firer) return
+	if(!M || M == P.firer)
+		return
 	if(M.throw_mode && !M.get_active_hand()) //empty active hand and we're in throw mode. If so we catch the can.
 		if(!M.is_mob_incapacitated()) // People who are not able to catch cannot catch.
 			if(length(P.contents) == 1)

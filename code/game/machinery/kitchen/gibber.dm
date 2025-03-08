@@ -38,7 +38,8 @@
 		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
 
 /obj/structure/machinery/gibber/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	go_out()
 
 

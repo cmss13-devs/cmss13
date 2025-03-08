@@ -80,7 +80,8 @@ FLOOR SAFES
 		if(tumbler_2_pos == tumbler_2_open)
 			to_chat(user, SPAN_NOTICE("You hear a [pick("tink", "krink", "plink")] from [src]."))
 	if(tumbler_1_pos == tumbler_1_open && tumbler_2_pos == tumbler_2_open)
-		if(user) visible_message("<b>[pick("Spring", "Sprang", "Sproing", "Clunk", "Click")]!</b>")
+		if(user)
+			visible_message("<b>[pick("Spring", "Sprang", "Sproing", "Clunk", "Click")]!</b>")
 		return 1
 	return 0
 
@@ -135,7 +136,8 @@ FLOOR SAFES
 	. = ..()
 	if(.)
 		return
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 	var/mob/living/carbon/human/user = usr
 
 	var/canhear = 0
@@ -246,5 +248,7 @@ FLOOR SAFES
 	new /obj/item/clothing/accessory/storage/holster(src)
 	new /obj/item/spacecash/c1000/counterfeit(src)
 	new /obj/item/spacecash/c1000/counterfeit(src)
+	new /obj/item/storage/box/mre/wy(src)
+	new /obj/item/storage/box/mre/wy(src)
 	new /obj/item/coin/platinum(src)
 	new /obj/item/device/defibrillator/synthetic/noskill(src)

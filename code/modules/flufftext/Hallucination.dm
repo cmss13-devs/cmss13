@@ -124,22 +124,31 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				//Strange audio
 				//to_chat(src, "Strange Audio")
 				switch(rand(1,12))
-					if(1) src << 'sound/machines/airlock.ogg'
+					if(1)
+						src << 'sound/machines/airlock.ogg'
 					if(2)
 						if(prob(50))src << 'sound/effects/Explosion1.ogg'
-						else src << 'sound/effects/Explosion2.ogg'
-					if(3) src << 'sound/effects/explosionfar.ogg'
-					if(4) src << 'sound/effects/Glassbr1.ogg'
-					if(5) src << 'sound/effects/Glassbr2.ogg'
-					if(6) src << 'sound/effects/Glassbr3.ogg'
-					if(7) src << 'sound/machines/twobeep.ogg'
-					if(8) src << 'sound/machines/windowdoor.ogg'
+						else
+							src << 'sound/effects/Explosion2.ogg'
+					if(3)
+						src << 'sound/effects/explosionfar.ogg'
+					if(4)
+						src << 'sound/effects/Glassbr1.ogg'
+					if(5)
+						src << 'sound/effects/Glassbr2.ogg'
+					if(6)
+						src << 'sound/effects/Glassbr3.ogg'
+					if(7)
+						src << 'sound/machines/twobeep.ogg'
+					if(8)
+						src << 'sound/machines/windowdoor.ogg'
 					if(9)
 						//To make it more realistic, I added two gunshots (enough to kill)
 						src << 'sound/weapons/Gunshot.ogg'
 						spawn(rand(10,30))
 							src << 'sound/weapons/Gunshot.ogg'
-					if(10) src << 'sound/weapons/smash.ogg'
+					if(10)
+						src << 'sound/weapons/smash.ogg'
 					if(11)
 						//Same as above, but with tasers.
 						src << 'sound/weapons/Taser.ogg'
@@ -171,9 +180,11 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	// if(5)
 	// halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
 
-						if(client) client.images += halbody
+						if(client)
+							client.images += halbody
 						spawn(rand(50,80)) //Only seen for a brief moment.
-							if(client) client.images -= halbody
+							if(client)
+								client.images -= halbody
 							halbody = null
 			if(71 to 72)
 				//Fake death
@@ -314,7 +325,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
 					my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), SHOW_MESSAGE_VISIBLE)
 					my_target.halloss += 8
-					if(prob(20)) my_target.AdjustEyeBlur(3)
+					if(prob(20))
+						my_target.AdjustEyeBlur(3)
 					if(prob(33))
 						if(!locate(/obj/effect/overlay) in my_target.loc)
 							fake_blood(my_target)
@@ -351,14 +363,16 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/device/aicard,\
 	var/clone_weapon = null
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(H.stat) continue
+		if(H.stat)
+			continue
 // possible_clones += H
 		clone = H
 		break //changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
 
 // if(!length(possible_clones)) return
 // clone = pick(possible_clones)
-	if(!clone) return
+	if(!clone)
+		return
 
 	//var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(outside_range(target))
 	var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(target.loc)

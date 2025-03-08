@@ -26,6 +26,9 @@
 		* Passing through in this case ignores anything with the throwpass flag, such as tables, racks, and morgue trays.
 */
 /turf/Adjacent(atom/neighbor, atom/target = null, list/ignore_list)
+	if(neighbor.z && (z != neighbor.z))
+		return FALSE
+
 	var/turf/T0 = get_turf(neighbor)
 	if(T0 == src)
 		return TRUE

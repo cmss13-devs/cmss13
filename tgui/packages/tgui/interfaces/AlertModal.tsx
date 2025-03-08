@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 import { KEY } from 'common/keys';
 import { BooleanLike } from 'common/react';
 import { KeyboardEvent, useState } from 'react';
@@ -44,7 +43,7 @@ export function AlertModal(props) {
   const windowHeight =
     120 +
     (isVerbose ? largeSpacing * buttons.length : 0) +
-    (message.length > 30 ? Math.ceil(message.length / 4) : 0) +
+    (message.length > 30 ? Math.ceil(message.length / 3.3) : 0) +
     (message.length && large_buttons ? 5 : 0);
 
   const windowWidth = 345 + (buttons.length > 2 ? 55 : 0);

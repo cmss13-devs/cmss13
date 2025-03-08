@@ -283,7 +283,8 @@
 	var/list/mobs = sortmobs()
 
 	for(var/mob/M in mobs)
-		if(!M.ckey) continue
+		if(!M.ckey)
+			continue
 
 		dat += "<tr><td>[(M.client ? "[M.client]" : "No client")]</td>"
 		dat += "<td><a href='byond://?src=\ref[usr];priv_msg=[M.ckey]'>[M.name]</a></td>"
@@ -389,7 +390,8 @@
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
-			if(check_rights(R_ADMIN, 0)) dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
+			if(check_rights(R_ADMIN, 0))
+				dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
 
 		dat += "<br><A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"

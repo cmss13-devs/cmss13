@@ -17,3 +17,9 @@
 /mob/living/carbon/Initialize()
 	. = ..()
 	tts_seed = get_tts_seed()
+
+/datum/equipment_preset/load_preset(mob/living/carbon/human/new_human, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
+	. = ..()
+	if(randomise)
+		new_human.add_tts_component()
+		new_human.tts_seed = new_human.get_tts_seed()

@@ -755,9 +755,15 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	jam_chance = 0.15 // i dont think tools jam easily
+	unjam_chance = 25 // but they would be an arsehole to unjam if they did
+	durability_loss = 0.25
 
 /obj/item/weapon/gun/smg/nailgun/unique_action(mob/user)
-	return //Yeah no.
+	if(jammed)
+		jam_unique_action(user)
+	else //frankly, i dont even know if the return is necessary to begin with
+		return //Yeah no.
 
 /obj/item/weapon/gun/smg/nailgun/unload_chamber(mob/user)
 	return //Can't remove nails from mags or gun.

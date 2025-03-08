@@ -1288,6 +1288,7 @@
 #include "code\game\objects\items\stacks\nanopaste.dm"
 #include "code\game\objects\items\stacks\predator.dm"
 #include "code\game\objects\items\stacks\rods.dm"
+#include "code\game\objects\items\stacks\repairables_craftables.dm"
 #include "code\game\objects\items\stacks\sandbags.dm"
 #include "code\game\objects\items\stacks\snow.dm"
 #include "code\game\objects\items\stacks\stack.dm"

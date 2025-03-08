@@ -251,9 +251,32 @@ DEFINES in setup.dm, referenced here.
 	if(user.equip_to_slot_if_possible(src, WEAR_BACK))
 		to_chat(user, SPAN_WARNING("[src]'s magnetic sling automatically yanks it into your back."))
 
+
+//repair popup stuff
+
+/obj/item/weapon/gun/proc/gun_repair_popup(mob/living/carbon/human/user)
+	if(gun_durability > GUN_DURABILITY_BROKEN)
+		if(user)
+			to_chat(user, SPAN_GREEN("The [name] has been successfully repaired."))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 20, FALSE)
+			balloon_alert(user, "*repaired*")
+	else if(gun_durability <= GUN_DURABILITY_BROKEN)
+		if(user)
+			to_chat(user, SPAN_GREEN("The [name] is no longer worn out."))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 20, FALSE)
+			balloon_alert(user, "*functional*")
+
+/obj/item/weapon/gun/proc/gun_repair_maxup(mob/living/carbon/human/user)
+	if(gun_durability >= GUN_DURABILITY_MAX)
+		if(user)
+			balloon_alert(user, "*max durability*")
+
 //Clicking stuff onto the gun.
 //Attachables & Reloading
 /obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user)
+	if(user.action_busy)
+		return
+
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
@@ -262,10 +285,40 @@ DEFINES in setup.dm, referenced here.
 		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src].")
 			src.clean_blood()
-			heal_gun_durability(20)
 		else
 			return
 
+	if(istype(attack_item, /obj/item/stack/repairable/gunlube))
+		var/obj/item/stack/repairable/gunlube/stack = attack_item
+		var/repair_oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes", "repairs")
+		if(src.gun_durability == GUN_DURABILITY_MAX)
+			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with the [stack]!"))
+			src.gun_repair_maxup(user)
+			return
+		if(src.gun_durability < GUN_DURABILITY_LOW)
+			to_chat(user, SPAN_WARNING("[src] is too damaged to be repaired with the [stack]."))
+			return
+		if(do_after(user, 60, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			user.visible_message("[user] [repair_oil_verb] [src]. It shines like new.", "You lube up the working parts of [src]. It should be slightly repaired.")
+			src.clean_blood()
+			src.gun_repair_popup(user)
+			heal_gun_durability(rand(5,20))
+			stack.use(1)
+	else if(istype(attack_item, /obj/item/stack/repairable/gunkit))
+		var/obj/item/stack/repairable/gunkit/stack = attack_item
+		var/repair_kit_verb = pick("fixes", "fastens screws to", "recalculates the settings of", "tends to", "installs some fixes to", "repairs")
+		if(src.gun_durability == GUN_DURABILITY_MAX)
+			to_chat(user, SPAN_GREEN("The [src] is already at its max durability to be repaired with [stack]!"))
+			src.gun_repair_maxup(user)
+			return
+		if(do_after(user, 120, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			user.visible_message("[user] [repair_kit_verb] [src]. It looks durable now.", "You repair any broken parts present on [src]. It should be mostly repaired.")
+			src.clean_blood()
+			src.gun_repair_popup(user)
+			heal_gun_durability(50)
+			stack.use(1)
+		else
+			return
 
 	if(istype(attack_item,/obj/item/attachable))
 		if(check_inactive_hand(user))

@@ -654,16 +654,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/heal_gun_durability(amount, mob/user)
 	if(gun_durability < GUN_DURABILITY_MAX)
 		gun_durability = min(gun_durability + amount, GUN_DURABILITY_MAX)
-	if(gun_durability <= GUN_DURABILITY_BROKEN)
-		if(user) // i admit, i dont know what im doing here, might need a refactor
-			to_chat(user, SPAN_GREEN("The [name] is no longer worn out."))
-			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
-			balloon_alert(user, "*functional*")
-	else
-		if(user)
-			to_chat(user, SPAN_GREEN("The [name] has been successfully repaired."))
-			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
-			balloon_alert(user, "*repaired*")
 	check_worn_out(user)
 
 /obj/item/weapon/gun/proc/destroy_gun_durability() //for acid use specifically, ill probably refactor this
@@ -1242,13 +1232,14 @@ and you're good to go.
 			active_attachable.current_rounds++ //Refund the bullet.
 		return 1
 
-// i dont know if this will be a problem to remove, leaving it be for now
-/obj/item/weapon/gun/proc/clear_jam(obj/projectile/projectile_to_fire, mob/user as mob) //Guns jamming, great.
-	flags_gun_features &= ~GUN_BURST_FIRING // Also want to turn off bursting, in case that was on. It probably was.
-	delete_bullet(projectile_to_fire, 1) //We're going to clear up anything inside if we need to.
-	//If it's a regular bullet, we're just going to keep it chambered.
-	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
-	to_chat(user, SPAN_WARNING("[src] jammed! You'll need a second to get it fixed!"))
+// Theres probably a use case for the old jam code but im commenting it out for now
+
+// /obj/item/weapon/gun/proc/clear_jam(obj/projectile/projectile_to_fire, mob/user as mob) //Guns jamming, great.
+//	flags_gun_features &= ~GUN_BURST_FIRING // Also want to turn off bursting, in case that was on. It probably was.
+//	delete_bullet(projectile_to_fire, 1) //We're going to clear up anything inside if we need to.
+//	//If it's a regular bullet, we're just going to keep it chambered.
+//	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
+//	to_chat(user, SPAN_WARNING("[src] jammed! You'll need a second to get it fixed!"))
 
 //----------------------------------------------------------
 		//    \\

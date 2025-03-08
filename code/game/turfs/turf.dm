@@ -974,15 +974,14 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			found_rleg?.fracture(100 * fracture_modifier)
 			found_lleg?.fracture(100 * fracture_modifier)
 
-	if(isxeno(victim) && victim.mob_size >= MOB_SIZE_BIG)
+	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
 		if(stun_modifier > 0)
-			xeno_victim.KnockDown(5 * height * stun_modifier)
-			xeno_victim.Stun(5 * height * stun_modifier)
-
-		if (damage_modifier > 0)
-			var/total_damage = ((60 * height) ** 1.3) * damage_modifier
-			xeno_victim.apply_damage(total_damage / 2, BRUTE)
+			var/base_stun_duration = 2
+			if(xeno_victim.mob_size >= MOB_SIZE_BIG)
+				base_stun_duration = 5
+			xeno_victim.KnockDown(base_stun_duration * height * stun_modifier)
+			xeno_victim.Stun(base_stun_duration * height * stun_modifier)
 
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)

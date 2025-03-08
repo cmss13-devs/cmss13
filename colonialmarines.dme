@@ -2565,6 +2565,7 @@
 #include "code\modules\vehicles\hardpoints\support\flare.dm"
 #include "code\modules\vehicles\hardpoints\support\iwsa.dm"
 #include "code\modules\vehicles\hardpoints\support\overdrive.dm"
+#include "code\modules\vehicles\hardpoints\support\sensor_array.dm"
 #include "code\modules\vehicles\hardpoints\support\support.dm"
 #include "code\modules\vehicles\hardpoints\wheels\apc_wheels.dm"
 #include "code\modules\vehicles\hardpoints\wheels\arc_wheels.dm"

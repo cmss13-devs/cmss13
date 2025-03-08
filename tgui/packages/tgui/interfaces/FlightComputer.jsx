@@ -8,6 +8,8 @@ export const FlightComputer = (props) => {
   const vtol_detected = data.vtol_detected;
   const fuel = data.fuel;
   const max_fuel = data.max_fuel;
+  const battery = data.battery;
+  const max_battery = data.max_battery;
   const fueling = data.fueling;
 
   const message = vtol_detected
@@ -20,10 +22,10 @@ export const FlightComputer = (props) => {
     }
 
     if (fueling) {
-      return <Button onClick={() => act('stop_fueling')}>Stop Fueling</Button>;
+      return <Button onClick={() => act('stop_fueling')}>Stop Fueling & Charging</Button>;
     } else {
       return (
-        <Button onClick={() => act('start_fueling')}>Start Fueling</Button>
+        <Button onClick={() => act('start_fueling')}>Start Fueling & Charing</Button>
       );
     }
   };
@@ -36,6 +38,18 @@ export const FlightComputer = (props) => {
         {vtol_detected ? (
           <ProgressBar
             value={fuel / max_fuel}
+            ranges={{
+              good: [0.7, Infinity],
+              average: [0.2, 0.7],
+              bad: [-Infinity, 0.2],
+            }}
+          />
+        ) : null}
+        {'\n'}
+
+        {vtol_detected ? (
+          <ProgressBar
+            value={battery / max_battery}
             ranges={{
               good: [0.7, Infinity],
               average: [0.2, 0.7],

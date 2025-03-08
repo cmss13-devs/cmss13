@@ -74,14 +74,30 @@
 	var/fuel = 600
 	var/max_fuel = 600
 
+	var/battery = 600
+	var/max_battery = 600
+
 	var/previous_move_delay
 
 	var/list/atom/movable/screen/chimera/custom_hud = list(
 		new /atom/movable/screen/chimera/fuel(),
-		new /atom/movable/screen/chimera/integrity()
+		new /atom/movable/screen/chimera/integrity(),
+		new /atom/movable/screen/chimera/battery()
 	)
 	
 	var/obj/structure/interior_exit/vehicle/chimera/back/back_door
+
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
+
+/datum/tacmap/drawing/chimera/ui_status(mob/user)
+	var/obj/vehicle.multitile/chimera/chimera_owner = owner
+
+	if(chimera_owner.seats[VEHICLE_DRIVER] != user)
+		return UI_CLOSE
+
+	return UI_INTERACTIVE
 
 /obj/chimera_shadow
 	icon = 'icons/obj/vehicles/chimera.dmi'
@@ -89,9 +105,17 @@
 	pixel_y = -160
 	layer = ABOVE_MOB_LAYER
 
+/obj/downwash_effect
+	icon = 'icons/obj/vehicles/chimera.dmi'
+	icon_state = "downwash"
+	pixel_x = -64
+	pixel_y = -32
+
 /obj/vehicle/multitile/chimera/Initialize(mapload, ...)
 	. = ..()
-	add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
+	add_hardpoint(new /obj/item/hardpoint/locomotion/chimera_thrusters)
+	add_hardpoint(new /obj/item/hardpoint/support/sensor_array)
+	tacmap = new /datum/tacmap/drawing/chimera(src, minimap_type)
 	update_icon()
 
 /obj/vehicle/multitile/chimera/Destroy()
@@ -178,7 +202,7 @@
 	if(!.)
 		return
 
-	shadow_holder.dir = direction
+	shadow_holder.dir = dir
 	last_turn = world.time
 
 /obj/vehicle/multitile/chimera/process(deltatime)
@@ -193,7 +217,7 @@
 		playsound(loc, 'sound/vehicles/vtol/exteriorflight.ogg', 25, FALSE)
 
 	for(var/atom/movable/screen/chimera/custom_screen as anything in custom_hud)
-		custom_screen.update(fuel, max_fuel, health, maxhealth)
+		custom_screen.update(fuel, max_fuel, health, maxhealth, battery, max_battery)
 
 	if(state == STATE_VTOL)
 		fuel -= deltatime * 3
@@ -261,23 +285,24 @@
 	give_action(M, /datum/action/human_action/chimera/toggle_vtol)
 	give_action(M, /datum/action/human_action/chimera/toggle_stow)
 	give_action(M, /datum/action/human_action/chimera/disconnect_tug)
-	give_action(M, /datum/action/human_action/chimera/toggle_rear_door)
+	give_action(M, /datum/action/human_action/chimera/toggle_sensors)
+	give_action(M, /datum/action/human_action/chimera/access_tacmap)
 
 	for(var/atom/movable/screen/chimera/screen_to_add as anything in custom_hud)
 		M.client.add_to_screen(screen_to_add)
-		screen_to_add.update(fuel, max_fuel, health, maxhealth)
+		screen_to_add.update(fuel, max_fuel, health, maxhealth, battery, max_battery)
 
 /atom/movable/screen/chimera
 	icon = 'icons/obj/vehicles/chimera_hud.dmi'
 
-/atom/movable/screen/chimera/proc/update(fuel, max_fuel, health, max_health)
+/atom/movable/screen/chimera/proc/update(fuel, max_fuel, health, max_health, battery, max_battery)
 	return
 
 /atom/movable/screen/chimera/fuel
 	icon_state = "fuel"
 	screen_loc = "WEST,CENTER"
 
-/atom/movable/screen/chimera/fuel/update(fuel, max_fuel, health, max_health)
+/atom/movable/screen/chimera/fuel/update(fuel, max_fuel, health, max_health, battery, max_battery)
 	var/fuel_percent = min(round(fuel / max_fuel * 100), 99)
 	var/tens = round(fuel_percent / 10)
 	var/digits = fuel_percent % 10
@@ -290,7 +315,7 @@
 	icon_state = "integrity"
 	screen_loc = "WEST,CENTER+1"
 
-/atom/movable/screen/chimera/integrity/update(fuel, max_fuel, health, max_health)
+/atom/movable/screen/chimera/integrity/update(fuel, max_fuel, health, max_health, battery, max_battery)
 	var/integrity = min(round(health / max_health * 100), 99)
 	var/tens = round(integrity / 10)
 	var/digits = integrity % 10
@@ -298,6 +323,19 @@
 	overlays.Cut()
 	overlays += image(icon, "[tens]", pixel_y = -8, pixel_x = -1)
 	overlays += image(icon, "[digits]", pixel_y = -8, pixel_x = 4)
+
+/atom/movable/screen/chimera/battery
+	icon_state = "battery"
+	screen_loc = "WEST,CENTER+2"
+
+/atom/movable/screen/chimera/battery/update(fuel, max_fuel, health, max_health, battery, max_battery)
+	var/battery_percent = min(round(battery / max_battery * 100), 99)
+	var/tens = round(battery_percent / 10)
+	var/digits = battery_percent % 10
+
+	overlays.Cut()
+	overlays += image(icon, "[tens]", pixel_y = 0, pixel_x = 0)
+	overlays += image(icon, "[digits]", pixel_y = 0, pixel_x = 5)
 
 /obj/vehicle/multitile/chimera/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
@@ -318,7 +356,8 @@
 	remove_action(M, /datum/action/human_action/chimera/toggle_vtol)
 	remove_action(M, /datum/action/human_action/chimera/toggle_stow)
 	remove_action(M, /datum/action/human_action/chimera/disconnect_tug)
-	remove_action(M, /datum/action/human_action/chimera/toggle_rear_door)
+	remove_action(M, /datum/action/human_action/chimera/toggle_sensors)
+	remove_action(M, /datum/action/human_action/chimera/access_tacmap)
 
 	for(var/atom/movable/screen/chimera/screen_to_remove as anything in custom_hud)
 		M.client.remove_from_screen(screen_to_remove) 
@@ -401,6 +440,14 @@
 	for(var/obj/vis_contents_holder/vis_holder in new_turf)
 		vis_holder.transform = transform_matrix
 
+/obj/vehicle/multitile/chimera/proc/toggle_sensors()
+	var/obj/item/hardpoint/support/sensor_array/sensors = locate() in hardpoints
+	
+	if(!sensors)
+		return
+
+	sensors.toggle()
+
 /obj/vehicle/multitile/chimera/proc/toggle_rear_door()
 	back_door.toggle_open()
 
@@ -442,12 +489,13 @@
 	state = STATE_VTOL
 	update_icon()
 	forceMove(SSmapping.get_turf_above(get_turf(src)))
-	shadow_holder = new(SSmapping.get_turf_below(src))
+	shadow_holder = new(SSmapping.get_turf_below(get_turf(src)))
 	START_PROCESSING(SSsuperfastobj, src)
 	busy = FALSE
 
 /obj/vehicle/multitile/chimera/proc/start_landing()
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
+	new /obj/downwash_effect(below_turf)
 
 	for(var/turf/landing_turf in CORNER_BLOCK_OFFSET(below_turf, 3, 3, -1, 0))
 		var/area/landing_turf_area = get_area(landing_turf)
@@ -476,12 +524,19 @@
 	update_icon()
 	busy = FALSE
 
+	var/turf/downwash_turf = get_turf(src)
+	var/obj/downwash_effect/downwash = locate() in downwash_turf
+
+	if(downwash)
+		qdel(downwash)
+		
+
 	var/turf/possible_pad_turf = locate(x - 1, y - 1, z)
 	var/obj/structure/landing_pad = locate() in possible_pad_turf
 
 	if(!landing_pad)
 		return
-
+	
 	to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Landing pad detected, Starting fueling procedures."))
 	START_PROCESSING(SSobj, landing_pad)
 
@@ -707,11 +762,11 @@
 
 	vehicle.disconnect_tug()
 
-/datum/action/human_action/chimera/toggle_rear_door
-	name = "Toggle Rear Door"
-	action_icon_state = "tug-disconnect"
+/datum/action/human_action/chimera/toggle_sensors
+	name = "Toggle Sensors"
+	action_icon_state = "radar-ping"
 
-/datum/action/human_action/chimera/toggle_rear_door/action_activate()
+/datum/action/human_action/chimera/toggle_sensors/action_activate()
 	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
 	
 	if(!istype(vehicle))
@@ -719,7 +774,22 @@
 
 	. = ..()
 
-	vehicle.toggle_rear_door()
+	vehicle.toggle_sensors()
+
+/datum/action/human_action/chimera/access_tacmap
+	name = "Access Tacmap"
+	action_icon_state = "minimap-vtol"
+
+/datum/action/human_action/chimera/access_tacmap/action_activate()
+	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+	
+	if(!istype(vehicle))
+		return
+
+	. = ..()
+
+	vehicle.tacmap.tgui_interact(owner)
+
 
 /datum/action/human_action/vehicle_unbuckle/chimera
 	action_icon_state = "pilot-unbuckle"
@@ -835,6 +905,8 @@
 		data["vtol_detected"] = TRUE
 		data["fuel"] = aircraft.fuel
 		data["max_fuel"] = aircraft.max_fuel
+		data["battery"] = aircraft.battery
+		data["max_battery"] = aircraft.max_battery
 		data["fueling"] = fueling
 
 	return data
@@ -857,21 +929,17 @@
 			STOP_PROCESSING(SSobj, src)
 
 /obj/item/flight_cpu/process(deltatime)
-	var/turf/center_turf = locate(x + 1, y + 1, z)
-	var/obj/vehicle/multitile/chimera/parked_aircraft
-
-	for(var/obj/vehicle/multitile/chimera/aircraft in center_turf.contents)
-		if(aircraft.x == center_turf.x + 1 && aircraft.y == aircraft.y)
-			parked_aircraft = aircraft
-			break
+	var/turf/center_turf = locate(x + 2, y + 1, z)
+	var/obj/vehicle/multitile/chimera/parked_aircraft = locate() in center_turf
 
 	if(!parked_aircraft)
 		STOP_PROCESSING(SSobj, src)
 		fueling = FALSE
 		return
 
-	if(parked_aircraft.fuel < parked_aircraft.max_fuel)
+	if(parked_aircraft.fuel < parked_aircraft.max_fuel || parked_aircraft.battery < parked_aircraft.max_battery)
 		parked_aircraft.fuel = min(parked_aircraft.fuel + 5 * deltatime, parked_aircraft.max_fuel)
+		parked_aircraft.battery = min(parked_aircraft.battery + 5 * deltatime, parked_aircraft.max_battery)
 	else
 		STOP_PROCESSING(SSobj, src)
 		fueling = FALSE

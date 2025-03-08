@@ -501,6 +501,9 @@
 	icon_state = "type88"
 	item_state = "type88"
 
+	pixel_x = -6
+	hud_offset = -6
+
 	fire_sound = 'sound/weapons/gun_mg.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
@@ -520,8 +523,6 @@
 		//Under,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/bipod,
-		//Integrated,
-		/obj/item/attachable/type88_barrel,
 	)
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
@@ -531,11 +532,6 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attachie = new /obj/item/attachable/type88_barrel(src)
-	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
-	attachie.Attach(src)
-	update_attachable(attachie.slot)
-
 	var/obj/item/attachable/scope/variable_zoom/integrated/type88sight = new(src)
 	type88sight.flags_attach_features &= ~ATTACH_REMOVABLE
 	type88sight.hidden = TRUE

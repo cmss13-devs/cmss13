@@ -342,7 +342,9 @@
 	skill_locked = FALSE
 	current_mag = /obj/item/ammo_magazine/rocket/upp/at
 
-	attachable_allowed = list(/obj/item/attachable/upp_rpg_breech)
+	pixel_x = -7
+	hud_offset = -7
+
 
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
@@ -353,11 +355,6 @@
 
 /obj/item/weapon/gun/launcher/rocket/upp/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/upp_rpg_breech/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachables()
-
 	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
 	Integrated.hidden = TRUE
 	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE

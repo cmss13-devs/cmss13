@@ -375,7 +375,7 @@
 	update_attachable(H.slot)
 
 /obj/item/weapon/gun/rifle/m41a/elite/xm40/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16, "rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m41a/elite/xm40/set_gun_config_values()
 	..()
@@ -868,8 +868,6 @@
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
 
-	starting_attachment_types = list(/obj/item/attachable/mar50barrel)
-
 	current_mag = /obj/item/ammo_magazine/rifle/mar40/lmg
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
@@ -898,8 +896,8 @@
 	set_burst_amount(BURST_AMOUNT_TIER_5)
 	set_burst_delay(FIRE_DELAY_TIER_LMG)
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
-	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -908,7 +906,7 @@
 
 /obj/item/weapon/gun/rifle/mar40/lmg/tactical
 	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals. This one has been equipped with an after-market ammo-counter."
-	starting_attachment_types = list(/obj/item/attachable/mar50barrel, /obj/item/attachable/bipod, /obj/item/attachable/magnetic_harness)
+	starting_attachment_types = list(/obj/item/attachable/bipod, /obj/item/attachable/magnetic_harness)
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 //-------------------------------------------------------
 //M16 RIFLE
@@ -923,8 +921,6 @@
 	fire_sound = 'sound/weapons/gun_m16.ogg'
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
-
-	starting_attachment_types = list(/obj/item/attachable/stock/m16)
 
 	current_mag = /obj/item/ammo_magazine/rifle/m16
 	attachable_allowed = list(
@@ -959,7 +955,6 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/stock/m16,
 	)
 	random_spawn_chance = 42
 	random_spawn_rail = list(
@@ -987,7 +982,7 @@
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
 /obj/item/weapon/gun/rifle/m16/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 9, "rail_y" = 20, "under_x" = 22, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17 ,"rail_x" = 13, "rail_y" = 20, "under_x" = 26, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
 	..()
@@ -1040,10 +1035,11 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/stock/m16,
-		/obj/item/attachable/stock/m16/m16a5,
 	)
-	starting_attachment_types = list(/obj/item/attachable/stock/m16/m16a5)
+
+/obj/item/weapon/gun/rifle/m16/m16a5/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 17 ,"rail_x" = 11, "rail_y" = 20, "under_x" = 24, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
+
 
 /obj/item/weapon/gun/rifle/m16/m16a5/tactical
 	random_spawn_chance = 100
@@ -1145,7 +1141,7 @@
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/stock/m16/xm177,
+		/obj/item/attachable/stock/xm177,
 	)
 
 	random_spawn_chance = 75
@@ -1159,10 +1155,10 @@
 		/obj/item/attachable/lasersight,
 	)
 
-	starting_attachment_types = list(/obj/item/attachable/stock/m16/xm177)
+	starting_attachment_types = list(/obj/item/attachable/stock/xm177)
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 9, "rail_y" = 20, "under_x" = 19, "under_y" = 13, "stock_x" = 15, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 18, "rail_x" = 5, "rail_y" = 20, "under_x" = 15, "under_y" = 13, "stock_x" = 11, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
 	..()
@@ -1191,11 +1187,11 @@
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/stock/m16/xm177,
-		/obj/item/attachable/stock/m16/xm177/car15a3,
+		/obj/item/attachable/stock/xm177,
+		/obj/item/attachable/stock/xm177/car15a3,
 	)
 
-	starting_attachment_types = list(/obj/item/attachable/stock/m16/xm177/car15a3)
+	starting_attachment_types = list(/obj/item/attachable/stock/xm177/car15a3)
 
 /obj/item/weapon/gun/rifle/xm177/car15a3/tactical
 	random_spawn_chance = 100
@@ -1248,7 +1244,6 @@
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/compensator,
-		/obj/item/attachable/stock/ar10,
 	)
 	random_spawn_chance = 10
 	random_spawn_rail = list(
@@ -1270,16 +1265,8 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-/obj/item/weapon/gun/rifle/ar10/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/ar10/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-
 /obj/item/weapon/gun/rifle/ar10/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 20, "under_x" = 22, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 20, "under_x" = 26, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/ar10/set_gun_config_values()
 	..()
@@ -1302,7 +1289,7 @@
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
 	icon_state = "m16a1"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	starting_attachment_types = list(/obj/item/attachable/stock/m16, /obj/item/attachable/bayonet)
+	starting_attachment_types = list(/obj/item/attachable/bayonet)
 
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
@@ -1330,7 +1317,7 @@
 	name = "\improper Dutch's Grenadier M16A1"
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	starting_attachment_types = list(/obj/item/attachable/stock/m16, /obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
+	starting_attachment_types = list(/obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
 
 /obj/item/weapon/gun/rifle/m16/grenadier/dutch/set_gun_config_values()
 	..()
@@ -1437,6 +1424,9 @@
 	icon_state = "type71"
 	item_state = "type71"
 
+	pixel_x = -6
+	hud_offset = -6
+
 	fire_sound = 'sound/weapons/gun_type71.ogg'
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
@@ -1478,7 +1468,7 @@
 	start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/type71/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 11, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 39, "muzzle_y" = 17, "rail_x" = 16, "rail_y" = 23, "under_x" = 26, "under_y" = 13, "stock_x" = 11, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
 	..()
@@ -1492,13 +1482,6 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT //10~ more damage than m41, as well as higher ap from bullet, slightly higher DPS, 133>137.5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-
-/obj/item/weapon/gun/rifle/type71/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/type71/STOCK = new(src)
-	STOCK.flags_attach_features &= ~ATTACH_REMOVABLE
-	STOCK.Attach(src)
-	update_attachable(STOCK.slot)
 
 /obj/item/weapon/gun/rifle/type71/rifleman
 	//add GL
@@ -1606,6 +1589,10 @@
 	desc = "A carbine variant of the Type 71, easier to handle at the cost of lesser damage, but negative soldier reviews have shifted it out of active use, given only to reserves or troops not expected to face much combat."
 	icon_state = "type71c"
 	item_state = "type71c"
+
+	pixel_x = 0
+	hud_offset = 0
+
 	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
 	wield_delay = WIELD_DELAY_VERY_FAST
 	bonus_overlay_x = 2
@@ -1641,9 +1628,6 @@
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 14, "rail_y" = 23, "under_x" = 25, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
-/obj/item/weapon/gun/rifle/type71/carbine/handle_starting_attachment()
-	return //integrated attachment code makes me want to blow my brains out
-
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_11)//same fire rate as m41
@@ -1675,6 +1659,9 @@
 	icon_state = "type73"
 	item_state = "type73"
 
+	pixel_x = -2
+	hud_offset = -2
+
 	fire_sound = "gun_silenced"
 	wield_delay = 0 //Ends up being .5 seconds due to scope
 	inherent_traits = list(TRAIT_GUN_SILENCED)
@@ -1688,24 +1675,17 @@
 	bonus_overlay_x = 1
 	bonus_overlay_y = 0
 
+/obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 22, "under_x" = 23, "under_y" = 14, "stock_x" = 21, "stock_y" = 18)
+
 /obj/item/weapon/gun/rifle/type71/carbine/commando/handle_starting_attachment()
 	..()
-	//suppressor
-	var/obj/item/attachable/type73suppressor/suppressor = new(src)
-	suppressor.flags_attach_features &= ~ATTACH_REMOVABLE
-	suppressor.Attach(src)
-	update_attachable(suppressor.slot)
 	//scope
 	var/obj/item/attachable/scope/mini/scope = new(src)
 	scope.hidden = TRUE
 	scope.flags_attach_features &= ~ATTACH_REMOVABLE
 	scope.Attach(src)
 	update_attachable(scope.slot)
-
-
-/obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 22, "under_x" = 23, "under_y" = 14, "stock_x" = 21, "stock_y" = 18)
-
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_config_values()
 	..()
@@ -2084,19 +2064,14 @@
 	..()
 	var/obj/item/attachable/scope/mini/f90/f90_scope = new(src)
 	var/obj/item/attachable/angledgrip/f90_agrip = new(src)
-	var/obj/item/attachable/f90_dmr_barrel/f90_dmr_barrel = new(src)
 	f90_scope.flags_attach_features &= ~ATTACH_REMOVABLE
 	f90_agrip.flags_attach_features &= ~ATTACH_REMOVABLE
-	f90_dmr_barrel.flags_attach_features &= ~ATTACH_REMOVABLE
 	f90_scope.hidden = TRUE
 	f90_agrip.hidden = TRUE
-	f90_dmr_barrel.hidden = FALSE
 	f90_agrip.Attach(src)
 	f90_scope.Attach(src)
-	f90_dmr_barrel.Attach(src)
 	update_attachable(f90_agrip.slot)
 	update_attachable(f90_scope.slot)
-	update_attachable(f90_dmr_barrel.slot)
 
 /obj/item/weapon/gun/rifle/rmc_f90/shotgun
 	name = "\improper F903A1/B 'Breacher' Rifle"
@@ -2124,15 +2099,10 @@
 /obj/item/weapon/gun/rifle/rmc_f90/shotgun/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/attached_gun/shotgun/f90_shotgun = new(src)
-	var/obj/item/attachable/f90_dmr_barrel/f90_shotgun_barrel = new(src)
 	f90_shotgun.flags_attach_features &= ~ATTACH_REMOVABLE
-	f90_shotgun_barrel.flags_attach_features &= ~ATTACH_REMOVABLE
-	f90_shotgun_barrel.hidden = FALSE
 	f90_shotgun.hidden = TRUE
 	f90_shotgun.Attach(src)
-	f90_shotgun_barrel.Attach(src)
 	update_attachable(f90_shotgun.slot)
-	update_attachable(f90_shotgun_barrel.slot)
 
 
 //NSG 23 ASSAULT RIFLE - RMC VARIANT
@@ -2150,6 +2120,7 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
 	current_mag = /obj/item/ammo_magazine/rifle/l23
+	force = 10
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -2161,7 +2132,6 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/stock/l23,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
@@ -2198,7 +2168,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 12, "rail_y" = 20, "under_x" = 21, "under_y" = 11, "stock_x" = 5, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 17, "rail_y" = 20, "under_x" = 28, "under_y" = 11, "stock_x" = 5, "stock_y" = 17)
 
 /obj/item/weapon/gun/rifle/l23/set_gun_config_values()
 	..()
@@ -2215,13 +2185,6 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
-
-/obj/item/weapon/gun/rifle/l23/handle_starting_attachment() //Adds L23's unremovable stock
-	..()
-	var/obj/item/attachable/stock/l23/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
 
 //***************************************************************//
 /obj/item/weapon/gun/rifle/l23/breacher // One-handed UBS rifle
@@ -2244,7 +2207,6 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/stock/l23,
 		/obj/item/attachable/attached_gun/shotgun/af13b,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,

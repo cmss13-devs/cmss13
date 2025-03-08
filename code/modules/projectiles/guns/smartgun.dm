@@ -854,7 +854,6 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "magsg"
 	item_state = "magsg"
-	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)
 
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()

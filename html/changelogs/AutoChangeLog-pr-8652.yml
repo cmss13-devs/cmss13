@@ -1,0 +1,7 @@
+author: "Kashargul"
+delete-after: True
+changes:
+  - bugfix: "numberInput works properly again with mouse movement"
+  - bugfix: "the chat will no longer init before settings are loaded"
+  - qol: "chat settings can be in / exported"
+  - qol: "chat tabs can be reordered"

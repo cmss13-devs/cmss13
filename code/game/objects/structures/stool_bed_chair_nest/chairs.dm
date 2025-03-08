@@ -317,7 +317,8 @@
 
 /obj/structure/bed/chair/office/Collide(atom/A)
 	..()
-	if(!buckled_mob) return
+	if(!buckled_mob)
+		return
 
 	if(propelled)
 		var/mob/living/occupant = buckled_mob
@@ -578,6 +579,10 @@
 	if(isturf(target))
 		var/turf/open/T = target
 		if(!(istype(T)) || !proximity || T.density)
+			return
+		var/area/area = get_area(target)
+		if(!area.allow_construction)
+			to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
 			return
 		if(!T.allow_construction)
 			to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))

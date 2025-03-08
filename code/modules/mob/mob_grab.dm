@@ -33,7 +33,8 @@
 /obj/item/grab/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!user)
 		return
-	if(user.pulling == user.buckled) return //can't move the thing you're sitting on.
+	if(user.pulling == user.buckled)
+		return //can't move the thing you're sitting on.
 	if(user.grab_level >= GRAB_CARRY)
 		return
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,

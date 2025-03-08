@@ -1,0 +1,86 @@
+2025-03-01:
+  Blundir:
+  - imageadd: monkey, yiren, neaera, farwa, stok resprite
+  - imagedel: deleted unused dmi various legacy with monkey icons
+  - imageadd: new NSPA badges sprites
+  - imageadd: resprites pathogen zombies with new sprites
+  Red-byte3D:
+  - bugfix: Banished tier 3's can no longer no longer destroy their own tunnels
+  - bugfix: Fixes banished xenos not being able to leave tunnels
+  - spellcheck: Fixes a small grammatical error within neurotoxin pain message
+2025-03-02:
+  Red-byte3D:
+  - bugfix: A bug with cas hardpoints being able to picked up despite being already
+      picked up
+2025-03-03:
+  Syndro101:
+  - rscadd: Added replacement rooms for XO, ASO, Synth, Flight Crew, Officer's Mess,
+      Intel Office, Intel Quarters, Reporter Office, new areas for the CIC conference
+      room and lower cryocells above medbay
+  - rscdel: Removed old rooms for XO, ASO, Synth, Flight Crew, Officer's Mess
+  - code_imp: changed ASO and Flight Crew bunks areas, Fake_Zlevels swapped.
+  - maptweak: added new sections, removed old sections
+  realforest2001:
+  - imageadd: Added a blank OOC icon for missing sprites.
+  - imageadd: Added a StaffManager OOC icon.
+  - imageadd: Re-Added missing RatKing OOC icon.
+2025-03-05:
+  Danilcus-W:
+  - qol: Trappers can now see how much "Insight" they currently have.
+  - bugfix: Trapper abilities empowered overlay is now shown.
+  Drathek:
+  - bugfix: Fixed UPP supply packs overriding all normal variant supply packs
+  - code_imp: Added a check to ensure all usage of GLOBAL_SUBTYPE_PATH_INDEXED has
+      uniquely indexed entries
+  - bugfix: Fixed chat theme always defaulting to dark on a setting change
+  - code_imp: Removed unused variables in dancer behavior delegate
+  - balance: Grace timer for being AFK is reduced from 20 mins down to 3 mins after
+      round start
+  JackieEstegado:
+  - bugfix: Antiparasitic chems can cure stage 2+ infected again.
+  MeH0y:
+  - bugfix: burrower blip is correctly colored
+  MistChristmas:
+  - bugfix: Fixes setting the amount of belts in the SecTech twice.
+  NHC:
+  - imageadd: changed jacket icon name from pilot_flightsuit_dj to pilot_flightsuit_alt_dj
+  Red-byte3D:
+  - bugfix: Yautja no longer see the security level in the stat panel
+  - bugfix: Yautja no longer get buffed by orders
+  - bugfix: Girders are now able to be deconstructed/dismantled etc post repair
+  - admin: Added logging for shuttle manipulation.
+  - bugfix: Fixes hunting ground spawner code checking for if theres people above
+      the min_mob instead of below
+  - rscadd: Hunting ground prey and youngblood now reset their timers if nobody elligible
+      were found
+  - bugfix: Strain resetting no longer gives you an evolution button as facehugger
+  Syndro101:
+  - code_imp: changed lots of landmarks to use their new icons
+  - imageadd: new landmark icons
+  TrollerNoob:
+  - rscadd: New shipments of Chestrigs and Technician Welder Chestrigs have arrived
+      from Chinook station. Urban and Snow operations are now covered.
+  - imageadd: Added Urban/Snow variants for Chestrig and Welder Chestrig
+  - code_imp: Removed some unneeded code from Chestrig/Welder Chestrig for automatic
+      map variants.
+  hry-gh:
+  - rscadd: added a poll button to the lobby screen. engage democratically.
+  lanse12:
+  - spellcheck: fixed some turret related typos
+  larentoun:
+  - qol: Added a visual timer for cooldowns of Xeno Abilities
+  private-tristan:
+  - admin: Create-Xenos range defaults to 0, instead of 1, hooray!
+  remindme:
+  - bugfix: Some MREs that should've had veggies in them had no veggies (ripoff!)
+2025-03-06:
+  TheKillfish:
+  - rscadd: Added the Light Replacer to tool storage and to the autolathe. The Light
+      Replacer can now also recycle broken bulbs, either directly when replacing or
+      when inserted by hand.
+2025-03-07:
+  Mister-moon1:
+  - balance: 'reverted all direct shrapnel buffs from #7581'
+  Red-byte3D:
+  - code_imp: Moves all of crusher abilities to its own files, strains to theirs and
+      removes some one letter vars

@@ -2879,7 +2879,7 @@
 /area/adminlevel/chinook/offices)
 "ln" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -9746,7 +9746,6 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "OT" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /obj/structure/machinery/light{
 	dir = 4
 	},

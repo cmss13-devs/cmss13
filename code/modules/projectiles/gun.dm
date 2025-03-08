@@ -594,6 +594,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_gun_durability()
 
 /obj/item/weapon/gun/proc/check_jam(mob/living/user)
+	var/magjam_modifier = current_mag.magjam_modifier
 	if(gun_durability <= GUN_DURABILITY_BROKEN) //prevents firing without spamming your screen with both jamming and worn out noises
 		check_worn_out(user)
 		return NONE
@@ -603,7 +604,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
 		return NONE
-	else if(prob(jam_chance))
+	else if(prob(jam_chance + magjam_modifier))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
@@ -634,10 +635,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
+	var/bullet_duraloss = ammo.bullet_duraloss
 	if(!can_jam)
 		return
 
-	if(prob(durability_loss)) // probability durability loss dependent on weapon value, 0 disables it obviously, rngesus woe
+	if(prob(durability_loss + bullet_duraloss)) // probability durability loss dependent on weapon value, 0 disables it obviously, rngesus woe
 		set_gun_durability(gun_durability - 1) // decrement durability each time the gun is fired, yep shitcode
 		update_gun_durability()
 		check_worn_out(user)

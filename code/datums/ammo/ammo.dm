@@ -69,6 +69,9 @@
 	var/effective_range_max = EFFECTIVE_RANGE_OFF
 	/// How fast the projectile moves.
 	var/shell_speed = AMMO_SPEED_TIER_1
+	/// modifer to lose durability with standard durability_loss when this bullet is chambered and fired
+	var/bullet_duraloss = 0
+
 
 	var/handful_type = /obj/item/ammo_magazine/handful
 	var/handful_color

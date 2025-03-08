@@ -1,7 +1,7 @@
 //job options for doctors surgeon pharmacy technician(preparation of medecine and distribution)
 
-#define DOCTOR_VARIANT "Doctor"
-#define SURGEON_VARIANT "Surgeon"
+#define DOCTOR_VARIANT JOB_DOCTOR_RU	// SS220 EDIT TRANSLATE
+#define SURGEON_VARIANT JOB_SURGEON_RU	// SS220 EDIT TRANSLATE
 
 // Doctor
 /datum/job/civilian/doctor
@@ -16,7 +16,7 @@
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 
 	// job option
-	job_options = list(DOCTOR_VARIANT = "Doc", SURGEON_VARIANT = "Sur")
+	job_options = list(DOCTOR_VARIANT = "Док", SURGEON_VARIANT = "Хир")
 	/// If this job is a doctor variant of the doctor role
 	var/doctor = TRUE
 

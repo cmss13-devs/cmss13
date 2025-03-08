@@ -20,8 +20,9 @@
 
 /datum/emergency_call/pred/mixed/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
-	if(mob_min > length(members))
+	if(length(members) < mob_min)
 		message_all_yautja("Not enough humans in storage for the hunt to start.")
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 	else
 		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
 
@@ -116,7 +117,8 @@
 
 /datum/emergency_call/pred/xeno/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
-	if(mob_min > length(members))
+	if(length(members) < mob_min)
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 		message_all_yautja("Not enough serpents in storage for the hunt to start.")
 	else
 		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence!")
@@ -204,7 +206,11 @@
 
 /datum/emergency_call/young_bloods/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
-	message_all_yautja("Awoke [length(members)] youngbloods for the ritual.")
+	if(length(members) < mob_min)
+		message_all_yautja("No youngbloods answered the call.")
+		GLOB.blooding_activated = FALSE
+	else
+		message_all_yautja("Awoke [length(members)] youngbloods for the ritual.")
 
 /datum/emergency_call/young_bloods/create_member(datum/mind/player, turf/override_spawn_loc)
 	set waitfor = 0

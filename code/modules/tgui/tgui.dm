@@ -350,10 +350,11 @@
 			id = text2num(id)
 
 			var/total = text2num(href_list["totalPackets"])
-			if(id == 1)
-				if(total > MAX_MESSAGE_CHUNKS)
-					return
 
+			if(total > MAX_MESSAGE_CHUNKS)
+				return
+
+			if(id == 1)
 				partial_packets = new /list(total)
 
 			partial_packets[id] = href_list["packet"]

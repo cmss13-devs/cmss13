@@ -224,7 +224,7 @@
 	. = ..()
 	var/mob/user = hauled_mob?.resolve()
 	if(user)
-		user.forceMove(src.loc)
+		user.forceMove(loc)
 
 /mob/living/carbon/xenomorph/forceMove(atom/destination)
 	. = ..()

@@ -39,6 +39,13 @@
 			hud_icon_state = "spec"
 		if(JOB_PMC_STANDARD)
 			hud_icon_state = "gun"
+//Whiteout Roles
+		if(JOB_DS_SL)
+			hud_icon_state = "ds_sl"
+		if(JOB_DS_SG)
+			hud_icon_state = "ds_sg"
+		if(JOB_DS_MED)
+			hud_icon_state = "ds_med"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "pmc_[hud_icon_state]")
 

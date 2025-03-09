@@ -476,9 +476,12 @@
 		back_door_turf.ChangeTurf(/turf/open_space/chimera)
 		update_rear_view()
 	else
-		var/turf/back_door_turf = get_turf(back_door)
-		back_door_turf = locate(back_door_turf.x, back_door_turf.y + 1, back_door_turf.z)
-		back_door_turf.ChangeTurf(/turf/open/void/vehicle)
+		addtimer(CALLBACK(src, PROC_REF(finish_close_rear_door)), 9 DECISECONDS, TIMER_UNIQUE|TIMER_OVERRIDE) // Account for animation time
+
+/obj/vehicle/multitile/chimera/proc/finish_close_rear_door()
+	var/turf/back_door_turf = get_turf(back_door)
+	back_door_turf = locate(back_door_turf.x, back_door_turf.y + 1, back_door_turf.z)
+	back_door_turf.ChangeTurf(/turf/open/void/vehicle)
 
 /obj/vehicle/multitile/chimera/proc/start_takeoff()
 	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(get_turf(src), 3, 3, -1, 0))

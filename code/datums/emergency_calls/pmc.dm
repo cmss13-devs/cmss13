@@ -119,9 +119,7 @@
 		check_objective_info()
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(GLOB.world_view_size)
+	M.transfer_to(H, TRUE)
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
@@ -144,6 +142,8 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 /obj/effect/landmark/ert_spawns/distress_pmc
 	name = "Distress_PMC"
+	icon_state = "spawn_distress_pmc"
 
 /obj/effect/landmark/ert_spawns/distress_pmc/item
 	name = "Distress_PMCitem"
+	icon_state = "distress_item"

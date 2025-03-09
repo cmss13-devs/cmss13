@@ -34,6 +34,13 @@
 		charge_ready = FALSE
 	update_button_icon()
 
+/datum/action/xeno_action/Destroy()
+	STOP_PROCESSING(SSfasteffects, src)
+	. = ..()
+
+/datum/action/xeno_action/process(delta_time)
+	return update_cooldown_visual()
+
 /datum/action/xeno_action/proc/remove_charge()
 	SIGNAL_HANDLER
 	charges--
@@ -243,6 +250,7 @@
 	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_to_apply
 	current_cooldown_start_time = world.time
+	START_PROCESSING(SSfasteffects, src)
 
 	// Update our button
 	update_button_icon()
@@ -263,10 +271,11 @@
 	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
 	current_cooldown_start_time = world.time
+	START_PROCESSING(SSfasteffects, src)
 
 // Checks whether the action is on cooldown. Should not be overridden.
 // Returns TRUE if the action can be used and FALSE otherwise.
-/datum/action/xeno_action/proc/action_cooldown_check()
+/datum/action/xeno_action/action_cooldown_check()
 	return (cooldown_timer_id == TIMER_ID_NULL) && (!charge_time || charge_ready)
 
 // What occurs when a cooldown ends NATURALLY. Ties into ability_cooldown_over, which tells the source Xeno
@@ -450,3 +459,14 @@
 	track_xeno_ability_stats()
 	if(action_start_message)
 		to_chat(owner, SPAN_NOTICE(action_start_message))
+
+/datum/action/xeno_action/proc/update_cooldown_visual()
+	var/time_left = max(current_cooldown_start_time + current_cooldown_duration - world.time, 0)
+	if(!owner || time_left <= 0 || cooldown_timer_id == TIMER_ID_NULL)
+		button.set_maptext()
+		return PROCESS_KILL
+	else
+		button.set_maptext(SMALL_FONTS(7, round(time_left/10, 0.1)), 4, 4)
+
+#define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
+#define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

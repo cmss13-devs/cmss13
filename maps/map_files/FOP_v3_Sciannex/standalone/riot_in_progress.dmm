@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"ab" = (
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "am" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/donut_box{
@@ -724,14 +732,17 @@
 /area/fiorina/station/security)
 "BJ" = (
 /obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
+	req_access = null;
+	name = "CMB riot locker"
 	},
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/clothing/under/marine/ua_riot,
-/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
-/obj/item/prop/helmetgarb/riot_shield,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "Cb" = (
@@ -1485,8 +1496,8 @@ Su
 YH
 hg
 PA
-sq
-sq
+ab
+aa
 sq
 PA
 FH

@@ -1,6 +1,7 @@
 /datum/equipment_preset/other
 	name = "Other"
 	languages = list(LANGUAGE_ENGLISH)
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 
 //*****************************************************************************************************/
 
@@ -71,6 +72,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/freelancer_patch, WEAR_ACCESSORY)
 	spawn_merc_helmet(new_human)
 	//storage and specific stuff, they all get an ERT medpouch.
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
@@ -151,6 +153,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/freelancer_patch, WEAR_ACCESSORY)
 	spawn_merc_helmet(new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
@@ -181,6 +184,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr, WEAR_IN_BACK)
 	//gun
 	spawn_merc_shotgun(new_human)
 
@@ -218,6 +222,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/freelancer/beret, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/freelancer_patch, WEAR_ACCESSORY)
 	if(new_human.disabilities & NEARSIGHTED)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
 	else
@@ -227,9 +232,59 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
+
+	spawn_weapon(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1, new_human, 0, 9)
+	spawn_merc_weapon(new_human,1,2)
+
+///Hunting Grounds Freelancers///
+
+/datum/equipment_preset/other/freelancer/standard/hunted
+	name = "Freelancer (Hunted)"
+	faction = FACTION_HUNTED_MERC
+
+/datum/equipment_preset/other/freelancer/standard/hunted/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	spawn_merc_helmet(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
+
+	load_freelancer_soldier(new_human)
+
+	var/percentage = rand(1, 100)
+	switch(percentage)
+		if(1 to 66)
+			load_freelancer_rifleman(new_human)
+		else
+			load_freelancer_machinegunner(new_human)
+
+/datum/equipment_preset/other/freelancer/leader/hunted
+	name = "Freelancer Leader (Hunted)"
+	faction = FACTION_HUNTED_MERC
+
+
+/datum/equipment_preset/other/freelancer/leader/hunted/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/freelancer/beret, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/stick, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/m41aMK1, /obj/item/ammo_magazine/rifle/m41aMK1, new_human, 0, 9)
@@ -516,6 +571,7 @@
 	assignment = "Pizza Deliverer"
 	rank = FACTION_PIZZA
 	skills = /datum/skills/civilian
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_PIZZA
 
 /datum/equipment_preset/other/pizza/New()
@@ -635,7 +691,7 @@
 	new_human.set_species(SPECIES_ZOMBIE)
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/new_human)
-	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/colonist/ua_civvies, /obj/item/clothing/under/colonist/wy_davisone, /obj/item/clothing/under/colonist/wy_joliet_shopsteward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
+	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/rank/utility/gray, /obj/item/clothing/under/rank/utility/brown, /obj/item/clothing/under/colonist/steward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
 	new_human.equip_to_slot_or_del(new uniform_path, WEAR_BODY)
 	var/shoe_path = pick(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/leather, /obj/item/clothing/shoes/jackboots)
 	new_human.equip_to_slot_or_del(new shoe_path, WEAR_FEET)
@@ -796,7 +852,7 @@
 	for(var/action_to_add in actions_to_add)
 		give_action(new_human, action_to_add)
 
-	new_human.default_lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	new_human.default_lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	new_human.update_sight()
 
 /datum/equipment_preset/other/xeno_cultist/leader

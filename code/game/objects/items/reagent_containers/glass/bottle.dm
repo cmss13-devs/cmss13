@@ -5,7 +5,7 @@
 	desc = "A small bottle."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle-1"
-	item_state = "atoxinbottle"
+	item_state = "bottle-1"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 25, 30, 40, 60)
 	flags_atom = FPRINT|OPENCONTAINER
@@ -41,12 +41,18 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0) filling.icon_state = null
-			if(1 to 20) filling.icon_state = "[icon_state]-20"
-			if(21 to 40) filling.icon_state = "[icon_state]-40"
-			if(41 to 60) filling.icon_state = "[icon_state]-60"
-			if(61 to 80) filling.icon_state = "[icon_state]-80"
-			if(81 to INFINITY) filling.icon_state = "[icon_state]-100"
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "[icon_state]-20"
+			if(21 to 40)
+				filling.icon_state = "[icon_state]-40"
+			if(41 to 60)
+				filling.icon_state = "[icon_state]-60"
+			if(61 to 80)
+				filling.icon_state = "[icon_state]-80"
+			if(81 to INFINITY)
+				filling.icon_state = "[icon_state]-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling

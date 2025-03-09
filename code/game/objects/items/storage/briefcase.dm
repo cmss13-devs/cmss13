@@ -2,9 +2,13 @@
 	name = "briefcase"
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
 	icon = 'icons/obj/items/storage/briefcases.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_righthand.dmi',
+	)
 	icon_state = "briefcase"
 	item_state = "briefcase"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 	force = 8
 	throw_speed = SPEED_FAST
 	throw_range = 4

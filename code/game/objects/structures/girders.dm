@@ -3,6 +3,7 @@
 #define STATE_WALL 2
 #define STATE_REINFORCED_WALL 3
 #define STATE_DISPLACED 4
+#define STATE_DESTROYED 5 // this is so they can get destroyed by xenos
 
 #define STATE_SCREWDRIVER 1
 #define STATE_WIRECUTTER 2
@@ -120,7 +121,7 @@
 			to_chat(user, SPAN_NOTICE("You weld the girder together!"))
 			repair()
 			return
-	..()
+	. = ..()
 
 /obj/structure/girder/proc/change_state(obj/item/W, mob/user)
 	switch(state)
@@ -177,6 +178,10 @@
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				var/area/area = get_area(W)
+				if(!area.allow_construction)
+					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
+					return
 				var/turf/open/floor = loc
 				if(!floor.allow_construction)
 					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
@@ -358,12 +363,14 @@
 
 /obj/structure/girder/proc/repair()
 	health = initial(health)
+	state = STATE_STANDARD
 	update_state()
 
 /obj/structure/girder/proc/update_state()
 	if(health <= 0 && density)
 		icon_state = "[icon_state]_damaged"
 		density = FALSE
+		state = STATE_DESTROYED
 
 	else if(health > 0 && !density)
 		var/underscore_position =  findtext(icon_state,"_")
@@ -398,10 +405,30 @@
 	health = 500
 
 
+/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
+	if((M.caste && M.caste.tier < 2 && M.claw_type < CLAW_TYPE_VERY_SHARP) || unacidable)
+		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
+		return XENO_NO_DELAY_ACTION
+	M.animation_attack_on(src)
+	health -= floor(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
+	if(health <= 0)
+		M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
+		dismantle()
+	if(state == STATE_DESTROYED)
+		qdel(src)
+	else
+		M.visible_message(SPAN_DANGER("[M] smashes [src]!"),
+		SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
+	return XENO_ATTACK_ACTION
+
 #undef STATE_STANDARD
 #undef STATE_DISMANTLING
 #undef STATE_WALL
 #undef STATE_REINFORCED_WALL
+#undef STATE_DESTROYED
 
 #undef STATE_SCREWDRIVER
 #undef STATE_WIRECUTTER

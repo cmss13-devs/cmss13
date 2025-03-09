@@ -78,49 +78,55 @@ const SquadPanel = (props) => {
   const [category, setCategory] = useSharedState('selected', 'monitor');
 
   return (
-    <>
-      <Collapsible title="Main Dashboard" fontSize="16px">
-        <MainDashboard />
-      </Collapsible>
-
-      <Collapsible title="Squad Roles" fontSize="16px">
-        <RoleTable />
-      </Collapsible>
-
-      <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
-        <Tabs.Tab
-          selected={category === 'monitor'}
-          icon="heartbeat"
-          onClick={() => setCategory('monitor')}
-        >
-          Squad Monitor
-        </Tabs.Tab>
-        {!!data.can_launch_crates && (
+    <Stack fill vertical>
+      <Stack.Item>
+        <Collapsible title="Main Dashboard" fontSize="16px">
+          <MainDashboard />
+        </Collapsible>
+      </Stack.Item>
+      <Stack.Item>
+        <Collapsible title="Squad Roles" fontSize="16px">
+          <RoleTable />
+        </Collapsible>
+      </Stack.Item>
+      <Stack.Item>
+        <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
           <Tabs.Tab
-            selected={category === 'supply'}
-            icon="wrench"
-            onClick={() => setCategory('supply')}
+            selected={category === 'monitor'}
+            icon="heartbeat"
+            onClick={() => setCategory('monitor')}
           >
-            Supply Drop
+            Squad Monitor
           </Tabs.Tab>
-        )}
-        {!!data.can_launch_obs && (
-          <Tabs.Tab
-            selected={category === 'ob'}
-            icon="bomb"
-            onClick={() => setCategory('ob')}
-          >
-            Orbital Bombardment
+          {!!data.can_launch_crates && (
+            <Tabs.Tab
+              selected={category === 'supply'}
+              icon="wrench"
+              onClick={() => setCategory('supply')}
+            >
+              Supply Drop
+            </Tabs.Tab>
+          )}
+          {!!data.can_launch_obs && (
+            <Tabs.Tab
+              selected={category === 'ob'}
+              icon="bomb"
+              onClick={() => setCategory('ob')}
+            >
+              Orbital Bombardment
+            </Tabs.Tab>
+          )}
+          <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
+            Tactical Map
           </Tabs.Tab>
-        )}
-        <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
-          Tactical Map
-        </Tabs.Tab>
-      </Tabs>
-      {category === 'monitor' && <SquadMonitor />}
-      {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
-      {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
-    </>
+        </Tabs>
+      </Stack.Item>
+      <Stack.Item grow>
+        {category === 'monitor' && <SquadMonitor />}
+        {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
+        {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
+      </Stack.Item>
+    </Stack>
   );
 };
 
@@ -241,7 +247,7 @@ const RoleTable = (props) => {
   } = data;
 
   return (
-    <Table m="1px" fontSize="12px" bold>
+    <Table pb="4px" m="1px" fontSize="12px" bold>
       <Table.Row>
         <Table.Cell textAlign="center" p="4px">
           Squad Leader
@@ -403,6 +409,8 @@ const SquadMonitor = (props) => {
 
   return (
     <Section
+      pb="1.5%"
+      fill
       fontSize="14px"
       title="Monitor"
       buttons={
@@ -456,120 +464,122 @@ const SquadMonitor = (props) => {
         value={marineSearch}
         onInput={(e, value) => setMarineSearch(value)}
       />
-      <Table>
-        <Table.Row bold fontSize="14px">
-          <Table.Cell textAlign="center">Name</Table.Cell>
-          <Table.Cell textAlign="center">Role</Table.Cell>
-          <Table.Cell textAlign="center" collapsing>
-            State
-          </Table.Cell>
-          <Table.Cell textAlign="center">Location</Table.Cell>
-          <Table.Cell textAlign="center" collapsing fontSize="12px">
-            SL Dist.
-          </Table.Cell>
-          <Table.Cell textAlign="center" />
-        </Table.Row>
-        {squad_leader && (
-          <Table.Row key="index" bold>
-            <Table.Cell collapsing p="2px">
-              {(squad_leader.has_helmet && (
-                <Button
-                  onClick={() =>
-                    act('watch_camera', { target_ref: squad_leader.ref })
-                  }
-                >
-                  {squad_leader.name}
-                </Button>
-              )) || <Box color="yellow">{squad_leader.name} (NO HELMET)</Box>}
+      <Section m="2px" mb="4px" fill height="95%" scrollable>
+        <Table>
+          <Table.Row bold fontSize="14px">
+            <Table.Cell textAlign="center">Name</Table.Cell>
+            <Table.Cell textAlign="center">Role</Table.Cell>
+            <Table.Cell textAlign="center" collapsing>
+              State
             </Table.Cell>
-            <Table.Cell p="2px">{squad_leader.role}</Table.Cell>
-            <Table.Cell
-              p="2px"
-              color={determine_status_color(squad_leader.state)}
-            >
-              {squad_leader.state}
+            <Table.Cell textAlign="center">Location</Table.Cell>
+            <Table.Cell textAlign="center" collapsing fontSize="12px">
+              SL Dist.
             </Table.Cell>
-            <Table.Cell p="2px">{squad_leader.area_name}</Table.Cell>
-            <Table.Cell p="2px" collapsing>
-              {squad_leader.distance}
-            </Table.Cell>
-            <Table.Cell />
+            <Table.Cell textAlign="center" />
           </Table.Row>
-        )}
-        {marines &&
-          marines
-            .sort(sortByRole)
-            .filter((marine) => {
-              if (marineSearch) {
-                const searchableString = String(marine.name).toLowerCase();
-                return searchableString.match(new RegExp(marineSearch, 'i'));
-              }
-              return marine;
-            })
-            .map((marine, index) => {
-              if (squad_leader) {
-                if (marine.ref === squad_leader.ref) {
+          {squad_leader && (
+            <Table.Row key="index" bold>
+              <Table.Cell collapsing p="2px">
+                {(squad_leader.has_helmet && (
+                  <Button
+                    onClick={() =>
+                      act('watch_camera', { target_ref: squad_leader.ref })
+                    }
+                  >
+                    {squad_leader.name}
+                  </Button>
+                )) || <Box color="yellow">{squad_leader.name} (NO CAMERA)</Box>}
+              </Table.Cell>
+              <Table.Cell p="2px">{squad_leader.role}</Table.Cell>
+              <Table.Cell
+                p="2px"
+                color={determine_status_color(squad_leader.state)}
+              >
+                {squad_leader.state}
+              </Table.Cell>
+              <Table.Cell p="2px">{squad_leader.area_name}</Table.Cell>
+              <Table.Cell p="2px" collapsing>
+                {squad_leader.distance}
+              </Table.Cell>
+              <Table.Cell />
+            </Table.Row>
+          )}
+          {marines &&
+            marines
+              .sort(sortByRole)
+              .filter((marine) => {
+                if (marineSearch && !marineSearch.includes('\\')) {
+                  const searchableString = String(marine.name).toLowerCase();
+                  return searchableString.match(new RegExp(marineSearch, 'i'));
+                }
+                return marine;
+              })
+              .map((marine, index) => {
+                if (squad_leader) {
+                  if (marine.ref === squad_leader.ref) {
+                    return;
+                  }
+                }
+                if (hidden_marines.includes(marine.ref) && !showHiddenMarines) {
                   return;
                 }
-              }
-              if (hidden_marines.includes(marine.ref) && !showHiddenMarines) {
-                return;
-              }
-              if (marine.state === 'Dead' && !showDeadMarines) {
-                return;
-              }
+                if (marine.state === 'Dead' && !showDeadMarines) {
+                  return;
+                }
 
-              return (
-                <Table.Row key={index}>
-                  <Table.Cell collapsing p="2px">
-                    {(marine.has_helmet && (
+                return (
+                  <Table.Row key={index}>
+                    <Table.Cell collapsing p="2px">
+                      {(marine.has_helmet && (
+                        <Button
+                          onClick={() =>
+                            act('watch_camera', { target_ref: marine.ref })
+                          }
+                        >
+                          {marine.name}
+                        </Button>
+                      )) || <Box color="yellow">{marine.name} (NO CAMERA)</Box>}
+                    </Table.Cell>
+                    <Table.Cell p="2px">{marine.role}</Table.Cell>
+                    <Table.Cell
+                      p="2px"
+                      color={determine_status_color(marine.state)}
+                    >
+                      {marine.state}
+                    </Table.Cell>
+                    <Table.Cell p="2px">{marine.area_name}</Table.Cell>
+                    <Table.Cell p="2px" collapsing>
+                      {marine.distance}
+                    </Table.Cell>
+                    <Table.Cell p="2px">
+                      {(hidden_marines.includes(marine.ref) && (
+                        <Button
+                          icon="plus"
+                          color="green"
+                          tooltip="Show marine"
+                          onClick={() => toggle_marine_hidden(marine.ref)}
+                        />
+                      )) || (
+                        <Button
+                          icon="minus"
+                          color="red"
+                          tooltip="Hide marine"
+                          onClick={() => toggle_marine_hidden(marine.ref)}
+                        />
+                      )}
                       <Button
-                        onClick={() =>
-                          act('watch_camera', { target_ref: marine.ref })
-                        }
-                      >
-                        {marine.name}
-                      </Button>
-                    )) || <Box color="yellow">{marine.name} (NO HELMET)</Box>}
-                  </Table.Cell>
-                  <Table.Cell p="2px">{marine.role}</Table.Cell>
-                  <Table.Cell
-                    p="2px"
-                    color={determine_status_color(marine.state)}
-                  >
-                    {marine.state}
-                  </Table.Cell>
-                  <Table.Cell p="2px">{marine.area_name}</Table.Cell>
-                  <Table.Cell p="2px" collapsing>
-                    {marine.distance}
-                  </Table.Cell>
-                  <Table.Cell p="2px">
-                    {(hidden_marines.includes(marine.ref) && (
-                      <Button
-                        icon="plus"
+                        icon="arrow-up"
                         color="green"
-                        tooltip="Show marine"
-                        onClick={() => toggle_marine_hidden(marine.ref)}
+                        tooltip="Promote marine to Squad Leader"
+                        onClick={() => act('replace_lead', { ref: marine.ref })}
                       />
-                    )) || (
-                      <Button
-                        icon="minus"
-                        color="red"
-                        tooltip="Hide marine"
-                        onClick={() => toggle_marine_hidden(marine.ref)}
-                      />
-                    )}
-                    <Button
-                      icon="arrow-up"
-                      color="green"
-                      tooltip="Promote marine to Squad Leader"
-                      onClick={() => act('replace_lead', { ref: marine.ref })}
-                    />
-                  </Table.Cell>
-                </Table.Row>
-              );
-            })}
-      </Table>
+                    </Table.Cell>
+                  </Table.Row>
+                );
+              })}
+        </Table>
+      </Section>
     </Section>
   );
 };
@@ -579,6 +589,7 @@ const SupplyDrop = (props) => {
 
   const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
   const [supplyY, setSupplyY] = useSharedState('supply', 0);
+  const [supplyZ, setSupplyZ] = useSharedState('supplyz', 0);
 
   let crate_status = 'Crate Loaded';
   let crate_color = 'green';
@@ -591,12 +602,13 @@ const SupplyDrop = (props) => {
   }
 
   return (
-    <Section fontSize="14px" title="Supply Drop">
+    <Section fill fontSize="14px" title="Supply Drop">
       <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="14px">
           <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
+                step={1}
                 value={supplyX}
                 onChange={(value) => setSupplyX(value)}
                 width="75px"
@@ -604,8 +616,17 @@ const SupplyDrop = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
+                step={1}
                 value={supplyY}
                 onChange={(value) => setSupplyY(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="HEIGHT">
+              <NumberInput
+                step={1}
+                value={supplyZ}
+                onChange={(value) => setSupplyZ(value)}
                 width="75px"
               />
             </LabeledControls.Item>
@@ -621,7 +642,9 @@ const SupplyDrop = (props) => {
               width="100%"
               icon="box"
               color="yellow"
-              onClick={() => act('dropsupply', { x: supplyX, y: supplyY })}
+              onClick={() =>
+                act('dropsupply', { x: supplyX, y: supplyY, z: supplyZ })
+              }
             >
               Launch
             </Button>
@@ -631,7 +654,7 @@ const SupplyDrop = (props) => {
               icon="save"
               color="yellow"
               onClick={() =>
-                act('save_coordinates', { x: supplyX, y: supplyY })
+                act('save_coordinates', { x: supplyX, y: supplyY, z: supplyZ })
               }
             >
               Save
@@ -643,6 +666,7 @@ const SupplyDrop = (props) => {
         </Stack.Item>
         <SavedCoordinates forSupply />
       </Stack>
+      <Divider horizontal />
     </Section>
   );
 };
@@ -652,6 +676,7 @@ const OrbitalBombardment = (props) => {
 
   const [OBX, setOBX] = useSharedState('obx', 0);
   const [OBY, setOBY] = useSharedState('oby', 0);
+  const [OBZ, setOBZ] = useSharedState('obz', 0);
 
   let ob_status = 'Ready';
   let ob_color = 'green';
@@ -664,12 +689,13 @@ const OrbitalBombardment = (props) => {
   }
 
   return (
-    <Section fontSize="14px" title="Orbital Bombardment">
+    <Section fill fontSize="14px" title="Orbital Bombardment">
       <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="14px">
           <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
+                step={1}
                 value={OBX}
                 onChange={(value) => setOBX(value)}
                 width="75px"
@@ -677,8 +703,17 @@ const OrbitalBombardment = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
+                step={1}
                 value={OBY}
                 onChange={(value) => setOBY(value)}
+                width="75px"
+              />
+            </LabeledControls.Item>
+            <LabeledControls.Item label="HEIGHT">
+              <NumberInput
+                step={1}
+                value={OBZ}
+                onChange={(value) => setOBZ(value)}
                 width="75px"
               />
             </LabeledControls.Item>
@@ -695,7 +730,7 @@ const OrbitalBombardment = (props) => {
               width="100%"
               icon="bomb"
               color="red"
-              onClick={() => act('dropbomb', { x: OBX, y: OBY })}
+              onClick={() => act('dropbomb', { x: OBX, y: OBY, z: OBZ })}
             >
               Fire
             </Button>
@@ -704,7 +739,9 @@ const OrbitalBombardment = (props) => {
               width="100%"
               icon="save"
               color="yellow"
-              onClick={() => act('save_coordinates', { x: OBX, y: OBY })}
+              onClick={() =>
+                act('save_coordinates', { x: OBX, y: OBY, z: OBZ })
+              }
             >
               Save
             </Button>
@@ -715,6 +752,7 @@ const OrbitalBombardment = (props) => {
         </Stack.Item>
         <SavedCoordinates forOB />
       </Stack>
+      <Divider horizontal />
     </Section>
   );
 };
@@ -724,18 +762,22 @@ const SavedCoordinates = (props) => {
 
   const [OBX, setOBX] = useSharedState('obx', 0);
   const [OBY, setOBY] = useSharedState('oby', 0);
+  const [OBZ, setOBZ] = useSharedState('obz', 0);
   const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
   const [supplyY, setSupplyY] = useSharedState('supply', 0);
+  const [supplyZ, setSupplyZ] = useSharedState('supplyz', 0);
 
   const { forOB, forSupply } = props;
 
-  let transferCoords = (x, y) => {
+  let transferCoords = (x, y, z) => {
     if (forSupply) {
       setSupplyX(x);
       setSupplyY(y);
+      setSupplyZ(z);
     } else if (forOB) {
       setOBX(x);
       setOBY(y);
+      setOBZ(z);
     }
   };
 
@@ -752,6 +794,9 @@ const SavedCoordinates = (props) => {
           <Table.Cell p="5px" collapsing>
             LAT.
           </Table.Cell>
+          <Table.Cell p="5px" collapsing>
+            HEIGHT
+          </Table.Cell>
           <Table.Cell p="5px">COMMENT</Table.Cell>
           <Table.Cell p="5px" collapsing />
         </Table.Row>
@@ -759,6 +804,7 @@ const SavedCoordinates = (props) => {
           <Table.Row key={index}>
             <Table.Cell p="6px">{coords.x}</Table.Cell>
             <Table.Cell p="5px">{coords.y}</Table.Cell>
+            <Table.Cell p="4px">{coords.z}</Table.Cell>
             <Table.Cell p="5px">
               <Input
                 width="100%"
@@ -775,7 +821,7 @@ const SavedCoordinates = (props) => {
               <Button
                 color="yellow"
                 icon="arrow-left"
-                onClick={() => transferCoords(coords.x, coords.y)}
+                onClick={() => transferCoords(coords.x, coords.y, coords.z)}
               />
             </Table.Cell>
           </Table.Row>

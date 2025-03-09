@@ -1,3 +1,6 @@
+GLOBAL_VAR_INIT(blooding_activated, FALSE)
+GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
+
 //Items specific to yautja. Other people can use em, they're not restricted or anything.
 //They can't, however, activate any of the special functions.
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
@@ -207,7 +210,7 @@
 	icon_state = "y-boots1_ebony"
 
 	unacidable = TRUE
-	permeability_coefficient = 0.01
+
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
@@ -306,7 +309,7 @@
 //======================================\\
 
 /*
-				   GEAR
+				GEAR
 */
 
 //======================================\\
@@ -318,6 +321,10 @@
 	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio."
 	icon_state = "communicator"
 	item_state = "headset"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	frequency = YAUT_FREQ
 	unacidable = TRUE
 	ignore_z = TRUE
@@ -393,6 +400,10 @@
 
 	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
+		return
+
+	if(H.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return
 
 	if(H.client && H.client.clan_info)
@@ -474,11 +485,249 @@
 		message_all_yautja("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]")
 		return TRUE
 
+
+///HUNTING GROUNDS STUFF!!!!///
+
+//Allow Yautja to generate a new hunting ground separate from the main ground Z level
+/obj/structure/machinery/hunting_ground_selection
+	name = "hunter flight console"
+	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "overwatch"
+	density = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	///List of where they can choose to go to
+	var/static/list/potential_hunting_grounds = list()
+	///If one has already been spawned, dont let more be spawned
+	var/static/hunting_ground_activated = FALSE
+
+/obj/structure/machinery/hunting_ground_selection/Initialize(mapload, ...)
+	. = ..()
+	if(!length(potential_hunting_grounds))
+		generate_hunting_grounds_list()
+
+/obj/structure/machinery/hunting_ground_selection/proc/generate_hunting_grounds_list()
+	for(var/datum/lazy_template/pred/hunting_ground as anything in subtypesof(/datum/lazy_template/pred))
+		if(!hunting_ground::hunting_ground_name) //if theres no name, assume its abstract
+			continue
+		potential_hunting_grounds[hunting_ground::hunting_ground_name] = hunting_ground
+
+/obj/structure/machinery/hunting_ground_selection/attack_hand(mob/living/user)
+	. = ..()
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(user.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(hunting_ground_activated)
+		to_chat(user, SPAN_WARNING("A hunting ground has already been chosen."))
+		return
+
+	if(!length(potential_hunting_grounds))
+		to_chat(user, SPAN_WARNING("There are no available hunting grounds to select."))
+		return
+
+	var/choice = tgui_input_list(user, "Which hunting grounds do you choose.", "[src]", potential_hunting_grounds)
+	if(!choice)
+		to_chat(user, SPAN_WARNING("You have not chosen any hunting grounds."))
+		return
+
+	if(hunting_ground_activated) //check again after the choice just in case
+		to_chat(user, SPAN_WARNING("A hunting ground has already been chosen."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You choose [choice] as the hunting ground."))
+	message_all_yautja("[user.real_name] has chosen [choice] as the new hunting ground.")
+	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) spawned [choice] (hunting grounds)"))
+	if(SSmapping.lazy_load_template(potential_hunting_grounds[choice]))
+		hunting_ground_activated = TRUE
+
+
+/obj/structure/machinery/hunt_ground_spawner
+	name = "huntsmasters console"
+	desc = "A console for creating hunts."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "overwatch"
+	density = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	///List of what ERTs can be called
+	var/static/list/potential_prey = list()
+	var/obj/structure/machinery/hunting_ground_selection/hunt
+
+/obj/structure/machinery/hunt_ground_spawner/Initialize(mapload, ...)
+	. = ..()
+	if(!length(potential_prey))
+		generate_hunt_list()
+
+/obj/structure/machinery/hunt_ground_spawner/proc/generate_hunt_list()
+	for(var/datum/emergency_call/pred/hunting_type as anything in subtypesof(/datum/emergency_call/pred))
+		if(!hunting_type::hunt_name)
+			continue
+		potential_prey[hunting_type::hunt_name] = hunting_type
+
+/obj/structure/machinery/hunt_ground_spawner/attack_hand(mob/living/user)
+	. = ..()
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(user.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(!COOLDOWN_FINISHED(GLOB, hunt_timer_yautja))
+		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
+		to_chat(user, SPAN_WARNING("You may begin another hunt in: [remaining_time]."))
+		return
+
+	if(!length(potential_prey))
+		to_chat(user, SPAN_WARNING("There are no available hunts to select."))
+		return
+
+	var/choice = tgui_input_list(user, "What will you hunt today?", "[src]", potential_prey)
+	if(!choice)
+		to_chat(user, SPAN_WARNING("You have not chosen any prey to hunt."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You choose [choice] as your prey."))
+	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
+	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
+	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
+	COOLDOWN_START(GLOB, hunt_timer_yautja, 20 MINUTES)
+
+
+/obj/structure/machinery/hunt_ground_escape
+	name = "preserve shutter console"
+	desc = "A console for opening a shutter to another part of the reserve."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "crew"
+	density = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	var/escaped = FALSE
+
+/obj/structure/machinery/hunt_ground_escape/attack_hand(mob/user)
+	. = ..()
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("The console blerts out two words you can understand: 'Scan' and 'Mask'."))
+		return
+
+	var/choice = tgui_alert(user, "Do you wish to close or open the shutter?", "[src]", list("Open", "Close"), 15 SECONDS)
+	if(!choice)
+		return
+
+	if(choice == "Open")
+		if(escaped)
+			to_chat(user, SPAN_WARNING("The shutter is already open."))
+			return
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_OPENED)
+		message_all_yautja("[user.real_name] has opened the preserve shutter.")
+		escaped = TRUE
+
+	if(choice == "Close")
+		if(!escaped)
+			to_chat(user, SPAN_WARNING("The shutter is already closed."))
+			return
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_CLOSED)
+		escaped = FALSE
+
+/obj/structure/machinery/hunt_ground_escape/attackby(obj/item/attacking_item, mob/user)
+	if(escaped)
+		to_chat(user, SPAN_NOTICE("The shutter is already open."))
+		return
+
+	if(attacking_item.loc != user)
+		to_chat(user, SPAN_WARNING("You cannot scan [attacking_item] without holding it."))
+		return
+
+	if(user.action_busy)
+		return
+
+	if(!istype(attacking_item, /obj/item/clothing/mask/gas/yautja/hunter))
+		to_chat(user, SPAN_DANGER("The console refuses [attacking_item]."))
+		return
+	to_chat(user, SPAN_DANGER("You hold [attacking_item] up to the console, and it begins to scan..."))
+	message_all_yautja("Prey is trying to escape the hunting grounds.")
+
+	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_DANGER("The strange console stops scanning abruptly."))
+		return
+
+	to_chat(user, SPAN_DANGER("The strange console's screen turns green and the shutter opens. Make your escape!"))
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_OPENED)
+	escaped = TRUE
+
+/obj/structure/machinery/blooding_spawner // for spawning an ert containing non-whitelisted youngbloods.
+	name = "blooding console"
+	desc = "A console used by Yautja to awaken Youngbloods awaiting their Blooding Ritual."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "cameras"
+	density = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	var/static/list/un_blooded = list()
+
+/obj/structure/machinery/blooding_spawner/Initialize(mapload, ...)
+	. = ..()
+	if(!length(un_blooded))
+		generate_blooding_type()
+
+/obj/structure/machinery/blooding_spawner/proc/generate_blooding_type()
+	for(var/datum/emergency_call/young_bloods/blooding_type as anything in subtypesof(/datum/emergency_call/young_bloods))
+		if(!blooding_type.blooding_name)
+			continue
+		un_blooded[blooding_type.blooding_name] = blooding_type
+
+/obj/structure/machinery/blooding_spawner/attack_hand(mob/living/user)
+	. = ..()
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(user.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(user, SPAN_WARNING("This is not for you."))
+		return
+
+	if(GLOB.blooding_activated) //only one per round unless admins spawn more or var edit the console.
+		to_chat(user, SPAN_WARNING("A blooding ritual has already taken place. Maybe ask the AI for another."))
+		return
+
+	if(!length(un_blooded))
+		to_chat(user, SPAN_WARNING("There are no youngbloods available."))
+		return
+
+	var/choice = tgui_input_list(user, "Available youngblood groups to awaken.", "[src]", un_blooded) // maybe we can add varients of the ert sometime.
+	if(!choice)
+		to_chat(user, SPAN_WARNING("You choose not to awaken any youngbloods."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You choose to awaken: [choice]."))
+	message_all_yautja("[user.real_name] has chosen to awaken: [choice].")
+	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) has called [choice] (Youngblood ERT)."))
+	SSticker.mode.get_specific_call(un_blooded[choice], TRUE, FALSE)
+	GLOB.blooding_activated = TRUE
+
+//=================//\\=================\\
+//======================================\\
+
 //=================//\\=================\\
 //======================================\\
 
 /*
-			   OTHER THINGS
+			OTHER THINGS
 */
 
 //======================================\\
@@ -646,14 +895,17 @@
 	icon_state = initial(icon_state) + "_active"
 	active = 1
 	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime), user), det_time)
 
-/obj/item/explosive/grenade/spawnergrenade/hellhound/prime()
+/obj/item/explosive/grenade/spawnergrenade/hellhound/prime(mob/user)
 	if(spawner_type && deliveryamt)
 		// Make a quick flash
-		var/turf/T = get_turf(src)
+		var/turf/spawn_turf = get_turf(src)
 		if(ispath(spawner_type))
-			new spawner_type(T)
+			var/mob/living/carbon/xenomorph/hellhound/hound = new spawner_type(spawn_turf)
+			var/datum/behavior_delegate/hellhound_base/hound_owner = hound.behavior_delegate
+			hound_owner.pred_owner = user
+			notify_ghosts(header = "Hellhound", message = "A hellhound has been called in [get_area(user)] by [user.real_name] click play as hellhound to play as one.", extra_large = TRUE)
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)
@@ -961,6 +1213,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "polishing_rag"
 	reagent_desc_override = TRUE //Hide the fact its actually a reagent container
+	has_lid = FALSE
 
 /obj/item/reagent_container/glass/rag/polishing_rag/get_examine_text(mob/user)
 	. = ..()
@@ -971,6 +1224,9 @@
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		return ..()
+
+	if(user.action_busy)
+		return
 
 	if(!istype(potential_limb, /obj/item/clothing/accessory/limb/skeleton))
 		return ..()
@@ -992,13 +1248,15 @@
 //Only an onmob for the skull
 /obj/item/clothing/accessory/limb/skeleton
 	name = "How did you get this?"
-	desc = "A bone from a human."
+	desc = "A bone that appears to be of human origin."
 	icon = 'icons/obj/items/skeleton.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/yautja.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = null
 	slot = ACCESSORY_SLOT_TROPHY
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
+	var/loosejaw = FALSE
 
 /obj/item/clothing/accessory/limb/skeleton/l_arm
 	name = "arm bone"
@@ -1034,7 +1292,7 @@
 
 /obj/item/clothing/accessory/limb/skeleton/head
 	name = "skull"
-	icon_state = "skull"
+	icon_state = "skull2"
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/limb/skeleton/head/spine
@@ -1057,3 +1315,132 @@
 		to_chat(user, SPAN_NOTICE("Why would you try attaching this to your clothing?"))
 		return
 	. = ..()
+
+/// SKULLS
+/obj/item/skull
+	name = "skull"
+	icon = 'icons/obj/items/hunter/prey_skulls.dmi'
+	unacidable = TRUE
+
+/obj/item/skull/queen
+	name = "Queen skull"
+	desc = "Skull of a prime hive ruler, mother to many."
+	icon_state = "queen_skull"
+
+/obj/item/skull/king
+	name = "King skull"
+	desc = "Skull of a militant hive ruler, lord of destruction."
+	icon_state = "king_skull"
+
+/obj/item/skull/lurker
+	name = "Lurker skull"
+	desc = "Skull of a stealthy xenomorph, a nocturnal entity."
+	icon_state = "lurker_skull"
+
+/obj/item/skull/hunter
+	name = "Hunter skull"
+	desc = "Skull of a stealthy xenomorph, an ambushing predator."
+	icon_state = "hunter_skull"
+
+/obj/item/skull/deacon
+	name = "Deacon skull"
+	desc = "Skull of an unusual xenomorph, a mysterious specimen."
+	icon_state = "deacon_skull"
+
+/obj/item/skull/corroder
+	name = "Corroder skull"
+	desc = "Skull of an acidic xenomorph, a boiling menace."
+	icon_state = "spitter_skull"
+
+/obj/item/skull/warrior
+	name = "Warrior skull"
+	desc = "Skull of a strong xenomorph, a swift fighter."
+	icon_state = "warrior_skull"
+
+/// TOOLS
+
+/obj/item/tool/crowbar/yautja
+	name = "\improper yautja crowbar"
+	desc = "Used to remove floors and to pry open doors, made of an unusual alloy."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "bar"
+	item_state = "bar"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/wrench/yautja
+	name = "\improper alien wrench"
+	desc = "A wrench with many common uses. Made of some bizarre alien bones."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "wrench"
+	item_state = "wrench"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/wirecutters/yautja
+	name = "\improper alien wirecutters"
+	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "wirescutter"
+	item_state = "wirescutter"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/screwdriver/yautja
+	name = "\improper alien screwdriver"
+	desc = "Some hightech screwing abilities."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "screwdriver"
+	item_state = "screwdriver"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+	force = 7
+	random_color = FALSE
+
+/obj/item/device/multitool/yautja
+	name = "\improper alien multitool"
+	desc = "Top notch alien tech for B&E through hacking."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "multitool"
+	item_state = "multitool"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/weldingtool/yautja
+	name = "\improper alien chem welding tool"
+	desc = "A complex chemical welding device, keep away from youngblood."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "welder"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+	force = 10
+	throwforce = 15
+	max_fuel = 150	//The max amount of fuel the welder can hold
+
+/obj/item/storage/belt/utility/pred
+	name = "\improper alien toolbelt"
+	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "utilitybelt_pred"
+	item_state = "utility"
+
+/obj/item/storage/belt/utility/pred/full/fill_preset_inventory()
+	new /obj/item/tool/screwdriver/yautja(src)
+	new /obj/item/tool/wrench/yautja(src)
+	new /obj/item/tool/weldingtool/yautja(src)
+	new /obj/item/tool/crowbar/yautja(src)
+	new /obj/item/tool/wirecutters/yautja(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/device/multitool/yautja(src)

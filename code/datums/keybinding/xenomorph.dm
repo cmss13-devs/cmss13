@@ -221,3 +221,18 @@
 
 	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
 	current_xeno.purchase_strain()
+
+/datum/keybinding/xenomorph/reset_strain
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "reset_strain"
+	full_name = "Reset Strain"
+	keybind_signal = COMSIG_KB_XENO_RESET_STRAIN
+
+/datum/keybinding/xenomorph/reset_strain/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
+	current_xeno.reset_strain()

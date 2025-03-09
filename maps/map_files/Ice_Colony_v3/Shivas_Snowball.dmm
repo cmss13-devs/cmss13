@@ -17,6 +17,10 @@
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
+"aaf" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/telecomm/lz1_biceps)
 "aag" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -51,6 +55,16 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
+"aam" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E-corner"
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
 "aan" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 8
@@ -72,10 +86,20 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
+"aap" = (
+/obj/item/lightstick/red/planted,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/interior/valley_huts)
+"aaq" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/interior/valley_huts)
 "aar" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
+"aas" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/interior/valley_huts/no2)
 "aat" = (
 /obj/item/tool/shovel/snow{
 	pixel_y = 8
@@ -91,6 +115,13 @@
 "aav" = (
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/telecomm/lz1_north)
+"aaw" = (
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/valley_huts/no2)
+"aax" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva/wredfull,
+/area/shiva/interior/colony/medseceng)
 "aay" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/ice/layer0,
@@ -112,16 +143,20 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "aaC" = (
-/obj/effect/spider/stickyweb,
-/obj/structure/machinery/space_heater,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/right_spiders)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaD" = (
 /obj/effect/spider/cocoon{
 	icon_state = "cocoon_large1"
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
+"aaE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/warehouse)
 "aaG" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 8
@@ -474,7 +509,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/xenos/queen.dmi';
+	icon = 'icons/mob/xenos/castes/tier_4/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -3785,7 +3820,7 @@
 	specialfunctions = 4
 	},
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/valley)
+/area/shiva/interior/valley_huts/no2)
 "aDI" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/snow/layer1,
@@ -3857,7 +3892,7 @@
 	specialfunctions = 4
 	},
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/valley)
+/area/shiva/interior/valley_huts)
 "aEH" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 9
@@ -4780,7 +4815,7 @@
 /obj/structure/prop/invuln{
 	desc = "Let's take the caveman back to the malt shop.";
 	dir = 4;
-	icon = 'icons/mob/humans/onmob/head_0.dmi';
+	icon = 'icons/mob/humans/onmob/clothing/head/hats.dmi';
 	icon_state = "hopcap";
 	layer = 2.5;
 	name = "frozen hat";
@@ -4807,7 +4842,7 @@
 	name = "\improper Anti-Freeze Lounge"
 	},
 /turf/open/floor/plating,
-/area/shiva/exterior/cp_s_research)
+/area/shiva/interior/bar)
 "aSX" = (
 /obj/structure/largecrate/random/mini/ammo,
 /turf/open/floor/plating,
@@ -5040,7 +5075,7 @@
 "aVB" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -5477,6 +5512,8 @@
 /obj/item/clothing/glasses/sunglasses{
 	desc = "Polarized bioneural eyewear, designed to augment your vision.";
 	icon_state = "jensenshades";
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi';
+	icon_override = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi';
 	name = "augmented shades"
 	},
 /obj/effect/landmark/objective_landmark/medium,
@@ -6258,7 +6295,7 @@
 "bYO" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -6289,7 +6326,7 @@
 "cbk" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -6678,7 +6715,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "cBL" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
 "cCI" = (
@@ -7059,6 +7096,7 @@
 "cYC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/multitool,
+/obj/structure/machinery/cell_charger,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "cYR" = (
@@ -7238,7 +7276,7 @@
 	pixel_x = 7;
 	pixel_y = 5
 	},
-/obj/item/clothing/head/fedora{
+/obj/item/clothing/head/fedora/grey{
 	pixel_x = -6;
 	pixel_y = 12
 	},
@@ -8657,7 +8695,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_s_research)
 "fkF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "fkP" = (
@@ -8710,7 +8748,7 @@
 "fof" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -8864,10 +8902,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/greenfull,
 /area/shiva/interior/colony/n_admin)
-"fBA" = (
-/obj/structure/machinery/space_heater,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/exterior/cp_s_research)
 "fBJ" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
@@ -9207,7 +9241,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "fWb" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "fWq" = (
@@ -9225,7 +9259,7 @@
 "fXp" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -9926,7 +9960,7 @@
 /area/shiva/interior/aerodrome)
 "gQL" = (
 /obj/structure/closet/cabinet,
-/obj/item/clothing/under/darkred,
+/obj/item/clothing/under/color/darkred,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "gQR" = (
@@ -10739,7 +10773,7 @@
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "hMY" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "hPe" = (
@@ -12871,7 +12905,7 @@
 "krU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/asphalt/cement,
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/warehouse)
 "krZ" = (
 /obj/structure/flora/tree/dead/tree_5,
@@ -13018,7 +13052,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/green,
-/turf/open/asphalt/cement,
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/warehouse)
 "kyt" = (
 /obj/item/tool/shovel/snow,
@@ -13898,10 +13932,6 @@
 /obj/item/storage/belt/utility/full,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
-"luD" = (
-/obj/structure/machinery/space_heater,
-/turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/junkyard/fortbiceps)
 "luR" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4
@@ -14654,7 +14684,7 @@
 "mpt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement,
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/warehouse)
 "mpE" = (
 /obj/structure/bed/chair/comfy/black{
@@ -14727,7 +14757,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "mtA" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "mtM" = (
@@ -15023,7 +15053,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
 "mKk" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "mKr" = (
@@ -15048,7 +15078,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "mKD" = (
-/obj/structure/machinery/cell_charger,
+/obj/item/circuitboard,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
 "mKF" = (
@@ -16031,7 +16061,7 @@
 /turf/open/floor/shiva/wred,
 /area/shiva/interior/colony/medseceng)
 "oaH" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "oaI" = (
@@ -16645,9 +16675,6 @@
 "oQl" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/exterior/valley)
-"oQo" = (
-/turf/closed/wall/shiva/prefabricated,
-/area/shiva/exterior/cp_s_research)
 "oRc" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/snow/layer0,
@@ -16971,7 +16998,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/caves/cp_camp)
 "ppI" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "ppS" = (
@@ -19046,9 +19073,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
-"rRZ" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
-/area/shiva/exterior/cp_s_research)
 "rSr" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/shiva/multi_tiles/southeast,
@@ -21172,7 +21196,7 @@
 /turf/open/floor/shiva/red/west,
 /area/shiva/interior/colony/medseceng)
 "ujJ" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "ujV" = (
@@ -22128,7 +22152,7 @@
 /area/shiva/interior/caves/cp_camp)
 "vsi" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "vtf" = (
@@ -22563,7 +22587,7 @@
 /turf/open/floor/shiva/purple/west,
 /area/shiva/interior/lz2_habs)
 "vZj" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "vZs" = (
@@ -22675,7 +22699,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/lz1_valley)
 "wgW" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "wgX" = (
@@ -23564,7 +23588,7 @@
 "xyY" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -30386,7 +30410,7 @@ uji
 uji
 uji
 uji
-qhm
+aam
 qhm
 kXs
 mcH
@@ -31212,7 +31236,7 @@ hbY
 hbY
 hbY
 huz
-axJ
+cio
 axJ
 rBC
 rdS
@@ -32022,7 +32046,7 @@ hbY
 hbY
 hbY
 huz
-aut
+aaC
 rdS
 aCy
 tdc
@@ -32184,7 +32208,7 @@ hbY
 gdI
 aJt
 huz
-rdS
+aaE
 axJ
 amH
 tbR
@@ -44180,7 +44204,7 @@ sod
 rKk
 uYC
 pOM
-blI
+aaf
 blI
 jLn
 hcJ
@@ -45955,7 +45979,7 @@ fnG
 rEV
 jrg
 jrg
-luD
+sod
 jrg
 jrg
 sod
@@ -46407,11 +46431,11 @@ iXm
 daD
 dKL
 aPk
-rRZ
-oQo
+hcH
+tnu
 aSQ
-oQo
-rRZ
+tnu
+hcH
 rWW
 kVd
 uzu
@@ -50162,7 +50186,7 @@ rAH
 xgc
 boW
 vkr
-nij
+kVd
 ukp
 jrg
 jrg
@@ -51946,7 +51970,7 @@ asz
 pLf
 ukp
 uzu
-fBA
+ukp
 xgc
 ukp
 ukp
@@ -52433,7 +52457,7 @@ fXX
 bJj
 bJj
 bJj
-bJj
+xuz
 bJj
 bJj
 bJj
@@ -52836,7 +52860,7 @@ ecj
 ecj
 ecj
 ecj
-aaC
+imk
 imk
 gkv
 kng
@@ -54487,8 +54511,8 @@ iMb
 iMb
 iMb
 aDH
-pqj
-iMb
+aaw
+aas
 iMb
 iMb
 fQX
@@ -55139,7 +55163,7 @@ pqj
 iMb
 iMb
 iMb
-kri
+aap
 pQE
 eiT
 qVq
@@ -55301,7 +55325,7 @@ iMb
 iMb
 iMb
 iMb
-iMb
+aaq
 aEW
 qVq
 qVq
@@ -57362,7 +57386,7 @@ akt
 akI
 alx
 amP
-amP
+aax
 acT
 jLT
 kqO

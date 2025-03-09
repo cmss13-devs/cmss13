@@ -54,22 +54,6 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		alert.delink()
 	..()
 
-/datum/ares_link/proc/get_ares_vents()
-	var/list/security_vents = list()
-	var/datum/ares_link/link = GLOB.ares_link
-	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
-		if(!vent.vent_tag)
-			vent.vent_tag = "Security Vent #[link.tag_num]"
-			link.tag_num++
-
-		var/list/current_vent = list()
-		var/is_available = COOLDOWN_FINISHED(vent, vent_trigger_cooldown)
-		current_vent["vent_tag"] = vent.vent_tag
-		current_vent["ref"] = "\ref[vent]"
-		current_vent["available"] = is_available
-		security_vents += list(current_vent)
-	return security_vents
-
 
 /* BELOW ARE IN AdminAres.dm
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)

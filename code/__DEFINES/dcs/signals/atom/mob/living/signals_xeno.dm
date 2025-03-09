@@ -85,3 +85,13 @@
 
 /// used in /datum/component/status_effect/cleanse()
 #define COMSIG_XENO_DEBUFF_CLEANSE "xeno_debuff_cleanse"
+
+/// From /mob/living/carbon/xenomorph/verb/Deevolve()
+#define COMSIG_XENO_DEEVOLVE "xeno_deevolve"
+
+/// From /mob/living/carbon/xenomorph/proc/do_evolve(): (castepick)
+#define COMSIG_XENO_TRY_EVOLVE "xeno_try_evolve"
+	#define COMPONENT_OVERRIDE_EVOLVE (1<<0)
+
+/// From /mob/living/carbon/xenomorph/proc/do_evolve()
+#define COMSIG_XENO_EVOLVE_TO_NEW_CASTE "xeno_evolve_to_new_caste"

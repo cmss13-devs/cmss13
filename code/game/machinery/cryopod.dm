@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 GLOBAL_LIST_EMPTY(frozen_crew)
-GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list(), "Responders" = list()))
 
 //Main cryopod console.
 
@@ -48,7 +48,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 /obj/structure/machinery/computer/cryopod/yautja
 	cryotype = "Yautja"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "terminal"
 	z_restricted = FALSE
+
+/obj/structure/machinery/computer/cryopod/upp
+	cryotype = FACTION_UPP
 
 /obj/structure/machinery/computer/cryopod/attack_remote()
 	src.attack_hand()
@@ -67,10 +72,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/dat
 
 	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
-	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
-	dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
-	dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>"
-	dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];log=1'>View storage log</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];view=1'>View objects</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];item=1'>Recover object</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
 
 	show_browser(user, dat, "Cryogenic Oversight Control for [cryotype]", "cryopod_console")
 
@@ -229,18 +234,23 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	var/list/dept_console = GLOB.frozen_items["REQ"]
 	if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
-		switch(H.job)
+		var/mob/living/carbon/human/cryo_human = occupant
+		switch(cryo_human.job)
 			if(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 				dept_console = GLOB.frozen_items["MP"]
-			if(JOB_NURSE, JOB_DOCTOR, JOB_RESEARCHER, JOB_CMO)
+			if(JOB_NURSE, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_RESEARCHER, JOB_CMO)
 				dept_console = GLOB.frozen_items["Med"]
 			if(JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 				dept_console = GLOB.frozen_items["Eng"]
-			if(JOB_PREDATOR)
-				dept_console = GLOB.frozen_items["Yautja"]
 
-		H.species.handle_cryo(H)
+
+		if(cryo_human.faction != FACTION_MARINE)
+			dept_console = GLOB.frozen_items[cryo_human.faction]
+
+		if(cryo_human.job in FAX_RESPONDER_JOB_LIST)
+			cryo_human.despawn_fax_responder()
+
+		cryo_human.species.handle_cryo(cryo_human)
 
 	var/list/deleteempty = list(/obj/item/storage/backpack/marine/satchel)
 
@@ -415,8 +425,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
 			SPAN_NOTICE("You start putting [M] into [src]."))
 
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
-			if(!M || !G || !G.grabbed_thing) return
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+			if(!M || !G || !G.grabbed_thing)
+				return
 			if(occupant)
 				to_chat(user, SPAN_WARNING("[src] is occupied."))
 				return FALSE
@@ -461,8 +473,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		message_admins("[key_name_admin(M)], [M.job], has left [src] at [location].")
 
 	var/list/items = src.contents //-Removes items from the chamber
-	if(occupant) items -= occupant
-	if(announce) items -= announce
+	if(occupant)
+		items -= occupant
+	if(announce)
+		items -= announce
 
 	for(var/obj/item/W in items)
 		W.forceMove(get_turf(src))
@@ -554,6 +568,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(isyautja(occupant))
 		return TRUE
 	if(no_store_pod)
+		return TRUE
+	if(occupant.faction != FACTION_MARINE)
 		return TRUE
 	return FALSE
 

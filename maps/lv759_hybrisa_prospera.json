@@ -1,0 +1,69 @@
+{
+    "map_name": "LV-759 Hybrisa Prospera",
+    "short_name": "Hybrisa",
+    "map_path": "map_files/LV759_Hybrisa_Prospera",
+    "map_file": "LV759_Hybrisa_Prospera.dmm",
+    "webmap_url": "LV759",
+
+    "weather_holder": "/datum/weather_ss_map_holder/lv759_hybrisa_prospera",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/hybrisa/civilian",
+        "/datum/equipment_preset/survivor/hybrisa/civilian_office",
+        "/datum/equipment_preset/survivor/hybrisa/weymart",
+        "/datum/equipment_preset/survivor/hybrisa/sanitation",
+        "/datum/equipment_preset/survivor/hybrisa/pizza_galaxy",
+        "/datum/equipment_preset/survivor/hybrisa/fire_fighter",
+        "/datum/equipment_preset/survivor/hybrisa/cuppa_joes",
+        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
+        "/datum/equipment_preset/survivor/hybrisa/doctor",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
+        "/datum/equipment_preset/survivor/hybrisa/scientist_xenobiologist",
+        "/datum/equipment_preset/survivor/hybrisa/scientist_xenoarchaeologist",
+        "/datum/equipment_preset/survivor/hybrisa/nspa_constable",
+        "/datum/equipment_preset/survivor/hybrisa/electrical_engineer",
+        "/datum/equipment_preset/survivor/hybrisa/construction_worker",
+        "/datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator",
+        "/datum/equipment_preset/survivor/corporate/hybrisa",
+        "/datum/equipment_preset/survivor/hybrisa/wey_po",
+        "/datum/equipment_preset/survivor/hybrisa/corporate_goon",
+        "/datum/equipment_preset/survivor/clf"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/hybrisa/engineer_survivor",
+        "/datum/equipment_preset/synth/survivor/hybrisa/detective",
+        "/datum/equipment_preset/synth/survivor/hybrisa/xenoarchaeologist",
+        "/datum/equipment_preset/synth/survivor/hybrisa/civilian",
+        "/datum/equipment_preset/synth/survivor/hybrisa/paramedic",
+        "/datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard"
+    ],
+    "defcon_triggers": [
+        3750,
+        2600,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "As the city burns, you find yourself among the dwindling few who survived the initial onslaught, The catastrophic breach shattered the once-prosperous world of LV-759, home to the large commercial & industrial Weyland-Yutani colony known as Hybrisa Prospera. Through sheer will or cunning, you've evaded the relentless alien onslaught so far... but the nightmare persists.",
+    "announce_text": "An automated distress signal has been received from the Weyland-Yutani colony, Hybrisa Prospera — a vast, city-like settlement renowned for its immense wealth, extensive mining operations, and thriving commerce. Recently fully acquired from the TWE, this former colony is now a key asset for Weyland-Yutani, with a sprawling urban center housing thousands of residents and numerous smaller outer colonies under its control. The ###SHIPNAME### has been dispatched to investigate the situation.",
+    "map_item_type": "/obj/item/map/lv759_map",
+	"monkey_types": [
+        "monkey"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [{ "Ground": true }],
+    "nightmare_path": "maps/Nightmare/maps/LV759_Hybrisa_Prospera/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    },
+    "camouflage": "urban",
+	"gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

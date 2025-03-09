@@ -73,12 +73,7 @@ IN_USE used for vending/denying
 	. = ..()
 	cm_build_inventory(get_listed_products(), 1, 3)
 
-/obj/structure/machinery/power_change(area/master_area = null)
-	..()
-	update_icon()
-
 /obj/structure/machinery/cm_vending/update_icon()
-
 	//restoring sprite to initial
 	overlays.Cut()
 	//icon_state = initial(icon_state) //shouldn't be needed but just in case
@@ -387,12 +382,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 		user.animation_attack_on(src)
 		if(prob(user.melee_damage_lower))
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-			user.visible_message(SPAN_DANGER("[user] smashes [src] beyond recognition!"), \
+			user.visible_message(SPAN_DANGER("[user] smashes [src] beyond recognition!"),
 			SPAN_DANGER("You enter a frenzy and smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			malfunction()
 			tip_over()
 		else
-			user.visible_message(SPAN_DANGER("[user] slashes [src]!"), \
+			user.visible_message(SPAN_DANGER("[user] slashes [src]!"),
 			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 		return XENO_ATTACK_ACTION
@@ -408,7 +403,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			spark_system.set_up(5, 5, get_turf(src))
 			hacked = TRUE
 		return XENO_ATTACK_ACTION
-	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
+	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."),
 	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 80
 	if(user.mob_size >= MOB_SIZE_BIG)
@@ -420,7 +415,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	if(do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		user.animation_attack_on(src)
-		user.visible_message(SPAN_DANGER("[user] knocks [src] down!"), \
+		user.visible_message(SPAN_DANGER("[user] knocks [src] down!"),
 		SPAN_DANGER("You knock [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		tip_over()
 	return XENO_NO_DELAY_ACTION
@@ -772,7 +767,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		. = redeem_token(W, user)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products
@@ -999,12 +994,19 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["displayed_categories"] = vendor_user_inventory_list(user, null, 4)
 
 /obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/A, mob/user)
+
 	if(inoperable())
 		return
+
+	if(!isturf(A.loc) && !ishuman(A.loc))
+		return
+
 	if(user.stat || user.is_mob_restrained())
 		return
+
 	if(get_dist(user, src) > 1 || get_dist(src, A) > 1)
 		return
+
 	if(!ishuman(user))
 		return
 
@@ -1017,25 +1019,25 @@ GLOBAL_LIST_EMPTY(vending_products)
 			to_chat(user, SPAN_WARNING("[src] is already being restocked, you will get in the way!"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into [src]."),
 		SPAN_NOTICE("You start stocking a bunch of supplies into [src]."))
 		being_restocked = TRUE
 
 		for(var/obj/item/item in container.contents)
 			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
 				being_restocked = FALSE
-				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."),
 				SPAN_NOTICE("You stop stocking [src] with supplies."))
 				return
 			if(QDELETED(item) || item.loc != container)
 				being_restocked = FALSE
-				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."),
 				SPAN_NOTICE("You stop stocking [src] with supplies."))
 				return
 			stock(item, user)
 
 		being_restocked = FALSE
-		user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with supplies."), \
+		user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with supplies."),
 		SPAN_NOTICE("You finish stocking [src] with supplies."))
 		return
 
@@ -1084,7 +1086,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				container.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [vendspec[1]]."), \
+			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [vendspec[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [vendspec[1]]."))
 			if(partial_stacks)
 				var/obj/item/stack/item_stack = item_to_stock
@@ -1472,7 +1474,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				spawned += new itemspec_item(loc)
 		if(throw_objects)
 			for(var/atom/movable/spawned_atom in spawned)
-				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(orange(src, 4)), 4, SPEED_FAST)
+				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(ORANGE_TURFS(4, src)), 4, SPEED_FAST)
 	stat &= ~IN_USE
 	if(destroy)
 		qdel(src)

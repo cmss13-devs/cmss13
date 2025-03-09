@@ -25,7 +25,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "hc" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "jd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -111,7 +111,7 @@
 /turf/open/gm/dirt/desert2,
 /area/lv624/ground/river/east_river)
 "zT" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Cf" = (
@@ -174,7 +174,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/east_jungle)
 "Ov" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Pb" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -190,7 +190,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "PE" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "PV" = (
 /turf/open/gm/dirt,

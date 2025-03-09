@@ -16,11 +16,11 @@ const PAGES = {
 };
 export const WorkingJoe = (props) => {
   const { data } = useBackend();
-  const { current_menu } = data;
-  const PageComponent = PAGES[current_menu]();
+  const { local_current_menu } = data;
+  const PageComponent = PAGES[local_current_menu]();
 
   let themecolor = 'crtblue';
-  if (current_menu === 'core_security_gas') {
+  if (local_current_menu === 'core_security_gas') {
     themecolor = 'crtred';
   }
 
@@ -72,19 +72,19 @@ const Login = (props) => {
 const MainMenu = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    access_level,
-    notify_sounds,
+    local_logged_in,
+    local_access_text,
+    local_last_page,
+    local_current_menu,
+    local_access_level,
+    local_notify_sounds,
   } = data;
   let can_request_access = 'Yes';
-  if (access_level > 2) {
+  if (local_access_level > 2) {
     can_request_access = 'No';
   }
   let soundicon = 'volume-high';
-  if (!notify_sounds) {
+  if (!local_notify_sounds) {
     soundicon = 'volume-xmark';
   }
 
@@ -99,14 +99,14 @@ const MainMenu = (props) => {
               textAlign="center"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
               ml="auto"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
-              disabled={current_menu === 'main'}
+              disabled={local_current_menu === 'main'}
             />
             <Button
               icon={soundicon}
@@ -118,7 +118,7 @@ const MainMenu = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {local_logged_in}, {local_access_text}
           </h3>
 
           <Button.Confirm
@@ -154,7 +154,7 @@ const MainMenu = (props) => {
               </Button>
             </Stack.Item>
           )}
-          {access_level === 3 && (
+          {local_access_level === 3 && (
             <Stack.Item>
               <Button.Confirm
                 tooltip="Return your temporary access."
@@ -184,7 +184,7 @@ const MainMenu = (props) => {
           </Stack.Item>
         </Stack>
 
-        {access_level >= 4 && (
+        {local_access_level >= 4 && (
           <Stack>
             <Stack.Item grow>
               <h3>Certified Personnel</h3>
@@ -217,7 +217,7 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 5 && (
+        {local_access_level >= 5 && (
           <Stack>
             <Stack.Item grow>
               <h3>Task Management</h3>
@@ -251,7 +251,7 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
-      {access_level >= 4 && (
+      {local_access_level >= 5 && (
         <Section>
           <h1 align="center">Core Security Protocols</h1>
           <Stack>
@@ -294,7 +294,13 @@ const MainMenu = (props) => {
 
 const ApolloLog = (props) => {
   const { data, act } = useBackend();
-  const { logged_in, access_text, last_page, current_menu, apollo_log } = data;
+  const {
+    local_logged_in,
+    local_access_text,
+    local_last_page,
+    local_current_menu,
+    apollo_log,
+  } = data;
 
   return (
     <>
@@ -307,7 +313,7 @@ const ApolloLog = (props) => {
               textAlign="center"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -319,7 +325,7 @@ const ApolloLog = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {local_logged_in}, {local_access_text}
           </h3>
 
           <Button.Confirm
@@ -351,7 +357,13 @@ const ApolloLog = (props) => {
 
 const LoginRecords = (props) => {
   const { data, act } = useBackend();
-  const { logged_in, access_text, last_page, current_menu, access_log } = data;
+  const {
+    local_logged_in,
+    local_access_text,
+    local_last_page,
+    local_current_menu,
+    apollo_access_log,
+  } = data;
 
   return (
     <>
@@ -364,7 +376,7 @@ const LoginRecords = (props) => {
               textAlign="center"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -376,7 +388,7 @@ const LoginRecords = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {local_logged_in}, {local_access_text}
           </h3>
 
           <Button.Confirm
@@ -394,7 +406,7 @@ const LoginRecords = (props) => {
       <Section>
         <h1 align="center">Login Records</h1>
 
-        {access_log.map((login, i) => {
+        {apollo_access_log.map((login, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold>{login}</Flex.Item>
@@ -409,10 +421,10 @@ const LoginRecords = (props) => {
 const MaintReports = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    local_logged_in,
+    local_access_text,
+    local_last_page,
+    local_current_menu,
     maintenance_tickets,
   } = data;
   return (
@@ -426,7 +438,7 @@ const MaintReports = (props) => {
               textAlign="center"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -438,7 +450,7 @@ const MaintReports = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {local_logged_in}, {local_access_text}
           </h3>
 
           <Button.Confirm
@@ -516,7 +528,7 @@ const MaintReports = (props) => {
             view_icon = 'circle-check';
           }
           let can_cancel = 'Yes';
-          if (ticket.submitter !== logged_in) {
+          if (ticket.submitter !== local_logged_in) {
             can_cancel = 'No';
           } else if (ticket.lock_status === 'CLOSED') {
             can_cancel = 'No';
@@ -562,10 +574,10 @@ const MaintReports = (props) => {
 const MaintManagement = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    local_logged_in,
+    local_access_text,
+    local_last_page,
+    local_current_menu,
     maintenance_tickets,
   } = data;
 
@@ -580,7 +592,7 @@ const MaintManagement = (props) => {
               textAlign="center"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -592,7 +604,7 @@ const MaintManagement = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {local_logged_in}, {local_access_text}
           </h3>
 
           <Button.Confirm
@@ -659,7 +671,7 @@ const MaintManagement = (props) => {
             can_claim = 'No';
           }
           let can_mark = 'Yes';
-          if (ticket.assignee !== logged_in && ticket.assignee !== null) {
+          if (ticket.assignee !== local_logged_in && ticket.assignee !== null) {
             can_mark = 'No';
           } else if (ticket.lock_status === 'CLOSED') {
             can_mark = 'No';
@@ -715,11 +727,11 @@ const MaintManagement = (props) => {
 const AccessRequests = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    access_level,
-    last_page,
-    current_menu,
+    local_logged_in,
+    local_access_text,
+    local_access_level,
+    local_last_page,
+    local_current_menu,
     access_tickets,
   } = data;
 
@@ -734,7 +746,7 @@ const AccessRequests = (props) => {
               textAlign="center"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -746,7 +758,7 @@ const AccessRequests = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {local_logged_in}, {local_access_text}
           </h3>
 
           <Button.Confirm
@@ -780,7 +792,7 @@ const AccessRequests = (props) => {
             fontSize="1.5rem"
             mt="5rem"
             onClick={() => act('new_access')}
-            disabled={access_level > 2}
+            disabled={local_access_level > 2}
           >
             Create Ticket
           </Button>
@@ -831,7 +843,7 @@ const AccessRequests = (props) => {
             view_icon = 'circle-minus';
           }
           let can_cancel = 'Yes';
-          if (ticket.submitter !== logged_in) {
+          if (ticket.submitter !== local_logged_in) {
             can_cancel = 'No';
           } else if (ticket.lock_status === 'CLOSED') {
             can_cancel = 'No';
@@ -877,8 +889,13 @@ const AccessRequests = (props) => {
 
 const AccessTickets = (props) => {
   const { data, act } = useBackend();
-  const { logged_in, access_text, last_page, current_menu, access_tickets } =
-    data;
+  const {
+    local_logged_in,
+    local_access_text,
+    local_last_page,
+    local_current_menu,
+    access_tickets,
+  } = data;
 
   return (
     <>
@@ -891,7 +908,7 @@ const AccessTickets = (props) => {
               textAlign="center"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -903,7 +920,7 @@ const AccessTickets = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {local_logged_in}, {local_access_text}
           </h3>
 
           <Button.Confirm
@@ -947,7 +964,7 @@ const AccessTickets = (props) => {
         )}
         {access_tickets.map((ticket, i) => {
           let can_claim = 'Yes';
-          if (ticket.assignee === logged_in) {
+          if (ticket.assignee === local_logged_in) {
             can_claim = 'No';
           } else if (ticket.lock_status === 'CLOSED') {
             can_claim = 'No';
@@ -1034,11 +1051,11 @@ const AccessTickets = (props) => {
 const CoreSecGas = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    access_level,
-    last_page,
-    current_menu,
+    local_logged_in,
+    local_access_text,
+    local_access_level,
+    local_last_page,
+    local_current_menu,
     security_vents,
   } = data;
 
@@ -1053,7 +1070,7 @@ const CoreSecGas = (props) => {
               textAlign="center"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1065,7 +1082,7 @@ const CoreSecGas = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {local_logged_in}, {local_access_text}
           </h3>
 
           <Button.Confirm
@@ -1090,7 +1107,7 @@ const CoreSecGas = (props) => {
               icon="wind"
               tooltip="Release Gas"
               width="100%"
-              disabled={access_level < 5 || !vent.available}
+              disabled={local_access_level < 5 || !vent.available}
               onClick={() => act('trigger_vent', { vent: vent.ref })}
             >
               {vent.vent_tag}

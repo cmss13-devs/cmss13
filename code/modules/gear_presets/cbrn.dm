@@ -22,7 +22,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/cbrn(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/cbrn(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/cbrn(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm/cbrn/standard
 	name = "CBRN Rifleman"
@@ -85,7 +85,7 @@
 	if(new_human.disabilities & NEARSIGHTED)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior/prescription(new_human), WEAR_EYES)
 	else
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior/alt(new_human), WEAR_EYES)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior(new_human), WEAR_EYES)
 
 	switch(pick("flamethrower", "mk2"))
 		if("flamethrower")
@@ -144,8 +144,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/russianRed(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/russianRed(new_human), WEAR_IN_BELT)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary(new_human), WEAR_IN_ACCESSORY)
@@ -232,7 +232,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure(new_human), WEAR_IN_BELT)

@@ -16,6 +16,7 @@
 	// Initial target coordinates
 	var/targ_x = 0
 	var/targ_y = 0
+	var/targ_z = 0
 	// Automatic offsets from target
 	var/offset_x = 0
 	var/offset_y = 0
@@ -33,6 +34,10 @@
 	var/fixed = FALSE
 	/// if true, blows up the shell immediately
 	var/ship_side = FALSE
+	/// The max range the mortar can fire at
+	var/max_range = 75
+	/// The min range the mortar can fire at
+	var/min_range = 25
 
 	var/obj/structure/machinery/computer/cameras/mortar/internal_camera
 
@@ -41,6 +46,7 @@
 	// Makes coords appear as 0 in UI
 	targ_x = deobfuscate_x(0)
 	targ_y = deobfuscate_y(0)
+	targ_z = deobfuscate_z(0)
 	internal_camera = new(loc)
 
 	var/new_icon_state
@@ -134,6 +140,7 @@
 	return list(
 		"data_target_x" = obfuscate_x(targ_x),
 		"data_target_y" = obfuscate_y(targ_y),
+		"data_target_z" = obfuscate_z(targ_z),
 		"data_dial_x" = dial_x,
 		"data_dial_y" = dial_y
 	)
@@ -149,7 +156,7 @@
 
 	switch(action)
 		if("set_target")
-			handle_target(user, text2num(params["target_x"]), text2num(params["target_y"]))
+			handle_target(user, text2num(params["target_x"]),  text2num(params["target_y"]), text2num(params["target_z"]))
 			return TRUE
 
 		if("set_offset")
@@ -159,12 +166,13 @@
 		if("operate_cam")
 			internal_camera.tgui_interact(user)
 
-/obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, manual = FALSE)
+/obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, temp_targ_z = 0, manual = FALSE)
 	if(manual)
 		temp_targ_x = tgui_input_real_number(user, "Input the longitude of the target.")
 		temp_targ_y = tgui_input_real_number(user, "Input the latitude of the target.")
+		temp_targ_z = tgui_input_real_number(user, "Input the height of the target.")
 
-	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y)))
+	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y), test_targ_z = deobfuscate_z(temp_targ_z)))
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts adjusting [src]'s firing angle and distance."),
@@ -184,6 +192,7 @@
 	SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
 	targ_x = deobfuscate_x(temp_targ_x)
 	targ_y = deobfuscate_y(temp_targ_y)
+	targ_z = deobfuscate_z(temp_targ_z)
 	var/offset_x_max = floor(abs((targ_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
 	var/offset_y_max = floor(abs((targ_y) - y)/offset_per_turfs)
 	offset_x = rand(-offset_x_max, offset_x_max)
@@ -222,7 +231,7 @@
 /obj/structure/mortar/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = item
-		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
+		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, targ_z)
 		var/area/target_area = get_area(target_turf)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
@@ -231,7 +240,7 @@
 			to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 			return
 		if(!ship_side)
-			if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
+			if(targ_x == 0 && targ_y == 0 && targ_z == 0) //Mortar wasn't set
 				to_chat(user, SPAN_WARNING("[src] needs to be aimed first."))
 				return
 			if(!target_turf)
@@ -243,7 +252,7 @@
 			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf))
 				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 				return
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && target_area.is_landing_zone)
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_mortar_protection) && target_area.is_landing_zone)
 				to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
 				return
 
@@ -301,10 +310,10 @@
 			to_chat(user, SPAN_WARNING("[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it."))
 			return
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] starts undeploying [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] starts undeploying [src]."),
 				SPAN_NOTICE("You start undeploying [src]."))
 		if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."),
 				SPAN_NOTICE("You undeploy [src]."))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			var/obj/item/mortar_kit/mortar = new /obj/item/mortar_kit(loc)
@@ -313,7 +322,7 @@
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."),
 				SPAN_NOTICE("You toggle the targeting computer on [src]."))
 			computer_enabled = !computer_enabled
 			playsound(loc, 'sound/machines/switch.ogg', 25, 1)
@@ -365,6 +374,8 @@
 			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/mortar_laser_warning))
+		new /obj/effect/overlay/temp/blinking_laser(target)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)
 	if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
@@ -372,7 +383,7 @@
 	qdel(shell)
 	firing = FALSE
 
-/obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_dial_x, test_dial_y)
+/obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_targ_z = targ_z, test_dial_x, test_dial_y)
 	var/dialing = test_dial_x || test_dial_y
 	if(ship_side)
 		to_chat(user, SPAN_WARNING("You cannot aim the mortar while on a ship."))
@@ -386,8 +397,14 @@
 	if(test_dial_y + test_targ_y > world.maxy || test_dial_y + test_targ_y < 0)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
 		return FALSE
-	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) < 10)
+	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) < min_range)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is too close to your mortar."))
+		return FALSE
+	if(!is_ground_level(test_targ_z))
+		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
+		return FALSE
+	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) > max_range)
+		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is too far from your mortar."))
 		return FALSE
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using this mortar."))
@@ -401,6 +418,7 @@
 /obj/structure/mortar/wo
 	fixed = TRUE
 	offset_per_turfs = 50 // The mortar is located at the edge of the map in WO, This to to prevent mass FF
+	max_range = 999
 
 //The portable mortar item
 /obj/item/mortar_kit
@@ -408,8 +426,14 @@
 	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Needs to be set down first"
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402_carry"
+	item_state = "mortar_m402_carry"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 	unacidable = TRUE
 	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 
 /obj/item/mortar_kit/Initialize(...)
 	. = ..()
@@ -432,17 +456,17 @@
 	if(CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_1) && is_ground_level(deploy_turf.z))
 		to_chat(user, SPAN_WARNING("You probably shouldn't deploy [src] indoors."))
 		return
-	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You start deploying [src]."))
 	playsound(deploy_turf, 'sound/items/Deconstruct.ogg', 25, 1)
 	if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		var/obj/structure/mortar/mortar = new /obj/structure/mortar(deploy_turf)
 		if(!is_ground_level(deploy_turf.z))
 			mortar.ship_side = TRUE
-			user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] deploys [src]."),
 				SPAN_NOTICE("You deploy [src]. This is a bad idea."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] deploys [src]."),
 				SPAN_NOTICE("You deploy [src]."))
 		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
 		mortar.name = src.name

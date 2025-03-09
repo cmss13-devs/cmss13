@@ -44,6 +44,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_SYNTH 36
 #define ACCESS_MARINE_ASO 37
 #define ACCESS_MARINE_CHAPLAIN 38
+#define ACCESS_MARINE_FIELD_DOC 39
 
 // AI Core Accesses
 /// Used in temporary passes
@@ -67,6 +68,9 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 
 ///The generic "I'm a bad guy" access
 #define ACCESS_ILLEGAL_PIRATE 120
+
+//CIA-locked covert items
+#define ACCESS_CIA 125
 
 //=================================================
 

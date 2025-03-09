@@ -142,22 +142,7 @@ There are several things that need to be remembered:
 	overlays_standing[BODYPARTS_LAYER] = new_limbs
 	apply_overlay(BODYPARTS_LAYER)
 
-	if(species.flags & HAS_UNDERWEAR)
-		//Underwear
-		remove_overlay(UNDERSHIRT_LAYER)
-		remove_overlay(UNDERWEAR_LAYER)
-
-		var/datum/sprite_accessory/underwear/underwear_datum = gender == MALE ? GLOB.underwear_m[underwear] : GLOB.underwear_f[underwear]
-		var/image/underwear_icon = underwear_datum.get_image(gender)
-		underwear_icon.layer = -UNDERWEAR_LAYER
-		overlays_standing[UNDERWEAR_LAYER] = underwear_icon
-		apply_overlay(UNDERWEAR_LAYER)
-
-		var/datum/sprite_accessory/underwear/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
-		var/image/undershirt_icon = undershirt_datum.get_image(gender)
-		undershirt_icon.layer = -UNDERSHIRT_LAYER
-		overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
-		apply_overlay(UNDERSHIRT_LAYER)
+	update_undergarments()
 
 /// Recalculates and reapplies damage overlays to every limb
 /mob/living/carbon/human/proc/update_damage_overlays()
@@ -173,6 +158,41 @@ There are several things that need to be remembered:
 	overlays_standing[DAMAGE_LAYER] = damage_overlays
 
 	apply_overlay(DAMAGE_LAYER)
+
+/// If this human should have underwear, reapply the overlays
+/mob/living/carbon/human/proc/update_undergarments()
+	if(!(species.flags & HAS_UNDERWEAR))
+		return
+
+	update_underwear()
+	update_undershirt()
+
+/// Checks if the mob's specific [/datum/sprite_accessory/underwear] should be equipped
+/mob/living/carbon/human/proc/update_underwear()
+	remove_overlay(UNDERWEAR_LAYER)
+
+	if(w_uniform)
+		return
+
+	var/datum/sprite_accessory/underwear/underwear_datum = gender == MALE ? GLOB.underwear_m[underwear] : GLOB.underwear_f[underwear]
+	var/image/underwear_icon = underwear_datum.get_image(gender)
+	underwear_icon.layer = -UNDERWEAR_LAYER
+
+	overlays_standing[UNDERWEAR_LAYER] = underwear_icon
+	apply_overlay(UNDERWEAR_LAYER)
+
+/// Checks if the mob's specific [/datum/sprite_accessory/undershirt] should be equipped
+/mob/living/carbon/human/proc/update_undershirt()
+	remove_overlay(UNDERSHIRT_LAYER)
+
+	var/datum/sprite_accessory/undershirt/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
+	if((w_uniform && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)) && !undershirt_datum.shown_under_uniform)
+		return
+
+	var/image/undershirt_icon = undershirt_datum.get_image(gender)
+	undershirt_icon.layer = -UNDERSHIRT_LAYER
+	overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
+	apply_overlay(UNDERSHIRT_LAYER)
 
 /mob/living/carbon/human/proc/remove_underwear() // :flushed: - geeves
 	remove_overlay(UNDERSHIRT_LAYER)
@@ -337,6 +357,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			overlays_standing[UNIFORM_LAYER] = I
 			apply_overlay(UNIFORM_LAYER)
 
+	update_undergarments()
 	update_inv_wear_id()
 
 
@@ -461,60 +482,61 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		overlays_standing[SUIT_STORE_LAYER] = I
 		apply_overlay(SUIT_STORE_LAYER)
 
-
-#define MAX_HEAD_GARB_ITEMS 5
-
 /mob/living/carbon/human/update_inv_head()
 	remove_overlay(HEAD_LAYER)
 	remove_overlay(HEAD_SQUAD_LAYER)
-	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_ITEMS - 1))
+	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_LAYERS - 1))
 		remove_overlay(i)
 
-	if(head)
+	if(!head)
+		return
 
-		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			client.add_to_screen(head)
-			head.screen_loc = hud_used.ui_datum.hud_slot_offset(head, hud_used.ui_datum.ui_head)
+	if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+		client.add_to_screen(head)
+		head.screen_loc = hud_used.ui_datum.hud_slot_offset(head, hud_used.ui_datum.ui_head)
 
-		if(species.flags & NO_OVERLAYS && !head.force_overlays_on)
-			return
+	if(species.flags & NO_OVERLAYS && !head.force_overlays_on)
+		return
 
-		var/image/I = head.get_mob_overlay(src, WEAR_HEAD)
-		I.layer = -HEAD_LAYER
-		overlays_standing[HEAD_LAYER] = I
-		apply_overlay(HEAD_LAYER)
+	var/image/head_overlay = head.get_mob_overlay(src, WEAR_HEAD)
+	head_overlay.layer = -HEAD_LAYER
+	overlays_standing[HEAD_LAYER] = head_overlay
+	apply_overlay(HEAD_LAYER)
 
-		if(istype(head, /obj/item/clothing/head/helmet/marine))
-			var/obj/item/clothing/head/helmet/marine/marine_helmet = head
-			if(assigned_squad && marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
-				if(assigned_squad && assigned_squad.equipment_color && assigned_squad.use_stripe_overlay)
-					var/leader = assigned_squad.squad_leader
-					var/image/helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state = "std-helmet")
-					if(leader == src)
-						helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state = "sql-helmet")
-					helmet_overlay.layer = -HEAD_SQUAD_LAYER
-					helmet_overlay.alpha = assigned_squad.armor_alpha
-					helmet_overlay.color = assigned_squad.equipment_color
-					overlays_standing[HEAD_SQUAD_LAYER] = helmet_overlay
-					apply_overlay(HEAD_SQUAD_LAYER)
+	if(istype(head, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/marine_helmet = head
+		if(assigned_squad && marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
+			if(assigned_squad && assigned_squad.equipment_color && assigned_squad.use_stripe_overlay)
+				var/leader = assigned_squad.squad_leader
+				var/image/helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state="std-helmet")
+				if(leader == src)
+					helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state="sql-helmet")
+				helmet_overlay.layer = -HEAD_SQUAD_LAYER
+				helmet_overlay.alpha = assigned_squad.armor_alpha
+				helmet_overlay.color = assigned_squad.equipment_color
+				overlays_standing[HEAD_SQUAD_LAYER] = helmet_overlay
+				apply_overlay(HEAD_SQUAD_LAYER)
 
-			var/num_helmet_overlays = 0
-			for(var/i in 1 to length(marine_helmet.helmet_overlays))
-				// Add small numbers to the head garb layer so we don't have a layer conflict
-				// the i-1 bit is to make it 0-based, not 1-based like BYOND wants
-				overlays_standing[HEAD_GARB_LAYER + (i-1)] = image('icons/mob/humans/onmob/helmet_garb.dmi', src, marine_helmet.helmet_overlays[i])
-				num_helmet_overlays++
+		handle_helmet_overlays(marine_helmet)
 
-			// null out the rest of the space allocated for helmet overlays
-			// God I hate 1-based indexing
-			for(var/i in num_helmet_overlays+1 to MAX_HEAD_GARB_ITEMS)
-				overlays_standing[HEAD_GARB_LAYER + (i-1)] = null
+	else if(istype(head, /obj/item/clothing/head/cmcap))
+		handle_helmet_overlays(head)
 
-			for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_ITEMS - 1))
-				apply_overlay(i)
+/mob/living/carbon/human/proc/handle_helmet_overlays(obj/item/clothing/head/hat)
+	var/num_helmet_overlays = 0
+	for(var/i in 1 to length(hat.helmet_overlays))
+		// Add small numbers to the head garb layer so we don't have a layer conflict
+		// the i-1 bit is to make it 0-based, not 1-based like BYOND wants
+		overlays_standing[HEAD_GARB_LAYER + (i-1)] = hat.helmet_overlays[i]
+		num_helmet_overlays++
 
-#undef MAX_HEAD_GARB_ITEMS
+	// null out the rest of the space allocated for helmet overlays
+	// God I hate 1-based indexing
+	for(var/i in num_helmet_overlays+1 to MAX_HEAD_GARB_LAYERS)
+		overlays_standing[HEAD_GARB_LAYER + (i-1)] = null
 
+	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_LAYERS - 1))
+		apply_overlay(i)
 
 /mob/living/carbon/human/update_inv_belt()
 	remove_overlay(BELT_LAYER)
@@ -586,8 +608,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		update_inv_w_uniform()
 		update_inv_shoes()
 		update_inv_gloves()
-
-	update_collar()
 
 
 
@@ -710,24 +730,10 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/icon/tail_icon = GLOB.tail_icon_cache[icon_key]
 	if(!tail_icon)
 		//generate a new one
-		tail_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]")
+		tail_icon = icon(species.icobase, "[species.get_tail(src)]")
 		GLOB.tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon
-
-
-//Adds a collar overlay above the helmet layer if the suit has one
-// Suit needs an identically named sprite in icons/mob/collar.dmi
-/mob/living/carbon/human/proc/update_collar()
-	remove_overlay(COLLAR_LAYER)
-	if(!istype(wear_suit,/obj/item/clothing/suit))
-		return
-	var/obj/item/clothing/suit/S = wear_suit
-	var/image/I = S.get_collar()
-	if(I)
-		I.layer = -COLLAR_LAYER
-		overlays_standing[COLLAR_LAYER] = I
-		apply_overlay(COLLAR_LAYER)
 
 /mob/living/carbon/human/update_burst()
 	remove_overlay(BURST_LAYER)

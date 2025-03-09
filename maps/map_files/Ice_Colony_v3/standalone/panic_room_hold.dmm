@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"ab" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc/medium_priority,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
 "ai" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/snow/layer2,
@@ -56,7 +64,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "cL" = (
-/obj/item/prop/colony/folded_bedroll,
+/obj/item/roller/bedroll,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "cO" = (
@@ -229,7 +237,7 @@
 /area/shiva/interior/colony/s_admin)
 "jP" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/head/soft/sec/corp{
+/obj/item/clothing/head/cmcap/wy_cap{
 	pixel_y = 10
 	},
 /obj/item/tool/stamp/hos,
@@ -417,7 +425,7 @@
 /area/shiva/interior/colony/s_admin)
 "rQ" = (
 /obj/item/ammo_magazine/rifle/boltaction,
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_eng/medium_priority,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "sq" = (
@@ -455,7 +463,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci/medium_priority,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "tu" = (
@@ -610,7 +618,7 @@
 /area/shiva/interior/colony/s_admin)
 "wY" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/snow/layer2,
+/turf/open/floor/plating,
 /area/shiva/exterior/junkyard/cp_bar)
 "xa" = (
 /obj/item/shard{
@@ -844,7 +852,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "DW" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "DY" = (
@@ -959,7 +967,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "IQ" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "Jp" = (
@@ -1046,7 +1054,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Lu" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
 "LE" = (
@@ -1098,7 +1106,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "Nu" = (
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "NC" = (
@@ -1146,7 +1154,7 @@
 /area/shiva/interior/colony/s_admin)
 "PV" = (
 /obj/structure/bed/bedroll,
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_pmc,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Qh" = (
@@ -1263,7 +1271,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "TG" = (
-/obj/item/prop/colony/folded_bedroll,
+/obj/item/roller/bedroll,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "TI" = (
@@ -1582,7 +1590,7 @@ ul
 dF
 dF
 ov
-yQ
+aa
 kB
 ce
 Ik
@@ -1707,7 +1715,7 @@ Fc
 CZ
 DY
 dF
-BU
+ab
 ce
 ce
 cS

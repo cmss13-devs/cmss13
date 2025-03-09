@@ -1,7 +1,7 @@
 
 /obj/structure/bookcase
 	name = "bookcase"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bookshelf.dmi'
 	icon_state = "book-0"
 	anchored = TRUE
 	density = TRUE
@@ -47,11 +47,11 @@
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
-			user.visible_message("[user] deconstructs [src].", \
+			user.visible_message("[user] deconstructs [src].",
 				"You deconstruct [src].", "You hear a noise.")
 			deconstruct(FALSE)
 	else
-		..()
+		. = ..()
 
 /obj/structure/bookcase/attack_hand(mob/user as mob)
 	if(length(contents))

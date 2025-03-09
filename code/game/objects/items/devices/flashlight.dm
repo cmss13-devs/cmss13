@@ -2,8 +2,12 @@
 	name = "flashlight"
 	desc = "A hand-held emergency light."
 	icon = 'icons/obj/items/lighting.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	icon_state = "flashlight"
-	item_state = "flashlight"
+	item_state = ""
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -118,11 +122,11 @@
 
 		if(being == user) //they're using it on themselves
 			being.flash_eyes()
-			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."),
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."), \
+		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."),
 							SPAN_NOTICE("You direct [src] to [being]'s eyes."))
 
 		if(ishuman_strict(being)) //robots and aliens are unaffected
@@ -153,6 +157,10 @@
 	desc = "A pen-sized light, used by medical staff to check the condition of eyes, brain, and the overall awareness of patients."
 	icon_state = "penlight"
 	item_state = ""
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	flags_atom = FPRINT|CONDUCT
 	light_range = 2
@@ -174,7 +182,7 @@
 				return // they have no organs somehow
 			if(being == user) //they're using it on themselves
 				being.flash_eyes()
-				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."),
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 				return
 			if(being.stat == DEAD || (being.status_flags&FAKEDEATH))
@@ -251,6 +259,7 @@
 	icon_state = "menorah"
 	item_state = "menorah"
 	light_range = 2
+	light_color = LIGHT_COLOR_CANDLE
 	w_class = SIZE_LARGE
 	on = 1
 	breaking_sound = null
@@ -262,6 +271,7 @@
 	icon_state = "candelabra"
 	force = 15
 	on = TRUE
+	light_color = LIGHT_COLOR_CANDLE
 
 	breaking_sound = null
 
@@ -277,6 +287,7 @@
 	desc = "An emergency light tube mounted onto a tripod. It seemingly lasts forever."
 	icon_state = "tripod_lamp"
 	light_range = 6//pretty good
+	light_color = LIGHT_COLOR_XENON
 	w_class = SIZE_LARGE
 	on = 1
 
@@ -302,14 +313,19 @@
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
 	light_power = 2
-	light_range = 5
+	light_range = 7
 	icon_state = "flare"
 	item_state = "flare"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	actions = list() //just pull it manually, neckbeard.
 	raillight_compatible = 0
 	can_be_broken = FALSE
 	var/burnt_out = FALSE
-	var/fuel = 0
+	var/fuel = 16 MINUTES
 	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
@@ -327,7 +343,6 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
 	set_light_color(flame_tint)
 
 /obj/item/device/flashlight/flare/update_icon()
@@ -362,8 +377,27 @@
 
 /obj/item/device/flashlight/flare/process(delta_time)
 	fuel -= fuel_rate * delta_time
+	flare_burn_down()
 	if(fuel <= 0 || !on)
 		burn_out()
+
+/obj/item/device/flashlight/flare/proc/flare_burn_down() //Controls the way in which flares slowly die out. Needs to be overriden by children, or they will be forced to use this light behavior.
+	switch(fuel) //The code belows controls the timing on a flares burn out, and the corresponding reduction in effective range.
+		if(15.25 MINUTES to 16 MINUTES)
+			set_light_range(7)
+		if(14.5 MINUTES to 15.24 MINUTES)
+			set_light_range(6)
+		if(6.5 MINUTES to 14.49 MINUTES)
+			set_light_range(5)
+		if(5.0 MINUTES to 6.49 MINUTES)
+			set_light_range(4)
+		if(3.5 MINUTES to 4.99 MINUTES)
+			set_light_range(3)
+		if(2.0 MINUTES to 3.49 MINUTES)
+			set_light_range(2)
+		if(0 MINUTES to 1.99 MINUTES)
+			set_light_range(1)
+			set_light_power(0.5) // A power of 2 results in no light at all, while .5 results in a small light.
 
 // Causes flares to stop with a rotation offset for visual purposes
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
@@ -415,7 +449,7 @@
 		if(!on)
 			return
 		var/hand = user.hand ? "l_hand" : "r_hand"
-		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
+		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),
 		SPAN_WARNING("You snuff out [src], singing your hand."))
 		user.apply_damage(7, BURN, hand)
 		burn_out()
@@ -450,10 +484,14 @@
 	icon_state = "" //No sprite
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	show_flame = FALSE
+	light_range = 7
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
-	fuel = rand(4.5 MINUTES, 5.5 MINUTES) // Half the duration of a flare, but justified since it's invincible
+	fuel = rand(5.0 MINUTES, 6.0 MINUTES) // Approximately half the effective duration of a flare, but justified since it's invincible
+
+/obj/item/device/flashlight/flare/on/illumination/flare_burn_down() // Empty proc to override parent.
+	return
 
 /obj/item/device/flashlight/flare/on/illumination/update_icon()
 	return
@@ -472,12 +510,29 @@
 	anchored = TRUE//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
 	show_flame = FALSE
+	light_range = 6
 
 /obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
 	if(mapload)
 		return INITIALIZE_HINT_QDEL
 	. = ..()
-	fuel = rand(4.5 MINUTES, 5.5 MINUTES)
+	fuel = rand(6.0 MINUTES, 6.5 MINUTES)
+
+/obj/item/device/flashlight/flare/on/starshell_ash/flare_burn_down() // Starshell's own burn_down curve, overrides parent flare.
+	switch(fuel)
+		if(6.0 MINUTES to 6.5 MINUTES)
+			set_light_range(6)
+		if(2.5 MINUTES to 5.99 MINUTES)
+			set_light_range(5)
+		if(2.0 MINUTES to 2.49 MINUTES)
+			set_light_range(4)
+		if(1.5 MINUTES to 1.99 MINUTES)
+			set_light_range(3)
+		if(1.0 MINUTES to 1.49 MINUTES)
+			set_light_range(2)
+		if(0 MINUTES to 0.99 MINUTES)
+			set_light_range(1)
+			set_light_power(0.5)
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"
@@ -485,11 +540,17 @@
 
 /obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
-	light_range = floor(amount * 0.04)
-	if(!light_range)
+	if(amount < 1)
 		return INITIALIZE_HINT_QDEL
-	set_light(light_range)
-	fuel = amount * 5 SECONDS
+	var/square_amount = sqrt(amount)
+	// Fuel quickly ramps up to about 15.5 mins then tapers off the more volume there is (6s min)
+	fuel = max(((-150 / square_amount) - 2 * sqrt(amount + 2000) + 120), 0.1) MINUTES
+	// Range gradually ramps up from 1 to 15
+	light_range = max(min(square_amount - 3, 15), MINIMUM_USEFUL_LIGHT_RANGE)
+	// Power slowly ramps up from 1 to 5
+	light_power = min(0.1 * square_amount + 1, 5)
+	set_light(light_range, light_power)
+
 
 /obj/item/device/flashlight/slime
 	gender = PLURAL
@@ -518,8 +579,13 @@
 /obj/item/device/flashlight/lantern
 	name = "lantern"
 	icon_state = "lantern"
+	item_state = ""
 	desc = "A mining lantern."
 	light_range = 6 // luminosity when on
+	light_color = "#d69c46"
+
+/obj/item/device/flashlight/lantern/on
+	on = TRUE
 
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
@@ -529,6 +595,7 @@
 	item_state = "cas_flare"
 	layer = ABOVE_FLY_LAYER
 	ammo_datum = /datum/ammo/flare/signal
+	light_range = 5
 	var/faction = ""
 	var/datum/cas_signal/signal
 	var/activate_message = TRUE
@@ -538,6 +605,9 @@
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
 	fuel = rand(160 SECONDS, 200 SECONDS)
+
+/obj/item/device/flashlight/flare/signal/flare_burn_down() // Empty proc to override parent.
+	return
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -562,7 +632,7 @@
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
 		var/turf/target_turf = get_turf(src)
-		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
 		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]).")
 		return TRUE
 

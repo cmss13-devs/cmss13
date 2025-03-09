@@ -20,6 +20,22 @@
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
 
+/datum/sound_template/proc/get_hearers()
+	var/list/hearers_to_return = list()
+	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
+	hearers_to_return += SSquadtree.players_in_range(zone, z)
+	
+	var/turf/above = SSmapping.get_turf_above(locate(x, y, z))
+	while(above)
+		hearers_to_return += SSquadtree.players_in_range(zone, above.z)
+		above = SSmapping.get_turf_above(above)
+
+	var/turf/below = SSmapping.get_turf_below(locate(x, y, z))
+	while(below)
+		hearers_to_return += SSquadtree.players_in_range(zone, below.z)
+		below = SSmapping.get_turf_below(below)
+	return hearers_to_return
+
 /proc/get_free_channel()
 	var/static/cur_chan = 1
 	. = cur_chan++
@@ -92,7 +108,8 @@
 				template.x = new_turf_source.x
 				template.y = new_turf_source.y
 				template.z = new_turf_source.z
-			else sound_range = 0
+			else
+				sound_range = 0
 	// Range for 'nearby interiors' aswell
 	for(var/datum/interior/vehicle_interior in SSinterior.interiors)
 		if(vehicle_interior?.ready && vehicle_interior.exterior?.z == turf_source.z && get_dist(vehicle_interior.exterior, turf_source) <= sound_range)
@@ -123,7 +140,10 @@
 		template.file = get_sfx(soundin)
 
 	if(random_freq)
-		template.frequency = GET_RANDOM_FREQ
+		if(random_freq == "minor")
+			template.frequency = GET_RANDOM_FREQ_MINOR
+		else
+			template.frequency = GET_RANDOM_FREQ
 	template.volume = vol
 	template.volume_cat = vol_cat
 	template.channel = channel
@@ -374,7 +394,7 @@
 			if("male_upp_warcry")
 				sound = pick('sound/voice/upp_warcry/warcry_male_1.ogg', 'sound/voice/upp_warcry/warcry_male_2.ogg')
 			if("male_preburst")
-				sound = pick("sound/voice/human_male_preburst1.ogg", 'sound/voice/human_male_preburst2.ogg', 'sound/voice/human_male_preburst3.ogg', 'sound/voice/human_male_preburst4.ogg', 'sound/voice/human_male_preburst5.ogg', 'sound/voice/human_male_preburst6.ogg', 'sound/voice/human_male_preburst7.ogg', 'sound/voice/human_male_preburst8.ogg', 'sound/voice/human_male_preburst9.ogg')
+				sound = pick('sound/voice/human_male_preburst1.ogg', 'sound/voice/human_male_preburst2.ogg', 'sound/voice/human_male_preburst3.ogg', 'sound/voice/human_male_preburst4.ogg', 'sound/voice/human_male_preburst5.ogg', 'sound/voice/human_male_preburst6.ogg', 'sound/voice/human_male_preburst7.ogg', 'sound/voice/human_male_preburst8.ogg', 'sound/voice/human_male_preburst9.ogg')
 			if("male_hugged")
 				sound = pick("sound/voice/human_male_facehugged1.ogg", 'sound/voice/human_male_facehugged2.ogg', 'sound/voice/human_male_facehugged3.ogg')
 			if("female_scream")
@@ -388,7 +408,7 @@
 			if("female_upp_warcry")
 				sound = pick('sound/voice/upp_warcry/warcry_female_1.ogg', 'sound/voice/upp_warcry/warcry_female_2.ogg')
 			if("female_preburst")
-				sound = pick("sound/voice/human_female_preburst1.ogg", 'sound/voice/human_female_preburst2.ogg', 'sound/voice/human_female_preburst3.ogg', 'sound/voice/human_female_preburst4.ogg', 'sound/voice/human_female_preburst5.ogg',  'sound/voice/human_female_preburst6.ogg',  'sound/voice/human_female_preburst7.ogg')
+				sound = pick('sound/voice/human_female_preburst1.ogg', 'sound/voice/human_female_preburst2.ogg', 'sound/voice/human_female_preburst3.ogg', 'sound/voice/human_female_preburst4.ogg', 'sound/voice/human_female_preburst5.ogg',  'sound/voice/human_female_preburst6.ogg',  'sound/voice/human_female_preburst7.ogg')
 			if("female_hugged")
 				sound = pick("sound/voice/human_female_facehugged1.ogg", 'sound/voice/human_female_facehugged2.ogg')
 			if("rtb_handset")
@@ -399,6 +419,13 @@
 				sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
 			if("plush")
 				sound = pick('sound/items/plush1.ogg', 'sound/items/plush2.ogg', 'sound/items/plush3.ogg')
+			// working joe
+			if("wj_death")
+				sound = pick('sound/voice/joe/death_normal.ogg', 'sound/voice/joe/death_silence.ogg',10;'sound/voice/joe/death_tomorrow.ogg',5;'sound/voice/joe/death_dream.ogg')
+			if("hj_death")
+				sound = pick('sound/voice/joe/death_hj_normal.ogg', 'sound/voice/joe/death_hj_silence.ogg',10;'sound/voice/joe/death_hj_tomorrow.ogg')
+			if("upp_wj_death")
+				sound = pick('sound/voice/joe/upp_joe/smert1.ogg', 'sound/voice/joe/upp_joe/smert2.ogg', 'sound/voice/joe/upp_joe/smert3.ogg', 'sound/voice/joe/upp_joe/smert4.ogg', 'sound/voice/joe/upp_joe/smert5.ogg')
 			//misc mobs
 			if("cat_meow")
 				sound = pick('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')
@@ -416,6 +443,8 @@
 				sound = pick('sound/effects/giant_lizard_growl1.ogg', 'sound/effects/giant_lizard_growl2.ogg')
 			if("giant_lizard_hiss")
 				sound = pick('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')
+			if("evo_screech")
+				sound = pick('sound/voice/alien_echoroar_1.ogg', 'sound/voice/alien_echoroar_2.ogg', 'sound/voice/alien_echoroar_3.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

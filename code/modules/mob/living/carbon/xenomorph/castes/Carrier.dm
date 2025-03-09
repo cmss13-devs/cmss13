@@ -47,7 +47,7 @@
 	name = XENO_CASTE_CARRIER
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
 	icon_size = 64
-	icon_xeno = 'icons/mob/xenos/carrier.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/carrier.dmi'
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)
 
@@ -80,7 +80,7 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/carrier.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Carrier_1","Carrier_2","Carrier_3")
@@ -308,7 +308,7 @@
 			A.update_button_icon()
 		drop_inv_item_on_ground(F)
 		F.throw_atom(T, 4, caste.throwspeed)
-		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"), \
+		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"),
 			SPAN_XENOWARNING("We throw a facehugger towards \the [T]!"))
 		spawn(caste.hugger_delay)
 			threw_a_hugger = 0
@@ -332,7 +332,8 @@
 		to_chat(src, SPAN_WARNING("We can't carry more eggs on ourselves."))
 
 /mob/living/carbon/xenomorph/carrier/proc/retrieve_egg(atom/T)
-	if(!T) return
+	if(!T)
+		return
 
 	if(!check_state())
 		return
@@ -372,6 +373,13 @@
 		return
 
 /mob/living/carbon/xenomorph/carrier/proc/store_eggs_into_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+
+	var/dist = get_dist(src, morpher)
+
+	if(dist > 1)
+		to_chat(src, SPAN_XENOWARNING("We need to be closer to do that."))
+		return
+
 	if(action_busy)
 		return FALSE
 
@@ -438,3 +446,23 @@
 /datum/behavior_delegate/carrier_base/on_update_icons()
 	var/mob/living/carbon/xenomorph/carrier/bound_carrier = bound_xeno
 	bound_carrier.update_hugger_overlays()
+
+/datum/action/xeno_action/activable/throw_hugger/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/carrier/carrier_owner = owner
+	carrier_owner.throw_hugger(target)
+	return ..()
+
+/datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/carrier/carrier_owner = owner
+	carrier_owner.retrieve_egg(target)
+	return ..()
+
+/datum/action/xeno_action/onclick/set_hugger_reserve/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/carrier/carrier = owner
+	carrier.huggers_reserved = tgui_input_number(usr,
+		"How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?",
+		"How many to reserve?",
+		carrier.huggers_reserved, carrier.huggers_max, 0
+	)
+	to_chat(carrier, SPAN_XENONOTICE("We reserve [carrier.huggers_reserved] facehuggers for ourself."))
+	return ..()

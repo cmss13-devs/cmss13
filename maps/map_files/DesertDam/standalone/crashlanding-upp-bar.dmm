@@ -252,6 +252,10 @@
 	icon_state = "paper_words";
 	item_state = "paper_words"
 	},
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = -10;
+	pixel_y = 24
+	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "fk" = (
@@ -850,7 +854,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "rX" = (
-/obj/item/prop/colony/folded_bedroll,
+/obj/item/roller/bedroll,
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -974,7 +978,7 @@
 	item_state = "m41amk1";
 	name = "\improper GSh-7.62 rotary machine gun";
 	pixel_y = 7;
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)

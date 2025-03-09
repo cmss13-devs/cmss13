@@ -49,7 +49,7 @@
 				<tr>
 					<td>Global Variables</td>
 					<td width='50%'>
-						<div align='center'><a href='?_src_=glob_vars;refresh=1'>Refresh</a></div>
+						<div align='center'><a href='byond://?_src_=glob_vars;refresh=1'>Refresh</a></div>
 					</td>
 				</tr>
 			</table></div>
@@ -66,7 +66,7 @@
 					</td>
 
 					<td width='80%'>
-						<input type='text' id='filter' name='filter_text' value='' onkeyup='updateSearch()' style='width:100%;'>
+						<input type='search' id='filter' name='filter_text' value='' onkeyup='updateSearch()' onblur='updateSearch()' style='width:100%;'>
 					</td>
 				</tr>
 			</table>
@@ -122,7 +122,7 @@
 	if(!(admin_holder.rights & R_DEBUG))
 		return html
 
-	html += "<li style='backgroundColor:white'><a href='?_src_=glob_vars;varnameedit=[name]'>E</a><a href='?_src_=glob_vars;varnamechange=[name]'>C</a> "
+	html += "<li style='backgroundColor:white'><a href='byond://?_src_=glob_vars;varnameedit=[name]'>E</a><a href='byond://?_src_=glob_vars;varnamechange=[name]'>C</a> "
 
 	if (isnull(value))
 		html += "[name] = <span class='value'>null</span>"
@@ -146,11 +146,11 @@
 
 	else if (istype(value, /datum))
 		var/datum/D = value
-		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
+		html += "<a href='byond://?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
 
 	else if (istype(value, /client))
 		var/client/C = value
-		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
+		html += "<a href='byond://?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
 
 	else if (istype(value, /list))
 		var/list/L = value
@@ -267,7 +267,8 @@
 		names = sortList(names)
 
 		variable = tgui_input_list(usr, "Which var?","Var", names)
-		if(!variable) return
+		if(!variable)
+			return
 		var_value = global.vars[variable]
 
 		if((variable in locked) && !check_rights(R_DEBUG))
@@ -363,37 +364,44 @@
 
 		if("text")
 			var/var_new = input("Enter new text:","Text",global.vars[variable]) as null|text
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("num")
 			var/var_new = tgui_input_real_number(usr, "Enter new number:", "Num", global.vars[variable])
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("type")
 			var/var_new = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("reference")
 			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob|obj|turf|area in world
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("mob reference")
 			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob in GLOB.mob_list
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("file")
 			var/var_new = input("Pick file:","File",global.vars[variable]) as null|file
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("icon")
 			var/var_new = input("Pick icon:","Icon",global.vars[variable]) as null|icon
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("matrix")

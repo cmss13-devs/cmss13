@@ -28,7 +28,6 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
-	cost_penalty = FALSE
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(0, potency)
@@ -48,7 +47,6 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
-	cost_penalty = FALSE
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency, 0)
@@ -203,7 +201,7 @@
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, potency = 1)
 	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
-	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR)
+	M.nutrition = max(0, M.nutrition - 0.5 * HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 
@@ -227,6 +225,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/painkilling/on_delete(mob/living/M)
 	..()
@@ -461,7 +460,7 @@
 	M.apply_effect(20, STUN)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.bodytemperature = max(M.bodytemperature - 2.5 * potency * delta_time,0)
+	M.bodytemperature = max(BODYTEMP_CRYO_LIQUID_THRESHOLD, M.bodytemperature - 2.5 * potency * delta_time)
 
 /datum/chem_property/positive/neurocryogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, BRAIN)
@@ -501,7 +500,7 @@
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
 				else
-					embryo.counter = embryo.per_stage_hugged_time
+					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)
@@ -531,17 +530,18 @@
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"
-	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator. Can not be ingested."
+	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/electrogenetic/trigger(A)
 	if(isliving(A))
 		var/mob/living/M = A
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BRUTE)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BURN)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, TOX)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BRUTE)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BURN)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, TOX)
 		M.updatehealth()
 
 /datum/chem_property/positive/defibrillating
@@ -580,6 +580,12 @@
 		return
 	var/mob/living/carbon/human/dead = M
 	var/revivable = dead.check_tod() && dead.is_revivable()
+	for(var/datum/reagent/electrogenetic_reagent in M.reagents.reagent_list)
+		var/datum/chem_property/property = electrogenetic_reagent.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
+		if(property)
+			property.trigger(M)
+			M.reagents.remove_reagent(electrogenetic_reagent.id, 1)
+			break
 	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
 		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
@@ -604,7 +610,7 @@
 		if(ghost?.client)
 			COOLDOWN_START(src, ghost_notif, 30 SECONDS)
 			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
+			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating
@@ -773,12 +779,20 @@
 	durationmod_per_level = -0.1
 	radiusmod_per_level = -0.01
 
+	var/static/ignite_threshold = 4
+
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
 		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
-		if(potency > 4)
+		if(potency > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
 			L.IgniteMob(TRUE)
+
+/datum/chem_property/positive/fire/oxidizing/can_cause_harm()
+	. = ..()
+
+	if(level * LEVEL_TO_POTENCY_MULTIPLIER > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
+		return TRUE
 
 /datum/chem_property/positive/fire/flowing
 	name = PROPERTY_FLOWING
@@ -819,6 +833,7 @@
 	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	max_level = 1
 
 /datum/chem_property/positive/photosensetive/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
@@ -830,6 +845,7 @@
 	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to administer"
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	max_level = 1
 
 /datum/chem_property/positive/crystallization/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
@@ -913,7 +929,7 @@
 	if(!..())
 		return
 
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER_SMALL * potency)
 
 	if(M.losebreath >= 10)
 		M.losebreath = max(10, M.losebreath - 2.5 * potency * delta_time)

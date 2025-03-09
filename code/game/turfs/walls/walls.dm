@@ -6,7 +6,6 @@
 	opacity = TRUE
 	layer = WALL_LAYER
 	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
-	var/hull = 0
 	var/walltype = WALL_METAL
 	/// when walls smooth with one another, the type of junction each wall is.
 	var/junctiontype
@@ -103,7 +102,7 @@
 		var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
 		for(var/turf/cardinal_turf as anything in cardinal_neighbors)
 			for(var/obj/structure/bed/nest/found_nest in cardinal_turf)
-				if(found_nest.dir == get_dir(found_nest, src))
+				if(found_nest.dir == get_dir(found_nest, src) && !density)
 					qdel(found_nest) //nests are built on walls, no walls, no nest
 
 /turf/closed/wall/MouseDrop_T(mob/current_mob, mob/user)
@@ -125,7 +124,7 @@
 		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
 		return XENO_NO_DELAY_ACTION
 
-	if(!hull && user.claw_type >= claws_minimum && !acided_hole)
+	if(!(turf_flags & TURF_HULL) && user.claw_type >= claws_minimum && !acided_hole && user.a_intent == INTENT_HARM)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		if(damage >= (damage_cap - (damage_cap / XENO_HITS_TO_DESTROY_WALL)))
@@ -158,7 +157,7 @@
 /turf/closed/wall/get_examine_text(mob/user)
 	. = ..()
 
-	if(hull)
+	if(turf_flags & TURF_HULL)
 		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
 		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"
 
@@ -196,7 +195,7 @@
 
 //Damage
 /turf/closed/wall/proc/take_damage(dam, mob/M)
-	if(hull) //Hull is literally invincible
+	if(turf_flags & TURF_HULL) //Hull is literally invincible
 		return
 	if(!dam)
 		return
@@ -230,7 +229,7 @@
 // Walls no longer spawn a metal sheet when destroyed to reduce clutter and
 // improve visual readability.
 /turf/closed/wall/proc/dismantle_wall(devastated = 0, explode = 0)
-	if(hull) //Hull is literally invincible
+	if(turf_flags & TURF_HULL) //Hull is literally invincible
 		return
 	if(devastated)
 		make_girder(TRUE)
@@ -242,7 +241,7 @@
 	ScrapeAway()
 
 /turf/closed/wall/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
-	if(hull)
+	if(turf_flags & TURF_HULL)
 		return
 	var/location = get_step(get_turf(src), explosion_direction) // shrapnel will just collide with the wall otherwise
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
@@ -268,7 +267,7 @@
 	return
 
 /turf/closed/wall/get_explosion_resistance()
-	if(hull)
+	if(turf_flags & TURF_HULL)
 		return 1000000
 
 	return (damage_cap - damage)/EXPLOSION_DAMAGE_MULTIPLIER_WALL
@@ -277,7 +276,7 @@
 	if(melting)
 		to_chat(user, SPAN_WARNING("The wall is already burning with thermite!"))
 		return
-	if(hull)
+	if(turf_flags & TURF_HULL)
 		return
 	melting = TRUE
 
@@ -322,7 +321,7 @@
 //Interactions
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
-		if((istype(src, /turf/closed/wall/r_wall)) || hull)
+		if((istype(src, /turf/closed/wall/r_wall)) || turf_flags & TURF_HULL)
 			to_chat(M, SPAN_WARNING("This [name] is far too strong for you to destroy."))
 			return
 		else
@@ -351,7 +350,7 @@
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
 	if(thermite)
 		if(attacking_item.heat_source >= 1000)
-			if(hull)
+			if(turf_flags & TURF_HULL)
 				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [attacking_item]."))
 			else
 				if(iswelder(attacking_item))
@@ -367,7 +366,7 @@
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
 			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
-		if(hull)
+		if(turf_flags & TURF_HULL)
 			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))
 			return
 
@@ -418,7 +417,7 @@
 		new /obj/structure/prop/brazier/frame/full/torch(src)
 		qdel(attacking_item)
 
-	if(hull)
+	if(turf_flags & TURF_HULL)
 		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [attacking_item]."))
 		return
 
@@ -597,4 +596,4 @@
 	return TRUE
 
 /turf/closed/wall/can_be_dissolved()
-	return !hull
+	return !(turf_flags & TURF_HULL)

@@ -1,7 +1,7 @@
 /obj/structure/cargo_container
 	name = "Cargo Container"
 	desc = "A huge industrial shipping container.\nYou aren't supposed to see this."
-	icon = 'icons/obj/structures/props/contain.dmi'
+	icon = 'icons/obj/structures/props/containers/contain.dmi'
 	bound_width = 32
 	bound_height = 64
 	density = TRUE
@@ -27,7 +27,7 @@
 
 	xenomorph.animation_attack_on(src)
 
-	xenomorph.visible_message(SPAN_DANGER("[xenomorph] slashes [src]!"), \
+	xenomorph.visible_message(SPAN_DANGER("[xenomorph] slashes [src]!"),
 	SPAN_DANGER("You slash [src]!"))
 
 	update_health(damage)
@@ -210,19 +210,19 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 
-			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."), \
-					SPAN_WARNING("You beat against [src] to no effect"), \
+			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."),
+					SPAN_WARNING("You beat against [src] to no effect"),
 					"You hear twisting metal.")
 
 	if(!damage_dealt)
-		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."), \
-					SPAN_WARNING("[user] beats against the [src]."), \
+		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."),
+					SPAN_WARNING("[user] beats against the [src]."),
 					"You hear twisting metal.")
 
 /obj/structure/cargo_container/horizontal
 	name = "Cargo Container"
 	desc = "A huge industrial shipping container."
-	icon = 'icons/obj/structures/props/containHorizont.dmi'
+	icon = 'icons/obj/structures/props/containers/containHorizont.dmi'
 	bound_width = 64
 	bound_height = 32
 	density = TRUE
@@ -241,3 +241,123 @@
 
 /obj/structure/cargo_container/horizontal/blue/bottom
 	icon_state = "blue_b"
+
+/obj/structure/cargo_container/canc
+	name = "CANC Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from the Chinese/Asian–Nation Cooperative, which was absorded into the UPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
+
+/obj/structure/cargo_container/canc/left
+	icon_state = "canc_g_l"
+
+/obj/structure/cargo_container/canc/mid
+	icon_state = "canc_g_m"
+
+/obj/structure/cargo_container/canc/right
+	icon_state = "canc_g_r"
+
+/obj/structure/cargo_container/canc/tan
+	name = "CANC Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from the Chinese/Asian–Nation Cooperative, which was absorded into the UPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
+
+/obj/structure/cargo_container/canc/tan/left
+	icon_state = "canc_t_l"
+
+/obj/structure/cargo_container/canc/tan/mid
+	icon_state = "canc_t_m"
+
+/obj/structure/cargo_container/canc/tan/right
+	icon_state = "canc_t_r"
+
+/obj/structure/cargo_container/upp
+	name = "UPP Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from the Union of Progressive Peoples, as indicated by the massive symbol on the side."
+
+/obj/structure/cargo_container/upp/left
+	icon_state = "upp_l"
+
+/obj/structure/cargo_container/upp/mid
+	icon_state = "upp_m"
+
+/obj/structure/cargo_container/upp/right
+	icon_state = "upp_r"
+
+/obj/structure/cargo_container/upp/tan
+	name = "UPP Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from the Union of Progressive Peoples, as indicated by the massive symbol on the side."
+
+/obj/structure/cargo_container/upp/tan/left
+	icon_state = "upp_t_l"
+
+/obj/structure/cargo_container/upp/tan/mid
+	icon_state = "upp_t_m"
+
+/obj/structure/cargo_container/upp/tan/right
+	icon_state = "upp_t_r"
+
+/obj/structure/cargo_container/upp/mk6
+	name = "Ministry of Space Security Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one belongs to the UPP's Ministry of Space Security."
+
+/obj/structure/cargo_container/upp/mk6/left
+	icon_state = "mk6_l"
+
+/obj/structure/cargo_container/upp/mk6/mid
+	icon_state = "mk6_m"
+
+/obj/structure/cargo_container/upp/mk6/right
+	icon_state = "mk6_r"
+
+/obj/structure/cargo_container/uscm
+	name = "United States Colonial Marines Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one belongs to the UA's United States Marine Corps."
+
+/obj/structure/cargo_container/uscm/sanfran/left
+	name = "United States Colonial Marines Cargo Container"
+
+	icon_state = "uscm1_l"
+
+/obj/structure/cargo_container/uscm/sanfran/mid
+	icon_state = "uscm1_m"
+
+/obj/structure/cargo_container/uscm/borodino/left
+	name = "United States Colonial Marines Cargo Container"
+
+	icon_state = "uscm2_l"
+
+/obj/structure/cargo_container/uscm/borodino/mid
+	icon_state = "uscm2_m"
+
+/obj/structure/cargo_container/uscm/tartarus/left
+	name = "United States Colonial Marines Cargo Container"
+
+	icon_state = "uscm3_l"
+
+/obj/structure/cargo_container/uscm/tartarus/mid
+	icon_state = "uscm3_m"
+
+/obj/structure/cargo_container/uscm/chinook/left
+	name = "United States Colonial Marines Cargo Container"
+
+	icon_state = "uscm4_l"
+
+/obj/structure/cargo_container/uscm/chinook/mid
+	icon_state = "uscm4_m"
+
+/obj/structure/cargo_container/uscm/crestus/left
+	name = "United States Colonial Marines Cargo Container"
+
+	icon_state = "uscm5_l"
+
+/obj/structure/cargo_container/uscm/crestus/mid
+	icon_state = "uscm5_m"
+
+/obj/structure/cargo_container/uscm/micor/left
+	name = "United States Colonial Marines Cargo Container"
+
+	icon_state = "uscm6_l"
+
+/obj/structure/cargo_container/uscm/mid
+	icon_state = "uscm_m"
+
+/obj/structure/cargo_container/uscm/right
+	icon_state = "uscm_r"

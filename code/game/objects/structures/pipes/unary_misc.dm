@@ -30,6 +30,9 @@
 	if(opened)
 		. += "The maintenance hatch is open."
 
+/obj/structure/pipes/unary/freezer/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 
 /obj/structure/pipes/unary/heat_exchanger
 	name = "heat exchanger"

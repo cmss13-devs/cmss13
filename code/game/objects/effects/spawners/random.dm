@@ -137,7 +137,7 @@
 				prob(2);/obj/item/attachable/suppressor,\
 				prob(2);/obj/item/attachable/burstfire_assembly,\
 				prob(2);/obj/item/attachable/compensator,\
-				prob(1);/obj/item/attachable/scope/mini_iff,\
+				prob(1);/obj/item/attachable/alt_iff_scope,\
 				prob(1);/obj/item/attachable/heavy_barrel,\
 				prob(1);/obj/item/attachable/scope/mini)
 
@@ -203,7 +203,7 @@
 				/obj/item/storage/belt/champion,\
 				/obj/item/tool/soap/deluxe,\
 				/obj/item/tool/pickaxe/silver,\
-				/obj/item/tool/pen/invisible,\
+				/obj/item/tool/pen/white,\
 				/obj/item/explosive/grenade/smokebomb,\
 				/obj/item/corncob,\
 				/obj/item/poster,\
@@ -277,7 +277,7 @@
 				prob(4);/obj/item/clothing/glasses/meson/refurbished,\
 				prob(4);/obj/item/clothing/glasses/science,\
 				prob(4);/obj/item/clothing/glasses/hud/sensor,\
-				prob(4);/obj/item/clothing/glasses/sunglasses/sechud/eyepiece)
+				prob(4);/obj/item/clothing/glasses/hud/security)
 
 /obj/effect/spawner/random/goggles/lowchance
 	spawn_nothing_percentage = 80
@@ -576,21 +576,15 @@
 // OB spawners
 */
 
-
-GLOBAL_VAR_INIT(spawn_ob, TRUE)
-
 /obj/effect/spawner/random/warhead
 	name = "random orbital warhead"
 	desc = "This is a random orbital warhead."
 	icon = 'icons/obj/items/new_assemblies.dmi'
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "ob_warhead_1"
 	spawn_on_roundstart = TRUE
 
 /obj/effect/spawner/random/warhead/item_to_spawn()
-	if(!GLOB.spawn_ob)
-		return /obj/item/paper/warhead_recycle
-
 	var/list/spawnables = list(
 		/obj/structure/ob_ammo/warhead/explosive,
 		/obj/structure/ob_ammo/warhead/incendiary,

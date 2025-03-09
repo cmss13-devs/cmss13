@@ -34,7 +34,7 @@
 \
 								50; /obj/item/storage/firstaid/regular, \
 								50; /obj/item/storage/firstaid/fire, \
-								75; /obj/item/storage/box/wy_mre, \
+								75; /obj/item/storage/box/mre/wy, \
 \
 								100; /obj/item/storage/backpack/commando, \
 								100; /obj/item/storage/backpack/yautja, \
@@ -109,13 +109,15 @@
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
 /obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/xenomorph/hellhound/H)
-	if(istype(H)) H.gib() //No mercy.
+	if(istype(H))
+		H.gib() //No mercy.
 
 /datum/game_mode/huntergames/announce()
 	return TRUE
 
 /obj/effect/landmark/hunter_primary
 	name = "hunter_primary"
+	icon_state = "hunter_primary"
 
 /obj/effect/landmark/hunter_primary/Initialize(mapload, ...)
 	. = ..()
@@ -127,6 +129,7 @@
 
 /obj/effect/landmark/hunter_secondary
 	name = "hunter_secondary"
+	icon_state = "hunter_secondary"
 
 /obj/effect/landmark/hunter_secondary/Initialize(mapload, ...)
 	. = ..()
@@ -138,6 +141,7 @@
 
 /obj/effect/landmark/crap_item
 	name = "crap_item"
+	icon_state = "item_crap"
 
 /obj/effect/landmark/crap_item/Initialize(mapload, ...)
 	. = ..()
@@ -149,6 +153,7 @@
 
 /obj/effect/landmark/good_item
 	name = "good_item"
+	icon_state = "item_good"
 
 /obj/effect/landmark/good_item/Initialize(mapload, ...)
 	. = ..()
@@ -234,7 +239,8 @@
 		H = new(picked)
 
 	H.key = M.key
-	if(H.client) H.client.change_view(GLOB.world_view_size)
+	if(H.client)
+		H.client.change_view(GLOB.world_view_size)
 
 	if(!H.mind)
 		H.mind = new(H.key)
@@ -281,17 +287,14 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 			H.remove_language(LANGUAGE_ENGLISH)
 			H.add_language(LANGUAGE_RUSSIAN)
-		if(7) //Highlander!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), WEAR_FEET)
-		if(8) //Assassin!
+		if(7) //Assassin!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(9) //Corporate guy
+		if(8) //Corporate guy
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(H), WEAR_JACKET)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(10) //Colonial Marshal
+		if(9) //Colonial Marshal
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
@@ -340,7 +343,8 @@
 	. = ..()
 	checkwin_counter++
 	ticks_passed++
-	if(prob(2)) dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.
+	if(prob(2))
+		dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.
 
 	if(round_started > 0) //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 		round_started--
@@ -422,7 +426,7 @@
 		GLOB.round_statistics.end_round_player_population = count_humans()
 
 		GLOB.round_statistics.log_round_statistics()
-
+		GLOB.round_statistics.save()
 
 	return 1
 
@@ -433,7 +437,8 @@
 	if(!istype(T))
 		return FALSE
 
-	if(OT == "good" && !in_crate && prob(15)) in_crate = 1 //Place some good drops in crates.
+	if(OT == "good" && !in_crate && prob(15))
+		in_crate = 1 //Place some good drops in crates.
 
 	var/obj_type //Object path.
 	var/atom/location = in_crate ? new /obj/structure/closet/crate(T) : T //Where it's going to be placed.

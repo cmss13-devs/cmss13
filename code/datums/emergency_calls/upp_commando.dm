@@ -54,7 +54,7 @@
 /datum/emergency_call/upp_commando/low_threat
 	name = "UPP Commandos"
 
-/datum/emergency_call/upp_commando/create_member(datum/mind/mind, turf/override_spawn_loc)
+/datum/emergency_call/upp_commando/low_threat/create_member(datum/mind/mind, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

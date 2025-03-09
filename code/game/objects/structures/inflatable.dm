@@ -8,6 +8,10 @@
 
 /obj/item/inflatable/attack_self(mob/user)
 	..()
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("[src] must be inflated on a proper surface!"))
+		return
 	var/turf/open/T = user.loc
 	if(!(istype(T) && T.allow_construction))
 		to_chat(user, SPAN_WARNING("[src] must be inflated on a proper surface!"))
@@ -77,21 +81,24 @@
 		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)
-	if(!isanimal(user)) return
+	if(!isanimal(user))
+		return
 	var/mob/living/simple_animal/M = user
-	if(M.melee_damage_upper <= 0) return
+	if(M.melee_damage_upper <= 0)
+		return
 	attack_generic(M, M.melee_damage_upper)
 
 
 /obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
-	if(!istype(W)) return
+	if(!istype(W))
+		return
 
 	if (can_puncture(W))
 		visible_message(SPAN_DANGER("<b>[user] pierces [src] with [W]!</b>"))
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
-		..()
+		. = ..()
 	return
 
 /obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
@@ -173,8 +180,8 @@
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_closed"
 
-	var/state = 0 //closed, 1 == open
-	var/isSwitchingStates = 0
+	var/open = FALSE
+	var/isSwitchingStates = FALSE
 
 /obj/structure/inflatable/door/attack_remote(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
 	if(isRemoteControlling(user)) //so the AI can't open it
@@ -184,10 +191,12 @@
 	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
-	if(isSwitchingStates) return
+	if(isSwitchingStates)
+		return
 	if(ismob(user))
 		var/mob/M = user
-		if(world.time - user.last_bumped <= 60) return //NOTE do we really need that?
+		if(world.time - user.last_bumped <= 60)
+			return //NOTE do we really need that?
 		if(M.client)
 			if(iscarbon(M))
 				var/mob/living/carbon/C = M
@@ -197,36 +206,43 @@
 				SwitchState()
 
 /obj/structure/inflatable/door/proc/SwitchState()
-	if(state)
-		Close()
+	if(open)
+		close()
 	else
-		Open()
+		open()
 
-
-/obj/structure/inflatable/door/proc/Open()
-	isSwitchingStates = 1
+/obj/structure/inflatable/door/proc/open()
+	isSwitchingStates = TRUE
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_opening",src)
-	sleep(10)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/inflatable/door/proc/finish_open()
+	if(!loc)
+		return
 	density = FALSE
 	opacity = FALSE
-	state = 1
+	open = TRUE
 	update_icon()
-	isSwitchingStates = 0
+	isSwitchingStates = FALSE
 
-/obj/structure/inflatable/door/proc/Close()
-	isSwitchingStates = 1
+/obj/structure/inflatable/door/proc/close()
+	isSwitchingStates = TRUE
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_closing",src)
-	sleep(10)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/inflatable/door/proc/finish_close()
+	if(!loc)
+		return
 	density = TRUE
 	opacity = FALSE
-	state = 0
+	open = FALSE
 	update_icon()
-	isSwitchingStates = 0
+	isSwitchingStates = FALSE
 
 /obj/structure/inflatable/door/update_icon()
-	if(state)
+	if(open)
 		icon_state = "door_open"
 	else
 		icon_state = "door_closed"
@@ -260,8 +276,12 @@
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
 	icon = 'icons/obj/items/storage/boxes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+	)
 	icon_state = "inf_box"
-	item_state = "syringe_kit"
+	item_state = "box"
 	max_storage_space = 21
 
 /obj/item/storage/briefcase/inflatable/Initialize()
@@ -273,3 +293,6 @@
 	new /obj/item/inflatable(src)
 	new /obj/item/inflatable(src)
 	new /obj/item/inflatable(src)
+
+/obj/item/storage/briefcase/inflatable/small
+	w_class = SIZE_MEDIUM

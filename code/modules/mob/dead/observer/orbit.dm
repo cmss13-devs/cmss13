@@ -49,6 +49,7 @@
 	var/list/data = list()
 
 	var/list/humans = list()
+	var/list/responders = list()
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
@@ -64,6 +65,7 @@
 	var/list/marshal = list()
 	var/list/synthetics = list()
 	var/list/predators = list()
+	var/list/hunted = list()
 	var/list/animals = list()
 	var/list/dead = list()
 	var/list/ghosts = list()
@@ -149,16 +151,23 @@
 
 				if(istype(get_area(human), /area/tdome))
 					in_thunderdome += list(serialized)
+					continue
+
+				if(issynth(human) && !isinfiltratorsynthetic(human))
+					synthetics += list(serialized)
+
+				if(human.job in FAX_RESPONDER_JOB_LIST)
+					responders += list(serialized)
 				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
-				else if(issynth(human) && !isinfiltratorsynthetic(human))
-					synthetics += list(serialized)
 				else if(isyautja(human))
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)
+				else if(human.faction in FACTION_LIST_HUNTED)
+					hunted += list(serialized)
 				else if(human.faction in FACTION_LIST_UPP)
 					upp += list(serialized)
 				else if(human.faction in FACTION_LIST_CLF)
@@ -194,6 +203,7 @@
 	data["clf"] = clf
 	data["wy"] = wy
 	data["twe"] = twe
+	data["responders"] = responders
 	data["freelancer"] = freelancer
 	data["contractor"] = contractor
 	data["mercenary"] = mercenary
@@ -201,6 +211,7 @@
 	data["marshal"] = marshal
 	data["synthetics"] = synthetics
 	data["predators"] = predators
+	data["hunted"] = hunted
 	data["animals"] = animals
 	data["dead"] = dead
 	data["ghosts"] = ghosts

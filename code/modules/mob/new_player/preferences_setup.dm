@@ -202,6 +202,16 @@
 	preview_dummy.update_hair()
 	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
 		character_trait.unapply_trait(preview_dummy)
+
+	var/gear_to_preview = gear.Copy()
+	var/loadout_to_preview = get_active_loadout()
+	if(loadout_to_preview)
+		gear_to_preview += loadout_to_preview
+
+	for(var/gear_type in gear_to_preview)
+		var/datum/gear/gear = GLOB.gear_datums_by_type[gear_type]
+		gear.equip_to_user(preview_dummy, override_checks = TRUE, drop_instead_of_del = FALSE)
+
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
 	// If the dummy was equipped with marine armor.
@@ -231,13 +241,19 @@
 		rotate_right.screen_loc = "preview:1:-16,0"
 	owner.add_to_screen(rotate_right)
 
-/datum/preferences/proc/job_pref_to_gear_preset()
-	var/high_priority
+/// Returns the role that is selected on High
+/datum/preferences/proc/get_high_priority_job()
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)
-			high_priority = job
+			return job
+
+	return JOB_SQUAD_MARINE
+
+/datum/preferences/proc/job_pref_to_gear_preset()
+	var/high_priority = get_high_priority_job()
 
 	switch(high_priority)
+		// USCM JOBS
 		if(JOB_SQUAD_MARINE)
 			return /datum/equipment_preset/uscm/private_equipped
 		if(JOB_SQUAD_ENGI)
@@ -302,12 +318,48 @@
 			return /datum/equipment_preset/uscm_ship/uscm_medical/cmo
 		if(JOB_DOCTOR)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/doctor
+		if(JOB_FIELD_DOCTOR)
+			return /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
 		if(JOB_RESEARCHER)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 		if(JOB_NURSE)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/nurse
 		if(JOB_MESS_SERGEANT)
 			return /datum/equipment_preset/uscm_ship/chef
+		// UPP JOBS
+		if(JOB_UPP)
+			return /datum/equipment_preset/upp/soldier/dressed
+		if(JOB_UPP_ENGI)
+			return /datum/equipment_preset/upp/sapper/dressed
+		if(JOB_UPP_MEDIC)
+			return /datum/equipment_preset/upp/medic/dressed
+		if(JOB_UPP_SPECIALIST)
+			return /datum/equipment_preset/upp/specialist/dressed
+		if(JOB_UPP_LEADER)
+			return /datum/equipment_preset/upp/leader/dressed
+		if(JOB_UPP_POLICE)
+			return /datum/equipment_preset/upp/military_police/dressed
+		if(JOB_UPP_LT_OFFICER)
+			return /datum/equipment_preset/upp/officer/dressed
+		if(JOB_UPP_SUPPLY)
+			return /datum/equipment_preset/upp/supply/dressed
+		if(JOB_UPP_LT_DOKTOR)
+			return /datum/equipment_preset/upp/doctor/dressed
+		if(JOB_UPP_SRLT_OFFICER)
+			return /datum/equipment_preset/upp/officer/senior/dressed
+		if(JOB_UPP_KPT_OFFICER)
+			return /datum/equipment_preset/upp/officer/kapitan/dressed
+		if(JOB_UPP_CO_OFFICER)
+			return /datum/equipment_preset/upp/officer/major/dressed
+		if(JOB_UPP_COMMISSAR)
+			return /datum/equipment_preset/upp/commissar/dressed
+		if(JOB_UPP_SUPPORT_SYNTH)
+			return /datum/equipment_preset/upp/synth/dressed
+		if(JOB_UPP_JOE)
+			return /datum/equipment_preset/synth/working_joe/upp
+		if(JOB_UPP_PILOT)
+			return /datum/equipment_preset/upp/pilot
+		// MISC-JOBS
 		if(JOB_SURVIVOR)
 			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].survivor_types
 			if(length(survivor_types))
@@ -321,7 +373,7 @@
 		if(JOB_CO_SURVIVOR)
 			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))
 				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
-			return /datum/equipment_preset/uscm_ship/commander
+			return /datum/equipment_preset/uscm_co
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]

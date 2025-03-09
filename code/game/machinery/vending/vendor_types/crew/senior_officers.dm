@@ -12,6 +12,7 @@
 		combined += GLOB.cm_vending_clothing_req_officer
 		combined += GLOB.cm_vending_clothing_cmo
 		combined += GLOB.cm_vending_clothing_military_police_chief
+		combined += GLOB.cm_vending_clothing_auxiliary_officer
 		return combined
 	if(user.job == JOB_XO)
 		return GLOB.cm_vending_clothing_xo
@@ -76,6 +77,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
 
 
@@ -85,12 +87,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("SHIPSIDE GEAR", 0, null, null, null),
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Insulated Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Headset", 0, /obj/item/device/radio/headset/almayer/ce, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Welding Goggles", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
-		list("KN5500/2 PDA", 0, /obj/item/device/working_joe_pda/uscm, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
-		list("Tactical Compact Nailgun", 0, /obj/item/weapon/gun/smg/nailgun/compact/tactical, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
+		list("Standard Equipment", 0, list(/obj/item/clothing/gloves/yellow, /obj/item/device/radio/headset/almayer/ce,  /obj/item/clothing/shoes/marine, /obj/item/clothing/glasses/welding, /obj/item/device/working_joe_pda/uscm, /obj/item/weapon/gun/smg/nailgun/compact/tactical), MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Chief Engineer Uniform", 0, /obj/item/clothing/under/marine/officer/ce, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -171,6 +168,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 
 		list("Spare Equipment", 0, null, null, null),
 		list("Technician's Headset", 15, /obj/item/device/radio/headset/almayer/mt, null, VENDOR_ITEM_REGULAR),
+		list("Synthetic Reset Key", 15, /obj/item/device/defibrillator/synthetic, null, VENDOR_ITEM_REGULAR),
 
 	))
 
@@ -229,10 +227,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/cmo, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
-		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
-		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
-		list("Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
-		list("Prescription Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
+		list("Combined Medical and Reagent Scanner HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Prescription Combined Medical and Reagent Scanner HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/science/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Chief Medical Officer's Uniform", 0, /obj/item/clothing/under/rank/chief_medical_officer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -245,6 +241,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Grey Scrubs", 0, /obj/item/clothing/under/rank/medical/grey, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
+		list("Chief Medical Officer's Labcoat", 0, /obj/item/clothing/suit/storage/labcoat/officer, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Medical's apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
@@ -382,6 +379,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_xo, list(
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Flashlight", 1, /obj/item/device/flashlight, null, VENDOR_ITEM_REGULAR),
+		list("Synthetic Reset Key", 10, /obj/item/device/defibrillator/synthetic, null, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/effect/essentials_set/xo/shotgunpreset
@@ -413,7 +411,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE ONE)", 0, null, null, null),
 		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -440,7 +438,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("PATCHES", 0, null, null, null),
 		list("Falling Falcons Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
+		list("Falling Falcons UA Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falconalt, null, VENDOR_ITEM_REGULAR),
+		list("USCM Large Chest Patch", 1, /obj/item/clothing/accessory/patch/uscmlarge, null, VENDOR_ITEM_REGULAR),
 		list("USCM Shoulder Patch", 1, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
+		list("United Americas Shoulder patch", 1, /obj/item/clothing/accessory/patch/ua, null, VENDOR_ITEM_REGULAR),
+		list("United Americas Flag Shoulder patch", 1, /obj/item/clothing/accessory/patch/uasquare, null, VENDOR_ITEM_REGULAR),
 
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),

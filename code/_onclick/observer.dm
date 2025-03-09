@@ -3,7 +3,8 @@
 	set name = "Toggle Inquisitiveness"
 	set desc = "Sets whether your ghost examines everything on click by default"
 	set category = "Ghost.Settings"
-	if(!client) return
+	if(!client)
+		return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
 		to_chat(src, SPAN_NOTICE(" You will now examine everything you click on."))
@@ -34,22 +35,29 @@
 					do_observe(xeno)
 					return FALSE
 
-				if(!SSticker.mode.xeno_bypass_timer)
-					if((!islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
-						var/to_wait = XENO_LEAVE_TIMER - xeno.away_timer
-						if(islarva(xeno))
-							to_wait = XENO_LEAVE_TIMER_LARVA - xeno.away_timer
-						if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
-							to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
-						do_observe(target)
-						return FALSE
+				if(xeno.health <= 0)
+					to_chat(src, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
+					do_observe(xeno)
+					return FALSE
 
+				var/required_leave_time = XENO_LEAVE_TIMER
+				var/required_dead_time = XENO_JOIN_DEAD_TIME
+				if(islarva(xeno))
+					required_leave_time = XENO_LEAVE_TIMER_LARVA
+					required_dead_time = XENO_JOIN_DEAD_LARVA_TIME
+
+				if(xeno.away_timer < required_leave_time)
+					var/to_wait = required_leave_time - xeno.away_timer
+					if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
+						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
+					do_observe(target)
+					return FALSE
+
+				if(!SSticker.mode.xeno_bypass_timer)
 					var/deathtime = world.time - timeofdeath
-					if(deathtime < XENO_JOIN_DEAD_LARVA_TIME)
-						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
-						message = SPAN_WARNING("[message]")
-						to_chat(src, message)
-						to_chat(src, SPAN_WARNING("You must wait at least 2.5 minutes before rejoining the game!"))
+					if(deathtime < required_dead_time && !bypass_time_of_death_checks)
+						to_chat(src, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]."))
+						to_chat(src, SPAN_WARNING("You must wait at least [required_dead_time / 600] minute\s before rejoining the game!"))
 						do_observe(target)
 						return FALSE
 
@@ -60,13 +68,16 @@
 							do_observe(target)
 							return FALSE
 
-				if(alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", "Yes", "No") != "Yes")
+				if(tgui_alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", list("Yes", "No")) != "Yes")
 					return FALSE
-				if(((!islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(xeno) && xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || xeno.stat == DEAD) // Do it again, just in case
+
+				if(xeno.away_timer < required_leave_time || xeno.stat == DEAD || !(xeno in GLOB.living_xeno_list)) // Do it again, just in case
 					to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 					return FALSE
+
 				SSticker.mode.transfer_xeno(src, xeno)
 				return TRUE
+
 			do_observe(target)
 			return TRUE
 

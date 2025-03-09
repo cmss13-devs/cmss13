@@ -153,8 +153,22 @@
 		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
 		return
 
-	var/dat = "<html>"
-	dat += "<body>"
+	var/dat = {"
+	<table width='100%'>
+	<tr>
+	<td width='20%'>
+	<div align='center'>
+	<b>Search:</b>
+	</div>
+	</td>
+	<td width='80%'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:99%;'>
+	</td>
+	</tr>
+	</table>
+	<br>
+	<table border=0 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
+	"}
 
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, key))
 	for(var/datum/view_record/note_view/N as anything in NL)
@@ -166,20 +180,19 @@
 		if(N.is_ban)
 			var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
 			color = "#880000"
-			dat += "<font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
+			dat += "<tr><td><font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		else
 			if(N.is_confidential)
 				color = "#AA0055"
 
-			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
-		dat += "<br><br>"
+			dat += "<tr><td><font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
+		dat += "</td></tr>"
 
-	dat += "<br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];add_player_info=[key]'>Add Note</A><br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
+	dat += "</table><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info=[key]'>Add Note</A><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
 
-	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
 
 /datum/admins/proc/check_ckey(target_key as text)
@@ -281,9 +294,10 @@
 
 	var/channel = "ADMIN:"
 	channel = "[admin_holder.rank]:"
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/client as anything in GLOB.admins)
 		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
-			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
+			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> [ooc_prefix]<span class='prefix'><EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
 /datum/admins/proc/alertall()
 	set name = "Alert All"
@@ -294,9 +308,11 @@
 		return
 
 	var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
-	if(!message) return
+	if(!message)
+		return
 	var/color = input(src, "Input your message color:", "Color Selector") as color|null
-	if(!color) return
+	if(!color)
+		return
 
 	for(var/mob/living/mob in view(usr.client))
 		show_blurb(mob, 15, message, null, "center", "center", color, null, null, 1)
@@ -390,10 +406,10 @@
 	channel = "[admin_holder.rank]:"
 	if(check_rights(R_MOD|R_ADMIN,0))
 		color = "mentorstaff"
-
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
+			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> [ooc_prefix]<span class='prefix'><EM><EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mentor_say()
 	var/msg = input(src, null, "mentorsay \"text\"") as text|null
@@ -532,20 +548,20 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_area'>Jump to Area</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_turf'>Jump to Turf</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_mob'>Jump to Mob</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_obj'>Jump to Object</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_key'>Jump to Ckey</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=get_mob'>Teleport Mob to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=get_key'>Teleport Ckey to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_area'>Jump to Area</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_turf'>Jump to Turf</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_mob'>Jump to Mob</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_obj'>Jump to Object</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_key'>Jump to Ckey</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=get_mob'>Teleport Mob to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=get_key'>Teleport Ckey to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
 		<BR>
 		"}
 
@@ -566,9 +582,9 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
 		Forcibly removes vehicle clamp from vehicle selected from a list. Drops it under the vehicle.<BR>
-		<A href='?src=\ref[src];[HrefToken()];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
 		Fully restores vehicle modules and hull health.<BR>
 		"}
 
@@ -586,21 +602,21 @@
 
 /datum/admins/proc/in_view_panel()
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=sleepall'>Sleep All In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=wakeall'>Wake All In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=sleepall'>Sleep All In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=wakeall'>Wake All In View</A><BR>
 
-		<A href='?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
 		<BR>
 		"}
 
@@ -664,248 +680,3 @@
 		return
 
 	admin_holder.in_view_panel()
-
-/client/proc/toggle_lz_resin()
-	set name = "Toggle LZ Weeding"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
-	message_admins("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
-
-/proc/set_lz_resin_allowed(allowed = TRUE)
-	if(allowed)
-		for(var/area/A in GLOB.all_areas)
-			if(A.flags_area & AREA_UNWEEDABLE)
-				continue
-			A.is_resin_allowed = TRUE
-		msg_admin_niche("Areas close to landing zones are now weedable.")
-	else
-		for(var/area/A in GLOB.all_areas)
-			if(A.flags_area & AREA_UNWEEDABLE)
-				continue
-			A.is_resin_allowed = initial(A.is_resin_allowed)
-		msg_admin_niche("Areas close to landing zones cannot be weeded now.")
-	GLOB.resin_lz_allowed = allowed
-
-/client/proc/toggle_ob_spawn() // not really a flag but i'm cheating here
-	set name = "Toggle OB Spawn"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	GLOB.spawn_ob = !GLOB.spawn_ob
-	message_admins("[src] has [GLOB.spawn_ob ? "allowed OBs to spawn" : "prevented OBs from spawning"] at roundstart.")
-
-/client/proc/toggle_sniper_upgrade()
-	set name = "Toggle Engi Sniper Upgrade"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_NO_SNIPER_SENTRY
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY) ? "disallowed engineers from picking" : "allowed engineers to pick"] long-range sentry upgrades.")
-
-/client/proc/toggle_attack_dead()
-	set name = "Toggle Attack Dead"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_NO_ATTACK_DEAD
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) ? "prevented dead mobs from being" : "allowed dead mobs to be"] attacked.")
-
-/client/proc/toggle_disposal_mobs()
-	set name = "Toggle Disposable Mobs"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_EVENT, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_DISPOSABLE_MOBS
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) ? "allowed mobs to fit" : "prevented mobs fitting"] inside disposals.")
-
-/client/proc/toggle_strip_drag()
-	set name = "Toggle Strip/Drag Dead"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_NO_STRIPDRAG_ENEMY
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) ? "prevented dead humans from being" : "allowed dead humans to be"] stripped and dragged around by non-matching IFF players.")
-
-/client/proc/toggle_uniform_strip()
-	set name = "Toggle Uniform Strip Dead"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_STRIP_NONUNIFORM_ENEMY
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) ? "allowed dead humans to be stripped of everything but their uniform, boots, armor, helmet, and ID" : "prevented dead humans from being stripped of anything"].")
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY))
-		message_admins("WARNING: Dead enemy players can still be stripped of everything, as the Strip/Drag toggle flag isn't active.")
-
-/client/proc/toggle_strong_defibs()
-	set name = "Toggle Strong Defibs"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_STRONG_DEFIBS
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) ? "allowed defibs to ignore armor" : "made defibs operate normally"].")
-
-/client/proc/toggle_blood_optimization()
-	set name = "Toggle Blood Optimization"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_BLOOD_OPTIMIZATION
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION) ? "toggled blood optimization on" : "toggled blood optimization off"].")
-
-/client/proc/toggle_combat_cas()
-	set name = "Toggle Combat CAS Equipment"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_NO_COMBAT_CAS
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) ? "toggled combat CAS off" : "toggled combat CAS on"].")
-
-/client/proc/toggle_lz_protection()
-	set name = "Toggle LZ Mortar Protection"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_LZ_PROTECTION
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled LZ protection on, mortars can no longer fire there" : "toggled LZ protection off, mortars can now fire there"].")
-
-/client/proc/toggle_shipside_sd()
-	set name = "Toggle Shipside SD Protection"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_SHIPSIDE_SD
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")
-
-/client/proc/toggle_hardcore_perma()
-	set name = "Toggle Hardcore"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) && tgui_alert(usr, "Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.", "Confirmation", list("Yes", "Cancel")) != "Yes")
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
-	message_admins("[src] has toggled Hardcore [MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "on, causing all humans to instantly go perma on death" : "off, causing all humans to die like normal"].")
-
-/client/proc/toggle_bypass_joe_restriction()
-	set name = "Toggle Working Joe Restrictions"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_EVENT, TRUE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_BYPASS_JOE
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE) ? "allowed players to bypass (except whitelist)" : "prevented players from bypassing"] Working Joe spawn conditions.")
-
-/client/proc/toggle_joe_respawns()
-	set name = "Toggle Working Joe Respawns"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_EVENT, TRUE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_DISABLE_JOE_RESPAWN
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN) ? "disabled" : "enabled"] Working Joe respawns.")
-
-/client/proc/toggle_lz_hazards()
-	set name = "Toggle LZ Hazards"
-	set category = "Admin.Flags"
-	set desc = "Distress Signal: Whether miasma smoke is spawned 3 minutes after the start of the round."
-
-	if(!admin_holder || !check_rights(R_EVENT, TRUE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
-		to_chat(usr, SPAN_WARNING("LZ hazards are only applicable to distress signal!"))
-		return
-
-	if(ROUND_TIME > LZ_HAZARD_START)
-		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_LZ_HAZARD_ACTIVATED
-	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED) ? "enabled" : "disabled"] LZ hazards.")

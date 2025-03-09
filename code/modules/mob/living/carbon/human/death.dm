@@ -1,6 +1,6 @@
 /mob/living/carbon/human/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/is_a_synth = issynth(src)
-	ghostize() 
+	ghostize()
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))
 			continue
@@ -49,7 +49,7 @@
 	GLOB.alive_human_list -= src
 
 	if(!gibbed)
-		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA))
+		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/permadeath))
 			if(!(species.flags & IS_SYNTHETIC)) // Synths wont perma
 				status_flags |= PERMANENTLY_DEAD
 		if(HAS_TRAIT(src, TRAIT_INTENT_EYES)) //their eyes need to be 'offline'
@@ -72,6 +72,10 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MARINE_DEATH, src, gibbed)
 
 	give_action(src, /datum/action/ghost)
+
+	if(!should_block_game_interaction(src) && istype(SSticker.mode, /datum/game_mode/colonialmarines) && !(datum_flags & DF_VAR_EDITED) && ckey)
+		var/datum/entity/marine_death/death_entry = DB_ENTITY(/datum/entity/marine_death)
+		death_entry.load_data(src, cause)
 
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)
@@ -97,7 +101,7 @@
 		if(last_living_human && shipside_humans_count <= 1 && (GLOB.last_qm_callout + 2 MINUTES) < world.time)
 			GLOB.last_qm_callout = world.time
 			// Tell the xenos where the human is.
-			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+			xeno_announcement("I sense the last tallhost hiding in [get_area_name(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			// Tell the human he is the last guy.
 			if(last_living_human.client)
 				to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))

@@ -32,12 +32,12 @@
 			if(!M.check_dock(S, silent=TRUE))
 				continue
 			destination_found = TRUE
-			dat += "<A href='?src=[REF(src)];move=[S.id]'>Send to [S.name]</A><br>"
+			dat += "<A href='byond://?src=[REF(src)];move=[S.id]'>Send to [S.name]</A><br>"
 		if(!destination_found)
 			dat += "<B>Shuttle Locked</B><br>"
 			if(admin_controlled)
 				dat += "Authorized personnel only<br>"
-				dat += "<A href='?src=[REF(src)];request=1]'>Request Authorization</A><br>"
+				dat += "<A href='byond://?src=[REF(src)];request=1]'>Request Authorization</A><br>"
 
 	var/datum/browser/popup = new(user, "computer", "<div align='center'>[M ? M.name : "shuttle"]</div>", 300, 200)
 	popup.set_content("<center>[dat]</center>")
@@ -371,7 +371,7 @@
 	///If true, the lifeboat is in the process of having the xeno override removed by the pilot.
 	var/override_being_removed = FALSE
 	///How long it takes to unlock the console
-	var/remaining_time = 180 SECONDS 
+	var/remaining_time = 180 SECONDS
 
 /obj/structure/machinery/computer/shuttle/lifeboat/ex_act(severity)
 	return
@@ -394,7 +394,7 @@
 				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
 				override_being_removed = FALSE
 				return
-			remaining_time = remaining_time - 20 SECONDS 
+			remaining_time = remaining_time - 20 SECONDS
 			if(remaining_time > 0)
 				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time / 10] seconds left."))
 		to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
@@ -417,11 +417,10 @@
 				var/mob/living/carbon/human/human_user = user
 				var/obj/item/card/id/card = human_user.get_idcard()
 
-				if(!card)
-					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
-					return
+				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // if no card or not enough access, check for held id
+					card = locate(/obj/item/card/id) in human_user
 
-				if(!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))
+				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // still no valid card found?
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 

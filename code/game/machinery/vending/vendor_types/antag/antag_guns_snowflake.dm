@@ -49,6 +49,8 @@
 		/obj/item/weapon/gun/pkp,
 		/obj/item/ammo_magazine/pkp,
 		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
 	)
 
 /obj/effect/essentials_set/leader/upp

@@ -35,7 +35,7 @@
 
 	B.icon_state = icon_state
 
-	var/icon/I = new('icons/obj/items/drinks.dmi', icon_state)
+	var/icon/I = new('icons/obj/items/food/drinks.dmi', icon_state)
 	I.Blend(B.broken_outline, ICON_OVERLAY, rand(5), 1)
 	I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
 	B.icon = I
@@ -123,6 +123,7 @@
 	name = "\improper Griffeater Gin"
 	desc = "A bottle of high-quality gin, produced in the New London Space Station."
 	icon_state = "ginbottle"
+
 	center_of_mass = "x=16;y=4"
 
 /obj/item/reagent_container/food/drinks/bottle/gin/Initialize()
@@ -133,6 +134,7 @@
 	name = "\improper Uncle Git's Special Reserve"
 	desc = "A premium single-malt whiskey, gently matured for four years by hillbillies in the backwaters of Alabama."
 	icon_state = "whiskeybottle"
+	item_state = "whiskeybottle"
 	center_of_mass = "x=16;y=3"
 
 /obj/item/reagent_container/food/drinks/bottle/whiskey/Initialize()
@@ -143,6 +145,7 @@
 	name = "\improper Weyland-Yutani Sake"
 	desc = "Sake made with ancient techniques passed down for thousands of years. Fermented in Iowa by the Weyland-Yutani Corporation."
 	icon_state = "sakebottle"
+	item_state = "sakebottle"
 	center_of_mass = "x=17;y=7"
 
 /obj/item/reagent_container/food/drinks/bottle/sake/Initialize()
@@ -226,6 +229,7 @@
 	name = "\improper Caccavo Guaranteed Quality tequila"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
 	icon_state = "tequilabottle"
+	item_state = "tequilabottle"
 	center_of_mass = "x=16;y=3"
 
 /obj/item/reagent_container/food/drinks/bottle/tequila/Initialize()
@@ -266,6 +270,7 @@
 	name = "Captain Pete's Cuban Spiced Rum"
 	desc = "Named after the famed Captain 'Cuban' Pete, this rum is about as volatile as his final mission."
 	icon_state = "rumbottle"
+	item_state = "rumbottle"
 	center_of_mass = "x=16;y=8"
 
 /obj/item/reagent_container/food/drinks/bottle/rum/Initialize()
@@ -276,6 +281,7 @@
 	name = "Flask of Holy Water"
 	desc = "A flask of the chaplain's holy water."
 	icon_state = "holyflask"
+	item_state = "holyflask"
 	center_of_mass = "x=17;y=10"
 
 /obj/item/reagent_container/food/drinks/bottle/holywater/Initialize()
@@ -296,6 +302,7 @@
 	name = "Robert Robust's Coffee Liqueur"
 	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK"
 	icon_state = "kahluabottle"
+	item_state = "kahluabottle"
 	center_of_mass = "x=17;y=3"
 
 /obj/item/reagent_container/food/drinks/bottle/kahlua/Initialize()
@@ -326,6 +333,7 @@
 	name = "Doublebeard Bearded Special Wine"
 	desc = "A faint aura of unease and asspainery surrounds the bottle."
 	icon_state = "winebottle"
+	item_state = "winebottle"
 	center_of_mass = "x=16;y=4"
 
 /obj/item/reagent_container/food/drinks/bottle/wine/Initialize()
@@ -445,7 +453,11 @@
 	name = "Orange Juice"
 	desc = "Full of vitamins and deliciousness!"
 	icon_state = "orangejuice"
-	item_state = "carton"
+	item_state = "orangejuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	center_of_mass = "x=16;y=7"
 	isGlass = 0
 
@@ -465,7 +477,11 @@
 	name = "Milk Cream"
 	desc = "It's cream. Made from milk. What else did you think you'd find in there?"
 	icon_state = "cream"
-	item_state = "carton"
+	item_state = "cream"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
@@ -477,7 +493,11 @@
 	name = "Tomato Juice"
 	desc = "Well, at least it LOOKS like tomato juice. You can't tell with all that redness."
 	icon_state = "tomatojuice"
-	item_state = "carton"
+	item_state = "tomatojuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
@@ -489,7 +509,11 @@
 	name = "Lime Juice"
 	desc = "Sweet-sour goodness."
 	icon_state = "limejuice"
-	item_state = "carton"
+	item_state = "limejuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 

@@ -1,22 +1,3 @@
-/client
-	var/datum/entity/clan_player/clan_info
-
-/client/load_player_data_info(datum/entity/player/player)
-	set waitfor = FALSE
-
-	. = ..()
-	if(GLOB.RoleAuthority && check_whitelist_status(WHITELIST_PREDATOR))
-		clan_info = GET_CLAN_PLAYER(player.id)
-		clan_info.sync()
-
-		if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
-			clan_info.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_ADMIN]
-			clan_info.permissions |= CLAN_PERMISSION_ALL
-		else
-			clan_info.permissions &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
-
-		clan_info.save()
-
 /client/proc/usr_create_new_clan()
 	set name = "Create New Clan"
 	set category = "Debug"
@@ -175,17 +156,20 @@
 
 /client/proc/has_clan_permission(permission_flag, clan_id, warn)
 	if(!clan_info)
-		if(warn) to_chat(src, "You do not have a yautja whitelist!")
+		if(warn)
+			to_chat(src, "You do not have a yautja whitelist!")
 		return FALSE
 
 	if(clan_id)
 		if(clan_id != clan_info.clan_id)
-			if(warn) to_chat(src, "You do not have permission to perform actions on this clan!")
+			if(warn)
+				to_chat(src, "You do not have permission to perform actions on this clan!")
 			return FALSE
 
 
 	if(!(clan_info.permissions & permission_flag))
-		if(warn) to_chat(src, "You do not have the necessary permissions to perform this action!")
+		if(warn)
+			to_chat(src, "You do not have the necessary permissions to perform this action!")
 		return FALSE
 
 	return TRUE
@@ -377,12 +361,12 @@
 
 				if(input == "Remove from clan" && target.clan_id)
 					target.clan_id = null
-					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_YOUNG]
+					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from their clan."))
 					message_admins("[key_name_admin(src)] has removed [player_name] from their current clan.")
 				else if(input == "Remove from Ancient")
-					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_YOUNG]
-					target.permissions = GLOB.clan_ranks[CLAN_RANK_YOUNG].permissions
+					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
+					target.permissions = GLOB.clan_ranks[CLAN_RANK_BLOODED].permissions
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from ancient."))
 					message_admins("[key_name_admin(src)] has removed [player_name] from ancient.")
 				else if(input == "Make Ancient" && is_clan_manager)
@@ -406,7 +390,7 @@
 					return
 
 				var/list/datum/yautja_rank/ranks = GLOB.clan_ranks.Copy()
-				ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
+				ranks -= list(CLAN_RANK_ADMIN, CLAN_RANK_YOUNG)// Admin rank should not and cannot be obtained from here, Youngblood should only be used for non-WL players
 
 				var/datum/yautja_rank/chosen_rank
 				if(has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))

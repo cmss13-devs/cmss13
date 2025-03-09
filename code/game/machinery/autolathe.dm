@@ -7,6 +7,7 @@
 	desc = "It produces items using metal and glass."
 	icon_state = "autolathe"
 	var/base_state = "autolathe"
+	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	unacidable = TRUE
 	density = TRUE
 	anchored = TRUE

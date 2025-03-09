@@ -1,6 +1,15 @@
+/// How many smallhosts to preassigned players to spawn?
+#define MONKEYS_TO_TOTAL_RATIO 1/32
+/// When to start opening the podlocks identified as "map_lockdown" (takes 30s)
+#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
+/// How many pipes explode at a time during hijack?
 #define HIJACK_EXPLOSION_COUNT 5
+/// What percent do we consider a 'majority?' to win
+#define MAJORITY 0.5
+/// How long to delay the round completion (command is immediately notified)
 #define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
-#define LZ_HAZARD_START (3 MINUTES)
+/// The ratio of forsaken to groundside humans before calling more forsaken xenos
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -127,7 +136,8 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
+	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 
 	return ..()
 
@@ -212,7 +222,7 @@
 /datum/game_mode/colonialmarines/proc/start_lz_hazards()
 	if(SSobjectives.first_drop_complete)
 		return // Just for sanity
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_roundstart_miasma))
 		return
 
 	log_game("Distress Signal LZ hazards active!")
@@ -251,7 +261,7 @@
 				if(!istype(turf, /turf/closed/wall))
 					continue
 				var/turf/closed/wall/wall = turf
-				if(wall.hull)
+				if(wall.turf_flags & TURF_HULL)
 					continue
 			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
 
@@ -263,6 +273,10 @@
 
 /// Called during the dropship flight, clears resin and indicates to those in flight that resin near the LZ has been cleared.
 /datum/game_mode/colonialmarines/proc/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		msg_admin_niche("Skipped weed killer event due to lz_weeding modifier already getting set")
+		return
+
 	clear_proximity_resin()
 
 	var/list/announcement_mobs = list()
@@ -297,7 +311,7 @@
 				if(!istype(turf, /turf/closed/wall))
 					continue
 				var/turf/closed/wall/wall = turf
-				if(wall.hull)
+				if(wall.turf_flags & TURF_HULL)
 					continue
 			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
 
@@ -322,9 +336,6 @@
 			continue
 
 		near_area.is_resin_allowed = TRUE
-
-
-#define MONKEYS_TO_TOTAL_RATIO 1/32
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
 	if(!GLOB.players_preassigned)
@@ -354,8 +365,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-
-#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
@@ -419,8 +428,8 @@
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
-		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 		if(next_stat_check <= world.time)
 			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
@@ -442,8 +451,6 @@
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
-
-#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 ///Checks for humans groundside after hijack, spawns forsaken if requirements met
 /datum/game_mode/colonialmarines/proc/check_ground_humans()
@@ -470,8 +477,6 @@
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
-#undef GROUNDSIDE_XENO_MULTIPLIER
-
 /**
  * Makes the mainship shake, along with playing a klaxon sound effect.
  */
@@ -483,13 +488,13 @@
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
-#undef PODLOCKS_OPEN_WAIT
-
 // Resource Towers
 
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear), marine_dropship), DROPSHIP_DROP_FIRE_DELAY)
+	DB_ENTITY(/datum/entity/survivor_survival) // Record surv survival right now
+	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES) // And 7 minutes after drop. By then, marines will have found them, most likely
 
 	add_current_round_status_to_end_results("First Drop")
 	clear_lz_hazards()
@@ -500,7 +505,8 @@
 /datum/game_mode/colonialmarines/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
-
+	if(ROUND_TIME < 10 MINUTES)
+		return
 	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
@@ -521,36 +527,61 @@
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(hivenumber)
-	set waitfor = 0
-	if(!(flags_round_type & MODE_INFESTATION)) return
-	xeno_queen_deaths++
-	var/num_last_deaths = xeno_queen_deaths
-	sleep(QUEEN_DEATH_COUNTDOWN)
-	//We want to make sure that another queen didn't die in the interim.
+/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
+	. = ..()
+	if(.[2] != 0) // index 2 = num_xenos
+		return .
 
-	if(xeno_queen_deaths == num_last_deaths && !round_finished)
-		var/datum/hive_status/HS
-		for(var/HN in GLOB.hive_datum)
-			HS = GLOB.hive_datum[HN]
-			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
-				//Some Queen is alive, we shouldn't end the game yet
-				return
-		if(length(HS.totalXenos) <= 3)
-			round_finished = MODE_INFESTATION_M_MAJOR
-		else
-			round_finished = MODE_INFESTATION_M_MINOR
+	// Ensure there is no queen
+	var/datum/hive_status/hive
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			.[2]++
+	return .
+
+/datum/game_mode/colonialmarines/check_queen_status(hivenumber, immediately = FALSE)
+	if(!(flags_round_type & MODE_INFESTATION))
+		return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	if(hive.need_round_end_check && !hive.can_delay_round_end())
+		return
+
+	if(!immediately)
+		//We want to make sure that another queen didn't die in the interim.
+		addtimer(CALLBACK(src, PROC_REF(check_queen_status), hivenumber, TRUE), QUEEN_DEATH_COUNTDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+		return
+
+	if(round_finished)
+		return
+
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			return
+
+	if(length(hive.totalXenos) <= 3)
+		round_finished = MODE_INFESTATION_M_MAJOR
+	else
+		round_finished = MODE_INFESTATION_M_MINOR
 
 ///////////////////////////////
 //Checks if the round is over//
 ///////////////////////////////
 /datum/game_mode/colonialmarines/check_finished()
-	if(round_finished) return 1
+	if(round_finished)
+		return 1
 
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-#define MAJORITY 0.5 // What percent do we consider a 'majority?'
 
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
@@ -626,6 +657,8 @@
 
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
+
+	GLOB.round_statistics?.save()
 
 	return 1
 
@@ -796,6 +829,9 @@
 		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++
 
+#undef MONKEYS_TO_TOTAL_RATIO
+#undef PODLOCKS_OPEN_WAIT
 #undef HIJACK_EXPLOSION_COUNT
-#undef MARINE_MAJOR_ROUND_END_DELAY
 #undef MAJORITY
+#undef MARINE_MAJOR_ROUND_END_DELAY
+#undef GROUNDSIDE_XENO_MULTIPLIER

@@ -1,6 +1,6 @@
 /* HUD DATUMS */
 
-//GLOBAL HUD LIST
+//GLOBAL HUD LIST: This must be indexed in order (or the defines stringified so its an asslist)
 GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_SECURITY_BASIC = new /datum/mob_hud/security/basic(),
 	MOB_HUD_SECURITY_ADVANCED = new /datum/mob_hud/security/advanced(),
@@ -17,6 +17,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
+	MOB_HUD_FACTION_CMB = new /datum/mob_hud/faction/cmb(),
+	MOB_HUD_FACTION_NSPA = new /datum/mob_hud/faction/nspa(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
@@ -216,6 +218,12 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/faction/pmc
 	faction_to_check = FACTION_PMC
 
+/datum/mob_hud/faction/nspa
+	faction_to_check = FACTION_NSPA
+
+/datum/mob_hud/faction/cmb
+	faction_to_check = FACTION_MARSHAL
+
 /datum/mob_hud/faction/observer
 	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN, HOLOCARD_HUD)
 
@@ -341,7 +349,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		holder.icon_state = "xenoarmor0"
 	else
 		var/amount = round(armor_integrity*100/armor_integrity_max, 10)
-		if(!amount) amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
+		if(!amount)
+			amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
 		holder.icon_state = "xenoarmor[amount]"
 
 /mob/living/carbon/human/med_hud_set_health()
@@ -488,7 +497,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 						holder2_set = 1
 					return
 
-				holder.icon_state = HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "hudhcdead" : "huddead"
+				holder.icon_state = HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/permadeath) ? "hudhcdead" : "huddead"
 				if(!holder2_set)
 					holder2.icon_state = holder.icon_state
 					holder3.icon_state = "huddead"

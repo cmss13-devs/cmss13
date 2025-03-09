@@ -62,6 +62,9 @@
 	if(current_mob.ally_of_hivenumber(hivenumber))
 		return 0
 
+	//if(HAS_TRAIT_FROM(current_mob, TRAIT_CLOAKED, "bush"))
+	//	return 0
+
 	if((current_mob == last_hit) && (last_hit.stat == CONSCIOUS))
 		return 5
 

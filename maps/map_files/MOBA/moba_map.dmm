@@ -26,14 +26,6 @@
 	},
 /turf/open/shuttle/red,
 /area/misc/moba/base)
-"ag" = (
-/obj/effect/alien/resin/moba_turret/left,
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/effect/decal/hybrisa/road/lines3,
-/turf/open/hybrisa/street/asphalt,
-/area/misc/moba)
 "ah" = (
 /obj/effect/alien/resin/moba_turret/right,
 /turf/open/gm/dirt,
@@ -55,10 +47,10 @@
 /area/misc/moba)
 "an" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 4
+	dir = 6;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/floor/almayer,
 /area/misc/moba)
@@ -68,10 +60,10 @@
 /area/misc/moba)
 "ap" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 8
+	dir = 10;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/floor/almayer,
 /area/misc/moba)
@@ -173,19 +165,19 @@
 /area/misc/moba)
 "aK" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 4
+	dir = 5;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/misc/moba)
 "aL" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 8
+	dir = 9;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/misc/moba)
@@ -287,32 +279,6 @@
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
-"bg" = (
-/obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0;
-	dir = 6
-	},
-/turf/open/floor/almayer,
-/area/misc/moba)
-"bh" = (
-/obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/misc/moba)
-"bi" = (
-/obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0;
-	dir = 10
-	},
-/turf/open/floor/almayer,
-/area/misc/moba)
 "bj" = (
 /turf/open/gm/dirt,
 /area/misc/moba)
@@ -335,6 +301,7 @@
 /area/misc/moba)
 "bp" = (
 /obj/effect/moba_minion_checkpoint/right/bot_straight1,
+/obj/effect/alien/resin/moba_turret/right,
 /turf/open/gm/dirt/desert2,
 /area/misc/moba)
 "bq" = (
@@ -353,9 +320,9 @@
 /area/misc/moba)
 "bt" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/misc/moba)
@@ -373,9 +340,9 @@
 "bx" = (
 /obj/effect/moba_minion_checkpoint/left/bot_straight3,
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/misc/moba)
@@ -497,9 +464,9 @@
 /area/misc/moba)
 "cb" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/misc/moba)
@@ -554,8 +521,8 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1;
 	icon_state = "chair_alt";
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/misc/moba)
@@ -593,23 +560,23 @@
 /area/misc/moba)
 "cr" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble9{
+	density = 0;
 	pixel_x = -12;
-	pixel_y = 12;
-	density = 0
+	pixel_y = 12
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/misc/moba)
 "cs" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble5{
-	pixel_y = 12;
-	density = 0
+	density = 0;
+	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -630,8 +597,8 @@
 /area/misc/moba)
 "cu" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble6{
-	pixel_y = 12;
-	density = 0
+	density = 0;
+	pixel_y = 12
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -649,8 +616,8 @@
 /area/misc/moba)
 "cw" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble4{
-	pixel_y = 16;
-	density = 0
+	density = 0;
+	pixel_y = 16
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -664,10 +631,10 @@
 /area/misc/moba)
 "cx" = (
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -694,17 +661,17 @@
 /area/misc/moba)
 "cC" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/misc/moba)
 "cD" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/misc/moba)
@@ -713,9 +680,9 @@
 /area/misc/moba)
 "cF" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_1{
-	pixel_y = 16;
+	layer = 6;
 	pixel_x = -26;
-	layer = 6
+	pixel_y = 16
 	},
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/moba_unslashinator,
@@ -723,9 +690,9 @@
 /area/misc/moba)
 "cG" = (
 /obj/structure/largecrate/random/mini{
+	layer = 3.1;
 	pixel_x = 9;
-	pixel_y = 12;
-	layer = 3.1
+	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -803,8 +770,8 @@
 /area/misc/moba)
 "cX" = (
 /obj/structure/holohoop{
-	dir = 1;
-	density = 0
+	density = 0;
+	dir = 1
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/white,
@@ -902,8 +869,8 @@
 /obj/structure/bed/stool{
 	buckling_y = 14;
 	layer = 4;
-	pixel_y = 13;
-	pixel_x = 11
+	pixel_x = 11;
+	pixel_y = 13
 	},
 /obj/structure/bed/chair/comfy{
 	dir = 8;
@@ -919,8 +886,8 @@
 	pixel_y = 20
 	},
 /obj/item/spacecash/ewallet{
-	pixel_y = -2;
-	pixel_x = 9
+	pixel_x = 9;
+	pixel_y = -2
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/misc/moba)
@@ -988,8 +955,8 @@
 /area/misc/moba)
 "dt" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /obj/structure/largecrate/empty,
 /obj/item/clothing/head/hardhat{
@@ -1163,18 +1130,18 @@
 /area/misc/moba)
 "dV" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	color = "#c59f52";
 	dir = 4;
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "stone";
-	color = "#c59f52"
+	icon_state = "stone"
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/misc/moba)
 "dW" = (
 /obj/item/spacecash/c1{
-	pixel_y = -3;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -3
 	},
 /obj/structure/prop/hybrisa/misc/pole{
 	color = "#acb1b7";
@@ -1185,10 +1152,10 @@
 /area/misc/moba)
 "dX" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	color = "#c59f52";
 	dir = 8;
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "stone";
-	color = "#c59f52"
+	icon_state = "stone"
 	},
 /obj/item/spacecash/c10{
 	pixel_x = 4;
@@ -1225,8 +1192,8 @@
 /area/misc/moba/base/fountain)
 "ec" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
@@ -1355,10 +1322,10 @@
 	pixel_x = -1
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	color = "#c59f52";
 	dir = 4;
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "stone";
-	color = "#c59f52"
+	icon_state = "stone"
 	},
 /obj/item/ashtray/glass{
 	icon_state = "ashtray_bork_gl";
@@ -1370,18 +1337,18 @@
 /area/misc/moba)
 "ez" = (
 /obj/item/spacecash/c1{
-	pixel_y = -4;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = -4
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/misc/moba)
 "eA" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	color = "#c59f52";
 	dir = 8;
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "stone";
-	color = "#c59f52"
+	icon_state = "stone"
 	},
 /obj/structure/bed/sofa/hybrisa/sofa/black{
 	icon_state = "couch_vet1_red";
@@ -1426,8 +1393,8 @@
 /area/misc/moba)
 "eF" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /obj/structure/cargo_container/hybrisa/containersextended/blueleft,
 /obj/effect/moba_unslashinator,
@@ -1517,9 +1484,9 @@
 /area/misc/moba)
 "eX" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/misc/moba)
@@ -1553,13 +1520,13 @@
 /area/misc/moba)
 "fb" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	color = "#c59f52";
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "stone";
-	color = "#c59f52"
+	icon_state = "stone"
 	},
 /obj/item/spacecash/c20{
-	pixel_y = -2;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = -2
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -1574,9 +1541,9 @@
 /area/misc/moba)
 "fd" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	color = "#c59f52";
 	icon = 'icons/obj/structures/props/platforms.dmi';
-	icon_state = "stone";
-	color = "#c59f52"
+	icon_state = "stone"
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/hybrisa/tile/tileblackcheckered,
@@ -1596,12 +1563,12 @@
 /area/misc/moba)
 "ff" = (
 /obj/structure/roof/hybrisa/signs/casinolights{
-	pixel_x = -2;
-	pixel_y = -1;
 	light_color = "#c7852d";
 	light_on = 1;
 	light_power = 3;
-	light_range = 4
+	light_range = 4;
+	pixel_x = -2;
+	pixel_y = -1
 	},
 /obj/effect/moba_unslashinator,
 /turf/closed/wall/hybrisa/research/reinforced/hull,
@@ -1616,12 +1583,12 @@
 /area/misc/moba)
 "fh" = (
 /obj/structure/bed/chair{
+	buckling_x = -4;
+	buckling_y = 12;
 	dir = 4;
 	icon_state = "chair_alt";
 	pixel_x = -4;
-	pixel_y = 12;
-	buckling_x = -4;
-	buckling_y = 12
+	pixel_y = 12
 	},
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3";
@@ -1659,18 +1626,18 @@
 "fl" = (
 /obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 10;
-	pixel_y = 32;
+	layer = 3;
 	lazy_nodes = 0;
-	layer = 3
+	pixel_y = 32
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/misc/moba)
 "fm" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/hybrisa/street/sidewalk/south,
@@ -1678,15 +1645,15 @@
 "fn" = (
 /obj/item/tool/warning_cone{
 	layer = 2;
-	pixel_y = 19;
-	pixel_x = 13
+	pixel_x = 13;
+	pixel_y = 19
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "fo" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /obj/structure/fence/dark,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -1829,8 +1796,8 @@
 /area/misc/moba)
 "fL" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/misc/moba)
@@ -2024,8 +1991,8 @@
 /area/misc/moba)
 "gq" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -2133,9 +2100,9 @@
 /obj/effect/landmark/moba_tunnel_spawner,
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3d3d3d";
+	name = "rubber mat";
 	pixel_x = 3;
-	pixel_y = 4;
-	name = "rubber mat"
+	pixel_y = 4
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/strata/orange_cover,
@@ -2150,8 +2117,8 @@
 /area/misc/moba)
 "gM" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue{
-	icon_state = "meridian_lightblue_damage_4";
 	health = 750;
+	icon_state = "meridian_lightblue_damage_4";
 	pixel_x = -2
 	},
 /obj/effect/moba_unslashinator,
@@ -2159,8 +2126,8 @@
 /area/misc/moba)
 "gN" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
@@ -2175,28 +2142,28 @@
 	dir = 10
 	},
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 5
+	dir = 5;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirt,
 /area/misc/moba)
 "gR" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 1
+	dir = 1;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/misc/moba)
 "gS" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 9
+	dir = 9;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/misc/moba)
@@ -2266,8 +2233,8 @@
 "hd" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8;
-	layer = 2;
-	explo_proof = 0
+	explo_proof = 0;
+	layer = 2
 	},
 /obj/structure/closet/crate/miningcar/yellow{
 	layer = 3
@@ -2277,16 +2244,16 @@
 "he" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8;
-	layer = 2;
-	explo_proof = 0
+	explo_proof = 0;
+	layer = 2
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
 "hf" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 10;
-	layer = 2;
-	explo_proof = 0
+	explo_proof = 0;
+	layer = 2
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/misc/moba)
@@ -2308,8 +2275,8 @@
 /area/misc/moba)
 "hi" = (
 /obj/item/spacecash/c10{
-	pixel_y = -5;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = -5
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/strata/orange_cover,
@@ -2339,8 +2306,8 @@
 /area/misc/moba)
 "hm" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -2384,10 +2351,10 @@
 /area/misc/moba)
 "hw" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 4
+	dir = 4;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/misc/moba)
@@ -2397,10 +2364,10 @@
 /area/misc/moba)
 "hy" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 8
+	dir = 8;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/misc/moba)
@@ -2490,9 +2457,9 @@
 /area/misc/moba)
 "hM" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/misc/moba)
@@ -2506,16 +2473,16 @@
 "hO" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5;
-	layer = 2;
-	explo_proof = 0
+	explo_proof = 0;
+	layer = 2
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
 "hP" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8;
-	layer = 2;
-	explo_proof = 0
+	explo_proof = 0;
+	layer = 2
 	},
 /obj/structure/closet/crate/miningcar/yellow{
 	layer = 3
@@ -2525,8 +2492,8 @@
 "hQ" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8;
-	layer = 2;
-	explo_proof = 0
+	explo_proof = 0;
+	layer = 2
 	},
 /obj/structure/closet/crate/miningcar/yellow{
 	layer = 3
@@ -2536,8 +2503,8 @@
 "hR" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8;
-	layer = 2;
-	explo_proof = 0
+	explo_proof = 0;
+	layer = 2
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/misc/moba)
@@ -2626,17 +2593,17 @@
 /area/misc/moba)
 "if" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
-	pixel_x = -26;
-	layer = 8
+	layer = 8;
+	pixel_x = -26
 	},
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/misc/moba)
 "ig" = (
 /obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 1;
-	pixel_y = 34;
+	layer = 3;
 	lazy_nodes = 0;
-	layer = 3
+	pixel_y = 34
 	},
 /obj/structure/largecrate/empty/case/double,
 /obj/effect/moba_unslashinator,
@@ -2859,9 +2826,9 @@
 /area/misc/moba)
 "iX" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/hybrisa/street/sidewalk/southeast,
@@ -2871,8 +2838,8 @@
 /area/misc/moba)
 "iZ" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_2{
-	pixel_x = -26;
-	layer = 6
+	layer = 6;
+	pixel_x = -26
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/shiva/radiator_tile2,
@@ -2965,8 +2932,8 @@
 	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 10
+	dir = 10;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base)
@@ -2980,8 +2947,8 @@
 "jt" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 6
+	dir = 6;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base)
@@ -3078,8 +3045,8 @@
 /area/misc/moba)
 "jM" = (
 /obj/structure/blackgoocontainer{
-	icon_state = "blackgoocontainer2";
 	dir = 4;
+	icon_state = "blackgoocontainer2";
 	pixel_x = -7;
 	pixel_y = 15
 	},
@@ -3090,9 +3057,9 @@
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
 	dir = 1;
+	name = "rubber mat";
 	pixel_x = -18;
-	pixel_y = 4;
-	name = "rubber mat"
+	pixel_y = 4
 	},
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -3130,8 +3097,8 @@
 /area/misc/moba)
 "jT" = (
 /obj/structure/window/framed/hybrisa/spaceport/reinforced{
-	health = 1e+006;
-	explo_proof = 1
+	explo_proof = 1;
+	health = 1e+006
 	},
 /turf/open/floor/plating,
 /area/misc/moba)
@@ -3199,10 +3166,10 @@
 	dir = 1
 	},
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 6
+	dir = 6;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirt/desert3,
 /area/misc/moba)
@@ -3223,10 +3190,10 @@
 /area/misc/moba)
 "kj" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 10
+	dir = 10;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/misc/moba)
@@ -3411,9 +3378,9 @@
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
 	dir = 1;
-	pixel_y = -29;
 	name = "rubber mat";
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = -29
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/misc/moba)
@@ -3612,17 +3579,17 @@
 "lG" = (
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
+	name = "rubber mat";
 	pixel_x = 14;
-	pixel_y = 4;
-	name = "rubber mat"
+	pixel_y = 4
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
 "lH" = (
 /obj/structure/surface/table/reinforced/cloth,
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketpears{
-	pixel_x = 2;
-	density = 0
+	density = 0;
+	pixel_x = 2
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/corsat/officetiles,
@@ -3630,12 +3597,12 @@
 "lI" = (
 /obj/structure/surface/table/reinforced/cloth,
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots{
-	pixel_x = -10;
-	density = 0
+	density = 0;
+	pixel_x = -10
 	},
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots{
-	pixel_x = 12;
-	density = 0
+	density = 0;
+	pixel_x = 12
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/corsat/officetiles,
@@ -3654,9 +3621,9 @@
 "lK" = (
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
+	name = "rubber mat";
 	pixel_x = -5;
-	pixel_y = 2;
-	name = "rubber mat"
+	pixel_y = 2
 	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/misc/moba)
@@ -3676,8 +3643,8 @@
 /area/misc/moba)
 "lN" = (
 /obj/effect/decal/hybrisa/deco_edging/corner{
-	dir = 8;
 	color = "#d8591d";
+	dir = 8;
 	pixel_y = 2
 	},
 /obj/structure/prop/souto_land/streamer{
@@ -3688,8 +3655,8 @@
 /area/misc/moba)
 "lO" = (
 /obj/effect/decal/hybrisa/deco_edging{
-	dir = 1;
 	color = "#d8591d";
+	dir = 1;
 	pixel_y = 2
 	},
 /obj/structure/prop/souto_land/pole{
@@ -3710,19 +3677,19 @@
 /area/misc/moba)
 "lR" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 5
+	dir = 5;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirtgrassborder/south,
 /area/misc/moba)
 "lS" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 1
+	dir = 1;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirtgrassborder/south,
 /area/misc/moba)
@@ -3876,23 +3843,23 @@
 "mq" = (
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
+	name = "rubber mat";
 	pixel_x = 12;
-	pixel_y = 14;
-	name = "rubber mat"
+	pixel_y = 14
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/misc/moba)
 "mr" = (
 /obj/structure/surface/table/reinforced/cloth,
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples{
+	density = 0;
 	pixel_x = -1;
-	pixel_y = 12;
-	density = 0
+	pixel_y = 12
 	},
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples{
+	density = 0;
 	pixel_x = -1;
-	pixel_y = -10;
-	density = 0
+	pixel_y = -10
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/corsat/officetiles,
@@ -3907,14 +3874,14 @@
 "mt" = (
 /obj/structure/surface/table/reinforced/cloth,
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketmelons{
+	density = 0;
 	pixel_x = -2;
-	pixel_y = 10;
-	density = 0
+	pixel_y = 10
 	},
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketmelons{
+	density = 0;
 	pixel_x = -2;
-	pixel_y = -12;
-	density = 0
+	pixel_y = -12
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/corsat/officetiles,
@@ -3922,9 +3889,9 @@
 "mu" = (
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
-	pixel_y = 17;
+	name = "rubber mat";
 	pixel_x = -6;
-	name = "rubber mat"
+	pixel_y = 17
 	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/misc/moba)
@@ -3946,8 +3913,8 @@
 /area/misc/moba)
 "mx" = (
 /obj/effect/decal/hybrisa/deco_edging{
-	dir = 4;
 	color = "#d8591d";
+	dir = 4;
 	pixel_y = 2
 	},
 /obj/effect/moba_unslashinator,
@@ -3955,15 +3922,15 @@
 /area/misc/moba)
 "my" = (
 /obj/structure/prop/hybrisa/supermart/souto_can_stack{
-	pixel_y = 4;
+	dir = 1;
 	pixel_x = -1;
-	dir = 1
+	pixel_y = 4
 	},
 /obj/structure/prop/hybrisa/supermart/souto_man_prop{
-	pixel_y = 20;
-	pixel_x = -1;
+	density = 0;
 	layer = 4.12;
-	density = 0
+	pixel_x = -1;
+	pixel_y = 20
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 9;
@@ -3994,10 +3961,10 @@
 /area/misc/moba)
 "mC" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 4
+	dir = 4;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/misc/moba)
@@ -4007,10 +3974,10 @@
 /area/misc/moba)
 "mE" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 8
+	dir = 8;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/grass/grass1,
 /area/misc/moba)
@@ -4103,16 +4070,16 @@
 "mT" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 10
+	dir = 10;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/cult,
 /area/misc/moba/base)
 "mU" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 6
+	dir = 6;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/cult,
 /area/misc/moba/base)
@@ -4149,8 +4116,8 @@
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4;
 	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
-	id = "hybrisa_research_labs_lockdown";
 	icon_state = "w_almayer_pdoor0";
+	id = "hybrisa_research_labs_lockdown";
 	opacity = 0
 	},
 /turf/open/floor/almayer/blackfull/west,
@@ -4228,8 +4195,8 @@
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
 	dir = 1;
-	pixel_y = -11;
-	name = "rubber mat"
+	name = "rubber mat";
+	pixel_y = -11
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/corsat/officetiles,
@@ -4237,19 +4204,19 @@
 "nm" = (
 /obj/structure/surface/table/reinforced/cloth,
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketoranges{
-	pixel_x = 10;
-	density = 0
+	density = 0;
+	pixel_x = 10
 	},
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketoranges{
-	pixel_x = -10;
-	density = 0
+	density = 0;
+	pixel_x = -10
 	},
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
 	dir = 1;
+	name = "rubber mat";
 	pixel_x = 12;
-	pixel_y = -14;
-	name = "rubber mat"
+	pixel_y = -14
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/corsat/officetiles,
@@ -4257,8 +4224,8 @@
 "nn" = (
 /obj/structure/surface/table/reinforced/cloth,
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasketpears{
-	pixel_x = -3;
-	density = 0
+	density = 0;
+	pixel_x = -3
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/corsat/officetiles,
@@ -4297,10 +4264,10 @@
 /area/misc/moba)
 "ns" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 4
+	dir = 4;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/misc/moba)
@@ -4360,8 +4327,8 @@
 	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 10
+	dir = 10;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base)
@@ -4455,8 +4422,8 @@
 "nT" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/electrical{
-	pixel_y = 11;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 11
 	},
 /obj/item/device/motiondetector,
 /obj/effect/moba_unslashinator,
@@ -4553,35 +4520,35 @@
 /area/misc/moba)
 "og" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 6
+	dir = 6;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirt,
 /area/misc/moba)
 "oh" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
 	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/misc/moba)
 "oi" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
 	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirtgrassborder/north,
 /area/misc/moba)
 "oj" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 10
+	dir = 10;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirtgrassborder/north,
 /area/misc/moba)
@@ -4759,9 +4726,9 @@
 	pixel_y = 4
 	},
 /obj/structure/blackgoocontainer{
-	pixel_y = -6;
 	layer = 3.01;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = -6
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/west,
@@ -4773,9 +4740,9 @@
 /area/misc/moba)
 "oO" = (
 /obj/structure/sign/poster/music{
+	layer = 2.9;
 	pixel_x = -5;
-	pixel_y = 32;
-	layer = 2.9
+	pixel_y = 32
 	},
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -4794,8 +4761,8 @@
 /area/misc/moba)
 "oQ" = (
 /obj/structure/sign/poster/wylogo{
-	pixel_y = 32;
-	layer = 2.9
+	layer = 2.9;
+	pixel_y = 32
 	},
 /turf/open/floor/strata/orange_edge,
 /area/misc/moba)
@@ -4918,8 +4885,8 @@
 	pixel_y = 12
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 8;
-	layer = 4
+	layer = 4;
+	pixel_x = 8
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
@@ -4963,9 +4930,9 @@
 /area/misc/moba)
 "pv" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/misc/moba)
@@ -4995,8 +4962,8 @@
 "pC" = (
 /obj/structure/surface/table/holotable{
 	density = 0;
-	flipped = 4;
-	dir = 4
+	dir = 4;
+	flipped = 4
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/whitepurple/northeast,
@@ -5099,10 +5066,10 @@
 /area/misc/moba)
 "pQ" = (
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/misc/moba)
@@ -5307,10 +5274,10 @@
 "qA" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/north,
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
@@ -5320,10 +5287,10 @@
 	pixel_y = 5
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/misc/moba)
@@ -5388,7 +5355,6 @@
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
 	},
-/obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
 "qL" = (
@@ -5539,8 +5505,8 @@
 /area/misc/moba)
 "rg" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "windsock";
 	explo_proof = 0;
+	icon_state = "windsock";
 	pixel_x = 6;
 	pixel_y = 6
 	},
@@ -5567,14 +5533,14 @@
 /area/misc/moba)
 "rk" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "smokestack";
-	explo_proof = 0
+	explo_proof = 0;
+	icon_state = "smokestack"
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
@@ -5626,11 +5592,6 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/effect/moba_unslashinator,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/misc/moba)
-"rs" = (
-/obj/effect/moba_unslashinator,
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
@@ -5704,8 +5665,8 @@
 	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 9
+	dir = 9;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base)
@@ -5715,16 +5676,16 @@
 	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 1
+	dir = 1;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base)
 "rF" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 1
+	dir = 1;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base)
@@ -5776,10 +5737,10 @@
 /area/misc/moba)
 "rM" = (
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
@@ -5801,10 +5762,10 @@
 "rQ" = (
 /obj/structure/roof/hybrisa/billboardsandsigns/bigbillboards{
 	dir = 5;
-	pixel_y = 34;
-	pixel_x = 12;
+	layer = 3;
 	lazy_nodes = 0;
-	layer = 3
+	pixel_x = 12;
+	pixel_y = 34
 	},
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -5864,16 +5825,16 @@
 /area/misc/moba)
 "rY" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_full";
-	color = "#858680"
+	color = "#858680";
+	icon_state = "p_stair_full"
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/misc/moba)
 "rZ" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_full";
-	color = "#858680"
+	color = "#858680";
+	icon_state = "p_stair_full"
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
@@ -5882,12 +5843,6 @@
 /obj/structure/platform/metal/almayer/north,
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/misc/moba)
-"sb" = (
-/obj/structure/platform/metal/hybrisa/metalplatform2/west,
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/effect/moba_unslashinator,
-/turf/open/gm/river/ocean/deep_ocean,
 /area/misc/moba)
 "sc" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -5975,16 +5930,16 @@
 "sq" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 9
+	dir = 9;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/cult,
 /area/misc/moba/base)
 "sr" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 5
+	dir = 5;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/cult,
 /area/misc/moba/base)
@@ -6014,19 +5969,19 @@
 	icon_state = "road_edge_decal11"
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "sx" = (
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/misc/moba)
@@ -6070,9 +6025,9 @@
 /area/misc/moba)
 "sF" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /obj/item/tool/warning_cone{
 	pixel_x = 4;
@@ -6089,10 +6044,10 @@
 	pixel_y = 3
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/misc/moba)
@@ -6102,10 +6057,10 @@
 	pixel_y = 16
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/misc/moba)
@@ -6120,10 +6075,10 @@
 /area/misc/moba)
 "sK" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Cop{
-	pixel_y = 4;
-	icon_state = "meridian_cop_damage_3";
-	health = 750;
 	dir = 1;
+	health = 750;
+	icon_state = "meridian_cop_damage_3";
+	pixel_y = 4;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -6188,18 +6143,12 @@
 	level = 3;
 	pixel_x = 16
 	},
-/obj/effect/moba_unslashinator,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/misc/moba)
 "sU" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/moba_unslashinator,
 /turf/open/gm/river/ocean/deep_ocean,
-/area/misc/moba)
-"sV" = (
-/obj/structure/flora/jungle/plantbot1,
-/obj/effect/moba_unslashinator,
-/turf/open/gm/grass/grass1,
 /area/misc/moba)
 "sW" = (
 /obj/structure/barricade/wooden{
@@ -6339,10 +6288,10 @@
 /area/misc/moba)
 "ts" = (
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/misc/moba)
@@ -6351,10 +6300,10 @@
 	dir = 4
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/floor/corsat/plate,
 /area/misc/moba)
@@ -6393,11 +6342,11 @@
 	pixel_y = 15
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 220;
 	color = "#b3aa9b";
 	layer = 3.2;
-	alpha = 220;
-	pixel_x = 32;
-	opacity = 0
+	opacity = 0;
+	pixel_x = 32
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/hybrisa/wood/darkerwood,
@@ -6467,13 +6416,7 @@
 /obj/item/device/flashlight/lamp/tripod/grey{
 	on = 0
 	},
-/obj/effect/moba_unslashinator,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/misc/moba)
-"tJ" = (
-/obj/structure/flora/jungle/planttop1,
-/obj/effect/moba_unslashinator,
-/turf/open/gm/grass/grass1,
 /area/misc/moba)
 "tK" = (
 /obj/structure/prop/mech/armor_booster,
@@ -6542,8 +6485,8 @@
 	},
 /obj/effect/spawner/random/toolbox{
 	layer = 4;
-	pixel_y = 11;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 11
 	},
 /obj/item/tool/wrench,
 /obj/effect/moba_unslashinator,
@@ -6588,11 +6531,11 @@
 /area/misc/moba)
 "ue" = (
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	alpha = 255;
-	pixel_x = 32;
-	opacity = 0
+	opacity = 0;
+	pixel_x = 32
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/hybrisa/wood/darkerwood,
@@ -6600,9 +6543,9 @@
 "uf" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/structure/prop/hybrisa/vehicles/Meridian/Cop{
-	pixel_y = 4;
-	icon_state = "meridian_cop_damage_3";
 	health = 750;
+	icon_state = "meridian_cop_damage_3";
+	pixel_y = 4;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -6631,7 +6574,6 @@
 /area/misc/moba)
 "uj" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/moba_unslashinator,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/misc/moba)
 "uk" = (
@@ -6872,8 +6814,8 @@
 /area/misc/moba)
 "uR" = (
 /obj/structure/prop/hybrisa/vehicles/Ambulance{
-	pixel_y = 8;
 	pixel_x = 14;
+	pixel_y = 8;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -6921,13 +6863,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 1
 	},
-/obj/effect/moba_unslashinator,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/misc/moba)
-"uZ" = (
-/obj/structure/flora/jungle/thickbush,
-/obj/effect/moba_unslashinator,
-/turf/open/gm/grass/grass1,
 /area/misc/moba)
 "va" = (
 /turf/open/floor/plating/warnplate/north,
@@ -6962,16 +6898,16 @@
 	},
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 9
+	dir = 9;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base)
 "vh" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 5
+	dir = 5;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base)
@@ -7064,9 +7000,9 @@
 /area/misc/moba)
 "vw" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_full";
 	color = "#858680";
-	dir = 1
+	dir = 1;
+	icon_state = "p_stair_full"
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/hybrisa/street/sidewalk/north,
@@ -7181,10 +7117,10 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
@@ -7250,10 +7186,10 @@
 	icon_state = "road_edge_decal5"
 	},
 /obj/structure/curtain/colorable_transparent{
+	alpha = 255;
 	color = "#b3aa9b";
 	layer = 3.2;
-	opacity = 0;
-	alpha = 255
+	opacity = 0
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
@@ -7261,8 +7197,8 @@
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/prop/hybrisa/vehicles/Meridian/Black{
 	pixel_y = -8;
-	unslashable = 1;
-	unacidable = 1
+	unacidable = 1;
+	unslashable = 1
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -7454,38 +7390,38 @@
 /area/misc/moba)
 "wG" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 5
+	dir = 5;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/grass/grass1,
 /area/misc/moba)
 "wH" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 1
+	dir = 1;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/grass/grass1,
 /area/misc/moba)
 "wI" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 1
+	dir = 1;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/grass/grass1,
 /area/misc/moba)
 "wJ" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 9
+	dir = 9;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /obj/structure/platform/stone/runed_sandstone,
 /turf/open/gm/grass/grass1,
@@ -7623,8 +7559,8 @@
 "xe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
-	pixel_y = 2;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 2
 	},
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/structure/largecrate/random/mini{
@@ -7647,9 +7583,9 @@
 	pixel_y = 13
 	},
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/hybrisa/street/sidewalk/south,
@@ -7690,10 +7626,10 @@
 /area/misc/moba)
 "xl" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 4
+	dir = 4;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/grass/grass1,
 /area/misc/moba)
@@ -7749,8 +7685,8 @@
 /area/misc/moba)
 "xx" = (
 /obj/structure/largecrate/random/mini/ammo{
-	pixel_y = -4;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = -4
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/prison/cell_stripe/west,
@@ -7778,9 +7714,9 @@
 /area/misc/moba)
 "xC" = (
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/west,
 /area/misc/moba)
@@ -7808,8 +7744,8 @@
 "xG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	pixel_y = -1;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/lines4,
@@ -7833,9 +7769,9 @@
 	pixel_x = -7
 	},
 /obj/item/clothing/head/hardhat/red/kelland{
-	pixel_y = 10;
+	layer = 4.12;
 	pixel_x = -9;
-	layer = 4.12
+	pixel_y = 10
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -7861,8 +7797,8 @@
 /area/misc/moba)
 "xL" = (
 /obj/item/clothing/suit/storage/hazardvest/medical_green{
-	pixel_y = -7;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = -7
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/hybrisa/street/sidewalkfull,
@@ -7917,8 +7853,8 @@
 /area/misc/moba)
 "xV" = (
 /obj/item/storage/toolbox/mechanical{
-	pixel_y = -1;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/cell_stripe/east,
@@ -8010,8 +7946,8 @@
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	pixel_y = -1;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -8081,18 +8017,18 @@
 /area/misc/moba)
 "yu" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
 	center = 0;
-	dir = 6
+	dir = 6;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/misc/moba)
 "yv" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
 	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0
+	overlay_type = "tallgrass_overlay_corner"
 	},
 /turf/open/gm/grass/grass1,
 /area/misc/moba)
@@ -8116,8 +8052,8 @@
 	},
 /obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped{
 	dir = 8;
-	pixel_y = 7;
-	layer = 3.1
+	layer = 3.1;
+	pixel_y = 7
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice4";
@@ -8229,8 +8165,8 @@
 /obj/structure/prop/hybrisa/Factory/Robotic_arm{
 	dir = 4;
 	layer = 4.2;
-	pixel_y = 7;
-	level = 5
+	level = 5;
+	pixel_y = 7
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -8271,8 +8207,8 @@
 	},
 /obj/structure/prop/hybrisa/Factory/Robotic_arm{
 	layer = 4.2;
-	pixel_y = 7;
-	level = 5
+	level = 5;
+	pixel_y = 7
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
@@ -8319,8 +8255,8 @@
 	dir = 4
 	},
 /obj/item/card/id/nspa_silver{
-	pixel_y = 12;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/prison/red/northwest,
@@ -8352,8 +8288,8 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	pixel_y = -1;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -8390,8 +8326,8 @@
 "yU" = (
 /obj/structure/prop/hybrisa/vehicles/Ambulance{
 	dir = 1;
-	pixel_x = 12;
 	layer = 4.2;
+	pixel_x = 12;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -8481,8 +8417,8 @@
 /area/misc/moba)
 "zf" = (
 /obj/item/storage/backpack/lightpack{
-	pixel_y = 8;
-	layer = 2.8
+	layer = 2.8;
+	pixel_y = 8
 	},
 /obj/item/storage/backpack/lightpack{
 	layer = 2.9
@@ -8502,9 +8438,9 @@
 	pixel_y = 10
 	},
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
-	pixel_x = 16;
+	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty.";
 	name = "TWE coffee mug";
-	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty."
+	pixel_x = 16
 	},
 /obj/effect/moba_unslashinator,
 /turf/open/floor/prison/red/northwest,
@@ -8560,8 +8496,8 @@
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	pixel_y = -1;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -8655,17 +8591,17 @@
 	pixel_y = 5
 	},
 /obj/item/storage/fancy/cigar/matchbook/exec_select{
-	pixel_y = 2;
-	pixel_x = -7
+	pixel_x = -7;
+	pixel_y = 2
 	},
 /turf/open/floor/tdome/northeast,
 /area/misc)
 "zA" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras{
+	desc = "GOAAAAAAAAAAAL";
 	dir = 1;
-	name = "spectator console";
-	desc = "GOAAAAAAAAAAAL"
+	name = "spectator console"
 	},
 /obj/structure/machinery/computer/cameras/telescreen{
 	pixel_y = -32
@@ -8755,10 +8691,10 @@
 "zN" = (
 /obj/structure/bed/chair/comfy/hybrisa/black,
 /obj/structure/target{
+	desc = "This guy looks like he knows how to code.";
 	icon = 'icons/mob/humans/human.dmi';
 	icon_state = "marine spriting template";
-	name = "Zonespace";
-	desc = "This guy looks like he knows how to code."
+	name = "Zonespace"
 	},
 /obj/item/clothing/mask/gas/clown_hat{
 	pixel_y = 10
@@ -8768,10 +8704,10 @@
 "zO" = (
 /obj/structure/bed/chair/comfy/hybrisa/black,
 /obj/structure/target{
+	desc = "This guy looks like he can barely code.";
 	icon = 'icons/mob/humans/human.dmi';
 	icon_state = "marine spriting template";
-	name = "DawsonKeyes";
-	desc = "This guy looks like he can barely code."
+	name = "DawsonKeyes"
 	},
 /obj/item/clothing/mask/gas/clown_hat{
 	pixel_y = 10
@@ -8859,16 +8795,16 @@
 "Ae" = (
 /obj/structure/bed/chair/comfy/hybrisa/black,
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop{
-	name = "crowd";
-	desc = "Very judgemental."
+	desc = "Very judgemental.";
+	name = "crowd"
 	},
 /turf/open/floor/tdome/tcomms,
 /area/misc)
 "Af" = (
 /obj/structure/bed/chair/comfy/hybrisa/black,
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop{
-	name = "crowd";
-	desc = "Very judgemental."
+	desc = "Very judgemental.";
+	name = "crowd"
 	},
 /turf/open/floor/tdome/northeast,
 /area/misc)
@@ -8930,9 +8866,9 @@
 "Ar" = (
 /obj/effect/moba_minion_checkpoint/left/top_straight3,
 /obj/structure/machinery/colony_floodlight/street{
-	pixel_y = 12;
 	density = 0;
-	layer = 3.5
+	layer = 3.5;
+	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/misc/moba)
@@ -8999,35 +8935,9 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/space/basic,
 /area/space)
-"AE" = (
-/obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0;
-	dir = 5
-	},
-/turf/open/floor/almayer,
-/area/misc/moba)
-"AF" = (
-/obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0;
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/misc/moba)
-"AG" = (
-/obj/structure/flora/grass/tallgrass/jungle/moba{
-	icon_state = "tallgrass_corner";
-	overlay_type = "tallgrass_overlay_corner";
-	center = 0;
-	dir = 9
-	},
-/turf/open/floor/almayer,
-/area/misc/moba)
 "AH" = (
 /obj/effect/moba_minion_checkpoint/right/top_straight1,
+/obj/effect/alien/resin/moba_turret/right,
 /turf/open/gm/dirt/desert_dug,
 /area/misc/moba)
 "AI" = (
@@ -9108,11 +9018,166 @@
 "Ba" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
-	icon_state = "p_stair_full";
-	dir = 1
+	dir = 1;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/misc/moba/base/fountain)
+"Bb" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 10;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/misc/moba)
+"Bc" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 6;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/misc/moba)
+"Bd" = (
+/obj/effect/moba_minion_checkpoint/left/bot_straight1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/alien/resin/moba_turret/left,
+/turf/open/hybrisa/street/asphalt,
+/area/misc/moba)
+"Be" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/alien/resin/moba_turret/left,
+/turf/open/hybrisa/street/asphalt,
+/area/misc/moba)
+"Bf" = (
+/obj/effect/alien/resin/moba_turret/left,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/misc/moba)
+"Bg" = (
+/turf/open/gm/river/ocean/deep_ocean,
+/area/misc/moba)
+"Bh" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 4;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/misc/moba)
+"Bi" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/misc/moba)
+"Bj" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 8;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/misc/moba)
+"Bk" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 6;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/misc/moba)
+"Bl" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/misc/moba)
+"Bm" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 10;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/misc/moba)
+"Bn" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 6;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/gm/dirtgrassborder/north,
+/area/misc/moba)
+"Bo" = (
+/obj/effect/moba_minion_checkpoint/left/top_straight1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/alien/resin/moba_turret/left,
+/turf/open/hybrisa/street/asphalt,
+/area/misc/moba)
+"Bp" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/alien/resin/moba_turret/left,
+/turf/open/hybrisa/street/asphalt,
+/area/misc/moba)
+"Bq" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 1;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/misc/moba)
+"Br" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 4;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/floor/almayer,
+/area/misc/moba)
+"Bs" = (
+/obj/structure/flora/grass/tallgrass/jungle/moba{
+	center = 0;
+	dir = 8;
+	icon_state = "tallgrass_corner";
+	overlay_type = "tallgrass_overlay_corner"
+	},
+/turf/open/floor/almayer,
+/area/misc/moba)
 "BG" = (
 /obj/effect/moba_minion_checkpoint/left/top_straight4,
 /turf/open/hybrisa/street/sidewalk/north,
@@ -10245,7 +10310,7 @@ vO
 fB
 gD
 gD
-gD
+Bf
 gD
 gD
 fB
@@ -10263,7 +10328,7 @@ fB
 fB
 gD
 gD
-gD
+Bf
 gD
 gD
 fB
@@ -11142,7 +11207,7 @@ Uv
 Uv
 AO
 Aj
-zU
+Bo
 Aq
 Aj
 zU
@@ -11190,7 +11255,7 @@ bO
 bd
 aF
 bv
-bd
+Bd
 aF
 YI
 Uv
@@ -12967,7 +13032,7 @@ Uv
 bu
 bc
 aE
-ak
+cD
 bc
 aE
 ak
@@ -13024,7 +13089,7 @@ Uv
 bu
 bc
 aE
-cD
+ak
 bc
 aE
 ak
@@ -13080,7 +13145,7 @@ Uv
 Uv
 bu
 bc
-aE
+Bp
 ak
 bc
 aE
@@ -13128,7 +13193,7 @@ bu
 bc
 aE
 bu
-bc
+Be
 aE
 ak
 Uv
@@ -13194,7 +13259,7 @@ Uv
 Uv
 bu
 bc
-ag
+aE
 ak
 bc
 aE
@@ -13254,8 +13319,8 @@ bc
 aE
 ak
 bc
-aE
-ak
+Bk
+Bh
 Uv
 zm
 yS
@@ -13311,8 +13376,8 @@ bc
 aE
 cD
 bc
-aE
-ak
+Bl
+Bi
 Uv
 zn
 yT
@@ -13368,8 +13433,8 @@ bc
 aE
 ak
 bc
-aE
-ak
+Bm
+Bj
 Uv
 zo
 yU
@@ -13591,9 +13656,9 @@ ai
 "}
 (78,1,1) = {"
 ai
-an
+Br
 aK
-AE
+xo
 xo
 xo
 bD
@@ -13614,9 +13679,9 @@ uj
 tI
 sT
 sa
-rs
+nS
 qK
-eg
+aC
 cK
 cK
 cK
@@ -13641,16 +13706,16 @@ bS
 bD
 xo
 xo
-bg
-aK
+xo
+aI
 an
 ai
 "}
 (79,1,1) = {"
 ai
 ao
-ao
-AF
+Bq
+aI
 aI
 aI
 bD
@@ -13669,9 +13734,9 @@ vy
 sU
 sU
 sU
-sU
-sb
-cf
+ca
+ca
+ca
 cf
 cf
 cf
@@ -13698,16 +13763,16 @@ bT
 bD
 aI
 aI
-bh
-ao
-ao
+aI
+aI
+Bb
 ai
 "}
 (80,1,1) = {"
 ai
 ao
-ao
-AF
+Bq
+aI
 aI
 aI
 bD
@@ -13723,14 +13788,14 @@ fO
 eK
 eK
 ei
-WK
-WK
-WK
-WK
-WK
-WK
-WK
-WK
+Bg
+Bg
+ca
+ca
+ca
+Bg
+Bg
+Bg
 WK
 WK
 WK
@@ -13755,16 +13820,16 @@ bU
 bD
 aI
 aI
-bh
-ao
-ao
+aI
+aI
+aI
 ai
 "}
 (81,1,1) = {"
 ai
 ao
-ao
-AF
+Bq
+aI
 aI
 aI
 bD
@@ -13783,9 +13848,9 @@ ej
 cg
 cg
 cg
-cg
-cg
-cg
+ca
+ca
+ca
 cg
 cg
 cg
@@ -13812,16 +13877,16 @@ bV
 bD
 aI
 aI
-bh
-ao
-ao
+aI
+aI
+Bc
 ai
 "}
 (82,1,1) = {"
 ai
-ap
+Bs
 aL
-AG
+xo
 xo
 xo
 bD
@@ -13837,14 +13902,14 @@ ik
 eL
 eL
 gu
-uZ
-kT
-tJ
-sV
-sc
-kT
-kT
-kT
+ar
+aq
+qh
+ay
+ca
+aq
+aq
+aq
 ch
 kT
 oe
@@ -13869,8 +13934,8 @@ bS
 bD
 xo
 xo
-bi
-aL
+xo
+aI
 ap
 ai
 "}
@@ -14052,8 +14117,8 @@ bE
 bj
 bj
 bj
-aN
-az
+Bn
+xl
 aj
 cO
 aj
@@ -14109,8 +14174,8 @@ bE
 bj
 bj
 bj
-aO
-at
+oi
+mD
 aj
 cP
 yV
@@ -14166,8 +14231,8 @@ bE
 bj
 bj
 bj
-aQ
-aq
+oj
+mE
 aj
 aq
 cN
@@ -14218,7 +14283,7 @@ aj
 "}
 (89,1,1) = {"
 aj
-as
+aq
 bE
 bj
 bj
@@ -14275,7 +14340,7 @@ aj
 "}
 (90,1,1) = {"
 aj
-bW
+ar
 bE
 bj
 bj
@@ -14334,7 +14399,7 @@ aj
 aj
 aq
 bE
-ah
+bj
 bj
 bl
 aO
@@ -14448,7 +14513,7 @@ aj
 aj
 aq
 bE
-bj
+ah
 bj
 bj
 aO
@@ -14496,7 +14561,7 @@ ar
 bE
 bj
 bj
-bj
+ah
 aO
 aq
 aj
@@ -17199,7 +17264,7 @@ wS
 gb
 ga
 fx
-bj
+ah
 qo
 qn
 gC
@@ -17217,7 +17282,7 @@ gC
 gb
 ko
 hE
-bj
+ah
 gU
 gV
 gB

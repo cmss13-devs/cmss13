@@ -490,6 +490,8 @@
 		1, 0.5)) // SS220 TTS EDIT from "modular/text_to_speech/code/sound.dm"
 
 	// BANDAMARINES EDIT START
+	S["shout_orders"] >> shout_orders
+	shout_orders = sanitize_integer(shout_orders, FALSE, TRUE, TRUE)
 	S["quick_cast"] >> quick_cast
 	quick_cast = sanitize_integer(quick_cast, FALSE, TRUE, FALSE)
 	// BANDAMARINES EDIT END
@@ -614,6 +616,7 @@
 
 	// BANDAMARINES EDIT START
 	S["quick_cast"] << quick_cast
+	S["shout_orders"] << shout_orders
 	// BANDAMARINES EDIT END
 
 	return TRUE

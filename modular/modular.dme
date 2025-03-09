@@ -10,6 +10,7 @@
 #include "cyrillic_fixes/_cyrillic_fixes.dme"
 #include "quick_cast/_quick_cast.dme"
 #include "respawn/_respawn.dme"
+#include "shout_orders/_shout_orders.dme"
 #include "sounds/_sounds.dme"
 #include "translations/_translations.dme"
 #include "stats_viewer/_stats_viewer.dme"

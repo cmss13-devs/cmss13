@@ -13,7 +13,7 @@ export const meta = {
 
 const Story = (props: {
   readonly theme: string;
-  readonly setTheme: Function;
+  readonly setTheme: (value: React.SetStateAction<string>) => void;
 }) => {
   return (
     <Section>

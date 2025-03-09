@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-undef */
-import { useBackend } from '../../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Button,
   ColorBox,
@@ -7,11 +7,12 @@ import {
   LabeledList,
   NumberInput,
   Stack,
-} from '../../components';
+} from 'tgui/components';
+
 import {
-  EntryGeneratorNumbersListProps,
-  FloatGeneratorColorProps,
-  FloatGeneratorProps,
+  type EntryGeneratorNumbersListProps,
+  type FloatGeneratorColorProps,
+  type FloatGeneratorProps,
   P_DATA_GENERATOR,
   ParticleUIData,
   RandToNumber,
@@ -52,7 +53,7 @@ export const FloatGenerator = (props: FloatGeneratorProps) => {
           <Stack.Item>
             <NumberInput
               animated
-              minValue={-Infinity}
+              minValue={0}
               maxValue={Infinity}
               step={1}
               value={float || 0}
@@ -180,7 +181,7 @@ export const EntryGeneratorNumbersList = (
           <Stack.Item>
             <NumberInput
               animated
-              minValue={-Infinity}
+              minValue={0}
               maxValue={Infinity}
               step={1}
               value={input || 0}
@@ -202,7 +203,7 @@ export const EntryGeneratorNumbersList = (
           <Stack.Item>
             <NumberInput
               animated
-              minValue={-Infinity}
+              minValue={0}
               maxValue={Infinity}
               step={1}
               value={input[0]}
@@ -215,7 +216,7 @@ export const EntryGeneratorNumbersList = (
             />
             <NumberInput
               animated
-              minValue={-Infinity}
+              minValue={0}
               maxValue={Infinity}
               step={1}
               value={input[1]}
@@ -229,7 +230,7 @@ export const EntryGeneratorNumbersList = (
             {allow_z ? (
               <NumberInput
                 animated
-                minValue={-Infinity}
+                minValue={0}
                 maxValue={Infinity}
                 step={1}
                 value={input[2]}

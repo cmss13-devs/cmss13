@@ -99,7 +99,8 @@ class IFrameIndexedDbBackend {
       iframe.onload = () => resolve(this);
     });
 
-    this.iframeWindow = document.body.appendChild(iframe).contentWindow;
+    this.documentElement = document.body.appendChild(iframe);
+    this.iframeWindow = this.documentElement.contentWindow;
 
     return completePromise;
   }
@@ -142,6 +143,12 @@ class IFrameIndexedDbBackend {
 
     this.iframeWindow.postMessage({ type: 'ping' }, '*');
     return promise;
+  }
+
+  async destroy() {
+    document.body.removeChild(this.documentElement);
+    this.documentElement = null;
+    this.iframeWindow = null;
   }
 }
 
@@ -210,11 +217,15 @@ export class StorageProxy {
   constructor() {
     this.backendPromise = (async () => {
       if (!Byond.TRIDENT) {
-        const iframe = new IFrameIndexedDbBackend();
-        await iframe.ready();
+        if (Byond.storageCdn) {
+          const iframe = new IFrameIndexedDbBackend();
+          await iframe.ready();
 
-        if ((await iframe.ping()) === true) {
-          return iframe;
+          if ((await iframe.ping()) === true) {
+            return iframe;
+          }
+
+          iframe.destroy();
         }
 
         if (!testHubStorage()) {

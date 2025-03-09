@@ -137,6 +137,7 @@
 	reload_sound = 'sound/weapons/handling/nsg23_reload.ogg'
 	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
+	force = 10
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
 	current_mag = /obj/item/ammo_magazine/rifle/nsg23
@@ -159,7 +160,6 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/stock/nsg23,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
@@ -202,13 +202,6 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
-
-/obj/item/weapon/gun/rifle/nsg23/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/nsg23/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
 
 //has no scope or underbarrel
 /obj/item/weapon/gun/rifle/nsg23/stripped

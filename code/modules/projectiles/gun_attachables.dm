@@ -1682,7 +1682,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock //Generic stock parent and related things.
 	name = "default stock"
-	desc = "If you can read this, someone screwed up. Go Gitlab this and bug a coder."
+	desc = "If you can read this, someone screwed up. Go GitHub this and bug a coder."
 	icon_state = "stock"
 	slot = "stock"
 	wield_delay_mod = WIELD_DELAY_VERY_FAST
@@ -2408,18 +2408,6 @@ Defined in conflicts.dm of the #defines folder.
 		R.folded = FALSE
 	else
 		R.flags_equip_slot |= SLOT_WAIST
-
-/obj/item/attachable/stock/nsg23
-	name = "NSG 23 stock"
-	desc = "If you can read this, someone screwed up. Go Github this and bug a coder."
-	icon_state = "nsg23_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	melee_mod = 5
-	size_mod = 2
-	pixel_shift_x = 21
-	pixel_shift_y = 20
-	hud_offset_mod = 2
 
 // ======== Underbarrel Attachments ======== //
 

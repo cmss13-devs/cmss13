@@ -554,7 +554,6 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
-	bonus_overlay = "l23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
 	default_ammo = /datum/ammo/bullet/rifle/l23
 	max_rounds = 30
 	gun_type = /obj/item/weapon/gun/rifle/l23

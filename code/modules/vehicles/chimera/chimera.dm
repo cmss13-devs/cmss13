@@ -41,6 +41,8 @@
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/chimera_thrusters,
+		/obj/item/hardpoint/primary/chimera_launchers,
+		/obj/item/hardpoint/support/sensor_array
 	)
 
 	entrances = list(
@@ -115,11 +117,31 @@
 	. = ..()
 	add_hardpoint(new /obj/item/hardpoint/locomotion/chimera_thrusters)
 	add_hardpoint(new /obj/item/hardpoint/support/sensor_array)
+	var/obj/item/hardpoint/primary/chimera_launchers/launchers = new()
+	add_hardpoint(launchers)
+	active_hp[VEHICLE_DRIVER] = launchers
 	tacmap = new /datum/tacmap/drawing/chimera(src, minimap_type)
 	update_icon()
 
 /obj/vehicle/multitile/chimera/Destroy()
 	QDEL_NULL(shadow_holder)
+
+	. = ..()
+
+/obj/vehicle/multitile/chimera/attackby(obj/item/attack_item, mob/user)
+	if(istype(attack_item, /obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo))
+		var/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo/ammo = attack_item
+		var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
+
+		if(!launchers)
+			return
+
+		launchers.try_add_clip(ammo, user)
+
+		return
+
+	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) || ispowerclamp(O))
+		return
 
 	. = ..()
 
@@ -405,9 +427,6 @@
 	move_delay = previous_move_delay
 	var/obj/structure/chimera_tug/tug = new(disconnect_turf)
 	tug.dir = dir
-
-/obj/vehicle/multitile/chimera/crew_mousedown(datum/source, atom/object, turf/location, control, params)
-	return
 
 /obj/vehicle/multitile/chimera/proc/update_rear_view()
 	var/turf/open_space/chimera/new_turf = get_turf(back_door)
@@ -1049,6 +1068,7 @@
 		/obj/item/fuel_pump = 1,
 		/obj/item/flight_cpu = 1,
 		/obj/item/landing_pad_light = 4,
+		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo = 4,
 	)
 	icon_state = "secure_crate_strapped"
 

@@ -119,7 +119,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/vegetables/Initialize()
 	. = ..()
-	reagents.add_reagent("vegetables", 6)
+	reagents.add_reagent("vegetable", 6)
 	reagents.add_reagent("sodiumchloride", 2)
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk

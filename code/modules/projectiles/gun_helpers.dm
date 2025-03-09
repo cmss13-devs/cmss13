@@ -167,7 +167,7 @@ DEFINES in setup.dm, referenced here.
 				"UPP Armsmaster", //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
 			) return TRUE
 		switch(user.faction)
-			if(,
+			if(
 				FACTION_PMC,
 				FACTION_MERCENARY,
 				FACTION_FREELANCER,

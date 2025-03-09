@@ -67,7 +67,8 @@
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "ILO"
 	minimum_age = 25
-	minimap_icon = "aso"
+	minimap_icon = "cialo"
+	minimap_background = "background_ua"
 	idtype = /obj/item/card/id/adaptive
 
 /datum/equipment_preset/cia/officer/load_gear(mob/living/carbon/human/new_human, client/mob_client)

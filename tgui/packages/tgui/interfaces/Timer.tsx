@@ -2,8 +2,15 @@ import { useBackend } from 'tgui/backend';
 import { Button, Section, Slider } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+type Data = {
+  current_time: number;
+  is_timing: number;
+  min_time: number;
+  max_time: number;
+};
+
 export const Timer = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { max_time, min_time } = data;
 
   const window_width = 360;

@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Collapsible,
+  Flex,
   Icon,
   Input,
   Section,
@@ -11,8 +12,24 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+type PlayerPayload = {
+  text: string;
+  ckey_color: string;
+};
+
+type FactionPayload = { content: string; color: string; text: string };
+
+type Data = {
+  base_data: {
+    total_players: Record<string, { text: string; ckey_color: String }>;
+  };
+  player_additional: { total_players: PlayerPayload };
+  player_stealthed_additional: { total_players: PlayerPayload };
+  factions_additional: FactionPayload[];
+};
+
 export const Who = (props, context) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const {
     base_data,
     player_additional,
@@ -34,7 +51,7 @@ export const Who = (props, context) => {
   const filteredTotalPlayers = searchPlayers();
 
   return (
-    <Window resizable width={800} height={600}>
+    <Window width={800} height={600}>
       <Window.Content scrollable>
         <Stack fill vertical>
           <Stack.Item>
@@ -54,7 +71,7 @@ export const Who = (props, context) => {
                         ckey: Object.keys(clientObj)[0],
                       });
                     }}
-                    onInput={(e) => setSearchQuery(e.target.value)}
+                    onInput={(e, value) => setSearchQuery(value)}
                     placeholder="Search..."
                     value={searchQuery}
                   />
@@ -78,7 +95,7 @@ export const Who = (props, context) => {
             {factions_additional && (
               <Section>
                 <WhoCollapsible title="Information" color="olive">
-                  <Box direction="column">
+                  <Flex direction="column">
                     {factions_additional.map((x, index) => (
                       <GetAddInfo
                         key={index}
@@ -87,7 +104,7 @@ export const Who = (props, context) => {
                         text={x.text}
                       />
                     ))}
-                  </Box>
+                  </Flex>
                 </WhoCollapsible>
               </Section>
             )}
@@ -137,7 +154,7 @@ const FilterPlayers = (props, context) => {
 };
 
 const GetPlayerInfo = (props, context) => {
-  const { act } = useBackend();
+  const { act } = useBackend<Data>();
   const { ckey, text, color, ckey_color } = props;
 
   return (

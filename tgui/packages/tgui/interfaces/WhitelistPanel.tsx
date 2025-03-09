@@ -1,6 +1,21 @@
-import { useBackend } from '../backend';
-import { Button, Flex, Section, Stack } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Button, Flex, Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
+type BitFlagData = { name: String; bitflag: number; permission: number };
+
+type Data = {
+  whitelisted_players: { ckey: string; status: string }[];
+  current_menu: string;
+  user_rights: number;
+  viewed_player: { ckey: string; status: string };
+  target_rights: number;
+  new_rights: number;
+  co_flags: BitFlagData[];
+  syn_flags: BitFlagData[];
+  yaut_flags: BitFlagData[];
+  misc_flags: BitFlagData[];
+};
 
 const PAGES = {
   Panel: () => PlayerList,
@@ -8,7 +23,7 @@ const PAGES = {
 };
 
 export const WhitelistPanel = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
@@ -22,7 +37,7 @@ export const WhitelistPanel = (props) => {
 };
 
 const PlayerList = (props) => {
-  const { data, act } = useBackend();
+  const { data, act } = useBackend<Data>();
   const { whitelisted_players } = data;
 
   return (
@@ -46,7 +61,7 @@ const PlayerList = (props) => {
           />
         </Flex.Item>
         <Flex.Item mr="1rem" width="90%">
-          <h1 align="center">Whitelist Panel</h1>
+          <h1 style={{ textAlign: 'center' }}>Whitelist Panel</h1>
         </Flex.Item>
       </Flex>
       {!!whitelisted_players.length && (
@@ -88,7 +103,7 @@ const PlayerList = (props) => {
 };
 
 const StatusUpdate = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const {
     co_flags,
     syn_flags,
@@ -110,9 +125,11 @@ const StatusUpdate = (props) => {
           onClick={() => act('go_back')}
         />
       </Flex>
-      <h1 align="center">Whitelists for: {viewed_player.ckey}</h1>
+      <h1 style={{ textAlign: 'center' }}>
+        Whitelists for: {viewed_player.ckey}
+      </h1>
       <Section title="Commanding Officer">
-        <Stack align="right" grow={1}>
+        <Stack align="right" fill>
           {co_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -128,7 +145,7 @@ const StatusUpdate = (props) => {
             );
           })}
         </Stack>
-        <Stack align="right" grow={1}>
+        <Stack align="right" fill>
           {co_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -155,7 +172,7 @@ const StatusUpdate = (props) => {
         </Stack>
       </Section>
       <Section title="Synthetic">
-        <Stack align="right" grow={1}>
+        <Stack align="right" fill>
           {syn_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -171,7 +188,7 @@ const StatusUpdate = (props) => {
             );
           })}
         </Stack>
-        <Stack align="right" grow={1}>
+        <Stack align="right" fill>
           {syn_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -198,7 +215,7 @@ const StatusUpdate = (props) => {
         </Stack>
       </Section>
       <Section title="Yautja">
-        <Stack align="right" grow={1}>
+        <Stack align="right" fill>
           {yaut_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -214,7 +231,7 @@ const StatusUpdate = (props) => {
             );
           })}
         </Stack>
-        <Stack align="right" grow={1}>
+        <Stack align="right" fill>
           {yaut_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -241,7 +258,7 @@ const StatusUpdate = (props) => {
         </Stack>
       </Section>
       <Section title="Misc">
-        <Stack align="right" grow={1}>
+        <Stack align="right" fill>
           {misc_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -257,7 +274,7 @@ const StatusUpdate = (props) => {
             );
           })}
         </Stack>
-        <Stack align="right" grow={1}>
+        <Stack align="right" fill>
           {misc_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;

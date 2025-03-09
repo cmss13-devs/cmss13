@@ -1,3 +1,4 @@
+import type { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -12,8 +13,19 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+type Data = {
+  worldtime: number;
+  next_teleport_time: number;
+  cooldown_length: number;
+  teleporting: BooleanLike;
+  locations: Record<string, string>;
+  source: string;
+  destination: string;
+  name: string;
+};
+
 export const TeleporterConsole = () => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
 
   const timeLeft = data.next_teleport_time - data.worldtime;
   const timeLeftPct = timeLeft / data.cooldown_length;
@@ -47,7 +59,7 @@ export const TeleporterConsole = () => {
             </NoticeBox>
           ) : null}
           {(timeLeft < 0 && (
-            <NoticeBox success={1} textAlign="center">
+            <NoticeBox success textAlign="center">
               Capacitors charged!
             </NoticeBox>
           )) || (

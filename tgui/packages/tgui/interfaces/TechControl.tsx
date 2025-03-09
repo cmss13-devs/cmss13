@@ -1,9 +1,20 @@
+// THis UI is unused.
+
+import type { BooleanLike } from 'common/react';
+import { ComponentProps } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Flex, Section } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+type DataEntry = { name: string; job: string; paygrade: string; rank: string };
+
+type Data = {
+  leader_data: DataEntry;
+  user_data: DataEntry & { is_leader: BooleanLike };
+};
+
 export const TechControl = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   data.leader_data = data.leader_data || {
     name: 'Unassigned',
     job: 'N/A',
@@ -90,7 +101,12 @@ export const TechControl = (props) => {
   );
 };
 
-export const Label = (props) => {
+export const Label = (
+  props: {
+    readonly label: string;
+    readonly content: React.JSX.Element | string;
+  } & ComponentProps<typeof Flex>,
+) => {
   const { label, content, ...rest } = props;
 
   return (

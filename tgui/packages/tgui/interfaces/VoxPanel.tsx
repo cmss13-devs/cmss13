@@ -1,5 +1,5 @@
 import { KEY_CTRL, KEY_SHIFT } from 'common/keycodes';
-import { useState } from 'react';
+import { ComponentProps, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -27,9 +27,9 @@ const PAGES = [
   },
 ];
 
-export const VoxPanel = (props) => {
-  const { data } = useBackend();
+type Data = { glob_vox_types: string[]; factions: string[] };
 
+export const VoxPanel = (props) => {
   const [pageIndex, setPageIndex] = useState(0);
 
   const PageComponent = PAGES[pageIndex].component();
@@ -59,7 +59,7 @@ export const VoxPanel = (props) => {
 };
 
 const SendVOX = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { glob_vox_types, factions } = data;
 
   const voxRegexes = {};
@@ -90,8 +90,11 @@ const SendVOX = (props) => {
       currentFaction[val] = true;
       setCurrentFaction({ ...currentFaction });
     } else if (keysDown[KEY_SHIFT]) {
-      let [startSelecting, foundClickedValue, finishedSelecting] =
-        (false, false, false);
+      let [startSelecting, foundClickedValue, finishedSelecting] = [
+        false,
+        false,
+        false,
+      ];
       const toSelect = factions.filter((value) => {
         if (finishedSelecting) return false;
 
@@ -256,10 +259,10 @@ const SendVOX = (props) => {
 };
 
 const SoundList = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { glob_vox_types } = data;
 
-  const [voxType, setVoxType] = useState(null);
+  const [voxType, setVoxType] = useState('');
   const [currentSearch, setCurrentSearch] = useState('');
 
   return (
@@ -307,7 +310,16 @@ const SoundList = (props) => {
   );
 };
 
-export const ComboBox = (props) => {
+export const ComboBox = (
+  props: {
+    readonly onSelected: (val: any, keysDown: any) => void;
+    readonly selected: string | Record<string, boolean>;
+    readonly buttons: string[];
+    readonly width?: number;
+    readonly height?: number;
+    readonly grow?: boolean;
+  } & ComponentProps<typeof Box>,
+) => {
   const {
     onSelected,
     selected,
@@ -327,17 +339,15 @@ export const ComboBox = (props) => {
   const handleOnClick = (e, val) => {
     // Thanks to shift + click selecting everything,
     // this needs to be placed down.
-    if (document.selection && document.selection.empty) {
-      document.selection.empty();
-    } else if (window.getSelection) {
+    if (window.getSelection) {
       const sel = window.getSelection();
-      sel.removeAllRanges();
+      sel?.removeAllRanges();
     }
     onSelected(val, keysDown);
   };
 
   return (
-    <Box props={rest}>
+    <Box {...rest}>
       <Flex width={width} height={height}>
         <Flex.Item grow={1}>
           <Section

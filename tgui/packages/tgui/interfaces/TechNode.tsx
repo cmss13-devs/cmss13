@@ -1,9 +1,24 @@
+import type { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import { Button, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+type Tech = { content: string; color: string; icon: string; tooltip: string };
+
+type Data = {
+  theme: string;
+  name: string;
+  desc: string;
+  total_points: number;
+  valid_tier: BooleanLike;
+  can_afford: BooleanLike;
+  unlocked: BooleanLike;
+  cost: number;
+  stats?: Tech[];
+};
+
 export const TechNode = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
 
   const {
     total_points,

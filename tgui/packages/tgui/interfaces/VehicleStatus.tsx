@@ -1,6 +1,6 @@
+import type { BooleanLike } from 'common/react';
 import { Fragment } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Collapsible,
@@ -9,11 +9,30 @@ import {
   NoticeBox,
   ProgressBar,
   Section,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
+type Data = {
+  resistance_data: { name: string; pct: number }[];
+  integrity: number;
+  door_locked: BooleanLike;
+  total_passenger_slots: number;
+  total_taken_slots: number;
+  passenger_categories_data: { name: string; taken: number; total: number }[];
+  hardpoint_data: {
+    name: String;
+    health: number | null;
+    uses_ammo: BooleanLike;
+    current_rounds?: number;
+    max_rounds?: number;
+    mags?: number;
+    max_mags?: number;
+    fpw: BooleanLike;
+  }[];
+};
 
 export const VehicleStatus = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const {
     resistance_data,
     integrity,
@@ -45,9 +64,11 @@ export const VehicleStatus = (props) => {
             <NoticeBox danger>Hull destroyed!</NoticeBox>
           )}
           <Box height="5px" />
-          <NoticeBox info={door_locked ? 0 : 1} danger={door_locked ? 1 : 0}>
-            {door_locked ? 'Door locks: enabled.' : 'Door locks: disabled.'}
-          </NoticeBox>
+          {door_locked ? (
+            <NoticeBox danger>Door locks: enabled.</NoticeBox>
+          ) : (
+            <NoticeBox info>Door locks: disabled.</NoticeBox>
+          )}
           <Collapsible title="Current armour resistances">
             <ResistanceView />
           </Collapsible>
@@ -68,7 +89,7 @@ export const VehicleStatus = (props) => {
 };
 
 const ResistanceView = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { resistance_data, integrity } = data;
   return resistance_data.map((resistance, index) => (
     <Fragment key={index}>
@@ -81,16 +102,16 @@ const ResistanceView = (props) => {
 };
 
 const HardpointsView = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { hardpoint_data } = data;
   return hardpoint_data.map((hardpoint, index) => (
     <Fragment key={index}>
       {index !== 0 ? <Divider /> : null}
       <Box>{hardpoint.name}</Box>
       <Box width="3px" />
-      {hardpoint.fpw ? null : hardpoint.health >= 0 ? (
+      {hardpoint.fpw ? null : hardpoint.health! >= 0 ? (
         <ProgressBar
-          value={hardpoint.health}
+          value={hardpoint.health!}
           ranges={{
             good: [0.7, Infinity],
             average: [0.2, 0.7],
@@ -106,7 +127,7 @@ const HardpointsView = (props) => {
       {hardpoint.uses_ammo ? (
         <Flex direction="row">
           <ProgressBar
-            value={hardpoint.current_rounds / hardpoint.max_rounds}
+            value={hardpoint.current_rounds! / hardpoint.max_rounds!}
             width={hardpoint.fpw ? '100%' : '49%'}
           >
             Ammo: {hardpoint.current_rounds} / {hardpoint.max_rounds}
@@ -115,7 +136,7 @@ const HardpointsView = (props) => {
             <>
               <Box width="3px" />
               <ProgressBar
-                value={hardpoint.mags / hardpoint.max_mags}
+                value={hardpoint.mags! / hardpoint.max_mags!}
                 width="49%"
               >
                 Mags: {hardpoint.mags} / {hardpoint.max_mags}
@@ -129,7 +150,7 @@ const HardpointsView = (props) => {
 };
 
 const PassengersView = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { passenger_categories_data } = data;
   return passenger_categories_data.map((cat, index) => (
     <Fragment key={index}>

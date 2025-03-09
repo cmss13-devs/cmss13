@@ -1,5 +1,5 @@
 import { map } from 'common/collections';
-import { classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -11,20 +11,65 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-const GreedRedRange = {
+const GreedRedRange: Record<string, [number, number]> = {
   good: [-Infinity, 0.25],
   average: [0.25, 0.5],
   bad: [0.5, Infinity],
 };
 
-const RedGreenRange = {
+const RedGreenRange: Record<string, [number, number]> = {
   bad: [-Infinity, 0.25],
   average: [0.25, 0.5],
   good: [0.5, Infinity],
 };
 
+type Data = {
+  recoil_max: number;
+  scatter_max: number;
+  firerate_max: number;
+  damage_max: number;
+  accuracy_max: number;
+  range_max: number;
+  effective_range_max: number;
+  falloff_max: number;
+  penetration_max: number;
+  punch_max: number;
+  automatic: BooleanLike;
+  auto_only: BooleanLike;
+  icon: string;
+  name: string;
+  desc: string;
+  two_handed_only: BooleanLike;
+  recoil: number;
+  unwielded_recoil: number;
+  firerate: number;
+  burst_firerate: number;
+  firerate_second: number;
+  burst_firerate_second: number;
+  scatter: number;
+  unwielded_scatter: number;
+  burst_scatter: number;
+  burst_amount: number;
+  has_ammo: BooleanLike;
+  ammo_name: string;
+  damage: number;
+  falloff: number;
+  total_projectile_amount: number;
+  penetration: number;
+  accuracy: number;
+  unwielded_accuracy: number;
+  min_accuracy: number;
+  max_range: number;
+  projectile_max_range_add: number;
+  effective_range_max_mod: number;
+  effective_range: number;
+  damage_armor_profile_headers: number[];
+  damage_armor_profile_marine: number[];
+  damage_armor_profile_xeno: number[];
+};
+
 export const WeaponStats = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { has_ammo } = data;
 
   return (
@@ -53,17 +98,8 @@ export const WeaponStats = (props) => {
 };
 
 const GeneralInfo = (props) => {
-  const { data } = useBackend();
-  const {
-    name,
-    desc,
-    automatic,
-    burst_amount,
-    two_handed_only,
-    auto_only,
-    baseicon,
-    icon,
-  } = data;
+  const { data } = useBackend<Data>();
+  const { name, desc, automatic, burst_amount, auto_only, icon } = data;
   return (
     <Section>
       <Flex direction="column">
@@ -121,7 +157,7 @@ const GeneralInfo = (props) => {
 };
 
 const WeaponInfo = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   return (
     <Section title="Weapon Info">
       <Recoil />
@@ -132,7 +168,7 @@ const WeaponInfo = (props) => {
 };
 
 const Recoil = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { recoil, unwielded_recoil, recoil_max, two_handed_only } = data;
   return (
     <>
@@ -156,7 +192,7 @@ const Recoil = (props) => {
 };
 
 const Scatter = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const {
     scatter,
     unwielded_scatter,
@@ -193,7 +229,7 @@ const Scatter = (props) => {
 };
 
 const Firerate = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const {
     firerate_max,
     firerate,
@@ -222,7 +258,7 @@ const Firerate = (props) => {
 };
 
 const AmmoInfo = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { ammo_name } = data;
   return (
     <Section title="Ammo Info">
@@ -237,7 +273,7 @@ const AmmoInfo = (props) => {
 };
 
 const Damage = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { damage, damage_max } = data;
   return (
     <>
@@ -248,7 +284,7 @@ const Damage = (props) => {
 };
 
 const Accuracy = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const {
     accuracy,
     unwielded_accuracy,
@@ -286,7 +322,7 @@ const Accuracy = (props) => {
 };
 
 const Range = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const {
     max_range,
     projectile_max_range_add,
@@ -324,7 +360,7 @@ const Range = (props) => {
 };
 
 const ArmourPen = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { penetration, penetration_max } = data;
   return (
     <>
@@ -337,7 +373,7 @@ const ArmourPen = (props) => {
 };
 
 const DamageTable = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const {
     damage_armor_profile_marine,
     damage_armor_profile_xeno,

@@ -326,8 +326,8 @@ to hit a gun strafe as you land.
 <br />
 <hr />
 
-# Step 6:
-Survive on the ground Chances are good you're in hostile territory,
+# Step 6: Survive on the ground
+Chances are good you're in hostile territory,
 with limited supplies, some injuries, and a nasty adrenaline crash. You need to
 secure the gear from your SSK and follow standard SERE procedures, keep your
 head low, stay sharp, and stay mobile.

@@ -302,13 +302,13 @@ DEFINES in setup.dm, referenced here.
 			user.visible_message("[user] [repair_oil_verb] [src]. It shines like new.", "You lube up the working parts of [src]. It should be slightly repaired.")
 			src.clean_blood()
 			src.gun_repair_popup(user)
-			heal_gun_durability(rand(5,20))
+			heal_gun_durability(rand(6,20))
 			stack.use(1)
 	else if(istype(attack_item, /obj/item/stack/repairable/gunkit))
 		var/obj/item/stack/repairable/gunkit/stack = attack_item
 		var/repair_kit_verb = pick("fixes", "fastens screws to", "recalculates the settings of", "tends to", "installs some fixes to", "repairs")
 		if(src.gun_durability == GUN_DURABILITY_MAX)
-			to_chat(user, SPAN_GREEN("The [src] is already at its max durability to be repaired with [stack]!"))
+			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with [stack]!"))
 			src.gun_repair_maxup(user)
 			return
 		if(do_after(user, 120, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))

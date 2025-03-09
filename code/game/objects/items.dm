@@ -208,8 +208,8 @@
 	var/msg2 = pick("is damaged by the blast!", "is obliterated by the blast!", "cracks as the explosion engulfs it!", "cracks into fragments by the blast!", "malfunctions from the blast!", "is ruined by the blast!")
 	explosion_throw(severity, explosion_direction)
 	if(istype(src, /obj/item/weapon/gun))
-		var/obj/item/weapon/gun/G = src
-		G.blast_gun_durability(severity) // exploded guns should be handled through gun.dm
+		var/obj/item/weapon/gun/gun_blast = src
+		gun_blast.blast_gun_durability(severity) // exploded guns should be handled through gun.dm
 		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg2]")))
 	else
 		switch(severity)

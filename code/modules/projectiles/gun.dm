@@ -638,11 +638,16 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 /obj/item/weapon/gun/proc/check_worn_out(mob/living/user)
+	if(gun_durability == GUN_DURABILITY_MEDIUM)
+		to_chat(user, SPAN_WARNING("The [name] is incurring damages, better repair it soon..."))
+		balloon_alert(user, "*damaged*")
+
 	if(gun_durability <= GUN_DURABILITY_BROKEN)
-		if(prob(45))
+		if(prob(50))
 			to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
 			balloon_alert(user, "*worn-out*")
+			cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
 	var/bullet_duraloss = ammo.bullet_duraloss //i think this works, code for taking account the bullet duraloss modifier in the current chanbered ammo
@@ -668,9 +673,34 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	return unjam(user)
 
 /obj/item/weapon/gun/proc/heal_gun_durability(amount, mob/user)
+	var/skill_repair_firearms = 0
+	if(user && user.mind && user.skills)
+		var/skill_level_firearms = user.skills.get_skill_level(SKILL_FIREARMS)
+		if(skill_level_firearms == SKILL_FIREARMS_CIVILIAN)
+			skill_repair_firearms = -5 // civilians would likely fumble after all
+		else if(skill_level_firearms == SKILL_FIREARMS_TRAINED)
+			skill_repair_firearms = 0 // no increase for enlisted
+		else if(skill_level_firearms == SKILL_FIREARMS_EXPERT)
+			skill_repair_firearms = 5 // increase repair for the snowflake special forces
+
+	var/skill_repair_engineer = 0
+	if(user && user.mind && user.skills)
+		var/skill_level_engineer = user.skills.get_skill_level(SKILL_ENGINEER)
+		if(skill_level_engineer == SKILL_ENGINEER_DEFAULT)
+			skill_repair_engineer = -5 // your fresh out of college rfn wouldnt know to do this
+		else if(skill_level_engineer == SKILL_ENGINEER_NOVICE)
+			skill_repair_engineer = 0
+		else if(skill_level_engineer == SKILL_ENGINEER_TRAINED)
+			skill_repair_engineer = 10
+		else if(skill_level_engineer == SKILL_ENGINEER_ENGI)
+			skill_repair_engineer = 25
+		else if(skill_level_engineer == SKILL_ENGINEER_MASTER)
+			skill_repair_engineer = 50 // pretty much synth level
+
+	var/total_repair_bonus = skill_repair_firearms + skill_repair_engineer
+
 	if(gun_durability < GUN_DURABILITY_MAX)
-		gun_durability = min(gun_durability + amount, GUN_DURABILITY_MAX)
-	check_worn_out(user)
+		gun_durability = min(gun_durability + amount + total_repair_bonus, GUN_DURABILITY_MAX)
 
 /obj/item/weapon/gun/proc/destroy_gun_durability() //for acid use specifically, ill probably refactor this
 	if(gun_durability == GUN_DURABILITY_BROKEN) //fix your guns man
@@ -683,14 +713,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/damage_gun_durability(amount = 1) //for more incremental use, such as rifle fire
 	if(gun_durability <= GUN_DURABILITY_BROKEN - 100) //as to prevent problems with normal rifle fire deleting the gun
 		qdel(src)
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] gets destroyed by the resulting gunfire!")))
 	else if(prob(durability_loss * 2)) //durability loss should be doubled when shot
 		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
 	check_worn_out()
 
 /obj/item/weapon/gun/proc/blast_gun_durability(amount = 1) //for more static use, such as explosive power
+	var/blastmsg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
 	if(gun_durability <= GUN_DURABILITY_BROKEN - 149) //we dont want weak explosions to delete the gun e.g. grenades
 		qdel(src)
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
 	else
 		gun_durability = max(gun_durability - (amount / 2), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
@@ -1083,7 +1116,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			H.update_icon()
 			break
 	if(!found_handful)
-		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+		var/obj/item/ammo_magazine/handful/new_handful = new()
+		user.put_in_hands(new_handful)
 		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)
@@ -1466,6 +1500,16 @@ and you're good to go.
 
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
+
+	// durability code for melee combat with guns
+	var/meleegun_duraloss = 0
+	if(gun_durability >= GUN_DURABILITY_BROKEN)
+		meleegun_duraloss = force * 0.05
+	if(prob(durability_loss + meleegun_duraloss)) //duraloss dependent on current gun melee force
+		set_gun_durability(gun_durability - rand(1, 5)) // this should deter gun melee combat
+		update_gun_durability()
+		check_worn_out(user)
+		return
 
 	if(attacked_mob == user && user.zone_selected == "mouth" && ishuman(user))
 		var/mob/living/carbon/human/HM = user

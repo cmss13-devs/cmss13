@@ -84,3 +84,18 @@
   Red-byte3D:
   - code_imp: Moves all of crusher abilities to its own files, strains to theirs and
       removes some one letter vars
+2025-03-09:
+  Git-Nivrak:
+  - balance: Increased facehugger leap windup time from 1 second to 2 seconds (crawling
+      hug time unchanged)
+  - balance: Increased facehugger health loss off weeds from 1 to 2
+  - balance: Facehuggers now lose health off weeds regardless of if resting or not
+      (exception is watcher in watch mode)
+  Kashargul:
+  - bugfix: numberInput works properly again with mouse movement
+  - bugfix: the chat will no longer init before settings are loaded
+  - qol: chat settings can be in / exported
+  - qol: chat tabs can be reordered
+  hry-gh:
+  - admin: the audio player works on 516 again - go crazy
+  - bugfix: tgui windows closing should no longer cause sticky keys

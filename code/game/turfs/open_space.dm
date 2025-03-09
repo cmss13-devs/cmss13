@@ -22,7 +22,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	attack_hand(user)
 
 /turf/open_space/attack_hand(mob/user)
-	climb_down(user)
+	user.move_intentionally = TRUE
+	Enter(user)
 
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()

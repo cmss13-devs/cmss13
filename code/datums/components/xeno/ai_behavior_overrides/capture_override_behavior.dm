@@ -36,8 +36,8 @@
 		return FALSE
 
 	if(!length(GLOB.ai_hives))
-		for(var/client/game_master in GLOB.game_masters)
-			to_chat(game_master, SPAN_XENOBOLDNOTICE("Capture behavior requires a valid hive placed"))
+		for(var/client/admin in GLOB.admins)
+			to_chat(admin, SPAN_XENOBOLDNOTICE("Capture behavior requires a valid hive placed"))
 
 		qdel(src)
 		return FALSE

@@ -42,6 +42,8 @@
 #define COMSIG_XENO_STOP_MOMENTUM "xeno_stop_momentum"
 /// Called whenever xeno should resume charge
 #define COMSIG_XENO_START_CHARGING "xeno_start_charging"
+/// From /datum/action/xeno_action/onclick/charger_charge/proc/stop_momentum()
+#define COMSIG_XENO_STOPPED_CHARGING "xeno_stopped_charging"
 
 // Used in resin_constructions.dm
 // Checks whether the xeno can build a thick structure regardless of hive weeds

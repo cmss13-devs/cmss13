@@ -42,7 +42,7 @@
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/chimera_thrusters,
 		/obj/item/hardpoint/primary/chimera_launchers,
-		/obj/item/hardpoint/support/sensor_array
+		/obj/item/hardpoint/support/sensor_array,
 	)
 
 	entrances = list(

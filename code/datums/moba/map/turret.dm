@@ -68,9 +68,12 @@
 	if(HAS_TRAIT(current_mob, TRAIT_MOBA_ATTACKED_HIVE(hivenumber)))
 		return 4
 
+	if(HAS_TRAIT(current_mob, TRAIT_MOBA_MINION))
+		return 3
+
 	switch(current_mob.stat)
 		if(CONSCIOUS)
-			return 3
+			return 2
 		if(UNCONSCIOUS)
 			return 1
 		if(DEAD)

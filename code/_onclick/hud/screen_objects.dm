@@ -66,7 +66,7 @@
 	if(source_action.owner != user)
 		return TRUE
 
-	if(mods[SHIFT_CLICK] && source_action.desc)
+	if(length(mods) && mods[SHIFT_CLICK] && source_action.desc)
 		examine(user)
 		return TRUE
 

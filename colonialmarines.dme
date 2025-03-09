@@ -721,6 +721,7 @@
 #include "code\datums\status_effects\grouped_effect.dm"
 #include "code\datums\status_effects\limited_effect.dm"
 #include "code\datums\status_effects\stacking_effect.dm"
+#include "code\datums\status_effects\buffs\empowered.dm"
 #include "code\datums\status_effects\debuffs\debuffs.dm"
 #include "code\datums\supply_packs\_supply_packs.dm"
 #include "code\datums\supply_packs\ammo.dm"

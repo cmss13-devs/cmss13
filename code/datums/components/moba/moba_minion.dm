@@ -42,7 +42,7 @@
 		return
 
 	if(ticks_since_last_move >= 10)
-		parent_xeno.death("being stuck")
+		parent_xeno.death(create_cause_data("getting stuck"))
 		return
 
 	var/turf/parent_turf = get_turf(parent_xeno)

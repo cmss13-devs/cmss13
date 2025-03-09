@@ -68,9 +68,9 @@
 		for(var/datum/action/action as anything in tied_xeno.actions)
 			if(istype(action, /datum/action/xeno_action/moba))
 				var/datum/action/xeno_action/moba/moba_action = action
-				if((ability_path_level_dict[type] >= moba_action.max_level) || !unspent_levels)
+				if((ability_path_level_dict[action.type] >= moba_action.max_level) || !unspent_levels)
 					moba_action.stop_level_up_overlay()
 			else if(istype(action, /datum/action/xeno_action/activable/moba))
 				var/datum/action/xeno_action/activable/moba/moba_action = action
-				if((ability_path_level_dict[type] >= moba_action.max_level) || !unspent_levels)
+				if((ability_path_level_dict[action.type] >= moba_action.max_level) || !unspent_levels)
 					moba_action.stop_level_up_overlay()

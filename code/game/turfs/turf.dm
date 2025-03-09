@@ -345,6 +345,7 @@
 				return FALSE
 
 	if(mover.move_intentionally && istype(src, /turf/open_space) && istype(mover,/mob/living))
+		mover.move_intentionally = FALSE
 		var/turf/open_space/space = src
 		var/mob/living/climber = mover
 		if(climber.a_intent == INTENT_HARM)

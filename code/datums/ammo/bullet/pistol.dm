@@ -28,6 +28,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	stamina_damage = 60
 	damage = 15
+	bullet_duraloss = 0.10
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
 //Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.
@@ -54,6 +55,7 @@
 
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_10
+	bullet_duraloss = 0.15
 
 /datum/ammo/bullet/pistol/ap/penetrating/set_bullet_traits()
 	. = ..()
@@ -65,6 +67,7 @@
 	name = "toxic pistol bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
+	bullet_duraloss = 0.10
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -86,6 +89,7 @@
 	damage = 15
 	penetration = ARMOR_PENETRATION_TIER_4
 	pen_armor_punch = 3
+	bullet_duraloss = 0.20
 
 /datum/ammo/bullet/pistol/rubber
 	name = "rubber pistol bullet"
@@ -94,6 +98,7 @@
 	damage = 0
 	stamina_damage = 25
 	shrapnel_chance = 0
+	bullet_duraloss = 0.35 //youre firing rubber, of course its gonna damage your shit more... its smaller though so not as much
 
 // Reskinned rubber bullet used for the ES-4 CL pistol.
 /datum/ammo/bullet/pistol/rubber/stun
@@ -124,11 +129,13 @@
 	penetration = ARMOR_PENETRATION_TIER_1
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
+	bullet_duraloss = 0.15
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
 	name = ".50 high-impact armor piercing pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
+	bullet_duraloss = 0.20
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
 	name = "high-impact pistol bullet"
@@ -136,6 +143,7 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
+	bullet_duraloss = 0.20
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/New()
 	..()
@@ -161,6 +169,7 @@
 
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 20
+	bullet_duraloss = 0.10
 
 /datum/ammo/bullet/pistol/incendiary/set_bullet_traits()
 	..()
@@ -199,6 +208,7 @@
 	name = "toxic squash-head pistol bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
+	bullet_duraloss = 0.10
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -218,6 +228,7 @@
 	name = "wall-penetrating squash-head pistol bullet"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
+	bullet_duraloss = 0.15
 
 /datum/ammo/bullet/pistol/squash/penetrating/set_bullet_traits()
 	. = ..()
@@ -232,6 +243,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 35
+	bullet_duraloss = 0.10
 
 /datum/ammo/bullet/pistol/squash/incendiary/set_bullet_traits()
 	..()
@@ -271,4 +283,5 @@
 	damage = 30
 	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+	bullet_duraloss = 0.20 // yeah this thing is gonna rattle inside the barrel when fired
 

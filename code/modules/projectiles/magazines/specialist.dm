@@ -111,7 +111,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
-	magjam_modifier = 0.25 //youre firing essentially uranium bullets, so it's gonna jam more often
+	magjam_modifier = 0.25 //youre loading essentially uranium bullets, so it's gonna jam more often
 
 /obj/item/ammo_magazine/smartgun/holo_targetting
 	name = "holotargetting smartgun drum"

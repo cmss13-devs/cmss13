@@ -645,7 +645,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
-	var/bullet_duraloss = ammo.bullet_duraloss
+	var/bullet_duraloss = ammo.bullet_duraloss //i think this works, code for taking account the bullet duraloss modifier in the current chanbered ammo
+	if(in_chamber && in_chamber.ammo)
+		bullet_duraloss = in_chamber.ammo.bullet_duraloss
+	else
+		bullet_duraloss = ammo.bullet_duraloss
 	if(!can_jam)
 		return
 

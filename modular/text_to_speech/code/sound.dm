@@ -3,18 +3,6 @@
 ///The default exponent of sound falloff
 #define SOUND_FALLOFF_EXPONENT 6
 
-/datum/preferences/New(TopicData)
-	// Пример работы: S.volume = 100 * owner.volume_preferences[VOLUME_AMB]
-	volume_preferences |= (list(
-		1, // Local - VOLUME_TTS_LOCAL (5) - у ОФФов это тупо сделано, но как есть...
-		0.5 // Radio - VOLUME_TTS_RADIO (6)
-	))
-
-	// А еще они зачем-то засунули это сюда (дубликат и брейнрот):
-	// 	code/modules/client/preferences_savefile.dm
-
-	. = ..()
-
 /client/verb/adjust_volume_tts_local()
 	set name = "Громкость TTS (Говор)"
 	set category = "Preferences.Sound"
@@ -24,6 +12,11 @@
 	set name = "Громкость TTS (Радио)"
 	set category = "Preferences.Sound"
 	adjust_volume_prefs(VOLUME_TTS_RADIO, "Громкость TTS в радио", CHANNEL_TTS_RADIO)
+
+/client/verb/adjust_volume_tts_announce()
+	set name = "Громкость TTS (Анонсы)"
+	set category = "Preferences.Sound"
+	adjust_volume_prefs(VOLUME_TTS_ANNOUNCE, "Громкость TTS в анонсах", CHANNEL_TTS_RADIO)
 
 /proc/get_rand_frequency()
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.

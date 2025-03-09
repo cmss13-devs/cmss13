@@ -25,7 +25,7 @@
 		return
 	if(!say_understands(speaker, language))
 		return
-	speaker.cast_tts(src, message, src, FALSE, SOUND_EFFECT_RADIO, postSFX = 'modular/text_to_speech/code/sound/radio_chatter.ogg')
+	speaker.cast_tts(src, message, src, TTS_LOCALYZE_RADIO, SOUND_EFFECT_RADIO, postSFX = 'modular/text_to_speech/code/sound/radio_chatter.ogg')
 
 /*
 /atom/atom_say(message)

@@ -18,15 +18,15 @@
 
 	if(ammouncer)
 		for(var/mob/M in receivers)
-			ammouncer.cast_tts(M, message_tts, M, FALSE)
+			ammouncer.cast_tts(M, message_tts, M, TTS_LOCALYZE_ANNOUNCE)
 		for(var/mob/M in garbled_receivers)
-			ammouncer.cast_tts(M, garbled_message_tts, M, FALSE)
+			ammouncer.cast_tts(M, garbled_message_tts, M, TTS_LOCALYZE_ANNOUNCE)
 		return
 
 	for(var/mob/M in receivers)
-		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, message_tts, tts_seed, FALSE, sound_effect, TTS_TRAIT_RATE_MEDIUM)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, message_tts, tts_seed, TTS_LOCALYZE_ANNOUNCE, sound_effect, TTS_TRAIT_RATE_MEDIUM)
 	for(var/mob/M in garbled_receivers)
-		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, garbled_message_tts, tts_seed, FALSE, sound_effect, TTS_TRAIT_RATE_MEDIUM)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, garbled_message_tts, tts_seed, TTS_LOCALYZE_ANNOUNCE, sound_effect, TTS_TRAIT_RATE_MEDIUM)
 
 
 // Announcers

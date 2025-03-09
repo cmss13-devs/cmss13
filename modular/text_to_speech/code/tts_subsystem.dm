@@ -340,7 +340,7 @@ SUBSYSTEM_DEF(tts220)
 	tts_requests_queue += list(list(text, seed, proc_callback))
 	return TRUE
 
-/datum/controller/subsystem/tts220/proc/get_tts(atom/speaker, mob/listener, message, datum/tts_seed/tts_seed, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX = null, postSFX = null)
+/datum/controller/subsystem/tts220/proc/get_tts(atom/speaker, mob/listener, message, datum/tts_seed/tts_seed, localyze_type = TTS_LOCALYZE_LOCAL, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX = null, postSFX = null)
 	if(!is_enabled)
 		return
 	if(!message)
@@ -383,10 +383,10 @@ SUBSYSTEM_DEF(tts220)
 	if(fexists("[filename].ogg"))
 		tts_reused++
 		tts_rrps_counter++
-		play_tts(speaker, listener, filename, is_local, effect, preSFX, postSFX)
+		play_tts(speaker, listener, filename, localyze_type, effect, preSFX, postSFX)
 		return
 
-	var/datum/callback/play_tts_cb = CALLBACK(src, PROC_REF(play_tts), speaker, listener, filename, is_local, effect, preSFX, postSFX)
+	var/datum/callback/play_tts_cb = CALLBACK(src, PROC_REF(play_tts), speaker, listener, filename, localyze_type, effect, preSFX, postSFX)
 
 	if(LAZYLEN(tts_queue[filename]))
 		tts_reused++
@@ -394,11 +394,11 @@ SUBSYSTEM_DEF(tts220)
 		LAZYADD(tts_queue[filename], play_tts_cb)
 		return
 
-	var/datum/callback/cb = CALLBACK(src, PROC_REF(get_tts_callback), speaker, listener, filename, tts_seed, is_local, effect, preSFX, postSFX)
+	var/datum/callback/cb = CALLBACK(src, PROC_REF(get_tts_callback), speaker, listener, filename, tts_seed, localyze_type, effect, preSFX, postSFX)
 	queue_request(text, tts_seed, cb)
 	LAZYADD(tts_queue[filename], play_tts_cb)
 
-/datum/controller/subsystem/tts220/proc/get_tts_callback(atom/speaker, mob/listener, filename, datum/tts_seed/seed, is_local, effect, preSFX, postSFX, datum/http_response/response)
+/datum/controller/subsystem/tts220/proc/get_tts_callback(atom/speaker, mob/listener, filename, datum/tts_seed/seed, localyze_type, effect, preSFX, postSFX, datum/http_response/response)
 	var/datum/tts_provider/provider = seed.provider
 
 	// Bail if it errored
@@ -439,7 +439,7 @@ SUBSYSTEM_DEF(tts220)
 
 	tts_queue -= filename
 
-/datum/controller/subsystem/tts220/proc/play_tts(atom/speaker, mob/listener, filename, is_local = TRUE, effect = SOUND_EFFECT_NONE, preSFX = null, postSFX = null)
+/datum/controller/subsystem/tts220/proc/play_tts(atom/speaker, mob/listener, filename, localyze_type = TTS_LOCALYZE_LOCAL, effect = SOUND_EFFECT_NONE, preSFX = null, postSFX = null)
 	if(isnull(listener) || !listener.client)
 		return
 
@@ -463,7 +463,7 @@ SUBSYSTEM_DEF(tts220)
 			CRASH("Invalid sound effect chosen.")
 	if(effect != SOUND_EFFECT_NONE)
 		if(!fexists(voice))
-			var/datum/callback/play_tts_cb = CALLBACK(src, PROC_REF(play_tts), speaker, listener, filename, is_local, effect, preSFX, postSFX)
+			var/datum/callback/play_tts_cb = CALLBACK(src, PROC_REF(play_tts), speaker, listener, filename, localyze_type, effect, preSFX, postSFX)
 			if(LAZYLEN(tts_effects_queue[voice]))
 				LAZYADD(tts_effects_queue[voice], play_tts_cb)
 				return
@@ -480,12 +480,16 @@ SUBSYSTEM_DEF(tts220)
 
 	var/volume = 100
 	var/channel = CHANNEL_TTS_RADIO
-	if(is_local)
-		volume *= listener?.client.prefs.volume_preferences[VOLUME_TTS_LOCAL]
-		channel = get_local_channel_by_owner(speaker)
-	else
-		volume *= listener?.client.prefs.volume_preferences[VOLUME_TTS_RADIO]
-		channel = CHANNEL_TTS_RADIO
+	switch(localyze_type)
+		if(TTS_LOCALYZE_LOCAL)
+			volume *= listener?.client.prefs.volume_preferences[VOLUME_TTS_LOCAL]
+			channel = get_local_channel_by_owner(speaker)
+		if(TTS_LOCALYZE_RADIO)
+			volume *= listener?.client.prefs.volume_preferences[VOLUME_TTS_RADIO]
+			channel = CHANNEL_TTS_RADIO
+		if(TTS_LOCALYZE_ANNOUNCE)
+			volume *= listener?.client.prefs.volume_preferences[VOLUME_TTS_ANNOUNCE]
+			channel = CHANNEL_TTS_RADIO
 
 	var/sound/output = sound(voice)
 	output.status = SOUND_STREAM
@@ -589,8 +593,8 @@ SUBSYSTEM_DEF(tts220)
 	if(sanitized_messages_caching)
 		sanitized_messages_cache[hash] = .
 
-/proc/tts_cast(atom/speaker, mob/listener, message, datum/tts_seed/tts_seed, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX = null, postSFX = null)
-	SStts220.get_tts(speaker, listener, message, tts_seed, is_local, effect, traits, preSFX, postSFX)
+/proc/tts_cast(atom/speaker, mob/listener, message, datum/tts_seed/tts_seed, localyze_type = TTS_LOCALYZE_LOCAL, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX = null, postSFX = null)
+	SStts220.get_tts(speaker, listener, message, tts_seed, localyze_type, effect, traits, preSFX, postSFX)
 
 /proc/tts_acronym_replacer(word)
 	var/match = SStts220.tts_acronym_replacements[lowertext(word)]

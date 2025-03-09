@@ -8,11 +8,11 @@
 	. = ..()
 	add_tts_component()
 
-/atom/proc/cast_tts(mob/listener, message, atom/location, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX)
+/atom/proc/cast_tts(mob/listener, message, atom/location, localyze_type = TTS_LOCALYZE_LOCAL, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX)
 	SHOULD_CALL_PARENT(TRUE)
-	if(SEND_SIGNAL(src, COMSIG_ATOM_PRE_TTS_CAST, listener, message, location, is_local, effect, traits, preSFX, postSFX) & COMPONENT_TTS_INTERRUPT)
+	if(SEND_SIGNAL(src, COMSIG_ATOM_PRE_TTS_CAST, listener, message, location, localyze_type, effect, traits, preSFX, postSFX) & COMPONENT_TTS_INTERRUPT)
 		return
-	SEND_SIGNAL(src, COMSIG_ATOM_TTS_CAST, listener, message, location, is_local, effect, traits, preSFX, postSFX)
+	SEND_SIGNAL(src, COMSIG_ATOM_TTS_CAST, listener, message, location, localyze_type, effect, traits, preSFX, postSFX)
 
 // TODO: Do it better?
 /atom/proc/get_tts_seed()

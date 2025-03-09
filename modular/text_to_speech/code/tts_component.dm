@@ -55,7 +55,7 @@
 				new_tts_seed = SStts220.tts_seeds[active_character.tts_seed]
 				if(new_traits)
 					traits = new_traits
-				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, chooser, tts_test_str, new_tts_seed, FALSE, get_effect())
+				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), chooser, chooser, tts_test_str, new_tts_seed, TTS_LOCALYZE_LOCAL, get_effect())
 				return new_tts_seed
 
 	var/tts_seeds
@@ -81,10 +81,10 @@
 		traits = new_traits
 
 	if(!silent_target && being_changed != chooser && ismob(being_changed))
-		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, being_changed, tts_test_str, new_tts_seed, FALSE, get_effect())
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), being_changed, being_changed, tts_test_str, new_tts_seed, TTS_LOCALYZE_LOCAL, get_effect())
 
 	if(chooser)
-		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, chooser, tts_test_str, new_tts_seed, FALSE, get_effect())
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), chooser, chooser, tts_test_str, new_tts_seed, TTS_LOCALYZE_LOCAL, get_effect())
 
 	return new_tts_seed
 
@@ -134,7 +134,7 @@
 				return SOUND_EFFECT_MEGAPHONE_ROBOT
 	return .
 
-/datum/component/tts_component/proc/cast_tts(atom/speaker, mob/listener, message, atom/location, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX)
+/datum/component/tts_component/proc/cast_tts(atom/speaker, mob/listener, message, atom/location, localyze_type = TTS_LOCALYZE_LOCAL, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX)
 	SIGNAL_HANDLER
 
 	if(!message)
@@ -156,7 +156,7 @@
 
 	effect = get_effect(effect)
 
-	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), location, listener, message, tts_seed, is_local, effect, traits, preSFX, postSFX)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), location, listener, message, tts_seed, localyze_type, effect, traits, preSFX, postSFX)
 
 /datum/component/tts_component/proc/treat_tts_message(tts_message)
 	var/static/regex/length_regex = regex(@"(.+)\1\1\1", "gi")

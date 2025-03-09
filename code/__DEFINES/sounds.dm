@@ -12,6 +12,12 @@
 // #define VOLUME_ANNOUNCEMENT 5 // SS220 EDIT - TTS
 #define VOLUME_TTS_LOCAL 5 // SS220 EDIT - TTS
 #define VOLUME_TTS_RADIO 6 // SS220 EDIT - TTS
+#define VOLUME_TTS_ANNOUNCE 7 // SS220 EDIT - TTS
+
+//types for choosing correct volume and channel for tts cast
+#define TTS_LOCALYZE_RADIO 0
+#define TTS_LOCALYZE_LOCAL 1
+#define TTS_LOCALYZE_ANNOUNCE 2
 
 #define MUFFLE_LOW -500
 #define MUFFLE_MEDIUM -2000

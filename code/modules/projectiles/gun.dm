@@ -615,7 +615,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/unjam(mob/user)
 	if(jammed)
-		if(prob(unjam_chance))
+		var/skill_unjam = 0
+		if(user && user.mind && user.skills)
+			var/skill_level = user.skills.get_skill_level(SKILL_FIREARMS)
+			if(skill_level == SKILL_FIREARMS_CIVILIAN)
+				skill_unjam = -0.15 // civilians would likely fumble after all
+			else if(skill_level == SKILL_FIREARMS_TRAINED)
+				skill_unjam = 0 // no increase for enlisted
+			else if(skill_level == SKILL_FIREARMS_EXPERT)
+				skill_unjam = 0.30 // increase unjam chance for the snowflake special forces, practically impossible for them to fail at high durability
+
+		if(prob(unjam_chance + skill_unjam + (gun_durability / GUN_DURABILITY_MAX) * 0.1))
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE

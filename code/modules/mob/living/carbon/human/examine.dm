@@ -167,9 +167,7 @@
 			var/obj/item/weapon/gun/gun_with_iff
 			var/found_iff = FALSE
 			gun_with_iff = human_with_gun.get_active_hand()
-			if(gun_with_iff)
-						if(gun_with_iff.GetComponent(/datum/component/iff_fire_prevention))
-									found_iff = TRUE
+			if(gun_with_iff.GetComponent(/datum/component/iff_fire_prevention))
 				for(var/obj/item/attachable/attachment in gun_with_iff.contents)
 					if(locate(/datum/element/bullet_trait_iff) in attachment.traits_to_give)
 						found_iff = TRUE
@@ -185,7 +183,6 @@
 						msg += SPAN_HELPFUL("[capitalize(t_He)] is compatible with your weapon's IFF.\n")
 					else
 						msg += SPAN_DANGER("[capitalize(t_He)] is not compatible with your weapon's IFF. They will be shot by your weapon!\n")
-
 	//Restraints
 	if(handcuffed)
 		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")

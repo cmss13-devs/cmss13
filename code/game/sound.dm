@@ -24,7 +24,7 @@
 	var/list/hearers_to_return = list()
 	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
 	hearers_to_return += SSquadtree.players_in_range(zone, z)
-	
+
 	var/turf/above = SSmapping.get_turf_above(locate(x, y, z))
 	while(above)
 		hearers_to_return += SSquadtree.players_in_range(zone, above.z)
@@ -121,7 +121,7 @@
 
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
+/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 35, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
 	if(!istype(client) || !client.soundOutput)
 		return FALSE
 

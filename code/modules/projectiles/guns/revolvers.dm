@@ -320,7 +320,7 @@
 	icon_state = initial(icon_state)
 	if(can_fan)
 		if(!currently_fanning)
-			burst_delay = 0
+			modify_burst_delay(FIRE_DELAY_TIER_REVOLVER)
 			add_firemode(GUN_FIREMODE_BURSTFIRE)
 			set_burst_amount(BURST_AMOUNT_REVOLVER)
 			do_toggle_firemode(GUN_FIREMODE_BURSTFIRE)

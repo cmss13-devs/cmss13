@@ -144,6 +144,3 @@
 
 	// for multiz looking up
 	var/atom/observed_atom
-
-	///Hypothermic_clot_toggle toggles to indicate if CHEM_EFFECT_NO_BLEED was applied via hypothermic cryo/clonex interaction
-	var/hypothermic_clot_toggle = FALSE

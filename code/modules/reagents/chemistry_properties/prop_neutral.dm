@@ -287,7 +287,6 @@
 		M.emote("shiver")
 	///IF body temp below 0C AND Cryo or Clonex in system,apply CHEM_EFFECT_NO_BLEEDING
 	if ((M.bodytemperature < T0C && (effected_human.reagents.get_reagent_amount("cryoxadone") || effected_human.reagents.get_reagent_amount("clonexadone"))) && !(effected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING))
-		M.hypothermic_clot_toggle = TRUE
 		effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
 	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
 	M.recalculate_move_delay = TRUE

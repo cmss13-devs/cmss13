@@ -315,7 +315,7 @@
 		return
 
 	if(get_dist(healer_xeno, possible_healing_target) > max_range)
-		to_chat(healer_xeno, SPAN_XENOWARNING("We need to be closer to heal them."))
+		to_chat(healer_xeno, SPAN_XENOWARNING("We need to be next to an ally to start healing them."))
 		return
 
 	if(HAS_TRAIT(possible_healing_target, TRAIT_MOBA_MINION)) // So they dont heal minions

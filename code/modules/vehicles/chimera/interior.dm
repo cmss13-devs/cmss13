@@ -33,9 +33,11 @@
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 	if(open)
 		open = FALSE
+		flick("door closing", src)
 		icon_state = "rear door closed"
 	else
 		open = TRUE
+		flick("door opening", src)
 		icon_state = "rear door open"
 
 /obj/structure/machinery/door_control/chimera_rear_door

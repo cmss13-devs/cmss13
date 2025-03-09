@@ -140,7 +140,7 @@
 
 		return
 
-	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) || ispowerclamp(O))
+	if(HAS_TRAIT(attack_item, TRAIT_TOOL_CROWBAR) || ispowerclamp(attack_item))
 		return
 
 	. = ..()

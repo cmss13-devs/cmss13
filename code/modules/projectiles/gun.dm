@@ -600,13 +600,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return NONE
 	if(jammed)
 		if(prob(30))
-			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
-			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
+			to_chat(user, SPAN_WARNING("Your [src] is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
 		return NONE
 	else if(prob(jam_chance + magjam_modifier))
 		jammed = TRUE
-		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
+		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
 		balloon_alert(user, "*jammed*")
 		return NONE
@@ -627,13 +627,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 		if(prob(unjam_chance + skill_unjam + (gun_durability / GUN_DURABILITY_MAX) * 0.1))
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
-			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, FALSE)
 			jammed = FALSE
 			cock_cooldown += 2 SECONDS //so they dont accidentally cock a bullet away
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
-			playsound(src, "gun_jam_rack", 50, FALSE)
+			playsound(src, "gun_jam_rack", 20, FALSE)
 			balloon_alert(user, "*rack*")
 		return
 
@@ -645,7 +645,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(gun_durability <= GUN_DURABILITY_BROKEN)
 		if(prob(50))
 			to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
-			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
+			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
 			balloon_alert(user, "*worn-out*")
 			cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
 
@@ -1027,12 +1027,15 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 
-	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not a magazine!"))
+	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
+		if(in_chamber)
+			to_chat(user, SPAN_WARNING("[src] needs to be unchambered first."))
+			return
+		insert_bullet(user)
 		return
 
-	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
-		to_chat(user, SPAN_WARNING("[src] needs an actual magazine."))
+	if(!magazine || !istype(magazine))
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
 		return
 
 	if(magazine.current_rounds <= 0)
@@ -1244,6 +1247,20 @@ and you're good to go.
 	P.generate_bullet(chambered, 0, NO_FLAGS)
 
 	return P
+
+/obj/item/weapon/gun/proc/insert_bullet(mob/user)
+	if(!current_mag && !in_chamber)
+		var/obj/item/ammo_magazine/handful/bullet = user.get_active_hand()
+		if(istype(bullet) && bullet.caliber == caliber)
+			if(bullet.current_rounds > 0)
+				ammo = bullet.default_ammo
+				in_chamber = create_bullet(ammo, initial(name))
+				apply_traits(in_chamber)
+				to_chat(user, SPAN_NOTICE("You load a bullet into the [src]'s chamber."))
+				bullet.current_rounds--
+				if(bullet.current_rounds <= 0)
+					QDEL_NULL(bullet)
+				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
 
 //This proc is needed for firearms that chamber rounds after firing.
 /obj/item/weapon/gun/proc/reload_into_chamber(mob/user)

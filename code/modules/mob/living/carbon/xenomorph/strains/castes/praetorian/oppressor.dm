@@ -113,8 +113,15 @@
 		var/blocked = FALSE
 		for(var/obj/structure/structure in temp)
 			if(structure.opacity || ((istype(structure, /obj/structure/barricade) || istype(structure, /obj/structure/girder) && structure.density || istype(structure, /obj/structure/machinery/door)) && structure.density))
-				blocked = TRUE
-				break
+				if(istype(structure, /obj/structure/barricade))
+					var/obj/structure/barricade/cade = structure
+					var/cade_facing = cade.dir
+					if(cade_facing == facing || cade_facing == turn(facing, 180))
+						blocked = TRUE
+						break
+				else
+					blocked = TRUE
+					break
 		if(blocked)
 			break
 

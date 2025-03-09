@@ -239,6 +239,23 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/mark_completed()
 	completion_marked = TRUE
 
+/// Replaces addtimer in tutorials when using MANUAL TEXT! Do NOT use in tutorial steps without manual_message_to_player present
+/datum/tutorial/proc/register_tutorial_step(datum/callback/callback)
+	SIGNAL_HANDLER
+
+	if(!(callback))
+		return
+
+	next_tutorial_step = callback
+
+/// Skips to the next step of the tutorial, as registered with register_tutorial_step
+/datum/tutorial/proc/handle_tutorial_step()
+	if(next_tutorial_step)
+		var/datum/callback/override_detection = next_tutorial_step
+		next_tutorial_step.Invoke()
+		if(next_tutorial_step == override_detection)
+			next_tutorial_step = null
+
 /datum/action/tutorial/tutorial_end
 	name = "Stop Tutorial"
 	action_icon_state = "hologram_exit"
@@ -280,7 +297,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	var/mob/tutorial_mob = owner
 
-	if(selected_tutorial.tutorial_ending == TRUE)
+	if(selected_tutorial.tutorial_ending)
 		return
 
 	var/atom/movable/manual_text = listgetindex(tutorial_mob.client.screen_texts,1)
@@ -288,23 +305,6 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 		if(length(tutorial_mob.client.screen_texts) <= 1)
 			selected_tutorial.handle_tutorial_step()
 		INVOKE_ASYNC(manual_text, TYPE_PROC_REF(/atom/movable/screen/text/screen_text/command_order/tutorial/manual, end_play))
-
-/// Replaces addtimer in tutorials when using MANUAL TEXT! Do NOT use in tutorial steps without manual_message_to_player present
-/datum/tutorial/proc/register_tutorial_step(datum/callback/callback)
-	SIGNAL_HANDLER
-
-	if(!(callback))
-		return
-
-	next_tutorial_step = callback
-
-/// Skips to the next step of the tutorial, as registered with register_tutorial_step
-/datum/tutorial/proc/handle_tutorial_step()
-	if(next_tutorial_step)
-		var/datum/callback/override_detection = next_tutorial_step
-		next_tutorial_step.Invoke()
-		if(next_tutorial_step == override_detection)
-			next_tutorial_step = null
 
 /datum/map_template/tutorial
 	name = "Tutorial Zone (12x12)"

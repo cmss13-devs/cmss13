@@ -1181,3 +1181,8 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
+
+/obj/structure/prop/invuln/joey/normal
+	name = "Working Joe"
+	desc = "A Seegson-brand Working Joe, stored in the synthetic maintenance station to be called upon whenever you need. If only you had the keys."
+	icon_state = "joe"

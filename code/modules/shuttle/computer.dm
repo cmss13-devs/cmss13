@@ -105,6 +105,12 @@
 	/// if the ERT that used this shuttle has returned home
 	var/mission_accomplished = FALSE
 
+/obj/structure/machinery/computer/shuttle/ert/midway
+	name = "Midway Navigation Computer"
+	desc = "A flight computer that can be used for autopilot or long-range flights. This one appears to have autopilot enabled"
+	icon_state = "cameras_old"
+	density = FALSE
+
 /obj/structure/machinery/computer/shuttle/ert/broken
 	name = "nonfunctional shuttle control console"
 	disabled = TRUE

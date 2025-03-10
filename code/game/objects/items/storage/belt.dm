@@ -2222,6 +2222,7 @@
 	name="\improper M276 pattern mortar operator belt"
 	desc="An M276 load-bearing rig configured to carry ammunition for the M402 mortar, along with a sidearm."
 	icon_state="mortarbelt"
+	storage_slots = 9
 	holster_slots = list("1" = list("icon_x" = 11))
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,

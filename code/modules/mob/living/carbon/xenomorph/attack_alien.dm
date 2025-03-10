@@ -596,13 +596,19 @@
 	if(M.is_mob_incapacitated() || M.body_position != STANDING_UP)
 		return XENO_NO_DELAY_ACTION
 
-	var/delay
+	var/delay = 4 SECONDS
 
 	if(!arePowerSystemsOn())
 		delay = 1 SECONDS
 		playsound(loc, "alien_doorpry", 25, TRUE)
 	else
-		delay = 4 SECONDS
+		switch(M.mob_size)
+			if(MOB_SIZE_XENO_SMALL, MOB_SIZE_XENO_VERY_SMALL)
+				delay = 4 SECONDS
+			if(MOB_SIZE_BIG)
+				delay = 1 SECONDS
+			if(MOB_SIZE_XENO)
+				delay = 3 SECONDS
 		playsound(loc, "alien_doorpry", 25, TRUE)
 
 	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."),

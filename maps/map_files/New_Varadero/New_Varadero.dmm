@@ -208,6 +208,14 @@
 "aaN" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/islands)
+"aaO" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"aaP" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -41822,7 +41830,7 @@ wMw
 wMw
 wMw
 wMw
-wMw
+aaO
 xcE
 wMw
 wMw
@@ -55273,7 +55281,7 @@ lTg
 wlB
 wlB
 wlB
-wlB
+aaP
 wlB
 lTg
 wlB

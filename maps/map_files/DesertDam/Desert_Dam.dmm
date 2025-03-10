@@ -886,9 +886,20 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/exterior/valley/valley_hydro)
+"adH" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_two)
 "adI" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"adJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -53927,7 +53938,7 @@ lIt
 lIt
 lIt
 lIt
-lIt
+adH
 lIt
 lIt
 lIt
@@ -56785,7 +56796,7 @@ aQW
 aQW
 aQW
 aQW
-aQW
+adJ
 aQW
 aQW
 aQW

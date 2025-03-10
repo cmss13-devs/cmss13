@@ -605,6 +605,10 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
+"aco" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_2)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -690,6 +694,10 @@
 "acK" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/central_streets)
+"acL" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_1)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -52681,7 +52689,7 @@ uiM
 uiM
 uiM
 uiM
-xcY
+acL
 uiM
 uiM
 uiM
@@ -77429,7 +77437,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+aaa
 eXG
 eXG
 wPN
@@ -78241,7 +78249,7 @@ jMy
 qGI
 uMr
 uMr
-rqn
+aco
 wDa
 vbF
 kBj

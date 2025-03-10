@@ -148,6 +148,14 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/complex_border/med_rec)
+"aaN" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"aaO" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_pad)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -20088,7 +20096,7 @@ gAM
 gAM
 gAM
 wGH
-wGH
+aaN
 wGH
 wGH
 wGH
@@ -21153,7 +21161,7 @@ lKk
 lKk
 lKk
 lKk
-lKk
+aaO
 lKk
 lKk
 lKk

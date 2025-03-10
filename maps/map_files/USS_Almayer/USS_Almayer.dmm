@@ -189,10 +189,18 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/lower/workshop)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -361,6 +369,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
+"aaT" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer,
+/area/almayer/command/lifeboat)
 "aaU" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -15921,6 +15933,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/landmark/spycam_start,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
@@ -90341,7 +90354,7 @@ xyw
 xyw
 xyw
 xyw
-xyw
+aaB
 xyw
 xyw
 xyw
@@ -123633,7 +123646,7 @@ uZF
 xoj
 xoj
 osI
-qXk
+aaD
 fie
 pUj
 xoj
@@ -124750,7 +124763,7 @@ eky
 aDQ
 pyy
 eky
-eky
+aaT
 eky
 dLc
 aDQ

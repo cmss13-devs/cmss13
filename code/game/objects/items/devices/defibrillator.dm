@@ -219,7 +219,7 @@
 		playsound(get_turf(src), sound_charge_skill4, 25, 0)
 	else if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.75)
 		playsound(get_turf(src), sound_charge_skill3, 25, 0)
-	else 
+	else
 		playsound(get_turf(src), sound_charge, 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	//Taking square root not to make defibs too fast...
@@ -259,7 +259,7 @@
 		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src].")
 		return
 
-	if(!target.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
+	if(!target.client && !(target.status_flags & FAKESOUL)) //Freak case, no client at all. This is a braindead mob (like a colonist)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: No soul detected, Attempting to revive..."))
 
 	if(isobserver(target.mind?.current) && !target.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.

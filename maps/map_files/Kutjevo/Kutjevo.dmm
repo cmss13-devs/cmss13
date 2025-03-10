@@ -148,6 +148,12 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/complex_border/med_rec)
+"aaN" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfsmugglers"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -33299,7 +33305,7 @@ dxF
 dxF
 dxF
 dxF
-dxF
+aaN
 dxF
 dxF
 dxF

@@ -1,4 +1,4 @@
-import { useBackend } from '../../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -8,13 +8,14 @@ import {
   LabeledList,
   NumberInput,
   Stack,
-} from '../../components';
+} from 'tgui/components';
+
 import {
-  EntryCoordProps,
-  EntryFloatProps,
-  EntryGradientProps,
-  EntryIconStateProps,
-  EntryTransformProps,
+  type EntryCoordProps,
+  type EntryFloatProps,
+  type EntryGradientProps,
+  type EntryIconStateProps,
+  type EntryTransformProps,
   MatrixTypes,
   P_DATA_ICON_ADD,
   P_DATA_ICON_REMOVE,
@@ -64,7 +65,7 @@ export const EntryCoord = (props: EntryCoordProps) => {
       />
       <NumberInput
         animated
-        minValue={-Infinity}
+        minValue={0}
         maxValue={Infinity}
         step={1}
         value={coord?.[0] || 0}
@@ -77,7 +78,7 @@ export const EntryCoord = (props: EntryCoordProps) => {
       />
       <NumberInput
         animated
-        minValue={-Infinity}
+        minValue={0}
         maxValue={Infinity}
         step={1}
         value={coord?.[1] || 0}
@@ -90,7 +91,7 @@ export const EntryCoord = (props: EntryCoordProps) => {
       />
       <NumberInput
         animated
-        minValue={-Infinity}
+        minValue={0}
         maxValue={Infinity}
         step={1}
         value={coord?.[2] || 0}

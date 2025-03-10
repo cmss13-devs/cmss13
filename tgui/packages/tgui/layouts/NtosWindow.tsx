@@ -5,10 +5,10 @@
  */
 
 import { BooleanLike } from 'common/react';
+import { resolveAsset } from 'tgui/assets';
+import { useBackend } from 'tgui/backend';
+import { Box, Button } from 'tgui/components';
 
-import { resolveAsset } from '../assets';
-import { useBackend } from '../backend';
-import { Box, Button } from '../components';
 import { Window } from './Window';
 
 export type NTOSData = {

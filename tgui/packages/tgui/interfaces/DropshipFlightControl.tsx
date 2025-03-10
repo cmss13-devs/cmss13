@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -9,8 +8,9 @@ import {
   ProgressBar,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import {
   CancelLaunchButton,
   DisabledScreen,
@@ -66,7 +66,6 @@ const DropshipDoorControl = () => {
   const in_flight =
     data.shuttle_mode === 'called' || data.shuttle_mode === 'pre-arrival';
   const disable_door_controls = in_flight;
-  const disable_normal_control = data.locked_down === 1;
   return (
     <Section
       title="Door Controls"

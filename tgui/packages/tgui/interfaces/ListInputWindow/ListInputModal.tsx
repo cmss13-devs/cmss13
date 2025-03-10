@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import {
   KEY_A,
   KEY_DOWN,
@@ -7,9 +6,10 @@ import {
   KEY_ESCAPE,
   KEY_UP,
   KEY_Z,
-} from '../../../common/keycodes';
-import { useBackend } from '../../backend';
-import { Autofocus, Button, Input, Section, Stack } from '../../components';
+} from 'tgui/../common/keycodes';
+import { useBackend } from 'tgui/backend';
+import { Autofocus, Button, Input, Section, Stack } from 'tgui/components';
+
 import { InputButtons } from '../common/InputButtons';
 
 type ListInputModalProps = {

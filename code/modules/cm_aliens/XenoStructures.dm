@@ -633,7 +633,7 @@
 		return
 	var/mob/living/carbon/target = null
 	var/furthest_distance = INFINITY
-	for(var/mob/living/carbon/C in urange(range, get_turf(loc)))
+	for(var/mob/living/carbon/C in long_range(range, get_turf(loc)))
 		if(!can_target(C))
 			continue
 		var/distance_between = get_dist(src, C)
@@ -717,7 +717,7 @@
 	START_PROCESSING(SSshield_pillar, src)
 
 /obj/effect/alien/resin/shield_pillar/process()
-	for(var/mob/living/carbon/xenomorph/X in urange(range, src))
+	for(var/mob/living/carbon/xenomorph/X in long_range(range, src))
 		if((X.hivenumber != hivenumber) || X.stat == DEAD)
 			continue
 		X.add_xeno_shield(shield_to_give, XENO_SHIELD_SOURCE_SHIELD_PILLAR, decay_amount_per_second = 1, add_shield_on = TRUE, duration = 1 SECONDS)

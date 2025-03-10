@@ -180,6 +180,7 @@ Can look good elsewhere as well.*/
 
 
 /mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
+	send_animating_signal(src)
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone

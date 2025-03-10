@@ -129,11 +129,13 @@
 	plane = OPEN_SPACE_PLANE_START
 	vis_flags = VIS_HIDE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
 
-/obj/vis_contents_holder/Initialize(mapload, vis, offset)
+/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop = TRUE)
 	. = ..()
 	plane -= offset
-	vis_contents += GLOB.openspace_backdrop_one_for_all
+	if(backdrop)
+		vis_contents += GLOB.openspace_backdrop_one_for_all
 	vis_contents += vis
 	name = null // Makes it invisible on right click
 
@@ -948,6 +950,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	return TRUE
 
 /turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 1)
+	if(height <= 0)
+		return
+
 	if(ishuman_strict(victim))
 		var/mob/living/carbon/human/human_victim = victim 
 		if (stun_modifier > 0)

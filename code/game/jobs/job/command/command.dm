@@ -1,8 +1,6 @@
 /datum/job/command
 	selection_class = "job_command"
 	supervisors = "the acting commanding officer"
-	total_positions = 1
-	spawn_positions = 1
 
 /datum/timelock/command
 	name = "Command Roles"
@@ -23,7 +21,7 @@
 
 /datum/timelock/human/can_play(client/C)
 	return C.get_total_human_playtime() >= time_required
-	
+
 /datum/timelock/human/get_role_requirement(client/C)
 	return time_required - C.get_total_human_playtime()
 
@@ -33,4 +31,4 @@
 /datum/timelock/dropship/New(name, time_required, list/roles)
 	. = ..()
 	src.roles = JOB_DROPSHIP_ROLES_LIST
-	
+

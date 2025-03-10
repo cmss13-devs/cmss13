@@ -4,12 +4,13 @@
 	var/disp_title //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
 	var/role_ban_alternative // If the roleban title needs to be an extra check, like Xenomorphs = Alien.
 
-	var/total_positions = 0 //How many players can be this job
-	var/spawn_positions = 0 //How many players can spawn in as this job
+	var/limited_slots = TRUE //is there no limit to slots, used for rifleman
 	var/total_positions_so_far = 0 //How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
-	var/allow_additional = 0 //Can admins modify positions to it
-	var/scaled = 0
 	var/current_positions = 0 //How many players have this job
+	var/minimal_open_positions = 1 //minimal positions open for round
+	var/maximal_open_positions = 1 //maximal positions open for round
+	var/players_per_position = 1 //how many USCM players are needed per position
+	var/factor = 1 //how many multiplications of players per position are not needed before first increment, players per position 10 and factor 2 means you get 3 slots open at 10 players
 	var/supervisors = "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
 	var/selection_class = "" // Job Selection span class (for background color)
 
@@ -173,8 +174,15 @@
 		return GLOB.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
-/datum/job/proc/set_spawn_positions(count)
-	return spawn_positions
+/datum/job/proc/job_slot_formula(marine_count, marine_per_slot, factor, min, max)
+	if(marine_count <= marine_per_slot)
+		return min
+	return floor(clamp((marine_count/marine_per_slot)+ factor, min, max))
+
+
+/datum/job/proc/set_spawn_positions(count = get_total_marines())
+	total_positions_so_far = max(total_positions_so_far, job_slot_formula(count, players_per_position, factor, minimal_open_positions, maximal_open_positions ))
+	return total_positions_so_far
 
 /datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
@@ -233,10 +241,6 @@
 
 	return //Anything special that should happen to the mob upon entering the world.
 
-//This lets you scale max jobs at runtime
-//All you have to do is rewrite the inheritance
-/datum/job/proc/get_total_positions(latejoin)
-	return latejoin ? total_positions : spawn_positions
 
 /datum/job/proc/spawn_in_player(mob/new_player/NP)
 	if(!istype(NP))

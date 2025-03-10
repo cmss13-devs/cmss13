@@ -123,19 +123,16 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	return ..()
 
-/datum/action/xeno_action/onclick/regurgitate/use_ability(atom/A)
+/datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_WARNING("We cannot regurgitate here."))
+		to_chat(X, SPAN_WARNING("We cannot put them down here."))
 		return
 
-	if(length(X.stomach_contents))
-		for(var/mob/living/M in X.stomach_contents)
-			// Also has good reason to be a proc on all Xenos
-			X.regurgitate(M, TRUE)
+	X.release_haul(TRUE)
 
 	return ..()
 
@@ -932,6 +929,8 @@
 
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
+	if(HAS_TRAIT(targetted_atom, TRAIT_HAULED))
+		return
 
 	if(HAS_TRAIT(stabbing_xeno, TRAIT_ABILITY_BURROWED) || stabbing_xeno.is_ventcrawling)
 		to_chat(stabbing_xeno, SPAN_XENOWARNING("We must be above ground to do this."))

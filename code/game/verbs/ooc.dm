@@ -84,9 +84,9 @@
 	if(CONFIG_GET(flag/ooc_country_flags) && (prefs.toggle_prefs & TOGGLE_OOC_FLAG))
 		prefix += "[country2chaticon(country, GLOB.clients)]"
 	if(donator)
-		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
+		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "Donator")]"
 	if(isCouncil(src))
-		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
+		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "WhitelistCouncil")]"
 	var/comm_award = find_community_award_icons()
 	if(comm_award)
 		prefix += comm_award
@@ -96,10 +96,10 @@
 			for(var/extra_title in admin_holder.extra_titles)
 				extra_title_state = ckeyEx(extra_title)
 				if(extra_title_state in GLOB.ooc_rank_iconstates)
-					prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, extra_title_state)]"
+					prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, extra_title_state)]"
 
 		if(admin_holder.rank in GLOB.ooc_rank_iconstates)
-			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
+			prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, admin_holder.rank)]"
 
 	if(prefix)
 		prefix = "[prefix] "

@@ -174,7 +174,7 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 
 /proc/toggle_ob_cannon_safety()
-	GLOB.ob_cannon_safety = pick(GLOB.ob_cannon_safety == TRUE ? FALSE : TRUE)
+	GLOB.ob_cannon_safety = !GLOB.ob_cannon_safety
 	for(var/obj/structure/machinery/computer/overwatch/overwatch in GLOB.active_overwatch_consoles)
 		overwatch.toggle_ob_cannon_safety()
 

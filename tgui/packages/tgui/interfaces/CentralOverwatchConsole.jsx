@@ -242,19 +242,17 @@ const CombinedSquadPanel = (props) => {
                           <Table.Row>
                             {(squad.squad_leader && (
                               <Table.Cell textAlign="center">
-                                {squad.squad_leader
-                                  ? squad.squad_leader
+                                {data.squad_leader.name
+                                  ? data.squad_leader.name
                                   : 'NONE'}
                                 <Box
                                   color={
-                                    squad.squad_leader.stat === '2'
+                                    data.squad_leader.state !== 'Dead'
                                       ? 'green'
                                       : 'red'
                                   }
                                 >
-                                  {squad.squad_leader.stat !== 2
-                                    ? 'ALIVE'
-                                    : 'DEAD'}
+                                  {data.squad_leader.state.toUpperCase()}
                                 </Box>
                               </Table.Cell>
                             )) || (
@@ -589,23 +587,15 @@ const EmergencyPanel = (props) => {
 
   if (AlertLevel === 3) {
     distress_reason = 'Self-destruct in progress. Beacon disabled.';
-    destruct_reason = 'Self-destruct is already active!';
   } else if (AlertLevel !== 2) {
     distress_reason = 'Ship is not under an active emergency.';
-    destruct_reason = 'Ship is not under an active emergency.';
   } else if (data.time_request < worldTime) {
     distress_reason =
       'Beacon is currently recharging. Time remaining: ' +
       Math.ceil((data.time_message - worldTime) / 10) +
       'secs.';
-  } else if (data.time_destruct < worldTime) {
-    destruct_reason =
-      'A request has already been sent to HC. Please wait: ' +
-      Math.ceil((data.time_destruct - worldTime) / 10) +
-      'secs to send another.';
   } else if (!minimumTimeElapsed) {
     distress_reason = "It's too early to launch a distress beacon.";
-    destruct_reason = "It's too early to initiate the self-destruct.";
   }
 
   return (

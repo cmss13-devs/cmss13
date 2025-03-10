@@ -452,17 +452,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	data["z_hidden"] = z_hidden
 
-	data["saved_coordinates"] = list()
-	for(var/i in 1 to length(saved_coordinates))
-		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "comment" = saved_coordinates[i]["comment"], "index" = i))
-
-	var/has_supply_pad = FALSE
-	var/obj/structure/closet/crate/supply_crate
-	if(current_squad.drop_pad)
-		supply_crate = locate() in current_squad.drop_pad.loc
-		has_supply_pad = TRUE
-	data["can_launch_crates"] = has_supply_pad
-	data["has_crate_loaded"] = supply_crate
 	data["can_launch_obs"] = current_orbital_cannon
 	if(current_orbital_cannon)
 		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
@@ -476,7 +465,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	data["marines"] = list()
 	data = count_marines(data, current_squad)
 
-	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	if(operator)
 		data["operator"] = operator.name
 
@@ -521,6 +509,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
 				return TRUE
 		if("logout")
+			if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
+				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
+					if(resolve_root.name == "Root")
+						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
 			if(current_squad?.release_overwatch())
 				if(isSilicon(user))
 					current_squad.send_squad_message("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.", displayed_icon = src)

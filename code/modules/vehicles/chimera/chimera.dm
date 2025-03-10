@@ -140,9 +140,6 @@
 
 		return
 
-	if(HAS_TRAIT(attack_item, TRAIT_TOOL_CROWBAR) || ispowerclamp(attack_item))
-		return
-
 	. = ..()
 
 /obj/vehicle/multitile/chimera/load_role_reserved_slots()

@@ -1,0 +1,4 @@
+author: "BasilHerb"
+delete-after: True
+changes:
+  - rscadd: "SG drums now have the 'slap mag' property, allowing you to transfer bullets between SG drums directly, instead of reloading them one handful at a time."

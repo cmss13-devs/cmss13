@@ -200,14 +200,35 @@
     }
   };
 
+  let MAX_PACKET_SIZE = 1024;
+
   Byond.sendMessage = function (type, payload) {
     var message = typeof type === 'string'
       ? { type: type, payload: payload }
       : type;
     // JSON-encode the payload
+
     if (message.payload !== null && message.payload !== undefined) {
       message.payload = JSON.stringify(message.payload);
+
+      if(!Byond.TRIDENT && message.payload.length > MAX_PACKET_SIZE) {
+        var chunks = [];
+
+        for(var i = 0, charsLength = message.payload.length; i < charsLength; i += MAX_PACKET_SIZE) {
+          chunks.push(message.payload.substring(i, i + MAX_PACKET_SIZE))
+        }
+
+        for(var i = 0; i < chunks.length; i++) {
+          var to_send = chunks[i]
+
+          message = { type: type, packet: to_send, packetId: i + 1, totalPackets: chunks.length, tgui: 1, window_id: Byond.windowId };
+          Byond.topic(message);
+        }
+
+        return;
+      }
     }
+
     // Append an identifying header
     assign(message, {
       tgui: 1,

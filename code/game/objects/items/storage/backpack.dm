@@ -782,7 +782,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A backpack specifically designed to hold ammunition for the M402 mortar."
 	icon_state = "mortarpack"
 	max_w_class = SIZE_HUGE
-	storage_slots = 8
+	storage_slots = 12
 	can_hold = list(/obj/item/mortar_shell)
 	xeno_types = null
 

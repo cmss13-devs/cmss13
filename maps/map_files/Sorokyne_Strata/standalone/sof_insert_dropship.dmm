@@ -328,7 +328,8 @@
 "wo" = (
 /obj/structure/shuttle/part/upp_sof{
 	icon_state = "4,1";
-	density = 0
+	density = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/strata/ag/interior/outpost/engi/drome/shuttle_sof)

@@ -40,6 +40,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
+/obj/item/storage/box/mre/upp,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/canteen)
 "aaj" = (
@@ -464,6 +465,8 @@
 	},
 /obj/item/storage/box/attachments,
 /obj/item/storage/box/attachments,
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/research)
 "abK" = (
@@ -1813,7 +1816,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/microwave,
+/obj/structure/machinery/microwave{
+	pixel_y = 4
+	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -1823,7 +1828,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/reagentgrinder,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 5
+	},
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "agN" = (
@@ -1955,11 +1962,11 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/jungle/structures/research)
 "ahp" = (
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/box/donkpockets,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/jungle/structures/research)
 "ahq" = (
@@ -2462,7 +2469,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/snacks/eggplantparm,
+/obj/item/reagent_container/food/snacks/eggplantparm{
+	pixel_y = 5
+	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/cyan2/east,
@@ -2471,17 +2480,23 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/snacks/jellysandwich,
+/obj/item/reagent_container/food/snacks/jellysandwich{
+	pixel_x = 1;
+	pixel_y = 7
+	},
 /turf/open/floor/strata/cyan2/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "ajr" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/pspoon{
+	pixel_x = -11;
+	pixel_y = 5
+	},
 /obj/item/trash/plate{
-	pixel_x = 1;
-	pixel_y = 3
+	pixel_x = 5;
+	pixel_y = 5
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/cyan2/east,
@@ -4042,6 +4057,11 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = -5;
+	pixel_y = 11
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
 "arP" = (
@@ -4069,13 +4089,23 @@
 /turf/open/asphalt/cement/cement3,
 /area/strata/ag/interior/landing_zones/lz1)
 "arU" = (
-/obj/item/storage/box/ids,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/storage/box/ids,
+/obj/item/storage/box/ids{
+	pixel_x = 7;
+	pixel_y = 5
+	},
 /obj/structure/window/reinforced/tinted{
 	color = "#969696"
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	pixel_x = -7;
+	pixel_y = 10;
+	emp_proof = 1;
+	explo_proof = 1;
+	name = "Landing Zone - Secure Lockdown Button";
+	id = "LZ1"
 	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/landing_zones/near_lz1)
@@ -4354,7 +4384,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/spacecash/c500,
+/obj/item/spacecash/c500{
+	pixel_y = 8
+	},
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -4540,6 +4572,8 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
 "auc" = (
@@ -5250,7 +5284,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/storage/box/wy_mre,
+/obj/item/ammo_box/magazine/misc/mre/upp,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -5563,6 +5597,16 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
+"ayL" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/reagent_container/food/snacks/monkeyburger{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/mining_outpost/canteen)
 "ayM" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -5878,7 +5922,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/storage/box/wy_mre,
+/obj/item/ammo_box/magazine/misc/mre/upp,
 /obj/item/tool/crowbar,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -15093,6 +15137,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/crash)
+"bFW" = (
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ug/interior/jungle/structures/research)
 "bFX" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "sunnybush_1"
@@ -16011,7 +16059,10 @@
 /turf/open/floor/strata/cyan2/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "bPv" = (
-/obj/item/tool/kitchen/knife/butcher,
+/obj/item/tool/kitchen/knife/butcher{
+	pixel_x = -4;
+	pixel_y = 4
+	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -18627,6 +18678,10 @@
 "crk" = (
 /turf/open/asphalt/cement/cement14,
 /area/strata/ag/exterior/caves/lz_caves)
+"crm" = (
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/mining_outpost/canteen)
 "cro" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/structure/platform/stone/soro/north,
@@ -18918,6 +18973,13 @@
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/mining_outpost/central)
+"ctM" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/marsh/river)
 "ctQ" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 8;
@@ -19136,6 +19198,17 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = -7
+	},
 /turf/open/floor/strata/yellow3/north,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "cwA" = (
@@ -21153,6 +21226,10 @@
 /obj/structure/flora/grass/tallgrass/jungle_alt,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/carplake/east)
+"dOo" = (
+/obj/item/storage/box/mre/upp,
+/turf/open/gm/dirt/brown,
+/area/strata/ag/exterior/marsh/center)
 "dOG" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -21616,6 +21693,7 @@
 	pixel_x = 10;
 	pixel_y = -4
 	},
+/obj/item/storage/box/mre/upp,
 /turf/open/gm/dirt/brown/variant_5/west,
 /area/strata/ug/interior/jungle/structures/monitoring/south)
 "edi" = (
@@ -21980,7 +22058,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/snacks/mushroompizzaslice,
+/obj/item/reagent_container/food/snacks/mushroompizzaslice{
+	pixel_x = 1;
+	pixel_y = 3
+	},
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "eng" = (
@@ -22516,6 +22597,14 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen)
+"eEq" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
 "eEr" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -22800,7 +22889,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/snacks/omelette,
+/obj/item/reagent_container/food/snacks/omelette{
+	pixel_y = 4
+	},
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "eNW" = (
@@ -24837,6 +24928,10 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/strata/ug/interior/outpost/underground_dorms/admin1)
+"ghw" = (
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/red1,
+/area/strata/ug/interior/jungle/structures/research)
 "ghB" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -24989,6 +25084,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
+"glp" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "Secure Lockdown";
+	id = "LZ1"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "gls" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
@@ -25428,6 +25530,7 @@
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "gyx" = (
 /obj/structure/platform_decoration/stone/soro/west,
+/obj/item/storage/box/mre/upp,
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
 "gyz" = (
@@ -28637,6 +28740,10 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
+"iKY" = (
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ug/interior/outpost/underground_dorms/sec1)
 "iLr" = (
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/paths/north_outpost)
@@ -30053,6 +30160,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ug/interior/jungle/carplake/north)
+"jFx" = (
+/obj/item/storage/box/mre/upp,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/interior/outside/bball/cave)
 "jFA" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -31341,8 +31452,13 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
 	},
-/obj/structure/largecrate/supply/supplies/mre{
-	icon_state = "densecrate"
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = 6;
+	pixel_y = -1
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = -11;
+	pixel_y = 1
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
@@ -32044,7 +32160,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/storage/box/donkpockets,
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = 3;
+	pixel_y = 10
+	},
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/underground_dorms/sec1)
 "laF" = (
@@ -33070,6 +33189,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/caves/lz_caves)
+"lJr" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/mining_outpost/canteen)
 "lJz" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -34869,7 +34995,10 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
 	},
-/obj/item/ammo_box/magazine/misc/mre,
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = 3;
+	pixel_y = -4
+	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
 "mQW" = (
@@ -37475,6 +37604,14 @@
 	},
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/paths/mining_outpost_exterior)
+"oLx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = -8;
+	pixel_y = -2
+	},
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/mining_outpost/canteen)
 "oLO" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
 	pixel_y = -10
@@ -37630,6 +37767,13 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
+"oPu" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp/empty,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/mining_outpost/maintenance)
 "oPz" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
@@ -38695,6 +38839,13 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
+"pwP" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/item/storage/box/mre/upp,
+/turf/open/gm/dirt/brown/variant_5,
+/area/strata/ag/interior/outside/bball/cave)
 "pwW" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
@@ -38774,6 +38925,13 @@
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/exterior/marsh/spring_marshes)
+"pyd" = (
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/jungle/structures/research)
 "pyw" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/tool/warning_cone{
@@ -39915,6 +40073,13 @@
 /obj/structure/machinery/light/small,
 /turf/open/asphalt/cement/cement12,
 /area/strata/ug/interior/outpost/platform)
+"qkE" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/red1,
+/area/strata/ug/interior/jungle/structures/research)
 "qkS" = (
 /turf/open/asphalt/cement/cement12,
 /area/strata/ag/exterior/marsh/spring_marshes)
@@ -41174,6 +41339,13 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/outpost_decks)
+"qYw" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ag/exterior/marsh/river)
 "qYR" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = 11
@@ -42985,6 +43157,11 @@
 /area/strata/ug/interior/jungle/structures/research/south)
 "sit" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp/empty,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen)
 "sjb" = (
@@ -43302,6 +43479,11 @@
 /obj/structure/fence/dark,
 /turf/open/asphalt/cement/cement9,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
+"svR" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/jungle/structures/research)
 "swd" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -43670,7 +43852,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/snacks/cubancarp,
+/obj/item/reagent_container/food/snacks/cubancarp{
+	pixel_x = 1;
+	pixel_y = 7
+	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
@@ -44487,6 +44672,13 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /turf/open/asphalt/cement/cement12,
 /area/strata/ug/interior/outpost/platform)
+"tlC" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/mining_outpost/maintenance)
 "tlJ" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -44875,6 +45067,13 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
+"tAt" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = 6
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ug/interior/outpost/underground_dorms/admin2)
 "tAE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_y = -9
@@ -45174,6 +45373,16 @@
 	},
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ug/interior/jungle/carplake/north)
+"tIS" = (
+/obj/structure/machinery/door_control/brbutton/alt{
+	pixel_y = -18;
+	emp_proof = 1;
+	explo_proof = 1;
+	name = "Landing Zone - Secure Lockdown Button";
+	id = "LZ1"
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "tIV" = (
 /obj/structure/tunnel/maint_tunnel/hybrisa{
 	pixel_y = 16
@@ -47605,7 +47814,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/snacks/monkeyburger,
+/obj/item/reagent_container/food/snacks/monkeyburger{
+	pixel_x = -5;
+	pixel_y = 9
+	},
 /turf/open/floor/strata/cyan2/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "vjF" = (
@@ -47888,6 +48100,17 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/south_outpost)
+"vsJ" = (
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = 5;
+	pixel_y = 15
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ug/interior/jungle/structures/research)
 "vsL" = (
 /obj/item/reagent_container/food/snacks/donkpocket,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -47934,7 +48157,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/snacks/meatballsoup,
+/obj/item/reagent_container/food/snacks/meatballsoup{
+	pixel_x = -3;
+	pixel_y = 5
+	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
@@ -48567,7 +48793,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/snacks/meatballspagetti,
+/obj/item/reagent_container/food/snacks/meatballspagetti{
+	pixel_y = 4
+	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
@@ -49478,6 +49706,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ug/interior/jungle/tearlake)
+"wtX" = (
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata,
+/area/strata/ug/interior/outpost/underground_dorms/admin1)
 "wuf" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
 	pixel_x = -2;
@@ -53503,7 +53735,7 @@ aQv
 ozg
 cqE
 aoj
-aoj
+tIS
 bAq
 bDT
 bDT
@@ -53679,7 +53911,7 @@ ozg
 beJ
 aST
 cqE
-aST
+glp
 aWg
 aVq
 aVq
@@ -53854,10 +54086,10 @@ xnL
 cqE
 aST
 cqE
-aST
-aVq
-aVq
-aVq
+glp
+aZx
+qYw
+aZx
 nrp
 aVq
 aVq
@@ -54029,11 +54261,11 @@ cqE
 cqE
 aST
 cqE
-aST
-aVq
+glp
 aZx
 aZx
-aVq
+aZx
+aZx
 aVq
 aVq
 aVq
@@ -54204,12 +54436,12 @@ cqM
 bqV
 aST
 cqE
-aST
-aVq
+glp
 aZx
 aZx
-aVq
-aVq
+aZx
+aZx
+bzu
 aVq
 aVq
 aVq
@@ -54379,14 +54611,14 @@ cqE
 bqW
 aST
 cqE
-aST
+glp
 aWg
 aVq
+ctM
 aZx
 aZx
 aVq
-aVq
-aVq
+oyZ
 aVq
 aZx
 aZx
@@ -54558,9 +54790,9 @@ bAq
 bDT
 bDT
 bDT
-bzu
 aZx
-aVq
+aZx
+aZx
 aVq
 aWg
 aZx
@@ -54736,8 +54968,8 @@ yhp
 aZx
 oyZ
 aVq
-aVq
-aVq
+aZx
+aZx
 iou
 aZx
 aZx
@@ -57911,7 +58143,7 @@ nUz
 nUz
 bTs
 bme
-rGp
+dOo
 ttd
 tAV
 ssb
@@ -59058,7 +59290,7 @@ bso
 agJ
 ahu
 ahT
-agJ
+oLx
 ajo
 pDJ
 cuw
@@ -59232,7 +59464,7 @@ bOq
 xdE
 jOl
 ahv
-ahU
+lJr
 xSJ
 ajp
 qUW
@@ -59584,7 +59816,7 @@ agL
 xSJ
 ahV
 aiF
-vjD
+ayL
 qUW
 xSJ
 nnO
@@ -59758,7 +59990,7 @@ xdE
 agM
 xSJ
 ahW
-xSJ
+crm
 ajr
 qUW
 xSJ
@@ -61859,8 +62091,8 @@ nUz
 xdE
 xdE
 aHq
-ajt
-ajt
+tlC
+oPu
 aqD
 aHq
 ajt
@@ -70925,7 +71157,7 @@ twW
 aao
 kag
 sOO
-duF
+pwP
 wnI
 pIa
 nUz
@@ -73561,7 +73793,7 @@ adC
 aam
 gqa
 aar
-aam
+jFx
 fbe
 spp
 abr
@@ -75597,7 +75829,7 @@ iwH
 lxp
 nDj
 hwI
-hwI
+wtX
 hwI
 iwH
 aad
@@ -76783,7 +77015,7 @@ lqV
 bzl
 bLo
 csE
-baX
+eEq
 baX
 bcp
 bWZ
@@ -78057,7 +78289,7 @@ ltp
 hel
 gHQ
 fLl
-hel
+iKY
 kXi
 sHP
 bef
@@ -80673,7 +80905,7 @@ aad
 ygq
 ygq
 kEl
-jtB
+tAt
 oWU
 lyX
 wEo
@@ -89870,7 +90102,7 @@ uux
 uux
 uux
 arP
-bXQ
+pyd
 aub
 uux
 bef
@@ -90045,7 +90277,7 @@ bUn
 bXQ
 ceg
 bXQ
-bIx
+svR
 auc
 uux
 bef
@@ -90550,7 +90782,7 @@ aad
 uux
 abX
 aei
-aeB
+qkE
 adz
 abX
 soi
@@ -92118,7 +92350,7 @@ aad
 aad
 aYz
 abI
-abX
+ghw
 bUo
 acp
 bAr
@@ -95805,7 +96037,7 @@ bEE
 afA
 aga
 ajd
-bEE
+bFW
 bEE
 bEE
 bEE
@@ -95982,8 +96214,8 @@ uux
 uux
 ahp
 ahp
-aZZ
-bEE
+vsJ
+bFW
 bEE
 aZZ
 uux

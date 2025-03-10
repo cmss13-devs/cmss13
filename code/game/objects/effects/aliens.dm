@@ -430,6 +430,10 @@
 	else if(istype(acid_t, /obj/structure/barricade))
 		pass() // Don't delete it, just damaj
 
+	else if(istype(acid_t, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/acid_gun = acid_t
+		acid_gun.destroy_gun_durability()
+
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)

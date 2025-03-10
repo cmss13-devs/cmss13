@@ -225,4 +225,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		/obj/item/tool/shovel/etool/folded,
 		/obj/item/device/lightreplacer,
 		/obj/item/weapon/gun/smg/nailgun/compact/tactical,
+		/obj/item/stack/repairable/gunkit = 10,
 	)

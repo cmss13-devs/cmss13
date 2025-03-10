@@ -16,7 +16,7 @@
 
 /obj/item/prop/helmetgarb/gunoil
 	name = "gun oil"
-	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm."
+	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm. Wait... the oil in the bottle seems crudely synthetic, you don't think it can repair your gun but its a decent enough for cleaning."
 	icon_state = "gunoil"
 
 /obj/item/prop/helmetgarb/netting

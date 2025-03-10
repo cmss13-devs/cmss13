@@ -27,6 +27,7 @@
 	var/bonus_damage_cap_increase = 0
 	/// multiplies the default drain of 5 holo stacks per second by this amount
 	var/stack_loss_multiplier = 1
+	bullet_duraloss = 0.10 // holostacks would be more powerful if there were tens of thousands of marines firing at something at once with these
 
 /datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
@@ -45,6 +46,7 @@
 	accuracy = 0
 	shell_speed = AMMO_SPEED_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
+	bullet_duraloss = 0.35
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/projectile/P)
 	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
@@ -67,6 +69,7 @@
 	name = "toxic rifle bullet"
 	var/acid_per_hit = 7
 	var/organic_damage_mult = 3
+	bullet_duraloss = 0.15
 
 /datum/ammo/bullet/rifle/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -89,6 +92,7 @@
 
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_10
+	bullet_duraloss = 0.20
 
 /datum/ammo/bullet/rifle/ap/penetrating/set_bullet_traits()
 	. = ..()
@@ -102,6 +106,7 @@
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_4
 	pen_armor_punch = 5
+	bullet_duraloss = 0.25
 
 /datum/ammo/bullet/rifle/heap
 	name = "high-explosive armor-piercing rifle bullet"
@@ -109,6 +114,7 @@
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 55//big damage, doesn't actually blow up because thats stupid.
 	penetration = ARMOR_PENETRATION_TIER_8
+	bullet_duraloss = 0.30
 
 /datum/ammo/bullet/rifle/rubber
 	name = "rubber rifle bullet"
@@ -117,6 +123,7 @@
 	damage = 0
 	stamina_damage = 15
 	shrapnel_chance = 0
+	bullet_duraloss = 0.50 //its rubber, sometimes rubbery shit gets stuck in the barrel so of course we lose durability more from it
 
 /datum/ammo/bullet/rifle/incendiary
 	name = "incendiary rifle bullet"
@@ -128,6 +135,7 @@
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = -HIT_ACCURACY_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
+	bullet_duraloss = 0.15
 
 /datum/ammo/bullet/rifle/incendiary/set_bullet_traits()
 	. = ..()
@@ -156,6 +164,7 @@
 	scatter = -SCATTER_AMOUNT_TIER_8
 	penetration= ARMOR_PENETRATION_TIER_5
 	shell_speed = AMMO_SPEED_TIER_6
+	bullet_duraloss = 0.15
 
 /datum/ammo/bullet/rifle/m4ra/incendiary/set_bullet_traits()
 	. = ..()
@@ -172,6 +181,7 @@
 	scatter = -SCATTER_AMOUNT_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
+	bullet_duraloss = 0.30
 
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 32) // Can knockback basically at max range max range is 24 tiles...
@@ -220,6 +230,7 @@
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 65
 	penetration = ARMOR_PENETRATION_TIER_10
+	bullet_duraloss = 0.30
 
 
 //TWE Calibers\\
@@ -242,6 +253,7 @@
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 65
 	penetration = ARMOR_PENETRATION_TIER_10
+	bullet_duraloss = 0.30
 
 /datum/ammo/bullet/rifle/l23/incendiary
 	name = "incendiary rifle bullet"
@@ -253,6 +265,7 @@
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = -HIT_ACCURACY_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
+	bullet_duraloss = 0.15
 
 /datum/ammo/bullet/rifle/l23/incendiary/set_bullet_traits()
 	. = ..()
@@ -264,6 +277,7 @@
 	name = "toxic rifle bullet"
 	var/acid_per_hit = 7
 	var/organic_damage_mult = 3
+	bullet_duraloss = 0.15
 
 /datum/ammo/bullet/rifle/l23/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -286,3 +300,4 @@
 	damage = 0
 	stamina_damage = 22
 	shrapnel_chance = 0
+	bullet_duraloss = 0.50 //its rubber, sometimes rubbery shit gets stuck in the barrel so of course we lose durability more from it

@@ -242,6 +242,20 @@
 	var/projectile_type = /obj/projectile
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	VAR_PROTECTED/autofire_slow_mult = 1
+	/// enables jamming code, default should be false, change the vars in parent gun or individually to enable jamming
+	var/can_jam = FALSE
+	/// if gun is currently jammed
+	var/jammed = FALSE
+	/// chance to jam
+	var/jam_chance = 0
+	/// chance to unjam after hitting the unique action
+	var/unjam_chance = 0
+	/// Amount of durability loss per shot
+	var/durability_loss = 0
+	/// Durability of a gun that determines jam chance.
+	var/gun_durability = 100
+
+
 
 /**
  * An assoc list where the keys are fire delay group string defines
@@ -568,8 +582,171 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_mag_overlay()
 	update_attachables()
 
+//-- code by carlarc, slightly modified, emphasis on slightly --//
+
+// function to update durability flag, blatant shit code
+/obj/item/weapon/gun/proc/update_gun_durability()
+	gun_durability = clamp(gun_durability, GUN_DURABILITY_BROKEN, GUN_DURABILITY_MAX)
+
+// call update_gun_durability() whenever gun_durability changes
+/obj/item/weapon/gun/proc/set_gun_durability(new_gun_durability)
+	gun_durability = new_gun_durability
+	update_gun_durability()
+
+/obj/item/weapon/gun/proc/check_jam(mob/living/user)
+	var/magjam_modifier = current_mag.magjam_modifier
+	if(gun_durability <= GUN_DURABILITY_BROKEN) //prevents firing without spamming your screen with both jamming and worn out noises
+		check_worn_out(user)
+		return NONE
+	if(jammed)
+		if(prob(30))
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
+			to_chat(user, SPAN_WARNING("Your [src] is jammed! Mash Unique-Action to unjam it!"))
+			balloon_alert(user, "*jammed*")
+		return NONE
+	else if(prob(jam_chance + magjam_modifier))
+		jammed = TRUE
+		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, FALSE)
+		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*jammed*")
+		return NONE
+	else
+		return
+
+/obj/item/weapon/gun/proc/unjam(mob/user)
+	if(jammed)
+		var/skill_unjam = 0
+		if(user && user.mind && user.skills)
+			var/skill_level = user.skills.get_skill_level(SKILL_FIREARMS)
+			if(skill_level == SKILL_FIREARMS_CIVILIAN)
+				skill_unjam = -0.15 // civilians would likely fumble after all
+			else if(skill_level == SKILL_FIREARMS_TRAINED)
+				skill_unjam = 0 // no increase for enlisted
+			else if(skill_level == SKILL_FIREARMS_EXPERT)
+				skill_unjam = 0.30 // increase unjam chance for the snowflake special forces, practically impossible for them to fail at high durability
+
+		if(prob(unjam_chance + skill_unjam + (gun_durability / GUN_DURABILITY_MAX) * 0.1))
+			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, FALSE)
+			jammed = FALSE
+			cock_cooldown += 2 SECONDS //so they dont accidentally cock a bullet away
+			balloon_alert(user, "*unjammed!*")
+		else
+			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
+			playsound(src, "gun_jam_rack", 20, FALSE)
+			balloon_alert(user, "*rack*")
+		return
+
+/obj/item/weapon/gun/proc/check_worn_out(mob/living/user)
+	if(gun_durability == GUN_DURABILITY_MEDIUM)
+		to_chat(user, SPAN_WARNING("The [name] is incurring damages, better repair it soon..."))
+		balloon_alert(user, "*damaged*")
+
+	if(gun_durability <= GUN_DURABILITY_BROKEN)
+		if(prob(50))
+			to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
+			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
+			balloon_alert(user, "*worn-out*")
+			cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
+
+/obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
+	var/bullet_duraloss = ammo.bullet_duraloss //i think this works, code for taking account the bullet duraloss modifier in the current chanbered ammo
+	if(in_chamber && in_chamber.ammo)
+		bullet_duraloss = in_chamber.ammo.bullet_duraloss
+	else
+		bullet_duraloss = ammo.bullet_duraloss
+	if(!can_jam)
+		return
+
+	if(prob(durability_loss + bullet_duraloss)) // probability durability loss dependent on weapon value, 0 disables it obviously, rngesus woe
+		set_gun_durability(gun_durability - 1) // decrement durability each time the gun is fired, yep shitcode
+		update_gun_durability()
+		check_worn_out(user)
+
+	jam_chance = 0.05 * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
+
+	if(check_jam(user) == NONE)
+		return NONE
+
+// this is also hardcoded and shitty
+/obj/item/weapon/gun/proc/jam_unique_action(mob/user)
+	return unjam(user)
+
+/obj/item/weapon/gun/proc/heal_gun_durability(amount, mob/user)
+	var/skill_repair_firearms = 0
+	if(user && user.mind && user.skills)
+		var/skill_level_firearms = user.skills.get_skill_level(SKILL_FIREARMS)
+		if(skill_level_firearms == SKILL_FIREARMS_CIVILIAN)
+			skill_repair_firearms = -5 // civilians would likely fumble after all
+		else if(skill_level_firearms == SKILL_FIREARMS_TRAINED)
+			skill_repair_firearms = 0 // no increase for enlisted
+		else if(skill_level_firearms == SKILL_FIREARMS_EXPERT)
+			skill_repair_firearms = 5 // increase repair for the snowflake special forces
+
+	var/skill_repair_engineer = 0
+	if(user && user.mind && user.skills)
+		var/skill_level_engineer = user.skills.get_skill_level(SKILL_ENGINEER)
+		if(skill_level_engineer == SKILL_ENGINEER_DEFAULT)
+			skill_repair_engineer = -5 // your fresh out of college rfn wouldnt know to do this
+		else if(skill_level_engineer == SKILL_ENGINEER_NOVICE)
+			skill_repair_engineer = 0
+		else if(skill_level_engineer == SKILL_ENGINEER_TRAINED)
+			skill_repair_engineer = 10
+		else if(skill_level_engineer == SKILL_ENGINEER_ENGI)
+			skill_repair_engineer = 25
+		else if(skill_level_engineer == SKILL_ENGINEER_MASTER)
+			skill_repair_engineer = 50 // pretty much synth level
+
+	var/total_repair_bonus = skill_repair_firearms + skill_repair_engineer
+
+	if(gun_durability < GUN_DURABILITY_MAX)
+		gun_durability = min(gun_durability + amount + total_repair_bonus, GUN_DURABILITY_MAX)
+
+/obj/item/weapon/gun/proc/destroy_gun_durability() //for acid use specifically, ill probably refactor this
+	if(gun_durability == GUN_DURABILITY_BROKEN) //fix your guns man
+		qdel(src)
+	else
+		gun_durability = 0
+	update_gun_durability()
+	check_worn_out()
+
+/obj/item/weapon/gun/proc/damage_gun_durability(amount = 1) //for more incremental use, such as rifle fire
+	if(gun_durability <= GUN_DURABILITY_BROKEN - 100) //as to prevent problems with normal rifle fire deleting the gun
+		qdel(src)
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] gets destroyed by the resulting gunfire!")))
+	else if(prob(durability_loss * 2)) //durability loss should be doubled when shot
+		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
+	update_gun_durability()
+	check_worn_out()
+
+/obj/item/weapon/gun/proc/blast_gun_durability(amount = 1) //for more static use, such as explosive power
+	var/blastmsg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
+	if(gun_durability <= GUN_DURABILITY_BROKEN - 149) //we dont want weak explosions to delete the gun e.g. grenades
+		qdel(src)
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
+	else
+		gun_durability = max(gun_durability - (amount / 2), GUN_DURABILITY_BROKEN)
+	update_gun_durability()
+	check_worn_out()
+
+//JAM CODE END
+//
+
 /obj/item/weapon/gun/get_examine_text(mob/user)
 	. = ..()
+	var/durability_text = "broken condition..."
+	if(gun_durability >= GUN_DURABILITY_BROKEN)
+		switch(gun_durability)
+			if((GUN_DURABILITY_BROKEN + 1) to GUN_DURABILITY_LOW)
+				durability_text = "poor condition."
+			if((GUN_DURABILITY_LOW + 1) to GUN_DURABILITY_MEDIUM)
+				durability_text = "an okay-ish condition."
+			if((GUN_DURABILITY_MEDIUM + 1) to GUN_DURABILITY_HIGH)
+				durability_text = "good condition."
+			if((GUN_DURABILITY_HIGH + 1) to GUN_DURABILITY_MAX)
+				durability_text = "perfect condition!"
+		. += SPAN_INFO("[src] is in [durability_text]")
+
 	if(flags_gun_features & GUN_NO_DESCRIPTION)
 		return .
 	var/dat = ""
@@ -850,12 +1027,15 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 
-	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not a magazine!"))
+	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
+		if(in_chamber)
+			to_chat(user, SPAN_WARNING("[src] needs to be unchambered first."))
+			return
+		insert_bullet(user)
 		return
 
-	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
-		to_chat(user, SPAN_WARNING("[src] needs an actual magazine."))
+	if(!magazine || !istype(magazine))
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
 		return
 
 	if(magazine.current_rounds <= 0)
@@ -939,7 +1119,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			H.update_icon()
 			break
 	if(!found_handful)
-		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+		var/obj/item/ammo_magazine/handful/new_handful = new()
+		user.put_in_hands(new_handful)
 		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)
@@ -1067,6 +1248,20 @@ and you're good to go.
 
 	return P
 
+/obj/item/weapon/gun/proc/insert_bullet(mob/user)
+	if(!current_mag && !in_chamber)
+		var/obj/item/ammo_magazine/handful/bullet = user.get_active_hand()
+		if(istype(bullet) && bullet.caliber == caliber)
+			if(bullet.current_rounds > 0)
+				ammo = bullet.default_ammo
+				in_chamber = create_bullet(ammo, initial(name))
+				apply_traits(in_chamber)
+				to_chat(user, SPAN_NOTICE("You load a bullet into the [src]'s chamber."))
+				bullet.current_rounds--
+				if(bullet.current_rounds <= 0)
+					QDEL_NULL(bullet)
+				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+
 //This proc is needed for firearms that chamber rounds after firing.
 /obj/item/weapon/gun/proc/reload_into_chamber(mob/user)
 	/*
@@ -1104,12 +1299,14 @@ and you're good to go.
 			active_attachable.current_rounds++ //Refund the bullet.
 		return 1
 
-/obj/item/weapon/gun/proc/clear_jam(obj/projectile/projectile_to_fire, mob/user as mob) //Guns jamming, great.
-	flags_gun_features &= ~GUN_BURST_FIRING // Also want to turn off bursting, in case that was on. It probably was.
-	delete_bullet(projectile_to_fire, 1) //We're going to clear up anything inside if we need to.
-	//If it's a regular bullet, we're just going to keep it chambered.
-	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
-	to_chat(user, SPAN_WARNING("[src] jammed! You'll need a second to get it fixed!"))
+// Theres probably a use case for the old jam code but im commenting it out for now
+
+// /obj/item/weapon/gun/proc/clear_jam(obj/projectile/projectile_to_fire, mob/user as mob) //Guns jamming, great.
+//	flags_gun_features &= ~GUN_BURST_FIRING // Also want to turn off bursting, in case that was on. It probably was.
+//	delete_bullet(projectile_to_fire, 1) //We're going to clear up anything inside if we need to.
+//	//If it's a regular bullet, we're just going to keep it chambered.
+//	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
+//	to_chat(user, SPAN_WARNING("[src] jammed! You'll need a second to get it fixed!"))
 
 //----------------------------------------------------------
 		//    \\
@@ -1119,10 +1316,15 @@ and you're good to go.
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
+	var/gunjammed = handle_jam_fire(user)
 	set waitfor = FALSE
+	if(gunjammed == NONE)
+		return NONE
 
 	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target))
 		return NONE
+
+	update_gun_durability()
 
 	/*
 	This is where the grenade launcher and flame thrower function as attachments.
@@ -1315,6 +1517,16 @@ and you're good to go.
 
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
+
+	// durability code for melee combat with guns
+	var/meleegun_duraloss = 0
+	if(gun_durability >= GUN_DURABILITY_BROKEN)
+		meleegun_duraloss = force * 0.05
+	if(prob(durability_loss + meleegun_duraloss)) //duraloss dependent on current gun melee force
+		set_gun_durability(gun_durability - rand(1, 5)) // this should deter gun melee combat
+		update_gun_durability()
+		check_worn_out(user)
+		return
 
 	if(attacked_mob == user && user.zone_selected == "mouth" && ishuman(user))
 		var/mob/living/carbon/human/HM = user
@@ -1654,6 +1866,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			return
 
 		if((flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user))
+			return
+
+		// this only really exists to prevent PBs or suicides while jammed
+		if(jammed)
+			to_chat(user, SPAN_WARNING("The gun is jammed and cannot fire!"))
+			return
+		if(gun_durability == GUN_DURABILITY_BROKEN)
+			to_chat(user, SPAN_WARNING("The gun is worn out and cannot fire!"))
 			return
 
 		//Has to be on the bottom of the stack to prevent delay when failing to fire the weapon for the first time.

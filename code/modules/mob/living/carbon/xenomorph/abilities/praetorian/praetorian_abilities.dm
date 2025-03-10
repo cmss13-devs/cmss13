@@ -9,7 +9,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pierce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 30
+	xeno_cooldown = 3 SECONDS
 	plasma_cost = 50
 
 	// Config
@@ -148,7 +148,7 @@
 	action_text = "crush"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 80*/
 
 // Tail lash

@@ -943,6 +943,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "default.ShiftUp", "is-disabled=true")
 
 GLOBAL_LIST_INIT(community_awards, get_community_awards())
+GLOBAL_LIST_INIT(ooc_rank_iconstates, icon_states('icons/ooc.dmi'))
 
 /proc/get_community_awards()
 	var/list/awards_file = file2list("config/community_awards.txt")

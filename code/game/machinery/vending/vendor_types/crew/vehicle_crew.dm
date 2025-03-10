@@ -61,9 +61,15 @@
 			malfunction()
 			return
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/vehicle/multitile/V)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/effect/vehicle_spawner/spawner) // BANDAMARINES EDIT obj/vehicle/multitile/V -> obj/effect/vehicle_spawner/spawner
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
+
+	// BANDAMARINES ADD Start
+	selected_vehicle = spawner.category
+	if(selected_vehicle == "APC")
+		marine_announcement("В поддержку наземных сил операции вам будет предоставлен БТР.")
+	// BANDAMARINES ADD End
 
 	if(!selected_vehicle)
 		selected_vehicle = "TANK" // The whole thing seems to be based upon the assumption you unlock tank as an override, defaulting to APC

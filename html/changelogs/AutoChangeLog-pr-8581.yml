@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Removed unused variables in dancer behavior delegate"

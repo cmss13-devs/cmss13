@@ -4,7 +4,7 @@ One shotgun isn't enough. Take six.
 Don't do the conga, the queen mother knows all.
 Jones is very important. Protect him at all costs.
 Install VSC.
-Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL + Click) and then click on yourself to begin devouring. The host can break out of your belly, which will result in your death - so make sure your target is incapacitated! After approximately 1 minute the host will be automatically regurgitated. To release your target voluntarily, click 'Regurgitate' on the HUD to throw them back up.
+Hauling is useful to quickly transport incapacitated hosts from one place to another. In order to haul a host as a Xeno, grab the mob (CTRL + Click) and then click on yourself to begin restraining them. The host can break out of your grip, which will result in your death - so make sure your target is incapacitated! After approximately 1 minute the host will be automatically be released. To release your target voluntarily, click 'Release' on the HUD to drop them on the ground.
 As an MP, remember that staff may give you antagonist objectives to help weaken the marines!
 There's actually a hidden box of HEFA grenades in Requisitions. It can be reached by having one of your buddies throw you down the ASRS elevator.
 Don't waste crayons by jamming them up your nose - they make excellent emergency rations in a pinch!

@@ -867,7 +867,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_LEAD_INVEST
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
-	minimap_icon = "tissa"
+	minimap_icon = "cia_lo"
 	skills = /datum/skills/pmc/SL/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 

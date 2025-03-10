@@ -19432,10 +19432,6 @@
 	},
 /turf/open/floor/prison/darkredcorners2/east,
 /area/desert_dam/building/security/armory)
-"bNW" = (
-/turf/closed/wall/rock/orange,
-/turf/closed/wall/rock/orange,
-/area/space)
 "bNY" = (
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/workshop)
@@ -41483,7 +41479,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/space)
+/area/sky)
 "fgF" = (
 /obj/structure/platform/metal/almayer/east,
 /turf/open/desert/dirt,
@@ -43654,7 +43650,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "jLF" = (
 /turf/closed/wall/rock/orange,
-/area/space)
+/area/sky)
 "jMs" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/scientist,
@@ -47046,7 +47042,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rbf" = (
 /turf/open_space,
-/area/space)
+/area/sky)
 "rbp" = (
 /turf/open/desert/desert_shore/shore_corner1/north,
 /area/desert_dam/interior/caves/temple)
@@ -47763,7 +47759,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "svI" = (
 /turf/closed/wall/r_wall,
-/area/space)
+/area/sky)
 "swg" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison/bright_clean2,
@@ -49312,7 +49308,7 @@
 "vzz" = (
 /turf/open_space,
 /turf/closed/wall/rock/orange,
-/area/space)
+/area/sky)
 "vAN" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -109798,7 +109794,7 @@ rbf
 rbf
 rbf
 vzz
-bNW
+jLF
 vzz
 vzz
 vzz
@@ -158568,7 +158564,7 @@ rbf
 "}
 (217,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -158802,7 +158798,7 @@ rbf
 "}
 (218,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -159036,7 +159032,7 @@ rbf
 "}
 (219,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -159270,7 +159266,7 @@ rbf
 "}
 (220,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -159504,7 +159500,7 @@ rbf
 "}
 (221,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -159738,7 +159734,7 @@ rbf
 "}
 (222,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -159972,7 +159968,7 @@ rbf
 "}
 (223,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -160206,7 +160202,7 @@ rbf
 "}
 (224,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -160440,7 +160436,7 @@ rbf
 "}
 (225,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -160674,7 +160670,7 @@ rbf
 "}
 (226,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -160908,7 +160904,7 @@ rbf
 "}
 (227,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -161142,7 +161138,7 @@ rbf
 "}
 (228,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -161376,7 +161372,7 @@ rbf
 "}
 (229,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -161610,7 +161606,7 @@ rbf
 "}
 (230,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -161844,7 +161840,7 @@ rbf
 "}
 (231,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -162078,7 +162074,7 @@ rbf
 "}
 (232,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -162312,7 +162308,7 @@ rbf
 "}
 (233,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -162546,7 +162542,7 @@ rbf
 "}
 (234,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -162780,7 +162776,7 @@ rbf
 "}
 (235,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -163014,7 +163010,7 @@ rbf
 "}
 (236,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -163248,7 +163244,7 @@ rbf
 "}
 (237,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -163482,7 +163478,7 @@ rbf
 "}
 (238,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -163716,7 +163712,7 @@ rbf
 "}
 (239,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -163950,7 +163946,7 @@ rbf
 "}
 (240,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -164184,7 +164180,7 @@ rbf
 "}
 (241,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -164418,7 +164414,7 @@ rbf
 "}
 (242,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -164652,7 +164648,7 @@ rbf
 "}
 (243,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF
@@ -164886,7 +164882,7 @@ rbf
 "}
 (244,1,2) = {"
 rbf
-rbf
+jLF
 jLF
 jLF
 jLF

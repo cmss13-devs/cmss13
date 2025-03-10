@@ -12,6 +12,10 @@
 	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		to_chat(attacking_xeno, SPAN_WARNING("[src] is being hauled, we cannot do anything to them."))
+		return
+
 	var/intent = attacking_xeno.a_intent
 
 	if(attacking_xeno.behavior_delegate)
@@ -942,23 +946,6 @@
 			M.visible_message(SPAN_DANGER("[M] smashes [src]!"),
 			SPAN_DANGER("We smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		return XENO_ATTACK_ACTION
-
-/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
-	if((M.caste && M.caste.tier < 2 && M.claw_type < CLAW_TYPE_VERY_SHARP) || unacidable)
-		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
-		return XENO_NO_DELAY_ACTION
-	M.animation_attack_on(src)
-	health -= floor(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
-	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"),
-		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
-		dismantle()
-	else
-		M.visible_message(SPAN_DANGER("[M] smashes [src]!"),
-		SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
-	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_tipped_over)

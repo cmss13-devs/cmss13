@@ -240,7 +240,8 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
-	if(client == null || (client.inactivity > 1 && world.time > 20 MINUTES)) //Do not start away_timer on connected clients until 20 minutes has passed.
+	var/game_started = SSticker.current_state == GAME_STATE_PLAYING && ROUND_TIME > 3 MINUTES
+	if(client == null || (client.inactivity > 1 && game_started)) //Do not start away_timer on connected clients until the round has been active for 3 mins.
 		away_timer++
 	else
 		away_timer = 0
@@ -385,7 +386,7 @@
 	if(ishuman(mob))
 		squad = mob.assigned_squad
 	if(!check_improved_pointing()) //Squad Leaders and above have reduced cooldown and get a bigger arrow
-		recently_pointed_to = world.time + 50
+		recently_pointed_to = world.time + 2.5 SECONDS
 		new /obj/effect/overlay/temp/point(T, src, A)
 	else
 		recently_pointed_to = world.time + 10
@@ -451,6 +452,10 @@
 	if(href_list["preference"])
 		if(client)
 			client.prefs.process_link(src, href_list)
+		return TRUE
+
+	if(href_list["poll"])
+		SSpolls.tgui_interact(src)
 		return TRUE
 
 /mob/proc/swap_hand()

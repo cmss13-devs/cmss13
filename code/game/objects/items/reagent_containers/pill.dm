@@ -75,6 +75,7 @@
 
 		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
 		SPAN_HELPFUL("You swallow [src]."))
+		SEND_SIGNAL(M, COMSIG_HUMAN_PILL_FED, src)
 		var/list/reagents_in_pill = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			reagents_in_pill += R.name
@@ -109,6 +110,8 @@
 			return
 
 		user.drop_inv_item_on_ground(src) //icon update
+
+		SEND_SIGNAL(M, COMSIG_HUMAN_PILL_FED, src)
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [M] a [fluff_text]."),
@@ -240,6 +243,7 @@
 	pill_desc = "A Russian Red pill. A very dangerous radiation-countering substance."
 	pill_initial_reagents = list("russianred" = 10)
 	pill_icon_class = "spac"
+
 /obj/item/reagent_container/pill/peridaxon
 	pill_desc = "A Peridaxon pill. Temporarily halts the effects of internal organ damage."
 	pill_initial_reagents = list("peridaxon" = 7)
@@ -276,3 +280,8 @@
 /obj/item/reagent_container/pill/stimulant
 	pill_initial_reagents = list("antag_stimulant" = 10)
 	pill_icon_class = "stim"
+
+/obj/item/reagent_container/pill/imialky
+	pill_desc = "An Imidazoline-Alkysine (2:1) pill. Heals brain and eye damage."
+	pill_initial_reagents = list("imidazoline" = 10, "alkysine" = 5)
+	pill_icon_class = "alky"

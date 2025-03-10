@@ -349,6 +349,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	accepts_bodybag = TRUE
 	var/stretcher_activated
 	var/view_range = 5
+	/// Allows Medevac beds to act like they're working, but not interact with the Medevac system itself. Set prop variable to TRUE when you'd like to bypass regular functions on a Medevac bed
+	var/prop
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
 	var/faction = FACTION_MARINE
@@ -356,6 +358,11 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/structure/bed/medevac_stretcher/upp
 	name = "UPP medevac stretcher"
 	faction = FACTION_UPP
+
+/obj/structure/bed/medevac_stretcher/prop
+	prop = TRUE
+	foldabletype = null
+	stretcher_activated = TRUE
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)

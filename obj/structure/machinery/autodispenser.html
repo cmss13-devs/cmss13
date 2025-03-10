@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;structure&#x2F;machinery&#x2F;autodispenser - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/structure/machinery/autodispenser.html#var">Var Details</a></header>
+<main>
+<h1>Turing Dispenser <aside>/<a href="obj.html">obj</a>/<a href="obj/structure/machinery.html">structure/machinery</a>/<a href="obj/structure/machinery/autodispenser.html">autodispenser</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 14"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/error">error</a></th><td>Error status message</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/input_container">input_container</a></th><td>Contains vials for our program</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/linked_storage">linked_storage</a></th><td>Where we take chemicals from</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/output_container">output_container</a></th><td>Our output beaker</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/program_amount">program_amount</a></th><td>how much to dispense with each program item, 1 = memory, 2 = box</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/programs">programs</a></th><td>the program of chem datums to dispense, 1 = memory, 2 = box</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/stage">stage</a></th><td>Remember where we are</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/stage_missing">stage_missing</a></th><td>How much we have left to dispense, if we didn't have enough</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/status">status</a></th><td>0 = idle, &lt;0 = stuck, 1 = running, 2 = finished</td></tr>
+            <tr><th><a href="obj/structure/machinery/autodispenser.html#var/tgui_friendly_program_list">tgui_friendly_program_list</a></th><td>snowflake list for tgui, 1 = memory, 2 = box</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/error"><aside class="declaration">var </aside>error
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 49"/></a></h3>
+        <p>Error status message</p><h3 id="var/input_container"><aside class="declaration">var </aside>input_container
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/storage.html">storage</a>/fancy/vials</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 23"/></a></h3>
+        <p>Contains vials for our program</p><h3 id="var/linked_storage"><aside class="declaration">var </aside>linked_storage
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/structure/machinery.html">structure/machinery</a>/<a href="obj/structure/machinery/smartfridge.html">smartfridge</a>/chemistry</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 27"/></a></h3>
+        <p>Where we take chemicals from</p><h3 id="var/output_container"><aside class="declaration">var </aside>output_container
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/reagent_container.html">reagent_container</a>/glass</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 25"/></a></h3>
+        <p>Our output beaker</p><h3 id="var/program_amount"><aside class="declaration">var </aside>program_amount
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 32"/></a></h3>
+        <p>how much to dispense with each program item, 1 = memory, 2 = box</p><h3 id="var/programs"><aside class="declaration">var </aside>programs
+            <aside>&ndash; /list/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 30"/></a></h3>
+        <p>the program of chem datums to dispense, 1 = memory, 2 = box</p><h3 id="var/stage"><aside class="declaration">var </aside>stage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 43"/></a></h3>
+        <p>Remember where we are</p><h3 id="var/stage_missing"><aside class="declaration">var </aside>stage_missing
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 45"/></a></h3>
+        <p>How much we have left to dispense, if we didn't have enough</p><h3 id="var/status"><aside class="declaration">var </aside>status
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 47"/></a></h3>
+        <p>0 = idle, &lt;0 = stuck, 1 = running, 2 = finished</p><h3 id="var/tgui_friendly_program_list"><aside class="declaration">var </aside>tgui_friendly_program_list
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/reagents/chemistry_machinery/autodispenser.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry_machinery&#x2F;autodispenser.dm 34"/></a></h3>
+        <p>snowflake list for tgui, 1 = memory, 2 = box</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/896d19a1d4503106764032507988f5779ca37d57">896d19a</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

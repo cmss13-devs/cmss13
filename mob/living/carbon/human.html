@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob/living/carbon/human.html#var">Var Details</a> - <a href="mob/living/carbon/human.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/bloody_footsteps">bloody_footsteps</a></th><td>The number of bloody foot steps left to make</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/criminal">criminal</a></th><td>used to determine if precise taser will shoot. Security code is so convoluted it's the easiest way, sorry.</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/embedded_items">embedded_items</a></th><td>A list of all the shrapnel currently embedded in the human</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/focused_fire_marker">focused_fire_marker</a></th><td>Stored image references associated with focus-fire.</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/grad_style">grad_style</a></th><td>Style used for the hair gradient.</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/icon_render_image_cache">icon_render_image_cache</a></th><td>static associated list of limb key -&gt; image to avoid unnecessary overlay generation</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/icon_render_keys">icon_render_keys</a></th><td>associated list of body part zone -&gt; currently active limb key</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/remembered_dropped_objects">remembered_dropped_objects</a></th><td>list of weakrefs of recently dropped objects</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#var/traits">traits</a></th><td>The list of traits a human has.
+Store as typepaths.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/attack_animal">attack_animal</a></th><td>Reduces effects by armor value.</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/auto_observed">auto_observed</a></th><td>Handles any storage containers that the human is looking inside when auto-observed.</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/drop_inv_item_on_ground">drop_inv_item_on_ground</a></th><td>Default delay
+Multiplier for how quickly the user can strip things.
+The total skill level of CQC &amp; Police
+Delay then gets + 0.5s per skill level, so long as not dead or cuffed.
+Final result is overall delay * speed multiplier</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/force_say">force_say</a></th><td>Makes the player force say what's in their current input box.</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/get_camera_holder">get_camera_holder</a></th><td>returns camera holder</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/get_eye_protection">get_eye_protection</a></th><td>get_eye_protection()
+Returns a number between -1 to 2</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/get_pulse">get_pulse</a></th><td>generates realistic-ish pulse output based on preset levels.
+method == GETPULSE_HAND is for hands, GETPULSE_TOOL is for machines, more accurate</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/handle_hugger_attachment">handle_hugger_attachment</a></th><td>Human hugger handling</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/holster_verb">holster_verb</a></th><td>For the holster hotkey</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/is_heart_broken">is_heart_broken</a></th><td>Returns whether this person has a broken heart but is otherwise revivable</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/on_dazed_trait_gain">on_dazed_trait_gain</a></th><td>Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place. Also, peepers is essential to make sure eye damage isn't overridden.</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/update_damage_overlays">update_damage_overlays</a></th><td>Recalculates and reapplies damage overlays to every limb</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/update_headshot_overlay">update_headshot_overlay</a></th><td><em>Handles headshot images. These render above hair and below hats/helmets. Must be given a headshot_state or it just removes the overlay.
+Applied by gun suicide and high impact bullet executions, removed by rejuvenate, since such people are otherwise unrevivable.</em></td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/update_leg_status">update_leg_status</a></th><td>Updates <a href="code/__DEFINES/traits.html#define/TRAIT_FLOORED" title="TRAIT_FLOORED">TRAIT_FLOORED</a> based on whether the mob has appropriate limbs to stand or not</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/update_undergarments">update_undergarments</a></th><td>If this human should have underwear, reapply the overlays</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/update_undershirt">update_undershirt</a></th><td>Checks if the mob's specific <a href="datum/sprite_accessory/undershirt.html" title="/datum/sprite_accessory/undershirt">/datum/sprite_accessory/undershirt</a> should be equipped</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/update_underwear">update_underwear</a></th><td>Checks if the mob's specific <a href="datum.html" title="/datum">/datum/sprite_accessory/underwear</a> should be equipped</td></tr>
+            <tr><th><a href="mob/living/carbon/human.html#proc/view_manifest">view_manifest</a></th><td>Final message detailing injuries on the target.
+Is the target the user or somebody else?</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/bloody_footsteps"><aside class="declaration">var </aside>bloody_footsteps
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L136">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 136"/></a></h3>
+        <p>The number of bloody foot steps left to make</p><h3 id="var/criminal"><aside class="declaration">var </aside>criminal
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L110">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 110"/></a></h3>
+        <p>used to determine if precise taser will shoot. Security code is so convoluted it's the easiest way, sorry.</p><h3 id="var/embedded_items"><aside class="declaration">var </aside>embedded_items
+            <aside>&ndash; /list/atom/movable</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L150">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 150"/></a></h3>
+        <p>A list of all the shrapnel currently embedded in the human</p><h3 id="var/focused_fire_marker"><aside class="declaration">var </aside>focused_fire_marker
+            <aside>&ndash; /<a href="image.html">image</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L174">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 174"/></a></h3>
+        <p>Stored image references associated with focus-fire.</p><h3 id="var/grad_style"><aside class="declaration">var </aside>grad_style
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 16"/></a></h3>
+        <p>Style used for the hair gradient.</p><h3 id="var/icon_render_image_cache"><aside class="declaration">var </aside>icon_render_image_cache
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L171">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 171"/></a></h3>
+        <p>static associated list of limb key -&gt; image to avoid unnecessary overlay generation</p><h3 id="var/icon_render_keys"><aside class="declaration">var </aside>icon_render_keys
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L168">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 168"/></a></h3>
+        <p>associated list of body part zone -&gt; currently active limb key</p><h3 id="var/remembered_dropped_objects"><aside class="declaration">var </aside>remembered_dropped_objects
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_defines.dm#L165">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_defines.dm 165"/></a></h3>
+        <p>list of weakrefs of recently dropped objects</p><h3 id="var/traits"><aside class="declaration">var </aside>traits
+            <aside>&ndash; /list/datum/character_trait</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/character_traits/character_trait.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;character_traits&#x2F;character_trait.dm 12"/></a></h3>
+        <p>The list of traits a human has.
+Store as typepaths.</p><h2 id="proc">Proc Details</h2><h3 id="proc/attack_animal">attack_animal<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/M) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human.dm#L253">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human.dm 253"/></a></aside>
+        </h3>
+        <p>Reduces effects by armor value.</p><h3 id="proc/auto_observed"><aside class="parent"><a title="/mob/living/carbon" href="mob/living/carbon.html#proc/auto_observed">&uarr;</a></aside>auto_observed<aside>(/<a href="mob.html">mob</a>/<a href="mob/dead/observer.html">dead/observer</a>/observer) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human.dm#L294">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human.dm 294"/></a></aside>
+        </h3>
+        <p>Handles any storage containers that the human is looking inside when auto-observed.</p><h3 id="proc/drop_inv_item_on_ground">drop_inv_item_on_ground<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/I, nomoveupdate, force) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/inventory.dm#L524">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;inventory.dm 524"/></a></aside>
+        </h3>
+        <p>Default delay
+Multiplier for how quickly the user can strip things.
+The total skill level of CQC &amp; Police
+Delay then gets + 0.5s per skill level, so long as not dead or cuffed.
+Final result is overall delay * speed multiplier</p><h3 id="proc/force_say"><aside class="declaration">proc </aside>force_say<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/tgui/tgui-say/speech.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;tgui-say&#x2F;speech.dm 69"/></a></aside>
+        </h3>
+        <p>Makes the player force say what's in their current input box.</p><h3 id="proc/get_camera_holder"><aside class="declaration">proc </aside>get_camera_holder<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/cm_marines/overwatch.dm#L748">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_marines&#x2F;overwatch.dm 748"/></a></aside>
+        </h3>
+        <p>returns camera holder</p><h3 id="proc/get_eye_protection">get_eye_protection<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human.dm#L866">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human.dm 866"/></a></aside>
+        </h3>
+        <p>get_eye_protection()
+Returns a number between -1 to 2</p><h3 id="proc/get_pulse"><aside class="declaration">proc </aside>get_pulse<aside>(method) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human.dm#L1789">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human.dm 1789"/></a></aside>
+        </h3>
+        <p>generates realistic-ish pulse output based on preset levels.
+method == GETPULSE_HAND is for hands, GETPULSE_TOOL is for machines, more accurate</p><h3 id="proc/handle_hugger_attachment"><aside class="declaration">proc </aside>handle_hugger_attachment<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/clothing.html">clothing</a>/<a href="obj/item/clothing/mask/facehugger.html">mask/facehugger</a>/hugger, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/xenomorph.html">xenomorph</a>/<a href="mob/living/carbon/xenomorph/facehugger.html">facehugger</a>/mob_hugger) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/xenomorph/Facehuggers.dm#L514">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;xenomorph&#x2F;Facehuggers.dm 514"/></a></aside>
+        </h3>
+        <p>Human hugger handling</p><h3 id="proc/holster_verb"><aside class="declaration">verb </aside>holster_verb<aside>(unholster_number_offset) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/projectiles/gun_helpers.dm#L537">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;gun_helpers.dm 537"/></a></aside>
+        </h3>
+        <p>For the holster hotkey</p><h3 id="proc/is_heart_broken"><aside class="declaration">proc </aside>is_heart_broken<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human.dm#L983">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human.dm 983"/></a></aside>
+        </h3>
+        <p>Returns whether this person has a broken heart but is otherwise revivable</p><h3 id="proc/on_dazed_trait_gain"><aside class="parent"><a title="/mob/living" href="mob/living.html#proc/on_dazed_trait_gain">&uarr;</a></aside>on_dazed_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/life/handle_regular_hud_updates.dm#L213">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;life&#x2F;handle_regular_hud_updates.dm 213"/></a></aside>
+        </h3>
+        <p>Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place. Also, peepers is essential to make sure eye damage isn't overridden.</p><h3 id="proc/update_damage_overlays"><aside class="declaration">proc </aside>update_damage_overlays<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/update_icons.dm#L148">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;update_icons.dm 148"/></a></aside>
+        </h3>
+        <p>Recalculates and reapplies damage overlays to every limb</p><h3 id="proc/update_headshot_overlay"><aside class="declaration">proc </aside>update_headshot_overlay<aside>(headshot_state) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/update_icons.dm#L285">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;update_icons.dm 285"/></a></aside>
+        </h3>
+        <p><em>Handles headshot images. These render above hair and below hats/helmets. Must be given a headshot_state or it just removes the overlay.
+Applied by gun suicide and high impact bullet executions, removed by rejuvenate, since such people are otherwise unrevivable.</em></p><h3 id="proc/update_leg_status"><aside class="declaration">proc </aside>update_leg_status<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human_movement.dm#L142">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human_movement.dm 142"/></a></aside>
+        </h3>
+        <p>Updates <a href="code/__DEFINES/traits.html#define/TRAIT_FLOORED" title="TRAIT_FLOORED">TRAIT_FLOORED</a> based on whether the mob has appropriate limbs to stand or not</p><h3 id="proc/update_undergarments"><aside class="declaration">proc </aside>update_undergarments<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/update_icons.dm#L163">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;update_icons.dm 163"/></a></aside>
+        </h3>
+        <p>If this human should have underwear, reapply the overlays</p><h3 id="proc/update_undershirt"><aside class="declaration">proc </aside>update_undershirt<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/update_icons.dm#L185">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;update_icons.dm 185"/></a></aside>
+        </h3>
+        <p>Checks if the mob's specific <a href="datum/sprite_accessory/undershirt.html" title="/datum/sprite_accessory/undershirt">/datum/sprite_accessory/undershirt</a> should be equipped</p><h3 id="proc/update_underwear"><aside class="declaration">proc </aside>update_underwear<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/update_icons.dm#L171">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;update_icons.dm 171"/></a></aside>
+        </h3>
+        <p>Checks if the mob's specific <a href="datum.html" title="/datum">/datum/sprite_accessory/underwear</a> should be equipped</p><h3 id="proc/view_manifest"><aside class="declaration">verb </aside>view_manifest<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/896d19a1d4503106764032507988f5779ca37d57/code/modules/mob/living/carbon/human/human.dm#L1068">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;human.dm 1068"/></a></aside>
+        </h3>
+        <p>Final message detailing injuries on the target.
+Is the target the user or somebody else?</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/896d19a1d4503106764032507988f5779ca37d57">896d19a</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

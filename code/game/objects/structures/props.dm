@@ -771,6 +771,8 @@
 	name = "M1 pattern festive needle torus"
 	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
+
+
 /obj/structure/prop/vehicles
 	name = "van"
 	desc = "An old van, seems to be broken down."
@@ -793,6 +795,172 @@
 	icon = 'icons/obj/vehicles/twe_tank.dmi'
 	icon_state = "twe_tank"
 	density = TRUE
+
+// USCM VTOL
+
+/obj/structure/prop/vehicles/aircraft/vtol
+	name = "\improper AD-71E VTOL"
+	desc = "A VTOL"
+	icon = 'icons/obj/vehicles/vtol_prop.dmi'
+	icon_state = "vtol"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/vehicles/aircraft/vtol/damaged
+	desc = "A crashed VTOL"
+	icon_state = "vtol_damaged"
+
+// USCM Tank
+
+/obj/structure/prop/vehicles/tank/longstreet
+	name = "M34A2 Longstreet Light Tank"
+	desc = "A TANK"
+	icon = 'icons/obj/vehicles/tank_prop.dmi'
+	icon_state = "tank_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+
+// Hull
+// Base Armor
+
+/obj/structure/prop/vehicles/tank/longstreet/base
+
+/obj/structure/prop/vehicles/tank/longstreet/base/destroyed
+
+	icon_state = "tank_base_destroyed"
+
+// Caustic Armor
+
+/obj/structure/prop/vehicles/tank/longstreet/caustic
+	icon_state = "tank_caustic_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/caustic/damaged
+	icon_state = "tank_caustic_damaged"
+
+/obj/structure/prop/vehicles/tank/longstreet/caustic/destroyed
+	icon_state = "tank_caustic_destroyed"
+
+// Concussive Armor
+
+/obj/structure/prop/vehicles/tank/longstreet/concussive
+	icon_state = "tank_concussive_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/concussive/damaged
+	icon_state = "tank_concussive_damaged"
+
+/obj/structure/prop/vehicles/tank/longstreet/concussive/destroyed
+	icon_state = "tank_concussive_destroyed"
+
+// Ballistic Armor
+
+/obj/structure/prop/vehicles/tank/longstreet/ballistic
+	icon_state = "tank_ballistic_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/ballistic/damaged
+	icon_state = "tank_ballistic_damaged"
+
+/obj/structure/prop/vehicles/tank/longstreet/ballistic/destroyed
+	icon_state = "tank_ballistic_destroyed"
+
+// Turret
+
+/obj/structure/prop/vehicles/tank/longstreet/turret
+	icon_state = "turret_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/turret/damaged
+	icon_state = "turret_base_damaged"
+
+/obj/structure/prop/vehicles/tank/longstreet/turret/destroyed
+	icon_state = "turret_base_destroyed"
+
+// Primary Weapon
+
+/obj/structure/prop/vehicles/tank/longstreet/primary
+	icon_state = "ltb_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/ltb
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/ltb/destroyed
+	icon_state = "ltb_base_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/ltaaap
+	icon_state = "ltaaap_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/ltaaap/destroyed
+	icon_state = "ltaaap_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/auto
+	icon_state = "ace_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/auto/destroyed
+	icon_state = "ace_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/flamer
+	icon_state = "flamer_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/primary/flamer/destroyed
+	icon_state = "flamer_destroyed"
+
+// Secondary
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary
+	icon_state = "flamer_sec_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/flamer
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/flamer/destroyed
+	icon_state = "flamer_sec_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/glauncher
+	icon_state = "glauncher_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/glauncher/destroyed
+	icon_state = "glauncher_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/towlauncher
+	icon_state = "towlauncher_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/towlauncher/destroyed
+	icon_state = "towlauncher_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/m56cupola
+	icon_state = "m56cupola_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/secondary/towlauncher/destroyed
+	icon_state = "m56cupola_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/
+	icon_state = "warray_base"
+
+// Module
+
+/obj/structure/prop/vehicles/tank/longstreet/module/warray
+
+/obj/structure/prop/vehicles/tank/longstreet/module/warray/destroyed
+	icon_state = "warray_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/odrive
+	icon_state = "odrive_enhancer_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/odrive/destroyed
+	icon_state = "odrive_enhancer_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/slauncher
+	icon_state = "slauncher_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/slauncher/destroyed
+	icon_state = "slauncher_destroyed"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/slauncher/empty
+	icon_state = "slauncher_empty"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/artillerymod
+	icon_state = "artillerymod_base"
+
+/obj/structure/prop/vehicles/tank/longstreet/module/artillerymod/destroyed
+	icon_state = "artillerymod_destroyed"
 
 //overhead prop sets
 

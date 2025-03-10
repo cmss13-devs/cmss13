@@ -190,19 +190,33 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
 "aaB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig 2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
 "aaD" = (
-/obj/structure/chimera_tug,
-/turf/open/floor/almayer/silver/north,
-/area/almayer/hallways/hangar)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig 1"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -372,8 +386,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
 "aaT" = (
-/turf/open/floor/almayer/silver/north,
-/area/almayer/hallways/hangar)
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig Perma"
+	},
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/perma)
 "aaU" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -389,16 +406,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
 "aaV" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33;
-	pixel_x = 2
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Interrogation"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/interrogation)
 "aaW" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer/no_build,
@@ -441,7 +453,9 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "abe" = (
-/obj/vehicle/multitile/chimera,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "abf" = (
@@ -605,13 +619,8 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
 "abF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33;
-	pixel_x = 2
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/plate,
+/obj/structure/chimera_tug,
+/turf/open/floor/almayer/silver/north,
 /area/almayer/hallways/hangar)
 "abG" = (
 /obj/structure/machinery/vending/coffee{
@@ -1313,10 +1322,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north1)
 "ade" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/silver/north,
 /area/almayer/hallways/hangar)
 "adf" = (
 /obj/structure/surface/rack,
@@ -1939,6 +1945,17 @@
 	},
 /turf/open/floor/almayer/blue/east,
 /area/almayer/living/basketball)
+"aeJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "aeK" = (
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/starboard_missiles)
@@ -2277,6 +2294,10 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
+"afy" = (
+/obj/vehicle/multitile/chimera,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "afz" = (
 /obj/effect/landmark/start/doctor,
 /obj/effect/landmark/late_join/doctor,
@@ -2472,6 +2493,21 @@
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/cafeteria_officer)
+"afM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
+"afN" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "afO" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer/plate,
@@ -26976,6 +27012,9 @@
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "euV" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC"
+	},
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/command/cic)
 "euW" = (
@@ -42003,6 +42042,9 @@
 	phone_id = "Commanding Officer's Office";
 	pixel_x = 16;
 	pixel_y = 8
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CO Office"
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -58690,6 +58732,10 @@
 "sco" = (
 /obj/structure/sign/prop1{
 	layer = 3.1
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC Conf";
+	layer = 4
 	},
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
@@ -82067,7 +82113,7 @@ naB
 naB
 naB
 naB
-naB
+aaT
 dcy
 qPD
 qPD
@@ -82870,7 +82916,7 @@ xkc
 xyZ
 hvd
 vGn
-ehl
+aaV
 ehl
 uXu
 cQG
@@ -83494,7 +83540,7 @@ oRk
 oRk
 oRk
 utZ
-cMl
+aaB
 hTt
 kMH
 tUx
@@ -85727,7 +85773,7 @@ ptq
 oRk
 eNR
 bju
-cMl
+aaD
 dEG
 xkd
 uvY
@@ -90681,9 +90727,9 @@ bfs
 aso
 xyw
 xyw
-abe
+afy
 bcc
-aaD
+abF
 lpl
 xyw
 bHB
@@ -90884,9 +90930,9 @@ bfs
 asp
 arI
 arI
-abF
-aaV
-aaT
+afM
+aeJ
+ade
 goY
 xyw
 bHB
@@ -91092,7 +91138,7 @@ phw
 xMG
 aqk
 xyw
-aaB
+abe
 aZO
 baI
 baI
@@ -91492,7 +91538,7 @@ onv
 bfs
 pjh
 xyw
-ade
+afN
 xyw
 xyw
 xyw
@@ -91695,7 +91741,7 @@ xzB
 bfs
 wFi
 asa
-ade
+afN
 xyw
 xyw
 qKl

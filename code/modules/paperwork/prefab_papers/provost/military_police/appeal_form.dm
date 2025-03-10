@@ -166,7 +166,7 @@
 	dat += "<p>"
 	dat += "A PR301b Delayed Action Order (DAO) allows Military Police to reprosecute a defendant for charges they are previously released from due to the inability to adhere to the required timeframes.<br>"
 	dat += "Request of a DAO requires the defendant be released from detainment, the 'PR301b Requested' section on this document completed, and a PR301b form sent by fax to the Provost Office.<br>"
-	dat += "Upon receipt of a response from the DOA fax this document must be updated to indicate the Provost Office's decision. Should a DAO be approved the defendant must be presented with the response from the Provost Office upon, or prior to, being detained."
+	dat += "Upon receipt of a response from the DAO fax this document must be updated to indicate the Provost Office's decision. Should a DAO be approved the defendant must be presented with the response from the Provost Office upon, or prior to, being detained."
 	dat += "</p>"
 	dat += "</div> <!-- /message-signature-text -->"
 	dat += "</div> <!-- /width-container -->"

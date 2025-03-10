@@ -276,7 +276,7 @@
 	SIGNAL_HANDLER
 	if(!lase_mode)
 		return
-	src.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] has detected a target and beings calibrating..."))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] has detected a target and beings calibrating..."))
 	aiming = TRUE
 	aimed = FALSE
 	playsound(loc, "sound/machines/scanning.ogg", 25, 1)
@@ -288,7 +288,7 @@
 	SIGNAL_HANDLER
 	if(!lase_mode)
 		return
-	src.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] has lost the laser target and returns to it's normal position."))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] has lost the laser target and returns to it's normal position."))
 	aiming = FALSE
 	aimed = FALSE
 	playsound(loc, "sound/machines/scanning.ogg", 25, 1)
@@ -303,7 +303,7 @@
 		aiming = FALSE
 		aimed = FALSE
 		return
-	src.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] is ready to fire!"))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] is ready to fire!"))
 	aiming = FALSE
 	aimed = TRUE
 
@@ -353,7 +353,7 @@
 			if(linked_designator) // Unregister the pervious laser designator signal, if switching linked laser designator
 				UnregisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE)
 				UnregisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE_OFF)
-			src.linked_designator = item
+			linked_designator = item
 			RegisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE, PROC_REF(retrieve_laser_target))
 			RegisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE_OFF, PROC_REF(lost_laser_target))
 			verbs += /obj/structure/mortar/proc/unlink_designator
@@ -558,7 +558,7 @@
 		if(user)
 			to_chat(user, attempt_info)
 		else
-			src.visible_message(attempt_info)
+			visible_message(attempt_info)
 	return can_fire
 
 /obj/structure/mortar/fixed

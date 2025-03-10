@@ -160,6 +160,29 @@
 	if(wear_id)
 		msg += "[t_He] [t_is] [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him, t_has, t_is)].\n"
 
+	//Inform user if their weapon's IFF will or won't hit src, code by The32bitguy from PVE
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_with_gun = user
+		if(istype(human_with_gun.r_hand, /obj/item/weapon/gun) || istype(human_with_gun.l_hand, /obj/item/weapon/gun))
+			var/obj/item/weapon/gun/gun_with_iff
+			var/found_iff = FALSE
+			gun_with_iff = human_with_gun.get_active_hand()
+			if(gun_with_iff.GetComponent(/datum/component/iff_fire_prevention))
+				for(var/obj/item/attachable/attachment in gun_with_iff.contents)
+					if(locate(/datum/element/bullet_trait_iff) in attachment.traits_to_give)
+						found_iff = TRUE
+						break
+				if(gun_with_iff.traits_to_give != null)
+					if(gun_with_iff.traits_to_give.Find("iff"))
+						found_iff = TRUE
+				if(gun_with_iff.in_chamber != null && gun_with_iff.in_chamber.bullet_traits != null )
+					if(gun_with_iff.in_chamber.bullet_traits.Find("iff"))
+						found_iff = TRUE
+				if(found_iff)
+					if(get_target_lock(human_with_gun.get_id_faction_group()) > 0)
+						msg += SPAN_HELPFUL("[capitalize(t_He)] is compatible with your weapon's IFF.\n")
+					else
+						msg += SPAN_DANGER("[capitalize(t_He)] is not compatible with your weapon's IFF. They will be shot by your weapon!\n")
 	//Restraints
 	if(handcuffed)
 		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")

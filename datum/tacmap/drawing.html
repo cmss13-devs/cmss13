@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;tacmap&#x2F;drawing - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/tacmap/drawing.html#var">Var Details</a> - <a href="datum/tacmap/drawing.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="datum.html">datum</a>/<a href="datum/tacmap.html">tacmap</a>/<a href="datum/tacmap/drawing.html">drawing</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L702">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 702"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#var/current_svg">current_svg</a></th><td>current svg</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#var/last_update_time">last_update_time</a></th><td>The last time the map has been flattened - used as a key to trick react into updating the canvas</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#var/new_current_map">new_current_map</a></th><td>current flattend map</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#var/old_map">old_map</a></th><td>previous flattened map</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#var/tacmap_ready_time">tacmap_ready_time</a></th><td>A temporary lock out time before we can open the new canvas tab to allow the tacmap time to fire</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#var/toolbar_color_selection">toolbar_color_selection</a></th><td>color selection for the tactical map canvas, defaults to black.</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#var/updated_canvas">updated_canvas</a></th><td>boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#var/wiki_map_fallback">wiki_map_fallback</a></th><td>A url that will point to the wiki map for the current map as a fall back image</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#proc/distribute_current_map_png">distribute_current_map_png</a></th><td>Flattens the current map and then distributes it for the specified faction as an unannounced map.</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#proc/on_tacmap_fire">on_tacmap_fire</a></th><td>Callback when timer indicates the tacmap is flattenable now</td></tr>
+            <tr><th><a href="datum/tacmap/drawing.html#proc/store_current_svg_coords">store_current_svg_coords</a></th><td>Globally stores svg coords for a given faction.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/current_svg"><aside class="declaration">var </aside>current_svg
+            <aside>&ndash; /<a href="datum.html">datum</a>/svg_overlay</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L717">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 717"/></a></h3>
+        <p>current svg</p><h3 id="var/last_update_time"><aside class="declaration">var </aside>last_update_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L722">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 722"/></a></h3>
+        <p>The last time the map has been flattened - used as a key to trick react into updating the canvas</p><h3 id="var/new_current_map"><aside class="declaration">var </aside>new_current_map
+            <aside>&ndash; /<a href="datum.html">datum</a>/flattened_tacmap</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L713">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 713"/></a></h3>
+        <p>current flattend map</p><h3 id="var/old_map"><aside class="declaration">var </aside>old_map
+            <aside>&ndash; /<a href="datum.html">datum</a>/flattened_tacmap</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L715">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 715"/></a></h3>
+        <p>previous flattened map</p><h3 id="var/tacmap_ready_time"><aside class="declaration">var </aside>tacmap_ready_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L724">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 724"/></a></h3>
+        <p>A temporary lock out time before we can open the new canvas tab to allow the tacmap time to fire</p><h3 id="var/toolbar_color_selection"><aside class="declaration">var </aside>toolbar_color_selection
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L707">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 707"/></a></h3>
+        <p>color selection for the tactical map canvas, defaults to black.</p><h3 id="var/updated_canvas"><aside class="declaration">var </aside>updated_canvas
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L711">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 711"/></a></h3>
+        <p>boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.</p><h3 id="var/wiki_map_fallback"><aside class="declaration">var </aside>wiki_map_fallback
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L704">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 704"/></a></h3>
+        <p>A url that will point to the wiki map for the current map as a fall back image</p><h2 id="proc">Proc Details</h2><h3 id="proc/distribute_current_map_png"><aside class="declaration">proc </aside>distribute_current_map_png<aside>(faction) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L463">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 463"/></a></aside>
+        </h3>
+        <p>Flattens the current map and then distributes it for the specified faction as an unannounced map.</p>
+<p>Arguments:</p>
+<ul>
+<li>faction: Which faction to distribute the map to: FACTION_MARINE or XENO_HIVE_NORMAL
+Return:</li>
+<li>Returns a boolean value, TRUE if the operation was successful, FALSE if it was not (on cooldown generally).</li>
+</ul><h3 id="proc/on_tacmap_fire"><aside class="declaration">proc </aside>on_tacmap_fire<aside>(faction) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L1099">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 1099"/></a></aside>
+        </h3>
+        <p>Callback when timer indicates the tacmap is flattenable now</p><h3 id="proc/store_current_svg_coords"><aside class="declaration">proc </aside>store_current_svg_coords<aside>(faction, svg_coords, ckey) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/controllers/subsystem/minimap.dm#L518">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 518"/></a></aside>
+        </h3>
+        <p>Globally stores svg coords for a given faction.</p>
+<p>Arguments:</p>
+<ul>
+<li>faction: which faction to save the data for: FACTION_MARINE or XENO_HIVE_NORMAL</li>
+<li>svg_coords: an array of coordinates corresponding to an svg.</li>
+<li>ckey: the ckey of the user who submitted this</li>
+</ul></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/51e9d266e2c946b29e7c70adf5b448b811645d71">51e9d26</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

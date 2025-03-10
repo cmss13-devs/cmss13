@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob&#x2F;living - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob/living.html#var">Var Details</a> - <a href="mob/living.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob/living.html#var/active_surgeries">active_surgeries</a></th><td>Assoc. list - the operations being performed, by aim zone. Both boolean and link to that surgery.</td></tr>
+            <tr><th><a href="mob/living.html#var/blood_volume">blood_volume</a></th><td>How much blood the mob has</td></tr>
+            <tr><th><a href="mob/living.html#var/body_position">body_position</a></th><td>Variable to track the body position of a mob, regardgless of the actual angle of rotation (usually matching it, but not necessarily).</td></tr>
+            <tr><th><a href="mob/living.html#var/body_position_changed">body_position_changed</a></th><td>For knowing when was the body position changed</td></tr>
+            <tr><th><a href="mob/living.html#var/bubble_icon">bubble_icon</a></th><td>what icon the mob uses for speechbubbles</td></tr>
+            <tr><th><a href="mob/living.html#var/custom_slashed_sound">custom_slashed_sound</a></th><td>Custom sound if the mob gets slashed by a xenomorph</td></tr>
+            <tr><th><a href="mob/living.html#var/dead_black_market_value">dead_black_market_value</a></th><td>This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.</td></tr>
+            <tr><th><a href="mob/living.html#var/incision_depths">incision_depths</a></th><td>Assoc. list - incision depths, by aim zone. Set by initialize_incision_depths().</td></tr>
+            <tr><th><a href="mob/living.html#var/limit_blood">limit_blood</a></th><td>How much blood the mob can have</td></tr>
+            <tr><th><a href="mob/living.html#var/lying_angle">lying_angle</a></th><td>Number of degrees of rotation of a mob. 0 means no rotation, up-side facing NORTH. 90 means up-side rotated to face EAST, and so on.</td></tr>
+            <tr><th><a href="mob/living.html#var/lying_prev">lying_prev</a></th><td>Value of lying lying_angle before last change. TODO: Remove the need for this.</td></tr>
+            <tr><th><a href="mob/living.html#var/max_blood">max_blood</a></th><td>How much blood the mob should ideally have</td></tr>
+            <tr><th><a href="mob/living.html#var/mobility_flags">mobility_flags</a></th><td>Flags that determine the potential of a mob to perform certain actions. Do not change this directly.</td></tr>
+            <tr><th><a href="mob/living.html#var/rest_cooldown">rest_cooldown</a></th><td>Cooldown for manually toggling resting to avoid spamming</td></tr>
+            <tr><th><a href="mob/living.html#var/rotate_on_lying">rotate_on_lying</a></th><td>Does the mob rotate when lying</td></tr>
+            <tr><th><a href="mob/living.html#var/status_effects">status_effects</a></th><td>a list of all status effects the mob has</td></tr>
+            <tr><th><a href="mob/living.html#var/weed_food_icon">weed_food_icon</a></th><td>icon for weed_food states</td></tr>
+            <tr><th><a href="mob/living.html#var/weed_food_states">weed_food_states</a></th><td>icon_states for weed_food (needs to be the same length as weed_food_states_flipped)</td></tr>
+            <tr><th><a href="mob/living.html#var/weed_food_states_flipped">weed_food_states_flipped</a></th><td>flipped icon_states for weed_food (needs to be the same length as weed_food_states)</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob/living.html#proc/AdjustKnockDown">AdjustKnockDown</a></th><td>Adds to remaining Knockdown duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/AdjustKnockOut">AdjustKnockOut</a></th><td>Adds to remaining Knockout duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/AmountKnockDown">AmountKnockDown</a></th><td>How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)</td></tr>
+            <tr><th><a href="mob/living.html#proc/GetDazeDuration">GetDazeDuration</a></th><td>Overridable handler to adjust the numerical value of status effects. Expand as needed</td></tr>
+            <tr><th><a href="mob/living.html#proc/GetKnockDownDuration">GetKnockDownDuration</a></th><td>Overridable handler to adjust the numerical value of status effects. Expand as needed</td></tr>
+            <tr><th><a href="mob/living.html#proc/GetKnockOutDuration">GetKnockOutDuration</a></th><td>Overridable handler to adjust the numerical value of status effects. Expand as needed</td></tr>
+            <tr><th><a href="mob/living.html#proc/GetRootDuration">GetRootDuration</a></th><td>Overridable handler to adjust the numerical value of status effects. Expand as needed</td></tr>
+            <tr><th><a href="mob/living.html#proc/GetStunDuration">GetStunDuration</a></th><td>Overridable handler to adjust the numerical value of status effects. Expand as needed</td></tr>
+            <tr><th><a href="mob/living.html#proc/KnockOut">KnockOut</a></th><td>Sets Knockout duration to at least the amount provided</td></tr>
+            <tr><th><a href="mob/living.html#proc/SetKnockDown">SetKnockDown</a></th><td>Sets exact remaining KnockDown duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/SetKnockOut">SetKnockOut</a></th><td>Sets exact remaining Knockout duration</td></tr>
+            <tr><th><a href="mob/living.html#proc/add_splatter_floor">add_splatter_floor</a></th><td>add_splatter_floor</td></tr>
+            <tr><th><a href="mob/living.html#proc/apply_status_effect">apply_status_effect</a></th><td>Applies a given status effect to this mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/cleanup_status_effects">cleanup_status_effects</a></th><td>Clear all running status effects assuming deletion</td></tr>
+            <tr><th><a href="mob/living.html#proc/create_thinking_indicator">create_thinking_indicator</a></th><td>Overrides for overlay creation</td></tr>
+            <tr><th><a href="mob/living.html#proc/health_scan">health_scan</a></th><td>legacy proc for to_chat messages on health analysers</td></tr>
+            <tr><th><a href="mob/living.html#proc/lying_angle_on_movement">lying_angle_on_movement</a></th><td>Called by mob Move() when the lying_angle is different than zero, to better visually simulate crawling.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_dazed_trait_gain">on_dazed_trait_gain</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_DAZED" title="TRAIT_DAZED">TRAIT_DAZED</a> is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_dazed_trait_loss">on_dazed_trait_loss</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_DAZED" title="TRAIT_DAZED">TRAIT_DAZED</a> is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_fall">on_fall</a></th><td>Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_floored_end">on_floored_end</a></th><td>Proc to append behavior to the condition of being floored. Called when the condition ends.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_floored_start">on_floored_start</a></th><td>Proc to append behavior to the condition of being floored. Called when the condition starts.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_floored_trait_gain">on_floored_trait_gain</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_FLOORED" title="TRAIT_FLOORED">TRAIT_FLOORED</a> is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_floored_trait_loss">on_floored_trait_loss</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_FLOORED" title="TRAIT_FLOORED">TRAIT_FLOORED</a> is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_forced_standing_trait_gain">on_forced_standing_trait_gain</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_FORCED_STANDING" title="TRAIT_FORCED_STANDING">TRAIT_FORCED_STANDING</a> is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_forced_standing_trait_loss">on_forced_standing_trait_loss</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_FORCED_STANDING" title="TRAIT_FORCED_STANDING">TRAIT_FORCED_STANDING</a> is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_immobilized_trait_gain">on_immobilized_trait_gain</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_IMMOBILIZED" title="TRAIT_IMMOBILIZED">TRAIT_IMMOBILIZED</a> is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_immobilized_trait_loss">on_immobilized_trait_loss</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_IMMOBILIZED" title="TRAIT_IMMOBILIZED">TRAIT_IMMOBILIZED</a> is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_incapacitated_trait_gain">on_incapacitated_trait_gain</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_INCAPACITATED" title="TRAIT_INCAPACITATED">TRAIT_INCAPACITATED</a> is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_incapacitated_trait_loss">on_incapacitated_trait_loss</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_INCAPACITATED" title="TRAIT_INCAPACITATED">TRAIT_INCAPACITATED</a> is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_knockedout_trait_gain">on_knockedout_trait_gain</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_KNOCKEDOUT" title="TRAIT_KNOCKEDOUT">TRAIT_KNOCKEDOUT</a> is added to the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_knockedout_trait_loss">on_knockedout_trait_loss</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_KNOCKEDOUT" title="TRAIT_KNOCKEDOUT">TRAIT_KNOCKEDOUT</a> is removed from the mob.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_lying_down">on_lying_down</a></th><td>Proc to append behavior related to lying down.</td></tr>
+            <tr><th><a href="mob/living.html#proc/on_standing_up">on_standing_up</a></th><td>Proc to append behavior related to lying down.</td></tr>
+            <tr><th><a href="mob/living.html#proc/register_init_signals">register_init_signals</a></th><td>Called on <a href="mob/living.html" title="/mob/living">/mob/living/Initialize(mapload)</a>, for the mob to register to relevant signals.</td></tr>
+            <tr><th><a href="mob/living.html#proc/remove_status_effect">remove_status_effect</a></th><td>Removes all instances of a given status effect from this mob</td></tr>
+            <tr><th><a href="mob/living.html#proc/resist_buckle">resist_buckle</a></th><td>The medical machines below are listed separately to allow easier changes to each process</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_body_position">set_body_position</a></th><td>Changes the value of the [living/body_position] variable. Call this before set_lying_angle()</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_buckled">set_buckled</a></th><td>Reports the event of the change in value of the buckled variable.</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_lying_angle">set_lying_angle</a></th><td>Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_lying_down">set_lying_down</a></th><td>Change the [body_position] to <a href="code/__DEFINES/mobs.html#define/LYING_DOWN" title="LYING_DOWN">LYING_DOWN</a> and update associated behavior.</td></tr>
+            <tr><th><a href="mob/living.html#proc/set_resting">set_resting</a></th><td>Proc to hook behavior to the change of value in the resting variable.</td></tr>
+            <tr><th><a href="mob/living.html#proc/shared_living_ui_distance">shared_living_ui_distance</a></th><td>public</td></tr>
+            <tr><th><a href="mob/living.html#proc/shared_living_ui_in_view">shared_living_ui_in_view</a></th><td>public</td></tr>
+            <tr><th><a href="mob/living.html#proc/show_speech_bubble">show_speech_bubble</a></th><td>Shows custom speech bubbles for screaming, *warcry etc.</td></tr>
+            <tr><th><a href="mob/living.html#proc/splat">splat</a></th><td>'Splats' src, killing them. Mouses override this proc with their own unique splat.</td></tr>
+            <tr><th><a href="mob/living.html#proc/undense_changed">undense_changed</a></th><td>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_UNDENSE" title="TRAIT_UNDENSE">TRAIT_UNDENSE</a> is gained or lost</td></tr>
+            <tr><th><a href="mob/living.html#proc/update_density">update_density</a></th><td>Uses presence of <a href="code/__DEFINES/traits.html#define/TRAIT_UNDENSE" title="TRAIT_UNDENSE">TRAIT_UNDENSE</a> to figure out what is the correct density state for the mob. Triggered by trait signal.</td></tr>
+            <tr><th><a href="mob/living.html#proc/update_eye_blur">update_eye_blur</a></th><td>Apply the blurry overlays to a mobs clients screen</td></tr>
+            <tr><th><a href="mob/living.html#proc/update_layer">update_layer</a></th><td>Updates the layer the mob is on based on its current status. This can result in redundant updates. Replace by trait signals eventually</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/active_surgeries"><aside class="declaration">var </aside>active_surgeries
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L107">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 107"/></a></h3>
+        <p>Assoc. list - the operations being performed, by aim zone. Both boolean and link to that surgery.</p><h3 id="var/blood_volume"><aside class="declaration">var </aside>blood_volume
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L92">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 92"/></a></h3>
+        <p>How much blood the mob has</p><h3 id="var/body_position"><aside class="declaration">var </aside>body_position
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L125">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 125"/></a></h3>
+        <p>Variable to track the body position of a mob, regardgless of the actual angle of rotation (usually matching it, but not necessarily).</p><h3 id="var/body_position_changed"><aside class="declaration">var </aside>body_position_changed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L127">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 127"/></a></h3>
+        <p>For knowing when was the body position changed</p><h3 id="var/bubble_icon"><aside class="declaration">var </aside>bubble_icon
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L117">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 117"/></a></h3>
+        <p>what icon the mob uses for speechbubbles</p><h3 id="var/custom_slashed_sound"><aside class="declaration">var </aside>custom_slashed_sound
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 47"/></a></h3>
+        <p>Custom sound if the mob gets slashed by a xenomorph</p><h3 id="var/dead_black_market_value"><aside class="declaration">var </aside>dead_black_market_value
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L122">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 122"/></a></h3>
+        <p>This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.</p><h3 id="var/incision_depths"><aside class="declaration">var </aside>incision_depths
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L109">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 109"/></a></h3>
+        <p>Assoc. list - incision depths, by aim zone. Set by initialize_incision_depths().</p><h3 id="var/limit_blood"><aside class="declaration">var </aside>limit_blood
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L96">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 96"/></a></h3>
+        <p>How much blood the mob can have</p><h3 id="var/lying_angle"><aside class="declaration">var </aside>lying_angle
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L129">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 129"/></a></h3>
+        <p>Number of degrees of rotation of a mob. 0 means no rotation, up-side facing NORTH. 90 means up-side rotated to face EAST, and so on.</p><h3 id="var/lying_prev"><aside class="declaration">var </aside>lying_prev
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L131">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 131"/></a></h3>
+        <p>Value of lying lying_angle before last change. TODO: Remove the need for this.</p><h3 id="var/max_blood"><aside class="declaration">var </aside>max_blood
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L94">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 94"/></a></h3>
+        <p>How much blood the mob should ideally have</p><h3 id="var/mobility_flags"><aside class="declaration">var </aside>mobility_flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L136">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 136"/></a></h3>
+        <p>Flags that determine the potential of a mob to perform certain actions. Do not change this directly.</p><h3 id="var/rest_cooldown"><aside class="declaration">var </aside>rest_cooldown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 26"/></a></h3>
+        <p>Cooldown for manually toggling resting to avoid spamming</p><h3 id="var/rotate_on_lying"><aside class="declaration">var </aside>rotate_on_lying
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L133">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 133"/></a></h3>
+        <p>Does the mob rotate when lying</p><h3 id="var/status_effects"><aside class="declaration">var </aside>status_effects
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 24"/></a></h3>
+        <p>a list of all status effects the mob has</p><h3 id="var/weed_food_icon"><aside class="declaration">var </aside>weed_food_icon
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L139">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 139"/></a></h3>
+        <p>icon for weed_food states</p><h3 id="var/weed_food_states"><aside class="declaration">var </aside>weed_food_states
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L141">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 141"/></a></h3>
+        <p>icon_states for weed_food (needs to be the same length as weed_food_states_flipped)</p><h3 id="var/weed_food_states_flipped"><aside class="declaration">var </aside>weed_food_states_flipped
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_defines.dm#L143">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_defines.dm 143"/></a></h3>
+        <p>flipped icon_states for weed_food (needs to be the same length as weed_food_states)</p><h2 id="proc">Proc Details</h2><h3 id="proc/AdjustKnockDown"><aside class="declaration">proc </aside>AdjustKnockDown<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L315">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 315"/></a></aside>
+        </h3>
+        <p>Adds to remaining Knockdown duration</p><h3 id="proc/AdjustKnockOut"><aside class="declaration">proc </aside>AdjustKnockOut<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L369">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 369"/></a></aside>
+        </h3>
+        <p>Adds to remaining Knockout duration</p><h3 id="proc/AmountKnockDown"><aside class="declaration">proc </aside>AmountKnockDown<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L281">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 281"/></a></aside>
+        </h3>
+        <p>How much time remains - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)</p><h3 id="proc/GetDazeDuration"><aside class="declaration">proc </aside>GetDazeDuration<aside>(amount) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L195">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 195"/></a></aside>
+        </h3>
+        <p>Overridable handler to adjust the numerical value of status effects. Expand as needed</p><h3 id="proc/GetKnockDownDuration"><aside class="declaration">proc </aside>GetKnockDownDuration<aside>(amount) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L274">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 274"/></a></aside>
+        </h3>
+        <p>Overridable handler to adjust the numerical value of status effects. Expand as needed</p><h3 id="proc/GetKnockOutDuration"><aside class="declaration">proc </aside>GetKnockOutDuration<aside>(amount) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L328">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 328"/></a></aside>
+        </h3>
+        <p>Overridable handler to adjust the numerical value of status effects. Expand as needed</p><h3 id="proc/GetRootDuration"><aside class="declaration">proc </aside>GetRootDuration<aside>(amount) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L144">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 144"/></a></aside>
+        </h3>
+        <p>Overridable handler to adjust the numerical value of status effects. Expand as needed</p><h3 id="proc/GetStunDuration"><aside class="declaration">proc </aside>GetStunDuration<aside>(amount) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L98">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 98"/></a></aside>
+        </h3>
+        <p>Overridable handler to adjust the numerical value of status effects. Expand as needed</p><h3 id="proc/KnockOut"><aside class="declaration">proc </aside>KnockOut<aside>(amount) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L341">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 341"/></a></aside>
+        </h3>
+        <p>Sets Knockout duration to at least the amount provided</p><h3 id="proc/SetKnockDown"><aside class="declaration">proc </aside>SetKnockDown<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L299">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 299"/></a></aside>
+        </h3>
+        <p>Sets exact remaining KnockDown duration</p><h3 id="proc/SetKnockOut"><aside class="declaration">proc </aside>SetKnockOut<aside>(amount, ignore_canstun) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L353">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 353"/></a></aside>
+        </h3>
+        <p>Sets exact remaining Knockout duration</p><h3 id="proc/add_splatter_floor"><aside class="declaration">proc </aside>add_splatter_floor<aside>(/<a href="turf.html">turf</a>/T, small_drip, b_color) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/blood.dm#L258">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;blood.dm 258"/></a></aside>
+        </h3>
+        <p>add_splatter_floor</p><h3 id="proc/apply_status_effect"><aside class="declaration">proc </aside>apply_status_effect<aside>(/<a href="datum.html">datum</a>/<a href="datum/status_effect.html">status_effect</a>/new_effect, ...) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/status_effects/_status_effect_helpers.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;status_effects&#x2F;_status_effect_helpers.dm 13"/></a></aside>
+        </h3>
+        <p>Applies a given status effect to this mob.</p>
+<p>new_effect - TYPEPATH of a status effect to apply.
+Additional status effect arguments can be passed.</p>
+<p>Returns the instance of the created effected, if successful.
+Returns 'null' if unsuccessful.</p><h3 id="proc/cleanup_status_effects"><aside class="declaration">proc </aside>cleanup_status_effects<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 41"/></a></aside>
+        </h3>
+        <p>Clear all running status effects assuming deletion</p><h3 id="proc/create_thinking_indicator"><aside class="parent"><a title="/mob" href="mob.html#proc/create_thinking_indicator">&uarr;</a></aside>create_thinking_indicator<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/tgui/tgui-say/typing.dm#L70">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;tgui-say&#x2F;typing.dm 70"/></a></aside>
+        </h3>
+        <p>Overrides for overlay creation</p><h3 id="proc/health_scan"><aside class="declaration">proc </aside>health_scan<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/user, ignore_delay, show_limb_damage, show_browser, alien, do_checks) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_healthscan.dm#L505">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_healthscan.dm 505"/></a></aside>
+        </h3>
+        <p>legacy proc for to_chat messages on health analysers</p><h3 id="proc/lying_angle_on_movement"><aside class="declaration">proc </aside>lying_angle_on_movement<aside>(direct) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L553">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 553"/></a></aside>
+        </h3>
+        <p>Called by mob Move() when the lying_angle is different than zero, to better visually simulate crawling.</p><h3 id="proc/on_dazed_trait_gain"><aside class="declaration">proc </aside>on_dazed_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L98">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 98"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_DAZED" title="TRAIT_DAZED">TRAIT_DAZED</a> is added to the mob.</p><h3 id="proc/on_dazed_trait_loss"><aside class="declaration">proc </aside>on_dazed_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L102">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 102"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_DAZED" title="TRAIT_DAZED">TRAIT_DAZED</a> is removed from the mob.</p><h3 id="proc/on_fall"><aside class="declaration">proc </aside>on_fall<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L629">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 629"/></a></aside>
+        </h3>
+        <p>Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.</p><h3 id="proc/on_floored_end"><aside class="declaration">proc </aside>on_floored_end<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L676">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 676"/></a></aside>
+        </h3>
+        <p>Proc to append behavior to the condition of being floored. Called when the condition ends.</p><h3 id="proc/on_floored_start"><aside class="declaration">proc </aside>on_floored_start<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L668">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 668"/></a></aside>
+        </h3>
+        <p>Proc to append behavior to the condition of being floored. Called when the condition starts.</p><h3 id="proc/on_floored_trait_gain"><aside class="declaration">proc </aside>on_floored_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 50"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_FLOORED" title="TRAIT_FLOORED">TRAIT_FLOORED</a> is added to the mob.</p><h3 id="proc/on_floored_trait_loss"><aside class="declaration">proc </aside>on_floored_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 61"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_FLOORED" title="TRAIT_FLOORED">TRAIT_FLOORED</a> is removed from the mob.</p><h3 id="proc/on_forced_standing_trait_gain"><aside class="declaration">proc </aside>on_forced_standing_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 67"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_FORCED_STANDING" title="TRAIT_FORCED_STANDING">TRAIT_FORCED_STANDING</a> is added to the mob.</p><h3 id="proc/on_forced_standing_trait_loss"><aside class="declaration">proc </aside>on_forced_standing_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 74"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_FORCED_STANDING" title="TRAIT_FORCED_STANDING">TRAIT_FORCED_STANDING</a> is removed from the mob.</p><h3 id="proc/on_immobilized_trait_gain"><aside class="declaration">proc </aside>on_immobilized_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 40"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_IMMOBILIZED" title="TRAIT_IMMOBILIZED">TRAIT_IMMOBILIZED</a> is added to the mob.</p><h3 id="proc/on_immobilized_trait_loss"><aside class="declaration">proc </aside>on_immobilized_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 45"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_IMMOBILIZED" title="TRAIT_IMMOBILIZED">TRAIT_IMMOBILIZED</a> is removed from the mob.</p><h3 id="proc/on_incapacitated_trait_gain"><aside class="declaration">proc </aside>on_incapacitated_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 84"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_INCAPACITATED" title="TRAIT_INCAPACITATED">TRAIT_INCAPACITATED</a> is added to the mob.</p><h3 id="proc/on_incapacitated_trait_loss"><aside class="declaration">proc </aside>on_incapacitated_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L91">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 91"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_INCAPACITATED" title="TRAIT_INCAPACITATED">TRAIT_INCAPACITATED</a> is removed from the mob.</p><h3 id="proc/on_knockedout_trait_gain"><aside class="declaration">proc </aside>on_knockedout_trait_gain<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 24"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_KNOCKEDOUT" title="TRAIT_KNOCKEDOUT">TRAIT_KNOCKEDOUT</a> is added to the mob.</p><h3 id="proc/on_knockedout_trait_loss"><aside class="declaration">proc </aside>on_knockedout_trait_loss<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 32"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_KNOCKEDOUT" title="TRAIT_KNOCKEDOUT">TRAIT_KNOCKEDOUT</a> is removed from the mob.</p><h3 id="proc/on_lying_down"><aside class="declaration">proc </aside>on_lying_down<aside>(new_lying_angle) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L603">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 603"/></a></aside>
+        </h3>
+        <p>Proc to append behavior related to lying down.</p><h3 id="proc/on_standing_up"><aside class="declaration">proc </aside>on_standing_up<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L648">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 648"/></a></aside>
+        </h3>
+        <p>Proc to append behavior related to lying down.</p><h3 id="proc/register_init_signals"><aside class="declaration">proc </aside>register_init_signals<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 2"/></a></aside>
+        </h3>
+        <p>Called on <a href="mob/living.html" title="/mob/living">/mob/living/Initialize(mapload)</a>, for the mob to register to relevant signals.</p><h3 id="proc/remove_status_effect"><aside class="declaration">proc </aside>remove_status_effect<aside>(/<a href="datum.html">datum</a>/<a href="datum/status_effect.html">status_effect</a>/removed_effect, ...) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/status_effects/_status_effect_helpers.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;status_effects&#x2F;_status_effect_helpers.dm 55"/></a></aside>
+        </h3>
+        <p>Removes all instances of a given status effect from this mob</p>
+<p>removed_effect - TYPEPATH of a status effect to remove.
+Additional status effect arguments can be passed - these are passed into before_remove.</p>
+<p>Returns TRUE if at least one was removed.</p><h3 id="proc/resist_buckle"><aside class="declaration">proc </aside>resist_buckle<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_verbs.dm#L187">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_verbs.dm 187"/></a></aside>
+        </h3>
+        <p>The medical machines below are listed separately to allow easier changes to each process</p><h3 id="proc/set_body_position"><aside class="declaration">proc </aside>set_body_position<aside>(new_value) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L633">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 633"/></a></aside>
+        </h3>
+        <p>Changes the value of the [living/body_position] variable. Call this before set_lying_angle()</p><h3 id="proc/set_buckled"><aside class="declaration">proc </aside>set_buckled<aside>(new_buckled) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L560">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 560"/></a></aside>
+        </h3>
+        <p>Reports the event of the change in value of the buckled variable.</p><h3 id="proc/set_lying_angle"><aside class="declaration">proc </aside>set_lying_angle<aside>(new_lying, on_movement) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L543">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 543"/></a></aside>
+        </h3>
+        <p>Changes the inclination angle of a mob, used by humans and others to differentiate between standing up and prone positions.</p>
+<p>In BYOND-angles 0 is NORTH, 90 is EAST, 180 is SOUTH and 270 is WEST.
+This usually means that 0 is standing up, 90 and 270 are horizontal positions to right and left respectively, and 180 is upside-down.
+Mobs that do now follow these conventions due to unusual sprites should require a special handling or redefinition of this proc, due to the density and layer changes.
+The return of this proc is the previous value of the modified lying_angle if a change was successful (might include zero), or null if no change was made.</p><h3 id="proc/set_lying_down"><aside class="declaration">proc </aside>set_lying_down<aside>(new_lying_angle) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L599">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 599"/></a></aside>
+        </h3>
+        <p>Change the [body_position] to <a href="code/__DEFINES/mobs.html#define/LYING_DOWN" title="LYING_DOWN">LYING_DOWN</a> and update associated behavior.</p><h3 id="proc/set_resting"><aside class="declaration">proc </aside>set_resting<aside>(new_resting, silent, instant) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/carbon/human/powers/human_powers.dm#L254">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;carbon&#x2F;human&#x2F;powers&#x2F;human_powers.dm 254"/></a></aside>
+        </h3>
+        <p>Proc to hook behavior to the change of value in the resting variable.</p><h3 id="proc/shared_living_ui_distance"><aside class="declaration">proc </aside>shared_living_ui_distance<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/src_object, viewcheck, allow_tk) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/tgui/states.dm#L92">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states.dm 92"/></a></aside>
+        </h3>
+        <p>public</p>
+<p>Distance versus interaction check.</p>
+<p>required src_object atom/movable The object which owns the UI.</p>
+<p>return UI_state The state of the UI.</p><h3 id="proc/shared_living_ui_in_view"><aside class="declaration">proc </aside>shared_living_ui_in_view<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/src_object, viewcheck, max_distance) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/tgui/states.dm#L118">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states.dm 118"/></a></aside>
+        </h3>
+        <p>public</p>
+<p>Check if in view. Can interact only if adjacent, updates within max distance, otherwise closes</p>
+<p>required src_object atom/movable The object which owns the UI.</p>
+<p>return UI_state The state of the UI.</p><h3 id="proc/show_speech_bubble"><aside class="declaration">proc </aside>show_speech_bubble<aside>(bubble_name, bubble_type) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/say.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;say.dm 86"/></a></aside>
+        </h3>
+        <p>Shows custom speech bubbles for screaming, *warcry etc.</p><h3 id="proc/splat"><aside class="declaration">proc </aside>splat<aside>(/<a href="mob.html">mob</a>/killer) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_helpers.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_helpers.dm 42"/></a></aside>
+        </h3>
+        <p>'Splats' src, killing them. Mouses override this proc with their own unique splat.</p><h3 id="proc/undense_changed"><aside class="declaration">proc </aside>undense_changed<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/init_signals.dm#L106">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;init_signals.dm 106"/></a></aside>
+        </h3>
+        <p>Called when <a href="code/__DEFINES/traits.html#define/TRAIT_UNDENSE" title="TRAIT_UNDENSE">TRAIT_UNDENSE</a> is gained or lost</p><h3 id="proc/update_density"><aside class="declaration">proc </aside>update_density<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L661">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 661"/></a></aside>
+        </h3>
+        <p>Uses presence of <a href="code/__DEFINES/traits.html#define/TRAIT_UNDENSE" title="TRAIT_UNDENSE">TRAIT_UNDENSE</a> to figure out what is the correct density state for the mob. Triggered by trait signal.</p><h3 id="proc/update_eye_blur"><aside class="declaration">proc </aside>update_eye_blur<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living_health_procs.dm#L413">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_health_procs.dm 413"/></a></aside>
+        </h3>
+        <p>Apply the blurry overlays to a mobs clients screen</p><h3 id="proc/update_layer"><aside class="declaration">proc </aside>update_layer<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/mob/living/living.dm#L619">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living.dm 619"/></a></aside>
+        </h3>
+        <p>Updates the layer the mob is on based on its current status. This can result in redundant updates. Replace by trait signals eventually</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/51e9d266e2c946b29e7c70adf5b448b811645d71">51e9d26</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

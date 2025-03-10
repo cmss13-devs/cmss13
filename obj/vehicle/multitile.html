@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;vehicle&#x2F;multitile - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/vehicle/multitile.html#proc">Proc Details</a></header>
+<main>
+<h1>multitile vehicle <aside>/<a href="obj.html">obj</a>/<a href="obj/vehicle.html">vehicle</a>/<a href="obj/vehicle/multitile.html">multitile</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/vehicles/multitile/multitile.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;multitile&#x2F;multitile.dm 8"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/vehicle/multitile.html#proc/crew_mousedown">crew_mousedown</a></th><td>Checks for special control keybinds, else relays crew mouse press to active hardpoint.</td></tr>
+            <tr><th><a href="obj/vehicle/multitile.html#proc/crew_mousedrag">crew_mousedrag</a></th><td>Relays crew mouse movement to active hardpoint.</td></tr>
+            <tr><th><a href="obj/vehicle/multitile.html#proc/crew_mouseup">crew_mouseup</a></th><td>Relays crew mouse release to active hardpoint.</td></tr>
+            <tr><th><a href="obj/vehicle/multitile.html#proc/get_mob_hp">get_mob_hp</a></th><td>Get active hardpoint of crewmember.</td></tr>
+            <tr><th><a href="obj/vehicle/multitile.html#proc/get_mob_seat">get_mob_seat</a></th><td>Get seat of crewmember.</td></tr>
+            <tr><th><a href="obj/vehicle/multitile.html#proc/get_seat_mob">get_seat_mob</a></th><td>Get crewmember of seat.</td></tr></table><h2 id="proc">Proc Details</h2><h3 id="proc/crew_mousedown"><aside class="declaration">proc </aside>crew_mousedown<aside>(/<a href="datum.html">datum</a>/source, /<a href="atom.html">atom</a>/object, /<a href="turf.html">turf</a>/location, control, params) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/vehicles/multitile/multitile_interaction.dm#L366">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;multitile&#x2F;multitile_interaction.dm 366"/></a></aside>
+        </h3>
+        <p>Checks for special control keybinds, else relays crew mouse press to active hardpoint.</p><h3 id="proc/crew_mousedrag"><aside class="declaration">proc </aside>crew_mousedrag<aside>(/<a href="datum.html">datum</a>/source, /<a href="atom.html">atom</a>/src_object, /<a href="atom.html">atom</a>/over_object, /<a href="turf.html">turf</a>/src_location, /<a href="turf.html">turf</a>/over_location, src_control, over_control, params) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/vehicles/multitile/multitile_interaction.dm#L357">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;multitile&#x2F;multitile_interaction.dm 357"/></a></aside>
+        </h3>
+        <p>Relays crew mouse movement to active hardpoint.</p><h3 id="proc/crew_mouseup"><aside class="declaration">proc </aside>crew_mouseup<aside>(/<a href="datum.html">datum</a>/source, /<a href="atom.html">atom</a>/object, /<a href="turf.html">turf</a>/location, control, params) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/vehicles/multitile/multitile_interaction.dm#L348">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;multitile&#x2F;multitile_interaction.dm 348"/></a></aside>
+        </h3>
+        <p>Relays crew mouse release to active hardpoint.</p><h3 id="proc/get_mob_hp"><aside class="declaration">proc </aside>get_mob_hp<aside>(/<a href="mob.html">mob</a>/crew) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/vehicles/multitile/multitile.dm#L356">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;multitile&#x2F;multitile.dm 356"/></a></aside>
+        </h3>
+        <p>Get active hardpoint of crewmember.</p><h3 id="proc/get_mob_seat"><aside class="declaration">proc </aside>get_mob_seat<aside>(/<a href="mob.html">mob</a>/M) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/vehicles/multitile/multitile.dm#L349">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;multitile&#x2F;multitile.dm 349"/></a></aside>
+        </h3>
+        <p>Get seat of crewmember.</p><h3 id="proc/get_seat_mob"><aside class="declaration">proc </aside>get_seat_mob<aside>(seat) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/modules/vehicles/multitile/multitile.dm#L345">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;multitile&#x2F;multitile.dm 345"/></a></aside>
+        </h3>
+        <p>Get crewmember of seat.</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/51e9d266e2c946b29e7c70adf5b448b811645d71">51e9d26</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

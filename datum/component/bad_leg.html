@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;component&#x2F;bad_leg - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/component/bad_leg.html#var">Var Details</a> - <a href="datum/component/bad_leg.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="datum.html">datum</a>/<a href="datum/component.html">component</a>/<a href="datum/component/bad_leg.html">bad_leg</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/components/bad_leg.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;bad_leg.dm 8"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/component/bad_leg.html#var/affected_limb">affected_limb</a></th><td>Bound limb.</td></tr>
+            <tr><th><a href="datum/component/bad_leg.html#var/bound_action">bound_action</a></th><td>The bound action to reduce steps tracker.</td></tr>
+            <tr><th><a href="datum/component/bad_leg.html#var/last_message_time">last_message_time</a></th><td>Holds the last time a message was sent to prevent spam.</td></tr>
+            <tr><th><a href="datum/component/bad_leg.html#var/parent_human">parent_human</a></th><td>Bound human.</td></tr>
+            <tr><th><a href="datum/component/bad_leg.html#var/steps_walking">steps_walking</a></th><td>Tracker for steps walked.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/component/bad_leg.html#proc/rest_legs_pain">rest_legs_pain</a></th><td>This prevents weird shit like corpses being dragged triggering the messages.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/affected_limb"><aside class="declaration">var </aside>affected_limb
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/limb.html">limb</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/components/bad_leg.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;bad_leg.dm 21"/></a></h3>
+        <p>Bound limb.</p><h3 id="var/bound_action"><aside class="declaration">var </aside>bound_action
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/human_action/rest_legs</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/components/bad_leg.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;bad_leg.dm 15"/></a></h3>
+        <p>The bound action to reduce steps tracker.</p><h3 id="var/last_message_time"><aside class="declaration">var </aside>last_message_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/components/bad_leg.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;bad_leg.dm 13"/></a></h3>
+        <p>Holds the last time a message was sent to prevent spam.</p><h3 id="var/parent_human"><aside class="declaration">var </aside>parent_human
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/components/bad_leg.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;bad_leg.dm 17"/></a></h3>
+        <p>Bound human.</p><h3 id="var/steps_walking"><aside class="declaration">var </aside>steps_walking
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/components/bad_leg.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;bad_leg.dm 11"/></a></h3>
+        <p>Tracker for steps walked.</p><h2 id="proc">Proc Details</h2><h3 id="proc/rest_legs_pain"><aside class="declaration">proc </aside>rest_legs_pain<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/parent_human, action) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/51e9d266e2c946b29e7c70adf5b448b811645d71/code/datums/components/bad_leg.dm#L107">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;bad_leg.dm 107"/></a></aside>
+        </h3>
+        <p>This prevents weird shit like corpses being dragged triggering the messages.</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/51e9d266e2c946b29e7c70adf5b448b811645d71">51e9d26</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

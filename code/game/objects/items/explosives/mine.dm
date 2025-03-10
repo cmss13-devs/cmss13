@@ -202,6 +202,10 @@
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/L)
 	if(!active || triggered || (customizable && !detonator))
 		return
+	if(isxeno(L))
+		var/mob/living/carbon/xenomorph/xeno = L
+		if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
+			return
 	if(!istype(L))
 		return
 	if(L.stat == DEAD)
@@ -241,6 +245,11 @@
 	if(M.a_intent == INTENT_HELP)
 		to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
 		return XENO_NO_DELAY_ACTION
+
+	if(tripwire)
+		if(M.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
+			to_chat(M, SPAN_XENONOTICE("You are too weak to slash this claymore."))
+			return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),

@@ -341,6 +341,8 @@
 	item_state = "hjra12"
 	skill_locked = TRUE
 	current_mag = /obj/item/ammo_magazine/rocket/upp/at
+	unacidable = TRUE
+	explo_proof = TRUE
 
 	attachable_allowed = list(/obj/item/attachable/upp_rpg_breech)
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY

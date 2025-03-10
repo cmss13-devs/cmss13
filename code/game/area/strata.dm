@@ -275,6 +275,10 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Dismantled VDVK Eagle Mk 4"
 	icon_state = "outpost_engi_3"
 
+/area/strata/ag/interior/outpost/engi/drome/shuttle_sof
+	name = "UPP-DS-3 'Voron'"
+	icon_state = "outpost_engi_3"
+
 /area/strata/ag/interior/outpost/security
 	name = "Outpost - Security"
 	icon_state = "outpost_sec_0"

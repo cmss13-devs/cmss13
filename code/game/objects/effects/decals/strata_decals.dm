@@ -3,6 +3,8 @@
 	layer = TURF_LAYER
 	anchored = TRUE
 
+
+
 /obj/effect/decal/strata_decals/catwalk/prison //For finding and replacing prison catwalk objects since they nasty
 	icon = 'icons/turf/floors/strata_floor.dmi'
 	icon_state = "catwalk"

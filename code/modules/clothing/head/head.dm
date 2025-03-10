@@ -907,8 +907,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	desc = "A finely crafted beret worn by members of the UPP Space Operations Forces. It signifies service in the void, from deep-space missions to planetary operations, and is a mark of discipline and camaraderie among its wearers."
 	icon_state = "SOF_beret"
 	item_state = "SOF_beret"
+	flags_inv_hide = HIDETOPHAIR
 
-/obj/item/clothing/head/ivanberet/SOF_beret/blue
+/obj/item/clothing/head/ivanberet/SOF_beret/reservist
+	name = "\improper UPP Reservist Beret"
+	desc = "A well-made beret worn by reservists of the UPP armed forces. It signifies their continued commitment to the cause, even while not on active duty, and serves as a symbol of unity and service."
 	icon_state = "SOF_blue_beret"
 	item_state = "SOF_blue_beret"
 

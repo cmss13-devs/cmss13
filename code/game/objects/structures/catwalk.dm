@@ -47,3 +47,7 @@
 	icon = 'icons/turf/floors/catwalks.dmi'
 	icon_state = "catwalk0"
 	base_state = "catwalk0"
+
+/obj/structure/catwalk/strata
+	icon = 'icons/turf/floors/strata_floor.dmi'
+	icon_state = "catwalk"

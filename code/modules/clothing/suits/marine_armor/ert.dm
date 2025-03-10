@@ -432,6 +432,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 2
 
+// UPP Army
+
 /obj/item/clothing/suit/storage/marine/faction/UPP/army
 
 	name = "\improper 6B80 Personal Body Armour"
@@ -444,6 +446,28 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/army/simple
+	name = "6B70 Personal Body Armour"
+	desc = "An older UPP Armour that's since been replaced by the UPP Army Standard 6B90 Body Armour, still used by certain UPP Army units that the UPP doesn't expect to see much combat."
+	icon_state = "upp_generic_ballistic_armor"
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/army/alt
+	name = "6B75 Personal Body Armour"
+	desc = "An older UPP Armour that's since been replaced by the UPP Army Standard 6B90 Body Armour, still used by certain UPP Army units that the UPP doesn't expect to see much combat."
+	icon_state = "upp_ballistic_armor"
+
+// People's Armed Police
+
+/obj/item/clothing/suit/storage/CMB/pap
+	name = "\improper PaP uniform jacket"
+	desc = "A People's Armed Police service jacket featuring small dispersed para-aramid inserts providing the barest of defensive functionality, and a Personal Light Unit rig."
+	icon_state = "upp_coat_pap"
+	uniform_restricted = FALSE
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+	)
 
 // UPP SOF
 

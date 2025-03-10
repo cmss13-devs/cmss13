@@ -1,1 +1,9 @@
-[]
+[
+    {
+    "type": "pick", "name": "sof_insert",
+    "choices": [
+        { "weight": 0, "type": "def", "values": { "lvevent": "none" } },
+        { "weight": 1, "type": "def", "values": { "lvevent": "sof_insert" } }
+    ]
+    }
+]

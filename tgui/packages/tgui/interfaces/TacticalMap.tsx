@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Dropdown,
+  Flex,
   ProgressBar,
   Section,
   Stack,
@@ -31,6 +32,7 @@ interface TacMapProps {
   exportedColor: string;
   mapFallback: string;
   mapRef: string;
+  changeToMapName: string;
   currentMenu: string;
   lastUpdateTime: any;
   canvasCooldownDuration: any;
@@ -38,6 +40,7 @@ interface TacMapProps {
   exportedTacMapImage: any;
   tacmapReady: boolean;
   canChangeZ: boolean;
+  canChangeMapview: boolean;
 }
 
 const PAGES = [
@@ -149,47 +152,66 @@ export const TacticalMap = (props) => {
 
   return (
     <Window
-      width={700}
+      width={850}
       height={850}
       theme={data.isxeno ? 'hive_status' : 'crtblue'}
     >
       <Window.Content>
-        <Section
-          fitted
-          width="688px"
-          fontSize="20px"
-          textAlign="center"
-          title="Tactical Map Options"
-        >
-          <Stack justify="center" align="center" fontSize="15px">
-            <Stack.Item>
-              <Tabs height="37.5px">
-                {PAGES.map((page, i) => {
-                  if (!page.canAccess(data)) {
-                    return;
-                  }
-                  return (
-                    <Tabs.Tab
-                      key={i}
-                      color={data.isxeno ? 'purple' : 'blue'}
-                      selected={i === pageIndex}
-                      icon={page.icon}
-                      onClick={() =>
-                        page.canOpen(data)
-                          ? handleTacmapOnClick(i, page.title)
-                          : null
+        <Flex height="100%" direction="column">
+          <Flex.Item>
+            <Section
+              fitted
+              width="100%"
+              fontSize="20px"
+              textAlign="center"
+              title="Tactical Map Options"
+            >
+              <Stack justify="center" align="center" fontSize="15px">
+                <Stack.Item>
+                  <Tabs height="37.5px">
+                    {PAGES.map((page, i) => {
+                      if (!page.canAccess(data)) {
+                        return;
                       }
-                    >
-                      {page.canOpen(data) ? page.title : 'loading'}
-                    </Tabs.Tab>
-                  );
-                })}
-                {getZTabs()}
-              </Tabs>
-            </Stack.Item>
-          </Stack>
-        </Section>
-        <PageComponent fitted />
+                      return (
+                        <Tabs.Tab
+                          key={i}
+                          color={data.isxeno ? 'purple' : 'blue'}
+                          selected={i === pageIndex}
+                          icon={page.icon}
+                          onClick={() =>
+                            page.canOpen(data)
+                              ? handleTacmapOnClick(i, page.title)
+                              : null
+                          }
+                        >
+                          {page.canOpen(data) ? page.title : 'loading'}
+                        </Tabs.Tab>
+                      );
+                    })}
+                    {getZTabs()}
+                    {data.canChangeMapview ? (
+                      <Tabs.Tab
+                        onClick={() => {
+                          act('ChangeMapView', {});
+                          setPageIndex(0);
+                        }}
+                      >
+                        Change to {data.changeToMapName}
+                      </Tabs.Tab>
+                    ) : (
+                      ''
+                    )}
+                  </Tabs>
+                </Stack.Item>
+              </Stack>
+            </Section>
+          </Flex.Item>
+          <Flex.Item height="5px" />
+          <Flex.Item grow={1}>
+            <PageComponent />
+          </Flex.Item>
+        </Flex>
       </Window.Content>
     </Window>
   );
@@ -204,7 +226,7 @@ const ViewMapPanel = (props) => {
   }
 
   return (
-    <Section fill fitted height="86%">
+    <Section fill fitted height="100%">
       <ByondUi
         height="100%"
         width="100%"
@@ -213,7 +235,6 @@ const ViewMapPanel = (props) => {
           type: 'map',
           'background-color': 'none',
         }}
-        className="TacticalMap"
       />
     </Section>
   );
@@ -222,12 +243,13 @@ const ViewMapPanel = (props) => {
 const OldMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
   return (
-    <Section fill fitted height="86%" align="center" fontSize="30px">
+    <Section fill>
       {data.canViewCanvas ? (
         <DrawnMap
           svgData={data.svgData}
           flatImage={data.oldCanvasFlatImage}
           backupImage={data.mapFallback}
+          className="TacticalMap"
         />
       ) : (
         <Box my="40%">
@@ -264,13 +286,16 @@ const DrawMapPanel = (props) => {
   return (
     <>
       <Section
+        fitted
         title="Canvas Options"
-        className={'canvas-options'}
-        width="688px"
-        position="absolute"
-        style={{ zIndex: '1' }}
+        textAlign="center"
+        width="100%"
+        top="5px"
+        style={{
+          zIndex: '1',
+        }}
       >
-        <Stack height="15px">
+        <Stack justify="center" align="center">
           <Stack.Item grow>
             {(!data.updatedCanvas && (
               <Button
@@ -343,6 +368,7 @@ const DrawMapPanel = (props) => {
           width="98%"
           style={{ zIndex: '1' }}
           bottom="-40px"
+          left="10px"
         >
           <Stack.Item grow>
             {data.canvasCooldown > 0 && (
@@ -365,13 +391,7 @@ const DrawMapPanel = (props) => {
           </Stack.Item>
         </Stack>
       </Section>
-      <Section
-        width="688px"
-        height="694px"
-        align="center"
-        textAlign="center"
-        fitted
-      >
+      <Section align="center" bottom="60px">
         <CanvasLayer
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}

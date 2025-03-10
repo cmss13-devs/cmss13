@@ -270,6 +270,12 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"aaV" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfcrash"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaW" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -59582,7 +59588,7 @@ agR
 aac
 aac
 aac
-aac
+aaV
 aac
 aac
 aac

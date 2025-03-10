@@ -45,3 +45,7 @@
 /datum/map_template/interior/arc
 	name = "ARC"
 	interior_id = "arc"
+
+/datum/map_template/interior/chimera
+	name = "Chimera"
+	interior_id = "chimera"

@@ -160,3 +160,16 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "RE700 Rotary Cannon ammo crate"
 	group = "Vehicle Ammo"
+
+/datum/supply_packs/chimera_ammo
+	name = "Chimera Launchers ammunition (x4)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo,
+		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo,
+		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo,
+		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "chimera ammo crate"
+	group = "Vehicle Ammo"

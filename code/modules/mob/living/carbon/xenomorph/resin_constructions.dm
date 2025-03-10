@@ -68,7 +68,7 @@
 		return FALSE
 
 	if(range_between_constructions)
-		for(var/i in urange(range_between_constructions, T))
+		for(var/i in long_range(range_between_constructions, T))
 			var/atom/A = i
 			if(A.type == build_path)
 				to_chat(X, SPAN_WARNING("This is too close to another similar structure!"))

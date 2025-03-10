@@ -386,7 +386,7 @@
 	if(ishuman(mob))
 		squad = mob.assigned_squad
 	if(!check_improved_pointing()) //Squad Leaders and above have reduced cooldown and get a bigger arrow
-		recently_pointed_to = world.time + 50
+		recently_pointed_to = world.time + 2.5 SECONDS
 		new /obj/effect/overlay/temp/point(T, src, A)
 	else
 		recently_pointed_to = world.time + 10

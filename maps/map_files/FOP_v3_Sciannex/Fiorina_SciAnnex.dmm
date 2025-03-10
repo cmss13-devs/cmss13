@@ -35,6 +35,14 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
+"aah" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzII)
+"aai" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzI)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -67162,7 +67170,7 @@ fAf
 nZB
 nZB
 nZB
-fAf
+aah
 nZB
 nZB
 nZB
@@ -83199,7 +83207,7 @@ nGZ
 nGZ
 qaL
 fDJ
-fDJ
+aai
 uYi
 cUd
 cUd

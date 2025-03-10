@@ -157,12 +157,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/warehouse)
+"aaF" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/lz1_valley)
 "aaG" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 8
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
+"aaH" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
 "aaJ" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/flamer_tank{
@@ -28959,7 +28967,7 @@ kLM
 iQq
 iQq
 iQq
-iQq
+aaF
 iQq
 kLM
 kLM
@@ -29340,7 +29348,7 @@ mFm
 mFm
 mFm
 mFm
-mFm
+aaH
 mFm
 mFm
 lJv

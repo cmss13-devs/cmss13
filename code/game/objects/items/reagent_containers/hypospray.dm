@@ -35,7 +35,8 @@
 
 /obj/item/reagent_container/hypospray/attack_self(mob/user)
 	..()
-
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if(next_inject > world.time)
 		return
 	next_inject = world.time + inject_cd

@@ -1,5 +1,5 @@
 import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
-import { BooleanLike } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 import { createRef, useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -9,6 +9,7 @@ import {
   ColorBox,
   DmIcon,
   Dropdown,
+  Input,
   Modal,
   Section,
   Stack,
@@ -83,7 +84,9 @@ export const HairPicker = () => {
 
   return (
     <Window width={400} height={height} theme={'crtblue'}>
-      <Window.Content className="HairPicker">
+      <Window.Content
+        className={classes(['HairPicker', colorPicker && 'ModalOpen'])}
+      >
         <HairPickerElement
           name="Hair"
           icon={hair_icon}
@@ -187,12 +190,18 @@ export const HairPickerElement = (props: {
 
   const scrollRef = createRef<HTMLDivElement>();
 
+  const [search, setSearch] = useState('');
+
   return (
     <Section
       title={name}
       scrollable
       buttons={
         <>
+          <Input
+            placeholder="Search..."
+            onInput={(_, val) => setSearch(val.toLowerCase())}
+          />
           {color && (
             <Button onClick={() => (setColor ? setColor(action) : null)}>
               <ColorBox color={color} mr={1} />
@@ -208,26 +217,33 @@ export const HairPickerElement = (props: {
       }}
     >
       <Stack wrap="wrap" height={height}>
-        {hair.map((hair) => (
-          <Stack.Item
-            key={hair.name}
-            className={`Picker${active === hair.icon ? ' Active' : ''}`}
-          >
-            <Tooltip content={hair.name}>
-              <Box
-                position="relative"
-                onClick={() => action({ name: hair.name })}
-              >
-                <DmIcon
-                  icon={icon}
-                  icon_state={`${hair.icon}_s`}
-                  height="64px"
-                  width="64px"
-                />
-              </Box>
-            </Tooltip>
-          </Stack.Item>
-        ))}
+        {hair
+          .filter(
+            (val) =>
+              search.length === 0 || val.name.toLowerCase().includes(search),
+          )
+          .sort((a, b) => (a.name > b.name ? 1 : -1))
+          .map((hair) => (
+            <Stack.Item
+              key={hair.name}
+              className={`Picker${active === hair.icon ? ' Active' : ''}`}
+            >
+              <Tooltip content={hair.name}>
+                <Box
+                  position="relative"
+                  onClick={() => action({ name: hair.name })}
+                >
+                  <DmIcon
+                    icon={icon}
+                    icon_state={`${hair.icon}_s`}
+                    height="64px"
+                    width="64px"
+                    style={{ filter: `drop-shadow(0px 1000px 0 ${color})` }}
+                  />
+                </Box>
+              </Tooltip>
+            </Stack.Item>
+          ))}
       </Stack>
     </Section>
   );

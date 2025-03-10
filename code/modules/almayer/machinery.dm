@@ -115,7 +115,7 @@
 	faction = FACTION_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	minimap_type = MINIMAP_FLAG_PMC
+	minimap_type = MINIMAP_FLAG_WY
 	faction = FACTION_PMC
 
 //Nonpower using props

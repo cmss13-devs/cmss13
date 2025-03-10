@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 		return
 
 /obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob)
-	return ATTACKBY_HINT_UPDATE_NEXT_MOVE 
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)
@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 				break
 
 	if(can_attach)
-		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."), \
+		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."),
 					SPAN_WARNING("You begin to attach [src] onto [target_atom]."))
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!amount || get_dist(target_atom,user) > 1)

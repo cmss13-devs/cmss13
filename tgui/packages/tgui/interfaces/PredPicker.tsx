@@ -124,6 +124,7 @@ export const PredPicker = () => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Age">
                   <NumberInput
+                    step={1}
                     value={age}
                     minValue={175}
                     maxValue={3000}
@@ -557,7 +558,7 @@ const PredModal = (props: {
       return (
         <Section
           title="Mask Accessory"
-          width={20}
+          width={40}
           buttons={<Button icon="x" onClick={() => close()} />}
         >
           <Stack>

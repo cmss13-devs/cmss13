@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -172,6 +171,7 @@ export function Input(props: Props) {
       <div className="Input__baseline">.</div>
       <input
         className="Input__input"
+        type="search"
         disabled={disabled}
         maxLength={maxLength}
         onBlur={(event) => onChange?.(event, event.target.value)}
@@ -179,6 +179,7 @@ export function Input(props: Props) {
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         ref={inputRef}
+        spellCheck="false"
       />
     </Box>
   );

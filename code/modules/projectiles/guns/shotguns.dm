@@ -100,7 +100,8 @@ can cause issues with ammo types getting mixed up during the burst.
 		return
 
 	unload_shell(user)
-	if(!current_mag.current_rounds && !in_chamber) update_icon()
+	if(!current_mag.current_rounds && !in_chamber)
+		update_icon()
 
 /obj/item/weapon/gun/shotgun/proc/unload_shell(mob/user)
 	if(isnull(current_mag) || !length(current_mag.chamber_contents))
@@ -110,7 +111,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(user)
 		user.put_in_hands(new_handful)
 		playsound(user, reload_sound, 25, 1)
-	else new_handful.forceMove(get_turf(src))
+	else
+		new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
@@ -162,6 +164,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		current_mag.current_rounds--
 		current_mag.chamber_contents[current_mag.chamber_position] = "empty"
 		current_mag.chamber_position--
+		apply_traits(in_chamber)
 		return in_chamber
 
 
@@ -261,6 +264,15 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -519,6 +531,16 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/gyro,
@@ -611,7 +633,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	qdel(projectile_to_fire)
 	if(!current_mag)
 		return
-	if(refund) current_mag.current_rounds++
+	if(refund)
+		current_mag.current_rounds++
 	return TRUE
 
 /obj/item/weapon/gun/shotgun/double/reload_into_chamber(mob/user)
@@ -784,6 +807,16 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/magnetic_harness,
@@ -807,6 +840,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_1)
 	set_fire_delay(FIRE_DELAY_TIER_11)
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		set_fire_delay(FIRE_DELAY_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -859,7 +894,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!do_after(H, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) //Takes a moment to brace to fire.
 		to_chat(H, SPAN_WARNING("You were interrupted!"))
 		return
-	H.visible_message(SPAN_WARNING("[H] braces himself to fire the [initial(G.name)]."),\
+	H.visible_message(SPAN_WARNING("[H] braces himself to fire the [initial(G.name)]."),
 			SPAN_WARNING("You brace yourself to fire the [initial(G.name)]."))
 	G.brace(H)
 	update_button_icon()
@@ -988,7 +1023,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	if(flags_item & WIELDED)
 		if(braced && !suicide) //Recoil and brief stun but nothing more. Gun is huge and you can't brace properly when shooting at extreme (same tile) close range.
-			user.visible_message(SPAN_WARNING("[user] rocks back under the heavy recoil of the [initial(name)]."),\
+			user.visible_message(SPAN_WARNING("[user] rocks back under the heavy recoil of the [initial(name)]."),
 				SPAN_DANGER("The [initial(name)] kicks like an elephant!"))
 			unbrace(user)
 			user.apply_effect(1, STUN) //Van Bandolier is a human/hero and stuns last half as long for him.
@@ -1011,7 +1046,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			user.update_med_icon()
 
 	//Ruh roh.
-	user.visible_message(SPAN_WARNING("[user] is thrown to the ground by the recoiling [initial(name)]!"),\
+	user.visible_message(SPAN_WARNING("[user] is thrown to the ground by the recoiling [initial(name)]!"),
 		SPAN_HIGHDANGER("The world breaks in half!"))
 	shake_camera(user, RECOIL_AMOUNT_TIER_1 * 0.5, RECOIL_AMOUNT_TIER_1)
 
@@ -1067,10 +1102,10 @@ can cause issues with ammo types getting mixed up during the burst.
 		playsound(user.loc, "punch", 25, TRUE)
 		var/blocker = LinkBlocked(user, start_turf, behind_turf) //returns any objects blocking the user from moving back.
 		if(blocker)
-			user.visible_message(SPAN_DANGER("[user] slams into [blocker]!"),\
+			user.visible_message(SPAN_DANGER("[user] slams into [blocker]!"),
 				SPAN_DANGER("The [initial(name)]'s recoil hammers you against [blocker]!"))
 		else
-			user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"),\
+			user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"),
 				SPAN_DANGER("The [initial(name)]'s recoil hammers you against an obstacle!"))
 		user.apply_damage(5, BRUTE)
 
@@ -1098,6 +1133,15 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/verticalgrip,
@@ -1109,6 +1153,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
+		/obj/item/attachable/shotgun_choke,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flamer,

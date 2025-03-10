@@ -8,7 +8,6 @@
 	icon_state = "buckshot"
 	accurate_range_min = 5
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER
-
 	accuracy = HIT_ACCURACY_TIER_3
 	accurate_range = 32
 	max_range = 8
@@ -24,6 +23,15 @@
 		var/obj/structure/barricade/B = O
 		B.health -= rand(2, 5)
 		B.update_health(1)
+
+
+/datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+	))
 
 /datum/ammo/bullet/shrapnel/rubber
 	name = "rubber pellets"
@@ -59,7 +67,6 @@
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
-
 	shell_speed = AMMO_SPEED_TIER_1
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_4

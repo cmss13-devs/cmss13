@@ -229,6 +229,8 @@
 	flags_armor_protection = BODY_FLAG_HANDS
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
+	valid_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R) // To prevent infinitely putting watches/wrist accessories on your gloves. That can be reserved for uniforms, where you have the whole ARM to put shit on
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
 	blood_overlay_type = "hands"
 	var/gloves_blood_amt = 0 //taken from blood.dm

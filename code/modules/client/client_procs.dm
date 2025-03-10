@@ -56,6 +56,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_eye_blur_type,
 	/client/proc/set_flash_type,
 	/client/proc/set_crit_type,
+	/client/proc/set_flashing_lights_pref,
 ))
 
 /client/proc/reduce_minute_count()
@@ -388,6 +389,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Initialize tgui panel
 	stat_panel.initialize(
+		assets = list(
+			get_asset_datum(/datum/asset/simple/namespaced/fontawesome),
+			get_asset_datum(/datum/asset/simple/namespaced/sevastopol),
+			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
+		),
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
@@ -421,7 +427,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
+		stat_panel.send_message("changelog_read", FALSE)
 
 	update_fullscreen()
 
@@ -507,7 +513,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if( (M.lastKnownIP == address) )
 					matches += "IP ([address])"
 				if( (connection != "web") && (M.computer_id == computer_id) )
-					if(matches) matches += " and "
+					if(matches)
+						matches += " and "
 					matches += "ID ([computer_id])"
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
@@ -522,7 +529,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration) return inactivity
+	if(inactivity > duration)
+		return inactivity
 	return 0
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
@@ -933,3 +941,42 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "mapwindow.map", "right-click=false")
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
+
+GLOBAL_LIST_INIT(community_awards, get_community_awards())
+
+/proc/get_community_awards()
+	var/list/awards_file = file2list("config/community_awards.txt")
+	var/list/processed_awards = list()
+	for(var/awardee in awards_file)
+		if(!length(awardee))
+			return FALSE
+		if(copytext(awardee,1,2) == "#")
+			continue
+
+		//Split the line at every "-"
+		var/list/split_awardee = splittext(awardee, "-")
+		if(!length(split_awardee))
+			return FALSE
+
+		//ckey is before the first "-"
+		var/ckey = ckey(split_awardee[1])
+		if(!ckey)
+			continue
+		processed_awards[ckey] = list()
+
+		//given_awards follows the first "-"
+		var/list/given_awards = list()
+		if(!(length(split_awardee) >= 2))
+			continue
+		given_awards = split_awardee.Copy(2)
+		for(var/the_award in given_awards)
+			processed_awards[ckey] += ckeyEx(the_award)
+
+	return processed_awards
+
+/client/proc/find_community_award_icons()
+	if(GLOB.community_awards[ckey])
+		var/full_prefix = ""
+		for(var/award in GLOB.community_awards[ckey])
+			full_prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, award)]"
+		return full_prefix

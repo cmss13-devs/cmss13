@@ -143,6 +143,10 @@
 	name = "Circuit board (Supply ordering console)"
 	build_path = /obj/structure/machinery/computer/supply
 
+/obj/item/circuitboard/computer/ordercomp/upp
+	name = "Circuit board (UPP Supply ordering console)"
+	build_path = /obj/structure/machinery/computer/supply/upp
+
 /obj/item/circuitboard/computer/supply_drop_console
 	name = "Circuit board (Supply Drop Console)"
 	build_path = /obj/structure/machinery/computer/supply_drop_console
@@ -150,6 +154,10 @@
 /obj/item/circuitboard/computer/supply_drop_console/limited
 	name = "Circuit board (Supply Drop Console)"
 	build_path = /obj/structure/machinery/computer/supply_drop_console/limited
+
+/obj/item/circuitboard/computer/supplycomp/upp
+	name = "Circuit board (General Supply Storage console)"
+	build_path = /obj/structure/machinery/computer/supply/asrs/upp
 
 /obj/item/circuitboard/computer/supplycomp
 	name = "Circuit board (ASRS console)"
@@ -171,6 +179,12 @@
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
 		SC.lock_black_market(black_market_lock)
+
+//No black market under communism
+/obj/item/circuitboard/computer/supplycomp/upp/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens."))
+		return
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
@@ -206,7 +220,7 @@
 			return
 
 		playsound(tool, 'sound/machines/lockenable.ogg', 25)
-		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),\
+		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),
 		SPAN_NOTICE("You begin to fix any tampering to [src]."))
 		tool.icon_state = "[tool.icon_state]_on"
 

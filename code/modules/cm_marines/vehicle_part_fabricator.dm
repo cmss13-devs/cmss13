@@ -13,7 +13,13 @@
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
 	var/faction = FACTION_MARINE
+	var/datum/controller/supply/linked_supply_controller
 	var/list/datum/build_queue_entry/build_queue = list()
+
+/obj/structure/machinery/part_fabricator/upp
+	name = "UPP part fabricator"
+	faction = FACTION_UPP
+
 
 /datum/build_queue_entry
 	var/item
@@ -29,6 +35,13 @@
 
 /obj/structure/machinery/part_fabricator/New()
 	..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+		if(FACTION_UPP)
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller
 	start_processing()
 
 /obj/structure/machinery/part_fabricator/proc/get_point_store()
@@ -232,13 +245,13 @@
 
 
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
-	return GLOB.supply_controller.dropship_points
+	return linked_supply_controller.dropship_points
 
 /obj/structure/machinery/part_fabricator/dropship/add_to_point_store(number = 1)
-	GLOB.supply_controller.dropship_points += number
+	linked_supply_controller.dropship_points += number
 
 /obj/structure/machinery/part_fabricator/dropship/spend_point_store(number = 1)
-	GLOB.supply_controller.dropship_points -= number
+	linked_supply_controller.dropship_points -= number
 
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
 	var/list/static_data = list()
@@ -356,15 +369,20 @@
 
 	unacidable = TRUE
 	explo_proof = TRUE
+	faction = FACTION_MARINE
+
+/obj/structure/machinery/part_fabricator/tank/upp
+	name = "UPP vehicle part fabricator"
+	faction = FACTION_UPP
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
-	return GLOB.supply_controller.tank_points
+	return linked_supply_controller.tank_points
 
 /obj/structure/machinery/part_fabricator/tank/add_to_point_store(number = 1)
-	GLOB.supply_controller.tank_points += number
+	linked_supply_controller.tank_points += number
 
 /obj/structure/machinery/part_fabricator/tank/spend_point_store(number = 1)
-	GLOB.supply_controller.tank_points -= number
+	linked_supply_controller.tank_points -= number
 
 /obj/structure/machinery/part_fabricator/tank/ui_static_data(mob/user)
 	var/list/static_data = list()

@@ -257,6 +257,10 @@
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/pistol/heavy/co/unique_action(mob/user)
+	if(fire_into_air(user))
+		return ..()
+
 /obj/item/weapon/gun/pistol/heavy/co/gold
 	name = "golden vintage Desert Eagle"
 	desc = "A Desert Eagle anodized in gold and adorned with rosewood grips. The living definition of ostentatious, it's flashy, unwieldy, tremendously heavy, and kicks like a mule. But as a symbol of power, there's nothing like it."
@@ -506,6 +510,15 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
@@ -544,7 +557,8 @@
 /obj/item/weapon/gun/pistol/highpower/cock_gun(mob/user, manual = FALSE)
 	if(manual)
 		..()
-	else return
+	else
+		return
 
 /obj/item/weapon/gun/pistol/highpower/reload(mob/user, obj/item/ammo_magazine/magazine)
 	//reset every time its reloaded
@@ -715,7 +729,7 @@
 	update_attachable(VP.slot)
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
@@ -888,7 +902,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 */
 
 /obj/item/weapon/gun/pistol/m10
-	name = "\improper M10 Auto Pistol"
+	name = "\improper M10 auto pistol"
 	desc = "The Armat Battlefield Systems M10 Auto Pistol, a compact, rapid-firing sidearm designed for close-quarters defense. With a 40-round magazine, it emphasizes fire rate over precision, providing effective suppressive fire in short-range engagements."
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'
 	icon_state = "m10"

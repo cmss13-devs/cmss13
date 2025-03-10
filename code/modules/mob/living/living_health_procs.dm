@@ -6,54 +6,63 @@
 	return bruteloss
 
 /mob/living/proc/adjustBruteLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	bruteloss = min(max(bruteloss + amount, 0),(maxHealth*2))
 
 /mob/living/getOxyLoss()
 	return oxyloss
 
 /mob/living/proc/adjustOxyLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	oxyloss = min(max(oxyloss + amount, 0),(maxHealth*2))
 
 /mob/living/proc/setOxyLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	oxyloss = amount
 
 /mob/living/getToxLoss()
 	return toxloss
 
 /mob/living/proc/adjustToxLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	toxloss = min(max(toxloss + amount, 0),(maxHealth*2))
 
 /mob/living/proc/setToxLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	toxloss = amount
 
 /mob/living/getFireLoss()
 	return fireloss
 
 /mob/living/proc/adjustFireLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	fireloss = min(max(fireloss + amount, 0),(maxHealth*2))
 
 /mob/living/getCloneLoss()
 	return cloneloss
 
 /mob/living/proc/adjustCloneLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	cloneloss = min(max(cloneloss + amount, 0),(maxHealth*2))
 
 /mob/living/proc/setCloneLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	cloneloss = amount
 
 /mob/living/getBrainLoss()
 	return brainloss
 
 /mob/living/proc/adjustBrainLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
@@ -61,18 +70,21 @@
 	brainloss = min(max(brainloss + amount, 0),(maxHealth*2))
 
 /mob/living/proc/setBrainLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	brainloss = amount
 
 /mob/living/getHalLoss()
 	return halloss
 
 /mob/living/proc/adjustHalLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	halloss = min(max(halloss + amount, 0),(maxHealth*2))
 
 /mob/living/proc/setHalLoss(amount)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	halloss = amount
 
 /mob/living/proc/getMaxHealth()
@@ -498,7 +510,8 @@
 
 // damage ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_limb_damage(brute, burn)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
 	src.updatehealth()
@@ -511,7 +524,8 @@
 
 // damage MANY limbs, in random order
 /mob/living/proc/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
-	if(status_flags & GODMODE) return 0 //godmode
+	if(status_flags & GODMODE)
+		return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
 	src.updatehealth()
@@ -531,7 +545,7 @@
 	// shut down ongoing problems
 	status_flags &= ~PERMANENTLY_DEAD
 	nutrition = NUTRITION_NORMAL
-	bodytemperature = T20C
+	bodytemperature = T37C
 	recalculate_move_delay = TRUE
 	sdisabilities = 0
 	disabilities = 0

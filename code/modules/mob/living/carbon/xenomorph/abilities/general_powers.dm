@@ -65,7 +65,7 @@
 	if(node)
 		to_convert = node.children.Copy()
 
-	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"), \
+	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"),
 	SPAN_XENONOTICE("We regurgitate a pulsating node and plant it on the ground!"), null, 5)
 	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
 
@@ -123,19 +123,16 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	return ..()
 
-/datum/action/xeno_action/onclick/regurgitate/use_ability(atom/A)
+/datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_WARNING("We cannot regurgitate here."))
+		to_chat(X, SPAN_WARNING("We cannot put them down here."))
 		return
 
-	if(length(X.stomach_contents))
-		for(var/mob/living/M in X.stomach_contents)
-			// Also has good reason to be a proc on all Xenos
-			X.regurgitate(M, TRUE)
+	X.release_haul(TRUE)
 
 	return ..()
 
@@ -239,7 +236,7 @@
 		return FALSE
 	if(istype(target, /atom/movable/screen))
 		return FALSE
-	if(target.z != xeno_owner.z)
+	if(!SSmapping.same_z_map(target.z, xeno_owner.z))
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
 	apply_cooldown()
@@ -274,7 +271,8 @@
 		to_chat(X, SPAN_XENOWARNING("We can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
 	var/turf/target_turf = get_turf(A)
 
 	if(target_turf.z != X.z)
@@ -337,7 +335,7 @@
 	if(!pheromone)
 		if(current_aura)
 			current_aura = null
-			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."), \
+			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."),
 			SPAN_XENOWARNING("We stop emitting pheromones."), null, 5)
 		else
 			if(!check_plasma(emit_cost))
@@ -367,7 +365,7 @@
 			return
 		use_plasma(emit_cost)
 		current_aura = pheromone
-		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
+		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."),
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
@@ -455,7 +453,8 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!A) return
+	if(!A)
+		return
 
 	if(A.layer >= FLY_LAYER)
 		return
@@ -602,7 +601,8 @@
 	if(!X.check_state())
 		return FALSE
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
 
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
@@ -696,7 +696,7 @@
 		qdel(structure_template)
 		return FALSE
 
-	var/queen_on_zlevel = !X.hive.living_xeno_queen || X.hive.living_xeno_queen.z == T.z
+	var/queen_on_zlevel = !X.hive.living_xeno_queen || SSmapping.same_z_map(X.hive.living_xeno_queen.z, T.z)
 	if(!queen_on_zlevel)
 		to_chat(X, SPAN_WARNING("Our link to the Queen is too weak here. She is on another world."))
 		qdel(structure_template)
@@ -778,7 +778,7 @@
 		if(xeno.ammo.pre_spit_warn)
 			playsound(xeno.loc,"alien_drool", 55, 1)
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
-		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),\
+		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
@@ -791,7 +791,7 @@
 		return
 
 	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"), \
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
@@ -884,12 +884,16 @@
 	return owner
 
 /turf/proc/can_bombard(mob/bombarder)
-	if(!can_be_dissolved() && density) return FALSE
+	if(!can_be_dissolved() && density)
+		return FALSE
 	for(var/atom/A in src)
-		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
-		if(ismob(A)) continue // Mobs shouldn't block boiler gas
+		if(istype(A, /obj/structure/machinery))
+			continue // Machinery shouldn't block boiler gas (e.g. computers)
+		if(ismob(A))
+			continue // Mobs shouldn't block boiler gas
 
-		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER)) return FALSE
+		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER))
+			return FALSE
 
 	return TRUE
 
@@ -925,6 +929,8 @@
 
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
+	if(HAS_TRAIT(targetted_atom, TRAIT_HAULED))
+		return
 
 	if(HAS_TRAIT(stabbing_xeno, TRAIT_ABILITY_BURROWED) || stabbing_xeno.is_ventcrawling)
 		to_chat(stabbing_xeno, SPAN_XENOWARNING("We must be above ground to do this."))
@@ -943,6 +949,9 @@
 
 	if (world.time <= stabbing_xeno.next_move)
 		return FALSE
+
+	if(stabbing_xeno.z != targetted_atom.z)
+		return
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
 	if(distance > stab_range)

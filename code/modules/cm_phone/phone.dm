@@ -353,7 +353,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	return
 
 /obj/structure/transmitter/proc/handle_speak(message, datum/language/L, mob/speaking)
-	if(L.flags & SIGNLANG) return
+	if(L.flags & SIGNLANG)
+		return
 
 	var/obj/structure/transmitter/T = get_calling_phone()
 	if(!istype(T))

@@ -32,6 +32,7 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	minimap_color = MINIMAP_AREA_OOB
+	requires_power = FALSE
 
 /area/lv759/bunker
 	name = "Out Of Bounds"
@@ -50,6 +51,7 @@
 	minimap_color = MINIMAP_AREA_OOB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+	requires_power = FALSE
 
 /area/lv759/bunker/checkpoint
 	name = "Checkpoint & Hidden Bunker - Entrance"
@@ -189,6 +191,16 @@
 
 // Caves
 
+/area/lv759/indoors/caves
+	name = "Caves"
+	icon_state = "caves_plateau"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ambience_exterior = AMBIENCE_HYBRISA_CAVES_ALARM
+	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
+	ceiling_muffle = FALSE
+	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	unoviable_timer = FALSE
+
 /area/lv759/indoors/caves/wy_research_complex_entrance
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Main Entrance"
 	icon_state = "wylab"
@@ -208,6 +220,31 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
+
+/area/lv759/indoors/caves/electric_fence1
+	name = "Electrical Fence - West Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/electric_fence2
+	name = "Electrical Fence - East Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/electric_fence3
+	name = "Electrical Fence - Central Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/electric_fence2
+	name = "Electrical Fence - East Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/comms_tower
+	name = "Comms Tower - Central Caves"
+	icon_state = "power0"
+
+/area/lv759/indoors/caves/sensory_tower
+	name = "Sensory Tower - Plateau Caves"
+	icon_state = "power0"
 
 /area/lv759/indoors/caves/west_caves_alarm
 	name = "Caverns - West"
@@ -226,6 +263,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/east_caves/north
 	name = "Caverns - East"
@@ -240,11 +278,13 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/south_caves/derelict_ship
 	name = "Caverns - South"
 	icon_state = "caves_south"
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/south_east_caves
 	name = "Caverns - Southeast"
@@ -254,6 +294,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/south_west_caves
 	name = "Caverns - Southwest"
@@ -263,6 +304,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/south_west_caves_alarm
 	name = "Caverns - Southwest"
@@ -302,6 +344,7 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	linked_lz = DROPSHIP_LZ1
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/north_east_caves/south
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
@@ -314,9 +357,11 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/north_caves/east
 	linked_lz = DROPSHIP_LZ1
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/central_caves
 	name = "Caverns - Central"
@@ -327,6 +372,7 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/central_caves_north
 	name = "Caverns - Central"
@@ -336,6 +382,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/north_east_caves_comms
 	name = "KMCC - Mining Outpost - East - Subspace-Communications"
@@ -360,6 +407,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_PLATEAU_OUTDOORS
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
 
 // Colony Streets
 
@@ -662,6 +710,41 @@
 
 /area/lv759/indoors/weyyu_office/supervisor
 	name = "Weyland-Yutani Offices - Colony Supervisors Office"
+
+// Weyland-Yutani Offices
+
+/area/lv759/indoors/twe_souter_outpost
+	name = "IASF Outpost Souter - Entrance"
+	icon_state = "security_hub"
+	minimap_color = MINIMAP_AREA_COMMAND
+
+/area/lv759/indoors/twe_souter_outpost/reception
+	name = "IASF Outpost Souter - Reception Office"
+
+/area/lv759/indoors/twe_souter_outpost/hallway
+	name = "IASF Outpost Souter - Main Hall"
+
+/area/lv759/indoors/twe_souter_outpost/dorm
+	name = "IASF Outpost Souter - Dormitory"
+
+/area/lv759/indoors/twe_souter_outpost/maint
+	name = "IASF Outpost Souter - Flight Maintenance Room"
+
+/area/lv759/indoors/twe_souter_outpost/hangar
+	name = "IASF Outpost Souter - Hangar"
+
+/area/lv759/indoors/twe_souter_outpost/flight
+	name = "IASF Outpost Souter - Flight Control"
+
+/area/lv759/indoors/twe_souter_outpost/armoury
+	name = "IASF Outpost Souter - Armoury"
+// Using 'armoury' is correct here since its for a base controlled by future British people, not Americans
+
+/area/lv759/indoors/twe_souter_outpost/twe_gunship
+	name = "TWE UD4-UK"
+	icon_state = "wydropship"
+	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
 
 // Bar & Entertainment Complex
 
@@ -1288,6 +1371,7 @@
 	ambience_exterior = AMBIENCE_LAB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	minimap_color = MINIMAP_AREA_COLONY
+	requires_power = FALSE
 
 /area/lv759/indoors/wy_research_complex/hallwaynorth
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - North Hallway"

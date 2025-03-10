@@ -203,12 +203,14 @@
 	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
 		character_trait.unapply_trait(preview_dummy)
 
-	for(var/gear_item in gear)
-		var/datum/gear/gear = GLOB.gear_datums_by_name[gear_item]
-		var/obj/item/item = new gear.path()
+	var/gear_to_preview = gear.Copy()
+	var/loadout_to_preview = get_active_loadout()
+	if(loadout_to_preview)
+		gear_to_preview += loadout_to_preview
 
-		if(!preview_dummy.equip_to_appropriate_slot(item))
-			qdel(item)
+	for(var/gear_type in gear_to_preview)
+		var/datum/gear/gear = GLOB.gear_datums_by_type[gear_type]
+		gear.equip_to_user(preview_dummy, override_checks = TRUE, drop_instead_of_del = FALSE)
 
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
@@ -239,11 +241,16 @@
 		rotate_right.screen_loc = "preview:1:-16,0"
 	owner.add_to_screen(rotate_right)
 
-/datum/preferences/proc/job_pref_to_gear_preset()
-	var/high_priority
+/// Returns the role that is selected on High
+/datum/preferences/proc/get_high_priority_job()
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)
-			high_priority = job
+			return job
+
+	return JOB_SQUAD_MARINE
+
+/datum/preferences/proc/job_pref_to_gear_preset()
+	var/high_priority = get_high_priority_job()
 
 	switch(high_priority)
 		// USCM JOBS
@@ -287,9 +294,6 @@
 		if(JOB_SYNTH)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_SYNTH]
 			return J.gear_preset_whitelist["[JOB_SYNTH][J.get_whitelist_status(owner)]"]
-		if(JOB_SHIP_SYNTH)
-			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_SHIP_SYNTH]
-			return J.gear_preset_whitelist["[JOB_SHIP_SYNTH][J.get_whitelist_status(owner)]"]
 		if(JOB_WORKING_JOE)
 			return /datum/equipment_preset/synth/working_joe
 		if(JOB_POLICE)
@@ -314,6 +318,8 @@
 			return /datum/equipment_preset/uscm_ship/uscm_medical/cmo
 		if(JOB_DOCTOR)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/doctor
+		if(JOB_FIELD_DOCTOR)
+			return /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
 		if(JOB_RESEARCHER)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 		if(JOB_NURSE)
@@ -367,7 +373,7 @@
 		if(JOB_CO_SURVIVOR)
 			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))
 				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
-			return /datum/equipment_preset/uscm_ship/commander
+			return /datum/equipment_preset/uscm_co
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]

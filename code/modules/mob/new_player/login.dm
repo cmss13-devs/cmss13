@@ -1,5 +1,3 @@
-/mob/new_player/var/datum/tgui_window/lobby_window
-
 /mob/new_player/Login()
 	if(!mind)
 		mind = new /datum/mind(key, ckey)
@@ -35,6 +33,7 @@
 	lobby_window.initialize(
 		assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
+				get_asset_datum(/datum/asset/simple/namespaced/chakrapetch)
 			)
 	)
 
@@ -66,10 +65,14 @@
 	.["round_start"] = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
 	.["readied"] = ready
 
+	.["confirmation_message"] = lobby_confirmation_message
+
 	.["upp_enabled"] = GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name
 	.["xenomorph_enabled"] = GLOB.master_mode == /datum/game_mode/colonialmarines::name && client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH) || client.prefs.get_job_priority(JOB_XENOMORPH_QUEEN))
 	.["predator_enabled"] = SSticker.mode?.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
 	.["fax_responder_enabled"] = SSticker.mode?.check_fax_responder_late_join(src, FALSE)
+
+	.["preference_issues"] = client.prefs.errors
 
 /mob/new_player/ui_static_data(mob/user)
 	. = ..()
@@ -169,13 +172,11 @@
 			if(SSticker.mode.check_xeno_late_join(src))
 				var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
 				if(!new_xeno)
-					if(!client)
-						return FALSE
-
-					if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
-						client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
-						to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
-					attempt_observe()
+					lobby_confirmation_message = list(
+						"Are you sure you wish to observe to be a xeno candidate?",
+						"When you observe, you will not be able to join as marine.",
+						"It might also take some time to become a xeno or responder!")
+					execute_on_confirm = CALLBACK(src, PROC_REF(observe_for_xeno))
 
 				else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
 					SSticker.mode.transfer_xeno(src, new_xeno)
@@ -215,7 +216,7 @@
 			return TRUE
 
 		if("ready")
-			if( (SSticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started
+			if((SSticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started
 				ready = TRUE
 				GLOB.readied_players++
 
@@ -228,8 +229,30 @@
 
 			return TRUE
 
+		if("confirm")
+			lobby_confirmation_message = null
+			execute_on_confirm?.Invoke()
+			execute_on_confirm = null
+			return TRUE
+
+		if("unconfirm")
+			lobby_confirmation_message = null
+			execute_on_confirm = null
+			return TRUE
+
+		if("poll")
+			SSpolls.tgui_interact(src)
+			return TRUE
+
 		if("keyboard")
 			playsound_client(client, get_sfx("keyboard"), vol = 20)
+
+/// Join as a 'xeno' - set us up in the larva queue
+/mob/new_player/proc/observe_for_xeno()
+	if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+		client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
+		to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
+	attempt_observe()
 
 /mob/new_player/proc/lobby()
 	if(!client)

@@ -104,7 +104,7 @@
 /turf/open/floor/almayer/plate,
 /area/strata/ag/exterior/marsh/crash)
 "ns" = (
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/test_floor6,
 /area/strata/ag/exterior/marsh/crash)
 "nu" = (
 /obj/structure/prop/colorable_rock/colorable{

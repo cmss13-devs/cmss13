@@ -50,4 +50,5 @@
 
 /obj/structure/catwalk/strata
 	icon = 'icons/turf/floors/strata_floor.dmi'
-	icon_state = "catwalk"
+	icon_state = "plating_catwalk"
+	base_state = "catwalk"

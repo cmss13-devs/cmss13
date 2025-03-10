@@ -136,6 +136,12 @@
 
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
+				if(human.mob_flags & MUTINY_MUTINEER)
+					serialized["mutiny_status"] = "Mutineer"
+				else if(human.mob_flags & MUTINY_LOYALIST)
+					serialized["mutiny_status"] = "Loyalist"
+				else if(human.mob_flags & MUTINY_NONCOMBAT)
+					serialized["mutiny_status"] = "Non-Combatant"
 
 				var/icon = human.assigned_equipment_preset?.minimap_icon
 				if(islist(icon))

@@ -1194,6 +1194,19 @@
 	},
 /turf/closed/wall/hybrisa/colony,
 /area/navalis/indoors/logistic/maintenance_starboard)
+"adk" = (
+/obj/structure/flag/plantable/ua,
+/turf/closed/wall/strata_outpost/reinforced/hull{
+	name = "PSV Charon"
+	},
+/area/navalis/oob)
+"adl" = (
+/obj/structure/prop/hybrisa/misc/floorprops/floorglass3,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/open_space,
+/area/navalis/outdoors/exterior/log_ext/upper)
 "adm" = (
 /obj/structure/machinery/portable_atmospherics/canister/phoron,
 /obj/effect/decal/warning_stripes{
@@ -21186,7 +21199,7 @@
 "bIp" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10{
 	dir = 8;
-	pixel_x = -32;
+	pixel_x = -10;
 	layer = 4.2
 	},
 /turf/open/floor/prison/greenfull/east,
@@ -49957,12 +49970,6 @@
 	},
 /turf/open/floor/prison/green/east,
 /area/navalis/indoors/command/starboard_hallway)
-"sxP" = (
-/obj/structure/flag/plantable/ua,
-/turf/closed/wall/strata_outpost/reinforced{
-	name = "PSV Charon"
-	},
-/area/navalis/indoors/charon/surface_deck/rear_deck)
 "sxT" = (
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/plating/catwalk/grate/alt,
@@ -163050,7 +163057,7 @@ qWS
 alo
 alo
 alo
-sxP
+jwI
 jwI
 lGk
 egI
@@ -163214,7 +163221,7 @@ mDn
 xRd
 hCk
 hCk
-hCk
+adk
 qCx
 xaS
 qYF
@@ -199656,10 +199663,10 @@ bsv
 jjJ
 iEU
 sIn
-tXO
-tXO
-tXO
-tXO
+adl
+adl
+adl
+adl
 sRM
 cFv
 cFv
@@ -199820,10 +199827,10 @@ kWK
 oXM
 iEU
 sIn
+adl
 tXO
 tXO
-tXO
-tXO
+adl
 sRM
 cFv
 cFv
@@ -199984,10 +199991,10 @@ jKK
 oXM
 lKH
 sIn
+adl
 tXO
 tXO
-tXO
-tXO
+adl
 sRM
 cFv
 cFv
@@ -200148,10 +200155,10 @@ dgc
 oXM
 lKH
 sIn
-tXO
-tXO
-tXO
-tXO
+adl
+adl
+adl
+adl
 sRM
 cFv
 cFv

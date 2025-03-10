@@ -72,6 +72,9 @@
 	weed_food_states = list("Crusher_1","Crusher_2","Crusher_3")
 	weed_food_states_flipped = list("Crusher_1","Crusher_2","Crusher_3")
 
+	skull = /obj/item/skull/crusher
+	pelt = /obj/item/pelt/crusher
+
 // Refactored to handle all of crusher's interactions with object during charge.
 /mob/living/carbon/xenomorph/proc/handle_collision(atom/target)
 	if(!target)

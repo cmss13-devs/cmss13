@@ -54,6 +54,7 @@
 		/obj/item/reagent_container/food/snacks/watermelonslice = list("watermelonjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/grapes = list("grapejuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
+		/obj/item/holder/borer = list("borerenzyme" = 0),
 
 	)
 
@@ -414,6 +415,15 @@
 		O.reagents.trans_to(beaker, amount)
 		if(!O.reagents.total_volume)
 			remove_object(O)
+
+	//Borer, for enzymes
+	for(var/obj/item/holder/borer/b_holder in holdingitems)
+		if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
+			break
+		var/space = beaker.reagents.maximum_volume - beaker.reagents.total_volume
+		beaker.reagents.add_reagent("borerenzyme",min(6, space))
+		remove_object(b_holder)
+		break
 
 /obj/structure/machinery/reagentgrinder/proc/cleanup()
 	SIGNAL_HANDLER

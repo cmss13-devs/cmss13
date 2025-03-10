@@ -37,5 +37,4 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dig_tunnel
 	action_type = XENO_ACTION_ACTIVATE //doesn't really need a macro
 	xeno_cooldown =  4 MINUTES
-	cooldown_message = "We can dig a tunnel again."
 

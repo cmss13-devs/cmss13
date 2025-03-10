@@ -260,7 +260,6 @@
 						qdel(hand_item)
 
 		if(play_as)
-			to_chat(world, "SEX")
 			spawned_human.ckey = owner.ckey
 
 		if (offer_as_ert)

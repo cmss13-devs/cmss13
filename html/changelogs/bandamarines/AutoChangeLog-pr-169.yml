@@ -1,0 +1,4 @@
+author: "MiraHell"
+delete-after: True
+changes:
+  - rscadd: "Экипажу танка добавлена возможность взять APC вместо танка"

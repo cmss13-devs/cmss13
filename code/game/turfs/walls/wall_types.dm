@@ -1298,6 +1298,11 @@
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
+/turf/closed/wall/resin/weak/greater
+	name = "greater weak resin wall"
+	desc = "Weird slime solidified into a wall. It looks like it will collapse soon..."
+	damage_cap = HEALTH_WALL_XENO_WEAK
+	duration = 10 SECONDS
 
 /turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()

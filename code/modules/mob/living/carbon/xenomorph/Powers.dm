@@ -103,6 +103,14 @@
 	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
 
+	if(istype(target, /obj/effect/alien/weeds/node/designer/speed))
+		if(!(caste_type in blacklist_caste))
+			wait_time -= ((resin_construct.build_time * caste.build_time_mult) / 2)
+
+	if(istype(target, /obj/effect/alien/weeds/node/designer/cost))
+		if(locate(resin_construct.type) in whitelist_build)
+			total_resin_cost -= (total_resin_cost / 2)
+
 	var/obj/warning
 	var/succeeded = TRUE
 	if(resin_construct.build_overlay_icon)

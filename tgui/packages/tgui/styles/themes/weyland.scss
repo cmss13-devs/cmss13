@@ -6,15 +6,15 @@
 @use 'sass:color';
 @use 'sass:meta';
 
-$weyland: #af7f38;
+$weyland: hsl(36, 52%, 45%);
 
 @use '../colors.scss' with (
-  $primary: #000000,
+  $primary: hsl(0, 0%, 0%),
   $fg-map-keys: (),
   $bg-map-keys: ()
 );
 @use '../base.scss' with (
-  $color-bg: #252832,
+  $color-bg: hsl(226, 15%, 17%),
   $color-bg-grad-spread: 0%,
   $border-radius: 0
 );
@@ -25,42 +25,47 @@ $weyland: #af7f38;
 
   // Components
   @include meta.load-css(
-    '../components/Button.scss',
+    '~tgui/styles/components/Button',
     $with: (
       'color-default': $weyland,
-      'color-selected': #e4c69a,
-      'color-caution': #be6209,
-      'color-danger': #9a9d00,
+      'color-selected': hsl(36, 58%, 75%),
+      'color-caution': hsl(30, 91%, 39%),
+      'color-danger': hsl(61, 100%, 31%),
       'color-transparent-text': color.scale($weyland, $lightness: 30%)
     )
   );
   @include meta.load-css(
-    '../components/ProgressBar.scss',
-    $with: ('background-color': #252832, 'color-default-fill': $weyland)
+    '~tgui/styles/components/ProgressBar',
+    $with: (
+      'background-color': hsl(226, 15%, 17%),
+      'color-default-fill': $weyland
+    )
   );
-  @include meta.load-css('../components/Section.scss');
+  @include meta.load-css('~tgui/styles/components/Section');
 
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
   @include meta.load-css(
     '../layouts/TitleBar.scss',
-    $with: ('background-color': color.scale(#252832, $lightness: -25%))
+    $with: (
+      'background-color': color.scale(hsl(226, 15%, 17%), $lightness: -25%)
+    )
   );
   @include meta.load-css(
-    '../components/Divider.scss',
-    $with: ('color': rgba(28, 30, 32, 0.932), 'thickness': base.em(4px))
+    '~tgui/styles/components/Divider',
+    $with: ('color': hsla(210, 7%, 12%, 0.932), 'thickness': base.em(4px))
   );
 
   .Button {
     font-family: consolas;
-    color: #161613;
-    border: base.em(2px) outset #e8e4c9;
-    outline: base.em(1px) solid #161613;
+    color: hsl(60, 7%, 8%);
+    border: base.em(2px) outset hsl(52, 40%, 85%);
+    outline: base.em(1px) solid hsl(60, 7%, 8%);
   }
 
   .Layout__content {
-    background-color: #252832;
+    background-color: hsl(226, 15%, 17%);
     background-image: url('../../assets/bg-weyland.png');
     background-position: top;
     background-size: auto;

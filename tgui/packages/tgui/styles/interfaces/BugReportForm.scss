@@ -4,7 +4,7 @@
   overflow-y: hidden;
   width: 100%;
   background-color: black;
-  border: solid 1px #6992c2;
+  border: solid 1px hsl(212, 42%, 59%);
   color: white;
   font-size: 20px;
   font-family: 'Times New Roman', Times, serif;
@@ -15,7 +15,7 @@
 }
 
 .link {
-  color: #6992c2;
+  color: hsl(212, 42%, 59%);
 }
 
 .input-title-required {
@@ -25,8 +25,8 @@
 .button-default {
   display: inline-block;
   padding: 10px 20px;
-  border: 1px solid #6992c2;
-  background-color: #2a2a2a;
+  border: 1px solid hsl(212, 42%, 59%);
+  background-color: hsl(0, 0%, 16%);
   color: white;
   text-align: center;
 }
@@ -38,7 +38,7 @@
 }
 
 .button-default:hover {
-  background-color: #3a3a3a;
+  background-color: hsl(0, 0%, 23%);
 }
 
 .flex-center {
@@ -46,15 +46,15 @@
 }
 
 .button-submit {
-  background-color: green;
-  color: white;
+  background-color: hsl(120, 100%, 25%);
+  color: hsl(0, 0%, 100%);
   padding: 10px 20px;
   border: none;
 }
 
 .button-cancel {
-  background-color: red;
-  color: white;
+  background-color: hsl(0, 100%, 50%);
+  color: hsl(0, 0%, 100%);
   padding: 10px 20px;
   border: none;
 }

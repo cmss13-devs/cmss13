@@ -8,30 +8,30 @@
 @use 'sass:meta';
 
 // Base colors
-$black: #000000 !default;
-$white: #ffffff !default;
-$red: #db2828 !default;
-$orange: #f2711c !default;
-$yellow: #fbd608 !default;
-$olive: #b5cc18 !default;
-$green: #20b142 !default;
-$teal: #00b5ad !default;
-$blue: #2185d0 !default;
-$dark-blue: #004981 !default;
-$violet: #6435c9 !default;
-$purple: #a333c8 !default;
-$pink: #e03997 !default;
-$brown: #a5673f !default;
-$grey: #767676 !default;
-$light-grey: #aaa !default;
+$black: hsl(0, 0%, 0%) !default;
+$white: hsl(0, 0%, 100%) !default;
+$red: hsl(0, 71%, 51%) !default;
+$orange: hsl(24, 89%, 53%) !default;
+$yellow: hsl(51, 97%, 51%) !default;
+$olive: hsl(68, 79%, 45%) !default;
+$green: hsl(134, 69%, 41%) !default;
+$teal: hsl(177, 100%, 35%) !default;
+$blue: hsl(206, 73%, 47%) !default;
+$dark-blue: hsl(206, 100%, 25%) !default;
+$violet: hsl(259, 58%, 50%) !default;
+$purple: hsl(285, 59%, 49%) !default;
+$pink: hsl(326, 73%, 55%) !default;
+$brown: hsl(24, 45%, 45%) !default;
+$grey: hsl(0, 0%, 46%) !default;
+$light-grey: hsl(0, 0%, 67%) !default;
 
-$primary: #4972a1 !default;
-$good: #5baa27 !default;
-$average: #f08f11 !default;
-$bad: #db2828 !default;
-$label: #7e90a7 !default;
-$underline: #7e90a767 !default;
-$xeno: #52375c !default;
+$primary: hsl(212, 38%, 46%) !default;
+$good: hsl(96, 63%, 41%) !default;
+$average: hsl(34, 88%, 50%) !default;
+$bad: hsl(0, 71%, 51%) !default;
+$label: hsl(214, 19%, 57%) !default;
+$underline: hsla(214, 19%, 57%, 0.403921568627451) !default;
+$xeno: hsl(284, 25%, 29%) !default;
 
 // Background and foreground color lightness ratios
 $bg-lightness: -15% !default;
@@ -79,7 +79,7 @@ $bg-map-keys: map.keys($_gen_map) !default;
 $fg-map: ();
 @each $color-name in $fg-map-keys {
   // prettier-ignore
-  $fg-map: map-merge($fg-map, (
+  $fg-map: map.merge($fg-map, (
     $color-name: fg(map.get($_gen_map, $color-name)),
   ));
 }
@@ -87,7 +87,7 @@ $fg-map: ();
 $bg-map: ();
 @each $color-name in $bg-map-keys {
   // prettier-ignore
-  $bg-map: map-merge($bg-map, (
+  $bg-map: map.merge($bg-map, (
     $color-name: bg(map.get($_gen_map, $color-name)),
   ));
 }

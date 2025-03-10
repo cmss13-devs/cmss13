@@ -5,15 +5,15 @@
     }
 
     .typePicker {
-      border: 1px dotted #8ac8ff;
+      border: 1px dotted hsl(208, 100%, 77%);
     }
 
     .typePicker.active {
-      border: 1px solid #8ac8ff;
+      border: 1px solid hsl(208, 100%, 77%);
     }
 
     .colorPicker.active {
-      outline: solid 2px #8ac8ff;
+      outline: solid 2px hsl(208, 100%, 77%);
     }
   }
 }

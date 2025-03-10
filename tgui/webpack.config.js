@@ -29,7 +29,7 @@ module.exports = (env = {}, argv) => {
   const config = {
     mode: mode === 'production' ? 'production' : 'development',
     context: path.resolve(__dirname),
-    target: ['web', 'es5', 'browserslist:ie 11'],
+    target: ['web', 'browserslist:last 2 Edge versions'],
     entry: {
       tgui: ['./packages/tgui-polyfill', './packages/tgui'],
       'tgui-panel': ['./packages/tgui-polyfill', './packages/tgui-panel'],
@@ -52,6 +52,7 @@ module.exports = (env = {}, argv) => {
       rules: [
         {
           test: /\.([tj]s(x)?|cjs)$/,
+          exclude: /node_modules[\\/]core-js/,
           use: [
             {
               loader: require.resolve('swc-loader'),
@@ -59,7 +60,7 @@ module.exports = (env = {}, argv) => {
           ],
         },
         {
-          test: /\.scss$/,
+          test: /\.(s)?css$/,
           use: [
             {
               loader: ExtractCssPlugin.loader,
@@ -126,17 +127,6 @@ module.exports = (env = {}, argv) => {
         './packages/tgui-bench/entrypoint',
       ],
     };
-  }
-
-  // Production build specific options
-  if (mode === 'production') {
-    const { EsbuildPlugin } = require('esbuild-loader');
-    config.optimization.minimizer = [
-      new EsbuildPlugin({
-        target: 'ie11',
-        css: true,
-      }),
-    ];
   }
 
   // Development build specific options

@@ -11,7 +11,7 @@
 /datum/supply_packs/landing_pad
 	name = "AD-19D landing pad (x1)"
 	contains = list(
-		/obj/structure/landing_pad,
+		/obj/structure/landing_pad_folded,
 	)
 	cost = 25
 	containertype = /obj/structure/closet/crate/weapon

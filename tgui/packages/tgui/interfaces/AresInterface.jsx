@@ -3,7 +3,7 @@
 // -------------------------------------------------------------------- //
 
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack } from '../components';
+import { Box, Button, Dropdown, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
@@ -95,6 +95,8 @@ const MainMenu = (props) => {
     local_current_menu,
     local_access_level,
     local_sudo,
+    faction_options,
+    sentry_setting,
   } = data;
 
   return (
@@ -433,6 +435,19 @@ const MainMenu = (props) => {
               >
                 AI Core Lockdown
               </Button.Confirm>
+            </Stack.Item>
+            <Stack.Item ml="0" mr="0">
+              <Dropdown
+                options={faction_options}
+                selected={sentry_setting}
+                color="red"
+                onSelected={(value) =>
+                  act('update_sentries', { chosen_iff: value })
+                }
+                width="90px"
+                disabled={local_access_level < 9}
+                tooltip="Change core sentries IFF settings."
+              />
             </Stack.Item>
           </Stack>
         </Section>

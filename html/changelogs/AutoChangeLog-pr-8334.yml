@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - qol: "Resin Doors now Ignore living mobs with DEAD state."

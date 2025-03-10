@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - balance: "Xenomorphs now open doors faster depending on their tier / mob size"

@@ -12,13 +12,16 @@
 	)
 
 /datum/weather_ss_map_holder/sorokyne/should_affect_area(area/A)
-	return (A.temperature <= TROPICAL_TEMP)
+	return ((A.temperature <= TROPICAL_TEMP) && !CEILING_IS_PROTECTED(A.ceiling, CEILING_GLASS))
 
 /datum/weather_ss_map_holder/sorokyne/should_start_event()
 	if (prob(PROB_WEATHER_SOROKYNE))
 		return TRUE
 	return FALSE
 
-/datum/weather_ss_map_holder/sorokyne/weather_warning()
-	for (var/obj/structure/machinery/weather_siren/WS in GLOB.weather_notify_objects)
-		WS.weather_warning()
+/datum/weather_ss_map_holder/sorokyne/weather_warning(datum/weather_event/incoming_event)
+	if(incoming_event.should_sound_weather_alarm)
+		for (var/obj/structure/machinery/weather_siren/WS in GLOB.weather_notify_objects)
+			WS.weather_warning()
+	else
+		..()

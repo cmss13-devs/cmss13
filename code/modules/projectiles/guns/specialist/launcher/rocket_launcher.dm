@@ -334,8 +334,8 @@
 //UPP Rocket Launcher
 
 /obj/item/weapon/gun/launcher/rocket/upp
-	name = "\improper HJRA-12 Handheld Anti-Tank Grenade Launcher"
-	desc = "The HJRA-12 Handheld Anti-Tank Grenade Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	name = "\improper HJRA-12 Handheld Anti-Tank Rocket Launcher"
+	desc = "The HJRA-12 Handheld Anti-Tank Rocket Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/rocket_launchers.dmi'
 	icon_state = "hjra12"
 	item_state = "hjra12"

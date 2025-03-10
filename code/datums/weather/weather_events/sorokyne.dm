@@ -22,6 +22,9 @@
 /datum/weather_event/soro/monsoon
 	name = "Monsoon Warning"
 	display_name = "Monsoon Warning"
+
+	should_sound_weather_alarm = TRUE
+
 	length = 6 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/high
 
@@ -30,7 +33,6 @@
 
 	effect_message = null
 	damage_per_tick = 0
-
 
 	ambience = 'sound/ambience/varadero_storm.ogg'
 

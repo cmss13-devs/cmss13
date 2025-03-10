@@ -42122,6 +42122,19 @@
 /obj/structure/platform_decoration/stone/soro/east,
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/water)
+"ree" = (
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/outpost_decks)
 "reo" = (
 /obj/structure/barricade/sandbags{
 	dir = 4;
@@ -67457,7 +67470,7 @@ aZP
 eWj
 nUz
 nUz
-oOB
+ree
 foN
 iLJ
 nUz

@@ -2054,7 +2054,7 @@
 	name = "specimen control cabinet";
 	req_access_txt = "103"
 	},
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/item/explosive/grenade/incendiary,
 /turf/open/floor/corsat/red/northwest,
 /area/corsat/omega/hangar/security)
@@ -24612,7 +24612,7 @@
 /turf/open/floor/corsat,
 /area/corsat/omega/complex)
 "bUo" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/item/explosive/grenade/incendiary,
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "specimen control cabinet";
@@ -25964,7 +25964,7 @@
 /turf/open/floor/corsat/marked,
 /area/corsat/sigma/airlock/control)
 "caQ" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/item/explosive/grenade/incendiary,
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "specimen control cabinet";
@@ -40845,7 +40845,7 @@
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/sigma/hangar/monorail/control)
 "rQQ" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/item/explosive/grenade/incendiary,
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "specimen control cabinet";
@@ -45483,7 +45483,7 @@
 /turf/open/floor/corsat/purplewhite,
 /area/corsat/gamma/sigmaremote)
 "wHN" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/item/explosive/grenade/incendiary,
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "specimen control cabinet";

@@ -541,6 +541,14 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/m60(src)
 
+/obj/item/storage/pouch/magazine/large/xr/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/xr(src)
+
+/obj/item/storage/pouch/magazine/large/avp/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/xm51/avp(src)
+
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"
 	desc = "It can contain handfuls of shells, or bullets if you choose to for some reason."

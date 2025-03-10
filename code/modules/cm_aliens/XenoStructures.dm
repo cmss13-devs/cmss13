@@ -448,6 +448,8 @@
 /obj/structure/mineral_door/resin/proc/close_blocked()
 	for(var/turf/turf in locs)
 		for(var/mob/living/living_mob in turf)
+			if(living_mob.stat == DEAD)
+				continue
 			if(!HAS_TRAIT(living_mob, TRAIT_MERGED_WITH_WEEDS))
 				return TRUE
 	return FALSE

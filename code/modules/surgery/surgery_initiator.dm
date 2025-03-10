@@ -29,7 +29,7 @@
 	var/obj/limb/surgery_limb = target.get_limb(target_zone)
 	if(surgery_limb)
 		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
-		if(blocker)
+		if(blocker && tool.sharp)
 			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
 			return
 

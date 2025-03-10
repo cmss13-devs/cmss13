@@ -11,11 +11,18 @@ type Tutorial = {
   id: string;
   description: string;
   image: string;
+  subsections: Subsection[];
 };
 
 type TutorialCategory = {
   tutorials: Tutorial[];
   name: string;
+};
+
+type Subsection = {
+  title: string;
+  name: string;
+  id: string;
 };
 
 type BackendContext = {
@@ -93,60 +100,99 @@ export const TutorialMenu = (props) => {
             </Stack.Item>
             <Divider vertical />
             <Stack.Item width="30%">
-              <Section title="Selected Tutorial">
-                {chosenTutorial !== null ? (
-                  <Stack vertical>
-                    <Stack.Item>
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <Box key={chosenTutorial.id}>
-                          <span
-                            className={classes([
-                              'tutorial128x128',
-                              `${chosenTutorial.image}`,
-                            ])}
-                          />
-                        </Box>
-                      </div>
-                    </Stack.Item>
-                    <Stack.Item>{chosenTutorial.description}</Stack.Item>
-                    {completed_tutorials.indexOf(chosenTutorial.id) === -1 ? (
-                      <div />
+              <Stack vertical>
+                <Stack.Item>
+                  <Section title="Selected Tutorial">
+                    {chosenTutorial !== null ? (
+                      <Stack vertical>
+                        <Stack.Item>
+                          <div
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Box key={chosenTutorial.id}>
+                              <span
+                                className={classes([
+                                  'tutorial128x128',
+                                  `${chosenTutorial.image}`,
+                                ])}
+                              />
+                            </Box>
+                          </div>
+                        </Stack.Item>
+                        <Stack.Item>{chosenTutorial.description}</Stack.Item>
+                        {completed_tutorials.indexOf(chosenTutorial.id) ===
+                        -1 ? (
+                          <div />
+                        ) : (
+                          <Stack.Item
+                            style={{
+                              color: '#5baa27',
+                              paddingTop: '4px',
+                              paddingBottom: '4px',
+                              textAlign: 'center',
+                            }}
+                          >
+                            Tutorial has been completed.
+                          </Stack.Item>
+                        )}
+                        <Stack.Item>
+                          <Button
+                            textAlign="center"
+                            width="100%"
+                            onClick={() =>
+                              act('select_tutorial', {
+                                tutorial_path: chosenTutorial.path,
+                              })
+                            }
+                          >
+                            Start Tutorial
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Divider />
+                        <Stack.Item>
+                          <Box bold>Tutorial Subsections</Box>
+                        </Stack.Item>
+                        {chosenTutorial.subsections !== null ? (
+                          chosenTutorial.subsections.map(
+                            (tutorial, subindex) => {
+                              return (
+                                <Stack.Item
+                                  key={tutorial.id}
+                                  textAlign="center"
+                                >
+                                  <Button
+                                    inline
+                                    width="100%"
+                                    onClick={() =>
+                                      act('select_tutorial', {
+                                        tutorial_path: chosenTutorial.path,
+                                        subsection_id: tutorial.id,
+                                      })
+                                    }
+                                  >
+                                    <Box fontSize="13px" bold>
+                                      [ {tutorial.name} ]
+                                    </Box>
+                                    <Box>{tutorial.title}</Box>
+                                  </Button>
+                                </Stack.Item>
+                              );
+                            },
+                          )
+                        ) : (
+                          <div />
+                        )}
+                      </Stack>
                     ) : (
-                      <Stack.Item
-                        style={{
-                          color: '#5baa27',
-                          paddingTop: '4px',
-                          paddingBottom: '4px',
-                          textAlign: 'center',
-                        }}
-                      >
-                        Tutorial has been completed.
-                      </Stack.Item>
+                      <div />
                     )}
-                    <Stack.Item>
-                      <Button
-                        textAlign="center"
-                        width="100%"
-                        onClick={() =>
-                          act('select_tutorial', {
-                            tutorial_path: chosenTutorial.path,
-                          })
-                        }
-                      >
-                        Start Tutorial
-                      </Button>
-                    </Stack.Item>
-                  </Stack>
-                ) : (
-                  <div />
-                )}
-              </Section>
+                  </Section>
+                </Stack.Item>
+              </Stack>
             </Stack.Item>
           </Stack>
         </Stack>

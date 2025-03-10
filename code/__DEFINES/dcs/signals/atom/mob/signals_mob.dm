@@ -102,6 +102,9 @@
 /// From /obj/item/grab/attack_self(mob/user)
 #define COMSIG_MOB_GRAB_UPGRADE "grab_upgrade"
 
+/// From /mob/living/proc/do_pull(): (mob/target)
+#define COMSIG_MOB_GRAB_PASSIVE "mob_grab_passive"
+
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
 
@@ -169,11 +172,18 @@
 /// From /datum/tutorial/proc/update_objective() : (new_objective)
 #define COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE "mob_tutorial_update_objective"
 
+/// From tutorial helpers found at /datum/tutorial/marine/(hospital_corpsman_advanced or hospital_corpsman_basic)/proc/handle_pill_bottle()
+#define COMSIG_MOB_TUTORIAL_HELPER_RETURN "mob_tutorial_helper_return"
+
+#define COMSIG_MOB_TUTORIAL_HELPER_FAIL "mob_tutorial_helper_fail"
+
 /// From /mob/proc/swap_hand() : ()
 #define COMSIG_MOB_SWAPPED_HAND "mob_swapped_hand"
 
 /// From /mob/proc/a_intent_change() : (new_intent)
 #define COMSIG_MOB_INTENT_CHANGE "mob_intent_change"
+// From /mob/proc/select_body_zone()
+#define COMSIG_MOB_ZONE_SEL_CHANGE "mob_zone_sel_change"
 
 /// From /obj/item/grab/proc/progress_passive() : (mob/living/carbon/human/grabber)
 #define COMSIG_MOB_AGGRESSIVELY_GRABBED "mob_aggressively_grabbed"
@@ -185,3 +195,8 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+/// From /obj/item/roller/proc/deploy_roller() : (mob/user, obj/structure/bed/roller/roller)
+#define COMSIG_MOB_ITEM_ROLLER_DEPLOYED "mob_roller_deployed"
+/// From /obj/item/bodybag/proc/deploy_bodybag() : (mob/user, obj/structure/closet/bodybag/deployed)
+#define COMSIG_MOB_ITEM_BODYBAG_DEPLOYED "mob_bodybag_deployed"

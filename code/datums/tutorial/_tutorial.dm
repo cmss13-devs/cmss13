@@ -12,6 +12,10 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/icon_state = ""
 	/// What category the tutorial should be under
 	var/category = TUTORIAL_CATEGORY_BASE
+	/// Ref to specific section datums within tutorials. Works the same as tutorial_id, but on a smaller scale
+	var/subsection_list = list()
+	/// Ref to subsection within a tutorial, used to target a proc when joining at a specific subsection
+	var/current_subsection_id
 	/// Ref to the bottom-left corner tile of the tutorial room
 	var/turf/bottom_left_corner
 	/// Ref to the turf reservation for this tutorial
@@ -32,6 +36,8 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	var/completion_marked = FALSE
 	/// The tutorial_id of what tutorial has to be completed before being able to do this tutorial
 	var/required_tutorial
+	/// Holds the CALLBACK information for the next step of the (tutorials) operation. For use with manual_message_to_player
+	var/datum/callback/next_tutorial_step
 
 /datum/tutorial/Destroy(force, ...)
 	GLOB.ongoing_tutorials -= src
@@ -86,10 +92,15 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(tutorial_mob)
-		remove_action(tutorial_mob, /datum/action/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup
+		remove_action(tutorial_mob, /datum/action/tutorial/tutorial_end) // Just in case to make sure the client can't try and leave the tutorial while it's mid-cleanup
 		if(tutorial_mob.client?.prefs && (completed || completion_marked))
 			tutorial_mob.client.prefs.completed_tutorials |= tutorial_id
 			tutorial_mob.client.prefs.save_preferences()
+		if(tutorial_mob.client)
+			for(var/atom/movable/screen/text/screen_text/command_order/tutorial/latent_text in tutorial_mob.client.screen_texts)
+				tutorial_mob.client.screen_texts -= latent_text
+				qdel(latent_text)
+			QDEL_NULL_LIST(tutorial_mob.client.screen_texts)
 		var/mob/new_player/new_player = new
 		if(!tutorial_mob.mind)
 			tutorial_mob.mind_initialize()
@@ -111,6 +122,11 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	return TRUE
 
+/datum/tutorial/proc/register_tutorial_subsections()
+
+/datum/tutorial/proc/start_tutorial_subsection()
+
+
 /// Something went very, very wrong during load so let's abort
 /datum/tutorial/proc/abort_tutorial()
 	to_chat(tutorial_mob, SPAN_BOLDWARNING("Something went wrong during tutorial load, please try again!"))
@@ -129,10 +145,19 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	tracking_atoms -= reference.type
 
 /// Broadcast a message to the player's screen
-/datum/tutorial/proc/message_to_player(message)
+/datum/tutorial/proc/message_to_player(message, type)
 	playsound_client(tutorial_mob.client, 'sound/effects/radiostatic.ogg', tutorial_mob.loc, 25, FALSE)
-	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/command_order/tutorial, rgb(103, 214, 146))
-	to_chat(tutorial_mob, SPAN_NOTICE(message))
+	if(!(type))
+		type = /atom/movable/screen/text/screen_text/command_order/tutorial
+	tutorial_mob.play_screen_text(message, type, rgb(103, 214, 146))
+
+/// Slower variety of message_to_player, when delivering larger amounts of information
+/datum/tutorial/proc/slower_message_to_player(message)
+	message_to_player(message, /atom/movable/screen/text/screen_text/command_order/tutorial/slower)
+
+/// Variant of tutorial screentext that never fades off screen, except when told to by /datum/action/tutorial/skip_text
+/datum/tutorial/proc/manual_message_to_player(message)
+	message_to_player(message, /atom/movable/screen/text/screen_text/command_order/tutorial/manual)
 
 /// Updates a player's objective in their status tab
 /datum/tutorial/proc/update_objective(message)
@@ -141,7 +166,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /// Initialize the tutorial mob.
 /datum/tutorial/proc/init_mob()
 	tutorial_mob.AddComponent(/datum/component/tutorial_status)
-	give_action(tutorial_mob, /datum/action/tutorial_end, null, null, src)
+	give_action(tutorial_mob, /datum/action/tutorial/tutorial_end, null, null, src)
 	ADD_TRAIT(tutorial_mob, TRAIT_IN_TUTORIAL, TRAIT_SOURCE_TUTORIAL)
 
 /// Ends the tutorial after a certain amount of time.
@@ -214,17 +239,34 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/tutorial/proc/mark_completed()
 	completion_marked = TRUE
 
-/datum/action/tutorial_end
+/// Replaces addtimer in tutorials when using MANUAL TEXT! Do NOT use in tutorial steps without manual_message_to_player present
+/datum/tutorial/proc/register_tutorial_step(datum/callback/callback)
+	SIGNAL_HANDLER
+
+	if(!(callback))
+		return
+
+	next_tutorial_step = callback
+
+/// Skips to the next step of the tutorial, as registered with register_tutorial_step
+/datum/tutorial/proc/handle_tutorial_step()
+	if(next_tutorial_step)
+		var/datum/callback/override_detection = next_tutorial_step
+		next_tutorial_step.Invoke()
+		if(next_tutorial_step == override_detection)
+			next_tutorial_step = null
+
+/datum/action/tutorial/tutorial_end
 	name = "Stop Tutorial"
 	action_icon_state = "hologram_exit"
 	/// Weakref to the tutorial this is related to
 	var/datum/weakref/tutorial
 
-/datum/action/tutorial_end/New(Target, override_icon_state, datum/tutorial/selected_tutorial)
+/datum/action/tutorial/tutorial_end/New(Target, override_icon_state, datum/tutorial/selected_tutorial)
 	. = ..()
 	tutorial = WEAKREF(selected_tutorial)
 
-/datum/action/tutorial_end/action_activate()
+/datum/action/tutorial/tutorial_end/action_activate()
 	. = ..()
 	if(!tutorial)
 		return
@@ -235,6 +277,34 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	selected_tutorial.end_tutorial()
 
+/// Give to tutorial mobs as a 'continue' button when using manual text in tutorials. Used to end screentext spawned with manual_message_to_player
+/datum/action/tutorial/skip_text
+	name = "Next Tutorial Text"
+	action_icon_state = "walkman_next"
+	var/datum/weakref/tutorial
+	cooldown = 2 SECONDS
+
+/datum/action/tutorial/skip_text/New(Target, override_icon_state, datum/tutorial/selected_tutorial)
+	. = ..()
+	tutorial = WEAKREF(selected_tutorial)
+
+/datum/action/tutorial/skip_text/action_activate()
+	. = ..()
+	if(!tutorial)
+		return
+
+	var/datum/tutorial/selected_tutorial = tutorial.resolve()
+
+	var/mob/tutorial_mob = owner
+
+	if(selected_tutorial.tutorial_ending)
+		return
+
+	var/atom/movable/manual_text = listgetindex(tutorial_mob.client.screen_texts,1)
+	if(istype(manual_text, /atom/movable/screen/text/screen_text/command_order/tutorial/manual))
+		if(length(tutorial_mob.client.screen_texts) <= 1)
+			selected_tutorial.handle_tutorial_step()
+		INVOKE_ASYNC(manual_text, TYPE_PROC_REF(/atom/movable/screen/text/screen_text/command_order/tutorial/manual, end_play))
 
 /datum/map_template/tutorial
 	name = "Tutorial Zone (12x12)"
@@ -259,3 +329,13 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	mappath = "maps/tutorial/tutorial_7x7.dmm"
 	width = 7
 	height = 7
+
+/datum/map_template/tutorial/s7x7/hm
+	name = "Tutorial Zone (7x7) (HM Tutorial)"
+	mappath = "maps/tutorial/tutorial_7x7_hm.dmm"
+
+/datum/map_template/tutorial/s15x10/hm
+	name = "Tutorial Zone (15x10) (HM Tutorial)"
+	mappath = "maps/tutorial/tutorial_15x10_hm.dmm"
+	width = 15
+	height = 10

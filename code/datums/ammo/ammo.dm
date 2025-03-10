@@ -69,6 +69,9 @@
 	var/effective_range_max = EFFECTIVE_RANGE_OFF
 	/// How fast the projectile moves.
 	var/shell_speed = AMMO_SPEED_TIER_1
+	/// modifer to lose durability with standard durability_loss when this bullet is chambered and fired
+	var/bullet_duraloss = 0
+
 
 	var/handful_type = /obj/item/ammo_magazine/handful
 	var/handful_color
@@ -138,6 +141,9 @@
 
 /datum/ammo/proc/on_hit_obj(obj/O, obj/projectile/P) //Special effects when hitting objects.
 	SHOULD_NOT_SLEEP(TRUE)
+	if(istype(O, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/damaged_gun = O
+		damaged_gun.damage_gun_durability(P.damage) //handles gun durability damage on projectile hit
 	return
 
 /datum/ammo/proc/on_near_target(turf/T, obj/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.

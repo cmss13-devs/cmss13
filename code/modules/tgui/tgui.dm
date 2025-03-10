@@ -268,7 +268,7 @@
 			"size" = window_size,
 			"fancy" = user.client?.prefs.tgui_fancy,
 			"locked" = user.client?.prefs.tgui_lock,
-			"scale" = user.client?.prefs.tgui_fancy,
+			"scale" = user.client?.prefs.tgui_scale,
 		),
 		"client" = list(
 			"ckey" = user.client.ckey,

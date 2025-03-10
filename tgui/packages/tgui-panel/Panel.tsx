@@ -4,7 +4,6 @@
  * @license MIT
  */
 
-import { useEffect } from 'react';
 import { Button, Section, Stack } from 'tgui/components';
 import { Pane } from 'tgui/layouts';
 
@@ -27,12 +26,6 @@ export const Panel = (props) => {
       return <KitchenSink panel />;
     }
   }
-
-  useEffect(() => {
-    if (window.devicePixelRatio === 1) return;
-
-    window.document.body.style['zoom'] = `${100 / window.devicePixelRatio}%`;
-  });
 
   return (
     <Pane theme={settings.theme}>

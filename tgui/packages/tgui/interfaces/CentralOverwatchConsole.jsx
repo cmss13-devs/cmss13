@@ -4,7 +4,6 @@ import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
-  Collapsible,
   Divider,
   Flex,
   Input,
@@ -29,7 +28,7 @@ export const CentralOverwatchConsole = (props) => {
         {(!data.operator && <LoginPanel />) || (
           <Stack vertical>
             <Stack.Item>
-              <DebugSquadPanel />
+              <CombinedSquadPanel />
             </Stack.Item>
             <Stack.Item m="0">
               <SecondaryFunctions />
@@ -167,7 +166,7 @@ const SecondaryFunctions = (props) => {
   );
 };
 
-const DebugSquadPanel = (props) => {
+const CombinedSquadPanel = (props) => {
   const { act, data } = useBackend();
 
   const [category, setCategory] = useSharedState('selected', 'alpha');
@@ -248,7 +247,7 @@ const DebugSquadPanel = (props) => {
                                   : 'NONE'}
                                 <Box
                                   color={
-                                    squad.squad_leader.stat !== 2
+                                    squad.squad_leader.stat === '2'
                                       ? 'green'
                                       : 'red'
                                   }
@@ -421,78 +420,6 @@ const DebugSquadPanel = (props) => {
   );
 };
 
-const MainDashboard = (props) => {
-  const { act, data } = useBackend();
-
-  let { current_squad, primary_objective, secondary_objective } = data;
-
-  return (
-    <Section fontSize="16px" title={current_squad + ' Overwatch | Dashboard'}>
-      <Table mb="5px">
-        <Table.Row bold>
-          <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
-          <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell textAlign="center">
-            {primary_objective ? primary_objective : 'NONE'}
-          </Table.Cell>
-          <Table.Cell textAlign="center">
-            {secondary_objective ? secondary_objective : 'NONE'}
-          </Table.Cell>
-        </Table.Row>
-      </Table>
-      <Collapsible textAlign="center" title="Expand Controls" fontSize="16px">
-        <Box textAlign="center">
-          <Box>
-            <Stack.Item>
-              <Button
-                inline
-                width="100%"
-                icon="envelope"
-                onClick={() => act('set_primary')}
-              >
-                SET PRIMARY
-              </Button>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                inline
-                width="100%"
-                icon="envelope"
-                onClick={() => act('set_secondary')}
-              >
-                SET SECONDARY
-              </Button>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                inline
-                width="100%"
-                icon="envelope"
-                onClick={() => act('message')}
-              >
-                MESSAGE SQUAD
-              </Button>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                inline
-                width="100%"
-                icon="person"
-                onClick={() => act('sl_message')}
-              >
-                MESSAGE SQUAD LEADER
-              </Button>
-            </Stack.Item>
-          </Box>
-        </Box>
-      </Collapsible>
-      <RoleTable />
-    </Section>
-  );
-};
-
 const ExecutivePanel = (props) => {
   const { act, data } = useBackend();
   const AlertLevel = data.alert_level;
@@ -659,7 +586,7 @@ const EmergencyPanel = (props) => {
     data.time_request < worldTime && AlertLevel === 2 && minimumTimeElapsed;
 
   let distress_reason;
-  let destruct_reason;
+
   if (AlertLevel === 3) {
     distress_reason = 'Self-destruct in progress. Beacon disabled.';
     destruct_reason = 'Self-destruct is already active!';
@@ -792,114 +719,6 @@ const EmergencyPanel = (props) => {
   );
 };
 
-const RoleTable = (props) => {
-  const { act, data } = useBackend();
-
-  const {
-    squad_leader,
-    leaders_alive,
-    ftl_alive,
-    ftl_count,
-    specialist_type,
-    spec_alive,
-    smart_alive,
-    smart_count,
-    spec_count,
-    medic_count,
-    medic_alive,
-    engi_alive,
-    engi_count,
-    living_count,
-    total_deployed,
-  } = data;
-
-  return (
-    <Table pb="4px" m="1px" fontSize="12px" bold>
-      <Table.Row>
-        <Table.Cell textAlign="center" collapsing p="4px">
-          Squad Leader
-        </Table.Cell>
-        <Table.Cell textAlign="center" collapsing p="4px">
-          Fire Team Leaders
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        {(squad_leader && (
-          <Table.Cell textAlign="center">
-            {squad_leader.name ? squad_leader.name : 'NONE'}
-            <Box color={squad_leader.state !== 'Dead' ? 'green' : 'red'}>
-              {squad_leader.state !== 'Dead' ? 'ALIVE' : 'DEAD'}
-            </Box>
-          </Table.Cell>
-        )) || (
-          <Table.Cell textAlign="center">
-            NONE
-            <Box color="red">NOT DEPLOYED</Box>
-          </Table.Cell>
-        )}
-
-        <Table.Cell textAlign="center" bold>
-          <Box>{ftl_count} DEPLOYED</Box>
-          <Box color={ftl_alive ? 'green' : 'red'}>{ftl_alive} ALIVE</Box>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell textAlign="center" collapsing p="4px">
-          Specialist
-        </Table.Cell>
-        <Table.Cell textAlign="center" collapsing p="4px">
-          Smartgunner
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell textAlign="center" bold>
-          <Box>{specialist_type ? specialist_type : 'NONE'}</Box>
-          <Box color={spec_alive ? 'green' : 'red'}>
-            {spec_count ? (spec_alive ? 'ALIVE' : 'DEAD') : 'NOT DEPLOYED'}
-          </Box>
-        </Table.Cell>
-        <Table.Cell textAlign="center" bold>
-          <Box color={smart_count ? 'green' : 'red'}>
-            {smart_count ? smart_count + ' DEPLOYED' : 'NONE'}
-          </Box>
-          <Box color={smart_alive ? 'green' : 'red'}>
-            {smart_count ? (smart_alive ? 'ALIVE' : 'DEAD') : 'N/A'}
-          </Box>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell textAlign="center" collapsing p="4px">
-          Hospital Corpsmen
-        </Table.Cell>
-        <Table.Cell textAlign="center" collapsing p="4px">
-          Combat Technicians
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell textAlign="center" bold>
-          <Box>{medic_count} DEPLOYED</Box>
-          <Box color={medic_alive ? 'green' : 'red'}>{medic_alive} ALIVE</Box>
-        </Table.Cell>
-        <Table.Cell textAlign="center" bold>
-          <Box>{engi_count} DEPLOYED</Box>
-          <Box color={engi_alive ? 'green' : 'red'}>{engi_alive} ALIVE</Box>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell textAlign="center" collapsing p="4px" colSpan="2">
-          Total/Living
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell textAlign="center" bold colSpan="2">
-          <Box>{total_deployed} TOTAL</Box>
-          <Box color={living_count ? 'green' : 'red'}>{living_count} ALIVE</Box>
-        </Table.Cell>
-      </Table.Row>
-    </Table>
-  );
-};
-
 const SquadMonitor = (props) => {
   const { act, data } = useBackend();
 
@@ -988,7 +807,6 @@ const SquadMonitor = (props) => {
 
   return (
     <Section
-      pb="1.5%"
       fill
       fontSize="14px"
       title="Monitor"
@@ -1034,13 +852,12 @@ const SquadMonitor = (props) => {
           <Input
             fluid
             placeholder="Search.."
-            mb="4px"
             value={marineSearch}
             onInput={(e, value) => setMarineSearch(value)}
           />
         </Stack.Item>
         <Stack.Item>
-          <Section m="2px" mb="4px" scrollable>
+          <Section m="0px" mb="3px" scrollable height="190px" fill fitted>
             <Table>
               <Table.Row bold fontSize="14px">
                 <Table.Cell textAlign="center">Name</Table.Cell>
@@ -1160,9 +977,6 @@ const SquadMonitor = (props) => {
 const OrbitalBombardment = (props) => {
   const { act, data } = useBackend();
 
-  const [OBX, setOBX] = useSharedState('obx', 0);
-  const [OBY, setOBY] = useSharedState('oby', 0);
-
   let ob_status = 'Ready';
   let ob_color = 'green';
   let ob_warhead = 'No Shells Loaded';
@@ -1266,71 +1080,5 @@ const OrbitalBombardment = (props) => {
       </Stack>
       <Divider horizontal />
     </Section>
-  );
-};
-
-const SavedCoordinates = (props) => {
-  const { act, data } = useBackend();
-
-  const [OBX, setOBX] = useSharedState('obx', 0);
-  const [OBY, setOBY] = useSharedState('oby', 0);
-  const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
-  const [supplyY, setSupplyY] = useSharedState('supply', 0);
-
-  const { forOB, forSupply } = props;
-
-  let transferCoords = (x, y) => {
-    if (forSupply) {
-      setSupplyX(x);
-      setSupplyY(y);
-    } else if (forOB) {
-      setOBX(x);
-      setOBY(y);
-    }
-  };
-
-  return (
-    <Stack.Item>
-      <Box bold textAlign="center">
-        Max 3 stored coordinates. Will overwrite oldest first.
-      </Box>
-      <Table>
-        <Table.Row bold>
-          <Table.Cell p="5px" collapsing>
-            LONG.
-          </Table.Cell>
-          <Table.Cell p="5px" collapsing>
-            LAT.
-          </Table.Cell>
-          <Table.Cell p="5px">COMMENT</Table.Cell>
-          <Table.Cell p="5px" collapsing />
-        </Table.Row>
-        {data.saved_coordinates.map((coords, index) => (
-          <Table.Row key={index}>
-            <Table.Cell p="6px">{coords.x}</Table.Cell>
-            <Table.Cell p="5px">{coords.y}</Table.Cell>
-            <Table.Cell p="5px">
-              <Input
-                width="100%"
-                value={coords.comment}
-                onChange={(e, value) =>
-                  act('change_coordinate_comment', {
-                    comment: value,
-                    index: coords.index,
-                  })
-                }
-              />
-            </Table.Cell>
-            <Table.Cell p="5px">
-              <Button
-                color="yellow"
-                icon="arrow-left"
-                onClick={() => transferCoords(coords.x, coords.y)}
-              />
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
-    </Stack.Item>
   );
 };

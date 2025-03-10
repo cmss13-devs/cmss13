@@ -113,10 +113,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	playsound(loc, 'sound/machines/ping.ogg', 75)
 	ob_cannon_safety = GLOB.ob_cannon_safety
 
-/obj/structure/machinery/computer/overwatch/groundside_operations/toggle_ob_cannon_safety()
-	playsound(loc, 'sound/machines/ping.ogg', 75)
-	ob_cannon_safety = GLOB.ob_cannon_safety
-
 /obj/structure/machinery/computer/overwatch/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
@@ -178,21 +174,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		user.client.register_map_obj(tacmap.map_holder.map)
-		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
-		ui.open()
-
-/obj/structure/machinery/computer/overwatch/groundside_operations/tgui_interact(mob/user, datum/tgui/ui)
-
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		if(!level[1])
-			return
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
-
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
-		ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
+		if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
+			ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
+		else
+			ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 
 /obj/structure/machinery/computer/overwatch/proc/count_marines(list/data, datum/squad/index_squad, variable_format)

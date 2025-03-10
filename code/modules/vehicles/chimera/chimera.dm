@@ -280,12 +280,12 @@
 	if(state != STATE_FLIGHT && state != STATE_VTOL)
 		return
 	
-	var/turf/below = SSmapping.get_turf_below(get_turf(src))
+	var/turf/below = SSmapping.get_turf_below(get_step(get_turf(src), direction))
 
 	if(!below)	
 		return
 
-	shadow_holder.dir = direction
+	shadow_holder.dir = dir
 	shadow_holder.forceMove(below)
 
 /obj/vehicle/multitile/chimera/add_seated_verbs(mob/living/M, seat)
@@ -461,11 +461,17 @@
 
 /obj/vehicle/multitile/chimera/proc/toggle_sensors()
 	var/obj/item/hardpoint/support/sensor_array/sensors = locate() in hardpoints
-	
+
 	if(!sensors)
 		return
 
 	sensors.toggle()
+
+	if(sensors.active)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Sensors turned on."))
+		playsound(seats[VEHICLE_DRIVER].loc, 'sound/vehicles/vtol/radaractive.ogg', 25, FALSE)
+	else
+		to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Sensors turned off."))
 
 /obj/vehicle/multitile/chimera/proc/toggle_rear_door()
 	back_door.toggle_open()
@@ -512,6 +518,7 @@
 	update_icon()
 	forceMove(SSmapping.get_turf_above(get_turf(src)))
 	shadow_holder = new(SSmapping.get_turf_below(get_turf(src)))
+	update_rear_view()
 	START_PROCESSING(SSsuperfastobj, src)
 	busy = FALSE
 
@@ -545,6 +552,7 @@
 	flags_atom &= ~NO_ZFALL
 	state = STATE_DEPLOYED
 	update_icon()
+	update_rear_view()
 	busy = FALSE
 
 	var/turf/downwash_turf = get_turf(src)
@@ -990,12 +998,7 @@
 
 /obj/structure/landing_pad/process(deltatime)
 	var/turf/center_turf = locate(x + 1, y + 1, z)
-	var/obj/vehicle/multitile/chimera/parked_aircraft
-
-	for(var/obj/vehicle/multitile/chimera/aircraft in center_turf.contents)
-		if(aircraft.x == center_turf.x && aircraft.y == aircraft.y)
-			parked_aircraft = aircraft
-			break
+	var/obj/vehicle/multitile/chimera/parked_aircraft = locate() in center_turf.contents
 
 	if(!parked_aircraft)
 		STOP_PROCESSING(SSobj, src)

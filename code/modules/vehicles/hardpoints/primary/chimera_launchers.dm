@@ -3,7 +3,7 @@
 	desc = ""
 
 	icon_state = "ace_autocannon"
-	activation_sounds = list('sound/weapons/vehicles/autocannon_fire.ogg')
+	activation_sounds = list('sound/vehicles/vtol/launcher.ogg')
 
 	health = 500
 	firing_arc = 180

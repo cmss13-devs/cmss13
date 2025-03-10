@@ -65,7 +65,7 @@ export const EntryCoord = (props: EntryCoordProps) => {
       />
       <NumberInput
         animated
-        minValue={0}
+        minValue={-Infinity}
         maxValue={Infinity}
         step={1}
         value={coord?.[0] || 0}
@@ -78,7 +78,7 @@ export const EntryCoord = (props: EntryCoordProps) => {
       />
       <NumberInput
         animated
-        minValue={0}
+        minValue={-Infinity}
         maxValue={Infinity}
         step={1}
         value={coord?.[1] || 0}
@@ -91,7 +91,7 @@ export const EntryCoord = (props: EntryCoordProps) => {
       />
       <NumberInput
         animated
-        minValue={0}
+        minValue={-Infinity}
         maxValue={Infinity}
         step={1}
         value={coord?.[2] || 0}

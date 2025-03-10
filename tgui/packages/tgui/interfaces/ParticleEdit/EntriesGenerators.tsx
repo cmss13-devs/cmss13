@@ -53,7 +53,7 @@ export const FloatGenerator = (props: FloatGeneratorProps) => {
           <Stack.Item>
             <NumberInput
               animated
-              minValue={0}
+              minValue={-Infinity}
               maxValue={Infinity}
               step={1}
               value={float || 0}
@@ -181,7 +181,7 @@ export const EntryGeneratorNumbersList = (
           <Stack.Item>
             <NumberInput
               animated
-              minValue={0}
+              minValue={-Infinity}
               maxValue={Infinity}
               step={1}
               value={input || 0}
@@ -203,7 +203,7 @@ export const EntryGeneratorNumbersList = (
           <Stack.Item>
             <NumberInput
               animated
-              minValue={0}
+              minValue={-Infinity}
               maxValue={Infinity}
               step={1}
               value={input[0]}
@@ -216,7 +216,7 @@ export const EntryGeneratorNumbersList = (
             />
             <NumberInput
               animated
-              minValue={0}
+              minValue={-Infinity}
               maxValue={Infinity}
               step={1}
               value={input[1]}
@@ -230,7 +230,7 @@ export const EntryGeneratorNumbersList = (
             {allow_z ? (
               <NumberInput
                 animated
-                minValue={0}
+                minValue={-Infinity}
                 maxValue={Infinity}
                 step={1}
                 value={input[2]}

@@ -131,8 +131,7 @@
 	var/armor_integrity_immunity_time = 0
 	// Acid armor
 	// Zonenote look into moving these to the component later, maybe?
-	/// How protected we are against acidic attacks. The *somewhat* equivalent to armor_deflection
-	/// 50 acid armor reduces the amount of acid damage you take by 50%, simple as
+	/// How protected we are against acidic attacks.
 	/// If left unchanged from -1, will default to the xeno's armor_deflection.
 	/// THIS ONLY APPLIES IN THE MOBA GAMEMODE, DOES NOT DO ANYTHING OTHERWISE
 	var/acid_armor = -1

@@ -27,10 +27,11 @@
 /datum/moba_player/proc/on_client_delete(datum/source)
 	SIGNAL_HANDLER
 
-	qdel(src)
+	tied_ckey = null
+	tied_client = null
 
 /datum/moba_player/Destroy(force, ...)
-	tied_client = null
+	on_client_delete()
 	tied_xeno = null
 	QDEL_NULL_LIST(queue_slots)
 	return ..()

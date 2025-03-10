@@ -287,6 +287,11 @@
 	for(var/datum/moba_player/player as anything in players)
 		player.get_tied_xeno().send_to_lobby()
 
+	QDEL_LIST(team1_wards)
+	QDEL_LIST(team2_wards)
+	team1_ward_images.Cut()
+	team2_ward_images.Cut()
+
 	SSmoba.unused_maps += new /datum/unused_moba_map(src)
 	qdel(src)
 

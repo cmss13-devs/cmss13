@@ -17,9 +17,6 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 				"path" = item.type,
 			))
 
-/datum/moba_item_store/Destroy(force, ...)
-	return ..()
-
 /datum/moba_item_store/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

@@ -5,9 +5,6 @@
 	. = ..()
 	src.map_id = map_id
 
-/datum/moba_scoreboard/Destroy(force, ...)
-	return ..()
-
 /datum/moba_scoreboard/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -69,10 +66,5 @@
 			"items" = item_list,
 		))
 		data["team2_total_kills"] += player_data.player.kills
-
-	return data
-
-/datum/moba_scoreboard/ui_static_data(mob/user)
-	var/list/data = list()
 
 	return data

@@ -166,8 +166,20 @@
 /obj/effect/alien/resin/moba_turret/left
 	hivenumber = XENO_HIVE_MOBA_LEFT
 
+/obj/effect/alien/resin/moba_turret/left/back
+	health = 1500
+
+/obj/effect/alien/resin/moba_turret/left/near_hive
+	health = 1250
+
 /obj/effect/alien/resin/moba_turret/right
 	hivenumber = XENO_HIVE_MOBA_RIGHT
+
+/obj/effect/alien/resin/moba_turret/right/back
+	health = 1500
+
+/obj/effect/alien/resin/moba_turret/right/near_hive
+	health = 1250
 
 /obj/effect/alien/resin/moba_turret/hive_core
 	range = 6

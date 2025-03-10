@@ -8,7 +8,7 @@ $background-color: base.$color-bg !default;
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: hsla(0, 0%, 0%, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@ $background-color: base.$color-bg !default;
   display: flex;
   height: 2em;
   line-height: 1.928em;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: hsla(0, 0%, 0%, 0.5);
   user-select: none;
   -ms-user-select: none;
 }
@@ -50,7 +50,7 @@ $background-color: base.$color-bg !default;
   flex-direction: row;
   justify-content: flex-end;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: hsla(0, 0%, 0%, 0.25);
 }
 
 .Dialog__button {

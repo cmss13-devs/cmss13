@@ -314,7 +314,6 @@
 	var/offer_as_ert = FALSE
 	var/play_as = FALSE
 
-
 	if(href_list["spawn_as"] == "freed")
 		free_the_xenos = TRUE
 
@@ -356,8 +355,6 @@
 				owner.free_for_ghosts(X)
 
 			xenos += X
-
-
 
 		if(play_as)
 			X.ckey = owner.ckey

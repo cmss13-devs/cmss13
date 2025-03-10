@@ -55,7 +55,9 @@
 
 // BANDASTATION EDIT ADDITION - Bump Attacks
 /// Can this atom be bumped attack
-#define BUMP_ATTACKABLE (1<<12)
+#define BUMP_ATTACKABLE (1<<23)
+///Whether or not this atom shows screentips when hovered over
+#define NO_SCREENTIPS (1<<24)
 // BANDASTATION EDIT END
 //==========================================================================================
 

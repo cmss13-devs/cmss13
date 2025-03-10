@@ -12,6 +12,7 @@
 #include "quick_cast/_quick_cast.dme"
 #include "respawn/_respawn.dme"
 #include "shout_orders/_shout_orders.dme"
+#include "screentips/_screentips.dme"
 #include "sounds/_sounds.dme"
 #include "translations/_translations.dme"
 #include "stats_viewer/_stats_viewer.dme"

@@ -1,6 +1,6 @@
+import type { BooleanLike } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -12,19 +12,19 @@ import {
   NumberInput,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type PillBottleType = {
   size: number;
   max_size: number;
   label?: string;
   icon_state: string;
-  isNeedsToBeFilled: boolean;
+  isNeedsToBeFilled: BooleanLike;
 };
 
 type ChemMasterData = {
-  is_connected: boolean;
+  is_connected: BooleanLike;
   pill_bottles: PillBottleType[];
   color_pill: {
     icon: string;
@@ -36,15 +36,15 @@ type ChemMasterData = {
     reagents: Reagent[];
   };
   buffer?: Reagent[];
-  mode: boolean;
+  mode: BooleanLike;
   pill_or_bottle_icon: string;
   pill_icon_choices: number;
   bottle_icon_choices: number;
   bottlesprite: number;
   pillsprite: number;
-  is_pillmaker: boolean;
-  is_condiment: boolean;
-  is_vialmaker: boolean;
+  is_pillmaker: BooleanLike;
+  is_condiment: BooleanLike;
+  is_vialmaker: BooleanLike;
   internal_reagent_name: string;
 };
 

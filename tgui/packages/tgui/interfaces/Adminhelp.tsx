@@ -1,9 +1,15 @@
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
-import { Box, Button, Input, NoticeBox, Stack, TextArea } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import {
+  Box,
+  Button,
+  Input,
+  NoticeBox,
+  Stack,
+  TextArea,
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type AdminhelpData = {
   adminCount: number;

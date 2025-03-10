@@ -1,12 +1,12 @@
 import { range } from 'common/collections';
 import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Box, Divider, Flex, Stack } from 'tgui/components';
+import { Icon } from 'tgui/components';
 
-import { useBackend } from '../../backend';
-import { Box, Divider, Flex, Stack } from '../../components';
-import { Icon } from '../../components';
 import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
-import { MedevacContext, MedevacTargets } from './types';
+import type { MedevacContext, MedevacTargets } from './types';
 
 const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
   <Box>

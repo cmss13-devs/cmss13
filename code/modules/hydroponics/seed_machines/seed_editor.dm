@@ -33,7 +33,7 @@
 		data["degradation"] = seed.modified
 	else
 		data["seed"] = FALSE
-		data["degradation"] = FALSE
+		data["degradation"] = 0
 
 	return data
 

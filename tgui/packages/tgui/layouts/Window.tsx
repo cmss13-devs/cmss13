@@ -6,22 +6,21 @@
 
 import { classes } from 'common/react';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
-import { PropsWithChildren, ReactNode, useEffect } from 'react';
-
-import { backendSuspendStart, useBackend } from '../backend';
-import { globalStore } from '../backend';
-import { Icon } from '../components';
-import { BoxProps } from '../components/Box';
-import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from '../constants';
-import { useDebug } from '../debug';
-import { toggleKitchenSink } from '../debug/actions';
+import { ComponentProps, PropsWithChildren, ReactNode, useEffect } from 'react';
+import { backendSuspendStart, useBackend } from 'tgui/backend';
+import { globalStore } from 'tgui/backend';
+import { Box, Icon } from 'tgui/components';
+import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from 'tgui/constants';
+import { useDebug } from 'tgui/debug';
+import { toggleKitchenSink } from 'tgui/debug/actions';
 import {
   dragStartHandler,
   recallWindowGeometry,
   resizeStartHandler,
   setWindowKey,
-} from '../drag';
-import { createLogger } from '../logging';
+} from 'tgui/drag';
+import { createLogger } from 'tgui/logging';
+
 import { Layout } from './Layout';
 
 const logger = createLogger('Window');
@@ -152,7 +151,7 @@ type ContentProps = Partial<{
   scrollable: boolean;
   vertical: boolean;
 }> &
-  BoxProps &
+  ComponentProps<typeof Box> &
   PropsWithChildren;
 
 const WindowContent = (props: ContentProps) => {

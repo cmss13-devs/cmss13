@@ -1,10 +1,10 @@
 import { KEY } from 'common/keys';
 import { BooleanLike } from 'common/react';
 import { KeyboardEvent, useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Autofocus, Box, Button, Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
-import { useBackend } from '../backend';
-import { Autofocus, Box, Button, Section, Stack } from '../components';
-import { Window } from '../layouts';
 import { Loader } from './common/Loader';
 
 type Data = {

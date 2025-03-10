@@ -1,7 +1,6 @@
 import { BooleanLike } from 'common/react';
-
-import { useBackend } from '../../backend';
-import { Box, Button, Flex } from '../../components';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Flex } from 'tgui/components';
 
 type InputButtonsData = {
   large_buttons: boolean;

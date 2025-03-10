@@ -24,9 +24,7 @@ import {
   ReactNode,
   useState,
 } from 'react';
-import { Interaction, Interactive } from 'tgui/components/Interactive';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Autofocus,
   Box,
@@ -37,8 +35,10 @@ import {
   Section,
   Stack,
   Tooltip,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Interaction, Interactive } from 'tgui/components/Interactive';
+import { Window } from 'tgui/layouts';
+
 import { InputButtons } from './common/InputButtons';
 import { Loader } from './common/Loader';
 

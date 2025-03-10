@@ -2,7 +2,7 @@
 
 /datum/tech/nuke
 	name = "Nuclear Device"
-	desc = "Purchase a nuclear device. It's the only way to be sure."
+	desc = "Purchase a nuclear device. It's the only way to sort this out for good."
 	icon_state = "nuke"
 
 	required_points = 5
@@ -10,7 +10,7 @@
 	tier = /datum/tier/four
 
 	announce_name = "NUCLEAR ARSENAL ACQUIRED"
-	announce_message = "A nuclear device has been authorized and will be delivered to requisitions via ASRS."
+	announce_message = "The deployment of a 'Blockbuster' Large Atomic Fission Demolition Device (LAFDEDE) have been authorized and will be delivered to the requisitions department, via ASRS."
 
 	flags = TREE_FLAG_MARINE
 

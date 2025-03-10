@@ -323,10 +323,6 @@
 	equipment_color = "#c47a50"
 	chat_color = "#c47a50"
 
-/datum/squad/pmc/wo
-	name = "Taskforce White"
-	locked = TRUE
-	faction = FACTION_WY_DEATHSQUAD
 //###############################
 /datum/squad/clf
 	name = "Root"

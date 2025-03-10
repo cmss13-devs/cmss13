@@ -116,7 +116,7 @@
 		if(!offset_target)
 			offset_target = target // Welp the offsetting failed so...
 		crash_site.forceMove(offset_target)
-		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
+		marine_announcement("Вражеская авиация, направляющаяся к [target_ship_section] была успешна сбита.", "Система IX-50 MGAD", logging = ARES_LOG_SECURITY)
 		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
@@ -142,7 +142,7 @@
 
 	shuttle.crashing = TRUE
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
+	marine_announcement("ДРОПШИП НА КУРСЕ СТОЛКНОВЕНИЯ. СТОЛКНОВЕНИЕ НЕИЗБЕЖНО." , "ЧРЕЗВЫЧАЙНАЯ СИТУАЦИЯ", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	notify_ghosts(header = "Dropship Collision", message = "The dropship is about to impact [get_area_name(crash_site)]!", source = crash_site, extra_large = TRUE)
 	final_announcement = TRUE

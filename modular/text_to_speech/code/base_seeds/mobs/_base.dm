@@ -18,8 +18,18 @@
 	. = ..()
 	tts_seed = get_tts_seed()
 
+/mob/living/carbon/proc/change_tts_seed_ask()
+	var/alert = tgui_alert(src, "Хотите поменять свой голос? Текущий - [src.tts_seed]", "Смена TTS", list("Да","Нет"))
+	if(alert != "Да")
+		return
+	change_tts_seed(src, TRUE, TRUE)
+
 /datum/equipment_preset/load_preset(mob/living/carbon/human/new_human, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	. = ..()
-	if(randomise)
-		new_human.add_tts_component()
-		new_human.tts_seed = new_human.get_tts_seed()
+	if(!randomise)
+		return
+
+	new_human.add_tts_component()
+	new_human.tts_seed = new_human.get_tts_seed()
+
+	INVOKE_ASYNC(new_human, TYPE_PROC_REF(/mob/living/carbon, change_tts_seed_ask))

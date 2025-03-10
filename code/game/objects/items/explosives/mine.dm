@@ -27,6 +27,7 @@
 	var/triggered = FALSE
 	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
+	var/hit_count = 0
 
 	var/map_deployed = FALSE
 
@@ -273,6 +274,15 @@
 	if(!QDELETED(src))
 		disarm()
 
+/obj/item/explosive/mine/bullet_act(obj/projectile/P)
+	if(!triggered && istype(P.ammo, /datum/ammo/xeno)) //xeno projectile
+		hit_count++
+		if(hit_count >= 2) // Check if hit two times
+			visible_message(SPAN_DANGER("\The [src] is hit by [P] and violently detonates!")) // Acid is hot for claymore
+			triggered = TRUE
+			prime()
+			if(!QDELETED(src))
+				disarm()
 
 /obj/effect/mine_tripwire
 	name = "claymore tripwire"

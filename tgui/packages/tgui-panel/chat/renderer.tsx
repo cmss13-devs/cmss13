@@ -5,6 +5,7 @@
  */
 
 import { EventEmitter } from 'common/events';
+import { classes } from 'common/react';
 import { createRoot } from 'react-dom/client';
 import { Tooltip } from 'tgui/components';
 import { createLogger } from 'tgui/logging';
@@ -26,6 +27,7 @@ import {
 } from './constants';
 import { canPageAcceptType, createMessage, isSameMessage } from './model';
 import { highlightNode, linkifyNode } from './replaceInTextNode';
+import type { message, Page } from './types';
 
 const logger = createLogger('chatRenderer');
 
@@ -45,7 +47,7 @@ export const TGUI_CHAT_ATTRIBUTES_TO_PROPS = {
   content: 'content',
 };
 
-const findNearestScrollableParent = (startingNode) => {
+const findNearestScrollableParent = (startingNode: HTMLElement) => {
   const body = document.body;
   let node = startingNode;
   while (node && node !== body) {
@@ -55,12 +57,12 @@ const findNearestScrollableParent = (startingNode) => {
     if (node.scrollWidth < node.offsetWidth) {
       return node;
     }
-    node = node.parentNode;
+    node = node.parentNode as HTMLElement;
   }
   return window;
 };
 
-const createHighlightNode = (text, color) => {
+const createHighlightNode = (text: string, color: string): HTMLElement => {
   const node = document.createElement('span');
   node.className = 'Chat__highlight';
   node.setAttribute('style', 'background-color:' + color);
@@ -68,53 +70,79 @@ const createHighlightNode = (text, color) => {
   return node;
 };
 
-const createMessageNode = () => {
+export const createMessageNode = (): HTMLElement => {
   const node = document.createElement('div');
   node.className = 'ChatMessage';
   return node;
 };
 
-const createReconnectedNode = () => {
+const createReconnectedNode = (): HTMLElement => {
   const node = document.createElement('div');
   node.className = 'Chat__reconnected';
   return node;
 };
 
-const handleImageError = (e) => {
+const handleImageError = (e: ErrorEvent) => {
   setTimeout(() => {
     /** @type {HTMLImageElement} */
-    const node = e.target;
-    const attempts = parseInt(node.getAttribute('data-reload-n'), 10) || 0;
+    const node = e.target as HTMLImageElement;
+    if (!node) {
+      return;
+    }
+    const attempts =
+      parseInt(node.getAttribute('data-reload-n') || '', 10) || 0;
     if (attempts >= IMAGE_RETRY_LIMIT) {
       logger.error(`failed to load an image after ${attempts} attempts`);
       return;
     }
     const src = node.src;
-    node.src = null;
+    node.src = '';
     node.src = src + '#' + attempts;
-    node.setAttribute('data-reload-n', attempts + 1);
+    node.setAttribute('data-reload-n', (attempts + 1).toString());
   }, IMAGE_RETRY_DELAY);
 };
 
 /**
  * Assigns a "times-repeated" badge to the message.
  */
-const updateMessageBadge = (message) => {
+const updateMessageBadge = (message: message) => {
   const { node, times } = message;
-  if (!node || !times) {
+  if (!node || !times || typeof node === 'string') {
     // Nothing to update
     return;
   }
-  const foundBadge = node.querySelector('.Chat__badge');
+  const foundBadge = (node as HTMLElement).querySelector('.Chat__badge');
   const badge = foundBadge || document.createElement('div');
-  badge.textContent = times;
-  badge.className = 'Chat__badge';
+  badge.textContent = times.toString();
+  badge.className = classes(['Chat__badge', 'Chat__badge--animate']);
+  requestAnimationFrame(() => {
+    badge.className = 'Chat__badge';
+  });
   if (!foundBadge) {
     node.appendChild(badge);
   }
 };
 
 class ChatRenderer {
+  loaded: boolean;
+  rootNode: HTMLElement | null;
+  queue: message[];
+  messages: message[];
+  visibleMessages: message[];
+  page: Page | null;
+  events: EventEmitter;
+  scrollNode: HTMLElement | null;
+  scrollTracking: boolean;
+  handleScroll: (type: any) => void;
+  ensureScrollTracking: () => void;
+  highlightParsers:
+    | {
+        highlightWords: string;
+        highlightRegex: RegExp;
+        highlightColor: string;
+        highlightWholeMessage: boolean;
+      }[]
+    | null;
   constructor() {
     /** @type {HTMLElement} */
     this.loaded = false;
@@ -131,14 +159,16 @@ class ChatRenderer {
     this.scrollTracking = true;
     this.handleScroll = (type) => {
       const node = this.scrollNode;
-      const height = node.scrollHeight;
-      const bottom = node.scrollTop + node.offsetHeight;
-      const scrollTracking =
-        Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE;
-      if (scrollTracking !== this.scrollTracking) {
-        this.scrollTracking = scrollTracking;
-        this.events.emit('scrollTrackingChanged', scrollTracking);
-        logger.debug('tracking', this.scrollTracking);
+      if (node) {
+        const height = node.scrollHeight;
+        const bottom = node.scrollTop + node.offsetHeight;
+        const scrollTracking =
+          Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE;
+        if (scrollTracking !== this.scrollTracking) {
+          this.scrollTracking = scrollTracking;
+          this.events.emit('scrollTrackingChanged', scrollTracking);
+          logger.debug('tracking', this.scrollTracking);
+        }
       }
     };
     this.ensureScrollTracking = () => {
@@ -164,8 +194,14 @@ class ChatRenderer {
       this.rootNode = node;
     }
     // Find scrollable parent
-    this.scrollNode = findNearestScrollableParent(this.rootNode);
-    this.scrollNode.addEventListener('scroll', this.handleScroll);
+    if (this.rootNode) {
+      this.scrollNode = findNearestScrollableParent(
+        this.rootNode,
+      ) as HTMLElement;
+    }
+    if (this.scrollNode) {
+      this.scrollNode.addEventListener('scroll', this.handleScroll);
+    }
     setTimeout(() => {
       this.scrollToBottom();
     });
@@ -186,8 +222,10 @@ class ChatRenderer {
   }
 
   assignStyle(style = {}) {
-    for (let key of Object.keys(style)) {
-      this.rootNode.style.setProperty(key, style[key]);
+    for (const key of Object.keys(style)) {
+      if (this.rootNode) {
+        this.rootNode.style.setProperty(key, style[key]);
+      }
     }
   }
 
@@ -203,7 +241,7 @@ class ChatRenderer {
       const highlightWholeMessage = setting.highlightWholeMessage;
       const matchWord = setting.matchWord;
       const matchCase = setting.matchCase;
-      const allowedRegex = /^[a-z0-9_\-$/^[\s\]\\]+$/gi;
+      const allowedRegex = /^[a-zа-яё0-9_\-$/^[\s\]\\]+$/gi;
       const regexEscapeCharacters = /[!#$%^&*)(+=.<>{}[\]:;'"|~`_\-\\/]/g;
       const lines = String(text)
         .split(',')
@@ -224,7 +262,7 @@ class ChatRenderer {
       if (lines.length === 0) {
         return;
       }
-      let regexExpressions = [];
+      let regexExpressions: string[] = [];
       // Organize each highlight entry into regex expressions and words
       for (let line of lines) {
         // Regex expression syntax is /[exp]/
@@ -280,10 +318,12 @@ class ChatRenderer {
   scrollToBottom() {
     // scrollHeight is always bigger than scrollTop and is
     // automatically clamped to the valid range.
-    this.scrollNode.scrollTop = this.scrollNode.scrollHeight;
+    if (this.scrollNode) {
+      this.scrollNode.scrollTop = this.scrollNode.scrollHeight;
+    }
   }
 
-  changePage(page) {
+  changePage(page: Page) {
     if (!this.isReady()) {
       this.page = page;
       this.tryFlushQueue();
@@ -291,7 +331,9 @@ class ChatRenderer {
     }
     this.page = page;
     // Fast clear of the root node
-    this.rootNode.textContent = '';
+    if (this.rootNode) {
+      this.rootNode.textContent = '';
+    }
     this.visibleMessages = [];
     // Re-add message nodes
     const fragment = document.createDocumentFragment();
@@ -303,13 +345,17 @@ class ChatRenderer {
         this.visibleMessages.push(message);
       }
     }
-    if (node) {
+    if (node && this.rootNode) {
       this.rootNode.appendChild(fragment);
       node.scrollIntoView();
     }
   }
 
-  getCombinableMessage(predicate, now, from, to) {
+  getCombinableMessage(predicate: message) {
+    const now = Date.now();
+    const len = this.visibleMessages.length;
+    const from = len - 1;
+    const to = Math.max(0, len - COMBINE_MAX_MESSAGES);
     for (let i = from; i >= to; i--) {
       const message = this.visibleMessages[i];
 
@@ -327,7 +373,13 @@ class ChatRenderer {
     return null;
   }
 
-  processBatch(batch, options = {}) {
+  processBatch(
+    batch: message[],
+    options: {
+      prepend?: boolean;
+      notifyListeners?: boolean;
+    } = {},
+  ) {
     const { prepend, notifyListeners = true } = options;
     const now = Date.now();
     // Queue up messages until chat is ready
@@ -343,14 +395,10 @@ class ChatRenderer {
     const fragment = document.createDocumentFragment();
     const countByType = {};
     let node;
-
-    const len = this.visibleMessages.length;
-    const from = len - 1;
-    const to = Math.max(0, len - COMBINE_MAX_MESSAGES);
     for (let payload of batch) {
       const message = createMessage(payload);
       // Combine messages
-      const combinable = this.getCombinableMessage(message, now, from, to);
+      const combinable = this.getCombinableMessage(message);
       if (combinable) {
         combinable.times = (combinable.times || 1) + 1;
         updateMessageBadge(combinable);
@@ -421,6 +469,7 @@ class ChatRenderer {
             </Element>,
             childNode,
           );
+          /* eslint-enable react/no-danger */
         }
 
         // Highlight text
@@ -467,12 +516,12 @@ class ChatRenderer {
       countByType[message.type] += 1;
       // TODO: Detect duplicates
       this.messages.push(message);
-      if (canPageAcceptType(this.page, message.type)) {
+      if (this.page && canPageAcceptType(this.page, message.type)) {
         fragment.appendChild(node);
         this.visibleMessages.push(message);
       }
     }
-    if (node) {
+    if (node && this.rootNode) {
       const firstChild = this.rootNode.childNodes[0];
       if (prepend && firstChild) {
         this.rootNode.insertBefore(fragment, firstChild);
@@ -507,7 +556,9 @@ class ChatRenderer {
         this.visibleMessages = messages.slice(fromIndex);
         for (let i = 0; i < fromIndex; i++) {
           const message = messages[i];
-          this.rootNode.removeChild(message.node);
+          if (this.rootNode && message.node) {
+            this.rootNode.removeChild(message.node as Node);
+          }
           // Mark this message as pruned
           message.node = 'pruned';
         }
@@ -547,7 +598,9 @@ class ChatRenderer {
       message.node = undefined;
     }
     // Fast clear of the root node
-    this.rootNode.textContent = '';
+    if (this.rootNode) {
+      this.rootNode.textContent = '';
+    }
     this.messages = [];
     this.visibleMessages = [];
     // Repopulate the chat log
@@ -568,7 +621,9 @@ class ChatRenderer {
     this.visibleMessages = [];
     for (let i = 0; i < messages.length; i++) {
       const message = messages[i];
-      this.rootNode.removeChild(message.node);
+      if (this.rootNode && message.node instanceof HTMLElement) {
+        this.rootNode.removeChild(message.node);
+      }
       // Mark this message as pruned
       message.node = 'pruned';
     }
@@ -597,7 +652,7 @@ class ChatRenderer {
     let messagesHtml = '';
     for (let message of this.visibleMessages) {
       if (message.node) {
-        messagesHtml += message.node.outerHTML + '\n';
+        messagesHtml += message.html + '\n';
       }
     }
     // Create a page
@@ -618,24 +673,31 @@ class ChatRenderer {
       '</body>\n' +
       '</html>\n';
     // Create and send a nice blob
-    const blob = new Blob([pageHtml]);
+    const blob = new Blob([pageHtml], { type: 'text/plain' });
     const timestamp = new Date()
       .toISOString()
       .substring(0, 19)
       .replace(/[-:]/g, '')
       .replace('T', '-');
-    window.navigator.msSaveBlob(blob, `ss13-chatlog-${timestamp}.html`);
+    Byond.saveBlob(blob, `ss13-chatlog-${timestamp}.html`, '.html');
   }
 }
 
+type ChatWindow = Window &
+  typeof globalThis & {
+    __chatRenderer__: ChatRenderer;
+  };
+
 // Make chat renderer global so that we can continue using the same
 // instance after hot code replacement.
-if (!window.__chatRenderer__) {
-  window.__chatRenderer__ = new ChatRenderer();
+
+const chatWindow = window as ChatWindow;
+if (!chatWindow.__chatRenderer__) {
+  chatWindow.__chatRenderer__ = new ChatRenderer();
 }
 
 /** @type {ChatRenderer} */
-export const chatRenderer = window.__chatRenderer__;
+export const chatRenderer = chatWindow.__chatRenderer__;
 
 setTimeout(
   () => {

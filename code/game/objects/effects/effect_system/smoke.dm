@@ -546,7 +546,7 @@
 		return FALSE
 	if(isyautja(affected_mob) && prob(75))
 		return FALSE
-	if(HAS_TRAIT(affected_mob, TRAIT_NESTED) && affected_mob.status_flags & XENO_HOST)
+	if(HAS_TRAIT(affected_mob, TRAIT_NESTED) && affected_mob.status_flags & XENO_HOST || HAS_TRAIT(affected_mob, TRAIT_HAULED))
 		return FALSE
 
 	affected_mob.last_damage_data = cause_data
@@ -603,7 +603,7 @@
 		return FALSE
 	if(isyautja(moob))
 		return FALSE
-	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST)
+	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST || HAS_TRAIT(moob, TRAIT_HAULED))
 		return FALSE
 
 	var/mob/living/carbon/human/human_moob
@@ -661,7 +661,7 @@
 		return FALSE
 	if(isyautja(moob) && prob(75))
 		return FALSE
-	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST)
+	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST || HAS_TRAIT(moob, TRAIT_HAULED))
 		return FALSE
 
 	var/mob/living/carbon/human/human_moob

@@ -21,7 +21,7 @@
 	listed_products = list(
 
 			list("FOOD AND BEVERAGE", -1, null, null),
-			list("MRE", 25, /obj/item/storage/box/MRE, VENDOR_ITEM_REGULAR),
+			list("Emergency Rations", 4, /obj/item/ammo_box/magazine/misc/mre/emergency, VENDOR_ITEM_REGULAR),
 			list("Water Bottle", 25, /obj/item/reagent_container/food/drinks/cans/waterbottle, VENDOR_ITEM_REGULAR),
 
 			list("UTILITY", -1, null, null),

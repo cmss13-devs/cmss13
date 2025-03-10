@@ -117,7 +117,50 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
-	return INITIALIZE_HINT_NORMAL
+	if(istransparentturf(src))
+		return INITIALIZE_HINT_LATELOAD
+	else
+		return INITIALIZE_HINT_NORMAL
+
+/turf/LateInitialize(mapload)
+	update_vis_contents()
+
+/obj/vis_contents_holder
+	plane = OPEN_SPACE_PLANE_START
+	vis_flags = VIS_HIDE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/vis_contents_holder/Initialize(mapload, vis, offset)
+	. = ..()
+	plane -= offset
+	vis_contents += GLOB.openspace_backdrop_one_for_all
+	vis_contents += vis
+	name = null // Makes it invisible on right click
+
+/turf/proc/update_vis_contents()
+	if(!istransparentturf(src))
+		return
+
+	vis_contents.Cut()
+	for(var/obj/vis_contents_holder/holder in src)
+		qdel(holder)
+
+	var/turf/below = SSmapping.get_turf_below(src)
+	var/depth = 0
+	while(below)
+		new /obj/vis_contents_holder(src, below, depth)
+		if(!istransparentturf(below))
+			break
+		below = SSmapping.get_turf_below(below)
+		depth++
+
+/turf/proc/multiz_new(dir)
+	if(dir == DOWN)
+		update_vis_contents()
+
+/turf/proc/multiz_del(dir)
+	if(dir == DOWN)
+		update_vis_contents()
 
 /turf/Destroy(force)
 	if(hybrid_lights_affecting)
@@ -152,12 +195,6 @@
 		return
 	flags_atom &= ~INITIALIZED
 	..()
-
-/turf/proc/multiz_new(dir)
-	return
-
-/turf/proc/multiz_del(dir)
-	return
 
 /turf/vv_get_dropdown()
 	. = ..()
@@ -624,6 +661,10 @@
 			return "It is deep underground. The ceiling above is made of thick metal. Nothing is getting through that."
 		if(CEILING_REINFORCED_METAL)
 			return "The ceiling above is heavy reinforced metal. Nothing is getting through that."
+		if(CEILING_SANDSTONE_ALLOW_CAS)
+			return "The ceiling above is sandstone. That's not going to stop anything."
+		if(CEILING_UNDERGROUND_SANDSTONE_BLOCK_CAS)
+			return "It is underground. The ceiling above is made of sandstone. Can probably stop most ordnance."
 		else
 			return "It is in the open."
 
@@ -905,3 +946,35 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/on_throw_end(atom/movable/thrown_atom)
 	return TRUE
+
+/turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 1)
+	if(ishuman_strict(victim))
+		var/mob/living/carbon/human/human_victim = victim 
+		if (stun_modifier > 0)
+			human_victim.KnockDown(5 * height * stun_modifier)
+			human_victim.Stun(5 * height * stun_modifier)
+
+		if (damage_modifier > 0)
+			var/total_damage = ((20 * height) ** 1.3) * damage_modifier
+			human_victim.apply_damage(total_damage / 2, BRUTE, "r_leg")
+			human_victim.apply_damage(total_damage / 2, BRUTE, "l_leg")
+
+		if (fracture_modifier > 0)
+			var/obj/limb/leg/found_rleg = locate(/obj/limb/leg/l_leg) in human_victim.limbs
+			var/obj/limb/leg/found_lleg = locate(/obj/limb/leg/r_leg) in human_victim.limbs
+
+			found_rleg?.fracture(100 * fracture_modifier)
+			found_lleg?.fracture(100 * fracture_modifier)
+
+	if(isxeno(victim) && victim.mob_size >= MOB_SIZE_BIG)
+		var/mob/living/carbon/xenomorph/xeno_victim = victim
+		if(stun_modifier > 0)
+			xeno_victim.KnockDown(5 * height * stun_modifier)
+			xeno_victim.Stun(5 * height * stun_modifier)
+
+		if (damage_modifier > 0)
+			var/total_damage = ((60 * height) ** 1.3) * damage_modifier
+			xeno_victim.apply_damage(total_damage / 2, BRUTE)
+
+	if(damage_modifier > 0.5)
+		playsound(loc, "slam", 50, 1)

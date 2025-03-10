@@ -783,7 +783,7 @@
 
 /obj/item/weapon/gun/smartgun/dirty/elite/Initialize(mapload, ...)
 	. = ..()
-	MD.iff_signal = FACTION_WY_DEATHSQUAD
+	MD.iff_signal = FACTION_PMC
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()

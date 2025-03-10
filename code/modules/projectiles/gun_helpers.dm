@@ -168,7 +168,6 @@ DEFINES in setup.dm, referenced here.
 			) return TRUE
 		switch(user.faction)
 			if(
-				FACTION_WY_DEATHSQUAD,
 				FACTION_PMC,
 				FACTION_MERCENARY,
 				FACTION_FREELANCER,

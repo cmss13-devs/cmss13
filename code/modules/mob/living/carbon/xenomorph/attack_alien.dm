@@ -592,7 +592,7 @@
 	if(M.is_mob_incapacitated() || M.body_position != STANDING_UP)
 		return XENO_NO_DELAY_ACTION
 
-	var/delay
+	var/delay = 4 SECONDS
 
 	if(!arePowerSystemsOn())
 		delay = 1 SECONDS

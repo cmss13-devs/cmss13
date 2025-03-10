@@ -512,8 +512,6 @@
 	name = "tactical prybar"
 	desc = "Holding this makes you want to raid a townhouse filled with terrorists. Also doubles as a blunt weapon."
 	icon_state = "tac_prybar"
-	force = MELEE_FORCE_NORMAL
-	throwforce = MELEE_FORCE_NORMAL
 
 /obj/item/maintenance_jack
 	name = "\improper K92 Maintenance Jack"

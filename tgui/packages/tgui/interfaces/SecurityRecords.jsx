@@ -684,7 +684,7 @@ export const SecurityRecords = () => {
 
   return (
     <Window theme="crtred" width={630} height={700}>
-      <Window.Content pb="1px">
+      <Window.Content>
         {viewFingerprintScanner ? (
           renderFingerprintScannerView()
         ) : selectedRecord ? (

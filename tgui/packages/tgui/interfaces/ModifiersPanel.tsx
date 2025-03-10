@@ -19,7 +19,7 @@ export const ModifiersPanel = (props) => {
 
   return (
     <Window width={900} height={600} theme="crtblue">
-      <Window.Content pb="1px">
+      <Window.Content>
         <Section fill scrollable>
           <Table>
             {all_modifiers.map((modifier, index) => (

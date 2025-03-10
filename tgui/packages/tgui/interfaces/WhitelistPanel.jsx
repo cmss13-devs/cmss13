@@ -14,7 +14,7 @@ export const WhitelistPanel = (props) => {
 
   return (
     <Window theme={'crtblue'} width={990} height={750}>
-      <Window.Content pb="1px">
+      <Window.Content>
         <PageComponent />
       </Window.Content>
     </Window>

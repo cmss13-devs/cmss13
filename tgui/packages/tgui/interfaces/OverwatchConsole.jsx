@@ -23,7 +23,7 @@ export const OverwatchConsole = (props) => {
       height={600}
       theme={data.theme ? data.theme : 'crtblue'}
     >
-      <Window.Content pb="1px">
+      <Window.Content>
         {(!data.current_squad && <HomePanel />) || <SquadPanel />}
       </Window.Content>
     </Window>

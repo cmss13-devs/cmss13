@@ -208,6 +208,25 @@
 "aaN" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/islands)
+"aaO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"aaP" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"aaQ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -9881,12 +9900,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "hRs" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "hRv" = (
@@ -35484,7 +35498,7 @@ qul
 qul
 qul
 qHc
-mJe
+aaP
 xCn
 xCn
 oPQ
@@ -54335,7 +54349,7 @@ mCF
 mCF
 pGs
 pGs
-pGs
+aaO
 wUU
 "}
 (132,1,1) = {"
@@ -56555,7 +56569,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+aaQ
 wlB
 wlB
 wlB

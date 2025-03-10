@@ -296,7 +296,7 @@
 
 	var/obj/effect/decal/cleanable/blood/xeno/XB = locate() in T.contents
 	if(!XB)
-		XB = new(T)
+		XB = new blood_path(T)
 		XB.color = get_blood_color()
 
 

@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(moba_item_desc_dict)
+
 /datum/moba_item
 	var/name = ""
 	var/gold_cost = 0
@@ -25,27 +27,32 @@
 
 /datum/moba_item/New()
 	. = ..()
-	description = "[name]<br>Cost: [gold_cost] [MOBA_GOLD_NAME_SHORT]"
-	if(health)
-		description += "<br>Health: +[health]"
-	if(health_regen)
-		description += "<br>Health Regen: +[health_regen]"
-	if(plasma)
-		description += "<br>Plasma: +[plasma]"
-	if(plasma_regen)
-		description += "<br>Plasma Regen: +[plasma_regen]"
-	if(armor)
-		description += "<br>Armor: +[armor]"
-	if(acid_armor)
-		description += "<br>Acid Armor: +[acid_armor]"
-	if(speed)
-		description += "<br>Movement Delay: [speed]"
-	if(attack_speed)
-		description += "<br>Attack Speed Modifier: [attack_speed]"
-	if(attack_damage)
-		description += "<br>Damage: +[attack_damage]"
-	if(ability_cooldown_reduction)
-		description += "<br>Cooldown Reduction: x[ability_cooldown_reduction * 100]%"
+	if(!GLOB.moba_item_desc_dict[type])
+		description = "Cost: [gold_cost] [MOBA_GOLD_NAME_SHORT]"
+		if(health)
+			description += "<br>Health: +[health]"
+		if(health_regen)
+			description += "<br>Health Regen: +[health_regen]"
+		if(plasma)
+			description += "<br>Plasma: +[plasma]"
+		if(plasma_regen)
+			description += "<br>Plasma Regen: +[plasma_regen]"
+		if(armor)
+			description += "<br>Armor: +[armor]"
+		if(acid_armor)
+			description += "<br>Acid Armor: +[acid_armor]"
+		if(speed)
+			description += "<br>Movement Delay: [speed]"
+		if(attack_speed)
+			description += "<br>Attack Speed Modifier: [attack_speed]"
+		if(attack_damage)
+			description += "<br>Damage: +[attack_damage]"
+		if(ability_cooldown_reduction)
+			description += "<br>Cooldown Reduction: x[ability_cooldown_reduction * 100]%"
+		GLOB.moba_item_desc_dict[type] = description
+	else
+		description = GLOB.moba_item_desc_dict[type]
+
 
 /datum/moba_item/proc/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -77,7 +84,8 @@
 	xeno.attack_speed_modifier -= attack_speed
 	xeno.melee_damage_lower -= attack_damage
 	xeno.melee_damage_upper -= attack_damage
-	xeno.cooldown_reduction_percentage = xeno.cooldown_reduction_percentage * (1 / ability_cooldown_reduction)
+	if(ability_cooldown_reduction)
+		xeno.cooldown_reduction_percentage = xeno.cooldown_reduction_percentage * (1 / ability_cooldown_reduction)
 
 	amount_armor_applied = 0
 	amount_acid_armor_applied = 0

@@ -16,6 +16,7 @@
 
 	var/list/ability_path_level_dict = list()
 	var/unspent_levels = 0
+	var/max_ultimate_level = 0
 
 /datum/moba_player/New(ckey, client/new_client)
 	. = ..()
@@ -52,13 +53,19 @@
 /datum/moba_player/proc/level_up()
 	level++
 	unspent_levels++
+	if((level == 4) || (level == 8) || (level == 12))
+		max_ultimate_level++
 	if(tied_xeno)
 		for(var/datum/action/action as anything in tied_xeno.actions)
 			if(istype(action, /datum/action/xeno_action/moba))
 				var/datum/action/xeno_action/moba/moba_action = action
+				if(moba_action.is_ultimate && (ability_path_level_dict[moba_action.type] >= max_ultimate_level))
+					continue
 				moba_action.start_level_up_overlay()
 			else if(istype(action, /datum/action/xeno_action/activable/moba))
 				var/datum/action/xeno_action/activable/moba/moba_action = action
+				if(moba_action.is_ultimate && (ability_path_level_dict[moba_action.type] >= max_ultimate_level))
+					continue
 				moba_action.start_level_up_overlay()
 
 /datum/moba_player/proc/spend_level(path)

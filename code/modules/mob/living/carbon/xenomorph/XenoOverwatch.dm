@@ -39,7 +39,7 @@
 		if (isQueen)
 			var/mob/living/carbon/xenomorph/oldXeno = X.observed_xeno
 			X.overwatch(X.observed_xeno, TRUE)
-			if (oldXeno)
+			if (isxeno(oldXeno))
 				oldXeno.hud_set_queen_overwatch()
 		else
 			X.overwatch(X.observed_xeno, TRUE)
@@ -59,7 +59,7 @@
 	else // We are a queen
 		var/mob/living/carbon/xenomorph/oldXeno = X.observed_xeno
 		X.overwatch(selected_xeno, FALSE)
-		if (oldXeno)
+		if (isxeno(oldXeno))
 			oldXeno.hud_set_queen_overwatch()
 
 	if (selected_xeno && !QDELETED(selected_xeno))
@@ -79,7 +79,7 @@
 		if(oldXeno)
 			to_chat(src, SPAN_XENOWARNING("We stop watching [oldXeno]."))
 			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
-			if(!QDELETED(oldXeno))
+			if(!QDELETED(oldXeno) && isxeno(oldXeno))
 				oldXeno.hud_set_queen_overwatch()
 	else
 		if(!hive)
@@ -120,13 +120,15 @@
 			observed_xeno = null
 
 			SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH_XENO, oldXeno)
-			oldXeno.hud_set_queen_overwatch()
+			if(isxeno(oldXeno))
+				oldXeno.hud_set_queen_overwatch()
 			UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 
 		observed_xeno = targetXeno
 
-		observed_xeno.hud_set_queen_overwatch()
+		if(isxeno(observed_xeno))
+			observed_xeno.hud_set_queen_overwatch()
 		SEND_SIGNAL(src, COMSIG_XENO_OVERWATCH_XENO, observed_xeno)
 		RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(overwatch_handle_mob_move_or_look))
 		RegisterSignal(observed_xeno, COMSIG_PARENT_QDELETING, PROC_REF(overwatch_handle_deletion))
@@ -140,7 +142,7 @@
 // Called from xeno Life()
 // Makes sure that Xeno overwatch is reset when the overwatched Xeno dies.
 /mob/living/carbon/xenomorph/proc/handle_overwatch()
-	if(observed_xeno)
+	if(isxeno(observed_xeno))
 		if(observed_xeno.stat == DEAD || QDELETED(observed_xeno))
 			overwatch(null, TRUE)
 			return
@@ -170,7 +172,7 @@
 
 	var/mob/living/carbon/xenomorph/observed_xeno = mover.observed_xeno
 	mover.overwatch(observed_xeno, TRUE)
-	if(observed_xeno)
+	if(isxeno(observed_xeno))
 		observed_xeno.hud_set_queen_overwatch()
 	UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
 	return COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK

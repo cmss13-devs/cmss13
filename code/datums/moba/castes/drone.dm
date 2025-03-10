@@ -2,7 +2,14 @@
 	equivalent_caste_path = /datum/caste_datum/drone
 	equivalent_xeno_path = /mob/living/carbon/xenomorph/drone
 	name = XENO_CASTE_DRONE
-	desc = "Supportive caste focused on healing allies while providing some offensive power."
+	desc = {"
+		Supportive caste focused on healing allies while providing some offensive power.<br>
+		<b>P:</b> Gain wards as a team faster and increase your team's ward capacity by 1.<br>
+		<b>1:</b> Ready your tail to stab, giving your next attack increased range, attack damage, and daze.<br>
+		<b>2:</b> Plant an empowering pillar that grows over a short period, granting nearby allies increased speed.<br>
+		<b>3:</b> Create a beam between you and an ally, regenerating their health over time at the cost of plasma.<br>
+		<b>U:</b> After a channel, heal all nearby allies for a portion of their max health.
+	"}
 	category = MOBA_ARCHETYPE_CONTROLLER
 	icon_state = "drone"
 	ideal_roles = list(MOBA_LANE_SUPPORT)
@@ -90,7 +97,7 @@
 		return ..()
 
 	if(!isliving(targetted_atom))
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
 		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
@@ -390,6 +397,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	//macro_path = /datum/action/xeno_action/verb/verb_rejuvenation_burst
 	plasma_cost = 250
+	is_ultimate = TRUE
 	var/range_to_heal = 4
 	var/channel_duration = 3 SECONDS
 	var/health_percentage = 0.15
@@ -447,11 +455,3 @@
 	layer = BELOW_MOB_LAYER
 	pixel_x = -24
 	pixel_y = -24
-
-
-/*datum/action/xeno_action/verb/verb_rejuvenation_burst()
-	set category = "Alien"
-	set name = "Rejuvenation Burst"
-	set hidden = TRUE
-	var/action_name = "Rejunivation Burst"
-	handle_xeno_macro(src, action_name)*/

@@ -17,6 +17,19 @@
 	/// The floored level of everyone in-game. Used to determine how things like respawn timers and camp health scale. Caps at the level cap.
 	var/game_level = 1
 
+	var/team1_max_wards = 2
+	var/team1_ward_count = 1
+	var/team1_ward_regen_time = 120 SECONDS
+	var/list/team1_wards = list()
+	var/list/image/team1_ward_images = list()
+	var/team1_has_drone = FALSE
+	var/team2_max_wards = 2
+	var/team2_ward_count = 1
+	var/team2_ward_regen_time = 120 SECONDS
+	var/list/team2_wards = list()
+	var/list/image/team2_ward_images = list()
+	var/team2_has_drone = FALSE
+
 	var/game_started = FALSE
 
 	var/list/turf/ai_waypoints_topleft = list()
@@ -150,8 +163,27 @@
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 		player.set_tied_xeno(xeno)
 
-	game_started = TRUE
+	start_game()
 	return TRUE
+
+/datum/moba_controller/proc/start_game()
+	for(var/datum/moba_player_slot/player as anything in team1_data)
+		if(istype(player.caste, /datum/moba_caste/drone) && !team1_has_drone)
+			team1_has_drone = TRUE
+			team1_max_wards += 1
+			team1_ward_regen_time -= 20 SECONDS
+			update_team1_ward_text()
+			break
+
+	for(var/datum/moba_player_slot/player as anything in team2_data)
+		if(istype(player.caste, /datum/moba_caste/drone) && !team2_has_drone)
+			team2_has_drone = TRUE
+			team2_max_wards += 1
+			team2_ward_regen_time -= 20 SECONDS
+			update_team2_ward_text()
+			break
+
+	game_started = TRUE
 
 /datum/moba_controller/proc/handle_tick()
 	if(!game_started)
@@ -183,7 +215,6 @@
 
 	for(var/i in 1 to 3)
 		var/mob/living/carbon/xenomorph/lesser_drone/minion = new()
-		minion.gibs_path = /obj/effect/decal/remains/xeno/decaying
 		minion.AddComponent(/datum/component/moba_minion)
 		minion.set_hive_and_update(side)
 		minion.forceMove(location)
@@ -258,3 +289,82 @@
 
 	SSmoba.unused_maps += new /datum/unused_moba_map(src)
 	qdel(src)
+
+/datum/moba_controller/proc/use_team1_ward()
+	if(team1_ward_count == team1_max_wards)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time)
+	team1_ward_count--
+	update_team1_ward_text()
+
+/datum/moba_controller/proc/regenerate_team1_ward()
+	team1_ward_count++
+	if(team1_ward_count < team1_max_wards)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time)
+	update_team1_ward_text()
+
+/datum/moba_controller/proc/update_team1_ward_text()
+	for(var/datum/moba_player/player in team1)
+		if(player.get_tied_xeno()?.hud_used)
+			player.get_tied_xeno().hud_used.locate_marker.maptext = "<span class='maptext'>Team Wards: <b>[team1_ward_count]</b>/<b>[team1_max_wards]</b></span>"
+			//zonenote maybe add timer to next
+
+/datum/moba_controller/proc/add_team1_ward(obj/effect/alien/resin/construction/ward/ward)
+	var/image/ward_icon = image('icons/obj/structures/alien/structures.dmi', get_turf(ward), "resin_ward")
+	ward_icon.alpha = 160
+	ward_icon.color = GLOB.hive_datum[XENO_HIVE_MOBA_LEFT].color
+	team1_wards += ward
+	team1_ward_images[ward] = ward_icon
+	for(var/datum/moba_player/player as anything in team1)
+		if(!player.tied_client)
+			continue
+
+		player.tied_client.images += ward_icon
+
+/datum/moba_controller/proc/remove_team1_ward(obj/effect/alien/resin/construction/ward/ward)
+	var/image/ward_icon = team1_ward_images[ward]
+	team1_wards -= ward
+	team1_ward_images -= ward
+	for(var/datum/moba_player/player as anything in team1)
+		if(!player.tied_client)
+			continue
+
+		player.tied_client.images -= ward_icon
+
+/datum/moba_controller/proc/use_team2_ward()
+	if(team2_ward_count == team2_max_wards)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time)
+	team1_ward_count--
+	update_team2_ward_text()
+
+/datum/moba_controller/proc/regenerate_team2_ward()
+	team1_ward_count++
+	if(team1_ward_count < team1_max_wards)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time)
+	update_team2_ward_text()
+
+/datum/moba_controller/proc/update_team2_ward_text()
+	for(var/datum/moba_player/player in team2)
+		if(player.get_tied_xeno()?.hud_used)
+			player.get_tied_xeno().hud_used.locate_marker.maptext = "<span class='maptext'>Team Wards: <b>[team2_ward_count]</b>/<b>[team2_max_wards]</b></span>"
+
+/datum/moba_controller/proc/add_team2_ward(obj/effect/alien/resin/construction/ward/ward)
+	var/image/ward_icon = image('icons/obj/structures/alien/structures.dmi', get_turf(ward), "resin_ward")
+	ward_icon.alpha = 160
+	ward_icon.color = GLOB.hive_datum[XENO_HIVE_MOBA_RIGHT].color
+	team2_wards += ward
+	team2_ward_images[ward] = ward_icon
+	for(var/datum/moba_player/player as anything in team2)
+		if(!player.tied_client)
+			continue
+
+		player.tied_client.images += ward_icon
+
+/datum/moba_controller/proc/remove_team2_ward(obj/effect/alien/resin/construction/ward/ward)
+	var/image/ward_icon = team1_ward_images[ward]
+	team2_wards -= ward
+	team2_ward_images -= ward
+	for(var/datum/moba_player/player as anything in team2)
+		if(!player.tied_client)
+			continue
+
+		player.tied_client.images -= ward_icon

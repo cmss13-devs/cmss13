@@ -26,6 +26,10 @@
 	},
 /turf/open/shuttle/red,
 /area/misc/moba/base)
+"ag" = (
+/obj/effect/moba_camp_spawner,
+/turf/open/floor/hybrisa/engineership/engineer_floor4,
+/area/misc/moba)
 "ah" = (
 /obj/effect/alien/resin/moba_turret/right,
 /turf/open/gm/dirt,
@@ -278,6 +282,10 @@
 	},
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/hybrisa/street/asphalt,
+/area/misc/moba)
+"bg" = (
+/obj/effect/moba_camp_spawner,
+/turf/open/floor/whiteyellowfull/east,
 /area/misc/moba)
 "bj" = (
 /turf/open/gm/dirt,
@@ -1279,7 +1287,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/misc/moba)
 "eq" = (
-/obj/effect/moba_camp_spawner,
+/obj/effect/moba_camp_spawner/hellhound,
 /turf/open/floor/corsat/squareswood/north,
 /area/misc/moba)
 "er" = (
@@ -4988,6 +4996,7 @@
 /area/misc/moba)
 "pG" = (
 /obj/item/frame/table/wood/poor,
+/obj/effect/moba_camp_spawner,
 /turf/open/floor/carpet/bcarpet08{
 	icon_state = "bcarpet04"
 	},
@@ -8274,7 +8283,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "yO" = (
-/obj/structure/cargo_container/hybrisa/containersextended/emptymedicalright,
+/obj/structure/cargo_container/hybrisa/containersextended/emptymedicalright{
+	density = 0;
+	opacity = 0
+	},
 /obj/effect/moba_unslashinator,
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
@@ -12203,7 +12215,7 @@ gD
 pu
 mo
 mo
-mo
+ag
 mp
 lC
 jL
@@ -13795,7 +13807,7 @@ ca
 ca
 Bg
 Bg
-Bg
+ca
 WK
 WK
 WK
@@ -15389,7 +15401,7 @@ ci
 ci
 td
 rw
-rw
+bg
 qP
 qj
 pz

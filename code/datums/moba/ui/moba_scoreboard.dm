@@ -37,11 +37,11 @@
 		for(var/datum/moba_item/item_path as anything in player_data.player.held_item_types)
 			item_list += list(list(
 				"name" = item_path::name,
-				"desc" = item_path::description,
+				"desc" = GLOB.moba_item_desc_dict[item_path],
 				"icon_state" = item_path::icon_state
 			))
 		data["team1_players"] += list(list(
-			"name" = player_data.player.get_tied_xeno().real_name,
+			"name" = player_data.player.get_tied_xeno().full_designation,
 			"caste" = player_data.caste.name,
 			"caste_icon" = player_data.caste.icon_state,
 			"kills" = player_data.player.kills,
@@ -56,11 +56,11 @@
 		for(var/datum/moba_item/item_path as anything in player_data.player.held_item_types)
 			item_list += list(list(
 				"name" = item_path::name,
-				"desc" = item_path::description,
+				"desc" = GLOB.moba_item_desc_dict[item_path],
 				"icon_state" = item_path::icon_state
 			))
 		data["team2_players"] += list(list(
-			"name" = player_data.player.get_tied_xeno().real_name,
+			"name" = player_data.player.get_tied_xeno().full_designation,
 			"caste" = player_data.caste.name,
 			"caste_icon" = player_data.caste.icon_state,
 			"kills" = player_data.player.kills,

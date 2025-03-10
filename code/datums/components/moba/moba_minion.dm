@@ -28,6 +28,9 @@
 	parent_xeno.pass_flags.flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
 	parent_xeno.melee_damage_lower *= 0.75 // Less damage overall since they shouldn't be a massive threat to players
 	parent_xeno.melee_damage_upper = parent_xeno.melee_damage_lower
+	parent_xeno.gibs_path = /obj/effect/decal/remains/xeno/decaying
+	parent_xeno.blood_path = /obj/effect/decal/cleanable/blood/xeno/decaying
+	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
 
 /datum/component/moba_minion/Destroy(force, silent)
 	REMOVE_TRAIT(parent_xeno, TRAIT_MOBA_MINION, TRAIT_SOURCE_INHERENT)
@@ -131,3 +134,10 @@
 /datum/component/moba_minion/proc/move_to_next_point()
 	is_moving_to_next_point = TRUE
 	walk_to(parent_xeno, next_turf_target, 0, walk_to_delay)
+
+/datum/component/moba_minion/proc/on_death(datum/source, force)
+	SIGNAL_HANDLER
+
+	if(parent_xeno)
+		walk(parent_xeno, 0)
+		QDEL_IN(parent_xeno, rand(15 SECONDS, 25 SECONDS))

@@ -3,7 +3,7 @@
 import { classes } from 'common/react';
 
 import { useBackend } from '../backend';
-import { Box } from '../components';
+import { Box, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 type Item = {
@@ -34,12 +34,45 @@ const MainTab = () => {
 
   return (
     <Box style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
+      <Box
+        style={{ justifyContent: 'center', display: 'flex', fontSize: '20px' }}
+      >
+        <Tooltip content={'Left Side Kills'}>
+          <Box style={{ color: '#af0c00', marginRight: '20px' }}>
+            {data.team1_total_kills}
+          </Box>
+        </Tooltip>
+        <Tooltip content={'Right Side Kills'}>
+          <Box style={{ color: '#4949ba' }}>{data.team2_total_kills}</Box>
+        </Tooltip>
+      </Box>
+      <Box style={{ border: '2px solid rgb(61, 55, 61)' }} />
       {data.team1_players.map((player, index) => (
-        <PlayerRow
-          player1={player}
-          player2={data.team2_players[index]}
-          key={player}
-        />
+        <>
+          <PlayerRow
+            player1={player}
+            player2={data.team2_players[index]}
+            key={player}
+          />
+          <Box style={{ border: '1px solid rgb(61, 55, 61)' }} />
+          <PlayerRow
+            player1={player}
+            player2={data.team2_players[index]}
+            key={player}
+          />
+          <Box style={{ border: '1px solid rgb(61, 55, 61)' }} />
+          <PlayerRow
+            player1={player}
+            player2={data.team2_players[index]}
+            key={player}
+          />
+          <Box style={{ border: '1px solid rgb(61, 55, 61)' }} />
+          <PlayerRow
+            player1={player}
+            player2={data.team2_players[index]}
+            key={player}
+          />
+        </>
       ))}
     </Box>
   );
@@ -52,7 +85,8 @@ const PlayerRow = (props) => {
   // <span style={{ border: 'dotted', height: '100px' }}>Hello!</span>;
   return (
     <Box style={{ height: '25%', display: 'flex' }}>
-      <PlayerEntry player={player1} />
+      <PlayerEntry player={player1} right />
+      <Box style={{ border: '2px solid rgb(61, 55, 61)' }} />
       <PlayerEntry player={player2} />
     </Box>
   );
@@ -61,27 +95,36 @@ const PlayerRow = (props) => {
 const PlayerEntry = (props) => {
   const player: Player = props.player;
   if (!player) {
-    return <Box style={{ border: 'dotted', flex: '1' }} />;
+    return <Box style={{ flex: '1' }} />;
   }
   // <span style={{ border: 'dotted', height: '100px' }}>Hello!</span>;
   return (
     <Box
       style={{
-        border: 'dotted',
         flex: '1',
         display: 'flex',
         alignItems: 'center',
         flexWrap: 'wrap',
       }}
     >
-      <span className={classes(['mobacastes60x60', player.caste_icon])} />
-      <Box style={{ marginLeft: '5%' }}>Lv {player.level}</Box>
+      <Box
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          paddingLeft: '4%',
+        }}
+      >
+        Lv {player.level}
+        <Tooltip content={player.caste}>
+          <span className={classes(['mobacastes60x60', player.caste_icon])} />
+        </Tooltip>
+      </Box>
       <Box style={{ marginLeft: '5%' }}>{player.name}</Box>
       <Box style={{ marginLeft: '5%' }}>
         {player.kills}/{player.deaths}
       </Box>
       <Box style={{ marginLeft: '5%', width: '100%' }}>
-        <span className={classes(['mobaitems60x60', `empty`])} />
         {player.items.map((item) => (
           <ItemEntry item={item} key={item} />
         ))}
@@ -92,7 +135,11 @@ const PlayerEntry = (props) => {
 
 const ItemEntry = (props) => {
   const item: Item = props.item;
-  return <span className={classes(['mobaitems60x60', `${item.icon_state}`])} />;
+  return (
+    <Tooltip innerhtml={`<h2>${item.name}</h2><br>${item.desc}`}>
+      <span className={classes(['mobaitems45x45', `${item.icon_state}`])} />
+    </Tooltip>
+  );
 };
 
 export const MobaScoreboard = () => {

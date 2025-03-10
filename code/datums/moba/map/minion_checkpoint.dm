@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 
 /obj/effect/moba_minion_checkpoint/left/bot_diag1
 	next_x_coord = 27
-	next_y_coord = 1
+	next_y_coord = 11
 	alt_next_x_coord = 12
 	alt_next_y_coord = 28
 

@@ -1,5 +1,6 @@
 /datum/moba_item/foo
 	name = "Foo"
+	icon_state = "blue"
 	gold_cost = 200
 
 	health = 500
@@ -8,6 +9,7 @@
 
 /datum/moba_item/bar
 	name = "Bar"
+	icon_state = "red"
 	gold_cost = 50
 	unique = TRUE
 

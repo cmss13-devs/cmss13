@@ -17,6 +17,7 @@
 	var/datum/weakref/player_datum
 	var/static/mutable_appearance/level_up_overlay
 	var/max_level = 3
+	var/is_ultimate = FALSE
 
 /datum/action/xeno_action/moba/New(datum/moba_player/player)
 	player_datum = WEAKREF(player)
@@ -27,8 +28,12 @@
 /datum/action/xeno_action/moba/can_use_action()
 	var/datum/moba_player/player = player_datum.resolve()
 	if(!player)
-		return ..()
+		return FALSE
 	if(player.unspent_levels)
+		if(is_ultimate && (player.ability_path_level_dict[type] >= player.max_ultimate_level))
+			if(!player.ability_path_level_dict[type])
+				return FALSE
+			return ..()
 		return TRUE
 	if(!player.ability_path_level_dict[type])
 		return FALSE
@@ -39,6 +44,8 @@
 	if(!player)
 		return ..()
 	if(player.unspent_levels && (player.ability_path_level_dict[type] < max_level))
+		if(is_ultimate && (player.ability_path_level_dict[type] >= player.max_ultimate_level))
+			return ..()
 		player.spend_level(type)
 		level_up_ability()
 		return FALSE
@@ -92,6 +99,7 @@
 	var/datum/weakref/player_datum
 	var/static/mutable_appearance/level_up_overlay
 	var/max_level = 3
+	var/is_ultimate = FALSE
 
 /datum/action/xeno_action/activable/moba/New(datum/moba_player/player)
 	player_datum = WEAKREF(player)
@@ -102,8 +110,12 @@
 /datum/action/xeno_action/activable/moba/can_use_action()
 	var/datum/moba_player/player = player_datum.resolve()
 	if(!player)
-		return ..()
+		return FALSE
 	if(player.unspent_levels)
+		if(is_ultimate && (player.ability_path_level_dict[type] >= player.max_ultimate_level))
+			if(!player.ability_path_level_dict[type])
+				return FALSE
+			return ..()
 		return TRUE
 	if(!player.ability_path_level_dict[type])
 		return FALSE
@@ -114,9 +126,11 @@
 	if(!player)
 		return ..()
 	if(player.unspent_levels && (player.ability_path_level_dict[type] < max_level))
+		if(is_ultimate && (player.ability_path_level_dict[type] >= player.max_ultimate_level))
+			return ..()
 		player.spend_level(type)
 		level_up_ability(player.ability_path_level_dict[type])
-		return
+		return FALSE
 	return ..()
 
 /datum/action/xeno_action/activable/moba/update_button_icon()

@@ -366,6 +366,8 @@
 	var/plasma_regeneration_mult = 1
 	/// What gibs this xeno should produce on death
 	var/gibs_path = /obj/effect/decal/remains/xeno
+	/// What blood this xeno should produce
+	var/blood_path = /obj/effect/decal/cleanable/blood/xeno
 	/// If FALSE, blocks passive healing and plasma regen
 	var/passive_healing = TRUE
 

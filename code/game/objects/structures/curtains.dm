@@ -22,7 +22,7 @@
 	..()
 
 /obj/structure/curtain/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!unslashable)
+	if(unslashable)
 		return
 
 	M.animation_attack_on(src)

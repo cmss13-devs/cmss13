@@ -64,6 +64,7 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 	switch(action)
 		if("buy_item")
 			if(!params["path"] || !istype(get_area(ui.user), /area/misc/moba/base))
+				ui.close()
 				return
 			var/item_path = text2path(params["path"])
 			if(!ispath(item_path, /datum/moba_item))

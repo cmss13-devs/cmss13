@@ -36,6 +36,8 @@
 	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
+	map_id = id
+	right_side = right
 	player_datum = player
 
 	parent_xeno = parent
@@ -44,6 +46,15 @@
 	parent_xeno.sight = SEE_TURFS // We allow seeing turfs but not mobs
 	parent_xeno.need_weeds = FALSE
 	parent_xeno.passive_healing = FALSE // We do this ourselves
+	parent_xeno.gibs_path = /obj/effect/decal/remains/xeno/decaying
+	parent_xeno.blood_path = /obj/effect/decal/cleanable/blood/xeno/decaying
+	parent_xeno.create_hud()
+	// cannot be bothered to create real hud elements
+	var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
+	parent_xeno.hud_used.locate_marker.maptext = "<span class='maptext'>Team Wards: <b>[!right_side ? controller.team1_ward_count : controller.team2_ward_count]</b>/<b>[!right_side ? controller.team1_max_wards : controller.team2_max_wards]</b></span>"
+	parent_xeno.hud_used.locate_marker.maptext_width = 128
+	parent_xeno.hud_used.locate_marker.maptext_x = -48
+	parent_xeno.hud_used.locate_marker.maptext_y = 160
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	parent_xeno.AddComponent(\
 		/datum/component/moba_death_reward,\
@@ -53,15 +64,13 @@
 		TRUE,\
 	)
 
-	map_id = id
-
 	for(var/datum/action/action_path as anything in parent_xeno.base_actions)
 		remove_action(parent_xeno, action_path)
 
 	give_action(parent_xeno, /datum/action/open_moba_scoreboard, map_id)
 	give_action(parent_xeno, /datum/action/xeno_action/watch_xeno)
+	give_action(parent_xeno, /datum/action/xeno_action/activable/place_ward, null, null, right_side, map_id)
 
-	right_side = right
 	store_ui = new(parent_xeno)
 	player_caste = GLOB.moba_castes[parent_xeno.caste.type]
 	player_caste.apply_caste(parent_xeno, src, player_datum)
@@ -95,6 +104,7 @@
 	RegisterSignal(parent_xeno, COMSIG_XENO_ADD_ABILITIES, PROC_REF(on_add_abilities))
 	RegisterSignal(parent_xeno, COMSIG_XENO_TRY_HIVEMIND_TALK, PROC_REF(on_hivemind_talk))
 	RegisterSignal(parent_xeno, COMSIG_XENO_TRY_OVERWATCH, PROC_REF(on_overwatch))
+	RegisterSignal(parent_xeno, COMSIG_MOB_LOGGED_IN, PROC_REF(on_reconnect))
 
 /datum/component/moba_player/proc/handle_level_up()
 	player_datum.level_up()
@@ -176,7 +186,7 @@
 		if(player_datum.level >= MOBA_MAX_LEVEL)
 			break
 
-		if(player_datum.xp > level_up_thresholds[player_datum.level])
+		if(player_datum.xp >= level_up_thresholds[player_datum.level])
 			player_datum.xp = max(0, player_datum.xp - level_up_thresholds[player_datum.level])
 			handle_level_up()
 		else
@@ -298,12 +308,14 @@
 
 	return COMPONENT_CANCEL_OVERWATCH
 
-/datum/component/moba_player/proc/handle_overwatch()
+/datum/component/moba_player/proc/handle_overwatch() //zonenote: come back to this and clean up overwatching objects if this becomes a permanent thing
 	if(parent_xeno.observed_xeno)
 		parent_xeno.overwatch(parent_xeno.observed_xeno, TRUE)
 		return
 
-	var/list/possible_xenos = list()
+	var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
+
+	var/list/possible_things = list()
 	for(var/datum/moba_player/player as anything in SSmoba.get_moba_controller(map_id).players)
 		var/mob/living/carbon/xenomorph/player_xeno = player.get_tied_xeno()
 		if((player == player_datum) || !player_xeno)
@@ -315,14 +327,45 @@
 		if(!HAS_TRAIT(player_xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id)))
 			continue
 
-		possible_xenos += player_xeno
+		possible_things += player_xeno
 
-	var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(parent_xeno, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
-
-	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == parent_xeno.observed_xeno || selected_xeno.stat == DEAD || !parent_xeno.check_state(TRUE))
-		parent_xeno.overwatch(parent_xeno.observed_xeno, TRUE) // Cancel OW
+	var/list/ward_list
+	if(!right_side)
+		ward_list = controller.team1_wards
 	else
-		parent_xeno.overwatch(selected_xeno)
+		ward_list = controller.team2_wards
+
+	for(var/obj/effect/alien/resin/construction/ward/ward as anything in ward_list)
+		if(QDELETED(ward))
+			ward_list -= ward
+			continue
+
+		possible_things += ward
+
+	var/atom/selected_thing = tgui_input_list(parent_xeno, "Target", "Watch what?", possible_things, theme="hive_status")
+
+	if(isxeno(selected_thing))
+		var/mob/living/carbon/xenomorph/selected_xeno = selected_thing
+		if(!selected_xeno || QDELETED(selected_xeno) || selected_xeno == parent_xeno.observed_xeno || selected_xeno.stat == DEAD || !parent_xeno.check_state(TRUE))
+			parent_xeno.overwatch(parent_xeno.observed_xeno, TRUE) // Cancel OW
+		else
+			parent_xeno.overwatch(selected_xeno)
+	else
+		if(!selected_thing || QDELETED(selected_thing) || selected_thing == parent_xeno.observed_xeno)
+			parent_xeno.overwatch(parent_xeno.observed_xeno, TRUE) // Cancel OW
+		else
+			parent_xeno.overwatch(selected_thing)
+
+/datum/component/moba_player/proc/on_reconnect(mob/source)
+	SIGNAL_HANDLER
+
+	var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
+	if(!right_side)
+		for(var/obj/effect/alien/resin/construction/ward/ward as anything in controller.team1_wards)
+			parent_xeno.client.images += ward.appearance
+	else
+		for(var/obj/effect/alien/resin/construction/ward/ward as anything in controller.team2_wards)
+			parent_xeno.client.images += ward.appearance
 
 #ifdef MOBA_TESTING
 /mob/living/carbon/xenomorph/proc/gxp()

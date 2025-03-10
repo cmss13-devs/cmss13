@@ -32,16 +32,16 @@ export const MobaItemStore = (props) => {
             <Stack.Item grow mr={1}>
               <Section fill height="100%">
                 {items.map((item) => (
-                  <Button
-                    tooltip={item.description}
-                    width="100%"
-                    fontSize="15px"
-                    textAlign="center"
-                    key={item.path}
-                    onClick={() => setItem(item)}
-                  >
-                    {item.name}
-                  </Button>
+                  <Tooltip innerhtml={item.description} key={item.path}>
+                    <Button
+                      width="100%"
+                      fontSize="15px"
+                      textAlign="center"
+                      onClick={() => setItem(item)}
+                    >
+                      {item.name}
+                    </Button>
+                  </Tooltip>
                 ))}
               </Section>
             </Stack.Item>
@@ -53,7 +53,13 @@ export const MobaItemStore = (props) => {
                     <Stack.Item>
                       <center>{chosenItem.name}</center>
                     </Stack.Item>
-                    <Stack.Item><Box dangerouslySetInnerHTML={{__html: chosenItem.description}} /></Stack.Item>
+                    <Stack.Item>
+                      <Box
+                        dangerouslySetInnerHTML={{
+                          __html: chosenItem.description,
+                        }}
+                      />
+                    </Stack.Item>
                     {owned_items.indexOf(chosenItem.name) !== -1 &&
                     chosenItem.unique ? (
                       <Stack.Item

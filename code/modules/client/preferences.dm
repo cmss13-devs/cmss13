@@ -319,13 +319,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	real_name = random_name(gender)
 	gear = list()
 
-	C.tgui_say?.load()
+	C?.tgui_say?.load()
 
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
 
-	C.tgui_say?.load()
+	C?.tgui_say?.load()
 
 /datum/preferences/Del()
 	. = ..()

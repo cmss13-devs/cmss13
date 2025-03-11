@@ -59,10 +59,13 @@
 /obj/proc/check_access(obj/item/I)
 	//These generations have been moved out of /obj/New() because they were slowing down the creation of objects that never even used the access system.
 	gen_access()
-	if(!islist(req_access)) return 1//something's very wrong
+	if(!islist(req_access))
+		return 1//something's very wrong
 	var/L[] = req_access
-	if(!length(L) && !LAZYLEN(req_one_access)) return 1//no requirements
-	if(!I) return
+	if(!length(L) && !LAZYLEN(req_one_access))
+		return 1//no requirements
+	if(!I)
+		return
 
 	var/list/A = I.GetAccess()
 	for(var/i in req_access)
@@ -78,18 +81,24 @@
 
 /obj/proc/check_access_list(L[])
 	gen_access()
-	if(!req_access  && !req_one_access) return 1
-	if(!islist(req_access)) return 1
+	if(!req_access  && !req_one_access)
+		return 1
+	if(!islist(req_access))
+		return 1
 	if(!length(req_access) && !islist(req_one_access))
 		return TRUE
-	if(!length(req_access) && !LAZYLEN(req_one_access)) return 1
-	if(!islist(L)) return
+	if(!length(req_access) && !LAZYLEN(req_one_access))
+		return 1
+	if(!islist(L))
+		return
 	var/i
 	for(i in req_access)
-		if(!(i in L)) return //doesn't have this access
+		if(!(i in L))
+			return //doesn't have this access
 	if(LAZYLEN(req_one_access))
 		for(i in req_one_access)
-			if(i in L) return 1//has an access from the single access list
+			if(i in L)
+				return 1//has an access from the single access list
 		return
 	return 1
 
@@ -135,6 +144,7 @@
 				ACCESS_MARINE_SYNTH,
 				ACCESS_MARINE_ASO,
 				ACCESS_MARINE_CHAPLAIN,
+				ACCESS_MARINE_FIELD_DOC,
 				ACCESS_PRESS,
 			)
 
@@ -295,7 +305,7 @@
 		if(1)//Security
 			return list(ACCESS_MARINE_CMP, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY)
 		if(2)//Medbay
-			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY)
+			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_FIELD_DOC, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY)
 		if(3)//Research
 			return list(ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 		if(4)//Engineering
@@ -365,6 +375,8 @@
 			return "Armory"
 		if(ACCESS_MARINE_CMO)
 			return "CMO's Office"
+		if(ACCESS_MARINE_FIELD_DOC)
+			return "Field Doctor Supplies"
 		if(ACCESS_MARINE_MEDBAY)
 			return "[MAIN_SHIP_NAME] Medbay"
 		if(ACCESS_MARINE_RESEARCH)

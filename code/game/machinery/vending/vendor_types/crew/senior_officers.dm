@@ -77,6 +77,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
 
 
@@ -410,7 +411,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE ONE)", 0, null, null, null),
 		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -437,7 +438,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("PATCHES", 0, null, null, null),
 		list("Falling Falcons Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
+		list("Falling Falcons UA Shoulder Patch", 1, /obj/item/clothing/accessory/patch/falconalt, null, VENDOR_ITEM_REGULAR),
+		list("USCM Large Chest Patch", 1, /obj/item/clothing/accessory/patch/uscmlarge, null, VENDOR_ITEM_REGULAR),
 		list("USCM Shoulder Patch", 1, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
+		list("United Americas Shoulder patch", 1, /obj/item/clothing/accessory/patch/ua, null, VENDOR_ITEM_REGULAR),
+		list("United Americas Flag Shoulder patch", 1, /obj/item/clothing/accessory/patch/uasquare, null, VENDOR_ITEM_REGULAR),
 
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),

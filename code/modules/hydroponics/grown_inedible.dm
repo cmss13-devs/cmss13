@@ -142,13 +142,15 @@
 
 /obj/item/grown/nettle/attack(mob/living/carbon/M as mob, mob/user as mob)
 
-	if(!..()) return
+	if(!..())
+		return
 
 	lose_leaves(user)
 
 /obj/item/grown/nettle/death/attack(mob/living/carbon/M as mob, mob/user as mob)
 
-	if(!..()) return
+	if(!..())
+		return
 
 	if(istype(M, /mob/living))
 		to_chat(M, SPAN_WARNING("You are stunned by the powerful acid of the deathnettle!"))

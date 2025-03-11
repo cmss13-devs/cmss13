@@ -89,7 +89,8 @@
 	addtimer(CALLBACK(src, PROC_REF(finish_leap), T), 5)
 
 /mob/living/carbon/human/proc/finish_leap(mob/living/T)
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & LEAPING)
+		status_flags &= ~LEAPING
 
 	if(!Adjacent(T))
 		to_chat(src, SPAN_DANGER("You miss!"))

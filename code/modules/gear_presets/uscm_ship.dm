@@ -29,6 +29,7 @@
 	faction = FACTION_WY
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_CIVILIAN
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -74,6 +75,7 @@
 /datum/equipment_preset/uscm_ship/reporter
 	name = "Combat Correspondent (Press)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_CIVILIAN
 
 	access = list(
 		ACCESS_MARINE_COMMAND,
@@ -108,6 +110,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK) // Needs backpack for loadout gear to spawn
 
 /datum/equipment_preset/uscm_ship/reporter/load_preset(mob/living/carbon/human/new_human, randomise, count_participant, client/mob_client, show_job_gear)
 	. = ..()
@@ -177,7 +180,7 @@
 	rank = JOB_CHIEF_ENGINEER
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "CE"
-	minimum_age = 27
+	minimum_age = 25
 	skills = /datum/skills/CE
 
 	minimap_icon = "ce"
@@ -294,7 +297,7 @@
 	rank = JOB_CHIEF_REQUISITION
 	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "QM"
-	minimum_age = 27
+	minimum_age = 25
 	skills = /datum/skills/RO
 
 	minimap_icon = "cargo"
@@ -367,7 +370,7 @@
 	rank = JOB_XO
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "XO"
-	minimum_age = 35
+	minimum_age = 27
 	skills = /datum/skills/XO
 
 	minimap_icon = "xo"
@@ -406,7 +409,7 @@
 	rank = JOB_SO
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SO"
-	minimum_age = 25
+	minimum_age = 23
 	skills = /datum/skills/SO
 
 	minimap_icon = "so"
@@ -485,7 +488,7 @@
 	rank = JOB_AUXILIARY_OFFICER
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "ASO"
-	minimum_age = 27
+	minimum_age = 25
 	skills = /datum/skills/auxiliary_officer
 
 	minimap_icon = "aso"
@@ -544,6 +547,7 @@
 	rank = JOB_CAS_PILOT
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "GP"
+	minimum_age = 23
 	skills = /datum/skills/pilot
 
 	minimap_icon = "gp"
@@ -595,6 +599,7 @@
 	rank = JOB_DROPSHIP_PILOT
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "DP"
+	minimum_age = 23
 	skills = /datum/skills/pilot
 
 	minimap_icon = "pilot"
@@ -700,7 +705,7 @@
 	rank = "USCM Officer"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Cpt"
-	minimum_age = 40
+	minimum_age = 25
 	skills = /datum/skills/commander
 
 	utility_hat = list(/obj/item/clothing/head/beret/cm)

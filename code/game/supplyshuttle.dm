@@ -429,6 +429,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	req_access = list(ACCESS_MARINE_CARGO)
 	var/x_supply = 0
 	var/y_supply = 0
+	var/z_supply = 0
 	var/datum/squad/current_squad = null
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
@@ -477,6 +478,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
+	data["z_offset"] = z_supply
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -503,6 +505,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			if(!new_y)
 				return
 			y_supply = new_y
+			. = TRUE
+
+		if("set_z")
+			var/new_z = text2num(params["set_z"])
+			if(!new_z)
+				return
+			z_supply = new_z
 			. = TRUE
 
 		if("pick_squad")
@@ -559,11 +568,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
-	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(length(z_coord))
-		z_coord = z_coord[1]
-	else
-		z_coord = 1 // fuck it
+	var/z_coord = deobfuscate_z(z_supply)
+
+	if(!is_ground_level(z_coord))
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
@@ -920,7 +929,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
 
 		// Delete everything else.
-		else qdel(movable_atom)
+		else
+			qdel(movable_atom)
 
 	if(screams)
 		for(var/atom/computer as anything in bound_supply_computer_list)
@@ -1074,7 +1084,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/supply/asrs/attack_hand(mob/user as mob)
-	if(!is_mainship_level(z)) return
+	if(!is_mainship_level(z))
+		return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
 		return
@@ -1304,7 +1315,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
-	if(!frequency) return
+	if(!frequency)
+		return
 
 	var/datum/signal/status_signal = new
 	status_signal.source = src

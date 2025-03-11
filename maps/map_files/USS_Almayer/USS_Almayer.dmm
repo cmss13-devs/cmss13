@@ -2298,11 +2298,7 @@
 /obj/structure/platform/metal/almayer/west{
 	layer = 2.9
 	},
-/obj/structure/platform/metal/almayer/west{
-	layer = 2.9
-	},
-/obj/structure/platform/metal/almayer/west{
-	dir = 4;
+/obj/structure/platform/metal/almayer/east{
 	layer = 2.9
 	},
 /turf/open/floor/plating/plating_catwalk,

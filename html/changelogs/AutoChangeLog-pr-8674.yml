@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - bugfix: "tgui windows closing should no longer cause sticky keys"

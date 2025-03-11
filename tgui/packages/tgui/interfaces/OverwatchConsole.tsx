@@ -462,7 +462,7 @@ const SquadMonitor = (props) => {
 
   return (
     <Section
-      pb="1.5%"
+      pb="3%"
       fill
       fontSize="14px"
       title="Monitor"
@@ -517,7 +517,7 @@ const SquadMonitor = (props) => {
         value={marineSearch}
         onInput={(e, value) => setMarineSearch(value)}
       />
-      <Section m="2px" mb="4px" fill height="95%" scrollable>
+      <Section m="2px" pb="2px" fill scrollable>
         <Table>
           <Table.Row bold fontSize="14px">
             <Table.Cell textAlign="center">Name</Table.Cell>

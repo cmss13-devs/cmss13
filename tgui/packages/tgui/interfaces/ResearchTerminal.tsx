@@ -1,6 +1,14 @@
 import { ComponentProps, useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import { Box, Button, Flex, Section, Stack, Tabs } from 'tgui/components';
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Section,
+  Stack,
+  Tabs,
+} from 'tgui/components';
 import { Table, TableCell, TableRow } from 'tgui/components/Table';
 import { Window } from 'tgui/layouts';
 
@@ -193,7 +201,7 @@ const ResearchReportTable = (props: {
           </Flex.Item>
         </Flex>
       </Stack.Item>
-      <hr />
+      <Divider />
       <Stack.Item>
         <CompoundTable
           hideOld={hideOld}
@@ -590,8 +598,10 @@ export const ResearchTerminal = () => {
   const [isConfirm, setConfirm] = useState<string | undefined>(undefined);
   return (
     <Window width={480 * 2} height={320 * 2} theme="crtyellow">
-      <Window.Content scrollable className="ResearchTerminal">
+      <Window.Content className="ResearchTerminal">
         <Section
+          fill
+          scrollable
           title={`Clearance Level ${data.clearance_level}`}
           buttons={
             <ClearanceImproveButton

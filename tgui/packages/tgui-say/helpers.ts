@@ -30,8 +30,6 @@ export const windowSet = (size = WINDOW_SIZES.small, scale: boolean) => {
 
   let sizeStr = `${WINDOW_SIZES.width * pixelRatio}x${size * pixelRatio}`;
 
-  console.log(sizeStr);
-
   Byond.winset('tgui_say', {
     size: sizeStr,
   });

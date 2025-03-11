@@ -24594,9 +24594,6 @@
 /obj/structure/platform/metal/strata/north,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
-"dIV" = (
-/turf/open/space/basic,
-/area/navalis/indoors/command/lower_deck/sub_pen)
 "dJd" = (
 /obj/structure/prop/resin_prop,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
@@ -29233,10 +29230,10 @@
 	pixel_y = -1;
 	pixel_x = 3
 	},
-/obj/structure/barricade/wooden{
+/obj/structure/bed/chair{
 	dir = 4;
-	health = 600;
-	name = "reinforced wooden barricade"
+	layer = 2.7;
+	pixel_x = -12
 	},
 /turf/open/floor/almayer/plating,
 /area/navalis/indoors/command/upper_deck/starboard)
@@ -30119,6 +30116,16 @@
 	dir = 8;
 	pixel_x = 7
 	},
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/machinery/vending/cola,
+/obj/structure/bed/chair{
+	dir = 4;
+	layer = 2.7
+	},
 /turf/open/floor/almayer/plating,
 /area/navalis/indoors/command/upper_deck/starboard)
 "gKR" = (
@@ -30773,13 +30780,6 @@
 /obj/structure/platform/metal/strata/west,
 /turf/open_space,
 /area/navalis/outdoors/landing_zone_2/under)
-"hfG" = (
-/obj/structure/barricade/wooden{
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1,
-/area/navalis/indoors/command/upper_deck/starboard)
 "hfH" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/north,
 /area/navalis/indoors/residential/cafeteria)
@@ -38957,18 +38957,6 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/navalis/indoors/logistic/lower_deck/port)
-"lZl" = (
-/obj/structure/barricade/wooden{
-	dir = 4;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/obj/structure/barricade/wooden{
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1,
-/area/navalis/indoors/command/upper_deck/starboard)
 "lZC" = (
 /turf/open/floor/corsat/box,
 /area/navalis/indoors/logistic/lower_deck/fore)
@@ -39069,6 +39057,11 @@
 	icon_state = "E";
 	pixel_y = -1;
 	pixel_x = 3
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	layer = 2.7;
+	pixel_x = -8
 	},
 /turf/open/floor/almayer/plating,
 /area/navalis/indoors/command/upper_deck/starboard)
@@ -43499,14 +43492,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/upper_deck/walkway)
-"oQQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/wooden{
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1,
-/area/navalis/indoors/command/upper_deck/starboard)
 "oRk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -59973,6 +59958,14 @@
 	icon_state = "cargo_arrow4";
 	dir = 8;
 	pixel_x = 7
+	},
+/obj/structure/barricade/wooden{
+	dir = 8;
+	health = 600;
+	name = "reinforced wooden barricade"
+	},
+/obj/structure/largecrate/empty/case/double{
+	layer = 2.9
 	},
 /turf/open/floor/almayer/plating,
 /area/navalis/indoors/command/upper_deck/starboard)
@@ -115814,7 +115807,7 @@ wFN
 nQB
 dIb
 oIh
-dIV
+bvQ
 iFw
 bvQ
 bvQ
@@ -197976,7 +197969,7 @@ vfx
 pZu
 nNC
 ffn
-oQQ
+iEs
 yaN
 cyC
 vih
@@ -198140,7 +198133,7 @@ pfV
 tYG
 bjf
 ffn
-hfG
+tEk
 yaN
 tDM
 vih
@@ -198304,7 +198297,7 @@ vfx
 gKi
 yal
 kGi
-hfG
+tEk
 yaN
 tDM
 nDe
@@ -198468,7 +198461,7 @@ vfx
 gkf
 mcJ
 kGi
-lZl
+tEk
 kUw
 aBW
 nDe

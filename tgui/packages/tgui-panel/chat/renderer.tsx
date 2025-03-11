@@ -128,6 +128,7 @@ class ChatRenderer {
   rootNode: HTMLElement | null;
   queue: message[];
   messages: message[];
+  storeQueue: message[];
   visibleMessages: message[];
   page: Page | null;
   events: EventEmitter;

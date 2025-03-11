@@ -651,8 +651,8 @@ class ChatRenderer {
     // Compile chat log as HTML text
     let messagesHtml = '';
     for (let message of this.visibleMessages) {
-      if (message.node) {
-        messagesHtml += message.html + '\n';
+      if (message.node && typeof message.node !== 'string') {
+        messagesHtml += message.node.outerHTML + '\n';
       }
     }
     // Create a page

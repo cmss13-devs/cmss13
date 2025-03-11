@@ -18,16 +18,21 @@
     const dbPromise = new Promise((resolve, reject) => {
       const indexedDB = window.indexedDB || window.msIndexedDB;
       const req = indexedDB.open(INDEXED_DB_NAME, INDEXED_DB_VERSION);
-      req.onupgradeneeded = () => {
+      req.onupgradeneeded = (event) => {
         try {
-          req.result.createObjectStore(INDEXED_DB_STORE_NAME);
 
-          req.result.createObjectStore("ring");
-          req.result.createObjectStore("messages", { autoIncrement: true }).transaction.oncomplete = async () => {
-            const trans = req.result.transaction("messages", "readwrite").objectStore("messages");
+          if(event.oldVersion < 1) {
+            req.result.createObjectStore(INDEXED_DB_STORE_NAME);
+          }
 
-            for (let index = 0; index < MAX_MESSAGES; index++) {
-                await promiseForRequest(trans.add(null));
+          if(event.oldVersion < 2) {
+            req.result.createObjectStore("ring");
+            req.result.createObjectStore("messages", { autoIncrement: true }).transaction.oncomplete = async () => {
+              const trans = req.result.transaction("messages", READ_WRITE).objectStore("messages");
+
+              for (let index = 0; index < MAX_MESSAGES; index++) {
+                  await promiseForRequest(trans.add(null));
+              }
             }
           }
 
@@ -80,7 +85,7 @@
     const addMessageBatch = async (messages) => {
       const database = await dbPromise;
 
-      const trans = database.transaction("messages", "readwrite").objectStore("messages");
+      const trans = database.transaction("messages", READ_WRITE).objectStore("messages");
 
       let cursorReq = trans.openCursor(IDBKeyRange.bound(writeFrom, writeFrom + messages.length, true));
       let cursor = await promiseForRequest(cursorReq);
@@ -102,13 +107,13 @@
           }
       }
 
-      database.transaction("ring", "readwrite").objectStore("ring").put(writeFrom, "value");
+      database.transaction("ring", READ_WRITE).objectStore("ring").put(writeFrom, "value");
     }
 
     const getSavedMessages = async () => {
       const database = await dbPromise;
 
-      const trans = database.transaction("messages", "readonly").objectStore("messages");
+      const trans = database.transaction("messages", READ_ONLY).objectStore("messages");
       const messyMessages = await promiseForRequest(trans.getAll());
 
       const upTo = messyMessages.splice(0, writeFrom);

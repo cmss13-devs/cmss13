@@ -1,0 +1,4 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - qol: "Handfulls of ammos inserted into storages will now try to fill other handfulls of ammos"

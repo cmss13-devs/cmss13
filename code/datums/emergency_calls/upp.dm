@@ -149,6 +149,8 @@
 
 /obj/effect/landmark/ert_spawns/distress_upp
 	name = "Distress_UPP"
+	icon_state = "spawn_distress_upp"
 
 /obj/effect/landmark/ert_spawns/distress_upp/item
 	name = "Distress_UPPItem"
+	icon_state = "distress_item"

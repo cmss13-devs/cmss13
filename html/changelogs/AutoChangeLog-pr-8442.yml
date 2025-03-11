@@ -1,0 +1,4 @@
+author: "Mikrel0712, Molto, Kugamo"
+delete-after: True
+changes:
+  - rscadd: "Replaced xenomorph devour with hauling."

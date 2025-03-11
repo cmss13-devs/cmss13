@@ -136,6 +136,16 @@ They're all essentially identical when it comes to getting the job done.
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
 
+//Is the ammo magazine transferrable, silent version
+/obj/item/ammo_magazine/proc/is_transferable(obj/item/ammo_magazine/source)
+	if(default_ammo != source.default_ammo)
+		return FALSE
+	if(current_rounds == max_rounds)
+		return FALSE
+	if(source.caliber != caliber)
+		return FALSE
+	return TRUE
+
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)
 	if(current_rounds == max_rounds) //Does the mag actually need reloading?

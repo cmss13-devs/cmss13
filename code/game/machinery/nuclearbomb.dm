@@ -608,7 +608,6 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	var/list/humans_uscm = list()
 	for(var/mob/current_mob as anything in humans_other)
-		var/mob/living/carbon/human/current_human = current_mob
 		if(current_mob.stat == UNCONSCIOUS || isyautja(current_mob))
 			humans_other -= current_mob
 			continue

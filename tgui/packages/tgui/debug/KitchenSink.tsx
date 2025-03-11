@@ -5,9 +5,8 @@
  */
 
 import { useState } from 'react';
-
-import { Flex, Section, Tabs } from '../components';
-import { Pane, Window } from '../layouts';
+import { Section, Stack, Tabs } from 'tgui/components';
+import { Pane, Window } from 'tgui/layouts';
 
 const r = require.context('../stories', false, /\.stories\.jsx$/);
 
@@ -21,17 +20,17 @@ const r = require.context('../stories', false, /\.stories\.jsx$/);
  */
 const getStories = () => r.keys().map((path) => r(path));
 
-export const KitchenSink = (props) => {
+export const KitchenSink = (props: { readonly panel: boolean }) => {
   const { panel } = props;
-  const [theme, setTheme] = useState(null);
+  const [theme, setTheme] = useState(undefined);
   const [pageIndex, setPageIndex] = useState(0);
   const stories = getStories();
   const story = stories[pageIndex];
   const Layout = panel ? Pane : Window;
   return (
     <Layout title="Kitchen Sink" width={600} height={500} theme={theme}>
-      <Flex height="100%">
-        <Flex.Item m={1} mr={0}>
+      <Stack fill>
+        <Stack.Item m={1} mr={0}>
           <Section fill fitted>
             <Tabs vertical>
               {stories.map((story, i) => (
@@ -46,13 +45,13 @@ export const KitchenSink = (props) => {
               ))}
             </Tabs>
           </Section>
-        </Flex.Item>
-        <Flex.Item position="relative" grow={1}>
+        </Stack.Item>
+        <Stack.Item position="relative" grow>
           <Layout.Content scrollable>
             {story.meta.render(theme, setTheme)}
           </Layout.Content>
-        </Flex.Item>
-      </Flex>
+        </Stack.Item>
+      </Stack>
     </Layout>
   );
 };

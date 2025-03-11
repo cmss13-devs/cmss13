@@ -5,12 +5,20 @@
  */
 
 import { shallowDiffers } from 'common/react';
-import { Component, createRef } from 'react';
+import { Component, createRef, RefObject } from 'react';
 import { Button } from 'tgui/components';
 
 import { chatRenderer } from './renderer';
 
-export class ChatPanel extends Component {
+type ChatPanelTypes = {
+  readonly lineHeight?: number;
+  readonly fontSize?: number;
+};
+
+export class ChatPanel extends Component<ChatPanelTypes> {
+  ref: RefObject<HTMLDivElement>;
+  handleScrollTrackingChange: (value: any) => void;
+  state: { scrollTracking: boolean };
   constructor(props) {
     super(props);
     this.ref = createRef();
@@ -39,7 +47,7 @@ export class ChatPanel extends Component {
     );
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps?) {
     requestAnimationFrame(() => {
       chatRenderer.ensureScrollTracking();
     });

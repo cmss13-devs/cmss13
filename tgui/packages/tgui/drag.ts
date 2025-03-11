@@ -137,6 +137,8 @@ export const recallWindowGeometry = async (
 
   if (!options.scale) {
     window.document.body.style['zoom'] = `${100 / window.devicePixelRatio}%`;
+  } else {
+    window.document.body.style['zoom'] = null;
   }
 
   // Wait until screen offset gets resolved

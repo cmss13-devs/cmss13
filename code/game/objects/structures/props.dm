@@ -811,6 +811,20 @@
 	desc = "A crashed VTOL"
 	icon_state = "vtol_damaged"
 
+// USCM Aerospace Fighter
+
+/obj/structure/prop/vehicles/aircraft/aircraft
+	name = "\improper EVAC-3 Aerospace fighter"
+	desc = "A Alphatech Aircraft"
+	icon = 'icons/obj/vehicles/aircraft_prop.dmi'
+	icon_state = "evac_uscm"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/vehicles/aircraft/aircraft/usaf
+	icon_state = "evac_usaf"
+
 // USCM Tank
 
 /obj/structure/prop/vehicles/tank/longstreet

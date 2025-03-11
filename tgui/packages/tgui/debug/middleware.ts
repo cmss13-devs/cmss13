@@ -5,9 +5,10 @@
  */
 
 import { KEY_BACKSPACE, KEY_F10, KEY_F11, KEY_F12 } from 'common/keycodes';
+import type { AnyAction, Middleware } from 'common/redux';
+import { globalEvents } from 'tgui/events';
+import { acquireHotKey } from 'tgui/hotkeys';
 
-import { globalEvents } from '../events';
-import { acquireHotKey } from '../hotkeys';
 import {
   openExternalBrowser,
   toggleDebugLayout,
@@ -20,15 +21,15 @@ const relayedTypes = [
   'chat/message',
 ];
 
-export const debugMiddleware = (store) => {
+export const debugMiddleware: Middleware = (store) => {
   acquireHotKey(KEY_F11);
   acquireHotKey(KEY_F12);
   globalEvents.on('keydown', (key) => {
     if (key.code === KEY_F11) {
-      store.dispatch(toggleDebugLayout());
+      store.dispatch(toggleDebugLayout() as any);
     }
     if (key.code === KEY_F12) {
-      store.dispatch(toggleKitchenSink());
+      store.dispatch(toggleKitchenSink() as any);
     }
     if (key.ctrl && key.alt && key.code === KEY_BACKSPACE) {
       // NOTE: We need to call this in a timeout, because we need a clean
@@ -45,7 +46,7 @@ export const debugMiddleware = (store) => {
   return (next) => (action) => next(action);
 };
 
-export const relayMiddleware = (store) => {
+export const relayMiddleware: Middleware = (store) => {
   const devServer = require('tgui-dev-server/link/client.cjs');
   const externalBrowser = location.search === '?external';
   if (externalBrowser) {
@@ -62,12 +63,12 @@ export const relayMiddleware = (store) => {
     acquireHotKey(KEY_F10);
     globalEvents.on('keydown', (key) => {
       if (key === KEY_F10) {
-        store.dispatch(openExternalBrowser());
+        store.dispatch(openExternalBrowser() as any);
       }
     });
   }
   return (next) => (action) => {
-    const { type, payload, relayed } = action;
+    const { type, payload, relayed } = action as AnyAction;
     if (type === openExternalBrowser.type) {
       window.open(location.href + '?external', '_blank');
       return;

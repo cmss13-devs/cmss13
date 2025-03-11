@@ -12,17 +12,13 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { AccessList } from './common/AccessList';
+import { AccessList, type Regions } from './common/AccessList';
 
 type Data = {
   station_name: string;
   weyland_access: BooleanLike;
   jobs: Record<string, { display_name: string; job: string }[]>;
-  regions: {
-    name: string;
-    regid: string;
-    accesses: { desc: string; ref: string };
-  }[];
+  regions: Regions;
   authenticated: BooleanLike;
   has_id: BooleanLike;
   id_name: string;

@@ -1,3 +1,4 @@
+import type { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import { Button, Flex, NoticeBox } from 'tgui/components';
 
@@ -15,8 +16,21 @@ import { Button, Flex, NoticeBox } from 'tgui/components';
  * All props can be redefined if you want custom behavior, but
  * it's preferred to stick to defaults.
  */
-export const InterfaceLockNoticeBox = (props) => {
-  const { act, data } = useBackend();
+
+type Data = {
+  siliconUser: BooleanLike;
+  locked: BooleanLike;
+  preventLocking: BooleanLike;
+};
+
+export const InterfaceLockNoticeBox = (props: {
+  readonly siliconUser?: BooleanLike;
+  readonly locked?: BooleanLike;
+  readonly onLockStatusChange?: (status: BooleanLike) => void;
+  readonly accessText?: string;
+  readonly preventLocking?: BooleanLike;
+}) => {
+  const { act, data } = useBackend<Data>();
   const {
     siliconUser = data.siliconUser,
     locked = data.locked,

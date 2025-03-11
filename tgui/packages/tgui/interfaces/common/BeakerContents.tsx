@@ -1,6 +1,12 @@
+import type { BooleanLike } from 'common/react';
 import { AnimatedNumber, Box } from 'tgui/components';
 
-export const BeakerContents = (props) => {
+export type BeakerProps = { name: string; volume: number }[];
+
+export const BeakerContents = (props: {
+  readonly beakerLoaded: BooleanLike;
+  readonly beakerContents: BeakerProps;
+}) => {
   const { beakerLoaded, beakerContents } = props;
   return (
     <Box>

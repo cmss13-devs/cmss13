@@ -9,7 +9,7 @@ const diffMap = {
   },
   1: {
     icon: 'stop-circle',
-    color: null,
+    color: undefined,
   },
   2: {
     icon: 'check-circle',
@@ -17,7 +17,23 @@ const diffMap = {
   },
 };
 
-export const AccessList = (props) => {
+type Access = { desc: string; ref: string };
+
+export type Regions = {
+  name: string;
+  regid: string;
+  accesses: Access[];
+}[];
+
+export const AccessList = (props: {
+  readonly accesses: Regions;
+  readonly selectedList: string[];
+  readonly accessMod: (ref: string) => void;
+  readonly grantAll: () => void;
+  readonly denyAll: () => void;
+  readonly grantDep: (dep: string) => void;
+  readonly denyDep: (dep: string) => void;
+}) => {
   const {
     accesses = [],
     selectedList = [],
@@ -81,7 +97,6 @@ export const AccessList = (props) => {
               return (
                 <Tabs.Tab
                   key={access.name}
-                  altSelection
                   color={color}
                   icon={icon}
                   selected={access.name === selectedAccessName}
@@ -100,7 +115,7 @@ export const AccessList = (props) => {
                 fluid
                 icon="check"
                 color="good"
-                onClick={() => grantDep(selectedAccess.regid)}
+                onClick={() => selectedAccess && grantDep(selectedAccess.regid)}
               >
                 Grant Region
               </Button>
@@ -110,7 +125,7 @@ export const AccessList = (props) => {
                 fluid
                 icon="times"
                 color="bad"
-                onClick={() => denyDep(selectedAccess.regid)}
+                onClick={() => selectedAccess && denyDep(selectedAccess.regid)}
               >
                 Deny Region
               </Button>

@@ -12,13 +12,15 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import type { BeakerProps } from './common/BeakerContents';
+
 type Data = {
   beakerTransferAmounts: number[];
   amount: number;
   energy: number;
   maxEnergy: number;
   isBeakerLoaded: BooleanLike;
-  beakerContents: { name: string; volume: number }[];
+  beakerContents: BeakerProps;
   beakerCurrentVolume: number | null;
   beakerMaxVolume: number | null;
   chemicals: { title: string; id: string }[];

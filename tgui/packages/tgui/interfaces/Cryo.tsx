@@ -9,7 +9,7 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { BeakerContents } from './common/BeakerContents';
+import { BeakerContents, type BeakerProps } from './common/BeakerContents';
 
 const damageTypes = [
   {
@@ -51,7 +51,7 @@ type Data = {
   };
   cellTemperature: number;
   isBeakerLoaded: BooleanLike;
-  beakerContents: { name: string; volume: number }[];
+  beakerContents: BeakerProps;
 };
 
 export const Cryo = () => {

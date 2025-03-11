@@ -1310,6 +1310,13 @@
 	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/primary_storage)
+"adz" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8;
+	pixel_y = -1
+	},
+/turf/open/floor/almayer_hull,
+/area/navalis/indoors/ice_cavern)
 "adA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -19945,13 +19952,14 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/turf/open/floor/almayer_hull,
 /area/navalis/indoors/ice_cavern)
 "bhd" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/obj/effect/stairs/up,
+/turf/open/floor/almayer_hull,
 /area/navalis/indoors/ice_cavern)
 "bhe" = (
 /turf/open/floor/hybrisa/metal/bluemetal1,
@@ -20038,13 +20046,14 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/turf/open/floor/almayer_hull,
 /area/navalis/indoors/ice_cavern)
 "bhw" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/obj/effect/stairs/down,
+/turf/open/floor/almayer_hull,
 /area/navalis/indoors/ice_cavern)
 "bhx" = (
 /obj/structure/platform/stone/strata,
@@ -82301,12 +82310,12 @@ gGc
 aMq
 azG
 bhc
+bhd
 bhc
 bhc
+adz
 bhc
-bhd
-bhd
-bhd
+bhc
 bhd
 bhc
 hCk
@@ -122810,12 +122819,12 @@ tAt
 aVM
 azG
 bhv
+bhw
 bhv
 bhv
-bhw
-bhw
-bhw
-bhw
+bhv
+bhv
+bhv
 bhw
 bhv
 azG

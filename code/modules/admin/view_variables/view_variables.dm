@@ -105,7 +105,7 @@
 		<title>[title]</title>
 		<link rel="stylesheet" type="text/css" href="[SSassets.transport.get_asset_url("view_variables.css")]">
 		<link rel="stylesheet" type="text/css" href="[SSassets.transport.get_asset_url("common.css")]">
-		[!prefs.window_scale ? "<style>body {zoom: [100 / window_scaling]%;}</style>" : ""]
+		[!prefs.window_scale && window_scaling ? "<style>body {zoom: [100 / window_scaling]%;}</style>" : ""]
 	</head>
 	<body onload='selectTextField()' onkeydown='return handle_keydown()'>
 		<script type="text/javascript">
@@ -274,7 +274,7 @@
 </html>
 "}
 
-	var/size_string = prefs.window_scale ? "size=[475 * window_scaling]x[650 * window_scaling]" : "size=[475]x[650]"
+	var/size_string = prefs.window_scale && window_scaling ? "size=[475 * window_scaling]x[650 * window_scaling]" : "size=[475]x[650]"
 
 	src << browse(html, "window=variables[refid];[size_string]")
 

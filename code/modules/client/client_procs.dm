@@ -548,6 +548,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/acquire_dpi()
 	set waitfor = FALSE
 
+	// Remove with 516
+	if(byond_version < 516)
+		return
+
 	window_scaling = text2num(winget(src, null, "dpi"))
 
 /proc/setup_player_entity(ckey)

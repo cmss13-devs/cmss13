@@ -70,7 +70,7 @@
 	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()[stylesheet]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
 
-	if(user.window_scaling != 1 && !user.prefs.window_scale && width && height)
+	if(user.window_scaling && user.window_scaling != 1 && !user.prefs.window_scale && width && height)
 		head_content += {"
 			<style>
 				body {
@@ -123,7 +123,7 @@
 		return
 	var/window_size = ""
 	if (width && height)
-		if(user.prefs.window_scale)
+		if(user.window_scaling && user.prefs.window_scale)
 			window_size = "size=[width * user?.window_scaling]x[height * user?.window_scaling];"
 		else
 			window_size = "size=[width]x[height];"

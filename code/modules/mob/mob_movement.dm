@@ -234,9 +234,6 @@
 			// SS220 ADD End
 			. = ..()
 			// SS220 ADD Start
-			if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
-				move_delay *= 2
-
 			var/after_glide = DELAY_TO_GLIDE_SIZE(move_delay)
 			mob.set_glide_size(after_glide)
 			// SS220 ADD End

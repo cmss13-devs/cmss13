@@ -42,13 +42,6 @@
 		return FALSE
 
 	var/success = FALSE
-	// SS220 ADD Start
-	if(direction & (direction - 1))
-		if(direction & EAST)
-			direction &= ~(EAST)
-		if(direction & WEST)
-			direction &= ~(WEST)
-	// SS220 ADD End
 
 	if(dir == turn(direction, 180) || dir == direction)
 		var/old_dir = dir

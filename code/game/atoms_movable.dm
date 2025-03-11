@@ -33,11 +33,6 @@
 	///Highest-intensity light affecting us, which determines our visibility.
 	var/affecting_dynamic_lumi = 0
 
-	var/moving_diagonally // SS220 ADD
-
-	/// Whether this atom should have its dir automatically changed when it moves. Setting this to FALSE allows for things such as directional windows to retain dir on moving without snowflake code all of the place.
-	var/set_dir_on_move = TRUE // SS220 ADD
-
 	/// Holds a reference to the emissive blocker overlay
 	var/emissive_overlay
 
@@ -237,9 +232,8 @@
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
 	var/atom/old_loc = loc
-	var/direction = get_dir(old_loc, new_loc) // SS220 ADD
 	loc = new_loc
-	Moved(old_loc, direction, TRUE) // SS220 ADD
+	Moved(old_loc)
 
 //called when a mob tries to breathe while inside us.
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)

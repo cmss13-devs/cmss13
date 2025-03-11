@@ -1,0 +1,5 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - rscadd: "Some roles have lower minimum ages to represent their ranks better, no gameplay changes."
+  - rscadd: "Being below the minimum age for a role now sets you to that minimum age, plus two years."

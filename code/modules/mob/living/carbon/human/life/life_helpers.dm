@@ -209,6 +209,7 @@
 	last_damage_data = null
 	statistic_tracked = FALSE
 	tod = null
+	revive_grace_period = initial(revive_grace_period)
 	set_stat(UNCONSCIOUS)
 	emote("gasp")
 	regenerate_icons()

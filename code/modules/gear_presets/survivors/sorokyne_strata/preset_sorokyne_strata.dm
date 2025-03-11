@@ -77,6 +77,8 @@
 		ACCESS_CIVILIAN_PUBLIC,
 	)
 
+	survivor_variant = SECURITY_SURVIVOR
+
 /datum/equipment_preset/survivor/upp/army/load_gear(mob/living/carbon/human/new_human)
 
 	var/choice = rand(1,50)
@@ -157,6 +159,8 @@
 	minimap_background = "background_upp"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 
+	survivor_variant = SCIENTIST_SURVIVOR
+
 /datum/equipment_preset/survivor/scientist/soro/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/blue(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
@@ -172,6 +176,8 @@
 	assignment = "Mining Foreman(Sorokyne)"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 
+	survivor_variant = CIVILIAN_SURVIVOR
+
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/soro/load_gear(mob/living/carbon/human/new_human)
 
 	..()
@@ -181,6 +187,7 @@
 	assignment = "NORCOMM Korporativnyy Svaznoy"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 
+	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/corporate/soro/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/charcoal(new_human), WEAR_BODY)

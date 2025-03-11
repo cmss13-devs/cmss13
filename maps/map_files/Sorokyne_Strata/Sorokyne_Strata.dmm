@@ -12071,9 +12071,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east)
 "bjz" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen)
 "bjB" = (
@@ -19151,17 +19149,16 @@
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/admin)
 "csY" = (
-/obj/structure/bed/chair{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/ug/interior/outpost/platform)
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
 "csZ" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/ug/interior/outpost/platform)
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/ag/interior/outpost/canteen)
 "ctb" = (
 /obj/structure/cargo_container/canc/left,
 /turf/open/floor/strata/multi_tiles/west,
@@ -19627,9 +19624,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outpost/med)
 "cyM" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/canteen)
 "cyQ" = (
@@ -22596,9 +22591,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/center)
 "ewZ" = (
-/obj/structure/bed/chair,
-/turf/open/floor/strata,
-/area/strata/ag/interior/outpost/canteen)
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi)
 "exj" = (
 /obj/structure/platform_decoration/stone/soro,
 /obj/item/ammo_casing,
@@ -24110,9 +24105,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/exterior/marsh/center)
 "ftm" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "ftr" = (
@@ -24985,6 +24978,10 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/engi/drome)
+"fWG" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ug/interior/outpost/platform)
 "fWM" = (
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata/floor3,
@@ -27188,9 +27185,6 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/canteen)
 "htp" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen)
@@ -30202,11 +30196,9 @@
 /turf/open/gm/dirt/brown/variant_3,
 /area/strata/ug/interior/jungle/carplake/east)
 "jpP" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen)
 "jpY" = (
@@ -32536,10 +32528,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/bed/chair{
-	dir = 4;
-	layer = 3.06
-	},
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan3/west,
 /area/strata/ag/interior/outpost/med)
 "kTy" = (
@@ -36343,10 +36332,8 @@
 /turf/open/asphalt/brown,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "nso" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "nsp" = (
@@ -37300,6 +37287,7 @@
 /area/strata/ag/exterior/marsh/water_marshes)
 "obk" = (
 /obj/item/tool/pen/blue,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "obt" = (
@@ -38760,6 +38748,10 @@
 	},
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/ag/exterior/paths/north_outpost)
+"paf" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outside/engineering/parts_storage)
 "pax" = (
 /obj/structure/largecrate/hunter_games_medical,
 /turf/open/gm/dirt/brown,
@@ -44300,6 +44292,7 @@
 "szz" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/trash/upp_mre,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen)
 "szH" = (
@@ -44470,6 +44463,7 @@
 "sFZ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen)
 "sGb" = (
@@ -45031,10 +45025,8 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "sXE" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen)
 "sXL" = (
@@ -46167,7 +46159,8 @@
 	emp_proof = 1;
 	explo_proof = 1;
 	name = "Landing Zone - Secure Lockdown Button";
-	id = "LZ1"
+	id = "LZ1";
+	needs_power = 0
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/landing_zones/near_lz1)
@@ -51707,6 +51700,13 @@
 /obj/effect/sentry_landmark/lz_2/top_right,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/landing_zones/near_lz2)
+"xhf" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
 "xhm" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 4
@@ -52131,10 +52131,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/water_marshes)
 "xwu" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen)
 "xwT" = (
@@ -64387,7 +64385,7 @@ wGm
 gFf
 odd
 tRC
-qfC
+paf
 hYc
 nUz
 nUz
@@ -71339,7 +71337,7 @@ rJX
 nYH
 bTF
 obk
-ftm
+bTF
 vlm
 cdD
 cjQ
@@ -72009,7 +72007,7 @@ aHv
 axg
 ayH
 aUV
-bXq
+ewZ
 aAt
 dgB
 aUV
@@ -73252,7 +73250,7 @@ aMX
 bop
 biH
 pdQ
-bsK
+xhf
 azd
 bfN
 biI
@@ -73441,7 +73439,7 @@ bGO
 bGO
 rpA
 bTF
-bTF
+ftm
 dVb
 mJu
 bTD
@@ -74669,7 +74667,7 @@ cvf
 ceG
 dVb
 mJu
-bTF
+ftm
 bTF
 mGA
 mGA
@@ -79179,7 +79177,7 @@ chd
 syh
 cZv
 aHP
-ewZ
+cyM
 aHP
 aHP
 ibn
@@ -79192,7 +79190,7 @@ wyv
 vsx
 oRl
 aHP
-aHP
+cyM
 aHP
 jUZ
 xZC
@@ -79357,7 +79355,7 @@ dxY
 chd
 chd
 chd
-cdj
+csZ
 chd
 chd
 kmz
@@ -79889,7 +79887,7 @@ exl
 exl
 ser
 icf
-xwu
+exl
 sFZ
 ePb
 cgY
@@ -80060,15 +80058,15 @@ cgY
 bjz
 ckN
 cgY
-piA
+bjz
 cgY
 ckN
 piA
-dEC
+sXE
 cgY
 ckN
 cgY
-piA
+bjz
 cgY
 chd
 aHP
@@ -80929,7 +80927,7 @@ cWv
 cjn
 cOe
 chd
-chd
+csZ
 chd
 ckN
 cjn
@@ -81130,8 +81128,8 @@ aZw
 kCa
 cpU
 bvz
-bsW
-xqN
+csY
+csQ
 vOs
 bvL
 bHH
@@ -82707,8 +82705,8 @@ wZZ
 rpX
 tnM
 wZZ
+fWG
 bqf
-csY
 bqf
 wZZ
 bqf
@@ -82883,8 +82881,8 @@ gcU
 tnM
 bmw
 bqs
-csZ
 bqf
+fWG
 bqf
 wZZ
 kPl

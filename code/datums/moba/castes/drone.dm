@@ -336,8 +336,8 @@
 		heal_beam.visuals.alpha = 0
 		animate(heal_beam.visuals, alpha = initial(heal_beam.visuals.alpha), 3 SECONDS)
 		beam_focus = WEAKREF(heal_beam)
+		START_PROCESSING(SSobj, src)
 
-	START_PROCESSING(SSobj, src)
 	apply_cooldown(0.2) // largely just cosmetic to indicate the button did something
 	return ..()
 

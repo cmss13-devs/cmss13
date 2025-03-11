@@ -18,7 +18,7 @@
         "/datum/equipment_preset/survivor/civilian"
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
-    "announce_text": "An automated distress signal has been received from the archaeological site of Lazarus Landing, on the border world of LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "announce_text": "Получен автоматический сигнал бедствия с археологического объекта \"Лазарь Лэндинг\" на пограничной планете LV-624. Для расследования сложившейся ситуации, с ###SHIPNAME### в ближайшее время будет отправлена оперативная группа реагирования.",
     "monkey_types": [
         "farwa",
         "monkey",

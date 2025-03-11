@@ -91,7 +91,7 @@
 		SSticker.mode.attempt_to_join_as_xeno(owner)
 
 /datum/action/observer_action/join_lesser_drone
-	name = "Join as Lesser Drone"
+	name = "Присоединиться за трутня"
 	action_icon_state = "join_lesser_drone"
 	listen_signal = COMSIG_KB_OBSERVER_JOIN_LESSER_DRONE
 
@@ -139,5 +139,5 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "join_lesser_drone"
-	full_name = "Join as Lesser Drone"
+	full_name = "Присоединиться за трутня"
 	keybind_signal = COMSIG_KB_OBSERVER_JOIN_LESSER_DRONE

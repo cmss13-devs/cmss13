@@ -1,0 +1,4 @@
+author: "blackdragonTOW"
+delete-after: True
+changes:
+  - bugfix: "fixed missing sprite for active K9 tracker"

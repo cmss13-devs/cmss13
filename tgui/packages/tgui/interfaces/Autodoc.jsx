@@ -30,7 +30,7 @@ const damageRange = {
 };
 
 export const Autodoc = (props) => {
-  const { act, data } = useBackend();
+  const { data } = useBackend();
   const { hasOccupant } = data;
   const body = hasOccupant ? <AutodocMain /> : <AutodocEmpty />;
   const windowHeight = hasOccupant ? 675 : 150;
@@ -44,7 +44,7 @@ export const Autodoc = (props) => {
 };
 
 const AutodocMain = (props) => {
-  const { act, data } = useBackend();
+  const { data } = useBackend();
   const { surgeries } = data;
   const research =
     surgeries['broken'] !== undefined ||
@@ -63,7 +63,7 @@ const AutodocMain = (props) => {
 };
 
 const AutodocOccupant = (props) => {
-  const { act, data } = useBackend();
+  const { data } = useBackend();
   const { occupant } = data;
   return (
     <Section title="Occupant">
@@ -138,7 +138,7 @@ const AutodocDamage = (props) => {
 
 const AutodocControls = (props) => {
   const { act, data } = useBackend();
-  const { surgery, surgeries } = data;
+  const { surgery } = data;
   return (
     <Section>
       <Flex justify="space-between">
@@ -166,7 +166,7 @@ const AutodocControls = (props) => {
         <Flex.Item>
           <Button
             onClick={() => act('ejectify')}
-            icon="user-slash"
+            icon={surgery ? 'triangle-exclamation' : 'user-slash'}
             iconPosition="right"
             backgroundColor={!!surgery && 'red'}
           >
@@ -189,11 +189,11 @@ const AutodocSurgeries = (props) => {
     heal_burn,
     heal_toxin,
   } = data;
-  const research =
-    surgeries['broken'] !== undefined ||
-    surgeries['internal'] !== undefined ||
-    surgeries['organdamage'] !== undefined ||
-    surgeries['larva'] !== undefined;
+  const brute_active = surgeries['brute'] === 1 || !!heal_brute;
+  const burn_active = surgeries['burn'] === 1 || !!heal_burn;
+  const toxin_active = surgeries['toxin'] === 1 || !!heal_toxin;
+  const blood_active = surgeries['blood'] === 1 || !!blood_transfer;
+  const dialysis_active = surgeries['dialysis'] === 1 || !!filtering;
   return (
     <>
       <Section title="Trauma Surgeries">
@@ -202,12 +202,12 @@ const AutodocSurgeries = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['brute'] === 1 || !!heal_brute}
+              selected={brute_active}
               disabled={!!surgery}
-              onClick={() => act('brute')}
+              onClick={() => !brute_active && act('brute')}
             >
               Brute Damage Treatment
-              {(surgeries['brute'] === 1 || !!heal_brute) && (
+              {brute_active && (
                 <Icon
                   name={
                     heal_brute && surgery
@@ -225,12 +225,12 @@ const AutodocSurgeries = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['burn'] === 1 || !!heal_burn}
+              selected={burn_active}
               disabled={!!surgery}
-              onClick={() => act('burn')}
+              onClick={() => !burn_active && act('burn')}
             >
               Burn Damage Treatment
-              {(surgeries['burn'] === 1 || !!heal_burn) && (
+              {burn_active && (
                 <Icon
                   name={
                     heal_burn && surgery
@@ -252,7 +252,7 @@ const AutodocSurgeries = (props) => {
               mx="3px"
               selected={surgeries['open'] === 1}
               disabled={!!surgery}
-              onClick={() => act('open')}
+              onClick={() => surgeries['open'] !== 1 && act('open')}
             >
               Close Open Incisions
               {surgeries['open'] === 1 && (
@@ -275,7 +275,7 @@ const AutodocSurgeries = (props) => {
               mx="3px"
               selected={surgeries['shrapnel'] === 1}
               disabled={!!surgery}
-              onClick={() => act('shrapnel')}
+              onClick={() => surgeries['shrapnel'] !== 1 && act('shrapnel')}
             >
               Shrapnel Removal Surgery
               {surgeries['shrapnel'] === 1 && (
@@ -300,12 +300,12 @@ const AutodocSurgeries = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['blood'] === 1 || !!blood_transfer}
+              selected={blood_active}
               disabled={!!surgery}
-              onClick={() => act('blood')}
+              onClick={() => !blood_active && act('blood')}
             >
               Blood Transfusion
-              {(surgeries['blood'] === 1 || !!blood_transfer) && (
+              {blood_active && (
                 <Icon
                   name={
                     blood_transfer && !!surgery
@@ -323,12 +323,12 @@ const AutodocSurgeries = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['dialysis'] === 1 || !!filtering}
+              selected={dialysis_active}
               disabled={!!surgery}
-              onClick={() => act('dialysis')}
+              onClick={() => !dialysis_active && act('dialysis')}
             >
               Dialysis
-              {(surgeries['dialysis'] === 1 || !!filtering) && (
+              {dialysis_active && (
                 <Icon
                   name={
                     filtering && surgery
@@ -346,12 +346,12 @@ const AutodocSurgeries = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['toxin'] === 1 || !!heal_toxin}
+              selected={toxin_active}
               disabled={!!surgery}
-              onClick={() => act('toxin')}
+              onClick={() => !toxin_active && act('toxin')}
             >
               Bloodstream Toxin Removal
-              {(surgeries['toxin'] === 1 || !!heal_toxin) && (
+              {toxin_active && (
                 <Icon
                   name={
                     heal_toxin && surgery
@@ -384,7 +384,7 @@ const AutodocSurgeriesEx = (props) => {
               mx="3px"
               selected={surgeries['internal'] === 1}
               disabled={!!surgery}
-              onClick={() => act('internal')}
+              onClick={() => surgeries['internal'] !== 1 && act('internal')}
             >
               Internal Bleeding Surgery
               {surgeries['internal'] === 1 && (
@@ -409,7 +409,7 @@ const AutodocSurgeriesEx = (props) => {
               mx="3px"
               selected={surgeries['broken'] === 1}
               disabled={!!surgery}
-              onClick={() => act('broken')}
+              onClick={() => surgeries['broken'] !== 1 && act('broken')}
             >
               Broken Bone Surgery
               {surgeries['broken'] === 1 && (
@@ -436,7 +436,9 @@ const AutodocSurgeriesEx = (props) => {
               mx="3px"
               selected={surgeries['organdamage'] === 1}
               disabled={!!surgery}
-              onClick={() => act('organdamage')}
+              onClick={() =>
+                surgeries['organdamage'] !== 1 && act('organdamage')
+              }
             >
               Organ Damage Treatment
               {surgeries['organdamage'] === 1 && (
@@ -461,7 +463,7 @@ const AutodocSurgeriesEx = (props) => {
               mx="3px"
               selected={surgeries['larva'] === 1}
               disabled={!!surgery}
-              onClick={() => act('larva')}
+              onClick={() => surgeries['larva'] !== 1 && act('larva')}
             >
               Parasite Extraction
               {surgeries['larva'] === 1 && (

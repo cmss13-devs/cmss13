@@ -289,11 +289,7 @@
 		if (medrec.fields["ref"] == human_ref)
 			patient_record = medrec
 	if(isnull(patient_record))
-		visible_message("\The [src] buzzes: No records found for occupant.")
-		src.go_out() //kick them out too.
-		return
-
-	//surgery_todo_list = patient_record.fields["autodoc_manual"]
+		patient_record = create_medical_record(patient)
 
 	if(!length(surgery_todo_list))
 		visible_message("\The [src] buzzes, no surgical procedures were queued.")
@@ -556,6 +552,7 @@
 	patient.pain.recalculate_pain()
 	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
 	surgery = 0
+	SStgui.close_uis(connected)
 	go_out()
 
 
@@ -760,13 +757,13 @@
 		var/type = item.surgery_procedure
 		selected[type] = 1
 
+	.["surgeries"] = selected
+
 	.["filtering"] = connected.filtering
 	.["blood_transfer"] = connected.blood_transfer
 	.["heal_brute"] = connected.heal_brute
 	.["heal_burn"] = connected.heal_burn
 	.["heal_toxin"] = connected.heal_toxin
-
-	.["surgeries"] = selected
 
 	return .
 

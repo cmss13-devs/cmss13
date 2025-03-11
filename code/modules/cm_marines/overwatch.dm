@@ -479,6 +479,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_status(mob/user)
+	if(!(isatom(src)))
+		return UI_INTERACTIVE
+
+	var/dist = get_dist(src, user)
+	if(dist <= 3)
+		return UI_INTERACTIVE
+	else
+		return UI_CLOSE
+
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -511,8 +521,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if("logout")
 			if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
-					if(resolve_root.name == "Root")
+					if(resolve_root.name == "Root" && resolve_root.faction == faction)
 						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+						break
 			if(current_squad?.release_overwatch())
 				if(isSilicon(user))
 					current_squad.send_squad_message("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.", displayed_icon = src)

@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import { BooleanLike } from '../../common/react';
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown } from '../components';
+import { Box, Button, Dropdown, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 type Caste = {
@@ -84,6 +84,13 @@ const MobaCastePicked = (props) => {
   const priority: number = props.priority;
   const setCasteSelectorOpen = props.setCasteSelectorOpen;
   const pickedCaste: Caste = data.picked_castes[priority - 1];
+  let optionKeys: string[] = [
+    'Top Lane',
+    'Jungle',
+    'Support',
+    'Bottom Lane',
+    'None',
+  ];
   let options: string[] = [
     'Top Lane',
     'Jungle',
@@ -121,7 +128,10 @@ const MobaCastePicked = (props) => {
         placeholder={'Select lane...'}
         disabled={!!data.in_queue || !!data.is_moba_participant}
         onSelected={(value) =>
-          act('select_lane', { lane: value, priority: priority })
+          act('select_lane', {
+            lane: optionKeys[options.indexOf(value)],
+            priority: priority,
+          })
         }
         width={'100%'}
       />
@@ -179,15 +189,16 @@ const MobaCasteSelectorButton = (props) => {
   const setCasteSelectorOpen = props.setCasteSelectorOpen;
 
   return (
-    <Button
-      tooltip={caste.desc}
-      onClick={() => {
-        act('select_caste', { caste: caste.name, priority: priority });
-        setCasteSelectorOpen(false);
-      }}
-    >
-      <span className={classes(['mobacastes60x60', `${caste.icon_state}`])} />
-    </Button>
+    <Tooltip innerhtml={caste.desc}>
+      <Button
+        onClick={() => {
+          act('select_caste', { caste: caste.name, priority: priority });
+          setCasteSelectorOpen(false);
+        }}
+      >
+        <span className={classes(['mobacastes60x60', `${caste.icon_state}`])} />
+      </Button>
+    </Tooltip>
   );
 };
 

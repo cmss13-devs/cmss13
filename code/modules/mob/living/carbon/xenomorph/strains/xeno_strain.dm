@@ -141,6 +141,10 @@
 		to_chat(src, SPAN_WARNING("You must first pick a strain before resetting it."))
 		return FALSE
 
+	if(HAS_TRAIT(src, TRAIT_MOBA_PARTICIPANT))
+		to_chat(src, SPAN_WARNING("We can't take a strain here."))
+		return FALSE
+
 	if(is_ventcrawling)
 		to_chat(src, SPAN_WARNING("This place is too constraining to take a strain."))
 		return FALSE

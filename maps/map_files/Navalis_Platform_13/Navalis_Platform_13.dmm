@@ -26347,12 +26347,8 @@
 /area/navalis/indoors/residential/starboard)
 "eKb" = (
 /obj/structure/machinery/landinglight/ds2/delaythree,
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
 /obj/structure/stairs/multiz/down,
 /obj/effect/stairs/down,
-/obj/structure/stairs/multiz/down,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
 "eKs" = (

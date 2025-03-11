@@ -18,6 +18,8 @@
 	var/static/datum/asset/simple/common/common_asset = get_asset_datum(/datum/asset/simple/common)
 	var/static/datum/asset/simple/other/other_asset = get_asset_datum(/datum/asset/simple/other)
 
+	var/existing_browser = FALSE
+
 
 /datum/browser/New(nuser, nwindow_id, ntitle = 0, nstylesheet = "common.css", nwidth = 0, nheight = 0, atom/nref = null)
 	user = nuser
@@ -136,6 +138,9 @@
 
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
 
+	if(existing_browser)
+		winset(user, existing_browser, window_size)
+
 	if (use_onclose)
 		setup_onclose()
 
@@ -238,7 +243,7 @@
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(target, browser_content, browser_name, id = null, window_options = null, closeref, width, height)
+/proc/show_browser(target, browser_content, browser_name, id = null, window_options = null, closeref, width, height, existing_container = FALSE)
 	var/client/C = target
 
 	if (ismob(target))
@@ -254,6 +259,10 @@
 		stylesheet = "Modern"
 
 	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nwidth = width, nheight = height, nref = closeref)
+
+	if(existing_container)
+		popup.existing_browser = existing_container
+
 	popup.set_content(browser_content)
 	if (window_options)
 		popup.set_window_options(window_options)

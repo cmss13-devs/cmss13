@@ -1,5 +1,5 @@
 /datum/browser
-	var/mob/user
+	var/client/user
 	var/title
 	var/window_id // window_id is used as the window name for browse and onclose
 	var/width = 0
@@ -70,6 +70,15 @@
 	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()[stylesheet]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
 
+	if(user.window_scaling != 1 && !user.prefs.window_scale && width && height)
+		head_content += {"
+			<style>
+				body {
+					zoom: [100 / user.window_scaling]%;
+				}
+			</style>
+			"}
+
 	for (var/file in stylesheets)
 		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'>"
 
@@ -114,7 +123,10 @@
 		return
 	var/window_size = ""
 	if (width && height)
-		window_size = "size=[width]x[height];"
+		if(user.prefs.window_scale)
+			window_size = "size=[width * user?.window_scaling]x[height * user?.window_scaling];"
+		else
+			window_size = "size=[width]x[height];"
 	common_asset.send(user)
 	other_asset.send(user)
 	if (length(stylesheets))
@@ -226,7 +238,7 @@
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(target, browser_content, browser_name, id = null, window_options = null, closeref)
+/proc/show_browser(target, browser_content, browser_name, id = null, window_options = null, closeref, width, height)
 	var/client/C = target
 
 	if (ismob(target))
@@ -241,7 +253,7 @@
 		C.prefs.stylesheet = "Modern"
 		stylesheet = "Modern"
 
-	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nref = closeref)
+	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nwidth = width, nheight = height, nref = closeref)
 	popup.set_content(browser_content)
 	if (window_options)
 		popup.set_window_options(window_options)
@@ -324,7 +336,7 @@
 	set_content(output)
 
 /datum/browser/modal/listpicker/Topic(href,href_list)
-	if (href_list["close"] || !user || !user.client)
+	if (href_list["close"] || !user)
 		opentime = 0
 		return
 	if (href_list["button"])

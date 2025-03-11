@@ -257,7 +257,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	var/tgui_fancy = TRUE
 	var/tgui_lock = FALSE
-	var/tgui_scale = TRUE
+	var/window_scale = TRUE
 
 	var/hear_vox = TRUE
 
@@ -319,9 +319,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	real_name = random_name(gender)
 	gear = list()
 
+	C.tgui_say?.load()
+
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
+
+	C.tgui_say?.load()
 
 /datum/preferences/Del()
 	. = ..()
@@ -579,7 +583,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Tooltips:</b> <a href='byond://?_src_=prefs;preference=tooltips'><b>[tooltips ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='byond://?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='byond://?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
-			dat += "<b>tgui Scaling:</b> <a href='byond://?_src_=prefs;preference=tgui_scale'><b>[tgui_scale ? "Larger windows (default)" : "Smaller zoom"]</b></a><br>"
+			dat += "<b>Window Scaling:</b> <a href='byond://?_src_=prefs;preference=window_scale'><b>[window_scale ? "Larger windows (default)" : "Smaller zoom"]</b></a><br>"
 			dat += "<b>Play Admin Sounds:</b> <a href='byond://?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='byond://?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Fax Sounds As Ghost:</b> <a href='byond://?_src_=prefs;preference=hear_faxes'><b>[(toggles_sound & SOUND_FAX_MACHINE) ? "Yes" : "No"]</b></a><br>"
@@ -810,7 +814,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "</tt></body>"
 
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Job Preferences", "mob_occupation", "size=[width]x[height]")
+	show_browser(user, HTML, "Job Preferences", "mob_occupation", width = width, height = height)
 	onclose(user, "mob_occupation", user.client, list("_src_" = "prefs", "preference" = "job", "task" = "close"))
 	return
 
@@ -892,7 +896,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "</tt></body>"
 
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Job Assignment", "job_slots_assignment", "size=[width]x[height]")
+	show_browser(user, HTML, "Job Assignment", "job_slots_assignment", width = width, height = height)
 	onclose(user, "job_slots_assignment", user.client, list("_src_" = "prefs", "preference" = "job_slot", "task" = "close"))
 	return
 
@@ -918,7 +922,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "</center></tt>"
 
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Set Records", "records", "size=350x300")
+	show_browser(user, HTML, "Set Records", "records", width = 350, height = 300)
 	return
 
 /datum/preferences/proc/SetFlavorText(mob/user)
@@ -931,7 +935,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML +="<a href='byond://?src=\ref[user];preference=flavor_text;task=done'>Done</a>"
 	HTML += "<tt>"
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Set Flavor Text", "flavor_text;size=430x300")
+	show_browser(user, HTML, "Set Flavor Text", "flavor_text", width = 400, height = 430)
 	return
 
 /datum/preferences/proc/SetJob(mob/user, role, priority)
@@ -1990,8 +1994,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					tgui_fancy = !tgui_fancy
 				if("tgui_lock")
 					tgui_lock = !tgui_lock
-				if("tgui_scale")
-					tgui_scale = !tgui_scale
+				if("window_scale")
+					window_scale = !window_scale
+					owner.tgui_say?.load()
 
 				if("change_menu")
 					current_menu = href_list["menu"]

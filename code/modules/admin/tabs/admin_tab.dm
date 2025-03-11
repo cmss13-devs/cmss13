@@ -193,7 +193,7 @@
 	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
 	dat += "<A href='byond://?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
 
-	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
+	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", width = 480, height = 480)
 
 /datum/admins/proc/check_ckey(target_key as text)
 	set name = "Check CKey"

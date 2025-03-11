@@ -379,6 +379,7 @@
 	desc = "Special net intended to catch anyone, or anything, that falls off the rig. Difficult to move around in, but preferable to falling into the endless ocean below."
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
 	icon_state = "soil_grid"
+	allow_construction = FALSE
 	var/slow_amt = 4
 
 /turf/open/floor/plating/catwalk/grate/net/is_weedable()

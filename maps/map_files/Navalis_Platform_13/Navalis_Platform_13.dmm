@@ -19465,11 +19465,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_magazine/rifle/l42a/heap{
 	pixel_x = -4;
-	pixel_y = -4
+	pixel_y = -4;
+	current_rounds = 0
 	},
 /obj/item/ammo_magazine/rifle/l42a/heap{
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = 6;
+	current_rounds = 0
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -19522,7 +19524,8 @@
 	},
 /obj/item/ammo_magazine/rifle/l42a/heap{
 	pixel_x = 5;
-	pixel_y = 9
+	pixel_y = 9;
+	current_rounds = 0
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -26349,6 +26352,7 @@
 	},
 /obj/structure/stairs/multiz/down,
 /obj/effect/stairs/down,
+/obj/structure/stairs/multiz/down,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
 "eKs" = (
@@ -28278,9 +28282,6 @@
 /area/navalis/indoors/command/aft_hallway)
 "fKE" = (
 /obj/structure/machinery/landinglight/ds2,
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
 /obj/structure/stairs/multiz/down,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
@@ -28751,9 +28752,6 @@
 "fVx" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/landinglight/ds2/delayone,
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
 /obj/structure/stairs/multiz/down,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
@@ -48670,9 +48668,6 @@
 /area/navalis/indoors/residential/accessway)
 "rHC" = (
 /obj/structure/machinery/landinglight/ds2/delayone,
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
 /obj/structure/stairs/multiz/down,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
@@ -54797,9 +54792,6 @@
 /area/navalis/indoors/residential/starboard)
 "veg" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo,
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
 /obj/structure/stairs/multiz/down,
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2)
@@ -57458,11 +57450,15 @@
 /area/navalis/oob/empty_space)
 "wDY" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/ammo_magazine/rifle/l42a/heap,
-/obj/item/ammo_magazine/rifle/l42a/heap,
-/obj/item/ammo_magazine/rifle/l42a/heap,
-/obj/item/ammo_magazine/rifle/l42a/heap,
 /obj/item/weapon/gun/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a/extended,
+/obj/item/ammo_magazine/rifle/l42a/extended,
+/obj/item/ammo_magazine/rifle/l42a/extended,
+/obj/item/ammo_magazine/rifle/l42a/extended,
+/obj/item/ammo_magazine/rifle/l42a/ap,
+/obj/item/ammo_magazine/rifle/l42a/ap,
+/obj/item/ammo_magazine/rifle/l42a/ap,
+/obj/item/ammo_magazine/rifle/l42a/ap,
 /turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
 "wEe" = (

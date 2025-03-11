@@ -21,6 +21,8 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 	var/attack_damage = 0
 	/// Diminishing, multiplier (0.25 would cut down the remaining cooldown by 75%)
 	var/ability_cooldown_reduction = 0
+	/// Used purely for the scaling of certain abilities
+	var/acid_power = 0
 
 	var/amount_armor_applied = 0
 	var/amount_acid_armor_applied = 0
@@ -45,6 +47,8 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 			description += "<br>Movement Delay: [speed]"
 		if(attack_speed)
 			description += "<br>Attack Speed Modifier: [attack_speed]"
+		if(acid_power)
+			description += "<br>Acid Power: +[acid_power]"
 		if(attack_damage)
 			description += "<br>Damage: +[attack_damage]"
 		if(ability_cooldown_reduction)
@@ -67,6 +71,7 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 	apply_attack_speed(xeno, player)
 	apply_attack_damage(xeno, player)
 	apply_ability_cooldown_reduction(xeno, player)
+	apply_acid_power(xeno, player, component)
 
 /datum/moba_item/proc/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
 	SHOULD_CALL_PARENT(TRUE)
@@ -84,6 +89,7 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 	xeno.attack_speed_modifier -= attack_speed
 	xeno.melee_damage_lower -= attack_damage
 	xeno.melee_damage_upper -= attack_damage
+	component.acid_power -= acid_power
 	if(ability_cooldown_reduction)
 		xeno.cooldown_reduction_percentage = xeno.cooldown_reduction_percentage * (1 / ability_cooldown_reduction)
 
@@ -133,3 +139,6 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 	xeno.cooldown_reduction_percentage = xeno.cooldown_reduction_percentage + ((1 - xeno.cooldown_reduction_percentage) * (1 - ability_cooldown_reduction))
 	// This took me a hot minute on a whiteboard to figure out
 	// This is all because cooldown_reduction_percentage isn't just a straight multiplier on the cooldown, it's 1 minus this number.
+
+/datum/moba_item/proc/apply_acid_power(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
+	component.acid_power += acid_power

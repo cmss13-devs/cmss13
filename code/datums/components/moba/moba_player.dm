@@ -30,6 +30,8 @@
 	var/plasma_value_resting = 0
 	/// How much HP we have that isn't from our caste. Used for item scaling and etc.
 	var/bonus_hp = 0
+	/// How much "Acid Power" (AP) we have, used for the scaling of certain abilities
+	var/acid_power = 0
 
 /datum/component/moba_player/Initialize(datum/moba_player/player, id, right)
 	. = ..()
@@ -96,6 +98,7 @@
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_OWNED_ITEMS, PROC_REF(get_owned_items))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_GOLD, PROC_REF(get_gold))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_LEVEL, PROC_REF(get_level))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_AP, PROC_REF(get_ap))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_ADD_ITEM, PROC_REF(add_item))
 	RegisterSignal(parent_xeno, COMSIG_XENO_USED_TUNNEL, PROC_REF(on_tunnel))
 	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
@@ -212,6 +215,11 @@
 	SIGNAL_HANDLER
 
 	level_list += player_datum.level
+
+/datum/component/moba_player/proc/get_ap(datum/source, list/ap_list)
+	SIGNAL_HANDLER
+
+	ap_list += acid_power
 
 /datum/component/moba_player/proc/add_item(datum/source, datum/moba_item/new_item)
 	SIGNAL_HANDLER

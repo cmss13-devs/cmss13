@@ -273,7 +273,7 @@
 
 /datum/action/xeno_action/activable/moba/life_transfer
 	name = "Transfer Life"
-	desc = "Create a beam between you and an ally, healing them for 100/125/150 health every 6 seconds, consuming 60 plasma each time. Cooldown 15/12/9 seconds."
+	desc = "Create a beam between you and an ally, healing them for 100/125/150 (+40% AP) health every 6 seconds, consuming 60 plasma each time. Cooldown 15/12/9 seconds."
 	action_icon_state = "apply_salve"
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 50
@@ -376,7 +376,9 @@
 		apply_cooldown()
 		return
 
-	heal_target.gain_health(health_to_transfer * delta_time)
+	var/list/ap_list = list()
+	SEND_SIGNAL(owner, COMSIG_MOBA_GET_AP, ap_list)
+	heal_target.gain_health((health_to_transfer + (ap_list[1] * 0.4)) * delta_time)
 	heal_target.flick_heal_overlay(1.5 SECONDS, "#0e9b09")
 
 /datum/action/xeno_action/activable/moba/life_transfer/level_up_ability(new_level)
@@ -387,11 +389,11 @@
 		health_to_transfer = 150
 		xeno_cooldown = 9 SECONDS
 
-	desc = "Create a beam between you and an ally, healing them for [new_level == 1 ? "<b>100</b>" : "100"]/[new_level == 2 ? "<b>125</b>" : "125"]/[new_level == 3 ? "<b>150</b>" : "150"] health every 6 seconds, consuming 60 plasma each time. Cooldown [new_level == 1 ? "<b>15</b>" : "15"]/[new_level == 2 ? "<b>12</b>" : "12"]/[new_level == 3 ? "<b>9</b>" : "9"] seconds."
+	desc = "Create a beam between you and an ally, healing them for [new_level == 1 ? "<b>100</b>" : "100"]/[new_level == 2 ? "<b>125</b>" : "125"]/[new_level == 3 ? "<b>150</b>" : "150"] (+40% AP) health every 6 seconds, consuming 60 plasma each time. Cooldown [new_level == 1 ? "<b>15</b>" : "15"]/[new_level == 2 ? "<b>12</b>" : "12"]/[new_level == 3 ? "<b>9</b>" : "9"] seconds."
 
 /datum/action/xeno_action/moba/onclick/rejuvenation_burst
 	name = "Rejuvenation Burst"
-	desc = "After a 3 second channel, all allied xenos within 4 tiles of you are healed for 15/25/35% of their max HP. Cooldown 150/120/100 seconds."
+	desc = "After a 3 second channel, all allied xenos within 4 tiles of you are healed for 15/25/35% (+5% AP) of their max HP. Cooldown 150/120/100 seconds."
 	action_icon_state = "screech"
 	xeno_cooldown = 130 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_4
@@ -427,7 +429,9 @@
 			if(HAS_TRAIT(alive_targets, TRAIT_MOBA_MINION)) // So they dont heal minions
 				continue
 
-			alive_targets.gain_health(alive_targets.maxHealth * health_percentage)
+			var/list/ap_list = list()
+			SEND_SIGNAL(owner, COMSIG_MOBA_GET_AP, ap_list)
+			alive_targets.gain_health(alive_targets.maxHealth * (health_percentage + (ap_list[1] * 0.05 * 0.01))) // 0.01 so that 200 AP becomes 10 becomes .10
 			alive_targets.flick_heal_overlay(2 SECONDS, "#34bb19")
 		new /obj/effect/xenomorph/xeno_telegraph/drone_heal_template(get_turf(support_drone), 20)
 
@@ -447,7 +451,7 @@
 		xeno_cooldown = 100 SECONDS
 		plasma_cost = 450
 
-	desc = "After a 3 second channel, all allied xenos within 4 tiles of you are healed for [new_level == 1 ? "<b>15</b>" : "15"]/[new_level == 2 ? "<b>25</b>" : "25"]/[new_level == 3 ? "<b>35</b>" : "35"] of their max HP. Cooldown [new_level == 1 ? "<b>150</b>" : "150"]/[new_level == 2 ? "<b>120</b>" : "120"]/[new_level == 3 ? "<b>100</b>" : "100"] seconds."
+	desc = "After a 3 second channel, all allied xenos within 4 tiles of you are healed for [new_level == 1 ? "<b>15</b>" : "15"]/[new_level == 2 ? "<b>25</b>" : "25"]/[new_level == 3 ? "<b>35</b>" : "35"] (+5% AP) of their max HP. Cooldown [new_level == 1 ? "<b>150</b>" : "150"]/[new_level == 2 ? "<b>120</b>" : "120"]/[new_level == 3 ? "<b>100</b>" : "100"] seconds."
 
 /obj/effect/xenomorph/xeno_telegraph/drone_heal_template
 	icon = 'icons/effects/96x96.dmi'

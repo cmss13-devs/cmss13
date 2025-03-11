@@ -18,3 +18,6 @@
 
 /// (level)
 #define COMSIG_MOBA_LEVEL_UP "moba_level_up"
+
+/// (list/ap_holder)
+#define COMSIG_MOBA_GET_AP "moba_get_ap"

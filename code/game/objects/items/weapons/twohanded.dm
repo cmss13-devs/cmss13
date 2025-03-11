@@ -40,9 +40,9 @@
 			return
 
 	flags_item    ^= WIELDED
+	place_offhand(user, name)
 	name    += " (Wielded)"
 	item_state += "_w"
-	place_offhand(user,initial(name))
 	return 1
 
 /obj/item/proc/unwield(mob/user)

@@ -306,6 +306,7 @@
 	give_action(M, /datum/action/human_action/chimera/disconnect_tug)
 	give_action(M, /datum/action/human_action/chimera/toggle_sensors)
 	give_action(M, /datum/action/human_action/chimera/access_tacmap)
+	give_action(M, /datum/action/human_action/chimera/toggle_nvg)
 
 	for(var/atom/movable/screen/chimera/screen_to_add as anything in custom_hud)
 		M.client.add_to_screen(screen_to_add)
@@ -377,6 +378,7 @@
 	remove_action(M, /datum/action/human_action/chimera/disconnect_tug)
 	remove_action(M, /datum/action/human_action/chimera/toggle_sensors)
 	remove_action(M, /datum/action/human_action/chimera/access_tacmap)
+	remove_action(M, /datum/action/human_action/chimera/toggle_nvg)
 
 	for(var/atom/movable/screen/chimera/screen_to_remove as anything in custom_hud)
 		M.client.remove_from_screen(screen_to_remove) 
@@ -456,19 +458,19 @@
 	for(var/obj/vis_contents_holder/vis_holder in new_turf)
 		vis_holder.transform = transform_matrix
 
-/obj/vehicle/multitile/chimera/proc/toggle_sensors()
+/obj/vehicle/multitile/chimera/proc/toggle_sensors(mode)
 	var/obj/item/hardpoint/support/sensor_array/sensors = locate() in hardpoints
 
 	if(!sensors)
 		return
 
-	sensors.toggle()
+	sensors.toggle(mode)
 
 	if(sensors.active)
-		to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Sensors turned on."))
+		to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Turned on [mode] mode."))
 		playsound(seats[VEHICLE_DRIVER].loc, 'sound/vehicles/vtol/radaractive.ogg', 25, FALSE)
 	else
-		to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Sensors turned off."))
+		to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Turned sensor array off."))
 
 /obj/vehicle/multitile/chimera/proc/toggle_rear_door()
 	back_door.toggle_open()
@@ -790,6 +792,8 @@
 
 	vehicle.disconnect_tug()
 
+#define SENSOR_MODE "sensor"
+
 /datum/action/human_action/chimera/toggle_sensors
 	name = "Toggle Sensors"
 	action_icon_state = "radar-ping"
@@ -802,7 +806,27 @@
 
 	. = ..()
 
-	vehicle.toggle_sensors()
+	vehicle.toggle_sensors(SENSOR_MODE)
+
+#undef SENSOR_MODE
+
+#define NIGHTVISION_MODE "nightvision"
+
+/datum/action/human_action/chimera/toggle_nvg
+	name = "Toggle Sensors"
+	action_icon_state = "nightvision"
+
+/datum/action/human_action/chimera/toggle_nvg/action_activate()
+	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+	
+	if(!istype(vehicle))
+		return
+
+	. = ..()
+
+	vehicle.toggle_sensors(NIGHTVISION_MODE)
+
+#undef NIGHTVISION_MODE
 
 /datum/action/human_action/chimera/access_tacmap
 	name = "Access Tacmap"

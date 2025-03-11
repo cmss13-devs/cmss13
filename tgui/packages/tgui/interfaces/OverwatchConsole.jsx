@@ -608,6 +608,7 @@ const SupplyDrop = (props) => {
           <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
+                step={1}
                 value={supplyX}
                 onChange={(value) => setSupplyX(value)}
                 width="75px"
@@ -615,6 +616,7 @@ const SupplyDrop = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
+                step={1}
                 value={supplyY}
                 onChange={(value) => setSupplyY(value)}
                 width="75px"
@@ -622,6 +624,7 @@ const SupplyDrop = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="HEIGHT">
               <NumberInput
+                step={1}
                 value={supplyZ}
                 onChange={(value) => setSupplyZ(value)}
                 width="75px"
@@ -695,6 +698,7 @@ const OrbitalBombardment = (props) => {
           <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
+                step={1}
                 value={OBX}
                 onChange={(value) => setOBX(value)}
                 width="75px"
@@ -702,6 +706,7 @@ const OrbitalBombardment = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
+                step={1}
                 value={OBY}
                 onChange={(value) => setOBY(value)}
                 width="75px"
@@ -709,6 +714,7 @@ const OrbitalBombardment = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="HEIGHT">
               <NumberInput
+                step={1}
                 value={OBZ}
                 onChange={(value) => setOBZ(value)}
                 width="75px"

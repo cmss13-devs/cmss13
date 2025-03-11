@@ -1,0 +1,5 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - rscadd: "there's now a new tgui scale option in settings for people with high dpi monitors using windows scaling that allows you to toggle between having windows be larger but their contents the correct size, or having windows be the normal size but their contents shrunk down"
+  - bugfix: "people with a different windows scaling option than 100% on 516 can drag windows normally again"

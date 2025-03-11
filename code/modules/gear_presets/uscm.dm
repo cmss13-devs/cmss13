@@ -436,7 +436,7 @@
 	rank = JOB_SQUAD_LEADER
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "SL"
-	minimum_age = 27
+	minimum_age = 25
 	skills = /datum/skills/SL
 
 	minimap_icon = "leader"
@@ -513,7 +513,7 @@
 	rank = JOB_SQUAD_LEADER
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "SL"
-	minimum_age = 27
+	minimum_age = 25
 	skills = /datum/skills/SL
 
 	minimap_icon = "leader"

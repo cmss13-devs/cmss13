@@ -579,11 +579,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	var/list/humans_uscm = list()
 	for(var/mob/current_mob as anything in humans_other)
-		var/mob/living/carbon/human/current_human = current_mob
-		if(istype(current_human)) //if it's unconsious human or yautja, we remove them
-			if(current_human.stat != CONSCIOUS || isyautja(current_human))
-				humans_other -= current_mob
-				continue
+		if(current_human.stat != CONSCIOUS || isyautja(current_human))
+			humans_other -= current_mob
+			continue
 		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR)
 			humans_uscm += current_mob
 			humans_other -= current_mob

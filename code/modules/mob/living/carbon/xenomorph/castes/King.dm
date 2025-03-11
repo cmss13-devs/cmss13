@@ -100,7 +100,7 @@
 				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			else if(xeno.hivenumber != src.hivenumber)
 				xeno.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
-			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 		else
 			if(carbon.stat != DEAD)
 				carbon.apply_armoured_damage(20)

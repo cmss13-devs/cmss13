@@ -16,3 +16,28 @@
 		GUN_FIREMODE_SEMIAUTO,
 	)
 	fire_delay = 10 SECONDS
+
+/obj/item/hardpoint/primary/chimera_launchers/try_fire(atom/target, mob/living/user, params)
+	if(ammo && ammo.current_rounds <= 0)
+		reload(user)
+		return
+	
+	return ..()
+
+// Just removes the sleep because it sucks
+/obj/item/hardpoint/primary/chimera_launchers/reload(mob/user)
+	if(!LAZYLEN(backup_clips))
+		to_chat(usr, SPAN_WARNING("\The [name] has no remaining backup clips."))
+		return
+
+	var/obj/item/ammo_magazine/A = LAZYACCESS(backup_clips, 1)
+	if(!A)
+		to_chat(user, SPAN_DANGER("Something went wrong! Ahelp and ask for a developer! Code: HP_RLDHP"))
+		return
+
+	forceMove(ammo, get_turf(src))
+	ammo.update_icon()
+	ammo = A
+	LAZYREMOVE(backup_clips, A)
+
+	to_chat(user, SPAN_NOTICE("You reload \the [name]."))

@@ -501,7 +501,7 @@
 		return
 
 	busy = TRUE
-
+	new /obj/downwash_effect(get_turf(src))
 	playsound(loc, 'sound/vehicles/vtol/takeoff.ogg', 25, FALSE)
 	addtimer(CALLBACK(src, PROC_REF(takeoff_engage_vtol)), 20 SECONDS)
 
@@ -515,6 +515,8 @@
 	flags_atom |= NO_ZFALL
 	state = STATE_VTOL
 	update_icon()
+	var/obj/downwash_effect/downwash = locate() in get_turf(src)
+	qdel(downwash)
 	forceMove(SSmapping.get_turf_above(get_turf(src)))
 	shadow_holder = new(SSmapping.get_turf_below(get_turf(src)))
 	update_rear_view()

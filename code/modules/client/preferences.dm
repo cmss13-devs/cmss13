@@ -313,19 +313,21 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			if(load_preferences())
 				if(load_character())
 					return
+
+		C.tgui_say?.load()
+
 	if(!ooccolor)
 		ooccolor = CONFIG_GET(string/ooc_color_default)
 	gender = pick(MALE, FEMALE)
 	real_name = random_name(gender)
 	gear = list()
 
-	C?.tgui_say?.load()
 
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
 
-	C?.tgui_say?.load()
+	C.tgui_say?.load()
 
 /datum/preferences/Del()
 	. = ..()

@@ -27,6 +27,7 @@
 #define ui_ghost_slot3 "SOUTH:6,CENTER:0"
 #define ui_ghost_slot4 "SOUTH:6,CENTER+1:0"
 #define ui_ghost_slot5 "SOUTH:6,CENTER+2:0"
+#define ui_ghost_slot6 "SOUTH:6,CENTER+3:0"
 
 //Upper-middle right (alerts)
 #define ui_alert1 "EAST-1:28,CENTER+5:27"

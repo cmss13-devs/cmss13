@@ -96,7 +96,8 @@
 	. = ..()
 
 	. += ""
-	. += "Security Level: [uppertext(get_security_level())]"
+	if(ishumansynth_strict(src)) // So that yautja or other species dont see the ships security alert
+		. += "Security Level: [uppertext(get_security_level())]"
 
 	if(species?.has_species_tab_items)
 		var/list/species_tab_items = species.get_status_tab_items(src)
@@ -137,8 +138,6 @@
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
-
-
 	var/b_loss = 0
 	var/f_loss = 0
 
@@ -155,6 +154,10 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_HAULED)) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
+		visible_message(SPAN_WARNING("[src] is shielded from the blast!"), SPAN_WARNING("You are shielded from the blast!"))
 		return
 
 	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
@@ -265,7 +268,8 @@
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
-	if(!CONFIG_GET(flag/use_loyalty_implants) && !override) return // Nuh-uh.
+	if(!CONFIG_GET(flag/use_loyalty_implants) && !override)
+		return // Nuh-uh.
 
 	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(M)
 	L.imp_in = M
@@ -387,7 +391,8 @@
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
-	if(status_flags & GODMODE) return FALSE //godmode
+	if(status_flags & GODMODE)
+		return FALSE //godmode
 
 	if(!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -831,7 +836,7 @@
 		holo_card_color = null
 		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
 	else if(newcolor != holo_card_color)
-		if(newcolor == "black" && is_revivable())
+		if(newcolor == "black" && is_revivable() && check_tod())
 			to_chat(user, SPAN_WARNING("They are yet saveable."))
 			return
 		holo_card_color = newcolor
@@ -1321,7 +1326,8 @@
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
 
 /mob/living/carbon/proc/locate_nearest_nuke()
-	if(!GLOB.bomb_set) return
+	if(!GLOB.bomb_set)
+		return
 	var/obj/structure/machinery/nuclearbomb/N
 	for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 		if(!istype(N) || N.z != src.z )
@@ -1345,7 +1351,8 @@
 	sync_lighting_plane_alpha()
 
 /mob/living/carbon/human/update_sight()
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT) return
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT)
+		return
 
 	sight &= ~BLIND // Never have blind on by default
 
@@ -1812,3 +1819,5 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+
+

@@ -39,10 +39,14 @@
 
 	// Build a message
 	var/message = list()
-	if(type) message["type"] = type
-	if(text) message["text"] = text
-	if(html) message["html"] = html
-	if(avoid_highlighting) message["avoidHighlighting"] = avoid_highlighting
+	if(type)
+		message["type"] = type
+	if(text)
+		message["text"] = text
+	if(html)
+		message["html"] = html
+	if(avoid_highlighting)
+		message["avoidHighlighting"] = avoid_highlighting
 	// send it immediately
 	SSchat.send_immediate(target, message)
 
@@ -84,10 +88,14 @@
 		target = GLOB.clients
 	// Build a message
 	var/message = list()
-	if(type) message["type"] = type
-	if(text) message["text"] = text
-	if(html) message["html"] = html
-	if(avoid_highlighting) message["avoidHighlighting"] = avoid_highlighting
+	if(type)
+		message["type"] = type
+	if(text)
+		message["text"] = text
+	if(html)
+		message["html"] = html
+	if(avoid_highlighting)
+		message["avoidHighlighting"] = avoid_highlighting
 	SSchat.queue(target, message)
 
 /proc/announce_dchat(message, atom/target)

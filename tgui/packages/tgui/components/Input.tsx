@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -180,6 +179,7 @@ export function Input(props: Props) {
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         ref={inputRef}
+        spellCheck="false"
       />
     </Box>
   );

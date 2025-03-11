@@ -1326,7 +1326,8 @@
 		if(ammo_dumping.current_rounds != 0)
 			if(length(contents) < storage_slots - 1) //this is because it's a gunbelt and the final slot is reserved for the gun
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
-				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+					return
 				for(var/i = 1 to handfuls)
 					if(length(contents) < storage_slots - 1)
 						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful

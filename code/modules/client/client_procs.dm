@@ -942,7 +942,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
 
+GLOBAL_VAR(ooc_rank_dmi)
+GLOBAL_LIST_INIT(ooc_rank_iconstates, setup_ooc_rank_icons())
 GLOBAL_LIST_INIT(community_awards, get_community_awards())
+
+/proc/setup_ooc_rank_icons()
+	var/ooc_dmi_path = "config/ooc.dmi"
+	if(!fexists(ooc_dmi_path))
+		return list()
+	GLOB.ooc_rank_dmi = icon(file(ooc_dmi_path))
+	return icon_states(GLOB.ooc_rank_dmi)
 
 /proc/get_community_awards()
 	var/list/awards_file = file2list("config/community_awards.txt")
@@ -978,5 +987,5 @@ GLOBAL_LIST_INIT(community_awards, get_community_awards())
 	if(GLOB.community_awards[ckey])
 		var/full_prefix = ""
 		for(var/award in GLOB.community_awards[ckey])
-			full_prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, award)]"
+			full_prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, award)]"
 		return full_prefix

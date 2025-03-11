@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - admin: "Added logging for shuttle manipulation."

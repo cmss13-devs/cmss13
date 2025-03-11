@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fixes some paperwork inaccuracies and formatting errors."
-  - rscadd: "Subtypes NDA forms for Wey-Yu to differentiate between USCM and other parties."

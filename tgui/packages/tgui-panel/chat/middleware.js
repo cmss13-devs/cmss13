@@ -9,6 +9,7 @@ import DOMPurify from 'dompurify';
 
 import {
   addHighlightSetting,
+  importSettings,
   loadSettings,
   removeHighlightSetting,
   updateHighlightSetting,
@@ -21,6 +22,8 @@ import {
   changeScrollTracking,
   clearChat,
   loadChat,
+  moveChatPageLeft,
+  moveChatPageRight,
   rebuildChat,
   removeChatPage,
   saveChatToDisk,
@@ -37,22 +40,37 @@ const FORBID_TAGS = ['a', 'iframe', 'link', 'video'];
 
 const saveChatToStorage = async (store) => {
   const state = selectChat(store.getState());
-  const fromIndex = Math.max(
-    0,
-    chatRenderer.messages.length - MAX_PERSISTED_MESSAGES,
-  );
-  const messages = chatRenderer.messages
-    .slice(fromIndex)
-    .map((message) => serializeMessage(message));
+
+  if (!Byond.TRIDENT) {
+    const indexedDbBackend = await storage.backendPromise;
+    indexedDbBackend.processChatMessages(chatRenderer.storeQueue);
+  } else {
+    const fromIndex = Math.max(
+      0,
+      chatRenderer.messages.length - MAX_PERSISTED_MESSAGES,
+    );
+
+    const messages = chatRenderer.messages
+      .slice(fromIndex)
+      .map((message) => serializeMessage(message));
+
+    storage.set('chat-messages-cm', messages);
+  }
+
+  chatRenderer.storeQueue = [];
   storage.set('chat-state-cm', state);
-  storage.set('chat-messages-cm', messages);
 };
 
 const loadChatFromStorage = async (store) => {
-  const [state, messages] = await Promise.all([
-    storage.get('chat-state-cm'),
-    storage.get('chat-messages-cm'),
-  ]);
+  const state = await storage.get('chat-state-cm');
+
+  let messages;
+  if (usingCdnStorage) {
+    messages = await (await storage.backendPromise).getChatMessages();
+  } else {
+    messages = await storage.get('chat-messages-cm');
+  }
+
   // Discard incompatible versions
   if (state && state.version <= 4) {
     store.dispatch(loadChat());
@@ -95,12 +113,14 @@ export const chatMiddleware = (store) => {
   chatRenderer.events.on('scrollTrackingChanged', (scrollTracking) => {
     store.dispatch(changeScrollTracking(scrollTracking));
   });
-  setInterval(() => {
-    saveChatToStorage(store);
-  }, MESSAGE_SAVE_INTERVAL);
   return (next) => (action) => {
     const { type, payload } = action;
-    if (!initialized) {
+    const settings = selectSettings(store.getState());
+    // Load the chat once settings are loaded
+    if (!initialized && settings.initialized) {
+      setInterval(() => {
+        saveChatToStorage(store);
+      }, MESSAGE_SAVE_INTERVAL);
       initialized = true;
       loadChatFromStorage(store);
     }
@@ -108,13 +128,15 @@ export const chatMiddleware = (store) => {
       let payload_obj;
       try {
         payload_obj = JSON.parse(payload);
-      } catch {
+      } catch (err) {
         return;
       }
+
       const sequence = payload_obj.sequence;
       if (sequences.includes(sequence)) {
         return;
       }
+
       const sequence_count = sequences.length;
       seq_check: if (sequence_count > 0) {
         if (sequences_requested.includes(sequence)) {
@@ -153,7 +175,9 @@ export const chatMiddleware = (store) => {
       type === changeChatPage.type ||
       type === addChatPage.type ||
       type === removeChatPage.type ||
-      type === toggleAcceptedType.type
+      type === toggleAcceptedType.type ||
+      type === moveChatPageLeft.type ||
+      type === moveChatPageRight.type
     ) {
       next(action);
       const page = selectCurrentChatPage(store.getState());
@@ -170,13 +194,14 @@ export const chatMiddleware = (store) => {
       type === loadSettings.type ||
       type === addHighlightSetting.type ||
       type === removeHighlightSetting.type ||
-      type === updateHighlightSetting.type
+      type === updateHighlightSetting.type ||
+      type === importSettings.type
     ) {
       next(action);
-      const settings = selectSettings(store.getState());
+      const nextSettings = selectSettings(store.getState());
       chatRenderer.setHighlight(
-        settings.highlightSettings,
-        settings.highlightSettingById,
+        nextSettings.highlightSettings,
+        nextSettings.highlightSettingById,
       );
 
       return;

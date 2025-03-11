@@ -96,7 +96,8 @@
 	. = ..()
 
 	. += ""
-	. += "Security Level: [uppertext(get_security_level())]"
+	if(ishumansynth_strict(src)) // So that yautja or other species dont see the ships security alert
+		. += "Security Level: [uppertext(get_security_level())]"
 
 	if(species?.has_species_tab_items)
 		var/list/species_tab_items = species.get_status_tab_items(src)
@@ -137,8 +138,6 @@
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
-
-
 	var/b_loss = 0
 	var/f_loss = 0
 
@@ -155,6 +154,10 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_HAULED)) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
+		visible_message(SPAN_WARNING("[src] is shielded from the blast!"), SPAN_WARNING("You are shielded from the blast!"))
 		return
 
 	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
@@ -1817,4 +1820,4 @@
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
 
-	
+

@@ -108,7 +108,7 @@ class IFrameIndexedDbBackend {
   async get(key) {
     const promise = new Promise((resolve) => {
       window.addEventListener('message', (message) => {
-        if (message.data.key === key) {
+        if (message.data.key && message.data.key === key) {
           resolve(message.data.value);
         }
       });
@@ -145,6 +145,26 @@ class IFrameIndexedDbBackend {
     return promise;
   }
 
+  async processChatMessages(messages) {
+    this.iframeWindow.postMessage(
+      { type: 'processChatMessages', messages: messages },
+      '*',
+    );
+  }
+
+  async getChatMessages() {
+    const promise = new Promise((resolve) => {
+      window.addEventListener('message', (message) => {
+        if (message.data.messages) {
+          resolve(message.data.messages);
+        }
+      });
+    });
+
+    this.iframeWindow.postMessage({ type: 'getChatMessages' }, '*');
+    return promise;
+  }
+ 
   async destroy() {
     document.body.removeChild(this.documentElement);
     this.documentElement = null;

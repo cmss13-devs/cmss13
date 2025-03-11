@@ -164,7 +164,7 @@ class IFrameIndexedDbBackend {
     this.iframeWindow.postMessage({ type: 'getChatMessages' }, '*');
     return promise;
   }
- 
+
   async destroy() {
     document.body.removeChild(this.documentElement);
     this.documentElement = null;

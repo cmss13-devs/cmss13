@@ -39,8 +39,8 @@ const initialState = {
     visible: false,
     activeTab: SETTINGS_TABS[0].id,
   },
-  statLinked: true,
-  statFontSize: 12,
+  statLinked: false,
+  statFontSize: 14,
   statTabsStyle: 'default',
   initialized: false,
 } as const;

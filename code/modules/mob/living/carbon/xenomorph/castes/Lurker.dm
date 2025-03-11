@@ -64,6 +64,9 @@
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
+	forced_retarget_time = (2 SECONDS)
+	var/pull_direction
+
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
 
@@ -331,3 +334,63 @@
 		behavior.next_slash_buffed = FALSE
 
 	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer deal increased damage!"))
+
+// ai
+
+
+/mob/living/carbon/xenomorph/lurker/launch_towards(datum/launch_metadata/LM)
+	if(!current_target)
+		return ..()
+
+	pull_direction = turn(get_dir(src, current_target), 180)
+
+	if(!(pull_direction in GLOB.cardinals))
+		if(abs(x - current_target.x) < abs(y - current_target.y))
+			pull_direction &= (NORTH|SOUTH)
+		else
+			pull_direction &= (EAST|WEST)
+	return ..()
+
+/mob/living/carbon/xenomorph/lurker/init_movement_handler()
+	return new /datum/xeno_ai_movement/linger/lurking(src)
+
+/mob/living/carbon/xenomorph/lurker/ai_move_target(delta_time)
+	if(throwing)
+		return
+
+	if(pulling)
+		if(!current_target || get_dist(src, current_target) > 10)
+			INVOKE_ASYNC(src, PROC_REF(stop_pulling))
+			return ..()
+		if(can_move_and_apply_move_delay())
+			if(!Move(get_step(loc, pull_direction), pull_direction))
+				pull_direction = turn(pull_direction, pick(45, -45))
+		current_path = null
+		return
+
+	..()
+
+	if(get_dist(current_target, src) > 1)
+		return
+
+	if(!istype(current_target, /mob))
+		return
+
+	var/mob/current_target_mob = current_target
+
+	if(!current_target_mob.is_mob_incapacitated())
+		return
+
+	if(isxeno(current_target.pulledby))
+		return
+
+	if(!DT_PROB(RUNNER_GRAB, delta_time))
+		return
+
+	INVOKE_ASYNC(src, PROC_REF(start_pulling), current_target)
+	swap_hand()
+
+/mob/living/carbon/xenomorph/lurker/process_ai(delta_time)
+	if(get_active_hand())
+		swap_hand()
+	return ..()

@@ -94,3 +94,81 @@
 	var/datum/action/xeno_action/onclick/xenohide/hide = get_action(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
 	if(hide)
 		hide.post_attack()
+
+// ai
+/mob/living/carbon/xenomorph/runner/ai
+	var/current_target
+	var/linger_range = 5
+	var/linger_deviation = 1
+	var/pull_direction
+
+/mob/living/carbon/xenomorph/runner/ai/launch_towards(datum/launch_metadata/LM)
+	if(!current_target)
+		return ..()
+
+	pull_direction = turn(get_dir(src, current_target), 180)
+
+	if(!(pull_direction in GLOB.cardinals))
+		if(abs(x - current_target.x) < abs(y - current_target.y))
+			pull_direction &= (NORTH|SOUTH)
+		else
+			pull_direction &= (EAST|WEST)
+	return ..()
+
+/mob/living/carbon/xenomorph/runner/ai/start_pulling(atom/movable/AM, lunge, no_msg)
+	. = ..()
+
+	add_temp_negative_pass_flags(PASS_FLAGS_CRAWLER)
+
+/mob/living/carbon/xenomorph/runner/ai/stop_pulling(bumped_movement = FALSE)
+	. = ..()
+
+	remove_temp_negative_pass_flags(PASS_FLAGS_CRAWLER)
+
+/mob/living/carbon/xenomorph/runner/ai/init_movement_handler()
+	var/datum/xeno_ai_movement/linger/linger_movement = new(src)
+	linger_movement.linger_range = linger_range
+	linger_movement.linger_deviation = linger_deviation
+	return linger_movement
+
+/mob/living/carbon/xenomorph/runner/ai/ai_move_target(delta_time)
+	if(throwing)
+		return
+
+	if(pulling)
+		if(!current_target || get_dist(src, current_target) > 10)
+			INVOKE_ASYNC(src, PROC_REF(stop_pulling))
+			return ..()
+		if(can_move_and_apply_move_delay())
+			if(!Move(get_step(loc, pull_direction), pull_direction))
+				pull_direction = turn(pull_direction, pick(45, -45))
+		current_path = null
+		return
+
+	..()
+
+	if(get_dist(current_target, src) > 1)
+		return
+
+	if(!istype(current_target, /mob))
+		return
+
+	var/mob/current_target_mob = current_target
+
+	if(!current_target_mob.is_mob_incapacitated())
+		return
+
+	if(isxeno(current_target.pulledby))
+		return
+
+	if(!DT_PROB(RUNNER_GRAB, delta_time))
+		return
+
+	INVOKE_ASYNC(src, PROC_REF(start_pulling), current_target)
+	swap_hand()
+
+/mob/living/carbon/xenomorph/runner/ai/process_ai(delta_time)
+	if(get_active_hand())
+		swap_hand()
+	return ..()
+

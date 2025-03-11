@@ -31,6 +31,9 @@
 	var/list/flags_can_pass_front_temp
 	var/list/flags_can_pass_behind_temp
 
+	var/list/flags_pass_temp_negative
+	var/list/negative_temp_flag_counter
+
 	var/flags_barrier = NO_FLAGS
 	var/throwpass = 0
 
@@ -469,6 +472,34 @@ Parameters are passed from New.
 			if (temp_flag_counter[flag_str] == 0)
 				temp_flag_counter -= flag_str
 				flags_pass_temp &= ~flag
+
+/atom/proc/add_temp_negative_pass_flags(flags_to_add)
+	if (isnull(negative_temp_flag_counter))
+		negative_temp_flag_counter = list()
+
+	for (var/flag in GLOB.bitflags)
+		if(!(flags_to_add & flag))
+			continue
+		var/flag_str = "[flag]"
+		if (negative_temp_flag_counter[flag_str])
+			negative_temp_flag_counter[flag_str]++
+		else
+			negative_temp_flag_counter[flag_str] = 1
+			flags_pass_temp_negative |= flag
+
+/atom/proc/remove_temp_negative_pass_flags(flags_to_remove)
+	if (isnull(negative_temp_flag_counter))
+		return
+
+	for (var/flag in GLOB.bitflags)
+		if(!(flags_to_remove & flag))
+			continue
+		var/flag_str = "[flag]"
+		if (negative_temp_flag_counter[flag_str])
+			negative_temp_flag_counter[flag_str]--
+			if (negative_temp_flag_counter[flag_str] == 0)
+				negative_temp_flag_counter -= flag_str
+				flags_pass_temp_negative &= ~flag
 
 // This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
 /atom/proc/initialize_pass_flags(datum/pass_flags_container/PF)

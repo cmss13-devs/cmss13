@@ -366,3 +366,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
+
+/obj/item/clothing/suit/storage/labcoat/short
+	icon_state = "labcoat_short"
+	item_state = "labcoat_short"

@@ -31,6 +31,13 @@
 	icon_state = "upp_leftengine"
 	},
 /area/strata/ag/exterior/marsh/crash)
+"dI" = (
+/obj/item/ammo_box/magazine/ak4047/ap/empty{
+	pixel_x = 3;
+	pixel_y = -4
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/strata/ag/exterior/marsh/crash)
 "eV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -58,7 +65,6 @@
 /area/strata/ag/exterior/marsh/crash)
 "gV" = (
 /obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/rifle/ak4047/ap,
 /obj/item/ammo_magazine/rifle/ak4047/ap,
 /obj/item/ammo_magazine/rifle/ak4047/ap,
 /obj/item/ammo_magazine/rifle/ak4047/ap,
@@ -149,6 +155,21 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ag/exterior/marsh/crash)
+"qH" = (
+/obj/item/ammo_box/magazine/ak4047/empty{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/ammo_box/magazine/ak4047/empty{
+	pixel_x = -4;
+	pixel_y = -13
+	},
+/obj/item/ammo_box/magazine/ak4047/empty{
+	pixel_x = -4;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer/test_floor5,
 /area/strata/ag/exterior/marsh/crash)
 "qZ" = (
 /turf/closed/shuttle/ert{
@@ -315,6 +336,10 @@
 "Ff" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/marsh/crash)
+"Fz" = (
+/obj/item/ammo_magazine/rifle/ak4047/ap,
+/turf/open/floor/almayer/test_floor5,
+/area/strata/ag/exterior/marsh/crash)
 "FK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -322,6 +347,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/crash)
 "FL" = (
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/almayer/test_floor5,
 /area/strata/ag/exterior/marsh/crash)
 "Gj" = (
@@ -384,6 +410,13 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ag/exterior/marsh/crash)
+"II" = (
+/obj/item/ammo_box/magazine/ak4047/ap/empty{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/test_floor6,
 /area/strata/ag/exterior/marsh/crash)
 "Ju" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -539,7 +572,6 @@
 /obj/item/ammo_magazine/rifle/ak4047,
 /obj/item/ammo_magazine/rifle/ak4047,
 /obj/item/ammo_magazine/rifle/ak4047,
-/obj/item/ammo_magazine/rifle/ak4047,
 /obj/item/weapon/gun/rifle/ak4047,
 /obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/almayer/test_floor5,
@@ -647,7 +679,7 @@ Ww
 Lc
 ns
 ns
-FL
+qH
 FL
 uS
 nu
@@ -658,10 +690,10 @@ sa
 xI
 YA
 uS
+II
 ns
-ns
-FL
-FL
+Fz
+dI
 uS
 Lq
 IC

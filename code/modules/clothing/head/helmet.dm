@@ -1438,6 +1438,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "UPP civilian headgear. It's of poor quality, and isn't expected to last all that long, however for as long as it's whole, it appears quite stylish."
 	icon_state = "upp_cap_civi"
 
+/obj/item/clothing/head/uppcap/civi/plant_worker
+	name = "white plant worker cap"
+	desc = "A simple white fabric cap, commonly worn by plant workers to keep hair contained and maintain cleanliness. Lightweight and practical, but not very durable."
+	icon_state = "plant_work_cap"
+
 /obj/item/clothing/head/uppcap/beret
 	name = "\improper UL3 UPP beret"
 	icon_state = "upp_beret"

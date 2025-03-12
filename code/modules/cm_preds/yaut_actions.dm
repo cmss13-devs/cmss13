@@ -108,6 +108,7 @@
 /datum/action/predator_action/mask/zoom/action_activate()
 	. = ..()
 	mask.toggle_zoom()
+	playsound(mask, 'sound/effects/binoctarget.ogg', 10, 1)
 
 /datum/action/predator_action/mask/visor
 	name = "Toggle Mask Visor"

@@ -24,7 +24,7 @@
 	var/list/hearers_to_return = list()
 	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
 	hearers_to_return += SSquadtree.players_in_range(zone, z)
-	
+
 	var/turf/above = SSmapping.get_turf_above(locate(x, y, z))
 	while(above)
 		hearers_to_return += SSquadtree.players_in_range(zone, above.z)
@@ -435,8 +435,6 @@
 				sound = pick('sound/voice/pred_pain_rare1.ogg')
 			if("pred_death")
 				sound = pick('sound/voice/pred_death1.ogg', 'sound/voice/pred_death2.ogg')
-			if("pred_laugh4")
-				sound = pick('sound/voice/pred_laugh4.ogg', 'sound/voice/pred_laugh5.ogg')
 			if("clownstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
 			if("giant_lizard_growl")

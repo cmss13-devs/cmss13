@@ -1,7 +1,15 @@
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack, Tabs } from '../components';
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Section,
+  Stack,
+  Tabs,
+} from '../components';
 import { BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
@@ -195,7 +203,7 @@ const ResearchReportTable = (props: {
           </Flex.Item>
         </Flex>
       </Stack.Item>
-      <hr />
+      <Divider />
       <Stack.Item>
         <CompoundTable
           hideOld={hideOld}
@@ -592,8 +600,10 @@ export const ResearchTerminal = () => {
   const [isConfirm, setConfirm] = useState<string | undefined>(undefined);
   return (
     <Window width={480 * 2} height={320 * 2} theme="crtyellow">
-      <Window.Content scrollable className="ResearchTerminal">
+      <Window.Content className="ResearchTerminal">
         <Section
+          fill
+          scrollable
           title={`Clearance Level ${data.clearance_level}`}
           buttons={
             <ClearanceImproveButton

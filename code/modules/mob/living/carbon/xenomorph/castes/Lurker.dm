@@ -159,6 +159,9 @@
 	if(!lurker_invisibility_action)
 		return
 
+	if(!bound_xeno.client?.prefs.show_cooldown_messages)
+		return
+
 	// Recharged
 	if(lurker_invisibility_action.cooldown_timer_id == TIMER_ID_NULL)
 		. += "Invisibility Recharge: Ready."
@@ -292,7 +295,8 @@
 	behavior.on_invisibility_off()
 
 /datum/action/xeno_action/onclick/lurker_invisibility/ability_cooldown_over()
-	to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
+	if(owner.client?.prefs.show_cooldown_messages)
+		to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
 	..()
 
 /datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)

@@ -179,11 +179,11 @@
 /area/event/dynamic)
 "aK" = (
 /obj/structure/shuttle/part/dropship3/transparent/left_outer_bottom_wing,
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement3,
 /area/event/dynamic)
 "aL" = (
 /obj/structure/shuttle/part/dropship3/transparent/left_outer_inner_wing,
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement1,
 /area/event/dynamic)
 "aM" = (
 /obj/item/ammo_casing/bullet{
@@ -592,7 +592,7 @@
 /area/event/dynamic)
 "cs" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust,
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement3,
 /area/event/dynamic)
 "ct" = (
 /obj/effect/decal/grass_overlay/grass1{
@@ -743,7 +743,7 @@
 /area/event/dynamic)
 "cT" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_cap,
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement3,
 /area/event/dynamic)
 "cU" = (
 /obj/structure/machinery/landinglight/ds2{
@@ -2257,7 +2257,7 @@
 /area/event/dynamic)
 "if" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/corsat/marked,
 /area/event/dynamic)
 "ig" = (
 /obj/structure/stairs/multiz/up{
@@ -2381,6 +2381,19 @@
 "iI" = (
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/event/dynamic)
+"iJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
+"iK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
 "iL" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras,
@@ -2391,6 +2404,28 @@
 /obj/item/device/defibrillator,
 /turf/open/auto_turf/sand/layer0,
 /area/event/dynamic)
+"iN" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_x = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/dynamic)
+"iO" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/prison/ramptop/east,
+/area/event/dynamic)
+"iP" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/shiva/radiator_tile,
+/area/event/dynamic)
+"iQ" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/event/dynamic)
 "iR" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
@@ -2400,11 +2435,37 @@
 "iS" = (
 /turf/open/floor/kutjevo/tan/alt_edge/southeast,
 /area/event/dynamic)
+"iT" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/event/dynamic)
 "iU" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/event/dynamic)
+"iV" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = -12
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/event/dynamic)
+"iW" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/event/dynamic)
+"iX" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
 /area/event/dynamic)
 "iY" = (
 /obj/item/ammo_casing/bullet{
@@ -2412,11 +2473,24 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
+"iZ" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/prison/ramptop/north,
+/area/event/dynamic)
+"ja" = (
+/turf/open/floor/prison/darkbrown2/southwest,
+/area/event/dynamic)
+"jb" = (
+/turf/open/floor/prison/darkbrown2,
+/area/event/dynamic)
 "jc" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
 	},
 /turf/open/floor/kutjevo/colors/cyan/tile,
+/area/event/dynamic)
+"jd" = (
+/turf/open/floor/prison/darkbrown2/southeast,
 /area/event/dynamic)
 "je" = (
 /obj/structure/machinery/light,
@@ -2426,11 +2500,35 @@
 /obj/item/stack/sheet/metal,
 /turf/open/asphalt/cement,
 /area/event/dynamic)
+"jg" = (
+/turf/open/floor/prison/darkbrowncorners2/west,
+/area/event/dynamic)
 "jh" = (
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/event/dynamic)
+"ji" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/event/dynamic)
+"jj" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "jk" = (
 /turf/open/floor/shiva/yellowfull,
+/area/event/dynamic)
+"jl" = (
+/turf/open/floor/prison/darkbrown2/northwest,
+/area/event/dynamic)
+"jm" = (
+/turf/open/floor/prison/darkbrown2/north,
+/area/event/dynamic)
+"jn" = (
+/turf/open/floor/prison/darkbrown2/northeast,
 /area/event/dynamic)
 "jo" = (
 /turf/open/hybrisa/street/roadlines4,
@@ -2439,9 +2537,25 @@
 /obj/structure/window_frame/wood,
 /turf/open/floor/plating/wood,
 /area/event/dynamic)
+"jq" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/event/dynamic)
+"jr" = (
+/obj/structure/flora/grass/tallgrass/ice,
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/event/dynamic)
 "js" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/event/dynamic)
+"jt" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "ju" = (
 /obj/structure/window_frame/kutjevo,
@@ -2450,6 +2564,10 @@
 "jv" = (
 /obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"jw" = (
+/obj/structure/girder,
+/turf/open/asphalt/cement,
 /area/event/dynamic)
 "jx" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -2463,6 +2581,32 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/event/dynamic)
+"jz" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/event/dynamic)
+"jA" = (
+/turf/open/floor/prison/darkbrownfull2,
+/area/event/dynamic)
+"jB" = (
+/obj/structure/flora/grass/tallgrass/ice,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"jC" = (
+/obj/effect/decal/siding,
+/turf/open/floor/prison/darkyellowcorners2/west,
+/area/event/dynamic)
+"jD" = (
+/turf/open/floor/prison/darkyellowcorners2/southwest,
+/area/event/dynamic)
+"jE" = (
+/obj/effect/decal/siding{
+	icon_state = "siding5"
+	},
+/turf/open/floor/prison/darkyellowcorners2/west,
+/area/event/dynamic)
 "jF" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -2471,8 +2615,17 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/event/dynamic)
+"jG" = (
+/turf/open/floor/almayer/tcomms,
+/area/event/dynamic)
 "jH" = (
 /turf/open/auto_turf/strata_grass/layer1,
+/area/event/dynamic)
+"jI" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/turf/open/floor/prison/floor_plate,
 /area/event/dynamic)
 "jJ" = (
 /obj/structure/platform/metal/kutjevo/east,
@@ -2481,6 +2634,22 @@
 "jK" = (
 /turf/open/floor/kutjevo/colors/orange/edge,
 /area/event/dynamic)
+"jL" = (
+/obj/structure/flora/grass/tallgrass/ice,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/event/dynamic)
+"jM" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"jN" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "jO" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
@@ -2488,6 +2657,21 @@
 	color = "#a98c7c";
 	layer = 2.2;
 	pixel_y = -16
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/event/dynamic)
+"jP" = (
+/turf/open/floor/prison/darkyellowfull2,
+/area/event/dynamic)
+"jQ" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/event/dynamic)
+"jR" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/event/dynamic)
@@ -2512,6 +2696,10 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/event/dynamic)
+"jT" = (
+/obj/structure/flora/grass/tallgrass/ice/corner,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/event/dynamic)
 "jU" = (
 /obj/structure/machinery/chem_dispenser/medbay,
 /turf/open/floor/kutjevo/colors/red/tile,
@@ -2519,6 +2707,16 @@
 "jV" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/grey/plate,
+/area/event/dynamic)
+"jW" = (
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic)
+"jX" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/turf/open/floor/prison/darkyellow2/southwest,
 /area/event/dynamic)
 "jY" = (
 /obj/structure/surface/table/almayer,
@@ -2528,12 +2726,24 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/event/dynamic)
+"jZ" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/event/dynamic)
 "ka" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_y = -3;
 	pixel_x = 16
 	},
 /turf/open/asphalt,
+/area/event/dynamic)
+"kb" = (
+/obj/effect/decal/siding{
+	icon_state = "siding6"
+	},
+/turf/open/floor/prison/darkyellow2/southeast,
 /area/event/dynamic)
 "kc" = (
 /obj/structure/prop/vehicles/tank/longstreet/caustic,
@@ -2545,6 +2755,16 @@
 "ke" = (
 /turf/open/floor/kutjevo/colors/cyan/edge,
 /area/event/dynamic)
+"kf" = (
+/obj/structure/flora/bush/ausbushes/ausbush{
+	icon_state = "pointybush_4"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"kg" = (
+/obj/effect/decal/siding,
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/event/dynamic)
 "kh" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder{
@@ -2552,6 +2772,16 @@
 	},
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/floor/kutjevo/colors/red/tile,
+/area/event/dynamic)
+"ki" = (
+/obj/effect/decal/siding,
+/turf/open/floor/prison/darkyellow2/north,
+/area/event/dynamic)
+"kj" = (
+/obj/effect/decal/siding{
+	icon_state = "siding5"
+	},
+/turf/open/floor/prison/darkyellow2/northeast,
 /area/event/dynamic)
 "kk" = (
 /obj/structure/flora/tree/dead/tree_3{
@@ -2569,6 +2799,13 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/event/dynamic)
+"kl" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 30
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic)
 "km" = (
 /turf/open/mars_cave/mars_cave_10,
 /area/event/dynamic)
@@ -2576,8 +2813,59 @@
 /obj/effect/landmark/queen_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/event/dynamic)
+"ko" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 30
+	},
+/turf/open/asphalt/cement/cement1,
+/area/event/dynamic)
+"kp" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 30
+	},
+/turf/open/asphalt,
+/area/event/dynamic)
 "kq" = (
 /turf/open/asphalt/cement_sunbleached,
+/area/event/dynamic)
+"kr" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 30
+	},
+/turf/open/asphalt/cement/cement3,
+/area/event/dynamic)
+"ks" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 30
+	},
+/turf/open/asphalt/cement/cement12,
+/area/event/dynamic)
+"kt" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 30
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 30
+	},
+/turf/open/asphalt/cement/cement12,
+/area/event/dynamic)
+"ku" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"kv" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "kw" = (
 /obj/structure/prop/wooden_cross{
@@ -2591,11 +2879,41 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/event/dynamic)
+"kx" = (
+/obj/effect/decal/grass_overlay/grass1,
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"ky" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
+"kz" = (
+/obj/effect/decal/grass_overlay/grass1,
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_y = 7
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "kA" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
 /turf/open/floor/plating/wood,
+/area/event/dynamic)
+"kB" = (
+/obj/effect/decal/grass_overlay/grass1,
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "kC" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
@@ -2603,8 +2921,36 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/event/dynamic)
+"kD" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/event/dynamic)
 "kE" = (
 /turf/open/floor/hybrisa/wood,
+/area/event/dynamic)
+"kF" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "sunnybush_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/event/dynamic)
+"kG" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic)
+"kH" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/asphalt/cement/cement1,
 /area/event/dynamic)
 "kI" = (
 /obj/structure/barricade/handrail/wire{
@@ -2612,9 +2958,61 @@
 	},
 /turf/open/floor/prison/blue/west,
 /area/event/dynamic)
+"kJ" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/asphalt,
+/area/event/dynamic)
+"kK" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/asphalt/cement/cement3,
+/area/event/dynamic)
+"kL" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = 2;
+	pixel_y = 24
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic)
+"kM" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/obj/structure/prop/rock/black_ground{
+	dir = 5
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/event/dynamic)
+"kN" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "pointybush_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/event/dynamic)
 "kO" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/colors/orange/edge/north,
+/area/event/dynamic)
+"kP" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/turf/open/auto_turf/strata_grass/layer1,
 /area/event/dynamic)
 "kQ" = (
 /obj/structure/machinery/recharge_station,
@@ -2629,6 +3027,33 @@
 /obj/item/paper/janitor,
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/event/dynamic)
+"kT" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/obj/structure/prop/rock/black_ground{
+	dir = 6
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/event/dynamic)
+"kU" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 1
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"kV" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_y = 7
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "kW" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -2641,15 +3066,79 @@
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/event/dynamic)
+"kY" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 4
+	},
+/obj/structure/flora/tree/dead/tree_5{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/event/dynamic)
+"kZ" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 1
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "la" = (
 /obj/structure/prop/hybrisa/airport/dropshipenginedamage{
 	icon_state = "dropship_engine_damage_nofire"
 	},
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
+"lb" = (
+/obj/structure/flora/tree/dead/tree_2{
+	pixel_x = -13;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/event/dynamic)
+"lc" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"ld" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"le" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	pixel_y = -3;
+	pixel_x = -12
+	},
+/turf/open/asphalt,
+/area/event/dynamic)
+"lf" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_y = -3;
+	pixel_x = -12
+	},
+/turf/open/asphalt,
+/area/event/dynamic)
 "lg" = (
 /obj/effect/decal/siding{
 	icon_state = "siding8"
+	},
+/turf/open/asphalt,
+/area/event/dynamic)
+"lh" = (
+/obj/effect/decal/siding,
+/obj/structure/desertdam/decals/road_edge{
+	pixel_y = -3;
+	pixel_x = -12
 	},
 /turf/open/asphalt,
 /area/event/dynamic)
@@ -2659,6 +3148,17 @@
 	layer = 3
 	},
 /turf/open/floor/hybrisa/metal/stripe_red/west,
+/area/event/dynamic)
+"lj" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"lk" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/blackfull2,
 /area/event/dynamic)
 "ll" = (
 /obj/effect/spawner/gibspawner/xeno,
@@ -2679,16 +3179,74 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/grey/plate,
 /area/event/dynamic)
+"lo" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/turf/open/floor/corsat/marked,
+/area/event/dynamic)
+"lp" = (
+/obj/structure/machinery/m56d_hmg/auto{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_1_1";
+	pixel_y = -3
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	layer = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/cell_stripe/east,
+/area/event/dynamic)
+"lq" = (
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_10_1";
+	pixel_y = 10;
+	pixel_x = -12;
+	dir = 9
+	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_1_1";
+	pixel_y = -17;
+	pixel_x = -10
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/blackfull2,
+/area/event/dynamic)
 "lr" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/pillbottles,
 /turf/open/floor/kutjevo/colors/red/tile,
+/area/event/dynamic)
+"ls" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "lt" = (
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
 /turf/open/floor/interior/wood,
+/area/event/dynamic)
+"lu" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
+	icon_state = "cartridge_10_1";
+	name = "spent casings"
+	},
+/turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "lv" = (
 /obj/structure/flora/bush/desert{
@@ -2697,6 +3255,10 @@
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/auto_turf/sand/layer0,
 /area/event/dynamic)
+"lw" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "lx" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -2704,6 +3266,23 @@
 /area/event/dynamic)
 "ly" = (
 /turf/open/floor/kutjevo/tan/grey_edge/northeast,
+/area/event/dynamic)
+"lz" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"lA" = (
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lB" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/kutjevo,
+/turf/open/auto_turf/sand_white/layer0,
 /area/event/dynamic)
 "lC" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -2716,8 +3295,18 @@
 	},
 /turf/open/floor/kutjevo/tiles,
 /area/event/dynamic)
+"lD" = (
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/prop/rock,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
 "lE" = (
 /turf/open/floor/kutjevo/colors/purple/edge/west,
+/area/event/dynamic)
+"lF" = (
+/obj/structure/platform/stone/kutjevo,
+/turf/open/auto_turf/sand_white/layer0,
 /area/event/dynamic)
 "lG" = (
 /obj/effect/decal/hybrisa/road/lines2,
@@ -2731,6 +3320,25 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/sand/layer0,
 /area/event/dynamic)
+"lI" = (
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lJ" = (
+/obj/structure/platform_decoration/stone/kutjevo,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lK" = (
+/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/kutjevo,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lL" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/event/dynamic)
 "lM" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
@@ -2739,15 +3347,58 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
+"lN" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lO" = (
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
 "lP" = (
 /obj/item/storage/donut_box,
 /turf/open/floor/kutjevo/tan,
+/area/event/dynamic)
+"lQ" = (
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lR" = (
+/turf/closed/wall/rock/brown,
+/area/event/dynamic)
+"lS" = (
+/obj/structure/prop/rock,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lT" = (
+/obj/structure/platform/stone/kutjevo/east,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lU" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lV" = (
+/obj/structure/platform/stone/kutjevo/north,
+/turf/open/auto_turf/sand_white/layer0,
 /area/event/dynamic)
 "lW" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
 /turf/open/floor/kutjevo/colors/orange/edge/east,
+/area/event/dynamic)
+"lX" = (
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"lY" = (
+/obj/structure/platform_decoration/stone/kutjevo/west,
+/turf/open/auto_turf/sand_white/layer0,
 /area/event/dynamic)
 "lZ" = (
 /obj/structure/stairs/multiz/down,
@@ -2774,6 +3425,11 @@
 /obj/item/clothing/under/kutjevo,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/event/dynamic)
+"me" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/east,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
 "mf" = (
 /obj/structure/prop/hybrisa/misc/fire/fire1{
 	pixel_x = -20;
@@ -2786,6 +3442,16 @@
 /obj/structure/platform/metal/kutjevo,
 /turf/open/floor/coagulation/icon0_0,
 /area/event/dynamic)
+"mh" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/west,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"mi" = (
+/obj/structure/platform/stone/kutjevo/north,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/event/dynamic)
 "mj" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 9
@@ -2796,11 +3462,33 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/dirtgrassborder2/north,
 /area/event/dynamic)
+"ml" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "mm" = (
 /obj/structure/surface/rack,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/grey/plate,
+/area/event/dynamic)
+"mn" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
+"mo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
+"mp" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/event/dynamic)
 "mq" = (
 /obj/structure/prop/vehicles/tank/longstreet/primary/flamer{
@@ -2826,6 +3514,22 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
+"mr" = (
+/obj/structure/platform/stone/kutjevo/north,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/event/dynamic)
+"ms" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
+"mt" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/prison/floor_marked,
+/area/event/dynamic)
 "mu" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -2838,10 +3542,39 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating/kutjevo,
 /area/event/dynamic)
+"mw" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
+"mx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
+"my" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/event/dynamic)
 "mz" = (
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mA" = (
+/obj/structure/platform/metal/almayer/west,
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "mB" = (
@@ -2865,10 +3598,83 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/event/dynamic)
+"mC" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mD" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mE" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/north,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mF" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/dynamic)
+"mG" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mH" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mI" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mJ" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "mK" = (
 /obj/item/prop/colony/usedbandage{
 	dir = 9
 	},
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mL" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mM" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/stair_cut/platform_right,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"mN" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "mO" = (
@@ -2879,22 +3685,97 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/event/dynamic)
+"mP" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "mQ" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
 	},
 /turf/open/auto_turf/sand/layer2,
 /area/event/dynamic)
+"mR" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
 "mS" = (
 /turf/open/asphalt/cement/cement4,
+/area/event/dynamic)
+"mT" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/event/dynamic)
+"mU" = (
+/obj/structure/machinery/m56d_hmg/auto{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_1_1";
+	pixel_y = -3
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	layer = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/cell_stripe/east,
+/area/event/dynamic)
+"mV" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/interior/wood,
+/area/event/dynamic)
+"mW" = (
+/obj/structure/anti_air_cannon{
+	pixel_x = -68;
+	pixel_y = -63;
+	density = 0
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/interior/wood,
 /area/event/dynamic)
 "mX" = (
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement,
 /area/event/dynamic)
+"mY" = (
+/turf/template_noop,
+/area/event/dynamic)
 "mZ" = (
 /obj/structure/bed/chair,
 /turf/open/gm/grass/grass1/weedable,
+/area/event/dynamic)
+"na" = (
+/obj/structure/prop/rock,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/event/dynamic)
+"nb" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/event/dynamic)
+"nc" = (
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic)
+"nd" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer0,
 /area/event/dynamic)
 "ne" = (
 /obj/structure/barricade/sandbags/wired{
@@ -2909,7 +3790,13 @@
 	color = "#a98c7c";
 	pixel_y = 4
 	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/event/dynamic)
+"nf" = (
+/turf/open/floor/prison/yellowcorner/north,
 /area/event/dynamic)
 "ng" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -2928,8 +3815,17 @@
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/event/dynamic)
+"ni" = (
+/turf/open/floor/prison/yellow/north,
+/area/event/dynamic)
+"nj" = (
+/turf/open/floor/prison/yellowcorner/east,
+/area/event/dynamic)
 "nk" = (
 /turf/open/hybrisa/street/sidewalkfull,
+/area/event/dynamic)
+"nl" = (
+/turf/open/floor/prison/yellow/east,
 /area/event/dynamic)
 "nm" = (
 /obj/structure/bed,
@@ -2956,20 +3852,44 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/northeast,
 /area/event/dynamic)
+"nn" = (
+/turf/open/floor/prison/yellowcorner,
+/area/event/dynamic)
+"no" = (
+/turf/open/floor/prison/yellow,
+/area/event/dynamic)
+"np" = (
+/turf/open/floor/prison/yellowcorner/west,
+/area/event/dynamic)
 "nq" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/item/stack/sandbags/large_stack,
 /turf/open/auto_turf/sand/layer0,
+/area/event/dynamic)
+"nr" = (
+/turf/open/floor/kutjevo/tan/grey_inner_edge/east,
+/area/event/dynamic)
+"ns" = (
+/turf/open/floor/kutjevo/tan/grey_inner_edge/west,
+/area/event/dynamic)
+"nt" = (
+/turf/open/floor/kutjevo/tan/multi_tiles/southeast,
 /area/event/dynamic)
 "nu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/kitchen/rollingpin,
 /turf/open/floor/kutjevo/colors/purple,
 /area/event/dynamic)
+"nv" = (
+/turf/open/floor/kutjevo/tan/grey_inner_edge,
+/area/event/dynamic)
 "nw" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/hybrisa/street/cement2,
+/area/event/dynamic)
+"nx" = (
+/turf/open/floor/kutjevo/tan/grey_inner_edge/north,
 /area/event/dynamic)
 "ny" = (
 /turf/open/floor/plating/kutjevo/panelscorched,
@@ -3144,10 +4064,14 @@
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "ou" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -4;
-	dir = 10;
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
+	icon_state = "cartridge_10_1";
+	name = "spent casings";
+	pixel_y = -1;
 	pixel_x = -17
 	},
 /turf/open/auto_turf/strata_grass,
@@ -3981,10 +4905,6 @@
 /obj/structure/prop/rock/black_ground{
 	dir = 6
 	},
-/turf/open/auto_turf/strata_grass,
-/area/event/dynamic)
-"vc" = (
-/obj/effect/landmark/static_comms/net_two,
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
 "vd" = (
@@ -4836,11 +5756,14 @@
 /turf/open/auto_turf/sand/layer0,
 /area/event/dynamic)
 "Bj" = (
-/obj/item/ammo_casing/bullet{
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	pixel_y = 10;
-	pixel_x = -12;
-	dir = 9
+	name = "spent casings";
+	pixel_y = 10
 	},
 /turf/open/auto_turf/strata_grass,
 /area/event/dynamic)
@@ -4929,6 +5852,7 @@
 	layer = 2.99
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/event/dynamic)
 "BG" = (
@@ -6759,6 +7683,11 @@
 /area/event/dynamic)
 "QR" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/structure/prop/rock/black_ground{
+	dir = 4;
+	pixel_x = -1;
+	pixel_y = -9
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/event/dynamic)
 "QS" = (
@@ -7618,16 +8547,21 @@
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/event/dynamic)
 "XR" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_10_1";
-	pixel_y = 10;
-	pixel_x = -12;
-	dir = 9
-	},
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0;
 	pixel_x = 11;
 	pixel_y = -4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
+	icon_state = "cartridge_10_1";
+	name = "spent casings";
+	pixel_y = 12;
+	pixel_x = -15
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/event/dynamic)
@@ -44483,15 +45417,15 @@ KJ
 KJ
 KJ
 KJ
-gf
-gf
+oE
+oE
 KJ
 KJ
 KJ
 KJ
 KJ
-gf
-gf
+oE
+oE
 KJ
 KJ
 KJ
@@ -44735,15 +45669,15 @@ bS
 bS
 bS
 bS
-QV
-QV
-bS
-bS
-bS
-bS
-bS
-QV
-QV
+gg
+gg
+gg
+gg
+gg
+gg
+gg
+gg
+gg
 bS
 bS
 bS
@@ -44987,15 +45921,15 @@ QV
 QV
 QV
 QV
-QV
-QV
-QV
-QV
-QV
-QV
-QV
-QV
-QV
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
 QV
 QV
 QV
@@ -45239,15 +46173,15 @@ xF
 xF
 xF
 xF
-xF
-xF
-xF
-xF
-xF
-xF
-xF
-xF
-xF
+he
+he
+he
+he
+he
+he
+he
+he
+he
 xF
 xF
 xF
@@ -45491,15 +46425,15 @@ QV
 QV
 QV
 QV
-QV
-QV
-QV
-QV
-QV
-QV
-QV
-QV
-QV
+iK
+iK
+iK
+iK
+iK
+iK
+iK
+iK
+iK
 QV
 QV
 QV
@@ -45743,15 +46677,15 @@ bS
 bS
 bS
 bS
-QV
-QV
-bS
-bS
-bS
-bS
-bS
-QV
-QV
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
 bS
 bS
 bS
@@ -45995,15 +46929,15 @@ KJ
 KJ
 KJ
 KJ
-gg
-gg
+iN
+iN
 KJ
 KJ
 KJ
 KJ
 KJ
-gg
-gg
+iN
+iN
 KJ
 KJ
 KJ
@@ -63931,7 +64865,7 @@ da
 da
 da
 da
-Nl
+da
 da
 da
 da
@@ -73028,7 +73962,7 @@ BK
 hX
 hL
 hL
-eI
+iO
 hL
 hL
 hE
@@ -73280,7 +74214,7 @@ BK
 hY
 ex
 ex
-hS
+iP
 ex
 ex
 hG
@@ -73532,7 +74466,7 @@ BK
 hZ
 hL
 hL
-eI
+iO
 hL
 hL
 hH
@@ -74785,7 +75719,7 @@ gA
 gA
 gA
 gA
-gA
+iW
 gA
 gA
 gA
@@ -75037,7 +75971,7 @@ SR
 gN
 SR
 SR
-SR
+iQ
 SR
 SR
 gN
@@ -75288,8 +76222,8 @@ gD
 SR
 SR
 SR
-SR
-SR
+iQ
+iQ
 SR
 SR
 SR
@@ -75539,12 +76473,12 @@ SR
 gD
 gO
 SR
-gO
-SR
-gO
-SR
-gO
-SR
+iT
+iQ
+iT
+iQ
+iT
+iQ
 gO
 SR
 gO
@@ -75791,12 +76725,12 @@ SR
 gD
 gP
 SR
-gP
-SR
-gP
-SR
-gP
-SR
+iV
+iQ
+iV
+iQ
+iV
+iQ
 gP
 SR
 gP
@@ -76044,8 +76978,8 @@ gD
 SR
 SR
 SR
-SR
-SR
+iQ
+iQ
 SR
 SR
 SR
@@ -76297,7 +77231,7 @@ SR
 gN
 SR
 SR
-SR
+iQ
 SR
 SR
 gN
@@ -76549,7 +77483,7 @@ gM
 gM
 gM
 gM
-gM
+iX
 gM
 gM
 gM
@@ -78311,7 +79245,7 @@ BK
 hX
 hL
 hL
-eI
+iO
 hL
 hL
 hE
@@ -78562,9 +79496,9 @@ BK
 BK
 hY
 ex
-ex
-hS
-ex
+iZ
+iP
+iZ
 ex
 hG
 BK
@@ -78815,7 +79749,7 @@ BK
 hZ
 hL
 hL
-eI
+iO
 hL
 hL
 hH
@@ -79462,7 +80396,7 @@ BK
 BK
 BK
 BK
-xf
+BK
 BK
 BK
 BK
@@ -79713,7 +80647,7 @@ BK
 BK
 BK
 BK
-mq
+BK
 BK
 BK
 BK
@@ -81586,7 +82520,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -81740,9 +82674,9 @@ BK
 BK
 BK
 BK
-BK
-BK
-BK
+EC
+EC
+EC
 BK
 tq
 tq
@@ -81838,7 +82772,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -81990,12 +82924,12 @@ BK
 BK
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
+EC
+GS
+EC
+GS
+GS
+EC
 BK
 tq
 da
@@ -82090,7 +83024,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -82242,13 +83176,13 @@ BK
 BK
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+EC
+GS
+GS
+lN
+GS
+GS
+EC
 BK
 tq
 da
@@ -82341,7 +83275,7 @@ BK
 BK
 BK
 ib
-BK
+EC
 BK
 BK
 BK
@@ -82494,14 +83428,14 @@ BK
 BK
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-tq
+GS
+GS
+lU
+lO
+lD
+GS
+GS
+EC
 tq
 tq
 da
@@ -82593,8 +83527,8 @@ BK
 BK
 BK
 BK
-BK
-BK
+EC
+EC
 BK
 BK
 BK
@@ -82737,22 +83671,22 @@ da
 da
 da
 da
-da
+Hw
 BK
 BK
 BK
-BK
-BK
-BK
-BK
-yY
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+mC
+ml
+eI
+eI
+ml
+EC
+GS
+lV
+lQ
+lF
+GS
+GS
 BK
 BK
 tq
@@ -82846,7 +83780,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -82987,25 +83921,25 @@ da
 da
 da
 da
-da
-da
-da
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-nZ
-BK
-BK
-BK
-BK
-BK
+Hw
+Hw
+bS
+mC
+mL
+mC
+mD
+mw
+ms
+ms
+mn
+mi
+mh
+lX
+lR
+lI
+lA
+GS
+EC
 BK
 nZ
 tq
@@ -83097,8 +84031,8 @@ BK
 BK
 BK
 BK
-BK
-BK
+EC
+EC
 BK
 BK
 BK
@@ -83238,26 +84172,26 @@ EC
 da
 da
 da
-da
-da
-da
-da
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-nZ
-BK
-BK
+Hw
+Ip
+uW
+bS
+mR
+mM
+mH
+mE
+mx
+wx
+mt
+mo
+mi
+me
+lY
+lS
+lJ
+lB
+GS
+EC
 BK
 BK
 tq
@@ -83349,7 +84283,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -83490,25 +84424,25 @@ EC
 da
 da
 da
-da
-da
-da
-da
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+Hw
+uW
+uW
+bS
+mT
+oE
+oE
+mF
+mx
+wx
+wx
+mp
+GS
+GS
+me
+lT
+lK
+GS
+EC
 BK
 BK
 tq
@@ -83602,7 +84536,7 @@ BK
 BK
 ib
 BK
-BK
+EC
 BK
 BK
 BK
@@ -83742,24 +84676,24 @@ EC
 EC
 da
 da
-da
-da
-da
-da
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+Hw
+ZD
+uW
+bS
+mR
+mN
+mI
+mE
+my
+iK
+iK
+mr
+EC
+GS
+GS
+GS
+GS
+GS
 BK
 BK
 BK
@@ -83854,7 +84788,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -83995,29 +84929,29 @@ BK
 da
 da
 da
-da
-da
-da
+Hw
+ZD
+bS
+mJ
+mP
+mJ
+mG
+mA
+eI
+eI
+BK
+BK
+BK
+EC
+BK
+EC
 BK
 BK
 BK
 BK
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-DN
-BK
+lw
 BK
 tq
 tq
@@ -84106,7 +85040,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -84248,8 +85182,8 @@ da
 da
 da
 da
-da
-da
+Hw
+Hw
 BK
 BK
 BK
@@ -84269,10 +85203,10 @@ BK
 BK
 BK
 BK
-BK
+ls
 Bj
 nZ
-BK
+ls
 BK
 BK
 BK
@@ -84358,7 +85292,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -84521,8 +85455,8 @@ BK
 BK
 qB
 BK
-BK
-aM
+lz
+lu
 BK
 ou
 BK
@@ -84598,8 +85532,8 @@ da
 da
 da
 da
+Hw
 KJ
-KJ
 BK
 BK
 BK
@@ -84610,7 +85544,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -84766,7 +85700,7 @@ Zj
 BK
 BK
 BK
-GS
+lL
 XR
 mz
 BK
@@ -84779,7 +85713,7 @@ GS
 EC
 mK
 DN
-BK
+lj
 EC
 BK
 BK
@@ -84861,8 +85795,8 @@ BK
 BK
 BK
 BK
-BK
-BK
+EC
+EC
 BK
 BK
 BK
@@ -85112,8 +86046,8 @@ BK
 BK
 BK
 BK
-ib
 BK
+EC
 BK
 BK
 BK
@@ -85283,7 +86217,7 @@ GS
 EC
 qU
 lm
-BK
+kv
 BK
 BK
 Zj
@@ -85365,8 +86299,8 @@ BK
 BK
 BK
 BK
-BK
-BK
+EC
+EC
 BK
 BK
 BK
@@ -85618,7 +86552,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -85869,8 +86803,8 @@ BK
 BK
 BK
 BK
-BK
-BK
+EC
+EC
 BK
 BK
 BK
@@ -86121,10 +87055,10 @@ BK
 BK
 BK
 BK
-BK
-BK
-BK
-BK
+EC
+EC
+EC
+EC
 BK
 BK
 BK
@@ -86364,7 +87298,7 @@ da
 da
 da
 da
-KJ
+Hw
 KJ
 Gs
 BK
@@ -86374,10 +87308,10 @@ BK
 BK
 BK
 BK
-BK
-BK
-BK
-BK
+EC
+EC
+EC
+EC
 BK
 BK
 BK
@@ -86615,8 +87549,8 @@ da
 da
 da
 da
-KJ
-KJ
+Hw
+Hw
 wH
 op
 BK
@@ -86626,7 +87560,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -86868,7 +87802,7 @@ da
 da
 da
 da
-KJ
+Hw
 KJ
 yw
 BK
@@ -86878,8 +87812,8 @@ BK
 BK
 BK
 BK
-BK
-BK
+EC
+EC
 BK
 BK
 BK
@@ -87120,8 +88054,8 @@ da
 da
 da
 da
+Hw
 KJ
-KJ
 BK
 BK
 BK
@@ -87130,7 +88064,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -87372,8 +88306,8 @@ BK
 da
 da
 da
-KJ
-KJ
+Hw
+Hw
 BK
 BK
 BK
@@ -87382,7 +88316,7 @@ BK
 BK
 BK
 BK
-BK
+EC
 BK
 BK
 BK
@@ -87625,7 +88559,7 @@ da
 da
 da
 da
-BK
+nK
 BK
 BK
 BK
@@ -87778,7 +88712,7 @@ BK
 dv
 dv
 BA
-Rs
+mU
 BA
 dv
 dv
@@ -87801,7 +88735,7 @@ EC
 dv
 dv
 BA
-Rs
+lp
 BA
 dv
 dv
@@ -87877,16 +88811,16 @@ BK
 da
 da
 BK
+nK
+nK
 BK
 BK
 BK
 BK
 BK
-BK
-BK
-BK
-BK
-BK
+EC
+EC
+EC
 BK
 BK
 BK
@@ -88029,9 +88963,9 @@ BK
 dv
 dv
 GA
-GA
-GA
-GA
+lk
+lk
+lk
 GA
 dv
 dv
@@ -88052,9 +88986,9 @@ BK
 dv
 dv
 GA
-GA
-Ly
-GA
+lk
+lq
+lk
 GA
 dv
 dv
@@ -88130,13 +89064,13 @@ BK
 BK
 BK
 BK
+nK
+nK
+KJ
 BK
 BK
 BK
-BK
-BK
-BK
-BK
+EC
 BK
 BK
 BK
@@ -88383,12 +89317,12 @@ BK
 BK
 BK
 BK
+KJ
 BK
 BK
 BK
-BK
-BK
-BK
+EC
+EC
 BK
 BK
 BK
@@ -88638,8 +89572,8 @@ BK
 BK
 BK
 BK
-BK
-BK
+EC
+EC
 BK
 BK
 BK
@@ -89140,12 +90074,12 @@ BK
 BK
 BK
 BK
+EC
 BK
 BK
 BK
 BK
-BK
-BK
+KJ
 BK
 BK
 BK
@@ -89390,14 +90324,14 @@ BK
 BK
 BK
 BK
+EC
 BK
 BK
 BK
 BK
 BK
-BK
-BK
-BK
+KJ
+nK
 BK
 BK
 da
@@ -89516,9 +90450,9 @@ EB
 EB
 EB
 EB
-EB
-EB
-EB
+BK
+BK
+xf
 EB
 EB
 bI
@@ -89649,10 +90583,10 @@ BK
 BK
 BK
 BK
-BK
-BK
-da
-da
+nK
+nK
+Hw
+Hw
 da
 da
 da
@@ -89768,9 +90702,9 @@ EB
 EB
 EB
 EB
-EB
-EB
-EB
+BK
+mq
+BK
 EB
 EB
 bI
@@ -89903,7 +90837,7 @@ BK
 BK
 BK
 BK
-da
+Hw
 da
 da
 da
@@ -90020,9 +90954,9 @@ EB
 EB
 EB
 EB
-EB
-EB
-EB
+BK
+BK
+BK
 EB
 EB
 bI
@@ -90272,9 +91206,9 @@ EB
 EB
 EB
 EB
-EB
-EB
-EB
+BK
+BK
+BK
 EB
 EB
 bI
@@ -94076,8 +95010,8 @@ BK
 EC
 GS
 CZ
-CZ
-CZ
+mV
+mV
 CZ
 CZ
 CZ
@@ -94328,8 +95262,8 @@ BK
 EC
 GS
 CZ
-CZ
-Ds
+mV
+mW
 CZ
 CZ
 CZ
@@ -94580,8 +95514,8 @@ BK
 EC
 GS
 CZ
-CZ
-CZ
+mV
+mV
 CZ
 CZ
 GS
@@ -95852,7 +96786,7 @@ BK
 BK
 BK
 BK
-vc
+yY
 BK
 BK
 EC
@@ -101094,23 +102028,23 @@ CB
 TO
 Bu
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+mY
+mY
+mY
+mY
+mY
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+mY
+mY
 EB
 EB
 bI
@@ -101346,23 +102280,23 @@ CB
 SE
 TO
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+mY
+mY
+mY
+mY
+mY
+GS
+GS
+GS
+GS
+GS
+na
+GS
+GS
+GS
+GS
+mY
+mY
 EB
 EB
 bI
@@ -101598,23 +102532,23 @@ Et
 vU
 Bu
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+mY
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -101688,10 +102622,10 @@ KJ
 KJ
 KJ
 KJ
-da
-da
-da
-da
+hn
+hn
+hn
+hn
 da
 da
 da
@@ -101850,23 +102784,23 @@ Is
 CB
 TO
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+mY
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -101927,29 +102861,29 @@ KJ
 KJ
 wH
 KJ
-BK
-BK
-BK
+GS
+GS
+GS
 KJ
 wH
 KJ
-BK
-BK
-BK
+EC
+GS
+GS
 KJ
 wH
 KJ
-da
-da
-da
-da
-da
-da
-da
-da
-da
-da
-da
+jS
+jS
+jS
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 da
 da
 da
@@ -102102,23 +103036,23 @@ Kp
 Fy
 PB
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+lU
+nc
+lA
+GS
+GS
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -102179,28 +103113,28 @@ KJ
 yA
 JR
 av
-BK
-BK
-BK
+GS
+GS
+EC
 yA
 JR
 av
-BK
-BK
-BK
+GS
+EC
+EC
 yA
 JR
 av
-da
-da
-da
-da
-da
-da
-da
-da
-da
-da
+jS
+jS
+jS
+jS
+jS
+jS
+jS
+hn
+hn
+hn
 da
 da
 da
@@ -102354,23 +103288,23 @@ HR
 nq
 zM
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+GS
+GS
+lU
+lX
+lQ
+lF
+GS
+GS
+GS
+GS
+nb
+GS
+GS
 EB
 EB
 bI
@@ -102418,7 +103352,7 @@ BK
 BK
 BK
 BK
-BK
+mS
 KJ
 jo
 jo
@@ -102426,33 +103360,33 @@ jo
 jo
 jo
 KJ
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-da
-da
-da
-da
-da
-da
+Sh
+EC
+GS
+EC
+GS
+EC
+EC
+EC
+EC
+GS
+kM
+GS
+kD
+EC
+EC
+GS
+GS
+GS
+jR
+jL
+jr
+jS
+jS
+jS
+jS
+jS
+jS
 da
 da
 da
@@ -102606,23 +103540,23 @@ Is
 tL
 TO
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+GS
+lU
+lX
+lQ
+lQ
+lI
+nc
+lA
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -102670,7 +103604,7 @@ BK
 BK
 BK
 BK
-BK
+mS
 Sh
 yi
 WR
@@ -102678,35 +103612,35 @@ WR
 WR
 Wg
 mS
+Sh
 BK
+EC
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+EC
+kD
+kD
+kT
+kD
+oP
+jH
+kD
+jH
+hl
+ku
+EC
+EC
+EC
+jT
+jL
+jr
+jr
+jr
+jq
+Mi
+Mi
+Mi
+Mi
+Mi
 BK
 BK
 BK
@@ -102858,23 +103792,23 @@ Cy
 DY
 Zn
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+nb
+GS
+GS
+lV
+lQ
+lR
+lQ
+lQ
+lS
+lF
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -102922,41 +103856,41 @@ BK
 BK
 BK
 BK
-BK
+mS
 fc
 Jp
 gd
 hR
 Di
 ST
+fc
 Sh
 BK
+ld
+lc
+EO
+jH
+jH
+jH
+jH
+kN
+jH
+jH
+jH
+kz
+kv
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+jN
+jM
+jB
+jB
+jB
+jr
+jr
+ji
+Mi
+Mi
 BK
 BK
 BK
@@ -103110,23 +104044,23 @@ Is
 iM
 Wp
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+GS
+lV
+lQ
+lQ
+lQ
+lQ
+lQ
+lF
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -103161,6 +104095,7 @@ KJ
 KJ
 KJ
 KJ
+Jp
 BK
 BK
 BK
@@ -103173,40 +104108,39 @@ BK
 BK
 BK
 BK
-BK
-BK
+mS
 fc
 Sh
 Cb
 Gg
 Aj
 mS
+fc
 Sh
 BK
 BK
 BK
+kZ
+jH
+jH
+jH
+jH
+jH
+jH
+jH
+jH
+jH
+kx
 BK
 BK
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+jM
+jt
+jt
+jt
+jt
+jj
 BK
 BK
 BK
@@ -103362,23 +104296,23 @@ Lg
 Ry
 Ry
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+lU
+lX
+lQ
+lQ
+lQ
+lQ
+lQ
+lI
+lA
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -103408,11 +104342,12 @@ BK
 BK
 BK
 Oz
-uz
 uz
 wn
 uz
+uz
 Oz
+Sh
 BK
 BK
 BK
@@ -103425,8 +104360,7 @@ BK
 BK
 BK
 BK
-BK
-BK
+mS
 fc
 Sh
 Cb
@@ -103434,26 +104368,26 @@ Gg
 Aj
 mS
 fc
-Mp
+fc
 Mp
 Jp
 BK
+qJ
+kY
+WD
+kU
+jH
+jH
+jH
+kF
+jH
+jH
+jH
+ZU
 BK
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+jN
 BK
 BK
 BK
@@ -103614,23 +104548,23 @@ oL
 Lg
 WI
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+lV
+lQ
+lS
+lQ
+lQ
+lQ
+lQ
+lQ
+lF
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -103665,6 +104599,7 @@ uz
 uz
 uz
 KJ
+Sh
 BK
 BK
 BK
@@ -103677,8 +104612,7 @@ BK
 BK
 BK
 BK
-BK
-BK
+mS
 fc
 Sh
 ep
@@ -103689,21 +104623,21 @@ fc
 fc
 fc
 Sh
+qJ
+lb
+qJ
+xV
+kV
+WD
+kP
+jH
+jH
+jH
+kB
+WD
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
-BK
+kf
 BK
 BK
 BK
@@ -103866,23 +104800,23 @@ jK
 sv
 Kp
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+lV
+lQ
+lQ
+lQ
+lQ
+lQ
+lR
+lQ
+lF
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -103917,6 +104851,7 @@ uz
 uz
 uz
 Oz
+Sh
 BK
 BK
 BK
@@ -103929,8 +104864,7 @@ BK
 BK
 BK
 BK
-BK
-BK
+mS
 fc
 Yu
 LO
@@ -103942,7 +104876,7 @@ fc
 fc
 Sh
 BK
-BK
+qJ
 BK
 BK
 ST
@@ -104118,23 +105052,23 @@ jK
 sv
 HR
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+me
+lY
+lR
+lQ
+lQ
+lQ
+lQ
+lQ
+lF
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -104169,19 +105103,19 @@ uz
 uz
 uz
 Oz
+ov
 BK
 BK
-BK
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+ST
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
 fc
 fc
 Yu
@@ -104194,17 +105128,17 @@ fc
 fc
 Sh
 BK
-BK
+kV
 BK
 ST
 fc
 KJ
+ie
 KJ
+ie
 KJ
-KJ
-KJ
-fc
-fc
+jw
+jw
 KJ
 KJ
 KJ
@@ -104370,23 +105304,23 @@ LY
 Lg
 WI
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+GS
+me
+lT
+lY
+lQ
+nd
+lQ
+lJ
+lK
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -104423,14 +105357,14 @@ uz
 Oz
 BK
 BK
+ST
 fc
-fc
 KJ
 KJ
-KJ
-KJ
-KJ
-KJ
+ie
+ie
+ie
+ie
 KJ
 KJ
 fc
@@ -104453,18 +105387,18 @@ KJ
 KJ
 ih
 KJ
-bS
+jP
 KJ
 KJ
 KJ
 KJ
-bS
-bS
-bS
+jP
+wx
+jW
 KJ
 KJ
 KJ
-fc
+jw
 Jp
 BK
 BK
@@ -104622,23 +105556,23 @@ on
 Ry
 Ry
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+lV
+lQ
+lQ
+lJ
+lK
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -104674,16 +105608,16 @@ uz
 uz
 KJ
 BK
-fc
+ST
 fc
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
 KJ
 KJ
 fc
@@ -104694,7 +105628,7 @@ ka
 wa
 mS
 fc
-fc
+jw
 KJ
 KJ
 KJ
@@ -104705,19 +105639,19 @@ KJ
 iq
 ik
 ie
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+Ip
+iC
+iC
+iC
+jQ
+pA
+wx
+wx
+jP
 KJ
 KJ
 KJ
-fc
+jw
 Jp
 BK
 BK
@@ -104874,23 +105808,23 @@ Bu
 Bu
 TO
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+me
+lT
+lT
+lK
+GS
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -104918,7 +105852,7 @@ BK
 BK
 BK
 BK
-BK
+mS
 KJ
 uz
 uz
@@ -104926,17 +105860,17 @@ uz
 uz
 Oz
 BK
-fc
+mS
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
+it
+it
 KJ
 KJ
 fc
@@ -104957,16 +105891,16 @@ bS
 bS
 bS
 if
+uW
+QV
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+ky
+jG
+jE
+kg
+jX
+jQ
+pA
 KJ
 KJ
 KJ
@@ -105126,23 +106060,23 @@ TO
 TO
 TO
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+GS
+GS
+GS
+GS
+nb
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+na
+GS
 EB
 EB
 bI
@@ -105170,7 +106104,7 @@ BK
 BK
 BK
 BK
-BK
+mS
 KJ
 uz
 uz
@@ -105178,19 +106112,19 @@ uz
 uz
 KJ
 BK
-fc
+mS
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+lo
 fc
 gv
 gt
@@ -105204,22 +106138,22 @@ it
 it
 it
 it
+Gm
 bS
 bS
 bS
+Gm
+uW
+QV
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+ky
+jG
+jG
+ki
+jZ
+jG
+jE
+pA
 KJ
 KJ
 KJ
@@ -105378,23 +106312,23 @@ Bu
 Bu
 TO
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+mY
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -105422,7 +106356,7 @@ BK
 BK
 BK
 BK
-BK
+mS
 KJ
 Oz
 Oz
@@ -105430,24 +106364,24 @@ Oz
 KJ
 KJ
 BK
-fc
-KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+mS
+ie
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+Gm
 fc
 Sh
-gd
-Ti
-Di
+lh
+lf
+le
 mS
 fc
 KJ
@@ -105461,18 +106395,18 @@ il
 il
 il
 ie
+uW
 bS
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+ky
+jG
+jG
+ki
+jZ
+jG
+jG
+jC
+pA
 KJ
 KJ
 KJ
@@ -105630,23 +106564,23 @@ Bu
 Bu
 Ep
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+mY
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
 EB
 EB
 bI
@@ -105674,27 +106608,27 @@ BK
 BK
 BK
 BK
+IA
+wL
+wL
+wL
+wL
+ov
 BK
 BK
-BK
-BK
-BK
-BK
-BK
-BK
-fc
-KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-KJ
+mS
+ie
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+ie
 fc
 Sh
 Cb
@@ -105713,23 +106647,23 @@ im
 is
 im
 ie
+uW
 bS
 bS
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+jI
+jI
+kj
+kb
+jI
+jI
+QV
+gR
+ie
+jl
+gj
+gj
+ja
 KJ
 KJ
 Sh
@@ -105882,23 +106816,23 @@ SE
 SE
 Bu
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+mY
+mY
+mY
+mY
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+mY
+mY
+mY
 EB
 EB
 bI
@@ -105934,19 +106868,19 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-KJ
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+ie
 fc
 Sh
 Cb
@@ -105965,6 +106899,7 @@ in
 it
 in
 KJ
+uW
 bS
 bS
 bS
@@ -105974,15 +106909,14 @@ bS
 bS
 bS
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+QV
+gR
+jz
+jm
+QV
+QV
+jg
+ja
 KJ
 Sh
 BK
@@ -106134,23 +107068,23 @@ TO
 SE
 SE
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+GS
+GS
+GS
+GS
+GS
+GS
+GS
+mY
+mY
+mY
 EB
 EB
 bI
@@ -106186,17 +107120,17 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
+it
+it
 KJ
 KJ
 fc
@@ -106217,24 +107151,24 @@ ip
 iu
 ip
 KJ
+ZD
+il
+il
+il
+il
+il
+il
+QV
+QV
 bS
+jD
+VA
+ie
+jm
 bS
+QV
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+jb
 KJ
 Sh
 BK
@@ -106438,19 +107372,19 @@ BK
 BK
 BK
 BK
-fc
-fc
+mS
+jw
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
 KJ
 KJ
-fc
+jw
 fc
 Sh
 Cb
@@ -106469,24 +107403,24 @@ KJ
 KJ
 KJ
 KJ
-bS
-bS
-bS
-bS
-bS
-bS
+ma
+ma
+ma
+ma
+ma
+ma
+gR
+il
+il
+il
+VA
 KJ
 KJ
-KJ
-KJ
-KJ
+jm
 bS
 bS
 bS
-bS
-bS
-bS
-bS
+jb
 KJ
 Sh
 BK
@@ -106688,21 +107622,21 @@ KJ
 KJ
 KJ
 KJ
+Jp
 BK
-BK
-fc
-fc
+mS
+jw
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
 KJ
 KJ
-fc
+jw
 fc
 Sh
 Cb
@@ -106718,7 +107652,7 @@ iB
 uW
 KJ
 KJ
-fc
+jw
 KJ
 KJ
 Hb
@@ -106728,17 +107662,17 @@ Hb
 Hb
 Hb
 KJ
+Gm
+Gm
+Gm
 KJ
-fc
 KJ
-KJ
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+jA
+jm
+QV
+QV
+QV
+jb
 KJ
 Sh
 BK
@@ -106940,19 +107874,19 @@ KJ
 uz
 uz
 Oz
+Sh
 BK
-BK
-fc
+mS
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
+it
+it
 KJ
 KJ
 fc
@@ -106970,27 +107904,27 @@ iC
 ix
 KJ
 fc
-fc
-fc
-KJ
-KJ
-KJ
-KJ
-KJ
-KJ
-KJ
-KJ
-fc
-fc
+jw
 fc
 KJ
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+fc
+fc
+fc
+KJ
+jA
+jA
+jn
+gi
+gi
+gi
+jd
 KJ
 Sh
 BK
@@ -107192,20 +108126,20 @@ KJ
 uz
 uz
 KJ
+Sh
 BK
-BK
-fc
-KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+mS
+ie
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
 KJ
 fc
 Sh
@@ -107229,7 +108163,7 @@ KJ
 fc
 fc
 fc
-fc
+kl
 KJ
 KJ
 fc
@@ -107444,21 +108378,21 @@ KJ
 uz
 uz
 KJ
+Sh
 BK
-BK
-fc
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-KJ
+mS
+lo
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+ie
 fc
 Sh
 Cb
@@ -107477,11 +108411,11 @@ fc
 fc
 fc
 fc
+kG
 fc
 fc
 fc
-fc
-fc
+kl
 fc
 fc
 fc
@@ -107696,21 +108630,21 @@ KJ
 uz
 uz
 KJ
+Sh
 BK
-BK
-fc
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-KJ
+mS
+Gm
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+ie
 fc
 Sh
 Cb
@@ -107729,11 +108663,11 @@ wL
 wL
 wL
 wL
+kH
 wL
 wL
 wL
-wL
-wL
+ko
 wL
 wL
 wL
@@ -107948,20 +108882,20 @@ KJ
 uz
 uz
 KJ
+Sh
 BK
-BK
-fc
-KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+mS
+ie
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
 KJ
 fc
 Sh
@@ -107981,11 +108915,11 @@ Gg
 Gg
 Gg
 Gg
+kJ
 Gg
 Gg
 Gg
-Gg
-Gg
+kp
 Gg
 Gg
 Gg
@@ -108200,19 +109134,19 @@ KJ
 uz
 uz
 KJ
+Sh
 BK
-BK
-fc
+mS
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
+it
+it
 KJ
 KJ
 fc
@@ -108233,11 +109167,11 @@ Gg
 Gg
 Gg
 Gg
+kJ
 Gg
 Gg
 Gg
-Gg
-Gg
+kp
 Gg
 Gg
 Gg
@@ -108452,21 +109386,21 @@ KJ
 KJ
 KJ
 KJ
+ov
 BK
-BK
-fc
-fc
+mS
+jw
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
 KJ
 KJ
-fc
+jw
 fc
 Sh
 Cb
@@ -108485,11 +109419,11 @@ Gg
 Gg
 Gg
 Gg
+kJ
 Gg
 Gg
 Gg
-Gg
-Gg
+kp
 Gg
 Gg
 Gg
@@ -108706,19 +109640,19 @@ BK
 BK
 BK
 BK
-fc
-fc
+mS
+jw
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
 KJ
 KJ
-fc
+jw
 fc
 Sh
 Cb
@@ -108737,6 +109671,11 @@ Mp
 Mp
 Mp
 Mp
+kK
+Mp
+Mp
+Mp
+kr
 Mp
 Mp
 Mp
@@ -108752,14 +109691,9 @@ Mp
 Mp
 Mp
 Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
+go
+go
+go
 Jp
 Gg
 Gg
@@ -108958,17 +109892,17 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
+it
+it
 KJ
 KJ
 fc
@@ -108989,11 +109923,11 @@ IA
 fc
 fc
 fc
+kG
 fc
 fc
 fc
-fc
-fc
+kl
 wL
 wL
 wL
@@ -109008,11 +109942,11 @@ fc
 fc
 fc
 fc
-fc
+Sh
 BK
 BK
 BK
-fc
+IA
 Jp
 Gg
 Gg
@@ -109210,19 +110144,19 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-KJ
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+ie
 fc
 Sh
 Cb
@@ -109241,11 +110175,11 @@ BK
 mS
 fc
 fc
+kG
 fc
 fc
 fc
-fc
-Sh
+ks
 BK
 BK
 BK
@@ -109261,11 +110195,11 @@ fc
 fc
 fc
 fc
-fc
+Jp
 BK
 BK
 BK
-fc
+mS
 Jp
 Gg
 Gg
@@ -109462,19 +110396,19 @@ BK
 BK
 BK
 BK
-fc
-KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-KJ
+mS
+ie
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+ie
 fc
 Sh
 Cb
@@ -109493,11 +110427,11 @@ Mp
 fc
 fc
 fc
+kL
 fc
 fc
 fc
-fc
-Sh
+kt
 BK
 BK
 BK
@@ -109514,10 +110448,10 @@ fc
 fc
 fc
 fc
-fc
-fc
+Mp
+Jp
 BK
-BK
+mS
 Sh
 Gg
 Gg
@@ -109714,19 +110648,19 @@ BK
 BK
 BK
 BK
-fc
-KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+mS
+ie
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+lo
 fc
 Sh
 Gg
@@ -109767,9 +110701,9 @@ KJ
 KJ
 KJ
 KJ
-fc
+Sh
 BK
-BK
+mS
 Sh
 Gg
 Gg
@@ -109966,19 +110900,19 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
+it
+it
+it
+it
+Gm
 fc
 Sh
 Gg
@@ -110019,9 +110953,9 @@ GQ
 GQ
 GQ
 KJ
-fc
-fc
+Sh
 BK
+mS
 Sh
 Gg
 Gg
@@ -110218,17 +111152,17 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
+it
+it
 KJ
 KJ
 fc
@@ -110271,9 +111205,9 @@ GQ
 GQ
 GQ
 KJ
-fc
-fc
-fc
+Sh
+BK
+mS
 Sh
 Gg
 Gg
@@ -110470,16 +111404,16 @@ BK
 BK
 BK
 BK
-fc
+IA
 fc
 KJ
 KJ
-uz
-uz
-uz
-uz
-uz
-uz
+it
+it
+it
+it
+it
+it
 KJ
 KJ
 fc
@@ -110523,9 +111457,9 @@ GQ
 GQ
 GQ
 KJ
-fc
-fc
-fc
+Sh
+BK
+mS
 Sh
 Gg
 Gg
@@ -110723,14 +111657,14 @@ BK
 BK
 BK
 BK
+mS
 fc
-fc
 KJ
 KJ
-KJ
-KJ
-KJ
-KJ
+ie
+ie
+ie
+ie
 KJ
 KJ
 fc
@@ -110776,7 +111710,7 @@ Oz
 KJ
 KJ
 fc
-fc
+Mp
 fc
 Sh
 Gg
@@ -110964,6 +111898,17 @@ BK
 BK
 BK
 BK
+ST
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
 fc
 fc
 fc
@@ -110973,20 +111918,9 @@ fc
 fc
 fc
 fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+wL
+wL
+wL
 fc
 Sh
 Gg
@@ -111214,8 +112148,8 @@ wH
 op
 BK
 BK
-fc
-fc
+ST
+Mp
 fc
 KJ
 KJ
@@ -111235,11 +112169,11 @@ fc
 fc
 fc
 fc
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -111466,7 +112400,7 @@ KJ
 yw
 BK
 BK
-fc
+mS
 KJ
 KJ
 KJ
@@ -111487,11 +112421,11 @@ fc
 Hw
 Hw
 Hw
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -111718,7 +112652,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -111734,16 +112668,16 @@ uz
 uz
 KJ
 fc
-fc
-fc
-fc
-fc
-fc
-fc
+wL
+wL
+wL
+wL
+wL
+ov
 BK
 BK
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -111970,7 +112904,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -111985,7 +112919,7 @@ uz
 uz
 uz
 KJ
-fc
+Sh
 BK
 BK
 BK
@@ -111995,7 +112929,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -112222,7 +113156,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -112237,7 +113171,7 @@ uz
 uz
 uz
 KJ
-fc
+Sh
 BK
 BK
 BK
@@ -112247,7 +113181,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -112474,7 +113408,7 @@ KJ
 Gs
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -112489,17 +113423,17 @@ uz
 uz
 uz
 KJ
-fc
+Sh
 BK
 BK
-fc
-fc
-fc
+ST
+Mp
+Jp
 BK
 BK
 BK
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -112726,7 +113660,7 @@ wH
 op
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -112742,16 +113676,16 @@ uz
 uz
 KJ
 fc
-fc
-fc
+Mp
+Mp
 fc
 Hw
 fc
-fc
-fc
-fc
+Mp
+Mp
+Jp
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -112978,7 +113912,7 @@ KJ
 yw
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -113001,9 +113935,9 @@ Hw
 Hw
 Hw
 Hw
-fc
+Sh
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -113055,15 +113989,15 @@ IA
 fc
 fc
 fc
-fc
-kq
 kq
 kq
 kq
 nk
-nk
-nk
 kq
+nk
+nk
+nk
+nk
 kq
 Sh
 Gm
@@ -113230,7 +114164,7 @@ KJ
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 uz
@@ -113253,9 +114187,9 @@ KJ
 xZ
 JD
 xZ
-fc
+Sh
 BK
-fc
+mS
 Sh
 Gg
 Gg
@@ -113306,12 +114240,12 @@ Gg
 Gg
 IA
 wL
-wL
-wL
-wL
-wL
 kq
 kq
+kq
+nk
+kq
+nk
 By
 By
 By
@@ -113482,7 +114416,7 @@ KJ
 KJ
 BK
 BK
-fc
+mS
 KJ
 fc
 fc
@@ -113506,7 +114440,7 @@ fc
 fc
 fc
 fc
-fc
+Mp
 fc
 ov
 Gg
@@ -113732,8 +114666,8 @@ IA
 wL
 KJ
 KJ
-fc
-fc
+Mp
+go
 fc
 fc
 fc
@@ -113986,18 +114920,18 @@ KJ
 KJ
 KJ
 Gg
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+IA
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
 wL
 wL
 wL
@@ -114336,10 +115270,10 @@ eZ
 eZ
 eZ
 eZ
+nk
+nk
 kq
 kq
-kq
-fc
 fc
 fc
 fc
@@ -114590,9 +115524,9 @@ By
 By
 By
 kq
+nk
 kq
-fc
-fc
+kq
 fc
 fc
 fc
@@ -114994,18 +115928,18 @@ KJ
 KJ
 KJ
 Gg
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+ST
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
 Mp
 Mp
 Mp
@@ -115244,6 +116178,9 @@ ST
 Mp
 KJ
 KJ
+wL
+go
+wL
 fc
 fc
 fc
@@ -115258,12 +116195,9 @@ fc
 fc
 fc
 fc
-fc
-fc
-fc
-fc
-fc
-fc
+wL
+wL
+wL
 fc
 fc
 fc
@@ -115499,7 +116433,7 @@ KJ
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 KJ
@@ -115512,11 +116446,11 @@ KJ
 KJ
 KJ
 KJ
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 KJ
@@ -115751,7 +116685,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -115764,11 +116698,11 @@ KJ
 uz
 uz
 KJ
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -116003,7 +116937,7 @@ Gs
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -116016,11 +116950,11 @@ uz
 uz
 uz
 KJ
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -116255,7 +117189,7 @@ op
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -116268,11 +117202,11 @@ uz
 uz
 uz
 KJ
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -116507,7 +117441,7 @@ yw
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -116520,11 +117454,11 @@ uz
 uz
 uz
 KJ
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -116759,7 +117693,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -116772,11 +117706,11 @@ uz
 uz
 uz
 KJ
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -117011,7 +117945,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 uz
@@ -117024,11 +117958,11 @@ uz
 uz
 KJ
 KJ
-fc
+Sh
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -117263,7 +118197,7 @@ BK
 BK
 BK
 BK
-fc
+IA
 fc
 KJ
 KJ
@@ -117277,9 +118211,9 @@ KJ
 KJ
 fc
 fc
-fc
-fc
-fc
+Mp
+Mp
+Mp
 fc
 KJ
 uz
@@ -117516,7 +118450,7 @@ BK
 BK
 BK
 BK
-fc
+IA
 fc
 KJ
 uz
@@ -117769,7 +118703,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -118021,7 +118955,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -118273,7 +119207,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 KJ
@@ -118525,8 +119459,8 @@ BK
 BK
 BK
 BK
-fc
-fc
+IA
+wL
 fc
 fc
 fc
@@ -118779,7 +119713,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 fc
 KJ
 KJ
@@ -119031,7 +119965,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 uz
@@ -119282,7 +120216,7 @@ BK
 BK
 BK
 BK
-fc
+ST
 fc
 KJ
 uz
@@ -119534,7 +120468,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 uz
@@ -119786,7 +120720,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -120038,7 +120972,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -120290,7 +121224,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -120542,7 +121476,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -120794,7 +121728,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -120884,7 +121818,7 @@ SR
 sH
 YE
 kq
-kq
+nk
 kq
 kq
 fc
@@ -121046,7 +121980,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -121135,7 +122069,7 @@ SR
 SR
 sH
 YE
-kq
+nk
 kq
 kq
 fc
@@ -121298,7 +122232,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -121550,7 +122484,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -121802,7 +122736,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -122054,7 +122988,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -122306,71 +123240,71 @@ BK
 BK
 BK
 BK
-fc
-KJ
-uz
-uz
-uz
-uz
-uz
-uz
-uz
-KJ
-KJ
-uz
-uz
-uz
-KJ
-uz
-uz
-uz
-uz
-KJ
-KJ
-fc
-Sh
-Gg
-Gg
-Gg
 mS
-fc
+KJ
+uz
+uz
+uz
+uz
+uz
+uz
+uz
 KJ
 KJ
+uz
+uz
+uz
 KJ
-KJ
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-KJ
-KJ
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-KJ
-KJ
-KJ
-fc
-fc
-fc
-fc
-fc
-KJ
+uz
+uz
+uz
+uz
 KJ
 KJ
 fc
 Sh
+Gg
+Gg
+Gg
+IA
+fc
+KJ
+KJ
+KJ
+KJ
+fc
+fc
+fc
+fc
+fc
+fc
+fc
+fc
+KJ
+KJ
+fc
+fc
+fc
+fc
+fc
+fc
+fc
+fc
+fc
+fc
+KJ
+KJ
+KJ
+fc
+fc
+fc
+fc
+fc
+KJ
+KJ
+KJ
+fc
+ov
 SR
 SR
 SR
@@ -122558,7 +123492,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 uz
@@ -122585,6 +123519,7 @@ Gg
 Gg
 Gg
 Gg
+IA
 fc
 fc
 fc
@@ -122620,8 +123555,7 @@ fc
 fc
 fc
 fc
-fc
-fc
+ov
 Gg
 SR
 SR
@@ -122810,7 +123744,7 @@ BK
 BK
 BK
 BK
-fc
+IA
 fc
 KJ
 uz
@@ -122838,41 +123772,41 @@ Gg
 Gg
 Gg
 Gg
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+IA
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+ov
 Gg
 Gg
 SR
@@ -123063,7 +123997,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 uz
@@ -123315,7 +124249,7 @@ BK
 BK
 BK
 BK
-fc
+IA
 fc
 KJ
 KJ
@@ -123568,12 +124502,12 @@ BK
 BK
 BK
 BK
-fc
-fc
-fc
-fc
-fc
-fc
+IA
+wL
+wL
+wL
+wL
+wL
 fc
 KJ
 uz
@@ -123588,7 +124522,7 @@ uz
 KJ
 KJ
 fc
-fc
+Sh
 Gg
 Gg
 Gg
@@ -123826,7 +124760,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -123846,40 +124780,40 @@ SH
 zC
 Lf
 rE
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
 cT
 bQ
 bL
 bC
 cs
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
 aK
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+Mp
+Mp
+Mp
+Mp
+Mp
+Mp
+kq
+kq
 kq
 Lf
 rE
@@ -124078,7 +125012,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -124098,41 +125032,41 @@ hp
 vO
 sH
 YE
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
-fc
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
+wL
 aL
-fc
-fc
-fc
-fc
-fc
-fc
+wL
+wL
+wL
+wL
+wL
 kq
 kq
-kq
+nk
+nk
 sH
 YE
 lG
@@ -124330,7 +125264,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 uz
@@ -124582,7 +125516,7 @@ BK
 BK
 BK
 BK
-fc
+IA
 fc
 KJ
 KJ
@@ -124835,11 +125769,11 @@ BK
 BK
 BK
 BK
-fc
-fc
-fc
-fc
-fc
+IA
+wL
+wL
+wL
+wL
 fc
 KJ
 uz
@@ -125092,7 +126026,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 uz
 uz
@@ -125344,7 +126278,7 @@ BK
 BK
 BK
 BK
-fc
+mS
 KJ
 KJ
 KJ
@@ -167938,8 +168872,8 @@ JD
 JD
 JD
 JD
-JD
-JD
+nv
+UQ
 Nl
 Nl
 Nl
@@ -167947,8 +168881,8 @@ Nl
 Nl
 Nl
 Nl
-JD
-JD
+UQ
+nr
 JD
 JD
 KJ
@@ -168190,17 +169124,17 @@ JD
 JD
 JD
 JD
-JD
-JD
+SS
+nt
+QV
 Nl
 Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-JD
-JD
+QV
+nt
+BY
 JD
 JD
 KJ
@@ -168442,17 +169376,17 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+SS
+nt
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+nt
+BY
 JD
 JD
 KJ
@@ -168460,16 +169394,16 @@ bS
 bS
 bS
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+nn
+nl
+nl
+nl
+nl
+nl
+nl
+nl
+nl
+nf
 bS
 bS
 bS
@@ -168694,17 +169628,17 @@ JD
 JD
 JD
 JD
-JD
-JD
+SS
+nt
+QV
 Nl
 Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-JD
-JD
+QV
+nt
+BY
 JD
 JD
 qm
@@ -168712,7 +169646,7 @@ bS
 bS
 bS
 bS
-bS
+no
 KJ
 KJ
 KJ
@@ -168721,7 +169655,7 @@ KJ
 KJ
 KJ
 KJ
-bS
+ni
 bS
 bS
 bS
@@ -168946,8 +169880,8 @@ JD
 JD
 JD
 JD
-JD
-JD
+nx
+Jv
 Nl
 Nl
 Nl
@@ -168955,8 +169889,8 @@ Nl
 Nl
 Nl
 Nl
-JD
-JD
+Jv
+ns
 JD
 JD
 qm
@@ -168964,7 +169898,7 @@ bS
 bS
 bS
 bS
-bS
+no
 KJ
 Nl
 Nl
@@ -168973,7 +169907,7 @@ Nl
 Nl
 Nl
 KJ
-bS
+ni
 bS
 bS
 bS
@@ -169216,7 +170150,7 @@ bS
 bS
 bS
 bS
-bS
+no
 KJ
 Nl
 Nl
@@ -169225,7 +170159,7 @@ Nl
 Nl
 Nl
 KJ
-bS
+ni
 bS
 bS
 bS
@@ -169468,7 +170402,7 @@ bS
 bS
 bS
 bS
-bS
+no
 KJ
 Nl
 Nl
@@ -169477,7 +170411,7 @@ Nl
 Nl
 Nl
 KJ
-bS
+ni
 bS
 KJ
 bS
@@ -169702,7 +170636,7 @@ JD
 JD
 JD
 JD
-JD
+nv
 Nl
 Nl
 Nl
@@ -169711,8 +170645,8 @@ Nl
 Nl
 Nl
 Nl
-JD
-JD
+UQ
+nr
 JD
 JD
 KJ
@@ -169720,7 +170654,7 @@ bS
 bS
 bS
 bS
-bS
+no
 KJ
 Nl
 Nl
@@ -169729,7 +170663,7 @@ Nl
 Nl
 Nl
 KJ
-bS
+ni
 bS
 KJ
 bS
@@ -169954,17 +170888,17 @@ JD
 JD
 JD
 JD
-JD
-JD
+SS
+nt
+QV
 Nl
 Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-JD
-JD
+QV
+nt
+BY
 JD
 JD
 KJ
@@ -169972,7 +170906,7 @@ KJ
 KJ
 bS
 bS
-bS
+no
 KJ
 BX
 BX
@@ -169981,7 +170915,7 @@ BX
 BX
 BX
 KJ
-bS
+ni
 bS
 bS
 bS
@@ -170206,17 +171140,17 @@ JD
 JD
 JD
 JD
-JD
-JD
+SS
+nt
 QV
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+QV
+QV
+QV
+QV
+QV
+QV
+nt
+BY
 JD
 JD
 JD
@@ -170224,16 +171158,16 @@ KJ
 KJ
 bS
 bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
-bS
+np
+iI
+DB
+DB
+DB
+DB
+DB
+DB
+ix
+nj
 bS
 bS
 bS
@@ -170458,16 +171392,16 @@ JD
 JD
 JD
 JD
-JD
-JD
+SS
+nt
+QV
 Nl
 Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-Nl
+QV
+QV
 Nl
 Nl
 Nl
@@ -170478,12 +171412,12 @@ bS
 bS
 bS
 bS
+QV
+QV
 bS
 bS
-bS
-bS
-bS
-bS
+QV
+QV
 bS
 bS
 bS
@@ -170710,8 +171644,8 @@ JD
 JD
 JD
 JD
-JD
-JD
+nx
+Jv
 Nl
 Nl
 Nl

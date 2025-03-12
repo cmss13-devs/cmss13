@@ -13922,18 +13922,15 @@
 /turf/open/floor/almayer,
 /area/almayer/medical/upper_medical)
 "aRG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 15;
-	pixel_y = 32
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
-/obj/structure/sign/safety/hazard{
-	pixel_y = 32
-	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "aRJ" = (
 /obj/structure/ladder{
@@ -31198,13 +31195,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
-"goY" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Under Construction Shutters";
-	name = "\improper Construction Site"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
 "gpc" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -55527,15 +55517,18 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/port_fore_hallway)
 "qEV" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 15;
+	pixel_y = 32
 	},
-/turf/open/floor/plating,
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "qFi" = (
 /obj/structure/bed/chair/comfy/black{
@@ -91209,7 +91202,7 @@ arI
 afM
 aeJ
 ade
-goY
+lpl
 wqh
 bHB
 sXB
@@ -91615,7 +91608,7 @@ qmM
 sCT
 pbA
 lUS
-qEV
+aRG
 xyw
 bHB
 aZP
@@ -91819,7 +91812,7 @@ hwW
 pOn
 vaB
 bcm
-aRG
+qEV
 bHB
 aZQ
 baI

@@ -413,6 +413,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "abr40"
 	bonus_overlay = "abr40_mag_overlay"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
 	max_rounds = 12
 	w_class = SIZE_SMALL
 	ammo_band_icon = "+abr40_band"

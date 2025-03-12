@@ -1,5 +1,0 @@
-author: "Danilcus-W"
-delete-after: True
-changes:
-  - qol: "Trappers can now see how much \"Insight\" they currently have."
-  - bugfix: "Trapper abilities empowered overlay is now shown."

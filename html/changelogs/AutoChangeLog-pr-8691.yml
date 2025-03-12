@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Refactored icon_states usage from handle_ooc_prefix to a glob list"
+  - bugfix: "Fixed extra_titles not stripping spaces for ooc icons"
+  - imageadd: "Centered byond logo ooc icon"
+  - admin: "Admin rank is now the last ooc icon"
+  - config: "ooc.dmi for rank icons is now expected in the config folder"

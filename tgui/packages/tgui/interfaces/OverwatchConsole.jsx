@@ -409,7 +409,7 @@ const SquadMonitor = (props) => {
 
   return (
     <Section
-      pb="1.5%"
+      pb="3%"
       fill
       fontSize="14px"
       title="Monitor"
@@ -464,7 +464,7 @@ const SquadMonitor = (props) => {
         value={marineSearch}
         onInput={(e, value) => setMarineSearch(value)}
       />
-      <Section m="2px" mb="4px" fill height="95%" scrollable>
+      <Section m="2px" pb="2px" fill scrollable>
         <Table>
           <Table.Row bold fontSize="14px">
             <Table.Cell textAlign="center">Name</Table.Cell>
@@ -608,6 +608,7 @@ const SupplyDrop = (props) => {
           <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
+                step={1}
                 value={supplyX}
                 onChange={(value) => setSupplyX(value)}
                 width="75px"
@@ -615,6 +616,7 @@ const SupplyDrop = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
+                step={1}
                 value={supplyY}
                 onChange={(value) => setSupplyY(value)}
                 width="75px"
@@ -622,6 +624,7 @@ const SupplyDrop = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="HEIGHT">
               <NumberInput
+                step={1}
                 value={supplyZ}
                 onChange={(value) => setSupplyZ(value)}
                 width="75px"
@@ -692,6 +695,7 @@ const OrbitalBombardment = (props) => {
           <LabeledControls mb="5px">
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
+                step={1}
                 value={OBX}
                 onChange={(value) => setOBX(value)}
                 width="75px"
@@ -699,6 +703,7 @@ const OrbitalBombardment = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
+                step={1}
                 value={OBY}
                 onChange={(value) => setOBY(value)}
                 width="75px"
@@ -706,6 +711,7 @@ const OrbitalBombardment = (props) => {
             </LabeledControls.Item>
             <LabeledControls.Item label="HEIGHT">
               <NumberInput
+                step={1}
                 value={OBZ}
                 onChange={(value) => setOBZ(value)}
                 width="75px"

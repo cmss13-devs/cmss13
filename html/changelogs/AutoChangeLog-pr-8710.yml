@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "CIA Intel Liaison Officers now use their own minimap and HUD icons."

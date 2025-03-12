@@ -300,6 +300,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// This contains any potential issues with the users' preferences, and presents them on the lobby screen
 	var/errors = list()
 
+	/// Sends messages in chat when the Xeno Action's cooldown is complete and adds cooldown timers in stat panel
+	var/show_cooldown_messages = FALSE
 
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -593,6 +595,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='byond://?_src_=prefs;preference=metadata;task=input'> Edit </a>"
+			dat += "<b>Show Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
 
 			dat += "<div id='column3'>"
@@ -1546,6 +1549,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
 					if(new_metadata)
 						metadata = strip_html(new_metadata)
+
+				if("show_cooldown_messages")
+					show_cooldown_messages = !show_cooldown_messages
 
 				if("hair")
 					hair_picker.tgui_interact(user)

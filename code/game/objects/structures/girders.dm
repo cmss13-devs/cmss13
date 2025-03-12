@@ -91,7 +91,7 @@
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
-		if(!do_after(user, 30, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
+		if(!do_after(user,30, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
 			to_chat(user, SPAN_NOTICE("You stop taking down \the [src]."))
 			return
 		to_chat(user, SPAN_NOTICE("You tear down \the [src]."))
@@ -115,7 +115,7 @@
 			if(object.density)
 				to_chat(user, SPAN_WARNING("[object] is blocking you from welding [src] together!"))
 				return
-		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return
 			to_chat(user, SPAN_NOTICE("You weld the girder together!"))
@@ -267,10 +267,6 @@
 			if(!do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				WT.remove_fuel(-5)
 				return TRUE
-
-			if(QDELETED(src))
-				return
-
 			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
@@ -321,10 +317,6 @@
 			if(!do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				WT.remove_fuel(-5)
 				return TRUE
-
-			if(QDELETED(src))
-				return
-
 			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)

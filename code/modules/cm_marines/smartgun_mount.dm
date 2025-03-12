@@ -94,7 +94,7 @@
 
 /obj/item/device/m56d_gun/attack_self(mob/user)
 	..()
-	for(var/obj/structure/machinery/machine in urange(defense_check_range, loc))
+	for(var/obj/structure/machinery/machine in long_range(defense_check_range, loc))
 		if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
 			return
@@ -142,7 +142,7 @@
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	for(var/obj/structure/machinery/machine in urange(defense_check_range, loc))
+	for(var/obj/structure/machinery/machine in long_range(defense_check_range, loc))
 		if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
 			return
@@ -338,7 +338,7 @@
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
-		for(var/obj/structure/machinery/machine in urange(MG.defense_check_range, loc, TRUE))
+		for(var/obj/structure/machinery/machine in long_orange(MG.defense_check_range, loc))
 			if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
 				return

@@ -524,7 +524,7 @@ export const SecurityRecords = () => {
   );
 
   const renderRecordsTable = () => (
-    <Section title="Security Records">
+    <Section title="Security Records" fill scrollable>
       <Flex direction="row" gap={2} mb={2}>
         <Button
           onClick={() => {
@@ -684,7 +684,7 @@ export const SecurityRecords = () => {
 
   return (
     <Window theme="crtred" width={630} height={700}>
-      <Window.Content scrollable>
+      <Window.Content>
         {viewFingerprintScanner ? (
           renderFingerprintScannerView()
         ) : selectedRecord ? (

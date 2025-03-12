@@ -7,8 +7,8 @@
 #define STATE_DESTROYED "destroyed"
 
 /obj/vehicle/multitile/chimera
-	name = "AD-19D chimera"
-	desc = "Get inside to operate the vehicle."
+	name = "AD-71E Blackfoot"
+	desc = "A twin tilt-jet VTOL, the Blackfoot is the Bearcat's ugly big sister. For what she lacks in fire power and agility, she more than makes up for in utility and love handles. First tested by UA Northridge on American soil, the Blackfoot is currently undergoing active combat trials."
 	icon = 'icons/obj/vehicles/chimera.dmi'
 	icon_state = "stowed"
 
@@ -86,7 +86,7 @@
 		new /atom/movable/screen/chimera/integrity(),
 		new /atom/movable/screen/chimera/battery()
 	)
-	
+
 	var/obj/structure/interior_exit/vehicle/chimera/back/back_door
 
 	var/datum/tacmap/tacmap
@@ -276,10 +276,10 @@
 /obj/vehicle/multitile/chimera/before_move(direction)
 	if(state != STATE_FLIGHT && state != STATE_VTOL)
 		return
-	
+
 	var/turf/below = SSmapping.get_turf_below(get_step(get_turf(src), direction))
 
-	if(!below)	
+	if(!below)
 		return
 
 	shadow_holder.dir = dir
@@ -379,9 +379,9 @@
 	remove_action(M, /datum/action/human_action/chimera/access_tacmap)
 
 	for(var/atom/movable/screen/chimera/screen_to_remove as anything in custom_hud)
-		M.client.remove_from_screen(screen_to_remove) 
+		M.client.remove_from_screen(screen_to_remove)
 
-	SStgui.close_user_uis(M, src)	
+	SStgui.close_user_uis(M, src)
 
 /obj/vehicle/multitile/chimera/give_seated_mob_actions(mob/seated_mob)
 	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle/chimera)
@@ -392,7 +392,7 @@
 
 	if(!istype(collided_atom, /obj/structure/chimera_tug))
 		return
-	
+
 	if(collided_atom.dir != REVERSE_DIR(dir))
 		return
 
@@ -446,7 +446,7 @@
 		new_turf.should_fall = TRUE
 	else
 		new_turf.should_fall = FALSE
-	
+
 	new_turf.target_x = rear_turf.x
 	new_turf.target_y = rear_turf.y
 	new_turf.target_z = rear_turf.z
@@ -493,7 +493,7 @@
 		if(CEILING_IS_PROTECTED(takeoff_turf_area.ceiling, CEILING_PROTECTION_TIER_1) || takeoff_turf.density)
 			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't takeoff here, the area is roofed."))
 			return
-	
+
 	if(busy)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
 		return
@@ -528,7 +528,7 @@
 		if(CEILING_IS_PROTECTED(landing_turf_area.ceiling, CEILING_PROTECTION_TIER_1) || landing_turf.density)
 			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't land here, the area is roofed or blocked by something."))
 			return
-	
+
 	if(busy)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
 		return
@@ -557,14 +557,14 @@
 
 	if(downwash)
 		qdel(downwash)
-		
+
 
 	var/turf/possible_pad_turf = locate(x - 1, y - 1, z)
 	var/obj/structure/landing_pad = locate() in possible_pad_turf
 
 	if(!landing_pad)
 		return
-	
+
 	to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Landing pad detected, Starting fueling procedures."))
 	START_PROCESSING(SSobj, landing_pad)
 
@@ -572,7 +572,7 @@
 	if(state != STATE_DEPLOYED && state != STATE_STOWED)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in stowed or deployed mode."))
 		return
-	
+
 	if(busy)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
 		return
@@ -726,7 +726,7 @@
 
 /datum/action/human_action/chimera/takeoff/action_activate()
 	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 
@@ -740,7 +740,7 @@
 
 /datum/action/human_action/chimera/land/action_activate()
 	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 
@@ -754,7 +754,7 @@
 
 /datum/action/human_action/chimera/toggle_vtol/action_activate()
 	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 
@@ -768,7 +768,7 @@
 
 /datum/action/human_action/chimera/toggle_stow/action_activate()
 	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 
@@ -782,7 +782,7 @@
 
 /datum/action/human_action/chimera/disconnect_tug/action_activate()
 	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 
@@ -796,7 +796,7 @@
 
 /datum/action/human_action/chimera/toggle_sensors/action_activate()
 	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 
@@ -810,7 +810,7 @@
 
 /datum/action/human_action/chimera/access_tacmap/action_activate()
 	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 
@@ -823,8 +823,8 @@
 	action_icon_state = "pilot-unbuckle"
 
 /obj/structure/chimera_tug
-	name = "aerospace tug"
-	desc = ""
+	name = "UG8 Aerospace Tug"
+	desc = "A rugged and durable self-propelled front-gear tug designed to allow light aircraft to taxi short distances without powered landing gear. The tug, while large, and easily be moved around by a single crewman. It can be manually attached to the front of an aircraft, giving movement control over to the pilot. The UG8 model was created by UA Northridge in response to a compressor burst incident on the USS Shadow Line. Rest his soul."
 	icon = 'icons/obj/vehicles/chimera_tug.dmi'
 	icon_state = "aerospace-tug"
 	density = TRUE
@@ -834,8 +834,8 @@
 	pixel_y = 0
 
 /obj/structure/landing_pad_folded
-	name = "folded landing pad"
-	desc = ""
+	name = "M9AB Landing Pad"
+	desc = "A specially fabricated ultra-light, carbon-fiber, fiberglass reinforced, fuel saturated foldable landing pad designed for quick in-field deployment. VTOL aircraft can be automatically refueled by landing directly on this pad, taking fuel in at a slow rate through a emissive membrane sealed into the pad layer. It is firm, but malleable, like a water bed full of tar."
 	icon = 'icons/obj/vehicles/chimera_structures.dmi'
 	icon_state = "landing-pad-folded"
 	density = TRUE
@@ -870,19 +870,21 @@
 			return FALSE
 
 	to_chat(user, SPAN_NOTICE("You assemble the landing pad."))
-		
+
 	new /obj/structure/landing_pad(loc)
 
 	qdel(src)
 
 /obj/item/landing_pad_light
-	name = "landing pad light"
+	name = "M3 Landing Pad Light
+	desc = "It doesn't get more simple than this. It's a light stick with 1/4-20 threaded ends to fasten directly into the corners of the M9AB landing pad. It's like a glowstick made out of glass, at the mere price of $20,000 taxpayer dollars a pop."
 	icon = 'icons/obj/vehicles/chimera_peripherals.dmi'
 	icon_state = "landing pad light"
 	layer = BELOW_MOB_LAYER
 
 /obj/item/flight_cpu
-	name = "flight cpu crate"
+	name = "GZ0 Operations Terminal"
+	desc = "A rugged and durable operations computer designed for quick deployment at a field landing zone, made to link up directly to the M9AB landing pad and provide optimized fueling and charging data to a docked aircraft."
 	icon = 'icons/obj/vehicles/chimera_peripherals.dmi'
 	icon_state = "flightcpu-crate"
 	layer = BELOW_MOB_LAYER
@@ -897,7 +899,7 @@
 
 /obj/item/flight_cpu/Destroy()
 	linked_pad = null
-	
+
 	. = ..()
 
 /obj/item/flight_cpu/attack_hand(mob/user)
@@ -973,14 +975,15 @@
 		fueling = FALSE
 
 /obj/item/fuel_pump
-	name = "fuelpump crate"
+	name = "M6G Short-Cycle Pump"
+	desc = "Another peripheral system of the M9AB landing pad, a rotary driven pumping mechanism with a low head-pressure resevoir encased in a shell made out of air-grade aluminium and inconel fittings. You don't know how it works, it just does."
 	icon = 'icons/obj/vehicles/chimera_peripherals.dmi'
 	icon_state = "fuelpump-crate"
 	layer = BELOW_MOB_LAYER
 
 /obj/structure/landing_pad
-	name = "landing pad"
-	desc = ""
+	name = "M9AB Landing Pad"
+	desc = "A specially fabricated ultra-light, carbon-fiber, fiberglass reinforced, fuel saturated foldable landing pad designed for quick in-field deployment. VTOL aircraft can be automatically refueled by landing directly on this pad, taking fuel in at a slow rate through a emissive membrane sealed into the pad layer. It is firm, but malleable, like a water bed full of tar."
 	icon = 'icons/obj/vehicles/chimera_landing_pad.dmi'
 	icon_state = "pad"
 	light_pixel_x = 48
@@ -1007,7 +1010,7 @@
 	if(istype(hit_item, /obj/item/landing_pad_light))
 		if(installed_lights >= 4)
 			return
-		
+
 		qdel(hit_item)
 		hit_item = new /obj/item/landing_pad_light(src)
 		vis_contents += hit_item
@@ -1035,7 +1038,7 @@
 
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
-		
+
 		qdel(hit_item)
 		hit_item = new /obj/item/flight_cpu(locate(x - 1, y, z), src)
 		hit_item.name = "flight cpu"
@@ -1052,7 +1055,7 @@
 
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
-		
+
 		qdel(hit_item)
 		hit_item = new /obj/item/fuel_pump(src)
 		vis_contents += hit_item

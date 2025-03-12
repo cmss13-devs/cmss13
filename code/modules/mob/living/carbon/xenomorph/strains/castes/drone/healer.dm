@@ -60,6 +60,7 @@
 	xeno_cooldown = 0.5 SECONDS
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
+	no_cooldown_msg = TRUE
 	if(!action_cooldown_check())
 		return
 	var/mob/living/carbon/xenomorph/xeno = owner

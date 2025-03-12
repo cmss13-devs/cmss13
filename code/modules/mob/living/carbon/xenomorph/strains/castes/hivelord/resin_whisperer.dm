@@ -47,6 +47,8 @@
 	thick = FALSE
 	make_message = FALSE
 
+	no_cooldown_msg = TRUE
+
 	build_speed_mod = 2.5 // the actual building part takes twice as long
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin

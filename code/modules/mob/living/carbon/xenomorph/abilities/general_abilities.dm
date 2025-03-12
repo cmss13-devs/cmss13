@@ -443,6 +443,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
+	cooldown_message = "We feel our neurotoxin glands swell with ichor. We can spit again."
 	xeno_cooldown = 60 SECONDS
 
 	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time

@@ -67,7 +67,7 @@
 	no_panel = TRUE
 
 /datum/emote/living/carbon/human/yautja/species_sound/loudroar/get_sound(mob/living/user)
-	return pick('sound/voice/pred_roar4.ogg', 'sound/voice/pred_roar5.ogg', 'sound/voice/pred_roar6.ogg')
+	return pick('sound/voice/pred_roar4.ogg', 'sound/voice/pred_roar5.ogg', 'sound/voice/pred_roar6.ogg', 'sound/voice/pred_roar7.ogg')
 
 /datum/emote/living/carbon/human/yautja/species_sound/loudroar/run_emote(mob/user, params, type_override, intentional)
 	. = ..()

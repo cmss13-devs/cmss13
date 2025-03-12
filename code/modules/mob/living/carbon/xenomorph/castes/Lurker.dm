@@ -64,6 +64,13 @@
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
+/mob/living/carbon/xenomorph/lurker/vampire
+
+/mob/living/carbon/xenomorph/lurker/vampire/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	var/datum/xeno_strain/vampire/vamp = new()
+	vamp.apply_strain(src)
+
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
 

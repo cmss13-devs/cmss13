@@ -372,9 +372,13 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/map_list
 
 	if(faction == FACTION_MARINE)
-		map_list = GLOB.uscm_flat_tacmap_data
+		if(length(GLOB.uscm_flat_tacmap_data) != 0)
+			var/datum/maps_to_update/to_add = GLOB.uscm_flat_tacmap_data[length(GLOB.uscm_flat_tacmap_data)]
+			map_list = to_add.maps
 	else if(faction == XENO_HIVE_NORMAL)
-		map_list = GLOB.xeno_flat_tacmap_data
+		if(length(GLOB.xeno_flat_tacmap_data) != 0)
+			var/datum/maps_to_update/to_add = GLOB.xeno_flat_tacmap_data[length(GLOB.xeno_flat_tacmap_data)]
+			map_list = to_add.maps
 	else
 		return null
 
@@ -383,7 +387,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(map_length == 0)
 		return null
 
-	return map_list[map_length]
+	return map_list
 
 /**
  * Fetches the datum containing the latest unannounced flattend map png reference.
@@ -435,22 +439,24 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_observer = user.faction == FACTION_NEUTRAL && isobserver(user)
 	if(is_observer || user.faction == FACTION_MARINE)
 		// Send marine maps
-		var/datum/flattened_tacmap/latest = get_tacmap_data_png(FACTION_MARINE)
-		if(latest)
+		var/list/latests = get_tacmap_data_png(FACTION_MARINE)
+		for(var/datum/flattened_tacmap/latest in latests)
 			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/flattened_tacmap/unannounced = get_unannounced_tacmap_data_png(FACTION_MARINE)
-		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
-			SSassets.transport.send_assets(user.client, unannounced.asset_key)
+		var/unannounceds = get_unannounced_tacmap_data_png(FACTION_MARINE)
+		for(var/datum/flattened_tacmap/unannounced in unannounceds)
+			if(unannounced)
+				SSassets.transport.send_assets(user.client, unannounced.asset_key)
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	if(is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL)
 		// Send xeno maps
-		var/datum/flattened_tacmap/latest = get_tacmap_data_png(XENO_HIVE_NORMAL)
-		if(latest)
+		var/list/latests = get_tacmap_data_png(XENO_HIVE_NORMAL)
+		for(var/datum/flattened_tacmap/latest in latests)
 			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/flattened_tacmap/unannounced = get_unannounced_tacmap_data_png(XENO_HIVE_NORMAL)
-		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
-			SSassets.transport.send_assets(user.client, unannounced.asset_key)
+		var/unannounceds = get_unannounced_tacmap_data_png(XENO_HIVE_NORMAL)
+		for(var/datum/flattened_tacmap/unannounced in unannounceds)
+			if(unannounced)
+				SSassets.transport.send_assets(user.client, unannounced.asset_key)
 
 /**
  * Flattens the current map and then distributes it for the specified faction as an unannounced map.
@@ -472,10 +478,13 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		return FALSE
 
-	var/icon/flat_map = getFlatIcon(map_holder.map, appearance_flags = TRUE)
-	if(!flat_map)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
-		return FALSE
+	var/list/flat_maps = list()
+	for(var/datum/tacmap_holder/map_holder in map_holders)
+		var/icon/flat_map = getFlatIcon(map_holder.map, appearance_flags = TRUE)
+		if(!flat_map)
+			to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
+			return FALSE
+		flat_maps += flat_map
 
 	// Send to only relevant clients
 	var/list/faction_clients = list()
@@ -491,19 +500,25 @@ SUBSYSTEM_DEF(minimaps)
 			var/mob/living/carbon/xenomorph/xeno = client_mob
 			if(xeno.hivenumber == faction)
 				faction_clients += client
+	if(faction == FACTION_MARINE)
+		LAZYCLEARLIST(GLOB.uscm_unannounced_map)
+	else //if(faction == XENO_HIVE_NORMAL)
+		LAZYCLEARLIST(GLOB.xeno_unannounced_map)
+
 
 	// This may be unnecessary to do this way if the asset url is always the same as the lookup key
-	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
-	if(!flat_tacmap_key)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
-		return FALSE
-	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
-	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
+	for(var/flat_map in flat_maps)
+		var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
+		if(!flat_tacmap_key)
+			to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+			return FALSE
+		var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
+		var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
 
-	if(faction == FACTION_MARINE)
-		GLOB.uscm_unannounced_map = new_flat
-	else //if(faction == XENO_HIVE_NORMAL)
-		GLOB.xeno_unannounced_map = new_flat
+		if(faction == FACTION_MARINE)
+			GLOB.uscm_unannounced_map += new_flat
+		else //if(faction == XENO_HIVE_NORMAL)
+			GLOB.xeno_unannounced_map += new_flat
 
 	return TRUE
 
@@ -674,14 +689,17 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
+	shifting = TRUE
 
 /datum/action/minimap/marine
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
+	shifting = TRUE
 
 /datum/action/minimap/upp
 	minimap_flags =  MINIMAP_FLAG_UPP
 	marker_flags = MINIMAP_FLAG_UPP
+	shifting = TRUE
 
 /datum/action/minimap/observer
 	minimap_flags = MINIMAP_FLAG_ALL
@@ -698,16 +716,28 @@ SUBSYSTEM_DEF(minimaps)
 	/// ztrait to use for displaying minimap
 	var/current_ztrait = ZTRAIT_GROUND
 	/// the current z level within the z stack
-	var/target_z = 1
 	var/atom/owner
 
 	/// tacmap holder for holding the minimap
-	var/datum/tacmap_holder/map_holder
+
+	var/list/map_holders = list()
 
 	var/is_mainship = FALSE
 
 	///Name for targeted_ztrait_for_mainship
 	var/change_to_name = MAIN_SHIP_DEFAULT_NAME
+
+	/// The last time the map has been flattened - used as a key to trick react into updating the canvas
+	var/last_update_time = 0
+
+/datum/tacmap/proc/fetch_tacmap_data()
+	var/list/map_holders = list()
+	var/levels = SSmapping.levels_by_trait(current_ztrait)
+	for (var/level in levels)
+		var/datum/tacmap_holder/holder = SSminimaps.fetch_tacmap_datum(level, allowed_flags)
+		map_holders += holder
+	return map_holders
+
 
 /datum/tacmap/drawing
 	/// A url that will point to the wiki map for the current map as a fall back image
@@ -720,16 +750,13 @@ SUBSYSTEM_DEF(minimaps)
 	/// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
 	var/updated_canvas = FALSE
 	/// current flattend map
-	var/datum/flattened_tacmap/new_current_map
+	var/list/new_current_maps = list()
 	/// previous flattened map
-	var/datum/flattened_tacmap/old_map
+	var/list/old_maps = list()
 	/// current svg
 	var/datum/svg_overlay/current_svg
 
 	var/action_queue_change = 0
-
-	/// The last time the map has been flattened - used as a key to trick react into updating the canvas
-	var/last_update_time = 0
 	/// A temporary lock out time before we can open the new canvas tab to allow the tacmap time to fire
 	var/tacmap_ready_time = 0
 
@@ -748,29 +775,29 @@ SUBSYSTEM_DEF(minimaps)
 	owner = xeno_tacmap
 
 /datum/tacmap/Destroy()
-	map_holder = null
+	map_holders = null
 	owner = null
 	return ..()
 
 /datum/tacmap/drawing/Destroy()
-	new_current_map = null
-	old_map = null
+	new_current_maps = null
+	old_maps = null
 	current_svg = null
 	return ..()
 
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
-	if(!map_holder)
-		var/level = SSmapping.levels_by_trait(current_ztrait)
-		if(!level[target_z])
-			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
+	if(!map_holders || length(map_holders) == 0)
+		map_holders = fetch_tacmap_data()
+
 
 	ui = SStgui.try_update_ui(user, src, ui)
+	last_update_time = world.time //forcing canvas to update
 	if(!ui)
-		user.client.register_map_obj(map_holder.map)
-		ui = new(user, src, "TacticalMap")
-		ui.open()
-		RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
+		for (var/datum/tacmap_holder/map_holder in map_holders)
+			user.client.register_map_obj(map_holder.map)
+			ui = new(user, src, "TacticalMap")
+			ui.open()
+			RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
 
 /datum/tacmap/drawing/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
@@ -783,21 +810,22 @@ SUBSYSTEM_DEF(minimaps)
 	if(is_xeno && xeno.hive.see_humans_on_tacmap && current_ztrait != targeted_ztrait_for_mainship)
 		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
 		current_ztrait = targeted_ztrait_for_mainship
-		map_holder = null
+		map_holders = null
 
-	new_current_map = get_unannounced_tacmap_data_png(faction)
-	old_map = get_tacmap_data_png(faction)
+	new_current_maps = get_unannounced_tacmap_data_png(faction)
+	old_maps = get_tacmap_data_png(faction)
 	current_svg = get_tacmap_data_svg(faction)
 
 	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno
 
-	if(use_live_map && !map_holder)
-		var/level = SSmapping.levels_by_trait(current_ztrait)
-		if(!level[target_z])
-			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
-		resend_current_map_png(user)
-		user.client.register_map_obj(map_holder.map)
+	if(use_live_map && (!map_holders || length(map_holders) == 0))
+		map_holders = list()
+		var/levels = SSmapping.levels_by_trait(current_ztrait)
+		for(var/level in levels)
+			map_holders += SSminimaps.fetch_tacmap_datum(level, allowed_flags)
+			resend_current_map_png(user)
+			for(var/datum/tacmap_holder/map_holder in map_holders)
+				user.client.register_map_obj(map_holder.map)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -816,22 +844,38 @@ SUBSYSTEM_DEF(minimaps)
 		if(use_live_map)
 			tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
 			addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
-			user.client.register_map_obj(map_holder.map)
+			for(var/datum/tacmap_holder/map_holder in map_holders)
+				user.client.register_map_obj(map_holder.map)
 			RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
 
 		ui = new(user, src, "TacticalMap")
 		ui.open()
 
 /datum/tacmap/ui_data(mob/user)
-	. = ..()
+	var/list/data = list()
 
-	.["mapRef"] = map_holder?.map_ref
+	data["minZlevel"] = 0
+	data["maxZlevelOld"] = length(map_holders)
+	data["mapRef"] = list()
+	for(var/datum/tacmap_holder/map_holder in map_holders)
+		data["mapRef"] += map_holder?.map_ref
+	data["lastUpdateTime"] = last_update_time
+
+	return data
 
 /datum/tacmap/drawing/ui_data(mob/user)
 	var/list/data = list()
 
-	data["newCanvasFlatImage"] = new_current_map?.flat_tacmap
-	data["oldCanvasFlatImage"] = old_map?.flat_tacmap
+	data["minZlevel"] = 0
+	data["maxZlevel"] = length(new_current_maps)
+	data["maxZlevelOld"] = length(old_maps)
+	data["newCanvasFlatImage"] = list()
+	for(var/datum/flattened_tacmap/new_current_map in new_current_maps)
+		data["newCanvasFlatImage"] += new_current_map?.flat_tacmap
+
+	data["oldCanvasFlatImage"] = list()
+	for(var/datum/flattened_tacmap/old_map in old_maps)
+		data["oldCanvasFlatImage"] += old_map?.flat_tacmap
 	data["svgData"] = current_svg?.svg_data
 
 	data["actionQueueChange"] = action_queue_change
@@ -848,7 +892,9 @@ SUBSYSTEM_DEF(minimaps)
 
 	data["lastUpdateTime"] = last_update_time
 	data["tacmapReady"] = world.time > tacmap_ready_time
-	data["mapRef"] = map_holder?.map_ref
+	data["mapRef"] = list()
+	for(var/datum/tacmap_holder/map_holder in map_holders)
+		data["mapRef"] += map_holder?.map_ref
 	data["isMainship"] = is_mainship
 	data["changeToMapName"] = is_mainship ? SSmapping.configs?[GROUND_MAP]?.map_name : change_to_name
 
@@ -859,9 +905,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
-	data["canChangeZ"] = FALSE
+	data["canChangeZ"] = TRUE
 	data["canViewCanvas"] = FALSE
 	data["isxeno"] = FALSE
+	data["zlevel"] = 0
 
 	return data
 
@@ -872,6 +919,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["mapFallback"] = wiki_map_fallback
 	data["canChangeZ"] = TRUE
+	data["zlevel"] = 0
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
@@ -898,6 +946,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
 	data["isxeno"] = FALSE
+	data["zlevel"] = 0
 
 	return data
 
@@ -910,6 +959,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
 	data["isxeno"] = TRUE
+	data["zlevel"] = 0
 
 	return data
 
@@ -951,9 +1001,8 @@ SUBSYSTEM_DEF(minimaps)
 				last_update_time = world.time
 				// An attempt to get the image to load on first try in the interface, but doesn't seem always reliable
 
-			new_current_map = get_unannounced_tacmap_data_png(faction)
-			old_map = get_tacmap_data_png(faction)
-			current_svg = get_tacmap_data_svg(faction)
+			new_current_maps = get_unannounced_tacmap_data_png(faction)
+			old_maps = get_tacmap_data_png(faction)
 
 		if("updateCanvas")
 			toolbar_updated_selection = "export"
@@ -985,38 +1034,17 @@ SUBSYSTEM_DEF(minimaps)
 				return
 
 			is_mainship = !is_mainship
-			map_holder = null
+			map_holders = null
 
 			if(is_mainship)
 				current_ztrait = targeted_ztrait_for_mainship
 			else
 				current_ztrait = targeted_ztrait
 
-		if("changeZ")
-			var/amount = params["amount"]
-			var/level = SSmapping.levels_by_trait(current_ztrait)
-			if(target_z+amount < 1 || target_z+amount > length(level) || !SSmapping.same_z_map(level[target_z], level[target_z+amount]))
-				return
-
-			target_z += amount
-
-			if(!level[target_z])
-				return
-
-			if(user.client)
-				user.client.clear_map(map_holder.map.name)
-			map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
-			resend_current_map_png(user)
-			if(user.client)
-				user.client.register_map_obj(map_holder.map)
-
-			distribute_current_map_png(faction)
-			last_update_time = world.time
-
-			new_current_map = get_unannounced_tacmap_data_png(faction)
-			old_map = get_tacmap_data_png(faction)
-			current_svg = get_tacmap_data_svg(faction)
-
+		if("updateZlevel")
+			last_update_time = world.time //forcing canvas to update
+			action_queue_change += 1
+			updated_canvas = FALSE
 
 		if("selectAnnouncement")
 			if(!drawing_allowed)
@@ -1036,7 +1064,10 @@ SUBSYSTEM_DEF(minimaps)
 				return FALSE
 
 			if(faction == FACTION_MARINE)
-				GLOB.uscm_flat_tacmap_data += new_current_map
+				var/datum/maps_to_update/to_add = new()
+				for(var/datum/flattened_tacmap/new_current_map in new_current_maps)
+					to_add.maps += new_current_map
+				GLOB.uscm_flat_tacmap_data += to_add
 				COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
@@ -1045,7 +1076,10 @@ SUBSYSTEM_DEF(minimaps)
 				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
 				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
 			else if(faction == XENO_HIVE_NORMAL)
-				GLOB.xeno_flat_tacmap_data += new_current_map
+				var/datum/maps_to_update/to_add = new()
+				for(var/datum/flattened_tacmap/new_current_map in new_current_maps)
+					to_add.maps += new_current_map
+				GLOB.xeno_flat_tacmap_data += to_add
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
 				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
@@ -1053,7 +1087,7 @@ SUBSYSTEM_DEF(minimaps)
 
 			store_current_svg_coords(faction, params["image"], user)
 			current_svg = get_tacmap_data_svg(faction)
-			old_map = get_tacmap_data_png(faction)
+			old_maps = get_tacmap_data_png(faction)
 
 			toolbar_updated_selection = toolbar_color_selection
 			message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a> for [faction].")
@@ -1086,7 +1120,11 @@ SUBSYSTEM_DEF(minimaps)
 // This gets removed when the player changes bodies (i.e. xeno evolution), so re-register it when that happens.
 /datum/tacmap/proc/on_mind_transferred(datum/mind/source, mob/previous_body)
 	SIGNAL_HANDLER
-	source.current.client.register_map_obj(map_holder.map)
+	for(var/datum/tacmap_holder/map_holder in map_holders)
+		source.current.client.register_map_obj(map_holder.map)
+
+/datum/maps_to_update
+	var/list/maps = list()
 
 /datum/tacmap_holder
 	var/map_ref

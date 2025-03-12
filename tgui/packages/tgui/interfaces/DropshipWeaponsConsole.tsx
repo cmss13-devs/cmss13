@@ -20,7 +20,9 @@ export interface DropshipProps {
   medevac_targets: Array<MedevacTargets>;
   fulton_targets: Array<string>;
   selected_eqp: number;
-  tactical_map_ref?: string;
+  tactical_map_ref?: Array<string>;
+  zlevel: number;
+  zlevelMax: number;
   camera_map_ref?: string;
   camera_target_id?: string;
   targets_data: Array<LazeTarget>;

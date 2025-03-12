@@ -58,6 +58,8 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     this.isPainting = false;
     this.lastX = null;
     this.lastY = null;
+    this.zlevel = this.props.zlevel;
+    this.storedData = this.props.storedData;
 
     this.complexity = 0;
   }
@@ -74,6 +76,7 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
 
       this.img.onload = () => {
         this.setState({ mapLoad: true });
+        this.drawCanvas();
       };
 
       this.img.onerror = () => {
@@ -137,6 +140,7 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
         x,
         y,
         this.ctx.strokeStyle,
+        this.zlevel,
       ]);
     }
 
@@ -157,7 +161,14 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     this.ctx.moveTo(this.lastX, this.lastY);
     this.ctx.lineTo(x, y);
     this.ctx.stroke();
-    this.currentLine.push([this.lastX, this.lastY, x, y, this.ctx.strokeStyle]);
+    this.currentLine.push([
+      this.lastX,
+      this.lastY,
+      x,
+      y,
+      this.ctx.strokeStyle,
+      this.zlevel,
+    ]);
 
     this.isPainting = false;
     this.lastX = null;
@@ -168,7 +179,7 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     this.lineStack.push([...this.currentLine]);
     this.currentLine = [];
     this.complexity = this.getComplexity();
-    this.props.onDraw();
+    this.props.onDraw(this.convertToSVG());
   };
 
   handleSelectionChange = () => {
@@ -222,18 +233,20 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
       this.ctx.globalCompositeOperation = 'source-over';
 
       this.lineStack.forEach((currentLine) => {
-        currentLine.forEach(([lastX, lastY, x, y, colorSelection]) => {
-          this.ctx!.strokeStyle = colorSelection;
-          this.ctx!.beginPath();
-          this.ctx!.moveTo(lastX, lastY);
-          this.ctx!.lineTo(x, y);
-          this.ctx!.stroke();
+        currentLine.forEach(([lastX, lastY, x, y, colorSelection, zlevel]) => {
+          if (zlevel === this.zlevel) {
+            this.ctx.strokeStyle = colorSelection;
+            this.ctx.beginPath();
+            this.ctx.moveTo(lastX, lastY);
+            this.ctx.lineTo(x, y);
+            this.ctx.stroke();
+          }
         });
       });
 
       this.complexity = this.getComplexity();
       this.setState({ selection: prevColor });
-      this.props.onUndo(prevColor);
+      this.props.onUndo(prevColor, this.lineStack);
       return;
     }
 
@@ -253,32 +266,67 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
   }
 
   drawCanvas() {
-    if (this.img) {
-      this.img.onload = () => {
-        // this onload may or may not be causing problems.
-        this.ctx?.drawImage(
-          this.img!,
-          0,
-          0,
-          this.canvasRef.current?.width || 0,
-          this.canvasRef.current?.height || 0,
-        );
-      };
-    }
+    this.img.onload = () => {
+      // this onload may or may not be causing problems.
+      this.ctx.drawImage(
+        this.img,
+        0,
+        0,
+        this.canvasRef.current?.width,
+        this.canvasRef.current?.height,
+      );
+
+      this.setSVG(this.storedData);
+    };
   }
 
   convertToSVG() {
     const lines = this.lineStack.flat();
     const combinedArray = lines.flatMap(
-      ([lastX, lastY, x, y, colorSelection]) => [
+      ([lastX, lastY, x, y, colorSelection, zlevel]) => [
         lastX,
         lastY,
         x,
         y,
         colorSelection,
+        zlevel,
       ],
     );
     return combinedArray;
+  }
+
+  getSVG() {
+    return this.lineStack;
+  }
+
+  setSVG(svg) {
+    this.redrawSVG(svg);
+  }
+
+  redrawSVG(lineStack) {
+    if (this.ctx === null || lineStack === null || lineStack === undefined) {
+      return;
+    }
+
+    lineStack.forEach((stack) => {
+      const newStack = [];
+      stack.forEach((line) => {
+        const [lastX, lastY, x, y, color, zlevel] = line;
+        if (zlevel === this.zlevel) {
+          this.ctx.strokeStyle = color;
+          this.ctx.lineWidth = 4;
+          this.ctx.lineCap = 'round';
+          this.ctx.beginPath();
+          this.ctx.moveTo(lastX, lastY);
+          this.ctx.lineTo(x, y);
+          this.ctx.stroke();
+        }
+
+        newStack.push([lastX, lastY, x, y, color, zlevel]);
+      });
+
+      this.lineStack.push(newStack);
+    });
   }
 
   getComplexity() {

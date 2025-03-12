@@ -144,13 +144,12 @@
 		RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
 		registered = TRUE
 
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
+	tacmap.map_holders = tacmap.fetch_tacmap_data()
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
+		for(var/datum/tacmap_holder/map_holder in tacmap.map_holders)
+			user.client.register_map_obj(map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
@@ -176,8 +175,13 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
-	.["tactical_map_ref"] = tacmap.map_holder.map_ref
+	var/list/map_refs = list()
+	for(var/datum/tacmap_holder/map_holder in tacmap.map_holders)
+		map_refs += map_holder?.map_ref
+	.["tactical_map_ref"] = map_refs
 	.["camera_map_ref"] = camera_map_name
+	.["zlevel"] = 0
+	.["zlevelMax"] = length(map_refs)
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()

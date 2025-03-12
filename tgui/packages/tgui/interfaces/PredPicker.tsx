@@ -334,7 +334,9 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
               <Dropdown
                 options={invisibility_sounds}
                 selected={invisibility_sound}
-                onSelected={(val) => act('invisibility_sound', { selected: val })}
+                onSelected={(val) =>
+                  act('invisibility_sound', { selected: val })
+                }
               />
             </LabeledList.Item>
             {!!can_use_legacy && (

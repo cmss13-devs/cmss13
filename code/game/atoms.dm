@@ -256,7 +256,10 @@ directive is properly returned.
 	if(!examine_strings)
 		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
 		return
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
+
+	if(SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings) & COMPONENT_NO_EXAMINE)
+		return
+
 	to_chat(user, examine_block(examine_strings.Join("\n")))
 
 /atom/proc/get_examine_text(mob/user)

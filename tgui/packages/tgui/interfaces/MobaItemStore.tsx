@@ -11,6 +11,7 @@ type Item = {
   cost: number;
   unique: BooleanLike;
   path: string;
+  components: string[];
 };
 
 type BackendContext = {
@@ -18,6 +19,8 @@ type BackendContext = {
   owned_items: string[];
   gold: number;
   at_item_capacity: BooleanLike;
+  price_overrides: { [type: string]: number };
+  gold_name_short: string;
 };
 
 export const MobaItemStore = (props) => {
@@ -32,7 +35,16 @@ export const MobaItemStore = (props) => {
             <Stack.Item grow mr={1}>
               <Section fill height="100%">
                 {items.map((item) => (
-                  <Tooltip innerhtml={item.description} key={item.path}>
+                  <Tooltip
+                    innerhtml={
+                      item.path in data.price_overrides
+                        ? `Cost: ${data.price_overrides[item.path]} ${data.gold_name_short}` +
+                          item.description
+                        : `Cost: ${item.cost} ${data.gold_name_short}` +
+                          item.description
+                    }
+                    key={item.path}
+                  >
                     <Button
                       width="100%"
                       fontSize="15px"
@@ -56,9 +68,27 @@ export const MobaItemStore = (props) => {
                     <Stack.Item>
                       <Box
                         dangerouslySetInnerHTML={{
-                          __html: chosenItem.description,
+                          __html:
+                            chosenItem.path in data.price_overrides
+                              ? `Cost: ${data.price_overrides[chosenItem.path]} ${data.gold_name_short}` +
+                                chosenItem.description
+                              : `Cost: ${chosenItem.cost} ${data.gold_name_short}` +
+                                chosenItem.description,
                         }}
                       />
+                      {chosenItem.components.length ? (
+                        <Box>
+                          <br />
+                          Components:
+                          <br />
+                          {chosenItem.components.map((text: string) => (
+                            <Box key={text}>- {text}</Box>
+                          ))}
+                        </Box>
+                      ) : (
+                        // eslint-disable-next-line react/jsx-no-useless-fragment
+                        <></>
+                      )}
                     </Stack.Item>
                     {owned_items.indexOf(chosenItem.name) !== -1 &&
                     chosenItem.unique ? (

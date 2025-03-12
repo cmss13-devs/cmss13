@@ -18,6 +18,7 @@ SUBSYSTEM_DEF(moba)
 	var/list/datum/unused_moba_map/unused_maps = list()
 
 	var/list/datum/moba_item/items = list()
+	var/list/datum/moba_item/item_dict = list()
 
 	/// I'd like to avoid any weirdness so I have this
 	var/currently_creating_map = FALSE
@@ -30,6 +31,10 @@ SUBSYSTEM_DEF(moba)
 	for(var/item_path as anything in subtypesof(/datum/moba_item))
 		var/datum/moba_item/item = new item_path
 		items += item
+		item_dict[item_path] = item
+	for(var/datum/moba_item/item as anything in items)
+		item.set_total_gold_cost()
+		item.set_description()
 
 	return SS_INIT_SUCCESS
 

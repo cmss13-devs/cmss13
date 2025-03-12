@@ -9,12 +9,17 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 	if(!length(lazy_ui_data))
 		lazy_ui_data["items"] = list()
 		for(var/datum/moba_item/item as anything in SSmoba.items)
+			var/list/component_list = list()
+			for(var/datum/moba_item/item_path as anything in item.component_items)
+				component_list += item_path::name
+
 			lazy_ui_data["items"] += list(list(
 				"name" = item.name,
 				"description" = item.description,
-				"cost" = item.gold_cost,
+				"cost" = item.total_gold_cost,
 				"unique" = item.unique,
 				"path" = item.type,
+				"components" = component_list,
 			))
 
 /datum/moba_item_store/tgui_interact(mob/user, datum/tgui/ui)
@@ -50,6 +55,15 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 	var/list/data = list()
 
 	data["items"] = lazy_ui_data["items"]
+	data["gold_name_short"] = MOBA_GOLD_NAME_SHORT
+	data["price_overrides"] = list()
+
+	var/list/datum/moba_item/items = list()
+	SEND_SIGNAL(user, COMSIG_MOBA_GET_OWNED_ITEMS, items)
+	for(var/datum/moba_item/item as anything in SSmoba.items)
+		var/recursive_gold = item.get_factored_cost(items)
+		if(recursive_gold != item.total_gold_cost)
+			data["price_overrides"][item.type] = recursive_gold
 
 	return data
 
@@ -72,14 +86,16 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 			if(!length(gold_list) || !gold_list[1])
 				return
 
-			var/datum/moba_item/item = new item_path
-			if(gold_list[1] < item.gold_cost)
-				return
-
 			var/list/datum/moba_item/items = list()
 			SEND_SIGNAL(ui.user, COMSIG_MOBA_GET_OWNED_ITEMS, items)
+			var/datum/moba_item/item = SSmoba.item_dict[item_path]
+			var/factored_cost = item.get_factored_cost(items)
+			var/list/held_components = item.get_recursive_held_components(items.Copy())
 
-			if(length(items) >= MOBA_MAX_ITEM_COUNT)
+			if(gold_list[1] < factored_cost)
+				return
+
+			if((length(items) >= MOBA_MAX_ITEM_COUNT) && !length(held_components))
 				return
 
 			if(item.unique)
@@ -87,6 +103,11 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 					if(item.type == item2.type)
 						return
 
-			SEND_SIGNAL(ui.user, COMSIG_MOBA_GIVE_GOLD, -item.gold_cost)
+			SEND_SIGNAL(ui.user, COMSIG_MOBA_GIVE_GOLD, -factored_cost)
+
+			for(var/datum/moba_item/item2 as anything in held_components)
+				SEND_SIGNAL(ui.user, COMSIG_MOBA_REMOVE_ITEM, item2)
+
 			SEND_SIGNAL(ui.user, COMSIG_MOBA_ADD_ITEM, item)
+			ui.update_static_data(ui.user, ui)
 			return TRUE

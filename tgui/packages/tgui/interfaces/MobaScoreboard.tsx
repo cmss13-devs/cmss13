@@ -20,6 +20,7 @@ type Player = {
   deaths: number;
   level: number;
   items: Item[];
+  lane: string;
 };
 
 type BackendContext = {
@@ -136,7 +137,7 @@ const PlayerEntry = (props) => {
 const ItemEntry = (props) => {
   const item: Item = props.item;
   return (
-    <Tooltip innerhtml={`<h2>${item.name}</h2><br>${item.desc}`}>
+    <Tooltip innerhtml={`<h2>${item.name}</h2>${item.desc}`}>
       <span className={classes(['mobaitems45x45', `${item.icon_state}`])} />
     </Tooltip>
   );
@@ -144,7 +145,7 @@ const ItemEntry = (props) => {
 
 export const MobaScoreboard = () => {
   return (
-    <Window width={810} height={600} title={'Scoreboard'}>
+    <Window width={810} height={600} title={'Scoreboard'} theme={'xeno'}>
       <Window.Content>
         <MainTab />
       </Window.Content>

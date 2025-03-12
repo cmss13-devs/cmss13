@@ -17,3 +17,13 @@
 	plasma_regen = 50
 	armor = 20
 	attack_speed = -6
+
+/datum/moba_item/baz
+	name = "Baz"
+	icon_state = "green"
+	gold_cost = 250
+	component_items = list(
+		/datum/moba_item/bar,
+	)
+
+	plasma = 666

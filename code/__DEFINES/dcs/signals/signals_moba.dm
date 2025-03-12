@@ -16,6 +16,9 @@
 /// (datum/moba_item/item)
 #define COMSIG_MOBA_ADD_ITEM "moba_add_item"
 
+/// (datum/moba_item/item)
+#define COMSIG_MOBA_REMOVE_ITEM "moba_remove_item"
+
 /// (level)
 #define COMSIG_MOBA_LEVEL_UP "moba_level_up"
 

@@ -34,7 +34,7 @@
 		for(var/datum/moba_item/item_path as anything in player_data.player.held_item_types)
 			item_list += list(list(
 				"name" = item_path::name,
-				"desc" = GLOB.moba_item_desc_dict[item_path],
+				"desc" = SSmoba.item_dict[item_path].description,
 				"icon_state" = item_path::icon_state
 			))
 		data["team1_players"] += list(list(
@@ -45,6 +45,7 @@
 			"deaths" = player_data.player.deaths,
 			"level" = player_data.player.level,
 			"items" = item_list,
+			"lane" = player_data.role,
 		))
 		data["team1_total_kills"] += player_data.player.kills
 
@@ -53,7 +54,7 @@
 		for(var/datum/moba_item/item_path as anything in player_data.player.held_item_types)
 			item_list += list(list(
 				"name" = item_path::name,
-				"desc" = GLOB.moba_item_desc_dict[item_path],
+				"desc" = SSmoba.item_dict[item_path].description,
 				"icon_state" = item_path::icon_state
 			))
 		data["team2_players"] += list(list(
@@ -64,6 +65,7 @@
 			"deaths" = player_data.player.deaths,
 			"level" = player_data.player.level,
 			"items" = item_list,
+			"lane" = player_data.role,
 		))
 		data["team2_total_kills"] += player_data.player.kills
 

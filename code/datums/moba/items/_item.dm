@@ -1,8 +1,12 @@
-GLOBAL_LIST_EMPTY(moba_item_desc_dict)
-
+// SINGLETONS. THERE IS NOT SOMETHING CURRENTLY IMPLEMENTED TO HOLD UNIQUE DATA PER-ITEM
 /datum/moba_item
 	var/name = ""
+	// Does not include cost of any components
 	var/gold_cost = 0
+	// Set at runtime
+	var/total_gold_cost = 0
+	/// What item types are used to make this item
+	var/list/component_items = list()
 	var/description = ""
 	var/icon_state = ""
 	/// If TRUE, a player can only hold one of this item at a time.
@@ -24,39 +28,68 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 	/// Used purely for the scaling of certain abilities
 	var/acid_power = 0
 
-	var/amount_armor_applied = 0
-	var/amount_acid_armor_applied = 0
+/datum/moba_item/proc/set_total_gold_cost()
+	total_gold_cost = get_recursive_gold_cost()
 
-/datum/moba_item/New()
-	. = ..()
-	if(!GLOB.moba_item_desc_dict[type])
-		description = "Cost: [gold_cost] [MOBA_GOLD_NAME_SHORT]"
-		if(health)
-			description += "<br>Health: +[health]"
-		if(health_regen)
-			description += "<br>Health Regen: +[health_regen]"
-		if(plasma)
-			description += "<br>Plasma: +[plasma]"
-		if(plasma_regen)
-			description += "<br>Plasma Regen: +[plasma_regen]"
-		if(armor)
-			description += "<br>Armor: +[armor]"
-		if(acid_armor)
-			description += "<br>Acid Armor: +[acid_armor]"
-		if(speed)
-			description += "<br>Movement Delay: [speed]"
-		if(attack_speed)
-			description += "<br>Attack Speed Modifier: [attack_speed]"
-		if(acid_power)
-			description += "<br>Acid Power: +[acid_power]"
-		if(attack_damage)
-			description += "<br>Damage: +[attack_damage]"
-		if(ability_cooldown_reduction)
-			description += "<br>Cooldown Reduction: x[ability_cooldown_reduction * 100]%"
-		GLOB.moba_item_desc_dict[type] = description
-	else
-		description = GLOB.moba_item_desc_dict[type]
+/datum/moba_item/proc/get_recursive_gold_cost()
+	var/return_gold = gold_cost
+	for(var/type in component_items)
+		var/datum/moba_item/item = SSmoba.item_dict[type]
+		return_gold += item.get_recursive_gold_cost()
+	return return_gold
 
+/datum/moba_item/proc/get_factored_cost(list/datum/moba_item/item_list)
+	return get_recursive_factored_cost(item_list.Copy())
+
+/datum/moba_item/proc/get_recursive_factored_cost(list/datum/moba_item/item_list)
+	var/cost = gold_cost
+
+	for(var/item_path in component_items)
+		var/datum/moba_item/located_item = locate(item_path) in item_list
+		if(located_item)
+			item_list -= located_item
+			continue
+		cost += SSmoba.item_dict[item_path].get_recursive_factored_cost(item_list)
+
+	return cost
+
+/datum/moba_item/proc/get_recursive_held_components(list/datum/moba_item/item_list)
+	var/list/return_list = list()
+
+	for(var/item_path in component_items)
+		var/datum/moba_item/located_item = locate(item_path) in item_list
+		if(located_item)
+			return_list += located_item
+			item_list -= located_item
+			continue
+		return_list += SSmoba.item_dict[item_path].get_recursive_held_components(item_list)
+
+	return return_list
+
+/datum/moba_item/proc/set_description()
+	//description = "Cost: [total_gold_cost] [MOBA_GOLD_NAME_SHORT]"
+	if(health)
+		description += "<br>Health: +[health]"
+	if(health_regen)
+		description += "<br>Health Regen: +[health_regen]"
+	if(plasma)
+		description += "<br>Plasma: +[plasma]"
+	if(plasma_regen)
+		description += "<br>Plasma Regen: +[plasma_regen]"
+	if(armor)
+		description += "<br>Armor: +[armor]"
+	if(acid_armor)
+		description += "<br>Acid Armor: +[acid_armor]"
+	if(speed)
+		description += "<br>Movement Delay: [speed]"
+	if(attack_speed)
+		description += "<br>Attack Speed Modifier: [attack_speed]"
+	if(acid_power)
+		description += "<br>Acid Power: +[acid_power]"
+	if(attack_damage)
+		description += "<br>Damage: +[attack_damage]"
+	if(ability_cooldown_reduction)
+		description += "<br>Cooldown Reduction: x[ability_cooldown_reduction * 100]%"
 
 /datum/moba_item/proc/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -83,8 +116,8 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 	xeno.plasma_max -= plasma
 	component.healing_value_standing -= plasma_regen
 	component.healing_value_resting -= plasma_regen * MOBA_RESTING_HEAL_MULTIPLIER
-	xeno.armor_deflection_buff -= amount_armor_applied
-	xeno.acid_armor_buff -= amount_acid_armor_applied
+	xeno.armor_deflection_buff -= armor
+	xeno.acid_armor_buff -= acid_armor
 	xeno.ability_speed_modifier -= speed
 	xeno.attack_speed_modifier -= attack_speed
 	xeno.melee_damage_lower -= attack_damage
@@ -92,9 +125,6 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 	component.acid_power -= acid_power
 	if(ability_cooldown_reduction)
 		xeno.cooldown_reduction_percentage = xeno.cooldown_reduction_percentage * (1 / ability_cooldown_reduction)
-
-	amount_armor_applied = 0
-	amount_acid_armor_applied = 0
 
 /datum/moba_item/proc/apply_health(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component, restore_plasma_health = FALSE)
 	xeno.maxHealth += health
@@ -116,14 +146,10 @@ GLOBAL_LIST_EMPTY(moba_item_desc_dict)
 	component.healing_value_resting += plasma_regen * MOBA_RESTING_HEAL_MULTIPLIER
 
 /datum/moba_item/proc/apply_armor(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)
-	//amount_armor_applied = armor * (1 - (xeno.armor_deflection_buff / 100))
-	amount_armor_applied = armor
-	xeno.armor_deflection_buff += amount_armor_applied
+	xeno.armor_deflection_buff += armor
 
 /datum/moba_item/proc/apply_acid_armor(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)
-	//amount_acid_armor_applied = acid_armor * (1 - (xeno.acid_armor_buff / 100))
-	amount_acid_armor_applied = acid_armor
-	xeno.acid_armor_buff += amount_acid_armor_applied
+	xeno.acid_armor_buff += acid_armor
 
 /datum/moba_item/proc/apply_speed(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)
 	xeno.ability_speed_modifier += speed // yes this is the right var

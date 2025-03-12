@@ -329,7 +329,7 @@
 "bt" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/south,
@@ -349,7 +349,7 @@
 /obj/effect/moba_minion_checkpoint/left/bot_straight3,
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/south,
@@ -473,7 +473,7 @@
 "cb" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/southeast,
@@ -670,7 +670,7 @@
 "cC" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/northwest,
@@ -678,7 +678,7 @@
 "cD" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/north,
@@ -1493,7 +1493,7 @@
 "eX" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/northeast,
@@ -1644,7 +1644,7 @@
 "fm" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
@@ -2466,7 +2466,7 @@
 "hM" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/southwest,
@@ -2835,7 +2835,7 @@
 "iX" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
@@ -4939,7 +4939,7 @@
 "pv" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/east,
@@ -6035,7 +6035,7 @@
 "sF" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /obj/item/tool/warning_cone{
@@ -7593,7 +7593,7 @@
 	},
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /obj/effect/moba_unslashinator,
@@ -7724,7 +7724,7 @@
 "xC" = (
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/west,
@@ -8879,7 +8879,7 @@
 /obj/effect/moba_minion_checkpoint/left/top_straight3,
 /obj/structure/machinery/colony_floodlight/street{
 	density = 0;
-	layer = 3.5;
+	layer = 4.12;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/north,

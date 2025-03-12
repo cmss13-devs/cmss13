@@ -78,9 +78,9 @@
 	player_caste.apply_caste(parent_xeno, src, player_datum)
 
 	for(var/path in player_datum.held_item_types) // recreate any items that we had before we died
-		var/datum/moba_item/new_item = new path
-		held_items += new_item
-		new_item.apply_stats(parent_xeno, src, player_datum, TRUE)
+		var/datum/moba_item/item = SSmoba.item_dict[path]
+		held_items += item
+		item.apply_stats(parent_xeno, src, player_datum, TRUE)
 
 	START_PROCESSING(SSprocessing, src)
 
@@ -100,6 +100,7 @@
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_LEVEL, PROC_REF(get_level))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_AP, PROC_REF(get_ap))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_ADD_ITEM, PROC_REF(add_item))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_REMOVE_ITEM, PROC_REF(remove_item))
 	RegisterSignal(parent_xeno, COMSIG_XENO_USED_TUNNEL, PROC_REF(on_tunnel))
 	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
 	RegisterSignal(parent_xeno, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
@@ -227,6 +228,13 @@
 	held_items += new_item
 	new_item.apply_stats(parent_xeno, src, player_datum, TRUE)
 	player_datum.held_item_types += new_item.type
+
+/datum/component/moba_player/proc/remove_item(datum/source, datum/moba_item/item)
+	SIGNAL_HANDLER
+
+	held_items -= item
+	item.unapply_stats(parent_xeno, src, player_datum)
+	player_datum.held_item_types -= item.type
 
 /datum/component/moba_player/proc/on_tunnel(datum/source, obj/structure/tunnel/used_tunnel)
 	SIGNAL_HANDLER
@@ -369,11 +377,11 @@
 
 	var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
 	if(!right_side)
-		for(var/obj/effect/alien/resin/construction/ward/ward as anything in controller.team1_wards)
-			parent_xeno.client.images += ward.appearance
+		for(var/image/ward as anything in controller.team1_ward_images)
+			parent_xeno.client.images += ward
 	else
-		for(var/obj/effect/alien/resin/construction/ward/ward as anything in controller.team2_wards)
-			parent_xeno.client.images += ward.appearance
+		for(var/image/ward as anything in controller.team2_ward_images)
+			parent_xeno.client.images += ward
 
 #ifdef MOBA_TESTING
 /mob/living/carbon/xenomorph/proc/gxp()

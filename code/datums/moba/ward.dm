@@ -80,9 +80,12 @@
 	var/map_id
 	var/decay_time = 2 MINUTES
 	var/creation_time
+	COOLDOWN_DECLARE(warning_declare_cd)
+	var/warning_cooldown_time = 20 SECONDS
 
 /obj/effect/alien/resin/construction/ward/Initialize(mapload, hive_ref, map_id, team2)
 	. = ..()
+	name = "resin ward ([rand(0, 9)][rand(0, 9)][rand(0, 9)])"
 	var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
 	src.team2 = team2
 	src.map_id = map_id
@@ -95,6 +98,10 @@
 	addtimer(VARSET_CALLBACK(src, invisibility, INVISIBILITY_LEVEL_TWO), 2 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(decay)), decay_time + (2 SECONDS))
 	creation_time = world.time
+	for(var/turf/open/tile in range(7, src))
+		RegisterSignal(tile, COMSIG_TURF_ENTERED, PROC_REF(on_turf_enter))
+
+	RegisterSignal(get_turf(src), COMSIG_PARENT_EXAMINE, PROC_REF(on_mainturf_examine))
 
 /obj/effect/alien/resin/construction/ward/Destroy()
 	var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
@@ -120,7 +127,38 @@
 
 	if(can_see)
 		. += SPAN_XENONOTICE("[src] will decay in [((creation_time + decay_time) - world.time) * 0.1] seconds.")
+		if(!COOLDOWN_FINISHED(src, warning_declare_cd))
+			. += SPAN_XENONOTICE("[src] will be ready to alert us again in [COOLDOWN_TIMELEFT(src, warning_declare_cd) * 0.1] seconds.")
 
 /obj/effect/alien/resin/construction/ward/proc/decay()
 	visible_message(SPAN_XENOWARNING("[src] wilts away into small chunks of resin."))
 	qdel(src)
+
+/// Even though we can see the object thanks to client images, we can't examine it. This is a workaround.
+/obj/effect/alien/resin/construction/ward/proc/on_mainturf_examine(datum/source, mob/observer, list/strings)
+	SIGNAL_HANDLER
+
+	if(isobserver(observer))
+		return
+
+	examine(observer)
+	return COMPONENT_NO_EXAMINE
+
+/obj/effect/alien/resin/construction/ward/proc/on_turf_enter(datum/source, atom/movable/mover)
+	SIGNAL_HANDLER
+
+	if(!COOLDOWN_FINISHED(src, warning_declare_cd))
+		return
+
+	if(isxeno(mover) && !HAS_TRAIT(mover, TRAIT_MOBA_MINION))
+		var/mob/living/carbon/xenomorph/xeno = mover
+		if(!team2 && (xeno.hivenumber != XENO_HIVE_MOBA_LEFT))
+			announce_warning(xeno, XENO_HIVE_MOBA_LEFT)
+		else if(team2 && (xeno.hivenumber != XENO_HIVE_MOBA_RIGHT))
+			announce_warning(xeno, XENO_HIVE_MOBA_RIGHT)
+
+/obj/effect/alien/resin/construction/ward/proc/announce_warning(mob/living/carbon/xenomorph/xeno, hivenumber)
+	COOLDOWN_START(src, warning_declare_cd, warning_cooldown_time)
+	for(var/mob/living/carbon/xenomorph/listener as anything in GLOB.living_xeno_list)
+		if((listener.hivenumber == hivenumber) && HAS_TRAIT(listener, TRAIT_MOBA_MAP_PARTICIPANT(map_id)))
+			to_chat(listener, SPAN_XENOMINORWARNING("We sense that [xeno] has walked near our [src]!"))

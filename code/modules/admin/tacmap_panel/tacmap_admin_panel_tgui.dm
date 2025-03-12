@@ -72,24 +72,33 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		data["uscm_map"] = null
 		data["uscm_svg"] = null
 	else
-		var/datum/flattened_tacmap/selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
+		var/datum/maps_to_update/maps = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
+		data["zlevelMax"] = length(maps.maps)
+		data["uscm_map"] = list()
+		for(var/datum/flattened_tacmap/selected_flat in maps.maps)
+			data["uscm_map"] += selected_flat.flat_tacmap
+
 		var/datum/svg_overlay/selected_svg = GLOB.uscm_svg_tacmap_data[uscm_selection + 1]
-		data["uscm_map"] = selected_flat.flat_tacmap
 		data["uscm_svg"] = selected_svg.svg_data
 
 	if(xeno_selection == LATEST_SELECTION)
 		data["xeno_map"] = null
 		data["xeno_svg"] = null
 	else
-		var/datum/flattened_tacmap/selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+		var/datum/maps_to_update/maps = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+		data["zlevelMax"] = length(maps.maps)
+		data["xeno_map"] = list()
+		for(var/datum/flattened_tacmap/selected_flat in maps.maps)
+			data["xeno_map"] += selected_flat.flat_tacmap
+
 		var/datum/svg_overlay/selected_svg = GLOB.xeno_svg_tacmap_data[xeno_selection + 1]
-		data["xeno_map"] = selected_flat.flat_tacmap
 		data["xeno_svg"] = selected_svg.svg_data
 
 	data["uscm_selection"] = uscm_selection
 	data["xeno_selection"] = xeno_selection
 	data["map_fallback"] = wiki_map_fallback
 	data["last_update_time"] = last_update_time
+
 
 	return data
 
@@ -106,16 +115,17 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	switch(action)
 		if("recache")
 			var/is_uscm = params["uscm"]
-			var/datum/flattened_tacmap/selected_flat
+			var/datum/maps_to_update/maps
 			if(is_uscm)
 				if(uscm_selection == LATEST_SELECTION)
 					return TRUE
-				selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
+				maps = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
 			else
 				if(xeno_selection == LATEST_SELECTION)
 					return TRUE
-				selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
-			SSassets.transport.send_assets(client_user, selected_flat.asset_key)
+				maps = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+			for(var/datum/flattened_tacmap/selected_flat in maps.maps)
+				SSassets.transport.send_assets(client_user, selected_flat.asset_key)
 			last_update_time = world.time
 			return TRUE
 
@@ -127,6 +137,9 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 				xeno_selection = params["index"]
 			last_update_time = world.time
 			return TRUE
+
+		if("change_zlevel")
+			last_update_time = world.time //forcing to update
 
 		if("delete")
 			var/is_uscm = params["uscm"]

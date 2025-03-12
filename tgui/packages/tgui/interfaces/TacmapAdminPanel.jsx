@@ -37,8 +37,10 @@ export const TacmapAdminPanel = (props) => {
     xeno_selection,
     map_fallback,
     last_update_time,
+    zlevelMax,
   } = data;
 
+  const [zlevel, setZlevel] = useState(0);
   const [pageIndex, setPageIndex] = useState(0);
 
   const PageComponent = PAGES[pageIndex].component();
@@ -81,6 +83,9 @@ export const TacmapAdminPanel = (props) => {
               times={pageIndex === 0 ? uscm_times : xeno_times}
               selected_map={pageIndex === 0 ? uscm_selection : xeno_selection}
               is_uscm={pageIndex === 0}
+              zlevel={zlevel}
+              zlevelMax={zlevelMax}
+              setZlevel={setZlevel}
             />
           </Stack.Item>
           <Stack.Item mx={0} grow={0}>
@@ -88,8 +93,17 @@ export const TacmapAdminPanel = (props) => {
               <DrawnMap
                 key={last_update_time + pageIndex}
                 svgData={pageIndex === 0 ? uscm_svg : xeno_svg}
-                flatImage={pageIndex === 0 ? uscm_map : xeno_map}
+                flatImage={
+                  pageIndex === 0
+                    ? uscm_map
+                      ? uscm_map[zlevel]
+                      : map_fallback
+                    : xeno_map
+                      ? xeno_map[zlevel]
+                      : map_fallback
+                }
                 backupImage={map_fallback}
+                zlevel={zlevel}
               />
             </div>
           </Stack.Item>
@@ -101,7 +115,17 @@ export const TacmapAdminPanel = (props) => {
 
 const FactionPage = (props) => {
   const { act } = useBackend();
-  const { svg, ckeys, names, times, selected_map, is_uscm } = props;
+  const {
+    svg,
+    ckeys,
+    names,
+    times,
+    selected_map,
+    is_uscm,
+    zlevel,
+    zlevelMax,
+    setZlevel,
+  } = props;
 
   return (
     <Section
@@ -134,12 +158,13 @@ const FactionPage = (props) => {
               verticalAlignContent="bottom"
               checked={selected_map === ckey_index}
               disabled={selected_map === ckey_index}
-              onClick={() =>
+              onClick={() => {
                 act('change_selection', {
                   uscm: is_uscm,
                   index: ckey_index,
-                })
-              }
+                });
+                setZlevel(0);
+              }}
             >
               View
             </Button.Checkbox>
@@ -148,6 +173,33 @@ const FactionPage = (props) => {
             {names[ckey_index]} ({ckey}) - {times[ckey_index]}
           </Flex.Item>
           <Flex.Item grow={0} basis="content" mr={0.5} mt={0.8}>
+            {selected_map === ckey_index && zlevelMax > 1 && (
+              <>
+                {' '}
+                <Button
+                  disabled={zlevelMax === 1}
+                  onClick={() => {
+                    if (zlevel + 1 < zlevelMax) {
+                      setZlevel(zlevel + 1);
+                      act('change_zlevel');
+                    }
+                  }}
+                >
+                  Move up
+                </Button>
+                <Button
+                  disabled={zlevelMax === 1}
+                  onClick={() => {
+                    if (zlevel > 0) {
+                      setZlevel(zlevel - 1);
+                      act('change_zlevel');
+                    }
+                  }}
+                >
+                  Move down
+                </Button>
+              </>
+            )}
             <Button.Confirm
               icon="trash"
               color="white"

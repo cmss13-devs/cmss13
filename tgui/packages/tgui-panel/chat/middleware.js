@@ -65,7 +65,7 @@ const loadChatFromStorage = async (store) => {
   const state = await storage.get('chat-state-cm');
 
   let messages;
-  if (usingCdnStorage) {
+  if (!Byond.TRIDENT) {
     messages = await (await storage.backendPromise).getChatMessages();
   } else {
     messages = await storage.get('chat-messages-cm');

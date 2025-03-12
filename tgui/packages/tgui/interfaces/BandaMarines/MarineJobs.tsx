@@ -114,7 +114,7 @@ const JOBS_RU = {
   'Chief MP': 'Шеф Военной Полиции',
 
   // Engineering roles
-  'Chief Engineer': 'Старший Инженер',
+  'Chief Engineer': 'Главный Инженер',
   'Maintenance Technician': 'Техник Обслуживания',
   'Ordnance Technician': 'Оружейный Техник',
 

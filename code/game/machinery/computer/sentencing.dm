@@ -8,6 +8,7 @@
 	var/datum/crime_incident/incident
 	var/current_menu = "main"
 	var/static/paper_counter = 0
+	unacidable = TRUE
 
 /obj/structure/machinery/computer/sentencing/attack_hand(mob/user as mob)
 	if(..() || !allowed(usr) || inoperable())

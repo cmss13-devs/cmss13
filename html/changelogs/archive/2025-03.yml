@@ -134,3 +134,34 @@
   - rscadd: Subtypes NDA forms for Wey-Yu to differentiate between USCM and other
       parties.
   - maptweak: Re-re-re-re-added the fax responder listening bugs to the USS Almayer.
+2025-03-12:
+  CapCamIII:
+  - rscadd: Some roles have lower minimum ages to represent their ranks better, no
+      gameplay changes.
+  - rscadd: Being below the minimum age for a role now sets you to that minimum age,
+      plus two years.
+  Drathek:
+  - code_imp: Refactored icon_states usage from handle_ooc_prefix to a glob list
+  - bugfix: Fixed extra_titles not stripping spaces for ooc icons
+  - imageadd: Centered byond logo ooc icon
+  - admin: Admin rank is now the last ooc icon
+  - config: ooc.dmi for rank icons is now expected in the config folder
+  JackieEstegado:
+  - balance: Point blank pounces/lunges can no longer miss
+  MeH0y:
+  - balance: Changes Field Doctor Timelock
+  MistChristmas:
+  - bugfix: Fixes some UIs CRT theme being left behind when scrolling.
+  Red-byte3D:
+  - code_imp: Some early returns for admin procs
+  blackdragonTOW:
+  - bugfix: fixed missing sprite for active K9 tracker
+  hry-gh:
+  - code_imp: Chat saving to indexdb is reworked
+  - bugfix: fixes sticky keys (even more)
+  - rscadd: there's now a new tgui scale option in settings for people with high dpi
+      monitors using windows scaling that allows you to toggle between having windows
+      be larger but their contents the correct size, or having windows be the normal
+      size but their contents shrunk down
+  - bugfix: people with a different windows scaling option than 100% on 516 can drag
+      windows normally again

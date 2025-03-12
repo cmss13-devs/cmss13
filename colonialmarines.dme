@@ -1392,6 +1392,7 @@
 #include "code\game\objects\structures\surface.dm"
 #include "code\game\objects\structures\tables_racks.dm"
 #include "code\game\objects\structures\tank_dispenser.dm"
+#include "code\game\objects\structures\tyrargo_props.dm"
 #include "code\game\objects\structures\urinal.dm"
 #include "code\game\objects\structures\vulture_spotter.dm"
 #include "code\game\objects\structures\watercloset.dm"

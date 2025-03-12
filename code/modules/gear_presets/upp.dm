@@ -1,9 +1,11 @@
 /obj/effect/landmark/start/upp
 	name = "UPP start join"
+	icon_state = "base_upp"
 	job_list = UPP_JOB_LIST
 
 /obj/effect/landmark/late_join/upp
 	name = "UPP late join"
+	icon_state = "late_join_upp"
 	job_list = UPP_JOB_LIST
 
 /datum/job/antag/upp // Abstract type (null title)

@@ -103,6 +103,7 @@
 	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/smartgun
 	gun_type = /obj/item/weapon/gun/smartgun
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
 /obj/item/ammo_magazine/smartgun/dirty
 	name = "irradiated smartgun drum"
@@ -112,6 +113,7 @@
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
 	magjam_modifier = 0.25 //youre loading essentially uranium bullets, so it's gonna jam more often
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
 /obj/item/ammo_magazine/smartgun/holo_targetting
 	name = "holotargetting smartgun drum"
@@ -120,6 +122,7 @@
 	default_ammo = /datum/ammo/bullet/smartgun/holo_target
 	gun_type = /obj/item/weapon/gun/smartgun/rmc
 	magjam_modifier = 0.15
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
 //-------------------------------------------------------
 //Flare gun. Close enough?

@@ -663,7 +663,7 @@ const SupplyDrop = (props) => {
               <NumberInput
                 step={1}
                 value={supplyX}
-                minValue={0}
+                minValue={-Infinity}
                 maxValue={Infinity}
                 onChange={(value) => setSupplyX(value)}
                 width="75px"
@@ -673,7 +673,7 @@ const SupplyDrop = (props) => {
               <NumberInput
                 step={1}
                 value={supplyY}
-                minValue={0}
+                minValue={-Infinity}
                 maxValue={Infinity}
                 onChange={(value) => setSupplyY(value)}
                 width="75px"
@@ -683,7 +683,7 @@ const SupplyDrop = (props) => {
               <NumberInput
                 step={1}
                 value={supplyZ}
-                minValue={0}
+                minValue={-Infinity}
                 maxValue={Infinity}
                 onChange={(value) => setSupplyZ(value)}
                 width="75px"
@@ -756,7 +756,7 @@ const OrbitalBombardment = (props) => {
               <NumberInput
                 step={1}
                 value={OBX}
-                minValue={0}
+                minValue={-Infinity}
                 maxValue={Infinity}
                 onChange={(value) => setOBX(value)}
                 width="75px"
@@ -766,7 +766,7 @@ const OrbitalBombardment = (props) => {
               <NumberInput
                 step={1}
                 value={OBY}
-                minValue={0}
+                minValue={-Infinity}
                 maxValue={Infinity}
                 onChange={(value) => setOBY(value)}
                 width="75px"
@@ -776,7 +776,7 @@ const OrbitalBombardment = (props) => {
               <NumberInput
                 step={1}
                 value={OBZ}
-                minValue={0}
+                minValue={-Infinity}
                 maxValue={Infinity}
                 onChange={(value) => setOBZ(value)}
                 width="75px"

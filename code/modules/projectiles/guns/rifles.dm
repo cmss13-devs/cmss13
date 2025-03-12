@@ -2299,7 +2299,7 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 
 /obj/item/weapon/gun/rifle/l42a3/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 13, "rail_y" = 21, "under_x" = 20, "under_y" = 15, "stock_x" = 22, "stock_y" = 9)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19, "rail_x" = 13, "rail_y" = 22, "under_x" = 20, "under_y" = 16, "stock_x" = 22, "stock_y" = 10)
 
 /obj/item/weapon/gun/rifle/l42a3/set_gun_config_values()
 	..()

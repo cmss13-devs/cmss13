@@ -88,7 +88,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Medic"
 	role_comm_title = "WO-TM"
-	minimap_icon = "wo_med"
+	minimap_background = "background_mp"
 	assignment = JOB_DS_MED
 	rank = JOB_DS_MED
 
@@ -142,7 +142,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Terminator"
 	role_comm_title = "WO-TT"
-	minimap_icon = "wo_sg"
+	minimap_background = "background_ua"
 	assignment = JOB_DS_SG
 	rank = JOB_DS_SG
 
@@ -187,7 +187,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Leader"
 	role_comm_title = "WO-TL"
-	minimap_icon = "wo_sl"
+	minimap_background = "background_command"
 	assignment = JOB_DS_SL
 	rank = JOB_DS_SL
 
@@ -239,6 +239,7 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat
 	name = "Whiteout Team Operative"
+	minimap_background = "background_pmc"
 	assignment = JOB_DS_OP
 	rank = JOB_DS_OP
 
@@ -293,7 +294,7 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic
 	name = "Whiteout Team Medic"
-	minimap_icon = "wo_med"
+	minimap_background = "background_mp"
 	assignment = JOB_DS_MED
 	rank = JOB_DS_MED
 
@@ -343,7 +344,7 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/terminator
 	name = "Whiteout Team Terminator"
-	minimap_icon = "wo_sg"
+	minimap_background = "background_ua"
 	assignment = JOB_DS_SG
 	rank = JOB_DS_SG
 
@@ -385,7 +386,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader
 	name = "Whiteout Team Leader"
-	minimap_icon = "wo_sl"
+	minimap_background = "background_command"
 	assignment = JOB_DS_SL
 	rank = JOB_DS_SL
 

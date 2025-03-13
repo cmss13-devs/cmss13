@@ -4,7 +4,7 @@
 	layer = ABOVE_MOB_LAYER //so it sits above objects including mobs
 	density = TRUE
 	anchored = TRUE
-	animate_movement = 1
+	// animate_movement = 1 // SS220 Remove
 	can_buckle = TRUE
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 

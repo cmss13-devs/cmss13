@@ -269,7 +269,7 @@ CULT
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	if(!(copytext(message, -1) in ENDING_PUNCT))
+	if(!(copytext_char(message, -1) in ENDING_PUNCT)) // SS220 Edit - RU fix
 		message += "."
 
 	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
@@ -493,7 +493,7 @@ CULT
 	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
 		return
 
-	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
+	shipwide_ai_announcement("ОПАСНОСТЬ: Получено сообщение, на корабле происходит мятеж. Код: Задержать, Арестовать, Защитить.")
 	var/datum/equipment_preset/other/mutineer/XC = new()
 
 	XC.load_status(H)

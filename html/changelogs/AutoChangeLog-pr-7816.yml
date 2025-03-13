@@ -1,0 +1,10 @@
+author: "Steelpoint, Drathek, bobama, dimdimich1996"
+delete-after: True
+changes:
+  - rscdel: "Survivors can no longer select the Hostile Survivor job role."
+  - rscadd: "All maps, except for Chance's Claim, have an approximately 10% chance to spawn all survivors as hostile survivors."
+  - rscadd: "All players are automatically opted-in to being a hostile survivor by default."
+  - rscadd: "Players can opt-out of being selected for a hostile survivor spawn, or to only roll for a hostile survivor and not a regular survivor, via your Personal Preferences settings page."
+  - maptweak: "All maps that feature hostile survivors have a spawn area for the CLF, that spawns alongside the hostile survivors."
+  - balance: "The odds of the CLF crashed ship spawn on LV-624 occurring has been increased slightly per this."
+  - bugfix: "Fixed trolly vehicle hard deletes"

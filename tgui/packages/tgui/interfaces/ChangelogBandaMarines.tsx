@@ -44,7 +44,19 @@ const icons = {
   wip: { icon: 'hammer', color: 'orange' },
 };
 
-export class ChangelogBandaMarines extends Component {
+type Data = { dates: string[] };
+
+export class ChangelogBandaMarines extends Component<
+  {},
+  {
+    data:
+      | string
+      | { date: string; authors: { name: string; changes: string[] } };
+    selectedDate: string;
+    selectedIndex: number;
+  }
+> {
+  dateChoices: string[];
   constructor(props) {
     super(props);
     this.state = {
@@ -100,7 +112,7 @@ export class ChangelogBandaMarines extends Component {
   componentDidMount() {
     const {
       data: { dates = [] },
-    } = useBackend();
+    } = useBackend<Data>();
 
     if (dates) {
       dates.forEach((date) =>
@@ -115,7 +127,7 @@ export class ChangelogBandaMarines extends Component {
     const { data, selectedDate, selectedIndex } = this.state;
     const {
       data: { dates },
-    } = useBackend();
+    } = useBackend<Data>();
     const { dateChoices } = this;
 
     const dateDropdown = dateChoices.length > 0 && (
@@ -308,7 +320,7 @@ export class ChangelogBandaMarines extends Component {
                   <h4>{name} changed:</h4>
                   <Box ml={3}>
                     <Table>
-                      {changes.map((change) => {
+                      {(changes as string[]).map((change) => {
                         const changeType = Object.keys(change)[0];
                         return (
                           <Table.Row key={changeType + change[changeType]}>

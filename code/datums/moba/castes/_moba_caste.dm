@@ -1,6 +1,8 @@
 GLOBAL_LIST_EMPTY(moba_castes)
 GLOBAL_LIST_EMPTY(moba_castes_name)
 
+#define MOBA_LEVEL_ABILITY_DESC_HELPER(level, one, two, three) "[level == 1 ? "<b>[##one]</b>" : "[##one]"]/[level == 2 ? "<b>[##two]</b>" : "[##two]"]/[level == 3 ? "<b>[##three]</b>" : "[##three]"]"
+
 /datum/moba_caste
 	/// Path of the /datum/caste_datum that is the equivalent of this caste
 	var/equivalent_caste_path

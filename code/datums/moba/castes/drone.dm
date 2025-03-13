@@ -38,7 +38,7 @@
 
 /datum/action/xeno_action/activable/tail_stab/moba
 	name = "Tail Stab"
-	desc = "Ready your tail over 1.5 / 1 / 0.7 seconds to stab an enemy. This stab reaches two tiles and does 1.2x / 1.4x / 1.6x your attack damage while dazing the target for 0.2 / 0.3 / 0.4 seconds."
+	desc = "Ready your tail over 1.5 / 1 / 0.7 seconds to stab an enemy. This stab reaches two tiles and does 1.2x/1.4x/1.6x your attack damage while dazing the target for 0.2 / 0.3 / 0.4 seconds."
 	action_icon_state = "tail_attack"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 1.5 SECONDS

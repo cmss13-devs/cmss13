@@ -204,27 +204,31 @@
 			if (target.stat == DEAD)
 				continue
 
-			if (!isxeno_human(target) || xeno.can_not_harm(target))
+			if (!isliving(target) || xeno.can_not_harm(target))
 				continue
 
-			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"),
-			SPAN_XENOWARNING("We slash [target] multiple times!"))
-			xeno.flick_attack_overlay(target, "slash")
-			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
-			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, rand_zone())
-			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
-			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-			xeno.gain_health(30)
-			xeno.animation_attack_on(target)
+			handle_attack(target)
 
 	xeno.emote("roar")
 	return ..()
 
+/datum/action/xeno_action/activable/flurry/proc/handle_attack(mob/living/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"),
+	SPAN_XENOWARNING("We slash [target] multiple times!"))
+	xeno.flick_attack_overlay(target, "slash")
+	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+	log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
+	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, rand_zone())
+	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
+	xeno.flick_heal_overlay(1 SECONDS, "#00B800")
+	xeno.gain_health(30)
+	xeno.animation_attack_on(target)
+
 /datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
 
 	var/mob/living/carbon/xenomorph/xeno = owner
-	var/mob/living/carbon/hit_target = targeted_atom
+	var/mob/living/hit_target = targeted_atom
 	var/distance = get_dist(xeno, hit_target)
 
 	if(!action_cooldown_check())
@@ -259,13 +263,13 @@
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
 	// find a target in the target turf
-	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
-		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
-			hit_target = carbonara
+	if(!isliving(targeted_atom) || hit_target.stat == DEAD)
+		for(var/mob/living/being in get_turf(targeted_atom))
+			hit_target = being
 			if(!xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
 				break
 
-	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
+	if(isliving(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD && direct_hit_bonus)
 		if(targeted_atom == hit_target) //reward for a direct hit
 			to_chat(xeno, SPAN_XENOHIGHDANGER("We attack [hit_target], with our tail, piercing their body!"))
 			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
@@ -304,9 +308,7 @@
 	var/new_dir = xeno.dir
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
 
-	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
-	hit_target.Slow(0.5)
-
+	apply_damage_effects(hit_target)
 	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
 
@@ -317,6 +319,11 @@
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == xeno.dir)
 		xeno.setDir(last_dir)
+
+/datum/action/xeno_action/activable/tail_jab/proc/apply_damage_effects(mob/living/hit_target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
+	hit_target.Slow(0.5)
 
 /datum/action/xeno_action/activable/headbite/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

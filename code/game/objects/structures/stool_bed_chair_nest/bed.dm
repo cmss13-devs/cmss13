@@ -74,6 +74,14 @@
 
 	update_icon()
 
+// SS220 ADD Start
+/obj/structure/bed/set_glide_size(target)
+	. = ..()
+
+	if(buckled_bodybag)
+		buckled_bodybag.set_glide_size(target)
+// SS220 ADD End
+
 //Unsafe proc
 /obj/structure/bed/proc/do_buckle_bodybag(obj/structure/closet/bodybag/B, mob/user)
 	B.visible_message(SPAN_NOTICE("[user] buckles [B] to [src]!"))

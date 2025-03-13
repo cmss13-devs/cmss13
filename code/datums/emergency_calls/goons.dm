@@ -6,8 +6,8 @@
 
 /datum/emergency_call/goon/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is a Weyland-Yutani Corporate Security shuttle inbound to your distress beacon. We are coming to help."
-	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME]'s Commanding Officer, and eliminate any hostile threats. Do not damage Wey-Yu property."
+	arrival_message = "[MAIN_SHIP_NAME], это шаттл службы корпоративной безопасности \"Вейланд-Ютани\", мы получили ваш сигнал бедствия. Выдвигаемся на помощь."
+	objectives = "Обеспечьте безопасность корпоративного связного и командующего офицера [MAIN_SHIP_NAME]. Устраните любые враждебные угрозы. Не повреждайте имущество Вей-Ю."
 
 /datum/emergency_call/goon/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -47,13 +47,13 @@
 
 /datum/emergency_call/goon/chem_retrieval/New()
 	..()
-	dispatch_message = "[MAIN_SHIP_NAME], this is USCSS Royce. Our squad is boarding to retrieve all samples of a chemical recently scanned from your research department. You should already have received a significant sum of money for your department's discovery. In return we ask that you cooperate and provide everything related to the chemical to our retrieval team."
-	objectives = "Secure all documents, samples, and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department and return them to Response Team Station."
+	dispatch_message = "[MAIN_SHIP_NAME], это ККС \"Ройс\". Наш отряд направляется к вам, чтобы забрать все образцы химического вещества, недавно отсканированного в вашем исследовательском отделе. Вы уже получили значительную сумму денег за открытие, сделанное вашим отделом. Взамен мы просим вас сотрудничать и предоставить нашей команде всё, что связано с химикатом."
+	objectives = "Заберите из исследовательского отдела [MAIN_SHIP_NAME] все документы, образцы и химикаты, содержащие свойство \"DNA_Disintegrating\", и верните их на станцию группы реагирования."
 
 /datum/emergency_call/goon/chem_retrieval/proc/check_objective_info()
 	if(objective_info)
-		objectives = "Secure all documents, samples and chemicals related to [objective_info] from [MAIN_SHIP_NAME] research department and return them to Response Team Station."
-	objectives += "Assume at least 30 units are located within the department. If they can not make more that should be all. Cooperate with the onboard CL to ensure all who know the complete recipe are kept silenced with a contract of confidentiality. All humans who have ingested the chemical must be brought back dead or alive. Viral scan is required for any humans who is suspected of ingestion. You must not deploy to the colony without explicit permission from PMC Dispatch. The professor may call for PMC back up if things get out of hand."
+		objectives = "Заберите из исследовательского отдела [MAIN_SHIP_NAME] все документы, образцы и химикаты, относящиеся к [objective_info], и верните их на станцию группы реагирования."
+	objectives += "Предполагается, что в отделе находится не менее 30 юнитов. Если они не могут сделать больше, то это должно быть всё. Сотрудничайте с бортовым командным связным, чтобы гарантировать, что все, кто знает полный рецепт, хранят молчание, заключив договор о неразглашении. Все люди, употребившие химикат, должны быть доставлены живыми или мертвыми. Вирусное сканирование требуется для всех людей, подозреваемых в употреблении химиката. Вы не можете отправляться в колонию без прямого разрешения супервайзера ЧВК. Профессор может вызвать подмогу из ЧВК, если ситуация выйдет из-под контроля."
 	checked_objective = TRUE
 
 /datum/emergency_call/goon/chem_retrieval/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -104,8 +104,8 @@
 
 /datum/emergency_call/goon/bodyguard/New()
 	..()
-	dispatch_message = "[MAIN_SHIP_NAME], this is a Weyland-Yutani Corporate Security Protection Detail shuttle inbound to the Liaison's Beacon."
-	objectives = "Protect the Corporate Liaison and follow his commands, unless it goes against Company policy. Do not damage Wey-Yu property."
+	dispatch_message = "[MAIN_SHIP_NAME], это шаттл службы корпоративной безопасности \"Вейланд-Ютани\". Направляемся к маяку связного."
+	objectives = "Защищайте корпоративного связного и выполняйте его приказы, если это не противоречит политике компании. Не наносите ущерба имуществу Вей-Ю."
 
 /datum/emergency_call/goon/bodyguard/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

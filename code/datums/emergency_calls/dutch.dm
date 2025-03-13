@@ -9,8 +9,8 @@
 	max_heavies = 1
 	max_medics = 1
 
-	arrival_message = "'We're here to kick ass and kill Yautja. Mainly kill Yautja."
-	objectives = "Hunt down and kill all Yautja without mercy. Retrieve the gear and leave."
+	arrival_message = "'Мы здесь, чтобы надрать задницы и убить Яутжа. В основном, чтобы убить Яутжа."
+	objectives = "Выследите и убейте всех Яутжа без всякой жалости. Заберите снаряжение и уходите."
 	probability = 0
 
 /datum/emergency_call/dutch/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -44,6 +44,6 @@
 	mob_min = 8
 	max_heavies = 2
 	max_medics = 2
-	arrival_message = "'We're here to kick ass and kill Yautja. Mainly kill Yautja."
-	objectives = "Hunt down and kill all Yautja without mercy. Retrieve the gear and leave."
+	arrival_message = "'Мы здесь, чтобы надрать задницы и убить Яутжа. В основном, чтобы убить Яутжа."
+	objectives = "Выследите и убейте всех Яутжа без всякой жалости. Заберите снаряжение и уходите."
 	probability = 0

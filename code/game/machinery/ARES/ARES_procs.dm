@@ -294,7 +294,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	ares_apollo_talk("APOLLO sub-system shutting down. STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED")
 
 	//GENERAL CREW
-	shipwide_ai_announcement("A Problem has been detected and the [MAIN_AI_SYSTEM] system has been shutdown. \nTechnical Information: \n\n*** STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED\n\nPossible caused by: Rapid Unscheduled Disassembly\nContact an AI Service Technician for further assistance.", title = ":(", ares_logging = null)
+	shipwide_ai_announcement("Была обнаружена неисправность, и система [MAIN_AI_SYSTEM] была остановлена. \nТехническая информация: \n\n*** STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED\n\nВозможная причина: Быстрая незапланированная разборка\nСвяжитесь с техническим специалистом ИИ для получения дальнейшей помощи.", title = ":(", ares_logging = null)
 
 /obj/structure/machinery/computer/working_joe/get_ares_access(obj/item/card/id/card)
 	if(ACCESS_ARES_DEBUG in card.access)

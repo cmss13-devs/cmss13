@@ -17,8 +17,8 @@
 
 /datum/emergency_call/cmb/New()
 	..()
-	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. We are receiving your distress signal and are dispatching a nearby team to board with you now. Standby."
-	objectives = "Investigate the distress signal aboard the [MAIN_SHIP_NAME], and assist the crew with rescue if possible. If necessary, a contingent of our Colonial Marines may be ready to act as a QRF to reinforce you."
+	arrival_message = "Входящая радиопередача: [MAIN_SHIP_NAME], это станция \"Анкорпойнт\" из Колониального бюро маршалов. Мы получили ваш сигнал бедствия и сейчас отправляем ближайшую команду на ваш борт. Держитесь."
+	objectives = "Расследуйте сигнал бедствия на борту [MAIN_SHIP_NAME] и, если возможно, помогите экипажу спастись. Если потребуется, контингент наших морепхов может быть готов выступить в качестве ОБР для вашего усиления."
 
 	will_spawn_icc_liaison = prob(50)
 	will_spawn_cmb_observer = prob(20)
@@ -111,8 +111,8 @@
 
 /datum/emergency_call/cmb/alt/New()
 	..()
-	arrival_message = "CMB Team, this is Anchorpoint Station. We have confirmed you are in distress. Routing nearby units to assist!"
-	objectives = "Patrol Unit 5807, we have nearby Marshals in Distress! Locate and assist them immediately."
+	arrival_message = "Команда КМБ, это станция \"Анкорпойнт\". Мы обнаружили, что вы находитесь в бедственном положении. Направляем ближайшие подразделения на помощь!"
+	objectives = "Патрульный юнит 5807, у нас поблизости находятся маршалы, оказавшиеся в опасности! Немедленно найдите их и окажите помощь."
 
 // Anchorpoint Station Colonial Marines, use this primarily for reinforcing or evacuating the CMB, as the CMB themselves are not equipped to handle heavy engagements.
 /datum/emergency_call/cmb/anchorpoint
@@ -126,8 +126,8 @@
 
 /datum/emergency_call/cmb/anchorpoint/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is Anchorpoint Station. Be advised, a QRF Team of our Colonial Marines is currently attempting to board you. Open your ports, transmitting docking codes now. Standby."
-	objectives = "QRF Team. You are here to reinforce the CMB team we deployed earlier. Make contact and work with the CMB Marshal and their deputies. Facilitate their protection and evacuation if necessary. Secondary Objective: Investigate the reason for distress aboard the [MAIN_SHIP_NAME], and assist the crew if possible."
+	arrival_message = "[MAIN_SHIP_NAME], это станция \"Анкорпойнт\". Сообщаем, что на ваш борт пытается высадиться группа наших морпехов. Освободите порты, передаю коды стыковки. Ожидайте."
+	objectives = "Отряд быстрого реагирования, вы здесь, чтобы усилить команду КМБ, которую мы направили ранее. Установите контакт и взаимодействуйте с маршалом КМБ и его заместителями. При необходимости обеспечьте их защиту и эвакуацию. Вторичная цель: Расследовать причину бедствия на борту [MAIN_SHIP_NAME] и по возможности оказать помощь экипажу."
 
 /datum/emergency_call/cmb/anchorpoint/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -223,7 +223,7 @@
 
 /datum/emergency_call/cmb/riot_control/New()
 	..()
-	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. We are receiving your distress signal and are dispatching a nearby riot control team to board with you now. Standby."
+	arrival_message = "Входящая радиопередача: [MAIN_SHIP_NAME], это станция \"Анкорпойнт\". Колониальное бюро маршалов. Мы получили ваш сигнал бедствия и направляем к вам ближайшую группу подавления беспорядков. Ожидайте."
 
 /datum/emergency_call/cmb/riot_control/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -298,5 +298,5 @@
 
 /datum/emergency_call/cmb/riot_control/alt/New()
 	..()
-	arrival_message = "CMB Team, this is Anchorpoint Station. We have confirmed you are in distress. Routing nearby units to assist!"
-	objectives = "Patrol Unit 5807, we have nearby Marshals in Distress! Locate and assist them immediately."
+	arrival_message = "Команда КМБ, это станция \"Анкорпойнт\". Мы выяснили, что вы находитесь в бедственном положении. Направляем к вам ближайшие подразделения на помощь!"
+	objectives = "Патрульный юнит 5807, у нас поблизости находятся маршалы, оказавшиеся в опасности! Немедленно найдите их и окажите помощь."

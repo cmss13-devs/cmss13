@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "JSX files are now linted against in favor of typescript files (TSX)"

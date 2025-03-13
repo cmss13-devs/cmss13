@@ -5,8 +5,6 @@ import {
   Button,
   Dropdown,
   Flex,
-  Flex,
-  ProgressBar,
   Section,
   Stack,
   Tabs,
@@ -38,13 +36,9 @@ interface TacMapProps {
   canViewCanvas: boolean;
   newCanvasFlatImage: Array<string>;
   oldCanvasFlatImage: Array<string>;
-  newCanvasFlatImage: Array<string>;
-  oldCanvasFlatImage: Array<string>;
   actionQueueChange: number;
   exportedColor: string;
   mapFallback: string;
-  mapRef: Array<string>;
-  changeToMapName: string;
   mapRef: Array<string>;
   changeToMapName: string;
   currentMenu: string;
@@ -54,11 +48,6 @@ interface TacMapProps {
   exportedTacMapImage: HTMLImageElement;
   tacmapReady: boolean;
   canChangeZ: boolean;
-  canChangeMapview: boolean;
-  zlevel: number;
-  maxZlevelOld: number;
-  maxZlevel: number;
-  minZlevel: number;
   canChangeMapview: boolean;
   zlevel: number;
   maxZlevelOld: number;
@@ -129,11 +118,8 @@ export const TacticalMap = (props) => {
 
   const canvasLayerRef = useRef<CanvasLayer>(null);
 
-  const canvasLayerRef = useRef<CanvasLayer>(null);
-
   const handleTacmapOnClick = (i: number, pageTitle: string) => {
     setPageIndex(i);
-    data.zlevel = 0;
     data.zlevel = 0;
     act('menuSelect', {
       selection: pageTitle,
@@ -173,7 +159,6 @@ export const TacticalMap = (props) => {
 
   const getZTabs = () => {
     if (data.mapRef.length === 1) return;
-    if (data.mapRef.length === 1) return;
 
     return (
       <>
@@ -202,121 +187,61 @@ export const TacticalMap = (props) => {
   return (
     <Window
       width={850}
-      width={850}
       height={850}
       theme={data.isxeno ? 'hive_status' : 'crtblue'}
     >
       <Window.Content>
         <Flex height="100%" direction="column">
-          <Flex.Item>
-            <Section
-              fitted
-              width="100%"
-              fontSize="20px"
-              textAlign="center"
-              title="Tactical Map Options"
-            >
-              <Stack justify="center" align="center" fontSize="15px">
-                <Stack.Item>
-                  <Tabs height="37.5px">
-                    {PAGES.map((page, i) => {
-                      if (!page.canAccess(data)) {
-                        return;
-                      }
-                      return (
-                        <Tabs.Tab
-                          key={i}
-                          color={data.isxeno ? 'purple' : 'blue'}
-                          selected={i === pageIndex}
-                          icon={page.icon}
-                          onClick={() =>
-                            page.canOpen(data)
-                              ? handleTacmapOnClick(i, page.title)
-                              : null
-                          }
-                        >
-                          {page.canOpen(data) ? page.title : 'loading'}
-                        </Tabs.Tab>
-                      );
-                    })}
-                    {getZTabs()}
-                    {data.canChangeMapview ? (
+          <Section
+            fitted
+            width="100%"
+            fontSize="20px"
+            textAlign="center"
+            title="Tactical Map Options"
+          >
+            <Stack justify="center" align="center" fontSize="15px">
+              <Stack.Item>
+                <Tabs height="37.5px">
+                  {PAGES.map((page, i) => {
+                    if (!page.canAccess(data)) {
+                      return;
+                    }
+                    return (
                       <Tabs.Tab
-                        onClick={() => {
-                          act('ChangeMapView', {});
-                          setPageIndex(0);
-                          data.zlevel = 0;
-                          data.tempSVGData = [];
-                        }}
+                        key={i}
+                        color={data.isxeno ? 'purple' : 'blue'}
+                        selected={i === pageIndex}
+                        icon={page.icon}
+                        onClick={() =>
+                          page.canOpen(data)
+                            ? handleTacmapOnClick(i, page.title)
+                            : null
+                        }
                       >
-                        Change to {data.changeToMapName}
+                        {page.canOpen(data) ? page.title : 'loading'}
                       </Tabs.Tab>
-                    ) : (
-                      ''
-                    )}
-                  </Tabs>
-                </Stack.Item>
-              </Stack>
-            </Section>
-          </Flex.Item>
-          <Flex.Item height="5px" />
-          <Flex.Item grow={1}>
-            <PageComponent canvasLayerRef={canvasLayerRef} />
-          </Flex.Item>
-        </Flex>
-        <Flex height="100%" direction="column">
-          <Flex.Item>
-            <Section
-              fitted
-              width="100%"
-              fontSize="20px"
-              textAlign="center"
-              title="Tactical Map Options"
-            >
-              <Stack justify="center" align="center" fontSize="15px">
-                <Stack.Item>
-                  <Tabs height="37.5px">
-                    {PAGES.map((page, i) => {
-                      if (!page.canAccess(data)) {
-                        return;
-                      }
-                      return (
-                        <Tabs.Tab
-                          key={i}
-                          color={data.isxeno ? 'purple' : 'blue'}
-                          selected={i === pageIndex}
-                          icon={page.icon}
-                          onClick={() =>
-                            page.canOpen(data)
-                              ? handleTacmapOnClick(i, page.title)
-                              : null
-                          }
-                        >
-                          {page.canOpen(data) ? page.title : 'loading'}
-                        </Tabs.Tab>
-                      );
-                    })}
-                    {getZTabs()}
-                    {data.canChangeMapview ? (
-                      <Tabs.Tab
-                        onClick={() => {
-                          act('ChangeMapView', {});
-                          setPageIndex(0);
-                          data.zlevel = 0;
-                          data.tempSVGData = [];
-                        }}
-                      >
-                        Change to {data.changeToMapName}
-                      </Tabs.Tab>
-                    ) : (
-                      ''
-                    )}
-                  </Tabs>
-                </Stack.Item>
-              </Stack>
-            </Section>
-          </Flex.Item>
-          <Flex.Item height="5px" />
+                    );
+                  })}
+                  {getZTabs()}
+                  {data.canChangeMapview ? (
+                    <Tabs.Tab
+                      onClick={() => {
+                        act('ChangeMapView', {});
+                        setPageIndex(0);
+                        data.zlevel = 0;
+                        data.tempSVGData = [];
+                      }}
+                    >
+                      Change to {data.changeToMapName}
+                    </Tabs.Tab>
+                  ) : (
+                    ''
+                  )}
+                </Tabs>
+              </Stack.Item>
+            </Stack>
+          </Section>
+          <Flex.Item />
           <Flex.Item grow={1}>
             <PageComponent canvasLayerRef={canvasLayerRef} />
           </Flex.Item>
@@ -331,18 +256,15 @@ const ViewMapPanel = (props) => {
 
   // byond ui can't resist trying to render
   if (!data.canViewTacmap || data.mapRef.length === 0) {
-  if (!data.canViewTacmap || data.mapRef.length === 0) {
-    return <OldMapPanel {...props} />;
+    return <DrawnMap {...props} />;
   }
 
   return (
-    <Section fill fitted height="100%">
     <Section fill fitted height="100%">
       <ByondUi
         height="100%"
         width="100%"
         params={{
-          id: data.mapRef[data.zlevel],
           id: data.mapRef[data.zlevel],
           type: 'map',
           'background-color': 'none',
@@ -356,11 +278,9 @@ const OldMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
   return (
     <Section fill>
-    <Section fill>
       {data.canViewCanvas ? (
         <DrawnMap
           svgData={data.svgData}
-          flatImage={data.oldCanvasFlatImage[data.zlevel]}
           flatImage={data.oldCanvasFlatImage[data.zlevel]}
           backupImage={data.mapFallback}
           key={data.lastUpdateTime}
@@ -377,8 +297,6 @@ const OldMapPanel = (props) => {
 
 const DrawMapPanel = (props) => {
   const { data, act } = useBackend<TacMapProps>();
-
-  const { canvasLayerRef } = props;
 
   const { canvasLayerRef } = props;
 
@@ -406,7 +324,6 @@ const DrawMapPanel = (props) => {
     <>
       <Section
         fitted
-        fitted
         title="Canvas Options"
         textAlign="center"
         width="100%"
@@ -414,14 +331,7 @@ const DrawMapPanel = (props) => {
         style={{
           zIndex: '1',
         }}
-        textAlign="center"
-        width="100%"
-        top="5px"
-        style={{
-          zIndex: '1',
-        }}
       >
-        <Stack justify="center" align="center">
         <Stack justify="center" align="center">
           <Stack.Item grow>
             {(!data.updatedCanvas && (
@@ -444,12 +354,8 @@ const DrawMapPanel = (props) => {
                 icon="bullhorn"
                 className="text-center"
                 onClick={() => {
-                onClick={() => {
                   act('selectAnnouncement', {
                     image: data.exportedTacMapImage,
-                  });
-                  data.tempSVGData = [];
-                }}
                   });
                   data.tempSVGData = [];
                 }}
@@ -465,10 +371,6 @@ const DrawMapPanel = (props) => {
               color="grey"
               icon="trash"
               className="text-center"
-              onClick={() => {
-                act('clearCanvas');
-                data.tempSVGData = [];
-              }}
               onClick={() => {
                 act('clearCanvas');
                 data.tempSVGData = [];
@@ -501,44 +403,12 @@ const DrawMapPanel = (props) => {
             />
           </Stack.Item>
         </Stack>
-        <Stack
-          className={'progress-stack'}
-          position="absolute"
-          width="98%"
-          style={{ zIndex: '1' }}
-          bottom="-40px"
-          left="10px"
-          left="10px"
-        >
-          <Stack.Item grow>
-            {data.canvasCooldown > 0 && (
-              <ProgressBar
-                height="20px"
-                value={timeLeftPct}
-                backgroundColor="rgba(0, 0, 0, 0.5)"
-                ranges={{
-                  good: [-Infinity, 0.33],
-                  average: [0.33, 0.67],
-                  bad: [0.67, Infinity],
-                }}
-              >
-                <Box textAlign="center" fontSize="15px" textColor="white">
-                  {Math.ceil(data.canvasCooldown / 10)} seconds until the canvas
-                  changes can be updated
-                </Box>
-              </ProgressBar>
-            )}
-          </Stack.Item>
-        </Stack>
       </Section>
-      <Section align="center" bottom="60px">
       <Section align="center" bottom="60px">
         <CanvasLayer
           ref={canvasLayerRef}
-          ref={canvasLayerRef}
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}
-          imageSrc={data.newCanvasFlatImage[data.zlevel]}
           imageSrc={data.newCanvasFlatImage[data.zlevel]}
           key={data.lastUpdateTime}
           onImageExport={handleTacMapExport}

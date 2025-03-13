@@ -5,6 +5,7 @@ import {
   Button,
   Dropdown,
   Flex,
+  ProgressBar,
   Section,
   Stack,
   Tabs,
@@ -401,6 +402,34 @@ const DrawMapPanel = (props) => {
               onSelected={(value) => act('selectColor', { color: value })}
               displayText={data.toolbarColorSelection}
             />
+          </Stack.Item>
+        </Stack>
+        <Stack
+          className={'progress-stack'}
+          position="absolute"
+          width="98%"
+          style={{ zIndex: '1' }}
+          bottom="-40px"
+          left="10px"
+        >
+          <Stack.Item grow>
+            {data.canvasCooldown > 0 && (
+              <ProgressBar
+                height="20px"
+                value={timeLeftPct}
+                backgroundColor="rgba(0, 0, 0, 0.5)"
+                ranges={{
+                  good: [-Infinity, 0.33],
+                  average: [0.33, 0.67],
+                  bad: [0.67, Infinity],
+                }}
+              >
+                <Box textAlign="center" fontSize="15px" textColor="white">
+                  {Math.ceil(data.canvasCooldown / 10)} seconds until the canvas
+                  changes can be updated
+                </Box>
+              </ProgressBar>
+            )}
           </Stack.Item>
         </Stack>
       </Section>

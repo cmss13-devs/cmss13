@@ -975,7 +975,7 @@
 		xeno_attack_delay(stabbing_xeno)
 		return ..()
 
-	if(!isxeno_human(targetted_atom))
+	if(!((limb_targetting && isxeno_human(targetted_atom)) || (!limb_targetting && isliving(targetted_atom))))
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
@@ -990,10 +990,13 @@
 	if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_NESTED))
 		return FALSE
 
-	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
-	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
-		to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
-		return FALSE
+	var/obj/limb/limb = null
+
+	if(limb_targetting)
+		target.get_limb(check_zone(stabbing_xeno.zone_selected))
+		if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
+			to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
+			return FALSE
 
 	if(!check_and_use_plasma_owner())
 		return FALSE

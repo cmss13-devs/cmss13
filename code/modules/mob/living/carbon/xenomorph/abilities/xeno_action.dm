@@ -25,6 +25,7 @@
 	var/charge_timer_id = TIMER_ID_NULL
 
 	var/charges = NO_ACTION_CHARGES
+	var/no_timer_color = rgb(200, 65, 115, 200)
 
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
@@ -88,7 +89,7 @@
 		button.color = rgb(128,0,0,128)
 	else if(!action_cooldown_check())
 		if(cooldown_timer_id == TIMER_ID_NULL) // if this is null, we're here because we haven't charged up yet
-			button.color = rgb(200, 65, 115, 200)
+			button.color = no_timer_color
 		else
 			button.color = rgb(240,180,0,200)
 	else
@@ -153,6 +154,8 @@
 /datum/action/xeno_action/activable
 
 /datum/action/xeno_action/activable/can_use_action()
+	if(SEND_SIGNAL(src, COMSIG_XENO_ACTION_TRY_CAN_USE, owner) & COMPONENT_BLOCK_ACTION_USE)
+		return FALSE
 	return TRUE
 
 // Called when the action is clicked on.
@@ -160,6 +163,8 @@
 // actually DO the action.
 /datum/action/xeno_action/activable/action_activate()
 	. = ..()
+	if(!.)
+		return
 	if(!owner)
 		return
 	if(hidden)
@@ -210,6 +215,8 @@
 
 /datum/action/xeno_action/onclick/action_activate()
 	. = ..()
+	if(!.)
+		return
 	use_ability_wrapper(null)
 
 // Adds a cooldown to this
@@ -419,6 +426,8 @@
 
 /datum/action/xeno_action/active_toggle/action_activate()
 	. = ..()
+	if(!.)
+		return
 	toggle_toggle()
 
 /datum/action/xeno_action/active_toggle/life_tick()

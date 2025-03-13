@@ -24,3 +24,7 @@
 
 /// (list/ap_holder)
 #define COMSIG_MOBA_GET_AP "moba_get_ap"
+
+#define COMSIG_MOBA_ACTION_ADD_LEVELUP "moba_action_add_levelup"
+
+#define COMSIG_MOBA_ACTION_REMOVE_LEVELUP "moba_action_remove_levelup"

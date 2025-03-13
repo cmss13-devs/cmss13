@@ -60,9 +60,6 @@
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
 /// From /mob/living/carbon/xenomorph/proc/recalculate_speed()
 #define COMSIG_XENO_RECALCULATE_SPEED "xeno_recalculate_speed"
-/// From /datum/action/xeno_action/can_use_action() : (mob/living/carbon/xenomorph/user)
-#define COMSIG_XENO_ACTION_TRY_CAN_USE "xeno_action_try_can_use"
-	#define COMPONENT_BLOCK_ACTION_USE (1<<0)
 
 /// From /mob/living/carbon/xenomorph/queen/proc/mount_ovipositor
 #define COMSIG_QUEEN_MOUNT_OVIPOSITOR "queen_mount_ovipositor"

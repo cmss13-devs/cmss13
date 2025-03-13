@@ -67,6 +67,7 @@
 	else
 		SSmoba.get_moba_controller(map_id).use_team2_ward()
 		new /obj/effect/alien/resin/construction/ward(targetted_atom, GLOB.hive_datum[XENO_HIVE_MOBA_RIGHT], map_id, TRUE)
+	owner.visible_message(SPAN_XENONOTICE("[owner] plants a [name]."), SPAN_XENONOTICE("We plant a [name]."))
 
 	apply_cooldown()
 	return ..()
@@ -74,6 +75,7 @@
 
 /obj/effect/alien/resin/construction/ward
 	name = "resin ward"
+	desc = "A pillar of some sort. You swear a light in it is following you."
 	icon = 'icons/obj/structures/alien/structures.dmi'
 	icon_state = "resin_ward"
 	var/team2
@@ -120,9 +122,9 @@
 		can_see = TRUE
 	else if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
-		if(!team2 && (xeno.hivenumber == GLOB.hive_datum[XENO_HIVE_MOBA_LEFT]))
+		if(!team2 && (xeno.hivenumber == XENO_HIVE_MOBA_LEFT))
 			can_see = TRUE
-		else if(team2 && (xeno.hivenumber == GLOB.hive_datum[XENO_HIVE_MOBA_RIGHT]))
+		else if(team2 && (xeno.hivenumber == XENO_HIVE_MOBA_RIGHT))
 			can_see = TRUE
 
 	if(can_see)

@@ -19,6 +19,9 @@
 
 /datum/action/xeno_action/watch_xeno/action_activate()
 	. = ..()
+	if(!.)
+		return
+
 	var/mob/living/carbon/xenomorph/X = owner
 	if (!X.check_state(TRUE))
 		return FALSE

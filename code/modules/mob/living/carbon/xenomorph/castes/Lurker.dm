@@ -69,7 +69,7 @@
 /mob/living/carbon/xenomorph/lurker/vampire/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()
 	var/datum/xeno_strain/vampire/vamp = new()
-	vamp.apply_strain(src)
+	vamp._add_to_xeno(src)
 
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"

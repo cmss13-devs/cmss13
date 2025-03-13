@@ -42,7 +42,8 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	xeno.attack_speed_modifier = attack_delay_modifier
 	handle_level_up(xeno, player_component, player_datum, player_datum.level)
 	for(var/path in abilities_to_add)
-		give_action(xeno, path, player_datum)
+		var/datum/action/xeno_action = give_action(xeno, path, player_datum)
+		xeno_action.AddComponent(/datum/component/moba_action, 3, (path == abilities_to_add[length(abilities_to_add)]), player_datum) // We assume the last ability is the ultimate
 		if(!player_datum.ability_path_level_dict[path])
 			player_datum.ability_path_level_dict[path] = 0
 

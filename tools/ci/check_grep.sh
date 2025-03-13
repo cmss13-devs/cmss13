@@ -162,9 +162,9 @@ if grep -P '^(?:[^\/\n]|\/[^\/\n])*(&[ \t]*\w+[ \t]*\|[ \t]*\w+)' $code_files; t
 fi;
 
 part "typescript react files"
-if ls tgui/**/*.jsx; then
+if ls -1 tgui/**/*.jsx 2>/dev/null; then
 	echo
-	echo -e "${RED}ERROR: JSX file detected, these must be converted to typescript (TSX).${NC}"
+	echo -e "${RED}ERROR: JSX file(s) detected, these must be converted to typescript (TSX).${NC}"
 	st=1
 fi;
 

@@ -1,6 +1,7 @@
-import { useBackend } from '../backend';
-import { Section, Stack } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { CompoundTable, DocumentLog, DocumentRecord } from './ResearchTerminal';
 
 interface TerminalProps {

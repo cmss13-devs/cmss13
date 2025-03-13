@@ -61,6 +61,7 @@ type OptionalProps = Partial<{
   selfClear: boolean;
   /** The state variable of the input. */
   value: string | number;
+  type: string;
 }>;
 
 type Props = OptionalProps & ConditionalProps & BoxProps;

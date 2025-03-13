@@ -14,8 +14,7 @@
         "/datum/equipment_preset/survivor/upp/army",
         "/datum/equipment_preset/survivor/upp_colonist",
         "/datum/equipment_preset/survivor/upp_miner",
-        "/datum/equipment_preset/survivor/upp_fire_fighter",
-        "/datum/equipment_preset/survivor/clf"
+        "/datum/equipment_preset/survivor/upp_fire_fighter"
     ],
     "defcon_triggers": [
         3750,

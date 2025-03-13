@@ -1,17 +1,24 @@
 [
-    { "type": "map_sprinkle", "path": "sprinkles/" },
-    {
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
+	{
 		"type": "map_insert",
 		"landmark": "sof_dropship",
 		"chance": 1.0,
 		"path": "standalone/sof_insert_dropship.dmm",
 		"when": { "lvevent": "sof_insert" }
 	},
-    {
+	{
 		"type": "map_insert",
 		"landmark": "sof_supply_crash",
 		"chance": 1.0,
 		"path": "standalone/sof_insert_supplyship.dmm",
 		"when": { "lvevent": "sof_insert" }
+	},
+	{
+	"type": "map_insert",
+	"landmark": "clfcrash",
+	"chance": 1.0,
+	"path": "standalone/clfcamp.dmm",
+	"when": { "lvevent": "clfcrash" }
 	}
 ]

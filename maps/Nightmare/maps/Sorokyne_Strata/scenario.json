@@ -1,9 +1,16 @@
 [
-    {
-    "type": "pick", "name": "sof_insert",
-    "choices": [
-        { "weight": 10, "type": "def", "values": { "lvevent": "none" } },
-        { "weight": 4, "type": "def", "values": { "lvevent": "sof_insert" } }
-    ]
-    }
+{
+	"type": "pick", "name": "sof_insert",
+	"choices": [
+		{ "weight": 10, "type": "def", "values": { "lvevent": "none" } },
+		{ "weight": 5, "type": "def", "values": { "lvevent": "sof_insert" } }
+	]
+},
+{
+	"type": "pick", "name": "clf_insert",
+		"choices": [
+		{ "weight": 9, "type": "def", "values": { "lvevent": "none" } },
+		{ "weight": 1, "type": "def", "values": { "lvevent": "clfcrash" } }
+	]
+}
 ]

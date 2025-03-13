@@ -18,6 +18,8 @@
 	var/static/datum/asset/simple/common/common_asset = get_asset_datum(/datum/asset/simple/common)
 	var/static/datum/asset/simple/other/other_asset = get_asset_datum(/datum/asset/simple/other)
 
+	/// If this browser is opening as a new element, or as a pre-defined skin element.
+	/// If so, it should be the name of the pre-defined skin element.
 	var/existing_browser = FALSE
 
 

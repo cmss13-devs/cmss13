@@ -4,10 +4,12 @@
 	minimap_icon = "upp_cont"
 	minimap_background = "background_upp"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
-/datum/equipment_preset/survivor/engineer/soro/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/engineer/soro_industry_contractor/load_gear(mob/living/carbon/human/new_human)
+
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife(new_human), WEAR_FEET)
@@ -22,6 +24,7 @@
 	minimap_icon = "upp_cont"
 	minimap_background = "background_upp"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -105,7 +108,7 @@
 	minimap_background = "background_upp"
 	role_comm_title = "202/ARMY"
 	idtype = /obj/item/card/id/dogtag/upp
-	flags = EQUIPMENT_PRESET_EXTRA
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_UPP_GENERAL, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -176,6 +179,7 @@
 	minimap_icon = "upp_doc"
 	minimap_background = "background_upp"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = MEDICAL_SURVIVOR
 
@@ -230,6 +234,7 @@
 	minimap_icon = "upp_sci"
 	minimap_background = "background_upp"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
@@ -252,6 +257,7 @@
 	skills = /datum/skills/civilian
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	idtype = /obj/item/card/id
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -364,8 +370,8 @@
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	role_comm_title = "FPPB"
 	skills = /datum/skills/civilian/survivor/fire_fighter
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -401,6 +407,7 @@
 	name = "Survivor - UPP - Jutou Combine - Miner"
 	assignment = "Shakhtyor"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -413,12 +420,12 @@
 	name = "Survivor - UPP - NORCOMM Corporate Liaison"
 	assignment = "NORCOMM Korporativnyy Svaznoy"
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/corporate/soro/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/charcoal(new_human), WEAR_BODY)
-
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	..()

@@ -3008,8 +3008,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/paths/north_outpost)
 "amu" = (
-/obj/structure/prop/almayer/computers/sensor_computer1,
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/big_computers/computerblack/computer4{
+	icon_state = "blacksensor_comp1_off"
+	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "amw" = (
@@ -10650,7 +10651,10 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/exterior/jungle/tearlake)
 "bae" = (
-/obj/structure/prop/almayer/computers/mapping_computer,
+/obj/structure/machinery/big_computers/computerblack/computer1{
+	icon_state = "blackmapping_comp_off";
+	pixel_x = -2
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
 "bag" = (
@@ -13294,7 +13298,9 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outpost/engi/drome)
 "bpS" = (
-/obj/structure/prop/almayer/computers/sensor_computer1,
+/obj/structure/machinery/big_computers/computerblack/computer3{
+	icon_state = "blacksensor_comp1_off"
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
 "bpT" = (
@@ -16237,8 +16243,9 @@
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/bball/cave)
 "bOp" = (
-/obj/structure/prop/almayer/computers/mapping_computer,
-/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/big_computers/computerblack/computer1{
+	icon_state = "blackmapping_comp_off"
+	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "bOq" = (
@@ -29493,6 +29500,12 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/ug/exterior/jungle/carplake/north)
+"iKG" = (
+/obj/structure/prop/hybrisa/misc/urinal{
+	pixel_y = 32
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outside/administration)
 "iKI" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -35689,7 +35702,9 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/exterior/jungle/structures/research/old_tunnels)
 "mIE" = (
-/obj/structure/prop/almayer/computers/mapping_computer,
+/obj/structure/machinery/big_computers/computerblack/computer5{
+	icon_state = "blacksensor_comp1_off"
+	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "mIG" = (
@@ -64165,7 +64180,7 @@ aQq
 aVv
 bTs
 coB
-bkt
+iKG
 bkt
 bkt
 cfR

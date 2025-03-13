@@ -171,12 +171,13 @@
 	buckling_x = 1;
 	buckling_y = 3
 	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader,
 /obj/structure/machinery/big_computers/computerblack/computer3{
 	pixel_y = 20;
 	layer = 2;
-	density = 0
+	density = 0;
+	icon_state = "blacksensor_comp3_off"
 	},
-/obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/strata/ag/interior/outpost/engi/drome/shuttle_sof)
 "ni" = (

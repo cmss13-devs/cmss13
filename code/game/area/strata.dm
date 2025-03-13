@@ -92,14 +92,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/exterior/landing_zones/lz2
 	name = "Landing Zone 2 Pad - Rocky Fields"
 	unlimited_power = 1 //So the DS computer always works for the Queen
-	weather_enabled = FALSE
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
 
 /area/strata/ag/exterior/landing_zones/near_lz2
 	name = "Landing Zone 2 - Rocky Fields"
 	icon_state = "nearlz2"
-	weather_enabled = TRUE
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
 

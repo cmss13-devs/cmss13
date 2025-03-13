@@ -17375,6 +17375,9 @@
 /area/desert_dam/exterior/valley/north_valley_dam)
 "bjs" = (
 /obj/structure/largecrate/empty/secure,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 30
+	},
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "bjt" = (
@@ -38036,9 +38039,6 @@
 	dir = 1
 	},
 /obj/item/trash/cigbutt,
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 30
-	},
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "cDh" = (

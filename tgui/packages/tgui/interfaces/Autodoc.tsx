@@ -1,6 +1,6 @@
 import { round } from 'common/math';
-
-import { useBackend } from '../backend';
+import { BooleanLike } from 'common/react';
+import { useBackend } from 'tgui/backend';
 import {
   Button,
   Flex,
@@ -8,8 +8,8 @@ import {
   LabeledList,
   ProgressBar,
   Section,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 const stats = [
   ['good', 'Alive'],
@@ -24,18 +24,52 @@ const damages = [
   ['Oxygen', 'oxyLoss'],
 ];
 
-const damageRange = {
+const damageRange: Record<string, [number, number]> = {
   average: [0.25, 0.5],
   bad: [0.5, Infinity],
 };
 
+type HumanData = {
+  pulse: number;
+  bloodLevel: number;
+  bloodMax: number;
+  bloodPercent: number;
+};
+
+type OccupantData = {
+  name: string;
+  stat: number;
+  health: number;
+  maxHealth: number;
+  minHealth: number;
+  bruteLoss: number;
+  oxyLoss: number;
+  toxLoss: number;
+  fireLoss: number;
+  hasBlood: BooleanLike;
+} & Partial<HumanData>;
+
+type Data = {
+  connected: string | null;
+  connected_operable: BooleanLike;
+  hasOccupant: BooleanLike;
+  occupant: OccupantData;
+  surgery: BooleanLike;
+  surgeries: number[];
+  filtering: BooleanLike;
+  blood_transfer: BooleanLike;
+  heal_brute: BooleanLike;
+  heal_burn: BooleanLike;
+  heal_toxin: BooleanLike;
+};
+
 export const Autodoc = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { hasOccupant } = data;
   const body = hasOccupant ? <AutodocMain /> : <AutodocEmpty />;
   const windowHeight = hasOccupant ? 675 : 150;
   return (
-    <Window resizable width={500} height={windowHeight}>
+    <Window width={500} height={windowHeight}>
       <Window.Content className="Layout__content--flexColumn">
         {body}
       </Window.Content>
@@ -44,7 +78,7 @@ export const Autodoc = (props) => {
 };
 
 const AutodocMain = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { surgeries } = data;
   const research =
     surgeries['broken'] !== undefined ||
@@ -63,7 +97,7 @@ const AutodocMain = (props) => {
 };
 
 const AutodocOccupant = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { occupant } = data;
   return (
     <Section title="Occupant">
@@ -71,8 +105,6 @@ const AutodocOccupant = (props) => {
         <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
         <LabeledList.Item label="Health">
           <ProgressBar
-            min="0"
-            max={occupant.maxHealth}
             value={occupant.health / occupant.maxHealth}
             ranges={{
               good: [0.5, Infinity],
@@ -90,9 +122,7 @@ const AutodocOccupant = (props) => {
           <>
             <LabeledList.Item label="Blood Level">
               <ProgressBar
-                min="0"
-                max={occupant.bloodMax}
-                value={occupant.bloodLevel / occupant.bloodMax}
+                value={occupant.bloodLevel! / occupant.bloodMax!}
                 ranges={{
                   bad: [-Infinity, 0.6],
                   average: [0.6, 0.9],
@@ -113,7 +143,7 @@ const AutodocOccupant = (props) => {
 };
 
 const AutodocDamage = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { occupant } = data;
   return (
     <Section title="Occupant Damage">
@@ -122,8 +152,6 @@ const AutodocDamage = (props) => {
           <LabeledList.Item key={i} label={d[0]}>
             <ProgressBar
               key={i}
-              min="0"
-              max="100"
               value={occupant[d[1]] / 100}
               ranges={damageRange}
             >
@@ -137,7 +165,7 @@ const AutodocDamage = (props) => {
 };
 
 const AutodocControls = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { surgery } = data;
   return (
     <Section>
@@ -179,7 +207,7 @@ const AutodocControls = (props) => {
 };
 
 const AutodocSurgeries = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const {
     surgery,
     surgeries,
@@ -212,7 +240,9 @@ const AutodocSurgeries = (props) => {
                   name={
                     heal_brute && surgery
                       ? 'arrows-rotate'
-                      : surgeries['brute'] === 1 && 'plus'
+                      : surgeries['brute'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -235,7 +265,9 @@ const AutodocSurgeries = (props) => {
                   name={
                     heal_burn && surgery
                       ? 'arrows-rotate'
-                      : surgeries['burn'] === 1 && 'plus'
+                      : surgeries['burn'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -260,7 +292,9 @@ const AutodocSurgeries = (props) => {
                   name={
                     surgery && surgeries['open'] === 1
                       ? 'hourglass'
-                      : surgeries['open'] === 1 && 'plus'
+                      : surgeries['open'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -283,7 +317,9 @@ const AutodocSurgeries = (props) => {
                   name={
                     surgery && surgeries['shrapnel'] === 1
                       ? 'hourglass'
-                      : surgeries['shrapnel'] === 1 && 'plus'
+                      : surgeries['shrapnel'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -310,7 +346,9 @@ const AutodocSurgeries = (props) => {
                   name={
                     blood_transfer && !!surgery
                       ? 'arrows-rotate'
-                      : surgeries['blood'] === 1 && 'plus'
+                      : surgeries['blood'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -333,7 +371,9 @@ const AutodocSurgeries = (props) => {
                   name={
                     filtering && surgery
                       ? 'arrows-rotate'
-                      : surgeries['dialysis'] === 1 && 'plus'
+                      : surgeries['dialysis'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -356,7 +396,9 @@ const AutodocSurgeries = (props) => {
                   name={
                     heal_toxin && surgery
                       ? 'arrows-rotate'
-                      : surgeries['toxin'] === 1 && 'plus'
+                      : surgeries['toxin'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -372,7 +414,7 @@ const AutodocSurgeries = (props) => {
 };
 
 const AutodocSurgeriesEx = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { surgery, surgeries } = data;
   return (
     <Section title="Orthopedic Surgeries">
@@ -392,7 +434,9 @@ const AutodocSurgeriesEx = (props) => {
                   name={
                     surgery && surgeries['internal'] === 1
                       ? 'hourglass'
-                      : surgeries['internal'] === 1 && 'plus'
+                      : surgeries['internal'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -417,7 +461,9 @@ const AutodocSurgeriesEx = (props) => {
                   name={
                     surgery && surgeries['broken'] === 1
                       ? 'hourglass'
-                      : surgeries['broken'] === 1 && 'plus'
+                      : surgeries['broken'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -446,7 +492,9 @@ const AutodocSurgeriesEx = (props) => {
                   name={
                     surgery && surgeries['organdamage'] === 1
                       ? 'hourglass'
-                      : surgeries['organdamage'] === 1 && 'plus'
+                      : surgeries['organdamage'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -471,7 +519,9 @@ const AutodocSurgeriesEx = (props) => {
                   name={
                     surgery && surgeries['larva'] === 1
                       ? 'hourglass'
-                      : surgeries['larva'] === 1 && 'plus'
+                      : surgeries['larva'] === 1
+                        ? 'plus'
+                        : ''
                   }
                   position="absolute"
                   right="1px"
@@ -491,7 +541,7 @@ const AutodocEmpty = (props) => {
     <Section textAlign="center">
       <Flex height="100%">
         <Flex.Item grow="1" align="center" color="label">
-          <Icon name="user-slash" mb="0.5rem" size="5" />
+          <Icon name="user-slash" mb="0.5rem" size={5} />
           <br />
           No occupant detected.
         </Flex.Item>

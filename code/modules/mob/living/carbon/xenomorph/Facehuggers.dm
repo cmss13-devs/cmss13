@@ -474,7 +474,8 @@
 /proc/can_hug(mob/living/carbon/M, hivenumber)
 	if(!istype(M) || isxeno(M) || issynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || !M.huggable)
 		return FALSE
-
+	if(HAS_TRAIT(M, TRAIT_HAULED))
+		return FALSE
 	if(M.ally_of_hivenumber(hivenumber))
 		return FALSE
 

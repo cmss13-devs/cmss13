@@ -14,7 +14,7 @@ export const WhitelistPanel = (props) => {
 
   return (
     <Window theme={'crtblue'} width={990} height={750}>
-      <Window.Content scrollable>
+      <Window.Content>
         <PageComponent />
       </Window.Content>
     </Window>
@@ -26,8 +26,8 @@ const PlayerList = (props) => {
   const { whitelisted_players } = data;
 
   return (
-    <Section>
-      <Flex align="center" grow>
+    <Section fill pb="3.5%">
+      <Flex align="center">
         <Flex.Item mr="1rem">
           <Button
             icon="clipboard"
@@ -49,40 +49,42 @@ const PlayerList = (props) => {
           <h1 align="center">Whitelist Panel</h1>
         </Flex.Item>
       </Flex>
-      {!!whitelisted_players.length && (
-        <Flex
-          className="candystripe"
-          p=".75rem"
-          align="center"
-          fontSize="1.25rem"
-        >
-          <Flex.Item bold width="20rem" shrink="0" mr="5rem">
-            CKey
-          </Flex.Item>
-          <Flex.Item width="40rem" grow bold>
-            Status
-          </Flex.Item>
-        </Flex>
-      )}
-      {whitelisted_players.map((record, i) => {
-        return (
-          <Flex key={i} className="candystripe" p=".75rem" align="center">
-            <Flex.Item mr="5%">
-              <Button
-                icon="pen"
-                tooltip="Edit Whitelists"
-                onClick={() => act('select_player', { player: record.ckey })}
-              />
+      <Section fill m="1px" scrollable>
+        {!!whitelisted_players.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem"
+          >
+            <Flex.Item bold width="20rem" shrink="0" mr="5rem">
+              CKey
             </Flex.Item>
-            <Flex.Item bold width="20%" shrink="0" mr="1rem">
-              {record.ckey}
-            </Flex.Item>
-            <Flex.Item width="75%" ml="1rem" shrink="0">
-              {record.status}
+            <Flex.Item width="40rem" grow bold>
+              Status
             </Flex.Item>
           </Flex>
-        );
-      })}
+        )}
+        {whitelisted_players.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item mr="1%">
+                <Button
+                  icon="pen"
+                  tooltip="Edit Whitelists"
+                  onClick={() => act('select_player', { player: record.ckey })}
+                />
+              </Flex.Item>
+              <Flex.Item bold width="24%" shrink="0" mr="1rem">
+                {record.ckey}
+              </Flex.Item>
+              <Flex.Item width="75%" ml="1rem" shrink="0">
+                {record.status}
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
     </Section>
   );
 };

@@ -17,5 +17,7 @@
 			hud_icon_state = "sg"
 		if(JOB_DS_MED)
 			hud_icon_state = "med"
+		if(JOB_DS_OP)
+			hud_icon_state = "op"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "wo_[hud_icon_state]")

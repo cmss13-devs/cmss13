@@ -3,9 +3,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE //We always use a codename!
 	faction = FACTION_WY_DEATHSQUAD
-	assignment = "Whiteout Team Operative"
+	assignment = JOB_DS_OP
 	role_comm_title = "WO"
-	rank = FACTION_WY_DEATHSQUAD
+	rank = JOB_DS_OP
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_FRENCH, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	minimap_icon = "whiteout"
@@ -239,6 +239,8 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat
 	name = "Whiteout Team Operative"
+	assignment = JOB_DS_OP
+	rank = JOB_DS_OP
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/load_gear(mob/living/carbon/human/new_human)
 	// back

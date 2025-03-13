@@ -1,0 +1,4 @@
+author: "nicholasWooldridge"
+delete-after: True
+changes:
+  - bugfix: "Fixed a bug that caused the Broken M41A to be called Prop Gun in a chat message."

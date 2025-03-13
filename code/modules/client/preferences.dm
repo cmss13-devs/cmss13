@@ -74,6 +74,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
+	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
 	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
@@ -257,6 +258,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	var/tgui_fancy = TRUE
 	var/tgui_lock = FALSE
+	var/tgui_scale = TRUE
 
 	var/hear_vox = TRUE
 
@@ -578,6 +580,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Tooltips:</b> <a href='byond://?_src_=prefs;preference=tooltips'><b>[tooltips ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='byond://?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='byond://?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
+			dat += "<b>tgui Scaling:</b> <a href='byond://?_src_=prefs;preference=tgui_scale'><b>[tgui_scale ? "Larger windows (default)" : "Smaller zoom"]</b></a><br>"
 			dat += "<b>Play Admin Sounds:</b> <a href='byond://?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='byond://?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Fax Sounds As Ghost:</b> <a href='byond://?_src_=prefs;preference=hear_faxes'><b>[(toggles_sound & SOUND_FAX_MACHINE) ? "Yes" : "No"]</b></a><br>"
@@ -685,6 +688,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				dat += "<b>CLF Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
 				dat += "</div>"
 
+
+			dat += "<div id='column2'>"
+			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<b>Spawn as Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_HOSTILE ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Non-Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_NON_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_NON_HOSTILE ? "Yes" : "No"]</b></a><br>"
+			dat += "</div>"
 
 	dat += "</div></body>"
 
@@ -1885,6 +1894,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/flag = text2num(href_list["flag"])
 					toggles_ert_pred ^= flag
 
+				if("toggles_survivor")
+					var/flag = text2num(href_list["flag"])
+					toggles_survivor ^= flag
+					if(!HAS_FLAG(toggles_survivor, PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE))
+						// Neither hostile nor non-hostile: Invert the other
+						if(flag == PLAY_SURVIVOR_NON_HOSTILE)
+							toggles_survivor ^= PLAY_SURVIVOR_HOSTILE
+						else
+							toggles_survivor ^= PLAY_SURVIVOR_NON_HOSTILE
+
 				if("ambientocclusion")
 					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
 					var/atom/movable/screen/plane_master/game_world/plane_master = locate() in user?.client.screen
@@ -1988,6 +2007,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					tgui_fancy = !tgui_fancy
 				if("tgui_lock")
 					tgui_lock = !tgui_lock
+				if("tgui_scale")
+					tgui_scale = !tgui_scale
 
 				if("change_menu")
 					current_menu = href_list["menu"]

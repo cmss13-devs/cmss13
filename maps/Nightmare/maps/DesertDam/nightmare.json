@@ -28,6 +28,13 @@
 		"path": "standalone/quarantine.dmm",
 		"when": { "lvevent": "none" }
 	},
+    {
+        "type": "map_insert",
+        "landmark": "clfpods",
+		"chance": 1.0,
+		"path": "standalone/clfpods.dmm",
+		"when": { "lvevent": "clfpods" }
+    },
 	{
 		"type": "include", "name": "Standalone variations",
 		"file": "mapgen_variations.json"

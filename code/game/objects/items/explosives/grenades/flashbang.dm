@@ -15,7 +15,7 @@
 
 	//doesn't deal damage to eyes and ears (for cluster)
 	var/no_damage = FALSE
-	var/strength = 50
+	var/strength = 35
 
 /obj/item/explosive/grenade/flashbang/Initialize()
 	if(type == /obj/item/explosive/grenade/flashbang) // ugly but we only want to change base level flashbangs
@@ -100,14 +100,14 @@
 
 	if(M.flash_eyes())
 		weaken_amount += 2
-		paralyze_amount += 10
+		paralyze_amount += 6
 
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
 		if(trained_human)
 			weaken_amount += 2
 			paralyze_amount += 1
 		else
-			weaken_amount += 10
+			weaken_amount += 6
 			paralyze_amount += 3
 			deafen_amount += 15
 			if(!no_damage)
@@ -118,14 +118,14 @@
 
 	else if(get_dist(M, T) <= 5)
 		if(!trained_human)
-			weaken_amount += 8
-			deafen_amount += 10
+			weaken_amount += 6
+			deafen_amount += 7
 			if(!no_damage)
 				M.ear_damage += rand(0, 3)
 
 	else if(!trained_human)
-		weaken_amount += 4
-		deafen_amount += 5
+		weaken_amount += 3
+		deafen_amount += 4
 		if(!no_damage)
 			M.ear_damage += rand(0, 1)
 
@@ -280,18 +280,18 @@
 		H.apply_damage(5, BURN)
 
 		if(lying)
-			bang_effect = 4
+			bang_effect = 2
 		else
-			bang_effect = 5
+			bang_effect = 3
 
 	else if(get_dist(H, T) <= 5)
 		if(lying)
-			bang_effect = 3
+			bang_effect = 2
 		else
 			bang_effect = 4
 
 	else
-		bang_effect = 2
+		bang_effect = 3
 
 
 	var/flash_amount
@@ -301,24 +301,24 @@
 
 	switch(bang_effect)
 		if(1)
-			deafen_amount = 2
+			deafen_amount = 1
 		if(2)
-			daze_amount = 2
-			deafen_amount = 3
+			daze_amount = 1
+			deafen_amount = 2
 		if(3)
-			flash_amount = 10
-			daze_amount = 5
-			deafen_amount = 5
+			flash_amount = 4
+			daze_amount = 3
+			deafen_amount = 3
 		if(4)
-			flash_amount = 20
-			daze_amount = 5
-			deafen_amount = 7
+			flash_amount = 15
+			daze_amount = 4
+			deafen_amount = 5
 			M.ear_damage += rand(1, 5)
 		if(5)
-			flash_amount = 50
-			daze_amount = 10
-			paralyze_amount = 5
-			deafen_amount = 10
+			flash_amount = 35
+			daze_amount = 7
+			paralyze_amount = 3
+			deafen_amount = 6
 			M.ear_damage += rand(1, 10)
 
 	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))

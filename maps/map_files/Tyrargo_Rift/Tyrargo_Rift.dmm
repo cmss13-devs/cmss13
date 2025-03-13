@@ -179,7 +179,8 @@
 /area/event/dynamic)
 "aK" = (
 /obj/structure/shuttle/part/dropship3/transparent/left_outer_bottom_wing,
-/turf/open/asphalt/cement/cement3,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/event/dynamic)
 "aL" = (
 /obj/structure/shuttle/part/dropship3/transparent/left_outer_inner_wing,
@@ -5986,6 +5987,10 @@
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/kutjevo/colors/orange/edge/north,
 /area/event/dynamic)
+"tU" = (
+/obj/structure/girder,
+/turf/open/hybrisa/street/cement2,
+/area/event/dynamic)
 "tV" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors/orange,
@@ -6011,6 +6016,10 @@
 "ua" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
+/area/event/dynamic)
+"ub" = (
+/obj/structure/girder,
+/turf/open/asphalt/cement/cement3,
 /area/event/dynamic)
 "uc" = (
 /obj/structure/flora/tree/dead/tree_6,
@@ -8648,8 +8657,20 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/event/dynamic)
+"BV" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/turf/open/floor/prison,
+/area/event/dynamic)
 "BW" = (
 /turf/open/gm/river/desert/shallow,
+/area/event/dynamic)
+"BX" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/turf/open/floor/prison,
 /area/event/dynamic)
 "BY" = (
 /turf/open/floor/kutjevo/tan/grey_edge,
@@ -108394,7 +108415,7 @@ KJ
 KJ
 KJ
 KJ
-fc
+jw
 Mp
 Mp
 Jp
@@ -108592,14 +108613,14 @@ iz
 iz
 it
 if
-bS
-bS
-bS
+ex
+ex
+ex
 if
 uW
 QV
-bS
-ky
+pP
+BX
 jG
 jE
 kg
@@ -108850,8 +108871,8 @@ bS
 Gm
 uW
 QV
-bS
-ky
+pP
+BX
 jG
 jG
 ki
@@ -108874,7 +108895,7 @@ Mp
 Mp
 Mp
 Mp
-fc
+jw
 KJ
 jA
 pP
@@ -109360,7 +109381,7 @@ jI
 jI
 kj
 kb
-jI
+BV
 jI
 QV
 gR
@@ -109611,9 +109632,9 @@ bS
 bS
 bS
 bS
-bS
-bS
-bS
+pP
+pP
+pP
 QV
 gR
 jz
@@ -109870,9 +109891,9 @@ jD
 VA
 ie
 jm
-bS
+pP
 QV
-bS
+pP
 jb
 KJ
 Sh
@@ -110122,9 +110143,9 @@ VA
 KJ
 KJ
 jm
-bS
-bS
-bS
+pP
+pP
+pP
 jb
 KJ
 Sh
@@ -111379,8 +111400,8 @@ wL
 wL
 wL
 wL
-wL
-wL
+rC
+rC
 wL
 ov
 Gm
@@ -111630,10 +111651,10 @@ Gg
 Gg
 Gg
 Gg
-Gg
-Gg
-Gg
-Gg
+rH
+gs
+gs
+rr
 Gg
 Gg
 Gg
@@ -111882,10 +111903,10 @@ Gg
 Gg
 Gg
 Gg
-Gg
-Gg
-Gg
-Gg
+rH
+gs
+gs
+rr
 Gg
 Gg
 Gg
@@ -112134,10 +112155,10 @@ Gg
 Gg
 Gg
 Gg
-Gg
-Gg
-Gg
-Gg
+rH
+gs
+gs
+rr
 Gg
 Gg
 Gg
@@ -112387,8 +112408,8 @@ Mp
 Mp
 Mp
 Mp
-Mp
-Mp
+rD
+rD
 Mp
 Mp
 Mp
@@ -114194,7 +114215,7 @@ hL
 hL
 hL
 KJ
-fc
+jw
 Jp
 BK
 BK
@@ -114418,9 +114439,9 @@ fc
 Mp
 fc
 Sh
-Gg
-Gg
-Gg
+rn
+rk
+rg
 mS
 fc
 KJ
@@ -114669,11 +114690,11 @@ uO
 bV
 fc
 fc
-Sh
-Gg
-Gg
-Gg
-mS
+gv
+gs
+gs
+gs
+Yu
 fc
 ie
 jd
@@ -114921,11 +114942,11 @@ bV
 bV
 fc
 fc
-Sh
-Gg
-Gg
-Gg
-mS
+gv
+Cf
+gs
+gs
+Yu
 fc
 Gm
 bS
@@ -115173,10 +115194,10 @@ KJ
 fc
 fc
 fc
-ov
-Gg
-Gg
-Gg
+Sh
+ro
+rj
+rj
 mS
 fc
 Gm
@@ -117648,7 +117669,7 @@ wL
 wL
 rC
 rC
-ov
+wL
 ov
 Gg
 Gg
@@ -119425,7 +119446,7 @@ KJ
 KJ
 KJ
 KJ
-Mp
+ub
 Mp
 Mp
 Mp
@@ -119449,9 +119470,9 @@ KJ
 KJ
 KJ
 Mp
+ub
 Mp
-Mp
-Mp
+ub
 Mp
 KJ
 fc
@@ -122192,7 +122213,7 @@ Gg
 Gg
 Gg
 mS
-fc
+jw
 KJ
 bS
 bS
@@ -123200,7 +123221,7 @@ Gg
 Gg
 Gg
 mS
-fc
+jw
 KJ
 Jk
 Jk
@@ -125735,6 +125756,7 @@ bS
 bS
 KJ
 KJ
+jw
 fc
 fc
 fc
@@ -125743,8 +125765,7 @@ fc
 fc
 fc
 fc
-fc
-fc
+jw
 KJ
 KJ
 KJ
@@ -126479,6 +126500,8 @@ Gg
 Gg
 IA
 wL
+rC
+rC
 wL
 wL
 wL
@@ -126500,10 +126523,8 @@ wL
 wL
 wL
 wL
-wL
-wL
-wL
-wL
+rC
+rC
 wL
 wL
 wL
@@ -126730,6 +126751,10 @@ Gg
 Gg
 Gg
 Gg
+rH
+gs
+gs
+rr
 Gg
 Gg
 Gg
@@ -126749,14 +126774,10 @@ Gg
 Gg
 Gg
 Gg
-Gg
-Gg
-Gg
-Gg
-Gg
-Gg
-Gg
-Gg
+rH
+gs
+gs
+rr
 Gg
 Gg
 Gg
@@ -126982,10 +127003,10 @@ Gg
 Gg
 Gg
 Gg
-Gg
-Gg
-Gg
-Gg
+rH
+gs
+gs
+rr
 Gg
 Gg
 Gg
@@ -126993,12 +127014,6 @@ Gg
 lQ
 lQ
 lQ
-Gg
-Gg
-lQ
-Gg
-Gg
-Gg
 Gg
 Gg
 lQ
@@ -127007,8 +127022,14 @@ Gg
 Gg
 Gg
 Gg
+lQ
 Gg
 Gg
+Gg
+rH
+gs
+gs
+rr
 Gg
 Gg
 Gg
@@ -127234,10 +127255,10 @@ Gg
 Gg
 Gg
 Gg
-Gg
-Gg
-Gg
-Gg
+rH
+gs
+gs
+rr
 Gg
 lQ
 ap
@@ -127257,10 +127278,10 @@ Gg
 lQ
 Gg
 Gg
-Gg
-Gg
-Gg
-Gg
+rH
+gs
+gs
+rr
 Gg
 Gg
 Gg
@@ -127487,8 +127508,8 @@ Lf
 rE
 Mp
 Mp
-Mp
-Mp
+rD
+rD
 Mp
 Mp
 Mp
@@ -127989,7 +128010,7 @@ hp
 vO
 sH
 YE
-xq
+tU
 KJ
 KJ
 KJ
@@ -128023,7 +128044,7 @@ KJ
 KJ
 KJ
 KJ
-xq
+tU
 sH
 YE
 lG

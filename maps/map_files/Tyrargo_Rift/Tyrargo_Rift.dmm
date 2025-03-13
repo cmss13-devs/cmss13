@@ -1143,7 +1143,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
-/turf/open/floor/prison/ramptop/north,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/dynamic)
 "et" = (
 /obj/structure/barricade/handrail/wire{
@@ -1225,7 +1225,7 @@
 /area/event/dynamic)
 "eG" = (
 /obj/structure/barricade/handrail/wire,
-/turf/open/floor/prison/floor_plate/southwest,
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/event/dynamic)
 "eH" = (
 /obj/structure/barricade/handrail/wire,
@@ -1346,7 +1346,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 1
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/event/dynamic)
 "ff" = (
 /obj/structure/bed/chair/vehicle{
@@ -1461,7 +1461,7 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/wire,
-/turf/open/floor/prison/floor_plate/southwest,
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/event/dynamic)
 "fz" = (
 /obj/structure/surface/rack,
@@ -1559,7 +1559,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 1
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/turf/open/floor/strata/multi_tiles/southwest,
 /area/event/dynamic)
 "fO" = (
 /obj/structure/shuttle/part/dropship3/transparent/nose_top_left,
@@ -2532,6 +2532,10 @@
 	dir = 9
 	},
 /turf/open/auto_turf/strata_grass,
+/area/event/dynamic)
+"jk" = (
+/obj/structure/barricade/handrail/wire,
+/turf/open/floor/strata/multi_tiles/west,
 /area/event/dynamic)
 "jl" = (
 /turf/open/floor/prison/darkbrown2/northwest,
@@ -4772,6 +4776,12 @@
 "pT" = (
 /turf/open/floor/kutjevo/tan/alt_edge/northeast,
 /area/event/dynamic)
+"pU" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/event/dynamic)
 "pV" = (
 /obj/item/prop/colony/used_flare,
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -5976,12 +5986,6 @@
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/kutjevo/colors/orange/edge/north,
 /area/event/dynamic)
-"tU" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 4
-	},
-/turf/open/floor/prison/ramptop,
-/area/event/dynamic)
 "tV" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors/orange,
@@ -6007,15 +6011,6 @@
 "ua" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
-/area/event/dynamic)
-"ub" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/wire{
-	dir = 1
-	},
-/turf/open/floor/prison/floor_plate,
 /area/event/dynamic)
 "uc" = (
 /obj/structure/flora/tree/dead/tree_6,
@@ -8646,6 +8641,12 @@
 	layer = 5
 	},
 /turf/open/floor/prison/ramptop/north,
+/area/event/dynamic)
+"BU" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/event/dynamic)
 "BW" = (
 /turf/open/gm/river/desert/shallow,
@@ -171366,7 +171367,7 @@ Ln
 es
 es
 es
-ex
+im
 rV
 jA
 QV
@@ -172119,10 +172120,10 @@ bS
 bS
 bS
 Ln
-et
-et
-et
-ex
+BU
+BU
+BU
+im
 rV
 ma
 ma
@@ -174620,14 +174621,14 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
 QV
 QV
-ex
-ex
+im
+im
 eG
 eF
 Nl
@@ -174872,7 +174873,7 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
@@ -174880,7 +174881,7 @@ QV
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -175124,7 +175125,7 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
@@ -175132,7 +175133,7 @@ QV
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -175376,7 +175377,7 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
@@ -175384,7 +175385,7 @@ QV
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -175628,7 +175629,7 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
@@ -175636,7 +175637,7 @@ QV
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -175880,7 +175881,7 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
@@ -175888,7 +175889,7 @@ QV
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -176133,14 +176134,14 @@ Nl
 Nl
 eT
 fe
-ex
-ex
-ex
-og
+im
+im
+im
+is
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -176388,11 +176389,11 @@ KJ
 KJ
 KJ
 KJ
-eI
+qz
 QV
 QV
 QV
-eI
+qz
 KJ
 KJ
 ie
@@ -176640,11 +176641,11 @@ aW
 aW
 aW
 KJ
-eI
+qz
 QV
 QV
 QV
-eI
+qz
 KJ
 RE
 RE
@@ -176892,11 +176893,11 @@ aW
 aW
 aW
 KJ
-eI
+qz
 QV
 QV
 QV
-eI
+qz
 KJ
 RE
 RE
@@ -177144,11 +177145,11 @@ aW
 aW
 aW
 KJ
-eI
+qz
 QV
 QV
 QV
-eI
+qz
 KJ
 RE
 RE
@@ -178375,9 +178376,9 @@ Ln
 es
 es
 es
-ex
-bS
-ex
+im
+is
+im
 es
 es
 es
@@ -178422,15 +178423,15 @@ aC
 KJ
 KJ
 KJ
-et
-et
-et
-et
-et
-et
-et
-et
-et
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
+BU
 KJ
 gj
 gj
@@ -178628,7 +178629,7 @@ QV
 QV
 QV
 QV
-eI
+qz
 QV
 QV
 QV
@@ -178640,7 +178641,7 @@ QV
 QV
 QV
 QV
-og
+is
 es
 es
 rV
@@ -178880,7 +178881,7 @@ QV
 QV
 QV
 QV
-eI
+qz
 QV
 QV
 QV
@@ -179128,11 +179129,11 @@ JD
 JD
 ok
 Ln
-et
+BU
 QV
 QV
 QV
-eI
+qz
 QV
 QV
 QV
@@ -179388,12 +179389,12 @@ KJ
 QV
 QV
 QV
-et
-et
-et
-et
-et
-og
+BU
+BU
+BU
+BU
+BU
+is
 QV
 QV
 QV
@@ -179646,11 +179647,11 @@ eu
 eu
 fT
 fN
-et
-et
-et
-et
-et
+BU
+BU
+BU
+BU
+BU
 rV
 aJ
 aJ
@@ -180379,10 +180380,10 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -180631,10 +180632,10 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -180883,10 +180884,10 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -181135,10 +181136,10 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -181176,11 +181177,11 @@ aT
 aT
 aT
 KJ
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 KJ
 dX
 dX
@@ -181387,10 +181388,10 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -181428,11 +181429,11 @@ aT
 aT
 aT
 KJ
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 KJ
 dX
 dX
@@ -181680,11 +181681,11 @@ aT
 aT
 aT
 KJ
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 KJ
 dX
 dX
@@ -181932,11 +181933,11 @@ KJ
 KJ
 KJ
 KJ
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 KJ
 KJ
 ie
@@ -182184,11 +182185,11 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -182436,11 +182437,11 @@ ge
 ge
 fP
 wC
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -182688,11 +182689,11 @@ wG
 wG
 wF
 wD
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -182940,11 +182941,11 @@ RS
 RS
 Jk
 Jk
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -184662,13 +184663,13 @@ Nl
 Nl
 Nl
 vB
-eP
+pU
 QV
 QV
 QV
 QV
 QV
-eH
+jk
 eF
 KJ
 it
@@ -184914,13 +184915,13 @@ Nl
 Nl
 Nl
 us
-ub
-tU
-tU
-bS
+fN
+BU
+BU
+is
 QV
 QV
-eH
+jk
 eF
 KJ
 it
@@ -185169,10 +185170,10 @@ qo
 eu
 eu
 fT
-eP
+pU
 QV
 QV
-eH
+jk
 eF
 KJ
 it
@@ -185185,7 +185186,7 @@ QV
 bS
 wJ
 Ln
-ex
+im
 es
 es
 es
@@ -186193,13 +186194,13 @@ wO
 wO
 wM
 Ln
-ex
-et
-et
-et
-et
-et
-et
+im
+BU
+BU
+BU
+BU
+BU
+BU
 rV
 RS
 RS
@@ -187522,10 +187523,10 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -187774,10 +187775,10 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -188484,11 +188485,11 @@ RS
 RS
 Jk
 Jk
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -188736,11 +188737,11 @@ ie
 Jk
 Jk
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -188988,11 +188989,11 @@ Nl
 Jk
 Jk
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -189240,11 +189241,11 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -189492,11 +189493,11 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -189744,11 +189745,11 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -189996,11 +189997,11 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -190248,11 +190249,11 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -190500,11 +190501,11 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -190752,11 +190753,11 @@ Nl
 Nl
 Nl
 eT
-eP
+pU
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -191004,11 +191005,11 @@ Nl
 Nl
 Nl
 eT
-eI
+qz
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl
@@ -191256,11 +191257,11 @@ bM
 bD
 bt
 eV
-eI
+qz
 QV
 QV
 QV
-eH
+jk
 eF
 Nl
 Nl

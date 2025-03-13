@@ -1,0 +1,27 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/plating/kutjevo,
+/area/shuttle/drop1/kutjevo)
+"C" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Dunes Landing Zone";
+	faction = "Yautja"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/shuttle/drop1/kutjevo)
+
+(1,1,1) = {"
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+C
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+"}

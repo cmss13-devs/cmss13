@@ -2,7 +2,7 @@
 // Works like a contemporary crew weapon mortar
 /obj/structure/mortar
 	name = "\improper M402 mortar"
-	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses an advanced targeting computer, which can toggle between coordinate and laser targetting. Insert round to fire. Alt + Click to switch targetting modes."
+	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses an advanced targeting computer, which can toggle between coordinate and laser targeting. Insert round to fire. Alt + Click to switch targeting modes."
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402"
 	anchored = TRUE
@@ -153,13 +153,13 @@
 /obj/structure/mortar/proc/toggle_lase_mode(mob/user)
 	lase_mode = !lase_mode
 	if(lase_mode)
-		to_chat(user, SPAN_NOTICE("You toggle the [src] to laser targetting mode."))
+		to_chat(user, SPAN_NOTICE("You toggle the [src] to laser targeting mode."))
 		reset_dials()
 		if(linked_designator)
 			RegisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE, PROC_REF(retrieve_laser_target))
 			RegisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE_OFF, PROC_REF(lost_laser_target))
 	else
-		to_chat(user, SPAN_NOTICE("You toggle the [src] to coordinate targetting mode."))
+		to_chat(user, SPAN_NOTICE("You toggle the [src] to coordinate targeting mode."))
 		if(aimed || aiming)
 			lost_laser_target()
 		if(linked_designator)
@@ -193,11 +193,11 @@
 	if(linked_designator)
 		. += SPAN_NOTICE("It's currently linked to a laser designator with the [linked_designator.serial_number] serial number.")
 	if(lase_mode)
-		. += SPAN_NOTICE("It's in laser targetting mode.")
+		. += SPAN_NOTICE("It's in laser targeting mode.")
 		if(aimed)
 			. += SPAN_NOTICE("It's aimed on target and ready to fire!")
 	else
-		. += SPAN_NOTICE("It's in coordinate targetting mode.")
+		. += SPAN_NOTICE("It's in coordinate targeting mode.")
 
 /obj/structure/mortar/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -237,7 +237,7 @@
 
 /obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, temp_targ_z = 0, manual = FALSE)
 	if(lase_mode)
-		user.visible_message(SPAN_WARNING("The [src] is set to laser targetting mode, switch to coordinate targetting in order to dial coordinates!"))
+		user.visible_message(SPAN_WARNING("The [src] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
 		return
 	if(manual)
 		temp_targ_x = tgui_input_real_number(user, "Input the longitude of the target.")
@@ -309,7 +309,7 @@
 
 /obj/structure/mortar/proc/handle_dial(mob/user, temp_dial_x = 0, temp_dial_y = 0, manual = FALSE)
 	if(lase_mode)
-		user.visible_message(SPAN_WARNING("The [src] is set to laser targetting mode, switch to coordinate targetting in order to dial coordinates!"))
+		user.visible_message(SPAN_WARNING("The [src] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
 		return
 	if(manual)
 		temp_dial_x = tgui_input_number(user, "Set longitude adjustement from -10 to 10.", "Longitude", 0, 10, -10)
@@ -344,10 +344,10 @@
 			to_chat(user, SPAN_WARNING("You don't know how to link your laser designator to the [src]."))
 			return
 		if(!lase_mode)
-			to_chat(user, SPAN_WARNING("You need to switch the [src] to laser targetting before linking your laser designator!"))
+			to_chat(user, SPAN_WARNING("You need to switch the [src] to laser targeting before linking your laser designator!"))
 			return
 		if(aimed)
-			to_chat(user, SPAN_WARNING("The [src] is currently targetting something!"))
+			to_chat(user, SPAN_WARNING("The [src] is currently targeting something!"))
 		to_chat(user, SPAN_NOTICE("You begin linking your laser designator to the [src].."))
 		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			if(linked_designator) // Unregister the pervious laser designator signal, if switching linked laser designator
@@ -365,7 +365,7 @@
 		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, targ_z)
 		if(lase_mode)
 			if(!linked_designator)
-				to_chat(user, SPAN_WARNING("The [src] is in laser targetting mode, but there is no laser designator linked!"))
+				to_chat(user, SPAN_WARNING("The [src] is in laser targeting mode, but there is no laser designator linked!"))
 				return
 			if(!aimed)
 				to_chat(user, SPAN_WARNING("Cannot find valid laser target!"))

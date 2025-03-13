@@ -806,6 +806,7 @@
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/vehicles/aircraft/vtol/damaged
 	desc = "A crashed VTOL"
@@ -821,6 +822,7 @@
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/vehicles/aircraft/aircraft/usaf
 	icon_state = "evac_usaf"
@@ -835,6 +837,7 @@
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/vehicles/tank/truck/base
 
@@ -858,6 +861,7 @@
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/vehicles/tank/apc/base
 
@@ -880,6 +884,7 @@
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/vehicles/tank/miltruck/base
 
@@ -895,6 +900,36 @@
 /obj/structure/prop/vehicles/tank/miltruck/wheeled/destroyed
 	icon_state = "miltruck_1_destroyed"
 
+// USCM Infantry Fighting Vehicle
+
+/obj/structure/prop/vehicles/tank/ifv
+	name = "M34 Marshal IFV"
+	desc = "Developed by W-Y, the RAT (Rover Armed Transport) was originally designed for the 3WE Military as an armed version of their RT series of expeditionary vehicles, the US Army ended up adopting it due to needing a heavier, more durable Transport then the USCM's M570 series."
+	icon = 'icons/obj/vehicles/ifv_prop.dmi'
+	icon_state = "ifv_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/ifv/destroyed
+	icon_state = "ifv_destroyed"
+
+// USCM ARC
+
+/obj/structure/prop/vehicles/tank/arc
+	name = "M540-B Armored Recon Carrier"
+	desc = "A ARC"
+	icon = 'icons/obj/vehicles/arc_prop.dmi'
+	icon_state = "arc_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/arc/destroyed
+	icon_state = "arc_destroyed"
+
 // USCM Tank
 
 /obj/structure/prop/vehicles/tank/longstreet
@@ -905,6 +940,7 @@
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 
 // Hull
 // Base Armor

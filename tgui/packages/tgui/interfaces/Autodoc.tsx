@@ -237,13 +237,7 @@ const AutodocSurgeries = (props) => {
               Brute Damage Treatment
               {brute_active && (
                 <Icon
-                  name={
-                    heal_brute && surgery
-                      ? 'arrows-rotate'
-                      : surgeries['brute'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -262,13 +256,7 @@ const AutodocSurgeries = (props) => {
               Burn Damage Treatment
               {burn_active && (
                 <Icon
-                  name={
-                    heal_burn && surgery
-                      ? 'arrows-rotate'
-                      : surgeries['burn'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -289,13 +277,7 @@ const AutodocSurgeries = (props) => {
               Close Open Incisions
               {surgeries['open'] === 1 && (
                 <Icon
-                  name={
-                    surgery && surgeries['open'] === 1
-                      ? 'hourglass'
-                      : surgeries['open'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -314,13 +296,7 @@ const AutodocSurgeries = (props) => {
               Shrapnel Removal Surgery
               {surgeries['shrapnel'] === 1 && (
                 <Icon
-                  name={
-                    surgery && surgeries['shrapnel'] === 1
-                      ? 'hourglass'
-                      : surgeries['shrapnel'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -343,13 +319,7 @@ const AutodocSurgeries = (props) => {
               Blood Transfusion
               {blood_active && (
                 <Icon
-                  name={
-                    blood_transfer && !!surgery
-                      ? 'arrows-rotate'
-                      : surgeries['blood'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -368,13 +338,7 @@ const AutodocSurgeries = (props) => {
               Dialysis
               {dialysis_active && (
                 <Icon
-                  name={
-                    filtering && surgery
-                      ? 'arrows-rotate'
-                      : surgeries['dialysis'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -393,13 +357,7 @@ const AutodocSurgeries = (props) => {
               Bloodstream Toxin Removal
               {toxin_active && (
                 <Icon
-                  name={
-                    heal_toxin && surgery
-                      ? 'arrows-rotate'
-                      : surgeries['toxin'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -431,13 +389,7 @@ const AutodocSurgeriesEx = (props) => {
               Internal Bleeding Surgery
               {surgeries['internal'] === 1 && (
                 <Icon
-                  name={
-                    surgery && surgeries['internal'] === 1
-                      ? 'hourglass'
-                      : surgeries['internal'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -458,13 +410,7 @@ const AutodocSurgeriesEx = (props) => {
               Broken Bone Surgery
               {surgeries['broken'] === 1 && (
                 <Icon
-                  name={
-                    surgery && surgeries['broken'] === 1
-                      ? 'hourglass'
-                      : surgeries['broken'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -489,13 +435,7 @@ const AutodocSurgeriesEx = (props) => {
               Organ Damage Treatment
               {surgeries['organdamage'] === 1 && (
                 <Icon
-                  name={
-                    surgery && surgeries['organdamage'] === 1
-                      ? 'hourglass'
-                      : surgeries['organdamage'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"
@@ -516,13 +456,7 @@ const AutodocSurgeriesEx = (props) => {
               Parasite Extraction
               {surgeries['larva'] === 1 && (
                 <Icon
-                  name={
-                    surgery && surgeries['larva'] === 1
-                      ? 'hourglass'
-                      : surgeries['larva'] === 1
-                        ? 'plus'
-                        : ''
-                  }
+                  name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
                   right="1px"
                   top="4px"

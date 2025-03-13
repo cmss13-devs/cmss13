@@ -825,6 +825,76 @@
 /obj/structure/prop/vehicles/aircraft/aircraft/usaf
 	icon_state = "evac_usaf"
 
+// USCM Truck
+
+/obj/structure/prop/vehicles/tank/truck
+	name = "M887 Truck"
+	desc = "A Truck"
+	icon = 'icons/obj/vehicles/van_prop.dmi'
+	icon_state = "van_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/vehicles/tank/truck/base
+
+/obj/structure/prop/vehicles/tank/truck/base/broken
+	icon_state = "van_broken"
+
+/obj/structure/prop/vehicles/tank/truck/alt
+	name = "M991 Truck"
+	icon_state = "truck_base"
+
+/obj/structure/prop/vehicles/tank/truck/alt/broken
+	icon_state = "truck_broken"
+
+// USCM APC
+
+/obj/structure/prop/vehicles/tank/apc
+	name = "M577 Armored Personnel Carrier"
+	desc = "A APC"
+	icon = 'icons/obj/vehicles/apc_prop.dmi'
+	icon_state = "apc_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/vehicles/tank/apc/base
+
+/obj/structure/prop/vehicles/tank/apc/base/destroyed
+	icon_state = "apc_destroyed"
+
+/obj/structure/prop/vehicles/tank/apc/med
+	icon_state = "apc_med"
+
+/obj/structure/prop/vehicles/tank/apc/med/destroyed
+	icon_state = "apc_med_destroyed"
+
+// USCM Military Truck
+
+/obj/structure/prop/vehicles/tank/miltruck
+	name = "M255 Armored Half-Track"
+	desc = "A Track"
+	icon = 'icons/obj/vehicles/miltruck_prop.dmi'
+	icon_state = "track_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/vehicles/tank/miltruck/base
+
+/obj/structure/prop/vehicles/tank/miltruck/base/destroyed
+	icon_state = "track_destroyed"
+
+/obj/structure/prop/vehicles/tank/miltruck/wheeled
+	icon_state = "miltruck_1_base"
+
+/obj/structure/prop/vehicles/tank/miltruck/wheeled/cover
+	icon_state = "miltruck_2_base"
+
+/obj/structure/prop/vehicles/tank/miltruck/wheeled/destroyed
+	icon_state = "miltruck_1_destroyed"
+
 // USCM Tank
 
 /obj/structure/prop/vehicles/tank/longstreet
@@ -897,7 +967,7 @@
 /obj/structure/prop/vehicles/tank/longstreet/primary/ltb
 
 /obj/structure/prop/vehicles/tank/longstreet/primary/ltb/destroyed
-	icon_state = "ltb_base_destroyed"
+	icon_state = "ltb_destroyed"
 
 /obj/structure/prop/vehicles/tank/longstreet/primary/ltaaap
 	icon_state = "ltaaap_base"

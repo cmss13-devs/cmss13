@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - bugfix: "fixes sticky keys (even more)"

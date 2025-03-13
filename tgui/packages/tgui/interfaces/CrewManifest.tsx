@@ -1,9 +1,8 @@
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
-import { Icon, Input, Section, Table, Tooltip } from '../components';
-import { TableCell, TableRow } from '../components/Table';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Icon, Input, Section, Table, Tooltip } from 'tgui/components';
+import { TableCell, TableRow } from 'tgui/components/Table';
+import { Window } from 'tgui/layouts';
 
 type ManifestData = {
   departments_with_jobs: {

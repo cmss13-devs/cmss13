@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Fixes some UIs CRT theme being left behind when scrolling."

@@ -52,10 +52,10 @@
 	..()
 
 	var/turf/T = get_turf(src)
-	for(var/obj/structure/closet/L in hear(7, T))
+	for(var/obj/structure/closet/L in hear(4, T))
 		SEND_SIGNAL(L, COMSIG_CLOSET_FLASHBANGED, src)
 
-	for(var/mob/living/carbon/M in hear(7, T))
+	for(var/mob/living/carbon/M in hear(4, T))
 		bang(T, M)
 
 	playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
@@ -322,8 +322,8 @@
 			M.ear_damage += rand(1, 10)
 
 	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
-		daze_amount *= 0.85
-		paralyze_amount *= 0.85
+		daze_amount *= 0.50
+		paralyze_amount *= 0.50
 		deafen_amount = 0
 		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
 

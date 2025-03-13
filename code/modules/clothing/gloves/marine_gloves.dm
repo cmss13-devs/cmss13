@@ -174,6 +174,22 @@
 	armor_internaldamage = CLOTHING_ARMOR_ULTRAHIGH
 	unacidable = TRUE
 
+/obj/item/clothing/gloves/marine/veteran/pmc/combat_droid
+	name = "\improper M7X gauntlets"
+	desc = "A pair of heavily armored gloves made to complete the M7X Ape Suit"
+	icon_state = "combat_android_gloves"
+	item_state = "bgloves"
+	item_state_slots = list(WEAR_HANDS = "marine_grey")
+	siemens_coefficient = 0
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
+	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
+	armor_internaldamage = CLOTHING_ARMOR_ULTRAHIGH
+	unacidable = TRUE
+
 /obj/item/clothing/gloves/marine/dress
 	name = "dress gloves"
 	desc = "A pair of fashionable white gloves, worn by marines in dress."

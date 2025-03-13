@@ -166,6 +166,16 @@
 /obj/item/clothing/shoes/veteran/pmc/commando/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/veteran/pmc/combat_android
+	name = "\improper M7X greaves"
+	desc = "A pair of heavily armored, acid-resistant boots, made to complete the M7X  Ape Suit."
+	icon_state = "droid_boots"
+	item_state = "droid_boots"
+	armor_bio = CLOTHING_ARMOR_HIGH
+	siemens_coefficient = 0.2
+	unacidable = TRUE
+	spawn_item_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/veteran/pmc/van_bandolier
 	name = "hiking boots"
 	desc = "Over stone, over ice, through sun and sand, mud and snow, into raging water and hungry bog, these will never let you down."

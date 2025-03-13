@@ -548,6 +548,12 @@
 	icon_state = "commando_jumpsuit"
 	worn_state = "commando_jumpsuit"
 
+/obj/item/clothing/under/marine/veteran/pmc/combat_android
+	name = "\improper WY android combat uniform"
+	desc = "An armored uniform worn by Weyland-Yutani combat androids. It is well protected while remaining light and comfortable."
+	icon_state = "combat_android_uniform"
+	worn_state = "combat_android_uniform"
+
 /obj/item/clothing/under/marine/veteran/pmc/corporate
 	name = "\improper WY corporate security uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."

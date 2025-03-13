@@ -1242,6 +1242,16 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	)
 	worn_accessible = TRUE
 
+/obj/item/storage/backpack/combat_droid
+	name = "combat android bag"
+	desc = "A heavy-duty bag carried by Weyland-Yutani combat androids."
+	icon_state = "combat_android_powerpack"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+	)
+	worn_accessible = TRUE
+
 /obj/item/storage/backpack/mcommander
 	name = "marine commanding officer backpack"
 	desc = "The contents of this backpack are top secret."

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -16,12 +16,20 @@ import { Window } from 'tgui/layouts';
 import { CanvasLayer } from './CanvasLayer';
 import { DrawnMap } from './DrawnMap';
 
+type Line = [
+  number,
+  number,
+  number,
+  number,
+  string | CanvasGradient | CanvasPattern,
+  number,
+];
 interface TacMapProps {
   toolbarColorSelection: string;
   toolbarUpdatedSelection: string;
   updatedCanvas: boolean;
   themeId: number;
-  tempSVGData: [number, number, number, number, string, number][];
+  tempSVGData: Line[][];
   svgData: (string | number | CanvasGradient | CanvasPattern)[];
   canViewTacmap: boolean;
   canDraw: boolean;
@@ -121,7 +129,7 @@ export const TacticalMap = (props) => {
 
   const saveSVGData = () => {
     const svgData = canvasLayerRef.current?.getSVG();
-    return svgData as [number, number, number, number, string, number][];
+    return svgData;
   };
 
   const tryIncrementZ = () => {
@@ -130,7 +138,10 @@ export const TacticalMap = (props) => {
         PAGES[pageIndex].title !== 'Map View') ||
       data.zlevel + 1 < data.maxZlevelOld
     ) {
-      data.tempSVGData = saveSVGData();
+      const dat = saveSVGData();
+      if (dat !== undefined) {
+        data.tempSVGData = dat;
+      }
       data.zlevel++;
       act('updateZlevel', {});
     }
@@ -138,7 +149,10 @@ export const TacticalMap = (props) => {
 
   const tryDecrementZ = () => {
     if (data.zlevel - 1 >= data.minZlevel) {
-      data.tempSVGData = saveSVGData();
+      const dat = saveSVGData();
+      if (dat !== undefined) {
+        data.tempSVGData = dat;
+      }
       data.zlevel--;
       act('updateZlevel', {});
     }
@@ -272,7 +286,6 @@ const OldMapPanel = (props) => {
           svgData={data.svgData}
           flatImage={data.oldCanvasFlatImage[data.zlevel]}
           backupImage={data.mapFallback}
-          className="TacticalMap"
           key={data.lastUpdateTime}
           zlevel={data.zlevel}
         />
@@ -431,19 +444,12 @@ const DrawMapPanel = (props) => {
           key={data.lastUpdateTime}
           onImageExport={handleTacMapExport}
           zlevel={data.zlevel}
-          onUndo={(value: string, newSvgData) => {
+          onUndo={(value: string, newSvgData: Line[][]) => {
             act('selectColor', { color: findColorValue(value) });
             if (newSvgData === undefined) {
               data.tempSVGData = [];
             } else {
-              data.tempSVGData = newSvgData as [
-                number,
-                number,
-                number,
-                number,
-                string,
-                number,
-              ][];
+              data.tempSVGData = newSvgData;
             }
           }}
           storedData={data.tempSVGData}

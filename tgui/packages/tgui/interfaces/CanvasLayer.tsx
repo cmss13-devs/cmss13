@@ -3,14 +3,16 @@ import { Box, Icon, Tooltip } from 'tgui/components';
 
 // this file should probably not be in interfaces, should move it later.
 type PaintCanvasProps = {
-  readonly onDraw: () => void;
+  readonly onDraw: (newSvgData: Line[][]) => void;
   readonly imageSrc: string;
   readonly selection: string;
   readonly onImageExport: (img) => void;
-  readonly onUndo: (e) => void;
+  readonly onUndo: (e, newSvgData: Line[][]) => void;
 } & Partial<{
   canvasRef: HTMLCanvasElement;
   actionQueueChange: number;
+  zlevel: number;
+  storedData: Line[][];
 }>;
 
 type Line = [
@@ -19,6 +21,7 @@ type Line = [
   number,
   number,
   string | CanvasGradient | CanvasPattern,
+  number,
 ];
 
 export class CanvasLayer extends Component<PaintCanvasProps> {
@@ -32,6 +35,8 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
   lastX: number | null;
   lastY: number | null;
   complexity: number;
+  zlevel: number;
+  storedData: Line[][];
   state: { selection: string | undefined; mapLoad: boolean };
   constructor(props) {
     super(props);
@@ -58,8 +63,14 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     this.isPainting = false;
     this.lastX = null;
     this.lastY = null;
-    this.zlevel = this.props.zlevel;
-    this.storedData = this.props.storedData;
+    if (this.props.zlevel !== undefined) {
+      this.zlevel = this.props.zlevel;
+    } else {
+      this.zlevel = 0;
+    }
+    if (this.props.storedData !== undefined) {
+      this.storedData = this.props.storedData;
+    }
 
     this.complexity = 0;
   }
@@ -92,7 +103,12 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     }
     this.isPainting = true;
 
-    const rect = this.canvasRef.current.getBoundingClientRect();
+    const rect = this.canvasRef.current?.getBoundingClientRect();
+
+    if (this.canvasRef.current === null || rect === undefined) {
+      return;
+    }
+
     const scaleX = this.canvasRef.current.width / rect.width;
     const scaleY = this.canvasRef.current.height / rect.height;
 
@@ -113,12 +129,12 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
       return;
     }
 
-    if (!this.ctx) {
+    if (!this.ctx || this.canvasRef.current === null) {
       return;
     }
     this.ctx.strokeStyle = this.state.selection;
 
-    const rect = this.canvasRef.current.getBoundingClientRect();
+    const rect = this.canvasRef.current?.getBoundingClientRect();
     const scaleX = this.canvasRef.current.width / rect.width;
     const scaleY = this.canvasRef.current.height / rect.height;
 
@@ -149,7 +165,15 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
   };
 
   handleMouseUp = (e) => {
-    if (!this.isPainting) return;
+    if (
+      !this.isPainting ||
+      this.canvasRef.current === null ||
+      this.ctx === null ||
+      this.lastX === null ||
+      this.lastY === null
+    ) {
+      return;
+    }
 
     const rect = this.canvasRef.current.getBoundingClientRect();
     const scaleX = this.canvasRef.current.width / rect.width;
@@ -179,7 +203,7 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     this.lineStack.push([...this.currentLine]);
     this.currentLine = [];
     this.complexity = this.getComplexity();
-    this.props.onDraw(this.convertToSVG());
+    this.props.onDraw(this.getSVG());
   };
 
   handleSelectionChange = () => {
@@ -234,7 +258,7 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
 
       this.lineStack.forEach((currentLine) => {
         currentLine.forEach(([lastX, lastY, x, y, colorSelection, zlevel]) => {
-          if (zlevel === this.zlevel) {
+          if (zlevel === this.zlevel && this.ctx !== null) {
             this.ctx.strokeStyle = colorSelection;
             this.ctx.beginPath();
             this.ctx.moveTo(lastX, lastY);
@@ -266,8 +290,20 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
   }
 
   drawCanvas() {
+    if (this.img === null) {
+      return;
+    }
+
     this.img.onload = () => {
       // this onload may or may not be causing problems.
+      if (
+        this.ctx === null ||
+        this.img === null ||
+        this.canvasRef.current?.width === undefined ||
+        this.canvasRef.current?.height === undefined
+      ) {
+        return;
+      }
       this.ctx.drawImage(
         this.img,
         0,
@@ -309,10 +345,10 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     }
 
     lineStack.forEach((stack) => {
-      const newStack = [];
+      const newStack: Line[] = [];
       stack.forEach((line) => {
         const [lastX, lastY, x, y, color, zlevel] = line;
-        if (zlevel === this.zlevel) {
+        if (zlevel === this.zlevel && this.ctx !== null) {
           this.ctx.strokeStyle = color;
           this.ctx.lineWidth = 4;
           this.ctx.lineCap = 'round';
@@ -321,7 +357,6 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
           this.ctx.lineTo(x, y);
           this.ctx.stroke();
         }
-
         newStack.push([lastX, lastY, x, y, color, zlevel]);
       });
 

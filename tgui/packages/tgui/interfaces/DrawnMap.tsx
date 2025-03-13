@@ -5,10 +5,21 @@ type DrawMapRrops = {
   readonly svgData: (string | number | CanvasGradient | CanvasPattern)[];
   readonly flatImage: string;
   readonly backupImage: string;
+  readonly zlevel: number;
+};
+
+type Line = {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  stroke: string;
+  zlevel: number;
 };
 
 export class DrawnMap extends Component<DrawMapRrops> {
   backupImgSrc: string;
+  zlevel: number;
   containerRef: React.RefObject<HTMLDivElement>;
   flatImgSrc: string;
   img: HTMLImageElement | null;
@@ -25,7 +36,11 @@ export class DrawnMap extends Component<DrawMapRrops> {
     };
     this.img = null;
     this.svg = this.props.svgData;
-    this.zlevel = this.props.zlevel;
+    if (this.props.zlevel !== undefined) {
+      this.zlevel = this.props.zlevel;
+    } else {
+      this.zlevel = 0;
+    }
   }
 
   componentDidMount() {
@@ -49,9 +64,9 @@ export class DrawnMap extends Component<DrawMapRrops> {
     };
   }
 
-  parseSvgData(svgDataArray) {
+  parseSvgData(svgDataArray): Line[] {
     if (!svgDataArray || !Array.isArray(svgDataArray)) return [];
-    const lines = [];
+    const lines: Line[] = [];
     for (let i = 0; i < svgDataArray.length; i += 6) {
       const lastX = svgDataArray[i];
       const lastY = svgDataArray[i + 1];

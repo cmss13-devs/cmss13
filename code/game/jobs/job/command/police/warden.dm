@@ -14,8 +14,8 @@
 	RegisterSignal(warden, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_active_warden))
 
 /datum/job/command/warden/proc/cleanup_active_warden(mob/warden)
-    SIGNAL_HANDLER
-    active_warden = null
+	SIGNAL_HANDLER
+	active_warden = null
 
 AddTimelock(/datum/job/command/warden, list(
 	JOB_POLICE_ROLES = 10 HOURS

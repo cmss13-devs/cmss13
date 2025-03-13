@@ -370,6 +370,39 @@
   Byond.loadCss = function (url, sync) {
     loadAsset({ url: url, sync: sync, type: 'css' });
   };
+
+  Byond.saveBlob = function (blob, filename, ext) {
+    if (window.navigator.msSaveBlob) {
+      window.navigator.msSaveBlob(blob, filename)
+    } else if (window.showSaveFilePicker) {
+      var accept = {};
+      accept[blob.type] = [ext];
+
+      var opts = {
+        suggestedName: filename,
+        types: [
+          {
+            description: "SS13 file",
+            accept: accept,
+          }
+        ]
+      }
+
+      try {
+        window.showSaveFilePicker(opts).then(function (fileHandle) {
+          fileHandle.createWritable().then(function (writeableFileHandle) {
+            writeableFileHandle.write(blob).then(function () {
+              writeableFileHandle.close()
+            }).catch(function (e) { console.error(e) });
+          }).catch(function (e) { console.error(e) });
+        }).catch(function (e) { console.error(e) });
+      } catch (e) { console.error(e) }
+
+    }
+  };
+
+  // Icon cache
+  Byond.iconRefMap = {};
 })();
 
 // Error handling
@@ -631,7 +664,7 @@ blink {
 <!-- Fatal error container -->
 <div id="FatalError" class="FatalError">
 <div class="FatalError__logo">
-  \+++++\@@@@@@@@@@/++++\@@@@@@@@@@/+++++/
+ \+++++\@@@@@@@@@@/++++\@@@@@@@@@@/+++++/
   \+++++\@``````@/++*+*+\@``````@/+++++/
    \+++++\@````@/++++++++\@````@/+++++/
     \+++++\@``@/++++++++++\@``@/+++++/

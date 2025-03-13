@@ -15,8 +15,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	powernet_name = "ground"
 	temperature = TROPICAL_TEMP
 	minimap_color = MINIMAP_AREA_COLONY
-	ambience_exterior = AMBIENCE_JUNGLE
-	base_lighting_color = "#99ff00ff"
+	base_lighting_color = "#aeff00ff"
 
 /area/shuttle/drop1/strata //Not in Sulaco.DM because holy shit we need to sort things.
 	name = "Dropship Alamo Landing Zone"
@@ -48,6 +47,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Exterior Above Ground Area"
 	icon_state = "ag_e"
 	ceiling = CEILING_NONE
+	ambience_exterior = AMBIENCE_JUNGLE
 	//always_unpowered = 1 So exterior lights work, this will be commented out unless it causes unforseen issues.
 
 /area/strata/ag/interior
@@ -76,7 +76,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	requires_power = 1
 	ceiling = CEILING_NONE
 	weather_enabled = TRUE
-
+	ambience_exterior = AMBIENCE_JUNGLE
 
 ////////////////////////////////////////
 //   ------===| Exterior |===------   //
@@ -107,8 +107,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "landingzone_1"
 	minimap_color = MINIMAP_AREA_LZ
-	weather_enabled = FALSE
-	ceiling = CEILING_NONE
 
 /area/strata/ag/interior/landing_zones/lz1
 	name = "Landing Zone 1 Pad - Mining Aerodrome"
@@ -179,6 +177,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Geothermal Crashed Lifeboat"
 	icon_state = "marshship"
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
+	weather_enabled = TRUE
 
 /area/strata/ag/exterior/marsh/water
 	name = "Geothermal Water"
@@ -230,16 +229,14 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/exterior/paths/south_outpost
 	name = "South Of The Outpost"
-	ceiling = CEILING_NONE
 
 ////////////////////////////////////////
 //   ------===| Interior |===------   //
 ////////////////////////////////////////
 
-/area/strata/ug/interior/jungle
+/area/strata/ug/exterior/jungle
 	name = "Do not use."
-	ceiling = CEILING_DEEP_UNDERGROUND
-
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 //-Outpost
 
@@ -273,6 +270,10 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/interior/outpost/engi/drome/shuttle
 	name = "Dismantled VDVK Eagle Mk 4"
+	icon_state = "outpost_engi_3"
+
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3
+	name = "VDVK Eagle Mk 3"
 	icon_state = "outpost_engi_3"
 
 /area/strata/ag/interior/outpost/engi/drome/shuttle_sof
@@ -350,6 +351,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/ag/interior/outside/wooden_hospital
 	name = "Wooden Hospital - Hospital Proper"
+	icon_state = "cabin3"
+	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
+
+/area/strata/ag/interior/outside/wooden_ruins
+	name = "Old Wooden Building"
 	icon_state = "cabin3"
 	minimap_color = MINIMAP_AREA_CAVES
 	unoviable_timer = FALSE
@@ -437,6 +444,8 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Do not use."
 	icon_state = "ug_jung_dorm"
 	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	weather_enabled = FALSE
 
 /area/strata/ug/interior/outpost/underground_dorms/sec1
 	name = "Underground Security Dorm #1"
@@ -469,100 +478,122 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Underground Medical Dorm #2"
 	requires_power = TRUE
 
+/area/strata/ug/interior/outpost/underground_dorms/botany
+	name = "Botanical Research Station"
+	requires_power = TRUE
+
 //-Underground platform
 
-/area/strata/ug/interior/outpost/platform
+/area/strata/ug/exterior/outpost/platform
 	name = "Underground Platform"
 	icon_state = "ug_jung_1"
 	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
+	ceiling = CEILING_NONE
+	weather_enabled = TRUE
 
 //-Underground Jungle
 
-/area/strata/ug/interior/jungle
+/area/strata/ug/exterior/jungle
 	name = "Do not use."
 	icon_state = "ug_jung_0"
 	minimap_color = MINIMAP_AREA_JUNGLE
 
-/area/strata/ug/interior/jungle/carplake
+/area/strata/ug/exterior/jungle/carplake
 	name = "Do not use."
 	icon_state = "ug_jung_1"
 	unoviable_timer = FALSE
 
-/area/strata/ug/interior/jungle/carplake/north
+/area/strata/ug/exterior/jungle/carplake/north
 	name = "Deep Jungle - North of Carp Lake"
 	icon_state = "ug_jung_6"
 
-/area/strata/ug/interior/jungle/carplake/east
+/area/strata/ug/exterior/jungle/carplake/east
 	name = "Deep Jungle - East of Carp Lake"
 	icon_state = "ug_jung_5"
 
-/area/strata/ug/interior/jungle/platform
+/area/strata/ug/exterior/jungle/platform
 	name = "Do not use."
 	icon_state = "ug_jung_1"
 
-/area/strata/ug/interior/jungle/platform/south
+/area/strata/ug/exterior/jungle/platform/south
 	name = "Deep Jungle - South of Underground Platform"
 	icon_state = "ug_jung_4"
 	unoviable_timer = FALSE
 
-/area/strata/ug/interior/jungle/platform/east
+/area/strata/ug/exterior/jungle/platform/east
 	name = "Deep Jungle - East of Underground Platform"
 	icon_state = "ug_jung_0"
 	unoviable_timer = FALSE
+	ceiling = CEILING_NONE
 
-/area/strata/ug/interior/jungle/structures
+/area/strata/ug/exterior/jungle/structures
 	name = "Do not use."
 	icon_state = "ug_jung_mine_1"
-	ceiling = CEILING_DEEP_UNDERGROUND_METAL
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	weather_enabled = FALSE
 
 /area/strata/ug/interior/jungle/structures/research
 	icon_state = "ug_jung_2"
 	name = "Deep Jungle - Classified Research Station"
 	minimap_color = MINIMAP_AREA_RESEARCH
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	weather_enabled = FALSE
 
-/area/strata/ug/interior/jungle/structures/research/south
+/area/strata/ug/exterior/jungle/structures/research/south
 	icon_state = "ug_jung_3"
 	name = "Deep Jungle - South of Classified Research Station"
 	minimap_color = MINIMAP_AREA_JUNGLE
 
-/area/strata/ug/interior/jungle/structures/research/hot_springs
+/area/strata/ug/exterior/jungle/structures/research/hot_springs
 	icon_state = "ug_jung_4"
 	name = "Deep Jungle - Hot Springs"
 	minimap_color = MINIMAP_AREA_JUNGLE
 
-/area/strata/ug/interior/jungle/structures/research/old_tunnels
+/area/strata/ug/exterior/jungle/structures/research/old_tunnels
 	icon_state = "ug_jung_mine_1"
 	name = "Deep Jungle - Old Tunnels"
 	minimap_color = MINIMAP_AREA_JUNGLE
+	ceiling = CEILING_NONE
+	weather_enabled = TRUE
 
-/area/strata/ug/interior/jungle/structures/monitoring
+/area/strata/ug/exterior/jungle/structures/monitoring
 	icon_state = "ug_jung_5"
 	name = "Deep Jungle - Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	weather_enabled = FALSE
 
-/area/strata/ug/interior/jungle/structures/monitoring/west
+/area/strata/ug/exterior/jungle/structures/monitoring/west
 	icon_state = "ug_jung_6"
 	name = "Deep Jungle - West of Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_JUNGLE
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	weather_enabled = TRUE
 
-/area/strata/ug/interior/jungle/structures/monitoring/south
+/area/strata/ug/exterior/jungle/structures/monitoring/south
 	icon_state = "ug_jung_7"
 	name = "Deep Jungle - South of Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_JUNGLE
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	weather_enabled = TRUE
 
-/area/strata/ug/interior/jungle/structures/monitoring/east
+/area/strata/ug/exterior/jungle/structures/monitoring/east
 	icon_state = "ug_jung_8"
 	name = "Deep Jungle - East of Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_JUNGLE
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	weather_enabled = TRUE
 
-/area/strata/ug/interior/jungle/structures/ruin
+/area/strata/ug/exterior/jungle/structures/ruin
 	icon_state = "ug_jung_mine_4"
 	name = "Deep Jungle - Ancient Dorms"
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	weather_enabled = FALSE
 
-/area/strata/ug/interior/jungle/tearlake
+/area/strata/ug/exterior/jungle/tearlake
 	name = "Deep Jungle - Weeping Pool"
 	icon_state = "ug_jung_3"
 	unoviable_timer = FALSE
@@ -575,4 +606,4 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	requires_power = FALSE
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
-
+	weather_enabled = TRUE

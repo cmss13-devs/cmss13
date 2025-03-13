@@ -1778,7 +1778,7 @@
 	update_attachable(integrated.slot)
 
 /obj/item/weapon/gun/rifle/ak4047/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 11, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 38, "muzzle_y" = 18,"rail_x" = 20, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 11, "stock_y" = 13, "special_x" = 33, "special_y" = 17)
 
 /obj/item/weapon/gun/rifle/ak4047/set_gun_config_values()
 	..()
@@ -1792,6 +1792,10 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+/obj/item/weapon/gun/rifle/ak4047/tactical
+	current_mag = /obj/item/ammo_magazine/rifle/ak4047
+	starting_attachment_types = list(/obj/item/attachable/reflex, /obj/item/attachable/suppressor, /obj/item/attachable/verticalgrip, /obj/item/attachable/stock/rifle/collapsible/ak4047)
 
 	//-------------------------------------------------------
 

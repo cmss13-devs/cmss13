@@ -219,18 +219,6 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west
 	dir = 8
 
-/turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
-	. = ..()
-
-	if(!locate(icon_state) in GLOB.turf_edgeinfo_cache)
-		switch(icon_state)
-			if("grassdirt_edge")
-				GLOB.turf_edgeinfo_cache["grassdirt_edge"] = GLOB.edgeinfo_edge
-			if("grassdirt_corner")
-				GLOB.turf_edgeinfo_cache["grassdirt_corner"] = GLOB.edgeinfo_corner
-			if("grassdirt_corner2")
-				GLOB.turf_edgeinfo_cache["grassdirt_corner2"] = GLOB.edgeinfo_corner2
-
 /turf/open/gm/dirtgrassborder2
 	name = "grass"
 	icon_state = "grassdirt2_edge"

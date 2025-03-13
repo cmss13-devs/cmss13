@@ -30,14 +30,14 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp_leftengine"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "dI" = (
 /obj/item/ammo_box/magazine/ak4047/ap/empty{
 	pixel_x = 3;
 	pixel_y = -4
 	},
 /turf/open/floor/almayer/test_floor5,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "eV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -51,7 +51,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp22"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "gR" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -62,7 +62,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp25"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "gV" = (
 /obj/structure/closet/crate/ammo,
 /obj/item/ammo_magazine/rifle/ak4047/ap,
@@ -73,7 +73,7 @@
 /obj/item/ammo_magazine/rifle/ak4047,
 /obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/almayer/test_floor5,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "iS" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -84,7 +84,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp20"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "iY" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -98,7 +98,7 @@
 	icon_state = "rightengine_1";
 	opacity = 0
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "mL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -111,7 +111,7 @@
 /area/strata/ag/exterior/marsh/crash)
 "ns" = (
 /turf/open/floor/almayer/test_floor6,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "nu" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -124,7 +124,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp5"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "pc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/colorable_rock/colorable{
@@ -170,17 +170,17 @@
 	pixel_y = -20
 	},
 /turf/open/floor/almayer/test_floor5,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "qZ" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp9"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "ra" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp_rightengine"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "rw" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -194,12 +194,12 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp27"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "sw" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp21"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "tc" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -219,14 +219,14 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp_rightengine"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "uS" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	name = "Supply Dropship Hold Lockdown";
 	needs_power = 0
 	},
 /turf/open/floor/almayer/pod_landing_floor,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "vB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/girder,
@@ -262,7 +262,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp4"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "AT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -299,7 +299,7 @@
 	icon_state = "leftengine_1";
 	opacity = 0
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "CU" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -329,7 +329,7 @@
 /obj/item/clothing/accessory/storage/webbing/black,
 /obj/item/clothing/accessory/storage/webbing/black,
 /turf/open/floor/almayer/test_floor5,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "DB" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/marsh/crash)
@@ -339,7 +339,7 @@
 "Fz" = (
 /obj/item/ammo_magazine/rifle/ak4047/ap,
 /turf/open/floor/almayer/test_floor5,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "FK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -349,7 +349,7 @@
 "FL" = (
 /obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/almayer/test_floor5,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "Gj" = (
 /obj/structure/prop/invuln/fire{
 	pixel_y = 11
@@ -358,7 +358,7 @@
 	icon_state = "leftengine_3";
 	opacity = 0
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "Gp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/colorable_rock/colorable{
@@ -384,7 +384,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp21"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "HS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -394,7 +394,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp8"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "Iz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -417,7 +417,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/almayer/test_floor6,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "Ju" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -437,7 +437,7 @@
 /obj/structure/closet/crate/ammo,
 /obj/item/weapon/gun/launcher/rocket/upp,
 /turf/open/floor/almayer/test_floor5,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "Lc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -445,7 +445,7 @@
 	needs_power = 0
 	},
 /turf/open/floor/almayer/pod_landing_floor,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "Lq" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -469,7 +469,7 @@
 	icon_state = "rightengine_3";
 	opacity = 0
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "Nq" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -524,7 +524,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "upp25"
 	},
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "TE" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -575,7 +575,7 @@
 /obj/item/weapon/gun/rifle/ak4047,
 /obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/almayer/test_floor5,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/outpost/engi/drome/shuttle_MK3)
 "Ww" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,

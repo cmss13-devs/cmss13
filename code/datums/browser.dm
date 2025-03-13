@@ -125,8 +125,8 @@
 		return
 	var/window_size = ""
 	if (width && height)
-		if(user.window_scaling && user.prefs.window_scale)
-			window_size = "size=[width * user?.window_scaling]x[height * user?.window_scaling];"
+		if(user?.window_scaling && user.prefs.window_scale)
+			window_size = "size=[width * user.window_scaling]x[height * user.window_scaling];"
 		else
 			window_size = "size=[width]x[height];"
 	common_asset.send(user)

@@ -173,7 +173,7 @@
 	},
 /obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader,
 /obj/structure/machinery/big_computers/computerblack/computer3{
-	pixel_y = 20;
+	pixel_y = 19;
 	layer = 2;
 	density = 0;
 	icon_state = "blacksensor_comp3_off"

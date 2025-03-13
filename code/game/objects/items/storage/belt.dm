@@ -573,6 +573,10 @@
 	new /obj/item/ammo_magazine/rifle/ak4047(src)
 	new /obj/item/ammo_magazine/rifle/ak4047(src)
 
+/obj/item/storage/belt/security/brown/half_full/fill_preset_inventory()
+	new /obj/item/ammo_magazine/rifle/ak4047(src)
+	new /obj/item/ammo_magazine/rifle/ak4047(src)
+
 /obj/item/storage/belt/security/MP
 	name = "\improper M276 pattern military police rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints."

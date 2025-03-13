@@ -25675,6 +25675,14 @@
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/landing_zones/near_lz1)
+"gke" = (
+/obj/structure/machinery/weather_siren{
+	dir = 4;
+	pixel_x = 18;
+	pixel_y = 10
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/engi/drome)
 "gkt" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = 3;
@@ -32510,6 +32518,12 @@
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
+"kFA" = (
+/obj/structure/machinery/weather_siren{
+	pixel_y = -8
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/engi/drome)
 "kFQ" = (
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/ag/exterior/paths/far_north_outpost)
@@ -36480,6 +36494,14 @@
 	},
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/strata/ag/exterior/jungle/carplake_center)
+"njv" = (
+/obj/structure/machinery/weather_siren{
+	dir = 4;
+	pixel_x = 18;
+	pixel_y = 10
+	},
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/canteen)
 "njL" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/floor3,
@@ -37295,6 +37317,14 @@
 /obj/structure/platform/stone/soro/north,
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/marsh/river)
+"nMK" = (
+/obj/structure/machinery/weather_siren{
+	dir = 4;
+	pixel_x = 18;
+	pixel_y = 10
+	},
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/med)
 "nMO" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball/cave)
@@ -47778,6 +47808,14 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/security)
+"umJ" = (
+/obj/structure/machinery/weather_siren{
+	dir = 4;
+	pixel_x = 18;
+	pixel_y = 10
+	},
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/maint)
 "umP" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -77342,7 +77380,7 @@ vlm
 mGA
 gls
 vlm
-vlm
+nMK
 bAz
 gbU
 wjq
@@ -79954,7 +79992,7 @@ bhE
 ckH
 cfg
 ppA
-vOs
+kFA
 aNu
 wZZ
 wMb
@@ -82743,7 +82781,7 @@ gGq
 vOs
 vOs
 vOs
-vOs
+gke
 vOs
 vOs
 bWZ
@@ -83949,7 +83987,7 @@ aRr
 cpU
 cpU
 cpU
-cpU
+umJ
 cpU
 wZZ
 wZZ
@@ -84975,7 +85013,7 @@ enJ
 enJ
 enJ
 enJ
-cjn
+njv
 cjn
 aJG
 cjn
@@ -84992,7 +85030,7 @@ aHV
 aJH
 cpU
 cpU
-cpU
+umJ
 cpU
 cpU
 cpU

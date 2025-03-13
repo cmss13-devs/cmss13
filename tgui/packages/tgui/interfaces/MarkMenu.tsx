@@ -1,9 +1,8 @@
 import { classes } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
-import { Box, Button, Flex, Icon, Stack, Tabs } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Flex, Icon, Stack, Tabs } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 interface MarkProps {
   mark_meanings: Mark[];

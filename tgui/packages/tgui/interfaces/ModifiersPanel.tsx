@@ -1,8 +1,7 @@
 import { BooleanLike } from 'common/react';
-
-import { useBackend } from '../backend';
-import { Button, Section, Table } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Button, Section, Table } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type ModifiersList = {
   all_modifiers: {

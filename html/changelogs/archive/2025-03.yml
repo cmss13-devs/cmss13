@@ -165,3 +165,8 @@
       size but their contents shrunk down
   - bugfix: people with a different windows scaling option than 100% on 516 can drag
       windows normally again
+2025-03-13:
+  Drathek:
+  - bugfix: Fixed Field Doctor not correctly checking intended timelock
+  realforest2001:
+  - rscadd: CIA Intel Liaison Officers now use their own minimap and HUD icons.

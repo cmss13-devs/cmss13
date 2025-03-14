@@ -1,4 +1,4 @@
-import { Dimmer, Icon, Stack } from '../../components';
+import { Dimmer, Icon, Stack } from 'tgui/components';
 
 /** Spinner that represents loading states.
  *

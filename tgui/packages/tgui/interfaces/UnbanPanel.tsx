@@ -1,6 +1,6 @@
-import { useBackend } from '../backend';
-import { Button, Input, Stack, Table } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Button, Input, Stack, Table } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type UnbanData = {
   banned_players: Ban[];

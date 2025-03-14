@@ -17,7 +17,7 @@
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"
 	minimap_background = "background_civillian"
-	minimap_icon = "io"
+	minimap_icon = "cia_ia"
 	idtype = /obj/item/card/id/adaptive
 
 /datum/equipment_preset/cia/analyst/load_gear(mob/living/carbon/human/new_human, client/mob_client)
@@ -67,7 +67,8 @@
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "ILO"
 	minimum_age = 25
-	minimap_icon = "aso"
+	minimap_icon = "cia_lo"
+	minimap_background = "background_ua"
 	idtype = /obj/item/card/id/adaptive
 
 /datum/equipment_preset/cia/officer/load_gear(mob/living/carbon/human/new_human, client/mob_client)

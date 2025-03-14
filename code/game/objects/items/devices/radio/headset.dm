@@ -1159,6 +1159,8 @@
 	frequency = WY_WO_FREQ
 	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_WO
 
 /obj/item/device/radio/headset/distress/contractor
 	name = "VAI Headset"

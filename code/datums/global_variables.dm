@@ -112,7 +112,7 @@
 
 	html += "</body></html>"
 
-	show_browser(usr, html, "View Global Variables", "global_variables", "size=475x650")
+	show_browser(usr, html, "View Global Variables", "global_variables", width = 475, height = 650)
 
 	return
 

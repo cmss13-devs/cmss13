@@ -107,7 +107,7 @@
 		dat += "<br><br>"
 	dat += "</body></html>"
 
-	show_browser(usr, dat, "Info on [key]", "allplayerinfo", "size=480x480")
+	show_browser(usr, dat, "Info on [key]", "allplayerinfo", width = 480, height = 480)
 
 
 /datum/admins/proc/Jobbans()
@@ -128,7 +128,7 @@
 			u = "[c] - [r]"
 			dat += "<tr><td>[t] (<A href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];removejobban=[u]'>unban</A>)</td></tr>"
 	dat += "</table>"
-	show_browser(usr, dat, "Job Bans", "ban", "size=400x400")
+	show_browser(usr, dat, "Job Bans", "ban", width = 400, height = 400)
 
 
 /datum/admins/proc/Game()
@@ -148,7 +148,7 @@
 		<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
 		"}
 
-	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")
+	show_browser(usr, dat, "Game Panel", "admin2", width = 210, height = 280)
 	return
 
 /////////////////////////////////////////////////////////////////////////////////////////////////admins2.dm merge

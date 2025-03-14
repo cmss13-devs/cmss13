@@ -12,7 +12,7 @@
 	entry_message_body = "You are a <a href='"+WIKI_PLACEHOLDER+"'>Field Doctor</a> tasked with keeping the marines healthy and strong in the field, usually in the form of surgery. You must stay onboard the Almayer medical bay if there are no other doctors present and until the FOB is secured. Your superiors may also delay your deployment to the field."
 
 AddTimelock(/datum/job/civilian/field_doctor, list(
-	JOB_MEDIC_ROLES = 5 HOURS
+	JOB_DOCTOR_ROLES = 5 HOURS
 ))
 
 /obj/effect/landmark/start/field_doctor

@@ -40,9 +40,9 @@
 			return
 
 	flags_item    ^= WIELDED
+	place_offhand(user, name)
 	name    += " (Wielded)"
 	item_state += "_w"
-	place_offhand(user,initial(name))
 	return 1
 
 /obj/item/proc/unwield(mob/user)
@@ -253,7 +253,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
 	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
@@ -350,7 +350,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
 	)
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"

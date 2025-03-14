@@ -3,9 +3,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE //We always use a codename!
 	faction = FACTION_WY_DEATHSQUAD
-	assignment = "Whiteout Team Operative"
+	assignment = JOB_DS_OP
 	role_comm_title = "WO"
-	rank = FACTION_WY_DEATHSQUAD
+	rank = JOB_DS_OP
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_FRENCH, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	minimap_icon = "whiteout"
@@ -88,6 +88,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Medic"
 	role_comm_title = "WO-TM"
+	minimap_background = "background_mp"
+	assignment = JOB_DS_MED
+	rank = JOB_DS_MED
 
 /datum/equipment_preset/pmc/w_y_whiteout/medic/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -139,6 +142,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Terminator"
 	role_comm_title = "WO-TT"
+	minimap_background = "background_ua"
+	assignment = JOB_DS_SG
+	rank = JOB_DS_SG
 
 /datum/equipment_preset/pmc/w_y_whiteout/terminator/load_gear(mob/living/carbon/human/new_human)
 	//face
@@ -181,6 +187,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Leader"
 	role_comm_title = "WO-TL"
+	minimap_background = "background_command"
+	assignment = JOB_DS_SL
+	rank = JOB_DS_SL
 
 /datum/equipment_preset/pmc/w_y_whiteout/leader/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -230,6 +239,9 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat
 	name = "Whiteout Team Operative"
+	minimap_background = "background_pmc"
+	assignment = JOB_DS_OP
+	rank = JOB_DS_OP
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -282,6 +294,9 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic
 	name = "Whiteout Team Medic"
+	minimap_background = "background_mp"
+	assignment = JOB_DS_MED
+	rank = JOB_DS_MED
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -329,6 +344,9 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/terminator
 	name = "Whiteout Team Terminator"
+	minimap_background = "background_ua"
+	assignment = JOB_DS_SG
+	rank = JOB_DS_SG
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/terminator/load_gear(mob/living/carbon/human/new_human)
 	//face
@@ -368,6 +386,9 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader
 	name = "Whiteout Team Leader"
+	minimap_background = "background_command"
+	assignment = JOB_DS_SL
+	rank = JOB_DS_SL
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader/load_gear(mob/living/carbon/human/new_human)
 	// back

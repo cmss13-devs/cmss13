@@ -116,7 +116,7 @@
 	var/paper_info = info
 	if(scramble)
 		paper_info = stars_decode_html(info)
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, "size=650x700")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 650, height = 700)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -577,7 +577,7 @@
 
 /obj/item/paper/prison_station/test_log
 	name = "paper- 'Test Log'"
-	info = "<p style=\"text-align: center;\"><sub>TEST LOG</sub></p><p>SPECIMEN: Bioweapon candidate Kappa. Individual 3</p><BR>\n<p>-</p><p>PROCEDURE: Observation</p><p>RESULTS: Specimen paces around cell. Appears agitated. Vocalisations.</p><p>-</p><p>PROCEDURE: Simian test subject</p><p>RESULTS: Devoured by specimen. No significant difference from last simian test.</p><p><em>Note: Time to amp it up</em></p><p>-</p><p>PROCEDURE: Human test subject (D-1). Instructed to \"pet it like a dog\"</p><p>RESULTS: Specimen and D-1 stare at each other for approximately two seconds. D-1 screams and begins pounding on observation window, begging to be released. Specimen pounces on D-1. Specimen kills D-1 with multiple slashes from its foreclaws.</p><p><em>Note: Promising!</em></p><p>-</p><p>PROCEDURE: Two human test subjects (D-2, D-3). Instructed to subdue specimen</p><p>RESULTS: D-2 and D-3 slowly approach specimen. D-3 punches specimen on forehead to no noticeable effect. Specimen pounces on D-3, then kills him with multiple slashes from its foreclaws. D-2 screams and begins pounding on observation window. Specimen pounces on D-2, then kills him with multiple slashes from its foreclaws.</p><p>Specimen begins slashing at observation access doors. Exhibiting an unexpected amount of strength, it is able to d~</p>"
+	info = "<p style=\"text-align: center;\"><sub>TEST LOG</sub></p><p>SPECIMEN: Bioweapon candidate Kappa. Individual 3</p><BR>\n<p>-</p><p>PROCEDURE: Observation</p><p>RESULTS: Specimen paces around cell. Appears agitated. Vocalisations.</p><p>-</p><p>PROCEDURE: Simian test subject</p><p>RESULTS: Nested by specimen. No significant difference from last simian test.</p><p><em>Note: Time to amp it up</em></p><p>-</p><p>PROCEDURE: Human test subject (D-1). Instructed to \"pet it like a dog\"</p><p>RESULTS: Specimen and D-1 stare at each other for approximately two seconds. D-1 screams and begins pounding on observation window, begging to be released. Specimen pounces on D-1. Specimen kills D-1 with multiple slashes from its foreclaws.</p><p><em>Note: Promising!</em></p><p>-</p><p>PROCEDURE: Two human test subjects (D-2, D-3). Instructed to subdue specimen</p><p>RESULTS: D-2 and D-3 slowly approach specimen. D-3 punches specimen on forehead to no noticeable effect. Specimen pounces on D-3, then kills him with multiple slashes from its foreclaws. D-2 screams and begins pounding on observation window. Specimen pounces on D-2, then kills him with multiple slashes from its foreclaws.</p><p>Specimen begins slashing at observation access doors. Exhibiting an unexpected amount of strength, it is able to d~</p>"
 
 /obj/item/paper/prison_station/interrogation_log
 	name = "paper- 'Test Log'"
@@ -656,6 +656,22 @@
 
 /obj/item/paper/bigred/upp
 	name = "UPP Orders"
+
+/obj/item/paper/bigred/clf
+	name = "Log Entry"
+	info = "The agitation went as planned and the miners went on strike. It turned violent but we held back the jackbooted scum well enough. The problem is we've stopped receiving outside communication from the rest of the colony, and people have been going missing. I'm ordering everyone to hunker down until we can figure out what's going on."
+
+/obj/item/paper/trijent/clf
+	name = "Log Entry"
+	info = "Our ship is lost. Our pods have crashed on a company-occupied planet. It appears the colony is overrun with hostile creatures, and many of the men are already dead. Our fight for freedom cannot end like this! We will live on, for the liberation!"
+
+/obj/item/paper/varadero/clf
+	name = "SOS!"
+	info = "Mayday! Mayday! To all nearby CLF frequencies, we are under attack! Unknown creatures have overrun New Varadero outpost and our shuttle is damaged beyond repair! We ne-"
+
+/obj/item/paper/soro/clf
+	name = "TOP SECRET: FOR CELL LEAD ONLY"
+	info = "Your request for extraction has been recieved. We have no assets in the region available. Await further instruction."
 
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()

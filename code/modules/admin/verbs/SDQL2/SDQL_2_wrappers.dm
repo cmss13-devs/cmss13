@@ -266,6 +266,13 @@
 /proc/_turn(dir, angle)
 	return turn(dir, angle)
 
+/proc/_icon_states(icon/thing, mode)
+	if(istype(thing))
+		return icon_states(thing, mode)
+	if(isatom(thing))
+		var/atom/atom_thing = thing
+		return icon_states(atom_thing.icon, mode)
+
 /// Auxtools REALLY doesn't know how to handle filters as values;
 /// when passed as arguments to auxtools-called procs, they aren't simply treated as nulls -
 /// they don't even count towards the length of args.

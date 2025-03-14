@@ -373,6 +373,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.can_play_role(M.client))
 		return FALSE
+	if(!J.can_play_role_in_scenario(M.client))
+		return FALSE
 	if(!J.check_whitelist_status(M))
 		return FALSE
 	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)

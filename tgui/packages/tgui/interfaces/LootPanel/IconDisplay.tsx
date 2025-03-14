@@ -1,6 +1,6 @@
-/* eslint-disable func-style */
-import { DmIcon, Icon, Image } from '../../components';
-import { SearchItem } from './types';
+import { DmIcon, Icon, Image } from 'tgui/components';
+
+import type { SearchItem } from './types';
 
 type Props = {
   readonly item: SearchItem;

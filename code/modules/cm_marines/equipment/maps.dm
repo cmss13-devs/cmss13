@@ -13,7 +13,6 @@
 	// color = ... (Colors can be names - "red, green, grey, cyan" or a HEX color code "#FF0000")
 	var/dat // Page content
 	var/html_link = ""
-	var/window_size = "1280x720"
 
 /obj/item/map/attack_self(mob/user) //Open the map
 	..()
@@ -58,7 +57,7 @@
 
 				</html>
 			"}
-	show_browser(usr, dat, name, "papermap", "size=[window_size]")
+	show_browser(usr, dat, name, "papermap", width = 1280, height = 720)
 
 /obj/item/map/lazarus_landing_map
 	name = "\improper Lazarus Landing Map"

@@ -172,12 +172,16 @@
 
 	var/free_the_humans = FALSE
 	var/offer_as_ert = FALSE
+	var/play_as = FALSE
+
 	if(href_list["spawn_as"] == "freed")
 		free_the_humans = TRUE
 
 	else if(href_list["spawn_as"] == "ert")
 		offer_as_ert = TRUE
 
+	else if(href_list["spawn_as"] == "play")
+		play_as = TRUE
 	var/strip_the_humans = FALSE
 	var/strip_weapons = FALSE
 	if(href_list["equip_with"] == "no_weapons")
@@ -255,7 +259,8 @@
 					if(istype(hand_item, /obj/item/explosive))
 						qdel(hand_item)
 
-
+		if(play_as)
+			spawned_human.ckey = owner.ckey
 
 		if (offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
@@ -306,11 +311,16 @@
 
 	var/free_the_xenos = FALSE
 	var/offer_as_ert = FALSE
+	var/play_as = FALSE
+
 	if(href_list["spawn_as"] == "freed")
 		free_the_xenos = TRUE
 
 	else if(href_list["spawn_as"] == "ert")
 		offer_as_ert = TRUE
+
+	else if(href_list["spawn_as"] == "play")
+		play_as = TRUE
 
 	if(xenos_to_spawn)
 		var/list/turfs = list()
@@ -344,6 +354,9 @@
 				owner.free_for_ghosts(X)
 
 			xenos += X
+
+		if(play_as)
+			X.ckey = owner.ckey
 
 		if(offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()

@@ -1,0 +1,262 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"c" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/van/backright;
+	name = "back right entrance marker";
+	pixel_x = -32;
+	tag = "back_right"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/shuttle/vehicle/floor_1_10,
+/area/interior/vehicle/clf_van)
+"e" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "background_1"
+	},
+/obj/effect/vehicle_roof/clf_van,
+/turf/open/void/vehicle,
+/area/space)
+"f" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "front_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"h" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	alpha = 100;
+	pixel_y = -2
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/shuttle/vehicle/floor_1_1,
+/area/interior/vehicle/clf_van)
+"i" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"j" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "background_2"
+	},
+/obj/effect/vehicle_roof/clf_van{
+	icon_state = "roof_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"n" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "exterior_2";
+	alpha = 50;
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"o" = (
+/obj/structure/bed/chair/comfy,
+/obj/effect/vehicle_roof/clf_van{
+	icon_state = "roof_3"
+	},
+/turf/open/shuttle/vehicle/floor_1_8,
+/area/interior/vehicle/clf_van)
+"r" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "background_3"
+	},
+/obj/effect/vehicle_roof/clf_van{
+	icon_state = "roof_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"s" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/effect/vehicle_roof/clf_van,
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/van/backleft;
+	name = "back left entrance marker";
+	pixel_x = -32;
+	tag = "back_left"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/shuttle/vehicle/floor_1_7,
+/area/interior/vehicle/clf_van)
+"t" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/van/left;
+	name = "left entrance marker";
+	pixel_y = 32;
+	tag = "left"
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4
+	},
+/obj/effect/vehicle_roof/clf_van{
+	icon_state = "front_roof_2"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon_state = "windshield_viewport_bottom";
+	icon = 'icons/obj/vehicles/interiors/clf_van.dmi'
+	},
+/turf/open/shuttle/vehicle/floor_3_11,
+/area/interior/vehicle/clf_van)
+"v" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "interior_door"
+	},
+/obj/effect/vehicle_roof/clf_van{
+	icon_state = "front_roof_1"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon = 'icons/obj/vehicles/interiors/clf_van.dmi'
+	},
+/turf/open/void/vehicle,
+/area/space)
+"w" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "front_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"x" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "back_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"y" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/van/right;
+	name = "right entrance marker";
+	tag = "right"
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/shuttle/vehicle/floor_3_12,
+/area/interior/vehicle/clf_van)
+"z" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "back_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"E" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "back_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"F" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "exterior_1";
+	alpha = 50;
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"G" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/turf/open/shuttle/vehicle/floor_1_9,
+/area/interior/vehicle/clf_van)
+"J" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "exterior_3";
+	alpha = 50;
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"M" = (
+/obj/structure/bed/chair/comfy,
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	pixel_y = 30
+	},
+/obj/effect/vehicle_roof/clf_van{
+	icon_state = "roof_2"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/shuttle/vehicle/floor_1_2,
+/area/interior/vehicle/clf_van)
+"O" = (
+/turf/open/void/vehicle,
+/area/space)
+"V" = (
+/obj/structure/interior_wall/clf_van{
+	icon_state = "exterior_door";
+	alpha = 50;
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+O
+E
+x
+z
+O
+"}
+(2,1,1) = {"
+O
+e
+s
+c
+F
+"}
+(3,1,1) = {"
+O
+j
+M
+h
+n
+"}
+(4,1,1) = {"
+O
+r
+o
+G
+J
+"}
+(5,1,1) = {"
+O
+v
+t
+y
+V
+"}
+(6,1,1) = {"
+O
+w
+f
+i
+O
+"}

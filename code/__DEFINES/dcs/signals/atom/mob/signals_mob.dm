@@ -45,9 +45,9 @@
 #define COMSIG_MOB_ATTEMPTING_EQUIP "mob_attempting_equip"
 	#define COMPONENT_MOB_CANCEL_ATTEMPT_EQUIP (1<<0)
 
-/// For when a mob is devoured by a Xeno
-#define COMSIG_MOB_DEVOURED "mob_devoured"
-	#define COMPONENT_CANCEL_DEVOUR (1<<0)
+/// For when a mob is hauled by a Xeno
+#define COMSIG_MOB_HAULED "mob_hauled"
+	#define COMPONENT_CANCEL_HAUL (1<<0)
 // Reserved for tech trees
 #define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
 	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)

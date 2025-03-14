@@ -308,9 +308,11 @@
 		return
 
 	var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
-	if(!message) return
+	if(!message)
+		return
 	var/color = input(src, "Input your message color:", "Color Selector") as color|null
-	if(!color) return
+	if(!color)
+		return
 
 	for(var/mob/living/mob in view(usr.client))
 		show_blurb(mob, 15, message, null, "center", "center", color, null, null, 1)
@@ -349,11 +351,11 @@
 
 	var/list/subtle_message_options = list(SUBTLE_MESSAGE_IN_HEAD, SUBTLE_MESSAGE_WEYLAND, SUBTLE_MESSAGE_USCM, SUBTLE_MESSAGE_FACTION)
 	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
+	if(!message_option)
+		return
 
 	if(message_option == SUBTLE_MESSAGE_FACTION)
 		var/faction = input("Choose which faction", "") as text|null
-		if(!faction)
-			return
 		message_option = faction
 
 	var/input = input("Contents of the message", text("Subtle PM to In View")) as text|null

@@ -181,7 +181,8 @@
 	return FALSE
 
 /obj/structure/machinery/centrifuge/proc/centrifuge()
-	if(!length(output_container.contents)) return //Is output empty?
+	if(!length(output_container.contents))
+		return //Is output empty?
 
 	var/obj/item/reagent_container/source_container = input_container
 	if(input_source == INPUT_TURING)

@@ -212,6 +212,31 @@
 	new /obj/item/clothing/head/helmet/marine/specialist(src)
 	new /obj/item/clothing/suit/storage/marine/specialist(src)
 
+/obj/item/storage/box/spec/mortar
+	name = "\improper Mortar Kit"
+	desc = "Contains the equipment needed for the mortar."
+	kit_overlay = "mortar"
+
+/obj/item/storage/box/spec/mortar/fill_preset_inventory()
+	new /obj/item/mortar_kit(src)
+	new /obj/item/pamphlet/skill/mortar_operator(src)
+	new /obj/item/pamphlet/skill/mortar_operator(src)
+	new /obj/item/storage/belt/gun/mortarbelt(src)
+	new /obj/item/storage/belt/gun/mortarbelt(src)
+	new /obj/item/storage/backpack/marine/mortarpack(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/device/binoculars/range(src)
+	new /obj/item/device/binoculars/range(src)
+
+
 //-----------------SPEC KIT BOX------------------
 //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
 
@@ -542,7 +567,7 @@
 	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/tool/crowbar/red(src)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
+	new /obj/item/mre_food_packet/entree/uscm(src)
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"

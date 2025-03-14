@@ -99,11 +99,16 @@
 	var/num_delays = 1
 
 	switch(HP.slot)
-		if(HDPT_PRIMARY) num_delays = 5
-		if(HDPT_SECONDARY) num_delays = 3
-		if(HDPT_SUPPORT) num_delays = 2
-		if(HDPT_ARMOR) num_delays = 10
-		if(HDPT_TREADS, HDPT_WHEELS) num_delays = 7
+		if(HDPT_PRIMARY)
+			num_delays = 5
+		if(HDPT_SECONDARY)
+			num_delays = 3
+		if(HDPT_SUPPORT)
+			num_delays = 2
+		if(HDPT_ARMOR)
+			num_delays = 10
+		if(HDPT_TREADS, HDPT_WHEELS)
+			num_delays = 7
 
 	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
@@ -160,7 +165,6 @@
 
 	if(!old.can_be_removed(user))
 		return
-
 	// It's in a holder
 	if(!(old in hardpoints))
 		for(var/obj/item/hardpoint/holder/H in hardpoints)
@@ -175,13 +179,18 @@
 	var/num_delays = 1
 
 	switch(old.slot)
-		if(HDPT_PRIMARY) num_delays = 5
-		if(HDPT_SECONDARY) num_delays = 3
-		if(HDPT_SUPPORT) num_delays = 2
-		if(HDPT_ARMOR) num_delays = 10
-		if(HDPT_TREADS) num_delays = 7
+		if(HDPT_PRIMARY)
+			num_delays = 5
+		if(HDPT_SECONDARY)
+			num_delays = 3
+		if(HDPT_SUPPORT)
+			num_delays = 2
+		if(HDPT_ARMOR)
+			num_delays = 10
+		if(HDPT_TREADS)
+			num_delays = 7
 
-	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
+	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays, target_flags = INTERRUPT_DIFF_LOC, target = old))
 		user.visible_message(SPAN_WARNING("[user] stops removing \the [old] on \the [src]."), SPAN_WARNING("You stop removing \the [old] on \the [src]."))
 		return
 

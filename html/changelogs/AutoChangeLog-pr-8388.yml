@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Areas Unpowered unit test now checks for APCs on non-floor tiles (if they are also deemed intact aka not exposed)"
-  - bugfix: "Focused unit testing now properly skips stages if the focus only applies to a different stage"
-  - maptweak: "Fixed inaccessible APC terminals on basically all maps"

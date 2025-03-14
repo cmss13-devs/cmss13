@@ -180,6 +180,10 @@
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
 		return FALSE
 
+	if(target.explo_proof)
+		to_chat(user, SPAN_WARNING("[name] would do nothing to [target]!"))
+		return FALSE
+
 	if(istype(target, /obj/structure/closet))
 		var/obj/structure/closet/C = target
 		if(C.opened)
@@ -338,6 +342,10 @@
 /obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
 	if(!is_type_in_list(target, breachable))//only items on the list are allowed
 		to_chat(user, SPAN_WARNING("You cannot plant [name] on [target]!"))
+		return FALSE
+
+	if(target.explo_proof)
+		to_chat(user, SPAN_WARNING("[name] would do nothing to [target]!"))
 		return FALSE
 
 	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE

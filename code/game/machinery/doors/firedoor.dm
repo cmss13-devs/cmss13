@@ -196,7 +196,8 @@
 				"You hear metal strain.")
 		var/old_density = density
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(blocked || density != old_density) return
+			if(blocked || density != old_density)
+				return
 			user.visible_message(SPAN_DANGER("\The [user] forces \the [blocked ? "welded " : "" ][name] [density ? "open" : "closed"] with \a [C]!"),
 				SPAN_NOTICE("You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!"),
 				"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")

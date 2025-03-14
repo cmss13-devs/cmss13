@@ -707,7 +707,8 @@
 	var/list/slots = V.get_activatable_hardpoints()
 	for(var/slot in slots)
 		var/obj/item/hardpoint/H = V.hardpoints[slot]
-		if(!H) continue
+		if(!H)
+			continue
 		H.livingmob_interact(src)
 
 	if(takes_damage)
@@ -778,7 +779,8 @@
 			var/list/slots = V.get_activatable_hardpoints()
 			for(var/slot in slots)
 				var/obj/item/hardpoint/H = V.hardpoints[slot]
-				if(!H) continue
+				if(!H)
+					continue
 				H.livingmob_interact(src)
 
 			var/mob_moved = step(src, V.last_move_dir)

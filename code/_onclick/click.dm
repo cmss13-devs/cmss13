@@ -145,6 +145,9 @@
 	return
 
 /mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		if(!isstorage(targeted_atom) && !isclothing(targeted_atom) && !isweapon(targeted_atom) && !isgun(targeted_atom))
+			return
 	if(used_item)
 		var/attackby_result = targeted_atom.attackby(used_item, src, mods)
 		var/afterattack_result
@@ -300,10 +303,12 @@
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(atom/A)
 
-	if( !A || !x || !y || !A.x || !A.y ) return
+	if( !A || !x || !y || !A.x || !A.y )
+		return
 	var/dx = A.x - x
 	var/dy = A.y - y
-	if(!dx && !dy) return
+	if(!dx && !dy)
+		return
 
 	var/direction
 	var/specific_direction

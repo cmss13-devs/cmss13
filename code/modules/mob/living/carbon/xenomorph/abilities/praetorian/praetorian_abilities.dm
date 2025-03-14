@@ -281,6 +281,7 @@
 	var/armor_buff = 10 // the idea behind this is you can buff somebody to go in, or get them out which is why the armor is so high while the duration is so low, will need tweaks according to how well it does
 	var/armor_buffs_duration = 5 SECONDS // your buff lasts longer because its less and ideally you should be in there slashing people already
 	var/armor_buffs_active = FALSE
+	var/max_range = 8
 
 	var/target_armor_buff = 15
 	var/armor_buffs_targer_dur = 3 SECONDS

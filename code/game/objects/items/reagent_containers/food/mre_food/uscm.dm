@@ -54,7 +54,7 @@
 	reagents.add_reagent("cheese", 4)
 	reagents.add_reagent("meatprotein", 3)
 	reagents.add_reagent("bread", 5)
-	reagents.add_reagent("vegetables", 2)
+	reagents.add_reagent("vegetable", 2)
 	reagents.add_reagent("tomatojuice", 4)
 	reagents.add_reagent("sodiumchloride", 2)
 
@@ -178,7 +178,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/mashedpotatoes/Initialize()
 	. = ..()
 	reagents.add_reagent("potato", 6)
-	reagents.add_reagent("vegetables", 3)
+	reagents.add_reagent("vegetable", 3)
 	reagents.add_reagent("milk", 2)
 	reagents.add_reagent("sodiumchloride", 1)
 

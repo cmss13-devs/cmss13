@@ -190,21 +190,33 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
 "aaB" = (
-/obj/structure/machinery/light/small{
-	pixel_y = 0
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/port_point_defense)
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig 2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
 "aaD" = (
-/obj/structure/machinery/light/small{
-	dir = 8
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/port_point_defense)
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig 1"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/processing)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -374,11 +386,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
 "aaT" = (
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Brig Perma"
 	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/port_point_defense)
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/perma)
 "aaU" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -394,12 +406,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/starboard_emb)
 "aaV" = (
-/obj/structure/sign/safety/nonpress_0g{
-	pixel_x = 8;
-	pixel_y = -32
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
+	nametag = "Interrogation"
 	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/interrogation)
 "aaW" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer/no_build,
@@ -442,9 +453,11 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "abe" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/small{
+	pixel_y = 0
+	},
 /turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
+/area/almayer/shipboard/port_point_defense)
 "abf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -606,11 +619,11 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
 "abF" = (
-/obj/structure/sign/safety/nonpress_0g{
-	pixel_x = 32
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
+/area/almayer/shipboard/port_point_defense)
 "abG" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
@@ -1315,7 +1328,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
+/area/almayer/shipboard/port_point_defense)
 "adf" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/lifesaver/full,
@@ -1938,10 +1951,11 @@
 /turf/open/floor/almayer/blue/east,
 /area/almayer/living/basketball)
 "aeJ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = -32
 	},
-/turf/closed/wall/almayer/outer,
+/turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/stern_point_defense)
 "aeK" = (
 /turf/open/floor/almayer/plating/northeast,
@@ -2282,9 +2296,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "afy" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/stern_point_defense)
 "afz" = (
@@ -2484,17 +2496,16 @@
 /area/almayer/living/cafeteria_officer)
 "afM" = (
 /obj/structure/sign/safety/nonpress_0g{
-	pixel_x = 8;
-	pixel_y = 32
+	pixel_x = 32
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/stern_point_defense)
 "afN" = (
 /obj/structure/machinery/light/small{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/starboard_point_defense)
+/area/almayer/shipboard/stern_point_defense)
 "afO" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer/plate,
@@ -2503,8 +2514,8 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/starboard_point_defense)
+/turf/closed/wall/almayer/outer,
+/area/almayer/shipboard/stern_point_defense)
 "afQ" = (
 /obj/structure/largecrate/random/mini{
 	pixel_y = 5;
@@ -2928,7 +2939,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/starboard_point_defense)
+/area/almayer/shipboard/stern_point_defense)
 "agJ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/junction{
@@ -3137,28 +3148,12 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/lower_medical_medbay)
 "ahc" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "tele_ground1";
-	teleport_x = 180;
-	teleport_x_offset = 200;
-	teleport_y = 50;
-	teleport_y_offset = 80;
-	teleport_z = 1;
-	teleport_z_offset = 1
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 8;
+	pixel_y = 32
 	},
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "tele_ground1";
-	teleport_x = 180;
-	teleport_x_offset = 200;
-	teleport_y = 50;
-	teleport_y_offset = 80;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space,
-/area/space)
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "ahd" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -3209,6 +3204,12 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
+"ahh" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
 "ahi" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "\improper Evacuation Airlock SU-2";
@@ -3452,6 +3453,12 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/chemistry)
+"ahJ" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
 "ahK" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1;
@@ -3513,6 +3520,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
+"ahS" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
 "ahT" = (
 /obj/structure/machinery/optable,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -3589,6 +3602,29 @@
 "aic" = (
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
+"aid" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "tele_ground1";
+	teleport_x = 180;
+	teleport_x_offset = 200;
+	teleport_y = 50;
+	teleport_y_offset = 80;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "tele_ground1";
+	teleport_x = 180;
+	teleport_x_offset = 200;
+	teleport_y = 50;
+	teleport_y_offset = 80;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space,
+/area/space)
 "aie" = (
 /obj/effect/landmark/railgun_computer,
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -11708,6 +11744,9 @@
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = list(37);
 	pixel_x = -3
+	},
+/obj/item/dogtag{
+	desc = "A blank marine's information dog tag. The word Ranger and a pawprint is scratched into it."
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/auxiliary_officer_office)
@@ -27180,6 +27219,9 @@
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "euV" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC"
+	},
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/command/cic)
 "euW" = (
@@ -42199,6 +42241,9 @@
 	phone_id = "Commanding Officer's Office";
 	pixel_x = 16;
 	pixel_y = 8
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CO Office"
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -58944,6 +58989,10 @@
 "sco" = (
 /obj/structure/sign/prop1{
 	layer = 3.1
+	},
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC Conf";
+	layer = 4
 	},
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
@@ -82365,7 +82414,7 @@ naB
 naB
 naB
 naB
-naB
+aaT
 dcy
 qPD
 qPD
@@ -83168,7 +83217,7 @@ xkc
 xyZ
 hvd
 vGn
-ehl
+aaV
 ehl
 uXu
 cQG
@@ -83792,7 +83841,7 @@ oRk
 oRk
 oRk
 utZ
-cMl
+aaB
 hTt
 kMH
 tUx
@@ -86025,7 +86074,7 @@ ptq
 oRk
 eNR
 bju
-cMl
+aaD
 dEG
 xkd
 uvY
@@ -101704,7 +101753,7 @@ bdH
 aaa
 aab
 aab
-ahc
+aid
 aKQ
 aab
 aKR
@@ -101913,20 +101962,20 @@ aab
 aKR
 aKS
 aKS
-afN
+ahh
 aKS
 aKS
 aKS
 aKS
 aKS
-afN
+ahh
 aKS
 aKS
 aKS
 aKS
 aKS
 aKS
-afN
+ahh
 aKS
 aLL
 dvD
@@ -101990,19 +102039,19 @@ uKH
 bUQ
 bSf
 bWe
-aaD
+abF
 bWe
 bWe
 bWe
 bWe
-aaD
+abF
 bWe
 bWe
 bWe
 bWe
 bWe
 bWe
-aaD
+abF
 bWe
 bWe
 bWe
@@ -102317,7 +102366,7 @@ aab
 aKQ
 aab
 aKR
-agI
+ahS
 aKS
 aKS
 atU
@@ -102412,7 +102461,7 @@ bWe
 abl
 bWe
 bWe
-aaB
+abe
 bVU
 aaa
 "}
@@ -103535,7 +103584,7 @@ aab
 aKQ
 aab
 aKR
-agI
+ahS
 aKS
 aKS
 atU
@@ -103630,7 +103679,7 @@ bWe
 abl
 bWe
 bWe
-aaB
+abe
 bVU
 aaa
 "}
@@ -103943,20 +103992,20 @@ aab
 aKR
 aKS
 aKS
-afP
+ahJ
 aKS
 aKS
 aKS
 aKS
 aKS
-afP
+ahJ
 aKS
 aKS
 aKS
 aKS
 aKS
 aKS
-afP
+ahJ
 aKS
 aLL
 deq
@@ -104020,19 +104069,19 @@ vDN
 xbg
 bSf
 bWe
-aaT
+ade
 bWe
 bWe
 bWe
 bWe
-aaT
+ade
 bWe
 bWe
 bWe
 bWe
 bWe
 bWe
-aaT
+ade
 bWe
 bWe
 bWe
@@ -130572,7 +130621,7 @@ aah
 aah
 aah
 gFP
-afy
+agI
 lMb
 aoH
 amZ
@@ -130775,7 +130824,7 @@ aaa
 aaa
 aaa
 gFP
-afM
+ahc
 lMb
 aoO
 lMb
@@ -130792,7 +130841,7 @@ lMb
 lMb
 lMb
 gsi
-aaV
+aeJ
 gFP
 aaa
 aaa
@@ -130995,7 +131044,7 @@ lMb
 lMb
 lMb
 amS
-abe
+afy
 gFP
 aaa
 aaa
@@ -131384,7 +131433,7 @@ aaa
 aaa
 aaa
 gFP
-afy
+agI
 lMb
 aoO
 lMb
@@ -131807,7 +131856,7 @@ lMb
 lMb
 lMb
 amS
-abe
+afy
 gFP
 aaa
 aaa
@@ -131993,7 +132042,7 @@ bdH
 aaa
 aaa
 gFP
-afM
+ahc
 lMb
 aoO
 lMb
@@ -132010,7 +132059,7 @@ lMb
 lMb
 lMb
 amS
-aaV
+aeJ
 gFP
 aaa
 aaa
@@ -132399,24 +132448,24 @@ bdH
 aaa
 aaa
 gFP
+agI
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
 afy
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-abe
 gFP
 aaa
 aaa
@@ -132603,21 +132652,21 @@ aaa
 aaa
 gFP
 lMb
-ade
+afN
 lMb
-abF
+afM
 lMb
-ade
+afN
 lMb
-abF
+afM
 lMb
-ade
+afN
 lMb
-abF
+afM
 lMb
-ade
+afN
 lMb
-abF
+afM
 lMb
 lMb
 gFP
@@ -132805,20 +132854,20 @@ bdH
 aaa
 aaa
 gFP
-aeJ
+afP
 gFP
 gFP
 gFP
 gFP
-aeJ
+afP
 gFP
 gFP
 gFP
-aeJ
+afP
 gFP
 gFP
 gFP
-aeJ
+afP
 gFP
 gFP
 gFP

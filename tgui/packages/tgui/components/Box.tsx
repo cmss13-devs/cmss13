@@ -141,7 +141,7 @@ const stringStyleMap = {
   verticalAlign: mapRawPropTo('verticalAlign'),
   width: mapUnitPropTo('width', unit),
 
-  lineHeight: (style, value) => {
+  ct: (style, value) => {
     if (typeof value === 'number') {
       style['lineHeight'] = value;
     } else if (typeof value === 'string') {

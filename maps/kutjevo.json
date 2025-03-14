@@ -12,7 +12,6 @@
         "/datum/equipment_preset/survivor/trucker/kutjevo",
         "/datum/equipment_preset/survivor/goon/kutjevo",
         "/datum/equipment_preset/survivor/corporate/kutjevo",
-        "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/civilian"
     ],
     "synth_survivor_types": [

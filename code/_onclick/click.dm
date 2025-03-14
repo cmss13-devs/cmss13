@@ -145,6 +145,9 @@
 	return
 
 /mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		if(!isstorage(targeted_atom) && !isclothing(targeted_atom) && !isweapon(targeted_atom) && !isgun(targeted_atom))
+			return
 	if(used_item)
 		var/attackby_result = targeted_atom.attackby(used_item, src, mods)
 		var/afterattack_result

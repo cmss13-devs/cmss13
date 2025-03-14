@@ -126,6 +126,8 @@
 
 		var/list/current_convo = list()
 		current_convo["user"] = log.user
+		current_convo["time"] = log.time
+		current_convo["title"] = log.title
 		current_convo["ref"] = "\ref[log]"
 		current_convo["conversation"] = log.conversation
 		logged_convos += list(current_convo)

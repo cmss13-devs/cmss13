@@ -1,7 +1,6 @@
 import { classes } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -12,8 +11,9 @@ import {
   ProgressBar,
   Stack,
   Tabs,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { TimedCallback } from './common/TimedCallback';
 
 type SelectedState = [string, string];

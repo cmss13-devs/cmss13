@@ -41,7 +41,7 @@
 
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD)
+		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD || HAS_TRAIT(H, TRAIT_HAULED))
 			return FALSE
 
 	. = ..()

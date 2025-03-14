@@ -177,8 +177,8 @@ Can look good elsewhere as well.*/
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
-	if(buckled || anchored)
-		return //it would look silly.
+	if(buckled || anchored || HAS_TRAIT(src, TRAIT_HAULED)) //it would look silly.
+		return 
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)
@@ -206,7 +206,6 @@ Can look good elsewhere as well.*/
 			pixel_y_diff = -pixel_offset
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
-
 
 /atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	if(!sections)

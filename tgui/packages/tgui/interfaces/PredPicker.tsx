@@ -2,8 +2,7 @@ import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
 import { BooleanLike } from 'common/react';
 import { capitalizeFirst } from 'common/string';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -16,8 +15,9 @@ import {
   NumberInput,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { ColorSelector } from './ColorPickerModal';
 import { HairPickerElement } from './HairPicker';
 
@@ -124,6 +124,7 @@ export const PredPicker = () => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Age">
                   <NumberInput
+                    step={1}
                     value={age}
                     minValue={175}
                     maxValue={3000}

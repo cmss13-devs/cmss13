@@ -19,7 +19,7 @@
 		if(new_sheet)
 			qdel(sheet)
 		return
-	show_browser(usr, "<body class='paper'>[new_text]</body>", "Custom paper preview", "custom_paper_preview", "size=650x700")
+	show_browser(usr, "<body class='paper'>[new_text]</body>", "Custom paper preview", "custom_paper_preview", width = 650, height = 700)
 	if(alert(usr, "Make this new content?", "Customising [new_name]", "OK", "Cancel") == "Cancel")
 		close_browser(usr, "custom_paper_preview")
 		if(new_sheet)

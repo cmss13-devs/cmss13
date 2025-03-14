@@ -1,5 +1,6 @@
-import { useBackend } from '../../backend';
-import { Box, Stack } from '../../components';
+import { useBackend } from 'tgui/backend';
+import { Box, Stack } from 'tgui/components';
+
 import { FultonMfdPanel } from './FultonPanel';
 import { MedevacMfdPanel } from './MedevacPanel';
 import { MgMfdPanel } from './MGPanel';
@@ -8,7 +9,7 @@ import { ParadropMfdPanel } from './ParadropPanel';
 import { SentryMfdPanel } from './SentryPanel';
 import { SpotlightMfdPanel } from './SpotlightPanel';
 import { mfdState, useEquipmentState } from './stateManagers';
-import { EquipmentContext } from './types';
+import type { EquipmentContext } from './types';
 
 export const SupportMfdPanel = (props: MfdProps) => {
   const { equipmentState } = useEquipmentState(props.panelStateId);

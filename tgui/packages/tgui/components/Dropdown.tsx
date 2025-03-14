@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 import { classes } from 'common/react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 

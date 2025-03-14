@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Flex,
@@ -9,8 +8,8 @@ import {
   Section,
   Slider,
   Tabs,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type STUIData = {
   tabs: Array<string>;

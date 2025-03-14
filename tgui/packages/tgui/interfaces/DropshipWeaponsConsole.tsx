@@ -1,6 +1,7 @@
-import { useBackend } from '../backend';
-import { Box, Divider, Flex, Stack } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Box, Divider, Flex, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { CasSim } from './CasSim';
 import { Dpad } from './common/Dpad';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';

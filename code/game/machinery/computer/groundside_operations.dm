@@ -100,7 +100,7 @@
 			dat += get_overwatch_info()
 
 	dat += "<BR><A href='byond://?src=\ref[user];mach_close=groundside_operations'>Close</A>"
-	show_browser(user, dat, name, "groundside_operations", "size=600x700")
+	show_browser(user, dat, name, "groundside_operations", width = 600, height = 700)
 	concurrent_users += WEAKREF(user)
 	onclose(user, "groundside_operations")
 

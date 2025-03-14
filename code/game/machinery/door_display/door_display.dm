@@ -81,7 +81,7 @@
 
 	if(!uses_tgui)
 		user.set_interaction(src)
-		show_browser(user, display_contents(user), name, "computer", "size=400x500")
+		show_browser(user, display_contents(user), name, "computer", width = 400, height = 500)
 	return
 
 /obj/structure/machinery/door_display/proc/display_contents(mob/user as mob)

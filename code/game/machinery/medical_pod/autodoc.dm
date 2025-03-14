@@ -805,7 +805,7 @@
 		else
 			dat += "The autodoc is empty."
 	dat += text("<a href='byond://?src=\ref[];mach_close=sleeper'>Close</a>", user)
-	show_browser(user, dat, "Auto-Doc Medical System", "sleeper", "size=300x400")
+	show_browser(user, dat, "Auto-Doc Medical System", "sleeper", width = 300, height = 400)
 	onclose(user, "sleeper")
 
 /obj/structure/machinery/autodoc_console/Topic(href, href_list)

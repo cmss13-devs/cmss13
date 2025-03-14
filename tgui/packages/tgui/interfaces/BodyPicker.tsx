@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -9,8 +8,8 @@ import {
   Modal,
   Stack,
   Tooltip,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type PickerData = {
   icon: string;

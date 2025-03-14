@@ -46,6 +46,11 @@
 
 	turn_off() //so engine verbs are correctly set
 
+/obj/vehicle/train/cargo/engine/Destroy(force)
+	. = ..()
+	if(!QDELETED(key))
+		QDEL_NULL(key)
+
 /obj/vehicle/train/cargo/engine/Move()
 	if(on && cell.charge < charge_use)
 		turn_off()

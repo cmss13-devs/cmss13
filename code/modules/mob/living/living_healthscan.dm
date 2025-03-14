@@ -755,7 +755,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		dat = replacetext(dat, "class='scannerb'", "style='font-weight: bold;' class='[INTERFACE_RED]'")
 		dat = replacetext(dat, "class='scannerburn'", "class='[INTERFACE_ORANGE]'")
 		dat = replacetext(dat, "class='scannerburnb'", "style='font-weight: bold;' class='[INTERFACE_ORANGE]'")
-		show_browser(user, dat, name, "handscanner", "size=500x400")
+		show_browser(user, dat, name, "handscanner", width = 500, height = 400)
 	else
 		user.show_message(dat, 1)
 

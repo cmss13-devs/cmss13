@@ -161,6 +161,12 @@ if grep -P '^(?:[^\/\n]|\/[^\/\n])*(&[ \t]*\w+[ \t]*\|[ \t]*\w+)' $code_files; t
 	st=1
 fi;
 
+part "typescript react files"
+if ls -1 tgui/**/*.jsx 2>/dev/null; then
+	echo
+	echo -e "${RED}ERROR: JSX file(s) detected, these must be converted to typescript (TSX).${NC}"
+	st=1
+fi;
 
 part "map json naming"
 if ls maps/*.json | grep -P "[A-Z]"; then

@@ -25,6 +25,7 @@ type TabProps = Partial<{
   icon: string;
   leftSlot: ReactNode;
   onClick: (e?) => void;
+  onFocus: (e?) => void;
   rightSlot: ReactNode;
   selected: boolean;
 }> &

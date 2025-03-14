@@ -184,7 +184,7 @@ log transactions
 			dat += "<input type='submit' class='button' value='Submit'><br>"
 			dat += "</form>"
 
-		show_browser(user, dat, "Weyland-Yutani Automatic Teller Machine", "atm", "size=550x650")
+		show_browser(user, dat, "Weyland-Yutani Automatic Teller Machine", "atm", width = 550, height = 650)
 	else
 		close_browser(user,"atm")
 

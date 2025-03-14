@@ -10,25 +10,25 @@
 //parent types
 
 /area/tyrargo/indoors
-	name = "Hybrisa - Indoors"
-	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+	name = "Tyrargo - Indoors"
+	icon_state = "unknown"
 	ceiling = CEILING_METAL
 //area	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_TYRARGO_CITY
 
 /area/tyrargo/outdoors
-	name = "Hybrisa - Outdoors"
-	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+	name = "Tyrargo - Outdoors"
+	icon_state = "unknown"
 	ceiling = CEILING_NONE
 //	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
 	ambience_exterior = AMBIENCE_TYRARGO_CITY
 //	soundscape_interval = 25
 
 /area/tyrargo/underground
-	name = "Out Of Bounds"
+	name = "Tyrargo - Underground"
+	icon_state = "unknown"
 	icon_state = "oob"
 	ceiling = CEILING_MAX
-	flags_area = AREA_NOTUNNEL
 
 /area/tyrargo/oob
 	name = "Out Of Bounds"

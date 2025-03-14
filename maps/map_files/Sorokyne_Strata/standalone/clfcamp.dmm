@@ -12,7 +12,7 @@
 /obj/structure/sign/banners/clf_flag{
 	pixel_y = 32
 	},
-/obj/structure/bed/hybrisa/prisonbed,
+/obj/structure/bed/hybrisa/bunkbed3,
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_dorms)
 "ac" = (
@@ -196,6 +196,22 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"dj" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = -13;
+	pixel_y = 3
+	},
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "dk" = (
 /turf/open/floor/wood/wood_broken6,
 /area/strata/ag/interior/outpost/clf_dorms)
@@ -239,6 +255,9 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"dU" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/ag/interior/mountain)
 "ef" = (
 /obj/item/device/flashlight/flare/on,
 /turf/open/floor/plating,
@@ -331,7 +350,10 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/clf)
 "ft" = (
-/obj/item/trash/crushed_cup,
+/obj/item/trash/crushed_cup{
+	pixel_x = -7;
+	pixel_y = -5
+	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "fA" = (
@@ -520,6 +542,11 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt/brown/variant_5/south,
+/area/strata/ag/exterior/paths/far_north_outpost)
+"jc" = (
+/obj/item/ammo_casing,
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "jl" = (
 /obj/structure/barricade/plasteel/wired,
@@ -872,6 +899,11 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"rQ" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/exterior/paths/far_north_outpost)
 "rU" = (
 /obj/item/trash/candy{
 	pixel_x = -7
@@ -931,7 +963,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "sz" = (
-/obj/structure/bed/hybrisa/prisonbed,
+/obj/structure/bed/hybrisa/bunkbed3,
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_dorms)
 "sC" = (
@@ -944,8 +976,9 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "tj" = (
-/obj/structure/bed/hybrisa/prisonbed{
-	pixel_x = 4
+/obj/structure/bed/hybrisa/bunkbed3{
+	pixel_x = 4;
+	buckling_x = 4
 	},
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_dorms)
@@ -1232,12 +1265,15 @@
 /area/strata/ag/exterior/paths/far_north_outpost)
 "AV" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/weapon/gun/rifle/mar40{
-	pixel_y = 6
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40{
+	pixel_x = 7;
+	pixel_y = 5
 	},
-/obj/item/ammo_magazine/rifle/mar40,
-/obj/item/ammo_magazine/rifle/mar40,
-/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 5
+	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "Bb" = (
@@ -1287,8 +1323,9 @@
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_office)
 "Ce" = (
-/obj/structure/bed/hybrisa/prisonbed{
-	pixel_x = -4
+/obj/structure/bed/hybrisa/bunkbed3{
+	pixel_x = -4;
+	buckling_x = -4
 	},
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_dorms)
@@ -1651,6 +1688,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/trash/cigbutt,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "IM" = (
@@ -2108,6 +2146,12 @@
 "Tt" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ag/exterior/paths/far_north_outpost)
+"Tu" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "Tx" = (
 /obj/item/alien_embryo,
@@ -2625,12 +2669,12 @@ cH
 cH
 cH
 cH
+dU
 cH
 cH
 cH
-cH
-cH
-cH
+dU
+dU
 cH
 cH
 Ef
@@ -2657,12 +2701,12 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
+dU
+dU
+dU
+dU
+dU
+dU
 LA
 Vf
 Es
@@ -2689,8 +2733,8 @@ tt
 cH
 cH
 cH
-cH
-cH
+dU
+dU
 eN
 eN
 eN
@@ -2723,7 +2767,7 @@ cH
 cH
 cH
 cH
-cH
+dU
 eN
 kq
 BC
@@ -2756,7 +2800,7 @@ cH
 cH
 cH
 cH
-cH
+dU
 zi
 xt
 jw
@@ -2789,7 +2833,7 @@ cH
 cH
 cH
 cH
-cH
+dU
 eN
 xt
 Bb
@@ -2822,7 +2866,7 @@ cH
 cH
 cH
 cH
-cH
+dU
 eN
 Yz
 xt
@@ -2854,8 +2898,8 @@ IC
 cH
 cH
 cH
-cH
-cH
+dU
+dU
 eN
 Ru
 gK
@@ -2887,7 +2931,7 @@ Hw
 cH
 cH
 cH
-cH
+dU
 uy
 eN
 mB
@@ -2898,7 +2942,7 @@ mB
 Zg
 kE
 AV
-hX
+rQ
 af
 It
 kE
@@ -2920,7 +2964,7 @@ oT
 cH
 cH
 cH
-cH
+dU
 uy
 uy
 HF
@@ -2930,11 +2974,11 @@ kE
 JB
 Tt
 kE
-AV
+dj
 ag
 II
 rU
-kE
+Af
 kE
 MW
 Vf
@@ -2953,7 +2997,7 @@ Kg
 cH
 cH
 cH
-cH
+dU
 mc
 Jq
 zp
@@ -2964,8 +3008,8 @@ qm
 Tt
 kE
 ft
-uM
-Fj
+Tu
+jc
 hX
 Vf
 Vf
@@ -3369,7 +3413,7 @@ Pa
 uy
 uy
 uy
-cH
+dU
 cH
 im
 Za
@@ -3400,8 +3444,8 @@ LC
 LC
 Pa
 uy
-cH
-cH
+dU
+dU
 cH
 cH
 cH
@@ -3432,8 +3476,8 @@ Pa
 qR
 oc
 Pa
-cH
-cH
+dU
+dU
 cH
 cH
 cH
@@ -3577,7 +3621,7 @@ cH
 xZ
 "}
 (36,1,1) = {"
-ae
+iM
 iM
 iM
 lC
@@ -3594,7 +3638,7 @@ Zo
 PJ
 PB
 iM
-ae
+iM
 ac
 ac
 ac
@@ -3627,7 +3671,7 @@ Zo
 PJ
 Hc
 iM
-ae
+iM
 ac
 ac
 ac
@@ -3660,7 +3704,7 @@ Zo
 PJ
 vF
 iM
-ae
+iM
 ac
 ac
 ac
@@ -3693,7 +3737,7 @@ Zo
 PJ
 iM
 iM
-ae
+iM
 ac
 ac
 ac
@@ -3725,8 +3769,8 @@ Zo
 Zo
 PJ
 iM
-ae
-ae
+iM
+iM
 ac
 ac
 ac
@@ -3758,8 +3802,8 @@ wl
 wl
 lj
 iM
-ae
-ae
+iM
+iM
 ac
 ac
 ac
@@ -3777,9 +3821,9 @@ ac
 (42,1,1) = {"
 ae
 ae
-iM
-iM
-iM
+ae
+ae
+ae
 fb
 Vf
 Vf
@@ -3791,8 +3835,8 @@ iM
 iM
 iM
 iM
-ae
-ae
+iM
+iM
 ac
 ac
 ac
@@ -3811,21 +3855,21 @@ ac
 ae
 ae
 ae
-iM
-iM
-iM
-iM
-iM
-iM
-iM
-iM
-iM
 ae
 ae
 ae
 ae
 ae
 ae
+ae
+ae
+iM
+iM
+iM
+iM
+iM
+iM
+iM
 ac
 ac
 ac

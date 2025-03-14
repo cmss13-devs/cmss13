@@ -920,7 +920,7 @@
 	vehicle.toggle_engines()
 
 /datum/action/human_action/blackfoot/toggle_targeting
-	name = "Toggle Engine Idling"
+	name = "Toggle Targeting Mode"
 	action_icon_state = "targeting-mode"
 
 /datum/action/human_action/blackfoot/toggle_targeting/action_activate()

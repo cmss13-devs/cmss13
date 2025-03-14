@@ -172,7 +172,7 @@
 		if(STATE_STOWED)
 			icon_state = "stowed"
 			overlays += image(icon, "stowed_lights")
-		if(STATE_DEPLOYED)
+		if(STATE_DEPLOYED, STATE_IDLING)
 			icon_state = "flight"
 			overlays += image(icon, "stowed_lights")
 		if(STATE_TUGGED)

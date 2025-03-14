@@ -17,7 +17,13 @@
 	)
 	fire_delay = 10 SECONDS
 
+	var/safety = TRUE
+
 /obj/item/hardpoint/primary/chimera_launchers/try_fire(atom/target, mob/living/user, params)
+	if(safety)
+		to_chat(user, SPAN_WARNING("Targeting mode is not enabled, unable to fire."))
+		return
+
 	if(ammo && ammo.current_rounds <= 0)
 		reload(user)
 		return

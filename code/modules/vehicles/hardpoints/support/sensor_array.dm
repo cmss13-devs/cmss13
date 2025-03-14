@@ -103,6 +103,13 @@
 /obj/item/hardpoint/support/sensor_array/process(delattime)
 	var/turf/blackfoot_turf = get_turf(src)
 	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
+
+	if(!blackfoot_owner)
+		return
+
+	for(var/atom/movable/screen/blackfoot/custom_screen as anything in blackfoot_owner.custom_hud)
+		custom_screen.update(blackfoot_owner.fuel, blackfoot_owner.max_fuel, blackfoot_owner.health, blackfoot_owner.maxhealth, blackfoot_owner.battery, blackfoot_owner.max_battery)
+
 	if((health <= 0) || !blackfoot_owner.visible_in_tacmap || (!is_ground_level(blackfoot_turf.z) && mode == SENSOR_MODE))
 		return
 

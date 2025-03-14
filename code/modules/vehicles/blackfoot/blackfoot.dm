@@ -1,6 +1,7 @@
 #define STATE_TUGGED "tugged"
 #define STATE_STOWED "grounded"
 #define STATE_DEPLOYED "deployed"
+#define STATE_IDLING "idling"
 #define STATE_TAKEOFF_LANDING "takeoff_landing"
 #define STATE_VTOL "vtol"
 #define STATE_FLIGHT "flight"
@@ -307,6 +308,8 @@
 	give_action(M, /datum/action/human_action/blackfoot/toggle_sensors)
 	give_action(M, /datum/action/human_action/blackfoot/access_tacmap)
 	give_action(M, /datum/action/human_action/blackfoot/toggle_nvg)
+	give_action(M, /datum/action/human_action/blackfoot/toggle_engines)
+	give_action(M, /datum/action/human_action/blackfoot/toggle_targeting)
 
 	for(var/atom/movable/screen/blackfoot/screen_to_add as anything in custom_hud)
 		M.client.add_to_screen(screen_to_add)
@@ -379,6 +382,14 @@
 	remove_action(M, /datum/action/human_action/blackfoot/toggle_sensors)
 	remove_action(M, /datum/action/human_action/blackfoot/access_tacmap)
 	remove_action(M, /datum/action/human_action/blackfoot/toggle_nvg)
+	remove_action(M, /datum/action/human_action/blackfoot/toggle_engines)
+	remove_action(M, /datum/action/human_action/blackfoot/toggle_targeting)
+
+	M.client?.mouse_pointer_icon = initial(M.client?.mouse_pointer_icon)
+	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
+	
+	if(launchers)
+		launchers.safety = TRUE
 
 	for(var/atom/movable/screen/blackfoot/screen_to_remove as anything in custom_hud)
 		M.client.remove_from_screen(screen_to_remove)
@@ -503,13 +514,14 @@
 	busy = TRUE
 	new /obj/downwash_effect(get_turf(src))
 	playsound(loc, 'sound/vehicles/vtol/takeoff.ogg', 25, FALSE)
-	addtimer(CALLBACK(src, PROC_REF(takeoff_engage_vtol)), 20 SECONDS)
+	transition_engines()
+	addtimer(CALLBACK(src, PROC_REF(takeoff_engage_vtol)), 14 SECONDS)
 
 /obj/vehicle/multitile/blackfoot/proc/takeoff_engage_vtol()
 	state = STATE_TAKEOFF_LANDING
 	update_icon()
 	playsound(loc, 'sound/vehicles/vtol/mechanical.ogg', 25, FALSE)
-	addtimer(CALLBACK(src, PROC_REF(finish_takeoff)), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(finish_takeoff)), 7 SECONDS)
 
 /obj/vehicle/multitile/blackfoot/proc/finish_takeoff()
 	flags_atom |= NO_ZFALL
@@ -552,6 +564,7 @@
 	qdel(shadow_holder)
 	flags_atom &= ~NO_ZFALL
 	state = STATE_DEPLOYED
+	transition_engines() // Idle mode by default
 	update_icon()
 	update_rear_view()
 	busy = FALSE
@@ -561,7 +574,6 @@
 
 	if(downwash)
 		qdel(downwash)
-
 
 	var/turf/possible_pad_turf = locate(x - 1, y - 1, z)
 	var/obj/structure/landing_pad = locate() in possible_pad_turf
@@ -594,6 +606,55 @@
 	update_icon()
 	busy = FALSE
 
+/obj/vehicle/multitile/blackfoot/proc/toggle_engines()
+	if(state != STATE_DEPLOYED && state != STATE_IDLING)
+		return
+
+	if(busy)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
+		return
+
+	busy = TRUE
+	if(state == STATE_DEPLOYED)
+		playsound(loc, 'sound/vehicles/vtol/enginestartup.ogg', 25, FALSE)
+	else
+		playsound(loc, 'sound/vehicles/vtol/engineshutdown.ogg', 25, FALSE)
+
+	addtimer(CALLBACK(src, PROC_REF(transition_engines)), 3 SECONDS)
+	addtimer(VARSET_CALLBACK(src, busy, FALSE), 3 SECONDS)
+
+/obj/vehicle/multitile/blackfoot/proc/transition_engines()
+	if(state == STATE_DEPLOYED)
+		var/obj/item/hardpoint/locomotion/blackfoot_thrusters/thrusters = locate() in hardpoints
+		if(!thrusters)
+			return
+		START_PROCESSING(SSobj, thrusters)
+		state = STATE_IDLING
+	else
+		var/obj/item/hardpoint/locomotion/blackfoot_thrusters/thrusters = locate() in hardpoints
+		if(!thrusters)
+			return
+		STOP_PROCESSING(SSobj, thrusters)
+		state = STATE_DEPLOYED
+
+/obj/vehicle/multitile/blackfoot/proc/toggle_targeting()
+	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
+	
+	if(!launchers)
+		return
+
+	launchers.safety = !launchers.safety
+
+	var/mob/user = seats[VEHICLE_DRIVER]
+
+	if(!user)
+		return
+
+	if(launchers.safety)
+		user.client?.mouse_pointer_icon = initial(user.client?.mouse_pointer_icon)
+	else
+		user.client?.mouse_pointer_icon = 'icons/obj/vehicles/blackfoot_cursor.dmi'
+
 /obj/vehicle/multitile/blackfoot/proc/takeoff()
 	set name = "Takeoff"
 	set desc = "Initiate the take off sequence."
@@ -616,7 +677,7 @@
 	if(!seat)
 		return
 
-	if(vehicle.state != STATE_DEPLOYED)
+	if(vehicle.state != STATE_IDLING)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in deployed mode."))
 		return
 
@@ -815,7 +876,7 @@
 #define NIGHTVISION_MODE "nightvision"
 
 /datum/action/human_action/blackfoot/toggle_nvg
-	name = "Toggle Sensors"
+	name = "Toggle Night-Vision Mode"
 	action_icon_state = "nightvision"
 
 /datum/action/human_action/blackfoot/toggle_nvg/action_activate()
@@ -844,6 +905,33 @@
 
 	vehicle.tacmap.tgui_interact(owner)
 
+/datum/action/human_action/blackfoot/toggle_engines
+	name = "Toggle Engine Idling"
+	action_icon_state = "engine-idle"
+
+/datum/action/human_action/blackfoot/toggle_engines/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
+
+	if(!istype(vehicle))
+		return
+
+	. = ..()
+
+	vehicle.toggle_engines()
+
+/datum/action/human_action/blackfoot/toggle_targeting
+	name = "Toggle Engine Idling"
+	action_icon_state = "targeting-mode"
+
+/datum/action/human_action/blackfoot/toggle_targeting/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
+
+	if(!istype(vehicle))
+		return
+
+	. = ..()
+
+	vehicle.toggle_targeting()
 
 /datum/action/human_action/vehicle_unbuckle/blackfoot
 	action_icon_state = "pilot-unbuckle"
@@ -1108,6 +1196,7 @@
 #undef STATE_TUGGED
 #undef STATE_STOWED
 #undef STATE_DEPLOYED
+#undef STATE_IDLING
 #undef STATE_TAKEOFF_LANDING
 #undef STATE_VTOL
 #undef STATE_FLIGHT

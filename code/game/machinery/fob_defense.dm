@@ -861,7 +861,9 @@
 		if(!turf.allow_construction)
 			to_chat(user, SPAN_WARNING("The [singular_name] must be constructed on a proper surface!"))
 			return
-
+	if(get_area(SSticker.mode.active_lz) != get_area(src))
+		to_chat(user, SPAN_WARNING("The [singular_name] must be constructed inside of the designated LZ!"))
+		return
 
 	for(var/obj/object in user.loc)
 		var/obj/structure/blocker/anti_cade/anti_cade = locate(/obj/structure/blocker/anti_cade) in user.loc

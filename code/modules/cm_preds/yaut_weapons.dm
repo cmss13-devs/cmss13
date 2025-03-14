@@ -1471,7 +1471,7 @@
 		return
 	if(!current_mag || current_mag.current_rounds == 1)
 		to_chat(user, SPAN_WARNING("[src] is already loaded!"))
-		return 
+		return
 	var/obj/item/arrow/attacking_arrow = attacking_item
 	if (user.r_hand != src && user.l_hand != src)
 		to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))

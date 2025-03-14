@@ -99,7 +99,6 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	data["map_fallback"] = wiki_map_fallback
 	data["last_update_time"] = last_update_time
 
-
 	return data
 
 /datum/tacmap_admin_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -139,7 +138,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 			return TRUE
 
 		if("change_zlevel")
-			last_update_time = world.time //forcing to update
+			last_update_time = world.time //forcing to update map
 
 		if("delete")
 			var/is_uscm = params["uscm"]

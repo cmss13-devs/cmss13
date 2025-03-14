@@ -371,14 +371,12 @@ SUBSYSTEM_DEF(minimaps)
 /proc/get_tacmap_data_png(faction)
 	var/list/map_list
 
-	if(faction == FACTION_MARINE)
-		if(length(GLOB.uscm_flat_tacmap_data) != 0)
-			var/datum/maps_to_update/to_add = GLOB.uscm_flat_tacmap_data[length(GLOB.uscm_flat_tacmap_data)]
-			map_list = to_add.maps
-	else if(faction == XENO_HIVE_NORMAL)
-		if(length(GLOB.xeno_flat_tacmap_data) != 0)
-			var/datum/maps_to_update/to_add = GLOB.xeno_flat_tacmap_data[length(GLOB.xeno_flat_tacmap_data)]
-			map_list = to_add.maps
+	if(faction == FACTION_MARINE && length(GLOB.uscm_flat_tacmap_data) != 0)
+		var/datum/maps_to_update/to_add = GLOB.uscm_flat_tacmap_data[length(GLOB.uscm_flat_tacmap_data)]
+		map_list = to_add.maps
+	else if(faction == XENO_HIVE_NORMAL && length(GLOB.xeno_flat_tacmap_data) != 0)
+		var/datum/maps_to_update/to_add = GLOB.xeno_flat_tacmap_data[length(GLOB.xeno_flat_tacmap_data)]
+		map_list = to_add.maps
 	else
 		return null
 
@@ -502,7 +500,7 @@ SUBSYSTEM_DEF(minimaps)
 				faction_clients += client
 	if(faction == FACTION_MARINE)
 		LAZYCLEARLIST(GLOB.uscm_unannounced_map)
-	else //if(faction == XENO_HIVE_NORMAL)
+	else if(faction == XENO_HIVE_NORMAL)
 		LAZYCLEARLIST(GLOB.xeno_unannounced_map)
 
 
@@ -517,7 +515,7 @@ SUBSYSTEM_DEF(minimaps)
 
 		if(faction == FACTION_MARINE)
 			GLOB.uscm_unannounced_map += new_flat
-		else //if(faction == XENO_HIVE_NORMAL)
+		else if(faction == XENO_HIVE_NORMAL)
 			GLOB.xeno_unannounced_map += new_flat
 
 	return TRUE
@@ -1003,6 +1001,7 @@ SUBSYSTEM_DEF(minimaps)
 
 			new_current_maps = get_unannounced_tacmap_data_png(faction)
 			old_maps = get_tacmap_data_png(faction)
+			current_svg = get_tacmap_data_svg(faction)
 
 		if("updateCanvas")
 			toolbar_updated_selection = "export"

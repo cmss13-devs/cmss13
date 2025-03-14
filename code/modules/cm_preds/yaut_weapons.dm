@@ -1571,6 +1571,7 @@
 	)
 	explo_proof = TRUE
 	unacidable = TRUE
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/quiver/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/bow())

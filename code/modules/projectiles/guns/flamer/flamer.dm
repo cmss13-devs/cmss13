@@ -108,6 +108,7 @@
 	. = ..()
 	if(.)
 		if(!current_mag || !current_mag.current_rounds)
+			click_empty(user)
 			return NONE
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()

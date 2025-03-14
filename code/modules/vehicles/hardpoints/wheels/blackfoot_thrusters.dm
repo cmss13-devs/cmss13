@@ -1,6 +1,6 @@
-/obj/item/hardpoint/locomotion/chimera_thrusters
+/obj/item/hardpoint/locomotion/blackfoot_thrusters
 	name = "\improper TJ-700 Turbojet Engines"
-	desc = "Integral to the flight and movement of the chimera."
+	desc = "Integral to the flight and movement of the blackfoot."
 	icon = 'icons/obj/vehicles/hardpoints/arc.dmi'
 
 	damage_multiplier = 0.15

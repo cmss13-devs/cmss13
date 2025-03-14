@@ -6,10 +6,10 @@
 #define STATE_FLIGHT "flight"
 #define STATE_DESTROYED "destroyed"
 
-/obj/vehicle/multitile/chimera
+/obj/vehicle/multitile/blackfoot
 	name = "AD-71E Blackfoot"
 	desc = "A twin tilt-jet VTOL, the Blackfoot is the Bearcat's ugly big sister. For what she lacks in fire power and agility, she more than makes up for in utility and love handles. First tested by UA Northridge on American soil, the Blackfoot is currently undergoing active combat trials."
-	icon = 'icons/obj/vehicles/chimera.dmi'
+	icon = 'icons/obj/vehicles/blackfoot.dmi'
 	icon_state = "stowed"
 
 	bound_width = 96
@@ -21,7 +21,7 @@
 	bound_x = -32
 	bound_y = 0
 
-	interior_map = /datum/map_template/interior/chimera
+	interior_map = /datum/map_template/interior/blackfoot
 
 	move_max_momentum = 2.2
 	move_momentum_build_factor = 1.5
@@ -40,7 +40,7 @@
 	required_skill = SKILL_PILOT_EXPERT
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/locomotion/chimera_thrusters,
+		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 		/obj/item/hardpoint/primary/chimera_launchers,
 		/obj/item/hardpoint/support/sensor_array,
 	)
@@ -69,7 +69,7 @@
 	var/last_flight_sound = 0
 	var/flight_sound_cooldown = 4 SECONDS
 
-	var/obj/chimera_shadow/shadow_holder
+	var/obj/blackfoot_shadow/shadow_holder
 
 	var/busy = FALSE
 
@@ -81,54 +81,54 @@
 
 	var/previous_move_delay
 
-	var/list/atom/movable/screen/chimera/custom_hud = list(
-		new /atom/movable/screen/chimera/fuel(),
-		new /atom/movable/screen/chimera/integrity(),
-		new /atom/movable/screen/chimera/battery()
+	var/list/atom/movable/screen/blackfoot/custom_hud = list(
+		new /atom/movable/screen/blackfoot/fuel(),
+		new /atom/movable/screen/blackfoot/integrity(),
+		new /atom/movable/screen/blackfoot/battery()
 	)
 
-	var/obj/structure/interior_exit/vehicle/chimera/back/back_door
+	var/obj/structure/interior_exit/vehicle/blackfoot/back/back_door
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 
-/datum/tacmap/drawing/chimera/ui_status(mob/user)
-	var/obj/vehicle/multitile/chimera/chimera_owner = owner
+/datum/tacmap/drawing/blackfoot/ui_status(mob/user)
+	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
 
-	if(chimera_owner.seats[VEHICLE_DRIVER] != user)
+	if(blackfoot_owner.seats[VEHICLE_DRIVER] != user)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE
 
-/obj/chimera_shadow
-	icon = 'icons/obj/vehicles/chimera.dmi'
+/obj/blackfoot_shadow
+	icon = 'icons/obj/vehicles/blackfoot.dmi'
 	pixel_x = -64
 	pixel_y = -160
 	layer = ABOVE_MOB_LAYER
 
 /obj/downwash_effect
-	icon = 'icons/obj/vehicles/chimera.dmi'
+	icon = 'icons/obj/vehicles/blackfoot.dmi'
 	icon_state = "downwash"
 	pixel_x = -64
 	pixel_y = -32
 
-/obj/vehicle/multitile/chimera/Initialize(mapload, ...)
+/obj/vehicle/multitile/blackfoot/Initialize(mapload, ...)
 	. = ..()
-	add_hardpoint(new /obj/item/hardpoint/locomotion/chimera_thrusters)
+	add_hardpoint(new /obj/item/hardpoint/locomotion/blackfoot_thrusters)
 	add_hardpoint(new /obj/item/hardpoint/support/sensor_array)
 	var/obj/item/hardpoint/primary/chimera_launchers/launchers = new()
 	add_hardpoint(launchers)
 	active_hp[VEHICLE_DRIVER] = launchers
-	tacmap = new /datum/tacmap/drawing/chimera(src, minimap_type)
+	tacmap = new /datum/tacmap/drawing/blackfoot(src, minimap_type)
 	update_icon()
 
-/obj/vehicle/multitile/chimera/Destroy()
+/obj/vehicle/multitile/blackfoot/Destroy()
 	QDEL_NULL(shadow_holder)
 
 	. = ..()
 
-/obj/vehicle/multitile/chimera/attackby(obj/item/attack_item, mob/user)
+/obj/vehicle/multitile/blackfoot/attackby(obj/item/attack_item, mob/user)
 	if(istype(attack_item, /obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo))
 		var/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo/ammo = attack_item
 		var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
@@ -142,7 +142,7 @@
 
 	. = ..()
 
-/obj/vehicle/multitile/chimera/load_role_reserved_slots()
+/obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
 	RRS.roles = list(JOB_OPERATIONS_PILOT)
@@ -155,7 +155,7 @@
 	RRS.total = 1
 	role_reserved_slots += RRS
 
-/obj/vehicle/multitile/chimera/update_icon()
+/obj/vehicle/multitile/blackfoot/update_icon()
 	. = ..()
 
 	switch (state)
@@ -186,7 +186,7 @@
 	if(shadow_holder)
 		shadow_holder.icon_state = "[icon_state]_shadow"
 
-/obj/vehicle/multitile/chimera/relaymove(mob/user, direction)
+/obj/vehicle/multitile/blackfoot/relaymove(mob/user, direction)
 	if(state == STATE_TUGGED)
 		. = ..()
 
@@ -215,7 +215,7 @@
 
 	try_rotate(turning_angle(dir, direction))
 
-/obj/vehicle/multitile/chimera/try_rotate(deg)
+/obj/vehicle/multitile/blackfoot/try_rotate(deg)
 	. = ..()
 
 	if(!.)
@@ -224,7 +224,7 @@
 	shadow_holder.dir = dir
 	last_turn = world.time
 
-/obj/vehicle/multitile/chimera/process(deltatime)
+/obj/vehicle/multitile/blackfoot/process(deltatime)
 	if (state == STATE_FLIGHT)
 		overlays -= thrust_overlay
 		pre_movement(dir)
@@ -235,7 +235,7 @@
 		last_flight_sound = world.time
 		playsound(loc, 'sound/vehicles/vtol/exteriorflight.ogg', 25, FALSE)
 
-	for(var/atom/movable/screen/chimera/custom_screen as anything in custom_hud)
+	for(var/atom/movable/screen/blackfoot/custom_screen as anything in custom_hud)
 		custom_screen.update(fuel, max_fuel, health, maxhealth, battery, max_battery)
 
 	if(state == STATE_VTOL)
@@ -250,7 +250,7 @@
 	if(back_door.open)
 		update_rear_view()
 
-/obj/vehicle/multitile/chimera/proc/crash()
+/obj/vehicle/multitile/blackfoot/proc/crash()
 	for(var/mob/living/passenger in interior.get_passengers())
 		var/turf/fall_turf = locate(x + rand(-5, 5), y + rand(-5, 5), z)
 
@@ -269,11 +269,11 @@
 	update_icon()
 	var/turf/crash_turf = SSmapping.get_turf_below(get_turf(src))
 	forceMove(crash_turf)
-	cell_explosion(crash_turf, 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("chimera crash"))
+	cell_explosion(crash_turf, 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("blackfoot crash"))
 	qdel(shadow_holder)
 	entrances = null
 
-/obj/vehicle/multitile/chimera/before_move(direction)
+/obj/vehicle/multitile/blackfoot/before_move(direction)
 	if(state != STATE_FLIGHT && state != STATE_VTOL)
 		return
 
@@ -285,7 +285,7 @@
 	shadow_holder.dir = dir
 	shadow_holder.forceMove(below)
 
-/obj/vehicle/multitile/chimera/add_seated_verbs(mob/living/M, seat)
+/obj/vehicle/multitile/blackfoot/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	add_verb(M.client, list(
@@ -293,36 +293,36 @@
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
-		/obj/vehicle/multitile/chimera/proc/takeoff,
-		/obj/vehicle/multitile/chimera/proc/land,
-		/obj/vehicle/multitile/chimera/proc/toggle_vtol,
-		/obj/vehicle/multitile/chimera/proc/toggle_stow
+		/obj/vehicle/multitile/blackfoot/proc/takeoff,
+		/obj/vehicle/multitile/blackfoot/proc/land,
+		/obj/vehicle/multitile/blackfoot/proc/toggle_vtol,
+		/obj/vehicle/multitile/blackfoot/proc/toggle_stow
 	))
 
-	give_action(M, /datum/action/human_action/chimera/takeoff)
-	give_action(M, /datum/action/human_action/chimera/land)
-	give_action(M, /datum/action/human_action/chimera/toggle_vtol)
-	give_action(M, /datum/action/human_action/chimera/toggle_stow)
-	give_action(M, /datum/action/human_action/chimera/disconnect_tug)
-	give_action(M, /datum/action/human_action/chimera/toggle_sensors)
-	give_action(M, /datum/action/human_action/chimera/access_tacmap)
-	give_action(M, /datum/action/human_action/chimera/toggle_nvg)
+	give_action(M, /datum/action/human_action/blackfoot/takeoff)
+	give_action(M, /datum/action/human_action/blackfoot/land)
+	give_action(M, /datum/action/human_action/blackfoot/toggle_vtol)
+	give_action(M, /datum/action/human_action/blackfoot/toggle_stow)
+	give_action(M, /datum/action/human_action/blackfoot/disconnect_tug)
+	give_action(M, /datum/action/human_action/blackfoot/toggle_sensors)
+	give_action(M, /datum/action/human_action/blackfoot/access_tacmap)
+	give_action(M, /datum/action/human_action/blackfoot/toggle_nvg)
 
-	for(var/atom/movable/screen/chimera/screen_to_add as anything in custom_hud)
+	for(var/atom/movable/screen/blackfoot/screen_to_add as anything in custom_hud)
 		M.client.add_to_screen(screen_to_add)
 		screen_to_add.update(fuel, max_fuel, health, maxhealth, battery, max_battery)
 
-/atom/movable/screen/chimera
-	icon = 'icons/obj/vehicles/chimera_hud.dmi'
+/atom/movable/screen/blackfoot
+	icon = 'icons/obj/vehicles/blackfoot_hud.dmi'
 
-/atom/movable/screen/chimera/proc/update(fuel, max_fuel, health, max_health, battery, max_battery)
+/atom/movable/screen/blackfoot/proc/update(fuel, max_fuel, health, max_health, battery, max_battery)
 	return
 
-/atom/movable/screen/chimera/fuel
+/atom/movable/screen/blackfoot/fuel
 	icon_state = "fuel"
 	screen_loc = "WEST,CENTER"
 
-/atom/movable/screen/chimera/fuel/update(fuel, max_fuel, health, max_health, battery, max_battery)
+/atom/movable/screen/blackfoot/fuel/update(fuel, max_fuel, health, max_health, battery, max_battery)
 	var/fuel_percent = min(round(fuel / max_fuel * 100), 99)
 	var/tens = round(fuel_percent / 10)
 	var/digits = fuel_percent % 10
@@ -331,11 +331,11 @@
 	overlays += image(icon, "[tens]", pixel_y = -8, pixel_x = -1)
 	overlays += image(icon, "[digits]", pixel_y = -8, pixel_x = 4)
 
-/atom/movable/screen/chimera/integrity
+/atom/movable/screen/blackfoot/integrity
 	icon_state = "integrity"
 	screen_loc = "WEST,CENTER+1"
 
-/atom/movable/screen/chimera/integrity/update(fuel, max_fuel, health, max_health, battery, max_battery)
+/atom/movable/screen/blackfoot/integrity/update(fuel, max_fuel, health, max_health, battery, max_battery)
 	var/integrity = min(round(health / max_health * 100), 99)
 	var/tens = round(integrity / 10)
 	var/digits = integrity % 10
@@ -344,11 +344,11 @@
 	overlays += image(icon, "[tens]", pixel_y = -8, pixel_x = -1)
 	overlays += image(icon, "[digits]", pixel_y = -8, pixel_x = 4)
 
-/atom/movable/screen/chimera/battery
+/atom/movable/screen/blackfoot/battery
 	icon_state = "battery"
 	screen_loc = "WEST,CENTER+2"
 
-/atom/movable/screen/chimera/battery/update(fuel, max_fuel, health, max_health, battery, max_battery)
+/atom/movable/screen/blackfoot/battery/update(fuel, max_fuel, health, max_health, battery, max_battery)
 	var/battery_percent = min(round(battery / max_battery * 100), 99)
 	var/tens = round(battery_percent / 10)
 	var/digits = battery_percent % 10
@@ -357,7 +357,7 @@
 	overlays += image(icon, "[tens]", pixel_y = 0, pixel_x = 0)
 	overlays += image(icon, "[digits]", pixel_y = 0, pixel_x = 5)
 
-/obj/vehicle/multitile/chimera/remove_seated_verbs(mob/living/M, seat)
+/obj/vehicle/multitile/blackfoot/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	remove_verb(M.client, list(
@@ -365,34 +365,34 @@
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
-		/obj/vehicle/multitile/chimera/proc/takeoff,
-		/obj/vehicle/multitile/chimera/proc/land,
-		/obj/vehicle/multitile/chimera/proc/toggle_vtol,
-		/obj/vehicle/multitile/chimera/proc/toggle_stow
+		/obj/vehicle/multitile/blackfoot/proc/takeoff,
+		/obj/vehicle/multitile/blackfoot/proc/land,
+		/obj/vehicle/multitile/blackfoot/proc/toggle_vtol,
+		/obj/vehicle/multitile/blackfoot/proc/toggle_stow
 	))
 
-	remove_action(M, /datum/action/human_action/chimera/takeoff)
-	remove_action(M, /datum/action/human_action/chimera/land)
-	remove_action(M, /datum/action/human_action/chimera/toggle_vtol)
-	remove_action(M, /datum/action/human_action/chimera/toggle_stow)
-	remove_action(M, /datum/action/human_action/chimera/disconnect_tug)
-	remove_action(M, /datum/action/human_action/chimera/toggle_sensors)
-	remove_action(M, /datum/action/human_action/chimera/access_tacmap)
-	remove_action(M, /datum/action/human_action/chimera/toggle_nvg)
+	remove_action(M, /datum/action/human_action/blackfoot/takeoff)
+	remove_action(M, /datum/action/human_action/blackfoot/land)
+	remove_action(M, /datum/action/human_action/blackfoot/toggle_vtol)
+	remove_action(M, /datum/action/human_action/blackfoot/toggle_stow)
+	remove_action(M, /datum/action/human_action/blackfoot/disconnect_tug)
+	remove_action(M, /datum/action/human_action/blackfoot/toggle_sensors)
+	remove_action(M, /datum/action/human_action/blackfoot/access_tacmap)
+	remove_action(M, /datum/action/human_action/blackfoot/toggle_nvg)
 
-	for(var/atom/movable/screen/chimera/screen_to_remove as anything in custom_hud)
+	for(var/atom/movable/screen/blackfoot/screen_to_remove as anything in custom_hud)
 		M.client.remove_from_screen(screen_to_remove)
 
 	SStgui.close_user_uis(M, src)
 
-/obj/vehicle/multitile/chimera/give_seated_mob_actions(mob/seated_mob)
-	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle/chimera)
+/obj/vehicle/multitile/blackfoot/give_seated_mob_actions(mob/seated_mob)
+	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle/blackfoot)
 
-/obj/vehicle/multitile/chimera/Collided(atom/movable/collided_atom)
+/obj/vehicle/multitile/blackfoot/Collided(atom/movable/collided_atom)
 	if(state != STATE_STOWED)
 		return
 
-	if(!istype(collided_atom, /obj/structure/chimera_tug))
+	if(!istype(collided_atom, /obj/structure/blackfoot_tug))
 		return
 
 	if(collided_atom.dir != REVERSE_DIR(dir))
@@ -404,7 +404,7 @@
 	move_delay = VEHICLE_SPEED_NORMAL
 	update_icon()
 
-/obj/vehicle/multitile/chimera/proc/disconnect_tug()
+/obj/vehicle/multitile/blackfoot/proc/disconnect_tug()
 	if(state != STATE_TUGGED)
 		return
 
@@ -424,11 +424,11 @@
 			disconnect_turf = locate(x - 2, y, z)
 
 	move_delay = previous_move_delay
-	var/obj/structure/chimera_tug/tug = new(disconnect_turf)
+	var/obj/structure/blackfoot_tug/tug = new(disconnect_turf)
 	tug.dir = dir
 
-/obj/vehicle/multitile/chimera/proc/update_rear_view()
-	var/turf/open_space/chimera/new_turf = get_turf(back_door)
+/obj/vehicle/multitile/blackfoot/proc/update_rear_view()
+	var/turf/open_space/blackfoot/new_turf = get_turf(back_door)
 	new_turf = locate(new_turf.x, new_turf.y + 1, new_turf.z)
 
 	var/turf/rear_turf
@@ -458,7 +458,7 @@
 	for(var/obj/vis_contents_holder/vis_holder in new_turf)
 		vis_holder.transform = transform_matrix
 
-/obj/vehicle/multitile/chimera/proc/toggle_sensors(mode)
+/obj/vehicle/multitile/blackfoot/proc/toggle_sensors(mode)
 	var/obj/item/hardpoint/support/sensor_array/sensors = locate() in hardpoints
 
 	if(!sensors)
@@ -472,23 +472,23 @@
 	else
 		to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Turned sensor array off."))
 
-/obj/vehicle/multitile/chimera/proc/toggle_rear_door()
+/obj/vehicle/multitile/blackfoot/proc/toggle_rear_door()
 	back_door.toggle_open()
 
 	if(back_door.open)
 		var/turf/back_door_turf = get_turf(back_door)
 		back_door_turf = locate(back_door_turf.x, back_door_turf.y + 1, back_door_turf.z)
-		back_door_turf.ChangeTurf(/turf/open_space/chimera)
+		back_door_turf.ChangeTurf(/turf/open_space/blackfoot)
 		update_rear_view()
 	else
 		addtimer(CALLBACK(src, PROC_REF(finish_close_rear_door)), 9 DECISECONDS, TIMER_UNIQUE|TIMER_OVERRIDE) // Account for animation time
 
-/obj/vehicle/multitile/chimera/proc/finish_close_rear_door()
+/obj/vehicle/multitile/blackfoot/proc/finish_close_rear_door()
 	var/turf/back_door_turf = get_turf(back_door)
 	back_door_turf = locate(back_door_turf.x, back_door_turf.y + 1, back_door_turf.z)
 	back_door_turf.ChangeTurf(/turf/open/void/vehicle)
 
-/obj/vehicle/multitile/chimera/proc/start_takeoff()
+/obj/vehicle/multitile/blackfoot/proc/start_takeoff()
 	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(get_turf(src), 3, 3, -1, 0))
 		var/area/takeoff_turf_area = get_area(takeoff_turf)
 
@@ -505,13 +505,13 @@
 	playsound(loc, 'sound/vehicles/vtol/takeoff.ogg', 25, FALSE)
 	addtimer(CALLBACK(src, PROC_REF(takeoff_engage_vtol)), 20 SECONDS)
 
-/obj/vehicle/multitile/chimera/proc/takeoff_engage_vtol()
+/obj/vehicle/multitile/blackfoot/proc/takeoff_engage_vtol()
 	state = STATE_TAKEOFF_LANDING
 	update_icon()
 	playsound(loc, 'sound/vehicles/vtol/mechanical.ogg', 25, FALSE)
 	addtimer(CALLBACK(src, PROC_REF(finish_takeoff)), 10 SECONDS)
 
-/obj/vehicle/multitile/chimera/proc/finish_takeoff()
+/obj/vehicle/multitile/blackfoot/proc/finish_takeoff()
 	flags_atom |= NO_ZFALL
 	state = STATE_VTOL
 	update_icon()
@@ -523,7 +523,7 @@
 	START_PROCESSING(SSsuperfastobj, src)
 	busy = FALSE
 
-/obj/vehicle/multitile/chimera/proc/start_landing()
+/obj/vehicle/multitile/blackfoot/proc/start_landing()
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
 
 	for(var/turf/landing_turf in CORNER_BLOCK_OFFSET(below_turf, 3, 3, -1, 0))
@@ -546,7 +546,7 @@
 	playsound(loc, 'sound/vehicles/vtol/landing.ogg', 25, FALSE)
 	addtimer(CALLBACK(src, PROC_REF(finish_landing)), 18 SECONDS)
 
-/obj/vehicle/multitile/chimera/proc/finish_landing()
+/obj/vehicle/multitile/blackfoot/proc/finish_landing()
 	STOP_PROCESSING(SSsuperfastobj, src)
 	forceMove(SSmapping.get_turf_below(get_turf(src)))
 	qdel(shadow_holder)
@@ -572,7 +572,7 @@
 	to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Landing pad detected, Starting fueling procedures."))
 	START_PROCESSING(SSobj, landing_pad)
 
-/obj/vehicle/multitile/chimera/proc/toggle_stowed()
+/obj/vehicle/multitile/blackfoot/proc/toggle_stowed()
 	if(state != STATE_DEPLOYED && state != STATE_STOWED)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can only do this while in stowed or deployed mode."))
 		return
@@ -585,7 +585,7 @@
 	playsound(loc, 'sound/vehicles/vtol/mechanical.ogg', 25, FALSE)
 	addtimer(CALLBACK(src, PROC_REF(transition_stowed)), 4 SECONDS)
 
-/obj/vehicle/multitile/chimera/proc/transition_stowed()
+/obj/vehicle/multitile/blackfoot/proc/transition_stowed()
 	if(state == STATE_DEPLOYED)
 		state = STATE_STOWED
 	else
@@ -594,7 +594,7 @@
 	update_icon()
 	busy = FALSE
 
-/obj/vehicle/multitile/chimera/proc/takeoff()
+/obj/vehicle/multitile/blackfoot/proc/takeoff()
 	set name = "Takeoff"
 	set desc = "Initiate the take off sequence."
 	set category = "Vehicle"
@@ -603,7 +603,7 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/chimera/vehicle = user.interactee
+	var/obj/vehicle/multitile/blackfoot/vehicle = user.interactee
 	if(!istype(vehicle))
 		return
 
@@ -623,7 +623,7 @@
 	vehicle.start_takeoff()
 	return
 
-/obj/vehicle/multitile/chimera/proc/toggle_vtol()
+/obj/vehicle/multitile/blackfoot/proc/toggle_vtol()
 	set name = "Toggle VTOL"
 	set desc = "Toggle VTOL mode."
 	set category = "Vehicle"
@@ -632,7 +632,7 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/chimera/vehicle = user.interactee
+	var/obj/vehicle/multitile/blackfoot/vehicle = user.interactee
 	if(!istype(vehicle))
 		return
 
@@ -659,7 +659,7 @@
 		vehicle.state = STATE_FLIGHT
 		vehicle.update_icon()
 
-/obj/vehicle/multitile/chimera/proc/land()
+/obj/vehicle/multitile/blackfoot/proc/land()
 	set name = "Land"
 	set desc = "Initiate the landing sequence."
 	set category = "Vehicle"
@@ -668,7 +668,7 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/chimera/vehicle = user.interactee
+	var/obj/vehicle/multitile/blackfoot/vehicle = user.interactee
 	if(!istype(vehicle))
 		return
 
@@ -687,7 +687,7 @@
 
 	vehicle.start_landing()
 
-/obj/vehicle/multitile/chimera/proc/toggle_stow()
+/obj/vehicle/multitile/blackfoot/proc/toggle_stow()
 	set name = "Toggle Stow Mode"
 	set desc = "Toggle between stowed and deployed mode."
 	set category = "Vehicle"
@@ -696,7 +696,7 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/chimera/vehicle = user.interactee
+	var/obj/vehicle/multitile/blackfoot/vehicle = user.interactee
 	if(!istype(vehicle))
 		return
 
@@ -713,23 +713,23 @@
 	return
 
 
-/datum/action/human_action/chimera/New(Target, obj/item/holder)
+/datum/action/human_action/blackfoot/New(Target, obj/item/holder)
 	. = ..()
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
-/datum/action/human_action/chimera/action_activate()
+/datum/action/human_action/blackfoot/action_activate()
 	. = ..()
 
 	playsound(owner.loc, 'sound/vehicles/vtol/buttonpress.ogg', 25, FALSE)
 
-/datum/action/human_action/chimera/takeoff
+/datum/action/human_action/blackfoot/takeoff
 	name = "Takeoff"
 	action_icon_state = "takeoff"
 
-/datum/action/human_action/chimera/takeoff/action_activate()
-	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+/datum/action/human_action/blackfoot/takeoff/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
 
 	if(!istype(vehicle))
 		return
@@ -738,12 +738,12 @@
 
 	vehicle.takeoff()
 
-/datum/action/human_action/chimera/land
+/datum/action/human_action/blackfoot/land
 	name = "Land"
 	action_icon_state = "land"
 
-/datum/action/human_action/chimera/land/action_activate()
-	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+/datum/action/human_action/blackfoot/land/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
 
 	if(!istype(vehicle))
 		return
@@ -752,12 +752,12 @@
 
 	vehicle.land()
 
-/datum/action/human_action/chimera/toggle_vtol
+/datum/action/human_action/blackfoot/toggle_vtol
 	name = "Toggle VTOL"
 	action_icon_state = "vtol-mode-transition"
 
-/datum/action/human_action/chimera/toggle_vtol/action_activate()
-	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+/datum/action/human_action/blackfoot/toggle_vtol/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
 
 	if(!istype(vehicle))
 		return
@@ -766,12 +766,12 @@
 
 	vehicle.toggle_vtol()
 
-/datum/action/human_action/chimera/toggle_stow
+/datum/action/human_action/blackfoot/toggle_stow
 	name = "Toggle Stow Mode"
 	action_icon_state = "stow-mode-transition"
 
-/datum/action/human_action/chimera/toggle_stow/action_activate()
-	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+/datum/action/human_action/blackfoot/toggle_stow/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
 
 	if(!istype(vehicle))
 		return
@@ -780,12 +780,12 @@
 
 	vehicle.toggle_stow()
 
-/datum/action/human_action/chimera/disconnect_tug
+/datum/action/human_action/blackfoot/disconnect_tug
 	name = "Disconnect Tug"
 	action_icon_state = "tug-disconnect"
 
-/datum/action/human_action/chimera/disconnect_tug/action_activate()
-	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+/datum/action/human_action/blackfoot/disconnect_tug/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
 
 	if(!istype(vehicle))
 		return
@@ -796,12 +796,12 @@
 
 #define SENSOR_MODE "sensor"
 
-/datum/action/human_action/chimera/toggle_sensors
+/datum/action/human_action/blackfoot/toggle_sensors
 	name = "Toggle Sensors"
 	action_icon_state = "radar-ping"
 
-/datum/action/human_action/chimera/toggle_sensors/action_activate()
-	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+/datum/action/human_action/blackfoot/toggle_sensors/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
 
 	if(!istype(vehicle))
 		return
@@ -814,12 +814,12 @@
 
 #define NIGHTVISION_MODE "nightvision"
 
-/datum/action/human_action/chimera/toggle_nvg
+/datum/action/human_action/blackfoot/toggle_nvg
 	name = "Toggle Sensors"
 	action_icon_state = "nightvision"
 
-/datum/action/human_action/chimera/toggle_nvg/action_activate()
-	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+/datum/action/human_action/blackfoot/toggle_nvg/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
 	
 	if(!istype(vehicle))
 		return
@@ -830,12 +830,12 @@
 
 #undef NIGHTVISION_MODE
 
-/datum/action/human_action/chimera/access_tacmap
+/datum/action/human_action/blackfoot/access_tacmap
 	name = "Access Tacmap"
 	action_icon_state = "minimap-vtol"
 
-/datum/action/human_action/chimera/access_tacmap/action_activate()
-	var/obj/vehicle/multitile/chimera/vehicle = owner.interactee
+/datum/action/human_action/blackfoot/access_tacmap/action_activate()
+	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
 
 	if(!istype(vehicle))
 		return
@@ -845,13 +845,13 @@
 	vehicle.tacmap.tgui_interact(owner)
 
 
-/datum/action/human_action/vehicle_unbuckle/chimera
+/datum/action/human_action/vehicle_unbuckle/blackfoot
 	action_icon_state = "pilot-unbuckle"
 
-/obj/structure/chimera_tug
+/obj/structure/blackfoot_tug
 	name = "UG8 Aerospace Tug"
 	desc = "A rugged and durable self-propelled front-gear tug designed to allow light aircraft to taxi short distances without powered landing gear. The tug, while large, and easily be moved around by a single crewman. It can be manually attached to the front of an aircraft, giving movement control over to the pilot. The UG8 model was created by UA Northridge in response to a compressor burst incident on the USS Shadow Line. Rest his soul."
-	icon = 'icons/obj/vehicles/chimera_tug.dmi'
+	icon = 'icons/obj/vehicles/blackfoot_tug.dmi'
 	icon_state = "aerospace-tug"
 	density = TRUE
 	anchored = FALSE
@@ -862,7 +862,7 @@
 /obj/structure/landing_pad_folded
 	name = "M9AB Landing Pad"
 	desc = "A specially fabricated ultra-light, carbon-fiber, fiberglass reinforced, fuel saturated foldable landing pad designed for quick in-field deployment. VTOL aircraft can be automatically refueled by landing directly on this pad, taking fuel in at a slow rate through a emissive membrane sealed into the pad layer. It is firm, but malleable, like a water bed full of tar."
-	icon = 'icons/obj/vehicles/chimera_structures.dmi'
+	icon = 'icons/obj/vehicles/blackfoot_structures.dmi'
 	icon_state = "landing-pad-folded"
 	density = TRUE
 	anchored = FALSE
@@ -902,16 +902,16 @@
 	qdel(src)
 
 /obj/item/landing_pad_light
-	name = "M3 Landing Pad Light
+	name = "M3 Landing Pad Light"
 	desc = "It doesn't get more simple than this. It's a light stick with 1/4-20 threaded ends to fasten directly into the corners of the M9AB landing pad. It's like a glowstick made out of glass, at the mere price of $20,000 taxpayer dollars a pop."
-	icon = 'icons/obj/vehicles/chimera_peripherals.dmi'
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
 	icon_state = "landing pad light"
 	layer = BELOW_MOB_LAYER
 
 /obj/item/flight_cpu
 	name = "GZ0 Operations Terminal"
 	desc = "A rugged and durable operations computer designed for quick deployment at a field landing zone, made to link up directly to the M9AB landing pad and provide optimized fueling and charging data to a docked aircraft."
-	icon = 'icons/obj/vehicles/chimera_peripherals.dmi'
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
 	icon_state = "flightcpu-crate"
 	layer = BELOW_MOB_LAYER
 
@@ -956,7 +956,7 @@
 	var/list/data = list()
 
 	var/turf/center_turf = locate(x + 2, y + 1, z)
-	var/obj/vehicle/multitile/chimera/aircraft = locate() in center_turf
+	var/obj/vehicle/multitile/blackfoot/aircraft = locate() in center_turf
 	if(aircraft)
 		data["vtol_detected"] = TRUE
 		data["fuel"] = aircraft.fuel
@@ -971,7 +971,7 @@
 	. = ..()
 
 	var/turf/center_turf = locate(x + 2, y + 1, z)
-	var/obj/vehicle/multitile/chimera/parked_aircraft = locate() in center_turf
+	var/obj/vehicle/multitile/blackfoot/parked_aircraft = locate() in center_turf
 
 	if(!parked_aircraft)
 		return
@@ -986,7 +986,7 @@
 
 /obj/item/flight_cpu/process(deltatime)
 	var/turf/center_turf = locate(x + 2, y + 1, z)
-	var/obj/vehicle/multitile/chimera/parked_aircraft = locate() in center_turf
+	var/obj/vehicle/multitile/blackfoot/parked_aircraft = locate() in center_turf
 
 	if(!parked_aircraft)
 		STOP_PROCESSING(SSobj, src)
@@ -1003,14 +1003,14 @@
 /obj/item/fuel_pump
 	name = "M6G Short-Cycle Pump"
 	desc = "Another peripheral system of the M9AB landing pad, a rotary driven pumping mechanism with a low head-pressure resevoir encased in a shell made out of air-grade aluminium and inconel fittings. You don't know how it works, it just does."
-	icon = 'icons/obj/vehicles/chimera_peripherals.dmi'
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
 	icon_state = "fuelpump-crate"
 	layer = BELOW_MOB_LAYER
 
 /obj/structure/landing_pad
 	name = "M9AB Landing Pad"
 	desc = "A specially fabricated ultra-light, carbon-fiber, fiberglass reinforced, fuel saturated foldable landing pad designed for quick in-field deployment. VTOL aircraft can be automatically refueled by landing directly on this pad, taking fuel in at a slow rate through a emissive membrane sealed into the pad layer. It is firm, but malleable, like a water bed full of tar."
-	icon = 'icons/obj/vehicles/chimera_landing_pad.dmi'
+	icon = 'icons/obj/vehicles/blackfoot_landing_pad.dmi'
 	icon_state = "pad"
 	light_pixel_x = 48
 	light_pixel_y = 48
@@ -1024,7 +1024,7 @@
 
 /obj/structure/landing_pad/process(deltatime)
 	var/turf/center_turf = locate(x + 1, y + 1, z)
-	var/obj/vehicle/multitile/chimera/parked_aircraft = locate() in center_turf.contents
+	var/obj/vehicle/multitile/blackfoot/parked_aircraft = locate() in center_turf.contents
 
 	if(!parked_aircraft)
 		STOP_PROCESSING(SSobj, src)
@@ -1070,7 +1070,7 @@
 		hit_item.name = "flight cpu"
 		hit_item.pixel_x = -7
 		hit_item.pixel_y = -2
-		hit_item.icon = 'icons/obj/vehicles/chimera_structures.dmi'
+		hit_item.icon = 'icons/obj/vehicles/blackfoot_structures.dmi'
 		hit_item.icon_state = "flight-cpu"
 		flight_cpu_installed = TRUE
 		return
@@ -1088,13 +1088,13 @@
 		hit_item.name = "fuel pump"
 		hit_item.pixel_x = -25
 		hit_item.pixel_y = 29
-		hit_item.icon = 'icons/obj/vehicles/chimera_structures.dmi'
+		hit_item.icon = 'icons/obj/vehicles/blackfoot_structures.dmi'
 		hit_item.icon_state = "fuel pump"
 		fuelpump_installed = TRUE
 		return
 
-/obj/structure/largecrate/supply/chimera_peripherals
-	name = "\improper chimera peripherals crate"
+/obj/structure/largecrate/supply/blackfoot_peripherals
+	name = "\improper blackfoot peripherals crate"
 	desc = "A supply crate containig the peripherals for the VTOL landing pad."
 	supplies = list(
 		/obj/item/fuel_pump = 1,

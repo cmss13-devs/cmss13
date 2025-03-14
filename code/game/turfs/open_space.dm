@@ -73,20 +73,20 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/is_weedable()
 	return NOT_WEEDABLE
 
-/turf/open_space/chimera
+/turf/open_space/blackfoot
 	var/target_x = 1
 	var/target_y = 1
 	var/target_z = 1
 	var/backdrop = FALSE
 	var/should_fall = FALSE
 
-/turf/open_space/chimera/attack_hand(mob/user)
+/turf/open_space/blackfoot/attack_hand(mob/user)
 	return
 
-/turf/open_space/chimera/get_projected_turf()
+/turf/open_space/blackfoot/get_projected_turf()
 	return locate(target_x, target_y, target_z)
 
-/turf/open_space/chimera/update_vis_contents()
+/turf/open_space/blackfoot/update_vis_contents()
 	if(!istransparentturf(src))
 		return
 
@@ -103,7 +103,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		below = SSmapping.get_turf_below(below)
 		depth++
 
-/turf/open_space/chimera/check_fall(atom/movable/movable)
+/turf/open_space/blackfoot/check_fall(atom/movable/movable)
 	if(movable.flags_atom & NO_ZFALL)
 		return
 

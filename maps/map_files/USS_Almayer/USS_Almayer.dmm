@@ -20680,7 +20680,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/chimera_tug{
+/obj/structure/blackfoot_tug{
 	layer = 3.1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -31482,7 +31482,7 @@
 	dir = 4;
 	layer = 2.9
 	},
-/obj/vehicle/multitile/chimera,
+/obj/vehicle/multitile/blackfoot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "guo" = (
@@ -59238,7 +59238,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/largecrate/supply/chimera_peripherals,
+/obj/structure/largecrate/supply/blackfoot_peripherals,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "sit" = (

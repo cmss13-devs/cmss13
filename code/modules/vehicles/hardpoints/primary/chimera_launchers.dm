@@ -1,5 +1,5 @@
 /obj/item/hardpoint/primary/chimera_launchers
-	name = "\improper Chimera Launchers"
+	name = "\improper blackfoot Launchers"
 	desc = ""
 
 	icon_state = "ace_autocannon"

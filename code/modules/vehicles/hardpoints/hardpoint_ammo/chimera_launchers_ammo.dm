@@ -3,7 +3,7 @@
 	desc = ""
 	caliber = "20mm"
 	icon_state = "chimera-ammo"
-	icon = 'icons/obj/vehicles/chimera_peripherals.dmi'
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/grenade_container/chimera_launcher
 	max_rounds = 5

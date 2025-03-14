@@ -3,7 +3,7 @@
 
 /obj/item/hardpoint/support/sensor_array
 	name = "\improper AQ-133 Acquisition System"
-	desc = "A heavy-duty array of sensors for the AD-19D chimera."
+	desc = "A heavy-duty array of sensors for the AD-19D blackfoot."
 
 	icon_state = "warray"
 	disp_icon = "tank"
@@ -32,12 +32,12 @@
 	src.mode = mode
 
 /obj/item/hardpoint/support/sensor_array/proc/deactivate_mode(mode)
-	var/obj/vehicle/multitile/chimera/chimera_owner = owner
+	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
 	
-	if(!chimera_owner)
+	if(!blackfoot_owner)
 		return
 
-	var/mob/user = chimera_owner.seats[VEHICLE_DRIVER]
+	var/mob/user = blackfoot_owner.seats[VEHICLE_DRIVER]
 
 	if(!user)
 		return
@@ -73,12 +73,12 @@
 	active = FALSE
 
 /obj/item/hardpoint/support/sensor_array/proc/activate_mode(mode)
-	var/obj/vehicle/multitile/chimera/chimera_owner = owner
+	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
 	
-	if(!chimera_owner)
+	if(!blackfoot_owner)
 		return
 
-	var/mob/user = chimera_owner.seats[VEHICLE_DRIVER]
+	var/mob/user = blackfoot_owner.seats[VEHICLE_DRIVER]
 
 	if(!user)
 		return
@@ -101,14 +101,14 @@
 	active = TRUE
 
 /obj/item/hardpoint/support/sensor_array/process(delattime)
-	var/turf/chimera_turf = get_turf(src)
-	var/obj/vehicle/multitile/chimera/chimera_owner = owner
-	if((health <= 0) || !chimera_owner.visible_in_tacmap || (!is_ground_level(chimera_turf.z) && mode == SENSOR_MODE))
+	var/turf/blackfoot_turf = get_turf(src)
+	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
+	if((health <= 0) || !blackfoot_owner.visible_in_tacmap || (!is_ground_level(blackfoot_turf.z) && mode == SENSOR_MODE))
 		return
 
-	chimera_owner.battery = max(0, chimera_owner.battery - delattime)
+	blackfoot_owner.battery = max(0, blackfoot_owner.battery - delattime)
 
-	if(health <= 0 || chimera_owner.battery <= 0)
+	if(health <= 0 || blackfoot_owner.battery <= 0)
 		deactivate_mode(mode)
 		return
 

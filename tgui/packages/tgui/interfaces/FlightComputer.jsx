@@ -13,7 +13,7 @@ export const FlightComputer = (props) => {
   const fueling = data.fueling;
 
   const message = vtol_detected
-    ? 'Aircraft detected - AD-19D chimera'
+    ? 'Aircraft detected - AD-19D blackfoot'
     : 'No aircraft detected.';
 
   const fuel_button = () => {

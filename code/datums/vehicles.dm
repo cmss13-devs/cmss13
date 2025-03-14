@@ -46,6 +46,6 @@
 	name = "ARC"
 	interior_id = "arc"
 
-/datum/map_template/interior/chimera
-	name = "Chimera"
-	interior_id = "chimera"
+/datum/map_template/interior/blackfoot
+	name = "blackfoot"
+	interior_id = "blackfoot"

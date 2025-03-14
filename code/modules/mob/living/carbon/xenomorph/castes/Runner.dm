@@ -97,7 +97,6 @@
 
 // ai
 /mob/living/carbon/xenomorph/runner/ai
-	var/current_target
 	var/linger_range = 5
 	var/linger_deviation = 1
 	var/pull_direction

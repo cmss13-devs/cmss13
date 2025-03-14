@@ -90,7 +90,6 @@
 
 // AI code
 
-/mob/living/carbon/xenomorph/drone/ai
 
-/mob/living/carbon/xenomorph/drone/ai/init_movement_handler()
+/mob/living/carbon/xenomorph/drone/init_movement_handler()
 	return new /datum/xeno_ai_movement/drone(src)

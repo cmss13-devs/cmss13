@@ -294,7 +294,7 @@ live to tell the tale.
 # Step 1: Slow Down
 If your dropship's still responsive, reduce your speed as
 much as possible. Damaged controls? Don't push 'em too hard or you'll stall and
-fall outta the sky-- <b>or worse</b>. If slowing down isn't an option, move to
+fall outta the sky-- **or worse**. If slowing down isn't an option, move to
 step 2 and say your prayers.
 
 # Step 2: Eject!
@@ -313,7 +313,7 @@ dirt.
 
 # Step 4: Injuries
 The ejection seat does it's best to get you out of the
-bird <b>alive</b>, but chances are good it beat you up pretty good in the
+bird **alive**, but chances are good it beat you up pretty good in the
 process. Stay calm, and try to staunch any heavy bleeds before you hit the dirt,
 you aren't gonna want to stop when you land.
 
@@ -335,23 +335,25 @@ head low, stay sharp, and stay mobile.
 <br />
 
 Remember,
-<b>survival isn't luck, it's all skill.
+**survival isn't luck, it's all skill.**
 
 <br />
 
-Now get a move on.</b>
+**Now get a move on.**
 
 <hr />
 
 <span style="font-size: 11px">
-<b>Sgt. Kaiona's Current Deployment:</b>
+
+**Sgt. Kaiona's Current Deployment:**
 
 <br />
 
 Sgt. Kaiona is currently stationed aboard the USS Almayer with the 2nd
 Company, 2nd Battalion, Falling Falcons, 4th Brigade of the 4th United
 States Colonial Marine Division. He provides aerial support and helps manage
-dropship operations aboard the vessel.</span>
+dropship operations aboard the vessel.
+</span>
 
 <hr />
 

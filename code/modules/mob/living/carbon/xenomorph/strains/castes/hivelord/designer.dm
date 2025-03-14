@@ -291,7 +291,7 @@
 		if(oldest_cost_node)
 			var/turf/old_cost_loc = get_turf(oldest_cost_node.loc) // Get the turf of the oldest node
 			if(old_cost_loc) // Ensure the turf exists
-				new /obj/effect/alien/weeds(old_cost_loc) // Replace with a new /obj/effect/alien/weeds
+				new /obj/effect/alien/weeds(old_cost_loc, oldest_cost_node) // Replace with a new /obj/effect/alien/weeds
 			qdel(oldest_cost_node) // Safely delete the old node
 		xeno.cost_node_list.Cut(1, 2) // Remove the first element from the list
 

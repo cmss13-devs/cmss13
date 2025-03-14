@@ -37,7 +37,16 @@
         "neaera",
         "stok"
 	],
-	"traits": [{ "Ground": true }],
+	"traits": [
+        { 
+            "Ground": true,
+            "Up": 1 
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/Kutjevo/",
     "camouflage": "desert",
     "gamemodes": [

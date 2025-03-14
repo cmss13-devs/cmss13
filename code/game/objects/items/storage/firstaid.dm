@@ -15,6 +15,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
 	icon_state = "firstaid"
+	var/empty_icon = "kit_empty"
 	throw_speed = SPEED_FAST
 	throw_range = 8
 	use_sound = "toolbox"
@@ -55,7 +56,7 @@
 
 /obj/item/storage/firstaid/update_icon()
 	if(content_watchers || !length(contents))
-		icon_state = "kit_empty"
+		icon_state = empty_icon
 	else
 		icon_state = icon_full
 
@@ -206,6 +207,39 @@
 	new /obj/item/stack/cable_coil/white(src)
 	new /obj/item/stack/cable_coil/white(src)
 	new /obj/item/tool/weldingtool(src)
+
+/obj/item/storage/firstaid/whiteout
+	name = "elite repair kit"
+	desc = "An expensive looking, carbon finish kit box, has a big W-Y logo on front. Contains advanced equipment for repairing a damaged synthetic, including a reset key."
+	icon_state = "whiteout"
+	empty_icon = "whiteout_empty"
+	item_state = "whiteout"
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/stack/nanopaste,
+		/obj/item/stack/cable_coil,
+		/obj/item/tool/weldingtool,
+		/obj/item/device/defibrillator/synthetic,
+	)
+
+/obj/item/storage/firstaid/whiteout/fill_preset_inventory()
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/cable_coil/white(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src)
+	new /obj/item/tool/weldingtool/largetank(src)
 
 /obj/item/storage/firstaid/synth/empty/fill_preset_inventory()
 	return

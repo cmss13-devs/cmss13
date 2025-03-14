@@ -176,6 +176,12 @@
 	unacidable = TRUE
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/veteran/pmc/combat_android/dark
+	name = "\improper M7X Mark II greaves"
+	desc = "A pair of heavily armored, optical camouflaged, acid-resistant boots, made to complete the M7X Mark II Ape Suit."
+	icon_state = "invis_droid_boots"
+	item_state = "invis_droid_boots"
+
 /obj/item/clothing/shoes/veteran/pmc/van_bandolier
 	name = "hiking boots"
 	desc = "Over stone, over ice, through sun and sand, mud and snow, into raging water and hungry bog, these will never let you down."

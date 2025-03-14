@@ -1212,7 +1212,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A heavily armored helmet with retractable face plate, made to complete the M7X Ape Suit."
 	icon_state = "combat_android_helmet"
 	item_state = "combat_android_helmet"
-	unacidable = 1
+	unacidable = TRUE
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
@@ -1227,7 +1227,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 	actions_types = list(/datum/action/item_action/toggle)
 	unacidable = TRUE
-	var/up = 0
+	var/deactivated = TRUE
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/combat_droid/attack_self(mob/user)
+	..()
+	toggle()
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/combat_droid/verb/toggle()
 	set category = "Object"
@@ -1237,25 +1241,32 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(usr.is_mob_incapacitated())
 		return
 
-	if(up)
-		flags_armor_protection |= BODY_FLAG_FACE|BODY_FLAG_EYES
-		flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ|BLOCKGASEFFECT
-		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
-		icon_state = initial(icon_state)
-		to_chat(usr, SPAN_NOTICE("You active integrated face armor."))
-	else
+	if(deactivated)
 		flags_armor_protection &= ~(BODY_FLAG_FACE|BODY_FLAG_EYES)
 		flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
 		flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
 		icon_state = "[initial(icon_state)]_on"
+		to_chat(usr, SPAN_NOTICE("You active integrated face armor."))
+	else
+		flags_armor_protection |= BODY_FLAG_FACE|BODY_FLAG_EYES
+		flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ|BLOCKGASEFFECT
+		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
+		icon_state = initial(icon_state)
 		to_chat(usr, SPAN_NOTICE("You deactivate integrated face armor."))
-	up = !up
+	deactivated = !deactivated
+	playsound(loc, 'sound/items/rped.ogg', 25, FALSE)
 
 	update_clothing_icon() //so our mob-overlays update
 
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/combat_droid/dark
+	name = "\improper M7X Mark II helmet"
+	desc = "A heavily armored helmet with retractable face plate and optical camouflage technology, made to complete the M7X Mark II Ape Suit."
+	icon_state = "invis_android_helmet"
+	item_state = "invis_android_helmet"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate
 	name = "\improper WY corporate security helmet"

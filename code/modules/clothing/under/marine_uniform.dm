@@ -553,6 +553,13 @@
 	desc = "An armored uniform worn by Weyland-Yutani combat androids. It is well protected while remaining light and comfortable."
 	icon_state = "combat_android_uniform"
 	worn_state = "combat_android_uniform"
+	flags_jumpsuit = FALSE
+
+/obj/item/clothing/under/marine/veteran/pmc/combat_android/dark
+	name = "\improper WY android combat uniform"
+	desc = "An armored uniform compatible with optical camouflage, worn by Weyland-Yutani combat androids. It is well protected while remaining light and comfortable."
+	icon_state = "invis_android_uniform"
+	worn_state = "invis_android_uniform"
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate
 	name = "\improper WY corporate security uniform"

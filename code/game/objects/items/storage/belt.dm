@@ -1531,6 +1531,11 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/extended(src)
 
+/obj/item/storage/belt/gun/m39/full/whiteout/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/m39/heap(src)
+
 #define MAXIMUM_MAGAZINE_COUNT 2
 
 /obj/item/storage/belt/gun/m10

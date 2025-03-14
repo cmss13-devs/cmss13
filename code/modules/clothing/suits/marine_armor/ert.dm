@@ -219,8 +219,16 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_marine_armor = null
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/combat_android)
+	actions_types = null
 	item_state_slots = list(WEAR_JACKET = "combat_android_jacket")
 	unacidable = TRUE
+
+/obj/item/clothing/suit/storage/marine/veteran/pmc/wy_droid/dark
+	name = "\improper M7X Mark II Ape Suit"
+	desc = "The M7X Mark II Ape Suit: Following recent archaeological studies on highly classified sites, W-Y's R and D Department managed to reverse engineer a more compact invisibility cloak for this armour from some their discoveries"
+	icon_state = "invis_android_jacket"
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/combat_android/dark)
+	item_state_slots = list(WEAR_JACKET = "invis_android_jacket")
 
 //===========================//DISTRESS\\================================\\
 //=======================================================================\\

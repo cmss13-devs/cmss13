@@ -426,6 +426,9 @@
 	icon_state = "large_ammo_mag"
 	storage_slots = 4
 
+/obj/item/storage/pouch/magazine/large/black //evil dark pouch for evil corporation
+	icon_state = "large_ammo_mag_black"
+
 /obj/item/storage/pouch/magazine/pistol
 	name = "pistol magazine pouch"
 	desc = "It can carry pistol magazines and revolver speedloaders."
@@ -485,37 +488,64 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/type71(src)
 
+/obj/item/storage/pouch/magazine/large/pmc_m39
+	icon_state = "large_ammo_mag_black"
+
 /obj/item/storage/pouch/magazine/large/pmc_m39/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
+
+/obj/item/storage/pouch/magazine/large/nsg_ap
+	icon_state = "large_ammo_mag_black"
 
 /obj/item/storage/pouch/magazine/large/nsg_ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
 
+/obj/item/storage/pouch/magazine/large/nsg_ext
+	icon_state = "large_ammo_mag_black"
+
 /obj/item/storage/pouch/magazine/large/nsg_ext/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
+
+/obj/item/storage/pouch/magazine/large/nsg_heap
+	icon_state = "large_ammo_mag_black"
 
 /obj/item/storage/pouch/magazine/large/nsg_heap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/heap(src)
 
+/obj/item/storage/pouch/magazine/large/pmc_p90
+	icon_state = "large_ammo_mag_black"
+
 /obj/item/storage/pouch/magazine/large/pmc_p90/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/fp9000(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_lmg
+	icon_state = "large_ammo_mag_black"
 
 /obj/item/storage/pouch/magazine/large/pmc_lmg/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/lmg(src)
 
+/obj/item/storage/pouch/magazine/large/pmc_sniper
+	icon_state = "large_ammo_mag_black"
+
 /obj/item/storage/pouch/magazine/large/pmc_sniper/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/sniper/elite(src)
 
+/obj/item/storage/pouch/magazine/large/pmc_rifle
+	icon_state = "large_ammo_mag_black"
+
 /obj/item/storage/pouch/magazine/large/pmc_rifle/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/ap(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg
+	icon_state = "large_ammo_mag_black"
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

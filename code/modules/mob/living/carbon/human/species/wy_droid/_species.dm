@@ -3,9 +3,9 @@
 	name = SYNTH_COMBAT
 	name_plural = "WY Combat Androids"
 	flags = parent_type::flags & ~HAS_SKIN_COLOR
+	// flags = parent_type::flags & ~HAS_UNDERWEAR
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_EMOTE_CD_EXEMPT, TRAIT_UNSTRIPPABLE) //No IRON_TEETH because they have no teeth (literally)
-	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_SKIN_COLOR
 
 	burn_mod = 0.6 //made for combat
 	total_health = 250 //made for combat
@@ -14,12 +14,9 @@
 	icobase = 'icons/mob/humans/species/r_wy_combat_android.dmi'
 	deform = 'icons/mob/humans/species/r_wy_combat_android.dmi'
 
-	default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // we don't want combat synths to run around in the dark
-
 	knock_down_reduction = 5
 	stun_reduction = 5
-
-	inherent_verbs = null
+	weed_slowdown_mult = 0 // no slowdown!
 	death_sound = "wy_droid_death"
 
 /datum/species/synthetic/colonial/wy_droid/handle_post_spawn(mob/living/carbon/human/wy_droid)

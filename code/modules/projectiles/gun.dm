@@ -1706,7 +1706,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		to_chat(user, SPAN_WARNING(dry_fire_text))
 		playsound(user, actual_sound, 25, 1, 5) //5 tile range
 	else
-		playsound(src, actual_sound, 25, 1, 5)
+		playsound(current_gun, actual_sound, 25, 1, 5)
 
 /obj/item/weapon/gun/proc/display_ammo(mob/user)
 	// Do not display ammo if you have an attachment

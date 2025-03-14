@@ -16,7 +16,7 @@
 	move_momentum_build_factor = 1.5
 	move_turn_momentum_loss_factor = 0.5
 
-	var/idle_sound_cooldown = 10 SECONDS
+	var/idle_sound_cooldown = 3 SECONDS
 	var/last_idle_sound = 0
 
 /obj/item/hardpoint/locomotion/blackfoot_thrusters/process(deltatime)
@@ -29,7 +29,7 @@
 		custom_screen.update(blackfoot_owner.fuel, blackfoot_owner.max_fuel, blackfoot_owner.health, blackfoot_owner.maxhealth, blackfoot_owner.battery, blackfoot_owner.max_battery)
 
 	if(world.time > last_idle_sound + idle_sound_cooldown)
-		playsound(blackfoot_owner.loc, 'sound/vehicles/vtol/engineidle.ogg', 25, FALSE)
+		playsound(blackfoot_owner.loc, 'sound/vehicles/vtol/engineidle.ogg', 10, FALSE)
 		last_idle_sound = world.time
 	
 	blackfoot_owner.fuel = max(0, blackfoot_owner.fuel - deltatime / 2)

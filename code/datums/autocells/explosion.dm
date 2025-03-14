@@ -54,10 +54,6 @@
 	// For stat tracking and logging purposes
 	var/datum/cause_data/explosion_cause_data
 
-	// Workaround to account for the fact that this is subsystemized
-	// See on_turf_entered
-	var/list/atom/exploded_atoms = list()
-
 	var/obj/effect/particle_effect/shockwave/shockwave = null
 
 // If we're on a fake z teleport, teleport over
@@ -138,15 +134,7 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	SSexplosions.queued_ex_act(in_turf, power, direction, explosion_cause_data)
-	for(var/atom/A in in_turf)
-		if(A in exploded_atoms)
-			continue
-		if(A.gc_destroyed)
-			continue
-		SSexplosions.queued_ex_act(A, power, direction, explosion_cause_data)
-		exploded_atoms += A
-		log_explosion(A, src)
+	SSexplosions.turf_ex_act(in_turf, power, direction, explosion_cause_data)
 
 	var/reflected = FALSE
 
@@ -208,32 +196,6 @@
 	// We've done our duty, now die pls
 	qdel(src)
 	return new_cells
-
-/*
-The issue is that between the cell being birthed and the cell processing,
-someone could potentially move through the cell unharmed.
-
-To prevent that, we track all atoms that enter the explosion cell's turf
-and blow them up immediately once they do.
-
-When the cell processes, we simply don't blow up atoms that were tracked
-as having entered the turf.
-*/
-
-/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/A)
-	// Once is enough
-	if(A in exploded_atoms)
-		return
-
-	exploded_atoms += A
-
-	// Note that we don't want to make it a directed ex_act because
-	// it could toss them back and make them get hit by the explosion again
-	if(A.gc_destroyed)
-		return
-
-	SSexplosions.queued_ex_act(A, power, null, explosion_cause_data)
-	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 

@@ -54,7 +54,7 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
 	// Sleep while the explosions do their job
-	while(length(SSexplosions.currentrun) || length(SSexplosions.exploded_articles))
+	while(SSexplosions.is_exploding())
 		sleep(10)
 
 /datum/dropship_hijack/almayer/proc/finish_landing()

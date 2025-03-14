@@ -467,7 +467,7 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
 
 	// Sleep while the explosions do their job
-	while(length(SSexplosions.currentrun) || length(SSexplosions.exploded_articles))
+	while(SSexplosions.is_exploding())
 		sleep(10)
 
 	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list))

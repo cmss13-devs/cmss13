@@ -1696,7 +1696,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/click_empty(mob/user)
 	var/actual_sound = pick(dry_fire_sound)
 	var/dry_fire_text
-	if(istype(src, /obj/item/weapon/gun/flamer))
+	var/obj/item/weapon/gun/current_gun = src
+	if(istype(current_gun, /obj/item/weapon/gun/flamer))
 		dry_fire_text = "<b>*pshhhh*</b>"
 	else
 		dry_fire_text = "<b>*click*</b>"

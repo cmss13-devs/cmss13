@@ -24,7 +24,6 @@
 /datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
-	hivelord.plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
 	hivelord.plasmapool_modifier = 0.5 // -50% plasma pool
 	hivelord.tacklestrength_max = 6 // increase by +1

@@ -1,9 +1,9 @@
 import './styles/main.scss';
 
+import { isEscape, KEY } from 'common/keys';
+import { BooleanLike, classes } from 'common/react';
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { dragStartHandler } from 'tgui/drag';
-import { isEscape, KEY } from 'tgui-core/keys';
-import { BooleanLike, classes } from 'tgui-core/react';
 
 import { Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
@@ -20,6 +20,7 @@ type ByondOpen = {
 type ByondProps = {
   maxLength: number;
   lightMode: BooleanLike;
+  scale: BooleanLike;
   extraChannels: Array<Channel>;
 };
 
@@ -45,6 +46,7 @@ export function TguiSay() {
   const [size, setSize] = useState(WindowSize.Small);
   const [maxLength, setMaxLength] = useState(1024);
   const [lightMode, setLightMode] = useState(false);
+  const [scale, setScale] = useState(false);
   const [position, setPosition] = useState([window.screenX, window.screenY]);
   const [value, setValue] = useState('');
   const [extraChannels, setExtraChennels] = useState<Array<Channel>>([]);
@@ -95,7 +97,7 @@ export function TguiSay() {
 
   function handleClose(): void {
     innerRef.current?.blur();
-    windowClose();
+    windowClose(scale);
 
     setTimeout(() => {
       chatHistory.current.reset();
@@ -225,13 +227,20 @@ export function TguiSay() {
     }
 
     setButtonContent(iterator.current());
-    windowOpen(iterator.current());
+    windowOpen(iterator.current(), scale);
   }
 
   function handleProps(data: ByondProps): void {
     setMaxLength(data.maxLength);
     setLightMode(!!data.lightMode);
     setExtraChennels(data.extraChannels);
+    setScale(!!data.scale);
+
+    if (!data.scale) {
+      window.document.body.style['zoom'] = `${100 / window.devicePixelRatio}%`;
+    } else {
+      window.document.body.style['zoom'] = '';
+    }
   }
 
   function unloadChat(): void {
@@ -262,7 +271,7 @@ export function TguiSay() {
 
     if (size !== newSize) {
       setSize(newSize);
-      windowSet(newSize);
+      windowSet(newSize, scale);
     }
   }, [value]);
 

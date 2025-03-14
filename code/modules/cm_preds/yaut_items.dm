@@ -1166,12 +1166,14 @@
 	name = "cleanser gel vial"
 	desc = "A small vial containing a liquid capable of dissolving the gear of the fallen whilst in the field."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "blue_gel"
+	icon_state = "dissolving_vial"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR
 	black_market_value = 150
+
+	var/image/dissolving_image
 
 /obj/item/tool/yautja_cleaner/afterattack(obj/item/target, mob/user, proximity)
 	if(!isitem(target))
@@ -1206,7 +1208,7 @@
 /obj/item/tool/yautja_cleaner/proc/handle_dissolve(obj/item/target, mob/user)
 	user.visible_message(SPAN_DANGER("[user] uncaps a vial and begins to pour out a vibrant blue liquid over \the [target]!"),
 					SPAN_NOTICE("You begin to spread dissolving gel onto \the [target]!"))
-	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to \the [target]!"),
 					SPAN_WARNING("You decide not to cover \the [target] with dissolving gel."))
 		return
@@ -1214,12 +1216,14 @@
 		return
 	user.visible_message(SPAN_DANGER("[user] pours blue liquid all over \the [target]!"),
 				SPAN_NOTICE("You cover \the [target] with dissolving gel!"))
-	playsound(target.loc, 'sound/effects/acid_sizzle1.ogg', 25)
-	target.add_filter("dissolve_gel", 1, list("type" = "outline", "color" = "#3333FFff", "size" = 1))
+	dissolving_image = image(icon, icon_state = "dissolving_gel")
+	target.overlays += dissolving_image
+	playsound(target.loc, 'sound/effects/acid_sizzle4.ogg', 25)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), target), 15 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[target] crumbles into pieces!")), 15 SECONDS)
 	ADD_TRAIT(target, TRAIT_ITEM_DISSOLVING, TRAIT_SOURCE_ITEM)
 	log_attack("[key_name(user)] dissolved [target] with Yautja Cleaner.")
+
 
 /obj/item/storage/medicomp
 	name = "medicomp"

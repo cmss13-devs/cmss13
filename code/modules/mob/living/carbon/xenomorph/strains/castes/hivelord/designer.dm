@@ -184,7 +184,7 @@
 		if(oldest_speed_node)
 			var/turf/old_speed_loc = get_turf(oldest_speed_node.loc)
 			if(old_speed_loc)
-				new /obj/effect/alien/weeds(old_speed_loc)
+				new /obj/effect/alien/weeds(old_speed_loc, oldest_speed_node)
 			qdel(oldest_speed_node)
 		xeno.speed_node_list.Cut(1, 2)
 

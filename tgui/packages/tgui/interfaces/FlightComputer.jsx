@@ -378,12 +378,6 @@ const FuelPanel = (props) => {
 const CrtDisplay = (props) => {
   const { act, data } = useBackend();
 
-  let { vtol_detected } = data;
-
-  const message = vtol_detected
-    ? 'Aircraft detected - AD-19D chimera'
-    : 'No aircraft detected.';
-
   return (
     <Stack horizontal>
       <Stack.Item>
@@ -477,7 +471,7 @@ const Console = (props) => {
       <Box bold fontFamily="monospace" fontSize={1.1}>
         {vtol_detected ? 'Linked aircraft detected:' : 'No aircraft detected!'}
       </Box>
-      <Box bold>{vtol_detected && '[ AD-19D CHIMERA ]'}</Box>
+      <Box bold>{vtol_detected && '[ AD-71E BLACKFOOT ]'}</Box>
       <Box bold fontFamily="monospace" fontSize={1.1} mt={1.3}>
         Refuel and recharge status:
       </Box>

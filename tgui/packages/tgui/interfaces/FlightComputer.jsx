@@ -37,37 +37,6 @@ const HexScrew = () => {
 export const FlightComputer = (props) => {
   const { act, data } = useBackend();
 
-  const vtol_detected = data.vtol_detected;
-  const fuel = data.fuel;
-  const max_fuel = data.max_fuel;
-  const battery = data.battery;
-  const max_battery = data.max_battery;
-  const fueling = data.fueling;
-
-  const message = vtol_detected
-    ? 'Aircraft detected - AD-19D chimera'
-    : 'No aircraft detected.';
-
-  const fuel_button = () => {
-    if (!vtol_detected) {
-      return null;
-    }
-
-    if (fueling) {
-      return (
-        <Button onClick={() => act('stop_fueling')}>
-          Stop Fueling & Charging
-        </Button>
-      );
-    } else {
-      return (
-        <Button onClick={() => act('start_fueling')}>
-          Start Fueling & Charing
-        </Button>
-      );
-    }
-  };
-
   return (
     <Window width={700} height={410} theme="crtgreen">
       <Window.Content>

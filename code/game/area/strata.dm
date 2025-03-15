@@ -327,7 +327,6 @@
 	name = "Engineering - Parts Storage Exterior"
 	icon_state = "outpost_engi_4"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	ambience_exterior = AMBIENCE_JUNGLE
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 
 /area/strata/exterior/parts_storage_cave
@@ -335,7 +334,6 @@
 	icon_state = "outpost_engi_4"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 	ceiling =  CEILING_UNDERGROUND_ALLOW_CAS
-	ambience_exterior = AMBIENCE_JUNGLE
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 
 // BBall, Caves & Secure Checkpoint

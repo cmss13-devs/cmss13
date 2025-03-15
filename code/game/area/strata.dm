@@ -362,9 +362,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "ug_jung_dorm"
 	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
-	weather_enabled = FALSE
-	soundscape_playlist = SCAPE_PL_LV759_INDOORS
-	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
 /area/strata/interior/underground_dorms/sec1
 	name = "Underground Security Dorm #1"
@@ -407,7 +404,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	name = "Underground Platform"
 	icon_state = "ug_jung_1"
 	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
-	ambience_exterior = AMBIENCE_JUNGLE
 
 //-Jungle
 
@@ -421,7 +417,6 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon_state = "ug_jung_0"
 	minimap_color = MINIMAP_AREA_JUNGLE
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
-	ambience_exterior = AMBIENCE_JUNGLE
 
 /area/strata/exterior/deep_jungle/carplake_north
 	name = "Deep Jungle - North of Carp Lake"

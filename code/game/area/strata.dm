@@ -18,6 +18,7 @@
 	requires_power = FALSE
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	ceiling = CEILING_MAX
 
 //////////////////////////////////////////
 
@@ -180,7 +181,6 @@
 	name = "Sorokyne Outpost"
 	icon_state = "shed_x_ag"
 	minimap_color = MINIMAP_AREA_CAVES
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/interior/outpost/foyer
 	name = "Outpost - Main Foyer"
@@ -242,10 +242,8 @@
 /area/strata/interior/mining_outpost
 	name = "Mining Outpost - Central"
 	icon_state = "dorms_0"
-	ceiling = CEILING_GLASS
 	minimap_color = MINIMAP_AREA_MINING
 	linked_lz = DROPSHIP_LZ1
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/strata/interior/mining_outpost/south_dormitories
 	name = "Mining Outpost - South Dormitories"
@@ -274,7 +272,6 @@
 	name = "Flight Control Offices"
 	icon_state = "offices"
 	minimap_color = MINIMAP_AREA_COMMAND
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	linked_lz = DROPSHIP_LZ1
 
 /area/strata/interior/wooden_hospital
@@ -328,6 +325,7 @@
 	icon_state = "outpost_engi_4"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 
 /area/strata/exterior/parts_storage_cave
 	name = "Engineering - Parts Storage Exterior"
@@ -335,6 +333,7 @@
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 	ceiling =  CEILING_UNDERGROUND_ALLOW_CAS
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 
 // BBall, Caves & Secure Checkpoint
 
@@ -351,6 +350,7 @@
 	unoviable_timer = FALSE
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 
 /area/strata/interior/secure_checkpoint
 	name = "Secure Checkpoint Passthrough"
@@ -359,6 +359,7 @@
 	minimap_color = MINIMAP_AREA_CAVES_DEEP
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
+	ceiling_muffle = FALSE
 
 //-Underground Dorms
 
@@ -367,6 +368,7 @@
 	icon_state = "ug_jung_dorm"
 	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	ceiling_muffle = FALSE
 
 /area/strata/interior/underground_dorms/sec1
 	name = "Underground Security Dorm #1"
@@ -422,6 +424,7 @@
 	icon_state = "ug_jung_0"
 	minimap_color = MINIMAP_AREA_JUNGLE
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling_muffle = FALSE
 
 /area/strata/exterior/deep_jungle/carplake_north
 	name = "Deep Jungle - North of Carp Lake"
@@ -457,31 +460,31 @@
 	icon_state = "ug_jung_6"
 	name = "Deep Jungle - South of Classified Research Station"
 	minimap_color = MINIMAP_AREA_JUNGLE
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 /area/strata/exterior/deep_jungle/west
 	icon_state = "ug_jung_6"
 	name = "Deep Jungle - West of Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_JUNGLE
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 /area/strata/exterior/deep_jungle/south
 	icon_state = "ug_jung_7"
 	name = "Deep Jungle - South of Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_JUNGLE
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 /area/strata/exterior/deep_jungle/east
 	icon_state = "ug_jung_8"
 	name = "Deep Jungle - East of Planetary Core Monitoring"
 	minimap_color = MINIMAP_AREA_JUNGLE
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+
+/area/strata/exterior/deep_jungle/planet_core_research_station_exterior
+	icon_state = "ug_jung_8"
+	name = "Deep Jungle - Planetary Core Monitoring Research Station"
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 /area/strata/exterior/deep_jungle/ruin
 	icon_state = "ug_jung_mine_4"
 	name = "Deep Jungle - Ancient Dorms"
 	unoviable_timer = FALSE
-	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 	weather_enabled = FALSE
 
 /area/strata/exterior/deep_jungle/tearlake
@@ -493,10 +496,11 @@
 
 /area/strata/interior/planet_core_research_station
 	icon_state = "ug_jung_5"
-	name = "Deep Jungle - Planetary Core Monitoring"
+	name = "Deep Jungle - Planetary Core Monitoring Research Station"
 	minimap_color = MINIMAP_AREA_CAVES_STRUCTURE
 	unoviable_timer = FALSE
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	ceiling_muffle = FALSE
 
 /area/strata/interior/research
 	icon_state = "ug_jung_2"
@@ -504,6 +508,7 @@
 	minimap_color = MINIMAP_AREA_RESEARCH
 	unoviable_timer = FALSE
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	ceiling_muffle = FALSE
 
 //-Others
 

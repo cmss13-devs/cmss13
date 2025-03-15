@@ -76,11 +76,23 @@
 /mob/living/carbon/xenomorph/king/Initialize()
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
-	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(post_move))
 
-/mob/living/carbon/xenomorph/king/proc/check_block(mob/king, turf/new_loc)
+/mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+	. = ..()
+	if(!pass_flags)
+		return
+
+	pass_flags.flags_pass |= PASS_MOB_THRU
+
+/mob/living/carbon/xenomorph/king/proc/post_move(mob/king)
 	SIGNAL_HANDLER
+
+	var/turf/new_loc = get_turf(src)
+
 	for(var/mob/living/carbon/carbon in new_loc.contents)
+		if(carbon == src)
+			continue
 		if(isxeno(carbon))
 			var/mob/living/carbon/xenomorph/xeno = carbon
 			if(xeno.hivenumber == src.hivenumber && !(king.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
@@ -94,6 +106,7 @@
 				carbon.apply_armoured_damage(20)
 				carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
 				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+
 /mob/living/carbon/xenomorph/king/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
 

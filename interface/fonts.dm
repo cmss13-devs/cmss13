@@ -7,4 +7,4 @@
 
 /datum/font/vcr_osd_mono
 	name = "VCR OSD Mono"
-	font_family = 'interface/VCR_OSD_Mono.ttf'
+	font_family = 'interface/PixCyrillic.ttf' // VCR_OSD_Mono.ttf' // SS220 EDIT - Cyrillic fixes

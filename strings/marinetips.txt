@@ -1,108 +1,108 @@
-You can link plasteel barricades together using a crowbar. First click one, and then click one adjacent. Repeat as needed.
-A lone marine is a dead marine and a happy xeno. Stick together!
-Watch out for friendly fire. Make sure you're not walking into anyone's firing line, and make sure no one else is in yours!
-Be mindful when using hand grenades. Getting stunned or knocked over after priming a grenade will drop it at your feet. This is obviously very dangerous for not only you, but your friends as well.
-Reflective walls will bounce back non-IFF bullets, including rockets. Try not to shoot them.
-Vary your loadout! Doing the same thing every round gets old fast. Try out the pistols, or carry flares.
-Be careful when firing an Orbital Bombardment, Close Air Support, or the Mortar. Make sure you're not about to blow up the entire marine push.
-The Orbital Bombardment is always closer than it looks.
-Never inject a marine you haven't scanned! You might overdose them; ESPECIALLY so with an emergency autoinjector.
-Check perma-dead marines (skull icon on medhud) for useful gear, such as webbings, AP ammo, or binoculars.
-Always check for traps beneath loose objects - it could save your life!
-Bring a fire extinguisher, it might just save someone's life. They can remove flames that block a push, remove acid from other marines, as well as put out people on fire.
-Trading your life for a Xenomorph's is almost always worth it.
-If another marine is stunned, you can click on them with help intent with an open hand to shake them up faster.
-No round has ever been won behind a barricade. Apart from the ones that have.
-Always clear weeds and alien structures as you advance.
-Try not to block off pushes when using a flamethrower.
-Recover bodies whenever possible. Even if the marine is unrevivable, useful gear and ammunition can still be salvaged.
-A lack of supplies at the FOB can cost you the round. Make sure to unpack supply crates, weapons, and ammo for your fellow marines.
-More dakka is not good when it is directed towards your teammates.
-Never place barricades facing each other - Not only does this block bullets, both barricades are damaged at once if one is slashed!
-An FOB is as strong as its weakest part. Secure all flanks, remember that walls can be pried open.
-Flamethrowers: Green fire is weak but has a lot of utility, such as melting through armor and being instantly extinguishable. Queens and Ravagers are flameproof. Most flamethrower damage comes from the initial burst, not the flame on the ground. Don't forget you have an underbarrel extinguisher.
-CPR extends the defib timer on dead marines. It can be done by clicking the dead marine on help intent with an open hand. Make sure to get the rhythm correct!
-If the main push is stagnating and the area is congested, try to coordinate with a few others and go to a different area.
-When pushing into an area, check the flanks. Especially so in caves.
-Examine your gun and click [See combat statistics] to view information such as damage for your weapon.
-Xenomorphs who resist while on fire are stunned for some time and emit light. Use that time to catch up and finish them off!
-When you have shrapnel embedded, take out your boot knife and use it in your hand to rip them out of your body.
-If your weapon has a bayonet, you can manually pry open unpowered doors by clicking on them with the gun. Click on the door again to close it. UPP bayonets can pry them open quicker.
-Items on the floor can be shot. Shoot a poorly thrown HEDP away to save your buddies!
-You can hold a bayonet or throwing knife on your mask slot. Always be prepared.
-Xenomorphs can't apply huggers to marines if they're on fire.
-Dragging a Nanomed onto yourself instantly gives a Health Analyzer report. Always know what's wrong with you.
-Splints slow you down. Remove them after your bones are healed by using the Remove Your Splints verb.
-Blood loss can lead to hunger, which can slow you down. Make sure you're always full after taking a beating.
-Resin structures are weaker to melee than they are to bullets. Take out your knives!
-Researchers can make pressurized canister pouches, which can contain up to 480 reagents, and contain custom injectors that can be easily used by privates.
-When fighting xenomorphs, don't aim for the head - It won't increase damage against anyone but your fellow marines.
-Don't forget to set the Anti-Aircraft Gun!
-Scavenging attachments (or other things) from dead marines isn't bad practice, as long as you make sure they're actually dead first.
-When receiving a supply crate drop from requisitions, make sure to move the crate before opening it - Otherwise subsequent supply crates will be hidden beneath it!
-If a grenade comes your way, hit the deck! Lying down will reduce damage and let you dodge any shrapnel flying overhead.
-You can grab items from second-level storage, such as a splint in a first aid kit stored inside a satchel.
-By right clicking your medical belt and selecting "toggle belt mode", you can take pills out of bottles by simply clicking them once.
-You can put screwdrivers, cigarettes, and some other things in your second ear slot!
-Pilots : there is one of each engine upgrade in the hangar at the start of the round, saving you the point cost of having to print out a pair of each.
-You can use a hand labeler (as found in squad prep rooms) to name your equipment and make it less likely to be stolen.
-You can use a health analyzer in hand (Z key) to check the last scan readout from it.
-Holocards are a useful triage tool for doctors and medics. Ensure you assign them (examine the marine with shift-click and select an appropriate holocard) to marines who have taken damage that cannot be healed without surgery. (Hint : major organ damage or larval infection = red card!)
-Escape pods are designed for only three occupants - more than that, or if a larger xenomorph is in the pod, and it will malfunction and blow up on launch.
-A misloaded OB can deviate severely from the intended target area - ensure you load them correctly!
-The XO and CO are trained in Power Loader use and engineering, and can load the OB.
-You can change what your SL tracker beacon is tracking by right clicking on your headset and clicking "Switch Tracker Target".
-Boilers emit light - not every glow from around the corner is friendly!
-The amount of items in Requisitions and Squad Preparations depend on how many players readied up at the start of the round.
-You can carry a variety of items inside your helmet - from gauze and cigarettes to flares and screwdrivers.
-CIC staff can track every USCM-aligned person via the suit sensors console and overwatch console - useful for finding escaped prisoners or dead marines.
-When the M7 RPG is fired, it creates a substantial shockwave behind it that can stun and harm marines standing too close. Watch your backblast!
-Remember that you need to put a defibrillator's paddles away in order to store it.
-W-Y PMCs do not have marine IFF. Don't fire Smartguns at them!
-To talk on multiple radio channels at once, put a COMMA [,] before your message and add up to four prefixes. E.g, ,abcd talks on the main four squad channels at once.
-Put .w or :w before your message to whisper. Another way to whisper is to use the verb "whisper" in the IC tab or command bar.
-For Vehicle Crewmen : it is often safer to repair the parts of your APC or tank inside the vehicle than outside it.
-It is almost always faster to do surgery manually than in the autodoc.
-To check your skills, go to the IC tab and click "view skills".
-Minirockets pack the most punch per cost as far as CAS weaponry is concerned.
-The U7 underbarrel shotgun can instantly break down both resin doors and mechanical airlocks, and it's not bad at breaking walls down either.
-You can find breaching charges in Requisitions or the Squad Engineer vendor. They function like C4, but can be deployed and explode much quicker, and release powerful shrapnel on the opposite side. They require minor engineering knowledge, which can be obtained from pamphlets.
-Armor piercing ammunition does less damage to unarmored targets.
-Requisitions may not grant you service if you are a 'pajamarine' : a marine in cryosleep attire. Be sure to dress up!
-You can insert empty pill bottles into ChemMasters before creating pills to have them automatically inserted.
-Nurses can practice a full range of surgeries on Professor DUMMY. Ask the gods to give you one if you see (or are) a nurse practicing.
-Drinks from the hot drinks machine warm you up.
-Be careful! Barricades block grenades, and indeed all thrown items, from the front if they're barbed up.
-CAS Fire Missions doubles the accuracy of fired weapons, which can be substantial.
-Painkillers do not stack. Only the strongest has any effect.
-Don't underestimate the mortar: with ammo and proper communication it can hit surprisingly hard.
-You can shoot through tents, but they won't protect you much in return.
-Reqs doesn't have an infinite budget.
-Good Reqs can land supplies anywhere outside - given coords - and sometimes in a minimal amount of time.
-A ‘point blank’ or ‘PB’ is a type of attack with a firearm where you click directly on a mob next to you. These attacks are not effected by accuracy allowing you to quickly fire with weapons like a shotgun to great effect.
-Intel Officers can be put in a different squad by going to CIC and requesting it.
-Any marine can perform CPR. On dead marines, this will increase the time they have until they become unrevivable.
-If you've been pounced on and your squad is unloading into the target, you can hit the 'rest' button to stay down so you don't get filled with lead after getting up.
-You can check the landing zone as a marine in the status panel.
-The Colonial Marshals may come to crack down on too heavy of a Black Market usage.
-A night vision HUD optic can be recharged by removing it with a screwdriver, then placing it into a recharger.
-You can put a pistol belt on your suit slot. (Just grab a rifle instead.)
-Alt-clicking the Squad Leader tracker lets you track your fireteam leader instead.
-Armor consistently protects you from damage to your chest, arms, and legs, but does not protect hands and feet. Take the wiki damage values as a best-case scenario.
-You can click on your Security Access Tuner (multitool) in your hand to locate the area's APC if there is one.
-Need help learning the game and these tips aren't enough? Use MentorHelp or try to get ahold of your ship's Senior Enlisted Advisor.
-Clicking on your sprite with help intent will let you check your body, seeing where your fractures and other wounds are.
-Armor has insulative properties - taking it off will help you cool off and take less damage faster if you've been set on fire.
-Both foldable cades & plasteel cades if loosened and folded down can be transported in crates! In this way, you can use the crate as a portable breach-repair kit, or dragged (or carried via Power Loader) to an unsecure area for quick defensive set up.
-The fuel tank pouch doesn't just carry fuel for an incinerator- they can also carry full-size extinguishers. Toolbelts & tool pouches also may hold miniature extinguishers.
-The M2C heavy machine gunner belt rig can also carry C4, breaching charges, and most tools.
-You can always multitask as Medic, such as by using pills or healing kits at the same time as defibrillator.
-The nuclear ordnance requires BOTH communication towers to be actively held to decrypt the nuclear codes.
-ARES will periodically report the amount of available tech points on Command Channel.
-The quick wield keys generally prioritize wieldable gear going from left to right on your inventory bar.
-Orbital Bombardment warheads respect roofing and hive core protection. They won't hit inside of protected areas.
-The Queen can unbolt and break dropship doors by prying them open, even if they are unlocked. Pilots, Dropship Crew Chiefs, Engineers and Synths can repair these doors with a multitool.
-If you jump out of a dropship with a parachute on (when there is no paradrop system active), you will land at a random location on the map.
-If you push crates out of a dropship when paradropping, it will land near the paradrop drop point.
-When paradropping, you can toss any large item (such as a backpack, pouch, or gun) into hyperspace, and it will land near the paradrop drop point. However, smaller items such as flares will not survive the fall.
-Medbay cryotubes will process chemicals in the dead if Cryoxadone and or Clonexadone is present. In a mass-casualty situation or when a patient has severe injuries, consider injecting the dead with chemicals and putting them in the tubes.
+Вы можете соединить две пласталевые баррикады вместе с помощью монтировки. Сначала кликните на первую, а затем на соседнюю. Повторите если потребуется.
+Одинокий морпех - мёртвый морпех и счастливый ксеноморф. Держитесь вместе!
+Следите за дружественным огнём. Убедитесь, что вы не ходите у кого-то перед прицелом, также убедитесь, что никто не стоит перед вашим!
+Будьте внимательны при использовании ручных гранат. Получив стан или упав на землю после взведения гранаты, вы бросите её на землю, прямо под ноги. Это навредит не только вам, но и вашим союзникам.
+Отражающие стены будут отражать все не смарт-пули, включая ракеты. Старайтесь не стрелять в них ними.
+Пробуйте различное снаряжение! Делать что-либо каждый раунд быстро надоедает. Попробуйте пистолеты или разбрасывать флаеры.
+Будьте осторожны при стрельбе из орибитальных пушек, пушек боевого шаттла или миномёта. Убедитесь, что вы не взорвёте целый отряд морпехов.
+Орбитальная бомбардировка всегда ближе, чем кажется.
+Никогда не вводите ничего непросканированному морпеху! Вы возможно устроите ему передозировку. ОСОБЕННО если вколите экстренны автоинжектор.
+Проверяйте тела перманентно мёртвых морпехов (иконка черепа на медицинском худе) на предмет полезного снаряжения, например, разгрузок, бронебойных патронов или биноклей.
+Всегда проверяйте незакреплённые объекты на предмет ловушек, это может спасти вам жизнь!
+Возьмите огнетушитель, это может спасти чью-то жизнь. Вы можете потушить огонь, блокирующий наступление, убрать кислоту с других морпехов и само собой потушить горящего человека.
+Разменять свою жизнь на жизнь ксеноморфа почти всегда оправдано.
+Если другой морпех находится в стане, вы можете кликнуть по нему в зелёном интенте пустой рукой, чтобы он быстрее встал на ноги.
+Ни один раунд не был выигран, стоя за баррикадами. Кроме тех, в которых играете вы.
+Всегда уничтожайте траву и постройки ксеноморфов по мере продвижения.
+Старайтесь не блокировать проходы при использовании огнемёта.
+Вытаскивайте трупы, когда это возможно. Даже если морпех нереанимируем, вы всё ещё можете найти полезное снаряжение или амуницию.
+Нехватка припасов на ФОБе может стоить целого раунда. Убедитесь, что вы разложили ящики с припасами, оружием и аммуницией для других морпехов.
+Больше огня не всегда хорошо, особенно, если он направлен на ваших союзников.
+Никогда не ставьте баррикады лицом друг к другу, это не только блокирует пули, но и обе баррикады будут получать урон при нападении ксеноморфов
+ФОБ защищён, до тех пор пока защищён его слабейший проход. Защитите все фланги и помните, что стены можно снести.
+Зелёный огонь огнемёта - слабый, но он имеет много применений, например, он прожигает броню и его можно быстро потушить. Королевы и опустошители невосприимчивы к огню. Большая часть урона огнемёта идёт с первого залпа, не с пламени на земле. Не забывайте и о подствольном огнетушителе.
+СЛР продлевает время на реанимацию мёртвых морпехов. Оно может быть проведено кликом по мёртвому морпеху в зелёном интенте пустой рукой. Постарайтесь выбрать правильный ритм!
+Если основное наступление остановилось, а на месте вашей дислокации достаточно людей, попробуйте скоординироваться с другими и пойти в другое место.
+При наступлении следите за флангами. Особенно в пещерах.
+Осмотрите своё оружие и кликните на [See combat statistics], чтобы увидеть такую информацию, как урон вашего оружия.
+Ксеноморфы, которые пытаюстя сбросить с себя огонь, находятся в стане некоторое время и излучают свет. Используйте это время, чтобы добить их!
+Если в вас прилетела шрапнель, достаньте нож из своих ботинок и используйте его в своей руке, чтобы достать шрапнель из себя.
+Если на вашем оружии установлен штык-нож, вы можете вручную открывать незапертые двери, кликая на них своим оружием. Кликните на дверь снова, чтобы закрыть её. Штык-ножи СПН открывают двери быстрее.
+Предметы, лежащие на полу, можно подстрелить. Отбросьте выстрелами плохо брошенную HEDP гранату, чтобы спасти своих приятелей!
+Вы можете положить штык-нож или метательный нож в слот маски. Всегда будьте на готове.
+Ксеноморфы не могут заразить морпеха, пока они горят.
+Перетащив Наномед на себя, вы мгновенно получите отчёт о здоровье. Всегда знайте, что не так с вами.
+Шины замедляют вас. Снимите их после того, как ваши кости восстановятся, используя кнопку Remove Your Splints.
+Кровопотеря может привести к голоду, который замедлит вас. Убедитесь, что вы сыты после получения урона!
+Смоляные конструкции более уязвимы к оружию ближнего боя, чем к пулям. Доставайте свои ножи!
+Исследователи могут создать герметичные пакеты для канистр, которые вмещают до 480 юнитов реагентов и содержат индивидуальные инжекторы, которые могут быть легко использованы рядовыми.
+При битве с ксеноморфами не цельтесь в голову, это не увеличит урон по ксеноморфам, но увеличит урон по морпехам.
+Не забудьте установить противокорабельное оружие!
+Сбор модулей на оружие или других вещей с мёртвых морпехов - неплохая практика, до тех пор пока вы не убедились, что он и вправду мёртв.
+При получении припасов от карго передвиньте ящик в другое место неподалёку перед тем, как открывать его, иначе свежеполученные ящики будут спрятаны под этим ящиком!
+Если граната летит в вас - падайте на землю! Лежа на земле вы уменьшите урон и вас не заденет шрапнель.
+Вы можете брать вещи из хранилища в хранилище, например, можно достать шину из аптечки, хранящейся в рюкзаке.
+Используя правую кнопку мыши на медицинском поясе и выбрав опцию "toggle belt mode", вы можете доставать таблетки из баночек просто кликая по ним.
+Вы можете класть отвёртки, сигареты и некоторые другие вещи за ухо!
+Пилоты, в начале раунда в ангаре лежит одно из улучшений для двигателя, которое может сохранить вам очки для распечатывания других улучшений.
+Вы можете использовать ручной этикитетировщик (можно найти в комнатах подготовки отряда), чтобы переименовать своё снаряжение и уменьшить шанс на его кражу.
+Вы можете использовать анализатор здоровья в руке (клавиша Z), чтобы проверить последний отчёт о сканировании.
+Голокарты - полезный инструмент для докторов и медиков. Убедитесь, что вы присваиваете их (осмотрите морпехов с помощью shift-клика и выберите правильную голокарту) морпехам, получившим урон, который не может быть вылечен без хирургии. (Подсказка: большой урон органам или заражение лярвой = красная карточка!)
+Спасательные капсулы рассчитаны только на трёх человек, если на ней будет больше людей или больше ксеноморфов, то она выйдет из строя и взорвётся при запуске.
+Неправильно заряженное орбитальное оружие может дать осечку, убедитесь, что вы зарядили его правильно!
+ИО и КО обучены управлению Рипли и инженерному ремеслу и могут заряжать орбитальное оружие.
+Вы можете изменить, что отслеживает ваш отслеживающий маяк, используя правую кнопку мыши на гарнитуре и выбрав "Switch Tracker Target".
+Бойлеры излучают свет, не весь свет из-за угла дружественный!
+Количество предметов в карго и комнатах подготовки отряда зависит от количества готовых игроков в начале раунда.
+Вы можете положить множество предметов в шлем, начиная с бинта и сигарет, заканчивая флаерами и отвёртками.
+Командный состав может отслеживать каждого преданного ККМПC человека с помощью консоли сенсоров брони и консоли наблюдения, что полезно для нахождения сбежавших преступников или мёртвых морпехов.
+При выстреле из M7 RPG за стреляющим создаётся ударная волна, которая может оглушить и нанести урон морпехам. Следите за своей спиной!
+Запомните, что вам нужно убрать подушки дефибриллятора, чтобы положить его в хранилище.
+У членов ЧВК Вэйланд-Ютани не имеется системы "свой-чужой" морпехов. Не стреляйте из смартганов по ним!
+Чтобы говорить сразу в несколько каналов, поставьте ЗАПЯТУЮ [,] перед сообщением и добавьте до четырёх префиксов каналов. Например, ,abcd позволит говорить сразу во все четыре канала основных отрядов.
+Поставьте .w или :w перед сообщением, чтобы начать шептать. Другой способ шептать - использовать опцию "whisper" в IC панеле или командной строке чата.
+Чаще всего безопаснее починить части БМП или танка изнутри, чем снаружи.
+Почти всегда операция проводится быстрее собственноручно, чем в автодоке.
+Чтобы увидеть свои умения, зайдите в IC панель и нажмите на "view skills".
+Набор мини-ракет наносит большой удар по бюджету, когда речь идёт о вооружении для поддержки с воздуха.
+Подствольный дробовик U7 может мгновенно сломать смоляные двери и шлюзы, он также неплохо ломает стены.
+Вы можете найти пробивные заряды в карго или в вендоре полевого техника. Они работают как C4, но устанавливаются и взрываются куда быстрее, выпуская мощную шрапнель на другую сторону. Для использования требуются низкие инженерные познания, которые можно получить из буклетов.
+Бронебойные патроны наносят меньше урона по небронированным целям.
+Карго могут отказать в сервисе, если ты 'pajamarine' : морпех без снаряжения. Не забудьте снарядиться!
+Вы можете вставить пустые таблеточницы в химмастер перед созданием таблеток, чтобы они сразу попали в неё.
+Медсёстры могут попрактиковаться в хирургии на КУКЛЕ Профессор. Попросите богов дать вам такую, если вы видите (являетесь) практикующейся медсестрой.
+Напитки из веднора горячих напитков могут вас согреть.
+Будьте осторожны! Баррикады блокируют гранаты и все брошенные предметы спереди, если на них стоит колючая проволока.
+Боевые задачи воздушной поддержки увеличивают точность установленного оружия, что может сыграть значительную роль.
+Действия обезболивающих не складываются. Действовать будет только самый сильный.
+Не недооценивайте миномёт. С боеприпасами и хорошей коммуникацией он может хорошо помочь в бою.
+Вы можете стрелять сквозь тенты, но они не смогут защитить вас.
+Бюджет в карго ограничен.
+Хорошее карго может выслать припасы на любую открытую местность по заданным координатам, иногда с минимальными затратами времени.
+‘point blank’ или ‘PB’ - тип атаки стрелкового оружия, при котором вы кликаете конкретно на моба перед вами. На такие атаки не влияет точность оружия, что позволяет быстро с оружия по типу дробовиков.
+Офицеры разведки могут быть причислены к различным отрядам, обратясь за этим к командованию.
+Любой морпех может проводить СЛР. На мёртвых морпехах СЛР увеличит время на реанимацию.
+Если вас положили на землю, а ваш отряд стреляет по цели, вы можете нажать кнопку 'rest', чтобы остаться лежать и не получить полный рот свинца.
+Вы можете проверить зону высадки, будучи морпехом, в статус-панели.
+Колониальные маршалы могут прибыть из-за слишком частого использования чёрного рынка.
+ПНВ худ может быть перезаряжен путём снятия его с помощью отвёртки, после чего его нужно положить в зарядник.
+Вы можете положить пистолетный пояс в слот костюма. (Просто возьмите винтовку вместо пистолета.)
+Alt-кликнув по трекеру на СЛа, вы можете начать отслеживать командира боевой группы.
+Броня постоянно защищает вас от урона по груди, рукам и ногам, но не защищает ладони и ступни. Берите значения урона из вики как лучший сценарий.
+Вы можете кликнуть на ваш тюнер доступа (мультитул) в руке, чтобы найти ЛКП зоны, если он существует.
+Нужна помощь в изучении игры, а этих советов недостаточно? Используйте менторхелп или попробуйте связаться со старшим инструктором корабля.
+Кликнув на себя в зелёном интенте, вы осмотрите себя и увидите, где расположены переломы и другие ранения.
+Броня имеет изолятивные свойства, сняв её, вы быстрее остынете и получите меньше урона, если вы горели.
+Все складные металлические и пласталевые баррикады могут быть перемещены с помощью ящика, если они откручены и сложены! Таким образом вы можете использовать ящики как портативные наборы для ремонта баррикад, а перетащив или доставив с помощью Рипли в незабаррикадированное место, их можно использовать для быстрого возведения баррикад.
+Подсумок с топливом может не только переносить топливо для горелки, но и вмещает в себя полноценные огнетушители. Пояса и подсумки для инструментов вмещают в себя компактные огнетушители.
+Пояс для патронов к тяжёлому пулемёту M2C также вмещает в себя C4, пробивные заряды и почти все инструменты.
+Вы можете выполнить несколько действий сразу, будучи медиком, например, использовать таблетки или лечебные наборы в одно время с дефибриллятором.
+Ядерные снаряды требуют, чтобы ОБЕ коммуникационные вышки были активны для дешифровки ядерных кодов.
+ARES будет периодически давать отчёт о количестве доступных технологических очков в командный канал.
+Клавиши быстрого управления, как правило, расставляют приоритеты для предметов снаряжения, расположенных слева направо на панели инвентаря.
+Боеголовки орбитальных пушек уважают крыши и защиту ядра улья. Они не будут бить по защищённым зонам.
+Королева может разболтировать и сломать двери десантного корабля, открыв их, даже если они разблокированы. Пилоты, экипаж десантного корабля, инженеры и синты могут починить эти двери с помощью мультитула.
+Если вы выпрыгнете из десантного корабля с парашютом (если на корабле нет активного десантного модуля), то вы приземлитесь в случайном месте на карте.
+Если вы выбросите ящики из десантного корабля во время десанта, то они приземлятся рядом с местом высадки десанта.
+Во время десанта вы можете бросать любые огромные предметы, например, рюкзаки, подсумки или пушки в гиперпространство, и они приземлятся рядом с местом высадки десанта. В то время как маленькие предметы по типу флаеров не переживут падение.
+Медицинские криокапсулы будут усваивать химикаты в трупах, если в них присутствует криоксадон или клонексадон. При большом количестве жертв или при присутствии у пациента тяжёлых увечий вколите ему химикаты и положите в криокапсулу.

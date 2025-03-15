@@ -496,7 +496,17 @@
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
 
-	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
+	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6, // Game, music, admin midis, lobby music
+		1, 0.5, 0.5)) // Local, Radio,  Announces - SS220 TTS EDIT from "modular/text_to_speech/code/sound.dm"
+
+	// BANDAMARINES EDIT START
+	S["shout_orders"] >> shout_orders
+	shout_orders = sanitize_integer(shout_orders, FALSE, TRUE, TRUE)
+	S["quick_cast"] >> quick_cast
+	quick_cast = sanitize_integer(quick_cast, FALSE, TRUE, FALSE)
+	S["screentips"] >> screentips
+	screentips = sanitize_integer(screentips, FALSE, TRUE, TRUE)
+	// BANDAMARINES EDIT END
 
 	return 1
 
@@ -620,6 +630,12 @@
 	S["tgui_fancy"] << tgui_fancy
 	S["tgui_lock"] << tgui_lock
 	S["window_scale"] << window_scale
+
+	// BANDAMARINES EDIT START
+	S["quick_cast"] << quick_cast
+	S["shout_orders"] << shout_orders
+	S["screentips"] << screentips
+	// BANDAMARINES EDIT END
 
 	return TRUE
 
@@ -793,6 +809,12 @@
 	if(!preferred_squad)
 		preferred_squad = "None"
 
+	// =================================
+	// SS220 EDIT - TTS
+	if(SStts220.is_enabled)
+		S["tts_seed"] >> tts_seed
+	// =================================
+
 	return 1
 
 /datum/preferences/proc/save_character()
@@ -875,6 +897,12 @@
 
 	S["uplinklocation"] << uplinklocation
 	S["exploit_record"] << exploit_record
+
+	// =================================
+	// SS220 EDIT - TTS
+	if(SStts220.is_enabled)
+		S["tts_seed"] << tts_seed
+	// =================================
 
 	return 1
 

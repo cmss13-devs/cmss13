@@ -1,3 +1,4 @@
+import { toFixed } from 'common/math';
 import { randomNumber } from 'common/random';
 
 import { useBackend } from '../backend';
@@ -8,10 +9,10 @@ import {
   ColorBox,
   Divider,
   Flex,
-  ProgressBar,
-  Section,
+  RoundGauge,
   Stack,
 } from '../components';
+import { formatSiUnit } from '../format';
 import { Window } from '../layouts';
 
 const HexScrew = () => {
@@ -132,7 +133,7 @@ export const FlightComputer = (props) => {
 
           <Stack.Item align="center" mt={-67.5} width={50} mr={0.2}>
             <Box height={22.4} fitted p={0.7} m={2} mt={7.5}>
-              <FuelPanel />
+              <CrtDisplay />
             </Box>
           </Stack.Item>
           <Stack.Item mt={-46} width={107.5} ml={1}>
@@ -154,75 +155,6 @@ export const FlightComputer = (props) => {
             </Flex>
           </Stack.Item>
         </Stack>
-      </Window.Content>
-    </Window>
-  );
-};
-
-const Debug = (props) => {
-  const { act, data } = useBackend();
-
-  const vtol_detected = data.vtol_detected;
-  const fuel = data.fuel;
-  const max_fuel = data.max_fuel;
-  const battery = data.battery;
-  const max_battery = data.max_battery;
-  const fueling = data.fueling;
-
-  const message = vtol_detected
-    ? 'Aircraft detected - AD-19D chimera'
-    : 'No aircraft detected.';
-
-  const fuel_button = () => {
-    if (!vtol_detected) {
-      return null;
-    }
-
-    if (fueling) {
-      return (
-        <Button onClick={() => act('stop_fueling')}>
-          Stop Fueling & Charging
-        </Button>
-      );
-    } else {
-      return (
-        <Button onClick={() => act('start_fueling')}>
-          Start Fueling & Charing
-        </Button>
-      );
-    }
-  };
-
-  return (
-    <Window width={450} height={445}>
-      <Window.Content scrollable>
-        {message + '\n'}
-
-        {vtol_detected ? (
-          <ProgressBar
-            value={fuel / max_fuel}
-            ranges={{
-              good: [0.7, Infinity],
-              average: [0.2, 0.7],
-              bad: [-Infinity, 0.2],
-            }}
-          />
-        ) : null}
-        {'\n'}
-
-        {vtol_detected ? (
-          <ProgressBar
-            value={battery / max_battery}
-            ranges={{
-              good: [0.7, Infinity],
-              average: [0.2, 0.7],
-              bad: [-Infinity, 0.2],
-            }}
-          />
-        ) : null}
-        {'\n'}
-
-        {fuel_button()}
       </Window.Content>
     </Window>
   );
@@ -286,7 +218,7 @@ const FuelPanel = (props) => {
                 <ColorBox height={(fuel / max_fuel) * 10} color="green" />
               </Stack.Item>
             </Stack.Item>
-            <Stack.Divider ml={2} mr={1} height={10} />
+            <Stack.Divider ml={2} mr={1} height={10} opacity={0.99} />
             <Stack.Item grow fontSize={0.75}>
               <Box
                 inline
@@ -339,8 +271,8 @@ const FuelPanel = (props) => {
             />
             %
           </Box>
-          <Divider />
-          <Box textAlign="center" bold mt={1.5} fontFamily="monospace">
+
+          <Box textAlign="center" bold mt={2} fontFamily="monospace">
             FUEL TANK LEVELS
           </Box>
           <Box textAlign="center" bold fontSize={0.7}>
@@ -398,7 +330,7 @@ const FuelPanel = (props) => {
                 <ColorBox height={(battery / max_battery) * 10} color="green" />
               </Stack.Item>
             </Stack.Item>
-            <Stack.Divider ml={2.5} mr={2.5} height={10} />
+            <Stack.Divider ml={2.5} mr={2.5} height={10} opacity={0.99} />
             <Stack.Item grow fontSize={0.75}>
               <Box inline ml={-2} mb={2.5} width="40px" bold textColor="white">
                 1.2kW -
@@ -430,7 +362,11 @@ const FuelPanel = (props) => {
               <Stack.Item mt={-19.5} ml={0.5}>
                 <ColorBox
                   color="darkgreen"
-                  height={fueling ? randomNumber(2, 3) : 9.3}
+                  height={
+                    fueling && battery !== max_battery
+                      ? randomNumber(2, 3)
+                      : 9.3
+                  }
                   width={0.5}
                 />
               </Stack.Item>
@@ -444,8 +380,8 @@ const FuelPanel = (props) => {
             />
             %
           </Box>
-          <Divider />
-          <Box textAlign="center" bold mt={1.5} fontFamily="monospace">
+
+          <Box textAlign="center" bold mt={2} fontFamily="monospace">
             POWERCELL CHARGE
           </Box>
           <Box textAlign="center" bold fontSize={0.7}>
@@ -457,9 +393,10 @@ const FuelPanel = (props) => {
         align="center"
         icon={!vtol_detected || fueling ? 'ban' : 'tint'}
         fluid
+        bold
         onClick={() => act((!fueling ? 'start' : 'stop') + '_fueling')}
         fontSize={1.2}
-        mt={1.3}
+        mt={2.5}
         mr={3}
         mb={0}
       >
@@ -469,39 +406,122 @@ const FuelPanel = (props) => {
   );
 };
 
-const EngineTemp = (props) => {
+const CrtDisplay = (props) => {
   const { act, data } = useBackend();
 
+  let { vtol_detected } = data;
+
+  const message = vtol_detected
+    ? 'Aircraft detected - AD-19D chimera'
+    : 'No aircraft detected.';
+
   return (
-    <Section fill>
-      <svg>
-        <rect
-          fill="rgb(24, 24, 24)"
-          x="10"
-          y="10"
-          rx="10"
-          ry="10"
-          width="95%"
-          height="95%"
-        />
-      </svg>
-    </Section>
+    <Stack horizontal>
+      <Stack.Item>
+        <FuelPanel />
+      </Stack.Item>
+      <Stack.Divider opacity={0.99} ml={-1} mr={1} />
+      <Stack.Item grow>
+        <Console />
+        <TankReadouts />
+      </Stack.Item>
+    </Stack>
   );
 };
 
-const EngineTempBar = (props) => {
+const TankReadouts = (props) => {
   const { act, data } = useBackend();
 
+  let { vtol_detected, fuel } = data;
+
+  const formatPressure = (value) => {
+    if (value < 10000) {
+      return toFixed(value) + ' kPa';
+    }
+    return formatSiUnit(value * 1000, 1, 'Pa');
+  };
+
+  const formatLitres = (value) => {
+    return toFixed(value / 1000) + ' kL';
+  };
+
   return (
-    <Stack vertical height={10}>
-      <Stack.Item ml={5} mr={1}>
-        <Stack.Item height={10}>
-          <ColorBox color="green" height={10} />
-        </Stack.Item>
-        <Stack.Item mt={-19.5} ml={0.5}>
-          <ColorBox color="darkgreen" height={randomNumber(2, 3)} width={0.5} />
-        </Stack.Item>
-      </Stack.Item>
-    </Stack>
+    <Box opacity={0.99}>
+      <Box
+        mb={0.5}
+        bold
+        fontSize={1.4}
+        textAlign="center"
+        fontFamily="monospace"
+        backgroundColor="rgb(0, 233, 78)"
+        color="rgb(17, 17, 17)"
+      >
+        FUEL STORAGE TANK
+      </Box>
+
+      <Flex mb={2}>
+        <Flex.Item grow textAlign="center" fontFamily="monospace">
+          <Box m={1} bold ml={-0.2}>
+            INT. PRESSURE
+          </Box>
+          <RoundGauge
+            value={randomNumber(945, 950)}
+            minValue={800}
+            maxValue={1000}
+            size={2}
+            format={formatPressure}
+            ranges={{
+              average: [800, 925],
+              green: [925, 975],
+              red: [975, 995],
+            }}
+          />
+        </Flex.Item>
+        <Flex.Item grow textAlign="center" fontFamily="monospace">
+          <Box m={1} bold>
+            STORED FUEL
+          </Box>
+          <RoundGauge
+            value={vtol_detected ? 35000 - fuel * 27 : 36000}
+            minValue={0}
+            maxValue={40000}
+            size={2}
+            format={formatLitres}
+            ranges={{
+              green: [10000, 37000],
+              red: [0, 10000],
+            }}
+          />
+        </Flex.Item>
+      </Flex>
+      <Divider />
+    </Box>
+  );
+};
+
+const Console = (props) => {
+  const { act, data } = useBackend();
+  let { vtol_detected, fueling } = data;
+  return (
+    <Box height={10.75} opacity={0.99}>
+      <Divider />
+      <Box bold fontFamily="monospace" fontSize={1.1}>
+        {vtol_detected ? 'Linked aircraft detected:' : 'No aircraft detected!'}
+      </Box>
+      <Box bold>{vtol_detected && '[ AD-19D CHIMERA ]'}</Box>
+      <Box bold fontFamily="monospace" fontSize={1.1} mt={1.3}>
+        Refuel and recharge status:
+      </Box>
+      <Box bold color={fueling ? 'default' : 'red'} fontSize={1.1}>
+        {fueling ? '[ ENGAGED ]' : '[ DISENGAGED ]'}
+      </Box>
+      <Box bold fontFamily="monospace" fontSize={1.1} mt={1.3}>
+        Primary resupply systems:
+      </Box>
+      <Box bold fontSize={0.95} mb={1.3}>
+        [ SYSTEMS NOMINAL ]
+      </Box>
+      <Divider />
+    </Box>
   );
 };

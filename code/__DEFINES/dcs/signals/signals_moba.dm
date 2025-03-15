@@ -28,3 +28,9 @@
 #define COMSIG_MOBA_ACTION_ADD_LEVELUP "moba_action_add_levelup"
 
 #define COMSIG_MOBA_ACTION_REMOVE_LEVELUP "moba_action_remove_levelup"
+
+/// (list/lifesteal_holder)
+#define COMSIG_MOBA_GET_LIFESTEAL "moba_get_lifesteal"
+
+/// (lifesteal)
+#define COMSIG_MOBA_SET_LIFESTEAL "moba_set_lifesteal"

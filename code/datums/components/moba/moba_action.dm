@@ -48,12 +48,12 @@
 	if(!player)
 		return COMPONENT_BLOCK_ACTION_USE
 	if(player.unspent_levels)
-		if(is_ultimate && (player.ability_path_level_dict[type] >= player.max_ultimate_level))
-			if(!player.ability_path_level_dict[type])
+		if(is_ultimate && (player.ability_path_level_dict[parent.type] >= player.max_ultimate_level))
+			if(!player.ability_path_level_dict[parent.type])
 				return COMPONENT_BLOCK_ACTION_USE
 			return
 		return
-	if(!player.ability_path_level_dict[type])
+	if(!player.ability_path_level_dict[parent.type])
 		return COMPONENT_BLOCK_ACTION_USE
 
 /datum/component/moba_action/proc/on_action_activate(datum/source)
@@ -62,11 +62,11 @@
 	var/datum/moba_player/player = player_datum.resolve()
 	if(!player)
 		return
-	if(player.unspent_levels && (player.ability_path_level_dict[type] < max_level))
-		if(is_ultimate && (player.ability_path_level_dict[type] >= player.max_ultimate_level))
+	if(player.unspent_levels && (player.ability_path_level_dict[parent.type] < max_level))
+		if(is_ultimate && (player.ability_path_level_dict[parent.type] >= player.max_ultimate_level))
 			return
-		player.spend_level(type)
-		parent_action.level_up_ability(player.ability_path_level_dict[type])
+		player.spend_level(parent.type)
+		parent_action.level_up_ability(player.ability_path_level_dict[parent.type])
 		return COMPONENT_BLOCK_ACTIVATION
 
 /datum/component/moba_action/proc/start_level_up_overlay(datum/source)
@@ -76,7 +76,7 @@
 	if(!player)
 		return
 
-	if(player.ability_path_level_dict[type] >= max_level)
+	if(player.ability_path_level_dict[parent.type] >= max_level)
 		return
 
 	if(is_ultimate && (player.ability_path_level_dict[parent_action.type] >= player.max_ultimate_level))

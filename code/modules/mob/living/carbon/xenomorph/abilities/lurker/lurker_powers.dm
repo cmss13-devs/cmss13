@@ -269,8 +269,8 @@
 			if(!xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
 				break
 
-	if(isliving(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD && direct_hit_bonus)
-		if(targeted_atom == hit_target) //reward for a direct hit
+	if(isliving(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
+		if(targeted_atom == hit_target && direct_hit_bonus) //reward for a direct hit
 			to_chat(xeno, SPAN_XENOHIGHDANGER("We attack [hit_target], with our tail, piercing their body!"))
 			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
 		else

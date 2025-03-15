@@ -1,6 +1,6 @@
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
 
-/// from /mob/living/carbon/xenomorph/attack_alien()
+/// from /mob/living/carbon/xenomorph/attack_alien() : (mob/living/carbon/xenomorph/attacking, damage)
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
 /// from /mob/living/carbon/xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACKED "xeno_alien_attacked"

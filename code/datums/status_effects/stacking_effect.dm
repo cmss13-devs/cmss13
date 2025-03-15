@@ -20,6 +20,8 @@
 	var/consumed_on_threshold = TRUE
 	/// Set to true once the stack_threshold is crossed, and false once it falls back below
 	var/threshold_crossed = FALSE
+	/// If we should be deleted at 0 stacks
+	var/should_delete_at_no_stacks = TRUE
 
 /*  This implementation is missing effects overlays because we did not have
 	/tg/ overlays backend available at the time. Feel free to add them when we do! */
@@ -85,7 +87,7 @@
 		if(stacks_added > 0)
 			tick_interval += delay_before_decay //refreshes time until decay
 		stacks = min(stacks, max_stacks)
-	else
+	else if(should_delete_at_no_stacks)
 		fadeout_effect()
 		qdel(src) //deletes status if stacks fall under one
 

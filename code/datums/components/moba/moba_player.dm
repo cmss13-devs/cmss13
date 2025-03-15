@@ -32,6 +32,8 @@
 	var/bonus_hp = 0
 	/// How much "Acid Power" (AP) we have, used for the scaling of certain abilities
 	var/acid_power = 0
+	/// What percentage of melee damage done is returned as health. 1 is 100%
+	var/lifesteal = 0
 
 /datum/component/moba_player/Initialize(datum/moba_player/player, id, right)
 	. = ..()
@@ -66,8 +68,8 @@
 		TRUE,\
 	)
 
-	for(var/datum/action/action_path as anything in parent_xeno.base_actions)
-		remove_action(parent_xeno, action_path)
+	for(var/datum/action/action as anything in parent_xeno.actions)
+		remove_action(parent_xeno, action.type)
 
 	give_action(parent_xeno, /datum/action/open_moba_scoreboard, map_id)
 	give_action(parent_xeno, /datum/action/xeno_action/watch_xeno)
@@ -92,6 +94,7 @@
 	..()
 	RegisterSignal(parent_xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdel))
 	RegisterSignal(parent_xeno, COMSIG_XENO_BULLET_ACT, PROC_REF(on_bullet_act))
+	RegisterSignal(parent_xeno, COMSIG_XENO_ALIEN_ATTACK, PROC_REF(on_attack))
 	RegisterSignal(parent_xeno, COMSIG_XENO_ALIEN_ATTACKED, PROC_REF(on_attacked))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_XP, PROC_REF(grant_xp))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_GOLD, PROC_REF(grant_gold))
@@ -99,6 +102,8 @@
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_GOLD, PROC_REF(get_gold))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_LEVEL, PROC_REF(get_level))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_AP, PROC_REF(get_ap))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_LIFESTEAL, PROC_REF(get_lifesteal))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_SET_LIFESTEAL, PROC_REF(set_lifesteal))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_ADD_ITEM, PROC_REF(add_item))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_REMOVE_ITEM, PROC_REF(remove_item))
 	RegisterSignal(parent_xeno, COMSIG_XENO_USED_TUNNEL, PROC_REF(on_tunnel))
@@ -128,7 +133,7 @@
 	) // We refresh this because we're a level higher, so more XP on kill
 
 /datum/component/moba_player/process(delta_time)
-	if(parent_xeno.health < parent_xeno.maxHealth && parent_xeno.last_hit_time + parent_xeno.caste.heal_delay_time <= world.time && (!parent_xeno.caste || (parent_xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !parent_xeno.fire_stacks) && parent_xeno.health < 0)
+	if(parent_xeno.health < parent_xeno.maxHealth && parent_xeno.last_hit_time + parent_xeno.caste.heal_delay_time <= world.time && (!parent_xeno.caste || (parent_xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !parent_xeno.fire_stacks))
 		var/damage_to_heal = 0
 		if(parent_xeno.body_position == LYING_DOWN || parent_xeno.resting)
 			damage_to_heal = healing_value_resting
@@ -136,12 +141,7 @@
 			damage_to_heal = healing_value_standing
 		if(istype(get_area(parent_xeno), /area/misc/moba/base/fountain))
 			damage_to_heal *= MOBA_FOUNTAIN_HEAL_MULTIPLIER
-		var/brute = parent_xeno.getBruteLoss()
-		var/burn = parent_xeno.getFireLoss()
-		var/percentage_brute = brute / (brute + burn)
-		var/percentage_burn = burn / (brute + burn)
-		parent_xeno.apply_damage(-(damage_to_heal * percentage_brute), BRUTE)
-		parent_xeno.apply_damage(-(damage_to_heal * percentage_burn), BURN)
+		parent_xeno.gain_health(damage_to_heal)
 		parent_xeno.updatehealth()
 
 	if(parent_xeno.plasma_stored < parent_xeno.plasma_max)
@@ -167,6 +167,14 @@
 			acting_projectile.ammo.penetration,
 			//zonenote modify this if we ever add armor integrity for acid armor
 		)
+
+/datum/component/moba_player/proc/on_attack(datum/source, mob/living/carbon/xenomorph/attacking, damage)
+	SIGNAL_HANDLER
+
+	var/amount_to_heal = damage * lifesteal
+	if(amount_to_heal)
+		parent_xeno.gain_health(damage * lifesteal)
+		parent_xeno.flick_heal_overlay(1 SECONDS, "#00B800")
 
 /datum/component/moba_player/proc/on_attacked(datum/source, mob/living/carbon/xenomorph/attacking_xeno)
 	SIGNAL_HANDLER
@@ -221,6 +229,16 @@
 	SIGNAL_HANDLER
 
 	ap_list += acid_power
+
+/datum/component/moba_player/proc/get_lifesteal(datum/source, list/lifesteal_list)
+	SIGNAL_HANDLER
+
+	lifesteal_list += lifesteal
+
+/datum/component/moba_player/proc/set_lifesteal(datum/source, new_lifesteal)
+	SIGNAL_HANDLER
+
+	lifesteal = new_lifesteal
 
 /datum/component/moba_player/proc/add_item(datum/source, datum/moba_item/new_item)
 	SIGNAL_HANDLER

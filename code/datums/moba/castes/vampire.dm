@@ -1,17 +1,17 @@
 /datum/moba_caste/vampire
 	equivalent_caste_path = /datum/caste_datum/lurker
-	equivalent_xeno_path = /mob/living/carbon/xenomorph/lurker
+	equivalent_xeno_path = /mob/living/carbon/xenomorph/lurker/vampire
 	name = "Vampire"
 	desc = {"
 		Aggressive melee combat caste focused on lifesteal and scaling.<br>
 		<b>P:</b> Gain permanent stacks of bloodlust from landing your abilities. Every 5 stacks of bloodlust grants lifesteal.<br>
-		<b>1:</b> Rush towards a target within 4 tiles, striking them if they are an enemy.<br>
+		<b>1:</b> Rush towards a target within 4 tiles.<br>
 		<b>2:</b> Slash in a wide area in front of you, healing for each target hit.<br>
 		<b>3:</b> Quickly stab a target with your tail, ignoring some armor.<br>
 		<b>U:</b> Headbite a low-health target, executing them and healing a large amount of health.
 	"}
 	category = MOBA_ARCHETYPE_FIGHTER
-	icon_state = "drone"
+	icon_state = "vampire"
 	ideal_roles = list(MOBA_LANE_TOP, MOBA_LANE_JUNGLE)
 	starting_health = 500
 	ending_health = 2000
@@ -30,12 +30,19 @@
 	starting_attack_damage = 40
 	ending_attack_damage = 65
 	abilities_to_add = list(
-
+		/datum/action/xeno_action/activable/pounce/rush/moba,
+		/datum/action/xeno_action/activable/flurry/moba,
+		/datum/action/xeno_action/activable/tail_jab/moba,
+		/datum/action/xeno_action/activable/moba_headbite,
 	)
 
+/datum/moba_caste/vampire/apply_caste(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/player_component, datum/moba_player/player_datum)
+	. = ..()
+	xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
+	xeno.AddComponent(/datum/component/moba_vampire_execute_tracker, player_datum, player_component.map_id, player_component.right_side)
 
 /datum/action/xeno_action/activable/pounce/rush/moba
-	desc = "Rush towards a targeted tile or creature, striking them if they're an enemy. Cooldown 8/7/6 seconds."
+	desc = "Rush towards a targeted tile or creature. Cooldown 8/7/6 seconds."
 	xeno_cooldown = 8 SECONDS
 	plasma_cost = 60
 
@@ -43,7 +50,7 @@
 	plasma_cost = src::plasma_cost - ((new_level - 1) * 5)
 	xeno_cooldown = src::xeno_cooldown - (new_level - 1)
 
-	desc = "Rush towards a targeted tile or creature, striking them if they're an enemy. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 8, 7, 6)] seconds."
+	desc = "Rush towards a targeted tile or creature. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 8, 7, 6)] seconds."
 
 
 /datum/action/xeno_action/activable/flurry/moba
@@ -68,7 +75,7 @@
 	xeno.animation_attack_on(target)
 	if(!bloodlust_effect)
 		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
-	bloodlust_effect.stacks += 1 // 1 per target hit
+	bloodlust_effect.add_stacks(1) // 1 per target hit
 
 /datum/action/xeno_action/activable/flurry/moba/level_up_ability(new_level)
 	base_damage = src::base_damage + ((new_level - 1) * 10)
@@ -77,7 +84,7 @@
 	desc = "1x3 attack that damages everyone hit for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 30, 40, 50)] (+40% AD) (+Bloodlust) physical damage. You heal for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "15%", "20%", "25%")] (+5% AD) of the damage done. Each player hit grants 1 stack of bloodlust. Cooldown 4 seconds."
 
 /datum/action/xeno_action/activable/tail_jab/moba
-	desc = "Quickly stab your tail at a target within 2 tiles, dealing 1.2/1.3/1.4x (+Bloodlust) your standard attack's damage with +0/5/10 armor penetration in addition to slowing the target for 0.5 seconds. Hitting a player grants 2 stacks of bloodlust. Cooldown 8 seconds."
+	desc = "Quickly stab your tail at a target within 2 tiles, dealing 1.2/1.3/1.4x (+Bloodlust) your standard attack's damage with +0/5/10 armor penetration in addition to slowing the target for 0.5 seconds and shoving them back a tile. Hitting a player grants 2 stacks of bloodlust. Cooldown 8 seconds."
 	xeno_cooldown = 8 SECONDS
 	direct_hit_bonus = FALSE
 	plasma_cost = 80
@@ -91,13 +98,13 @@
 	hit_target.Slow(0.5)
 	if(!bloodlust_effect)
 		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
-	bloodlust_effect.stacks += 2
+	bloodlust_effect.add_stacks(2)
 
 /datum/action/xeno_action/activable/tail_jab/moba/level_up_ability(new_level)
 	damage_mult = src::damage_mult + ((new_level - 1) * 0.2)
 	bonus_pen = src::bonus_pen + ((new_level - 1) * 5)
 
-	desc = "Quickly stab your tail at a target within 2 tiles, dealing [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "1.2x", "1.4x", "1.6x")] (+Bloodlust) your standard attack's damage with +[MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 0, 5, 10)] armor penetration in addition to slowing the target for 0.5 seconds. Hitting a player grants 2 stacks of bloodlust. Cooldown 8 seconds."
+	desc = "Quickly stab your tail at a target within 2 tiles, dealing [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "1.2x", "1.4x", "1.6x")] (+Bloodlust) your standard attack's damage with +[MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 0, 5, 10)] armor penetration in addition to slowing the target for 0.5 seconds and shoving them back a tile. Hitting a player grants 2 stacks of bloodlust. Cooldown 8 seconds."
 
 
 /datum/action/xeno_action/activable/moba_headbite // not inheriting for this, too much is different
@@ -112,11 +119,14 @@
 	var/true_damage_to_deal = 150
 
 /datum/action/xeno_action/activable/moba_headbite/use_ability(atom/target_atom)
+	if(!action_cooldown_check())
+		return
+
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/status_effect/stacking/bloodlust_effect = xeno.has_status_effect(/datum/status_effect/stacking/bloodlust)
 	var/damage_to_deal = true_damage_to_deal + (xeno.melee_damage_upper * 0.7) + (bloodlust_effect ? bloodlust_effect.stacks * 3 : 0)
 
-	if(!iscarbon(target_atom))
+	if(!iscarbon(target_atom) || !HAS_TRAIT(target_atom, TRAIT_MOBA_PARTICIPANT))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
@@ -124,25 +134,30 @@
 	if(xeno.can_not_harm(target_carbon))
 		return
 
-	if(!xeno.Adjacent(target_carbon))
+	if(!xeno.Adjacent(target_carbon) || (xeno.health > damage_to_deal))
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only headbite an adjacent, low-health target!"))
 		return
 
 	if(!xeno.check_state())
 		return
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We pierce [target_carbon]’s carapace head with our inner jaw!")) //zonenote add execute indicator to enemies also add bloodlust stacks to hud
+	to_chat(xeno, SPAN_XENOHIGHDANGER("We pierce [target_carbon]’s carapace head with our inner jaw!"))
 	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s carapace head with its inner jaw!"))
 	xeno.flick_attack_overlay(target_carbon, "headbite")
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_damage(damage_to_deal, BRUTE, "chest") // Ignores armor since it's true damage
-	//target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
+	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
 	xeno.gain_health(damage_to_deal)
 	xeno.xeno_jitter(1 SECONDS)
 	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")
 	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
+
+	if(!bloodlust_effect)
+		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
+	bloodlust_effect.add_stacks(5)
+
 	apply_cooldown()
 	return ..()
 

@@ -7,6 +7,7 @@ import { BooleanLike } from '../../common/react';
 import { useBackend } from '../backend';
 import { Box, Button, Dropdown, Tooltip } from '../components';
 import { Window } from '../layouts';
+import { logger } from '../logging';
 
 type Caste = {
   name: string;
@@ -17,8 +18,7 @@ type Caste = {
 };
 
 type BackendContext = {
-  castes: { [caste_name: string]: string };
-  castes_2: Caste[];
+  castes: Caste[];
   categories: string[];
   in_queue: BooleanLike;
   can_enter_queue: BooleanLike;
@@ -28,27 +28,34 @@ type BackendContext = {
   is_moba_participant: BooleanLike;
 };
 
-const MainTab2 = () => {
+const MainTab = () => {
   const { data, act } = useBackend<BackendContext>();
   const [selectedPriority, setSelectedPriority] = useState<number>(1);
   const [casteSelectorOpen, setCasteSelectorOpen] = useState<boolean>(false);
+  const [casteSelectorPriority, setCasteSelectorPriority] = useState<number>(1);
 
   return casteSelectorOpen ? (
-    <MobaCasteSelector setCasteSelectorOpen={setCasteSelectorOpen} />
+    <MobaCasteSelector
+      setCasteSelectorOpen={setCasteSelectorOpen}
+      priority={casteSelectorPriority}
+    />
   ) : (
     <Box>
       <Box style={{ display: 'flex' }}>
         <MobaCastePicked
           priority={1}
           setCasteSelectorOpen={setCasteSelectorOpen}
+          setCasteSelectorPriority={setCasteSelectorPriority}
         />
         <MobaCastePicked
           priority={2}
           setCasteSelectorOpen={setCasteSelectorOpen}
+          setCasteSelectorPriority={setCasteSelectorPriority}
         />
         <MobaCastePicked
           priority={3}
           setCasteSelectorOpen={setCasteSelectorOpen}
+          setCasteSelectorPriority={setCasteSelectorPriority}
         />
       </Box>
       <br />
@@ -83,6 +90,7 @@ const MobaCastePicked = (props) => {
   const { data, act } = useBackend<BackendContext>();
   const priority: number = props.priority;
   const setCasteSelectorOpen = props.setCasteSelectorOpen;
+  const setCasteSelectorPriority = props.setCasteSelectorPriority;
   const pickedCaste: Caste = data.picked_castes[priority - 1];
   let optionKeys: string[] = [
     'Top Lane',
@@ -109,7 +117,10 @@ const MobaCastePicked = (props) => {
       <center>#{priority}</center>
       <Button
         disabled={data.in_queue || data.is_moba_participant}
-        onClick={() => setCasteSelectorOpen(true)}
+        onClick={() => {
+          setCasteSelectorPriority(priority);
+          setCasteSelectorOpen(true);
+        }}
       >
         {data.picked_castes.length >= priority ? (
           <span
@@ -168,7 +179,7 @@ const MobaCasteSelectorCategory = (props) => {
     <>
       <h2>{category}</h2>
       <hr />
-      {data.castes_2
+      {data.castes
         .filter((element) => element.category === category)
         .map((element) => (
           <MobaCasteSelectorButton
@@ -192,6 +203,7 @@ const MobaCasteSelectorButton = (props) => {
     <Tooltip innerhtml={caste.desc}>
       <Button
         onClick={() => {
+          logger.log(priority);
           act('select_caste', { caste: caste.name, priority: priority });
           setCasteSelectorOpen(false);
         }}
@@ -206,7 +218,7 @@ export const MobaJoinPanel = () => {
   return (
     <Window width={810} height={600} title={'Moba Queue Panel'}>
       <Window.Content>
-        <MainTab2 />
+        <MainTab />
       </Window.Content>
     </Window>
   );

@@ -14,6 +14,10 @@
 	return ..()
 
 /datum/moba_join_panel/tgui_interact(mob/user, datum/tgui/ui)
+	if(user.client)
+		picked_castes = user.client.moba_picked_castes
+		picked_lanes = user.client.moba_picked_lanes
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "MobaJoinPanel")
@@ -57,11 +61,10 @@
 
 	data["categories"] = list(MOBA_ARCHETYPE_ASSASSIN, MOBA_ARCHETYPE_CASTER, MOBA_ARCHETYPE_CONTROLLER, MOBA_ARCHETYPE_FIGHTER, MOBA_ARCHETYPE_TANK)
 
-	data["castes"] = GLOB.moba_castes_name + "None"
-	data["castes_2"] = list()
+	data["castes"] = list()
 	for(var/caste_name in GLOB.moba_castes_name)
 		var/datum/moba_caste/caste = GLOB.moba_castes_name[caste_name]
-		data["castes_2"] += list(list(
+		data["castes"] += list(list(
 			"name" = caste.name,
 			"desc" = caste.desc,
 			"icon_state" = caste.icon_state,
@@ -91,8 +94,10 @@
 
 			if(lane == "None")
 				picked_lanes[priority] = ""
+				ui.user.client.moba_picked_lanes[priority] = ""
 			else
 				picked_lanes[priority] = lane
+				ui.user.client.moba_picked_lanes[priority] = lane
 			return TRUE
 
 		if("select_caste")
@@ -101,7 +106,7 @@
 			if(!priority || !caste)
 				return
 
-			if(!(caste in GLOB.moba_castes_name) && (caste != "None"))
+			if(!(caste in GLOB.moba_castes_name) && (caste != "None") && (caste != "Vampire"))
 				return
 
 			if(priority > MOBA_ALLOWED_POSITIONS || priority <= 0 || HAS_TRAIT(ui.user, TRAIT_MOBA_PARTICIPANT))
@@ -109,8 +114,10 @@
 
 			if(caste == "None")
 				picked_castes[priority] = ""
+				ui.user.client.moba_picked_castes[priority] = ""
 			else
 				picked_castes[priority] = caste
+				ui.user.client.moba_picked_castes[priority] = caste
 			return TRUE
 
 		if("enter_queue")

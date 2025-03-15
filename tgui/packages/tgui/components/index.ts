@@ -15,7 +15,6 @@ export { Chart } from './Chart';
 export { Collapsible } from './Collapsible';
 export { ColorBox } from './ColorBox';
 export { Dialog } from './Dialog';
-export { DigitalGauge } from './DigitalGauge';
 export { Dimmer } from './Dimmer';
 export { Divider } from './Divider';
 export { DmIcon } from './DmIcon';

@@ -354,7 +354,7 @@
 	for(var/X in owner.actions)
 		var/datum/action/act = X
 		act.update_button_icon()
-	if(!no_cooldown_msg)
+	if(!no_cooldown_msg && owner.client?.prefs.show_cooldown_messages)
 		if(cooldown_message)
 			to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
 		else

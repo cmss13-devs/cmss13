@@ -22,7 +22,7 @@
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 10
+	xeno_cooldown = 1 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
 	var/plant_on_semiweedable = FALSE
@@ -193,7 +193,7 @@
 	var/action_text = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 40
+	xeno_cooldown = 4 SECONDS
 	plasma_cost = 10
 
 	// Config options
@@ -359,7 +359,7 @@
 	action_type = XENO_ACTION_CLICK
 
 	plasma_cost = 40
-	xeno_cooldown = 80
+	xeno_cooldown = 8 SECONDS
 
 
 	// Configurable options
@@ -461,7 +461,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 230
+	xeno_cooldown = 23 SECONDS
 
 	// Range and other config
 	var/effect_range = 3

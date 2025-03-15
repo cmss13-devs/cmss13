@@ -5069,6 +5069,15 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/living/gym)
+"alI" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/treadmill/console{
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/gym)
 "alL" = (
 /turf/closed/wall/almayer,
 /area/almayer/command/telecomms)
@@ -35200,6 +35209,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
+/obj/structure/machinery/treadmill/console{
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
 "jpD" = (
@@ -37593,6 +37607,11 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/treadmill/console{
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
 "kqN" = (
@@ -45494,11 +45513,8 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie)
 "nEF" = (
-/obj/structure/treadmill{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/obj/structure/treadmill/overlay{
+/obj/structure/machinery/treadmill{
+	dir = 4;
 	pixel_x = -4;
 	pixel_y = 3
 	},
@@ -61290,11 +61306,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/treadmill{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/obj/structure/treadmill/overlay{
+/obj/structure/machinery/treadmill{
+	dir = 4;
 	pixel_x = -4;
 	pixel_y = 3
 	},
@@ -99354,9 +99367,9 @@ akR
 aqn
 arT
 als
-akR
+alI
 kqK
-akR
+alI
 jpt
 uKe
 wfE

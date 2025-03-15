@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds,
+/obj/structure/machinery/door/poddoor/yautja/hunting_grounds,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/north)
 "ab" = (

@@ -86,6 +86,9 @@
 	weed_food_states = list("Carrier_1","Carrier_2","Carrier_3")
 	weed_food_states_flipped = list("Carrier_1","Carrier_2","Carrier_3")
 
+	skull = /obj/item/skull/carrier
+	pelt = /obj/item/pelt/carrier
+
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon
 	var/mutable_appearance/eggsac_overlays_icon

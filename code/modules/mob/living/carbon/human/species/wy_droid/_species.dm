@@ -2,8 +2,7 @@
 /datum/species/synthetic/colonial/wy_droid
 	name = SYNTH_COMBAT
 	name_plural = "WY Combat Androids"
-	flags = parent_type::flags & ~HAS_SKIN_COLOR
-	// flags = parent_type::flags & ~HAS_UNDERWEAR
+	flags = parent_type::flags & ~(HAS_SKIN_COLOR|HAS_UNDERWEAR)
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_EMOTE_CD_EXEMPT, TRAIT_UNSTRIPPABLE) //No IRON_TEETH because they have no teeth (literally)
 

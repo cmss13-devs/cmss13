@@ -1298,6 +1298,11 @@
 			if(cmp_job?.active_cmp)
 				H = cmp_job.active_cmp
 			tracking_suffix = "_cmp"
+		if(TRACKER_WARDEN)
+			var/datum/job/command/warden/warden_job = GLOB.RoleAuthority.roles_for_mode[JOB_WARDEN]
+			if(warden_job?.active_warden)
+				H = warden_job.active_warden
+			tracking_suffix = "_warden"
 		if(TRACKER_CL)
 			var/datum/job/civilian/liaison/liaison_job = GLOB.RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
 			if(liaison_job?.active_liaison)

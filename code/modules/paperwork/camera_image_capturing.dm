@@ -126,10 +126,11 @@
 					var/base_w = img.Width()
 					var/base_h = img.Height()
 					// scale_x can be negative
-					img.Scale(base_w * abs(decompose.scale_x), base_h * decompose.scale_y)
+					if((!base_w == 0) || (!base_h == 0))
+						img.Scale(base_w * abs(decompose.scale_x), base_h * decompose.scale_y)
 					if(decompose.scale_x < 0)
 						img.Flip(EAST)
-					xo -= base_w * (decompose.scale_x - sign(decompose.scale_x)) / 2 * sign(decompose.scale_x)
+					xo -= base_w * (decompose.scale_x - SIGN(decompose.scale_x)) / 2 * SIGN(decompose.scale_x)
 					yo -= base_h * (decompose.scale_y - 1) / 2
 				// Rotation
 				if(decompose.rotation != 0)

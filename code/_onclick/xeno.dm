@@ -22,6 +22,8 @@
 				if (!alt)
 					alt = L // last option is a simple mob
 				continue
+			if(HAS_TRAIT(L, TRAIT_NESTED))
+				continue
 
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue

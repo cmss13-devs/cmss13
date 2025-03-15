@@ -54,6 +54,22 @@
 		lower_shield(user)
 	..()
 
+/obj/item/weapon/shield/proc/directional_block(mob/user, direction)
+	var/attack_direction = direction
+	if(user.dir == attack_direction)
+		return FALSE
+	for(var/side_direction in get_perpen_dir(user.dir))
+		if(attack_direction == side_direction)
+			if(src.shield_readied)
+				return prob(readied_block / 2)
+			else
+				return prob(passive_block / 2)
+	if(src.shield_readied)
+		return prob(readied_block)
+	else
+		return prob(passive_block)
+
+
 /obj/item/weapon/shield/riot
 	name = "riot shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."

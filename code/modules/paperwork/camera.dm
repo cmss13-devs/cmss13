@@ -1,9 +1,11 @@
 
 #define CAMERA_PICTURE_SIZE_HARD_LIMIT 21
-
+/*
+* camera *
+*********/
 /obj/item/device/camera
 	name = "camera"
-	icon = 'icons/obj/items/camera.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	desc = "A polaroid camera."
 	icon_state = "camera"
 	item_state = "camera"
@@ -18,7 +20,7 @@
 	flags_equip_slot = SLOT_WAIST
 
 	light_system = STATIC_LIGHT //Used as a flash here.
-	light_range = 6
+	light_range = 15
 	light_color = COLOR_WHITE
 	light_power = FLASH_LIGHT_POWER
 	light_on = FALSE
@@ -43,6 +45,10 @@
 	///Whether the camera should print pictures immediately when a picture is taken.
 	var/print_picture_on_snap = TRUE
 
+/obj/item/device/camera/Initialize(mapload)
+	. = ..()
+	set_light_on(FALSE)
+
 /obj/item/device/camera/attack_self(mob/user) //wielding capabilities
 	. = ..()
 	if(flags_item & WIELDED)
@@ -51,6 +57,7 @@
 		wield(user)
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+	. = ..()
 	if(pictures_left <= 0)
 		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
 		return
@@ -58,7 +65,8 @@
 		return
 	if(!can_target(target, user))
 		return
-	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
+	if(!photo_taken(target, user))
+		return
 
 /obj/item/device/camera/get_examine_text(mob/user)
 	. = ..()

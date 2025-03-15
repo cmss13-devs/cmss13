@@ -44,7 +44,7 @@
 				lighting += lighting_overlay
 			for(var/i in T.contents)
 				var/atom/A = i
-				if(!A.invisibility || !istype(A, /mob/dead/observer))
+				if(!A.invisibility)
 					atoms += new /obj/effect/appearance_clone(newT, A)
 		skip_normal = TRUE
 		wipe_atoms = TRUE
@@ -129,7 +129,7 @@
 					img.Scale(base_w * abs(decompose.scale_x), base_h * decompose.scale_y)
 					if(decompose.scale_x < 0)
 						img.Flip(EAST)
-					xo -= base_w * (decompose.scale_x - 1) / 2 * 1
+					xo -= base_w * (decompose.scale_x - sign(decompose.scale_x)) / 2 * sign(decompose.scale_x)
 					yo -= base_h * (decompose.scale_y - 1) / 2
 				// Rotation
 				if(decompose.rotation != 0)

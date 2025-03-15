@@ -3,11 +3,10 @@
  */
 /obj/item/photo
 	name = "photo"
-	icon = 'icons/obj/items/camera.dmi'
-	icon_state = "photo"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "photo_item"
 	w_class = SIZE_TINY
 	var/datum/picture/picture
-	var/icon/tiny
 	var/scribble //Scribble on the back.
 
 /obj/item/photo/Initialize(mapload, datum/picture/P, datum_name = TRUE, datum_desc = TRUE)

@@ -115,7 +115,7 @@
 		P.add_fingerprint(usr)
 	else if(istype(src[page], /obj/item/photo))
 		var/obj/item/photo/P = src[page]
-		human_user << browse_rsc(P.picture, "tmp_photo.png")
+		human_user << browse_rsc(P.picture.picture_image, "tmp_photo.png")
 		dat += "<html>" \
 		+ "<body style='overflow:hidden'>" \
 		+ "<div> <img src='tmp_photo.png' width = '180'" \
@@ -220,7 +220,7 @@
 			i++
 		else if(istype(O, /obj/item/photo))
 			var/obj/item/photo/PH = O
-			IMG = PH.tiny
+			IMG = PH.picture.get_small_icon(initial(icon_state))
 			photo++
 			overlays += IMG
 	if(i>1)

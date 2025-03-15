@@ -1,11 +1,10 @@
 import { BooleanLike } from 'common/react';
 import { marked } from 'marked';
 import { createRef, useEffect, useState } from 'react';
-
-import { resolveAsset } from '../assets';
-import { useBackend } from '../backend';
-import { Box, Button, Image, Stack, TextArea } from '../components';
-import { Window } from '../layouts';
+import { resolveAsset } from 'tgui/assets';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Image, Stack, TextArea } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type BookData = {
   title: string;

@@ -43,7 +43,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad/populate_product_list(scale)
 	listed_products = list(
 		list("FOOD", -1, null, null),
-		list("Ration", floor(scale * 20), /obj/item/reagent_container/food/snacks/upp, VENDOR_ITEM_REGULAR),
+		list("Ration", floor(scale * 20), /obj/item/storage/box/mre/upp, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS", -1, null, null),
 		list("Entrenching Tool (ET)", floor(scale * 2), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),

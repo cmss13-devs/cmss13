@@ -55,6 +55,15 @@ ON_CONFIG_LOAD(/datum/autoreply/admin/xeno)
 ON_CONFIG_LOAD(/datum/autoreply/admin/whitelist)
 	message = "Staff are unable to handle most whitelist rulebreaks in-game, please make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
 
+/datum/autoreply/admin/clear_cache
+	title = "Clear Cache"
+	message = "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
+	closer = FALSE
+
+/datum/autoreply/admin/lobby
+	title = "Cryo and Ghost to Lobby"
+	message = "Staff have approved your request to be returned to the lobby. In order to do so, you must enter a cryogenics bay and ghost. You will be then manually returned to the lobby by staff."
+	closer = FALSE
 ////////////////////////////
 /////   MENTOR HELPS   /////
 ////////////////////////////

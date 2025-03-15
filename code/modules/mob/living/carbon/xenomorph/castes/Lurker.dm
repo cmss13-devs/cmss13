@@ -260,8 +260,7 @@
 /datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off(refund_multiplier = 0.0)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!istype(xeno))
-		return
+
 	if(owner.alpha == initial(owner.alpha) && !xeno.stealth)
 		return
 

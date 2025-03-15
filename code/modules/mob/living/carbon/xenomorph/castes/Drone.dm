@@ -12,9 +12,12 @@
 	evasion = XENO_EVASION_MEDIUM
 	speed = XENO_SPEED_TIER_7
 
+	spit_types = list(/datum/ammo/xeno/acid/prae_nade, /datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
+
 	available_strains = list(
 		/datum/xeno_strain/gardener,
 		/datum/xeno_strain/healer,
+		/datum/xeno_strain/gambler,
 	)
 
 	build_time_mult = BUILD_TIME_MULT_BUILDER
@@ -75,7 +78,7 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-
+	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/drone.dmi'
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

@@ -781,8 +781,6 @@
 /datum/action/xeno_action/onclick/screech/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 
-	if (!istype(xeno))
-		return
 
 	if (!action_cooldown_check())
 		return

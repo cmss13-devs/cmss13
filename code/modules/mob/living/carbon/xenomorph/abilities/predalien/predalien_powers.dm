@@ -42,8 +42,6 @@
 		return
 
 	var/datum/behavior_delegate/predalien_base/predalienbehavior = xeno.behavior_delegate
-	if(!istype(predalienbehavior))
-		return
 	if(targeting == AOETARGETGUT)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))

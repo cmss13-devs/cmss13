@@ -426,8 +426,6 @@
 		return
 
 	var/datum/behavior_delegate/praetorian_valkyrie/behavior = valkyrie.behavior_delegate
-	if(!istype(behavior))
-		return
 
 	if(valkyrie.observed_xeno != null)
 		to_chat(valkyrie, SPAN_XENOHIGHDANGER("We cannot retrieve sisters through overwatch!"))

@@ -1181,6 +1181,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Field Medic shoulder patch"
 	path = /obj/item/clothing/accessory/patch/medic_patch
 
+/datum/gear/misc/armband
+	display_name = "Armband, squad specific"
+	path = /obj/item/clothing/accessory/armband/squad
+	fluff_cost = 1
+
 /datum/gear/misc/family_photo
 	display_name = "Family photo"
 	path = /obj/item/prop/helmetgarb/family_photo

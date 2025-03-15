@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;internet_media - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/internet_media.html#var">Var Details</a> - <a href="datum/internet_media.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="datum.html">datum</a>/<a href="datum/internet_media.html">internet_media</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/08712537af66a3cb29a1e1e99b6c4a94df76cc69/code/datums/internet_media.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;internet_media.dm 5"/></a></h1>
+
+<p>Generic implementation to get a URL that can be sent to
+clients to play audio via <a href="datum/tgui_panel.html#proc/play_music" title="/datum/tgui_panel">/datum/tgui_panel/proc/play_music</a>, from a provided URL</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/internet_media.html#var/error">error</a></th><td>If we have encountered an error while attempting to retrieve the URL</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/internet_media.html#proc/get_media">get_media</a></th><td>Handles a request for an audio file, from a provided media URL
+Must return a <a href="datum.html" title="/datum">/datum/media_response</a>, which must have at least the [/datum/media_response/var/url] filled out</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/error"><aside class="declaration">var </aside>error
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/08712537af66a3cb29a1e1e99b6c4a94df76cc69/code/datums/internet_media.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;internet_media.dm 11"/></a></h3>
+        <p>If we have encountered an error while attempting to retrieve the URL</p><h2 id="proc">Proc Details</h2><h3 id="proc/get_media"><aside class="declaration">proc </aside>get_media<aside>(url) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/08712537af66a3cb29a1e1e99b6c4a94df76cc69/code/datums/internet_media.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;internet_media.dm 17"/></a></aside>
+        </h3>
+        <p>Handles a request for an audio file, from a provided media URL
+Must return a <a href="datum.html" title="/datum">/datum/media_response</a>, which must have at least the [/datum/media_response/var/url] filled out</p>
+<p>If we are not returning a media_response, set the <a href="datum/internet_media.html#var/error" title="/datum/internet_media">/datum/internet_media/var/error</a> to be an error</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/08712537af66a3cb29a1e1e99b6c4a94df76cc69">0871253</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

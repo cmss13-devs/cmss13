@@ -19,11 +19,8 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
-	light_system = STATIC_LIGHT //Used as a flash here.
-	light_range = 15
 	light_color = COLOR_WHITE
 	light_power = FLASH_LIGHT_POWER
-	light_on = FALSE
 
 	var/flash_enabled = TRUE
 	var/state_on = "camera"
@@ -44,10 +41,6 @@
 	var/default_picture_name
 	///Whether the camera should print pictures immediately when a picture is taken.
 	var/print_picture_on_snap = TRUE
-
-/obj/item/device/camera/Initialize(mapload)
-	. = ..()
-	set_light_on(FALSE)
 
 /obj/item/device/camera/attack_self(mob/user) //wielding capabilities
 	. = ..()
@@ -151,8 +144,7 @@
 
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, size_x = 1, size_y = 1)
 	if(flash_enabled)
-		set_light_on(TRUE)
-		addtimer(CALLBACK(src, PROC_REF(flash_end)), FLASH_LIGHT_DURATION, TIMER_OVERRIDE|TIMER_UNIQUE)
+		flash_lighting_fx(8, light_power, light_color)
 	blending = TRUE
 	var/turf/target_turf = get_turf(target)
 	if(!isturf(target_turf))
@@ -208,9 +200,6 @@
 	after_picture(user, picture)
 	blending = FALSE
 	return picture
-
-/obj/item/device/camera/proc/flash_end()
-	set_light_on(FALSE)
 
 /obj/item/device/camera/proc/after_picture(mob/user, datum/picture/picture)
 	if(print_picture_on_snap)

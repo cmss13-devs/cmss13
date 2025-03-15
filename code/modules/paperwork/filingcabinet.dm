@@ -73,7 +73,7 @@
 	for(var/obj/item/P in src)
 		dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
 	dat += "</table></center>"
-	show_browser(user, dat, name, "filingcabinet", "size=350x300")
+	show_browser(user, dat, name, "filingcabinet", width = 350, height = 300)
 
 	return
 

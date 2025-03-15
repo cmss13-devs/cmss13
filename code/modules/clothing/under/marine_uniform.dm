@@ -757,10 +757,113 @@
 	icon_state = "owlf_uniform"
 	worn_state = "owlf_uniform"
 	has_sensor = UNIFORM_NO_SENSORS
+	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 	hood_state = /obj/item/clothing/head/owlf_hood
+	actions_types = list(/datum/action/item_action/specialist/toggle_owlf_hood)
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
 	)
+
+
+	///Whether the hood and gas mask were worn through the hood toggle verb
+	var/hood_enabled = FALSE
+	///Whether enabling the hood protects you from fire
+	var/supports_fire_protection = FALSE
+	///Typepath of the attached hood
+	var/hood_type = /obj/item/clothing/head/owlf_hood
+	///The head clothing that the suit uses as a hood
+	var/obj/item/clothing/head/linked_hood
+
+/obj/item/clothing/under/marine/veteran/owlf/Initialize()
+	linked_hood = new hood_type(src)
+	. = ..()
+
+/obj/item/clothing/under/marine/veteran/owlf/Destroy()
+	. = ..()
+	if(linked_hood)
+		qdel(linked_hood)
+
+/obj/item/clothing/under/marine/veteran/owlf/verb/hood_toggle()
+	set name = "Toggle Hood"
+	set desc = "Pull your hood and gasmask up over your face and head."
+	set src in usr
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+
+	if(user.w_uniform != src)
+		to_chat(user, SPAN_WARNING("You must be wearing [src] to put on [linked_hood] attached to it!"))
+		return
+
+	if(!linked_hood)
+		to_chat(user, SPAN_BOLDWARNING("You are missing a linked_hood! This should not be possible."))
+		CRASH("[user] attempted to toggle hood on [src] that was missing a linked_hood.")
+
+	playsound(user.loc, "armorequip", 25, 1)
+	if(hood_enabled)
+		disable_hood(user, FALSE)
+		return
+	enable_hood(user)
+
+/obj/item/clothing/under/marine/veteran/owlf/proc/enable_hood(mob/living/carbon/human/user)
+	if(!istype(user))
+		user = usr
+
+	if(!linked_hood.mob_can_equip(user, WEAR_HEAD))
+		to_chat(user, SPAN_WARNING("You are unable to equip [linked_hood]."))
+		return
+
+	user.equip_to_slot(linked_hood, WEAR_HEAD)
+
+	hood_enabled = TRUE
+	RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+	RegisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+
+
+
+/obj/item/clothing/under/marine/veteran/owlf/proc/disable_hood(mob/living/carbon/human/user, forced = TRUE)
+	if(!istype(user))
+		user = usr
+
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED)
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, drop_inv_item_to_loc), linked_hood, src), 1) //0.1s delay cause you can grab the hood
+	addtimer(CALLBACK(src, PROC_REF(check_remove_headgear)), 2) //Checks if it is still not in contents, incase it was dropped
+
+	hood_enabled = FALSE
+	if(!forced)
+		to_chat(user, SPAN_NOTICE("You take off [linked_hood]."))
+
+
+
+/obj/item/clothing/under/marine/veteran/owlf/proc/check_remove_headgear(obj/item/clothing/under/marine/veteran/owlf/uniform = src)
+	for(var/current_atom in contents)
+		if(current_atom == linked_hood)
+			return
+	linked_hood.forceMove(uniform)
+
+
+
+/datum/action/item_action/specialist/toggle_owlf_hood
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/toggle_owlf_hood/New(obj/item/clothing/under/marine/veteran/owlf/armor, obj/item/holder)
+	..()
+	name = "Toggle Hood"
+	button.name = name
+	button.overlays.Cut()
+	var/image/button_overlay = image(armor.linked_hood.icon, armor, armor.linked_hood.icon_state)
+	button.overlays += button_overlay
+
+/datum/action/item_action/specialist/toggle_owlf_hood/action_activate()
+	. = ..()
+	var/obj/item/clothing/under/marine/veteran/owlf/armor = holder_item
+	if(!istype(armor))
+		return
+	armor.hood_toggle()
+
 
 //===========================//HELGHAST - MERCENARY\\================================\\
 //=====================================================================\\

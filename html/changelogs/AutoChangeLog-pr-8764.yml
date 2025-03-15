@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed browsers sometimes not handling a mob passed instead of a client (VV bitfields & tickets atleast)"

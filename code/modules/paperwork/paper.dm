@@ -654,6 +654,11 @@
 	color = "green"
 	info =  "<p> I could not do it, the fucking marshals, the minions of THEM, have gotten a whiff of my co-workers plans and started raiding us pre-emptively. We managed to get word of it and erected a few barricades to slow them down, but it is too late. Our plan, my plan to save humanity has turned to dust. </p> As I lay and write this, they are gassing the entire area with tear gas, while gunshots echo around the caves. \n  They have gotten to my mind already, their voices are... laughing, saying that, \" it's over \" and that \n “we have risen\". Their voices are mocking me as I could do nothing to prevent their rise \n Just as I am about to finish my final entry, I overhear a few panicked radio calls from a dead officer's radio, about a code red lambda breach, and \" X-RAYS OUT OF CONTAINMENT\". \n However, not a single one of their cries has been met with a response as their fellow officers are too preoccupied with beating up poor miners... \n <b> They have won.... they have PLANNED THIS all along.... </b> \n only God may save us now..."
 
+/obj/item/paper/navalis/rescue
+	name = "Rescue Imminent: Tell Others"
+	info = "I just got off the radio before the main relay tower was ripped apart, its the Marines! They heard our distress call and are on the way! They'll be landing within the day, I need to warn the others, hope is in sight! Its almost over."
+
+
 /obj/item/paper/bigred/upp
 	name = "UPP Orders"
 

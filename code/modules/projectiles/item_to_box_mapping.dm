@@ -28,8 +28,8 @@
 	item_to_box_list[item_box_pairing.item].item_box_pairings += item_box_pairing
 
 /datum/item_to_box_mapping/New()
-	//Ammo magazine boxes, minus loose ammo boxes
-	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine) - /obj/item/ammo_box/magazine/misc - /obj/item/ammo_box/magazine/shotgun/light)
+	//Ammo magazine boxes and loose ammo boxes
+	for(var/obj/item/ammo_box/ammo_box as anything in typesof(/obj/item/ammo_box) - /obj/item/ammo_box/magazine/misc - /obj/item/ammo_box/magazine/shotgun/light)
 		if(initial(ammo_box.empty))
 			//Ignore all the empty boxes
 			continue

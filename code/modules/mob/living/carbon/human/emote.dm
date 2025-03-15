@@ -206,6 +206,9 @@
 	if(isyautja(user))
 		return get_sfx("pred_pain")
 
+	if(iswydroid(user))
+		return get_sfx("wy_droid_pain")
+
 /datum/emote/living/carbon/human/pain/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	if(!.)

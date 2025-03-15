@@ -208,6 +208,9 @@
 	new /obj/item/stack/cable_coil/white(src)
 	new /obj/item/tool/weldingtool(src)
 
+/obj/item/storage/firstaid/synth/empty/fill_preset_inventory()
+	return
+
 /obj/item/storage/firstaid/whiteout
 	name = "elite repair kit"
 	desc = "An expensive looking, carbon finish kit box, has a big W-Y logo on front. Contains advanced equipment for repairing a damaged synthetic, including a reset key."
@@ -241,8 +244,45 @@
 	new /obj/item/device/defibrillator/synthetic/noskill(src)
 	new /obj/item/tool/weldingtool/largetank(src)
 
-/obj/item/storage/firstaid/synth/empty/fill_preset_inventory()
+/obj/item/storage/firstaid/whiteout/empty/fill_preset_inventory()
 	return
+
+/obj/item/storage/firstaid/whiteout/medical
+	name = "elite field revival kit"
+	desc = "An expensive looking, carbon finish kit box, has a big W-Y logo on front. Contains advanced medical tools for providing medical aid to high priority figures."
+	icon_state = "whiteout_medical"
+	empty_icon = "whiteout_empty"
+	item_state = "whiteout"
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/storage/syringe_case,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/stack/nanopaste,
+		/obj/item/stack/cable_coil,
+		/obj/item/tool/weldingtool,
+		/obj/item/device/defibrillator,
+		/obj/item/tool/surgery/scalpel/manager,
+		/obj/item/storage/box/czsp/medic_upgraded_kits,
+		/obj/item/storage/surgical_case,
+		/obj/item/roller,
+	)
+
+/obj/item/storage/firstaid/whiteout/medical/fill_preset_inventory()
+	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/storage/surgical_case/whiteout(src)
+	new /obj/item/storage/syringe_case/whiteout(src)
+	new /obj/item/device/defibrillator/compact(src)
+	new /obj/item/roller/surgical(src)
 
 /obj/item/storage/firstaid/rad
 	name = "radiation first-aid kit"
@@ -348,6 +388,13 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
 
+/obj/item/storage/syringe_case/whiteout
+
+/obj/item/storage/syringe_case/whiteout/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+
 //---------SURGICAL CASE---------
 
 
@@ -387,6 +434,10 @@
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)
 
+/obj/item/storage/surgical_case/whiteout/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel/manager(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/storage/surgical_case/rmc_surgical_case
 	name = "\improper RMC surgical case"

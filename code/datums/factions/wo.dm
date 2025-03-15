@@ -14,9 +14,9 @@
 		if(JOB_DS_SL)
 			hud_icon_state = "sl"
 		if(JOB_DS_CK)
-			hud_icon_state = "sg"
-		if(JOB_DS_SUP)
 			hud_icon_state = "med"
+		if(JOB_DS_SUP)
+			hud_icon_state = "sg"
 		if(JOB_DS_CU)
 			hud_icon_state = "op"
 	if(hud_icon_state)

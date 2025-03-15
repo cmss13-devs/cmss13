@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 //-------- WY-DEATHSQUAD --------//
 #define JOB_DS_SL "Whiteout Team Leading Unit"
 #define JOB_DS_CK "Whiteout Team Cloaker Unit"
-#define JOB_DS_SUP "Whiteout Team Supporting Unit"
+#define JOB_DS_SUP "Whiteout Team Support Unit"
 #define JOB_DS_CU "Whiteout Team Combat Unit"
 
 #define ROLES_WY_CORPORATE list(JOB_EXECUTIVE_SUPERVISOR, JOB_LEGAL_SUPERVISOR, JOB_EXECUTIVE_SPECIALIST, JOB_LEGAL_SPECIALIST, JOB_SENIOR_EXECUTIVE, JOB_EXECUTIVE, JOB_JUNIOR_EXECUTIVE, JOB_TRAINEE)

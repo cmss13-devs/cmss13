@@ -148,6 +148,11 @@
 	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
+/obj/item/ammo_magazine/pistol/vp78/rubber
+	name = "\improper VP78 rubber magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/rubber
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
+
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
 

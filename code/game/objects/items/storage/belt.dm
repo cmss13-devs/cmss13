@@ -1393,6 +1393,24 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 
+/obj/item/storage/belt/gun/m4a3/vp78_whiteout
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/gun/m4a3/vp78_whiteout/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/whiteout())
+	new /obj/item/ammo_magazine/pistol/vp78/incendiary(src)
+	new /obj/item/ammo_magazine/pistol/vp78/incendiary(src)
+	new /obj/item/ammo_magazine/pistol/vp78/rubber(src)
+	new /obj/item/ammo_magazine/pistol/vp78/rubber(src)
+	new /obj/item/ammo_magazine/pistol/vp78/rubber(src)
+	new /obj/item/ammo_magazine/pistol/vp78/rubber(src)
+
 /obj/item/storage/belt/gun/m4a3/m1911/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911())
 	new /obj/item/ammo_magazine/pistol/m1911(src)
@@ -1535,6 +1553,11 @@
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact(src))
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/heap(src)
+
+/obj/item/storage/belt/gun/m39/full/whiteout_low_threat/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 #define MAXIMUM_MAGAZINE_COUNT 2
 

@@ -28,7 +28,7 @@
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/combat/seize
 	key = "seizemove"
 	sound = 'sound/voice/wy_droid/voicelines/seize_movement.ogg'
-	say_message = "Seize movement!"
+	say_message = "Cease movement!"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/combat/interdiction_mode

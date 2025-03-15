@@ -1,10 +1,5 @@
 
-//Areas for the Sorokyne Strata (aka Carp Lake.dm)
-
-/* AG in a path stands for ABOVE GROUND, while UG stands for underground.
-After that, all areas are sorted by EXTERIOR or INTERIOR. With INTERIOR being any area that isn't nippy and cold. (All buildings & jungle caves)
-EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed to the elements.
-*/
+// Areas for the Sorokyne Strata
 
 /area/strata
 	name = "Sorokyne Strata"
@@ -44,25 +39,35 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 //-Landing Zones
 
-/area/strata/exterior/lz2
+/area/strata/exterior/landing_zones
+	name = "Do not use."
+	icon_state = "landingzone_2"
+	minimap_color = MINIMAP_AREA_LZ
+
+/area/strata/interior/landing_zones
+	name = "Do not use."
+	icon_state = "landingzone_1"
+	minimap_color = MINIMAP_AREA_LZ
+
+/area/strata/exterior/landing_zones/lz2
 	name = "Landing Zone 2 Pad - Rocky Fields"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
 
-/area/strata/exterior/near_lz2
+/area/strata/exterior/landing_zones/near_lz2
 	name = "Landing Zone 2 - Rocky Fields"
 	icon_state = "nearlz2"
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
 
-/area/strata/interior/lz1
+/area/strata/interior/landing_zones/lz1
 	name = "Landing Zone 1 Pad - Mining Aerodrome"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ1
 
-/area/strata/interior/near_lz1
+/area/strata/interior/landing_zones/near_lz1
 	name = "Landing Zone 1 - Mining Aerodrome"
 	icon_state = "nearlz1"
 	is_landing_zone = TRUE
@@ -72,10 +77,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 
 /area/strata/exterior/shed_five_caves
 	name = "Terminal Five Topside Caves"
+	icon_state = "lzcaves"
 
 /area/strata/exterior/lz_caves
 	name = "External Mining Aerodrome Caves"
 	linked_lz = DROPSHIP_LZ1
+	icon_state = "lzcaves"
 
 //-Marsh
 

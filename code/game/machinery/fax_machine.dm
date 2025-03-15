@@ -492,7 +492,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 	if(istype(original_fax, /obj/item/photo))
 		var/obj/item/photo/faxed_photo = original_fax
-		photo_list += list("tmp_photo.png" = faxed_photo.img )
+		photo_list += list("tmp_photo.png" = faxed_photo.picture )
 		fax_paper_copy.info  += "<img src='tmp_photo.png' width='192'/>"
 		return
 
@@ -506,9 +506,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			fax_paper_copy.info += faxed_paper.info
 		else // type photo
 			var/obj/item/photo/faxed_photo = papers[content]
-			if(!isicon(faxed_photo.img))
+			if(!isicon(faxed_photo.picture))
 				return
-			photo_list += list("tmp_photo[content].png" = (faxed_photo.img))
+			photo_list += list("tmp_photo[content].png" = (faxed_photo.picture))
 			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='192'/>"
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user, sending_priority)

@@ -690,6 +690,8 @@
 	else
 		apply_transform(base.Turn(visual_angle), UPDATE_TRANSFORM_ANIMATION_TIME)
 
+/mob/living/get_photo_description(obj/item/device/camera/camera)
+	return "You can also see [src] on the photo."
 
 // legacy procs
 /mob/living/put_in_l_hand(obj/item/W)

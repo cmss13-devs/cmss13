@@ -115,7 +115,7 @@
 		P.add_fingerprint(usr)
 	else if(istype(src[page], /obj/item/photo))
 		var/obj/item/photo/P = src[page]
-		human_user << browse_rsc(P.img, "tmp_photo.png")
+		human_user << browse_rsc(P.picture, "tmp_photo.png")
 		dat += "<html>" \
 		+ "<body style='overflow:hidden'>" \
 		+ "<div> <img src='tmp_photo.png' width = '180'" \

@@ -21,7 +21,7 @@
 /datum/picture
 	var/name = "image"
 	var/list/fields = list()
-
+/*
 /*
 * photo *
 ********/
@@ -81,7 +81,7 @@
 	add_fingerprint(usr)
 	return
 
-
+*/
 /*
 * photo album *
 **************/
@@ -120,7 +120,7 @@
 /*
 * camera *
 *********/
-/obj/item/device/camera
+/*/obj/item/device/camera
 	name = "camera"
 	icon = 'icons/obj/items/paper.dmi'
 	desc = "A polaroid camera."
@@ -140,23 +140,23 @@
 	var/pictures_max = 10
 	var/pictures_left = 10
 	var/size = 7
+*/
+///obj/item/device/camera/get_examine_text(mob/user)
+//	. = ..()
+//	. += "It has [pictures_left] photos left."
 
-/obj/item/device/camera/get_examine_text(mob/user)
-	. = ..()
-	. += "It has [pictures_left] photos left."
+///obj/item/device/camera/attack_self(mob/user) //wielding capabilities
+//	. = ..()
+//	if(flags_item & WIELDED)
+//		unwield(user)
+//	else
+//		wield(user)
 
-/obj/item/device/camera/attack_self(mob/user) //wielding capabilities
-	. = ..()
-	if(flags_item & WIELDED)
-		unwield(user)
-	else
-		wield(user)
+///obj/item/device/camera/dropped(mob/user)
+//	..()
+//	unwield(user)
 
-/obj/item/device/camera/dropped(mob/user)
-	..()
-	unwield(user)
-
-/obj/item/device/camera/verb/change_size()
+/*/obj/item/device/camera/verb/change_size()
 	set name = "Set Photo Focus"
 	set src in usr
 	set category = "Object"
@@ -164,11 +164,11 @@
 	if(nsize)
 		size = nsize
 		to_chat(usr, SPAN_NOTICE("Camera will now take [size]x[size] photos."))
+*/
+///obj/item/device/camera/attack(mob/living/carbon/human/M, mob/user)
+//	return
 
-/obj/item/device/camera/attack(mob/living/carbon/human/M, mob/user)
-	return
-
-/obj/item/device/camera/attackby(obj/item/I, mob/user)
+/*/obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/camera_film))
 		if(pictures_left > (pictures_max - 10))
 			to_chat(user, SPAN_NOTICE("[src] cannot fit more film in it!"))
@@ -179,8 +179,8 @@
 			pictures_left += 10
 		return
 	..()
-
-
+*/
+/*
 /obj/item/device/camera/proc/get_icon(list/turfs, turf/center)
 
 	//Bigger icon base to capture those icons that were shifted to the next tile
@@ -341,7 +341,7 @@
 		user.put_in_inactive_hand(Photo)
 	Photo.construct(P)
 
-
+*/
 /obj/item/device/camera/oldcamera
 	name = "Old Camera"
 	desc = "An old, slightly beat-up digital camera, with a cheap photo printer taped on. It's a nice shade of blue."
@@ -455,7 +455,7 @@
 
 /obj/item/device/broadcasting/see_emote(mob/living/sourcemob, emote, audible = FALSE)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, get_dist(sourcemob, src) < 3 && audible)
-
+/*
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]
 	tiny = P.fields["tiny"]
@@ -464,3 +464,4 @@
 	pixel_x = P.fields["pixel_x"]
 	pixel_y = P.fields["pixel_y"]
 	photo_size = P.fields["size"]
+*/

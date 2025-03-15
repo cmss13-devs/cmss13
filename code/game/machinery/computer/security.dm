@@ -114,7 +114,7 @@
 /obj/structure/machinery/computer/secure_data/proc/get_photo(mob/user)
 	if(istype(user.get_active_hand(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_hand()
-		return photo.img
+		return photo.picture
 
 /obj/structure/machinery/computer/secure_data/emp_act(severity)
 	. = ..()

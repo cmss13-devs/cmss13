@@ -108,6 +108,12 @@
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
+/**
+ * Return the desc of this mob for a photo
+ */
+
+/mob/proc/get_photo_description(obj/item/device/camera/camera)
+	return "a ... thing?"
 
 /mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 

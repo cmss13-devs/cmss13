@@ -27,6 +27,10 @@ type Props = Partial<{
   container_id: string;
   /** @member Callback function for the `scroll` event */
   onScroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  /** Callback for the Selection Start */
+  onSelectStart: () => void;
+  /** Tab Index */
+  tabIndex: number;
 }> &
   BoxProps;
 

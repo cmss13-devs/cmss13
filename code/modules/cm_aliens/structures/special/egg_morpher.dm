@@ -30,9 +30,14 @@
 	. = ..()
 	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
+	update_minimap_icon()
+
+/obj/effect/alien/resin/special/eggmorph/proc/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "morpher")
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
-	if (stored_huggers && linked_hive)
+	if(stored_huggers && linked_hive)
 		//Hugger explosion, like a carrier
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
@@ -43,6 +48,7 @@
 				step_away(F,src,1)
 
 	range_bounds = null
+	SSminimaps.remove_marker(src)
 	. = ..()
 
 /obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)

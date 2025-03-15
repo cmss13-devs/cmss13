@@ -9,12 +9,25 @@
 	var/heal_cooldown = 5 SECONDS
 	var/last_healed
 
+/obj/effect/alien/resin/special/recovery/Initialize(mapload, hive_ref)
+	. = ..()
+	update_minimap_icon()
+
+/obj/effect/alien/resin/special/recovery/proc/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "recovery_node")
+
+/obj/effect/alien/resin/special/recovery/Destroy()
+	. = ..()
+	SSminimaps.remove_marker(src)
+
 /obj/effect/alien/resin/special/recovery/get_examine_text(mob/user)
 	. = ..()
 	if((isxeno(user) || isobserver(user)) && linked_hive)
 		. += "Recovers the health of adjacent Xenomorphs."
 
 /obj/effect/alien/resin/special/recovery/process()
+	update_minimap_icon()
 	if(last_healed && world.time < last_healed + heal_cooldown)
 		return
 	var/list/heal_candidates = list()

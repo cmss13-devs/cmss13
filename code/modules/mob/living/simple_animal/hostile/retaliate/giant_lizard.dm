@@ -762,9 +762,11 @@
 
 	target_mob = FindTarget()
 	target_mob_ref = WEAKREF(target_mob)
-	if(target_mob_ref) // qdeleted check
-		growl(target_mob)
-		MoveToTarget()
+	if(!target_mob_ref)
+		return
+
+	growl(target_mob)
+	MoveToTarget()
 
 	//basic pack behaviour
 	for(var/mob/living/simple_animal/hostile/retaliate/giant_lizard/pack_member in view(12, src))

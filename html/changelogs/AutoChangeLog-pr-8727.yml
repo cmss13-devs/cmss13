@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - admin: "Admins now have a \"Play as\" option that puts them in the mob they spawn as."

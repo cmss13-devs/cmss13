@@ -1,5 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - code_imp: "moves certain time actions use SECONDS define"
-  - bugfix: "Girders now take into account the fact if they're destroyed, right before they're done being repaired."

@@ -328,3 +328,11 @@ Fire Variant = Markers for special fire types that behave outside of chemfire co
 #define FIRE_VARIANT_TYPE_B 1
 // Lowers burn damage to humans
 #define HUMAN_BURN_DIVIDER 5
+
+//gun.dm durabilty flags
+#define GUN_DURABILITY_MAX 100
+#define GUN_DURABILITY_HIGH 80
+#define GUN_DURABILITY_MEDIUM 50
+#define GUN_DURABILITY_LOW 20
+#define GUN_DURABILITY_BROKEN 0
+

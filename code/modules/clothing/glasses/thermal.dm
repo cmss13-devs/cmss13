@@ -58,14 +58,6 @@
 	deactive_state = "rwelding-gup"
 	gender = PLURAL
 
-/obj/item/clothing/glasses/thermal/syndi/kutjevo
-	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
-	icon_state = "kutjevo_goggles"
-	deactive_state = "kutjevo_goggles"
-	item_icons = list(
-		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
-	)
-
 /obj/item/clothing/glasses/thermal/monocle
 	name = "Thermoncle"
 	desc = "A monocle thermal."

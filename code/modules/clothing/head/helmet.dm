@@ -1433,14 +1433,21 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter
+	name = "T-20 Firefighter Helmet"
+	desc = "A reinforced, heat-resistant helmet issued to UPP emergency responders. Its durable composite shell provides protection against falling debris and extreme heat, while the attached fire-resistant shroud shields the wearer’s neck and shoulders. A red star is emblazoned on the front, marking its service within the Union."
+	icon_state = "firefighter"
+	flags_heat_protection = BODY_FLAG_HEAD
+	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROT
+
 /obj/item/clothing/head/uppcap/civi
 	name = "\improper UL2 UPP cap"
 	desc = "UPP civilian headgear. It's of poor quality, and isn't expected to last all that long, however for as long as it's whole, it appears quite stylish."
 	icon_state = "upp_cap_civi"
 
 /obj/item/clothing/head/uppcap/civi/plant_worker
-	name = "white plant worker cap"
-	desc = "A simple white fabric cap, commonly worn by plant workers to keep hair contained and maintain cleanliness. Lightweight and practical, but not very durable."
+	name = "white worker cap"
+	desc = "A simple white fabric cap, commonly worn by various UPP workers to keep hair contained and maintain cleanliness. Lightweight and practical, but not very durable."
 	icon_state = "plant_work_cap"
 
 /obj/item/clothing/head/uppcap/beret

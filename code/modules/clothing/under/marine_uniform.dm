@@ -670,6 +670,12 @@
 	icon_state = "upp_uniform_civi4"
 	worn_state = "upp_uniform_civi4"
 
+/obj/item/clothing/under/marine/veteran/UPP/civi5
+	name = "\improper UPP Jùtóu Combine mining overalls"
+	desc = "A durable, olive-green jumpsuit worn beneath a sleeveless, puffy orange work vest—standard issue for Jùtóu Combine laborers. The vest’s faded fabric is lined with reinforced padding, offering minimal protection against workplace hazards. A red star insignia is stamped on the back, marking its wearer as part of the Combine’s industrial workforce. Stiff, uncomfortable, and mass-produced, but better than nothing in the unforgiving conditions of deep-space labor."
+	icon_state = "miner_uniform"
+	worn_state = "miner_uniform"
+
 /obj/item/clothing/under/marine/veteran/UPP/army
 	name = "\improper UPP Army fatigues"
 	desc =  "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the Jungle pattern of the UPP Army's 202nd Infantry Regiment."
@@ -1213,6 +1219,15 @@
 	icon_state = "brown_utility"
 	worn_state = "brown_utility"
 	has_sensor = UNIFORM_HAS_SENSORS
+
+/obj/item/clothing/under/rank/utility/brown/upp
+	name = "T-20 fire-response uniform"
+	desc = "A rugged, fire-resistant utility jumpsuit worn by UPP emergency crews. Constructed from heat-treated synthetic fibers and reinforced at key points, it provides basic protection against heat and physical hazards. Though practical, its heavy fabric and outdated design reflect the Union’s focus on durability over comfort."
+	icon_state = "brown_utility"
+	worn_state = "brown_utility"
+	has_sensor = UNIFORM_HAS_SENSORS
+	suit_restricted = FALSE
+	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/rank/synthetic/councillor
 	name = "\improper USCM Pristine Support Uniform"

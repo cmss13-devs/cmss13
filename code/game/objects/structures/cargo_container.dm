@@ -363,8 +363,8 @@
 	icon_state = "uscm_r"
 
 /obj/structure/cargo_container/upp_small
-	name = "Kelland Mining Company Cargo Container"
-	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
+	name = "UPP Cargo Container"
+	desc = "A small industrial shipping container.\nThis one is from the Union of Progressive Peoples, as indicated by the red star symbol on the side."
 	bound_height = 32
 	layer = ABOVE_XENO_LAYER
 

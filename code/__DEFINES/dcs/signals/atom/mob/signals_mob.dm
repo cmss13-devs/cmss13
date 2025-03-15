@@ -185,3 +185,6 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+/// From /obj/item/roller/proc/deploy_roller() : (mob/user, obj/structure/bed/roller/roller)
+#define COMSIG_MOB_ITEM_ROLLER_DEPLOYED "mob_roller_deployed"

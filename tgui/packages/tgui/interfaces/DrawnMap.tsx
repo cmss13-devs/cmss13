@@ -5,10 +5,21 @@ type DrawMapRrops = {
   readonly svgData: (string | number | CanvasGradient | CanvasPattern)[];
   readonly flatImage: string;
   readonly backupImage: string;
+  readonly zlevel: number;
+};
+
+type Line = {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  stroke: string;
+  zlevel: number;
 };
 
 export class DrawnMap extends Component<DrawMapRrops> {
   backupImgSrc: string;
+  zlevel: number;
   containerRef: React.RefObject<HTMLDivElement>;
   flatImgSrc: string;
   img: HTMLImageElement | null;
@@ -25,6 +36,11 @@ export class DrawnMap extends Component<DrawMapRrops> {
     };
     this.img = null;
     this.svg = this.props.svgData;
+    if (this.props.zlevel !== undefined) {
+      this.zlevel = this.props.zlevel;
+    } else {
+      this.zlevel = 0;
+    }
   }
 
   componentDidMount() {
@@ -48,22 +64,33 @@ export class DrawnMap extends Component<DrawMapRrops> {
     };
   }
 
-  parseSvgData(svgDataArray) {
-    if (!svgDataArray) return null;
-    let lines: {
-      x1: number;
-      y1: number;
-      x2: number;
-      y2: number;
-      stroke: string;
-    }[] = [];
-    for (let i = 0; i < svgDataArray.length; i += 5) {
-      const x1 = svgDataArray[i];
-      const y1 = svgDataArray[i + 1];
-      const x2 = svgDataArray[i + 2];
-      const y2 = svgDataArray[i + 3];
-      const stroke = svgDataArray[i + 4];
-      lines.push({ x1, y1, x2, y2, stroke });
+  parseSvgData(svgDataArray): Line[] {
+    if (!svgDataArray || !Array.isArray(svgDataArray)) return [];
+    const lines: Line[] = [];
+    for (let i = 0; i < svgDataArray.length; i += 6) {
+      const lastX = svgDataArray[i];
+      const lastY = svgDataArray[i + 1];
+      const x = svgDataArray[i + 2];
+      const y = svgDataArray[i + 3];
+      const color = svgDataArray[i + 4];
+      const zlevel = svgDataArray[i + 5];
+      if (
+        typeof lastX === 'number' &&
+        typeof lastY === 'number' &&
+        typeof x === 'number' &&
+        typeof y === 'number' &&
+        typeof color === 'string' &&
+        typeof zlevel === 'number'
+      ) {
+        lines.push({
+          x1: lastX,
+          y1: lastY,
+          x2: x,
+          y2: y,
+          stroke: color,
+          zlevel: zlevel,
+        });
+      }
     }
     return lines;
   }
@@ -83,7 +110,7 @@ export class DrawnMap extends Component<DrawMapRrops> {
     return (
       <div ref={this.containerRef} className="TacticalMapDrawn">
         {this.state.loadingBackup && !this.state.mapLoad && (
-          <Box my="40%">
+          <Box my="40%" textAlign="center">
             <h1>Loading map...</h1>
           </Box>
         )}
@@ -97,18 +124,21 @@ export class DrawnMap extends Component<DrawMapRrops> {
             height={size.height}
             viewBox={'0 0 684 684'}
           >
-            {parsedSvgData.map((line, index) => (
-              <line
-                key={index}
-                x1={line.x1}
-                y1={line.y1}
-                x2={line.x2}
-                y2={line.y2}
-                stroke={line.stroke}
-                strokeWidth={4}
-                strokeLinecap={'round'}
-              />
-            ))}
+            {parsedSvgData.map(
+              (line, index) =>
+                this.zlevel === line.zlevel && (
+                  <line
+                    key={index}
+                    x1={line.x1}
+                    y1={line.y1}
+                    x2={line.x2}
+                    y2={line.y2}
+                    stroke={line.stroke}
+                    strokeWidth={4}
+                    strokeLinecap={'round'}
+                  />
+                ),
+            )}
           </svg>
         )}
       </div>

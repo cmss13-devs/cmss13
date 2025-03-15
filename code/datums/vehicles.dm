@@ -49,3 +49,7 @@
 /datum/map_template/interior/arc
 	name = "ARC"
 	interior_id = "arc"
+
+/datum/map_template/interior/blackfoot
+	name = "blackfoot"
+	interior_id = "blackfoot"

@@ -10,14 +10,14 @@
   }
 
   .TopDivider {
-    border-top: 1.5rem solid rgb(32, 37, 32);
+    border-top: 1.5rem solid hsl(120, 7%, 14%);
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-top-width: 1.5rem !important;
   }
 
   .BottomDivider {
-    border-bottom: 1.5rem solid rgb(32, 37, 32);
+    border-bottom: 1.5rem solid hsl(120, 7%, 14%);
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     border-bottom-width: 1.5rem !important;
@@ -25,8 +25,8 @@
 
   .PageTurn {
     background-color: transparent;
-    outline: 2px solid rgb(32, 37, 32);
-    background-color: #dfdfdf;
+    outline: 2px solid hsl(120, 7%, 14%);
+    background-color: hsl(0, 0%, 87%);
     position: absolute;
     cursor: pointer;
 
@@ -54,7 +54,7 @@
   }
 
   pre {
-    background-color: rgb(32, 37, 32);
+    background-color: hsl(120, 7%, 14%);
     border-radius: 0.5rem;
     color: white;
     padding: 1em;

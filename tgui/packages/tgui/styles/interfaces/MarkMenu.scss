@@ -14,7 +14,7 @@
     margin-top: 20px;
     margin-right: 8px;
     margin-left: 8px;
-    color: 2px solid lighten(#52375c, 0.2);
+    color: 2px solid lighten(hsl(284, 25%, 29%), 0.2);
     height: 100%;
   }
 
@@ -41,12 +41,12 @@
       display: block;
       z-index: 2;
       background-color: black;
-      border: 2px solid lighten(#52375c, 0.2);
+      border: 2px solid lighten(hsl(284, 25%, 29%), 0.2);
       width: 100%;
     }
 
     .Selected {
-      border: 2px solid lighten(#52375c, 0.2);
+      border: 2px solid lighten(hsl(284, 25%, 29%), 0.2);
     }
 
     .MarkStack {

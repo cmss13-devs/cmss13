@@ -2,10 +2,10 @@
 @use '../colors.scss';
 @use '../functions.scss' as *;
 
-$light: #ffbf00;
-$dark: #111100;
+$light: hsl(45, 100%, 50%);
+$dark: hsl(60, 100%, 3%);
 
-$loading_color: #b88a00;
+$loading_color: hsl(45, 100%, 36%);
 $animation_load_duration: 1s;
 
 $small-text: 1rem;

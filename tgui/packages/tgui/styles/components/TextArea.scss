@@ -67,14 +67,14 @@ $border-radius: Input.$border-radius !default;
 
   &::placeholder {
     font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
+    color: hsl(0, 0%, 47%);
+    color: hsla(0, 0%, 100%, 0.45);
   }
 
   &:-ms-input-placeholder {
     font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
+    color: hsl(0, 0%, 47%);
+    color: hsla(0, 0%, 100%, 0.45);
   }
 }
 

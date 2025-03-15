@@ -171,8 +171,9 @@
 //pilot skill, hidden
 #define SKILL_PILOT_DEFAULT 0
 #define SKILL_PILOT_TRAINED 1 // DCC
-#define SKILL_PILOT_EXPERT 2 // Pilot, Synth
-#define SKILL_PILOT_MAX 2
+#define SKILL_PILOT_EXPERT 2 // Pilot
+#define SKILL_PILOT_MASTER 3 // OP, Synth
+#define SKILL_PILOT_MAX 3
 
 //Navigations skill - for seting orbital alt
 #define SKILL_NAVIGATIONS_DEFAULT 0

@@ -1,14 +1,12 @@
 /obj/item/hardpoint/locomotion/blackfoot_thrusters
 	name = "\improper TJ-700 Turbojet Engines"
 	desc = "Integral to the flight and movement of the blackfoot."
-	icon = 'icons/obj/vehicles/hardpoints/arc.dmi'
+	icon = 'icons/obj/vehicles/hardpoints/blackfoot.dmi'
+	icon_state = "engines"
+	disp_icon = "blackfoot"
+	disp_icon_state = "engines"
 
 	damage_multiplier = 0.15
-
-	icon_state = "tires"
-	disp_icon = "arc"
-	disp_icon_state = "arc_wheels"
-
 	health = 500
 
 	move_delay = VEHICLE_SPEED_SUPERFAST
@@ -18,6 +16,16 @@
 
 	var/idle_sound_cooldown = 3 SECONDS
 	var/last_idle_sound = 0
+
+/obj/item/hardpoint/locomotion/blackfoot_thrusters/get_icon_image(x_offset, y_offset, new_dir)
+	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
+
+	if(!blackfoot_owner)
+		return
+
+	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[blackfoot_owner.icon_state]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+
+	return I
 
 /obj/item/hardpoint/locomotion/blackfoot_thrusters/process(deltatime)
 	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner

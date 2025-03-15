@@ -627,7 +627,7 @@
 	rank = JOB_OPERATIONS_PILOT
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "OP"
-	skills = /datum/skills/pilot
+	skills = /datum/skills/operations_pilot
 
 	minimap_icon = "pilot"
 	minimap_background = "background_command"

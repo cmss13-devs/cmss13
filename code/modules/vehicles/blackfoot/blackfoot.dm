@@ -38,7 +38,7 @@
 
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
 
-	required_skill = SKILL_PILOT_EXPERT
+	required_skill = SKILL_PILOT_MASTER
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
@@ -116,11 +116,6 @@
 
 /obj/vehicle/multitile/blackfoot/Initialize(mapload, ...)
 	. = ..()
-	add_hardpoint(new /obj/item/hardpoint/locomotion/blackfoot_thrusters)
-	add_hardpoint(new /obj/item/hardpoint/support/sensor_array)
-	var/obj/item/hardpoint/primary/chimera_launchers/launchers = new()
-	add_hardpoint(launchers)
-	active_hp[VEHICLE_DRIVER] = launchers
 	tacmap = new /datum/tacmap/drawing/blackfoot(src, minimap_type)
 	update_icon()
 
@@ -473,6 +468,7 @@
 	var/obj/item/hardpoint/support/sensor_array/sensors = locate() in hardpoints
 
 	if(!sensors)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO SENSORS DETECTED."))
 		return
 
 	sensors.toggle(mode)
@@ -500,6 +496,12 @@
 	back_door_turf.ChangeTurf(/turf/open/void/vehicle)
 
 /obj/vehicle/multitile/blackfoot/proc/start_takeoff()
+	var/obj/item/hardpoint/locomotion/blackfoot_thrusters/thrusters = locate() in hardpoints
+
+	if(!thrusters)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO ENGINES DETECTED."))
+		return
+
 	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(get_turf(src), 3, 3, -1, 0))
 		var/area/takeoff_turf_area = get_area(takeoff_turf)
 
@@ -536,6 +538,12 @@
 	busy = FALSE
 
 /obj/vehicle/multitile/blackfoot/proc/start_landing()
+	var/obj/item/hardpoint/locomotion/blackfoot_thrusters/thrusters = locate() in hardpoints
+
+	if(!thrusters)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO ENGINES DETECTED."))
+		return
+
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
 
 	for(var/turf/landing_turf in CORNER_BLOCK_OFFSET(below_turf, 3, 3, -1, 0))
@@ -607,6 +615,12 @@
 	busy = FALSE
 
 /obj/vehicle/multitile/blackfoot/proc/toggle_engines()
+	var/obj/item/hardpoint/locomotion/blackfoot_thrusters/thrusters = locate() in hardpoints
+
+	if(!thrusters)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO ENGINES DETECTED."))
+		return
+
 	if(state != STATE_DEPLOYED && state != STATE_IDLING)
 		return
 
@@ -641,6 +655,7 @@
 	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
 	
 	if(!launchers)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO LAUNCHERS DETECTED."))
 		return
 
 	launchers.safety = !launchers.safety

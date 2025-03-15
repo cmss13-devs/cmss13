@@ -2,7 +2,11 @@
 	name = "\improper Chimera Launchers"
 	desc = ""
 
-	icon_state = "ace_autocannon"
+	icon = 'icons/obj/vehicles/hardpoints/blackfoot.dmi'
+	icon_state = "launchers"
+	disp_icon = "blackfoot"
+	disp_icon_state = "launchers"
+
 	activation_sounds = list('sound/vehicles/vtol/launcher.ogg')
 
 	health = 500
@@ -18,6 +22,16 @@
 	fire_delay = 10 SECONDS
 
 	var/safety = TRUE
+
+/obj/item/hardpoint/primary/chimera_launchers/get_icon_image(x_offset, y_offset, new_dir)
+	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
+
+	if(!blackfoot_owner)
+		return
+
+	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[blackfoot_owner.icon_state]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+
+	return I
 
 /obj/item/hardpoint/primary/chimera_launchers/try_fire(atom/target, mob/living/user, params)
 	if(safety)

@@ -52224,6 +52224,11 @@
 	pixel_y = 22;
 	layer = 4
 	},
+/obj/item/flight_cpu{
+	anchored = 1;
+	pixel_y = 7;
+	pixel_x = -2
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/hangar)
 "pjw" = (
@@ -70144,11 +70149,11 @@
 	serial_number = 16
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/flight_cpu{
-	anchored = 1;
-	pixel_y = 7;
-	pixel_x = -2
+/obj/item/hardpoint/primary/chimera_launchers,
+/obj/item/hardpoint/support/sensor_array{
+	pixel_x = 10
 	},
+/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 /turf/open/floor/almayer/plating_stripedcorner,
 /area/almayer/hallways/hangar)
 "wFn" = (

@@ -4,10 +4,10 @@
 /obj/item/hardpoint/support/sensor_array
 	name = "\improper AQ-133 Acquisition System"
 	desc = "A heavy-duty array of sensors for the AD-19D blackfoot."
-
-	icon_state = "warray"
-	disp_icon = "tank"
-	disp_icon_state = "warray"
+	icon = 'icons/obj/vehicles/hardpoints/blackfoot.dmi'
+	icon_state = "radar"
+	disp_icon = "blackfoot"
+	disp_icon_state = "radar"
 
 	health = 250
 
@@ -19,6 +19,16 @@
 	var/list/minimap_added = list()
 	/// current mode, can be either nvg (gives nightvision to the pilot) or sensor (shows xenos on tacmap) 
 	var/mode = SENSOR_MODE
+
+/obj/item/hardpoint/support/sensor_array/get_icon_image(x_offset, y_offset, new_dir)
+	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
+
+	if(!blackfoot_owner)
+		return
+
+	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[blackfoot_owner.icon_state]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+
+	return I
 
 /obj/item/hardpoint/support/sensor_array/proc/toggle(mode)
 	if(!active)

@@ -2572,7 +2572,7 @@
 ///OWLF GEAR
 /obj/item/weapon/gun/rifle/xm51/zx76
 	name = "\improper ZX-76A Double Barrel Shotgun"
-	desc = "."
+	desc = "Originally Designed by Weyland-Yutani for Corporate security teams, the ZX76 is currently undergoing trials by the USCM as a replacement for the M37A2, It's been adopted by some UA agencies due to it's heavy firepower compared to most other shotguns."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',
@@ -2628,7 +2628,7 @@
 
 /obj/item/weapon/gun/rifle/m41a/elite/xr
 	name = "\improper XR81-C rifle"
-	desc = "."
+	desc = "Designed by OWLF R&D, this rifle has been made specially made to fit the needs of OWLF Field Teams."
 	icon_state = "xr81"
 	item_state = "xr81"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'

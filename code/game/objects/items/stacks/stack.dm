@@ -136,7 +136,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 					t1 += " <A href='byond://?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
 
 	t1 += "</TT></body></HTML>"
-	show_browser(user, t1, "Construction using [src]", "stack")
+	show_browser(user, t1, "Construction using [src]", "stack", width = 440, height = 500)
 	return
 
 /obj/item/stack/Topic(href, href_list)

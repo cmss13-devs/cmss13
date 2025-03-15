@@ -34,6 +34,10 @@
 	name = "Van"
 	interior_id = "van"
 
+/datum/map_template/interior/clf_van
+	name = "CLF Technical"
+	interior_id = "clf_van"
+
 /datum/map_template/interior/box_van
 	name = "Box Van"
 	interior_id = "box_van"
@@ -46,6 +50,6 @@
 	name = "ARC"
 	interior_id = "arc"
 
-/datum/map_template/interior/chimera
-	name = "Chimera"
-	interior_id = "chimera"
+/datum/map_template/interior/blackfoot
+	name = "blackfoot"
+	interior_id = "blackfoot"

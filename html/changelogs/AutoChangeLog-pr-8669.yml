@@ -1,4 +1,0 @@
-author: "Willzadl"
-delete-after: True
-changes:
-  - bugfix: "barricades now display the correct open/close message"

@@ -85,6 +85,7 @@ export const FlightComputer = (props) => {
                   </radialGradient>
                 </defs>
 
+
                 <rect
                   stroke="#00e94e"
                   strokeWidth={2}

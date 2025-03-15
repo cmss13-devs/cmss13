@@ -7282,6 +7282,13 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/sign/safety/fire_haz{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/high_voltage{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/hangar)
 "asq" = (
@@ -13911,14 +13918,15 @@
 /turf/open/floor/almayer,
 /area/almayer/medical/upper_medical)
 "aRG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -28
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "aRJ" = (
 /obj/structure/ladder{
@@ -20672,7 +20680,9 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/chimera_tug,
+/obj/structure/blackfoot_tug{
+	layer = 3.1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bYY" = (
@@ -31181,17 +31191,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
-"goY" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Under Construction Shutters";
-	name = "\improper Construction Site"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "VTOL Bay Shutters";
-	name = "\improper Construction Site"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
 "gpc" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -31483,7 +31482,7 @@
 	dir = 4;
 	layer = 2.9
 	},
-/obj/vehicle/multitile/chimera,
+/obj/vehicle/multitile/blackfoot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "guo" = (
@@ -52217,6 +52216,14 @@
 	pixel_y = 11;
 	pixel_x = 5
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -14;
+	pixel_y = 28
+	},
+/obj/item/trash/crushed_cup{
+	pixel_y = 22;
+	layer = 4
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/hangar)
 "pjw" = (
@@ -55506,8 +55513,17 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/port_fore_hallway)
 "qEV" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
-/obj/structure/landing_pad_folded,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "qFi" = (
@@ -59222,7 +59238,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/largecrate/supply/chimera_peripherals,
+/obj/structure/largecrate/supply/blackfoot_peripherals,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "sit" = (
@@ -70131,7 +70147,7 @@
 /obj/item/flight_cpu{
 	anchored = 1;
 	pixel_y = 7;
-	pixel_x = -5
+	pixel_x = -2
 	},
 /turf/open/floor/almayer/plating_stripedcorner,
 /area/almayer/hallways/hangar)
@@ -70308,11 +70324,6 @@
 "wJo" = (
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/upper_medical)
-"wJq" = (
-/obj/structure/machinery/landinglight/ds2,
-/obj/structure/largecrate/supply/chimera_peripherals,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "wJC" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/plating_catwalk,
@@ -91187,7 +91198,7 @@ arI
 afM
 aeJ
 ade
-goY
+lpl
 wqh
 bHB
 sXB
@@ -91592,11 +91603,11 @@ arY
 qmM
 sCT
 pbA
+lUS
 aRG
-bcm
 xyw
 bHB
-qEV
+aZP
 baI
 baI
 baI
@@ -91797,9 +91808,9 @@ hwW
 pOn
 vaB
 bcm
-lUS
+qEV
 bHB
-wJq
+aZQ
 baI
 baI
 baI

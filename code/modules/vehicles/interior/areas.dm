@@ -29,6 +29,10 @@
 	name = "van interior"
 	icon_state = "van"
 
+/area/interior/vehicle/clf_van
+	name = "clf van interior"
+	icon_state = "van"
+
 /area/interior/vehicle/box_van
 	name = "box-van interior"
 	icon_state = "van"
@@ -41,6 +45,6 @@
 	name = "\improper ARC interior"
 	icon_state = "arc"
 
-/area/interior/vehicle/chimera
-	name = "chimera interior"
+/area/interior/vehicle/blackfoot
+	name = "blackfoot interior"
 	ambience_exterior = 'sound/vehicles/vtol/interior.ogg'

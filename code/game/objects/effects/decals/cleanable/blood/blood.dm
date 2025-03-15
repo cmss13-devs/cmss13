@@ -129,7 +129,7 @@
 	gender = PLURAL
 	density = FALSE
 	anchored = TRUE
-	layer = TURF_LAYER
+	layer = ABOVE_WEED_LAYER
 	icon = 'icons/effects/blood.dmi'
 	icon_state = ""
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")

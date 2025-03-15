@@ -339,15 +339,22 @@
 /turf/closed/wall/wood,
 /area/strata/ag/interior/outside/wooden_hospital)
 "abj" = (
-/obj/structure/bed/nest,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/miner,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/ag/interior/outside/bball/cave)
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkyellowfull2,
+/area/strata/ag/interior/outpost/engi)
 "abk" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/interior/outside/bball/cave)
 "abl" = (
@@ -666,7 +673,7 @@
 /area/strata/ag/interior/outside/bball)
 "acx" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/wood,
 /area/strata/ag/interior/outside/wooden_ruins)
 "acy" = (
@@ -1043,7 +1050,6 @@
 /area/strata/ag/interior/outside/secure_checkpoint)
 "adU" = (
 /obj/structure/closet/secure_closet/security/soro,
-/obj/item/reagent_container/food/snacks/carpmeat,
 /obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/structures/research)
@@ -2001,7 +2007,7 @@
 	pixel_y = -4
 	},
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "ahu" = (
@@ -4010,10 +4016,9 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "arw" = (
-/obj/structure/bed/chair/office/light,
-/obj/effect/landmark/corpsespawner/russian,
-/turf/open/floor/strata/floor3,
-/area/strata/ag/interior/outpost/security)
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi)
 "arx" = (
 /obj/effect/landmark/objective_landmark/far,
 /obj/structure/pipes/vents/pump{
@@ -5876,7 +5881,7 @@
 /area/strata/ag/interior/mining_outpost/central)
 "azH" = (
 /obj/structure/machinery/optable,
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
@@ -9061,8 +9066,8 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/engi)
 "aQW" = (
-/obj/effect/landmark/corpsespawner/engineer,
-/obj/item/weapon/gun/pistol/t73,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/engi)
 "aQY" = (
@@ -9084,7 +9089,6 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/engi)
 "aRb" = (
@@ -11167,7 +11171,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/ag/interior/outside/secure_checkpoint)
 "bdm" = (
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/structure/bed/roller,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outside/bball)
@@ -12629,9 +12633,9 @@
 /area/strata/ag/exterior/paths/south_outpost)
 "bmG" = (
 /obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/paths/south_outpost)
 "bmH" = (
@@ -13340,7 +13344,7 @@
 /area/strata/ug/interior/outpost/underground_dorms/med1)
 "bpZ" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/exterior/paths/south_outpost)
@@ -13863,7 +13867,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
 "btw" = (
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/structure/bed/bedroll{
 	dir = 10
 	},
@@ -13882,7 +13886,7 @@
 "btz" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/wood/wood_broken3,
 /area/strata/ag/interior/outside/wooden_ruins)
 "btB" = (
@@ -16725,7 +16729,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/structures/research)
 "bUn" = (
@@ -16906,6 +16910,7 @@
 "bVN" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/outpost/engi)
 "bVR" = (
@@ -17095,10 +17100,11 @@
 /area/strata/ag/interior/outpost/security)
 "bXC" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/structure/sign/banners/upp_flag{
 	pixel_y = 31
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
 "bXF" = (
@@ -18310,6 +18316,7 @@
 "cjj" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/weapon/gun/rifle/ak4047,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "cjk" = (
@@ -18405,6 +18412,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "ckb" = (
@@ -20527,7 +20535,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "cWr" = (
-/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/structure/sign/safety/maint{
 	pixel_x = 8;
@@ -22059,6 +22067,13 @@
 "dWH" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/engi)
+"dWN" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/engi)
 "dXc" = (
 /obj/effect/landmark/static_comms/net_one,
@@ -26055,7 +26070,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "grP" = (
-/obj/effect/landmark/corpsespawner/security/liaison,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "grQ" = (
@@ -27581,7 +27597,7 @@
 /turf/open/gm/coast/dirt/east,
 /area/strata/ag/exterior/jungle/carplake_center)
 "hyu" = (
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/exterior/jungle/structures/monitoring/south)
 "hyQ" = (
@@ -29229,7 +29245,7 @@
 "izc" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
@@ -29432,7 +29448,7 @@
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "iGR" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/wood/wood_broken,
 /area/strata/ag/interior/outside/wooden_ruins)
 "iHa" = (
@@ -31550,7 +31566,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/outpost_decks)
 "jVU" = (
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outside/engineering/parts_storage)
@@ -31733,6 +31749,11 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/asphalt/cement/cement15,
 /area/strata/ug/exterior/outpost/platform)
+"kdA" = (
+/obj/item/stool,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/tatami,
+/area/strata/ag/interior/outpost/canteen)
 "kdJ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -34332,7 +34353,7 @@
 /turf/open/floor/strata/purp2,
 /area/strata/ug/exterior/jungle/structures/monitoring)
 "lMC" = (
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/central)
@@ -39938,6 +39959,11 @@
 	},
 /turf/open/floor/strata/purp2,
 /area/strata/ug/exterior/jungle/carplake/east)
+"pte" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi)
 "pth" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 2;
@@ -40952,6 +40978,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/exterior/jungle/structures/research/old_tunnels)
+"pXx" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi)
 "pXB" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/decal/cleanable/blood,
@@ -41228,7 +41261,8 @@
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "qhp" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/outpost/engi)
 "qhC" = (
@@ -42129,7 +42163,7 @@
 "qKU" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "qLt" = (
@@ -42909,7 +42943,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/exterior/outpost/platform)
 "riQ" = (
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/canteen)
 "riY" = (
@@ -49832,6 +49867,11 @@
 /obj/structure/curtain/open/shower,
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/canteen)
+"vwO" = (
+/obj/structure/platform/metal/strata,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi)
 "vwW" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = -1;
@@ -52571,6 +52611,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/gm/dirt/brown,
 /area/strata/ag/interior/outside/engineering/parts_storage_cave)
 "xla" = (
@@ -54400,7 +54441,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/exterior/outpost_decks)
 "ylZ" = (
@@ -71454,7 +71495,7 @@ xvy
 iQB
 aIV
 aIV
-aMW
+dWN
 fdL
 aPB
 aQQ
@@ -71630,8 +71671,8 @@ aUS
 bhZ
 dgB
 aMW
-vYk
-aPC
+vwO
+pXx
 aQW
 oKo
 aTt
@@ -71806,7 +71847,7 @@ aIV
 dgB
 aMW
 vYk
-aPD
+abj
 aRb
 oKo
 aTt
@@ -75812,7 +75853,7 @@ aFV
 bTs
 bTs
 ijo
-arw
+awh
 asA
 gAm
 ceI
@@ -75821,7 +75862,7 @@ aEc
 bXq
 aCa
 dLT
-bXq
+arw
 aEc
 ceI
 cdZ
@@ -75994,8 +76035,8 @@ ceI
 awa
 aHv
 aQV
-bXq
-bXq
+pte
+arw
 bXq
 oKo
 ceI
@@ -76168,7 +76209,7 @@ fVX
 twi
 awc
 aHv
-bXq
+arw
 afU
 uqY
 bXq
@@ -79446,7 +79487,7 @@ bTs
 bTs
 bTs
 pIa
-abj
+abk
 aas
 aHz
 aag
@@ -79972,7 +80013,7 @@ nUz
 bTs
 bTs
 pIa
-abj
+abk
 abk
 pIa
 pIa
@@ -81070,7 +81111,7 @@ yfQ
 cgY
 cgY
 uic
-cgY
+lAk
 riQ
 dEC
 ckN
@@ -82639,7 +82680,7 @@ lAk
 eEc
 cjn
 bXC
-bYm
+kdA
 auY
 bZJ
 cjn

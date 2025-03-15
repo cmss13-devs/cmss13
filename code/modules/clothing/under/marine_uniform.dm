@@ -671,7 +671,7 @@
 	worn_state = "upp_uniform_civi4"
 
 /obj/item/clothing/under/marine/veteran/UPP/civi5
-	name = "\improper UPP Jùtóu Combine mining overalls"
+	name = "\improper Jùtóu Combine mining overalls"
 	desc = "A durable, olive-green jumpsuit worn beneath a sleeveless, puffy orange work vest—standard issue for Jùtóu Combine laborers. The vest’s faded fabric is lined with reinforced padding, offering minimal protection against workplace hazards. A red star insignia is stamped on the back, marking its wearer as part of the Combine’s industrial workforce. Stiff, uncomfortable, and mass-produced, but better than nothing in the unforgiving conditions of deep-space labor."
 	icon_state = "miner_uniform"
 	worn_state = "miner_uniform"

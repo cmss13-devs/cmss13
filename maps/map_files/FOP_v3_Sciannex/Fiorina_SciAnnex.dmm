@@ -14488,10 +14488,10 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "lhJ" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor,
 /obj/item/storage/pouch/flamertank,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)

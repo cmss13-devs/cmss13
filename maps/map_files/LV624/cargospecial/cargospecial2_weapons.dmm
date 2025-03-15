@@ -23,17 +23,17 @@
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/flamertank,
 /obj/item/storage/pouch/flamertank,
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "C" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/flamer{
+/obj/item/weapon/gun/flamer/survivor{
 	pixel_y = 6
 	},
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "J" = (

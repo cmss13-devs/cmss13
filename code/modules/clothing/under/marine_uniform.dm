@@ -1221,10 +1221,19 @@
 	has_sensor = UNIFORM_HAS_SENSORS
 
 /obj/item/clothing/under/rank/utility/brown/upp
-	name = "T-20 fire-response uniform"
-	desc = "A rugged, fire-resistant utility jumpsuit worn by UPP emergency crews. Constructed from heat-treated synthetic fibers and reinforced at key points, it provides basic protection against heat and physical hazards. Though practical, its heavy fabric and outdated design reflect the Union’s focus on durability over comfort."
+	name = "Brown utility uniform"
+	desc = "A rugged utility jumpsuit worn by UPP workers and emergency crews. Constructed from heat-treated synthetic fibers and reinforced at key points, it provides basic protection against heat and physical hazards. Though practical, its heavy fabric and outdated design reflect the Union’s focus on durability over comfort."
 	icon_state = "brown_utility"
 	worn_state = "brown_utility"
+	has_sensor = UNIFORM_HAS_SENSORS
+	suit_restricted = FALSE
+	armor_energy = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/under/rank/utility/gray/upp
+	name = "\improper Gray utility uniform"
+	desc = "A rugged utility jumpsuit worn by UPP workers and emergency crews. Constructed from heat-treated synthetic fibers and reinforced at key points, it provides basic protection against heat and physical hazards. Though practical, its heavy fabric and outdated design reflect the Union’s focus on durability over comfort."
+	icon_state = "grey_utility"
+	worn_state = "grey_utility"
 	has_sensor = UNIFORM_HAS_SENSORS
 	suit_restricted = FALSE
 	armor_energy = CLOTHING_ARMOR_LOW

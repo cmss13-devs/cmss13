@@ -9310,6 +9310,8 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/canteen/bar)
 "aSp" = (
@@ -9355,6 +9357,8 @@
 /area/strata/interior/outpost/canteen)
 "aSw" = (
 /obj/structure/closet/firecloset/full,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/maint)
 "aSz" = (
@@ -9741,6 +9745,8 @@
 /obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light/small,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/asphalt/cement,
 /area/strata/interior/outpost/foyer)
 "aUM" = (
@@ -14272,6 +14278,8 @@
 /area/strata/exterior/marsh/water_marshes)
 "bvq" = (
 /obj/structure/closet/firecloset/full,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/floor/strata,
 /area/strata/interior/parts_storage)
 "bvs" = (
@@ -14908,6 +14916,8 @@
 /area/strata/exterior/far_north_outpost)
 "bAp" = (
 /obj/structure/closet/firecloset/full,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/floor/strata/yellow3/north,
 /area/strata/interior/outpost/engi/drome)
 "bAq" = (
@@ -18287,6 +18297,8 @@
 /area/strata/interior/checkpoints/north)
 "ciW" = (
 /obj/structure/closet/firecloset/full,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi)
 "cjb" = (
@@ -19592,6 +19604,8 @@
 /area/strata/interior/secure_checkpoint)
 "cvC" = (
 /obj/structure/closet/firecloset/full,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "cvG" = (
@@ -30058,6 +30072,8 @@
 "iZw" = (
 /obj/structure/closet/firecloset/full,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "iZB" = (

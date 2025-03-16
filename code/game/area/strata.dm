@@ -26,7 +26,7 @@
 	name = "Exterior"
 	icon_state = "ag_e"
 	ceiling = CEILING_NONE
-	ambience_exterior = AMBIENCE_JUNGLE
+	ambience_exterior = AMBIENCE_JUNGLE_ALT
 
 /area/strata/interior
 	name = "Interior"

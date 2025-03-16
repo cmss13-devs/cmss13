@@ -88,7 +88,7 @@
 #define AMBIENCE_SHIP 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_SHIP_ALT 'sound/ambience/shipambience1.ogg'
 #define AMBIENCE_JUNGLE 'sound/ambience/ambienceLV624.ogg'
-#define AMBIENCE_JUNGLE_ALT 'sound/ambience/ambienceLV624.ogg'
+#define AMBIENCE_JUNGLE_ALT 'sound/ambience/ambience_strata.ogg'
 #define AMBIENCE_RIVER  'sound/ambience/ambienceriver.ogg'
 #define AMBIENCE_MALL 'sound/ambience/medbay1.ogg'
 #define AMBIENCE_CAVE 'sound/ambience/desert.ogg'

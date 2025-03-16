@@ -170,3 +170,48 @@
   - bugfix: Fixed Field Doctor not correctly checking intended timelock
   realforest2001:
   - rscadd: CIA Intel Liaison Officers now use their own minimap and HUD icons.
+2025-03-14:
+  Drathek:
+  - rscadd: JSX files are now linted against in favor of typescript files (TSX)
+  Kashargul:
+  - bugfix: chat export
+  - code_imp: converts most of TGUI to typescript
+  Red-byte3D:
+  - bugfix: Fixes a small bug with Valkyrie being able to buff people across the dimensions
+  Steelpoint, Drathek, bobama, dimdimich1996:
+  - rscdel: Survivors can no longer select the Hostile Survivor job role.
+  - rscadd: All maps, except for Chance's Claim, have an approximately 10% chance
+      to spawn all survivors as hostile survivors.
+  - rscadd: All players are automatically opted-in to being a hostile survivor by
+      default.
+  - rscadd: Players can opt-out of being selected for a hostile survivor spawn, or
+      to only roll for a hostile survivor and not a regular survivor, via your Personal
+      Preferences settings page.
+  - maptweak: All maps that feature hostile survivors have a spawn area for the CLF,
+      that spawns alongside the hostile survivors.
+  - balance: The odds of the CLF crashed ship spawn on LV-624 occurring has been increased
+      slightly per this.
+  - bugfix: Fixed trolly vehicle hard deletes
+  VileBeggar:
+  - bugfix: Removing the shotgun choke will return stuns to the currently chambered
+      projectile.
+  efzapa:
+  - imageadd: Whiteout now has Faction Role Icons
+  nicholasWooldridge:
+  - bugfix: Fixed a bug that caused the Broken M41A to be called Prop Gun in a chat
+      message.
+2025-03-15:
+  Drathek:
+  - bugfix: Being in a locker or cryopod shipside now can receive shipside announcements
+  Red-byte3D:
+  - admin: Admins now have a "Play as" option that puts them in the mob they spawn
+      as.
+  - code_imp: moves certain time actions use SECONDS define
+  - bugfix: Girders now take into account the fact if they're destroyed, right before
+      they're done being repaired.
+  hry-gh:
+  - qol: people with window scaling that is greater or less than 100% will now have
+      windows scale, appropriate to the "window scaling" option in settings
+  itsmeow:
+  - bugfix: Fixed TGUI assets and icons sometimes not showing up until you refreshed
+      the page on 516 clients

@@ -305,7 +305,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 
 	data += "</table>"
 
-	show_browser(owner, data, "Stickyban Panel", "sticky", "size=875x400")
+	show_browser(owner, data, "Stickyban Panel", "sticky", width = 875, height = 400)
 
 //////////////////////////////////// DEBUG ////////////////////////////////////
 

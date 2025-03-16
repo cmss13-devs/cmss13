@@ -512,7 +512,7 @@
 					handle_supplydrop()
 
 		if("save_coordinates")
-			if(!params["x"] || !params["y"] || !params["z"])
+			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
 			if(length(saved_coordinates) >= MAX_SAVED_COORDINATES)
 				popleft(saved_coordinates)

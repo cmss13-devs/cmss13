@@ -381,7 +381,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", width = 300, height = 600)
 
 		if("High Command")
 			var/body = "<body>"
@@ -391,7 +391,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", width = 300, height = 600)
 
 		if("Provost")
 			var/body = "<body>"
@@ -401,7 +401,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", width = 300, height = 600)
 
 		if("Press")
 			var/body = "<body>"
@@ -411,7 +411,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", width = 300, height = 600)
 
 		if("Colonial Marshal Bureau")
 			var/body = "<body>"
@@ -421,7 +421,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", width = 300, height = 600)
 
 		if("Union of Progressive Peoples")
 			var/body = "<body>"
@@ -431,7 +431,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", width = 300, height = 600)
 
 		if("Three World Empire")
 			var/body = "<body>"
@@ -441,7 +441,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", width = 300, height = 600)
 
 		if("Colonial Liberation Front")
 			var/body = "<body>"
@@ -451,7 +451,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", width = 300, height = 600)
 
 		if("Other")
 			var/body = "<body>"
@@ -461,7 +461,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", "size=300x600")
+			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", width = 300, height = 600)
 		if("Cancel")
 			return
 
@@ -857,7 +857,7 @@
 				<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
 				"}
 
-	show_browser(usr, dat, "Chem Panel", "chempanel", "size=210x300")
+	show_browser(usr, dat, "Chem Panel", "chempanel", width = 210, height = 300)
 	return
 
 /client/proc/chem_panel()
@@ -878,7 +878,7 @@
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 		create_humans_html = replacetext(create_humans_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x720")
+	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", width = 450, height = 720)
 
 /client/proc/create_humans()
 	set name = "Create Humans"
@@ -896,7 +896,7 @@
 		create_xenos_html = replacetext(create_xenos_html, "null /* xeno paths */", "\"[xeno_types]\"")
 		create_xenos_html = replacetext(create_xenos_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_xenos_html, "/* ref src */", "\ref[src]"), "Create Xenos", "create_xenos", "size=450x630")
+	show_browser(user, replacetext(create_xenos_html, "/* ref src */", "\ref[src]"), "Create Xenos", "create_xenos", width = 450, height = 630)
 
 /client/proc/create_xenos()
 	set name = "Create Xenos"

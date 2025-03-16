@@ -1,3 +1,4 @@
+import type { BooleanLike } from 'common/react';
 import { capitalize } from 'common/string';
 
 import { useBackend, useSharedState } from '../backend';
@@ -15,8 +16,72 @@ import {
 import { ButtonConfirm } from '../components/Button';
 import { Window } from '../layouts';
 
+type MarineData = {
+  name: string;
+  state: string;
+  has_helmet: BooleanLike;
+  role: string;
+  acting_sl: string;
+  fteam: string;
+  distance: string;
+  area_name: string;
+  ref: string;
+};
+
+type SquadData = {
+  name: string;
+  primary_objective: string;
+  secondary_objective: string;
+  overwatch_officer: string;
+  ref: any;
+};
+
+type Data = {
+  marines: MarineData[];
+  squad_data: SquadData[];
+  squad_leader: MarineData | null;
+  living_count: number;
+  leader_count: number;
+  ftl_count: number;
+  spec_count: number;
+  medic_count: number;
+  engi_count: number;
+  smart_count: number;
+  leaders_alive: number;
+  ftl_alive: number;
+  spec_alive: number;
+  medic_alive: number;
+  engi_alive: number;
+  smart_alive: number;
+  specialist_type: string;
+  total_deployed: number;
+  theme: string;
+  squad_list: string[];
+  current_squad: string;
+  primary_objective: string[] | null;
+  secondary_objective: string[] | null;
+  z_hidden: BooleanLike;
+  can_launch_obs: BooleanLike;
+  ob_cooldown?: number;
+  ob_loaded: BooleanLike;
+  supply_cooldown: number;
+  operator: string;
+  aa_targeting: string;
+  primary_lz: string;
+  alert_level: number;
+  evac_status: string;
+  world_time: number;
+  distress_time_lock: number;
+  time_request: number;
+  time_central: number;
+  time_message: number;
+  ob_warhead: string;
+  ob_safety: Boolean;
+  echo_squad_active: Boolean;
+};
+
 export const CentralOverwatchConsole = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
 
   return (
     <Window
@@ -41,7 +106,7 @@ export const CentralOverwatchConsole = (props) => {
 };
 
 const LoginPanel = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
 
   // Buttons don't seem to support hexcode colors, so we'll have to do this manually, sadly
   const squadColorMap = {
@@ -93,7 +158,7 @@ const LoginPanel = (props) => {
 };
 
 const SecondaryFunctions = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
 
   const [secondarycategory, setsecondaryCategory] = useSharedState(
     'secondaryselected',
@@ -112,7 +177,7 @@ const SecondaryFunctions = (props) => {
 
   return (
     <Section fontSize="18px" fill>
-      <Stack horizontal justify="center" align="end">
+      <Stack justify="center" align="end">
         <Stack.Item width="24.5%">
           <Tabs fluid mr="0" fontSize="15px" vertical>
             <Tabs.Tab
@@ -167,9 +232,11 @@ const SecondaryFunctions = (props) => {
 };
 
 const CombinedSquadPanel = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
 
   const [category, setCategory] = useSharedState('selected', 'alpha');
+
+  let { squad_leader } = data;
 
   const squadStringify = {
     alpha: 'red',
@@ -240,19 +307,17 @@ const CombinedSquadPanel = (props) => {
                             </Table.Cell>
                           </Table.Row>
                           <Table.Row>
-                            {(squad.squad_leader && (
+                            {(data.leader_count && squad_leader && (
                               <Table.Cell textAlign="center">
-                                {data.squad_leader.name
-                                  ? data.squad_leader.name
-                                  : 'NONE'}
+                                {squad_leader.name ? squad_leader.name : 'NONE'}
                                 <Box
                                   color={
-                                    data.squad_leader.state !== 'Dead'
+                                    squad_leader.state !== 'Dead'
                                       ? 'green'
                                       : 'red'
                                   }
                                 >
-                                  {data.squad_leader.state.toUpperCase()}
+                                  {squad_leader.state.toUpperCase()}
                                 </Box>
                               </Table.Cell>
                             )) || (
@@ -263,9 +328,9 @@ const CombinedSquadPanel = (props) => {
                             )}
 
                             <Table.Cell textAlign="center" bold>
-                              <Box>{squad.ftl_count} DEPLOYED</Box>
-                              <Box color={squad.ftl_alive ? 'green' : 'red'}>
-                                {squad.ftl_alive} ALIVE
+                              <Box>{data.ftl_count} DEPLOYED</Box>
+                              <Box color={data.ftl_alive ? 'green' : 'red'}>
+                                {data.ftl_alive} ALIVE
                               </Box>
                             </Table.Cell>
                           </Table.Row>
@@ -280,27 +345,27 @@ const CombinedSquadPanel = (props) => {
                           <Table.Row>
                             <Table.Cell textAlign="center" bold>
                               <Box>
-                                {squad.specialist_type
-                                  ? squad.specialist_type
+                                {data.specialist_type
+                                  ? data.specialist_type
                                   : 'NONE'}
                               </Box>
-                              <Box color={squad.spec_alive ? 'green' : 'red'}>
-                                {squad.spec_count
-                                  ? squad.spec_alive
+                              <Box color={data.spec_alive ? 'green' : 'red'}>
+                                {data.spec_count
+                                  ? data.spec_alive
                                     ? 'ALIVE'
                                     : 'DEAD'
                                   : 'NOT DEPLOYED'}
                               </Box>
                             </Table.Cell>
                             <Table.Cell textAlign="center" bold>
-                              <Box color={squad.smart_count ? 'green' : 'red'}>
-                                {squad.smart_count
-                                  ? squad.smart_count + ' DEPLOYED'
+                              <Box color={data.smart_count ? 'green' : 'red'}>
+                                {data.smart_count
+                                  ? data.smart_count + ' DEPLOYED'
                                   : 'NONE'}
                               </Box>
-                              <Box color={squad.smart_alive ? 'green' : 'red'}>
-                                {squad.smart_count
-                                  ? squad.smart_alive
+                              <Box color={data.smart_alive ? 'green' : 'red'}>
+                                {data.smart_count
+                                  ? data.smart_alive
                                     ? 'ALIVE'
                                     : 'DEAD'
                                   : 'N/A'}
@@ -317,15 +382,15 @@ const CombinedSquadPanel = (props) => {
                           </Table.Row>
                           <Table.Row>
                             <Table.Cell textAlign="center" bold>
-                              <Box>{squad.medic_count} DEPLOYED</Box>
-                              <Box color={squad.medic_alive ? 'green' : 'red'}>
-                                {squad.medic_alive} ALIVE
+                              <Box>{data.medic_count} DEPLOYED</Box>
+                              <Box color={data.medic_alive ? 'green' : 'red'}>
+                                {data.medic_alive} ALIVE
                               </Box>
                             </Table.Cell>
                             <Table.Cell textAlign="center" bold>
-                              <Box>{squad.engi_count} DEPLOYED</Box>
-                              <Box color={squad.engi_alive ? 'green' : 'red'}>
-                                {squad.engi_alive} ALIVE
+                              <Box>{data.engi_count} DEPLOYED</Box>
+                              <Box color={data.engi_alive ? 'green' : 'red'}>
+                                {data.engi_alive} ALIVE
                               </Box>
                             </Table.Cell>
                           </Table.Row>
@@ -334,16 +399,16 @@ const CombinedSquadPanel = (props) => {
                               textAlign="center"
                               collapsing
                               p="4px"
-                              colSpan="2"
+                              colSpan={2}
                             >
                               Total/Living
                             </Table.Cell>
                           </Table.Row>
                           <Table.Row>
-                            <Table.Cell textAlign="center" bold colSpan="2">
-                              <Box>{squad.total_deployed} TOTAL</Box>
-                              <Box color={squad.living_count ? 'green' : 'red'}>
-                                {squad.living_count} ALIVE
+                            <Table.Cell textAlign="center" bold colSpan={2}>
+                              <Box>{data.total_deployed} TOTAL</Box>
+                              <Box color={data.living_count ? 'green' : 'red'}>
+                                {data.living_count} ALIVE
                               </Box>
                             </Table.Cell>
                           </Table.Row>
@@ -419,7 +484,7 @@ const CombinedSquadPanel = (props) => {
 };
 
 const ExecutivePanel = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const AlertLevel = data.alert_level;
 
   let alertLevelString;
@@ -443,7 +508,7 @@ const ExecutivePanel = (props) => {
 
   return (
     <Section fill fontSize="14px">
-      <Stack horizontal>
+      <Stack>
         <Stack.Item grow>
           <Box bold textAlign="center" mb="10px">
             GROUNDSIDE OPERATIONS
@@ -481,7 +546,7 @@ const ExecutivePanel = (props) => {
                 p="3px"
                 mt="1px"
                 color={data.primary_lz ? 'transperant' : 'default'}
-                onClick={() => act('selectlz')}
+                onClick={() => act(data.primary_lz ? '' : 'selectlz')}
               >
                 DESIGNATE PRIMARY LZ
               </Button>
@@ -493,7 +558,10 @@ const ExecutivePanel = (props) => {
                 icon="users"
                 mt="1px"
                 p="3px"
-                onClick={() => act('activate_echo')}
+                color={data.echo_squad_active ? 'transperant' : 'default'}
+                onClick={() =>
+                  act(data.echo_squad_active ? '' : 'activate_echo')
+                }
               >
                 ACTIVATE ECHO SQUAD
               </Button>
@@ -565,10 +633,10 @@ const ExecutivePanel = (props) => {
 };
 
 const EmergencyPanel = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const AlertLevel = data.alert_level;
   const evacstatus = data.evac_status;
-  const worldTime = data.worldtime;
+  const world_time = data.world_time;
 
   let emergencylockout;
   if (AlertLevel >= 2) {
@@ -578,10 +646,10 @@ const EmergencyPanel = (props) => {
     emergencylockout = 1;
   }
 
-  const minimumTimeElapsed = worldTime > data.distresstimelock;
+  const minimumTimeElapsed = world_time > data.distress_time_lock;
 
   const canRequest = // requesting distress beacon
-    data.time_request < worldTime && AlertLevel === 2 && minimumTimeElapsed;
+    data.time_request < world_time && AlertLevel === 2 && minimumTimeElapsed;
 
   let distress_reason;
 
@@ -589,10 +657,10 @@ const EmergencyPanel = (props) => {
     distress_reason = 'Self-destruct in progress. Beacon disabled.';
   } else if (AlertLevel !== 2) {
     distress_reason = 'Ship is not under an active emergency.';
-  } else if (data.time_request < worldTime) {
+  } else if (data.time_request < world_time) {
     distress_reason =
       'Beacon is currently recharging. Time remaining: ' +
-      Math.ceil((data.time_message - worldTime) / 10) +
+      Math.ceil((data.time_message - world_time) / 10) +
       'secs.';
   } else if (!minimumTimeElapsed) {
     distress_reason = "It's too early to launch a distress beacon.";
@@ -617,11 +685,11 @@ const EmergencyPanel = (props) => {
             inline
             textAlign="center"
             width="100%"
-            icon={emergencylockout ? 'exclamation-triangle' : null}
+            icon={emergencylockout ? 'exclamation-triangle' : false}
             mt="1px"
             p="7px"
             color={emergencylockout ? 'red' : 'transperant'}
-            onClick={emergencylockout ? () => act('red_alert') : null}
+            onClick={emergencylockout ? () => act('red_alert') : undefined}
           >
             {emergencylockout
               ? 'ELEVATE TO RED ALERT'
@@ -635,7 +703,9 @@ const EmergencyPanel = (props) => {
             mt="5px"
             p="4px"
             color={emergencylockout ? 'transperant' : 'red'}
-            onClick={emergencylockout ? null : () => act('general_quarters')}
+            onClick={
+              emergencylockout ? undefined : () => act('general_quarters')
+            }
           >
             CALL GENERAL QUARTERS
           </ButtonConfirm>
@@ -651,7 +721,7 @@ const EmergencyPanel = (props) => {
                 color={emergencylockout ? 'transperant' : 'red'}
                 onClick={
                   emergencylockout
-                    ? null
+                    ? undefined
                     : () =>
                         act(
                           evacstatus ? 'evacuation_cancel' : 'evacuation_start',
@@ -710,7 +780,7 @@ const EmergencyPanel = (props) => {
 };
 
 const SquadMonitor = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
 
   const sortByRole = (a, b) => {
     a = a.role;
@@ -742,12 +812,7 @@ const SquadMonitor = (props) => {
     return 0; // They're equal
   };
 
-  let { marines, squad_leader } = data;
-
-  const [hidden_marines, setHiddenMarines] = useSharedState(
-    'hidden_marines',
-    [],
-  );
+  let { marines, squad_data, squad_leader, leaders_alive } = data;
 
   const [showHiddenMarines, setShowHiddenMarines] = useSharedState(
     'showhidden',
@@ -758,7 +823,7 @@ const SquadMonitor = (props) => {
     true,
   );
 
-  const [marineSearch, setMarineSearch] = useSharedState('marinesearch', null);
+  const [marineSearch, setMarineSearch] = useSharedState('marinesearch', '');
 
   let determine_status_color = (status) => {
     let conscious = status.includes('Conscious');
@@ -771,19 +836,6 @@ const SquadMonitor = (props) => {
       state_color = 'yellow';
     }
     return state_color;
-  };
-
-  let toggle_marine_hidden = (ref) => {
-    if (!hidden_marines.includes(ref)) {
-      setHiddenMarines([...hidden_marines, ref]);
-    } else {
-      let array_copy = [...hidden_marines];
-      let index = array_copy.indexOf(ref);
-      if (index > -1) {
-        array_copy.splice(index, 1);
-      }
-      setHiddenMarines(array_copy);
-    }
   };
 
   let location_filter;
@@ -860,7 +912,7 @@ const SquadMonitor = (props) => {
                   SL Dist.
                 </Table.Cell>
               </Table.Row>
-              {data.leader_count ? (
+              {squad_leader && leaders_alive ? (
                 <Table.Row bold>
                   <Table.Cell collapsing p="2px">
                     {(squad_leader.has_helmet && (
@@ -912,12 +964,6 @@ const SquadMonitor = (props) => {
                         return;
                       }
                     }
-                    if (
-                      hidden_marines.includes(marine.ref) &&
-                      !showHiddenMarines
-                    ) {
-                      return;
-                    }
                     if (marine.state === 'Dead' && !showDeadMarines) {
                       return;
                     }
@@ -965,7 +1011,7 @@ const SquadMonitor = (props) => {
 };
 
 const OrbitalBombardment = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
 
   let ob_status = 'Ready';
   let ob_color = 'green';
@@ -983,7 +1029,7 @@ const OrbitalBombardment = (props) => {
 
   return (
     <Section fill fontSize="14px">
-      <Stack justify={'space-between'} horizontal m="10px">
+      <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="13px" bold width="50%">
           Orbital Bombardment Subsystem:
           <Box color="green" bold m="2px">
@@ -1025,8 +1071,8 @@ const OrbitalBombardment = (props) => {
           </Box>
         </Stack.Item>
       </Stack>
-      <Divider horizontal />
-      <Stack justify={'space-between'} horizontal m="10px">
+      <Divider />
+      <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="13px" bold width="50%" mt="5px">
           IX-50 MGAD Cannon Subsystem:
           <Box color="green" bold m="2px">
@@ -1048,7 +1094,7 @@ const OrbitalBombardment = (props) => {
             [ Operations Suspended ]
           </Box>
           Available Ammunition:
-          <Stack horizontal m="7px" ml="1px">
+          <Stack m="7px" ml="1px">
             <Stack.Item>
               <Box bold ml="2px">
                 ASAT-21
@@ -1068,7 +1114,7 @@ const OrbitalBombardment = (props) => {
           </Stack>
         </Stack.Item>
       </Stack>
-      <Divider horizontal />
+      <Divider />
     </Section>
   );
 };

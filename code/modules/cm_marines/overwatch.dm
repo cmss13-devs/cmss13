@@ -17,6 +17,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/squad/current_squad
 	var/datum/squad/squad
 	var/state = 0
+	var/list/skill_req = list(SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)
 	var/obj/structure/machinery/camera/cam = null
 	var/obj/item/camera_holder = null
 	var/list/network = list(CAMERA_NET_OVERWATCH)
@@ -70,6 +71,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
 	req_access = list(ACCESS_MARINE_SENIOR)
+	// should be usable even without OW training
+	skill_req = list()
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -123,7 +126,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(istype(src, /obj/structure/machinery/computer/overwatch/almayer/broken))
 		return
 
-	if(!isSilicon(usr) && !skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
+	if(!isSilicon(usr) && !skillcheck(user, skill_req) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
@@ -157,7 +160,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_static_data(mob/user)
 	var/list/data = list()
-	data["distresstimelock"] = DISTRESS_TIME_LOCK
+	data["distress_time_lock"] = DISTRESS_TIME_LOCK
 	data["mapRef"] = tacmap.map_holder.map_ref
 
 	return data
@@ -440,14 +443,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	data["current_squad"] = current_squad.name
 
-	data["primary_objective"] = current_squad.primary_objective
-	data["secondary_objective"] = current_squad.secondary_objective
-
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
 		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
-			var/list/unpackaged_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "squad_leader" = index_squad.squad_leader, "ref" = REF(index_squad))
-			unpackaged_data += count_marines(null, index_squad, TRUE)
-			var/list/squad_data = list(unpackaged_data)
+			var/list/squad_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad))
 			data["squad_data"] += squad_data
 
 	data["z_hidden"] = z_hidden
@@ -472,7 +470,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["primary_lz"] = SSticker.mode.active_lz
 	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
-	data["worldtime"] = world.time
+	data["world_time"] = world.time
+
+	data["time_request"] = cooldown_request
+	data["time_central"] = cooldown_central
+	data["time_message"] = cooldown_message
+
+	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
+	data["echo_squad_active"] = echo_squad.active
 
 	return data
 
@@ -860,32 +865,20 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
 
 		if("distress")
-			if(world.time < DISTRESS_TIME_LOCK)
-				to_chat(user, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
-				return FALSE
-
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
-			if(SSticker.mode.force_end_at == 0)
-				to_chat(user, SPAN_WARNING("ARES has denied your request for operational security reasons."))
-				return FALSE
-
-			if(!COOLDOWN_FINISHED(src, cooldown_request))
-				to_chat(user, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
-				return FALSE
-
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
-				to_chat(user, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
+				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE
 
-			for(var/client/admin_client as anything in GLOB.admins)
-				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
-					admin_client << 'sound/effects/sos-morse-code.ogg'
+			for(var/client/C in GLOB.admins)
+				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
+					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
 			SSticker.mode.request_ert(user)
 			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
-
 			COOLDOWN_START(src, cooldown_request, COOLDOWN_COMM_REQUEST)
+			return TRUE
 
 		if("evacuation_start")
 			if(GLOB.security_level < SEC_LEVEL_RED)
@@ -1183,7 +1176,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD) //gibbed, decapitated, dead
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is unable to be transfered!")]")
 		return
 
 	var/obj/item/card/id/card = transfer_marine.get_idcard()

@@ -947,7 +947,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/proc/on_throw_end(atom/movable/thrown_atom)
 	return TRUE
 
-/turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 0)
+/turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 1)
 	if(ishuman_strict(victim))
 		var/mob/living/carbon/human/human_victim = victim
 		if (stun_modifier > 0)

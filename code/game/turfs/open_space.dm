@@ -26,30 +26,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/on_throw_end(atom/movable/thrown_atom)
 	check_fall(thrown_atom)
 
-/turf/open_space/proc/climb_down(mob/user)
-	if(user.action_busy)
-		return
-
-	var/turf/current_turf = get_turf(src)
-
-	if(!istype(current_turf, /turf/open_space))
-		return
-
-	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
-
-	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, SPAN_WARNING("You were interrupted!"))
-		return
-
-	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
-
-	var/turf/below = SSmapping.get_turf_below(current_turf)
-	while(istype(below, /turf/open_space))
-		below = SSmapping.get_turf_below(below)
-
-	user.forceMove(below)
-	return
-
 /turf/open_space/proc/check_fall(atom/movable/movable)
 	if(movable.flags_atom & NO_ZFALL)
 		return
@@ -69,7 +45,26 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	attack_hand(user)
 
 /turf/open_space/attack_hand(mob/user)
-	src.Enter(user)
+	if(user.action_busy)
+		return
+
+	var/turf/current_turf = get_turf(src)
+
+	if(istype(current_turf, /turf/open_space))
+		user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
+
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(user, SPAN_WARNING("You were interrupted!"))
+			return
+
+		user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
+
+		var/turf/below = SSmapping.get_turf_below(current_turf)
+		while(istype(below, /turf/open_space))
+			below = SSmapping.get_turf_below(below)
+
+		user.forceMove(below)
+		return
 
 /turf/open_space/is_weedable()
 	return NOT_WEEDABLE

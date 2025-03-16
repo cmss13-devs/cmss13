@@ -2331,7 +2331,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/flooredgesmooth2/east,
+/turf/open/floor/almayer/flooredge/east,
 /area/almayer/hallways/hangar)
 "afB" = (
 /obj/structure/closet/crate/medical{
@@ -2586,7 +2586,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/turf/open/floor/almayer/flooredgesmooth2/east,
+/turf/open/floor/almayer/flooredge/east,
 /area/almayer/hallways/hangar)
 "afW" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -8780,6 +8780,12 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/living/gym)
+"avO" = (
+/turf/open/floor/almayer/flooredge,
+/area/almayer/hallways/lower/starboard_fore_hallway)
+"avP" = (
+/turf/open/floor/almayer/flooredge/north,
+/area/almayer/hallways/lower/starboard_fore_hallway)
 "avQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -26787,7 +26793,7 @@
 	icon_state = "NE-out";
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/flooredgesmooth2/east,
+/turf/open/floor/almayer/flooredge/east,
 /area/almayer/hallways/hangar)
 "ehj" = (
 /obj/item/stack/catwalk,
@@ -45111,7 +45117,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/flooredgesmooth2/east,
+/turf/open/floor/almayer/flooredge/east,
 /area/almayer/hallways/hangar)
 "mhd" = (
 /obj/structure/machinery/light{
@@ -52571,7 +52577,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer/flooredgesmooth2/north,
+/turf/open/floor/almayer/flooredge/north,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "piJ" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -65497,7 +65503,7 @@
 "uJM" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/flooredge/south,
+/turf/open/floor/almayer/flooredge,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "uJU" = (
 /obj/structure/machinery/cryopod/right{
@@ -100776,7 +100782,7 @@ akv
 soA
 xbk
 aeJ
-qPk
+avP
 uRD
 aiz
 baZ
@@ -100981,7 +100987,7 @@ btx
 naV
 pij
 kJh
-aiA
+avO
 ait
 lqF
 gGJ
@@ -101387,7 +101393,7 @@ pcE
 aWw
 qPk
 hKe
-apu
+qPk
 jpp
 ahZ
 acg
@@ -101409,7 +101415,7 @@ hDX
 acg
 abN
 jpp
-amt
+knm
 jZe
 knm
 hBW
@@ -101590,7 +101596,7 @@ uKe
 wfE
 xos
 wKN
-apu
+qPk
 jpp
 iaF
 ach
@@ -101612,7 +101618,7 @@ iaF
 ach
 abO
 jpp
-amt
+knm
 amn
 wwE
 tAb
@@ -101793,7 +101799,7 @@ wDr
 wDr
 aiI
 wKN
-aiA
+avO
 bCd
 eyQ
 ahM
@@ -102223,7 +102229,7 @@ iLs
 baZ
 abr
 jZe
-abm
+knm
 wDr
 alT
 mQx
@@ -102426,7 +102432,7 @@ biA
 biA
 abt
 jZe
-abm
+knm
 wDr
 wQu
 wQu
@@ -102629,7 +102635,7 @@ gjK
 abI
 tzw
 jZe
-abm
+knm
 wDr
 ydA
 ydA
@@ -102832,7 +102838,7 @@ vbV
 abI
 knm
 jZe
-abm
+knm
 wDr
 ydA
 ydA

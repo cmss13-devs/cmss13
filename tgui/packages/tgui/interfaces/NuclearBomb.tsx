@@ -56,14 +56,14 @@ export const NuclearBomb = () => {
                   Enable safety
                 </Button>
               )) || (
-                  <Button.Confirm
-                    fluid
-                    icon="exclamation-triangle"
-                    onClick={() => act('toggleSafety')}
-                  >
-                    Disable safety
-                  </Button.Confirm>
-                )}
+                <Button.Confirm
+                  fluid
+                  icon="exclamation-triangle"
+                  onClick={() => act('toggleSafety')}
+                >
+                  Disable safety
+                </Button.Confirm>
+              )}
             </Stack.Item>
             <Stack.Item>
               {(!data.command_lockout && (
@@ -75,14 +75,14 @@ export const NuclearBomb = () => {
                   Enable command lockout
                 </Button>
               )) || (
-                  <Button.Confirm
-                    fluid
-                    icon="exclamation-triangle"
-                    onClick={() => act('toggleCommandLockout')}
-                  >
-                    Disable command lockout
-                  </Button.Confirm>
-                )}
+                <Button.Confirm
+                  fluid
+                  icon="exclamation-triangle"
+                  onClick={() => act('toggleCommandLockout')}
+                >
+                  Disable command lockout
+                </Button.Confirm>
+              )}
             </Stack.Item>
             <Stack.Item>
               {(!data.anchor && (
@@ -90,14 +90,14 @@ export const NuclearBomb = () => {
                   Activate anchor
                 </Button>
               )) || (
-                  <Button.Confirm
-                    fluid
-                    icon="lock-open"
-                    onClick={() => act('toggleAnchor')}
-                  >
-                    Deactivate anchor
-                  </Button.Confirm>
-                )}
+                <Button.Confirm
+                  fluid
+                  icon="lock-open"
+                  onClick={() => act('toggleAnchor')}
+                >
+                  Deactivate anchor
+                </Button.Confirm>
+              )}
             </Stack.Item>
             <Stack.Item>
               {(!data.decrypting && (
@@ -111,14 +111,14 @@ export const NuclearBomb = () => {
                   Start decryption
                 </Button.Confirm>
               )) || (
-                  <Button.Confirm
-                    fluid
-                    icon="power-off"
-                    onClick={() => act('toggleEncryption')}
-                  >
-                    Stop decryption
-                  </Button.Confirm>
-                )}
+                <Button.Confirm
+                  fluid
+                  icon="power-off"
+                  onClick={() => act('toggleEncryption')}
+                >
+                  Stop decryption
+                </Button.Confirm>
+              )}
             </Stack.Item>
             <Stack.Item>
               {(!data.timing && (
@@ -132,14 +132,14 @@ export const NuclearBomb = () => {
                   Activate nuke
                 </Button.Confirm>
               )) || (
-                  <Button.Confirm
-                    fluid
-                    icon="power-off"
-                    onClick={() => act('toggleNuke')}
-                  >
-                    Deactivate nuke
-                  </Button.Confirm>
-                )}
+                <Button.Confirm
+                  fluid
+                  icon="power-off"
+                  onClick={() => act('toggleNuke')}
+                >
+                  Deactivate nuke
+                </Button.Confirm>
+              )}
             </Stack.Item>
           </Stack>
           {!data.allowed && (

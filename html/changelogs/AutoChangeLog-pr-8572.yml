@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - imageadd: "monkey, yiren, neaera, farwa, stok resprite"
-  - imagedel: "deleted unused dmi various legacy with monkey icons"

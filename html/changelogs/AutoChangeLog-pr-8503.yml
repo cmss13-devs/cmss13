@@ -1,5 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Banished tier 3's can no longer no longer destroy their own tunnels"
-  - bugfix: "Fixes banished xenos not being able to leave tunnels"

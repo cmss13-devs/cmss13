@@ -489,21 +489,6 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		to_chat(ui.user, SPAN_INFO("Access denied!"))
 		return
 
-	switch(action)
-		if("toggleNuke")
-			if(timing == -1)
-				return
-			if(timing)
-				to_chat(ui.user, SPAN_INFO("[src] is impossible to disengage now!"))
-				return
-		if("toggleSafety")
-			if(decrypting)
-				to_chat(ui.user, SPAN_INFO("Stop decryption first!"))
-				return
-		if("toggleAnchor")
-			if(decrypting)
-				to_chat(ui.user, SPAN_INFO("Stop decryption first!"))
-				return
 	if(..())
 		return
 

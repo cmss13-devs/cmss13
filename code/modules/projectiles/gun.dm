@@ -717,8 +717,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(gun_durability <= GUN_DURABILITY_BROKEN - 100) //as to prevent problems with normal rifle fire deleting the gun
 		qdel(src)
 		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] gets destroyed by the resulting gunfire!")))
-	else if(prob(durability_loss * 50)) //durability loss should be doubled when shot
-		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
+	else if(prob(durability_loss * 50))
+		gun_durability = max(gun_durability - (amount / 2), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
 	check_worn_out()
 
@@ -728,7 +728,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		qdel(src)
 		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
 	else
-		gun_durability = max(gun_durability - (amount / 2), GUN_DURABILITY_BROKEN)
+		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
 	check_worn_out()
 

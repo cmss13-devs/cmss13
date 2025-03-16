@@ -270,8 +270,8 @@ DEFINES in setup.dm, referenced here.
 
 		for(var/slot in attachments)
 			var/obj/item/attachable/attachment = attachments[slot]
-			if(attachment && attachment.grip_attachment_on)
-				to_chat(user, SPAN_WARNING("Turn off the attachment"))
+			if(attachment && attachment.attachment_on)
+				to_chat(user, SPAN_WARNING("Turn off the attachment before trying to remove it."))
 				return
 			if(check_inactive_hand(user))
 				attach_to_gun(user,attack_item)
@@ -375,6 +375,11 @@ DEFINES in setup.dm, referenced here.
 		var/obj/item/attachable/attached_attachment = attachments[attachment.slot]
 		if(attached_attachment && !(attached_attachment.flags_attach_features & ATTACH_REMOVABLE))
 			to_chat(user, SPAN_WARNING("The attachment on [src]'s [attachment.slot] cannot be removed!"))
+			return 0
+	if(attachments[attachment.slot])
+		var/obj/item/attachable/attached_attachment = attachments[attachment.slot]
+		if(attached_attachment.attachment_on)
+			to_chat(user, SPAN_WARNING("Turn off the attachment you are trying to replace first!"))
 			return 0
 	//to prevent headaches with lighting stuff
 	if(attachment.light_mod)
@@ -655,7 +660,7 @@ DEFINES in setup.dm, referenced here.
 	if(!attachment || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(attachment == attachments[attachment.slot])) || !(attachment.flags_attach_features & ATTACH_REMOVABLE))
 		return
 
-	if(attachment.grip_attachment_on)
+	if(attachment.attachment_on)
 		to_chat(usr, SPAN_WARNING("You cannot remove this attachment while its on."))
 		return
 

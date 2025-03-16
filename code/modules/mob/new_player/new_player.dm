@@ -240,7 +240,7 @@
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;antag=0;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
-	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
+	show_browser(src, dat, "Late Join", "latechoices", width = 420, height = 700)
 
 /mob/new_player/proc/late_choices_upp()
 	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
@@ -303,7 +303,7 @@
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;antag=1;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
-	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
+	show_browser(src, dat, "Late Join", "latechoices", width = 420, height = 700)
 
 
 /mob/new_player/proc/create_character(is_late_join = FALSE)

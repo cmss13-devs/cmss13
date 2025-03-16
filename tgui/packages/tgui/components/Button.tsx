@@ -53,6 +53,8 @@ type Props = Partial<{
   iconRotation: number;
   iconSpin: BooleanLike;
   onClick: (e: any) => void;
+  onFocus: (e: any) => void;
+  onBlur: (e: any) => void;
   selected: BooleanLike;
   tooltip: ReactNode;
   tooltipPosition: Placement;

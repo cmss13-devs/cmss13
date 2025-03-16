@@ -280,6 +280,7 @@
 	S["dual_wield_pref"] >> dual_wield_pref
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
+	S["toggles_survivor"] >> toggles_survivor
 	S["toggles_ert_pred"] >> toggles_ert_pred
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
@@ -363,7 +364,7 @@
 
 	S["tgui_lock"] >> tgui_lock
 	S["tgui_fancy"] >> tgui_fancy
-	S["tgui_scale"] >> tgui_scale
+	S["window_scale"] >> window_scale
 
 	var/tutorial_string = ""
 	S["completed_tutorials"] >> tutorial_string
@@ -394,6 +395,7 @@
 	dual_wield_pref = sanitize_integer(dual_wield_pref, 0, 2, initial(dual_wield_pref))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
+	toggles_survivor = sanitize_integer(toggles_survivor, 0, SHORT_REAL_LIMIT, initial(toggles_survivor))
 	toggles_ert_pred = sanitize_integer(toggles_ert_pred, 0, SHORT_REAL_LIMIT, initial(toggles_ert_pred))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
@@ -444,7 +446,7 @@
 	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
 
-	tgui_scale = sanitize_integer(tgui_scale, FALSE, TRUE, initial(tgui_scale))
+	window_scale = sanitize_integer(window_scale, FALSE, TRUE, initial(window_scale))
 	tgui_lock = sanitize_integer(tgui_lock, FALSE, TRUE, initial(tgui_lock))
 	tgui_fancy = sanitize_integer(tgui_fancy, FALSE, TRUE, initial(tgui_fancy))
 
@@ -534,6 +536,7 @@
 	S["dual_wield_pref"] << dual_wield_pref
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
+	S["toggles_survivor"] << toggles_survivor
 	S["toggles_ert_pred"] << toggles_ert_pred
 	S["toggles_admin"] << toggles_admin
 	S["window_skin"] << window_skin
@@ -616,7 +619,7 @@
 
 	S["tgui_fancy"] << tgui_fancy
 	S["tgui_lock"] << tgui_lock
-	S["tgui_scale"] << tgui_scale
+	S["window_scale"] << window_scale
 
 	return TRUE
 

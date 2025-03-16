@@ -260,11 +260,11 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 		dat += "Select an event to trigger:<ul>"
 		dat += "<li><A href='byond://?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
 		dat += "</ul>"
-		show_browser(user, dat, name, "keycard_auth", "size=500x300")
+		show_browser(user, dat, name, "keycard_auth", width = 500, height = 300)
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
 		dat += "<p><A href='byond://?src=\ref[src];reset=1'>Back</A>"
-		show_browser(user, dat, name, "keycard_auth", "size=500x300")
+		show_browser(user, dat, name, "keycard_auth", width = 500, height = 300)
 	return
 
 /obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(timeleft = 0)

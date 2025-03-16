@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Being in a locker or cryopod shipside now can receive shipside announcements"

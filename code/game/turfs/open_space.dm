@@ -47,7 +47,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/attack_hand(mob/user)
 	if(user.action_busy)
 		return
-
 	var/turf/current_turf = get_turf(src)
 
 	if(istype(current_turf, /turf/open_space))

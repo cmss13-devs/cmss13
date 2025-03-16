@@ -23,7 +23,7 @@
 
 /client/proc/pred_council_message()
 	set name = "Yautja Overseer Report"
-	set category = "Yautja.Council"
+	set category = "OOC.Whitelist"
 
 	if(!check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 		to_chat(src, SPAN_WARNING("Only the Yautja Council may use this command."))

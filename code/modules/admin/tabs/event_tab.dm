@@ -725,12 +725,10 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = tgui_input_text(usr, "This is a message from the Predator Elder Overseer. They are not an AI, but they have witnessed everything that has happened this round through the eyes of all predators, both alive and dead. This message will appear on the screens of all living predator mobs. Check with online staff before sending.", "What Will The Elder Say?")
+	var/input = tgui_input_text(usr, "This is a message from the Yautja Elder Overseer. They are not an AI, but they have witnessed everything that has happened this round through the eyes of all predators, both alive and dead. This message will appear on the screens of all living predator mobs. Check with online staff before sending.", "What Will The Elder Say?")
 	if(!input)
 		return FALSE
-	elder_overseer_message((input))
-	message_admins("[key_name_admin(src)] Has created a predator elder overseer report")
-	log_admin("[key_name_admin(src)] Predator elder overseer report: [input]")
+	elder_overseer_message(input, elder_user = "[key_name(src)]")
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set name = "Narrate to Everyone"

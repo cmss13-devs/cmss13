@@ -495,21 +495,21 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	switch(action)
 		if("set_x")
 			var/new_x = text2num(params["set_x"])
-			if(!new_x)
+			if(isnull(new_x))
 				return
 			x_supply = new_x
 			. = TRUE
 
 		if("set_y")
 			var/new_y = text2num(params["set_y"])
-			if(!new_y)
+			if(isnull(new_y))
 				return
 			y_supply = new_y
 			. = TRUE
 
 		if("set_z")
 			var/new_z = text2num(params["set_z"])
-			if(!new_z)
+			if(isnull(new_z))
 				return
 			z_supply = new_z
 			. = TRUE

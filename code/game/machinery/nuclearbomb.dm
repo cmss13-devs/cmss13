@@ -16,6 +16,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	var/being_used = FALSE
 	var/end_round = TRUE
 	var/timer_announcements_flags = NUKE_SHOW_TIMER_ALL
+	var/decryption_time = 10 MINUTES
+	var/decryption_end_time = null
+	var/decrypting = FALSE
 	pixel_x = -16
 	use_power = USE_POWER_NONE
 	req_access = list()
@@ -167,6 +170,11 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				return
 
 			if(!ishuman(ui.user))
+				return
+
+			if(decryption_time != 0)
+				to_chat(ui.user, SPAN_INFO("The encryption process must be completed first!"))
+				message_admins("\The [src] has been attempted to be activated by [key_name(ui.user, 1)], this should not be possible [ADMIN_JMP_USER(ui.user)]")
 				return
 
 			if(!allowed(ui.user))
@@ -416,7 +424,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	for(var/datum/interior/interior in SSinterior.interiors)
 		if(!interior.exterior || interior.exterior.z != z)
 			continue
-	
+
 		for(var/mob/living/passenger in interior.get_passengers())
 			if(!(passenger in (alive_mobs + dead_mobs)))
 				if(passenger.stat != DEAD)
@@ -445,10 +453,6 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 10 MINUTES
-	var/decryption_end_time = null
-	var/decrypting = FALSE
-
 	timeleft = 1 MINUTES
 	timer_announcements_flags = NUKE_DECRYPT_SHOW_TIMER_ALL
 

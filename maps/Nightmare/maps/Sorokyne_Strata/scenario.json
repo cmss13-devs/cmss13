@@ -1,16 +1,11 @@
 [
-{
-	"type": "pick", "name": "sof_insert",
-	"choices": [
-		{ "weight": 10, "type": "def", "values": { "lvevent": "none" } },
-		{ "weight": 6, "type": "def", "values": { "lvevent": "sof_insert" } }
-	]
-},
-{
-	"type": "pick", "name": "clf_insert",
-		"choices": [
-		{ "weight": 9, "type": "def", "values": { "lvevent": "none" } },
-		{ "weight": 1, "type": "def", "values": { "lvevent": "clfcrash" } }
-	]
-}
+    {
+        "type": "pick", "name": "Soro Global Event",
+        "choices": [
+            { "weight": 9, "type": "def", "values": { "lvevent": "none"       } },
+            { "weight": 1, "type": "def", "values": { "lvevent": "clfcrash" } },
+            { "weight": 6, "type": "def", "values": { "lvevent": "sof_insert" } }
+        ]
+    }
+
 ]

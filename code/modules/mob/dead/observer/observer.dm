@@ -856,20 +856,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	to_chat(src, "<span style='color: blue;'>Gas type: [env_gas]</span>")
 	to_chat(src, "<span style='color: blue;'>Temperature: [round(env_temperature-T0C,0.1)]&deg;C</span>")
 
-/mob/dead/observer/verb/pred_council_message()
-	set name = "Yautja Overseer Report"
-	set category = "Ghost"
-
-	if(!client.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
-		to_chat(src, SPAN_WARNING("Only the predator council may use this command."))
-		return
-	var/input = tgui_input_text(usr, "This is a message from the Predator Elder Overseer. They are not your character. Use this to direct big groups of Yautja when needed and to stop/prevent honor code breaches.", "What Will The Elder Say?")
-	if(!input)
-		return FALSE
-	elder_overseer_message((input))
-	message_admins("[key_name_admin(src)] Has created a predator elder overseer report")
-	log_admin("[key_name_admin(src)] Predator elder overseer report: [input]")
-
 /mob/dead/observer/verb/toggle_zoom()
 	set name = "Toggle Zoom"
 	set category = "Ghost.Settings"

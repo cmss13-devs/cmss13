@@ -200,3 +200,25 @@
   nicholasWooldridge:
   - bugfix: Fixed a bug that caused the Broken M41A to be called Prop Gun in a chat
       message.
+2025-03-15:
+  Drathek:
+  - bugfix: Being in a locker or cryopod shipside now can receive shipside announcements
+  Red-byte3D:
+  - admin: Admins now have a "Play as" option that puts them in the mob they spawn
+      as.
+  - code_imp: moves certain time actions use SECONDS define
+  - bugfix: Girders now take into account the fact if they're destroyed, right before
+      they're done being repaired.
+  hry-gh:
+  - qol: people with window scaling that is greater or less than 100% will now have
+      windows scale, appropriate to the "window scaling" option in settings
+  itsmeow:
+  - bugfix: Fixed TGUI assets and icons sometimes not showing up until you refreshed
+      the page on 516 clients
+2025-03-16:
+  Drathek:
+  - bugfix: Fixed browsers sometimes not handling a mob passed instead of a client
+      (VV bitfields & tickets atleast)
+  MistChristmas:
+  - bugfix: Allows Supply Drop Console to accept 0 values. Allows OW consoles to save
+      coords with 0 values.

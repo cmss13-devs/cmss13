@@ -7,6 +7,17 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
+/proc/elder_overseer_message(text = "", title_text = "Elder Overseer Message") // you can override the title_text if you want.
+	for(var/mob/living/carbon/human/hunter as anything in GLOB.yautja_mob_list)
+		if(!hunter.client)
+			continue
+		if(hunter.stat == DEAD)
+			continue
+		text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
+		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
+		var/elder_picked = pick('sound/voice/pred_elder_overseer_1.ogg', 'sound/voice/pred_elder_overseer_2.ogg', 'sound/voice/pred_elder_overseer_3.ogg', 'sound/voice/pred_elder_overseer_4.ogg')
+		playsound_client(hunter.client, elder_picked, 25)
+
 /mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)
 		return
@@ -191,6 +202,7 @@
 					hunter_data.prey = null
 				else
 					to_chat(src, SPAN_NOTICE("You finish butchering!"))
+					elder_overseer_message("Good work new blood.")
 				qdel(T)
 			else
 				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
@@ -217,6 +229,7 @@
 				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
+				elder_overseer_message("Good work new blood.")
 
 /area/yautja
 	name = "\improper Yautja Ship"

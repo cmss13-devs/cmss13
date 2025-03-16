@@ -341,9 +341,36 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
-/obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
-	name = "\improper Elder Communicator"
+/obj/item/device/radio/headset/yautja/elder //for council
+	name = "\improper Overseer Communicator"
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR, RADIO_VOLUME_IMPORTANT_STR, RADIO_VOLUME_CRITICAL_STR)
+
+/obj/item/device/radio/headset/yautja/elder/verb/council_message()
+	set name = "Send Global Message"
+	set desc = "Message all the alive hunters."
+	set category = "Yautja.Misc"
+	set src in usr
+	. = message_internal(usr, FALSE)
+
+/obj/item/device/radio/headset/yautja/elder/proc/message_internal(mob/living/carbon/human/elder, forced = FALSE)
+	if(!elder.loc || elder.is_mob_incapacitated() || !ishuman(elder))
+		return
+
+	if(!HAS_TRAIT(elder, TRAIT_YAUTJA_TECH))
+		to_chat(elder, SPAN_WARNING("A list of strange symbols appears; you cannot comprehend what it says."))
+		return
+
+	if(!elder.client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+		to_chat(elder, SPAN_WARNING("You have not been taught how to use this function, best to not try to use it."))
+		return
+
+	var/input = tgui_input_text(elder, "Send a message to all living hunters.", "What will you say?")
+	if(!input)
+		return
+
+	elder_overseer_message((input), "[elder.real_name]:")
+	message_admins("[elder.real_name] ([elder.key]) has created a predator council message")
+	log_admin("[elder.real_name] ([elder.key]) created a predator council message: [input]")
 
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"

@@ -314,6 +314,10 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 		else
+			var/area/area = get_area(src)
+			if(!area.allow_construction)
+				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
+				return
 			var/turf/open/floor = get_turf(src)
 			if(!floor.allow_construction)
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
@@ -383,7 +387,7 @@
 
 	if(!turned_on)
 		if(!can_be_near_defense)
-			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
+			for(var/obj/structure/machinery/defenses/def in long_range(defense_check_range, loc))
 				if(def != src && def.turned_on && !def.can_be_near_defense)
 					to_chat(user, SPAN_WARNING("This is too close to \a [def]!"))
 					return

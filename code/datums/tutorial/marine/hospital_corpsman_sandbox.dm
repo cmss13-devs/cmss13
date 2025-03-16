@@ -30,7 +30,7 @@
 	tutorial_template = /datum/map_template/tutorial/s15x10/hm
 
 	// holder for the CMO NPC
-	var/mob/living/carbon/human/CMOnpc
+	var/mob/living/carbon/human/CMO_npc
 	/// Current step of the tutorial we're at
 	var/stage = TUTORIAL_HM_PHASE_PREP
 	/// List of patient NPCs. Stored in relation to their end destination turf
@@ -60,7 +60,7 @@
 	/// Current survival wave difficulty (in terms of injury severity)
 	var/survival_difficulty = TUTORIAL_HM_INJURY_SEVERITY_BOOBOO
 	/// Holds a random timer per survival wave for a booboo agent to spawn
-	var/boobootimer
+	var/booboo_timer
 	/// List of injuries on patient NPCs that must be treated before fully healed. Is only tested AFTER they pass 65% health
 	var/list/mob/living/carbon/human/realistic_dummy/agent_healing_tasks = list()
 	/// Wave number when the last resupply phase triggered. Will wait 3 waves before rolling again
@@ -83,11 +83,11 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_round_progression()
 
-	var/difficultyupgradewarning = null
+	var/difficulty_upgrade_warning = null
 
-	if(boobootimer)
-		deltimer(boobootimer)
-		boobootimer = null
+	if(booboo_timer)
+		deltimer(booboo_timer)
+		booboo_timer = null
 
 	switch(stage)
 		if(TUTORIAL_HM_PHASE_RESUPPLY)
@@ -129,30 +129,30 @@
 		var/current_difficulty = survival_difficulty
 		if(current_difficulty != TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 			survival_difficulty = next_in_list(current_difficulty, difficulties)
-			difficultyupgradewarning = " Difficulty has increased, watch out!!"
+			difficulty_upgrade_warning = " Difficulty has increased, watch out!!"
 
-	CMOnpc.say("Now entering round [survival_wave]![difficultyupgradewarning]")
+	CMO_npc.say("Now entering round [survival_wave]![difficulty_upgrade_warning]")
 
 	addtimer(CALLBACK(src, PROC_REF(spawn_agents)), 2 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/end_supply_phase()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prepdoor)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
 	var/turf/boundry = get_turf(loc_from_corner(4, 1))
 	if(tutorial_mob.x <= boundry.x)
 		message_to_player("Please exit the preperations room before progressing into the next round!")
 		return
-	prepdoor.close(TRUE)
-	prepdoor.lock(TRUE)
+	prep_door.close(TRUE)
+	prep_door.lock(TRUE)
 	stage = TUTORIAL_HM_PHASE_MAIN
 	remove_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up)
 	handle_round_progression()
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/begin_supply_phase()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prepdoor)
-	prepdoor.unlock(TRUE)
-	prepdoor.open()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
+	prep_door.unlock(TRUE)
+	prep_door.open()
 	stage = TUTORIAL_HM_PHASE_MAIN // just in case it wasnt already
 
 	message_to_player("Phew! We have entered a resupply phase of the tutorial!")
@@ -177,29 +177,29 @@
 
 	addtimer(CALLBACK(src, PROC_REF(eval_agent_status)), 3 SECONDS)	// Gives time for NPCs to pass out or die, if their condition is severe enough
 	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && (rand() <= 0.75))	// If above difficulty FATAL, starts a random timer to spawn a booboo agent
-		boobootimer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
+		booboo_timer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_condition(mob/living/carbon/human/target)
 	SIGNAL_HANDLER
 
 	// Simulates patient NPC injuries
 
-	var/damageamountsplit = ((round(rand(1, 100))) / 100)	// How damage should be split between brute and burn
+	var/damage_amount_split = ((round(rand(1, 100))) / 100)	// How damage should be split between brute and burn
 	var/list/limbs = target.limbs
 	var/amount_of_parts = round(rand(1, 6))	// Amount of times to roll for a limb fracture
-	var/patienttype = pick(75;PATIENT_TYPE_MUNDANE, 15;PATIENT_TYPE_ORGAN, 10;PATIENT_TYPE_TOXIN) // 75% chance for mundane damage, 15% for organ damage, 10% for toxin
+	var/patient_type = pick(75;PATIENT_TYPE_MUNDANE, 15;PATIENT_TYPE_ORGAN, 10;PATIENT_TYPE_TOXIN) // 75% chance for mundane damage, 15% for organ damage, 10% for toxin
 
-	if(patienttype >= PATIENT_TYPE_MUNDANE)
+	if(patient_type >= PATIENT_TYPE_MUNDANE)
 		for(var/i in 1 to amount_of_parts)
-			var/obj/limb/selectedlimb = pick(limbs)
-			var/damageamount = (round(rand((40 * survival_difficulty), (50 * survival_difficulty))))
-			selectedlimb.take_damage(round((damageamount * damageamountsplit) / amount_of_parts), round((damageamount * (1 - damageamountsplit)) / amount_of_parts))
-			if((damageamount > 30) && (rand()) < (survival_difficulty / 10))
-				selectedlimb.fracture()
-	if(patienttype == PATIENT_TYPE_ORGAN)	// applies organ damage AS WELL as mundane damage if type 2
+			var/obj/limb/selected_limb = pick(limbs)
+			var/damage_amount = (round(rand((40 * survival_difficulty), (50 * survival_difficulty))))
+			selected_limb.take_damage(round((damage_amount * damage_amount_split) / amount_of_parts), round((damage_amount * (1 - damage_amount_split)) / amount_of_parts))
+			if((damage_amount > 30) && (rand()) < (survival_difficulty / 10))
+				selected_limb.fracture()
+	if(patient_type == PATIENT_TYPE_ORGAN)	// applies organ damage AS WELL as mundane damage if type 2
 		var/datum/internal_organ/organ = pick(target.internal_organs)
 		target.apply_internal_damage(round(rand(1,(survival_difficulty*3.75))), "[organ.name]")
-	if(patienttype == PATIENT_TYPE_TOXIN)	// applies toxin damage AS WELL as mundane damage if type 3
+	if(patient_type == PATIENT_TYPE_TOXIN)	// applies toxin damage AS WELL as mundane damage if type 3
 		target.setToxLoss(round(rand(1,10*survival_difficulty)))
 
 	if(prob(15))	// Simulates premedicated patients
@@ -285,7 +285,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_speech(mob/living/carbon/human/target)
 
-	var/list/helpme = list()
+	var/list/help_me = list()
 
 	if(target in dragging_agents)
 		target.emote("medic")
@@ -296,11 +296,11 @@
 	for(var/obj/limb/limb in target.limbs)
 		if(limb.status & LIMB_BROKEN)
 			var/targetlimb = limb.display_name
-			helpme |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
+			help_me |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
 
-	helpme |= list("Doc can I get some pills?", "Need a patch up please", "Im hurt Doc...", "Can I get some healthcare?", "Pill me real quick")
+	help_me |= list("Doc can I get some pills?", "Need a patch up please", "Im hurt Doc...", "Can I get some healthcare?", "Pill me real quick")
 
-	target.say("[pick(helpme)]")
+	target.say("[pick(help_me)]")
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_dragging_agent()
 
@@ -394,16 +394,16 @@
 	agents[active_agent] = dropoff_point
 	active_agent.a_intent = INTENT_DISARM
 
-	var/damageamountsplit = ((round(rand(1, 100))) / 100)
+	var/damage_amount_split = ((round(rand(1, 100))) / 100)
 	var/list/limbs = active_agent.limbs
 	var/amount_of_parts = round(rand(1, 6))
 
 	for(var/i in 1 to amount_of_parts)
-		var/obj/limb/selectedlimb = pick(limbs)
-		var/damageamount = (round(rand((40 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO), (50 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO))))
-		selectedlimb.take_damage(round((damageamount * damageamountsplit) / amount_of_parts), round((damageamount * (1 - damageamountsplit)) / amount_of_parts))
-		if((damageamount > 30) && (rand()) < (TUTORIAL_HM_INJURY_SEVERITY_BOOBOO / 10))
-			selectedlimb.fracture()
+		var/obj/limb/selected_limb = pick(limbs)
+		var/damage_amount = (round(rand((40 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO), (50 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO))))
+		selected_limb.take_damage(round((damage_amount * damage_amount_split) / amount_of_parts), round((damage_amount * (1 - damage_amount_split)) / amount_of_parts))
+		if((damage_amount > 30) && (rand()) < (TUTORIAL_HM_INJURY_SEVERITY_BOOBOO / 10))
+			selected_limb.fracture()
 
 	active_agent.updatehealth()
 	active_agent.UpdateDamageIcon()
@@ -413,36 +413,36 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_evac(datum/source, mob/living/carbon/human/target)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevacbed)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac_bed)
 
-	var/list/statusmessage = list()
+	var/list/status_message = list()
 
 	for(var/datum/reagent/medical/chemical in target.reagents.reagent_list)
 		if(chemical.volume >= chemical.overdose_critical)
-			statusmessage |= "Critical [chemical.name] overdose detected"
+			status_message |= "Critical [chemical.name] overdose detected"
 	for(var/datum/internal_organ/organ in target.internal_organs)
 		if(organ.damage >= organ.min_broken_damage)
 			if((locate(/datum/reagent/medical/peridaxon) in target.reagents.reagent_list) || (target.stat == DEAD))
-				statusmessage |= "Ruptured [organ.name] detected"
+				status_message |= "Ruptured [organ.name] detected"
 			else
-				medevacbed.balloon_alert_to_viewers("Organ damage detected! Please stabilize patient with Peridaxon before transit.", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
-				playsound(medevacbed.loc, 'sound/machines/twobeep.ogg', 20)
+				medevac_bed.balloon_alert_to_viewers("Organ damage detected! Please stabilize patient with Peridaxon before transit.", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+				playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 				return
 
 	if(tutorial_mob == target)
-		medevacbed.balloon_alert_to_viewers("Error! Unable to self-evacuate!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
-		playsound(medevacbed.loc, 'sound/machines/twobeep.ogg', 20)
+		medevac_bed.balloon_alert_to_viewers("Error! Unable to self-evacuate!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
-	if(length(statusmessage) > 0)
-		medevacbed.balloon_alert_to_viewers("[pick(statusmessage)]! Evacuating patient!!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
-		playsound(medevacbed.loc, pick(90;'sound/machines/ping.ogg',10;'sound/machines/juicer.ogg'), 20)
+	if(length(status_message) > 0)
+		medevac_bed.balloon_alert_to_viewers("[pick(status_message)]! Evacuating patient!!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
+		playsound(medevac_bed.loc, pick(90;'sound/machines/ping.ogg',10;'sound/machines/juicer.ogg'), 20)
 		spawn(2.7 SECONDS)
-		flick("winched_stretcher", medevacbed)
+		flick("winched_stretcher", medevac_bed)
 		make_agent_leave(target, TRUE)
-		medevacbed.update_icon()
+		medevac_bed.update_icon()
 	else
-		medevacbed.balloon_alert_to_viewers("Error! Patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
-		playsound(medevacbed.loc, 'sound/machines/twobeep.ogg', 20)
+		medevac_bed.balloon_alert_to_viewers("Error! Patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/process(delta_time)
@@ -461,6 +461,9 @@
 		return
 	else
 		cleanup -= armor
+		var/obj/item/storage/internal/armor_storage = locate(/obj/item/storage/internal) in armor
+		for (var/obj/item/item in armor_storage)
+			armor_storage.remove_from_storage(item, get_turf(armor))
 		QDEL_IN(armor, 1 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_mob()
@@ -476,22 +479,22 @@
 
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 0))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 0))
-	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prepdoor = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
-	var/obj/structure/bed/medevac_stretcher/prop/medevacbed = locate(/obj/structure/bed/medevac_stretcher/prop) in get_turf(loc_from_corner(7, 0))
+	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prep_door = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
+	var/obj/structure/bed/medevac_stretcher/prop/medevac_bed = locate(/obj/structure/bed/medevac_stretcher/prop) in get_turf(loc_from_corner(7, 0))
 	var/obj/structure/machinery/smartfridge/smartfridge = locate(/obj/structure/machinery/smartfridge) in get_turf(loc_from_corner(0, 3))
 	agent_spawn_location = get_turf(loc_from_corner(12, 2))
 	var/obj/item/storage/pill_bottle/imialky/ia = new /obj/item/storage/pill_bottle/imialky
 	smartfridge.add_local_item(ia) //I have won, but at what cost?
-	prepdoor.req_one_access = null
-	prepdoor.req_access = null
-	add_to_tracking_atoms(prepdoor)
-	add_to_tracking_atoms(medevacbed)
-	RegisterSignal(medevacbed, COMSIG_LIVING_BED_BUCKLED, PROC_REF(simulate_evac))
+	prep_door.req_one_access = null
+	prep_door.req_access = null
+	add_to_tracking_atoms(prep_door)
+	add_to_tracking_atoms(medevac_bed)
+	RegisterSignal(medevac_bed, COMSIG_LIVING_BED_BUCKLED, PROC_REF(simulate_evac))
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/init_npcs()
 
-	CMOnpc = new(loc_from_corner(7, 7))
-	arm_equipment(CMOnpc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc)
+	CMO_npc = new(loc_from_corner(7, 7))
+	arm_equipment(CMO_npc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
 	arm_equipment(dragging_agent, /datum/equipment_preset/uscm/tutorial_rifleman)

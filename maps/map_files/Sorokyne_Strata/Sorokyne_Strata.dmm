@@ -127,6 +127,26 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"aau" = (
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble4{
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/exterior/north_outpost)
+"aav" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_y = 21;
+	pixel_x = 11
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/floor3,
+/area/strata/exterior/north_outpost)
 "aaw" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -594,14 +614,6 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/secure_checkpoint)
-"abL" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/asphalt/cement,
-/area/strata/exterior/mining_outpost_exterior)
 "abM" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -1594,7 +1606,8 @@
 /area/strata/interior/bball_cave)
 "aeL" = (
 /obj/structure/bedsheetbin,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/strata/floor3,
 /area/strata/exterior/far_north_outpost)
 "aeM" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -15200,7 +15213,6 @@
 "aRV" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "aRW" = (
@@ -16977,7 +16989,6 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/science,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "aXa" = (
@@ -29851,11 +29862,9 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/exterior/north_outpost)
 "bLA" = (
-/obj/structure/flora/grass/tallgrass/jungle_alt/corner{
-	dir = 1
-	},
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/strata_grass/layer1,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/floor3,
 /area/strata/exterior/north_outpost)
 "bLB" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -32875,7 +32884,6 @@
 "bTA" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/wood/wood_broken,
 /area/strata/interior/wooden_ruins)
 "bTB" = (
@@ -33424,13 +33432,6 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/interior/bball_cave)
-"bVc" = (
-/obj/structure/flora/grass/tallgrass/jungle_alt/corner{
-	dir = 5
-	},
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/far_north_outpost)
 "bVd" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib6"
@@ -61376,7 +61377,7 @@ ctC
 afS
 aCL
 afz
-abL
+aEM
 qsu
 aNl
 bDo
@@ -77278,7 +77279,7 @@ bMI
 bML
 buW
 cdA
-aac
+aau
 awJ
 awJ
 bGN
@@ -77453,7 +77454,7 @@ afO
 ccg
 buW
 cdA
-ayX
+aav
 awJ
 bKs
 bGN
@@ -77803,7 +77804,7 @@ kfN
 cdA
 cdA
 cdA
-aAV
+cdA
 bGL
 awJ
 bJS
@@ -81285,7 +81286,7 @@ aYp
 aYp
 bmP
 aUp
-bVc
+akH
 ahZ
 bUu
 ahZ

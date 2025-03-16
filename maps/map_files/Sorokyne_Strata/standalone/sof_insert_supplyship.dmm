@@ -348,6 +348,7 @@
 /area/strata/exterior/marsh/crash)
 "FL" = (
 /obj/item/ammo_magazine/rifle/ak4047,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/almayer/test_floor5,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "Gj" = (

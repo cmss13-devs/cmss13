@@ -378,6 +378,8 @@
 	S["job_loadout"] >> loadout
 	S["job_loadout_names"] >> loadout_slot_names
 
+	S["show_cooldown_messages"] >> show_cooldown_messages
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -468,6 +470,8 @@
 
 	loadout = sanitize_loadout(loadout, owner)
 	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
+
+	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -620,6 +624,8 @@
 	S["tgui_fancy"] << tgui_fancy
 	S["tgui_lock"] << tgui_lock
 	S["window_scale"] << window_scale
+
+	S["show_cooldown_messages"] << show_cooldown_messages
 
 	return TRUE
 

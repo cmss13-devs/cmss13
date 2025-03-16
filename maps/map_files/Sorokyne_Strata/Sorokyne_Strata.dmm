@@ -8736,9 +8736,6 @@
 	},
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/north_outpost)
-"aPu" = (
-/turf/open/floor/prison/darkyellowfull2,
-/area/strata/interior/outpost/med)
 "aPx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/darkyellowfull2,
@@ -16631,7 +16628,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/strata/floor3/east,
-/area/strata/interior/outpost/med)
+/area/strata/exterior/outpost_decks)
 "bSJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -35006,7 +35003,7 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/interior/outpost/med)
+/area/strata/exterior/outpost_decks)
 "mif" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -35049,7 +35046,7 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/prison/darkyellowfull2,
-/area/strata/interior/outpost/med)
+/area/strata/exterior/outpost_decks)
 "miZ" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
@@ -35072,7 +35069,7 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/interior/outpost/med)
+/area/strata/exterior/outpost_decks)
 "mjD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -37620,7 +37617,7 @@
 "nUX" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/prison/darkyellowfull2,
-/area/strata/interior/outpost/med)
+/area/strata/exterior/outpost_decks)
 "nUY" = (
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro/east,
@@ -38680,7 +38677,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison/darkyellowfull2,
-/area/strata/interior/outpost/med)
+/area/strata/exterior/outpost_decks)
 "oHQ" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -70837,7 +70834,7 @@ qUL
 mCx
 bJV
 vmI
-bjS
+oOB
 nUX
 cbH
 aNX
@@ -71187,7 +71184,7 @@ oFc
 xXX
 bJX
 vlm
-mCx
+foN
 nUX
 jVT
 mjD
@@ -71362,8 +71359,8 @@ oFc
 xXX
 mCx
 wSf
-mCx
-aPu
+foN
+iLJ
 oHN
 oHN
 oHN
@@ -71537,11 +71534,11 @@ uSi
 xXX
 hwo
 bOE
-mCx
-mCx
-mCx
-mCx
-aPu
+foN
+foN
+foN
+foN
+iLJ
 mjt
 cuP
 cuP

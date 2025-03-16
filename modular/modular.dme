@@ -7,6 +7,7 @@
 #include "_singletons/_singletons.dme"
 #include "changelog/_changelog.dme"
 // #include "bump_attacks/_bump_attacks.dme"
+#include "admin/_admin.dme"
 #include "apc_choice/_apc_choice.dme"
 #include "cyrillic_fixes/_cyrillic_fixes.dme"
 #include "quick_cast/_quick_cast.dme"

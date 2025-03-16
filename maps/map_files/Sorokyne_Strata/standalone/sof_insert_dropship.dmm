@@ -269,8 +269,7 @@
 /area/strata/interior/shuttle_sof)
 "sz" = (
 /obj/item/ammo_magazine/rifle/ak4047,
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/strata/interior/shuttle_sof)
 "tD" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
@@ -362,7 +361,8 @@
 	layer = 3.1
 	},
 /obj/item/clothing/accessory/patch/upp/alt,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/strata/interior/shuttle_sof)
 "zk" = (
 /obj/structure/shuttle/part/upp_sof/transparent{

@@ -64,6 +64,7 @@ type Data = {
   can_launch_obs: BooleanLike;
   ob_cooldown?: number;
   ob_loaded: BooleanLike;
+  ob_safety: Boolean;
   supply_cooldown: number;
   operator: string;
   aa_targeting: string;
@@ -76,7 +77,6 @@ type Data = {
   time_central: number;
   time_message: number;
   ob_warhead: string;
-  ob_safety: Boolean;
   echo_squad_active: Boolean;
 };
 
@@ -1015,6 +1015,8 @@ const SquadMonitor = (props) => {
 const OrbitalBombardment = (props) => {
   const { act, data } = useBackend<Data>();
 
+  let { ob_safety } = data;
+
   let ob_status = 'Ready';
   let ob_color = 'green';
   let ob_warhead = 'No Shells Loaded';
@@ -1053,11 +1055,11 @@ const OrbitalBombardment = (props) => {
               <Table.Cell fontSize="14px" m="2px" p="7px" textAlign="center">
                 OB SAFETY SYSTEM:
                 <Box
-                  color={data.ob_safety ? 'green' : 'red'}
+                  color={ob_safety ? 'green' : 'red'}
                   m="1px"
                   fontSize="16px"
                 >
-                  [ {data.ob_safety ? 'ENGAGED' : 'DISENGAGED'} ]
+                  [ {ob_safety ? 'ENGAGED' : 'DISENGAGED'} ]
                 </Box>
                 <Button
                   fontSize="16px"

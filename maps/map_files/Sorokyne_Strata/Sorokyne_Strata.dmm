@@ -127,6 +127,18 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"aau" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/greengrid,
+/area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
+"aav" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt/corner{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/north_outpost)
 "aaw" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -244,6 +256,13 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
+"aaM" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt/corner{
+	dir = 5
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/far_north_outpost)
 "aaO" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -1652,6 +1671,7 @@
 	color = "#98a3ab"
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "aeW" = (
@@ -15198,6 +15218,7 @@
 "aRV" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "aRW" = (
@@ -21877,10 +21898,6 @@
 	},
 /turf/open/gm/coast/dirt/west,
 /area/strata/exterior/carplake_center)
-"bmP" = (
-/obj/structure/machinery/power/apc/no_power/south,
-/turf/open/floor/interior/plastic,
-/area/strata/interior/wooden_hospital)
 "bmQ" = (
 /obj/item/stool,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -27464,6 +27481,7 @@
 /area/strata/exterior/deep_jungle/north)
 "bEs" = (
 /obj/effect/decal/strata_decals/grime/grime2,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "bEt" = (
@@ -32864,6 +32882,7 @@
 "bTy" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/wood/wood_broken,
 /area/strata/interior/wooden_ruins)
 "bTz" = (
@@ -49937,6 +49956,7 @@
 	dir = 1;
 	pixel_x = -8
 	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/almayer/test_floor5,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "sNq" = (
@@ -77608,7 +77628,7 @@ bMF
 bMF
 buW
 cdA
-ayX
+aav
 bKV
 bGL
 bGL
@@ -81088,7 +81108,7 @@ aYp
 aYo
 aYp
 aYp
-bmP
+bof
 aUp
 aeL
 agR
@@ -81265,7 +81285,7 @@ aYp
 aYp
 bof
 aUp
-akH
+aaM
 ahZ
 bUr
 ahZ
@@ -89417,7 +89437,7 @@ lZd
 aKC
 ajO
 khT
-gih
+aau
 vsy
 vit
 sRR

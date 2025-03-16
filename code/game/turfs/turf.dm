@@ -91,8 +91,10 @@
 
 	if(above)
 		above.multiz_new(dir=DOWN)
+
 	if(below)
 		below.multiz_new(dir=UP)
+
 	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
@@ -178,8 +180,10 @@
 	var/turf/below = SSmapping.get_turf_below(src)
 	if(above)
 		above.multiz_del(dir=DOWN)
+
 	if(below)
 		below.multiz_del(dir=UP)
+
 	if(force)
 		..()
 		//this will completely wipe turf state

@@ -679,14 +679,14 @@
 /obj/item/clothing/under/marine/veteran/UPP/army
 	name = "\improper UPP Army fatigues"
 	desc =  "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the Jungle pattern of the UPP Army's 202nd Infantry Regiment."
-	icon_state = "upp_army_green"
+	icon_state = "upp_army_green_uniform"
 	worn_state = "upp_army_green_uniform"
 	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/army/alt
 	name = "\improper UPP Army fatigues"
 	desc = "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the Standard UPP pattern of the UPP Army's 202nd Infantry Regiment."
-	icon_state = "upp_army_yellow"
+	icon_state = "upp_army_yellow_uniform"
 	worn_state = "upp_army_yellow_uniform"
 
 // UPP SOF

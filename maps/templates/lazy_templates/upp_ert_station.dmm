@@ -299,12 +299,6 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/floor/strata/green3/east,
 /area/adminlevel/ert_station/upp_station)
-"eU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
-	},
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/adminlevel/ert_station/upp_station)
 "eX" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -534,6 +528,12 @@
 /obj/item/storage/box/bodybags,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/upp_station)
+"jH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/upp_station)
 "jV" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/space/basic,
@@ -732,6 +732,12 @@
 	pixel_y = 13
 	},
 /turf/open/floor/strata/floor2,
+/area/adminlevel/ert_station/upp_station)
+"nC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "nF" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
@@ -1015,12 +1021,6 @@
 	dir = 8
 	},
 /turf/open/floor/strata/green3/east,
-/area/adminlevel/ert_station/upp_station)
-"tv" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "tx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -1710,10 +1710,6 @@
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/strata/cyan1/east,
 /area/adminlevel/ert_station/upp_station)
-"Jz" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/adminlevel/ert_station/upp_station)
 "JB" = (
 /turf/open/floor/strata/floor2,
 /area/adminlevel/ert_station/upp_station)
@@ -1798,12 +1794,6 @@
 "Ln" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/strata/orange_icorner/west,
-/area/adminlevel/ert_station/upp_station)
-"Lo" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 10
-	},
-/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "LB" = (
 /obj/structure/closet{
@@ -2390,6 +2380,10 @@
 /obj/structure/window/framed/strata/hull,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
+"UE" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/upp_station)
 "UM" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/white_cyan2/west,
@@ -2412,6 +2406,12 @@
 /area/space)
 "Vo" = (
 /turf/open/floor/strata/red4/north,
+/area/adminlevel/ert_station/upp_station)
+"Vp" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "Vv" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -2916,7 +2916,7 @@ UB
 pc
 aA
 aA
-eU
+nC
 Sj
 TG
 uf
@@ -2958,7 +2958,7 @@ UB
 UA
 nh
 MU
-tv
+Vp
 yH
 le
 po
@@ -2969,7 +2969,7 @@ fk
 Sn
 po
 SL
-eU
+nC
 Xy
 ow
 aV
@@ -3000,7 +3000,7 @@ UB
 FL
 mG
 Fj
-tv
+Vp
 Zm
 TG
 oK
@@ -3026,7 +3026,7 @@ TT
 vn
 po
 fR
-tv
+Vp
 JB
 MG
 xj
@@ -3043,15 +3043,15 @@ aW
 zX
 zX
 Bt
-Jz
-Jz
+UE
+UE
 RS
-Jz
+UE
 Bq
 UU
 Ga
-Jz
-Jz
+UE
+UE
 Bc
 Cp
 Cp
@@ -3067,7 +3067,7 @@ dK
 JV
 JB
 Lk
-eU
+nC
 Xr
 ax
 ia
@@ -3089,7 +3089,7 @@ bd
 jg
 po
 JB
-tv
+Vp
 BX
 fW
 po
@@ -3103,11 +3103,11 @@ Cp
 Cp
 Cp
 RB
-Jz
-Jz
-Jz
+UE
+UE
+UE
 lo
-Jz
+UE
 RS
 Bp
 Ce
@@ -3173,7 +3173,7 @@ Si
 TG
 po
 JB
-tv
+Vp
 po
 cl
 Zt
@@ -3257,7 +3257,7 @@ po
 po
 po
 QO
-tv
+Vp
 po
 mz
 xy
@@ -3277,7 +3277,7 @@ xy
 xy
 zs
 po
-tv
+Vp
 Gw
 aH
 aH
@@ -3293,12 +3293,12 @@ Cp
 po
 me
 vw
-eU
-Jz
+nC
+UE
 Bq
-Jz
+UE
 wY
-Jz
+UE
 BH
 Ty
 fA
@@ -3335,13 +3335,13 @@ Cp
 po
 iJ
 qY
-tv
+Vp
 Tm
 we
 Zm
 vn
 Zm
-tv
+Vp
 vn
 PS
 xy
@@ -3361,7 +3361,7 @@ rb
 xy
 YY
 vn
-tv
+Vp
 Gw
 aH
 aH
@@ -3383,7 +3383,7 @@ po
 po
 po
 VZ
-tv
+Vp
 po
 Ph
 xy
@@ -3419,13 +3419,13 @@ Cp
 Cp
 po
 Fh
-tv
+Vp
 oJ
 rf
 Uu
 po
 Kb
-tv
+Vp
 po
 SY
 xy
@@ -3445,7 +3445,7 @@ rb
 xy
 Yy
 po
-tv
+Vp
 Gw
 aH
 aH
@@ -3461,8 +3461,8 @@ Cp
 El
 po
 Fh
-Lo
-Jz
+jH
+UE
 mr
 rT
 po
@@ -3509,7 +3509,7 @@ lw
 Cy
 po
 TG
-tv
+Vp
 hj
 wu
 xy
@@ -3529,7 +3529,7 @@ rb
 xy
 IK
 hj
-tv
+Vp
 Gw
 aH
 aH
@@ -3593,7 +3593,7 @@ dh
 oJ
 po
 fK
-tv
+Vp
 po
 mz
 xy
@@ -3677,7 +3677,7 @@ Lg
 yH
 yH
 yH
-tv
+Vp
 po
 po
 RU
@@ -3716,29 +3716,29 @@ Jl
 Tu
 Dv
 Bt
-Jz
+UE
 Jp
-Jz
+UE
 Ga
-Jz
+UE
 Um
-Jz
+UE
 Bq
-Jz
+UE
 wY
-Jz
-Jz
+UE
+UE
 Ry
 bi
-Jz
+UE
 Bq
-Jz
+UE
 bi
-Jz
-Jz
+UE
+UE
 Bq
 bi
-Jz
+UE
 Oq
 SI
 Zm
@@ -3765,7 +3765,7 @@ Df
 yH
 ac
 LK
-tv
+Vp
 yH
 vn
 dB
@@ -3778,7 +3778,7 @@ zY
 aa
 ZR
 aP
-tv
+Vp
 Zm
 vn
 nc
@@ -3799,7 +3799,7 @@ Cp
 Cp
 Cp
 Dv
-tv
+Vp
 jh
 Dv
 Dv
@@ -3820,7 +3820,7 @@ nO
 aF
 Ae
 MM
-tv
+Vp
 Zm
 vn
 Ti
@@ -3841,7 +3841,7 @@ GI
 Cp
 Cp
 fM
-tv
+Vp
 KF
 KF
 KF
@@ -3849,7 +3849,7 @@ Dv
 YS
 bk
 aS
-tv
+Vp
 oz
 Dv
 Dv
@@ -3883,7 +3883,7 @@ AN
 Cp
 Cp
 Cp
-tv
+Vp
 oz
 oz
 Js
@@ -3892,9 +3892,9 @@ qF
 uj
 WZ
 Bt
-Jz
+UE
 NU
-Jz
+UE
 gt
 aS
 Dv
@@ -3903,7 +3903,7 @@ kF
 Ks
 Ks
 MB
-Jz
+UE
 Bp
 Tm
 yH
@@ -3925,15 +3925,15 @@ AN
 Cp
 Cp
 Dv
-Lo
-Jz
-Jz
+jH
+UE
+UE
 Uk
 Dv
 Mk
 uj
 zx
-tv
+Vp
 Uh
 Dv
 TB
@@ -3975,7 +3975,7 @@ Dv
 Ak
 uj
 QR
-tv
+Vp
 ry
 sU
 mf
@@ -4017,7 +4017,7 @@ Dv
 CW
 uj
 PT
-tv
+Vp
 hg
 sU
 qd
@@ -4030,7 +4030,7 @@ Rf
 Rf
 om
 Dv
-Lo
+jH
 Gt
 dW
 xF

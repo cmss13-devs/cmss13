@@ -1,0 +1,4 @@
+author: "XQ"
+delete-after: True
+changes:
+  - bugfix: "JAS consoles are now indestructible."

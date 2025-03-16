@@ -1,6 +1,6 @@
-import { useBackend } from '../backend';
-import { Button, Icon, ProgressBar, Stack, Tooltip } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Button, Icon, ProgressBar, Stack, Tooltip } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 interface PortableVendorProduct {
   index: number;

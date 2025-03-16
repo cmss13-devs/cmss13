@@ -1,0 +1,4 @@
+author: "XQ"
+delete-after: True
+changes:
+  - admin: "Adds Clear Cache and Cryo and Ghost to Lobby Admin Autoreplies"

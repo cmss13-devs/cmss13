@@ -36,6 +36,9 @@
 
 /// Called to see if this visor is a special non-HUD visor
 /obj/item/device/helmet_visor/proc/toggle_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user, silent = FALSE)
+	if(attached_helmet != user.head) // This lets you change through the visors WITHOUT the effects, meaning you can still interact with it and whatever you had it on will be applied once you put it on, better then just making the helmet uninteractable.
+		return FALSE
+
 	if(attached_helmet == user.head && attached_helmet.active_visor == src)
 
 		if(!can_toggle(user))

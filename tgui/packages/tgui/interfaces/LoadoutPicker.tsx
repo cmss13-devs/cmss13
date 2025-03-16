@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -9,8 +8,9 @@ import {
   Input,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { Loader } from './common/Loader';
 
 type LoadoutPickerData = {

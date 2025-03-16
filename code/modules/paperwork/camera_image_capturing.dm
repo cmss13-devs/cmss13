@@ -36,12 +36,6 @@
 			atoms += new /obj/effect/appearance_clone(newT, T)
 			if(T.loc.icon_state)
 				atoms += new /obj/effect/appearance_clone(newT, T.loc)
-			if(T.static_lighting_object)
-				var/obj/effect/appearance_clone/lighting_overlay = new(newT)
-				lighting_overlay.appearance = T.static_lighting_object.current_underlay
-				lighting_overlay.underlays += backdrop
-				lighting_overlay.blend_mode = BLEND_MULTIPLY
-				lighting += lighting_overlay
 			for(var/i in T.contents)
 				var/atom/A = i
 				if(!A.invisibility)

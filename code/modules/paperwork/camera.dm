@@ -19,6 +19,8 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
+	light_system = DIRECTIONAL_LIGHT
+	light_range = 8
 	light_color = COLOR_WHITE
 	light_power = FLASH_LIGHT_POWER
 
@@ -41,6 +43,10 @@
 	var/default_picture_name
 	///Whether the camera should print pictures immediately when a picture is taken.
 	var/print_picture_on_snap = TRUE
+
+/obj/item/device/camera/Initialize(mapload)
+	. = ..()
+	set_light_on(FALSE)
 
 /obj/item/device/camera/attack_self(mob/user) //wielding capabilities
 	. = ..()
@@ -144,7 +150,8 @@
 
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, size_x = 1, size_y = 1)
 	if(flash_enabled)
-		flash_lighting_fx(8, light_power, light_color)
+		set_light_on(TRUE)
+		addtimer(CALLBACK(src, PROC_REF(flash_end)), FLASH_LIGHT_DURATION, TIMER_OVERRIDE|TIMER_UNIQUE)
 	blending = TRUE
 	var/turf/target_turf = get_turf(target)
 	if(!isturf(target_turf))
@@ -207,6 +214,9 @@
 
 	if(!silent)
 		playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
+
+/obj/item/device/camera/proc/flash_end()
+	set_light_on(FALSE)
 
 /obj/item/device/camera/proc/printpicture(mob/user, datum/picture/picture) //Normal camera proc for creating photos
 	pictures_left--

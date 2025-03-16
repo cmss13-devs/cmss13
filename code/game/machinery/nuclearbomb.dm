@@ -488,9 +488,6 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		to_chat(ui.user, SPAN_INFO("Access denied!"))
 		return
 
-	if(..())
-		return
-
 	switch(action)
 		if("toggleNuke")
 			if(timing == -1)

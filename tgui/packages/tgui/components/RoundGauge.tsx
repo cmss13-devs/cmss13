@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 bobbahbrown (https://github.com/bobbahbrown)

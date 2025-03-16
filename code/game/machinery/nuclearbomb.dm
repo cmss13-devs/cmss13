@@ -153,6 +153,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	data["being_used"] = being_used
 	data["decryption_complete"] = TRUE //this is overridden by techweb nuke UI_data later, this just makes it default to true
 	data["can_disengage"] = TRUE
+	data["can_disengage"] = TRUE
 
 	return data
 

@@ -619,11 +619,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(user && user.mind && user.skills)
 			var/skill_level = user.skills.get_skill_level(SKILL_FIREARMS)
 			switch(skill_level)
-				if(skill_level == SKILL_FIREARMS_CIVILIAN)
+				if(SKILL_FIREARMS_CIVILIAN)
 					skill_unjam = -0.15 // civilians would likely fumble after all
-				if(skill_level == SKILL_FIREARMS_TRAINED)
+				if(SKILL_FIREARMS_TRAINED)
 					skill_unjam = 0 // no increase for enlisted
-				if(skill_level == SKILL_FIREARMS_EXPERT)
+				if(SKILL_FIREARMS_EXPERT)
 					skill_unjam = 0.30 // increase unjam chance for the snowflake special forces, practically impossible for them to fail at high durability
 
 		if(prob(unjam_chance + skill_unjam + (gun_durability / GUN_DURABILITY_MAX) * 0.1))
@@ -678,26 +678,26 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user && user.mind && user.skills)
 		var/skill_level_firearms = user.skills.get_skill_level(SKILL_FIREARMS)
 		switch(skill_level_firearms)
-			if(skill_level_firearms == SKILL_FIREARMS_CIVILIAN)
+			if(SKILL_FIREARMS_CIVILIAN)
 				skill_repair_firearms = -5 // civilians would likely fumble after all
-			if(skill_level_firearms == SKILL_FIREARMS_TRAINED)
+			if(SKILL_FIREARMS_TRAINED)
 				skill_repair_firearms = 0 // no increase for enlisted
-			if(skill_level_firearms == SKILL_FIREARMS_EXPERT)
+			if(SKILL_FIREARMS_EXPERT)
 				skill_repair_firearms = 5 // increase repair for the snowflake special forces
 
 	var/skill_repair_engineer = 0
 	if(user && user.mind && user.skills)
 		var/skill_level_engineer = user.skills.get_skill_level(SKILL_ENGINEER)
 		switch(skill_level_engineer)
-			if(skill_level_engineer == SKILL_ENGINEER_DEFAULT)
+			if(SKILL_ENGINEER_DEFAULT)
 				skill_repair_engineer = -5 // your fresh out of college rfn wouldnt know to do this
-			if(skill_level_engineer == SKILL_ENGINEER_NOVICE)
+			if(SKILL_ENGINEER_NOVICE)
 				skill_repair_engineer = 0
-			if(skill_level_engineer == SKILL_ENGINEER_TRAINED)
+			if(SKILL_ENGINEER_TRAINED)
 				skill_repair_engineer = 10
-			if(skill_level_engineer == SKILL_ENGINEER_ENGI)
+			if(SKILL_ENGINEER_ENGI)
 				skill_repair_engineer = 25
-			if(skill_level_engineer == SKILL_ENGINEER_MASTER)
+			if(SKILL_ENGINEER_MASTER)
 				skill_repair_engineer = 50 // pretty much synth level
 
 	var/total_repair_bonus = skill_repair_firearms + skill_repair_engineer

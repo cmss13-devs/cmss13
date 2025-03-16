@@ -15,6 +15,15 @@ import {
 import { formatSiUnit } from '../format';
 import { Window } from '../layouts';
 
+type FlightComputerData = {
+  vtol_detected: string;
+  fuel: number;
+  max_fuel: number;
+  battery: number;
+  max_battery: number;
+  fueling: number;
+};
+
 const HexScrew = () => {
   return (
     <svg viewBox="0 0 10 10" width="30px" height="30px">
@@ -35,7 +44,7 @@ const HexScrew = () => {
 };
 
 export const FlightComputer = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<FlightComputerData>();
 
   return (
     <Window width={700} height={410} theme="crtgreen">
@@ -85,7 +94,6 @@ export const FlightComputer = (props) => {
                   </radialGradient>
                 </defs>
 
-
                 <rect
                   stroke="#00e94e"
                   strokeWidth={2}
@@ -102,7 +110,7 @@ export const FlightComputer = (props) => {
           </Stack.Item>
 
           <Stack.Item align="center" mt={-67.5} width={50} mr={0.2}>
-            <Box height={22.4} fitted p={0.7} m={2} mt={7.5}>
+            <Box height={22.4} p={0.7} m={2} mt={7.5}>
               <CrtDisplay />
             </Box>
           </Stack.Item>
@@ -131,20 +139,20 @@ export const FlightComputer = (props) => {
 };
 
 const FuelPanel = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<FlightComputerData>();
 
-  let { vtol_detected, fuel, max_fuel, battery, max_battery, fueling } = data;
+  const { vtol_detected, fuel, max_fuel, battery, max_battery, fueling } = data;
 
   return (
     <Box p={1} width={25.7}>
-      <Stack horizontal>
+      <Stack>
         <Stack.Item>
           <Flex ml={2.5} mb={1} bold fontSize={0.9}>
             <Flex.Item grow>LEFT</Flex.Item>
             <Flex.Item grow>RIGHT</Flex.Item>
           </Flex>
 
-          <Stack horizontal mb={1} height={10.3}>
+          <Stack mb={1} height={10.3}>
             <Stack.Item grow fontSize={0.75}>
               <Box
                 inline
@@ -256,7 +264,7 @@ const FuelPanel = (props) => {
             <Flex.Item grow>INPUT</Flex.Item>
           </Flex>
 
-          <Stack horizontal mb={1} height={10.3}>
+          <Stack mb={1} height={10.3}>
             <Stack.Item grow fontSize={0.75}>
               <Box
                 inline
@@ -377,10 +385,10 @@ const FuelPanel = (props) => {
 };
 
 const CrtDisplay = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<FlightComputerData>();
 
   return (
-    <Stack horizontal>
+    <Stack>
       <Stack.Item>
         <FuelPanel />
       </Stack.Item>
@@ -394,7 +402,7 @@ const CrtDisplay = (props) => {
 };
 
 const TankReadouts = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<FlightComputerData>();
 
   let { vtol_detected, fuel } = data;
 
@@ -464,7 +472,7 @@ const TankReadouts = (props) => {
 };
 
 const Console = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<FlightComputerData>();
   let { vtol_detected, fueling } = data;
   return (
     <Box height={10.75} opacity={0.99}>

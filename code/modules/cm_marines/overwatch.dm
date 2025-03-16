@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/squad/current_squad
 	var/datum/squad/squad
 	var/state = 0
-	var/list/skill_req = list(SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)
+	var/no_skill_req // should the computer require the OW skill to use
 	var/obj/structure/machinery/camera/cam = null
 	var/obj/item/camera_holder = null
 	var/list/network = list(CAMERA_NET_OVERWATCH)
@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	icon_state = "comm"
 	req_access = list(ACCESS_MARINE_SENIOR)
 	// should be usable even without OW training
-	skill_req = list()
+	no_skill_req = TRUE
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(istype(src, /obj/structure/machinery/computer/overwatch/almayer/broken))
 		return
 
-	if(!isSilicon(usr) && !skillcheck(user, skill_req) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
+	if(!isSilicon(usr) && !skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) && !no_skill_req && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
@@ -445,7 +445,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
 		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
-			var/list/squad_data = list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad))
+			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
 			data["squad_data"] += squad_data
 
 	data["z_hidden"] = z_hidden

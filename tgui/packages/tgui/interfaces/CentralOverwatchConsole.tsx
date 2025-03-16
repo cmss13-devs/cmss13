@@ -236,7 +236,7 @@ const CombinedSquadPanel = (props) => {
 
   const [category, setCategory] = useSharedState('selected', 'alpha');
 
-  let { squad_leader } = data;
+  let { squad_data, squad_leader } = data;
 
   const squadStringify = {
     alpha: 'red',
@@ -267,20 +267,22 @@ const CombinedSquadPanel = (props) => {
       <Stack vertical justify="center" align="end">
         <Stack.Item>
           <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
-            {data.squad_data.map((squad, index) => {
-              return (
-                <Tabs.Tab
-                  selected={category === squad.name.toLowerCase()}
-                  onClick={() => {
-                    setCategory(squad.name.toLowerCase());
-                    act('gather_index_squad_data', { squad: squad.ref });
-                  }}
-                  key={index}
-                >
-                  {squad.name + ' Overwatch'}
-                </Tabs.Tab>
-              );
-            })}
+            {squad_data.length
+              ? squad_data.map((squad, index) => {
+                  return (
+                    <Tabs.Tab
+                      selected={category === squad.name.toLowerCase()}
+                      onClick={() => {
+                        setCategory(squad.name.toLowerCase());
+                        act('gather_index_squad_data', { squad: squad.ref });
+                      }}
+                      key={index}
+                    >
+                      {squad.name + ' Overwatch'}
+                    </Tabs.Tab>
+                  );
+                })
+              : null}
           </Tabs>
         </Stack.Item>
         <Stack.Item>

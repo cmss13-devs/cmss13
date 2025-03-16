@@ -123,7 +123,7 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(mid_charge)
+	if(target_carbon)
 		return INTENT_HARM
 
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)

@@ -21,6 +21,8 @@
 	)
 	fire_delay = 10 SECONDS
 
+	allowed_seat = VEHICLE_DRIVER
+
 	var/safety = TRUE
 
 /obj/item/hardpoint/primary/chimera_launchers/get_icon_image(x_offset, y_offset, new_dir)
@@ -55,7 +57,7 @@
 		to_chat(user, SPAN_DANGER("Something went wrong! Ahelp and ask for a developer! Code: HP_RLDHP"))
 		return
 
-	forceMove(ammo, get_turf(src))
+	ammo.forceMove(get_turf(src))
 	ammo.update_icon()
 	ammo = A
 	LAZYREMOVE(backup_clips, A)

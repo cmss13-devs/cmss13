@@ -48,6 +48,23 @@
 
 	. = ..()
 
+/obj/effect/landmark/interior/spawn/chimera_loader/on_load(datum/interior/interior)
+	var/obj/structure/chimera_loader/loader = new(get_turf(src))
+
+	loader.name = name
+	loader.setDir(dir)
+	loader.icon_state = icon_state
+	loader.alpha = alpha
+	loader.update_icon()
+	loader.pixel_x = pixel_x
+	loader.pixel_y = pixel_y
+
+	if(istype(interior.exterior, /obj/vehicle/multitile/blackfoot))
+		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
+		loader.linked_blackfoot = linked_blackfoot
+
+	qdel(src)	
+
 /obj/effect/landmark/interior/spawn/blackfoot_rear_door_button
 	name = "rear door button"
 

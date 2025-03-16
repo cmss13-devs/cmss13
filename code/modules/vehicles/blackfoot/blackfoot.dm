@@ -60,6 +60,18 @@
 		VEHICLE_DRIVER = null,
 	)
 
+	health = 500
+
+	dmg_multipliers = list(
+		"all" = 1,
+		"acid" = 3,
+		"slash" = 5,
+		"bullet" = 0.6,
+		"explosive" = 0.7,
+		"blunt" = 0.7,
+		"abstract" = 1
+	)
+
 	var/image/thrust_overlay
 
 	var/last_turn = 0
@@ -121,20 +133,6 @@
 
 /obj/vehicle/multitile/blackfoot/Destroy()
 	QDEL_NULL(shadow_holder)
-
-	. = ..()
-
-/obj/vehicle/multitile/blackfoot/attackby(obj/item/attack_item, mob/user)
-	if(istype(attack_item, /obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo))
-		var/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo/ammo = attack_item
-		var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
-
-		if(!launchers)
-			return
-
-		launchers.try_add_clip(ammo, user)
-
-		return
 
 	. = ..()
 
@@ -292,7 +290,8 @@
 		/obj/vehicle/multitile/blackfoot/proc/takeoff,
 		/obj/vehicle/multitile/blackfoot/proc/land,
 		/obj/vehicle/multitile/blackfoot/proc/toggle_vtol,
-		/obj/vehicle/multitile/blackfoot/proc/toggle_stow
+		/obj/vehicle/multitile/blackfoot/proc/toggle_stow,
+		/obj/vehicle/multitile/proc/switch_hardpoint
 	))
 
 	give_action(M, /datum/action/human_action/blackfoot/takeoff)
@@ -366,7 +365,8 @@
 		/obj/vehicle/multitile/blackfoot/proc/takeoff,
 		/obj/vehicle/multitile/blackfoot/proc/land,
 		/obj/vehicle/multitile/blackfoot/proc/toggle_vtol,
-		/obj/vehicle/multitile/blackfoot/proc/toggle_stow
+		/obj/vehicle/multitile/blackfoot/proc/toggle_stow,
+		/obj/vehicle/multitile/proc/switch_hardpoint
 	))
 
 	remove_action(M, /datum/action/human_action/blackfoot/takeoff)
@@ -1207,6 +1207,25 @@
 	)
 	icon_state = "secure_crate_strapped"
 
+
+/obj/structure/chimera_loader
+	name = "\improper chimera internal access point"
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
+
+	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
+
+/obj/structure/chimera_loader/attackby(obj/item/attack_item, mob/user)
+	if(!linked_blackfoot)
+		return
+
+	if(istype(attack_item, /obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo))
+		var/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo/ammo = attack_item
+		var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in linked_blackfoot.hardpoints
+
+		if(!launchers)
+			return
+
+		launchers.try_add_clip(ammo, user)
 
 #undef STATE_TUGGED
 #undef STATE_STOWED

@@ -52,11 +52,12 @@
 	. = ..()
 	if(flags_item & WIELDED)
 		unwield(user)
+		light_range = 4
 	else
 		wield(user)
+		light_range = 8
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	. = ..()
 	if(pictures_left <= 0)
 		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
 		return
@@ -142,12 +143,6 @@
 	icon_state = state_on
 	on = TRUE
 
-/obj/item/device/camera/proc/show_picture(mob/user, datum/picture/selection)
-	var/obj/item/photo/P = new(src, selection)
-	P.show(user)
-	to_chat(user, P.desc)
-	qdel(P)
-
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, size_x = 1, size_y = 1)
 	if(flash_enabled)
 		set_light_on(TRUE)
@@ -170,8 +165,6 @@
 	var/list/turfs = list()
 	var/list/mobs = list()
 	var/clone_area = SSmapping.request_turf_block_reservation(size_x * 2 + 1, size_y * 2 + 1, 1)
-	///list of human names taken on picture
-	var/list/names = list()
 
 	var/width = size_x * 2 + 1
 	var/height = size_y * 2 + 1
@@ -183,8 +176,8 @@
 
 		if(placeholder && (placeholder in seen))
 			turfs += placeholder
-			for(var/mob/M in placeholder)
-				mobs += M
+			for(var/mob/seen_mob in placeholder)
+				mobs += seen_mob
 
 	for(var/mob/mob as anything in mobs)
 		mobs_spotted += mob
@@ -197,13 +190,8 @@
 	var/icon/get_icon = camera_get_icon(turfs, target_turf, psize_x, psize_y, clone_area, size_x, size_y, (size_x * 2 + 1), (size_y * 2 + 1))
 	qdel(clone_area)
 	get_icon.Blend("#000", ICON_UNDERLAY)
-	for(var/mob/living/carbon/human/person in mobs)
-		var/obj/item/card/id/worn_id
-		if(person.wear_id && istype(person.wear_id, worn_id))
-			worn_id = person.wear_id
-			names += "[worn_id.registered_name]"
 
-	var/datum/picture/picture = new("picture", desc.Join("<br>"), mobs_spotted, dead_spotted, names, get_icon, null, psize_x, psize_y)
+	var/datum/picture/picture = new("picture", desc.Join("<br>"), mobs_spotted, dead_spotted, get_icon, null, psize_x, psize_y)
 	after_picture(user, picture)
 	blending = FALSE
 	return picture
@@ -222,7 +210,7 @@
 	pictures_left--
 	var/obj/item/photo/new_photo = new(get_turf(src), picture)
 	if(user)
-		if(in_range(new_photo, user) && user.put_in_hands(new_photo)) //needed because of TK
+		if(in_range(new_photo, user))
 			to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
 
 		if(can_customise)
@@ -245,8 +233,5 @@
 			to_chat(holder, SPAN_NOTICE("[pictures_left] photos left."))
 
 	new_photo.set_picture(picture, TRUE, TRUE)
-
-
-
 
 #undef CAMERA_PICTURE_SIZE_HARD_LIMIT

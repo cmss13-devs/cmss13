@@ -14,7 +14,6 @@
 
 /obj/item/device/camera/proc/camera_get_icon(list/turfs, turf/center, psize_x = 96, psize_y = 96, datum/turf_reservation/clone_area, size_x, size_y, total_x, total_y)
 	var/list/atoms = list()
-	var/list/lighting = list()
 	var/skip_normal = FALSE
 	var/wipe_atoms = FALSE
 
@@ -48,12 +47,6 @@
 		for(var/i in turfs)
 			var/turf/T = i
 			atoms += T
-			if(T.static_lighting_object)
-				var/obj/effect/appearance_clone/lighting_overlay = new(T)
-				lighting_overlay.appearance = T.static_lighting_object.current_underlay
-				lighting_overlay.underlays += backdrop
-				lighting_overlay.blend_mode = BLEND_MULTIPLY
-				lighting += lighting_overlay
 			for(var/atom/movable/A in T)
 				if(A.invisibility)
 					continue
@@ -62,7 +55,6 @@
 
 	var/icon/res = icon('icons/misc/blank_96x96.dmi', "nothing")
 	res.Scale(psize_x, psize_y)
-	atoms += lighting
 
 	var/list/sorted = list()
 	var/j
@@ -138,8 +130,6 @@
 
 	if(wipe_atoms)
 		QDEL_LIST(atoms)
-	else
-		QDEL_LIST(lighting)
 
 	return res
 

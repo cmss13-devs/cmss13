@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - rscadd: "added Keybinds for vehicles"
+  - code_imp: "cleaned some unused shift click vehicle code since it wasnt used"

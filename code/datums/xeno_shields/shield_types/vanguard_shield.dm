@@ -2,12 +2,13 @@
 /datum/xeno_shield/vanguard
 	var/hit_yet = FALSE
 	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
+	var/minimal_damage = 5
 	amount = 800
 
 /datum/xeno_shield/vanguard/on_hit(damage)
 	notify_xeno()
 
-	if (!hit_yet)
+	if (!hit_yet && damage > minimal_damage)
 		hit_yet = TRUE
 		rapid_decay()
 		return 0

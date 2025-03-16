@@ -20,14 +20,14 @@
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily blind the targe and kindle the blaze further."
 	default_ammo = /datum/ammo/bullet/sniper/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	magjam_modifier = 0.10
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_INSUBSTANTIAL
 
 /obj/item/ammo_magazine/sniper/flak
 	name = "\improper M42A flak magazine (10x28mm)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily slow the target and minimize the backlash."
 	default_ammo = /datum/ammo/bullet/sniper/flak
 	ammo_band_color = AMMO_BAND_COLOR_IMPACT
-	magjam_modifier = 0.10
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_INSUBSTANTIAL
 
 //XM43E1 Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
@@ -81,7 +81,7 @@
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	magjam_modifier = 0.15
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/impact
 	name = "\improper A19 HV high impact magazine (10x24mm)"
@@ -90,7 +90,7 @@
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
-	magjam_modifier = 0.30
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 //-------------------------------------------------------
 //SMARTGUN
@@ -112,7 +112,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
-	magjam_modifier = 0.25 //youre loading essentially uranium bullets, so it's gonna jam more often
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM //youre loading essentially uranium bullets, so it's gonna jam more often
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
 /obj/item/ammo_magazine/smartgun/holo_targetting
@@ -121,7 +121,7 @@
 	icon_state = "m56_drum" //PLACEHOLDER
 	default_ammo = /datum/ammo/bullet/smartgun/holo_target
 	gun_type = /obj/item/weapon/gun/smartgun/rmc
-	magjam_modifier = 0.15
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
 //-------------------------------------------------------

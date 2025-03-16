@@ -594,7 +594,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_gun_durability()
 
 /obj/item/weapon/gun/proc/check_jam(mob/living/user)
-	var/magjam_modifier = current_mag.magjam_modifier
+	var/mag_jam_modifier = current_mag.mag_jam_modifier
 	if(gun_durability <= GUN_DURABILITY_BROKEN) //prevents firing without spamming your screen with both jamming and worn out noises
 		check_worn_out(user)
 		return NONE
@@ -604,7 +604,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			to_chat(user, SPAN_WARNING("Your [src] is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
 		return NONE
-	else if(prob(jam_chance + magjam_modifier))
+	else if(prob(jam_chance + mag_jam_modifier))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
@@ -618,12 +618,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		var/skill_unjam = 0
 		if(user && user.mind && user.skills)
 			var/skill_level = user.skills.get_skill_level(SKILL_FIREARMS)
-			if(skill_level == SKILL_FIREARMS_CIVILIAN)
-				skill_unjam = -0.15 // civilians would likely fumble after all
-			else if(skill_level == SKILL_FIREARMS_TRAINED)
-				skill_unjam = 0 // no increase for enlisted
-			else if(skill_level == SKILL_FIREARMS_EXPERT)
-				skill_unjam = 0.30 // increase unjam chance for the snowflake special forces, practically impossible for them to fail at high durability
+			switch(skill_level)
+				if(skill_level == SKILL_FIREARMS_CIVILIAN)
+					skill_unjam = -0.15 // civilians would likely fumble after all
+				if(skill_level == SKILL_FIREARMS_TRAINED)
+					skill_unjam = 0 // no increase for enlisted
+				if(skill_level == SKILL_FIREARMS_EXPERT)
+					skill_unjam = 0.30 // increase unjam chance for the snowflake special forces, practically impossible for them to fail at high durability
 
 		if(prob(unjam_chance + skill_unjam + (gun_durability / GUN_DURABILITY_MAX) * 0.1))
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
@@ -663,7 +664,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		update_gun_durability()
 		check_worn_out(user)
 
-	jam_chance = 0.05 * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
+	jam_chance = initial(jam_chance) * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -676,26 +677,28 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	var/skill_repair_firearms = 0
 	if(user && user.mind && user.skills)
 		var/skill_level_firearms = user.skills.get_skill_level(SKILL_FIREARMS)
-		if(skill_level_firearms == SKILL_FIREARMS_CIVILIAN)
-			skill_repair_firearms = -5 // civilians would likely fumble after all
-		else if(skill_level_firearms == SKILL_FIREARMS_TRAINED)
-			skill_repair_firearms = 0 // no increase for enlisted
-		else if(skill_level_firearms == SKILL_FIREARMS_EXPERT)
-			skill_repair_firearms = 5 // increase repair for the snowflake special forces
+		switch(skill_level_firearms)
+			if(skill_level_firearms == SKILL_FIREARMS_CIVILIAN)
+				skill_repair_firearms = -5 // civilians would likely fumble after all
+			if(skill_level_firearms == SKILL_FIREARMS_TRAINED)
+				skill_repair_firearms = 0 // no increase for enlisted
+			if(skill_level_firearms == SKILL_FIREARMS_EXPERT)
+				skill_repair_firearms = 5 // increase repair for the snowflake special forces
 
 	var/skill_repair_engineer = 0
 	if(user && user.mind && user.skills)
 		var/skill_level_engineer = user.skills.get_skill_level(SKILL_ENGINEER)
-		if(skill_level_engineer == SKILL_ENGINEER_DEFAULT)
-			skill_repair_engineer = -5 // your fresh out of college rfn wouldnt know to do this
-		else if(skill_level_engineer == SKILL_ENGINEER_NOVICE)
-			skill_repair_engineer = 0
-		else if(skill_level_engineer == SKILL_ENGINEER_TRAINED)
-			skill_repair_engineer = 10
-		else if(skill_level_engineer == SKILL_ENGINEER_ENGI)
-			skill_repair_engineer = 25
-		else if(skill_level_engineer == SKILL_ENGINEER_MASTER)
-			skill_repair_engineer = 50 // pretty much synth level
+		switch(skill_level_engineer)
+			if(skill_level_engineer == SKILL_ENGINEER_DEFAULT)
+				skill_repair_engineer = -5 // your fresh out of college rfn wouldnt know to do this
+			if(skill_level_engineer == SKILL_ENGINEER_NOVICE)
+				skill_repair_engineer = 0
+			if(skill_level_engineer == SKILL_ENGINEER_TRAINED)
+				skill_repair_engineer = 10
+			if(skill_level_engineer == SKILL_ENGINEER_ENGI)
+				skill_repair_engineer = 25
+			if(skill_level_engineer == SKILL_ENGINEER_MASTER)
+				skill_repair_engineer = 50 // pretty much synth level
 
 	var/total_repair_bonus = skill_repair_firearms + skill_repair_engineer
 

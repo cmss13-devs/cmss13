@@ -39,13 +39,13 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
-	bullet_duraloss = 0.30
+	bullet_duraloss = BULLET_DURABILITY_LOSS_SEVERE
 
 /datum/ammo/bullet/smg/ap/toxin
 	name = "toxic submachinegun bullet"
 	var/acid_per_hit = 5
 	var/organic_damage_mult = 3
-	bullet_duraloss = 0.15
+	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
 
 /datum/ammo/bullet/smg/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -79,7 +79,7 @@
 
 	damage = 25
 	accuracy = -HIT_ACCURACY_TIER_2
-	bullet_duraloss = 0.15
+	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
 
 /datum/ammo/bullet/smg/incendiary/set_bullet_traits()
 	. = ..()
@@ -93,7 +93,7 @@
 
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_10
-	bullet_duraloss = 0.20
+	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
 
 /datum/ammo/bullet/smg/ap/penetrating/set_bullet_traits()
 	. = ..()
@@ -110,7 +110,7 @@
 	shell_speed = AMMO_SPEED_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
 	pen_armor_punch = 4
-	bullet_duraloss = 0.25
+	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH
 
 /datum/ammo/bullet/smg/rubber
 	name = "rubber submachinegun bullet"
@@ -119,7 +119,7 @@
 	damage = 0
 	stamina_damage = 10
 	shrapnel_chance = 0
-	bullet_duraloss = 0.50 //its rubber, sometimes rubbery shit gets stuck in the barrel so of course we lose durability more from it
+	bullet_duraloss = BULLET_DURABILITY_LOSS_LONG_RUBBER //its rubber, sometimes rubbery shit gets stuck in the barrel so of course we lose durability more from it
 
 /datum/ammo/bullet/smg/mp27
 	name = "simple submachinegun bullet"

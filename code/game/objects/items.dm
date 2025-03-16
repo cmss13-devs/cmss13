@@ -204,19 +204,19 @@
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
-	var/msg1 = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	var/msg2 = pick("is damaged by the blast!", "is obliterated by the blast!", "cracks as the explosion engulfs it!", "cracks into fragments by the blast!", "malfunctions from the blast!", "is ruined by the blast!")
+	var/splode = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
+	var/gun_blown = pick("is damaged by the blast!", "is obliterated by the blast!", "cracks as the explosion engulfs it!", "cracks into fragments by the blast!", "malfunctions from the blast!", "is ruined by the blast!")
 	explosion_throw(severity, explosion_direction)
 	if(istype(src, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/gun_blast = src
 		gun_blast.blast_gun_durability(severity) // exploded guns should be handled through gun.dm
-		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg2]")))
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [gun_blown]")))
 	else
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_LOW)
 				if(prob(5))
 					if(!explo_proof)
-						visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg1]")))
+						visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [splode]")))
 						deconstruct(FALSE)
 			if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 				if(prob(50))
@@ -224,7 +224,7 @@
 						deconstruct(FALSE)
 			if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 				if(!explo_proof)
-					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg1]")))
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [splode]")))
 					deconstruct(FALSE)
 
 /obj/item/mob_launch_collision(mob/living/L)

@@ -123,8 +123,8 @@
 		list("Large Shotgun Shell Pouch", floor(scale * 1), /obj/item/storage/pouch/shotgun/large, VENDOR_ITEM_REGULAR),
 
 		list("REPAIR TOOLS", -1, null, null),
-		list("Multi-purpose combat lubricant", floor(scale * 5), /obj/item/stack/repairable/gunlube, VENDOR_ITEM_REGULAR),
-		list("Firearms repair kit", floor(scale * 3), /obj/item/stack/repairable/gunkit, VENDOR_ITEM_REGULAR),
+		list("Multi-Purpose Combat Lubricant", floor(scale * 5), /obj/item/stack/repairable/gunlube, VENDOR_ITEM_REGULAR),
+		list("Firearms Repair Kit", floor(scale * 3), /obj/item/stack/repairable/gunkit, VENDOR_ITEM_REGULAR),
 
 		list("FLARE AND LIGHT", -1, null, null),
 		list("Combat Flashlight", floor(scale * 8), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),

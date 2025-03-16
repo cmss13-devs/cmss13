@@ -52,9 +52,9 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 	movement_onehanded_acc_penalty_mult = 3
 	can_jam = TRUE //for the sake of posterity, we also allow revolvers to jam
-	jam_chance = 0.01
-	unjam_chance = 100
-	durability_loss = 0.01
+	jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE
+	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL
 
 /obj/item/weapon/gun/revolver/get_examine_text(mob/user)
 	. = ..()

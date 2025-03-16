@@ -36,7 +36,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/base_mag_item //the default mag item (inhand) state.
 	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
 	var/handful_state = "bullet" //used for generating handfuls from boxes and setting their sprite when loading/unloading
-	var/magjam_modifier = 0 //modifier for how much the gun jams when using this specific magazine
+	var/mag_jam_modifier = 0 //modifier for how much the gun jams when using this specific magazine
 
 	/// If this and ammo_band_icon aren't null, run update_ammo_band(). Is the color of the band, such as green on AP.
 	var/ammo_band_color

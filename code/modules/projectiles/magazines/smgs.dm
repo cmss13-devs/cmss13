@@ -36,42 +36,42 @@
 	desc = "A 10x20mm caseless light-explosive submachinegun magazine containing special light explosive rounds, designed to rapidly decimate armor, at the cost of vastly reduced damage and penetration."
 	default_ammo = /datum/ammo/bullet/smg/le
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
-	magjam_modifier = 0.25
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM
 
 /obj/item/ammo_magazine/smg/m39/rubber
 	name = "\improper M39 rubber magazine (10x20mm)"
 	desc = "A 10x20mm caseless rubber bullet submachinegun magazine, containing rubber bullets. Non-lethal, but terrible on bioforms."
 	default_ammo = /datum/ammo/bullet/smg/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	magjam_modifier = 0.50 //youre firing rubber, of course its gonna jam your shit a lot more
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
 
 /obj/item/ammo_magazine/smg/m39/heap
 	name = "\improper M39 HEAP magazine (10x20mm)"
 	desc = "A 10x20mm caseless armor-piercing high-explosive submachinegun magazine. The bullet tips are made out of a special explosive, designed to penetrate armor then detonate for maximum soft-tissue damage."
 	default_ammo = /datum/ammo/bullet/smg/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	magjam_modifier = 0.30
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/smg/m39/penetrating
 	name = "\improper M39 wall-penetrating magazine (10x20mm)"
 	desc = "A 10x20mm caseless wall-penetrating bullet submachinegun magazine, containing wall-penetrating bullets. Designed to penetrate straight through objects and walls."
 	default_ammo = /datum/ammo/bullet/smg/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	magjam_modifier = 0.20
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_FAIR
 
 /obj/item/ammo_magazine/smg/m39/toxin
 	name = "\improper M39 toxin magazine (10x20mm)"
 	desc = "A 10x20mm caseless toxin bullet submachinegun magazine, containing toxin bullets. Great at stripping away armor and destroying biological structures."
 	default_ammo = /datum/ammo/bullet/smg/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	magjam_modifier = 0.15
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/smg/m39/incendiary
 	name = "\improper M39 incendiary magazine (10x20mm)"
 	desc = "A 10x20mm caseless incendiary submachinegun magazine. Incendiary payload sets targets ablaze, but causes the gun to have low stopping power and strongly decreased accuracy."
 	default_ammo = /datum/ammo/bullet/smg/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	magjam_modifier = 0.15
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/smg/m39/extended
 	name = "\improper M39 HV extended magazine (10x20mm)"
@@ -79,7 +79,7 @@
 	max_rounds = 72
 	icon_state = "m39_HV_extended"
 	bonus_overlay = "m39_ex"
-	magjam_modifier = 0.15
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
@@ -152,7 +152,7 @@
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
 	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
 	new_item_state = "ppsh17b_d"
-	magjam_modifier = 0.35 // carlarc had a vision
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_CRITICAL // carlarc had a vision
 
 //-------------------------------------------------------
 //Type-19, based on the PPS-43
@@ -180,7 +180,7 @@
 	w_class = SIZE_MEDIUM
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
 	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
-	magjam_modifier = 0.15
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 //-------------------------------------------------------
 //Type 64 SMG, based on the PP Bizon.
@@ -211,7 +211,7 @@
 	icon_state = "mac15_extended"
 	bonus_overlay = "mac15_ext"
 	max_rounds = 50
-	magjam_modifier = 0.15
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 //-------------------------------------------------------
 // the real UZI
@@ -231,7 +231,7 @@
 	icon_state = "uzi_extended"
 	bonus_overlay = "uzi_ext"
 	max_rounds = 32
-	magjam_modifier = 0.25 // carlarc also also here
+	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM // carlarc also also here
 
 
 //-------------------------------------------------------

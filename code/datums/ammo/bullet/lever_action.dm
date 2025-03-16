@@ -63,16 +63,16 @@
 
 /datum/ammo/bullet/lever_action/xm88/pen20
 	penetration = ARMOR_PENETRATION_TIER_4
-	bullet_duraloss = 0.05
+	bullet_duraloss = BULLET_DURABILITY_LOSS_INSUBSTANTIAL
 
 /datum/ammo/bullet/lever_action/xm88/pen30
 	penetration = ARMOR_PENETRATION_TIER_6
-	bullet_duraloss = 0.10
+	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
 
 /datum/ammo/bullet/lever_action/xm88/pen40
 	penetration = ARMOR_PENETRATION_TIER_8
-	bullet_duraloss = 0.20
+	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
 
 /datum/ammo/bullet/lever_action/xm88/pen50
 	penetration = ARMOR_PENETRATION_TIER_10
-	bullet_duraloss = 0.40 // incrementing durability loss should be a good stopgap against this already powerful rifle
+	bullet_duraloss = BULLET_DURABILITY_LOSS_SPECIAL // incrementing durability loss should be a good stopgap against this already powerful rifle

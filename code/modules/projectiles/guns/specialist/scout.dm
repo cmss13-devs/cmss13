@@ -21,9 +21,9 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 	can_jam = TRUE
-	jam_chance = 0.25
-	unjam_chance = 69
-	durability_loss = 10
+	jam_chance = GUN_JAM_CHANCE_SCOUT
+	unjam_chance = GUN_UNJAM_CHANCE_SCOUT
+	durability_loss = GUN_DURABILITY_LOSS_SCOUT
 	force = 26
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE

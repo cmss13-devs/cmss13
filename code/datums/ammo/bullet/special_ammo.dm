@@ -58,7 +58,7 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	damage = 40
 	penetration = 0
-	bullet_duraloss = 0.25 //youre firing essentially uranium bullets, so it's gonna lose durability more quickly
+	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH //youre firing essentially uranium bullets, so it's gonna lose durability more quickly
 
 /datum/ammo/bullet/smartgun/dirty/alt
 	name = "irradiated smartgun bullet"
@@ -66,7 +66,7 @@
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	effective_range_max = 7
-	bullet_duraloss = 0.25 //youre firing essentially uranium bullets, so it's gonna lose durability more quickly
+	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH //youre firing essentially uranium bullets, so it's gonna lose durability more quickly
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
 	name = "irradiated AP smartgun tracer bullet"
@@ -79,7 +79,7 @@
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
-	bullet_duraloss = 0.25 //youre firing essentially uranium bullets, so it's gonna lose durability more quickly
+	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH //youre firing essentially uranium bullets, so it's gonna lose durability more quickly
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
 	name = "irradiated AP smartgun bullet"
@@ -87,7 +87,7 @@
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
-	bullet_duraloss = 0.25 //youre firing essentially uranium bullets, so it's gonna lose durability more quickly
+	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH //youre firing essentially uranium bullets, so it's gonna lose durability more quickly
 
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun tracer bullet"
@@ -100,7 +100,7 @@
 	var/bonus_damage_cap_increase = 0
 	/// multiplies the default drain of 5 holo stacks per second by this amount
 	var/stack_loss_multiplier = 1
-	bullet_duraloss = 0.15
+	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
 
 /datum/ammo/bullet/smartgun/holo_target/alt
 	name = "holo-targeting smartgun bullet"
@@ -108,7 +108,7 @@
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	effective_range_max = 7
-	bullet_duraloss = 0.15
+	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
 
 /datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
@@ -125,7 +125,7 @@
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_8
 	damage_armor_punch = 1
-	bullet_duraloss = 0.15
+	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
 
 /datum/ammo/bullet/smartgun/holo_target/ap/alt
 	name = "holo-targeting AP smartgun bullet"
@@ -134,7 +134,7 @@
 	// Same as /datum/ammo/bullet/smartgun/armor_piercing/alt
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
-	bullet_duraloss = 0.15
+	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
 
 /datum/ammo/bullet/smartgun/m56_fpw
 	name = "\improper M56 FPW bullet"

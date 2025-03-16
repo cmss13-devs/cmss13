@@ -35,9 +35,9 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	can_jam = TRUE
-	jam_chance = 0.02 //preferably you increment the chances to double decimal places, above that could be problematic
-	unjam_chance = 95 //preferably you dont change this at all unless its a snowflake gun
-	durability_loss = 0.35 //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
+	jam_chance = GUN_JAM_CHANCE_FAIR //preferably you increment the chances to double decimal places, above that could be problematic
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT //preferably you dont change this at all unless its a snowflake gun
+	durability_loss = GUN_DURABILITY_LOSS_HIGH //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
 
 /obj/item/weapon/gun/rifle/unique_action(mob/user)
 	if(jammed)
@@ -452,9 +452,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	jam_chance = 0.05 // some lore nerd is gonna yell at my ear saying that the mk1 is a beautiful piece of machinery that never jams
-	unjam_chance = 75
-	durability_loss = 0.50
+	jam_chance = GUN_JAM_CHANCE_MEDIUM // some lore nerd is gonna yell at my ear saying that the mk1 is a beautiful piece of machinery that never jams
+	unjam_chance = GUN_UNJAM_CHANCE_FAIR
+	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE
 
 /obj/item/weapon/gun/rifle/m41aMK1/ap //for making it start with ap loaded
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
@@ -914,9 +914,9 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	recoil = RECOIL_AMOUNT_TIER_5
-	jam_chance = 0.15
-	unjam_chance = 75
-	durability_loss = 0.50
+	jam_chance = GUN_JAM_CHANCE_HIGH
+	unjam_chance = GUN_UNJAM_CHANCE_FAIR
+	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE
 
 /obj/item/weapon/gun/rifle/mar40/lmg/tactical
 	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals. This one has been equipped with an after-market ammo-counter."
@@ -1428,9 +1428,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
-	jam_chance = 0.25
-	unjam_chance = 85
-	durability_loss = 0.45
+	jam_chance = GUN_JAM_CHANCE_SEVERE
+	unjam_chance = GUN_UNJAM_CHANCE_MEDIUM
+	durability_loss = GUN_DURABILITY_LOSS_CRITICAL
 
 
 /obj/item/weapon/gun/rifle/lmg/tactical

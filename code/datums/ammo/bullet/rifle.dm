@@ -227,7 +227,7 @@
 /datum/ammo/bullet/rifle/l23
 	name = "8.88mm rifle bullet"
 
-	damage = 50
+	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_2
 
 /datum/ammo/bullet/rifle/l23/ap

@@ -2213,7 +2213,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
 	recoil = RECOIL_AMOUNT_TIER_4 + RECOIL_AMOUNT_TIER_5/5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	damage_falloff_mult = 1
+	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/l23/handle_starting_attachment() //Adds L23's unremovable stock

@@ -127,6 +127,13 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"aau" = (
+/turf/open/asphalt/cement/cement4,
+/area/strata/exterior/mining_outpost_exterior)
+"aav" = (
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/strata/floor3,
+/area/strata/exterior/mining_outpost_exterior)
 "aaw" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -244,6 +251,13 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
+"aaM" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/exterior/mining_outpost_exterior)
+"aaN" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/strata/floor3,
+/area/strata/exterior/mining_outpost_exterior)
 "aaO" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -10016,7 +10030,7 @@
 	name = "dirt";
 	alpha = 100
 	},
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/strata/exterior/mining_outpost_exterior)
 "aCM" = (
 /obj/structure/bed/chair{
@@ -24674,7 +24688,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/asphalt/cement,
+/turf/open/asphalt/cement/cement4,
 /area/strata/exterior/mining_outpost_exterior)
 "bwk" = (
 /obj/structure/cargo_container/upp_small/container_20/right,
@@ -27466,7 +27480,6 @@
 /area/strata/exterior/deep_jungle/north)
 "bEt" = (
 /obj/effect/decal/strata_decals/grime/grime2,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "bEu" = (
@@ -61374,7 +61387,7 @@ bWy
 bZV
 alV
 ctC
-afS
+aav
 aCL
 afz
 abL
@@ -61549,8 +61562,8 @@ bFw
 qSC
 eXb
 aNJ
-afS
-afS
+aaM
+aau
 rCQ
 uuQ
 nYV
@@ -61724,8 +61737,8 @@ cbj
 bZV
 bPs
 fno
-afS
-afS
+aaM
+aau
 sem
 pJo
 oKj
@@ -61899,7 +61912,7 @@ bEo
 bZV
 aym
 ctC
-afS
+aaN
 bwj
 aDM
 aEP

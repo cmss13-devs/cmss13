@@ -2,7 +2,7 @@
 	id = "empowered"
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 3 SECONDS
-	alert_type = /atom/movable/screen/alert/status_effect/empowered
+	//alert_type = /atom/movable/screen/alert/status_effect/empowered
 	var/speed_buff
 	var/attack_delay_buff
 

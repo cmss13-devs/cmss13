@@ -15,7 +15,7 @@
 	var/xp = 0
 
 	var/list/ability_path_level_dict = list()
-	var/unspent_levels = 0
+	var/unspent_levels = 1
 	var/max_ultimate_level = 0
 	/// How many minions / camps (4 CS/camp) we've killed
 	var/creep_score = 0
@@ -56,16 +56,6 @@
 	if(tied_xeno)
 		for(var/datum/action/action as anything in tied_xeno.actions)
 			SEND_SIGNAL(action, COMSIG_MOBA_ACTION_ADD_LEVELUP)
-			/*if(istype(action, /datum/action/xeno_action))
-				var/datum/action/xeno_action/moba/moba_action = action
-				if(moba_action.is_ultimate && (ability_path_level_dict[moba_action.type] >= max_ultimate_level))
-					continue
-				moba_action.start_level_up_overlay()
-			else if(istype(action, /datum/action/xeno_action/activable/moba))
-				var/datum/action/xeno_action/activable/moba/moba_action = action
-				if(moba_action.is_ultimate && (ability_path_level_dict[moba_action.type] >= max_ultimate_level))
-					continue
-				moba_action.start_level_up_overlay()*/
 
 /datum/moba_player/proc/spend_level(path)
 	ability_path_level_dict[path]++
@@ -73,11 +63,3 @@
 	if(tied_xeno)
 		for(var/datum/action/action as anything in tied_xeno.actions)
 			SEND_SIGNAL(action, COMSIG_MOBA_ACTION_REMOVE_LEVELUP)
-		/*	if(istype(action, /datum/action/xeno_action/moba))
-				var/datum/action/xeno_action/moba/moba_action = action
-				if((ability_path_level_dict[action.type] >= moba_action.max_level) || !unspent_levels)
-					moba_action.stop_level_up_overlay()
-			else if(istype(action, /datum/action/xeno_action/activable/moba))
-				var/datum/action/xeno_action/activable/moba/moba_action = action
-				if((ability_path_level_dict[action.type] >= moba_action.max_level) || !unspent_levels)
-					moba_action.stop_level_up_overlay()*/

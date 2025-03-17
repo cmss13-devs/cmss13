@@ -139,11 +139,11 @@
 /datum/ammo/proc/on_pointblank(mob/living/L, obj/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
 	return
 
-/datum/ammo/proc/on_hit_obj(obj/O, obj/projectile/P) //Special effects when hitting objects.
+/datum/ammo/proc/on_hit_obj(obj/target_object, obj/projectile/proj_hit) //Special effects when hitting objects.
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(O, /obj/item/weapon/gun))
-		var/obj/item/weapon/gun/damaged_gun = O
-		damaged_gun.damage_gun_durability(P.damage) //handles gun durability damage on projectile hit
+	if(istype(target_object, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/damaged_gun = target_object
+		damaged_gun.damage_gun_durability(proj_hit.damage) //handles gun durability damage on projectile hit
 	return
 
 /datum/ammo/proc/on_near_target(turf/T, obj/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.

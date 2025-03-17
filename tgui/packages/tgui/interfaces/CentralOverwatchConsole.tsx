@@ -177,7 +177,7 @@ const SecondaryFunctions = (props) => {
 
   return (
     <Section fontSize="18px" fill>
-      <Stack justify="center" align="end">
+      <Stack justify="center" align="top">
         <Stack.Item width="24.5%">
           <Tabs fluid mr="0" fontSize="15px" vertical>
             <Tabs.Tab
@@ -264,8 +264,8 @@ const CombinedSquadPanel = (props) => {
       }
       fitted
     >
-      <Stack vertical justify="center" align="end">
-        <Stack.Item>
+      <Stack vertical justify="center" align="center">
+        <Stack.Item width="100%">
           <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
             {squad_data.length
               ? squad_data.map((squad, index) => {
@@ -285,7 +285,7 @@ const CombinedSquadPanel = (props) => {
               : null}
           </Tabs>
         </Stack.Item>
-        <Stack.Item>
+        <Stack.Item align="center" width="100%">
           {data.squad_data.map((squad, index) => {
             return (
               <Stack.Item key={index} fontSize="13px">

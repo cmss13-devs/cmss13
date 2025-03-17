@@ -51,7 +51,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/ui_theme = "crtblue"
 	var/list/concurrent_users = list()
 	var/ob_cannon_safety = FALSE
-
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = FALSE

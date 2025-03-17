@@ -52,7 +52,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/list/concurrent_users = list()
 	var/ob_cannon_safety = FALSE
 
-	var/is_announcement_active = TRUE
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = FALSE
@@ -780,17 +779,15 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
 				return
 
-			if(!is_announcement_active)
+			if(!COOLDOWN_FINISHED(src, cooldown_message))
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
 			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
 				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
 			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !is_announcement_active || !(usr in dview(1, src)))
+			if(!input || !(usr in dview(1, src)))
 				return FALSE
-
-			is_announcement_active = FALSE
 
 			var/signed = null
 			if(ishuman(usr))
@@ -800,14 +797,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
 					signed = "[paygrade] [id.registered_name]"
 
+				COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 				if(params["announcement_type"] == "shipside")
-					COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 					shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
 					message_admins("[key_name(user)] has made a shipwide annoucement.")
 					log_announcement("[key_name(user)] has announced the following to the ship: [input]")
 				else
 					marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
-					addtimer(CALLBACK(src, PROC_REF(reactivate_announcement), usr), COOLDOWN_COMM_MESSAGE)
 					message_admins("[key_name(usr)] has made a command announcement.")
 					log_announcement("[key_name(usr)] has announced the following: [input]")
 
@@ -932,12 +928,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
 			COOLDOWN_START(src, general_quarters, 10 MINUTES)
 			. = TRUE
-
-
-/obj/structure/machinery/computer/overwatch/proc/reactivate_announcement(mob/user)
-	is_announcement_active = TRUE
-	updateUsrDialog()
-
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER

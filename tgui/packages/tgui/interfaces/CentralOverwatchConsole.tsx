@@ -64,7 +64,7 @@ type Data = {
   can_launch_obs: BooleanLike;
   ob_cooldown?: number;
   ob_loaded: BooleanLike;
-  ob_safety: BooleanLike;
+  ob_safety: Boolean;
   supply_cooldown: number;
   operator: string;
   aa_targeting: string;

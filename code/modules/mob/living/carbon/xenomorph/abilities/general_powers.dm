@@ -597,6 +597,11 @@
 		to_chat(xeno, SPAN_XENOWARNING("This is too close to a fruit!"))
 		return FALSE
 
+	for(var/mob/living/body in src)
+		if(body.stat == DEAD)
+			to_chat(xeno, SPAN_XENOWARNING("The body is in the way!"))
+			return FALSE
+
 	return alien_weeds
 
 /datum/action/xeno_action/activable/place_construction/use_ability(atom/A)

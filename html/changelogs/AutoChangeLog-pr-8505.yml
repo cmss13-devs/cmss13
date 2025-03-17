@@ -1,6 +1,0 @@
-author: "TrollerNoob"
-delete-after: True
-changes:
-  - rscadd: "New shipments of Chestrigs and Technician Welder Chestrigs have arrived from Chinook station. Urban and Snow operations are now covered."
-  - imageadd: "Added Urban/Snow variants for Chestrig and Welder Chestrig"
-  - code_imp: "Removed some unneeded code from Chestrig/Welder Chestrig for automatic map variants."

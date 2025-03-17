@@ -1,4 +1,0 @@
-author: "remindme"
-delete-after: True
-changes:
-  - bugfix: "Some MREs that should've had veggies in them had no veggies (ripoff!)"

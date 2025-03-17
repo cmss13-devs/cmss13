@@ -31,3 +31,6 @@
   - balance: Большее количество камер в доступе у маринов.
   MiraHell:
   - rscdel: Диагональное движение это миф
+2025-03-17:
+  MiraHell:
+  - rscadd: Check New Players

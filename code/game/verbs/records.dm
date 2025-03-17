@@ -62,7 +62,7 @@
 
 	dat += "</table>"
 
-	show_browser(usr, dat, "Your [category_text] Record", "ownrecords", "size=480x480")
+	show_browser(usr, dat, "Your [category_text] Record", "ownrecords", width = 480, height = 480)
 
 
 
@@ -172,7 +172,7 @@
 	if(can_edit || ishost(src))
 		dat += add_dat
 
-	show_browser(src, dat, "[target]'s [category_text] Notes", "otherplayersinfo", "size=480x480")
+	show_browser(src, dat, "[target]'s [category_text] Notes", "otherplayersinfo", width = 480, height = 480)
 
 GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 

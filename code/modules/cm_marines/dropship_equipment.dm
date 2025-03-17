@@ -116,7 +116,9 @@
 	if(ship_base)
 		duration_time = 70 //uninstalling equipment takes more time
 		point_loc = ship_base.loc
-	if(!do_after(user, duration_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(user.action_busy)
+		return
+	if(!do_after(user, duration_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target_flags = INTERRUPT_DIFF_LOC, target = src))
 		return
 	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
 		return
@@ -149,7 +151,8 @@
 
 /obj/structure/dropship_equipment/proc/equipment_interact(mob/user)
 	if(is_interactable)
-		if(linked_console.selected_equipment) return
+		if(linked_console.selected_equipment)
+			return
 		linked_console.selected_equipment = src
 		to_chat(user, SPAN_NOTICE("You select [src]."))
 
@@ -769,8 +772,10 @@
 	if(ammo_equipped)
 		icon_state = "30mm_cannon_loaded[ammo_equipped.ammo_count?"1":"0"]"
 	else
-		if(ship_base) icon_state = "30mm_cannon_installed"
-		else icon_state = "30mm_cannon"
+		if(ship_base)
+			icon_state = "30mm_cannon_installed"
+		else
+			icon_state = "30mm_cannon"
 
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
@@ -790,8 +795,10 @@
 	if(ammo_equipped && ammo_equipped.ammo_count)
 		icon_state = "rocket_pod_loaded[ammo_equipped.ammo_id]"
 	else
-		if(ship_base) icon_state = "rocket_pod_installed"
-		else icon_state = "rocket_pod"
+		if(ship_base)
+			icon_state = "rocket_pod_installed"
+		else
+			icon_state = "rocket_pod"
 
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod
@@ -811,8 +818,10 @@
 		if (ammo_equipped.ammo_count == ammo_equipped.max_ammo_count)
 			icon_state = "[initial(icon_state)]_loaded"
 	else
-		if(ship_base) icon_state = "minirocket_pod_installed"
-		else icon_state = "minirocket_pod"
+		if(ship_base)
+			icon_state = "minirocket_pod_installed"
+		else
+			icon_state = "minirocket_pod"
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/deplete_ammo()
 	..()
@@ -834,8 +843,10 @@
 	if(ammo_equipped && ammo_equipped.ammo_count)
 		icon_state = "laser_beam_loaded"
 	else
-		if(ship_base) icon_state = "laser_beam_installed"
-		else icon_state = "laser_beam"
+		if(ship_base)
+			icon_state = "laser_beam_installed"
+		else
+			icon_state = "laser_beam"
 
 /obj/structure/dropship_equipment/weapon/launch_bay
 	name = "\improper LAG-14 Internal Sentry Launcher"
@@ -1083,8 +1094,15 @@
 		target_data["ref"] = stretcher_ref
 
 		var/mob/living/carbon/human/occupant = stretcher.buckled_mob
+		var/obj/structure/closet/bodybag/cryobag = stretcher.buckled_bodybag
+		if(!occupant && cryobag)
+			occupant = locate(/mob/living/carbon/human) in cryobag
+			target_data["occupant"] = "(Empty stasis bag)"
 		if(occupant)
-			target_data["occupant"] = occupant.name
+			if(cryobag)
+				target_data["occupant"] = "(Stasis bag) " + occupant.name
+			else
+				target_data["occupant"] = occupant.name
 			target_data["time_of_death"] = occupant.tod
 			target_data["damage"] = list(
 				"hp" = occupant.health,
@@ -1105,7 +1123,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("medevac_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
@@ -1306,7 +1324,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("fulton_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
@@ -1368,7 +1386,8 @@
 	// no warning sound and no travel time
 	last_fired = world.time
 
-	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments) ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
+	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments)
+		ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
 

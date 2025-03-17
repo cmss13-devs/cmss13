@@ -74,7 +74,7 @@
 
 /obj/item/reagent_container/food/snacks/fishable/crab
 	name = "\improper spindle crab"
-	desc = "Delicious crab meat... Have you seen my meridian vase?"
+	desc = "Looks like a little crab"
 	icon_state = "crab"
 	gut_icon_state = "crab_gutted"
 	guttable = TRUE
@@ -85,7 +85,10 @@
 	bitesize = 6
 	trash = null//todo, crab shell
 
-/obj/item/reagent_container/food/snacks/fishable/crab
+/obj/item/reagent_container/food/snacks/fishable/crab/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 5)
+	bitesize = 3
 
 //----------------//
 //SQUIDS
@@ -117,12 +120,24 @@
 	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/squid/alt
 	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/squid/alt)
 
+/obj/item/reagent_container/food/snacks/fishable/squid/sock/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 1)
+	bitesize = 1
+
 //----------------//
 //WORMS
 /obj/item/reagent_container/food/snacks/fishable/worm
-	name = "generic sea worm"
+	name = "sea worm"
 	desc = "Could be useful as bait?"
-	icon_state = "worm"
+	icon_state = "worm_redring"
+	guttable = TRUE
+	gut_icon_state = "worm_redring_gutted"
+	base_gut_meat = /obj/item/fish_bait
+
+/obj/item/reagent_container/food/snacks/fishable/worm/Initialize()
+	. = ..()
+	reagents.add_reagent("enzyme", 1)
 	bitesize = 1
 	//todo, attackby with a knife so you can make bait objects for fishing with
 /obj/item/reagent_container/food/snacks/fishable/quadtopus
@@ -132,10 +147,82 @@
 	bitesize = 2
 //--------------------//
 // SHELLED CRITTERS, you have to pry them open with a SHARP object to get the guts out. Maybe should be bool hasshell = TRUE and overrite gutting proc?
-/obj/item/reagent_container/food/snacks/fishable/shell
-	name = "generic shell"
+/obj/item/reagent_container/food/snacks/fishable/shell/clam
+	name = "clam"
 	desc = "A sea critter contained inside of a shell."
-	icon_state = "shell"
+	icon_state = "shell_clam"
+	guttable = TRUE
+	base_gut_meat = /obj/item/ore/pearl
+
+/obj/item/reagent_container/food/snacks/fishable/shell/clam/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 1)
+	bitesize = 1
+
+//--------------------//
+// Pan Fish, Regular fish you can gut and clean (additional fish past this point)
+/obj/item/reagent_container/food/snacks/fishable/fish/bluegill
+	name = "bluegill"
+	desc = "A small spiny fish, yeouch!"
+	gut_icon_state = "bluegill_gutted"
+	guttable = TRUE
+	min_length = 5
+	max_length = 16
+	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/bluegill
+	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/bluegill)
+	icon_state = "bluegill"
+	bitesize = 3
+
+/obj/item/reagent_container/food/snacks/fishable/fish/bluegill/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 4)
 	bitesize = 2
-	trash = null//todo, shell trash
-	//todo, attack by proc with objects to pry it open to spawn pearls and make more food
+
+/obj/item/reagent_container/food/snacks/fishable/fish/bass
+	name = "bass"
+	desc = "A staple classic in fish cuisine!"
+	guttable = TRUE
+	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/bass
+	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/bass)
+	icon_state = "bass"
+	gut_icon_state = "bass_gutted"
+	min_length = 8
+	max_length = 32
+	bitesize = 6
+
+/obj/item/reagent_container/food/snacks/fishable/fish/bass/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 4)
+	bitesize = 3
+
+/obj/item/reagent_container/food/snacks/fishable/fish/catfish
+	name = "catfish"
+	desc = "Quite large though not good for eating since it's a bottom feeder."
+	guttable = FALSE
+	icon_state = "catfish"
+	min_length = 10
+	max_length = 108
+
+/obj/item/reagent_container/food/snacks/fishable/fish/catfish/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 4)
+	bitesize = 6
+
+//--------------------//
+//Urchins, spikey bottom-feeding creatures
+/obj/item/reagent_container/food/snacks/fishable/urchin/purple
+	name = "purple urchin"
+	desc = "Glad I didn't step on it!"
+	icon_state = "urchin_purple"
+	guttable = FALSE
+	min_length = 2
+	max_length = 9
+
+/obj/item/reagent_container/food/snacks/fishable/urchin/red
+	name = "red urchin"
+	desc = "Glad I didn't step on it, it looks angry!"
+	guttable = FALSE
+	icon_state = "urchin_red"
+	min_length = 2
+	max_length = 9
+//finished code on worm and clam fish and items, added 3 new fish types (catfish being non-guttable is on purpose), worm now drops bait when gutted

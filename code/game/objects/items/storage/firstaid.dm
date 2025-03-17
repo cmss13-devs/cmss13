@@ -307,6 +307,13 @@
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
+/obj/item/storage/syringe_case/rmc
+
+/obj/item/storage/syringe_case/rmc/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+
 //---------SURGICAL CASE---------
 
 
@@ -345,6 +352,39 @@
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)
+
+
+/obj/item/storage/surgical_case/rmc_surgical_case
+	name = "\improper RMC surgical case"
+	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds. This one was made specifically for Royal Marine Commandos, allowing them to suture their wounds during prolonged operations.\
+		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
+		\nStep one: Open an incision at the site with the scalpel.\
+		\nStep two: Clamp bleeders with the hemostat.\
+		\nStep three: Draw back the skin with the retracter.\
+		\nStep four: Patch the damaged vein with a surgical line.\
+		\nStep five: Close the incision with a surgical line."
+	icon = 'icons/obj/items/storage/medical.dmi'
+	icon_state = "surgical_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 5
+	w_class = SIZE_SMALL
+	can_hold = list(
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/FixOVein,
+	)
+
+/obj/item/storage/surgical_case/rmc_surgical_case/full/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
+
 
 //---------PILL BOTTLES---------
 

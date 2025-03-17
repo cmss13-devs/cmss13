@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 29
+#define SAVEFILE_VERSION_MAX 31
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -192,11 +192,37 @@
 
 		S["hair_style_name"] << hair_style
 
+	if(savefile_version < 30)
+		var/be_special = 0
+		S["be_special"] >> be_special
+		be_special &= ~BE_KING
+		S["be_special"] << be_special
+
+	if(savefile_version < 31)
+		for(var/i in 1 to MAX_SAVE_SLOTS)
+			S.cd = "/character[i]"
+
+			var/list/existing_gear
+			S["gear"] >> existing_gear
+
+			var/list/new_list = list()
+			for(var/entry in existing_gear)
+				var/datum/gear/gear = GLOB.gear_datums_by_name[entry]
+				if(!gear)
+					continue
+
+				new_list += "[gear.type]"
+
+			S["gear"] = new_list
+
+		S.cd = "/"
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
-	if(!ckey) return
+	if(!ckey)
+		return
 	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
 
@@ -220,10 +246,13 @@
 	return volume_preferences
 
 /datum/preferences/proc/load_preferences()
-	if(!path) return 0
-	if(!fexists(path)) return 0
+	if(!path)
+		return 0
+	if(!fexists(path))
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S) return 0
+	if(!S)
+		return 0
 	S.cd = "/"
 
 	S["version"] >> savefile_version
@@ -251,6 +280,8 @@
 	S["dual_wield_pref"] >> dual_wield_pref
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
+	S["toggles_survivor"] >> toggles_survivor
+	S["toggles_ert_pred"] >> toggles_ert_pred
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
 	S["tgui_say"] >> tgui_say
@@ -260,6 +291,7 @@
 	S["pain_overlay_pref_level"] >> pain_overlay_pref_level
 	S["flash_overlay_pref"] >> flash_overlay_pref
 	S["crit_overlay_pref"] >> crit_overlay_pref
+	S["allow_flashing_lights_pref"] >> allow_flashing_lights_pref
 	S["stylesheet"] >> stylesheet
 	S["window_skin"] >> window_skin
 	S["fps"] >> fps
@@ -303,6 +335,7 @@
 	S["commander_status"] >> commander_status
 	S["co_sidearm"] >> commander_sidearm
 	S["co_affiliation"] >> affiliation
+	S["co_command_path"] >> co_career_path
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
 
@@ -329,6 +362,10 @@
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
 
+	S["tgui_lock"] >> tgui_lock
+	S["tgui_fancy"] >> tgui_fancy
+	S["window_scale"] >> window_scale
+
 	var/tutorial_string = ""
 	S["completed_tutorials"] >> tutorial_string
 	tutorial_savestring_to_list(tutorial_string)
@@ -337,6 +374,11 @@
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	S["lastchangelog"] >> lastchangelog
+
+	S["job_loadout"] >> loadout
+	S["job_loadout_names"] >> loadout_slot_names
+
+	S["show_cooldown_messages"] >> show_cooldown_messages
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -355,6 +397,8 @@
 	dual_wield_pref = sanitize_integer(dual_wield_pref, 0, 2, initial(dual_wield_pref))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
+	toggles_survivor = sanitize_integer(toggles_survivor, 0, SHORT_REAL_LIMIT, initial(toggles_survivor))
+	toggles_ert_pred = sanitize_integer(toggles_ert_pred, 0, SHORT_REAL_LIMIT, initial(toggles_ert_pred))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha = sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
@@ -362,13 +406,14 @@
 	pain_overlay_pref_level = sanitize_integer(pain_overlay_pref_level, PAIN_OVERLAY_BLURRY, PAIN_OVERLAY_LEGACY, PAIN_OVERLAY_BLURRY)
 	flash_overlay_pref = sanitize_integer(flash_overlay_pref, FLASH_OVERLAY_WHITE, FLASH_OVERLAY_DARK)
 	crit_overlay_pref = sanitize_integer(crit_overlay_pref, CRIT_OVERLAY_WHITE, CRIT_OVERLAY_DARK)
+	allow_flashing_lights_pref = sanitize_integer(allow_flashing_lights_pref, FALSE, TRUE, FALSE)
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
-	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
+	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
-	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
+	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
@@ -385,7 +430,7 @@
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
-	predator_accessory_type = sanitize_integer(predator_accessory_type,0,1, initial(predator_accessory_type))
+	predator_accessory_type = sanitize_integer(predator_accessory_type,0,3, initial(predator_accessory_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type = sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
@@ -398,9 +443,14 @@
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, GLOB.whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, (CO_GUNS + COUNCIL_CO_GUNS), initial(commander_sidearm))
+	co_career_path = sanitize_inlist(co_career_path, list("Infantry", "Engineering", "Medical", "Intel", "Logistics", "Aviation", "Tanker"), initial(co_career_path))
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
+
+	window_scale = sanitize_integer(window_scale, FALSE, TRUE, initial(window_scale))
+	tgui_lock = sanitize_integer(tgui_lock, FALSE, TRUE, initial(tgui_lock))
+	tgui_fancy = sanitize_integer(tgui_fancy, FALSE, TRUE, initial(tgui_fancy))
 
 	fax_name_uscm = fax_name_uscm ? sanitize_text(fax_name_uscm, initial(fax_name_uscm)) : generate_name(FACTION_MARINE)
 	fax_name_pvst = fax_name_pvst ? sanitize_text(fax_name_pvst, initial(fax_name_pvst)) : generate_name(FACTION_MARINE)
@@ -417,7 +467,11 @@
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
-	vars["fps"] = fps
+
+	loadout = sanitize_loadout(loadout, owner)
+	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
+
+	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -471,6 +525,7 @@
 	S["pain_overlay_pref_level"] << pain_overlay_pref_level
 	S["flash_overlay_pref"] << flash_overlay_pref
 	S["crit_overlay_pref"] << crit_overlay_pref
+	S["allow_flashing_lights_pref"] << allow_flashing_lights_pref
 	S["stylesheet"] << stylesheet
 	S["be_special"] << be_special
 	S["default_slot"] << default_slot
@@ -485,6 +540,8 @@
 	S["dual_wield_pref"] << dual_wield_pref
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
+	S["toggles_survivor"] << toggles_survivor
+	S["toggles_ert_pred"] << toggles_ert_pred
 	S["toggles_admin"] << toggles_admin
 	S["window_skin"] << window_skin
 	S["fps"] << fps
@@ -528,6 +585,7 @@
 
 	S["commander_status"] << commander_status
 	S["co_sidearm"] << commander_sidearm
+	S["co_command_path"] << co_career_path
 	S["co_affiliation"] << affiliation
 	S["yautja_status"] << yautja_status
 	S["synth_status"] << synth_status
@@ -560,15 +618,28 @@
 
 	S["lastchangelog"] << lastchangelog
 
+	S["job_loadout"] << save_loadout(loadout)
+	S["job_loadout_names"] << loadout_slot_names
+
+	S["tgui_fancy"] << tgui_fancy
+	S["tgui_lock"] << tgui_lock
+	S["window_scale"] << window_scale
+
+	S["show_cooldown_messages"] << show_cooldown_messages
+
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
-	if(!path) return 0
-	if(!fexists(path)) return 0
+	if(!path)
+		return 0
+	if(!fexists(path))
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S) return 0
+	if(!S)
+		return 0
 	S.cd = "/"
-	if(!slot) slot = default_slot
+	if(!slot)
+		slot = default_slot
 	slot = sanitize_integer(slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	if(slot != default_slot)
 		default_slot = slot
@@ -633,7 +704,6 @@
 	S["med_record"] >> med_record
 	S["sec_record"] >> sec_record
 	S["gen_record"] >> gen_record
-	S["be_special"] >> be_special
 	S["organ_data"] >> organ_data
 	S["gear"] >> gear
 	S["origin"] >> origin
@@ -654,10 +724,14 @@
 	metadata = sanitize_text(metadata, initial(metadata))
 	real_name = reject_bad_name(real_name)
 
-	if(isnull(language)) language = "None"
-	if(isnull(spawnpoint)) spawnpoint = "Arrivals Shuttle"
-	if(isnull(weyland_yutani_relation)) weyland_yutani_relation = initial(weyland_yutani_relation)
-	if(!real_name) real_name = random_name(gender)
+	if(isnull(language))
+		language = "None"
+	if(isnull(spawnpoint))
+		spawnpoint = "Arrivals Shuttle"
+	if(isnull(weyland_yutani_relation))
+		weyland_yutani_relation = initial(weyland_yutani_relation)
+	if(!real_name)
+		real_name = random_name(gender)
 	be_random_name = sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
 	be_random_body = sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
 	gender = sanitize_gender(gender)
@@ -706,6 +780,8 @@
 		for(var/job in job_preference_list)
 			job_preference_list[job] = sanitize_integer(job_preference_list[job], 0, 3, initial(job_preference_list[job]))
 
+	check_slot_prefs()
+
 	if(!organ_data)
 		organ_data = list()
 
@@ -714,19 +790,23 @@
 	traits = sanitize_list(traits)
 	read_traits = FALSE
 	trait_points = initial(trait_points)
-	close_browser(owner, "character_traits")
 
-	if(!origin) origin = ORIGIN_USCM
+	if(!origin)
+		origin = ORIGIN_USCM
 	if(!faction)  faction =  "None"
-	if(!religion) religion = RELIGION_AGNOSTICISM
-	if(!preferred_squad) preferred_squad = "None"
+	if(!religion)
+		religion = RELIGION_AGNOSTICISM
+	if(!preferred_squad)
+		preferred_squad = "None"
 
 	return 1
 
 /datum/preferences/proc/save_character()
-	if(!path) return 0
+	if(!path)
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S) return 0
+	if(!S)
+		return 0
 	S.cd = "/character[default_slot]"
 
 	//Character
@@ -785,9 +865,9 @@
 	S["med_record"] << med_record
 	S["sec_record"] << sec_record
 	S["gen_record"] << gen_record
-	S["be_special"] << be_special
 	S["organ_data"] << organ_data
-	S["gear"] << gear
+	S["gear"] << save_gear(gear)
+	S["job_loadout"] << save_loadout(loadout)
 	S["origin"] << origin
 	S["faction"] << faction
 	S["religion"] << religion
@@ -833,6 +913,19 @@
 
 	if(length(notadded))
 		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
+
+/// Checks if any job selected has a loadout, and if this is not selected, prompt the user to select it on the lobby screen
+/datum/preferences/proc/check_slot_prefs()
+	errors = list()
+
+	for(var/job in GLOB.roles_with_gear)
+		if(!job_preference_list[job])
+			continue
+
+		if(has_loadout_for_role(job))
+			continue
+
+		errors += "Job [job] has loadout available, but none has been selected."
 
 /datum/preferences/proc/announce_conflict(list/notadded)
 	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))

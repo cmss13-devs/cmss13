@@ -563,6 +563,17 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/strata/ag/interior/restricted
 	name = "Super Secret Credits Room"
 	icon_state = "marshwater"
+	requires_power = FALSE
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 
+// CLF Insert
+
+/area/strata/ag/interior/outside/checkpoints/clf
+	name = "Far North Armored Checkpoint"
+
+/area/strata/ag/interior/outpost/clf_dorms
+	name = "Far North Dormitory"
+
+/area/strata/ag/interior/outpost/clf_office
+	name = "Far North Office"

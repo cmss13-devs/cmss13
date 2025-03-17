@@ -363,6 +363,11 @@
 /obj/structure/barricade/deployable,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors)
+"abu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/tyrargo/outdoors)
 "abv" = (
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/tyrargo/outdoors)
@@ -611,6 +616,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors)
 "aco" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/outdoors)
 "acp" = (
@@ -871,6 +877,10 @@
 /area/tyrargo/outdoors)
 "adb" = (
 /turf/open/floor/prison/damaged1/southwest,
+/area/tyrargo/outdoors)
+"adc" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/tyrargo/outdoors)
 "add" = (
 /obj/structure/prop/hybrisa/vehicles/car_pileup{
@@ -1976,6 +1986,7 @@
 /obj/item/ammo_magazine/rifle/m41aMK1/heap{
 	current_rounds = 0
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "agh" = (
@@ -3905,6 +3916,7 @@
 	dir = 4;
 	layer = 4.1
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "alA" = (
@@ -5346,6 +5358,7 @@
 /area/tyrargo/outdoors)
 "apc" = (
 /obj/item/stack/barbed_wire,
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "apd" = (
@@ -7940,6 +7953,7 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "auB" = (
@@ -8149,6 +8163,9 @@
 	pixel_y = 1;
 	layer = 2.8
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "ava" = (
@@ -8313,6 +8330,9 @@
 	pixel_x = -2
 	},
 /obj/item/stack/barbed_wire,
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "avw" = (
@@ -8351,6 +8371,9 @@
 	icon_state = "trash_4";
 	pixel_y = 4;
 	pixel_x = -4
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
@@ -8797,6 +8820,7 @@
 	pixel_x = -1
 	},
 /obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/outdoors)
 "awL" = (
@@ -8934,6 +8958,201 @@
 "axf" = (
 /turf/open/floor/plating/panelscorched,
 /area/tyrargo/outdoors)
+"axg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/metal/zbrownfloor1/north,
+/area/tyrargo/outdoors)
+"axh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement9,
+/area/tyrargo/outdoors)
+"axi" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/ramptop/east,
+/area/tyrargo/outdoors)
+"axj" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/ramptop/east,
+/area/tyrargo/outdoors)
+"axk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/ramptop/east,
+/area/tyrargo/outdoors)
+"axl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/ramptop/east,
+/area/tyrargo/outdoors)
+"axm" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement15,
+/area/tyrargo/outdoors)
+"axn" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
+/area/tyrargo/outdoors)
+"axo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors)
+"axp" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/metal/zbrownfloor_full,
+/area/tyrargo/outdoors)
+"axq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"axr" = (
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"axs" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors)
+"axt" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"axu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_y = 15
+	},
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"axv" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"axw" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"axx" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"axy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"axz" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/tyrargo/outdoors)
+"axA" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"axB" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/tyrargo/outdoors)
+"axC" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"axD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/turf/open/asphalt/cement/cement13,
+/area/tyrargo/outdoors)
+"axE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors)
+"axF" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"axG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/outdoors)
+"axH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_y = 35
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"axI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/tyrargo/outdoors)
+"axJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2/southeast,
+/area/tyrargo/outdoors)
+"axK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"axL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkredfull2,
+/area/tyrargo/outdoors)
+"axM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2/east,
+/area/tyrargo/outdoors)
+"axN" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"axO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2/northwest,
+/area/tyrargo/outdoors)
 "axP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/pistol/m1911{
@@ -8941,13 +9160,85 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors)
+"axQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/outdoors)
+"axR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2/northeast,
+/area/tyrargo/outdoors)
+"axS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/southwest,
+/area/tyrargo/outdoors)
+"axT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bluecorner/north,
+/area/tyrargo/outdoors)
+"axU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/southeast,
+/area/tyrargo/outdoors)
+"axV" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors)
+"axW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/trim,
+/area/tyrargo/outdoors)
+"axX" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
 "axY" = (
 /obj/structure/blocker/invisible_wall,
 /obj/item/mortar_shell/incendiary{
 	pixel_x = -6;
 	pixel_y = 12
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
 /turf/open/asphalt,
+/area/tyrargo/outdoors)
+"axZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/cement2,
+/area/tyrargo/outdoors)
+"aya" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/tcomms,
+/area/tyrargo/outdoors)
+"ayb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"ayc" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 30
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayd" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/turf/open/hybrisa/street/cement2,
 /area/tyrargo/outdoors)
 "aye" = (
 /obj/structure/prop/tyrargo/boards{
@@ -8959,7 +9250,59 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
 /turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/northwest,
+/area/tyrargo/outdoors)
+"ayg" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"ayh" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = -9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"ayj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/ramptop/north,
+/area/tyrargo/outdoors)
+"ayk" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green,
 /area/tyrargo/outdoors)
 "aym" = (
 /obj/structure/toilet{
@@ -8968,11 +9311,125 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/outdoors)
+"ayn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/southwest,
+/area/tyrargo/outdoors)
+"ayo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/southeast,
+/area/tyrargo/outdoors)
+"ayp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 12
+	},
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors)
+"ayq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/west,
+/area/tyrargo/outdoors)
+"ayr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/east,
+/area/tyrargo/outdoors)
+"ays" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors)
+"ayt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/northeast,
+/area/tyrargo/outdoors)
 "ayu" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9"
 	},
 /turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"ayv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/north,
+/area/tyrargo/outdoors)
+"ayw" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayx" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors)
+"ayz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/flare/on,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors)
+"ayA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 27
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"ayB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 12
+	},
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors)
+"ayC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors)
+"ayD" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors)
+"ayE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_y = 22;
+	pixel_x = 2
+	},
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors)
+"ayF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 12
+	},
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors)
+"ayG" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors)
 "ayH" = (
 /obj/structure/stairs/multiz/down{
@@ -8981,9 +9438,304 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/outdoors)
+"ayI" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_y = -3;
+	pixel_x = -12
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayJ" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/obj/structure/prop/vehicles/tank/apc/med{
+	pixel_y = -1;
+	pixel_x = -32
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors)
+"ayK" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors)
+"ayL" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayM" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
 "ayN" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors)
+"ayO" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayQ" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayR" = (
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayS" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_y = -3;
+	pixel_x = -12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayT" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 13
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors)
+"ayU" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 27
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayV" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayW" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_y = 1;
+	pixel_x = 16
+	},
+/obj/item/device/flashlight/flare/on,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"ayX" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5";
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	pixel_y = -6
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors)
+"ayY" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4";
+	pixel_y = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors)
+"ayZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"aza" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"azb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/tyrargo/outdoors)
+"azc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/vehicles/tank/truck/alt{
+	dir = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/tyrargo/outdoors)
+"azd" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/closet/bodybag{
+	pixel_x = 2;
+	pixel_y = 24
+	},
+/obj/structure/closet/bodybag{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"aze" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"azf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"azg" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"azh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/bed/roller,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/vehicles/tank/apc/med/destroyed{
+	dir = 4;
+	pixel_y = -9;
+	pixel_x = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azl" = (
+/obj/structure/prop/tyrargo/large_tents/medical{
+	pixel_y = -10
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azm" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azn" = (
+/obj/structure/prop/vehicles/tank/truck/alt{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 6;
+	pixel_x = -14;
+	pixel_y = -2
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azo" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azp" = (
+/obj/structure/closet/bodybag{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azq" = (
+/obj/structure/closet/bodybag,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azr" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/closet/bodybag{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/turf/open/asphalt/cement,
 /area/tyrargo/outdoors)
 "azs" = (
 /obj/effect/decal/hybrisa/trash{
@@ -8991,6 +9743,282 @@
 	pixel_y = 15
 	},
 /turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors)
+"azt" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/tyrargo/outdoors)
+"azu" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/tyrargo/outdoors)
+"azv" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 5
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/tyrargo/outdoors)
+"azw" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azx" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azy" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/closet/bodybag{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azz" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/closet/bodybag{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azB" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azC" = (
+/obj/structure/closet/bodybag{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"azD" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/floor/corsat/marked,
+/area/tyrargo/outdoors)
+"azE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/northwest,
+/area/tyrargo/outdoors)
+"azF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/blue/north,
+/area/tyrargo/outdoors)
+"azG" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/blue/northeast,
+/area/tyrargo/outdoors)
+"azH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/tyrargo/outdoors)
+"azI" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/outdoors)
+"azJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/outdoors)
+"azK" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"azL" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 4;
+	pixel_y = -5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"azM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"azN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"azO" = (
+/obj/structure/bed/bedroll{
+	dir = 9;
+	layer = 4;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"azP" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 10;
+	pixel_y = 13;
+	pixel_x = -17
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"azQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/belt/medical/lifesaver,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"azR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"azS" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"azT" = (
+/obj/structure/machinery/computer3/server/rack,
+/turf/open/floor/prison/yellow/east,
+/area/tyrargo/outdoors)
+"azU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"azV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"azW" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"azX" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/turf/open/floor/prison/yellow/west,
+/area/tyrargo/outdoors)
+"azY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/bodybag{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"azZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAa" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/outdoors)
+"aAc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 6
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/outdoors)
+"aAd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/uscm_mre{
+	pixel_x = 10;
+	pixel_y = -2
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAe" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAf" = (
+/obj/structure/bed/bedroll{
+	dir = 1;
+	layer = 6;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAg" = (
+/obj/item/trash/sosjerky,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAh" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAi" = (
+/obj/structure/machinery/computer3/server/rack,
+/turf/open/floor/prison/yellow/west,
 /area/tyrargo/outdoors)
 "aAj" = (
 /obj/structure/prop/vehicles/aircraft/vtol/damaged{
@@ -9003,6 +10031,414 @@
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/tyrargo/outdoors)
+"aAk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/bodybag{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aAm" = (
+/obj/structure/bed/bedroll{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/prison/blue,
+/area/tyrargo/outdoors)
+"aAn" = (
+/obj/item/stack/medical/ointment{
+	pixel_x = 4;
+	pixel_y = 3;
+	amount = 2
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood2,
+/turf/open/floor/prison/blue,
+/area/tyrargo/outdoors)
+"aAo" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/prison/blue,
+/area/tyrargo/outdoors)
+"aAp" = (
+/obj/structure/bed/bedroll{
+	dir = 5;
+	pixel_y = 6
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/turf/open/floor/prison/blue,
+/area/tyrargo/outdoors)
+"aAq" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/prison/blue/southeast,
+/area/tyrargo/outdoors)
+"aAr" = (
+/obj/structure/bed/bedroll{
+	dir = 1;
+	layer = 6;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 15
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/outdoors)
+"aAt" = (
+/obj/structure/machinery/constructable_frame,
+/turf/open/floor/prison/yellow/east,
+/area/tyrargo/outdoors)
+"aAu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAx" = (
+/obj/item/trash/cheesie,
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAz" = (
+/obj/structure/prop/hybrisa/misc/fire/firebarrel{
+	pixel_y = 6;
+	pixel_x = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	pixel_x = 6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/closet/bodybag{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAD" = (
+/obj/structure/closet/bodybag,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/bodybag{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aAF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAG" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/yellow/southwest,
+/area/tyrargo/outdoors)
+"aAI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/uscm_mre,
+/turf/open/floor/prison/yellow,
+/area/tyrargo/outdoors)
+"aAJ" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/yellow/southeast,
+/area/tyrargo/outdoors)
+"aAK" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAM" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"aAN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors)
+"aAO" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/outdoors)
+"aAP" = (
+/obj/item/trash/uscm_mre{
+	pixel_x = 10;
+	pixel_y = -2
+	},
+/turf/open/floor/prison/yellow/northeast,
+/area/tyrargo/outdoors)
+"aAQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/roller,
+/obj/structure/closet/bodybag{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/outdoors)
+"aAR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"aAS" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"aAT" = (
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
+/turf/open/floor/prison/blue/east,
+/area/tyrargo/outdoors)
+"aAU" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aAV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/outdoors)
+"aAW" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/blue/northwest,
+/area/tyrargo/outdoors)
+"aAX" = (
+/obj/effect/decal/hybrisa/trash{
+	dir = 4;
+	icon_state = "trash_11"
+	},
+/turf/open/floor/prison/blue/north,
+/area/tyrargo/outdoors)
+"aAY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/north,
+/area/tyrargo/outdoors)
+"aAZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/northeast,
+/area/tyrargo/outdoors)
+"aBa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/uscm_mre{
+	pixel_y = 14;
+	pixel_x = 9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/tyrargo/outdoors)
+"aBc" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aBd" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 5
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/outdoors)
+"aBe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	dir = 4;
+	flipped = 1
+	},
+/turf/open/floor/prison/darkred2/west,
+/area/tyrargo/outdoors)
+"aBf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
+/turf/open/floor/prison/blue/east,
+/area/tyrargo/outdoors)
+"aBg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBh" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	layer = 3.2
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/tyrargo/outdoors)
+"aBi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/buritto,
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/outdoors)
+"aBj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/flare/on,
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/outdoors)
+"aBk" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/outdoors)
+"aBl" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/outdoors)
+"aBm" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/outdoors)
+"aBn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/outdoors)
+"aBo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/darkred2/west,
+/area/tyrargo/outdoors)
+"aBp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"aBq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/item/prop/colony/usedbandage{
+	dir = 5;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
 "aBr" = (
 /obj/structure/bed/roller,
 /obj/structure/machinery/light{
@@ -9010,22 +10446,787 @@
 	},
 /turf/open/floor/kutjevo/colors/cyan/inner_corner,
 /area/event/dynamic)
+"aBs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/blood/empty{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 9;
+	layer = 3.0;
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 1;
+	layer = 6;
+	pixel_y = 14
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aBx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aBy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/outdoors)
+"aBz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 3;
+	pixel_x = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aBA" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood2,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBD" = (
+/obj/item/reagent_container/blood/empty{
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	layer = 3.2
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBF" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/darkred2/west,
+/area/tyrargo/outdoors)
+"aBG" = (
+/obj/structure/bed/roller,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = 4
+	},
+/obj/item/stack/medical/bruise_pack/two,
+/turf/open/floor/prison/blue,
+/area/tyrargo/outdoors)
+"aBH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/defibrillator{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/prison/blue,
+/area/tyrargo/outdoors)
+"aBI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/blue,
+/area/tyrargo/outdoors)
+"aBJ" = (
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
+/turf/open/floor/prison/green/southwest,
+/area/tyrargo/outdoors)
+"aBK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
+/turf/open/floor/prison/green,
+/area/tyrargo/outdoors)
+"aBL" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_casing/bullet,
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	layer = 2.1;
+	pixel_y = 4;
+	pixel_x = 3
+	},
+/turf/open/floor/prison/green,
+/area/tyrargo/outdoors)
+"aBM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green{
+	pixel_x = 3
+	},
+/turf/open/floor/prison/green,
+/area/tyrargo/outdoors)
+"aBN" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/green/southeast,
+/area/tyrargo/outdoors)
+"aBO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 6;
+	pixel_y = 15
+	},
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/outdoors)
+"aBP" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/green/northwest,
+/area/tyrargo/outdoors)
 "aBQ" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "53"
 	},
 /area/event/dynamic)
+"aBR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/green/north,
+/area/tyrargo/outdoors)
+"aBS" = (
+/obj/item/stack/sheet/metal,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/green/north,
+/area/tyrargo/outdoors)
+"aBT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
+/turf/open/floor/prison/green/north,
+/area/tyrargo/outdoors)
+"aBU" = (
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
+/turf/open/floor/prison/green/northeast,
+/area/tyrargo/outdoors)
+"aBV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors)
+"aBW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/uscm_mre{
+	pixel_x = 10;
+	pixel_y = -2
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBX" = (
+/obj/item/stack/sheet/wood{
+	pixel_y = -6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/roller,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aBZ" = (
+/obj/structure/bed/bedroll{
+	dir = 1;
+	layer = 6;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
 "aCa" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/event/dynamic)
+"aCb" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	layer = 3.9;
+	pixel_y = -11
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"aCc" = (
+/obj/structure/bed/bedroll{
+	dir = 1;
+	pixel_y = -8;
+	pixel_x = -6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/medical/ointment{
+	pixel_x = 4;
+	pixel_y = 3;
+	amount = 2
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCe" = (
+/obj/item/weapon/gun/rifle/ar10{
+	pixel_y = -3;
+	pixel_x = -1
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCf" = (
+/obj/structure/barricade/deployable,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCg" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCh" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/tray,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCl" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/green/east,
+/area/tyrargo/outdoors)
+"aCn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/blood/empty{
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/folding_barricade,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_casing/bullet,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCr" = (
+/obj/item/prop/colony/used_flare,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/item/device/defibrillator/compact{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/floor/prison/green/west,
+/area/tyrargo/outdoors)
+"aCu" = (
+/obj/item/stack/medical/bruise_pack/two,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/burger,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCx" = (
+/obj/structure/bed/bedroll{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCy" = (
+/obj/item/weapon/gun/rifle/ar10{
+	pixel_y = -3;
+	pixel_x = -1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/ar10,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCA" = (
+/obj/structure/tent/med,
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCB" = (
+/obj/structure/bed/bedroll{
+	dir = 9;
+	layer = 3.0;
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/green/east,
+/area/tyrargo/outdoors)
+"aCC" = (
+/obj/item/device/flashlight/flare/on,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCD" = (
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/floor/prison/green,
+/area/tyrargo/outdoors)
+"aCE" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/trash/uscm_mre{
+	pixel_y = 14;
+	pixel_x = 9
+	},
+/turf/open/floor/prison/green,
+/area/tyrargo/outdoors)
+"aCF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/accessory/storage/surg_vest/drop_green/equipped,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/usedbandage{
+	dir = 4
+	},
+/turf/open/floor/prison/green/west,
+/area/tyrargo/outdoors)
+"aCH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
 "aCI" = (
 /obj/effect/decal/siding,
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/tyrargo/outdoors)
+"aCJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/eat,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCK" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 10;
+	pixel_y = -12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/optable,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCN" = (
+/obj/structure/bed/roller,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCP" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 9;
+	layer = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aCR" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/green/east,
+/area/tyrargo/outdoors)
+"aCS" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors)
+"aCT" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors)
+"aCU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/east,
+/area/tyrargo/outdoors)
+"aCV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/west,
+/area/tyrargo/outdoors)
+"aCW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/northeast,
+/area/tyrargo/outdoors)
+"aCX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/southeast,
+/area/tyrargo/outdoors)
+"aCY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red,
+/area/tyrargo/outdoors)
+"aCZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/red,
+/area/tyrargo/outdoors)
+"aDa" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/red,
+/area/tyrargo/outdoors)
+"aDb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDd" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDe" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aDf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aDg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/east,
+/area/tyrargo/outdoors)
+"aDh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDi" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/west,
+/area/tyrargo/outdoors)
+"aDl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/west,
+/area/tyrargo/outdoors)
+"aDm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/red/east,
+/area/tyrargo/outdoors)
+"aDn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aDo" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/outdoors)
+"aDp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/north,
+/area/tyrargo/outdoors)
 "aDq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/yellowcorner/north,
+/area/tyrargo/outdoors)
+"aDr" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDs" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDt" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aDu" = (
+/obj/item/clipboard{
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aDv" = (
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDw" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/prop/almayer/comp_open,
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDx" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDy" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/paper,
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDz" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/tool/screwdriver/tactical{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDB" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/turf/open/floor/strata/floor2,
 /area/tyrargo/outdoors)
 "aDF" = (
 /obj/structure/barricade/handrail/wire{
@@ -9044,6 +11245,48 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/event/dynamic)
+"aDH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDI" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDJ" = (
+/obj/structure/machinery/big_computers/computerblack/computer5,
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDK" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDL" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_on{
+	pixel_y = 28
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDM" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDN" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/ramptop,
+/area/tyrargo/outdoors)
 "aDO" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -9054,6 +11297,50 @@
 	},
 /turf/open/floor/hybrisa/tile/supermartfloor2,
 /area/event/dynamic)
+"aDP" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -20
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDQ" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/machinery/big_computers/computerblack/computer5{
+	density = 0;
+	pixel_y = 25
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 14
+	},
+/turf/open/floor/strata/floor2,
+/area/tyrargo/outdoors)
+"aDS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_on{
+	pixel_y = -2;
+	pixel_x = 32
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aDT" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
 "aDU" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
@@ -9064,6 +11351,146 @@
 	pixel_x = 7
 	},
 /turf/open/asphalt,
+/area/tyrargo/outdoors)
+"aDV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aDW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -12
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aDX" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/prop/hybrisa/misc/cabinet{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = -3;
+	layer = 3.1
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aDY" = (
+/obj/structure/prop/hybrisa/misc/cabinet{
+	pixel_x = -6;
+	layer = 3.1
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aDZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/outdoors)
+"aEa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/ar10,
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/outdoors)
+"aEb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/prop/hybrisa/misc/cabinet{
+	pixel_x = 3;
+	layer = 3.1;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aEc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/structure/prop/hybrisa/misc/cabinet{
+	dir = 8;
+	pixel_x = -4;
+	pixel_y = 6;
+	layer = 3.1
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aEd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/prop/hybrisa/misc/cabinet{
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = 6;
+	layer = 3.1
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/outdoors)
+"aEe" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/tyrargo/outdoors)
+"aEf" = (
+/obj/item/weapon/gun/rifle/ar10{
+	pixel_y = -3;
+	pixel_x = -1
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/ramptop,
+/area/tyrargo/outdoors)
+"aEg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors)
+"aEh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/tyrargo/outdoors)
+"aEi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/northeast,
 /area/tyrargo/outdoors)
 "aEx" = (
 /obj/structure/blocker/invisible_wall,
@@ -9575,6 +12002,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "biN" = (
@@ -10128,6 +12556,7 @@
 	pixel_y = 4;
 	pixel_x = 16
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "cfu" = (
@@ -10459,6 +12888,7 @@
 /obj/item/weapon/gun/rifle/m41aMK1{
 	pixel_y = 5
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "cxd" = (
@@ -10738,6 +13168,7 @@
 /area/tyrargo/outdoors)
 "cKf" = (
 /obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "cKT" = (
@@ -11838,6 +14269,9 @@
 	pixel_x = -6;
 	pixel_y = 9
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "eoG" = (
@@ -11946,15 +14380,6 @@
 	dir = 4;
 	anchored = 1;
 	layer = 4.1
-	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = -6;
-	pixel_y = -10
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors)
@@ -12854,6 +15279,7 @@
 /area/event/dynamic)
 "fQW" = (
 /obj/item/stack/sandbags/small_stack,
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "fRo" = (
@@ -12929,6 +15355,7 @@
 	pixel_y = 13;
 	layer = 3.5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/outdoors)
 "fUA" = (
@@ -13426,6 +15853,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors)
 "gEt" = (
@@ -13832,6 +16260,7 @@
 "hkc" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "hkG" = (
@@ -14042,6 +16471,7 @@
 	pixel_y = 5;
 	layer = 2.9
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "hzz" = (
@@ -16104,6 +18534,7 @@
 "kvX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "kwo" = (
@@ -16953,6 +19384,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/outdoors)
 "lEx" = (
@@ -17995,6 +20427,9 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "ncD" = (
@@ -18043,6 +20478,9 @@
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
@@ -18396,6 +20834,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/tyrargo/outdoors)
 "nzd" = (
@@ -18879,6 +21318,7 @@
 	pixel_y = 11;
 	pixel_x = 2
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "odK" = (
@@ -19027,6 +21467,10 @@
 /obj/structure/desertdam/decals/road_edge{
 	pixel_y = 1;
 	pixel_x = -12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -4
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
@@ -21303,6 +23747,7 @@
 /turf/open/floor/plating/wood_broken3,
 /area/tyrargo/outdoors)
 "rrK" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkredcorners2,
 /area/tyrargo/outdoors)
 "rrT" = (
@@ -21698,12 +24143,16 @@
 	pixel_x = 1;
 	pixel_y = 24
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors)
 "rMH" = (
 /obj/item/storage/belt/gun/mortarbelt{
 	pixel_x = 7;
 	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
@@ -21915,6 +24364,7 @@
 	pixel_x = 3;
 	pixel_y = 7
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "scz" = (
@@ -21947,6 +24397,9 @@
 	layer = 4.2;
 	pixel_x = 5;
 	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
@@ -22003,6 +24456,25 @@
 	},
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	layer = 3.9;
+	pixel_y = -14;
+	pixel_x = -8
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	pixel_x = -1
+	},
+/obj/structure/prop/tyrargo/boards{
+	dir = 8;
+	pixel_x = -16;
+	pixel_y = -2
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors)
@@ -22735,6 +25207,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/event/dynamic)
 "tnm" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greencorner/west,
 /area/tyrargo/outdoors)
 "tnr" = (
@@ -22887,6 +25360,7 @@
 /obj/item/ammo_magazine/rifle/m41aMK1{
 	pixel_y = 4
 	},
+/obj/effect/decal/hybrisa/road/roadmiddle,
 /turf/open/asphalt,
 /area/tyrargo/outdoors)
 "twg" = (
@@ -24431,6 +26905,11 @@
 	pixel_x = 1;
 	pixel_y = 24
 	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors)
 "voX" = (
@@ -24493,6 +26972,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/tyrargo/outdoors)
 "vsp" = (
@@ -25928,6 +28408,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors)
 "wQh" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/red/northwest,
 /area/tyrargo/outdoors)
 "wQq" = (
@@ -26183,6 +28664,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors)
 "xdB" = (
@@ -26737,9 +29219,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors)
-"xZx" = (
-/turf/open/floor/prison/darkbrown2/northeast,
-/area/tyrargo/outdoors)
 "xZG" = (
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/tyrargo/outdoors)
@@ -26787,6 +29266,7 @@
 /obj/structure/filingcabinet{
 	pixel_x = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/northwest,
 /area/tyrargo/outdoors)
 "ybv" = (
@@ -122388,7 +124868,7 @@ apx
 mwH
 jTG
 auF
-aal
+axr
 qDj
 aoQ
 aoJ
@@ -122640,7 +125120,7 @@ apy
 aoA
 xnl
 apf
-aal
+axr
 qDj
 aoR
 aoK
@@ -123900,7 +126380,7 @@ apB
 aas
 twg
 dCg
-aal
+axr
 qDj
 aoU
 aoM
@@ -124150,9 +126630,9 @@ rYs
 aaf
 aaf
 xdh
-jTG
+ayZ
 dCg
-aal
+axr
 qDj
 aoV
 aas
@@ -124404,7 +126884,7 @@ eyn
 wUm
 twg
 dCg
-aal
+axr
 apb
 qWy
 xdh
@@ -124421,7 +126901,7 @@ abK
 aay
 ach
 abe
-dUM
+tkU
 abP
 acV
 acV
@@ -124675,7 +127155,7 @@ ach
 abK
 abX
 hsy
-acV
+aya
 acV
 hLM
 abC
@@ -124908,7 +127388,7 @@ pRt
 aas
 api
 dCg
-auB
+ayL
 qDj
 kiU
 aas
@@ -125160,7 +127640,7 @@ pRt
 aas
 jTG
 dCg
-auB
+ayL
 wYA
 jAG
 xdh
@@ -125179,7 +127659,7 @@ aci
 abK
 aai
 abR
-abK
+ayb
 abK
 abF
 abw
@@ -125412,7 +127892,7 @@ aaf
 mjU
 apj
 dnZ
-kgq
+ayM
 wmT
 aGu
 cMM
@@ -125456,7 +127936,7 @@ aaC
 aaC
 aaC
 aai
-dUM
+tkU
 ajY
 abd
 ajL
@@ -125474,7 +127954,7 @@ aaj
 aaj
 hdh
 drt
-lSo
+axi
 ahP
 aaf
 ahl
@@ -125711,7 +128191,7 @@ abK
 dUM
 ajZ
 abd
-ajK
+axn
 ahY
 egy
 vPS
@@ -125726,8 +128206,8 @@ aaj
 aaj
 hdh
 drt
-lSo
-ahP
+axj
+adc
 aaf
 bdw
 fRo
@@ -125916,7 +128396,7 @@ kLc
 aas
 wyj
 dCg
-aal
+axr
 qDj
 pDq
 tqe
@@ -125958,7 +128438,7 @@ ahb
 abe
 aan
 abe
-ahb
+axp
 aai
 aht
 abe
@@ -126168,7 +128648,7 @@ aaf
 uXe
 twg
 dCg
-aal
+axr
 qDj
 jkE
 xdh
@@ -126420,7 +128900,7 @@ aaf
 uqK
 oNX
 ear
-hoj
+ayO
 rnG
 vAg
 waA
@@ -126672,7 +129152,7 @@ pRt
 aas
 bpZ
 dCg
-aal
+axr
 aal
 koc
 xcB
@@ -126922,7 +129402,7 @@ qkg
 whj
 pRt
 xVJ
-jTG
+ayZ
 dCg
 mBS
 lph
@@ -127425,7 +129905,7 @@ qkg
 qkg
 aaf
 aaf
-xdh
+aoA
 twg
 kTL
 lbr
@@ -127433,40 +129913,40 @@ vxH
 vxH
 aye
 ncl
-aal
-vxH
+axF
+axC
 seU
 eos
-wSv
-wSv
+ayx
+ayx
 rMH
-aal
+axF
 axY
-aal
-fTZ
-aal
-tRT
-mBS
-gag
-aal
-aal
-aal
-aal
-aal
+axF
+ayk
+axF
+ayh
+axK
+ayc
+axF
+axF
+axF
+axF
+axF
 oXy
 lse
 lse
 reM
-aal
-aal
-aal
-aal
-aal
-aal
-mBS
-aal
-vxH
-vxH
+axF
+axF
+axF
+axF
+axF
+axF
+axK
+axF
+axC
+axC
 new
 wlF
 uNL
@@ -127969,7 +130449,7 @@ qRA
 qRA
 nCU
 kGV
-kGV
+axD
 ejX
 aal
 aal
@@ -128226,7 +130706,7 @@ toI
 ucH
 aal
 aal
-mBS
+axq
 weO
 qWy
 eDd
@@ -128436,7 +130916,7 @@ pRt
 vAp
 qcb
 dCg
-rmD
+ayP
 eao
 kSy
 hnP
@@ -128478,7 +130958,7 @@ vOb
 qWy
 ymd
 aal
-mBS
+axq
 weO
 pDq
 aas
@@ -128730,7 +131210,7 @@ fXj
 qWy
 twg
 nJl
-mBS
+axq
 weO
 pDq
 oRD
@@ -128940,7 +131420,7 @@ eyn
 aas
 twg
 rmD
-aal
+axr
 iKu
 pDq
 aaa
@@ -128982,7 +131462,7 @@ wwU
 udh
 twg
 vxH
-mBS
+axq
 aal
 pDq
 aas
@@ -129234,7 +131714,7 @@ aJJ
 pDq
 twg
 urG
-aal
+axr
 dYx
 pDq
 fNk
@@ -129486,7 +131966,7 @@ pvn
 pDq
 azs
 weO
-aal
+axr
 aal
 pDq
 xdh
@@ -129738,7 +132218,7 @@ lEx
 qkI
 xnl
 weO
-aal
+axr
 aal
 pDq
 xdh
@@ -129758,7 +132238,7 @@ aaj
 aaj
 hdh
 aio
-ahY
+axk
 ahP
 pRt
 bIv
@@ -129988,7 +132468,7 @@ aaf
 aas
 qRA
 xdh
-twg
+axt
 fTN
 hGP
 gLo
@@ -130010,7 +132490,7 @@ aaj
 aaj
 hdh
 drt
-ahY
+axk
 aaf
 aaf
 aaf
@@ -130200,7 +132680,7 @@ gEJ
 aas
 twg
 auB
-aal
+axr
 aal
 pDq
 ohm
@@ -130452,7 +132932,7 @@ wwU
 jXd
 jTG
 auB
-aal
+axr
 aal
 pDq
 nYw
@@ -130704,7 +133184,7 @@ aaa
 olx
 hjr
 aal
-mBS
+axq
 aal
 gEt
 xdh
@@ -130766,7 +133246,7 @@ aaj
 aaj
 hdh
 drt
-aid
+axl
 ahP
 aaC
 sPH
@@ -130956,7 +133436,7 @@ qLD
 rBI
 bNX
 aal
-dYx
+ayQ
 mBS
 aal
 toI
@@ -130998,7 +133478,7 @@ gEJ
 veV
 aal
 mBS
-mBS
+axq
 aal
 qWy
 cVF
@@ -131019,10 +133499,10 @@ aaf
 aaf
 aim
 aie
-ahQ
+axg
 abd
 aht
-abd
+abu
 dUM
 aha
 aaf
@@ -131197,7 +133677,7 @@ apR
 aaf
 jTG
 wwU
-aaa
+hte
 mOG
 aaa
 aaa
@@ -131447,7 +133927,7 @@ aqb
 abe
 aai
 pRt
-twg
+aoz
 aaa
 aaa
 aaa
@@ -131460,7 +133940,7 @@ qLD
 rBI
 jmF
 aal
-aal
+axr
 rmD
 aal
 aal
@@ -131502,7 +133982,7 @@ aal
 aal
 aal
 xWd
-mBS
+axq
 aal
 bLG
 amV
@@ -131701,7 +134181,7 @@ gZR
 pRt
 twg
 gJX
-aaa
+hte
 mFT
 qRA
 ymd
@@ -131754,7 +134234,7 @@ aal
 aal
 aal
 rmD
-aal
+axr
 aal
 cIj
 eDd
@@ -131952,7 +134432,7 @@ acy
 apS
 aaf
 aas
-qRA
+aos
 qRA
 aas
 aab
@@ -132006,7 +134486,7 @@ mBS
 aal
 aal
 aal
-aal
+axr
 aal
 dTy
 lsj
@@ -132277,7 +134757,7 @@ aiJ
 uPF
 jTG
 kJu
-aay
+avc
 aay
 pDq
 aas
@@ -132527,11 +135007,11 @@ jRZ
 jRZ
 jRZ
 sQQ
-oPL
+axm
 kJu
 air
 kJu
-toI
+axh
 ahM
 ahJ
 ahy
@@ -132961,7 +135441,7 @@ nsm
 nsm
 aas
 xUs
-aga
+aAR
 aas
 xdh
 xdh
@@ -132972,7 +135452,7 @@ nsm
 pGz
 gTM
 aal
-aal
+axr
 aal
 pDq
 aas
@@ -133019,7 +135499,7 @@ wyc
 sIg
 pvN
 sIg
-wRN
+axo
 osH
 sIg
 sIg
@@ -133466,7 +135946,7 @@ auQ
 wSv
 wSv
 aal
-aal
+aAM
 aal
 yfj
 qkE
@@ -133705,27 +136185,27 @@ awo
 voJ
 voJ
 auM
-gIK
-aal
-mBS
-aal
+aCS
+axF
+axK
+axF
 avA
 avv
-avn
+aCb
 auZ
-aal
-aal
-aqH
-aal
-aal
-mBS
-mBS
+axF
+axF
+aBp
+axF
+aAS
+axK
+axK
 oXy
 lse
 voJ
 auM
-aal
-aal
+axF
+axF
 aal
 aal
 aal
@@ -134222,7 +136702,7 @@ ohm
 qRA
 ohm
 ati
-ohm
+aAN
 qRA
 qRA
 gRD
@@ -134457,7 +136937,7 @@ aaf
 arr
 kGV
 yaU
-xdh
+aoA
 wUm
 xdh
 xdh
@@ -134475,7 +136955,7 @@ yaU
 yaU
 auP
 aas
-xdh
+aoA
 xdh
 xdh
 xdh
@@ -134709,7 +137189,7 @@ aaf
 aae
 aae
 aaa
-pDq
+aCT
 aaf
 aay
 fUA
@@ -134736,7 +137216,7 @@ aas
 xdh
 iCi
 pET
-aal
+axr
 rCw
 toI
 gEJ
@@ -134980,9 +137460,9 @@ oiz
 aaq
 pDq
 aaf
-gph
+aAm
 aav
-aan
+azK
 aaf
 aaf
 xdh
@@ -135232,10 +137712,10 @@ bqS
 aaa
 qWy
 aaf
-gph
+aAn
 aav
-aan
-kOA
+azL
+azE
 pRt
 aas
 tlx
@@ -135484,10 +137964,10 @@ aaq
 aaa
 qWy
 aaf
-gph
+aAo
 aav
-aai
-cDq
+azM
+akR
 eyn
 xdh
 twg
@@ -135736,12 +138216,12 @@ anB
 aaa
 qWy
 aaf
-gph
+aAp
 aav
-aai
-cDq
+azN
+azF
 aay
-xdh
+azh
 lkt
 nSB
 ikh
@@ -135988,12 +138468,12 @@ aaa
 aaa
 qWy
 aaf
-miR
-aav
+aAq
+aAb
 aai
-rVH
+azG
 pRt
-xUs
+azi
 xhx
 xaQ
 voJ
@@ -136036,7 +138516,7 @@ aai
 aai
 aai
 aay
-twg
+xnl
 sIg
 sIg
 sIg
@@ -136240,12 +138720,12 @@ aaa
 gJX
 qWy
 aaf
-aan
-aav
-aai
+azK
+aAb
+azO
 aaf
 aaf
-wUm
+azj
 wWb
 aaF
 lse
@@ -136288,8 +138768,8 @@ aai
 aai
 aai
 aaf
-twg
-sIg
+jTG
+pvN
 sIg
 sIg
 cHg
@@ -136493,11 +138973,11 @@ ohm
 xdh
 aaf
 aan
-aav
-aai
+aAb
+azP
 aaf
-hPM
-xdh
+azw
+azk
 twg
 hFN
 eBO
@@ -136540,7 +139020,7 @@ aai
 aai
 aai
 aay
-twg
+axu
 sIg
 sIg
 sIg
@@ -136739,20 +139219,20 @@ aaf
 xdh
 bKK
 aaf
+pRt
+pRt
+pRt
 aaf
 aaf
-aaf
-aaf
-aaf
-aai
-aav
+aAr
+aAc
 aan
-aaf
-aas
-xdh
+pRt
+nsm
+aon
 jTG
 mBS
-aal
+axr
 mBS
 aPs
 aay
@@ -136792,7 +139272,7 @@ aai
 aai
 aai
 aay
-twg
+jTG
 sIg
 sIg
 sIg
@@ -136991,20 +139471,20 @@ aaf
 xdh
 aaf
 aaf
-kVA
-kVA
-kVA
+aAT
+aBf
+aAT
 aaf
 aaf
-aai
-aav
-aan
-aaf
-aas
-aas
+abF
+dGC
+azQ
+pRt
+nsm
+nsm
 twg
 aal
-aal
+ayR
 aal
 bLG
 aay
@@ -137044,7 +139524,7 @@ aai
 aai
 aai
 aaf
-twg
+jTG
 sIg
 sIg
 sIg
@@ -137242,23 +139722,23 @@ tHf
 aaf
 aas
 aaf
-gph
-aai
-aai
-aai
+aBG
+aBq
+aBg
+aAU
 aan
 aan
-aai
+amL
 aav
-aai
-aaf
-aas
-aas
+azR
+pRt
+nsm
+nsm
 twg
 aal
+axr
 aal
-aal
-pDq
+qWy
 aaf
 aai
 aai
@@ -137296,7 +139776,7 @@ aai
 aai
 aai
 aay
-twg
+axv
 sIg
 sIg
 sIg
@@ -137494,23 +139974,23 @@ aaf
 aaf
 aas
 aaf
-gph
-aai
-aau
-aaw
-aaw
-aaw
-aaw
-aau
-aan
-aaf
-aas
-aas
+aBH
+aBs
+aBh
+aAV
+aAO
+yfK
+aAs
+awN
+azK
+apH
+nsm
+azl
 twg
+ayU
+axr
 aal
-aal
-aal
-pDq
+qWy
 aaf
 aaf
 aai
@@ -137548,7 +140028,7 @@ aai
 aai
 aai
 aay
-twg
+aoz
 sIg
 sIg
 sIg
@@ -137743,24 +140223,24 @@ xdh
 xdh
 avG
 aas
-aas
-xdh
+qlM
+aBV
 aaf
-gph
+aBI
 aai
 aav
-aai
-aai
-aai
-aai
+alZ
+abK
+aAF
+abF
 aan
-aan
-aaf
-voV
+azS
+apH
+azx
 rMq
 oNX
 hoj
-hoj
+ayO
 hoj
 tho
 xzV
@@ -137999,7 +140479,7 @@ aaf
 xdh
 aaf
 aaf
-aai
+aBt
 aav
 aai
 aaf
@@ -138007,12 +140487,12 @@ aaf
 aaf
 aaf
 aaf
-aaf
-aaf
-aas
+apH
+apH
+nsm
 twg
 aal
-aal
+axr
 aal
 pDq
 aaf
@@ -138053,7 +140533,7 @@ aai
 aai
 aaf
 twg
-sIg
+axs
 sIg
 sIg
 cHg
@@ -138244,27 +140724,27 @@ aaa
 pDq
 aaf
 aaf
-acp
-acp
-acp
+aCB
+ayr
+aCm
 aaf
 aaf
 aaf
 aaf
-aai
+aBu
 aav
-kOA
+aAW
 aaf
 wfw
-mIH
-mIH
-mIH
+aAt
+azT
+azT
 nCp
 aaf
 siO
 bmE
 kgq
-kgq
+ayM
 kgq
 xdt
 aaf
@@ -138304,7 +140784,7 @@ dUM
 dUM
 aaf
 aaf
-twg
+axw
 sIg
 sIg
 sIg
@@ -138495,30 +140975,30 @@ aaa
 mFT
 aas
 aaf
-aai
-aai
-aai
-aai
+abK
+abK
+abK
+abK
 aai
 aaf
 aaf
 aaf
-aai
+aBv
 aav
-cDq
+aAX
 aaf
-aai
-aai
-aai
-aai
-aai
+aAG
+abK
+amL
+azU
+ahX
 aaf
-aas
+xdh
 twg
 aal
+axr
 aal
-aal
-pDq
+wkt
 aaf
 aaf
 aai
@@ -138556,7 +141036,7 @@ aai
 aai
 aai
 aaf
-twg
+jTG
 sIg
 sIg
 sIg
@@ -138747,30 +141227,30 @@ aaa
 qWy
 aaf
 aaf
-aai
-aai
-aai
-aai
-aai
+abK
+aCC
+aCu
+aCn
+aCc
 aai
 aaf
 aaf
-aan
+abe
 aav
-cDq
+aAY
 aaf
+aAv
+aAu
 aai
-aai
-aai
-aai
-aai
+abe
+abe
 aaf
 voV
-oNX
+aph
 hoj
+ayO
 hoj
-hoj
-tho
+ayD
 xzV
 aaf
 aaf
@@ -138808,9 +141288,9 @@ aai
 aai
 aai
 aaf
-twg
+jTG
 sIg
-sIg
+axs
 sIg
 cHg
 aaG
@@ -138999,30 +141479,30 @@ aaa
 qWy
 aaf
 aco
-aco
+aCG
 acb
+aCv
+aCo
 aai
-aai
-aai
-aai
+aBW
 aaf
 aaf
-aan
+aBw
 aav
-cDq
+aAY
 aaf
-aai
-aai
-aai
-aai
+aAv
+aAv
+aan
+abe
 aaf
 aaf
-aas
-twg
+azm
+jTG
 aal
+axr
 aal
-aal
-pDq
+qWy
 aaf
 aaf
 aai
@@ -139060,9 +141540,9 @@ dUM
 aai
 aai
 aaf
-twg
+lkt
 sIg
-sIg
+axs
 sIg
 cHg
 aaG
@@ -139249,32 +141729,32 @@ aae
 aaa
 aaa
 avi
+pRt
+aCO
+aCH
+aCD
+aCw
+abK
+aCd
+abK
 aaf
-aai
-aai
-fuw
-aai
-aai
-aai
-aai
 aaf
+aBx
+aBi
+aAY
 aaf
-aan
-aav
-cDq
-aaf
-aai
-aai
-aai
-aai
-aaf
-aas
-aas
-twg
+abK
+aAw
+aAd
+azV
+pRt
+azy
+azn
+jTG
 aal
+axr
 aal
-aal
-pDq
+qWy
 aaf
 aai
 aai
@@ -139312,7 +141792,7 @@ aai
 aai
 aai
 aaf
-twg
+jTG
 sIg
 sIg
 sIg
@@ -139501,32 +141981,32 @@ aae
 aaa
 aaa
 qWy
-aaf
-aai
-aai
+pRt
+aCP
+abK
 fuw
-aai
-aai
-aai
-aai
-aaf
-aaf
-aai
-aav
-rVH
-aaf
-aai
-aai
-aai
+aCx
+akM
+aCe
 aai
 aaf
+aaf
+aai
+aBj
+aAZ
+pRt
+abK
+aAx
+abK
+azW
+pRt
+azz
 aas
-aas
-twg
+jTG
 aal
+axr
 aal
-aal
-pDq
+ayE
 aaf
 aai
 aai
@@ -139564,7 +142044,7 @@ aaf
 aai
 dUM
 aaf
-twg
+jTG
 sIg
 sIg
 sIg
@@ -139755,30 +142235,30 @@ aaa
 qWy
 aaf
 aai
-aai
+aCJ
 ace
 aab
-aai
-aai
-aai
-tgH
-acb
-aai
+abK
+aCf
+aBX
+aBP
+aBJ
+abF
 aav
-aai
+aBa
 kGY
-waX
-aai
-aai
-aai
-aaf
-aas
-aas
-twg
+aAH
+aAy
+aAe
+azW
+pRt
+nsm
+azo
+jTG
+ayV
+axr
 aal
-aal
-aal
-pDq
+qWy
 aay
 aai
 aai
@@ -140006,31 +142486,31 @@ aaa
 aaa
 qWy
 aaf
-aai
-aai
+aCQ
+abK
 ace
 aab
-aai
-aai
-aai
-qHM
-fuw
+aCp
+aCg
+atQ
+aBR
+aBK
 aan
-aav
-aan
+aBk
+abe
 fKk
-iCp
-aai
+aAI
+alZ
 aai
 aaf
 aaf
 aas
 aas
-twg
+cIC
 aal
+axr
 aal
-aal
-pDq
+qWy
 aay
 aai
 aai
@@ -140068,7 +142548,7 @@ dUM
 aai
 aai
 aaf
-twg
+axx
 sIg
 sIg
 sIg
@@ -140258,31 +142738,31 @@ aaa
 aaa
 qWy
 aaf
-aai
-aai
+abK
+aCK
 ace
 aab
-aai
-aai
-aai
-qHM
-fuw
+aCq
+aCh
+ahX
+aBS
+aBL
+aBy
+awN
 aaw
-aau
-aaw
-fKk
+aeN
 iCp
-aai
-aai
-aaf
+aAz
+aAf
+pRt
 aas
-aas
-aas
+azA
+xdh
 twg
 aal
+axr
 aal
-aal
-pDq
+qWy
 aaf
 aai
 aai
@@ -140510,28 +142990,28 @@ agp
 awi
 wkt
 aaf
-aai
+abK
 aai
 ace
 aab
-aai
-aai
-aai
-qHM
-fuw
-aan
+abK
+aCi
+abK
+aBT
+aBM
+aBz
 aav
-aan
+azK
 fKk
 iCp
-aai
-aai
+abK
+abK
 aaf
 aaf
-aas
-aas
-twg
-nSB
+azB
+azp
+aza
+ayW
 ikh
 gLo
 pDq
@@ -140572,9 +143052,9 @@ aaf
 aai
 dUM
 aaf
-twg
+jTG
 sIg
-sIg
+aRT
 sIg
 cHg
 aaG
@@ -140762,28 +143242,28 @@ deN
 vje
 pDq
 aaf
-aai
+akM
 aai
 ace
 aab
+qcc
+akM
+atQ
+aBU
+aBN
+ahX
+aBl
 aai
-aai
-aai
-gYx
-teU
-aai
-aav
-aai
-wfw
-nCp
-aai
-aai
-aai
-aaf
-aas
-aas
-wWb
-lse
+aAP
+aAJ
+aAA
+abK
+azV
+pRt
+azC
+azq
+azb
+voJ
 lse
 lse
 kgb
@@ -140824,7 +143304,7 @@ aai
 aai
 aai
 aaf
-twg
+jTG
 sIg
 sIg
 sIg
@@ -141014,29 +143494,29 @@ age
 vje
 pDq
 aaf
-aai
-aai
+aCc
+aCL
 fuw
-aai
-aai
-aai
-aai
-aaf
-aaf
-aai
-aav
-eGr
-aaf
-aai
-aai
-aai
+aCh
+aCr
+aCj
 aai
 aaf
+aaf
+abK
+xAJ
+aBb
+pRt
+aAK
+aai
+aAg
+azV
+pRt
 aas
 aas
-wWb
-aaF
+azc
 lse
+voJ
 lse
 kgb
 aaf
@@ -141076,7 +143556,7 @@ dUM
 aai
 aaf
 aaf
-twg
+jTG
 sIg
 sIg
 sIg
@@ -141265,33 +143745,33 @@ deN
 vje
 rHF
 pDq
-aaf
-aai
-aai
-fuw
-aai
-aai
-aai
-aai
+pRt
+aCP
+abK
+aCE
+aCy
+ayb
+ayb
+aBY
 aaf
 aaf
 aai
 aav
-aaH
+axQ
 aaf
-aai
-aai
-aai
-aai
-aaf
-aas
-aas
-twg
+akl
+abK
+abK
+azV
+pRt
+nsm
+azr
+azd
 onP
-eBO
-eBO
-pDq
-aas
+ayS
+ayI
+ayF
+xdh
 aaf
 aai
 aai
@@ -141327,8 +143807,8 @@ aaf
 aaf
 aaf
 aaf
-aas
-twg
+axA
+axy
 sIg
 sIg
 sIg
@@ -141517,33 +143997,33 @@ age
 vje
 vje
 qWy
-aaf
-acp
-acp
+pRt
+aCR
+ayr
 teU
-aai
-aai
-aai
-aai
+aCz
+aBs
+abK
+aBY
 aaf
 aaf
-aai
-aav
-aaH
+aBA
+aBm
+axQ
 aaf
-aai
-aai
-aai
-aai
+aAv
+aAv
+aan
+aan
 aaf
 aaf
 aas
-twg
+jTG
 aal
-aal
+axr
 aal
 wiU
-aas
+wUm
 aaf
 aaf
 aaf
@@ -141553,34 +144033,34 @@ aas
 aas
 aas
 aas
+xdh
 aas
-aas
-aas
+xdh
 aaf
 aaf
 aas
 aas
 aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aaf
-aaf
-aaf
-aas
-aas
-aas
-aas
+axX
+xdh
+xdh
+xdh
+xdh
+anV
 aas
 aaf
 aaf
 aaf
 aas
-oPL
+aas
+qlM
+xdh
+aas
+aaf
+aaf
+aaf
+xdh
+aHn
 sIg
 sIg
 sIg
@@ -141771,67 +144251,67 @@ vje
 qWy
 aaf
 aaf
-aai
-aai
-aai
-aai
-aai
-aai
+aCM
+aCk
+aCA
+aCs
+aCk
+aBZ
 aaf
 aaf
-aai
-aav
+aBB
+xAJ
 aaH
 aaf
-aai
-aai
-aai
-aai
-aai
+aAL
+qcc
+aAh
+wFN
+aan
 aaf
-aas
-twg
+aoA
+atd
+aal
+axq
 aal
 aal
-aal
-aal
-wiU
+toI
 aas
 aas
 aas
+ayA
+xdh
+xdh
+xUs
+wUm
+xdh
+xdh
+aas
+xUs
+xdh
+xdh
+xdh
+bKK
+xdh
+ags
+ags
+ags
+xdh
+xdh
+ags
+aas
+xdh
+xdh
 aas
 aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-oPL
+xUs
+bKK
+axN
+xdh
+axH
+xdh
+xdh
+aHn
 aal
 sIg
 sIg
@@ -142023,66 +144503,66 @@ vje
 arj
 xdh
 aaf
+aCN
+aCF
 aai
-aai
-aai
-aai
-aai
+akM
+aCl
 aaf
 aaf
 aaf
-aai
-aav
+aBC
+xAJ
 qhi
 aaf
-aai
-aai
-aai
-aai
-aai
+amL
+aAB
+abK
+abK
+abK
 aaf
-aas
-twg
+aoA
+aze
+weO
+axq
+mBS
 aal
-aal
-aal
-aal
-aal
-wiU
-yaU
-pBc
-pBc
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
+mBS
+toI
+gEJ
+cld
+cld
+gEJ
+gEJ
+ayy
+ays
+ays
+ays
+ayp
+gEJ
 yaU
 yaU
+gEJ
+gEJ
+gEJ
+gEJ
+axV
+gEJ
+gEJ
+axE
+axE
+axE
 yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-pBc
-pBc
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-oPL
+cld
+cld
+gEJ
+gEJ
+gEJ
+gEJ
+gEJ
+axE
+axE
+aHn
 aal
 sIg
 sIg
@@ -142278,50 +144758,27 @@ aaf
 aaf
 aco
 aco
-aco
+aCt
 aaf
 aaf
 aaf
 aaf
-aai
-aav
+aBA
+aBn
 aan
 aaf
 kGY
-lnr
-lnr
-lnr
+aAi
+aAi
+azX
 waX
 aaf
-aas
-twg
+xdh
+azf
+weO
 aal
-aal
-aal
-aal
-aal
-aal
-yfj
-lse
-lse
-reM
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
-aal
+mBS
+mBS
 aal
 aal
 yfj
@@ -142330,7 +144787,30 @@ lse
 reM
 aal
 aal
+ayw
+ayw
 aal
+aal
+aal
+aal
+aal
+aal
+aal
+aal
+aal
+aal
+aal
+aal
+aal
+aal
+mBS
+yfj
+lse
+lse
+reM
+aal
+aal
+mBS
 aal
 aal
 aal
@@ -142536,8 +145016,8 @@ auS
 aaf
 aaf
 aai
-aav
-aan
+xAJ
+aBc
 aaf
 aaf
 aaf
@@ -142545,47 +145025,47 @@ aaf
 aaf
 aaf
 aaf
-aas
-twg
+azh
+jTG
+weO
 aal
 aal
-aal
-aal
-aal
-aal
+axK
+axF
+axF
 yfj
 lse
 lse
 reM
-aal
-aal
-aal
-aal
+axF
+axF
+axF
+axF
 aaJ
 aaJ
 aaJ
-aal
-aal
+axF
+axF
 aaJ
-aal
-aal
-aal
-aal
-aal
+axF
+axF
+axF
+axF
+axF
 aaJ
-aal
-aal
-aal
+axF
+axF
+axF
 yfj
 lse
 lse
 reM
-aal
-aal
-aal
-aal
-aal
-aal
+axF
+axF
+axF
+axF
+axF
+axF
 sIg
 sIg
 sIg
@@ -142786,30 +145266,30 @@ gEJ
 avu
 aas
 aaf
-aaR
-aai
-aav
+aBO
+aBD
+xAJ
+aBc
 aan
-aan
-aan
-aai
-aai
-aan
+abe
+aAC
+abK
+azY
 aaf
 aaf
-aas
-twg
-aal
+azh
+azg
+weO
 aal
 aal
 aal
 aal
 aal
 yfj
-lse
+voJ
 lse
 reM
-aal
+mBS
 aaJ
 acB
 acv
@@ -142836,7 +145316,7 @@ aal
 aal
 aal
 aal
-aal
+mBS
 aal
 aal
 aal
@@ -143038,31 +145518,31 @@ wwU
 aaa
 pDq
 aaf
-aaR
-aai
+axG
+ahX
+awN
+aBd
+aAQ
+yfK
+aaw
 aau
-aaw
-aaw
-aaw
-aaw
-aau
-aai
-eGr
+azZ
+azH
 pRt
-weS
+azt
 mES
-uOr
+ayX
 kSX
 fgZ
 weS
 mES
-qRA
-qRA
+ohm
+ayC
 gRD
-gRD
-qRA
-qRA
-qRA
+are
+ayz
+ohm
+ohm
 acC
 acw
 acs
@@ -143077,22 +145557,22 @@ qRA
 qRA
 qRA
 qRA
-qRA
-qRA
+ohm
+ohm
 qRA
 qRA
 hnS
 mdz
 mdz
 sWo
-sWo
-sWo
-qRA
-sQQ
+tOG
+tOG
+ohm
+axI
 sQQ
 sQQ
 weS
-mES
+axz
 uOr
 kSX
 fgZ
@@ -143291,46 +145771,46 @@ aaa
 qWy
 aaf
 aaR
-aai
-aai
-aai
-aai
-aai
+aBE
+abK
+abK
+abK
+abF
 aai
 aav
 aai
-aaH
+azI
 aay
-cHg
+azu
+adk
+ayY
+ayT
+ayJ
+ayG
 aaG
-oYe
-wAQ
-iES
-cHg
-aaG
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
+gEJ
+avu
+ayB
+axE
+axE
+gEJ
+axE
+gEJ
 acx
 aaJ
 aaJ
 aaJ
 aaJ
-yaU
-yaU
+gEJ
+gEJ
 aaJ
 aaJ
-yaU
-yaU
-yaU
-yaU
-yaU
-yaU
+auP
+gEJ
+axV
+gEJ
+gEJ
+gEJ
 yaU
 aaJ
 tGy
@@ -143343,7 +145823,7 @@ vBx
 vBx
 bok
 nUw
-cHg
+axB
 aaG
 oYe
 wAQ
@@ -143543,21 +146023,21 @@ aaa
 avi
 aaf
 aaf
-xhJ
-xhJ
-xhJ
+aBF
+aBo
+aBe
 aaf
 aaf
-aai
-aau
+abK
+awN
 aaw
-aaH
-aay
-cHg
-aaG
-oYe
-wAQ
-iES
+axQ
+azD
+azv
+adk
+ayY
+ayT
+ayK
 cHg
 aaG
 wZK
@@ -143566,18 +146046,18 @@ aaf
 aaf
 aaf
 aaf
+axZ
+axZ
+axZ
 aaM
 aaM
 aaM
+axZ
+axZ
 aaM
 aaM
 aaM
-aaM
-aaM
-aaM
-aaM
-aaM
-aaM
+axZ
 aaM
 aaM
 aaM
@@ -143795,15 +146275,15 @@ aaa
 toI
 aas
 aaf
+pRt
+pRt
+pRt
 aaf
 aaf
-aaf
-aaf
-aaf
-aai
-aai
-aai
-aaH
+aAD
+aAk
+aAa
+azJ
 aay
 cHg
 aaG
@@ -143827,11 +146307,11 @@ aaM
 aaM
 aaM
 aaM
+axZ
+axZ
+axZ
 aaM
-aaM
-aaM
-aaM
-aaM
+nzd
 aaM
 aaM
 aaM
@@ -143842,7 +146322,7 @@ aaM
 aaM
 aaf
 aaf
-eGr
+axO
 xhJ
 sNt
 aaf
@@ -144052,10 +146532,10 @@ gEJ
 arr
 aas
 aaf
-aan
-aai
-aai
-qhi
+aAE
+ahX
+abK
+axR
 pRt
 cHg
 adD
@@ -144079,7 +146559,7 @@ aaf
 aaf
 aaf
 aaM
-aaM
+ayd
 aaM
 aaM
 aaM
@@ -144095,7 +146575,7 @@ aaf
 aaf
 aaT
 aaH
-aai
+abK
 nZr
 sNt
 aaf
@@ -144305,8 +146785,8 @@ aae
 wkt
 aaf
 aan
-aan
-aai
+aAl
+akM
 aaf
 aaf
 adD
@@ -144317,7 +146797,7 @@ acW
 acS
 aaG
 aaf
-lSo
+ahY
 uZE
 aaj
 aaj
@@ -144331,24 +146811,24 @@ acb
 aai
 aaf
 aaf
-aay
-aay
-aay
-aay
+kJu
+kJu
+kJu
+kJu
 aay
 aaf
 aaf
 aai
 kOA
 qvm
-vks
-aai
+axS
+abK
 aai
 aaf
 aaT
 aaH
-aan
-aan
+abe
+abe
 aaR
 aaf
 cHg
@@ -144569,7 +147049,7 @@ acX
 auy
 acR
 aaf
-lSo
+ahY
 uZE
 aaj
 aaj
@@ -144578,30 +147058,30 @@ aaf
 aai
 aai
 qHM
-aai
-fuw
-aai
+abK
+ayl
+abK
 aai
 aai
 aai
 lSo
+abK
+ahY
 aai
-lSo
 aai
-aai
-aai
+abK
 aai
 cDq
-aai
-gph
-aai
+abK
+aln
+abK
 aai
 aaf
 aaT
 aaH
 aan
-aan
-aaR
+abe
+axG
 aaf
 cHg
 aaG
@@ -144829,7 +147309,7 @@ aaf
 aaf
 aaf
 aaf
-gYx
+ayt
 acp
 teU
 aai
@@ -144840,8 +147320,8 @@ lSo
 aai
 lSo
 aai
-miR
-tfR
+axU
+axT
 aai
 rVH
 kVA
@@ -145074,24 +147554,24 @@ acU
 aaG
 aab
 tmc
+abe
 aan
-aan
-nJL
+aaX
 sVX
 pRt
 aai
 aai
-qHM
-aai
-aai
-aai
+ayv
+abK
+abK
+abK
 tnm
-tgH
+ayf
 aai
-lSo
-aai
-lSo
-aai
+ahY
+abK
+aid
+abK
 cPG
 kOA
 aai
@@ -145102,8 +147582,8 @@ aai
 aai
 pRt
 eGr
-aaH
-aai
+axQ
+abK
 aai
 aaR
 aaf
@@ -145326,35 +147806,35 @@ adw
 aaa
 aab
 tmc
-pEP
-aan
-nJL
-nJL
+akz
+abe
+aaX
+aaX
 aay
 xAg
 xAg
-qHM
+ayv
+act
 xAg
 xAg
 xAg
-xAg
-xAg
-aai
-lSo
-aai
-lSo
-aai
+act
+abK
+ahY
+abK
+aid
+abK
 xAg
 xAg
 xAg
 xAg
 xAg
 gph
-xAg
-xAg
-aay
+act
+act
+kJu
 aaH
-aaH
+axQ
 ijS
 ijS
 aaR
@@ -145577,36 +148057,36 @@ adw
 aaa
 aaa
 aab
-tmc
+abi
 pEP
-pEP
+akz
 nJL
 nJL
+kJu
+aai
+ahY
+ayv
+aid
+abe
+abe
+ayi
+lSo
+aai
+unF
+unF
+axW
+abK
+lSo
+aan
+aan
+aan
+ahY
+aln
+lSo
+aai
 aay
-aai
-lSo
-qHM
-lSo
-aan
-aan
-aan
-lSo
-aai
-unF
-unF
-unF
-aai
-lSo
-aan
-aan
-aan
-lSo
-gph
-lSo
-aai
-aay
-aaH
-aaH
+axQ
+axQ
 ijS
 ijS
 aaR
@@ -145829,37 +148309,37 @@ sIg
 aaa
 aaa
 aab
-tmc
-pEP
-aan
+abi
+akz
+abe
 nJL
 nJL
-aay
-xAg
+kJu
+act
 xAg
 qHM
-xAg
-xAg
-xAg
-xAg
+act
+act
+act
+ayj
 xAg
 aai
 lSo
-aai
+abK
 lSo
 aai
 xAg
-xAg
-xAg
-xAg
-xAg
+act
+act
+act
+act
 gph
 xAg
 xAg
 aay
+axQ
 aaH
-aaH
-ijS
+axL
 ijS
 aaR
 aab
@@ -146081,7 +148561,7 @@ sIg
 aaa
 aaa
 aab
-tmc
+abi
 aan
 aan
 nJL
@@ -146090,9 +148570,9 @@ pRt
 aai
 aai
 qHM
+aiq
 aai
-aai
-aai
+abK
 aai
 aai
 aai
@@ -146101,19 +148581,19 @@ aai
 lSo
 aai
 aai
-aai
-aai
-aai
+abK
+abK
+abK
 aai
 gph
 aai
 aai
 pRt
-qhi
+axR
 aaH
-aai
-aai
-aaR
+abK
+abK
+axG
 aab
 aaa
 aaa
@@ -146333,7 +148813,7 @@ sIg
 aaa
 aaa
 aab
-xZx
+ahB
 mgY
 mgY
 awO
@@ -146341,9 +148821,9 @@ aaf
 aaf
 aaf
 aaf
-tgH
-aco
-acb
+ayf
+ayq
+ayn
 aai
 scz
 gYx
@@ -146356,7 +148836,7 @@ voC
 rVH
 aai
 kOA
-qvm
+ald
 vks
 aaf
 aaf
@@ -146585,17 +149065,17 @@ sIg
 aaa
 aaa
 aab
-lSo
+ahY
 uZE
 aaj
 aaj
 aaj
 aaf
 aai
-aai
-qHM
-aai
-fuw
+abK
+ayv
+abK
+ayl
 aai
 acb
 tGl
@@ -146608,9 +149088,9 @@ vks
 ghA
 aai
 cDq
-aai
+abK
 gph
-aai
+abK
 aai
 aaf
 aaT
@@ -146837,7 +149317,7 @@ sIg
 aaa
 aaa
 aab
-lSo
+ahY
 uZE
 aaj
 aaj
@@ -146846,13 +149326,13 @@ aaf
 aai
 aai
 gYx
-acp
-teU
-aai
-aai
-acy
-aai
-lSo
+ayr
+ayo
+abK
+abK
+ayg
+abK
+ahY
 aai
 atY
 atV
@@ -146862,8 +149342,8 @@ aai
 rVH
 kVA
 miR
-aai
-aai
+abK
+abK
 aaf
 aaT
 aaH
@@ -147118,8 +149598,8 @@ aab
 aab
 aab
 aaT
-aaH
-aai
+axQ
+abK
 rrK
 fQy
 aab
@@ -147370,9 +149850,9 @@ att
 aaM
 aab
 aab
-qhi
-mOW
-fQy
+axR
+axM
+axJ
 aab
 aab
 aaa
@@ -199496,7 +201976,7 @@ oPX
 adp
 adp
 adp
-hSM
+aaf
 aaj
 aaj
 aaj
@@ -199733,7 +202213,7 @@ lSi
 xxI
 awY
 deV
-dHF
+sOE
 lRy
 aQS
 aaf
@@ -199744,9 +202224,9 @@ aaf
 aaf
 aaf
 aaf
-aaf
-aaC
-aaC
+pRt
+sPH
+sPH
 aaC
 aaf
 aaj
@@ -199992,12 +202472,12 @@ aaf
 jGj
 aaf
 aaf
+aDJ
 ady
-ady
-ady
-aax
+aDv
+aDt
 wQh
-kSP
+aDl
 kSP
 yfv
 aaf
@@ -200243,15 +202723,15 @@ abe
 nnT
 hzY
 aaf
-aax
-ady
-ady
-ady
-aax
-hVw
+aDT
+aDK
+avE
+avE
+acD
+aDp
 lSo
-lSo
-xBV
+ahY
+aCY
 aaf
 aaj
 aaj
@@ -200495,15 +202975,15 @@ abe
 nnT
 hzY
 aaf
-aax
-ady
+aDV
+avE
 ady
 ady
 aax
 hVw
 lSo
-lSo
-xBV
+alt
+aCZ
 aaf
 aaf
 faT
@@ -200747,17 +203227,17 @@ awA
 nnT
 hzY
 aaf
-aax
-ady
-ady
+aDW
+avE
+avE
 ady
 aaf
-hVw
-aan
-aai
-xBV
-aao
-aaw
+aDp
+adY
+abK
+aCY
+iWr
+yfK
 fXs
 fXs
 fXs
@@ -200999,21 +203479,21 @@ sPH
 pRt
 mFX
 aaf
-aax
+aDX
 ady
-ady
-ady
+avE
+aDw
 aaf
 hVw
-aai
-aan
-xBV
+abK
+abe
+aCY
 aao
+abe
 aan
 aan
-aan
-aan
-aan
+abe
+abe
 aan
 aan
 aam
@@ -201246,24 +203726,24 @@ aaj
 aaf
 aaf
 aai
+amD
 aai
-aai
 aaf
 aaf
 aaf
 aaf
-ady
-ady
-ady
+aDL
+avE
+aDx
 aaf
 hVw
 lSo
 lSo
-xBV
+aCY
 aao
-aan
-aan
-aan
+abe
+abe
+abe
 aan
 aan
 aan
@@ -201495,26 +203975,26 @@ aaj
 aaj
 aaj
 aaj
-aaf
+pRt
 acg
-acc
-abv
+acJ
+aEh
 aai
 aai
 aaf
 aaf
-aax
+aDY
 ady
-ady
-ady
+aDB
+avE
 aaf
-hVw
+aDp
+ahY
 lSo
-lSo
-xBV
+aDa
 aao
 aan
-aan
+abe
 aan
 aan
 aan
@@ -201755,14 +204235,14 @@ aai
 aai
 aan
 aaf
-aax
+aDV
 ady
-ady
-ady
+aDC
+avE
 aaf
 urc
-vqS
-vqS
+aDm
+aDg
 tor
 aao
 aaw
@@ -202003,19 +204483,19 @@ aaj
 aaj
 aaj
 elH
-aai
+ahX
 aai
 aan
 aaf
-aax
+aDV
 ady
-ady
-ady
+aDD
+aDy
 aaf
 aax
 aax
-aax
-aax
+acD
+acD
 aaf
 aaf
 tyM
@@ -202255,20 +204735,20 @@ aaj
 aaj
 aaj
 elH
-aai
-aai
+akM
+abK
 aan
 aaf
-aax
-ady
-ady
-ady
-aaf
-ady
-ady
-ady
+aDT
+aDM
+avE
 ady
 aaf
+ady
+ady
+ady
+aDb
+pRt
 aaj
 aaj
 aaj
@@ -202508,19 +204988,19 @@ aaj
 aaj
 elH
 aai
-aai
-lSo
+ayb
+ahY
 aaf
 aaf
 aax
-aax
+acD
 aax
 aaf
 ady
+avI
 ady
-ady
-ady
-aaf
+aDc
+pRt
 aaj
 aaj
 aaj
@@ -202759,19 +205239,19 @@ aaj
 aaj
 aaj
 ajp
-aan
+adY
 wIy
 wIy
-acg
+aEe
 abv
 lSo
 aan
-aan
+adY
 aax
-ady
-ady
-ady
-ady
+avE
+avE
+avE
+aDd
 aaf
 aaj
 aaj
@@ -203006,23 +205486,23 @@ aaj
 aaj
 aaj
 aaj
-aaf
+pRt
 aaj
 aaj
 aaj
 ajp
-aan
-aai
+adY
+aCh
 lSo
-ach
-abG
+acF
+aDZ
 lSo
 aai
-aan
+adY
 aax
+avE
 ady
-ady
-ady
+aDh
 aaf
 aaf
 aaj
@@ -203258,23 +205738,23 @@ aaj
 aaj
 aaj
 aaj
-aaf
+pRt
 aaj
 aaj
 aaj
 ajp
-aan
+aDn
+wIy
+aEf
+acF
+aEa
+aDN
 wIy
 wIy
-ach
-abG
-wIy
-wIy
-wIy
-aax
+aDu
 ady
-ady
-ady
+avE
+avE
 aaf
 aaj
 aaj
@@ -203510,23 +205990,23 @@ aaj
 aaj
 aaj
 aaj
-aaf
+pRt
 aaj
 aaj
 aaj
 ajp
-aan
-aai
+aEg
+abK
 lSo
-ach
-abG
-lSo
+acF
+acQ
+ahY
 aai
-aan
+adY
 aax
-ady
-ady
-ady
+aDr
+avE
+aDi
 aaf
 aaf
 aaj
@@ -203767,19 +206247,19 @@ aaj
 aaj
 aaj
 ajp
-aan
-wIy
+adY
+aih
 wIy
 adK
 abs
-lSo
+alt
 aan
-aan
+adY
 aax
 ady
 ady
-ady
-ady
+avE
+aDd
 aaf
 aaj
 aaj
@@ -204020,7 +206500,7 @@ aaj
 aaj
 elH
 aai
-aai
+ayb
 lSo
 aaf
 aaf
@@ -204030,9 +206510,9 @@ aax
 aaf
 ady
 ady
-ady
-ady
-aaf
+aDj
+aDc
+pRt
 aaj
 aaj
 aaj
@@ -204271,20 +206751,20 @@ aaj
 aaj
 aaj
 elH
-aai
-aai
+abK
+ahX
 aan
 aaf
-aax
-ady
-ady
-ady
-aaf
-ady
-ady
-ady
+aDT
+aDP
+avE
 ady
 aaf
+aDs
+ady
+avE
+avE
+pRt
 aaj
 aaj
 aaj
@@ -204524,18 +207004,18 @@ aaj
 aaj
 elH
 aai
-aai
+abK
 aan
 aaf
-aax
-ady
-ady
-ady
+aEb
+avE
+avE
+aDz
 aaf
+acD
 aax
-aax
-aax
-aax
+acD
+aDe
 aaf
 aaf
 aaj
@@ -204776,17 +207256,17 @@ vsi
 hqn
 abv
 aai
-aai
+abK
 aan
 aaf
-aax
-ady
-ady
-ady
+aEc
+avE
+aDc
+aDx
 aaf
 wQh
 kSP
-kSP
+aDk
 kSP
 yfv
 aaf
@@ -205023,23 +207503,23 @@ aaj
 aaj
 aaj
 aaj
-aaf
-adK
-rlZ
+pRt
+aEi
+aca
 abs
 aai
 aai
 aaf
 aaf
-aax
+aDT
 ady
-ady
-ady
+aDE
+aDA
 aaf
-hVw
-aan
-lSo
-aan
+aDp
+aDn
+ahY
+aDf
 xBV
 aaf
 aaj
@@ -205277,22 +207757,22 @@ aaj
 aaj
 aaf
 aaf
+abK
+abK
 aai
-aai
-aai
 aaf
 aaf
 aaf
 aaf
-ady
-ady
-ady
+aDQ
+aDH
+avE
 aaf
 urc
+aDg
+aDg
 vqS
-vqS
-vqS
-tor
+aCX
 aaf
 aaj
 aaj
@@ -205535,16 +208015,16 @@ aaf
 aaf
 aaj
 aaf
-aax
+aDT
 ady
-ady
-ady
+aDI
+aDd
 aaf
-aaf
+pRt
+aDo
+abS
 abL
-abL
-abL
-aaf
+pRt
 aaf
 aaj
 aaj
@@ -205787,9 +208267,9 @@ aaj
 aaj
 aaj
 aaf
-aax
-ady
-ady
+aDV
+aDR
+aDd
 aaf
 aaf
 adp
@@ -206039,8 +208519,8 @@ aaj
 aaj
 aaj
 aaf
-aax
-aax
+aEd
+aDS
 aaf
 aaf
 adp
@@ -207092,7 +209572,7 @@ eRa
 sQi
 rcR
 xAg
-xAg
+act
 uZE
 aaj
 aaj
@@ -207344,7 +209824,7 @@ uxo
 bxM
 rDA
 rcR
-aai
+abK
 uZE
 aaj
 aaj
@@ -207596,7 +210076,7 @@ rDA
 gph
 lSo
 xAg
-xAg
+act
 uZE
 aaj
 aaj
@@ -208100,7 +210580,7 @@ dSx
 its
 aak
 lJn
-gph
+aln
 aan
 pRt
 aaj
@@ -208352,7 +210832,7 @@ aak
 nIV
 nIV
 lJn
-gph
+aln
 aan
 pRt
 aaj
@@ -208604,7 +211084,7 @@ cVr
 aak
 lSi
 aai
-gph
+aln
 aan
 pRt
 aaj
@@ -208856,7 +211336,7 @@ cmz
 aai
 rcR
 aai
-gph
+aln
 aan
 pRt
 aaj
@@ -209108,7 +211588,7 @@ aai
 rcR
 lSi
 aai
-gph
+aln
 aan
 pRt
 aaj
@@ -209334,7 +211814,7 @@ aaj
 aaj
 aaj
 aab
-aai
+abK
 aai
 aak
 aak
@@ -209358,7 +211838,7 @@ kVA
 kVA
 kVA
 kVA
-kVA
+aCU
 kVA
 miR
 aaf
@@ -209586,33 +212066,33 @@ aaj
 aaj
 aaj
 aab
-aai
+abK
 aai
 aai
 wdS
 aai
 nAb
 cDq
-aai
-gph
+abK
+aln
+ald
 qvm
 qvm
+ald
+rVH
+axU
+aCV
 qvm
 qvm
 rVH
 miR
 qvm
-qvm
-qvm
-rVH
-miR
-qvm
-qvm
+ald
 qvm
 vks
-lSo
+ahY
 xAg
-xAg
+act
 uZE
 aaj
 aaj
@@ -209839,32 +212319,32 @@ aaj
 aaj
 aab
 ybr
+ald
 qvm
 qvm
-qvm
-vks
+axS
 jnu
-rVH
+aCW
 kVA
-miR
-aai
+axU
+abK
 aan
 aan
-aai
-gph
+abK
+aln
 cDq
-aan
+abe
 aai
 aan
-gph
-cDq
-aai
-aan
+aln
+akR
+abK
+ayi
 aan
 gph
 lSo
-aai
-aai
+abK
+abK
 uZE
 aaj
 aaj
@@ -210092,7 +212572,7 @@ aaj
 aab
 cSG
 fUi
-aai
+abK
 qcc
 pfL
 aab
@@ -210108,7 +212588,7 @@ cDq
 aan
 aai
 aan
-gph
+aln
 cDq
 aab
 aab
@@ -210344,7 +212824,7 @@ aaj
 aab
 aab
 cti
-aai
+abK
 pfL
 aab
 aab
@@ -210606,6 +213086,7 @@ aaj
 aaj
 aaj
 aaj
+aky
 aaj
 aaj
 aaj
@@ -210614,8 +213095,7 @@ aaj
 aaj
 aaj
 aaj
-aaj
-aaj
+aky
 aaj
 aaj
 aaj
@@ -210858,6 +213338,7 @@ aaj
 aaj
 aaj
 aaj
+aky
 aaj
 aaj
 aaj
@@ -210866,8 +213347,7 @@ aaj
 aaj
 aaj
 aaj
-aaj
-aaj
+aky
 aaj
 aaj
 aaj
@@ -211110,6 +213590,7 @@ aaj
 aaj
 aaj
 aaj
+aky
 aaj
 aaj
 aaj
@@ -211117,9 +213598,8 @@ aaj
 aaj
 aaj
 aaj
-aaj
-aaj
-aaj
+aky
+aky
 aaj
 aaj
 aaj
@@ -211362,15 +213842,15 @@ aaj
 aaj
 aaj
 aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
+aky
+aky
+aky
+aky
+aky
+aky
+aky
+aky
+aky
 aaj
 aaj
 aaj

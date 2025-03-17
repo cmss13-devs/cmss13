@@ -52,7 +52,7 @@
 #define MOB_HUD_HUNTER_CLAN 20
 #define MOB_HUD_EXECUTE 21
 #define MOB_HUD_NEW_PLAYER 22
-#define MOB_HUD_SPYCAMS 22
+#define MOB_HUD_SPYCAMS 23
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

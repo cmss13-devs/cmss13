@@ -329,7 +329,10 @@
 			if(is_path_in_list(current_product, additional_preload_icons))
 				item = new current_product()
 				if(ispath(current_product, /obj/item/weapon))
-					new_icon = icon(item.icon, item.icon_state, SOUTH)
+					if(ispath(current_product, /obj/item/weapon/gun))
+						new_icon = icon('icons/obj/items/weapons/guns/gun_vendor_previews.dmi', item.icon_state, SOUTH)
+					else
+						new_icon = icon(item.icon, item.icon_state, SOUTH)
 					var/new_color = initial(item.color)
 					if(!isnull(new_color) && new_color != "#FFFFFF")
 						new_icon.Blend(new_color, ICON_MULTIPLY)

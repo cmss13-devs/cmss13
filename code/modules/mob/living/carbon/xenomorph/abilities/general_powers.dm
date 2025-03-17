@@ -562,36 +562,39 @@
 	to_chat(X, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
 	return ..()
 
-/turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/X)
+/turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/xeno)
 	if(is_weedable() < FULLY_WEEDABLE || !can_xeno_build(src))
-		to_chat(X, SPAN_XENOWARNING("We can't do that here."))
+		to_chat(xeno, SPAN_XENOWARNING("We can't do that here."))
 		return FALSE
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in src
 	if(!alien_weeds)
-		to_chat(X, SPAN_XENOWARNING("We can only shape on weeds. We must find some resin before we start building!"))
+		to_chat(xeno, SPAN_XENOWARNING("We can only shape on weeds. We must find some resin before we start building!"))
 		return FALSE
 
 	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
 	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
-	var/obj/structure/stairs/staircase = locate() in src
-	if(staircase)
-		to_chat(X, SPAN_XENOWARNING("We cannot make a hole beneath a staircase!"))
+	if(locate(/obj/structure/stairs) in src)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a staircase!"))
 		return FALSE
 
-	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
-		to_chat(X, SPAN_XENOWARNING("These weeds don't belong to our hive!"))
+	if(locate(/obj/structure/monorail) in src)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a track!"))
 		return FALSE
 
-	if(!X.check_alien_construction(src, check_doors = TRUE))
+	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
+		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to our hive!"))
+		return FALSE
+
+	if(!xeno.check_alien_construction(src, check_doors = TRUE))
 		return FALSE
 
 	if(locate(/obj/effect/alien/resin/trap) in orange(1, src)) // obj/effect/alien/resin presence is checked on turf by check_alien_construction, so we just check orange.
-		to_chat(X, SPAN_XENOWARNING("This is too close to another resin hole!"))
+		to_chat(xeno, SPAN_XENOWARNING("This is too close to another resin hole!"))
 		return FALSE
 
 	if(locate(/obj/effect/alien/resin/fruit) in orange(1, src))
-		to_chat(X, SPAN_XENOWARNING("This is too close to a fruit!"))
+		to_chat(xeno, SPAN_XENOWARNING("This is too close to a fruit!"))
 		return FALSE
 
 	return alien_weeds

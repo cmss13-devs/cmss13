@@ -500,7 +500,7 @@
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
 				else
-					embryo.counter = embryo.per_stage_hugged_time
+					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 
 	current_human.chem_effect_flags |= CHEM_EFFECT_ANTI_PARASITE
 	to_chat(current_human, SPAN_NOTICE("Your body feels warmer."))

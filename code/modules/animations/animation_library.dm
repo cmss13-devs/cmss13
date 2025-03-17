@@ -9,6 +9,12 @@ This is something like a gun spin, where the user spins it in the hand.
 Instead of being uniform, it starts out a littler slower, goes fast in the middle, then slows down again.
 4 ticks * 5 = 2 seconds. Doesn't loop on default, and spins right.
 */
+
+/proc/send_animating_signal(atom/A) //following code is intended for signalling pixel shifting animations, unsure of function to others
+	if(istype(A, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = A
+		SEND_SIGNAL(H, COMSIG_HUMAN_ANIMATING)
+
 /proc/animation_wrist_flick(atom/A, direction = 1, loop_num = 0) //-1 for a left spin.
 	animate(A, transform = matrix(120 * direction, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)
 	animate(transform = matrix(240 * direction, MATRIX_ROTATE), time = 1)
@@ -174,11 +180,12 @@ Can look good elsewhere as well.*/
 
 
 /mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
+	send_animating_signal(src)
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
-	if(buckled || anchored)
-		return //it would look silly.
+	if(buckled || anchored || HAS_TRAIT(src, TRAIT_HAULED)) //it would look silly.
+		return 
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)
@@ -206,7 +213,6 @@ Can look good elsewhere as well.*/
 			pixel_y_diff = -pixel_offset
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
-
 
 /atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	if(!sections)
@@ -240,6 +246,7 @@ Can look good elsewhere as well.*/
 
 /atom/proc/sway_jitter(times = 3, steps = 3, strength = 3, sway = 5)
 	var/sway_dir = 1 //left to right
+	send_animating_signal(src)
 	animate(src, transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING, flags = ANIMATION_PARALLEL)
 	for(var/i in 1 to steps)
 		animate(transform = turn(matrix(transform), sway*2 * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING)

@@ -4,6 +4,9 @@
 	if(..())
 		return TRUE
 
+	if(HAS_TRAIT(attacking_mob, TRAIT_HAULED))
+		return
+
 	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
 	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
@@ -305,4 +308,4 @@
 			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
 		else
 			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
-	to_chat(src, examine_block(limb_message.Join("\n")))
+	to_chat(src, boxed_message(limb_message.Join("\n")))

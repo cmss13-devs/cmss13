@@ -16,5 +16,5 @@ AddTimelock(/datum/job/command/pilot/dropship_pilot, list(
 
 /obj/effect/landmark/start/pilot/dropship_pilot
 	name = JOB_DROPSHIP_PILOT
-	icon_state = "po_spawn"
+	icon_state = "dp_spawn"
 	job = /datum/job/command/pilot/dropship_pilot

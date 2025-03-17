@@ -196,3 +196,27 @@
 	plane = DISPLACEMENT_PLATE_RENDER_LAYER
 	render_target = DISPLACEMENT_PLATE_RENDER_TARGET
 	render_relay_plane = null
+
+/atom/movable/screen/plane_master/open_space
+	name = "open space plane"
+	plane = OPEN_SPACE_PLANE_START
+
+/atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
+	name = "open space plane [offset]"
+	plane -= offset
+	. = ..()
+	add_filter("multizblur", 1, gauss_blur_filter(0.5 + 0.25 * (offset + 1)))
+
+/atom/movable/screen/plane_master/openspace_backdrop
+	name = "open space plane master"
+	plane = OPENSPACE_BACKDROP_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_MULTIPLY
+	alpha = 255
+
+/atom/movable/screen/plane_master/openspace_backdrop/Initialize()
+	. = ..()
+	filters = list()
+	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -10)
+	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -15)
+	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)

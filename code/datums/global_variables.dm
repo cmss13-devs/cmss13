@@ -112,7 +112,7 @@
 
 	html += "</body></html>"
 
-	show_browser(usr, html, "View Global Variables", "global_variables", "size=475x650")
+	show_browser(usr, html, "View Global Variables", "global_variables", width = 475, height = 650)
 
 	return
 
@@ -267,7 +267,8 @@
 		names = sortList(names)
 
 		variable = tgui_input_list(usr, "Which var?","Var", names)
-		if(!variable) return
+		if(!variable)
+			return
 		var_value = global.vars[variable]
 
 		if((variable in locked) && !check_rights(R_DEBUG))
@@ -363,37 +364,44 @@
 
 		if("text")
 			var/var_new = input("Enter new text:","Text",global.vars[variable]) as null|text
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("num")
 			var/var_new = tgui_input_real_number(usr, "Enter new number:", "Num", global.vars[variable])
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("type")
 			var/var_new = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("reference")
 			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob|obj|turf|area in world
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("mob reference")
 			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob in GLOB.mob_list
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("file")
 			var/var_new = input("Pick file:","File",global.vars[variable]) as null|file
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("icon")
 			var/var_new = input("Pick icon:","Icon",global.vars[variable]) as null|icon
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("matrix")

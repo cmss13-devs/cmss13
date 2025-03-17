@@ -1,4 +1,4 @@
-/client/proc/discord_connect()
+/client/verb/discord_connect()
 	set name = "Discord Certify"
 	set category = "OOC"
 
@@ -6,6 +6,13 @@
 
 	if(total_playtime < CONFIG_GET(number/certification_minutes))
 		to_chat(src, SPAN_ALERTWARNING("You don't have enough minutes - [CONFIG_GET(number/certification_minutes) - total_playtime] remaining."))
+		return
+
+	if(!player_data)
+		load_player_data()
+
+	if(player_data.discord_link)
+		to_chat(src, SPAN_ALERTWARNING("You already have a linked Discord. Ask an Admin to remove it."))
 		return
 
 	var/datum/view_record/discord_identifier/ident = locate() in DB_VIEW(/datum/view_record/discord_identifier, DB_AND(

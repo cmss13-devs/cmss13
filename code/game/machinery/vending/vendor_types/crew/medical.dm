@@ -2,7 +2,7 @@
 	name = "\improper ColMarTech Medical Equipment Rack"
 	desc = "An automated equipment vendor for the Medical Department."
 	req_access = list(ACCESS_MARINE_MEDBAY)
-	vendor_role = list(JOB_DOCTOR,JOB_NURSE,JOB_RESEARCHER,JOB_CMO)
+	vendor_role = list(JOB_DOCTOR,JOB_FIELD_DOCTOR,JOB_NURSE,JOB_RESEARCHER,JOB_CMO)
 	icon_state = "dress"
 
 /obj/structure/machinery/cm_vending/clothing/medical_crew/get_listed_products(mob/user)
@@ -20,7 +20,7 @@
 	else if(user.job == JOB_CMO)
 		///defined in senior_officers.dm
 		return GLOB.cm_vending_clothing_cmo
-	else if(user.job == JOB_DOCTOR)
+	else if(user.job == JOB_DOCTOR || user.job == JOB_FIELD_DOCTOR)
 		return GLOB.cm_vending_clothing_doctor
 	return ..()
 
@@ -92,6 +92,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 	))
 

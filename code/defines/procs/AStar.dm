@@ -60,12 +60,14 @@ length to avoid portals or something i guess?? Not that they're counted right no
 		j >>= 1
 
 /PriorityQueue/proc/Dequeue()
-	if(!length(L)) return 0
+	if(!length(L))
+		return 0
 	. = L[1]
 	Remove(1)
 
 /PriorityQueue/proc/Remove(i)
-	if(i > length(L)) return 0
+	if(i > length(L))
+		return 0
 	L.Swap(i,length(L))
 	L.Cut(length(L))
 	if(i < length(L))
@@ -124,7 +126,8 @@ length to avoid portals or something i guess?? Not that they're counted right no
 	var/closed[] = new()
 	var/path[]
 	start = get_turf(start)
-	if(!start) return 0
+	if(!start)
+		return 0
 
 	open.Enqueue(new /PathNode(start,null,0,call(start,dist)(end)))
 

@@ -46,5 +46,6 @@
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 
+	GLOB.round_statistics?.save()
 
 	return TRUE

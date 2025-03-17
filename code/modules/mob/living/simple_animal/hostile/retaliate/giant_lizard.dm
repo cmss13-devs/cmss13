@@ -30,7 +30,7 @@
 	response_harm  = "punches"
 	friendly = "nuzzles"
 	see_in_dark = 50
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 	speak_chance = 2
 	speak_emote = "hisses"
@@ -86,7 +86,7 @@
 	/// A weakref to the food object that the mob is trying to eat.
 	var/datum/weakref/food_target_ref
 	///A list of foods the mob is interested in eating. The mob will eat anything that has meat protein in it even if it's not in this list.
-	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/packaged_meal, /obj/item/reagent_container/food/snacks/resin_fruit)
+	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/mre_food, /obj/item/reagent_container/food/snacks/resin_fruit)
 	///Is the mob currently eating the food_target?
 	var/is_eating = FALSE
 	///Cooldown dictating how long the mob will wait between eating food.

@@ -185,7 +185,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 10)
+	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 5)
 	flags = REAGENT_SCANNABLE
 
 /datum/reagent/toxin/chloralhydrate

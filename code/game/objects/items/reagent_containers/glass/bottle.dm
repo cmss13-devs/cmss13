@@ -41,12 +41,18 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0) filling.icon_state = null
-			if(1 to 20) filling.icon_state = "[icon_state]-20"
-			if(21 to 40) filling.icon_state = "[icon_state]-40"
-			if(41 to 60) filling.icon_state = "[icon_state]-60"
-			if(61 to 80) filling.icon_state = "[icon_state]-80"
-			if(81 to INFINITY) filling.icon_state = "[icon_state]-100"
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "[icon_state]-20"
+			if(21 to 40)
+				filling.icon_state = "[icon_state]-40"
+			if(41 to 60)
+				filling.icon_state = "[icon_state]-60"
+			if(61 to 80)
+				filling.icon_state = "[icon_state]-80"
+			if(81 to INFINITY)
+				filling.icon_state = "[icon_state]-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling

@@ -97,6 +97,10 @@
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return FALSE
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
+		return
 	if(OT.density || !isturf(OT) || !OT.allow_construction)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return FALSE
@@ -360,7 +364,8 @@
 		if(rounds)
 			to_chat(user, SPAN_WARNING("There's already an ammo box inside of [src], remove it first!"))
 			return
-		if(user.action_busy) return
+		if(user.action_busy)
+			return
 		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
 		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
 		rounds = min(rounds + magazine.current_rounds, rounds_max)

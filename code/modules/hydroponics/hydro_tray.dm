@@ -110,11 +110,12 @@
 	// If there is no seed data (and hence nothing planted),
 	// or the plant is dead, process nothing further.
 	if(!seed || dead)
-		if(draw_warnings) update_icon() //Harvesting would fail to set alert icons properly.
+		if(draw_warnings)
+			update_icon() //Harvesting would fail to set alert icons properly.
 		return
 
 	// Advance plant age.
-	if(prob(30))
+	if(prob(30) && nutrilevel > 0 && waterlevel > 0)
 		age += 1 * HYDRO_SPEED_MULTIPLIER
 
 	//Highly mutable plants have a chance of mutating every tick.
@@ -143,8 +144,6 @@
 		plant_health += (nutrilevel < 2 ? -healthmod : healthmod)
 	if(seed.requires_water && prob(35))
 		plant_health += (waterlevel < 10 ? -healthmod : healthmod)
-	if(nutrilevel < 1)
-		plant_health = 0
 
 	// Check that pressure, heat are all within bounds.
 	// First, handle an open system or an unconnected closed system.
@@ -260,7 +259,8 @@
 
 //Clears out a dead plant.
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/remove_dead(mob/user)
-	if(!user || !dead) return
+	if(!user || !dead)
+		return
 
 	seed = null
 	dead = 0
@@ -329,9 +329,11 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/weed_invasion()
 
 	//Remove the seed if something is already planted.
-	if(seed) seed = null
+	if(seed)
+		seed = null
 	seed = GLOB.seed_types[pick(list("mushrooms","plumphelmet","harebells","poppies","grass","weeds"))]
-	if(!seed) return //Weed does not exist, someone fucked up.
+	if(!seed)
+		return //Weed does not exist, someone fucked up.
 
 	dead = 0
 	age = 0

@@ -59,7 +59,7 @@
 		return
 	if(istype(B, /obj/item/paper/research_notes))
 		var/obj/item/paper/research_notes/note = B
-		if(!target || (mode == MODE_RELATE && !reference))
+		if(!target || (mode == MODE_RELATE || mode == MODE_ADD) && !reference && note.data)
 			B = note.convert_to_chem_report()
 		else
 			to_chat(user, SPAN_WARNING("Chemical data already inserted."))

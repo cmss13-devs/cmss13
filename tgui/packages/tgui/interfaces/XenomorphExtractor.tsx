@@ -152,6 +152,7 @@ export const XenomorphExtractor = () => {
                   options={dropdownOptions}
                   color={'#876500'}
                   onSelected={(value) => setSelectedTab(value)}
+                  dropdownTextColor="#ffbf00"
                 />
               </Box>
             </Section>
@@ -195,7 +196,7 @@ export const XenomorphExtractor = () => {
                                   {BulkPrint.map((buttons) => (
                                     <Button
                                       key={buttons}
-                                      mr={'3px'}
+                                      mr={'1px'}
                                       width={'35px'}
                                       tooltip={upgrades.desc}
                                       tooltipPosition="left"

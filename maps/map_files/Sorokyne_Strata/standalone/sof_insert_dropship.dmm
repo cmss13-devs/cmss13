@@ -446,7 +446,7 @@
 	pixel_y = 22;
 	pixel_x = 8
 	},
-/obj/item/clothing/head/ivanberet/SOF_beret,
+/obj/item/clothing/head/beret/SOF_beret,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/strata/interior/shuttle_sof)
 "Cr" = (

@@ -127,6 +127,12 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"aau" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/maint)
 "aaw" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -1982,14 +1988,6 @@
 /obj/structure/inflatable/door,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
-"afU" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/item/stack/sheet/plasteel/medium_stack,
-/obj/item/stack/sheet/plasteel/medium_stack,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/interior/outpost/engi)
 "afV" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 1
@@ -4475,7 +4473,7 @@
 	icon_state = "xgib6"
 	},
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "anb" = (
@@ -7875,7 +7873,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/tearlake)
 "awt" = (
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "awu" = (
@@ -8133,7 +8131,7 @@
 /area/strata/interior/outpost/engi)
 "axe" = (
 /obj/structure/bed/chair,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "axf" = (
@@ -8219,7 +8217,6 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_box/magazine/misc/mre/upp,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -8435,8 +8432,8 @@
 /area/strata/exterior/deep_jungle/old_tunnels)
 "axV" = (
 /obj/item/stack/rods,
-/obj/item/stack/sheet/metal/medium_stack,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/strata,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "axW" = (
@@ -8911,7 +8908,7 @@
 	dir = 4
 	},
 /obj/item/stack/rods,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "azv" = (
@@ -9198,7 +9195,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aAk" = (
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "aAl" = (
@@ -9229,7 +9226,7 @@
 /area/strata/interior/outpost/engi)
 "aAo" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aAp" = (
@@ -9279,13 +9276,10 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_box/magazine/misc/mre/upp,
-/obj/item/tool/crowbar,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
 /obj/structure/barricade/handrail/strata,
-/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "aAx" = (
@@ -9919,7 +9913,7 @@
 /area/strata/exterior/marsh/water_marshes)
 "aCt" = (
 /obj/item/stack/rods,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/strata,
 /area/strata/exterior/deep_jungle/ruin)
 "aCv" = (
@@ -11703,7 +11697,7 @@
 "aIb" = (
 /obj/item/stack/sheet/wood,
 /obj/item/stack/rods,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/ruin)
 "aIc" = (
@@ -11990,7 +11984,7 @@
 "aIW" = (
 /obj/structure/closet/bombcloset,
 /obj/item/clothing/suit/armor/bulletproof,
-/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "aIX" = (
@@ -12282,7 +12276,7 @@
 "aJJ" = (
 /obj/structure/barricade/wooden,
 /obj/item/stack/rods,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/ruin)
 "aJK" = (
@@ -17363,7 +17357,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/shed_five_caves)
 "aYm" = (
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "aYn" = (
@@ -17906,7 +17900,7 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/marsh/spring_marshes)
 "aZR" = (
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
 /area/strata/interior/outpost/engi/drome)
 "aZS" = (
@@ -37482,7 +37476,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/admin)
 "cBv" = (
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/outpost_platform)
 "cBI" = (
@@ -42342,8 +42336,8 @@
 "iQB" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/platform/metal/strata/east,
-/obj/item/stack/sheet/plasteel/medium_stack,
 /obj/effect/landmark/objective_landmark/science,
+/obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "iRk" = (
@@ -43327,12 +43321,12 @@
 /turf/open/floor/almayer/plate,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "kgQ" = (
-/obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/disposalpipe/segment{
 	color = "#858680";
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "khg" = (
@@ -45380,10 +45374,10 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/mining_outpost_exterior)
 "mSK" = (
-/obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/disposalpipe/segment{
 	color = "#858680"
 	},
+/obj/item/stack/sheet/metal,
 /turf/open/floor/almayer/test_floor5,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "mUD" = (
@@ -46138,8 +46132,8 @@
 /turf/open/gm/dirt/brown/variant_5/west,
 /area/strata/exterior/deep_jungle/south)
 "nXd" = (
-/obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
+/obj/item/stack/sheet/metal,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "nXq" = (
@@ -50362,7 +50356,7 @@
 "tlo" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal,
 /turf/open/asphalt/cement/cement12,
 /area/strata/interior/outpost/engi/drome)
 "tlJ" = (
@@ -51261,8 +51255,6 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/bball)
 "uqY" = (
-/obj/item/stack/sheet/metal/medium_stack,
-/obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
@@ -76273,7 +76265,7 @@ twi
 awc
 bCF
 bEL
-afU
+uqY
 uqY
 bXq
 aUS
@@ -84158,7 +84150,7 @@ aHO
 aJG
 cjn
 cjn
-aND
+aau
 aNC
 cpU
 aRr

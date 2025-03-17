@@ -7,6 +7,8 @@
 	w_class = SIZE_SMALL
 	amount = 10
 	max_amount = 10
+	var/repair_amount_min = 1
+	var/repair_amount_max = 10
 
 
 /obj/item/stack/repairable/gunlube
@@ -19,6 +21,8 @@
 	amount = 10
 	max_amount = 10
 	stack_id = "combatoil"
+	repair_amount_min = 6
+	repair_amount_max = 20
 
 /obj/item/stack/repairable/gunkit
 	name = "firearms repair kit"
@@ -29,3 +33,4 @@
 	amount = 5
 	max_amount = 5
 	stack_id = "gunkit"
+	repair_amount_min = 50

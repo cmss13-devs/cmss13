@@ -284,39 +284,42 @@ DEFINES in setup.dm, referenced here.
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
 		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src].")
-			src.clean_blood()
+			clean_blood()
 		else
 			return
 
 	if(istype(attack_item, /obj/item/stack/repairable/gunlube))
-		var/obj/item/stack/repairable/gunlube/stack = attack_item
+		var/obj/item/stack/repairable/gunlube/oil = attack_item
 		var/repair_oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes", "repairs")
-		if(src.gun_durability == GUN_DURABILITY_MAX)
-			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with the [stack]!"))
-			src.gun_repair_maxup(user)
+		if(gun_durability == GUN_DURABILITY_MAX)
+			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with the [oil]!"))
+			gun_repair_maxup(user)
 			return
-		if(src.gun_durability < GUN_DURABILITY_LOW)
-			to_chat(user, SPAN_WARNING("[src] is too damaged to be repaired with the [stack]."))
+		if(gun_durability < GUN_DURABILITY_LOW)
+			to_chat(user, SPAN_WARNING("[src] is too damaged to be repaired with the [oil]."))
 			return
 		if(do_after(user, 60, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			user.visible_message("[user] [repair_oil_verb] [src]. It shines like new.", "You lube up the working parts of [src]. It should be slightly repaired.")
-			src.clean_blood()
-			src.gun_repair_popup(user)
-			heal_gun_durability(rand(6,20))
-			stack.use(1)
-	else if(istype(attack_item, /obj/item/stack/repairable/gunkit))
-		var/obj/item/stack/repairable/gunkit/stack = attack_item
+			clean_blood()
+			gun_repair_popup(user)
+			heal_gun_durability(rand(oil.repair_amount_min, oil.repair_amount_max))
+			oil.use(1)
+		else
+			return
+
+	if(istype(attack_item, /obj/item/stack/repairable/gunkit))
+		var/obj/item/stack/repairable/gunkit/kit = attack_item
 		var/repair_kit_verb = pick("fixes", "fastens screws to", "recalculates the settings of", "tends to", "installs some fixes to", "repairs")
-		if(src.gun_durability == GUN_DURABILITY_MAX)
-			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with [stack]!"))
-			src.gun_repair_maxup(user)
+		if(gun_durability == GUN_DURABILITY_MAX)
+			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with [kit]!"))
+			gun_repair_maxup(user)
 			return
 		if(do_after(user, 120, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			user.visible_message("[user] [repair_kit_verb] [src]. It looks durable now.", "You repair any broken parts present on [src]. It should be mostly repaired.")
-			src.clean_blood()
-			src.gun_repair_popup(user)
-			heal_gun_durability(50)
-			stack.use(1)
+			clean_blood()
+			gun_repair_popup(user)
+			heal_gun_durability(kit.repair_amount_min)
+			kit.use(1)
 		else
 			return
 

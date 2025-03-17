@@ -714,23 +714,28 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	check_worn_out()
 
 /obj/item/weapon/gun/proc/damage_gun_durability(amount = 1) //for more incremental use, such as rifle fire
-	if(gun_durability <= GUN_DURABILITY_BROKEN - 100) //as to prevent problems with normal rifle fire deleting the gun
+	if(amount > 100 && gun_durability <= GUN_DURABILITY_BROKEN) //as to prevent problems with normal rifle fire deleting the gun
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] is destroyed after incurring too much damage!")))
 		qdel(src)
-		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] gets destroyed by the resulting gunfire!")))
 	else if(prob(durability_loss * amount))
-		gun_durability = max(gun_durability - (amount / 2), GUN_DURABILITY_BROKEN)
+		gun_durability = max(gun_durability - (amount / 3), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
 	check_worn_out()
 
 /obj/item/weapon/gun/proc/blast_gun_durability(amount = 1) //for more static use, such as explosive power
 	var/blastmsg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	if(gun_durability <= GUN_DURABILITY_BROKEN - 149) //we dont want weak explosions to delete the gun e.g. grenades
-		qdel(src)
+	if(amount > 149 && gun_durability <= GUN_DURABILITY_BROKEN) //we dont want weak explosions to delete the gun e.g. grenades
 		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
+		qdel(src)
 	else
 		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
 	check_worn_out()
+
+/obj/item/weapon/gun/proc/xeno_attack_durability(mob/living/carbon/xenomorph/attacking_xeno, mob/living/user)
+	var/damage = attacking_xeno.melee_damage_lower + attacking_xeno.melee_damage_upper
+	if(attacking_xeno.zone_selected == "l_hand" || attacking_xeno.zone_selected == "r_hand") // right now it doesnt check if the gun is in that specific hand, it should but for the sake of balance, itll stay for now
+		src.damage_gun_durability(damage)
 
 //JAM CODE END
 //
@@ -1524,7 +1529,7 @@ and you're good to go.
 	// durability code for melee combat with guns
 	var/meleegun_duraloss = 0
 	if(gun_durability >= GUN_DURABILITY_BROKEN)
-		meleegun_duraloss = force * 0.05
+		meleegun_duraloss = force * 0.25
 	if(prob(durability_loss + meleegun_duraloss)) //duraloss dependent on current gun melee force
 		set_gun_durability(gun_durability - rand(1, 5)) // this should deter gun melee combat
 		update_gun_durability()

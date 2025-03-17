@@ -1,3 +1,17 @@
+// 40 gold per AD
+// 2.66 gold per health
+// 80 gold per health regen
+// 20 gold per AP
+// 1.152 gold per plasma
+// 80 gold per plasma regen
+// 96 gold per armor
+// 96 gold per acid armor
+// 56 gold per 1% cooldown reduction
+// 112 gold per slash penetration
+// 112 gold per acid penetration
+// 100 gold per 0.1 movespeed
+// 90 gold per 1% lifesteal
+
 // SINGLETONS. THERE IS NOT SOMETHING CURRENTLY IMPLEMENTED TO HOLD UNIQUE DATA PER-ITEM
 /datum/moba_item
 	var/name = ""
@@ -11,6 +25,7 @@
 	var/icon_state = ""
 	/// If TRUE, a player can only hold one of this item at a time.
 	var/unique = FALSE
+	var/tier = 0
 
 	var/health = 0
 	var/health_regen = 0
@@ -27,6 +42,16 @@
 	var/ability_cooldown_reduction = 0
 	/// Used purely for the scaling of certain abilities
 	var/acid_power = 0
+	/// 1 = full lifesteal
+	var/lifesteal = 0
+	/// Flat armor pen, acid and regular
+	var/slash_penetration = 0
+	/// Same as above but for acid attacks
+	var/acid_penetration = 0
+
+/datum/moba_item/New()
+	. = ..()
+	gold_cost = floor(gold_cost)
 
 /datum/moba_item/proc/set_total_gold_cost()
 	total_gold_cost = get_recursive_gold_cost()
@@ -90,6 +115,12 @@
 		description += "<br>Damage: +[attack_damage]"
 	if(ability_cooldown_reduction)
 		description += "<br>Cooldown Reduction: x[ability_cooldown_reduction * 100]%"
+	if(lifesteal)
+		description += "<br>Lifesteal: [lifesteal * 100]%"
+	if(slash_penetration)
+		description += "<br>Melee Armor Penetration: [slash_penetration]"
+	if(acid_penetration)
+		description += "<br>Acid Armor Penetration: [acid_penetration]"
 
 /datum/moba_item/proc/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -105,6 +136,8 @@
 	apply_attack_damage(xeno, player)
 	apply_ability_cooldown_reduction(xeno, player)
 	apply_acid_power(xeno, player, component)
+	apply_lifesteal(xeno, player, component)
+	apply_penetration(xeno, player, component)
 
 /datum/moba_item/proc/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
 	SHOULD_CALL_PARENT(TRUE)
@@ -114,8 +147,8 @@
 	component.healing_value_standing -= health_regen
 	component.healing_value_resting -= health_regen * MOBA_RESTING_HEAL_MULTIPLIER
 	xeno.plasma_max -= plasma
-	component.healing_value_standing -= plasma_regen
-	component.healing_value_resting -= plasma_regen * MOBA_RESTING_HEAL_MULTIPLIER
+	component.plasma_value_standing -= plasma_regen
+	component.plasma_value_resting -= plasma_regen * MOBA_RESTING_HEAL_MULTIPLIER
 	xeno.armor_deflection_buff -= armor
 	xeno.acid_armor_buff -= acid_armor
 	xeno.ability_speed_modifier -= speed
@@ -125,6 +158,9 @@
 	component.acid_power -= acid_power
 	if(ability_cooldown_reduction)
 		xeno.cooldown_reduction_percentage = xeno.cooldown_reduction_percentage * (1 / ability_cooldown_reduction)
+	component.lifesteal -= lifesteal
+	component.slash_penetration -= slash_penetration
+	component.acid_penetration -= acid_penetration
 
 /datum/moba_item/proc/apply_health(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component, restore_plasma_health = FALSE)
 	xeno.maxHealth += health
@@ -168,3 +204,20 @@
 
 /datum/moba_item/proc/apply_acid_power(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
 	component.acid_power += acid_power
+
+/datum/moba_item/proc/apply_lifesteal(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
+	component.lifesteal += lifesteal
+
+/datum/moba_item/proc/apply_penetration(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
+	component.slash_penetration += slash_penetration
+	component.acid_penetration += acid_penetration
+
+
+/datum/moba_item/common
+	tier = 1
+
+/datum/moba_item/uncommon
+	tier = 2
+
+/datum/moba_item/rare
+	tier = 3

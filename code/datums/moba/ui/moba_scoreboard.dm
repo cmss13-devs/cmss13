@@ -46,6 +46,7 @@
 			"level" = player_data.player.level,
 			"items" = item_list,
 			"lane" = player_data.role,
+			"creep_score" = player_data.player.creep_score,
 		))
 		data["team1_total_kills"] += player_data.player.kills
 
@@ -66,6 +67,7 @@
 			"level" = player_data.player.level,
 			"items" = item_list,
 			"lane" = player_data.role,
+			"creep_score" = player_data.player.creep_score,
 		))
 		data["team2_total_kills"] += player_data.player.kills
 

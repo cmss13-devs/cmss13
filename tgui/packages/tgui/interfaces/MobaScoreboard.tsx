@@ -21,6 +21,7 @@ type Player = {
   level: number;
   items: Item[];
   lane: string;
+  creep_score: number;
 };
 
 type BackendContext = {
@@ -98,7 +99,6 @@ const PlayerEntry = (props) => {
   if (!player) {
     return <Box style={{ flex: '1' }} />;
   }
-  // <span style={{ border: 'dotted', height: '100px' }}>Hello!</span>;
   return (
     <Box
       style={{
@@ -125,6 +125,7 @@ const PlayerEntry = (props) => {
       <Box style={{ marginLeft: '5%' }}>
         {player.kills}/{player.deaths}
       </Box>
+      <Box style={{ marginLeft: '5%' }}>{player.creep_score} CS</Box>
       <Box style={{ marginLeft: '5%', width: '100%' }}>
         {player.items.map((item) => (
           <ItemEntry item={item} key={item} />

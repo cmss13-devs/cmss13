@@ -6,6 +6,7 @@
 	health = 500
 	health_regen = 20
 	speed = -0.4
+	tier = 1
 
 /datum/moba_item/bar
 	name = "Bar"
@@ -17,6 +18,7 @@
 	plasma_regen = 50
 	armor = 20
 	attack_speed = -6
+	tier = 1
 
 /datum/moba_item/baz
 	name = "Baz"
@@ -27,3 +29,4 @@
 	)
 
 	plasma = 666
+	tier = 2

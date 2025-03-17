@@ -50,7 +50,7 @@
 
 	// We handle timers for game events using cooldowns and boolean flags
 	COOLDOWN_DECLARE(minion_spawn_cooldown)
-	var/minion_spawn_time = 30 SECONDS
+	var/minion_spawn_time = (1 MINUTES) / MOBA_WAVES_PER_MINUTE
 
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
@@ -196,27 +196,32 @@
 
 /datum/moba_controller/proc/spawn_minions()
 	COOLDOWN_START(src, minion_spawn_cooldown, minion_spawn_time)
+	var/wave_maxhp = /datum/caste_datum/lesser_drone::max_health * min(1 + round(game_duration / 6000, 0.1), 3) // scales up to 3x max HP over 20 minutes
+	var/wave_slashdamage = /datum/caste_datum/lesser_drone::melee_damage_upper * min(1 + (round(game_duration / 6000, 0.1) * 1.5), 4) // scales up to 4x melee damage over 20 minutes
 	var/list/minion_spawns = list("topleft", "topright", "botleft", "botright")
 	minion_spawns = shuffle(minion_spawns)
 	for(var/i in 1 to 4) // I know this looks retarded but I actually have a good reason for this
 		switch(minion_spawns[i]) // If both lanes have a wave spawned simultanenously, then the wave that's spawned later will actually
 			if("topleft") // always win the initial trade. Because we're randomizing it, we allow the outcome to be more coinflippy than "X side wins the initial trade 100% of the time"
-				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_topleft, XENO_HIVE_MOBA_LEFT)
+				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_topleft, XENO_HIVE_MOBA_LEFT, wave_maxhp, wave_slashdamage)
 			if("topright")
-				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_topright, XENO_HIVE_MOBA_RIGHT)
+				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_topright, XENO_HIVE_MOBA_RIGHT, wave_maxhp, wave_slashdamage)
 			if("botleft")
-				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_botleft, XENO_HIVE_MOBA_LEFT)
+				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_botleft, XENO_HIVE_MOBA_LEFT, wave_maxhp, wave_slashdamage)
 			if("botright")
-				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_botright, XENO_HIVE_MOBA_RIGHT)
+				INVOKE_ASYNC(src, PROC_REF(spawn_wave), minion_spawn_botright, XENO_HIVE_MOBA_RIGHT, wave_maxhp, wave_slashdamage)
 
-/datum/moba_controller/proc/spawn_wave(turf/location, side)
+/datum/moba_controller/proc/spawn_wave(turf/location, side, wave_maxhp, wave_slashdamage)
 	if(!location || !side)
 		return
 
-	for(var/i in 1 to 3)
+	for(var/i in 1 to MOBA_MINIONS_PER_WAVE)
 		var/mob/living/carbon/xenomorph/lesser_drone/minion = new()
-		minion.AddComponent(/datum/component/moba_minion)
+		minion.setMaxHealth(wave_maxhp)
+		minion.melee_damage_lower = wave_slashdamage
+		minion.melee_damage_upper = wave_slashdamage
 		minion.set_hive_and_update(side)
+		minion.AddComponent(/datum/component/moba_minion, map_id, MOBA_GOLD_PER_WAVE / MOBA_MINIONS_PER_WAVE, 65)
 		minion.forceMove(location)
 		sleep(0.9 SECONDS)
 

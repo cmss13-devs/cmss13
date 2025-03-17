@@ -49,13 +49,26 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 	GLOB.mapless_moba_camps -= src
 	spawn_mobs()
 
-/obj/effect/moba_camp_spawner/proc/on_mob_death(mob/living/source)
+/obj/effect/moba_camp_spawner/proc/on_mob_death(mob/living/source, datum/cause_data/cause)
 	SIGNAL_HANDLER
 
 	spawned_mobs -= source
 
 	if(!length(spawned_mobs) && !timer_started)
 		start_respawn_timer()
+
+		if(cause?.weak_mob)
+			var/mob/living/carbon/xenomorph/xeno = cause.weak_mob.resolve()
+			if(!istype(xeno))
+				return
+
+			var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
+			for(var/datum/moba_player/player as anything in (controller.team2 +controller.team1))
+				if(player.get_tied_xeno() != xeno)
+					continue
+
+				player.creep_score += MOBA_CS_PER_CAMP
+				break
 
 /obj/effect/moba_camp_spawner/proc/start_respawn_timer()
 	timer_started = TRUE

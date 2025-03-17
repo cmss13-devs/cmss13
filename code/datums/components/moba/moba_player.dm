@@ -34,6 +34,8 @@
 	var/acid_power = 0
 	/// What percentage of melee damage done is returned as health. 1 is 100%
 	var/lifesteal = 0
+	var/slash_penetration = 0
+	var/acid_penetration = 0
 
 /datum/component/moba_player/Initialize(datum/moba_player/player, id, right)
 	. = ..()

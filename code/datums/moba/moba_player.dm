@@ -17,6 +17,8 @@
 	var/list/ability_path_level_dict = list()
 	var/unspent_levels = 0
 	var/max_ultimate_level = 0
+	/// How many minions / camps (4 CS/camp) we've killed
+	var/creep_score = 0
 
 /datum/moba_player/New(ckey, client/new_client)
 	. = ..()

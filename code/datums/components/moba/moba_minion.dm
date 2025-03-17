@@ -10,13 +10,15 @@
 	/// If we don't move for a while then we die
 	var/ticks_since_last_move = 0
 	var/turf/last_turf
+	var/map_id
 
-/datum/component/moba_minion/Initialize()
+/datum/component/moba_minion/Initialize(map_id, gold_on_kill, xp_on_kill)
 	. = ..()
 	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	parent_xeno = parent
+	src.map_id = map_id
 
 	START_PROCESSING(SSprocessing, src)
 	parent_xeno.a_intent_change(INTENT_HARM)
@@ -31,6 +33,14 @@
 	parent_xeno.gibs_path = /obj/effect/decal/remains/xeno/decaying
 	parent_xeno.blood_path = /obj/effect/decal/cleanable/blood/xeno/decaying
 	RegisterSignal(parent_xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
+	parent_xeno.AddComponent(\
+		/datum/component/moba_death_reward,\
+		gold_on_kill,\
+		xp_on_kill,\
+		parent_xeno.hivenumber,\
+		TRUE,\
+		0.2,\
+	)
 
 /datum/component/moba_minion/Destroy(force, silent)
 	REMOVE_TRAIT(parent_xeno, TRAIT_MOBA_MINION, TRAIT_SOURCE_INHERENT)
@@ -117,6 +127,7 @@
 		walk(parent_xeno, 0) // stops them walking
 
 /datum/component/moba_minion/proc/attack_target()
+	var/target_is_minion = HAS_TRAIT(target, TRAIT_MOBA_MINION) // minions do less damage to eachother to ensure that clashes last longer and that CS is easier to claim
 	if(isliving(target))
 		var/mob/living/living_target = target
 		if(living_target.stat == DEAD)
@@ -124,7 +135,13 @@
 			return
 
 	is_moving_to_target = FALSE
+	if(target_is_minion)
+		parent_xeno.melee_damage_upper *= MOBA_MINION_V_MINION_DAMAGE_MULT
+		parent_xeno.melee_damage_lower = parent_xeno.melee_damage_upper
 	target.attack_alien(parent_xeno)
+	if(target_is_minion)
+		parent_xeno.melee_damage_upper *= (1 / MOBA_MINION_V_MINION_DAMAGE_MULT)
+		parent_xeno.melee_damage_lower = parent_xeno.melee_damage_upper
 	ticks_since_last_move = 0 // if we're attacking something, we can assume we're not really stuck
 
 /datum/component/moba_minion/proc/move_to_target()
@@ -135,9 +152,22 @@
 	is_moving_to_next_point = TRUE
 	walk_to(parent_xeno, next_turf_target, 0, walk_to_delay)
 
-/datum/component/moba_minion/proc/on_death(datum/source, force)
+/datum/component/moba_minion/proc/on_death(datum/source, datum/cause_data/cause)
 	SIGNAL_HANDLER
 
 	if(parent_xeno)
 		walk(parent_xeno, 0)
 		QDEL_IN(parent_xeno, rand(15 SECONDS, 25 SECONDS))
+
+	if(cause?.weak_mob)
+		var/mob/living/carbon/xenomorph/xeno = cause.weak_mob.resolve()
+		if(!istype(xeno))
+			return
+
+		var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
+		for(var/datum/moba_player/player as anything in (parent_xeno.hivenumber == XENO_HIVE_MOBA_LEFT ? controller.team2 : controller.team1))
+			if(player.get_tied_xeno() != xeno)
+				continue
+
+			player.creep_score += MOBA_CS_PER_MINION
+			break

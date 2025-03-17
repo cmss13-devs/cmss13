@@ -215,3 +215,10 @@
   itsmeow:
   - bugfix: Fixed TGUI assets and icons sometimes not showing up until you refreshed
       the page on 516 clients
+2025-03-16:
+  Drathek:
+  - bugfix: Fixed browsers sometimes not handling a mob passed instead of a client
+      (VV bitfields & tickets atleast)
+  MistChristmas:
+  - bugfix: Allows Supply Drop Console to accept 0 values. Allows OW consoles to save
+      coords with 0 values.

@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - rscadd: "\"Cooldown Complete\" messages in chat for xeno abilities are now hidden by default. You can enable them back by changing \"`Xeno Cooldown Messages\" value to \"Show\" in Settings menu."

@@ -1,0 +1,4 @@
+author: "AndroBetel"
+delete-after: True
+changes:
+  - rscadd: "You can now lean on certain walls, click drag your sprite to the wall and you just might. To stop a lean, either move, or press resist."

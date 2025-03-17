@@ -306,8 +306,8 @@
 				return FALSE
 		if(world.time > timeofdeath + revive_grace_period)
 			return FALSE // they ain't gonna burst now
-	else
-		return FALSE // leave the dead alone
+		return TRUE
+	return FALSE // leave the dead alone
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 //Note that this is overridden by every proc concerning a child of obj unless inherited

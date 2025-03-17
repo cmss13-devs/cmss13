@@ -822,6 +822,7 @@
 			if(fence.linked_terminal != linked_terminal)
 				fence.linked_terminal = linked_terminal
 				linked_terminal.linked_machinery += fence
+			fence.add_nearby_link()
 
 /obj/structure/fence/electrified/fob_fence/proc/remove_nearby_link()
 	for(var/direction in GLOB.cardinals)
@@ -829,6 +830,7 @@
 			if(fence.linked_terminal == linked_terminal)
 				fence.linked_terminal.linked_machinery -= fence
 				fence.linked_terminal = null
+			fence.remove_nearby_link()
 
 /obj/item/stack/electric_fence
 	name = "UE-02 Deployable Fences"
@@ -861,10 +863,11 @@
 		if(!turf.allow_construction)
 			to_chat(user, SPAN_WARNING("The [singular_name] must be constructed on a proper surface!"))
 			return
+	/* commented for testing
 	if(get_area(SSticker.mode.active_lz) != get_area(src))
 		to_chat(user, SPAN_WARNING("The [singular_name] must be constructed inside of the designated LZ!"))
 		return
-
+	*/
 	for(var/obj/object in user.loc)
 		var/obj/structure/blocker/anti_cade/anti_cade = locate(/obj/structure/blocker/anti_cade) in user.loc
 		if(object.density)

@@ -78,7 +78,7 @@
 //Spawning those rats from cheese.
 
 /obj/item/reagent_container/food/snacks/cheesewedge/attack_self(mob/user)
-	if(!user.client || user.client.spawned_pet)
+	if(user.mob_flags & HAS_SPAWNED_PET)
 		return ..()
 	if(GLOB.community_awards[user.ckey])
 		for(var/award in GLOB.community_awards[user.ckey])
@@ -86,12 +86,8 @@
 				return spawn_pet_rat(user)
 	..()
 
-/client
-	/// Whether or not the client has spawned a unique pet.
-	var/spawned_pet = FALSE
-
 /obj/item/reagent_container/food/snacks/cheesewedge/proc/spawn_pet_rat(mob/user)
-	if(!user.client || user.client.spawned_pet)
+	if(user.mob_flags & HAS_SPAWNED_PET)
 		return FALSE
 	if(tgui_alert(user, "Do you want to spawn your pet rat?", "Spawn Pet", list("Yes", "No")) != "Yes")
 		return FALSE
@@ -122,4 +118,4 @@
 		return FALSE
 
 	new rat_path(user.loc)
-	user.client.spawned_pet = TRUE
+	user.mob_flags |= HAS_SPAWNED_PET

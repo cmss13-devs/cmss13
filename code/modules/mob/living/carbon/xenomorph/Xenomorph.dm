@@ -458,10 +458,8 @@
 	create_reagents(100)
 	regenerate_icons()
 
-	toggle_xeno_hostilehud()
+	create_hostile_and_status_huds()
 	recalculate_everything()
-	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
-
 	. = ..()
 
 					//Set leader to the new mob
@@ -512,6 +510,22 @@
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+
+/mob/living/carbon/xenomorph/proc/create_hostile_and_status_huds()
+	if(xeno_hostile_hud || xeno_mobhud)
+		return
+
+	var/mob/user = usr
+	if(!user || !istype(user))
+		return
+
+	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_HOSTILE]
+	H.add_hud_to(user, user)
+	xeno_hostile_hud = TRUE
+
+	var/datum/mob_hud/S = GLOB.huds[MOB_HUD_XENO_STATUS]
+	S.add_hud_to(user, user)
+	xeno_mobhud = TRUE
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER

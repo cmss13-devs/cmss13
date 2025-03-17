@@ -53,7 +53,7 @@
 	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/charge,
@@ -328,6 +328,9 @@
 	for (var/turf/target_turf in target_turfs)
 		for (var/mob/living/carbon/carbon_target in target_turf)
 			if (carbon_target.stat == DEAD)
+				continue
+
+			if (HAS_TRAIT(carbon_target, TRAIT_NESTED))
 				continue
 
 			if(ravager_user.can_not_harm(carbon_target))

@@ -8,6 +8,9 @@
 	if(!loc)
 		return
 
+	if(banished)
+		apply_armoured_damage(ceil(health / XENO_BANISHMENT_DMG_DIVISOR))
+
 	..()
 
 	// replace this by signals or trait signals
@@ -22,7 +25,6 @@
 		handle_xeno_fire()
 		handle_pheromones()
 		handle_regular_status_updates()
-		handle_stomach_contents()
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
 		update_icons()
 		handle_luminosity()
@@ -110,18 +112,18 @@
 						phero_center = Q.observed_xeno
 					if(!phero_center || !phero_center.loc)
 						return
-					if(phero_center.loc.z == Q.loc.z)//Only same Z-level
+					if(SSmapping.same_z_map(phero_center.loc.z, Q.loc.z))//Only same map
 						use_current_aura = TRUE
 						aura_center = phero_center
 				else
 					use_current_aura = TRUE
 
-		if(leader_current_aura && hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
+		if(leader_current_aura && hive && hive.living_xeno_queen && SSmapping.same_z_map(hive.living_xeno_queen.loc.z, loc.z)) //Same map as the Queen!
 			use_leader_aura = TRUE
 
 		if(use_current_aura || use_leader_aura)
 			for(var/mob/living/carbon/xenomorph/Z as anything in GLOB.living_xeno_list)
-				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > floor(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
+				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || !SSmapping.same_z_map(Z.z, z) || get_dist(aura_center, Z) > floor(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
 					continue
 				if(use_leader_aura)
 					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -218,23 +220,6 @@
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/handle_stomach_contents()
-	//Deal with dissolving/damaging stuff in stomach.
-	if(length(stomach_contents))
-		for(var/atom/movable/M in stomach_contents)
-			if(ishuman(M))
-				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
-					to_chat(src, SPAN_WARNING("We're about to regurgitate [M]..."))
-					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
-				var/mob/living/carbon/human/H = M
-				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
-					regurgitate(H)
-
-			M.acid_damage++
-			if(M.acid_damage > 300)
-				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in our gut with a gurgle."))
-				stomach_contents.Remove(M)
-				qdel(M)
 
 /mob/living/carbon/xenomorph/proc/handle_regular_hud_updates()
 	if(!mind)

@@ -337,7 +337,7 @@
 	force = 0
 	throwforce = 0
 	skill_to_check = SKILL_ENGINEER
-	skill_level = SKILL_ENGINEER_TRAINED
+	skill_level = SKILL_ENGINEER_NOVICE
 	blocked_by_suit = FALSE
 	should_spark = FALSE
 

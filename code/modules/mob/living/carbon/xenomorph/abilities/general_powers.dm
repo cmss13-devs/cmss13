@@ -123,19 +123,16 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	return ..()
 
-/datum/action/xeno_action/onclick/regurgitate/use_ability(atom/A)
+/datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_WARNING("We cannot regurgitate here."))
+		to_chat(X, SPAN_WARNING("We cannot put them down here."))
 		return
 
-	if(length(X.stomach_contents))
-		for(var/mob/living/M in X.stomach_contents)
-			// Also has good reason to be a proc on all Xenos
-			X.regurgitate(M, TRUE)
+	X.release_haul(TRUE)
 
 	return ..()
 
@@ -239,7 +236,7 @@
 		return FALSE
 	if(istype(target, /atom/movable/screen))
 		return FALSE
-	if(target.z != xeno_owner.z)
+	if(!SSmapping.same_z_map(target.z, xeno_owner.z))
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
 	apply_cooldown()
@@ -441,7 +438,7 @@
 	pre_pounce_effects()
 
 	X.pounce_distance = get_dist(X, A)
-	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks)
+	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
 	X.update_icons()
 
 	additional_effects_always()
@@ -699,7 +696,7 @@
 		qdel(structure_template)
 		return FALSE
 
-	var/queen_on_zlevel = !X.hive.living_xeno_queen || X.hive.living_xeno_queen.z == T.z
+	var/queen_on_zlevel = !X.hive.living_xeno_queen || SSmapping.same_z_map(X.hive.living_xeno_queen.z, T.z)
 	if(!queen_on_zlevel)
 		to_chat(X, SPAN_WARNING("Our link to the Queen is too weak here. She is on another world."))
 		qdel(structure_template)
@@ -932,6 +929,8 @@
 
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
+	if(HAS_TRAIT(targetted_atom, TRAIT_HAULED))
+		return
 
 	if(HAS_TRAIT(stabbing_xeno, TRAIT_ABILITY_BURROWED) || stabbing_xeno.is_ventcrawling)
 		to_chat(stabbing_xeno, SPAN_XENOWARNING("We must be above ground to do this."))
@@ -950,6 +949,9 @@
 
 	if (world.time <= stabbing_xeno.next_move)
 		return FALSE
+
+	if(stabbing_xeno.z != targetted_atom.z)
+		return
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
 	if(distance > stab_range)

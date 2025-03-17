@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -62,6 +61,7 @@ type OptionalProps = Partial<{
   selfClear: boolean;
   /** The state variable of the input. */
   value: string | number;
+  type: string;
 }>;
 
 type Props = OptionalProps & ConditionalProps & BoxProps;
@@ -180,6 +180,7 @@ export function Input(props: Props) {
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         ref={inputRef}
+        spellCheck="false"
       />
     </Box>
   );

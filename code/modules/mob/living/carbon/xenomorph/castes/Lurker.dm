@@ -41,7 +41,7 @@
 	organ_value = 2000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/lurker,
@@ -157,6 +157,9 @@
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if(!lurker_invisibility_action)
+		return
+
+	if(!bound_xeno.client?.prefs.show_cooldown_messages)
 		return
 
 	// Recharged
@@ -292,7 +295,8 @@
 	behavior.on_invisibility_off()
 
 /datum/action/xeno_action/onclick/lurker_invisibility/ability_cooldown_over()
-	to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
+	if(owner.client?.prefs.show_cooldown_messages)
+		to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
 	..()
 
 /datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)

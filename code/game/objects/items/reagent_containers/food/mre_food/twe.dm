@@ -39,7 +39,7 @@
 
 /obj/item/reagent_container/food/snacks/mre_food/twe/entree/tomatobeans/Initialize()
 	. = ..()
-	reagents.add_reagent("vegetables", 14)
+	reagents.add_reagent("vegetable", 14)
 	reagents.add_reagent("tomatojuice", 8)
 	reagents.add_reagent("sodiumchloride", 2)
 
@@ -64,7 +64,7 @@
 	. = ..()
 	reagents.add_reagent("noodles", 6)
 	reagents.add_reagent("rice", 6)
-	reagents.add_reagent("vegetables", 2)
+	reagents.add_reagent("vegetable", 2)
 	reagents.add_reagent("capsaicin", 4)
 	reagents.add_reagent("hotsauce", 4)
 
@@ -76,7 +76,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/twe/entree/fishnchips/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 5)
-	reagents.add_reagent("vegetables", 5)
+	reagents.add_reagent("vegetable", 5)
 	reagents.add_reagent("potato", 3)
 	reagents.add_reagent("bread", 2)
 	reagents.add_reagent("cornoil", 2)
@@ -104,7 +104,7 @@
 
 /obj/item/reagent_container/food/snacks/mre_food/twe/side/nutpatty/Initialize()
 	. = ..()
-	reagents.add_reagent("vegetables", 2)
+	reagents.add_reagent("vegetable", 2)
 	reagents.add_reagent("bread", 2)
 	reagents.add_reagent("plantmatter", 2)
 	reagents.add_reagent("sodiumchloride", 1)
@@ -152,7 +152,7 @@
 
 /obj/item/reagent_container/food/snacks/mre_food/twe/side/tomatochips/Initialize()
 	. = ..()
-	reagents.add_reagent("vegetables", 6)
+	reagents.add_reagent("vegetable", 6)
 	reagents.add_reagent("tomatojuice", 4)
 	reagents.add_reagent("blackpepper", 2)
 	reagents.add_reagent("sodiumchloride", 2)

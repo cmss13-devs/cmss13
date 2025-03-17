@@ -149,10 +149,16 @@
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/complex_border/med_rec)
 "aaN" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfsmugglers"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
+"aaO" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
-"aaO" = (
+"aaP" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
@@ -20096,7 +20102,7 @@ gAM
 gAM
 gAM
 wGH
-aaN
+aaO
 wGH
 wGH
 wGH
@@ -21161,7 +21167,7 @@ lKk
 lKk
 lKk
 lKk
-aaO
+aaP
 lKk
 lKk
 lKk
@@ -33307,7 +33313,7 @@ dxF
 dxF
 dxF
 dxF
-dxF
+aaN
 dxF
 dxF
 dxF

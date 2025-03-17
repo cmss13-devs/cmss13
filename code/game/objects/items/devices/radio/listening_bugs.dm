@@ -284,6 +284,7 @@
 	anchored = TRUE
 	explo_proof = TRUE
 	emp_proof = TRUE
+	unacidable = TRUE
 
 /obj/item/device/radio/listening_bug/radio_linked/fax/wy
 	frequency = FAX_WY_FREQ

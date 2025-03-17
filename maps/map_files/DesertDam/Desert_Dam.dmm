@@ -887,25 +887,31 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/exterior/valley/valley_hydro)
 "adH" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/landing_pad_two)
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfpods"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "adI" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "adJ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
 /obj/effect/landmark/spycam_start,
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_two)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"adL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -53938,7 +53944,7 @@ lIt
 lIt
 lIt
 lIt
-adH
+adJ
 lIt
 lIt
 lIt
@@ -56796,7 +56802,7 @@ aQW
 aQW
 aQW
 aQW
-adJ
+adL
 aQW
 aQW
 aQW
@@ -77973,7 +77979,7 @@ clE
 dTs
 dTs
 dTs
-dTs
+adH
 dTs
 dTs
 dTs

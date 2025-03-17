@@ -36,10 +36,16 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "aah" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "rocinante"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"aai" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
-"aai" = (
+"aaj" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzI)
@@ -46194,7 +46200,7 @@ wbI
 itN
 baC
 baC
-bQM
+aah
 bQM
 bQM
 bQM
@@ -67170,7 +67176,7 @@ fAf
 nZB
 nZB
 nZB
-aah
+aai
 nZB
 nZB
 nZB
@@ -83207,7 +83213,7 @@ nGZ
 nGZ
 qaL
 fDJ
-aai
+aaj
 uYi
 cUd
 cUd

@@ -209,6 +209,15 @@ Defined in conflicts.dm of the #defines folder.
 		// Remove bullet traits of attachment from gun's current projectile
 		detaching_gun.in_chamber._RemoveElement(L)
 
+	// Remove any leftover reference to the bullet trait
+	for(var/list/trait_list in detaching_gun.in_chamber.bullet_traits)
+		trait_list.Remove(traits_to_give)
+		if(!length(trait_list))
+			detaching_gun.in_chamber.bullet_traits.Remove(list(trait_list))
+
+	if(!length(detaching_gun.in_chamber.bullet_traits))
+		detaching_gun.in_chamber.bullet_traits = null
+
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	activate_attachment(G, user)
 	return //success
@@ -511,6 +520,11 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 17
 	hud_offset_mod = -2
 
+/obj/item/attachable/shotgun_choke/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_knockback_disabled)
+	))
+
 /obj/item/attachable/shotgun_choke/New()
 	..()
 	recoil_mod = RECOIL_AMOUNT_TIER_4
@@ -526,18 +540,14 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(attaching_gun, /obj/item/weapon/gun/shotgun/pump))
 		return ..()
 	attaching_gun.pump_delay -= FIRE_DELAY_TIER_5
-	attaching_gun.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("knockback_disabled", /datum/element/bullet_trait_knockback_disabled))
 	attaching_gun.fire_sound = 'sound/weapons/gun_shotgun_choke.ogg'
-
 	return ..()
 
 /obj/item/attachable/shotgun_choke/Detach(mob/user, obj/item/weapon/gun/shotgun/pump/detaching_gun)
 	if(!istype(detaching_gun, /obj/item/weapon/gun/shotgun/pump))
 		return ..()
 	detaching_gun.pump_delay += FIRE_DELAY_TIER_5
-	detaching_gun.remove_bullet_trait("knockback_disabled")
 	detaching_gun.fire_sound = initial(detaching_gun.fire_sound)
-
 	return ..()
 
 /obj/item/attachable/slavicbarrel

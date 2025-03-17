@@ -735,7 +735,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/xeno_attack_durability(mob/living/carbon/xenomorph/attacking_xeno, mob/living/user)
 	var/damage = attacking_xeno.melee_damage_lower + attacking_xeno.melee_damage_upper
 	if(attacking_xeno.zone_selected == "l_hand" || attacking_xeno.zone_selected == "r_hand") // right now it doesnt check if the gun is in that specific hand, it should but for the sake of balance, itll stay for now
-		src.damage_gun_durability(damage)
+		damage_gun_durability(damage)
 
 //JAM CODE END
 //

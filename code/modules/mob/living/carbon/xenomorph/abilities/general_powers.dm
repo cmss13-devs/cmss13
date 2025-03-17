@@ -582,6 +582,10 @@
 		to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a track!"))
 		return FALSE
 
+	if(locate(/obj/structure/machinery/conveyor) in src)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a conveyor!"))
+		return FALSE
+
 	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
 		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to our hive!"))
 		return FALSE

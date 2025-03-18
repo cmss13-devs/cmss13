@@ -43,9 +43,14 @@
 		if(istype(src,/turf/closed/wall))
 			var/turf/closed/wall/wall = src
 			if(length(wall.hiding_humans))
-				climb_up_time = 3 SECONDS
-				var/human = pick(wall.hiding_humans)
-				user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
+				var/human
+				for(var/mob/living/boosting_human in wall.hiding_humans)
+					if(boosting_human.loc == loc)
+						human = boosting_human
+						break
+				if(human)
+					climb_up_time = 3 SECONDS
+					user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
 	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return

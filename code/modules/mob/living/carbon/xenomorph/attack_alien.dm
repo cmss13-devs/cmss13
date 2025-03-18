@@ -127,9 +127,9 @@
 				attacking_xeno.behavior_delegate.melee_attack_additional_effects_self()
 
 			//xenos damaging gun durability
-			var/obj/item/weapon/gun/guninhand = get_active_hand()
-			if(istype(guninhand))
-				guninhand.xeno_attack_durability(attacking_xeno, src)
+			var/obj/item/weapon/gun/gun_inhand = get_active_hand()
+			if(istype(gun_inhand))
+				gun_inhand.xeno_attack_durability(attacking_xeno, src)
 
 			var/slash_noise = attacking_xeno.slash_sound
 			var/list/slashdata = list("n_damage" = n_damage, "slash_noise" = slash_noise)

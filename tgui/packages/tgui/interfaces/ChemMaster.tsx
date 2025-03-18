@@ -66,81 +66,83 @@ export const ChemMaster = () => {
   const [pillPicker, setPillPicker] = useState(false);
 
   return (
-    <Window width={550} height={550}>
+    <Window width={550} height={600}>
       <Window.Content className="ChemMaster">
-        <Section title="Status">
-          <Stack vertical>
-            <Stack.Item>
-              <Stack>
-                <Stack.Item>
-                  <Box>Beaker:</Box>
-                </Stack.Item>
-                <Stack.Item grow>
-                  {beaker ? (
-                    beaker.reagents_volume + 'u'
-                  ) : (
-                    <NoticeBox info>No beaker inserted.</NoticeBox>
-                  )}
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>
-              <PillBottle setPicker={setPillPicker} />
-            </Stack.Item>
-            <Stack.Item>
-              {beaker && !is_connected && (
-                <Button fluid onClick={() => act('connect')}>
-                  Connect Smartfridge
+        <Section fill scrollable>
+          <Section title="Status">
+            <Stack vertical>
+              <Stack.Item>
+                <Stack>
+                  <Stack.Item>
+                    <Box>Beaker:</Box>
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    {beaker ? (
+                      beaker.reagents_volume + 'u'
+                    ) : (
+                      <NoticeBox info>No beaker inserted.</NoticeBox>
+                    )}
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item>
+                <PillBottle setPicker={setPillPicker} />
+              </Stack.Item>
+              <Stack.Item>
+                {beaker && !is_connected && (
+                  <Button fluid onClick={() => act('connect')}>
+                    Connect Smartfridge
+                  </Button>
+                )}
+              </Stack.Item>
+            </Stack>
+          </Section>
+          {beaker && (
+            <Section
+              title="Beaker"
+              buttons={
+                <Button
+                  icon={'eject'}
+                  tooltip={'Remove beaker, and clear buffer.'}
+                  onClick={() => act('eject')}
+                >
+                  Eject
                 </Button>
+              }
+            >
+              {beaker.reagents ? (
+                <Reagents reagents={beaker.reagents} type={'beaker'} />
+              ) : (
+                <NoticeBox info>Beaker is empty.</NoticeBox>
               )}
-            </Stack.Item>
-          </Stack>
-        </Section>
-        {beaker && (
+            </Section>
+          )}
           <Section
-            title="Beaker"
+            title="Buffer"
             buttons={
               <Button
-                icon={'eject'}
-                tooltip={'Remove beaker, and clear buffer.'}
-                onClick={() => act('eject')}
+                icon={mode ? 'toggle-on' : 'toggle-off'}
+                onClick={() => act('toggle')}
               >
-                Eject
+                {mode ? 'To Beaker' : 'To Disposal'}
               </Button>
             }
           >
-            {beaker.reagents ? (
-              <Reagents reagents={beaker.reagents} type={'beaker'} />
+            {buffer?.length ? (
+              <Reagents reagents={buffer} type="buffer" />
             ) : (
-              <NoticeBox info>Beaker is empty.</NoticeBox>
+              <NoticeBox info>Buffer is empty.</NoticeBox>
             )}
           </Section>
-        )}
-        <Section
-          title="Buffer"
-          buttons={
-            <Button
-              icon={mode ? 'toggle-on' : 'toggle-off'}
-              onClick={() => act('toggle')}
-            >
-              {mode ? 'To Beaker' : 'To Disposal'}
-            </Button>
-          }
-        >
-          {buffer?.length ? (
-            <Reagents reagents={buffer} type="buffer" />
-          ) : (
-            <NoticeBox info>Buffer is empty.</NoticeBox>
+          <Glassware setPicker={setGlasswarePicker} />
+          {glasswarePicker && (
+            <GlasswarePicker
+              setPicker={setGlasswarePicker}
+              type={glasswarePicker}
+            />
           )}
+          {pillPicker && <PillPicker setPicker={setPillPicker} />}
         </Section>
-        <Glassware setPicker={setGlasswarePicker} />
-        {glasswarePicker && (
-          <GlasswarePicker
-            setPicker={setGlasswarePicker}
-            type={glasswarePicker}
-          />
-        )}
-        {pillPicker && <PillPicker setPicker={setPillPicker} />}
       </Window.Content>
     </Window>
   );
@@ -363,10 +365,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
               <Stack>
                 <Button
                   lineHeight={'35px'}
-                  disabled={
-                    !buffer ||
-                    !pill_bottles.some((bottle) => bottle.isNeedsToBeFilled)
-                  }
+                  disabled={!buffer}
                   onClick={() => act('create_pill', { number: numPills })}
                 >
                   Create Pill{numPills > 1 ? 's' : ''}

@@ -174,6 +174,7 @@
 			acting_projectile.ammo.penetration,
 			//zonenote modify this if we ever add armor integrity for acid armor
 		)
+		//SEND_SIGNAL(parent_xeno, COMSIG_XENO_HIT_ACID)
 
 /datum/component/moba_player/proc/on_attack(datum/source, mob/living/carbon/xenomorph/attacking, damage)
 	SIGNAL_HANDLER

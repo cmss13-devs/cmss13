@@ -731,6 +731,7 @@
 #include "code\datums\status_effects\stacking_effect.dm"
 #include "code\datums\status_effects\buffs\bloodlust.dm"
 #include "code\datums\status_effects\buffs\empowered.dm"
+#include "code\datums\status_effects\buffs\furious_haste.dm"
 #include "code\datums\status_effects\debuffs\acid_neutralized.dm"
 #include "code\datums\status_effects\debuffs\debuffs.dm"
 #include "code\datums\status_effects\debuffs\rended_armor.dm"

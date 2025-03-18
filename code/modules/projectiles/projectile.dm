@@ -552,6 +552,7 @@
 			to_world(SPAN_DEBUG("([L]) Hit."))
 			#endif
 			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+			SEND_SIGNAL(firer, COMSIG_ATOM_FIRED_PROJECTILE_HIT, L, src)
 
 			// If the ammo should hit the surface of the target and there is a mob blocking
 			// The current turf is the "surface" of the target

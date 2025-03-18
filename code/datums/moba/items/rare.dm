@@ -54,13 +54,13 @@
 
 /datum/moba_item/rare/corrosive_acid/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
 	. = ..()
-
+	RegisterSignal(xeno, COMSIG_ATOM_FIRED_PROJECTILE_HIT, PROC_REF(on_acid_hit))
 
 /datum/moba_item/rare/corrosive_acid/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
 	. = ..()
+	UnregisterSignal(xeno, COMSIG_ATOM_FIRED_PROJECTILE_HIT)
 
-
-/datum/moba_item/rare/corrosive_acid/proc/on_acid_hit()
+/datum/moba_item/rare/corrosive_acid/proc/on_acid_hit(datum/source, mob/living/hit, obj/projectile/shot)
 	SIGNAL_HANDLER
 
 	return
@@ -110,18 +110,19 @@
 	name = "High-Stress Carapace Hardening"
 	description = "<b>Emergency Hardening</b><br>Upon dropping below N% health, gain a shield that absorbs N (+N% bonus HP) damage and decays after N seconds. N second cooldown."
 	icon_state = "red"
-	gold_cost = MOBA_GOLD_PER_MINUTE * 2.25
+	gold_cost = MOBA_GOLD_PER_MINUTE * 2
 	unique = TRUE
 	instanced = TRUE
 	component_items = list(
 		/datum/moba_item/uncommon/viscious_slashes,
-		/datum/moba_item/common/acid_armor_resist,
-		/datum/moba_item/common/acid_armor_resist,
+		/datum/moba_item/common/strong_constitution,
+		/datum/moba_item/common/strong_constitution,
+		/datum/moba_item/common/armor_fortification,
 	)
 
-	attack_speed = -1
-	attack_damage = 35
-	acid_armor = 12
+	health = 400
+	attack_damage = 30
+	armor = 10
 	var/health_threshold = 0.35
 	var/base_shield_damage = 250
 	var/bonus_hp_mod = 0.6
@@ -163,3 +164,40 @@
 
 	COOLDOWN_START(src, shield_cooldown, cooldown_time)
 	source.add_xeno_shield(base_shield_damage + (bonus_hp_list[1] * bonus_hp_mod), XENO_SHIELD_SOURCE_STERAKS, duration = decay_time, add_shield_on = TRUE, max_shield = INFINITY)
+
+
+/datum/moba_item/rare/furious_haste
+	name = "Oversized Adrenal Glands"
+	description = "<b>Furious Haste</b><br>Gain N movespeed upon slashing an enemy, stacking up to N times. Decays after N seconds."
+	icon_state = "red"
+	gold_cost = MOBA_GOLD_PER_MINUTE * 2
+	unique = TRUE
+	component_items = list(
+		/datum/moba_item/uncommon/heightened_senses,
+		/datum/moba_item/uncommon/viscious_slashes,
+		/datum/moba_item/common/mending_carapace,
+	)
+
+	ability_cooldown_reduction = 0.75
+	attack_damage = 35
+	health_regen = 8
+
+/datum/moba_item/rare/furious_haste/New(datum/moba_player/creating_player)
+	. = ..()
+	description = "<b>Furious Haste</b><br>Gain [/datum/status_effect/stacking/furious_haste::movespeed_per_stack] movespeed upon slashing an enemy, stacking up to [/datum/status_effect/stacking/furious_haste::max_stacks] times. Decays after [/datum/status_effect/stacking/furious_haste::delay_before_decay * 0.1] seconds."
+
+/datum/moba_item/rare/furious_haste/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
+	. = ..()
+	RegisterSignal(xeno, COMSIG_XENO_ALIEN_ATTACK, PROC_REF(on_attack))
+
+/datum/moba_item/rare/furious_haste/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
+	. = ..()
+	UnregisterSignal(xeno, COMSIG_XENO_ALIEN_ATTACK)
+
+/datum/moba_item/rare/furious_haste/proc/on_attack(mob/living/carbon/xenomorph/source, mob/living/carbon/xenomorph/attacking, damage)
+	SIGNAL_HANDLER
+
+	var/datum/status_effect/stacking/furious_haste/haste = source.has_status_effect(/datum/status_effect/stacking/furious_haste)
+	if(!haste)
+		haste = source.apply_status_effect(/datum/status_effect/stacking/furious_haste)
+	haste.add_stacks(1)

@@ -1,6 +1,6 @@
 /* Gameplay Phases */
-#define TUTORIAL_HM_PHASE_PREP 0		//! Prep time upon joining, time for players to gear up
-#define TUTORIAL_HM_PHASE_MAIN 1		//! Regular round, locks the prep room, spawns up to 5 patients with injuries of any severity
+#define TUTORIAL_HM_PHASE_PREP 0	//! Prep time upon joining, time for players to gear up
+#define TUTORIAL_HM_PHASE_MAIN 1	//! Regular round, locks the prep room, spawns up to 5 patients with injuries of any severity
 #define TUTORIAL_HM_PHASE_RESUPPLY 2	//! Pauses gameplay, opens the prep room, and allows resupply time, happens at random
 #define TUTORIAL_HM_PHASE_NIGHTMARE 3	//! Simulates a Mass-Casualty event, 3-5 patients with severe damage levels
 
@@ -12,7 +12,7 @@
 #define TUTORIAL_HM_INJURY_SEVERITY_MINOR 3
 #define TUTORIAL_HM_INJURY_SEVERITY_ROUTINE 4	//! Routine treatments, occasional IB, 1-2 fractures, moderate damage less than 200, minor ODs, eye damage ONLY
 #define TUTORIAL_HM_INJURY_SEVERITY_SEVERE 5	//! Life-threatening injuries, organ damage, missing limbs, up to 250 damage, multiple fracs, low blood
-#define TUTORIAL_HM_INJURY_SEVERITY_FATAL 6		//! Life-threatening injuries, organ damage, missing limbs, up to 300 damage, multiple fracs, low blood
+#define TUTORIAL_HM_INJURY_SEVERITY_FATAL 6	//! Life-threatening injuries, organ damage, missing limbs, up to 300 damage, multiple fracs, low blood
 #define TUTORIAL_HM_INJURY_SEVERITY_EXTREME 9	//! Fatal injuries, organ damage, missing limbs, up to 450 damage, multiple fracs, low blood
 #define TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM 12	//! No limit on injury types, damage ranging from 500-600, extremely rare outside of Mass-Cas events
 
@@ -50,7 +50,15 @@
 	/// Spawn point for all NPCs except the CMO
 	var/turf/agent_spawn_location
 	/// List of injury severity levels in sequence
-	var/list/difficulties = list(TUTORIAL_HM_INJURY_SEVERITY_BOOBOO, TUTORIAL_HM_INJURY_SEVERITY_MINOR, TUTORIAL_HM_INJURY_SEVERITY_ROUTINE, TUTORIAL_HM_INJURY_SEVERITY_SEVERE, TUTORIAL_HM_INJURY_SEVERITY_FATAL, TUTORIAL_HM_INJURY_SEVERITY_EXTREME, TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
+	var/list/difficulties = list(
+		TUTORIAL_HM_INJURY_SEVERITY_BOOBOO,
+		TUTORIAL_HM_INJURY_SEVERITY_MINOR,
+		TUTORIAL_HM_INJURY_SEVERITY_ROUTINE,
+		TUTORIAL_HM_INJURY_SEVERITY_SEVERE,
+		TUTORIAL_HM_INJURY_SEVERITY_FATAL,
+		TUTORIAL_HM_INJURY_SEVERITY_EXTREME,
+		TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM
+	)
 	/// Max amount of patient NPCs per survival wave (NOT including booboo NPCs)
 	var/max_survival_agents = 3
 	/// Min amount of patient NPCs per survival wave (NOT including booboo NPCs)
@@ -104,14 +112,14 @@
 			return
 	// 1 in 5 chance per round to trigger a resupply phase
 	// Will only roll beyond wave 3, and 3 waves after the previous resupply phase.
-	if((rand() < (1/5)) && (survival_wave >= (last_resupply_round + 3)))
+	if(prob(20) && (survival_wave >= (last_resupply_round + 3)))
 		begin_supply_phase()
 		last_resupply_round = survival_wave
 		return
 	survival_wave++
 	// 1 in 10 chance per round to trigger a mass-cas (NIGHTMARE) phase
 	// Will only roll beyond wave 3, and 3 waves after the previous mass-cas phase.
-	if((rand() < (1/10)) && (survival_wave >= (last_masscas_round + 3)))
+	if(prob(20) && (survival_wave >= (last_resupply_round + 3)))
 		stage = TUTORIAL_HM_PHASE_NIGHTMARE
 		// increases difficulty by 2 levels, but not beyond the max.
 		for(var/i in 1 to 2)
@@ -125,7 +133,7 @@
 		message_to_player("Warning! Mass-Casualty event detected!")
 	// 50% chance per wave of increasing difficulty by one step
 	// two round grace period from start
-	else if((rand() < TUTORIAL_HM_DIFFICULTY_INCREASE) && !(survival_wave <= 2))
+	else if(prob(TUTORIAL_HM_DIFFICULTY_INCREASE * 100) && !(survival_wave <= 2))
 		var/current_difficulty = survival_difficulty
 		if(current_difficulty != TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 			survival_difficulty = next_in_list(current_difficulty, difficulties)
@@ -165,10 +173,10 @@
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/spawn_agents()
 	SIGNAL_HANDLER
 
-	for(var/i in 1 to (round(rand(min_survival_agents, max_survival_agents))))
+	for(var/i in 1 to (rand(min_survival_agents, max_survival_agents)))
 		var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
 		arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
-		var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))	// Picks a random turf to move the NPC to
+		var/turf/dropoff_point = loc_from_corner(rand(6, 8), 1, rand(1, 3))	// Picks a random turf to move the NPC to
 		agents[active_agent] = dropoff_point
 		active_agent.a_intent = INTENT_DISARM
 		simulate_condition(active_agent)
@@ -176,7 +184,7 @@
 		RegisterSignal(armor, COMSIG_ITEM_UNEQUIPPED, PROC_REF(item_cleanup))
 
 	addtimer(CALLBACK(src, PROC_REF(eval_agent_status)), 3 SECONDS)	// Gives time for NPCs to pass out or die, if their condition is severe enough
-	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && (rand() <= 0.75))	// If above difficulty FATAL, starts a random timer to spawn a booboo agent
+	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && prob(75))	// If above difficulty FATAL, starts a random timer to spawn a booboo agent
 		booboo_timer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_condition(mob/living/carbon/human/target)
@@ -184,27 +192,27 @@
 
 	// Simulates patient NPC injuries
 
-	var/damage_amount_split = ((round(rand(1, 100))) / 100)	// How damage should be split between brute and burn
+	var/damage_amount_split = ((rand(1, 100)) / 100)	// How damage should be split between brute and burn
 	var/list/limbs = target.limbs
-	var/amount_of_parts = round(rand(1, 6))	// Amount of times to roll for a limb fracture
+	var/amount_of_parts = rand(1, 6)	// Amount of times to roll for a limb fracture
 	var/patient_type = pick(75;PATIENT_TYPE_MUNDANE, 15;PATIENT_TYPE_ORGAN, 10;PATIENT_TYPE_TOXIN) // 75% chance for mundane damage, 15% for organ damage, 10% for toxin
 
 	if(patient_type >= PATIENT_TYPE_MUNDANE)
 		for(var/i in 1 to amount_of_parts)
 			var/obj/limb/selected_limb = pick(limbs)
-			var/damage_amount = (round(rand((40 * survival_difficulty), (50 * survival_difficulty))))
+			var/damage_amount = (rand((40 * survival_difficulty), (50 * survival_difficulty)))
 			selected_limb.take_damage(round((damage_amount * damage_amount_split) / amount_of_parts), round((damage_amount * (1 - damage_amount_split)) / amount_of_parts))
-			if((damage_amount > 30) && (rand()) < (survival_difficulty / 10))
+			if((damage_amount > 30) && prob(survival_difficulty * 10))
 				selected_limb.fracture()
 	if(patient_type == PATIENT_TYPE_ORGAN)	// applies organ damage AS WELL as mundane damage if type 2
 		var/datum/internal_organ/organ = pick(target.internal_organs)
-		target.apply_internal_damage(round(rand(1,(survival_difficulty*3.75))), "[organ.name]")
+		target.apply_internal_damage(rand(1,(survival_difficulty*3.75)), "[organ.name]")
 	if(patient_type == PATIENT_TYPE_TOXIN)	// applies toxin damage AS WELL as mundane damage if type 3
-		target.setToxLoss(round(rand(1,10*survival_difficulty)))
+		target.setToxLoss(rand(1,10*survival_difficulty))
 
 	if(prob(15))	// Simulates premedicated patients
 		var/datum/reagent/medical/reagent = pick(premeds)
-		target.reagents.add_reagent(reagent.id, round(rand(0, reagent.overdose - 1)))	// OD safety
+		target.reagents.add_reagent(reagent.id, rand(0, reagent.overdose - 1))	// OD safety
 
 	target.updatehealth()
 	target.UpdateDamageIcon()
@@ -290,7 +298,7 @@
 	if(target in dragging_agents)
 		target.emote("medic")
 		return
-	if(rand() <= 0.25)
+	if(prob(25))
 		target.emote("medic")
 		return
 	for(var/obj/limb/limb in target.limbs)
@@ -390,19 +398,19 @@
 
 	var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
 	arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
-	var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))
+	var/turf/dropoff_point = loc_from_corner(rand(6, 8), rand(1, 3))
 	agents[active_agent] = dropoff_point
 	active_agent.a_intent = INTENT_DISARM
 
-	var/damage_amount_split = ((round(rand(1, 100))) / 100)
+	var/damage_amount_split = ((rand(1, 100)) / 100)
 	var/list/limbs = active_agent.limbs
-	var/amount_of_parts = round(rand(1, 6))
+	var/amount_of_parts = (rand(1, 6))
 
 	for(var/i in 1 to amount_of_parts)
 		var/obj/limb/selected_limb = pick(limbs)
-		var/damage_amount = (round(rand((40 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO), (50 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO))))
+		var/damage_amount = (rand((40 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO), (50 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO)))
 		selected_limb.take_damage(round((damage_amount * damage_amount_split) / amount_of_parts), round((damage_amount * (1 - damage_amount_split)) / amount_of_parts))
-		if((damage_amount > 30) && (rand()) < (TUTORIAL_HM_INJURY_SEVERITY_BOOBOO / 10))
+		if((damage_amount > 30) && prob(TUTORIAL_HM_INJURY_SEVERITY_BOOBOO * 10))
 			selected_limb.fracture()
 
 	active_agent.updatehealth()

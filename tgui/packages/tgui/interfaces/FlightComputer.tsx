@@ -11,6 +11,7 @@ import {
   Flex,
   RoundGauge,
   Stack,
+  Table,
 } from '../components';
 import { formatSiUnit } from '../format';
 import { Window } from '../layouts';
@@ -49,10 +50,10 @@ export const FlightComputer = (props) => {
   return (
     <Window width={700} height={410} theme="crtgreen">
       <Window.Content>
-        <Stack vertical>
-          <Stack.Item>
+        <Stack vertical width="100%">
+          <Stack.Item height="100%">
             <Box m={-10} height={40}>
-              <svg>
+              <svg width="100%" height="100%">
                 <rect
                   fill="rgb(0, 0, 0)"
                   x="10"
@@ -62,50 +63,74 @@ export const FlightComputer = (props) => {
                 />
               </svg>
             </Box>
-            <Box mt={-71.5} width={60.2} ml={-1.5} height={32}>
-              <svg>
-                <rect
-                  stroke="rgb(7, 7, 7)"
-                  strokeWidth={4}
-                  fill="rgb(17, 17, 17)"
-                  x="10"
-                  y="10"
-                  rx="10"
-                  ry="10"
-                  width="95%"
-                  height="95%"
-                />
-              </svg>
+            <Box mt={-71.5} width="100%" height={32}>
+              <Box width="100%" height="100%" ml={-0.5}>
+                <svg width="100%" height="100%">
+                  <rect
+                    stroke="rgb(7, 7, 7)"
+                    strokeWidth={4}
+                    fill="rgb(17, 17, 17)"
+                    x="10"
+                    y="10"
+                    rx="10"
+                    ry="10"
+                    width="98%"
+                    height="95%"
+                  />
+                </svg>
+              </Box>
+
+              <Table mt={-64} height="100%">
+                <Table.Row>
+                  <Table.Cell align="start" verticalAlign="top" p="12px">
+                    <HexScrew />
+                  </Table.Cell>
+                  <Table.Cell align="end" verticalAlign="top" p="12px">
+                    <HexScrew />
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell align="start" verticalAlign="bottom" p="12px">
+                    <HexScrew />
+                  </Table.Cell>
+                  <Table.Cell align="end" verticalAlign="bottom" p="12px">
+                    <HexScrew />
+                  </Table.Cell>
+                </Table.Row>
+              </Table>
             </Box>
-            <Box mt={-58.5} width={50.5} ml={5} height={32}>
-              <svg>
-                <defs>
-                  <radialGradient
-                    id="gradient-fill"
-                    x1="0"
-                    y1="0"
-                    x2="800"
-                    y2="0"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset="0" stop-color="#042208" />
 
-                    <stop offset="1" stop-color="#000b02" />
-                  </radialGradient>
-                </defs>
+            <Box mt={-58.5} height={32} width="90%" ml="4%">
+              <Box width="100%" height="100%">
+                <svg width="100%" height="100%">
+                  <defs>
+                    <radialGradient
+                      id="gradient-fill"
+                      x1="0"
+                      y1="0"
+                      x2="800"
+                      y2="0"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#042208" />
 
-                <rect
-                  stroke="#00e94e"
-                  strokeWidth={2}
-                  fill="url(#gradient-fill)"
-                  x="10"
-                  y="10"
-                  rx="5"
-                  ry="5"
-                  width="100%"
-                  height="75%"
-                />
-              </svg>
+                      <stop offset="1" stop-color="#000b02" />
+                    </radialGradient>
+                  </defs>
+
+                  <rect
+                    stroke="#00e94e"
+                    strokeWidth={2}
+                    fill="url(#gradient-fill)"
+                    x="10"
+                    y="10"
+                    rx="5"
+                    ry="5"
+                    width="97%"
+                    height="75%"
+                  />
+                </svg>
+              </Box>
             </Box>
           </Stack.Item>
 
@@ -113,24 +138,6 @@ export const FlightComputer = (props) => {
             <Box height={22.4} p={0.7} m={2} mt={7.5}>
               <CrtDisplay />
             </Box>
-          </Stack.Item>
-          <Stack.Item mt={-46} width={107.5} ml={1}>
-            <Flex width="100%">
-              <Flex.Item grow>
-                <HexScrew />
-              </Flex.Item>
-              <Flex.Item grow>
-                <HexScrew />
-              </Flex.Item>
-            </Flex>
-            <Flex width="100%" mt={-59}>
-              <Flex.Item grow>
-                <HexScrew />
-              </Flex.Item>
-              <Flex.Item grow>
-                <HexScrew />
-              </Flex.Item>
-            </Flex>
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -144,7 +151,7 @@ const FuelPanel = (props) => {
   const { vtol_detected, fuel, max_fuel, battery, max_battery, fueling } = data;
 
   return (
-    <Box p={1} width={25.7}>
+    <Box pt={2} width="100%">
       <Stack>
         <Stack.Item>
           <Flex ml={2.5} mb={1} bold fontSize={0.9}>
@@ -153,7 +160,7 @@ const FuelPanel = (props) => {
           </Flex>
 
           <Stack mb={1} height={10.3}>
-            <Stack.Item grow fontSize={0.75}>
+            <Stack.Item grow fontSize={0.75} mr={0}>
               <Box
                 inline
                 mb={2.5}
@@ -185,15 +192,18 @@ const FuelPanel = (props) => {
                 E -
               </Box>
             </Stack.Item>
-            <Stack.Item ml={5}>
+            <Stack.Item ml={0}>
               <Stack.Item height={10}>
                 <ColorBox color="green" height={10} />
               </Stack.Item>
               <Stack.Item mt={-19.5} ml={0.5}>
                 <ColorBox color="darkgreen" height={9.5} width={0.5} />
               </Stack.Item>
-              <Stack.Item mt={(fuel / max_fuel) * -20}>
-                <ColorBox height={(fuel / max_fuel) * 10} color="green" />
+              <Stack.Item mt={(fuel / max_fuel) * -20} minHeight="0px">
+                <ColorBox
+                  height={vtol_detected ? (fuel / max_fuel) * 10 : 0}
+                  color="green"
+                />
               </Stack.Item>
             </Stack.Item>
             <Stack.Divider ml={2} mr={1} height={10} opacity={0.99} />
@@ -229,15 +239,18 @@ const FuelPanel = (props) => {
                 E -
               </Box>
             </Stack.Item>
-            <Stack.Item ml={5} mr={1}>
+            <Stack.Item ml={0} mr={1}>
               <Stack.Item height={10}>
                 <ColorBox color="green" height={10} />
               </Stack.Item>
               <Stack.Item mt={-19.5} ml={0.5}>
                 <ColorBox color="darkgreen" height={9.5} width={0.5} />
               </Stack.Item>
-              <Stack.Item mt={(fuel / max_fuel) * -20}>
-                <ColorBox height={(fuel / max_fuel) * 10} color="green" />
+              <Stack.Item mt={(fuel / max_fuel) * -20} minHeight="0px">
+                <ColorBox
+                  height={vtol_detected ? (fuel / max_fuel) * 10 : 0}
+                  color="green"
+                />
               </Stack.Item>
             </Stack.Item>
           </Stack>
@@ -254,7 +267,7 @@ const FuelPanel = (props) => {
             FUEL TANK LEVELS
           </Box>
           <Box textAlign="center" bold fontSize={0.7}>
-            [ 16,000L CAPACITY ]
+            {vtol_detected ? '[ 16,000L CAPACITY ]' : 'NONE DETECTED'}
           </Box>
         </Stack.Item>
         <Stack.Divider ml={3} mr={2} />
@@ -297,7 +310,7 @@ const FuelPanel = (props) => {
                 0 -
               </Box>
             </Stack.Item>
-            <Stack.Item ml={5}>
+            <Stack.Item ml={0}>
               <Stack.Item height={10}>
                 <ColorBox color="green" height={10} />
               </Stack.Item>
@@ -305,7 +318,10 @@ const FuelPanel = (props) => {
                 <ColorBox color="darkgreen" height={9.5} width={0.5} />
               </Stack.Item>
               <Stack.Item mt={(battery / max_battery) * -20}>
-                <ColorBox height={(battery / max_battery) * 10} color="green" />
+                <ColorBox
+                  height={vtol_detected ? (battery / max_battery) * 10 : 0}
+                  color="green"
+                />
               </Stack.Item>
             </Stack.Item>
             <Stack.Divider ml={2.5} mr={2.5} height={10} opacity={0.99} />
@@ -333,7 +349,7 @@ const FuelPanel = (props) => {
                 0kW -
               </Box>
             </Stack.Item>
-            <Stack.Item ml={5} mr={1}>
+            <Stack.Item ml={0} mr={2}>
               <Stack.Item height={10}>
                 <ColorBox color="green" height={10} />
               </Stack.Item>
@@ -363,7 +379,7 @@ const FuelPanel = (props) => {
             POWERCELL CHARGE
           </Box>
           <Box textAlign="center" bold fontSize={0.7}>
-            [ 2x Li BATTERY, KWh ]
+            {vtol_detected ? '[ 2x Li BATTERY, KWh ]' : 'NONE DETECTED'}
           </Box>
         </Stack.Item>
       </Stack>
@@ -372,11 +388,17 @@ const FuelPanel = (props) => {
         icon={!vtol_detected || fueling ? 'ban' : 'tint'}
         fluid
         bold
-        onClick={() => act((!fueling ? 'start' : 'stop') + '_fueling')}
+        color={!vtol_detected && 'transperant'}
+        onClick={() =>
+          act(vtol_detected ? (fueling ? 'stop' : 'start') + '_fueling' : '')
+        }
         fontSize={1.2}
         mt={2.5}
-        mr={3}
+        mr={2}
         mb={0}
+        tooltip={
+          !vtol_detected && 'No linked aircraft detected on landing pad!'
+        }
       >
         {(!fueling ? 'BEGIN' : 'STOP') + ' FUELING AND CHARGING'}
       </Button>
@@ -389,10 +411,10 @@ const CrtDisplay = (props) => {
 
   return (
     <Stack>
-      <Stack.Item>
+      <Stack.Item width="55%">
         <FuelPanel />
       </Stack.Item>
-      <Stack.Divider opacity={0.99} ml={-1} mr={1} />
+      <Stack.Divider opacity={0.99} mr={1} />
       <Stack.Item grow>
         <Console />
         <TankReadouts />

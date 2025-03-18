@@ -560,7 +560,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "fv" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails{
+/obj/structure/machinery/computer/spy_camera/upp{
 	dir = 4
 	},
 /turf/open/floor/darkgreen2/northwest,
@@ -3189,14 +3189,10 @@
 	pixel_y = -6;
 	colony_camera_mapload = 0
 	},
-/obj/structure/machinery/computer/cameras/almayer{
+/obj/structure/machinery/computer/spy_camera/clf{
 	dir = 4;
-	admin_console = 1;
-	network = list("Overwatch");
-	pixel_x = -4;
 	pixel_y = 8;
-	name = "Overwatch Cameras";
-	colony_camera_mapload = 0
+	pixel_x = -4
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3565,7 +3561,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "JY" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/spy_camera/cmb,
 /turf/open/floor/shiva/blue/northeast,
 /area/adminlevel/ert_station/fax_response_station)
 "Kc" = (
@@ -3646,8 +3642,8 @@
 /area/adminlevel/ert_station/fax_response_station)
 "KR" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/wy,
 /turf/open/floor/corsat/white/northwest,
 /area/adminlevel/ert_station/fax_response_station)
 "KT" = (
@@ -3706,7 +3702,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Mx" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/spy_camera/uscm,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
 "MA" = (
@@ -3838,10 +3834,10 @@
 "NT" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/twe{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "NU" = (
@@ -4127,7 +4123,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "RJ" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/spy_camera/uscm,
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "RK" = (
@@ -4272,7 +4268,7 @@
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails{
+/obj/structure/machinery/computer/spy_camera/uscm{
 	dir = 4
 	},
 /turf/open/floor/wood/ship,

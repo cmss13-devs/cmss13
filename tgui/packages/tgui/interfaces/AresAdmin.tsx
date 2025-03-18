@@ -424,7 +424,6 @@ const MainMenu = (props) => {
                 act('update_sentries', { chosen_iff: value })
               }
               width="90px"
-              tooltip="Change core sentries IFF settings."
             />
           </Stack.Item>
         </Stack>

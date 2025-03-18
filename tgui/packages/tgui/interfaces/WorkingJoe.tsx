@@ -308,7 +308,6 @@ const MainMenu = (props) => {
                 }
                 width="90px"
                 disabled={local_access_level < 6}
-                tooltip="Change core sentries IFF settings."
               />
             </Stack.Item>
           </Stack>

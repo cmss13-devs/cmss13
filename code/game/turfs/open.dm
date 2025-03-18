@@ -779,6 +779,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
 	default_name = "shallow ocean"
+	allow_construction = FALSE
 
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
@@ -787,6 +788,7 @@
 /turf/open/gm/river/ocean/deep_ocean
 	name = "deep ocean"
 	default_name = "deep ocean"
+	allow_construction = FALSE
 
 /turf/open/gm/river/ocean/Entered(atom/movable/AM)
 	. = ..()
@@ -810,7 +812,8 @@
 	if(world.time % 5)
 		if(ismob(AM))
 			var/mob/rivermob = AM
-			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
+				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"

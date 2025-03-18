@@ -209,6 +209,15 @@ Defined in conflicts.dm of the #defines folder.
 		// Remove bullet traits of attachment from gun's current projectile
 		detaching_gun.in_chamber._RemoveElement(L)
 
+	// Remove any leftover reference to the bullet trait
+	for(var/list/trait_list in detaching_gun.in_chamber.bullet_traits)
+		trait_list.Remove(traits_to_give)
+		if(!length(trait_list))
+			detaching_gun.in_chamber.bullet_traits.Remove(list(trait_list))
+
+	if(!length(detaching_gun.in_chamber.bullet_traits))
+		detaching_gun.in_chamber.bullet_traits = null
+
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	activate_attachment(G, user)
 	return //success
@@ -302,6 +311,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
+
 
 	attach_icon = "bayonet_a"
 	melee_mod = 20
@@ -510,6 +520,11 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 17
 	hud_offset_mod = -2
 
+/obj/item/attachable/shotgun_choke/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_knockback_disabled)
+	))
+
 /obj/item/attachable/shotgun_choke/New()
 	..()
 	recoil_mod = RECOIL_AMOUNT_TIER_4
@@ -525,18 +540,14 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(attaching_gun, /obj/item/weapon/gun/shotgun/pump))
 		return ..()
 	attaching_gun.pump_delay -= FIRE_DELAY_TIER_5
-	attaching_gun.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("knockback_disabled", /datum/element/bullet_trait_knockback_disabled))
 	attaching_gun.fire_sound = 'sound/weapons/gun_shotgun_choke.ogg'
-
 	return ..()
 
 /obj/item/attachable/shotgun_choke/Detach(mob/user, obj/item/weapon/gun/shotgun/pump/detaching_gun)
 	if(!istype(detaching_gun, /obj/item/weapon/gun/shotgun/pump))
 		return ..()
 	detaching_gun.pump_delay += FIRE_DELAY_TIER_5
-	detaching_gun.remove_bullet_trait("knockback_disabled")
 	detaching_gun.fire_sound = initial(detaching_gun.fire_sound)
-
 	return ..()
 
 /obj/item/attachable/slavicbarrel
@@ -1020,6 +1031,37 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 	return .
 
+/obj/item/attachable/alt_iff_scope
+	name = "B8 Smart-Scope"
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
+	icon_state = "iffbarrel"
+	attach_icon = "iffbarrel_a"
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle, the M44 Combat Revolver, and the M41A MK2 Pulse Rifle."
+	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every deployment, just in case."
+	slot = "rail"
+	pixel_shift_y = 15
+
+/obj/item/attachable/alt_iff_scope/New()
+	..()
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_2
+	damage_falloff_mod = 0.2
+
+/obj/item/attachable/alt_iff_scope/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
+/obj/item/attachable/alt_iff_scope/Attach(obj/item/weapon/gun/attaching_gun)
+	. = ..()
+	if(!GetComponent(attaching_gun, /datum/component/iff_fire_prevention))
+		attaching_gun.AddComponent(/datum/component/iff_fire_prevention, 5)
+	SEND_SIGNAL(attaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
+
+/obj/item/attachable/alt_iff_scope/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
+	. = ..()
+	SEND_SIGNAL(detaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
+	detaching_gun.GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
+
 /obj/item/attachable/scope
 	name = "S8 4x telescopic scope"
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
@@ -1270,46 +1312,6 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	select_gamemode_skin(type)
 	attach_icon = icon_state
-
-/obj/item/attachable/scope/mini_iff
-	name = "B8 Smart-Scope"
-	icon_state = "iffbarrel"
-	attach_icon = "iffbarrel_a"
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle and M44 Combat Revolver."
-	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Currently programmed for usage with the M4RA battle rifle and M44 Combat Revolver, due to their relatively lower rates of fire. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every op, just in case."
-	slot = "rail"
-	zoom_offset = 6
-	zoom_viewsize = 7
-	pixel_shift_y = 15
-	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
-
-/obj/item/attachable/scope/mini_iff/New()
-	..()
-	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
-	accuracy_unwielded_mod = 0
-
-	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_1
-	delay_scoped_nerf = 0
-	damage_falloff_scoped_buff = 0
-
-/obj/item/attachable/scope/mini_iff/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
-	))
-
-/obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(do_after(user, 4, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		allows_movement = 1
-		. = ..()
-
-/obj/item/attachable/scope/mini_iff/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
-	. = ..()
-	if(G.zoom)
-		G.slowdown += dynamic_aim_slowdown
-
-/obj/item/attachable/scope/mini_iff/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
-	G.slowdown -= dynamic_aim_slowdown
-	..()
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"

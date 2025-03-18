@@ -495,21 +495,21 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	switch(action)
 		if("set_x")
 			var/new_x = text2num(params["set_x"])
-			if(!new_x)
+			if(isnull(new_x))
 				return
 			x_supply = new_x
 			. = TRUE
 
 		if("set_y")
 			var/new_y = text2num(params["set_y"])
-			if(!new_y)
+			if(isnull(new_y))
 				return
 			y_supply = new_y
 			. = TRUE
 
 		if("set_z")
 			var/new_z = text2num(params["set_z"])
-			if(!new_z)
+			if(isnull(new_z))
 				return
 			z_supply = new_z
 			. = TRUE
@@ -1030,7 +1030,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(scramble)
 		paper_info = stars_decode_html(info)
 	// Tossing ref in widow id as this allows us to read multiple manifests at same time
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", width = 550, height = 650)
 	onclose(user, "manifest\ref[src]")
 
 /obj/item/paper/manifest/proc/generate_contents()
@@ -1447,7 +1447,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			else
 				dat += "<a href='byond://?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
 
-	show_browser(H, dat, asrs_name, "computer", "size=575x450")
+	show_browser(H, dat, asrs_name, "computer", width = 575, height = 450)
 
 /obj/structure/machinery/computer/supply/asrs/vehicle/Topic(href, href_list)
 	. = ..()

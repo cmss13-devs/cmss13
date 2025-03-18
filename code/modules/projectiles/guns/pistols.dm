@@ -36,10 +36,9 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
 	gun_category = GUN_CATEGORY_HANDGUN
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_LOW //preferably you increment the chances to double decimal places, above that could be problematic
-	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT //preferably you dont change this at all unless its a snowflake gun
-	durability_loss = GUN_DURABILITY_LOSS_FAIR //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
-
+	initial_jam_chance = GUN_JAM_CHANCE_LOW
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
+	durability_loss = GUN_DURABILITY_LOSS_FAIR
 
 /obj/item/weapon/gun/pistol/Initialize(mapload, spawn_empty)
 	. = ..()

@@ -251,7 +251,6 @@ DEFINES in setup.dm, referenced here.
 	if(user.equip_to_slot_if_possible(src, WEAR_BACK))
 		to_chat(user, SPAN_WARNING("[src]'s magnetic sling automatically yanks it into your back."))
 
-
 //repair popup stuff
 
 /obj/item/weapon/gun/proc/gun_repair_popup(mob/living/carbon/human/user)
@@ -266,10 +265,35 @@ DEFINES in setup.dm, referenced here.
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 20, FALSE)
 			balloon_alert(user, "*functional*")
 
-/obj/item/weapon/gun/proc/gun_repair_maxup(mob/living/carbon/human/user)
+/obj/item/weapon/gun/proc/gun_repair_maxup(mob/living/carbon/human/user, /obj/item/weapon/gun/durability)
 	if(gun_durability >= GUN_DURABILITY_MAX)
 		if(user)
 			balloon_alert(user, "*max durability*")
+
+/obj/item/weapon/gun/proc/attempt_repair(mob/user, obj/item/stack/repairable/item)
+	var/strong_repair = FALSE
+	if(item.repair_amount_min >= 50)
+		strong_repair = TRUE
+
+	if(gun_durability == GUN_DURABILITY_MAX)
+		to_chat(user, SPAN_GREEN("[src] is already fully repaired."))
+		gun_repair_maxup(user)
+		return
+
+	if(gun_durability <= GUN_DURABILITY_BROKEN && item.repair_amount_min <= 49)
+		to_chat(user, SPAN_WARNING("[src] is too damaged to be repaired with [item]!"))
+		if(user)
+			balloon_alert(user, "*can't repair*")
+		return
+
+	if(do_after(user, item.repair_time SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		clean_blood()
+		gun_repair_popup(user)
+		heal_gun_durability(rand(item.repair_amount_min, item.repair_amount_max), user)
+		user.visible_message("[user] [pick(item.repair_verb)] [src]. It looks to be repaired [strong_repair ? "significantly!" : "slightly."]")
+		item.use(1)
+	else
+		return
 
 //Clicking stuff onto the gun.
 //Attachables & Reloading
@@ -288,38 +312,8 @@ DEFINES in setup.dm, referenced here.
 		else
 			return
 
-	if(istype(attack_item, /obj/item/stack/repairable/gunlube))
-		var/obj/item/stack/repairable/gunlube/oil = attack_item
-		if(gun_durability == GUN_DURABILITY_MAX)
-			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with the [oil]!"))
-			gun_repair_maxup(user)
-			return
-		if(gun_durability < GUN_DURABILITY_LOW)
-			to_chat(user, SPAN_WARNING("[src] is too damaged to be repaired with the [oil]."))
-			return
-		if(do_after(user, 60, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-			user.visible_message("[user] [oil.repair_verb] [src]. It shines like new.", "You lube up the working parts of [src]. It should be slightly repaired.")
-			clean_blood()
-			gun_repair_popup(user)
-			heal_gun_durability(rand(oil.repair_amount_min, oil.repair_amount_max))
-			oil.use(1)
-		else
-			return
-
-	if(istype(attack_item, /obj/item/stack/repairable/gunkit))
-		var/obj/item/stack/repairable/gunkit/kit = attack_item
-		if(gun_durability == GUN_DURABILITY_MAX)
-			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with [kit]!"))
-			gun_repair_maxup(user)
-			return
-		if(do_after(user, 120, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-			user.visible_message("[user] [kit.repair_verb] [src]. It looks durable now.", "You repair any broken parts present on [src]. It should be mostly repaired.")
-			clean_blood()
-			gun_repair_popup(user)
-			heal_gun_durability(kit.repair_amount_min)
-			kit.use(1)
-		else
-			return
+	if(istype(attack_item, /obj/item/stack/repairable))
+		attempt_repair(user, attack_item)
 
 	if(istype(attack_item,/obj/item/attachable))
 		if(check_inactive_hand(user))

@@ -91,7 +91,7 @@
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
 	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
 	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL //why make bolties more useless
 
@@ -220,7 +220,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
 	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
 	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE //ok this is an exception
 

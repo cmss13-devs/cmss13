@@ -16,7 +16,7 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_SLOW
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_SNIPER
+	initial_jam_chance = GUN_JAM_CHANCE_SNIPER
 	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE
 	durability_loss = GUN_DURABILITY_LOSS_SNIPER
 

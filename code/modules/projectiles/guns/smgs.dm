@@ -30,9 +30,9 @@
 	gun_category = GUN_CATEGORY_SMG
 	start_automatic = TRUE
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_LOW //preferably you increment the chances to double decimal places, above that could be problematic
-	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT //preferably you dont change this at all unless its a snowflake gun
-	durability_loss = GUN_DURABILITY_LOSS_SEVERE //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
+	initial_jam_chance = GUN_JAM_CHANCE_LOW
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
+	durability_loss = GUN_DURABILITY_LOSS_SEVERE
 
 /obj/item/weapon/gun/smg/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -418,7 +418,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 	fa_max_scatter = SCATTER_AMOUNT_TIER_9
 	fa_scatter_peak = 1 // Seems a bit funny, but it works pretty well in the end
-	jam_chance = GUN_JAM_CHANCE_CRITICAL //the ppsh jams apparently a fuckton in real life, so we're going to make it jam a lot
+	initial_jam_chance = GUN_JAM_CHANCE_CRITICAL //the ppsh jams apparently a fuckton in real life, so we're going to make it jam a lot
 	unjam_chance = GUN_UNJAM_CHANCE_LOW // yep
 	durability_loss = GUN_DURABILITY_LOSS_FAIR
 
@@ -625,7 +625,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_3
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	jam_chance = GUN_JAM_CHANCE_HIGH //carlarc wanted the smg jam often, but not as often as the ppsh
+	initial_jam_chance = GUN_JAM_CHANCE_HIGH //carlarc wanted the smg jam often, but not as often as the ppsh
 	unjam_chance = GUN_UNJAM_CHANCE_HIGH
 	durability_loss = GUN_DURABILITY_LOSS_HIGH
 
@@ -755,7 +755,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	jam_chance = GUN_JAM_CHANCE_FAIR // i dont think tools jam easily
+	initial_jam_chance = GUN_JAM_CHANCE_FAIR // i dont think tools jam easily
 	unjam_chance = GUN_UNJAM_CHANCE_INSUBSTANTIAL // but they would be an arsehole to unjam if they did
 	durability_loss = GUN_DURABILITY_LOSS_FAIR
 

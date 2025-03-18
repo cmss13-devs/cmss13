@@ -35,9 +35,9 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_FAIR //preferably you increment the chances to double decimal places, above that could be problematic
-	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT //preferably you dont change this at all unless its a snowflake gun
-	durability_loss = GUN_DURABILITY_LOSS_HIGH //zero means no loss, 100 means guaranteed loss per shot, yes you heard that right, otherwise percentage chance per shot
+	initial_jam_chance = GUN_JAM_CHANCE_FAIR
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
+	durability_loss = GUN_DURABILITY_LOSS_HIGH
 
 /obj/item/weapon/gun/rifle/unique_action(mob/user)
 	if(jammed)
@@ -452,7 +452,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	jam_chance = GUN_JAM_CHANCE_MEDIUM // some lore nerd is gonna yell at my ear saying that the mk1 is a beautiful piece of machinery that never jams
+	initial_jam_chance = GUN_JAM_CHANCE_MEDIUM // some lore nerd is gonna yell at my ear saying that the mk1 is a beautiful piece of machinery that never jams
 	unjam_chance = GUN_UNJAM_CHANCE_FAIR
 	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE
 
@@ -914,7 +914,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	recoil = RECOIL_AMOUNT_TIER_5
-	jam_chance = GUN_JAM_CHANCE_HIGH
+	initial_jam_chance = GUN_JAM_CHANCE_HIGH
 	unjam_chance = GUN_UNJAM_CHANCE_FAIR
 	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE
 
@@ -1428,7 +1428,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
-	jam_chance = GUN_JAM_CHANCE_SEVERE
+	initial_jam_chance = GUN_JAM_CHANCE_SEVERE
 	unjam_chance = GUN_UNJAM_CHANCE_MEDIUM
 	durability_loss = GUN_DURABILITY_LOSS_CRITICAL
 

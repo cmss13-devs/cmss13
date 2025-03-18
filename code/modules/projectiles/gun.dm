@@ -246,8 +246,10 @@
 	var/can_jam = FALSE
 	/// if gun is currently jammed
 	var/jammed = FALSE
-	/// chance to jam
-	var/jam_chance = 0
+	/// guns inherent chance to jam
+	var/initial_jam_chance = 0
+	/// guns chance to jam after calculations
+	var/scaled_jam_chance = 0
 	/// chance to unjam after hitting the unique action
 	var/unjam_chance = 0
 	/// Amount of durability loss per shot
@@ -582,7 +584,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_mag_overlay()
 	update_attachables()
 
-//-- code by carlarc, slightly modified, emphasis on slightly --//
+//-- jamming code by carlarc, slightly modified, emphasis on slightly --//
 
 // function to update durability flag, blatant shit code
 /obj/item/weapon/gun/proc/update_gun_durability()
@@ -594,6 +596,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_gun_durability()
 
 /obj/item/weapon/gun/proc/check_jam(mob/living/user)
+	if(!current_mag)
+		if(jammed)
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
+			if(prob(30))
+				to_chat(user, SPAN_WARNING("Your [src] is jammed! Mash Unique-Action to unjam it!"))
+				balloon_alert(user, "*jammed*")
+		return // to prevent runtime without a mag
+
 	var/mag_jam_modifier = current_mag.mag_jam_modifier
 	if(gun_durability <= GUN_DURABILITY_BROKEN) //prevents firing without spamming your screen with both jamming and worn out noises
 		check_worn_out(user)
@@ -604,7 +614,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			to_chat(user, SPAN_WARNING("Your [src] is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
 		return NONE
-	else if(prob(jam_chance + mag_jam_modifier))
+	else if(prob(scaled_jam_chance + mag_jam_modifier))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
@@ -664,7 +674,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		update_gun_durability()
 		check_worn_out(user)
 
-	jam_chance = initial(jam_chance) * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
+	scaled_jam_chance = initial_jam_chance * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -673,7 +683,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/jam_unique_action(mob/user)
 	return unjam(user)
 
-/obj/item/weapon/gun/proc/heal_gun_durability(amount, mob/user)
+/obj/item/weapon/gun/proc/heal_gun_durability(amount, mob/user, total_repair_bonus = null)
 	var/skill_repair_firearms = 0
 	if(user && user.mind && user.skills)
 		var/skill_level_firearms = user.skills.get_skill_level(SKILL_FIREARMS)
@@ -700,7 +710,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			if(SKILL_ENGINEER_MASTER)
 				skill_repair_engineer = 50 // pretty much synth level
 
-	var/total_repair_bonus = skill_repair_firearms + skill_repair_engineer
+	total_repair_bonus = skill_repair_firearms + skill_repair_engineer
 
 	if(gun_durability < GUN_DURABILITY_MAX)
 		gun_durability = min(gun_durability + amount + total_repair_bonus, GUN_DURABILITY_MAX)
@@ -1035,6 +1045,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 
+	//code for manually inserting a bullet into a chamber
 	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
 		if(in_chamber)
 			to_chat(user, SPAN_WARNING("[src] needs to be unchambered first."))
@@ -1118,6 +1129,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 /obj/item/weapon/gun/proc/unload_chamber(mob/user)
 	if(!in_chamber)
 		return
+
 	var/found_handful
 	var/ammo_type = get_ammo_type_chambered(user)
 	for(var/obj/item/ammo_magazine/handful/H in user.loc)
@@ -1140,10 +1152,13 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
 /obj/item/weapon/gun/proc/cock(mob/user)
+	var/obj/item/weapon/gun/smartgun/cant_cock = istype(src, /obj/item/weapon/gun/smartgun)
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 	if(cock_cooldown > world.time)
 		return
+	if(cant_cock)
+		return //so smartguns dont actually unload from the chamber
 
 	cock_cooldown = world.time + cock_delay
 	cock_gun(user)
@@ -1256,19 +1271,22 @@ and you're good to go.
 
 	return P
 
-/obj/item/weapon/gun/proc/insert_bullet(mob/user)
+/obj/item/weapon/gun/proc/insert_bullet(mob/user,)
 	if(!current_mag && !in_chamber)
 		var/obj/item/ammo_magazine/handful/bullet = user.get_active_hand()
 		if(istype(bullet) && bullet.caliber == caliber)
 			if(bullet.current_rounds > 0)
-				ammo = bullet.default_ammo
-				in_chamber = create_bullet(ammo, initial(name))
+				in_chamber = create_bullet(bullet.ammo_source, initial(name))
 				apply_traits(in_chamber)
-				to_chat(user, SPAN_NOTICE("You load a bullet into the [src]'s chamber."))
+				to_chat(user, SPAN_NOTICE("You load a bullet into [src]'s chamber."))
 				bullet.current_rounds--
+				bullet.update_icon()
 				if(bullet.current_rounds <= 0)
 					QDEL_NULL(bullet)
 				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+		else
+			to_chat(user, SPAN_WARNING("The bullet doesn't match [src]'s caliber!"))
+
 
 //This proc is needed for firearms that chamber rounds after firing.
 /obj/item/weapon/gun/proc/reload_into_chamber(mob/user)

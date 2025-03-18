@@ -151,7 +151,7 @@
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
 	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE //equivalent to restarting your phone
 	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL //energy weapons are more durable obviously
 
@@ -219,7 +219,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 	fa_scatter_peak = SCATTER_AMOUNT_TIER_8
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_MEDIUM
+	initial_jam_chance = GUN_JAM_CHANCE_MEDIUM
 	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE //equivalent to restarting your phone
 	durability_loss = GUN_DURABILITY_LOSS_LOW //energy weapons are more durable obviously, but maybe not with a laser uzi
 

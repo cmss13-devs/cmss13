@@ -21,7 +21,7 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 	can_jam = TRUE
-	jam_chance = GUN_JAM_CHANCE_SCOUT
+	initial_jam_chance = GUN_JAM_CHANCE_SCOUT
 	unjam_chance = GUN_UNJAM_CHANCE_SCOUT
 	durability_loss = GUN_DURABILITY_LOSS_SCOUT
 	force = 26

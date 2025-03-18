@@ -215,3 +215,33 @@
   itsmeow:
   - bugfix: Fixed TGUI assets and icons sometimes not showing up until you refreshed
       the page on 516 clients
+2025-03-16:
+  Drathek:
+  - bugfix: Fixed browsers sometimes not handling a mob passed instead of a client
+      (VV bitfields & tickets atleast)
+  MistChristmas:
+  - bugfix: Allows Supply Drop Console to accept 0 values. Allows OW consoles to save
+      coords with 0 values.
+2025-03-17:
+  AndroBetel:
+  - rscadd: You can now lean on certain walls, click drag your sprite to the wall
+      and you just might. To stop a lean, either move, or press resist.
+  DarkLordCabbage:
+  - bugfix: gibs now show up on weeds, including the gibs from larva bursts.
+  Drathek:
+  - bugfix: Fixed an edge case where last man could keep a cloak activated
+  Nihisohel:
+  - rscadd: You can now examine someone with your IFF weapon to check if the bullet
+      passes through or not.
+  Red-byte3D:
+  - rscadd: added Keybinds for vehicles
+  - code_imp: cleaned some unused shift click vehicle code since it wasnt used
+  - bugfix: Nested people dont stop you from shooting with ALT IFF
+  - bugfix: You can no longer have nvgs without the filter by using an exploit
+  XQ:
+  - bugfix: JAS consoles are now indestructible.
+  - admin: Adds Clear Cache and Cryo and Ghost to Lobby Admin Autoreplies
+  larentoun:
+  - rscadd: '"Cooldown Complete" messages in chat for xeno abilities are now hidden
+      by default. You can enable them back by changing "`Xeno Cooldown Messages" value
+      to "Show" in Settings menu.'

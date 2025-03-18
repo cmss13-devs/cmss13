@@ -572,23 +572,28 @@
 		to_chat(xeno, SPAN_XENOWARNING("We can only shape on weeds. We must find some resin before we start building!"))
 		return FALSE
 
-	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
-	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
-	if(locate(/obj/structure/stairs) in src)
-		to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a staircase!"))
-		return FALSE
-
-	if(locate(/obj/structure/monorail) in src)
-		to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a track!"))
-		return FALSE
-
-	if(locate(/obj/structure/machinery/conveyor) in src)
-		to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a conveyor!"))
-		return FALSE
-
 	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
 		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to our hive!"))
 		return FALSE
+
+	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
+	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
+	if(locate(/obj/structure) in src)
+		if(locate(/obj/structure/stairs) in src)
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a staircase!"))
+			return FALSE
+
+		if(locate(/obj/structure/monorail) in src)
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a track!"))
+			return FALSE
+
+		if(locate(/obj/structure/machinery/conveyor) in src)
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a conveyor!"))
+			return FALSE
+
+		if(locate(/obj/structure/machinery/colony_floodlight) in src)
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a light!"))
+			return FALSE
 
 	if(!xeno.check_alien_construction(src, check_doors = TRUE))
 		return FALSE

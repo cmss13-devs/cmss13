@@ -105,7 +105,7 @@
 				xeno_announcement("Я чувствую... Последний носитель прячется в [get_area_name(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 				// Tell the human he is the last guy.
 				if(last_living_human.client)
-					to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Паника охватывает вас до мурашек. Вы осознаёте - \"я последний выживший\""."))
+					to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Паника охватывает вас до мурашек. Вы осознаёте - \"я последний выживший\"."))
 				//tell the ghosts
 				notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
 			//disable delaycloaks

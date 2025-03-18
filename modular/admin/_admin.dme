@@ -1,0 +1,3 @@
+#include "_admin.dm"
+
+#include "code/check_new_players.dm"

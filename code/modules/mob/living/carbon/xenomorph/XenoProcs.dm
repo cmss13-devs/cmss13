@@ -122,6 +122,9 @@
 		else
 			. += "Slashing: FORBIDDEN"
 
+		if(!hive.lessers_allowed)
+			. += "Lessers & Huggers: FORBIDDEN"
+
 		if(hive.construction_allowed == XENO_LEADER)
 			. += "Construction Placement: LEADERS"
 		else if(hive.construction_allowed == NORMAL_XENO)

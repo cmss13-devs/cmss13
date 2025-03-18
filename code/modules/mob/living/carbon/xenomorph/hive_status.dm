@@ -14,6 +14,7 @@
 	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
 	var/destruction_allowed = NORMAL_XENO //Who can destroy special structures
 	var/unnesting_allowed = TRUE
+	var/lessers_allowed = TRUE //Allows spawn of lessers and sentient huggers
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
@@ -897,7 +898,10 @@
 	playable_hugger_limit = max(floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
-	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
+	if(!GLOB.hive_datum || !GLOB.hive_datum[hivenumber])
+		return FALSE
+	if(!GLOB.hive_datum[hivenumber].lessers_allowed)
+		to_chat(user, SPAN_WARNING("The queen forbade lesser drones and sentient huggers from joining the hive."))
 		return FALSE
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
@@ -961,6 +965,10 @@
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, obj/effect/alien/resin/special/pylon/spawning_pylon)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
+		return FALSE
+
+	if(!GLOB.hive_datum[hivenumber].lessers_allowed)
+		to_chat(user, SPAN_WARNING("The queen forbade lesser drones and sentient huggers from joining the hive."))
 		return FALSE
 
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned

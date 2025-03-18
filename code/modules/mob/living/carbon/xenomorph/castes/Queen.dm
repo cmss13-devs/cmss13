@@ -316,6 +316,7 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/claw_toggle,
+		/mob/living/carbon/xenomorph/proc/lesser_toggle,
 		/mob/living/carbon/xenomorph/proc/construction_toggle,
 		/mob/living/carbon/xenomorph/proc/destruction_toggle,
 		/mob/living/carbon/xenomorph/proc/toggle_unnesting,
@@ -678,6 +679,38 @@
 
 /mob/living/carbon/xenomorph/proc/do_claw_toggle_cooldown()
 	pslash_delay = FALSE
+
+/mob/living/carbon/xenomorph/proc/lesser_toggle()
+	set name = "Permit/Disallow Lessers"
+	set desc = "Whether lessers and sentient huggers allowed to spawn."
+	set category = "Alien"
+
+	if(stat)
+		to_chat(src, SPAN_WARNING("You can't do that now."))
+		return
+
+	if(!hive)
+		to_chat(src, SPAN_WARNING("You can't do that now."))
+		CRASH("[src] attempted to toggle lessers without a linked hive")
+
+	if(plesser_delay)
+		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
+		return
+
+	plesser_delay = TRUE
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/xenomorph, do_lesser_toggle_cooldown)), 30 SECONDS)
+
+	if(!hive.lessers_allowed)
+		to_chat(src, SPAN_XENONOTICE("You allow lessers."))
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>allowed</b> lesser drones and sentient facehuggers to join the hive!"), 2, hivenumber)
+		hive.lessers_allowed = TRUE
+	else
+		to_chat(src, SPAN_XENONOTICE("You forbid lessers."))
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> lesser drones and sentient facehuggers from joining the hive."), 2, hivenumber)
+		hive.lessers_allowed = FALSE
+
+/mob/living/carbon/xenomorph/proc/do_lesser_toggle_cooldown()
+	plesser_delay = FALSE
 
 /mob/living/carbon/xenomorph/proc/construction_toggle()
 	set name = "Permit/Disallow Construction Placement"

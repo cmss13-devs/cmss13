@@ -15,6 +15,8 @@
 	var/xp = 0
 
 	var/list/ability_path_level_dict = list()
+	/// Dict for items to pass data between lives
+	var/list/held_item_pass_data = list()
 	var/unspent_levels = 1
 	var/max_ultimate_level = 0
 	/// How many minions / camps (4 CS/camp) we've killed

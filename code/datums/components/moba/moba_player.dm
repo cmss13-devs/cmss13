@@ -31,7 +31,7 @@
 	/// How much HP we have that isn't from our caste. Used for item scaling and etc.
 	var/bonus_hp = 0
 	/// How much "Acid Power" (AP) we have, used for the scaling of certain abilities
-	var/acid_power = 0
+	VAR_PRIVATE/acid_power = 0
 	/// What percentage of melee damage done is returned as health. 1 is 100%
 	var/lifesteal = 0
 	var/slash_penetration = 0
@@ -83,7 +83,10 @@
 
 	for(var/path in player_datum.held_item_types) // recreate any items that we had before we died
 		var/datum/moba_item/item = SSmoba.item_dict[path]
-		held_items += item
+		if(item.instanced)
+			item = new path(TRUE)
+		else
+			held_items += item
 		item.apply_stats(parent_xeno, src, player_datum, TRUE)
 
 	START_PROCESSING(SSprocessing, src)
@@ -103,7 +106,8 @@
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_OWNED_ITEMS, PROC_REF(get_owned_items))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_GOLD, PROC_REF(get_gold))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_LEVEL, PROC_REF(get_level))
-	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_AP, PROC_REF(get_ap))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_BONUS_HP, PROC_REF(get_bonus_hp))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_AP, PROC_REF(get_ap_signal))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_LIFESTEAL, PROC_REF(get_lifesteal))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_SET_LIFESTEAL, PROC_REF(set_lifesteal))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_ADD_ITEM, PROC_REF(add_item))
@@ -116,6 +120,7 @@
 	RegisterSignal(parent_xeno, COMSIG_XENO_TRY_HIVEMIND_TALK, PROC_REF(on_hivemind_talk))
 	RegisterSignal(parent_xeno, COMSIG_XENO_TRY_OVERWATCH, PROC_REF(on_overwatch))
 	RegisterSignal(parent_xeno, COMSIG_MOB_LOGGED_IN, PROC_REF(on_reconnect))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_PLAYER_DATUM, PROC_REF(get_player_datum))
 
 /datum/component/moba_player/proc/handle_level_up()
 	player_datum.level_up()
@@ -227,10 +232,32 @@
 
 	level_list += player_datum.level
 
-/datum/component/moba_player/proc/get_ap(datum/source, list/ap_list)
+/datum/component/moba_player/proc/get_bonus_hp(datum/source, list/bhp_list)
+	SIGNAL_HANDLER
+
+	bhp_list += bonus_hp
+
+/datum/component/moba_player/proc/get_player_datum(datum/source, list/datum_list)
+	SIGNAL_HANDLER
+
+	datum_list += player_datum
+
+/datum/component/moba_player/proc/get_ap_signal(datum/source, list/ap_list)
 	SIGNAL_HANDLER
 
 	ap_list += acid_power
+
+/datum/component/moba_player/proc/get_ap()
+	var/datum/status_effect/acid_neutralized/neutralized = parent_xeno.has_status_effect(/datum/status_effect/acid_neutralized)
+	if(neutralized)
+		return acid_power * neutralized.ap_mult
+	return acid_power
+
+/datum/component/moba_player/proc/add_ap(ap)
+	acid_power += ap
+
+/datum/component/moba_player/proc/remove_ap(ap)
+	acid_power -= ap
 
 /datum/component/moba_player/proc/get_lifesteal(datum/source, list/lifesteal_list)
 	SIGNAL_HANDLER

@@ -11,8 +11,9 @@
 // 112 gold per acid penetration
 // 100 gold per 0.1 movespeed
 // 90 gold per 1% lifesteal
+// 500 gold per 1 attack speed
 
-// SINGLETONS. THERE IS NOT SOMETHING CURRENTLY IMPLEMENTED TO HOLD UNIQUE DATA PER-ITEM
+// USUALLY SINGLETONS. SEE `instanced` VARIABLE
 /datum/moba_item
 	var/name = ""
 	// Does not include cost of any components
@@ -25,6 +26,8 @@
 	var/icon_state = ""
 	/// If TRUE, a player can only hold one of this item at a time.
 	var/unique = FALSE
+	/// If TRUE, this should be a unique object instead of a singleton, thus we can do things like hold data on it
+	var/instanced = FALSE
 	var/tier = 0
 
 	var/health = 0
@@ -49,9 +52,14 @@
 	/// Same as above but for acid attacks
 	var/acid_penetration = 0
 
-/datum/moba_item/New()
+/datum/moba_item/New(datum/moba_player/creating_player)
 	. = ..()
 	gold_cost = floor(gold_cost)
+	if(instanced && creating_player)
+		set_total_gold_cost()
+		set_description()
+		RegisterSignal(creating_player.get_tied_xeno(), COMSIG_MOB_DEATH, PROC_REF(handle_pass_data_write))
+		handle_pass_data_read(creating_player)
 
 /datum/moba_item/proc/set_total_gold_cost()
 	total_gold_cost = get_recursive_gold_cost()
@@ -155,7 +163,7 @@
 	xeno.attack_speed_modifier -= attack_speed
 	xeno.melee_damage_lower -= attack_damage
 	xeno.melee_damage_upper -= attack_damage
-	component.acid_power -= acid_power
+	component.remove_ap(acid_power)
 	if(ability_cooldown_reduction)
 		xeno.cooldown_reduction_percentage = xeno.cooldown_reduction_percentage * (1 / ability_cooldown_reduction)
 	component.lifesteal -= lifesteal
@@ -203,7 +211,7 @@
 	// This is all because cooldown_reduction_percentage isn't just a straight multiplier on the cooldown, it's 1 minus this number.
 
 /datum/moba_item/proc/apply_acid_power(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
-	component.acid_power += acid_power
+	component.add_ap(acid_power)
 
 /datum/moba_item/proc/apply_lifesteal(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
 	component.lifesteal += lifesteal
@@ -212,6 +220,14 @@
 	component.slash_penetration += slash_penetration
 	component.acid_penetration += acid_penetration
 
+/datum/moba_item/proc/handle_pass_data_write(mob/living/carbon/xenomorph/xeno, datum/cause_data/causedata)
+	SIGNAL_HANDLER
+
+	return
+
+/datum/moba_item/proc/handle_pass_data_read(datum/moba_player/player)
+
+	return
 
 /datum/moba_item/common
 	tier = 1

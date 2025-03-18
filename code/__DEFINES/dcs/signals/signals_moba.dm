@@ -34,3 +34,11 @@
 
 /// (lifesteal)
 #define COMSIG_MOBA_SET_LIFESTEAL "moba_set_lifesteal"
+
+#define COMSIG_XENO_PHYSICAL_ABILITY_HIT "xeno_physical_ability_hit"
+
+/// (list/datum_holder)
+#define COMSIG_MOBA_GET_PLAYER_DATUM "moba_get_player_datum"
+
+/// (list/bhp_holder)
+#define COMSIG_MOBA_GET_BONUS_HP "moba_get_bonus_hp"

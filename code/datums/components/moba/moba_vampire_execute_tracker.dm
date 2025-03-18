@@ -59,8 +59,11 @@
 
 	for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.living_xeno_list)
 		if(QDELETED(xeno) || (xeno.stat == DEAD))
-			parent_xeno.client.images -= execute_images[xeno]
-			qdel(execute_images[xeno])
+			var/image/indicator = execute_images[xeno]
+			indicator.icon = null
+			indicator.icon_state = null
+			parent_xeno.client.images -= indicator
+			qdel(indicator)
 			execute_images -= xeno
 			continue
 
@@ -69,6 +72,9 @@
 			parent_xeno.client.images += execute_indicator
 			execute_images[xeno] = execute_indicator
 		else
-			parent_xeno.client.images -= execute_images[xeno]
-			qdel(execute_images[xeno])
+			var/image/indicator = execute_images[xeno]
+			indicator.icon = null
+			indicator.icon_state = null
+			parent_xeno.client.images -= indicator
+			qdel(indicator)
 			execute_images -= xeno

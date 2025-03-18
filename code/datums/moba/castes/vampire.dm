@@ -76,6 +76,7 @@
 	if(!bloodlust_effect)
 		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
 	bloodlust_effect.add_stacks(1) // 1 per target hit
+	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
 
 /datum/action/xeno_action/activable/flurry/moba/level_up_ability(new_level)
 	base_damage = src::base_damage + ((new_level - 1) * 10)
@@ -99,6 +100,7 @@
 	if(!bloodlust_effect)
 		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
 	bloodlust_effect.add_stacks(2)
+	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, hit_target)
 
 /datum/action/xeno_action/activable/tail_jab/moba/level_up_ability(new_level)
 	damage_mult = src::damage_mult + ((new_level - 1) * 0.2)
@@ -157,6 +159,7 @@
 	if(!bloodlust_effect)
 		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
 	bloodlust_effect.add_stacks(5)
+	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target_carbon)
 
 	apply_cooldown()
 	return ..()

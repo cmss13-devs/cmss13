@@ -61,6 +61,13 @@
 
 	desc = "Ready your tail over [new_level == 1 ? "<b>1.5</b>" : "1.5"] / [new_level == 2 ? "<b>1</b>" : "1"] / [new_level == 3 ? "<b>0.7</b>" : "0.7"] seconds to stab an enemy. This stab reaches two tiles and does [new_level == 1 ? "<b>1.2x</b>" : "1.2x"] / [new_level == 2 ? "<b>1.4x</b>" : "1.4x"] / [new_level == 3 ? "<b>1.6x</b>" : "1.6x"] your attack damage while dazing the target for [new_level == 1 ? "<b>0.2</b>" : "0.2"] / [new_level == 2 ? "<b>0.3</b>" : "0.3"] / [new_level == 3 ? "<b>0.4</b>" : "0.4"] seconds."
 
+/datum/action/xeno_action/activable/tail_stab/moba/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+	. = ..()
+	if(!.)
+		return
+
+	SEND_SIGNAL(stabbing_xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
+
 /datum/action/xeno_action/activable/spore_fruit
 	name = "Empowering Pillar"
 	desc = "Plant an empowering pillar up to 2 tiles away. It grows over the course of 1.5 seconds. Once grown, it provides a -0.1/-0.2/-0.3 speed and a 0/0/-0.1 attack delay to all allies within 2 tiles and for 3 seconds after leaving its radius. It has 50/100/150 health and will decay after 15 seconds."

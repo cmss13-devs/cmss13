@@ -452,10 +452,6 @@
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
-"abe" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "abf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -616,10 +612,6 @@
 "abE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
-"abF" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer/plate,
-/area/almayer/engineering/lower/workshop)
 "abG" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
@@ -1319,10 +1311,6 @@
 "add" = (
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north1)
-"ade" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer,
-/area/almayer/command/lifeboat)
 "adf" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/lifesaver/full,
@@ -15969,7 +15957,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/spycam_start,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
@@ -90401,7 +90388,7 @@ xyw
 xyw
 xyw
 xyw
-abe
+xyw
 xyw
 xyw
 xyw
@@ -123693,7 +123680,7 @@ uZF
 xoj
 xoj
 osI
-abF
+qXk
 fie
 pUj
 xoj
@@ -124810,7 +124797,7 @@ eky
 aDQ
 pyy
 eky
-ade
+eky
 eky
 dLc
 aDQ

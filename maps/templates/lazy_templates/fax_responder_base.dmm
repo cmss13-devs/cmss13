@@ -1152,7 +1152,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
 	layer = 3.01;
 	name = "USS Almayer Cameras";
 	pixel_y = -10;
@@ -1737,7 +1737,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 4;
 	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
 	pixel_x = -3;
 	layer = 2.99;
 	name = "USS Almayer Cameras";
@@ -2629,7 +2629,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 1;
 	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
 	layer = 2.99;
 	name = "USS Almayer Cameras";
 	pixel_y = -6;
@@ -2868,7 +2868,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 1;
 	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
 	layer = 2.99;
 	name = "USS Almayer Cameras";
 	pixel_y = -6;

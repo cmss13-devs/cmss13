@@ -599,8 +599,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		check_worn_out(user)
 		return NONE
 	if(jammed)
+		playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
 		if(prob(30))
-			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
 			to_chat(user, SPAN_WARNING("Your [src] is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
 		return NONE
@@ -644,11 +644,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		balloon_alert(user, "*damaged*")
 
 	if(gun_durability <= GUN_DURABILITY_BROKEN)
+		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
+		cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
 		if(prob(50))
 			to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
-			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
 			balloon_alert(user, "*worn-out*")
-			cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
 	var/bullet_duraloss = ammo.bullet_duraloss //i think this works, code for taking account the bullet duraloss modifier in the current chanbered ammo

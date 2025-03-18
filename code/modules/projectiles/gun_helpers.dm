@@ -290,7 +290,6 @@ DEFINES in setup.dm, referenced here.
 
 	if(istype(attack_item, /obj/item/stack/repairable/gunlube))
 		var/obj/item/stack/repairable/gunlube/oil = attack_item
-		var/repair_oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes", "repairs")
 		if(gun_durability == GUN_DURABILITY_MAX)
 			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with the [oil]!"))
 			gun_repair_maxup(user)
@@ -299,7 +298,7 @@ DEFINES in setup.dm, referenced here.
 			to_chat(user, SPAN_WARNING("[src] is too damaged to be repaired with the [oil]."))
 			return
 		if(do_after(user, 60, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-			user.visible_message("[user] [repair_oil_verb] [src]. It shines like new.", "You lube up the working parts of [src]. It should be slightly repaired.")
+			user.visible_message("[user] [oil.repair_verb] [src]. It shines like new.", "You lube up the working parts of [src]. It should be slightly repaired.")
 			clean_blood()
 			gun_repair_popup(user)
 			heal_gun_durability(rand(oil.repair_amount_min, oil.repair_amount_max))
@@ -309,13 +308,12 @@ DEFINES in setup.dm, referenced here.
 
 	if(istype(attack_item, /obj/item/stack/repairable/gunkit))
 		var/obj/item/stack/repairable/gunkit/kit = attack_item
-		var/repair_kit_verb = pick("fixes", "fastens screws to", "recalculates the settings of", "tends to", "installs some fixes to", "repairs")
 		if(gun_durability == GUN_DURABILITY_MAX)
 			to_chat(user, SPAN_GREEN("[src] is already at its max durability to be repaired with [kit]!"))
 			gun_repair_maxup(user)
 			return
 		if(do_after(user, 120, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-			user.visible_message("[user] [repair_kit_verb] [src]. It looks durable now.", "You repair any broken parts present on [src]. It should be mostly repaired.")
+			user.visible_message("[user] [kit.repair_verb] [src]. It looks durable now.", "You repair any broken parts present on [src]. It should be mostly repaired.")
 			clean_blood()
 			gun_repair_popup(user)
 			heal_gun_durability(kit.repair_amount_min)

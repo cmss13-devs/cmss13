@@ -9,7 +9,7 @@
 	max_amount = 10
 	var/repair_amount_min = 1
 	var/repair_amount_max = 10
-
+	var/list/repair_verb = list()
 
 /obj/item/stack/repairable/gunlube
 	name = "Multi-purpose combat lubricant"
@@ -23,6 +23,7 @@
 	stack_id = "combatoil"
 	repair_amount_min = 6
 	repair_amount_max = 20
+	repair_verb = list("lubes", "oils", "cleans", "tends to", "gently strokes", "repairs")
 
 /obj/item/stack/repairable/gunkit
 	name = "firearms repair kit"
@@ -34,3 +35,4 @@
 	max_amount = 5
 	stack_id = "gunkit"
 	repair_amount_min = 50
+	repair_verb = list("fixes", "fastens screws to", "recalculates the settings of", "tends to", "installs some fixes to", "repairs")

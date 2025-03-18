@@ -303,6 +303,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// This contains any potential issues with the users' preferences, and presents them on the lobby screen
 	var/errors = list()
 
+	/// Sends messages in chat when the Xeno Action's cooldown is complete and adds cooldown timers in stat panel
+	var/show_cooldown_messages = FALSE
 
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -608,6 +610,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Play VOX Announcements:</b> <a href='byond://?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"
+			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Show" : "Hide"]</b></a><br>"
 			// BANDAMARINES EDIT START
 			dat += "<b>Instant Ability Cast:</b> <a href='byond://?_src_=prefs;preference=quick_cast'><b>[(quick_cast) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Show Screentips:</b> <a href='byond://?_src_=prefs;preference=screentips'><b>[(screentips) ? "Yes" : "No"]</b></a><br>"
@@ -1179,6 +1182,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		if("cycle_bg")
 			bg_state = next_in_list(bg_state, GLOB.bgstate_options)
 
+		if("show_cooldown_messages")
+			show_cooldown_messages = !show_cooldown_messages
 
 		// SS220 ADDITION START - TTS220
 		if("tts_seed")

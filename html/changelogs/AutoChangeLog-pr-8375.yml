@@ -1,0 +1,4 @@
+author: "efzapa"
+delete-after: True
+changes:
+  - balance: "Replaced all instances of the M81 Riot Launcher with a new M84 Riot Launcher, which has a non-lethal grenade capacity of 3, and the ability to lob."

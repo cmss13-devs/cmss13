@@ -62,7 +62,7 @@
 		if(selected_ability.charges != NO_ACTION_CHARGES)
 			. += "Зарядов осталось: [selected_ability.charges]"
 
-		if(selected_ability.cooldown_timer_id != TIMER_ID_NULL)
+		if(selected_ability.cooldown_timer_id != TIMER_ID_NULL && client?.prefs.show_cooldown_messages)
 			. += "Перезарядка: [DisplayTimeText(timeleft(selected_ability.cooldown_timer_id))]"
 
 	. += ""

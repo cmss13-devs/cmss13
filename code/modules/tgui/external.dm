@@ -198,6 +198,7 @@
 	if(type == "cacheReloaded")
 		if(!check_rights(R_ADMIN, FALSE) || usr.client.tgui_cache_reloaded)
 			return TRUE
+		usr.client.allow_browser_inspect()
 		// Mark as reloaded
 		usr.client.tgui_cache_reloaded = TRUE
 		// Notify windows

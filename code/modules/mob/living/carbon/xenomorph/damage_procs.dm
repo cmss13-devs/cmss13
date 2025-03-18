@@ -54,9 +54,6 @@
 
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
-	if(severity > EXPLOSION_THRESHOLD_LOW && length(stomach_contents))
-		for(var/mob/M in stomach_contents)
-			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, last_damage_data, pierce)
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -121,7 +118,8 @@
 		"penetration" = penetration,
 		"armour_break_pr_pen" = armour_break_pr_pen,
 		"armour_break_flat" = armour_break_flat,
-		"armor_integrity" = armor_integrity
+		"armor_integrity" = armor_integrity,
+		"armour_type" = armour_type,
 	)
 	SEND_SIGNAL(src, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, damagedata)
 	var/modified_damage = armor_damage_reduction(armour_config, damage,
@@ -275,6 +273,8 @@
 
 		for(var/mob/living/carbon/human/victim in orange(radius, src)) //Loop through all nearby victims, including the tile.
 			splash_chance = 65 - (i * 5)
+			if(HAS_TRAIT(victim, TRAIT_HAULED))
+				continue
 			if(victim.loc == loc)
 				splash_chance += 30 //Same tile? BURN
 			if(victim.species?.acid_blood_dodge_chance)

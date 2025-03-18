@@ -54,7 +54,7 @@
 	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
@@ -288,3 +288,238 @@
 	if(bound_xeno.throwing || is_charging) //Let it build up a bit so we're not changing icons every single turf
 		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
 		return TRUE
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects_always()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+
+	for (var/mob/living/carbon/target in orange(1, get_turf(xeno)))
+		if(xeno.can_not_harm(target))
+			continue
+
+		new /datum/effects/xeno_slow(target, xeno, null, null, 3.5 SECONDS)
+		to_chat(target, SPAN_XENODANGER("You are slowed as the impact of [xeno] shakes the ground!"))
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/target_to_check = target
+	if (!isxeno_human(target))
+		return
+
+	if (target_to_check.stat == DEAD)
+		return
+
+	xeno.emote("roar")
+	target.apply_effect(2, WEAKEN)
+	xeno.visible_message(SPAN_XENODANGER("[xeno] overruns [target_to_check], brutally trampling them underfoot!"), SPAN_XENODANGER("We brutalize [target_to_check] as we crush them underfoot!"))
+
+	target_to_check.apply_armoured_damage(get_xeno_damage_slash(target_to_check, direct_hit_damage), ARMOR_MELEE, BRUTE)
+	xeno.throw_carbon(target_to_check, xeno.dir, 3)
+
+	target_to_check.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+	return
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/pre_windup_effects()
+	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
+
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner))
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	crusher_delegate.is_charging = TRUE
+	xeno_owner.update_icons()
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(interrupted)
+	..()
+	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner))
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	addtimer(CALLBACK(src, PROC_REF(undo_charging_icon)), 0.5 SECONDS) // let the icon be here for a bit, it looks cool
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner))
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	crusher_delegate.is_charging = FALSE
+	xeno_owner.update_icons()
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/xenomorph/X, list/damagedata)
+	SIGNAL_HANDLER
+	var/projectile_direction = damagedata["direction"]
+	if(X.dir & REVERSE_DIR(projectile_direction))
+		// During the charge windup, crusher gets an extra 15 directional armor in the direction its charging
+		damagedata["armor"] += frontal_armor
+
+
+// This ties the pounce/throwing backend into the old collision backend
+/mob/living/carbon/xenomorph/crusher/pounced_obj(obj/pounced_object)
+	var/datum/action/xeno_action/activable/pounce/crusher_charge/crusher_charge_action = get_action(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
+	if (istype(crusher_charge_action) && !crusher_charge_action.action_cooldown_check() && !(pounced_object.type in crusher_charge_action.not_reducing_objects))
+		crusher_charge_action.reduce_cooldown(50)
+
+	gain_plasma(10)
+
+	if (!handle_collision(pounced_object)) // Check old backend
+		obj_launch_collision(pounced_object)
+
+/mob/living/carbon/xenomorph/crusher/pounced_turf(turf/pounced_turf)
+	pounced_turf.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
+	..(pounced_turf)
+
+/datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state())
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	playsound(xeno, 'sound/effects/bang.ogg', 25)
+	xeno.visible_message(SPAN_XENODANGER("[xeno] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
+	xeno.create_stomp()
+
+
+	for (var/mob/living/carbon/targets in orange(distance, xeno))
+
+		if (targets.stat == DEAD || xeno.can_not_harm(targets))
+			continue
+
+		if(targets in get_turf(xeno))
+			targets.apply_armoured_damage(get_xeno_damage_slash(targets, damage), ARMOR_MELEE, BRUTE)
+
+		if(targets.mob_size < MOB_SIZE_BIG)
+			targets.apply_effect(get_xeno_stun_duration(targets, 0.2), WEAKEN)
+
+		new /datum/effects/xeno_slow(targets, xeno, ttl = get_xeno_stun_duration(targets, effect_duration))
+		targets.apply_effect(get_xeno_stun_duration(targets, 0.2), WEAKEN)
+		to_chat(targets, SPAN_XENOHIGHDANGER("You are slowed as [xeno] knocks you off balance!"))
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/crusher_stomp/charger/use_ability()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/stomped_carbon
+
+	if (!istype(xeno))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
+	xeno.visible_message(SPAN_XENODANGER("[xeno] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
+	xeno.create_stomp()
+
+	for (var/mob/living/carbon/target_to_stomp in get_turf(xeno)) // MOBS ONTOP
+		if (target_to_stomp.stat == DEAD || xeno.can_not_harm(target_to_stomp))
+			continue
+
+		new effect_type_base(target_to_stomp, xeno, null, null, get_xeno_stun_duration(target_to_stomp, effect_duration))
+		to_chat(target_to_stomp, SPAN_XENOHIGHDANGER("You are BRUTALLY crushed and stomped on by [xeno]!!!"))
+		shake_camera(target_to_stomp, 10, 2)
+		if(target_to_stomp.mob_size < MOB_SIZE_BIG)
+			target_to_stomp.apply_effect(get_xeno_stun_duration(target_to_stomp, 0.2), WEAKEN)
+
+		target_to_stomp.apply_armoured_damage(get_xeno_damage_slash(target_to_stomp, damage), ARMOR_MELEE, BRUTE,"chest", 3)
+		target_to_stomp.apply_armoured_damage(15, BRUTE) // random
+		target_to_stomp.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+		target_to_stomp.emote("pain")
+		target_to_stomp = stomped_carbon
+	for (var/mob/living/carbon/targets_to_get in orange(distance, get_turf(xeno))) // MOBS AROUND
+		if (targets_to_get.stat == DEAD || xeno.can_not_harm(targets_to_get))
+			continue
+		if(targets_to_get.client)
+			shake_camera(targets_to_get, 10, 2)
+		if(stomped_carbon)
+			to_chat(targets_to_get, SPAN_XENOHIGHDANGER("You watch as [stomped_carbon] gets crushed by [xeno]!"))
+		to_chat(targets_to_get, SPAN_XENOHIGHDANGER("You are shaken as [xeno] quakes the earth!"))
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/crusher_shield/use_ability(atom/Target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if (!istype(xeno))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] hunkers down and bolsters its defenses!"), SPAN_XENOHIGHDANGER("We hunker down and bolster our defenses!"))
+	button.icon_state = "template_active"
+
+	xeno.create_crusher_shield()
+
+	xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_CRUSHER, /datum/xeno_shield/crusher)
+	xeno.overlay_shields()
+
+	xeno.explosivearmor_modifier += 1000
+	xeno.recalculate_armor()
+
+	addtimer(CALLBACK(src, PROC_REF(remove_explosion_immunity)), explosion_immunity_dur)
+	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_dur)
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/crusher_shield/proc/remove_explosion_immunity()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+
+	xeno.explosivearmor_modifier -= 1000
+	xeno.recalculate_armor()
+	to_chat(xeno, SPAN_XENODANGER("Our immunity to explosion damage ends!"))
+
+/datum/action/xeno_action/onclick/crusher_shield/proc/remove_shield()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+
+	var/datum/xeno_shield/found
+	for (var/datum/xeno_shield/shield in xeno.xeno_shields)
+		if (shield.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
+			found = shield
+			break
+
+	if (istype(found))
+		found.on_removal()
+		qdel(found)
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our enhanced shield end!"))
+		button.icon_state = "template"
+
+	xeno.overlay_shields()

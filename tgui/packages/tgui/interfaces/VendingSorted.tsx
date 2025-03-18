@@ -36,6 +36,7 @@ interface VendingRecord {
   prod_desc?: string;
   prod_cost: number;
   image: string;
+  image_size: string;
 }
 
 interface VendingCategory {
@@ -143,7 +144,11 @@ const VendableItemRow = (props: VenableItem) => {
     <>
       <TableCell className="IconCell" verticalAlign="top">
         <span
-          className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
+          className={classes([
+            `Icon`,
+            `vending${props.record.image_size ? props.record.image_size : `32x32`}`,
+            `${props.record.image}`,
+          ])}
         />
       </TableCell>
 
@@ -194,7 +199,11 @@ const VendableClothingItemRow = (props: {
     <>
       <TableCell className="IconCell" verticalAlign="top">
         <span
-          className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
+          className={classes([
+            `Icon`,
+            `vending${props.record.image_size ? props.record.image_size : `32x32`}`,
+            `${props.record.image}`,
+          ])}
         />
       </TableCell>
 

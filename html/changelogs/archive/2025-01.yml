@@ -456,3 +456,106 @@
       eject patients if they run out of charge while operating.
   - code_imp: Added code that disables patients from entering the Synthetic Maintenance
       Station if it has no charge left.
+2025-01-26:
+  Diegoflores31:
+  - qol: Adds universal Night Vision color preferences (green by default)
+  realforest2001:
+  - rscadd: Added a button to certain fax machines to send priority faxes, with additional
+      audio cues.
+  - rscadd: Certain faxes when receiving priority messages will also trigger ARES
+      radio alerts.
+  - bugfix: Fax machine receiving a fax now plays the correct sound.
+  - rscadd: It is now possible to navigate between sending a message to an entire
+      fax department, or to any individual fax in that department.
+  - maptweak: Adds in the Fax Responder listening intercomms that I apparently deleted
+      elsewhere.
+2025-01-27:
+  BOBAMAx:
+  - rscadd: Roundstart Xenomorph players will now burst out of map-specific bodies
+      instead of generic ones
+2025-01-28:
+  BlackCrystalic:
+  - bugfix: You can't delete queen via gibber now
+  - code_imp: Moved vars as debrised, hull, burnable, burnt, breakable, broken to
+      turf_flags as TURF_DEBRISED, TURF_HULL, TURF_BURNABLE, TURF_BURNT, TURF_BREAKABLE,
+      TURF_BROKEN
+  Drathek:
+  - balance: Showers and drinks now do not apply as extreme of temperature differences
+  - balance: Cryo effects (like IB cure) now requires 210K (-63.15C) instead of 0C
+      (273.15K)
+  - balance: Heat damage 1 threshold raised to 100C (373.15K) from 87C (360.15K) and
+      heat damage 3 threshold lowered to 526C (800K) from 726C (1000K)
+  - bugfix: Fixed incorrect temperature change in hyperthermic properties, when exiting
+      cryopods, and with shivering symptom
+  - code_imp: Reagents can now specify adj_temp and target_temp to affect body temperature
+  Git-Nivrak:
+  - bugfix: Fixes wounds updating on dead xenos
+  - bugfix: Fixed xeno gib remains not appearing
+  - qol: Stacks inserted into storages will now try to fill other stacks
+  MeH0y:
+  - rscadd: Adds heavy clan armor to the pred vendors
+  Nomoresolvalou:
+  - bugfix: yautja mask attachment now saves to preferences correctly
+  Red-byte3D:
+  - bugfix: You can no longer shock dead people with the electropack and move them
+  Steelpoint:
+  - rscadd: Ports a set of UPP, CANC and USCM cargo containers from the PvE server.
+  detectivegoogle:
+  - rscadd: added some new synthvivor presets and updated older ones.
+  ihatethisengine:
+  - bugfix: fixes jima name stacking
+  nauticall:
+  - rscadd: Changed most structure lights in the game to be either an incandascent
+      warm white/yellow, or a cold blue, depending on their bulb color.
+  private-tristan:
+  - rscadd: When 2 charger crushers collide, they now cause a tremor, knocking down
+      and slowing nearby enemies
+  - balance: reduced charger collision weaken (to the charger crushers) by 1 second
+  realforest2001:
+  - bugfix: Synthetic Reset Key description now only says you need engineering knowledge
+      when you actually do.
+2025-01-29:
+  Weuyn:
+  - balance: Research stim healing properties made more expensive, epinephrine-like
+      and painkilling properties made cheaper.
+2025-01-30:
+  Paperybirch:
+  - rscadd: Added reagent/ethanol/ethanol and defined its chem class as CHEM_CLASS_BASIC
+  - bugfix: Changed oxycodone's chem class from uncommon to CHEM_CLASS_COMMON
+2025-01-31:
+  BlackCrystalic:
+  - bugfix: Now all rockets fired from cas have in causedata user mob
+  Blundir:
+  - bugfix: replaced placeholder mouse named "rat" with an actual rats
+  - spellcheck: specified that Doc the mouse is actually a mouse and not a rat
+  Drathek:
+  - bugfix: Fixed stat browser not saving/restoring font size value on 516
+  Red-byte3D:
+  - rscadd: Eggsac carrier eggs no longer support playable huggers IF there is no
+      cluster BEFORE they are placed, eggs put on clustered/hive weeds still allow
+      huggers
+  Zenith:
+  - maptweak: Tweaked Hybrisa LZ2, added fog and minor map tweaks.
+  Zonespace27:
+  - admin: Xenomorphs are now properly logged in round_stats.log files.
+  efzapa:
+  - bugfix: Fixes Arcade Machines almost only ever giving money cards as a reward.
+  iamtheguy, quicklode:
+  - imageadd: new iamtheguy smartpack sprites are now in the synth vendor.
+  private-tristan:
+  - balance: You can no longer use HPR's slap transfer to transfer bullets to a non-HPR
+      mag.
+  - rscadd: Three Fourths Night Vision option for ghosts and xenos
+  - imageadd: Icon for xenos 3/4ths NV
+  - code_imp: renamed LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE to LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+  - rscadd: Solar Devils come with shielded blowtorches, causing no eye damage when
+      used
+  - rscadd: Solar Devils now spawn with AP loaded in their MK1s.
+  - balance: All Solar Devils know how to use smartguns
+  - balance: Solar Devils SG now gets a machete scabbard
+  - balance: Replaced 2 cells in the Solar Devil engi kit with breaching charges
+  - bugfix: The Solar Devils Platoon Leader now has the correct medical skill and
+      will spawn with medkits.
+  realforest2001:
+  - bugfix: Clarifies that VAI should not be shooting WY or getting into fights with
+      them outside of authorized events.

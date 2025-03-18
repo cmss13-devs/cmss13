@@ -107,7 +107,7 @@
 	for(var/turf/turf in deployment_area)
 		turf_overlay += new /obj/effect/overlay/temp/tent_deployment_area/casting(turf)
 
-	user.visible_message(SPAN_INFO("[user] starts deploying [src]..."), \
+	user.visible_message(SPAN_INFO("[user] starts deploying [src]..."),
 		SPAN_WARNING("You start assembling [src]... Stand still, it might take a bit to figure it out..."))
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))

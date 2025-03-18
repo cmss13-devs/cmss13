@@ -58,7 +58,8 @@ SUBSYSTEM_DEF(weather)
 
 /datum/controller/subsystem/weather/proc/force_weather_holder(weather_holder)
 	if(weather_holder)
-		if(istext(weather_holder)) weather_holder = text2path(weather_holder)
+		if(istext(weather_holder))
+			weather_holder = text2path(weather_holder)
 		if(ispath(weather_holder))
 			map_holder = new weather_holder
 			setup_weather_areas()

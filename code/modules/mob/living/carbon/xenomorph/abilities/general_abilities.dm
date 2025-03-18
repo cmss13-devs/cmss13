@@ -22,7 +22,7 @@
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 10
+	xeno_cooldown = 1 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
 	var/plant_on_semiweedable = FALSE
@@ -59,12 +59,12 @@
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
-// Regurgitate
-/datum/action/xeno_action/onclick/regurgitate
-	name = "Regurgitate"
-	action_icon_state = "regurgitate"
+// release_haul
+/datum/action/xeno_action/onclick/release_haul
+	name = "Release"
+	action_icon_state = "release_haul"
 	plasma_cost = 0
-	macro_path = /datum/action/xeno_action/verb/verb_regurgitate
+	macro_path = /datum/action/xeno_action/verb/verb_release_haul
 	action_type = XENO_ACTION_CLICK
 
 // Choose Resin
@@ -193,7 +193,7 @@
 	var/action_text = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 40
+	xeno_cooldown = 4 SECONDS
 	plasma_cost = 10
 
 	// Config options
@@ -310,10 +310,11 @@
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will call on_zoom_out()
 		return
-	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
+	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."),
 		SPAN_NOTICE("We start focusing our sight to look off into the distance."), null, 5)
 	if (should_delay)
-		if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
+		if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+			return
 	if(xeno.is_zoomed)
 		return
 	if(handles_movement)
@@ -327,7 +328,7 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
+	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."),
 	SPAN_NOTICE("We stop looking off into the distance."), null, 5)
 	if(movement_slowdown)
 		xeno.speed_modifier -= movement_slowdown
@@ -358,7 +359,7 @@
 	action_type = XENO_ACTION_CLICK
 
 	plasma_cost = 40
-	xeno_cooldown = 80
+	xeno_cooldown = 8 SECONDS
 
 
 	// Configurable options
@@ -460,7 +461,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 230
+	xeno_cooldown = 23 SECONDS
 
 	// Range and other config
 	var/effect_range = 3
@@ -498,6 +499,25 @@
 	// Perform check_state(TRUE) silently:
 	if(xeno && !xeno.is_mob_incapacitated() || !xeno.buckled || !xeno.evolving && xeno.plasma_stored >= plasma_cost)
 		return TRUE
+
+/datum/action/xeno_action/onclick/transmute
+	name = "Transmute"
+	action_icon_state = "transmute"
+	action_type = XENO_ACTION_CLICK
+
+/datum/action/xeno_action/onclick/transmute/action_activate()
+	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.transmute_verb()
+
+/datum/action/xeno_action/onclick/transmute/can_use_action()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	// Perform check_state(TRUE) silently:
+	if(xeno && !xeno.is_mob_incapacitated() || !xeno.buckled || !xeno.evolving && xeno.plasma_stored >= plasma_cost)
+		return TRUE
+
 
 /datum/action/xeno_action/onclick/tacmap
 	name = "View Tactical Map"

@@ -7,7 +7,7 @@
 	if((species.flags & NO_BLOOD) && !(species.flags & IS_SYNTHETIC))
 		return
 
-	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
+	if(stat != DEAD && bodytemperature >= BODYTEMP_CRYO_LIQUID_THRESHOLD) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
 		if(blood_volume < max_blood && nutrition >= BLOOD_NUTRITION_COST)
 			blood_volume += 0.1 // regenerate blood VERY slowly
@@ -121,6 +121,17 @@
 	H.universal_understand = TRUE
 	H.status_flags |= NO_PERMANENT_DAMAGE //John Wick doesn't get internal bleeding from a grazing gunshot
 	H.status_flags &= ~STATUS_FLAGS_DEBILITATE
+	return ..()
+
+
+/datum/species/human/hero/thrall
+	name = "Thrall"
+	name_plural = "Thralls"
+	weed_slowdown_mult = 0
+	acid_blood_dodge_chance = 70
+
+/datum/species/human/hero/thrall/handle_post_spawn(mob/living/carbon/human/thrall)
+	thrall.universal_understand = FALSE
 	return ..()
 
 //Various horrors that spawn in and haunt the living.

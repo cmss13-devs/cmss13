@@ -30,7 +30,7 @@
 	response_harm  = "punches"
 	friendly = "nuzzles"
 	see_in_dark = 50
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 	speak_chance = 2
 	speak_emote = "hisses"
@@ -86,7 +86,7 @@
 	/// A weakref to the food object that the mob is trying to eat.
 	var/datum/weakref/food_target_ref
 	///A list of foods the mob is interested in eating. The mob will eat anything that has meat protein in it even if it's not in this list.
-	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/packaged_meal, /obj/item/reagent_container/food/snacks/resin_fruit)
+	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/mre_food, /obj/item/reagent_container/food/snacks/resin_fruit)
 	///Is the mob currently eating the food_target?
 	var/is_eating = FALSE
 	///Cooldown dictating how long the mob will wait between eating food.
@@ -337,10 +337,10 @@
 		if(on_fire)
 			adjust_fire_stacks(-5, min_stacks = 0)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"), \
+			visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"),
 			SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 			if(fire_stacks <= 0)
-				visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"), \
+				visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"),
 				SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 			return
 		if(!resting)

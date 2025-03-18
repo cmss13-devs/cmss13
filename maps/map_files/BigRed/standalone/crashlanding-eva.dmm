@@ -158,6 +158,10 @@
 	icon_state = "wy23"
 	},
 /area/bigredv2/outside/general_offices)
+"aG" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "aH" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy25"
@@ -461,6 +465,7 @@
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
 /obj/item/device/motiondetector/hacked/pmc,
 /obj/item/defenses/handheld/planted_flag/wy,
+/obj/item/ammo_box/magazine/misc/mre/pmc,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/bigredv2/outside/general_offices)
 "cf" = (
@@ -1408,7 +1413,7 @@ oi
 oi
 oi
 aB
-aK
+aG
 aK
 aK
 aB

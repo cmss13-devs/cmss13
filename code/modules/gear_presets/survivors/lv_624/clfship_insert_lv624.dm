@@ -186,7 +186,7 @@
 	rank = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
-
+	minimap_background = "background_clf"
 	minimap_icon = "clf_synth"
 
 /datum/equipment_preset/synth/survivor/clf/load_race(mob/living/carbon/human/new_human)

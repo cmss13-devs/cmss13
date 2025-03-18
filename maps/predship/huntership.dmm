@@ -1825,7 +1825,7 @@
 	id = "armory";
 	pixel_y = 23;
 	name = "Armory Lockdown";
-	req_one_access_txt = "392"
+	req_one_access_txt = "391"
 	},
 /obj/effect/hunter/rune{
 	dir = 1
@@ -10920,7 +10920,8 @@
 "Li" = (
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Houndmasters Quarters";
-	dir = 1
+	dir = 1;
+	req_one_access = list(391,392,393)
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja/lower_deck)
@@ -11091,7 +11092,8 @@
 /area/yautja)
 "LR" = (
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
-	name = "\improper Elder Quarters"
+	name = "\improper Elder Quarters";
+	req_one_access = list(391,392,393)
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -11984,7 +11986,8 @@
 "Po" = (
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
-	dir = 1
+	dir = 1;
+	req_one_access = list(391,392,393)
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -14165,7 +14168,7 @@
 	pixel_y = 23;
 	name = "Secure Armory Lockdown";
 	pixel_x = -9;
-	req_one_access_txt = "392"
+	req_one_access_txt = "391"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)

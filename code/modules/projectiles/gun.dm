@@ -1156,9 +1156,6 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return
 	if(cock_cooldown > world.time)
 		return
-	if(flags_gun_features & (GUN_SMARTGUN))
-		to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
-		return //so smartguns dont actually unload from the chamber
 
 	cock_cooldown = world.time + cock_delay
 	cock_gun(user)

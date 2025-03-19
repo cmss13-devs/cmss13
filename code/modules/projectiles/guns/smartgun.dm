@@ -30,7 +30,7 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_SMARTGUN
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
@@ -116,6 +116,10 @@
 	QDEL_NULL(MD)
 	QDEL_NULL(battery)
 	. = ..()
+
+/obj/item/weapon/gun/smartgun/cock(mob/user)
+	to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
+	return
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)

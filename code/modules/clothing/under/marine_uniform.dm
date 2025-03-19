@@ -1193,8 +1193,11 @@
 	name = "tactical flightsuit"
 	desc = "A flightsuit with plenty of leather straps, pouches, and other essential gear."
 	icon_state = "pilot_flightsuit_alt"
-	item_state = "pilot_flightsuit_alt"
 	worn_state = "pilot_flightsuit_alt"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
+	item_icons = list(
+	WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi',
+	)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT

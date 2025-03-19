@@ -225,6 +225,9 @@
 	if(H.ally_of_hivenumber(hivenumber))
 		return
 
+	if(HAS_TRAIT(H, TRAIT_HAULED))
+		return
+
 	H.apply_armoured_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
 	H.last_damage_data = construction_data
 
@@ -445,6 +448,8 @@
 /obj/structure/mineral_door/resin/proc/close_blocked()
 	for(var/turf/turf in locs)
 		for(var/mob/living/living_mob in turf)
+			if(living_mob.stat == DEAD)
+				continue
 			if(!HAS_TRAIT(living_mob, TRAIT_MERGED_WITH_WEEDS))
 				return TRUE
 	return FALSE
@@ -628,7 +633,7 @@
 		return
 	var/mob/living/carbon/target = null
 	var/furthest_distance = INFINITY
-	for(var/mob/living/carbon/C in urange(range, get_turf(loc)))
+	for(var/mob/living/carbon/C in long_range(range, get_turf(loc)))
 		if(!can_target(C))
 			continue
 		var/distance_between = get_dist(src, C)
@@ -712,7 +717,7 @@
 	START_PROCESSING(SSshield_pillar, src)
 
 /obj/effect/alien/resin/shield_pillar/process()
-	for(var/mob/living/carbon/xenomorph/X in urange(range, src))
+	for(var/mob/living/carbon/xenomorph/X in long_range(range, src))
 		if((X.hivenumber != hivenumber) || X.stat == DEAD)
 			continue
 		X.add_xeno_shield(shield_to_give, XENO_SHIELD_SOURCE_SHIELD_PILLAR, decay_amount_per_second = 1, add_shield_on = TRUE, duration = 1 SECONDS)
@@ -992,7 +997,7 @@
 		for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
 			pylon.protection_level = TURF_PROTECTION_OB
 			pylon.update_icon()
-		
+
 	if(hatched)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -1098,7 +1103,7 @@
 
 	if(!candidate.client)
 		return FALSE
-	
+
 	return candidate.client.prefs.be_special & BE_KING
 
 #undef KING_PLAYTIME_HOURS
@@ -1208,7 +1213,7 @@
 			rolling_candidates = FALSE
 			return
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
-	
+
 
 /// Starts the hatching in twenty seconds, otherwise immediately if expedited
 /obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)

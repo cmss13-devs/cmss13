@@ -31992,16 +31992,16 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "qUf" = (
-/obj/item/ammo_magazine/rifle/m4ra/ext{
+/obj/item/ammo_magazine/rifle/m4ra/extended{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/m4ra/ext{
+/obj/item/ammo_magazine/rifle/m4ra/extended{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/m4ra/ext{
+/obj/item/ammo_magazine/rifle/m4ra/extended{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/m4ra/ext{
+/obj/item/ammo_magazine/rifle/m4ra/extended{
 	current_rounds = 0
 	},
 /obj/structure/closet/crate/ammo,
@@ -32083,11 +32083,11 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "qVN" = (
-/obj/item/storage/box/MRE{
+/obj/item/storage/box/mre{
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/storage/box/MRE{
+/obj/item/storage/box/mre{
 	pixel_x = -1;
 	pixel_y = -6
 	},

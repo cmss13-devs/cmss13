@@ -208,6 +208,12 @@
 "aaN" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/islands)
+"aaO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -19654,7 +19660,7 @@
 "pPf" = (
 /obj/structure/surface/table,
 /obj/item/prop/helmetgarb/flair_uscm,
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = -4;
 	pixel_y = 13
 	},
@@ -23677,7 +23683,7 @@
 /area/varadero/interior/research)
 "sKz" = (
 /obj/structure/closet/crate/supply,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /obj/item/storage/beer_pack,
 /obj/item/spacecash,
 /turf/open/gm/dirt,
@@ -32066,7 +32072,7 @@ srg
 srg
 xCn
 fzc
-jQa
+aaO
 hdh
 jQa
 jQa

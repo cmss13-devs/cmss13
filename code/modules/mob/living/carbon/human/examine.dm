@@ -167,7 +167,7 @@
 			var/obj/item/weapon/gun/gun_with_iff
 			var/found_iff = FALSE
 			//if(gun_with_iff.GetComponent(/datum/component/iff_fire_prevention)) Means needs alt-IFF I.E No shooting over people, but stops you shooting friendlies.
-			if(human_with_gun.get_active_hand())
+			if(istype(human_with_gun.get_active_hand(), /obj/item/weapon/gun))
 				gun_with_iff = human_with_gun.get_active_hand()
 			else
 				gun_with_iff = human_with_gun.get_inactive_hand()

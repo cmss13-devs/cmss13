@@ -650,7 +650,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/check_worn_out(mob/living/user)
 	if(!user || !user.client)
-		return
+		if(gun_durability <= GUN_DURABILITY_BROKEN)
+			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
+			return
+		else
+			return
 	else
 		if(gun_durability == GUN_DURABILITY_MEDIUM)
 			to_chat(user, SPAN_WARNING("The [name] is incurring damages, better repair it soon..."))

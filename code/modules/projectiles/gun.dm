@@ -649,16 +649,19 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 /obj/item/weapon/gun/proc/check_worn_out(mob/living/user)
-	if(gun_durability == GUN_DURABILITY_MEDIUM)
-		to_chat(user, SPAN_WARNING("The [name] is incurring damages, better repair it soon..."))
-		balloon_alert(user, "*damaged*")
+	if(!user || !user.client)
+		return
+	else
+		if(gun_durability == GUN_DURABILITY_MEDIUM)
+			to_chat(user, SPAN_WARNING("The [name] is incurring damages, better repair it soon..."))
+			balloon_alert(user, "*damaged*")
 
-	if(gun_durability <= GUN_DURABILITY_BROKEN)
-		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
-		cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
-		if(prob(50))
-			to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
-			balloon_alert(user, "*worn-out*")
+		if(gun_durability <= GUN_DURABILITY_BROKEN)
+			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
+			cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
+			if(prob(50))
+				to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
+				balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
 	var/bullet_duraloss = ammo.bullet_duraloss //i think this works, code for taking account the bullet duraloss modifier in the current chanbered ammo

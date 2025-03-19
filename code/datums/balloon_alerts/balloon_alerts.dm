@@ -44,8 +44,6 @@
 // I would've made the maptext_height update on its own, but I don't know
 // if this would look bad on laggy clients.
 /atom/proc/balloon_alert_perform(mob/viewer, text, text_color)
-	if (isnull(viewer))
-		return
 	var/client/viewer_client = viewer.client
 	if (isnull(viewer_client))
 		return

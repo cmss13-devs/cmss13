@@ -14,7 +14,6 @@
 	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
 	var/destruction_allowed = NORMAL_XENO //Who can destroy special structures
 	var/unnesting_allowed = TRUE
-	var/lessers_allowed = TRUE //Allows spawn of lessers and sentient huggers
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list

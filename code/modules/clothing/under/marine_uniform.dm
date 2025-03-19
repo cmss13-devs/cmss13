@@ -1196,7 +1196,7 @@
 	worn_state = "pilot_flightsuit_alt"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
 	item_icons = list(
-	WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi',
 	)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE

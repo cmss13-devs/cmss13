@@ -200,3 +200,73 @@
   nicholasWooldridge:
   - bugfix: Fixed a bug that caused the Broken M41A to be called Prop Gun in a chat
       message.
+2025-03-15:
+  Drathek:
+  - bugfix: Being in a locker or cryopod shipside now can receive shipside announcements
+  Red-byte3D:
+  - admin: Admins now have a "Play as" option that puts them in the mob they spawn
+      as.
+  - code_imp: moves certain time actions use SECONDS define
+  - bugfix: Girders now take into account the fact if they're destroyed, right before
+      they're done being repaired.
+  hry-gh:
+  - qol: people with window scaling that is greater or less than 100% will now have
+      windows scale, appropriate to the "window scaling" option in settings
+  itsmeow:
+  - bugfix: Fixed TGUI assets and icons sometimes not showing up until you refreshed
+      the page on 516 clients
+2025-03-16:
+  Drathek:
+  - bugfix: Fixed browsers sometimes not handling a mob passed instead of a client
+      (VV bitfields & tickets atleast)
+  MistChristmas:
+  - bugfix: Allows Supply Drop Console to accept 0 values. Allows OW consoles to save
+      coords with 0 values.
+2025-03-17:
+  AndroBetel:
+  - rscadd: You can now lean on certain walls, click drag your sprite to the wall
+      and you just might. To stop a lean, either move, or press resist.
+  DarkLordCabbage:
+  - bugfix: gibs now show up on weeds, including the gibs from larva bursts.
+  Drathek:
+  - bugfix: Fixed an edge case where last man could keep a cloak activated
+  Nihisohel:
+  - rscadd: You can now examine someone with your IFF weapon to check if the bullet
+      passes through or not.
+  Red-byte3D:
+  - rscadd: added Keybinds for vehicles
+  - code_imp: cleaned some unused shift click vehicle code since it wasnt used
+  - bugfix: Nested people dont stop you from shooting with ALT IFF
+  - bugfix: You can no longer have nvgs without the filter by using an exploit
+  XQ:
+  - bugfix: JAS consoles are now indestructible.
+  - admin: Adds Clear Cache and Cryo and Ghost to Lobby Admin Autoreplies
+  larentoun:
+  - rscadd: '"Cooldown Complete" messages in chat for xeno abilities are now hidden
+      by default. You can enable them back by changing "`Xeno Cooldown Messages" value
+      to "Show" in Settings menu.'
+2025-03-19:
+  Diegoflores31:
+  - rscadd: Added the ability to build new airlock types (engi , med, cmd , generic
+      ,sec)
+  - rscdel: Removed old legacy ss13 assemblies
+  MistChristmas:
+  - qol: ChemMaster - Adding new pill bottles only opts in the first bottle for filling
+      automatically. Selected pill bottles copy first selected pill bottles colour/label
+      upon being selected. Added Pill bottles no longer copy colour/label of the first
+      pill bottle added. Is also now scrollable.
+  - bugfix: ChemMaster - Allows making pills without Pill Bottles again. Stops trying
+      to fill up full bottles. Disallows trying to fill up bottles that lack the space
+      in each selected.
+  efzapa:
+  - balance: Replaced all instances of the M81 Riot Launcher with a new M84 Riot Launcher,
+      which has a non-lethal grenade capacity of 3, and the ability to lob.
+  iloveloopers:
+  - rscadd: Added the new Heavy-duty roller bed, able to carry any xeno corpse regardless
+      of size.
+  - imageadd: Added the Heavy-duty roller bed sprite.
+  - maptweak: Added the Heavy-duty roller bed to the Research Containment area.
+  private-tristan:
+  - rscadd: Extended M4RA mags can now be found in vendors, holding an extra 10 bullets
+      per mag, for a total of 35 bullets.
+  - spellcheck: Extended M4RA mags no longer claim to be armor piercing

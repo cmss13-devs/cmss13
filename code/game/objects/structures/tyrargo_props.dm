@@ -55,6 +55,10 @@
 
 	icon = 'icons/obj/structures/props/large_tent_props.dmi'
 	icon_state = "medical_tent"
+	unacidable = TRUE
+	unslashable = TRUE
+	explo_proof = TRUE
+	health = 1000000
 
 /obj/structure/prop/tyrargo/large_tents/medical
 	icon_state = "medical_tent"

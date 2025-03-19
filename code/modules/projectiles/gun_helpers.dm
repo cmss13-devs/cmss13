@@ -286,7 +286,7 @@ DEFINES in setup.dm, referenced here.
 			balloon_alert(user, "*can't repair*")
 		return
 
-	if(do_after(user, item.repair_time SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+	if(do_after(user, item.repair_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		clean_blood()
 		gun_repair_popup(user)
 		heal_gun_durability(rand(item.repair_amount_min, item.repair_amount_max), user)

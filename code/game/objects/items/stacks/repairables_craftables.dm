@@ -10,7 +10,7 @@
 	var/repair_amount_min = 1
 	var/repair_amount_max = 10
 	var/list/repair_verb = list()
-	var/repair_time = 69 //in seconds
+	var/repair_time = 69 SECONDS //in seconds
 
 /obj/item/stack/repairable/gunlube
 	name = "Multi-purpose combat lubricant"
@@ -25,7 +25,7 @@
 	repair_amount_min = 6
 	repair_amount_max = 12
 	repair_verb = list("lubes", "oils", "cleans", "tends to", "gently strokes", "repairs")
-	repair_time = 6
+	repair_time = 6 SECONDS
 
 /obj/item/stack/repairable/gunkit
 	name = "firearms repair kit"
@@ -39,4 +39,4 @@
 	repair_amount_min = 50
 	repair_amount_max = 50
 	repair_verb = list("fixes", "fastens screws to", "recalculates the settings of", "tends to", "installs some fixes to", "repairs")
-	repair_time = 18
+	repair_time = 18 SECONDS

@@ -1152,12 +1152,12 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
 /obj/item/weapon/gun/proc/cock(mob/user)
-	var/obj/item/weapon/gun/smartgun/cant_cock = istype(src, /obj/item/weapon/gun/smartgun)
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 	if(cock_cooldown > world.time)
 		return
-	if(cant_cock)
+	if(flags_gun_features & (GUN_SMARTGUN))
+		to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
 		return //so smartguns dont actually unload from the chamber
 
 	cock_cooldown = world.time + cock_delay

@@ -11,7 +11,7 @@
 	name = "AD-71E Blackfoot"
 	desc = "A twin tilt-jet VTOL, the Blackfoot is the Bearcat's ugly big sister. For what she lacks in fire power and agility, she more than makes up for in utility and love handles. First tested by UA Northridge on American soil, the Blackfoot is currently undergoing active combat trials."
 	icon = 'icons/obj/vehicles/blackfoot.dmi'
-	icon_state = "stowed"
+	icon_state = "doorgun_stowed"
 
 	bound_width = 96
 	bound_height = 96
@@ -154,26 +154,26 @@
 
 	switch (state)
 		if(STATE_VTOL, STATE_TAKEOFF_LANDING)
-			icon_state = "vtol"
+			icon_state = "doorgun_vtol"
 			overlays += image(icon, "vtol_thrust")
 			overlays += image(icon, "fan-overlay")
 			overlays += image(icon, "flight_lights")
 		if(STATE_FLIGHT)
-			icon_state = "flight"
+			icon_state = "doorgun_flight"
 			overlays += image(icon, "fan-overlay")
 			overlays += image(icon, "flight_lights")
 		if(STATE_STOWED)
-			icon_state = "stowed"
+			icon_state = "doorgun_stowed"
 			overlays += image(icon, "stowed_lights")
 		if(STATE_DEPLOYED, STATE_IDLING)
-			icon_state = "flight"
+			icon_state = "doorgun_flight"
 			overlays += image(icon, "stowed_lights")
 		if(STATE_TUGGED)
-			icon_state = "stowed"
+			icon_state = "doorgun_stowed"
 			overlays += image(icon, "stowed_lights")
 			overlays += image(icon, "tug_underlay", layer = BELOW_MOB_LAYER)
 		if(STATE_DESTROYED)
-			icon_state = "flight"
+			icon_state = "doorgun_flight"
 			overlays += image(icon, "stowed_lights")
 			overlays += image(icon, "damage")
 
@@ -382,7 +382,7 @@
 
 	M.client?.mouse_pointer_icon = initial(M.client?.mouse_pointer_icon)
 	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
-	
+
 	if(launchers)
 		launchers.safety = TRUE
 
@@ -653,7 +653,7 @@
 
 /obj/vehicle/multitile/blackfoot/proc/toggle_targeting()
 	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
-	
+
 	if(!launchers)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO LAUNCHERS DETECTED."))
 		return
@@ -896,7 +896,7 @@
 
 /datum/action/human_action/blackfoot/toggle_nvg/action_activate()
 	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 

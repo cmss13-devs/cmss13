@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(moba)
 		var/datum/moba_player/player = players_in_queue[1]
 		make_game(list(new /datum/moba_queue_player(player, player.queue_slots[1].position, player.queue_slots[1].caste)), list())
 	#else
-	if(COOLDOWN_FINISHED(src, matchmaking_cooldown) && (length(players_in_queue) >= 8) && !SSticker.mode.round_finished && !currently_creating_map) // We can actually make a match
+	if(COOLDOWN_FINISHED(src, matchmaking_cooldown) && (length(players_in_queue) >= MOBA_TOTAL_PLAYERS) && !SSticker.mode.round_finished && !currently_creating_map) // We can actually make a match
 		do_matchmaking()
 	#endif
 
@@ -113,10 +113,10 @@ SUBSYSTEM_DEF(moba)
 					team2_players += new /datum/moba_queue_player(player, player.queue_slots[i].position, player.queue_slots[i].caste)
 					randomized_queue -= player
 
-				if(length(team1_players) == 4 && length(team2_players) == 4)
+				if(length(team1_players) == MOBA_PLAYERS_PER_TEAM && length(team2_players) == MOBA_PLAYERS_PER_TEAM)
 					break mm_loop
 
-	if(length(team1_players) == 4 && length(team2_players) == 4)
+	if(length(team1_players) == MOBA_PLAYERS_PER_TEAM && length(team2_players) == MOBA_PLAYERS_PER_TEAM)
 		make_game(team1_players, team2_players)
 		currently_creating_map = FALSE
 	else

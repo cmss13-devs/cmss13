@@ -16,6 +16,9 @@
 
 #define MOBA_ALLOWED_POSITIONS 3
 
+#define MOBA_PLAYERS_PER_TEAM 4
+#define MOBA_TOTAL_PLAYERS MOBA_PLAYERS_PER_TEAM * 2
+
 #define MOBA_MAX_LEVEL 12
 #define MOBA_MAX_ITEM_COUNT 5
 /// When killing a player, how much xp (mult by their level) to grant
@@ -34,3 +37,7 @@
 #define MOBA_WAVES_PER_MINUTE 2
 
 #define MOBA_GOLD_PER_MINUTE MOBA_GOLD_PER_WAVE * MOBA_WAVES_PER_MINUTE
+
+#define MOBA_LEVEL_DIFF_XP_FALLOFF_THRESHOLD 2
+/// Per level, so 5 levels ahead means 0 xp earned
+#define MOBA_LEVEL_DIFF_XP_MOD 0.2

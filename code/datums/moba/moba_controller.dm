@@ -183,6 +183,12 @@
 			update_team2_ward_text()
 			break
 
+	if(team1_ward_count <= team1_max_wards)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time)
+
+	if(team2_ward_count <= team2_max_wards)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time)
+
 	game_started = TRUE
 
 /datum/moba_controller/proc/handle_tick()

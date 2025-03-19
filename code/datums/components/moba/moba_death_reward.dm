@@ -10,10 +10,12 @@
 	var/gold_award_to_killer = TRUE
 	/// What percent of the gold (floored) should we award to nearby allies of the killer if we only reward gold to the killer? This gold is effectively duplicated
 	var/percent_gold_to_allies = 0
+	/// How much gold to give to each person on the team regardless of distance
+	var/global_gold = 0
 
-/datum/component/moba_death_reward/Initialize(gold, xp, allied_hive, gold_award_to_killer, percent_gold_to_allies)
+/datum/component/moba_death_reward/Initialize(gold = 0, xp = 0, allied_hive, gold_award_to_killer = TRUE, percent_gold_to_allies = 0, global_gold = 0)
 	. = ..()
-	if(!istype(parent, /mob/living))
+	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	src.gold = gold
@@ -21,6 +23,7 @@
 	src.allied_hive = allied_hive
 	src.gold_award_to_killer = gold_award_to_killer
 	src.percent_gold_to_allies = percent_gold_to_allies
+	src.global_gold = global_gold
 
 /datum/component/moba_death_reward/RegisterWithParent()
 	..()
@@ -38,6 +41,9 @@
 		if(xeno.hive.hivenumber == allied_hive) // We don't reward our allies when we die
 			continue
 
+		if(global_gold)
+			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_GOLD, global_gold)
+
 		awarding_xenos += xeno
 
 	for(var/mob/living/carbon/xenomorph/xeno as anything in awarding_xenos)
@@ -45,6 +51,7 @@
 			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_GOLD, floor(gold / length(awarding_xenos)))
 
 		if(xp)
+			var/list/xp_list = list() // zonenote make XP fall off if you're killing lower-levelled players
 			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_XP, floor(xp / length(awarding_xenos)))
 
 	if(gold && gold_award_to_killer)

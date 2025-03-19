@@ -222,7 +222,7 @@
 	healing_target = WEAKREF(possible_healing_target)
 
 	if(do_after(healer_xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-		var/datum/beam/heal_beam = possible_healing_target.beam(healer_xeno, "plasmabeam", 'icons/effects/beam.dmi', BEAM_INFINITE_DURATION, beam_type = /obj/effect/ebeam/laser/weak)
+		var/datum/beam/heal_beam = possible_healing_target.beam(healer_xeno, "heal_beam", 'icons/effects/beam.dmi', BEAM_INFINITE_DURATION, beam_type = /obj/effect/ebeam/laser/weak)
 		heal_beam.visuals.alpha = 0
 		animate(heal_beam.visuals, alpha = initial(heal_beam.visuals.alpha), 3 SECONDS)
 		beam_focus = WEAKREF(heal_beam)

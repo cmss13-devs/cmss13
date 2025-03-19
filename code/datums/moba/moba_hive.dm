@@ -25,13 +25,13 @@
 	reporting_id = "moba_left"
 	hivenumber = XENO_HIVE_MOBA_LEFT
 	prefix = "Left "
-	color = "#af0c00"
-	ui_color = "#742020"
+	color = "#8DA059"
+	ui_color = "#8DA059"
 
 /datum/hive_status/moba/right
 	name = "Right Hive"
 	reporting_id = "moba_right"
 	hivenumber = XENO_HIVE_MOBA_RIGHT
 	prefix = "Right "
-	color = "#2d2df1"
-	ui_color = "#2a2a6b"
+	color = "#3F7087"
+	ui_color = "#3F7087"

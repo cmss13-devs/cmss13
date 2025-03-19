@@ -1,28 +1,32 @@
 /obj/effect/alien/resin/moba_hive_core
 	name = XENO_STRUCTURE_CORE
 	desc = "A giant pulsating mound of mass. This looks important."
-	icon_state = "core"
-	icon = 'icons/mob/xenos/structures64x64.dmi'
-	plane = FLOOR_PLANE
+	icon_state = "left_nexus"
+	icon = 'icons/obj/structures/alien/structures96x96.dmi'
 	can_block_movement = TRUE
 	density = TRUE
-	pixel_x = -16
-	pixel_y = -16
+	pixel_x = -32
 	maptext_x = 16
-	maptext_y = 50
+	maptext_y = 98
+	bound_height = 96
+	bound_width = 96
+	maptext_width = 64
 	health = 4000
+	layer = ABOVE_XENO_LAYER
 	var/hivenumber = XENO_HIVE_MOBA_LEFT
 	var/map_id
-	var/obj/effect/alien/resin/moba_turret/hive_core/linked_turret
+	var/obj/effect/alien/resin/moba_turret/linked_turret
+	var/turret_type = /obj/effect/alien/resin/moba_turret/left/hive_core
 
 /obj/effect/alien/resin/moba_hive_core/Initialize(mapload, mob/builder)
 	. = ..()
-	set_hive_data(src, hivenumber)
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	name = "[lowertext(hive.prefix)][name]"
 	var/obj/effect/landmark/moba_hive_core_turret/turret_marker = locate() in range(5, src)
 	if(turret_marker)
-		linked_turret = new(get_turf(turret_marker))
+		linked_turret = new turret_type(get_turf(turret_marker))
 		linked_turret.hivenumber = hivenumber
-		set_hive_data(linked_turret, linked_turret.hivenumber)
+		linked_turret.name = "[lowertext(hive.prefix)][linked_turret.name]"
 	healthcheck()
 	if(!(locate(/obj/effect/moba_reuse_object_spawner) in get_turf(src)))
 		new /obj/effect/moba_reuse_object_spawner(get_turf(src), type)
@@ -61,3 +65,5 @@
 
 /obj/effect/alien/resin/moba_hive_core/right
 	hivenumber = XENO_HIVE_MOBA_RIGHT
+	icon_state = "right_nexus"
+	turret_type = /obj/effect/alien/resin/moba_turret/right/hive_core

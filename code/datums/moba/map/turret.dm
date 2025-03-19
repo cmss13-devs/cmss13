@@ -15,18 +15,20 @@
 /obj/effect/alien/resin/moba_turret // zonenote give gold on tower destruction
 	name = "acid pillar"
 	desc = "A resin pillar that is oozing with acid potent enough to pierce even the strongest armor."
-	icon = 'icons/obj/structures/alien/structures.dmi'
-	icon_state = "acid_pillar_idle"
+	icon = 'icons/obj/structures/alien/structures64x96.dmi'
+	icon_state = "left_turret"
 	anchored = TRUE
 	density = TRUE
 	can_block_movement = TRUE
 	layer = ABOVE_XENO_LAYER
 	health = 2000
-	bound_height = 96
-	bound_width = 96
-	bound_x = -32
+	bound_height = 92
+	bound_width = 64
+	bound_x = -0
 	bound_y = -32
-	maptext_y = 26
+	maptext_y = 98
+	maptext_width = 64
+	pixel_y = -32
 
 	var/hivenumber = XENO_HIVE_NORMAL
 
@@ -38,22 +40,29 @@
 	/// Every time the turret fires at a player, we add a stack of heat. Heat increases damage by matter of projectile_damage * 1.4^H
 	/// Heat decays after a few seconds of not shooting at anything
 	var/heat_stacks = 0
+	/// How much gold to split between all nearby enemies when this tower is destroyed
+	var/gold_bounty = 250
+	/// How much gold to give to each person on the enemy team when this tower is destroyed
+	var/global_gold_bounty = 50
 
 
-/obj/effect/alien/resin/moba_turret/Initialize(mapload, hive)
+/obj/effect/alien/resin/moba_turret/Initialize(mapload, hivenum)
 	. = ..()
 	used_ammo = new /datum/ammo/xeno/acid/turret
-	if(hive)
-		hivenumber = hive
-	set_hive_data(src, hivenumber)
+	if(hivenum)
+		hivenumber = hivenum
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+		name = "[lowertext(hive.prefix)][name]"
 	START_PROCESSING(SSprocessing, src)
-	transform *= 3
+	//transform *= 3
 	enable_pixel_scaling()
 	for(var/turf/open/floor/tile in range(1, src))
 		RegisterSignal(tile, COMSIG_TURF_ENTER, PROC_REF(on_try_enter))
 	healthcheck()
 	if(!(locate(/obj/effect/moba_reuse_object_spawner) in get_turf(src)))
 		new /obj/effect/moba_reuse_object_spawner(get_turf(src), type)
+	if(gold_bounty || global_gold_bounty)
+		AddComponent(/datum/component/moba_obj_destroyed_reward, gold_bounty, 0, hivenumber, global_gold_bounty)
 
 /obj/effect/alien/resin/moba_turret/proc/get_target_priority(mob/living/current_mob, mob/living/last_hit)
 	if(get_dist(src, current_mob) > range)
@@ -161,26 +170,37 @@
 
 /obj/effect/alien/resin/moba_turret/healthcheck()
 	. = ..()
-	maptext = MAPTEXT("<center>[floor(health / initial(health) * 100)]%</center>")
+	maptext = MAPTEXT("<center><h2>[floor(health / initial(health) * 100)]%</h2></center>")
 
 /obj/effect/alien/resin/moba_turret/left
 	hivenumber = XENO_HIVE_MOBA_LEFT
+	icon_state = "left_turret"
 
 /obj/effect/alien/resin/moba_turret/left/back
 	health = 1500
+	gold_bounty = 500
 
 /obj/effect/alien/resin/moba_turret/left/near_hive
 	health = 1250
+	gold_bounty = 375
+
+/obj/effect/alien/resin/moba_turret/left/hive_core
+	range = 6
+	health = 3500 // 75% more HP than standard
+
 
 /obj/effect/alien/resin/moba_turret/right
 	hivenumber = XENO_HIVE_MOBA_RIGHT
+	icon_state = "right_turret"
 
 /obj/effect/alien/resin/moba_turret/right/back
 	health = 1500
+	gold_bounty = 500
 
 /obj/effect/alien/resin/moba_turret/right/near_hive
 	health = 1250
+	gold_bounty = 375
 
-/obj/effect/alien/resin/moba_turret/hive_core
+/obj/effect/alien/resin/moba_turret/right/hive_core
 	range = 6
 	health = 3500 // 75% more HP than standard

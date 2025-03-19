@@ -442,6 +442,7 @@
 #include "code\datums\components\moba\moba_action.dm"
 #include "code\datums\components\moba\moba_death_reward.dm"
 #include "code\datums\components\moba\moba_minion.dm"
+#include "code\datums\components\moba\moba_obj_destroyed_reward.dm"
 #include "code\datums\components\moba\moba_player.dm"
 #include "code\datums\components\moba\moba_simplemob.dm"
 #include "code\datums\components\moba\moba_vampire_execute_tracker.dm"

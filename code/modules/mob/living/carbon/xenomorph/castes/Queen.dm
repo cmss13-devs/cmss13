@@ -697,17 +697,40 @@
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
+	var/choice = tgui_input_list(usr, "Choose who you want to forbid from joining the hive.","Lessers & Huggers", list("Allow All", (hive.hive_flags & XENO_LESSERS_FORBIDDEN ? "Allow Lessers" : "Forbid Lessers"),
+		(hive.hive_flags & XENO_HUGGERS_FORBIDDEN ? "Allow Huggers" : "Forbid Huggers"), "Forbid All"), theme="hive_status")
+	if(!choice)
+		return
+
 	plesser_delay = TRUE
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/xenomorph, do_lesser_toggle_cooldown)), 30 SECONDS)
 
-	if(!hive.lessers_allowed)
-		to_chat(src, SPAN_XENONOTICE("You allow lessers."))
+	if(choice == "Allow All")
+		to_chat(src, SPAN_XENONOTICE("You allow both Lessers and Huggers."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>allowed</b> lesser drones and sentient facehuggers to join the hive!"), 2, hivenumber)
-		hive.lessers_allowed = TRUE
-	else
-		to_chat(src, SPAN_XENONOTICE("You forbid lessers."))
+		hive.hive_flags &= ~XENO_LESSERS_FORBIDDEN
+		hive.hive_flags &= ~XENO_HUGGERS_FORBIDDEN
+	else if(choice == "Forbid All")
+		to_chat(src, SPAN_XENONOTICE("You forbid both Lessers and Huggers."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> lesser drones and sentient facehuggers from joining the hive."), 2, hivenumber)
-		hive.lessers_allowed = FALSE
+		hive.hive_flags |= XENO_LESSERS_FORBIDDEN
+		hive.hive_flags |= XENO_HUGGERS_FORBIDDEN
+	else if(choice == "Forbid Lessers")
+		to_chat(src, SPAN_XENONOTICE("You forbid Lessers."))
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> lesser drones from joining the hive."), 2, hivenumber)
+		hive.hive_flags |= XENO_LESSERS_FORBIDDEN
+	else if(choice == "Forbid Huggers")
+		to_chat(src, SPAN_XENONOTICE("You forbid Huggers."))
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> sentient facehuggers from joining the hive."), 2, hivenumber)
+		hive.hive_flags |= XENO_HUGGERS_FORBIDDEN
+	else if(choice == "Allow Lessers")
+		to_chat(src, SPAN_XENONOTICE("You allow Lessers."))
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>allowed</b> lesser drones to join the hive!"), 2, hivenumber)
+		hive.hive_flags &= ~XENO_LESSERS_FORBIDDEN
+	else if(choice == "Allow Huggers")
+		to_chat(src, SPAN_XENONOTICE("You allow Huggers."))
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>allowed</b> sentient facehuggers to join the hive!"), 2, hivenumber)
+		hive.hive_flags &= ~XENO_HUGGERS_FORBIDDEN
 
 /mob/living/carbon/xenomorph/proc/do_lesser_toggle_cooldown()
 	plesser_delay = FALSE

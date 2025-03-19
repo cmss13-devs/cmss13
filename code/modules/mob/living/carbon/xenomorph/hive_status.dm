@@ -159,6 +159,8 @@
 	/// Has a King hatchery
 	var/has_hatchery = FALSE
 
+	var/hive_flags = NONE
+
 /datum/hive_status/New()
 	hive_ui = new(src)
 	mark_ui = new(src)
@@ -900,8 +902,8 @@
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || !GLOB.hive_datum[hivenumber])
 		return FALSE
-	if(!GLOB.hive_datum[hivenumber].lessers_allowed)
-		to_chat(user, SPAN_WARNING("The queen forbade lesser drones and sentient huggers from joining the hive."))
+	if(GLOB.hive_datum[hivenumber].hive_flags & XENO_HUGGERS_FORBIDDEN)
+		to_chat(user, SPAN_WARNING("The queen forbade sentient huggers from joining the hive."))
 		return FALSE
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
@@ -967,7 +969,7 @@
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
 		return FALSE
 
-	if(!GLOB.hive_datum[hivenumber].lessers_allowed)
+	if(GLOB.hive_datum[hivenumber].hive_flags & XENO_LESSERS_FORBIDDEN)
 		to_chat(user, SPAN_WARNING("The queen forbade lesser drones and sentient huggers from joining the hive."))
 		return FALSE
 

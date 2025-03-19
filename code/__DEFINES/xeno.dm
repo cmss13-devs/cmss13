@@ -108,6 +108,9 @@
 
 #define XENO_SLASH_ALLOWED 0
 #define XENO_SLASH_FORBIDDEN 1
+
+#define XENO_LESSERS_FORBIDDEN (1<<0)
+#define XENO_HUGGERS_FORBIDDEN (1<<1)
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)
 // and some of the var defines for the Xenomorph base type.

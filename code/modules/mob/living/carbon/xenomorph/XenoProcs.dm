@@ -122,8 +122,11 @@
 		else
 			. += "Slashing: FORBIDDEN"
 
-		if(!hive.lessers_allowed)
-			. += "Lessers & Huggers: FORBIDDEN"
+		if(hive.hive_flags & XENO_LESSERS_FORBIDDEN)
+			. += "Lesser Drones: FORBIDDEN"
+
+		if(hive.hive_flags & XENO_HUGGERS_FORBIDDEN)
+			. += "Sentient Huggers: FORBIDDEN"
 
 		if(hive.construction_allowed == XENO_LEADER)
 			. += "Construction Placement: LEADERS"

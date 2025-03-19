@@ -15,6 +15,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
+
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."
@@ -30,6 +31,10 @@
 	minimum_evolve_time = 9 MINUTES
 
 	minimap_icon = "warrior"
+
+	available_strains = list(
+		/datum/xeno_strain/boxer,
+	)
 
 /mob/living/carbon/xenomorph/warrior
 	caste_type = XENO_CASTE_WARRIOR

@@ -42,6 +42,7 @@
 
 /obj/structure/machinery/door_control/blackfoot_rear_door
 	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
+	icon_state = "blackfoot"
 
 /obj/structure/machinery/door_control/blackfoot_rear_door/attack_hand(mob/user)
 	linked_blackfoot.toggle_rear_door()
@@ -208,6 +209,53 @@
 		return
 
 	user.forceMove(get_step(user, dir))
+
+/obj/structure/blackfoot_doorgun
+	icon = 'icons/obj/vehicles/interiors/blackfoot_64x64.dmi'
+	icon_state = "doorgun"
+	bound_width = 96
+	density = FALSE
+
+	var/deployed = FALSE
+	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
+
+/obj/structure/blackfoot_doorgun/update_icon()
+	if(deployed)
+		icon_state = "doorgun-deployed"
+	else
+		icon_state = "doorgun"
+
+/obj/structure/blackfoot_doorgun/attack_hand(mob/user)
+	to_chat(user, SPAN_NOTICE("You begin [deployed ? "retracting" : "deploying"] the door gun."))
+
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		return
+
+	to_chat(user, SPAN_NOTICE("You [deployed ? "retract" : "deploy"] the door gun."))
+
+	deployed = !deployed
+	update_icon()
+	density = !density
+
+/obj/effect/landmark/interior/spawn/blackfoot_doorgun
+	icon = 'icons/obj/vehicles/interiors/blackfoot_64x64.dmi'
+	icon_state = "doorgun"
+
+/obj/effect/landmark/interior/spawn/blackfoot_doorgun/on_load(datum/interior/interior)
+	var/obj/structure/blackfoot_doorgun/doorgun = new(get_turf(src))
+
+	doorgun.name = name
+	doorgun.setDir(dir)
+	doorgun.alpha = alpha
+	doorgun.update_icon()
+	doorgun.pixel_x = pixel_x
+	doorgun.pixel_y = pixel_y
+
+	if(istype(interior.exterior, /obj/vehicle/multitile/blackfoot))
+		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
+		doorgun.linked_blackfoot = linked_blackfoot
+
+	qdel(src)	
 
 /turf/open/floor/transparent
 	icon_state = "transparent"

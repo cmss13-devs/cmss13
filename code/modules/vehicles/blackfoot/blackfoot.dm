@@ -22,7 +22,7 @@
 	bound_x = -32
 	bound_y = 0
 
-	interior_map = /datum/map_template/interior/blackfoot
+	interior_map = /datum/map_template/interior/blackfoot_doorgun
 
 	move_max_momentum = 2.2
 	move_momentum_build_factor = 1.5

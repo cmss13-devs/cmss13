@@ -53,3 +53,7 @@
 /datum/map_template/interior/blackfoot
 	name = "blackfoot"
 	interior_id = "blackfoot"
+
+/datum/map_template/interior/blackfoot_doorgun
+	name = "blackfoot"
+	interior_id = "blackfoot_doorgun"

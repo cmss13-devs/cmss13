@@ -3,7 +3,7 @@
 
 /obj/item/hardpoint/support/sensor_array
 	name = "\improper AQ-133 Acquisition System"
-	desc = "A heavy-duty array of sensors for the AD-19D blackfoot."
+	desc = "A short-range Air-to-Ground LIDAR target acquisition system designed to actively track and profile non-IFF signatures in a localized range of detection."
 	icon = 'icons/obj/vehicles/hardpoints/blackfoot.dmi'
 	icon_state = "radar"
 	disp_icon = "blackfoot"
@@ -17,7 +17,7 @@
 	var/sensor_radius = 45
 	/// weakrefs of xenos temporarily added to the marine minimap
 	var/list/minimap_added = list()
-	/// current mode, can be either nvg (gives nightvision to the pilot) or sensor (shows xenos on tacmap) 
+	/// current mode, can be either nvg (gives nightvision to the pilot) or sensor (shows xenos on tacmap)
 	var/mode = SENSOR_MODE
 
 /obj/item/hardpoint/support/sensor_array/get_icon_image(x_offset, y_offset, new_dir)
@@ -38,12 +38,12 @@
 	else
 		deactivate_mode(src.mode)
 		activate_mode(mode)
-	
+
 	src.mode = mode
 
 /obj/item/hardpoint/support/sensor_array/proc/deactivate_mode(mode)
 	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
-	
+
 	if(!blackfoot_owner)
 		return
 
@@ -84,7 +84,7 @@
 
 /obj/item/hardpoint/support/sensor_array/proc/activate_mode(mode)
 	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
-	
+
 	if(!blackfoot_owner)
 		return
 
@@ -92,7 +92,7 @@
 
 	if(!user)
 		return
-	
+
 	switch(mode)
 		if(SENSOR_MODE)
 			START_PROCESSING(SSslowobj, src)
@@ -107,7 +107,7 @@
 			user.update_sight()
 			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, PROC_REF(deactivate_nightvision))
 			START_PROCESSING(SSobj, src)
-	
+
 	active = TRUE
 
 /obj/item/hardpoint/support/sensor_array/process(delattime)

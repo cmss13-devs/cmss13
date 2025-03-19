@@ -65,19 +65,19 @@
 
 
 
-/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon, ko_boost = 0.5)
+/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(mob/living/carbon/carbon_target, ko_boost = 0.5)
 
-	if(!ismob(target_carbon))
+	if(!ismob(carbon_target))
 		return
 
-	if(punching_bag != target_carbon)
+	if(punching_bag != carbon_target)
 		remove_ko()
-		punching_bag = target_carbon
-		ko_icon = image(null, target_carbon)
+		punching_bag = carbon_target
+		ko_icon = image(null, carbon_target)
 		ko_icon.alpha = 196
+		ko_icon.color = "#ee0808"
 		ko_icon.maptext_width = 16
-		ko_icon.maptext_x = 16
-		big_ko_icon.maptext_x = -32
+		ko_icon.maptext_x = -16
 		ko_icon.maptext_y = 16
 		ko_icon.layer = 20
 		bound_xeno.client.images += ko_icon
@@ -98,18 +98,22 @@
 		bound_xeno.client.images -= ko_icon
 	ko_icon = null
 
-/datum/behavior_delegate/boxer/proc/display_ko_message(mob/target_carbon)
+/datum/behavior_delegate/boxer/proc/display_ko_message(mob/carbon_target)
 
-	big_ko_icon = image(null, target_carbon)
+	big_ko_icon = image(null, carbon_target)
 	big_ko_icon.alpha = 196
-	big_ko_icon.maptext_y = target_carbon.langchat_height
+	big_ko_icon.maptext_y = carbon_target.langchat_height
 	big_ko_icon.maptext_width = LANGCHAT_WIDTH
-	big_ko_icon.maptext_height = 64
+	big_ko_icon.maptext_height = 16
 	big_ko_icon.color = "#FF0000"
 	big_ko_icon.maptext_x = -32
 	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>KO!</span>"
 	bound_xeno.client.images += big_ko_icon
-	addtimer(CALLBACK(src, PROC_REF(remove_big_ko), 2 SECONDS))
+
+
+
+	bound_xeno.client.images += big_ko_icon
+	addtimer(CALLBACK(src, .proc/remove_big_ko), 2 SECONDS)
 
 /datum/behavior_delegate/boxer/proc/remove_big_ko()
 	if(bound_xeno.client && big_ko_icon)

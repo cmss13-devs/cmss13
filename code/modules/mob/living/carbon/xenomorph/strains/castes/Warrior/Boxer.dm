@@ -100,7 +100,6 @@
 
 /datum/behavior_delegate/boxer/proc/display_ko_message(mob/target_carbon)
 
-
 	big_ko_icon = image(null, target_carbon)
 	big_ko_icon.alpha = 196
 	big_ko_icon.maptext_y = target_carbon.langchat_height

@@ -245,3 +245,28 @@
   - rscadd: '"Cooldown Complete" messages in chat for xeno abilities are now hidden
       by default. You can enable them back by changing "`Xeno Cooldown Messages" value
       to "Show" in Settings menu.'
+2025-03-19:
+  Diegoflores31:
+  - rscadd: Added the ability to build new airlock types (engi , med, cmd , generic
+      ,sec)
+  - rscdel: Removed old legacy ss13 assemblies
+  MistChristmas:
+  - qol: ChemMaster - Adding new pill bottles only opts in the first bottle for filling
+      automatically. Selected pill bottles copy first selected pill bottles colour/label
+      upon being selected. Added Pill bottles no longer copy colour/label of the first
+      pill bottle added. Is also now scrollable.
+  - bugfix: ChemMaster - Allows making pills without Pill Bottles again. Stops trying
+      to fill up full bottles. Disallows trying to fill up bottles that lack the space
+      in each selected.
+  efzapa:
+  - balance: Replaced all instances of the M81 Riot Launcher with a new M84 Riot Launcher,
+      which has a non-lethal grenade capacity of 3, and the ability to lob.
+  iloveloopers:
+  - rscadd: Added the new Heavy-duty roller bed, able to carry any xeno corpse regardless
+      of size.
+  - imageadd: Added the Heavy-duty roller bed sprite.
+  - maptweak: Added the Heavy-duty roller bed to the Research Containment area.
+  private-tristan:
+  - rscadd: Extended M4RA mags can now be found in vendors, holding an extra 10 bullets
+      per mag, for a total of 35 bullets.
+  - spellcheck: Extended M4RA mags no longer claim to be armor piercing

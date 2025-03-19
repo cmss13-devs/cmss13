@@ -1,6 +1,0 @@
-author: "iloveloopers"
-delete-after: True
-changes:
-  - rscadd: "Added the new Heavy-duty roller bed, able to carry any xeno corpse regardless of size."
-  - imageadd: "Added the Heavy-duty roller bed sprite."
-  - maptweak: "Added the Heavy-duty roller bed to the Research Containment area."

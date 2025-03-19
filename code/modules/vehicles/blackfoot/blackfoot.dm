@@ -171,7 +171,7 @@
 		if(STATE_TUGGED)
 			icon_state = "doorgun_stowed"
 			overlays += image(icon, "stowed_lights")
-			overlays += image(icon, "tug_underlay", layer = BELOW_MOB_LAYER)
+			overlays += image(icon, "tug_underlay", layer = 4)
 		if(STATE_DESTROYED)
 			icon_state = "doorgun_flight"
 			overlays += image(icon, "stowed_lights")
@@ -958,7 +958,7 @@
 	icon_state = "aerospace-tug"
 	density = TRUE
 	anchored = FALSE
-
+	layer = 4
 	pixel_x = -16
 	pixel_y = 0
 

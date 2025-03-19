@@ -59,49 +59,11 @@
 		/obj/item/storage/belt/gun/m4a3,
 		/obj/item/storage/belt/gun/m44,
 	)
-
-/obj/item/clothing/suit/armor/vest/pilot
-	name = "\improper M70 flak jacket"
-	desc = "A flak jacket used by dropship pilots to protect themselves while flying in the cockpit. Excels in protecting the wearer against high-velocity solid projectiles."
-	icon_state = "pilot"
-	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
-	blood_overlay_type = "armor"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	allowed = list(
-		/obj/item/weapon/gun/,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/device/flashlight,
-		/obj/item/ammo_magazine/,
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/tool/lighter,
-		/obj/item/weapon/baton,
-		/obj/item/restraint/handcuffs,
-		/obj/item/explosive/grenade,
-		/obj/item/device/binoculars,
-		/obj/item/attachable/bayonet,
-		/obj/item/storage/backpack/general_belt,
-		/obj/item/storage/large_holster/machete,
-		/obj/item/storage/belt/gun/m4a3,
-		/obj/item/storage/belt/gun/m44,
-	)
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/pilot)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
-
-/obj/item/clothing/suit/armor/vest/pilot/Initialize()
+/obj/item/clothing/suit/storage/jacket/marine/pilot/armor/Initialize()
 	. = ..()
-	select_gamemode_skin(/obj/item/clothing/suit/armor/vest/pilot)
+	select_gamemode_skin(/obj/item/clothing/suit/storage/jacket/marine/pilot/armor)
 
-/obj/item/clothing/suit/armor/vest/pilot/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+/obj/item/clothing/suit/storage/jacket/marine/pilot/armor/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")

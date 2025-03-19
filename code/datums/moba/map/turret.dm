@@ -12,7 +12,7 @@
 	penetration = ARMOR_PENETRATION_TIER_10 // Fuck your acid armor
 	shell_speed = AMMO_SPEED_TIER_6 // As close to undodgable as possible
 
-/obj/effect/alien/resin/moba_turret // zonenote give gold on tower destruction
+/obj/effect/alien/resin/moba_turret
 	name = "acid pillar"
 	desc = "A resin pillar that is oozing with acid potent enough to pierce even the strongest armor."
 	icon = 'icons/obj/structures/alien/structures64x96.dmi'

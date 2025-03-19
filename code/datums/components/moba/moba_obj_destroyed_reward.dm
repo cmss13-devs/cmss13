@@ -22,6 +22,7 @@
 /datum/component/moba_obj_destroyed_reward/RegisterWithParent()
 	..()
 	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(on_del))
+	//RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/moba_obj_destroyed_reward/proc/on_del(datum/source, force)
 	SIGNAL_HANDLER
@@ -47,3 +48,11 @@
 		if(xp)
 			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_XP, floor(xp / length(awarding_xenos)))
 
+/*datum/component/moba_obj_destroyed_reward/proc/on_examine(datum/source, mob/observer, list/strings)
+	SIGNAL_HANDLER
+
+	if(isobserver(observer))
+		return
+
+	examine(observer)
+	return COMPONENT_NO_EXAMINE*/

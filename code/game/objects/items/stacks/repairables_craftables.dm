@@ -10,7 +10,7 @@
 	var/repair_amount_min = 1
 	var/repair_amount_max = 10
 	var/list/repair_verb = list()
-	var/repair_time = 69 SECONDS //in seconds
+	var/repair_time = 69 SECONDS //in seconds, ideally
 
 /obj/item/stack/repairable/gunlube
 	name = "Multi-purpose combat lubricant"

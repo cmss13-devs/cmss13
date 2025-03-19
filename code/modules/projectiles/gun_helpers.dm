@@ -265,19 +265,15 @@ DEFINES in setup.dm, referenced here.
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 20, FALSE)
 			balloon_alert(user, "*functional*")
 
-/obj/item/weapon/gun/proc/gun_repair_maxup(mob/living/carbon/human/user, /obj/item/weapon/gun/durability)
-	if(gun_durability >= GUN_DURABILITY_MAX)
-		if(user)
-			balloon_alert(user, "*max durability*")
-
 /obj/item/weapon/gun/proc/attempt_repair(mob/user, obj/item/stack/repairable/item)
 	var/strong_repair = FALSE
 	if(item.repair_amount_min >= 50)
 		strong_repair = TRUE
 
-	if(gun_durability == GUN_DURABILITY_MAX)
+	if(gun_durability >= GUN_DURABILITY_MAX)
 		to_chat(user, SPAN_GREEN("[src] is already fully repaired."))
-		gun_repair_maxup(user)
+		if(user)
+			balloon_alert(user, "*max durability*")
 		return
 
 	if(gun_durability <= GUN_DURABILITY_BROKEN && item.repair_amount_min <= 49)

@@ -318,9 +318,6 @@
 		to_chat(owner, SPAN_NOTICE("You will no longer fan the hammer."))
 	playsound(owner, 'sound/machines/click.ogg', 15, 1)
 
-
-
-
 /obj/item/weapon/gun/revolver/proc/fan_the_hammer(obj/item/weapon/gun/revolver/fanner, mob/living/user)
 	if(can_fan)
 		if(!currently_fanning)

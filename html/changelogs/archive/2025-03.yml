@@ -270,3 +270,8 @@
   - rscadd: Extended M4RA mags can now be found in vendors, holding an extra 10 bullets
       per mag, for a total of 35 bullets.
   - spellcheck: Extended M4RA mags no longer claim to be armor piercing
+2025-03-20:
+  Djvarik:
+  - bugfix: Bread now has the correct description
+  Red-byte3D:
+  - bugfix: Stacked chairs no longer stun xenos on collide anymore

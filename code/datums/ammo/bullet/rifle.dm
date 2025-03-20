@@ -28,7 +28,7 @@
 	/// multiplies the default drain of 5 holo stacks per second by this amount
 	var/stack_loss_multiplier = 1
 	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW // holostacks would be more powerful if there were tens of thousands of marines firing at something at once with these
-	bullet_damage = BULLET_DURABILITY_DAMAGE_LOW
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_LOW
 
 /datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
@@ -48,7 +48,7 @@
 	shell_speed = AMMO_SPEED_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	bullet_duraloss = BULLET_DURABILITY_LOSS_CRITICAL
-	bullet_damage = BULLET_DURABILITY_DAMAGE_SPECIAL
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/projectile/P)
 	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)

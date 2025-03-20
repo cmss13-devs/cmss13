@@ -563,6 +563,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	unwield(user)
 	set_gun_user(null)
+	gun_misfire()
 
 /obj/item/weapon/gun/update_icon()
 	if(overlays)
@@ -669,6 +670,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, get it repaired!"))
 				balloon_alert(user, "*worn-out*")
 
+/obj/item/weapon/gun/proc/gun_misfire(mob/living/user)
+	if(prob(misfire_chance))
+		to_chat(user, SPAN_WARNING("The [name] misfired due to its damages!"))
+		handle_fire(src)
+
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
 	var/bullet_duraloss = ammo.bullet_duraloss //code for taking account the bullet duraloss modifier in the current chambered ammo
 	var/bullet_duramage = ammo.bullet_duramage //ditto for bullet specific durability damage
@@ -690,6 +696,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		check_worn_out(user)
 
 	scaled_jam_chance = initial_jam_chance * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
+	misfire_chance = bullet_duraloss / durability_loss * (GUN_DURABILITY_MEDIUM - gun_durability) // misfires become a problem at below 50 durability
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -1548,7 +1555,6 @@ and you're good to go.
 		active_attachable.last_fired = world.time
 		active_attachable.fire_attachment(target, src, user)
 		return TRUE
-
 
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user, dual_wield)
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.

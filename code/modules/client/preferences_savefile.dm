@@ -361,6 +361,10 @@
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
 
+	S["tgui_lock"] >> tgui_lock
+	S["tgui_fancy"] >> tgui_fancy
+	S["tgui_scale"] >> tgui_scale
+
 	var/tutorial_string = ""
 	S["completed_tutorials"] >> tutorial_string
 	tutorial_savestring_to_list(tutorial_string)
@@ -439,6 +443,10 @@
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
+
+	tgui_scale = sanitize_integer(tgui_scale, FALSE, TRUE, initial(tgui_scale))
+	tgui_lock = sanitize_integer(tgui_lock, FALSE, TRUE, initial(tgui_lock))
+	tgui_fancy = sanitize_integer(tgui_fancy, FALSE, TRUE, initial(tgui_fancy))
 
 	fax_name_uscm = fax_name_uscm ? sanitize_text(fax_name_uscm, initial(fax_name_uscm)) : generate_name(FACTION_MARINE)
 	fax_name_pvst = fax_name_pvst ? sanitize_text(fax_name_pvst, initial(fax_name_pvst)) : generate_name(FACTION_MARINE)
@@ -605,6 +613,10 @@
 
 	S["job_loadout"] << save_loadout(loadout)
 	S["job_loadout_names"] << loadout_slot_names
+
+	S["tgui_fancy"] << tgui_fancy
+	S["tgui_lock"] << tgui_lock
+	S["tgui_scale"] << tgui_scale
 
 	return TRUE
 

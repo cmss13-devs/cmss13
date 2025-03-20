@@ -57,6 +57,8 @@ export const Window = (props: Props) => {
   const { debugLayout = false } = useDebug();
 
   useEffect(() => {
+    if (suspended) return;
+
     const updateGeometry = () => {
       const options = {
         ...config.window,

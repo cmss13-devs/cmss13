@@ -107,10 +107,6 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	if(behavior_delegate)
 		behavior_delegate.handle_death(src)
 
-	for(var/atom/movable/A in stomach_contents)
-		stomach_contents.Remove(A)
-		A.acid_damage = 0 //Reset the acid damage
-		A.forceMove(loc)
 
 	// Banished xeno provide a burrowed larva on death to compensate
 	if(banished && refunds_larva_if_banished)

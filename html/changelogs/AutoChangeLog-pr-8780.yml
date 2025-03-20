@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Ravagers and Lurkers now only return harm intent on targetted carbons."

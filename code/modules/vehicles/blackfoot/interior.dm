@@ -179,6 +179,23 @@
 	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
 	icon_state = "cassette-player-open"
 	anchored = TRUE
+	pixel_y = 0
+	pixel_x = -20
+	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
+
+/obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
+	icon_state = "cassette-player-open"
+
+
+/obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette/on_load(datum/interior/interior)
+	var/obj/item/device/walkman/blackfoot_cassette/cassette = new(get_turf(src))
+
+	if(istype(interior.exterior, /obj/vehicle/multitile/blackfoot))
+		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
+		cassette.linked_blackfoot = linked_blackfoot
+
+	qdel(src)
 
 /obj/item/device/walkman/blackfoot_cassette/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/device/cassette_tape))
@@ -206,7 +223,9 @@
 	var/used_verb = use_radials ? show_radial_menu(user, src, walkman_verbs) : tgui_input_list(user, "choose what to do with the cassette:", "Cassette Player", walkman_verbs)
 	switch(used_verb)
 		if("Play-Pause")
-			play_pause()
+			for(var/mob/living/passenger in linked_blackfoot.interior.get_passengers())
+				current_listener = passenger
+				play_pause()
 		if("Eject Tape")
 			eject_cassetetape()
 			update_icon()

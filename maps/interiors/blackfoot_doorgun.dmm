@@ -4,7 +4,7 @@
 /area/interior/vehicle/blackfoot)
 "f" = (
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot,
-/obj/item/device/walkman/blackfoot_cassette{
+/obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette{
 	pixel_x = -20
 	},
 /turf/open/floor/transparent,

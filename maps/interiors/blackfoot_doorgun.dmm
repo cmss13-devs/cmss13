@@ -73,6 +73,11 @@
 	pixel_y = 20;
 	dir = 8
 	},
+/obj/structure/extinguisher_cabinet/blackfoot{
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi';
+	pixel_x = -10;
+	pixel_y = -36
+	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
 "O" = (

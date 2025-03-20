@@ -21,10 +21,10 @@
 	flick("[icon_state]2", src)
 	playsound(loc, pick(hit_sounds), 25, TRUE, 3)
 
-/obj/structure/punching_bag/attack_alien(mob/living/carbon/xenomorph/M)
-	M.animation_attack_on(src)
+/obj/structure/punching_bag/attack_alien(mob/living/carbon/xenomorph/Mob)
+	Mob.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	M.visible_message(SPAN_DANGER("[M] slices \the [src] apart!"),
+	Mob.visible_message(SPAN_DANGER("[Mob] slices \the [src] apart!"),
 	SPAN_DANGER("We slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	qdel(src)
 	return XENO_ATTACK_ACTION
@@ -63,10 +63,10 @@
 		icon_state = initial(icon_state)
 		to_chat(user, SPAN_NOTICE(finishmessage))
 
-/obj/structure/weightmachine/attack_alien(mob/living/carbon/xenomorph/M)
-	M.animation_attack_on(src)
+/obj/structure/weightmachine/attack_alien(mob/living/carbon/xenomorph/Mob)
+	Mob.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	M.visible_message(SPAN_DANGER("[M] slices \the [src] apart!"),
+	Mob.visible_message(SPAN_DANGER("[Mob] slices \the [src] apart!"),
 	SPAN_DANGER("We slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	qdel(src)
 	return XENO_ATTACK_ACTION

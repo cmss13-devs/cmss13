@@ -394,6 +394,11 @@
 #define SMALL_FONTS_CENTRED(FONTSIZE, MSG) "<center><span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span></center>"
 #define SMALL_FONTS_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"
 
+// SS220 ADDITION
+#define GRAND_9K(FONTSIZE, MSG) "<span style=\"font-family: 'Grand9K Pixel'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span>"
+#define GRAND_9K_CENTRED(FONTSIZE, MSG) "<center><span style=\"font-family: 'Grand9K Pixel'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span></center>"
+#define GRAND_9K_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Grand9K Pixel'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"
+
 //finds the first occurrence of one of the characters from needles argument inside haystack
 //it may appear this can be optimised, but it really can't. findtext() is so much faster than anything you can do in byondcode.
 //stupid byond :(

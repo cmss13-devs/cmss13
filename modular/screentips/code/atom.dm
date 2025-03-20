@@ -23,7 +23,7 @@
 	var/used_name = declent_ru(NOMINATIVE)
 
 	//We inline a MAPTEXT() here, because there's no good way to statically add to a string like this
-	var/new_maptext = "<span class='langchat' style='text-align: center; font-size:12pt; color: [active_hud.screentip_color]'>[used_name][extra_context]</span>"
+	var/new_maptext = "<span class='context' style='text-align: center; color: [active_hud.screentip_color]'>[used_name][extra_context]</span>"
 
 	if (length_char(used_name) * 10 > active_hud.screentip_text.maptext_width)
 		INVOKE_ASYNC(src, PROC_REF(set_hover_maptext), client, active_hud, new_maptext)

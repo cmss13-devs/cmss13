@@ -174,7 +174,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 			if(decryption_time != 0) //This should never get called unless the decryption process is still ongoing, in which case a user has modified their client.
 				to_chat(ui.user, SPAN_INFO("The encryption process must be completed first!"))
-				message_admins("\The [src] has been attempted to be activated by [key_name(ui.user, 1)], this should not be possible [ADMIN_JMP_USER(ui.user)]")
+				message_admins("[key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)] attempted to activate [src] before its ready, this shouldn't be possible.")
 				return
 
 			if(!allowed(ui.user))

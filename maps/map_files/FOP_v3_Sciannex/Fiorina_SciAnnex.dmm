@@ -37,27 +37,33 @@
 /area/fiorina/tumor/ice_lab)
 "aah" = (
 /obj/effect/landmark/nightmare{
+	insert_tag = "rocinante"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"aai" = (
+/obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
-"aai" = (
+"aaj" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"aaj" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/tumor/servers)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/servers)
+"aal" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/servers)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
@@ -39064,7 +39070,7 @@ agi
 agi
 agi
 agi
-aaj
+aal
 agi
 agi
 agi
@@ -46204,7 +46210,7 @@ wbI
 itN
 baC
 baC
-bQM
+aah
 bQM
 bQM
 bQM
@@ -61256,7 +61262,7 @@ ipa
 rJO
 rJO
 ipa
-aah
+aai
 rJO
 iqB
 rJO
@@ -81297,7 +81303,7 @@ xeO
 xeO
 xeO
 xeO
-aai
+aaj
 xeO
 xeO
 xeO

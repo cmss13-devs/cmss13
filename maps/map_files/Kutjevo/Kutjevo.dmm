@@ -150,17 +150,23 @@
 /area/kutjevo/exterior/complex_border/med_rec)
 "aaN" = (
 /obj/effect/landmark/nightmare{
+	insert_tag = "clfsmugglers"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
+"aaO" = (
+/obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/shuttle/drop1/kutjevo)
-"aaO" = (
+"aaP" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_south)
-"aaP" = (
+"aaQ" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
@@ -16209,7 +16215,7 @@ dxF
 dxF
 dxF
 dxF
-aaP
+aaQ
 dxF
 dxF
 dxF
@@ -18594,7 +18600,7 @@ lAI
 lAI
 lAI
 lAI
-aaN
+aaO
 lAI
 lAI
 lAI
@@ -33317,7 +33323,7 @@ dxF
 dxF
 dxF
 dxF
-dxF
+aaN
 dxF
 dxF
 dxF
@@ -43630,7 +43636,7 @@ bpj
 bpj
 bpj
 bpj
-aaO
+aaP
 bpj
 bpj
 bpj

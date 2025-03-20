@@ -43,5 +43,12 @@
 		"chance": 1.0,
 		"path": "standalone/landingzone_solaris_uscm_lz2.dmm",
 		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "clfmining",
+		"chance": 1.0,
+		"path": "standalone/clfmining.dmm",
+		"when": { "lvevent": "clf" }
 	}
 ]

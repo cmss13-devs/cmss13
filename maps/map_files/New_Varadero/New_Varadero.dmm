@@ -210,18 +210,24 @@
 /area/varadero/exterior/islands)
 "aaO" = (
 /obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
+"aaP" = (
+/obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
 	},
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
-"aaP" = (
+"aaQ" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
-"aaQ" = (
+"aaR" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
@@ -32080,7 +32086,7 @@ srg
 srg
 xCn
 fzc
-jQa
+aaO
 hdh
 jQa
 jQa
@@ -35498,7 +35504,7 @@ qul
 qul
 qul
 qHc
-aaP
+aaQ
 xCn
 xCn
 oPQ
@@ -54349,7 +54355,7 @@ mCF
 mCF
 pGs
 pGs
-aaO
+aaP
 wUU
 "}
 (132,1,1) = {"
@@ -56569,7 +56575,7 @@ wlB
 wlB
 wlB
 wlB
-aaQ
+aaR
 wlB
 wlB
 wlB

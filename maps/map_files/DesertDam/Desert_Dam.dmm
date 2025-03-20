@@ -888,19 +888,19 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "adH" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
+	insert_tag = "clfpods"
 	},
-/turf/closed/wall,
-/area/desert_dam/building/dorms/hallway_westwing)
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "adI" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "adJ" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
+	insert_tag = "hvhupplz1"
 	},
-/turf/open/floor/plating,
-/area/desert_dam/exterior/landing_pad_two)
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -908,6 +908,12 @@
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "adL" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
+"adM" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
@@ -54969,7 +54975,7 @@ bht
 bht
 bht
 bht
-adL
+adM
 afc
 dTs
 dTs
@@ -55576,7 +55582,7 @@ cDY
 cDY
 cDY
 cDY
-adJ
+adL
 cDY
 cDY
 cDY
@@ -77980,7 +77986,7 @@ clE
 dTs
 dTs
 dTs
-dTs
+adH
 dTs
 dTs
 dTs
@@ -94426,7 +94432,7 @@ dBr
 dBr
 dBr
 dBr
-adH
+adJ
 eaQ
 dZn
 dHE

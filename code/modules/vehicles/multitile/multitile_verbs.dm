@@ -102,25 +102,6 @@
 	V.door_locked = !V.door_locked
 	to_chat(M, SPAN_NOTICE("You [V.door_locked ? "lock" : "unlock"] the vehicle doors."))
 
-//switches between SHIFT + Click and Middle Mouse Button Click to fire not selected currently weapon
-/obj/vehicle/multitile/proc/toggle_shift_click()
-	set name = "Toggle Middle/Shift Clicking"
-	set desc = "Toggles between using Middle Mouse Button click and Shift + Click to fire not currently selected weapon if possible."
-	set category = "Vehicle"
-
-	var/obj/vehicle/multitile/V = usr.interactee
-	if(!istype(V))
-		return
-	var/seat
-	for(var/vehicle_seat in V.seats)
-		if(V.seats[vehicle_seat] == usr)
-			seat = vehicle_seat
-			break
-	if(seat == VEHICLE_GUNNER)
-		V.vehicle_flags ^= VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER
-		to_chat(usr, SPAN_NOTICE("You will fire not selected weapon with [(V.vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER) ? "Shift + Click" : "Middle Mouse Button click"] now, if possible."))
-	return
-
 //opens vehicle status window with HP and ammo of hardpoints
 /obj/vehicle/multitile/proc/get_status_info()
 	set name = "Get Status Info"
@@ -235,7 +216,7 @@
 	<font color='#cd6500'><b><i>Driver shortcuts:</i></b></font><br> 1. <b>\"CTRL + Click\"</b> - activates vehicle horn.<br> \
 	<font color=\"red\"><b><i>Gunner shortcuts:</i></b></font><br> 1. <b>\"ALT + Click\"</b> - toggles Turret Gyrostabilizer. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br>"
 
-	show_browser(user, dat, "Vehicle Controls Guide", "vehicle_help", "size=900x500")
+	show_browser(user, dat, "Vehicle Controls Guide", "vehicle_help", width = 900, height = 500)
 	onclose(user, "vehicle_help")
 	return
 

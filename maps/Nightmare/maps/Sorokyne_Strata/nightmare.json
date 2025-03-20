@@ -23,5 +23,12 @@
 		"chance": 1.0,
 		"path": "standalone/landingzone_sorokyne_uscm_lz2.dmm",
 		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "clfcrash",
+		"chance": 1.0,
+		"path": "standalone/clfcamp.dmm",
+		"when": { "lvevent": "clfcrash" }
 	}
 ]

@@ -150,11 +150,11 @@
 
 /obj/structure/bed/chair/comfy/vehicle/driver/blackfoot
 	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
-	icon_state = "seat"
+	icon_state = "pilot-chair"
 	skill_to_check = SKILL_PILOT
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot
-	pixel_y = -10
+	pixel_y = -5
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/blackfoot/S = new(loc)

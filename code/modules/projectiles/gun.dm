@@ -664,7 +664,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
 			cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
 			if(prob(50))
-				to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, repair it with gun oil!"))
+				to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, get it repaired!"))
 				balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)

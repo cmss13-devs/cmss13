@@ -45,7 +45,7 @@
 	see_in_dark = 12
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -348,7 +348,8 @@
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
 
-/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber, ai_hard_off = FALSE)
+
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
@@ -511,7 +512,7 @@
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src, ai_hard_off)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER
@@ -732,10 +733,17 @@
 
 	QDEL_NULL(iff_tag)
 
+	QDEL_NULL(ai_movement_handler)
+
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
 
 	return ..()
+
+/mob/living/carbon/xenomorph/Moved(atom/oldloc, direction, Forced)
+	. = ..()
+	if(!client) // We are not, in fact, counted steps for AI xeno in /client/Move()
+		life_steps_total++
 
 /mob/living/carbon/xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE

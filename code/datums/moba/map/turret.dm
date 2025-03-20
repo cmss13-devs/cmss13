@@ -22,7 +22,7 @@
 	can_block_movement = TRUE
 	layer = ABOVE_XENO_LAYER
 	health = 2000
-	bound_height = 92
+	bound_height = 96
 	bound_width = 64
 	bound_y = -32
 	maptext_y = 98

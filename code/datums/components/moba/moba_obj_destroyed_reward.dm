@@ -61,9 +61,10 @@
 			show_text = TRUE
 
 	if(show_text)
+		var/atom/atom_parent = parent
 		if(gold)
-			strings += SPAN_XENONOTICE("[gold][MOBA_GOLD_NAME_SHORT] will be split among the destroying team of this [parent.name].")
+			strings += SPAN_XENONOTICE("[gold][MOBA_GOLD_NAME_SHORT] will be split among the destroying team of this [atom_parent.name].")
 		if(xp)
-			strings += SPAN_XENONOTICE("[xp] XP will be split among the destroying team of this [parent.name].")
+			strings += SPAN_XENONOTICE("[xp] XP will be split among the destroying team of this [atom_parent.name].")
 		if(global_gold)
-			strings += SPAN_XENONOTICE("[global_gold][MOBA_GOLD_NAME_SHORT] will be given to each member of the destroying team of this [parent.name].")
+			strings += SPAN_XENONOTICE("[global_gold][MOBA_GOLD_NAME_SHORT] will be given to each member of the destroying team of this [atom_parent.name].")

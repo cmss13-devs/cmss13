@@ -166,10 +166,6 @@
 
 	bound_xeno.gain_health(clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
 
-
-
-
-
 /datum/behavior_delegate/warrior_base/override_intent(mob/living/carbon/target_carbon)
 	. = ..()
 	if(!isxeno_human(target_carbon))

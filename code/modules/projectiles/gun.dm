@@ -640,7 +640,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, FALSE)
 			jammed = FALSE
-			cock_cooldown += 2 SECONDS //so they dont accidentally cock a bullet away
+			cock_cooldown += 5 SECONDS //so they dont accidentally cock a bullet away
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
@@ -662,7 +662,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 		if(gun_durability <= GUN_DURABILITY_BROKEN)
 			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
-			cock_cooldown += 4 SECONDS //so they dont accidentally cock a bullet away
+			cock_cooldown += 5 SECONDS //so they dont accidentally cock a bullet away
 			if(prob(50))
 				to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, get it repaired!"))
 				balloon_alert(user, "*worn-out*")

@@ -104,6 +104,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human.back), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/msf_patch, WEAR_ACCESSORY)
 
 	new_human.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 

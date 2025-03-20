@@ -269,8 +269,8 @@
 	flags_atom = FPRINT && NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/general
-	name = "general uniform"
-	desc = "A uniform worn by a fleet general. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
+	name = "USCM Service C officer Uniform"
+	desc = "A Standard issue USCM Officer Service C Uniform, comes with a short a short sleeve button up shirt and green trousers."
 	icon_state = "general_jumpsuit"
 	worn_state = "general_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'

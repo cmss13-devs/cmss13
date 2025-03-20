@@ -5,6 +5,14 @@
 	var/datum/moba_caste/player_caste
 	var/datum/moba_item_store/store_ui
 
+	// Hack-ish thing that's due for a redo down the line
+	var/static/list/moba_status_effect_dict = list(
+		/datum/status_effect/empowered = "Empowered",
+		/datum/status_effect/acid_neutralized = "Acid Neutralized",
+		/datum/status_effect/stacking/furious_haste = "Furious Haste",
+		/datum/status_effect/stacking/rended_armor = "Rended Armor",
+	)
+
 	var/static/list/level_up_thresholds = list(
 		280, // level 2
 		380, // 3
@@ -61,6 +69,10 @@
 	parent_xeno.hud_used.locate_marker.maptext_width = 128
 	parent_xeno.hud_used.locate_marker.maptext_x = -48
 	parent_xeno.hud_used.locate_marker.maptext_y = 160
+	parent_xeno.hud_used.alien_plasma_display.maptext_width = 192
+	parent_xeno.hud_used.alien_plasma_display.maptext_height = 128
+	parent_xeno.hud_used.alien_plasma_display.maptext_x = -48
+	parent_xeno.hud_used.alien_plasma_display.maptext_y = 180
 	ADD_TRAIT(parent_xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	parent_xeno.AddComponent(\
 		/datum/component/moba_death_reward,\
@@ -141,6 +153,8 @@
 	parent_xeno.balloon_alert(parent_xeno, "Level up!", "#9723c4")
 
 /datum/component/moba_player/process(delta_time)
+	handle_effects()
+
 	if(parent_xeno.health < parent_xeno.maxHealth && parent_xeno.last_hit_time + parent_xeno.caste.heal_delay_time <= world.time && (!parent_xeno.caste || (parent_xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !parent_xeno.fire_stacks))
 		var/damage_to_heal = 0
 		if(parent_xeno.body_position == LYING_DOWN || parent_xeno.resting)
@@ -154,6 +168,22 @@
 
 	if(parent_xeno.plasma_stored < parent_xeno.plasma_max)
 		parent_xeno.plasma_stored += (parent_xeno.body_position == LYING_DOWN || parent_xeno.resting) ? plasma_value_resting : plasma_value_standing
+
+/datum/component/moba_player/proc/handle_effects()
+	if(!parent_xeno.hud_used)
+		return
+
+	var/text_to_use = ""
+
+	for(var/datum/status_effect/effect as anything in parent_xeno.status_effects)
+		if(moba_status_effect_dict[effect])
+			if(istype(effect, /datum/status_effect/stacking))
+				var/datum/status_effect/stacking/stack_effect = effect
+				text_to_use += "[moba_status_effect_dict[effect]] <b>[stack_effect.stacks]</b>x<br>"
+			else
+				text_to_use += "[moba_status_effect_dict[effect]]<br>"
+
+	parent_xeno.hud_used.alien_plasma_display.maptext = MAPTEXT(text_to_use)
 
 /datum/component/moba_player/proc/handle_qdel()
 	SIGNAL_HANDLER

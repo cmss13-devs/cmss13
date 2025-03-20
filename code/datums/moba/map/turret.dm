@@ -24,7 +24,6 @@
 	health = 2000
 	bound_height = 92
 	bound_width = 64
-	bound_x = -0
 	bound_y = -32
 	maptext_y = 98
 	maptext_width = 64

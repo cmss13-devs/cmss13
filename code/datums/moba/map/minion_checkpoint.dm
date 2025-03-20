@@ -84,15 +84,15 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 
 /obj/effect/moba_minion_checkpoint/left/top_straight3
 	next_x_coord = 76
-	next_y_coord = 49
+	next_y_coord = 50
 	alt_next_x_coord = 49
 	alt_next_y_coord = 49
 
 /obj/effect/moba_minion_checkpoint/left/top_straight4
 	next_x_coord = 84
-	next_y_coord = 49
+	next_y_coord = 50
 	alt_next_x_coord = 63
-	alt_next_y_coord = 49
+	alt_next_y_coord = 50
 
 /obj/effect/moba_minion_checkpoint/left/bot_diag1
 	next_x_coord = 27
@@ -120,15 +120,15 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 
 /obj/effect/moba_minion_checkpoint/left/bot_straight3
 	next_x_coord = 76
-	next_y_coord = 7
+	next_y_coord = 6
 	alt_next_x_coord = 49
 	alt_next_y_coord = 7
 
 /obj/effect/moba_minion_checkpoint/left/bot_straight4
 	next_x_coord = 84
-	next_y_coord = 7
+	next_y_coord = 6
 	alt_next_x_coord = 63
-	alt_next_y_coord = 7
+	alt_next_y_coord = 6
 
 
 /obj/effect/moba_minion_checkpoint/right
@@ -160,15 +160,15 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 
 /obj/effect/moba_minion_checkpoint/right/top_straight3
 	next_x_coord = 83
-	next_y_coord = 49
+	next_y_coord = 50
 	alt_next_x_coord = 110
 	alt_next_y_coord = 49
 
 /obj/effect/moba_minion_checkpoint/right/top_straight4
 	next_x_coord = 76
-	next_y_coord = 49
-	alt_next_x_coord = 96
-	alt_next_y_coord = 49
+	next_y_coord = 50
+	alt_next_x_coord = 97
+	alt_next_y_coord = 50
 
 /obj/effect/moba_minion_checkpoint/right/bot_diag1
 	next_x_coord = 132
@@ -196,13 +196,13 @@ GLOBAL_LIST_EMPTY(uninitialized_moba_checkpoints)
 
 /obj/effect/moba_minion_checkpoint/right/bot_straight3
 	next_x_coord = 84
-	next_y_coord = 7
+	next_y_coord = 6
 	alt_next_x_coord = 111
 	alt_next_y_coord = 7
 
 /obj/effect/moba_minion_checkpoint/right/bot_straight4
 	next_x_coord = 76
-	next_y_coord = 7
+	next_y_coord = 6
 	alt_next_x_coord = 97
-	alt_next_y_coord = 7
+	alt_next_y_coord = 6
 

@@ -156,7 +156,7 @@
 					<li>If the Orbital Cannon Console is broken, contact USCM HQ for a replacement.</li>
 					<li>In case of direct damage to the Orbital Cannon itself, do not attempt to use or repair the cannon.</li>
 					<li>In case of hull breach or fire, make sure to remove the Cannon's payload and move it to a safe location.</li>
-					<li>If the Orbital Tray jams, apply lubricant to the  conveyor belt.</li>
+					<li>If the Orbital Tray jams, apply lubricant to the conveyor belt.</li>
 					<li>If a cable of the Orbital Cannon System is severed, contact USCM HQ for a replacement.</li>
 					<li>If Cannon's cable connector breaks, turn off the Orbital Cannon Console and contact USCM HQ for a replacement.</li>
 				</ul>

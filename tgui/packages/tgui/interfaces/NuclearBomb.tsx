@@ -26,7 +26,7 @@ type Data = {
 export const NuclearBomb = () => {
   const { act, data } = useBackend<Data>();
 
-  const cantNuke = !data.anchor || data.safety || !data.decryption_complete;
+  const cantNuke = !data.anchor || !!data.safety || !data.decryption_complete;
   const cantDecrypt = !data.anchor || data.decryption_complete;
 
   return (

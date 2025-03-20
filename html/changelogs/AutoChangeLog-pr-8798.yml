@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Fixes Examining whilst a weapon is in your off-hand."
+  - rscadd: "Examine IFF now works with non Alt-IFF weapons like the SU-6 Smartpistol"

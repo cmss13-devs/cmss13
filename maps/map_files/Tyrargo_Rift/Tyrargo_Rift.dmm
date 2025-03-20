@@ -3256,6 +3256,23 @@
 	},
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/outdoors)
+"ajA" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -23;
+	pixel_y = 15;
+	layer = 5.99
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -9;
+	pixel_y = 19;
+	layer = 5.98
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors)
 "ajB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/bodybag,
@@ -6634,6 +6651,20 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement2,
 /area/tyrargo/outdoors)
+"arJ" = (
+/obj/structure/flora/tree/tyrargo,
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.9
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -7;
+	pixel_y = 16;
+	layer = 5.89
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors)
 "arK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
@@ -6656,6 +6687,24 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors)
+"arO" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.97
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -8;
+	pixel_y = 19;
+	layer = 5.95
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.96
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors)
 "arP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13751,7 +13800,7 @@
 	color = "#a98c7c";
 	pixel_x = 4
 	},
-/obj/structure/largecrate/random/barrel/brown,
+/obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors)
 "aJP" = (
@@ -14371,6 +14420,16 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table/almayer,
 /turf/open/floor/prison/floor_plate,
+/area/tyrargo/outdoors)
+"aKU" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	pixel_x = 4
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/interior/wood,
 /area/tyrargo/outdoors)
 "aKV" = (
 /obj/effect/decal/cleanable/generic,
@@ -21949,10 +22008,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors)
 "aZq" = (
-/obj/structure/largecrate/random/barrel/brown{
-	pixel_y = -1;
-	pixel_x = -4
-	},
+/obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors)
 "aZr" = (
@@ -24632,12 +24688,6 @@
 	layer = 5.72
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/outdoors)
-"beo" = (
-/obj/structure/largecrate/random/barrel/brown{
-	anchored = 1
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors)
 "bep" = (
 /obj/structure/flora/tree/tyrargo{
@@ -105819,7 +105869,7 @@ aad
 aad
 aad
 aad
-cCW
+aad
 aaa
 aaa
 aaa
@@ -106070,11 +106120,11 @@ aad
 aad
 aad
 aad
-cCW
-cCW
-bvZ
-bvZ
-cCW
+aad
+aad
+aaa
+aaa
+aaa
 aOT
 aOT
 aOT
@@ -106323,7 +106373,7 @@ aad
 aad
 aad
 aad
-cCW
+aad
 aaa
 aaa
 aaa
@@ -107835,7 +107885,7 @@ aad
 aad
 aad
 aaa
-boj
+aaa
 aaa
 aaa
 aaa
@@ -108087,7 +108137,7 @@ aaa
 aad
 aaa
 aaa
-boj
+aaa
 aaa
 aaa
 aaa
@@ -108339,7 +108389,7 @@ aaa
 aaa
 aaa
 aaa
-boj
+aaa
 aaa
 aaa
 aaa
@@ -108525,7 +108575,7 @@ aad
 aTe
 aNd
 aMX
-aap
+abf
 aMx
 aaq
 aaa
@@ -108591,7 +108641,7 @@ aaa
 aaa
 aaa
 aaa
-boj
+aaa
 aaa
 aaa
 aaa
@@ -108776,7 +108826,7 @@ aUT
 aTg
 aNi
 aNf
-aap
+abf
 aUs
 baO
 aUi
@@ -109028,7 +109078,7 @@ aap
 aap
 aMY
 aMS
-aap
+abf
 aaq
 aUo
 aUj
@@ -109279,7 +109329,7 @@ aaq
 anK
 aap
 aMB
-aap
+abf
 aaq
 aaq
 aUp
@@ -110103,7 +110153,7 @@ aaa
 aaa
 aaa
 aae
-boj
+aaa
 aaa
 aaa
 aaa
@@ -110355,7 +110405,7 @@ aaa
 aaa
 aaa
 aaa
-boj
+aaa
 aaa
 aaa
 aaa
@@ -110607,7 +110657,7 @@ aaa
 aaa
 aaa
 aaa
-boj
+aaa
 aaa
 aaa
 aaa
@@ -110859,7 +110909,7 @@ aaa
 aaa
 aaa
 aaa
-boj
+aaa
 aaa
 aaa
 aaa
@@ -111111,7 +111161,7 @@ aaa
 aaa
 aaa
 aae
-boj
+aaa
 aaa
 aaa
 aaa
@@ -112175,11 +112225,11 @@ aaa
 aaa
 aaa
 aaa
+oSG
+aae
 aaa
-aaa
-aaa
-aaa
-aaa
+aae
+aae
 aaa
 aaa
 "}
@@ -112428,10 +112478,10 @@ aaa
 aaa
 aaa
 aaa
+jlW
+aae
 aaa
-aaa
-aaa
-aaa
+gGN
 aaa
 aaa
 "}
@@ -112616,14 +112666,14 @@ aad
 aad
 aaa
 aaa
-oSG
-aae
+aaa
+aaa
+aaa
+aaa
 aaa
 aae
 aae
-aae
-aae
-boj
+aaa
 aaa
 aaa
 aaa
@@ -112679,11 +112729,11 @@ aaa
 aaa
 aaa
 aaa
+xiL
 aaa
+lXB
 aaa
-aaa
-aaa
-aaa
+wYO
 aaa
 aaa
 "}
@@ -112869,13 +112919,13 @@ aaa
 aaa
 aaa
 aaa
-jlW
+aaa
+aaa
+aaa
+aaa
+aaa
 aae
 aaa
-gGN
-aaa
-aae
-boj
 aaa
 aaa
 aaa
@@ -112933,9 +112983,9 @@ aaa
 aaa
 aaa
 aaa
+rpV
 aaa
-aaa
-aaa
+hZs
 aaa
 aaa
 "}
@@ -113120,14 +113170,14 @@ aaa
 aaa
 aaa
 aaa
-xiL
-aaa
-lXB
-aaa
-wYO
 aaa
 aaa
-boj
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -113185,9 +113235,9 @@ aaa
 aaa
 aaa
 aaa
+alY
 aaa
-aaa
-aaa
+kda
 aaa
 aaa
 "}
@@ -113374,12 +113424,12 @@ aaa
 aaa
 aaa
 aaa
-rpV
-aaa
-hZs
 aaa
 aaa
-boj
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -113437,7 +113487,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+twI
 aaa
 aaa
 aaa
@@ -113626,12 +113676,12 @@ aaa
 aaa
 aaa
 aaa
-alY
 aaa
-kda
+aaa
+aaa
 aaa
 aae
-boj
+aaa
 aaa
 aaa
 aaa
@@ -113878,7 +113928,7 @@ aaa
 aaa
 aaa
 aaa
-twI
+aaa
 aaa
 aaa
 aaa
@@ -116293,7 +116343,7 @@ adU
 aaa
 aaa
 adV
-beo
+aae
 htK
 aMI
 aZy
@@ -116640,10 +116690,10 @@ aae
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+aaq
+aaq
+aaq
+aaq
 aaa
 aaa
 aaa
@@ -116891,12 +116941,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+aaq
 aad
-aaa
-aaa
+aad
+arJ
+abf
+aaq
 aaa
 aaa
 aaa
@@ -117143,13 +117193,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+aaq
 aad
 aad
-aad
-aaa
-aaa
+arO
+ajA
+abf
+aaq
 aaa
 aaa
 aaa
@@ -117396,13 +117446,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
-aad
-aaa
-aaa
+aNd
+aMX
+abf
+aaq
 aaa
 aaa
 aaa
@@ -117649,12 +117699,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 aad
 aad
-aaa
-aaa
+aad
+aNq
+abf
+aaq
 aaa
 aaa
 aaa
@@ -117902,10 +117952,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
-aaa
+aNp
+aaq
 aaa
 aaa
 aaa
@@ -118154,6 +118204,10 @@ aaa
 aaa
 aaa
 aaa
+aaq
+aaq
+aaq
+aaq
 aaa
 aaa
 aaa
@@ -118164,10 +118218,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-boj
 aaa
 aaa
 aaa
@@ -118419,7 +118469,7 @@ aaa
 aaa
 aaa
 aaa
-boj
+aaa
 aaa
 aaa
 aaa
@@ -118671,7 +118721,7 @@ aaa
 aaa
 aaa
 aad
-boj
+aaa
 aaa
 aaa
 aaa
@@ -129298,14 +129348,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bep
+ben
+bem
+bel
+aPZ
+aNt
+aNi
+aNf
 aaa
 aaa
 aaa
@@ -129550,14 +129600,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aap
+aap
+aap
 aaa
 aaa
 aaa
@@ -129802,14 +129852,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aNe
+aMY
+aMS
 aaa
 aaa
 aaa
@@ -130054,14 +130104,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aap
+aap
+aap
 aaa
 aaa
 aaa
@@ -130306,14 +130356,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aNe
+aNd
+aMX
 aaa
 aaa
 aaa
@@ -130558,14 +130608,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aap
+aap
+aap
 aaa
 aaa
 aaa
@@ -130810,14 +130860,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aNt
+aNd
+aNq
 aaa
 aaa
 aaa
@@ -131062,14 +131112,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aap
+aap
+aap
 aaa
 aaa
 aaa
@@ -131314,14 +131364,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aNC
+aMY
+aNp
 aaa
 aaa
 aaa
@@ -131566,14 +131616,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aap
+aap
+aap
 aaa
 aaa
 aaa
@@ -131818,14 +131868,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aNt
+aNi
+aNf
 aaa
 aaa
 aaa
@@ -132070,14 +132120,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aNC
+aMY
+aap
+aap
+aNe
+aMY
+aMS
 aaa
 aaa
 aaa
@@ -132322,14 +132372,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aNe
+aNd
+aMX
 aaa
 aaa
 aaa
@@ -132574,14 +132624,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aNt
+aNd
+aNq
 aaa
 aaa
 aaa
@@ -132826,14 +132876,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aap
+aap
+aap
+aap
+aap
+aNC
+aMY
+aNp
 aaa
 aaa
 aaa
@@ -132954,7 +133004,7 @@ aOV
 aMK
 aPm
 aPg
-aJO
+aKU
 aJO
 aOL
 aOF

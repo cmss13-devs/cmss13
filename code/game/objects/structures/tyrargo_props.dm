@@ -7,7 +7,8 @@
 	anchored = TRUE
 	unslashable = FALSE
 	health = 100
-	layer = BELOW_MOB_LAYER
+//	layer = BELOW_MOB_LAYER
+	layer = LOWER_ITEM_LAYER
 
 /obj/structure/prop/tyrargo/boards/boards_1
 	icon_state = "boards_2"

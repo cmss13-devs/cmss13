@@ -11,12 +11,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	var/timing = FALSE
 	var/deployable = FALSE
 	var/explosion_time = null
-	var/timeleft = 0
+	var/timeleft = 8 MINUTES
 	var/safety = TRUE
 	var/being_used = FALSE
 	var/end_round = TRUE
 	var/timer_announcements_flags = NUKE_SHOW_TIMER_ALL
-	var/decryption_time = 10 MINUTES
+	var/decryption_time = 0
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 	pixel_x = -16
@@ -453,9 +453,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 10 MINUTES
-	var/decryption_end_time = null
-	var/decrypting = FALSE
+	decryption_time = 10 MINUTES
+	decryption_end_time = null
+	decrypting = FALSE
 
 	timeleft = 1 MINUTES
 	timer_announcements_flags = NUKE_DECRYPT_SHOW_TIMER_ALL

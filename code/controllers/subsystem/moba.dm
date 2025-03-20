@@ -154,7 +154,7 @@ SUBSYSTEM_DEF(moba)
 		current_highest_map_id++
 
 	if(found_map)
-		new_controller.handle_map_reuse_init()
+		new_controller.handle_map_reuse_init(found_map)
 		if(!new_controller.load_in_players())
 			for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
 				remove_from_queue(player.player)

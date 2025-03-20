@@ -20,4 +20,5 @@
 
 /datum/status_effect/stacking/furious_haste/on_remove()
 	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.ability_speed_modifier -= movespeed_granted

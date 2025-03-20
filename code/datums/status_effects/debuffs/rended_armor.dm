@@ -20,4 +20,5 @@
 
 /datum/status_effect/stacking/rended_armor/on_remove()
 	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.armor_integrity_modifier += armor_shredded

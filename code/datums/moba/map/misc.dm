@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 
 /obj/effect/landmark/moba_hive_core_turret
 
+/obj/effect/landmark/moba_carp_boss_spawn
+
 /obj/effect/moba_reuse_object_spawner
 	invisibility = INVISIBILITY_MAXIMUM
 	anchored = TRUE

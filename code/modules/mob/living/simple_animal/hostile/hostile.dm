@@ -118,7 +118,7 @@
 	var/list/L = hearers(src, dist)
 	return L
 
-/mob/living/simple_animal/hostile/death()
+/mob/living/simple_animal/hostile/death(datum/cause_data/cause_data, gibbed = 0, deathmessage = "seizes up and falls limp...")
 	. = ..()
 	if(!.) return //was already dead
 	walk(src, 0)

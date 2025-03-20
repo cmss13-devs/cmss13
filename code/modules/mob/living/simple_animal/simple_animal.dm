@@ -279,7 +279,7 @@
 			..()
 
 
-/mob/living/simple_animal/death()
+/mob/living/simple_animal/death(datum/cause_data/cause_data, gibbed = 0, deathmessage = "seizes up and falls limp...")
 	. = ..()
 	if(!.) return //was already dead
 	SSmob.living_misc_mobs -= src

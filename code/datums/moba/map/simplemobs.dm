@@ -33,7 +33,7 @@
 		manual_emote("growls at [.]")
 
 /mob/living/simple_animal/hostile/hellhound/AttackingTarget()
-	. =..()
+	. = ..()
 	var/mob/living/L = .
 	if(istype(L))
 		L.apply_armoured_damage(L.maxHealth * maxhealth_damage, ARMOR_MELEE)
@@ -80,7 +80,6 @@
 /mob/living/simple_animal/hostile/combat_drone/Process_Spacemove(check_drift = 0)
 	return TRUE
 
-//self repair systems have a chance to bring the drone back to life
 /mob/living/simple_animal/hostile/combat_drone/Life(delta_time)
 	. = ..()
 	//spark for no reason
@@ -107,3 +106,58 @@
 	spark.holder = null
 	qdel(src)
 	return ..()
+
+/mob/living/simple_animal/hostile/megacarp
+	name = "megacarp"
+	desc = "An enormous fang-bearing creature that resembles the smaller space carp, except far angrier."
+	icon = 'icons/mob/broadMobs.dmi'
+	icon_state = "megacarp"
+	icon_living = "megacarp"
+	icon_dead = "megacarp_dead"
+	icon_gib = "megacarp_gib"
+	speak_chance = 0
+	turns_per_move = 5
+	response_help = "cautiously pets the"
+	response_disarm = "pushes aside the"
+	response_harm = "hits the"
+	speed = 6
+	maxHealth = 4000
+	health = 4000
+
+	harm_intent_damage = 8
+	melee_damage_lower = 50
+	melee_damage_upper = 50
+	attacktext = "bites"
+	attack_sound = 'sound/weapons/bite.ogg'
+
+	break_stuff_probability = 15
+
+	faction = "carp"
+	/// How much additional damage we do based on the target's max HP
+	var/maxhealth_damage = 0.07
+
+/mob/living/simple_animal/hostile/megacarp/FindTarget()
+	. = ..()
+	if(. && prob(50))
+		manual_emote("growls at [.]")
+
+/mob/living/simple_animal/hostile/megacarp/AttackingTarget()
+	. = ..()
+	var/mob/living/L = .
+	if(istype(L))
+		L.apply_armoured_damage(L.maxHealth * maxhealth_damage, ARMOR_MELEE)
+
+/mob/living/simple_animal/hostile/megacarp/gib_animation()
+	if(icon_gib)
+		new /obj/effect/overlay/temp/gib_animation/animal/large(loc, src, icon_gib)
+
+/mob/living/simple_animal/hostile/megacarp/death(datum/cause_data/cause_data, gibbed = 0, deathmessage = "seizes up and falls limp...")
+	. = ..()
+	if(!.)
+		return
+
+	if(!gibbed)
+		gib(cause_data)
+
+/obj/effect/overlay/temp/gib_animation/animal/large
+	icon = 'icons/mob/broadMobs.dmi'

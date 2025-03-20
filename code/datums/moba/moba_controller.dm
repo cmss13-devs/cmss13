@@ -42,6 +42,8 @@
 	var/turf/minion_spawn_botleft
 	var/turf/minion_spawn_botright
 
+	var/turf/carp_boss_spawn
+
 	/// Dict of mobs : player datums that are waiting for a player to reconnect after death
 	var/list/awaiting_reconnection_dict = list()
 
@@ -51,6 +53,10 @@
 	// We handle timers for game events using cooldowns and boolean flags
 	COOLDOWN_DECLARE(minion_spawn_cooldown)
 	var/minion_spawn_time = (1 MINUTES) / MOBA_WAVES_PER_MINUTE
+
+	COOLDOWN_DECLARE(carp_boss_spawn_cooldown)
+	var/carp_boss_spawned = FALSE
+	var/carp_spawn_time = 7 MINUTES
 
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
@@ -66,6 +72,7 @@
 
 	map_id = id
 	scoreboard = new(map_id)
+	COOLDOWN_START(src, carp_boss_spawn_cooldown, carp_spawn_time)
 
 /datum/moba_controller/Destroy(force, ...)
 	left_base = null
@@ -74,6 +81,7 @@
 	minion_spawn_topright = null
 	minion_spawn_botleft = null
 	minion_spawn_botright = null
+	carp_boss_spawn = null
 	SSmoba.controllers -= src
 	SSmoba.controller_id_dict -= "[map_id]"
 	QDEL_NULL(scoreboard)
@@ -125,13 +133,30 @@
 		GLOB.moba_reuse_object_spawners["[map_id]"] += spawner
 		GLOB.uninitialized_moba_reuse_object_spawners -= spawner
 
-/datum/moba_controller/proc/handle_map_reuse_init()
+	var/obj/effect/landmark/moba_carp_boss_spawn/carp_boss_spawner = locate() in GLOB.landmarks_list
+	if(carp_boss_spawner)
+		carp_boss_spawn = carp_boss_spawner
+		qdel(carp_boss_spawner)
+
+/datum/moba_controller/proc/handle_map_reuse_init(datum/unused_moba_map/unused_map)
 	for(var/obj/effect/moba_reuse_object_spawner/spawner as anything in GLOB.moba_reuse_object_spawners["[map_id]"])
 		var/turf/spawner_turf = get_turf(spawner)
 		var/obj/found_object = locate(spawner.path_to_spawn) in spawner_turf
 		if(found_object)
 			qdel(found_object)
 		new spawner.path_to_spawn(spawner_turf)
+
+	left_base = unused_map.left_base
+	right_base = unused_map.right_base
+	ai_waypoints_botleft = unused_map.ai_waypoints_botleft
+	ai_waypoints_botright = unused_map.ai_waypoints_botright
+	ai_waypoints_topleft = unused_map.ai_waypoints_topleft
+	ai_waypoints_topright = unused_map.ai_waypoints_topright
+	minion_spawn_botleft = unused_map.minion_spawn_botleft
+	minion_spawn_botright = unused_map.minion_spawn_botright
+	minion_spawn_topleft = unused_map.minion_spawn_topleft
+	minion_spawn_topright = unused_map.minion_spawn_topright
+	carp_boss_spawn = unused_map.carp_boss_spawn
 
 /datum/moba_controller/proc/load_in_players()
 	for(var/datum/moba_player/player as anything in players)
@@ -197,6 +222,9 @@
 
 	if(COOLDOWN_FINISHED(src, minion_spawn_cooldown))
 		spawn_minions()
+
+	if(COOLDOWN_FINISHED(src, carp_boss_spawn_cooldown) && !carp_boss_spawned)
+		spawn_carp_boss()
 
 	game_duration += SSmoba.wait
 
@@ -390,3 +418,50 @@
 			continue
 
 		player.tied_client.images -= ward_icon
+
+/datum/moba_controller/proc/spawn_carp_boss()
+	carp_boss_spawned = TRUE
+	var/mob/living/simple_animal/hostile/megacarp/fish = new(carp_boss_spawn)
+	RegisterSignal(fish, COMSIG_MOB_DEATH, PROC_REF(on_carp_boss_kill))
+
+	for(var/datum/moba_player/player as anything in players)
+		if(!player.tied_client)
+			continue
+
+		playsound_client(player.tied_client, 'sound/voice/alien_distantroar_3.ogg', player.get_tied_xeno().loc, 25, FALSE)
+		player.get_tied_xeno().play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "The megacarp has spawned at <b>Right Side Robotics</b>!", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+
+/datum/moba_controller/proc/on_carp_boss_kill(datum/source, datum/cause_data/source)
+	SIGNAL_HANDLER
+
+	var/datum/moba_player/killer
+	var/datum/hive_status/killing_hive
+	if(source?.weak_mob)
+		var/mob/living/carbon/xenomorph/killer_xeno = source.weak_mob.resolve()
+		for(var/datum/moba_player/player as anything in team1)
+			if(player.tied_xeno != killer_xeno)
+				continue
+
+			killer = player
+			killing_hive = GLOB.hive_datum[XENO_HIVE_MOBA_LEFT]
+			break
+
+		for(var/datum/moba_player/player as anything in team2)
+			if(player.tied_xeno != killer_xeno)
+				continue
+
+			killer = player
+			killing_hive = GLOB.hive_datum[XENO_HIVE_MOBA_RIGHT]
+			break
+
+	for(var/datum/moba_player/player as anything in players)
+		if(!player.tied_client)
+			continue
+
+		playsound_client(player.tied_client, 'sound/voice/alien_distantroar_3.ogg', player.get_tied_xeno().loc, 25, FALSE)
+		if(!killing_hive)
+			player.get_tied_xeno().play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "Both teams have failed to kill the megacarp! Tell Zonespace how this happened please!", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+		else
+			player.get_tied_xeno().play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "The megacarp has been killed by the <b>[killing_hive.name]</b>!", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+
+	// Add a reward for killing the carp

@@ -47403,9 +47403,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/blackfoot_tug{
-	layer = 4
-	},
+/obj/structure/blackfoot_tug,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "njS" = (
@@ -59286,6 +59284,7 @@
 	dir = 4
 	},
 /obj/structure/largecrate/supply/blackfoot_peripherals,
+/obj/item/clothing/glasses/welding,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "sit" = (
@@ -70990,9 +70989,12 @@
 	pixel_x = -2;
 	density = 0
 	},
-/obj/structure/prop/ice_colony/flamingo{
-	pixel_y = 27;
-	pixel_x = -2
+/obj/structure/prop/ice_colony/hula_girl{
+	pixel_x = -4;
+	pixel_y = 21
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 22
 	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/hangar)

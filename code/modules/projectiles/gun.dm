@@ -677,6 +677,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		bullet_duraloss = ammo.bullet_duraloss
 		bullet_duramage = ammo.bullet_duramage
 	else
+		bullet_duraloss = 0 // if there isnt a traditional projectile, then we need to return something for the calculation, otherwise itll runtime
 		bullet_duramage = BULLET_DURABILITY_DAMAGE_DEFAULT // for guns that dont fire bullets traditionally e.g. flamer, lets make sure they actually lose durability by default
 	if(!can_jam)
 		return
@@ -736,21 +737,20 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	check_worn_out()
 
 /obj/item/weapon/gun/proc/damage_gun_durability(amount = 1) //for more incremental use, such as rifle fire, but not limited to it
-	if(!explo_proof) // if explosions arent meant to destroy the gun, then its safe to assume standard firearms shouldnt either
-		if(amount > 100 && gun_durability <= GUN_DURABILITY_BROKEN) //as to prevent problems with normal rifle fire deleting the gun
-			visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] is destroyed after incurring too much damage!")))
-			qdel(src)
-	else if(prob(durability_loss * amount))
-		gun_durability = max(gun_durability - (amount / 3), GUN_DURABILITY_BROKEN)
+	if(amount > 100 && gun_durability <= GUN_DURABILITY_BROKEN && !explo_proof) //as to prevent problems with normal rifle fire deleting the gun | if explosions arent meant to destroy the gun, then its safe to assume standard firearms shouldnt either
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] is destroyed after incurring too much damage!")))
+		qdel(src)
+	else
+		(prob(durability_loss * amount))
+			gun_durability = max(gun_durability - (amount / 3), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
 	check_worn_out()
 
 /obj/item/weapon/gun/proc/blast_gun_durability(amount = 1) //for more static use, such as explosive power
 	var/blastmsg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	if(!explo_proof)
-		if(amount > 149 && gun_durability <= GUN_DURABILITY_BROKEN) //we dont want weak explosions to delete the gun e.g. grenades
-			visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
-			qdel(src)
+	if(amount > 149 && gun_durability <= GUN_DURABILITY_BROKEN && !explo_proof) //we dont want weak explosions to delete the gun e.g. grenades
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
+		qdel(src)
 	else
 		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
@@ -775,7 +775,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				durability_text = "an okay-ish condition."
 			if((GUN_DURABILITY_MEDIUM + 1) to GUN_DURABILITY_HIGH)
 				durability_text = "good condition."
-			if((GUN_DURABILITY_HIGH + 1) to GUN_DURABILITY_MAX)
+			if((GUN_DURABILITY_HIGH + 1) to 99)
+				durability_text = "fine condition."
+			if(GUN_DURABILITY_MAX)
 				durability_text = "perfect condition!"
 		. += SPAN_INFO("[src] is in [durability_text]")
 

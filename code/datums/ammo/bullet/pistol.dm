@@ -56,6 +56,7 @@
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_10
 	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/pistol/ap/penetrating/set_bullet_traits()
 	. = ..()
@@ -68,6 +69,7 @@
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -90,6 +92,7 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	pen_armor_punch = 3
 	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/pistol/rubber
 	name = "rubber pistol bullet"
@@ -160,6 +163,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -170,6 +174,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 20
 	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/pistol/incendiary/set_bullet_traits()
 	..()
@@ -190,6 +195,7 @@
 	damage = 36
 	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -203,12 +209,14 @@
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/pistol/squash/toxin
 	name = "toxic squash-head pistol bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_HIGH
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -229,6 +237,7 @@
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
+	bullet_duraloss = BULLET_DURABILITY_DAMAGE_LOW
 
 /datum/ammo/bullet/pistol/squash/penetrating/set_bullet_traits()
 	. = ..()
@@ -284,4 +293,5 @@
 	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM // yeah this thing is gonna rattle inside the barrel when fired
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 

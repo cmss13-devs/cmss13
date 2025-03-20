@@ -19,6 +19,7 @@
 	accurate_range = 12
 	penetration = ARMOR_PENETRATION_TIER_7
 	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
@@ -27,6 +28,7 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_LOW
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/entity, obj/projectile/bullet)
 	slowdown(entity, bullet)
@@ -36,6 +38,7 @@
 	name = "incendiary revolver bullet"
 	damage = 40
 	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/revolver/incendiary/set_bullet_traits()
 	..()
@@ -48,6 +51,7 @@
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/revolver/marksman/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -68,7 +72,8 @@
 	shrapnel_chance = 0
 
 	penetration = ARMOR_PENETRATION_TIER_10
-	bullet_duraloss = BULLET_DURABILITY_LOSS_SEVERE
+	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/revolver/penetrating/set_bullet_traits()
 	. = ..()
@@ -81,6 +86,7 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage = 70
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_LOW
 
 
 /datum/ammo/bullet/revolver/upp/shrapnel
@@ -100,6 +106,7 @@
 	shrapnel_type = /obj/item/shard/shrapnel/upp
 	//roughly 90 or so damage with the additional shrapnel, around 130 in total with primary round
 	bullet_duraloss = BULLET_DURABILITY_LOSS_SPECIAL //an essentially a shotgun shell for a revolver is not gonna bode well for durability
+	bullet_duraloss = BULLET_DURABILITY_DAMAGE_SPECIAL // this would absolutely ruin the barrel
 
 /datum/ammo/bullet/revolver/upp/shrapnel/on_hit_mob(mob/M, obj/projectile/P)
 	pushback(M, P, 1)
@@ -133,6 +140,7 @@
 	damage = 75 // way too strong because it's hard to make a good balance between HP and normal with this system, but the damage falloff is really strong
 	penetration = 0
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_LOW
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
@@ -141,6 +149,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
@@ -148,12 +157,14 @@
 	penetration = ARMOR_PENETRATION_TIER_1
 	flags_ammo_behavior = AMMO_BALLISTIC
 	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_LOW
 
 /datum/ammo/bullet/revolver/mateba/highimpact/ap
 	name = ".454 heavy high-impact armor piercing revolver bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
 	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_FAIR
 
 /datum/ammo/bullet/revolver/mateba/highimpact/New()
 	..()
@@ -170,6 +181,7 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
 	bullet_duraloss = BULLET_DURABILITY_LOSS_CRITICAL // yeah
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/projectile/P)
 	..()

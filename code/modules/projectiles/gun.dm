@@ -668,16 +668,21 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
-	var/bullet_duraloss = ammo.bullet_duraloss //i think this works, code for taking account the bullet duraloss modifier in the current chanbered ammo
+	var/bullet_duraloss = ammo.bullet_duraloss //code for taking account the bullet duraloss modifier in the current chambered ammo
+	var/bullet_duramage = ammo.bullet_duramage //ditto for bullet specific durability damage
 	if(in_chamber && in_chamber.ammo)
 		bullet_duraloss = in_chamber.ammo.bullet_duraloss
-	else
+		bullet_duramage = in_chamber.ammo.bullet_duramage
+	else if(ammo)
 		bullet_duraloss = ammo.bullet_duraloss
+		bullet_duramage = ammo.bullet_duramage
+	else
+		bullet_duramage = BULLET_DURABILITY_DAMAGE_DEFAULT // for guns that dont fire bullets traditionally e.g. flamer, lets make sure they actually lose durability by default
 	if(!can_jam)
 		return
 
 	if(prob(durability_loss + bullet_duraloss)) // probability durability loss dependent on weapon value, 0 disables it obviously, rngesus woe
-		set_gun_durability(gun_durability - 1) // decrement durability each time the gun is fired, yep shitcode
+		set_gun_durability(gun_durability - bullet_duramage) // decrement durability based on bullet durability damage each time the gun is fired
 		update_gun_durability()
 		check_worn_out(user)
 
@@ -730,10 +735,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_gun_durability()
 	check_worn_out()
 
-/obj/item/weapon/gun/proc/damage_gun_durability(amount = 1) //for more incremental use, such as rifle fire
-	if(amount > 100 && gun_durability <= GUN_DURABILITY_BROKEN) //as to prevent problems with normal rifle fire deleting the gun
-		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] is destroyed after incurring too much damage!")))
-		qdel(src)
+/obj/item/weapon/gun/proc/damage_gun_durability(amount = 1) //for more incremental use, such as rifle fire, but not limited to it
+	if(!explo_proof) // if explosions arent meant to destroy the gun, then its safe to assume standard firearms shouldnt either
+		if(amount > 100 && gun_durability <= GUN_DURABILITY_BROKEN) //as to prevent problems with normal rifle fire deleting the gun
+			visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] is destroyed after incurring too much damage!")))
+			qdel(src)
 	else if(prob(durability_loss * amount))
 		gun_durability = max(gun_durability - (amount / 3), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
@@ -741,9 +747,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/blast_gun_durability(amount = 1) //for more static use, such as explosive power
 	var/blastmsg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	if(amount > 149 && gun_durability <= GUN_DURABILITY_BROKEN) //we dont want weak explosions to delete the gun e.g. grenades
-		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
-		qdel(src)
+	if(!explo_proof)
+		if(amount > 149 && gun_durability <= GUN_DURABILITY_BROKEN) //we dont want weak explosions to delete the gun e.g. grenades
+			visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
+			qdel(src)
 	else
 		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
 	update_gun_durability()

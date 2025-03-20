@@ -45,7 +45,7 @@
 	item_state = "mortar_ammo_frag"
 
 /obj/item/mortar_shell/frag/detonate(turf/T)
-	create_shrapnel(T, 60, cause_data = cause_data)
+	create_shrapnel(T, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/breaching)
 	sleep(2)
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
@@ -61,7 +61,6 @@
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /obj/item/mortar_shell/incendiary/detonate(turf/T)
-	explosion(T, 0, 2, 4, 7, explosion_cause_data = cause_data)
 	flame_radius(cause_data, radius, T, flame_level, burn_level, flameshape, null, fire_type)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 

@@ -1,0 +1,5 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - bugfix: "Hellhound's \"Find Owner\" ability now uses the same hotkey as XENO_PRIMARY_ACTION 2."
+  - bugfix: "Hellhound's emotes have returned, with improvements!"

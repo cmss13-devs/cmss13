@@ -43,7 +43,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 			for(var/obj/item/P in src)
 				dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
 			dat += "</table></center>"
-			show_browser(user, dat, name, "filingcabinet", "size=350x300")
+			show_browser(user, dat, name, "filingcabinet", width = 350, height = 300)
 			return
 		if("Document")
 			if(remaining_documents <= 0)
@@ -109,13 +109,12 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 //########################################
 //########################################
 //########################################
-/obj/item/paper/prefab
+/obj/item/paper/prefab // Abstract type (document_title and doc_datum_type are null)
 	is_prefab = TRUE
-	document_title = "BLANK"
 
 /obj/item/paper/prefab/Initialize()
 	. = ..()
-	name = document_title
+	name = document_title || "BLANK"
 
 // ########## Provost MP Forms  ########## \\
 
@@ -200,7 +199,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_category = PAPER_CATEGORY_LIAISON
 
 /obj/item/paper/prefab/liaison/ops_report
-	document_title = "WY435 - Liaison Operations Report"
+	document_title = "WY435 - Local Operations Report"
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/ops_report
 
 /obj/item/paper/prefab/liaison/preserve_intent
@@ -218,6 +217,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/liaison/nda_long
 	document_title = "WY442 - Non Disclosure Agreement"
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/nda_long
+
+/obj/item/paper/prefab/liaison/nda_long/uscm
+	document_title = "WY442-B - Non Disclosure Agreement (USCM)"
+	doc_datum_type = /datum/prefab_document/wey_yu/liaison/nda_long/uscm
 
 // ########## Wey-Yu HC Forms  ########## \\
 

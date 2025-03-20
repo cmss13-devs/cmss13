@@ -256,6 +256,8 @@
 	var/durability_loss = 0
 	/// Durability of a gun that determines jam chance.
 	var/gun_durability = 100
+	/// chance to misfire when dropped or otherwise called for
+	var/misfire_chance = 0
 
 
 
@@ -741,7 +743,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] is destroyed after incurring too much damage!")))
 		qdel(src)
 	else
-		(prob(durability_loss * amount))
+		if(prob(durability_loss * amount))
 			gun_durability = max(gun_durability - (amount / 3), GUN_DURABILITY_BROKEN)
 	update_gun_durability()
 	check_worn_out()

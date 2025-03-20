@@ -279,7 +279,7 @@
 		SEND_SIGNAL(player.get_tied_xeno(), COMSIG_MOBA_GET_LEVEL, level_list)
 		total_level_count += level_list[1]
 
-	game_level = clamp(floor(total_level_count * 0.125), 1, 12)
+	game_level = clamp(floor(total_level_count * (1 / MOBA_TOTAL_PLAYERS)), 1, 12)
 
 /datum/moba_controller/proc/end_game(losing_hive)
 	set waitfor = FALSE

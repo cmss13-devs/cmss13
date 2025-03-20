@@ -33,6 +33,11 @@
 	SIGNAL_HANDLER
 
 	var/list/awarding_xenos = list()
+	var/parent_level = -1
+	var/list/parent_level_list = list()
+	SEND_SIGNAL(parent, COMSIG_MOBA_GET_LEVEL, parent_level_list)
+	if(length(parent_level_list))
+		parent_level = parent_level_list[1]
 
 	for(var/mob/living/carbon/xenomorph/xeno in view(world.view, parent))
 		if(!xeno.client || (xeno.stat == DEAD)) // Must be a player and can't be dead
@@ -51,8 +56,16 @@
 			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_GOLD, floor(gold / length(awarding_xenos)))
 
 		if(xp)
-			var/list/xp_list = list() // zonenote make XP fall off if you're killing lower-levelled players
-			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_XP, floor(xp / length(awarding_xenos)))
+			if(parent_level != -1)
+				var/list/level_list = list()
+				SEND_SIGNAL(xeno, COMSIG_MOBA_GET_LEVEL, level_list)
+				var/level_diff = parent_level - level_list[1]
+				var/xp_to_award = floor(xp / length(awarding_xenos))
+				if(level_diff >= MOBA_LEVEL_DIFF_XP_FALLOFF_THRESHOLD)
+					xp_to_award *= (1 - (MOBA_LEVEL_DIFF_XP_MOD * level_diff)) // If we're >=2 levels ahead of whoever we're killing, we get 20% less XP per level difference
+				SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_XP, xp_to_award)
+			else
+				SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_XP, floor(xp / length(awarding_xenos)))
 
 	if(gold && gold_award_to_killer)
 		var/mob/killer

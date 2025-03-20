@@ -22,7 +22,7 @@
 /datum/component/moba_obj_destroyed_reward/RegisterWithParent()
 	..()
 	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(on_del))
-	//RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/moba_obj_destroyed_reward/proc/on_del(datum/source, force)
 	SIGNAL_HANDLER
@@ -48,11 +48,22 @@
 		if(xp)
 			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_XP, floor(xp / length(awarding_xenos)))
 
-/*datum/component/moba_obj_destroyed_reward/proc/on_examine(datum/source, mob/observer, list/strings)
+/datum/component/moba_obj_destroyed_reward/proc/on_examine(datum/source, mob/observer, list/strings)
 	SIGNAL_HANDLER
 
+	var/show_text = FALSE
 	if(isobserver(observer))
-		return
+		show_text = TRUE
 
-	examine(observer)
-	return COMPONENT_NO_EXAMINE*/
+	else if(isxeno(observer))
+		var/mob/living/carbon/xenomorph/xeno = observer
+		if(xeno.hivenumber != allied_hive)
+			show_text = TRUE
+
+	if(show_text)
+		if(gold)
+			strings += SPAN_XENONOTICE("[gold][MOBA_GOLD_NAME_SHORT] will be split among the destroying team of this [parent.name].")
+		if(xp)
+			strings += SPAN_XENONOTICE("[xp] XP will be split among the destroying team of this [parent.name].")
+		if(global_gold)
+			strings += SPAN_XENONOTICE("[global_gold][MOBA_GOLD_NAME_SHORT] will be given to each member of the destroying team of this [parent.name].")

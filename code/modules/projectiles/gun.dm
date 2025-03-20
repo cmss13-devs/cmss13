@@ -563,7 +563,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	unwield(user)
 	set_gun_user(null)
-	gun_misfire()
+	gun_misfire(user)
 
 /obj/item/weapon/gun/update_icon()
 	if(overlays)
@@ -696,7 +696,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		check_worn_out(user)
 
 	scaled_jam_chance = initial_jam_chance * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
-	misfire_chance = bullet_duraloss / durability_loss * (GUN_DURABILITY_MEDIUM - gun_durability) // misfires become a problem at below 50 durability
+	misfire_chance = bullet_duraloss + durability_loss * (GUN_DURABILITY_MEDIUM - gun_durability) // misfires become a problem at below 50 durability
 
 	if(check_jam(user) == NONE)
 		return NONE

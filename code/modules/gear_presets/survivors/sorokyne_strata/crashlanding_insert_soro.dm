@@ -113,6 +113,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/heavy, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/upp/at(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/upp(new_human), WEAR_IN_BACK)
 	..()
 
 
@@ -138,7 +139,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/SOF_belt/revolver/upp(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak4047(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak4047/ap(new_human), WEAR_IN_BACK)
 	..()
 
 //it's used on all of the above in their spawner.

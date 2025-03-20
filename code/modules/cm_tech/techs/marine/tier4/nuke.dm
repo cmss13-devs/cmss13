@@ -10,7 +10,7 @@
 	tier = /datum/tier/four
 
 	announce_name = "NUCLEAR ARSENAL ACQUIRED"
-	announce_message = "The deployment of a 'Blockbuster' Large Atomic Fission Demolition Device (LAFDEDE) have been authorized and will be delivered to the requisitions department, via ASRS."
+	announce_message = "The deployment of a 'Blockbuster' Large Atomic Fission Demolition Device (LAFDEDE) have been authorized and will be delivered to the Requisitions Department, via ASRS."
 
 	flags = TREE_FLAG_MARINE
 

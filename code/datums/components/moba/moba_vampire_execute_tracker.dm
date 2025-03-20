@@ -60,11 +60,12 @@
 	for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.living_xeno_list)
 		if(QDELETED(xeno) || (xeno.stat == DEAD))
 			var/image/indicator = execute_images[xeno]
-			indicator.icon = null
-			indicator.icon_state = null
-			parent_xeno.client.images -= indicator
-			qdel(indicator)
-			execute_images -= xeno
+			if(indicator)
+				indicator.icon = null
+				indicator.icon_state = null
+				parent_xeno.client.images -= indicator
+				qdel(indicator)
+				execute_images -= xeno
 			continue
 
 		if(xeno.health <= damage_to_deal)
@@ -73,8 +74,9 @@
 			execute_images[xeno] = execute_indicator
 		else
 			var/image/indicator = execute_images[xeno]
-			indicator.icon = null
-			indicator.icon_state = null
-			parent_xeno.client.images -= indicator
-			qdel(indicator)
-			execute_images -= xeno
+			if(indicator)
+				indicator.icon = null
+				indicator.icon_state = null
+				parent_xeno.client.images -= indicator
+				qdel(indicator)
+				execute_images -= xeno

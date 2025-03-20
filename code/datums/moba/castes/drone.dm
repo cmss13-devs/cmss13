@@ -323,6 +323,7 @@
 			alive_targets.gain_health(alive_targets.maxHealth * (health_percentage + (ap_list[1] * 0.05 * 0.01))) // 0.01 so that 200 AP becomes 10 becomes .10
 			alive_targets.flick_heal_overlay(2 SECONDS, "#34bb19")
 		new /obj/effect/xenomorph/xeno_telegraph/drone_heal_template(get_turf(support_drone), 20)
+		playsound(get_turf(support_drone), 'sound/voice/xenos_roaring.ogg', 125)
 
 	apply_cooldown() // Sucks to hear you got interrupted. Oh well!
 	in_use = FALSE

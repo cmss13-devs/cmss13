@@ -184,10 +184,10 @@
 			break
 
 	if(team1_ward_count <= team1_max_wards)
-		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	if(team2_ward_count <= team2_max_wards)
-		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	game_started = TRUE
 
@@ -308,14 +308,17 @@
 
 /datum/moba_controller/proc/use_team1_ward()
 	if(team1_ward_count <= team1_max_wards)
-		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 	team1_ward_count--
 	update_team1_ward_text()
 
 /datum/moba_controller/proc/regenerate_team1_ward()
+	if(team1_ward_count >= team1_max_wards)
+		return
+
 	team1_ward_count++
 	if(team1_ward_count < team1_max_wards)
-		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 	update_team1_ward_text()
 
 /datum/moba_controller/proc/update_team1_ward_text()
@@ -348,14 +351,17 @@
 
 /datum/moba_controller/proc/use_team2_ward()
 	if(team2_ward_count <= team2_max_wards)
-		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 	team1_ward_count--
 	update_team2_ward_text()
 
 /datum/moba_controller/proc/regenerate_team2_ward()
+	if(team2_ward_count >= team2_max_wards)
+		return
+
 	team1_ward_count++
 	if(team1_ward_count < team1_max_wards)
-		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 	update_team2_ward_text()
 
 /datum/moba_controller/proc/update_team2_ward_text()

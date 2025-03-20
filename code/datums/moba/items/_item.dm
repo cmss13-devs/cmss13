@@ -20,6 +20,8 @@
 	var/gold_cost = 0
 	// Set at runtime
 	var/total_gold_cost = 0
+	// Set at runtime unless set manually
+	var/sell_value = -1
 	/// What item types are used to make this item
 	var/list/component_items = list()
 	var/description = ""
@@ -58,11 +60,13 @@
 	if(instanced && creating_player)
 		set_total_gold_cost()
 		set_description()
-		RegisterSignal(creating_player.get_tied_xeno(), COMSIG_MOB_DEATH, PROC_REF(handle_pass_data_write))
+		RegisterSignal(creating_player.get_tied_xeno(), COMSIG_MOB_DEATH, PROC_REF(handle_pass_data_write)) //zonenote look into moving to qdel or smth
 		handle_pass_data_read(creating_player)
 
 /datum/moba_item/proc/set_total_gold_cost()
 	total_gold_cost = get_recursive_gold_cost()
+	if(sell_value == -1)
+		sell_value = total_gold_cost * MOBA_ITEM_SELLBACK_VALUE
 
 /datum/moba_item/proc/get_recursive_gold_cost()
 	var/return_gold = gold_cost
@@ -122,7 +126,7 @@
 	if(attack_damage)
 		description += "<br>Damage: +[attack_damage]"
 	if(ability_cooldown_reduction)
-		description += "<br>Cooldown Reduction: x[ability_cooldown_reduction * 100]%"
+		description += "<br>Cooldown Reduction: +[1 - (ability_cooldown_reduction * 100)]%"
 	if(lifesteal)
 		description += "<br>Lifesteal: [lifesteal * 100]%"
 	if(slash_penetration)

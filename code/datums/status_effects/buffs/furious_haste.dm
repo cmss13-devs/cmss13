@@ -17,3 +17,7 @@
 	xeno.ability_speed_modifier -= movespeed_granted
 	movespeed_granted = stacks * movespeed_per_stack
 	xeno.ability_speed_modifier += movespeed_granted
+
+/datum/status_effect/stacking/furious_haste/on_remove()
+	. = ..()
+	xeno.ability_speed_modifier -= movespeed_granted

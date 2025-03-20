@@ -36,6 +36,8 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	var/attack_delay_modifier = 0
 	var/starting_attack_damage = 37.5
 	var/ending_attack_damage = 60
+	var/starting_ap = 0
+	var/ending_ap = 0
 
 	var/list/abilities_to_add = list()
 
@@ -64,3 +66,4 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	xeno.acid_armor = round(starting_acid_armor + ((ending_acid_armor - starting_acid_armor) * multiplier), 1)
 	xeno.melee_damage_lower = round(starting_attack_damage + ((ending_attack_damage - starting_attack_damage) * multiplier), 1)
 	xeno.melee_damage_upper = round(starting_attack_damage + ((ending_attack_damage - starting_attack_damage) * multiplier), 1)
+	player_component.set_ap(round(starting_ap + ((ending_ap - starting_ap) * multiplier), 1))

@@ -17,3 +17,7 @@
 	xeno.armor_integrity_modifier += armor_shredded
 	armor_shredded = stacks * shred_per_stack
 	xeno.armor_integrity_modifier -= armor_shredded
+
+/datum/status_effect/stacking/rended_armor/on_remove()
+	. = ..()
+	xeno.armor_integrity_modifier += armor_shredded

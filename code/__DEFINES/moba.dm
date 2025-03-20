@@ -41,3 +41,5 @@
 #define MOBA_LEVEL_DIFF_XP_FALLOFF_THRESHOLD 2
 /// Per level, so 5 levels ahead means 0 xp earned
 #define MOBA_LEVEL_DIFF_XP_MOD 0.2
+
+#define MOBA_ITEM_SELLBACK_VALUE 0.6

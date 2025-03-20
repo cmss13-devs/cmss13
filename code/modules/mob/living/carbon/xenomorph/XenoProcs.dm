@@ -51,7 +51,7 @@
 	var/datum/component/moba_player/player_component = GetComponent(/datum/component/moba_player)
 	if(player_component)
 		. += "Acid Armor: [floor(acid_armor + acid_armor_buff - acid_armor_debuff)]/[floor(acid_armor)]"
-		. += "Lifesteal: [player_component.lifesteal]"
+		. += "Lifesteal: [player_component.lifesteal * 100]%"
 		. += "Acid Power: [player_component.get_ap()]"
 		. += "Slash Penetration: [player_component.slash_penetration]"
 		. += "Acid Penetration: [player_component.acid_penetration]"

@@ -1,6 +1,6 @@
 /datum/moba_item/rare/shredder_claws
 	name = "Rending Claws"
-	description = "<b>Armor Shred</b><br>Remove N% of the armor of anyone slashed. Stacks up to N, lasting N seconds since your last attack."
+	description = "<br><b>Armor Shred</b><br>Remove N% of the armor of anyone slashed. Stacks up to N, lasting N seconds since your last attack."
 	icon_state = "red"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3
 	unique = TRUE
@@ -16,7 +16,7 @@
 
 /datum/moba_item/rare/shredder_claws/New(datum/moba_player/creating_player)
 	. = ..()
-	description = "<b>Armor Shred</b><br>Remove [/datum/status_effect/stacking/rended_armor::shred_per_stack]% of the armor of anyone slashed. Stacks up to [/datum/status_effect/stacking/rended_armor::max_stacks], lasting [/datum/status_effect/stacking/rended_armor::delay_before_decay * 0.1] seconds since your last attack."
+	description = "<br><b>Armor Shred</b><br>Remove [/datum/status_effect/stacking/rended_armor::shred_per_stack]% of the armor of anyone slashed. Stacks up to [/datum/status_effect/stacking/rended_armor::max_stacks], lasting [/datum/status_effect/stacking/rended_armor::delay_before_decay * 0.1] seconds since your last attack."
 
 /datum/moba_item/rare/shredder_claws/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
 	. = ..()
@@ -31,8 +31,9 @@
 
 	var/datum/status_effect/stacking/rended_armor/rended = attacking.has_status_effect(/datum/status_effect/stacking/rended_armor)
 	if(!rended)
-		rended = attacking.apply_status_effect(/datum/status_effect/stacking/rended_armor)
-	rended.add_stacks(1)
+		rended = attacking.apply_status_effect(/datum/status_effect/stacking/rended_armor, 1)
+	else
+		rended.add_stacks(1)
 
 
 // This should be programmed to do stuff once there's an acid damage caste
@@ -68,7 +69,7 @@
 
 /datum/moba_item/rare/mageslayer
 	name = "Acid Neutralizer"
-	description = "<b>Cast Neutralizer</b><br>Reduce the AP of anyone hit by your slashes or physical abilities by N% for N seconds."
+	description = "<br><b>Cast Neutralizer</b><br>Reduce the AP of anyone hit by your slashes or physical abilities by N% for N seconds."
 	icon_state = "red"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 2.25
 	unique = TRUE
@@ -84,7 +85,7 @@
 
 /datum/moba_item/rare/mageslayer/New(datum/moba_player/creating_player)
 	. = ..()
-	description = "<b>Cast Neutralizer</b><br>Reduce the AP of anyone hit by your slashes or physical abilities by [(1 - /datum/status_effect/acid_neutralized::ap_mult) * 100]% for [/datum/status_effect/acid_neutralized::duration * 0.1] seconds."
+	description = "<br><b>Cast Neutralizer</b><br>Reduce the AP of anyone hit by your slashes or physical abilities by [(1 - /datum/status_effect/acid_neutralized::ap_mult) * 100]% for [/datum/status_effect/acid_neutralized::duration * 0.1] seconds."
 
 /datum/moba_item/rare/mageslayer/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
 	. = ..()
@@ -108,7 +109,7 @@
 
 /datum/moba_item/rare/steraks
 	name = "High-Stress Carapace Hardening"
-	description = "<b>Emergency Hardening</b><br>Upon dropping below N% health, gain a shield that absorbs N (+N% bonus HP) damage and decays after N seconds. N second cooldown."
+	description = "<br><b>Emergency Hardening</b><br>Upon dropping below N% health, gain a shield that absorbs N (+N% bonus HP) damage and decays after N seconds. N second cooldown."
 	icon_state = "red"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 2
 	unique = TRUE
@@ -132,7 +133,7 @@
 
 /datum/moba_item/rare/steraks/New(datum/moba_player/creating_player)
 	. = ..()
-	description = "<b>Emergency Hardening</b><br>Upon dropping below [health_threshold * 100]% health, gain a shield that absorbs [base_shield_damage] (+[bonus_hp_mod * 100]% bonus HP) damage and decays after [decay_time * 0.1] seconds. [cooldown_time * 0.1] second cooldown."
+	description = "<br><b>Emergency Hardening</b><br>Upon dropping below [health_threshold * 100]% health, gain a shield that absorbs [base_shield_damage] (+[bonus_hp_mod * 100]% bonus HP) damage and decays after [decay_time * 0.1] seconds. [cooldown_time * 0.1] second cooldown."
 
 /datum/moba_item/rare/steraks/handle_pass_data_write(mob/living/carbon/xenomorph/xeno, datum/cause_data/causedata)
 	var/list/datum/moba_player/datum_list = list()
@@ -168,7 +169,7 @@
 
 /datum/moba_item/rare/furious_haste
 	name = "Oversized Adrenal Glands"
-	description = "<b>Furious Haste</b><br>Gain N movespeed upon slashing an enemy, stacking up to N times. Decays after N seconds."
+	description = "<br><b>Furious Haste</b><br>Gain N movespeed upon slashing an enemy, stacking up to N times. Decays after N seconds."
 	icon_state = "red"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 2
 	unique = TRUE
@@ -184,7 +185,7 @@
 
 /datum/moba_item/rare/furious_haste/New(datum/moba_player/creating_player)
 	. = ..()
-	description = "<b>Furious Haste</b><br>Gain [/datum/status_effect/stacking/furious_haste::movespeed_per_stack] movespeed upon slashing an enemy, stacking up to [/datum/status_effect/stacking/furious_haste::max_stacks] times. Decays after [/datum/status_effect/stacking/furious_haste::delay_before_decay * 0.1] seconds."
+	description = "<br><b>Furious Haste</b><br>Gain [/datum/status_effect/stacking/furious_haste::movespeed_per_stack] movespeed upon slashing an enemy, stacking up to [/datum/status_effect/stacking/furious_haste::max_stacks] times. Decays after [/datum/status_effect/stacking/furious_haste::delay_before_decay * 0.1] seconds."
 
 /datum/moba_item/rare/furious_haste/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
 	. = ..()
@@ -199,5 +200,6 @@
 
 	var/datum/status_effect/stacking/furious_haste/haste = source.has_status_effect(/datum/status_effect/stacking/furious_haste)
 	if(!haste)
-		haste = source.apply_status_effect(/datum/status_effect/stacking/furious_haste)
-	haste.add_stacks(1)
+		haste = source.apply_status_effect(/datum/status_effect/stacking/furious_haste, 1)
+	else
+		haste.add_stacks(1)

@@ -138,6 +138,7 @@
 		player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT,\
 		TRUE,\
 	) // We refresh this because we're a level higher, so more XP on kill
+	parent_xeno.balloon_alert(parent_xeno, "Level up!", "#9723c4")
 
 /datum/component/moba_player/process(delta_time)
 	if(parent_xeno.health < parent_xeno.maxHealth && parent_xeno.last_hit_time + parent_xeno.caste.heal_delay_time <= world.time && (!parent_xeno.caste || (parent_xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !parent_xeno.fire_stacks))
@@ -216,6 +217,8 @@
 	SIGNAL_HANDLER
 
 	player_datum.gold += gold_amount
+	if(gold_amount > 0)
+		parent_xeno.balloon_alert(parent_xeno, "+[gold_amount][MOBA_GOLD_NAME_SHORT]", "#b89c14")
 
 /datum/component/moba_player/proc/get_owned_items(datum/source, list/datum/moba_item/items)
 	SIGNAL_HANDLER
@@ -256,6 +259,10 @@
 
 /datum/component/moba_player/proc/add_ap(ap)
 	acid_power += ap
+
+/// Use add/remove_ap() if possible
+/datum/component/moba_player/proc/set_ap(ap)
+	acid_power = ap
 
 /datum/component/moba_player/proc/remove_ap(ap)
 	acid_power -= ap

@@ -638,7 +638,6 @@
 #include "code\datums\moba\items\_item.dm"
 #include "code\datums\moba\items\common.dm"
 #include "code\datums\moba\items\rare.dm"
-#include "code\datums\moba\items\testing_items.dm"
 #include "code\datums\moba\items\uncommon.dm"
 #include "code\datums\moba\map\ai_camp.dm"
 #include "code\datums\moba\map\hive_core.dm"

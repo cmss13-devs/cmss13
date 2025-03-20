@@ -27,3 +27,12 @@
 		owner.hud_used.locate_leader.maptext_x = -48
 		owner.hud_used.locate_leader.maptext_y = 192
 
+/datum/status_effect/stacking/bloodlust/on_remove()
+	. = ..()
+	var/list/lifesteal_holder = list()
+	SEND_SIGNAL(owner, COMSIG_MOBA_GET_LIFESTEAL, lifesteal_holder)
+	if(!length(lifesteal_holder))
+		return
+	var/lifesteal_value = lifesteal_holder[1]
+	lifesteal_value -= given_player_lifesteal
+	SEND_SIGNAL(owner, COMSIG_MOBA_SET_LIFESTEAL, lifesteal_value)

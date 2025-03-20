@@ -2520,7 +2520,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "afP" = (
-/obj/item/stool,
+/obj/item/stool{
+	pixel_x = -6;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "afQ" = (
@@ -6641,7 +6644,7 @@
 /area/almayer/living/pilotbunks)
 "aqf" = (
 /obj/structure/sign/safety/maint{
-	pixel_x = 8;
+	pixel_x = 2;
 	pixel_y = 32
 	},
 /obj/structure/weightmachine/stacklifter,
@@ -22547,7 +22550,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
+	pixel_x = -9;
 	pixel_y = -32
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -23262,7 +23265,7 @@
 	pixel_x = 12
 	},
 /obj/structure/sign/safety/water{
-	pixel_x = 8;
+	pixel_x = 34;
 	pixel_y = -32
 	},
 /turf/open/floor/almayer/plate,
@@ -37352,7 +37355,7 @@
 	dir = 4
 	},
 /obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
+	pixel_x = -18;
 	pixel_y = -32
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -57769,7 +57772,7 @@
 	dir = 4
 	},
 /obj/structure/sign/safety/autoopenclose{
-	pixel_x = 8;
+	pixel_x = 14;
 	pixel_y = -32
 	},
 /turf/open/floor/plating/plating_catwalk,

@@ -312,12 +312,16 @@
 	revolvers.fan_the_hammer()
 	if(revolvers.currently_fanning)
 		to_chat(owner, SPAN_NOTICE("You will now fan the hammer."))
+		button.icon_state += "_on"
 	else
+		button.icon_state = initial(button.icon_state)
 		to_chat(owner, SPAN_NOTICE("You will no longer fan the hammer."))
 	playsound(owner, 'sound/machines/click.ogg', 15, 1)
 
+
+
+
 /obj/item/weapon/gun/revolver/proc/fan_the_hammer(obj/item/weapon/gun/revolver/fanner, mob/living/user)
-	icon_state = initial(icon_state)
 	if(can_fan)
 		if(!currently_fanning)
 			modify_burst_delay(FIRE_DELAY_TIER_REVOLVER)
@@ -390,19 +394,19 @@
 		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))//this is stupid
 		return FALSE
 	if(!currently_fanning)
-		return ..()
+		. = ..()
 	if(user.get_inactive_hand() && !istype(user.get_inactive_hand(), /obj/item/weapon/twohanded/offhand))
 		to_chat(user, SPAN_NOTICE("You can't fan the hammer when something else is in your hand"))
 		return FALSE
 	var/hand_to_check = user.r_hand == src ? "l_hand" : "r_hand"
 	var/mob/living/carbon/human/revolver_wielder = user
 	if(!istype(revolver_wielder))
-		return ..()
+		. = ..()
 	var/obj/limb/limb_to_check = revolver_wielder.get_limb(hand_to_check)
 	if(limb_to_check && !limb_to_check.is_usable())
 		to_chat(user, SPAN_NOTICE("You cannot fan the hammer with a missing limb."))
 		return FALSE
-	return ..()
+	. = ..()
 
 /obj/item/weapon/gun/revolver/m44/mp //No differences (yet) beside spawning with marksman ammo loaded
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman

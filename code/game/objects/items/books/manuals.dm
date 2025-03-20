@@ -158,7 +158,7 @@
 					<li>In case of hull breach or fire, make sure to remove the Cannon's payload and move it to a safe location.</li>
 					<li>If the Orbital Tray jams, apply lubricant to the conveyor belt.</li>
 					<li>If a cable of the Orbital Cannon System is severed, contact USCM HQ for a replacement.</li>
-					<li>If Cannon's cable connector breaks, turn off the Orbital Cannon Console and contact USCM HQ for a replacement.</li>
+					<li>If the Cannon's cable connector breaks, turn off the Orbital Cannon Console and contact USCM HQ for a replacement.</li>
 				</ul>
 
 			</body>

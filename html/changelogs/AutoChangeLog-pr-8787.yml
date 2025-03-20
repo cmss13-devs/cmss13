@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes Synthetic Survivor not appearing in the Survivor follow group."

@@ -1,8 +1,6 @@
 {
 	"eslint.nodePath": "./tgui/.yarn/sdks",
-	"eslint.workingDirectories": [
-		"./tgui"
-	],
+	"eslint.workingDirectories": ["./tgui"],
 	"prettier.prettierPath": "./tgui/.yarn/sdks/prettier/index.cjs",
 	"typescript.tsdk": "./tgui/.yarn/sdks/typescript/lib",
 	"typescript.enablePromptUseWorkspaceTsdk": true,
@@ -23,7 +21,7 @@
 		"editor.formatOnSave": true
 	},
 	"[javascriptreact]": {
-		"editor.rulers": [+80],
+		"editor.rulers": [80],
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},

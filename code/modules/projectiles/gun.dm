@@ -254,10 +254,10 @@
 	var/scaled_jam_chance = 0
 	/// chance to unjam after hitting the unique action
 	var/unjam_chance = 0
-	/// Amount of durability loss per shot
-	var/durability_loss = 0
+	/// Amount of durability loss per shot, 0.01 by default
+	var/durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL
 	/// Durability of a gun that determines jam chance.
-	var/gun_durability = 100
+	var/gun_durability = GUN_DURABILITY_MAX
 	/// chance to misfire when actions allow it
 	var/misfire_chance = 0
 
@@ -677,7 +677,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
-	var/bullet_duraloss = 0 // if there isnt a traditional projectile, then we need to return something for the calculation, otherwise itll runtime
+	var/bullet_duraloss = 0.01 // if there isnt a traditional projectile, then we need to return something for the calculation, otherwise itll runtime
 	var/bullet_duramage = BULLET_DURABILITY_DAMAGE_DEFAULT // for guns that dont fire bullets traditionally e.g. flamer, lets make sure they actually lose durability by default
 	if(in_chamber && in_chamber.ammo)
 		bullet_duraloss = in_chamber.ammo.bullet_duraloss
@@ -695,7 +695,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		check_worn_out(user)
 
 	scaled_jam_chance = initial_jam_chance * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
-	misfire_chance = durability_loss * (GUN_DURABILITY_MEDIUM - gun_durability) // misfires become a problem at below 50 durability
+	misfire_chance = bullet_duraloss + durability_loss * (GUN_DURABILITY_MEDIUM - gun_durability) // misfires become a problem at below 50 durability
 
 	if(check_jam(user) == NONE)
 		return NONE

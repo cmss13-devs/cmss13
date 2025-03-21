@@ -336,7 +336,8 @@ Fire Variant = Markers for special fire types that behave outside of chemfire co
 #define GUN_DURABILITY_LOW 20
 #define GUN_DURABILITY_BROKEN 0
 
-//gun innate durability loss defines
+//gun innate durability loss defines, note that GUN_DURABILITY_LOSS_NONE also disables misfiring
+#define GUN_DURABILITY_LOSS_NONE 0
 #define GUN_DURABILITY_LOSS_INSUBSTANTIAL 0.01
 #define GUN_DURABILITY_LOSS_LOW 0.10
 #define GUN_DURABILITY_LOSS_FAIR 0.25

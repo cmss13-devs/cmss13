@@ -244,8 +244,6 @@
 	VAR_PROTECTED/autofire_slow_mult = 1
 	/// enables jamming code, default should be false, change the vars in parent gun or individually to enable jamming
 	var/can_jam = FALSE
-	/// enables misfiring, default is true, ditto above
-	var/can_misfire = TRUE
 	/// if gun is currently jammed
 	var/jammed = FALSE
 	/// guns inherent chance to jam
@@ -258,8 +256,6 @@
 	var/durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL
 	/// Durability of a gun that determines jam chance.
 	var/gun_durability = GUN_DURABILITY_MAX
-	/// chance to misfire when actions allow it
-	var/misfire_chance = 0
 
 
 
@@ -695,7 +691,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		check_worn_out(user)
 
 	scaled_jam_chance = initial_jam_chance * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
-	misfire_chance = bullet_duraloss + durability_loss * (GUN_DURABILITY_MEDIUM - gun_durability) // misfires become a problem at below 50 durability
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -1008,9 +1003,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
 
-	if(can_misfire)
-		gun_misfire(user)
-
 	return 1
 
 /obj/item/weapon/gun/unwield(mob/user)
@@ -1126,8 +1118,6 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
-	if(can_misfire)
-		gun_misfire(user)
 
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
@@ -1311,8 +1301,6 @@ and you're good to go.
 				if(bullet.current_rounds <= 0)
 					QDEL_NULL(bullet)
 				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
-				if(can_misfire)
-					gun_misfire(user)
 		else
 			to_chat(user, SPAN_WARNING("The bullet doesn't match [src]'s caliber!"))
 
@@ -1553,19 +1541,6 @@ and you're good to go.
 	return TRUE
 
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
-
-/obj/item/weapon/gun/proc/gun_misfire(mob/living/user)
-	if(can_misfire)
-		if(prob(misfire_chance)) // somehow ill figure out a way to make this fire when dropped
-			var/obj/item/weapon/gun/misfired_gun = src
-			var/list/turfs = list()
-			for(var/turf/turf_to_misfire in view())
-				turfs += turf_to_misfire
-			var/turf/target = pick(turfs)
-			user.visible_message(SPAN_HIGHDANGER("[user]'s [name] misfires from its resulting damages!"))
-			misfired_gun.handle_fire(target, user)
-
-			// we dont want to incriminate accidents !!INSERT LOG BELOW!!
 
 
 /obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)

@@ -155,7 +155,7 @@
 
 /obj/effect/landmark/lizard_spawn/proc/latespawn_lizard()
 	//if there's already a ton of lizards alive, try again later
-	if(GLOB.giant_lizards_alive > MAXIMUM_LIZARD_AMOUNT)
+	if(length(GLOB.giant_lizards_alive) > MAXIMUM_LIZARD_AMOUNT)
 		addtimer(CALLBACK(src, PROC_REF(latespawn_lizard)), rand(15 MINUTES, 25 MINUTES))
 		return
 	//if there's a living mob that can witness the spawn then try again later

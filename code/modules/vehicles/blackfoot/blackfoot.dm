@@ -11,7 +11,7 @@
 	name = "AD-71E Blackfoot"
 	desc = "A twin tilt-jet VTOL, the Blackfoot is the Bearcat's ugly big sister. For what she lacks in fire power and agility, she more than makes up for in utility and love handles. First tested by UA Northridge on American soil, the Blackfoot is currently undergoing active combat trials."
 	icon = 'icons/obj/vehicles/blackfoot.dmi'
-	icon_state = "doorgun_stowed"
+	icon_state = "stowed"
 
 	bound_width = 96
 	bound_height = 96

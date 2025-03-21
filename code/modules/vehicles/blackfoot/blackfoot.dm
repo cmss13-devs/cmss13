@@ -382,7 +382,7 @@
 
 	M.client?.mouse_pointer_icon = initial(M.client?.mouse_pointer_icon)
 	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
-	
+
 	if(launchers)
 		launchers.safety = TRUE
 
@@ -653,7 +653,7 @@
 
 /obj/vehicle/multitile/blackfoot/proc/toggle_targeting()
 	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
-	
+
 	if(!launchers)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO LAUNCHERS DETECTED."))
 		return
@@ -896,7 +896,7 @@
 
 /datum/action/human_action/blackfoot/toggle_nvg/action_activate()
 	var/obj/vehicle/multitile/blackfoot/vehicle = owner.interactee
-	
+
 	if(!istype(vehicle))
 		return
 
@@ -958,7 +958,6 @@
 	icon_state = "aerospace-tug"
 	density = TRUE
 	anchored = FALSE
-
 	pixel_x = -16
 	pixel_y = 0
 
@@ -1198,7 +1197,7 @@
 
 /obj/structure/largecrate/supply/blackfoot_peripherals
 	name = "\improper blackfoot peripherals crate"
-	desc = "A supply crate containig the peripherals for the VTOL landing pad."
+	desc = "A supply crate containig the peripheral service units for the VTOL landing pad."
 	supplies = list(
 		/obj/item/fuel_pump = 1,
 		/obj/item/flight_cpu = 1,

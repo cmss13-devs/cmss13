@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/chimera_launchers
-	name = "\improper Chimera Launchers"
-	desc = ""
+	name = "\improper AG-66/L Chimera Launcher System"
+	desc = "The Chimera Launcher System, commonly referred two as just 'chimeras', is a variable payload dump-salvo type disposable munitions deployer, designed for short-range, quick-arming explosives to be fired in volleys from the quad-barrel launch tubes."
 
 	icon = 'icons/obj/vehicles/hardpoints/blackfoot.dmi'
 	icon_state = "launchers"
@@ -43,7 +43,7 @@
 	if(ammo && ammo.current_rounds <= 0)
 		reload(user)
 		return
-	
+
 	return ..()
 
 // Just removes the sleep because it sucks

@@ -3,18 +3,19 @@
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
 "f" = (
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot,
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot{
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi';
+	icon_state = "pilot-chair"
+	},
+/obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette{
+	pixel_x = -20
+	},
 /turf/open/floor/transparent,
 /area/interior/vehicle/blackfoot)
 "n" = (
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
 /obj/effect/landmark/interior/spawn/blackfoot_doorgun{
-	pixel_y = -7;
-	pixel_x = 14
+	pixel_y = -5;
+	pixel_x = 16
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
@@ -41,15 +42,20 @@
 /obj/effect/landmark/interior/spawn/chimera_loader{
 	icon_state = "chimera-ammo-interior-left";
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
-	pixel_y = 19;
-	pixel_x = -7
+	pixel_y = -24;
+	pixel_x = 3
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 20
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
 "G" = (
 /obj/effect/landmark/interior/spawn/blackfoot_rear_door_button{
-	pixel_x = 4;
-	pixel_y = 25
+	pixel_x = 2;
+	pixel_y = 22
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
@@ -59,8 +65,18 @@
 /obj/effect/landmark/interior/spawn/chimera_loader{
 	icon_state = "chimera-ammo-interior-right";
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
+	pixel_y = -24;
+	pixel_x = -3
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_x = -1;
 	pixel_y = 20;
-	pixel_x = 8
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet/blackfoot{
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi';
+	pixel_x = -10;
+	pixel_y = -36
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)

@@ -64,7 +64,7 @@
 		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
 		loader.linked_blackfoot = linked_blackfoot
 
-	qdel(src)	
+	qdel(src)
 
 /obj/effect/landmark/interior/spawn/blackfoot_rear_door_button
 	name = "rear door button"
@@ -83,7 +83,7 @@
 		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
 		door_control.linked_blackfoot = linked_blackfoot
 
-	qdel(src)	
+	qdel(src)
 
 /obj/effect/landmark/interior/spawn/entrance/blackfoot_rear_door
 	name = "blackfoot back door"
@@ -150,11 +150,11 @@
 
 /obj/structure/bed/chair/comfy/vehicle/driver/blackfoot
 	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
-	icon_state = "seat"
+	icon_state = "pilot-chair"
 	skill_to_check = SKILL_PILOT
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot
-	pixel_y = -10
+	pixel_y = -5
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/blackfoot/S = new(loc)
@@ -172,6 +172,67 @@
 	S.pixel_y = pixel_y
 
 	qdel(src)
+
+/obj/item/device/walkman/blackfoot_cassette
+	name = "\improper integrated cassette player"
+	desc = "A jury-rigged cassette player system forcibly installed in place of a short-wave communications radio uplink. The buttons are worn from heavy use."
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
+	icon_state = "cassette-player-open"
+	anchored = TRUE
+	pixel_y = 0
+	pixel_x = -20
+	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
+
+/obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
+	icon_state = "cassette-player-open"
+
+
+/obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette/on_load(datum/interior/interior)
+	var/obj/item/device/walkman/blackfoot_cassette/cassette = new(get_turf(src))
+
+	if(istype(interior.exterior, /obj/vehicle/multitile/blackfoot))
+		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
+		cassette.linked_blackfoot = linked_blackfoot
+
+	qdel(src)
+
+/obj/item/device/walkman/blackfoot_cassette/attackby(obj/item/W, mob/user)
+	if(istype(W,/obj/item/device/cassette_tape))
+		if(!tape)
+			insert_tape(W)
+			playsound(src,'sound/weapons/handcuffs.ogg',20,1)
+			to_chat(user,SPAN_INFO("You insert \the [W] into \the [src]"))
+			update_icon()
+		else
+			to_chat(user,SPAN_WARNING("Remove the other tape first!"))
+
+
+/obj/item/device/walkman/blackfoot_cassette/update_icon()
+	if(!tape)
+		icon_state = "cassette-player-open"
+	else
+		icon_state = "cassette-player"
+
+/obj/item/device/walkman/blackfoot_cassette/attack_hand(mob/user)
+	if(!tape)
+		to_chat(user,SPAN_WARNING("There is no tape inserted!"))
+		return
+	var/use_radials = user.client.prefs?.no_radials_preference ? FALSE : TRUE
+	var/list/walkman_verbs = list("Play-Pause" = image('icons/mob/hud/actions.dmi', "walkman_playpause"),"Eject Tape" = image(tape.icon, tape.icon_state),"Next Song" = image('icons/mob/hud/actions.dmi', "walkman_next"),"Restart Song" = image('icons/mob/hud/actions.dmi', "walkman_restart"))
+	var/used_verb = use_radials ? show_radial_menu(user, src, walkman_verbs) : tgui_input_list(user, "choose what to do with the cassette:", "Cassette Player", walkman_verbs)
+	switch(used_verb)
+		if("Play-Pause")
+			for(var/mob/living/passenger in linked_blackfoot.interior.get_passengers())
+				current_listener = passenger
+				play_pause()
+		if("Eject Tape")
+			eject_cassetetape()
+			update_icon()
+		if("Next Song")
+			next_pl_song()
+		if("Restart Song")
+			restart_current_song()
 
 /obj/structure/bed/chair/vehicle/blackfoot/buckle_mob(mob/M, mob/user)
 	if (!ismob(M) || (get_dist(src, user) > 1) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
@@ -255,7 +316,7 @@
 		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
 		doorgun.linked_blackfoot = linked_blackfoot
 
-	qdel(src)	
+	qdel(src)
 
 /turf/open/floor/transparent
 	icon_state = "transparent"

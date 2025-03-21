@@ -2509,6 +2509,10 @@
 	pixel_x = 2
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/hardpoint/primary/chimera_launchers{
+	pixel_y = 7;
+	pixel_x = -4
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/hangar)
 "afN" = (
@@ -6820,6 +6824,10 @@
 	layer = 3.05
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 1;
+	pixel_y = -6
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "aqS" = (
@@ -7231,11 +7239,16 @@
 	pixel_x = -3
 	},
 /obj/item/prop/almayer/handheld1{
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 8
 	},
 /obj/item/prop/helmetgarb/prescription_bottle{
-	pixel_x = -4;
-	pixel_y = -8
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/hardpoint/support/sensor_array{
+	pixel_x = 6;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/hangar)
@@ -7380,6 +7393,8 @@
 /obj/item/clothing/under/marine/officer/pilot/flight,
 /obj/item/clothing/suit/storage/jacket/marine/pilot,
 /obj/item/clothing/suit/storage/jacket/marine/pilot,
+/obj/item/clothing/glasses/sunglasses/aviator,
+/obj/item/clothing/glasses/sunglasses/aviator,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "asr" = (
@@ -47388,9 +47403,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/blackfoot_tug{
-	layer = 3.1
-	},
+/obj/structure/blackfoot_tug,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "njS" = (
@@ -52224,8 +52237,8 @@
 "pjh" = (
 /obj/item/fuel_pump{
 	anchored = 1;
-	pixel_y = 11;
-	pixel_x = 5
+	pixel_y = 8;
+	pixel_x = 4
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -14;
@@ -52237,8 +52250,8 @@
 	},
 /obj/item/flight_cpu{
 	anchored = 1;
-	pixel_y = 7;
-	pixel_x = -2
+	pixel_y = 5;
+	pixel_x = 29
 	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/hangar)
@@ -55640,6 +55653,15 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"qHv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 2
+	},
+/obj/item/hardpoint/locomotion/blackfoot_thrusters,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/hallways/hangar)
 "qHD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -59262,6 +59284,7 @@
 	dir = 4
 	},
 /obj/structure/largecrate/supply/blackfoot_peripherals,
+/obj/item/clothing/glasses/welding,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "sit" = (
@@ -70141,11 +70164,6 @@
 	serial_number = 16
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/hardpoint/primary/chimera_launchers,
-/obj/item/hardpoint/support/sensor_array{
-	pixel_x = 10
-	},
-/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 /turf/open/floor/almayer/plating_stripedcorner,
 /area/almayer/hallways/hangar)
 "wFn" = (
@@ -70971,9 +70989,12 @@
 	pixel_x = -2;
 	density = 0
 	},
-/obj/structure/prop/ice_colony/flamingo{
-	pixel_y = 27;
-	pixel_x = -2
+/obj/structure/prop/ice_colony/hula_girl{
+	pixel_x = -4;
+	pixel_y = 21
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 22
 	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/hangar)
@@ -91199,7 +91220,7 @@ xzB
 eWs
 asp
 arI
-arI
+qHv
 afM
 aeJ
 ade

@@ -181,12 +181,18 @@
 	anchored = TRUE
 	pixel_y = 0
 	pixel_x = -20
+	volume = 50
 	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
+	var/list/current_listeners = list()
+	var/list/listener_data = list()
+	/// Time when the cassette was first played
+	var/cassette_start_time
+	/// How long until the cassette machine tests if its at the end of its playlist
+	var/next_song_timer
 
 /obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette
 	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
 	icon_state = "cassette-player-open"
-
 
 /obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette/on_load(datum/interior/interior)
 	var/obj/item/device/walkman/blackfoot_cassette/cassette = new(get_turf(src))
@@ -207,7 +213,6 @@
 		else
 			to_chat(user,SPAN_WARNING("Remove the other tape first!"))
 
-
 /obj/item/device/walkman/blackfoot_cassette/update_icon()
 	if(!tape)
 		icon_state = "cassette-player-open"
@@ -223,16 +228,112 @@
 	var/used_verb = use_radials ? show_radial_menu(user, src, walkman_verbs) : tgui_input_list(user, "choose what to do with the cassette:", "Cassette Player", walkman_verbs)
 	switch(used_verb)
 		if("Play-Pause")
-			for(var/mob/living/passenger in linked_blackfoot.interior.get_passengers())
-				current_listener = passenger
-				play_pause()
+			deltimer(next_song_timer)
+			play_pause()
 		if("Eject Tape")
+			deltimer(next_song_timer)
 			eject_cassetetape()
 			update_icon()
 		if("Next Song")
+			deltimer(next_song_timer)
 			next_pl_song()
 		if("Restart Song")
+			deltimer(next_song_timer)
 			restart_current_song()
+
+/obj/item/device/walkman/blackfoot_cassette/play(mob/user)
+	cassette_start_time = world.time
+	next_song_timer = addtimer(CALLBACK(src, PROC_REF(next_song)), 3 MINUTES, TIMER_STOPPABLE)
+	if(!current_listener)
+		current_listener = user
+		START_PROCESSING(SSobj, src)
+	..()
+
+/obj/item/device/walkman/blackfoot_cassette/pause(mob/user)
+	if(!current_song)
+		return
+	paused = TRUE
+	for(var/mob/passenger in current_listeners)
+		update_song(current_song, passenger, SOUND_PAUSED | SOUND_UPDATE)
+
+/obj/item/device/walkman/blackfoot_cassette/restart_song(mob/user)
+	if(user.is_mob_incapacitated() || !current_song)
+		return
+	cassette_start_time = world.time
+	deltimer(next_song_timer)
+	next_song_timer = addtimer(CALLBACK(src, PROC_REF(next_song)), 3 MINUTES, TIMER_STOPPABLE)
+	for(var/data in listener_data)
+		var/sound/child_song = data["child_song"]
+		var/mob/listener = data["listener"]
+		child_song.offset = 0
+		update_song(current_song, listener, 0)
+	to_chat(user,SPAN_INFO("You restart the song"))
+
+/obj/item/device/walkman/blackfoot_cassette/next_song(mob/user)
+	if(user.is_mob_incapacitated() || length(current_playlist) == 0)
+		return
+	if(pl_index + 1 > length(current_playlist))
+		break_sound()
+		return
+	..()
+
+/obj/item/device/walkman/blackfoot_cassette/break_sound()
+	var/sound/break_sound = sound(null, 0, 0, SOUND_CHANNEL_WALKMAN)
+	break_sound.priority = 255
+	for(var/data in listener_data)
+		data["child_song"] = break_sound
+		update_song(break_sound, data["listener"], 0)
+	current_listener = null
+	current_listeners = list()
+	listener_data = list()
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/device/walkman/blackfoot_cassette/proc/update_listener_data(mob/listener)
+	var/sound/song_child
+	for(var/data in listener_data)
+		if(listener == data["listener"])
+			song_child = data["child_song"]
+			song_child.offset = ((world.time - cassette_start_time) / 10)
+			current_listeners += listener
+	if(listener in current_listeners)
+		update_song(song_child, listener)
+		return
+	song_child = sound(current_playlist[pl_index], 0, 0, SOUND_CHANNEL_WALKMAN, volume)
+	song_child.status = SOUND_STREAM
+	song_child.offset = ((world.time - cassette_start_time) / 10)
+	var/list/new_listener_data = list(list("listener" = listener, "child_song" = song_child))
+	listener_data += new_listener_data
+	current_listeners += listener
+	update_song(song_child, listener, SOUND_STREAM)
+
+/obj/item/device/walkman/blackfoot_cassette/update_song(sound/song, mob/listener, flags = SOUND_UPDATE)
+	if(!listener)
+		return
+	if(listener.ear_deaf)
+		flags |= SOUND_MUTE
+	for(var/list/data in listener_data)
+		if(listener == data["listener"])
+			var/sound/child_song = data["child_song"]
+			child_song.status = flags
+			child_song.volume = src.volume
+			child_song.channel = SOUND_CHANNEL_WALKMAN
+			sound_to(listener, child_song)
+
+/obj/item/device/walkman/blackfoot_cassette/process()
+	for(var/mob/living/passenger in linked_blackfoot.interior.get_passengers())
+		if(!(passenger in current_listeners))
+			update_listener_data(passenger)
+	for(var/mob/living/carbon/human/mob in current_listeners)
+		if((mob.stat & DEAD) || !(mob in linked_blackfoot.interior.get_passengers()))
+			current_listeners -= mob
+			update_song(current_song, mob, SOUND_MUTE | SOUND_UPDATE)
+	if(!length(current_listeners))
+		if(current_song)
+			current_song = null
+		break_sound()
+		update_icon()
+		STOP_PROCESSING(SSobj, src)
+		return
 
 /obj/structure/bed/chair/vehicle/blackfoot/buckle_mob(mob/M, mob/user)
 	if (!ismob(M) || (get_dist(src, user) > 1) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))

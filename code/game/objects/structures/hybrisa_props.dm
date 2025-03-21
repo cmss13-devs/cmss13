@@ -2474,7 +2474,7 @@
 
 /obj/structure/prop/hybrisa/misc/phonebox
 	name = "wrecked phonebox"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, the glass is smashed, hiding inside would be pointless."
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, the glass is smashed, hiding inside would be pointless."
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_broken"
 	layer = ABOVE_MOB_LAYER
@@ -2485,7 +2485,7 @@
 
 /obj/structure/prop/hybrisa/misc/phonebox/bloody
 	name = "wrecked phonebox"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
 	icon_state = "phonebox_bloody_off_broken"
 
 /obj/structure/prop/hybrisa/misc/phonebox/bullet_act(obj/projectile/P)

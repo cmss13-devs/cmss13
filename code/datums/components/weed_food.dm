@@ -130,6 +130,9 @@
 	else
 		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
 
+	if(locate(/obj/effect/alien/resin/trap) in parent_mob.loc)
+		UnregisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH)
+
 	// We moved, restart or start the proccess
 	if(stop() || !merged)
 		start()

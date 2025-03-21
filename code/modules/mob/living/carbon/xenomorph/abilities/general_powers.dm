@@ -607,8 +607,8 @@
 		return FALSE
 
 	for(var/mob/living/body in src)
-		if(body.stat == DEAD)
-			to_chat(xeno, SPAN_XENOWARNING("The body is in the way!"))
+		if(HAS_TRAIT(src, TRAIT_MERGED_WITH_WEEDS))
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on merged bodies!"))
 			return FALSE
 
 	return alien_weeds

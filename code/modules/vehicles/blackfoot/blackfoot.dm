@@ -151,7 +151,7 @@
 	RRS.total = 1
 	role_reserved_slots += RRS
 
-/obj/vehicle/multitile/blackfoot/can_install_hardpoint(obj/item/hardpoints/hardpoint, mob/user)
+/obj/vehicle/multitile/blackfoot/can_install_hardpoint(obj/item/hardpoint/hardpoint, mob/user)
 	if(interior.get_passengers())
 		to_chat(user, SPAN_WARNING("Installing an hardpoint is unsafe when there are people inside the [src]."))
 		return FALSE

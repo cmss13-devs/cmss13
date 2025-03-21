@@ -60,7 +60,7 @@
 /obj/vehicle/multitile/proc/remove_all_players()
 	return
 
-/obj/vehicle/multitile/proc/can_install_hardpoint(obj/item/hardpoints/hardpoint, mob/user)
+/obj/vehicle/multitile/proc/can_install_hardpoint(obj/item/hardpoint/hardpoint, mob/user)
 	return TRUE
 
 //Putting on hardpoints

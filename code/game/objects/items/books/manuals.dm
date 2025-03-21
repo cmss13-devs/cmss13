@@ -13,6 +13,7 @@
 
 /obj/item/book/manual/engineering_guide
 	name = "Tools, Radiowaves And Electrical Grids"
+	desc = "A book containing basic and yet important information regarding engineering procedures."
 	icon_state = "book_engineering"
 	item_state = "book_engineering"
 	author = "Colonial Marines Engineer Association"
@@ -24,7 +25,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Guide_to_Engineering" frameborder="0" id="main_frame"></iframe> </body>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Guide_to_Engineering" frameborder="0" id="main_frame"></iframe> </body>
 
 		</html>
 
@@ -33,6 +34,7 @@
 
 /obj/item/book/manual/engineering_construction
 	name = "Construction Destruction"
+	desc = "A detailed guide containing a series of diagrams and tables regarding the required resources and proper procedures to building, from barricades to floor tiles."
 	icon_state = "book_engineering"
 	item_state = "book_engineering"
 	author = "Colonial Marines Engineer Association"
@@ -44,7 +46,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Guide_to_construction" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Guide_to_construction" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -54,6 +56,7 @@
 
 /obj/item/book/manual/engineering_hacking
 	name = "Hack-A-Mole: How Electrical Components Work"
+	desc = "A guide specialized on the knowledge of 'hacking', being that of airlocks, vending machines, or anything else that your multi tool is capable of messing with."
 	icon_state = "book_hacking"
 	item_state = "book_hacking"
 	author = "Colonial Marines Engineer Association"
@@ -65,7 +68,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -74,6 +77,7 @@
 
 /obj/item/book/manual/ordnance
 	name = "Ordnance for Recruits or: How I Learned to Stop Worrying and Love the Maxcap"
+	desc = "A manual containing absurdly detailed information regarding the production, assembly, and handling of all kinds of explosive devices."
 	icon_state = "book_engineering2"
 	item_state = "book_engineering2"
 	author = "Colonial Marines Engineer Association"
@@ -85,7 +89,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Ordnance_Technician" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Ordnance_Technician" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -94,8 +98,9 @@
 
 /obj/item/book/manual/comms
 	name = "Subspace Telecommunications And You"
-	icon_state = "book_engineering"
-	item_state = "book_engineering"
+	desc = "An instructions manual regarding the use of communication channels and advice on how to be properly heard over the radiowaves while speaking all kinds of languages."
+	icon_state = "book_particle"
+	item_state = "book_particle"
 	author = "Colonial Marines Engineer Association"
 	title = "Subspace Telecommunications And You"
 
@@ -105,7 +110,28 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Comms" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Comms" frameborder="0" id="main_frame"></iframe>
+		</body>
+
+		</html>
+
+		"}
+
+/obj/item/book/manual/reactor
+	name = "How to React: Steps to maintain a S-52 Fusion Reactor"
+	desc = "A manual containing information on how to maintain S-52 Fusion Ship Reactors, very popular engines among space vessels."
+	icon_state = "book_supermatter"
+	item_state = "book_supermatter"
+	author = "Colonial Marines Engineer Association"
+	title = "How to React: Steps to maintain a S-52 Fusion Reactor"
+
+	dat = {"
+
+		<html><head>
+		</head>
+
+		<body>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/S-52_Fusion_Reactor" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -115,6 +141,7 @@
 
 /obj/item/book/manual/orbital_cannon_manual
 	name = "USCM Orbital Bombardment System Manual"
+	desc = "This book contains instructions on how to operate a standard-issue United States Colonial Marines Orbital Artillery Cannon."
 	icon_state = "book_engineering2"
 	item_state = "book_engineering2"
 	author = "Colonial Marines Engineer Association"
@@ -357,7 +384,7 @@
 	name = "EVA Gear and You: Not Spending All Day Inside"
 	icon_state = "book_eva"
 	item_state = "book_eva"
-	author = "Colonial Marines Engineer Association"
+	author = "Senior Technician Sandra Rose, Weyland-Yutani Corporation"
 	title = "EVA Gear and You: Not Spending All Day Inside"
 	dat = {"<html>
 				<head>
@@ -443,7 +470,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -465,7 +492,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="http://cm-ss13.com/wiki/Marine_Law" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="http://cm-ss13.com/wiki/Marine_Law" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -490,7 +517,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Surgery" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Surgery" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -540,19 +567,19 @@
 				<HR COLOR="steelblue" WIDTH="60%" ALIGN="LEFT">
 
 				<h3>Main guide</h3>
-				<iframe width='100%' height='500px' src="http://cm-ss13.com/wiki/Guide_to_Medicine" frameborder="0" id="main_frame"></iframe>
+				<iframe width='100%' height='85vh' src="http://cm-ss13.com/wiki/Guide_to_Medicine" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 
 		"}
 
 /obj/item/book/manual/chemistry
-	name = "Chemical Reactions and How They Can Kill You"
-	desc = "A detailed manual containing everything you need to know about chemistry."
+	name = "Chemical Reactions and How They Can Ruin Your Day"
+	desc = "A detailed manual containing everything you need to know about chemistry. Recipes and methodology included."
 	icon_state = "book_chemistry"
 	item_state = "book_chemistry"
 	author = "Colonial Marines Bureau of Medicine and Surgery"
-	title = "Chemical Reactions and How They Can Kill You"
+	title = "Chemical Reactions and How They Can Ruin Your Day"
 
 	dat = {"
 
@@ -560,7 +587,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Chemistry" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Chemistry" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -580,7 +607,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Researcher" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Researcher" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -591,12 +618,98 @@
 //Un-related manuals
 
 
+/obj/item/book/manual/tychontackle
+	name = "After Action Report No.55: Operation Tychon Tackle"
+	desc = "An after action report of the infamous Operation 'Tychon Tackle', so big that we had to turn it into a book. Warning: Some information, such as personal names, have been REDACTED on this print."
+	icon_state = "book_light_red"
+	item_state = "book_light_red"
+	author = "Executive Officer 'REDACTED', USS Heyst, United Americas"
+	title = "After Action Report No.55: Operation Tychon Tackle"
+
+	dat = {"
+
+		<html><head>
+		</head><body class='Paper'
+
+		<body>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/After_Action_Report_No.55" frameborder="0" id="main_frame"></iframe>
+		</body>
+
+		</html>
+
+		"}
+
+
+/obj/item/book/manual/upphistory
+	name = "The Raise And Steadying of the Union of Progressive Peoples, By Robert Mendes"
+	desc = "A large, supposedly unbiased history book containing what's supposed to be the history of the so-called UPP."
+	icon_state = "book_upp"
+	item_state = "book_upp"
+	author = "Historian Robert Mendes, United Americas"
+	title = "The Raise And Steadying of the Union of Progressive Peoples, By Robert Mendes"
+
+	dat = {"
+
+		<html><head>
+		</head><body class='Paper'
+
+		<body>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/UPP" frameborder="0" id="main_frame"></iframe>
+		</body>
+
+		</html>
+
+		"}
+
+
+/obj/item/book/manual/paperwork
+	name = "Bureaucracy and paperworking: Everything You Need to Know"
+	desc = "A book containing all kinds of knowledge and pre-made formularies for the writing of important documents. You need it? This book have it."
+	icon_state = "book"
+	item_state = "book"
+	author = "Colonial Marines High Command"
+	title = "Bureaucracy and paperworking: Everything You Need to Know"
+
+	dat = {"
+
+		<html><head>
+		</head><body class='Paper'
+
+		<body>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Guide_to_Paperwork" frameborder="0" id="main_frame"></iframe>
+		</body>
+
+		</html>
+
+		"}
+
+/obj/item/book/manual/rank
+	name = "The Marine Ranks: United States Colonial Marines Chain of Command and Ranking"
+	desc = "This book contains information regarding all ranks inside the United States Colonial Marines force, and its consequent chain of command."
+	icon_state = "book"
+	item_state = "book"
+	author = "Colonial Marines High Command"
+	title = "The Marine Ranks: United States Colonial Marines Chain of Command and Ranking"
+	dat = {"
+
+		<html><head>
+		</head><body class='Paper'
+
+		<body>
+		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Rank" frameborder="0" id="main_frame"></iframe>
+		</body>
+
+		</html>
+
+		"}
+
+
 /obj/item/book/manual/chef_recipes
 	name = "Pans and Dishes: Your Way Around the Marine Kitchens"
-	desc = "A huge book containing lots and lots of cooking recipes, perfect for those who wish to actually cook and not stand in front of the microwave, staring at it."
+	desc = "A huge book containing lots and lots of cooking recipes, perfect for those who wish to actually cook and not only stand in front of the microwave, staring at it."
 	icon_state = "cooked_book"
 	item_state = "cooked_book"
-	author = "Food Service Specialist Louis Covenant, UA"
+	author = "Food Service Specialist Louis Covenant, United Americas"
 	title = "Pans and Dishes: Your Way Around the Marine Kitchens"
 
 	dat = {"<html>
@@ -647,7 +760,7 @@
 				Add one potato to the processor, then bake them in the microwave.
 
 				<h3>Further recipes</h3>
-				<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Cooking" frameborder="0" id="main_frame"></iframe>
+				<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Cooking" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 			"}
@@ -655,9 +768,10 @@
 
 /obj/item/book/manual/barman_recipes
 	name = "Barman Recipes: Mixing Drinks and Changing Lives Under the Blitz"
+	desc = "One of the most popular recipe books for drinks in the entirety of humankind. Now on it's 39th edition, it was first published in 1946 after the end of the Second World War by Sir Hugh Fairfax, one of the most prestigious barmen of all time."
 	icon_state = "barbook"
 	item_state = "barbook"
-	author = "Sir Hugh Fairfax, TWE"
+	author = "Sir Hugh Fairfax, Three World Empire"
 	title = "Barman Recipes: Mixing Drinks and Changing Lives Under the Blitz"
 
 	dat = {"<html>
@@ -705,7 +819,7 @@
 				Mix vodka and orange juice into a glass.
 
 				<h3>Further recipes</h3>
-				<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Drinks" frameborder="0" id="main_frame"></iframe>
+				<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Drinks" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 			"}
@@ -715,7 +829,7 @@
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="book_detective"
 	item_state ="book_detective"
-	author = "Louis Knight, Weyland-Yutani Corporation's Lawyer"
+	author = "Lawyer Ruben Knight, Weyland-Yutani Corporation"
 	title = "The Film Noir: Proper Procedures for Investigations"
 
 	dat = {"<html>
@@ -790,15 +904,15 @@
 					<li>Extend and anchor the nuclear device through its interface.</li>
 					<li>Turn the safety of the nuclear device off through its interface.</li>
 					<li>Make sure all forms of transmission by radio in the designated detonation zone are functional.</li>
-					<li>When decryption is completed, the device will be clear for detonation through its interface.<br>
-					<b>Note</b>: The decryption time will usually take 10 minutes, and the device's timer is fixed to detonate at exactly 8 minutes.
+					<li>When decryption is completed, the device will AUTOMATICALLY begin it's detonation timer.<br>
+					<b>Note</b>: The decryption time will usually take 10 minutes, and the device's timer is fixed to detonate at exactly 3 minutes.
 				</ul><br>
 
-				You now have activated the device. To deactivate it at anytime, for example when you've already prepared it for detonation, just disable the detonation through its interface. Disabling it takes the same amount of time as when you enabled it.<br><br>
-				The bomb CAN ONLY be detonated using the timer. Manual detonation is not an option. Toggle off the SAFETY.<br>
+				You now have activated the device. Remember: After decryption is completed, the detonation timer will automatically begin and you are UNABLE to cancel it.<br><br>
+				The bomb can ONLY be detonated using the timer. Manual detonation is not an option. Toggle off the SAFETY.<br>
 				<b>Note</b>: You wouldn't believe how much, statistically, our personnel forget to toggle it off when operating the device.<br><br>
 
-				If you wish or need to move the device to any other designated detonation zone at any point in time, you need to firstly cancel detonation, and then toggle off the anchoring of the device, move it, and re-anchor, not forgetting to restart detonation.<br><br>
+				If you wish or need to move the device to any other designated detonation zone at any point in time before the detonation timer begins, you need to firstly cancel decryption, and then toggle off the anchoring of the device, move it, and re-anchor, not forgetting to restart decryption.<br><br>
 
 				Remember the order:<br>
 				<b>Access, Position, Anchor, Safety, Transmission, Decryption, Begin, Vacate</b><br><br>
@@ -808,7 +922,7 @@
 			</html>
 			"}
 
-
+// This book is ultra old
 /obj/item/book/manual/hydroponics_beekeeping
 	name = "The Ins and Outs of Apiculture - A Precise Art"
 	icon_state = "book_hydroponics_bees"

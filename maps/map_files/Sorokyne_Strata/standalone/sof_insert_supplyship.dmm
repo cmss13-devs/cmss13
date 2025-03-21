@@ -372,6 +372,7 @@
 	pixel_x = -6;
 	pixel_y = 2
 	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/almayer/no_build/plating,
 /area/strata/interior/shuttle_sof)
 "oZ" = (
@@ -1097,7 +1098,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "TW" = (
-/obj/structure/machinery/power/apc/no_power/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_red"
 	},

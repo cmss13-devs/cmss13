@@ -1,4 +1,5 @@
-#define MOBA_TESTING
+//#define MOBA_TESTING
+#define MOBA_MP_TESTING
 
 #define MOBA_GOLD_NAME "Gold"
 #define MOBA_GOLD_NAME_SHORT "G"

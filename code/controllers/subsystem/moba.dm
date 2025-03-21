@@ -58,10 +58,17 @@ SUBSYSTEM_DEF(moba)
 		if(MC_TICK_CHECK)
 			return
 
-	#ifdef MOBA_TESTING
+
+
+	#if defined(MOBA_TESTING)
 	if(length(players_in_queue))
 		var/datum/moba_player/player = players_in_queue[1]
 		make_game(list(new /datum/moba_queue_player(player, player.queue_slots[1].position, player.queue_slots[1].caste)), list())
+	#elif defined(MOBA_MP_TESTING)
+	if(length(players_in_queue) >= 2)
+		var/datum/moba_player/player1 = players_in_queue[1]
+		var/datum/moba_player/player2 = players_in_queue[2]
+		make_game(list(new /datum/moba_queue_player(player1, player1.queue_slots[1].position, player1.queue_slots[1].caste)), list(new /datum/moba_queue_player(player2, player2.queue_slots[1].position, player2.queue_slots[1].caste)))
 	#else
 	if(COOLDOWN_FINISHED(src, matchmaking_cooldown) && (length(players_in_queue) >= MOBA_TOTAL_PLAYERS) && !SSticker.mode.round_finished && !currently_creating_map) // We can actually make a match
 		do_matchmaking()

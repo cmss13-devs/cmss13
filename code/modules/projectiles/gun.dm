@@ -1301,7 +1301,7 @@ and you're good to go.
 					QDEL_NULL(bullet)
 				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
 		else
-			to_chat(user, SPAN_WARNING("The bullet doesn't match [src]'s caliber!"))
+			to_chat(user, SPAN_WARNING("The [bullet] doesn't match [src]'s caliber!"))
 
 
 //This proc is needed for firearms that chamber rounds after firing.

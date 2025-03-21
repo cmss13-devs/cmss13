@@ -172,5 +172,3 @@
 	containertype = /obj/structure/closet/crate/supply
 	containername = "battery crate"
 	group = "Engineering"
-
-

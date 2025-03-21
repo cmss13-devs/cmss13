@@ -44,3 +44,6 @@
 #define MOBA_LEVEL_DIFF_XP_MOD 0.2
 
 #define MOBA_ITEM_SELLBACK_VALUE 0.6
+
+/// How much bonus damage to deal against structures minions/players have the hivebot boon
+#define MOBA_HIVEBOT_BOON_TRUE_DAMAGE 8

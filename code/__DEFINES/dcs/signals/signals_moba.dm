@@ -42,3 +42,6 @@
 
 /// (list/bhp_holder)
 #define COMSIG_MOBA_GET_BONUS_HP "moba_get_bonus_hp"
+
+/// (mob/living/minion)
+#define COMSIG_MOBA_MINION_SPAWNED "moba_minion_spawned"

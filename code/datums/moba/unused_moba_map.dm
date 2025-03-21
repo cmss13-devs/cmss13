@@ -10,7 +10,8 @@
 	var/turf/minion_spawn_topright
 	var/turf/minion_spawn_botleft
 	var/turf/minion_spawn_botright
-	var/turf/carp_boss_spawn
+	var/turf/left_boss_spawn
+	var/turf/right_boss_spawn
 
 /datum/unused_moba_map/New(datum/moba_controller/old_controller)
 	. = ..()
@@ -25,4 +26,5 @@
 	minion_spawn_topright = old_controller.minion_spawn_topright
 	minion_spawn_botleft = old_controller.minion_spawn_botleft
 	minion_spawn_botright = old_controller.minion_spawn_botright
-	carp_boss_spawn = old_controller.carp_boss_spawn
+	left_boss_spawn = old_controller.left_boss_spawn
+	right_boss_spawn = old_controller.right_boss_spawn

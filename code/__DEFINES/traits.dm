@@ -253,6 +253,8 @@
 #define TRAIT_MOBA_ATTACKED_HIVE(hive) "t_moba_attacked_hive_[hive]"
 /// If this mob is a minion
 #define TRAIT_MOBA_MINION "t_moba_minion"
+/// If this mob has the hivebot boon
+#define TRAIT_MOBA_STRUCTURESHRED "t_moba_structureshred"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

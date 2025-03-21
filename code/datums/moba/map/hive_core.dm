@@ -48,6 +48,8 @@
 		playsound(loc, "alien_resin_break", 25)
 
 		health -= M.melee_damage_upper
+		if(HAS_TRAIT(M, TRAIT_MOBA_STRUCTURESHRED))
+			health -= MOBA_HIVEBOT_BOON_TRUE_DAMAGE
 		healthcheck()
 		return XENO_ATTACK_ACTION
 

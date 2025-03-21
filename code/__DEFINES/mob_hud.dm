@@ -28,6 +28,7 @@
 #define HUNTER_HUD "26" //Displays various statuses on mobs for Hunters to identify targets
 #define HOLOCARD_HUD "27" //Displays the holocards set by medical personnel
 #define NEW_PLAYER_HUD "29" //Makes it easy to see new players.
+#define HUD_BRAINWORM "30" //Displays infested HUD for brainworms.
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1
@@ -52,6 +53,7 @@
 #define MOB_HUD_HUNTER_CLAN 20
 #define MOB_HUD_EXECUTE 21
 #define MOB_HUD_NEW_PLAYER 22
+#define MOB_HUD_BRAINWORM 23
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

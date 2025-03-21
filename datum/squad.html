@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;squad - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/squad.html#var">Var Details</a> - <a href="datum/squad.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="datum.html">datum</a>/<a href="datum/squad.html">squad</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 25"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/squad.html#var/access">access</a></th><td>Which special access do we grant them</td></tr>
+            <tr><th><a href="datum/squad.html#var/active">active</a></th><td>Whether it is visible in overwatch</td></tr>
+            <tr><th><a href="datum/squad.html#var/armor_alpha">armor_alpha</a></th><td>The alpha for the armor overlay used by equipment color</td></tr>
+            <tr><th><a href="datum/squad.html#var/background_icon">background_icon</a></th><td>Icon for the background of minimap icon</td></tr>
+            <tr><th><a href="datum/squad.html#var/chat_color">chat_color</a></th><td>Color for the squad marines langchat</td></tr>
+            <tr><th><a href="datum/squad.html#var/equipment_color">equipment_color</a></th><td>Color for the squad marines gear overlays</td></tr>
+            <tr><th><a href="datum/squad.html#var/equivalent_name">equivalent_name</a></th><td>Equivalent name so that lobby prefered squad gets used for other factions</td></tr>
+            <tr><th><a href="datum/squad.html#var/faction">faction</a></th><td>Which faction the squad is in</td></tr>
+            <tr><th><a href="datum/squad.html#var/lead_icon">lead_icon</a></th><td>Squad leaders icon</td></tr>
+            <tr><th><a href="datum/squad.html#var/max_positions">max_positions</a></th><td>Maximum number allowed in a squad. Defaults to infinite</td></tr>
+            <tr><th><a href="datum/squad.html#var/name">name</a></th><td>Name of the squad</td></tr>
+            <tr><th><a href="datum/squad.html#var/omni_squad_vendor">omni_squad_vendor</a></th><td>Can use any squad vendor regardless of squad connection</td></tr>
+            <tr><th><a href="datum/squad.html#var/prepend_squad_name_to_assignment">prepend_squad_name_to_assignment</a></th><td>Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman</td></tr>
+            <tr><th><a href="datum/squad.html#var/primary_objective">primary_objective</a></th><td>Text strings, not HTML safe so don't use it without encoding</td></tr>
+            <tr><th><a href="datum/squad.html#var/radio_freq">radio_freq</a></th><td>Squad headsets default radio frequency</td></tr>
+            <tr><th><a href="datum/squad.html#var/roles_cap">roles_cap</a></th><td>Squad roles max caps per role list</td></tr>
+            <tr><th><a href="datum/squad.html#var/roles_in">roles_in</a></th><td>Squad roles actual number of players list</td></tr>
+            <tr><th><a href="datum/squad.html#var/roundstart">roundstart</a></th><td>Whether this squad can be picked at roundstart</td></tr>
+            <tr><th><a href="datum/squad.html#var/squad_type">squad_type</a></th><td>What will the assistant squad leader be called</td></tr>
+            <tr><th><a href="datum/squad.html#var/tracking_id">tracking_id</a></th><td>Squads ID that is set on New()</td></tr>
+            <tr><th><a href="datum/squad.html#var/usable">usable</a></th><td>Whether this squad can be used by marines</td></tr>
+            <tr><th><a href="datum/squad.html#var/use_stripe_overlay">use_stripe_overlay</a></th><td>If uses the overlay</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/squad.html#proc/assume_overwatch">assume_overwatch</a></th><td>Sets an overwatch officer for the squad, returning TRUE on success</td></tr>
+            <tr><th><a href="datum/squad.html#proc/clear_ref_tracking">clear_ref_tracking</a></th><td>Clear deletion signal as needed for mob - to call <em>after</em> removal</td></tr>
+            <tr><th><a href="datum/squad.html#proc/personnel_deleted">personnel_deleted</a></th><td>Clear references in squad listing upon deletion. Zap also erases the kept records.
+NOTE: zap will be set true for a forced COMSIG_PARENT_QDELETING</td></tr>
+            <tr><th><a href="datum/squad.html#proc/release_overwatch">release_overwatch</a></th><td>Explicitely relinquish overwatch control</td></tr>
+            <tr><th><a href="datum/squad.html#proc/send_maptext">send_maptext</a></th><td>Displays a message to squad members directly on the game map</td></tr>
+            <tr><th><a href="datum/squad.html#proc/send_message">send_message</a></th><td>Displays a message to the squad members in chat</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/access"><aside class="declaration">var </aside>access
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 43"/></a></h3>
+        <p>Which special access do we grant them</p><h3 id="var/active"><aside class="declaration">var </aside>active
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 67"/></a></h3>
+        <p>Whether it is visible in overwatch</p><h3 id="var/armor_alpha"><aside class="declaration">var </aside>armor_alpha
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 39"/></a></h3>
+        <p>The alpha for the armor overlay used by equipment color</p><h3 id="var/background_icon"><aside class="declaration">var </aside>background_icon
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L107">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 107"/></a></h3>
+        <p>Icon for the background of minimap icon</p><h3 id="var/chat_color"><aside class="declaration">var </aside>chat_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 41"/></a></h3>
+        <p>Color for the squad marines langchat</p><h3 id="var/equipment_color"><aside class="declaration">var </aside>equipment_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 37"/></a></h3>
+        <p>Color for the squad marines gear overlays</p><h3 id="var/equivalent_name"><aside class="declaration">var </aside>equivalent_name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 29"/></a></h3>
+        <p>Equivalent name so that lobby prefered squad gets used for other factions</p><h3 id="var/faction"><aside class="declaration">var </aside>faction
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 69"/></a></h3>
+        <p>Which faction the squad is in</p><h3 id="var/lead_icon"><aside class="declaration">var </aside>lead_icon
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 74"/></a></h3>
+        <p>Squad leaders icon</p><h3 id="var/max_positions"><aside class="declaration">var </aside>max_positions
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 33"/></a></h3>
+        <p>Maximum number allowed in a squad. Defaults to infinite</p><h3 id="var/name"><aside class="declaration">var </aside>name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 27"/></a></h3>
+        <p>Name of the squad</p><h3 id="var/omni_squad_vendor"><aside class="declaration">var </aside>omni_squad_vendor
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 45"/></a></h3>
+        <p>Can use any squad vendor regardless of squad connection</p><h3 id="var/prepend_squad_name_to_assignment"><aside class="declaration">var </aside>prepend_squad_name_to_assignment
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L110">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 110"/></a></h3>
+        <p>Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman</p><h3 id="var/primary_objective"><aside class="declaration">var </aside>primary_objective
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L97">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 97"/></a></h3>
+        <p>Text strings, not HTML safe so don't use it without encoding</p><h3 id="var/radio_freq"><aside class="declaration">var </aside>radio_freq
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 59"/></a></h3>
+        <p>Squad headsets default radio frequency</p><h3 id="var/roles_cap"><aside class="declaration">var </aside>roles_cap
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 47"/></a></h3>
+        <p>Squad roles max caps per role list</p><h3 id="var/roles_in"><aside class="declaration">var </aside>roles_in
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L57">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 57"/></a></h3>
+        <p>Squad roles actual number of players list</p><h3 id="var/roundstart"><aside class="declaration">var </aside>roundstart
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 63"/></a></h3>
+        <p>Whether this squad can be picked at roundstart</p><h3 id="var/squad_type"><aside class="declaration">var </aside>squad_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 72"/></a></h3>
+        <p>What will the assistant squad leader be called</p><h3 id="var/tracking_id"><aside class="declaration">var </aside>tracking_id
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 31"/></a></h3>
+        <p>Squads ID that is set on New()</p><h3 id="var/usable"><aside class="declaration">var </aside>usable
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 61"/></a></h3>
+        <p>Whether this squad can be used by marines</p><h3 id="var/use_stripe_overlay"><aside class="declaration">var </aside>use_stripe_overlay
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 35"/></a></h3>
+        <p>If uses the overlay</p><h2 id="proc">Proc Details</h2><h3 id="proc/assume_overwatch"><aside class="declaration">proc </aside>assume_overwatch<aside>(/<a href="mob.html">mob</a>/target_mob) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L371">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 371"/></a></aside>
+        </h3>
+        <p>Sets an overwatch officer for the squad, returning TRUE on success</p><h3 id="proc/clear_ref_tracking"><aside class="declaration">proc </aside>clear_ref_tracking<aside>(/<a href="mob.html">mob</a>/target_mob) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L393">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 393"/></a></aside>
+        </h3>
+        <p>Clear deletion signal as needed for mob - to call <em>after</em> removal</p><h3 id="proc/personnel_deleted"><aside class="declaration">proc </aside>personnel_deleted<aside>(/<a href="mob.html">mob</a>/target_mob, zap) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L405">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 405"/></a></aside>
+        </h3>
+        <p>Clear references in squad listing upon deletion. Zap also erases the kept records.
+NOTE: zap will be set true for a forced COMSIG_PARENT_QDELETING</p><h3 id="proc/release_overwatch"><aside class="declaration">proc </aside>release_overwatch<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L384">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 384"/></a></aside>
+        </h3>
+        <p>Explicitely relinquish overwatch control</p><h3 id="proc/send_maptext"><aside class="declaration">proc </aside>send_maptext<aside>(text, title_text, only_leader) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L454">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 454"/></a></aside>
+        </h3>
+        <p>Displays a message to squad members directly on the game map</p><h3 id="proc/send_message"><aside class="declaration">proc </aside>send_message<aside>(text, plus_name, only_leader) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/965795e1b9521d45a20f19ef9368524de6c89639/code/game/jobs/job/marine/squads.dm#L468">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;job&#x2F;marine&#x2F;squads.dm 468"/></a></aside>
+        </h3>
+        <p>Displays a message to the squad members in chat</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/965795e1b9521d45a20f19ef9368524de6c89639">965795e</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

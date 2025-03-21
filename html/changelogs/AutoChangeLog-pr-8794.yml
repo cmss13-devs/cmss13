@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Converts some missing fax networks to defines."
-  - bugfix: "Fixes high command (like WY) fax networks breaking by having more than one fax machine."
-  - maptweak: "Removes High Command fax machines from Hybrisa, they should never have been there."

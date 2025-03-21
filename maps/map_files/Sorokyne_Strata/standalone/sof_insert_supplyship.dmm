@@ -62,7 +62,7 @@
 	icon_state = "3,12";
 	opacity = 0
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "dI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -75,7 +75,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "1,11"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "eV" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -88,7 +88,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "8,7"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "fp" = (
 /obj/item/shard,
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -111,7 +111,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "fD" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -163,7 +163,7 @@
 /area/strata/exterior/marsh/crash)
 "gV" = (
 /turf/open/floor/hybrisa/metal/red_warning_floor,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "gZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/vehicle{
@@ -187,7 +187,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "0,7"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "ii" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -214,7 +214,7 @@
 /obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
 /turf/open/floor/almayer/no_build/plating,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "iS" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "1,2"
@@ -227,7 +227,7 @@
 	pixel_x = 3
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "iT" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "7,12"
@@ -242,12 +242,12 @@
 	pixel_y = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "iY" = (
 /turf/closed/shuttle/upp_sof{
 	icon_state = "7,6"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "jA" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766"
@@ -267,7 +267,7 @@
 	icon_state = "test_square_red"
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "kf" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -304,14 +304,14 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "7,3"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "mL" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "6,0"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "mM" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -336,7 +336,7 @@
 	pixel_y = 1
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "ns" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -374,7 +374,7 @@
 	},
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/almayer/no_build/plating,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "oZ" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -406,7 +406,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "0,4"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "qZ" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -427,7 +427,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "0,6"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "rw" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -442,7 +442,7 @@
 /turf/closed/shuttle/upp_sof/transparent{
 	icon_state = "3,13"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "sa" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	name = "Supply Dropship Hold Lockdown";
@@ -451,7 +451,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/hybrisa/metal/red_warning_floor,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "sw" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "1,0"
@@ -464,7 +464,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "sG" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -479,12 +479,12 @@
 	icon_state = "8,8"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "ug" = (
 /turf/closed/shuttle/upp_sof{
 	icon_state = "1,4"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "uS" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -516,19 +516,19 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "8,4"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "vB" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "6,1"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "vE" = (
 /turf/closed/shuttle/upp_sof{
 	icon_state = "8,6"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "wc" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -589,7 +589,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "zZ" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 3;
@@ -619,7 +619,7 @@
 	pixel_y = 10
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "BC" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	name = "Supply Dropship Hold Lockdown";
@@ -632,7 +632,7 @@
 	alpha = 100
 	},
 /turf/open/floor/hybrisa/metal/red_warning_floor,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "BN" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -706,7 +706,7 @@
 /turf/closed/shuttle/upp_sof/transparent{
 	icon_state = "2,12"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "ES" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -724,7 +724,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "7,4"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "FA" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
@@ -770,7 +770,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "Gt" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "6,13";
@@ -885,7 +885,7 @@
 /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
 /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
 /turf/open/floor/almayer/no_build/plating,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "Kj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
@@ -907,7 +907,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "Lq" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "2,13";
@@ -958,7 +958,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "Nz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -986,7 +986,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "NK" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -1048,7 +1048,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "6,2"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "Tp" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -1061,7 +1061,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "1,11"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "TQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1106,7 +1106,7 @@
 	pixel_y = -7
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "Uc" = (
 /obj/item/stack/rods{
 	pixel_x = -15;
@@ -1147,7 +1147,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/hybrisa/metal/red_warning_floor,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "VU" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -1183,7 +1183,7 @@
 	icon_state = "test_square_red"
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "Wm" = (
 /obj/structure/shuttle/part/upp_sof{
 	icon_state = "2,11"
@@ -1191,7 +1191,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "2,2"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "Ww" = (
 /obj/item/stack/rods,
 /obj/structure/prop/colorable_rock/colorable{
@@ -1242,7 +1242,7 @@
 	icon_state = "5,12";
 	opacity = 0
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "YA" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -1290,7 +1290,7 @@
 /turf/closed/shuttle/upp_sof{
 	icon_state = "7,3"
 	},
-/area/strata/interior/shuttle_sof)
+/area/strata/interior/supply_shuttle_sof)
 "ZB" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";

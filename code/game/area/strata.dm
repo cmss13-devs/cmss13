@@ -217,6 +217,11 @@
 	icon_state = "outpost_engi_3"
 	ambience_exterior = AMBIENCE_SHIP_ALT
 
+/area/strata/interior/supply_shuttle_sof
+	name = "UPP-DS-3 'Voron'"
+	icon_state = "outpost_engi_3"
+	ambience_exterior = AMBIENCE_SHIP_ALT
+
 /area/strata/interior/outpost/security
 	name = "Outpost - Security"
 	icon_state = "outpost_sec_0"

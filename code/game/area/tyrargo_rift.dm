@@ -27,13 +27,12 @@
 /area/tyrargo/underground
 	name = "Tyrargo - Underground"
 	icon_state = "unknown"
-	icon_state = "oob"
 	ceiling = CEILING_MAX
 	ambience_exterior = AMBIENCE_TYRARGO_SEWER_CITY
 
 /area/tyrargo/oob
 	name = "Out Of Bounds"
-	icon_state = "oob"
+	icon_state = "unknown"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL

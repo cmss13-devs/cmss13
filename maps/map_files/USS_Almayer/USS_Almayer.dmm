@@ -7126,6 +7126,7 @@
 	layer = 3.33;
 	pixel_x = 2
 	},
+/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/hangar)
 "arJ" = (
@@ -7226,6 +7227,14 @@
 "arV" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/lifeboat)
+"arW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 2
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/hallways/hangar)
 "arX" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer/dark_sterile2,
@@ -55657,15 +55666,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
-"qHv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33;
-	pixel_x = 2
-	},
-/obj/item/hardpoint/locomotion/blackfoot_thrusters,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/hallways/hangar)
 "qHD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -91223,8 +91223,8 @@ sGw
 xzB
 eWs
 asp
+arW
 arI
-qHv
 afM
 aeJ
 ade

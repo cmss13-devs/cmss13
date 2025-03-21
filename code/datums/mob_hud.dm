@@ -310,6 +310,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		CRASH("hud_list lacks HEALTH_HUD_XENO despite not being deleted in med_hud_set_health()")
 
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
+	if(HAS_TRAIT_FROM(src, TRAIT_CLOAKED, "bush")) // zonenote unhackify this shit later
+		holder.icon_state = ""
+		return
 
 	var/health_hud_type = "xenohealth"
 	if(stat == DEAD)
@@ -526,6 +529,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 /mob/living/carbon/xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]
+	if(HAS_TRAIT_FROM(src, TRAIT_CLOAKED, "bush")) // zonenote unhackify this shit later
+		holder.icon_state = ""
+		return
 	if(stat == DEAD || plasma_max == 0)
 		holder.icon_state = "plasma0"
 	else
@@ -614,7 +620,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if (age)
 		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[age]")
 		holder.overlays += J
-	if(hive && hivenumber != XENO_HIVE_NORMAL)
+	if(hive && hivenumber != XENO_HIVE_NORMAL && !HAS_TRAIT(src, TRAIT_MOBA_PARTICIPANT))
 		var/image/J = image('icons/mob/hud/hud.dmi', src, "hudalien_xeno")
 		J.color = hive.color
 		holder.overlays += J

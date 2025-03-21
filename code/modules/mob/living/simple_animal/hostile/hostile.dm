@@ -91,8 +91,11 @@
 		return 1
 
 /mob/living/simple_animal/hostile/proc/AttackingTarget()
+	if(QDELETED(src))
+		return
+
 	var/mob/living/target_mob = target_mob_ref?.resolve()
-	if(!Adjacent(target_mob))
+	if(!Adjacent(target_mob) || QDELETED(target_mob))
 		return
 	if(isliving(target_mob))
 		target_mob.attack_animal(src)

@@ -260,7 +260,7 @@
 		sleep(0.9 SECONDS)
 
 /datum/moba_controller/proc/get_respawn_time()
-	return (10 SECONDS) + (((game_level - 1) / (MOBA_MAX_LEVEL - 1)) * (50 SECONDS)) // Starts at 10 seconds and scales to 60 over the course of the game
+	return floor((10 SECONDS) + (((game_level - 1) / (MOBA_MAX_LEVEL - 1)) * (50 SECONDS))) // Starts at 10 seconds and scales to 60 over the course of the game
 
 /datum/moba_controller/proc/start_respawn(datum/moba_player/player_datum)
 	var/respawn_time = get_respawn_time()
@@ -422,6 +422,7 @@
 /datum/moba_controller/proc/spawn_carp_boss()
 	carp_boss_spawned = TRUE
 	var/mob/living/simple_animal/hostile/megacarp/fish = new(carp_boss_spawn)
+	fish.AddComponent(/datum/component/moba_simplemob, new_map_id = map_id, boss_simplemob = TRUE)
 	RegisterSignal(fish, COMSIG_MOB_DEATH, PROC_REF(on_carp_boss_kill))
 
 	for(var/datum/moba_player/player as anything in players)
@@ -431,7 +432,7 @@
 		playsound_client(player.tied_client, 'sound/voice/alien_distantroar_3.ogg', player.get_tied_xeno().loc, 25, FALSE)
 		player.get_tied_xeno().play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "The megacarp has spawned at <b>Right Side Robotics</b>!", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
 
-/datum/moba_controller/proc/on_carp_boss_kill(datum/source, datum/cause_data/source)
+/datum/moba_controller/proc/on_carp_boss_kill(datum/source_datum, datum/cause_data/source)
 	SIGNAL_HANDLER
 
 	var/datum/moba_player/killer
@@ -439,7 +440,7 @@
 	if(source?.weak_mob)
 		var/mob/living/carbon/xenomorph/killer_xeno = source.weak_mob.resolve()
 		for(var/datum/moba_player/player as anything in team1)
-			if(player.tied_xeno != killer_xeno)
+			if(player.get_tied_xeno() != killer_xeno)
 				continue
 
 			killer = player
@@ -447,7 +448,7 @@
 			break
 
 		for(var/datum/moba_player/player as anything in team2)
-			if(player.tied_xeno != killer_xeno)
+			if(player.get_tied_xeno() != killer_xeno)
 				continue
 
 			killer = player

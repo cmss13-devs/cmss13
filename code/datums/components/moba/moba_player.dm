@@ -11,6 +11,7 @@
 		/datum/status_effect/acid_neutralized = "Acid Neutralized",
 		/datum/status_effect/stacking/furious_haste = "Furious Haste",
 		/datum/status_effect/stacking/rended_armor = "Rended Armor",
+		/datum/status_effect/antiheal = "Healing Disrupted",
 	)
 
 	var/static/list/level_up_thresholds = list(

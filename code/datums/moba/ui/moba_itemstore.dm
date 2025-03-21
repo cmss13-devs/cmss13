@@ -32,6 +32,7 @@ GLOBAL_DATUM(moba_shop, /datum/moba_item_store)
 				"path" = item.type,
 				"components" = component_list,
 				"sell_value" = item.sell_value,
+				"icon_state" = item.icon_state,
 			))
 
 /datum/moba_item_store/tgui_interact(mob/user, datum/tgui/ui)

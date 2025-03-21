@@ -61,8 +61,6 @@
 	health = 300
 	maxHealth = 300
 	speed = 8
-	projectiletype = /obj/projectile/beam/drone
-	projectilesound = 'sound/weapons/Laser3.ogg'
 	destroy_surroundings = FALSE
 	faction = "malf_drone"
 	var/datum/effect_system/ion_trail_follow/ion_trail
@@ -136,6 +134,11 @@
 	/// How much additional damage we do based on the target's max HP
 	var/maxhealth_damage = 0.07
 
+/mob/living/simple_animal/hostile/megacarp/Initialize()
+	. = ..()
+	transform.Scale(2, 2) // big fish
+	enable_pixel_scaling()
+
 /mob/living/simple_animal/hostile/megacarp/FindTarget()
 	. = ..()
 	if(. && prob(50))
@@ -161,3 +164,64 @@
 
 /obj/effect/overlay/temp/gib_animation/animal/large
 	icon = 'icons/mob/broadMobs.dmi'
+
+
+/mob/living/simple_animal/hostile/hivebot
+	name = "hivebot"
+	desc = "A strange, armored robot with a worrying red visor. Its blade looks like it could pierce the thickest armor."
+	icon_state = "hivebot"
+	icon_living = "hivebot"
+	icon_dead = "hivebot" // we qdel and explode on death anyway
+	icon_gib = null
+	speak_chance = 0
+	turns_per_move = 5
+	response_help = "cautiously pets the"
+	response_disarm = "pushes aside the"
+	response_harm = "hits the"
+	speed = 5
+	maxHealth = 4500
+	health = 4500
+
+	harm_intent_damage = 8
+	melee_damage_lower = 5 // We do extra true damage on hit
+	melee_damage_upper = 5
+	attacktext = "bites"
+	attack_sound = 'sound/weapons/bite.ogg'
+
+	break_stuff_probability = 15
+
+	faction = "hivebot"
+	/// How much full-pen damage to do on hit
+	var/true_damage = 25
+
+/mob/living/simple_animal/hostile/hivebot/Initialize()
+	. = ..()
+	//transform.Scale(2, 2) // big bot
+	//enable_pixel_scaling()
+
+/mob/living/simple_animal/hostile/hivebot/death(datum/cause_data/cause_data, gibbed, deathmessage)
+	. = ..()
+	if(!.)
+		return .
+
+	cell_explosion(get_turf(src), 100, 25, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data("self-destruction", src))
+	qdel(src)
+
+/mob/living/simple_animal/hostile/hivebot/FindTarget()
+	. = ..()
+	if(. && prob(50))
+		manual_emote("beeps angrily at [.]")
+		playsound(loc, 'sound/machines/twobeep.ogg', 40)
+
+/mob/living/simple_animal/hostile/hivebot/AttackingTarget()
+	. = ..()
+	var/mob/living/L = .
+	if(istype(L))
+		L.apply_damage(true_damage, BRUTE)
+
+		// By rending armor we allow for more effective all-ins/steals from the opposing team and a slight damage increase from this guy
+		var/datum/status_effect/stacking/rended_armor/rended = L.has_status_effect(/datum/status_effect/stacking/rended_armor)
+		if(!rended)
+			rended = L.apply_status_effect(/datum/status_effect/stacking/rended_armor, 1)
+		else
+			rended.add_stacks(1)

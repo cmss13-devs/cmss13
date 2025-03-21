@@ -61,11 +61,8 @@
 		if(QDELETED(xeno) || (xeno.stat == DEAD))
 			var/image/indicator = execute_images[xeno]
 			if(indicator)
-				indicator.icon = null
-				indicator.icon_state = null
+				//indicator.icon_state = ""
 				parent_xeno.client.images -= indicator
-				qdel(indicator)
-				execute_images -= xeno
 			continue
 
 		if(xeno.health <= damage_to_deal)
@@ -75,8 +72,5 @@
 		else
 			var/image/indicator = execute_images[xeno]
 			if(indicator)
-				indicator.icon = null
-				indicator.icon_state = null
+				//indicator.icon_state = ""
 				parent_xeno.client.images -= indicator
-				qdel(indicator)
-				execute_images -= xeno

@@ -200,7 +200,7 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(current_turfs, 2)
 
 	for (var/turf/current_turfs in target_turfs)
-		for (var/mob/living/carbon/target in current_turfs)
+		for (var/mob/living/target in current_turfs)
 			if (target.stat == DEAD)
 				continue
 

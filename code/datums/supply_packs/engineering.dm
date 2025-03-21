@@ -173,19 +173,4 @@
 	containername = "battery crate"
 	group = "Engineering"
 
-/datum/supply_packs/repairkits
-	name = "Firearms Maintenance and Restoration crate"
-	contains = list(
-		/obj/item/stack/repairable/gunkit,
-		/obj/item/stack/repairable/gunkit,
-		/obj/item/stack/repairable/gunkit,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunlube,
-	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/supply
-	containername = "firearms maintenance crate"
-	group = "Engineering"
+

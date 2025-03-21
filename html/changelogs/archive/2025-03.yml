@@ -275,3 +275,27 @@
   - bugfix: Bread now has the correct description
   Red-byte3D:
   - bugfix: Stacked chairs no longer stun xenos on collide anymore
+2025-03-21:
+  MeH0y:
+  - balance: Increased shell storage capacity of the mortar belt and mortar shell
+      backpack
+  MistChristmas:
+  - bugfix: Fixes Examining whilst a weapon is in your off-hand.
+  - rscadd: Examine IFF now works with non Alt-IFF weapons like the SU-6 Smartpistol
+  Red-byte3D:
+  - bugfix: Ravagers and Lurkers now only return harm intent on targetted carbons.
+  - bugfix: King can no longer infinetly stun mobs via cade
+  - code_imp: Rewrites vanguard shield code
+  Unknownity:
+  - bugfix: Hellhound's "Find Owner" ability now uses the same hotkey as XENO_PRIMARY_ACTION
+      2.
+  - bugfix: Hellhound's emotes have returned, with improvements!
+  detectivegoogle:
+  - soundadd: queen announcement volume reduced a bit.
+  realforest2001:
+  - code_imp: Converts some missing fax networks to defines.
+  - bugfix: Fixes high command (like WY) fax networks breaking by having more than
+      one fax machine.
+  - maptweak: Removes High Command fax machines from Hybrisa, they should never have
+      been there.
+  - bugfix: Fixes Synthetic Survivor not appearing in the Survivor follow group.

@@ -154,26 +154,26 @@
 
 	switch (state)
 		if(STATE_VTOL, STATE_TAKEOFF_LANDING)
-			icon_state = "doorgun_vtol"
+			icon_state = "vtol"
 			overlays += image(icon, "vtol_thrust")
 			overlays += image(icon, "fan-overlay")
 			overlays += image(icon, "flight_lights")
 		if(STATE_FLIGHT)
-			icon_state = "doorgun_flight"
+			icon_state = "flight"
 			overlays += image(icon, "fan-overlay")
 			overlays += image(icon, "flight_lights")
 		if(STATE_STOWED)
-			icon_state = "doorgun_stowed"
+			icon_state = "stowed"
 			overlays += image(icon, "stowed_lights")
 		if(STATE_DEPLOYED, STATE_IDLING)
-			icon_state = "doorgun_flight"
+			icon_state = "flight"
 			overlays += image(icon, "stowed_lights")
 		if(STATE_TUGGED)
-			icon_state = "doorgun_stowed"
+			icon_state = "stowed"
 			overlays += image(icon, "stowed_lights")
 			overlays += image(icon, "tug_underlay", layer = BELOW_MOB_LAYER)
 		if(STATE_DESTROYED)
-			icon_state = "doorgun_flight"
+			icon_state = "flight"
 			overlays += image(icon, "stowed_lights")
 			overlays += image(icon, "damage")
 

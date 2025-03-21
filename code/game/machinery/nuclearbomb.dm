@@ -333,7 +333,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		announcement_helper("WARNING.\n\nDETONATION IN [floor(timeleft/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 		//preds part
 		var/t_left = duration2text_sec(floor(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nYou have approximately [t_left] seconds to abandon the hunting grounds before activation of the human purification device."))
+		elder_overseer_message("You have approximately [t_left] seconds to abandon the hunting grounds before activation of the human purification device.")
 		//xenos part
 		var/warning
 		if(timer_warning & NUKE_SHOW_TIMER_HALF)
@@ -355,7 +355,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [floor(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [floor(timeleft/10)] SECONDS.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg')
 		var/t_left = duration2text_sec(floor(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human purification device has been detected. You have approximately [t_left] to abandon the hunting grounds before it activates."))
+		elder_overseer_message(SPAN_YAUTJABOLDBIG("A human purification device has been detected. You have approximately [t_left] to abandon the hunting grounds before it activates."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!length(hive.totalXenos))
@@ -364,7 +364,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	else
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device's signature has disappeared."))
+		elder_overseer_message(SPAN_YAUTJABOLDBIG("The human purification device's signature has disappeared."))
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!length(hive.totalXenos))
@@ -416,7 +416,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	for(var/datum/interior/interior in SSinterior.interiors)
 		if(!interior.exterior || interior.exterior.z != z)
 			continue
-	
+
 		for(var/mob/living/passenger in interior.get_passengers())
 			if(!(passenger in (alive_mobs + dead_mobs)))
 				if(passenger.stat != DEAD)
@@ -580,7 +580,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			announcement_helper("DECRYPTION COMPLETE", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 			announcement_helper("DECRYPTION COMPLETE", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 
-			yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nThe human purification device is able to be activated."))
+			elder_overseer_message("The human purification device is able to be activated.")
 
 			var/datum/hive_status/hive
 			for(var/hivenumber in GLOB.hive_datum)
@@ -595,7 +595,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 		//preds part
 		var/time_left = duration2text_sec(floor(rand(decryption_time - decryption_time / 10, decryption_time + decryption_time / 10)))
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nYou have approximately [time_left] seconds to abandon the hunting grounds before the human purification device is able to be activated."))
+		elder_overseer_message("You have approximately [time_left] seconds to abandon the hunting grounds before the human purification device is able to be activated.")
 
 		//xenos part
 		var/warning = "We are almost out of time, STOP THEM."
@@ -615,7 +615,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DECRYPTION STARTED.\n\nDECRYPTION IN [floor(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DECRYPTION STARTED.\n\nDECRYPTION IN [floor(decryption_time/10)] SECONDS.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg')
 		var/time_left = duration2text_sec(floor(rand(decryption_time - decryption_time / 10, decryption_time + decryption_time / 10)))
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human purification device has been detected. You have approximately [time_left] before it finishes its initial phase."))
+		elder_overseer_message("A human purification device has been detected. You have approximately [time_left] before it finishes its initial phase.")
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!length(hive.totalXenos))
@@ -625,7 +625,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
-	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device's signature has disappeared."))
+	elder_overseer_message("WARNING!<br>The human purification device's signature has disappeared.")
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
 		if(!length(hive.totalXenos))

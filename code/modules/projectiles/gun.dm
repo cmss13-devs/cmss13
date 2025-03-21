@@ -244,6 +244,8 @@
 	VAR_PROTECTED/autofire_slow_mult = 1
 	/// enables jamming code, default should be false, change the vars in parent gun or individually to enable jamming
 	var/can_jam = FALSE
+	/// enables misfiring, default is true, ditto above
+	var/can_misfire = TRUE
 	/// if gun is currently jammed
 	var/jammed = FALSE
 	/// guns inherent chance to jam
@@ -256,7 +258,7 @@
 	var/durability_loss = 0
 	/// Durability of a gun that determines jam chance.
 	var/gun_durability = 100
-	/// chance to misfire when dropped or otherwise called for
+	/// chance to misfire when actions allow it
 	var/misfire_chance = 0
 
 
@@ -561,9 +563,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(current_stock.stock_activated)
 			current_stock.activate_attachment(src, user, turn_off = TRUE)
 
+	if(prob(durability_loss))
+		set_gun_durability(gun_durability - 1) // decrement durability by 1 when the gun is dropped and prob passes
+		update_gun_durability()
+		check_worn_out()
+
 	unwield(user)
 	set_gun_user(null)
-	gun_misfire(user)
 
 /obj/item/weapon/gun/update_icon()
 	if(overlays)
@@ -669,11 +675,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			if(prob(50))
 				to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, get it repaired!"))
 				balloon_alert(user, "*worn-out*")
-
-/obj/item/weapon/gun/proc/gun_misfire(mob/living/user)
-	if(prob(misfire_chance))
-		to_chat(user, SPAN_WARNING("The [name] misfired due to its damages!"))
-		handle_fire(src)
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
 	var/bullet_duraloss = ammo.bullet_duraloss //code for taking account the bullet duraloss modifier in the current chambered ammo
@@ -980,6 +981,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(!user.drop_inv_item_on_ground(I))
 			return
 
+
 	if(ishuman(user))
 		var/check_hand = user.r_hand == src ? "l_hand" : "r_hand"
 		var/mob/living/carbon/human/wielder = user
@@ -1007,6 +1009,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_mouse_pointer(user, TRUE)
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
+
+	if(can_misfire)
+		gun_misfire(user)
 
 	return 1
 
@@ -1123,6 +1128,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
+	if(can_misfire)
+		gun_misfire(user)
 
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
@@ -1293,7 +1300,7 @@ and you're good to go.
 
 	return P
 
-/obj/item/weapon/gun/proc/insert_bullet(mob/user,)
+/obj/item/weapon/gun/proc/insert_bullet(mob/user)
 	if(!current_mag && !in_chamber)
 		var/obj/item/ammo_magazine/handful/bullet = user.get_active_hand()
 		if(istype(bullet) && bullet.caliber == caliber)
@@ -1306,6 +1313,8 @@ and you're good to go.
 				if(bullet.current_rounds <= 0)
 					QDEL_NULL(bullet)
 				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+				if(can_misfire)
+					gun_misfire(user)
 		else
 			to_chat(user, SPAN_WARNING("The bullet doesn't match [src]'s caliber!"))
 
@@ -1546,6 +1555,20 @@ and you're good to go.
 	return TRUE
 
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
+
+/obj/item/weapon/gun/proc/gun_misfire(mob/living/user)
+	if(can_misfire)
+		if(prob(misfire_chance)) // somehow ill figure out a way to make this fire when dropped
+			var/obj/item/weapon/gun/misfired_gun = src
+			var/list/turfs = list()
+			for(var/turf/T in view())
+				turfs += T
+			var/turf/target = pick(turfs)
+			user.visible_message(SPAN_HIGHDANGER("[user]'s [name] misfires from its resulting damages!"))
+			misfired_gun.handle_fire(target, user)
+
+			// we dont want to incriminate accidents !!INSERT LOG BELOW!!
+
 
 /obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)

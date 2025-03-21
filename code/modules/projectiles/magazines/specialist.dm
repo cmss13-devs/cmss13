@@ -163,54 +163,56 @@
 	else
 		to_chat(user, "Not with a missile inside!")
 
-/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
-	if(!istype(M) || !istype(user) || get_dist(user, M) > 1)
+/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/demoman, mob/living/carbon/human/user)
+	if(!istype(demoman) || !istype(user) || get_dist(user, demoman) > 1)
 		return
-	var/obj/item/weapon/gun/launcher/in_hand = M.get_active_hand()
+	var/obj/item/weapon/gun/launcher/in_hand = demoman.get_active_hand()
 	if(!in_hand || !istype(in_hand))
-		to_chat(user, SPAN_WARNING("[M] isn't holding a rocket launcher in their active hand!"))
+		to_chat(user, SPAN_WARNING("[demoman] isn't holding a rocket launcher in their active hand!"))
 		return
 	if(!in_hand.current_mag)
-		to_chat(user, SPAN_WARNING("[M]'s [in_hand] is already loaded!"))
+		to_chat(user, SPAN_WARNING("[demoman]'s [in_hand] is already loaded!"))
 		return
 	if(!istype(in_hand, gun_type))
-		to_chat(user, SPAN_WARNING("[src] doesn't fit into [M]'s [in_hand.name]!")) // using name here because otherwise it puts an odd 'the' in front
+		to_chat(user, SPAN_WARNING("[src] doesn't fit into [demoman]'s [in_hand.name]!")) // using name here because otherwise it puts an odd 'the' in front
 		return
-	var/obj/item/weapon/twohanded/offhand/off_hand = M.get_inactive_hand()
+	var/obj/item/weapon/twohanded/offhand/off_hand = demoman.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
-		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
+		to_chat(user, SPAN_WARNING("\the [demoman] needs to be wielding \the [in_hand] in order to reload!"))
 		return
-	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
+	if(!skillcheck(demoman, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
 		return
-	if(M.dir != user.dir || M.loc != get_step(user, user.dir))
-		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
+	if(demoman.dir != user.dir || demoman.loc != get_step(user, user.dir))
+		to_chat(user, SPAN_WARNING("You must be standing behind \the [demoman] in order to reload it!"))
 		return
 	if(in_hand.current_mag.current_rounds > 0)
 		to_chat(user, SPAN_WARNING("\the [in_hand] is already loaded!"))
 		return
 	if(user.action_busy)
 		return
-	to_chat(user, SPAN_NOTICE("You begin reloading \the [M]'s [in_hand]! Hold still..."))
-	if(!do_after(user,(in_hand.current_mag.reload_delay / 2), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	to_chat(user, SPAN_NOTICE("You begin reloading \the [demoman]'s [in_hand]! Hold still..."))
+	if(!do_after(user,(in_hand.current_mag.reload_delay / 2), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, demoman, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 		return
-	if(off_hand != M.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
+	if(off_hand != demoman.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("\the [demoman] needs to be wielding \the [in_hand] in order to reload!"))
 		return
-	if(M.dir != user.dir)
-		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
+	if(demoman.dir != user.dir)
+		to_chat(user, SPAN_WARNING("You must be standing behind \the [demoman] in order to reload it!"))
 		return
 	user.drop_inv_item_on_ground(src)
 	qdel(in_hand.current_mag)
 	in_hand.replace_ammo(user,src)
 	in_hand.current_mag = src
 	forceMove(in_hand)
-	to_chat(user, SPAN_NOTICE("You load \the [src] into \the [M]'s [in_hand]."))
+	to_chat(user, SPAN_NOTICE("You load \the [src] into \the [demoman]'s [in_hand]."))
 	if(in_hand.reload_sound)
-		playsound(M, in_hand.reload_sound, 25, 1)
+		playsound(demoman, in_hand.reload_sound, 25, 1)
 	else
-		playsound(M,'sound/machines/click.ogg', 25, 1)
+		playsound(demoman,'sound/machines/click.ogg', 25, 1)
+	if(in_hand.can_misfire)
+		in_hand.gun_misfire(demoman)
 
 	return 1
 

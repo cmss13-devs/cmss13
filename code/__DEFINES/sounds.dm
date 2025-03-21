@@ -135,3 +135,4 @@
 // Tyrargo Soundscapes
 
 #define AMBIENCE_TYRARGO_CITY 'sound/ambience/tyrargo_city_ambience.ogg'
+#define AMBIENCE_TYRARGO_SEWER_CITY 'sound/ambience/tyrargo_sewer_ambience.ogg'

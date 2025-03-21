@@ -29,6 +29,7 @@
 	icon_state = "unknown"
 	icon_state = "oob"
 	ceiling = CEILING_MAX
+	ambience_exterior = AMBIENCE_TYRARGO_SEWER_CITY
 
 /area/tyrargo/oob
 	name = "Out Of Bounds"

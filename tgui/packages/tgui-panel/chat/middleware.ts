@@ -5,6 +5,7 @@
  */
 
 import { storage } from 'common/storage';
+import type { ByondWindow } from 'common/types';
 import DOMPurify from 'dompurify';
 
 import {
@@ -41,7 +42,7 @@ const FORBID_TAGS = ['a', 'iframe', 'link', 'video'];
 const saveChatToStorage = async (store) => {
   const state = selectChat(store.getState());
 
-  if (!Byond.TRIDENT) {
+  if (!(window as ByondWindow).hubStorage) {
     const indexedDbBackend = await storage.backendPromise;
     indexedDbBackend.processChatMessages(chatRenderer.storeQueue);
   } else {
@@ -65,7 +66,7 @@ const loadChatFromStorage = async (store) => {
   const state = await storage.get('chat-state-cm');
 
   let messages;
-  if (!Byond.TRIDENT) {
+  if (!(window as ByondWindow).hubStorage) {
     messages = await (await storage.backendPromise).getChatMessages();
   } else {
     messages = await storage.get('chat-messages-cm');

@@ -242,6 +242,23 @@ export class StorageProxy {
           await iframe.ready();
 
           if ((await iframe.ping()) === true) {
+            // Remove with 516... eventually
+            if (await iframe.get('byondstorage-migrated')) return iframe;
+
+            await new Promise((resolve) => {
+              document.addEventListener('byondstorageupdated', async () => {
+                setTimeout(() => {
+                  const hub = new HubStorageBackend();
+                  hub
+                    .get('panel-settings')
+                    .then((settings) => iframe.set('panel-settings', settings));
+                  iframe.set('byondstorage-migrated', true);
+
+                  resolve();
+                }, 1);
+              });
+            });
+
             return iframe;
           }
 

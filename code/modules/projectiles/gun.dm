@@ -677,17 +677,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
-	var/bullet_duraloss = ammo.bullet_duraloss //code for taking account the bullet duraloss modifier in the current chambered ammo
-	var/bullet_duramage = ammo.bullet_duramage //ditto for bullet specific durability damage
+	var/bullet_duraloss = 0 // if there isnt a traditional projectile, then we need to return something for the calculation, otherwise itll runtime
+	var/bullet_duramage = BULLET_DURABILITY_DAMAGE_DEFAULT // for guns that dont fire bullets traditionally e.g. flamer, lets make sure they actually lose durability by default
 	if(in_chamber && in_chamber.ammo)
 		bullet_duraloss = in_chamber.ammo.bullet_duraloss
 		bullet_duramage = in_chamber.ammo.bullet_duramage
-	else if(ammo)
+	else
 		bullet_duraloss = ammo.bullet_duraloss
 		bullet_duramage = ammo.bullet_duramage
-	else
-		bullet_duraloss = 0 // if there isnt a traditional projectile, then we need to return something for the calculation, otherwise itll runtime
-		bullet_duramage = BULLET_DURABILITY_DAMAGE_DEFAULT // for guns that dont fire bullets traditionally e.g. flamer, lets make sure they actually lose durability by default
+
 	if(!can_jam)
 		return
 
@@ -697,7 +695,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		check_worn_out(user)
 
 	scaled_jam_chance = initial_jam_chance * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
-	misfire_chance = bullet_duraloss + durability_loss * (GUN_DURABILITY_MEDIUM - gun_durability) // misfires become a problem at below 50 durability
+	misfire_chance = durability_loss * (GUN_DURABILITY_MEDIUM - gun_durability) // misfires become a problem at below 50 durability
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -1561,8 +1559,8 @@ and you're good to go.
 		if(prob(misfire_chance)) // somehow ill figure out a way to make this fire when dropped
 			var/obj/item/weapon/gun/misfired_gun = src
 			var/list/turfs = list()
-			for(var/turf/T in view())
-				turfs += T
+			for(var/turf/turf_to_misfire in view())
+				turfs += turf_to_misfire
 			var/turf/target = pick(turfs)
 			user.visible_message(SPAN_HIGHDANGER("[user]'s [name] misfires from its resulting damages!"))
 			misfired_gun.handle_fire(target, user)

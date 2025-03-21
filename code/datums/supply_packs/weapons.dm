@@ -1,5 +1,5 @@
 /datum/supply_packs/repairkits
-	name = "Firearms Maintenance and Restoration crate"
+	name = "Firearms Maintenance and Restoration crate (x3 Firearms Kits, x5 Lubricants)"
 	contains = list(
 		/obj/item/stack/repairable/gunkit,
 		/obj/item/stack/repairable/gunkit,

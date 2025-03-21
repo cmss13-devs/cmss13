@@ -680,9 +680,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(in_chamber && in_chamber.ammo)
 		bullet_duraloss = in_chamber.ammo.bullet_duraloss
 		bullet_duramage = in_chamber.ammo.bullet_duramage
-	else
-		bullet_duraloss = ammo.bullet_duraloss
-		bullet_duramage = ammo.bullet_duramage
 
 	if(!can_jam)
 		return

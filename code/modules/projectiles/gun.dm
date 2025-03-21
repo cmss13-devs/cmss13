@@ -618,12 +618,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(prob(30))
 			to_chat(user, SPAN_WARNING("Your [src] is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
+			cock_cooldown += 5 SECONDS
 		return NONE
 	else if(prob(scaled_jam_chance + mag_jam_modifier))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
 		balloon_alert(user, "*jammed*")
+		cock_cooldown += 5 SECONDS
 		return NONE
 	else
 		return

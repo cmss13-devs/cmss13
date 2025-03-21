@@ -7,6 +7,8 @@
 /turf/open/floor/transparent,
 /area/interior/vehicle/blackfoot)
 "n" = (
+/obj/structure/bed/chair/vehicle/blackfoot/top_left_top,
+/obj/structure/bed/chair/vehicle/blackfoot/top_left_bottom,
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 4;
 	pixel_x = 1;
@@ -43,6 +45,8 @@
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
 "G" = (
+/obj/structure/bed/chair/vehicle/blackfoot/top_right_top,
+/obj/structure/bed/chair/vehicle/blackfoot/top_right_bottom,
 /obj/effect/landmark/interior/spawn/blackfoot_rear_door_button{
 	pixel_x = 4;
 	pixel_y = 25

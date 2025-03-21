@@ -299,6 +299,10 @@
 	name = "starburst shell"
 	nade_type = /obj/item/explosive/grenade/high_explosive/starshell
 
+/datum/ammo/grenade_container/doorgun
+	name = "hornet shell"
+	nade_type = /obj/item/explosive/grenade/high_explosive/hornet
+
 /datum/ammo/hugger_container
 	name = "hugger shell"
 	ping = null

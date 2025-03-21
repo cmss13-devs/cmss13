@@ -22,7 +22,7 @@
 	bound_x = -32
 	bound_y = 0
 
-	interior_map = /datum/map_template/interior/blackfoot_doorgun
+	interior_map = /datum/map_template/interior/blackfoot
 
 	move_max_momentum = 2.2
 	move_momentum_build_factor = 1.5
@@ -44,6 +44,7 @@
 		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 		/obj/item/hardpoint/primary/chimera_launchers,
 		/obj/item/hardpoint/support/sensor_array,
+		/obj/item/hardpoint/secondary/doorgun,
 	)
 
 	entrances = list(
@@ -54,10 +55,12 @@
 
 	seats = list(
 		VEHICLE_DRIVER = null,
+		VEHICLE_GUNNER = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
+		VEHICLE_GUNNER = null,
 	)
 
 	health = 500
@@ -105,7 +108,6 @@
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
-
 /datum/tacmap/drawing/blackfoot/ui_status(mob/user)
 	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
 
@@ -149,36 +151,59 @@
 	RRS.total = 1
 	role_reserved_slots += RRS
 
+/obj/vehicle/multitile/blackfoot/can_install_hardpoint(obj/item/hardpoints/hardpoint, mob/user)
+	if(interior.get_passengers())
+		to_chat(user, SPAN_WARNING("Installing an hardpoint is unsafe when there are people inside the [src]."))
+		return FALSE
+
+	return TRUE
+
+/obj/vehicle/multitile/blackfoot/proc/get_sprite_state()
+	switch (state)
+		if(STATE_VTOL, STATE_TAKEOFF_LANDING)
+			return "vtol"
+		if(STATE_FLIGHT, STATE_DEPLOYED, STATE_IDLING, STATE_DESTROYED)
+			return "flight"
+		if(STATE_STOWED, STATE_TUGGED)
+			return "stowed"
+
 /obj/vehicle/multitile/blackfoot/update_icon()
 	. = ..()
 
+	var/vtol_type
+
+	if(ispath(interior_map, /datum/map_template/interior/blackfoot))
+		vtol_type = ""
+	else if (ispath(interior_map, /datum/map_template/interior/blackfoot_doorgun))
+		vtol_type = "doorgun_"
+
 	switch (state)
 		if(STATE_VTOL, STATE_TAKEOFF_LANDING)
-			icon_state = "vtol"
+			icon_state = "[vtol_type]vtol"
 			overlays += image(icon, "vtol_thrust")
 			overlays += image(icon, "fan-overlay")
 			overlays += image(icon, "flight_lights")
 		if(STATE_FLIGHT)
-			icon_state = "flight"
+			icon_state = "[vtol_type]flight"
 			overlays += image(icon, "fan-overlay")
 			overlays += image(icon, "flight_lights")
 		if(STATE_STOWED)
-			icon_state = "stowed"
+			icon_state = "[vtol_type]stowed"
 			overlays += image(icon, "stowed_lights")
 		if(STATE_DEPLOYED, STATE_IDLING)
-			icon_state = "flight"
+			icon_state = "[vtol_type]flight"
 			overlays += image(icon, "stowed_lights")
 		if(STATE_TUGGED)
-			icon_state = "stowed"
+			icon_state = "[vtol_type]stowed"
 			overlays += image(icon, "stowed_lights")
 			overlays += image(icon, "tug_underlay", layer = BELOW_MOB_LAYER)
 		if(STATE_DESTROYED)
-			icon_state = "flight"
+			icon_state = "[vtol_type]flight"
 			overlays += image(icon, "stowed_lights")
 			overlays += image(icon, "damage")
 
 	if(shadow_holder)
-		shadow_holder.icon_state = "[icon_state]_shadow"
+		shadow_holder.icon_state = "[get_sprite_state()]_shadow"
 
 /obj/vehicle/multitile/blackfoot/relaymove(mob/user, direction)
 	if(state == STATE_TUGGED)
@@ -282,6 +307,13 @@
 /obj/vehicle/multitile/blackfoot/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
+
+	if(seat == VEHICLE_GUNNER)
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/switch_hardpoint,
+		))
+		return
+	
 	add_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -357,6 +389,13 @@
 /obj/vehicle/multitile/blackfoot/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
+
+	if(seat == VEHICLE_GUNNER)
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/switch_hardpoint,
+		))
+		return
+	
 	remove_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -366,7 +405,6 @@
 		/obj/vehicle/multitile/blackfoot/proc/land,
 		/obj/vehicle/multitile/blackfoot/proc/toggle_vtol,
 		/obj/vehicle/multitile/blackfoot/proc/toggle_stow,
-		/obj/vehicle/multitile/proc/switch_hardpoint
 	))
 
 	remove_action(M, /datum/action/human_action/blackfoot/takeoff)
@@ -392,6 +430,9 @@
 	SStgui.close_user_uis(M, src)
 
 /obj/vehicle/multitile/blackfoot/give_seated_mob_actions(mob/seated_mob)
+	if(seats[VEHICLE_DRIVER] != seated_mob)
+		return
+	
 	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle/blackfoot)
 
 /obj/vehicle/multitile/blackfoot/Collided(atom/movable/collided_atom)

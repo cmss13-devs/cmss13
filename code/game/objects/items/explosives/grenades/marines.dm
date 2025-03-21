@@ -208,6 +208,16 @@
 	det_time = 0
 	explosion_power = 0
 
+/obj/item/explosive/grenade/high_explosive/hornet
+	name = "\improper M74 AGM-H 40mm Hornet Shell"
+	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
+	icon_state = "grenade_hornet"
+	item_state = "grenade_hornet_active"
+	shrapnel_count = 15
+	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
+	det_time = 0
+	explosion_power = 0
+
 /*
 //================================================
 				M203 Grenades

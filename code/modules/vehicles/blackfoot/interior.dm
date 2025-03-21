@@ -278,7 +278,10 @@
 	density = FALSE
 
 	var/deployed = FALSE
+	var/mob/gunner
 	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
+	var/user_old_x
+	var/user_old_y
 
 /obj/structure/blackfoot_doorgun/update_icon()
 	if(deployed)
@@ -294,9 +297,118 @@
 
 	to_chat(user, SPAN_NOTICE("You [deployed ? "retract" : "deploy"] the door gun."))
 
+	if(deployed)
+		on_unset_interaction(gunner)
+
 	deployed = !deployed
 	update_icon()
 	density = !density
+
+/obj/structure/blackfoot_doorgun/MouseDrop_T(atom/dropping, mob/user)
+	if(!deployed || gunner)
+		return
+
+	if(!linked_blackfoot)
+		return
+
+	if(dropping != user)
+		return
+
+	on_set_interaction(user)
+
+/obj/structure/blackfoot_doorgun/attackby(obj/item/item, mob/user)
+	if(!deployed)
+		return
+
+	if(!istype(item, /obj/item/ammo_magazine/hardpoint/doorgun_ammo))
+		return
+
+	var/obj/item/ammo_magazine/hardpoint/doorgun_ammo/ammo = item
+	var/obj/item/hardpoint/secondary/doorgun/doorgun = locate() in linked_blackfoot.hardpoints
+
+	if(!doorgun)
+		return
+
+	doorgun.try_add_clip(ammo, user)
+
+/obj/structure/blackfoot_doorgun/proc/update_pixels(mob/user, mounting = TRUE)
+	if(mounting)
+		var/diff_x = 0
+		var/diff_y = 0
+		var/tilesize = 32
+		var/viewoffset = tilesize * 2
+		switch(dir)
+			if(NORTH)
+				diff_y = -16 + user_old_y
+				if(user.client)
+					user.client.pixel_x = 0
+					user.client.pixel_y = viewoffset
+			if(SOUTH)
+				diff_y = 16 + user_old_y
+				if(user.client)
+					user.client.pixel_x = 0
+					user.client.pixel_y = -viewoffset
+			if(EAST)
+				diff_x = -16 + user_old_x
+				if(user.client)
+					user.client.pixel_x = viewoffset
+					user.client.pixel_y = 0
+			if(WEST)
+				diff_x = 16 + user_old_x
+				if(user.client)
+					user.client.pixel_x = -viewoffset
+					user.client.pixel_y = 0
+
+		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
+	else
+		if(user.client)
+			user.client.change_view(GLOB.world_view_size)
+			user.client.pixel_x = 0
+			user.client.pixel_y = 0
+		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
+
+/obj/structure/blackfoot_doorgun/on_set_interaction(mob/user)
+	ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
+	user.setDir(dir)
+	user.status_flags |= IMMOBILE_ACTION
+	user.visible_message(SPAN_NOTICE("[user] mans [src]."), SPAN_NOTICE("You man [src], locked and loaded!"))
+	user_old_x = user.pixel_x
+	user_old_y = user.pixel_y
+	update_pixels(user)
+
+	RegisterSignal(user, list(COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
+	linked_blackfoot.set_seated_mob(VEHICLE_GUNNER, user)
+	if(user && user.client)
+		user.client.change_view(8, linked_blackfoot)
+	gunner = user
+
+/obj/structure/blackfoot_doorgun/proc/exit_interaction(mob/user)
+	SIGNAL_HANDLER
+
+	on_unset_interaction(user)
+
+/obj/structure/blackfoot_doorgun/on_unset_interaction(mob/user)
+	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
+	user.setDir(dir)
+	user.reset_view(null)
+	user.status_flags &= ~IMMOBILE_ACTION
+	user.visible_message(SPAN_NOTICE("[user] lets go of [src]."), SPAN_NOTICE("You let go of [src], letting the gun rest."))
+	user_old_x = 0
+	user_old_y = 0
+	update_pixels(user, FALSE)
+	user.remove_temp_pass_flags(PASS_MOB_THRU)
+
+	UnregisterSignal(user, list(
+		COMSIG_MOB_RESISTED,
+		COMSIG_MOB_DEATH,
+		COMSIG_LIVING_SET_BODY_POSITION,
+	))
+
+	if(gunner == user)
+		gunner = null
+
+	user.unset_interaction()
+	linked_blackfoot.set_seated_mob(VEHICLE_GUNNER, null)
 
 /obj/effect/landmark/interior/spawn/blackfoot_doorgun
 	icon = 'icons/obj/vehicles/interiors/blackfoot_64x64.dmi'
@@ -305,7 +417,6 @@
 /obj/effect/landmark/interior/spawn/blackfoot_doorgun/on_load(datum/interior/interior)
 	var/obj/structure/blackfoot_doorgun/doorgun = new(get_turf(src))
 
-	doorgun.name = name
 	doorgun.setDir(dir)
 	doorgun.alpha = alpha
 	doorgun.update_icon()

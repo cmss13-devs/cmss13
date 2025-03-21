@@ -24,7 +24,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='100%' src="https://cm-ss13.com/wiki/Guide_to_Engineering" frameborder="0" id="main_frame"></iframe> </body>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Guide_to_Engineering" frameborder="0" id="main_frame"></iframe> </body>
 
 		</html>
 
@@ -44,7 +44,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Guide_to_construction" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Guide_to_construction" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -65,7 +65,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -85,7 +85,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Ordnance_Technician" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Ordnance_Technician" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -105,7 +105,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Comms" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Comms" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -443,7 +443,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -465,7 +465,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="http://cm-ss13.com/wiki/Marine_Law" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="http://cm-ss13.com/wiki/Marine_Law" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -490,7 +490,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Surgery" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Surgery" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -503,7 +503,7 @@
 	desc = "Firstly and foremost, do no harm. A detailed, thick and heavy medical practitioner's guide, with the first five full pages only being the book's dedication."
 	icon_state = "book_medical"
 	item_state = "book_medical"
-	author = "Chief Medical Officer Jean Corbeau, Colonial Marines Bureau of Medicine and Surgery"
+	author = "Chief Medical Officer Pierre Corbeau, Colonial Marines Bureau of Medicine and Surgery"
 	title = "Principles and Practice of Medicine"
 
 	dat = {"<html>
@@ -540,7 +540,7 @@
 				<HR COLOR="steelblue" WIDTH="60%" ALIGN="LEFT">
 
 				<h3>Main guide</h3>
-				<iframe width='100%' height='100%' src="http://cm-ss13.com/wiki/Guide_to_Medicine" frameborder="0" id="main_frame"></iframe>
+				<iframe width='480x' height='640x' src="http://cm-ss13.com/wiki/Guide_to_Medicine" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 
@@ -560,7 +560,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Chemistry" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Chemistry" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -580,7 +580,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Researcher" frameborder="0" id="main_frame"></iframe>
+		<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Researcher" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -596,7 +596,7 @@
 	desc = "A huge book containing lots and lots of cooking recipes, perfect for those who wish to actually cook and not stand in front of the microwave, staring at it."
 	icon_state = "cooked_book"
 	item_state = "cooked_book"
-	author = "Food Service Specialist Lawrence Kovale, UA"
+	author = "Food Service Specialist Louis Covenant, UA"
 	title = "Pans and Dishes: Your Way Around the Marine Kitchens"
 
 	dat = {"<html>
@@ -647,7 +647,7 @@
 				Add one potato to the processor, then bake them in the microwave.
 
 				<h3>Further recipes</h3>
-				<iframe width='100%' height='100%' src="https://cm-ss13.com/wiki/Cooking" frameborder="0" id="main_frame"></iframe>
+				<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Cooking" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 			"}
@@ -705,7 +705,7 @@
 				Mix vodka and orange juice into a glass.
 
 				<h3>Further recipes</h3>
-				<iframe width='100%' height='100%' src="https://cm-ss13.com/wiki/Drinks" frameborder="0" id="main_frame"></iframe>
+				<iframe width='480x' height='640x' src="https://cm-ss13.com/wiki/Drinks" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 			"}

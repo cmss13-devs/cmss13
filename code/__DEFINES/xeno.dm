@@ -115,8 +115,8 @@
 #define XENO_CONSTRUCTION_QUEEN_ONLY (1<<5)
 #define XENO_CONSTRUCTION_NOBODY (1<<6) //feral
 #define XENO_DECONSTRUCTION_QUEEN_ONLY (1<<7)
-#define XENO_DECONSTRUCTION_LEADERS_ONLY (1<8)
-#define XENO_DECONSTRUCTION_NOBODY (1<9) //feral
+#define XENO_DECONSTRUCTION_LEADERS_ONLY (1<<8)
+#define XENO_DECONSTRUCTION_NOBODY (1<<9) //feral
 #define XENO_UNNESTING_RESTRICTED (1<10)
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)

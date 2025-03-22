@@ -365,6 +365,7 @@ and displays selected entry.
 - `selected: any` - Currently selected entry
 - `over: boolean` - Dropdown renders over instead of below
 - `color: string` - Color of dropdown button
+- `dropdownTextColor: string` - Color of options in dropdown
 - `noChevron: boolean` - Whether or not the arrow on the right hand side of the dropdown button is visible
 - `displayText: ReactNode` - Text to always display in place of the selected text
 - `onClick: (e) => void` - Called when dropdown button is clicked

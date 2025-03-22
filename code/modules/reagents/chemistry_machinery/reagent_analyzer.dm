@@ -100,12 +100,15 @@
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
 			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
 			if(P)
-				if(GLOB.chemical_data.clearance_level >= S.gen_tier)
+				if(!GLOB.chemical_data.ddi_discovered && GLOB.chemical_data.reached_x_access)
 					P.trigger()
+					GLOB.chemical_data.ddi_discovered = TRUE
 				else
 					return
 
 			GLOB.chemical_data.complete_chemical(S)
+		for(var/datum/chem_property/scanned_property in S.properties)
+			report.name += " "+scanned_property.code+"[scanned_property.level]"
 	else
 		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 		report.name = "Analysis of ERROR"
@@ -123,4 +126,4 @@
 	report.info += "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
 	if(sample_number)
 		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
-	report.generate(src, admin_spawned)
+	report.generate(GLOB.chemical_reagents_list[id], admin_spawned)

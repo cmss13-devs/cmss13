@@ -136,6 +136,10 @@
 		if(M.fire_stacks <= 0)
 			M.ExtinguishMob()
 
+/datum/reagent/water/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	processing_tray.waterlevel += 0.5*volume
+
 /datum/reagent/water/holywater
 	name = "Holy Water"
 	id = "holywater"
@@ -643,6 +647,14 @@
 	color = "#404030" // rgb: 64, 64, 48
 	chemclass = CHEM_CLASS_COMMON
 
+/datum/reagent/ammonia/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.5*volume
+	processing_tray.yield_mod += 0.1*volume
+	processing_tray.nutrilevel += 2*volume
+
 /datum/reagent/hexamine
 	name = "Hexamine"
 	id = "hexamine"
@@ -668,6 +680,14 @@
 	color = "#604030" // rgb: 96, 64, 48
 	chemclass = CHEM_CLASS_UNCOMMON
 
+/datum/reagent/diethylamine/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.8*volume
+	processing_tray.yield_mod += 0.3*volume
+	processing_tray.nutrilevel += 2*volume
+
 /datum/reagent/blackgoo
 	name = "Black goo"
 	id = "blackgoo"
@@ -690,6 +710,18 @@
 		return
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 		new /obj/effect/decal/cleanable/blackgoo(T)
+
+/datum/reagent/viroxeno
+	name = "Xenogenetic Catalyst"
+	id = "xenogenic"
+	description = "A catalyst chemical that is extremely aggresive towards any organic substance before swiftly turning it into itself."
+	reagent_state = LIQUID
+	color = "#a244d8"
+	overdose = 10
+	overdose_critical = 20
+	chemclass = CHEM_CLASS_SPECIAL
+	flags = REAGENT_NO_GENERATION
+	properties = list(PROPERTY_DNA_DISINTEGRATING = 5, PROPERTY_HEMOSITIC = 1)
 
 
 // Chemfire supplements
@@ -1055,7 +1087,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
-	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_CIPHERING = 1)
+	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_ENCRYPTED = 1)
 
 /datum/reagent/fruit_resin
 	name = "Fruit Resin"

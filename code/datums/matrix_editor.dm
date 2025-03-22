@@ -46,7 +46,7 @@
 		<a href='byond://?_src_=matrices;operation=delete'>Delete selected matrix</a>
 	"}
 
-	show_browser(usr, data, "Matrix Editor", "matrixeditor\ref[src]", "size=600x450")
+	show_browser(usr, data, "Matrix Editor", "matrixeditor\ref[src]", width = 600, height = 450)
 
 /client/proc/matrix_editor_Topic(href, href_list)
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & (R_DEBUG|R_ADMIN)))

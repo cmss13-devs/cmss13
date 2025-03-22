@@ -708,13 +708,11 @@
 	if(choice == "Allow All")
 		to_chat(src, SPAN_XENONOTICE("You allow both Lessers and Huggers."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>allowed</b> lesser drones and sentient facehuggers to join the hive!"), 2, hivenumber)
-		hive.hive_flags &= ~XENO_LESSERS_FORBIDDEN
-		hive.hive_flags &= ~XENO_HUGGERS_FORBIDDEN
+		hive.hive_flags &= ~(XENO_LESSERS_FORBIDDEN|XENO_HUGGERS_FORBIDDEN)
 	else if(choice == "Forbid All")
 		to_chat(src, SPAN_XENONOTICE("You forbid both Lessers and Huggers."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> lesser drones and sentient facehuggers from joining the hive."), 2, hivenumber)
-		hive.hive_flags |= XENO_LESSERS_FORBIDDEN
-		hive.hive_flags |= XENO_HUGGERS_FORBIDDEN
+		hive.hive_flags |= (XENO_LESSERS_FORBIDDEN|XENO_HUGGERS_FORBIDDEN)
 	else if(choice == "Forbid Lessers")
 		to_chat(src, SPAN_XENONOTICE("You forbid Lessers."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> lesser drones from joining the hive."), 2, hivenumber)

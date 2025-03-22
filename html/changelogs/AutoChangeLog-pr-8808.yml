@@ -1,4 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - bugfix: "fixes M4RA mag box under wrong category in req vendor."

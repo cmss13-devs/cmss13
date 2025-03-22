@@ -14,6 +14,7 @@
 	name = "Find Owner"
 	action_icon_state = "mark_hosts"
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 10 SECONDS // relatively short since we want them to be close most of the time
 	plasma_cost = 0
 	xeno_cooldown = 1 SECONDS

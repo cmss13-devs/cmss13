@@ -250,8 +250,8 @@
 	icon_state = "co_falcon"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
-	name = "general's jacket"
-	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a General. Has quite a few pockets."
+	name = "USCM Service A Officer Service Jacket"
+	desc = "A USCM Officer Service A Jacket, Often worn by Officers on official visits."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	icon_state = "general_jacket"
 	item_icons = list(
@@ -260,10 +260,6 @@
 	item_state = "general_jacket"
 	has_buttons = FALSE
 	storage_slots = 4
-	armor_melee = CLOTHING_ARMOR_HIGHPLUS
-	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
-	armor_bomb = CLOTHING_ARMOR_VERYHIGH
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	w_class = SIZE_MEDIUM
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/general/executive

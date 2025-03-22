@@ -245,7 +245,7 @@
 //YAUTJA SHIP - CURRENTLY USES STRATA DOORS
 /obj/structure/machinery/door/airlock/yautja
 	name = "\improper Airlock"
-	icon = 'icons/obj/structures/doors/strata/strata_doors.dmi'
+	icon = 'icons/obj/structures/doors/hunter/hunter_door.dmi'
 	openspeed = 5
 	req_access = null
 	req_one_access = null

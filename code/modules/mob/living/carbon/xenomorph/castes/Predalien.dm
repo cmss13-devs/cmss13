@@ -70,6 +70,7 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Predalien_1","Predalien_2","Predalien_3")
 	weed_food_states_flipped = list("Predalien_1","Predalien_2","Predalien_3")
+
 	var/smashing = FALSE
 	/// If the pred alert/player notif should happen when the predalien spawns
 	var/should_announce_spawn = TRUE

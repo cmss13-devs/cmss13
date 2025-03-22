@@ -738,3 +738,6 @@
 
 #undef HYDRO_SPEED_MULTIPLIER
 #undef HYDRO_WATER_CONSUMPTION_MULTIPLIER
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/yautja
+	icon_state = "yautja_tray"

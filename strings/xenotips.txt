@@ -57,3 +57,4 @@ Some smaller Xenomorphs such as Runners can hide behind barricades by resting ag
 Defenders with a lowered crest can open existing holes in walls.
 As a Defender, you can deal an additional stage of damage to an APC by lowering your crest and then attacking it.
 Any Xenomorph with acid can melt any kind of window frame; you may use this to create additional paths.
+As a Burrower or Carrier, you can drag bursted bodies and hide your traps with them.

@@ -179,13 +179,14 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_SYNTH_LANGUAGES
-
+	faction = FACTION_CLF
+	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
 	rank = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
-
+	minimap_background = "background_clf"
 	minimap_icon = "clf_synth"
 
 /datum/equipment_preset/synth/survivor/clf/load_race(mob/living/carbon/human/new_human)
@@ -203,9 +204,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new/obj/item/stack/sheet/plasteel/large_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/makeshift, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
+
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp, WEAR_FACE)
@@ -230,4 +231,4 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(new_human), WEAR_R_STORE)

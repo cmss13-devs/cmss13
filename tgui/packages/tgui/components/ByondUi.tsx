@@ -48,7 +48,8 @@ function createByondUiElement(elementId: string | undefined): ByondUiElement {
   return {
     render: (params: SampleByondParams) => {
       byondUiStack[index] = id;
-      Byond.winset(id, params);
+
+      Byond.winset(id, { ...params, style: Byond.styleSheet });
     },
     unmount: () => {
       byondUiStack[index] = null;

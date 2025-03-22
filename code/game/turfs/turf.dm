@@ -91,7 +91,7 @@
 
 	if(above)
 		above.multiz_new(dir=DOWN)
-	
+
 	if(below)
 		below.multiz_new(dir=UP)
 
@@ -180,7 +180,7 @@
 	var/turf/below = SSmapping.get_turf_below(src)
 	if(above)
 		above.multiz_del(dir=DOWN)
-	
+
 	if(below)
 		below.multiz_del(dir=UP)
 
@@ -949,7 +949,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 1)
 	if(ishuman_strict(victim))
-		var/mob/living/carbon/human/human_victim = victim 
+		var/mob/living/carbon/human/human_victim = victim
 		if (stun_modifier > 0)
 			human_victim.KnockDown(5 * height * stun_modifier)
 			human_victim.Stun(5 * height * stun_modifier)

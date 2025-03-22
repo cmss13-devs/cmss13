@@ -237,6 +237,9 @@
 	if(SEND_SIGNAL(parent_mob, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
 		return FALSE
 
+	if(locate(/obj/effect/alien/resin/trap) in parent_mob.loc)
+		return FALSE
+
 	if(unmerged_time == world.time)
 		return merge_with_weeds() // Weeds upgraded, re-merge now re-using the apperance
 	QDEL_NULL(weed_appearance)
@@ -320,6 +323,10 @@
 		weed_appearance = new(null, is_flipped, parent_mob.weed_food_icon, parent_mob.weed_food_states, parent_mob.weed_food_states_flipped)
 	weed_appearance.color = absorbing_weeds.color
 	parent_mob.vis_contents += weed_appearance
+
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in parent_mob.loc //failsafe! deletes the resin trap if body still merges with weeds
+	if(resin_trap)
+		qdel(resin_trap)
 
 	return TRUE
 

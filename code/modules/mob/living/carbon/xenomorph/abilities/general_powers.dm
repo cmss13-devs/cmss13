@@ -606,9 +606,10 @@
 		to_chat(xeno, SPAN_XENOWARNING("This is too close to a fruit!"))
 		return FALSE
 
-	for(var/mob/living/body in src)
-		if(body.stat == DEAD)
-			to_chat(xeno, SPAN_XENOWARNING("The body is in the way!"))
+	var/turf = get_turf(src)
+	for(var/mob/living/body in turf)
+		if(HAS_TRAIT(body, TRAIT_MERGED_WITH_WEEDS))
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on merged bodies!"))
 			return FALSE
 
 	return alien_weeds

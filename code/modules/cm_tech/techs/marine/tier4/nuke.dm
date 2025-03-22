@@ -10,7 +10,7 @@
 	tier = /datum/tier/four
 
 	announce_name = "NUCLEAR ARSENAL ACQUIRED"
-	announce_message = "A nuclear device has been authorized and will be delivered to requisitions via ASRS."
+	announce_message = "The deployment of a Large Atomic Fission Demolition Device have been authorized and will be delivered to the Requisitions Department, via ASRS."
 
 	flags = TREE_FLAG_MARINE
 

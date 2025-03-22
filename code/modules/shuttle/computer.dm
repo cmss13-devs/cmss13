@@ -368,6 +368,8 @@
 	unacidable = TRUE
 	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
 	var/launch_initiated = FALSE
+	///If true, a lifeboat launch has already been aborted.
+	var/launch_aborted = FALSE
 	///If true, the lifeboat is in the process of having the xeno override removed by the pilot.
 	var/override_being_removed = FALSE
 	///How long it takes to unlock the console
@@ -407,6 +409,18 @@
 		return
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
+		return
+	else if(lifeboat.status == LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS)
+		var/reset = tgui_alert(user, "Lifeboat set to abort. Reset status?", "Confirm", list("Yes", "No"), 10 SECONDS)
+		switch(reset)
+			if ("Yes")
+				if(do_after(usr, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					if(lifeboat.status == LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS)
+						lifeboat.status = LIFEBOAT_ACTIVE
+						return
+				else 
+					to_chat(user, SPAN_NOTICE("You were interrupted."))
+		return
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
@@ -429,13 +443,53 @@
 					return
 
 				if(launch_initiated)
-					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
-					return
+					if(launch_aborted)
+						to_chat(user, SPAN_WARNING("The emergency abort system has already triggered and needs to be reset by high command."))
+						return
+					var/abort = tgui_alert(user, "Abort the launch?", "Confirm", list("Yes", "No"), 10 SECONDS)
+					switch(abort)
+						if ("Yes")
+							if(lifeboat.mode == SHUTTLE_CALL)
+								to_chat(user, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
+								return
+							if(lifeboat.status == LIFEBOAT_LOCKED)
+								to_chat(user, SPAN_WARNING("Controls not responding, please try again."))
+								return
+							lifeboat.status = LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS
+							lifeboat.set_mode(SHUTTLE_IDLE)
+							lifeboat.alarm_sound_loop?.stop()
+							lifeboat.playing_launch_announcement_alarm = FALSE
+							var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+							lifeboat_dock.open_dock()
+							launch_initiated = FALSE
+							launch_aborted = TRUE
+							shipwide_ai_announcement("Emergency abort command processed. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat launch aborted.")
+							return
 
 				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
 				if(launch_initiated)
-					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
-					return
+					if(launch_aborted)
+						to_chat(user, SPAN_WARNING("The emergency abort system has already triggered and needs to be reset by high command."))
+						return
+					var/abort = tgui_alert(user, "Abort the launch?", "Confirm", list("Yes", "No"), 10 SECONDS)
+					switch(abort)
+						if ("Yes")
+							if(lifeboat.mode == SHUTTLE_CALL)
+								to_chat(user, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
+								return
+							if(lifeboat.status == LIFEBOAT_LOCKED)
+								to_chat(user, SPAN_WARNING("Controls not responding, please try again."))
+								return
+							lifeboat.status = LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS
+							lifeboat.set_mode(SHUTTLE_IDLE)
+							lifeboat.alarm_sound_loop?.stop()
+							lifeboat.playing_launch_announcement_alarm = FALSE
+							var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+							lifeboat_dock.open_dock()
+							launch_initiated = FALSE
+							launch_aborted = TRUE
+							shipwide_ai_announcement("Emergency abort command processed. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat launch aborted.")
+							return
 				switch(response)
 					if ("Yes")
 						launch_initiated = TRUE
@@ -454,7 +508,40 @@
 						return
 
 			if(SHUTTLE_IGNITING)
-				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
+				if(!istype(user, /mob/living/carbon/human))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+				if(launch_aborted)
+					to_chat(user, SPAN_WARNING("The emergency abort system has already triggered and needs to be reset by high command."))
+					return
+				var/mob/living/carbon/human/human_user = user
+				var/obj/item/card/id/card = human_user.get_idcard()
+
+				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // if no card or not enough access, check for held id
+					card = locate(/obj/item/card/id) in human_user
+
+				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // still no valid card found?
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+				var/abort = tgui_alert(user, "Abort the launch?", "Confirm", list("Yes", "No"), 10 SECONDS)
+				switch(abort)
+					if ("Yes")
+						if(lifeboat.mode == SHUTTLE_CALL)
+							to_chat(user, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
+							return
+						if(lifeboat.status == LIFEBOAT_LOCKED)
+							to_chat(user, SPAN_WARNING("Controls not responding, please try again."))
+							return
+						lifeboat.status = LIFEBOAT_LAUNCH_ABORT_IN_PROGRESS
+						lifeboat.set_mode(SHUTTLE_IDLE)
+						lifeboat.alarm_sound_loop?.stop()
+						lifeboat.playing_launch_announcement_alarm = FALSE
+						var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+						lifeboat_dock.open_dock()
+						launch_initiated = FALSE
+						launch_aborted = TRUE
+						shipwide_ai_announcement("Emergency abort command processed. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat launch aborted.")
+						return
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
@@ -485,6 +572,7 @@
 			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
 			launch_initiated = FALSE
 			remaining_time = initial(remaining_time)
+			launch_aborted = FALSE
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()

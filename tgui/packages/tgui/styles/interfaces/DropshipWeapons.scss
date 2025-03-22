@@ -1,12 +1,12 @@
 @use '../base.scss';
-@import 'SidePanel';
+@use 'SidePanel';
 
 .Test {
   border: 1px solid red;
 }
 
 .WeaponsConsoleBackground {
-  background-color: #040404;
+  background-color: hsl(0, 0%, 2%);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -20,15 +20,15 @@
     width: fit-content;
     height: 512px;
     width: 512px;
-    background-color: #121212;
+    background-color: hsl(0, 0%, 7%);
     border-collapse: separate;
     border-radius: 16px;
-    border: 4px solid #080808;
+    border: 4px solid hsl(0, 0%, 3%);
     padding: 4px;
   }
 
   .DLabel {
-    background-color: #606060;
+    background-color: hsl(0, 0%, 38%);
     border: 1px solid white;
     font-family: monospace;
     text-align: center;
@@ -36,13 +36,13 @@
   }
 
   .displaypanel {
-    background-color: #000000;
+    background-color: hsl(0, 0%, 0%);
   }
 
   .NavigationMenu {
     height: 512px;
     width: 512px;
-    border: 2px solid #00e94e;
+    border: 2px solid hsl(140, 100%, 46%);
     border-style: outset;
     border-radius: 5px;
     overflow: hidden;
@@ -51,13 +51,13 @@
   }
 
   .Input {
-    border: 1px solid #00e94e;
-    color: #00e94e;
+    border: 1px solid hsl(140, 100%, 46%);
+    color: hsl(140, 100%, 46%);
   }
 
   .NumberInput {
-    border: 1px solid #00e94e;
-    color: #00e94e;
+    border: 1px solid hsl(140, 100%, 46%);
+    color: hsl(140, 100%, 46%);
   }
 
   .FireMissionTitle {
@@ -85,7 +85,7 @@
     width: 100%;
     text-align: center;
     line-height: 20px;
-    outline: 1px solid #00e94e;
+    outline: 1px solid hsl(140, 100%, 46%);
   }
 
   .FireMissionOffset {
@@ -95,11 +95,11 @@
     .Button {
       font-size: smaller;
       background-color: transparent;
-      color: #00e94e;
+      color: hsl(140, 100%, 46%);
     }
     .SelectedButton {
-      background: #00e94e;
-      color: #000000;
+      background: hsl(140, 100%, 46%);
+      color: hsl(0, 0%, 0%);
       font-weight: bold;
     }
   }
@@ -156,24 +156,24 @@
 
     .WeaponPanelLeft {
       @extend .BaseSidePanel;
-      border-right: 2px solid #00e94e;
+      border-right: 2px solid hsl(140, 100%, 46%);
     }
 
     .WeaponPanelRight {
       @extend .BaseSidePanel;
-      border-left: 2px solid #00e94e;
+      border-left: 2px solid hsl(140, 100%, 46%);
     }
   }
 
   .mfd_button {
-    background-color: #121212;
+    background-color: hsl(0, 0%, 7%);
     width: 50px;
     height: 50px;
     font-size: normal;
     font-family: monospace;
     line-height: 45px;
     border-style: outset;
-    border-color: #121212;
+    border-color: hsl(0, 0%, 7%);
     box-shadow: 0px 0px 0px 4px black;
     overflow: hidden;
     padding: 0;
@@ -187,7 +187,7 @@
 
   .mfd_button_active {
     @extend .mfd_button;
-    border-color: #00e94e;
+    border-color: hsl(140, 100%, 46%);
   }
 
   .ButtonPanel {

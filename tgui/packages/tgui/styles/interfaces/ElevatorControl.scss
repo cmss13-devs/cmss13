@@ -5,7 +5,7 @@
 $border-color: rgba(base.$color-fg, 0.6);
 
 .ElevatorPanel {
-  background-color: #4e5558;
+  background-color: hsl(198, 6%, 33%);
   padding-top: 12px;
   font-family: monospace;
   font-weight: bold;
@@ -60,7 +60,7 @@ $border-color: rgba(base.$color-fg, 0.6);
         .pushButton {
           height: 25px;
           width: 25px;
-          background-color: #e3eb14;
+          background-color: hsl(62, 84%, 50%);
           border-radius: 50%;
           display: inline-block;
           margin-top: 5px;

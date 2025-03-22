@@ -981,6 +981,7 @@ This function completely restores a damaged organ to perfect condition.
 
 		owner.update_body() //Among other things, this calls update_icon() and updates our visuals.
 		owner.update_med_icon()
+		owner.lip_style = null
 
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
 		release_restraints()

@@ -868,7 +868,7 @@
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
 
-	starting_attachment_types = list(/obj/item/attachable/mar50barrel)
+	starting_attachment_types = list(/obj/item/attachable/mar50barrel, /obj/item/attachable/bipod)
 
 	current_mag = /obj/item/ammo_magazine/rifle/mar40/lmg
 	attachable_allowed = list(
@@ -894,12 +894,14 @@
 
 /obj/item/weapon/gun/rifle/mar40/lmg/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_LMG)
+	set_fire_delay(FIRE_DELAY_TIER_10)
 	set_burst_amount(BURST_AMOUNT_TIER_5)
 	set_burst_delay(FIRE_DELAY_TIER_LMG)
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_3
+	fa_max_scatter = SCATTER_AMOUNT_TIER_4
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
-	scatter = SCATTER_AMOUNT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_3
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT

@@ -29,7 +29,7 @@
 	icon_state = "medic"
 	tutorial_template = /datum/map_template/tutorial/s15x10/hm
 
-	// holder for the CMO NPC
+	/// holder for the CMO NPC
 	var/mob/living/carbon/human/CMO_npc
 	/// Current step of the tutorial we're at
 	var/stage = TUTORIAL_HM_PHASE_PREP
@@ -76,7 +76,12 @@
 	/// Wave number when the last mass-casualty (nightmare) phase triggered. Will wait 3 waves before rolling again
 	var/last_masscas_round = 1
 	/// Lists possible chemicals that can appear pre-medicated in patient NPCs in harder difficulties
-	var/list/datum/reagent/medical/premeds = list(/datum/reagent/medical/tramadol, /datum/reagent/medical/bicaridine, /datum/reagent/medical/kelotane, /datum/reagent/medical/oxycodone)
+	var/list/datum/reagent/medical/premeds = list(
+		/datum/reagent/medical/tramadol,
+		/datum/reagent/medical/bicaridine,
+		/datum/reagent/medical/kelotane,
+		/datum/reagent/medical/oxycodone
+	)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
 	. = ..()
@@ -117,7 +122,7 @@
 		last_resupply_round = survival_wave
 		return
 	survival_wave++
-	// 1 in 10 chance per round to trigger a mass-cas (NIGHTMARE) phase
+	// 1 in 5 chance per round to trigger a mass-cas (NIGHTMARE) phase
 	// Will only roll beyond wave 3, and 3 waves after the previous mass-cas phase.
 	if(prob(20) && (survival_wave >= (last_resupply_round + 3)))
 		stage = TUTORIAL_HM_PHASE_NIGHTMARE
@@ -212,7 +217,7 @@
 
 	if(prob(15))	// Simulates premedicated patients
 		var/datum/reagent/medical/reagent = pick(premeds)
-		target.reagents.add_reagent(reagent.id, rand(0, reagent.overdose - 1))	// OD safety
+		target.reagents.add_reagent(reagent.id, rand(5, reagent.overdose - 1))	// OD safety
 
 	target.updatehealth()
 	target.UpdateDamageIcon()
@@ -221,10 +226,11 @@
 
 	RegisterSignal(target, COMSIG_LIVING_REJUVENATED, PROC_REF(make_agent_leave)) // for debugging
 
+// 'bypass' variable used by the rejuvenate proc to override health checks
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks(mob/living/carbon/human/target, bypass)
 	SIGNAL_HANDLER
 
-	// Makes sure complex injuries are treated once 65% health is reached
+	// Makes sure complex injuries are treated once 70% health is reached
 
 	var/list/healing_tasks = list()
 	UnregisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED)
@@ -234,12 +240,14 @@
 			injury_type |= "fracture"
 			healing_tasks[limb] = injury_type
 			RegisterSignal(limb, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(health_tasks_handler))
-		for(var/datum/wound/wound as anything in limb.wounds)
-			if(wound.internal)
+		if(limb.can_bleed_internally)
+			for(var/datum/wound/wound as anything in limb.wounds)
+				if(!wound.internal)
+					return
 				injury_type |= "IB"
 				healing_tasks[limb] = injury_type
 				RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE) // yeah yeah, give me a break
-	if((!(length(healing_tasks))) || bypass)
+	if(!length(healing_tasks) || bypass)
 		make_agent_leave(target)
 	else
 		agent_healing_tasks[target] = healing_tasks
@@ -272,9 +280,9 @@
 		injury_type = healing_tasks[limb]
 		if(("fracture" in injury_type) && (limb.status & LIMB_BROKEN) && (limb.status & LIMB_SPLINTED))
 			injury_type -= "fracture"
-		if(!(length(injury_type)) && (limb)) // makes sure something DID exist on the list
+		if(!length(injury_type) && limb) // makes sure something DID exist on the list
 			healing_tasks -= limb
-	if(!(length(healing_tasks)))
+	if(!length(healing_tasks))
 		UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
 		make_agent_leave(target)
 
@@ -369,6 +377,7 @@
 			active_agents -= active_agent
 			handle_speech(active_agent)
 
+// NOTE: bypass variable is a boolean used in the simulate_evac proc, used to stop to the balloon text from playing
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
 	SIGNAL_HANDLER
 
@@ -376,7 +385,7 @@
 	UnregisterSignal(agent, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 	UnregisterSignal(agent, COMSIG_HUMAN_TUTORIAL_HEALED)
 	agent.updatehealth()
-	if(!(bypass))
+	if(!bypass)
 		if(agent.undefibbable == TRUE)
 			agent.balloon_alert_to_viewers("[agent.name] permanently dead!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 			playsound(agent.loc, 'sound/items/defib_failed.ogg', 20)
@@ -444,14 +453,19 @@
 	if(length(status_message) > 0)
 		medevac_bed.balloon_alert_to_viewers("[pick(status_message)]! Evacuating patient!!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
 		playsound(medevac_bed.loc, pick(90;'sound/machines/ping.ogg',10;'sound/machines/juicer.ogg'), 20)
-		spawn(2.7 SECONDS)
-		flick("winched_stretcher", medevac_bed)
-		make_agent_leave(target, TRUE)
-		medevac_bed.update_icon()
+		addtimer(CALLBACK(src, PROC_REF(animate_medevac_bed), target), 2.7 SECONDS)
 	else
 		medevac_bed.balloon_alert_to_viewers("Error! Patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
+
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/animate_medevac_bed(mob/living/carbon/human/target)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac_bed)
+
+	flick("winched_stretcher", medevac_bed)
+	make_agent_leave(target, TRUE)
+	medevac_bed.update_icon()
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/process(delta_time)
 

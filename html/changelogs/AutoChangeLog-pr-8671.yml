@@ -1,4 +1,0 @@
-author: "VileBeggar"
-delete-after: True
-changes:
-  - bugfix: "Giant Lizards will no longer cause recursive loops (the server won't randomly decide to die anymore). They will now no longer be permanently stunned by explosions."

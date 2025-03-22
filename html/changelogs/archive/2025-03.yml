@@ -299,3 +299,37 @@
   - maptweak: Removes High Command fax machines from Hybrisa, they should never have
       been there.
   - bugfix: Fixes Synthetic Survivor not appearing in the Survivor follow group.
+2025-03-22:
+  Aurallianz:
+  - rscadd: tracking to the CMP headset (CO,XO,MW)
+  - bugfix: added propper warden headset (no-longer slumming it with the CMPs')
+  - rscadd: added tracking to the warden headset (CO,XO,CMP)
+  - rscadd: added a Military Warden Tracker accessible by (MP Headset, CMP Headset,
+      Honor Guard headset) (new sprite added)
+  Blundir:
+  - rscadd: 'survivor improvised flamethrower inspired by Alien: Isolation and Alien
+      props'
+  - bugfix: fixed empty flamethrower having no suit storage sprite
+  - maptweak: changed all mapped flamethrowers to the new one, execept the ones on
+      NV and LV522
+  - soundadd: all flamers now have fry fire sound
+  Detective-Google:
+  - bugfix: you can no longer view restricted networks on TVs.
+  Drathek:
+  - bugfix: Dead bodies that have larva that can burst soon can be dragged
+  - balance: Bursted bodies can no longer be dragged by xenos
+  - balance: Xeno traps can no longer be placed under monorail tracks, conveyors,
+      engineer lights, and dead bodies
+  ItsVyzo:
+  - spellcheck: realiable replaced with reliable on phonebox
+  LTNTS:
+  - bugfix: fixes M4RA mag box under wrong category in req vendor.
+  Red-byte3D:
+  - bugfix: You can no longer give somebody free nvgs via taking it off and on
+  - bugfix: Some vendors are no longer indestructible
+  VileBeggar:
+  - bugfix: Giant Lizards will no longer cause recursive loops (the server won't randomly
+      decide to die anymore). They will now no longer be permanently stunned by explosions.
+  ihatethisengine:
+  - balance: raised the timer of techwebs nuke to 3 minutes and made it uncancelable,
+      nuke autotriggers after decryption is finished.

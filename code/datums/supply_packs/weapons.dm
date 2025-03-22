@@ -1,3 +1,20 @@
+/datum/supply_packs/repairkits
+	name = "Firearms Maintenance and Restoration crate (x3 Firearms Kits, x5 Lubricants)"
+	contains = list(
+		/obj/item/stack/repairable/gunkit,
+		/obj/item/stack/repairable/gunkit,
+		/obj/item/stack/repairable/gunkit,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunlube,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/supply
+	containername = "firearms maintenance crate"
+	group = "Weapons"
+
 /datum/supply_packs/m56_hmg
 	name = "M56D Heavy Machine Gun (x1)"
 	contains = list(

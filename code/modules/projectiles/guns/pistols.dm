@@ -35,6 +35,10 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
 	gun_category = GUN_CATEGORY_HANDGUN
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_LOW
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
+	durability_loss = GUN_DURABILITY_LOSS_FAIR
 
 /obj/item/weapon/gun/pistol/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -42,6 +46,9 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
+	if(jammed)
+		jam_unique_action(user)
+	else
 		cock(user)
 
 /obj/item/weapon/gun/pistol/set_gun_config_values()

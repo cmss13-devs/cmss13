@@ -38,6 +38,17 @@
 		var/mob/living/carbon/human/humanus = mobs
 		humanus.disable_special_items() // Disables scout cloak
 		humanus.make_jittery(40)
+	if(isxeno(mobs))
+		var/mob/living/carbon/xenomorph/beno = mobs
+		if(beno.caste.caste_type in XENO_T0_CASTES)
+			beno.apply_effect(2, WEAKEN) // shock those small critters
+			beno.xeno_jitter(2 SECONDS)
+
+		if(beno.caste.caste_type in (XENO_T1_CASTES + XENO_T2_CASTES))
+			beno.apply_effect(1, SLOW)
+			beno.xeno_jitter(1 SECONDS) // small shock to T1s and T2s xenos pretty much just for the effects
+		else
+			return
 
 /datum/ammo/energy/taser/precise
 	name = "precise taser bolt"

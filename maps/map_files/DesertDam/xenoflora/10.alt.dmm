@@ -1,0 +1,791 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bE" = (
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/alienjar,
+/turf/open/floor/whitegreencorner/east,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"bT" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ce" = (
+/obj/structure/bed/bedroll,
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/valley/valley_labs)
+"cz" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Xenoflora"
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"dl" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_labs)
+"dB" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ep" = (
+/obj/structure/surface/table,
+/obj/item/tool/shovel/spade,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/whitegreen/southeast,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ex" = (
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"eB" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/desert_dam/exterior/valley/valley_labs)
+"ff" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_labs)
+"fv" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/whitegreen/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"fX" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper,
+/obj/item/tool/pen,
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"gt" = (
+/obj/structure/machinery/door/window/southleft{
+	dir = 1
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ha" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_10"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
+"jj" = (
+/obj/structure/machinery/light,
+/obj/item/clothing/suit/storage/labcoat,
+/obj/structure/surface/rack,
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"jz" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_labs)
+"jS" = (
+/obj/structure/prop/brazier/frame/full/campfire/smolder,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_labs)
+"ki" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 21
+	},
+/obj/item/tool/shovel/spade,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"kk" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_labs)
+"km" = (
+/obj/structure/machinery/door/window/southleft,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"lP" = (
+/turf/open/floor/whitegreencorner/east,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"lZ" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 21
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"mr" = (
+/obj/item/trash/boonie,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
+"mF" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"nM" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/floor/whitegreen/west,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"pz" = (
+/obj/structure/fence,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
+"qO" = (
+/obj/item/trash/cheesie{
+	pixel_x = 8
+	},
+/obj/item/trash/uscm_mre{
+	pixel_y = -3;
+	pixel_x = -5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
+"rO" = (
+/obj/structure/window/reinforced,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"sd" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
+"sI" = (
+/turf/open/floor/whitegreen/northeast,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"td" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/whitegreen/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"tl" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"tm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/glasses/science,
+/obj/effect/spawner/random/pills/highchance,
+/turf/open/floor/whitegreen/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"tr" = (
+/obj/structure/machinery/biogenerator,
+/turf/open/floor/green/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"uo" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_labs)
+"vM" = (
+/obj/structure/window/reinforced,
+/turf/open/floor/whitegreen/west,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ws" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_labs)
+"wY" = (
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/valley/valley_labs)
+"xm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/whitegreen/west,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"xD" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/centrifuge{
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/turf/open/floor/whitegreenfull,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"yR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"zz" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/valley/valley_labs)
+"Ad" = (
+/obj/structure/machinery/botany/extractor{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/turf/open/floor/green/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"AI" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/reagent_analyzer,
+/turf/open/floor/whitegreen/west,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"AP" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Bk" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffeecup,
+/turf/open/floor/whitegreen/southwest,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"BQ" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Cs" = (
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = -7
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
+"DG" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Ek" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Xenoflora"
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Eo" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/glass/beaker{
+	pixel_x = 8
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/whitegreen/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Fh" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_labs)
+"Fk" = (
+/obj/structure/machinery/seed_extractor,
+/turf/open/floor/green/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Fm" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Fq" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/pouch/vials,
+/turf/open/floor/whitegreen/west,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Gg" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whitegreen/east,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"GC" = (
+/obj/structure/closet/wardrobe/science_white,
+/turf/open/floor/whitegreen/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"GZ" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"HC" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/gloves/latex,
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Jj" = (
+/obj/structure/machinery/vending/hydronutrients,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/whitegreenfull,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Kb" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/glass/beaker/vial,
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/turf/open/floor/whitegreen/west,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Kc" = (
+/turf/template_noop,
+/area/template_noop)
+"Md" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 21
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"MQ" = (
+/obj/structure/machinery/light,
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"MT" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_labs)
+"NN" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"OP" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/hallway)
+"Pb" = (
+/obj/structure/machinery/door/window/southleft{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Qi" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Qy" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Sa" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"So" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Ss" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
+"TK" = (
+/obj/structure/filingcabinet/filingcabinet{
+	density = 0;
+	layer = 2.9;
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/obj/structure/filingcabinet/filingcabinet{
+	density = 0;
+	layer = 2.9;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/item/prop/alien/hugger,
+/turf/open/floor/whitegreen/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Un" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pills/highchance,
+/turf/open/floor/whitegreencorner,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Ut" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/whitegreen/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Uw" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"UN" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_labs)
+"VM" = (
+/turf/open/floor/whitegreencorner/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"VV" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"WY" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_labs)
+"Xe" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/whitegreen/north,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"XI" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/valley_labs)
+"Yw" = (
+/turf/open/floor/whitegreencorner/west,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Yy" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_labs)
+"YG" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/white,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Zd" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/tool/pen{
+	pixel_x = 6
+	},
+/obj/item/tool/stamp{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/turf/open/floor/whitegreen,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"Zn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/pouch/chem,
+/turf/open/floor/whitegreen/northwest,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+"ZN" = (
+/turf/open/floor/whitegreencorner,
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
+
+(1,1,1) = {"
+Fm
+Fm
+Fm
+Fm
+Fm
+Fm
+Fm
+Fm
+Fm
+Fm
+Kc
+Kc
+Kc
+"}
+(2,1,1) = {"
+Fm
+Zn
+Kb
+xm
+vM
+nM
+AI
+Fq
+Bk
+Fm
+Kc
+Kc
+Kc
+"}
+(3,1,1) = {"
+Fm
+Eo
+GZ
+ex
+km
+gt
+ex
+Qy
+Zd
+OP
+Kc
+Kc
+Kc
+"}
+(4,1,1) = {"
+Fm
+tm
+ex
+ex
+rO
+BQ
+ex
+ex
+yR
+OP
+Kc
+Kc
+Kc
+"}
+(5,1,1) = {"
+Fm
+Ut
+Pb
+Uw
+bT
+Qi
+dB
+Pb
+NN
+OP
+Kc
+Kc
+Kc
+"}
+(6,1,1) = {"
+Fm
+Xe
+ex
+ex
+ex
+ex
+ex
+ex
+tl
+OP
+Kc
+Kc
+Kc
+"}
+(7,1,1) = {"
+Fm
+td
+So
+Md
+ex
+ex
+ex
+ex
+jj
+OP
+Kc
+Kc
+Kc
+"}
+(8,1,1) = {"
+Fm
+TK
+ex
+lZ
+ki
+AP
+ex
+ex
+HC
+Fm
+XI
+jS
+ce
+"}
+(9,1,1) = {"
+Fm
+GC
+ex
+ex
+Un
+bE
+ex
+ex
+VV
+Fm
+Cs
+qO
+sd
+"}
+(10,1,1) = {"
+Fm
+Fm
+ex
+Ek
+Fm
+Fm
+ex
+Ek
+Fm
+Fm
+mr
+sd
+sd
+"}
+(11,1,1) = {"
+Fm
+fv
+ex
+ex
+Yw
+VM
+ex
+ex
+MQ
+Fm
+pz
+pz
+pz
+"}
+(12,1,1) = {"
+Fm
+Jj
+ex
+ex
+ex
+ex
+ex
+ex
+Yw
+DG
+ha
+sd
+sd
+"}
+(13,1,1) = {"
+DG
+Ad
+ex
+ex
+mF
+mF
+ex
+ex
+ex
+cz
+MT
+jz
+ws
+"}
+(14,1,1) = {"
+DG
+Fk
+ex
+ex
+mF
+mF
+ex
+ex
+ex
+ex
+WY
+ff
+uo
+"}
+(15,1,1) = {"
+DG
+tr
+ex
+YG
+mF
+mF
+ex
+ex
+ZN
+DG
+Ss
+kk
+uo
+"}
+(16,1,1) = {"
+Fm
+xD
+ex
+ex
+ex
+ex
+ex
+ex
+fX
+Fm
+Sa
+kk
+uo
+"}
+(17,1,1) = {"
+DG
+sI
+Gg
+lP
+ex
+ex
+ZN
+Gg
+ep
+Fm
+Sa
+kk
+uo
+"}
+(18,1,1) = {"
+DG
+DG
+Fm
+DG
+ex
+Ek
+DG
+Fm
+Fm
+Fm
+wY
+kk
+uo
+"}
+(19,1,1) = {"
+zz
+eB
+wY
+dl
+Fh
+Yy
+UN
+UN
+Sa
+Sa
+sd
+kk
+uo
+"}

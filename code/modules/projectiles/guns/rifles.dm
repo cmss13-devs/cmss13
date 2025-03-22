@@ -164,12 +164,13 @@
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/attached_gun/shotgun/af13,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 
 	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/nsg,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/extended_barrel,
 	)
@@ -185,7 +186,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 13, "rail_y" = 22, "under_x" = 21, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 9, "rail_y" = 22, "under_x" = 21, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_config_values()
 	..()
@@ -209,6 +210,13 @@
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
+
+/obj/item/weapon/gun/rifle/nsg23/cqc
+	starting_attachment_types = list(
+		/obj/item/attachable/attached_gun/shotgun/af13,
+		/obj/item/attachable/suppressor/nsg,
+		/obj/item/attachable/reflex,
+	)
 
 //has no scope or underbarrel
 /obj/item/weapon/gun/rifle/nsg23/stripped
@@ -273,6 +281,10 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+
+/obj/item/weapon/gun/rifle/m41a/elite/commando //special version for commandos, has preset attachments.
+
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle, /obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip, /obj/item/attachable/heavy_barrel)
 
 /obj/item/weapon/gun/rifle/m41a/elite/whiteout //special version for whiteout, has preset attachments and HEAP mag loaded.
 	current_mag = /obj/item/ammo_magazine/rifle/heap

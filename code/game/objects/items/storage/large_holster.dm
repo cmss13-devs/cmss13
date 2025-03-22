@@ -245,8 +245,7 @@
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39())
 
 /obj/item/storage/large_holster/m39/full/elite/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite())
-
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact())
 
 /obj/item/storage/large_holster/fuelpack
 	name = "\improper Broiler-T flexible refueling system"

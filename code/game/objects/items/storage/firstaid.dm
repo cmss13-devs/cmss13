@@ -279,9 +279,18 @@
 	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
 	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
 	new /obj/item/stack/medical/splint/nano(src)
-	new /obj/item/storage/surgical_case/whiteout(src)
+	new /obj/item/storage/surgical_case/elite/whiteout(src)
 	new /obj/item/storage/syringe_case/whiteout(src)
 	new /obj/item/device/defibrillator/compact(src)
+	new /obj/item/roller/surgical(src)
+
+/obj/item/storage/firstaid/whiteout/medical/commando/fill_preset_inventory()
+	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/storage/syringe_case/commando(src)
+	new /obj/item/storage/surgical_case/elite/commando(src)
 	new /obj/item/roller/surgical(src)
 
 /obj/item/storage/firstaid/rad
@@ -395,6 +404,13 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
 
+/obj/item/storage/syringe_case/commando
+
+/obj/item/storage/syringe_case/commando/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/ultrazine( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
+
 //---------SURGICAL CASE---------
 
 
@@ -434,7 +450,29 @@
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)
 
-/obj/item/storage/surgical_case/whiteout/fill_preset_inventory()
+/obj/item/storage/surgical_case/elite
+	name = "elite surgical case"
+	desc = "It's an expensive looking medical case for storing compactly placed field surgical tools. Has a bright reflective W-Y logo on it.\
+		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
+		\nStep one: Open an incision at the site with the scalpel.\
+		\nStep two: Clamp bleeders with the hemostat.\
+		\nStep three: Draw back the skin with the retracter.\
+		\nStep four: Patch the damaged vein with a surgical line.\
+		\nStep five: Close the incision with a surgical line."
+	icon_state = "surgical_case_elite"
+	storage_slots = 5
+
+/obj/item/storage/surgical_case/elite/commando/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
+
+/obj/item/storage/surgical_case/elite/whiteout
+	storage_slots = 3
+
+/obj/item/storage/surgical_case/elite/whiteout/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel/manager(src)
 	new /obj/item/tool/surgery/surgical_line(src)
 	new /obj/item/tool/surgery/synthgraft(src)
@@ -448,12 +486,7 @@
 		\nStep three: Draw back the skin with the retracter.\
 		\nStep four: Patch the damaged vein with a surgical line.\
 		\nStep five: Close the incision with a surgical line."
-	icon = 'icons/obj/items/storage/medical.dmi'
-	icon_state = "surgical_case"
-	throw_speed = SPEED_FAST
-	throw_range = 8
 	storage_slots = 5
-	w_class = SIZE_SMALL
 	can_hold = list(
 		/obj/item/tool/surgery/scalpel,
 		/obj/item/tool/surgery/hemostat,

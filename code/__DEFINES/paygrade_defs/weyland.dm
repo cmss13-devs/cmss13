@@ -82,3 +82,17 @@
 
 /// PMC-DIR, PMC Director
 #define PAY_SHORT_PMC_DIR "PMC-DIR"
+
+// Weyland Yutani Commandos
+
+/// WY-COM, Weyland-Yutani Commando
+#define PAY_SHORT_WY_COM "WY-COM"
+
+/// WY-COMLD Weyland-Yutani Commando Leader
+#define PAY_SHORT_WY_COMLD "WY-COMLD"
+
+/// WY-GUN, Weyland-Yutani Commando Gunner
+#define PAY_SHORT_WY_GUN "WY-GUN"
+
+/// WY-DOG, Weyland-Yutani Dogcatcher
+#define PAY_SHORT_WY_DOG "WY-DOG"

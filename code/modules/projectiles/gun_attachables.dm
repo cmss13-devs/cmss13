@@ -278,7 +278,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/suppressor/New()
 	..()
 	damage_falloff_mod = 0.1
-	attach_icon = pick("suppressor_a","suppressor2_a")
+
+/obj/item/attachable/suppressor/nsg
+	name = "BL11 Firearm Muffler"
+	desc = "Threaded steel barrel attachment; slows the escape of propellant gasses, resulting in muffled weapon fire."
+	icon_state = "bl11"
+	attach_icon = "bl11_a"
 
 /obj/item/attachable/suppressor/xm40_integral
 	name = "\improper XM40 integral suppressor"

@@ -32,6 +32,7 @@
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "upgradedkitbox"
 	desc = "This kit holds upgraded trauma and burn kits, for critical injuries."
+	w_class = SIZE_SMALL
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 2
 

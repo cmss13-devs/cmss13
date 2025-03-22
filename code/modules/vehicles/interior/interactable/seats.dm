@@ -137,7 +137,7 @@
 	var/image/over_image = null
 
 /obj/structure/bed/chair/comfy/vehicle/driver/armor/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -154,12 +154,15 @@
 	if(buckled_mob)
 		overlays += over_image
 
+/obj/structure/bed/chair/comfy/vehicle/driver/armor/wy
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor
 	desc = "Military-grade seat for armored vehicle gunner with some controls, switches and indicators."
 	var/image/over_image = null
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -200,6 +203,8 @@
 	if(buckled_mob)
 		overlays += over_image
 
+/obj/structure/bed/chair/comfy/vehicle/gunner/armor/wy
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
 //armored vehicles support gunner seat
 
@@ -219,7 +224,7 @@
 	. = ..()
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -286,9 +291,15 @@
 				return
 		to_chat(M, SPAN_WARNING("ERROR. NO FPW FOUND, TELL A DEV!"))
 
+/obj/structure/bed/chair/comfy/vehicle/support_gunner/wy
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/second
 	name = "right support gunner's seat"
 	seat = VEHICLE_SUPPORT_GUNNER_TWO
+
+/obj/structure/bed/chair/comfy/vehicle/support_gunner/second/wy
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
 //ARMORED VEHICLES PASSENGER SEATS
 //Unique feature - you can put two seats on same tile with different pixel_offsets, humans will be buckled with respective offsets
@@ -316,7 +327,7 @@
 
 /obj/structure/bed/chair/vehicle/Initialize()
 	. = ..()
-	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
+	chairbar = image(icon, "vehicle_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
@@ -448,4 +459,4 @@
 /obj/structure/bed/chair/vehicle/white
 	name = "passenger seat"
 	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
-	icon = 'icons/obj/vehicles/interiors/whitechair.dmi'
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'

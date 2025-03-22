@@ -1012,7 +1012,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/wy_invis_droid
 	name = "M7X Mark II optical camouflage powerpack"
-	desc = "A heavy-duty powerpack carried by Weyland-Yutani combat androids. Powers the reverse-engineered optical camouflage system utilized by M7X Mark II Ape Suit."
+	desc = "A heavy-duty powerpack carried by Weyland-Yutani combat androids. Powers the reverse-engineered optical camouflage system utilized by M7X Mark II Apesuit."
 	icon_state = "invis_android_powerpack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
 	item_icons = list(
@@ -1254,15 +1254,57 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/molle/backpack/surv
 	worn_accessible = FALSE
 
-/obj/item/storage/backpack/commando
-	name = "commando bag"
-	desc = "A heavy-duty bag carried by Weyland-Yutani commandos."
-	icon_state = "commandopack"
+//----------WY----------
+
+/obj/item/storage/backpack/pmc
+	name = "\improper PMC combat pack"
+	desc = "A small, lightweight pack for expeditions and short-range operations, designed for Weyland-Yutani PMCs."
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
+	icon_state = "pmc_satchel"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
 	)
 	worn_accessible = TRUE
+	max_storage_space = 15
+
+/obj/item/storage/backpack/pmc/medic
+	name = "\improper PMC medic combat pack"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
+	icon_state = "pmc_medic_satchel"
+
+/obj/item/storage/backpack/pmc/medic/guard
+	icon_state = "pmc_guard_medic_satchel"
+
+/obj/item/storage/backpack/pmc/backpack
+	name = "\improper PMC combat backpack"
+	desc = "Ergonomic, protected, high capacity backpack, designed for Weyland-Yutani PMCs."
+	icon_state = "pmc_backpack"
+	max_storage_space = 21
+
+/obj/item/storage/backpack/pmc/backpack/commando
+	name = "\improper W-Y Commano combat backpack"
+	desc = "Ergonomic, protected, high capacity backpack, designed for Weyland-Yutani Commandos."
+	icon_state = "commando_backpack"
+
+/obj/item/storage/backpack/pmc/backpack/commando/leader
+	icon_state = "commando_leader_backpack"
+
+/obj/item/storage/backpack/marine/engineerpack/ert/pmc
+	name = "\improper PMC technician welderpack"
+	desc = "Ergonomic, protected, high capacity backpack, designed for Weyland-Yutani PMCs. Features a small fueltank for quick blowtorch refueling."
+	icon_state = "pmc_welderpack"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	worn_accessible = TRUE
+	max_fuel = 180
+
+/obj/item/storage/backpack/pmc/backpack/commando/apesuit
+	name = "dogcatcher bag"
+	desc = "A heavy-duty bag carried by Weyland-Yutani dogcatchers."
+	icon_state = "apesuit_pack"
 
 /obj/item/storage/backpack/combat_droid
 	name = "combat android powerpack"

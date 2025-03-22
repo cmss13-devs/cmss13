@@ -181,6 +181,8 @@
 		var/obj/structure/fence/electrified/fence = target
 		if (fence.cut)
 			. = FALSE
+		if(fence.electrified)
+			. = FALSE
 		else
 			src.visible_message(SPAN_DANGER("[src] smashes into [fence]!"))
 			fence.cut_grille()

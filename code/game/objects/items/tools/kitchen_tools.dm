@@ -51,6 +51,8 @@
 
 	if (reagents.total_volume > 0)
 		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
+		if(issynth(M) || isyautja(M))
+			fullness = 200 //Synths and yautja never get full
 		if(fullness > NUTRITION_HIGH)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return

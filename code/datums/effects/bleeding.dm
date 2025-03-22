@@ -70,14 +70,15 @@
 		if(affected_mob.reagents) // Annoying QC check
 			if(affected_mob.reagents.get_reagent_amount("thwei"))
 				blood_loss -= THWEI_BLOOD_REDUCTION
-			if(affected_mob.bodytemperature <= (BODYTEMP_CRYO_LIQUID_THRESHOLD) && (affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")) )
+
+			if(affected_mob.bodytemperature <= BODYTEMP_CRYO_LIQUID_THRESHOLD && (affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")) )
 				var/obj/structure/machinery/cryo_cell/cryo = affected_mob.loc
 				if(istype(cryo) && cryo.on && cryo.operable())
 					blood_loss -= CRYO_BLOOD_REDUCTION
 
 			var/mob/living/carbon/human/affected_human = affected_mob
 			if(istype(affected_human))
-				///Changed CHEM_EFFECT_NO_BLEEDING effect to also cure bleeding via blood_loss reduction.
+				//CHEM_EFFECT_NO_BLEEDING effect cures bleeding via blood_loss reduction.
 				if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 					buffer_blood_loss = 0
 					blood_loss -= CRYO_BLOOD_REDUCTION
@@ -112,7 +113,7 @@
 
 		var/mob/living/carbon/human/affected_human = affected_mob
 		if(istype(affected_human))
-			///Changed CHEM_EFFECT_NO_BLEEDING effect to also cure bleeding via blood_loss reduction. Preferably this would be modified by the property level
+			//CHEM_EFFECT_NO_BLEEDING effect cure bleeding via blood_loss reduction. Preferably this would be modified by the property level
 			if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 				blood_loss -= CRYO_BLOOD_REDUCTION
 				return FALSE

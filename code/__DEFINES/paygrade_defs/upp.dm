@@ -63,3 +63,8 @@
 
 /// UO10, Army General/General Armii
 #define PAY_SHORT_UO10 "UO10"
+
+//UPP Colonists
+
+/// UCM, Militsiya
+#define PAY_SHORT_UCM "UCM"

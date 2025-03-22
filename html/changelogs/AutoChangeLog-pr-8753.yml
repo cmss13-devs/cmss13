@@ -1,7 +1,0 @@
-author: "Aurallianz"
-delete-after: True
-changes:
-  - rscadd: "tracking to the CMP headset (CO,XO,MW)"
-  - bugfix: "added propper warden headset (no-longer slumming it with the CMPs')"
-  - rscadd: "added tracking to the warden headset (CO,XO,CMP)"
-  - rscadd: "added a Military Warden Tracker accessible by (MP Headset, CMP Headset, Honor Guard headset) (new sprite added)"

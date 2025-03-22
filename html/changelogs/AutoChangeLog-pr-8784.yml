@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Dead bodies that have larva that can burst soon can be dragged"
-  - balance: "Bursted bodies can no longer be dragged by xenos"
-  - balance: "Xeno traps can no longer be placed under monorail tracks, conveyors, engineer lights, and dead bodies"

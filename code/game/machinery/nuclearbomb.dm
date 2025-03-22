@@ -615,7 +615,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 		//preds part
 		var/time_left = duration2text_sec(floor(rand(decryption_time - decryption_time / 10, decryption_time + decryption_time / 10)))
-		elder_overseer_message(SPAN_YAUTJABOLDBIG("You have approximately [time_left] seconds to abandon the hunting grounds before the human purification device is able to be activated."))
+		elder_overseer_message("You have approximately [time_left] seconds to abandon the hunting grounds before the human purification device is able to be activated.")
 
 		//xenos part
 		var/warning = "We are almost out of time, STOP THEM."

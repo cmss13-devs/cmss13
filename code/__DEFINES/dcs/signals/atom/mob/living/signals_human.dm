@@ -75,9 +75,6 @@
 /// From /obj/item/proc/dig_out_shrapnel() : ()
 #define COMSIG_HUMAN_SHRAPNEL_REMOVED "human_shrapnel_removed"
 
-// From /obj/limb/proc/apply_splints() : (mob/living/user, obj/limb/target_limb)
-#define COMSIG_HUMAN_SPLINT_APPLIED "human_splint_applied"
-
 /// From /obj/item/reagent_container/pill/attack() : (mob/living/carbon/human/attacked_mob)
 #define COMSIG_HUMAN_PILL_FED "human_pill_fed"
 
@@ -85,4 +82,4 @@
 // Sends to attacking mob, successful TRUE or FALSE
 #define COMSIG_HUMAN_CPR_PERFORMED "human_cpr_performed"
 
-#define COMSIG_HUMAN_TUTORIAL_HEALED "human_tutorial_healed"
+#define COMSIG_HUMAN_HM_TUTORIAL_TREATED "human_hm_tutorial_treated"

@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 /mob/living/carbon/human/realistic_dummy/updatehealth()
 	. = ..()
 	if(health >= 70)
-		SEND_SIGNAL(src, COMSIG_HUMAN_TUTORIAL_HEALED)
+		SEND_SIGNAL(src, COMSIG_HUMAN_HM_TUTORIAL_TREATED)
 
 /// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
 /mob/living/carbon/human/professor_dummy/Initialize()

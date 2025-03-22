@@ -21,6 +21,11 @@
 #define PATIENT_TYPE_ORGAN 2
 #define PATIENT_TYPE_TOXIN 3
 
+/* Defines for the health_tasks_handler proc, tracking remaining complex injuries to be treated in a patient */
+#define INTERNAL_BLEEDING "IB"
+#define SUTURE "suture"
+#define FRACTURE "fracture"
+
 /datum/tutorial/marine/hospital_corpsman_sandbox
 	name = "Marine - Hospital Corpsman (Sandbox)"
 	desc = "Test your medical skills against an endless wave of wounded Marines!"
@@ -50,7 +55,7 @@
 	/// Spawn point for all NPCs except the CMO
 	var/turf/agent_spawn_location
 	/// List of injury severity levels in sequence
-	var/list/difficulties = list(
+	var/static/list/difficulties = list(
 		TUTORIAL_HM_INJURY_SEVERITY_BOOBOO,
 		TUTORIAL_HM_INJURY_SEVERITY_MINOR,
 		TUTORIAL_HM_INJURY_SEVERITY_ROUTINE,
@@ -76,7 +81,7 @@
 	/// Wave number when the last mass-casualty (nightmare) phase triggered. Will wait 3 waves before rolling again
 	var/last_masscas_round = 1
 	/// Lists possible chemicals that can appear pre-medicated in patient NPCs in harder difficulties
-	var/list/datum/reagent/medical/premeds = list(
+	var/static/list/datum/reagent/medical/premeds = list(
 		/datum/reagent/medical/tramadol,
 		/datum/reagent/medical/bicaridine,
 		/datum/reagent/medical/kelotane,
@@ -92,7 +97,7 @@
 	init_mob()
 	init_npcs()
 	message_to_player("Welcome to the Hospital Corpsman tutorial sandbox mode!")
-	message_to_player("Gear up in your prefered HM kit, then press the orange 'Ready Up' arrow at the top of your HUD to begin the first round!")
+	message_to_player("Gear up in your preferred HM kit, then press the orange 'Ready Up' arrow at the top of your HUD to begin the first round!")
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_round_progression()
 
@@ -119,12 +124,11 @@
 	// Will only roll beyond wave 3, and 3 waves after the previous resupply phase.
 	if(prob(20) && (survival_wave >= (last_resupply_round + 3)))
 		begin_supply_phase()
-		last_resupply_round = survival_wave
 		return
 	survival_wave++
 	// 1 in 5 chance per round to trigger a mass-cas (NIGHTMARE) phase
 	// Will only roll beyond wave 3, and 3 waves after the previous mass-cas phase.
-	if(prob(20) && (survival_wave >= (last_resupply_round + 3)))
+	if(prob(20) && (survival_wave >= (last_masscas_round + 3)))
 		stage = TUTORIAL_HM_PHASE_NIGHTMARE
 		// increases difficulty by 2 levels, but not beyond the max.
 		for(var/i in 1 to 2)
@@ -153,7 +157,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
 	var/turf/boundry = get_turf(loc_from_corner(4, 1))
 	if(tutorial_mob.x <= boundry.x)
-		message_to_player("Please exit the preperations room before progressing into the next round!")
+		message_to_player("Please exit the preparations room before progressing into the next round!")
 		return
 	prep_door.close(TRUE)
 	prep_door.lock(TRUE)
@@ -168,11 +172,15 @@
 	prep_door.open()
 	stage = TUTORIAL_HM_PHASE_MAIN // just in case it wasnt already
 
-	message_to_player("Phew! We have entered a resupply phase of the tutorial!")
-	message_to_player("Use this rare opportunity to refill, restock, and resupply yourself for future rounds.")
-	message_to_player("Remember, on the field, immediate resupply will not always be possible! You won't know for certain when your next chance will arrive, so stock up while you can!")
-	message_to_player("When you are ready, leave the supply room, then click the 'Ready Up' action on the top left of your screen to begin your next round.")
+	if(last_resupply_round == 1)
+		message_to_player("Phew! We have entered a resupply phase of the tutorial!")
+		message_to_player("Use this rare opportunity to refill, restock, and resupply yourself for future rounds.")
+		message_to_player("Remember, on the field, immediate resupply will not always be possible! You won't know for certain when your next chance will arrive, so stock up while you can!")
+		message_to_player("When you are ready, leave the supply room, then click the 'Ready Up' action on the top left of your screen to begin your next round.")
+	else
+		message_to_player("Now enterering a resupply phase. Stock up while you can!")
 
+	last_resupply_round = survival_wave
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/spawn_agents()
@@ -181,7 +189,7 @@
 	for(var/i in 1 to (rand(min_survival_agents, max_survival_agents)))
 		var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
 		arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
-		var/turf/dropoff_point = loc_from_corner(rand(6, 8), 1, rand(1, 3))	// Picks a random turf to move the NPC to
+		var/turf/dropoff_point = loc_from_corner(rand(6, 8), rand(1, 3))	// Picks a random turf to move the NPC to
 		agents[active_agent] = dropoff_point
 		active_agent.a_intent = INTENT_DISARM
 		simulate_condition(active_agent)
@@ -212,16 +220,16 @@
 	if(patient_type == PATIENT_TYPE_ORGAN)	// applies organ damage AS WELL as mundane damage if type 2
 		var/datum/internal_organ/organ = pick(target.internal_organs)
 		target.apply_internal_damage(rand(1,(survival_difficulty*3.75)), "[organ.name]")
-	if(patient_type == PATIENT_TYPE_TOXIN)	// applies toxin damage AS WELL as mundane damage if type 3
+	else if(patient_type == PATIENT_TYPE_TOXIN)	// applies toxin damage AS WELL as mundane damage if type 3
 		target.setToxLoss(rand(1,10*survival_difficulty))
 
-	if(prob(15))	// Simulates premedicated patients
+	if(prob(40))	// Simulates premedicated patients
 		var/datum/reagent/medical/reagent = pick(premeds)
 		target.reagents.add_reagent(reagent.id, rand(5, reagent.overdose - 1))	// OD safety
 
 	target.updatehealth()
 	target.UpdateDamageIcon()
-	RegisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(final_health_checks))
+	RegisterSignal(target, COMSIG_HUMAN_HM_TUTORIAL_TREATED, PROC_REF(final_health_checks))
 	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))	// perma detection
 
 	RegisterSignal(target, COMSIG_LIVING_REJUVENATED, PROC_REF(make_agent_leave)) // for debugging
@@ -233,18 +241,18 @@
 	// Makes sure complex injuries are treated once 70% health is reached
 
 	var/list/healing_tasks = list()
-	UnregisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED)
+	UnregisterSignal(target, COMSIG_HUMAN_HM_TUTORIAL_TREATED)
 	var/list/injury_type = list()
-	for(var/obj/limb/limb in target.limbs)
+	for(var/obj/limb/limb as anything in target.limbs)
 		if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
-			injury_type |= "fracture"
+			injury_type |= FRACTURE
 			healing_tasks[limb] = injury_type
-			RegisterSignal(limb, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(health_tasks_handler))
+			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler))
 		if(limb.can_bleed_internally)
 			for(var/datum/wound/wound as anything in limb.wounds)
 				if(!wound.internal)
 					return
-				injury_type |= "IB"
+				injury_type |= INTERNAL_BLEEDING
 				healing_tasks[limb] = injury_type
 				RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE) // yeah yeah, give me a break
 	if(!length(healing_tasks) || bypass)
@@ -258,28 +266,28 @@
 	var/list/healing_tasks = agent_healing_tasks[target]
 	var/list/injury_type = list()
 	var/obj/limb/limb
-	if(istype(source, /obj/limb)) // swaps around the variables from COMSIG_HUMAN_SPLINT_APPLIED to make them consistent
+	if(istype(source, /obj/limb)) // swaps around the variables from COMSIG_LIVING_LIMB_SPLINTED to make them consistent
 		limb = source
 		var/target_redirect = limb.owner
 		health_tasks_handler(target, target_redirect)
-		UnregisterSignal(limb, COMSIG_HUMAN_SPLINT_APPLIED)
+		UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)
 		return
 	if(surgery)
 		limb = surgery.affected_limb
-		if(surgery.name == "Internal Bleeding Repair")
+		if(istype(surgery, /datum/surgery/internal_bleeding))
 			for(limb in healing_tasks)
 				injury_type = healing_tasks[surgery.affected_limb]
-				injury_type -= "IB"
-				injury_type |= "suture"
-		if(surgery.name == "Suture Incision")
+				injury_type -= INTERNAL_BLEEDING
+				injury_type |= SUTURE
+		if(istype(surgery, /datum/surgery/suture_incision))
 			for(limb in healing_tasks)
 				injury_type = healing_tasks[surgery.affected_limb]
-				if("suture" in injury_type)
-					injury_type -= "suture"
+				if(SUTURE in injury_type)
+					injury_type -= SUTURE
 	for(limb in healing_tasks)
 		injury_type = healing_tasks[limb]
-		if(("fracture" in injury_type) && (limb.status & LIMB_BROKEN) && (limb.status & LIMB_SPLINTED))
-			injury_type -= "fracture"
+		if((FRACTURE in injury_type) && (limb.status & LIMB_BROKEN) && (limb.status & LIMB_SPLINTED))
+			injury_type -= FRACTURE
 		if(!length(injury_type) && limb) // makes sure something DID exist on the list
 			healing_tasks -= limb
 	if(!length(healing_tasks))
@@ -288,8 +296,8 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_agent_status()
 
-	for(var/mob/living/carbon/human/target in agents)
-		if(target.stat > 0) // are they awake?
+	for(var/mob/living/carbon/human/target as anything in agents)
+		if(target.stat != CONSCIOUS) // are they awake?
 			var/mob/living/carbon/human/dragging_agent = new(target.loc)
 			init_dragging_agent(dragging_agent)
 			dragging_agent.do_pull(target)
@@ -309,7 +317,7 @@
 	if(prob(25))
 		target.emote("medic")
 		return
-	for(var/obj/limb/limb in target.limbs)
+	for(var/obj/limb/limb as anything in target.limbs)
 		if(limb.status & LIMB_BROKEN)
 			var/targetlimb = limb.display_name
 			help_me |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
@@ -321,7 +329,7 @@
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_dragging_agent()
 
 	listclearnulls(dragging_agents)
-	for(var/mob/living/carbon/human/dragging_agent in dragging_agents)
+	for(var/mob/living/carbon/human/dragging_agent as anything in dragging_agents)
 		var/mob/living/carbon/human/target = dragging_agents[dragging_agent]
 		var/turf/dropoff_point = agents[target]
 		if(locate(dragging_agent) in agent_spawn_location)
@@ -350,7 +358,7 @@
 
 	if(dragging_agent in dragging_agents)	// failsafe in case the dragging NPC never had their movement code stopped
 		dragging_agents -= dragging_agent
-	dragging_agent.density = 0
+	dragging_agent.density = FALSE
 	QDEL_IN(dragging_agent, 2.5 SECONDS)
 	animate(dragging_agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 
@@ -383,7 +391,7 @@
 
 	UnregisterSignal(agent, COMSIG_LIVING_REJUVENATED)
 	UnregisterSignal(agent, COMSIG_HUMAN_SET_UNDEFIBBABLE)
-	UnregisterSignal(agent, COMSIG_HUMAN_TUTORIAL_HEALED)
+	UnregisterSignal(agent, COMSIG_HUMAN_HM_TUTORIAL_TREATED)
 	agent.updatehealth()
 	if(!bypass)
 		if(agent.undefibbable == TRUE)
@@ -397,9 +405,9 @@
 		active_agents -= agent
 	QDEL_IN(agent, 2.5 SECONDS)
 	animate(agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
-	for(var/obj/item/clothing/suit/storage/marine/medium/armor in cleanup)
+	for(var/obj/item/clothing/suit/storage/marine/medium/armor as anything in cleanup)
 		item_cleanup(armor)
-	if((length(agents)) == 0)
+	if(!length(agents))
 		INVOKE_ASYNC(src, PROC_REF(handle_round_progression))
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_booboo_agent()
@@ -425,7 +433,7 @@
 	active_agent.updatehealth()
 	active_agent.UpdateDamageIcon()
 	active_agents |= active_agent
-	RegisterSignal(active_agent, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(make_agent_leave))
+	RegisterSignal(active_agent, COMSIG_HUMAN_HM_TUTORIAL_TREATED, PROC_REF(make_agent_leave))
 	RegisterSignal(active_agent, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_evac(datum/source, mob/living/carbon/human/target)
@@ -434,10 +442,10 @@
 
 	var/list/status_message = list()
 
-	for(var/datum/reagent/medical/chemical in target.reagents.reagent_list)
+	for(var/datum/reagent/medical/chemical as anything in target.reagents.reagent_list)
 		if(chemical.volume >= chemical.overdose_critical)
 			status_message |= "Critical [chemical.name] overdose detected"
-	for(var/datum/internal_organ/organ in target.internal_organs)
+	for(var/datum/internal_organ/organ as anything in target.internal_organs)
 		if(organ.damage >= organ.min_broken_damage)
 			if((locate(/datum/reagent/medical/peridaxon) in target.reagents.reagent_list) || (target.stat == DEAD))
 				status_message |= "Ruptured [organ.name] detected"
@@ -450,9 +458,10 @@
 		medevac_bed.balloon_alert_to_viewers("Error! Unable to self-evacuate!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
-	if(length(status_message) > 0)
+	if(length(status_message))
 		medevac_bed.balloon_alert_to_viewers("[pick(status_message)]! Evacuating patient!!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
-		playsound(medevac_bed.loc, pick(90;'sound/machines/ping.ogg',10;'sound/machines/juicer.ogg'), 20)
+		playsound(medevac_bed.loc, pick_weight(list('sound/machines/ping.ogg' = 9, 'sound/machines/juicer.ogg' = 1)), 20)
+		make_agent_leave(target, TRUE)
 		addtimer(CALLBACK(src, PROC_REF(animate_medevac_bed), target), 2.7 SECONDS)
 	else
 		medevac_bed.balloon_alert_to_viewers("Error! Patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
@@ -462,16 +471,14 @@
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/animate_medevac_bed(mob/living/carbon/human/target)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac_bed)
-
-	flick("winched_stretcher", medevac_bed)
-	make_agent_leave(target, TRUE)
 	medevac_bed.update_icon()
+	flick("winched_stretcher", medevac_bed)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/process(delta_time)
 
-	if((length(dragging_agents)) > 0)
+	if(length(dragging_agents))
 		move_dragging_agent()
-	if((length(active_agents)) > 0)
+	if(length(active_agents))
 		move_active_agents()
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor)
@@ -484,7 +491,7 @@
 	else
 		cleanup -= armor
 		var/obj/item/storage/internal/armor_storage = locate(/obj/item/storage/internal) in armor
-		for (var/obj/item/item in armor_storage)
+		for(var/obj/item/item as anything in armor_storage)
 			armor_storage.remove_from_storage(item, get_turf(armor))
 		QDEL_IN(armor, 1 SECONDS)
 
@@ -528,144 +535,6 @@
 	QDEL_LIST(dragging_agents)
 	return ..()
 
-//------------GEAR VENDOR---------------
-
-GLOBAL_LIST_INIT(cm_vending_gear_medic_sandbox, list(
-		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
-		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-
-		list("FIELD SUPPLIES", 0, null, null, null),
-		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_RECOMMENDED),
-		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_RECOMMENDED),
-		list("Blood Bag (O-)", 4, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
-
-		list("FIRSTAID KITS", 0, null, null, null),
-		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
-		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
-		list("Fire Firstaid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
-		list("Toxin Firstaid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
-		list("Oxygen Firstaid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
-		list("Radiation Firstaid Kit", 6, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
-
-		list("PILL BOTTLES", 0, null, null, null),
-		list("Pill Bottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
-		list("Pill Bottle (Dexalin)", 5, /obj/item/storage/pill_bottle/dexalin, null, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Dylovene)", 5, /obj/item/storage/pill_bottle/antitox, null, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Inaprovaline)", 5, /obj/item/storage/pill_bottle/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Kelotane)", 5, /obj/item/storage/pill_bottle/kelotane, null, VENDOR_ITEM_RECOMMENDED),
-		list("Pill Bottle (Peridaxon)", 5, /obj/item/storage/pill_bottle/peridaxon, null, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Tramadol)", 5, /obj/item/storage/pill_bottle/tramadol, null, VENDOR_ITEM_RECOMMENDED),
-
-		list("AUTOINJECTORS", 0, null, null, null),
-		list("Autoinjector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Epinephrine)", 2, /obj/item/reagent_container/hypospray/autoinjector/adrenaline, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
-
-		list("MEDICAL UTILITIES", 0, null, null, null),
-		list("MS-11 Smart Refill Tank", 6, /obj/item/reagent_container/glass/minitank, null, VENDOR_ITEM_REGULAR),
-		list("FixOVein", 7, /obj/item/tool/surgery/FixOVein, null, VENDOR_ITEM_REGULAR),
-		list("Roller Bed", 4, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
-		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
-		list("Stasis Bag", 6, /obj/item/bodybag/cryobag, null, VENDOR_ITEM_REGULAR),
-
-		list("ARMORS", 0, null, null, null),
-		list("M3 B12 Pattern Marine Armor", 24, /obj/item/clothing/suit/storage/marine/medium/leader, null, VENDOR_ITEM_REGULAR),
-		list("M4 Pattern Armor", 16, /obj/item/clothing/suit/storage/marine/medium/rto, null, VENDOR_ITEM_REGULAR),
-
-		list("UTILITIES", 0, null, null, null),
-		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
-		list("Whistle", 3, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-
-		list("BINOCULARS", 0, null, null, null),
-		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
-
-		list("HELMET OPTICS", 0, null, null, null),
-		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
-
-		list("PAMPHLETS", 0, null, null, null),
-		list("Engineering Pamphlet", 15, /obj/item/pamphlet/skill/engineer, null, VENDOR_ITEM_REGULAR),
-
-	))
-
-/obj/structure/machinery/cm_vending/gear/medic/tutorial
-	req_access = null
-
-/obj/structure/machinery/cm_vending/gear/medic/tutorial/get_listed_products(mob/user)
-	return GLOB.cm_vending_gear_medic_sandbox
-
-//------------CLOTHING VENDOR---------------
-
-GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
-		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine/medic, /obj/item/clothing/shoes/marine/knife, /obj/item/clothing/gloves/marine), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Combat Sterile Gloves", 0, /obj/item/clothing/gloves/marine/medical, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
-		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-
-		list("ARMOR (CHOOSE 1)", 0, null, null, null),
-		list("Light Armor", 0, /obj/item/clothing/suit/storage/marine/light, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-		list("Medium Armor", 0, /obj/item/clothing/suit/storage/marine/medium, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Heavy Armor", 0, /obj/item/clothing/suit/storage/marine/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-
-		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("M10 Corpsman Helmet", 0, /obj/item/clothing/head/helmet/marine/medic, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("M10 White Corpsman Helmet", 0, /obj/item/clothing/head/helmet/marine/medic/white, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-
-		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
-		list("Medical Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
-
-		list("BELT (CHOOSE 1)", 0, null, null, null),
-		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
-		list("M276 Medical Storage Rig (Full)", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
-
-		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Medical Kit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Autoinjector Pouch", 0, /obj/item/storage/pouch/autoinjector, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First Responder Pouch", 0, /obj/item/storage/pouch/first_responder, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Vial Pouch (Full)", 0, /obj/item/storage/pouch/vials/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Medical Pouch", 0, /obj/item/storage/pouch/medical, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-
-		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
-		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-
-		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Sterile Mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
-	))
-
-/obj/structure/machinery/cm_vending/clothing/medic/tutorial
-	req_access = null
-
-/obj/structure/machinery/cm_vending/clothing/medic/tutorial/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_medic_sandbox
-
 /datum/action/hm_tutorial/sandbox/ready_up
 	name = "Ready Up"
 	action_icon_state = "walkman_next"
@@ -702,3 +571,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
 #undef PATIENT_TYPE_MUNDANE
 #undef PATIENT_TYPE_ORGAN
 #undef PATIENT_TYPE_TOXIN
+
+#undef INTERNAL_BLEEDING
+#undef SUTURE
+#undef FRACTURE

@@ -52,3 +52,6 @@
 #define COMSIG_LIVING_SHIMMY_LAYER "structure_shimmy_layer"
 	/// Sent when a shimmy component is currently overriding the layer
 	#define COMSIG_LIVING_SHIMMY_LAYER_CANCEL (1<<0)
+
+// From /obj/limb/proc/apply_splints() : (mob/living/user)
+#define COMSIG_LIVING_LIMB_SPLINTED "living_limb_splinted"

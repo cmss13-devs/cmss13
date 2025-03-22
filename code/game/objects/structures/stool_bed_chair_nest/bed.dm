@@ -156,8 +156,6 @@
 		if (istype(over_object, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = over_object
 			if (H==usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
-				if(foldabletype == /obj/item/roller)
-					return
 				var/obj/item/I = new foldabletype(get_turf(src))
 				H.put_in_hands(I)
 				H.visible_message(SPAN_WARNING("[H] grabs [src] from the floor!"),
@@ -216,7 +214,6 @@
 	base_bed_icon = "roller"
 
 /obj/structure/bed/roller/MouseDrop(atom/over_object)
-	. = ..()
 	if(foldabletype && !buckled_mob && !buckled_bodybag)
 		var/mob/living/carbon/human/user = over_object
 		if(!length(contents))

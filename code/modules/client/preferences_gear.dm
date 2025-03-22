@@ -989,6 +989,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Potato"
 	path = /obj/item/reagent_container/food/snacks/grown/potato
 
+/datum/gear/snack_grown/cheese
+	display_name = "Cheese"
+	path = /obj/item/reagent_container/food/snacks/cheesewedge
+
 /datum/gear/smoking
 	category = "Smoking"
 	fluff_cost = 1

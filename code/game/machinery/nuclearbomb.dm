@@ -601,7 +601,6 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		if(timer_warning == NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
 			announcement_helper("ALERT.\n\nDECRYPTION COMPLETE.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [floor(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 			announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [floor(timeleft/10)] SECONDS.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg')
-			var/t_left = duration2text_sec(floor(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
 			elder_overseer_message("The human purification device is able to be activated.")
 			var/datum/hive_status/hive
 			for(var/hivenumber in GLOB.hive_datum)

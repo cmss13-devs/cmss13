@@ -114,6 +114,6 @@
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_AICORE_LOCKDOWN)
 
 	COOLDOWN_START(GLOB.ares_datacore, aicore_lockdown, 2 MINUTES)
-	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')
+	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/lockdown.ogg')
 	message_admins(log)
 	log_ares_security("AI Core Lockdown", ares_log, person)

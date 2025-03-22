@@ -40,7 +40,7 @@
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
-#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
+#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 120
 /// Time before the round starts.
 #define PREROUND_TIME 360
 

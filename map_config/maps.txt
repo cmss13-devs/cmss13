@@ -24,21 +24,21 @@ map prison_station_fop
 endmap
 
 map fiorina_sciannex
-	minplayers 130
+	minplayers 120
 endmap
 
 map corsat
-	minplayers 130
+	minplayers 120
 	voteweight 0
 	disabled
 endmap
 
 map desert_dam
-	minplayers 130
+	minplayers 120
 endmap
 
 map ice_colony_v2
-	minplayers 130
+	minplayers 120
 	voteweight 0
 	disabled
 endmap
@@ -50,14 +50,14 @@ map kutjevo
 endmap
 
 map sorokyne_strata
-	minplayers 130
+	minplayers 120
 endmap
 
 map lv522_chances_claim
 endmap
 
 map lv759_hybrisa_prospera
-	minplayers 130
+	minplayers 120
 endmap
 
 map new_varadero

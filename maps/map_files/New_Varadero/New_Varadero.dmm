@@ -214,6 +214,14 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
+"aaP" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"aaQ" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -41828,7 +41836,7 @@ wMw
 wMw
 wMw
 wMw
-wMw
+aaP
 xcE
 wMw
 wMw
@@ -55279,7 +55287,7 @@ lTg
 wlB
 wlB
 wlB
-wlB
+aaQ
 wlB
 lTg
 wlB

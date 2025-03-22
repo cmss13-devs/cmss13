@@ -136,9 +136,19 @@ As such, don't expect any values assigned to common firearms to even consider ho
 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 */
 
+/// Sniper/DMR Delays
 #define FIRE_DELAY_TIER_AMR 30
 #define FIRE_DELAY_TIER_VULTURE 20
 #define FIRE_DELAY_TIER_SNIPER 15
+
+/// Shotgun Delays
+#define FIRE_DELAY_TIER_SHOTGUN_SLOW 2.5 SECONDS // Heavy or damaged shotguns, KS-23, etc.
+#define FIRE_DELAY_TIER_SHOTGUN_BASE 2 SECONDS // Replaces previous shotgun value which was Tier_7 (5)*4
+#define FIRE_DELAY_TIER_SHOTGUN_COLONY 1.6 SECONDS // Used by the HG shotguns.
+#define FIRE_DELAY_TIER_SHOTGUN_COMBAT 1.4 SECONDS // Replaces previous combat shotgun value which was Tier_5 (7)*2 ...Wow that's confusing.
+#define FIRE_DELAY_TIER_SHOTGUN_DEATHSQUAD 0.6 SECONDS // For adminspawn ERTs, MARSOC, etc.
+
+/// General Delay Tiers
 #define FIRE_DELAY_TIER_1 12
 #define FIRE_DELAY_TIER_2 10
 #define FIRE_DELAY_TIER_3 9

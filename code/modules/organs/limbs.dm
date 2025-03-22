@@ -974,6 +974,9 @@ This function completely restores a damaged organ to perfect condition.
 			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
 				INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
+			if(body_part == BODY_FLAG_HEAD)
+				owner.lip_style = null
+
 			if(organ)
 				//Throw organs around
 				var/dir_to_throw = pick(GLOB.cardinals)
@@ -981,7 +984,6 @@ This function completely restores a damaged organ to perfect condition.
 
 		owner.update_body() //Among other things, this calls update_icon() and updates our visuals.
 		owner.update_med_icon()
-		owner.lip_style = null
 
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
 		release_restraints()

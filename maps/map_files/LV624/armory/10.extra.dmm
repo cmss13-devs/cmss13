@@ -56,7 +56,7 @@
 /obj/item/weapon/gun/shotgun/pump,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "l" = (
@@ -169,16 +169,16 @@
 /obj/structure/surface/rack,
 /obj/item/explosive/plastic,
 /obj/item/explosive/plastic,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
-/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/machinery/door_control{
 	id = "garage_blast";
 	name = "Garage Shutters";
 	pixel_x = -26;
 	range = 200
 	},
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "H" = (

@@ -63,6 +63,8 @@
 	VAR_PROTECTED/trait_to_give
 	/// What typepath to spawn for the redeemer if from a kit
 	VAR_PROTECTED/kit_typepath
+	/// Icon to override on huds and minimaps
+	VAR_PROTECTED/rank_icon = "spec"
 	/// List of typepaths that are incompatible with this set, meaning it'll subtract 1 from their vendor/kit num as well
 	VAR_PROTECTED/list/incompatible_sets = list()
 
@@ -102,9 +104,14 @@
 			GLOB.specialist_set_datums[path].available_vendor_num--
 		ADD_TRAIT(redeemer, TRAIT_SPEC_VENDOR, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(redeemer, TRAIT_SPEC(trait_to_give), TRAIT_SOURCE_INHERENT)
+
+	redeemer.rank_override = rank_icon
+	redeemer.hud_set_squad()
 	var/obj/item/card/id/idcard = redeemer.get_idcard()
 	if(idcard)
 		idcard.set_assignment((redeemer.assigned_squad ? (redeemer.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([role_name])")
+		idcard.minimap_icon_override = rank_icon
+		redeemer.update_minimap_icon()
 		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), idcard.assignment)
 	return TRUE
 
@@ -134,6 +141,7 @@
 	role_name = "Demo"
 	skill_to_give = SKILL_SPEC_ROCKET
 	trait_to_give = "demo"
+	rank_icon = "spec_demo"
 	kit_typepath = /obj/item/storage/box/spec/demolitionist
 
 /datum/specialist_set/sadar/redeem_set(mob/living/redeemer, kit)
@@ -166,6 +174,7 @@
 	role_name = "Sniper"
 	skill_to_give = SKILL_SPEC_SNIPER
 	trait_to_give = "sniper"
+	rank_icon = "spec_sniper"
 	kit_typepath = /obj/item/storage/box/spec/sniper
 	incompatible_sets = list(
 		/datum/specialist_set/anti_mat_sniper,
@@ -176,6 +185,7 @@
 	role_name = "Heavy Sniper"
 	skill_to_give = SKILL_SPEC_SNIPER
 	trait_to_give = "antimat_sniper"
+	rank_icon = "spec_sniper"
 	kit_typepath = /obj/item/storage/box/spec/sniper/anti_materiel
 	incompatible_sets = list(
 		/datum/specialist_set/sniper,
@@ -186,6 +196,7 @@
 	role_name = "Grenadier"
 	skill_to_give = SKILL_SPEC_GRENADIER
 	trait_to_give = "grenadier"
+	rank_icon = "spec_grenadier"
 	kit_typepath = /obj/item/storage/box/spec/heavy_grenadier
 
 /datum/specialist_set/pyro
@@ -193,6 +204,7 @@
 	role_name = "Pyro"
 	skill_to_give = SKILL_SPEC_PYRO
 	trait_to_give = "pyro"
+	rank_icon = "spec_pyro"
 	kit_typepath = /obj/item/storage/box/spec/pyro
 
 /datum/specialist_set/heavy

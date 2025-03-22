@@ -245,3 +245,57 @@
   - rscadd: '"Cooldown Complete" messages in chat for xeno abilities are now hidden
       by default. You can enable them back by changing "`Xeno Cooldown Messages" value
       to "Show" in Settings menu.'
+2025-03-19:
+  Diegoflores31:
+  - rscadd: Added the ability to build new airlock types (engi , med, cmd , generic
+      ,sec)
+  - rscdel: Removed old legacy ss13 assemblies
+  MistChristmas:
+  - qol: ChemMaster - Adding new pill bottles only opts in the first bottle for filling
+      automatically. Selected pill bottles copy first selected pill bottles colour/label
+      upon being selected. Added Pill bottles no longer copy colour/label of the first
+      pill bottle added. Is also now scrollable.
+  - bugfix: ChemMaster - Allows making pills without Pill Bottles again. Stops trying
+      to fill up full bottles. Disallows trying to fill up bottles that lack the space
+      in each selected.
+  efzapa:
+  - balance: Replaced all instances of the M81 Riot Launcher with a new M84 Riot Launcher,
+      which has a non-lethal grenade capacity of 3, and the ability to lob.
+  iloveloopers:
+  - rscadd: Added the new Heavy-duty roller bed, able to carry any xeno corpse regardless
+      of size.
+  - imageadd: Added the Heavy-duty roller bed sprite.
+  - maptweak: Added the Heavy-duty roller bed to the Research Containment area.
+  private-tristan:
+  - rscadd: Extended M4RA mags can now be found in vendors, holding an extra 10 bullets
+      per mag, for a total of 35 bullets.
+  - spellcheck: Extended M4RA mags no longer claim to be armor piercing
+2025-03-20:
+  Djvarik:
+  - bugfix: Bread now has the correct description
+  Red-byte3D:
+  - bugfix: Stacked chairs no longer stun xenos on collide anymore
+2025-03-21:
+  MeH0y:
+  - balance: Increased shell storage capacity of the mortar belt and mortar shell
+      backpack
+  MistChristmas:
+  - bugfix: Fixes Examining whilst a weapon is in your off-hand.
+  - rscadd: Examine IFF now works with non Alt-IFF weapons like the SU-6 Smartpistol
+  Red-byte3D:
+  - bugfix: Ravagers and Lurkers now only return harm intent on targetted carbons.
+  - bugfix: King can no longer infinetly stun mobs via cade
+  - code_imp: Rewrites vanguard shield code
+  Unknownity:
+  - bugfix: Hellhound's "Find Owner" ability now uses the same hotkey as XENO_PRIMARY_ACTION
+      2.
+  - bugfix: Hellhound's emotes have returned, with improvements!
+  detectivegoogle:
+  - soundadd: queen announcement volume reduced a bit.
+  realforest2001:
+  - code_imp: Converts some missing fax networks to defines.
+  - bugfix: Fixes high command (like WY) fax networks breaking by having more than
+      one fax machine.
+  - maptweak: Removes High Command fax machines from Hybrisa, they should never have
+      been there.
+  - bugfix: Fixes Synthetic Survivor not appearing in the Survivor follow group.

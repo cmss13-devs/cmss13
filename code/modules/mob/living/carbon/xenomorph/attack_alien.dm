@@ -297,7 +297,7 @@
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if(stat != DEAD || chestburst)
+	if(stat != DEAD)
 		return TRUE
 
 	if(status_flags & XENO_HOST)
@@ -306,8 +306,8 @@
 				return FALSE
 		if(world.time > timeofdeath + revive_grace_period)
 			return FALSE // they ain't gonna burst now
-	else
-		return FALSE // leave the dead alone
+		return TRUE
+	return FALSE // leave the dead alone
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 //Note that this is overridden by every proc concerning a child of obj unless inherited
@@ -965,6 +965,7 @@
 			M.visible_message(SPAN_DANGER("[M] smashes [src] beyond recognition!"),
 			SPAN_DANGER("We enter a frenzy and smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			malfunction()
+			tip_over()
 		else
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"),
 			SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)

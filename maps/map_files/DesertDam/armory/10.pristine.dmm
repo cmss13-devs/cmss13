@@ -15,7 +15,12 @@
 /area/desert_dam/building/security/armory)
 "f" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/launcher/grenade/m81/riot,
+/obj/item/weapon/gun/launcher/grenade/m81{
+	pixel_y = 2
+	},
+/obj/item/weapon/gun/launcher/grenade/m81{
+	pixel_y = -7
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/armory)
 "g" = (

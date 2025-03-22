@@ -1,5 +1,8 @@
 #define DELETE_TIME 1800
 
+/// Doesn't count tier 0
+GLOBAL_VAR_INIT(total_dead_xenos, 0)
+
 /mob/living/carbon/xenomorph/death(cause, gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
 	. = ..(cause, gibbed, msg)
@@ -27,8 +30,11 @@
 		update_icons()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
-		var/datum/entity/xeno_death/death_log = SSentity_manager.tables[/datum/entity/xeno_death].make_new()
-		death_log.load_data(src, cause)
+		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			var/datum/entity/xeno_death/death_log = DB_ENTITY(/datum/entity/xeno_death)
+			death_log.load_data(src, cause)
+			if(!(caste.caste_type in XENO_T0_CASTES))
+				GLOB.total_dead_xenos++
 
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
@@ -101,10 +107,6 @@
 	if(behavior_delegate)
 		behavior_delegate.handle_death(src)
 
-	for(var/atom/movable/A in stomach_contents)
-		stomach_contents.Remove(A)
-		A.acid_damage = 0 //Reset the acid damage
-		A.forceMove(loc)
 
 	// Banished xeno provide a burrowed larva on death to compensate
 	if(banished && refunds_larva_if_banished)

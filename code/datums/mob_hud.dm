@@ -19,6 +19,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_FACTION_CMB = new /datum/mob_hud/faction/cmb(),
 	MOB_HUD_FACTION_NSPA = new /datum/mob_hud/faction/nspa(),
+	MOB_HUD_FACTION_WO = new /datum/mob_hud/faction/wo(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
@@ -218,6 +219,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/faction/pmc
 	faction_to_check = FACTION_PMC
 
+/datum/mob_hud/faction/wo
+	faction_to_check = FACTION_WY_DEATHSQUAD
+
 /datum/mob_hud/faction/nspa
 	faction_to_check = FACTION_NSPA
 
@@ -352,7 +356,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		holder.icon_state = "xenoarmor0"
 	else
 		var/amount = round(armor_integrity*100/armor_integrity_max, 10)
-		if(!amount) amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
+		if(!amount)
+			amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
 		holder.icon_state = "xenoarmor[amount]"
 
 /mob/living/carbon/human/med_hud_set_health()

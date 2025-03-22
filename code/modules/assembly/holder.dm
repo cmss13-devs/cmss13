@@ -55,9 +55,12 @@
 	return TRUE
 
 /obj/item/device/assembly_holder/proc/attach(obj/item/device/D, obj/item/device/D2, mob/user)
-	if((!D)||(!D2)) return 0
-	if((!isassembly(D))||(!isassembly(D2))) return 0
-	if((D:secured)||(D2:secured)) return 0
+	if((!D)||(!D2))
+		return 0
+	if((!isassembly(D))||(!isassembly(D2)))
+		return 0
+	if((D:secured)||(D2:secured))
+		return 0
 	if(user)
 		user.temp_drop_inv_item(D)
 		if(D2.loc == user)

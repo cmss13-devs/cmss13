@@ -46,6 +46,8 @@
 	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
+	var/list/hiding_humans = list()
+
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
 	// Defer updating based on neighbors while we're still loading map
@@ -117,7 +119,86 @@
 	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(current_mob, src)
+
+	// wall leaning by androbetel
+	if(!ishuman(current_mob))
+		return
+
+	if(current_mob != user)
+		return
+	var/mob/living/carbon/hiding_human = current_mob
+	var/can_lean = TRUE
+
+	if(istype(user.l_hand, /obj/item/grab) || istype(user.r_hand, /obj/item/grab))
+		to_chat(user, SPAN_WARNING("You can't lean while grabbing someone!"))
+		can_lean = FALSE
+	if(current_mob.is_mob_incapacitated())
+		to_chat(user, SPAN_WARNING("You can't lean while incapacitated!"))
+		can_lean = FALSE
+	if(current_mob.resting)
+		to_chat(user, SPAN_WARNING("You can't lean while resting!"))
+		can_lean = FALSE
+	if(current_mob.buckled)
+		to_chat(user, SPAN_WARNING("You can't lean while buckled!"))
+		can_lean = FALSE
+
+	var/direction = get_dir(src, current_mob)
+	var/shift_pixel_x = 0
+	var/shift_pixel_y = 0
+
+	if(!can_lean)
+		return
+	switch(direction)
+		if(NORTH)
+			shift_pixel_y = -10
+		if(SOUTH)
+			shift_pixel_y = 16
+		if(WEST)
+			shift_pixel_x = 10
+		if(EAST)
+			shift_pixel_x = -10
+		else
+			return
+
+	for(var/mob/living/carbon/human/hiding in hiding_humans)
+		if(hiding_humans[hiding] == direction)
+			return
+
+	hiding_humans += current_mob
+	hiding_humans[current_mob] = direction
+	hiding_human.Moved() //just to be safe
+	hiding_human.setDir(direction)
+	animate(hiding_human, pixel_x = shift_pixel_x, pixel_y = shift_pixel_y, time = 1)
+	if(direction == NORTH)
+		hiding_human.add_filter("cutout", 1, alpha_mask_filter(icon = icon('icons/effects/effects.dmi', "cutout")))
+	ADD_TRAIT(hiding_human, TRAIT_UNDENSE, WALL_HIDING_TRAIT)
+	RegisterSignal(hiding_human, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED, COMSIG_HUMAN_ANIMATING), PROC_REF(unhide_human), hiding_human)
 	..()
+
+/turf/closed/wall/proc/unhide_human(mob/living/carbon/human/to_unhide)
+	SIGNAL_HANDLER
+	if(!to_unhide)
+		return
+
+	REMOVE_TRAIT(to_unhide, TRAIT_UNDENSE, WALL_HIDING_TRAIT)
+	to_unhide.pixel_x = initial(to_unhide.pixel_x)
+	to_unhide.pixel_y = initial(to_unhide.pixel_y)
+	to_unhide.layer = initial(to_unhide.layer)
+	to_unhide.apply_effect(1, SUPERSLOW)
+	to_unhide.apply_effect(2, SLOW)
+	hiding_humans -= to_unhide
+	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED))
+	UnregisterSignal(to_unhide, list(COMSIG_HUMAN_ANIMATING))
+	to_chat(to_unhide, SPAN_WARNING("You couldn't sit still so you stop leaning on the wall!"))
+	to_unhide.remove_filter("cutout")
+
+/turf/closed/wall/Destroy()
+	if(hiding_humans.len)
+		for(var/mob/living/carbon/human/human in hiding_humans)
+			unhide_human(human)
+
+	return ..()
+
 
 /turf/closed/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)

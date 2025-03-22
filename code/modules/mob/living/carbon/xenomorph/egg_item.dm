@@ -70,7 +70,7 @@
 			to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
 			return
 		for (var/obj/O in T)
-			if (!istype(O,/obj/structure/machinery/light/small))
+			if (!istype(O, /obj/structure/machinery/light))
 				to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
 				return
 
@@ -81,7 +81,7 @@
 
 	if(user.hivenumber != hivenumber)
 		for (var/obj/O in T)
-			if (!istype(O,/obj/structure/machinery/light/small))
+			if (!istype(O, /obj/structure/machinery/light))
 				return
 
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)

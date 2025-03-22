@@ -275,3 +275,61 @@
   - bugfix: Bread now has the correct description
   Red-byte3D:
   - bugfix: Stacked chairs no longer stun xenos on collide anymore
+2025-03-21:
+  MeH0y:
+  - balance: Increased shell storage capacity of the mortar belt and mortar shell
+      backpack
+  MistChristmas:
+  - bugfix: Fixes Examining whilst a weapon is in your off-hand.
+  - rscadd: Examine IFF now works with non Alt-IFF weapons like the SU-6 Smartpistol
+  Red-byte3D:
+  - bugfix: Ravagers and Lurkers now only return harm intent on targetted carbons.
+  - bugfix: King can no longer infinetly stun mobs via cade
+  - code_imp: Rewrites vanguard shield code
+  Unknownity:
+  - bugfix: Hellhound's "Find Owner" ability now uses the same hotkey as XENO_PRIMARY_ACTION
+      2.
+  - bugfix: Hellhound's emotes have returned, with improvements!
+  detectivegoogle:
+  - soundadd: queen announcement volume reduced a bit.
+  realforest2001:
+  - code_imp: Converts some missing fax networks to defines.
+  - bugfix: Fixes high command (like WY) fax networks breaking by having more than
+      one fax machine.
+  - maptweak: Removes High Command fax machines from Hybrisa, they should never have
+      been there.
+  - bugfix: Fixes Synthetic Survivor not appearing in the Survivor follow group.
+2025-03-22:
+  Aurallianz:
+  - rscadd: tracking to the CMP headset (CO,XO,MW)
+  - bugfix: added propper warden headset (no-longer slumming it with the CMPs')
+  - rscadd: added tracking to the warden headset (CO,XO,CMP)
+  - rscadd: added a Military Warden Tracker accessible by (MP Headset, CMP Headset,
+      Honor Guard headset) (new sprite added)
+  Blundir:
+  - rscadd: 'survivor improvised flamethrower inspired by Alien: Isolation and Alien
+      props'
+  - bugfix: fixed empty flamethrower having no suit storage sprite
+  - maptweak: changed all mapped flamethrowers to the new one, execept the ones on
+      NV and LV522
+  - soundadd: all flamers now have fry fire sound
+  Detective-Google:
+  - bugfix: you can no longer view restricted networks on TVs.
+  Drathek:
+  - bugfix: Dead bodies that have larva that can burst soon can be dragged
+  - balance: Bursted bodies can no longer be dragged by xenos
+  - balance: Xeno traps can no longer be placed under monorail tracks, conveyors,
+      engineer lights, and dead bodies
+  ItsVyzo:
+  - spellcheck: realiable replaced with reliable on phonebox
+  LTNTS:
+  - bugfix: fixes M4RA mag box under wrong category in req vendor.
+  Red-byte3D:
+  - bugfix: You can no longer give somebody free nvgs via taking it off and on
+  - bugfix: Some vendors are no longer indestructible
+  VileBeggar:
+  - bugfix: Giant Lizards will no longer cause recursive loops (the server won't randomly
+      decide to die anymore). They will now no longer be permanently stunned by explosions.
+  ihatethisengine:
+  - balance: raised the timer of techwebs nuke to 3 minutes and made it uncancelable,
+      nuke autotriggers after decryption is finished.

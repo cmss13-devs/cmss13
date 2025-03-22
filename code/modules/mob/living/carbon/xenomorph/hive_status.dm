@@ -10,10 +10,10 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
 	var/egg_planting_range = 15
-	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
-	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
-	var/destruction_allowed = NORMAL_XENO //Who can destroy special structures
-	var/unnesting_allowed = TRUE
+
+	/// Toggles for the hive that are reset on queen death
+	var/hive_flags = NONE
+
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
@@ -157,8 +157,6 @@
 
 	/// Has a King hatchery
 	var/has_hatchery = FALSE
-
-	var/hive_flags = NONE
 
 /datum/hive_status/New()
 	hive_ui = new(src)
@@ -1129,8 +1127,7 @@
 	color = "#828296"
 	ui_color = "#828296"
 
-	construction_allowed = XENO_NOBODY
-	destruction_allowed = XENO_NOBODY
+	hive_flags = XENO_CONSTRUCTION_NOBODY|XENO_DECONSTRUCTION_NOBODY
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE

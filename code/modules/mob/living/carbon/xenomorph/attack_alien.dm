@@ -58,7 +58,21 @@
 				return XENO_NO_DELAY_ACTION
 
 			if(attacking_xeno.caste && !attacking_xeno.caste.is_intelligent)
-				if(HAS_TRAIT(src, TRAIT_NESTED) && (status_flags & XENO_HOST))
+				if(attacking_xeno.hive.hive_flags & XENO_SLASH_FORBIDDEN)
+					attacking_xeno.animation_attack_on(src)
+					attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+					SPAN_XENONOTICE("We nibble [src], as queen forbade slashing!"))
+					return XENO_ATTACK_ACTION
+
+				else if((attacking_xeno.hive.hive_flags & XENO_SLASH_RESTRICTED) && (status_flags & XENO_HOST))
+					for(var/obj/item/alien_embryo/embryo in src)
+						if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
+							attacking_xeno.animation_attack_on(src)
+							attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+							SPAN_XENONOTICE("We nibble [src], as queen forbade slashing of infected hosts!"))
+							return XENO_ATTACK_ACTION
+
+				else if(HAS_TRAIT(src, TRAIT_NESTED) && (status_flags & XENO_HOST))
 					for(var/obj/item/alien_embryo/embryo in src)
 						if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
 							to_chat(attacking_xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))

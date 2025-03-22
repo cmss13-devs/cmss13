@@ -155,7 +155,7 @@
 				return
 	// find a target in the target turf
 	if(!isliving(targeted_atom) || hit_target.stat == DEAD)
-		for(var/mob/living/being get_turf(targeted_atom))
+		for(var/mob/living/being in get_turf(targeted_atom))
 			hit_target = being
 			if(!xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
 				break
